@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Routines — Complete Help Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0e14;
+    --surface: #141620;
+    --surface2: #1c1f2e;
+    --surface3: #232637;
+    --border: #2a2d42;
+    --border2: #363a55;
+    --orange: #e8784d;
+    --orange-dim: #c4633a;
+    --orange-glow: rgba(232,120,77,0.15);
+    --blue: #5b8ef5;
+    --blue-dim: #3d6fd4;
+    --blue-glow: rgba(91,142,245,0.12);
+    --green: #4caf82;
+    --green-glow: rgba(76,175,130,0.12);
+    --purple: #9b7fe8;
+    --purple-glow: rgba(155,127,232,0.12);
+    --yellow: #e8c44d;
+    --yellow-glow: rgba(232,196,77,0.12);
+    --red: #e86b5b;
+    --red-glow: rgba(232,107,91,0.12);
+    --teal: #4ecdc4;
+    --teal-glow: rgba(78,205,196,0.12);
+    --text: #e2e4f0;
+    --text2: #9fa3bc;
+    --text3: #666a85;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', 'Fira Code', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999; opacity: 0.6;
+  }
+
+  /* ── LAYOUT ── */
+  .shell { display: flex; min-height: 100vh; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 260px; flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky; top: 0;
+    height: 100vh; overflow-y: auto;
+    display: flex; flex-direction: column;
+    padding: 28px 0 24px;
+  }
+
+  .sidebar-logo {
+    padding: 0 24px 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-logo .wordmark {
+    font-family: var(--font-display);
+    font-size: 19px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .logo-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-dim));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  .sidebar-section-label {
+    font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text3);
+    padding: 16px 24px 6px;
+  }
+
+  .sidebar nav a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 24px;
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 400;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+
+  .sidebar nav a:hover {
+    color: var(--text);
+    background: var(--surface2);
+  }
+
+  .sidebar nav a.active {
+    color: var(--orange);
+    border-left-color: var(--orange);
+    background: var(--orange-glow);
+    font-weight: 500;
+  }
+
+  .sidebar nav a .nav-icon { font-size: 14px; width: 16px; text-align: center; }
+
+  .sidebar-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 9px; font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { flex: 1; overflow-x: hidden; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #141825 0%, #0d0e14 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 64px 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(232,120,77,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: 30%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(91,142,245,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px; font-weight: 500;
+    color: var(--orange);
+    margin-bottom: 24px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 18px;
+    position: relative; z-index: 1;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--orange);
+  }
+
+  .hero .subtitle {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 36px;
+    position: relative; z-index: 1;
+  }
+
+  .hero-meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+
+  .meta-chip {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 13px; color: var(--text2);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+  }
+
+  .meta-chip .icon { font-size: 15px; }
+
+  /* ── TIER CARDS ── */
+  .tiers-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+    padding: 40px 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tier-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .tier-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border2);
+  }
+
+  .tier-card.featured {
+    border-color: var(--orange);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(232,120,77,0.05) 100%);
+  }
+
+  .tier-badge {
+    position: absolute; top: 16px; right: 16px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 3px 8px; border-radius: 4px;
+  }
+
+  .tier-badge.new { background: var(--orange); color: white; }
+  .tier-badge.local { background: var(--surface3); color: var(--text2); }
+
+  .tier-icon { font-size: 28px; margin-bottom: 14px; }
+
+  .tier-card h3 {
+    font-size: 16px; font-weight: 600;
+    color: var(--text); margin-bottom: 6px;
+  }
+
+  .tier-card .tier-cmd {
+    font-family: var(--font-mono);
+    font-size: 12px; color: var(--orange);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block; margin-bottom: 12px;
+  }
+
+  .tier-card p { font-size: 13.5px; color: var(--text2); line-height: 1.6; }
+
+  .tier-specs {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+
+  .spec-row {
+    display: flex; justify-content: space-between;
+    font-size: 12.5px;
+  }
+
+  .spec-row .label { color: var(--text3); }
+
+  .spec-row .value {
+    color: var(--text2); font-weight: 500;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .yes { color: var(--green); }
+  .no { color: var(--red); }
+  .partial { color: var(--yellow); }
+
+  /* ── CONTENT SECTIONS ── */
+  .content { padding: 0 64px 80px; }
+
+  section { padding-top: 56px; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .section-num {
+    width: 28px; height: 28px;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px; color: var(--orange);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 30px; letter-spacing: -0.5px;
+    color: var(--text); line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 17px; font-weight: 600;
+    color: var(--text); margin: 28px 0 12px;
+  }
+
+  p { color: var(--text2); margin-bottom: 14px; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    height: 1px; background: var(--border);
+    margin: 0 0 0 0;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    display: flex; gap: 14px;
+  }
+
+  .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+  .callout-body { flex: 1; }
+
+  .callout-body strong { display: block; margin-bottom: 4px; font-size: 14px; }
+
+  .callout-body p { font-size: 13.5px; margin: 0; }
+
+  .callout.info { background: var(--blue-glow); border: 1px solid rgba(91,142,245,0.2); }
+  .callout.info .callout-body strong { color: var(--blue); }
+
+  .callout.warn { background: var(--yellow-glow); border: 1px solid rgba(232,196,77,0.2); }
+  .callout.warn .callout-body strong { color: var(--yellow); }
+
+  .callout.good { background: var(--green-glow); border: 1px solid rgba(76,175,130,0.2); }
+  .callout.good .callout-body strong { color: var(--green); }
+
+  .callout.danger { background: var(--red-glow); border: 1px solid rgba(232,107,91,0.2); }
+  .callout.danger .callout-body strong { color: var(--red); }
+
+  .callout.tip { background: var(--orange-glow); border: 1px solid rgba(232,120,77,0.2); }
+  .callout.tip .callout-body strong { color: var(--orange); }
+
+  /* ── CODE BLOCKS ── */
+  .code-block {
+    background: #0a0b10;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 16px 0;
+    font-family: var(--font-mono);
+  }
+
+  .code-header {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--surface2);
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .code-lang {
+    font-size: 11px; font-weight: 500;
+    color: var(--text3); text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  .copy-btn {
+    font-size: 11px; color: var(--text3);
+    background: none; border: 1px solid var(--border);
+    border-radius: 4px; padding: 3px 8px;
+    cursor: pointer; font-family: var(--font-body);
+    transition: all 0.15s;
+  }
+
+  .copy-btn:hover { color: var(--text); border-color: var(--border2); }
+
+  .code-block pre {
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-size: 13px; line-height: 1.65;
+  }
+
+  .code-block code { color: #c9d1e8; }
+
+  .tok-cmd { color: #e8784d; }
+  .tok-str { color: #98d4a3; }
+  .tok-cmt { color: #5a5e7a; font-style: italic; }
+  .tok-kw { color: #9b7fe8; }
+  .tok-num { color: #e8c44d; }
+  .tok-flag { color: #4ecdc4; }
+
+  /* ── INLINE CODE ── */
+  code {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    color: var(--orange);
+  }
+
+  /* ── STEP LIST ── */
+  .step-list { counter-reset: step; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+
+  .step-list li {
+    counter-increment: step;
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .step-list li::before {
+    content: counter(step);
+    width: 28px; height: 28px; flex-shrink: 0;
+    background: var(--orange);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    margin-top: 1px;
+  }
+
+  .step-content { flex: 1; }
+  .step-content strong { display: block; color: var(--text); margin-bottom: 4px; font-size: 14px; }
+  .step-content p { font-size: 13.5px; color: var(--text2); margin: 0; }
+
+  /* ── COMPARISON TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin: 20px 0;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    background: var(--surface2);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--text3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody td {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text2);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody tr:hover td { background: var(--surface2); }
+
+  .td-label { color: var(--text); font-weight: 500; }
+
+  /* ── TRIGGER CARDS ── */
+  .triggers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 20px 0; }
+
+  .trigger-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .trigger-card:hover { border-color: var(--border2); }
+
+  .trigger-card .t-icon {
+    font-size: 26px; margin-bottom: 12px;
+    display: block;
+  }
+
+  .trigger-card h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .trigger-card p { font-size: 13px; color: var(--text2); margin: 0; }
+
+  .trigger-card .t-example {
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11.5px; color: var(--text3);
+  }
+
+  /* ── USE CASE CARDS ── */
+  .use-cases { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: 20px 0; }
+
+  .uc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .uc-card .uc-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .uc-card .uc-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+
+  .uc-card h4 { font-size: 14px; font-weight: 600; color: var(--text); }
+  .uc-card .uc-schedule { font-size: 11px; color: var(--text3); }
+
+  .uc-card p { font-size: 13px; color: var(--text2); margin: 0; }
+
+  /* ── PLAN LIMITS ── */
+  .plan-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 20px 0; }
+
+  .plan-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .plan-card.best {
+    border-color: var(--orange);
+    background: linear-gradient(135deg, var(--surface), var(--orange-glow));
+  }
+
+  .plan-card .plan-name {
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text3); margin-bottom: 8px;
+  }
+
+  .plan-card .plan-runs {
+    font-family: var(--font-display);
+    font-size: 36px; color: var(--orange);
+    line-height: 1;
+  }
+
+  .plan-card .plan-unit { font-size: 12px; color: var(--text3); margin-top: 4px; }
+  .plan-card .plan-price { font-size: 12px; color: var(--text3); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+  /* ── COMPONENT GRID ── */
+  .components-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: 20px 0; }
+
+  .comp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex; gap: 14px;
+  }
+
+  .comp-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+  .comp-body h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .comp-body p { font-size: 13px; color: var(--text2); margin: 0; }
+
+  /* ── CRON REFERENCE ── */
+  .cron-ref {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .cron-ref-header {
+    background: var(--surface2);
+    padding: 12px 20px;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cron-entry {
+    display: flex; align-items: center; gap: 20px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+  }
+
+  .cron-entry:last-child { border-bottom: none; }
+
+  .cron-expr {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--teal);
+    min-width: 120px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  .cron-desc { color: var(--text2); flex: 1; }
+  .cron-note { font-size: 12px; color: var(--text3); }
+
+  /* ── DECISION TREE ── */
+  .decision-tree {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+
+  .dt-question {
+    font-size: 15px; font-weight: 600; color: var(--text);
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    display: flex; gap: 10px;
+  }
+
+  .dt-question .q-icon { color: var(--orange); flex-shrink: 0; }
+
+  .dt-branches { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .dt-branch {
+    flex: 1; min-width: 160px;
+    border-radius: 8px; padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+
+  .dt-branch.yes { background: var(--green-glow); border-color: rgba(76,175,130,0.25); }
+  .dt-branch.no { background: var(--blue-glow); border-color: rgba(91,142,245,0.25); }
+  .dt-branch.partial { background: var(--purple-glow); border-color: rgba(155,127,232,0.25); }
+
+  .dt-branch .b-cond { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+
+  .dt-branch.yes .b-cond { color: var(--green); }
+  .dt-branch.no .b-cond { color: var(--blue); }
+  .dt-branch.partial .b-cond { color: var(--purple); }
+
+  .dt-branch .b-answer { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .dt-branch .b-why { font-size: 12px; color: var(--text2); }
+
+  /* ── ANTI PATTERNS ── */
+  .antipattern {
+    background: var(--red-glow);
+    border: 1px solid rgba(232,107,91,0.25);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 14px 0;
+  }
+
+  .antipattern .ap-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .antipattern .ap-title { font-size: 14px; font-weight: 600; color: var(--red); }
+
+  .antipattern .ap-problem { font-size: 13.5px; color: var(--text2); margin-bottom: 10px; }
+
+  .antipattern .ap-fix {
+    background: var(--green-glow);
+    border: 1px solid rgba(76,175,130,0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px; color: var(--text2);
+  }
+
+  .antipattern .ap-fix strong { color: var(--green); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .hero { padding: 48px 28px; }
+    .tiers-grid, .content { padding-left: 28px; padding-right: 28px; }
+    .tiers-grid, .triggers-grid, .use-cases, .plan-grid, .components-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="wordmark">
+      <div class="logo-icon">⚡</div>
+      Claude Routines
+    </div>
+  </div>
+
+  <div class="sidebar-section-label">Getting Started</div>
+  <nav>
+    <a href="#overview" class="active"><span class="nav-icon">🗺</span> Overview</a>
+    <a href="#three-tiers"><span class="nav-icon">📊</span> Three Scheduling Tiers</a>
+    <a href="#decision"><span class="nav-icon">🔀</span> Which to Choose</a>
+  </nav>
+
+  <div class="sidebar-section-label">Cloud Routines</div>
+  <nav>
+    <a href="#routines-intro"><span class="nav-icon">☁️</span> What Are Routines? <span class="sidebar-badge">NEW</span></a>
+    <a href="#triggers"><span class="nav-icon">⚡</span> Trigger Types</a>
+    <a href="#components"><span class="nav-icon">🧩</span> Core Components</a>
+    <a href="#create"><span class="nav-icon">✨</span> Creating Routines</a>
+    <a href="#limits"><span class="nav-icon">📏</span> Limits & Pricing</a>
+  </nav>
+
+  <div class="sidebar-section-label">Session Scheduling</div>
+  <nav>
+    <a href="#loop"><span class="nav-icon">🔁</span> /loop Command</a>
+    <a href="#cron"><span class="nav-icon">⏰</span> Cron Reference</a>
+    <a href="#loop-md"><span class="nav-icon">📄</span> loop.md</a>
+    <a href="#one-shot"><span class="nav-icon">📌</span> One-Time Tasks</a>
+  </nav>
+
+  <div class="sidebar-section-label">Design Patterns</div>
+  <nav>
+    <a href="#use-cases"><span class="nav-icon">💡</span> Use Cases</a>
+    <a href="#prompt-design"><span class="nav-icon">✍️</span> Prompt Design</a>
+    <a href="#skills-in-routines"><span class="nav-icon">📦</span> Skills in Routines</a>
+    <a href="#antipatterns"><span class="nav-icon">⚠️</span> Anti-Patterns</a>
+  </nav>
+
+  <div class="sidebar-section-label">Reference</div>
+  <nav>
+    <a href="#vs-actions"><span class="nav-icon">⚖️</span> vs GitHub Actions</a>
+    <a href="#quick-ref"><span class="nav-icon">📋</span> Quick Reference</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+  <!-- HERO -->
+  <div class="hero" id="overview">
+    <div class="hero-eyebrow">
+      <div class="dot"></div>
+      Research Preview · Launched April 14, 2026
+    </div>
+    <h1>Claude <em>Routines</em><br>& Scheduled Tasks</h1>
+    <p class="subtitle">The complete guide to automated, persistent AI workflows — from in-session /loop commands to cloud-native Routines that run while your laptop is closed.</p>
+    <div class="hero-meta">
+      <div class="meta-chip"><span class="icon">☁️</span> Cloud-managed infrastructure</div>
+      <div class="meta-chip"><span class="icon">🔔</span> Schedule · API · GitHub webhooks</div>
+      <div class="meta-chip"><span class="icon">📋</span> Pro plan required ($20/mo)</div>
+      <div class="meta-chip"><span class="icon">🔖</span> v2.1.72+ required for /loop</div>
+    </div>
+  </div>
+
+  <!-- THREE TIERS -->
+  <div class="tiers-grid" id="three-tiers">
+    <div class="tier-card">
+      <div class="tier-badge local">CLI / Session</div>
+      <div class="tier-icon">🖥</div>
+      <h3>/loop</h3>
+      <div class="tier-cmd">/loop 5m check deploy</div>
+      <p>Quick, in-session polling. Lives inside an active terminal and stops when you exit.</p>
+      <div class="tier-specs">
+        <div class="spec-row"><span class="label">Runs on</span><span class="value">Your machine</span></div>
+        <div class="spec-row"><span class="label">Machine must be on</span><span class="value no">Yes</span></div>
+        <div class="spec-row"><span class="label">Session required</span><span class="value no">Yes</span></div>
+        <div class="spec-row"><span class="label">Min interval</span><span class="value">1 minute</span></div>
+        <div class="spec-row"><span class="label">Max tasks</span><span class="value">50 per session</span></div>
+        <div class="spec-row"><span class="label">Auto-expires</span><span class="value">7 days</span></div>
+      </div>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-badge local">Desktop</div>
+      <div class="tier-icon">🖱</div>
+      <h3>Desktop Scheduled Tasks</h3>
+      <div class="tier-cmd">Sidebar → Schedule → + New task</div>
+      <p>Persistent local tasks. Survive restarts. Fire each session at your chosen interval with full local file access.</p>
+      <div class="tier-specs">
+        <div class="spec-row"><span class="label">Runs on</span><span class="value">Your machine</span></div>
+        <div class="spec-row"><span class="label">Machine must be on</span><span class="value no">Yes</span></div>
+        <div class="spec-row"><span class="label">Session required</span><span class="value yes">No</span></div>
+        <div class="spec-row"><span class="label">Min interval</span><span class="value">1 minute</span></div>
+        <div class="spec-row"><span class="label">Local files</span><span class="value yes">Yes ✓</span></div>
+        <div class="spec-row"><span class="label">Worktree isolation</span><span class="value yes">Supported</span></div>
+      </div>
+    </div>
+
+    <div class="tier-card featured">
+      <div class="tier-badge new">New · Apr 2026</div>
+      <div class="tier-icon">☁️</div>
+      <h3>Cloud Routines</h3>
+      <div class="tier-cmd">/schedule  or  claude.ai/code/routines</div>
+      <p>Runs on Anthropic's managed infrastructure. Laptop can be closed. Trigger by schedule, API call, or GitHub event.</p>
+      <div class="tier-specs">
+        <div class="spec-row"><span class="label">Runs on</span><span class="value">Anthropic cloud</span></div>
+        <div class="spec-row"><span class="label">Machine must be on</span><span class="value yes">No ✓</span></div>
+        <div class="spec-row"><span class="label">Session required</span><span class="value yes">No ✓</span></div>
+        <div class="spec-row"><span class="label">Min interval</span><span class="value">1 hour</span></div>
+        <div class="spec-row"><span class="label">Local files</span><span class="value no">No (fresh clone)</span></div>
+        <div class="spec-row"><span class="label">GitHub trigger</span><span class="value yes">Yes ✓</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- DECISION -->
+    <section id="decision">
+      <div class="section-label">
+        <div class="section-num">01</div>
+        <h2>Which Should You Use?</h2>
+      </div>
+
+      <div class="decision-tree">
+        <div class="dt-question"><span class="q-icon">❓</span> Does the task need to run when your laptop is closed or overnight?</div>
+        <div class="dt-branches">
+          <div class="dt-branch yes">
+            <div class="b-cond">Yes</div>
+            <div class="b-answer">☁️ Cloud Routines</div>
+            <div class="b-why">Only option that runs fully unattended on Anthropic's infra</div>
+          </div>
+          <div class="dt-branch no">
+            <div class="b-cond">No — needs local files</div>
+            <div class="b-answer">🖱 Desktop Tasks</div>
+            <div class="b-why">Full access to your filesystem, MCP servers, and plugins</div>
+          </div>
+          <div class="dt-branch partial">
+            <div class="b-cond">No — quick in-session</div>
+            <div class="b-answer">🖥 /loop</div>
+            <div class="b-why">Fastest to set up; good for "babysit this build" style polling</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario</th><th>Best Tier</th><th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-label">Poll deployment for 20 minutes</td><td><code>/loop 5m</code></td><td class="no-wrap">Session-scoped, simple, zero setup</td></tr>
+            <tr><td class="td-label">Daily 7am standup briefing</td><td>Desktop Task</td><td>Local calendar/Slack access, persistent schedule</td></tr>
+            <tr><td class="td-label">Nightly security scan at 2am</td><td>Cloud Routine</td><td>Laptop closed; must run unattended</td></tr>
+            <tr><td class="td-label">Auto-review every new PR</td><td>Cloud Routine</td><td>GitHub webhook trigger, runs in cloud per event</td></tr>
+            <tr><td class="td-label">Run on external system trigger</td><td>Cloud Routine</td><td>API trigger accepts any HTTP POST</td></tr>
+            <tr><td class="td-label">Babysit a long-running test</td><td><code>/loop 10m</code></td><td>Interactive, can cancel with Esc</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ROUTINES INTRO -->
+    <section id="routines-intro">
+      <div class="section-label">
+        <div class="section-num">02</div>
+        <h2>Cloud Routines — What They Are</h2>
+      </div>
+
+      <p>Cloud Routines (launched April 14, 2026 as a research preview) run on Anthropic's managed infrastructure. You configure a prompt, repository, and connectors once — then the routine executes on its own trigger without any active session or open laptop required.</p>
+
+      <p><strong style="color:var(--text)">The key difference from traditional automation:</strong> a Routine is an agent, not a script. It receives a prompt and decides how to reach the outcome. It can reason about what it encounters, self-heal errors, and adapt execution to context — unlike a GitHub Actions workflow that runs commands you pre-defined.</p>
+
+      <div class="callout info">
+        <div class="callout-icon">☁️</div>
+        <div class="callout-body">
+          <strong>Anthropic-Managed Infrastructure</strong>
+          <p>You don't provision servers, configure environments, or manage cron infrastructure. Anthropic handles the execution environment, container lifecycle, and retry logic. The execution environment is a fresh, sandboxed container with a fresh repository clone on each run.</p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <strong>No Local File Access</strong>
+          <p>Cloud Routine containers clone your repository fresh on each run. They cannot access files from your local machine, local MCP servers, or local plugin configs. Skills must be stored in the repository or a secondary repository. See <a href="#skills-in-routines" style="color:var(--orange)">Skills in Routines</a> for the workaround pattern.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- TRIGGERS -->
+    <section id="triggers">
+      <div class="section-label">
+        <div class="section-num">03</div>
+        <h2>Trigger Types</h2>
+      </div>
+
+      <p>A single Routine can combine multiple trigger types. GitHub triggers have per-routine and per-account hourly caps during preview — events beyond the limit are dropped until the window resets.</p>
+
+      <div class="triggers-grid">
+        <div class="trigger-card">
+          <span class="t-icon">🕐</span>
+          <h4>Schedule Trigger</h4>
+          <p>Time-based recurring execution. Use presets (Hourly, Daily, Weekdays, Weekly) or any valid 5-field cron expression.</p>
+          <div class="t-example">
+            Min interval: 1 hour<br>
+            Cron syntax: standard 5-field<br>
+            ❌ Sub-hourly cron rejected
+          </div>
+        </div>
+        <div class="trigger-card">
+          <span class="t-icon">🔗</span>
+          <h4>API Trigger</h4>
+          <p>HTTP POST to a per-routine endpoint with a bearer token. Any external system — Jenkins, Slack bot, monitoring tool — can fire a Routine.</p>
+          <div class="t-example">
+            Method: POST<br>
+            Auth: Bearer token<br>
+            Body: optional context JSON
+          </div>
+        </div>
+        <div class="trigger-card">
+          <span class="t-icon">🐙</span>
+          <h4>GitHub Event Trigger</h4>
+          <p>Fire on PR opened, PR merged, release published, push, and other repository events. Branch security: Claude pushes only to <code>claude/</code>-prefixed branches by default.</p>
+          <div class="t-example">
+            PR opened / merged<br>
+            Release published<br>
+            Push to branch
+          </div>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <strong>Branch Security Default</strong>
+          <p>By default Claude can push only to branches prefixed <code>claude/</code>. This prevents a poorly written routine from touching <code>main</code>. Disable only where you have robust downstream review processes.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- COMPONENTS -->
+    <section id="components">
+      <div class="section-label">
+        <div class="section-num">04</div>
+        <h2>Core Components of a Routine</h2>
+      </div>
+
+      <p>Every Routine has four configurable parts. Getting these right is the difference between a routine that runs reliably and one that fails silently.</p>
+
+      <div class="components-grid">
+        <div class="comp-card">
+          <div class="comp-icon">📝</div>
+          <div class="comp-body">
+            <h4>Prompt</h4>
+            <p>Natural language instructions describing what Claude should do. Since the routine runs autonomously, the prompt must be <strong style="color:var(--text)">fully self-contained</strong> — explain what to do, what to verify, how success looks, and how to handle edge cases. No references to context missing from the clean cloud session.</p>
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-icon">⚡</div>
+          <div class="comp-body">
+            <h4>Triggers</h4>
+            <p>The event that starts the routine. Schedule (recurring), GitHub Event (PR, push, release), or API (HTTP endpoint). A single routine can combine multiple triggers. GitHub and API triggers must be configured in the web UI.</p>
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-icon">🏗</div>
+          <div class="comp-body">
+            <h4>Environment</h4>
+            <p>The sandboxed execution context. Configure: <strong style="color:var(--text)">Network access</strong> (blocked by default, or allowlisted domains / trusted / full), <strong style="color:var(--text)">environment variables</strong> for secrets and API keys, and <strong style="color:var(--text)">setup scripts</strong> that run before Claude Code launches.</p>
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-icon">🔌</div>
+          <div class="comp-body">
+            <h4>Connectors</h4>
+            <p>Pre-built integrations with external services. Currently: <strong style="color:var(--text)">Slack</strong> (read/write), <strong style="color:var(--text)">Gmail</strong>, <strong style="color:var(--text)">Google Calendar</strong>, <strong style="color:var(--text)">GitHub</strong> (full repo access). Each connector provides tools Claude can call natively within the routine.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Network Access Modes</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Mode</th><th>What's Allowed</th><th>Best For</th></tr></thead>
+          <tbody>
+            <tr><td class="td-label">Blocked (default)</td><td>No outbound requests</td><td>Pure code analysis, no external data needed</td></tr>
+            <tr><td class="td-label">Custom (allowlist)</td><td>Only specified domains</td><td>RSS feeds, specific APIs — most secure option</td></tr>
+            <tr><td class="td-label">Trusted</td><td>Pre-approved Anthropic list</td><td>Common services without custom allowlisting</td></tr>
+            <tr><td class="td-label">Full</td><td>Unrestricted internet</td><td>General research; use with caution</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CREATE -->
+    <section id="create">
+      <div class="section-label">
+        <div class="section-num">05</div>
+        <h2>Creating Your First Routine</h2>
+      </div>
+
+      <h3>Method 1 — CLI (Schedule triggers only)</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Terminal</span>
+          <button class="copy-btn" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+        </div>
+        <pre><code><span class="tok-cmt"># One-liner — Claude parses, asks clarifying questions, creates the routine</span>
+<span class="tok-cmd">/schedule</span> Create a daily 9am trigger that fetches RSS from JavaScript Weekly,
+picks 10 good articles for YouTube, and sends to Slack #dev-feed
+
+<span class="tok-cmt"># Or from any active session — creates a cloud routine, not a local task</span>
+<span class="tok-cmd">/schedule</span> daily PR review at 9am on weekdays</code></pre>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ️</div>
+        <div class="callout-body">
+          <strong>Claude asks clarifying questions</strong>
+          <p>After your <code>/schedule</code> command, Claude will ask clarifying questions to fill in details (destination channel, selection criteria, etc.) before creating the routine. Answer them, and Claude confirms creation and provides a link to manage it in the web UI.</p>
+        </div>
+      </div>
+
+      <h3>Method 2 — Web UI (all trigger types)</h3>
+      <ol class="step-list">
+        <li>
+          <div class="step-content">
+            <strong>Navigate to Routines</strong>
+            <p>Go to <code>claude.ai/code/routines</code> and click <strong>New routine</strong>. This is the only place to create API or GitHub event triggers.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Write your prompt</strong>
+            <p>Be specific and self-contained. Include: what to do, what success looks like, how to handle edge cases, and what outputs to produce. The routine runs without you present.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Choose your trigger(s)</strong>
+            <p>Select Schedule (cron preset or custom expression), GitHub Event (pick event type and repository), or API (generates a bearer-token endpoint). You can combine multiple triggers on one routine.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Configure the environment</strong>
+            <p>Add network access if the task fetches external data. Set environment variables for API keys and secrets. Add a setup script if the routine needs dependencies installed before Claude launches.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Add connectors</strong>
+            <p>Connect Slack, Gmail, or GitHub to give Claude tools it can call. Each connector grants specific read/write actions in that service.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Test with Run now</strong>
+            <p>Hit <strong>Run now</strong> before relying on the schedule. Watch the live log — if an approach fails, Claude self-corrects and retries. Fix any issues (network access, connector auth, prompt ambiguities) now.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout good">
+        <div class="callout-icon">✅</div>
+        <div class="callout-body">
+          <strong>Always run at least one manual test</strong>
+          <p>Edge cases appear in the first week. Catching permission issues, connector auth problems, and output formatting errors (e.g., Slack's <code>invalid_blocks</code> from <code>---</code> dividers) in a test run costs nothing. Catching them after the routine has been running for a week costs much more.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- LIMITS -->
+    <section id="limits">
+      <div class="section-label">
+        <div class="section-num">06</div>
+        <h2>Plan Limits & Pricing</h2>
+      </div>
+
+      <div class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-runs">—</div>
+          <div class="plan-unit">Routines not available</div>
+          <div class="plan-price">$0/mo</div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Pro</div>
+          <div class="plan-runs">5</div>
+          <div class="plan-unit">runs per day</div>
+          <div class="plan-price">$20/mo</div>
+        </div>
+        <div class="plan-card best">
+          <div class="plan-name">Max</div>
+          <div class="plan-runs">15</div>
+          <div class="plan-unit">runs per day</div>
+          <div class="plan-price">$100/mo</div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Team / Enterprise</div>
+          <div class="plan-runs">25</div>
+          <div class="plan-unit">runs per day</div>
+          <div class="plan-price">Custom</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-icon">💰</div>
+        <div class="callout-body">
+          <strong>Metered Overage Available</strong>
+          <p>Routines draw down the same subscription limit as interactive sessions. Organizations with extra usage enabled can go past the cap at metered overage rates. Monitor usage at <code>claude.ai/settings/usage</code>. GitHub triggers have additional per-routine and per-account hourly caps — events beyond the limit are dropped until the window resets.</p>
+        </div>
+      </div>
+
+      <h3>Token Cost Per Run</h3>
+      <p>Each Routine run consumes inference tokens based on: the prompt length, any context Claude reads (repository files, fetched URLs), and the output it produces. There's no separate fee for Routines — you pay standard Claude API rates for usage. A large <code>CLAUDE.md</code> file consumes a significant portion of the session token budget on every run — keep it concise for cloud contexts.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- LOOP COMMAND -->
+    <section id="loop">
+      <div class="section-label">
+        <div class="section-num">07</div>
+        <h2>/loop — Session Scheduling</h2>
+      </div>
+
+      <p>The <code>/loop</code> bundled skill is the quickest way to run a prompt on repeat within an active session. Both interval and prompt are optional.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>Behavior</th></tr></thead>
+          <tbody>
+            <tr><td><code>/loop 5m check if the deployment finished</code></td><td>Fixed interval — runs every 5 minutes</td></tr>
+            <tr><td><code>/loop check if the deployment finished</code></td><td>Dynamic interval — Claude chooses delay based on what it observes</td></tr>
+            <tr><td><code>/loop 20m /review-pr 1234</code></td><td>Re-runs a slash command on a schedule</td></tr>
+            <tr><td><code>/loop</code></td><td>Runs built-in maintenance prompt (PR triage, bug hunts) at dynamic interval</td></tr>
+            <tr><td><code>/loop 15m</code></td><td>Runs built-in maintenance prompt every 15 minutes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Interval Units</h3>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">Examples</span></div>
+        <pre><code><span class="tok-cmd">/loop 30s</span>  <span class="tok-cmt"># 30 seconds — rounded up to 1 minute (cron minimum)</span>
+<span class="tok-cmd">/loop 5m</span>   <span class="tok-cmt"># Every 5 minutes</span>
+<span class="tok-cmd">/loop 2h</span>   <span class="tok-cmt"># Every 2 hours</span>
+<span class="tok-cmd">/loop 1d</span>   <span class="tok-cmt"># Once per day</span>
+<span class="tok-cmt"># Intervals like 7m are rounded to nearest clean cron step — Claude tells you what it picked</span></code></pre>
+      </div>
+
+      <h3>Dynamic Interval Behavior</h3>
+      <p>When you omit the interval, Claude chooses a delay between 1 minute and 1 hour based on what it observes: short waits while a build is active, longer waits when nothing is pending. Claude may use the <strong>Monitor tool</strong> instead of polling — which streams background script output and is more token-efficient for event-driven watching.</p>
+
+      <h3>Stopping a Loop</h3>
+      <p>Press <kbd style="background:var(--surface2);border:1px solid var(--border);padding:2px 6px;border-radius:3px;font-family:var(--font-mono);font-size:12px">Esc</kbd> to stop a <code>/loop</code> while it's waiting for the next iteration. This clears the pending wakeup. Tasks you scheduled by asking Claude directly (e.g. "remind me at 3pm") are <em>not</em> affected by Esc — cancel those explicitly.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CRON REFERENCE -->
+    <section id="cron">
+      <div class="section-label">
+        <div class="section-num">08</div>
+        <h2>Cron Expression Reference</h2>
+      </div>
+
+      <p>Standard 5-field cron expressions. All times use your local timezone for <code>/loop</code> and Desktop tasks; UTC for Cloud Routines. Cloud Routines reject expressions that run more frequently than once per hour.</p>
+
+      <div class="callout info">
+        <div class="callout-icon">⏱</div>
+        <div class="callout-body">
+          <strong>Format: minute hour day-of-month month day-of-week</strong>
+          <p>Fields support: <code>*</code> (wildcard), single values (<code>5</code>), steps (<code>*/15</code>), ranges (<code>1-5</code>), comma lists (<code>1,15,30</code>). Day-of-week: <code>0</code> or <code>7</code> = Sunday. Extended syntax like <code>L</code>, <code>W</code>, <code>?</code>, and name aliases (<code>MON</code>, <code>JAN</code>) are NOT supported.</p>
+        </div>
+      </div>
+
+      <div class="cron-ref">
+        <div class="cron-ref-header">Common Cron Expressions</div>
+        <div class="cron-entry">
+          <span class="cron-expr">0 9 * * 1-5</span>
+          <span class="cron-desc">9:00 AM every weekday</span>
+          <span class="cron-note">Daily standup briefing</span>
+        </div>
+        <div class="cron-entry">
+          <span class="cron-expr">0 2 * * *</span>
+          <span class="cron-desc">2:00 AM every night</span>
+          <span class="cron-note">Nightly security scan</span>
+        </div>
+        <div class="cron-entry">
+          <span class="cron-expr">0 8 * * 1</span>
+          <span class="cron-desc">8:00 AM every Monday</span>
+          <span class="cron-note">Weekly review digest</span>
+        </div>
+        <div class="cron-entry">
+          <span class="cron-expr">0 * * * *</span>
+          <span class="cron-desc">Every hour (top of hour)</span>
+          <span class="cron-note">Use 3 * * * * to avoid jitter</span>
+        </div>
+        <div class="cron-entry">
+          <span class="cron-expr">0 18 * * 5</span>
+          <span class="cron-desc">6:00 PM every Friday</span>
+          <span class="cron-note">End-of-week PR summary</span>
+        </div>
+        <div class="cron-entry">
+          <span class="cron-expr">0 9,17 * * 1-5</span>
+          <span class="cron-desc">9 AM and 5 PM on weekdays</span>
+          <span class="cron-note">Twice-daily email triage</span>
+        </div>
+        <div class="cron-entry">
+          <span class="cron-expr">30 6 1 * *</span>
+          <span class="cron-desc">6:30 AM on the 1st of each month</span>
+          <span class="cron-note">Monthly report generation</span>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <strong>Jitter Awareness</strong>
+          <p>The scheduler adds a small deterministic offset to fire times. Recurring tasks may fire up to 10% of their period late (capped at 15 min). One-shot tasks at :00 or :30 fire up to 90 seconds early. To avoid jitter: use minutes like <code>3 9 * * *</code> instead of <code>0 9 * * *</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- LOOP.MD -->
+    <section id="loop-md">
+      <div class="section-label">
+        <div class="section-num">09</div>
+        <h2>Customizing /loop with loop.md</h2>
+      </div>
+
+      <p>A <code>loop.md</code> file replaces the built-in maintenance prompt with your own default. It defines the prompt for a bare <code>/loop</code> invocation. It is ignored when you supply a prompt on the command line.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Path</th><th>Scope</th></tr></thead>
+          <tbody>
+            <tr><td><code>.claude/loop.md</code></td><td>Project-level. Takes precedence when both exist.</td></tr>
+            <tr><td><code>~/.claude/loop.md</code></td><td>User-level. Applies in any project without its own.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">.claude/loop.md — Release branch keeper</span>
+          <button class="copy-btn" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+        </div>
+        <pre><code>Check the `release/next` PR. If CI is red, pull the failing job log,
+diagnose, and push a minimal fix to a `claude/fix-*` branch. If new review
+comments have arrived, address each one and resolve the thread.
+If everything is green and quiet, say so in one line.
+
+<span class="tok-cmt"># Constraints</span>
+- Never push directly to `main` or `release/next`
+- Only fix failures you can diagnose from the log alone
+- If the fix requires context you don't have, leave a comment and stop</code></pre>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">📏</div>
+        <div class="callout-body">
+          <strong>Size Limit</strong>
+          <p>Content beyond 25,000 bytes is truncated. Keep <code>loop.md</code> concise. Edits take effect on the next iteration — you can refine instructions while a loop is running.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ONE-SHOT -->
+    <section id="one-shot">
+      <div class="section-label">
+        <div class="section-num">10</div>
+        <h2>One-Time Reminders</h2>
+      </div>
+      <p>For single-fire tasks, use natural language directly — no <code>/loop</code> needed. Claude schedules a single-fire task that deletes itself after running.</p>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">Natural language examples</span></div>
+        <pre><code><span class="tok-cmt"># Relative time</span>
+in 45 minutes, check whether the integration tests passed
+
+<span class="tok-cmt"># Absolute time</span>
+remind me at 3pm to push the release branch
+
+<span class="tok-cmt"># After an event</span>
+when the CI run finishes, tell me the result and suggest next steps</code></pre>
+      </div>
+      <p>Claude pins the fire time to a specific minute using a cron expression and confirms when it will fire. One-shot tasks resume on <code>--resume</code> or <code>--continue</code> if the scheduled time hasn't passed yet. Background Bash and Monitor tasks are never restored on resume.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- USE CASES -->
+    <section id="use-cases">
+      <div class="section-label">
+        <div class="section-num">11</div>
+        <h2>High-Value Use Cases</h2>
+      </div>
+
+      <div class="use-cases">
+        <div class="uc-card">
+          <div class="uc-header">
+            <div class="uc-icon" style="background:var(--blue-glow)">📬</div>
+            <div>
+              <h4>Email Triage</h4>
+              <div class="uc-schedule">Schedule: Daily 7:00 AM · Connectors: Gmail</div>
+            </div>
+          </div>
+          <p>Fetch unread emails from last 24h. Classify by urgency. Draft replies for routine questions. Flag anything needing human judgment with a summary in Slack.</p>
+        </div>
+
+        <div class="uc-card">
+          <div class="uc-header">
+            <div class="uc-icon" style="background:var(--green-glow)">🔍</div>
+            <div>
+              <h4>Automated PR Review</h4>
+              <div class="uc-schedule">Trigger: GitHub PR opened · Connector: GitHub</div>
+            </div>
+          </div>
+          <p>On every new PR: analyze code changes, check for security vulnerabilities, verify test coverage, and post a structured review comment directly on the PR.</p>
+        </div>
+
+        <div class="uc-card">
+          <div class="uc-header">
+            <div class="uc-icon" style="background:var(--orange-glow)">📰</div>
+            <div>
+              <h4>Content Curation</h4>
+              <div class="uc-schedule">Schedule: Daily 9:00 AM · Network: Custom allowlist</div>
+            </div>
+          </div>
+          <p>Fetch RSS feeds from target publications. Select articles matching your criteria. Format and post to Slack #reading-list. Avoid previously sent articles.</p>
+        </div>
+
+        <div class="uc-card">
+          <div class="uc-header">
+            <div class="uc-icon" style="background:var(--purple-glow)">📊</div>
+            <div>
+              <h4>Weekly Status Report</h4>
+              <div class="uc-schedule">Schedule: Friday 5:00 PM · Connectors: GitHub + Slack</div>
+            </div>
+          </div>
+          <p>Compile merged PRs, closed issues, and open blockers from the week. Generate a formatted summary. Post to Slack #weekly-update and create a Google Doc archive.</p>
+        </div>
+
+        <div class="uc-card">
+          <div class="uc-header">
+            <div class="uc-icon" style="background:var(--red-glow)">🔐</div>
+            <div>
+              <h4>Nightly Security Scan</h4>
+              <div class="uc-schedule">Schedule: Daily 2:00 AM · Network: Trusted</div>
+            </div>
+          </div>
+          <p>Clone repo, run dependency audit, check for newly published CVEs in used packages. Alert Slack #security immediately for CRITICAL findings. Weekly digest for lower severity.</p>
+        </div>
+
+        <div class="uc-card">
+          <div class="uc-header">
+            <div class="uc-icon" style="background:var(--teal-glow)">📣</div>
+            <div>
+              <h4>On-Call Alert Triage</h4>
+              <div class="uc-schedule">Trigger: API (from PagerDuty/monitoring) · Full network</div>
+            </div>
+          </div>
+          <p>External monitoring fires HTTP POST to the API trigger. Claude analyzes alert context, checks recent deployments, suggests root cause, and posts runbook to the on-call Slack thread.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PROMPT DESIGN -->
+    <section id="prompt-design">
+      <div class="section-label">
+        <div class="section-num">12</div>
+        <h2>Prompt Design for Routines</h2>
+      </div>
+
+      <p>The prompt is the most important part of any Routine. Since it runs autonomously in a fresh cloud container, it must be completely self-contained. Here's the anatomy of a well-written Routine prompt:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Routine Prompt — Anatomy</span>
+          <button class="copy-btn" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+        </div>
+        <pre><code><span class="tok-cmt">## What to do (specific action steps)</span>
+1. Fetch all unread emails from the last 24 hours using the Gmail connector.
+2. For each email: classify as [URGENT / ACTION / FYI / SPAM].
+3. Draft a reply for any [ACTION] email that has a clear, short answer.
+4. Compile a summary table: sender | subject | classification | action taken.
+
+<span class="tok-cmt">## What success looks like (verification criteria)</span>
+- All emails classified
+- Replies drafted for ACTION items where a reply is clearly appropriate
+- Summary posted to Slack #daily-triage
+
+<span class="tok-cmt">## How to handle edge cases</span>
+- If the email requires information you don't have: classify as NEEDS-HUMAN and skip drafting
+- If Gmail connector fails: log the error and post an alert to Slack, then stop
+- Never send emails — only draft. Always require human approval before sending.
+
+<span class="tok-cmt">## Output format</span>
+Post a Slack message with:
+- Header: "Email Triage — {date}"
+- Table: sender | subject | classification | action
+- Footer: total count by classification
+- Use plain text, no --- dividers (causes Slack invalid_blocks errors)</code></pre>
+      </div>
+
+      <h3>Prompt Writing Rules</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rule</th><th>Why It Matters</th></tr></thead>
+          <tbody>
+            <tr><td class="td-label">State the goal, not just the steps</td><td>Claude can self-correct if a step fails while still achieving the goal</td></tr>
+            <tr><td class="td-label">Define success explicitly</td><td>Claude knows when to stop; prevents over-execution</td></tr>
+            <tr><td class="td-label">Handle the error path</td><td>Routines run unattended — silent failures are invisible</td></tr>
+            <tr><td class="td-label">Specify output format exactly</td><td>Connector formatting quirks (Slack's invalid_blocks from <code>---</code>) must be pre-empted</td></tr>
+            <tr><td class="td-label">No references to missing context</td><td>Fresh container — no session history, no local state</td></tr>
+            <tr><td class="td-label">Start with human-in-the-loop</td><td>Drafts → human approves → auto-send as trust grows</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SKILLS IN ROUTINES -->
+    <section id="skills-in-routines">
+      <div class="section-label">
+        <div class="section-num">13</div>
+        <h2>Using Skills in Cloud Routines</h2>
+      </div>
+
+      <p>Cloud Routine containers are fresh and have no access to skills defined on your local machine. The solution is a <strong>secondary GitHub repository</strong> that stores skills and is cloned alongside the primary repository.</p>
+
+      <ol class="step-list">
+        <li>
+          <div class="step-content">
+            <strong>Create a skills repository</strong>
+            <p>Create a GitHub repo (e.g., <code>routine-env</code>) with your skill files at <code>.claude/skills/skill-name/SKILL.md</code>. This repo serves as your cloud skill library.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Add the skills repo to your Routine config</strong>
+            <p>In the web UI, add <code>routine-env</code> as a secondary repository to the Routine. It will be cloned into the cloud container alongside your main repository.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Add a SessionStart hook to copy skills</strong>
+            <p>A <code>.claude/settings.json</code> in the skills repo tells Claude to copy skills into the right directory at session start:</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">routine-env/.claude/settings.json</span>
+          <button class="copy-btn" onclick="this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+        </div>
+        <pre><code>{
+  <span class="tok-str">"hooks"</span>: {
+    <span class="tok-str">"SessionStart"</span>: {
+      <span class="tok-str">"hooks"</span>: [
+        {
+          <span class="tok-str">"type"</span>: <span class="tok-str">"command"</span>,
+          <span class="tok-kw">"command"</span>: <span class="tok-str">"[ ! -d ~/.claude/skills ] && cp -r ~/routine-env/.claude/skills/. ~/.claude/skills"</span>
+        }
+      ]
+    }
+  }
+}</code></pre>
+      </div>
+
+      <div class="callout good">
+        <div class="callout-icon">✅</div>
+        <div class="callout-body">
+          <strong>The Skills Repository Pattern</strong>
+          <p>This is likely to become the standard pattern for Routines involving complex or reusable task definitions. A skills repository lets you version-control your automation logic separately from your application code, and share it across multiple Routines.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ANTI-PATTERNS -->
+    <section id="antipatterns">
+      <div class="section-label">
+        <div class="section-num">14</div>
+        <h2>Anti-Patterns to Avoid</h2>
+      </div>
+
+      <div class="antipattern">
+        <div class="ap-header">
+          <span>⛔</span>
+          <div class="ap-title">Vague or Stateful Prompts</div>
+        </div>
+        <div class="ap-problem">Writing prompts like "check the usual stuff" or "continue from where you left off." Cloud containers start fresh — there is no session state, no previous context, no memory of last run.</div>
+        <div class="ap-fix"><strong>Fix:</strong> Every prompt must be fully self-contained. Define what to check, what sources to use, and what to produce — as if explaining to someone with no context at all.</div>
+      </div>
+
+      <div class="antipattern">
+        <div class="ap-header">
+          <span>⛔</span>
+          <div class="ap-title">Skipping the Manual Test</div>
+        </div>
+        <div class="ap-problem">Activating a Routine without ever running it manually. Common failure modes: network blocked for a needed domain, connector auth expired, Slack formatting errors (--- dividers), missing environment variables.</div>
+        <div class="ap-fix"><strong>Fix:</strong> Always click "Run now" at least once and review the live log before relying on the schedule. Fix all issues in the prompt or environment config before going live.</div>
+      </div>
+
+      <div class="antipattern">
+        <div class="ap-header">
+          <span>⛔</span>
+          <div class="ap-title">Sub-Hourly Cron on Cloud Routines</div>
+        </div>
+        <div class="ap-problem">Attempting to set a Cloud Routine with a cron expression that fires more than once per hour (e.g., */30 * * * *). Cloud Routines reject these expressions — minimum interval is 1 hour.</div>
+        <div class="ap-fix"><strong>Fix:</strong> For sub-hourly polling, use /loop in an active session or Desktop Scheduled Tasks. Cloud Routines are for longer-cadence, unattended workflows.</div>
+      </div>
+
+      <div class="antipattern">
+        <div class="ap-header">
+          <span>⛔</span>
+          <div class="ap-title">Bloated CLAUDE.md for Cloud Routines</div>
+        </div>
+        <div class="ap-problem">Using a large CLAUDE.md file in your project that was written for interactive development. Every token in CLAUDE.md is consumed on each routine run. A 200-line CLAUDE.md wastes significant budget every execution.</div>
+        <div class="ap-fix"><strong>Fix:</strong> Create a minimal CLAUDE.md (or none) for Routine-specific repositories. Put all instructions in the Routine prompt itself — it's loaded fresh each run anyway.</div>
+      </div>
+
+      <div class="antipattern">
+        <div class="ap-header">
+          <span>⛔</span>
+          <div class="ap-title">Full Network Access by Default</div>
+        </div>
+        <div class="ap-problem">Using "Full" network access for all Routines because it's simpler. This allows the Routine to reach any external endpoint, increasing the blast radius if the prompt is poorly written or the repository is compromised.</div>
+        <div class="ap-fix"><strong>Fix:</strong> Use "Custom" allowlist mode for specific domains, or "Trusted" for pre-approved services. Only use "Full" when the task genuinely requires unrestricted access and you accept the security tradeoff.</div>
+      </div>
+
+      <div class="antipattern">
+        <div class="ap-header">
+          <span>⛔</span>
+          <div class="ap-title">Using /loop Instead of Routines for Overnight Tasks</div>
+        </div>
+        <div class="ap-problem">Leaving a /loop running overnight, requiring your machine to stay on and the terminal to stay open. This is fragile — a sleep, crash, or network drop kills the loop silently.</div>
+        <div class="ap-fix"><strong>Fix:</strong> If a task needs to run while your laptop is off, it's a Cloud Routine. /loop is for in-session monitoring you're actively watching.</div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- VS GITHUB ACTIONS -->
+    <section id="vs-actions">
+      <div class="section-label">
+        <div class="section-num">15</div>
+        <h2>Routines vs GitHub Actions</h2>
+      </div>
+
+      <p>The question teams consistently ask: should I replace GitHub Actions with Routines? The answer is nuanced — they serve different purposes and work best together.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dimension</th><th>Cloud Routines</th><th>GitHub Actions</th></tr></thead>
+          <tbody>
+            <tr><td class="td-label">Type of work</td><td>Judgment-based — reads, reasons, adapts</td><td>Deterministic — runs commands you defined</td></tr>
+            <tr><td class="td-label">Trigger</td><td>Schedule, API, GitHub event</td><td>Git events, schedule, manual, API</td></tr>
+            <tr><td class="td-label">Execution</td><td>Claude agent making decisions</td><td>YAML steps, shell commands</td></tr>
+            <tr><td class="td-label">Self-healing</td><td>Yes — Claude retries with different approach</td><td>No — fails on unexpected state</td></tr>
+            <tr><td class="td-label">Build / test / deploy</td><td>⚠️ Possible but not ideal</td><td>✅ Purpose-built</td></tr>
+            <tr><td class="td-label">Code review with context</td><td>✅ Purpose-built</td><td>⚠️ Possible with complex prompts</td></tr>
+            <tr><td class="td-label">Alert triage</td><td>✅ Excels at reasoning about context</td><td>⚠️ Very limited</td></tr>
+            <tr><td class="td-label">Cost model</td><td>Token-based (inference cost)</td><td>Runner minutes (fixed)</td></tr>
+            <tr><td class="td-label">Predictability</td><td>Probabilistic (AI reasoning)</td><td>Deterministic (scripted)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout good">
+        <div class="callout-icon">🏆</div>
+        <div class="callout-body">
+          <strong>Recommended: Use Both Together</strong>
+          <p>Many production teams combine them: <strong>Routines for the thinking work</strong> (code review, bug triage, alert analysis, documentation updates) and <strong>Actions for the mechanical work</strong> (build, test, deploy). A Routine can review a PR; an Action builds and deploys it. They complement each other — neither replaces the other.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- QUICK REFERENCE -->
+    <section id="quick-ref">
+      <div class="section-label">
+        <div class="section-num">16</div>
+        <h2>Quick Reference</h2>
+      </div>
+
+      <h3>Key URLs</h3>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">URLs</span></div>
+        <pre><code>claude.ai/code/routines        <span class="tok-cmt"># Create and manage Routines</span>
+claude.ai/settings/usage       <span class="tok-cmt"># Monitor run consumption</span>
+code.claude.com/docs/en/routines         <span class="tok-cmt"># Official Cloud Routines docs</span>
+code.claude.com/docs/en/scheduled-tasks <span class="tok-cmt"># /loop and session tasks docs</span>
+code.claude.com/docs/en/desktop-scheduled-tasks <span class="tok-cmt"># Desktop tasks docs</span></code></pre>
+      </div>
+
+      <h3>Essential Commands</h3>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">CLI Commands</span></div>
+        <pre><code><span class="tok-cmt"># Create a cloud routine from CLI (schedule triggers only)</span>
+<span class="tok-cmd">/schedule</span> daily 9am briefing that summarizes Slack and email
+
+<span class="tok-cmt"># Loop with fixed interval</span>
+<span class="tok-cmd">/loop 5m</span> check if the deployment finished
+
+<span class="tok-cmt"># Loop with dynamic interval (Claude chooses delay)</span>
+<span class="tok-cmd">/loop</span> check CI and address any review comments
+
+<span class="tok-cmt"># One-time reminder</span>
+remind me at 3pm to push the release branch
+
+<span class="tok-cmt"># Manage tasks</span>
+what scheduled tasks do I have?
+cancel the deploy check job
+
+<span class="tok-cmt"># Check version (need v2.1.72+ for scheduled tasks)</span>
+<span class="tok-flag">claude --version</span>
+
+<span class="tok-cmt"># Disable scheduler entirely</span>
+<span class="tok-flag">export</span> <span class="tok-num">CLAUDE_CODE_DISABLE_CRON=1</span></code></pre>
+      </div>
+
+      <h3>Setup Checklist for a New Cloud Routine</h3>
+      <ol class="step-list">
+        <li><div class="step-content"><strong>Write a self-contained prompt</strong><p>Goal + steps + success criteria + error handling + output format. No references to missing context.</p></div></li>
+        <li><div class="step-content"><strong>Choose the minimum network access</strong><p>Custom allowlist > Trusted > Full. Blocked if no external calls needed.</p></div></li>
+        <li><div class="step-content"><strong>Set environment variables for secrets</strong><p>Never hardcode API keys in the prompt. Use env vars in the Environment config.</p></div></li>
+        <li><div class="step-content"><strong>Add connectors you actually need</strong><p>Only add Slack/Gmail/GitHub if the routine uses them. Unused connectors add surface area.</p></div></li>
+        <li><div class="step-content"><strong>Click Run now and watch the log</strong><p>Fix any network, auth, or formatting issues before activating the schedule.</p></div></li>
+        <li><div class="step-content"><strong>Monitor the first week's runs</strong><p>Edge cases surface early. Adjust the prompt based on what you see in the run logs.</p></div></li>
+      </ol>
+    </section>
+
+  </div><!-- /content -->
+</main>
+</div><!-- /shell -->
+
+<script>
+  // Active sidebar tracking
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const links = document.querySelectorAll('.sidebar nav a');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.sidebar nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

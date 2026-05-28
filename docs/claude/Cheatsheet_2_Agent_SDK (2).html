@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agent SDK Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f1e;
+    --surface: #111827;
+    --surface2: #1a2234;
+    --border: #1e2d45;
+    --accent: #6366f1;
+    --cyan: #22d3ee;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --pink: #ec4899;
+    --lime: #84cc16;
+    --text: #e2e8f0;
+    --muted: #64748b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Space Mono',monospace; font-size:10.5px; line-height:1.55; padding:14px; }
+  .page { max-width:1200px; margin:0 auto; }
+
+  .header {
+    display:flex; justify-content:space-between; align-items:center;
+    background:linear-gradient(135deg, #1a103e, #0a0f1e 40%, #0d1a2e);
+    border:1px solid var(--accent); border-radius:8px;
+    padding:14px 22px; margin-bottom:12px; position:relative; overflow:hidden;
+  }
+  .header::after { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--cyan),var(--pink)); }
+  .header h1 { font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; color:#fff; }
+  .header h1 span { color:var(--accent); }
+  .header .sub { color:var(--muted); font-size:9px; margin-top:2px; }
+  .badges { display:flex; gap:5px; flex-wrap:wrap; justify-content:flex-end; }
+  .badge { padding:2px 8px; border-radius:20px; font-size:9px; font-weight:700; border:1px solid; }
+  .badge.indigo { color:var(--accent); border-color:var(--accent); background:rgba(99,102,241,0.1); }
+  .badge.cyan { color:var(--cyan); border-color:var(--cyan); background:rgba(34,211,238,0.1); }
+
+  .grid { display:grid; gap:10px; margin-bottom:10px; }
+  .g2 { grid-template-columns:1fr 1fr; }
+  .g3 { grid-template-columns:1fr 1fr 1fr; }
+  .g13 { grid-template-columns:1.6fr 1fr; }
+  .g31 { grid-template-columns:1fr 1.6fr; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  .ch { padding:7px 12px; font-family:'Outfit',sans-serif; font-weight:600; font-size:11px; display:flex; align-items:center; gap:6px; border-bottom:1px solid; }
+  .cb { padding:10px 12px; }
+
+  .ic { background:rgba(99,102,241,0.12); color:var(--accent); border-color:rgba(99,102,241,0.25); }
+  .cc { background:rgba(34,211,238,0.12); color:var(--cyan); border-color:rgba(34,211,238,0.25); }
+  .gc { background:rgba(16,185,129,0.12); color:var(--green); border-color:rgba(16,185,129,0.25); }
+  .oc { background:rgba(245,158,11,0.12); color:var(--orange); border-color:rgba(245,158,11,0.25); }
+  .rc { background:rgba(239,68,68,0.12); color:var(--red); border-color:rgba(239,68,68,0.25); }
+  .pc { background:rgba(236,72,153,0.12); color:var(--pink); border-color:rgba(236,72,153,0.25); }
+  .lc { background:rgba(132,204,22,0.12); color:var(--lime); border-color:rgba(132,204,22,0.25); }
+
+  .kv { padding:4px 0; border-bottom:1px solid var(--border); display:flex; gap:8px; }
+  .kv:last-child { border-bottom:none; }
+  .kk { min-width:110px; flex-shrink:0; font-weight:700; font-size:10px; }
+  .vv { font-size:10px; color:var(--text); }
+
+  .ic .kk { color:var(--accent); }
+  .cc .kk { color:var(--cyan); }
+  .gc .kk { color:var(--green); }
+  .oc .kk { color:var(--orange); }
+
+  .flow-wrap { padding:6px 0; }
+  .flow { display:flex; align-items:center; gap:4px; flex-wrap:nowrap; }
+  .fbox { padding:5px 10px; border-radius:4px; font-size:10px; font-weight:700; border:1px solid; white-space:nowrap; }
+  .farrow { color:var(--muted); font-size:16px; line-height:1; }
+  .fcheck { color:var(--green); font-size:11px; }
+
+  .loop-diagram {
+    background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:12px; font-size:10px;
+  }
+  .loop-step { display:flex; align-items:flex-start; gap:8px; padding:5px 0; }
+  .step-num { min-width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:9px; flex-shrink:0; }
+  .step-txt { flex:1; }
+  .step-key { font-weight:700; }
+  .loop-connector { width:2px; height:10px; background:var(--border); margin-left:9px; }
+
+  .tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:9px; font-weight:700; margin:1px; }
+  .t-in { background:rgba(99,102,241,0.2); color:var(--accent); }
+  .t-cy { background:rgba(34,211,238,0.2); color:var(--cyan); }
+  .t-gr { background:rgba(16,185,129,0.2); color:var(--green); }
+  .t-or { background:rgba(245,158,11,0.2); color:var(--orange); }
+  .t-re { background:rgba(239,68,68,0.2); color:var(--red); }
+  .t-pi { background:rgba(236,72,153,0.2); color:var(--pink); }
+
+  .code { background:var(--surface2); border:1px solid var(--border); border-radius:4px; padding:8px 10px; font-size:10px; line-height:1.6; }
+  .cm { color:var(--muted); } .kw { color:var(--accent); } .st { color:var(--orange); } .fn { color:var(--cyan); } .val { color:var(--green); }
+
+  ul.bl { list-style:none; }
+  ul.bl li { padding:3px 0 3px 14px; position:relative; border-bottom:1px solid var(--border); font-size:10px; }
+  ul.bl li:last-child { border-bottom:none; }
+  ul.bl li::before { content:'▸'; position:absolute; left:0; color:var(--muted); }
+  .hi { font-weight:700; }
+
+  .warn { background:rgba(239,68,68,0.08); border-left:3px solid var(--red); padding:5px 8px; border-radius:0 3px 3px 0; font-size:9.5px; color:var(--red); margin:3px 0; }
+  .tip { background:rgba(16,185,129,0.08); border-left:3px solid var(--green); padding:5px 8px; border-radius:0 3px 3px 0; font-size:9.5px; color:var(--green); margin:3px 0; }
+
+  .sl { font-family:'Outfit',sans-serif; font-size:8.5px; font-weight:600; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; padding:4px 0 2px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .mt4 { margin-top:4px; }
+  .mb8 { margin-bottom:8px; }
+  .span2 { grid-column:span 2; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>🤖 <span>AGENT SDK</span></h1>
+      <div class="sub">Agentic Architecture & Orchestration · Anthropic Partner Certification EA</div>
+    </div>
+    <div class="badges">
+      <div class="badge indigo">DOMAIN 1 · 27%</div>
+      <div class="badge cyan">HIGHEST WEIGHT</div>
+    </div>
+  </div>
+
+  <!-- ROW 1: Agentic Loop + Stop Reasons -->
+  <div class="grid g13 mb8">
+
+    <div class="card">
+      <div class="ch ic">🔄 The Agentic Loop — Complete Flow</div>
+      <div class="cb">
+        <div class="loop-diagram">
+          <div class="loop-step">
+            <div class="step-num" style="background:rgba(99,102,241,0.2);color:var(--accent)">1</div>
+            <div class="step-txt"><span class="step-key" style="color:var(--accent)">SEND REQUEST</span> — Send messages + tools to Claude API. Include full conversation history with all prior tool results.</div>
+          </div>
+          <div class="loop-connector"></div>
+          <div class="loop-step">
+            <div class="step-num" style="background:rgba(34,211,238,0.2);color:var(--cyan)">2</div>
+            <div class="step-txt"><span class="step-key" style="color:var(--cyan)">INSPECT stop_reason</span> — Check the response's stop_reason field. This controls loop continuation.</div>
+          </div>
+          <div class="loop-connector"></div>
+          <div class="loop-step">
+            <div class="step-num" style="background:rgba(245,158,11,0.2);color:var(--orange)">3a</div>
+            <div class="step-txt">
+              <span class="step-key" style="color:var(--orange)">stop_reason = "tool_use"</span> — Claude wants a tool. Extract tool name + inputs. Execute the tool. Append result to conversation history. <strong>LOOP CONTINUES →</strong>
+            </div>
+          </div>
+          <div class="loop-connector"></div>
+          <div class="loop-step">
+            <div class="step-num" style="background:rgba(16,185,129,0.2);color:var(--green)">3b</div>
+            <div class="step-txt">
+              <span class="step-key" style="color:var(--green)">stop_reason = "end_turn"</span> — Claude is done. No more tool calls needed. Extract final response text. <strong>LOOP TERMINATES ✓</strong>
+            </div>
+          </div>
+          <div class="loop-connector"></div>
+          <div class="loop-step">
+            <div class="step-num" style="background:rgba(132,204,22,0.2);color:var(--lime)">4</div>
+            <div class="step-txt"><span class="step-key" style="color:var(--lime)">APPEND TO HISTORY</span> — Tool result goes back into conversation so Claude can reason about it in next iteration.</div>
+          </div>
+        </div>
+        <div class="warn mt4">⚠ NEVER check assistant text for "I have completed" as loop termination signal — use stop_reason</div>
+        <div class="warn">⚠ NEVER set arbitrary iteration caps as PRIMARY stopping mechanism — only as safety fallback</div>
+        <div class="tip">✓ Loop continues on tool_use. Loop terminates on end_turn. That's the entire control flow.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch cc">⚡ stop_reason Values</div>
+      <div class="cb">
+        <div class="code" style="margin-bottom:8px">
+<span class="cm">// Check stop_reason in response</span>
+<span class="kw">const</span> { stop_reason } = response;
+
+<span class="kw">if</span> (stop_reason === <span class="st">"tool_use"</span>) {
+  <span class="cm">// Execute tools, append results</span>
+  <span class="cm">// Then call API again</span>
+  <span class="fn">continueLoop</span>(toolResults);
+}
+
+<span class="kw">if</span> (stop_reason === <span class="st">"end_turn"</span>) {
+  <span class="cm">// Claude is done</span>
+  <span class="fn">return</span> response.content;
+}
+        </div>
+        <div class="sl">All possible stop_reason values</div>
+        <div class="kv ic"><span class="kk">tool_use</span><span class="vv">Claude invoked a tool — execute it and loop back</span></div>
+        <div class="kv ic"><span class="kk">end_turn</span><span class="vv">Claude naturally finished — terminate loop</span></div>
+        <div class="kv ic"><span class="kk">max_tokens</span><span class="vv">Hit token limit — handle gracefully (not normal end)</span></div>
+        <div class="kv ic"><span class="kk">stop_sequence</span><span class="vv">Custom stop sequence matched — configure termination</span></div>
+        <div class="sl" style="margin-top:8px">Decision (Model-driven vs Pre-configured)</div>
+        <div class="kv"><span class="kk" style="color:var(--cyan)">Model-driven</span><span class="vv">Claude reasons from context which tool to call next — dynamic, flexible</span></div>
+        <div class="kv"><span class="kk" style="color:var(--orange)">Pre-configured</span><span class="vv">Fixed tool sequences or decision trees hardcoded — predictable, rigid</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Multi-agent + Hooks -->
+  <div class="grid g2 mb8">
+
+    <div class="card">
+      <div class="ch gc">🌐 Multi-Agent Architecture</div>
+      <div class="cb">
+        <div class="two">
+          <div>
+            <div class="sl">Hub-and-Spoke Pattern</div>
+            <div class="code" style="font-size:9.5px">
+Coordinator Agent
+    ├── manages ALL inter-agent comms
+    ├── handles errors centrally
+    ├── routes information
+    │
+    ├── Subagent A (web search)
+    ├── Subagent B (doc analysis)
+    ├── Subagent C (synthesis)
+    └── Subagent D (report gen)
+            </div>
+            <div class="sl" style="margin-top:6px">Coordinator Responsibilities</div>
+            <ul class="bl">
+              <li><span class="hi" style="color:var(--green)">Decompose</span> complex queries into subtasks</li>
+              <li><span class="hi" style="color:var(--green)">Delegate</span> to appropriate subagents</li>
+              <li><span class="hi" style="color:var(--green)">Aggregate</span> results from subagents</li>
+              <li><span class="hi" style="color:var(--green)">Decide</span> which subagents to invoke (dynamic)</li>
+              <li><span class="hi" style="color:var(--green)">Route</span> ALL subagent communication centrally</li>
+            </ul>
+          </div>
+          <div>
+            <div class="sl">Context Isolation Rules</div>
+            <div class="warn">Subagents do NOT automatically inherit coordinator's conversation history</div>
+            <div class="tip">Coordinator must explicitly pass relevant context when invoking subagents</div>
+            <div class="sl" style="margin-top:6px">Isolation Benefits</div>
+            <ul class="bl">
+              <li>Prevents cross-contamination</li>
+              <li>Enables true parallel execution</li>
+              <li>Clean independent reasoning per agent</li>
+              <li>Consistent, predictable behavior</li>
+            </ul>
+            <div class="sl" style="margin-top:6px">Routing Benefit</div>
+            <ul class="bl">
+              <li>Observability: log all communication</li>
+              <li>Consistent error handling</li>
+              <li>Controlled information flow</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sl" style="margin-top:8px">Dynamic vs Full-Pipeline Invocation</div>
+        <div class="kv gc"><span class="kk">Dynamic (correct)</span><span class="vv">Analyze query → invoke only relevant subagents. Simple query? Only search agent. Complex? Full pipeline.</span></div>
+        <div class="kv gc"><span class="kk">Full-pipeline (wrong)</span><span class="vv">Always routing through all subagents regardless of query complexity → wasteful</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch oc">🪝 Lifecycle Hooks</div>
+      <div class="cb">
+        <div class="kv oc"><span class="kk">PreToolUse</span><span class="vv">Intercepts OUTGOING tool calls BEFORE execution. Enforce compliance rules, block forbidden actions.</span></div>
+        <div class="kv oc"><span class="kk">PostToolUse</span><span class="vv">Intercepts tool RESULTS BEFORE model processes them. Normalize data formats, validate responses.</span></div>
+        <div class="two" style="margin-top:8px">
+          <div>
+            <div class="sl">Hooks vs Prompt Instructions</div>
+            <table style="width:100%;border-collapse:collapse;font-size:9.5px">
+              <tr>
+                <th style="padding:4px 6px;background:rgba(245,158,11,0.1);color:var(--orange);text-align:left">🪝 Hooks</th>
+                <th style="padding:4px 6px;background:rgba(99,102,241,0.1);color:var(--accent);text-align:left">📝 Prompts</th>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:4px 6px;color:var(--green)">Deterministic</td>
+                <td style="padding:4px 6px;color:var(--orange)">Probabilistic</td>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:4px 6px">Guaranteed compliance</td>
+                <td style="padding:4px 6px">Best-effort guidance</td>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:4px 6px">Hard business rules</td>
+                <td style="padding:4px 6px">Style/tone preferences</td>
+              </tr>
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:4px 6px">$500 refund block</td>
+                <td style="padding:4px 6px">Be concise</td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <div class="sl">PostToolUse: Data Normalization</div>
+            <div class="code" style="font-size:9px">
+<span class="cm">// Different tools return different formats</span>
+<span class="cm">// Unix timestamp: 1699900000</span>
+<span class="cm">// ISO 8601: "2024-01-15T10:00:00Z"</span>
+<span class="cm">// Status code: 200</span>
+
+<span class="cm">// PostToolUse hook normalizes ALL</span>
+<span class="cm">// to consistent format before model sees it</span>
+<span class="fn">onPostToolUse</span>(result => {
+  result.timestamp = <span class="fn">toISO8601</span>(result.ts);
+  result.status = <span class="fn">toText</span>(result.statusCode);
+  <span class="kw">return</span> result;
+});
+            </div>
+          </div>
+        </div>
+        <div class="sl" style="margin-top:8px">PreToolUse: Compliance Enforcement</div>
+        <div class="code" style="font-size:9.5px">
+<span class="fn">onPreToolUse</span>(<span class="st">"process_refund"</span>, (params) => {
+  <span class="kw">if</span> (params.amount > <span class="val">500</span>) {
+    <span class="cm">// Block and redirect — guaranteed, not probabilistic</span>
+    <span class="kw">return</span> { blocked: <span class="val">true</span>, redirect: <span class="st">"escalate_to_human"</span> };
+  }
+});
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 3: Task Decomposition + Handoffs + Anti-patterns -->
+  <div class="grid g3">
+
+    <div class="card">
+      <div class="ch lc">📐 Task Decomposition</div>
+      <div class="cb">
+        <div class="sl">Task Statement 1.6</div>
+        <div class="kv lc"><span class="kk">Subtopic partition</span><span class="vv">Assign distinct subtopics or source types to each subagent to minimize duplication</span></div>
+        <div class="kv lc"><span class="kk">Iterative refinement</span><span class="vv">Evaluate synthesis → identify gaps → re-delegate with targeted queries → re-synthesize</span></div>
+        <div class="kv lc"><span class="kk">Coverage check</span><span class="vv">Continue loop until coverage is deemed sufficient — not just "one pass"</span></div>
+        <div class="sl" style="margin-top:8px">Decomposition Risk</div>
+        <div class="warn">Overly narrow decomposition → coordinator misses broad coverage of research topics</div>
+        <div class="sl" style="margin-top:8px">Handoff Summaries (Task 1.4)</div>
+        <ul class="bl">
+          <li><span class="hi">Customer ID</span> — who is this?</li>
+          <li><span class="hi">Root cause</span> — what went wrong?</li>
+          <li><span class="hi">Refund amount</span> — what action is pending?</li>
+          <li><span class="hi">Recommended action</span> — what should agent do?</li>
+          <li>Needed when human lacks transcript access</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch pc">🎭 Scenario Coverage</div>
+      <div class="cb">
+        <div class="sl">Scenario 1: Customer Support Agent</div>
+        <div class="kv"><span class="kk" style="color:var(--pink)">MCP tools</span><span class="vv">get_customer, lookup_order, process_refund, escalate_to_human</span></div>
+        <div class="kv"><span class="kk" style="color:var(--pink)">Target</span><span class="vv">80%+ first-contact resolution</span></div>
+        <div class="kv"><span class="kk" style="color:var(--pink)">Escalation</span><span class="vv">Confidence threshold, issue category, policy boundaries</span></div>
+        <div class="sl" style="margin-top:8px">Scenario 3: Multi-Agent Research</div>
+        <div class="kv"><span class="kk" style="color:var(--pink)">Subagents</span><span class="vv">web search, doc analysis, synthesis, report gen</span></div>
+        <div class="kv"><span class="kk" style="color:var(--pink)">Output</span><span class="vv">Comprehensive, cited research reports</span></div>
+        <div class="kv"><span class="kk" style="color:var(--pink)">Domains</span><span class="vv">Agentic Arch, Tool & MCP, Context Management</span></div>
+        <div class="sl" style="margin-top:8px">Task Statements Covered</div>
+        <div><span class="tag t-in">1.1 Agentic loops</span><span class="tag t-cy">1.2 Multi-agent</span></div>
+        <div style="margin-top:3px"><span class="tag t-or">1.3 Subagent config</span><span class="tag t-gr">1.4 Handoffs</span></div>
+        <div style="margin-top:3px"><span class="tag t-pi">1.5 Hooks</span><span class="tag t-re">1.6 Decomposition</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch rc">🚫 Anti-Patterns (Exam Critical)</div>
+      <div class="cb">
+        <div class="warn">Parsing "I have completed" in response text as loop termination — WRONG</div>
+        <div class="warn">Iteration caps as PRIMARY stop mechanism — caps = safety fallback only</div>
+        <div class="warn">Assuming subagents inherit coordinator history — they don't (isolation)</div>
+        <div class="warn">Prompt instructions for guaranteed compliance — use hooks instead</div>
+        <div class="warn">Always routing all queries through full pipeline — select relevant subagents dynamically</div>
+        <div class="warn">Narrow task decomposition on broad topics — leads to gaps in coverage</div>
+        <div class="sl" style="margin-top:6px">Key Exam Facts</div>
+        <ul class="bl">
+          <li><span class="hi">Domain 1 = 27%</span> — highest weight on exam</li>
+          <li><span class="hi">stop_reason</span> = the ONLY correct loop terminator</li>
+          <li><span class="hi">Hooks = deterministic;</span> prompts = probabilistic</li>
+          <li><span class="hi">Context isolation</span> = subagents start clean</li>
+          <li><span class="hi">Central routing</span> = observability + consistent errors</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

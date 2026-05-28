@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude CLI Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --surface2: #1c2128; --border: #21262d;
+    --green: #3fb950; --blue: #58a6ff; --orange: #d29922; --purple: #bc8cff;
+    --red: #f85149; --cyan: #39c5cf; --pink: #ff79c6; --yellow: #e3b341;
+    --text: #c9d1d9; --muted: #6e7681; --white: #f0f6fc;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Inconsolata',monospace; font-size:11px; line-height:1.5; padding:14px; }
+  .page { max-width:1200px; margin:0 auto; }
+
+  .header {
+    background: linear-gradient(90deg, #0d2035 0%, #0d1117 50%, #120d20 100%);
+    border:1px solid var(--blue); border-radius:8px;
+    padding:12px 20px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .header::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green)); }
+  .header h1 { font-family:'Inter',sans-serif; font-size:22px; font-weight:800; color:var(--white); }
+  .header h1 .cli { color:var(--green); font-family:'Inconsolata',monospace; font-weight:900; font-size:26px; }
+  .header .sub { color:var(--muted); font-size:9px; }
+  .badges { display:flex; gap:5px; justify-content:flex-end; flex-wrap:wrap; }
+  .badge { padding:2px 7px; border-radius:12px; font-size:9px; font-weight:700; border:1px solid; }
+  .b-g { color:var(--green); border-color:var(--green); background:rgba(63,185,80,0.1); }
+  .b-b { color:var(--blue); border-color:var(--blue); background:rgba(88,166,255,0.1); }
+  .b-o { color:var(--orange); border-color:var(--orange); background:rgba(210,153,34,0.1); }
+
+  .grid { display:grid; gap:9px; margin-bottom:9px; }
+  .g2 { grid-template-columns:1fr 1fr; }
+  .g3 { grid-template-columns:1fr 1fr 1fr; }
+  .g4 { grid-template-columns:1fr 1fr 1fr 1fr; }
+  .g21 { grid-template-columns:2fr 1fr; }
+  .g12 { grid-template-columns:1fr 2fr; }
+  .g211 { grid-template-columns:2fr 1fr 1fr; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  .ch { padding:6px 11px; display:flex; align-items:center; gap:5px; border-bottom:1px solid var(--border); font-family:'Inter',sans-serif; font-weight:600; font-size:11px; }
+  .cb { padding:9px 11px; }
+
+  .bg .ch { background:rgba(63,185,80,0.1); color:var(--green); border-bottom-color:rgba(63,185,80,0.2); }
+  .bb .ch { background:rgba(88,166,255,0.1); color:var(--blue); border-bottom-color:rgba(88,166,255,0.2); }
+  .bo .ch { background:rgba(210,153,34,0.1); color:var(--orange); border-bottom-color:rgba(210,153,34,0.2); }
+  .bp .ch { background:rgba(188,140,255,0.1); color:var(--purple); border-bottom-color:rgba(188,140,255,0.2); }
+  .br .ch { background:rgba(248,81,73,0.1); color:var(--red); border-bottom-color:rgba(248,81,73,0.2); }
+  .bc .ch { background:rgba(57,197,207,0.1); color:var(--cyan); border-bottom-color:rgba(57,197,207,0.2); }
+  .by .ch { background:rgba(227,179,65,0.1); color:var(--yellow); border-bottom-color:rgba(227,179,65,0.2); }
+  .bpk .ch { background:rgba(255,121,198,0.1); color:var(--pink); border-bottom-color:rgba(255,121,198,0.2); }
+
+  /* Command table */
+  .cmd-table { width:100%; border-collapse:collapse; }
+  .cmd-table tr { border-bottom:1px solid var(--border); }
+  .cmd-table tr:last-child { border-bottom:none; }
+  .cmd-table td { padding:4px 6px; vertical-align:top; font-size:10.5px; }
+  .cmd { color:var(--green); font-weight:700; white-space:nowrap; }
+  .desc { color:var(--text); }
+  .sub-desc { color:var(--muted); font-size:9.5px; margin-top:1px; }
+
+  /* Flag table */
+  .flag { color:var(--cyan); font-weight:700; font-size:10.5px; }
+  .flag-val { color:var(--orange); font-size:10px; }
+
+  /* Slash commands */
+  .slash { color:var(--pink); font-weight:700; }
+
+  /* Code block */
+  .code { background:var(--surface2); border:1px solid var(--border); border-radius:4px; padding:8px 10px; font-size:10px; line-height:1.65; margin:5px 0; }
+  .cm { color:var(--muted); } .kw { color:var(--purple); } .st { color:var(--orange); }
+  .fn { color:var(--cyan); } .val { color:var(--green); } .fl { color:var(--blue); }
+
+  .warn { background:rgba(248,81,73,0.08); border-left:3px solid var(--red); padding:4px 8px; border-radius:0 3px 3px 0; font-size:9.5px; color:var(--red); margin:3px 0; }
+  .tip { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:4px 8px; border-radius:0 3px 3px 0; font-size:9.5px; color:var(--green); margin:3px 0; }
+  .note { background:rgba(88,166,255,0.08); border-left:3px solid var(--blue); padding:4px 8px; border-radius:0 3px 3px 0; font-size:9.5px; color:var(--blue); margin:3px 0; }
+
+  .sl { font-family:'Inter',sans-serif; font-size:8px; font-weight:600; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; padding:4px 0 2px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .tag { display:inline-block; padding:1px 5px; border-radius:3px; font-size:9px; font-weight:700; margin:1px; }
+  .t-g { background:rgba(63,185,80,0.2); color:var(--green); }
+  .t-b { background:rgba(88,166,255,0.2); color:var(--blue); }
+  .t-o { background:rgba(210,153,34,0.2); color:var(--orange); }
+  .t-p { background:rgba(188,140,255,0.2); color:var(--purple); }
+  .t-r { background:rgba(248,81,73,0.2); color:var(--red); }
+  .t-c { background:rgba(57,197,207,0.2); color:var(--cyan); }
+  .t-pk { background:rgba(255,121,198,0.2); color:var(--pink); }
+
+  .kb { display:inline-block; background:var(--surface2); border:1px solid var(--border); border-radius:3px; padding:1px 5px; font-size:9.5px; color:var(--yellow); margin:1px; }
+  .mb4 { margin-bottom:4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1><span class="cli">$ claude</span> CLI Reference</h1>
+      <div class="sub">Complete command-line interface reference · Commands, Flags, Slash Commands, Subagents, Scripting, Permissions</div>
+    </div>
+    <div class="badges">
+      <div class="badge b-g">INSTALL: npm i -g @anthropic-ai/claude-code</div>
+      <div class="badge b-b">NEEDS: Claude Pro/Max/Team/Enterprise</div>
+      <div class="badge b-o">macOS · Linux · Windows (WSL/Git Bash)</div>
+    </div>
+  </div>
+
+  <!-- ROW 1: Core Commands + Session Commands -->
+  <div class="grid g2">
+    <div class="card bg">
+      <div class="ch">⌨️ Core CLI Commands</div>
+      <div class="cb">
+        <table class="cmd-table">
+          <tr><td class="cmd">claude</td><td class="desc">Start interactive REPL session<div class="sub-desc">Clean context, ready for new task</div></td></tr>
+          <tr><td class="cmd">claude "query"</td><td class="desc">Start session with initial prompt<div class="sub-desc">e.g. claude "summarize this project"</div></td></tr>
+          <tr><td class="cmd">claude -p "query"</td><td class="desc"><strong>Print mode</strong> — execute and exit (non-interactive SDK)<div class="sub-desc">Returns output to stdout, exits. Ideal for scripting.</div></td></tr>
+          <tr><td class="cmd">claude -c</td><td class="desc">Continue most recent conversation<div class="sub-desc">Resumes last session with full context intact</div></td></tr>
+          <tr><td class="cmd">claude -c -p "q"</td><td class="desc">Continue recent session in print mode<div class="sub-desc">e.g. claude -c -p "Check for type errors"</div></td></tr>
+          <tr><td class="cmd">claude -r "id"</td><td class="desc">Resume specific session by ID<div class="sub-desc">e.g. claude -r "abc123" "Finish this PR"</div></td></tr>
+          <tr><td class="cmd">claude --resume id</td><td class="desc">Resume session with query<div class="sub-desc">--continue flag also works for session continuation</div></td></tr>
+          <tr><td class="cmd">claude update</td><td class="desc">Update Claude Code to latest version</td></tr>
+          <tr><td class="cmd">claude --version</td><td class="desc">Show installed version number</td></tr>
+          <tr><td class="cmd">claude --help</td><td class="desc">Show all available options</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">Piping & Scripting</div>
+        <div class="code">
+<span class="cm"># Pipe content to Claude</span>
+cat error.log | <span class="fn">claude</span> -p <span class="st">"find the root cause"</span>
+git log --oneline | <span class="fn">claude</span> -p <span class="st">"summarize these commits"</span>
+ls -la | <span class="fn">claude</span> -p <span class="st">"explain this directory structure"</span>
+
+<span class="cm"># Script with JSON output</span>
+<span class="fn">claude</span> -p <span class="st">"analyze codebase"</span> <span class="fl">--output-format json</span> > analysis.json
+<span class="fn">claude</span> -p <span class="st">"generate tests"</span> <span class="fl">--max-turns 3</span> > tests.txt
+
+<span class="cm"># CI/CD GitHub Actions</span>
+<span class="fn">claude</span> -p <span class="st">"fix any linting errors and suggest commit msg"</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bb">
+      <div class="ch">🏳️ CLI Flags Reference</div>
+      <div class="cb">
+        <div class="sl">Output & Format</div>
+        <table class="cmd-table">
+          <tr><td class="flag">--output-format</td><td class="desc"><span class="flag-val">text|json|stream-json</span> — json useful for scripting, parse responses programmatically</td></tr>
+          <tr><td class="flag">--verbose</td><td class="desc">Show full tool call details and reasoning steps</td></tr>
+          <tr><td class="flag">--max-turns N</td><td class="desc">Limit conversation turns (use in -p mode for bounded runs)</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">System Prompt Control</div>
+        <table class="cmd-table">
+          <tr><td class="flag">--system-prompt</td><td class="desc">Replace entire system prompt (blank slate, removes Claude Code defaults)</td></tr>
+          <tr><td class="flag">--system-prompt-file</td><td class="desc">Load custom system prompt from file (version-controlled templates)</td></tr>
+          <tr><td class="flag">--append-system-prompt</td><td class="desc"><strong style="color:var(--green)">RECOMMENDED</strong> — Add to Claude's defaults, keep built-in capabilities</td></tr>
+          <tr><td class="flag">--append-system-prompt-file</td><td class="desc">Append from file while keeping defaults. Works with append flags.</td></tr>
+        </table>
+        <div class="note">--append-system-prompt is recommended for most use cases — preserves built-in Claude Code capabilities</div>
+        <div class="warn">--system-prompt and --system-prompt-file are MUTUALLY EXCLUSIVE</div>
+        <div class="sl" style="margin-top:6px">Directory & Context</div>
+        <table class="cmd-table">
+          <tr><td class="flag">--add-dir path</td><td class="desc">Add additional directory to Claude's context. Can specify multiple: --add-dir ../frontend ../backend</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">Model Selection</div>
+        <table class="cmd-table">
+          <tr><td class="flag">--model</td><td class="desc"><span class="flag-val">claude-opus-4-6 | claude-sonnet-4-6 | claude-haiku-4-5</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2: Slash Commands + Permissions + Keyboard -->
+  <div class="grid g3" style="margin-top:9px">
+
+    <div class="card bpk">
+      <div class="ch">/ Slash Commands (In-Session)</div>
+      <div class="cb">
+        <div class="sl">Session Management</div>
+        <table class="cmd-table">
+          <tr><td class="slash">/clear</td><td class="desc">Reset conversation history and context window</td></tr>
+          <tr><td class="slash">/compact</td><td class="desc">Summarize conversation — optionally: /compact "keep auth implementation"</td></tr>
+          <tr><td class="slash">/resume</td><td class="desc">Return to a previous conversation</td></tr>
+          <tr><td class="slash">/exit</td><td class="desc">Exit the REPL cleanly</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">Configuration & Info</div>
+        <table class="cmd-table">
+          <tr><td class="slash">/config</td><td class="desc">Open configuration panel — settings, preferences</td></tr>
+          <tr><td class="slash">/doctor</td><td class="desc">Check Claude Code installation health</td></tr>
+          <tr><td class="slash">/ide</td><td class="desc">Manage IDE integrations (VS Code, JetBrains)</td></tr>
+          <tr><td class="slash">/mcp</td><td class="desc">Access MCP server management and status</td></tr>
+          <tr><td class="slash">/cos</td><td class="desc">Show cost and duration of current session</td></tr>
+          <tr><td class="slash">/insights</td><td class="desc">Compile usage history HTML report — try monthly for patterns</td></tr>
+          <tr><td class="slash">/help</td><td class="desc">Show all available slash commands including custom ones</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">Project & Plugins</div>
+        <table class="cmd-table">
+          <tr><td class="slash">/init</td><td class="desc">Generate CLAUDE.md in project root — Claude analyzes and writes it</td></tr>
+          <tr><td class="slash">/plugins</td><td class="desc">Browse, install, manage plugins from marketplaces</td></tr>
+          <tr><td class="slash">/plugins install</td><td class="desc">Install a plugin: /plugins install typescript-lsp</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">In-Prompt Shortcuts</div>
+        <table class="cmd-table">
+          <tr><td class="flag" style="color:var(--yellow)">@file.ts</td><td class="desc">Reference specific file: "Review @src/auth.ts"</td></tr>
+          <tr><td class="flag" style="color:var(--yellow)">!command</td><td class="desc">Run shell command: !npm test · !git status</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card bp">
+      <div class="ch">🔐 Permissions & Tool Control</div>
+      <div class="cb">
+        <div class="sl">Allow / Disallow Tools</div>
+        <div class="code">
+<span class="cm"># Allow specific safe tools only</span>
+<span class="fn">claude</span> <span class="fl">--allowedTools</span> <span class="st">"Bash(git log:*)"</span> <span class="st">"Bash(git diff:*)"</span> <span class="st">"Write"</span> <span class="st">"Read"</span>
+
+<span class="cm"># Disallow dangerous commands</span>
+<span class="fn">claude</span> <span class="fl">--disallowedTools</span> <span class="st">"Bash(rm:*)"</span> <span class="st">"Bash(sudo:*)"</span>
+
+<span class="cm"># Skip permission prompts (DANGEROUS - use in CI only)</span>
+<span class="fn">claude</span> <span class="fl">--dangerously-skip-permissions</span>
+
+<span class="cm"># Prompt for specific tool permission</span>
+<span class="fn">claude</span> -p <span class="fl">--permission-prompt-tool</span> mcp_auth_tool <span class="st">"query"</span>
+        </div>
+        <div class="sl" style="margin-top:6px">Permission Modes (Desktop)</div>
+        <table class="cmd-table">
+          <tr><td class="flag" style="color:var(--purple)">Auto-approve</td><td class="desc">Claude proceeds with low-risk actions automatically</td></tr>
+          <tr><td class="flag" style="color:var(--purple)">Ask first</td><td class="desc">Claude asks before each tool use — maximum oversight</td></tr>
+          <tr><td class="flag" style="color:var(--purple)">Plan mode</td><td class="desc">Claude shows plan first, awaits approval before any execution</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">Environment Config</div>
+        <div class="code">
+<span class="cm"># Extended thinking control</span>
+<span class="kw">export</span> MAX_THINKING_TOKENS=<span class="val">8000</span>   <span class="cm"># set budget</span>
+<span class="kw">export</span> MAX_THINKING_TOKENS=<span class="val">0</span>      <span class="cm"># disable entirely</span>
+
+<span class="cm"># Session environments</span>
+<span class="cm"># Local: runs on your machine, inherits shell env</span>
+<span class="cm"># Remote: runs on Anthropic cloud, continues when app closed</span>
+<span class="cm"># SSH: runs on remote machine you manage</span>
+        </div>
+        <div class="warn">--dangerously-skip-permissions: CI/CD use only — never in dev with sensitive files</div>
+        <div class="tip">Deletion protection: Claude always asks before permanently deleting files</div>
+      </div>
+    </div>
+
+    <div class="card bc">
+      <div class="ch">⌨️ Keyboard Shortcuts + Advanced</div>
+      <div class="cb">
+        <div class="sl">Keyboard Controls</div>
+        <table class="cmd-table">
+          <tr><td><span class="kb">Ctrl+C</span></td><td class="desc">Cancel current operation / interrupt Claude</td></tr>
+          <tr><td><span class="kb">Ctrl+D</span></td><td class="desc">Exit Claude Code REPL</td></tr>
+          <tr><td><span class="kb">Tab</span></td><td class="desc">Autocomplete commands and file paths</td></tr>
+          <tr><td><span class="kb">↑ ↓</span></td><td class="desc">Navigate command history</td></tr>
+          <tr><td><span class="kb">Escape</span></td><td class="desc">Interrupt plan — provide feedback to revise approach</td></tr>
+        </table>
+        <div class="sl" style="margin-top:6px">Subagents via --agents flag</div>
+        <div class="code" style="font-size:9px">
+<span class="fn">claude</span> <span class="fl">--agents</span> <span class="st">'{
+  "code-reviewer": {
+    "description": "Expert code reviewer. Use after code changes.",
+    "prompt": "Senior reviewer: focus on security, quality, best practices.",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "model": "sonnet"
+  },
+  "debugger": {
+    "description": "Debugging specialist for errors and test failures.",
+    "prompt": "Expert debugger. Analyze errors, find root causes.",
+    "model": "haiku"
+  }
+}'</span>
+        </div>
+        <div class="sl" style="margin-top:6px">Git Worktrees (Parallel Sessions)</div>
+        <div class="code" style="font-size:10px">
+<span class="cm"># True parallel sessions on separate branches</span>
+git worktree add ../feature-a feature-branch-a
+git worktree add ../feature-b feature-branch-b
+<span class="cm"># Run separate claude sessions in each</span>
+        </div>
+        <div class="sl" style="margin-top:6px">Context Window Tips</div>
+        <table class="cmd-table">
+          <tr><td class="flag" style="color:var(--cyan)">/compact</td><td class="desc">Trigger early summarization to free space</td></tr>
+          <tr><td class="flag" style="color:var(--cyan)">Remote mode</td><td class="desc">For long-running tasks — continues if app closes</td></tr>
+          <tr><td class="flag" style="color:var(--cyan)">@file refs</td><td class="desc">Reference files specifically vs "find auth file" — more efficient</td></tr>
+          <tr><td class="flag" style="color:var(--cyan)">--max-turns 5</td><td class="desc">Limit turns for focused scripted queries</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 3: Subagents + Skills + Complex Examples -->
+  <div class="grid g2" style="margin-top:9px">
+
+    <div class="card bo">
+      <div class="ch">🧩 Skills System (Custom Commands)</div>
+      <div class="cb">
+        <div class="two">
+          <div>
+            <div class="sl">Skills vs Slash Commands</div>
+            <div class="note" style="margin-bottom:6px">Custom slash commands (.claude/commands/) merged into skills. Both work, skills recommended for new work.</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Old way (still works)</span>
+.claude/commands/review.md  <span class="cm">→ /review</span>
+
+<span class="cm"># New way (recommended)</span>
+.claude/skills/review/SKILL.md  <span class="cm">→ /review</span>
+
+<span class="cm"># Skills add: supporting files, invocation</span>
+<span class="cm"># control, subagent execution (fork context)</span>
+            </div>
+            <div class="sl" style="margin-top:6px">Skill YAML Front Matter</div>
+            <div class="code" style="font-size:9.5px">
+---
+<span class="kw">name</span>: deep-research
+<span class="kw">description</span>: Research topic thoroughly
+<span class="kw">context</span>: fork     <span class="cm"># isolated context</span>
+<span class="kw">agent</span>: Explore   <span class="cm"># built-in or custom agent</span>
+---
+Research <span class="val">$ARGUMENTS</span> thoroughly:
+1. Find files using Glob and Grep
+2. Read and analyze the code
+3. Summarize findings with file refs
+            </div>
+          </div>
+          <div>
+            <div class="sl">Subagent from Skill</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># .claude/agents/reviewer.md</span>
+---
+<span class="kw">name</span>: reviewer
+<span class="kw">description</span>: Use for code reviews
+<span class="kw">model</span>: sonnet
+<span class="kw">color</span>: orange
+---
+You are an expert code reviewer.
+Focus on security, performance,
+and maintainability.
+            </div>
+            <div class="sl" style="margin-top:6px">Built-in Agents</div>
+            <table class="cmd-table">
+              <tr><td class="flag" style="color:var(--orange)">Explore</td><td class="desc">Read-only codebase exploration before implementation</td></tr>
+              <tr><td class="flag" style="color:var(--orange)">Plan</td><td class="desc">Creates implementation plan (saved to Plan.md)</td></tr>
+              <tr><td class="flag" style="color:var(--orange)">general</td><td class="desc">Default agent — full capabilities</td></tr>
+            </table>
+            <div class="sl" style="margin-top:6px">ultrathink</div>
+            <div class="tip">Add "ultrathink" to skill content to enable extended thinking mode in that skill</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card by">
+      <div class="ch">🚀 Power Patterns & Common Workflows</div>
+      <div class="cb">
+        <div class="two">
+          <div>
+            <div class="sl">TDD Workflow</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Test-Driven Development cycle</span>
+<span class="fn">claude</span> <span class="st">"Write a failing test for user auth feature"</span>
+<span class="cm">→ !npm test  (see it fail)</span>
+<span class="fn">claude</span> <span class="st">"Now write code to make that test pass"</span>
+<span class="cm">→ !npm test  (verify pass)</span>
+            </div>
+            <div class="sl" style="margin-top:6px">Plan → Execute Pattern</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Always plan first for complex tasks</span>
+<span class="fn">claude</span> <span class="st">"Plan the refactoring of auth module.
+Save plan to Plan.md. Do not execute yet."</span>
+<span class="cm">→ Review Plan.md</span>
+<span class="cm">→ Hit Escape to revise if needed</span>
+<span class="fn">claude</span> <span class="st">"Execute the plan in Plan.md"</span>
+            </div>
+            <div class="sl" style="margin-top:6px">Long Context Strategy</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># When context runs out mid-project:</span>
+<span class="fn">/compact</span> <span class="st">"preserve: auth impl + DB schema decisions"</span>
+<span class="cm"># Or break into chunks:</span>
+<span class="cm"># "Part 1 done. Update Plan.md. /clear"</span>
+<span class="cm"># "Reference Plan.md, continue from Part 2"</span>
+            </div>
+          </div>
+          <div>
+            <div class="sl">Codebase Analysis First</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Explore before writing (Explore agent)</span>
+<span class="fn">claude</span> <span class="st">"Analyze this codebase structure
+and suggest improvements @./src/"</span>
+            </div>
+            <div class="sl" style="margin-top:6px">Background Bash (Non-blocking)</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Long commands don't block conversation</span>
+<span class="cm"># Claude runs them in background</span>
+!npm install &amp;
+<span class="cm"># Continue talking while it runs</span>
+            </div>
+            <div class="sl" style="margin-top:6px">Complex Flag Combo</div>
+            <div class="code" style="font-size:9.5px">
+<span class="fn">claude</span> \
+  <span class="fl">--model</span> claude-opus-4-6 \
+  <span class="fl">--add-dir</span> ../apps ../lib \
+  <span class="fl">--allowedTools</span> <span class="st">"Bash(git:*)"</span> <span class="st">"Write"</span> <span class="st">"Read"</span> \
+  <span class="fl">--verbose</span> \
+  <span class="fl">--output-format</span> json
+            </div>
+            <div class="sl" style="margin-top:6px">Notification</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Terminal bell when Claude finishes long task</span>
+<span class="fn">claude</span> config set --global preferredNotifChannel terminal_bell
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
