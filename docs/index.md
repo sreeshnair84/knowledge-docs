@@ -4,7 +4,8 @@ title: Home
 
 # Knowledge Docs
 
-A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud platforms, and emerging technologies.
+!!! abstract "About this site"
+    A practitioner-focused knowledge base covering **Agentic AI**, **Enterprise Architecture**, cloud platforms, and emerging technologies. Each section contains research reports, architecture guides, certification materials, and real-world case studies — all browsable in-browser or downloadable.
 
 ---
 
@@ -14,7 +15,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Agent evaluation, RAG, multi-tenant platforms, A2A, coding agents
+    Agent evaluation frameworks, RAG deep dives, multi-tenant platforms, A2A protocol, transformer architectures, coding agents 2026
 
     [:octicons-arrow-right-24: Explore](agentic-ai/)
 
@@ -22,7 +23,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Kong AI Gateway, Entra ID integration, multi-cloud gateway patterns
+    Kong AI Gateway setup, Entra ID / Azure AD integration, multi-cloud and multi-tenant gateway patterns
 
     [:octicons-arrow-right-24: Explore](ai-gateway/)
 
@@ -30,7 +31,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Bedrock AgentCore, Strands, memory architecture, code interpreter
+    Bedrock AgentCore, Strands Agents, memory architecture deep dives, code interpreter, advanced patterns
 
     [:octicons-arrow-right-24: Explore](awsagentcore/)
 
@@ -38,7 +39,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Certification modules, prompt engineering, agent SDK, cheatsheets
+    Certification modules (7), prompt engineering, agent SDK, MCP, Claude Code, cheatsheets & questionnaires
 
     [:octicons-arrow-right-24: Explore](claude/)
 
@@ -46,7 +47,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Model Context Protocol — architecture, security & ecosystem (2026)
+    Model Context Protocol — architecture, security, capabilities & ecosystem deep research (2026)
 
     [:octicons-arrow-right-24: Explore](mcp/)
 
@@ -54,7 +55,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Enterprise setup, adoption playbooks, zero-to-hero guide
+    Enterprise setup, adoption playbooks, zero-to-hero guide, big wins research, Microsoft APM guide
 
     [:octicons-arrow-right-24: Explore](github-copilot/)
 
@@ -62,7 +63,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    AI-driven development lifecycle, agile + agentic AI, CICD
+    AI-driven development lifecycle, agile + agentic AI integration, CICD pipelines, artifact templates
 
     [:octicons-arrow-right-24: Explore](aidlc/)
 
@@ -70,7 +71,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    TOGAF, APEX, interview guides, EA playbooks & AI strategy
+    TOGAF 10, APEX, interview master guides, EA playbooks, AI strategy, real-life transcripts, PPTX decks
 
     [:octicons-arrow-right-24: Explore](enterprise_architect/)
 
@@ -78,7 +79,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Agentic AI governance framework for enterprise environments
+    Agentic AI governance frameworks and standards for enterprise environments
 
     [:octicons-arrow-right-24: Explore](governance/)
 
@@ -86,7 +87,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    EA interview Q&A, HITL/HOTL/HOOL, soft skills & scenarios
+    EA interview Q&A banks, HITL/HOTL/HOOL prep, soft skills, quality & resilience, hard scenarios
 
     [:octicons-arrow-right-24: Explore](interviews/)
 
@@ -94,7 +95,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    EU banking AI, TOGAF case studies, regulated industry patterns
+    EU banking AI architecture, TOGAF case studies (NexaBank, GlobalCorp), regulated industry patterns
 
     [:octicons-arrow-right-24: Explore](usecases/)
 
@@ -102,7 +103,7 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Quantum AI landscape, IBM certification guides
+    Quantum AI landscape reports, IBM Quantum certification guides (Associate & Developer)
 
     [:octicons-arrow-right-24: Explore](Quantum/)
 
@@ -110,8 +111,16 @@ A curated knowledge base covering Agentic AI, Enterprise Architecture, cloud pla
 
     ---
 
-    Voice mastery, storytelling, and communication for tech leaders
+    Voice mastery, storytelling, executive communication, and leadership skills for technical leaders
 
     [:octicons-arrow-right-24: Explore](non-tech/)
+
+-   :material-information-outline:{ .lg .middle } **About**
+
+    ---
+
+    How this site is built, how to add content, and the contributing guide
+
+    [:octicons-arrow-right-24: Read](about.md)
 
 </div>

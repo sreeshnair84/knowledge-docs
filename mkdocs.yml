@@ -96,7 +96,7 @@ nav:
     - Kong + Entra ID: ai-gateway/kong-entra-id-integration.md
   - AWS AgentCore:
     - Overview: awsagentcore/index.md
-    - Code Interpreter Architecture: "awsagentcore/bedrock-agentcore-code-interpreter-architecture (1).md"
+    - Code Interpreter Architecture: awsagentcore/bedrock-agentcore-code-interpreter-architecture.md
   - Claude:
     - Overview: claude/index.md
   - MCP:
@@ -125,3 +125,4 @@ nav:
     - Overview: Quantum/index.md
   - Non-Tech:
     - Overview: non-tech/index.md
+  - About: about.md
