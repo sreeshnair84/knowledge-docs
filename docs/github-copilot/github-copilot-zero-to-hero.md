@@ -1,3 +1,9 @@
+---
+title: GitHub Copilot Zero to Hero
+parent: GitHub Copilot
+nav_order: 1
+---
+
 # GitHub Copilot: Zero to Hero Guide
 ### The Complete Playbook — Features, Agents, Automated Pipelines & Gated Deployments
 

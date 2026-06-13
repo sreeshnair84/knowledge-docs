@@ -1,3 +1,9 @@
+---
+title: Agentic AI Landing Zone Architecture
+parent: Agentic AI
+nav_order: 2
+---
+
 # AGENTIC AI LANDING ZONE
 ## TOGAF Architecture Deliverable
 ### Enterprise Architecture Office

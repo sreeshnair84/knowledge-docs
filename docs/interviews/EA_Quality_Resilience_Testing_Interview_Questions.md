@@ -1,3 +1,9 @@
+---
+title: EA Quality, Resilience & Testing Interview Questions
+parent: Interviews
+nav_order: 4
+---
+
 # Enterprise Architect Interview — Quality, Resilience & Testing Scenario Question Bank
 ## Stress Testing · Availability · Data Integrity · NFRs · AI Model Evaluation · Production Drift · Test Automation
 

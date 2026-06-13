@@ -1,3 +1,9 @@
+---
+title: Kong AI Gateway Auth Guide
+parent: AI Gateway
+nav_order: 2
+---
+
 # Kong AI Gateway — Authentication Deep Dive
 ## Auth Proxy Offloading, Credential Hiding & Private Auth
 

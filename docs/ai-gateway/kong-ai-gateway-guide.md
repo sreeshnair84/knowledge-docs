@@ -1,3 +1,9 @@
+---
+title: Kong AI Gateway Guide
+parent: AI Gateway
+nav_order: 1
+---
+
 # Kong AI Gateway — Complete End-to-End Guide
 
 ---

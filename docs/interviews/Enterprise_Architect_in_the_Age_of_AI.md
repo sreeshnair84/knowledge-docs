@@ -1,3 +1,9 @@
+---
+title: Enterprise Architect in the Age of AI
+parent: Interviews
+nav_order: 1
+---
+
 # Enterprise Architect in the Age of AI Agents, Copilots & Workflow Automation
 ### A Comprehensive Role Definition for the Modern Era
 

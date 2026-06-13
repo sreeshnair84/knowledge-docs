@@ -1,3 +1,9 @@
+---
+title: Ruflo Agentic AI Guide
+parent: Agentic AI
+nav_order: 4
+---
+
 # Ruflo & Multi-Agent Orchestration Frameworks
 ## The Complete End-to-End Guide: Architecture, Evals, Governance, and Big Wins
 

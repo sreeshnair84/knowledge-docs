@@ -1,3 +1,9 @@
+---
+title: EA Senior Interview Questions
+parent: Interviews
+nav_order: 2
+---
+
 # Enterprise Architect Interview — Scenario Question Bank
 ## For Candidates with 20+ Years of Experience
 

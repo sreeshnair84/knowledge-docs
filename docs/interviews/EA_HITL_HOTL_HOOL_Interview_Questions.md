@@ -1,3 +1,9 @@
+---
+title: EA HITL / HOTL / HOOL Interview Questions
+parent: Interviews
+nav_order: 3
+---
+
 # Enterprise Architect Interview — Human Oversight Patterns
 ## HITL · HOTL · HOOL: Human-in-the-Loop, Human-on-the-Loop, Human-out-of-the-Loop
 

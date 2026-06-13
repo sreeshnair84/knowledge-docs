@@ -1,3 +1,9 @@
+---
+title: AI Coding Agents 2026
+parent: Agentic AI
+nav_order: 3
+---
+
 # AI Coding Agent Assistants: The Complete 2026 Landscape
 ## Caveman, Ruflo, and Every Major Tool — Deep Research Guide
 

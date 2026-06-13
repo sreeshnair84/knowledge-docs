@@ -1,3 +1,9 @@
+---
+title: MCP Deep Research 2026
+parent: MCP
+nav_order: 1
+---
+
 # MCP Deep Research Report: Architecture, Security, Capabilities & Ecosystem (2026)
 
 > **Critical Research** · April 2026 · Covers spec versions through 2025-11-25 and the 2026 roadmap

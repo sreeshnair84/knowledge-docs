@@ -1,3 +1,9 @@
+---
+title: EU Banking AI Evaluation & Compliance Guide
+parent: Use Cases
+nav_order: 1
+---
+
 # 🏦 EU Banking AI Agent Evaluation Framework
 ## Responsible AI · PII · GDPR · DORA · EU AI Act · EBA · RAI
 ### Extension to the Core Evaluation Framework — EU Banking Edition

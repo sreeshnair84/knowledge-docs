@@ -1,3 +1,9 @@
+---
+title: EA Soft Skills and Behaviors
+parent: Interviews
+nav_order: 5
+---
+
 # The Enterprise Architect's Inner Game
 ## Soft Skills, Behaviors & Human Mastery in the Age of AI
 

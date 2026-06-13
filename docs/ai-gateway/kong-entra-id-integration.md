@@ -1,3 +1,9 @@
+---
+title: Kong + Entra ID Integration
+parent: AI Gateway
+nav_order: 3
+---
+
 # Kong AI Gateway — Microsoft Entra ID Integration
 ## Complete End-to-End Guide
 

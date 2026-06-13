@@ -1,3 +1,9 @@
+---
+title: Bedrock AgentCore Code Interpreter Architecture
+parent: AWS AgentCore
+nav_order: 1
+---
+
 # Amazon Bedrock AgentCore Runtime + Code Interpreter
 # Enterprise-Grade Architecture for EU Banking
 ### Production-Ready Design | AWS AI Architect & Principal Engineer Reference

@@ -1,3 +1,9 @@
+---
+title: AI Agent Evaluation Framework
+parent: Agentic AI
+nav_order: 1
+---
+
 # 🧠 Complete AI Agent Evaluation Framework
 ## AWS Bedrock AgentCore · Strands · Arize Phoenix
 ### From Ideation → Build → Evaluate → Monitor → Retire
