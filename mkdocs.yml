@@ -1,0 +1,118 @@
+site_name: Knowledge Docs
+site_description: AI, Agentic AI & Enterprise Architecture Knowledge Base
+site_url: https://sreeshnair84.github.io/knowledge-docs/
+repo_url: https://github.com/sreeshnair84/knowledge-docs
+repo_name: sreeshnair84/knowledge-docs
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - toc.follow
+    - toc.integrate
+
+plugins:
+  - search:
+      lang: en
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+not_in_nav: |
+  **/*.html
+  **/*.pdf
+  **/*.docx
+  **/*.pptx
+  **/*.xlsx
+  **/*.jsx
+  **/*.excalidraw
+  **/*.txt
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/sreeshnair84/knowledge-docs
+
+nav:
+  - Home: index.md
+  - Agentic AI:
+    - Overview: agentic-ai/index.md
+    - AI Agent Evaluation Framework: agentic-ai/AI_Agent_Evaluation_Framework_Guide.md
+    - Landing Zone Architecture: agentic-ai/agentic_ai_landing_zone_architecture.md
+    - AI Coding Agents 2026: agentic-ai/ai-coding-agents-2026.md
+    - Ruflo Agentic AI Guide: agentic-ai/ruflo-agentic-ai-guide.md
+  - AI Gateway:
+    - Overview: ai-gateway/index.md
+    - Kong AI Gateway Guide: ai-gateway/kong-ai-gateway-guide.md
+    - Kong Auth Guide: ai-gateway/kong-ai-gateway-auth-guide.md
+    - Kong + Entra ID: ai-gateway/kong-entra-id-integration.md
+  - AWS AgentCore:
+    - Overview: awsagentcore/index.md
+    - Code Interpreter Architecture: "awsagentcore/bedrock-agentcore-code-interpreter-architecture (1).md"
+  - Claude:
+    - Overview: claude/index.md
+  - MCP:
+    - Overview: mcp/index.md
+    - MCP Deep Research 2026: mcp/MCP_Deep_Research_2026.md
+  - GitHub Copilot:
+    - Overview: github-copilot/index.md
+    - Zero to Hero: github-copilot/github-copilot-zero-to-hero.md
+  - AIDLC:
+    - Overview: aidlc/index.md
+  - Enterprise Architect:
+    - Overview: enterprise_architect/index.md
+  - Governance:
+    - Overview: governance/index.md
+  - Interviews:
+    - Overview: interviews/index.md
+    - EA in the Age of AI: interviews/Enterprise_Architect_in_the_Age_of_AI.md
+    - Senior Interview Questions: interviews/EA_Senior_Interview_Questions.md
+    - HITL/HOTL/HOOL Questions: interviews/EA_HITL_HOTL_HOOL_Interview_Questions.md
+    - Quality & Resilience Questions: interviews/EA_Quality_Resilience_Testing_Interview_Questions.md
+    - Soft Skills & Behaviors: interviews/EA_Soft_Skills_and_Behaviors.md
+  - Use Cases:
+    - Overview: usecases/index.md
+    - EU Banking AI Guide: usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
+  - Quantum:
+    - Overview: Quantum/index.md
+  - Non-Tech:
+    - Overview: non-tech/index.md
