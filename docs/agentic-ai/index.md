@@ -142,12 +142,6 @@ Research, architecture guides, and playbooks for building and evaluating AI agen
 </details>
 
 <details>
-<summary>Agentic Platform Architecture</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/agentic_platform_architecture.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="agentic_platform_architecture.docx" download>Download DOCX ↓</a></p>
-</details>
-
-<details>
 <summary>Agentic Platform Best Practices</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/agentic_platform_bestpractices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="agentic_platform_bestpractices.docx" download>Download DOCX ↓</a></p>
