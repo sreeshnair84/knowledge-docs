@@ -15,7 +15,7 @@ title: Home
 
     ---
 
-    Agent evaluation frameworks, RAG deep dives, multi-tenant platforms, A2A protocol, transformer architectures, coding agents 2026
+    Agent evaluation frameworks, RAG deep dives, AKES, knowledge architectures, multi-tenant platforms, A2A, transformer architectures, coding agents 2026
 
     [:octicons-arrow-right-24: Explore](agentic-ai/)
 
@@ -55,7 +55,7 @@ title: Home
 
     ---
 
-    Enterprise setup, adoption playbooks, zero-to-hero guide, big wins research, Microsoft APM guide
+    Enterprise setup, zero-to-hero guide, platform engineering handbook, big wins research, Microsoft APM guide
 
     [:octicons-arrow-right-24: Explore](github-copilot/)
 
@@ -98,6 +98,14 @@ title: Home
     EU banking AI architecture, TOGAF case studies (NexaBank, GlobalCorp), regulated industry patterns
 
     [:octicons-arrow-right-24: Explore](usecases/)
+
+-   :material-database:{ .lg .middle } **Data Architecture**
+
+    ---
+
+    AI-native data platform evolution, data lineage systems, enterprise data governance for AI
+
+    [:octicons-arrow-right-24: Explore](data/)
 
 -   :material-atom:{ .lg .middle } **Quantum**
 

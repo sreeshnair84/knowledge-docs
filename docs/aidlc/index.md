@@ -12,8 +12,8 @@ Frameworks and artifacts for integrating AI into enterprise development lifecycl
 
 <details>
 <summary>AIDLC Agile &amp; CICD AI Transformation 2026</summary>
-<iframe src="AIDLC_Agile_CICD_AI_Transformation_2026%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AIDLC_Agile_CICD_AI_Transformation_2026%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="AIDLC_Agile_CICD_AI_Transformation_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AIDLC_Agile_CICD_AI_Transformation_2026.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>

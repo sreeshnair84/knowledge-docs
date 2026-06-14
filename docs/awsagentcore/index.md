@@ -10,7 +10,7 @@ Deep-dive guides for AWS Bedrock AgentCore and Strands Agents — memory archite
 
 ## Markdown Guides
 
-- [Bedrock AgentCore Code Interpreter Architecture](bedrock-agentcore-code-interpreter-architecture (1).md)
+- [Bedrock AgentCore Code Interpreter Architecture](bedrock-agentcore-code-interpreter-architecture.md)
 
 ---
 
@@ -42,8 +42,8 @@ Deep-dive guides for AWS Bedrock AgentCore and Strands Agents — memory archite
 
 <details>
 <summary>AWS Strands AgentCore Builder Journey Kit</summary>
-<iframe src="AWS_Strands_AgentCore_Builder_Journey_Kit%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AWS_Strands_AgentCore_Builder_Journey_Kit%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="AWS_Strands_AgentCore_Builder_Journey_Kit.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AWS_Strands_AgentCore_Builder_Journey_Kit.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>

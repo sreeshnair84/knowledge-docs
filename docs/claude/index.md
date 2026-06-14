@@ -58,6 +58,12 @@ Certification study guides, prompt engineering, agent SDK, and cheatsheets for t
 <p><a href="claude_agents_best_practices.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
+<details>
+<summary>Claude Agents Best Practices v2</summary>
+<iframe src="claude_agents_best_practices_v2.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="claude_agents_best_practices_v2.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
 ---
 
 ## Cheatsheets
@@ -70,8 +76,8 @@ Certification study guides, prompt engineering, agent SDK, and cheatsheets for t
 
 <details>
 <summary>Cheatsheet 2 — Agent SDK</summary>
-<iframe src="Cheatsheet_2_Agent_SDK%20(2).html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_2_Agent_SDK%20(2).html" target="_blank">Open in new tab ↗</a></p>
+<iframe src="Cheatsheet_2_Agent_SDK.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
+<p><a href="Cheatsheet_2_Agent_SDK.html" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
@@ -160,4 +166,10 @@ Certification study guides, prompt engineering, agent SDK, and cheatsheets for t
 <summary>CCAF Advanced Supplement</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/claude/CCAF_Advanced_Supplement.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="CCAF_Advanced_Supplement.docx" download>Download DOCX ↓</a></p>
+</details>
+
+<details>
+<summary>Claude Best Practices</summary>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/claude/claude-best-practices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<p><a href="claude-best-practices.docx" download>Download DOCX ↓</a></p>
 </details>

@@ -32,15 +32,51 @@ Research, architecture guides, and playbooks for building and evaluating AI agen
 </details>
 
 <details>
+<summary>AI Assistant Architecture Research Report</summary>
+<iframe src="AI_Assistant_Architecture_Research_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AI_Assistant_Architecture_Research_Report.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>AI Memory Agent Innovations Research Report</summary>
+<iframe src="AI_Memory_Agent_Innovations_Research_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AI_Memory_Agent_Innovations_Research_Report.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>Autonomous Knowledge Engineering System (AKES)</summary>
+<iframe src="Autonomous_Knowledge_Engineering_System.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Autonomous_Knowledge_Engineering_System.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>AKES Addendum — Document Update &amp; Versioning</summary>
+<iframe src="AKES_Addendum_Document_Update_and_Versioning.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AKES_Addendum_Document_Update_and_Versioning.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>AWS Native Standards-First Agentic Architecture</summary>
+<iframe src="AWS_Native_Standards_First_Agentic_Architecture.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AWS_Native_Standards_First_Agentic_Architecture.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>Enterprise Knowledge Architectures Report</summary>
+<iframe src="Enterprise_Knowledge_Architectures_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Enterprise_Knowledge_Architectures_Report.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
 <summary>AI Cost Implementation Guide 2026</summary>
 <iframe src="AI_Cost_Implementation_Guide_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="AI_Cost_Implementation_Guide_2026.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
-<summary>AI Deep Future Outlook 2026-2035</summary>
-<iframe src="AI_Deep_Future_Outlook_2026_2035%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Deep_Future_Outlook_2026_2035%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>AI Deep Future Outlook 2026–2035</summary>
+<iframe src="AI_Deep_Future_Outlook_2026_2035.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AI_Deep_Future_Outlook_2026_2035.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
@@ -50,9 +86,9 @@ Research, architecture guides, and playbooks for building and evaluating AI agen
 </details>
 
 <details>
-<summary>AI Protocols &amp; Standards Service Industry Guide 2026</summary>
-<iframe src="AI_Protocols_Standards_Service_Industry_Guide_2026%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Protocols_Standards_Service_Industry_Guide_2026%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>AI Protocols &amp; Standards — Service Industry Guide 2026</summary>
+<iframe src="AI_Protocols_Standards_Service_Industry_Guide_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AI_Protocols_Standards_Service_Industry_Guide_2026.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
@@ -91,8 +127,8 @@ Research, architecture guides, and playbooks for building and evaluating AI agen
 
 <details>
 <summary>A2A Deep Research</summary>
-<iframe src="a2a_deep_research%20(1).html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="a2a_deep_research%20(1).html" target="_blank">Open in new tab ↗</a></p>
+<iframe src="a2a_deep_research.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
+<p><a href="a2a_deep_research.html" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
@@ -131,8 +167,8 @@ Research, architecture guides, and playbooks for building and evaluating AI agen
 
 <details>
 <summary>Agent Testing, Monitoring &amp; Evaluation</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/Agent_Testing_Monitoring_Evaluation%20(1).docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="Agent_Testing_Monitoring_Evaluation%20(1).docx" download>Download DOCX ↓</a></p>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/Agent_Testing_Monitoring_Evaluation.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<p><a href="Agent_Testing_Monitoring_Evaluation.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>

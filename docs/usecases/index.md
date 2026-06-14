@@ -36,14 +36,14 @@ Real-world AI architecture case studies with a focus on EU banking and regulated
 
 <details>
 <summary>TOGAF 10 APEX AI Platform — NexaBank</summary>
-<iframe src="TOGAF10_APEX_AI_Platform_NexaBank%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_AI_Platform_NexaBank%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="TOGAF10_APEX_AI_Platform_NexaBank.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="TOGAF10_APEX_AI_Platform_NexaBank.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
 <summary>TOGAF 10 APEX Cloud Native — GlobalCorp</summary>
-<iframe src="TOGAF10_APEX_CloudNative_GlobalCorp%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_CloudNative_GlobalCorp%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 ---
@@ -58,8 +58,8 @@ Real-world AI architecture case studies with a focus on EU banking and regulated
 
 <details>
 <summary>EU Bank Sequence Diagrams</summary>
-<iframe src="eu-bank-sequence-diagrams%20(1).html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="eu-bank-sequence-diagrams%20(1).html" target="_blank">Open in new tab ↗</a></p>
+<iframe src="eu-bank-sequence-diagrams.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
+<p><a href="eu-bank-sequence-diagrams.html" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 ---

@@ -18,14 +18,14 @@ IBM Quantum certification guides and landscape research on quantum AI startups, 
 
 <details>
 <summary>IBM Associate Quantum Certification Guide</summary>
-<iframe src="IBM_Associate_Quantum_CertGuide%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="IBM_Associate_Quantum_CertGuide%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="IBM_Associate_Quantum_CertGuide.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="IBM_Associate_Quantum_CertGuide.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
 <summary>IBM Developer Quantum Certification Guide</summary>
-<iframe src="IBM_Developer_Quantum_CertGuide%20(1).pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="IBM_Developer_Quantum_CertGuide%20(1).pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="IBM_Developer_Quantum_CertGuide.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="IBM_Developer_Quantum_CertGuide.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>

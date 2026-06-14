@@ -105,6 +105,7 @@ nav:
   - GitHub Copilot:
     - Overview: github-copilot/index.md
     - Zero to Hero: github-copilot/github-copilot-zero-to-hero.md
+    - Git & GitHub Platform Engineering Handbook: github-copilot/git-github-platform-engineering-handbook.md
   - AIDLC:
     - Overview: aidlc/index.md
   - Enterprise Architect:
@@ -121,6 +122,8 @@ nav:
   - Use Cases:
     - Overview: usecases/index.md
     - EU Banking AI Guide: usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
+  - Data Architecture:
+    - Overview: data/index.md
   - Quantum:
     - Overview: Quantum/index.md
   - Non-Tech:

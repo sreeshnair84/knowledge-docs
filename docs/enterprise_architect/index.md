@@ -29,7 +29,7 @@ Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX reference
 </details>
 
 <details>
-<summary>EA Interview Vol3 — CTO &amp; AI</summary>
+<summary>EA Interview Vol 3 — CTO &amp; AI</summary>
 <iframe src="EA_Interview_Vol3_CTO_AI.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="EA_Interview_Vol3_CTO_AI.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
@@ -69,6 +69,12 @@ Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX reference
 </details>
 
 <details>
+<summary>Enterprise AI Architect Communication Guide</summary>
+<iframe src="Enterprise_AI_Architect_Communication_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Enterprise_AI_Architect_Communication_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
 <summary>Enterprise AI Transformation Blueprint — CTO Guide 2026</summary>
 <iframe src="Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026.pdf" target="_blank">Open in new tab ↗</a></p>
@@ -96,6 +102,18 @@ Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX reference
 <summary>DSA Principal Architect Reference</summary>
 <iframe src="DSA_Principal_Architect_Reference.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="DSA_Principal_Architect_Reference.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>Enterprise Data Architect — AI &amp; GenAI</summary>
+<iframe src="Enterprise_Data_Architect_AI_GenAI.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Enterprise_Data_Architect_AI_GenAI.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>Enterprise Manager — AI &amp; GenAI</summary>
+<iframe src="Enterprise_Manager_AI_GenAI.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Enterprise_Manager_AI_GenAI.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 ---
@@ -149,6 +167,12 @@ Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX reference
 </details>
 
 <details>
+<summary>EA Best Practices &amp; Jargon</summary>
+<iframe src="EA_BestPractices_Jargon.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="EA_BestPractices_Jargon.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
 <summary>EA Strategy Playbook</summary>
 <iframe src="EA_Strategy_Playbook.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="EA_Strategy_Playbook.pdf" target="_blank">Open in new tab ↗</a></p>
@@ -158,6 +182,34 @@ Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX reference
 <summary>EA OKR &amp; KPI Research</summary>
 <iframe src="EA_OKR_KPI_Research.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="EA_OKR_KPI_Research.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>EA Lifecycle Checklist</summary>
+<iframe src="EA_Lifecycle_Checklist.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="EA_Lifecycle_Checklist.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+---
+
+## Real-Life Transcripts
+
+<details>
+<summary>EA AI-First Transformation Transcript</summary>
+<iframe src="EA_AI_First_Transformation_Transcript.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="EA_AI_First_Transformation_Transcript.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>EA Real Life Transcript</summary>
+<iframe src="EA_Real_Life_Transcript.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="EA_Real_Life_Transcript.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>RFI AI Platform Transcript</summary>
+<iframe src="RFI_AI_Platform_Transcript.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="RFI_AI_Platform_Transcript.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 ---

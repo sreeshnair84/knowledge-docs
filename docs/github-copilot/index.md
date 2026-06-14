@@ -4,13 +4,14 @@ title: GitHub Copilot
 
 # GitHub Copilot
 
-Enterprise setup, adoption playbooks, and hands-on guides for GitHub Copilot.
+Enterprise setup, adoption playbooks, and hands-on guides for GitHub Copilot and the GitHub platform.
 
 ---
 
 ## Markdown Guides
 
 - [GitHub Copilot — Zero to Hero](github-copilot-zero-to-hero.md)
+- [Git & GitHub Platform Engineering Handbook](git-github-platform-engineering-handbook.md)
 
 ---
 
