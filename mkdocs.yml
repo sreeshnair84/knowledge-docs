@@ -26,17 +26,17 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
     - navigation.indexes
     - navigation.instant
+    - navigation.instant.progress
     - navigation.top
+    - navigation.path
     - search.suggest
     - search.highlight
     - search.focus
     - content.code.copy
-    - content.tabs.link
-    - toc.follow
-    - toc.integrate
+    - content.code.select
+    - header.autohide
 
 plugins:
   - search:
@@ -87,17 +87,17 @@ extra:
 nav:
   - Home: index.md
   - AI Foundations: ai-foundations/index.md
-  - Agentic AI Systems:
+  - Agentic AI:
     - Overview: agentic-systems/index.md
     - Platform: agentic-systems/platform/index.md
     - Memory: agentic-systems/memory/index.md
     - Agent Skills: agentic-systems/skill/index.md
     - Configuration: agentic-systems/config/index.md
-  - Security & Governance:
+  - Security:
     - Overview: ai-security-governance/index.md
-    - DeepMind Control Roadmap: ai-security-governance/deep-mind/index.md
-    - Policy & Authorization: ai-security-governance/policy/index.md
     - AI Security: ai-security-governance/security/index.md
+    - DeepMind Control: ai-security-governance/deep-mind/index.md
+    - Policy & Authorization: ai-security-governance/policy/index.md
   - Coding Tools:
     - Overview: coding-tools/index.md
     - Claude:
@@ -136,7 +136,7 @@ nav:
       - Kong + Entra ID: cloud-platforms/ai-gateway/kong-entra-id-integration.md
     - Kubernetes: cloud-platforms/kubernetes/index.md
     - Infrastructure as Code: cloud-platforms/iac/index.md
-  - Knowledge Engineering:
+  - Knowledge:
     - Overview: knowledge-engineering/index.md
     - Data Architecture: knowledge-engineering/data/index.md
     - Knowledge & RAG: knowledge-engineering/knowledge/index.md
@@ -155,7 +155,7 @@ nav:
       - Overview: ai-development/testing/index.md
       - AI Agent Evaluation Framework: ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md
   - AI Economics: ai-economics/index.md
-  - AI Use Cases: ai-usecases/index.md
+  - Use Cases: ai-usecases/index.md
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md
