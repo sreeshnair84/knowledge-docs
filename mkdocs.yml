@@ -42,6 +42,9 @@ plugins:
   - search:
       lang: en
 
+hooks:
+  - hooks/docs_gen.py
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -83,98 +86,76 @@ extra:
 
 nav:
   - Home: index.md
-  - Agentic AI:
-    - Overview: agentic-ai/index.md
-    - Basics:
-      - Overview: agentic-ai/basics/index.md
-      - Landing Zone Architecture: agentic-ai/basics/agentic_ai_landing_zone_architecture.md
-    - Auth & Identity:
-      - Overview: agentic-ai/auth/index.md
-    - Azure:
-      - Overview: agentic-ai/azure/index.md
-    - Cost:
-      - Overview: agentic-ai/cost/index.md
-    - Knowledge & RAG:
-      - Overview: agentic-ai/knowledge/index.md
-    - Memory:
-      - Overview: agentic-ai/memory/index.md
-    - Platform:
-      - Overview: agentic-ai/platform/index.md
-    - Security:
-      - Overview: agentic-ai/security/index.md
-    - Configuration:
-      - Overview: agentic-ai/config/index.md
-    - Protocol:
-      - Overview: agentic-ai/protocol/index.md
-    - Skills:
-      - Overview: agentic-ai/skill/index.md
-    - Testing & Evaluation:
-      - Overview: agentic-ai/testing/index.md
-      - AI Agent Evaluation Framework: agentic-ai/testing/AI_Agent_Evaluation_Framework_Guide.md
-    - Coding Agents:
-      - Overview: agentic-ai/coding-agents/index.md
-      - Claude:
-        - Overview: agentic-ai/coding-agents/claude/index.md
-        - Models 2026: agentic-ai/coding-agents/claude/claude-models-2026.md
-        - API Mastery: agentic-ai/coding-agents/claude/claude-api-mastery.md
-        - Claude Code CLI: agentic-ai/coding-agents/claude/claude-code-complete-2026.md
-        - Agent SDK Production: agentic-ai/coding-agents/claude/claude-agent-sdk-production.md
-        - Prompt Engineering: agentic-ai/coding-agents/claude/prompt-engineering-claude-4.md
-        - Enterprise Deployment: agentic-ai/coding-agents/claude/claude-enterprise-2026.md
-        - Constitutional AI & Safety: agentic-ai/coding-agents/claude/constitutional-ai-safety-2026.md
-        - MCP Deep Guide: agentic-ai/coding-agents/claude/mcp-deep-guide.md
-        - CCAF Exam Prep: agentic-ai/coding-agents/claude/ccaf-exam-prep-complete.md
-        - Ruflo Agentic AI Guide: agentic-ai/coding-agents/claude/ruflo-agentic-ai-guide.md
-      - GitHub Copilot:
-        - Overview: agentic-ai/coding-agents/github-copilot/index.md
-        - Zero to Hero: agentic-ai/coding-agents/github-copilot/github-copilot-zero-to-hero.md
-        - Git & GitHub Platform Engineering: agentic-ai/coding-agents/github-copilot/git-github-platform-engineering-handbook.md
-    - AI Gateway:
-      - Overview: agentic-ai/ai-gateway/index.md
-      - Kong AI Gateway Guide: agentic-ai/ai-gateway/kong-ai-gateway-guide.md
-      - Kong Auth Guide: agentic-ai/ai-gateway/kong-ai-gateway-auth-guide.md
-      - Kong + Entra ID: agentic-ai/ai-gateway/kong-entra-id-integration.md
-    - AWS AgentCore:
-      - Overview: agentic-ai/awsagentcore/index.md
-      - Code Interpreter Architecture: agentic-ai/awsagentcore/bedrock-agentcore-code-interpreter-architecture.md
+  - AI Foundations: ai-foundations/index.md
+  - Agentic AI Systems:
+    - Overview: agentic-systems/index.md
+    - Platform: agentic-systems/platform/index.md
+    - Memory: agentic-systems/memory/index.md
+    - Agent Skills: agentic-systems/skill/index.md
+    - Configuration: agentic-systems/config/index.md
+  - Security & Governance:
+    - Overview: ai-security-governance/index.md
+    - DeepMind Control Roadmap: ai-security-governance/deep-mind/index.md
+    - Policy & Authorization: ai-security-governance/policy/index.md
+  - Coding Tools:
+    - Overview: coding-tools/index.md
+    - Claude:
+      - Overview: coding-tools/claude/index.md
+      - Models 2026: coding-tools/claude/claude-models-2026.md
+      - API Mastery: coding-tools/claude/claude-api-mastery.md
+      - Claude Code CLI: coding-tools/claude/claude-code-complete-2026.md
+      - Agent SDK Production: coding-tools/claude/claude-agent-sdk-production.md
+      - Prompt Engineering: coding-tools/claude/prompt-engineering-claude-4.md
+      - Enterprise Deployment: coding-tools/claude/claude-enterprise-2026.md
+      - Constitutional AI & Safety: coding-tools/claude/constitutional-ai-safety-2026.md
+      - MCP Deep Guide: coding-tools/claude/mcp-deep-guide.md
+      - CCAF Exam Prep: coding-tools/claude/ccaf-exam-prep-complete.md
+      - Ruflo Agentic AI Guide: coding-tools/claude/ruflo-agentic-ai-guide.md
+    - GitHub Copilot:
+      - Overview: coding-tools/github-copilot/index.md
+      - Zero to Hero: coding-tools/github-copilot/github-copilot-zero-to-hero.md
+      - Git & GitHub Platform Engineering: coding-tools/github-copilot/git-github-platform-engineering-handbook.md
+  - AI Protocols:
+    - Overview: ai-protocols/index.md
+    - Auth & Identity: ai-protocols/auth/index.md
     - MCP:
-      - Overview: agentic-ai/mcp/index.md
-      - MCP Deep Research 2026: agentic-ai/mcp/MCP_Deep_Research_2026.md
-    - AIDLC:
-      - Overview: agentic-ai/aidlc/index.md
-    - Governance:
-      - Overview: agentic-ai/governance/index.md
-    - Use Cases:
-      - Overview: agentic-ai/usecases/index.md
-      - EU Banking AI Guide: agentic-ai/usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
-  - Enterprise Architect:
-    - Overview: enterprise_architect/index.md
-    - Strategy:
-      - Overview: enterprise_architect/strategy/index.md
-    - Framework:
-      - Overview: enterprise_architect/framework/index.md
-    - Process:
-      - Overview: enterprise_architect/process/index.md
-    - Specialization:
-      - Overview: enterprise_architect/specialization/index.md
-      - Data Architecture: enterprise_architect/specialization/data/index.md
-    - Best Practices:
-      - Overview: enterprise_architect/best-practices/index.md
-    - Architectural Review Board:
-      - Overview: enterprise_architect/architectural-review-board/index.md
-    - Interview Prep:
-      - Overview: enterprise_architect/interview/index.md
-  - Kubernetes:
-    - Overview: kubernetes/index.md
-  - Interviews:
-    - Overview: interviews/index.md
-    - EA in the Age of AI: interviews/Enterprise_Architect_in_the_Age_of_AI.md
-    - Senior Interview Questions: interviews/EA_Senior_Interview_Questions.md
-    - HITL/HOTL/HOOL Questions: interviews/EA_HITL_HOTL_HOOL_Interview_Questions.md
-    - Quality & Resilience Questions: interviews/EA_Quality_Resilience_Testing_Interview_Questions.md
-    - Soft Skills & Behaviors: interviews/EA_Soft_Skills_and_Behaviors.md
-  - Quantum:
-    - Overview: quantum/index.md
-  - Non-Tech:
-    - Overview: non-tech/index.md
+      - Overview: ai-protocols/mcp/index.md
+      - MCP Deep Research 2026: ai-protocols/mcp/MCP_Deep_Research_2026.md
+  - Cloud Platforms:
+    - Overview: cloud-platforms/index.md
+    - AWS AgentCore:
+      - Overview: cloud-platforms/aws/index.md
+      - Code Interpreter Architecture: cloud-platforms/aws/bedrock-agentcore-code-interpreter-architecture.md
+    - Azure: cloud-platforms/azure/index.md
+    - AI Gateway:
+      - Overview: cloud-platforms/ai-gateway/index.md
+      - Kong AI Gateway Guide: cloud-platforms/ai-gateway/kong-ai-gateway-guide.md
+      - Kong Auth Guide: cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md
+      - Kong + Entra ID: cloud-platforms/ai-gateway/kong-entra-id-integration.md
+    - Kubernetes: cloud-platforms/kubernetes/index.md
+    - Infrastructure as Code: cloud-platforms/iac/index.md
+  - Knowledge Engineering:
+    - Overview: knowledge-engineering/index.md
+    - Data Architecture: knowledge-engineering/data/index.md
+  - Enterprise Architecture:
+    - Overview: enterprise-architecture/index.md
+    - Strategy: enterprise-architecture/strategy/index.md
+    - Frameworks: enterprise-architecture/framework/index.md
+    - Processes: enterprise-architecture/process/index.md
+    - Best Practices: enterprise-architecture/best-practices/index.md
+    - ARB: enterprise-architecture/arb/index.md
+    - Specialization: enterprise-architecture/specialization/index.md
+  - AI Development:
+    - Overview: ai-development/index.md
+    - AIDLC: ai-development/aidlc/index.md
+    - Testing & Evaluation:
+      - Overview: ai-development/testing/index.md
+      - AI Agent Evaluation Framework: ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md
+  - AI Economics: ai-economics/index.md
+  - AI Use Cases: ai-usecases/index.md
+  - Interview Prep:
+    - Overview: interview-prep/index.md
+    - EA Interviews: interview-prep/ea/index.md
+  - Soft Skills: soft-skills/index.md
+  - Quantum AI: quantum/index.md
   - About: about.md
