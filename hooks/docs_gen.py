@@ -53,13 +53,29 @@ def on_page_markdown(markdown, page, config, files, **kwargs):
         markdown = re.sub(re.escape(MARKER_START) + r'.*?' + re.escape(MARKER_END),
                           '', markdown, flags=re.DOTALL).strip()
 
-    # Collect files (non-recursive; subdirs have their own index.md)
+    # Collect files from current directory
     assets = sorted(
         f for f in page_dir.iterdir()
         if f.is_file() and f.name not in SKIP
         and f.suffix.lower() in (VIEWABLE | OFFICE | DOWNLOAD)
     )
+
+    # If no files in root, check if subdirectories have files
     if not assets:
+        subdirs = sorted(
+            d for d in page_dir.iterdir()
+            if d.is_dir() and not d.name.startswith('.')
+        )
+
+        # If only subdirectories exist with index.md, show helpful message
+        if subdirs and any((d / 'index.md').exists() for d in subdirs):
+            subsections = [d.name for d in subdirs if (d / 'index.md').exists()]
+            if subsections:
+                msg = '\n\n'.join(
+                    f'- **{s.replace("-", " ").title()}**: [`{s}/index.md`]({s}/)'
+                    for s in subsections
+                )
+                return f'{markdown}\n\n{MARKER_START}\n\n## Sections\n\n{msg}\n\n{MARKER_END}'
         return markdown
 
     blocks = ''.join(_block(f, rel) for f in assets)
