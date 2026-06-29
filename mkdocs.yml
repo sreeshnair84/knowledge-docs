@@ -24,17 +24,15 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
+    - navigation.instant
+    - navigation.tracking
     - navigation.sections
     - navigation.expand
-    - navigation.instant
     - search.suggest
     - search.highlight
     - search.share
-    - search.focus
     - content.code.copy
     - toc.follow
-    - toc.sticky
-    - toc.integrate
   font:
     text: Roboto
     code: Roboto Mono

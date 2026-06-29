@@ -1,31 +1,38 @@
-/* FORCE SIDEBAR VISIBILITY */
+/* Sidebar always visible */
 .md-sidebar--primary {
   display: block !important;
-  position: sticky !important;
   visibility: visible !important;
-  width: 260px !important;
-  z-index: 5 !important;
+  opacity: 1 !important;
+  width: auto !important;
+  position: relative !important;
 }
 
-.md-sidebar--primary.md-sidebar--hidden {
-  display: block !important;
-  visibility: visible !important;
+/* Hide secondary sidebar (TOC) on mobile, show on desktop */
+.md-sidebar--secondary {
+  display: none;
 }
 
-.md-nav {
-  display: block !important;
-  visibility: visible !important;
+@media (min-width: 1220px) {
+  .md-sidebar--secondary {
+    display: block;
+  }
 }
 
+/* Navigation list should expand fully */
 .md-nav__list {
   display: block !important;
-  visibility: visible !important;
   max-height: none !important;
 }
 
+/* Fix scrolling in sidebar */
+.md-sidebar__scrollwrap {
+  height: auto !important;
+  max-height: calc(100vh - 100px) !important;
+}
+
+/* Ensure items are visible */
 .md-nav__item {
   display: block !important;
-  visibility: visible !important;
 }
 
 /* Responsive iframe viewer */
