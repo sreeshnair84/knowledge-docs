@@ -1,50 +1,48 @@
-/* KEEP SIDEBAR ALWAYS OPEN */
+/* HIDE SIDEBAR - USE DROPDOWN NAVIGATION ONLY */
 .md-sidebar--primary {
+  display: none !important;
+}
+
+.md-sidebar {
+  display: none !important;
+}
+
+/* Adjust main content to full width */
+.md-content {
+  margin-left: 0 !important;
+}
+
+.md-main {
+  margin-left: 0 !important;
+}
+
+/* Submenu styling in header */
+.md-tabs__list {
+  flex-wrap: wrap;
+}
+
+.md-nav--secondary {
   display: block !important;
-  transform: translateX(0) !important;
   position: relative !important;
 }
 
-.md-sidebar--primary.md-sidebar--hidden {
-  display: block !important;
-  transform: translateX(0) !important;
-}
-
-/* Prevent sidebar collapse animation */
-.md-sidebar__inner {
+.md-nav--secondary .md-nav__title {
   display: block !important;
 }
 
-/* Drawer should not hide */
-.md-nav--primary {
+.md-nav--secondary .md-nav__list {
+  display: block !important;
+  padding-left: 1rem !important;
+}
+
+/* Dropdown menu items */
+.md-nav__item {
   display: block !important;
 }
 
-/* Clean sidebar styling */
-.md-sidebar__scrollwrap {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.md-nav {
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-
-.md-nav__link,
-.md-nav__link--active {
-  padding: 0.5rem 0.8rem;
-}
-
-.md-nav__list {
-  margin: 0;
-  padding-left: 0;
-}
-
-/* Full menu visibility */
-.md-nav--primary .md-nav__item--active > .md-nav__list {
+.md-nav__link {
+  padding: 0.5rem 0.8rem !important;
   display: block !important;
-  max-height: none !important;
 }
 
 /* Responsive iframe viewer */
