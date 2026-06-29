@@ -1,3 +1,25 @@
+/* KEEP SIDEBAR ALWAYS OPEN */
+.md-sidebar--primary {
+  display: block !important;
+  transform: translateX(0) !important;
+  position: relative !important;
+}
+
+.md-sidebar--primary.md-sidebar--hidden {
+  display: block !important;
+  transform: translateX(0) !important;
+}
+
+/* Prevent sidebar collapse animation */
+.md-sidebar__inner {
+  display: block !important;
+}
+
+/* Drawer should not hide */
+.md-nav--primary {
+  display: block !important;
+}
+
 /* Clean sidebar styling */
 .md-sidebar__scrollwrap {
   overflow-y: auto;
@@ -17,6 +39,12 @@
 .md-nav__list {
   margin: 0;
   padding-left: 0;
+}
+
+/* Full menu visibility */
+.md-nav--primary .md-nav__item--active > .md-nav__list {
+  display: block !important;
+  max-height: none !important;
 }
 
 /* Responsive iframe viewer */
