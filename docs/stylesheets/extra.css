@@ -35,32 +35,47 @@ details iframe {
 
 /* Improved sidebar and navigation scrolling */
 .md-sidebar {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 }
 
 .md-sidebar--secondary {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 }
 
-/* Better sidebar scrollbar appearance */
-.md-sidebar::-webkit-scrollbar {
-  width: 8px;
+.md-sidebar__scrollwrap {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: thin;
 }
 
-.md-sidebar::-webkit-scrollbar-track {
+/* Better sidebar scrollbar appearance (Webkit browsers) */
+.md-sidebar::-webkit-scrollbar,
+.md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 10px;
+}
+
+.md-sidebar::-webkit-scrollbar-track,
+.md-sidebar__scrollwrap::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.md-sidebar::-webkit-scrollbar-thumb {
-  background: var(--md-scrollbar-color, #ccc);
-  border-radius: 4px;
+.md-sidebar::-webkit-scrollbar-thumb,
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: var(--md-default-fg-color--lighter);
+  border-radius: 5px;
+  min-height: 40px;
 }
 
-.md-sidebar::-webkit-scrollbar-thumb:hover {
+.md-sidebar::-webkit-scrollbar-thumb:hover,
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
   background: var(--md-accent-fg-color);
 }
 
