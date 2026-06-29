@@ -11,27 +11,30 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep purple
-      accent: indigo
+      primary: teal
+      accent: cyan
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep purple
-      accent: indigo
+      primary: teal
+      accent: cyan
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.expand
     - navigation.sections
+    - navigation.indexes
+    - navigation.instant
+    - navigation.top
     - search.suggest
     - search.highlight
     - search.focus
     - content.code.copy
+    - content.tabs.link
     - toc.follow
     - toc.integrate
 
@@ -94,6 +97,7 @@ nav:
     - Overview: ai-security-governance/index.md
     - DeepMind Control Roadmap: ai-security-governance/deep-mind/index.md
     - Policy & Authorization: ai-security-governance/policy/index.md
+    - AI Security: ai-security-governance/security/index.md
   - Coding Tools:
     - Overview: coding-tools/index.md
     - Claude:
@@ -115,6 +119,7 @@ nav:
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity: ai-protocols/auth/index.md
+    - Protocol Standards: ai-protocols/protocol/index.md
     - MCP:
       - Overview: ai-protocols/mcp/index.md
       - MCP Deep Research 2026: ai-protocols/mcp/MCP_Deep_Research_2026.md
@@ -134,6 +139,7 @@ nav:
   - Knowledge Engineering:
     - Overview: knowledge-engineering/index.md
     - Data Architecture: knowledge-engineering/data/index.md
+    - Knowledge & RAG: knowledge-engineering/knowledge/index.md
   - Enterprise Architecture:
     - Overview: enterprise-architecture/index.md
     - Strategy: enterprise-architecture/strategy/index.md

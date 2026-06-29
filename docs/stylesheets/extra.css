@@ -1,56 +1,25 @@
-/* HIDE SIDEBAR - USE DROPDOWN NAVIGATION ONLY */
-.md-sidebar--primary {
-  display: none !important;
-}
+/* ============================================================
+   Knowledge Docs — Modern Teal/Cyan Theme
+   Tabs + Sidebar navigation layout
+   ============================================================ */
 
-.md-sidebar {
-  display: none !important;
-}
-
-/* Adjust main content to full width */
-.md-content {
-  margin-left: 0 !important;
-}
-
-.md-main {
-  margin-left: 0 !important;
-}
-
-/* Submenu styling in header */
-.md-tabs__list {
-  flex-wrap: wrap;
-}
-
-.md-nav--secondary {
-  display: block !important;
-  position: relative !important;
-}
-
-.md-nav--secondary .md-nav__title {
-  display: block !important;
-}
-
-.md-nav--secondary .md-nav__list {
-  display: block !important;
-  padding-left: 1rem !important;
-}
-
-/* Dropdown menu items */
-.md-nav__item {
-  display: block !important;
-}
-
-.md-nav__link {
-  padding: 0.5rem 0.8rem !important;
-  display: block !important;
-}
-
-/* Responsive iframe viewer */
+/* ── Responsive iframe viewer ─────────────────────────────── */
 details iframe {
   width: 100%;
   height: 80vh;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  color: var(--md-primary-fg-color);
+}
+
+details summary:hover {
+  color: var(--md-accent-fg-color);
 }
 
 /* Mobile: hide iframes — JS replaces them with open buttons */
@@ -70,25 +39,19 @@ details iframe {
   padding: 8px 16px;
   background: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color) !important;
-  border-radius: 4px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
+  transition: opacity 0.2s ease;
 }
 
 .pdf-open-btn:hover {
   opacity: 0.85;
 }
 
-/* Improved sidebar and navigation scrolling */
-.md-sidebar {
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--md-default-fg-color--lighter) transparent;
-}
-
+/* ── Sidebar — smooth scrolling & thin scrollbar ─────────── */
+.md-sidebar,
 .md-sidebar--secondary {
   overflow-y: auto !important;
   overflow-x: hidden !important;
@@ -103,10 +66,9 @@ details iframe {
   scrollbar-width: thin;
 }
 
-/* Better sidebar scrollbar appearance (Webkit browsers) */
 .md-sidebar::-webkit-scrollbar,
 .md-sidebar__scrollwrap::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 .md-sidebar::-webkit-scrollbar-track,
@@ -126,29 +88,96 @@ details iframe {
   background: var(--md-accent-fg-color);
 }
 
-/* Improve nav section spacing */
+/* ── Sidebar nav — modern spacing & active highlight ──────── */
 .md-nav__list {
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 
 .md-nav__item {
-  margin: 0.25rem 0;
+  margin: 0.1rem 0;
 }
 
-/* Better accordion/collapse behavior */
+.md-nav__link {
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  padding: 0.35rem 0.75rem;
+}
+
+.md-nav__link:hover {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-nav__link--active {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600;
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* Smooth expand/collapse */
 .md-nav__toggle {
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
-.md-nav__toggle:checked ~ .md-nav__list {
-  max-height: none;
+/* ── Content area — max-width for readability ─────────────── */
+.md-content__inner {
+  max-width: 900px;
 }
 
-/* Improve TOC sticky positioning */
+/* ── Typography improvements ──────────────────────────────── */
+.md-content h1 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.md-content h2 {
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  border-bottom: 2px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+.md-content h3 {
+  font-weight: 600;
+}
+
+/* ── Home page grid cards — hover effect ──────────────────── */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  border-top: 3px solid transparent;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  box-shadow: 0 4px 20px rgba(0, 150, 136, 0.15);
+  transform: translateY(-2px);
+  border-top-color: var(--md-primary-fg-color);
+}
+
+/* ── Code blocks — subtle teal left border ────────────────── */
+.highlight {
+  border-left: 3px solid var(--md-primary-fg-color);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ── Admonitions — rounded and modern ────────────────────── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+}
+
+/* ── TOC sticky positioning ───────────────────────────────── */
 .md-toc {
   position: sticky;
   top: 120px;
   max-height: calc(100vh - 140px);
   overflow-y: auto;
+}
+
+/* ── Back-to-top button ───────────────────────────────────── */
+.md-top {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-radius: 50%;
 }
