@@ -32,3 +32,61 @@ details iframe {
 .pdf-open-btn:hover {
   opacity: 0.85;
 }
+
+/* Improved sidebar and navigation scrolling */
+.md-sidebar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.md-sidebar--secondary {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Better sidebar scrollbar appearance */
+.md-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.md-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.md-sidebar::-webkit-scrollbar-thumb {
+  background: var(--md-scrollbar-color, #ccc);
+  border-radius: 4px;
+}
+
+.md-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--md-accent-fg-color);
+}
+
+/* Improve nav section spacing */
+.md-nav__list {
+  padding: 0.5rem 0;
+}
+
+.md-nav__item {
+  margin: 0.25rem 0;
+}
+
+/* Better accordion/collapse behavior */
+.md-nav__toggle {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.md-nav__toggle:checked ~ .md-nav__list {
+  max-height: none;
+}
+
+/* Improve TOC sticky positioning */
+.md-toc {
+  position: sticky;
+  top: 120px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}

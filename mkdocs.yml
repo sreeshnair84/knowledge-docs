@@ -28,14 +28,18 @@ theme:
     - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+    - navigation.prune
     - navigation.top
     - navigation.footer
     - navigation.indexes
+    - header.autohide
     - search.suggest
     - search.highlight
     - search.share
+    - search.focus
     - content.code.copy
     - toc.follow
+    - toc.sticky
     - toc.integrate
 
 plugins:
