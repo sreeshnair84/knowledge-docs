@@ -24,14 +24,13 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.prune
     - navigation.top
     - navigation.footer
     - navigation.indexes
+    - navigation.instant
     - header.autohide
     - search.suggest
     - search.highlight
