@@ -1,3 +1,33 @@
+/* FORCE SIDEBAR VISIBILITY */
+.md-sidebar--primary {
+  display: block !important;
+  position: sticky !important;
+  visibility: visible !important;
+  width: 260px !important;
+  z-index: 5 !important;
+}
+
+.md-sidebar--primary.md-sidebar--hidden {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.md-nav {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.md-nav__list {
+  display: block !important;
+  visibility: visible !important;
+  max-height: none !important;
+}
+
+.md-nav__item {
+  display: block !important;
+  visibility: visible !important;
+}
+
 /* Responsive iframe viewer */
 details iframe {
   width: 100%;

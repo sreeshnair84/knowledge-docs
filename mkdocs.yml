@@ -26,12 +26,7 @@ theme:
   features:
     - navigation.sections
     - navigation.expand
-    - navigation.prune
-    - navigation.top
-    - navigation.footer
-    - navigation.indexes
     - navigation.instant
-    - header.autohide
     - search.suggest
     - search.highlight
     - search.share
@@ -40,6 +35,9 @@ theme:
     - toc.follow
     - toc.sticky
     - toc.integrate
+  font:
+    text: Roboto
+    code: Roboto Mono
 
 plugins:
   - search:
