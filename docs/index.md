@@ -4,130 +4,127 @@ title: Home
 
 # Knowledge Docs
 
-!!! abstract "About this site"
-    A practitioner-focused knowledge base covering **Agentic AI**, **Enterprise Architecture**, cloud platforms, and emerging technologies. Each section contains research reports, architecture guides, certification materials, and real-world case studies — all browsable in-browser or downloadable.
-
----
+A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, Kubernetes, and more — maintained as a living reference for architects and engineers.
 
 <div class="grid cards" markdown>
 
--   :material-robot:{ .lg .middle } **Agentic AI**
+-   :material-robot-excited:{ .lg .middle } **Agentic AI**
 
     ---
 
-    Agent evaluation frameworks, RAG deep dives, AKES, knowledge architectures, multi-tenant platforms, A2A, transformer architectures, coding agents 2026
+    Multi-agent orchestration, coding agents, auth, testing, MCP, AI gateway, cost, platform, and protocol guides.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/index.md)
 
--   :material-shield-lock:{ .lg .middle } **AI Gateway**
-
-    ---
-
-    Kong AI Gateway setup, Entra ID / Azure AD integration, multi-cloud and multi-tenant gateway patterns
-
-    [:octicons-arrow-right-24: Explore](ai-gateway/)
-
--   :material-aws:{ .lg .middle } **AWS AgentCore**
+-   :material-brain:{ .lg .middle } **Claude**
 
     ---
 
-    Bedrock AgentCore, Strands Agents, memory architecture deep dives, code interpreter, advanced patterns
+    Complete Claude knowledge base — models, API mastery, Claude Code CLI, Agent SDK, prompt engineering, enterprise deployment, and CCAF exam prep.
 
-    [:octicons-arrow-right-24: Explore](awsagentcore/)
-
--   :material-alpha-c-box:{ .lg .middle } **Claude**
-
-    ---
-
-    Certification modules (7), prompt engineering, agent SDK, MCP, Claude Code, cheatsheets & questionnaires
-
-    [:octicons-arrow-right-24: Explore](claude/)
-
--   :material-connection:{ .lg .middle } **MCP**
-
-    ---
-
-    Model Context Protocol — architecture, security, capabilities & ecosystem deep research (2026)
-
-    [:octicons-arrow-right-24: Explore](mcp/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/coding-agents/claude/index.md)
 
 -   :material-github:{ .lg .middle } **GitHub Copilot**
 
     ---
 
-    Enterprise setup, zero-to-hero guide, platform engineering handbook, big wins research, Microsoft APM guide
+    GitHub Copilot zero-to-hero, enterprise playbook, and Git/GitHub platform engineering handbook.
 
-    [:octicons-arrow-right-24: Explore](github-copilot/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/coding-agents/github-copilot/index.md)
 
--   :material-refresh-auto:{ .lg .middle } **AIDLC**
+-   :material-cloud:{ .lg .middle } **AWS AgentCore**
 
     ---
 
-    AI-driven development lifecycle, agile + agentic AI integration, CICD pipelines, artifact templates
+    AWS Bedrock AgentCore, Strands agents, code interpreter architecture, and memory guides.
 
-    [:octicons-arrow-right-24: Explore](aidlc/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/awsagentcore/index.md)
+
+-   :material-connection:{ .lg .middle } **MCP**
+
+    ---
+
+    Model Context Protocol deep research, enterprise integration, and AIDLC harness patterns.
+
+    [:octicons-arrow-right-24: Explore](agentic-ai/mcp/index.md)
+
+-   :material-shield-lock:{ .lg .middle } **Auth & Identity**
+
+    ---
+
+    Entra ID 3LO agent auth, identity research, and agent identity patterns (5-volume series).
+
+    [:octicons-arrow-right-24: Explore](agentic-ai/auth/index.md)
 
 -   :material-office-building:{ .lg .middle } **Enterprise Architect**
 
     ---
 
-    TOGAF 10, APEX, interview master guides, EA playbooks, AI strategy, real-life transcripts, PPTX decks
+    Strategy, framework, process, specialization, ARB, best practices, and interview prep for enterprise architects.
 
-    [:octicons-arrow-right-24: Explore](enterprise_architect/)
+    [:octicons-arrow-right-24: Explore](enterprise_architect/index.md)
+
+-   :material-kubernetes:{ .lg .middle } **Kubernetes**
+
+    ---
+
+    16-part Kubernetes handbook from infrastructure foundations to AI/agentic workloads.
+
+    [:octicons-arrow-right-24: Explore](kubernetes/index.md)
 
 -   :material-scale-balance:{ .lg .middle } **Governance**
 
     ---
 
-    Agentic AI governance frameworks and standards for enterprise environments
+    Agentic AI governance framework, DeepMind AI control roadmap (18 parts), and policy authorization series.
 
-    [:octicons-arrow-right-24: Explore](governance/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/governance/index.md)
 
--   :material-help-circle:{ .lg .middle } **Interviews**
-
-    ---
-
-    EA interview Q&A banks, HITL/HOTL/HOOL prep, soft skills, quality & resilience, hard scenarios
-
-    [:octicons-arrow-right-24: Explore](interviews/)
-
--   :material-bank:{ .lg .middle } **Use Cases**
+-   :material-database:{ .lg .middle } **Knowledge & RAG**
 
     ---
 
-    EU banking AI architecture, TOGAF case studies (NexaBank, GlobalCorp), regulated industry patterns
+    Knowledge engineering architectures, RAG design patterns, and enterprise knowledge systems.
 
-    [:octicons-arrow-right-24: Explore](usecases/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/knowledge/index.md)
 
--   :material-database:{ .lg .middle } **Data Architecture**
+-   :material-currency-usd:{ .lg .middle } **Cost Management**
 
     ---
 
-    AI-native data platform evolution, data lineage systems, enterprise data governance for AI
+    AI cost implementation guides and cloud cost comparison across providers.
 
-    [:octicons-arrow-right-24: Explore](data/)
+    [:octicons-arrow-right-24: Explore](agentic-ai/cost/index.md)
+
+-   :material-test-tube:{ .lg .middle } **Testing & Evaluation**
+
+    ---
+
+    AI agent evaluation framework, monitoring, and quality assurance for agentic systems.
+
+    [:octicons-arrow-right-24: Explore](agentic-ai/testing/index.md)
+
+-   :material-briefcase:{ .lg .middle } **Use Cases**
+
+    ---
+
+    EU Banking AI evaluation and compliance guide, and real-world agentic AI use cases.
+
+    [:octicons-arrow-right-24: Explore](agentic-ai/usecases/index.md)
 
 -   :material-atom:{ .lg .middle } **Quantum**
 
     ---
 
-    Quantum AI landscape reports, IBM Quantum certification guides (Associate & Developer)
+    Quantum computing fundamentals and emerging technology research.
 
-    [:octicons-arrow-right-24: Explore](Quantum/)
+    [:octicons-arrow-right-24: Explore](quantum/index.md)
 
--   :material-microphone:{ .lg .middle } **Non-Tech**
-
-    ---
-
-    Voice mastery, storytelling, executive communication, and leadership skills for technical leaders
-
-    [:octicons-arrow-right-24: Explore](non-tech/)
-
--   :material-information-outline:{ .lg .middle } **About**
+-   :material-information:{ .lg .middle } **About**
 
     ---
 
-    How this site is built, how to add content, and the contributing guide
+    Site guide, contributing instructions, build commands, and sensitive content scanning.
 
     [:octicons-arrow-right-24: Read](about.md)
 

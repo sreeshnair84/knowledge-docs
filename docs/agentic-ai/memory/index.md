@@ -1,0 +1,17 @@
+---
+title: Agent Memory
+---
+
+# Agent Memory
+
+Research on AI agent memory architectures — covering short-term context management, long-term memory stores, episodic memory, semantic memory, and hybrid memory patterns for production agentic systems.
+
+---
+
+## PDFs
+
+<details>
+<summary>AI Memory Agent Innovations Research Report</summary>
+<iframe src="AI_Memory_Agent_Innovations_Research_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AI_Memory_Agent_Innovations_Research_Report.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
