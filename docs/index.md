@@ -8,13 +8,21 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
 <div class="grid cards" markdown>
 
--   :material-robot-excited:{ .lg .middle } **Agentic AI**
+-   :material-lightbulb-on:{ .lg .middle } **AI Foundations**
 
     ---
 
-    Multi-agent orchestration, coding agents, auth, testing, MCP, AI gateway, cost, platform, and protocol guides.
+    Core AI/ML concepts, transformer architectures, agentic AI landing zones, and AI research.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/index.md)
+    [:octicons-arrow-right-24: Explore](ai-foundations/index.md)
+
+-   :material-robot-excited:{ .lg .middle } **Agentic AI Systems**
+
+    ---
+
+    Multi-agent orchestration, platforms, memory, skills, configuration, and core agent patterns.
+
+    [:octicons-arrow-right-24: Explore](agentic-systems/index.md)
 
 -   :material-brain:{ .lg .middle } **Claude**
 
@@ -22,7 +30,7 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     Complete Claude knowledge base — models, API mastery, Claude Code CLI, Agent SDK, prompt engineering, enterprise deployment, and CCAF exam prep.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/coding-agents/claude/index.md)
+    [:octicons-arrow-right-24: Explore](coding-tools/claude/index.md)
 
 -   :material-github:{ .lg .middle } **GitHub Copilot**
 
@@ -30,7 +38,7 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     GitHub Copilot zero-to-hero, enterprise playbook, and Git/GitHub platform engineering handbook.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/coding-agents/github-copilot/index.md)
+    [:octicons-arrow-right-24: Explore](coding-tools/github-copilot/index.md)
 
 -   :material-cloud:{ .lg .middle } **AWS AgentCore**
 
@@ -38,7 +46,7 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     AWS Bedrock AgentCore, Strands agents, code interpreter architecture, and memory guides.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/awsagentcore/index.md)
+    [:octicons-arrow-right-24: Explore](cloud-platforms/aws/index.md)
 
 -   :material-connection:{ .lg .middle } **MCP**
 
@@ -46,7 +54,7 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     Model Context Protocol deep research, enterprise integration, and AIDLC harness patterns.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/mcp/index.md)
+    [:octicons-arrow-right-24: Explore](ai-protocols/mcp/index.md)
 
 -   :material-shield-lock:{ .lg .middle } **Auth & Identity**
 
@@ -54,7 +62,7 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     Entra ID 3LO agent auth, identity research, and agent identity patterns (5-volume series).
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/auth/index.md)
+    [:octicons-arrow-right-24: Explore](ai-protocols/auth/index.md)
 
 -   :material-office-building:{ .lg .middle } **Enterprise Architect**
 
@@ -62,7 +70,7 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     Strategy, framework, process, specialization, ARB, best practices, and interview prep for enterprise architects.
 
-    [:octicons-arrow-right-24: Explore](enterprise_architect/index.md)
+    [:octicons-arrow-right-24: Explore](enterprise-architecture/index.md)
 
 -   :material-kubernetes:{ .lg .middle } **Kubernetes**
 
@@ -70,15 +78,15 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     16-part Kubernetes handbook from infrastructure foundations to AI/agentic workloads.
 
-    [:octicons-arrow-right-24: Explore](kubernetes/index.md)
+    [:octicons-arrow-right-24: Explore](cloud-platforms/kubernetes/index.md)
 
--   :material-scale-balance:{ .lg .middle } **Governance**
+-   :material-scale-balance:{ .lg .middle } **Security & Governance**
 
     ---
 
-    Agentic AI governance framework, DeepMind AI control roadmap (18 parts), and policy authorization series.
+    Agentic AI security frameworks, DeepMind AI control roadmap (18 parts), and policy authorization series.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/governance/index.md)
+    [:octicons-arrow-right-24: Explore](ai-security-governance/index.md)
 
 -   :material-database:{ .lg .middle } **Knowledge & RAG**
 
@@ -86,23 +94,23 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     Knowledge engineering architectures, RAG design patterns, and enterprise knowledge systems.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/knowledge/index.md)
+    [:octicons-arrow-right-24: Explore](knowledge-engineering/index.md)
 
--   :material-currency-usd:{ .lg .middle } **Cost Management**
+-   :material-currency-usd:{ .lg .middle } **AI Economics**
 
     ---
 
     AI cost implementation guides and cloud cost comparison across providers.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/cost/index.md)
+    [:octicons-arrow-right-24: Explore](ai-economics/index.md)
 
--   :material-test-tube:{ .lg .middle } **Testing & Evaluation**
+-   :material-test-tube:{ .lg .middle } **AI Development**
 
     ---
 
-    AI agent evaluation framework, monitoring, and quality assurance for agentic systems.
+    AI agent evaluation framework, monitoring, quality assurance, AIDLC lifecycle, and testing.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/testing/index.md)
+    [:octicons-arrow-right-24: Explore](ai-development/testing/index.md)
 
 -   :material-briefcase:{ .lg .middle } **Use Cases**
 
@@ -110,15 +118,31 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     EU Banking AI evaluation and compliance guide, and real-world agentic AI use cases.
 
-    [:octicons-arrow-right-24: Explore](agentic-ai/usecases/index.md)
+    [:octicons-arrow-right-24: Explore](ai-usecases/index.md)
 
--   :material-atom:{ .lg .middle } **Quantum**
+-   :material-atom:{ .lg .middle } **Quantum AI**
 
     ---
 
     Quantum computing fundamentals and emerging technology research.
 
     [:octicons-arrow-right-24: Explore](quantum/index.md)
+
+-   :material-briefcase-check:{ .lg .middle } **Interview Prep**
+
+    ---
+
+    Enterprise Architect interview guides, behavioral questions, technical prep, and career development.
+
+    [:octicons-arrow-right-24: Explore](interview-prep/index.md)
+
+-   :material-human-edit:{ .lg .middle } **Soft Skills**
+
+    ---
+
+    Professional development, communication, storytelling, voice mastery, and mental models.
+
+    [:octicons-arrow-right-24: Explore](soft-skills/index.md)
 
 -   :material-information:{ .lg .middle } **About**
 
