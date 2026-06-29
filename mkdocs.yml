@@ -100,6 +100,8 @@ nav:
       - Overview: agentic-ai/memory/index.md
     - Platform:
       - Overview: agentic-ai/platform/index.md
+    - Security:
+      - Overview: agentic-ai/security/index.md
     - Configuration:
       - Overview: agentic-ai/config/index.md
     - Protocol:
