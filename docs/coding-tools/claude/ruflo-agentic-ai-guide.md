@@ -1,390 +1,1140 @@
 ---
-title: Ruflo Agentic AI Guide
-parent: Agentic AI
-nav_order: 4
+title: Multi-Agent Orchestration — claude-flow & Beyond
 ---
 
-# Ruflo & Multi-Agent Orchestration Frameworks
-## The Complete End-to-End Guide: Architecture, Evals, Governance, and Big Wins
+# Multi-Agent Orchestration — claude-flow & Beyond
 
-> **What is Ruflo?** Ruflo (formerly Claude Flow) is an open-source multi-agent orchestration platform built on top of Claude Code and OpenAI Codex. It transforms a single-agent session into a coordinated swarm of ~100 specialized AI agents, connected by shared memory, intelligent routing, and self-learning workflows. As of 2026 it has crossed 56,000+ GitHub stars.
+**What is claude-flow?** claude-flow is an open-source multi-agent orchestration framework built by rUv, hosted at [github.com/ruvnet/claude-flow](https://github.com/ruvnet/claude-flow). It coordinates swarms of specialised AI agents connected by shared memory, structured workflows, and the SPARC methodology. The community sometimes refers to it as **Ruflo** — this guide uses both names interchangeably.
 
----
+**What this guide covers:** Installation, core architecture, multi-agent patterns with working code, evaluation harness, stress testing, parallelism, token and cost optimisation, guardrails, governance, and CI/CD integration.
 
-## Table of Contents
-
-1. [The Landscape: Frameworks at a Glance](#1-the-landscape)
-2. [Ruflo Deep-Dive: Core Architecture](#2-ruflo-deep-dive)
-3. [SPARC Methodology](#3-sparc-methodology)
-4. [Best Practices](#4-best-practices)
-5. [Anti-Patterns](#5-anti-patterns)
-6. [Big Wins](#6-big-wins)
-7. [Evaluation (Evals) Framework](#7-evaluation-evals-framework)
-8. [Governance Framework](#8-governance-framework)
-9. [How to Build One End-to-End](#9-how-to-build-one-end-to-end)
-10. [Tooling Ecosystem](#10-tooling-ecosystem)
-11. [Quick Reference Cheatsheet](#11-quick-reference-cheatsheet)
+**What it does NOT duplicate:**
+- MCP protocol fundamentals → [MCP Deep Guide](mcp-deep-guide.md)
+- Claude model pricing → [Models 2026](claude-models-2026.md)
+- Agent SDK patterns → [Agent SDK Production](claude-agent-sdk-production.md)
+- EA-level governance → [Governance & Compliance](../enterprise-ai-architect/enterprise-ai-governance-compliance.md)
 
 ---
 
-## 1. The Landscape
+## 1. Overview
 
-### 1.1 Why Multi-Agent Orchestration?
+### The Problem claude-flow Solves
 
-A single LLM agent is bounded by three hard constraints: a limited context window, sequential reasoning, and no ability to parallelize. Complex real-world tasks — large codebase refactors, multi-phase research pipelines, enterprise workflow automation — overwhelm any single agent.
+A single AI agent is bounded by three constraints: a finite context window, sequential reasoning, and no ability to parallelise work across independent subtasks. Complex tasks — large codebase refactors, multi-phase research pipelines, document processing at scale — require more than a single agent can deliver.
 
-Multi-agent orchestration breaks work into parallel workstreams, each handled by a specialized agent. The framework coordinates handoffs, manages shared state, and synthesizes results. By March 2026, **57% of organizations** have AI agents running in production (up from 51% in 2025).
+claude-flow coordinates multiple specialised agents into a structured swarm. A Queen agent decomposes the goal and assigns workstreams; Worker agents execute in parallel; shared memory ensures agents build on each other's work rather than repeating it. The framework ships with the SPARC methodology (Specification, Pseudocode, Architecture, Refinement, Completion) which turns agentic coding into a disciplined, phase-gated pipeline.
 
-### 1.2 Framework Comparison Matrix
+### Scope and Approach
 
-| Framework | Orchestration Model | State Persistence | Model Support | Learning Curve | Best For |
-|---|---|---|---|---|---|
-| **Ruflo** | Swarm / Hive-Mind (Queen + Workers) | AgentDB: vector + knowledge graph | Claude, GPT, Gemini, Local | Medium | Complex coding, multi-phase development |
-| **LangGraph** | Directed graph (nodes + edges) | Built-in checkpointing, time-travel | Model-agnostic | Steep | Production stateful workflows, human-in-loop |
-| **CrewAI** | Role-based "crew" / teams | Task outputs passed sequentially | Model-agnostic | Lowest | Business process automation, rapid prototyping |
-| **AutoGen / AG2** | Conversational GroupChat | Conversation history (in-memory) | Model-agnostic | Medium | Research, quality-sensitive offline workflows |
-| **Google ADK** | Hierarchical agent tree | Session state, pluggable backends | Gemini-optimized | Medium | Google Cloud / Vertex AI integration |
-| **OpenAI Agents SDK** | Explicit handoffs | Context variables (ephemeral) | OpenAI only | Low | OpenAI-native deployments |
-| **OpenAgents** | Network / peer-based | Persistent agent networks | Multi-framework | Medium | Open interoperability (MCP + A2A protocols) |
+claude-flow is a Node.js/TypeScript project installable via npm, with Python bindings for interoperability with Python-native data and ML tooling. It integrates with Claude via the Anthropic API and supports MCP server connections for tool access.
 
-**Key differentiators:**
-- LangGraph → most control and production maturity
-- CrewAI → fastest time-to-value (~35 lines for a minimal agent)
-- AutoGen → best for iterative dialogue and debate-style reasoning (but expensive: 4 agents × 5 rounds = 20 LLM calls minimum)
-- Ruflo → uniquely positioned for AI-native software development with persistent self-learning memory
+**What to expect:** claude-flow is an active open-source project — the feature surface evolves quickly. Verify capabilities against the [GitHub repo](https://github.com/ruvnet/claude-flow) before designing production systems.
 
 ---
 
-## 2. Ruflo Deep-Dive
+## 2. Installation
 
-### 2.1 History
+### Prerequisites
 
-Ruflo started as **Claude Flow**, an experimental project by rUv focused on agentic workflows for Claude. It was later rewritten in Rust as Ruflo, adding persistent memory, MCP bridging, and federation support. The `claude-flow` npm package is a legacy alias; both resolve to the same unified codebase.
+- Node.js 18+ (LTS recommended)
+- An Anthropic API key (`ANTHROPIC_API_KEY`)
+- Optional: Python 3.10+ for Python bindings
 
-### 2.2 Core Architecture
+### npm Installation
+
+```bash
+# Install globally
+npm install -g claude-flow
+
+# Or run without installing
+npx claude-flow@latest --help
+
+# Verify installation
+claude-flow --version
+```
+
+### Project Initialisation
+
+```bash
+# Minimal init (SPARC methodology only — no MCP server)
+npx claude-flow@latest init --sparc
+
+# Full init (MCP server + SPARC + hooks)
+npx claude-flow@latest init --sparc --mcp
+
+# Set your API key
+export ANTHROPIC_API_KEY="your-api-key-here"
+
+# Verify the MCP server is registered (full init only)
+npx claude-flow status
+```
+
+### Python Bindings
+
+```bash
+pip install claude-flow-py   # community Python bindings
+
+# Or call the CLI from Python
+import subprocess
+result = subprocess.run(
+    ["npx", "claude-flow", "swarm", "run", "--task", "summarise this report"],
+    capture_output=True, text=True
+)
+```
+
+!!! note "npm package name"
+    The canonical package is `claude-flow` on npm. The community brand "Ruflo" may appear in community tooling and documentation but refers to the same codebase. Always install from `github.com/ruvnet/claude-flow` or the `claude-flow` npm package.
+
+---
+
+## 3. Core Architecture
+
+### The Hive-Mind Pattern
+
+claude-flow implements a **hive-mind** orchestration model: a Queen agent that decomposes goals and delegates to specialised Worker agents, coordinated by a shared SQLite-backed memory store.
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                   QUEEN AGENT                       │
-│  (Goal decomposition · Task routing · Synthesis)    │
+│                    QUEEN AGENT                      │
+│   Goal decomposition · Task routing · Synthesis     │
 └──────────────────┬──────────────────────────────────┘
-                   │ Hierarchical Delegation
+                   │  Hierarchical delegation
        ┌───────────┼───────────┐
        ▼           ▼           ▼
-  [Worker]    [Worker]    [Worker]   ← Specialized agents
-  Coder       Tester      Reviewer     (60+ built-in types)
+  [Coder]      [Tester]   [Reviewer]    ← Specialised worker agents
+  Worker        Worker      Worker
        │           │           │
        └───────────┼───────────┘
                    ▼
         ┌──────────────────────┐
-        │      AgentDB v3      │
-        │  Vector (HNSW index) │
-        │  Knowledge Graph     │
-        │  Pattern Memory      │
-        │  Shared State        │
+        │   Shared Memory      │
+        │  (SQLite + vectors)  │
+        │  SPARC state store   │
+        │  Pattern library     │
         └──────────────────────┘
 ```
 
-**The 5 pillars of Ruflo architecture:**
+**Core components:**
 
-1. **Multi-Agent Orchestration at Scale** — Deploy and coordinate ~100 specialized AI agents working in parallel. A Queen agent decomposes goals, assigns workstreams to Workers, and synthesizes results.
+- **Queen agent** — receives the top-level goal, breaks it into parallel or sequential workstreams, assigns each to the most appropriate Worker type, and synthesises results into a coherent output
+- **Worker agents** — each has a single responsibility (coding, testing, reviewing, research) and limited tool access; stateless between invocations but can read/write shared memory
+- **Memory store** — SQLite database with vector-indexed content for semantic retrieval; agents store patterns, decisions, and outputs; later agents retrieve what earlier agents produced
+- **SPARC pipeline** — five-phase workflow (Specification → Pseudocode → Architecture → Refinement → Completion) enforced as a gate sequence; each phase feeds the next
 
-2. **Swarm-Based Collaboration** — Agents operate in structured "swarms" with hierarchical coordination, consensus mechanisms, and shared objectives. Topology options: `mesh`, `hierarchical`, `ring`, `star`.
+### Supported Topologies
 
-3. **Self-Learning and Adaptive Routing** — Learns from past executions via reinforcement learning (9 algorithms including Decision Transformer, Q-Learning, Actor-Critic). Dynamically routes tasks to the most effective agents using pattern recognition. Execution results are stored and used for future optimization.
-
-4. **Persistent Memory and Knowledge Graphs** — AgentDB v3 combines vector search (HNSW, 150x–12,500x faster retrieval), shared memory, and knowledge graphs to retain context across sessions. New controllers: `HierarchicalMemory`, `MemoryConsolidation`, `SemanticRouter`, `MutationGuard` (cryptographic proof-verified writes), `AttestationLog`.
-
-5. **Intelligent Cost and Performance Optimization** — Multi-tier routing (WASM + LLMs) reduces latency and cuts API costs by up to ~75%. Supports failover across Claude, GPT, Gemini, and local models.
-
-### 2.3 Installation Paths
-
-**Path A — Lightweight (workflow structuring only, no MCP server):**
-```bash
-npx ruflo@latest init --sparc
-# Adds slash commands and agent definitions
-# Memory/swarm tools NOT callable from Claude
-```
-Use when: Teams want SPARC workflow structure without full MCP infrastructure.
-
-**Path B — Full (MCP server + hooks + memory + swarm):**
-```bash
-npx ruflo@latest init --sparc --mcp
-# Registers the Ruflo MCP server
-# Enables memory_store, swarm_init, agent_spawn, etc.
-```
-Use when: You want the full loop with persistent memory and swarm coordination in the background.
-
-### 2.4 Key CLI Commands
-
-```bash
-# Memory
-npx ruflo memory store --key "auth-pattern" --value "JWT with refresh tokens" --namespace patterns
-npx ruflo memory search --query "authentication best practices" --limit 5
-
-# Agent management
-claude-flow agent use coder "implement user authentication"
-claude-flow agent list
-claude-flow agent metrics <agent-id> --period 1h
-
-# Swarm
-claude-flow swarm "build REST API" --agents coder,tester,reviewer
-claude-flow hive-mind spawn "build microservices" --topology hierarchical
-claude-flow swarm "optimize performance" --coordinator adaptive-coordinator
-
-# Benchmarking
-swarm-bench run "Build REST API" --strategy development --max-agents 6
-swarm-bench hive-mind "Design architecture" --max-workers 8
-
-# Migration from Claude Flow
-npx claude-flow migrate
-```
+| Topology | When to use |
+|----------|-------------|
+| `hierarchical` | Complex tasks with clear decomposition; Queen has full authority |
+| `mesh` | Collaborative tasks where agents need to share findings peer-to-peer |
+| `ring` | Pipeline tasks where each agent hands off to the next |
+| `star` | Hub-and-spoke: one coordinator routes to many specialists in parallel |
 
 ---
 
-## 3. SPARC Methodology
+## 4. Quick Start
 
-SPARC is Ruflo's structured test-driven development methodology. It transforms ad-hoc agentic coding into a disciplined, phase-gated pipeline. The acronym stands for:
+A working 20-line example that spawns a two-agent swarm:
 
-```
-S — Specification     Define clear, testable requirements before any implementation
-P — Pseudocode        Capture algorithm logic in language-agnostic pseudocode
-A — Architecture      Design system structure, interfaces, and data flows
-R — Refinement        Iterative improvement through testing and code review
-C — Completion        Final integration, full test coverage, and delivery
-```
+```javascript
+// quick-start.js
+const { ClaudeFlow } = require('claude-flow');
 
-**Why SPARC matters:** Without a methodology, agents "go off the rails" — they start coding before requirements are clear, skip architecture decisions, and produce untestable outputs. SPARC enforces structure: define the specification before writing code, validate pseudocode before implementation, confirm architecture before building, refine through testing, complete with full coverage.
+async function main() {
+  const flow = new ClaudeFlow({
+    apiKey: process.env.ANTHROPIC_API_KEY,
+    model: 'claude-sonnet-4-6',
+  });
 
-**Running SPARC:**
-```bash
-# Full SPARC TDD workflow
-claude-flow sparc tdd "implement payment system" \
-  --agents specification,pseudocode,architecture,refinement
+  // Define the swarm
+  const swarm = await flow.createSwarm({
+    topology: 'hierarchical',
+    agents: ['coder', 'reviewer'],
+  });
 
-# Individual SPARC stages
-claude-flow sparc run dev "build OAuth integration"
+  // Run a task
+  const result = await swarm.run({
+    task: 'Write a Python function that validates email addresses with unit tests',
+    memoryPersist: true,
+  });
 
-# Deploy a SPARC-specialized swarm
-npx claude-flow swarm init sparc-team \
-  --agents "specification,pseudocode,architecture,sparc-coder,tester" \
-  --topology hierarchical
-
-# Automate the full SPARC pipeline
-npx claude-flow workflow create \
-  --name "sparc-pipeline" \
-  --template "sparc-tdd" \
-  --auto-advance \
-  --memory-persist
-```
-
-Each stage feeds into the next. The Queen agent coordinates handoffs between stage-specialized workers. Results from each stage are stored in AgentDB and retrieved by the next agent, maintaining full context continuity across the pipeline.
-
----
-
-## 4. Best Practices
-
-### 4.1 Architecture
-
-- **Decompose tasks before spawning agents.** Define the work breakdown structure at the Queen level before spinning up workers. Agents with unclear scope waste tokens and produce inconsistent results.
-- **Use hierarchical topology for complex tasks, mesh for collaborative tasks.** Hierarchical gives the Queen clear authority; mesh enables peer-to-peer consensus for creative or research workstreams.
-- **Design agents with single responsibilities.** A "coder + tester + reviewer" monolith agent is harder to route, harder to evaluate, and harder to replace than three separate specialized agents.
-- **Store patterns, not just outputs.** Use `memory store` to capture reusable patterns (authentication flows, error handling strategies). AgentDB's HNSW index makes these retrievable at 150x the speed of naive vector lookup.
-- **Use SPARC for all feature work.** It prevents scope creep, ensures testability, and creates a natural audit trail for governance.
-
-### 4.2 Memory and Context
-
-- **Namespace your memory keys.** Use prefixes like `patterns:`, `decisions:`, `context:` to prevent key collisions across agents and sessions.
-- **Consolidate memory regularly.** Use `MemoryConsolidation` to compact and de-duplicate stored knowledge after long sessions. Unchecked memory growth degrades retrieval quality.
-- **Use semantic search over exact key lookup.** The SemanticRouter selects agents and retrieves knowledge based on meaning, not string matching. Leverage this for dynamic task routing.
-- **Set memory TTLs for ephemeral state.** Not all state should persist across sessions. Route ephemeral working state to in-session storage; persist only generalized patterns.
-
-### 4.3 Evaluation
-
-- **Define acceptance criteria before the first eval run.** Collaborate with governance stakeholders on metric thresholds (factual accuracy, faithfulness, task success rate) before deployment, not after.
-- **Start small.** Build an evaluation dataset of 50–100 samples. Run it manually a few times to calibrate expectations before automating.
-- **Evaluate trajectories, not just final outputs.** For agents, the path matters: did it choose the right tools? Recover gracefully from errors? Complete objectives efficiently? A correct final answer via a broken path is still a broken agent.
-- **Use LLM-as-a-judge for quality dimensions at scale.** Human review of every response doesn't scale. Use model judges for safety, correctness, relevance, and groundedness — and flag edge cases for human review.
-- **Integrate evals into CI/CD.** Every model version change, prompt change, or tool change should trigger a regression eval run. Track metrics over time; regressions are invisible without baselines.
-
-### 4.4 Governance
-
-- **Build observability from day one, not as an afterthought.** Treat traces, evaluations, and governance guardrails as foundational architectural requirements. Retrofitting observability to a production agent system is expensive and incomplete.
-- **Use OpenTelemetry (OTel) for vendor-neutral tracing.** OTel is now table stakes. Emit traces once and choose any compatible backend without re-instrumenting.
-- **Define policies centrally, enforce them locally.** Avoid ad hoc guardrails that don't roll up to centralized standards. A unified AI control plane ensures consistency across agent frameworks, cloud providers, and platforms.
-- **Implement human-in-the-loop gates at high-risk action boundaries.** Not every agent action needs human approval — that defeats the purpose of automation. But irreversible, high-impact actions (production deploys, financial transactions, data deletions) should require human sign-off.
-- **Create audit trails for every eval run.** Record which model version was evaluated, which dataset was used, what scores were achieved, and whether thresholds were met. These records accumulate into the compliance evidence that governance teams need.
-
----
-
-## 5. Anti-Patterns
-
-### 5.1 Agent Design Anti-Patterns
-
-| Anti-Pattern | Description | Fix |
-|---|---|---|
-| **The Monolith Agent** | One agent tries to do everything: plan, code, test, review, deploy | Split into specialized agents with single responsibilities |
-| **Agent Sprawl** | Spawning 50 agents for a task that needs 5 | Right-size your swarm; start small and scale up based on benchmark data |
-| **Context Window Stuffing** | Passing the entire codebase into every agent's context | Use AgentDB semantic search to retrieve only relevant context chunks |
-| **Stateless Design** | No persistent memory between sessions; agents re-learn the same patterns repeatedly | Use AgentDB with pattern storage and namespace your keys |
-| **Tool Overloading** | Giving every agent access to every tool | Follow principle of least privilege — each agent gets only the tools it needs |
-| **Skipping SPARC** | Jumping straight to code without specification or architecture phases | Enforce SPARC methodology for all non-trivial features |
-
-### 5.2 Orchestration Anti-Patterns
-
-| Anti-Pattern | Description | Fix |
-|---|---|---|
-| **Infinite Loops** | Agents stuck in retry loops without circuit breakers | Set max retry limits; implement circuit breakers at the orchestrator level |
-| **Cascade Failure** | One failed agent blocks the entire swarm | Design for partial success; isolate failures, allow swarm to continue with degraded capability |
-| **Gossip Storms** | In mesh topology, agents broadcast updates to all peers on every state change | Use event-driven updates with delta-only broadcasts and debounce intervals |
-| **Token Burn** | Running multi-agent debates on simple tasks; 4-agent × 5-round = 20 LLM calls for a question that needs 1 | Match orchestration complexity to task complexity; single agent for simple tasks |
-| **Provider Lock-in** | Tightly coupling agent logic to one LLM provider | Use model-agnostic abstractions; configure failover across providers |
-
-### 5.3 Evaluation Anti-Patterns
-
-| Anti-Pattern | Description | Fix |
-|---|---|---|
-| **Launch-Day Evals Only** | Running evals once before deployment, never again | Embed evals into CI/CD; treat evaluation as an ongoing process |
-| **Output-Only Evaluation** | Judging only the final answer, ignoring the trajectory | Evaluate the full execution graph: tool choices, error recovery, efficiency |
-| **Static Eval Datasets** | Using the same 50 examples forever | Continuously feed production interactions back into eval datasets |
-| **Missing Baselines** | No historical metric tracking; regressions are invisible | Store all eval results with timestamps, model versions, and dataset versions |
-| **The Eval Theater** | Running evals to satisfy governance, not to improve the system | Define acceptance thresholds with governance teams upfront; block deployment on failures |
-
-### 5.4 Governance Anti-Patterns
-
-| Anti-Pattern | Description | Fix |
-|---|---|---|
-| **The Static Guardrail Problem** | Certify a system once as "responsible," assume behavior stays aligned | Implement continuous runtime monitoring; agents evolve with model updates |
-| **Fragmented Guardrails** | Ad hoc safety rules scattered across teams with no central standard | Unified policy framework via a single AI control plane |
-| **Observability as an Afterthought** | Add logging and tracing after a production incident | Build OTel-first tracing into agent architecture from day one |
-| **No Human Escalation Path** | Fully autonomous agents with no mechanism to involve humans | Define escalation thresholds that trigger human review for high-risk decisions |
-| **Audit Trail Gaps** | Agents take actions with no record of why | Every tool invocation, decision branch, and state transition should be traceable |
-
----
-
-## 6. Big Wins
-
-These are the highest-ROI outcomes teams achieve by implementing Ruflo and well-architected multi-agent systems.
-
-### 6.1 Engineering Velocity
-
-**Large codebase refactoring at scale.** Ruflo's parallel agent architecture makes it practical to refactor a 200,000-line codebase in a single coordinated session. The Queen agent decomposes the refactor into file-level workstreams, assigns worker agents to each, and synthesizes results into a coherent diff that maintains consistency across the entire change set. What takes a human team weeks takes hours.
-
-**Parallel feature development.** Multiple features can be developed simultaneously by different agent teams, with a shared memory layer preventing conflicts. Agent-enforced SPARC means every feature arrives with a spec, pseudocode, architecture decision record, and test coverage.
-
-### 6.2 Cost Reduction
-
-**API cost reduction of up to ~75%.** Ruflo's multi-tier routing (WASM + LLMs) uses lightweight local models for routing decisions and simple tasks, reserving expensive LLM calls for work that actually requires them. Intelligent caching via AgentDB prevents re-generating knowledge that already exists in the pattern store.
-
-**Avoiding platform premiums.** Organizations using dedicated agent frameworks (vs. managed AI platforms) report 55% lower per-agent costs. Open-source frameworks give you the primitives; you control the infrastructure.
-
-### 6.3 Quality and Reliability
-
-**SPARC-enforced quality gates.** Every feature that goes through the full SPARC pipeline arrives with a specification, architecture decision, and passing tests. This dramatically reduces production defects compared to ad-hoc agentic coding.
-
-**Self-learning improvement.** The 9 reinforcement learning algorithms in AgentDB mean the swarm gets better at routing, agent selection, and task decomposition over time. Success patterns are stored and used to initialize future runs.
-
-**Fault-tolerant consensus.** Swarm-based coordination with consensus mechanisms means individual agent failures don't collapse the whole task. The swarm continues with degraded capacity and the Queen reassigns failed workstreams.
-
-### 6.4 Governance and Compliance
-
-**Systematic audit trails.** Every swarm run creates a record: agents involved, decisions made, tools invoked, outputs produced. This audit trail is the evidence that compliance and risk teams need — and it's generated automatically, not manually.
-
-**MutationGuard with cryptographic proof.** AgentDB v3's `MutationGuard` provides cryptographically verified writes — every state mutation has an immutable attestation log. This is critical for regulated industries where data integrity must be provable.
-
----
-
-## 7. Evaluation (Evals) Framework
-
-### 7.1 Eval Taxonomy
-
-Well-designed agent evals operate across three layers:
-
-```
-Layer 1: Output Quality
-  ├── Factual Accuracy        — Are stated facts correct?
-  ├── Faithfulness            — Is the output grounded in context (no hallucination)?
-  ├── Relevance               — Does the output address the task?
-  └── Safety                 — No harmful, toxic, or policy-violating content
-
-Layer 2: Trajectory Quality
-  ├── Tool Selection          — Did the agent pick the right tools?
-  ├── Tool Arguments          — Were tools called with correct parameters?
-  ├── Error Recovery          — Did the agent recover gracefully from failures?
-  ├── Efficiency              — Was the goal achieved with minimal unnecessary steps?
-  └── Routing Accuracy        — Did the orchestrator send tasks to the right agents?
-
-Layer 3: Business Alignment
-  ├── Task Success Rate       — Did the agent achieve the assigned goal?
-  ├── Latency                 — Does it meet SLA requirements?
-  ├── Cost per Task           — Is the token spend within acceptable bounds?
-  └── Human Override Rate     — How often do humans need to correct or reject outputs?
-```
-
-### 7.2 Eval Types
-
-**Offline Evaluation (pre-deployment)**
-- Fixed dataset of representative test cases (start with 50–100, grow over time)
-- Run against every model version change, prompt change, tool change
-- Block deployment if acceptance thresholds are not met
-- Tools: DeepEval, Inspect.AI, OpenAI Evals, PromptFoo, MLflow Evaluation
-
-**Online Evaluation (production monitoring)**
-- Lightweight continuous monitoring on sampled production traffic
-- LLM-as-a-judge for quality dimensions at scale
-- Route flagged outputs to human reviewers for ground truth labeling
-- Feed labeled production data back into offline eval datasets
-- Tools: Arize AI, LangSmith, Confident AI, Maxim
-
-**Red-Teaming and Adversarial Evals**
-- Prompt injection attacks (especially critical for tool-use agents)
-- Goal drift and policy violation detection
-- Multi-agent collusion scenarios
-- Boundary and edge-case stress testing
-- Tools: AGENTSAFE scenario banks, Conscium virtual simulations
-
-### 7.3 LLM-as-a-Judge Implementation
-
-```python
-# Example: LLM judge for factual accuracy
-judge_prompt = """
-You are an expert evaluator. Given a task, a reference answer, and an agent's response,
-rate the factual accuracy of the agent's response on a scale of 0-10.
-
-Task: {task}
-Reference Answer: {reference}
-Agent Response: {response}
-
-Respond ONLY with a JSON object:
-{
-  "score": <0-10>,
-  "reasoning": "<brief explanation>",
-  "pass": <true if score >= 7>
+  console.log(result.output);
+  console.log(`Tokens used: ${result.usage.totalTokens}`);
 }
-"""
 
-# Evaluate at scale without human review of every response
-# Route low-confidence cases (e.g., score 5-7) to human review queue
+main().catch(console.error);
 ```
 
-### 7.4 Eval Metrics Thresholds (Starter Template)
+```bash
+node quick-start.js
+```
 
-| Metric | Minimum Acceptable | Target | Block Deployment Below |
-|---|---|---|---|
-| Factual Accuracy | 0.80 | 0.90 | 0.75 |
+---
+
+## 5. Framework Comparison
+
+| Framework | Language | Orchestration model | Memory | Tool integration | Cloud hosting | Best for |
+|-----------|----------|---------------------|--------|-----------------|---------------|----------|
+| **claude-flow** | TypeScript / Node.js | Hive-mind (Queen + Workers), SPARC pipeline | SQLite + vector index | MCP servers, bash, file system | Self-hosted | AI-native software development, multi-phase coding tasks |
+| **LangGraph** | Python | Directed acyclic graph (nodes + edges) | Built-in checkpointing, time-travel | LangChain tool ecosystem | LangSmith Cloud | Production stateful workflows, highest control and auditability |
+| **CrewAI** | Python | Role-based crew (sequential or hierarchical) | Task output passing | CrewAI tools, custom tools | CrewAI Enterprise | Business process automation, fastest prototype to first result |
+| **AutoGen / AG2** | Python | Conversational GroupChat, speaker selection | Conversation history (in-memory or custom) | Function calling, custom executors | Azure AutoGen | Research tasks, iterative dialogue, debate-style reasoning |
+| **Google ADK** | Python | Hierarchical agent tree | Session state, Vertex pluggable backends | Google Cloud tools, MCP | Google Vertex AI | Google Cloud / Vertex AI workloads, A2A interoperability |
+| **OpenAI Agents SDK** | Python | Explicit handoffs, triage agent pattern | Context variables (ephemeral) | OpenAI built-in tools | OpenAI platform | OpenAI-native deployments, rapid prototyping on OpenAI stack |
+
+!!! note "Choosing a framework"
+    Framework selection should be driven by your primary cloud platform, team language preference, and the nature of the task (is it a pipeline or a conversation?). Avoid mixing multiple orchestration frameworks in a single workflow — the coordination complexity is not worth it. Standardise on one primary framework and extend it.
+
+---
+
+## 6. Multi-Agent Patterns
+
+### 6.1 Hierarchical Orchestration (Queen Spawns Workers)
+
+The Queen receives the goal, decomposes it, spawns workers in parallel, waits for results, and synthesises.
+
+```javascript
+// hierarchical-orchestration.js
+const { ClaudeFlow, Agent } = require('claude-flow');
+
+const flow = new ClaudeFlow({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  model: 'claude-sonnet-4-6',
+});
+
+async function buildFeature(featureDescription) {
+  // Define specialised agents
+  const queen = new Agent({
+    role: 'orchestrator',
+    instructions: `You are the Queen agent. Decompose the given feature into:
+    1. A specification document
+    2. Implementation tasks
+    3. Test cases
+    Assign each to the appropriate worker agent.`,
+    tools: ['spawn_agent', 'memory_write', 'memory_read'],
+  });
+
+  const coder = new Agent({
+    role: 'coder',
+    instructions: 'Implement the feature to the specification. Write clean, documented code.',
+    tools: ['file_write', 'file_read', 'memory_read', 'bash'],
+  });
+
+  const tester = new Agent({
+    role: 'tester',
+    instructions: 'Write comprehensive unit tests. Aim for >90% coverage.',
+    tools: ['file_write', 'file_read', 'bash', 'memory_read'],
+  });
+
+  const reviewer = new Agent({
+    role: 'reviewer',
+    instructions: 'Review code and tests. Check for correctness, edge cases, and code quality.',
+    tools: ['file_read', 'memory_read', 'memory_write'],
+  });
+
+  const swarm = await flow.createSwarm({
+    queen,
+    workers: [coder, tester, reviewer],
+    topology: 'hierarchical',
+    memoryNamespace: 'feature-build',
+  });
+
+  return swarm.run({ task: featureDescription });
+}
+
+buildFeature('JWT authentication with refresh token rotation')
+  .then(r => console.log(r.output))
+  .catch(console.error);
+```
+
+### 6.2 Peer-to-Peer Collaboration (Agents Share a Memory Pool)
+
+Agents work independently but read each other's outputs from the shared memory pool, building on prior work.
+
+```javascript
+// peer-collaboration.js
+const { ClaudeFlow, Agent, MemoryPool } = require('claude-flow');
+
+const flow = new ClaudeFlow({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  model: 'claude-sonnet-4-6',
+});
+
+async function collaborativeResearch(topic) {
+  const memory = new MemoryPool({ namespace: 'research', backend: 'sqlite' });
+
+  // Each agent runs concurrently and deposits findings into shared memory
+  const agents = [
+    new Agent({
+      role: 'literature-reviewer',
+      instructions: `Research existing approaches to: ${topic}. Store findings in memory under key "prior-art".`,
+      tools: ['web_search', 'memory_write'],
+    }),
+    new Agent({
+      role: 'technical-analyst',
+      instructions: `Analyse technical feasibility of: ${topic}. Read "prior-art" from memory first.`,
+      tools: ['memory_read', 'memory_write'],
+    }),
+    new Agent({
+      role: 'risk-assessor',
+      instructions: `Identify risks for: ${topic}. Read all memory keys before writing risk assessment.`,
+      tools: ['memory_read', 'memory_write'],
+    }),
+  ];
+
+  // Run all agents concurrently with access to the same memory pool
+  const results = await Promise.all(
+    agents.map(agent => flow.runAgent(agent, { memory }))
+  );
+
+  // Synthesise: final agent reads all memory and produces report
+  const synthesiser = new Agent({
+    role: 'synthesiser',
+    instructions: 'Read all memory entries and produce a structured research report.',
+    tools: ['memory_read'],
+  });
+
+  return flow.runAgent(synthesiser, { memory });
+}
+
+collaborativeResearch('stateless MCP server architecture').then(r => console.log(r.output));
+```
+
+### 6.3 Competitive Evaluation (Multiple Agents, Judge Picks Best)
+
+Multiple agents independently produce outputs; a judge agent selects the best based on defined criteria.
+
+```javascript
+// competitive-evaluation.js
+const { ClaudeFlow, Agent } = require('claude-flow');
+
+const flow = new ClaudeFlow({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  model: 'claude-sonnet-4-6',
+});
+
+async function getBestImplementation(requirement) {
+  // Spawn three independent implementers concurrently
+  const implementers = ['coder-a', 'coder-b', 'coder-c'].map(id =>
+    new Agent({
+      id,
+      role: 'implementer',
+      instructions: `Implement this requirement independently: ${requirement}. Optimise for readability.`,
+      tools: ['file_write'],
+    })
+  );
+
+  // Run in parallel — each produces an independent implementation
+  const implementations = await Promise.all(
+    implementers.map(agent => flow.runAgent(agent, {}))
+  );
+
+  // Judge picks the best
+  const judge = new Agent({
+    role: 'judge',
+    instructions: `You will receive ${implementations.length} implementations of the same requirement.
+    Evaluate each on: correctness, readability, edge case handling, and test coverage.
+    Select the best and explain why the others were not selected.`,
+    tools: [],
+  });
+
+  const judgeInput = implementations.map((impl, i) => ({
+    label: `Implementation ${i + 1}`,
+    code: impl.output,
+  }));
+
+  return flow.runAgent(judge, { context: JSON.stringify(judgeInput) });
+}
+
+getBestImplementation('rate limiter with sliding window and Redis backend')
+  .then(r => console.log(r.output));
+```
+
+!!! warning "Cost of competitive evaluation"
+    The competitive pattern runs 3+ independent LLM calls for a single task plus a judge call. Use it only for high-stakes outputs where the quality improvement justifies the cost. For most tasks, hierarchical orchestration with a single reviewer is more cost-effective.
+
+---
+
+## 7. Memory and State
+
+### SPARC Memory System
+
+claude-flow's memory layer is SQLite-backed with vector indexing for semantic retrieval. Memory is namespaced — agents in different workflows do not share memory unless explicitly configured.
+
+```bash
+# Store a reusable pattern
+npx claude-flow memory store \
+  --key "patterns:auth" \
+  --value "JWT with refresh token rotation; bcrypt for passwords; RBAC for authorisation" \
+  --namespace "project-patterns"
+
+# Semantic search — retrieves the most relevant stored knowledge
+npx claude-flow memory search \
+  --query "authentication best practices" \
+  --namespace "project-patterns" \
+  --limit 5
+
+# List all keys in a namespace
+npx claude-flow memory list --namespace "project-patterns"
+
+# Delete a key
+npx claude-flow memory delete --key "patterns:auth" --namespace "project-patterns"
+```
+
+### Shared Context Strategies
+
+| Strategy | When to use | Implementation |
+|----------|-------------|---------------|
+| **Namespace per workflow** | Default; isolates context per feature or session | `--namespace "workflow-id"` |
+| **Shared pattern namespace** | Reusable engineering patterns across workflows | Long-lived namespace; curated manually |
+| **Session namespace** | Ephemeral; auto-deleted after session ends | `--namespace "session-$(date +%s)"` |
+| **Semantic retrieval** | When agents need context but you cannot know which key | Use `memory search` rather than `memory get` |
+
+### Avoiding Memory Bloat
+
+```javascript
+// Memory hygiene: set TTLs on ephemeral state
+await memory.store('working-draft', content, {
+  namespace: 'session',
+  ttlSeconds: 3600,   // auto-expires after 1 hour
+});
+
+// Compact a long-lived namespace periodically
+await memory.compact('project-patterns', {
+  deduplicateSimilarityThreshold: 0.95,   // remove near-duplicates
+  maxEntries: 500,
+});
+```
+
+---
+
+## 8. Evaluation Framework
+
+### 3-Layer Evaluation Taxonomy
+
+A well-designed multi-agent evaluation covers three layers. Measuring only final output quality misses the majority of agent failure modes.
+
+```
+Layer 1 — Output Quality
+  ├── Correctness        Does the output solve the stated requirement?
+  ├── Faithfulness       Are claims grounded in retrieved context?
+  ├── Relevance          Does the output address what was asked?
+  ├── Format compliance  Does the output match the expected schema/format?
+  └── Safety             No harmful, toxic, or policy-violating content
+
+Layer 2 — Trajectory Quality
+  ├── Tool selection     Did the agent choose the right tools?
+  ├── Tool arguments     Were tools called with correct parameters?
+  ├── Error recovery     Did the agent recover gracefully from tool failures?
+  ├── Step efficiency    Was the goal achieved without unnecessary steps?
+  └── Routing accuracy   Did the orchestrator send tasks to the right agents?
+
+Layer 3 — Business Alignment
+  ├── Task success rate  Did the agent achieve the assigned goal?
+  ├── Latency            Does end-to-end time meet SLA requirements?
+  ├── Cost per task      Is token spend within budget?
+  └── Human override rate How often do humans need to correct outputs?
+```
+
+### Metric Thresholds (Starter Template)
+
+Define thresholds before the first eval run — not after deployment. These are starting points; adjust to your specific domain and risk tolerance.
+
+| Metric | Minimum acceptable | Target | Block deployment below |
+|--------|-------------------|--------|----------------------|
+| Correctness | 0.80 | 0.90 | 0.75 |
 | Faithfulness (RAG) | 0.85 | 0.95 | 0.80 |
-| Task Success Rate | 0.75 | 0.90 | 0.70 |
-| Routing Accuracy | 0.85 | 0.95 | 0.80 |
+| Task success rate | 0.75 | 0.90 | 0.70 |
+| Routing accuracy | 0.85 | 0.95 | 0.80 |
 | Safety (no violations) | 1.00 | 1.00 | 0.99 |
 | Latency P95 (seconds) | < 30 | < 15 | > 60 |
 
-*Thresholds must be defined collaboratively with governance stakeholders before the first eval run.*
+!!! tip "Collaborating on thresholds"
+    Thresholds must be agreed with governance stakeholders before deployment, not set unilaterally by engineering. A threshold defined after seeing scores is not a threshold — it is a retrospective justification.
 
-### 7.5 CI/CD Integration
+---
+
+## 9. Evaluation Harness
+
+### LLM-as-Judge Implementation
+
+```python
+# eval_harness.py
+import json
+import anthropic
+from dataclasses import dataclass
+from typing import Optional
+
+client = anthropic.Anthropic()
+
+@dataclass
+class EvalCase:
+    task: str
+    expected: str
+    context: Optional[str] = None
+
+@dataclass
+class EvalResult:
+    case: EvalCase
+    actual_output: str
+    score: float
+    reasoning: str
+    passed: bool
+
+JUDGE_PROMPT = """You are an expert evaluator assessing an AI agent's output.
+
+Task: {task}
+Expected (reference): {expected}
+Agent output: {actual}
+{context_block}
+
+Rate the agent output on correctness (0.0–1.0). Consider:
+- Does it correctly solve the task?
+- Does it cover edge cases the reference covers?
+- Are there factual errors?
+
+Respond ONLY with valid JSON:
+{{
+  "score": <0.0-1.0>,
+  "reasoning": "<one sentence explanation>",
+  "passed": <true if score >= 0.75>
+}}"""
+
+def evaluate_output(case: EvalCase, actual_output: str) -> EvalResult:
+    context_block = f"Context provided: {case.context}" if case.context else ""
+    prompt = JUDGE_PROMPT.format(
+        task=case.task,
+        expected=case.expected,
+        actual=actual_output,
+        context_block=context_block,
+    )
+    response = client.messages.create(
+        model='claude-sonnet-4-6',
+        max_tokens=256,
+        messages=[{'role': 'user', 'content': prompt}],
+    )
+    verdict = json.loads(response.content[0].text)
+    return EvalResult(
+        case=case,
+        actual_output=actual_output,
+        score=verdict['score'],
+        reasoning=verdict['reasoning'],
+        passed=verdict['passed'],
+    )
+
+def run_eval_suite(dataset_path: str, agent_runner) -> dict:
+    """Run full eval suite, return summary metrics."""
+    with open(dataset_path) as f:
+        cases = [EvalCase(**json.loads(line)) for line in f if line.strip()]
+
+    results = []
+    for case in cases:
+        actual = agent_runner(case.task, case.context)   # call your agent here
+        result = evaluate_output(case, actual)
+        results.append(result)
+
+    passed = [r for r in results if r.passed]
+    return {
+        'total': len(results),
+        'passed': len(passed),
+        'pass_rate': len(passed) / len(results),
+        'avg_score': sum(r.score for r in results) / len(results),
+        'failures': [
+            {'task': r.case.task, 'score': r.score, 'reason': r.reasoning}
+            for r in results if not r.passed
+        ],
+    }
+
+if __name__ == '__main__':
+    import sys
+    # Usage: python eval_harness.py evals/baseline.jsonl
+    summary = run_eval_suite(sys.argv[1], agent_runner=lambda t, c: "stub output")
+    print(json.dumps(summary, indent=2))
+    if summary['pass_rate'] < 0.75:
+        print("EVAL FAILED: pass rate below 0.75 threshold")
+        sys.exit(1)
+```
+
+### Eval Dataset Format
+
+```jsonl
+{"task": "Write a Python function to validate an email address", "expected": "Returns True for valid emails, False for invalid. Handles edge cases: missing @, multiple @, domain without TLD.", "context": null}
+{"task": "Summarise the key points of this document", "expected": "3-5 bullet points covering the main arguments", "context": "The document argues that..."}
+```
+
+---
+
+## 10. Stress Testing
+
+### Concurrent Agent Load Testing
+
+```javascript
+// stress-test.js
+const { ClaudeFlow } = require('claude-flow');
+
+const flow = new ClaudeFlow({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  model: 'claude-sonnet-4-6',
+});
+
+async function stressTest({
+  concurrentAgents = 10,
+  tasksPerAgent = 5,
+  timeoutMs = 30_000,
+}) {
+  const tasks = Array.from({ length: concurrentAgents }, (_, i) => `agent-${i}`);
+  const results = { succeeded: 0, failed: 0, timedOut: 0, errors: [] };
+
+  await Promise.allSettled(
+    tasks.map(async (agentId) => {
+      for (let t = 0; t < tasksPerAgent; t++) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => {
+          controller.abort();
+          results.timedOut++;
+        }, timeoutMs);
+
+        try {
+          await flow.runAgent(
+            { id: agentId, role: 'tester', instructions: `Complete task ${t}` },
+            { signal: controller.signal }
+          );
+          results.succeeded++;
+        } catch (err) {
+          if (err.name === 'AbortError') {
+            // already counted in timedOut
+          } else {
+            results.failed++;
+            results.errors.push({ agentId, task: t, error: err.message });
+          }
+        } finally {
+          clearTimeout(timeout);
+        }
+      }
+    })
+  );
+
+  return results;
+}
+
+stressTest({ concurrentAgents: 10, tasksPerAgent: 5 }).then(r => {
+  console.log('Stress test results:', r);
+  const failRate = (r.failed + r.timedOut) / (r.succeeded + r.failed + r.timedOut);
+  if (failRate > 0.05) {
+    console.error(`FAIL: failure rate ${(failRate * 100).toFixed(1)}% exceeds 5% threshold`);
+    process.exit(1);
+  }
+});
+```
+
+### Resource Limits
+
+```javascript
+// resource-limited-swarm.js
+const swarm = await flow.createSwarm({
+  topology: 'hierarchical',
+  agents: ['coder', 'tester'],
+  limits: {
+    maxConcurrentAgents: 5,       // cap parallelism
+    maxTokensPerAgent: 50_000,    // per-agent token budget
+    maxTotalTokens: 200_000,      // workflow-level budget
+    timeoutMs: 60_000,            // per-agent timeout
+    retryOnTimeout: true,
+    maxRetries: 2,
+  },
+});
+```
+
+---
+
+## 11. Parallelism
+
+### Spawning Concurrent Agents
+
+```javascript
+// parallel-agents.js
+const { ClaudeFlow } = require('claude-flow');
+
+const flow = new ClaudeFlow({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  model: 'claude-sonnet-4-6',
+});
+
+async function parallelFileProcessing(filePaths) {
+  // Process up to 5 files concurrently; serialise the rest
+  const CONCURRENCY = 5;
+  const results = [];
+
+  for (let i = 0; i < filePaths.length; i += CONCURRENCY) {
+    const batch = filePaths.slice(i, i + CONCURRENCY);
+
+    const batchResults = await Promise.all(
+      batch.map(filePath =>
+        flow.runAgent(
+          {
+            role: 'file-processor',
+            instructions: `Analyse this file and extract key information: ${filePath}`,
+            tools: ['file_read', 'memory_write'],
+          },
+          { memoryKey: `result:${filePath}` }
+        )
+      )
+    );
+
+    results.push(...batchResults);
+    console.log(`Processed batch ${Math.floor(i / CONCURRENCY) + 1}: ${batch.length} files`);
+  }
+
+  return results;
+}
+```
+
+### Result Aggregation and Race Condition Prevention
+
+```javascript
+// safe-aggregation.js
+const { Mutex } = require('async-mutex');  // npm install async-mutex
+
+const mutex = new Mutex();
+const aggregatedResults = [];
+
+async function safeAggregate(agentResult) {
+  // Serialise writes to prevent concurrent modification
+  const release = await mutex.acquire();
+  try {
+    aggregatedResults.push(agentResult);
+  } finally {
+    release();
+  }
+}
+
+// In your agent runner:
+await Promise.all(
+  agents.map(async agent => {
+    const result = await flow.runAgent(agent, {});
+    await safeAggregate(result);
+  })
+);
+```
+
+---
+
+## 12. Token Optimisation
+
+### Per-Agent Token Budget
+
+Assign token budgets at the agent level to prevent runaway spend from a single verbose agent.
+
+```javascript
+const swarm = await flow.createSwarm({
+  agents: [
+    {
+      role: 'coder',
+      tokenBudget: {
+        maxInputTokens: 20_000,
+        maxOutputTokens: 4_000,
+      },
+    },
+    {
+      role: 'reviewer',
+      tokenBudget: {
+        maxInputTokens: 8_000,
+        maxOutputTokens: 1_000,    // reviewers write less than coders
+      },
+    },
+  ],
+});
+```
+
+### Shared Context Strategies
+
+Agents sharing a large context window (e.g., a codebase) should read from the shared memory store rather than each receiving the full context.
+
+```javascript
+// Instead of this (wasteful — N agents each get the full codebase):
+const fullCodebase = fs.readFileSync('src/index.ts', 'utf8');  // 50,000 tokens
+agents.map(agent => flow.runAgent(agent, { context: fullCodebase }));
+
+// Do this (agents retrieve only the relevant sections):
+await memory.store('codebase:index', fullCodebase, { namespace: 'project' });
+// Agent instructions: "Read the relevant sections from memory using memory_read."
+// Each agent retrieves only the ~2,000 tokens it actually needs.
+```
+
+### Output Length Controls
+
+```javascript
+const agent = new Agent({
+  role: 'summariser',
+  instructions: 'Summarise the document in exactly 3 bullet points. Do not exceed 150 words.',
+  // Explicit length constraints in the prompt reduce output token spend
+  maxOutputTokens: 300,   // hard cap as a backstop
+});
+```
+
+---
+
+## 13. Cost Optimisation
+
+### Model Routing by Task Complexity
+
+Use the cheapest model capable of the task. Reserve expensive models for tasks that actually require their capability.
+
+```javascript
+// cost-optimised-swarm.js
+const flow = new ClaudeFlow({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+const swarm = await flow.createSwarm({
+  agents: [
+    {
+      role: 'router',
+      // Routing decisions do not need a frontier model
+      model: 'claude-haiku-4-5',
+      instructions: 'Classify the task type and route to the appropriate specialist.',
+    },
+    {
+      role: 'coder',
+      // Complex reasoning benefits from a mid-tier model
+      model: 'claude-sonnet-4-6',
+      instructions: 'Implement the feature to spec.',
+    },
+    {
+      role: 'tester',
+      // Test generation is pattern-following — haiku is sufficient
+      model: 'claude-haiku-4-5',
+      instructions: 'Write unit tests for the implementation.',
+    },
+    {
+      role: 'architect',
+      // Architecture decisions with high stakes warrant the best model
+      model: 'claude-fable-5',
+      instructions: 'Review the architecture and identify systemic risks.',
+    },
+  ],
+});
+```
+
+**Model reference (July 2026):**
+
+| Model | Input (per MTok) | Output (per MTok) | Best for in multi-agent |
+|-------|-----------------|------------------|-----------------------|
+| Claude Haiku 4.5 | Low cost | Low cost | Routing, classification, test generation, summarisation |
+| Claude Sonnet 4.6 | Moderate | Moderate | Implementation, research, standard reasoning |
+| Claude Sonnet 5 | $3 | $15 | Production-quality reasoning, most enterprise tasks |
+| Claude Fable 5 | $10 | $50 | Complex architecture decisions, high-stakes reasoning |
+
+For current pricing, see [Models 2026](claude-models-2026.md).
+
+### Cost Tracking Per Workflow
+
+```javascript
+// cost-tracker.js
+class CostTracker {
+  constructor() {
+    this.records = [];
+  }
+
+  record(workflowId, agentRole, usage) {
+    this.records.push({
+      workflowId,
+      agentRole,
+      inputTokens: usage.input_tokens,
+      outputTokens: usage.output_tokens,
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  summary(workflowId) {
+    const workflow = this.records.filter(r => r.workflowId === workflowId);
+    return {
+      totalInput: workflow.reduce((s, r) => s + r.inputTokens, 0),
+      totalOutput: workflow.reduce((s, r) => s + r.outputTokens, 0),
+      byAgent: Object.groupBy(workflow, r => r.agentRole),
+    };
+  }
+}
+
+const tracker = new CostTracker();
+
+// Instrument each agent run:
+const result = await flow.runAgent(agent, {});
+tracker.record('workflow-001', agent.role, result.usage);
+```
+
+---
+
+## 14. Guardrails
+
+### Agent Action Whitelists
+
+```javascript
+// guardrailed-swarm.js
+const AGENT_PERMISSIONS = {
+  coder:    ['file_read', 'file_write', 'bash', 'memory_read'],
+  tester:   ['file_read', 'bash', 'memory_read', 'memory_write'],
+  reviewer: ['file_read', 'memory_read'],
+  queen:    ['spawn_agent', 'memory_read', 'memory_write'],
+};
+
+// Enforce at runtime — reject tool calls outside the whitelist
+function buildAgent(role) {
+  const allowedTools = AGENT_PERMISSIONS[role] ?? [];
+  return new Agent({
+    role,
+    tools: allowedTools,
+    onToolCall: (toolName, args) => {
+      if (!allowedTools.includes(toolName)) {
+        throw new Error(`GUARDRAIL: ${role} is not authorised to call ${toolName}`);
+      }
+    },
+  });
+}
+```
+
+### Output Validation
+
+```python
+# output_validator.py — validates agent outputs before they leave the system
+import re
+import json
+
+# Patterns that should never appear in outputs
+BLOCKED_PATTERNS = [
+    r'\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b',   # credit card
+    r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',  # email (when unexpected)
+    r'AKIA[0-9A-Z]{16}',                            # AWS access key
+    r'sk-[a-zA-Z0-9]{40,}',                         # API key pattern
+]
+
+def validate_output(output: str, context: dict) -> tuple[bool, list[str]]:
+    """Returns (is_valid, list_of_violations)."""
+    violations = []
+    for pattern in BLOCKED_PATTERNS:
+        if re.search(pattern, output):
+            violations.append(f"Blocked pattern detected: {pattern}")
+    if len(output) > context.get('max_output_length', 10_000):
+        violations.append("Output exceeds maximum allowed length")
+    return len(violations) == 0, violations
+
+# Use in your agent pipeline:
+is_valid, violations = validate_output(agent_result.output, {'max_output_length': 5_000})
+if not is_valid:
+    log_violation(violations)
+    raise GuardrailViolation(f"Output blocked: {violations}")
+```
+
+### HITL Gates
+
+```javascript
+// hitl-gate.js
+async function withHumanApproval(action, actionDescription, {
+  timeoutMs = 300_000,   // 5 minutes
+  onTimeout = 'reject',  // 'reject' | 'approve' | 'escalate'
+} = {}) {
+  const approvalRequest = await notifyApprover({
+    description: actionDescription,
+    requestedAt: new Date().toISOString(),
+  });
+
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      if (onTimeout === 'approve') {
+        console.warn(`HITL timeout: auto-approving "${actionDescription}"`);
+        resolve(action());
+      } else if (onTimeout === 'escalate') {
+        notifyEscalation(approvalRequest);
+        reject(new Error(`HITL timeout: escalated "${actionDescription}"`));
+      } else {
+        reject(new Error(`HITL timeout: rejected "${actionDescription}"`));
+      }
+    }, timeoutMs);
+
+    approvalRequest.onDecision(decision => {
+      clearTimeout(timer);
+      if (decision === 'approved') {
+        resolve(action());
+      } else {
+        reject(new Error(`Human rejected action: "${actionDescription}"`));
+      }
+    });
+  });
+}
+
+// Usage — wrap irreversible agent actions:
+await withHumanApproval(
+  () => deployToProduction(build),
+  'Deploy build v1.42 to production',
+  { timeoutMs: 600_000, onTimeout: 'reject' }
+);
+```
+
+!!! warning "Timeout handling is not optional"
+    Every HITL gate must specify what happens when no human responds within the timeout. Leaving the agent blocked indefinitely creates availability problems. Define the default explicitly — and for most irreversible actions, the right default is to reject and log, not to approve automatically.
+
+---
+
+## 15. Governance
+
+### Audit Logging
+
+Every agent action, tool call, and decision should be logged with enough context to reconstruct what happened and why.
+
+```javascript
+// audit-logger.js
+class AuditLogger {
+  constructor(workflowId) {
+    this.workflowId = workflowId;
+    this.entries = [];
+  }
+
+  log(event) {
+    const entry = {
+      workflowId: this.workflowId,
+      timestamp: new Date().toISOString(),
+      ...event,
+    };
+    this.entries.push(entry);
+    // In production: ship to your observability backend
+    console.log(JSON.stringify(entry));
+  }
+
+  agentStarted(agentId, role, task) {
+    this.log({ type: 'AGENT_STARTED', agentId, role, task });
+  }
+
+  toolCalled(agentId, toolName, args) {
+    // Redact sensitive args before logging
+    const safeArgs = redactSensitive(args);
+    this.log({ type: 'TOOL_CALLED', agentId, toolName, args: safeArgs });
+  }
+
+  agentCompleted(agentId, outputSummary, usage) {
+    this.log({ type: 'AGENT_COMPLETED', agentId, outputSummary, usage });
+  }
+
+  policyViolation(agentId, violation) {
+    this.log({ type: 'POLICY_VIOLATION', agentId, violation, severity: 'HIGH' });
+  }
+}
+```
+
+### Agent Activity Tracking
+
+```javascript
+// activity-tracker.js
+const swarm = await flow.createSwarm({
+  agents: ['coder', 'tester', 'reviewer'],
+  onAgentEvent: (event) => {
+    auditLogger.log(event);   // every event goes to audit log
+    if (event.type === 'tool_call' && SENSITIVE_TOOLS.includes(event.toolName)) {
+      notifyGovernanceChannel(event);
+    }
+  },
+});
+```
+
+### Rollback Capability
+
+```javascript
+// rollback-support.js
+class CheckpointedWorkflow {
+  constructor() {
+    this.checkpoints = [];
+  }
+
+  async saveCheckpoint(label, state) {
+    this.checkpoints.push({
+      label,
+      timestamp: new Date().toISOString(),
+      state: JSON.parse(JSON.stringify(state)),  // deep clone
+    });
+  }
+
+  async rollbackTo(label) {
+    const checkpoint = this.checkpoints.findLast(c => c.label === label);
+    if (!checkpoint) throw new Error(`Checkpoint "${label}" not found`);
+    console.log(`Rolling back to checkpoint: ${label} (${checkpoint.timestamp})`);
+    return checkpoint.state;
+  }
+}
+
+const workflow = new CheckpointedWorkflow();
+
+// Save state before each risky phase
+await workflow.saveCheckpoint('pre-refactor', { files: currentFiles });
+const refactorResult = await swarm.run({ task: 'refactor auth module' });
+
+if (!refactorResult.testsPass) {
+  const previousState = await workflow.rollbackTo('pre-refactor');
+  await restoreFiles(previousState.files);
+}
+```
+
+---
+
+## 16. Best Practices
+
+1. **Decompose before spawning.** Define the work breakdown structure at the Queen level before spinning up workers. Agents with unclear scope waste tokens and produce inconsistent results.
+
+2. **Use hierarchical topology for complex tasks, mesh for collaborative ones.** Hierarchical gives the Queen clear authority over sequencing; mesh enables peer-to-peer knowledge sharing for research or creative tasks.
+
+3. **Single responsibility per agent.** A coder + tester + reviewer monolith agent is harder to route, harder to evaluate, and harder to replace. Three separate agents compose more predictably.
+
+4. **Store patterns, not just outputs.** Capture reusable engineering decisions in memory under stable keys. Later workflows retrieve them rather than rediscovering the same conclusions.
+
+5. **Use SPARC for all non-trivial feature work.** The specification-first discipline prevents scope creep, ensures testability, and creates a natural audit trail.
+
+6. **Namespace your memory keys.** Use consistent prefixes (`patterns:`, `decisions:`, `context:`) to prevent key collisions across agents and sessions.
+
+7. **Set explicit token budgets.** Per-agent token budgets prevent a verbose agent from consuming the entire workflow budget. Define them before the first production run.
+
+8. **Route by model capability.** Use Haiku for routing, classification, and test generation; Sonnet for implementation and reasoning; Fable for high-stakes architectural decisions. Do not overprovision.
+
+9. **Evaluate trajectories, not just outputs.** A correct final answer via a broken path is still a broken agent. Measure tool selection, step efficiency, and error recovery alongside output quality.
+
+10. **Integrate evals into CI/CD.** Every prompt change, tool change, or model version bump should trigger the eval suite. Block deployment on regression — not just on code errors.
+
+11. **Instrument with OTel from day one.** Retrofitting observability to a production agent system is expensive and incomplete. Emit traces at agent start, tool call, and completion from the first deployment.
+
+12. **Define HITL gates before go-live.** Enumerate which action categories require human approval. Implement the gates and test them — do not assume agents will stay within safe boundaries without enforcement.
+
+---
+
+## 17. Antipatterns
+
+1. **The Monolith Agent.** One agent tries to do everything: plan, code, test, review, deploy. It becomes impossible to route, evaluate, or replace individual capabilities. *Fix: split by single responsibility.*
+
+2. **Agent Sprawl.** Spawning 50 agents for a task that 5 can handle. Coordination overhead grows faster than throughput. *Fix: start with the minimum viable swarm; scale up based on measurement.*
+
+3. **Context Window Stuffing.** Passing the entire codebase into every agent's context. This maximises token cost and degrades reasoning quality as the model tries to process irrelevant content. *Fix: use semantic memory retrieval to pass only relevant context.*
+
+4. **Stateless Design.** No persistent memory between sessions. Agents re-learn the same patterns on every run. *Fix: store reusable patterns in a stable namespace; retrieve at session start.*
+
+5. **Tool Overloading.** Giving every agent access to every tool. This violates least privilege and makes agent behaviour harder to reason about. *Fix: each agent gets only the tools its role requires.*
+
+6. **Skipping SPARC.** Jumping straight to implementation without a specification phase. Agents code the wrong thing confidently. *Fix: enforce specification-first for all non-trivial features.*
+
+7. **Infinite Retry Loops.** Agents that retry failing tool calls without circuit breakers. A broken external dependency causes the agent to loop indefinitely. *Fix: set max retry limits and circuit breakers at the orchestrator level.*
+
+8. **Cascade Failure.** One agent failure blocks the entire swarm. *Fix: design for partial success; isolate agent failures and allow the swarm to continue with degraded capability.*
+
+9. **Token Burn on Simple Tasks.** Running a 5-agent debate to answer a question that a single prompt can resolve. 5 agents × multiple rounds = many unnecessary LLM calls. *Fix: match orchestration complexity to task complexity; use a single agent for simple tasks.*
+
+10. **Provider Lock-in.** Tightly coupling agent logic to one LLM provider's API idioms. A provider outage, price change, or capability regression has no mitigation path. *Fix: build model-agnostic abstractions; test failover paths.*
+
+11. **Launch-Day Evals Only.** Running evals once before deployment and never again. Model behaviour changes without code changes; prompt regressions from later changes go undetected. *Fix: continuous evaluation in CI/CD; treat evals as an operational process.*
+
+12. **Observability as an Afterthought.** Adding logging and tracing after a production incident. By then, the incident is over and the logs that would have explained it were never captured. *Fix: OTel-first from the first deployment; treat traces as a first-class system requirement.*
+
+---
+
+## 18. CI/CD Integration
+
+A complete GitHub Actions workflow that runs the eval suite on every PR that changes agent, prompt, or tool files.
 
 ```yaml
-# .github/workflows/agent-eval.yml
-name: Agent Evaluation Gate
+# .github/workflows/claude-flow-eval.yml
+name: claude-flow Agent Evaluation
 
 on:
   pull_request:
@@ -392,459 +1142,137 @@ on:
       - 'agents/**'
       - 'prompts/**'
       - 'tools/**'
+      - 'evals/**'
+  push:
+    branches: [main]
+    paths:
+      - 'agents/**'
+      - 'prompts/**'
 
 jobs:
-  evaluate:
+  eval-gate:
+    name: Evaluation Gate
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install claude-flow
+        run: npm install -g claude-flow
+
+      - name: Install Python eval dependencies
+        run: pip install anthropic
+
       - name: Run offline eval suite
-        run: |
-          npx ruflo eval run \
-            --dataset evals/baseline-100.jsonl \
-            --model claude-sonnet-4-20250514 \
-            --thresholds evals/thresholds.json \
-            --output evals/results/$(date +%Y%m%d-%H%M%S).json
-
-      - name: Check thresholds
-        run: npx ruflo eval check --results evals/results/*.json --fail-on-regression
-```
-
----
-
-## 8. Governance Framework
-
-### 8.1 The AGENTSAFE Model
-
-A practical governance framework for agentic systems covers three layers:
-
-**Design-time controls:**
-- Define agent roles, tool access, and data permissions explicitly
-- Apply principle of least privilege — each agent has only the access it needs
-- Document all tool interfaces and their potential side effects
-- Require SPARC methodology for feature development (built-in design audit trail)
-
-**Runtime controls:**
-- Semantic telemetry on every agent action (OTel-first)
-- Dynamic authorization — re-verify permissions before high-impact actions
-- Anomaly detection — alert when agent behavior deviates from expected patterns
-- Interruptibility — human override must be possible at any point in the agentic loop
-- `AttestationLog` for cryptographically immutable audit records (AgentDB v3)
-
-**Audit controls:**
-- Pre-deployment scenario bank: security, privacy, fairness, systemic safety
-- Post-deployment continuous eval with production data feedback loop
-- Regular red-team exercises for prompt injection and policy violation scenarios
-- Formal bias audits on a scheduled basis
-
-### 8.2 Human-in-the-Loop Spectrum
-
-```
-FULL AUTOMATION          SUPERVISED          HUMAN-IN-LOOP       HUMAN-ON-LOOP
-─────────────────────────────────────────────────────────────────────────────────
-Agent acts freely.   Human reviews      Human approves       Human monitors;
-No human checks.     outputs, can        before each          intervenes only
-                      correct before      high-impact action.  in emergencies.
-                      delivery.
-↓                    ↓                  ↓                    ↓
-Highest Risk         Good for           Required for         Best for high-
-Lowest Overhead      content tasks      irreversible         frequency, low-
-                                        actions              risk tasks
-```
-
-**Practical guidance:** Define which action categories require which level of oversight. Map this to your risk taxonomy before deployment.
-
-### 8.3 Observability Stack
-
-```
-Agent Execution
-     │
-     ▼ (OTel traces)
-Telemetry Pipeline
-     │
-     ├── Tool invocations
-     ├── Decision branches
-     ├── State mutations
-     └── Error events
-     │
-     ▼
-Observability Backend (Arize, LangSmith, Datadog)
-     │
-     ├── Real-time dashboards
-     ├── Anomaly alerts
-     ├── Eval scoring
-     └── Audit log export
-     │
-     ▼
-Governance Control Plane
-     │
-     ├── Policy enforcement
-     ├── Human review queue
-     ├── Compliance reporting
-     └── Risk escalation
-```
-
-### 8.4 Policy-as-Code
-
-Translate governance policies into executable rules using structured DSLs or code. Rather than relying on manual prompt authoring to enforce policies, generate executable checks from policy prose. This closes the gap between a written policy and actual system behavior.
-
-```python
-# Example: Policy rule — no PII in agent outputs to external tools
-@policy_rule(id="pii-001", severity="HIGH")
-def no_pii_in_external_calls(tool_call: ToolCall) -> PolicyResult:
-    """Prevent PII from being sent to external tools."""
-    if tool_call.destination == "external" and contains_pii(tool_call.arguments):
-        return PolicyResult.BLOCK(
-            reason="PII detected in external tool call",
-            escalate_to_human=True
-        )
-    return PolicyResult.ALLOW
-
-# Rules are automatically enforced at the language-to-action boundary
-# Violations are logged to AttestationLog with full trace context
-```
-
----
-
-## 9. How to Build One End-to-End
-
-This section walks through building a production-ready Ruflo-based multi-agent system with evals and governance from scratch.
-
-### Step 1: Define the Problem Scope
-
-Before touching any code:
-- What is the primary task the system must accomplish?
-- What are the sub-tasks that can be parallelized?
-- Which sub-tasks require specialized knowledge or tools?
-- What are the failure modes and their business impact?
-- What governance requirements apply (compliance, PII, audit trail)?
-
-**Output:** A written problem scope document. This becomes input to the Specification phase of SPARC.
-
-### Step 2: Design the Agent Topology
-
-```
-Decision tree:
-  Is the task sequential or parallelizable?
-    → Sequential: consider a single well-prompted agent + LangGraph
-    → Parallelizable: multi-agent swarm is justified
-
-  How many distinct specializations are needed?
-    → 1-3: simple pipeline with LangGraph or CrewAI
-    → 4-10: CrewAI crew or Ruflo with defined agent roles
-    → 10+: Ruflo hive-mind with Queen + Workers
-
-  Does the task require learning from past executions?
-    → Yes: Ruflo with AgentDB persistent memory
-    → No: stateless CrewAI or AutoGen may suffice
-```
-
-**For most engineering automation tasks: Ruflo with hierarchical topology.**
-
-### Step 3: Initialize Ruflo
-
-```bash
-# Install
-npm install -g ruflo@latest
-
-# Full initialization (recommended)
-npx ruflo@latest init --sparc --mcp
-
-# Verify MCP server registration
-npx ruflo status
-
-# Configure your LLM providers
-npx ruflo config set --provider anthropic --api-key $ANTHROPIC_API_KEY
-npx ruflo config set --provider openai --api-key $OPENAI_API_KEY  # optional failover
-```
-
-### Step 4: Define Your Agents
-
-```yaml
-# agents/config.yaml
-agents:
-  - name: queen
-    role: orchestrator
-    tools: [task_decomposition, agent_spawn, memory_store, synthesis]
-    model: claude-sonnet-4-20250514
-
-  - name: spec-agent
-    role: specification
-    tools: [memory_store, memory_search, web_search]
-    model: claude-sonnet-4-20250514
-
-  - name: coder
-    role: implementation
-    tools: [code_write, code_read, memory_search, bash_execute]
-    model: claude-sonnet-4-20250514
-
-  - name: tester
-    role: quality_assurance
-    tools: [code_read, test_run, memory_store]
-    model: claude-sonnet-4-20250514
-
-  - name: reviewer
-    role: code_review
-    tools: [code_read, memory_search, annotation]
-    model: claude-sonnet-4-20250514
-
-  - name: security-agent
-    role: security_audit
-    tools: [code_read, vuln_scan, memory_search]
-    model: claude-sonnet-4-20250514
-```
-
-### Step 5: Build the SPARC Pipeline
-
-```bash
-# Initialize the SPARC swarm
-npx claude-flow swarm init sparc-team \
-  --agents "specification,pseudocode,architecture,sparc-coder,tester" \
-  --topology hierarchical
-
-# Create an automated pipeline
-npx claude-flow workflow create \
-  --name "feature-pipeline" \
-  --template "sparc-tdd" \
-  --auto-advance \
-  --memory-persist
-
-# Run a feature through the full SPARC pipeline
-claude-flow sparc tdd "implement JWT authentication with refresh tokens" \
-  --agents specification,pseudocode,architecture,refinement
-```
-
-### Step 6: Set Up Persistent Memory
-
-```bash
-# Store foundational patterns before running complex tasks
-npx ruflo memory store \
-  --key "patterns:auth" \
-  --value "JWT with refresh tokens, bcrypt for password hashing, RBAC for authorization" \
-  --namespace patterns
-
-npx ruflo memory store \
-  --key "patterns:error-handling" \
-  --value "Structured error types, retry with exponential backoff, circuit breaker pattern" \
-  --namespace patterns
-
-npx ruflo memory store \
-  --key "decisions:api-style" \
-  --value "RESTful with OpenAPI 3.1 spec, versioned endpoints, pagination with cursors" \
-  --namespace decisions
-```
-
-### Step 7: Implement the Eval Suite
-
-```bash
-# Create eval dataset directory
-mkdir -p evals/datasets evals/results
-
-# Define your eval cases (evals/datasets/baseline.jsonl)
-# Each line: {"task": "...", "expected": "...", "context": "..."}
-
-# Run offline evals
-npx ruflo eval run \
-  --dataset evals/datasets/baseline.jsonl \
-  --agents all \
-  --output evals/results/$(date +%Y%m%d).json
-
-# Check results against thresholds
-npx ruflo eval check \
-  --results evals/results/latest.json \
-  --thresholds evals/thresholds.json
-```
-
-### Step 8: Configure Governance and Observability
-
-```bash
-# Set up OTel tracing
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://your-observability-backend"
-export OTEL_SERVICE_NAME="ruflo-agent-swarm"
-
-# Configure policy rules
-npx ruflo policy add --rule "no-pii-external" --severity HIGH
-npx ruflo policy add --rule "human-approval-required" --actions "deploy,delete" --severity CRITICAL
-
-# Enable attestation logging
-npx ruflo config set --attestation-log enabled
-npx ruflo config set --audit-trail enabled
-
-# Set human-in-loop gates
-npx ruflo hitl configure \
-  --require-approval-for "production_deploy,database_write,external_api" \
-  --escalation-email "team@yourcompany.com"
-```
-
-### Step 9: Integrate with CI/CD
-
-```yaml
-# .github/workflows/ruflo-pipeline.yml
-name: Ruflo Agent Pipeline
-
-on: [push, pull_request]
-
-jobs:
-  sparc-eval:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Ruflo
-        run: npm install -g ruflo@latest
-
-      - name: Run eval suite
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          npx ruflo eval run \
-            --dataset evals/datasets/baseline.jsonl \
-            --thresholds evals/thresholds.json \
+          RESULTS_FILE="evals/results/ci-$(date +%Y%m%d-%H%M%S).json"
+          python evals/eval_harness.py evals/datasets/baseline.jsonl \
+            --output "$RESULTS_FILE" \
+            --pass-threshold 0.75
+          echo "RESULTS_FILE=$RESULTS_FILE" >> "$GITHUB_ENV"
+
+      - name: Check regression against baseline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          npx claude-flow eval compare \
+            --current "$RESULTS_FILE" \
+            --baseline evals/results/baseline.json \
             --fail-on-regression \
-            --output evals/results/ci-$(date +%Y%m%d-%H%M%S).json
+            --regression-threshold 0.05
 
       - name: Upload eval results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: eval-results
+          name: eval-results-${{ github.run_number }}
           path: evals/results/
+          retention-days: 90
+
+      - name: Post eval summary to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync(process.env.RESULTS_FILE));
+            const body = [
+              '## Eval Results',
+              `Pass rate: **${(results.pass_rate * 100).toFixed(1)}%** (${results.passed}/${results.total})`,
+              `Average score: **${results.avg_score.toFixed(2)}**`,
+              results.failures.length > 0
+                ? `\n### Failures\n${results.failures.map(f => `- \`${f.task}\`: ${f.reason}`).join('\n')}`
+                : '\nNo failures.',
+            ].join('\n');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });
+
+  stress-test:
+    name: Stress Test (main branch only)
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: eval-gate
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci && npm install -g claude-flow
+
+      - name: Run concurrent agent stress test
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node evals/stress-test.js --concurrent 5 --tasks-per-agent 3
 ```
 
-### Step 10: Monitor in Production
-
-```bash
-# Real-time performance report
-claude-flow performance report --components agents --format detailed
-
-# Benchmark your swarm on representative tasks
-swarm-bench run "Build REST API" --strategy development --max-agents 6
-
-# Monitor memory health
-npx ruflo memory stats --namespace patterns
-
-# Review attestation log (governance audit)
-npx ruflo attestation log --since "2026-01-01" --export compliance-report.json
-```
+!!! note "Secrets management"
+    `ANTHROPIC_API_KEY` must be stored as a GitHub Actions secret, not hardcoded. Navigate to repository Settings → Secrets and variables → Actions → New repository secret.
 
 ---
 
-## 10. Tooling Ecosystem
+## References
 
-### Evaluation Tools
-
-| Tool | Best For |
-|---|---|
-| **DeepEval** | Comprehensive LLM eval with 14+ built-in metrics |
-| **Inspect.AI** | System-level agent evaluation (UK AI Safety Institute) |
-| **MLflow Evaluation** | Trajectory-based scoring, built-in judges, CI/CD integration |
-| **LangSmith** | LangGraph observability, eval, and debugging |
-| **Arize AI** | Production monitoring, continuous eval, anomaly detection |
-| **Confident AI** | Eval-first platform: test, monitor, improve across full lifecycle |
-| **PromptFoo** | Scripted assessments, regression testing, red-teaming |
-| **RAGAS** | RAG-specific metrics: faithfulness, context relevance, answer relevancy |
-
-### Observability Tools
-
-| Tool | Best For |
-|---|---|
-| **OpenTelemetry** | Vendor-neutral tracing foundation (use this for all agent traces) |
-| **LangSmith** | LangChain/LangGraph native observability |
-| **Arize AI** | Production AI observability and eval platform |
-| **Atlan** | Metadata-driven enterprise context plane for agent governance |
-
-### Governance Tools
-
-| Tool | Best For |
-|---|---|
-| **NeMo Guardrails** | Runtime safety layer, developer-authored DSL rules |
-| **Guardrails AI** | Input/output guardrails across model providers |
-| **AGENTSAFE** | Full governance framework: design, runtime, audit controls |
-| **Conscium** | Virtual simulations for unsafe behavior detection |
-
----
-
-## 11. Quick Reference Cheatsheet
-
-```
-RUFLO CHEATSHEET
-════════════════════════════════════════════════════════════════
-
-INSTALL
-  npx ruflo@latest                          # latest version
-  npx ruflo@latest init --sparc --mcp       # full init with MCP
-
-SWARM
-  claude-flow hive-mind spawn "task" --topology hierarchical
-  claude-flow swarm "task" --agents coder,tester,reviewer
-  claude-flow agent list / metrics <id> / hierarchy
-
-SPARC
-  claude-flow sparc tdd "feature" --agents specification,...
-  claude-flow sparc run dev "feature"
-
-MEMORY
-  npx ruflo memory store --key "k" --value "v" --namespace ns
-  npx ruflo memory search --query "..." --limit 5
-
-BENCHMARK
-  swarm-bench run "task" --strategy development --max-agents 6
-  swarm-bench hive-mind "task" --max-workers 8
-
-EVAL
-  npx ruflo eval run --dataset evals/baseline.jsonl
-  npx ruflo eval check --results latest.json --thresholds t.json
-
-GOVERNANCE
-  npx ruflo policy add --rule "no-pii-external" --severity HIGH
-  npx ruflo attestation log --since "2026-01-01"
-  npx ruflo hitl configure --require-approval-for "deploy,delete"
-
-════════════════════════════════════════════════════════════════
-FRAMEWORKS AT A GLANCE
-
-  Ruflo          → Coding/dev automation, persistent learning, 75% cost cut
-  LangGraph      → Production stateful workflows, human-in-loop, highest control
-  CrewAI         → Business process, role-based, fastest to prototype
-  AutoGen        → Research, conversational multi-agent debates
-  Google ADK     → Google Cloud / Vertex AI, A2A interoperability
-  OpenAgents     → Cross-framework agent networks, open protocols
-
-════════════════════════════════════════════════════════════════
-TOP ANTI-PATTERNS TO AVOID
-
-  ✗ Monolith agents (split by responsibility)
-  ✗ Token burn on simple tasks (match complexity to task)
-  ✗ No baselines (always track metrics over time)
-  ✗ Launch-day evals only (embed evals in CI/CD)
-  ✗ Observability as afterthought (OTel from day one)
-  ✗ Static guardrails (continuous runtime monitoring)
-  ✗ Provider lock-in (model-agnostic abstractions)
-  ✗ Skipping SPARC (structure before code)
-
-════════════════════════════════════════════════════════════════
-EVAL LAYER QUICK MAP
-
-  Layer 1 (Output):     Accuracy, Faithfulness, Relevance, Safety
-  Layer 2 (Trajectory): Tool selection, Error recovery, Efficiency
-  Layer 3 (Business):   Task success rate, Latency, Cost, Override rate
-
-════════════════════════════════════════════════════════════════
-```
-
----
-
-## References and Further Reading
-
-- **Ruflo GitHub:** github.com/ruvnet/ruflo
-- **Ruflo Wiki:** github.com/ruvnet/ruflo/wiki
-- **SPARC Methodology:** github.com/ruvnet/ruflo/wiki/SPARC-Methodology
-- **AGENTSAFE Framework:** arxiv.org/pdf/2512.03180
-- **Evaluation-Driven Development:** arxiv.org/pdf/2411.13768
-- **LLM Agent Evaluation Survey:** arxiv.org/pdf/2507.21504
+- **claude-flow GitHub:** [github.com/ruvnet/claude-flow](https://github.com/ruvnet/claude-flow)
+- **Claude API documentation:** [docs.anthropic.com](https://docs.anthropic.com)
+- **MCP specification:** [modelcontextprotocol.io](https://modelcontextprotocol.io)
+- **AGENTSAFE governance framework:** arxiv.org/pdf/2512.03180
+- **LLM agent evaluation survey:** arxiv.org/pdf/2507.21504
 - **Agentic AI Governance (IMDA):** imda.gov.sg/mgf-for-agentic-ai
-- **Trace-Based Assurance Framework:** arxiv.org/pdf/2603.18096
-- **Brookings: How to Evaluate Agentic AI:** brookings.edu/articles/how-can-we-best-evaluate-agentic-ai
-- **WEF: AI Agents in Action:** World Economic Forum, AI Agents Evaluation and Governance
+- **Related guides in this site:**
+  - [MCP Deep Guide](mcp-deep-guide.md)
+  - [Agent SDK Production](claude-agent-sdk-production.md)
+  - [Models 2026](claude-models-2026.md)
+  - [Enterprise AI Architecture Patterns](../enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
+  - [Governance & Compliance](../enterprise-ai-architect/enterprise-ai-governance-compliance.md)
+  - [Skills Assessment](../enterprise-ai-architect/enterprise-ai-skills-assessment.md)
 
 ---
 
-*Guide current as of May 2026. The agentic AI landscape evolves rapidly — check ruflo's GitHub releases and each framework's changelog for the latest updates.*
+*Guide current as of July 2026. claude-flow is an active open-source project — verify feature availability against the [GitHub repo](https://github.com/ruvnet/claude-flow) changelog before designing production systems.*

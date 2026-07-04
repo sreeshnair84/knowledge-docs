@@ -110,12 +110,18 @@ nav:
       - Enterprise Deployment: coding-tools/claude/claude-enterprise-2026.md
       - Constitutional AI & Safety: coding-tools/claude/constitutional-ai-safety-2026.md
       - MCP Deep Guide: coding-tools/claude/mcp-deep-guide.md
-      - CCAF Exam Prep: coding-tools/claude/ccaf-exam-prep-complete.md
+      - CCA-F Exam Prep: coding-tools/claude/ccaf-exam-prep-complete.md
       - Ruflo Agentic AI Guide: coding-tools/claude/ruflo-agentic-ai-guide.md
     - GitHub Copilot:
       - Overview: coding-tools/github-copilot/index.md
       - Zero to Hero: coding-tools/github-copilot/github-copilot-zero-to-hero.md
       - Git & GitHub Platform Engineering: coding-tools/github-copilot/git-github-platform-engineering-handbook.md
+    - Enterprise AI Architect:
+      - Overview: coding-tools/enterprise-ai-architect/index.md
+      - Foundations: coding-tools/enterprise-ai-architect/enterprise-ai-architect-foundations.md
+      - Architecture Patterns: coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md
+      - Governance & Compliance: coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md
+      - Skills Assessment: coding-tools/enterprise-ai-architect/enterprise-ai-skills-assessment.md
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity: ai-protocols/auth/index.md
