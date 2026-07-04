@@ -5,20 +5,38 @@ title: Claude Models 2026 — Complete Reference
 # Claude Models 2026 — Complete Reference
 
 > **Single source of truth.** All other pages in this docs site link here for model IDs, pricing, context limits, and platform availability. Do not duplicate this information elsewhere.
+>
+> **Sources:** [Anthropic Models Overview](https://docs.anthropic.com/en/docs/about-claude/models/overview) · [Claude Sonnet 5 announcement](https://www.anthropic.com/news/claude-sonnet-5) · [Claude Fable 5 launch](https://www.anthropic.com/news/claude-fable-5) · Last verified July 2026.
 
 ---
 
 ## 1. Model Family Overview
 
-| Model | API ID | Tier | GA Date | Context | Max Output | Input $/1M | Output $/1M | Best For |
-|---|---|---|---|---|---|---|---|---|
-| Claude Fable 5 | `claude-fable-5` | Frontier | Jun 9, 2026 | 1M tokens | 128K tokens | $10.00 | $50.00 | Complex synthesis, long-document analysis, frontier reasoning |
-| Claude Sonnet 5 | `claude-sonnet-5` | Advanced | 2026 | 1M tokens | 128K tokens | $2.00* | $10.00* | Agentic automation, multi-step plans, cost-balanced production |
-| Claude Opus 4.8 | `claude-opus-4-8` | High-Capability | 2025 | 200K tokens | 16K tokens | $15.00 | $75.00 | Complex coding, deep reasoning, long-document analysis |
-| Claude Sonnet 4.6 | `claude-sonnet-4-6` | Balanced | 2025 | 200K tokens | 16K tokens | $3.00 | $15.00 | Stable production baseline, general purpose |
-| Claude Haiku 4.5 | `claude-haiku-4-5-20251001` | Speed | 2025 | 200K tokens | 16K tokens | $0.80 | $4.00 | Classification, extraction, real-time interactive apps |
+### Current Models
 
-*Sonnet 5 introductory pricing: $2/$10 through August 31, 2026. Standard pricing $3/$15 from September 1, 2026.
+| Model | API Alias | Tier | GA Date | Context | Max Output | Input $/1M | Output $/1M | Best For |
+|---|---|---|---|---|---|---|---|---|
+| Claude Fable 5 | `claude-fable-5` | Frontier | Jun 9, 2026 | 1M tokens | 128K tokens | $10.00 | $50.00 | Long-horizon agents, frontier reasoning, multi-domain synthesis |
+| Claude Mythos 5 | `claude-mythos-5` | Frontier (Glasswing) | Jun 9, 2026 | 1M tokens | 128K tokens | $10.00 | $50.00 | Same as Fable 5; Project Glasswing access only |
+| Claude Opus 4.8 | `claude-opus-4-8` | High-Capability | 2025 | 1M tokens | 128K tokens | $5.00 | $25.00 | Complex agentic coding, enterprise work, deep reasoning |
+| Claude Sonnet 5 | `claude-sonnet-5` | Advanced | Jun 30, 2026 | 1M tokens | 128K tokens | $3.00† | $15.00† | Best speed/intelligence balance; agentic and production workloads |
+| Claude Haiku 4.5 | `claude-haiku-4-5` | Speed | 2025 | 200K tokens | 64K tokens | $1.00 | $5.00 | Classification, extraction, real-time apps |
+
+† Introductory pricing through **August 31, 2026**: $2.00 input / $10.00 output. Standard pricing from September 1, 2026: $3.00 / $15.00.
+
+### Legacy Models (Still Available)
+
+| Model | API Alias | Context | Max Output | Input $/1M | Thinking |
+|---|---|---|---|---|---|
+| Claude Opus 4.7 | `claude-opus-4-7` | 1M tokens | 128K tokens | $5.00/$25.00 | Adaptive |
+| Claude Opus 4.6 | `claude-opus-4-6` | 1M tokens | 128K tokens | $5.00/$25.00 | Both (adaptive + extended) |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | 1M tokens | 128K tokens | $3.00/$15.00 | Both (adaptive + extended) |
+
+!!! note "Model ID aliases"
+    Use the bare alias shown above (e.g., `claude-haiku-4-5`, `claude-sonnet-5`). Never append date suffixes in code — aliases always resolve to the correct pinned version. The full pinned ID for Haiku 4.5 is `claude-haiku-4-5-20251001`; everywhere else use the alias.
+
+!!! note "300K output beta"
+    Claude Opus 4.8, Opus 4.7, Opus 4.6, Sonnet 5, and Sonnet 4.6 support up to **300K output tokens** on the Batch API using the `output-300k-2026-03-24` beta header.
 
 ---
 
@@ -26,51 +44,80 @@ title: Claude Models 2026 — Complete Reference
 
 ### Overview
 
-Claude Fable 5 (`claude-fable-5`) is Anthropic's most capable model, reaching general availability on **June 9, 2026**. It represents a step-change in both raw capability and reasoning architecture, combining a 1M-token context window with always-on adaptive thinking.
+Claude Fable 5 (`claude-fable-5`) is Anthropic's most capable widely released model, reaching general availability on **June 9, 2026**. It is designed for long-running autonomous agents, complex multi-domain synthesis, and tasks requiring the highest possible intelligence ceiling.
+
+**Specs:** 1M context · 128K output · $10.00/$50.00 per MTok · Adaptive thinking (always on)
 
 ### Key Capabilities
 
-- **Adaptive Thinking always on** — Fable 5 applies extended reasoning to every request automatically. The model self-allocates thinking compute based on task complexity; you do not need to pass `thinking` parameters explicitly, though you can tune `budget_tokens` to cap thinking spend.
-- **1M token context** — fits entire large codebases, book-length documents, or long conversation histories in a single request.
-- **128K token output** — supports generation of long-form documents, full code files, and detailed reports in a single completion.
-- **Frontier performance** — top-tier results for complex reasoning, mathematics, multilingual tasks, code synthesis, and scientific analysis.
-- **New tokenizer** — encodes approximately 30% more tokens for the same text compared to Claude 3.x / 4.x models.
+- **Adaptive Thinking always on** — Fable 5 reasons on every request. You do not enable or disable thinking explicitly; thinking depth is controlled via `output_config.effort`.
+- **1M token context** — fits entire large codebases, book-length documents, long conversation histories.
+- **128K token output** — long-form documents, full code files, detailed reports in a single completion.
+- **New tokenizer** — same tokenizer as Opus 4.7/4.8 and Sonnet 5. Migrating from Opus 4.6, Sonnet 4.6, or Haiku 4.5 requires re-baselining token counts (~30% increase for the same text).
+- **`refusal` stop reason** — safety classifiers may decline a request (HTTP 200, `stop_reason: "refusal"`, empty or partial content). Pre-output refusals are not billed.
+- **30-day data retention required** — Fable 5 is not available under zero-retention configurations.
 
-### Adaptive Thinking Control in Fable 5
+### Adaptive Thinking API — Effort Control
 
-Even though adaptive thinking is always on, you can still cap the thinking token budget:
+!!! danger "Do NOT pass `budget_tokens` to Fable 5"
+    Passing `{"type": "disabled"}` or `{"type": "enabled", "budget_tokens": N}` to Fable 5 returns **HTTP 400**. Use `output_config.effort` to control thinking depth instead.
 
 ```python
 import anthropic
 
 client = anthropic.Anthropic()
 
+# Correct: omit thinking param (or use {"type": "adaptive"}); use effort for depth control
 response = client.messages.create(
     model="claude-fable-5",
     max_tokens=8192,
-    thinking={"type": "enabled", "budget_tokens": 5000},  # cap thinking spend
-    messages=[{"role": "user", "content": "Solve this system of equations step by step..."}]
+    output_config={"effort": "high"},  # "low" | "medium" | "high" | "xhigh" | "max"
+    # Recommended: enable server-side fallback to handle refusal stop reason
+    betas=["server-side-fallback-2026-06-01"],
+    fallbacks=[{"model": "claude-opus-4-8"}],
+    messages=[{"role": "user", "content": "Analyze this architecture and propose improvements..."}]
 )
 
-# Response includes thinking blocks before text blocks
-for block in response.content:
-    if block.type == "thinking":
-        print(f"[Thinking]: {block.thinking[:200]}...")
-    else:
-        print(f"[Answer]: {block.text}")
+# Always check stop_reason before reading content
+if response.stop_reason == "refusal":
+    print(f"Request declined. Served by: {response.model}")
+else:
+    for block in response.content:
+        if block.type == "thinking":
+            # Raw chain-of-thought is never returned. thinking.thinking is empty by default.
+            # Pass output_config={"thinking": {"display": "summarized"}} to get a readable summary.
+            print(f"[Thinking summary]: {block.thinking}")
+        else:
+            print(f"[Answer]: {block.text}")
+```
+
+### Refusal Handling and Fallbacks
+
+Fable 5 can return `stop_reason: "refusal"`. Anthropic recommends enabling server-side fallbacks:
+
+```python
+response = client.messages.create(
+    model="claude-fable-5",
+    max_tokens=4096,
+    output_config={"effort": "medium"},
+    betas=["server-side-fallback-2026-06-01"],
+    fallbacks=[{"model": "claude-opus-4-8"}],
+    messages=[{"role": "user", "content": user_message}]
+)
+# On refusal, the request is transparently re-served by Opus 4.8.
+# Check response.model to see which model actually served the response.
 ```
 
 ### When to Use Fable 5
 
-- Tasks requiring **multi-domain synthesis** (legal + technical + financial reasoning in one pass)
-- Documents exceeding 200K tokens
-- Output quality directly drives business value (customer-facing reports, critical code generation)
+- Tasks requiring **multi-domain synthesis** (legal + technical + financial in one pass)
+- Documents exceeding the range where Opus 4.8 quality is sufficient
+- Output quality directly drives business value (customer-facing reports, critical code)
+- Long-horizon agentic tasks spanning many minutes
 - Accuracy is more important than cost
-- Ambiguous, open-ended, or novel problems with no established pattern
-- Any task where Sonnet-tier quality is insufficient after testing
 
 !!! warning "Cost guardrail"
-    At $10 input / $50 output per million tokens, Fable 5 costs roughly 5× more than Sonnet 5 (introductory) and 3.3× more than Sonnet 5 (standard). Route only tasks that genuinely require frontier capability here. See [Section 14](#14-cost-optimization-strategies) for routing patterns.
+    At $10/$50/M, Fable 5 costs 2× Opus 4.8 on input and output. Route only tasks that genuinely require frontier capability. See [Section 14](#14-cost-optimization-strategies) for routing patterns.
 
 ---
 
@@ -78,22 +125,40 @@ for block in response.content:
 
 ### Overview
 
-Claude Sonnet 5 (`claude-sonnet-5`) is Anthropic's flagship **agentic model** for 2026, designed from the ground up for multi-step autonomous tasks requiring browser operation, terminal interaction, tool orchestration, and long planning horizons. It is the default model choice for Claude Code and agent SDK workloads.
+Claude Sonnet 5 (`claude-sonnet-5`) reached general availability on **June 30, 2026** as Anthropic's flagship **balanced model** — the best combination of speed and intelligence at this tier. It is designed for agentic workflows, coding, tool use, and production workloads where Opus-tier cost is not justified.
+
+**Specs:** 1M context · 128K output · Adaptive thinking · $3/$15 standard ($2/$10 intro through Aug 31 2026)
 
 ### Key Capabilities
 
-- **Most agentic Sonnet ever** — executes multi-step plans autonomously, including browser and terminal operations
-- **Adaptive thinking on by default** — unlike Sonnet 4.x, Sonnet 5 automatically applies extended reasoning; depth is controlled via `budget_tokens`
-- **1M token context / 128K output** — same ceiling as Fable 5
-- **New tokenizer** — same 30% token efficiency shift as Fable 5 vs Claude 4.x
+- **Most agentic Sonnet yet** — multi-step planning, browser/terminal operations, tool orchestration, autonomous execution without explicit prompting
+- **Adaptive thinking on by default** — Sonnet 5 reasons adaptively; effort defaults to `high` on the API and Claude Code
+- **1M context / 128K output** — same ceiling as Fable 5
+- **New tokenizer** — same tokenizer as Opus 4.7/4.8 and Fable 5; re-baseline token counts when migrating from Sonnet 4.6 or older
 
 ### Pricing Window
 
 !!! info "Introductory pricing"
     Through **August 31, 2026**: $2.00 input / $10.00 output per million tokens.
-    From **September 1, 2026**: $3.00 input / $15.00 output per million tokens.
+    From **September 1, 2026**: $3.00 input / $15.00 output per million tokens (same as Sonnet 4.6).
 
-Lock in cost baselines for budgeting by testing and validating workloads during the introductory period.
+### Thinking API for Sonnet 5
+
+Sonnet 5 uses the same adaptive thinking model as Opus 4.8. Control depth via `effort`:
+
+```python
+import anthropic
+
+client = anthropic.Anthropic()
+
+response = client.messages.create(
+    model="claude-sonnet-5",
+    max_tokens=4096,
+    output_config={"effort": "high"},  # defaults to "high" on Claude API; set explicitly to change
+    messages=[{"role": "user", "content": "Build a multi-step plan for this architecture migration..."}]
+)
+print(response.content[0].text)
+```
 
 ### Validated Agentic Capabilities
 
@@ -108,10 +173,11 @@ Lock in cost baselines for budgeting by testing and validating workloads during 
 
 ### When to Use Sonnet 5
 
-- **Primary model for all new agentic pipelines** — Claude Code CLI, Agent SDK orchestrators, browser automation
-- Cost-balanced production workloads where Fable 5 quality is not required
-- Tasks requiring extended reasoning with token budgets under 1M
-- High-volume pipelines during the introductory pricing window
+- **Primary model for new agentic pipelines** — Claude Code CLI, Agent SDK orchestrators, browser automation
+- Production workloads where Fable 5 quality is not required
+- High-throughput pipelines with cost sensitivity (especially during introductory pricing)
+- Tasks requiring adaptive reasoning with 1M context and 128K output
+- Cases where Haiku quality is insufficient but Opus cost is not justified
 
 ---
 
@@ -119,29 +185,61 @@ Lock in cost baselines for budgeting by testing and validating workloads during 
 
 ### Overview
 
-Claude Opus 4.8 (`claude-opus-4-8`) provides Claude 4-generation Opus-tier capability for applications requiring deep reasoning within a 200K context window. Despite being superseded by Fable 5 and Sonnet 5 at the frontier, Opus 4.8 remains relevant for constrained budgets at the high-capability tier.
+Claude Opus 4.8 (`claude-opus-4-8`) is Anthropic's recommended model for **complex agentic coding and enterprise work**. It provides high-capability reasoning with 1M context, 128K output, and adaptive thinking at the $5/$25 per MTok tier.
+
+**Specs:** 1M context · 128K output · $5.00/$25.00 per MTok · Adaptive thinking · Effort defaults to `high`
 
 ### Key Use Cases
 
 | Domain | Example Task |
 |---|---|
-| Complex coding | Refactoring large codebases, architecture analysis |
+| Complex coding | Refactoring large codebases, architecture analysis, multi-file generation |
+| Agentic engineering | Orchestrating sub-agents, long-horizon code tasks |
 | Deep reasoning | Multi-hop inference over long technical documents |
-| Long documents | 100K–200K token contract or research paper analysis |
-| Agentic work | Orchestrating sub-agents with complex multi-step goals |
+| Long documents | 100K–1M token contract or research paper analysis |
+| Enterprise work | Structured data extraction, report generation at scale |
 
-### When to Use Opus 4.8 vs Fable 5
+### Thinking API for Opus 4.8
+
+Opus 4.8 uses adaptive thinking. The `effort` parameter defaults to `high`:
+
+```python
+import anthropic
+
+client = anthropic.Anthropic()
+
+response = client.messages.create(
+    model="claude-opus-4-8",
+    max_tokens=8192,
+    output_config={"effort": "high"},  # "low" | "medium" | "high" | "xhigh" | "max"
+    messages=[{"role": "user", "content": "Review this 50-file Python codebase for security vulnerabilities..."}]
+)
+
+for block in response.content:
+    if block.type == "thinking":
+        print(f"[Reasoning]: {block.thinking}")
+    else:
+        print(f"[Answer]: {block.text}")
+```
+
+!!! note "`budget_tokens` on Opus 4.8"
+    Like Fable 5, Opus 4.8 does NOT support `budget_tokens`. Use `output_config.effort` instead. Extended thinking (`{"type": "enabled", "budget_tokens": N}`) is supported only on Opus 4.6, Sonnet 4.6, Haiku 4.5, and older models.
+
+### When to Use Opus 4.8 vs. Fable 5
 
 | Factor | Use Opus 4.8 | Use Fable 5 |
 |---|---|---|
-| Context need | ≤ 200K tokens | > 200K tokens |
-| Output length | ≤ 16K tokens | > 16K tokens |
-| Cost tolerance | Moderate ($15/$75/M) | Justified by quality need ($10/$50/M) |
-| Adaptive thinking | Optional (via `thinking` param) | Always on |
-| Availability | Broad | All platforms |
+| Cost sensitivity | Moderate ($5/$25/M) | Higher cost justified by quality ($10/$50/M) |
+| Refusal risk | Standard stop reasons | Add fallback logic for `refusal` stop reason |
+| Retention policy | Standard or zero-retention | 30-day retention required |
+| Task complexity | Complex coding, enterprise work | Frontier reasoning, multi-domain synthesis |
+| Both support | 1M context, 128K output, adaptive thinking |  |
 
-!!! note
-    Fable 5 is actually cheaper per million input tokens ($10) than Opus 4.8 ($15), making Fable 5 the better choice when you need both high capability and can accept the higher output cost ($50/M vs $75/M).
+### Legacy Opus Models
+
+**Opus 4.7** (`claude-opus-4-7`) — same specs as Opus 4.8; introduced the new tokenizer and `xhigh` effort level. Adaptive thinking only; `budget_tokens` removed. Still available as a legacy model.
+
+**Opus 4.6** (`claude-opus-4-6`) — 1M context, 128K output, $5/$25. Supports **both** extended thinking (old `budget_tokens` style) and adaptive thinking. Uses the pre-Opus-4.7 tokenizer.
 
 ---
 
@@ -149,40 +247,42 @@ Claude Opus 4.8 (`claude-opus-4-8`) provides Claude 4-generation Opus-tier capab
 
 ### Overview
 
-Claude Sonnet 4.6 (`claude-sonnet-4-6`) is the **stable production baseline** for Claude 4-generation workloads. It is well-understood, broadly tested, and appropriate for general-purpose production use. It is the current model in Claude Code as of this writing and provides a safe migration stepping stone before moving to Sonnet 5.
+Claude Sonnet 4.6 (`claude-sonnet-4-6`) is a **legacy model** that remains widely used in production. With the release of Sonnet 5, new agentic and production workloads should prefer Sonnet 5. Sonnet 4.6 remains fully supported with no announced deprecation.
 
-### Characteristics
+**Specs:** 1M context · 128K output · $3.00/$15.00 per MTok · Both adaptive and extended thinking
 
-- 200K context, 16K output
-- Extended thinking supported via `thinking` parameter
-- $3.00 / $15.00 per million tokens
-- Proven production stability across millions of deployments
+### When to Keep Sonnet 4.6
+
+- Existing pipelines with proven stability and no business need to upgrade
+- Systems requiring extended thinking (`budget_tokens`) style rather than adaptive `effort`
+- Cost parity with Sonnet 5 standard pricing (same $3/$15/M from Sep 1 2026)
+- Applications validated on Sonnet 4.6 with no tokenizer-migration budget
 
 ### Migration Path to Sonnet 5
 
 When planning migration from Sonnet 4.6 to Sonnet 5:
 
-1. **Tokenizer change** — recount all token budgets; expect ~30% more tokens for same text
-2. **Adaptive thinking** — Sonnet 5 thinks by default; audit prompts that previously worked without reasoning chains
-3. **Output format** — Sonnet 5 may structure responses differently; validate with regression tests on real production prompts
-4. **Context headroom** — Sonnet 5 supports 1M context; no changes needed for ≤200K workloads, but review if you want to take advantage of the expansion
-5. **Pricing** — during introductory window Sonnet 5 is cheaper; standard pricing is the same as Sonnet 4.6
+1. **Tokenizer change** — Sonnet 5 uses the new tokenizer; expect ~30% more tokens for the same text
+2. **Thinking API shift** — Sonnet 5 uses adaptive thinking via `effort`; extended thinking (`budget_tokens`) is not available
+3. **Output format** — Sonnet 5 may structure responses differently; validate with regression tests
+4. **Context and output headroom** — both support 1M context and 128K output; no capacity change needed
+5. **Pricing** — Sonnet 5 is cheaper through August 31, 2026; standard pricing is identical from Sep 1
 
 ```python
 import anthropic
 
 client = anthropic.Anthropic()
 
-# Step 1: Compare token counts for your production prompts
 production_prompt = "Your actual production prompt here..."
 
+# Check tokenizer impact when migrating from Sonnet 4.6 to Sonnet 5
 for model in ["claude-sonnet-4-6", "claude-sonnet-5"]:
     count = client.messages.count_tokens(
         model=model,
         messages=[{"role": "user", "content": production_prompt}]
     )
     print(f"{model}: {count.input_tokens:,} tokens")
-# Expect Sonnet 5 to report ~30% more tokens for the same text
+# Sonnet 5 will report roughly 30% more tokens for the same text
 ```
 
 ---
@@ -191,14 +291,15 @@ for model in ["claude-sonnet-4-6", "claude-sonnet-5"]:
 
 ### Overview
 
-Claude Haiku 4.5 (`claude-haiku-4-5-20251001`) is the **speed-optimized tier** — delivering the fastest response times at the lowest cost per token. It is purpose-built for tasks where latency and throughput are the primary constraints, not raw reasoning capability.
+Claude Haiku 4.5 (`claude-haiku-4-5`) is the **speed-optimized tier** — the fastest response times at the lowest cost per token. Purpose-built for tasks where latency and throughput are the primary constraints.
 
-### Characteristics
+**Specs:** 200K context · 64K output · $1.00/$5.00 per MTok · Extended thinking (not adaptive)
 
-- 200K context, 16K output
-- $0.80 input / $4.00 output per million tokens
-- Sub-second time-to-first-token on typical requests
-- Ideal for real-time interactive applications and high-volume pipelines
+!!! note "Model ID"
+    Use the alias `claude-haiku-4-5`. The full pinned ID is `claude-haiku-4-5-20251001`, but always use the bare alias in code and configuration.
+
+!!! note "Thinking API for Haiku 4.5"
+    Haiku 4.5 supports **extended thinking** (`{"type": "enabled", "budget_tokens": N}`) but does **not** support adaptive thinking. This is the opposite of Fable 5 and Opus 4.8, which only support adaptive thinking.
 
 ### Haiku 4.5 Best Use Cases
 
@@ -214,18 +315,42 @@ Claude Haiku 4.5 (`claude-haiku-4-5-20251001`) is the **speed-optimized tier** �
 | Translation (simple) | Known-domain text translation at scale |
 | Sentiment analysis | Opinion mining at large scale |
 
+### Extended Thinking with Haiku 4.5
+
+```python
+import anthropic
+
+client = anthropic.Anthropic()
+
+# Haiku 4.5 uses the OLD extended thinking API (budget_tokens)
+response = client.messages.create(
+    model="claude-haiku-4-5",
+    max_tokens=4096,
+    thinking={"type": "enabled", "budget_tokens": 2000},
+    messages=[{"role": "user", "content": "Classify this text and explain your reasoning..."}]
+)
+
+for block in response.content:
+    if block.type == "thinking":
+        print(f"[Thinking]: {block.thinking}")
+    else:
+        print(f"[Answer]: {block.text}")
+```
+
 ### Haiku Cost at Scale
 
-At 10M daily classifications:
+At 10M daily classifications (500 input + 100 output tokens per request):
 
 | Model | Cost/Request | Daily Cost | Monthly Cost |
 |---|---|---|---|
-| claude-haiku-4-5-20251001 | ~$0.00066 | ~$6.60 | ~$198 |
-| claude-sonnet-4-6 | ~$0.00525 | ~$52.50 | ~$1,575 |
-| claude-sonnet-5 (intro) | ~$0.00175 | ~$17.50 | ~$525 |
-| claude-fable-5 | ~$0.01125 | ~$112.50 | ~$3,375 |
+| `claude-haiku-4-5` | ~$0.0010 | ~$10,000 | ~$300,000 |
+| `claude-sonnet-4-6` | ~$0.0030 | ~$30,000 | ~$900,000 |
+| `claude-sonnet-5` (intro) | ~$0.0020 | ~$20,000 | ~$600,000 |
+| `claude-sonnet-5` (standard) | ~$0.0030 | ~$30,000 | ~$900,000 |
+| `claude-opus-4-8` | ~$0.0075 | ~$75,000 | ~$2,250,000 |
+| `claude-fable-5` | ~$0.0100 | ~$100,000 | ~$3,000,000 |
 
-*(Based on 500 input + 100 output tokens per request)*
+*(Input: 500 tokens; Output: 100 tokens. Haiku remains 3–10× cheaper than higher tiers.)*
 
 **Always benchmark Haiku first.** For many classification and extraction tasks, Haiku quality is indistinguishable from Sonnet.
 
@@ -236,27 +361,32 @@ At 10M daily classifications:
 ```
 START: What does your task require?
 
+├── Frontier reasoning / multi-domain synthesis / max quality?
+│   ├── Project Glasswing member → claude-mythos-5
+│   └── All others → claude-fable-5
+│
 ├── Context > 200K tokens?
-│   └── YES → claude-fable-5  (only model with 1M context)
+│   └── YES → claude-fable-5, claude-opus-4-8, or claude-sonnet-5
+│             (all three support 1M; Haiku caps at 200K)
 │
-├── Output > 16K tokens?
-│   └── YES → claude-fable-5 or claude-sonnet-5
+├── Output > 64K tokens?
+│   └── YES → claude-fable-5, claude-opus-4-8, or claude-sonnet-5
+│             (128K max; Haiku caps at 64K)
 │
-├── Multi-step agentic task (browser / terminal / tool chains)?
-│   └── YES → claude-sonnet-5  (most agentic, cost-balanced)
+├── Complex agentic coding / enterprise engineering?
+│   └── YES → claude-opus-4-8 (recommended for complex engineering work)
 │
-├── Absolute quality priority, no cost constraint?
-│   └── YES → claude-fable-5
+├── Agentic production workloads with cost/speed balance?
+│   └── YES → claude-sonnet-5 (best speed+intelligence; intro pricing through Aug 31 2026)
 │
 ├── Classification / extraction / routing at high volume?
-│   └── YES → claude-haiku-4-5-20251001
+│   └── YES → claude-haiku-4-5
 │
-├── General production task needing proven stability?
-│   ├── Stability > novelty → claude-sonnet-4-6
-│   └── Best current quality → claude-sonnet-5
+├── Stable legacy production, extended thinking required?
+│   └── YES → claude-sonnet-4-6 or claude-opus-4-6
 │
-└── Complex coding / 100–200K doc task, limited budget?
-    └── YES → claude-opus-4-8
+└── Real-time autocomplete / sub-second latency required?
+    └── YES → claude-haiku-4-5
 ```
 
 ### Quick Reference Card
@@ -264,15 +394,17 @@ START: What does your task require?
 | Task | Primary Choice | Fallback |
 |---|---|---|
 | Novel research synthesis | `claude-fable-5` | `claude-opus-4-8` |
-| Agentic automation | `claude-sonnet-5` | `claude-fable-5` |
-| Code review (large PR) | `claude-sonnet-5` | `claude-opus-4-8` |
-| Code review (small PR) | `claude-sonnet-4-6` | `claude-haiku-4-5-20251001` |
-| Text classification | `claude-haiku-4-5-20251001` | `claude-sonnet-4-6` |
-| Customer-facing chat | `claude-sonnet-4-6` | `claude-sonnet-5` |
-| Long document Q&A (>200K) | `claude-fable-5` | — |
-| Real-time autocomplete | `claude-haiku-4-5-20251001` | — |
-| Bulk batch processing | `claude-haiku-4-5-20251001` (batch API) | `claude-sonnet-5` (batch API) |
-| Safety / guardrail filter | `claude-haiku-4-5-20251001` | `claude-sonnet-4-6` |
+| Complex agentic coding | `claude-opus-4-8` | `claude-sonnet-5` |
+| Agentic automation (production) | `claude-sonnet-5` | `claude-opus-4-8` |
+| Code review (large PR) | `claude-opus-4-8` | `claude-sonnet-5` |
+| Code review (small PR) | `claude-sonnet-5` | `claude-haiku-4-5` |
+| Text classification | `claude-haiku-4-5` | `claude-sonnet-5` |
+| Customer-facing chat | `claude-sonnet-5` | `claude-sonnet-4-6` |
+| Long document Q&A (> 200K) | `claude-fable-5` | `claude-opus-4-8` |
+| Real-time autocomplete | `claude-haiku-4-5` | — |
+| Bulk batch processing | `claude-haiku-4-5` (batch API) | `claude-sonnet-5` (batch API) |
+| Safety / guardrail filter | `claude-haiku-4-5` | `claude-sonnet-5` |
+| Project Glasswing workloads | `claude-mythos-5` | `claude-fable-5` |
 
 ---
 
@@ -282,23 +414,27 @@ START: What does your task require?
 
 | Model | Input $/1M | Output $/1M | Cache Write $/1M | Cache Read $/1M |
 |---|---|---|---|---|
-| claude-fable-5 | $10.00 | $50.00 | $12.50 | $1.00 |
-| claude-sonnet-5 (intro, until Aug 31 2026) | $2.00 | $10.00 | $2.50 | $0.20 |
-| claude-sonnet-5 (standard, from Sep 1 2026) | $3.00 | $15.00 | $3.75 | $0.30 |
-| claude-opus-4-8 | $15.00 | $75.00 | $18.75 | $1.50 |
-| claude-sonnet-4-6 | $3.00 | $15.00 | $3.75 | $0.30 |
-| claude-haiku-4-5-20251001 | $0.80 | $4.00 | $1.00 | $0.08 |
+| `claude-fable-5` | $10.00 | $50.00 | $12.50 | $1.00 |
+| `claude-mythos-5` | $10.00 | $50.00 | $12.50 | $1.00 |
+| `claude-opus-4-8` | $5.00 | $25.00 | $6.25 | $0.50 |
+| `claude-opus-4-7` | $5.00 | $25.00 | $6.25 | $0.50 |
+| `claude-opus-4-6` | $5.00 | $25.00 | $6.25 | $0.50 |
+| `claude-sonnet-5` (intro, through Aug 31, 2026) | $2.00 | $10.00 | $2.50 | $0.20 |
+| `claude-sonnet-5` (standard, from Sep 1, 2026) | $3.00 | $15.00 | $3.75 | $0.30 |
+| `claude-sonnet-4-6` | $3.00 | $15.00 | $3.75 | $0.30 |
+| `claude-haiku-4-5` | $1.00 | $5.00 | $1.25 | $0.10 |
 
 ### Batch API Pricing (50% Discount)
 
 | Model | Batch Input $/1M | Batch Output $/1M |
 |---|---|---|
-| claude-fable-5 | $5.00 | $25.00 |
-| claude-sonnet-5 (intro) | $1.00 | $5.00 |
-| claude-sonnet-5 (standard) | $1.50 | $7.50 |
-| claude-opus-4-8 | $7.50 | $37.50 |
-| claude-sonnet-4-6 | $1.50 | $7.50 |
-| claude-haiku-4-5-20251001 | $0.40 | $2.00 |
+| `claude-fable-5` | $5.00 | $25.00 |
+| `claude-mythos-5` | $5.00 | $25.00 |
+| `claude-opus-4-8` | $2.50 | $12.50 |
+| `claude-sonnet-5` (intro) | $1.00 | $5.00 |
+| `claude-sonnet-5` (standard) | $1.50 | $7.50 |
+| `claude-sonnet-4-6` | $1.50 | $7.50 |
+| `claude-haiku-4-5` | $0.50 | $2.50 |
 
 ### Prompt Caching Pricing Rules
 
@@ -310,13 +446,29 @@ START: What does your task require?
 
 ### Additional Billing Rules
 
-- **Refusals** with `stop_reason: "refusal"` and zero output tokens are **not billed**
-- **Thinking tokens** (content in `thinking` blocks) **are billed** as output tokens
+- **Fable 5 / Mythos 5 refusals** with `stop_reason: "refusal"` and zero output tokens are **not billed**
+- **Thinking tokens** (content in `thinking` blocks) **are billed** as output tokens on all models
 - **Cache misses** after TTL expiry are billed at full standard input price
 
 ---
 
 ## 9. Context Window Guide
+
+### Context and Output Limits by Model
+
+| Model | Context Window | Max Output | Tokenizer |
+|---|---|---|---|
+| `claude-fable-5` | 1M tokens (~555K words) | 128K tokens | New (Opus 4.7+) |
+| `claude-mythos-5` | 1M tokens | 128K tokens | New (Opus 4.7+) |
+| `claude-opus-4-8` | 1M tokens | 128K tokens | New (Opus 4.7+) |
+| `claude-opus-4-7` | 1M tokens | 128K tokens | New (Opus 4.7+) |
+| `claude-opus-4-6` | 1M tokens (~750K words) | 128K tokens | Old |
+| `claude-sonnet-5` | 1M tokens (~555K words) | 128K tokens | New (Opus 4.7+) |
+| `claude-sonnet-4-6` | 1M tokens (~750K words) | 128K tokens | Old |
+| `claude-haiku-4-5` | 200K tokens | 64K tokens | Old |
+
+!!! note "Tokenizer difference"
+    Models using the **new tokenizer** (Fable 5, Mythos 5, Opus 4.7/4.8, Sonnet 5) produce roughly **30% more tokens** for the same text compared to models using the old tokenizer (Opus 4.6, Sonnet 4.6, Haiku 4.5). This means the effective word capacity in the 1M context window is lower (~555K words vs ~750K words). Always re-count tokens when migrating across the tokenizer boundary.
 
 ### What Fits in 1 Million Tokens
 
@@ -334,9 +486,9 @@ START: What does your task require?
 
 | Context Size | Approach |
 |---|---|
-| < 10K tokens | Send full document in a single request |
-| 10K–200K tokens | Single request; use Sonnet 4.6 or Opus 4.8 |
-| 200K–1M tokens | Single request; use Fable 5 or Sonnet 5 |
+| < 10K tokens | Send full document in a single request to any model |
+| 10K–200K tokens | Single request; Haiku 4.5 sufficient for simple tasks |
+| 200K–1M tokens | Single request; use Opus 4.8, Sonnet 5, Fable 5, or Mythos 5 |
 | > 1M tokens | Map-reduce or hierarchical summarization pipeline |
 
 ### Chunking Strategies
@@ -366,7 +518,6 @@ START: What does your task require?
 
     def semantic_chunks(text: str, max_chars: int = 120_000) -> list[str]:
         """Split on natural section headers, merge small sections up to max_chars."""
-        # Split on markdown headers
         sections = re.split(r'\n(?=#{1,3} )', text)
         chunks, current = [], ""
         for section in sections:
@@ -403,11 +554,9 @@ START: What does your task require?
             )
             return resp.content[0].text
 
-        # Map phase — run in parallel
         with ThreadPoolExecutor(max_workers=5) as executor:
             summaries = list(executor.map(summarize_chunk, chunks))
 
-        # Reduce phase — synthesize all summaries
         combined = "\n\n---\n\n".join(summaries)
         resp = client.messages.create(
             model=model,
@@ -429,11 +578,14 @@ START: What does your task require?
 
 | Model | Anthropic API | Claude Platform on AWS | Amazon Bedrock | Google Cloud Vertex AI | Microsoft Azure AI Foundry |
 |---|---|---|---|---|---|
-| claude-fable-5 | Yes | Yes | Yes | Yes | Yes |
-| claude-sonnet-5 | Yes | Yes | Yes | Yes | Yes |
-| claude-opus-4-8 | Yes | Limited | Yes | Yes | Yes |
-| claude-sonnet-4-6 | Yes | Yes | Yes | Yes | Yes |
-| claude-haiku-4-5-20251001 | Yes | Yes | Yes | Yes | Limited |
+| `claude-fable-5` | Yes | Yes | Yes | Yes | Yes |
+| `claude-mythos-5` | Glasswing only | Glasswing only | Glasswing only | Glasswing only | Glasswing only |
+| `claude-opus-4-8` | Yes | Yes | Yes | Yes | Yes |
+| `claude-opus-4-7` | Yes | Yes | Yes | Yes | Yes |
+| `claude-opus-4-6` | Yes | Yes | Yes | Yes | Yes |
+| `claude-sonnet-5` | Yes | Yes | Yes | Yes | Yes |
+| `claude-sonnet-4-6` | Yes | Yes | Yes | Yes | Yes |
+| `claude-haiku-4-5` | Yes | Yes | Yes | Yes | Limited |
 
 ### Platform Detail
 
@@ -441,36 +593,33 @@ START: What does your task require?
 
 - Endpoint: `https://api.anthropic.com`
 - Auth: `x-api-key` header or `ANTHROPIC_API_KEY` environment variable
-- First to receive new models and features
+- First to receive new models and features; all beta capabilities available here first
 - Python SDK: `pip install anthropic`; TypeScript SDK: `npm install @anthropic-ai/sdk`
 
 **Claude Platform on AWS**
 
-- Anthropic-managed infrastructure delivered through AWS
-- Billing via AWS account (consolidates with existing AWS spend)
-- Auth: AWS IAM (SigV4 signatures) — integrates with your existing IAM roles and policies
-- Supports VPC private endpoints for network isolation
-- Best for organizations standardized on AWS identity and billing
+- Anthropic-managed infrastructure through AWS; same-day feature parity with the direct API
+- Billing via AWS account; auth via AWS IAM (SigV4) with VPC private endpoint support
+- Full Managed Agents support; self-hosted sandboxes not available
+- Model lifecycle follows Anthropic's deprecation schedule, not Bedrock's
 
 **Amazon Bedrock**
 
-- Model IDs use Bedrock-specific naming; check the AWS Bedrock console for exact IDs and region availability
-- Supports cross-region inference profiles for latency optimization
+- Model IDs differ from the Claude API IDs (check Bedrock console for current IDs)
+- Bedrock endpoint (`Claude in Amazon Bedrock`): supports Claude Fable 5, Opus 4.8, Opus 4.7, Sonnet 5
 - Integrations: Bedrock Guardrails, Bedrock Agents, Knowledge Bases, Model Evaluation
-- Best for AWS-native architectures using Bedrock ecosystem features
+- Managed Agents not available; use Claude API + tool use for agent workloads
 
 **Google Cloud Vertex AI**
 
-- Available via Vertex AI Model Garden as managed models
-- Auth: Google Cloud IAM / Workload Identity Federation
-- Integrates with Vertex AI Pipelines, Evaluation, Feature Store
-- Best for GCP-native architectures
+- Available via Vertex AI Model Garden; auth via GCP IAM / Workload Identity Federation
+- Three endpoint types: global, multi-region, regional
+- Managed Agents not available
 
 **Microsoft Azure AI Foundry**
 
-- Available as models-as-a-service via Azure AI Foundry hubs
-- Auth: Azure Active Directory / Managed Identity
-- Best for Microsoft-stack enterprises and Azure OpenAI users migrating to Claude
+- Available as models-as-a-service; auth via Azure AD / Managed Identity
+- Managed Agents not available
 
 ---
 
@@ -481,21 +630,29 @@ START: What does your task require?
 | Change | Impact | Required Action |
 |---|---|---|
 | New model IDs | API calls fail with old IDs | Update all hardcoded model strings |
-| System prompt behavior | 4.x follows instructions more precisely | Review permissive system prompts; tighten constraints |
-| Refusal behavior | 4.x more task-focused; fewer spurious refusals | Regression test edge cases that previously required workarounds |
+| System prompt behavior | 4.x follows instructions more precisely | Review permissive system prompts |
+| Refusal behavior | 4.x more task-focused; fewer spurious refusals | Regression test edge cases |
 | Tool use schema | Minor schema changes | Test all tool definitions |
-| Context window | 200K maintained | No change |
+| Context window | Expanded to 1M (all 4.x except Sonnet 4.5, Opus 4.5) | No breaking change; review if you want to benefit |
 
-### Claude 4.x → Claude 5.x (Fable 5 / Sonnet 5)
+### Opus 4.6 / Sonnet 4.6 → Opus 4.7 / Opus 4.8 / Sonnet 5
 
 | Change | Impact | Required Action |
 |---|---|---|
-| **New tokenizer** | ~30% more tokens for same text | Re-benchmark all token budgets and cost projections |
-| **Context expansion** | 200K → 1M tokens | Update max_tokens defaults if your use case benefits |
-| **Output expansion** | 16K → 128K max output | Validate truncation logic; consider longer output formats |
-| **Adaptive thinking** | Sonnet 5 / Fable 5 always thinks | Audit prompts relying on no internal reasoning |
-| **New model IDs** | Old IDs do not route to 5.x | Update all model ID references in code and config |
-| **Pricing change** | Different per model | Recalculate cost projections with new rates |
+| **New tokenizer** | ~30% more tokens for same text | Re-count all token budgets with `count_tokens` |
+| **`budget_tokens` removed** | Passing extended thinking params returns 400 on Opus 4.7/4.8 | Replace `{"type": "enabled", "budget_tokens": N}` with `output_config={"effort": "..."}` |
+| **`xhigh` effort** (Opus 4.7+) | New thinking depth level available | Optionally adopt for maximum thinking depth |
+| **Pricing unchanged** | Same $5/$25/M (Opus) or $3/$15/M (Sonnet) | No cost impact at standard pricing |
+
+### Any Model → Claude Fable 5 / Mythos 5
+
+| Change | Impact | Required Action |
+|---|---|---|
+| **Thinking always on** | Cannot disable; `budget_tokens` rejected with HTTP 400 | Remove `{"type": "disabled"}` or `budget_tokens`; use `output_config.effort` |
+| **`refusal` stop reason** | HTTP 200 with empty content; not billed | Add `stop_reason == "refusal"` check; add server-side fallback |
+| **30-day retention required** | Zero-retention orgs receive HTTP 400 | Verify org retention configuration |
+| **New tokenizer** (from Opus 4.6 or below) | Token count shift | Re-baseline with `count_tokens` |
+| **Long turns** | Hard tasks can run many minutes | Plan timeouts, use streaming, build progress UX |
 
 ### Tokenizer Impact Assessment
 
@@ -509,27 +666,27 @@ PRODUCTION_PROMPTS = [
     "Your most common user message here...",
 ]
 
-MODELS = ["claude-sonnet-4-6", "claude-sonnet-5"]
-
+# Compare old tokenizer (Sonnet 4.6) vs new tokenizer (Sonnet 5)
 for prompt in PRODUCTION_PROMPTS:
     print(f"\nPrompt: {prompt[:80]}...")
-    for model in MODELS:
+    for model in ["claude-sonnet-4-6", "claude-sonnet-5"]:
         count = client.messages.count_tokens(
             model=model,
             messages=[{"role": "user", "content": prompt}]
         )
         print(f"  {model}: {count.input_tokens:,} tokens")
-# Expect Sonnet 5 to report approximately 30% more tokens for the same content
+# Sonnet 5 (new tokenizer) will report roughly 30% more tokens
 ```
 
-### Migration Checklist (4.x → 5.x)
+### Migration Checklist (moving to new-tokenizer models)
 
-- [ ] Re-count all token budgets with the 5.x tokenizer
-- [ ] Update `max_tokens` limits if you were near the old 16K ceiling
-- [ ] Test adaptive thinking impact on structured output prompts
-- [ ] Validate JSON schema enforcement (thinking blocks appear before text blocks)
+- [ ] Re-count all token budgets with the target model's tokenizer
+- [ ] Update `max_tokens` limits if you were near any output ceiling
+- [ ] Replace `{"type": "enabled", "budget_tokens": N}` with `output_config={"effort": "..."}` (Opus 4.7+, Sonnet 5, Fable 5)
+- [ ] Add `stop_reason == "refusal"` check for all Fable 5 / Mythos 5 calls
+- [ ] Add `fallbacks` parameter to Fable 5 / Mythos 5 API calls (recommended)
+- [ ] Verify data retention config for Fable 5 / Mythos 5 (30-day required)
 - [ ] Update cost projections with new pricing
-- [ ] Verify rate limits are still sufficient (Sonnet/Haiku now match Opus at every tier)
 - [ ] Test prompt caching — cache keys are model-specific
 - [ ] Update model IDs in all config files, environment variables, and code
 - [ ] Run full regression suite with production-representative inputs
@@ -539,20 +696,27 @@ for prompt in PRODUCTION_PROMPTS:
 ## 12. Deprecation Timeline
 
 !!! note "Known status only"
-    This table reflects officially announced status as of July 2026. No speculative future dates are included. Always check the [Anthropic models overview](https://docs.anthropic.com/en/docs/models-overview) for the authoritative deprecation schedule.
+    This table reflects officially announced status as of July 2026. Always check [Anthropic model deprecations](https://docs.anthropic.com/en/about-claude/model-deprecations) for the authoritative schedule.
 
-| Model | Status |
-|---|---|
-| Claude 3 Haiku | Deprecated — migrate to `claude-haiku-4-5-20251001` |
-| Claude 3 Sonnet | Deprecated — migrate to `claude-sonnet-4-6` or `claude-sonnet-5` |
-| Claude 3 Opus | Deprecated — migrate to `claude-opus-4-8` or `claude-fable-5` |
-| Claude 3.5 Sonnet | Maintenance mode — migrate to `claude-sonnet-4-6` |
-| Claude 3.5 Haiku | Maintenance mode — migrate to `claude-haiku-4-5-20251001` |
-| Claude Sonnet 4.6 | Active — no deprecation announced |
-| Claude Haiku 4.5 | Active — no deprecation announced |
-| Claude Opus 4.8 | Active — no deprecation announced |
-| Claude Sonnet 5 | GA — current generation flagship |
-| Claude Fable 5 | GA (Jun 9, 2026) — current frontier |
+| Model | Status | Migrate To |
+|---|---|---|
+| Claude 3 Haiku | **Retired** (Apr 19, 2026) | `claude-haiku-4-5` |
+| Claude 3.7 Sonnet | **Retired** (Feb 19, 2026) | `claude-sonnet-5` |
+| Claude 3.5 Haiku | **Retired** (Feb 19, 2026) | `claude-haiku-4-5` |
+| Claude 3 Opus | **Retired** (Jan 5, 2026) | `claude-opus-4-8` or `claude-fable-5` |
+| Claude 3.5 Sonnet (all versions) | **Retired** (Oct 28, 2025) | `claude-sonnet-5` |
+| Claude Opus 4.1 | **Deprecated** (retires Aug 5, 2026) | `claude-opus-4-6` or `claude-opus-4-8` |
+| Claude Sonnet 4 / Opus 4 | **Deprecated** | `claude-sonnet-5` / `claude-opus-4-8` |
+| Claude Opus 4.5 | Active — legacy | `claude-opus-4-6` or `claude-opus-4-8` |
+| Claude Sonnet 4.5 | Active — legacy | `claude-sonnet-5` |
+| Claude Opus 4.6 | Active — legacy | — |
+| Claude Opus 4.7 | Active — legacy | — |
+| Claude Sonnet 4.6 | Active — legacy | — |
+| Claude Haiku 4.5 | Active — current | — |
+| Claude Opus 4.8 | Active — current | — |
+| Claude Sonnet 5 | **GA** (Jun 30, 2026) — current flagship | — |
+| Claude Fable 5 | **GA** (Jun 9, 2026) — current frontier | — |
+| Claude Mythos 5 | **GA** (Jun 9, 2026) — Glasswing frontier | — |
 
 ---
 
@@ -567,11 +731,14 @@ from typing import Any
 client = anthropic.Anthropic()
 
 PRICING: dict[str, dict[str, float]] = {
-    "claude-fable-5":            {"input": 10.00, "output": 50.00},
-    "claude-sonnet-5":           {"input": 2.00,  "output": 10.00},
-    "claude-opus-4-8":           {"input": 15.00, "output": 75.00},
-    "claude-sonnet-4-6":         {"input": 3.00,  "output": 15.00},
-    "claude-haiku-4-5-20251001": {"input": 0.80,  "output": 4.00},
+    "claude-fable-5":    {"input": 10.00, "output": 50.00},
+    "claude-mythos-5":   {"input": 10.00, "output": 50.00},
+    "claude-opus-4-8":   {"input":  5.00, "output": 25.00},
+    "claude-opus-4-7":   {"input":  5.00, "output": 25.00},
+    "claude-opus-4-6":   {"input":  5.00, "output": 25.00},
+    "claude-sonnet-5":   {"input":  2.00, "output": 10.00},  # intro pricing through Aug 31 2026
+    "claude-sonnet-4-6": {"input":  3.00, "output": 15.00},
+    "claude-haiku-4-5":  {"input":  1.00, "output":  5.00},
 }
 
 def estimate_cost(
@@ -621,14 +788,15 @@ def monthly_cost_projection(
         "monthly_total_cost_usd":  round(input_cost + output_cost, 2),
     }
 
-# Example: 10,000 daily classifications with Haiku
+# Example: 10,000 daily classifications with Haiku 4.5
 print(monthly_cost_projection(
     daily_requests=10_000,
     avg_input_tokens=500,
     avg_output_tokens=100,
-    model="claude-haiku-4-5-20251001",
+    model="claude-haiku-4-5",
 ))
-# monthly_total_cost_usd: ~5.40
+# monthly_total_cost_usd: ~$19.50
+# (300K req × (500 × $1/1M + 100 × $5/1M) = 300K × $0.00065)
 ```
 
 ### Tracking Actual Token Usage
@@ -658,20 +826,23 @@ def tracked_request(client: anthropic.Anthropic, **kwargs) -> anthropic.types.Me
 def select_model(task_type: str, context_token_estimate: int) -> str:
     """Route each request to the cheapest capable model."""
     if context_token_estimate > 200_000:
-        return "claude-fable-5"  # Only model with 1M context
+        # Only 1M-context models; Haiku is excluded
+        if task_type in ("complex_reasoning", "research", "synthesis"):
+            return "claude-fable-5"
+        return "claude-sonnet-5"  # cost-efficient for most 1M-context tasks
 
     routing: dict[str, str] = {
-        "classification":    "claude-haiku-4-5-20251001",
-        "extraction":        "claude-haiku-4-5-20251001",
-        "short_summary":     "claude-haiku-4-5-20251001",
-        "guardrail_check":   "claude-haiku-4-5-20251001",
-        "code_review":       "claude-sonnet-5",
+        "classification":    "claude-haiku-4-5",
+        "extraction":        "claude-haiku-4-5",
+        "short_summary":     "claude-haiku-4-5",
+        "guardrail_check":   "claude-haiku-4-5",
+        "code_review":       "claude-opus-4-8",
         "agentic":           "claude-sonnet-5",
         "long_summary":      "claude-sonnet-5",
         "complex_reasoning": "claude-fable-5",
         "research":          "claude-fable-5",
     }
-    return routing.get(task_type, "claude-sonnet-4-6")
+    return routing.get(task_type, "claude-sonnet-5")
 ```
 
 ### Strategy 2: Prompt Caching
@@ -706,6 +877,7 @@ Any task that does not require real-time response should use the Batch API for 5
 
 ```python
 import anthropic
+import time
 
 client = anthropic.Anthropic()
 
@@ -713,7 +885,7 @@ batch_requests = [
     {
         "custom_id": f"item-{i}",
         "params": {
-            "model": "claude-haiku-4-5-20251001",
+            "model": "claude-haiku-4-5",
             "max_tokens": 256,
             "messages": [{"role": "user", "content": f"Classify: {text}"}],
         }
@@ -722,24 +894,21 @@ batch_requests = [
 ]
 
 batch = client.messages.batches.create(requests=batch_requests)
-print(f"Batch created: {batch.id} — poll for results asynchronously")
+print(f"Batch created: {batch.id}")
 
-# Poll for completion (or use webhook)
-import time
 while True:
     status = client.messages.batches.retrieve(batch.id)
     if status.processing_status == "ended":
         break
     time.sleep(30)
 
-# Retrieve results
 for result in client.messages.batches.results(batch.id):
     print(f"{result.custom_id}: {result.result.message.content[0].text}")
 ```
 
 ### Strategy 4: Constrain Output Length
 
-Output tokens cost 3–5× more than input tokens depending on model. Constrain output aggressively:
+Output tokens cost 3–5× more than input tokens. Constrain output aggressively:
 
 ```python
 # Antipattern — open-ended output, expensive
@@ -757,12 +926,12 @@ messages=[{
 
 ### Strategy 5: Haiku-First Testing Pipeline
 
-Before scaling any pipeline on Sonnet or Fable 5, test quality with Haiku first:
+Before scaling any pipeline on Sonnet 5 or Fable 5, test quality with Haiku first:
 
 ```python
 QUALITY_THRESHOLD = 0.85
 
-for model in ["claude-haiku-4-5-20251001", "claude-sonnet-5", "claude-fable-5"]:
+for model in ["claude-haiku-4-5", "claude-sonnet-5", "claude-opus-4-8", "claude-fable-5"]:
     results = [run_task(model, inp) for inp in sample_inputs]
     score = evaluate_quality(results, expected_outputs)
     print(f"{model}: quality={score:.2f}")
@@ -791,6 +960,7 @@ As of 2026, **Sonnet and Haiku rate limits match Opus at every usage tier**. Rat
 
 ```python
 import time
+import random
 import anthropic
 from anthropic import RateLimitError
 
@@ -800,11 +970,10 @@ def request_with_backoff(
     **kwargs
 ) -> anthropic.types.Message:
     """Exponential backoff with jitter on rate limit errors."""
-    import random
     for attempt in range(max_retries):
         try:
             return client.messages.create(**kwargs)
-        except RateLimitError as e:
+        except RateLimitError:
             if attempt == max_retries - 1:
                 raise
             base_wait = 2 ** attempt
@@ -818,31 +987,42 @@ def request_with_backoff(
 
 ## 16. Best Practices for Model Selection in Production
 
-1. **Default to Sonnet 5 for new agentic workloads** — best-balanced model as of mid-2026, with introductory pricing through August 2026.
-2. **Always count tokens before production deployment** — run `client.messages.count_tokens()` in your CI pipeline to catch context overflow before release.
-3. **Maintain a model routing config layer** — never hardcode model IDs in business logic; externalize to a config map so model swaps require no code changes.
-4. **Set cost budget alerts before scaling** — API cost grows linearly with request volume; configure billing alerts before load testing.
-5. **Use Haiku for all guardrail and routing decisions** — input/output safety filters, content classification, and query routing do not need Sonnet-grade intelligence.
-6. **Benchmark on real production prompts** — synthetic benchmarks do not predict domain-specific performance; build an eval harness with anonymized production examples.
-7. **Cache stable context aggressively** — system prompts, reference documents, and few-shot examples change rarely; apply `cache_control` to save 90% on repeated input tokens.
-8. **Plan for the tokenizer change explicitly** — assume 30% more tokens when migrating from Claude 4.x to 5.x; resize all token budgets and cost projections.
-9. **Add token count assertions to CI** — prevent silent regressions from prompt edits that push requests over context limits.
-10. **Use Batch API for all offline workloads** — any non-real-time task should go through Batch for the 50% price reduction; this includes nightly reports, bulk classification, and dataset generation.
-11. **Size thinking budgets to task complexity** — for Fable 5 and Sonnet 5, start with a small `budget_tokens` value and increase only if quality drops; thinking tokens are billed as output.
-12. **Test with the new tokenizer in staging** — run your full test suite against the target model before promoting to production.
+1. **Default to Sonnet 5 for new agentic workloads** — best-balanced model as of mid-2026, with introductory pricing through August 2026; matches Opus performance on most coding and reasoning tasks at lower cost.
+2. **Use Opus 4.8 for complex engineering and enterprise work** — Anthropic's recommended starting point for complex agentic coding, architecture analysis, and enterprise tasks.
+3. **Always count tokens before production deployment** — run `client.messages.count_tokens()` in your CI pipeline; remember Sonnet 5 / Opus 4.7/4.8 / Fable 5 use the new tokenizer (~30% more tokens than older models).
+4. **Maintain a model routing config layer** — never hardcode model IDs in business logic; externalize to a config map so model swaps require no code changes.
+5. **Set cost budget alerts before scaling** — API cost grows linearly with request volume; configure billing alerts before load testing.
+6. **Use Haiku for all guardrail and routing decisions** — input/output safety filters, content classification, and query routing do not need Sonnet-grade intelligence.
+7. **Benchmark on real production prompts** — synthetic benchmarks do not predict domain-specific performance; build an eval harness with anonymized production examples.
+8. **Cache stable context aggressively** — system prompts, reference documents, and few-shot examples change rarely; apply `cache_control` to save 90% on repeated input tokens.
+9. **Plan for tokenizer differences when migrating** — moving from Opus 4.6, Sonnet 4.6, or Haiku 4.5 to any new-tokenizer model (Sonnet 5, Opus 4.7/4.8, Fable 5) requires re-baselining all token budgets.
+10. **Add token count assertions to CI** — prevent silent regressions from prompt edits that push requests over context limits.
+11. **Use Batch API for all offline workloads** — any non-real-time task should go through Batch for the 50% price reduction; nightly reports, bulk classification, dataset generation.
+12. **Set effort levels explicitly for thinking models** — Sonnet 5 and Opus 4.8 default to `effort: high`; set it explicitly in code so behavior is reproducible and easy to tune.
+13. **Always add refusal handling for Fable 5 and Mythos 5** — use `fallbacks` server-side or implement client-side retry; a `refusal` stop reason means no content is returned and no charge is incurred.
+14. **Verify data retention policy before adopting Fable 5 or Mythos 5** — 30-day retention required; zero-retention orgs receive HTTP 400.
 
 ---
 
 ## 17. Antipatterns
 
 !!! danger "Using Fable 5 as the Default Model"
-    At $10/$50 per million tokens, Fable 5 costs 5–13× more than Haiku. Using it as a blanket default for all tasks including classification and routing wastes significant budget. Always route tasks to the cheapest capable model.
+    At $10/$50 per million tokens, Fable 5 costs 5–10× more than Haiku and 3.3× more than Sonnet 5 (standard). Using it as a blanket default wastes significant budget. Always route tasks to the cheapest capable model.
 
 !!! danger "Hardcoding Model IDs in Application Logic"
     Embedding model IDs directly in request code means model upgrades require code changes and redeployments. Externalize model selection to configuration so updates are a config push, not a deployment.
 
-!!! danger "Ignoring the Tokenizer Change When Migrating to 5.x"
-    Migrating prompts from Claude 4.x to 5.x without recounting tokens leads to unexpected truncation, context overflow errors, or cost overruns. Always recount with the target model's tokenizer.
+!!! danger "Using Date-Suffixed Model IDs in Code"
+    Never use `claude-haiku-4-5-20251001` or any date-suffixed form in your code. Use the alias `claude-haiku-4-5`. Date-suffixed IDs are the underlying pinned snapshots; the alias is the stable public API surface.
+
+!!! danger "Passing `budget_tokens` to Fable 5, Opus 4.7, or Opus 4.8"
+    These models do not support extended thinking. Passing `{"type": "enabled", "budget_tokens": N}` returns HTTP 400. Use `output_config={"effort": "..."}` instead. Extended thinking (`budget_tokens`) is only valid on Haiku 4.5, Opus 4.6, Sonnet 4.6, and older models.
+
+!!! danger "Not Handling the `refusal` Stop Reason on Fable 5 / Mythos 5"
+    These models can return `stop_reason: "refusal"` with an empty `content` array. Reading `response.content[0].text` without checking `stop_reason` first raises an IndexError. Always check stop reason before reading content.
+
+!!! danger "Ignoring the Tokenizer Change When Migrating"
+    Migrating from Opus 4.6, Sonnet 4.6, or Haiku 4.5 to any new-tokenizer model (Sonnet 5, Opus 4.7/4.8, Fable 5) without recounting tokens leads to truncation, context overflow, or cost overruns. Always recount with `count_tokens` using the target model.
 
 !!! danger "Not Using Prompt Caching for Stable Content"
     Sending the same 5,000-token system prompt on every request without `cache_control` pays full input price every time. With caching, subsequent calls within 5 minutes pay ~10% of that cost.
@@ -851,16 +1031,16 @@ def request_with_backoff(
     Production code without exponential backoff on `RateLimitError` will crash during traffic spikes. Always implement retry with jitter.
 
 !!! danger "Using Standard API for Offline Batch Workloads"
-    Nightly report generation, bulk embeddings, and dataset classification through the real-time API pay full price. The Batch API offers 50% off for async workloads with no quality difference.
+    Nightly report generation, bulk classification, and dataset creation through the real-time API pay full price. The Batch API offers 50% off for async workloads with no quality difference.
 
 !!! danger "Assuming Tasks Need Fable 5 Without Testing Cheaper Tiers"
-    Most classification, extraction, and short-form generation tasks run acceptably on Haiku. Testing only at the top tier leaves 5–13× cost savings on the table.
+    Most classification, extraction, and short-form generation tasks run acceptably on Haiku. Sonnet 5 covers most agentic workloads. Test iteratively from cheapest to most expensive before committing to frontier models.
 
 !!! danger "Unbounded Output Requests"
     Sending prompts without explicit output length constraints results in verbose, expensive completions. Always specify the expected format and approximate length.
 
 !!! danger "Ignoring Thinking Token Cost"
-    In Fable 5 and Sonnet 5, thinking tokens are billed as output tokens. A `budget_tokens: 50000` allocation at Fable 5 output pricing costs $2.50 per request in thinking alone. Size thinking budgets carefully.
+    On Fable 5 ($50/M output), an effort level of `max` can cost several dollars per request in thinking tokens alone. Monitor `usage.output_tokens` and tune effort levels to task complexity.
 
 !!! danger "Evaluating Models Only on Toy Examples"
     Toy benchmark prompts do not predict production performance in your domain. Always build an eval harness with real (anonymized) production inputs before committing to a model.
