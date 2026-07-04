@@ -219,7 +219,7 @@ COMPLEXITY OF TASK
 
 ### 4.3 Multi-Model Strategies
 
-**Routing:** Use a classifier (Haiku 4.5) to score task complexity, then route to Haiku (simple) or Sonnet 5 (complex) or Fable 5 (critical). See [Cost Optimization Routing Pattern](enterprise-ai-architecture-patterns.md#12-cost-optimization-routing).
+**Routing:** Use a classifier (Haiku 4.5) to score task complexity, then route to Haiku (simple) or Sonnet 5 (complex) or Fable 5 (critical). See [Cost Optimization Routing Pattern](enterprise-ai-architecture-patterns.md#11-cost-optimisation-routing).
 
 **Fallback:** Primary model → timeout/error → fallback model. Always have a fallback. Never let a single model be a hard dependency.
 
@@ -555,7 +555,7 @@ Use for: prototypes, low-volume internal tools. Not for production at scale (no 
 ```
 Client → AI Gateway → Claude API
 ```
-The gateway handles: auth, rate limiting, retry, logging, cost tracking, model routing. See [AI Gateway Pattern](enterprise-ai-architecture-patterns.md#6-ai-gateway-pattern).
+The gateway handles: auth, rate limiting, retry, logging, cost tracking, model routing. See [AI Gateway Pattern](enterprise-ai-architecture-patterns.md#5-ai-gateway-pattern).
 
 **SDK-mediated:**
 ```
