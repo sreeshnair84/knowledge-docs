@@ -168,24 +168,24 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 <details>
 <summary>Anthropic Partner Cert Study Guide</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/coding-agents/claude/Anthropic_Partner_Cert_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/Anthropic_Partner_Cert_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="Anthropic_Partner_Cert_Study_Guide.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>CCAF Study Guide</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/coding-agents/claude/CCAF_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/CCAF_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="CCAF_Study_Guide.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>CCAF Advanced Supplement</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/coding-agents/claude/CCAF_Advanced_Supplement.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/CCAF_Advanced_Supplement.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="CCAF_Advanced_Supplement.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>Claude Best Practices</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/coding-agents/claude/claude-best-practices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/claude-best-practices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="claude-best-practices.docx" download>Download DOCX ↓</a></p>
 </details>

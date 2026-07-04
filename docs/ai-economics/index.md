@@ -22,6 +22,18 @@ Guides and tools for understanding, optimising, and governing the cost of AI sys
 <p><a href="AI_Cost_Implementation_Guide_2026.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
+<details>
+<summary>AI Value Creator Deliverables</summary>
+<iframe src="AI-Value-Creator-Deliverables-Pack.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="AI-Value-Creator-Deliverables-Pack.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
+<details>
+<summary>Agentic AI Use Case Value Lifecycle</summary>
+<iframe src="Agentic-AI-Use-Case-Value-Lifecycle.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Agentic-AI-Use-Case-Value-Lifecycle.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
+
 ## Spreadsheets
 
 <details>
