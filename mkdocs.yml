@@ -93,6 +93,7 @@ nav:
     - Memory: agentic-systems/memory/index.md
     - Agent Skills: agentic-systems/skill/index.md
     - Configuration: agentic-systems/config/index.md
+    - Harness: agentic-systems/harness/index.md
   - Security:
     - Overview: ai-security-governance/index.md
     - AI Security: ai-security-governance/security/index.md
@@ -116,6 +117,8 @@ nav:
       - Overview: coding-tools/github-copilot/index.md
       - Zero to Hero: coding-tools/github-copilot/github-copilot-zero-to-hero.md
       - Git & GitHub Platform Engineering: coding-tools/github-copilot/git-github-platform-engineering-handbook.md
+    - Code Review:
+      - Overview: coding-tools/code-review/index.md
     - Enterprise AI Architect:
       - Overview: coding-tools/enterprise-ai-architect/index.md
       - Foundations: coding-tools/enterprise-ai-architect/enterprise-ai-architect-foundations.md
@@ -152,7 +155,7 @@ nav:
     - Frameworks: enterprise-architecture/framework/index.md
     - Processes: enterprise-architecture/process/index.md
     - Best Practices: enterprise-architecture/best-practices/index.md
-    - ARB: enterprise-architecture/arb/index.md
+    - ARB: enterprise-architecture/architectural-review-board/index.md
     - Specialization: enterprise-architecture/specialization/index.md
   - AI Development:
     - Overview: ai-development/index.md
@@ -160,8 +163,11 @@ nav:
     - Testing & Evaluation:
       - Overview: ai-development/testing/index.md
       - AI Agent Evaluation Framework: ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md
-  - AI Economics: ai-economics/index.md
+  - AI Economics:
+    - Overview: ai-economics/index.md
+    - AI Value Creators Synthesis: ai-economics/ai-value-creators-synthesis.md
   - Use Cases: ai-usecases/index.md
+  - AI-First Enterprise: ai-first-enterprise/index.md
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md

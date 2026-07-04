@@ -1,260 +1,78 @@
 ---
-title: Enterprise Architect
+title: Enterprise Architecture
 ---
 
-# Enterprise Architect
+# Enterprise Architecture
 
 Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX references for Enterprise Architects in the AI era.
 
 ---
 
-## Interview &amp; Career
+## Sections
 
-<details>
-<summary>EA Interview Master Guide</summary>
-<iframe src="EA_Interview_Master_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Interview_Master_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+<div class="grid cards" markdown>
 
-<details>
-<summary>EA Interview Handbook</summary>
-<iframe src="EA_Interview_Handbook.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Interview_Handbook.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+-   :material-strategy:{ .lg .middle } **Strategy**
 
-<details>
-<summary>EA Interview Handbook DELTA</summary>
-<iframe src="EA_Interview_Handbook_DELTA.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Interview_Handbook_DELTA.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    ---
 
-<details>
-<summary>EA Interview Vol 3 — CTO &amp; AI</summary>
-<iframe src="EA_Interview_Vol3_CTO_AI.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Interview_Vol3_CTO_AI.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    AI transformation blueprints, CTO guides, strategic briefs, and EA strategy playbooks.
 
-<details>
-<summary>EA Soft Skills Interview Master Guide</summary>
-<iframe src="EA_Soft_Skills_Interview_Master_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Soft_Skills_Interview_Master_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    [:octicons-arrow-right-24: Browse](strategy/index.md)
 
-<details>
-<summary>EA Mastery Guide</summary>
-<iframe src="EA_Mastery_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Mastery_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+-   :material-shape:{ .lg .middle } **Frameworks**
 
----
+    ---
 
-## AI Strategy &amp; Architecture
+    TOGAF 10 APEX, communication frameworks, and enterprise architecture frameworks for AI-era organisations.
 
-<details>
-<summary>Enterprise AI Architect Bible 2026</summary>
-<iframe src="Enterprise_AI_Architect_Bible_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Architect_Bible_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    [:octicons-arrow-right-24: Browse](framework/index.md)
 
-<details>
-<summary>Enterprise Agentic AI Architecture Playbook 2026</summary>
-<iframe src="Enterprise_Agentic_AI_Architecture_Playbook_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_Agentic_AI_Architecture_Playbook_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+-   :material-cogs:{ .lg .middle } **Processes**
 
-<details>
-<summary>Enterprise AI Architect Deep Dive Guide</summary>
-<iframe src="Enterprise_AI_Architect_Deep_Dive_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Architect_Deep_Dive_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    ---
 
-<details>
-<summary>Enterprise AI Architect Communication Guide</summary>
-<iframe src="Enterprise_AI_Architect_Communication_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Architect_Communication_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    EA lifecycle, mastery guides, agentic AI playbooks, and real-life transcripts.
 
-<details>
-<summary>Enterprise AI Transformation Blueprint — CTO Guide 2026</summary>
-<iframe src="Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    [:octicons-arrow-right-24: Browse](process/index.md)
 
-<details>
-<summary>Enterprise AI Strategic Brief 2026</summary>
-<iframe src="Enterprise_AI_Strategic_Brief_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Strategic_Brief_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+-   :material-check-all:{ .lg .middle } **Best Practices**
 
-<details>
-<summary>AI Transformation Consultant Toolkit 2026</summary>
-<iframe src="AI_Transformation_Consultant_Toolkit_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Transformation_Consultant_Toolkit_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    ---
 
-<details>
-<summary>Principal Enterprise AI Guide</summary>
-<iframe src="Principal_Enterprise_AI_Guide_Educative.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Principal_Enterprise_AI_Guide_Educative.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    EA glossary, best practices, jargon guides, and quality checklists.
 
-<details>
-<summary>DSA Principal Architect Reference</summary>
-<iframe src="DSA_Principal_Architect_Reference.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="DSA_Principal_Architect_Reference.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    [:octicons-arrow-right-24: Browse](best-practices/index.md)
 
-<details>
-<summary>Enterprise Data Architect — AI &amp; GenAI</summary>
-<iframe src="Enterprise_Data_Architect_AI_GenAI.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_Data_Architect_AI_GenAI.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+-   :material-bank:{ .lg .middle } **ARB (Architectural Review Board)**
 
-<details>
-<summary>Enterprise Manager — AI &amp; GenAI</summary>
-<iframe src="Enterprise_Manager_AI_GenAI.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_Manager_AI_GenAI.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+    ---
+
+    10-volume comprehensive reference for AI-native ARBs — governance, economics, knowledge management, artifacts, and banking case studies.
+
+    [:octicons-arrow-right-24: Browse](architectural-review-board/index.md)
+
+-   :material-graduation-cap:{ .lg .middle } **Specialization**
+
+    ---
+
+    Data architecture, principal architect guides, enterprise data and manager roles, and observability/lineage references.
+
+    [:octicons-arrow-right-24: Browse](specialization/index.md)
+
+</div>
 
 ---
 
-## TOGAF &amp; APEX
+## Quick Reference
 
-<details>
-<summary>TOGAF 10 APEX AI Platform — NexaBank</summary>
-<iframe src="TOGAF10_APEX_AI_Platform_NexaBank.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_AI_Platform_NexaBank.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>TOGAF 10 APEX Cloud Native — GlobalCorp</summary>
-<iframe src="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>TOGAF 10 APEX v4 Peer Reviewed</summary>
-<iframe src="TOGAF10_APEX_v4_PeerReviewed.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_v4_PeerReviewed.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>APEX EA Final</summary>
-<iframe src="APEX_EA_Final.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="APEX_EA_Final.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
----
-
-## Communication &amp; Reference
-
-<details>
-<summary>EA Business Communication &amp; Executive Skills</summary>
-<iframe src="EA_Business_Communication_Executive_Skills.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Business_Communication_Executive_Skills.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>Executive Communication Framework Guide</summary>
-<iframe src="Executive_Communication_Framework_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Executive_Communication_Framework_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>EA Glossary &amp; Cheat Sheet</summary>
-<iframe src="EA_Glossary_CheatSheet.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Glossary_CheatSheet.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>EA Best Practices &amp; Jargon</summary>
-<iframe src="EA_BestPractices_Jargon.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_BestPractices_Jargon.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>EA Strategy Playbook</summary>
-<iframe src="EA_Strategy_Playbook.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Strategy_Playbook.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>EA OKR &amp; KPI Research</summary>
-<iframe src="EA_OKR_KPI_Research.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_OKR_KPI_Research.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>EA Lifecycle Checklist</summary>
-<iframe src="EA_Lifecycle_Checklist.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Lifecycle_Checklist.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
----
-
-## Real-Life Transcripts
-
-<details>
-<summary>EA AI-First Transformation Transcript</summary>
-<iframe src="EA_AI_First_Transformation_Transcript.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_AI_First_Transformation_Transcript.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>EA Real Life Transcript</summary>
-<iframe src="EA_Real_Life_Transcript.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Real_Life_Transcript.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
-<details>
-<summary>RFI AI Platform Transcript</summary>
-<iframe src="RFI_AI_Platform_Transcript.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="RFI_AI_Platform_Transcript.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
-
----
-
-## Presentations (PPTX)
-
-<details>
-<summary>Agentic AI — C-Suite</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/AgenticAI_Csuite.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="AgenticAI_Csuite.pptx" download>Download PPTX ↓</a></p>
-</details>
-
-<details>
-<summary>EA Agentic AI</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/EA_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="EA_AgenticAI.pptx" download>Download PPTX ↓</a></p>
-</details>
-
-<details>
-<summary>BizSales Agentic AI</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/BizSales_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="BizSales_AgenticAI.pptx" download>Download PPTX ↓</a></p>
-</details>
-
-<details>
-<summary>SA Dev Agentic AI</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/SA_Dev_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="SA_Dev_AgenticAI.pptx" download>Download PPTX ↓</a></p>
-</details>
-
----
-
-## DOCX Documents
-
-<details>
-<summary>AI Invoice Auditor Architecture</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/AI_Invoice_Auditor_Architecture_v5.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="AI_Invoice_Auditor_Architecture_v5.docx" download>Download DOCX ↓</a></p>
-</details>
-
----
-
-## Code / JSX
-
-<details>
-<summary>TOGAF 10 AI Platform Diagram (React/JSX)</summary>
-<p><a href="togaf10-ai-platform.jsx" target="_blank">View JSX source ↗</a></p>
-</details>
+| Topic | Section |
+|-------|---------|
+| AI Transformation Blueprint & CTO Guide | [Strategy](strategy/index.md) |
+| TOGAF 10 APEX AI Platform | [Frameworks](framework/index.md) |
+| EA Lifecycle & Mastery Guide | [Processes](process/index.md) |
+| EA Glossary & Best Practices | [Best Practices](best-practices/index.md) |
+| 10-Volume ARB Reference Series | [ARB](architectural-review-board/index.md) |
+| Data Architecture & Principal Architect | [Specialization](specialization/index.md) |
+| EA Interview Preparation | [Interview Prep](../interview-prep/ea/index.md) |
+| AI-First Enterprise Strategy | [AI-First Enterprise](../ai-first-enterprise/index.md) |

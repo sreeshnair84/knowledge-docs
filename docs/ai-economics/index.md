@@ -11,6 +11,7 @@ Guides and tools for understanding, optimising, and governing the cost of AI sys
 ## Markdown Guides
 
 - [AI Coding Agents 2026](ai-coding-agents-2026.md) — Cost and capability comparison of coding agents
+- [AI Value Creators Synthesis](ai-value-creators-synthesis.md) — McKinsey, BCG, Gartner & Stanford HAI synthesis on enterprise AI value creation and agentic AI ROI
 
 ---
 

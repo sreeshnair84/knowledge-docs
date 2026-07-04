@@ -51,3 +51,9 @@ Enterprise agentic AI security — identity, MCP/A2A security, AI SOC, observabi
 <iframe src="08-Architects-Field-Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
 <p><a href="08-Architects-Field-Guide.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
+
+<details>
+<summary>Part 4 — Runtime Security &amp; Governance</summary>
+<iframe src="Part4_Runtime_Security_Governance.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="Part4_Runtime_Security_Governance.pdf" target="_blank">Open in new tab ↗</a></p>
+</details>
