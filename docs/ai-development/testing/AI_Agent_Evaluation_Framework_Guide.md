@@ -938,7 +938,8 @@ Row 4 — COST & SCALE
 ```python
 # AgentCore Custom Evaluator Configuration
 custom_evaluator_config = {
-    "model_id": "anthropic.claude-sonnet-4-20250514-v1:0",
+    # Check the Bedrock model catalog for the latest Sonnet ID
+    "model_id": "global.anthropic.claude-sonnet-4-6",
     "inference_config": {
         "temperature": 0.0,         # Deterministic scoring
         "max_tokens": 1000
@@ -1073,7 +1074,7 @@ StrandsInstrumentor().instrument(tracer_provider=tracer_provider)
 
 # 4. Define Strands Agent
 agent = Agent(
-    model="anthropic.claude-sonnet-4-20250514-v1:0",
+    model="global.anthropic.claude-sonnet-4-6",  # check Bedrock model catalog for latest
     tools=[search_tool, calculator_tool, rag_tool],
     system_prompt="You are a helpful assistant."
 )
@@ -1285,5 +1286,5 @@ WEEK 4 — LAUNCH READINESS
 
 ---
 
-*Guide Version: 1.0 | Stack: AWS Bedrock AgentCore (GA 2026) + Strands + Arize Phoenix*
+*Guide Version: 1.0 | Stack: AWS Bedrock AgentCore (GA October 2025; Policy GA March 2026) + Strands + Arize Phoenix*
 *Maintained by: AI Platform Team | Review Cycle: Quarterly*

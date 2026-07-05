@@ -39,7 +39,7 @@ nav_order: 3
 
 ## 1. Market Overview
 
-84% of developers use or plan to use AI coding tools in 2026 (Stack Overflow Developer Survey 2025). Among professionals, **51% use them daily**. Monthly agentic use sits at 31%. And yet only **29% trust the output** to be accurate — meaning the trust gap is the frontier every tool is racing to close.
+84% of developers use or plan to use AI coding tools in 2026 (Stack Overflow Developer Survey 2025). Among professionals, **51% use them daily**. Monthly agentic use sits at 31%. And yet only **33% trust the output** to be accurate (46% actively distrust it) — meaning the trust gap is the frontier every tool is racing to close.
 
 The category itself has fractured. In 2024 you had GitHub Copilot and a handful of experiments. By May 2026, there are **seven serious contenders** in agentic coding alone, plus a long tail of specialized tools and skills. Every tool is racing toward the "agent" category, and the Q2 2026 wave is now racing toward **parallel orchestration**.
 
@@ -48,14 +48,14 @@ The category itself has fractured. In 2024 you had GitHub Copilot and a handful 
 | Tool | Entry Price | Heavy Use |
 |---|---|---|
 | Cline | Free (API costs only) | ~$50–$150/mo API |
-| GitHub Copilot | $10/mo | $39/mo enterprise |
+| GitHub Copilot | $10/mo Pro | $19/mo Business, $39/mo Pro+ |
 | Windsurf | $20/mo (was $15) | $20/mo Pro |
 | Claude Code | $20/mo (Pro bundle) | $100–200/mo |
 | Cursor | $20/mo | $200/mo Max |
 | Google Antigravity | Free | $20–200/mo |
 | OpenAI Codex | ~$20/mo | usage-based |
 | Kiro | Free tier | Credit-based (unpredictable) |
-| Devin | $20/mo Core | $500/mo Team |
+| Devin | Free / Pro | Teams / Enterprise (ACU-based) |
 | Ruflo | Open-source (API costs) | — |
 | Caveman | Free (open-source skill) | — |
 
@@ -215,14 +215,14 @@ Setup complexity is higher than any other tool in this list. Budget experimentat
 **Category:** Terminal-Native Agent
 **By:** Anthropic
 **Price:** Bundled with Claude Pro ($20/mo); heavy users $100–200/mo
-**Best SWE-bench analog:** High (deepest reasoning ceiling with Opus 4.7)
+**Best SWE-bench analog:** High (deepest reasoning ceiling with Opus 4.8)
 
 #### What It Is
 
 Claude Code is Anthropic's CLI-driven coding agent. It's terminal-native, project-aware, and designed for long-context multi-file agentic work. It does not live inside an IDE — it runs in your terminal and operates on your codebase directly.
 
 Key characteristics:
-- **Longest reasoning ceiling** of any tool (Opus 4.7 access)
+- **Longest reasoning ceiling** of any tool (Opus 4.8 access)
 - Reads entire codebases, maintains project context across long sessions
 - Can execute terminal commands, run tests, create files, and iterate
 - Native home for Ruflo orchestration and Caveman skill
@@ -241,7 +241,6 @@ Real-world heavy use runs $100–200/month. The agentic features handle 5–15-s
 **Category:** Agentic IDE (VS Code fork)
 **By:** Anysphere
 **Price:** Free → $20/mo Pro → $200/mo Max
-**GitHub Stars:** 150,000+ (LangChain ecosystem connection)
 
 #### What It Is
 
@@ -285,7 +284,7 @@ The acquisition created direction uncertainty — the Cognition ownership raises
 
 **Category:** IDE Plug-in (Autocomplete + Chat) → evolving to Agent
 **By:** Microsoft / GitHub
-**Price:** Free → $10/mo Individual → $39/mo Business
+**Price:** Free → $10/mo Pro → $19/mo Business → $39/mo Pro+ (AI Credits usage-based billing live since June 1, 2026: Pro includes $15/mo in credits, Pro+ $70, Max $100)
 **Installs:** 15 million developers; ~42% market share among paid tools
 
 #### What It Is
@@ -336,7 +335,7 @@ The go-to tool for developers who want **cost control and provider independence*
 
 **Category:** Fully Autonomous Cloud Engineer
 **By:** Cognition AI (San Francisco)
-**Price:** $20/mo Core (+$2.25/ACU) → $500/mo Team (250 ACUs) → Enterprise (custom)
+**Price:** Free → Pro → Max → Teams → Enterprise (Core/Team plans retired April 2026; ACU-based consumption persists)
 **SWE-bench:** 67% PR merge rate on defined tasks
 
 #### What It Is
@@ -349,7 +348,7 @@ How it works:
 3. It reads documentation, installs packages, writes code, runs tests, creates a pull request, and iterates on review feedback — **entirely on its own**
 4. You come back to a PR
 
-**ACU pricing:** 1 ACU ≈ 15 minutes of active autonomous work. The Team plan's 250 ACUs = ~62.5 hours of autonomous engineering time per month. ACU consumption is unpredictable (complex tasks can burn significant ACUs; budget carefully).
+**ACU pricing:** 1 ACU ≈ 15 minutes of active autonomous work. Since the April 2026 plan restructure (Core/Team retired in favor of Free/Pro/Max/Teams/Enterprise), ACU allowances are bundled per tier rather than a flat 250-ACU Team allotment. ACU consumption is unpredictable (complex tasks can burn significant ACUs; budget carefully).
 
 #### Real-World Results
 
@@ -371,7 +370,7 @@ The 2026 consensus: Devin **replaces tasks, not roles**. It acts as a force mult
 
 ❌ Skip for: Open-ended architectural work; greenfield product design; situations where human-in-loop iterative feedback is valuable; cost-sensitive situations with unpredictable task complexity.
 
-**Verdict:** The most autonomous tool in the category. The $500/mo Team plan is expensive — justify it by comparing ACU cost to engineering-hours cost for the tasks you're delegating.
+**Verdict:** The most autonomous tool in the category. The Teams/Enterprise tiers are expensive — justify them by comparing ACU cost to engineering-hours cost for the tasks you're delegating.
 
 ---
 
@@ -539,7 +538,7 @@ Best for large teams with large codebases where understanding the existing syste
 | **Windsurf** | Agentic IDE | $20 | Multi-model | IDE + autonomous bundle | ⭐⭐⭐⭐ |
 | **GitHub Copilot** | IDE plug-in | $10–39 | Multi-model | Inline, ecosystem breadth | ⭐⭐⭐ |
 | **Cline** | OSS VS Code agent | Free + API | None (BYOM) | Cost-controlled agent work | ⭐⭐⭐⭐ |
-| **Devin** | Autonomous cloud | $20–500 | Proprietary | Async ticket completion | ⭐⭐⭐⭐⭐ |
+| **Devin** | Autonomous cloud | Free–Enterprise (ACU) | Proprietary | Async ticket completion | ⭐⭐⭐⭐⭐ |
 | **OpenAI Codex** | Cloud + CLI agent | Usage-based | OpenAI | Async + security scanning | ⭐⭐⭐⭐ |
 | **Antigravity** | Agentic IDE | Free–200 | Gemini+ | Multi-agent, A2A workflows | ⭐⭐⭐⭐⭐ |
 | **Kiro** | Spec-driven IDE | Credit-based | AWS | Compliance, spec-first dev | ⭐⭐⭐⭐ |
@@ -571,7 +570,7 @@ TASK: "I want full model flexibility and don't want to pay a platform markup"
 → CLINE (BYOM, 5M installs, zero markup, works in VS Code)
 
 TASK: "I want to assign a ticket and come back to a merged PR"
-→ DEVIN ($500/mo Team; well-scoped tasks; best for async autonomous execution)
+→ DEVIN (Teams/Enterprise, ACU-based; well-scoped tasks; best for async autonomous execution)
 
 TASK: "I need compliance-ready specs that map to generated code (AWS team)"
 → KIRO (spec-driven development; EARS format; AWS-native)
@@ -637,7 +636,7 @@ Kiro (spec-driven IDE)
 | Tool / Setup | Score |
 |---|---|
 | Google Antigravity | 76.2% |
-| Claude Code (Opus 4.7) | High (deepest reasoning ceiling) |
+| Claude Code (Opus 4.8) | High (deepest reasoning ceiling) |
 | Devin | 67% PR merge rate on defined tasks |
 | Augment Code (Opus 4.5) | Tested — 17-problem gap vs peers on same model |
 | Cursor (Opus 4.5) | Same model, different scaffold — scored differently |
@@ -665,7 +664,7 @@ Cursor      → Best agentic IDE. Most polished. Widest ecosystem.
 Windsurf    → IDE + Devin bundled. Was best value; now matches Cursor price.
 Copilot     → 15M devs. $10/mo. Best GitHub ecosystem integration.
 Cline       → BYOM. Zero markup. 5M installs. VS Code OSS agent.
-Devin       → Assign ticket. Walk away. Come back to PR. $500/mo Team.
+Devin       → Assign ticket. Walk away. Come back to PR. Teams/Enterprise (ACU).
 Codex       → OpenAI cloud + CLI agent. Security scanning. 2M weekly users.
 Antigravity → Google's agent-first IDE. 76% SWE-bench. A2A protocol. Free tier.
 Kiro        → AWS spec-driven IDE. EARS specs. Compliance-first.

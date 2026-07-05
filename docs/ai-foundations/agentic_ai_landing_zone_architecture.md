@@ -912,6 +912,8 @@ Our landing zone implements both frameworks in an integrated manner:
 | **Limited-Risk** | Chatbots, content generation | Transparency obligations (disclose AI use) |
 | **Minimal-Risk** | Spam filters, recommendations | No specific obligations |
 
+> **Timeline note (July 2026):** The Digital Omnibus on AI (Council final approval June 29, 2026) deferred Annex III high-risk obligations to December 2, 2027 and Annex I embedded systems to August 2, 2028; Article 50 transparency obligations still apply from August 2, 2026.
+
 **Landing Zone Capabilities for High-Risk AI**:
 - Risk management system (integrated with NIST AI RMF)
 - Data governance protocols (ISO 42001 Annex A.5)
@@ -1344,7 +1346,7 @@ Integration with Enterprise IdP
 
 ### Context
 The AI model landscape is rapidly evolving with multiple providers:
-- OpenAI (GPT-4, o1)
+- OpenAI (GPT-5 family)
 - Anthropic (Claude)
 - Google (Gemini)
 - Meta (Llama)
@@ -1653,7 +1655,7 @@ Implement **Semantic Observability** - structured logging that captures agent in
   },
   
   "reasoning": {
-    "model_used": "claude-sonnet-4-5",
+    "model_used": "claude-sonnet-4-6",
     "prompt_version": "return-workflow-v3",
     "confidence_score": 0.92,
     "alternative_considered": "escalate_to_human",
@@ -1700,7 +1702,7 @@ Implement **Semantic Observability** - structured logging that captures agent in
   
   "provenance": {
     "data_sources_fingerprint": "sha256:abc...",
-    "model_checkpoint": "claude-sonnet-4-5-20250929",
+    "model_checkpoint": "claude-sonnet-4-6",
     "policy_version": "pc-returns-v1.2",
     "human_interventions": []
   }
@@ -2057,7 +2059,7 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 ---
 
 **Document Status**: APPROVED  
-**Next Review Date**: 2026-05-06 (Quarterly)  
+**Next Review Date**: 2026-10-05 (Quarterly; last reviewed 2026-07-05)  
 **Owner**: Enterprise Architecture Office  
 **Distribution**: Architecture Review Board, AI Governance Board, Engineering Leadership
 

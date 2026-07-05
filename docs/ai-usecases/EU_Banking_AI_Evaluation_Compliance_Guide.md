@@ -49,9 +49,11 @@ nav_order: 1
 ║  │  In force:    1 August 2024                                         │   ║
 ║  │  Phase 1:     Feb 2025 — Prohibited practices banned                │   ║
 ║  │  Phase 2:     Aug 2025 — GPAI + governance obligations              │   ║
-║  │  Phase 3:     Aug 2026 — High-risk AI full obligations              │   ║
-║  │  Phase 4:     Aug 2027 — All remaining provisions                   │   ║
+║  │  Phase 3:     Aug 2026 — Art. 50 transparency + GPAI enforce.      │   ║
+║  │  Phase 4:     Dec 2027 — Annex III high-risk (Omnibus deferral)    │   ║
+║  │  Phase 5:     Aug 2028 — Annex I embedded high-risk systems        │   ║
 ║  │  Penalties:   Up to €35M or 7% global turnover                     │   ║
+║  │  Amended by:  Digital Omnibus on AI (Council approval 29 Jun 2026) │   ║
 ║  └─────────────────────────────────────────────────────────────────────┘   ║
 ║                                                                              ║
 ║  BANKING-SPECIFIC REGULATIONS (interact with EU AI Act)                     ║
@@ -84,7 +86,8 @@ nav_order: 1
 ║  SUPERVISORY BODIES                                                          ║
 ║  ──────────────────────────────────────────────────────────────────────     ║
 ║  ECB (significant institutions)  │  EBA  │  ESMA  │  EIOPA                 ║
-║  National CAs (BaFin, FCA*, ACPR, DNB, etc.)                               ║
+║  National CAs (BaFin, ACPR, DNB, etc.) — FCA is the UK regulator,          ║
+║  outside the EU AI Act / DORA perimeter                                     ║
 ║  EU AI Office (GPAI oversight)   │  National MSAs (AI Act enforcement)      ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -93,16 +96,21 @@ nav_order: 1
 ### 1.1 Regulation Compliance Timeline (Action Calendar)
 
 ```
-  2024        2025              2026              2027
+  2024        2025              2026              2027 / 2028
   ────────────────────────────────────────────────────────────────
-  Aug 2024    Feb 2025          Aug 2026          Aug 2027
-  EU AI Act   Prohibited AI     HIGH-RISK AI      All remaining
-  In force    practices BANNED  FULL OBLIGATIONS  provisions apply
-              AI Literacy BEGIN CE Marking needed
+  Aug 2024    Feb 2025          Aug 2026          Dec 2027
+  EU AI Act   Prohibited AI     ART. 50 TRANSPAR. ANNEX III HIGH-RISK
+  In force    practices BANNED  + GPAI ENFORCE-   FULL OBLIGATIONS +
+              AI Literacy BEGIN MENT BEGINS       CE Marking (Omnibus)
               ─────────────────────────────────
-  Jan 2025    Aug 2025          Dec 2030
-  DORA LIVE   GPAI + Governance Extended IT
-              obligations       system deadline
+  Jan 2025    Aug 2025          Dec 2030          Aug 2028
+  DORA LIVE   GPAI + Governance Extended IT       ANNEX I embedded
+              obligations       system deadline   high-risk systems
+
+  NOTE: The Digital Omnibus on AI (Council final approval June 29,
+  2026) deferred Annex III high-risk obligations to Dec 2, 2027 and
+  Annex I embedded systems to Aug 2, 2028. Art. 50 transparency and
+  GPAI Commission enforcement remain on the Aug 2, 2026 schedule.
 ```
 
 ---
@@ -116,7 +124,7 @@ nav_order: 1
 │           EU AI ACT ANNEX III — BANKING HIGH-RISK USE CASES             │
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  🔴 HIGH-RISK (Annex III — Full obligations from Aug 2026)      │   │
+│  │  🔴 HIGH-RISK (Annex III — Full obligations from Dec 2, 2027)   │   │
 │  │  ─────────────────────────────────────────────────────────────  │   │
 │  │                                                                  │   │
 │  │  • Creditworthiness evaluation of natural persons               │   │
@@ -763,7 +771,7 @@ def explain_agent_decision(agent, query, feature_names):
 | **Human Override Rate** | HITL escalations / Total decisions | ≥ 5% (audit check) | EU AI Act Art. 14 |
 | **Adversarial Robustness** | Pass rate on attack suite | ≥ 0.95 | EU AI Act Art. 15 |
 | **Audit Trail Coverage** | Logged decisions / Total decisions | 1.00 (100%) | DORA + EU AI Act Art. 12 |
-| **AI Disclosure Rate** | Sessions with disclosure / Total | 1.00 (100%) | EU AI Act Art. 52 |
+| **AI Disclosure Rate** | Sessions with disclosure / Total | 1.00 (100%) | EU AI Act Art. 50 |
 | **Data Minimisation Score** | LLM-Judge: does agent request only needed data? | ≥ 0.90 | GDPR Art. 5(1)(c) |
 
 #### AML / FRAUD DETECTION SPECIFIC
@@ -1025,7 +1033,7 @@ SECTION 8 — CONFORMITY ASSESSMENT
 │  BEDROCK AGENTCORE EU AVAILABILITY (as of 2026):                       │
 │  AgentCore Runtime:       eu-central-1, eu-west-1                      │
 │  AgentCore Evaluations:   eu-central-1 (Frankfurt) ✅                   │
-│                           eu-west-1 (Oregon — DO NOT USE for EU data)  │
+│                           eu-west-1 (Dublin, Ireland) ✅                │
 │                                                                          │
 │  Arize Phoenix: Self-host on EU EKS cluster (Frankfurt)                │
 │  OR: Phoenix Cloud with EU data residency SLA                          │
@@ -1367,7 +1375,12 @@ IMMEDIATE ACTIONS (2025 — ALREADY REQUIRED)
 ☐ GDPR DPIAs: completed for any high-risk AI
 ☐ PII guardrails: operational in production
 
-BY AUGUST 2026 (HIGH-RISK AI OBLIGATIONS)
+BY AUGUST 2, 2026 (STILL ON SCHEDULE — NOT DEFERRED BY OMNIBUS)
+───────────────────────────────────────────
+☐ Art. 50 transparency obligations — AI interaction disclosure live
+☐ GPAI obligations — Commission enforcement + fines begin
+
+BY DECEMBER 2, 2027 (ANNEX III HIGH-RISK — Digital Omnibus deferral)
 ───────────────────────────────────────────
 ☐ Technical documentation (Art. 11) — complete
 ☐ Conformity assessment — completed
@@ -1379,8 +1392,9 @@ BY AUGUST 2026 (HIGH-RISK AI OBLIGATIONS)
 ☐ Fairness evaluation pipeline — continuous monitoring live
 ☐ Third-party vendor assessments (AWS, Anthropic) — completed
 
-BY AUGUST 2027
+BY AUGUST 2, 2028 (ANNEX I EMBEDDED SYSTEMS)
 ───────────────
+☐ Annex I embedded high-risk AI systems — full obligations
 ☐ All remaining EU AI Act provisions
 ☐ National market surveillance authority registration
 ☐ Full EBA AI governance guidelines compliance
@@ -1404,8 +1418,8 @@ Internal Audit          Third-line assurance            Annual review, exam prep
 
 ---
 
-*EU Banking AI Evaluation Guide v1.0 | Regulatory status as of March 2026*
+*EU Banking AI Evaluation Guide v1.0 | Regulatory status as of July 2026, incl. the Digital Omnibus on AI (Council final approval June 29, 2026)*
 *Regulations: EU AI Act (2024/1689), GDPR (2016/679), DORA (2022/2554), AMLD6*
 *EBA factsheet on AI Act implications: November 2025*
 *Review cycle: Quarterly or upon any regulatory update*
-*Next major regulatory milestone: August 2, 2026 — High-risk AI full obligations*
+*Next major regulatory milestone: August 2, 2026 — Art. 50 transparency + GPAI Commission enforcement; Annex III high-risk obligations follow December 2, 2027 (Digital Omnibus deferral)*

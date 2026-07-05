@@ -838,12 +838,13 @@ AI Decision / Output
 
 ```python
 response = claude.messages.create(
-    model="claude-fable-5-20251101",
-    thinking={"type": "enabled", "budget_tokens": 5000},
+    model="claude-fable-5",
+    thinking={"type": "adaptive"},  # fixed budget_tokens is rejected on Fable 5 / Opus 4.8 / Sonnet 5
     messages=[...]
 )
 
-# Extended thinking gives access to reasoning blocks
+# Thinking blocks carry summarized reasoning on Fable 5 (raw chain of
+# thought is never returned); depth is controlled via output_config.effort
 reasoning = [block for block in response.content if block.type == "thinking"]
 answer = [block for block in response.content if block.type == "text"]
 

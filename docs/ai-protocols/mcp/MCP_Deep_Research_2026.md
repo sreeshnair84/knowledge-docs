@@ -6,7 +6,7 @@ nav_order: 1
 
 # MCP Deep Research Report: Architecture, Security, Capabilities & Ecosystem (2026)
 
-> **Critical Research** · April 2026 · Covers spec versions through 2025-11-25 and the 2026 roadmap
+> **Critical Research** · April 2026 (updated July 2026) · Covers spec versions through 2025-11-25 and the 2026-07-28 release candidate (final spec July 28, 2026)
 
 ---
 
@@ -37,7 +37,7 @@ The Model Context Protocol (MCP) was released by Anthropic in November 2024 as a
 
 **What MCP is not:** It is not a security framework, not an orchestration engine, not a workflow runtime, and not a session management layer — though production teams need all of these on top of it. The protocol's rapid adoption has outpaced its security posture, and much of the ecosystem is building the missing layers ad hoc.
 
-By February 2026, over 12,000 public MCP servers existed. OpenAI, Google DeepMind, Microsoft, Meta, IBM, Cloudflare, and dozens of startups now either support or build on MCP. It was donated to the Linux Foundation (Agentic AI Foundation), making it a formally multi-stakeholder open standard.
+By mid-2026, the official count stood at over 10,000 public MCP servers (per the Agentic AI Foundation), with community aggregators listing 16,000–20,000, and MCP SDKs seeing roughly 97M+ monthly downloads. OpenAI, Google DeepMind, Microsoft, Meta, IBM, Cloudflare, and dozens of startups now either support or build on MCP. It was donated to the Linux Foundation (Agentic AI Foundation), making it a formally multi-stakeholder open standard.
 
 ---
 
@@ -80,7 +80,7 @@ The Transport Working Group's December 2025 roadmap proposes moving sessions fro
 | Debugging | Easier (session trace) | Harder (request correlation required) |
 | Cold start latency | None (session warm) | Present (context re-hydration) |
 
-The vision of "stateless protocol, stateful application" mirrors HTTP itself — which is the right design direction — but the ecosystem isn't there yet. As of April 2026, standardization of stateless behavior across SDKs is still in progress.
+The vision of "stateless protocol, stateful application" mirrors HTTP itself — which is the right design direction — and it has now been standardized: the 2026-07-28 spec release candidate (published ahead of the final spec on July 28, 2026) delivers the stateless protocol core, alongside an Extensions framework, Tasks promoted to stable, MCP Apps, and authorization hardening. SDK rollout of the stateless core is still underway.
 
 ---
 
@@ -283,7 +283,7 @@ An escalation of tool poisoning: compromise entire tool schema definitions at th
 
 ### 6.9 Typosquatting and Confusion Attacks
 
-In the MCP Registry (launched November 2025), servers are discoverable by name. `company-salesforce-mcp` vs. `company-saleforce-mcp` — the latter could be malicious. Without a robust registry verification process, typosquatting is a natural next-step attack vector as the registry grows.
+In the MCP Registry (preview launched September 8, 2025), servers are discoverable by name. `company-salesforce-mcp` vs. `company-saleforce-mcp` — the latter could be malicious. Without a robust registry verification process, typosquatting is a natural next-step attack vector as the registry grows.
 
 ### 6.10 Credential Exposure via Misconfiguration
 
@@ -517,7 +517,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 - **Spring AI (VMware/Broadcom):** McpClientSession with session persistence enabled
 - **AWS Bedrock:** MCP support via Amazon Q and Bedrock Agents
 
-### MCP Registry (launched November 2025)
+### MCP Registry (preview launched September 8, 2025)
 - Open catalog and API for discovering MCP servers
 - Supports public and private sub-registries
 - Any MCP client can consume registry content via native API or third-party aggregators
@@ -541,17 +541,17 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 - MCP Registry: operational for discovery
 - Governance: Linux Foundation, Working Groups, SEP process in place
 - URL mode elicitation: clean credential flow without client-side credential handling
-- Async Tasks (spec level): specified in 2025-11-25, experimental but correct design
+- Async Tasks (spec level): specified in 2025-11-25 as experimental, promoted to stable in the 2026-07-28 release candidate
 - Basic gateway/proxy patterns: robust commercial and open-source options exist
 
 ### Being Solved (in active development)
-- Stateless operation at scale: Transport WG actively designing session-in-data-model approach
-- SDK standardization of stateless behavior: inconsistent across languages
+- Stateless operation at scale: session-in-data-model approach specified in the 2026-07-28 release candidate (final spec July 28, 2026); SDK rollout in progress
+- SDK standardization of stateless behavior: spec now settled, SDK implementations still inconsistent across languages
 - Enterprise SSO integration: "Cross-App Access" on the roadmap
 - Configuration portability (server configuration portable across clients): roadmap item
 - Audit trail standardization: identified as gap, proposals not yet finalized
 - Gateway behavior specification: what happens at intermediaries (auth propagation, session semantics)
-- Capability discovery without connection: `.well-known` endpoint design in progress
+- Capability discovery without connection: `.well-known` endpoint specified in the 2026-07-28 release candidate
 - Task client implementations: most clients don't poll yet
 
 ### Unsolved / Structurally Hard
@@ -596,7 +596,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 ### Alternate Architecture Patterns
 
 **Pattern 1: MCP-over-A2A for multi-agent systems**
-Use Google's Agent-to-Agent (A2A) protocol for agent orchestration and MCP only for tool access at leaf agents. This separates concerns and allows A2A's stronger identity model to govern inter-agent trust.
+Use the Agent2Agent (A2A) protocol (originated at Google, donated to the Linux Foundation in June 2025 as the Agent2Agent Project) for agent orchestration and MCP only for tool access at leaf agents. This separates concerns and allows A2A's stronger identity model to govern inter-agent trust.
 
 **Pattern 2: Capability-proxy architecture**
 Rather than giving agents direct MCP server connections, route all MCP traffic through a capability proxy that enforces RBAC at the tool level. Each agent role has a policy declaring which tools it may call. The proxy enforces this regardless of what the agent requests.
@@ -621,7 +621,7 @@ Every architecture diagram for MCP includes a "human-in-the-loop" box. In most p
 
 ### The Registry Scales the Attack Surface
 
-The MCP Registry is architecturally correct — discovery is better than hand-configuration. But a public registry of 12,000+ servers, with no code review, no behavioral verification, and typosquatting-vulnerable naming, is also a large surface for supply chain attacks. The community is applying PyPI's lesson (trust on install → problems emerge later) without yet having PyPI's response (Sigstore, Trusted Publishers, automated malware scanning). This needs to be built *before* the registry reaches mass adoption, not after.
+The MCP Registry is architecturally correct — discovery is better than hand-configuration. But a public registry ecosystem of 10,000+ servers, with no code review, no behavioral verification, and typosquatting-vulnerable naming, is also a large surface for supply chain attacks. The community is applying PyPI's lesson (trust on install → problems emerge later) without yet having PyPI's response (Sigstore, Trusted Publishers, automated malware scanning). This needs to be built *before* the registry reaches mass adoption, not after.
 
 ### SDK Fragmentation Is a Hidden Risk
 

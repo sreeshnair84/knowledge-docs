@@ -81,10 +81,10 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 ┌─────────────────────────────────────────────────────────┐
 │  LAYER 4: ENTERPRISE AI PRODUCTS                        │
 │  GitHub Copilot, Microsoft 365 Copilot, Vertex AI       │
-│  Conversation, Azure AI Foundry services                │
+│  Conversation, Microsoft Foundry services               │
 ├─────────────────────────────────────────────────────────┤
 │  LAYER 3: AGENTIC FRAMEWORKS                            │
-│  Claude Agent SDK, LangGraph, AutoGen, CrewAI           │
+│  Claude Agent SDK, LangGraph, Agent Framework, CrewAI   │
 │  → Orchestration, tool use, multi-agent coordination    │
 ├─────────────────────────────────────────────────────────┤
 │  LAYER 2: ENHANCED MODELS                               │
@@ -92,7 +92,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 │  → Domain adaptation, knowledge grounding               │
 ├─────────────────────────────────────────────────────────┤
 │  LAYER 1: FOUNDATION MODELS                             │
-│  Claude, GPT-4o, Gemini, Llama — raw capabilities       │
+│  Claude, GPT-5, Gemini, Llama — raw capabilities        │
 │  → Language understanding, reasoning, generation        │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -127,7 +127,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 
 ### 3.2 When to Use Foundation Models via API
 
-Use the API (Claude, GPT-4o, Gemini) when:
+Use the API (Claude, GPT-5, Gemini) when:
 
 - Your use case is custom and no product fits
 - You need full control of prompts, context, and output format
@@ -160,12 +160,15 @@ Use frameworks (Claude Agent SDK, LangGraph, etc.) when:
 - The system must **recover from errors** mid-workflow
 - You need **human-in-the-loop** checkpoints at defined stages
 
+!!! note "AutoGen status"
+    Microsoft's AutoGen is now in maintenance mode; its successor is the **Microsoft Agent Framework** (1.0 GA April 2026).
+
 !!! danger "Don't go agentic prematurely"
     Every agent adds latency, cost, and failure surface. A single well-prompted model call often beats a multi-agent pipeline for simple tasks. Measure before you architect.
 
 ### 3.5 When to Use Enterprise AI Platforms
 
-Use platforms (GitHub Copilot, Vertex AI Conversation, Azure AI Foundry, Amazon Q) when:
+Use platforms (GitHub Copilot, Vertex AI Conversation, Microsoft Foundry (formerly Azure AI Foundry), Amazon Q) when:
 
 - The use case maps exactly to the platform's defined scope (code generation, enterprise chat)
 - The governance controls built into the platform satisfy your requirements
@@ -194,11 +197,13 @@ Use platforms (GitHub Copilot, Vertex AI Conversation, Azure AI Foundry, Amazon 
 
 | Model | Cost (in/out per MTok) | Context | Capability tier | Best for |
 |-------|----------------------|---------|----------------|---------|
-| **Claude Fable 5** | $10 / $50 | 200K | Highest | Complex multi-step agents, adversarial robustness, high-stakes decisions |
-| **Claude Sonnet 5** | $3 / $15 | 200K | High | Most enterprise workloads — balanced cost/capability |
-| **Claude Opus 4.8** | Premium | 200K | High (extended thinking) | Deep research, mathematical reasoning, autonomous long-horizon tasks |
-| **Claude Sonnet 4.6** | Legacy/stable | 200K | Mid-high | Existing integrations, stable baseline |
-| **Claude Haiku 4.5** | Low | 200K | Mid | High-volume routing, classification, triage, simple extraction |
+| **Claude Fable 5** | $10 / $50 | 1M | Highest | Complex multi-step agents, adversarial robustness, high-stakes decisions |
+| **Claude Sonnet 5** | $2 / $10 (intro through Aug 31, 2026; $3 / $15 from Sept 1, 2026) | 1M | High | Most enterprise workloads — balanced cost/capability |
+| **Claude Opus 4.8** | $5 / $25 (Fast mode $10 / $50, research preview) | 1M | High (extended thinking) | Deep research, mathematical reasoning, autonomous long-horizon tasks |
+| **Claude Sonnet 4.6** | $3 / $15 | 1M | Mid-high | Existing integrations, stable baseline |
+| **Claude Haiku 4.5** | $1 / $5 | 200K | Mid | High-volume routing, classification, triage, simple extraction |
+
+All 1M-context models support up to 128K output tokens.
 
 See [Models 2026](../claude/claude-models-2026.md) for the complete capability and pricing matrix.
 
@@ -395,7 +400,7 @@ Claude supports prompt caching — frequently used prompt prefixes (system promp
 **Cache design rules:**
 - Place cacheable content at the start of the prompt
 - Cache blocks must be > 1,024 tokens to be eligible
-- Cache lifetime: 5 minutes (refreshed on each cache hit)
+- Cache lifetime: 5 minutes by default (refreshed on each cache hit); a 1-hour cache tier is also available at a higher write price (2× base input, vs 1.25× for the 5-minute tier)
 - Cached tokens typically cost ~10% of uncached input tokens
 
 **Expected savings:** For a system prompt of 10K tokens reused 100 times/day: ~90% reduction in system prompt input cost.
@@ -423,7 +428,7 @@ Total tokens = System prompt + Few-shot examples + User message
 - Conversation history: 0–4,000 tokens (compress or summarise)
 - Output: 500–2,000 tokens (set `max_tokens` explicitly)
 
-**Extended thinking:** Claude Fable 5 and Opus 4.8 support extended thinking (visible reasoning). Each thinking token costs input rates but enables significantly better complex reasoning. Budget 1,000–10,000 thinking tokens for hard problems.
+**Extended thinking:** Claude Fable 5, Opus 4.8, and Sonnet 5 use **adaptive thinking** — a fixed `budget_tokens` value is rejected (HTTP 400) on these models. Enable it with `thinking: {type: "adaptive"}` (thinking is always-on for Fable 5) and control depth with `output_config.effort` (`low` / `medium` / `high` / `max`). Thinking tokens are billed but enable significantly better complex reasoning; note that Fable 5 never returns the raw chain of thought — responses carry summarized or omitted thinking blocks.
 
 ### 8.2 Cost Attribution per Team/Product
 
@@ -431,14 +436,16 @@ Implement cost attribution from day one. Without it, AI costs become invisible u
 
 **Attribution model:**
 ```python
-# Tag every API call with metadata
-headers = {
-    "anthropic-metadata-team": "product-search",
-    "anthropic-metadata-product": "recommendation-engine",
-    "anthropic-metadata-environment": "production",
-    "anthropic-metadata-user-tier": "enterprise"
-}
+# Tag every API call with the metadata body field
+response = client.messages.create(
+    model="claude-sonnet-5",
+    max_tokens=1024,
+    metadata={"user_id": "product-search:recommendation-engine:production"},
+    messages=[...],
+)
 ```
+
+The API exposes a single `metadata.user_id` request field — encode team/product/environment into it. Combine with per-team API keys and workspaces, plus the Console usage reports, for full attribution.
 
 Track: tokens consumed (input/output/cache), model version, team, product, environment, request ID.
 
@@ -587,7 +594,7 @@ User action → Event Queue (Kafka/SQS) → AI Worker → Result Queue → Downs
 
 ### 10.4 MCP as the Integration Layer
 
-Model Context Protocol (MCP) standardises how AI models connect to tools and data sources. 19,831+ MCP servers exist as of July 2026.
+Model Context Protocol (MCP) standardises how AI models connect to tools and data sources. 10,000+ public MCP servers exist, with ~110M monthly SDK downloads; MCP has been governed by the Linux Foundation's Agentic AI Foundation since December 2025. For agent-to-agent (rather than agent-to-tool) interoperability, MCP is typically paired with the A2A protocol (v1.0, April 2026, also under the Linux Foundation).
 
 **MCP in enterprise context:**
 - Replace ad-hoc tool integrations with standardised MCP servers
@@ -631,10 +638,10 @@ For full MCP implementation details, see [MCP Deep Guide](../claude/mcp-deep-gui
 
 | Platform | Data residency options |
 |----------|----------------------|
-| AWS Bedrock | Single-region; us-east-1, eu-west-1, ap-southeast-1, etc. |
+| AWS Bedrock | Global endpoints by default; regional endpoints at a 10% premium for Claude 4.5+ models |
 | Google Vertex AI | Regional endpoints; EU-specific options |
-| Azure AI Foundry | Region selection at resource creation; EU residency available |
-| Anthropic API direct | US-based processing unless enterprise agreement specifies otherwise |
+| Microsoft Foundry | Region selection at resource creation; EU residency available |
+| Anthropic API direct | Global processing by default; US-only inference is self-serve via `inference_geo: "us"` (1.1× pricing multiplier) on Opus 4.6/Sonnet 4.6 and later |
 
 **EU data:** For EU data, use EU-region cloud endpoints or negotiate data processing addendum (DPA) with Anthropic or cloud provider.
 
@@ -808,7 +815,7 @@ The **Claude Certified Architect, Foundations (CCA-F)** is the enterprise archit
 **Why it matters:**
 - Validates understanding of Claude APIs, Agent SDK, MCP, safety, and enterprise deployment
 - Demonstrates credibility with Anthropic's partner network
-- Required for some Anthropic Partner Network tiers
+- Check the Anthropic Partner Network for current partner-program certification requirements
 
 For full exam preparation and domain breakdown, see [Skills Assessment](enterprise-ai-skills-assessment.md) and [CCA-F Exam Prep](../claude/ccaf-exam-prep-complete.md).
 
@@ -913,7 +920,7 @@ For full exam preparation and domain breakdown, see [Skills Assessment](enterpri
 *Fix:* Identify all irreversible actions. Add HITL gate before execution. Log the human approval.
 
 **AP-8: Hardcoded model names**
-*Pattern:* `model="claude-fable-5-20251101"` directly in business logic code.
+*Pattern:* `model="claude-fable-5"` hardcoded directly in business logic code.
 *Impact:* Model change requires code change and deployment in every service.
 *Fix:* Externalise model selection to configuration or AI gateway routing rules.
 

@@ -34,6 +34,6 @@ Frameworks, guides, and tools for evaluating AI agent systems — covering evalu
 
 <details>
 <summary>Agent Testing, Monitoring &amp; Evaluation</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/testing/Agent_Testing_Monitoring_Evaluation.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/ai-development/testing/Agent_Testing_Monitoring_Evaluation.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="Agent_Testing_Monitoring_Evaluation.docx" download>Download DOCX ↓</a></p>
 </details>

@@ -46,16 +46,20 @@ title: Enterprise AI Governance & Compliance
 
 ### 2.1 EU AI Act
 
-Effective from August 2024 (phased enforcement); GDPR-style territorial reach — applies to any system affecting EU persons.
+In force since August 2024 (phased application); GDPR-style territorial reach — applies to any system affecting EU persons.
+
+!!! info "Digital Omnibus on AI — revised timeline (Council final approval June 29, 2026)"
+    The Digital Omnibus deferred the high-risk deadlines: **Annex III high-risk obligations now apply from December 2, 2027** and **Annex I (regulated-product) high-risk obligations from August 2, 2028**. Article 50 transparency obligations remain on schedule for **August 2, 2026** (watermarking/marking grace period to December 2, 2026 for existing systems). GPAI obligations are unaffected — in force since August 2, 2025, with Commission enforcement and fines from August 2, 2026. The Omnibus also adds a new Article 5 prohibition on AI-generated NCII/CSAM ("nudifier" tools).
 
 **Risk categories:**
 
 | Category | Definition | Examples | Obligations |
 |----------|------------|----------|-------------|
-| **Unacceptable risk** | Prohibited | Social scoring, real-time biometric surveillance in public spaces, manipulation of vulnerable groups | **Banned** — cannot deploy |
-| **High risk** | Significant potential harm | AI in hiring, credit, medical devices, critical infrastructure, law enforcement | Conformity assessment, transparency, HITL, logging, bias testing |
-| **Limited risk** | Transparency obligations | Chatbots, deepfake generation | Must disclose AI interaction to users |
+| **Unacceptable risk** | Prohibited | Social scoring, real-time biometric surveillance in public spaces, manipulation of vulnerable groups, AI-generated NCII/CSAM (added by the Digital Omnibus; transition to Dec 2, 2026) | **Banned** — cannot deploy |
+| **High risk** | Significant potential harm | AI in hiring, credit, medical devices, critical infrastructure, law enforcement | Conformity assessment, transparency, HITL, logging, bias testing (Annex III from Dec 2, 2027; Annex I from Aug 2, 2028) |
+| **Limited risk** | Transparency obligations | Chatbots, deepfake generation | Must disclose AI interaction to users (Art. 50, applies Aug 2, 2026; watermarking grace to Dec 2, 2026 for existing systems) |
 | **Minimal risk** | No specific obligation | Spam filters, recommendation engines (with exceptions) | Best practice only |
+| **General-purpose AI (GPAI)** | Foundation/general-purpose models | Claude, GPT-5-family, Gemini | Art. 53 transparency, technical documentation, copyright policy; Art. 55 additional duties for systemic-risk models. In force since Aug 2, 2025; Commission enforcement and fines from Aug 2, 2026 |
 
 **Key obligations for high-risk AI systems:**
 - Risk management system throughout the AI lifecycle
@@ -121,6 +125,8 @@ The NIST AI Risk Management Framework (AI RMF 1.0, January 2023) provides a volu
     - Recover from AI failures
     - Communicate risk status to stakeholders
 
+**Beyond AI RMF 1.0:** NIST's AI portfolio now also includes the **AI 600-1 Generative AI Profile** (July 2024), the draft **IR 8596 Cyber AI Profile** (December 2025), the **CAISI AI Agent Standards Initiative** (February 2026), and SP 800-53 control overlays for AI agents (COSAiS).
+
 ### 2.3 ISO 42001
 
 ISO 42001 (published December 2023) is the first international standard for AI management systems — analogous to ISO 27001 for information security.
@@ -144,6 +150,8 @@ ISO 42001 (published December 2023) is the first international standard for AI m
 7. Surveillance audits annually; recertification every 3 years
 
 **When to pursue:** When customers or regulators require AI management system certification; when using AI in high-stakes or regulated domains.
+
+**Accredited certification is now mainstream:** **ISO/IEC 42006:2025** (requirements for bodies auditing and certifying AIMS) has been published; ANAB-, UKAS-, and RvA-accredited certification bodies are operating, and 350+ organisations held ISO 42001 certificates as of April 2026.
 
 ### 2.4 GDPR and AI
 
@@ -170,6 +178,7 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 **AI-specific requirements:**
 - Disclose use of automated decision-making in privacy notices
 - CPRA: consumers may opt out of automated decision-making for profiling with significant effects
+- **CPPA ADMT regulations** (approved September 2025): businesses using automated decision-making technology for significant decisions must comply by **January 1, 2027** — pre-use notices, opt-out rights, and risk assessments
 - Data minimisation obligations for sensitive personal information
 - Right to correct inaccurate personal information (affects AI-generated content about individuals)
 
@@ -192,13 +201,21 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 
 **HIPAA and AI:**
 - Protected Health Information (PHI) cannot be sent to AI APIs without a Business Associate Agreement (BAA) with the vendor
-- Anthropic, AWS (Bedrock), Azure (AI Foundry), and Google (Vertex) offer BAAs for qualifying enterprise tiers
+- Anthropic, AWS (Bedrock), Microsoft (Foundry — formerly Azure AI Foundry), and Google (Vertex) offer BAAs for qualifying enterprise tiers
 - De-identification before AI processing: Safe Harbor method (remove 18 HIPAA identifiers) or Expert Determination method
 
 **FDA AI/ML guidance:**
 - Software as a Medical Device (SaMD) using AI: subject to FDA oversight
 - Predetermined Change Control Plans (PCCP): describe how AI model will be updated post-market without new 510(k)
 - AI/ML in medical devices: performance monitoring and transparency requirements
+
+### 2.8 Recent Developments (2026)
+
+- **Texas TRAIGA** — the Texas Responsible AI Governance Act came into force January 1, 2026.
+- **Colorado AI Act** — repealed and replaced May 14, 2026 with a narrower disclosure-focused regime, effective January 1, 2027.
+- **US federal preemption EO** (December 11, 2025) — executive order directing federal challenges to state AI laws, backed by a DOJ AI Litigation Task Force.
+- **China** — CAC AI-content labeling rules and GB 45438-2025 in force since September 1, 2025.
+- **UK** — still no AI Act; regulator-led approach continues.
 
 ---
 
@@ -399,7 +416,7 @@ AI outputs are only as good as the data that grounds them. Establish minimum qua
 |----------|------------------------|---------------|----------------|
 | **Anthropic API** | No (by default); opt-in for research | 30 days (logs) | Yes |
 | **AWS Bedrock** | No | Per AWS data policy | Yes (AWS BAA) |
-| **Azure AI Foundry** | No (Azure policy) | Per Azure retention | Yes (Microsoft DPA) |
+| **Microsoft Foundry** | No (Azure policy) | Per Azure retention | Yes (Microsoft DPA) |
 | **Google Vertex AI** | No | Per Google policy | Yes (Google DPA) |
 
 **Always verify:** Vendor policies change. Review DPA annually or on each vendor contract renewal.
@@ -414,7 +431,7 @@ Every AI model used in production requires an entry in the model inventory.
 
 | Field | Description |
 |-------|-------------|
-| Model ID | e.g., claude-sonnet-5-20250901 |
+| Model ID | e.g., claude-sonnet-5 (current-generation Claude model IDs carry no date suffix) |
 | Model name | Claude Sonnet 5 |
 | Provider | Anthropic |
 | Version/date | 2025-09-01 |
@@ -763,7 +780,7 @@ See [Stress Testing Pattern](enterprise-ai-architecture-patterns.md#12-stress-te
 [What it does; what is explicitly out of scope]
 
 ## 3. AI capabilities used
-- Model: [e.g., claude-sonnet-5-20250901 via AWS Bedrock]
+- Model: [e.g., claude-sonnet-5 via AWS Bedrock]
 - Retrieval: [RAG via Pinecone, chunking strategy, reranking]
 - Agentic: [Tools available, orchestration pattern]
 
@@ -873,7 +890,7 @@ The Claude Certified Architect, Foundations (CCA-F) from the Anthropic Partner N
 - Anthropic's usage policies
 - Safety and harm avoidance by design
 
-**Partner network tiers:** Higher partner tiers may require CCA-F certification for named architects on enterprise customer deployments.
+**Partner network tiers:** Check the Anthropic Partner Network for current certification requirements applicable to partner tiers and enterprise customer deployments.
 
 ### 15.2 Operator Responsibilities in the Principal Hierarchy
 

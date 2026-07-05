@@ -68,7 +68,7 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 <details>
 <summary>EU Bank AI Copilot Architecture</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/usecases/eu-bank-ai-copilot-architecture.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/ai-usecases/eu-bank-ai-copilot-architecture.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="eu-bank-ai-copilot-architecture.docx" download>Download DOCX ↓</a></p>
 </details>
 
