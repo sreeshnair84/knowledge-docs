@@ -173,7 +173,9 @@ nav:
       - Kong Auth Guide: cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md
       - Kong + Entra ID: cloud-platforms/ai-gateway/kong-entra-id-integration.md
     - Kubernetes: cloud-platforms/kubernetes/index.md
-    - Infrastructure as Code: cloud-platforms/iac/index.md
+    - Infrastructure as Code:
+      - Overview: cloud-platforms/iac/index.md
+      - Terraform: cloud-platforms/iac/terraform/index.md
   - Knowledge:
     - Overview: knowledge-engineering/index.md
     - Data Architecture: knowledge-engineering/data/index.md
