@@ -155,7 +155,14 @@ nav:
       - Reference Architectures & Checklists: coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md
   - AI Protocols:
     - Overview: ai-protocols/index.md
-    - Auth & Identity: ai-protocols/auth/index.md
+    - Auth & Identity:
+      - Overview: ai-protocols/auth/index.md
+      - Standards & Architecture: ai-protocols/auth/entra-3lo-agent-auth-standards-architecture.md
+      - Implementation Guide: ai-protocols/auth/entra-3lo-agent-auth-implementation.md
+      - Security Review: ai-protocols/auth/entra-3lo-agent-auth-security-review.md
+      - Multi-Agent & Compliance: ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance.md
+      - Tool Authentication: ai-protocols/auth/tool-authentication-connectors.md
+      - Entra vs AWS AgentCore: ai-protocols/auth/agent-identity-entra-vs-awsagentcore.md
     - Protocol Standards: ai-protocols/protocol/index.md
     - MCP:
       - Overview: ai-protocols/mcp/index.md

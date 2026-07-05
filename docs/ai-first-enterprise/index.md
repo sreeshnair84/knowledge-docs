@@ -43,8 +43,9 @@ A comprehensive 7-volume strategy series for organisations transforming into AI-
 | **3** | Scaling | Production AI systems; established governance; measurable ROI |
 | **4** | Optimising | AI embedded in core processes; feedback loops improving models in production |
 | **5** | AI-First | AI is a primary competitive differentiator; autonomous agents across the enterprise; real-time decision intelligence |
+| **6** | AI-Native | AI is the operating fabric of the enterprise; constitutionally governed agents; sovereign AI infrastructure; continuous alignment; democratic oversight |
 
-Most large enterprises were at Level 2–3 in 2025. The shift to Level 4–5 is the primary focus of this series.
+Most large enterprises were at Level 2–3 in 2025. The shift to Level 4–5 is the primary focus of this series. See [AI-First to AI-Native Journey](ai-first-to-ai-native.md) for the assessment instrument and roadmap to Level 6.
 
 ---
 
