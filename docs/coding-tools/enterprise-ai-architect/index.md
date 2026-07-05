@@ -87,6 +87,30 @@ Architectural decision-making, governance, strategy, and **production operations
 
     [:octicons-arrow-right-24: Read](agentic-ai-reliability-observability-governance.md)
 
+-   :material-robot-industrial:{ .lg .middle } **AI Harness Architecture & Orchestration**
+
+    ---
+
+    The deterministic shell around the model: 24-component runtime catalog, 8-plane logical architecture, end-to-end task lifecycle, trust boundaries TB1–TB8, 14 orchestration patterns compared, and how AWS/Azure/Google/Anthropic/Temporal implement the harness in production.
+
+    [:octicons-arrow-right-24: Read](ai-harness-architecture-orchestration.md)
+
+-   :material-swap-horizontal:{ .lg .middle } **MCP & A2A Protocol Deep Dive**
+
+    ---
+
+    The 2026-07-28 MCP revision (stateless core, Extensions, Tasks, MCP Apps), registry-of-record and trust tiers, MCP-specific attack surfaces, A2A v1.x Signed Agent Cards and federation, the MCP-vs-A2A decision table, and the 6-stage enterprise protocol adoption lifecycle.
+
+    [:octicons-arrow-right-24: Read](mcp-a2a-protocol-deep-dive.md)
+
+-   :material-brain:{ .lg .middle } **Agent Memory & Planning Architecture**
+
+    ---
+
+    7-type memory taxonomy with store mapping, the extract-consolidate-retrieve pipeline (Mem0/Zep/Letta/AgentCore compared), end-to-end memory lifecycle with GDPR erasure cascade, memory security, and plans as versioned first-class artifacts with governance gates.
+
+    [:octicons-arrow-right-24: Read](agent-memory-planning-architecture.md)
+
 </div>
 
 ---
@@ -121,6 +145,9 @@ Architectural decision-making, governance, strategy, and **production operations
     - **Policy-as-code, EA-as-context, SLM-first strategy** → [Machine-Readable EA](machine-readable-ea.md)
     - **Production reliability, observability dashboards, SLOs, governance registries** → [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md)
     - **Avoiding retry storms, context overflow, hallucination cascades (anti-patterns)** → [Reliability, Observability & Governance §1b](agentic-ai-reliability-observability-governance.md#1b-the-8-reliability-anti-patterns-to-eliminate-first)
+    - **Designing the agent loop, choosing an orchestration pattern, task lifecycle** → [AI Harness & Orchestration](ai-harness-architecture-orchestration.md)
+    - **MCP 2026-07-28 migration, A2A federation, protocol adoption roadmap** → [MCP & A2A Deep Dive](mcp-a2a-protocol-deep-dive.md)
+    - **Memory stores, GDPR erasure, compaction, plan governance** → [Memory & Planning Architecture](agent-memory-planning-architecture.md)
 
 ---
 

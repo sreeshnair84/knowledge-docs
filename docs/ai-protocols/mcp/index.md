@@ -11,6 +11,7 @@ Deep research and architecture guides for MCP — the open protocol for connecti
 ## Markdown Guides
 
 - [MCP Deep Research 2026](MCP_Deep_Research_2026.md) — Architecture, security, capabilities & ecosystem
+- [MCP & A2A Protocol Deep Dive](../../coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md) — The 2026-07-28 MCP revision, A2A v1.x Signed Agent Cards, trust tiers, and the enterprise protocol adoption lifecycle
 
 ---
 

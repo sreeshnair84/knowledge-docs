@@ -130,6 +130,9 @@ nav:
       - Machine-Readable EA: coding-tools/enterprise-ai-architect/machine-readable-ea.md
       - Security Architecture & Guardrails: coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md
       - Reliability, Observability & Governance: coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md
+      - AI Harness & Orchestration: coding-tools/enterprise-ai-architect/ai-harness-architecture-orchestration.md
+      - MCP & A2A Deep Dive: coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md
+      - Memory & Planning Architecture: coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity: ai-protocols/auth/index.md
