@@ -36,7 +36,45 @@ This assessment serves three purposes:
 
 ---
 
-## 2. CCA-F Certification for Enterprise Architects
+## 2. Enterprise AI Architect Certifications (2026)
+
+### 2026 Certification Landscape
+
+The EA-AI certification landscape expanded significantly in 2026. Three credentials now cover the core of the role; a fourth (Google) is emerging. Choose based on your primary platform and role focus:
+
+| Certification | Issuer | Cost | Focus | Status |
+|---|---|---|---|---|
+| **CCA-F** — Claude Certified Architect, Foundations | Anthropic (via Pearson VUE) | $99 | Agentic architecture, MCP/tool design, prompt engineering, context management; Claude-centric | GA since Mar 12, 2026 |
+| **AB-100** — Agentic AI Business Solutions Architect | Microsoft (via Microsoft Learn) | $165 | Multi-agent orchestration, Copilot Studio, Microsoft Foundry, MCP, A2A, enterprise deployment; Microsoft-centric | GA; updated July 22, 2026 |
+| **AWS Certified AI Practitioner** | AWS | $150 | Foundational AI/ML on AWS, Bedrock, responsible AI; broad coverage, less architect-depth | GA; updated 2025 |
+| **Professional Cloud Architect + GenAI** | Google Cloud | $200 | GCP infrastructure + Vertex AI; no agentic-specific cert as of July 2026 | Track: Professional Cloud Architect |
+
+**For enterprise AI architects: CCA-F + AB-100 is the recommended combination.** CCA-F validates agentic design judgment independent of platform; AB-100 validates the Microsoft-specific stack that dominates enterprise deployments (Copilot Studio, Foundry, Entra Agent ID). Together they cover ~80% of what enterprise clients will ask for in RFPs and vendor assessments.
+
+### AB-100 — Agentic AI Business Solutions Architect
+
+The **AB-100** ([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-business-solutions-architect/)) is Microsoft's flagship architect credential for the agentic era, updated July 22, 2026:
+
+| Item | Detail |
+|------|--------|
+| Full name | Microsoft Certified: Agentic AI Business Solutions Architect |
+| Exam code | AB-100 |
+| Cost | $165 USD |
+| Format | Online proctored; scenario-based |
+| Prerequisite | None (but assumes familiarity with Azure and M365) |
+| Study guide | [Microsoft Learn study guide — AB-100](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ab-100) |
+
+**AB-100 domains** (July 2026 update):
+
+| Domain | Coverage |
+|---|---|
+| Agent design principles | Bounded autonomy, decision-rights, HITL gates |
+| Copilot Studio & Foundry | Agent creation, MCP server integration, publishing |
+| Multi-agent orchestration | A2A v1.0, agent-to-agent delegation, registry patterns |
+| Enterprise governance | Entra Agent ID, audit logging, compliance controls |
+| Responsible AI | Microsoft RAI framework, content filters, transparency |
+
+### CCA-F Certification for Enterprise Architects
 
 ### Why CCA-F Matters for EA Practitioners
 

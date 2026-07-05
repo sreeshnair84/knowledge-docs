@@ -4,7 +4,7 @@ title: Enterprise AI Architect
 
 # Enterprise AI Architect
 
-Architectural decision-making, governance, and strategy for AI systems at enterprise scale. This section is the **architectural decision layer** — it tells you *what* to choose and *why*, then links to the implementation detail sections for the *how*.
+Architectural decision-making, governance, strategy, and **production operations** for AI systems at enterprise scale. This section is the **architectural decision layer** — it tells you *what* to choose and *why*, then links to the implementation detail sections for the *how*. The section now covers the full lifecycle: design, deployment, production reliability, observability, and governance.
 
 !!! info "Section scope"
     This section owns architecture decisions, patterns, governance frameworks, and skills assessment. Implementation details live in the specialist sections linked in the **Key Resources** below. No duplication — just cross-links.
@@ -71,6 +71,22 @@ Architectural decision-making, governance, and strategy for AI systems at enterp
 
     [:octicons-arrow-right-24: Read](machine-readable-ea.md)
 
+-   :material-shield-bug:{ .lg .middle } **Security Architecture & Guardrails**
+
+    ---
+
+    18-threat catalog with prevent/detect/mitigate/recover controls, the 14-layer guardrail map (deterministic + probabilistic), and how Google, Microsoft, AWS, Salesforce, JPMorgan, and top consultancies implement production-grade agentic AI security.
+
+    [:octicons-arrow-right-24: Read](agentic-ai-security-guardrails.md)
+
+-   :material-chart-areaspline:{ .lg .middle } **Reliability, Observability & Governance Lifecycle**
+
+    ---
+
+    End-to-end production lifecycle: 4 failure classes, 8 anti-patterns, graceful degradation ladder, OTel GenAI observability, 5 signal types, 5-dashboard set, 5-registry governance spine, and how Google, Microsoft, AWS, and McKinsey/Accenture/Deloitte run agentic AI at scale.
+
+    [:octicons-arrow-right-24: Read](agentic-ai-reliability-observability-governance.md)
+
 </div>
 
 ---
@@ -100,8 +116,11 @@ Architectural decision-making, governance, and strategy for AI systems at enterp
     - **Audit/compliance question** → [Governance & Compliance](enterprise-ai-governance-compliance.md)
     - **Preparing for CCA-F or an architecture review** → [Skills Assessment](enterprise-ai-skills-assessment.md)
     - **Securing agent deployments (OWASP, identity, SPIFFE)** → [Agentic AI Security & Identity](agentic-ai-security-identity.md)
+    - **Full threat catalog (18 threats), guardrail layers (14 layers), how tech giants implement** → [Security Architecture & Guardrails](agentic-ai-security-guardrails.md)
     - **MCP/A2A protocols, registries, multi-agent governance** → [Agent Interoperability & Orchestration](agent-interoperability-orchestration.md)
     - **Policy-as-code, EA-as-context, SLM-first strategy** → [Machine-Readable EA](machine-readable-ea.md)
+    - **Production reliability, observability dashboards, SLOs, governance registries** → [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md)
+    - **Avoiding retry storms, context overflow, hallucination cascades (anti-patterns)** → [Reliability, Observability & Governance §1b](agentic-ai-reliability-observability-governance.md#1b-the-8-reliability-anti-patterns-to-eliminate-first)
 
 ---
 

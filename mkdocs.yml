@@ -128,6 +128,8 @@ nav:
       - Agentic AI Security & Identity: coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md
       - Agent Interoperability & Orchestration: coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md
       - Machine-Readable EA: coding-tools/enterprise-ai-architect/machine-readable-ea.md
+      - Security Architecture & Guardrails: coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md
+      - Reliability, Observability & Governance: coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity: ai-protocols/auth/index.md

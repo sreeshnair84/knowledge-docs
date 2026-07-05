@@ -8,7 +8,10 @@ title: Enterprise AI Governance & Compliance
 
 **Purpose:** Actionable governance frameworks and compliance requirements for enterprise AI systems. Covers regulatory landscape, RAI principles, operating model, data governance, model governance, security governance, bias testing, stress testing, audit requirements, and vendor assessment.
 
-**Related sections:** [Architecture Patterns](enterprise-ai-architecture-patterns.md) | [Foundations](enterprise-ai-architect-foundations.md) | [Constitutional AI](../claude/constitutional-ai-safety-2026.md)
+**Related sections:** [Architecture Patterns](enterprise-ai-architecture-patterns.md) | [Foundations](enterprise-ai-architect-foundations.md) | [Constitutional AI](../claude/constitutional-ai-safety-2026.md) | [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md)
+
+!!! info "Operational governance registries and lifecycle"
+    This guide covers regulatory frameworks, RAI principles, and vendor assessment. For the operational governance spine (5 registries of record, AI change management pipeline, risk classification tiers T1–T4, and how Google/AWS/Microsoft implement lifecycle governance), see [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md).
 
 ---
 
