@@ -47,6 +47,30 @@ Architectural decision-making, governance, and strategy for AI systems at enterp
 
     [:octicons-arrow-right-24: Read](enterprise-ai-skills-assessment.md)
 
+-   :material-shield-lock:{ .lg .middle } **Agentic AI Security & Identity**
+
+    ---
+
+    OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10), SPIFFE/SPIRE agent identity stack, IETF AIMS, bounded autonomy decision-rights framework, rogue agent defenses, and a regulated-enterprise reference architecture.
+
+    [:octicons-arrow-right-24: Read](agentic-ai-security-identity.md)
+
+-   :material-transit-connection-variant:{ .lg .middle } **Agent Interoperability & Orchestration**
+
+    ---
+
+    MCP + A2A two-layer protocol stack, Agent Cards, enterprise agent registries, multi-agent governance, agentic payments (AP2/x402), OTel GenAI observability, and the orchestrator-vs-mesh decision guide.
+
+    [:octicons-arrow-right-24: Read](agent-interoperability-orchestration.md)
+
+-   :material-file-code:{ .lg .middle } **Machine-Readable EA**
+
+    ---
+
+    EA's shift from static docs to runtime agent context: policy-as-code (OPA/Cedar), EA repository via MCP, request-level governance, SLM-first as an EA standard, sovereignty drivers, and the migration roadmap.
+
+    [:octicons-arrow-right-24: Read](machine-readable-ea.md)
+
 </div>
 
 ---
@@ -75,6 +99,9 @@ Architectural decision-making, governance, and strategy for AI systems at enterp
     - **Designing a specific system** → Go to [Architecture Patterns](enterprise-ai-architecture-patterns.md) and use the pattern selection guide
     - **Audit/compliance question** → [Governance & Compliance](enterprise-ai-governance-compliance.md)
     - **Preparing for CCA-F or an architecture review** → [Skills Assessment](enterprise-ai-skills-assessment.md)
+    - **Securing agent deployments (OWASP, identity, SPIFFE)** → [Agentic AI Security & Identity](agentic-ai-security-identity.md)
+    - **MCP/A2A protocols, registries, multi-agent governance** → [Agent Interoperability & Orchestration](agent-interoperability-orchestration.md)
+    - **Policy-as-code, EA-as-context, SLM-first strategy** → [Machine-Readable EA](machine-readable-ea.md)
 
 ---
 

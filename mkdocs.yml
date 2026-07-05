@@ -125,6 +125,9 @@ nav:
       - Architecture Patterns: coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md
       - Governance & Compliance: coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md
       - Skills Assessment: coding-tools/enterprise-ai-architect/enterprise-ai-skills-assessment.md
+      - Agentic AI Security & Identity: coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md
+      - Agent Interoperability & Orchestration: coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md
+      - Machine-Readable EA: coding-tools/enterprise-ai-architect/machine-readable-ea.md
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity: ai-protocols/auth/index.md
