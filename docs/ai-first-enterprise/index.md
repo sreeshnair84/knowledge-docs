@@ -8,6 +8,55 @@ A comprehensive 7-volume strategy series for organisations transforming into AI-
 
 ---
 
+## Series Overview
+
+| Volume | Title | Key questions answered |
+|---|---|---|
+| **Vol 00** | Executive Summary & AI Vision | What does an AI-first enterprise look like? What is the strategic case? |
+| **Vol 01** | Current State Assessment & AI Maturity | Where are we now? How do we measure AI maturity objectively? |
+| **Vol 02** | AI Opportunity Portfolio | Which AI initiatives deliver the most value? How do we prioritise? |
+| **Vol 03** | Enterprise AI Platform & Data Architecture | What platform and data infrastructure underpins AI at scale? |
+| **Vol 04** | Governance, Responsible AI & Security | How do we govern AI ethically, safely, and in compliance? |
+| **Vol 05** | Target Operating Model & Change | How does the organisation need to change to operate AI-first? |
+| **Vol 06** | Roadmap, Financials, KPIs & Risk | What does the 3-year roadmap look like? What are the costs and returns? |
+
+---
+
+## How to Use This Series
+
+**For executives:** Start with Vol 00 (30-min read) to understand the strategic vision, then Vol 01 to assess where your organisation sits on the maturity curve.
+
+**For architects:** Start with Vol 03 (platform architecture) and Vol 04 (governance). These define the technical foundation and constraints that all AI initiatives must operate within.
+
+**For programme managers:** Vol 05 (operating model) and Vol 06 (roadmap/financials) provide the organisational and financial framework for delivery.
+
+**For all:** The maturity model in Vol 01 provides a shared language — use it to calibrate conversations across business, technology, and governance stakeholders.
+
+---
+
+## AI Maturity Model (Vol 01 Summary)
+
+| Level | Name | Characteristics |
+|---|---|---|
+| **1** | Exploring | Ad-hoc pilots; no enterprise AI strategy; shadow AI common |
+| **2** | Experimenting | Structured pilots; AI CoE forming; governance being defined |
+| **3** | Scaling | Production AI systems; established governance; measurable ROI |
+| **4** | Optimising | AI embedded in core processes; feedback loops improving models in production |
+| **5** | AI-First | AI is a primary competitive differentiator; autonomous agents across the enterprise; real-time decision intelligence |
+
+Most large enterprises were at Level 2–3 in 2025. The shift to Level 4–5 is the primary focus of this series.
+
+---
+
+## Key 2026 Context
+
+- **88% of organisations** are now using AI in at least one business function (McKinsey State of AI, Nov 2025)
+- Only **~6%** are "high performers" capturing disproportionate value — the gap is widening
+- The shift to **agentic AI** (agents that act autonomously across multiple steps and systems) is the defining architectural change of 2026–2027
+- High performers share a common trait: they treat AI as an **enterprise capability**, not a series of point solutions
+
+---
+
 ## Volume Series
 
 <details>

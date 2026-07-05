@@ -498,6 +498,65 @@ Haiku    Sonnet 5
 
 **Classifier features:** Token count, domain keywords, structural complexity, presence of code, multi-step indicators.
 
+### 8.5 AI FinOps as an Enterprise Discipline
+
+AI costs behave differently from traditional software costs — they scale with *usage intensity* rather than instance count, and a single poorly-scoped prompt can cost 100× more than an optimised one. FinOps Foundation formalised AI FinOps as a discipline in 2025; the framework identifies nine distinct cost buckets that enterprise architects must track separately.
+
+**The Nine AI Cost Buckets (FinOps Foundation)**
+
+| Bucket | What drives cost | Typical share of AI feature spend |
+|---|---|---|
+| **LLM inference — synchronous** | Tokens × price/token | 20–35% |
+| **LLM inference — batch** | Same, at 50% discount | 5–10% |
+| **Embedding generation** | Tokens × embedding model price | 3–7% |
+| **RAG infrastructure** | Vector DB, indexing compute, retrieval API calls | 15–25% |
+| **Agent orchestration compute** | Execution time for agent loops, tool calls, re-tries | 10–20% |
+| **Fine-tuning / RLHF** | GPU hours × hourly rate | 2–5% (amortised) |
+| **Storage** | Vector indices, model artefacts, eval datasets | 3–8% |
+| **Evaluation infrastructure** | LLM-as-judge calls, eval harness runs | 2–5% |
+| **Observability / tracing** | OTel ingest, trace storage, dashboard tools | 2–4% |
+
+> **Key insight:** RAG infrastructure + agent orchestration compute typically account for **40–60% of total AI feature spend** — yet most cost visibility dashboards only track the LLM inference line item. Incomplete visibility leads to under-counting cost by 2–3×.
+
+**Neocloud and Cloud Commitment Strategy**
+
+Hyperscalers (AWS, Azure, GCP) require **3–5 year capacity commitments** for frontier GPU allocations (H100/H200/B200 cluster reservations). Neoclouds (CoreWeave, Lambda Labs, Voltage Park, Oracle Cloud GPU) offer shorter-term commitments (6–18 months) with competitive pricing but fewer managed services.
+
+| Procurement model | Commitment length | Cost saving vs on-demand | When to use |
+|---|---|---|---|
+| **Hyperscaler reserved** | 1–3 year | 30–50% | Stable production workloads with predictable token volume |
+| **Hyperscaler Savings Plan** | 1–3 year | 20–40% | Mixed workloads, some flexibility on model/region |
+| **Neocloud committed** | 6–18 months | 40–60% vs hyperscaler | High GPU-hour workloads (training, batch inference); accept ops overhead |
+| **On-demand / API** | None | Baseline | Volatile, pilot, or prototype workloads |
+
+**Enterprise FinOps Implementation**
+
+1. **Tag every AI call** with `project`, `team`, `use-case`, and `environment` at the AI gateway layer — before the call reaches the provider. This enables showback and chargeback without touching individual application code.
+
+2. **Set per-team budgets** with alerting at 70% / 90% thresholds. Alert goes to the team lead, not just the platform team. Soft budget caps (alerting only) are more effective than hard cut-offs that create surprise outages.
+
+3. **Establish cost-per-task baselines** for your top 10 use cases (e.g., document summarisation = $0.003/doc, customer intent classification = $0.0008/call). Drift above 20% is a signal of prompt bloat or model version regression.
+
+4. **Model tier governance:** Require architectural justification to use a Tier-1 model (Fable 5, Opus 4.8) for tasks that benchmark equivalently on Tier-3 (Haiku 4.5). Save 30–95% per call on routine tasks.
+
+5. **Optimise RAG economics separately:** Vector DB retrieval cost, indexing frequency, and chunk strategy are often the fastest levers for cost reduction — and independent of model choice.
+
+```python
+# Example: per-call cost attribution tag at the AI gateway layer
+headers = {
+    "X-Cost-Project": project_id,
+    "X-Cost-Team": team_id,
+    "X-Cost-UseCase": use_case_slug,
+    "X-Cost-Env": environment,    # prod / staging / dev
+}
+# Gateway reads these tags and writes to cost ledger before forwarding to provider
+```
+
+**FinOps maturity stages for AI:**
+- **Crawl:** Track total LLM spend by project. Establish per-task cost baselines.
+- **Walk:** Tag all calls; per-team showback; identify top-10 cost drivers; model routing implemented.
+- **Run:** Real-time cost dashboards; anomaly alerting; automated routing; chargeback to BU P&Ls; FinOps reviews as part of AI CoE governance cadence.
+
 ---
 
 ## 9. Latency and Throughput Planning

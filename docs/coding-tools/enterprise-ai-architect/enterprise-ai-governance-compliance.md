@@ -467,6 +467,99 @@ Before approving a new foundation model for enterprise use:
 | Fine-tuned model | Training data and compute to recreate | Keep labelled data; document process |
 | Feature dependency | Non-standard features unavailable elsewhere | Track proprietary feature usage |
 
+### 7.4 Agent Lifecycle Governance
+
+AI agents introduce a new lifecycle challenge: unlike static API integrations, agents are deployed dynamically, spawn sub-agents, hold credentials, and accumulate access permissions over time. Without explicit lifecycle governance, enterprises accumulate **zombie agents** — agents still running, still holding permissions, long after their original use case expired. OWASP ASI10 ("Rogue Agents") identifies this as a top-10 agentic AI risk.
+
+**The Agent Lifecycle: Five Stages**
+
+```
+  Register ──► Provision ──► Monitor ──► Review ──► Decommission
+     │                           │           │
+     └── Agent Card issued        └─── Anomaly     └─── Credentials
+         (A2A identity)               alerts           revoked;
+         SVID minted                                    registry
+         (SPIFFE)                                       updated
+```
+
+**Stage 1 — Registration**
+
+Every agent must be registered before it can be provisioned with credentials or listed in the agent directory.
+
+| Registry field | Description |
+|---|---|
+| `agent_id` | Unique identifier (UUID) |
+| `name` | Human-readable name |
+| `owner_team` | Team responsible for the agent |
+| `purpose` | Approved use cases (list) |
+| `tools_permitted` | MCP servers / APIs the agent may call |
+| `autonomy_tier` | 1 = Autonomous / 2 = Notify / 3 = Approval-Gated / 4 = Human-Only |
+| `data_classification` | Maximum classification of data the agent may handle |
+| `expiry_date` | Mandatory — default 90 days unless renewed |
+| `approved_by` | Architect or governance role |
+
+**Stage 2 — Provisioning**
+
+Once registered, the orchestration platform:
+- Issues a SPIFFE SVID (X.509 workload certificate, hourly rotation)
+- Creates scoped credentials for each permitted MCP server
+- Publishes an A2A Agent Card at `/.well-known/agent.json` if the agent is accessible to other agents
+- Sets budget caps in the AI gateway (max tokens/day, max tool calls/hour)
+
+**Stage 3 — Monitoring (Continuous)**
+
+| Signal | How detected | Alert |
+|---|---|---|
+| **Credential use outside permitted tools** | Gateway policy enforcement | P1 — immediate |
+| **Abnormal token consumption** | > 3× 7-day rolling average | P2 — team alert |
+| **Tool call volume spike** | > 5× baseline within 15 min | P2 — auto-suspend |
+| **Data exfiltration pattern** | Large outbound payloads via tool calls | P1 — immediate |
+| **Cross-agent spawning anomaly** | Sub-agent count > registered maximum | P2 — team alert |
+| **Expired SVID usage attempt** | Certificate validation failure | P1 — block + alert |
+
+**Stage 4 — Periodic Review**
+
+Agents must be reviewed and renewed at the expiry date (default 90 days). The review confirms:
+- [ ] Use case still active
+- [ ] Owner team still responsible
+- [ ] Permitted tools still accurate (remove unused)
+- [ ] Autonomy tier still appropriate
+- [ ] Compliance status (any regulation changes affecting this agent)
+
+Unreviewed agents at expiry are automatically suspended (not deleted — audit trail preserved), not silently continued.
+
+**Stage 5 — Decommissioning**
+
+```
+Decommission trigger (expiry / business decision / incident)
+           │
+           ▼
+1. Revoke all credentials (SVID, MCP tokens, API keys)
+2. Remove A2A Agent Card from directory
+3. Drain in-flight tasks (grace period: 24 hours default)
+4. Archive registry entry + audit logs (retain per data retention policy)
+5. Confirm with owner team (automated email: "Agent X has been decommissioned")
+```
+
+**OWASP ASI10 — Rogue Agent Detection**
+
+OWASP ASI10 (Rogue Agents) covers the scenario where a compromised, misconfigured, or abandoned agent takes actions outside its intended scope. Detection pattern:
+
+1. **Baseline deviation monitoring:** The registry stores each agent's expected tool call distribution. A rogue agent will deviate from this pattern — calling unexpected tools or making calls at unexpected frequencies.
+2. **Cross-agent identity verification:** When one agent invokes another via A2A, the receiving agent validates that the caller's Agent Card matches the registry entry. Unregistered callers are rejected.
+3. **Human-in-the-loop for privilege escalation:** Any agent request for additional permissions (new tool access, higher data classification) requires human approval regardless of autonomy tier.
+4. **Dead-man switch:** Agents that have not received a task within their expected cadence window (configurable: 7–30 days) are automatically suspended pending review. This catches abandoned agents before they accumulate risk.
+
+**Governance anti-patterns to avoid:**
+
+| Anti-pattern | Risk | Correct approach |
+|---|---|---|
+| No expiry on agent credentials | Zombie agents accumulate indefinitely | Mandatory expiry + renewal workflow |
+| Shared API keys across agents | Cannot revoke one agent without affecting others | Per-agent credentials via SPIFFE or secrets manager |
+| Manual-only decommissioning | Process skipped under time pressure | Automated suspension at expiry; manual re-activation required |
+| No owner on registry entry | Nobody reviews or decommissions | Ownership mandatory; block registration without it |
+| Autonomy tier not reviewed on renewal | Scope creep as agents gain access over time | Renewal requires explicit re-approval of autonomy tier |
+
 ---
 
 ## 8. Operational Governance
