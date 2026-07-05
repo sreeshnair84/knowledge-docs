@@ -152,6 +152,8 @@ nav:
       - AI Harness & Orchestration: coding-tools/enterprise-ai-architect/ai-harness-architecture-orchestration.md
       - MCP & A2A Deep Dive: coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md
       - Memory & Planning Architecture: coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md
+      - Communication, Identity & Gateway: coding-tools/enterprise-ai-architect/agent-communication-identity-gateway.md
+      - Reference Architectures & Checklists: coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity: ai-protocols/auth/index.md

@@ -111,6 +111,22 @@ Architectural decision-making, governance, strategy, and **production operations
 
     [:octicons-arrow-right-24: Read](agent-memory-planning-architecture.md)
 
+-   :material-lan-connect:{ .lg .middle } **Communication, Identity & AI Gateway**
+
+    ---
+
+    Agent communication mechanism catalog with delivery semantics (idempotency keys, sagas, pivot points), the cryptographic identity chain and delegation gap, the RBAC→ABAC→ReBAC→capability composite authorization model, and the AI gateway responsibility matrix.
+
+    [:octicons-arrow-right-24: Read](agent-communication-identity-gateway.md)
+
+-   :material-city:{ .lg .middle } **Reference Architectures & Checklists**
+
+    ---
+
+    Architecture deltas for 10 industry domains (banking, healthcare, insurance, retail, manufacturing…), the platform-engineering operating model, the July 2026 framework comparison (AgentCore vs ADK vs LangGraph vs SK vs Claude Code…), maturity model L1–L5, review checklists, and the 4-quarter migration roadmap.
+
+    [:octicons-arrow-right-24: Read](enterprise-agent-reference-architectures.md)
+
 </div>
 
 ---
@@ -148,6 +164,8 @@ Architectural decision-making, governance, strategy, and **production operations
     - **Designing the agent loop, choosing an orchestration pattern, task lifecycle** → [AI Harness & Orchestration](ai-harness-architecture-orchestration.md)
     - **MCP 2026-07-28 migration, A2A federation, protocol adoption roadmap** → [MCP & A2A Deep Dive](mcp-a2a-protocol-deep-dive.md)
     - **Memory stores, GDPR erasure, compaction, plan governance** → [Memory & Planning Architecture](agent-memory-planning-architecture.md)
+    - **Agent identity chain, token doctrine, authorization composite, AI gateway design** → [Communication, Identity & Gateway](agent-communication-identity-gateway.md)
+    - **Industry reference architectures, framework selection, maturity model, migration roadmap** → [Reference Architectures & Checklists](enterprise-agent-reference-architectures.md)
 
 ---
 
