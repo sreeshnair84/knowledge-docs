@@ -59,7 +59,6 @@ plugins:
       htmlmin_opts:
         remove_comments: true
   - tags
-  - privacy
 
 hooks:
   - hooks/docs_gen.py
@@ -175,7 +174,10 @@ nav:
     - Kubernetes: cloud-platforms/kubernetes/index.md
     - Infrastructure as Code:
       - Overview: cloud-platforms/iac/index.md
-      - Terraform: cloud-platforms/iac/terraform/index.md
+      - Terraform:
+        - Overview: cloud-platforms/iac/terraform/index.md
+        - Terraform Mastery Guide: cloud-platforms/iac/terraform/terraform-mastery-guide.md
+        - AI-Assisted IaC: cloud-platforms/iac/terraform/ai-assisted-iac-mastery.md
   - Knowledge:
     - Overview: knowledge-engineering/index.md
     - Data Architecture: knowledge-engineering/data/index.md
@@ -191,7 +193,9 @@ nav:
     - Overview: enterprise-architecture/index.md
     - Strategy: enterprise-architecture/strategy/index.md
     - Frameworks: enterprise-architecture/framework/index.md
-    - Processes: enterprise-architecture/process/index.md
+    - Processes:
+      - Overview: enterprise-architecture/process/index.md
+      - AI Solution Lifecycle Deliverables: enterprise-architecture/process/ai-solution-lifecycle-deliverables.md
     - Best Practices: enterprise-architecture/best-practices/index.md
     - ARB: enterprise-architecture/architectural-review-board/index.md
     - Specialization: enterprise-architecture/specialization/index.md
@@ -205,7 +209,23 @@ nav:
     - Overview: ai-economics/index.md
     - AI Value Creators Synthesis: ai-economics/ai-value-creators-synthesis.md
   - Use Cases: ai-usecases/index.md
-  - AI-First Enterprise: ai-first-enterprise/index.md
+  - AI-First Enterprise:
+    - Overview: ai-first-enterprise/index.md
+    - AI-First to AI-Native Journey: ai-first-enterprise/ai-first-to-ai-native.md
+  - Sovereign & Constitutional AI:
+    - Overview: sovereign-constitutional-ai/index.md
+    - Sovereign AI Foundations: sovereign-constitutional-ai/sovereign-ai-foundations.md
+    - Constitutional AI Engineering: sovereign-constitutional-ai/constitutional-ai-engineering.md
+    - Responsible AI Operating Model: sovereign-constitutional-ai/rai-operating-model.md
+    - AI Alignment & Control: sovereign-constitutional-ai/ai-alignment-control.md
+    - AI Governance Operating Model: sovereign-constitutional-ai/ai-governance-operating-model.md
+    - AI Risk Taxonomy: sovereign-constitutional-ai/ai-risk-taxonomy.md
+    - AI Safety Framework: sovereign-constitutional-ai/ai-safety-framework.md
+    - AI Assurance & Audit Architecture: sovereign-constitutional-ai/ai-assurance-audit-architecture.md
+    - Constitutional Agent Architecture: sovereign-constitutional-ai/constitutional-agent-architecture.md
+    - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
+    - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
+    - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md
