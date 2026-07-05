@@ -41,6 +41,25 @@ theme:
 plugins:
   - search:
       lang: en
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+      fallback_to_build_date: true
+  - glightbox:
+      touchNavigation: true
+      effect: zoom
+      zoomable: true
+      draggable: true
+      width: 100%
+      height: auto
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+  - tags
+  - privacy
 
 hooks:
   - hooks/docs_gen.py
@@ -157,6 +176,13 @@ nav:
     - Overview: knowledge-engineering/index.md
     - Data Architecture: knowledge-engineering/data/index.md
     - Knowledge & RAG: knowledge-engineering/knowledge/index.md
+    - Industry Knowledge Systems:
+      - Overview: knowledge-engineering/industry-practices/index.md
+      - How Tech Companies Serve Knowledge: knowledge-engineering/industry-practices/tech-companies.md
+      - Consulting Firm AI Platforms: knowledge-engineering/industry-practices/consulting-firms.md
+      - Governance & Responsible AI: knowledge-engineering/industry-practices/governance-rai.md
+      - Grounding Architectures: knowledge-engineering/industry-practices/grounding.md
+      - Evaluation & Quality Gates: knowledge-engineering/industry-practices/evaluation.md
   - Enterprise Architecture:
     - Overview: enterprise-architecture/index.md
     - Strategy: enterprise-architecture/strategy/index.md

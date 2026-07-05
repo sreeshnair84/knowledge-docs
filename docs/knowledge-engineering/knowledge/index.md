@@ -28,6 +28,6 @@ Research and architecture guides for autonomous knowledge systems, RAG, enterpri
 
 <details>
 <summary>Complex RAG Deep Dive</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/knowledge/Complex_RAG_Deep_Dive.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/knowledge-engineering/knowledge/Complex_RAG_Deep_Dive.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
 <p><a href="Complex_RAG_Deep_Dive.docx" download>Download DOCX ↓</a></p>
 </details>
