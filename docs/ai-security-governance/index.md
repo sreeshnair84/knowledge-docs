@@ -59,5 +59,5 @@ Layer 3: Governance & Compliance
 | EU AI Act, NIST AI RMF, ISO 42001, state laws | [Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) |
 | MCP OAuth 2.1 / A2A Agent Card trust | [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md) |
 | OTel GenAI observability, anomaly detection | [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md) |
-| EntraID 3LO agent auth, OBO flows | [Auth & Identity](auth/index.md) |
+| EntraID 3LO agent auth, OBO flows | [Auth & Identity](../ai-protocols/auth/index.md) |
 
