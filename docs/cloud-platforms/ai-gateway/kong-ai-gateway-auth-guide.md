@@ -12,18 +12,18 @@ nav_order: 2
 ## Table of Contents
 
 1. [The Core Problem: Why Auth Offloading Matters](#1-the-core-problem)
-2. [How Kong Hides LLM Credentials from Clients](#2-hiding-llm-credentials)
+2. [How Kong Hides LLM Credentials from Clients](#2-hiding-llm-credentials-from-clients)
 3. [Consumer Authentication Methods](#3-consumer-authentication-methods)
 4. [Auth Proxy Offloading Patterns](#4-auth-proxy-offloading-patterns)
-5. [Credential Injection & Header Manipulation](#5-credential-injection--header-manipulation)
+5. [Credential Injection & Header Manipulation](#5-credential-injection-header-manipulation)
 6. [Per-Consumer Model Access Control](#6-per-consumer-model-access-control)
-7. [OIDC / SSO Integration](#7-oidc--sso-integration)
+7. [OIDC / SSO Integration](#7-oidc-sso-integration)
 8. [mTLS Between Kong and LLM Providers](#8-mtls-between-kong-and-llm-providers)
 9. [Vault Integration for Secret Management](#9-vault-integration-for-secret-management)
-10. [ACL & RBAC for AI Routes](#10-acl--rbac-for-ai-routes)
+10. [ACL & RBAC for AI Routes](#10-acl-rbac-for-ai-routes)
 11. [Zero-Trust Architecture with Kong AI Gateway](#11-zero-trust-architecture)
 12. [Audit Logging for Auth Events](#12-audit-logging-for-auth-events)
-13. [Complete Working Example: Private AI API](#13-complete-working-example)
+13. [Complete Working Example: Private AI API](#13-complete-working-example-private-ai-api)
 
 ---
 

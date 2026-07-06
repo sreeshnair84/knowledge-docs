@@ -3,11 +3,16 @@ site_description: AI, Agentic AI & Enterprise Architecture Knowledge Base
 site_url: https://sreeshnair84.github.io/knowledge-docs/
 repo_url: https://github.com/sreeshnair84/knowledge-docs
 repo_name: sreeshnair84/knowledge-docs
+edit_uri: edit/main/docs/
 docs_dir: docs
 site_dir: site
 
 theme:
   name: material
+  custom_dir: overrides
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -31,11 +36,17 @@ theme:
     - navigation.instant.progress
     - navigation.top
     - navigation.path
+    - navigation.footer
     - search.suggest
     - search.highlight
     - search.focus
+    - search.share
     - content.code.copy
     - content.code.select
+    - content.action.edit
+    - content.action.view
+    - content.tooltips
+    - announce.dismiss
     - header.autohide
 
 plugins:

@@ -338,7 +338,7 @@ The Digital Omnibus on AI (Council final approval June 29, 2026) deferred Annex 
 
 ## 8. Agent Security Review Checklist
 
-Add these 10 items to the [30-point architecture review checklist](enterprise-ai-skills-assessment.md#architecture-review-checklist) for any agentic deployment:
+Add these 10 items to the [30-point architecture review checklist](enterprise-ai-skills-assessment.md#8-ai-architecture-review-checklist) for any agentic deployment:
 
 | # | Check | Verify |
 |---|---|---|

@@ -11,17 +11,17 @@ nav_order: 3
 
 ## Table of Contents
 
-1. [Overview & Architecture](#1-overview--architecture)
+1. [Overview & Architecture](#1-overview-architecture)
 2. [Entra ID App Registration](#2-entra-id-app-registration)
 3. [OAuth 2.0 Client Credentials Flow (M2M)](#3-oauth-20-client-credentials-flow-m2m)
-4. [Authorization Code Flow (User Login / SSO)](#4-authorization-code-flow-user-login--sso)
-5. [JWT / Bearer Token Validation](#5-jwt--bearer-token-validation)
+4. [Authorization Code Flow (User Login / SSO)](#4-authorization-code-flow-user-login-sso)
+5. [JWT / Bearer Token Validation](#5-jwt-bearer-token-validation)
 6. [OIDC Plugin Full Configuration](#6-oidc-plugin-full-configuration)
-7. [Group & Role Mapping to Kong ACL](#7-group--role-mapping-to-kong-acl)
+7. [Group & Role Mapping to Kong ACL](#7-group-role-mapping-to-kong-acl)
 8. [Per-Consumer Auto-Provisioning from Entra ID](#8-per-consumer-auto-provisioning-from-entra-id)
-9. [Conditional Access & MFA Enforcement](#9-conditional-access--mfa-enforcement)
+9. [Conditional Access & MFA Enforcement](#9-conditional-access-mfa-enforcement)
 10. [Multi-Tenant Entra ID Setup](#10-multi-tenant-entra-id-setup)
-11. [Token Introspection & Revocation](#11-token-introspection--revocation)
+11. [Token Introspection & Revocation](#11-token-introspection-revocation)
 12. [Managed Identity for Kong on Azure](#12-managed-identity-for-kong-on-azure)
 13. [Troubleshooting Entra ID Auth Issues](#13-troubleshooting-entra-id-auth-issues)
 14. [Complete Working Reference Config](#14-complete-working-reference-config)

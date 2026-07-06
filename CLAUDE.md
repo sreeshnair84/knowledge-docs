@@ -10,9 +10,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build & Preview
 
 ```bash
-pip install mkdocs-material>=9.5
-mkdocs serve          # local preview at http://127.0.0.1:8000
-mkdocs build          # build to site/ (do not commit site/)
+pip install -r requirements.txt   # installs material, git-revision-date, glightbox, minify
+mkdocs serve                      # local preview at http://127.0.0.1:8000
+mkdocs build                      # build to site/ (do not commit site/)
 ```
 
 Deployment is automatic — every push to `main` triggers `.github/workflows/pages.yml` which runs `mkdocs build` and deploys `site/` to GitHub Pages. No manual deploy needed.
@@ -28,11 +28,24 @@ docs/                        # MkDocs source root (docs_dir)
     *.pdf / *.docx / *.html  # Source files served as static assets
 docs/stylesheets/extra.css   # Responsive iframe styles, mobile PDF button
 docs/javascripts/pdf-viewer.js  # Mobile: swaps PDF iframes → Google Docs Viewer
+hooks/docs_gen.py            # Build hook: auto-generates <details> viewer blocks
 mkdocs.yml                   # Full site config: nav, theme, extensions
-.github/workflows/pages.yml  # CI: pip install → mkdocs build → deploy
+requirements.txt             # All Python dependencies (used by CI and local dev)
+.github/workflows/pages.yml  # CI: pip install -r requirements.txt → mkdocs build → deploy
 ```
 
 All 13 topic sections follow the same pattern: `docs/<section>/index.md` is the wiki overview page listed in `nav:` under "Overview"; additional `.md` files in the same folder are listed as child nav entries.
+
+## Auto-generation Hook
+
+`hooks/docs_gen.py` runs at build time via the MkDocs `on_page_markdown` event. For every `index.md`, it scans the same directory for non-markdown assets and injects a `## Documents` block of `<details>` viewer iframes between `<!-- AUTO-DOCS-START -->` and `<!-- AUTO-DOCS-END -->` markers.
+
+**What this means for adding content:**
+
+- **Dropping a PDF/DOCX/HTML file into a section folder is sufficient** — the hook generates the viewer block automatically. You do not need to hand-write `<details>` blocks unless you want custom ordering, a custom title, or content that differs from the auto-generated default.
+- The hook overwrites the `AUTO-DOCS-*` region on every build; edits inside those markers are lost. Place custom content *above* `<!-- AUTO-DOCS-START -->`.
+- File types handled: `.pdf`, `.html` (inline iframe); `.docx`, `.pptx`, `.xlsx` (Google Docs Viewer); `.jsx`, `.excalidraw`, `.txt` (download-only link).
+- `index.md` and `README.md` are excluded from the scan (`SKIP` set in `docs_gen.py`).
 
 ## Adding Content
 
@@ -48,7 +61,9 @@ All 13 topic sections follow the same pattern: `docs/<section>/index.md` is the 
 
 ### New PDF / DOCX / HTML / JSX
 1. Drop the file into `docs/<section>/`.
-2. Add a `<details>` viewer block to `docs/<section>/index.md`:
+2. **The build hook auto-generates the viewer block** — no manual edits to `index.md` are needed unless you want a custom title or ordering. To override, add a `<details>` block *above* `<!-- AUTO-DOCS-START -->` in `index.md`.
+
+   If you need a custom viewer block (e.g. to override the auto-generated title), use these templates:
 
    **PDF:**
    ```html

@@ -12,20 +12,20 @@ nav_order: 1
 
 ## Table of Contents
 
-1. [What MCP Is — and What It Isn't](#1-what-mcp-is)
-2. [Stateful vs. Stateless: The Core Architectural Tension](#2-stateful-vs-stateless)
-3. [Transport Layer, Streaming & Notifications](#3-transport-streaming-notifications)
-4. [All MCP Capabilities: Tools, Resources, Prompts, Sampling, Elicitation, Roots, Tasks](#4-capabilities)
-5. [Configuration Incompatibilities: What Breaks Together](#5-configuration-incompatibilities)
-6. [Security Risks: The Full Attack Taxonomy](#6-security-risks)
-7. [RAI, Evaluation, Audit & Guardrails](#7-rai-guardrails)
-8. [MCP Client, Host & Server Responsibilities](#8-client-host-server-responsibilities)
-9. [Proxy Gateways: Who's Building What](#9-proxy-gateways)
-10. [Auth: OAuth 2.1, Latency & Alternate Designs](#10-auth)
-11. [The Ecosystem: Apps & Platforms Built on MCP](#11-ecosystem)
-12. [What Is Solved, What Is Being Solved, What Is Unsolved](#12-solved-unsolved)
-13. [Best Practices & Alternate Design Patterns](#13-best-practices)
-14. [Critical Assessment: What the Field Gets Wrong](#14-critical-assessment)
+1. [What MCP Is — and What It Isn't](#1-what-mcp-is-and-what-it-isnt)
+2. [Stateful vs. Stateless: The Core Architectural Tension](#2-stateful-vs-stateless-the-core-architectural-tension)
+3. [Transport Layer, Streaming & Notifications](#3-transport-layer-streaming-notifications)
+4. [All MCP Capabilities: Tools, Resources, Prompts, Sampling, Elicitation, Roots, Tasks](#4-all-mcp-capabilities)
+5. [Configuration Incompatibilities: What Breaks Together](#5-configuration-incompatibilities-what-breaks-together)
+6. [Security Risks: The Full Attack Taxonomy](#6-security-risks-the-full-attack-taxonomy)
+7. [RAI, Evaluation, Audit & Guardrails](#7-rai-evaluation-audit-guardrails)
+8. [MCP Client, Host & Server Responsibilities](#8-mcp-client-host-server-responsibilities)
+9. [Proxy Gateways: Who's Building What](#9-proxy-gateways-whos-building-what)
+10. [Auth: OAuth 2.1, Latency & Alternate Designs](#10-auth-oauth-21-latency-alternate-designs)
+11. [The Ecosystem: Apps & Platforms Built on MCP](#11-the-ecosystem-apps-platforms-built-on-mcp)
+12. [What Is Solved, What Is Being Solved, What Is Unsolved](#12-what-is-solved-what-is-being-solved-what-is-unsolved)
+13. [Best Practices & Alternate Design Patterns](#13-best-practices-alternate-design-patterns)
+14. [Critical Assessment: What the Field Gets Wrong](#14-critical-assessment-what-the-field-gets-wrong)
 
 ---
 

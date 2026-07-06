@@ -1,10 +1,7 @@
 /* ================================================================
-   Knowledge Docs — Clean Redesign
-   Material theme: let it handle layout; we only add visual polish
+   Knowledge Docs — Modern Redesign (Material 9.6+)
+   Font loading handled by MkDocs Material theme (Inter + JetBrains Mono)
    ================================================================ */
-
-/* ── Google Font ─────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   --kd-radius: 8px;
@@ -13,11 +10,36 @@
   --kd-transition: 0.2s ease;
 }
 
-.md-typeset,
-.md-nav,
-.md-header,
-.md-footer {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+/* ── Announce bar ─────────────────────────────────────────────── */
+.md-announce {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--md-primary-fg-color--dark), var(--md-primary-fg-color));
+}
+
+.md-announce__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.announce-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.announce-version {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  padding: 0.1em 0.45em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 /* ── Header ─────────────────────────────────────────────────── */
@@ -47,7 +69,7 @@
   opacity: 1;
 }
 
-/* ── Left sidebar — no overflow overrides, just visual ───────── */
+/* ── Left sidebar ─────────────────────────────────────────────── */
 .md-nav--primary .md-nav__title {
   font-weight: 700;
   font-size: 0.75rem;
@@ -133,6 +155,11 @@
 .md-typeset .grid.cards > ul > li .lg {
   color: var(--md-primary-fg-color);
   font-size: 2rem;
+  transition: transform var(--kd-transition);
+}
+
+.md-typeset .grid.cards > ul > li:hover .lg {
+  transform: scale(1.1);
 }
 
 /* ── Code blocks ─────────────────────────────────────────────── */
@@ -257,6 +284,16 @@
   border-top: 1px solid var(--md-default-fg-color--lightest);
 }
 
+.md-footer-meta {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+/* ── Navigation footer (prev/next) ──────────────────────────── */
+.md-footer__inner {
+  padding: 0.8rem 0;
+}
+
 /* ── Dark mode tweaks ────────────────────────────────────────── */
 [data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li {
   background: var(--md-default-bg-color);
@@ -266,4 +303,9 @@
 [data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li:hover {
   border-color: var(--md-primary-fg-color);
   box-shadow: 0 6px 24px rgba(0, 150, 136, 0.25);
+}
+
+[data-md-color-scheme="slate"] .md-announce {
+  background: linear-gradient(90deg, var(--md-primary-fg-color--dark), var(--md-primary-fg-color));
+  opacity: 0.92;
 }

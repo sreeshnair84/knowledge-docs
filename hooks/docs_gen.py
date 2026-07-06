@@ -3,6 +3,7 @@ MkDocs build hook: Auto-generates document viewer blocks for all
 non-markdown files found in each section directory.
 """
 import os, re
+from datetime import datetime, timezone
 from pathlib import Path
 
 MARKER_START = "<!-- AUTO-DOCS-START -->"
@@ -40,6 +41,16 @@ def _block(f, rel):
         return (f'\n<details>\n<summary>{name}</summary>\n'
                 f'<p><a href="{f.name}" download>Download {ext[1:].upper()} ↓</a></p>\n</details>\n')
     return ''
+
+def on_config(config, **kwargs):
+    now = datetime.now(timezone.utc)
+    build_date = now.strftime('%Y-%m-%d')
+    version = f"{now.year}.{now.month:02d}"
+    config.extra['build_date'] = build_date
+    config.extra['build_version'] = version
+    config['copyright'] = f"Built {build_date} &middot; v{version}"
+    return config
+
 
 def on_page_markdown(markdown, page, config, files, **kwargs):
     if not page.file.src_path.endswith('index.md'):

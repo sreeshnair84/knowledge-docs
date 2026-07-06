@@ -19,14 +19,14 @@ nav_order: 1
 1. [Architecture Overview](#1-architecture-overview)
 2. [Framework Stack Deep Dive](#2-framework-stack-deep-dive)
 3. [Full Lifecycle — Ideation to Retirement](#3-full-lifecycle)
-4. [Evaluation Taxonomy & Metric Catalogue](#4-evaluation-taxonomy--metric-catalogue)
+4. [Evaluation Taxonomy & Metric Catalogue](#4-evaluation-taxonomy-metric-catalogue)
 5. [Benchmark Creation Standards](#5-benchmark-creation-standards)
 6. [Drift Detection System](#6-drift-detection-system)
 7. [Automated Evaluation Pipeline](#7-automated-evaluation-pipeline)
 8. [Production Monitoring Architecture](#8-production-monitoring-architecture)
 9. [LLM-as-a-Judge Design Patterns](#9-llm-as-a-judge-design-patterns)
 10. [Integration Reference](#10-integration-reference)
-11. [Runbooks & Playbooks](#11-runbooks--playbooks)
+11. [Runbooks & Playbooks](#11-runbooks-playbooks)
 
 ---
 

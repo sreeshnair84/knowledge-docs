@@ -17,7 +17,7 @@ nav_order: 3
 2. [Category Taxonomy](#2-category-taxonomy)
 3. [Tool Deep-Dives](#3-tool-deep-dives)
    - [Caveman](#caveman) — Token compression skill
-   - [Ruflo / Claude Flow](#ruflo--claude-flow) — Multi-agent orchestration
+   - [Ruflo / Claude Flow](#ruflo-claude-flow) — Multi-agent orchestration
    - [Claude Code](#claude-code) — Terminal-native agent
    - [Cursor](#cursor) — Agentic IDE (VS Code fork)
    - [Windsurf](#windsurf) — Agentic IDE + Devin bundle
