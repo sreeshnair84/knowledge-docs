@@ -14,12 +14,14 @@ const config = {
   projectName: 'knowledge-docs',
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   onBrokenAnchors: 'warn',
 
   markdown: {
     mermaid: true,
     format: 'md',
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
   i18n: {
