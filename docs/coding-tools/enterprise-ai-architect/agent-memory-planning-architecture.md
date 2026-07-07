@@ -54,7 +54,7 @@ The end-to-end life of a memory record: **write (gated) → classify → store (
 
 ### 3.1 TTL & Garbage Collection
 
-Every record carries `{created, last_accessed, ttl, importance}`. GC = expiry + importance-decay eviction + orphan sweep (memories referencing deleted tasks/users).
+Every record carries `\{created, last_accessed, ttl, importance}`. GC = expiry + importance-decay eviction + orphan sweep (memories referencing deleted tasks/users).
 
 :::warning GDPR erasure must cascade
     Source-document deletion must cascade to **derived memories, embeddings, caches, and summaries that quote it**. Maintain a **derivation index** (memory → sources) or you cannot comply. This is the single most commonly missed requirement in agent memory design.
@@ -87,7 +87,7 @@ Consistency promises to engineer for:
 
 Full threat treatments in [Security Architecture & Guardrails](agentic-ai-security-guardrails.md) (memory poisoning, vector DB poisoning). The architectural controls:
 
-**Namespaces & ACLs.** Namespace = `{tenant, principal, agent, purpose}`; ReBAC answers per-record access. Retrieval queries are **post-filtered by the caller's entitlements** — an agent must never retrieve what its human principal couldn't read. RAG permission-mirroring failures are a top audit finding.
+**Namespaces & ACLs.** Namespace = `\{tenant, principal, agent, purpose}`; ReBAC answers per-record access. Retrieval queries are **post-filtered by the caller's entitlements** — an agent must never retrieve what its human principal couldn't read. RAG permission-mirroring failures are a top audit finding.
 
 **PII & encryption.** Classify at write; tokenize/redact per policy; encryption at rest with per-tenant keys (BYOK for regulated tenants); field-level encryption for sensitive attributes. **Embeddings of sensitive text are themselves sensitive** — embedding-inversion attacks are practical — so protect vector stores at the same tier as source data.
 
@@ -157,7 +157,7 @@ Compensation execution order = **reverse-topological over completed mutating nod
 
 ## 6. How Industry Implements
 
-**AWS AgentCore Memory** — managed memory layer storing conversation history, extracted facts, and user preferences across sessions, backed by a vector store with a semantic retrieval API; long-term memories are retrieved from configured namespaces and injected before the agent reasons. The namespace model maps directly onto §4's `{tenant, principal, agent, purpose}` doctrine.
+**AWS AgentCore Memory** — managed memory layer storing conversation history, extracted facts, and user preferences across sessions, backed by a vector store with a semantic retrieval API; long-term memories are retrieved from configured namespaces and injected before the agent reasons. The namespace model maps directly onto §4's `\{tenant, principal, agent, purpose}` doctrine.
 
 **Zep (Graphiti)** — the temporal-knowledge-graph approach in production: entities and facts carry time validity, enabling "what was true on date X" queries — effectively §3.4's snapshot-read consistency implemented at the engine level.
 

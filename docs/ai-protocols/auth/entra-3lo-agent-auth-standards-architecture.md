@@ -166,7 +166,7 @@ Traditional API gateways sit in front of APIs, controlling inbound traffic. Agen
 
 | Event | Gateway Action |
 |-------|---------------|
-| User first consent | Store `{access_token, expires_at, refresh_token, scopes, provider_metadata}` encrypted, keyed by `(user_id, provider)` |
+| User first consent | Store `\{access_token, expires_at, refresh_token, scopes, provider_metadata}` encrypted, keyed by `(user_id, provider)` |
 | Agent makes tool call | Lookup credential vault; if `access_token` valid → inject; if expiring → refresh first |
 | Token near expiry (80%) | Background proactive refresh; acquire per-(user,provider) distributed lock to avoid race conditions |
 | Refresh + rotate atomically | New `access_token` + new `refresh_token` written; old `refresh_token` invalidated immediately |
@@ -193,7 +193,7 @@ Traditional API gateways sit in front of APIs, controlling inbound traffic. Agen
 | 4 | PDP check | RBAC: does agent have `Jira:write` scope for this user? ABAC: within policy? Approval needed? |
 | 5 | Vault lookup | Retrieve Jira `refresh_token` for `user_oid`; check if `access_token` valid |
 | 6 | Token refresh | (If needed) POST to `auth.atlassian.com/oauth/token` with `refresh_token`; store rotated pair |
-| 7 | Tool execution | Gateway (not agent) executes PATCH `api.atlassian.com/ex/jira/{cloudId}/rest/api/3/issue/DEMO-123` |
+| 7 | Tool execution | Gateway (not agent) executes PATCH `api.atlassian.com/ex/jira/\{cloudId}/rest/api/3/issue/DEMO-123` |
 | 8 | Audit log | Record: `agent_id`, `user_oid`, `scope=write:jira-work`, `resource=DEMO-123`, result, timestamp |
 | 9 | Response | Return result to agent; agent formats response to user |
 
@@ -223,8 +223,8 @@ GHE supports both OAuth Apps (user-delegated 3LO) and GitHub Apps (installation-
 
 | Aspect | Detail |
 |--------|--------|
-| Authorization URL | `https://{ghe-host}/login/oauth/authorize?client_id=…&scope=repo read:user` |
-| Token URL | `https://{ghe-host}/login/oauth/access_token` |
+| Authorization URL | `https://\{ghe-host}/login/oauth/authorize?client_id=…&scope=repo read:user` |
+| Token URL | `https://\{ghe-host}/login/oauth/access_token` |
 | Scopes | `repo` (full repo access), `read:org`, `read:user`, `workflow` — use minimal set |
 | Token type | GitHub does **not** issue refresh tokens for OAuth Apps; access tokens are long-lived (use with caution) |
 | GitHub App alternative | Installation tokens (2LO) expire after 1hr; fine-grained permissions; recommended for server-to-server |

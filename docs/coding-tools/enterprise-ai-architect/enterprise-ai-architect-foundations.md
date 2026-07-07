@@ -428,7 +428,7 @@ Total tokens = System prompt + Few-shot examples + User message
 - Conversation history: 0–4,000 tokens (compress or summarise)
 - Output: 500–2,000 tokens (set `max_tokens` explicitly)
 
-**Extended thinking:** Claude Fable 5, Opus 4.8, and Sonnet 5 use **adaptive thinking** — a fixed `budget_tokens` value is rejected (HTTP 400) on these models. Enable it with `thinking: {type: "adaptive"}` (thinking is always-on for Fable 5) and control depth with `output_config.effort` (`low` / `medium` / `high` / `max`). Thinking tokens are billed but enable significantly better complex reasoning; note that Fable 5 never returns the raw chain of thought — responses carry summarized or omitted thinking blocks.
+**Extended thinking:** Claude Fable 5, Opus 4.8, and Sonnet 5 use **adaptive thinking** — a fixed `budget_tokens` value is rejected (HTTP 400) on these models. Enable it with `thinking: \{type: "adaptive"}` (thinking is always-on for Fable 5) and control depth with `output_config.effort` (`low` / `medium` / `high` / `max`). Thinking tokens are billed but enable significantly better complex reasoning; note that Fable 5 never returns the raw chain of thought — responses carry summarized or omitted thinking blocks.
 
 ### 8.2 Cost Attribution per Team/Product
 

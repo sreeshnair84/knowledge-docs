@@ -25,7 +25,7 @@ This checklist must be completed and signed off by Security/Identity (Line 2) be
 |---|---------|------------------|------------------|
 | IC-01 | Agent Identity Blueprint registered in Entra (not reusing existing app registration) | MUST | Screenshot: Entra portal → App registrations → agent blueprint entry |
 | IC-02 | FIC + Managed Identity as Blueprint credential — zero client secrets in production | MUST | Key Vault audit: confirm no `clientSecret` type credentials on blueprint app |
-| IC-03 | Agent Identity (child SP) created with scopes granted at Identity level, not Blueprint level | MUST | MS Graph: `GET /servicePrincipals/{blueprint}/agentIdentities` — list instances |
+| IC-03 | Agent Identity (child SP) created with scopes granted at Identity level, not Blueprint level | MUST | MS Graph: `GET /servicePrincipals/\{blueprint}/agentIdentities` — list instances |
 | IC-04 | All delegated scopes explicitly listed and approved by Security sponsor | MUST | Agent Registry entry: `scopes_granted` field reviewed and signed off |
 | IC-05 | No scope includes `.default` or admin consent-only permissions unless explicitly justified | MUST | Scope list reviewed: no `Mail.ReadWrite.All`, no `Directory.ReadWrite.All` unless documented exception |
 | IC-06 | `offline_access` scope present only if background agent operation confirmed required | SHOULD | Agent design doc: confirm background task requirement documented |

@@ -23,9 +23,9 @@ The Microsoft Entra SDK for Agent ID runs as a containerised sidecar alongside t
 
 | Sidecar Endpoint | Purpose | Query Params |
 |-----------------|---------|-------------|
-| `/AuthorizationHeader/Graph` | Get delegated token for MS Graph (OBO) | `AgentIdentity={guid}`, `AgentUserId={oid}` or `AgentUsername={upn}` |
+| `/AuthorizationHeader/Graph` | Get delegated token for MS Graph (OBO) | `AgentIdentity=\{guid}`, `AgentUserId=\{oid}` or `AgentUsername=\{upn}` |
 | `/AuthorizationHeader/Graph` (no params) | Standard OBO — use incoming user token identity | None (inherits from Bearer token) |
-| `/AuthorizationHeader/Graph?AgentIdentity=…` | Autonomous agent-only token (no user context) | `AgentIdentity={guid}` only |
+| `/AuthorizationHeader/Graph?AgentIdentity=…` | Autonomous agent-only token (no user context) | `AgentIdentity=\{guid}` only |
 | `/Validate` | Validate inbound user/agent token | None — pass token in Authorization header |
 | `/DownstreamApi` | Sidecar directly calls downstream API and returns result | `url`, `AgentIdentity`, `AgentUserId` |
 
@@ -321,15 +321,15 @@ async def ensure_atlassian_consent(user_oid: str, required_scopes: list[str], va
 
 | # | Step | Who | Command / Action |
 |---|------|-----|-----------------|
-| 1 | Register Blueprint | Identity Admin | `az ad app create --display-name 'GenAI-AgentBlueprint-{name}' --sign-in-audience AzureADMyOrg` |
-| 2 | Create Blueprint Service Principal | Identity Admin | `az ad sp create --id {blueprint_app_id}` |
-| 3 | Assign Managed Identity as FIC | Identity Admin | Graph API: `POST /applications/{blueprint_id}/federatedIdentityCredentials` with issuer, subject (MSI object ID), audiences |
-| 4 | Create Agent Identity (child) | Identity Admin | `POST /servicePrincipals/{blueprint_sp_id}/agentIdentities` via MS Graph beta API |
+| 1 | Register Blueprint | Identity Admin | `az ad app create --display-name 'GenAI-AgentBlueprint-\{name}' --sign-in-audience AzureADMyOrg` |
+| 2 | Create Blueprint Service Principal | Identity Admin | `az ad sp create --id \{blueprint_app_id}` |
+| 3 | Assign Managed Identity as FIC | Identity Admin | Graph API: `POST /applications/\{blueprint_id}/federatedIdentityCredentials` with issuer, subject (MSI object ID), audiences |
+| 4 | Create Agent Identity (child) | Identity Admin | `POST /servicePrincipals/\{blueprint_sp_id}/agentIdentities` via MS Graph beta API |
 | 5 | Grant delegated permissions | Identity Admin + Security approval | `POST /oauth2PermissionGrants` with `clientId`, `resourceId`, `scope` |
 | 6 | Set Conditional Access policy | Security | Entra portal → Security → Conditional Access → New policy → assign to Blueprint service principal |
 | 7 | Register OAuth app in Atlassian | Builder | `developer.atlassian.com` → Create → OAuth 2.1 app → add scopes → set callback to AC Gateway URL |
 | 8 | Register OAuth app in GHE | Builder | GHE Admin → Settings → Developer Settings → OAuth Apps → register with callback URL |
-| 9 | Store app credentials in Key Vault | Platform/SRE | `az keyvault secret set --vault-name {kv} --name 'atlassian-client-secret' --value {secret}` — **Never put secrets in appsettings.json or environment variables** |
+| 9 | Store app credentials in Key Vault | Platform/SRE | `az keyvault secret set --vault-name \{kv} --name 'atlassian-client-secret' --value \{secret}` — **Never put secrets in appsettings.json or environment variables** |
 | 10 | Smoke test | Engineer | Run reference implementation test harness: verify T1 acquisition → OBO exchange → resource API call → audit log entry appears |
 
 ### 14.2 Revoking User Access
@@ -338,10 +338,10 @@ async def ensure_atlassian_consent(user_oid: str, required_scopes: list[str], va
 |----------|--------|-------|
 | User requests revoke | Set `revoked_at` in vault; delete `refresh_token` | Vault API; also revoke at provider (Atlassian Connected Apps, GHE OAuth token) |
 | User leaves org | Entra offboarding disables user account → all delegated tokens invalidated automatically for Graph/Entra-backed resources | Entra offboarding + vault sweep job |
-| Security incident | Revoke all credentials for `agent_id`: `UPDATE agent_credentials SET revoked_at=NOW() WHERE agent_id='{id}'` | Vault DB + alert SRE team |
+| Security incident | Revoke all credentials for `agent_id`: `UPDATE agent_credentials SET revoked_at=NOW() WHERE agent_id='\{id}'` | Vault DB + alert SRE team |
 | Agent decommissioned | Disable Agent Identity in Entra → revoke all app-level grants → delete vault entries for `agent_id` | Entra portal + vault DB + KV secret deletion |
 | Atlassian revoke | User: Atlassian → Profile → Connected Apps → Revoke. Admin: can only uninstall app (not per-user revoke — Atlassian limitation) | Atlassian portal |
-| GHE revoke | User: GHE → Settings → Applications → Authorized OAuth Apps → Revoke. API: `DELETE /applications/{client_id}/tokens/{token}` | GHE portal or API |
+| GHE revoke | User: GHE → Settings → Applications → Authorized OAuth Apps → Revoke. API: `DELETE /applications/\{client_id}/tokens/\{token}` | GHE portal or API |
 
 ### 14.3 Rotating the Blueprint FIC Credential (Certificate)
 
@@ -373,7 +373,7 @@ az keyvault certificate delete --vault-name {kv} --name 'blueprint-cert'
 |-------|----------------|-----------|--------|
 | Token refresh failure rate | `vault.refresh.errors / vault.refresh.total` | >5% over 5min | Page SRE; check provider status; check lock contention |
 | Refresh lag spike | P99 latency of `ensure_fresh_token()` | >3s | Check distributed lock; scale refresh sweeper workers |
-| 401 rate from downstream APIs | `http.client.4xx{status=401}` by provider | >1% of calls | Token vault out of sync; trigger full re-consent for affected users |
+| 401 rate from downstream APIs | `http.client.4xx\{status=401}` by provider | >1% of calls | Token vault out of sync; trigger full re-consent for affected users |
 | Vault decrypt audit anomaly | Key Vault: >N decrypts in 1min by non-agent identity | N defined by Security | Potential credential theft; freeze agent; rotate all DEKs |
 | Consent dropoff | `consent.started - consent.completed` | >30% dropoff | Investigate UX; scope too broad? |
 | Revoked token still used | `vault.access_revoked_credential_attempted` | Any occurrence | Critical: agent not checking `revoked_at` flag; deploy fix immediately |

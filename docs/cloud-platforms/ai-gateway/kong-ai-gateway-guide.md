@@ -664,7 +664,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
         },
         {
           "name": "code-reviewer",
-          "template": "You are an expert software engineer. Review the following {{language}} code for bugs, security issues, and best practice violations.\n\nCode:\n```{{language}}\n{{code}}\n```"
+          "template": "You are an expert software engineer. Review the following {{language}} code for bugs, security issues, and best practice violations.\n\nCode:\n```\{\{language}}\n\{\{code}}\n```"
         }
       ]
     }

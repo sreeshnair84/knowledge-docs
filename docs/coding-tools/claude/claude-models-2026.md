@@ -60,7 +60,7 @@ Claude Fable 5 (`claude-fable-5`) is Anthropic's most capable widely released mo
 ### Adaptive Thinking API — Effort Control
 
 :::danger Do NOT pass `budget_tokens` to Fable 5
-    Passing `{"type": "disabled"}` or `{"type": "enabled", "budget_tokens": N}` to Fable 5 returns **HTTP 400**. Use `output_config.effort` to control thinking depth instead.
+    Passing `\{"type": "disabled"}` or `\{"type": "enabled", "budget_tokens": N}` to Fable 5 returns **HTTP 400**. Use `output_config.effort` to control thinking depth instead.
 
 ```python
 import anthropic
@@ -223,7 +223,7 @@ for block in response.content:
 ```
 
 :::note `budget_tokens` on Opus 4.8
-    Like Fable 5, Opus 4.8 does NOT support `budget_tokens`. Use `output_config.effort` instead. Extended thinking (`{"type": "enabled", "budget_tokens": N}`) is supported only on Opus 4.6, Sonnet 4.6, Haiku 4.5, and older models.
+    Like Fable 5, Opus 4.8 does NOT support `budget_tokens`. Use `output_config.effort` instead. Extended thinking (`\{"type": "enabled", "budget_tokens": N}`) is supported only on Opus 4.6, Sonnet 4.6, Haiku 4.5, and older models.
 
 ### When to Use Opus 4.8 vs. Fable 5
 
@@ -299,7 +299,7 @@ Claude Haiku 4.5 (`claude-haiku-4-5`) is the **speed-optimized tier** — the fa
     Use the alias `claude-haiku-4-5`. The full pinned ID is `claude-haiku-4-5-20251001`, but always use the bare alias in code and configuration.
 
 :::note Thinking API for Haiku 4.5
-    Haiku 4.5 supports **extended thinking** (`{"type": "enabled", "budget_tokens": N}`) but does **not** support adaptive thinking. This is the opposite of Fable 5 and Opus 4.8, which only support adaptive thinking.
+    Haiku 4.5 supports **extended thinking** (`\{"type": "enabled", "budget_tokens": N}`) but does **not** support adaptive thinking. This is the opposite of Fable 5 and Opus 4.8, which only support adaptive thinking.
 
 ### Haiku 4.5 Best Use Cases
 
@@ -640,7 +640,7 @@ START: What does your task require?
 | Change | Impact | Required Action |
 |---|---|---|
 | **New tokenizer** | ~30% more tokens for same text | Re-count all token budgets with `count_tokens` |
-| **`budget_tokens` removed** | Passing extended thinking params returns 400 on Opus 4.7/4.8 | Replace `{"type": "enabled", "budget_tokens": N}` with `output_config={"effort": "..."}` |
+| **`budget_tokens` removed** | Passing extended thinking params returns 400 on Opus 4.7/4.8 | Replace `\{"type": "enabled", "budget_tokens": N}` with `output_config=\{"effort": "..."}` |
 | **`xhigh` effort** (Opus 4.7+) | New thinking depth level available | Optionally adopt for maximum thinking depth |
 | **Pricing unchanged** | Same $5/$25/M (Opus) or $3/$15/M (Sonnet) | No cost impact at standard pricing |
 
@@ -648,7 +648,7 @@ START: What does your task require?
 
 | Change | Impact | Required Action |
 |---|---|---|
-| **Thinking always on** | Cannot disable; `budget_tokens` rejected with HTTP 400 | Remove `{"type": "disabled"}` or `budget_tokens`; use `output_config.effort` |
+| **Thinking always on** | Cannot disable; `budget_tokens` rejected with HTTP 400 | Remove `\{"type": "disabled"}` or `budget_tokens`; use `output_config.effort` |
 | **`refusal` stop reason** | HTTP 200 with empty content; not billed | Add `stop_reason == "refusal"` check; add server-side fallback |
 | **30-day retention required** | Zero-retention orgs receive HTTP 400 | Verify org retention configuration |
 | **New tokenizer** (from Opus 4.6 or below) | Token count shift | Re-baseline with `count_tokens` |
@@ -682,7 +682,7 @@ for prompt in PRODUCTION_PROMPTS:
 
 - [ ] Re-count all token budgets with the target model's tokenizer
 - [ ] Update `max_tokens` limits if you were near any output ceiling
-- [ ] Replace `{"type": "enabled", "budget_tokens": N}` with `output_config={"effort": "..."}` (Opus 4.7+, Sonnet 5, Fable 5)
+- [ ] Replace `\{"type": "enabled", "budget_tokens": N}` with `output_config=\{"effort": "..."}` (Opus 4.7+, Sonnet 5, Fable 5)
 - [ ] Add `stop_reason == "refusal"` check for all Fable 5 / Mythos 5 calls
 - [ ] Add `fallbacks` parameter to Fable 5 / Mythos 5 API calls (recommended)
 - [ ] Verify data retention config for Fable 5 / Mythos 5 (30-day required)
@@ -1016,7 +1016,7 @@ def request_with_backoff(
     Never use `claude-haiku-4-5-20251001` or any date-suffixed form in your code. Use the alias `claude-haiku-4-5`. Date-suffixed IDs are the underlying pinned snapshots; the alias is the stable public API surface.
 
 :::danger Passing `budget_tokens` to Fable 5, Opus 4.7, or Opus 4.8
-    These models do not support extended thinking. Passing `{"type": "enabled", "budget_tokens": N}` returns HTTP 400. Use `output_config={"effort": "..."}` instead. Extended thinking (`budget_tokens`) is only valid on Haiku 4.5, Opus 4.6, Sonnet 4.6, and older models.
+    These models do not support extended thinking. Passing `\{"type": "enabled", "budget_tokens": N}` returns HTTP 400. Use `output_config=\{"effort": "..."}` instead. Extended thinking (`budget_tokens`) is only valid on Haiku 4.5, Opus 4.6, Sonnet 4.6, and older models.
 
 :::danger Not Handling the `refusal` Stop Reason on Fable 5 / Mythos 5
     These models can return `stop_reason: "refusal"` with an empty `content` array. Reading `response.content[0].text` without checking `stop_reason` first raises an IndexError. Always check stop reason before reading content.

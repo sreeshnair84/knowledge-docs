@@ -1759,10 +1759,10 @@ jobs:
 | Task | How |
 |---|---|
 | Assign seats | GitHub org → Settings → Copilot → Seat management → Add teams/members |
-| Bulk-assign via API | `PUT /orgs/{org}/copilot/billing/selected_teams` |
+| Bulk-assign via API | `PUT /orgs/\{org}/copilot/billing/selected_teams` |
 | Remove seats | Revoke from seat management; billing stops at next billing cycle |
 | SSO-linked assignment | Assign teams mapped from IdP groups via SCIM (Enterprise Managed Users) |
-| Seat utilization report | Copilot Metrics API: `GET /orgs/{org}/copilot/metrics` |
+| Seat utilization report | Copilot Metrics API: `GET /orgs/\{org}/copilot/metrics` |
 
 ```bash
 # Check Copilot seat usage via gh CLI
@@ -2037,11 +2037,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.TERRAFORM_ROLE_ARN }}
+          role-to-assume: $\{\{ vars.TERRAFORM_ROLE_ARN }}
           aws-region: us-east-1
       - uses: hashicorp/setup-terraform@v3
       - run: |
-          terraform init -backend-config="bucket=${{ vars.TF_STATE_BUCKET }}"
+          terraform init -backend-config="bucket=$\{\{ vars.TF_STATE_BUCKET }}"
           terraform plan -detailed-exitcode -out=drift.plan 2>&1 | tee drift-report.txt
         id: plan
         continue-on-error: true
@@ -2052,11 +2052,11 @@ jobs:
           script: |
             const fs = require('fs');
             const report = fs.readFileSync('drift-report.txt', 'utf8');
-            github.rest.issues.create({
+            github.rest.issues.create(\{
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `Infrastructure drift detected — ${new Date().toISOString().split('T')[0]}`,
-              body: `## Drift Report\n\`\`\`\n${report.slice(0, 60000)}\n\`\`\`\n\nAssigned to @myorg/platform-team for review.`,
+              title: `Infrastructure drift detected — $\{new Date().toISOString().split('T')[0]}`,
+              body: `## Drift Report\n\`\`\`\n$\{report.slice(0, 60000)}\n\`\`\`\n\nAssigned to @myorg/platform-team for review.`,
               labels: ['infrastructure', 'drift'],
               assignees: ['platform-oncall']
             });

@@ -406,7 +406,7 @@ Custom agents extend Copilot with domain-specific behavior — your own system p
 
     ```json
     // .github/copilot-agents/infrastructure-agent.json
-    {
+    \{
       "name": "Infrastructure Agent",
       "description": "Specialized for Terraform and Kubernetes work in this repo",
       "systemPrompt": "You are an infrastructure engineer specializing in AWS EKS and Terraform. This repository manages production infrastructure for our e-commerce platform. Always follow our module patterns in /modules, use the variable naming conventions in /modules/README.md, and run `terraform validate` after every change. Never use `latest` tags for container images.",
@@ -436,23 +436,23 @@ Model Context Protocol (MCP) is an open standard for connecting AI models to ext
 
 ```json
 // .vscode/mcp.json (project-level) or User Settings → MCP
-{
-  "servers": {
-    "github": {
+\{
+  "servers": \{
+    "github": \{
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_TOKEN}"
+      "env": \{
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "$\{env:GITHUB_TOKEN}"
       }
     },
-    "postgres": {
+    "postgres": \{
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-postgres"],
-      "env": {
-        "POSTGRES_URL": "${env:DATABASE_URL}"
+      "env": \{
+        "POSTGRES_URL": "$\{env:DATABASE_URL}"
       }
     },
-    "filesystem": {
+    "filesystem": \{
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspace/data"]
     }
@@ -738,7 +738,7 @@ accepts any string for the email field. We need proper validation.
 **Requirements**:
 1. Validate email format using `email-validator` library (already in pyproject.toml)
 2. Check if email domain has valid MX records (use `validate_email` with `check_deliverability=True`)
-3. Return HTTP 422 with error detail `{"field": "email", "error": "Invalid email format"}`
+3. Return HTTP 422 with error detail `\{"field": "email", "error": "Invalid email format"}`
    if validation fails
 4. Add tests in `tests/test_api/test_users.py` following existing test patterns
 5. Update the API docs in `docs/api/users.md`
@@ -791,7 +791,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: github/copilot-agent@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: $\{\{ secrets.GITHUB_TOKEN }}
 ```
 
 :::info CI/CD YAML Patterns
@@ -840,15 +840,15 @@ From June 1, 2026, GitHub Copilot uses a credit system for premium feature consu
 ```bash
 # Check current credit usage via GitHub API
 gh api /orgs/myorg/copilot/billing \
-  | jq '{credits_used: .cycle_credits_used, credits_limit: .cycle_credits_limit, utilization_pct: (.cycle_credits_used / .cycle_credits_limit * 100)}'
+  | jq '\{credits_used: .cycle_credits_used, credits_limit: .cycle_credits_limit, utilization_pct: (.cycle_credits_used / .cycle_credits_limit * 100)}'
 
 # Get per-user breakdown
 gh api /orgs/myorg/copilot/billing/seats --paginate \
-  | jq '.seats[] | {user: .assignee.login, credits_used: .credits_used_this_cycle}'
+  | jq '.seats[] | \{user: .assignee.login, credits_used: .credits_used_this_cycle}'
 
 # Top consumers this month
 gh api /orgs/myorg/copilot/billing/seats --paginate \
-  | jq '[.seats[] | {user: .assignee.login, credits: .credits_used_this_cycle}] | sort_by(-.credits) | .[0:10]'
+  | jq '[.seats[] | \{user: .assignee.login, credits: .credits_used_this_cycle}] | sort_by(-.credits) | .[0:10]'
 ```
 
 ### Budget Alerts and Caps
@@ -1587,7 +1587,7 @@ AI-generated code has the same supply chain requirements as human-written code:
 
     **Fixes:**
     1. Verify the command in `mcp.json` resolves: run it directly in terminal.
-    2. Check environment variables: `${env:GITHUB_TOKEN}` requires the variable set in your shell.
+    2. Check environment variables: `$\{env:GITHUB_TOKEN}` requires the variable set in your shell.
     3. Enterprise: verify the server is on the org allow-list.
     4. Restart MCP connection: command palette → "GitHub Copilot: Restart MCP Servers".
 

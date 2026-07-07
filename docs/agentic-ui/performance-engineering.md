@@ -235,26 +235,26 @@ class StreamingBuffer {
 
 ```typescript
 // React streaming UI with progressive enhancement
-import { useState, useTransition, Suspense } from 'react';
+import \{ useState, useTransition, Suspense } from 'react';
 
-function AgentMessageStream({ sessionId }: { sessionId: string }) {
+function AgentMessageStream(\{ sessionId }: \{ sessionId: string }) \{
   const [content, setContent] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  const startStream = async () => {
+  const startStream = async () => \{
     setIsStreaming(true);
-    const eventSource = new EventSource(`/stream/${sessionId}`);
+    const eventSource = new EventSource(`/stream/$\{sessionId}`);
 
-    eventSource.addEventListener('token', (e) => {
-      const { token } = JSON.parse(e.data);
+    eventSource.addEventListener('token', (e) => \{
+      const \{ token } = JSON.parse(e.data);
       // Use startTransition so token updates don't block user interactions
-      startTransition(() => {
+      startTransition(() => \{
         setContent(prev => prev + token);
       });
     });
 
-    eventSource.addEventListener('done', () => {
+    eventSource.addEventListener('done', () => \{
       setIsStreaming(false);
       eventSource.close();
     });
@@ -262,17 +262,17 @@ function AgentMessageStream({ sessionId }: { sessionId: string }) {
 
   return (
     <div className="agent-message">
-      {isStreaming && content === '' && (
+      \{isStreaming && content === '' && (
         // Show skeleton while waiting for TTFT
-        <MessageSkeleton lines={3} />
+        <MessageSkeleton lines=\{3} />
       )}
-      {content && (
+      \{content && (
         <MarkdownRenderer
-          content={content}
-          streaming={isStreaming}
+          content=\{content}
+          streaming=\{isStreaming}
         />
       )}
-      {isStreaming && (
+      \{isStreaming && (
         <StreamingCursor />
       )}
     </div>
@@ -286,29 +286,29 @@ Full re-renders on every token are expensive and cause visual jank. Use incremen
 
 ```typescript
 // Efficient streaming text rendering — append, don't re-render
-class StreamingTextRenderer {
+class StreamingTextRenderer \{
   private container: HTMLElement;
   private currentParagraph: HTMLParagraphElement | null = null;
 
-  constructor(container: HTMLElement) {
+  constructor(container: HTMLElement) \{
     this.container = container;
   }
 
-  appendToken(token: string): void {
-    if (!this.currentParagraph) {
+  appendToken(token: string): void \{
+    if (!this.currentParagraph) \{
       this.currentParagraph = document.createElement('p');
       this.container.appendChild(this.currentParagraph);
     }
 
     // Append text node directly — no React reconciliation overhead
-    if (this.currentParagraph.lastChild?.nodeType === Node.TEXT_NODE) {
+    if (this.currentParagraph.lastChild?.nodeType === Node.TEXT_NODE) \{
       this.currentParagraph.lastChild.textContent! += token;
-    } else {
+    } else \{
       this.currentParagraph.appendChild(document.createTextNode(token));
     }
 
     // Handle paragraph breaks in streaming content
-    if (token.includes('\n\n')) {
+    if (token.includes('\n\n')) \{
       this.currentParagraph = null;
     }
   }
@@ -350,7 +350,7 @@ Parallel Tool Execution (PREFERRED):
         tasks = [
             asyncio.create_task(
                 execute_tool(call["name"], call["arguments"]),
-                name=f"tool-{call['id']}"
+                name=f"tool-\{call['id']}"
             )
             for call in tool_calls
         ]
@@ -358,9 +358,9 @@ Parallel Tool Execution (PREFERRED):
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
         return [
-            {"tool_use_id": call["id"], "content": result}
+            \{"tool_use_id": call["id"], "content": result}
             if not isinstance(result, Exception)
-            else {"tool_use_id": call["id"], "error": str(result)}
+            else \{"tool_use_id": call["id"], "error": str(result)}
             for call, result in zip(tool_calls, results)
         ]
     ```
@@ -368,17 +368,17 @@ Parallel Tool Execution (PREFERRED):
 === "TypeScript"
     ```typescript
     async function executeToolsParallel(
-      toolCalls: Array<{ id: string; name: string; input: unknown }>
-    ): Promise<Array<{ toolUseId: string; content?: unknown; error?: string }>> {
+      toolCalls: Array<\{ id: string; name: string; input: unknown }>
+    ): Promise<Array<\{ toolUseId: string; content?: unknown; error?: string }>> \{
       const results = await Promise.allSettled(
         toolCalls.map(call => executeTool(call.name, call.input))
       );
 
-      return results.map((result, i) => ({
+      return results.map((result, i) => (\{
         toolUseId: toolCalls[i].id,
         ...(result.status === 'fulfilled'
-          ? { content: result.value }
-          : { error: result.reason?.message ?? 'Unknown error' }
+          ? \{ content: result.value }
+          : \{ error: result.reason?.message ?? 'Unknown error' }
         ),
       }));
     }
@@ -395,7 +395,7 @@ import asyncio
 class ToolResponseCache:
     def __init__(self, redis, default_ttl: int = 300):
         self.redis = redis
-        self.ttl_by_tool = {
+        self.ttl_by_tool = \{
             "search_web": 300,        # 5 minutes
             "query_database": 30,     # 30 seconds
             "get_user_profile": 300,  # 5 minutes
@@ -410,9 +410,9 @@ class ToolResponseCache:
         ttl = self.ttl_by_tool.get(tool_name, self.default_ttl)
         if ttl == 0:
             return None  # This tool must not be cached
-        content = json.dumps({"tool": tool_name, "args": args}, sort_keys=True)
+        content = json.dumps(\{"tool": tool_name, "args": args}, sort_keys=True)
         h = hashlib.sha256(content.encode()).hexdigest()[:20]
-        return f"tool:cache:{h}"
+        return f"tool:cache:\{h}"
 
     async def get_or_execute(self, tool_name: str, args: dict, executor) -> Any:
         key = self._cache_key(tool_name, args)
@@ -436,14 +436,14 @@ For common tool call sequences, pre-fetch likely tool results before the agent e
 
 ```python
 # Tool call prediction patterns (learned from conversation analytics)
-PREDICTIVE_PATTERNS = {
+PREDICTIVE_PATTERNS = \{
     # When user asks about a customer, pre-fetch their profile
-    "customer_inquiry": {
+    "customer_inquiry": \{
         "trigger": lambda msg: any(w in msg for w in ["customer", "account", "user"]),
         "prefetch": ["get_customer_profile", "get_recent_orders"]
     },
     # When user asks about a ticket, pre-fetch ticket details
-    "ticket_query": {
+    "ticket_query": \{
         "trigger": lambda msg: "ticket" in msg or "issue" in msg,
         "prefetch": ["get_ticket_details", "get_ticket_history"]
     }
@@ -608,7 +608,7 @@ async def warmup_vector_index(
     Warm up vector DB index by executing dummy queries
     before the service starts accepting user traffic.
     """
-    logger.info(f"Warming up vector index: {collection_name}")
+    logger.info(f"Warming up vector index: \{collection_name}")
     tasks = [
         vector_client.query(
             collection=collection_name,
@@ -620,7 +620,7 @@ async def warmup_vector_index(
     results = await asyncio.gather(*tasks, return_exceptions=True)
     errors = sum(1 for r in results if isinstance(r, Exception))
     logger.info(
-        f"Index warmup complete: {len(warmup_queries) - errors}/{len(warmup_queries)} successful"
+        f"Index warmup complete: \{len(warmup_queries) - errors}/\{len(warmup_queries)} successful"
     )
 
 # Call in Kubernetes readiness probe after startup
@@ -664,13 +664,13 @@ app.add_middleware(
     compresslevel=6,    # Balance between CPU and compression ratio
 )
 
-@app.get("/stream/{session_id}")
+@app.get("/stream/\{session_id}")
 async def stream_response(session_id: str):
     # SSE endpoint — DO NOT compress
     return StreamingResponse(
         generate_sse_events(session_id),
         media_type="text/event-stream",
-        headers={
+        headers=\{
             "Cache-Control": "no-cache",
             "X-Accel-Buffering": "no",  # Disable nginx buffering
             "Content-Encoding": "identity",  # Explicitly no compression
@@ -905,21 +905,21 @@ async def handle_user_message(session_id: str, message: str):
 
 ```javascript
 // Browser-side performance marking for agentic UI
-class AgentPerfTracker {
+class AgentPerfTracker \{
   private marks: Record<string, number> = {};
 
-  mark(name: string): void {
+  mark(name: string): void \{
     this.marks[name] = performance.now();
-    performance.mark(`agent:${name}`);
+    performance.mark(`agent:$\{name}`);
   }
 
-  measure(name: string, start: string, end: string): number {
-    performance.measure(`agent:${name}`, `agent:${start}`, `agent:${end}`);
+  measure(name: string, start: string, end: string): number \{
+    performance.measure(`agent:$\{name}`, `agent:$\{start}`, `agent:$\{end}`);
     return this.marks[end] - this.marks[start];
   }
 
-  reportToAnalytics(sessionId: string): void {
-    const metrics = {
+  reportToAnalytics(sessionId: string): void \{
+    const metrics = \{
       session_id: sessionId,
       ttft_ms: this.measure('ttft', 'submit', 'first_token'),
       first_render_ms: this.measure('first_render', 'first_token', 'first_paint'),
@@ -935,10 +935,10 @@ class AgentPerfTracker {
 // Usage
 const tracker = new AgentPerfTracker();
 submitButton.addEventListener('click', () => tracker.mark('submit'));
-eventSource.addEventListener('token', () => {
+eventSource.addEventListener('token', () => \{
   if (isFirstToken) tracker.mark('first_token');
 });
-eventSource.addEventListener('done', () => {
+eventSource.addEventListener('done', () => \{
   tracker.mark('task_complete');
   tracker.reportToAnalytics(sessionId);
 });
@@ -1000,55 +1000,55 @@ Symptom: High Streaming Lag (> 300ms)
 ```javascript
 // k6 load test for agentic chat (ES module format)
 import http from 'k6/http';
-import { check, sleep } from 'k6';
-import { Counter, Trend } from 'k6/metrics';
+import \{ check, sleep } from 'k6';
+import \{ Counter, Trend } from 'k6/metrics';
 
 const ttftTrend = new Trend('ttft_ms');
 const taskCompleteTrend = new Trend('task_complete_ms');
 const taskCompletionRate = new Counter('task_completed');
 
-export let options = {
+export let options = \{
   stages: [
-    { duration: '2m', target: 10 },   // Ramp up
-    { duration: '5m', target: 50 },   // Sustain
-    { duration: '2m', target: 100 },  // Spike
-    { duration: '5m', target: 50 },   // Recovery
-    { duration: '2m', target: 0 },    // Ramp down
+    \{ duration: '2m', target: 10 },   // Ramp up
+    \{ duration: '5m', target: 50 },   // Sustain
+    \{ duration: '2m', target: 100 },  // Spike
+    \{ duration: '5m', target: 50 },   // Recovery
+    \{ duration: '2m', target: 0 },    // Ramp down
   ],
-  thresholds: {
+  thresholds: \{
     'ttft_ms': ['p(95)<1200'],
     'task_complete_ms': ['p(95)<30000'],
     'http_req_failed': ['rate<0.01'],
   },
 };
 
-export default function () {
-  const sessionId = `test-session-${__VU}-${__ITER}`;
+export default function () \{
+  const sessionId = `test-session-$\{__VU}-$\{__ITER}`;
 
   // Initiate agent task
   const startTime = Date.now();
   const res = http.post(
     '/api/chat',
-    JSON.stringify({
+    JSON.stringify(\{
       session_id: sessionId,
       message: 'What are the top 3 issues in my support queue this week?',
     }),
-    { headers: { 'Content-Type': 'application/json' } }
+    \{ headers: \{ 'Content-Type': 'application/json' } }
   );
 
-  check(res, { 'task started': (r) => r.status === 200 });
+  check(res, \{ 'task started': (r) => r.status === 200 });
   const taskId = res.json('task_id');
 
   // Poll for first token (TTFT simulation)
   let ttftRecorded = false;
   let attempts = 0;
-  while (attempts < 30) {
-    const statusRes = http.get(`/api/tasks/${taskId}/events`);
-    if (statusRes.json('has_first_token') && !ttftRecorded) {
+  while (attempts < 30) \{
+    const statusRes = http.get(`/api/tasks/$\{taskId}/events`);
+    if (statusRes.json('has_first_token') && !ttftRecorded) \{
       ttftTrend.add(Date.now() - startTime);
       ttftRecorded = true;
     }
-    if (statusRes.json('status') === 'complete') {
+    if (statusRes.json('status') === 'complete') \{
       taskCompleteTrend.add(Date.now() - startTime);
       taskCompletionRate.add(1);
       break;
@@ -1086,12 +1086,12 @@ export default function () {
 
 ```typescript
 // RUM SDK integration for agentic UI
-import { datadogRum } from '@datadog/browser-rum';
+import \{ datadogRum } from '@datadog/browser-rum';
 
 // Track agent-specific custom actions
-function trackAgentMetrics(event: AgentUIEvent): void {
-  if (event.type === 'first_token') {
-    datadogRum.addAction('agent.first_token', {
+function trackAgentMetrics(event: AgentUIEvent): void \{
+  if (event.type === 'first_token') \{
+    datadogRum.addAction('agent.first_token', \{
       session_id: event.sessionId,
       ttft_ms: event.ttft,
       model: event.model,
@@ -1100,8 +1100,8 @@ function trackAgentMetrics(event: AgentUIEvent): void {
     });
   }
 
-  if (event.type === 'task_complete') {
-    datadogRum.addAction('agent.task_complete', {
+  if (event.type === 'task_complete') \{
+    datadogRum.addAction('agent.task_complete', \{
       session_id: event.sessionId,
       e2e_ms: event.totalDuration,
       tool_count: event.toolsUsed,
@@ -1111,7 +1111,7 @@ function trackAgentMetrics(event: AgentUIEvent): void {
 }
 
 // Custom RUM views for conversation sessions
-datadogRum.startView({
+datadogRum.startView(\{
   name: 'agent_conversation',
   service: 'agent-ui',
 });

@@ -1466,7 +1466,7 @@ class MultiAgentCodeInterpreterPipeline:
             
             # Step 5: Semantic validation (Validator Agent)
             validator_response = self.validator.run(
-                f"Review this code:\n```python\n{code}\n```"
+                f"Review this code:\n```python\n\{code}\n```"
             )
             review = json.loads(validator_response)
             

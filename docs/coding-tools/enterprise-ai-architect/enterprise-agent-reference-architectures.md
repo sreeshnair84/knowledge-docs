@@ -93,7 +93,7 @@ Deliverables your architecture repo should contain:
 
 **Threat model & failure tree** — the [Vol 5 catalog](agentic-ai-security-guardrails.md) mapped to boundaries; a failure tree rooting "unacceptable outcome" (funds moved wrongly / PHI leaked) down through guard layers — verifies defense-in-depth has no single-point path.
 
-**Risk register** — `{risk, owner, tier, controls, residual, test evidence, review date}`.
+**Risk register** — `\{risk, owner, tier, controls, residual, test evidence, review date}`.
 
 **Decision matrix & ADRs** — record at minimum: orchestration pattern, workflow engine, policy language (Cedar vs OPA), identity fabric (SPIFFE vs cloud-native), memory engine, gateway build-vs-buy, framework choice (§3). Each ADR = context, options, decision, consequences, revisit trigger.
 

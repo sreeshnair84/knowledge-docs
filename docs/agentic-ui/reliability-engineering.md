@@ -338,27 +338,27 @@ Configuration Parameters:
 
 === "TypeScript"
     ```typescript
-    enum CircuitState {
+    enum CircuitState \{
       CLOSED = 'closed',
       OPEN = 'open',
       HALF_OPEN = 'half_open',
     }
 
-    interface CircuitBreakerConfig {
+    interface CircuitBreakerConfig \{
       failureThreshold: number;
       successThreshold: number;
       timeoutMs: number;
       halfOpenMaxCalls: number;
     }
 
-    const DEFAULT_CONFIG: CircuitBreakerConfig = {
+    const DEFAULT_CONFIG: CircuitBreakerConfig = \{
       failureThreshold: 5,
       successThreshold: 3,
       timeoutMs: 30_000,
       halfOpenMaxCalls: 3,
     };
 
-    export class LLMCircuitBreaker {
+    export class LLMCircuitBreaker \{
       private state: CircuitState = CircuitState.CLOSED;
       private failureCount = 0;
       private successCount = 0;
@@ -373,68 +373,68 @@ Configuration Parameters:
       async call<T>(
         fn: () => Promise<T>,
         fallback?: () => Promise<T>
-      ): Promise<T> {
-        if (this.state === CircuitState.OPEN) {
-          if (this.shouldAttemptReset()) {
+      ): Promise<T> \{
+        if (this.state === CircuitState.OPEN) \{
+          if (this.shouldAttemptReset()) \{
             this.state = CircuitState.HALF_OPEN;
             this.halfOpenCalls = 0;
-            console.info(`Circuit ${this.name}: OPEN → HALF_OPEN`);
-          } else {
-            if (fallback) {
-              console.warn(`Circuit ${this.name} OPEN — using fallback`);
+            console.info(`Circuit $\{this.name}: OPEN → HALF_OPEN`);
+          } else \{
+            if (fallback) \{
+              console.warn(`Circuit $\{this.name} OPEN — using fallback`);
               return fallback();
             }
-            throw new Error(`Circuit ${this.name} is OPEN`);
+            throw new Error(`Circuit $\{this.name} is OPEN`);
           }
         }
 
-        if (this.state === CircuitState.HALF_OPEN) {
-          if (this.halfOpenCalls >= this.config.halfOpenMaxCalls) {
-            throw new Error(`Circuit ${this.name} HALF_OPEN probe limit reached`);
+        if (this.state === CircuitState.HALF_OPEN) \{
+          if (this.halfOpenCalls >= this.config.halfOpenMaxCalls) \{
+            throw new Error(`Circuit $\{this.name} HALF_OPEN probe limit reached`);
           }
           this.halfOpenCalls++;
         }
 
-        try {
+        try \{
           const result = await fn();
           this.onSuccess();
           return result;
-        } catch (error) {
+        } catch (error) \{
           this.onFailure();
           throw error;
         }
       }
 
-      private onSuccess(): void {
-        if (this.state === CircuitState.HALF_OPEN) {
+      private onSuccess(): void \{
+        if (this.state === CircuitState.HALF_OPEN) \{
           this.successCount++;
-          if (this.successCount >= this.config.successThreshold) {
+          if (this.successCount >= this.config.successThreshold) \{
             this.state = CircuitState.CLOSED;
             this.failureCount = 0;
             this.successCount = 0;
-            console.info(`Circuit ${this.name}: HALF_OPEN → CLOSED`);
+            console.info(`Circuit $\{this.name}: HALF_OPEN → CLOSED`);
           }
-        } else if (this.state === CircuitState.CLOSED) {
+        } else if (this.state === CircuitState.CLOSED) \{
           this.failureCount = 0;
         }
       }
 
-      private onFailure(): void {
+      private onFailure(): void \{
         this.failureCount++;
         this.lastFailureTime = Date.now();
-        if (this.state === CircuitState.HALF_OPEN) {
+        if (this.state === CircuitState.HALF_OPEN) \{
           this.state = CircuitState.OPEN;
-          console.warn(`Circuit ${this.name}: HALF_OPEN → OPEN`);
+          console.warn(`Circuit $\{this.name}: HALF_OPEN → OPEN`);
         } else if (
           this.state === CircuitState.CLOSED &&
           this.failureCount >= this.config.failureThreshold
-        ) {
+        ) \{
           this.state = CircuitState.OPEN;
-          console.error(`Circuit ${this.name}: CLOSED → OPEN`);
+          console.error(`Circuit $\{this.name}: CLOSED → OPEN`);
         }
       }
 
-      private shouldAttemptReset(): boolean {
+      private shouldAttemptReset(): boolean \{
         if (this.lastFailureTime === null) return false;
         return Date.now() - this.lastFailureTime >= this.config.timeoutMs;
       }

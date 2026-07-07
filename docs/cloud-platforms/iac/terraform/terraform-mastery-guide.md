@@ -181,7 +181,7 @@ Associate subnet with route table Step 8: Create security group with port 80 Ste
 Launch EC2 t3.medium in subnet Problem: YOU must track current state and write every step.
 Idempotency is YOUR responsibility. DECLARATIVE APPROACH (What the end state should be)
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII resource "aws_vpc"
-"main" { cidr_block = "10.0.0.0/16" } resource "aws_instance" "web" { ami =
+"main" \{ cidr_block = "10.0.0.0/16" } resource "aws_instance" "web" \{ ami =
 "ami-0abcdef1234567890" instance_type = "t3.medium" subnet_id = aws_subnet.main.id }
 Result: Terraform figures out HOW to create/update/destroy. Idempotency is Terraform's
 responsibility.
@@ -256,33 +256,33 @@ Read required_providers {} I M Download provider binary ~/.terraform.d/plugins/ 
 plan/apply I M Spawn provider as subprocess I M Communicate via gRPC (local socket) I M
 Provider translates HCL → API calls I M Returns resource state to Terraform
 The provider configuration block specifies which providers your code requires:
-terraform {
+terraform \{
 required_version = ">= 1.5.0"
-required_providers {
-aws = {
+required_providers \{
+aws = \{
 source  = "hashicorp/aws"
 version = "~> 5.0"   # Allow 5.x, block 6.x
 }
-kubernetes = {
+kubernetes = \{
 source  = "hashicorp/kubernetes"
 version = ">= 2.20.0"
 }
-databricks = {
+databricks = \{
 source  = "databricks/databricks"
 version = "~> 1.40"
 }
-snowflake = {
+snowflake = \{
 source  = "Snowflake-Labs/snowflake"
 version = "~> 0.89"
 }
 }
 }
 # Configure the AWS provider
-provider "aws" {
+provider "aws" \{
 region  = var.aws_region
 profile = var.aws_profile
-default_tags {
-tags = {
+default_tags \{
+tags = \{
 Environment = var.environment
 ManagedBy   = "terraform"
 Team        = var.team_name
@@ -312,7 +312,7 @@ The key insight:
 - Cycle detection is performed during graph construction — a cycle causes an immediate error
 - The depends_on meta-argument adds explicit edges when implicit dependencies don't exist
 # Explicit dependency when Terraform cannot infer it automatically
-resource "aws_iam_role_policy_attachment" "lambda_vpc" {
+resource "aws_iam_role_policy_attachment" "lambda_vpc" \{
 role       = aws_iam_role.lambda.name
 policy_arn = "arn:aws:iam::aws:policy/AWSLambdaVPCAccessExecutionRole"
 # Lambda needs this policy BEFORE being created in the VPC
@@ -338,22 +338,22 @@ module.env["prod"].aws_s3_bucket.data
 The resource address is the primary key Terraform uses to look up resources in the state file. Each resource
 address maps to a state entry containing the resource's real cloud ID:
 # State entry structure (simplified from terraform.tfstate)
-{
+\{
 "resources": [
-{
+\{
 "module": "module.network",
 "mode": "managed",
 "type": "aws_vpc",
 "name": "main",
 "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
 "instances": [
-{
+\{
 "schema_version": 1,
-"attributes": {
+"attributes": \{
 "id": "vpc-0a1b2c3d4e5f67890",  # ← Cloud resource ID
 "cidr_block": "10.0.0.0/16",
 "enable_dns_hostnames": true,
-"tags": {"Name": "main", "Environment": "prod"}
+"tags": \{"Name": "main", "Environment": "prod"}
 }
 }
 ]
@@ -372,7 +372,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII BEFORE
 Terraform sees: - aws_instance.web → exists in state BUT NOT in code → DESTROY -
 aws_instance.frontend → exists in code BUT NOT in state → CREATE Result: DESTROY old
 instance + CREATE new instance (downtime, new IP, new ID, data loss risk!) SOLUTION —
-moved block: IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I moved { I
+moved block: IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I moved \{ I
 I from = aws_instance.web I I to = aws_instance.frontend I I } I
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII Terraform now: - Renames
 the state entry (no destroy/create) - Zero infrastructure changes
@@ -380,24 +380,24 @@ moved Blocks — Complete Guide
 The moved block (introduced in Terraform 1.1) is the safe, declarative way to handle resource renaming and
 module reorganization without destroying and recreating resources.
 # III Example 1: Simple resource rename IIIIIIIIIIIIIIIIIIIIIII
-moved {
+moved \{
 from = aws_instance.web
 to   = aws_instance.frontend
 }
 # III Example 2: Moving into a module IIIIIIIIIIIIIIIIIIIIIIIII
-moved {
+moved \{
 from = aws_vpc.main
 to   = module.networking.aws_vpc.main
 }
 # III Example 3: Moving resources when adopting for_each IIIIIII
 # Before: resource "aws_s3_bucket" "logs" {}
-# After:  resource "aws_s3_bucket" "logs" { for_each = toset(["access", "app"]) }
-moved {
+# After:  resource "aws_s3_bucket" "logs" \{ for_each = toset(["access", "app"]) }
+moved \{
 from = aws_s3_bucket.logs
 to   = aws_s3_bucket.logs["access"]
 }
 # III Example 4: Moving between module instances IIIIIIIIIIIIIII
-moved {
+moved \{
 from = module.servers[0]
 to   = module.servers["web"]
 }
@@ -412,7 +412,7 @@ to manual changes, external automation, or cloud provider events.
 DRIFT DETECTION FLOW
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII Scenario:
 Engineer manually changes EC2 instance type in AWS Console from t3.medium → t3.large
-Terraform State: { instance_type: "t3.medium" } AWS Reality: { instance_type: "t3.large"
+Terraform State: \{ instance_type: "t3.medium" } AWS Reality: \{ instance_type: "t3.large"
 } ← DRIFT IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 terraform plan (with default -refresh=true) I I 1. Read state → t3.medium I I 2. Query
 AWS API → t3.large (DRIFT FOUND!) I I 3. Diff: desired=t3.medium, actual=t3.large I I 4.
@@ -420,7 +420,7 @@ Plan: ~ aws_instance.web (instance_type) I I t3.large → t3.medium I
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII DETECT ONLY (no
 changes): terraform plan -refresh-only → Shows drift without proposing code changes →
 Can -apply to ACCEPT the drift into state IGNORE DRIFT for specific attributes: lifecycle
-{ ignore_changes = [instance_type] }
+\{ ignore_changes = [instance_type] }
 Three strategies for handling drift:
 
 | Strategy When to Use Command Risk                                                                            |
@@ -455,8 +455,8 @@ provider metadata, terraform version, serial number, lineage UUID
 Local state is dangerous for teams. Remote state backends provide storage, locking, versioning, and
 encryption. Enterprise environments should always use a remote backend.
 AWS Backend (S3 + DynamoDB):
-terraform {
-backend "s3" {
+terraform \{
+backend "s3" \{
 bucket         = "my-company-terraform-state"
 key            = "prod/us-east-1/networking/terraform.tfstate"
 region         = "us-east-1"
@@ -469,8 +469,8 @@ dynamodb_table = "terraform-state-locks"       # State locking
 }
 }
 Azure Backend (Blob Storage):
-terraform {
-backend "azurerm" {
+terraform \{
+backend "azurerm" \{
 resource_group_name  = "terraform-state-rg"
 storage_account_name = "mycompanytfstate"
 container_name       = "tfstate"
@@ -480,8 +480,8 @@ key                  = "prod/eastus/networking.tfstate"
 }
 }
 GCP Backend (GCS):
-terraform {
-backend "gcs" {
+terraform \{
+backend "gcs" \{
 bucket  = "my-company-terraform-state"
 prefix  = "prod/us-central1/networking"
 # GCS uses object versioning for history
@@ -503,18 +503,18 @@ acquires DynamoDB lock I Engineer B: terraform apply → tries to acquire lock..
 held by Engineer A (shows Lock ID) Engineer B must wait or use -lock=false (DANGEROUS)
 Engineer A: ... → finishes → releases lock Engineer B: ... → acquires lock I → runs
 safely DynamoDB Lock Table Schema: LockID (PK) I Info I Created
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII s3/.../key I {who, when} I
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII s3/.../key I \{who, when} I
 2025-01-15T10:30Z
 # Create DynamoDB lock table (run once)
-resource "aws_dynamodb_table" "terraform_locks" {
+resource "aws_dynamodb_table" "terraform_locks" \{
 name         = "terraform-state-locks"
 billing_mode = "PAY_PER_REQUEST"
 hash_key     = "LockID"
-attribute {
+attribute \{
 name = "LockID"
 type = "S"
 }
-tags = {
+tags = \{
 Name = "Terraform State Locking"
 }
 }
@@ -638,11 +638,11 @@ terraform import aws_vpc.main vpc-0a1b2c3d4e5f67890
 terraform import module.networking.aws_vpc.main vpc-0a1b2c3d
 # III Terraform 1.5+ IMPORT BLOCKS (preferred) IIIIIIIIIIIIIIII
 # Declare in .tf files for reviewable, repeatable imports
-import {
+import \{
 to = aws_instance.web
 id = "i-0abc123def456789"
 }
-import {
+import \{
 to = aws_s3_bucket.logs
 id = "my-company-app-logs"
 }
@@ -713,23 +713,23 @@ III Green EC2/ECS (V2) [now active] Blue EC2/ECS (V1) [standby] ROLLBACK (if V2 
 Traffic III ALB III Blue EC2/ECS (V1) [restored] One terraform apply: change
 target_group weight 0/100 → 100/0 ROLLBACK TIME: seconds (just a routing change)
 # Blue-Green with ALB weighted routing
-resource "aws_lb_listener_rule" "blue_green" {
+resource "aws_lb_listener_rule" "blue_green" \{
 listener_arn = aws_lb_listener.https.arn
-action {
+action \{
 type = "forward"
-forward {
-target_group {
+forward \{
+target_group \{
 arn    = aws_lb_target_group.blue.arn
 weight = var.blue_weight   # 100 (active) or 0 (standby)
 }
-target_group {
+target_group \{
 arn    = aws_lb_target_group.green.arn
 weight = var.green_weight  # 0 (standby) or 100 (active)
 }
 }
 }
-condition {
-path_pattern { values = ["/*"] }
+condition \{
+path_pattern \{ values = ["/*"] }
 }
 }
 # Rollback: change variables and apply
@@ -776,7 +776,7 @@ Phase 3: Traffic Cutover
 - Update service discovery / service mesh configuration
 - Verify zero traffic for minimum 24-48 hours
 Phase 4: Remove Destroy Protections
-- Remove lifecycle { prevent_destroy = true } from all resources
+- Remove lifecycle \{ prevent_destroy = true } from all resources
 - terraform plan -destroy (review the full destruction plan)
 - Get approval from infrastructure owner and security team
 Phase 5: Controlled Destruction
@@ -800,12 +800,12 @@ Phase 7: Audit Evidence
 
 Safeguard
 # Prevent accidental destruction of critical resources
-resource "aws_db_instance" "production" {
+resource "aws_db_instance" "production" \{
 identifier        = "prod-postgres"
 engine            = "postgres"
 instance_class    = "db.r6g.xlarge"
 allocated_storage = 500
-lifecycle {
+lifecycle \{
 # terraform destroy or plan -destroy will FAIL with this set
 prevent_destroy = true
 # Also ignore auto-generated password rotations
@@ -825,13 +825,13 @@ Terraform to delete all objects (including all versions if versioning is enabled
 I force_destroy = true on an S3 bucket will permanently delete ALL objects and ALL versions. This is
 irreversible. Enable only when you are certain the data has been archived or is disposable.
 # III WITHOUT force_destroy (default, safe) IIIIIIIIIIIIIIIIIII
-resource "aws_s3_bucket" "logs" {
+resource "aws_s3_bucket" "logs" \{
 bucket = "my-company-app-logs"
 # Terraform will ERROR if bucket has objects:
 # Error: BucketNotEmpty: The bucket you tried to delete is not empty
 }
 # III WITH force_destroy (dangerous, deletes all data) IIIIIIIII
-resource "aws_s3_bucket" "ephemeral" {
+resource "aws_s3_bucket" "ephemeral" \{
 bucket = "my-company-dev-scratch"
 force_destroy = true
 # terraform destroy will:
@@ -841,8 +841,8 @@ force_destroy = true
 # II  DATA IS GONE. No recovery.
 }
 # III Best practice: Use per-environment IIIIIIIIIIIIIIIIIIIIIII
-resource "aws_s3_bucket" "data" {
-bucket = "my-company-${var.environment}-data"
+resource "aws_s3_bucket" "data" \{
+bucket = "my-company-$\{var.environment}-data"
 # Only allow force_destroy in non-production
 force_destroy = var.environment != "prod"
 }
@@ -893,15 +893,15 @@ version-controlled, reviewable in PRs, and self-documenting.
 Import blocks are the modern way to bring existing infrastructure under Terraform management. They are
 declarative, reviewable, and can be used with config generation.
 # III Step 1: Add import block(s) to your .tf files IIIIIIIIIII
-import {
+import \{
 to = aws_s3_bucket.legacy_data
 id = "my-company-legacy-data-bucket"
 }
-import {
+import \{
 to = aws_db_instance.prod
 id = "prod-postgres-identifier"
 }
-import {
+import \{
 to = module.networking.aws_vpc.main
 id = "vpc-0a1b2c3d4e5f67890"
 }
@@ -926,75 +926,75 @@ from scratch. It introspects the cloud API and generates all attributes automati
 This distinction is fundamental. A resource block creates and manages infrastructure. A data block reads
 existing infrastructure (or external data) without modifying it.
 # RESOURCE: Terraform creates and owns this
-resource "aws_vpc" "main" {
+resource "aws_vpc" "main" \{
 cidr_block = "10.0.0.0/16"
 # Terraform will CREATE this VPC on apply
 # Terraform will UPDATE it if configuration changes
 # Terraform will DESTROY it on terraform destroy
 }
 # DATA SOURCE: Terraform reads but does NOT own this
-data "aws_vpc" "existing" {
+data "aws_vpc" "existing" \{
 id = "vpc-0a1b2c3d4e5f67890"
 # Terraform will READ this VPC attributes
 # Terraform will NEVER modify or destroy it
 }
 # Common data sources:
-data "aws_ami" "ubuntu" {
+data "aws_ami" "ubuntu" \{
 most_recent = true
 owners      = ["099720109477"]  # Canonical
-filter {
+filter \{
 name   = "name"
 values = ["ubuntu/images/hvm-ssd/ubuntu-*-22.04-amd64-server-*"]
 }
 }
 # Read outputs from another Terraform state (cross-state reference)
-data "terraform_remote_state" "networking" {
+data "terraform_remote_state" "networking" \{
 backend = "s3"
-config = {
+config = \{
 bucket = "my-terraform-state"
 key    = "prod/networking/terraform.tfstate"
 region = "us-east-1"
 }
 }
 # Use the remote state output
-resource "aws_instance" "app" {
+resource "aws_instance" "app" \{
 subnet_id = data.terraform_remote_state.networking.outputs.private_subnet_id
 }
 
 ### 10.2 Variable Types & Validation
 
-variable "environment" {
+variable "environment" \{
 type        = string
 description = "Deployment environment (dev/staging/prod)"
 default     = "dev"
-validation {
+validation \{
 condition     = contains(["dev", "staging", "prod"], var.environment)
 error_message = "Environment must be one of: dev, staging, prod."
 }
 }
-variable "instance_count" {
+variable "instance_count" \{
 type    = number
 default = 2
-validation {
+validation \{
 condition     = var.instance_count >= 1 && var.instance_count <= 100
 error_message = "Instance count must be between 1 and 100."
 }
 }
 # Sensitive variable — never shown in plan/apply output
-variable "db_password" {
+variable "db_password" \{
 type      = string
 sensitive = true
 # No default — must be provided via TF_VAR_db_password env var
 # or -var="db_password=..." or Vault/Secrets Manager
 }
 # Complex type: object
-variable "tags" {
-type = object({
+variable "tags" \{
+type = object(\{
 team        = string
 cost_center = string
 project     = string
 })
-default = {
+default = \{
 team        = "platform"
 cost_center = "engineering"
 project     = "core-infra"
@@ -1006,14 +1006,14 @@ project     = "core-infra"
 
 ### 11.1 Complete Lifecycle Reference
 
-resource "aws_db_instance" "main" {
+resource "aws_db_instance" "main" \{
 identifier        = "prod-db"
 engine            = "postgres"
 instance_class    = "db.r6g.xlarge"
 allocated_storage = 100
 username          = "admin"
 password          = var.db_password
-lifecycle {
+lifecycle \{
 # III create_before_destroy IIIIIIIIIIIIIIIIIIIIIIIIIIIII
 # For zero-downtime replacements:
 # Normal order:  destroy old → create new (downtime!)
@@ -1069,7 +1069,7 @@ III examples/
 III basic/
 III main.tf  # Usage example
 # III Calling a module IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-module "vpc" {
+module "vpc" \{
 source  = "terraform-aws-modules/vpc/aws"
 version = "~> 5.0"    # ALWAYS pin versions in production!
 name = "prod-vpc"
@@ -1082,7 +1082,7 @@ single_nat_gateway = var.environment != "prod"
 tags = local.common_tags
 }
 # Use module outputs
-resource "aws_instance" "app" {
+resource "aws_instance" "app" \{
 subnet_id = module.vpc.private_subnets[0]
 }
 
@@ -1197,24 +1197,24 @@ Code
 I NEVER hardcode secrets in .tf files or .tfvars files. They end up in Git history and in the state file (which may
 be stored in S3 without encryption).
 # I WRONG — credential in code
-resource "aws_db_instance" "main" {
+resource "aws_db_instance" "main" \{
 password = "SuperSecret123!"  # This will be in Git AND state!
 }
 # I CORRECT — use AWS Secrets Manager
-data "aws_secretsmanager_secret_version" "db_password" {
+data "aws_secretsmanager_secret_version" "db_password" \{
 secret_id = "prod/database/master-password"
 }
-resource "aws_db_instance" "main" {
+resource "aws_db_instance" "main" \{
 password = jsondecode(data.aws_secretsmanager_secret_version.db_password.secret_string)["password"]
-lifecycle {
+lifecycle \{
 ignore_changes = [password]  # Allow external rotation
 }
 }
 # I CORRECT — use HashiCorp Vault
-data "vault_generic_secret" "db_creds" {
+data "vault_generic_secret" "db_creds" \{
 path = "secret/prod/database"
 }
-resource "aws_db_instance" "main" {
+resource "aws_db_instance" "main" \{
 username = data.vault_generic_secret.db_creds.data["username"]
 password = data.vault_generic_secret.db_creds.data["password"]
 }
@@ -1224,10 +1224,10 @@ password = data.vault_generic_secret.db_creds.data["password"]
 The Terraform CI/CD service role should have only the permissions required — no more. Use condition keys to
 restrict to specific resources and regions.
 # Terraform CI role — restrict to specific regions and environments
-{
+\{
 "Version": "2012-10-17",
 "Statement": [
-{
+\{
 "Sid": "TerraformStateAccess",
 "Effect": "Allow",
 "Action": [
@@ -1238,7 +1238,7 @@ restrict to specific resources and regions.
 "arn:aws:s3:::my-company-terraform-state/*"
 ]
 },
-{
+\{
 "Sid": "TerraformLocking",
 "Effect": "Allow",
 "Action": [
@@ -1308,7 +1308,7 @@ Problem: Storing long-lived IAM access keys in CI secrets. If leaked, attacker h
 Fix: Use OIDC role assumption for GitHub Actions / GitLab CI. No long-lived credentials needed.
 Problem: Production databases without prevent_destroy. A mistyped terraform destroy destroys prod
 data.
-Fix: Add lifecycle { prevent_destroy = true } to all stateful production resources.
+Fix: Add lifecycle \{ prevent_destroy = true } to all stateful production resources.
 Problem: Using terraform workspace new prod/dev for environment separation. State shares same
 backend key prefix.
 Fix: Use separate state files per environment in separate directories, not workspaces.
@@ -1360,7 +1360,7 @@ I Error acquiring the state lock
 - Verify no other terraform process is running first!
 - Check DynamoDB table for stale lock entries
 - If DynamoDB lock is stuck: aws dynamodb delete-item --table-name terraform-locks --key
-'{"LockID":{"S":""}}'
+'\{"LockID":\{"S":""}}'
 I Error: Resource already exists
 - Resource exists in cloud but not in Terraform state
 - Option A: Import it: terraform import
@@ -1416,7 +1416,7 @@ terraform state list | sed "s/\[.*\]//" | cut -d. -f1 | sort | uniq -c | sort -r
 # III Step 2: Preview full destruction IIIIIIIIIIIIIIIIIIIIIIII
 terraform plan -destroy -out=destroy-plan.tfplan
 # Review the plan in JSON (for compliance review)
-terraform show -json destroy-plan.tfplan | jq '.resource_changes[] | {address: .address, action: .change.ac
+terraform show -json destroy-plan.tfplan | jq '.resource_changes[] | \{address: .address, action: .change.ac
 # III Step 3: Remove all prevent_destroy protections IIIIIIIII
 # Search for prevent_destroy = true across all files
 grep -r "prevent_destroy" . --include="*.tf"
@@ -1747,7 +1747,7 @@ I
 .terraform.lock.hcl committed to Git
 II Destroy Protection
 I
-lifecycle { prevent_destroy = true } on all production stateful resources
+lifecycle \{ prevent_destroy = true } on all production stateful resources
 I
 Production databases have deletion_protection = true
 I

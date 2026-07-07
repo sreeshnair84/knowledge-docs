@@ -333,7 +333,7 @@ C) Prompt
 D) Both Tool and Resource
 
 **Answer: B**
-*Resources are the correct primitive for data Claude reads but doesn't modify. Tools are for actions. A resource with `uri: "kb://articles/{id}"` lets Claude request specific articles.*
+*Resources are the correct primitive for data Claude reads but doesn't modify. Tools are for actions. A resource with `uri: "kb://articles/\{id}"` lets Claude request specific articles.*
 
 ---
 
@@ -632,7 +632,7 @@ D) Role prompting as an "insurance expert"
 **Q41.** An application uses a 15,000-token system prompt that is identical for every user request. What is the most effective cost optimisation?
 
 A) Switch to a cheaper model
-B) Add `cache_control: {type: "ephemeral"}` to the system prompt
+B) Add `cache_control: \{type: "ephemeral"}` to the system prompt
 C) Reduce the system prompt to under 1,000 tokens
 D) Use the Batch API
 
@@ -641,7 +641,7 @@ D) Use the Batch API
 
 ---
 
-**Q42.** A developer uses `thinking: {type: "enabled", effort: "high", display: "omitted"}`. A user asks: "Why did the AI reach this conclusion?" What can the developer show them?
+**Q42.** A developer uses `thinking: \{type: "enabled", effort: "high", display: "omitted"}`. A user asks: "Why did the AI reach this conclusion?" What can the developer show them?
 
 A) The full thinking chain from the API response
 B) Nothing — the thinking is not transmitted when display is omitted
@@ -1239,7 +1239,7 @@ D) Block all MCP connections at the network firewall
 **Q82.** A tool handler must return a rendered chart image alongside explanatory text. What is the correct structure for the MCP tool result?
 
 A) Return a JSON object with `image_base64` and `text` keys  
-B) Return a list of content blocks: one `{type: "image", data: "...", mimeType: "image/png"}` and one `{type: "text", text: "..."}`  
+B) Return a list of content blocks: one `\{type: "image", data: "...", mimeType: "image/png"}` and one `\{type: "text", text: "..."}`  
 C) Return the image URL in the text field  
 D) MCP tools can only return text
 
@@ -1260,7 +1260,7 @@ D) This is a Claude hallucination, not a real attack vector
 
 ---
 
-**Q84.** An MCP resource `weather://current/{city}` is fetched hundreds of times per minute. The underlying weather API charges per request and updates data every 5 minutes. How should this be handled in the MCP 2026 RC?
+**Q84.** An MCP resource `weather://current/\{city}` is fetched hundreds of times per minute. The underlying weather API charges per request and updates data every 5 minutes. How should this be handled in the MCP 2026 RC?
 
 A) Cache the resource in Redis with a 5-minute TTL in the application layer  
 B) Use MCP's built-in resource caching with `ttlMs: 300000` in the resource definition  
@@ -1385,7 +1385,7 @@ D) The session terminates
 
 ---
 
-**Q93.** A PreToolUse hook exits with code 2 and prints `{"decision": "block", "reason": "Blocked: git push --force detected"}` to stdout. What is the effect?
+**Q93.** A PreToolUse hook exits with code 2 and prints `\{"decision": "block", "reason": "Blocked: git push --force detected"}` to stdout. What is the effect?
 
 A) Claude logs the warning and proceeds with the push  
 B) The Bash tool call is blocked; Claude receives the reason and can inform the user  
@@ -1511,7 +1511,7 @@ C) The API returns an error — `thinking` must be explicitly enabled
 D) The model uses standard effort only
 
 **Answer: B**
-*Fable 5's adaptive thinking is always on — it reasons internally on every request automatically. You do not need to pass `thinking: {type: "enabled"}` explicitly (though you can pass `budget_tokens` to cap spending). This differs from Opus 4.8 and Sonnet 4.6, where thinking must be explicitly enabled. For cost control, always specify `budget_tokens` when using Fable 5.*
+*Fable 5's adaptive thinking is always on — it reasons internally on every request automatically. You do not need to pass `thinking: \{type: "enabled"}` explicitly (though you can pass `budget_tokens` to cap spending). This differs from Opus 4.8 and Sonnet 4.6, where thinking must be explicitly enabled. For cost control, always specify `budget_tokens` when using Fable 5.*
 
 ---
 
@@ -1551,7 +1551,7 @@ D) $290
 
 ---
 
-**Q105.** An application adds `cache_control: {type: "ephemeral"}` to a 3,000-token system prompt. The cache TTL is 5 minutes. Requests arrive every 30 seconds. What is the cache hit behavior?
+**Q105.** An application adds `cache_control: \{type: "ephemeral"}` to a 3,000-token system prompt. The cache TTL is 5 minutes. Requests arrive every 30 seconds. What is the cache hit behavior?
 
 A) Every request after the first gets a cache hit — the 5-minute TTL resets on each hit  
 B) Only requests within 5 minutes of the first get a hit; after 5 minutes, the cache expires permanently  
@@ -1563,7 +1563,7 @@ D) The cache only works for the first 100 requests
 
 ---
 
-**Q106.** A developer uses `thinking: {type: "enabled", effort: "high"}`. The response contains a 2,000-token thinking block and a 500-token answer. What is billed?
+**Q106.** A developer uses `thinking: \{type: "enabled", effort: "high"}`. The response contains a 2,000-token thinking block and a 500-token answer. What is billed?
 
 A) 500 output tokens only — thinking is internal and not billed  
 B) 2,500 output tokens — thinking blocks count as output tokens  
@@ -1575,15 +1575,15 @@ D) 2,000 input tokens + 500 output tokens
 
 ---
 
-**Q107.** A developer wants Claude to always start its response with `{"status":` (forcing JSON array output). Which technique achieves this?
+**Q107.** A developer wants Claude to always start its response with `\{"status":` (forcing JSON array output). Which technique achieves this?
 
 A) Adding `"Output JSON only."` to the system prompt  
 B) Setting `temperature: 0` to make output deterministic  
-C) Pre-filling the assistant turn: `{"role": "assistant", "content": "{\"status\":"}`  
+C) Pre-filling the assistant turn: `\{"role": "assistant", "content": "\{\"status\":"}`  
 D) Using a tool with a JSON return type
 
 **Answer: C**
-*Prefill pre-populates the beginning of the assistant turn, forcing Claude to continue from that exact starting point. Pre-filling with `{"status":` forces JSON object format with the first key already written. This is a documented API technique for strict format enforcement. System prompt instructions are guidance; prefill is mechanical enforcement.*
+*Prefill pre-populates the beginning of the assistant turn, forcing Claude to continue from that exact starting point. Pre-filling with `\{"status":` forces JSON object format with the first key already written. This is a documented API technique for strict format enforcement. System prompt instructions are guidance; prefill is mechanical enforcement.*
 
 ---
 
@@ -1685,7 +1685,7 @@ C) Fable 5 does not support vision
 D) `media_type` should be `"image/jpg"` not `"image/jpeg"`
 
 **Answer: B**
-*The image content block must be inside the `content` array of a message object, not passed directly as a message. The correct structure: `messages=[{"role": "user", "content": [{"type": "image", ...}, {"type": "text", "text": "..."}]}]`. JPEG is fully supported. `image/jpeg` is the correct MIME type. All current Claude models with vision support it.*
+*The image content block must be inside the `content` array of a message object, not passed directly as a message. The correct structure: `messages=[\{"role": "user", "content": [\{"type": "image", ...}, \{"type": "text", "text": "..."}]}]`. JPEG is fully supported. `image/jpeg` is the correct MIME type. All current Claude models with vision support it.*
 
 ---
 

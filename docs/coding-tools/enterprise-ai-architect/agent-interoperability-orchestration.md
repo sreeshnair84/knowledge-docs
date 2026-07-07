@@ -234,7 +234,7 @@ Enterprise agents that transact financially need payment protocols as rigorous a
 **Google's AP2** ([announcement](https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol)) provides **cryptographic payment mandates** — signed proofs that a specific human authorized a specific transaction:
 
 - 60+ partners including Mastercard, PayPal, Stripe, major banks
-- Agent receives a signed mandate from the human: `{amount:$500, merchant:Acme, expiry:+1hour, purpose:order-123}`
+- Agent receives a signed mandate from the human: `\{amount:$500, merchant:Acme, expiry:+1hour, purpose:order-123}`
 - Mandate travels with the agent through delegation; cannot be forged or replayed
 - Payment processor validates the mandate independently of the agent
 

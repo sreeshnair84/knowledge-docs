@@ -288,7 +288,7 @@ often wrong for your org. STRONG: "Add a new RDS PostgreSQL 16 instance to
 modules/data/main.tf. Use the existing aws_db_subnet_group.private (already defined in
 this file). Instance class db.r6g.large, 200GB gp3 storage, Multi-AZ enabled. Pull the
 master password from data.aws_secretsmanager_secret_version.db_master (already defined).
-Follow the existing tagging convention using local.common_tags. Add lifecycle {
+Follow the existing tagging convention using local.common_tags. Add lifecycle \{
 prevent_destroy = true } since this is a production database. Do not hardcode any
 credentials or CIDR blocks." Result: Generation grounded in real context, matching org
 conventions, with explicit safety requirements stated upfront.
@@ -448,7 +448,7 @@ approved regions'. This is the layer that catches AI-generated code that is synt
 internal standards.
 # OPA / Conftest policy example (Rego)
 package terraform.security
-deny[msg] {
+deny[msg] \{
 resource := input.resource_changes[_]
 resource.type == "aws_s3_bucket"
 resource.change.after.acl == "public-read"
@@ -457,7 +457,7 @@ msg := sprintf(
 [resource.address]
 )
 }
-deny[msg] {
+deny[msg] \{
 resource := input.resource_changes[_]
 resource.type == "aws_db_instance"
 resource.change.after.multi_az == false
@@ -703,11 +703,11 @@ Because least-privilege IAM design requires understanding the precise minimum pe
 - knowledge that often lives only in tribal/organizational context - AI-generated IAM policies should be treated as
 a starting draft requiring tightening, not a final answer.
 # Common AI-generated starting point (too broad) - NEEDS TIGHTENING
-resource "aws_iam_role_policy" "lambda" {
+resource "aws_iam_role_policy" "lambda" \{
 role = aws_iam_role.lambda.id
-policy = jsonencode({
+policy = jsonencode(\{
 Version = "2012-10-17"
-Statement = [{
+Statement = [\{
 Effect   = "Allow"
 Action   = "s3:*"
 Resource = "*"
@@ -715,17 +715,17 @@ Resource = "*"
 })
 }
 # Tightened after review - least privilege
-resource "aws_iam_role_policy" "lambda" {
+resource "aws_iam_role_policy" "lambda" \{
 role = aws_iam_role.lambda.id
-policy = jsonencode({
+policy = jsonencode(\{
 Version = "2012-10-17"
-Statement = [{
+Statement = [\{
 Effect = "Allow"
 Action = [
 "s3:GetObject",
 "s3:PutObject"
 ]
-Resource = "${aws_s3_bucket.uploads.arn}/*"
+Resource = "$\{aws_s3_bucket.uploads.arn}/*"
 }]
 })
 }
@@ -738,23 +738,23 @@ Resource = "${aws_s3_bucket.uploads.arn}/*"
 The native terraform test framework (HCL-based, .tftest.hcl files) is well suited to AI-assisted generation, since
 test assertions follow predictable patterns the model can replicate from existing test files.
 # tests/vpc.tftest.hcl - AI-assisted test generation
-run "vpc_has_correct_cidr" {
+run "vpc_has_correct_cidr" \{
 command = plan
-assert {
+assert \{
 condition     = aws_vpc.main.cidr_block == "10.0.0.0/16"
 error_message = "VPC CIDR block does not match expected value"
 }
 }
-run "subnet_count_matches_az_count" {
+run "subnet_count_matches_az_count" \{
 command = plan
-assert {
+assert \{
 condition     = length(aws_subnet.private) == length(var.azs)
 error_message = "Number of private subnets must match number of AZs"
 }
 }
-run "no_public_db_subnet" {
+run "no_public_db_subnet" \{
 command = plan
-assert {
+assert \{
 condition     = aws_db_subnet_group.main.subnet_ids != aws_subnet.public[*].id
 error_message = "Database subnet group must not use public subnets"
 }

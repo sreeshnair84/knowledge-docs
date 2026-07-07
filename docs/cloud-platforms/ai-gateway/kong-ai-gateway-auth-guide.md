@@ -209,7 +209,7 @@ const fs  = require('fs');
 const privateKey = fs.readFileSync('private.key');
 
 const token = jwt.sign(
-  {
+  \{
     iss: 'backend-service-issuer',   // Must match the "key" in Kong
     iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 3600,
@@ -217,17 +217,17 @@ const token = jwt.sign(
     scope: 'ai:chat'
   },
   privateKey,
-  { algorithm: 'RS256' }
+  \{ algorithm: 'RS256' }
 );
 
 // Call Kong with the JWT
-fetch('http://localhost:8000/ai/v1/chat/completions', {
+fetch('http://localhost:8000/ai/v1/chat/completions', \{
   method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`,
+  headers: \{
+    'Authorization': `Bearer $\{token}`,
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ messages: [{ role: 'user', content: 'Hello' }] })
+  body: JSON.stringify(\{ messages: [\{ role: 'user', content: 'Hello' }] })
 });
 ```
 
@@ -237,10 +237,10 @@ Simple username/password, useful for internal tooling:
 
 ```bash
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{"name": "basic-auth", "config": {"hide_credentials": true}}'
+  --json '\{"name": "basic-auth", "config": \{"hide_credentials": true}}'
 
 curl -X POST http://localhost:8001/consumers/internal-tool/basic-auth \
-  --json '{"username": "internal-tool", "password": "s3cur3-p4ss"}'
+  --json '\{"username": "internal-tool", "password": "s3cur3-p4ss"}'
 ```
 
 ### 3.4 HMAC Authentication
@@ -249,9 +249,9 @@ Request signing — each request is signed with a secret. Tamper-proof and repla
 
 ```bash
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "hmac-auth",
-    "config": {
+    "config": \{
       "hide_credentials": true,
       "clock_skew": 300,
       "anonymous": null,
@@ -262,7 +262,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
   }'
 
 curl -X POST http://localhost:8001/consumers/secure-service/hmac-auth \
-  --json '{"username": "secure-service", "secret": "a-very-long-hmac-secret-key"}'
+  --json '\{"username": "secure-service", "secret": "a-very-long-hmac-secret-key"}'
 ```
 
 **Client signing a request (Python):**
@@ -277,7 +277,7 @@ date   = datetime.now(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S GMT')
 method = "POST"
 path   = "/ai/v1/chat/completions"
 
-signing_string = f"date: {date}\n{method.lower()} {path} HTTP/1.1"
+signing_string = f"date: \{date}\n\{method.lower()} \{path} HTTP/1.1"
 signature = base64.b64encode(
     hmac.new(secret, signing_string.encode(), hashlib.sha256).digest()
 ).decode()
@@ -286,13 +286,13 @@ auth_header = (
     f'hmac username="secure-service", '
     f'algorithm="hmac-sha256", '
     f'headers="date request-line", '
-    f'signature="{signature}"'
+    f'signature="\{signature}"'
 )
 
 response = requests.post(
     "http://localhost:8000/ai/v1/chat/completions",
-    headers={"Date": date, "Authorization": auth_header},
-    json={"messages": [{"role": "user", "content": "Hello"}]}
+    headers=\{"Date": date, "Authorization": auth_header},
+    json=\{"messages": [\{"role": "user", "content": "Hello"}]}
 )
 ```
 
@@ -321,13 +321,13 @@ Client ──[x-api-key: consumer-key]──► Kong
 ```bash
 # Strip client credentials, inject identity metadata for the upstream
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "request-transformer",
-    "config": {
-      "remove": {
+    "config": \{
+      "remove": \{
         "headers": ["x-api-key", "Authorization"]
       },
-      "add": {
+      "add": \{
         "headers": [
           "X-Forwarded-Consumer:$(consumer.username)",
           "X-Consumer-Groups:$(consumer.groups)"
@@ -351,9 +351,9 @@ Client ──► Kong ──[auth sub-request]──► Auth Service (Keycloak /
 
 ```bash
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "forward-auth",
-    "config": {
+    "config": \{
       "uri": "http://your-auth-service:8080/verify",
       "method": "GET",
       "upstreams_headers_request": ["Authorization", "x-api-key"],
@@ -372,25 +372,25 @@ Kong authenticates AND makes the authorization decision, terminating the request
 ```bash
 # Use pre-function plugin to implement custom auth logic
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "pre-function",
-    "config": {
+    "config": \{
       "access": [
         "local consumer = kong.client.get_consumer()",
         "if not consumer then",
-        "  return kong.response.exit(401, {message = \"Authentication required\"})",
+        "  return kong.response.exit(401, \{message = \"Authentication required\"})",
         "end",
         "",
         "-- Check consumer is in allowed groups",
         "local groups = kong.client.get_consumer_groups()",
-        "local allowed = {[\"ai-users\"] = true, [\"ai-premium\"] = true}",
+        "local allowed = \{[\"ai-users\"] = true, [\"ai-premium\"] = true}",
         "local has_access = false",
         "for _, g in ipairs(groups) do",
         "  if allowed[g.name] then has_access = true; break end",
         "end",
         "",
         "if not has_access then",
-        "  return kong.response.exit(403, {message = \"Insufficient permissions for AI access\"})",
+        "  return kong.response.exit(403, \{message = \"Insufficient permissions for AI access\"})",
         "end"
       ]
     }
@@ -407,7 +407,7 @@ Client ──[POST /auth/token + credentials]──► Kong Auth Route
                                             Validate credentials
                                             Issue JWT (TTL: 1hr)
                                                     │
-                                            ◄── {access_token: "eyJ..."}
+                                            ◄── \{access_token: "eyJ..."}
                                                     │
 Client ──[Bearer eyJ...]──► Kong AI Route ──────────┘ (verify JWT)
                                    │
@@ -417,18 +417,18 @@ Client ──[Bearer eyJ...]──► Kong AI Route ─────────�
 ```bash
 # Route 1: Token issuance endpoint
 curl -X POST http://localhost:8001/routes \
-  --json '{
+  --json '\{
     "name": "token-issuance",
     "paths": ["/auth/token"],
     "methods": ["POST"],
-    "service": {"name": "internal-auth-service"}
+    "service": \{"name": "internal-auth-service"}
   }'
 
 # Route 2: AI endpoint — only accepts the short-lived JWT
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "jwt",
-    "config": {
+    "config": \{
       "header_names": ["Authorization"],
       "claims_to_verify": ["exp"],
       "key_claim_name": "iss"
@@ -447,27 +447,27 @@ Different routes can use different LLM providers — each with their own injecte
 ```bash
 # Route A: GPT-4o (OpenAI) — production
 curl -X POST http://localhost:8001/routes/production-ai-route/plugins \
-  --json '{
+  --json '\{
     "name": "ai-proxy",
-    "config": {
-      "auth": {
+    "config": \{
+      "auth": \{
         "header_name": "Authorization",
         "header_value": "Bearer sk-openai-PROD-KEY"
       },
-      "model": {"provider": "openai", "name": "gpt-4o"}
+      "model": \{"provider": "openai", "name": "gpt-4o"}
     }
   }'
 
 # Route B: Claude (Anthropic) — experimental
 curl -X POST http://localhost:8001/routes/experimental-ai-route/plugins \
-  --json '{
+  --json '\{
     "name": "ai-proxy",
-    "config": {
-      "auth": {
+    "config": \{
+      "auth": \{
         "header_name": "x-api-key",
         "header_value": "sk-ant-ANTHROPIC-KEY"
       },
-      "model": {"provider": "anthropic", "name": "claude-3-5-sonnet-20241022"}
+      "model": \{"provider": "anthropic", "name": "claude-3-5-sonnet-20241022"}
     }
   }'
 ```
@@ -478,10 +478,10 @@ After authentication, Kong can inject consumer context as headers for downstream
 
 ```bash
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "request-transformer",
-    "config": {
-      "add": {
+    "config": \{
+      "add": \{
         "headers": [
           "X-Kong-Consumer-ID:$(consumer.id)",
           "X-Kong-Consumer-Username:$(consumer.username)",
@@ -490,7 +490,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
           "X-Kong-Timestamp:$(now)"
         ]
       },
-      "remove": {
+      "remove": \{
         "headers": ["Authorization", "x-api-key", "Cookie"]
       }
     }
@@ -504,16 +504,16 @@ Assign different LLM accounts to different consumers using consumer tags/metadat
 ```bash
 # Tag consumers with their assigned project account
 curl -X POST http://localhost:8001/consumers \
-  --json '{
+  --json '\{
     "username": "project-alpha",
     "tags": ["project:alpha", "account:openai-account-2", "tier:premium"]
   }'
 
 # Use pre-function to dynamically select credentials
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "pre-function",
-    "config": {
+    "config": \{
       "access": [
         "local consumer = kong.client.get_consumer()",
         "local tags = consumer and consumer.tags or {}",
@@ -546,13 +546,13 @@ Restrict which models and providers each consumer can access using ACL groups co
 ```bash
 # Create groups representing model tiers
 curl -X POST http://localhost:8001/consumers/free-user/acls \
-  --json '{"group": "ai-free-tier"}'
+  --json '\{"group": "ai-free-tier"}'
 
 curl -X POST http://localhost:8001/consumers/pro-user/acls \
-  --json '{"group": "ai-pro-tier"}'
+  --json '\{"group": "ai-pro-tier"}'
 
 curl -X POST http://localhost:8001/consumers/enterprise-user/acls \
-  --json '{"group": "ai-enterprise-tier"}'
+  --json '\{"group": "ai-enterprise-tier"}'
 ```
 
 ### Step 2: Create Model-Specific Routes with ACL Restrictions
@@ -560,34 +560,34 @@ curl -X POST http://localhost:8001/consumers/enterprise-user/acls \
 ```bash
 # Free tier route: GPT-4o-mini only
 curl -X POST http://localhost:8001/routes \
-  --json '{"name": "free-tier-ai", "paths": ["/ai/free"], "service": {"name": "mini-model-service"}}'
+  --json '\{"name": "free-tier-ai", "paths": ["/ai/free"], "service": \{"name": "mini-model-service"}}'
 
 curl -X POST http://localhost:8001/routes/free-tier-ai/plugins \
-  --json '{
+  --json '\{
     "name": "acl",
-    "config": {
+    "config": \{
       "allow": ["ai-free-tier", "ai-pro-tier", "ai-enterprise-tier"],
       "hide_groups_header": true
     }
   }'
 
 curl -X POST http://localhost:8001/routes/free-tier-ai/plugins \
-  --json '{
+  --json '\{
     "name": "ai-proxy",
-    "config": {
-      "model": {"provider": "openai", "name": "gpt-4o-mini"},
-      "auth": {"header_name": "Authorization", "header_value": "Bearer sk-MASTER-KEY"}
+    "config": \{
+      "model": \{"provider": "openai", "name": "gpt-4o-mini"},
+      "auth": \{"header_name": "Authorization", "header_value": "Bearer sk-MASTER-KEY"}
     }
   }'
 
 # Pro tier route: GPT-4o only
 curl -X POST http://localhost:8001/routes \
-  --json '{"name": "pro-tier-ai", "paths": ["/ai/pro"], "service": {"name": "pro-model-service"}}'
+  --json '\{"name": "pro-tier-ai", "paths": ["/ai/pro"], "service": \{"name": "pro-model-service"}}'
 
 curl -X POST http://localhost:8001/routes/pro-tier-ai/plugins \
-  --json '{
+  --json '\{
     "name": "acl",
-    "config": {
+    "config": \{
       "allow": ["ai-pro-tier", "ai-enterprise-tier"],
       "hide_groups_header": true
     }
@@ -595,12 +595,12 @@ curl -X POST http://localhost:8001/routes/pro-tier-ai/plugins \
 
 # Enterprise tier route: All models including Claude, GPT-4o, fine-tuned models
 curl -X POST http://localhost:8001/routes \
-  --json '{"name": "enterprise-ai", "paths": ["/ai/enterprise"], "service": {"name": "enterprise-model-service"}}'
+  --json '\{"name": "enterprise-ai", "paths": ["/ai/enterprise"], "service": \{"name": "enterprise-model-service"}}'
 
 curl -X POST http://localhost:8001/routes/enterprise-ai/plugins \
-  --json '{
+  --json '\{
     "name": "acl",
-    "config": {
+    "config": \{
       "allow": ["ai-enterprise-tier"],
       "hide_groups_header": true
     }
@@ -613,9 +613,9 @@ Prevent consumers from specifying their own model in the request body — Kong e
 
 ```bash
 curl -X POST http://localhost:8001/routes/free-tier-ai/plugins \
-  --json '{
+  --json '\{
     "name": "pre-function",
-    "config": {
+    "config": \{
       "access": [
         "local body = kong.request.get_body()",
         "if body and body.model then",
@@ -638,9 +638,9 @@ Integrate with enterprise identity providers (Keycloak, Okta, Azure AD, Auth0) s
 
 ```bash
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "openid-connect",
-    "config": {
+    "config": \{
       "issuer": "https://keycloak.company.com/realms/production",
       "client_id": ["kong-ai-gateway"],
       "client_secret": ["your-client-secret-from-keycloak"],
@@ -691,9 +691,9 @@ When a user authenticates via SSO for the first time, Kong can auto-create a con
 
 ```bash
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "openid-connect",
-    "config": {
+    "config": \{
       "issuer": "https://accounts.google.com",
       "client_id": ["your-google-client-id"],
       "client_secret": ["your-google-client-secret"],
@@ -712,9 +712,9 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 ```bash
 # Use post-function to map OIDC groups → Kong ACL groups for model access control
 curl -X POST http://localhost:8001/services/openai-service/plugins \
-  --json '{
+  --json '\{
     "name": "post-function",
-    "config": {
+    "config": \{
       "access": [
         "local oidc_groups = kong.request.get_header(\"X-User-Groups\") or \"\"",
         "",
@@ -742,10 +742,10 @@ Mutual TLS ensures that even Kong's outgoing connection to the LLM provider is c
 ```bash
 # Load your CA certificate (or use the LLM provider's public CA)
 curl -X POST http://localhost:8001/ca_certificates \
-  --json '{
+  --json '\{
     "cert": "-----BEGIN CERTIFICATE-----\nMIIBpzCC...\n-----END CERTIFICATE-----"
   }'
-# Returns: {"id": "ca-cert-uuid-here", ...}
+# Returns: \{"id": "ca-cert-uuid-here", ...}
 ```
 
 ### Step 2: Create a Client Certificate for Kong
@@ -753,11 +753,11 @@ curl -X POST http://localhost:8001/ca_certificates \
 ```bash
 # Kong's own certificate + private key for mutual TLS
 curl -X POST http://localhost:8001/certificates \
-  --json '{
+  --json '\{
     "cert": "-----BEGIN CERTIFICATE-----\nMIIDpzCC...\n-----END CERTIFICATE-----",
     "key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIB...\n-----END RSA PRIVATE KEY-----"
   }'
-# Returns: {"id": "client-cert-uuid-here", ...}
+# Returns: \{"id": "client-cert-uuid-here", ...}
 ```
 
 ### Step 3: Apply to the AI Upstream Service
@@ -765,8 +765,8 @@ curl -X POST http://localhost:8001/certificates \
 ```bash
 # Attach the client certificate to the service for outgoing mTLS
 curl -X PATCH http://localhost:8001/services/openai-service \
-  --json '{
-    "client_certificate": {"id": "client-cert-uuid-here"},
+  --json '\{
+    "client_certificate": \{"id": "client-cert-uuid-here"},
     "tls_verify": true,
     "tls_verify_depth": 3,
     "ca_certificates": ["ca-cert-uuid-here"]
@@ -778,16 +778,16 @@ curl -X PATCH http://localhost:8001/services/openai-service \
 ```bash
 # Create an SNI-based TLS config for api.openai.com
 curl -X POST http://localhost:8001/snis \
-  --json '{
+  --json '\{
     "name": "api.openai.com",
-    "certificate": {"id": "client-cert-uuid-here"}
+    "certificate": \{"id": "client-cert-uuid-here"}
   }'
 
 # Create for Anthropic
 curl -X POST http://localhost:8001/snis \
-  --json '{
+  --json '\{
     "name": "api.anthropic.com",
-    "certificate": {"id": "client-cert-uuid-here"}
+    "certificate": \{"id": "client-cert-uuid-here"}
   }'
 ```
 
@@ -795,7 +795,7 @@ curl -X POST http://localhost:8001/snis \
 
 ```bash
 # Check the service's TLS configuration
-curl http://localhost:8001/services/openai-service | jq '{tls_verify, client_certificate, ca_certificates}'
+curl http://localhost:8001/services/openai-service | jq '\{tls_verify, client_certificate, ca_certificates}'
 
 # Kong logs will show TLS handshake details
 docker logs kong 2>&1 | grep -i "tls\|ssl\|certificate"
@@ -861,7 +861,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
   }'
 ```
 
-Kong resolves `{vault://hcv/...}` references at runtime, caches the value for `ttl` seconds, and automatically refreshes — no restart needed on key rotation.
+Kong resolves `\{vault://hcv/...}` references at runtime, caches the value for `ttl` seconds, and automatically refreshes — no restart needed on key rotation.
 
 ### AWS Secrets Manager Setup
 

@@ -185,33 +185,33 @@ A skill is a reusable capability described in a `SKILL.md` file placed in `.clau
 === "TypeScript"
 
     ```typescript
-    import { Agent, tool } from "@anthropic-ai/claude-agent-sdk";
+    import \{ Agent, tool } from "@anthropic-ai/claude-agent-sdk";
 
-    const getPrice = tool({
+    const getPrice = tool(\{
       name: "get_price",
       description: "Look up a product's current price. Use when asked about pricing.",
-      parameters: {
+      parameters: \{
         type: "object",
-        properties: {
-          productId: { type: "string", description: "The product SKU" },
+        properties: \{
+          productId: \{ type: "string", description: "The product SKU" },
         },
         required: ["productId"],
       },
-      execute: async ({ productId }: { productId: string }) => {
-        const prices: Record<string, number> = {
+      execute: async (\{ productId }: \{ productId: string }) => \{
+        const prices: Record<string, number> = \{
           "SKU-001": 29.99,
           "SKU-002": 49.99,
           "SKU-003": 9.99,
         };
         const price = prices[productId];
-        if (price === undefined) {
-          return { error: `Product ${productId} not found` };
+        if (price === undefined) \{
+          return \{ error: `Product $\{productId} not found` };
         }
-        return { productId, priceUsd: price, currency: "USD" };
+        return \{ productId, priceUsd: price, currency: "USD" };
       },
     });
 
-    const agent = new Agent({
+    const agent = new Agent(\{
       model: "claude-sonnet-4-6",
       tools: [getPrice],
       system: "You are a helpful product pricing assistant.",
@@ -258,18 +258,18 @@ A skill is a reusable capability described in a `SKILL.md` file placed in `.clau
 === "TypeScript"
 
     ```typescript
-    import { tool } from "@anthropic-ai/claude-agent-sdk";
+    import \{ tool } from "@anthropic-ai/claude-agent-sdk";
 
-    const queryAnalytics = tool({
+    const queryAnalytics = tool(\{
       name: "query_analytics",
       description:
         "Query the analytics database. Use for revenue, user counts, and event data. "
         + "Accepts read-only SQL SELECT queries only.",
-      parameters: {
+      parameters: \{
         type: "object",
-        properties: {
-          sql: { type: "string", description: "A SQL SELECT statement" },
-          database: {
+        properties: \{
+          sql: \{ type: "string", description: "A SQL SELECT statement" },
+          database: \{
             type: "string",
             enum: ["production", "staging"],
             description: "Target database",
@@ -278,8 +278,8 @@ A skill is a reusable capability described in a `SKILL.md` file placed in `.clau
         },
         required: ["sql"],
       },
-      execute: async ({ sql, database = "production" }) => {
-        if (!sql.trim().toUpperCase().startsWith("SELECT")) {
+      execute: async (\{ sql, database = "production" }) => \{
+        if (!sql.trim().toUpperCase().startsWith("SELECT")) \{
           throw new Error("Only SELECT queries are permitted");
         }
         return await db.query(sql, database);
@@ -299,9 +299,9 @@ async def read_file(path: str) -> str:
     base = Path("/var/projects/sandbox").resolve()
     target = (base / path).resolve()
     if not str(target).startswith(str(base)):
-        raise ValueError(f"Path traversal attempt blocked: {path!r}")
+        raise ValueError(f"Path traversal attempt blocked: \{path!r}")
     if not target.is_file():
-        raise FileNotFoundError(f"File not found: {path!r}")
+        raise FileNotFoundError(f"File not found: \{path!r}")
     return target.read_text(encoding="utf-8")
 
 
@@ -310,16 +310,16 @@ async def run_command(command: str) -> dict:
     BLOCKED_PATTERNS = ["rm -rf", "sudo", "curl", "wget", "> /dev/sd", "mkfs"]
     for pattern in BLOCKED_PATTERNS:
         if pattern in command:
-            raise ValueError(f"Blocked command pattern: {pattern!r}")
+            raise ValueError(f"Blocked command pattern: \{pattern!r}")
     proc = await asyncio.create_subprocess_shell(
         command,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
         cwd="/var/projects/sandbox",
-        env={"PATH": "/usr/bin:/bin"},  # Minimal environment
+        env=\{"PATH": "/usr/bin:/bin"},  # Minimal environment
     )
     stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=30.0)
-    return {
+    return \{
         "exit_code": proc.returncode,
         "stdout": stdout.decode()[:10_000],  # Truncate to 10K chars
         "stderr": stderr.decode()[:2_000],
@@ -370,7 +370,7 @@ agent = Agent(
             trigger="before_tool_call",
             tool_names=["deploy_tool", "delete_records_tool"],
             prompt_template=(
-                "Agent wants to call `{tool_name}` with arguments:\n"
+                "Agent wants to call `\{tool_name}` with arguments:\n"
                 "```json\n{arguments}\n```\n"
                 "Approve? (yes/no/modify)"
             ),
@@ -380,7 +380,7 @@ agent = Agent(
         HumanCheckpoint(
             trigger="before_tool_call",
             tool_names=["send_email_tool"],
-            prompt_template="Agent wants to send an email to {to}. Preview:\n{body}\nApprove?",
+            prompt_template="Agent wants to send an email to \{to}. Preview:\n\{body}\nApprove?",
             timeout_seconds=120,
         ),
     ],
@@ -437,7 +437,7 @@ async def analyse_all_regions(regions: list[str], quarter: str) -> str:
     # MAP: spawn one subagent per region in parallel
     tasks = [
         analyst.run(
-            f"Analyse sales performance for region '{region}' in {quarter}. "
+            f"Analyse sales performance for region '\{region}' in \{quarter}. "
             "Return JSON with: total_revenue, growth_pct, top_3_products, anomalies."
         )
         for region in regions
@@ -454,10 +454,10 @@ async def analyse_all_regions(regions: list[str], quarter: str) -> str:
 
     # REDUCE: orchestrator synthesises
     summary_prompt = (
-        f"Synthesise these {len(regions)} regional reports for {quarter} into a "
+        f"Synthesise these \{len(regions)} regional reports for \{quarter} into a "
         "CEO-level executive summary with key insights and recommended actions:\n\n"
         + "\n\n---\n\n".join(
-            f"**{region}**:\n{result.text}"
+            f"**\{region}**:\n\{result.text}"
             for region, result in zip(regions, regional_results)
         )
     )
@@ -508,28 +508,28 @@ writer_agent = Agent(
 async def research_pipeline(topic: str) -> PipelineResult:
     # Stage 1 — Research (no dependencies)
     research_result = await research_agent.run(
-        f"Research '{topic}': gather key facts, statistics, and primary sources."
+        f"Research '\{topic}': gather key facts, statistics, and primary sources."
     )
 
     # Stage 2 — Critique (depends on Stage 1)
     critique_result = await critique_agent.run(
-        f"Critically review this research on '{topic}':\n\n{research_result.text}\n\n"
+        f"Critically review this research on '\{topic}':\n\n\{research_result.text}\n\n"
         "Identify: gaps, unsupported claims, alternative interpretations, missing data."
     )
 
     # Stage 3 — Recommendations (depends on Stages 1 + 2, can run after Stage 2)
     recommendations_result = await strategy_agent.run(
-        f"Topic: {topic}\n\nResearch:\n{research_result.text}\n\n"
-        f"Critique:\n{critique_result.text}\n\n"
+        f"Topic: \{topic}\n\nResearch:\n\{research_result.text}\n\n"
+        f"Critique:\n\{critique_result.text}\n\n"
         "Produce 5 specific, evidence-backed strategic recommendations."
     )
 
     # Stage 4 — Final report (depends on all prior stages)
     final_result = await writer_agent.run(
-        f"Write an executive report on '{topic}' incorporating:\n\n"
-        f"Research: {research_result.text}\n\n"
-        f"Critique: {critique_result.text}\n\n"
-        f"Recommendations: {recommendations_result.text}\n\n"
+        f"Write an executive report on '\{topic}' incorporating:\n\n"
+        f"Research: \{research_result.text}\n\n"
+        f"Critique: \{critique_result.text}\n\n"
+        f"Recommendations: \{recommendations_result.text}\n\n"
         "Format: executive summary (200 words), findings, analysis, recommendations, next steps."
     )
 
@@ -578,25 +578,25 @@ synthesiser_agent = Agent(
 async def verified_analysis(data: str, question: str) -> dict:
     # Blue team: primary analysis
     primary = await analyst_agent.run(
-        f"Question: {question}\n\nData:\n{data}\n\nProvide detailed analysis."
+        f"Question: \{question}\n\nData:\n\{data}\n\nProvide detailed analysis."
     )
 
     # Red team: adversarial critique
     critique = await critic_agent.run(
-        f"Question: {question}\n\n"
-        f"Analysis to challenge:\n{primary.text}\n\n"
+        f"Question: \{question}\n\n"
+        f"Analysis to challenge:\n\{primary.text}\n\n"
         "Find every flaw, gap, and alternative interpretation."
     )
 
     # Synthesis: arbitrated conclusion
     final = await synthesiser_agent.run(
-        f"Question: {question}\n\n"
-        f"Original analysis:\n{primary.text}\n\n"
-        f"Adversarial critique:\n{critique.text}\n\n"
+        f"Question: \{question}\n\n"
+        f"Original analysis:\n\{primary.text}\n\n"
+        f"Adversarial critique:\n\{critique.text}\n\n"
         "Produce the most accurate conclusion, incorporating valid critiques."
     )
 
-    return {
+    return \{
         "analysis": primary.text,
         "critique": critique.text,
         "verified_conclusion": final.text,
@@ -631,7 +631,7 @@ judge_agent = Agent(
 async def tournament_solve(problem: str, n_candidates: int = 3) -> dict:
     # Generate N candidates in parallel with a different seed prompt each time
     seed_variants = [
-        f"{problem}\n\nApproach this from the angle of: {approach}"
+        f"\{problem}\n\nApproach this from the angle of: \{approach}"
         for approach in [
             "optimising for performance",
             "optimising for readability and maintainability",
@@ -645,10 +645,10 @@ async def tournament_solve(problem: str, n_candidates: int = 3) -> dict:
 
     # Build evaluation prompt
     evaluation_prompt = (
-        f"Problem:\n{problem}\n\n"
+        f"Problem:\n\{problem}\n\n"
         "Evaluate these candidate solutions and select the best:\n\n"
         + "\n\n---\n\n".join(
-            f"### Candidate {i + 1}\n{c.text}"
+            f"### Candidate \{i + 1}\n\{c.text}"
             for i, c in enumerate(candidates)
         )
         + "\n\nProvide: winner (1/2/3), detailed reasoning, and any improvements."
@@ -656,7 +656,7 @@ async def tournament_solve(problem: str, n_candidates: int = 3) -> dict:
 
     verdict = await judge_agent.run(evaluation_prompt)
 
-    return {
+    return \{
         "candidates": [c.text for c in candidates],
         "verdict": verdict.text,
         "token_cost": sum(c.usage.total_tokens for c in candidates) + verdict.usage.total_tokens,
@@ -786,15 +786,15 @@ Sessions maintain conversation history, tool results, and agent memory across mu
 === "TypeScript (Postgres)"
 
     ```typescript
-    import { Agent } from "@anthropic-ai/claude-agent-sdk";
-    import { PostgresStateStore } from "@anthropic-ai/claude-agent-sdk/stores";
+    import \{ Agent } from "@anthropic-ai/claude-agent-sdk";
+    import \{ PostgresStateStore } from "@anthropic-ai/claude-agent-sdk/stores";
 
-    const store = new PostgresStateStore({
+    const store = new PostgresStateStore(\{
       connectionString: process.env.DATABASE_URL!,
       tablePrefix: "agent_",
     });
 
-    const agent = new Agent({
+    const agent = new Agent(\{
       model: "claude-sonnet-4-6",
       tools: [queryAnalytics, writeReport],
       stateStore: store,
@@ -809,36 +809,36 @@ from claude_agent_sdk import Agent
 
 app = fastapi.FastAPI()
 
-@app.post("/chat/{session_id}")
+@app.post("/chat/\{session_id}")
 async def chat(session_id: str, body: ChatRequest, user: User = Depends(get_user)):
     # Load existing session (creates new if not found)
     session = await agent.load_session(
-        session_id=f"user-{user.id}-{session_id}",
-        metadata={"user_id": user.id, "created_by": user.email},
+        session_id=f"user-\{user.id}-\{session_id}",
+        metadata=\{"user_id": user.id, "created_by": user.email},
     )
 
     result = await session.continue_(body.message)
 
-    return {
+    return \{
         "response": result.text,
         "session_id": session_id,
         "turn_count": session.turn_count,
         "tokens_used": result.usage.total_tokens,
     }
 
-@app.delete("/chat/{session_id}")
+@app.delete("/chat/\{session_id}")
 async def delete_session(session_id: str, user: User = Depends(get_user)):
-    await agent.delete_session(f"user-{user.id}-{session_id}")
-    return {"deleted": True}
+    await agent.delete_session(f"user-\{user.id}-\{session_id}")
+    return \{"deleted": True}
 
-@app.get("/chat/{session_id}/history")
+@app.get("/chat/\{session_id}/history")
 async def get_history(session_id: str, user: User = Depends(get_user)):
-    session = await agent.load_session(f"user-{user.id}-{session_id}")
+    session = await agent.load_session(f"user-\{user.id}-\{session_id}")
     log = await session.export_log()
     # Audit log — strip tool results if they contain PII
-    return {
+    return \{
         "turns": [
-            {"role": t.role, "preview": t.content[:200], "timestamp": t.timestamp}
+            \{"role": t.role, "preview": t.content[:200], "timestamp": t.timestamp}
             for t in log.turns
         ]
     }
@@ -849,10 +849,10 @@ async def get_history(session_id: str, user: User = Depends(get_user)):
 ```python
 # Each tenant gets isolated sessions — no cross-tenant data leakage
 async def run_for_tenant(tenant_id: str, user_id: str, prompt: str):
-    session_id = f"tenant:{tenant_id}:user:{user_id}"
+    session_id = f"tenant:\{tenant_id}:user:\{user_id}"
     session = await agent.load_session(
         session_id=session_id,
-        metadata={"tenant_id": tenant_id, "user_id": user_id},
+        metadata=\{"tenant_id": tenant_id, "user_id": user_id},
     )
     return await session.continue_(prompt)
 ```
@@ -876,7 +876,7 @@ orchestrator = Agent(
 async def generate_and_review_code(requirement: str) -> dict:
     # Delegate code generation to a subagent with coding tools
     code_result = await orchestrator.spawn_subagent(
-        task=f"Write Python code to: {requirement}",
+        task=f"Write Python code to: \{requirement}",
         model="claude-sonnet-4-6",
         tools=[write_file, run_tests, read_file],
         system="You are an expert Python developer. Write clean, tested code.",
@@ -886,7 +886,7 @@ async def generate_and_review_code(requirement: str) -> dict:
     # Delegate security review to a separate subagent
     security_result = await orchestrator.spawn_subagent(
         task=(
-            f"Perform a security review of this Python code:\n\n{code_result.text}\n\n"
+            f"Perform a security review of this Python code:\n\n\{code_result.text}\n\n"
             "Look for: injection flaws, hardcoded secrets, insecure deserialization, "
             "path traversal, and missing input validation."
         ),
@@ -896,7 +896,7 @@ async def generate_and_review_code(requirement: str) -> dict:
         max_tokens=2048,
     )
 
-    return {
+    return \{
         "code": code_result.text,
         "security_review": security_result.text,
         "total_tokens": code_result.usage.total_tokens + security_result.usage.total_tokens,
@@ -915,12 +915,12 @@ async def process_documents(documents: list[dict]) -> list[dict]:
     """
     async def process_one(doc: dict) -> dict:
         result = await orchestrator.spawn_subagent(
-            task=f"Summarise this document in 3 bullet points:\n\n{doc['content']}",
+            task=f"Summarise this document in 3 bullet points:\n\n\{doc['content']}",
             model="claude-haiku-4-5",  # Cheapest model for simple summarisation
             max_tokens=512,
             # Context is only this document — not the full document set
         )
-        return {"doc_id": doc["id"], "summary": result.text}
+        return \{"doc_id": doc["id"], "summary": result.text}
 
     # Process up to 10 documents concurrently
     semaphore = asyncio.Semaphore(10)
@@ -949,7 +949,7 @@ async def aggregate_reports(regions: list[str]) -> dict:
     # Spawn subagents with structured output schemas
     tasks = [
         orchestrator.spawn_subagent(
-            task=f"Analyse Q2-2026 data for region: {region}",
+            task=f"Analyse Q2-2026 data for region: \{region}",
             model="claude-haiku-4-5",
             output_schema=RegionReport,
         )
@@ -963,7 +963,7 @@ async def aggregate_reports(regions: list[str]) -> dict:
     sorted_reports = sorted(reports, key=lambda r: r.revenue_usd, reverse=True)
     high_risk = [r for r in reports if r.risk_flags]
 
-    return {
+    return \{
         "top_region": sorted_reports[0].region,
         "total_revenue": sum(r.revenue_usd for r in reports),
         "high_risk_regions": [r.region for r in high_risk],
@@ -1040,24 +1040,24 @@ async def chunked_analysis(documents: list[dict], checkpoint_key: str) -> list[d
     start_idx = await state_store.get(checkpoint_key, default=0)
     if start_idx > 0:
         log.info("resuming_from_checkpoint", index=start_idx)
-        results = await state_store.get(f"{checkpoint_key}_results", default=[])
+        results = await state_store.get(f"\{checkpoint_key}_results", default=[])
 
     for i, doc in enumerate(documents[start_idx:], start=start_idx):
         try:
-            result = await analyst_agent.run(f"Analyse document: {doc['content']}")
-            results.append({"doc_id": doc["id"], "analysis": result.text})
+            result = await analyst_agent.run(f"Analyse document: \{doc['content']}")
+            results.append(\{"doc_id": doc["id"], "analysis": result.text})
 
             # Checkpoint after every successful item
             await state_store.set(checkpoint_key, i + 1)
-            await state_store.set(f"{checkpoint_key}_results", results)
+            await state_store.set(f"\{checkpoint_key}_results", results)
 
         except Exception as e:
             log.error("analysis_failed", doc_id=doc["id"], index=i, error=str(e))
-            results.append({"doc_id": doc["id"], "error": str(e), "analysis": None})
+            results.append(\{"doc_id": doc["id"], "error": str(e), "analysis": None})
 
     # Clean up checkpoint on successful completion
     await state_store.delete(checkpoint_key)
-    await state_store.delete(f"{checkpoint_key}_results")
+    await state_store.delete(f"\{checkpoint_key}_results")
     return results
 ```
 
@@ -1071,7 +1071,7 @@ from claude_agent_sdk import RateLimiter
 # Per-user limits enforced in your application layer
 limiter = RateLimiter(
     backend="redis://localhost:6379",
-    limits={
+    limits=\{
         "per_user_per_minute_requests": 10,
         "per_user_per_day_tokens": 500_000,
         "per_user_per_day_usd": 5.00,
@@ -1086,13 +1086,13 @@ async def analyze_endpoint(req: AnalyzeRequest, user: User = Depends(get_user)):
     except limiter.LimitExceededError as e:
         raise HTTPException(
             status_code=429,
-            detail={
+            detail=\{
                 "error": "rate_limit_exceeded",
                 "message": str(e),
                 "retry_after_seconds": e.retry_after,
             },
         )
-    return {"response": result.text, "tokens_used": result.usage.total_tokens}
+    return \{"response": result.text, "tokens_used": result.usage.total_tokens}
 ```
 
 ---
@@ -1401,7 +1401,7 @@ async def validated_analysis(prompt: str) -> AnalysisOutput:
         return AnalysisOutput(**data)
     except (json.JSONDecodeError, ValidationError) as e:
         log.error("output_validation_failed", error=str(e), raw=result.text[:500])
-        raise ValueError(f"Agent produced invalid output: {e}")
+        raise ValueError(f"Agent produced invalid output: \{e}")
 ```
 
 ### Refusal Detection and Graceful Degradation
@@ -1428,7 +1428,7 @@ async def run_with_fallback(prompt: str) -> str:
         # Try with a reframed prompt
         reframed = await reframing_agent.run(
             f"The following request was declined. Reframe it to be more acceptable "
-            f"while preserving the core intent:\n\n{prompt}"
+            f"while preserving the core intent:\n\n\{prompt}"
         )
         result = await primary_agent.run(reframed.text)
 
@@ -1504,7 +1504,7 @@ def track_usage(tenant_id: str, usage):
 # Daily billing reconciliation
 async def export_daily_usage():
     for tenant_id, acc in usage_by_tenant.items():
-        await billing_db.upsert({
+        await billing_db.upsert(\{
             "date": date.today().isoformat(),
             "tenant_id": tenant_id,
             "input_tokens": acc.input_tokens,

@@ -669,7 +669,7 @@ async def security_review(
         "3. Vulnerable line(s)\n"
         "4. Description of the risk\n"
         "5. Remediation with corrected code\n\n"
-        f"Code to review:\n```{language}\n{code}\n```"
+        f"Code to review:\n```\{language}\n\{code}\n```"
     )
 ```
 
@@ -755,11 +755,11 @@ npm install @modelcontextprotocol/sdk
 The `McpServer` class (added in SDK 1.x) provides a high-level API with automatic schema inference from Zod validators.
 
 ```typescript
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod";
+import \{ McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import \{ StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import \{ z } from "zod";
 
-const server = new McpServer({
+const server = new McpServer(\{
   name: "company-tools",
   version: "1.0.0",
 });
@@ -769,20 +769,20 @@ server.tool(
   "query_database",
   "Run a read-only SQL query against the analytics database. "
     + "Use for revenue, user, and event data. SELECT only.",
-  {
+  \{
     sql: z.string().describe("A SQL SELECT statement"),
     database: z.enum(["production", "staging"]).default("production"),
   },
-  async ({ sql, database }) => {
-    if (!sql.trim().toUpperCase().startsWith("SELECT")) {
-      return {
-        content: [{ type: "text", text: JSON.stringify({ error: "Only SELECT queries permitted" }) }],
+  async (\{ sql, database }) => \{
+    if (!sql.trim().toUpperCase().startsWith("SELECT")) \{
+      return \{
+        content: [\{ type: "text", text: JSON.stringify(\{ error: "Only SELECT queries permitted" }) }],
         isError: true,
       };
     }
     const rows = await db.query(sql, database);
-    return {
-      content: [{ type: "text", text: JSON.stringify(rows) }],
+    return \{
+      content: [\{ type: "text", text: JSON.stringify(rows) }],
     };
   }
 );
@@ -791,8 +791,8 @@ server.tool(
 server.resource(
   "config://app/settings",
   "Application settings (read-only)",
-  async (uri) => ({
-    contents: [{
+  async (uri) => (\{
+    contents: [\{
       uri: uri.href,
       mimeType: "application/json",
       text: JSON.stringify(await loadAppSettings()),
@@ -805,15 +805,15 @@ server.prompt(
   "code_review",
   "Structured code review with configurable focus",
   [
-    { name: "language", description: "Programming language", required: true },
-    { name: "focus", description: "security | performance | style | correctness", required: false },
+    \{ name: "language", description: "Programming language", required: true },
+    \{ name: "focus", description: "security | performance | style | correctness", required: false },
   ],
-  async ({ language, focus = "correctness" }) => ({
-    messages: [{
+  async (\{ language, focus = "correctness" }) => (\{
+    messages: [\{
       role: "user",
-      content: {
+      content: \{
         type: "text",
-        text: `Review this ${language} code for ${focus}. List findings with severity, location, and fix.`,
+        text: `Review this $\{language} code for $\{focus}. List findings with severity, location, and fix.`,
       },
     }],
   })
@@ -827,19 +827,19 @@ await server.connect(transport);
 ### Streamable HTTP Server (TypeScript)
 
 ```typescript
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import \{ McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import \{ StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
 
 const app = express();
 app.use(express.json());
 
-const server = new McpServer({ name: "remote-tools", version: "1.0.0" });
+const server = new McpServer(\{ name: "remote-tools", version: "1.0.0" });
 // ... register tools, resources, prompts ...
 
 // Create a stateless transport (one per request — no session state)
-app.post("/mcp", async (req, res) => {
-  const transport = new StreamableHTTPServerTransport({
+app.post("/mcp", async (req, res) => \{
+  const transport = new StreamableHTTPServerTransport(\{
     sessionId: undefined,  // Stateless: no session ID
   });
   await server.connect(transport);

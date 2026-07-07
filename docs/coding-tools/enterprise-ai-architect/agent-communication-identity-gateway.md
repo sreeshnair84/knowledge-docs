@@ -79,7 +79,7 @@ SPIFFE deployment detail, OWASP ASI mapping, and Entra Agent ID coverage: [Agent
 - **Everything short-lived.** Access tokens ≤15 min for agent contexts; SVIDs minutes-scale; refresh handled by platform, never by agent code. Rotation is continuous by construction; revocation ≈ "stop renewing."
 - **Sender-constrained tokens:** DPoP (RFC 9449) or mTLS-bound tokens for any token an agent carries across a network hop — a stolen bearer token from a compromised sandbox must be useless elsewhere.
 - **Context/capability tokens:** embed `task_id`, purpose, human principal, and expiry as claims; downstream PEPs authorize on the *tuple*, not just the subject. This is practical capability-based security: possession of a narrowly-scoped, unforgeable token *is* the authorization (macaroon/Biscuit-style attenuation where supported).
-- **Cryptographic delegation chain:** each hop signs a delegation assertion (`act` claim in RFC 8693 token exchange), producing an auditable chain: the sub-agent's token contains `act:{agent-A}`, `sub:{user}`, `task`, `aud:{tool}`. Emerging OAuth work on agent on-behalf-of chains standardizes this; until then, the internal STS enforces it.
+- **Cryptographic delegation chain:** each hop signs a delegation assertion (`act` claim in RFC 8693 token exchange), producing an auditable chain: the sub-agent's token contains `act:\{agent-A}`, `sub:\{user}`, `task`, `aud:\{tool}`. Emerging OAuth work on agent on-behalf-of chains standardizes this; until then, the internal STS enforces it.
 - **DCR + issuer discipline (MCP):** Dynamic Client Registration against the enterprise AS; MCP 2026-07-28 hardens this (RFC 9207 `iss` validation, AS-bound credentials, declared `application_type`) — adopt now, these close real mix-up attacks.
 - **Attestation:** SPIRE attestors verify *what* is running (image digest, node, k8s SA) before issuing identity — the anti-impersonation control. **Identity without attestation is a name, not a proof.**
 - **Secrets:** agents never see long-lived secrets; tool credentials live in the tool-execution layer / secrets manager, injected per-call server-side.
@@ -116,9 +116,9 @@ Lower layers may only *restrict*, never *expand*. Enforce via a policy-bundle bu
 
 **Dynamic policy:** context attributes (risk score, budget remaining, kill-switch flags) are injected at decision time from the platform; the *policy text* stays static and versioned — dynamism lives in data, not in mutating rules.
 
-**Versioning & audit:** every PDP decision logs `{policy bundle hash, request tuple, decision, obligations}`. Replayability of authorization decisions is a regulator-grade requirement (EU AI Act logging, SOC2 CC6).
+**Versioning & audit:** every PDP decision logs `\{policy bundle hash, request tuple, decision, obligations}`. Replayability of authorization decisions is a regulator-grade requirement (EU AI Act logging, SOC2 CC6).
 
-**Delegated authority:** delegation grants are first-class objects `{grantor, grantee agent, scope, task, expiry, revocation handle}` stored centrally; the STS consults them when minting tokens — this unifies §2 identity with §3 policy.
+**Delegated authority:** delegation grants are first-class objects `\{grantor, grantee agent, scope, task, expiry, revocation handle}` stored centrally; the STS consults them when minting tokens — this unifies §2 identity with §3 policy.
 
 **Where PEPs sit:** AI gateway (model actions), tool gateway/MCP proxy (tool calls), memory service (reads/writes), A2A edge (inter-agent), workflow engine (step transitions). **One PDP, many PEPs**; decisions cached ≤ seconds with event-driven invalidation.
 

@@ -310,10 +310,10 @@ AG-UI's HITL model supports five interrupt types:
 | Interrupt Type | Trigger | Client Action Required | Agent Behavior |
 |---|---|---|---|
 | `pause` | `TOOL_CALL_START` with `hitl: true` | Display tool args, await user decision | Halts execution, holds connection open |
-| `approve` | User clicks Approve | `POST /agent/action {"type":"approve","tool_call_id":"..."}` | Executes the tool call with original args |
-| `edit` | User modifies tool args | `POST /agent/action {"type":"edit","tool_call_id":"...","args":{...}}` | Executes the tool call with modified args |
-| `retry` | User requests retry with different approach | `POST /agent/action {"type":"retry","instruction":"..."}` | Agent re-plans the current step |
-| `escalate` | User escalates to human agent | `POST /agent/action {"type":"escalate","reason":"..."}` | Run is suspended; escalation record created |
+| `approve` | User clicks Approve | `POST /agent/action \{"type":"approve","tool_call_id":"..."}` | Executes the tool call with original args |
+| `edit` | User modifies tool args | `POST /agent/action \{"type":"edit","tool_call_id":"...","args":\{...}}` | Executes the tool call with modified args |
+| `retry` | User requests retry with different approach | `POST /agent/action \{"type":"retry","instruction":"..."}` | Agent re-plans the current step |
+| `escalate` | User escalates to human agent | `POST /agent/action \{"type":"escalate","reason":"..."}` | Run is suspended; escalation record created |
 
 ### 2.7 Nested Agent Composition
 
@@ -506,19 +506,19 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
     // Minimal AG-UI server in TypeScript using Express + Node streams
     // Dependencies: npm install express @types/express
 
-    import express, { Request, Response } from "express";
-    import { randomUUID } from "crypto";
+    import express, \{ Request, Response } from "express";
+    import \{ randomUUID } from "crypto";
 
     const app = express();
     app.use(express.json());
 
-    type AgUiEvent = { type: string; [key: string]: unknown };
+    type AgUiEvent = \{ type: string; [key: string]: unknown };
 
-    function sseEvent(res: Response, event: AgUiEvent): void {
-      res.write(`data: ${JSON.stringify(event)}\n\n`);
+    function sseEvent(res: Response, event: AgUiEvent): void \{
+      res.write(`data: $\{JSON.stringify(event)}\n\n`);
     }
 
-    async function sleep(ms: number): Promise<void> {
+    async function sleep(ms: number): Promise<void> \{
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
@@ -526,17 +526,17 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
       res: Response,
       messages: unknown[],
       state: Record<string, unknown>
-    ): Promise<void> {
+    ): Promise<void> \{
       const runId = randomUUID();
       const stepId = randomUUID();
       const msgId = randomUUID();
       const toolCallId = randomUUID();
 
       // 1. Run started
-      sseEvent(res, { type: "RUN_STARTED", run_id: runId, thread_id: "thread-001" });
+      sseEvent(res, \{ type: "RUN_STARTED", run_id: runId, thread_id: "thread-001" });
 
       // 2. Step started
-      sseEvent(res, {
+      sseEvent(res, \{
         type: "STEP_STARTED",
         step_id: stepId,
         step_name: "plan",
@@ -544,66 +544,66 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
       });
 
       // 3. Stream text message
-      sseEvent(res, { type: "TEXT_MESSAGE_START", message_id: msgId, role: "assistant" });
-      for (const token of ["Analyzing ", "your request...\n"]) {
-        sseEvent(res, { type: "TEXT_MESSAGE_CONTENT", message_id: msgId, delta: token });
+      sseEvent(res, \{ type: "TEXT_MESSAGE_START", message_id: msgId, role: "assistant" });
+      for (const token of ["Analyzing ", "your request...\n"]) \{
+        sseEvent(res, \{ type: "TEXT_MESSAGE_CONTENT", message_id: msgId, delta: token });
         await sleep(50);
       }
-      sseEvent(res, { type: "TEXT_MESSAGE_END", message_id: msgId });
+      sseEvent(res, \{ type: "TEXT_MESSAGE_END", message_id: msgId });
 
       // 4. Tool call with HITL pause
-      const toolArgs = { query: "Q3 revenue data", date_range: "2026-01-01/2026-09-30" };
-      sseEvent(res, {
+      const toolArgs = \{ query: "Q3 revenue data", date_range: "2026-01-01/2026-09-30" };
+      sseEvent(res, \{
         type: "TOOL_CALL_START",
         tool_call_id: toolCallId,
         tool_name: "query_data_warehouse",
         hitl: true,
         args_preview: toolArgs,
       });
-      sseEvent(res, {
+      sseEvent(res, \{
         type: "TOOL_CALL_ARGS",
         tool_call_id: toolCallId,
         delta: JSON.stringify(toolArgs),
       });
-      sseEvent(res, { type: "TOOL_CALL_END", tool_call_id: toolCallId });
+      sseEvent(res, \{ type: "TOOL_CALL_END", tool_call_id: toolCallId });
 
       // 5. Mock tool result (real: await approval action)
-      sseEvent(res, {
+      sseEvent(res, \{
         type: "TOOL_CALL_RESULT",
         tool_call_id: toolCallId,
-        result: { revenue: 4200000, currency: "USD" },
+        result: \{ revenue: 4200000, currency: "USD" },
       });
 
       // 6. State delta
-      sseEvent(res, {
+      sseEvent(res, \{
         type: "STATE_DELTA",
-        delta: [{ op: "replace", path: "/task/status", value: "complete" }],
+        delta: [\{ op: "replace", path: "/task/status", value: "complete" }],
       });
 
       // 7. Finish
-      sseEvent(res, { type: "STEP_FINISHED", step_id: stepId, duration_ms: 1200 });
-      sseEvent(res, { type: "RUN_FINISHED", run_id: runId, status: "success" });
+      sseEvent(res, \{ type: "STEP_FINISHED", step_id: stepId, duration_ms: 1200 });
+      sseEvent(res, \{ type: "RUN_FINISHED", run_id: runId, status: "success" });
 
       res.end();
     }
 
-    app.post("/agent/run", (req: Request, res: Response) => {
+    app.post("/agent/run", (req: Request, res: Response) => \{
       res.setHeader("Content-Type", "text/event-stream");
       res.setHeader("Cache-Control", "no-cache");
       res.setHeader("Connection", "keep-alive");
       res.flushHeaders();
 
-      const { messages = [], state = {} } = req.body;
-      runAgent(res, messages, state).catch((err) => {
-        sseEvent(res, { type: "RUN_ERROR", message: String(err) });
+      const \{ messages = [], state = {} } = req.body;
+      runAgent(res, messages, state).catch((err) => \{
+        sseEvent(res, \{ type: "RUN_ERROR", message: String(err) });
         res.end();
       });
     });
 
-    app.post("/agent/action", (req: Request, res: Response) => {
+    app.post("/agent/action", (req: Request, res: Response) => \{
       const action = req.body;
       // Real: resume the pending run identified by action.tool_call_id
-      res.json({ status: "accepted", action_type: action.type });
+      res.json(\{ status: "accepted", action_type: action.type });
     });
 
     app.listen(8000, () => console.log("AG-UI server running on :8000"));
@@ -618,21 +618,21 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
     // Dependencies: npm install @copilotkit/react-ui @copilotkit/react-core @copilotkit/runtime
 
     import React from "react";
-    import {
+    import \{
       CopilotKit,
       useCopilotAction,
       useCopilotReadable,
     } from "@copilotkit/react-core";
-    import { CopilotSidebar } from "@copilotkit/react-ui";
+    import \{ CopilotSidebar } from "@copilotkit/react-ui";
     import "@copilotkit/react-ui/styles.css";
 
     // Root: wrap your app in CopilotKit pointing at your AG-UI backend
-    export function App() {
+    export function App() \{
       return (
         <CopilotKit runtimeUrl="/api/copilotkit" agent="my-agent">
           <CopilotSidebar
-            defaultOpen={true}
-            labels={{ title: "Enterprise AI Assistant" }}
+            defaultOpen=\{true}
+            labels=\{\{ title: "Enterprise AI Assistant" }}
           >
             <MainContent />
           </CopilotSidebar>
@@ -641,55 +641,55 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
     }
 
     // Example: expose app state to the agent (readable context)
-    function MainContent() {
+    function MainContent() \{
       const [invoices, setInvoices] = React.useState<Invoice[]>([]);
 
       // Make invoices readable by the agent
-      useCopilotReadable({
+      useCopilotReadable(\{
         description: "Current invoice queue awaiting approval",
         value: invoices,
       });
 
       // Register a frontend tool the agent can call
-      useCopilotAction({
+      useCopilotAction(\{
         name: "approve_invoice",
         description: "Approve an invoice from the current queue",
         parameters: [
-          { name: "invoice_id", type: "string", description: "Invoice identifier" },
-          { name: "comment", type: "string", description: "Approval comment" },
+          \{ name: "invoice_id", type: "string", description: "Invoice identifier" },
+          \{ name: "comment", type: "string", description: "Approval comment" },
         ],
         // HITL: render = present UI before executing
-        render: ({ args, status, result }) => (
+        render: (\{ args, status, result }) => (
           <ApprovalCard
-            args={args}
-            status={status}
-            onApprove={() => { /* trigger approve */ }}
-            onReject={() => { /* trigger reject */ }}
+            args=\{args}
+            status=\{status}
+            onApprove=\{() => \{ /* trigger approve */ }}
+            onReject=\{() => \{ /* trigger reject */ }}
           />
         ),
-        handler: async ({ invoice_id, comment }) => {
+        handler: async (\{ invoice_id, comment }) => \{
           // Called only after user approves in the render panel
-          const result = await fetch(`/api/invoices/${invoice_id}/approve`, {
+          const result = await fetch(`/api/invoices/$\{invoice_id}/approve`, \{
             method: "POST",
-            body: JSON.stringify({ comment }),
+            body: JSON.stringify(\{ comment }),
           });
           return result.json();
         },
       });
 
-      return <InvoiceList invoices={invoices} />;
+      return <InvoiceList invoices=\{invoices} />;
     }
 
-    interface Invoice { id: string; vendor: string; amount: number; }
-    function InvoiceList({ invoices }: { invoices: Invoice[] }) {
-      return <div>{invoices.map(i => <div key={i.id}>{i.vendor}: ${i.amount}</div>)}</div>;
+    interface Invoice \{ id: string; vendor: string; amount: number; }
+    function InvoiceList(\{ invoices }: \{ invoices: Invoice[] }) \{
+      return <div>\{invoices.map(i => <div key=\{i.id}>\{i.vendor}: $\{i.amount}</div>)}</div>;
     }
-    function ApprovalCard({ args, status, onApprove, onReject }: any) {
+    function ApprovalCard(\{ args, status, onApprove, onReject }: any) \{
       return (
         <div className="approval-card">
-          <p>Approve invoice {args?.invoice_id}?</p>
-          <button onClick={onApprove}>Approve</button>
-          <button onClick={onReject}>Reject</button>
+          <p>Approve invoice \{args?.invoice_id}?</p>
+          <button onClick=\{onApprove}>Approve</button>
+          <button onClick=\{onReject}>Reject</button>
         </div>
       );
     }
