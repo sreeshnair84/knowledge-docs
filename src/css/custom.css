@@ -1,0 +1,134 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a simple framework built on top of CSS
+ * Custom Properties, it's used primarily to ease the styling of the default theme.
+ * See https://infima.dev/ for more details.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0ea5e9;
+  --ifm-color-primary-dark: #0284c7;
+  --ifm-color-primary-darker: #0369a1;
+  --ifm-color-primary-darkest: #075985;
+  --ifm-color-primary-light: #06b6d4;
+  --ifm-color-primary-lighter: #22d3ee;
+  --ifm-color-primary-lightest: #cffafe;
+  --ifm-code-font-size: 95%;
+  --docusaurus-published-hash: 'unreleased';
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #0ea5e9;
+  --ifm-color-primary-dark: #0284c7;
+  --ifm-color-primary-darker: #0369a1;
+  --ifm-color-primary-darkest: #075985;
+  --ifm-color-primary-light: #06b6d4;
+  --ifm-color-primary-lighter: #22d3ee;
+  --ifm-color-primary-lightest: #cffafe;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive styles for documents and files */
+@media (max-width: 768px) {
+  iframe {
+    max-width: 100%;
+    height: auto !important;
+  }
+  
+  .pdf-viewer-mobile {
+    display: block;
+  }
+}
+
+/* Enhanced navbar styling */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Documentation styling */
+.markdown {
+  line-height: 1.8;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown p {
+  margin-bottom: 1rem;
+}
+
+.markdown code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+html[data-theme='dark'] .markdown code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar styling */
+.sidebar {
+  background: var(--ifm-background-color);
+}
+
+/* TOC styling */
+.table-of-contents {
+  margin-top: 1rem;
+}
+
+.table-of-contents li {
+  margin: 0.25rem 0;
+}
+
+/* Links styling */
+a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Pre/code block styling */
+pre {
+  background: var(--ifm-pre-background);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Admonition styling */
+.alert {
+  margin: 1rem 0;
+}
+
+/* Button styling */
+.button {
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

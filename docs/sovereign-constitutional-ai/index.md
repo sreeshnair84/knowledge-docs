@@ -8,7 +8,7 @@ title: Sovereign & Constitutional AI
 **Purpose:** Definitive body of knowledge for designing, governing, securing, auditing, and operating Sovereign Constitutional AI systems at enterprise, national, and regulated-industry scale through 2030.  
 **Related:** [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) · [Constitutional AI & Safety](../coding-tools/claude/constitutional-ai-safety-2026.md) · [AI Security Governance](../ai-security-governance/index.md)
 
-!!! info "Research Program: 2026–2030"
+:::info Research Program: 2026–2030
     This section represents the Sovereign Constitutional AI & RAI Master Research Program. Content is grounded in current standards (EU AI Act Digital Omnibus 2026, NIST AI RMF 1.0 + AI 600-1, ISO 42001:2023, Anthropic RSP, Google DeepMind FSF), industry practice, and published academic research as of July 2026.
 
 ---

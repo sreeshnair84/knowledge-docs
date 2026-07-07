@@ -251,7 +251,7 @@ These 10 actions are valuable today regardless of which specific technology pred
 
 ---
 
-!!! tip "Related Reading"
+:::tip Related Reading
     - Standards landscape today: [AGUI Standards Landscape](agui-standards-landscape.md)
     - Architecture decisions: [Decision Frameworks](decision-frameworks.md)
     - Security horizon: [Security Architecture](security-architecture.md)

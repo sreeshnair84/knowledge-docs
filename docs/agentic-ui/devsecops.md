@@ -875,7 +875,7 @@ resource "kubernetes_stateful_set" "qdrant" {
 
 ---
 
-!!! tip "Cross-references"
+:::tip Cross-references
     - Evaluation framework: [Evaluation Framework](evaluation-framework.md)
     - Observability infrastructure: [Observability](observability.md)
     - Governance policies: [Governance](governance.md)

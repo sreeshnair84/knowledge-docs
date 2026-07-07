@@ -6,7 +6,7 @@ title: Evaluation Framework for Agentic Applications
 
 **Audience:** AI Platform Teams, AI Centers of Excellence, QA Engineers, and Enterprise Architects responsible for production quality and governance of agentic applications — covering the AGUI/UX evaluation layer not addressed by backend agent evaluation.
 
-!!! note "Companion Reference"
+:::note Companion Reference
     This guide covers the UX, generative UI, and business evaluation layers. For agent-level evaluation (task planning, tool selection, memory quality, LLM output quality), see the companion guide: [AI Agent Evaluation Framework Guide](../ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md). Read both together for a complete picture.
 
 ---
@@ -1115,13 +1115,13 @@ A structured cadence ensures evaluation is continuous and complete, not reactive
 | Model landscape review | AI Architect | New models to evaluate; model upgrade plan |
 | Governance and compliance review | Compliance + AI Team | Policy compliance certification |
 
-!!! tip "Automation First"
+:::tip Automation First
     Target 90%+ of daily and weekly checks being fully automated. Human attention should focus on the 10% that requires judgment: interpreting trends, triage of complex failures, strategic decision-making about improvements.
 
-!!! warning "Eval Drift"
+:::warning Eval Drift
     Evaluation programs themselves drift. The greatest risk is that your eval becomes a ritual that no longer measures what matters. Dedicate 10% of each monthly review to asking: "Is this eval still measuring what we care about? Has the system evolved past our evaluation design?"
 
-!!! note "Cross-references"
+:::note Cross-references
     - Agent-level evaluation (planning, tool use, memory): [AI Agent Evaluation Framework Guide](../ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md)
     - Observability infrastructure for feeding real-time signals into evaluation: [Observability for Agentic Applications](observability.md)
     - EU AI Act and governance requirements for evaluation: [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)

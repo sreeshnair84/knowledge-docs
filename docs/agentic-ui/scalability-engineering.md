@@ -6,7 +6,7 @@ title: Scalability Engineering for Agentic Applications
 
 A comprehensive scalability reference for AI Platform Teams and Principal Architects covering stateless design, horizontal scaling patterns, queue architectures, autoscaling, GPU scheduling, and capacity planning for agentic systems from frontend through LLM inference.
 
-!!! note "Related Guides"
+:::note Related Guides
     - Circuit breakers and degradation under load: [`reliability-engineering.md`](reliability-engineering.md)
     - AI Gateway load balancing and rate limiting: [`../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md`](../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md)
     - Agent memory and state scaling: [`../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md`](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md)

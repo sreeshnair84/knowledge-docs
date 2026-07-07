@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure AI Agent Architecture — Production Grade</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: #1e2430;
+    --border2: #2a3040;
+
+    --azure: #0078d4;
+    --azure-light: #50b4fc;
+    --azure-dim: #0078d420;
+
+    --ph1: #00c896;
+    --ph1-dim: #00c89618;
+    --ph1-border: #00c89640;
+
+    --ph2: #f59e0b;
+    --ph2-dim: #f59e0b18;
+    --ph2-border: #f59e0b40;
+
+    --ph3: #a855f7;
+    --ph3-dim: #a855f718;
+    --ph3-border: #a855f740;
+
+    --cross: #ef4444;
+    --cross-dim: #ef444418;
+
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+
+    --guard: #f97316;
+    --guard-dim: #f9731618;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    padding: 32px 24px 64px;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, #0078d415 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, #a855f710 0%, transparent 50%),
+      linear-gradient(180deg, #0a0c10 0%, #0c0f16 100%);
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--azure-dim);
+    border: 1px solid var(--azure);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--azure-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--azure-light); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+
+  h1 {
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  h1 span { color: var(--azure-light); }
+
+  .subtitle {
+    color: var(--text2);
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---- REVIEW PANEL ---- */
+  .review-panel {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--cross);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+  }
+
+  .review-icon {
+    font-size: 24px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .review-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cross);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .issues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
+  }
+
+  .issue {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text2);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.5;
+  }
+
+  .issue-dot { color: var(--cross); margin-top: 3px; flex-shrink: 0; }
+
+  /* ---- PHASE LEGEND ---- */
+  .phase-legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+  }
+
+  /* ---- CROSS-CUTTING ---- */
+  .cross-cutting {
+    background: var(--cross-dim);
+    border: 1px dashed var(--cross);
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .cross-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cross);
+    letter-spacing: 0.1em;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .cross-items {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .cross-tag {
+    background: var(--surface);
+    border: 1px solid var(--cross);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: var(--cross);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---- PHASES ---- */
+  .phases-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .phase-block {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .phase-header {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .phase-num {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .phase-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .phase-timeline {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.7;
+  }
+
+  .phase-goal {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.8;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .phase-body {
+    padding: 4px 16px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  /* ---- LAYER CARDS ---- */
+  .layer {
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .layer-header {
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .layer-icon { font-size: 15px; }
+
+  .layer-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .layer-body {
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ---- COMPONENT ---- */
+  .component {
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+  }
+
+  .component-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .azure-badge {
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--azure-dim);
+    color: var(--azure-light);
+    border: 1px solid var(--azure);
+    white-space: nowrap;
+  }
+
+  .component-desc {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.5;
+  }
+
+  .component-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .tag {
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid currentColor;
+    opacity: 0.7;
+  }
+
+  /* ---- DATA FLOW ---- */
+  .dataflow {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 32px;
+  }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .flow-node {
+    flex: 1;
+    min-width: 120px;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+
+  .flow-node-title {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .flow-node-sub {
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+  }
+
+  .flow-arrow {
+    color: var(--text3);
+    font-size: 18px;
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+
+  .flow-sep {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text3);
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    gap: 8px;
+  }
+
+  .flow-sep::before, .flow-sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---- GUARDRAILS BAR ---- */
+  .guardrails-bar {
+    background: var(--guard-dim);
+    border: 1px dashed var(--guard);
+    border-radius: 10px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .guard-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--guard);
+    letter-spacing: 0.08em;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .guard-items { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .guard-item {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: var(--surface);
+    border: 1px solid var(--guard);
+    color: var(--guard);
+  }
+
+  /* ---- SLA TABLE ---- */
+  .sla-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .sla-card {
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .sla-label {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+    margin-bottom: 6px;
+    letter-spacing: 0.06em;
+  }
+
+  .sla-value {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .sla-sub {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+  }
+
+  /* ---- PHASE COLORS ---- */
+  .ph1-bg { background: var(--ph1-dim); border-color: var(--ph1-border); }
+  .ph2-bg { background: var(--ph2-dim); border-color: var(--ph2-border); }
+  .ph3-bg { background: var(--ph3-dim); border-color: var(--ph3-border); }
+
+  .ph1-accent { background: var(--ph1); color: #000; }
+  .ph2-accent { background: var(--ph2); color: #000; }
+  .ph3-accent { background: var(--ph3); color: #fff; }
+
+  .ph1-comp { background: #00c89610; border-color: #00c89630; }
+  .ph2-comp { background: #f59e0b10; border-color: #f59e0b30; }
+  .ph3-comp { background: #a855f710; border-color: #a855f730; }
+
+  .ph1-text { color: var(--ph1); }
+  .ph2-text { color: var(--ph2); }
+  .ph3-text { color: var(--ph3); }
+
+  /* ---- WORKER PROPERTIES ---- */
+  .worker-props {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .worker-prop {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .worker-prop-icon { font-size: 12px; }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text3);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-badge">
+    <div class="dot"></div>
+    AZURE AI ENTERPRISE ARCHITECTURE · PRODUCTION GRADE
+  </div>
+  <h1>AI Agent System <span>Design</span></h1>
+  <div class="subtitle">Phased delivery roadmap · Azure-native services · RAI-compliant</div>
+</div>
+
+<!-- DESIGN REVIEW -->
+<div class="review-panel">
+  <div class="review-icon">⚠️</div>
+  <div>
+    <div class="review-title">// DESIGN REVIEW — ISSUES FOUND IN ORIGINAL</div>
+    <div class="issues-grid">
+      <div class="issue"><span class="issue-dot">▶</span>Model Router & Knowledge Base marked "?" — must be decided before prod</div>
+      <div class="issue"><span class="issue-dot">▶</span>Auth scattered across layers — no unified Microsoft Entra ID plane</div>
+      <div class="issue"><span class="issue-dot">▶</span>No Azure service bindings — components are abstract, not deployable</div>
+      <div class="issue"><span class="issue-dot">▶</span>HIL placement is ambiguous — not wired to approval workflow</div>
+      <div class="issue"><span class="issue-dot">▶</span>No circuit breaker / retry policy per layer</div>
+      <div class="issue"><span class="issue-dot">▶</span>Worker Registry YAML format undefined (Ph1 label suggests deferred)</div>
+      <div class="issue"><span class="issue-dot">▶</span>Feedback loop shown but not operationalized into MLOps pipeline</div>
+      <div class="issue"><span class="issue-dot">▶</span>No VNet / private endpoint topology — security gap for enterprise</div>
+      <div class="issue"><span class="issue-dot">▶</span>Eval Agent Plan disconnected from CI/CD pipeline</div>
+      <div class="issue"><span class="issue-dot">▶</span>No SLA budget defined per hop in agent chain</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="phase-legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--ph1)"></div> Phase 1 · Foundation (Wks 1–8)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--ph2)"></div> Phase 2 · Intelligence & Scale (Wks 9–16)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--ph3)"></div> Phase 3 · Enterprise & Governance (Wks 17–24)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--cross)"></div> Cross-cutting (All Phases)</div>
+</div>
+
+<!-- CROSS-CUTTING CONCERNS -->
+<div class="cross-cutting">
+  <div class="cross-title">⬛ CROSS-CUTTING — ALL PHASES</div>
+  <div class="cross-items">
+    <div class="cross-tag">Microsoft Entra ID</div>
+    <div class="cross-tag">Azure Monitor + App Insights</div>
+    <div class="cross-tag">Azure Key Vault</div>
+    <div class="cross-tag">Azure Policy</div>
+    <div class="cross-tag">Private Endpoints + VNet</div>
+    <div class="cross-tag">AI Content Safety</div>
+    <div class="cross-tag">GitHub Actions CI/CD</div>
+    <div class="cross-tag">Defender for Cloud</div>
+  </div>
+</div>
+
+<!-- PHASES -->
+<div class="phases-container">
+
+  <!-- ===== PHASE 1 ===== -->
+  <div class="phase-block" style="background:var(--ph1-dim);border:1px solid var(--ph1-border);">
+    <div class="phase-header">
+      <div class="phase-num ph1-accent">PHASE 1</div>
+      <div class="phase-name ph1-text">Foundation — Orchestrate & Secure</div>
+      <div class="phase-timeline">Weeks 1–8 · MVP</div>
+      <div class="phase-goal">▶ Goal: Single-agent loop running in prod. Auth, basic memory, guardrails, observability baseline.</div>
+    </div>
+
+    <div class="phase-body">
+
+      <!-- ORCHESTRATION -->
+      <div class="layer">
+        <div class="layer-header" style="background:#00c89610">
+          <span class="layer-icon">🧠</span>
+          <span class="layer-name ph1-text">ORCHESTRATION LAYER</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph1-comp">
+            <div class="component-title">Prompt + Hosted Agent <span class="azure-badge">Azure Container Apps</span></div>
+            <div class="component-desc">Stateless orchestration host. Semantic Kernel or LangChain. Auto-scales 0→N. Revision-based deployments for zero-downtime rollout.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">stateless</span>
+              <span class="tag ph1-text">KEDA-scaled</span>
+              <span class="tag ph1-text">managed identity</span>
+            </div>
+          </div>
+          <div class="component ph1-comp">
+            <div class="component-title">Short-Term Memory <span class="azure-badge">Azure Cache for Redis</span></div>
+            <div class="component-desc">Single-session context window. TTL = session lifetime (default 30 min). JSON serialized. Per-session key isolation.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">TTL-evicted</span>
+              <span class="tag ph1-text">per-session</span>
+            </div>
+          </div>
+          <div class="component ph1-comp">
+            <div class="component-title">HIL — Human in the Loop <span class="azure-badge">Azure Logic Apps</span></div>
+            <div class="component-desc">Approval gates for high-risk actions. Logic Apps Standard with approval email + Teams card. Timeout = 4h → auto-escalate or reject.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">async-gate</span>
+              <span class="tag ph1-text">timeout-policy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GATEWAY & AUTH -->
+      <div class="layer">
+        <div class="layer-header" style="background:#00c89610">
+          <span class="layer-icon">🔐</span>
+          <span class="layer-name ph1-text">GATEWAY & IDENTITY</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph1-comp">
+            <div class="component-title">AI Gateway <span class="azure-badge">Azure APIM</span></div>
+            <div class="component-desc">Single ingress for all LLM calls. Rate limiting, token quota, retry policies, semantic caching. Backends: Azure OpenAI (primary) + fallback.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">rate-limit</span>
+              <span class="tag ph1-text">token-quota</span>
+              <span class="tag ph1-text">semantic-cache</span>
+            </div>
+          </div>
+          <div class="component ph1-comp">
+            <div class="component-title">Unified Auth <span class="azure-badge">Microsoft Entra ID</span></div>
+            <div class="component-desc">Managed Identity for all service-to-service. OAuth2 / OIDC for user-facing APIs. Service Principals for workers. No secrets in code — all via Key Vault refs.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">managed-identity</span>
+              <span class="tag ph1-text">RBAC</span>
+            </div>
+          </div>
+          <div class="component ph1-comp">
+            <div class="component-title">LLM Endpoint <span class="azure-badge">Azure OpenAI Service</span></div>
+            <div class="component-desc">GPT-4o as primary model. PTU (Provisioned Throughput) for latency SLA. APIM handles retry + circuit breaker on 429/503.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">PTU</span>
+              <span class="tag ph1-text">circuit-breaker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUARDRAILS PH1 -->
+      <div class="layer">
+        <div class="layer-header" style="background:#00c89610">
+          <span class="layer-icon">🛡️</span>
+          <span class="layer-name ph1-text">GUARDRAILS (BASELINE)</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph1-comp">
+            <div class="component-title">Content Safety <span class="azure-badge">Azure AI Content Safety</span></div>
+            <div class="component-desc">Input + output screening. Hate, violence, self-harm, sexual categories. Severity thresholds configured per deployment env. Block or warn modes.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">input-screen</span>
+              <span class="tag ph1-text">output-screen</span>
+            </div>
+          </div>
+          <div class="component ph1-comp">
+            <div class="component-title">Observability Baseline <span class="azure-badge">App Insights + Log Analytics</span></div>
+            <div class="component-desc">Distributed tracing (W3C TraceContext). Token usage per request, latency per hop, error rates. Alert rules on P95 > 5s, error rate > 2%.</div>
+            <div class="component-tags">
+              <span class="tag ph1-text">W3C-trace</span>
+              <span class="tag ph1-text">alerts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ===== PHASE 2 ===== -->
+  <div class="phase-block" style="background:var(--ph2-dim);border:1px solid var(--ph2-border);">
+    <div class="phase-header">
+      <div class="phase-num ph2-accent">PHASE 2</div>
+      <div class="phase-name ph2-text">Intelligence & Scale — Multi-Agent + RAG</div>
+      <div class="phase-timeline">Weeks 9–16 · Scale</div>
+      <div class="phase-goal">▶ Goal: Worker registry live, model routing decided, long-term memory + RAG, multi-agent execution.</div>
+    </div>
+
+    <div class="phase-body">
+
+      <!-- MULTI-AGENT -->
+      <div class="layer">
+        <div class="layer-header" style="background:#f59e0b10">
+          <span class="layer-icon">⚡</span>
+          <span class="layer-name ph2-text">MULTI-AGENT EXECUTION</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph2-comp">
+            <div class="component-title">Worker Capability Registry <span class="azure-badge">Azure Service Bus + ACR</span></div>
+            <div class="component-desc">YAML contract schema v1 (name, version, inputs, outputs, SLA, auth-scope). Published to ACR OCI artifacts. Discovery via Service Bus topic. Semantic versioning enforced.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">YAML-contract</span>
+              <span class="tag ph2-text">semver</span>
+              <span class="tag ph2-text">OCI-artifact</span>
+            </div>
+          </div>
+          <div class="component ph2-comp">
+            <div class="component-title">Externally Hosted Workers <span class="azure-badge">Azure Container Apps Jobs</span></div>
+            <div class="component-desc">Command-driven (NOT chat). Each worker: stateless, independently versioned, KEDA scaled. HOW layer — receives structured command payload, returns typed result.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">command-driven</span>
+              <span class="tag ph2-text">stateless</span>
+              <span class="tag ph2-text">typed-I/O</span>
+            </div>
+          </div>
+          <div class="component ph2-comp">
+            <div class="component-title">MCP Tool Layer <span class="azure-badge">Azure Functions (Isolated)</span></div>
+            <div class="component-desc">MCP-compliant tool wrappers. Each tool = 1 Function App. Input/output schema validated via JSON Schema. 30s exec timeout; long-running tasks → Durable Functions.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">MCP-spec</span>
+              <span class="tag ph2-text">schema-validated</span>
+              <span class="tag ph2-text">durable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEMORY & KNOWLEDGE -->
+      <div class="layer">
+        <div class="layer-header" style="background:#f59e0b10">
+          <span class="layer-icon">🗄️</span>
+          <span class="layer-name ph2-text">MEMORY & KNOWLEDGE</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph2-comp">
+            <div class="component-title">Long-Term Memory <span class="azure-badge">Azure Cosmos DB (NoSQL)</span></div>
+            <div class="component-desc">Multi-session persistent store. Per-user + per-agent namespacing. TTL = 90 days default. Cosmos change feed triggers indexing to AI Search.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">multi-session</span>
+              <span class="tag ph2-text">change-feed</span>
+            </div>
+          </div>
+          <div class="component ph2-comp">
+            <div class="component-title">Knowledge Base (RAG) <span class="azure-badge">Azure AI Search + OpenAI Embeddings</span></div>
+            <div class="component-desc">Hybrid search (vector + BM25 keyword). text-embedding-3-large at 3072 dims. Semantic reranking enabled. Index refresh via ADF pipeline on doc change.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">hybrid-search</span>
+              <span class="tag ph2-text">semantic-rank</span>
+              <span class="tag ph2-text">ADF-refresh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL ROUTING -->
+      <div class="layer">
+        <div class="layer-header" style="background:#f59e0b10">
+          <span class="layer-icon">🔀</span>
+          <span class="layer-name ph2-text">MODEL ROUTING (RESOLVED)</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph2-comp">
+            <div class="component-title">Model Router <span class="azure-badge">APIM Policy + Named Values</span></div>
+            <div class="component-desc">Routes by: task_type (reasoning→o1, chat→gpt-4o, summarize→gpt-4o-mini), token budget, latency SLA, PTU availability. Fallback chain: PTU → Pay-as-you-go → secondary region.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">task-routing</span>
+              <span class="tag ph2-text">PTU-first</span>
+              <span class="tag ph2-text">region-failover</span>
+            </div>
+          </div>
+          <div class="component ph2-comp">
+            <div class="component-title">Plan State & Replanning <span class="azure-badge">Azure Cosmos DB + Redis</span></div>
+            <div class="component-desc">Orchestrator persists plan DAG to Cosmos (durable). Active execution state in Redis (fast). Retry policy: 3 attempts with exponential backoff. Fallback = HIL escalation.</div>
+            <div class="component-tags">
+              <span class="tag ph2-text">DAG-plan</span>
+              <span class="tag ph2-text">retry-policy</span>
+              <span class="tag ph2-text">HIL-fallback</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ===== PHASE 3 ===== -->
+  <div class="phase-block" style="background:var(--ph3-dim);border:1px solid var(--ph3-border);">
+    <div class="phase-header">
+      <div class="phase-num ph3-accent">PHASE 3</div>
+      <div class="phase-name ph3-text">Enterprise & Governance — RAI, MLOps, Resilience</div>
+      <div class="phase-timeline">Weeks 17–24 · Enterprise</div>
+      <div class="phase-goal">▶ Goal: Full RAI traceability, feedback-driven retraining, chaos tested, multi-tenant, compliance-ready.</div>
+    </div>
+
+    <div class="phase-body">
+
+      <!-- RAI & TRACEABILITY -->
+      <div class="layer">
+        <div class="layer-header" style="background:#a855f710">
+          <span class="layer-icon">🔍</span>
+          <span class="layer-name ph3-text">RAI & TRACEABILITY</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph3-comp">
+            <div class="component-title">AI Traceability — Decision <span class="azure-badge">Azure AI Foundry Tracing</span></div>
+            <div class="component-desc">Full lineage: prompt → plan → tool calls → model → output. OpenTelemetry spans with semantic conventions. Immutable audit log to Log Analytics. Linked to compliance reports.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">OTel-spans</span>
+              <span class="tag ph3-text">immutable-log</span>
+              <span class="tag ph3-text">lineage</span>
+            </div>
+          </div>
+          <div class="component ph3-comp">
+            <div class="component-title">AI Traceability — Action <span class="azure-badge">Azure AI Foundry + Prompt Shields</span></div>
+            <div class="component-desc">Per-worker action logging with explainability scores. Prompt injection detection (Prompt Shields). Groundedness check on RAG outputs. Confidence thresholds trigger review queue.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">prompt-shields</span>
+              <span class="tag ph3-text">groundedness</span>
+              <span class="tag ph3-text">confidence-gate</span>
+            </div>
+          </div>
+          <div class="component ph3-comp">
+            <div class="component-title">Explainability (RAI) <span class="azure-badge">Azure Responsible AI Dashboard</span></div>
+            <div class="component-desc">Fairness, reliability, privacy metrics dashboards. Error analysis on agent decisions. Automated red-teaming via PyRIT. Monthly RAI scorecard to stakeholders.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">fairness</span>
+              <span class="tag ph3-text">red-team</span>
+              <span class="tag ph3-text">scorecard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MLOPS & FEEDBACK -->
+      <div class="layer">
+        <div class="layer-header" style="background:#a855f710">
+          <span class="layer-icon">🔄</span>
+          <span class="layer-name ph3-text">MLOps & FEEDBACK LOOP</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph3-comp">
+            <div class="component-title">Feedback Learning <span class="azure-badge">Azure ML + Azure AI Foundry</span></div>
+            <div class="component-desc">User signals (thumbs, corrections, escalations) → Event Hub → Azure ML dataset. Fine-tuning pipeline on weekly cadence. A/B evaluation via Prompt Flow eval runs before promotion.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">Event-Hub</span>
+              <span class="tag ph3-text">fine-tune</span>
+              <span class="tag ph3-text">A/B-eval</span>
+            </div>
+          </div>
+          <div class="component ph3-comp">
+            <div class="component-title">Eval Agent Framework <span class="azure-badge">Azure ML Prompt Flow</span></div>
+            <div class="component-desc">Automated golden-set evaluation in CI pipeline. LLM-as-judge + deterministic metrics (F1, BLEU, groundedness). Gate: no promotion if eval score drops > 5%. Results published to ADO dashboard.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">CI-gate</span>
+              <span class="tag ph3-text">LLM-judge</span>
+              <span class="tag ph3-text">ADO-dashboard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTERPRISE RESILIENCE -->
+      <div class="layer">
+        <div class="layer-header" style="background:#a855f710">
+          <span class="layer-icon">🏗️</span>
+          <span class="layer-name ph3-text">ENTERPRISE RESILIENCE</span>
+        </div>
+        <div class="layer-body">
+          <div class="component ph3-comp">
+            <div class="component-title">Multi-Region Active-Active <span class="azure-badge">Azure Traffic Manager + ACA</span></div>
+            <div class="component-desc">Primary: East US 2, Secondary: West Europe. Traffic Manager with health probes. Cosmos DB multi-write regions. AOAI deployments mirrored. RTO &lt; 5min, RPO = 0.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">active-active</span>
+              <span class="tag ph3-text">RTO&lt;5min</span>
+              <span class="tag ph3-text">RPO=0</span>
+            </div>
+          </div>
+          <div class="component ph3-comp">
+            <div class="component-title">Network Isolation <span class="azure-badge">Private Endpoints + Azure Firewall</span></div>
+            <div class="component-desc">All PaaS services via Private Endpoints. Egress via Azure Firewall with FQDN allow-lists. No public internet access from agent workloads. NSG + UDR applied.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">private-endpoint</span>
+              <span class="tag ph3-text">zero-trust</span>
+              <span class="tag ph3-text">NSG+UDR</span>
+            </div>
+          </div>
+          <div class="component ph3-comp">
+            <div class="component-title">Chaos Engineering <span class="azure-badge">Azure Chaos Studio</span></div>
+            <div class="component-desc">Monthly fault injection: AOAI throttling, Redis outage, ACA pod eviction. Validate circuit breakers and fallback paths. Chaos hypotheses tracked in ADO. Results feed SLA reviews.</div>
+            <div class="component-tags">
+              <span class="tag ph3-text">fault-inject</span>
+              <span class="tag ph3-text">circuit-breaker</span>
+              <span class="tag ph3-text">monthly-run</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- DATA FLOW -->
+<div class="dataflow">
+  <div class="section-title">Production Request Flow</div>
+  <div class="flow-diagram">
+
+    <div class="flow-row">
+      <div class="flow-node" style="border-color:var(--ph1-border)">
+        <div class="flow-node-title ph1-text">User / System</div>
+        <div class="flow-node-sub">API call + JWT</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph1-border)">
+        <div class="flow-node-title ph1-text">APIM (AI Gateway)</div>
+        <div class="flow-node-sub">Auth · Rate limit · Cache</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph1-border)">
+        <div class="flow-node-title ph1-text">Content Safety</div>
+        <div class="flow-node-sub">Input screening</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph1-border)">
+        <div class="flow-node-title ph1-text">Orchestrator (ACA)</div>
+        <div class="flow-node-sub">Intent · Plan · State</div>
+      </div>
+    </div>
+
+    <div class="flow-sep">↓ orchestrator dispatches to workers</div>
+
+    <div class="flow-row">
+      <div class="flow-node" style="border-color:var(--ph2-border)">
+        <div class="flow-node-title ph2-text">Worker Registry</div>
+        <div class="flow-node-sub">Capability lookup</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph2-border)">
+        <div class="flow-node-title ph2-text">Model Router</div>
+        <div class="flow-node-sub">Route by task type</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph2-border)">
+        <div class="flow-node-title ph2-text">Worker (ACA Jobs)</div>
+        <div class="flow-node-sub">Execute command</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph2-border)">
+        <div class="flow-node-title ph2-text">Azure OpenAI / Tool</div>
+        <div class="flow-node-sub">Inference / API call</div>
+      </div>
+    </div>
+
+    <div class="flow-sep">↓ results aggregated, logged, returned</div>
+
+    <div class="flow-row">
+      <div class="flow-node" style="border-color:var(--ph3-border)">
+        <div class="flow-node-title ph3-text">RAI Traceability</div>
+        <div class="flow-node-sub">Lineage + audit</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph1-border)">
+        <div class="flow-node-title ph1-text">Content Safety</div>
+        <div class="flow-node-sub">Output screening</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph3-border)">
+        <div class="flow-node-title ph3-text">Feedback Capture</div>
+        <div class="flow-node-sub">Event Hub → ML</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="border-color:var(--ph1-border)">
+        <div class="flow-node-title ph1-text">User / System</div>
+        <div class="flow-node-sub">Typed response</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GUARDRAILS EVERYWHERE -->
+<div class="guardrails-bar">
+  <div class="guard-label">🛡 GUARDRAILS — APPLIED AT EVERY BOUNDARY</div>
+  <div class="guard-items">
+    <div class="guard-item">Input Content Safety</div>
+    <div class="guard-item">Prompt Shields (injection)</div>
+    <div class="guard-item">Schema Validation (I/O)</div>
+    <div class="guard-item">Token Budget Enforcement</div>
+    <div class="guard-item">Groundedness Check</div>
+    <div class="guard-item">Output Content Safety</div>
+    <div class="guard-item">RAI Confidence Threshold</div>
+    <div class="guard-item">HIL Escalation Gate</div>
+  </div>
+</div>
+
+<!-- WORKER CONTRACT -->
+<div class="dataflow" style="margin-top:32px">
+  <div class="section-title">Worker Contract Properties (Each Worker Must Satisfy)</div>
+  <div class="worker-props">
+    <div class="worker-prop"><span class="worker-prop-icon">◻</span>Stateless — no local state between invocations</div>
+    <div class="worker-prop"><span class="worker-prop-icon">⬆</span>Horizontally scalable — KEDA or ACA autoscale</div>
+    <div class="worker-prop"><span class="worker-prop-icon">📦</span>Independently deployable — separate ACA revision</div>
+    <div class="worker-prop"><span class="worker-prop-icon">🏷</span>Semantically versioned — registry contract enforced</div>
+    <div class="worker-prop"><span class="worker-prop-icon">🔐</span>Auth via Managed Identity — no credentials in image</div>
+    <div class="worker-prop"><span class="worker-prop-icon">📋</span>Typed I/O schema — JSON Schema in registry YAML</div>
+    <div class="worker-prop"><span class="worker-prop-icon">⏱</span>SLA declared — timeout + latency budget in contract</div>
+    <div class="worker-prop"><span class="worker-prop-icon">📊</span>OTel instrumented — spans emitted per invocation</div>
+  </div>
+</div>
+
+<!-- SLA TARGETS -->
+<div class="dataflow" style="margin-top:32px">
+  <div class="section-title">SLA Budget Per Hop</div>
+  <div class="sla-grid">
+    <div class="sla-card">
+      <div class="sla-label">APIM GATEWAY P95</div>
+      <div class="sla-value ph1-text">&lt;50ms</div>
+      <div class="sla-sub">Auth + routing overhead</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">CONTENT SAFETY P95</div>
+      <div class="sla-value ph1-text">&lt;200ms</div>
+      <div class="sla-sub">Input + output screen</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">ORCHESTRATOR P95</div>
+      <div class="sla-value ph2-text">&lt;500ms</div>
+      <div class="sla-sub">Plan + dispatch (excl. LLM)</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">LLM INFERENCE P95</div>
+      <div class="sla-value ph2-text">&lt;8s</div>
+      <div class="sla-sub">PTU deployment, streaming</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">WORKER EXEC P95</div>
+      <div class="sla-value ph2-text">&lt;30s</div>
+      <div class="sla-sub">Durable for longer tasks</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">E2E AGENT TURN P95</div>
+      <div class="sla-value ph3-text">&lt;15s</div>
+      <div class="sla-sub">Single-hop, streaming UX</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">AVAILABILITY TARGET</div>
+      <div class="sla-value ph3-text">99.9%</div>
+      <div class="sla-sub">Multi-region active-active</div>
+    </div>
+    <div class="sla-card">
+      <div class="sla-label">HIL ESCALATION RTO</div>
+      <div class="sla-value" style="color:var(--guard)">&lt;4h</div>
+      <div class="sla-sub">Timeout → auto-reject</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Azure AI Agent Architecture · Production Grade · 3-Phase Delivery · April 2026<br>
+  Azure OpenAI · APIM · Container Apps · Cosmos DB · AI Search · Entra ID · AI Foundry · Monitor
+</footer>
+
+</body>
+</html>

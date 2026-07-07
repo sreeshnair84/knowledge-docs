@@ -6,7 +6,7 @@ title: Agentic AI Security Architecture & Multi-Layer Guardrails
 
 > **Current as of July 2026.** This guide covers the full threat catalog for multi-agent AI systems, the multi-layer guardrail architecture, and how the world's leading technology companies and consultancies implement production-grade AI security. For agent credential identity (SPIFFE/SPIRE, IETF AIMS, Entra Agent ID), see [Agentic AI Security & Identity](agentic-ai-security-identity.md). This guide covers the behavioral and architectural layers above identity.
 
-!!! warning "See Also: Identity is Layer 1"
+:::warning See Also: Identity is Layer 1
     [Agentic AI Security & Identity](agentic-ai-security-identity.md) covers the credential and identity stack (SPIFFE/SPIRE, OWASP ASI01–ASI10, bounded autonomy, HITL). This guide covers all 18 threat classes with their architectural controls, the 14-layer guardrail map, and how tech giants operationalize these defenses at scale.
 
 ---
@@ -152,7 +152,7 @@ Every guardrail in a production system must:
 | **Governance** | Release gates (eval thresholds must pass); registry enforcement | Continuous eval drift monitoring |
 | **Compliance** | Residency routing; retention/legal hold; audit completeness checks | Automated compliance-evidence classification |
 
-!!! tip "Architect's heuristic"
+:::tip Architect's heuristic
     Map each threat from Section 2 to the layers that address it. Gaps where no layer covers a threat class are architecture risks. Most critical gap pattern: memory and context layers are often the weakest in early deployments — teams build input/output guardrails first and neglect the persistence plane.
 
 ---

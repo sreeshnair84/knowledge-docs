@@ -6,7 +6,7 @@ title: Performance Engineering for Agentic Applications
 
 A comprehensive performance reference for AI Platform Teams and Principal Architects covering metrics taxonomy, optimization techniques, and profiling methodology from browser rendering through LLM inference for agentic UIs.
 
-!!! note "Related Guides"
+:::note Related Guides
     - Reliability under load (circuit breakers, degradation): [`reliability-engineering.md`](reliability-engineering.md)
     - Scaling for throughput (caching, queues, autoscaling): [`scalability-engineering.md`](scalability-engineering.md)
     - OTel GenAI observability spans: [`../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md`](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
@@ -171,7 +171,7 @@ Total TTFT: ~400ms (best) to ~2,600ms (worst case with RAG)
 | Self-hosted 7B (vLLM, A100) | 100ms | 250ms | 120 tok/s | Low-latency on-prem |
 | Self-hosted 70B (vLLM, 2×H100) | 350ms | 800ms | 80 tok/s | High-capability on-prem |
 
-!!! tip "Model Routing for TTFT"
+:::tip Model Routing for TTFT
     Route the planning phase to claude-haiku-4-5 (TTFT ~150ms) and execution to Claude claude-sonnet-4-5. This cuts planning latency by 60% vs using Sonnet for everything, without impacting execution quality for most tasks.
 
 ---

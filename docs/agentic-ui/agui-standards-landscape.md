@@ -6,7 +6,7 @@ title: AGUI Standards & Ecosystem Landscape
 
 Principal AI Architects and AI Platform Teams will find here the authoritative technical reference for every protocol, standard, and framework in the agentic UI ecosystem as of July 2026 — including AG-UI, A2UI v0.9, MCP Apps, NLWeb, OpenAI Apps SDK, and Microsoft Agent Framework 1.0, with production code examples, a 15-framework comparison matrix, and a selection decision tree.
 
-!!! info "Protocol Maturity Status — July 2026"
+:::info Protocol Maturity Status — July 2026
     AG-UI: production-ready open standard. A2UI: v0.9 experimental (Google). NLWeb: production open project (Microsoft). MCP Apps: production (CopilotKit/Anthropic ecosystem). OpenAI Apps SDK: production (later standardized into MCP Apps). Microsoft Agent Framework 1.0: production-ready (released April 2026). Amazon Bedrock AgentCore AG-UI support: infrastructure-level production.
 
 ---
@@ -400,7 +400,7 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
 | **Rate limiting** | Not in base spec | Implement per-user token budget at middleware layer |
 | **Audit logging** | Not in base spec | Emit all AG-UI events to append-only audit log with OTel correlation |
 
-!!! warning "CUSTOM Event Injection Risk"
+:::warning CUSTOM Event Injection Risk
     A compromised tool API or malicious MCP server could inject arbitrary CUSTOM events into the AG-UI stream, including A2UI surfaces with fraudulent approval buttons. Always validate CUSTOM event payloads against registered schemas before rendering. Never render unvalidated declarative UI from untrusted sources.
 
 ### 2.10 Code Examples
@@ -837,7 +837,7 @@ A2UI (Agent-to-UI) is a declarative specification developed by Google for genera
 | Browser support | Host-dependent | Spec does not define minimum browser targets |
 | Mobile support | Theoretical — no reference mobile renderer | Requires per-platform implementation |
 
-!!! warning "A2UI v0.9 — Use with Caution in Production"
+:::warning A2UI v0.9 — Use with Caution in Production
     A2UI is experimental. For production enterprise deployments, either implement static/typed generative UI (using AG-UI CUSTOM events with your own component registry) or adopt A2UI with explicit version pinning and a migration plan for the 1.0 breaking changes.
 
 ---
@@ -1084,7 +1084,7 @@ Cloudflare added native NLWeb support via AutoRAG in early 2026. This allows any
 
 ### 5.4 Governance Considerations
 
-!!! warning "Public Exposure Risk"
+:::warning Public Exposure Risk
     Every NLWeb instance is, by design, publicly queryable as an MCP server. This makes previously navigational-only website content fully extractable by any agent that discovers the MCP endpoint. Organizations must review their website content against data classification policies before enabling NLWeb.
 
 | Governance Concern | Mitigation |
@@ -1453,5 +1453,5 @@ Testing
   [ ] HITL approval latency test (P99 approval round-trip)
 ```
 
-!!! tip "Cross-Reference: Observability"
+:::tip Cross-Reference: Observability
     For OTel span schema specific to AG-UI events (run spans, step spans, tool call spans), see [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md). For security hardening beyond this page, see [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) OWASP ASI mapping.

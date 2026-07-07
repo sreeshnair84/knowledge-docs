@@ -8,7 +8,7 @@ title: AI Alignment & Control
 **Purpose:** Compare alignment techniques (RLHF, RLAIF, CAI, Debate, Recursive Oversight), define agent alignment requirements, and design AI control systems that prevent goal drift and unsafe autonomous behavior.  
 **Related:** [Constitutional AI Engineering](constitutional-ai-engineering.md) · [AI Safety Framework](ai-safety-framework.md) · [Constitutional Agent Architecture](constitutional-agent-architecture.md) · [DeepMind Control](../ai-security-governance/deep-mind/index.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     AI alignment is an active research area with new techniques emerging regularly. This document covers production-proven techniques and those approaching production readiness as of July 2026. Speculative or purely research-stage approaches are noted as such.
 
 ---

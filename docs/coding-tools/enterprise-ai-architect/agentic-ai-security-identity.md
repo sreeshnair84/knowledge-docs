@@ -6,7 +6,7 @@ title: Agentic AI Security & Agent Identity
 
 > **Current as of July 2026.** This guide covers the OWASP Top 10 for Agentic Applications 2026, the emerging agent identity stack (SPIFFE/SPIRE, IETF AIMS, Entra Agent ID), bounded autonomy frameworks, and a reference security architecture for regulated enterprises deploying AI agents.
 
-!!! info "This guide covers the identity and credential layer (Layer 1)"
+:::info This guide covers the identity and credential layer (Layer 1)
     For the full 18-threat catalog with prevent/detect/mitigate/recover columns, the 14-layer guardrail map, and how Google/Microsoft/AWS/Salesforce implement production agentic AI security, see [Security Architecture & Guardrails](agentic-ai-security-guardrails.md).
 
 ---

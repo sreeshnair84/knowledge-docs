@@ -6,7 +6,7 @@ title: Observability for Agentic Applications
 
 A reference guide for AI Platform Teams and Enterprise Architects on the full observability stack for agentic systems — from distributed tracing and AG-UI stream telemetry through frontend RUM, LLM cost attribution, safety signal monitoring, and business analytics.
 
-!!! note "Build on the OTel GenAI foundation"
+:::note Build on the OTel GenAI foundation
     This guide extends the OpenTelemetry GenAI semantic conventions, the 5-dashboard reference set, and burn rate alerting strategy defined in [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md). Read that guide first — this file builds the AGUI/streaming/UX telemetry layer on top of that foundation without re-explaining OTel span semantics, semantic conventions, or the dashboard scaffolding already covered there.
 
 ---
@@ -203,7 +203,7 @@ Sub-agent returns response:
   Returns traceparent in response headers (optional)
 ```
 
-!!! warning "A2A Trace Propagation Anti-Pattern"
+:::warning A2A Trace Propagation Anti-Pattern
     Never create a new root trace when receiving an A2A delegation. A new root severs the causal chain and makes the trace useless for debugging multi-agent failures. Always extract the incoming `traceparent` header and create a child span.
 
 ### 2.4 Sampling Strategy
@@ -827,7 +827,7 @@ For OWASP ASI01–ASI10 security controls and guardrail policy design, see [Agen
 | **SEV-3 Safety** | Unusual policy trigger pattern | 1 hour | AI Security team |
 | **Informational** | New user attempting restricted action | Next business day | Analyst review |
 
-!!! warning "Safety Observability is a Compliance Requirement"
+:::warning Safety Observability is a Compliance Requirement
     Under EU AI Act Article 26 and most financial regulators, safety event logs must be immutable, timestamped, and retained for audit. Route safety events through a separate write-once log store (append-only S3 with object lock or equivalent). Never co-mingle with performance logs on the same 30-day retention pipeline.
 
 ---
@@ -987,7 +987,7 @@ groups:
 | **Braintrust** | Experiment + trace | Full eval platform: test datasets, CI integration | Per experiment | No | No | Eval-first teams; dataset management |
 | **Phoenix (Arize OSS)** | OTel/OpenInference | LLM evals, UMAP embedding visualization | Free | Yes | Yes | Local dev, OSS-first |
 
-!!! tip "Recommended Enterprise Stack"
+:::tip Recommended Enterprise Stack
     For most enterprises: **Langfuse** (LLM observability, self-hosted) + **Grafana + Prometheus** (infrastructure metrics) + **Grafana Tempo** (distributed traces). This stack is fully open source, self-hostable for data sovereignty, and covers all four observability pillars. Add **Braintrust** for advanced eval pipelines or **Arize AI** for embedding drift detection.
 
 ---

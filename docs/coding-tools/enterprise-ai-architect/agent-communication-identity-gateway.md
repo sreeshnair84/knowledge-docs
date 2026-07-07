@@ -28,7 +28,7 @@ title: Agent Communication, Identity, Authorization & AI Gateway
 
 ### 1.2 Delivery Semantics and Distributed Consistency
 
-!!! danger "Exactly-once delivery does not exist end-to-end"
+:::danger Exactly-once delivery does not exist end-to-end
     Production systems achieve **effectively-once processing** = at-least-once delivery + **idempotent consumers**. Everything below follows from accepting this.
 
 **Idempotency keys on every mutating tool call** (Stripe's pattern): `key = hash(task_id, step_id, action_fingerprint)`; tool backends dedupe. This single control neutralizes retry storms, duplicate deliveries, and replay after checkpoint resume.
@@ -149,7 +149,7 @@ Without a gateway, every team wires model credentials into app code: no unified 
 | **Tenant isolation** | Per-tenant keys, headers, quotas, caches; no cross-tenant batching |
 | **Context validation** | Enforce context budget, reject over-window, verify required policy header present (tamper-evident system-prompt hash) |
 
-!!! tip "Sizing / HA"
+:::tip Sizing / HA
     The gateway is on the hot path of every token — engineer it like an L7 load balancer: stateless, horizontally scaled, p99 added-latency budget < 20–30 ms *excluding* safety models. Run heavy classifiers async-parallel with fast deterministic checks inline.
 
 ---

@@ -81,7 +81,7 @@ requested_token_use=on_behalf_of
 scope=https://graph.microsoft.com/Mail.Read
 ```
 
-!!! warning "Key Constraint"
+:::warning Key Constraint
     The output token is bounded by the intersection of (user permissions) AND (agent-granted scopes). The agent **cannot escalate** beyond what the user already has.
 
 ---
@@ -122,7 +122,7 @@ Step 2: Agent Identity performs OBO exchange using T1 + Tc
 Step 3: Agent calls resource API with resulting delegated token
 ```
 
-!!! warning "Production Credential Rule"
+:::warning Production Credential Rule
     Client secrets **MUST NOT** be used in production. Use Federated Identity Credentials (FIC) with Managed Identity (MSI) as the credential for Agent Identity Blueprints.
 
 ### 3.3 Supported Grant Types for Agent Entities
@@ -134,7 +134,7 @@ Step 3: Agent calls resource API with resulting delegated token
 | `refresh_token` | Agent Identity | Background long-running tasks; maintain user context across sessions |
 | `user_fic` | Agent Identity | Agent's user account impersonation (mailbox, calendar scenarios) |
 
-!!! warning "No Interactive Flows for Agents"
+:::warning No Interactive Flows for Agents
     Interactive `/authorize` flows are **EXPLICITLY BLOCKED** for agent entities. Redirect URIs are not supported. All auth occurs programmatically via token exchange.
 
 ### 3.4 Microsoft Entra Agent ID — Governance Capabilities
@@ -214,7 +214,7 @@ Graph API is the primary target for M365 user-delegated access. The agent must u
 | `User.Read` | Read signed-in user profile | Always needed; low risk |
 | `.default` | All pre-consented admin scopes | **AVOID for 3LO** — use minimal explicit scopes |
 
-!!! note "Best Practice"
+:::note Best Practice
     Request only the scope needed for the current task. Use incremental consent to add scopes as needed.
 
 ### 5.2 GitHub Enterprise (GHE) — OAuth App / GitHub App
@@ -263,7 +263,7 @@ API Call:
 | `offline_access` | **REQUIRED** to receive `refresh_token` for background agent operation |
 | `manage:jira-configuration` | Admin config — **AVOID** unless explicitly needed |
 
-!!! note "Atlassian Scope Behaviour"
+:::note Atlassian Scope Behaviour
     User permissions always constrain the app. If a user lacks "Administer Jira", the agent cannot administer Jira even if the scope is granted. Least privilege is automatic.
     
     Rotating refresh tokens: each use issues a new `refresh_token`. The gateway must store the latest one atomically.
@@ -339,7 +339,7 @@ Client-Initiated Backchannel Authentication (CIBA) is an OAuth 2.0 extension for
 | 5 | Agent polls token endpoint; receives approval token or rejection |
 | 6 | Agent proceeds (or aborts) based on user decision |
 
-!!! warning "CIBA Requirement"
+:::warning CIBA Requirement
     Actions like sending bulk emails, deleting resources, or financial transfers should **ALWAYS** route through CIBA. Design the agent's tool catalog with explicit risk tiers.
 
 ---

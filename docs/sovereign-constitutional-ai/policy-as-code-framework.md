@@ -8,7 +8,7 @@ title: Policy-as-Code Framework
 **Purpose:** Design the complete policy-as-code framework for AI governance — OPA/Rego, Cedar, OpenFGA, and PBAC — including the constitution-to-code pipeline and the Responsible AI Control Library.  
 **Related:** [Constitutional AI Engineering](constitutional-ai-engineering.md) · [Constitutional Agent Architecture](constitutional-agent-architecture.md) · [Policy & Authorization](../ai-security-governance/policy/index.md) · [Machine-Readable EA](../coding-tools/enterprise-ai-architect/machine-readable-ea.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     This document extends the OPA/Cedar coverage in [Policy & Authorization](../ai-security-governance/policy/index.md) and [Machine-Readable EA](../coding-tools/enterprise-ai-architect/machine-readable-ea.md) with the **constitutional policy engineering** layer — transforming high-level AI constitutional principles into executable runtime policies. For foundational OPA/Cedar syntax and patterns, see those documents.
 
 ---

@@ -625,7 +625,7 @@ IDENCE    ├──────────────┼───────�
 
 ### 4.2 Calibration Considerations
 
-!!! warning "Overconfidence is a UX hazard"
+:::warning Overconfidence is a UX hazard
     LLM confidence scores are frequently miscalibrated — a model that says 85% confidence may be right only 60% of the time in your domain. Always validate calibration on your golden dataset before displaying numeric confidence to users. Miscalibrated confidence erodes trust faster than no confidence display.
 
 | Domain | Calibration Risk | Recommendation |
@@ -778,7 +778,7 @@ For autonomous workflows generating multiple pending approvals:
 | Escalation wait | Configurable | Routes to backup approver |
 | Final timeout | Configurable | Task cancelled. Audit log entry. |
 
-!!! note "Escalation Chain Design"
+:::note Escalation Chain Design
     Define a 3-level escalation chain for every autonomous task: primary approver → manager → task owner. Undeclared escalation chains are an operational risk for long-running autonomous workflows. See [HITL patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md).
 
 ---
@@ -1132,8 +1132,8 @@ Use fill level (progress bar) as the primary encoding. Color is secondary. Text 
 
 ---
 
-!!! tip "Getting Started with UX Pattern Selection"
+:::tip Getting Started with UX Pattern Selection
     For a new agentic application, start with the **Copilot Pattern Taxonomy** (Section 1) to identify your deployment archetype, then use the **Decision Framework** guide at [decision-frameworks.md](decision-frameworks.md) for technology selection. For lifecycle planning, see [application-lifecycle.md](application-lifecycle.md).
 
-!!! note "Protocol Reference"
+:::note Protocol Reference
     AG-UI event types referenced throughout this document (`TEXT_MESSAGE_CONTENT`, `TOOL_CALL_START`, `STATE_SNAPSHOT`, etc.) are specified in the AG-UI open protocol. MCP integration patterns are detailed in [MCP Deep Research 2026](../ai-protocols/mcp/MCP_Deep_Research_2026.md).

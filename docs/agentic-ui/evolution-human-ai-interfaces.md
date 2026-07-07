@@ -6,7 +6,7 @@ title: Evolution of Human-AI Interfaces
 
 Enterprise Architects and Principal AI Architects will find here the definitive analysis of how human-computer interaction paradigms have evolved from the 1970s WIMP model to 2027 autonomous enterprise applications — with specific focus on the architectural and UX failures of each era that created the conditions for the next.
 
-!!! info "Why This Matters for Architecture Decisions"
+:::info Why This Matters for Architecture Decisions
     Understanding the evolutionary arc is not academic. Each generation of interface paradigm introduced constraints that were only fully understood when trying to build the next. The architects designing agentic applications in 2026 are repeating the mistakes of the chatbot era unless they explicitly account for the 12 fundamental limitations of conversational UI documented in §2 below.
 
 ---
@@ -332,7 +332,7 @@ Organizations that deploy enterprise agents on top of chat interfaces report thr
 
 **Pattern 3 — Compliance failure.** Chat logs do not capture tool call arguments, authorization context, or the agent's reasoning for individual decisions. Audit requirements for regulated industries (DORA, MiFID II, HIPAA) cannot be satisfied by chat transcripts alone.
 
-!!! warning "Anti-Pattern: Chat as Universal Interface"
+:::warning Anti-Pattern: Chat as Universal Interface
     Deploying production enterprise agents on a pure chat interface is an architectural debt that compounds. Each agent capability added (tool use, multi-step planning, HITL) requires a workaround that bypasses the chat model's limitations. The correct architectural decision is to implement AG-UI as the transport layer from the start. See [AGUI Standards & Ecosystem Landscape](agui-standards-landscape.md) for the migration path from chat to AG-UI.
 
 ---
@@ -708,7 +708,7 @@ Each anti-pattern carries measurable enterprise costs. The following estimates a
 | AP#9 Ghost Actions + AP#12 No Undo | Irreversible state corruption in 1-3% of agent runs in production | Post-incident analysis from early enterprise deployments |
 | AP#18 Consent Afterthought | Regulatory exposure: GDPR, CCPA, EU AI Act Art. 9 | Regulatory enforcement actions 2024-2026 |
 
-!!! tip "Prioritization for Existing Systems"
+:::tip Prioritization for Existing Systems
     If you are retrofitting an existing chat-based agent system, prioritize eliminating AP#12 (No Undo), AP#9 (Ghost Actions), and AP#4 (Approval-as-Message) first. These three anti-patterns carry the highest combined risk of irreversible harm and regulatory exposure.
 
 ---
@@ -795,7 +795,7 @@ Level 5 — Ambient Enterprise Intelligence
   Requires: comprehensive consent architecture, interrupt budget, full audit trail
 ```
 
-!!! warning "Premature Autonomy"
+:::warning Premature Autonomy
     Organizations that deploy HOOL or Invisible AI patterns before establishing validated agent reliability (Level 3 threshold) at Level 2 create operational and compliance risk. The maturity progression is not optional — each level builds the evidence base required for the next.
 
 ---

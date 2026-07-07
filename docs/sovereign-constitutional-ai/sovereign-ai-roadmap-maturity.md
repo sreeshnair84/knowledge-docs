@@ -205,7 +205,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 
 ## 5. Principal AI Governance Architect Interview Guide (Deliverable 23)
 
-!!! info "How to use this guide"
+:::info How to use this guide
     This guide covers all major interview question patterns for senior AI governance architecture roles: Principal AI Governance Architect, Chief AI Governance Officer, Distinguished AI Architect (Governance), Head of Responsible AI, and AI Risk Architecture Lead. Questions are organized by type, with expected answer structures and follow-up questions interviewers use to probe deeper.
 
 ### 5.1 Role Levels and Interview Depth

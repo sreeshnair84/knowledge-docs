@@ -8,7 +8,7 @@ title: AI Safety Framework
 **Purpose:** Define a comprehensive AI safety engineering framework — from responsible scaling policies and frontier safety through the 5-layer safety stack, kill switch architecture, and safe degradation design.  
 **Related:** [AI Alignment & Control](ai-alignment-control.md) · [AI Risk Taxonomy](ai-risk-taxonomy.md) · [Constitutional Agent Architecture](constitutional-agent-architecture.md) · [Agentic AI Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     Responsible Scaling Policies (RSPs) and Frontier Safety Frameworks (FSFs) are now published by all major frontier AI labs (Anthropic, Google DeepMind, OpenAI). Enterprise AI safety must align with these frameworks while adding operational governance not covered by lab-level policies.
 
 ---

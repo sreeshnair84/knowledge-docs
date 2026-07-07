@@ -6,7 +6,7 @@ title: AI Harness Architecture & Multi-Agent Orchestration
 
 > **Current as of July 2026.** This guide covers the AI harness — the deterministic software shell that turns a non-deterministic model into an accountable system component — its full runtime component catalog, the end-to-end task lifecycle, trust boundaries, and the complete orchestration pattern comparison. It is Volume 1 of the harness architecture series; companion guides: [MCP & A2A Protocol Deep Dive](mcp-a2a-protocol-deep-dive.md), [Memory & Planning Architecture](agent-memory-planning-architecture.md), [Security Architecture & Guardrails](agentic-ai-security-guardrails.md), and [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md).
 
-!!! info "State of the world (July 2026)"
+:::info State of the world (July 2026)
     MCP finalized spec is 2025-11-25; the 2026-07-28 release (stateless core, Extensions framework, Tasks, MCP Apps) finalizes this month. A2A is at v1.x under the Linux Foundation's Agentic AI Foundation with 150+ organizations in production. AWS Bedrock AgentCore, Azure AI Foundry Agent Service, and Google's Gemini Enterprise Agent Platform (ex-Vertex AI) are GA managed agent runtimes, all supporting MCP and A2A. Design against these baselines.
 
 ---
@@ -74,7 +74,7 @@ Layered view (top to bottom):
 7. **Data plane** — vector stores, knowledge graphs, document stores, object storage, transactional systems.
 8. **Cross-cutting** — identity fabric (SPIFFE/OIDC/STS), telemetry, cost, secrets.
 
-!!! tip "Design rule: arrows only cross planes through mediation"
+:::tip Design rule: arrows only cross planes through mediation
     Agents never call models or tools directly; supervisors never touch data stores except through registered tools. Every plane crossing is an identity + policy + telemetry checkpoint. If a proposed integration bypasses the mediation plane, it is an architecture defect, not a shortcut.
 
 ---
@@ -128,7 +128,7 @@ Enumerate and defend these boundaries explicitly — they feed the threat model 
 | **TB7** | Tenant ↔ Tenant | Session-scoped compute, per-tenant keys/namespaces, no shared caches without cache-scope keys |
 | **TB8** | Runtime ↔ Infrastructure | No instance-profile ambient creds inside sandboxes; egress proxy; syscall filtering |
 
-!!! danger "Key doctrine"
+:::danger Key doctrine
     Any content that entered the context window from outside the trust boundary (web pages, retrieved docs, tool results, other agents' messages) is **data, never instructions** — but the model cannot reliably enforce that distinction, so the harness must constrain what a possibly-hijacked agent can do. **Least privilege beats detection.**
 
 ---

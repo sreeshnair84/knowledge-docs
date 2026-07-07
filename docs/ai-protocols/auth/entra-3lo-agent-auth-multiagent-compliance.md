@@ -53,7 +53,7 @@ RFC 8693 token exchange supports the `act` claim in the resulting JWT, which car
 // Log the full JWT payload (minus sensitive fields) for audit
 ```
 
-!!! warning "RFC 8693 Attack Vector"
+:::warning RFC 8693 Attack Vector
     A compromised intermediary can present a valid `subject_token` and a valid `actor_token` from **different** delegation contexts. The auth server cannot detect this without cryptographic binding. Mitigation: short token TTL + audience binding (RFC 8707) + `correlation_id` logged at every hop.
 
 ### 19.3 Practical Multi-Agent Pattern — Scope Attenuation Ladder
@@ -67,7 +67,7 @@ Until the IETF OAuth WG formalises cryptographic chain binding, the pragmatic pr
 | 2 — Sub-Agent | Sub-Agent Agent Identity | Receives T_orch; exchanges via OBO to T_sub | Passes T_sub to Tool/API | Further narrow: only scope for this specific tool call |
 | 3 — Tool/API | Resource server (Jira, Graph) | Receives T_sub; validates audience + scope | Executes API call | User permissions always constrain regardless of scope on token |
 
-!!! warning "Mandatory Rule"
+:::warning Mandatory Rule
     Scope attenuation is a MUST at each hop. Never pass an orchestrator's full scope to a sub-agent. Each exchange should request only what is needed for the immediate task. This is the primary defence against excessive agency in multi-agent pipelines.
 
 ### 19.4 Correlation & Audit Across Agent Hops
@@ -135,7 +135,7 @@ The MCP specification mandates OAuth 2.1 for all remote (HTTP) MCP servers:
 | 6 | MCP Client | Includes Bearer token in all subsequent calls to MCP server |
 | 7 | MCP Server | Validates token: signature, expiry, audience == this server's URI |
 
-!!! note "MCP 2025-11-05 Additions"
+:::note MCP 2025-11-05 Additions
     Mandatory PKCE for all clients, Client ID Metadata Documents (CIMD) as preferred registration method, step-up authorisation for incremental scope consent. All compatible with the 3LO pattern in this document.
 
 ### 20.2 How A2A Auth Works (v1.0)
@@ -225,7 +225,7 @@ The EU AI Act (applicable August 2026 for high-risk systems) intersects with DOR
 | Data governance (Art. 10) | Training data and input data quality | Scoped tokens limit what data agent can read. `read:jira-work` scope prevents agent from accessing financial core systems via the same identity. |
 | Conformity assessment (Art. 43) | Third-party assessment for high-risk systems | Entra Agent ID, AC Gateway, and credential vault are in-scope for conformity assessment if agent system is classified high-risk. |
 
-!!! warning "Practical Advice"
+:::warning Practical Advice
     If agents are used for customer-facing decisions (fraud flagging, service actions), classify as high-risk early and design to EU AI Act Art. 14 (human oversight) from the start. Retrofitting human oversight into a production agent is significantly harder than designing it in.
 
 ---

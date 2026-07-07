@@ -6,7 +6,7 @@ title: Governance for Agentic Applications
 
 **Audience:** Enterprise Architects, Principal AI Architects, AI Platform Teams, and AI Governance Leads who must design, operate, and audit the governance structures for production agentic UIs and applications — covering decision rights, ownership, processes, and maturity progression across all 16 governance domains.
 
-!!! note "Scope Boundary"
+:::note Scope Boundary
     This file covers governance **structures, processes, and decision rights**. Compliance requirements (EU AI Act obligations, NIST AI RMF, ISO 42001 conformity assessment) are covered in [responsible-ai.md](responsible-ai.md). Regulatory framework details are in [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md).
 
 ---
@@ -1128,12 +1128,12 @@ The following anti-patterns represent governance failures observed in enterprise
 
 ---
 
-!!! tip "Getting Started: Governance Implementation Roadmap"
+:::tip Getting Started: Governance Implementation Roadmap
     **Year 1 (Foundation):** Establish PAB and ARB; implement prompt versioning; create agent registry; define tool capability classification; establish basic audit logging.
     **Year 2 (Standardization):** Deploy policy-as-code; implement memory governance; automate compliance evidence collection; complete model governance process.
     **Year 3 (Optimization):** Full governance automation; continuous compliance dashboard; self-assessing governance maturity; governance as competitive advantage.
 
-!!! note "Related Guides"
+:::note Related Guides
     - [Responsible AI for Agentic Applications](responsible-ai.md) — RAI principles, EU AI Act compliance requirements, OWASP LLM Top 10
     - [Security Architecture for Agentic Applications](security-architecture.md) — Security controls, threat models, AGUI-specific security
     - [Identity & Auth Architecture](identity-auth-architecture.md) — Identity types, OAuth flows, authorization models

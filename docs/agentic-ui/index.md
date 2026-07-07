@@ -8,7 +8,7 @@ title: Agentic UI & Applications
 **Purpose:** Definitive reference for designing, selecting, and deploying agentic user-interface protocols, standards, frameworks, and production architectures through 2027.  
 **Related:** [AI Protocols Overview](../ai-protocols/index.md) · [MCP Deep Research 2026](../ai-protocols/mcp/MCP_Deep_Research_2026.md) · [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md) · [Enterprise AI Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
 
-!!! info "Research Program: Current as of July 2026"
+:::info Research Program: Current as of July 2026
     This section covers the Agentic UI & Applications knowledge domain. Protocol versions covered: AG-UI (open standard, production), A2UI v0.9 (Google, experimental), NLWeb (Microsoft open project), MCP Apps (production), OpenAI Apps SDK. Backend integrations current to July 2026 include LangGraph, CrewAI, Microsoft Agent Framework 1.0, Google ADK, AWS Bedrock AgentCore, Mastra, PydanticAI, Agno, LlamaIndex, AG2. CopilotKit raised $27M to make AG-UI the enterprise standard for in-app AI agents.
 
 ---
@@ -251,7 +251,7 @@ KEY PROTOCOL RELATIONSHIPS
 
 ## What This Section Does NOT Duplicate
 
-!!! note "Scope Boundaries"
+:::note Scope Boundaries
     The following content lives in other sections. This section cross-references these resources but does not reproduce their core content.
 
 - **MCP protocol deep dive** (transport, tool lifecycle, server implementation, registry) → [MCP Deep Research 2026](../ai-protocols/mcp/MCP_Deep_Research_2026.md)

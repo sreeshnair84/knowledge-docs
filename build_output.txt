@@ -1,0 +1,541 @@
+
+> knowledge-docs@1.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[90m[[90mwebpackbar[90m][39m [36mi[39m Compiling Client
+[90m[[90mwebpackbar[90m][39m [36mi[39m Compiling Server
+[90m[[90mwebpackbar[90m][39m [32m√[39m Server: Compiled with some errors in 31.29s
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\agentic-ai-security-guardrails.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\coding-tools\github-copilot\git-github-platform-engineering-handbook.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\ai-economics\ai-value-creators-synthesis.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\ai-foundations\agentic_ai_landing_zone_architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\cloud-platforms\aws\bedrock-agentcore-code-interpreter-architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\governance.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\evaluation-framework.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\agentic-ai-security-identity.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\cloud-platforms\iac\terraform\ai-assisted-iac-mastery.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\anti-patterns.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\machine-readable-ea.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\enterprise-architecture\index.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\ai-protocols\auth\entra-3lo-agent-auth-security-review.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\cloud-platforms\iac\terraform\terraform-mastery-guide.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\ai-protocols\mcp\MCP_Deep_Research_2026.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\index.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\index.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\coding-tools\claude\ccaf-exam-prep-complete.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\Srees\project\knowledge-docs\node_modules\@docusaurus\mdx-loader\lib\index.js??ruleSet[1].rules[8].use[0]!C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\agent-ux-patterns.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/javascript/JavascriptModule -> webpack/lib/errors/ModuleBuildError -> Error -> VFileMessage
+[90m[[90mwebpackbar[90m][39m [32m√[39m Client: Compiled with some errors in 1.64m
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\agent-ux-patterns.md"
+Cause: Unexpected character `2` (U+0032) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 14,
+  "file": "",
+  "message": "Unexpected character `2` (U+0032) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 1092,
+  "name": "1092:14",
+  "place": {
+    "_bufferIndex": 11,
+    "_index": 0,
+    "line": 1092,
+    "column": 14,
+    "offset": 53798
+  },
+  "reason": "Unexpected character `2` (U+0032) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\anti-patterns.md"
+Cause: Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 306,
+  "file": "",
+  "message": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 208,
+  "name": "208:306",
+  "place": {
+    "_bufferIndex": 50,
+    "_index": 0,
+    "line": 208,
+    "column": 306,
+    "offset": 18466
+  },
+  "reason": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\evaluation-framework.md"
+Cause: Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 108,
+  "file": "",
+  "message": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 125,
+  "name": "125:108",
+  "place": {
+    "_bufferIndex": 1,
+    "_index": 0,
+    "line": 125,
+    "column": 108,
+    "offset": 8337
+  },
+  "reason": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\agentic-ui\governance.md"
+Cause: Unexpected character `9` (U+0039) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 41,
+  "file": "",
+  "message": "Unexpected character `9` (U+0039) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 953,
+  "name": "953:41",
+  "place": {
+    "_bufferIndex": 1,
+    "_index": 0,
+    "line": 953,
+    "column": 41,
+    "offset": 51552
+  },
+  "reason": "Unexpected character `9` (U+0039) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\ai-economics\ai-value-creators-synthesis.md"
+Cause: Unexpected character `3` (U+0033) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 356,
+  "file": "",
+  "message": "Unexpected character `3` (U+0033) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 126,
+  "name": "126:356",
+  "place": {
+    "_bufferIndex": 355,
+    "_index": 0,
+    "line": 126,
+    "column": 356,
+    "offset": 17096
+  },
+  "reason": "Unexpected character `3` (U+0033) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\ai-foundations\agentic_ai_landing_zone_architecture.md"
+Cause: Expected a closing tag for `<br>` (85:93-85:97) before the end of `tableData`
+Details:
+{
+  "column": 33,
+  "file": "",
+  "message": "Expected a closing tag for `<br>` (85:93-85:97) before the end of `tableData`",
+  "line": 85,
+  "name": "85:33-85:114",
+  "place": {
+    "start": {
+      "_bufferIndex": 32,
+      "_index": 54,
+      "line": 85,
+      "column": 33,
+      "offset": 4188
+    },
+    "end": {
+      "_bufferIndex": 113,
+      "_index": 54,
+      "line": 85,
+      "column": 114,
+      "offset": 4269
+    }
+  },
+  "reason": "Expected a closing tag for `<br>` (85:93-85:97) before the end of `tableData`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\ai-protocols\auth\entra-3lo-agent-auth-security-review.md"
+Cause: Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 84,
+  "file": "",
+  "message": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 46,
+  "name": "46:84",
+  "place": {
+    "_bufferIndex": 73,
+    "_index": 0,
+    "line": 46,
+    "column": 84,
+    "offset": 3845
+  },
+  "reason": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\ai-protocols\mcp\MCP_Deep_Research_2026.md"
+Cause: Unexpected character `3` (U+0033) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 165,
+  "file": "",
+  "message": "Unexpected character `3` (U+0033) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 562,
+  "name": "562:165",
+  "place": {
+    "_bufferIndex": 162,
+    "_index": 0,
+    "line": 562,
+    "column": 165,
+    "offset": 40940
+  },
+  "reason": "Unexpected character `3` (U+0033) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\cloud-platforms\aws\bedrock-agentcore-code-interpreter-architecture.md"
+Cause: Unexpected character `7` (U+0037) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 81,
+  "file": "",
+  "message": "Unexpected character `7` (U+0037) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 1312,
+  "name": "1312:81",
+  "place": {
+    "_bufferIndex": 56,
+    "_index": 0,
+    "line": 1312,
+    "column": 81,
+    "offset": 56351
+  },
+  "reason": "Unexpected character `7` (U+0037) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\cloud-platforms\iac\terraform\ai-assisted-iac-mastery.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 27402,
+    "loc": {
+      "line": 452,
+      "column": 8
+    }
+  },
+  "column": 9,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 452,
+  "name": "452:9",
+  "place": {
+    "line": 452,
+    "column": 9,
+    "offset": 27402
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\cloud-platforms\iac\terraform\terraform-mastery-guide.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 17658,
+    "loc": {
+      "line": 342,
+      "column": 11
+    }
+  },
+  "column": 12,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 342,
+  "name": "342:12",
+  "place": {
+    "line": 342,
+    "column": 12,
+    "offset": 17658
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\coding-tools\claude\ccaf-exam-prep-complete.md"
+Cause: Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 53,
+  "file": "",
+  "message": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 770,
+  "name": "770:53",
+  "place": {
+    "_bufferIndex": 52,
+    "_index": 4,
+    "line": 770,
+    "column": 53,
+    "offset": 34143
+  },
+  "reason": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\agentic-ai-security-guardrails.md"
+Cause: Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 52,
+  "file": "",
+  "message": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 340,
+  "name": "340:52",
+  "place": {
+    "_bufferIndex": 16,
+    "_index": 0,
+    "line": 340,
+    "column": 52,
+    "offset": 30246
+  },
+  "reason": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\agentic-ai-security-identity.md"
+Cause: Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 95,
+  "file": "",
+  "message": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 354,
+  "name": "354:95",
+  "place": {
+    "_bufferIndex": 86,
+    "_index": 0,
+    "line": 354,
+    "column": 95,
+    "offset": 19796
+  },
+  "reason": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\index.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 812,
+    "loc": {
+      "line": 18,
+      "column": 23
+    },
+    "raisedAt": 2
+  },
+  "column": 24,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 18,
+  "name": "18:24",
+  "place": {
+    "line": 18,
+    "column": 24,
+    "offset": 812
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\coding-tools\enterprise-ai-architect\machine-readable-ea.md"
+Cause: Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 111,
+  "file": "",
+  "message": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 273,
+  "name": "273:111",
+  "place": {
+    "_bufferIndex": 108,
+    "_index": 0,
+    "line": 273,
+    "column": 111,
+    "offset": 12920
+  },
+  "reason": "Unexpected character `5` (U+0035) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\coding-tools\github-copilot\git-github-platform-engineering-handbook.md"
+Cause: Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 82,
+  "file": "",
+  "message": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 183,
+  "name": "183:82",
+  "place": {
+    "_bufferIndex": 49,
+    "_index": 0,
+    "line": 183,
+    "column": 82,
+    "offset": 9694
+  },
+  "reason": "Unexpected character `1` (U+0031) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\enterprise-architecture\index.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 269,
+    "loc": {
+      "line": 15,
+      "column": 25
+    },
+    "raisedAt": 2
+  },
+  "column": 26,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:26",
+  "place": {
+    "line": 15,
+    "column": 26,
+    "offset": 269
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "C:\Users\Srees\project\knowledge-docs\docs\index.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 279,
+    "loc": {
+      "line": 11,
+      "column": 29
+    },
+    "raisedAt": 2
+  },
+  "column": 30,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 11,
+  "name": "11:30",
+  "place": {
+    "line": 11,
+    "column": 30,
+    "offset": 279
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}

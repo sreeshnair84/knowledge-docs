@@ -8,7 +8,7 @@ title: AI-First to AI-Native Journey
 **Purpose:** Define the AI-Native enterprise tier (Level 6), provide a structured 8-dimension assessment instrument, and map the transformation roadmap from each maturity level through to AI-Native — with sector benchmarks for Banking, Healthcare, and Government.  
 **Related:** [AI-First Enterprise](index.md) · [AI Governance Operating Model](../sovereign-constitutional-ai/ai-governance-operating-model.md) · [Constitutional AI Engineering](../sovereign-constitutional-ai/constitutional-ai-engineering.md) · [Sovereign AI Foundations](../sovereign-constitutional-ai/sovereign-ai-foundations.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     This document extends the Level 1–5 AI maturity model with Level 6 AI-Native and is aligned to ISO 42001:2023, NIST AI RMF, and the Sovereign & Constitutional AI program delivered in this knowledge base.
 
 ---

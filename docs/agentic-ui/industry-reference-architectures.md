@@ -6,7 +6,7 @@ title: Industry Reference Architectures for Agentic Applications
 
 Reference architectures for the AGUI/UX layer across 10 industry verticals — focusing on UX design, human oversight models, regulatory constraints, and enterprise system integrations unique to each domain.
 
-!!! note "Backend Platform Coverage"
+:::note Backend Platform Coverage
     For backend agent platform architecture (orchestration, memory, A2A, MCP), see [Enterprise Agent Reference Architectures](../coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md). This guide focuses on what's different at the UX and AGUI layer per industry.
 
 ---
@@ -669,7 +669,7 @@ Regardless of industry, five UX patterns appear consistently in successful agent
 | Graceful degradation messaging | Any component failure | Maintain user trust even when system is degraded |
 | Human escalation path | Every agent interaction | Non-negotiable for regulated industries; best practice for all |
 
-!!! tip "Cross-references"
+:::tip Cross-references
     - For enterprise security controls across industries: [Security Architecture](security-architecture.md)
     - For human oversight models (HITL/HOTL/HOOL): [Agent UX Patterns](agent-ux-patterns.md)
     - For compliance and governance frameworks: [Governance](governance.md)

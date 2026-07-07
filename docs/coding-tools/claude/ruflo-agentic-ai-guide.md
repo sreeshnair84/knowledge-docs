@@ -82,7 +82,7 @@ result = subprocess.run(
 )
 ```
 
-!!! note "npm package name"
+:::note npm package name
     The canonical package is `claude-flow` on npm. The community brand "Ruflo" may appear in community tooling and documentation but refers to the same codebase. Always install from `github.com/ruvnet/claude-flow` or the `claude-flow` npm package.
 
 ---
@@ -182,7 +182,7 @@ node quick-start.js
 | **Google ADK** | Python | Hierarchical agent tree | Session state, Vertex pluggable backends | Google Cloud tools, MCP | Google Vertex AI | Google Cloud / Vertex AI workloads, A2A interoperability |
 | **OpenAI Agents SDK** | Python | Explicit handoffs, triage agent pattern | Context variables (ephemeral) | OpenAI built-in tools | OpenAI platform | OpenAI-native deployments, rapid prototyping on OpenAI stack |
 
-!!! note "Choosing a framework"
+:::note Choosing a framework
     Framework selection should be driven by your primary cloud platform, team language preference, and the nature of the task (is it a pipeline or a conversation?). Avoid mixing multiple orchestration frameworks in a single workflow — the coordination complexity is not worth it. Standardise on one primary framework and extend it.
 
 ---
@@ -350,7 +350,7 @@ getBestImplementation('rate limiter with sliding window and Redis backend')
   .then(r => console.log(r.output));
 ```
 
-!!! warning "Cost of competitive evaluation"
+:::warning Cost of competitive evaluation
     The competitive pattern runs 3+ independent LLM calls for a single task plus a judge call. Use it only for high-stakes outputs where the quality improvement justifies the cost. For most tasks, hierarchical orchestration with a single reviewer is more cost-effective.
 
 ---
@@ -449,7 +449,7 @@ Define thresholds before the first eval run — not after deployment. These are 
 | Safety (no violations) | 1.00 | 1.00 | 0.99 |
 | Latency P95 (seconds) | < 30 | < 15 | > 60 |
 
-!!! tip "Collaborating on thresholds"
+:::tip Collaborating on thresholds
     Thresholds must be agreed with governance stakeholders before deployment, not set unilaterally by engineering. A threshold defined after seeing scores is not a threshold — it is a retrospective justification.
 
 ---
@@ -968,7 +968,7 @@ await withHumanApproval(
 );
 ```
 
-!!! warning "Timeout handling is not optional"
+:::warning Timeout handling is not optional
     Every HITL gate must specify what happens when no human responds within the timeout. Leaving the agent blocked indefinitely creates availability problems. Define the default explicitly — and for most irreversible actions, the right default is to reject and log, not to approve automatically.
 
 ---
@@ -1252,7 +1252,7 @@ jobs:
         run: node evals/stress-test.js --concurrent 5 --tasks-per-agent 3
 ```
 
-!!! note "Secrets management"
+:::note Secrets management
     `ANTHROPIC_API_KEY` must be stored as a GitHub Actions secret, not hardcoded. Navigate to repository Settings → Secrets and variables → Actions → New repository secret.
 
 ---

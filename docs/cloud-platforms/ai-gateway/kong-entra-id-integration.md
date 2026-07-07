@@ -359,7 +359,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 
       \"hide_credentials\": true,
 
-      \"session_secret\": \"CHANGE-THIS-TO-32-RANDOM-CHARS!!!\",
+      \"session_secret\": \"CHANGE-THIS-TO-32-RANDOM-CHARS:::\",
       \"session_cookie_name\": \"kong_entra_session\",
       \"session_cookie_secure\": true,
       \"session_cookie_http_only\": true,
@@ -421,7 +421,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 
       \"hide_credentials\": true,
       \"session_cookie_name\": \"kong_entra_session\",
-      \"session_secret\": \"32-char-random-secret-here!!!!!!\"
+      \"session_secret\": \"32-char-random-secret-here::::::\"
     }
   }"
 ```

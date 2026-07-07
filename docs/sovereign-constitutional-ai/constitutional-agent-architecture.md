@@ -8,7 +8,7 @@ title: Constitutional Agent Architecture
 **Purpose:** Design constitutional agents governed by constitution, policy, regulatory, and business rules — including the agent governance fabric (5 registries), L0–L5 autonomy taxonomy, and sovereign agent ecosystem blueprint.  
 **Related:** [Constitutional AI Engineering](constitutional-ai-engineering.md) · [Policy-as-Code Framework](policy-as-code-framework.md) · [AI Safety Framework](ai-safety-framework.md) · [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     Agent autonomy governance is the most rapidly evolving area in enterprise AI. The autonomy taxonomy and governance fabric described here extend the 4-tier operational ladder in [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) into a full L0–L5 maturity taxonomy and a sovereign agent ecosystem blueprint.
 
 ---

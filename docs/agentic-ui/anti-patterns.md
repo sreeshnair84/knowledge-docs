@@ -395,7 +395,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 
 ---
 
-!!! tip "Using This Catalog"
+:::tip Using This Catalog
     Start with **Critical** severity items. Each anti-pattern in this catalog has been observed in production agentic systems — not theoretical failures. Cross-reference:
     - Security patterns → [Security Architecture](security-architecture.md)
     - Context patterns → [Context Engineering](context-engineering.md)

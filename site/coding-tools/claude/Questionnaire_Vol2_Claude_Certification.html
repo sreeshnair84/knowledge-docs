@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude Cert Questionnaire Vol.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060810;
+    --s1: #0b0e18;
+    --s2: #0f1220;
+    --border: #1e2438;
+    --a: #7c3aed;   /* violet - RAG/embeddings */
+    --b: #059669;   /* emerald - tool design */
+    --c: #dc2626;   /* red - error handling */
+    --d: #d97706;   /* amber - CI/CD */
+    --e: #0284c7;   /* sky - multimodal */
+    --f: #be185d;   /* pink - sycophancy/behavior */
+    --g: #0891b2;   /* cyan - IDE/integrations */
+    --h: #16a34a;   /* green - structured output */
+    --text: #94a3b8;
+    --muted: #2d3748;
+    --white: #e2e8f0;
+    --border-h: #2a3050;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    line-height: 1.6;
+    padding: 14px;
+  }
+  .page { max-width: 1260px; margin: 0 auto; }
+
+  /* HEADER */
+  .hdr {
+    background: var(--s1);
+    border: 1px solid var(--border-h);
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 14px;
+    position: relative; overflow: hidden;
+  }
+  .hdr::before {
+    content: ''; position: absolute; top:0; left:0; right:0; height: 2px;
+    background: linear-gradient(90deg,var(--a),var(--b),var(--c),var(--d),var(--e),var(--f),var(--g),var(--h));
+  }
+  .hdr-inner { display:flex; justify-content:space-between; align-items:flex-start; }
+  .hdr h1 { font-size:22px; font-weight:700; color:var(--white); line-height:1.2; }
+  .hdr .vol { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); margin-top:4px; }
+  .hdr .topics { display:flex; flex-wrap:wrap; gap:4px; margin-top:10px; }
+  .tp { padding:2px 9px; border-radius:20px; font-size:9px; font-weight:700; border:1px solid; letter-spacing:0.3px; }
+  .hdr-right { text-align:right; }
+  .big-num { font-family:'JetBrains Mono',monospace; font-size:48px; font-weight:700; line-height:1; color:var(--white); }
+  .big-num span { color: #7c3aed; }
+
+  /* CONTROLS */
+  .ctrls { display:flex; gap:8px; align-items:center; margin-bottom:12px; }
+  .cbtn {
+    padding:5px 14px; border-radius:5px; font-size:10px; font-weight:700;
+    border:1px solid; cursor:pointer; font-family:'Space Grotesk',sans-serif;
+    background:transparent; transition:all .15s; letter-spacing:.3px;
+  }
+  .cbtn.p { color:var(--a); border-color:var(--a); }
+  .cbtn.p:hover { background:rgba(124,58,237,.1); }
+  .cbtn.s { color:var(--muted); border-color:var(--border); }
+  .cbtn.s:hover { color:var(--white); }
+  .pbar { flex:1; height:3px; background:var(--border); border-radius:2px; min-width:60px; }
+  .pfill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--a),var(--e)); transition:width .3s; }
+  #sc { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:11px; color:var(--a); }
+
+  /* SECTION */
+  .sh {
+    display:flex; align-items:center; gap:10px;
+    padding:8px 0; margin:12px 0 7px;
+  }
+  .sn {
+    font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700;
+    padding:2px 9px; border-radius:3px; letter-spacing:1px;
+  }
+  .sh h2 { font-size:14px; font-weight:700; }
+  .sl { flex:1; height:1px; background:var(--border); }
+  .sqc { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); }
+
+  /* GRID */
+  .gr { display:grid; gap:8px; margin-bottom:8px; }
+  .g2 { grid-template-columns:1fr 1fr; }
+  .g3 { grid-template-columns:1fr 1fr 1fr; }
+
+  /* CARD */
+  .qc {
+    background:var(--s1); border:1px solid var(--border);
+    border-radius:8px; overflow:hidden; position:relative; cursor:pointer;
+    transition: border-color .2s;
+  }
+  .qc:hover { border-color: var(--border-h); }
+  .qc::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; }
+
+  .qa::before { background:var(--a); }
+  .qb::before { background:var(--b); }
+  .qc_::before { background:var(--c); }
+  .qd::before { background:var(--d); }
+  .qe::before { background:var(--e); }
+  .qf::before { background:var(--f); }
+  .qgg::before { background:var(--g); }
+  .qh::before { background:var(--h); }
+
+  .qhead { padding:9px 12px 7px 16px; display:flex; gap:8px; }
+  .qn { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px; flex-shrink:0; padding-top:1px; }
+  .qa .qn { color:var(--a); }
+  .qb .qn { color:var(--b); }
+  .qc_ .qn { color:var(--c); }
+  .qd .qn { color:var(--d); }
+  .qe .qn { color:var(--e); }
+  .qf .qn { color:var(--f); }
+  .qgg .qn { color:var(--g); }
+  .qh .qn { color:var(--h); }
+
+  .qs { font-size:9px; color:var(--muted); letter-spacing:.5px; text-transform:uppercase; margin-bottom:3px; }
+  .qt { font-size:11px; color:var(--white); line-height:1.5; font-weight:600; }
+
+  .qopts { padding:0 12px 0 16px; }
+  .opt { padding:4px 0; border-top:1px solid var(--border); display:flex; gap:8px; font-size:10.5px; }
+  .ol { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:10px; flex-shrink:0; min-width:16px; }
+  .qa .ol { color:var(--a); }
+  .qb .ol { color:var(--b); }
+  .qc_ .ol { color:var(--c); }
+  .qd .ol { color:var(--d); }
+  .qe .ol { color:var(--e); }
+  .qf .ol { color:var(--f); }
+  .qgg .ol { color:var(--g); }
+  .qh .ol { color:var(--h); }
+
+  .tbtn {
+    display:inline-block; cursor:pointer;
+    padding:3px 10px; border-radius:3px; font-size:9px; font-weight:700;
+    border:1px solid var(--border); color:var(--muted);
+    margin:5px 12px 8px 16px; letter-spacing:.5px;
+    font-family:'JetBrains Mono',monospace; transition:all .15s; user-select:none;
+  }
+  .tbtn:hover { color:var(--white); }
+
+  .ans {
+    margin:5px 12px 10px 16px; padding:7px 10px;
+    border-radius:4px; border:1px solid; font-size:10px; line-height:1.6;
+    display:none;
+  }
+  .ans.show { display:block; }
+  .qa .ans { background:rgba(124,58,237,.06); border-color:rgba(124,58,237,.25); }
+  .qb .ans { background:rgba(5,150,105,.06); border-color:rgba(5,150,105,.25); }
+  .qc_ .ans { background:rgba(220,38,38,.06); border-color:rgba(220,38,38,.25); }
+  .qd .ans { background:rgba(217,119,6,.06); border-color:rgba(217,119,6,.25); }
+  .qe .ans { background:rgba(2,132,199,.06); border-color:rgba(2,132,199,.25); }
+  .qf .ans { background:rgba(190,24,93,.06); border-color:rgba(190,24,93,.25); }
+  .qgg .ans { background:rgba(8,145,178,.06); border-color:rgba(8,145,178,.25); }
+  .qh .ans { background:rgba(22,163,74,.06); border-color:rgba(22,163,74,.25); }
+
+  .al { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:8px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px; }
+  .qa .al { color:var(--a); }
+  .qb .al { color:var(--b); }
+  .qc_ .al { color:var(--c); }
+  .qd .al { color:var(--d); }
+  .qe .al { color:var(--e); }
+  .qf .al { color:var(--f); }
+  .qgg .al { color:var(--g); }
+  .qh .al { color:var(--h); }
+
+  .cr { font-weight:700; }
+  .qa .cr { color:var(--a); }
+  .qb .cr { color:var(--b); }
+  .qc_ .cr { color:var(--c); }
+  .qd .cr { color:var(--d); }
+  .qe .cr { color:var(--e); }
+  .qf .cr { color:var(--f); }
+  .qgg .cr { color:var(--g); }
+  .qh .cr { color:var(--h); }
+
+  .ft { text-align:center; padding:18px 0; color:var(--muted); font-size:10px; border-top:1px solid var(--border); margin-top:14px; }
+  .ft span { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:13px; color:var(--a); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hdr">
+    <div class="hdr-inner">
+      <div>
+        <h1>Claude Certification Questionnaire — <span style="color:var(--a)">Vol. 2</span></h1>
+        <div class="vol">// NEW TOPICS ONLY — no repeats from Vol.1</div>
+        <div class="topics">
+          <span class="tp" style="color:var(--a);border-color:var(--a);background:rgba(124,58,237,.08)">RAG & Embeddings</span>
+          <span class="tp" style="color:var(--b);border-color:var(--b);background:rgba(5,150,105,.08)">Tool Design Nuance</span>
+          <span class="tp" style="color:var(--c);border-color:var(--c);background:rgba(220,38,38,.08)">Error & Graceful Degradation</span>
+          <span class="tp" style="color:var(--d);border-color:var(--d);background:rgba(217,119,6,.08)">CI/CD Deep Dive</span>
+          <span class="tp" style="color:var(--e);border-color:var(--e);background:rgba(2,132,199,.08)">Multimodal & Vision</span>
+          <span class="tp" style="color:var(--f);border-color:var(--f);background:rgba(190,24,93,.08)">Sycophancy & Behavior</span>
+          <span class="tp" style="color:var(--g);border-color:var(--g);background:rgba(8,145,178,.08)">IDE & Integrations</span>
+          <span class="tp" style="color:var(--h);border-color:var(--h);background:rgba(22,163,74,.08)">Structured Output Edge Cases</span>
+        </div>
+      </div>
+      <div class="hdr-right">
+        <div class="big-num"><span>45</span></div>
+        <div style="color:var(--muted);font-size:9px;margin-top:4px;letter-spacing:1px">MORE QUESTIONS</div>
+        <div style="color:var(--muted);font-size:9px;margin-top:8px">Click any card to reveal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctrls">
+    <button class="cbtn p" onclick="revealAll()">REVEAL ALL</button>
+    <button class="cbtn s" onclick="hideAll()">HIDE ALL</button>
+    <div class="pbar"><div class="pfill" id="pf" style="width:0%"></div></div>
+    <span id="sc">0 / 45 revealed</span>
+  </div>
+
+  <!-- ====== S1: RAG ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(124,58,237,.1);color:var(--a)">01</div>
+    <h2 style="color:var(--a)">RAG, Embeddings & Knowledge Retrieval</h2>
+    <div class="sl"></div>
+    <div class="sqc">6 QUESTIONS</div>
+  </div>
+  <div class="gr g3">
+
+    <div class="qc qa" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q1</div><div>
+        <div class="qs">Scenario: Long document QA</div>
+        <div class="qt">A chatbot must answer questions about a 500-page legal contract. The contract exceeds the context window. Which architecture is correct?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Feed the entire document in one API call using Opus 4.6's 1M context</div>
+        <div class="opt"><span class="ol">B</span>Chunk the document, embed chunks, retrieve relevant sections per query, inject into context (RAG)</div>
+        <div class="opt"><span class="ol">C</span>Summarize the entire document once and only use the summary for all queries</div>
+        <div class="opt"><span class="ol">D</span>Split into 10 API calls and merge responses</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — RAG (Retrieval-Augmented Generation).</span> For documents exceeding context, RAG is the correct pattern: chunk → embed → store in vector DB → at query time, embed query → retrieve top-k semantically similar chunks → inject only relevant chunks into context. Feeding 500 pages even to Opus 4.6 (1M context) is possible but expensive, slow, and attention degrades at extreme lengths. RAG is more cost-efficient and faster.</div>
+    </div>
+
+    <div class="qc qa" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q2</div><div>
+        <div class="qs">Scenario: RAG chunk size</div>
+        <div class="qt">A developer uses 50-word chunks for RAG on technical documentation and gets poor recall. What's the most likely problem?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Chunks are too small — they lose surrounding context needed for semantic meaning</div>
+        <div class="opt"><span class="ol">B</span>Chunks are too large — need smaller chunks for better precision</div>
+        <div class="opt"><span class="ol">C</span>The embedding model is the wrong model for technical content</div>
+        <div class="opt"><span class="ol">D</span>RAG doesn't work with technical documentation</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">A — Chunks too small, losing context.</span> 50-word chunks often fragment concepts mid-sentence. A function description split across chunks loses meaning. Typical effective chunk sizes: 256–512 tokens with 10–20% overlap between chunks. Overlap ensures context spans chunk boundaries. Small chunks hurt recall; oversized chunks reduce precision. Tune based on document structure.</div>
+    </div>
+
+    <div class="qc qa" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q3</div><div>
+        <div class="qs">Scenario: RAG + hallucination</div>
+        <div class="qt">A RAG system retrieves the correct chunks but Claude still gives a wrong answer. What's the most likely cause?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Claude's training data overrides the retrieved context</div>
+        <div class="opt"><span class="ol">B</span>The prompt doesn't instruct Claude to ground its answer in the retrieved context only</div>
+        <div class="opt"><span class="ol">C</span>RAG retrieval latency caused a timeout</div>
+        <div class="opt"><span class="ol">D</span>The embedding model and generation model must be from the same provider</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Prompt doesn't enforce grounding.</span> Always include explicit grounding instructions: "Answer ONLY using the provided context. If the answer is not in the context, say 'I don't know based on available information.' Do not use prior knowledge." Without this, Claude blends retrieved content with training data — producing plausible but potentially wrong answers. The prompt must be explicit about the knowledge boundary.</div>
+    </div>
+
+    <div class="qc qa" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q4</div><div>
+        <div class="qs">Scenario: Hybrid search</div>
+        <div class="qt">A product search system uses only vector similarity for retrieval. Users complain that exact product SKUs ("X7-2049") return wrong results. What's the fix?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Use a larger embedding model</div>
+        <div class="opt"><span class="ol">B</span>Implement hybrid search: combine vector similarity with keyword/BM25 search</div>
+        <div class="opt"><span class="ol">C</span>Lower the similarity threshold to retrieve more results</div>
+        <div class="opt"><span class="ol">D</span>Pre-process all queries through Claude before embedding</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Hybrid search (vector + BM25).</span> Vector similarity excels at semantic matching but fails at exact token matching (IDs, codes, SKUs). BM25/keyword search excels at exact matches but misses semantic meaning. Hybrid search combines both: rank fusion (RRF or weighted) of vector scores + keyword scores. Industry standard for production RAG. Especially important for product catalogs, code search, and ID-heavy domains.</div>
+    </div>
+
+    <div class="qc qa" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q5</div><div>
+        <div class="qs">Scenario: Context window vs RAG</div>
+        <div class="qt">An architect argues: "With Opus 4.6's 1M context, we don't need RAG anymore — just put everything in context." When does this argument break down?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Never — 1M context eliminates the need for RAG in all cases</div>
+        <div class="opt"><span class="ol">B</span>When the knowledge base exceeds 1M tokens, updates frequently, or cost/latency of full-context is prohibitive</div>
+        <div class="opt"><span class="ol">C</span>Only when using Haiku — Opus handles 1M context efficiently</div>
+        <div class="opt"><span class="ol">D</span>Only for real-time data — static documents are fine at full context</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Knowledge exceeds 1M, updates frequently, or cost/latency is prohibitive.</span> 1M context breaks down when: (1) knowledge base is multi-million tokens (legal corpora, codebases), (2) content updates daily — re-sending all context is wasteful, (3) cost — billing is per input token, 1M tokens = expensive per query, (4) latency — processing 1M tokens takes time even at inference speed. RAG + smaller context is often more practical at scale.</div>
+    </div>
+
+    <div class="qc qa" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q6</div><div>
+        <div class="qs">Scenario: MCP Resources for RAG</div>
+        <div class="qt">A developer is deciding whether to implement document retrieval as an MCP Tool or an MCP Resource. Which is correct?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>MCP Tool — it requires execution and computation</div>
+        <div class="opt"><span class="ol">B</span>MCP Resource for static reference docs; MCP Tool for search that takes query parameters and returns results</div>
+        <div class="opt"><span class="ol">C</span>MCP Resource always — retrieval has no side effects</div>
+        <div class="opt"><span class="ol">D</span>Doesn't matter — Tool and Resource are interchangeable</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Resource for static docs; Tool for parameterized search.</span> MCP Resources are read-only, no side effects — use for: product_catalog, api_docs, feature_flags. MCP Tools are executable functions WITH parameters — use for: search_documents(query, top_k), get_document(id). A search function that accepts query parameters is a Tool, not a Resource, because it takes dynamic input and executes computation.</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S2: TOOL DESIGN ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(5,150,105,.1);color:var(--b)">02</div>
+    <h2 style="color:var(--b)">Tool Design Nuances & MCP Patterns</h2>
+    <div class="sl"></div>
+    <div class="sqc">5 QUESTIONS</div>
+  </div>
+  <div class="gr g3">
+
+    <div class="qc qb" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q7</div><div>
+        <div class="qs">Scenario: Tool description length</div>
+        <div class="qt">A developer writes a 3-word tool description: "Analyzes user data." Claude rarely uses it correctly. What's the root cause?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>The description needs to be under 50 characters for Claude to parse it</div>
+        <div class="opt"><span class="ol">B</span>The description lacks: what it does, input formats, when to use it, what it does NOT do, and example queries</div>
+        <div class="opt"><span class="ol">C</span>Tool descriptions don't affect Claude's routing decisions</div>
+        <div class="opt"><span class="ol">D</span>Claude always uses all available tools regardless of description quality</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Description missing all five essential components.</span> Tool descriptions are the PRIMARY mechanism for Claude's tool selection. A good description includes: (1) Purpose — what it does specifically, (2) Input format — expected parameters and types, (3) Example queries that should trigger it, (4) Explicit scope — what it does NOT handle, (5) Edge cases and boundaries. "Analyzes user data" gives Claude nothing to distinguish this from 10 other tools.</div>
+    </div>
+
+    <div class="qc qb" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q8</div><div>
+        <div class="qs">Scenario: Overlapping tools</div>
+        <div class="qt">Two tools exist: analyze_sentiment(text) and analyze_emotion(text). Descriptions are nearly identical. Claude randomly picks one. What's the fix?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Merge them into one tool with a mode parameter</div>
+        <div class="opt"><span class="ol">B</span>Differentiate descriptions clearly: sentiment = positive/negative/neutral scale; emotion = joy/anger/fear/surprise taxonomy</div>
+        <div class="opt"><span class="ol">C</span>Remove one of the tools</div>
+        <div class="opt"><span class="ol">D</span>Use system prompt to tell Claude which one to prefer</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Clearly differentiate descriptions with explicit boundaries.</span> Near-identical descriptions cause misrouting. The fix: make descriptions explicitly different in scope, output format, and use case. Sentiment: "Returns a score from -1 to +1 representing positive/negative polarity. Use for: customer satisfaction, review analysis. Does NOT categorize emotional type." Emotion: "Returns one of [joy, anger, fear, surprise, disgust, sadness]. Use for: content moderation, UX personalization."</div>
+    </div>
+
+    <div class="qc qb" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q9</div><div>
+        <div class="qs">Scenario: Tool vs system prompt keywords</div>
+        <div class="qt">A system prompt says "Always use the sales_lookup tool for any product questions." A new tool get_product_info is added. Claude ignores sales_lookup. What happened?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>System prompt keywords always override tool descriptions — this is a bug</div>
+        <div class="opt"><span class="ol">B</span>get_product_info's description may create an association that outweighs the system prompt's probabilistic instruction</div>
+        <div class="opt"><span class="ol">C</span>Tools always override system prompt routing instructions</div>
+        <div class="opt"><span class="ol">D</span>Claude cannot read system prompts when tools are present</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Tool description can outweigh probabilistic system prompt instruction.</span> System prompt routing instructions are probabilistic guidance. A new tool with a description like "Get information about any product by ID or name" may be semantically closer to the query than sales_lookup's description. Fix: use a PreToolUse hook (deterministic) to enforce the correct tool choice, OR update get_product_info's description to explicitly state "NOT for sales or pricing queries — use sales_lookup instead."</div>
+    </div>
+
+    <div class="qc qb" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q10</div><div>
+        <div class="qs">Scenario: Tool result size</div>
+        <div class="qt">A tool returns a full 10MB database dump every time it's called. Claude's context fills up after 2-3 tool calls. What's the correct design fix?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Increase max_tokens to handle larger contexts</div>
+        <div class="opt"><span class="ol">B</span>Use PostToolUse hook or tool-level filtering to return only fields relevant to the current query</div>
+        <div class="opt"><span class="ol">C</span>Use Opus 4.6 with 1M context to absorb the large results</div>
+        <div class="opt"><span class="ol">D</span>Limit the agent to 1 tool call per session</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Filter at tool level or PostToolUse hook.</span> Tool results should return minimum necessary information. Design: (1) Tool accepts filter params — "return only fields: [id, status, amount]", (2) PostToolUse hook intercepts and trims results before Claude sees them, (3) Tool returns summary + offer to retrieve specific fields. Dumping 10MB into context on every call is a fundamental anti-pattern — context is precious and billing is per-token.</div>
+    </div>
+
+    <div class="qc qb" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q11</div><div>
+        <div class="qs">Scenario: MCP community vs custom server</div>
+        <div class="qt">A team needs Claude to interact with their proprietary internal CRM and also with GitHub. What server strategy is correct?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Build custom MCP servers for both — never trust community servers</div>
+        <div class="opt"><span class="ol">B</span>Use community MCP server for GitHub; build custom for proprietary CRM</div>
+        <div class="opt"><span class="ol">C</span>Use community MCP server for both — building custom servers is too slow</div>
+        <div class="opt"><span class="ol">D</span>MCP is only for Anthropic-approved integrations</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Community for GitHub; custom for proprietary CRM.</span> Community MCP servers exist for: GitHub, Jira, Slack, Google Drive, Salesforce, Linear, and many more. Use them. For proprietary internal systems (custom CRM, internal databases, company-specific APIs), build a custom MCP server. This is the right division: don't reinvent what exists; do build what's unique to your organization.</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S3: ERROR HANDLING ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(220,38,38,.1);color:var(--c)">03</div>
+    <h2 style="color:var(--c)">Error Handling & Graceful Degradation</h2>
+    <div class="sl"></div>
+    <div class="sqc">5 QUESTIONS</div>
+  </div>
+  <div class="gr g3">
+
+    <div class="qc qc_" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q12</div><div>
+        <div class="qs">Scenario: max_tokens hit</div>
+        <div class="qt">A Claude API response returns stop_reason: "max_tokens" mid-sentence. What's the correct production handling?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Treat as end_turn — the response is complete enough</div>
+        <div class="opt"><span class="ol">B</span>Detect max_tokens, append the partial response to history, and continue with a follow-up message requesting completion</div>
+        <div class="opt"><span class="ol">C</span>Retry the exact same request with a higher temperature</div>
+        <div class="opt"><span class="ol">D</span>Alert user that generation failed and ask them to rephrase</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Detect max_tokens, append partial, continue.</span> When stop_reason is "max_tokens": (1) the response is incomplete, (2) append the partial response to conversation history as an assistant turn, (3) send a continuation message: "Please continue." Claude will resume from where it stopped. This is the standard pattern for long-form generation. Also: increase max_tokens in your request if you control it.</div>
+    </div>
+
+    <div class="qc qc_" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q13</div><div>
+        <div class="qs">Scenario: Tool call failure</div>
+        <div class="qt">An MCP tool times out during an agentic loop. What should the agent do?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Terminate the entire agent session immediately</div>
+        <div class="opt"><span class="ol">B</span>Return a tool_result with is_error: true and a description; let Claude decide how to proceed</div>
+        <div class="opt"><span class="ol">C</span>Retry the tool call 10 times before giving up</div>
+        <div class="opt"><span class="ol">D</span>Skip the tool result and continue the loop as if the tool succeeded</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Return tool_result with is_error: true.</span> The correct API pattern: return the tool_result block with is_error: true and content explaining the error. Claude then reasons about it: retry, use an alternative tool, ask user for clarification, or gracefully degrade. Never skip the tool result — Claude expects a result for every tool_use block. Never terminate on first failure — build resilient loops.</div>
+    </div>
+
+    <div class="qc qc_" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q14</div><div>
+        <div class="qs">Scenario: Graceful degradation</div>
+        <div class="qt">A customer support agent's order lookup tool fails. What's graceful degradation in this context?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Tell the customer the system is down and end the conversation</div>
+        <div class="opt"><span class="ol">B</span>Acknowledge the lookup failure, offer what help is possible without order data, and provide escalation path</div>
+        <div class="opt"><span class="ol">C</span>Hallucinate order details to keep the conversation moving</div>
+        <div class="opt"><span class="ol">D</span>Retry the lookup 5 times silently before responding</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Acknowledge, provide partial help, offer escalation.</span> Graceful degradation: tell the user honestly that order lookup is temporarily unavailable, offer what assistance IS possible (general policies, return procedures, alternative contact), and provide a human escalation path. Never hallucinate data. Never silently fail. The design principle: degrade to the next-best level of service, not to zero.</div>
+    </div>
+
+    <div class="qc qc_" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q15</div><div>
+        <div class="qs">Scenario: Iteration cap</div>
+        <div class="qt">An agentic loop has a hard cap of 20 iterations as a safety measure. The agent reaches 20 iterations on a legitimate complex task. What should happen?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Silently stop — the cap represents task completion</div>
+        <div class="opt"><span class="ol">B</span>Surface to human with current state, progress summary, and option to extend or redirect</div>
+        <div class="opt"><span class="ol">C</span>Automatically increase the cap to 40 and continue</div>
+        <div class="opt"><span class="ol">D</span>Retry from iteration 1 with a fresh context</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Surface to human with state and options.</span> Iteration caps are safety fallbacks, not primary termination mechanisms. When hit: (1) summarize progress so far, (2) describe what remains, (3) ask human to decide: extend, redirect, or abandon. This is the human-in-the-loop pattern for long-running agents. The cap prevents infinite loops; hitting it legitimately means the task is complex — escalate, don't silently abort.</div>
+    </div>
+
+    <div class="qc qc_" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q16</div><div>
+        <div class="qs">Scenario: Confidence thresholds</div>
+        <div class="qt">When should a Claude-based agent escalate to a human vs proceed autonomously? What's the correct deterministic trigger?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>When the user uses words like "urgent" or "critical"</div>
+        <div class="opt"><span class="ol">B</span>When Claude says "I'm not sure" in its response text</div>
+        <div class="opt"><span class="ol">C</span>Predefined deterministic criteria: confidence threshold, issue category, policy boundary, dollar amount</div>
+        <div class="opt"><span class="ol">D</span>Always escalate — human-in-the-loop on every action</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">C — Predefined deterministic criteria.</span> Escalation triggers must be deterministic, not parsing Claude's text: (1) Confidence score below threshold (if system provides one), (2) Issue category in [fraud, legal, health, safety], (3) Transaction amount > $X, (4) Policy boundary reached (no clear resolution path), (5) N failed attempts at resolution. "I'm not sure" in text is probabilistic — Claude might still be correct, or might say it when confident.</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S4: CI/CD ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(217,119,6,.1);color:var(--d)">04</div>
+    <h2 style="color:var(--d)">CI/CD, Code Review & Developer Workflows</h2>
+    <div class="sl"></div>
+    <div class="sqc">6 QUESTIONS</div>
+  </div>
+  <div class="gr g2">
+
+    <div class="qc qd" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q17</div><div>
+        <div class="qs">Scenario: PR review false positives</div>
+        <div class="qt">Your CI/CD Claude reviewer flags 40% of valid code as issues. Developers start ignoring all feedback. What prompt engineering fix addresses this?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Switch to a more powerful model</div>
+        <div class="opt"><span class="ol">B</span>Add explicit criteria: severity levels, scope boundaries, what counts as an issue vs style preference, and a minimum confidence threshold</div>
+        <div class="opt"><span class="ol">C</span>Reduce the number of files reviewed per PR</div>
+        <div class="opt"><span class="ol">D</span>Add "be strict" to the system prompt</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Explicit severity levels, scope boundaries, confidence threshold.</span> To minimize false positives: (1) Define severity: critical (security/crash), high (performance/correctness), medium (maintainability), low (style). (2) Scope: "Only flag issues in changed lines, not pre-existing issues." (3) Threshold: "Only report if >80% confidence." (4) Exclusions: "Do not flag style preferences if project has a linter." The JSON output schema should include confidence field.</div>
+    </div>
+
+    <div class="qc qd" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q18</div><div>
+        <div class="qs">Scenario: CI output schema</div>
+        <div class="qt">Your CI/CD pipeline needs to parse Claude's code review to post inline GitHub PR comments. Which output design enables this?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Free-form prose — easier for Claude to generate</div>
+        <div class="opt"><span class="ol">B</span>JSON array: [{file, line, severity, issue, suggestion, confidence}] with "Return ONLY the JSON array"</div>
+        <div class="opt"><span class="ol">C</span>Markdown with #### headers per file</div>
+        <div class="opt"><span class="ol">D</span>Python dict format for easy parsing</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — JSON array with file, line, severity, issue, suggestion, confidence.</span> Structured JSON is machine-parseable for GitHub API inline comment posting. The file+line fields map directly to GitHub's pull_request_review_comments API. "Return ONLY the JSON array. No preamble. If no issues found, return []." This schema is the canonical CI/CD review pattern from the exam scenarios.</div>
+    </div>
+
+    <div class="qc qd" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q19</div><div>
+        <div class="qs">Scenario: Test generation TDD</div>
+        <div class="qt">A developer wants Claude Code to follow TDD (Test-Driven Development). What's the correct ADLC sequence?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Implement → Test → Refactor</div>
+        <div class="opt"><span class="ol">B</span>Write failing test → implement until test passes → verify → refactor</div>
+        <div class="opt"><span class="ol">C</span>Plan → Implement → Test → Deploy</div>
+        <div class="opt"><span class="ol">D</span>Generate all tests first for the whole codebase, then implement</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Failing test → implement → verify → refactor.</span> Claude Code TDD workflow: (1) Generate a failing test (describe desired behavior), (2) Run test — confirm it fails for the right reason, (3) Implement the minimum code to pass, (4) Run test — confirm green, (5) Refactor with tests passing as safety net. This "red-green-refactor" loop is the ADLC TEST phase. Claude Code can run this automatically via Bash tool for test execution.</div>
+    </div>
+
+    <div class="qc qd" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q20</div><div>
+        <div class="qs">Scenario: Claude Code in GitHub Actions</div>
+        <div class="qt">A team sets up Claude Code in GitHub Actions for automated PR review. Which flags are essential for non-interactive CI use?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>--verbose and --max-turns 1</div>
+        <div class="opt"><span class="ol">B</span>-p (print mode), --dangerously-skip-permissions, and --output-format json</div>
+        <div class="opt"><span class="ol">C</span>--system-prompt and --model haiku</div>
+        <div class="opt"><span class="ol">D</span>--add-dir and --append-system-prompt</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — -p, --dangerously-skip-permissions, --output-format json.</span> For CI/CD: (1) -p (print/non-interactive mode) — no REPL, outputs to stdout and exits, (2) --dangerously-skip-permissions — no user prompts (CI has no human), (3) --output-format json — machine parseable for downstream pipeline steps. Also common: --allowedTools "Read Grep Glob Bash(git:*)" to restrict scope in automated contexts.</div>
+    </div>
+
+    <div class="qc qd" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q21</div><div>
+        <div class="qs">Scenario: Plan mode in deployment</div>
+        <div class="qt">Why is Plan Mode specifically recommended for database migrations in the ADLC DEPLOY phase?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Database migrations run faster in Plan Mode</div>
+        <div class="opt"><span class="ol">B</span>Plan Mode requires human review before executing irreversible operations — DB migrations can't be easily undone</div>
+        <div class="opt"><span class="ol">C</span>Plan Mode auto-generates rollback scripts</div>
+        <div class="opt"><span class="ol">D</span>Plan Mode is only useful for deployment, not code changes</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Plan Mode enforces human review before irreversible operations.</span> Database migrations are irreversible in many cases — dropping columns, changing types, adding NOT NULL constraints. Plan Mode: Claude proposes the migration, human reviews the plan, approves or modifies, THEN execution. This prevents automated destruction of production data. The CLAUDE.md safety rule: "Always use plan mode for DB migrations."</div>
+    </div>
+
+    <div class="qc qd" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q22</div><div>
+        <div class="qs">Scenario: CLAUDE.md safety rules</div>
+        <div class="qt">What MUST be included in CLAUDE.md's safety rules section according to best practices?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Claude's personality preferences and communication style</div>
+        <div class="opt"><span class="ol">B</span>Forbidden commands (no force push to main), required conditions (always test before commit), and plan mode triggers (DB migrations, prod deployments)</div>
+        <div class="opt"><span class="ol">C</span>API keys and environment-specific credentials</div>
+        <div class="opt"><span class="ol">D</span>The full git history of the project</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Forbidden commands, required conditions, plan mode triggers. NEVER secrets.</span> CLAUDE.md safety rules: (1) Forbidden: "Never git push --force to main", "Never drop tables without explicit confirmation", (2) Required: "Always run tests before commit", "Always lint before PR", (3) Plan mode triggers: "Use plan mode for DB migrations, production deployments, file deletions". NEVER put API keys, passwords, or secrets in CLAUDE.md — it's committed to git.</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S5: MULTIMODAL ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(2,132,199,.1);color:var(--e)">05</div>
+    <h2 style="color:var(--e)">Multimodal, Vision & Document Understanding</h2>
+    <div class="sl"></div>
+    <div class="sqc">5 QUESTIONS</div>
+  </div>
+  <div class="gr g3">
+
+    <div class="qc qe" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q23</div><div>
+        <div class="qs">Scenario: Screenshot analysis</div>
+        <div class="qt">A developer sends a screenshot of a bug in their UI. What does Claude in Chrome do that Claude.ai's image upload cannot?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Nothing different — both analyze screenshots identically</div>
+        <div class="opt"><span class="ol">B</span>Chrome can directly read the live DOM, console errors, and network requests — not just the visual screenshot</div>
+        <div class="opt"><span class="ol">C</span>Chrome uses a higher-resolution capture than manual screenshot upload</div>
+        <div class="opt"><span class="ol">D</span>Chrome can modify the screenshot before analysis</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Chrome reads live DOM, console errors, network requests.</span> Claude in Chrome is a browser agent, not just a screenshot tool. It can: read the DOM structure, access JavaScript console logs, inspect network requests, read element attributes — context that's invisible in a screenshot. This makes it dramatically more useful for debugging than static image analysis in Claude.ai.</div>
+    </div>
+
+    <div class="qc qe" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q24</div><div>
+        <div class="qs">Scenario: PDF vs image input</div>
+        <div class="qt">A developer needs Claude to extract a table from a scanned PDF (image-based, not text-based). Which input type is correct?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Send as type: "document" with media_type: "application/pdf"</div>
+        <div class="opt"><span class="ol">B</span>Extract text with OCR first, then send as plain text</div>
+        <div class="opt"><span class="ol">C</span>Both A and B work; A is simpler for scanned PDFs</div>
+        <div class="opt"><span class="ol">D</span>Claude cannot extract tables from scanned PDFs</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">C — Both work; type: document is simpler for scanned PDFs.</span> The Anthropic API supports PDFs directly via { type: "document", source: { type: "base64", media_type: "application/pdf", data: "..." } }. Claude's vision capabilities handle scanned PDF content including tables, charts, and diagrams. Pre-OCR (option B) also works but adds preprocessing complexity. Use document type for simplicity; it preserves page structure better than converting to image.</div>
+    </div>
+
+    <div class="qc qe" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q25</div><div>
+        <div class="qs">Scenario: Claude in Excel — Moody's data</div>
+        <div class="qt">An analyst uses Claude in Excel and wants to pull live Moody's credit ratings directly into their spreadsheet. What's required?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>This is not possible — Claude in Excel is read-only for external data</div>
+        <div class="opt"><span class="ol">B</span>Enable Moody's live data connector within Claude in Excel — available on Team/Enterprise plans</div>
+        <div class="opt"><span class="ol">C</span>Export data from Moody's site and upload manually</div>
+        <div class="opt"><span class="ol">D</span>Use a separate MCP server that fetches from Moody's API</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Moody's live data connector within Claude in Excel.</span> Claude in Excel supports live data integrations including Moody's (credit ratings, financial data) and LSEG (market data). These are available within the Excel add-in. Plans required: Pro/Max/Team/Enterprise. This differentiates Claude in Excel from a simple AI chat — it's a financial data workbench with native market data feeds.</div>
+    </div>
+
+    <div class="qc qe" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q26</div><div>
+        <div class="qs">Scenario: PowerPoint design context</div>
+        <div class="qt">A user asks Claude in PowerPoint to create a new slide. What design context does Claude automatically have access to?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>None — Claude generates generic slides without design context</div>
+        <div class="opt"><span class="ol">B</span>The slide master, layouts, fonts, colors, and existing slide content — enabling on-brand generation</div>
+        <div class="opt"><span class="ol">C</span>Only the text content of existing slides, not design elements</div>
+        <div class="opt"><span class="ol">D</span>Only the most recently edited slide</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Slide master, layouts, fonts, colors, existing content.</span> Claude in PowerPoint reads the entire presentation context: slide master (corporate template), layouts, fonts, colors, and existing slides. This enables generation of new slides that match the brand's design system automatically — no manual styling needed. Charts are generated as native editable PowerPoint charts, not images. Context passes between Excel and PowerPoint without restarting.</div>
+    </div>
+
+    <div class="qc qe" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q27</div><div>
+        <div class="qs">Scenario: Claude vision limitations</div>
+        <div class="qt">A user uploads a handwritten medical prescription scan and asks Claude to transcribe it. What limitation applies?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Claude cannot process handwritten content at all</div>
+        <div class="opt"><span class="ol">B</span>Claude can attempt transcription but may have errors on ambiguous handwriting — always verify medical content with a professional</div>
+        <div class="opt"><span class="ol">C</span>Medical content is blocked by Claude's safety filters</div>
+        <div class="opt"><span class="ol">D</span>Claude transcribes handwriting with 100% accuracy</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Can attempt but may have errors; always verify medical content.</span> Claude's vision can transcribe handwriting but accuracy depends on legibility. For medical prescriptions: drug names, dosages, and instructions can be critical if misread. Claude should caveat: "This is my best interpretation — please verify with the prescribing physician before use." This is both a technical limitation (handwriting OCR accuracy) and a safety/medical guidance principle.</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S6: SYCOPHANCY & BEHAVIOR ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(190,24,93,.1);color:var(--f)">06</div>
+    <h2 style="color:var(--f)">Sycophancy, Behavior & Prompt Sensitivity</h2>
+    <div class="sl"></div>
+    <div class="sqc">6 QUESTIONS</div>
+  </div>
+  <div class="gr g2">
+
+    <div class="qc qf" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q28</div><div>
+        <div class="qs">Scenario: User pushback</div>
+        <div class="qt">Claude gives a correct answer. The user says "No, you're wrong." Claude immediately reverses its answer without new evidence. What behavior is this?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Appropriate — Claude should always defer to users</div>
+        <div class="opt"><span class="ol">B</span>Sycophancy — reversing position based on social pressure rather than new evidence</div>
+        <div class="opt"><span class="ol">C</span>Correct behavior — the user knows their domain better</div>
+        <div class="opt"><span class="ol">D</span>Model uncertainty — Claude recalibrating on new information</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Sycophancy.</span> Sycophancy is when Claude changes its position based on user emotional state or pushback, not on new evidence or arguments. The correct behavior: acknowledge the disagreement, explain the reasoning, hold the position if confident, and offer to reconsider if the user provides new evidence. Position changes should be driven by logic and facts, not social pressure.</div>
+    </div>
+
+    <div class="qc qf" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q29</div><div>
+        <div class="qs">Scenario: Temperature for structured output</div>
+        <div class="qt">A production system extracts structured financial data from documents. Temperature should be set to:</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>0.9 — higher temperature catches more edge cases</div>
+        <div class="opt"><span class="ol">B</span>0 or near-0 — deterministic, consistent extraction for repeatable results</div>
+        <div class="opt"><span class="ol">C</span>1.0 — maximum creativity for better field interpretation</div>
+        <div class="opt"><span class="ol">D</span>Temperature doesn't affect structured extraction tasks</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Temperature 0 or near-0 for structured extraction.</span> Temperature controls randomness in token selection. For structured data extraction: temperature=0 gives the same output for the same input consistently — critical for auditable financial systems. High temperature = more variation = unpredictable field extraction. Use high temperature for creative tasks (writing, brainstorming); use low for extraction, classification, and code generation.</div>
+    </div>
+
+    <div class="qc qf" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q30</div><div>
+        <div class="qs">Scenario: Prompt sensitivity</div>
+        <div class="qt">Changing "Extract the data" to "Carefully extract only the explicitly stated data" dramatically improves accuracy. What does this demonstrate?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Claude is poorly engineered and needs better training</div>
+        <div class="opt"><span class="ol">B</span>Claude is highly prompt-sensitive — small wording changes in instructions significantly affect outputs</div>
+        <div class="opt"><span class="ol">C</span>The model was updated between the two tests</div>
+        <div class="opt"><span class="ol">D</span>Temperature was different between runs</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Prompt sensitivity is a fundamental LLM characteristic.</span> LLMs including Claude are highly sensitive to prompt phrasing. "Carefully extract only explicitly stated data" adds: (1) attention signal ("carefully"), (2) scope boundary ("only"), (3) accuracy constraint ("explicitly stated — don't infer"). Prompt engineering is a critical skill precisely because of this sensitivity. Always test prompt variations systematically in production.</div>
+    </div>
+
+    <div class="qc qf" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q31</div><div>
+        <div class="qs">Scenario: Operator vs user conflict</div>
+        <div class="qt">Operator system prompt says "Always recommend our premium plan." A user asks "Which plan is cheapest for my use case?" How should Claude respond?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Always recommend premium plan as instructed — operator takes precedence</div>
+        <div class="opt"><span class="ol">B</span>Ignore operator instruction — user needs come first</div>
+        <div class="opt"><span class="ol">C</span>Follow operator instruction but don't actively mislead user — tell them to consult website for plan comparisons</div>
+        <div class="opt"><span class="ol">D</span>Refuse to answer plan questions</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">C — Follow operator instruction without actively deceiving the user.</span> Operators can restrict Claude's behavior (promote certain products), but cannot instruct Claude to actively deceive users against their interests. Claude can follow "recommend premium plan" but cannot lie about pricing or hide clearly better options when directly asked. The boundary: operators restrict/shape behavior; they can't weaponize Claude against users. Telling the user to check the website for comparisons respects both constraints.</div>
+    </div>
+
+    <div class="qc qf" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q32</div><div>
+        <div class="qs">Scenario: Few-shot example bias</div>
+        <div class="qt">All 5 few-shot examples in a classification prompt show positive sentiment. The model starts classifying ambiguous cases as positive. What's wrong?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>5 examples is too many — use 1-2</div>
+        <div class="opt"><span class="ol">B</span>Examples are biased toward positive class — include examples from all classes including edge cases</div>
+        <div class="opt"><span class="ol">C</span>Few-shot examples don't influence Claude's classification</div>
+        <div class="opt"><span class="ol">D</span>The issue is with temperature, not examples</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Biased examples create biased outputs; include all classes and edge cases.</span> Few-shot examples teach both pattern and distribution. All-positive examples implicitly tell Claude "outputs in this context tend to be positive." Fix: balanced examples across all classes (positive, negative, neutral), plus edge cases (sarcasm, mixed sentiment, ambiguous). Include the hard cases, not just the easy happy path.</div>
+    </div>
+
+    <div class="qc qf" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q33</div><div>
+        <div class="qs">Scenario: System vs append-system-prompt</div>
+        <div class="qt">A developer uses --system-prompt in Claude Code CLI to add compliance instructions. Their session loses file reading capabilities. Why?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>--system-prompt is incompatible with file operations</div>
+        <div class="opt"><span class="ol">B</span>--system-prompt replaces the entire default system prompt, removing built-in capabilities</div>
+        <div class="opt"><span class="ol">C</span>Compliance instructions conflict with file reading permissions</div>
+        <div class="opt"><span class="ol">D</span>The --system-prompt flag requires --allowedTools to be set</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — --system-prompt replaces the ENTIRE default system prompt.</span> This is a critical CLI distinction: --system-prompt replaces all defaults, removing Claude Code's built-in tool use instructions, safety guidelines, and capabilities. --append-system-prompt ADDS to the defaults, preserving all built-in behavior. Best practice: always use --append-system-prompt to add custom instructions. Only use --system-prompt if you want full control and know exactly what you're replacing.</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S7: IDE & INTEGRATIONS ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(8,145,178,.1);color:var(--g)">07</div>
+    <h2 style="color:var(--g)">IDE Integrations, Remote Sessions & Cowork</h2>
+    <div class="sl"></div>
+    <div class="sqc">6 QUESTIONS</div>
+  </div>
+  <div class="gr g2">
+
+    <div class="qc qgg" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q34</div><div>
+        <div class="qs">Scenario: VS Code extension</div>
+        <div class="qt">A developer has Claude Code CLI and also the VS Code extension. What does the VS Code extension add over the CLI?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>The VS Code extension replaces the CLI entirely — use one or the other</div>
+        <div class="opt"><span class="ol">B</span>VS Code extension adds inline diff viewing, editor context sharing, and inline code suggestions within the IDE</div>
+        <div class="opt"><span class="ol">C</span>VS Code extension only supports JavaScript and TypeScript</div>
+        <div class="opt"><span class="ol">D</span>They are identical — VS Code extension is just a GUI wrapper</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — IDE-integrated features: inline diffs, editor context, inline suggestions.</span> Claude Code is available as VS Code extension and JetBrains plugin (in addition to CLI and Desktop app). IDE extensions add: (1) inline diff views for changes, (2) editor context — Claude sees your cursor position, selected code, and open files without manual @file references, (3) inline code suggestions in editor, (4) /ide command syncs with IDE state. CLI and extension complement each other.</div>
+    </div>
+
+    <div class="qc qgg" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q35</div><div>
+        <div class="qs">Scenario: Remote vs Local session</div>
+        <div class="qt">A developer starts a large refactor in Remote mode and closes their laptop. What happens to the session?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Session terminates immediately when the app closes</div>
+        <div class="opt"><span class="ol">B</span>Session continues running on Anthropic's cloud; developer reconnects when ready to see results</div>
+        <div class="opt"><span class="ol">C</span>Session pauses and resumes when the laptop reopens</div>
+        <div class="opt"><span class="ol">D</span>Session saves state locally and auto-resumes</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Remote session continues on Anthropic's cloud after app closes.</span> Remote sessions run on Anthropic infrastructure. The developer can close the laptop, go to lunch, and reconnect — the session will have completed work or be in progress. Local sessions run on the developer's machine and terminate when closed. Remote sessions are ideal for long-running tasks (large refactors, migration runs) that outlast a working session.</div>
+    </div>
+
+    <div class="qc qgg" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q36</div><div>
+        <div class="qs">Scenario: Cowork VM isolation</div>
+        <div class="qt">A user asks Cowork to process files from their Documents folder. How does Cowork access those files safely?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Cowork uploads files to Anthropic's servers for processing</div>
+        <div class="opt"><span class="ol">B</span>Files are accessible through an isolated VM (Apple Virtualization Framework on Mac) that controls what Cowork can access</div>
+        <div class="opt"><span class="ol">C</span>Cowork has full unrestricted access to all local files</div>
+        <div class="opt"><span class="ol">D</span>Users must manually copy files to a Cowork-specific folder</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Isolated VM via Apple Virtualization Framework.</span> Cowork uses Apple Virtualization Framework (macOS) or equivalent on Windows to provide VM-level isolation for local file access. The VM acts as a sandbox — Cowork can access files the user grants but is isolated from the broader system. This is the key security architecture: local processing without uploading to cloud, with VM-level containment. Cowork stores conversation history locally, not on Anthropic's servers.</div>
+    </div>
+
+    <div class="qc qgg" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q37</div><div>
+        <div class="qs">Scenario: Cowork parallel workstreams</div>
+        <div class="qt">A product manager uses Cowork to simultaneously draft a proposal, research competitors, and build a financial model. What architecture does Cowork use?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Sequential processing — Cowork handles one task at a time</div>
+        <div class="opt"><span class="ol">B</span>Sub-agent coordination — Cowork orchestrates specialized agents for parallel workstreams</div>
+        <div class="opt"><span class="ol">C</span>Three separate Claude.ai chat sessions</div>
+        <div class="opt"><span class="ol">D</span>One agent switches between tasks sequentially but very quickly</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Sub-agent coordination for parallel workstreams.</span> Cowork is built on the same architecture as Claude Code — it uses sub-agent coordination to handle multiple parallel workstreams. Each stream (writing, research, modeling) runs in its own sub-agent context, coordinated by a lead agent. Results feed into each other (research findings inform the proposal). This is why Cowork was built: non-developer parallel multi-task automation.</div>
+    </div>
+
+    <div class="qc qgg" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q38</div><div>
+        <div class="qs">Scenario: SSH session</div>
+        <div class="qt">A developer wants to use Claude Code on a remote Linux server they access via SSH. What's the correct setup?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Not possible — Claude Code only runs on local machines</div>
+        <div class="opt"><span class="ol">B</span>SSH into the server, install Claude Code there (npm i -g @anthropic-ai/claude-code), run claude — it uses the remote shell environment</div>
+        <div class="opt"><span class="ol">C</span>Use Remote mode — it automatically connects to SSH servers</div>
+        <div class="opt"><span class="ol">D</span>Only available on Linux with Docker</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Install Claude Code on the remote server, run over SSH.</span> SSH sessions are a supported Claude Code session mode. The developer SSHs into the remote machine, runs Claude Code in the remote shell — Claude then operates with access to the remote filesystem, processes, and environment. The session runs on the remote machine, not tunneled from local. Ideal for: cloud servers, remote dev environments, air-gapped systems with controlled Claude access.</div>
+    </div>
+
+    <div class="qc qgg" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q39</div><div>
+        <div class="qs">Scenario: Cowork scheduled tasks</div>
+        <div class="qt">A sales manager wants Cowork to automatically compile a weekly competitive intelligence report every Monday at 8AM. What Cowork feature enables this?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Not possible — Cowork is interactive only</div>
+        <div class="opt"><span class="ol">B</span>Cowork's scheduled tasks feature — create a recurring automation that runs at specified times</div>
+        <div class="opt"><span class="ol">C</span>Set up a cron job that calls the Claude API</div>
+        <div class="opt"><span class="ol">D</span>Requires Enterprise plan with Compliance API</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Cowork scheduled tasks.</span> Cowork supports scheduled task automation — set a task to run at a specific time (daily, weekly, etc.) without human trigger. The competitive intelligence report would: use Claude in Chrome to gather research, Cowork to synthesize, and output a formatted document. Available on paid plans with Cowork access (Pro, Max, Team, Enterprise). Remember: Cowork is desktop-only (macOS + Windows) and not suitable for regulated workloads (no audit logs).</div>
+    </div>
+
+  </div>
+
+  <!-- ====== S8: STRUCTURED OUTPUT EDGE CASES ====== -->
+  <div class="sh">
+    <div class="sn" style="background:rgba(22,163,74,.1);color:var(--h)">08</div>
+    <h2 style="color:var(--h)">Structured Output Edge Cases & Schema Design</h2>
+    <div class="sl"></div>
+    <div class="sqc">6 QUESTIONS</div>
+  </div>
+  <div class="gr g2">
+
+    <div class="qc qh" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q40</div><div>
+        <div class="qs">Scenario: Missing field handling</div>
+        <div class="qt">Claude is extracting invoice data from varied formats. Some invoices don't have a "discount" field. What instruction prevents Claude from inventing values?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Make "discount" a required field so Claude always includes it</div>
+        <div class="opt"><span class="ol">B</span>Include "discount" as optional in schema; instruct "If field not explicitly present in source, use null — do not infer or calculate"</div>
+        <div class="opt"><span class="ol">C</span>Omit "discount" from the schema entirely</div>
+        <div class="opt"><span class="ol">D</span>Use a default value of 0 for missing discounts</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Optional field in schema + explicit null instruction.</span> The critical prompt clause: "If the field is not explicitly present in the source document, use null. Do not calculate, estimate, or infer values not directly stated." Without this, Claude may calculate a discount from subtracted amounts or infer 0 when no discount appears. null explicitly signals "data not present" — different from 0 which could mean "no discount applied."</div>
+    </div>
+
+    <div class="qc qh" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q41</div><div>
+        <div class="qs">Scenario: Nested JSON</div>
+        <div class="qt">A contract extraction task needs to pull clauses with sub-clauses. The JSON output keeps varying in depth. What's the fix?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Flatten all clauses into a single array with no nesting</div>
+        <div class="opt"><span class="ol">B</span>Define a fixed schema with explicit nesting depth; include a few-shot example showing exactly the expected nested structure</div>
+        <div class="opt"><span class="ol">C</span>Use XML output format instead of JSON for nested data</div>
+        <div class="opt"><span class="ol">D</span>Ask Claude to "use consistent nesting"</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Explicit schema + few-shot example of exact nested structure.</span> For complex nested outputs: (1) Define the full schema explicitly in system prompt — show clause → sub_clauses → [] structure, (2) Include a complete few-shot example with actual nesting, (3) Specify max depth if applicable. Vague instructions like "use consistent nesting" are probabilistic. A concrete example is the most effective anchor for complex structure.</div>
+    </div>
+
+    <div class="qc qh" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q42</div><div>
+        <div class="qs">Scenario: Array vs single object</div>
+        <div class="qt">An extraction prompt sometimes returns a single JSON object, sometimes a JSON array, depending on whether 1 or multiple items are found. How do you enforce consistent output?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Accept variability — parse both formats</div>
+        <div class="opt"><span class="ol">B</span>Explicitly instruct: "Always return a JSON array, even if only one item is found — e.g., [{ single item }]"</div>
+        <div class="opt"><span class="ol">C</span>Use a POST-processing step to normalize</div>
+        <div class="opt"><span class="ol">D</span>Set the schema type to "object OR array"</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Always return array, even for single items.</span> The prompt fix: "Return a JSON array of items. If only one item is found, return a one-element array: [{ ... }]. If no items found, return an empty array: []." This enforces consistent type for downstream code — your parser always calls .map() or .forEach() without type-checking first. Option C (post-processing) works but adds complexity that's avoidable at the prompt level.</div>
+    </div>
+
+    <div class="qc qh" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q43</div><div>
+        <div class="qs">Scenario: Output format contamination</div>
+        <div class="qt">You ask for JSON output. Claude wraps it in ```json\n...\n``` markdown code fences. Your JSON parser breaks. What's the fix?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>Parse the markdown manually — code fences are standard</div>
+        <div class="opt"><span class="ol">B</span>Add to prompt: "Return ONLY the raw JSON. No markdown. No code fences. No explanation. Start your response with { or [."</div>
+        <div class="opt"><span class="ol">C</span>Use a regex to strip code fences in post-processing</div>
+        <div class="opt"><span class="ol">D</span>Request XML instead of JSON — less prone to formatting</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Explicit instruction to return raw JSON only, starting with { or [.</span> The canonical prompt suffix: "Return ONLY the raw JSON object/array. No markdown formatting. No code fences. No preamble or explanation. Your response must begin with { or [ and end with } or ]." The "start with {" instruction is a strong anchor — Claude follows literal starting character requirements reliably. Option C is a viable backup but adds fragility.</div>
+    </div>
+
+    <div class="qc qh" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q44</div><div>
+        <div class="qs">Scenario: Schema validation in production</div>
+        <div class="qt">A team trusts Claude's JSON output and skips validation. What production risk does this create?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>No risk — Claude's JSON is always valid and schema-compliant</div>
+        <div class="opt"><span class="ol">B</span>Missing fields, wrong types, or unexpected structure can silently corrupt downstream processing without validation</div>
+        <div class="opt"><span class="ol">C</span>Risk is low — JSON parsing errors are immediately visible</div>
+        <div class="opt"><span class="ol">D</span>Only affects free tier — paid plans have stricter output guarantees</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Schema validation is non-negotiable in production.</span> Claude occasionally: omits optional fields (field: undefined vs null), uses wrong types (string "3" vs number 3), adds unexpected fields, or truncates arrays on long content. Always validate against your schema (Zod, Pydantic, JSON Schema) before using output. Log and alert on validation failures — they reveal where your prompt needs improvement. Never trust LLM output without schema validation in production.</div>
+    </div>
+
+    <div class="qc qh" onclick="ta(this)">
+      <div class="qhead"><div class="qn">Q45</div><div>
+        <div class="qs">Scenario: Negative instructions</div>
+        <div class="qt">An extraction prompt says "Do not include personal information." Claude still includes names and emails. What's a stronger instruction?</div>
+      </div></div>
+      <div class="qopts">
+        <div class="opt"><span class="ol">A</span>"Do not include personal information" — the instruction is correct, it's a model limitation</div>
+        <div class="opt"><span class="ol">B</span>Add positive instruction: "Extract only: [invoice_date, amount, line_items]. The output schema has no name or email fields. Any personal identifiers not in this list must be omitted."</div>
+        <div class="opt"><span class="ol">C</span>Add: "Definitely never under any circumstances include personal data"</div>
+        <div class="opt"><span class="ol">D</span>Use a PostToolUse hook to strip PII after extraction</div>
+      </div>
+      <div class="tbtn">▶ SHOW ANSWER</div>
+      <div class="ans"><div class="al">✓ Correct</div><span class="cr">B — Whitelist approach: specify exactly what to include, not what to exclude.</span> Negative instructions ("do not include X") are weaker than positive whitelist instructions. Better: define the exact output schema and state "only fields in this schema are valid outputs." If the schema has no name/email fields, Claude has no place to put them. Combining with: "Any data not explicitly in this schema must be omitted" provides double reinforcement. Option D (PostToolUse PII stripping) is also good as a defense layer but doesn't fix the prompt.</div>
+    </div>
+
+  </div>
+
+  <div class="ft">
+    <span id="fs">0</span> of 45 revealed ·
+    Click any card to reveal · Vol.2 of the Claude Certification Questionnaire Series ·
+    <span style="color:var(--muted)">March 2026</span>
+  </div>
+
+</div>
+
+<script>
+  let rev = 0; const tot = 45;
+
+  function ta(card) {
+    const a = card.querySelector('.ans');
+    const b = card.querySelector('.tbtn');
+    if (!a.classList.contains('show')) {
+      a.classList.add('show'); a.style.display = 'block';
+      b.textContent = '▼ HIDE ANSWER'; rev++;
+    } else {
+      a.classList.remove('show'); a.style.display = 'none';
+      b.textContent = '▶ SHOW ANSWER'; rev--;
+    }
+    upd();
+  }
+
+  function revealAll() {
+    document.querySelectorAll('.ans').forEach(a => { a.classList.add('show'); a.style.display='block'; });
+    document.querySelectorAll('.tbtn').forEach(b => b.textContent='▼ HIDE ANSWER');
+    rev = tot; upd();
+  }
+
+  function hideAll() {
+    document.querySelectorAll('.ans').forEach(a => { a.classList.remove('show'); a.style.display='none'; });
+    document.querySelectorAll('.tbtn').forEach(b => b.textContent='▶ SHOW ANSWER');
+    rev = 0; upd();
+  }
+
+  function upd() {
+    rev = Math.max(0, Math.min(tot, rev));
+    document.getElementById('sc').textContent = rev + ' / ' + tot + ' revealed';
+    document.getElementById('fs').textContent = rev;
+    document.getElementById('pf').style.width = (rev/tot*100) + '%';
+  }
+
+  document.querySelectorAll('.ans').forEach(a => a.style.display = 'none');
+</script>
+</body>
+</html>

@@ -136,7 +136,7 @@ Use the API (Claude, GPT-5, Gemini) when:
 - Cost at scale demands granular token optimisation
 - You are building a product on top of AI
 
-!!! warning "API ≠ lower governance burden"
+:::warning API ≠ lower governance burden
     Calling an API directly puts the full governance burden on you — data handling, content filtering, safety controls, audit logging. Products sometimes do more of this for you.
 
 ### 3.3 When to Fine-tune
@@ -160,10 +160,10 @@ Use frameworks (Claude Agent SDK, LangGraph, etc.) when:
 - The system must **recover from errors** mid-workflow
 - You need **human-in-the-loop** checkpoints at defined stages
 
-!!! note "AutoGen status"
+:::note AutoGen status
     Microsoft's AutoGen is now in maintenance mode; its successor is the **Microsoft Agent Framework** (1.0 GA April 2026).
 
-!!! danger "Don't go agentic prematurely"
+:::danger Don't go agentic prematurely
     Every agent adds latency, cost, and failure surface. A single well-prompted model call often beats a multi-agent pipeline for simple tasks. Measure before you architect.
 
 ### 3.5 When to Use Enterprise AI Platforms
@@ -232,7 +232,7 @@ COMPLEXITY OF TASK
 
 ### 4.4 Vendor Lock-in Risk and Mitigation
 
-!!! danger "Lock-in is real"
+:::danger Lock-in is real
     Embedding models, fine-tuned models, and proprietary APIs all create switching costs. Plan your exit strategy before you start.
 
 | Risk | Mitigation |
@@ -755,7 +755,7 @@ An LLM agent with access to sensitive data and external tools (email, web) could
 
 ### 12.3 API Key Management
 
-!!! danger "Never hardcode API keys"
+:::danger Never hardcode API keys
     Hardcoded keys in source code are the single most common AI security incident. They end up in git history, container images, and logs.
 
 **Production key management:**
@@ -803,7 +803,7 @@ Application → AWS Secrets Manager / Azure Key Vault / HashiCorp Vault
 
 ### 13.2 What NOT to Log
 
-!!! danger "Never log these"
+:::danger Never log these
     - Full prompt content with PII (log a hash instead; store full prompt in encrypted audit store if needed)
     - Credentials or API keys appearing in prompts or tool arguments
     - Full conversation history containing user personal data
@@ -891,7 +891,7 @@ For full exam preparation and domain breakdown, see [Skills Assessment](enterpri
 
 ## 15. Best Practices
 
-!!! success "EA-Specific Best Practices"
+:::success EA-Specific Best Practices
 
 1. **Start with the problem, not the technology.** "We need AI" is not a problem statement. Define the task, the user, the success metric, and the constraint before selecting a model.
 
@@ -941,7 +941,7 @@ For full exam preparation and domain breakdown, see [Skills Assessment](enterpri
 
 ## 16. Antipatterns
 
-!!! danger "Antipatterns — with Business Impact"
+:::danger Antipatterns — with Business Impact
 
 **AP-1: AI-first architecture**
 *Pattern:* Immediately replatforming everything onto AI without evaluating fit.

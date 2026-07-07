@@ -8,7 +8,7 @@ title: AI Assurance & Audit Architecture
 **Purpose:** Design the AI assurance framework (three lines of defense), AI audit ledger architecture, explainability requirements, and constitutional traceability systems.  
 **Related:** [AI Governance Operating Model](ai-governance-operating-model.md) · [AI Risk Taxonomy](ai-risk-taxonomy.md) · [Policy-as-Code Framework](policy-as-code-framework.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     The EU AI Act requires documented conformity assessments and post-market monitoring for High-Risk AI systems. ISO 42001:2023 requires an AI management system audit. NIST AI RMF's MEASURE and MANAGE functions define the operational assurance activities. This document designs the architecture to satisfy all three.
 
 ---

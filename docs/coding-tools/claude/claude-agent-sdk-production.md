@@ -6,7 +6,7 @@ title: Claude Agent SDK — Production Reference
 
 Zero-to-mastery guide for building production multi-agent systems with the Claude Agent SDK. Covers architecture decisions, every major pattern, cost controls, observability, guardrails, and responsible AI considerations.
 
-!!! note "Naming history"
+:::note Naming history
     The Claude Agent SDK was renamed from "Claude Code SDK" in September 2025. All package names and imports in this guide reflect the current name.
 
 ---
@@ -122,7 +122,7 @@ The SDK is distinct from the raw Messages API (which you manage entirely) and fr
     });
     ```
 
-!!! danger "Never hardcode API keys"
+:::danger Never hardcode API keys
     Store `ANTHROPIC_API_KEY` in AWS Secrets Manager, HashiCorp Vault, or a `.env` file excluded from version control. Rotate on a 90-day schedule. Audit access logs for unexpected usage.
 
 ---
@@ -403,7 +403,7 @@ async def run_with_approval(prompt: str, approver_channel):
     return result
 ```
 
-!!! warning "HITL is not optional for production"
+:::warning HITL is not optional for production
     Any agent action that modifies external state — sending emails, writing to databases, calling payment APIs, deploying code — must have a HITL checkpoint or be designed to be fully reversible. Document which actions are covered and which are not in your system design.
 
 ---
@@ -1155,7 +1155,7 @@ def run_with_cache(user_question: str) -> str:
     return response.content[0].text
 ```
 
-!!! tip "Cache savings in practice"
+:::tip Cache savings in practice
     A 100K-token policy document costs ~$0.30 to process per call at Sonnet pricing. With caching, the first call costs ~$0.25 (cache write) and all subsequent calls cost ~$0.03 (cache read). Break-even is 2 calls; after that you save ~90% on input tokens.
 
 ### Output Token Limits
@@ -1833,7 +1833,7 @@ From **June 15, 2026**, Agent SDK usage is included in Claude.ai subscription pl
 | Max 5× | $100/month | ~500–2,000 typical tasks |
 | Max 20× | $200/month | ~1,000–4,000 typical tasks |
 
-!!! note "Credits vs API billing"
+:::note Credits vs API billing
     Credits apply when using the Agent SDK through Claude.ai. Direct API usage (raw Messages API) is billed at standard token rates regardless of subscription plan. If you are building a SaaS product that bills your own customers for agent usage, use the API directly with your API key, not subscription credits.
 
 **Credit consumption factors:**

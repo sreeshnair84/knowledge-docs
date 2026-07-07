@@ -15,7 +15,7 @@ As AI agents move from prototypes to enterprise production, they expose a fundam
 
 This guide provides a deep technical comparison: architecture, authentication flows, governance models, code patterns, and a decision framework for architects choosing between, or combining, both systems in multi-cloud deployments.
 
-!!! note "Key Finding"
+:::note Key Finding
     The two platforms are designed for interoperability. AWS AgentCore Identity and Microsoft Entra Agent ID can be federated via OIDC/WIF, enabling AWS-native agents to carry Entra-governed identities — the recommended pattern for multi-cloud enterprise deployments.
 
 ---
@@ -439,7 +439,7 @@ Both Microsoft Entra Agent ID and AWS AgentCore Identity have reached enterprise
 
 Critically, they are designed for interoperability, not competition. Microsoft explicitly lists AWS Bedrock as a supported third-party platform, and AWS lists Microsoft Entra ID as a supported identity provider.
 
-!!! note "Recommended enterprise pattern for multi-cloud AI"
+:::note Recommended enterprise pattern for multi-cloud AI
     Use AgentCore Identity as the AWS-side anchor, federated into Entra Agent ID for Microsoft resource access — achieving zero stored secrets, full audit coverage across both clouds, and user-identity preservation via OBO token exchange.
 
 **Practical starting point:**

@@ -56,7 +56,7 @@ The end-to-end life of a memory record: **write (gated) → classify → store (
 
 Every record carries `{created, last_accessed, ttl, importance}`. GC = expiry + importance-decay eviction + orphan sweep (memories referencing deleted tasks/users).
 
-!!! warning "GDPR erasure must cascade"
+:::warning GDPR erasure must cascade
     Source-document deletion must cascade to **derived memories, embeddings, caches, and summaries that quote it**. Maintain a **derivation index** (memory → sources) or you cannot comply. This is the single most commonly missed requirement in agent memory design.
 
 ### 3.2 Compaction & Summarization

@@ -546,7 +546,7 @@ For a 200K context window model:
 | User message | 1,000–5,000 | Current turn |
 | Output reservation | 4,000–8,000 | Reserve for generation |
 
-!!! warning "Context Overflow is Silent"
+:::warning Context Overflow is Silent
     When context exceeds the model's window, providers truncate without error. This causes the agent to silently lose conversation history or retrieved documents, producing degraded responses. Implement context window monitoring as a first-class operational metric. See [Observability](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md).
 
 ### Prompt Versioning
@@ -1323,5 +1323,5 @@ Include: the application stage, the component being decided, and why this matter
 - ADR-[N]: [Related decision and how it interacts]
 ```
 
-!!! note "ADR Storage Convention"
+:::note ADR Storage Convention
     Store ADRs in `docs/architecture/decisions/ADR-NNNN-title.md`. Number sequentially. Never delete a superseded ADR — update its status to "Superseded by ADR-NNNN" and keep it for historical reference.

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude Code Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2128;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #f0883e;
+    --purple: #bc8cff;
+    --red: #ff7b72;
+    --teal: #39d0c4;
+    --yellow: #e3b341;
+    --text: #e6edf3;
+    --muted: #8b949e;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.5; padding:16px; }
+  .page { max-width:1200px; margin:0 auto; }
+
+  .title-bar {
+    background: linear-gradient(135deg, #1a2332 0%, #0d1117 50%, #1a1a2e 100%);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .title-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--teal), var(--purple));
+  }
+  .title-bar h1 { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; color:var(--accent); letter-spacing:-0.5px; }
+  .title-bar .sub { color:var(--muted); font-size:10px; margin-top:2px; }
+  .badges { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+  .badge { padding:3px 8px; border-radius:20px; font-size:9px; font-weight:700; border:1px solid; letter-spacing:0.5px; }
+  .badge.blue { color:var(--accent); border-color:var(--accent); background:rgba(88,166,255,0.1); }
+  .badge.green { color:var(--green); border-color:var(--green); background:rgba(63,185,80,0.1); }
+  .badge.orange { color:var(--orange); border-color:var(--orange); background:rgba(240,136,62,0.1); }
+
+  .grid { display:grid; gap:10px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g32 { grid-template-columns: 1.4fr 1fr; }
+  .g23 { grid-template-columns: 1fr 1.4fr; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 7px 12px;
+    font-family:'Syne',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.5px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .card-header .icon { font-size:13px; }
+  .card-body { padding: 10px 12px; }
+
+  .blue-card .card-header { background: rgba(88,166,255,0.15); color:var(--accent); border-bottom:1px solid rgba(88,166,255,0.2); }
+  .green-card .card-header { background: rgba(63,185,80,0.15); color:var(--green); border-bottom:1px solid rgba(63,185,80,0.2); }
+  .orange-card .card-header { background: rgba(240,136,62,0.15); color:var(--orange); border-bottom:1px solid rgba(240,136,62,0.2); }
+  .purple-card .card-header { background: rgba(188,140,255,0.15); color:var(--purple); border-bottom:1px solid rgba(188,140,255,0.2); }
+  .teal-card .card-header { background: rgba(57,208,196,0.15); color:var(--teal); border-bottom:1px solid rgba(57,208,196,0.2); }
+  .red-card .card-header { background: rgba(255,123,114,0.15); color:var(--red); border-bottom:1px solid rgba(255,123,114,0.2); }
+  .yellow-card .card-header { background: rgba(227,179,65,0.15); color:var(--yellow); border-bottom:1px solid rgba(227,179,65,0.2); }
+
+  .tool-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 6px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .tool-row:last-child { border-bottom: none; }
+  .tool-name { color:var(--yellow); font-weight:700; font-size:11px; }
+  .tool-desc { color:var(--text); }
+  .tool-note { color:var(--muted); font-size:10px; margin-top:2px; }
+
+  .kv { padding: 4px 0; border-bottom: 1px solid var(--border); display:flex; gap:8px; }
+  .kv:last-child { border-bottom:none; }
+  .kv .k { color:var(--accent); font-weight:700; min-width:110px; flex-shrink:0; font-size:10.5px; }
+  .kv .v { color:var(--text); font-size:10.5px; }
+
+  .tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:9.5px; font-weight:700; margin-right:3px; }
+  .tag.green { background:rgba(63,185,80,0.2); color:var(--green); }
+  .tag.red { background:rgba(255,123,114,0.2); color:var(--red); }
+  .tag.blue { background:rgba(88,166,255,0.2); color:var(--accent); }
+  .tag.orange { background:rgba(240,136,62,0.2); color:var(--orange); }
+  .tag.purple { background:rgba(188,140,255,0.2); color:var(--purple); }
+
+  .code-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin: 6px 0;
+    font-size:10.5px;
+    color: var(--green);
+  }
+  .code-block .comment { color:var(--muted); }
+  .code-block .keyword { color:var(--purple); }
+  .code-block .string { color:var(--yellow); }
+  .code-block .fn { color:var(--teal); }
+
+  .vs-table { width:100%; border-collapse:collapse; }
+  .vs-table th { padding:5px 8px; font-size:10px; font-weight:700; letter-spacing:0.5px; }
+  .vs-table td { padding:5px 8px; border-top:1px solid var(--border); font-size:10.5px; vertical-align:top; }
+  .vs-table .plan { color:var(--orange); }
+  .vs-table .direct { color:var(--green); }
+
+  .bullet-list { list-style:none; }
+  .bullet-list li { padding:3px 0; padding-left:14px; position:relative; font-size:10.5px; border-bottom:1px solid var(--border); }
+  .bullet-list li:last-child { border-bottom:none; }
+  .bullet-list li::before { content:'›'; position:absolute; left:0; color:var(--muted); }
+  .bullet-list li .hi { color:var(--yellow); font-weight:700; }
+
+  .flow { display:flex; align-items:center; gap:4px; flex-wrap:wrap; padding:6px 0; }
+  .flow-box { padding:4px 10px; border-radius:4px; font-size:10px; font-weight:700; border:1px solid; }
+  .flow-arrow { color:var(--muted); font-size:14px; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .section-label { font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; padding:4px 0 2px; }
+
+  .warn { background:rgba(255,123,114,0.08); border-left:3px solid var(--red); padding:6px 10px; border-radius:0 4px 4px 0; font-size:10px; color:var(--red); margin:4px 0; }
+  .tip { background:rgba(63,185,80,0.08); border-left:3px solid var(--green); padding:6px 10px; border-radius:0 4px 4px 0; font-size:10px; color:var(--green); margin:4px 0; }
+
+  .mb8 { margin-bottom:8px; }
+  .mt4 { margin-top:4px; }
+
+  @media print {
+    body { background:white; color:#111; font-size:9px; padding:8px; }
+    .title-bar { background:#1a2332; }
+    .card { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="title-bar">
+    <div>
+      <h1>⚡ CLAUDE CODE</h1>
+      <div class="sub">Complete Reference Cheat Sheet · Anthropic Partner Certification EA</div>
+    </div>
+    <div class="badges">
+      <div class="badge blue">DOMAIN 3 · 20%</div>
+      <div class="badge green">BUILT-IN TOOLS</div>
+      <div class="badge orange">CLAUDE.md CONFIG</div>
+    </div>
+  </div>
+
+  <!-- ROW 1: Tools Reference -->
+  <div class="grid g2 mb8">
+
+    <div class="card blue-card">
+      <div class="card-header"><span class="icon">🔧</span> Built-in Tools — Selection Guide</div>
+      <div class="card-body">
+        <div class="tool-row">
+          <div class="tool-name">Grep</div>
+          <div><div class="tool-desc">Search <strong>FILE CONTENTS</strong> for patterns</div>
+          <div class="tool-note">→ Finding function callers, error messages, import statements, string patterns inside files</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name">Glob</div>
+          <div><div class="tool-desc">Match <strong>FILE PATHS/NAMES</strong> by pattern</div>
+          <div class="tool-note">→ <span style="color:var(--yellow)">**/*.test.tsx</span> finds all TS test files recursively. Navigate structure, not content</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name">Read</div>
+          <div><div class="tool-desc"><strong>Full file read</strong> — entire file into context</div>
+          <div class="tool-note">→ Always Read before Write to preserve unmodified content</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name">Write</div>
+          <div><div class="tool-desc"><strong>Full file write</strong> — overwrites completely</div>
+          <div class="tool-note">→ Use after Read when Edit fails on non-unique matches</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name">Edit</div>
+          <div><div class="tool-desc"><strong>Targeted modification</strong> via unique text matching</div>
+          <div class="tool-note">→ Specify exact text to find (must be unique) → replace. Surgical, minimal diff</div></div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name">Bash</div>
+          <div><div class="tool-desc"><strong>Execute shell commands</strong> in the environment</div>
+          <div class="tool-note">→ Run tests, git ops, npm install, lint checks, build commands</div></div>
+        </div>
+        <div class="warn mt4">⚠ Edit FAILS when text appears more than once → fallback: Read + Write</div>
+      </div>
+    </div>
+
+    <div class="card green-card">
+      <div class="card-header"><span class="icon">📄</span> CLAUDE.md — Configuration Reference</div>
+      <div class="card-body">
+        <div class="section-label">What to include</div>
+        <div class="kv"><span class="k">Project context</span><span class="v">Repository structure, tech stack, architecture overview, key directories</span></div>
+        <div class="kv"><span class="k">Coding conventions</span><span class="v">Style guide, naming patterns, design patterns to follow/avoid</span></div>
+        <div class="kv"><span class="k">Test commands</span><span class="v">How to run unit/integration tests so Claude can self-validate changes</span></div>
+        <div class="kv"><span class="k">Build/lint commands</span><span class="v">npm run build, eslint, prettier — Claude runs these after changes</span></div>
+        <div class="kv"><span class="k">Custom slash cmds</span><span class="v">/review, /deploy, /test — shortcuts to trigger specific behaviors</span></div>
+        <div class="kv"><span class="k">Agent Skills</span><span class="v">Reusable team-specific capabilities that persist across sessions</span></div>
+        <div class="kv"><span class="k">MCP servers</span><span class="v">Which servers to connect, what tools they expose, when to use them</span></div>
+        <div class="kv"><span class="k">Do NOT include</span><span class="v" style="color:var(--red)">API keys, secrets, credentials — use environment variables</span></div>
+        <div class="tip mt4">✓ CLAUDE.md persists knowledge across sessions — team shares conventions without re-explaining</div>
+        <div class="section-label" style="margin-top:8px">Agent Skills vs Slash Commands</div>
+        <div class="two-col" style="margin-top:4px">
+          <div>
+            <div style="color:var(--purple);font-weight:700;font-size:10px;margin-bottom:3px">Agent Skills</div>
+            <ul class="bullet-list">
+              <li>Reusable capabilities</li>
+              <li>Complex multi-step behaviors</li>
+              <li>Team knowledge (deploy process)</li>
+              <li>Defined in CLAUDE.md</li>
+            </ul>
+          </div>
+          <div>
+            <div style="color:var(--teal);font-weight:700;font-size:10px;margin-bottom:3px">Slash Commands</div>
+            <ul class="bullet-list">
+              <li>Quick shortcuts</li>
+              <li>Trigger specific skill/behavior</li>
+              <li>/review, /test, /explain</li>
+              <li>Saves repetitive typing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Plan Mode + Session + Scenarios -->
+  <div class="grid g3 mb8">
+
+    <div class="card orange-card">
+      <div class="card-header"><span class="icon">📋</span> Plan Mode vs Direct Execution</div>
+      <div class="card-body">
+        <table class="vs-table">
+          <tr>
+            <th class="plan" style="background:rgba(240,136,62,0.1);border-radius:3px 0 0 0">📋 PLAN MODE</th>
+            <th class="direct" style="background:rgba(63,185,80,0.1);border-radius:0 3px 0 0">⚡ DIRECT MODE</th>
+          </tr>
+          <tr>
+            <td class="plan">Proposes actions first</td>
+            <td class="direct">Executes immediately</td>
+          </tr>
+          <tr>
+            <td class="plan">Human reviews before run</td>
+            <td class="direct">No review step</td>
+          </tr>
+          <tr>
+            <td class="plan">Higher safety, slower</td>
+            <td class="direct">Fast iteration</td>
+          </tr>
+          <tr>
+            <td class="plan">High-risk operations</td>
+            <td class="direct">Low-risk dev tasks</td>
+          </tr>
+          <tr>
+            <td class="plan">Major refactoring</td>
+            <td class="direct">Bug fixes, additions</td>
+          </tr>
+          <tr>
+            <td class="plan">Production changes</td>
+            <td class="direct">Local development</td>
+          </tr>
+          <tr>
+            <td class="plan">File deletions</td>
+            <td class="direct">Read operations</td>
+          </tr>
+        </table>
+        <div class="tip mt4">✓ Plan mode = human oversight at critical decision points</div>
+      </div>
+    </div>
+
+    <div class="card teal-card">
+      <div class="card-header"><span class="icon">🔀</span> Session Management</div>
+      <div class="card-body">
+        <div class="kv"><span class="k">fork_session</span><span class="v">Creates parallel branches from current state — compare 2 refactoring approaches simultaneously</span></div>
+        <div class="kv"><span class="k">Session resume</span><span class="v">Continues from prior context — use when prior state is still valid/relevant</span></div>
+        <div class="kv"><span class="k">Fresh + summaries</span><span class="v">Start new session, inject summarized context — use when tool results are stale</span></div>
+        <div class="kv"><span class="k">Targeted re-analysis</span><span class="v">Inform resumed session about specific file changes — avoids full re-exploration</span></div>
+        <div class="section-label" style="margin-top:8px">When to Resume vs Fresh Start</div>
+        <div class="warn">Resume: prior context mostly valid, files unchanged, continuing same task</div>
+        <div class="tip">Fresh: file system changed, new requirements, stale tool results, new codebase</div>
+      </div>
+    </div>
+
+    <div class="card purple-card">
+      <div class="card-header"><span class="icon">🔄</span> CI/CD Integration (Scenario 5)</div>
+      <div class="card-body">
+        <div class="section-label">System Capabilities</div>
+        <ul class="bullet-list">
+          <li><span class="hi">Automated code review</span> on every PR</li>
+          <li><span class="hi">Test case generation</span> for new code</li>
+          <li><span class="hi">PR feedback</span> with structured output</li>
+          <li>Runs in pipeline — no human trigger</li>
+        </ul>
+        <div class="section-label" style="margin-top:8px">Prompt Design Goals</div>
+        <div class="kv"><span class="k">Actionable feedback</span><span class="v">File + line + issue + severity + suggested fix</span></div>
+        <div class="kv"><span class="k">Minimize false positives</span><span class="v">Clear criteria, scope boundaries, what NOT to flag</span></div>
+        <div class="kv"><span class="k">Severity levels</span><span class="v">error / warning / suggestion — not all equal weight</span></div>
+        <div class="section-label" style="margin-top:8px">Primary Domains Tested</div>
+        <span class="tag blue">Claude Code Config</span>
+        <span class="tag orange">Prompt Engineering</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 3: Tool Decision Tree + Common Patterns -->
+  <div class="grid g32 mb8">
+
+    <div class="card yellow-card">
+      <div class="card-header"><span class="icon">🌳</span> Tool Selection Decision Tree</div>
+      <div class="card-body">
+        <div class="two-col">
+          <div>
+            <div class="section-label">Goal: Find something</div>
+            <ul class="bullet-list">
+              <li><span class="hi">Function all callers?</span> → Grep (content)</li>
+              <li><span class="hi">All .tsx files?</span> → Glob (paths)</li>
+              <li><span class="hi">Error message in logs?</span> → Grep (content)</li>
+              <li><span class="hi">Config file location?</span> → Glob (paths)</li>
+              <li><span class="hi">Import pattern?</span> → Grep (content)</li>
+            </ul>
+            <div class="section-label" style="margin-top:8px">Goal: Modify a file</div>
+            <ul class="bullet-list">
+              <li><span class="hi">Change one unique thing?</span> → Edit</li>
+              <li><span class="hi">Edit fails (non-unique)?</span> → Read+Write</li>
+              <li><span class="hi">Create new file?</span> → Write directly</li>
+              <li><span class="hi">Large restructure?</span> → Read+Write</li>
+            </ul>
+          </div>
+          <div>
+            <div class="section-label">Glob Pattern Examples</div>
+            <div class="code-block">
+<span class="comment"># All TypeScript test files</span>
+**/*.test.tsx
+**/*.spec.ts
+
+<span class="comment"># All files in src/</span>
+src/**/*
+
+<span class="comment"># Config files</span>
+**/*.config.js
+**/.env*
+
+<span class="comment"># Nested components</span>
+src/components/**/*.tsx</div>
+            <div class="section-label" style="margin-top:6px">Grep Examples</div>
+            <div class="code-block">
+<span class="comment"># Find all callers of fn</span>
+grep -r "myFunction(" .
+
+<span class="comment"># Find imports</span>
+grep -r "from 'lodash'" .
+
+<span class="comment"># Error messages</span>
+grep -r "Cannot read" logs/</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card red-card">
+      <div class="card-header"><span class="icon">⚠️</span> Anti-Patterns & Common Mistakes</div>
+      <div class="card-body">
+        <div class="warn">Using Edit on non-unique text → always fails silently or wrong match</div>
+        <div class="warn">Writing files without Reading first → overwrites unintended content</div>
+        <div class="warn">Using Glob to search file content → only matches paths/filenames</div>
+        <div class="warn">Using Grep to find files by name → use Glob for paths</div>
+        <div class="warn">Storing secrets in CLAUDE.md → use environment variables</div>
+        <div class="warn">Running destructive Bash without plan mode → data loss risk</div>
+        <div class="warn">Not informing resumed session of file changes → stale re-analysis</div>
+        <div class="section-label" style="margin-top:8px">EXAM TRAPS</div>
+        <ul class="bullet-list">
+          <li><span class="hi">Grep vs Glob:</span> Grep=contents, Glob=paths — exam loves this distinction</li>
+          <li><span class="hi">Edit fallback:</span> non-unique match → Read+Write (not just retry Edit)</li>
+          <li><span class="hi">Plan mode:</span> requires human review BEFORE execution, not just logging</li>
+          <li><span class="hi">fork_session:</span> parallel exploration branches — not git fork</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 4: Scenarios + Key Facts -->
+  <div class="grid g3">
+
+    <div class="card blue-card">
+      <div class="card-header"><span class="icon">📦</span> Scenario 2: Code Generation</div>
+      <div class="card-body">
+        <div class="kv"><span class="k">Context</span><span class="v">Team uses Claude Code for gen, refactoring, debugging, docs</span></div>
+        <div class="kv"><span class="k">Key task</span><span class="v">Integrate into dev workflow with CLAUDE.md + custom commands + plan mode</span></div>
+        <div class="kv"><span class="k">Primary domains</span><span class="v">Claude Code Config, Context Management</span></div>
+        <div class="section-label" style="margin-top:8px">Setup Checklist</div>
+        <ul class="bullet-list">
+          <li>CLAUDE.md with project structure</li>
+          <li>Custom slash commands for common tasks</li>
+          <li>Test command so Claude self-validates</li>
+          <li>Define Agent Skills for team workflows</li>
+          <li>MCP servers for Jira/GitHub integration</li>
+          <li>Plan mode for risky operations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card green-card">
+      <div class="card-header"><span class="icon">🎯</span> Key Exam Facts — Domain 3</div>
+      <div class="card-body">
+        <div class="kv"><span class="k">Domain weight</span><span class="v" style="color:var(--yellow)">20% of exam (tied with Domain 4)</span></div>
+        <div class="kv"><span class="k">Primary scenarios</span><span class="v">Scenario 2 (Code Gen), Scenario 4 (Dev Productivity), Scenario 5 (CI/CD)</span></div>
+        <div class="kv"><span class="k">CLAUDE.md purpose</span><span class="v">Project context, conventions, commands — persists across sessions</span></div>
+        <div class="kv"><span class="k">Plan mode trigger</span><span class="v">High-risk, production changes, major refactoring, deletions</span></div>
+        <div class="kv"><span class="k">fork_session</span><span class="v">Parallel exploration branches, NOT git fork</span></div>
+        <div class="kv"><span class="k">Edit requirement</span><span class="v">Text must appear EXACTLY ONCE — otherwise fails</span></div>
+        <div class="kv"><span class="k">Grep = content</span><span class="v">Searches inside files for patterns</span></div>
+        <div class="kv"><span class="k">Glob = paths</span><span class="v">Matches file/directory names and patterns</span></div>
+      </div>
+    </div>
+
+    <div class="card teal-card">
+      <div class="card-header"><span class="icon">🚀</span> Scenario 4: Developer Productivity</div>
+      <div class="card-body">
+        <div class="kv"><span class="k">Context</span><span class="v">Integrating Claude into day-to-day dev workflow for productivity</span></div>
+        <div class="kv"><span class="k">Primary domains</span><span class="v">Tool Design & MCP, Claude Code Config, Agentic Architecture</span></div>
+        <div class="section-label" style="margin-top:8px">Productivity Patterns</div>
+        <ul class="bullet-list">
+          <li>MCP connects Claude to Jira, GitHub, Slack</li>
+          <li>Slash commands for code review workflow</li>
+          <li>Agent Skills for team-specific processes</li>
+          <li>fork_session for A/B refactoring</li>
+          <li>Plan mode before production deployments</li>
+          <li>Resumed sessions preserve work context</li>
+        </ul>
+        <div class="tip mt4">✓ Dev productivity = tool integrations + configured conventions + smart session management</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

@@ -41,7 +41,7 @@ The agent platform is a **product, run by a platform team, with golden paths.** 
 
 **Developer experience** — Backstage (or equivalent) portal exposing golden-path templates ("create agent" scaffolds: harness SDK, eval harness, registry entry, dashboards pre-wired), self-service MCP-server onboarding with automated security tiering, local dev harness with recorded-replay of model calls for deterministic tests, and platform APIs (submit task, query state, stream events, manage memory) so product teams never touch raw infra.
 
-!!! tip "Platform KPIs"
+:::tip Platform KPIs
     Score the platform on **time-to-first-agent-in-prod** and **% of agents on the golden path**.
 
 ---
@@ -76,7 +76,7 @@ Scores: ● strong ◐ partial ○ weak/N-A. "Enterprise readiness" = managed is
 - **Fastest prototype** → OpenAI Agents SDK or CrewAI, then re-platform
 - **Software-engineering agents** → Claude Code / Copilot as products; OpenHands where OSS control is required
 
-!!! note "The realistic composition"
+:::note The realistic composition
     In practice enterprises run **a managed runtime + one framework + Temporal + your own gateway/registry** — no vendor covers the full Vol 1 harness alone.
 
 ---

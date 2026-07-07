@@ -6,7 +6,7 @@ title: Agent Memory
 
 Research on AI agent memory architectures — covering short-term context management, long-term memory stores, episodic memory, semantic memory, and hybrid memory patterns for production agentic systems.
 
-!!! tip "Related guide"
+:::tip Related guide
     For the full memory taxonomy, extract-consolidate-retrieve pipeline, lifecycle controls (TTL/GDPR erasure/compaction), memory security, and planning architecture — see [Agent Memory & Planning Architecture](../../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md).
 
 ---

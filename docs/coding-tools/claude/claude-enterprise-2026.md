@@ -18,7 +18,7 @@ Reference guide for enterprise architects and platform engineers deploying Claud
 | **Google Cloud Vertex AI** | GCP-managed; Model Garden access | GCP service accounts, ADC | GCP bill | GCP-native workloads, BigQuery integration, Vertex Pipelines |
 | **Azure AI Foundry** | Azure Marketplace; Claude models via Azure cognitive services | Azure AD / Managed Identity | Azure bill | Microsoft 365 shops, Azure compliance frameworks |
 
-!!! tip "Choosing a platform"
+:::tip Choosing a platform
     If your data is already in AWS (S3, RDS, Redshift), prefer Bedrock or Claude Platform on AWS for minimal egress and unified IAM. If you need EU data residency with minimal config, Vertex AI EU regions or Azure EU regions are the simplest path. For Microsoft 365 shops needing Conditional Access Policies and Purview integration, Azure AI Foundry is the natural fit.
 
 ---
@@ -93,7 +93,7 @@ Use the following model IDs for 2025-vintage Claude models on Bedrock:
 | Claude Haiku 4.5 | `anthropic.claude-haiku-4-5-20250714-v1:0` | `us.anthropic.claude-haiku-4-5-20250714-v1:0` |
 | Claude Opus 4.8 | `anthropic.claude-opus-4-8-20251101-v1:0` | `us.anthropic.claude-opus-4-8-20251101-v1:0` |
 
-!!! warning "Never use future dates"
+:::warning Never use future dates
     Model IDs use the model's actual release date. Do not construct IDs with future dates. If a model ID fails, verify in the Bedrock console under Foundation Models.
 
 ### 3.2 Basic Setup
@@ -187,7 +187,7 @@ Minimal IAM policy for Bedrock access:
 }
 ```
 
-!!! note "Principle of least privilege"
+:::note Principle of least privilege
     Scope model ARNs to exactly the models your application uses. Do not use `anthropic.claude-*` wildcards in production IAM policies.
 
 ### 3.6 VPC PrivateLink

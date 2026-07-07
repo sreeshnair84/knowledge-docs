@@ -109,7 +109,7 @@ SharePoint authentication flows through Microsoft Entra ID. AI agents should use
 | Service Account (standard) | `drive.readonly` | Access only to files shared with service account |
 | API Key | Public files only | No user context — not suitable for enterprise AI |
 
-!!! warning "Domain-Wide Delegation (DWD) Risk"
+:::warning Domain-Wide Delegation (DWD) Risk
     Domain-Wide Delegation grants service accounts access to **ALL** users' Drive data. DWD should **NEVER** be granted to AI agent service accounts — use OAuth user delegation instead. Restrict service account keys with IAM conditions; prefer Workload Identity Federation. Audit service account key usage via Cloud Audit Logs: `data_access` log type.
 
 ### Notion

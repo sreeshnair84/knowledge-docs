@@ -8,7 +8,7 @@ title: Democratic & Public Interest AI
 **Purpose:** Cover democratic AI governance, citizen oversight models, Collective Constitutional AI, human rights frameworks, and AI for public good across healthcare, education, justice, and government services.  
 **Related:** [Sovereign AI Foundations](sovereign-ai-foundations.md) · [AI Governance Operating Model](ai-governance-operating-model.md) · [Constitutional AI Engineering](constitutional-ai-engineering.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     Democratic AI governance is an emerging discipline distinct from enterprise AI governance. It addresses how AI systems should be governed in democratic societies — where affected citizens have legitimate claims on AI oversight, not just the organizations deploying it.
 
 ---
@@ -237,7 +237,7 @@ AI in justice systems requires the highest governance standards — consequences
 | **Document analysis** | Medium | Assisted; human reviews findings |
 | **Case management prioritization** | Medium | Transparent criteria; audit trail |
 
-!!! warning "Constitutional requirement for justice AI"
+:::warning Constitutional requirement for justice AI
     Any AI system that influences criminal justice outcomes must be disclosed to the defendant, must be explainable to the court, must be contestable through legal process, and must have its performance audited for racial and socioeconomic bias. Several EU member states have banned AI in criminal sentencing risk assessment entirely.
 
 ### 4.4 Government Services

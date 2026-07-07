@@ -8,7 +8,7 @@ title: Constitutional AI Engineering
 **Purpose:** Engineering methodology for designing, implementing, and operating Constitutional AI systems — from foundational principles to enterprise constitution templates and multi-agent constitutional fabrics.  
 **Related:** [AI Alignment & Control](ai-alignment-control.md) · [Constitutional Agent Architecture](constitutional-agent-architecture.md) · [Constitutional AI & Safety 2026](../coding-tools/claude/constitutional-ai-safety-2026.md) · [Policy-as-Code Framework](policy-as-code-framework.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     Constitutional AI (CAI) was introduced by Anthropic (Bai et al., 2022). This document extends CAI principles into a **constitution engineering methodology** applicable at enterprise, sector, and multi-agent scale. For Anthropic-specific CAI implementation details, see [Constitutional AI & Safety 2026](../coding-tools/claude/constitutional-ai-safety-2026.md).
 
 ---

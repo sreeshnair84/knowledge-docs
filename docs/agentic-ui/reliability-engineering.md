@@ -6,7 +6,7 @@ title: Reliability Engineering for Agentic Applications
 
 A comprehensive engineering reference for Enterprise Architects and AI Platform Teams designing production-grade reliability for agentic UIs and agent runtimes — covering SLO frameworks, fault tolerance patterns, saga orchestration, streaming recovery, and chaos engineering.
 
-!!! note "Related Guides"
+:::note Related Guides
     - Observability instrumentation (OTel GenAI spans, burn rate dashboards): [`../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md`](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
     - HITL gates and escalation architecture: [`../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md`](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
     - AI Gateway circuit breaker configuration: [`../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md`](../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md)
@@ -50,7 +50,7 @@ At 99.9% per component, a 12-hop chain has theoretical availability of 98.8%. En
 | **Systemic** | Provider outage, quota exhaustion | Failover to alternate provider; activate degradation ladder | Retry hoping outage resolves |
 | **Safety/Policy** | Guardrail trip, policy violation, scope exceeded | Halt immediately; escalate to HITL | **Never retry-around** — converts contained event to incident |
 
-!!! warning "The Safety Retry Anti-Pattern"
+:::warning The Safety Retry Anti-Pattern
     Retrying around a guardrail trip with a rephrased prompt is the highest-severity reliability engineering mistake in agentic systems. It converts a contained security event into an active security incident. Safety-class failures must halt and escalate — never retry.
 
 ### 1.4 Why Observability Is a Reliability Prerequisite
@@ -479,7 +479,7 @@ Timeouts must be nested: inner timeouts must be shorter than outer timeouts or t
 | Guardrail Timeout | 2s | Input/output guardrail check | Fail open (configurable) or fail closed |
 | Planning Timeout | 30s | Planner model response | Return partial plan; prompt user for clarification |
 
-!!! warning "Timeout Nesting Violation"
+:::warning Timeout Nesting Violation
     If your tool call timeout (30s) equals your LLM call timeout (30s), both can expire simultaneously, making it impossible to determine which failed. Always set inner timeouts 20–40% shorter than outer timeouts.
 
 ---

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude Code Agents & Parallelism</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050810;
+    --surface: #0a0e1a;
+    --surface2: #0e1422;
+    --surface3: #121830;
+    --border: #1a2340;
+    --g1: #00ff88;   /* subagents */
+    --g2: #00c8ff;   /* agent teams */
+    --g3: #ff6b35;   /* worktrees */
+    --g4: #bf5fff;   /* background agents */
+    --g5: #ffdb57;   /* computer use */
+    --g6: #ff4d7d;   /* cost/model routing */
+    --text: #b8c8e8;
+    --muted: #3a4a6a;
+    --white: #e8f0ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10.5px;
+    line-height: 1.55;
+    padding: 14px;
+  }
+  .page { max-width: 1240px; margin: 0 auto; }
+
+  /* === HEADER === */
+  .header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(135deg, #050d20 0%, #050810 60%, #0a0515 100%);
+    border: 1px solid var(--g2);
+    border-radius: 8px; padding: 14px 22px; margin-bottom: 12px;
+    position: relative; overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g4), var(--g5), var(--g6));
+  }
+  .header::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--g2), transparent);
+    opacity: 0.3;
+  }
+  .header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px; font-weight: 900;
+    color: var(--white); letter-spacing: 1px;
+  }
+  .header h1 .accent { color: var(--g1); }
+  .header .sub { color: var(--muted); font-size: 9px; margin-top: 3px; }
+  .badges { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+  .badge {
+    padding: 2px 8px; border-radius: 3px; font-size: 9px;
+    font-weight: 700; border: 1px solid; letter-spacing: 0.5px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* === GRID === */
+  .grid { display: grid; gap: 10px; margin-bottom: 10px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .g32 { grid-template-columns: 1.5fr 1fr; }
+  .g23 { grid-template-columns: 1fr 1.5fr; }
+  .g211 { grid-template-columns: 2fr 1fr 1fr; }
+
+  /* === CARDS === */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; overflow: hidden;
+  }
+  .card-top { border-top: 2px solid; }
+
+  .ch {
+    padding: 7px 12px;
+    font-family: 'Orbitron', sans-serif; font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; gap: 7px;
+    border-bottom: 1px solid var(--border); letter-spacing: 0.5px;
+  }
+  .cb { padding: 10px 12px; }
+
+  .c1 .ch { background: rgba(0,255,136,0.08); color: var(--g1); border-bottom-color: rgba(0,255,136,0.15); }
+  .c2 .ch { background: rgba(0,200,255,0.08); color: var(--g2); border-bottom-color: rgba(0,200,255,0.15); }
+  .c3 .ch { background: rgba(255,107,53,0.08); color: var(--g3); border-bottom-color: rgba(255,107,53,0.15); }
+  .c4 .ch { background: rgba(191,95,255,0.08); color: var(--g4); border-bottom-color: rgba(191,95,255,0.15); }
+  .c5 .ch { background: rgba(255,219,87,0.08); color: var(--g5); border-bottom-color: rgba(255,219,87,0.15); }
+  .c6 .ch { background: rgba(255,77,125,0.08); color: var(--g6); border-bottom-color: rgba(255,77,125,0.15); }
+
+  /* === DATA ROWS === */
+  .kv { padding: 4px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+  .kv:last-child { border-bottom: none; }
+  .kk { min-width: 105px; flex-shrink: 0; font-weight: 700; font-size: 10px; }
+  .vv { font-size: 10px; }
+
+  .c1 .kk { color: var(--g1); }
+  .c2 .kk { color: var(--g2); }
+  .c3 .kk { color: var(--g3); }
+  .c4 .kk { color: var(--g4); }
+  .c5 .kk { color: var(--g5); }
+  .c6 .kk { color: var(--g6); }
+
+  /* === LISTS === */
+  ul.bl { list-style: none; }
+  ul.bl li {
+    padding: 3px 0 3px 14px; position: relative;
+    border-bottom: 1px solid var(--border); font-size: 10px;
+  }
+  ul.bl li:last-child { border-bottom: none; }
+  ul.bl li::before { content: '▸'; position: absolute; left: 0; color: var(--muted); }
+  .hi { font-weight: 700; }
+
+  /* === CODE === */
+  .code {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 8px 10px;
+    font-size: 9.5px; line-height: 1.7; margin: 5px 0;
+  }
+  .cm { color: var(--muted); }
+  .kw { color: var(--g4); }
+  .st { color: var(--g3); }
+  .fn { color: var(--g2); }
+  .val { color: var(--g1); }
+  .fl { color: var(--g5); }
+  .err { color: var(--g6); }
+
+  /* === ALERTS === */
+  .warn {
+    background: rgba(255,77,125,0.07); border-left: 3px solid var(--g6);
+    padding: 4px 8px; border-radius: 0 3px 3px 0;
+    font-size: 9.5px; color: var(--g6); margin: 3px 0;
+  }
+  .tip {
+    background: rgba(0,255,136,0.07); border-left: 3px solid var(--g1);
+    padding: 4px 8px; border-radius: 0 3px 3px 0;
+    font-size: 9.5px; color: var(--g1); margin: 3px 0;
+  }
+  .note {
+    background: rgba(0,200,255,0.07); border-left: 3px solid var(--g2);
+    padding: 4px 8px; border-radius: 0 3px 3px 0;
+    font-size: 9.5px; color: var(--g2); margin: 3px 0;
+  }
+  .exp {
+    background: rgba(255,219,87,0.07); border-left: 3px solid var(--g5);
+    padding: 4px 8px; border-radius: 0 3px 3px 0;
+    font-size: 9.5px; color: var(--g5); margin: 3px 0;
+  }
+
+  /* === MISC === */
+  .sl {
+    font-family: 'Orbitron', sans-serif; font-size: 7.5px; font-weight: 700;
+    letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; padding: 4px 0 2px;
+  }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .tag {
+    display: inline-block; padding: 1px 6px; border-radius: 3px;
+    font-size: 9px; font-weight: 700; margin: 1px;
+    font-family: 'Orbitron', sans-serif; letter-spacing: 0.3px;
+  }
+  .t1 { background: rgba(0,255,136,0.15); color: var(--g1); }
+  .t2 { background: rgba(0,200,255,0.15); color: var(--g2); }
+  .t3 { background: rgba(255,107,53,0.15); color: var(--g3); }
+  .t4 { background: rgba(191,95,255,0.15); color: var(--g4); }
+  .t5 { background: rgba(255,219,87,0.15); color: var(--g5); }
+  .t6 { background: rgba(255,77,125,0.15); color: var(--g6); }
+
+  /* Decision matrix */
+  .matrix { width: 100%; border-collapse: collapse; font-size: 10px; }
+  .matrix th {
+    padding: 5px 8px; text-align: left;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+  .matrix td { padding: 4px 8px; border-top: 1px solid var(--border); vertical-align: top; }
+  .matrix td:first-child { font-weight: 700; white-space: nowrap; }
+  .y { color: var(--g1); }
+  .n { color: var(--g6); }
+  .p { color: var(--g5); }
+
+  /* Tree diagram */
+  .tree {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 9px 12px; font-size: 10px;
+    line-height: 1.9; margin: 5px 0;
+  }
+
+  .mb8 { margin-bottom: 8px; }
+  .mt4 { margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>⚡ CLAUDE CODE <span class="accent">AGENTS</span> · PARALLELISM · COMPUTER USE</h1>
+      <div class="sub">Subagents · Agent Teams · Git Worktrees · Background Agents · Task Tool · Computer Use · Model Routing</div>
+    </div>
+    <div class="badges">
+      <div class="badge" style="color:var(--g1);border-color:var(--g1);background:rgba(0,255,136,0.08)">SUBAGENTS</div>
+      <div class="badge" style="color:var(--g2);border-color:var(--g2);background:rgba(0,200,255,0.08)">AGENT TEAMS</div>
+      <div class="badge" style="color:var(--g3);border-color:var(--g3);background:rgba(255,107,53,0.08)">WORKTREES</div>
+      <div class="badge" style="color:var(--g5);border-color:var(--g5);background:rgba(255,219,87,0.08)">COMPUTER USE</div>
+    </div>
+  </div>
+
+  <!-- ROW 1: Decision Matrix + The 4 Parallelism Modes -->
+  <div class="grid g32 mb8">
+
+    <div class="card c2">
+      <div class="ch">⚖️ PARALLELISM DECISION MATRIX — Choose the Right Tool</div>
+      <div class="cb">
+        <table class="matrix">
+          <tr>
+            <th style="color:var(--muted)">Need</th>
+            <th style="color:var(--g1)">Subagents</th>
+            <th style="color:var(--g2)">Agent Teams</th>
+            <th style="color:var(--g3)">Worktrees</th>
+            <th style="color:var(--g4)">Background</th>
+          </tr>
+          <tr>
+            <td>Workers report to main</td>
+            <td class="y">✓ native</td>
+            <td class="p">△ via lead</td>
+            <td class="n">manual</td>
+            <td class="y">✓</td>
+          </tr>
+          <tr>
+            <td>Workers talk to each other</td>
+            <td class="n">✗ isolated</td>
+            <td class="y">✓ native</td>
+            <td class="n">✗ manual</td>
+            <td class="n">✗</td>
+          </tr>
+          <tr>
+            <td>Context window isolation</td>
+            <td class="y">✓ each own</td>
+            <td class="y">✓ each own</td>
+            <td class="y">✓ + branch</td>
+            <td class="y">✓</td>
+          </tr>
+          <tr>
+            <td>Filesystem isolation</td>
+            <td class="n">✗ shared</td>
+            <td class="n">✗ shared*</td>
+            <td class="y">✓ own branch</td>
+            <td class="n">✗</td>
+          </tr>
+          <tr>
+            <td>You keep working</td>
+            <td class="n">✗ blocks</td>
+            <td class="n">✗ blocks</td>
+            <td class="y">✓ separate</td>
+            <td class="y">✓ Ctrl+B</td>
+          </tr>
+          <tr>
+            <td>Same-file edits safe</td>
+            <td class="n">✗ risky</td>
+            <td class="n">✗ risky</td>
+            <td class="y">✓ own branch</td>
+            <td class="n">✗</td>
+          </tr>
+          <tr>
+            <td>Token cost</td>
+            <td style="color:var(--g5)">Low–Med</td>
+            <td style="color:var(--g6)">High (3-4×)</td>
+            <td style="color:var(--g5)">Med (per session)</td>
+            <td style="color:var(--g5)">Low–Med</td>
+          </tr>
+          <tr>
+            <td>Experimental / flag needed</td>
+            <td class="y">✗ built-in</td>
+            <td class="n">✓ env flag</td>
+            <td class="y">✗ built-in</td>
+            <td class="y">✗ built-in</td>
+          </tr>
+        </table>
+        <div style="color:var(--muted);font-size:9px;margin-top:5px">* Agent Teams + worktrees = full isolation (recommended for large cross-layer refactors)</div>
+        <div class="tip" style="margin-top:4px">✓ Subagents: quick focused workers. Agent Teams: workers that debate + coordinate. Worktrees: branch isolation for safe parallelism.</div>
+      </div>
+    </div>
+
+    <div class="card c3">
+      <div class="ch">🌲 GIT WORKTREES — Branch Isolation for Agents</div>
+      <div class="cb">
+        <div class="sl">Built-in CLI flag (Claude Code v2.1.50+)</div>
+        <div class="code">
+<span class="cm"># Start session in its own isolated worktree</span>
+<span class="fn">claude</span> <span class="fl">--worktree</span>               <span class="cm"># auto-named</span>
+<span class="fn">claude</span> <span class="fl">--worktree</span> bugfix-auth   <span class="cm"># named worktree</span>
+<span class="fn">claude</span> <span class="fl">--worktree --tmux</span>         <span class="cm"># own tmux session too</span>
+
+<span class="cm"># Manual setup (classic approach)</span>
+git worktree add ../feature-a feature-branch-a
+git worktree add ../feature-b feature-branch-b
+<span class="cm"># Run separate claude sessions in each dir</span>
+        </div>
+        <div class="sl" style="margin-top:6px">How Worktrees Solve the Conflict Problem</div>
+        <div class="warn">Without worktrees: Agent A + Agent B both edit src/auth.ts → overwrites, merge conflicts, corrupted context</div>
+        <div class="tip">With worktrees: each agent gets own branch + own directory → no conflicts at filesystem level</div>
+        <div class="sl" style="margin-top:6px">Worktree Lifecycle</div>
+        <div class="kv c3"><span class="kk">Created at</span><span class="vv">.claude/worktrees/[name]/ — isolated working directory</span></div>
+        <div class="kv c3"><span class="kk">No changes</span><span class="vv">Worktree + branch auto-removed when session ends</span></div>
+        <div class="kv c3"><span class="kk">Has changes</span><span class="vv">Branch persists — you review + merge manually</span></div>
+        <div class="kv c3"><span class="kk">Gitignore</span><span class="vv">Add .claude/worktrees/ to .gitignore to keep clean</span></div>
+        <div class="exp" style="margin-top:5px">⚠ Subagents can also use worktrees — ask Claude: "use worktrees for its agents" for batched migrations</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Subagents Deep Dive + Agent Teams -->
+  <div class="grid g2 mb8">
+
+    <div class="card c1">
+      <div class="ch">🤖 SUBAGENTS — Isolated Workers Within a Session</div>
+      <div class="cb">
+        <div class="two">
+          <div>
+            <div class="sl">Built-in Subagents (Auto-invoked)</div>
+            <div class="kv c1"><span class="kk">Explore</span><span class="vv">Read-only search + analysis. No writes. Delegates when codebase understanding needed without changes.</span></div>
+            <div class="kv c1"><span class="kk">Plan</span><span class="vv">Research for planning in plan mode. Prevents infinite nesting (subagents can't spawn subagents).</span></div>
+            <div class="kv c1"><span class="kk">general-purpose</span><span class="vv">Complex multi-step: exploration + modification + reasoning. Default for mixed tasks.</span></div>
+            <div class="sl" style="margin-top:8px">Create Custom Subagents</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># .claude/agents/code-reviewer.md</span>
+---
+<span class="kw">name</span>: code-reviewer
+<span class="kw">description</span>: Expert code reviewer.
+  Use proactively after code changes.
+<span class="kw">model</span>: sonnet      <span class="cm"># cheaper than opus</span>
+<span class="kw">tools</span>: [Read, Grep, Glob, Bash]
+<span class="kw">color</span>: orange
+---
+You are a senior code reviewer.
+Focus on security, performance,
+and best practices. Return JSON:
+{ file, line, severity, issue, fix }
+
+<span class="cm"># User-level (all projects)</span>
+~/.claude/agents/debugger.md
+
+<span class="cm"># Project-level (team shared)</span>
+.claude/agents/debugger.md
+            </div>
+          </div>
+          <div>
+            <div class="sl">Subagent Properties</div>
+            <div class="kv c1"><span class="kk">Context</span><span class="vv">Own isolated context window — doesn't share with parent</span></div>
+            <div class="kv c1"><span class="kk">Spawning</span><span class="vv">Claude invokes when task matches agent description — automatic or on request</span></div>
+            <div class="kv c1"><span class="kk">No nesting</span><span class="vv">Subagents cannot spawn other subagents — prevents infinite loops</span></div>
+            <div class="kv c1"><span class="kk">Results</span><span class="vv">Return to main conversation — many detailed results can bloat context</span></div>
+            <div class="kv c1"><span class="kk">Inheritance</span><span class="vv">Inherits parent CLAUDE.md context — picks up coding standards automatically</span></div>
+            <div class="sl" style="margin-top:8px">9-Parallel Code Review Pattern</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># Run 9 specialist subagents simultaneously:</span>
+<span class="val">1.</span> Linter + Static Analysis
+<span class="val">2.</span> Code Reviewer (top 5 by impact)
+<span class="val">3.</span> Security (injections, auth, secrets)
+<span class="val">4.</span> Quality + Style (complexity, duplication)
+<span class="val">5.</span> Performance (bottlenecks, O(n²))
+<span class="val">6.</span> Test Coverage gaps
+<span class="val">7.</span> Dependency audit
+<span class="val">8.</span> Documentation completeness
+<span class="val">9.</span> Deduplication / reuse opportunities
+
+<span class="cm"># All run in parallel → comprehensive review fast</span>
+            </div>
+            <div class="sl" style="margin-top:6px">Model Routing for Cost</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># Route subagents to cheaper model</span>
+<span class="kw">export</span> CLAUDE_CODE_SUBAGENT_MODEL=<span class="st">"claude-sonnet-4-6"</span>
+<span class="cm"># Main session: Opus (complex reasoning)</span>
+<span class="cm"># Subagents: Sonnet (focused tasks) → saves $$$</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c2">
+      <div class="ch">👥 AGENT TEAMS — Multi-Session Collaboration (Experimental)</div>
+      <div class="cb">
+        <div class="two">
+          <div>
+            <div class="sl">Enable + Activate</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># Enable experimental flag</span>
+<span class="kw">export</span> CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=<span class="val">1</span>
+<span class="cm"># Or in settings.json:</span>
+{ <span class="st">"agentTeams"</span>: <span class="val">true</span> }
+
+<span class="cm"># Verify</span>
+<span class="fn">echo</span> $CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS
+
+<span class="cm"># Prompt Claude to form a team:</span>
+<span class="st">"Create a team to refactor the payment module.
+Spawn 3 teammates: API layer, DB migrations, tests."</span>
+
+<span class="cm"># Force Opus (recommended for team lead)</span>
+/<span class="fn">model</span> opus
+            </div>
+            <div class="sl" style="margin-top:6px">Architecture</div>
+            <div class="tree">
+<span style="color:var(--g2)">Team Lead</span> (orchestrator)
+  │  coordinates, assigns, synthesizes
+  │  you interact directly here
+  │
+  ├── <span style="color:var(--g1)">Teammate A</span> (own context window)
+  │     own session, own branch (+ worktree)
+  │     ↔ direct messaging to teammates
+  │
+  ├── <span style="color:var(--g1)">Teammate B</span> (own context window)
+  │     claims tasks from shared task list
+  │     ↔ direct messaging
+  │
+  └── <span style="color:var(--g1)">Teammate C</span> (own context window)
+        reports findings, challenges others
+            </div>
+          </div>
+          <div>
+            <div class="sl">Subagents vs Agent Teams</div>
+            <div class="kv c2"><span class="kk">Subagents</span><span class="vv">Report back in isolation. No inter-agent comms. Run within single session.</span></div>
+            <div class="kv c2"><span class="kk">Agent Teams</span><span class="vv">Teammates message each other, share findings, challenge assumptions. Separate sessions.</span></div>
+            <div class="sl" style="margin-top:8px">Best Use Cases for Teams</div>
+            <ul class="bl">
+              <li><span class="hi" style="color:var(--g2)">Research + review</span> — multiple teammates investigate different aspects, compare findings</li>
+              <li><span class="hi" style="color:var(--g2)">Cross-layer work</span> — frontend + backend + tests owned by different teammates</li>
+              <li><span class="hi" style="color:var(--g2)">Competing hypotheses</span> — debug: each teammate tests a different theory in parallel</li>
+              <li><span class="hi" style="color:var(--g2)">Architectural debates</span> — teammates argue different approaches, converge on best</li>
+            </ul>
+            <div class="sl" style="margin-top:6px">Navigation Commands</div>
+            <div class="kv c2"><span class="kk">Shift+Down</span><span class="vv">Navigate to individual teammate session directly</span></div>
+            <div class="kv c2"><span class="kk">Progress update</span><span class="vv">"What are you working on? Progress update?" to any teammate</span></div>
+            <div class="kv c2"><span class="kk">Stuck agent</span><span class="vv">"Stop current task, report findings so far" — then redistribute</span></div>
+            <div class="warn" style="margin-top:5px">Agent Teams = 3–4× token cost of sequential single session. Only use when coordination value justifies it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 3: Background Agents + Task Tool + Parallelism Limits -->
+  <div class="grid g3 mb8">
+
+    <div class="card c4">
+      <div class="ch">⏱️ BACKGROUND AGENTS</div>
+      <div class="cb">
+        <div class="sl">How It Works</div>
+        <div class="code" style="font-size:9px">
+<span class="cm"># When Claude spawns a subagent for long task...</span>
+<span class="cm"># Press Ctrl+B to background it</span>
+<span class="val">Ctrl+B</span>  → moves agent to background
+            → you keep working on other tasks
+            → agent status shown in sidebar
+
+<span class="cm"># Track all background agents</span>
+/<span class="fn">tasks</span>   <span class="cm"># see all running agents + IDs</span>
+/<span class="fn">stats</span>   <span class="cm"># token usage, streaks, patterns</span>
+
+<span class="cm"># Long-running shell commands also backgroundable</span>
+<span class="cm"># npm install, docker build, ffmpeg</span>
+<span class="cm"># Background: Ctrl+B while running</span>
+        </div>
+        <div class="sl" style="margin-top:6px">Async Session Memory</div>
+        <div class="kv c4"><span class="kk">Session summary</span><span class="vv">Every session maintains: status, completed work, discussion points, work log</span></div>
+        <div class="kv c4"><span class="kk">/compact</span><span class="vv">Executes immediately now — loads summary into fresh context, session continues</span></div>
+        <div class="kv c4"><span class="kk">/rename</span><span class="vv">Name sessions, resume by name: claude --resume session-name</span></div>
+        <div class="tip" style="margin-top:5px">Background agents + worktrees = dispatch 5+ tasks and walk away. Each isolated, no conflicts.</div>
+      </div>
+    </div>
+
+    <div class="card c1">
+      <div class="ch">🔢 TASK TOOL — Parallelism Limits</div>
+      <div class="cb">
+        <div class="sl">How the Task Tool Works</div>
+        <div class="code" style="font-size:9px">
+<span class="cm"># Prompt Claude to run N tasks in parallel:</span>
+<span class="st">"Explore codebase using 4 tasks in parallel.
+Each agent explores different directories."</span>
+
+<span class="cm"># Each subagent = own context window via Task Tool</span>
+<span class="cm"># Output: Task(Explore backend structure) ⎿ Done</span>
+        </div>
+        <div class="sl" style="margin-top:6px">Parallelism Behavior</div>
+        <div class="kv c1"><span class="kk">Max parallel</span><span class="vv">Capped at ~10 simultaneous tasks</span></div>
+        <div class="kv c1"><span class="kk">With level set</span><span class="vv">Runs in batches — waits for full batch to complete before next batch starts</span></div>
+        <div class="kv c1"><span class="kk">Without level</span><span class="vv">Pulls from queue as soon as one task done — more efficient (streaming)</span></div>
+        <div class="kv c1"><span class="kk">100 tasks</span><span class="vv">Supported — queued and processed. Codebase documentation, large refactors.</span></div>
+        <div class="sl" style="margin-top:6px">Best Prompt for Efficient Queue</div>
+        <div class="code" style="font-size:9.5px">
+<span class="cm"># Don't specify parallelism level → streaming mode</span>
+<span class="st">"Process all 75 files. For each file,
+refactor the deprecated function. Process
+them as fast as possible — don't wait."</span>
+<span class="cm"># Claude pulls next task as soon as one finishes</span>
+        </div>
+        <div class="warn" style="margin-top:4px">Specifying "run 4 parallel" creates fixed batches — less efficient than letting Claude self-manage queue</div>
+      </div>
+    </div>
+
+    <div class="card c5">
+      <div class="ch">🖥️ COMPUTER USE — Web + Desktop Agent</div>
+      <div class="cb">
+        <div class="sl">Claude in Chrome (Browser Agent)</div>
+        <div class="kv c5"><span class="kk">What it does</span><span class="vv">Navigate, click, fill forms, read content, manage tabs in Chrome</span></div>
+        <div class="kv c5"><span class="kk">Interface</span><span class="vv">Side panel in Chrome — sees what you see, acts on request</span></div>
+        <div class="kv c5"><span class="kk">Auth context</span><span class="vv">Uses your logged-in accounts — no re-authentication needed</span></div>
+        <div class="kv c5"><span class="kk">Model (Max)</span><span class="vv">Sonnet 4.6 / Opus 4.6 — full capability</span></div>
+        <div class="kv c5"><span class="kk">Model (Pro)</span><span class="vv">Haiku 4.5 only — limited capability</span></div>
+        <div class="kv c5"><span class="kk">Token cost</span><span class="vv">Browser automation eats usage faster than regular chat</span></div>
+        <div class="sl" style="margin-top:6px">Developer Build-Test-Verify Pattern</div>
+        <div class="code" style="font-size:9.5px">
+<span class="cm"># 3-tool dev loop</span>
+<span class="val">1.</span> Claude Code CLI   → write + edit code
+<span class="val">2.</span> Claude in Chrome  → test in browser, read console logs
+<span class="val">3.</span> Claude Code CLI   → debug from console output
+<span class="cm"># Chrome ext reads console directly — no copy/paste</span>
+        </div>
+        <div class="sl" style="margin-top:6px">Research → File Pipeline</div>
+        <div class="code" style="font-size:9.5px">
+<span class="val">Chrome</span>  → web research, scrape structured data
+<span class="val">Cowork</span>  → synthesize into polished deliverable
+<span class="cm"># No copy-pasting between windows</span>
+        </div>
+        <div class="exp" style="margin-top:4px">Pro plan: Haiku only for Chrome → upgrade to Max for complex browser automation tasks</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 4: Worktree Patterns + Parallel Patterns + Cost -->
+  <div class="grid g2">
+
+    <div class="card c3">
+      <div class="ch">🌲 WORKTREE PATTERNS — Advanced Use Cases</div>
+      <div class="cb">
+        <div class="three">
+          <div>
+            <div class="sl">Pattern 1: A/B Implementation</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># Generate multiple solutions, pick best</span>
+git worktree add trees/impl-1 -b impl-1
+git worktree add trees/impl-2 -b impl-2
+git worktree add trees/impl-3 -b impl-3
+
+<span class="cm"># Same prompt in each → 3 implementations</span>
+<span class="cm"># Compare, pick winner, merge to main</span>
+
+cd trees/impl-1 &amp;&amp; git diff main
+cd trees/impl-2 &amp;&amp; git diff main
+git merge impl-2  <span class="cm"># winner</span>
+git worktree remove trees/impl-1
+git worktree remove trees/impl-3
+            </div>
+          </div>
+          <div>
+            <div class="sl">Pattern 2: Feature + Hotfix</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># Work on feature AND fix prod bug in parallel</span>
+<span class="cm"># Main session: feature development</span>
+<span class="fn">claude</span>  <span class="cm"># in main repo dir</span>
+
+<span class="cm"># New session for urgent hotfix</span>
+<span class="fn">claude</span> <span class="fl">--worktree</span> hotfix-auth-bug
+
+<span class="cm"># Both run completely independently</span>
+<span class="cm"># No stashing. No context switching.</span>
+<span class="cm"># Merge hotfix → deploy → continue feature</span>
+            </div>
+          </div>
+          <div>
+            <div class="sl">Pattern 3: Large-Scale Migration</div>
+            <div class="code" style="font-size:9px">
+<span class="cm"># Deprecate fn used in 75 files</span>
+<span class="st">"Find all 75 files with deprecated fn,
+use worktrees for subagents, refactor
+each file in its own isolated context"</span>
+
+<span class="cm"># Each file = own worktree branch</span>
+<span class="cm"># All run in parallel, ~10 at a time</span>
+<span class="cm"># Merge PRs → complete migration</span>
+<span class="cm"># Spotify used this: 90% time reduction</span>
+            </div>
+          </div>
+        </div>
+        <div class="sl" style="margin-top:6px">Worktrees + Agent Teams = Maximum Isolation</div>
+        <div class="code" style="font-size:9.5px">
+<span class="cm"># Phase 1 (Sequential): Team lead defines architecture</span>
+<span class="cm"># Phase 2 (Parallel with worktrees):</span>
+Team Lead
+  ├── Agent A: Backend  → worktree-backend branch
+  ├── Agent B: Frontend → worktree-frontend branch
+  └── Agent C: Tests    → worktree-tests branch
+<span class="cm"># Phase 3 (Sequential): Integration + validation</span>
+git merge worktree-backend worktree-frontend worktree-tests
+        </div>
+        <div class="warn" style="margin-top:4px">Worktrees share local DB, Docker daemon, ports — only code is isolated, not runtime environment</div>
+        <div class="warn">Two agents modifying DB state at same time = race conditions. Use worktrees for code-only changes.</div>
+      </div>
+    </div>
+
+    <div class="card c6">
+      <div class="ch">💸 MODEL ROUTING + COST OPTIMIZATION</div>
+      <div class="cb">
+        <div class="two">
+          <div>
+            <div class="sl">Token Cost Hierarchy</div>
+            <div class="kv c6"><span class="kk">Opus 4.6</span><span class="vv">Highest cost — use for: complex reasoning, team lead, architectural decisions, 1M context tasks</span></div>
+            <div class="kv c6"><span class="kk">Sonnet 4.6</span><span class="vv">Mid cost — everyday tasks, standard subagents, code review, most Claude.ai interactions</span></div>
+            <div class="kv c6"><span class="kk">Haiku 4.5</span><span class="vv">Lowest cost — high-volume subagents, Chrome on Pro, rapid iteration, simple focused tasks</span></div>
+            <div class="sl" style="margin-top:8px">Cost Control Commands</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Route all subagents to cheaper model</span>
+<span class="kw">export</span> CLAUDE_CODE_SUBAGENT_MODEL=<span class="st">"claude-sonnet-4-6"</span>
+
+<span class="cm"># Switch model mid-session</span>
+/<span class="fn">model</span> haiku     <span class="cm"># for simple tasks</span>
+/<span class="fn">model</span> opus      <span class="cm"># for complex planning</span>
+
+<span class="cm"># Monitor cost</span>
+/<span class="fn">cos</span>             <span class="cm"># cost + duration current session</span>
+/<span class="fn">stats</span>           <span class="cm"># usage patterns dashboard</span>
+
+<span class="cm"># Reduce context to reduce cost</span>
+/<span class="fn">compact</span>         <span class="cm"># summarize + fresh context</span>
+<span class="fl">--max-turns 5</span>   <span class="cm"># bounded scripted queries</span>
+            </div>
+          </div>
+          <div>
+            <div class="sl">Parallel Cost Math</div>
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:9px;font-size:9.5px;">
+              <div style="color:var(--g5);font-weight:700;margin-bottom:6px">Cost vs Speed Trade-off</div>
+              <div style="border-bottom:1px solid var(--border);padding:3px 0">
+                <span style="color:var(--g1)">Subagents (×4 parallel):</span><br>
+                ~2–3× token cost, 4× faster
+              </div>
+              <div style="border-bottom:1px solid var(--border);padding:3px 0">
+                <span style="color:var(--g2)">Agent Teams (×3 teammates):</span><br>
+                ~3–4× token cost, 3× faster on complex tasks
+              </div>
+              <div style="border-bottom:1px solid var(--border);padding:3px 0">
+                <span style="color:var(--g3)">Worktrees (manual):</span><br>
+                ~N× cost (N sessions), but you control timing
+              </div>
+              <div style="padding:3px 0">
+                <span style="color:var(--g6)">Pro plan Chrome:</span><br>
+                Fast usage drain — consider Max plan
+              </div>
+            </div>
+            <div class="sl" style="margin-top:6px">When NOT to Parallelize</div>
+            <ul class="bl">
+              <li>Sequential dependencies (B needs A's output)</li>
+              <li>Same-file edits without worktrees</li>
+              <li>Tasks &lt; 10 minutes — setup overhead not worth it</li>
+              <li>Tight dependencies between subtasks</li>
+              <li>Budget-constrained sessions</li>
+            </ul>
+            <div class="sl" style="margin-top:6px">Progressive Escalation</div>
+            <div class="code" style="font-size:9.5px">
+<span class="cm"># Start small → scale as needed</span>
+<span class="val">1.</span> Single session (try first)
+<span class="val">2.</span> + Subagents (if context fills)
+<span class="val">3.</span> + Worktrees (if file conflicts)
+<span class="val">4.</span> + Agent Teams (if coordination needed)
+<span class="val">5.</span> + Background (if you need to keep working)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

@@ -6,7 +6,7 @@ title: Responsible AI for Agentic Applications
 
 **Audience:** Enterprise AI Architects, Principal AI Architects, AI Platform Teams, Security Architects, and Compliance/Risk Officers who must design, implement, and audit responsible AI practices in agentic UI systems — covering how RAI requirements manifest in UX, architecture, and operations rather than the regulatory frameworks themselves (which are covered in linked references).
 
-!!! note "Scope Boundary"
+:::note Scope Boundary
     This file focuses on the **UX, architecture, and operational implementation** of RAI requirements in agentic applications. For the full EU AI Act / NIST AI RMF / ISO 42001 regulatory framework details, see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md). For governance structures and decision rights, see [Governance for Agentic Applications](governance.md).
 
 ---
@@ -81,7 +81,7 @@ Agentic applications in the following categories are likely high-risk under Anne
 | **Critical infrastructure** | AI managing utilities, transport, finance infrastructure | Agentic operations assistants |
 | **Judicial** | AI assisting court decisions | Legal agentic tools with recommendation capability |
 
-!!! warning "Classification is Application-Specific"
+:::warning Classification is Application-Specific
     A general-purpose Q&A agent is minimal risk. The same LLM deployed as a hiring decision support tool is high-risk. Classification depends on **use case and deployment context**, not the underlying model.
 
 ### 2.2 GPAI Obligations and Agentic Applications (August 2026)
@@ -799,7 +799,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 
 ---
 
-!!! note "Related Guides"
+:::note Related Guides
     - [Governance for Agentic Applications](governance.md) — Governance structures, decision rights, 16 domains
     - [Security Architecture for Agentic Applications](security-architecture.md) — Security controls, threat models
     - [Identity & Auth Architecture](identity-auth-architecture.md) — Identity types, OAuth flows, authorization

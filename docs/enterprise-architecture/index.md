@@ -10,57 +10,41 @@ Comprehensive guides, playbooks, interview preparation, and TOGAF/APEX reference
 
 ## Sections
 
-<div class="grid cards" markdown>
+### Strategy
 
--   :material-strategy:{ .lg .middle } **Strategy**
+AI transformation blueprints, CTO guides, strategic briefs, and EA strategy playbooks.
 
-    ---
+[Browse Strategy](strategy/index.md)
 
-    AI transformation blueprints, CTO guides, strategic briefs, and EA strategy playbooks.
+### Frameworks
 
-    [:octicons-arrow-right-24: Browse](strategy/index.md)
+TOGAF 10 APEX, communication frameworks, and enterprise architecture frameworks for AI-era organisations.
 
--   :material-shape:{ .lg .middle } **Frameworks**
+[Browse Frameworks](framework/index.md)
 
-    ---
+### Processes
 
-    TOGAF 10 APEX, communication frameworks, and enterprise architecture frameworks for AI-era organisations.
+EA lifecycle, mastery guides, agentic AI playbooks, and real-life transcripts.
 
-    [:octicons-arrow-right-24: Browse](framework/index.md)
+[Browse Processes](process/index.md)
 
--   :material-cogs:{ .lg .middle } **Processes**
+### Best Practices
 
-    ---
+EA glossary, best practices, jargon guides, and quality checklists.
 
-    EA lifecycle, mastery guides, agentic AI playbooks, and real-life transcripts.
+[Browse Best Practices](best-practices/index.md)
 
-    [:octicons-arrow-right-24: Browse](process/index.md)
+### ARB (Architectural Review Board)
 
--   :material-check-all:{ .lg .middle } **Best Practices**
+10-volume comprehensive reference for AI-native ARBs — governance, economics, knowledge management, artifacts, and banking case studies.
 
-    ---
+[Browse ARB](architectural-review-board/index.md)
 
-    EA glossary, best practices, jargon guides, and quality checklists.
+### Specialization
 
-    [:octicons-arrow-right-24: Browse](best-practices/index.md)
+Data architecture, principal architect guides, enterprise data and manager roles, and observability/lineage references.
 
--   :material-bank:{ .lg .middle } **ARB (Architectural Review Board)**
-
-    ---
-
-    10-volume comprehensive reference for AI-native ARBs — governance, economics, knowledge management, artifacts, and banking case studies.
-
-    [:octicons-arrow-right-24: Browse](architectural-review-board/index.md)
-
--   :material-graduation-cap:{ .lg .middle } **Specialization**
-
-    ---
-
-    Data architecture, principal architect guides, enterprise data and manager roles, and observability/lineage references.
-
-    [:octicons-arrow-right-24: Browse](specialization/index.md)
-
-</div>
+[Browse Specialization](specialization/index.md)
 
 ---
 

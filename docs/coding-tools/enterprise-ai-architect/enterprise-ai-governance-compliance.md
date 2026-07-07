@@ -10,7 +10,7 @@ title: Enterprise AI Governance & Compliance
 
 **Related sections:** [Architecture Patterns](enterprise-ai-architecture-patterns.md) | [Foundations](enterprise-ai-architect-foundations.md) | [Constitutional AI](../claude/constitutional-ai-safety-2026.md) | [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md)
 
-!!! info "Operational governance registries and lifecycle"
+:::info Operational governance registries and lifecycle
     This guide covers regulatory frameworks, RAI principles, and vendor assessment. For the operational governance spine (5 registries of record, AI change management pipeline, risk classification tiers T1–T4, and how Google/AWS/Microsoft implement lifecycle governance), see [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md).
 
 ---
@@ -51,7 +51,7 @@ title: Enterprise AI Governance & Compliance
 
 In force since August 2024 (phased application); GDPR-style territorial reach — applies to any system affecting EU persons.
 
-!!! info "Digital Omnibus on AI — revised timeline (Council final approval June 29, 2026)"
+:::info Digital Omnibus on AI — revised timeline (Council final approval June 29, 2026)
     The Digital Omnibus deferred the high-risk deadlines: **Annex III high-risk obligations now apply from December 2, 2027** and **Annex I (regulated-product) high-risk obligations from August 2, 2028**. Article 50 transparency obligations remain on schedule for **August 2, 2026** (watermarking/marking grace period to December 2, 2026 for existing systems). GPAI obligations are unaffected — in force since August 2, 2025, with Commission enforcement and fines from August 2, 2026. The Omnibus also adds a new Article 5 prohibition on AI-generated NCII/CSAM ("nudifier" tools).
 
 **Risk categories:**
@@ -1089,7 +1089,7 @@ GitHub Copilot Enterprise uses AI Credits for premium features (Copilot Chat wit
 
 ## 17. Best Practices
 
-!!! success "Governance Best Practices"
+:::success Governance Best Practices
 
 1. **Classify before you build.** Every AI system should have an EU AI Act tier and NIST risk level before architecture starts. Classification determines required controls.
 
@@ -1125,7 +1125,7 @@ GitHub Copilot Enterprise uses AI Credits for premium features (Copilot Chat wit
 
 ## 18. Antipatterns
 
-!!! danger "Governance Failures and Consequences"
+:::danger Governance Failures and Consequences
 
 **GAP-1: Shadow AI**
 Teams build AI systems without governance knowledge. No risk assessment, no DPA, no cost attribution. Discovered in audit or incident.

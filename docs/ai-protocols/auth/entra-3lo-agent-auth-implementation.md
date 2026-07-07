@@ -69,7 +69,7 @@ app.MapGet("/jira/issue/{key}", async (HttpContext ctx, string key) =>
 // dotnet add package Microsoft.Identity.Web.GraphServiceClient
 ```
 
-!!! note "WithAgentIdentity"
+:::note WithAgentIdentity
     `WithAgentIdentity(guid)` switches the OBO exchange from Blueprint-level to Agent Identity-level, giving each instance a distinct `sub` claim and audit trail.
 
 ### 11.3 Python — MSAL OBO Flow (Direct)
@@ -119,7 +119,7 @@ graph_resp = requests.get(
 # Store refresh_token in encrypted vault keyed by (user_oid, provider).
 ```
 
-!!! warning "Common Pitfalls"
+:::warning Common Pitfalls
     - Never use Azure CLI tokens (`Directory.AccessAsUser.All`) for Agent Identity APIs — causes hard 403
     - Always use `fmi_path` with `client_credentials`, NOT RFC 8693 `token-exchange` grant (returns AADSTS82001)
     - Always use `/.default` scope in both exchange steps — individual scope strings fail
@@ -160,7 +160,7 @@ async def call_jira_api(user_oid: str, cloud_id: str, issue_key: str, vault):
     )
 ```
 
-!!! warning "Sidecar Network Isolation"
+:::warning Sidecar Network Isolation
     The sidecar must run on localhost with network access restricted. **Never** expose via LoadBalancer, Ingress, or public endpoint.
 
 ---

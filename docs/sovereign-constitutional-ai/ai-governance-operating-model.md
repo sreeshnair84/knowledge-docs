@@ -8,7 +8,7 @@ title: AI Governance Operating Model
 **Purpose:** Design the complete AI governance operating model — from board accountability through to agent operations — including governance functions, RACI, policy lifecycle, and board reporting.  
 **Related:** [RAI Operating Model](rai-operating-model.md) · [AI Risk Taxonomy](ai-risk-taxonomy.md) · [AI Assurance & Audit Architecture](ai-assurance-audit-architecture.md) · [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)
 
-!!! info "Current as of July 2026"
+:::info Current as of July 2026
     The EU AI Act (fully in force 2026) and ISO 42001:2023 both mandate documented AI governance structures with named accountabilities. Organizations without formal AI governance structures are now non-compliant in EU-regulated markets. This document designs the full operating model; for regulatory deep-dive see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md).
 
 ---

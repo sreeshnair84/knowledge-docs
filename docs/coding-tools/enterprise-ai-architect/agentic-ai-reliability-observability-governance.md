@@ -6,7 +6,7 @@ title: Agentic AI Reliability, Observability & Governance Lifecycle
 
 > **Current as of July 2026.** This guide covers the end-to-end production lifecycle for multi-agent AI systems: reliability engineering patterns, observability architecture (OpenTelemetry GenAI semantic conventions), the 5-registry governance spine, and how Google, Microsoft, AWS, and leading consultancies operationalize this at scale.
 
-!!! info "Companion guides"
+:::info Companion guides
     - [Agentic AI Security & Guardrails](agentic-ai-security-guardrails.md) — threat catalog, multi-layer guardrail map
     - [Agentic AI Security & Identity](agentic-ai-security-identity.md) — SPIFFE/SPIRE, OWASP ASI01–ASI10, bounded autonomy
     - [Governance & Compliance](enterprise-ai-governance-compliance.md) — regulatory frameworks, RAI, vendor assessment
@@ -30,7 +30,7 @@ Agent systems fail in four distinct classes, each requiring different treatment 
 | **Systemic** | Provider outage, quota exhaustion, sustained degradation | Failover to alternate provider/model; graceful degradation | Retry hoping the outage resolves |
 | **Safety/Policy** | Guardrail trip, policy violation, scope exceeded | Halt immediately; escalate to human review | **Never retry-around** — this is the most dangerous anti-pattern |
 
-!!! danger "The safety/policy retry anti-pattern"
+:::danger The safety/policy retry anti-pattern
     Retrying around a guardrail trip — using a different prompt to bypass a block — is the highest-severity engineering mistake in agentic AI operations. It converts a contained security event into an active security incident. Safety-class failures must halt and escalate, not retry.
 
 ---
@@ -111,7 +111,7 @@ Every agent product must declare its degradation ladder before going to producti
 | **4** | Read-only toolset | Write tools unavailable or guardrail trip on mutations | Agent can still read, search, summarize — no create/update/delete |
 | **5** | Honest unavailability | Full degradation; no meaningful service possible | Transparent user message; queue for retry |
 
-!!! warning "The evaluated fallback rule"
+:::warning The evaluated fallback rule
     **An unevaluated fallback is a silent quality incident.** Before deploying a cheaper model as a fallback for a frontier model, it must be independently evaluated for the specific task class it will handle in fallback mode. A model that performs well at general tasks may fail at the specific domain-specific reasoning your agent requires.
 
 **Fallback tool equivalence classes:** The agent registry declares which tools can substitute for which. For example, `web-search-A ≈ web-search-B` means if the primary search tool is unavailable, the secondary is automatically substituted without a re-plan. Equivalence is declared by the platform team, not inferred at runtime.
@@ -170,7 +170,7 @@ Agentic AI systems require a fundamentally different SLO structure than traditio
 
 **Error budgets:** Following Google SRE practice, error budgets gate release velocity. An agent product consuming its error budget faster than planned freezes new agent version deployments until the budget is restored. This creates a formal mechanism connecting reliability performance to deployment pace.
 
-!!! tip "The guardrail FP metric is critical"
+:::tip The guardrail FP metric is critical
     Most teams track guardrail **fire rate** but not **false positive rate**. A guardrail with a 10% FP rate is blocking 10% of legitimate tasks — this is a quality incident, not a security success. FP rate requires ground-truth labeling of a sample of guardrail-blocked items, which is why it must be built into the SLO framework from day one.
 
 ---
@@ -221,7 +221,7 @@ Production observability for agentic AI requires seven distinct signal types bey
 | **Eval Telemetry** | Online eval scores (groundedness, task success, guardrail hit rate), sampled human QA results | Quality regression detection, SLO tracking, model selection |
 | **Business KPIs** | Task deflection rate, cycle time reduction, revenue per agent-task, user satisfaction scores | Product/exec dashboards, ROI tracking, investment decisions |
 
-!!! note "The evidence store is not optional in regulated industries"
+:::note The evidence store is not optional in regulated industries
     The prompt provenance / evidence store — storing exact prompts and responses with access controls and retention policies — is required for both EU AI Act logging obligations (high-risk systems) and for incident forensics. It must be designed separately from application logs: access-controlled (not all engineers should be able to read user prompts), retention-policied (legal hold must override automatic TTL/GC), and indexed for efficient query by trace_id and task_id.
 
 ---

@@ -68,7 +68,7 @@ This checklist must be completed and signed off by Security/Identity (Line 2) be
 | AM-05 | Three Lines of Defence operational: `owning_team` + `security_sponsor` + audit plan | MUST | Agent Registry: all 3 fields populated; audit schedule confirmed |
 | AM-06 | Delegation depth enforced: max 3 hops; gateway rejects deeper chains | MUST (multi-agent) | Gateway config: `X-Delegation-Depth` header checked; test rejection at depth 4 |
 
-!!! note "Sign-Off Authority"
+:::note Sign-Off Authority
     Security/Identity team lead (Line 2). All MUST items must be checked. SHOULD items require documented justification if skipped. Completed checklist retained in the agent's documentation page for audit evidence.
 
 ---
@@ -170,7 +170,7 @@ AI agents are Non-Human Identities (NHIs). NHIs now outnumber human identities 8
 | Security gate reviews | 5–10 / quarter | 20–50 / quarter | Standardised checklist (§26) + tooling reduces review time per agent from days to hours |
 | DORA Register updates | Quarterly | Monthly | Automated sync from Agent Registry to ICT Register — manual process unsustainable above 20 agents |
 
-!!! note "Industry Context"
+:::note Industry Context
     92% of tech executives identify managing AI agents as the defining security skill for the next 5 years (KPMG 2026). Only 23% of organisations have a formal enterprise-wide strategy for agent identity management. Establishing this governance framework before scale makes it unmanageable is a significant competitive and regulatory advantage.
 
 ---
@@ -215,7 +215,7 @@ The GENAI Agent Foundry is deploying AI agents that will act on behalf of employ
 | Define DORA scope: which agents are in DORA Register of Information | Security + Compliance | Before Phase 1 | DORA Article 28 compliance; avoids retroactive Register updates |
 | Engage FT/Entra self-service team to define OAuth app registration SLA | Security + FT Identity team | Phase 0 (can start now) | Unblocks MD-2; defines approval process for new agent OAuth registrations |
 
-!!! note "Critical Path"
+:::note Critical Path
     The critical path blocker is infrastructure (AC Gateway + AC Identity whitelisting), not design or security approval. All six actions above can proceed immediately and will unblock Phase 1 the moment the whitelist is done. Security's engagement now determines how quickly the organisation moves from blocked to live.
 
 ---

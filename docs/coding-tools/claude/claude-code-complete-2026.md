@@ -294,7 +294,7 @@ Slash commands are Claude Code's built-in interactive commands. All verified com
 | `/terminal-setup` | Configure terminal integration settings |
 | `/vim` | Toggle Vim keybindings mode |
 
-!!! warning "Only use verified commands"
+:::warning Only use verified commands
     The commands above are the complete verified set. Do not use or document `/run`, `/exec`, `/debug`, or other commands not on this list — they do not exist in the current release.
 
 ---
@@ -1242,40 +1242,40 @@ Do not make architectural decisions autonomously.
 
 ## 20. Antipatterns
 
-!!! danger "Antipattern: Vague Task Descriptions"
+:::danger Antipattern: Vague Task Descriptions
     `> Fix the bug` gives Claude no scope. It may modify files throughout the codebase attempting to find and fix multiple issues. Always name the file, describe the symptom, and specify constraints.
 
-!!! danger "Antipattern: Never Using /compact"
+:::danger Antipattern: Never Using /compact
     Allowing context to grow to tens of thousands of tokens makes responses slower, more expensive, and less focused. Use `/compact` after each major task.
 
-!!! danger "Antipattern: No CLAUDE.md"
+:::danger Antipattern: No CLAUDE.md
     Running Claude Code in a project without CLAUDE.md means repeating context in every session. CLAUDE.md is free, persistent, and powerful — always write one.
 
-!!! danger "Antipattern: Storing Secrets in CLAUDE.md or MEMORY.md"
+:::danger Antipattern: Storing Secrets in CLAUDE.md or MEMORY.md
     CLAUDE.md is committed to git. MEMORY.md is a plain text file. Neither is a secure secret store. Use environment variables or a secrets manager.
 
-!!! danger "Antipattern: Approving File Writes Without Reading Diffs"
+:::danger Antipattern: Approving File Writes Without Reading Diffs
     Clicking through confirmation prompts without reading the diff negates the value of HITL. Claude Code is accurate but not infallible — review every change to critical files.
 
-!!! danger "Antipattern: Relying on Claude's Judgment for Dangerous Operations"
+:::danger Antipattern: Relying on Claude's Judgment for Dangerous Operations
     Do not assume Claude will always refuse dangerous requests. Enforce safety via `denied_tools` in settings.json and PreToolUse hooks that block patterns explicitly.
 
-!!! danger "Antipattern: Using /clear Incorrectly"
+:::danger Antipattern: Using /clear Incorrectly
     `/clear` wipes the entire conversation context, including any task state Claude was tracking. Only use it between completely unrelated tasks, not mid-task.
 
-!!! danger "Antipattern: Running Claude Code in CI Without a Scoped allowed_tools List"
+:::danger Antipattern: Running Claude Code in CI Without a Scoped allowed_tools List
     CI runs with unrestricted tool access can make unexpected file writes or run unintended commands. Always specify `allowed_tools` in your CI settings.json.
 
-!!! danger "Antipattern: Ignoring Hook Timeouts"
+:::danger Antipattern: Ignoring Hook Timeouts
     Hooks that run slow operations (network calls, heavy processing) and exceed 30 seconds will be killed. Keep hooks fast; offload heavy work to async queues.
 
-!!! danger "Antipattern: Using Claude Code for Every Small Task"
+:::danger Antipattern: Using Claude Code for Every Small Task
     Starting a full Claude Code session to rename a variable or fix a typo wastes time and tokens. Use Claude Code for tasks requiring planning, multi-file coordination, or agentic loops — not one-line edits.
 
-!!! danger "Antipattern: Not Version-Controlling .claude/ Directory"
+:::danger Antipattern: Not Version-Controlling .claude/ Directory
     `.claude/commands/`, `.claude/settings.json`, and `.claude/mcp.json` are project configuration. Commit them to git so all team members share the same Claude Code environment.
 
-!!! danger "Antipattern: Bloated Custom Commands"
+:::danger Antipattern: Bloated Custom Commands
     Custom slash command prompts with hundreds of lines of instructions are hard to maintain and dilute focus. Keep each command scoped to one clear task.
 
 ---

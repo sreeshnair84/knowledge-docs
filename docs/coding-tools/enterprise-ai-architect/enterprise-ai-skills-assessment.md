@@ -109,7 +109,7 @@ For EA practitioners already working with Claude, CCA-F provides external credib
 | D4: Prompt Engineering & Structured Output | 20% | ~12 | Prompt standards, output schemas, evaluation harness design, regression testing |
 | D5: Context Management & Reliability | 15% | ~9 | Token budget governance, context window design, reliability patterns, cost optimisation |
 
-!!! tip "EA exam strategy"
+:::tip EA exam strategy
     EA-AIs typically find D1 and D5 most challenging because they require architectural synthesis, not just feature recall. D2 and D4 reward practitioners who have shipped production systems. Prioritise D1 depth first — it carries the highest weight and tests the most complex judgment calls.
 
 ### Registration
@@ -566,7 +566,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 |---|-------|-----------|---------|
 | D1 | Architecture decision records (ADRs) exist for all major design choices; data flow diagram current and accurate | | |
 
-!!! warning "Review process"
+:::warning Review process
     A failing check is a finding, not a blocker by default. Each finding requires a remediation plan with a target date. Systems with more than 5 open findings in the Security or Compliance categories should not proceed to production until critical items are addressed.
 
 ---

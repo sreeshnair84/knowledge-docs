@@ -1,0 +1,311 @@
+/* ================================================================
+   Knowledge Docs — Modern Redesign (Material 9.6+)
+   Font loading handled by MkDocs Material theme (Inter + JetBrains Mono)
+   ================================================================ */
+
+:root {
+  --kd-radius: 8px;
+  --kd-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --kd-shadow-hover: 0 6px 24px rgba(0, 150, 136, 0.18);
+  --kd-transition: 0.2s ease;
+}
+
+/* ── Announce bar ─────────────────────────────────────────────── */
+.md-announce {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--md-primary-fg-color--dark), var(--md-primary-fg-color));
+}
+
+.md-announce__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.announce-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.announce-version {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  padding: 0.1em 0.45em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.md-header {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
+}
+
+.md-header__title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ── Navigation tabs ─────────────────────────────────────────── */
+.md-tabs {
+  background-color: var(--md-primary-fg-color--dark);
+}
+
+.md-tabs__link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.75;
+  transition: opacity var(--kd-transition);
+}
+
+.md-tabs__link:hover,
+.md-tabs__link--active {
+  opacity: 1;
+}
+
+/* ── Left sidebar ─────────────────────────────────────────────── */
+.md-nav--primary .md-nav__title {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+  padding: 1rem 0.6rem 0.4rem;
+}
+
+.md-nav__link {
+  border-radius: 4px;
+  transition: background-color var(--kd-transition), color var(--kd-transition);
+  margin: 1px 4px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.82rem;
+}
+
+.md-nav__link:hover {
+  background-color: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+
+.md-nav__link--active {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600;
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+/* ── Content area ────────────────────────────────────────────── */
+.md-content__inner {
+  max-width: 860px;
+  padding: 0 1.2rem 2rem;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin-top: 2.5rem;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+}
+
+.md-typeset p {
+  line-height: 1.75;
+}
+
+/* ── Home page grid cards ────────────────────────────────────── */
+.md-typeset .grid.cards > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.md-typeset .grid.cards > ul > li {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--kd-radius);
+  padding: 1.2rem 1.4rem;
+  transition: box-shadow var(--kd-transition), transform var(--kd-transition), border-color var(--kd-transition);
+  background: var(--md-default-bg-color);
+  box-shadow: var(--kd-shadow);
+  border-top: 3px solid transparent;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  box-shadow: var(--kd-shadow-hover);
+  transform: translateY(-3px);
+  border-top-color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color--light);
+}
+
+.md-typeset .grid.cards > ul > li .lg {
+  color: var(--md-primary-fg-color);
+  font-size: 2rem;
+  transition: transform var(--kd-transition);
+}
+
+.md-typeset .grid.cards > ul > li:hover .lg {
+  transform: scale(1.1);
+}
+
+/* ── Code blocks ─────────────────────────────────────────────── */
+.md-typeset pre {
+  border-radius: var(--kd-radius);
+  box-shadow: var(--kd-shadow);
+}
+
+.md-typeset code {
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+/* ── Admonitions ─────────────────────────────────────────────── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--kd-radius);
+  box-shadow: var(--kd-shadow);
+}
+
+/* ── Details/summary for document viewers ────────────────────── */
+.md-typeset details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--kd-radius);
+  background: var(--md-default-fg-color--lightest);
+  transition: background-color var(--kd-transition);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-typeset details > summary::before {
+  content: '▶';
+  font-size: 0.65rem;
+  color: var(--md-primary-fg-color);
+  transition: transform var(--kd-transition);
+}
+
+.md-typeset details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.md-typeset details > summary:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+
+/* ── Document iframes ────────────────────────────────────────── */
+.md-typeset details iframe {
+  width: 100%;
+  height: 80vh;
+  border: none;
+  border-radius: 0 0 var(--kd-radius) var(--kd-radius);
+  display: block;
+  margin-top: 0;
+}
+
+/* ── Mobile: hide iframes, show open button ─────────────────── */
+@media (max-width: 767px) {
+  .md-typeset details iframe {
+    display: none;
+  }
+  .pdf-open-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+
+/* ── PDF open button (mobile) ────────────────────────────────── */
+.pdf-open-btn {
+  display: none;
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color) !important;
+  border-radius: var(--kd-radius);
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color var(--kd-transition), transform var(--kd-transition);
+}
+
+.pdf-open-btn:hover {
+  background: var(--md-accent-fg-color);
+  transform: translateY(-1px);
+}
+
+/* ── Tables ──────────────────────────────────────────────────── */
+.md-typeset table:not([class]) {
+  border-radius: var(--kd-radius);
+  overflow: hidden;
+  box-shadow: var(--kd-shadow);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Back to top button ──────────────────────────────────────── */
+.md-top {
+  border-radius: 50%;
+  box-shadow: var(--kd-shadow-hover);
+}
+
+/* ── Search ──────────────────────────────────────────────────── */
+.md-search__form {
+  border-radius: var(--kd-radius) !important;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.md-footer {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-footer-meta {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+/* ── Navigation footer (prev/next) ──────────────────────────── */
+.md-footer__inner {
+  padding: 0.8rem 0;
+}
+
+/* ── Dark mode tweaks ────────────────────────────────────────── */
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li {
+  background: var(--md-default-bg-color);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 6px 24px rgba(0, 150, 136, 0.25);
+}
+
+[data-md-color-scheme="slate"] .md-announce {
+  background: linear-gradient(90deg, var(--md-primary-fg-color--dark), var(--md-primary-fg-color));
+  opacity: 0.92;
+}

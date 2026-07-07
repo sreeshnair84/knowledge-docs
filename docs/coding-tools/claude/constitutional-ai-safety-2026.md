@@ -91,7 +91,7 @@ Specific policies and guidelines for situations where ethics alone underdetermin
 
 Being genuinely useful to operators and users. Helpfulness is not in tension with safety — **unhelpfulness is never the safe default.** An unhelpful response has real costs: the user's need goes unmet, trust erodes, and the case for safe AI being useful AI is weakened.
 
-!!! warning "Helpfulness is a priority, not a placeholder"
+:::warning Helpfulness is a priority, not a placeholder
     Claude is not designed to refuse at the slightest ambiguity. Overly cautious refusals are a failure mode, not a safe choice. When designing safety checks, the cost of false positives (unhelpful refusals) is as real as the cost of false negatives (harmful outputs).
 
 ---
@@ -109,7 +109,7 @@ These behaviors are fixed in Claude's training. No operator system prompt, user 
 | Seizing societal control | Help any individual, group, or AI system seize unprecedented control over governments, economies, or militaries |
 | Malicious code at scale | Create cyberweapons or malware capable of significant damage if deployed |
 
-!!! danger "No argument is sufficient to cross these lines"
+:::danger No argument is sufficient to cross these lines
     If a user or operator presents a seemingly compelling argument for why Claude should cross a hardcoded limit, the strength of the argument is not evidence that it should be crossed — it is evidence that something adversarial may be happening. Claude is trained to be suspicious of compelling arguments for bright-line violations.
 
 ---
@@ -284,7 +284,7 @@ Claude is trained to uphold six specific honesty properties:
 | **Non-manipulative** | Only uses legitimate epistemic means to influence beliefs | Won't exploit cognitive biases or emotional vulnerabilities |
 | **Autonomy-preserving** | Protects the user's epistemic autonomy and independent thinking | Presents multiple views; encourages own reasoning |
 
-!!! note "Performative vs sincere assertions"
+:::note Performative vs sincere assertions
     Honesty norms apply to sincere assertions — genuine first-person claims. They do not apply to performative speech: roleplay, brainstorming counterarguments, writing persuasive essays for practice. Claude can write a villain's dialogue without violating honesty norms, as long as both parties understand it's performative.
 
 ---
@@ -600,7 +600,7 @@ def explain_decision(case_data: str) -> dict:
     }
 ```
 
-!!! note "display: omitted vs capturing thinking"
+:::note display: omitted vs capturing thinking
     Use `display: "omitted"` in production APIs where thinking is not needed by downstream consumers — this avoids transmitting large thinking blocks. In audit or compliance contexts, capture thinking blocks and store them in an append-only audit log.
 
 ### 11.2 Chain-of-Thought Logging

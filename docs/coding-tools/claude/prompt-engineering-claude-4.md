@@ -293,7 +293,7 @@ print("{" + response.content[0].text)  # Prepend the prefill to reconstruct full
     # Response starts directly with item 1 content, no "Here are 5 best practices:"
     ```
 
-!!! warning "Prefill and Prompt Caching"
+:::warning Prefill and Prompt Caching
     Prefills in the assistant turn are not cached. Apply `cache_control` to system prompt and user message blocks instead.
 
 ---
@@ -1232,52 +1232,52 @@ def assert_no_regressions(
 
 ## 20. Antipatterns
 
-!!! danger "Vague Output Format Instructions"
+:::danger Vague Output Format Instructions
     Saying "respond in a structured way" does not tell Claude what structure to use. Always specify exact format: `Respond with valid JSON matching this schema: {...}`.
 
-!!! danger "Contradiction Between System and User Instructions"
+:::danger Contradiction Between System and User Instructions
     If the system prompt says "be concise" and the user message says "explain in detail", Claude must choose. Resolve this by making the system prompt silent on aspects the user should control.
 
-!!! danger "No Validation of Structured Output"
+:::danger No Validation of Structured Output
     Assuming Claude always returns valid JSON and not implementing a parse-retry loop leads to runtime errors in production. Always validate.
 
-!!! danger "Using Extended Thinking for Simple Tasks"
+:::danger Using Extended Thinking for Simple Tasks
     Enabling `thinking` with a large `budget_tokens` on a text classification task wastes money on reasoning that adds no quality. Only use extended thinking for tasks that genuinely benefit from deep reasoning.
 
-!!! danger "Not Testing Few-Shot Diversity"
+:::danger Not Testing Few-Shot Diversity
     Using examples that all represent the same case leads to poor generalization on edge cases. Your eval set and your few-shot set should both span the full input distribution.
 
-!!! danger "Prompt Injection via Unsanitized User Input"
+:::danger Prompt Injection via Unsanitized User Input
     Inserting user-controlled text directly into the prompt without XML tag wrappers or sanitization instructions allows users to override your system prompt. Always wrap user input in tags and add injection defense instructions.
 
-!!! danger "Re-Sending the Same Large Context Without Caching"
+:::danger Re-Sending the Same Large Context Without Caching
     Sending a 10,000-token system prompt on every request without `cache_control` pays $0.10 per call at Fable 5 pricing. With caching, that drops to $0.01 per call after the first.
 
-!!! danger "Chain-of-Thought for Simple Tasks"
+:::danger Chain-of-Thought for Simple Tasks
     Asking Claude to reason step-by-step for a binary classification task increases output tokens without improving quality. Reserve explicit reasoning instructions for tasks where the reasoning path matters.
 
-!!! danger "Ignoring Stop Reasons"
+:::danger Ignoring Stop Reasons
     Production code that does not check `response.stop_reason` will silently process refusals or truncated outputs. Always check `stop_reason` and handle `"refusal"` and `"max_tokens"` explicitly.
 
-!!! danger "Inconsistent Examples in Few-Shot Prompts"
+:::danger Inconsistent Examples in Few-Shot Prompts
     If your few-shot examples have inconsistent formatting (some use `"type"`, others use `"category"` for the same concept), Claude will produce inconsistent output. Normalize all examples to an identical schema.
 
-!!! danger "Measuring Quality with a Single Metric"
+:::danger Measuring Quality with a Single Metric
     Optimizing only for accuracy misses precision/recall trade-offs, output length, latency, and cost. Define multi-dimensional quality criteria before writing prompts.
 
-!!! danger "Testing Only Happy Path Cases"
+:::danger Testing Only Happy Path Cases
     Eval suites with only clean, well-formed inputs fail to predict production quality. Include malformed input, edge cases, and adversarial examples.
 
-!!! danger "Hardcoding Prompts in Application Code"
+:::danger Hardcoding Prompts in Application Code
     Prompts embedded in source code require a deployment to update. Store prompts in a versioned configuration layer so prompt updates can be deployed independently of application code.
 
-!!! danger "Over-Engineering Prompts for Rare Edge Cases"
+:::danger Over-Engineering Prompts for Rare Edge Cases
     Adding complex conditional logic to prompts for 0.1% of inputs makes the prompt harder to maintain and may degrade performance on the 99.9% majority. Handle rare cases in application code, not in the prompt.
 
-!!! danger "Not Documenting Prompt Design Decisions"
+:::danger Not Documenting Prompt Design Decisions
     Prompts that have been tuned over time without recorded rationale become unmaintainable — future engineers cannot tell what constraints exist and why, leading to regression-inducing edits.
 
-!!! danger "Skipping Regression Testing After Prompt Changes"
+:::danger Skipping Regression Testing After Prompt Changes
     Any edit to a production prompt, even adding a single sentence, can change behavior on existing inputs. Always run a regression suite before promoting prompt changes to production.
 
 ---

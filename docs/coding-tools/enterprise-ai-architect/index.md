@@ -6,128 +6,82 @@ title: Enterprise AI Architect
 
 Architectural decision-making, governance, strategy, and **production operations** for AI systems at enterprise scale. This section is the **architectural decision layer** — it tells you *what* to choose and *why*, then links to the implementation detail sections for the *how*. The section now covers the full lifecycle: design, deployment, production reliability, observability, and governance.
 
-!!! info "Section scope"
+:::info Section scope
     This section owns architecture decisions, patterns, governance frameworks, and skills assessment. Implementation details live in the specialist sections linked in the **Key Resources** below. No duplication — just cross-links.
 
 ---
 
 ## Guides in This Section
 
-<div class="grid cards" markdown>
+### 🎓 **Foundations**
+Zero-to-mastery guide for architects new to enterprise AI. Covers the full landscape: model selection, build-vs-buy, integration patterns, token economics, security, and observability.
 
--   :material-school:{ .lg .middle } **Foundations**
+**→ [Read: Foundations](enterprise-ai-architect-foundations.md)**
 
-    ---
+### 📊 **Architecture Patterns**
+Canonical reference for 15 enterprise AI patterns — RAG, agentic RAG, multi-agent orchestration, AI gateway, guardrail pipeline, LLM-as-judge evaluation harness, and more.
 
-    Zero-to-mastery guide for architects new to enterprise AI. Covers the full landscape: model selection, build-vs-buy, integration patterns, token economics, security, and observability.
+**→ [Read: Architecture Patterns](enterprise-ai-architecture-patterns.md)**
 
-    [:octicons-arrow-right-24: Read](enterprise-ai-architect-foundations.md)
+### ✅ **Governance & Compliance**
+Regulatory landscape (EU AI Act, NIST AI RMF, ISO 42001, GDPR, HIPAA, SR 11-7), RAI framework, operating model, bias testing, stress testing, and vendor assessment.
 
--   :material-graph:{ .lg .middle } **Architecture Patterns**
+**→ [Read: Governance & Compliance](enterprise-ai-governance-compliance.md)**
 
-    ---
+### 🏆 **Skills Assessment & CCA-F**
+Competency model, self-assessment checklist, learning paths, 20+ EA-level scenario questions, and 30-point architecture review checklist. Includes CCA-F certification alignment.
 
-    Canonical reference for 15 enterprise AI patterns — RAG, agentic RAG, multi-agent orchestration, AI gateway, guardrail pipeline, LLM-as-judge evaluation harness, and more.
+**→ [Read: Skills Assessment](enterprise-ai-skills-assessment.md)**
 
-    [:octicons-arrow-right-24: Read](enterprise-ai-architecture-patterns.md)
+### 🔒 **Agentic AI Security & Identity**
+OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10), SPIFFE/SPIRE agent identity stack, IETF AIMS, bounded autonomy decision-rights framework, rogue agent defenses, and a regulated-enterprise reference architecture.
 
--   :material-shield-check:{ .lg .middle } **Governance & Compliance**
+**→ [Read: Security & Identity](agentic-ai-security-identity.md)**
 
-    ---
+### 🔄 **Agent Interoperability & Orchestration**
+MCP + A2A two-layer protocol stack, Agent Cards, enterprise agent registries, multi-agent governance, agentic payments (AP2/x402), OTel GenAI observability, and the orchestrator-vs-mesh decision guide.
 
-    Regulatory landscape (EU AI Act, NIST AI RMF, ISO 42001, GDPR, HIPAA, SR 11-7), RAI framework, operating model, bias testing, stress testing, and vendor assessment.
+**→ [Read: Interoperability & Orchestration](agent-interoperability-orchestration.md)**
 
-    [:octicons-arrow-right-24: Read](enterprise-ai-governance-compliance.md)
+### 📝 **Machine-Readable EA**
+EA's shift from static docs to runtime agent context: policy-as-code (OPA/Cedar), EA repository via MCP, request-level governance, SLM-first as an EA standard, sovereignty drivers, and the migration roadmap.
 
--   :material-certificate:{ .lg .middle } **Skills Assessment & CCA-F**
+**→ [Read: Machine-Readable EA](machine-readable-ea.md)**
 
-    ---
+### 🛡️ **Security Architecture & Guardrails**
+18-threat catalog with prevent/detect/mitigate/recover controls, the 14-layer guardrail map (deterministic + probabilistic), and how Google, Microsoft, AWS, Salesforce, JPMorgan, and top consultancies implement production-grade agentic AI security.
 
-    Competency model, self-assessment checklist, learning paths, 20+ EA-level scenario questions, and 30-point architecture review checklist. Includes CCA-F certification alignment.
+**→ [Read: Security Architecture & Guardrails](agentic-ai-security-guardrails.md)**
 
-    [:octicons-arrow-right-24: Read](enterprise-ai-skills-assessment.md)
+### 📈 **Reliability, Observability & Governance Lifecycle**
+End-to-end production lifecycle: 4 failure classes, 8 anti-patterns, graceful degradation ladder, OTel GenAI observability, 5 signal types, 5-dashboard set, 5-registry governance spine, and how Google, Microsoft, AWS, and McKinsey/Accenture/Deloitte run agentic AI at scale.
 
--   :material-shield-lock:{ .lg .middle } **Agentic AI Security & Identity**
+**→ [Read: Reliability & Observability](agentic-ai-reliability-observability-governance.md)**
 
-    ---
+### 🤖 **AI Harness Architecture & Orchestration**
+The deterministic shell around the model: 24-component runtime catalog, 8-plane logical architecture, end-to-end task lifecycle, trust boundaries TB1–TB8, 14 orchestration patterns compared, and how AWS/Azure/Google/Anthropic/Temporal implement the harness in production.
 
-    OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10), SPIFFE/SPIRE agent identity stack, IETF AIMS, bounded autonomy decision-rights framework, rogue agent defenses, and a regulated-enterprise reference architecture.
+**→ [Read: AI Harness & Orchestration](ai-harness-architecture-orchestration.md)**
 
-    [:octicons-arrow-right-24: Read](agentic-ai-security-identity.md)
+### ↔️ **MCP & A2A Protocol Deep Dive**
+The 2026-07-28 MCP revision (stateless core, Extensions, Tasks, MCP Apps), registry-of-record and trust tiers, MCP-specific attack surfaces, A2A v1.x Signed Agent Cards and federation, the MCP-vs-A2A decision table, and the 6-stage enterprise protocol adoption lifecycle.
 
--   :material-transit-connection-variant:{ .lg .middle } **Agent Interoperability & Orchestration**
+**→ [Read: MCP & A2A Deep Dive](mcp-a2a-protocol-deep-dive.md)**
 
-    ---
+### 🧠 **Agent Memory & Planning Architecture**
+7-type memory taxonomy with store mapping, the extract-consolidate-retrieve pipeline (Mem0/Zep/Letta/AgentCore compared), end-to-end memory lifecycle with GDPR erasure cascade, memory security, and plans as versioned first-class artifacts with governance gates.
 
-    MCP + A2A two-layer protocol stack, Agent Cards, enterprise agent registries, multi-agent governance, agentic payments (AP2/x402), OTel GenAI observability, and the orchestrator-vs-mesh decision guide.
+**→ [Read: Memory & Planning Architecture](agent-memory-planning-architecture.md)**
 
-    [:octicons-arrow-right-24: Read](agent-interoperability-orchestration.md)
+### 🌐 **Communication, Identity & AI Gateway**
+Agent communication mechanism catalog with delivery semantics (idempotency keys, sagas, pivot points), the cryptographic identity chain and delegation gap, the RBAC→ABAC→ReBAC→capability composite authorization model, and the AI gateway responsibility matrix.
 
--   :material-file-code:{ .lg .middle } **Machine-Readable EA**
+**→ [Read: Communication, Identity & Gateway](agent-communication-identity-gateway.md)**
 
-    ---
+### 🏙️ **Reference Architectures & Checklists**
+Architecture deltas for 10 industry domains (banking, healthcare, insurance, retail, manufacturing…), the platform-engineering operating model, the July 2026 framework comparison (AgentCore vs ADK vs LangGraph vs SK vs Claude Code…), maturity model L1–L5, review checklists, and the 4-quarter migration roadmap.
 
-    EA's shift from static docs to runtime agent context: policy-as-code (OPA/Cedar), EA repository via MCP, request-level governance, SLM-first as an EA standard, sovereignty drivers, and the migration roadmap.
-
-    [:octicons-arrow-right-24: Read](machine-readable-ea.md)
-
--   :material-shield-bug:{ .lg .middle } **Security Architecture & Guardrails**
-
-    ---
-
-    18-threat catalog with prevent/detect/mitigate/recover controls, the 14-layer guardrail map (deterministic + probabilistic), and how Google, Microsoft, AWS, Salesforce, JPMorgan, and top consultancies implement production-grade agentic AI security.
-
-    [:octicons-arrow-right-24: Read](agentic-ai-security-guardrails.md)
-
--   :material-chart-areaspline:{ .lg .middle } **Reliability, Observability & Governance Lifecycle**
-
-    ---
-
-    End-to-end production lifecycle: 4 failure classes, 8 anti-patterns, graceful degradation ladder, OTel GenAI observability, 5 signal types, 5-dashboard set, 5-registry governance spine, and how Google, Microsoft, AWS, and McKinsey/Accenture/Deloitte run agentic AI at scale.
-
-    [:octicons-arrow-right-24: Read](agentic-ai-reliability-observability-governance.md)
-
--   :material-robot-industrial:{ .lg .middle } **AI Harness Architecture & Orchestration**
-
-    ---
-
-    The deterministic shell around the model: 24-component runtime catalog, 8-plane logical architecture, end-to-end task lifecycle, trust boundaries TB1–TB8, 14 orchestration patterns compared, and how AWS/Azure/Google/Anthropic/Temporal implement the harness in production.
-
-    [:octicons-arrow-right-24: Read](ai-harness-architecture-orchestration.md)
-
--   :material-swap-horizontal:{ .lg .middle } **MCP & A2A Protocol Deep Dive**
-
-    ---
-
-    The 2026-07-28 MCP revision (stateless core, Extensions, Tasks, MCP Apps), registry-of-record and trust tiers, MCP-specific attack surfaces, A2A v1.x Signed Agent Cards and federation, the MCP-vs-A2A decision table, and the 6-stage enterprise protocol adoption lifecycle.
-
-    [:octicons-arrow-right-24: Read](mcp-a2a-protocol-deep-dive.md)
-
--   :material-brain:{ .lg .middle } **Agent Memory & Planning Architecture**
-
-    ---
-
-    7-type memory taxonomy with store mapping, the extract-consolidate-retrieve pipeline (Mem0/Zep/Letta/AgentCore compared), end-to-end memory lifecycle with GDPR erasure cascade, memory security, and plans as versioned first-class artifacts with governance gates.
-
-    [:octicons-arrow-right-24: Read](agent-memory-planning-architecture.md)
-
--   :material-lan-connect:{ .lg .middle } **Communication, Identity & AI Gateway**
-
-    ---
-
-    Agent communication mechanism catalog with delivery semantics (idempotency keys, sagas, pivot points), the cryptographic identity chain and delegation gap, the RBAC→ABAC→ReBAC→capability composite authorization model, and the AI gateway responsibility matrix.
-
-    [:octicons-arrow-right-24: Read](agent-communication-identity-gateway.md)
-
--   :material-city:{ .lg .middle } **Reference Architectures & Checklists**
-
-    ---
-
-    Architecture deltas for 10 industry domains (banking, healthcare, insurance, retail, manufacturing…), the platform-engineering operating model, the July 2026 framework comparison (AgentCore vs ADK vs LangGraph vs SK vs Claude Code…), maturity model L1–L5, review checklists, and the 4-quarter migration roadmap.
-
-    [:octicons-arrow-right-24: Read](enterprise-agent-reference-architectures.md)
-
-</div>
+**→ [Read: Reference Architectures](enterprise-agent-reference-architectures.md)**
 
 ---
 
@@ -150,7 +104,7 @@ Architectural decision-making, governance, strategy, and **production operations
 
 ## Quick Decision Reference
 
-!!! tip "Not sure where to start?"
+:::tip Not sure where to start?
     - **New to AI architecture** → Start with [Foundations](enterprise-ai-architect-foundations.md), sections 1–5
     - **Designing a specific system** → Go to [Architecture Patterns](enterprise-ai-architecture-patterns.md) and use the pattern selection guide
     - **Audit/compliance question** → [Governance & Compliance](enterprise-ai-governance-compliance.md)
@@ -181,7 +135,7 @@ Architectural decision-making, governance, strategy, and **production operations
 | GitHub Copilot Business | $19/user/month | Team-level code generation, IDE integration |
 | GitHub Copilot Enterprise | $39/user/month | Org knowledge base, AI Credits pooling, custom MCP |
 
-!!! note "Copilot billing"
+:::note Copilot billing
     GitHub Copilot moved to AI Credits usage-based billing on June 1, 2026 — seat prices include pooled monthly credits, with $0.01/credit overage (2× promotional credits through Aug 2026).
 
 ---

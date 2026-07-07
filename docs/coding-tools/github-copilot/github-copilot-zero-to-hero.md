@@ -86,7 +86,7 @@ GitHub Copilot is an AI pair programmer embedded directly in your development en
     | SSO/SCIM provisioning | No | No | Yes | Yes |
     | Enterprise MCP admin (allow-list + audit) | No | No | No | Yes |
 
-!!! info "AI Credits (from June 1, 2026)"
+:::info AI Credits (from June 1, 2026)
     Business: $19/user/month subscription includes 1,900 credits/user/month (1 credit = $0.01 USD).
     Enterprise: $39/user/month includes 3,900 credits/user/month.
     Credits pool at the enterprise level: 100 Business users = 190,000 shared credits/month.
@@ -365,7 +365,7 @@ Agent will:
 3. Run `pytest` to verify.
 4. Report results and fix any failures.
 
-!!! warning "Terminal Command Guardrails"
+:::warning Terminal Command Guardrails
     Agent mode shows you each terminal command before executing and asks for confirmation on potentially destructive operations (file deletion, network calls, database modifications). You can configure auto-approve for safe commands only — never auto-approve destructive operations.
 
 ### Plan Mode
@@ -423,7 +423,7 @@ Custom agents extend Copilot with domain-specific behavior — your own system p
 
 ## 8. MCP Integration
 
-!!! important "Extensions Deprecated"
+:::important Extensions Deprecated
     GitHub Copilot Extensions were deprecated in November 2025. All extension functionality has been replaced by Model Context Protocol (MCP) servers. If you have existing Extensions configured, migrate to MCP equivalents.
 
 ### What MCP Is
@@ -678,7 +678,7 @@ Copilot review quality is highest when:
 - A `copilot-instructions.md` exists (see Section 12).
 - Related files are in the same repository (cross-repo context requires Enterprise codebase indexing).
 
-!!! note "Credits Consumed"
+:::note Credits Consumed
     Copilot code review consumes GitHub Actions minutes (for the agentic run) plus AI Credits. Monitor via the Copilot Metrics API. For very large PRs (500+ file changes), consider splitting before requesting review — both for Copilot quality and human reviewers.
 
 ---
@@ -794,7 +794,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-!!! info "CI/CD YAML Patterns"
+:::info CI/CD YAML Patterns
     For comprehensive GitHub Actions YAML patterns including security scanning, container builds, Kubernetes deploys, and multi-environment promotion, see the [Git & GitHub Platform Engineering Handbook](git-github-platform-engineering-handbook.md).
 
 ---
@@ -1006,7 +1006,7 @@ Result: Copilot access follows HR system lifecycle
 | SOC 2 Type II certification | GitHub certified; report available under NDA |
 | GDPR compliance | Covered by GitHub's DPA for Enterprise customers |
 
-!!! warning "DPA is not automatic"
+:::warning DPA is not automatic
     The zero-training guarantee requires a signed DPA. Request it proactively through your GitHub account team before deploying Copilot Enterprise in any environment that processes personal data or operates under HIPAA, PCI-DSS, or similar regulations.
 
 ### Audit Logs
@@ -1193,7 +1193,7 @@ Copilot Business and Enterprise plans include IP indemnification: if a Copilot s
 **Enable the filter:**
 Org → Settings → Copilot → Policies → Suggestions matching public code → Block.
 
-!!! warning
+::: warning
     IP indemnification applies only when the "matching public code" filter is set to Block. If the filter is set to Allow, indemnification does not apply.
 
 ### Output Validation Workflows

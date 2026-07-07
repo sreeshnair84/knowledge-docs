@@ -32,10 +32,10 @@ title: Claude Models 2026 — Complete Reference
 | Claude Opus 4.6 | `claude-opus-4-6` | 1M tokens | 128K tokens | $5.00/$25.00 | Both (adaptive + extended) |
 | Claude Sonnet 4.6 | `claude-sonnet-4-6` | 1M tokens | 128K tokens | $3.00/$15.00 | Both (adaptive + extended) |
 
-!!! note "Model ID aliases"
+:::note Model ID aliases
     Use the bare alias shown above (e.g., `claude-haiku-4-5`, `claude-sonnet-5`). Never append date suffixes in code — aliases always resolve to the correct pinned version. The full pinned ID for Haiku 4.5 is `claude-haiku-4-5-20251001`; everywhere else use the alias.
 
-!!! note "300K output beta"
+:::note 300K output beta
     Claude Opus 4.8, Opus 4.7, Opus 4.6, Sonnet 5, and Sonnet 4.6 support up to **300K output tokens** on the Batch API using the `output-300k-2026-03-24` beta header.
 
 ---
@@ -59,7 +59,7 @@ Claude Fable 5 (`claude-fable-5`) is Anthropic's most capable widely released mo
 
 ### Adaptive Thinking API — Effort Control
 
-!!! danger "Do NOT pass `budget_tokens` to Fable 5"
+:::danger Do NOT pass `budget_tokens` to Fable 5
     Passing `{"type": "disabled"}` or `{"type": "enabled", "budget_tokens": N}` to Fable 5 returns **HTTP 400**. Use `output_config.effort` to control thinking depth instead.
 
 ```python
@@ -116,7 +116,7 @@ response = client.messages.create(
 - Long-horizon agentic tasks spanning many minutes
 - Accuracy is more important than cost
 
-!!! warning "Cost guardrail"
+:::warning Cost guardrail
     At $10/$50/M, Fable 5 costs 2× Opus 4.8 on input and output. Route only tasks that genuinely require frontier capability. See [Section 14](#14-cost-optimization-strategies) for routing patterns.
 
 ---
@@ -138,7 +138,7 @@ Claude Sonnet 5 (`claude-sonnet-5`) reached general availability on **June 30, 2
 
 ### Pricing Window
 
-!!! info "Introductory pricing"
+:::info Introductory pricing
     Through **August 31, 2026**: $2.00 input / $10.00 output per million tokens.
     From **September 1, 2026**: $3.00 input / $15.00 output per million tokens (same as Sonnet 4.6).
 
@@ -222,7 +222,7 @@ for block in response.content:
         print(f"[Answer]: {block.text}")
 ```
 
-!!! note "`budget_tokens` on Opus 4.8"
+:::note `budget_tokens` on Opus 4.8
     Like Fable 5, Opus 4.8 does NOT support `budget_tokens`. Use `output_config.effort` instead. Extended thinking (`{"type": "enabled", "budget_tokens": N}`) is supported only on Opus 4.6, Sonnet 4.6, Haiku 4.5, and older models.
 
 ### When to Use Opus 4.8 vs. Fable 5
@@ -295,10 +295,10 @@ Claude Haiku 4.5 (`claude-haiku-4-5`) is the **speed-optimized tier** — the fa
 
 **Specs:** 200K context · 64K output · $1.00/$5.00 per MTok · Extended thinking (not adaptive)
 
-!!! note "Model ID"
+:::note Model ID
     Use the alias `claude-haiku-4-5`. The full pinned ID is `claude-haiku-4-5-20251001`, but always use the bare alias in code and configuration.
 
-!!! note "Thinking API for Haiku 4.5"
+:::note Thinking API for Haiku 4.5
     Haiku 4.5 supports **extended thinking** (`{"type": "enabled", "budget_tokens": N}`) but does **not** support adaptive thinking. This is the opposite of Fable 5 and Opus 4.8, which only support adaptive thinking.
 
 ### Haiku 4.5 Best Use Cases
@@ -467,7 +467,7 @@ START: What does your task require?
 | `claude-sonnet-4-6` | 1M tokens (~750K words) | 128K tokens | Old |
 | `claude-haiku-4-5` | 200K tokens | 64K tokens | Old |
 
-!!! note "Tokenizer difference"
+:::note Tokenizer difference
     Models using the **new tokenizer** (Fable 5, Mythos 5, Opus 4.7/4.8, Sonnet 5) produce roughly **30% more tokens** for the same text compared to models using the old tokenizer (Opus 4.6, Sonnet 4.6, Haiku 4.5). This means the effective word capacity in the 1M context window is lower (~555K words vs ~750K words). Always re-count tokens when migrating across the tokenizer boundary.
 
 ### What Fits in 1 Million Tokens
@@ -695,7 +695,7 @@ for prompt in PRODUCTION_PROMPTS:
 
 ## 12. Deprecation Timeline
 
-!!! note "Known status only"
+:::note Known status only
     This table reflects officially announced status as of July 2026. Always check [Anthropic model deprecations](https://docs.anthropic.com/en/about-claude/model-deprecations) for the authoritative schedule.
 
 | Model | Status | Migrate To |
@@ -1006,41 +1006,41 @@ def request_with_backoff(
 
 ## 17. Antipatterns
 
-!!! danger "Using Fable 5 as the Default Model"
+:::danger Using Fable 5 as the Default Model
     At $10/$50 per million tokens, Fable 5 costs 5–10× more than Haiku and 3.3× more than Sonnet 5 (standard). Using it as a blanket default wastes significant budget. Always route tasks to the cheapest capable model.
 
-!!! danger "Hardcoding Model IDs in Application Logic"
+:::danger Hardcoding Model IDs in Application Logic
     Embedding model IDs directly in request code means model upgrades require code changes and redeployments. Externalize model selection to configuration so updates are a config push, not a deployment.
 
-!!! danger "Using Date-Suffixed Model IDs in Code"
+:::danger Using Date-Suffixed Model IDs in Code
     Never use `claude-haiku-4-5-20251001` or any date-suffixed form in your code. Use the alias `claude-haiku-4-5`. Date-suffixed IDs are the underlying pinned snapshots; the alias is the stable public API surface.
 
-!!! danger "Passing `budget_tokens` to Fable 5, Opus 4.7, or Opus 4.8"
+:::danger Passing `budget_tokens` to Fable 5, Opus 4.7, or Opus 4.8
     These models do not support extended thinking. Passing `{"type": "enabled", "budget_tokens": N}` returns HTTP 400. Use `output_config={"effort": "..."}` instead. Extended thinking (`budget_tokens`) is only valid on Haiku 4.5, Opus 4.6, Sonnet 4.6, and older models.
 
-!!! danger "Not Handling the `refusal` Stop Reason on Fable 5 / Mythos 5"
+:::danger Not Handling the `refusal` Stop Reason on Fable 5 / Mythos 5
     These models can return `stop_reason: "refusal"` with an empty `content` array. Reading `response.content[0].text` without checking `stop_reason` first raises an IndexError. Always check stop reason before reading content.
 
-!!! danger "Ignoring the Tokenizer Change When Migrating"
+:::danger Ignoring the Tokenizer Change When Migrating
     Migrating from Opus 4.6, Sonnet 4.6, or Haiku 4.5 to any new-tokenizer model (Sonnet 5, Opus 4.7/4.8, Fable 5) without recounting tokens leads to truncation, context overflow, or cost overruns. Always recount with `count_tokens` using the target model.
 
-!!! danger "Not Using Prompt Caching for Stable Content"
+:::danger Not Using Prompt Caching for Stable Content
     Sending the same 5,000-token system prompt on every request without `cache_control` pays full input price every time. With caching, subsequent calls within 5 minutes pay ~10% of that cost.
 
-!!! danger "Missing Rate Limit Retry Logic"
+:::danger Missing Rate Limit Retry Logic
     Production code without exponential backoff on `RateLimitError` will crash during traffic spikes. Always implement retry with jitter.
 
-!!! danger "Using Standard API for Offline Batch Workloads"
+:::danger Using Standard API for Offline Batch Workloads
     Nightly report generation, bulk classification, and dataset creation through the real-time API pay full price. The Batch API offers 50% off for async workloads with no quality difference.
 
-!!! danger "Assuming Tasks Need Fable 5 Without Testing Cheaper Tiers"
+:::danger Assuming Tasks Need Fable 5 Without Testing Cheaper Tiers
     Most classification, extraction, and short-form generation tasks run acceptably on Haiku. Sonnet 5 covers most agentic workloads. Test iteratively from cheapest to most expensive before committing to frontier models.
 
-!!! danger "Unbounded Output Requests"
+:::danger Unbounded Output Requests
     Sending prompts without explicit output length constraints results in verbose, expensive completions. Always specify the expected format and approximate length.
 
-!!! danger "Ignoring Thinking Token Cost"
+:::danger Ignoring Thinking Token Cost
     On Fable 5 ($50/M output), an effort level of `max` can cost several dollars per request in thinking tokens alone. Monitor `usage.output_tokens` and tune effort levels to task complexity.
 
-!!! danger "Evaluating Models Only on Toy Examples"
+:::danger Evaluating Models Only on Toy Examples
     Toy benchmark prompts do not predict production performance in your domain. Always build an eval harness with real (anonymized) production inputs before committing to a model.
