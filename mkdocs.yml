@@ -244,6 +244,28 @@ nav:
     - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
     - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
     - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
+  - Agentic UI & Applications:
+    - Overview: agentic-ui/index.md
+    - Evolution of Human-AI Interfaces: agentic-ui/evolution-human-ai-interfaces.md
+    - AGUI Standards Landscape: agentic-ui/agui-standards-landscape.md
+    - Enterprise Reference Architecture: agentic-ui/enterprise-reference-architecture.md
+    - Application Lifecycle: agentic-ui/application-lifecycle.md
+    - Reliability Engineering: agentic-ui/reliability-engineering.md
+    - Scalability Engineering: agentic-ui/scalability-engineering.md
+    - Performance Engineering: agentic-ui/performance-engineering.md
+    - Security Architecture: agentic-ui/security-architecture.md
+    - Context Engineering: agentic-ui/context-engineering.md
+    - Agent UX Patterns: agentic-ui/agent-ux-patterns.md
+    - Governance: agentic-ui/governance.md
+    - Responsible AI: agentic-ui/responsible-ai.md
+    - Evaluation Framework: agentic-ui/evaluation-framework.md
+    - Observability: agentic-ui/observability.md
+    - DevSecOps: agentic-ui/devsecops.md
+    - Anti-pattern Catalog: agentic-ui/anti-patterns.md
+    - Industry Reference Architectures: agentic-ui/industry-reference-architectures.md
+    - Decision Frameworks: agentic-ui/decision-frameworks.md
+    - Future Outlook 2026–2030: agentic-ui/future-outlook.md
+    - Identity & Auth Architecture: agentic-ui/identity-auth-architecture.md
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md

@@ -24,6 +24,14 @@ A curated knowledge base covering Agentic AI, Claude, Enterprise Architecture, K
 
     [:octicons-arrow-right-24: Explore](agentic-systems/index.md)
 
+-   :material-application-brackets:{ .lg .middle } **Agentic UI & Applications**
+
+    ---
+
+    AG-UI, A2UI, NLWeb, CopilotKit, generative UI, context engineering, enterprise security, governance, evaluation, and the complete agentic application lifecycle — from UX design to production operations.
+
+    [:octicons-arrow-right-24: Explore](agentic-ui/index.md)
+
 -   :material-brain:{ .lg .middle } **Claude**
 
     ---
