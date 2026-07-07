@@ -103,7 +103,6 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/sreeshnair84/knowledge-docs/tree/main/',
         },
         blog: false,
         theme: {
