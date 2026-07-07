@@ -1,5 +1,39 @@
 // @ts-check
 import {themes as prismThemes} from 'prism-react-renderer';
+import path from 'path';
+import fs from 'fs';
+import {fileURLToPath} from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Recursively copies all non-markdown assets from docs/ into the build output
+// so that PDF/HTML iframes resolve correctly at runtime.
+function copyDocsAssetsPlugin() {
+  return {
+    name: 'copy-docs-assets',
+    async postBuild({siteDir, outDir}) {
+      const docsDir = path.join(siteDir, 'docs');
+      const SKIP_EXT = /\.(md|mdx)$/i;
+
+      function copyDir(src, dest) {
+        const entries = fs.readdirSync(src, {withFileTypes: true});
+        for (const entry of entries) {
+          const srcPath = path.join(src, entry.name);
+          const destPath = path.join(dest, entry.name);
+          if (entry.isDirectory()) {
+            fs.mkdirSync(destPath, {recursive: true});
+            copyDir(srcPath, destPath);
+          } else if (!SKIP_EXT.test(entry.name)) {
+            fs.mkdirSync(dest, {recursive: true});
+            fs.copyFileSync(srcPath, destPath);
+          }
+        }
+      }
+
+      copyDir(docsDir, outDir);
+    },
+  };
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -23,6 +57,8 @@ const config = {
       onBrokenMarkdownLinks: 'warn',
     },
   },
+
+  plugins: [copyDocsAssetsPlugin],
 
   i18n: {
     defaultLocale: 'en',

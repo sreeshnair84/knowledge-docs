@@ -56,7 +56,7 @@ Data architecture, principal architect guides, enterprise data and manager roles
 | TOGAF 10 APEX AI Platform | [Frameworks](framework/index.md) |
 | EA Lifecycle & Mastery Guide | [Processes](process/index.md) |
 | EA Glossary & Best Practices | [Best Practices](best-practices/index.md) |
-| 10-Volume ARB Reference Series | [ARB](architectural-review-board/index.md) |
+| 10-Volume ARB Reference Series | [ARB](arb/index.md) |
 | Data Architecture & Principal Architect | [Specialization](specialization/index.md) |
 | EA Interview Preparation | [Interview Prep](../interview-prep/ea/index.md) |
 | AI-First Enterprise Strategy | [AI-First Enterprise](../ai-first-enterprise/index.md) |
