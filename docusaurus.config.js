@@ -60,6 +60,19 @@ const config = {
 
   plugins: [copyDocsAssetsPlugin],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        indexBlog: false,
+      },
+    ],
+  ],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -96,10 +109,6 @@ const config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs',
-        },
-        {
-          type: 'search',
-          position: 'right',
         },
         {
           href: 'https://github.com/sreeshnair84/knowledge-docs',
