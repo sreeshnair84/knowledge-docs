@@ -58,9 +58,27 @@ const config = {
     },
   },
 
-  plugins: [copyDocsAssetsPlugin],
+  plugins: [
+    copyDocsAssetsPlugin,
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: false,
+        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
+        pwaHead: [
+          {tagName: 'link', rel: 'icon', href: '/knowledge-docs/img/favicon.ico'},
+          {tagName: 'link', rel: 'manifest', href: '/knowledge-docs/manifest.json'},
+          {tagName: 'meta', name: 'theme-color', content: '#0ea5e9'},
+          {tagName: 'meta', name: 'apple-mobile-web-app-capable', content: 'yes'},
+          {tagName: 'meta', name: 'apple-mobile-web-app-status-bar-style', content: 'default'},
+          {tagName: 'meta', name: 'apple-mobile-web-app-title', content: 'Knowledge Docs'},
+        ],
+      },
+    ],
+  ],
 
   themes: [
+    '@docusaurus/theme-mermaid',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {

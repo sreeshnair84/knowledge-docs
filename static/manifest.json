@@ -1,0 +1,22 @@
+{
+  "name": "Knowledge Docs",
+  "short_name": "KnowledgeDocs",
+  "start_url": "/knowledge-docs/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "description": "AI, Agentic AI & Enterprise Architecture Knowledge Base",
+  "icons": [
+    {
+      "src": "/knowledge-docs/img/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/knowledge-docs/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
