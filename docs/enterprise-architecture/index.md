@@ -38,7 +38,7 @@ EA glossary, best practices, jargon guides, and quality checklists.
 
 10-volume comprehensive reference for AI-native ARBs — governance, economics, knowledge management, artifacts, and banking case studies.
 
-[Browse ARB](architectural-review-board/index.md)
+[Browse ARB](arb/index.md)
 
 ### Specialization
 

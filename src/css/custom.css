@@ -1,134 +1,498 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a simple framework built on top of CSS
- * Custom Properties, it's used primarily to ease the styling of the default theme.
- * See https://infima.dev/ for more details.
- */
+/* ============================================================
+   Knowledge Docs — Professional Theme
+   ============================================================ */
 
-/* You can override the default Infima variables here. */
+/* ── 1. Design Tokens ──────────────────────────────────────── */
 :root {
-  --ifm-color-primary: #0ea5e9;
-  --ifm-color-primary-dark: #0284c7;
-  --ifm-color-primary-darker: #0369a1;
-  --ifm-color-primary-darkest: #075985;
-  --ifm-color-primary-light: #06b6d4;
-  --ifm-color-primary-lighter: #22d3ee;
-  --ifm-color-primary-lightest: #cffafe;
-  --ifm-code-font-size: 95%;
-  --docusaurus-published-hash: 'unreleased';
+  /* Brand palette */
+  --ifm-color-primary:          #0ea5e9;
+  --ifm-color-primary-dark:     #0284c7;
+  --ifm-color-primary-darker:   #0369a1;
+  --ifm-color-primary-darkest:  #075985;
+  --ifm-color-primary-light:    #38bdf8;
+  --ifm-color-primary-lighter:  #7dd3fc;
+  --ifm-color-primary-lightest: #e0f2fe;
+
+  /* Layout — fill the screen */
+  --ifm-container-width:        100%;
+  --ifm-container-width-xl:     100%;
+  --ifm-spacing-horizontal:     2rem;
+  --doc-sidebar-width:          288px;
+
+  /* Typography */
+  --ifm-font-family-base:       -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                                 Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ifm-font-family-monospace:  'JetBrains Mono', 'Fira Code', 'Cascadia Code',
+                                 Consolas, monospace;
+  --ifm-font-size-base:         16px;
+  --ifm-line-height-base:       1.75;
+  --ifm-code-font-size:         90%;
+
+  /* Headings */
+  --ifm-h1-font-size:           2rem;
+  --ifm-h2-font-size:           1.5rem;
+  --ifm-h3-font-size:           1.2rem;
+  --ifm-heading-font-weight:    700;
+  --ifm-heading-line-height:    1.25;
+  --ifm-heading-color:          #0f172a;
+
+  /* Spacing */
+  --ifm-global-radius:          6px;
+  --ifm-pre-padding:            1.25rem;
+
+  /* Borders */
+  --ifm-color-emphasis-200:     #e2e8f0;
+  --ifm-color-emphasis-300:     #cbd5e1;
+
+  /* Tables */
+  --ifm-table-border-color:     #e2e8f0;
+  --ifm-table-stripe-background:#f8fafc;
+  --ifm-table-head-background:  #f1f5f9;
+  --ifm-table-head-color:       #1e293b;
+
+  /* Shadows */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:   0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
 }
 
 html[data-theme='dark'] {
-  --ifm-color-primary: #0ea5e9;
-  --ifm-color-primary-dark: #0284c7;
-  --ifm-color-primary-darker: #0369a1;
-  --ifm-color-primary-darkest: #075985;
-  --ifm-color-primary-light: #06b6d4;
-  --ifm-color-primary-lighter: #22d3ee;
-  --ifm-color-primary-lightest: #cffafe;
+  --ifm-color-primary:          #38bdf8;
+  --ifm-color-primary-dark:     #0ea5e9;
+  --ifm-color-primary-darker:   #0284c7;
+  --ifm-color-primary-darkest:  #0369a1;
+  --ifm-color-primary-light:    #7dd3fc;
+  --ifm-color-primary-lighter:  #bae6fd;
+  --ifm-color-primary-lightest: #e0f2fe;
+
+  --ifm-heading-color:          #f1f5f9;
+  --ifm-background-color:       #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-navbar-background-color: #1e293b;
+  --ifm-sidebar-background:     #1e293b;
+
+  --ifm-table-border-color:     #334155;
+  --ifm-table-stripe-background:#1e293b;
+  --ifm-table-head-background:  #0f172a;
+  --ifm-table-head-color:       #e2e8f0;
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+/* ── 2. Full-width Layout ──────────────────────────────────── */
+.container {
+  max-width: 100% !important;
+  padding-left:  var(--ifm-spacing-horizontal);
+  padding-right: var(--ifm-spacing-horizontal);
 }
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+.main-wrapper {
+  max-width: 100% !important;
 }
 
-/* Responsive styles for documents and files */
-@media (max-width: 768px) {
-  iframe {
-    max-width: 100%;
-    height: auto !important;
-  }
-  
-  .pdf-viewer-mobile {
-    display: block;
-  }
+/* Doc page article */
+.col.docItemCol,
+.docItemContainer_node_modules-\\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
+  max-width: 100% !important;
 }
 
-/* Enhanced navbar styling */
+/* Prevent double-padding on the doc page row */
+.row--no-gutters > .col {
+  padding: 0;
+}
+
+/* ── 3. Navbar ─────────────────────────────────────────────── */
 .navbar {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: var(--shadow-sm);
+  padding: 0 var(--ifm-spacing-horizontal);
 }
 
-/* Documentation styling */
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar__link {
+  font-weight: 500;
+}
+
+.navbar__link--active,
+.navbar__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* ── 4. Sidebar ────────────────────────────────────────────── */
+.menu {
+  padding: 1rem 0.75rem;
+}
+
+.menu__link {
+  border-radius: var(--ifm-global-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menu__link:hover {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+}
+
+.menu__link--active {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-dark);
+  font-weight: 600;
+}
+
+html[data-theme='dark'] .menu__link:hover,
+html[data-theme='dark'] .menu__link--active {
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--ifm-color-primary-light);
+}
+
+.menu__list-item-collapsible {
+  border-radius: var(--ifm-global-radius);
+}
+
+.menu__caret::before {
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* ── 5. Typography & Headings ──────────────────────────────── */
 .markdown {
-  line-height: 1.8;
+  font-size: var(--ifm-font-size-base);
+  line-height: var(--ifm-line-height-base);
 }
 
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
-  margin-top: 1.5rem;
+.markdown h1 {
+  font-size: var(--ifm-h1-font-size);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+.markdown h2 {
+  font-size: var(--ifm-h2-font-size);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.markdown h3 {
+  font-size: var(--ifm-h3-font-size);
+  font-weight: 600;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary-dark);
+}
+
+html[data-theme='dark'] .markdown h3 {
+  color: var(--ifm-color-primary-light);
 }
 
 .markdown p {
   margin-bottom: 1rem;
 }
 
-.markdown code {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
+.markdown a {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
 }
 
-html[data-theme='dark'] .markdown code {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Sidebar styling */
-.sidebar {
-  background: var(--ifm-background-color);
-}
-
-/* TOC styling */
-.table-of-contents {
-  margin-top: 1rem;
-}
-
-.table-of-contents li {
-  margin: 0.25rem 0;
-}
-
-/* Links styling */
-a {
+.markdown a:hover {
   color: var(--ifm-color-primary);
+  border-bottom-color: var(--ifm-color-primary);
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+html[data-theme='dark'] .markdown a {
+  color: var(--ifm-color-primary-light);
 }
 
-/* Pre/code block styling */
+/* ── 6. Tables ─────────────────────────────────────────────── */
+.markdown table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  border-radius: var(--ifm-global-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--ifm-table-border-color);
+}
+
+.markdown table thead tr {
+  background: var(--ifm-table-head-background);
+}
+
+.markdown table thead th {
+  color: var(--ifm-table-head-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--ifm-table-border-color);
+  white-space: nowrap;
+}
+
+.markdown table tbody tr {
+  transition: background 0.1s;
+}
+
+.markdown table tbody tr:nth-child(odd) {
+  background: var(--ifm-table-stripe-background);
+}
+
+.markdown table tbody tr:hover {
+  background: var(--ifm-color-primary-lightest);
+}
+
+html[data-theme='dark'] .markdown table tbody tr:hover {
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.markdown table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ifm-table-border-color);
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+/* Scrollable tables on narrow screens */
+@media (max-width: 900px) {
+  .markdown table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ── 7. Code Blocks ────────────────────────────────────────── */
+.markdown code {
+  background: #f1f5f9;
+  color: #be185d;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-size: var(--ifm-code-font-size);
+  font-family: var(--ifm-font-family-monospace);
+  border: 1px solid #e2e8f0;
+}
+
+html[data-theme='dark'] .markdown code {
+  background: #1e293b;
+  color: #f472b6;
+  border-color: #334155;
+}
+
 pre {
-  background: var(--ifm-pre-background);
+  background: #0f172a !important;
   border-radius: 8px;
-  padding: 1rem;
+  padding: var(--ifm-pre-padding);
   overflow-x: auto;
+  box-shadow: var(--shadow-md);
+  border: 1px solid #1e293b;
 }
 
-/* Admonition styling */
+pre code {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 0.9rem;
+}
+
+.docusaurus-highlight-code-line {
+  background: rgba(255, 255, 255, 0.08);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+/* ── 8. Admonitions ────────────────────────────────────────── */
 .alert {
-  margin: 1rem 0;
+  border-radius: 8px;
+  border-left: 4px solid;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
 }
 
-/* Button styling */
-.button {
+.alert--info    { border-left-color: var(--ifm-color-primary); }
+.alert--success { border-left-color: #22c55e; }
+.alert--warning { border-left-color: #f59e0b; }
+.alert--danger  { border-left-color: #ef4444; }
+
+/* ── 9. Breadcrumbs ────────────────────────────────────────── */
+.breadcrumbs__item {
+  font-size: 0.85rem;
+}
+
+.breadcrumbs__link {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* ── 10. TOC (right rail) ──────────────────────────────────── */
+.table-of-contents {
+  border-left: 2px solid var(--ifm-color-emphasis-200);
+  padding-left: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-color-emphasis-600);
+  transition: color 0.15s;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* ── 11. Pagination / Prev-Next ────────────────────────────── */
+.pagination-nav__link {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.pagination-nav__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.pagination-nav__sublabel {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+/* ── 12. Footer ────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  padding: 2rem var(--ifm-spacing-horizontal);
+}
+
+.footer__title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer__link-item {
+  font-size: 0.9rem;
+}
+
+/* ── 13. iframes & embedded documents ─────────────────────── */
+.markdown iframe {
+  width: 100%;
+  max-width: 100%;
   border-radius: 6px;
-  transition: all 0.2s ease-in-out;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+@media (max-width: 768px) {
+  .markdown iframe {
+    height: 400px !important;
+  }
+}
+
+/* ── 14. Details / summary (embedded docs) ─────────────────── */
+details {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+details > summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  background: var(--ifm-table-head-background);
+  user-select: none;
+  list-style: none;
+}
+
+details > summary::before {
+  content: '▶  ';
+  font-size: 0.7rem;
+  color: var(--ifm-color-primary);
+}
+
+details[open] > summary::before {
+  content: '▼  ';
+}
+
+details > *:not(summary) {
+  padding: 1rem;
+}
+
+/* ── 15. Buttons ───────────────────────────────────────────── */
+.button {
+  border-radius: var(--ifm-global-radius);
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.button--primary {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── 16. Home page card grid ───────────────────────────────── */
+/* Give each h3 + following paragraph a card-like treatment */
+.theme-doc-markdown h3 + p {
+  margin-top: 0;
+}
+
+/* ── 17. Search bar ────────────────────────────────────────── */
+.DocSearch-Button {
+  border-radius: var(--ifm-global-radius) !important;
+}
+
+/* ── 18. Responsive ────────────────────────────────────────── */
+@media (max-width: 996px) {
+  :root {
+    --ifm-spacing-horizontal: 1rem;
+  }
+
+  .navbar {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .markdown h1 { font-size: 1.6rem; }
+  .markdown h2 { font-size: 1.3rem; }
+  .markdown h3 { font-size: 1.1rem; }
 }

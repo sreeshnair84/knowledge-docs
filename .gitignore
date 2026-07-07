@@ -1,4 +1,5 @@
 build/
+site/
 .docusaurus/
 node_modules/
 .env.local
