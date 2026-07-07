@@ -396,9 +396,12 @@ const sidebars = {
       label: 'Soft Skills',
     },
     {
-      type: 'doc',
-      id: 'quantum/index',
+      type: 'category',
       label: 'Quantum AI',
+      link: {type: 'doc', id: 'quantum/index'},
+      items: [
+        {type: 'doc', id: 'quantum/zero-to-mastery', label: 'Zero to Mastery'},
+      ],
     },
     {
       type: 'doc',

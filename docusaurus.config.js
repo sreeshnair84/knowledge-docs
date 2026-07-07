@@ -3,11 +3,14 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import path from 'path';
 import fs from 'fs';
 import {fileURLToPath} from 'url';
+import {createRequire} from 'module';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 
 // Recursively copies all non-markdown assets from docs/ into the build output
 // so that PDF/HTML iframes resolve correctly at runtime.
+// Skips hidden directories (e.g. .claude) to avoid leaking dev config.
 function copyDocsAssetsPlugin() {
   return {
     name: 'copy-docs-assets',
@@ -18,6 +21,7 @@ function copyDocsAssetsPlugin() {
       function copyDir(src, dest) {
         const entries = fs.readdirSync(src, {withFileTypes: true});
         for (const entry of entries) {
+          if (entry.name.startsWith('.')) continue; // skip hidden dirs/files
           const srcPath = path.join(src, entry.name);
           const destPath = path.join(dest, entry.name);
           if (entry.isDirectory()) {
@@ -69,6 +73,7 @@ const config = {
           {tagName: 'link', rel: 'icon', href: '/knowledge-docs/img/favicon.ico'},
           {tagName: 'link', rel: 'manifest', href: '/knowledge-docs/manifest.json'},
           {tagName: 'meta', name: 'theme-color', content: '#0ea5e9'},
+          {tagName: 'meta', name: 'mobile-web-app-capable', content: 'yes'},
           {tagName: 'meta', name: 'apple-mobile-web-app-capable', content: 'yes'},
           {tagName: 'meta', name: 'apple-mobile-web-app-status-bar-style', content: 'default'},
           {tagName: 'meta', name: 'apple-mobile-web-app-title', content: 'Knowledge Docs'},
@@ -81,13 +86,15 @@ const config = {
     '@docusaurus/theme-mermaid',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
+      /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
+      ({
         hashed: true,
         language: ['en'],
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
         indexBlog: false,
-      },
+        docsRouteBasePath: '/',
+      }),
     ],
   ],
 
