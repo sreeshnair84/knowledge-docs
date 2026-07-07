@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block announce %}
+  <span class="announce-inner">
+    <strong>Knowledge Docs</strong>
+    &nbsp;&mdash;&nbsp;
+    AI, Agentic AI &amp; Enterprise Architecture
+    &nbsp;&middot;&nbsp;
+    <span class="announce-version">v{{ config.extra.build_version }}</span>
+    &nbsp;&middot;&nbsp;
+    Built {{ config.extra.build_date }}
+  </span>
+{% endblock %}
