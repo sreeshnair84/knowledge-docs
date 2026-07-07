@@ -115,7 +115,9 @@ extra:
 
 nav:
   - Home: index.md
-  - AI Foundations: ai-foundations/index.md
+  - AI Foundations:
+    - Overview: ai-foundations/index.md
+    - Agentic AI Landing Zone Architecture: ai-foundations/agentic_ai_landing_zone_architecture.md
   - Agentic AI:
     - Overview: agentic-systems/index.md
     - Platform: agentic-systems/platform/index.md
@@ -215,7 +217,8 @@ nav:
       - Overview: enterprise-architecture/process/index.md
       - AI Solution Lifecycle Deliverables: enterprise-architecture/process/ai-solution-lifecycle-deliverables.md
     - Best Practices: enterprise-architecture/best-practices/index.md
-    - ARB: enterprise-architecture/architectural-review-board/index.md
+    - ARB:
+      - Overview: enterprise-architecture/arb/index.md
     - Specialization: enterprise-architecture/specialization/index.md
   - AI Development:
     - Overview: ai-development/index.md
@@ -226,7 +229,10 @@ nav:
   - AI Economics:
     - Overview: ai-economics/index.md
     - AI Value Creators Synthesis: ai-economics/ai-value-creators-synthesis.md
-  - Use Cases: ai-usecases/index.md
+    - AI Coding Agents 2026: ai-economics/ai-coding-agents-2026.md
+  - Use Cases:
+    - Overview: ai-usecases/index.md
+    - EU Banking AI Evaluation Compliance Guide: ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
   - AI-First Enterprise:
     - Overview: ai-first-enterprise/index.md
     - AI-First to AI-Native Journey: ai-first-enterprise/ai-first-to-ai-native.md
@@ -269,6 +275,11 @@ nav:
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md
+    - Enterprise Architect in the Age of AI: interview-prep/Enterprise_Architect_in_the_Age_of_AI.md
+    - EA Soft Skills and Behaviors: interview-prep/EA_Soft_Skills_and_Behaviors.md
+    - EA Senior Interview Questions: interview-prep/EA_Senior_Interview_Questions.md
+    - EA Quality Resilience Testing Interview Questions: interview-prep/EA_Quality_Resilience_Testing_Interview_Questions.md
+    - EA HITL HOTL HOOL Interview Questions: interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions.md
   - Soft Skills: soft-skills/index.md
   - Quantum AI: quantum/index.md
   - About: about.md
