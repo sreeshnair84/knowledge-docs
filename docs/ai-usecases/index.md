@@ -36,14 +36,14 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 <details>
 <summary>TOGAF 10 APEX AI Platform — NexaBank</summary>
-<iframe src="TOGAF10_APEX_AI_Platform_NexaBank.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_AI_Platform_NexaBank.pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="../enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="../enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 <details>
 <summary>TOGAF 10 APEX Cloud Native — GlobalCorp</summary>
-<iframe src="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" target="_blank">Open in new tab ↗</a></p>
+<iframe src="../enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf" width="100%" height="800px" frameborder="0"></iframe>
+<p><a href="../enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 
 ---

@@ -384,6 +384,7 @@ const sidebars = {
           items: ['interview-prep/ea/index'],
         },
         'interview-prep/Enterprise_Architect_in_the_Age_of_AI',
+        'interview-prep/ea-ai-artifacts-and-metrics',
         'interview-prep/EA_Soft_Skills_and_Behaviors',
         'interview-prep/EA_Senior_Interview_Questions',
         'interview-prep/EA_Quality_Resilience_Testing_Interview_Questions',

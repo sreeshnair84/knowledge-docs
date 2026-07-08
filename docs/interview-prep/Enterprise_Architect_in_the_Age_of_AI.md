@@ -494,6 +494,8 @@ Perhaps the most underappreciated responsibility of the modern EA is shaping how
 
 The modern EA must produce an evolved set of artifacts that reflect the AI-first landscape:
 
+> **See also:** [EA Artifacts & Metrics — Real-World Examples](ea-ai-artifacts-and-metrics.md) — fully populated example of every artifact below, set in a fictional bank context.
+
 ### Architecture Documentation
 - **AI Reference Architecture** — the canonical architecture blueprint for AI-powered systems in the enterprise
 - **Agent Topology Diagrams** — visual maps of all agents, their tools, memory systems, and human touchpoints
@@ -550,6 +552,8 @@ The modern EA must produce an evolved set of artifacts that reflect the AI-first
 ## 13. Metrics & KPIs
 
 The EA must define and track metrics that demonstrate the health and value of the AI architecture:
+
+> **See also:** [EA Artifacts & Metrics — Real-World Examples → Part 2](ea-ai-artifacts-and-metrics.md#part-2--metrics--kpi-calculations) — worked calculations with formulas and real data for every metric below.
 
 ### Architecture Quality Metrics
 - **Agent Reliability Rate** — % of agent task completions without error or unexpected human escalation
