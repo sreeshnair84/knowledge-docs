@@ -1,5 +1,5 @@
 ---
-title: Real-Life Engagement Transcripts — EA Practitioners in Action
+title: "Real-Life Engagement Transcripts — EA Practitioners in Action"
 date: 2026-07-09
 ---
 

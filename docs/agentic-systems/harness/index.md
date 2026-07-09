@@ -1,5 +1,5 @@
 ---
-title: Harness — Agentic AI Engineering
+title: "Harness — Agentic AI Engineering"
 ---
 
 # Harness — Agentic AI Engineering

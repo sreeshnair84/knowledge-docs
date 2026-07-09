@@ -1,5 +1,5 @@
 ---
-title: MCP Deep Guide — Server Development & Enterprise Integration
+title: "MCP Deep Guide — Server Development & Enterprise Integration"
 ---
 
 # MCP Deep Guide — Server Development & Enterprise Integration

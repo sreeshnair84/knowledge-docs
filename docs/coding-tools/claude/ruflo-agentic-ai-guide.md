@@ -1,5 +1,5 @@
 ---
-title: Multi-Agent Orchestration — claude-flow & Beyond
+title: "Multi-Agent Orchestration — claude-flow & Beyond"
 ---
 
 # Multi-Agent Orchestration — claude-flow & Beyond

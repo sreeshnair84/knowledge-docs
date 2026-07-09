@@ -1,5 +1,5 @@
 ---
-title: Module 2 — Business Acumen for Enterprise Architects
+title: "Module 2 — Business Acumen for Enterprise Architects"
 date: 2026-07-09
 ---
 

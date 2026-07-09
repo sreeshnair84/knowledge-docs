@@ -1,5 +1,5 @@
 ---
-title: Module 3 — Enterprise Proposal Lifecycle
+title: "Module 3 — Enterprise Proposal Lifecycle"
 date: 2026-07-09
 ---
 

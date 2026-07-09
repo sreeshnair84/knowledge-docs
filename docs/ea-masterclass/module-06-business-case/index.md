@@ -1,5 +1,5 @@
 ---
-title: Module 6 — Business Case Development
+title: "Module 6 — Business Case Development"
 date: 2026-07-09
 ---
 

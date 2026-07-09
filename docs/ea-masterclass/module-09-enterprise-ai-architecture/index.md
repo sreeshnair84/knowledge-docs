@@ -1,5 +1,5 @@
 ---
-title: Module 9 — Enterprise AI Architecture
+title: "Module 9 — Enterprise AI Architecture"
 date: 2026-07-09
 ---
 

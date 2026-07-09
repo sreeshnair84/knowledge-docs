@@ -1,5 +1,5 @@
 ---
-title: Enterprise AI Architect — Foundations
+title: "Enterprise AI Architect — Foundations"
 ---
 
 # Enterprise AI Architect — Foundations

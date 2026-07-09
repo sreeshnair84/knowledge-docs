@@ -1,5 +1,5 @@
 ---
-title: Fortune 100 Modernisation Playbook — Leading at Scale
+title: "Fortune 100 Modernisation Playbook — Leading at Scale"
 date: 2026-07-09
 ---
 

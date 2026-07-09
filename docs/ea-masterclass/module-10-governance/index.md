@@ -1,5 +1,5 @@
 ---
-title: Module 10 — Enterprise Governance
+title: "Module 10 — Enterprise Governance"
 date: 2026-07-09
 ---
 

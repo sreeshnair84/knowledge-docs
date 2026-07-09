@@ -1,5 +1,5 @@
 ---
-title: EntraID 3LO Agent Auth — Security Review Package, Pen Test & NHI Governance (Vol. 4)
+title: "EntraID 3LO Agent Auth — Security Review Package, Pen Test & NHI Governance (Vol. 4)"
 tags: [auth, identity, oauth, entra, security, penetration-test, nhi, ciso]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: EA Artifacts & Metrics — Real-World Examples
+title: "EA Artifacts & Metrics — Real-World Examples"
 ---
 
 # EA Artifacts & Metrics — Real-World Examples

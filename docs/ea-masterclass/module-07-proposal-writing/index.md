@@ -1,5 +1,5 @@
 ---
-title: Module 7 — Proposal Writing
+title: "Module 7 — Proposal Writing"
 date: 2026-07-09
 ---
 

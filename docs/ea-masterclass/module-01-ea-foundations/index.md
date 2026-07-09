@@ -1,5 +1,5 @@
 ---
-title: Module 1 — Enterprise Architecture Foundations
+title: "Module 1 — Enterprise Architecture Foundations"
 date: 2026-07-09
 ---
 

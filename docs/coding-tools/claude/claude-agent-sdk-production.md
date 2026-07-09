@@ -1,5 +1,5 @@
 ---
-title: Claude Agent SDK — Production Reference
+title: "Claude Agent SDK — Production Reference"
 ---
 
 # Claude Agent SDK — Production Reference

@@ -1,5 +1,5 @@
 ---
-title: EntraID 3LO Agent Auth — Standards, Architecture & Gateway Design (Vol. 1)
+title: "EntraID 3LO Agent Auth — Standards, Architecture & Gateway Design (Vol. 1)"
 tags: [auth, identity, oauth, entra, 3lo, obo, gateway, mcp]
 ---
 

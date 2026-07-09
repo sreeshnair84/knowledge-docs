@@ -1,5 +1,5 @@
 ---
-title: EA Masterclass — From Technical Architect to Enterprise AI Investment Architect
+title: "EA Masterclass — From Technical Architect to Enterprise AI Investment Architect"
 date: 2026-07-09
 ---
 

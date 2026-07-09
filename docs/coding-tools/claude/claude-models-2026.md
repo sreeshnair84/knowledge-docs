@@ -1,5 +1,5 @@
 ---
-title: Claude Models 2026 — Complete Reference
+title: "Claude Models 2026 — Complete Reference"
 ---
 
 # Claude Models 2026 — Complete Reference

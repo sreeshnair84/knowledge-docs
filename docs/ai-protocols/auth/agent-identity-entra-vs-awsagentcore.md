@@ -1,5 +1,5 @@
 ---
-title: Agent Identity — Microsoft Entra Agent ID vs AWS AgentCore Identity
+title: "Agent Identity — Microsoft Entra Agent ID vs AWS AgentCore Identity"
 tags: [auth, identity, oauth, entra, aws, agent-identity, multi-cloud]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Module 4 — Technology Investment Fundamentals
+title: "Module 4 — Technology Investment Fundamentals"
 date: 2026-07-09
 ---
 

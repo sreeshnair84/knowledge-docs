@@ -1,5 +1,5 @@
 ---
-title: Module 8 — Financial Literacy for Enterprise Architects
+title: "Module 8 — Financial Literacy for Enterprise Architects"
 date: 2026-07-09
 ---
 

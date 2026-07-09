@@ -1,5 +1,5 @@
 ---
-title: Quantum AI — Zero to Mastery
+title: "Quantum AI — Zero to Mastery"
 ---
 
 # Quantum AI: Zero to Mastery

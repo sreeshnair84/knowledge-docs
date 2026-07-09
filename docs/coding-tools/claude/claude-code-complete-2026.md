@@ -1,5 +1,5 @@
 ---
-title: Claude Code CLI — Zero to Mastery 2026
+title: "Claude Code CLI — Zero to Mastery 2026"
 ---
 
 # Claude Code CLI — Zero to Mastery 2026

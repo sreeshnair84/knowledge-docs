@@ -1,5 +1,5 @@
 ---
-title: EntraID 3LO Agent Auth — Reference Implementation, Credential Vault & Runbook (Vol. 2)
+title: "EntraID 3LO Agent Auth — Reference Implementation, Credential Vault & Runbook (Vol. 2)"
 tags: [auth, identity, oauth, entra, 3lo, credential-vault, obo, runbook]
 ---
 

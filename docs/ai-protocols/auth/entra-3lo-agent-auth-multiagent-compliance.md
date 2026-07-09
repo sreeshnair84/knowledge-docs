@@ -1,5 +1,5 @@
 ---
-title: EntraID 3LO Agent Auth — Multi-Agent Chains, Compliance & Maturity Model (Vol. 3)
+title: "EntraID 3LO Agent Auth — Multi-Agent Chains, Compliance & Maturity Model (Vol. 3)"
 tags: [auth, identity, oauth, entra, 3lo, multi-agent, dora, mcp, a2a, compliance]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Module 13 — Case Studies: AI Transformation Across Six Industries
+title: "Module 13 — Case Studies: AI Transformation Across Six Industries"
 date: 2026-07-09
 ---
 

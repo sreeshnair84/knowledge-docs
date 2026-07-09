@@ -1,5 +1,5 @@
 ---
-title: Enterprise AI Architect — Skills Assessment
+title: "Enterprise AI Architect — Skills Assessment"
 ---
 
 # Enterprise AI Architect — Skills Assessment
