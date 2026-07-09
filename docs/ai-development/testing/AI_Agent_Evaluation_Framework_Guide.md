@@ -1,4 +1,4 @@
----
+supersedes: "docs/ai-development/testing/AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix.pdf"
 title: AI Agent Evaluation Framework
 parent: Agentic AI
 nav_order: 1

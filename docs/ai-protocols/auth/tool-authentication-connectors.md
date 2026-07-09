@@ -1,4 +1,4 @@
----
+supersedes: "docs/ai-protocols/auth/Part2_Tool_Authentication.pdf"
 title: Tool Authentication & Connector Models for AI Agents
 tags: [auth, oauth, connectors, github, confluence, sharepoint, jira, slack, salesforce]
 ---

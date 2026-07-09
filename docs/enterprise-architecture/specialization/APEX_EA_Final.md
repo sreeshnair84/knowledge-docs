@@ -1,4 +1,4 @@
----
+supersedes: "docs/enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf, docs/enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf, docs/enterprise-architecture/framework/TOGAF10_APEX_v4_PeerReviewed.pdf"
 title: "APEX: AI Platform of"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09

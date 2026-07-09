@@ -1,4 +1,4 @@
----
+supersedes: "docs/knowledge-engineering/data/AI_Native_Architecture_Evolution_Report.pdf"
 title: "From Data Warehouse to"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09

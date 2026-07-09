@@ -1,4 +1,4 @@
----
+supersedes: "docs/coding-tools/claude/Module_2_Claude_API_SDK.pdf"
 title: Claude API Mastery
 ---
 

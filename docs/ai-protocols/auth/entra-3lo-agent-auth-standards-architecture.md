@@ -1,4 +1,4 @@
----
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Research.pdf"
 title: "EntraID 3LO Agent Auth — Standards, Architecture & Gateway Design (Vol. 1)"
 tags: [auth, identity, oauth, entra, 3lo, obo, gateway, mcp]
 ---

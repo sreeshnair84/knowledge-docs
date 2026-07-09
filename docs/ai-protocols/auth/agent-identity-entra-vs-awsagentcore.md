@@ -1,4 +1,4 @@
----
+supersedes: "docs/ai-protocols/auth/AgentIdentity_Research_2026.pdf"
 title: "Agent Identity — Microsoft Entra Agent ID vs AWS AgentCore Identity"
 tags: [auth, identity, oauth, entra, aws, agent-identity, multi-cloud]
 ---

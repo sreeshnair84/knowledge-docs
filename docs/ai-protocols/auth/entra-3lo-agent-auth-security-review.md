@@ -1,4 +1,4 @@
----
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume4.pdf"
 title: "EntraID 3LO Agent Auth — Security Review Package, Pen Test & NHI Governance (Vol. 4)"
 tags: [auth, identity, oauth, entra, security, penetration-test, nhi, ciso]
 ---

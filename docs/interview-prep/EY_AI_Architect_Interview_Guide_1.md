@@ -1,4 +1,4 @@
----
+supersedes: "docs/interview-prep/EY_AI_Architect_Interview_Guide.pdf"
 title: "EY AI Architect & Consultant — Interview & ECC AI-First Guide"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09

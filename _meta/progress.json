@@ -1,6 +1,6 @@
 {
   "started_at": "2026-07-09T13:39:44.907591+00:00",
-  "last_updated": "2026-07-09T13:56:35.388593+00:00",
+  "last_updated": "2026-07-09T14:03:06.248581+00:00",
   "phases": [
     {
       "id": 0,
@@ -90,118 +90,118 @@
       "name": "merge_retire",
       "output": "_meta/merge-log.md",
       "queued": true,
-      "status": "in_progress",
-      "completed_at": null,
+      "status": "complete",
+      "completed_at": "2026-07-09T14:03:06.248581+00:00",
       "queue": [
         {
           "item": "cluster_001",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:11.025264+00:00"
         },
         {
           "item": "cluster_002",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:11.541482+00:00"
         },
         {
           "item": "cluster_003",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:12.202322+00:00"
         },
         {
           "item": "cluster_004",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:12.876640+00:00"
         },
         {
           "item": "cluster_005",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:13.282289+00:00"
         },
         {
           "item": "cluster_006",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:13.843489+00:00"
         },
         {
           "item": "cluster_007",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:53.406561+00:00"
         },
         {
           "item": "cluster_008",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T13:59:14.658751+00:00"
         },
         {
           "item": "cluster_009",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:53.871013+00:00"
         },
         {
           "item": "cluster_010",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:54.655110+00:00"
         },
         {
           "item": "cluster_011",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:55.301782+00:00"
         },
         {
           "item": "cluster_012",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:55.717028+00:00"
         },
         {
           "item": "cluster_013",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:56.423614+00:00"
         },
         {
           "item": "cluster_014",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:57.226329+00:00"
         },
         {
           "item": "cluster_015",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:57.685012+00:00"
         },
         {
           "item": "cluster_016",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:58.319237+00:00"
         },
         {
           "item": "cluster_017",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:59.089108+00:00"
         },
         {
           "item": "cluster_018",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:02:59.585194+00:00"
         },
         {
           "item": "cluster_019",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:03:00.052313+00:00"
         },
         {
           "item": "cluster_020",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:03:00.718807+00:00"
         },
         {
           "item": "cluster_021",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:03:01.388469+00:00"
         },
         {
           "item": "cluster_022",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-09T14:03:01.836143+00:00"
         }
       ]
     },

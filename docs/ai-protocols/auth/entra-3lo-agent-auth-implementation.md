@@ -1,4 +1,4 @@
----
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume2.pdf"
 title: "EntraID 3LO Agent Auth — Reference Implementation, Credential Vault & Runbook (Vol. 2)"
 tags: [auth, identity, oauth, entra, 3lo, credential-vault, obo, runbook]
 ---
