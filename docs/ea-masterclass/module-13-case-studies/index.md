@@ -148,9 +148,9 @@ Synthesizes the most transferable insights from each case — the principles tha
 | [Global Bank — AI Loan Origination](global-bank.md) | Financial Services | Document AI + ML credit scoring | High |
 | [Healthcare Network — Clinical Documentation](healthcare.md) | Healthcare | Ambient AI + NLP + FHIR integration | High |
 | [Global Retailer — Demand Forecasting](retail.md) | Retail | Federated ML + real-time POS integration | Medium-High |
-| [National Telco — Network Anomaly Detection](telco.md) | Telecommunications | Streaming ML + event processing | High |
+| [National Telco — Network Anomaly Detection](telecom.md) | Telecommunications | Streaming ML + event processing | High |
 | [Tax Authority — Audit Risk Scoring](government.md) | Public Sector | Explainable ML + algorithmic accountability | Very High |
-| [Energy Utility — Predictive Maintenance](energy.md) | Energy and Utilities | IoT + edge ML + EAM integration | Medium-High |
+| Energy Utility — Predictive Maintenance | Energy and Utilities | IoT + edge ML + EAM integration | Medium-High |
 
 ---
 
