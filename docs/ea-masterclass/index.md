@@ -1,6 +1,12 @@
 ---
 title: "EA Masterclass — From Technical Architect to Enterprise AI Investment Architect"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ea-masterclass"]
 ---
 
 # EA Masterclass: From Technical Architect to Enterprise AI Investment Architect

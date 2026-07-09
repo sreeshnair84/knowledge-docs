@@ -1,6 +1,12 @@
 ---
-title: AI Coding Orchestrators - Claude Code, GitHub Copilot, and the Meta-Orchestrator Pattern
-date: 2026-07-09
+title: "AI Coding Orchestrators - Claude Code, GitHub Copilot, and the Meta-Orchestrator Pattern"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # AI Coding Orchestrators

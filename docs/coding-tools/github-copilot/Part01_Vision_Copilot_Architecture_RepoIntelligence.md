@@ -3,8 +3,10 @@ title: "AI Vision, Copilot Architecture &"
 date_created: 2026-07-04
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf"
+tags: ["coding-tools", "github-copilot"]
 ---
 
 <!-- converted from Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf -->

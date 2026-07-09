@@ -1,7 +1,12 @@
 ---
-title: AI Coding Agents 2026
-parent: Agentic AI
-nav_order: 3
+title: "AI Coding Agents 2026"
+date_created: 2026-07-06
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-economics"]
 ---
 
 # AI Coding Agent Assistants: The Complete 2026 Landscape

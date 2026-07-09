@@ -1,5 +1,12 @@
 ---
-title: Machine-Readable Enterprise Architecture for the Agentic Era
+title: "Machine-Readable Enterprise Architecture for the Agentic Era"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "enterprise-ai-architect"]
 ---
 
 # Machine-Readable Enterprise Architecture for the Agentic Era

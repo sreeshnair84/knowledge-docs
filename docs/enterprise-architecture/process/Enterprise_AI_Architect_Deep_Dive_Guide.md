@@ -3,8 +3,10 @@ title: "Communication Mastery"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Enterprise_AI_Architect_Deep_Dive_Guide.pdf"
+tags: ["enterprise-architecture", "process"]
 ---
 
 <!-- converted from Enterprise_AI_Architect_Deep_Dive_Guide.pdf -->

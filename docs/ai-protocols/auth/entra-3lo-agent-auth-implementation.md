@@ -1,3 +1,14 @@
+---
+title: "EntraID 3LO: AC Gateway + AC Identity — Volume 2"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
+---
+
 supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume2.pdf"
 title: "EntraID 3LO Agent Auth — Reference Implementation, Credential Vault & Runbook (Vol. 2)"
 tags: [auth, identity, oauth, entra, 3lo, credential-vault, obo, runbook]

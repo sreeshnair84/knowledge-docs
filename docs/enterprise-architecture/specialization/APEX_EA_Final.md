@@ -1,3 +1,14 @@
+---
+title: "APEX: AI Platform of"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["enterprise-architecture", "specialization"]
+---
+
 supersedes: "docs/enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf, docs/enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf, docs/enterprise-architecture/framework/TOGAF10_APEX_v4_PeerReviewed.pdf"
 title: "APEX: AI Platform of"
 date_created: 2026-06-29

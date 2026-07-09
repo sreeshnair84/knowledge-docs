@@ -1,6 +1,12 @@
 ---
 title: "Agentic AI Landing Zone: EU AI Act Compliance (August 2, 2026)"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-foundations"]
 ---
 
 # EU AI ACT COMPLIANCE: YOUR 24-DAY ACTION PLAN

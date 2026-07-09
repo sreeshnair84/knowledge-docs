@@ -1,3 +1,14 @@
+---
+title: "EntraID 3LO: AC Gateway + AC Identity — Volume 4"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
+---
+
 supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume4.pdf"
 title: "EntraID 3LO Agent Auth — Security Review Package, Pen Test & NHI Governance (Vol. 4)"
 tags: [auth, identity, oauth, entra, security, penetration-test, nhi, ciso]

@@ -3,8 +3,10 @@ title: "AI Platform Factory — Production Agent Runbook v2.0"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "ai-platform-factory-runbook-v2.pdf"
+tags: ["agentic-systems", "platform"]
 ---
 
 <!-- converted from ai-platform-factory-runbook-v2.pdf -->

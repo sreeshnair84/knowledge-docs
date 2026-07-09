@@ -1,6 +1,12 @@
 ---
 title: "Module 7 — Proposal Writing"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ea-masterclass", "module-07-proposal-writing"]
 ---
 
 # Module 7 — Proposal Writing

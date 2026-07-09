@@ -1,6 +1,12 @@
 ---
-title: Decision Matrix - Choosing Your Orchestration Platform
-date: 2026-07-09
+title: "Decision Matrix - Choosing Your Orchestration Platform"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Decision Matrix: Platform Selection Guide

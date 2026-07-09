@@ -1,3 +1,14 @@
+---
+title: "EU Bank AI Copilot Platform"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-usecases"]
+---
+
 supersedes: "docs/ai-usecases/eu-bank-ai-copilot-research.pdf"
 title: "EU Bank AI Copilot Platform"
 date_created: 2026-06-29

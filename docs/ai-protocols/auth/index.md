@@ -1,5 +1,12 @@
 ---
-title: Authentication & Identity
+title: "Authentication & Identity"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
 ---
 
 # Authentication & Identity for Agentic AI

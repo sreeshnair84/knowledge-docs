@@ -1,5 +1,12 @@
 ---
 title: "Claude Code CLI — Zero to Mastery 2026"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 
 # Claude Code CLI — Zero to Mastery 2026

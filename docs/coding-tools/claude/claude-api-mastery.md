@@ -1,3 +1,14 @@
+---
+title: "Claude API Mastery"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
+---
+
 supersedes: "docs/coding-tools/claude/Module_2_Claude_API_SDK.pdf"
 title: Claude API Mastery
 ---

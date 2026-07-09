@@ -1,6 +1,12 @@
 ---
 title: "Part 14 — Industry Case Studies"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["cybersec-architect"]
 ---
 
 # Part 14 — Industry Case Studies

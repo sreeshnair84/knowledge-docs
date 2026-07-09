@@ -3,8 +3,10 @@ title: "CEO Agent & Meeting Prep Agent"
 date_created: 2026-07-04
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "CEO_Agent_Solution_Blueprint.pdf"
+tags: ["ai-usecases"]
 ---
 
 <!-- converted from CEO_Agent_Solution_Blueprint.pdf -->

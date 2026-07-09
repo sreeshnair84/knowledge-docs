@@ -1,6 +1,12 @@
 ---
 title: "Module 2 — Business Acumen for Enterprise Architects"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ea-masterclass", "module-02-business-acumen"]
 ---
 
 # Module 2 — Business Acumen for Enterprise Architects

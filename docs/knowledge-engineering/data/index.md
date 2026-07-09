@@ -1,5 +1,12 @@
 ---
-title: Data Architecture
+title: "Data Architecture"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["knowledge-engineering", "data"]
 ---
 
 # Data Architecture for AI

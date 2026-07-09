@@ -1,7 +1,12 @@
 ---
-title: EA HITL / HOTL / HOOL Interview Questions
-parent: Interviews
-nav_order: 3
+title: "EA HITL / HOTL / HOOL Interview Questions"
+date_created: 2026-06-29
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["interview-prep"]
 ---
 
 # Enterprise Architect Interview — Human Oversight Patterns

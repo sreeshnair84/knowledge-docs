@@ -3,8 +3,10 @@ title: "The Mental Model Encyclopedia"
 date_created: 2026-07-04
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Mental_Model_Encyclopedia.pdf"
+tags: ["ai-usecases"]
 ---
 
 <!-- converted from Mental_Model_Encyclopedia.pdf -->

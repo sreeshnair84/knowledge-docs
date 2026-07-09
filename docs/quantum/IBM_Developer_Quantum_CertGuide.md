@@ -3,8 +3,10 @@ title: "Deep-Dive Study Guide  Exam C1000-171"
 date_created: 2026-07-07
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "IBM_Developer_Quantum_CertGuide.pdf"
+tags: ["quantum"]
 ---
 
 <!-- converted from IBM_Developer_Quantum_CertGuide.pdf -->

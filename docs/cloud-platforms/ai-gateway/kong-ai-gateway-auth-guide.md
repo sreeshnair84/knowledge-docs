@@ -1,7 +1,12 @@
 ---
-title: Kong AI Gateway Auth Guide
-parent: AI Gateway
-nav_order: 2
+title: "Kong AI Gateway Auth Guide"
+date_created: 2026-07-07
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["cloud-platforms", "ai-gateway"]
 ---
 
 # Kong AI Gateway — Authentication Deep Dive

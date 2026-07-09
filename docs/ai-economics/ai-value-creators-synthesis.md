@@ -1,3 +1,14 @@
+---
+title: "AI Value Creators for Agentic AI and Beyond"
+date_created: 2026-07-04
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-economics"]
+---
+
 # AI Value Creators for Agentic AI and Beyond
 *A synthesis for Principal Enterprise Architects, Chief AI Officers, CTOs, Strategy Consultants, AI Platform Teams, and AI Transformation Leaders*
 

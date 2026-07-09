@@ -1,5 +1,12 @@
 ---
-title: EA Frameworks
+title: "EA Frameworks"
+date_created: 2026-06-29
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["enterprise-architecture", "framework"]
 ---
 
 # Enterprise Architecture Frameworks

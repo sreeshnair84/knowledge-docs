@@ -1,5 +1,12 @@
 ---
-title: Evaluation & Quality Gates
+title: "Evaluation & Quality Gates"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["knowledge-engineering", "industry-practices"]
 ---
 
 # Evaluation & Quality Gates

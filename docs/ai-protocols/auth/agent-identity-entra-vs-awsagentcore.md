@@ -1,3 +1,14 @@
+---
+title: "Agent Identity for AI Systems"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
+---
+
 supersedes: "docs/ai-protocols/auth/AgentIdentity_Research_2026.pdf"
 title: "Agent Identity — Microsoft Entra Agent ID vs AWS AgentCore Identity"
 tags: [auth, identity, oauth, entra, aws, agent-identity, multi-cloud]

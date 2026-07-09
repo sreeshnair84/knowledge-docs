@@ -1,7 +1,12 @@
 ---
-title: Workflow Orchestration in the Agentic AI Era
-description: Enterprise research on how Agentic AI fundamentally transforms workflow automation, from deterministic BPM to adaptive AI-native systems
-date: 2026-07-09
+title: "Workflow Orchestration in the Agentic AI Era"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Workflow Orchestration in the Agentic AI Era

@@ -1,6 +1,12 @@
 ---
-title: Executive Summary - Workflow Orchestration in the Agentic AI Era
-date: 2026-07-09
+title: "Executive Summary - Workflow Orchestration in the Agentic AI Era"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Executive Summary: Workflow Orchestration Meets Agentic AI

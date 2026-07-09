@@ -3,8 +3,10 @@ title: "Enterprise Authentication & Identity Propagation for AI Agents — Confi
 date_created: 2026-07-04
 last_reviewed: 2026-07-09
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Part3_Identity_OBO_Sessions.pdf"
+tags: ["ai-protocols", "auth"]
 ---
 
 <!-- converted from Part3_Identity_OBO_Sessions.pdf -->

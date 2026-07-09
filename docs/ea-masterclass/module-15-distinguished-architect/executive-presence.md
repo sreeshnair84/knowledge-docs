@@ -1,6 +1,12 @@
 ---
 title: "Executive Presence, Influence Without Authority & Stakeholder Politics"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ea-masterclass", "module-15-distinguished-architect"]
 ---
 
 # Executive Presence, Influence Without Authority & Stakeholder Politics

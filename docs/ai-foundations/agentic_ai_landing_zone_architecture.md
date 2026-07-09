@@ -1,7 +1,12 @@
 ---
-title: Agentic AI Landing Zone Architecture
-parent: Agentic AI
-nav_order: 2
+title: "Agentic AI Landing Zone Architecture"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-foundations"]
 ---
 
 # AGENTIC AI LANDING ZONE

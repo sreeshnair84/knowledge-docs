@@ -1,6 +1,12 @@
 ---
 title: "Agentic AI Landing Zone: Multi-Agent Reference Architectures"
-date: 2026-07-09
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-foundations"]
 ---
 
 # MULTI-AGENT REFERENCE ARCHITECTURES: Patterns for Production

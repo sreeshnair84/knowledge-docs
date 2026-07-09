@@ -1,5 +1,12 @@
 ---
-title: AIDLC
+title: "AIDLC"
+date_created: 2026-06-29
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-development", "aidlc"]
 ---
 
 # AIDLC — AI-Driven Development Lifecycle

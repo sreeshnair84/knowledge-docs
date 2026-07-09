@@ -1,7 +1,12 @@
 ---
-title: Kong + Entra ID Integration
-parent: AI Gateway
-nav_order: 3
+title: "Kong + Entra ID Integration"
+date_created: 2026-07-07
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["cloud-platforms", "ai-gateway"]
 ---
 
 # Kong AI Gateway — Microsoft Entra ID Integration

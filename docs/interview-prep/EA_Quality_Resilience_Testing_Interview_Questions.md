@@ -1,7 +1,12 @@
 ---
-title: EA Quality, Resilience & Testing Interview Questions
-parent: Interviews
-nav_order: 4
+title: "EA Quality, Resilience & Testing Interview Questions"
+date_created: 2026-06-29
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["interview-prep"]
 ---
 
 # Enterprise Architect Interview — Quality, Resilience & Testing Scenario Question Bank

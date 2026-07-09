@@ -1,6 +1,12 @@
 ---
-title: Reference Architectures - From BPM-First to AI-Native
-date: 2026-07-09
+title: "Reference Architectures - From BPM-First to AI-Native"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Reference Architectures

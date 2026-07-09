@@ -1,5 +1,12 @@
 ---
-title: Consulting Firm AI Platforms
+title: "Consulting Firm AI Platforms"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["knowledge-engineering", "industry-practices"]
 ---
 
 # Consulting Firm AI Knowledge Platforms

@@ -1,5 +1,12 @@
 ---
 title: "Claude Models 2026 — Complete Reference"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 
 # Claude Models 2026 — Complete Reference

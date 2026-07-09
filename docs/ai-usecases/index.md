@@ -1,5 +1,12 @@
 ---
-title: Use Cases
+title: "Use Cases"
+date_created: 2026-07-08
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-usecases"]
 ---
 
 # Use Cases
