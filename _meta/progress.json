@@ -1,6 +1,6 @@
 {
   "started_at": "2026-07-09T13:39:44.907591+00:00",
-  "last_updated": "2026-07-09T13:48:49.012323+00:00",
+  "last_updated": "2026-07-09T13:56:35.388593+00:00",
   "phases": [
     {
       "id": 0,
@@ -25,9 +25,65 @@
       "name": "pdf_conversion",
       "output": null,
       "queued": true,
-      "status": "pending",
-      "completed_at": null,
-      "queue": []
+      "status": "complete",
+      "completed_at": "2026-07-09T13:56:35.388593+00:00",
+      "queue": [
+        {
+          "item": "docs/ai-usecases/eu-bank-ai-copilot-complete.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:55:54.815111+00:00"
+        },
+        {
+          "item": "docs/interview-prep/EY_AI_Architect_Interview_Guide_1.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:55:55.269043+00:00"
+        },
+        {
+          "item": "docs/ai-foundations/AI_Native_Architecture_Evolution_Report.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:55:56.018533+00:00"
+        },
+        {
+          "item": "docs/enterprise-architecture/specialization/APEX_EA_Final.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:56:26.399173+00:00"
+        },
+        {
+          "item": "docs/enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:56:26.830500+00:00"
+        },
+        {
+          "item": "docs/ai-protocols/auth/Part3_Identity_OBO_Sessions.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:56:27.269256+00:00"
+        },
+        {
+          "item": "docs/quantum/IBM_Developer_Quantum_CertGuide.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:56:27.835684+00:00"
+        },
+        {
+          "item": "docs/agentic-systems/platform/ai-platform-factory-runbook-v2.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:56:28.473891+00:00"
+        },
+        {
+          "item": "docs/coding-tools/github-copilot/Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:56:28.810788+00:00"
+        },
+        {
+          "item": "docs/ai-usecases/CEO_Agent_Solution_Blueprint.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:55:56.601532+00:00"
+        },
+        {
+          "item": "docs/ai-usecases/Mental_Model_Encyclopedia.pdf",
+          "status": "done",
+          "completed_at": "2026-07-09T13:55:56.933467+00:00"
+        }
+      ]
     },
     {
       "id": 3,
