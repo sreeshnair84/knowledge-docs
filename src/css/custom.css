@@ -297,20 +297,30 @@ html[data-theme='dark'] .markdown code {
 }
 
 pre {
-  background: #0f172a !important;
+  background: #f8fafc !important;
   border-radius: 8px;
   padding: var(--ifm-pre-padding);
   overflow-x: auto;
-  box-shadow: var(--shadow-md);
-  border: 1px solid #1e293b;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #e2e8f0;
 }
 
 pre code {
   background: transparent !important;
-  color: #e2e8f0 !important;
+  color: #0f172a !important;
   border: none !important;
   padding: 0 !important;
   font-size: 0.9rem;
+}
+
+html[data-theme='dark'] pre {
+  background: #0f172a !important;
+  border-color: #1e293b;
+  box-shadow: var(--shadow-md);
+}
+
+html[data-theme='dark'] pre code {
+  color: #e2e8f0 !important;
 }
 
 .docusaurus-highlight-code-line {
