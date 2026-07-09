@@ -1,21 +1,12 @@
 ---
-title: "From Data Warehouse to"
-date_created: 2026-07-09
-last_reviewed: 2026-07-09
-status: current
-supersedes: ""
-source_type: native-md
-source_file: ""
-tags: ["ai-foundations"]
----
-
-supersedes: "docs/knowledge-engineering/data/AI_Native_Architecture_Evolution_Report.pdf"
-title: "From Data Warehouse to"
+title: "From Data Warehouse to Agent-Native Architecture"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09
 status: current
+supersedes: "docs/knowledge-engineering/data/AI_Native_Architecture_Evolution_Report.pdf"
 source_type: converted-pdf
 source_file: "AI_Native_Architecture_Evolution_Report.pdf"
+tags: ["ai-foundations"]
 ---
 
 <!-- converted from AI_Native_Architecture_Evolution_Report.pdf -->

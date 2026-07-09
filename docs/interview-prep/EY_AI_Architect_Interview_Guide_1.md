@@ -1,21 +1,12 @@
 ---
 title: "EY AI Architect & Consultant — Interview & ECC AI-First Guide"
-date_created: 2026-07-09
-last_reviewed: 2026-07-09
-status: current
-supersedes: ""
-source_type: native-md
-source_file: ""
-tags: ["interview-prep"]
----
-
-supersedes: "docs/interview-prep/EY_AI_Architect_Interview_Guide.pdf"
-title: "EY AI Architect & Consultant — Interview & ECC AI-First Guide"
 date_created: 2026-06-29
 last_reviewed: 2026-07-09
 status: current
+supersedes: "docs/interview-prep/EY_AI_Architect_Interview_Guide.pdf"
 source_type: converted-pdf
 source_file: "EY_AI_Architect_Interview_Guide_1.pdf"
+tags: ["interview-prep"]
 ---
 
 <!-- converted from EY_AI_Architect_Interview_Guide_1.pdf -->
