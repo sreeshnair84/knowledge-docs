@@ -1,0 +1,69 @@
+{
+  "started_at": "2026-07-09T13:39:44.907591+00:00",
+  "last_updated": "2026-07-09T13:41:46.341255+00:00",
+  "phases": [
+    {
+      "id": 0,
+      "name": "inventory",
+      "output": "_meta/inventory.json",
+      "queued": false,
+      "status": "complete",
+      "completed_at": "2026-07-09T13:41:46.341255+00:00",
+      "queue": null
+    },
+    {
+      "id": 1,
+      "name": "duplicate_detection",
+      "output": "_meta/duplicate-clusters.md",
+      "queued": false,
+      "status": "pending",
+      "completed_at": null,
+      "queue": null
+    },
+    {
+      "id": 2,
+      "name": "pdf_conversion",
+      "output": null,
+      "queued": true,
+      "status": "pending",
+      "completed_at": null,
+      "queue": []
+    },
+    {
+      "id": 3,
+      "name": "merge_retire",
+      "output": "_meta/merge-log.md",
+      "queued": true,
+      "status": "pending",
+      "completed_at": null,
+      "queue": []
+    },
+    {
+      "id": 4,
+      "name": "frontmatter_taxonomy",
+      "output": "_meta/taxonomy-changes.md",
+      "queued": true,
+      "status": "pending",
+      "completed_at": null,
+      "queue": []
+    },
+    {
+      "id": 5,
+      "name": "root_cleanup",
+      "output": null,
+      "queued": false,
+      "status": "pending",
+      "completed_at": null,
+      "queue": null
+    },
+    {
+      "id": 6,
+      "name": "validation",
+      "output": "_meta/cleanup-summary.md",
+      "queued": false,
+      "status": "pending",
+      "completed_at": null,
+      "queue": null
+    }
+  ]
+}
