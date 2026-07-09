@@ -51,12 +51,14 @@ All 13 topic sections follow the same pattern: `docs/<section>/index.md` is the 
 
 ### New markdown guide
 1. Drop the `.md` file into the relevant `docs/<section>/` folder.
-2. Add a front matter block at the top:
+2. Add a front matter block at the top — **always include `date:`**:
    ```yaml
    ---
    title: Page Title
+   date: YYYY-MM-DD
    ---
    ```
+   Use today's actual date (ISO 8601 format). The `date:` field is displayed by the `git-revision-date-localized` plugin and serves as the canonical creation date for the page.
 3. Add the file to `nav:` in `mkdocs.yml` under the correct section.
 
 ### New PDF / DOCX / HTML / JSX
@@ -95,7 +97,13 @@ All 13 topic sections follow the same pattern: `docs/<section>/index.md` is the 
 3. Non-markdown files are auto-excluded from nav via `not_in_nav` in `mkdocs.yml` — no extra config needed.
 
 ### New section
-1. Create `docs/<section>/index.md` with `title:` front matter.
+1. Create `docs/<section>/index.md` with `title:` and `date:` front matter:
+   ```yaml
+   ---
+   title: Section Title
+   date: YYYY-MM-DD
+   ---
+   ```
 2. Add it to `nav:` in `mkdocs.yml` with at minimum an `Overview:` entry.
 
 ## Key Design Decisions
