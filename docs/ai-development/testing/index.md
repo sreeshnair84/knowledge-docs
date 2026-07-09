@@ -6,6 +6,8 @@ title: Agent Testing & Evaluation
 
 Frameworks, guides, and tools for evaluating AI agent systems — covering evaluation methodology, benchmarking, monitoring, and quality assurance for production agentic AI.
 
+> **See also:** For regulatory compliance and evaluation in EU banking context, see [EU Banking AI Evaluation Compliance Guide](../../ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md). For knowledge system evaluation and quality gates, see [Evaluation & Quality Gates](../../knowledge-engineering/industry-practices/evaluation.md). For agentic application evaluation, see [Agentic UI Evaluation Framework](../../agentic-ui/evaluation-framework.md).
+
 ---
 
 ## Markdown Guides

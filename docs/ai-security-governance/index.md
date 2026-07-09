@@ -6,6 +6,8 @@ title: AI Security & Governance
 
 > **Current as of July 2026.** This section covers securing enterprise AI systems across identity, protocol, policy, observability, regulatory compliance, and organizational maturity.
 
+> **See also:** For CISA role, security architecture practice, and security domains, see [Enterprise Cyber Security Architect](../cybersec-architect/index.md). For security at the agentic UI/application layer, see [Agentic UI Security & DevSecOps](../agentic-ui/security-architecture.md) and [DevSecOps for Agentic Applications](../agentic-ui/devsecops.md). For constitutional AI and alignment security, see [Sovereign Constitutional AI](../sovereign-constitutional-ai/index.md).
+
 ---
 
 ## What's in This Section

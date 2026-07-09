@@ -6,6 +6,8 @@ title: MCP
 
 Deep research and architecture guides for MCP — the open protocol for connecting AI models to tools and data.
 
+> **See also:** For MCP server development in Python/TypeScript, see [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) (Coding Tools). For enterprise protocol adoption and A2A integration, see [MCP & A2A Protocol Deep Dive](../../coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md) (Enterprise AI Architect).
+
 ---
 
 ## Markdown Guides
