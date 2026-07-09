@@ -13,7 +13,23 @@ const sidebars = {
       label: 'AI Foundations',
       items: [
         'ai-foundations/index',
-        'ai-foundations/agentic_ai_landing_zone_architecture',
+        {
+          type: 'category',
+          label: 'Agentic AI Landing Zone (Complete Platform)',
+          items: [
+            'ai-foundations/agentic_ai_landing_zone_architecture',
+            'ai-foundations/agentic_ai_landing_zone_business_layer',
+            'ai-foundations/agentic_ai_landing_zone_eu_ai_act',
+            'ai-foundations/agentic_ai_landing_zone_playbooks',
+            'ai-foundations/agentic_ai_landing_zone_platform_layer',
+            'ai-foundations/agentic_ai_landing_zone_context_engineering',
+            'ai-foundations/agentic_ai_landing_zone_evaluation',
+            'ai-foundations/agentic_ai_landing_zone_multiagent',
+            'ai-foundations/agentic_ai_landing_zone_visual_guide',
+            'ai-foundations/agentic_ai_landing_zone_memory_architecture',
+            'ai-foundations/agentic_ai_landing_zone_tier3_complete',
+          ],
+        },
       ],
     },
     {
