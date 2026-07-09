@@ -115,183 +115,49 @@ extra:
 
 nav:
   - Home: index.md
+
+  # ─── FOUNDATIONS & BASICS ───────────────────────────
+  - About: about.md
   - AI Foundations:
     - Overview: ai-foundations/index.md
     - Agentic AI Landing Zone Architecture: ai-foundations/agentic_ai_landing_zone_architecture.md
+
+  # ─── CORE AI SYSTEMS ───────────────────────────────
   - Agentic AI:
     - Overview: agentic-systems/index.md
-    - Platform: agentic-systems/platform/index.md
-    - Memory: agentic-systems/memory/index.md
-    - Agent Skills: agentic-systems/skill/index.md
     - Configuration: agentic-systems/config/index.md
     - Harness: agentic-systems/harness/index.md
-  - Security:
+    - Memory: agentic-systems/memory/index.md
+    - Platform: agentic-systems/platform/index.md
+    - Agent Skills: agentic-systems/skill/index.md
+  - Agentic UI & Applications:
+    - Overview: agentic-ui/index.md
+    - Agent UX Patterns: agentic-ui/agent-ux-patterns.md
+    - Anti-pattern Catalog: agentic-ui/anti-patterns.md
+    - Application Lifecycle: agentic-ui/application-lifecycle.md
+    - Context Engineering: agentic-ui/context-engineering.md
+    - Decision Frameworks: agentic-ui/decision-frameworks.md
+    - DevSecOps: agentic-ui/devsecops.md
+    - Enterprise Reference Architecture: agentic-ui/enterprise-reference-architecture.md
+    - Evaluation Framework: agentic-ui/evaluation-framework.md
+    - Evolution of Human-AI Interfaces: agentic-ui/evolution-human-ai-interfaces.md
+    - Future Outlook 2026–2030: agentic-ui/future-outlook.md
+    - Governance: agentic-ui/governance.md
+    - AGUI Standards Landscape: agentic-ui/agui-standards-landscape.md
+    - Identity & Auth Architecture: agentic-ui/identity-auth-architecture.md
+    - Observability: agentic-ui/observability.md
+    - Performance Engineering: agentic-ui/performance-engineering.md
+    - Reliability Engineering: agentic-ui/reliability-engineering.md
+    - Responsible AI: agentic-ui/responsible-ai.md
+    - Scalability Engineering: agentic-ui/scalability-engineering.md
+    - Security Architecture: agentic-ui/security-architecture.md
+
+  # ─── SECURITY, GOVERNANCE & COMPLIANCE ─────────────
+  - AI Security & Governance:
     - Overview: ai-security-governance/index.md
     - AI Security: ai-security-governance/security/index.md
     - DeepMind Control: ai-security-governance/deep-mind/index.md
     - Policy & Authorization: ai-security-governance/policy/index.md
-  - Coding Tools:
-    - Overview: coding-tools/index.md
-    - Claude:
-      - Overview: coding-tools/claude/index.md
-      - Models 2026: coding-tools/claude/claude-models-2026.md
-      - API Mastery: coding-tools/claude/claude-api-mastery.md
-      - Claude Code CLI: coding-tools/claude/claude-code-complete-2026.md
-      - Agent SDK Production: coding-tools/claude/claude-agent-sdk-production.md
-      - Prompt Engineering: coding-tools/claude/prompt-engineering-claude-4.md
-      - Enterprise Deployment: coding-tools/claude/claude-enterprise-2026.md
-      - Constitutional AI & Safety: coding-tools/claude/constitutional-ai-safety-2026.md
-      - MCP Deep Guide: coding-tools/claude/mcp-deep-guide.md
-      - CCA-F Exam Prep: coding-tools/claude/ccaf-exam-prep-complete.md
-      - Ruflo Agentic AI Guide: coding-tools/claude/ruflo-agentic-ai-guide.md
-    - GitHub Copilot:
-      - Overview: coding-tools/github-copilot/index.md
-      - Zero to Hero: coding-tools/github-copilot/github-copilot-zero-to-hero.md
-      - Git & GitHub Platform Engineering: coding-tools/github-copilot/git-github-platform-engineering-handbook.md
-    - Code Review:
-      - Overview: coding-tools/code-review/index.md
-    - Enterprise AI Architect:
-      - Overview: coding-tools/enterprise-ai-architect/index.md
-      - Foundations: coding-tools/enterprise-ai-architect/enterprise-ai-architect-foundations.md
-      - Architecture Patterns: coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md
-      - Governance & Compliance: coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md
-      - Skills Assessment: coding-tools/enterprise-ai-architect/enterprise-ai-skills-assessment.md
-      - Agentic AI Security & Identity: coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md
-      - Agent Interoperability & Orchestration: coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md
-      - Machine-Readable EA: coding-tools/enterprise-ai-architect/machine-readable-ea.md
-      - Security Architecture & Guardrails: coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md
-      - Reliability, Observability & Governance: coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md
-      - AI Harness & Orchestration: coding-tools/enterprise-ai-architect/ai-harness-architecture-orchestration.md
-      - MCP & A2A Deep Dive: coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md
-      - Memory & Planning Architecture: coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md
-      - Communication, Identity & Gateway: coding-tools/enterprise-ai-architect/agent-communication-identity-gateway.md
-      - Reference Architectures & Checklists: coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md
-  - AI Protocols:
-    - Overview: ai-protocols/index.md
-    - Auth & Identity:
-      - Overview: ai-protocols/auth/index.md
-      - Standards & Architecture: ai-protocols/auth/entra-3lo-agent-auth-standards-architecture.md
-      - Implementation Guide: ai-protocols/auth/entra-3lo-agent-auth-implementation.md
-      - Security Review: ai-protocols/auth/entra-3lo-agent-auth-security-review.md
-      - Multi-Agent & Compliance: ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance.md
-      - Tool Authentication: ai-protocols/auth/tool-authentication-connectors.md
-      - Entra vs AWS AgentCore: ai-protocols/auth/agent-identity-entra-vs-awsagentcore.md
-    - Protocol Standards: ai-protocols/protocol/index.md
-    - MCP:
-      - Overview: ai-protocols/mcp/index.md
-      - MCP Deep Research 2026: ai-protocols/mcp/MCP_Deep_Research_2026.md
-  - Cloud Platforms:
-    - Overview: cloud-platforms/index.md
-    - AWS AgentCore:
-      - Overview: cloud-platforms/aws/index.md
-      - Code Interpreter Architecture: cloud-platforms/aws/bedrock-agentcore-code-interpreter-architecture.md
-    - Azure: cloud-platforms/azure/index.md
-    - AI Gateway:
-      - Overview: cloud-platforms/ai-gateway/index.md
-      - Kong AI Gateway Guide: cloud-platforms/ai-gateway/kong-ai-gateway-guide.md
-      - Kong Auth Guide: cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md
-      - Kong + Entra ID: cloud-platforms/ai-gateway/kong-entra-id-integration.md
-    - Kubernetes: cloud-platforms/kubernetes/index.md
-    - Infrastructure as Code:
-      - Overview: cloud-platforms/iac/index.md
-      - Terraform:
-        - Overview: cloud-platforms/iac/terraform/index.md
-        - Terraform Mastery Guide: cloud-platforms/iac/terraform/terraform-mastery-guide.md
-        - AI-Assisted IaC: cloud-platforms/iac/terraform/ai-assisted-iac-mastery.md
-  - Knowledge:
-    - Overview: knowledge-engineering/index.md
-    - Data Architecture: knowledge-engineering/data/index.md
-    - Knowledge & RAG: knowledge-engineering/knowledge/index.md
-    - Industry Knowledge Systems:
-      - Overview: knowledge-engineering/industry-practices/index.md
-      - How Tech Companies Serve Knowledge: knowledge-engineering/industry-practices/tech-companies.md
-      - Consulting Firm AI Platforms: knowledge-engineering/industry-practices/consulting-firms.md
-      - Governance & Responsible AI: knowledge-engineering/industry-practices/governance-rai.md
-      - Grounding Architectures: knowledge-engineering/industry-practices/grounding.md
-      - Evaluation & Quality Gates: knowledge-engineering/industry-practices/evaluation.md
-  - Enterprise Architecture:
-    - Overview: enterprise-architecture/index.md
-    - Strategy: enterprise-architecture/strategy/index.md
-    - Frameworks: enterprise-architecture/framework/index.md
-    - Processes:
-      - Overview: enterprise-architecture/process/index.md
-      - AI Solution Lifecycle Deliverables: enterprise-architecture/process/ai-solution-lifecycle-deliverables.md
-    - Best Practices: enterprise-architecture/best-practices/index.md
-    - ARB:
-      - Overview: enterprise-architecture/arb/index.md
-      - ARB Reference Library:
-        - Overview: enterprise-architecture/architectural-review-board/index.md
-    - Specialization: enterprise-architecture/specialization/index.md
-  - EA Masterclass:
-    - Overview: ea-masterclass/index.md
-    - Module 1 — EA Foundations: ea-masterclass/module-01-ea-foundations/index.md
-    - Module 2 — Business Acumen: ea-masterclass/module-02-business-acumen/index.md
-    - Module 3 — Proposal Lifecycle: ea-masterclass/module-03-proposal-lifecycle/index.md
-    - Module 4 — Technology Investment: ea-masterclass/module-04-technology-investment/index.md
-    - Module 5 — AI Investment Strategy: ea-masterclass/module-05-ai-investment-strategy/index.md
-    - Module 6 — Business Case Development: ea-masterclass/module-06-business-case/index.md
-    - Module 7 — Proposal Writing: ea-masterclass/module-07-proposal-writing/index.md
-    - Module 8 — Financial Literacy: ea-masterclass/module-08-financial-literacy/index.md
-    - Module 9 — Enterprise AI Architecture: ea-masterclass/module-09-enterprise-ai-architecture/index.md
-    - Module 10 — Enterprise Governance: ea-masterclass/module-10-governance/index.md
-    - Module 11 — Executive Communication: ea-masterclass/module-11-executive-communication/index.md
-    - Module 12 — AI Consulting Engagement: ea-masterclass/module-12-ai-consulting/index.md
-    - Module 13 — Case Studies:
-      - Overview: ea-masterclass/module-13-case-studies/index.md
-      - Global Bank: ea-masterclass/module-13-case-studies/global-bank.md
-      - Healthcare Provider: ea-masterclass/module-13-case-studies/healthcare.md
-      - Manufacturing Enterprise: ea-masterclass/module-13-case-studies/manufacturing.md
-      - Retail Organization: ea-masterclass/module-13-case-studies/retail.md
-      - Telecom Operator: ea-masterclass/module-13-case-studies/telecom.md
-      - Government Agency: ea-masterclass/module-13-case-studies/government.md
-    - Module 14 — Mentoring & Mastery: ea-masterclass/module-14-mentoring/index.md
-    - Module 15 — Distinguished Architect Mindset:
-      - Overview: ea-masterclass/module-15-distinguished-architect/index.md
-      - Executive Presence & Influence: ea-masterclass/module-15-distinguished-architect/executive-presence.md
-      - Strategic Thinking & Technology Bets: ea-masterclass/module-15-distinguished-architect/strategic-thinking.md
-      - Architecture Leadership & CTO Readiness: ea-masterclass/module-15-distinguished-architect/architecture-leadership.md
-      - Fortune 100 Modernisation Playbook: ea-masterclass/module-15-distinguished-architect/fortune100-modernisation.md
-    - Deliverable Templates:
-      - All Templates: ea-masterclass/deliverables/index.md
-      - Business Case Templates: ea-masterclass/deliverables/business-case-templates.md
-      - Governance Templates: ea-masterclass/deliverables/governance-templates.md
-      - Consulting Templates: ea-masterclass/deliverables/consulting-templates.md
-    - Real-Life Transcripts:
-      - Overview: ea-masterclass/transcripts/index.md
-      - Bank Discovery Workshop: ea-masterclass/transcripts/bank-discovery-workshop.md
-      - Healthcare Exec Presentation: ea-masterclass/transcripts/healthcare-executive-presentation.md
-      - Manufacturing ARB Review: ea-masterclass/transcripts/manufacturing-arb-review.md
-      - Retail Proposal Negotiation: ea-masterclass/transcripts/retail-proposal-negotiation.md
-  - AI Development:
-    - Overview: ai-development/index.md
-    - AIDLC: ai-development/aidlc/index.md
-    - Testing & Evaluation:
-      - Overview: ai-development/testing/index.md
-      - AI Agent Evaluation Framework: ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md
-  - AI Economics:
-    - Overview: ai-economics/index.md
-    - AI Value Creators Synthesis: ai-economics/ai-value-creators-synthesis.md
-    - AI Coding Agents 2026: ai-economics/ai-coding-agents-2026.md
-  - Use Cases:
-    - Overview: ai-usecases/index.md
-    - EU Banking AI Evaluation Compliance Guide: ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
-  - AI-First Enterprise:
-    - Overview: ai-first-enterprise/index.md
-    - AI-First to AI-Native Journey: ai-first-enterprise/ai-first-to-ai-native.md
-  - Sovereign & Constitutional AI:
-    - Overview: sovereign-constitutional-ai/index.md
-    - Sovereign AI Foundations: sovereign-constitutional-ai/sovereign-ai-foundations.md
-    - Constitutional AI Engineering: sovereign-constitutional-ai/constitutional-ai-engineering.md
-    - Responsible AI Operating Model: sovereign-constitutional-ai/rai-operating-model.md
-    - AI Alignment & Control: sovereign-constitutional-ai/ai-alignment-control.md
-    - AI Governance Operating Model: sovereign-constitutional-ai/ai-governance-operating-model.md
-    - AI Risk Taxonomy: sovereign-constitutional-ai/ai-risk-taxonomy.md
-    - AI Safety Framework: sovereign-constitutional-ai/ai-safety-framework.md
-    - AI Assurance & Audit Architecture: sovereign-constitutional-ai/ai-assurance-audit-architecture.md
-    - Constitutional Agent Architecture: sovereign-constitutional-ai/constitutional-agent-architecture.md
-    - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
-    - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
-    - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
   - Enterprise Cyber Security Architect:
     - Overview: cybersec-architect/index.md
     - Part 1 — Cyber Security Evolution: cybersec-architect/01-evolution.md
@@ -310,39 +176,190 @@ nav:
     - Part 14 — Industry Case Studies: cybersec-architect/14-case-studies.md
     - Part 15 — Emerging Trends 2026–2030: cybersec-architect/15-emerging-trends.md
     - Use Case Transcript: cybersec-architect/usecase-transcript.md
-  - Agentic UI & Applications:
-    - Overview: agentic-ui/index.md
-    - Evolution of Human-AI Interfaces: agentic-ui/evolution-human-ai-interfaces.md
-    - AGUI Standards Landscape: agentic-ui/agui-standards-landscape.md
-    - Enterprise Reference Architecture: agentic-ui/enterprise-reference-architecture.md
-    - Application Lifecycle: agentic-ui/application-lifecycle.md
-    - Reliability Engineering: agentic-ui/reliability-engineering.md
-    - Scalability Engineering: agentic-ui/scalability-engineering.md
-    - Performance Engineering: agentic-ui/performance-engineering.md
-    - Security Architecture: agentic-ui/security-architecture.md
-    - Context Engineering: agentic-ui/context-engineering.md
-    - Agent UX Patterns: agentic-ui/agent-ux-patterns.md
-    - Governance: agentic-ui/governance.md
-    - Responsible AI: agentic-ui/responsible-ai.md
-    - Evaluation Framework: agentic-ui/evaluation-framework.md
-    - Observability: agentic-ui/observability.md
-    - DevSecOps: agentic-ui/devsecops.md
-    - Anti-pattern Catalog: agentic-ui/anti-patterns.md
-    - Industry Reference Architectures: agentic-ui/industry-reference-architectures.md
-    - Decision Frameworks: agentic-ui/decision-frameworks.md
-    - Future Outlook 2026–2030: agentic-ui/future-outlook.md
-    - Identity & Auth Architecture: agentic-ui/identity-auth-architecture.md
+  - Sovereign & Constitutional AI:
+    - Overview: sovereign-constitutional-ai/index.md
+    - AI Alignment & Control: sovereign-constitutional-ai/ai-alignment-control.md
+    - AI Assurance & Audit Architecture: sovereign-constitutional-ai/ai-assurance-audit-architecture.md
+    - AI Governance Operating Model: sovereign-constitutional-ai/ai-governance-operating-model.md
+    - AI Risk Taxonomy: sovereign-constitutional-ai/ai-risk-taxonomy.md
+    - AI Safety Framework: sovereign-constitutional-ai/ai-safety-framework.md
+    - Constitutional Agent Architecture: sovereign-constitutional-ai/constitutional-agent-architecture.md
+    - Constitutional AI Engineering: sovereign-constitutional-ai/constitutional-ai-engineering.md
+    - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
+    - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
+    - Responsible AI Operating Model: sovereign-constitutional-ai/rai-operating-model.md
+    - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
+    - Sovereign AI Foundations: sovereign-constitutional-ai/sovereign-ai-foundations.md
+
+  # ─── ARCHITECTURE & STRATEGY ───────────────────────
+  - AI Economics:
+    - Overview: ai-economics/index.md
+    - AI Coding Agents 2026: ai-economics/ai-coding-agents-2026.md
+    - AI Value Creators Synthesis: ai-economics/ai-value-creators-synthesis.md
+  - AI-First Enterprise:
+    - Overview: ai-first-enterprise/index.md
+    - AI-First to AI-Native Journey: ai-first-enterprise/ai-first-to-ai-native.md
+  - Enterprise Architecture:
+    - Overview: enterprise-architecture/index.md
+    - ARB:
+      - Overview: enterprise-architecture/arb/index.md
+      - ARB Reference Library:
+        - Overview: enterprise-architecture/architectural-review-board/index.md
+    - Best Practices: enterprise-architecture/best-practices/index.md
+    - Frameworks: enterprise-architecture/framework/index.md
+    - Processes:
+      - Overview: enterprise-architecture/process/index.md
+      - AI Solution Lifecycle Deliverables: enterprise-architecture/process/ai-solution-lifecycle-deliverables.md
+    - Specialization: enterprise-architecture/specialization/index.md
+    - Strategy: enterprise-architecture/strategy/index.md
+  - EA Masterclass:
+    - Overview: ea-masterclass/index.md
+    - Module 1 — EA Foundations: ea-masterclass/module-01-ea-foundations/index.md
+    - Module 2 — Business Acumen: ea-masterclass/module-02-business-acumen/index.md
+    - Module 3 — Proposal Lifecycle: ea-masterclass/module-03-proposal-lifecycle/index.md
+    - Module 4 — Technology Investment: ea-masterclass/module-04-technology-investment/index.md
+    - Module 5 — AI Investment Strategy: ea-masterclass/module-05-ai-investment-strategy/index.md
+    - Module 6 — Business Case Development: ea-masterclass/module-06-business-case/index.md
+    - Module 7 — Proposal Writing: ea-masterclass/module-07-proposal-writing/index.md
+    - Module 8 — Financial Literacy: ea-masterclass/module-08-financial-literacy/index.md
+    - Module 9 — Enterprise AI Architecture: ea-masterclass/module-09-enterprise-ai-architecture/index.md
+    - Module 10 — Enterprise Governance: ea-masterclass/module-10-governance/index.md
+    - Module 11 — Executive Communication: ea-masterclass/module-11-executive-communication/index.md
+    - Module 12 — AI Consulting Engagement: ea-masterclass/module-12-ai-consulting/index.md
+    - Module 13 — Case Studies:
+      - Overview: ea-masterclass/module-13-case-studies/index.md
+      - Global Bank: ea-masterclass/module-13-case-studies/global-bank.md
+      - Government Agency: ea-masterclass/module-13-case-studies/government.md
+      - Healthcare Provider: ea-masterclass/module-13-case-studies/healthcare.md
+      - Manufacturing Enterprise: ea-masterclass/module-13-case-studies/manufacturing.md
+      - Retail Organization: ea-masterclass/module-13-case-studies/retail.md
+      - Telecom Operator: ea-masterclass/module-13-case-studies/telecom.md
+    - Module 14 — Mentoring & Mastery: ea-masterclass/module-14-mentoring/index.md
+    - Module 15 — Distinguished Architect Mindset:
+      - Overview: ea-masterclass/module-15-distinguished-architect/index.md
+      - Architecture Leadership & CTO Readiness: ea-masterclass/module-15-distinguished-architect/architecture-leadership.md
+      - Executive Presence & Influence: ea-masterclass/module-15-distinguished-architect/executive-presence.md
+      - Fortune 100 Modernisation Playbook: ea-masterclass/module-15-distinguished-architect/fortune100-modernisation.md
+      - Strategic Thinking & Technology Bets: ea-masterclass/module-15-distinguished-architect/strategic-thinking.md
+    - Deliverable Templates:
+      - All Templates: ea-masterclass/deliverables/index.md
+      - Business Case Templates: ea-masterclass/deliverables/business-case-templates.md
+      - Consulting Templates: ea-masterclass/deliverables/consulting-templates.md
+      - Governance Templates: ea-masterclass/deliverables/governance-templates.md
+    - Real-Life Transcripts:
+      - Overview: ea-masterclass/transcripts/index.md
+      - Bank Discovery Workshop: ea-masterclass/transcripts/bank-discovery-workshop.md
+      - Healthcare Exec Presentation: ea-masterclass/transcripts/healthcare-executive-presentation.md
+      - Manufacturing ARB Review: ea-masterclass/transcripts/manufacturing-arb-review.md
+      - Retail Proposal Negotiation: ea-masterclass/transcripts/retail-proposal-negotiation.md
+
+  # ─── DEVELOPMENT & ENGINEERING ─────────────────────
+  - AI Development:
+    - Overview: ai-development/index.md
+    - AIDLC: ai-development/aidlc/index.md
+    - Testing & Evaluation:
+      - Overview: ai-development/testing/index.md
+      - AI Agent Evaluation Framework: ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md
+  - Coding Tools:
+    - Overview: coding-tools/index.md
+    - Claude:
+      - Overview: coding-tools/claude/index.md
+      - API Mastery: coding-tools/claude/claude-api-mastery.md
+      - CCA-F Exam Prep: coding-tools/claude/ccaf-exam-prep-complete.md
+      - Claude Code CLI: coding-tools/claude/claude-code-complete-2026.md
+      - Constitutional AI & Safety: coding-tools/claude/constitutional-ai-safety-2026.md
+      - Enterprise Deployment: coding-tools/claude/claude-enterprise-2026.md
+      - Agent SDK Production: coding-tools/claude/claude-agent-sdk-production.md
+      - MCP Deep Guide: coding-tools/claude/mcp-deep-guide.md
+      - Models 2026: coding-tools/claude/claude-models-2026.md
+      - Prompt Engineering: coding-tools/claude/prompt-engineering-claude-4.md
+      - Ruflo Agentic AI Guide: coding-tools/claude/ruflo-agentic-ai-guide.md
+    - Code Review:
+      - Overview: coding-tools/code-review/index.md
+    - Enterprise AI Architect:
+      - Overview: coding-tools/enterprise-ai-architect/index.md
+      - Agent Communication, Identity & Gateway: coding-tools/enterprise-ai-architect/agent-communication-identity-gateway.md
+      - Agent Interoperability & Orchestration: coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md
+      - Agent Memory & Planning Architecture: coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md
+      - Agentic AI Reliability, Observability & Governance: coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md
+      - Agentic AI Security & Identity: coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md
+      - Agentic AI Security Architecture & Guardrails: coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md
+      - AI Harness & Orchestration: coding-tools/enterprise-ai-architect/ai-harness-architecture-orchestration.md
+      - Architecture Patterns: coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md
+      - Foundations: coding-tools/enterprise-ai-architect/enterprise-ai-architect-foundations.md
+      - Governance & Compliance: coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md
+      - Machine-Readable EA: coding-tools/enterprise-ai-architect/machine-readable-ea.md
+      - MCP & A2A Protocol Deep Dive: coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md
+      - Reference Architectures & Checklists: coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md
+      - Skills Assessment: coding-tools/enterprise-ai-architect/enterprise-ai-skills-assessment.md
+    - GitHub Copilot:
+      - Overview: coding-tools/github-copilot/index.md
+      - Git & GitHub Platform Engineering: coding-tools/github-copilot/git-github-platform-engineering-handbook.md
+      - Zero to Hero: coding-tools/github-copilot/github-copilot-zero-to-hero.md
+
+  # ─── INFRASTRUCTURE & PLATFORMS ────────────────────
+  - AI Protocols:
+    - Overview: ai-protocols/index.md
+    - Auth & Identity:
+      - Overview: ai-protocols/auth/index.md
+      - Entra vs AWS AgentCore: ai-protocols/auth/agent-identity-entra-vs-awsagentcore.md
+      - EntraID 3LO Agent Auth — Implementation: ai-protocols/auth/entra-3lo-agent-auth-implementation.md
+      - EntraID 3LO Agent Auth — Multi-Agent & Compliance: ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance.md
+      - EntraID 3LO Agent Auth — Security Review: ai-protocols/auth/entra-3lo-agent-auth-security-review.md
+      - EntraID 3LO Agent Auth — Standards & Architecture: ai-protocols/auth/entra-3lo-agent-auth-standards-architecture.md
+      - Tool Authentication: ai-protocols/auth/tool-authentication-connectors.md
+    - MCP:
+      - Overview: ai-protocols/mcp/index.md
+      - MCP Deep Research 2026: ai-protocols/mcp/MCP_Deep_Research_2026.md
+    - Protocol Standards: ai-protocols/protocol/index.md
+  - Cloud Platforms:
+    - Overview: cloud-platforms/index.md
+    - AI Gateway:
+      - Overview: cloud-platforms/ai-gateway/index.md
+      - Kong AI Gateway Auth Guide: cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md
+      - Kong AI Gateway Guide: cloud-platforms/ai-gateway/kong-ai-gateway-guide.md
+      - Kong + Entra ID: cloud-platforms/ai-gateway/kong-entra-id-integration.md
+    - AWS AgentCore:
+      - Overview: cloud-platforms/aws/index.md
+      - Code Interpreter Architecture: cloud-platforms/aws/bedrock-agentcore-code-interpreter-architecture.md
+    - Azure: cloud-platforms/azure/index.md
+    - Infrastructure as Code:
+      - Overview: cloud-platforms/iac/index.md
+      - Terraform:
+        - Overview: cloud-platforms/iac/terraform/index.md
+        - AI-Assisted IaC: cloud-platforms/iac/terraform/ai-assisted-iac-mastery.md
+        - Terraform Mastery Guide: cloud-platforms/iac/terraform/terraform-mastery-guide.md
+    - Kubernetes: cloud-platforms/kubernetes/index.md
+
+  # ─── KNOWLEDGE & DATA ──────────────────────────────
+  - Knowledge Engineering:
+    - Overview: knowledge-engineering/index.md
+    - Data Architecture: knowledge-engineering/data/index.md
+    - Industry Knowledge Systems:
+      - Overview: knowledge-engineering/industry-practices/index.md
+      - Consulting Firm AI Platforms: knowledge-engineering/industry-practices/consulting-firms.md
+      - Evaluation & Quality Gates: knowledge-engineering/industry-practices/evaluation.md
+      - Governance & Responsible AI: knowledge-engineering/industry-practices/governance-rai.md
+      - Grounding Architectures: knowledge-engineering/industry-practices/grounding.md
+      - How Tech Companies Serve Knowledge: knowledge-engineering/industry-practices/tech-companies.md
+    - Knowledge & RAG: knowledge-engineering/knowledge/index.md
+
+  # ─── BUSINESS & USE CASES ──────────────────────────
+  - Use Cases:
+    - Overview: ai-usecases/index.md
+    - EU Banking AI Evaluation Compliance Guide: ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
+
+  # ─── LEARNING & PROFESSIONAL DEVELOPMENT ─────────
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md
-    - Enterprise Architect in the Age of AI: interview-prep/Enterprise_Architect_in_the_Age_of_AI.md
     - EA Artifacts & Metrics — Real-World Examples: interview-prep/ea-ai-artifacts-and-metrics.md
-    - EA Soft Skills and Behaviors: interview-prep/EA_Soft_Skills_and_Behaviors.md
-    - EA Senior Interview Questions: interview-prep/EA_Senior_Interview_Questions.md
-    - EA Quality Resilience Testing Interview Questions: interview-prep/EA_Quality_Resilience_Testing_Interview_Questions.md
     - EA HITL HOTL HOOL Interview Questions: interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions.md
-  - Soft Skills: soft-skills/index.md
+    - EA Quality Resilience Testing Interview Questions: interview-prep/EA_Quality_Resilience_Testing_Interview_Questions.md
+    - EA Senior Interview Questions: interview-prep/EA_Senior_Interview_Questions.md
+    - EA Soft Skills and Behaviors: interview-prep/EA_Soft_Skills_and_Behaviors.md
+    - Enterprise Architect in the Age of AI: interview-prep/Enterprise_Architect_in_the_Age_of_AI.md
   - Quantum AI:
     - Overview: quantum/index.md
     - Zero to Mastery: quantum/zero-to-mastery.md
-  - About: about.md
+  - Soft Skills: soft-skills/index.md
