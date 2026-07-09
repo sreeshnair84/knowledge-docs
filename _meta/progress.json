@@ -1,6 +1,6 @@
 {
   "started_at": "2026-07-09T13:39:44.907591+00:00",
-  "last_updated": "2026-07-09T13:41:46.341255+00:00",
+  "last_updated": "2026-07-09T13:48:49.012323+00:00",
   "phases": [
     {
       "id": 0,
@@ -16,8 +16,8 @@
       "name": "duplicate_detection",
       "output": "_meta/duplicate-clusters.md",
       "queued": false,
-      "status": "pending",
-      "completed_at": null,
+      "status": "complete",
+      "completed_at": "2026-07-09T13:48:49.012323+00:00",
       "queue": null
     },
     {
@@ -34,9 +34,120 @@
       "name": "merge_retire",
       "output": "_meta/merge-log.md",
       "queued": true,
-      "status": "pending",
+      "status": "in_progress",
       "completed_at": null,
-      "queue": []
+      "queue": [
+        {
+          "item": "cluster_001",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_002",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_003",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_004",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_005",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_006",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_007",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_008",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_009",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_010",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_011",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_012",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_013",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_014",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_015",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_016",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_017",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_018",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_019",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_020",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_021",
+          "status": "pending",
+          "completed_at": null
+        },
+        {
+          "item": "cluster_022",
+          "status": "pending",
+          "completed_at": null
+        }
+      ]
     },
     {
       "id": 4,
