@@ -46,5 +46,5 @@ Guides and tools for understanding, optimising, and governing the cost of AI sys
 
 <details>
 <summary>Cloud Cost Comparison (Excel)</summary>
-<p><a href="Cloud_Cost_Comparison.xlsx" download>Download Cloud Cost Comparison ↓</a></p>
+<p><a href="pathname://Cloud_Cost_Comparison.xlsx" download>Download Cloud Cost Comparison ↓</a></p>
 </details>

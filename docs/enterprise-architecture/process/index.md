@@ -66,5 +66,5 @@ Guides and playbooks for enterprise architecture processes — covering lifecycl
 <details>
 <summary>EA Agentic AI</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/process/EA_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="EA_AgenticAI.pptx" download>Download PPTX ↓</a></p>
+<p><a href="pathname://EA_AgenticAI.pptx" download>Download PPTX ↓</a></p>
 </details>

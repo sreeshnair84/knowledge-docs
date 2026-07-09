@@ -1,3 +1,14 @@
+---
+title: "Enterprise AI Freshness Audit — July 5, 2026"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: []
+---
+
 # Enterprise AI Freshness Audit — July 5, 2026
 
 **Scope:** `docs/coding-tools/enterprise-ai-architect/` (5 guides) + all `ai-*` sections, cross-checked against the June 29, 2026 gap analysis (`ALL_72_TOPICS_REFERENCE.md`).

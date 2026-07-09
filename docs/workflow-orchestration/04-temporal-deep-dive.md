@@ -384,4 +384,4 @@ workflow ProcessWithAgent {
 
 ---
 
-**Next**: Explore [Camunda and BPM](./05-camunda-deep-dive) for comparison, or jump to [Hybrid Architectures](./19-reference-architectures).
+**Next**: Explore [Camunda and BPM](./camunda-deep-dive) for comparison, or jump to [Hybrid Architectures](./reference-architectures).

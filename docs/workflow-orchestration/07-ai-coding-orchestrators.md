@@ -432,4 +432,4 @@ Consider:
 
 ---
 
-**Next**: Compare [Agent Frameworks](./08-agent-frameworks-comparison) (LangGraph vs. CrewAI vs. Semantic Kernel), or jump to [Reference Architectures](./19-reference-architectures) for real-world patterns.
+**Next**: Compare [Agent Frameworks](./ai-coding-orchestrators) (LangGraph vs. CrewAI vs. Semantic Kernel), or jump to [Reference Architectures](./reference-architectures) for real-world patterns.

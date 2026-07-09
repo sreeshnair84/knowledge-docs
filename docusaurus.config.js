@@ -110,6 +110,10 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
+          exclude: [
+            '**/_meta/**',
+            '**/archive/**',
+          ],
         },
         blog: false,
         theme: {

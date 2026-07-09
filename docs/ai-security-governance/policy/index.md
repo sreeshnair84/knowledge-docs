@@ -129,7 +129,7 @@ For A2A, authorization is declared in the **Agent Card** (the `authentication` b
 
 <details>
 <summary>AI Security Series — see parent section for full catalog</summary>
-<p>Policy and authorization content is covered across the <a href="../security/index.md">AI Security PDF series</a>, particularly volumes on identity, MCP/A2A security, and the operating model maturity roadmap.</p>
+<p>Policy and authorization content is covered across the <a href="../security/">AI Security PDF series</a>, particularly volumes on identity, MCP/A2A security, and the operating model maturity roadmap.</p>
 </details>
 
 ---

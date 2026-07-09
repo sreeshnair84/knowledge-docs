@@ -401,8 +401,8 @@ Coordinate with Claude Code (or internal dispatcher)
 
 Given your specific constraints (industry, scale, team, compliance), how would YOU prioritize these platforms? What's your biggest orchestration challenge that doesn't fit neatly?
 
-Document it here so we can build [reference architectures](./19-reference-architectures) from real scenarios.
+Document it here so we can build [reference architectures](./reference-architectures) from real scenarios.
 
 ---
 
-**Next**: Study [Reference Architectures](./19-reference-architectures) for your scenario, or explore [Future Predictions](./21-future-predictions).
+**Next**: Study [Reference Architectures](./reference-architectures) for your scenario, or explore [Future Predictions](./future-predictions).

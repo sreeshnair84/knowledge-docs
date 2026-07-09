@@ -512,4 +512,4 @@ Process intelligence:
 
 ---
 
-**Next**: Jump to [Decision Matrix](./20-decision-matrix) to start building your architecture now, or read [Reference Architectures](./19-reference-architectures) for patterns.
+**Next**: Jump to [Decision Matrix](./decision-matrix) to start building your architecture now, or read [Reference Architectures](./reference-architectures) for patterns.

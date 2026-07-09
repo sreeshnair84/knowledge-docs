@@ -1,3 +1,14 @@
+---
+title: "CLAUDE.md"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: []
+---
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.

@@ -504,6 +504,6 @@ while not done:
 ---
 
 **Next steps**:
-- Deep dive into [Temporal Architecture](./04-temporal-deep-dive) for deterministic workflows
-- Explore [Camunda & BPM](./05-camunda-deep-dive) for visual modeling
-- Study [AI Coding Orchestrators](./07-ai-coding-orchestrators) for agent patterns
+- Deep dive into [Temporal Architecture](./temporal-deep-dive) for deterministic workflows
+- Explore [Camunda & BPM](./camunda-deep-dive) for visual modeling
+- Study [AI Coding Orchestrators](./ai-coding-orchestrators) for agent patterns

@@ -1,6 +1,11 @@
 ---
+title: "Part2 Tool Authentication.Pdf.Meta"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
 status: archived
-superseded_by: "docs/ai-protocols/auth/tool-authentication-connectors.md"
-archive_reason: "content fully covered by tool-authentication-connectors.md (sim 0.839, only 28 unique tokens in 4KB sample)"
-archived_date: 2026-07-09
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols"]
 ---
+

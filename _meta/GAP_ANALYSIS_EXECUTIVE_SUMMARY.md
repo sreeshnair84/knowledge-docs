@@ -1,3 +1,14 @@
+---
+title: "Enterprise AI Knowledge Base Gap Analysis - Executive Summary"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: []
+---
+
 # Enterprise AI Knowledge Base Gap Analysis - Executive Summary
 
 **Date:** June 29, 2026 | **Research Focus:** Comprehensive topic identification across 10 dimensions

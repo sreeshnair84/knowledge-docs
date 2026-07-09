@@ -558,4 +558,4 @@ If you're evolving an existing system:
 
 ---
 
-**Next**: Read [Future Predictions](./21-future-predictions) to understand where this is all headed, or jump to [Decision Matrix](./20-decision-matrix) for platform selection.
+**Next**: Read [Future Predictions](./future-predictions) to understand where this is all headed, or jump to [Decision Matrix](./decision-matrix) for platform selection.

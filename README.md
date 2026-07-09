@@ -1,8 +1,12 @@
 ---
-title: Home
-nav_order: 1
-description: "AI, Agentic AI & Enterprise Architecture Knowledge Base"
-permalink: /
+title: "Home"
+date_created: 2026-06-13
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: []
 ---
 
 # Knowledge Docs

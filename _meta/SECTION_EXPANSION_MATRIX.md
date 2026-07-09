@@ -1,3 +1,14 @@
+---
+title: "Enterprise AI Knowledge Base: Section Expansion & Content Matrix"
+date_created: 2026-07-05
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: []
+---
+
 # Enterprise AI Knowledge Base: Section Expansion & Content Matrix
 
 **Date:** June 29, 2026 | **Purpose:** Detailed mapping of gaps to sections

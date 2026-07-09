@@ -30,5 +30,5 @@ Architecture and best practices for multi-tenant agentic AI platforms — coveri
 <details>
 <summary>Agentic Platform Best Practices</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/agentic-ai/platform/agentic_platform_bestpractices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="agentic_platform_bestpractices.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://agentic_platform_bestpractices.docx" download>Download DOCX ↓</a></p>
 </details>

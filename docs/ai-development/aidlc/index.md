@@ -54,7 +54,7 @@ Frameworks and artifacts for integrating AI into enterprise development lifecycl
 <details>
 <summary>Agile in the Age of Agentic AI 2026</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/aidlc/Agile_in_the_Age_of_Agentic_AI_2026.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="Agile_in_the_Age_of_Agentic_AI_2026.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://Agile_in_the_Age_of_Agentic_AI_2026.docx" download>Download DOCX ↓</a></p>
 </details>
 
 ---
