@@ -40,9 +40,10 @@ Question banks, scenario prep, and behavioral guides for Enterprise Architect an
 </details>
 
 <details>
-<summary>EY AI Architect Interview Guide</summary>
-<iframe src="EY_AI_Architect_Interview_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EY_AI_Architect_Interview_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>EY AI Architect &amp; Consultant — Interview &amp; ECC AI-First Guide</summary>
+
+→ **[Read the full guide](./EY_AI_Architect_Interview_Guide_1)**
+
 </details>
 
 <details>

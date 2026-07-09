@@ -18,22 +18,15 @@ TOGAF 10, APEX, and AI-era framework references — including peer-reviewed case
 ## TOGAF &amp; APEX
 
 <details>
-<summary>TOGAF 10 APEX AI Platform — NexaBank</summary>
-<iframe src="TOGAF10_APEX_AI_Platform_NexaBank.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_AI_Platform_NexaBank.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>APEX: AI Platform of Platforms — NexaBank + GlobalCorp + v4 scenarios</summary>
+
+→ **[Read the combined APEX guide](../specialization/APEX_EA_Final)**
+
 </details>
 
-<details>
-<summary>TOGAF 10 APEX Cloud Native — GlobalCorp</summary>
-<iframe src="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_CloudNative_GlobalCorp.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+<!-- GlobalCorp scenario merged into APEX_EA_Final.md — see combined guide above -->
 
-<details>
-<summary>TOGAF 10 APEX v4 Peer Reviewed</summary>
-<iframe src="TOGAF10_APEX_v4_PeerReviewed.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="TOGAF10_APEX_v4_PeerReviewed.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+<!-- v4 Peer Reviewed merged into APEX_EA_Final.md — see combined guide above -->
 
 ---
 

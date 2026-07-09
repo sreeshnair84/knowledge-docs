@@ -36,22 +36,20 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 </details>
 
 <details>
-<summary>EU Bank AI Copilot Research</summary>
-<iframe src="eu-bank-ai-copilot-research.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="eu-bank-ai-copilot-research.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>EU Bank AI Copilot Platform (full guide)</summary>
+
+→ **[Read the full guide](./eu-bank-ai-copilot-complete)**
+
 </details>
 
 <details>
-<summary>TOGAF 10 APEX AI Platform — NexaBank</summary>
-<iframe src="../enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="../enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>APEX: AI Platform of Platforms — Combined Case Studies (NexaBank + GlobalCorp + v4)</summary>
+
+→ **[Read the combined APEX guide](../enterprise-architecture/specialization/APEX_EA_Final)**
+
 </details>
 
-<details>
-<summary>TOGAF 10 APEX Cloud Native — GlobalCorp</summary>
-<iframe src="../enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="../enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+<!-- GlobalCorp scenario merged into APEX_EA_Final.md — see combined guide above -->
 
 ---
 

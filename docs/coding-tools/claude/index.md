@@ -41,8 +41,9 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 <details>
 <summary>Module 2 — Claude API &amp; SDK</summary>
-<iframe src="Module_2_Claude_API_SDK.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_2_Claude_API_SDK.pdf" target="_blank">Open in new tab ↗</a></p>
+
+→ **[Claude API Mastery Guide (replaces PDF module)](./claude-api-mastery)**
+
 </details>
 
 <details>

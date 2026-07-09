@@ -33,8 +33,9 @@ Frameworks, guides, and tools for evaluating AI agent systems — covering evalu
 
 <details>
 <summary>AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix</summary>
-<iframe src="AI%20Agent%20Evaluation%20Framework%20%E2%80%94%20AWS%20Bedrock%20AgentCore%20%C2%B7%20Strands%20%C2%B7%20Arize%20Phoenix.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI%20Agent%20Evaluation%20Framework%20%E2%80%94%20AWS%20Bedrock%20AgentCore%20%C2%B7%20Strands%20%C2%B7%20Arize%20Phoenix.pdf" target="_blank">Open in new tab ↗</a></p>
+
+→ **[Read the full guide](./AI_Agent_Evaluation_Framework_Guide)**
+
 </details>
 
 ---
