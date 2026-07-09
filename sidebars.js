@@ -459,6 +459,52 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Workflow Orchestration',
+      items: [
+        'workflow-orchestration/index',
+        {
+          type: 'category',
+          label: 'Foundations',
+          items: [
+            'workflow-orchestration/01-executive-summary',
+            'workflow-orchestration/02-evolution-timeline',
+            'workflow-orchestration/03-workflow-vs-agent-architecture',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Platform Deep Dives',
+          items: [
+            'workflow-orchestration/04-temporal-deep-dive',
+            'workflow-orchestration/05-camunda-deep-dive',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'AI & Agents',
+          items: [
+            'workflow-orchestration/07-ai-coding-orchestrators',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Enterprise Architecture',
+          items: [
+            'workflow-orchestration/19-reference-architectures',
+            'workflow-orchestration/20-decision-matrix',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Future',
+          items: [
+            'workflow-orchestration/21-future-predictions',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Quantum AI',
       link: {type: 'doc', id: 'quantum/index'},
       items: [
