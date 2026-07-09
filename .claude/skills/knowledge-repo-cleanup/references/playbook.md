@@ -12,17 +12,58 @@ record: path, title (frontmatter or first heading, or filename for
 binaries), size, last git-log modification date, and a 2-3 sentence content
 summary.
 
-Use `scripts/extract_corpus.py` to get plain text out of every file first —
-it handles all four formats and batches by index range so a single call
-doesn't time out on a large repo:
+**Step 1 — Extract corpus** using `scripts/extract_corpus.py` (handles all
+four formats; batch by index range so a single call doesn't time out):
 
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/scripts/extract_corpus.py 0 60
 python3 ${CLAUDE_SKILL_DIR}/scripts/extract_corpus.py 60 120
-# ... continue in batches of ~60 until scripts reports all files processed
+# ... continue in batches of ~60 until script reports all files processed
 ```
 
 This writes `_meta/corpus.json` (path → extracted text), used by Phase 1.
+
+**Step 2 — Build inventory** — there is no dedicated script for this step;
+run it inline. The snippet below derives titles (frontmatter → first heading
+→ filename), gets file sizes and git dates, and uses the first three
+non-heading content lines as the summary:
+
+```python
+import json, os, re, subprocess, sys
+
+with open("_meta/corpus.json", encoding="utf-8") as f:
+    corpus = json.load(f)
+
+inventory = {}
+for path, text in corpus.items():
+    try: size = os.path.getsize(path)
+    except: size = 0
+    try:
+        r = subprocess.run(["git","log","-1","--format=%as","--",path], capture_output=True, text=True)
+        git_date = r.stdout.strip() or "unknown"
+    except: git_date = "unknown"
+    title = None
+    fm = re.search(r'^---\s*\n.*?^title:\s*["\']?(.+?)["\']?\s*$.*?^---', text, re.MULTILINE|re.DOTALL)
+    if fm: title = fm.group(1).strip()
+    if not title:
+        hm = re.search(r'^#{1,3}\s+(.+)', text, re.MULTILINE)
+        if hm: title = hm.group(1).strip()
+    if not title: title = os.path.basename(path)
+    lines = text.split('\n'); in_fm = False; cl = []; i = 0
+    if lines and lines[0].strip() == '---': in_fm = True; i = 1
+    while i < len(lines):
+        if in_fm:
+            if lines[i].strip() == '---': in_fm = False
+        else:
+            l = lines[i].strip()
+            if l and not l.startswith(('#','|','!')): cl.append(l)
+            if len(cl) >= 3: break
+        i += 1
+    inventory[path] = {"path":path,"title":title,"size_bytes":size,"git_date":git_date,"summary":' '.join(cl)[:400]}
+
+with open("_meta/inventory.json","w",encoding="utf-8",errors="replace") as f:
+    json.dump(inventory, f, indent=2, ensure_ascii=False)
+```
 
 Output: `_meta/inventory.json` — path, title, size, summary per file.
 Mark complete: `progress.py complete-phase --phase 0`.

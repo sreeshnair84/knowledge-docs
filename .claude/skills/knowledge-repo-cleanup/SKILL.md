@@ -14,8 +14,10 @@ Phase 0. This file covers orientation, resumability, and model guidance.
 
 ## Always do this first
 
-1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py status` (creates
-   `_meta/progress.json` on first run if it doesn't exist).
+1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py status` to see phase
+   states. If it says "No tracker yet", the file doesn't exist — run
+   `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py init` first (confirm with
+   the user before doing so on the very first run).
 2. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py next` to get the exact
    next task — a phase to start, or the next pending item in a phase's queue.
 3. Tell the user what you found ("Phase 2 is 34/242 files converted, resuming
@@ -24,10 +26,6 @@ Phase 0. This file covers orientation, resumability, and model guidance.
    doing, and never re-derive "what's done" from your own memory or by
    re-scanning the repo — the tracker is the single source of truth, because
    your own context resets every session and this job doesn't.
-
-If `_meta/progress.json` doesn't exist and this looks like the first run,
-confirm with the user before running Phase 0 — it's read-only and safe, but
-check they want to start.
 
 ## The phases (detail in references/playbook.md)
 

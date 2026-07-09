@@ -94,3 +94,36 @@ for root, _, files in os.walk("docs"):
         if pattern.search(text):
             print(fpath)
 ```
+
+## Repo Cleanup (ongoing — branch `restructure/dedup-2026-07`)
+
+A multi-phase deduplication and restructure pass is in progress on
+`restructure/dedup-2026-07`. Do **not** merge this branch to `main` until
+Phase 6 (validation) is marked complete in the tracker.
+
+**Directories created by the cleanup — do not delete or commit-ignore:**
+
+```
+_meta/                    # cleanup metadata (tracker, corpus, inventory, reports)
+  progress.json           # single source of truth for what's done — update via progress.py only
+  corpus.json             # extracted plain text for all 479 docs (used by find_duplicates.py)
+  inventory.json          # per-file metadata: title, size, git date, summary
+  duplicate-pairs.csv     # Phase 1 output: similarity scores per pair
+  duplicate-clusters.md   # Phase 1 output: merge proposals (human-reviewed, not auto-applied)
+  merge-log.md            # Phase 3 output: before/after record of every merge
+  taxonomy-changes.md     # Phase 4 output: renamed files / moved sections
+  cleanup-summary.md      # Phase 6 output: final totals and handoff notes
+archive/                  # retired source files (PDF/DOCX/PPTX superseded by Markdown)
+  <original-relative-path>  # mirrors original path; frontmatter: status: archived
+```
+
+**Cleanup skill:** invoke via `/knowledge-repo-cleanup` (or ask Claude to
+"continue the repo cleanup"). The skill reads `_meta/progress.json` to
+resume exactly where the last session left off — never assume a fresh start.
+
+**Updating the tracker manually** (emergency only — prefer the skill):
+```bash
+python3 .claude/skills/knowledge-repo-cleanup/scripts/progress.py status
+python3 .claude/skills/knowledge-repo-cleanup/scripts/progress.py next
+python3 .claude/skills/knowledge-repo-cleanup/scripts/progress.py mark --phase <n> --item <path> --status done
+```
