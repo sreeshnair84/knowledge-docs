@@ -1,7 +1,12 @@
 ---
-name: knowledge-repo-cleanup
-description: Deduplicate, restructure, and standardize this knowledge-base repo (overlapping markdown pages, PDFs, DOCX, PPTX covering the same topics; PDFs embedded via iframe instead of converted; inconsistent frontmatter). RESUMABLE across sessions and usage-limit resets via a committed progress tracker at _meta/progress.json. Use this skill whenever the user asks to continue the repo cleanup, check cleanup progress, find duplicate/overlapping content, convert PDFs to markdown, merge overlapping docs, or resume after hitting a usage limit. Always check _meta/progress.json first — this is a multi-session job, never assume you're starting fresh.
-model: sonnet
+title: "Knowledge Repo Cleanup"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["skills", "knowledge-repo-cleanup"]
 ---
 
 # Knowledge Repo Cleanup
