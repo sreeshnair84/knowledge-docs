@@ -129,6 +129,8 @@ nav:
     - Context Engineering: ai-foundations/agentic_ai_landing_zone_context_engineering.md
     - Evaluation Framework: ai-foundations/agentic_ai_landing_zone_evaluation.md
     - Multi-Agent Architectures: ai-foundations/agentic_ai_landing_zone_multiagent.md
+    - Tier 3 — Memory Architecture: ai-foundations/agentic_ai_landing_zone_memory_architecture.md
+    - Tier 3 — Identity, FinOps, SDLC, Operating Model: ai-foundations/agentic_ai_landing_zone_tier3_complete.md
 
   # ─── STRATEGY & ARCHITECTURE ──────────────────────
   - AI Economics:
