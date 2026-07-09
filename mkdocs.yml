@@ -115,83 +115,19 @@ extra:
 
 nav:
   - Home: index.md
-
-  # ─── FOUNDATIONS & BASICS ───────────────────────────
   - About: about.md
+
+  # ─── START HERE: FOUNDATIONS ──────────────────────
   - AI Foundations:
     - Overview: ai-foundations/index.md
     - Agentic AI Landing Zone Architecture: ai-foundations/agentic_ai_landing_zone_architecture.md
+    - Business Layer & Capability Mapping: ai-foundations/agentic_ai_landing_zone_business_layer.md
+    - Agent Platform Layer: ai-foundations/agentic_ai_landing_zone_platform_layer.md
+    - Context Engineering: ai-foundations/agentic_ai_landing_zone_context_engineering.md
+    - Evaluation Framework: ai-foundations/agentic_ai_landing_zone_evaluation.md
+    - Multi-Agent Architectures: ai-foundations/agentic_ai_landing_zone_multiagent.md
 
-  # ─── CORE AI SYSTEMS ───────────────────────────────
-  - Agentic AI:
-    - Overview: agentic-systems/index.md
-    - Configuration: agentic-systems/config/index.md
-    - Harness: agentic-systems/harness/index.md
-    - Memory: agentic-systems/memory/index.md
-    - Platform: agentic-systems/platform/index.md
-    - Agent Skills: agentic-systems/skill/index.md
-  - Agentic UI & Applications:
-    - Overview: agentic-ui/index.md
-    - Agent UX Patterns: agentic-ui/agent-ux-patterns.md
-    - Anti-pattern Catalog: agentic-ui/anti-patterns.md
-    - Application Lifecycle: agentic-ui/application-lifecycle.md
-    - Context Engineering: agentic-ui/context-engineering.md
-    - Decision Frameworks: agentic-ui/decision-frameworks.md
-    - DevSecOps: agentic-ui/devsecops.md
-    - Enterprise Reference Architecture: agentic-ui/enterprise-reference-architecture.md
-    - Evaluation Framework: agentic-ui/evaluation-framework.md
-    - Evolution of Human-AI Interfaces: agentic-ui/evolution-human-ai-interfaces.md
-    - Future Outlook 2026–2030: agentic-ui/future-outlook.md
-    - Governance: agentic-ui/governance.md
-    - AGUI Standards Landscape: agentic-ui/agui-standards-landscape.md
-    - Identity & Auth Architecture: agentic-ui/identity-auth-architecture.md
-    - Observability: agentic-ui/observability.md
-    - Performance Engineering: agentic-ui/performance-engineering.md
-    - Reliability Engineering: agentic-ui/reliability-engineering.md
-    - Responsible AI: agentic-ui/responsible-ai.md
-    - Scalability Engineering: agentic-ui/scalability-engineering.md
-    - Security Architecture: agentic-ui/security-architecture.md
-
-  # ─── SECURITY, GOVERNANCE & COMPLIANCE ─────────────
-  - AI Security & Governance:
-    - Overview: ai-security-governance/index.md
-    - AI Security: ai-security-governance/security/index.md
-    - DeepMind Control: ai-security-governance/deep-mind/index.md
-    - Policy & Authorization: ai-security-governance/policy/index.md
-  - Enterprise Cyber Security Architect:
-    - Overview: cybersec-architect/index.md
-    - Part 1 — Cyber Security Evolution: cybersec-architect/01-evolution.md
-    - Part 2 — Enterprise Security Architecture: cybersec-architect/02-enterprise-security-architecture.md
-    - Part 3 — Security Domains: cybersec-architect/03-security-domains.md
-    - Part 4 — AI Security: cybersec-architect/04-ai-security.md
-    - Part 5 — Agentic AI Security: cybersec-architect/05-agentic-ai-security.md
-    - Part 6 — Identity Architecture: cybersec-architect/06-identity-architecture.md
-    - Part 7 — Cloud Security Architecture: cybersec-architect/07-cloud-security.md
-    - Part 8 — AI Governance & Compliance: cybersec-architect/08-ai-governance.md
-    - Part 9 — Security Operations: cybersec-architect/09-security-operations.md
-    - Part 10 — Technology Investment: cybersec-architect/10-technology-investment.md
-    - Part 11 — AI & Security Investment: cybersec-architect/11-ai-investment.md
-    - Part 12 — EA Deliverables: cybersec-architect/12-ea-deliverables.md
-    - Part 13 — Security Patterns: cybersec-architect/13-security-patterns.md
-    - Part 14 — Industry Case Studies: cybersec-architect/14-case-studies.md
-    - Part 15 — Emerging Trends 2026–2030: cybersec-architect/15-emerging-trends.md
-    - Use Case Transcript: cybersec-architect/usecase-transcript.md
-  - Sovereign & Constitutional AI:
-    - Overview: sovereign-constitutional-ai/index.md
-    - AI Alignment & Control: sovereign-constitutional-ai/ai-alignment-control.md
-    - AI Assurance & Audit Architecture: sovereign-constitutional-ai/ai-assurance-audit-architecture.md
-    - AI Governance Operating Model: sovereign-constitutional-ai/ai-governance-operating-model.md
-    - AI Risk Taxonomy: sovereign-constitutional-ai/ai-risk-taxonomy.md
-    - AI Safety Framework: sovereign-constitutional-ai/ai-safety-framework.md
-    - Constitutional Agent Architecture: sovereign-constitutional-ai/constitutional-agent-architecture.md
-    - Constitutional AI Engineering: sovereign-constitutional-ai/constitutional-ai-engineering.md
-    - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
-    - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
-    - Responsible AI Operating Model: sovereign-constitutional-ai/rai-operating-model.md
-    - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
-    - Sovereign AI Foundations: sovereign-constitutional-ai/sovereign-ai-foundations.md
-
-  # ─── ARCHITECTURE & STRATEGY ───────────────────────
+  # ─── STRATEGY & ARCHITECTURE ──────────────────────
   - AI Economics:
     - Overview: ai-economics/index.md
     - AI Coding Agents 2026: ai-economics/ai-coding-agents-2026.md
@@ -253,7 +189,76 @@ nav:
       - Manufacturing ARB Review: ea-masterclass/transcripts/manufacturing-arb-review.md
       - Retail Proposal Negotiation: ea-masterclass/transcripts/retail-proposal-negotiation.md
 
-  # ─── DEVELOPMENT & ENGINEERING ─────────────────────
+  # ─── AGENTIC AI CORE ──────────────────────────────
+  - Agentic AI:
+    - Overview: agentic-systems/index.md
+    - Configuration: agentic-systems/config/index.md
+    - Harness: agentic-systems/harness/index.md
+    - Memory: agentic-systems/memory/index.md
+    - Platform: agentic-systems/platform/index.md
+    - Agent Skills: agentic-systems/skill/index.md
+  - Agentic UI & Applications:
+    - Overview: agentic-ui/index.md
+    - Agent UX Patterns: agentic-ui/agent-ux-patterns.md
+    - Anti-pattern Catalog: agentic-ui/anti-patterns.md
+    - Application Lifecycle: agentic-ui/application-lifecycle.md
+    - Context Engineering: agentic-ui/context-engineering.md
+    - Decision Frameworks: agentic-ui/decision-frameworks.md
+    - DevSecOps: agentic-ui/devsecops.md
+    - Enterprise Reference Architecture: agentic-ui/enterprise-reference-architecture.md
+    - Evaluation Framework: agentic-ui/evaluation-framework.md
+    - Evolution of Human-AI Interfaces: agentic-ui/evolution-human-ai-interfaces.md
+    - Future Outlook 2026–2030: agentic-ui/future-outlook.md
+    - Governance: agentic-ui/governance.md
+    - AGUI Standards Landscape: agentic-ui/agui-standards-landscape.md
+    - Identity & Auth Architecture: agentic-ui/identity-auth-architecture.md
+    - Observability: agentic-ui/observability.md
+    - Performance Engineering: agentic-ui/performance-engineering.md
+    - Reliability Engineering: agentic-ui/reliability-engineering.md
+    - Responsible AI: agentic-ui/responsible-ai.md
+    - Scalability Engineering: agentic-ui/scalability-engineering.md
+    - Security Architecture: agentic-ui/security-architecture.md
+
+  # ─── SECURITY, GOVERNANCE & COMPLIANCE ────────────
+  - AI Security & Governance:
+    - Overview: ai-security-governance/index.md
+    - AI Security: ai-security-governance/security/index.md
+    - DeepMind Control: ai-security-governance/deep-mind/index.md
+    - Policy & Authorization: ai-security-governance/policy/index.md
+  - Enterprise Cyber Security Architect:
+    - Overview: cybersec-architect/index.md
+    - Part 1 — Cyber Security Evolution: cybersec-architect/01-evolution.md
+    - Part 2 — Enterprise Security Architecture: cybersec-architect/02-enterprise-security-architecture.md
+    - Part 3 — Security Domains: cybersec-architect/03-security-domains.md
+    - Part 4 — AI Security: cybersec-architect/04-ai-security.md
+    - Part 5 — Agentic AI Security: cybersec-architect/05-agentic-ai-security.md
+    - Part 6 — Identity Architecture: cybersec-architect/06-identity-architecture.md
+    - Part 7 — Cloud Security Architecture: cybersec-architect/07-cloud-security.md
+    - Part 8 — AI Governance & Compliance: cybersec-architect/08-ai-governance.md
+    - Part 9 — Security Operations: cybersec-architect/09-security-operations.md
+    - Part 10 — Technology Investment: cybersec-architect/10-technology-investment.md
+    - Part 11 — AI & Security Investment: cybersec-architect/11-ai-investment.md
+    - Part 12 — EA Deliverables: cybersec-architect/12-ea-deliverables.md
+    - Part 13 — Security Patterns: cybersec-architect/13-security-patterns.md
+    - Part 14 — Industry Case Studies: cybersec-architect/14-case-studies.md
+    - Part 15 — Emerging Trends 2026–2030: cybersec-architect/15-emerging-trends.md
+    - Use Case Transcript: cybersec-architect/usecase-transcript.md
+  - Sovereign & Constitutional AI:
+    - Overview: sovereign-constitutional-ai/index.md
+    - AI Alignment & Control: sovereign-constitutional-ai/ai-alignment-control.md
+    - AI Assurance & Audit Architecture: sovereign-constitutional-ai/ai-assurance-audit-architecture.md
+    - AI Governance Operating Model: sovereign-constitutional-ai/ai-governance-operating-model.md
+    - AI Risk Taxonomy: sovereign-constitutional-ai/ai-risk-taxonomy.md
+    - AI Safety Framework: sovereign-constitutional-ai/ai-safety-framework.md
+    - Constitutional Agent Architecture: sovereign-constitutional-ai/constitutional-agent-architecture.md
+    - Constitutional AI Engineering: sovereign-constitutional-ai/constitutional-ai-engineering.md
+    - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
+    - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
+    - Responsible AI Operating Model: sovereign-constitutional-ai/rai-operating-model.md
+    - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
+    - Sovereign AI Foundations: sovereign-constitutional-ai/sovereign-ai-foundations.md
+
+  # ─── DEVELOPMENT & ENGINEERING ────────────────────
   - AI Development:
     - Overview: ai-development/index.md
     - AIDLC: ai-development/aidlc/index.md
@@ -297,7 +302,7 @@ nav:
       - Git & GitHub Platform Engineering: coding-tools/github-copilot/git-github-platform-engineering-handbook.md
       - Zero to Hero: coding-tools/github-copilot/github-copilot-zero-to-hero.md
 
-  # ─── INFRASTRUCTURE & PLATFORMS ────────────────────
+  # ─── INFRASTRUCTURE & PLATFORMS ───────────────────
   - AI Protocols:
     - Overview: ai-protocols/index.md
     - Auth & Identity:
@@ -331,7 +336,7 @@ nav:
         - Terraform Mastery Guide: cloud-platforms/iac/terraform/terraform-mastery-guide.md
     - Kubernetes: cloud-platforms/kubernetes/index.md
 
-  # ─── KNOWLEDGE & DATA ──────────────────────────────
+  # ─── KNOWLEDGE & DATA ─────────────────────────────
   - Knowledge Engineering:
     - Overview: knowledge-engineering/index.md
     - Data Architecture: knowledge-engineering/data/index.md
@@ -344,12 +349,12 @@ nav:
       - How Tech Companies Serve Knowledge: knowledge-engineering/industry-practices/tech-companies.md
     - Knowledge & RAG: knowledge-engineering/knowledge/index.md
 
-  # ─── BUSINESS & USE CASES ──────────────────────────
+  # ─── BUSINESS & USE CASES ─────────────────────────
   - Use Cases:
     - Overview: ai-usecases/index.md
     - EU Banking AI Evaluation Compliance Guide: ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md
 
-  # ─── LEARNING & PROFESSIONAL DEVELOPMENT ─────────
+  # ─── LEARNING & PROFESSIONAL DEVELOPMENT ────────
   - Interview Prep:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md
