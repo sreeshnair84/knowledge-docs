@@ -219,7 +219,49 @@ nav:
     - Best Practices: enterprise-architecture/best-practices/index.md
     - ARB:
       - Overview: enterprise-architecture/arb/index.md
+      - ARB Reference Library:
+        - Overview: enterprise-architecture/architectural-review-board/index.md
     - Specialization: enterprise-architecture/specialization/index.md
+  - EA Masterclass:
+    - Overview: ea-masterclass/index.md
+    - Module 1 — EA Foundations: ea-masterclass/module-01-ea-foundations/index.md
+    - Module 2 — Business Acumen: ea-masterclass/module-02-business-acumen/index.md
+    - Module 3 — Proposal Lifecycle: ea-masterclass/module-03-proposal-lifecycle/index.md
+    - Module 4 — Technology Investment: ea-masterclass/module-04-technology-investment/index.md
+    - Module 5 — AI Investment Strategy: ea-masterclass/module-05-ai-investment-strategy/index.md
+    - Module 6 — Business Case Development: ea-masterclass/module-06-business-case/index.md
+    - Module 7 — Proposal Writing: ea-masterclass/module-07-proposal-writing/index.md
+    - Module 8 — Financial Literacy: ea-masterclass/module-08-financial-literacy/index.md
+    - Module 9 — Enterprise AI Architecture: ea-masterclass/module-09-enterprise-ai-architecture/index.md
+    - Module 10 — Enterprise Governance: ea-masterclass/module-10-governance/index.md
+    - Module 11 — Executive Communication: ea-masterclass/module-11-executive-communication/index.md
+    - Module 12 — AI Consulting Engagement: ea-masterclass/module-12-ai-consulting/index.md
+    - Module 13 — Case Studies:
+      - Overview: ea-masterclass/module-13-case-studies/index.md
+      - Global Bank: ea-masterclass/module-13-case-studies/global-bank.md
+      - Healthcare Provider: ea-masterclass/module-13-case-studies/healthcare.md
+      - Manufacturing Enterprise: ea-masterclass/module-13-case-studies/manufacturing.md
+      - Retail Organization: ea-masterclass/module-13-case-studies/retail.md
+      - Telecom Operator: ea-masterclass/module-13-case-studies/telecom.md
+      - Government Agency: ea-masterclass/module-13-case-studies/government.md
+    - Module 14 — Mentoring & Mastery: ea-masterclass/module-14-mentoring/index.md
+    - Module 15 — Distinguished Architect Mindset:
+      - Overview: ea-masterclass/module-15-distinguished-architect/index.md
+      - Executive Presence & Influence: ea-masterclass/module-15-distinguished-architect/executive-presence.md
+      - Strategic Thinking & Technology Bets: ea-masterclass/module-15-distinguished-architect/strategic-thinking.md
+      - Architecture Leadership & CTO Readiness: ea-masterclass/module-15-distinguished-architect/architecture-leadership.md
+      - Fortune 100 Modernisation Playbook: ea-masterclass/module-15-distinguished-architect/fortune100-modernisation.md
+    - Deliverable Templates:
+      - All Templates: ea-masterclass/deliverables/index.md
+      - Business Case Templates: ea-masterclass/deliverables/business-case-templates.md
+      - Governance Templates: ea-masterclass/deliverables/governance-templates.md
+      - Consulting Templates: ea-masterclass/deliverables/consulting-templates.md
+    - Real-Life Transcripts:
+      - Overview: ea-masterclass/transcripts/index.md
+      - Bank Discovery Workshop: ea-masterclass/transcripts/bank-discovery-workshop.md
+      - Healthcare Exec Presentation: ea-masterclass/transcripts/healthcare-executive-presentation.md
+      - Manufacturing ARB Review: ea-masterclass/transcripts/manufacturing-arb-review.md
+      - Retail Proposal Negotiation: ea-masterclass/transcripts/retail-proposal-negotiation.md
   - AI Development:
     - Overview: ai-development/index.md
     - AIDLC: ai-development/aidlc/index.md
@@ -250,6 +292,24 @@ nav:
     - Policy-as-Code Framework: sovereign-constitutional-ai/policy-as-code-framework.md
     - Democratic & Public Interest AI: sovereign-constitutional-ai/democratic-ai-public-interest.md
     - Roadmap, Maturity & Standards Canon: sovereign-constitutional-ai/sovereign-ai-roadmap-maturity.md
+  - Enterprise Cyber Security Architect:
+    - Overview: cybersec-architect/index.md
+    - Part 1 — Cyber Security Evolution: cybersec-architect/01-evolution.md
+    - Part 2 — Enterprise Security Architecture: cybersec-architect/02-enterprise-security-architecture.md
+    - Part 3 — Security Domains: cybersec-architect/03-security-domains.md
+    - Part 4 — AI Security: cybersec-architect/04-ai-security.md
+    - Part 5 — Agentic AI Security: cybersec-architect/05-agentic-ai-security.md
+    - Part 6 — Identity Architecture: cybersec-architect/06-identity-architecture.md
+    - Part 7 — Cloud Security Architecture: cybersec-architect/07-cloud-security.md
+    - Part 8 — AI Governance & Compliance: cybersec-architect/08-ai-governance.md
+    - Part 9 — Security Operations: cybersec-architect/09-security-operations.md
+    - Part 10 — Technology Investment: cybersec-architect/10-technology-investment.md
+    - Part 11 — AI & Security Investment: cybersec-architect/11-ai-investment.md
+    - Part 12 — EA Deliverables: cybersec-architect/12-ea-deliverables.md
+    - Part 13 — Security Patterns: cybersec-architect/13-security-patterns.md
+    - Part 14 — Industry Case Studies: cybersec-architect/14-case-studies.md
+    - Part 15 — Emerging Trends 2026–2030: cybersec-architect/15-emerging-trends.md
+    - Use Case Transcript: cybersec-architect/usecase-transcript.md
   - Agentic UI & Applications:
     - Overview: agentic-ui/index.md
     - Evolution of Human-AI Interfaces: agentic-ui/evolution-human-ai-interfaces.md
@@ -276,10 +336,13 @@ nav:
     - Overview: interview-prep/index.md
     - EA Interviews: interview-prep/ea/index.md
     - Enterprise Architect in the Age of AI: interview-prep/Enterprise_Architect_in_the_Age_of_AI.md
+    - EA Artifacts & Metrics — Real-World Examples: interview-prep/ea-ai-artifacts-and-metrics.md
     - EA Soft Skills and Behaviors: interview-prep/EA_Soft_Skills_and_Behaviors.md
     - EA Senior Interview Questions: interview-prep/EA_Senior_Interview_Questions.md
     - EA Quality Resilience Testing Interview Questions: interview-prep/EA_Quality_Resilience_Testing_Interview_Questions.md
     - EA HITL HOTL HOOL Interview Questions: interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions.md
   - Soft Skills: soft-skills/index.md
-  - Quantum AI: quantum/index.md
+  - Quantum AI:
+    - Overview: quantum/index.md
+    - Zero to Mastery: quantum/zero-to-mastery.md
   - About: about.md
