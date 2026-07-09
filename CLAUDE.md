@@ -5,112 +5,72 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Site
 
 **Live URL:** https://sreeshnair84.github.io/knowledge-docs/
-**Stack:** MkDocs + Material theme (Python), deployed via GitHub Actions to GitHub Pages.
+**Stack:** Docusaurus (React/Node.js), deployed via GitHub Actions to GitHub Pages.
 
 ## Build & Preview
 
 ```bash
-pip install -r requirements.txt   # installs material, git-revision-date, glightbox, minify
-mkdocs serve                      # local preview at http://127.0.0.1:8000
-mkdocs build                      # build to site/ (do not commit site/)
+npm install                   # installs dependencies
+npm run start                 # local preview at http://localhost:3000 (hot reload)
+npm run build                 # build to build/ (do not commit build/)
 ```
 
-Deployment is automatic — every push to `main` triggers `.github/workflows/pages.yml` which runs `mkdocs build` and deploys `site/` to GitHub Pages. No manual deploy needed.
+Deployment is automatic — every push to `main` triggers `.github/workflows/pages.yml` which runs `npm run build` and deploys the static site to GitHub Pages. No manual deploy needed.
 
 ## Repository Structure
 
 ```
-docs/                        # MkDocs source root (docs_dir)
-  index.md                   # Home page — grid cards with Material icons
+docs/                        # Docusaurus content directory
+  index.md                   # Home page
   <section>/
-    index.md                 # Section overview + embedded file viewers
-    *.md                     # Wiki guide pages (appear in sidebar nav)
+    index.md                 # Section overview page
+    *.md                     # Wiki guide pages (referenced in sidebars.js)
     *.pdf / *.docx / *.html  # Source files served as static assets
-docs/stylesheets/extra.css   # Responsive iframe styles, mobile PDF button
-docs/javascripts/pdf-viewer.js  # Mobile: swaps PDF iframes → Google Docs Viewer
-hooks/docs_gen.py            # Build hook: auto-generates <details> viewer blocks
-mkdocs.yml                   # Full site config: nav, theme, extensions
-requirements.txt             # All Python dependencies (used by CI and local dev)
-.github/workflows/pages.yml  # CI: pip install -r requirements.txt → mkdocs build → deploy
+docusaurus.config.js         # Full site config: theme, plugins, metadata
+sidebars.js                  # Navigation structure (replaces mkdocs.yml)
+package.json                 # Node.js dependencies and build scripts
+.github/workflows/pages.yml  # CI: npm install → npm run build → deploy
 ```
 
-All 13 topic sections follow the same pattern: `docs/<section>/index.md` is the wiki overview page listed in `nav:` under "Overview"; additional `.md` files in the same folder are listed as child nav entries.
-
-## Auto-generation Hook
-
-`hooks/docs_gen.py` runs at build time via the MkDocs `on_page_markdown` event. For every `index.md`, it scans the same directory for non-markdown assets and injects a `## Documents` block of `<details>` viewer iframes between `<!-- AUTO-DOCS-START -->` and `<!-- AUTO-DOCS-END -->` markers.
-
-**What this means for adding content:**
-
-- **Dropping a PDF/DOCX/HTML file into a section folder is sufficient** — the hook generates the viewer block automatically. You do not need to hand-write `<details>` blocks unless you want custom ordering, a custom title, or content that differs from the auto-generated default.
-- The hook overwrites the `AUTO-DOCS-*` region on every build; edits inside those markers are lost. Place custom content *above* `<!-- AUTO-DOCS-START -->`.
-- File types handled: `.pdf`, `.html` (inline iframe); `.docx`, `.pptx`, `.xlsx` (Google Docs Viewer); `.jsx`, `.excalidraw`, `.txt` (download-only link).
-- `index.md` and `README.md` are excluded from the scan (`SKIP` set in `docs_gen.py`).
+Navigation is defined in `sidebars.js` using Docusaurus structure: categories, subcategories, and doc references. This replaces the `nav:` section of mkdocs.yml.
 
 ## Adding Content
 
 ### New markdown guide
 1. Drop the `.md` file into the relevant `docs/<section>/` folder.
-2. Add a front matter block at the top — **always include `date:`**:
+2. Add front matter at the top with `title:` and optionally `date:`:
    ```yaml
    ---
    title: Page Title
    date: YYYY-MM-DD
    ---
    ```
-   Use today's actual date (ISO 8601 format). The `date:` field is displayed by the `git-revision-date-localized` plugin and serves as the canonical creation date for the page.
-3. Add the file to `nav:` in `mkdocs.yml` under the correct section.
+3. Add the file to `sidebars.js` under the correct category. Reference the file by its path relative to docs/: `'ai-foundations/my-page'` (no .md extension).
 
 ### New PDF / DOCX / HTML / JSX
 1. Drop the file into `docs/<section>/`.
-2. **The build hook auto-generates the viewer block** — no manual edits to `index.md` are needed unless you want a custom title or ordering. To override, add a `<details>` block *above* `<!-- AUTO-DOCS-START -->` in `index.md`.
-
-   If you need a custom viewer block (e.g. to override the auto-generated title), use these templates:
-
-   **PDF:**
-   ```html
-   <details>
-   <summary>Document Title</summary>
-   <iframe src="filename.pdf" width="100%" height="800px" frameborder="0"></iframe>
-   <p><a href="filename.pdf" target="_blank">Open in new tab ↗</a></p>
-   </details>
-   ```
-
-   **DOCX / PPTX** (Google Docs Viewer):
-   ```html
-   <details>
-   <summary>Document Title</summary>
-   <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/<section>/filename.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-   <p><a href="filename.docx" download>Download ↓</a></p>
-   </details>
-   ```
-
-   **HTML:**
-   ```html
-   <details>
-   <summary>Title</summary>
-   <iframe src="filename.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-   <p><a href="filename.html" target="_blank">Open in new tab ↗</a></p>
-   </details>
-   ```
-
-3. Non-markdown files are auto-excluded from nav via `not_in_nav` in `mkdocs.yml` — no extra config needed.
+2. Reference it in a markdown doc or add a link in `sidebars.js` if it should appear in navigation.
+3. Files are served as static assets; Docusaurus does not auto-generate viewer blocks.
 
 ### New section
-1. Create `docs/<section>/index.md` with `title:` and `date:` front matter:
-   ```yaml
-   ---
-   title: Section Title
-   date: YYYY-MM-DD
-   ---
+1. Create `docs/<section>/index.md` with `title:` front matter.
+2. Add a new category in `sidebars.js`:
+   ```javascript
+   {
+     type: 'category',
+     label: 'Section Label',
+     items: [
+       'section/index',
+       // other docs in this section
+     ],
+   }
    ```
-2. Add it to `nav:` in `mkdocs.yml` with at minimum an `Overview:` entry.
 
 ## Key Design Decisions
 
-- **`{{ site.baseurl }}` must never be used** — this repo switched from Jekyll to MkDocs. MkDocs uses relative URLs; all `iframe src` values are relative to the section folder.
-- **PDF mobile handling** is done entirely in `docs/javascripts/pdf-viewer.js` — on viewports < 768px it rewrites PDF iframe srcs to Google Docs Viewer and injects an "Open PDF ↗" button.
-- **Icons on the home page** require the `pymdownx.emoji` extension (configured in `mkdocs.yml`). Use `:material-<name>:` syntax from the Material icon set.
+- **Navigation via sidebars.js** — Docusaurus uses `sidebars.js` for all navigation structure. Categories, labels, and doc ordering are defined here, not in individual markdown files.
+- **Relative URLs** — Use relative paths for internal links (e.g., `../other-section/page`). Docusaurus handles routing automatically.
+- **Static assets** — PDFs, images, and other files in `docs/` are served as-is. Add links in markdown or reference them programmatically.
 - **Sensitive documents**: before adding any file, check it does not contain client names, internal infrastructure details, or credentials. Use `pypdf` + `python-docx` to scan text content.
 
 ## Searching Document Content
