@@ -7,6 +7,8 @@ supersedes: ""
 source_type: converted-pdf
 source_file: "ai-platform-factory-runbook-v2.pdf"
 tags: ["agentic-systems", "platform"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 <!-- converted from ai-platform-factory-runbook-v2.pdf -->

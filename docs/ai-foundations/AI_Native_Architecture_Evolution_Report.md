@@ -7,6 +7,9 @@ supersedes: "docs/knowledge-engineering/data/AI_Native_Architecture_Evolution_Re
 source_type: converted-pdf
 source_file: "AI_Native_Architecture_Evolution_Report.pdf"
 tags: ["ai-foundations"]
+doc_type: research-report
+covers_through: 2026-07-10
+research_date: 2026-07-10
 ---
 
 <!-- converted from AI_Native_Architecture_Evolution_Report.pdf -->

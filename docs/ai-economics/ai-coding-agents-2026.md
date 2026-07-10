@@ -7,6 +7,9 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ai-economics"]
+doc_type: research-report
+covers_through: 2026-07-10
+research_date: 2026-07-10
 ---
 
 # AI Coding Agent Assistants: The Complete 2026 Landscape
