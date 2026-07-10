@@ -1,7 +1,7 @@
 ---
 title: "GitHub Copilot"
 date_created: 2026-07-04
-last_reviewed: 2026-07-09
+last_reviewed: 2026-07-10
 status: current
 supersedes: ""
 source_type: native-md

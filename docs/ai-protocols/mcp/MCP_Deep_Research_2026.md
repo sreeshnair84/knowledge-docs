@@ -1,7 +1,7 @@
 ---
 title: "MCP Deep Research 2026"
 date_created: 2026-07-06
-last_reviewed: 2026-07-09
+last_reviewed: 2026-07-10
 status: current
 doc_type: research-report
 research_date: "2026-04-01"

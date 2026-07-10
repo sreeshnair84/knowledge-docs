@@ -1,11 +1,10 @@
 ---
 title: "Kong AI Gateway Guide"
 date_created: 2026-07-07
-last_reviewed: 2026-07-09
+last_reviewed: 2026-07-10
 status: current
 doc_type: guide
 covers_version: "N/A"
-supersedes: "docs/cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md"
 supersedes: ""
 source_type: native-md
 source_file: ""

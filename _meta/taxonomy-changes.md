@@ -1,64 +1,247 @@
 ---
 title: "Taxonomy Changes — Phase 4"
-date_created: 2026-07-09
-last_reviewed: 2026-07-09
+date_created: 2026-07-10
+last_reviewed: 2026-07-10
 status: current
 supersedes: ""
 source_type: native-md
 source_file: ""
-tags: ["_meta"]
+tags: []
 ---
 
 # Taxonomy Changes — Phase 4
 
-## Frontmatter Standardisation
+Generated: 2026-07-10
 
-**507 files** updated with the standard frontmatter schema:
+Total files scanned: 227
+Files updated: 226
+Files already complete: 1
 
-```yaml
-title: "..."
-date_created: YYYY-MM-DD
-last_reviewed: 2026-07-09
-status: current
-supersedes: ""
-source_type: native-md | converted-pdf
-source_file: ""
-tags: [section, subsection]
-```
+## Changed Files
 
-- `title` — inferred from existing frontmatter, first `#` heading, or filename
-- `date_created` — from existing `date_created`/`date` field, or git log date
-- `source_type` — `converted-pdf` where `source_file` is set; otherwise `native-md`
-- `tags` — auto-derived from 2-level path (`[section, subsection]`)
-
-Files already carrying all required fields were skipped (0 skipped after the bulk run).
-
-## sidebars.js Fixes
-
-**15 broken references** corrected in `sidebars.js` — cybersec-architect section:
-
-| Old reference | Corrected reference | Actual file |
-|---|---|---|
-| `cybersec-architect/evolution` | `cybersec-architect/01-evolution` | `01-evolution.md` |
-| `cybersec-architect/enterprise-security-architecture` | `cybersec-architect/02-enterprise-security-architecture` | `02-enterprise-security-architecture.md` |
-| `cybersec-architect/security-domains` | `cybersec-architect/03-security-domains` | `03-security-domains.md` |
-| `cybersec-architect/ai-security` | `cybersec-architect/04-ai-security` | `04-ai-security.md` |
-| `cybersec-architect/agentic-ai-security` | `cybersec-architect/05-agentic-ai-security` | `05-agentic-ai-security.md` |
-| `cybersec-architect/identity-architecture` | `cybersec-architect/06-identity-architecture` | `06-identity-architecture.md` |
-| `cybersec-architect/cloud-security` | `cybersec-architect/07-cloud-security` | `07-cloud-security.md` |
-| `cybersec-architect/ai-governance` | `cybersec-architect/08-ai-governance` | `08-ai-governance.md` |
-| `cybersec-architect/security-operations` | `cybersec-architect/09-security-operations` | `09-security-operations.md` |
-| `cybersec-architect/technology-investment` | `cybersec-architect/10-technology-investment` | `10-technology-investment.md` |
-| `cybersec-architect/ai-investment` | `cybersec-architect/11-ai-investment` | `11-ai-investment.md` |
-| `cybersec-architect/ea-deliverables` | `cybersec-architect/12-ea-deliverables` | `12-ea-deliverables.md` |
-| `cybersec-architect/security-patterns` | `cybersec-architect/13-security-patterns` | `13-security-patterns.md` |
-| `cybersec-architect/case-studies` | `cybersec-architect/14-case-studies` | `14-case-studies.md` |
-| `cybersec-architect/emerging-trends` | `cybersec-architect/15-emerging-trends` | `15-emerging-trends.md` |
-
-**Root cause:** Files were renamed to add numeric ordering prefixes but `sidebars.js` was not updated to match.
-
-## Remaining sidebars.js Gaps
-
-170 of 185 path-style references verified present. The 15 corrected above were the only mismatches.
-
-No files were renamed or moved as part of Phase 4 — taxonomy changes were limited to frontmatter and sidebar corrections.
+- `docs\agentic-systems\config\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-systems\harness\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-systems\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-systems\memory\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-systems\platform\ai-platform-factory-runbook-v2.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-systems\platform\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-systems\skill\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\agent-ux-patterns.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\agui-standards-landscape.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\anti-patterns.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\application-lifecycle.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\context-engineering.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\decision-frameworks.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\devsecops.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\enterprise-reference-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\evaluation-framework.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\evolution-human-ai-interfaces.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\future-outlook.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\governance.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\identity-auth-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\index.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\industry-reference-architectures.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\observability.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\performance-engineering.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\reliability-engineering.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\responsible-ai.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\scalability-engineering.md`: last_reviewed -> 2026-07-10
+- `docs\agentic-ui\security-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\ai-development\aidlc\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-development\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-development\testing\AI_Agent_Evaluation_Framework_Guide.md`: last_reviewed -> 2026-07-10
+- `docs\ai-development\testing\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-economics\ai-coding-agents-2026.md`: last_reviewed -> 2026-07-10
+- `docs\ai-economics\ai-value-creators-synthesis.md`: last_reviewed -> 2026-07-10
+- `docs\ai-economics\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-first-enterprise\ai-first-to-ai-native.md`: last_reviewed -> 2026-07-10
+- `docs\ai-first-enterprise\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_architecture.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_business_layer.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_context_engineering.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_eu_ai_act.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_evaluation.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_memory_architecture.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_multiagent.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_platform_layer.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_playbooks.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_tier3_complete.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\agentic_ai_landing_zone_visual_guide.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\AI_Native_Architecture_Evolution_Report.md`: last_reviewed -> 2026-07-10
+- `docs\ai-foundations\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\agent-identity-entra-vs-awsagentcore.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\entra-3lo-agent-auth-implementation.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\entra-3lo-agent-auth-multiagent-compliance.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\entra-3lo-agent-auth-security-review.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\entra-3lo-agent-auth-standards-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\Part3_Identity_OBO_Sessions.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\auth\tool-authentication-connectors.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\mcp\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\mcp\MCP_Deep_Research_2026.md`: last_reviewed -> 2026-07-10
+- `docs\ai-protocols\protocol\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-security-governance\deep-mind\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-security-governance\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-security-governance\policy\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-security-governance\security\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-usecases\CEO_Agent_Solution_Blueprint.md`: last_reviewed -> 2026-07-10
+- `docs\ai-usecases\eu-bank-ai-copilot-complete.md`: last_reviewed -> 2026-07-10
+- `docs\ai-usecases\EU_Banking_AI_Evaluation_Compliance_Guide.md`: last_reviewed -> 2026-07-10
+- `docs\ai-usecases\index.md`: last_reviewed -> 2026-07-10
+- `docs\ai-usecases\Mental_Model_Encyclopedia.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\ai-gateway\index.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\ai-gateway\kong-ai-gateway-guide.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\ai-gateway\kong-entra-id-integration.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\aws\bedrock-agentcore-code-interpreter-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\aws\index.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\azure\index.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\iac\index.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\iac\terraform\ai-assisted-iac-mastery.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\iac\terraform\index.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\iac\terraform\terraform-mastery-guide.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\index.md`: last_reviewed -> 2026-07-10
+- `docs\cloud-platforms\kubernetes\index.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\ccaf-exam-prep-complete.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\claude-agent-sdk-production.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\claude-api-mastery.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\claude-code-complete-2026.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\claude-enterprise-2026.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\claude-models-2026.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\constitutional-ai-safety-2026.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\index.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\mcp-deep-guide.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\prompt-engineering-claude-4.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\claude\ruflo-agentic-ai-guide.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\code-review\index.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\agent-communication-identity-gateway.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\agent-interoperability-orchestration.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\agent-memory-planning-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\agentic-ai-reliability-observability-governance.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\agentic-ai-security-guardrails.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\agentic-ai-security-identity.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\ai-harness-architecture-orchestration.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\enterprise-agent-reference-architectures.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\enterprise-ai-architect-foundations.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\enterprise-ai-architecture-patterns.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\enterprise-ai-governance-compliance.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\enterprise-ai-skills-assessment.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\index.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\machine-readable-ea.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\enterprise-ai-architect\mcp-a2a-protocol-deep-dive.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\github-copilot\git-github-platform-engineering-handbook.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\github-copilot\github-copilot-zero-to-hero.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\github-copilot\index.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\github-copilot\Part01_Vision_Copilot_Architecture_RepoIntelligence.md`: last_reviewed -> 2026-07-10
+- `docs\coding-tools\index.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\01-evolution.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\02-enterprise-security-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\03-security-domains.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\04-ai-security.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\05-agentic-ai-security.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\06-identity-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\07-cloud-security.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\08-ai-governance.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\09-security-operations.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\10-technology-investment.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\11-ai-investment.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\12-ea-deliverables.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\13-security-patterns.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\14-case-studies.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\15-emerging-trends.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\index.md`: last_reviewed -> 2026-07-10
+- `docs\cybersec-architect\usecase-transcript.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\deliverables\business-case-templates.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\deliverables\consulting-templates.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\deliverables\governance-templates.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\deliverables\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-01-ea-foundations\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-02-business-acumen\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-03-proposal-lifecycle\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-04-technology-investment\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-05-ai-investment-strategy\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-06-business-case\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-07-proposal-writing\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-08-financial-literacy\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-09-enterprise-ai-architecture\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-10-governance\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-11-executive-communication\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-12-ai-consulting\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\global-bank.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\government.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\healthcare.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\manufacturing.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\retail.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-13-case-studies\telecom.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-14-mentoring\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-15-distinguished-architect\architecture-leadership.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-15-distinguished-architect\executive-presence.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-15-distinguished-architect\fortune100-modernisation.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-15-distinguished-architect\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\module-15-distinguished-architect\strategic-thinking.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\transcripts\bank-discovery-workshop.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\transcripts\healthcare-executive-presentation.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\transcripts\index.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\transcripts\manufacturing-arb-review.md`: last_reviewed -> 2026-07-10
+- `docs\ea-masterclass\transcripts\retail-proposal-negotiation.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\arb\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\architectural-review-board\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\best-practices\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\framework\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\process\ai-solution-lifecycle-deliverables.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\process\Enterprise_AI_Architect_Deep_Dive_Guide.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\process\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\specialization\APEX_EA_Final.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\specialization\index.md`: last_reviewed -> 2026-07-10
+- `docs\enterprise-architecture\strategy\index.md`: last_reviewed -> 2026-07-10
+- `docs\index.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\ea\index.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\ea-ai-artifacts-and-metrics.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\EA_HITL_HOTL_HOOL_Interview_Questions.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\EA_Quality_Resilience_Testing_Interview_Questions.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\EA_Senior_Interview_Questions.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\EA_Soft_Skills_and_Behaviors.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\Enterprise_Architect_in_the_Age_of_AI.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\EY_AI_Architect_Interview_Guide_1.md`: last_reviewed -> 2026-07-10
+- `docs\interview-prep\index.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\data\index.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\index.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\industry-practices\consulting-firms.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\industry-practices\evaluation.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\industry-practices\governance-rai.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\industry-practices\grounding.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\industry-practices\index.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\industry-practices\tech-companies.md`: last_reviewed -> 2026-07-10
+- `docs\knowledge-engineering\knowledge\index.md`: last_reviewed -> 2026-07-10
+- `docs\quantum\IBM_Developer_Quantum_CertGuide.md`: last_reviewed -> 2026-07-10
+- `docs\quantum\index.md`: last_reviewed -> 2026-07-10
+- `docs\quantum\zero-to-mastery.md`: last_reviewed -> 2026-07-10
+- `docs\soft-skills\index.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\ai-alignment-control.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\ai-assurance-audit-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\ai-governance-operating-model.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\ai-risk-taxonomy.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\ai-safety-framework.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\constitutional-agent-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\constitutional-ai-engineering.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\democratic-ai-public-interest.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\index.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\policy-as-code-framework.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\rai-operating-model.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\sovereign-ai-foundations.md`: last_reviewed -> 2026-07-10
+- `docs\sovereign-constitutional-ai\sovereign-ai-roadmap-maturity.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\01-executive-summary.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\02-evolution-timeline.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\03-workflow-vs-agent-architecture.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\04-temporal-deep-dive.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\05-camunda-deep-dive.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\07-ai-coding-orchestrators.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\19-reference-architectures.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\20-decision-matrix.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\21-future-predictions.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\index.md`: last_reviewed -> 2026-07-10
+- `docs\workflow-orchestration\PENDING-RESEARCH-PROMPTS.md`: last_reviewed -> 2026-07-10; added: date_created, status, supersedes, source_type, source_file, tags
+- `docs\workflow-orchestration\RESEARCH-STATUS.md`: last_reviewed -> 2026-07-10
