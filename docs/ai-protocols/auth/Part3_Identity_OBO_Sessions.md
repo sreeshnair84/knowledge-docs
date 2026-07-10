@@ -7,6 +7,8 @@ supersedes: ""
 source_type: converted-pdf
 source_file: "Part3_Identity_OBO_Sessions.pdf"
 tags: ["ai-protocols", "auth"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 <!-- converted from Part3_Identity_OBO_Sessions.pdf -->

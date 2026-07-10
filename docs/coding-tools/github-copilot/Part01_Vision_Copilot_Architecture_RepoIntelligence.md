@@ -7,6 +7,8 @@ supersedes: ""
 source_type: converted-pdf
 source_file: "Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf"
 tags: ["coding-tools", "github-copilot"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 <!-- converted from Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf -->

@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["coding-tools", "github-copilot"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 # Git, GitHub Platform & Platform Engineering Cheatsheet

@@ -7,6 +7,8 @@ supersedes: ""
 source_type: converted-pdf
 source_file: "CEO_Agent_Solution_Blueprint.pdf"
 tags: ["ai-usecases"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 <!-- converted from CEO_Agent_Solution_Blueprint.pdf -->

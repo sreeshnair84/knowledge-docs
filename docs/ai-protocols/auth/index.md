@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 # Authentication & Identity for Agentic AI

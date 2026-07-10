@@ -7,6 +7,8 @@ supersedes: "docs/ai-usecases/eu-bank-ai-copilot-research.pdf"
 source_type: converted-pdf
 source_file: "eu-bank-ai-copilot-complete.pdf"
 tags: ["ai-usecases"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 <!-- converted from eu-bank-ai-copilot-complete.pdf -->

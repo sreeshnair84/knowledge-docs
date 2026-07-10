@@ -7,6 +7,9 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["coding-tools", "claude"]
+doc_type: certification
+exam_code: 
+exam_validity: 
 ---
 
 # CCAF Exam Prep — Complete Guide

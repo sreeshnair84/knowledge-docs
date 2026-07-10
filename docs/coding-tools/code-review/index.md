@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["coding-tools", "code-review"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 # Code Review
