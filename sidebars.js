@@ -145,7 +145,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Protocol Standards',
-          items: ['ai-protocols/protocol/index'],
+          items: ['ai-protocols/standards/index'],
         },
         {
           type: 'category',
