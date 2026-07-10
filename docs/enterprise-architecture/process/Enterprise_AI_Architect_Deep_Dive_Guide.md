@@ -7,6 +7,8 @@ supersedes: ""
 source_type: converted-pdf
 source_file: "Enterprise_AI_Architect_Deep_Dive_Guide.pdf"
 tags: ["enterprise-architecture", "process"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 <!-- converted from Enterprise_AI_Architect_Deep_Dive_Guide.pdf -->

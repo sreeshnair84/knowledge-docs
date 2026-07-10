@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["interview-prep"]
+doc_type: interview-questions
+target_role: EA HITL / HOTL / HOOL Interview Questions
 ---
 
 # Enterprise Architect Interview — Human Oversight Patterns

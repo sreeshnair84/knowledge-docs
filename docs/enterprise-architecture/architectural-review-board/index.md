@@ -7,6 +7,8 @@ supersedes: "enterprise-architecture/arb/index.md"
 source_type: native-md
 source_file: ""
 tags: ["enterprise-architecture", "arb", "architectural-review-board"]
+doc_type: framework-reference
+framework_name: Architectural Review Board (ARB)
 ---
 
 # Architectural Review Board (ARB)

@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["interview-prep"]
+doc_type: interview-questions
+target_role: EA Senior Interview Questions
 ---
 
 # Enterprise Architect Interview — Scenario Question Bank

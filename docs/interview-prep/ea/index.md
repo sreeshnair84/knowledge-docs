@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["interview-prep", "ea"]
+doc_type: interview-questions
+target_role: EA Interview Preparation
 ---
 
 # EA Interview Preparation

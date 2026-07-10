@@ -7,6 +7,8 @@ supersedes: "docs/interview-prep/EY_AI_Architect_Interview_Guide.pdf"
 source_type: converted-pdf
 source_file: "EY_AI_Architect_Interview_Guide_1.pdf"
 tags: ["interview-prep"]
+doc_type: interview-questions
+target_role: EY AI Architect & Consultant — Interview & ECC AI-First Guide
 ---
 
 <!-- converted from EY_AI_Architect_Interview_Guide_1.pdf -->
