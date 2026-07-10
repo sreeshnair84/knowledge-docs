@@ -109,14 +109,14 @@ def main():
                 if fn.lower().endswith((".md", ".pdf", ".docx", ".pptx")):
                     files.append(os.path.join(root, fn))
         files.sort()
-        with open(FILELIST_PATH, "w") as f:
+        with open(FILELIST_PATH, "w", encoding="utf-8") as f:
             json.dump(files, f)
     else:
-        with open(FILELIST_PATH) as f:
+        with open(FILELIST_PATH, encoding="utf-8") as f:
             files = json.load(f)
 
     if os.path.exists(CORPUS_PATH):
-        with open(CORPUS_PATH) as f:
+        with open(CORPUS_PATH, encoding="utf-8") as f:
             out = json.load(f)
     else:
         out = {}

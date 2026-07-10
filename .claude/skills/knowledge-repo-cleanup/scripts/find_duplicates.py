@@ -47,7 +47,7 @@ def main():
     ap.add_argument("--min-chars", type=int, default=300)
     args = ap.parse_args()
 
-    with open(args.corpus) as f:
+    with open(args.corpus, encoding="utf-8") as f:
         corpus = json.load(f)
 
     paths, texts = [], []

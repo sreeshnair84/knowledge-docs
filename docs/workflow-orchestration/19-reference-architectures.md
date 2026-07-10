@@ -1,6 +1,12 @@
 ---
-title: Reference Architectures - From BPM-First to AI-Native
-date: 2026-07-09
+title: "Reference Architectures - From BPM-First to AI-Native"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Reference Architectures
@@ -552,4 +558,4 @@ If you're evolving an existing system:
 
 ---
 
-**Next**: Read [Future Predictions](./21-future-predictions) to understand where this is all headed, or jump to [Decision Matrix](./20-decision-matrix) for platform selection.
+**Next**: Read [Future Predictions](./future-predictions) to understand where this is all headed, or jump to [Decision Matrix](./decision-matrix) for platform selection.

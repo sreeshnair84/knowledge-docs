@@ -1,3 +1,14 @@
+---
+title: "${skillName.charAt(0).toUpperCase() + skillName.slice(1).replace(/-/g, ' ')} Mode"
+date_created: 2026-06-29
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
+---
+
 import { useState, useEffect, useRef } from "react";
 
 const COMPRESSION_RULES = {

@@ -1,5 +1,12 @@
 ---
-title: EA Specializations
+title: "EA Specializations"
+date_created: 2026-06-29
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["enterprise-architecture", "specialization"]
 ---
 
 # EA Specializations
@@ -10,7 +17,7 @@ Specialist guides for enterprise architects working in data, AI transformation, 
 
 ## Sub-sections
 
-- [Data Architecture](data/) — AI-native data platforms, lineage systems, data governance
+- [Data Architecture](../../knowledge-engineering/data/) — AI-native data platforms, lineage systems, data governance
 
 ---
 
@@ -77,19 +84,19 @@ Specialist guides for enterprise architects working in data, AI transformation, 
 <details>
 <summary>Agentic AI — C-Suite</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/AgenticAI_Csuite.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="AgenticAI_Csuite.pptx" download>Download PPTX ↓</a></p>
+<p><a href="pathname://AgenticAI_Csuite.pptx" download>Download PPTX ↓</a></p>
 </details>
 
 <details>
 <summary>BizSales Agentic AI</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/BizSales_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="BizSales_AgenticAI.pptx" download>Download PPTX ↓</a></p>
+<p><a href="pathname://BizSales_AgenticAI.pptx" download>Download PPTX ↓</a></p>
 </details>
 
 <details>
 <summary>SA Dev Agentic AI</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/SA_Dev_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="SA_Dev_AgenticAI.pptx" download>Download PPTX ↓</a></p>
+<p><a href="pathname://SA_Dev_AgenticAI.pptx" download>Download PPTX ↓</a></p>
 </details>
 
 ---
@@ -99,5 +106,5 @@ Specialist guides for enterprise architects working in data, AI transformation, 
 <details>
 <summary>AI Invoice Auditor Architecture</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/AI_Invoice_Auditor_Architecture_v5.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="AI_Invoice_Auditor_Architecture_v5.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://AI_Invoice_Auditor_Architecture_v5.docx" download>Download DOCX ↓</a></p>
 </details>

@@ -1,7 +1,12 @@
 ---
-title: EA Soft Skills and Behaviors
-parent: Interviews
-nav_order: 5
+title: "EA Soft Skills and Behaviors"
+date_created: 2026-07-06
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["interview-prep"]
 ---
 
 # The Enterprise Architect's Inner Game

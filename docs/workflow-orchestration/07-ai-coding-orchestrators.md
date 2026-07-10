@@ -1,6 +1,12 @@
 ---
-title: AI Coding Orchestrators - Claude Code, GitHub Copilot, and the Meta-Orchestrator Pattern
-date: 2026-07-09
+title: "AI Coding Orchestrators - Claude Code, GitHub Copilot, and the Meta-Orchestrator Pattern"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # AI Coding Orchestrators
@@ -426,4 +432,4 @@ Consider:
 
 ---
 
-**Next**: Compare [Agent Frameworks](./08-agent-frameworks-comparison) (LangGraph vs. CrewAI vs. Semantic Kernel), or jump to [Reference Architectures](./19-reference-architectures) for real-world patterns.
+**Next**: Compare [Agent Frameworks](./ai-coding-orchestrators) (LangGraph vs. CrewAI vs. Semantic Kernel), or jump to [Reference Architectures](./reference-architectures) for real-world patterns.

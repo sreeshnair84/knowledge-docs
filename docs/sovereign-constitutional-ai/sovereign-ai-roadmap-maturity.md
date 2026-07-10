@@ -1,5 +1,12 @@
 ---
-title: Roadmap, Maturity & Standards Canon
+title: "Roadmap, Maturity & Standards Canon"
+date_created: 2026-07-07
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["sovereign-constitutional-ai"]
 ---
 
 # Roadmap, Maturity & Standards Canon (Deliverables 16–24)

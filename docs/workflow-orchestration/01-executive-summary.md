@@ -1,6 +1,12 @@
 ---
-title: Executive Summary - Workflow Orchestration in the Agentic AI Era
-date: 2026-07-09
+title: "Executive Summary - Workflow Orchestration in the Agentic AI Era"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Executive Summary: Workflow Orchestration Meets Agentic AI
@@ -207,16 +213,16 @@ Each layer:
 ## Next Steps
 
 **For CIOs/CTOs**:  
-Start with the [Decision Matrix](./20-decision-matrix). Choose your platform strategy by Q4 2026.
+Start with the [Decision Matrix](./decision-matrix). Choose your platform strategy by Q4 2026.
 
 **For Enterprise Architects**:  
-Read [Workflow vs. Agent Architecture](./03-workflow-vs-agent-architecture), then deep-dive into your platform of choice.
+Read [Workflow vs. Agent Architecture](./workflow-vs-agent-architecture), then deep-dive into your platform of choice.
 
 **For Platform Engineers**:  
-Study the [Hybrid Reference Architecture](./19-reference-architectures) and implement internal orchestration patterns.
+Study the [Hybrid Reference Architecture](./reference-architectures) and implement internal orchestration patterns.
 
 **For AI Governance**:  
-Review [Enterprise Governance Model](./18-enterprise-governance-model) for versioning, audit, and oversight.
+Review [Enterprise Governance Model](./reference-architectures) for versioning, audit, and oversight.
 
 ---
 

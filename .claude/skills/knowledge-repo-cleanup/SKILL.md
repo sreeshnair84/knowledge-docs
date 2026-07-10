@@ -1,7 +1,12 @@
 ---
-name: knowledge-repo-cleanup
-description: Deduplicate, restructure, and standardize this knowledge-base repo (overlapping markdown pages, PDFs, DOCX, PPTX covering the same topics; PDFs embedded via iframe instead of converted; inconsistent frontmatter). RESUMABLE across sessions and usage-limit resets via a committed progress tracker at _meta/progress.json. Use this skill whenever the user asks to continue the repo cleanup, check cleanup progress, find duplicate/overlapping content, convert PDFs to markdown, merge overlapping docs, or resume after hitting a usage limit. Always check _meta/progress.json first — this is a multi-session job, never assume you're starting fresh.
-model: sonnet
+title: "Knowledge Repo Cleanup"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["skills", "knowledge-repo-cleanup"]
 ---
 
 # Knowledge Repo Cleanup
@@ -14,8 +19,10 @@ Phase 0. This file covers orientation, resumability, and model guidance.
 
 ## Always do this first
 
-1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py status` (creates
-   `_meta/progress.json` on first run if it doesn't exist).
+1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py status` to see phase
+   states. If it says "No tracker yet", the file doesn't exist — run
+   `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py init` first (confirm with
+   the user before doing so on the very first run).
 2. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py next` to get the exact
    next task — a phase to start, or the next pending item in a phase's queue.
 3. Tell the user what you found ("Phase 2 is 34/242 files converted, resuming
@@ -24,10 +31,6 @@ Phase 0. This file covers orientation, resumability, and model guidance.
    doing, and never re-derive "what's done" from your own memory or by
    re-scanning the repo — the tracker is the single source of truth, because
    your own context resets every session and this job doesn't.
-
-If `_meta/progress.json` doesn't exist and this looks like the first run,
-confirm with the user before running Phase 0 — it's read-only and safe, but
-check they want to start.
 
 ## The phases (detail in references/playbook.md)
 

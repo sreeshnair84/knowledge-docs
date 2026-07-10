@@ -1,5 +1,12 @@
 ---
-title: Prompt Engineering for Claude 4.x
+title: "Prompt Engineering for Claude 4.x"
+date_created: 2026-07-07
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 
 # Prompt Engineering for Claude 4.x

@@ -1,3 +1,14 @@
+---
+title: "CLAUDE.md"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: []
+---
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -93,4 +104,18 @@ for root, _, files in os.walk("docs"):
             text = "\n".join(p.text for p in docx.Document(fpath).paragraphs)
         if pattern.search(text):
             print(fpath)
+```
+
+## Repo Cleanup (COMPLETE — merged 2026-07-10)
+
+The deduplication and restructure pass on `restructure/dedup-2026-07` is complete.
+All 6 phases finished; branch merged to `main` on 2026-07-10.
+
+See `_meta/cleanup-summary.md` for the full handoff report.
+
+**Directories created by the cleanup — do not delete or commit-ignore:**
+
+```
+_meta/                    # cleanup metadata (tracker, corpus, inventory, reports)
+archive/                  # retired source files (PDF/DOCX/PPTX superseded by Markdown)
 ```

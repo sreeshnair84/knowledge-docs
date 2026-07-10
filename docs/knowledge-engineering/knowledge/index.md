@@ -1,5 +1,12 @@
 ---
-title: Knowledge Engineering
+title: "Knowledge Engineering"
+date_created: 2026-07-05
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["knowledge-engineering", "knowledge"]
 ---
 
 # Knowledge Engineering
@@ -29,5 +36,5 @@ Research and architecture guides for autonomous knowledge systems, RAG, enterpri
 <details>
 <summary>Complex RAG Deep Dive</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/knowledge-engineering/knowledge/Complex_RAG_Deep_Dive.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="Complex_RAG_Deep_Dive.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://Complex_RAG_Deep_Dive.docx" download>Download DOCX ↓</a></p>
 </details>

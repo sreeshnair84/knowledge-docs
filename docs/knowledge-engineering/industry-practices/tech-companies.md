@@ -1,5 +1,12 @@
 ---
-title: How Tech Companies Serve Knowledge
+title: "How Tech Companies Serve Knowledge"
+date_created: 2026-07-05
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["knowledge-engineering", "industry-practices"]
 ---
 
 # How Tech Companies Build & Serve Knowledge Systems

@@ -1,6 +1,12 @@
 ---
-title: Technology Evolution Timeline - From BPM to Agentic Orchestration
-date: 2026-07-09
+title: "Technology Evolution Timeline - From BPM to Agentic Orchestration"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Technology Evolution Timeline
@@ -340,4 +346,4 @@ You'll need traces for:
 
 ---
 
-**Next**: Understand what distinguishes [Workflows from Agents](./03-workflow-vs-agent-architecture).
+**Next**: Understand what distinguishes [Workflows from Agents](./workflow-vs-agent-architecture).

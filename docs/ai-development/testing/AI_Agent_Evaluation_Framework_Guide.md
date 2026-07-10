@@ -1,7 +1,14 @@
 ---
-title: AI Agent Evaluation Framework
-parent: Agentic AI
-nav_order: 1
+title: "Complete AI Agent Evaluation Framework"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+doc_type: framework-reference
+framework_name: "AI Agent Evaluation Framework"
+supersedes: "docs/ai-development/testing/AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix.pdf"
+source_type: native-md
+source_file: ""
+tags: ["ai-development", "testing"]
 ---
 
 # 🧠 Complete AI Agent Evaluation Framework
@@ -1283,6 +1290,19 @@ WEEK 4 — LAUNCH READINESS
 │  Cost per Session ($)  │ ≤$0.05 │ >$0.10  │ CloudWatch         │ Infra │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## When to Apply
+
+Use this framework when deploying AI agents on AWS Bedrock AgentCore + Strands with Arize Phoenix observability. Specifically:
+
+- **New agent deployments**: run the full lifecycle (Section 3) before go-live to baseline performance and catch regressions early.
+- **Production incidents**: use the Runbooks (Section 11) to triage latency spikes, hallucination bursts, or tool-call failures with pre-defined playbooks.
+- **Drift investigation**: when Phoenix or CloudWatch alerts fire on metric thresholds, use Section 6 (Drift Detection) to classify root cause.
+- **LLM judge setup**: when you need automated quality scoring at scale without human review, Section 9 defines the prompts and scoring rubrics.
+
+For agents on other stacks (e.g., LangGraph, Azure AI), the taxonomy (Section 4) and benchmark standards (Section 5) are portable; the pipeline automation (Section 7) is AWS-specific.
 
 ---
 

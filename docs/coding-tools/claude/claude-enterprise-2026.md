@@ -1,5 +1,12 @@
 ---
-title: Claude Enterprise Deployment 2026
+title: "Claude Enterprise Deployment 2026"
+date_created: 2026-07-07
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 
 # Claude Enterprise Deployment 2026

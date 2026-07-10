@@ -1,5 +1,12 @@
 ---
-title: Enterprise Agent Reference Architectures, Platform Engineering & Checklists
+title: "Enterprise Agent Reference Architectures, Platform Engineering & Checklists"
+date_created: 2026-07-07
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "enterprise-ai-architect"]
 ---
 
 # Enterprise Agent Reference Architectures, Platform Engineering & Checklists

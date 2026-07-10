@@ -1,12 +1,19 @@
 ---
-title: Authentication & Identity
+title: "Authentication & Identity"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
 ---
 
 # Authentication & Identity for Agentic AI
 
 > **Current as of July 2026.** Agent authentication requires moving beyond static API keys to cryptographic, per-request identity. This page summarises the key patterns; the PDFs below provide deep-dives on each.
 
-> **See also:** For Kong AI Gateway auth proxy implementation, see [Kong AI Gateway Auth Guide](../../cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md). For identity at the UI/application layer, see [Identity & Auth Architecture](../../agentic-ui/identity-auth-architecture.md). For OWASP ASI01–10 security patterns and SPIFFE/SPIRE reference, see [Agentic AI Security & Identity](../../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
+> **See also:** For Kong AI Gateway auth proxy implementation, see [Kong AI Gateway Guide](../../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md). For identity at the UI/application layer, see [Identity & Auth Architecture](../../agentic-ui/identity-auth-architecture.md). For OWASP ASI01–10 security patterns and SPIFFE/SPIRE reference, see [Agentic AI Security & Identity](../../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
 
 ---
 
@@ -100,27 +107,31 @@ Microsoft Entra now supports **Agent ID** — agents as first-class identity obj
 ## PDFs
 
 <details>
-<summary>EntraID 3LO Agent Auth Research</summary>
-<iframe src="EntraID_3LO_Agent_Auth_Research.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EntraID_3LO_Agent_Auth_Research.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>Entra ID 3LO Agent Auth — Standards &amp; Architecture (Vol. 1)</summary>
+
+→ **[Read the full guide](./entra-3lo-agent-auth-standards-architecture)**
+
 </details>
 
 <details>
-<summary>EntraID 3LO Agent Auth — Volume 2</summary>
-<iframe src="EntraID_3LO_Agent_Auth_Volume2.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EntraID_3LO_Agent_Auth_Volume2.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>Entra ID 3LO Agent Auth — Implementation Guide (Vol. 2)</summary>
+
+→ **[Read the full guide](./entra-3lo-agent-auth-implementation)**
+
 </details>
 
 <details>
-<summary>EntraID 3LO Agent Auth — Volume 3</summary>
-<iframe src="EntraID_3LO_Agent_Auth_Volume3.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EntraID_3LO_Agent_Auth_Volume3.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>Entra ID 3LO Agent Auth — Multi-Agent Compliance (Vol. 3)</summary>
+
+→ **[Read the full guide](./entra-3lo-agent-auth-multiagent-compliance)**
+
 </details>
 
 <details>
-<summary>EntraID 3LO Agent Auth — Volume 4</summary>
-<iframe src="EntraID_3LO_Agent_Auth_Volume4.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EntraID_3LO_Agent_Auth_Volume4.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>Entra ID 3LO Agent Auth — Security Review (Vol. 4)</summary>
+
+→ **[Read the full guide](./entra-3lo-agent-auth-security-review)**
+
 </details>
 
 <details>
@@ -130,9 +141,10 @@ Microsoft Entra now supports **Agent ID** — agents as first-class identity obj
 </details>
 
 <details>
-<summary>Part 2 — Tool Authentication</summary>
-<iframe src="Part2_Tool_Authentication.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part2_Tool_Authentication.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>Tool Authentication &amp; Connectors</summary>
+
+→ **[Read the full guide](./tool-authentication-connectors)**
+
 </details>
 
 <details>

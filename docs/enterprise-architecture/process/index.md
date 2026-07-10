@@ -1,5 +1,12 @@
 ---
-title: EA Processes & Lifecycle
+title: "EA Processes & Lifecycle"
+date_created: 2026-06-29
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["enterprise-architecture", "process"]
 ---
 
 # EA Processes & Lifecycle
@@ -59,5 +66,5 @@ Guides and playbooks for enterprise architecture processes — covering lifecycl
 <details>
 <summary>EA Agentic AI</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/process/EA_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="EA_AgenticAI.pptx" download>Download PPTX ↓</a></p>
+<p><a href="pathname://EA_AgenticAI.pptx" download>Download PPTX ↓</a></p>
 </details>

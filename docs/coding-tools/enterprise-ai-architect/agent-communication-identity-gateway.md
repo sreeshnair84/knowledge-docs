@@ -1,5 +1,12 @@
 ---
-title: Agent Communication, Identity, Authorization & AI Gateway
+title: "Agent Communication, Identity, Authorization & AI Gateway"
+date_created: 2026-07-07
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "enterprise-ai-architect"]
 ---
 
 # Agent Communication, Identity, Authorization & AI Gateway

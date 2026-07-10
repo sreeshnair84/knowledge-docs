@@ -1,4 +1,18 @@
 ---
+title: "EntraID 3LO: AC Gateway + AC Identity — Volume 4"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+doc_type: research-report
+research_date: "2026-07-09"
+covers_through: "2026-07-09"
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume4.pdf"
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
+---
+
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume4.pdf"
 title: "EntraID 3LO Agent Auth — Security Review Package, Pen Test & NHI Governance (Vol. 4)"
 tags: [auth, identity, oauth, entra, security, penetration-test, nhi, ciso]
 ---
@@ -14,6 +28,16 @@ Builds on: Volumes 1–3: Standards, Code, Runbook, Multi-Agent, DORA, Maturity 
 This volume covers: Security gate checklist, penetration test plan, OAuth attack vectors, NHI governance at scale, CISO brief, Board one-pager.
 
 ---
+
+## Table of Contents
+
+1. [Security Gate Checklist — Pre-Production Sign-Off](#26-security-gate-checklist)
+2. [Penetration Test Plan — Agent Identity & OAuth Flows](#27-penetration-test-plan)
+3. [Known OAuth Attack Vectors — 2025-2026 Threat Landscape](#28-known-oauth-attack-vectors)
+4. [Non-Human Identity (NHI) Governance at Scale](#29-non-human-identity-governance)
+5. [CISO Briefing](#30-ciso-briefing)
+6. [Board / Risk Committee — Key Points](#31-board-risk-committee)
+7. [Complete Series Index — Volumes 1–4](#32-complete-series-index)
 
 ## 26. Security Gate Checklist — Pre-Production Sign-Off
 

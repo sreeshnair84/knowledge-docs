@@ -1,5 +1,12 @@
 ---
-title: Interviews
+title: "Interviews"
+date_created: 2026-06-29
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["interview-prep"]
 ---
 
 # Interview Preparation
@@ -33,9 +40,10 @@ Question banks, scenario prep, and behavioral guides for Enterprise Architect an
 </details>
 
 <details>
-<summary>EY AI Architect Interview Guide</summary>
-<iframe src="EY_AI_Architect_Interview_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EY_AI_Architect_Interview_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
+<summary>EY AI Architect &amp; Consultant — Interview &amp; ECC AI-First Guide</summary>
+
+→ **[Read the full guide](./EY_AI_Architect_Interview_Guide_1)**
+
 </details>
 
 <details>
@@ -51,17 +59,17 @@ Question banks, scenario prep, and behavioral guides for Enterprise Architect an
 <details>
 <summary>AI Engineer Question Bank</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/interviews/AI_Engineer_Question_Bank.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="AI_Engineer_Question_Bank.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://AI_Engineer_Question_Bank.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>Hard Scenarios Interview Prep</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/interviews/Hard_Scenarios_Interview_Prep.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="Hard_Scenarios_Interview_Prep.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://Hard_Scenarios_Interview_Prep.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>ML &amp; AI Interview Mastery Guide</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/interviews/ML_AI_Interview_Mastery_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="ML_AI_Interview_Mastery_Guide.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://ML_AI_Interview_Mastery_Guide.docx" download>Download DOCX ↓</a></p>
 </details>

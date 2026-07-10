@@ -1,4 +1,18 @@
 ---
+title: "EntraID 3LO: AC Gateway + AC Identity — Volume 1"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+doc_type: research-report
+research_date: "2026-07-09"
+covers_through: "2026-07-09"
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Research.pdf"
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
+---
+
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Research.pdf"
 title: "EntraID 3LO Agent Auth — Standards, Architecture & Gateway Design (Vol. 1)"
 tags: [auth, identity, oauth, entra, 3lo, obo, gateway, mcp]
 ---
@@ -16,6 +30,19 @@ tags: [auth, identity, oauth, entra, 3lo, obo, gateway, mcp]
 | **Compiled** | June 2026 |
 
 ---
+
+## Table of Contents
+
+1. [Background & Problem Statement](#1-background-problem-statement)
+2. [Standards & Theoretical Foundation](#2-standards-theoretical-foundation)
+3. [Microsoft Entra Agent ID — Architecture](#3-microsoft-entra-agent-id-architecture)
+4. [AC Gateway — Three-Plane Architecture](#4-ac-gateway-three-plane-architecture)
+5. [Target Resource Integrations](#5-target-resource-integrations)
+6. [Industry: Who Has Productionised 3LO for AI Agents](#6-industry)
+7. [Security, Zero Trust & Threat Model](#7-security-zero-trust)
+8. [Dependencies, Blockers & Delivery Plan](#8-dependencies-blockers)
+9. [Open Questions & Industry Gaps](#9-open-questions)
+10. [Executive Summary](#executive-summary)
 
 ## 1. Background & Problem Statement
 

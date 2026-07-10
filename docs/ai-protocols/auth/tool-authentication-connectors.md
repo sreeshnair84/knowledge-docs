@@ -1,4 +1,17 @@
 ---
+title: "Tool Authentication & Connector Models"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+doc_type: guide
+covers_version: "N/A"
+supersedes: "docs/ai-protocols/auth/Part2_Tool_Authentication.pdf"
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "auth"]
+---
+
+supersedes: "docs/ai-protocols/auth/Part2_Tool_Authentication.pdf"
 title: Tool Authentication & Connector Models for AI Agents
 tags: [auth, oauth, connectors, github, confluence, sharepoint, jira, slack, salesforce]
 ---

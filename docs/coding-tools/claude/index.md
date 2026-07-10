@@ -1,5 +1,12 @@
 ---
-title: Claude
+title: "Claude"
+date_created: 2026-07-04
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 
 # Claude
@@ -34,8 +41,9 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 <details>
 <summary>Module 2 — Claude API &amp; SDK</summary>
-<iframe src="Module_2_Claude_API_SDK.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_2_Claude_API_SDK.pdf" target="_blank">Open in new tab ↗</a></p>
+
+→ **[Claude API Mastery Guide (replaces PDF module)](./claude-api-mastery)**
+
 </details>
 
 <details>
@@ -169,23 +177,23 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 <details>
 <summary>Anthropic Partner Cert Study Guide</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/Anthropic_Partner_Cert_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="Anthropic_Partner_Cert_Study_Guide.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://Anthropic_Partner_Cert_Study_Guide.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>CCAF Study Guide</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/CCAF_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="CCAF_Study_Guide.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://CCAF_Study_Guide.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>CCAF Advanced Supplement</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/CCAF_Advanced_Supplement.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="CCAF_Advanced_Supplement.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://CCAF_Advanced_Supplement.docx" download>Download DOCX ↓</a></p>
 </details>
 
 <details>
 <summary>Claude Best Practices</summary>
 <iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/claude-best-practices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="claude-best-practices.docx" download>Download DOCX ↓</a></p>
+<p><a href="pathname://claude-best-practices.docx" download>Download DOCX ↓</a></p>
 </details>

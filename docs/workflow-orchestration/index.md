@@ -1,7 +1,12 @@
 ---
-title: Workflow Orchestration in the Agentic AI Era
-description: Enterprise research on how Agentic AI fundamentally transforms workflow automation, from deterministic BPM to adaptive AI-native systems
-date: 2026-07-09
+title: "Workflow Orchestration in the Agentic AI Era"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Workflow Orchestration in the Agentic AI Era
@@ -35,25 +40,25 @@ This research answers:
 
 Navigate by area of focus:
 
-### [**Evolution & Foundations**](./01-executive-summary)
+### [**Evolution & Foundations**](./executive-summary)
 Executive summary, technology timeline, and conceptual foundations.
 
-### [**Architecture Patterns**](./03-workflow-vs-agent-architecture)
+### [**Architecture Patterns**](./workflow-vs-agent-architecture)
 Workflow vs. agent architecture, determinism vs. adaptivity, and design principles.
 
-### [**Platform Deep Dives**](./04-temporal-deep-dive)
+### [**Platform Deep Dives**](./temporal-deep-dive)
 In-depth analysis of Temporal, Camunda, durable execution, and AI coding orchestrators.
 
-### [**Agent & AI Orchestration**](./07-ai-coding-orchestrators)
+### [**Agent & AI Orchestration**](./ai-coding-orchestrators)
 How AI agents orchestrate themselves: LangGraph, CrewAI, Semantic Kernel, Claude Code, and emerging patterns.
 
-### [**Enterprise Patterns**](./12-human-in-loop-architectures)
+### [**Enterprise Patterns**](./workflow-vs-agent-architecture)
 Governance, reliability, security, observability, and human-in-the-loop design.
 
-### [**Decision Frameworks**](./20-decision-matrix)
+### [**Decision Frameworks**](./decision-matrix)
 Decision matrices, CMM models, and recommendations for different enterprise contexts.
 
-### [**Future Outlook**](./21-future-predictions)
+### [**Future Outlook**](./future-predictions)
 2026–2035 predictions: Will BPM disappear? Will workflows become prompts? Will orchestrators become operating systems?
 
 ---
@@ -69,4 +74,4 @@ Decision matrices, CMM models, and recommendations for different enterprise cont
 
 ---
 
-**Ready to dive in?** Start with the [Executive Summary](./01-executive-summary) or jump to a specific platform [deep dive](./04-temporal-deep-dive).
+**Ready to dive in?** Start with the [Executive Summary](./executive-summary) or jump to a specific platform [deep dive](./temporal-deep-dive).

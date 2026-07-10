@@ -1,3 +1,14 @@
+---
+title: "Cleanup Playbook — Phase Detail"
+date_created: 2026-07-09
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["skills", "knowledge-repo-cleanup"]
+---
+
 # Cleanup Playbook — Phase Detail
 
 Each phase below writes one output file under `_meta/` and updates
@@ -12,17 +23,58 @@ record: path, title (frontmatter or first heading, or filename for
 binaries), size, last git-log modification date, and a 2-3 sentence content
 summary.
 
-Use `scripts/extract_corpus.py` to get plain text out of every file first —
-it handles all four formats and batches by index range so a single call
-doesn't time out on a large repo:
+**Step 1 — Extract corpus** using `scripts/extract_corpus.py` (handles all
+four formats; batch by index range so a single call doesn't time out):
 
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/scripts/extract_corpus.py 0 60
 python3 ${CLAUDE_SKILL_DIR}/scripts/extract_corpus.py 60 120
-# ... continue in batches of ~60 until scripts reports all files processed
+# ... continue in batches of ~60 until script reports all files processed
 ```
 
 This writes `_meta/corpus.json` (path → extracted text), used by Phase 1.
+
+**Step 2 — Build inventory** — there is no dedicated script for this step;
+run it inline. The snippet below derives titles (frontmatter → first heading
+→ filename), gets file sizes and git dates, and uses the first three
+non-heading content lines as the summary:
+
+```python
+import json, os, re, subprocess, sys
+
+with open("_meta/corpus.json", encoding="utf-8") as f:
+    corpus = json.load(f)
+
+inventory = {}
+for path, text in corpus.items():
+    try: size = os.path.getsize(path)
+    except: size = 0
+    try:
+        r = subprocess.run(["git","log","-1","--format=%as","--",path], capture_output=True, text=True)
+        git_date = r.stdout.strip() or "unknown"
+    except: git_date = "unknown"
+    title = None
+    fm = re.search(r'^---\s*\n.*?^title:\s*["\']?(.+?)["\']?\s*$.*?^---', text, re.MULTILINE|re.DOTALL)
+    if fm: title = fm.group(1).strip()
+    if not title:
+        hm = re.search(r'^#{1,3}\s+(.+)', text, re.MULTILINE)
+        if hm: title = hm.group(1).strip()
+    if not title: title = os.path.basename(path)
+    lines = text.split('\n'); in_fm = False; cl = []; i = 0
+    if lines and lines[0].strip() == '---': in_fm = True; i = 1
+    while i < len(lines):
+        if in_fm:
+            if lines[i].strip() == '---': in_fm = False
+        else:
+            l = lines[i].strip()
+            if l and not l.startswith(('#','|','!')): cl.append(l)
+            if len(cl) >= 3: break
+        i += 1
+    inventory[path] = {"path":path,"title":title,"size_bytes":size,"git_date":git_date,"summary":' '.join(cl)[:400]}
+
+with open("_meta/inventory.json","w",encoding="utf-8",errors="replace") as f:
+    json.dump(inventory, f, indent=2, ensure_ascii=False)
+```
 
 Output: `_meta/inventory.json` — path, title, size, summary per file.
 Mark complete: `progress.py complete-phase --phase 0`.
@@ -96,6 +148,13 @@ may cover 100+ files, don't attempt it in one sitting.
 
 Mark complete once the queue is empty: `progress.py complete-phase --phase 2`.
 
+**Skip pattern**: If Phase 1 determined no PDF/DOCX/PPTX conversions are needed
+(all keepers already have MD versions), seed an empty queue and complete
+immediately:
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py complete-phase --phase 2
+```
+
 ## Phase 3 — Merge & retire duplicates (Opus recommended, queued)
 
 For each cluster from Phase 1 (queue seeded automatically): merge the unique
@@ -107,8 +166,33 @@ into `/archive/<original-relative-path>/`. Do not hard-delete. Add a
 one-line `supersedes` frontmatter pointer in the keeper referencing what it
 replaced, and `status: archived` frontmatter on the archived copies.
 
-After each cluster: `progress.py mark --phase 3 --item <cluster-id> --status
-done`, then append a before/after entry to `_meta/merge-log.md`.
+**Post-merge validation — run after every keeper file is written:**
+
+1. **Readability check** — Open the merged file and verify it reads as a
+   coherent document, not as two documents stitched end-to-end. Merged
+   content must be integrated into the keeper's structure (correct heading
+   level, consistent terminology, no dangling cross-references to the
+   archived file).
+
+2. **knowledge-page-authoring lint** — Run the linter on the merged keeper:
+   ```bash
+   python3 .claude/skills/knowledge-page-authoring/scripts/lint_page.py <keeper-path>
+   ```
+   Fix any failures before marking the cluster done. The linter checks
+   frontmatter completeness, heading hierarchy, and structural conventions
+   that all pages in this repo must follow.
+
+3. **Frontmatter** — Confirm the keeper has all required fields after merge:
+   `title`, `date_created`, `last_reviewed` (set to today), `status: current`,
+   `supersedes` (list archived file paths), `source_type`, `source_file`, `tags`.
+
+4. **Link integrity** — Any cross-links inside the merged content must resolve
+   to pages that still exist. Update links that pointed to the now-archived
+   source files to point at the keeper instead.
+
+After each cluster passes all four checks: `progress.py mark --phase 3
+--item <cluster-id> --status done`, then append a before/after entry to
+`_meta/merge-log.md`.
 
 Mark complete once the queue is empty: `progress.py complete-phase --phase 3`.
 
@@ -131,11 +215,51 @@ tags: []
 
 Seed the queue with every current page not yet touched in Phase 2 or 3
 (those already got frontmatter as part of conversion/merge — just verify
-and mark done).
+and mark done):
 
-Separately (not part of the per-file queue): reconcile the root `README.md`
-and `sidebars.js` navigation so every listed section maps to a folder that
-actually exists. Note every rename in `_meta/taxonomy-changes.md`.
+```bash
+find docs -name "*.md" | sort > /tmp/phase4_files.txt
+python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py seed-queue --phase 4 \
+  --items-from /tmp/phase4_files.txt
+```
+
+**Bulk processing script**: For repos with 100+ files, use the included
+`scripts/normalize_frontmatter.py` to add missing fields in one pass rather
+than editing files one by one:
+
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/normalize_frontmatter.py
+```
+
+The script adds missing fields without overwriting existing ones, writes a
+change log to `_meta/taxonomy-changes.md`, and uses `git log` to infer
+`date_created` for files that don't have one.
+
+**Bulk queue marking**: After the script runs, marking 100+ items individually
+via `progress.py mark` is impractical. For bulk completion, edit
+`_meta/progress.json` directly:
+
+```python
+import json
+from datetime import datetime, timezone
+with open('_meta/progress.json', encoding='utf-8') as f:
+    data = json.load(f)
+now = datetime.now(timezone.utc).isoformat()
+for ph in data['phases']:
+    if ph['name'] == 'frontmatter_taxonomy':
+        for item in ph.get('queue') or []:
+            if item['status'] != 'done':
+                item['status'] = 'done'
+                item['completed_at'] = now
+data['last_updated'] = now
+with open('_meta/progress.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, indent=2)
+```
+
+Separately (not part of the per-file queue): reconcile `sidebars.js`
+navigation so every listed doc ID maps to a file that actually exists,
+and every important file in `docs/` is reachable via the sidebar. Note
+any sidebar changes in `_meta/taxonomy-changes.md`.
 
 Mark complete: `progress.py complete-phase --phase 4`.
 
@@ -158,11 +282,24 @@ Mark complete: `progress.py complete-phase --phase 5`.
 Run the Docusaurus build. Fix any broken links or missing references caused
 by the restructuring. Run a link checker against the built site.
 
+**Common post-cleanup build failures:**
+- Sidebar doc IDs pointing to archived files — remove from `sidebars.js`
+- Pages that cross-link to archived files — update to point at keepers
+- Important files not in sidebar — add to the relevant `sidebars.js` category
+
+```bash
+npm run build 2>&1 | grep -E "(ERROR|WARNING|SUCCESS)"
+# For missing sidebar doc IDs:
+npm run build 2>&1 | grep "  - "
+# For broken page links:
+npm run build 2>&1 | grep "Broken link on source page"
+```
+
 Produce `_meta/cleanup-summary.md`: total files before/after, duplicate
 clusters resolved, PDFs converted, files archived, and anything still
 needing a human decision.
 
-Don't merge the branch — stop and hand off the branch plus summary for
-review.
+Once the branch is merged, update CLAUDE.md to remove the "do not merge"
+note and clean up any branch-specific instructions.
 
 Mark complete: `progress.py complete-phase --phase 6`.

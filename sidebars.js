@@ -202,7 +202,6 @@ const sidebars = {
           items: [
             'cloud-platforms/ai-gateway/index',
             'cloud-platforms/ai-gateway/kong-ai-gateway-guide',
-            'cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide',
             'cloud-platforms/ai-gateway/kong-entra-id-integration',
           ],
         },
@@ -294,7 +293,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Specialization',
-          items: ['enterprise-architecture/specialization/index'],
+          items: [
+            'enterprise-architecture/specialization/index',
+            'enterprise-architecture/specialization/APEX_EA_Final',
+          ],
         },
       ],
     },
@@ -466,39 +468,39 @@ const sidebars = {
           type: 'category',
           label: 'Foundations',
           items: [
-            'workflow-orchestration/01-executive-summary',
-            'workflow-orchestration/02-evolution-timeline',
-            'workflow-orchestration/03-workflow-vs-agent-architecture',
+            'workflow-orchestration/executive-summary',
+            'workflow-orchestration/evolution-timeline',
+            'workflow-orchestration/workflow-vs-agent-architecture',
           ],
         },
         {
           type: 'category',
           label: 'Platform Deep Dives',
           items: [
-            'workflow-orchestration/04-temporal-deep-dive',
-            'workflow-orchestration/05-camunda-deep-dive',
+            'workflow-orchestration/temporal-deep-dive',
+            'workflow-orchestration/camunda-deep-dive',
           ],
         },
         {
           type: 'category',
           label: 'AI & Agents',
           items: [
-            'workflow-orchestration/07-ai-coding-orchestrators',
+            'workflow-orchestration/ai-coding-orchestrators',
           ],
         },
         {
           type: 'category',
           label: 'Enterprise Architecture',
           items: [
-            'workflow-orchestration/19-reference-architectures',
-            'workflow-orchestration/20-decision-matrix',
+            'workflow-orchestration/reference-architectures',
+            'workflow-orchestration/decision-matrix',
           ],
         },
         {
           type: 'category',
           label: 'Future',
           items: [
-            'workflow-orchestration/21-future-predictions',
+            'workflow-orchestration/future-predictions',
           ],
         },
       ],

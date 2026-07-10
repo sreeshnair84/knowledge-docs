@@ -1,3 +1,14 @@
+---
+title: "Pdf Viewer"
+date_created: 2026-06-13
+last_reviewed: 2026-07-09
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["javascripts", "pdf-viewer.js"]
+---
+
 /**
  * On mobile devices, PDF iframes render poorly (single page, no scroll).
  * This script injects a Google Docs Viewer iframe on mobile for PDFs,

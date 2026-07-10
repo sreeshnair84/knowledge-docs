@@ -1,5 +1,12 @@
 ---
-title: MCP
+title: "MCP"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["ai-protocols", "mcp"]
 ---
 
 # Model Context Protocol (MCP)
@@ -21,8 +28,9 @@ Deep research and architecture guides for MCP — the open protocol for connecti
 
 <details>
 <summary>MCP Deep Research 2026</summary>
-<iframe src="MCP_Deep_Research_2026.md.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="MCP_Deep_Research_2026.md.pdf" target="_blank">Open in new tab ↗</a></p>
+
+→ **[Read the full guide](./MCP_Deep_Research_2026)**
+
 </details>
 
 <details>

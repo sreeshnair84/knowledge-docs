@@ -1,6 +1,12 @@
 ---
-title: Temporal Deep Dive - Architecture, Patterns, and AI Integration
-date: 2026-07-09
+title: "Temporal Deep Dive - Architecture, Patterns, and AI Integration"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Temporal Deep Dive
@@ -378,4 +384,4 @@ workflow ProcessWithAgent {
 
 ---
 
-**Next**: Explore [Camunda and BPM](./05-camunda-deep-dive) for comparison, or jump to [Hybrid Architectures](./19-reference-architectures).
+**Next**: Explore [Camunda and BPM](./camunda-deep-dive) for comparison, or jump to [Hybrid Architectures](./reference-architectures).

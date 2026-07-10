@@ -1,7 +1,12 @@
 ---
-title: Enterprise Architect in the Age of AI
-parent: Interviews
-nav_order: 1
+title: "Enterprise Architect in the Age of AI"
+date_created: 2026-07-08
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["interview-prep"]
 ---
 
 # Enterprise Architect in the Age of AI Agents, Copilots & Workflow Automation

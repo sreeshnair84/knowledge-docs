@@ -1,6 +1,12 @@
 ---
-title: Decision Matrix - Choosing Your Orchestration Platform
-date: 2026-07-09
+title: "Decision Matrix - Choosing Your Orchestration Platform"
+date_created: 2026-07-09
+last_reviewed: 2026-07-10
+status: current
+supersedes: ""
+source_type: native-md
+source_file: ""
+tags: ["workflow-orchestration"]
 ---
 
 # Decision Matrix: Platform Selection Guide
@@ -395,8 +401,8 @@ Coordinate with Claude Code (or internal dispatcher)
 
 Given your specific constraints (industry, scale, team, compliance), how would YOU prioritize these platforms? What's your biggest orchestration challenge that doesn't fit neatly?
 
-Document it here so we can build [reference architectures](./19-reference-architectures) from real scenarios.
+Document it here so we can build [reference architectures](./reference-architectures) from real scenarios.
 
 ---
 
-**Next**: Study [Reference Architectures](./19-reference-architectures) for your scenario, or explore [Future Predictions](./21-future-predictions).
+**Next**: Study [Reference Architectures](./reference-architectures) for your scenario, or explore [Future Predictions](./future-predictions).
