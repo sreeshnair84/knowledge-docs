@@ -9,9 +9,9 @@ source_file: ""
 tags: ["ea-masterclass"]
 doc_type: multi-part-series
 series_name: EA Masterclass
-series_part: 
+series_part: "overview"
 series_total: 15
-series_index: 
+series_index: "index"
 ---
 
 # EA Masterclass: From Technical Architect to Enterprise AI Investment Architect

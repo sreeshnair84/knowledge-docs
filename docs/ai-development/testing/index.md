@@ -27,11 +27,7 @@ Frameworks, guides, and tools for evaluating AI agent systems — covering evalu
 
 ## PDFs
 
-<details>
-<summary>AI Agent Evaluation Framework — Complete</summary>
-<iframe src="AI_Agent_Evaluation_Framework_Complete.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Agent_Evaluation_Framework_Complete.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [AI Agent Evaluation Framework — Complete](/knowledge-docs/ai-development/testing/AI_Agent_Evaluation_Framework_Complete)
 
 <details>
 <summary>AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix</summary>
@@ -44,8 +40,4 @@ Frameworks, guides, and tools for evaluating AI agent systems — covering evalu
 
 ## DOCX Documents
 
-<details>
-<summary>Agent Testing, Monitoring &amp; Evaluation</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/ai-development/testing/Agent_Testing_Monitoring_Evaluation.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://Agent_Testing_Monitoring_Evaluation.docx" download>Download DOCX ↓</a></p>
-</details>
+- [Agent Testing, Monitoring &amp; Evaluation](/knowledge-docs/ai-development/testing/Agent_Testing_Monitoring_Evaluation)

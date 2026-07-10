@@ -22,32 +22,12 @@ Deep-dive research on engineering AI agents using Harness — covering vendor la
 
 ## PDFs
 
-<details>
-<summary>Harness Engineering Research Report</summary>
-<iframe src="Harness_Engineering_Research_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Harness_Engineering_Research_Report.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Harness Engineering Research Report](/knowledge-docs/agentic-systems/harness/Harness_Engineering_Research_Report)
 
-<details>
-<summary>Harness — Engineering AI Agents &amp; Vendor Landscape</summary>
-<iframe src="Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Harness — Engineering AI Agents &amp; Vendor Landscape](/knowledge-docs/agentic-systems/harness/Harness_Engineering_AI_Agents_and_Vendor_Landscape)
 
-<details>
-<summary>Harness — Best Practices, Anti-Patterns &amp; Roadmap</summary>
-<iframe src="Harness_BestPractices_AntiPatterns_Roadmap.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Harness_BestPractices_AntiPatterns_Roadmap.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Harness — Best Practices, Anti-Patterns &amp; Roadmap](/knowledge-docs/agentic-systems/harness/Harness_BestPractices_AntiPatterns_Roadmap)
 
-<details>
-<summary>Harness — Security, Supply Chain &amp; Observability</summary>
-<iframe src="Harness_Security_SupplyChain_Observability.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Harness_Security_SupplyChain_Observability.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Harness — Security, Supply Chain &amp; Observability](/knowledge-docs/agentic-systems/harness/Harness_Security_SupplyChain_Observability)
 
-<details>
-<summary>Harness — Interview Question Bank</summary>
-<iframe src="Harness_Interview_Question_Bank.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Harness_Interview_Question_Bank.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Harness — Interview Question Bank](/knowledge-docs/agentic-systems/harness/Harness_Interview_Question_Bank)

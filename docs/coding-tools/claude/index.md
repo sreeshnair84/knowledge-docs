@@ -35,11 +35,7 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 ## Certification Modules
 
-<details>
-<summary>Module 1 — Claude Foundations</summary>
-<iframe src="Module_1_Claude_Foundations.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_1_Claude_Foundations.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Module 1 — Claude Foundations](/knowledge-docs/coding-tools/claude/Module_1_Claude_Foundations)
 
 <details>
 <summary>Module 2 — Claude API &amp; SDK</summary>
@@ -48,47 +44,19 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 </details>
 
-<details>
-<summary>Module 3 — Prompt Engineering</summary>
-<iframe src="Module_3_Prompt_Engineering.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_3_Prompt_Engineering.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Module 3 — Prompt Engineering](/knowledge-docs/coding-tools/claude/Module_3_Prompt_Engineering)
 
-<details>
-<summary>Module 4 — MCP</summary>
-<iframe src="Module_4_MCP.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_4_MCP.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Module 4 — MCP](/knowledge-docs/coding-tools/claude/Module_4_MCP)
 
-<details>
-<summary>Module 5 — Claude Code &amp; Agents</summary>
-<iframe src="Module_5_Claude_Code_Agents.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_5_Claude_Code_Agents.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Module 5 — Claude Code &amp; Agents](/knowledge-docs/coding-tools/claude/Module_5_Claude_Code_Agents)
 
-<details>
-<summary>Module 6 — Claude Workflows</summary>
-<iframe src="Module_6_Claude_Workflows.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_6_Claude_Workflows.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Module 6 — Claude Workflows](/knowledge-docs/coding-tools/claude/Module_6_Claude_Workflows)
 
-<details>
-<summary>Module 7 — Safety, Enterprise &amp; Exam</summary>
-<iframe src="Module_7_Safety_Enterprise_Exam.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Module_7_Safety_Enterprise_Exam.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Module 7 — Safety, Enterprise &amp; Exam](/knowledge-docs/coding-tools/claude/Module_7_Safety_Enterprise_Exam)
 
-<details>
-<summary>Claude Agents Best Practices v2</summary>
-<iframe src="claude_agents_best_practices_v2.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="claude_agents_best_practices_v2.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Claude Agents Best Practices v2](/knowledge-docs/coding-tools/claude/claude_agents_best_practices_v2)
 
-<details>
-<summary>Claude Ecosystem Research Report</summary>
-<iframe src="Claude_Ecosystem_Research_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Claude_Ecosystem_Research_Report.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Claude Ecosystem Research Report](/knowledge-docs/coding-tools/claude/Claude_Ecosystem_Research_Report)
 
 ---
 
@@ -176,26 +144,10 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 ## DOCX Study Guides
 
-<details>
-<summary>Anthropic Partner Cert Study Guide</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/Anthropic_Partner_Cert_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://Anthropic_Partner_Cert_Study_Guide.docx" download>Download DOCX ↓</a></p>
-</details>
+- [Anthropic Partner Cert Study Guide](/knowledge-docs/coding-tools/claude/Anthropic_Partner_Cert_Study_Guide)
 
-<details>
-<summary>CCAF Study Guide</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/CCAF_Study_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://CCAF_Study_Guide.docx" download>Download DOCX ↓</a></p>
-</details>
+- [CCAF Study Guide](/knowledge-docs/coding-tools/claude/CCAF_Study_Guide)
 
-<details>
-<summary>CCAF Advanced Supplement</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/CCAF_Advanced_Supplement.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://CCAF_Advanced_Supplement.docx" download>Download DOCX ↓</a></p>
-</details>
+- [CCAF Advanced Supplement](/knowledge-docs/coding-tools/claude/CCAF_Advanced_Supplement)
 
-<details>
-<summary>Claude Best Practices</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/coding-tools/claude/claude-best-practices.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://claude-best-practices.docx" download>Download DOCX ↓</a></p>
-</details>
+- [Claude Best Practices](/knowledge-docs/coding-tools/claude/claude-best-practices)

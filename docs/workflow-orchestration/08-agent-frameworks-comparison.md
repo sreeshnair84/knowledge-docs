@@ -7,15 +7,15 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 doc_type: guide
-covers_version: "as of July 2026 — LangGraph 1.2.8, CrewAI 0.80, PydanticAI 0.0.54, Google ADK 1.0, Mastra 0.10"
+covers_version: "as of July 2026 — LangGraph 1.2.8, CrewAI 0.80, PydanticAI 0.0.54, Google ADK 1.0, Mastra 0.10, Microsoft Agent Framework SDK 1.0"
 tags: ["workflow-orchestration", "agents", "langgraph", "crewai", "pydanticai", "google-adk", "mastra"]
 ---
 
 # Agent Frameworks Comparison
 
-> **As of July 2026.** Versions: LangGraph 1.2.8, CrewAI 0.80, PydanticAI 0.0.54, Google ADK 1.0, Mastra 0.10.
+> **As of July 2026.** Versions: LangGraph 1.2.8, CrewAI 0.80, PydanticAI 0.0.54, Google ADK 1.0, Mastra 0.10, Microsoft Agent Framework SDK 1.0.
 
-This guide compares the leading agent orchestration frameworks for teams building agentic systems on top of or alongside workflow orchestrators like Temporal and Camunda. It covers **LangGraph, CrewAI, PydanticAI, Google ADK, and Mastra** — with guidance on state management, tool calling, multi-agent support, and Temporal integration.
+This guide compares the leading agent orchestration frameworks for teams building agentic systems on top of or alongside workflow orchestrators like Temporal and Camunda. It covers **LangGraph, CrewAI, PydanticAI, Google ADK, Mastra, and Microsoft Agent Framework SDK** — with guidance on state management, tool calling, multi-agent support, and Temporal integration.
 
 ---
 
@@ -31,6 +31,11 @@ This guide compares the leading agent orchestration frameworks for teams buildin
   Role-based:       │         CrewAI      │        Google ADK
   Teams:            │         (role +     │        (cloud-native,
                     │          task)      │         Google APIs)
+                    │                     │               │
+  Managed /         │                     │  MS Agent     │
+  Azure-native:     │                     │  Framework    │
+                    │                     │  (Azure AI    │
+                    │                     │   Foundry)    │
                     │                     │               │
   Full-stack:       │                     │        Mastra
   TypeScript:       │                     │        (TS, full-app,
@@ -370,19 +375,162 @@ console.log(response.text);
 
 ---
 
+## Microsoft Agent Framework SDK
+
+**Best for**: Microsoft Azure and Microsoft 365 ecosystems — enterprises already invested in Azure AI Foundry, Entra ID, and Microsoft 365 infrastructure.
+
+Microsoft Agent Framework SDK (part of Azure AI Foundry, GA 2025) is Microsoft's **production-grade, managed agent development SDK** — positioned as the enterprise path distinct from the research-oriented AutoGen and the lower-level Semantic Kernel integration toolkit. It provides a standardised way to build, host, and orchestrate agents on Azure with native integration to Azure AI services, Microsoft Entra ID, and Microsoft 365 Copilot extensibility.
+
+**Positioning vs. other Microsoft offerings:**
+- **Semantic Kernel**: Lower-level AI integration SDK for building plugins/skills; useful as a building block but not a complete agent framework
+- **AutoGen (AG2)**: Multi-agent research framework for AI-to-AI conversation patterns; not recommended for production enterprise agents
+- **Microsoft Agent Framework SDK**: The recommended production path — managed hosting, enterprise auth, compliance controls, M365 integration
+
+```python
+# pip install azure-ai-projects azure-ai-inference azure-identity
+from azure.ai.projects import AIProjectClient
+from azure.ai.projects.models import (
+    AgentDefinition,
+    BingGroundingTool,
+    FunctionTool,
+    ThreadMessage,
+)
+from azure.identity import DefaultAzureCredential
+
+# Authenticate using Entra ID (managed identity in production)
+credential = DefaultAzureCredential()
+client = AIProjectClient(
+    endpoint="https://<foundry-endpoint>.azure.com",
+    credential=credential,
+)
+
+# Define tools — functions + Microsoft-native connectors
+def get_customer_account(customer_id: str) -> dict:
+    """Retrieves customer account details from CRM."""
+    return crm_client.get_account(customer_id)
+
+def update_account_status(customer_id: str, status: str) -> bool:
+    """Updates customer account status. Requires Entra ID role: CRM.Write."""
+    return crm_client.update_status(customer_id, status)
+
+# Create agent with Azure AI Foundry — managed, persisted, version-controlled
+agent = client.agents.create_agent(
+    model="gpt-4o",  # or any Azure AI model: claude via Azure, Llama, Mistral
+    name="customer-service-agent",
+    instructions="""
+    You are a customer service agent for enterprise accounts.
+    Retrieve account details before taking any action.
+    Always confirm before updating account status.
+    Log every action taken for compliance audit trail.
+    """,
+    tools=[
+        FunctionTool(functions=[get_customer_account, update_account_status]),
+        BingGroundingTool(),  # Microsoft-native grounding
+    ],
+)
+
+# Create a thread (conversation session)
+thread = client.agents.create_thread()
+
+# Add a user message
+client.agents.create_message(
+    thread_id=thread.id,
+    role="user",
+    content="Review account C-8832 and flag it if their last payment was over 90 days ago.",
+)
+
+# Run the agent
+run = client.agents.create_and_process_run(
+    thread_id=thread.id,
+    agent_id=agent.id,
+)
+
+# Retrieve the response
+messages = client.agents.list_messages(thread_id=thread.id)
+for msg in messages.data:
+    if msg.role == "assistant":
+        print(msg.content[0].text.value)
+```
+
+**Enterprise capabilities built in:**
+
+| Capability | Implementation |
+|---|---|
+| **Identity & access** | Microsoft Entra ID integration; agent identity is an Entra service principal; function tools can enforce Entra roles |
+| **Audit trail** | All agent runs logged to Azure Monitor; queryable via Log Analytics |
+| **Compliance** | Azure compliance controls (GDPR, HIPAA, FedRAMP) inherited; data residency enforced by Azure region |
+| **Multi-model** | Azure AI Foundry supports OpenAI, Azure OpenAI, Meta Llama, Mistral, Cohere — agent can use any approved model |
+| **Knowledge grounding** | Bing Grounding Tool; Azure AI Search connector; SharePoint connector |
+| **M365 integration** | Agents deployable as Copilot extensions; native Teams integration |
+| **Vector store** | Azure AI Search as managed vector store; no external vector DB required |
+| **Streaming** | Server-sent events streaming natively supported |
+| **Monitoring** | Azure AI Foundry tracing; OpenTelemetry-compatible spans |
+
+**Multi-agent coordination:**
+
+```python
+# Microsoft Agent Framework supports multi-agent patterns via Connected Agents
+# Each agent is a separate Foundry agent; the orchestrator delegates via tool calls
+
+# Orchestrator agent definition
+orchestrator = client.agents.create_agent(
+    model="gpt-4o",
+    name="orchestrator",
+    instructions="Coordinate specialist agents to complete complex tasks.",
+    tools=[
+        # Sub-agents exposed as tools to the orchestrator
+        ConnectedAgentTool(agent_id=research_agent.id, name="research"),
+        ConnectedAgentTool(agent_id=analysis_agent.id, name="analysis"),
+        ConnectedAgentTool(agent_id=writer_agent.id, name="write"),
+    ],
+)
+```
+
+**State management**: Thread-based session state persisted in Azure AI Foundry (Cosmos DB backend). Threads survive agent restarts and can be resumed. Long-term memory via Azure AI Search vector index.
+
+**Temporal integration**: Agent runs are synchronous within a Temporal activity; use `create_and_process_run()` with polling for long-running tasks. Temporal owns the workflow durability; Foundry agent owns the reasoning.
+
+```python
+from temporalio import activity
+
+@activity.defn
+async def run_foundry_agent(customer_id: str, task: str) -> str:
+    thread = client.agents.create_thread()
+    client.agents.create_message(thread_id=thread.id, role="user", content=task)
+    run = client.agents.create_and_process_run(
+        thread_id=thread.id, agent_id=agent.id
+    )
+    msgs = client.agents.list_messages(thread_id=thread.id)
+    return msgs.data[0].content[0].text.value
+```
+
+**When to choose Microsoft Agent Framework SDK:**
+- Your enterprise is Azure-first with Entra ID and Microsoft 365
+- You need compliance-ready agents (GDPR, HIPAA, FedRAMP) without bespoke compliance engineering
+- You want to deploy agents as Microsoft 365 Copilot extensions
+- Your team needs managed infrastructure (no vector DB ops, no model hosting ops)
+- Enterprise procurement prefers Microsoft's unified SLA and support model
+- You need built-in Entra ID role-based access control for agent tool permissions
+
+---
+
 ## Comparison Matrix
 
-| Feature | LangGraph | CrewAI | PydanticAI | Google ADK | Mastra |
-|---|---|---|---|---|---|
-| **Language** | Python | Python | Python | Python | TypeScript |
-| **Control model** | Explicit graph | Role + task | Typed pipeline | Session + agent | Workflow + agent |
-| **State / memory** | Checkpoints | Task context | Stateless | Session service | Built-in (threadId) |
-| **Type safety** | Medium | Low | High | Medium | High (TypeScript) |
-| **Multi-agent** | Excellent | Good | Minimal | Excellent (A2A) | Good |
-| **Temporal integration** | Natural | As activity | As activity | As activity | Via TS SDK |
-| **Production maturity** | High | Medium | Growing | High (GCP) | Growing |
-| **Google Cloud native** | No | No | No | Yes | No |
-| **Built-in memory** | Via checkpointer | Via ChromaDB | No | Via session service | Yes |
+| Feature | LangGraph | CrewAI | PydanticAI | Google ADK | Mastra | **MS Agent Framework** |
+|---|---|---|---|---|---|---|
+| **Language** | Python | Python | Python | Python | TypeScript | Python / .NET |
+| **Control model** | Explicit graph | Role + task | Typed pipeline | Session + agent | Workflow + agent | Thread + managed run |
+| **State / memory** | Checkpoints | Task context | Stateless | Session service | Built-in (threadId) | Thread (Cosmos DB) |
+| **Type safety** | Medium | Low | High | Medium | High (TypeScript) | Medium |
+| **Multi-agent** | Excellent | Good | Minimal | Excellent (A2A) | Good | Good (Connected Agents) |
+| **Temporal integration** | Natural | As activity | As activity | As activity | Via TS SDK | As activity |
+| **Production maturity** | High | Medium | Growing | High (GCP) | Growing | High (Azure) |
+| **Cloud native** | No | No | No | GCP | No | Azure |
+| **Built-in memory** | Via checkpointer | Via ChromaDB | No | Via session service | Yes | Yes (Foundry) |
+| **Enterprise auth (IdP)** | Manual | Manual | Manual | GCP IAM | Manual | **Entra ID native** |
+| **Compliance controls** | Manual | Manual | Manual | GCP compliance | Manual | **Azure compliance** |
+| **M365 / Copilot integration** | No | No | No | No | No | **Yes** |
+| **Managed infrastructure** | No | No | No | Partially | No | **Yes** |
 
 ---
 
@@ -391,6 +539,10 @@ console.log(response.text);
 ```
 Is your team TypeScript / Node.js?
   YES → Mastra
+  NO  ↓
+
+Are you Azure-first with Entra ID / Microsoft 365?
+  YES → Microsoft Agent Framework SDK
   NO  ↓
 
 Are you on Google Cloud with Vertex AI / Gemini?

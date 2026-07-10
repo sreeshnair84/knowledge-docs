@@ -16,7 +16,6 @@ End-to-End Architecture & Code Reference
 
 Table of Contents
 
-
 ## 1. Platform Overview
 
 This document provides the complete end-to-end reference for the EU Bank AI Copilot Platform. It covers every server, every package, every code snippet, and every security control required to deploy a production-grade, OWASP- and GDPR-compliant AI agent system for a regulated financial institution.
@@ -29,8 +28,6 @@ The platform spans four security zones. Traffic between zones is strictly contro
   AgentCore Gateway is NOT an approved service. All routing to AgentCore Runtime is performed exclusively through the BFF. No direct browser-to-AgentCore calls are permitted.
 
 ### 1.2 Technology Stack
-
-
 
 ## 2. Frontend — React + CopilotKit
 
@@ -60,7 +57,6 @@ src/
     auth.ts              # MSAL config
  
 ```
-
 
 ### 2.2 CopilotKit Provider Setup
 
@@ -93,7 +89,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
  
 ```
 
-
 ### 2.3 Main Copilot Page
 
 File: src/app/page.tsx
@@ -123,7 +118,6 @@ export default function CopilotPage() {
 }
  
 ```
-
 
 ### 2.4 Dynamic Tool Loader
 
@@ -186,7 +180,6 @@ function ToolActionRegistrar({ tool }) {
  
 ```
 
-
 ### 2.5 MSAL Authentication Config
 
 File: src/lib/auth.ts
@@ -221,7 +214,6 @@ export const loginRequest = {
 };
  
 ```
-
 
 ### 2.6 BFF Client (Axios with CSRF)
 
@@ -258,7 +250,6 @@ bffClient.interceptors.response.use(
  
 
 ```
-
 
 ## 3. BFF — Backend For Frontend
 
@@ -339,7 +330,6 @@ export const POST = async (req: NextRequest) => {
  
 ```
 
-
 ### 3.2 OIDC Session Middleware
 
 File: src/lib/session.ts
@@ -382,7 +372,6 @@ export async function validateSession(req: NextRequest): Promise<SessionContext 
     await redisClient.set(`session:${sessionId}`, JSON.stringify(session), { EX: 900 });
   }
  
-  return {
     upn: session.upn,
     roles: session.roles,
     traceId: crypto.randomUUID(),
@@ -391,7 +380,6 @@ export async function validateSession(req: NextRequest): Promise<SessionContext 
 }
  
 ```
-
 
 ### 3.3 Auth Callback Handler
 
@@ -446,7 +434,6 @@ export const POST = async (req: NextRequest) => {
  
 ```
 
-
 ### 3.4 Audit Logger
 
 File: src/lib/audit.ts
@@ -482,7 +469,6 @@ export async function auditLog(event: AuditEvent): Promise<void> {
  
 ```
 
-
 ### 3.5 Rate Limiter
 
 File: src/lib/rateLimit.ts
@@ -511,7 +497,6 @@ export const rateLimiter = {
  
 
 ```
-
 
 ## 4. AgentCore Runtime — Strands Agent
 
@@ -550,7 +535,6 @@ agui_agent = StrandsAgent(get_agent=lambda: strands_agent_instance)
 app.include_router(agui_agent.router)  # mounts /invocations, /ws, /ping
  
 ```
-
 
 ### 4.2 Strands Agent Builder
 
@@ -609,7 +593,6 @@ async def collect_mcp_tools(endpoints: list[str]) -> list:
  
 ```
 
-
 ### 4.3 System Prompt
 
 File: agent/prompts.py
@@ -644,7 +627,6 @@ COMPLIANCE
     """
  
 ```
-
 
 ### 4.4 Audit Callback Handler
 
@@ -693,7 +675,6 @@ class AuditCallbackHandler(AgentEventHandler):
  
 ```
 
-
 ### 4.5 AgentCore Deployment
 
 Shell: AgentCore deployment
@@ -733,7 +714,6 @@ agentcore invoke '{
 
 ```
 
-
 ## 5. MCP Servers
 
 Each domain team owns one or more MCP server containers deployed on AgentCore Runtime. They expose tools over MCP Streamable-HTTP transport. The Strands agent connects to these servers internally within the AgentCore VPC.
@@ -756,7 +736,6 @@ class AccountBalanceInput(BaseModel):
     customer_ref: str  # Opaque ref — never raw customer ID from agent
  
  
-@mcp.tool()
 async def get_account_balance(input: AccountBalanceInput) -> dict:
     """
     Retrieve the current balance for a bank account.
@@ -773,7 +752,6 @@ async def get_account_balance(input: AccountBalanceInput) -> dict:
         data = resp.json()
  
     # Never return raw PII — strip customer identifiers
-    return {
         "balance": data["balance"],
         "currency": data["currency"],
         "as_of": data["timestamp"],
@@ -781,7 +759,6 @@ async def get_account_balance(input: AccountBalanceInput) -> dict:
     }
  
  
-@mcp.tool()
 async def get_transactions(account_id: str, limit: int = 10) -> list:
     """Retrieve recent transactions. Max 10 items per call."""
     if limit > 10: limit = 10  # Hard cap
@@ -805,7 +782,6 @@ if __name__ == "__main__":
  
 ```
 
-
 ### 5.2 Payment Rail MCP Server (MCP Apps)
 
 The Payment MCP server returns a ui:// resource reference alongside tool metadata. CopilotKit's MCPAppsMiddleware intercepts this and renders the Payment team's sandboxed iframe UI.
@@ -822,7 +798,6 @@ UI_BUNDLE_URL  = "https://assets.bank.eu/tools/payment-v2/PaymentForm.js"
 UI_BUNDLE_SRI  = "sha384-abc123def456..."  # Updated by CI/CD pipeline
  
  
-@mcp.tool()
 async def payment_initiate(amount: float, currency: str, beneficiary_name: str) -> list:
     """
     Initiate a SEPA/SWIFT payment. Returns an interactive form UI.
@@ -851,7 +826,6 @@ async def payment_initiate(amount: float, currency: str, beneficiary_name: str) 
     ]
  
  
-@mcp.tool()
 async def payment_execute(approval_token: str, payment_ref: str) -> dict:
     """
     Execute an approved payment. Requires a valid approval_token.
@@ -879,7 +853,6 @@ if __name__ == "__main__":
  
 ```
 
-
 ### 5.3 Risk Engine MCP Server
 
 File: mcp_servers/risk_engine/server.py
@@ -889,14 +862,12 @@ from mcp.server.fastmcp import FastMCP
  
 mcp = FastMCP("risk-engine-mcp")
  
-@mcp.tool()
 async def get_risk_score(customer_ref: str, product_type: str) -> dict:
     """
     Retrieve credit risk score for a customer and product.
     Returns score (0-1000) and risk tier. Never returns raw PII.
     """
     resp = await call_internal_risk_api(customer_ref, product_type)
-    return {
         "score": resp["score"],
         "tier": resp["risk_tier"],     # LOW / MEDIUM / HIGH / DECLINE
         "score_date": resp["as_of"],
@@ -904,11 +875,9 @@ async def get_risk_score(customer_ref: str, product_type: str) -> dict:
     }
  
  
-@mcp.tool()
 async def check_exposure_limit(customer_ref: str, proposed_amount: float) -> dict:
     """Check if proposed exposure is within regulatory limits."""
     resp = await call_internal_exposure_api(customer_ref, proposed_amount)
-    return {
         "within_limit": resp["allowed"],
         "current_exposure": resp["current"],
         "limit": resp["limit"],
@@ -920,7 +889,6 @@ if __name__ == "__main__":
     mcp.run(transport="streamable-http", host="0.0.0.0", port=8083)
  
 ```
-
 
 ### 5.4 Tool Manifest (Dynamic Registration)
 
@@ -961,7 +929,6 @@ File: tool-manifest.json
  
 
 ```
-
 
 ## 6. Tool Registry API
 
@@ -1010,7 +977,6 @@ async def list_tools(team_id: str, caller=Depends(verify_agent_token)):
         "SELECT * FROM tools WHERE status = 'active' AND team_id = $1",
         team_id
     )
-    return {
         "tools": [dict(t) for t in tools],
         "gated_tools": [t["tool_id"] for t in tools if t["requires_approval"]],
     }
@@ -1025,9 +991,7 @@ async def deregister_tool(tool_id: str, caller=Depends(verify_team_cert)):
 
 ```
 
-
 ## 7. Infrastructure — Terraform / CDK
-
 
 ### 7.1 VPC & Security Groups (Terraform)
 
@@ -1069,7 +1033,6 @@ resource "aws_security_group" "agentcore" {
 }
  
 ```
-
 
 ### 7.2 IAM Roles (Least Privilege)
 
@@ -1127,7 +1090,6 @@ resource "aws_iam_role_policy" "agentcore_policy" {
  
 ```
 
-
 ### 7.3 Bedrock Guardrails
 
 File: infra/guardrails.tf
@@ -1178,9 +1140,7 @@ resource "aws_bedrock_guardrail" "eu_bank" {
 
 ```
 
-
 ## 8. Security Controls
-
 
 ### 8.1 HTTP Security Headers (BFF)
 
@@ -1220,9 +1180,7 @@ export function middleware(req) {
  
 ```
 
-
 ### 8.2 OWASP LLM Controls Summary
-
 
 ### 8.3 CI/CD Security Gates
 
@@ -1274,7 +1232,6 @@ jobs:
  
 
 ```
-
 
 ## 9. Human-in-the-Loop — Approval Flow
 
@@ -1355,15 +1312,11 @@ async def decide_approval(approval_id: str, decision: str,
 
 ```
 
-
 ## 10. EU Regulatory Compliance
-
 
 ### 10.1 GDPR Controls
 
-
 ### 10.2 DORA Controls
-
 
 ### 10.3 EU AI Act Readiness
 
@@ -1373,9 +1326,7 @@ async def decide_approval(approval_id: str, decision: str,
 - Model card maintained for each Bedrock Claude version in use; version changes require security review.
 - Bias monitoring framework planned for v2 for any scoring-adjacent tool results.
 
-
 ## 11. End-to-End Call Flow Reference
-
 
   Critical Security Rule
   The browser NEVER calls AgentCore or any MCP server directly. Every call routes through the BFF. The BFF is the only component with network access to the AgentCore VPC endpoint.

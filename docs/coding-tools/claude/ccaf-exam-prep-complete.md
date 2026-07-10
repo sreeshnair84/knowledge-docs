@@ -8,8 +8,8 @@ source_type: native-md
 source_file: ""
 tags: ["coding-tools", "claude"]
 doc_type: certification
-exam_code: 
-exam_validity: 
+exam_code: "CCAF"
+exam_validity: "2026"
 ---
 
 # CCAF Exam Prep — Complete Guide

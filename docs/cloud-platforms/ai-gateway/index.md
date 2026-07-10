@@ -27,20 +27,8 @@ Guides and architecture references for enterprise AI gateway deployment, with fo
 
 ## PDFs
 
-<details>
-<summary>AI Gateway Full Comparison</summary>
-<iframe src="AI_Gateway_Full_Comparison.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Gateway_Full_Comparison.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [AI Gateway Full Comparison](/knowledge-docs/cloud-platforms/ai-gateway/AI_Gateway_Full_Comparison)
 
-<details>
-<summary>AI Gateway Multi-Tenant Multi-Cloud</summary>
-<iframe src="AI_Gateway_MultiTenant_MultiCloud.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Gateway_MultiTenant_MultiCloud.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [AI Gateway Multi-Tenant Multi-Cloud](/knowledge-docs/cloud-platforms/ai-gateway/AI_Gateway_MultiTenant_MultiCloud)
 
-<details>
-<summary>Enterprise AI Gateway</summary>
-<iframe src="Enterprise_AI_Gateway.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Gateway.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Enterprise AI Gateway](/knowledge-docs/cloud-platforms/ai-gateway/Enterprise_AI_Gateway)

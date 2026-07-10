@@ -26,23 +26,11 @@ Enterprise setup, adoption playbooks, and hands-on guides for GitHub Copilot and
 
 ## PDFs
 
-<details>
-<summary>GitHub Copilot Big Wins Research</summary>
-<iframe src="github-copilot-big-wins-research.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="github-copilot-big-wins-research.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [GitHub Copilot Big Wins Research](/knowledge-docs/coding-tools/github-copilot/github-copilot-big-wins-research)
 
-<details>
-<summary>GitHub Copilot Enterprise Research 2026</summary>
-<iframe src="GitHub_Copilot_Enterprise_Research_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="GitHub_Copilot_Enterprise_Research_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [GitHub Copilot Enterprise Research 2026](/knowledge-docs/coding-tools/github-copilot/GitHub_Copilot_Enterprise_Research_2026)
 
-<details>
-<summary>Copilot Enterprise Playbook</summary>
-<iframe src="copilot-enterprise-playbook.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="copilot-enterprise-playbook.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Copilot Enterprise Playbook](/knowledge-docs/coding-tools/github-copilot/copilot-enterprise-playbook)
 
 ---
 
@@ -70,80 +58,28 @@ Enterprise setup, adoption playbooks, and hands-on guides for GitHub Copilot and
 
 ## GitHub Platform Deep Dive — Part Series
 
-<details>
-<summary>Part 01 — Git Internals</summary>
-<iframe src="Part01_Git_Internals.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part01_Git_Internals.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 01 — Git Internals](/knowledge-docs/coding-tools/github-copilot/Part01_Git_Internals)
 
-<details>
-<summary>Part 01 — Vision, Copilot Architecture &amp; Repo Intelligence</summary>
-<iframe src="Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part01_Vision_Copilot_Architecture_RepoIntelligence.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 01 — Vision, Copilot Architecture &amp; Repo Intelligence](/knowledge-docs/coding-tools/github-copilot/Part01_Vision_Copilot_Architecture_RepoIntelligence)
 
-<details>
-<summary>Part 02 — GitHub Architecture &amp; Actions</summary>
-<iframe src="Part02_GitHub_Architecture_and_Actions.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part02_GitHub_Architecture_and_Actions.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 02 — GitHub Architecture &amp; Actions](/knowledge-docs/coding-tools/github-copilot/Part02_GitHub_Architecture_and_Actions)
 
-<details>
-<summary>Part 04 — RAG, Agents, Models &amp; Platform</summary>
-<iframe src="Part04_RAG_Agents_Models_Platform.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part04_RAG_Agents_Models_Platform.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 04 — RAG, Agents, Models &amp; Platform](/knowledge-docs/coding-tools/github-copilot/Part04_RAG_Agents_Models_Platform)
 
-<details>
-<summary>Part 04 — Runners &amp; Runtime</summary>
-<iframe src="Part04_Runners_and_Runtime.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part04_Runners_and_Runtime.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 04 — Runners &amp; Runtime](/knowledge-docs/coding-tools/github-copilot/Part04_Runners_and_Runtime)
 
-<details>
-<summary>Part 06 — Marketplace, Pages &amp; Packages</summary>
-<iframe src="Part06_Marketplace_Pages_Packages.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part06_Marketplace_Pages_Packages.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 06 — Marketplace, Pages &amp; Packages](/knowledge-docs/coding-tools/github-copilot/Part06_Marketplace_Pages_Packages)
 
-<details>
-<summary>Part 07 — Prompts, Evaluation, Spark &amp; Infrastructure</summary>
-<iframe src="Part07_Prompts_Evaluation_Spark_Infrastructure.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part07_Prompts_Evaluation_Spark_Infrastructure.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 07 — Prompts, Evaluation, Spark &amp; Infrastructure](/knowledge-docs/coding-tools/github-copilot/Part07_Prompts_Evaluation_Spark_Infrastructure)
 
-<details>
-<summary>Part 11 — CI/CD, Secrets &amp; Security</summary>
-<iframe src="Part11_CICD_Secrets_Security.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part11_CICD_Secrets_Security.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 11 — CI/CD, Secrets &amp; Security](/knowledge-docs/coding-tools/github-copilot/Part11_CICD_Secrets_Security)
 
-<details>
-<summary>Part 11 — Security &amp; Governance</summary>
-<iframe src="Part11_Security_Governance.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part11_Security_Governance.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 11 — Security &amp; Governance](/knowledge-docs/coding-tools/github-copilot/Part11_Security_Governance)
 
-<details>
-<summary>Part 13 — CI/CD, Observability &amp; Scaling</summary>
-<iframe src="Part13_CICD_Observability_Scaling.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part13_CICD_Observability_Scaling.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 13 — CI/CD, Observability &amp; Scaling](/knowledge-docs/coding-tools/github-copilot/Part13_CICD_Observability_Scaling)
 
-<details>
-<summary>Part 14 — Enterprise APIs, Apps &amp; CLI</summary>
-<iframe src="Part14_Enterprise_APIs_Apps_CLI.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part14_Enterprise_APIs_Apps_CLI.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 14 — Enterprise APIs, Apps &amp; CLI](/knowledge-docs/coding-tools/github-copilot/Part14_Enterprise_APIs_Apps_CLI)
 
-<details>
-<summary>Part 16 — Artifacts &amp; Reference Architecture</summary>
-<iframe src="Part16_Artifacts_ReferenceArchitecture.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part16_Artifacts_ReferenceArchitecture.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 16 — Artifacts &amp; Reference Architecture](/knowledge-docs/coding-tools/github-copilot/Part16_Artifacts_ReferenceArchitecture)
 
-<details>
-<summary>Part 18 — Ecosystem, Patterns &amp; Labs</summary>
-<iframe src="Part18_Ecosystem_Patterns_Labs.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part18_Ecosystem_Patterns_Labs.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 18 — Ecosystem, Patterns &amp; Labs](/knowledge-docs/coding-tools/github-copilot/Part18_Ecosystem_Patterns_Labs)

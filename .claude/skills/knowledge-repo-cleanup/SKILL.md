@@ -7,6 +7,7 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["skills", "knowledge-repo-cleanup"]
+covers_version: "N/A"
 ---
 
 # Knowledge Repo Cleanup

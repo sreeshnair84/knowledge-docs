@@ -7,6 +7,7 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: []
+covers_version: "N/A"
 ---
 
 # Enterprise AI Freshness Audit — July 5, 2026

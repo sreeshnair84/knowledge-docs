@@ -19,14 +19,6 @@ Quick-reference guides and glossaries for enterprise architects — covering ind
 
 ## PDFs
 
-<details>
-<summary>EA Best Practices &amp; Jargon</summary>
-<iframe src="EA_BestPractices_Jargon.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_BestPractices_Jargon.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [EA Best Practices &amp; Jargon](/knowledge-docs/enterprise-architecture/best-practices/EA_BestPractices_Jargon)
 
-<details>
-<summary>EA Glossary &amp; Cheat Sheet</summary>
-<iframe src="EA_Glossary_CheatSheet.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Glossary_CheatSheet.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [EA Glossary &amp; Cheat Sheet](/knowledge-docs/enterprise-architecture/best-practices/EA_Glossary_CheatSheet)

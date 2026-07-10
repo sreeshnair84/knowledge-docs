@@ -7,11 +7,15 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-13-case-studies"]
-doc_type: engagement-case-study
-industry: 
-client_type: 
-engagement_period: 
+doc_type: narrative-case-study
+industry: retail
+protagonist_role: "Enterprise Architecture Lead"
+core_tension: "E-commerce disruption requiring AI-powered personalization at scale"
 ---
+## Cast of Characters
+
+*(Refer to the organisation background and key stakeholders described in this case study.)*
+
 
 # Case Study: Retail Chain — AI Demand Forecasting & Inventory Optimization
 

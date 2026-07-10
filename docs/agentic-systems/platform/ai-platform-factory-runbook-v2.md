@@ -15,10 +15,7 @@ covers_version: \"as of 2026-07-10\"
 
 # AI Platform Factory — Production Agent Runbook v2.0
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 1
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 // AI PLATFORM FACTORY — PRODUCTION AGENT RUNBOOK v2.0 | MULTI-SERVICE | FULL-STACK | JUNE 2026
 AI Platform Factory
 Production-Grade Requirements & Agent Runbook
@@ -57,10 +54,7 @@ Local testing scripts — no Docker required variant
 GitHub Copilot Agent + Claude Code
 Four integration methods — choose by your workflow:
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 2
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 Method A — Attach to Copilot Chat
 ## 1. Open GitHub Copilot Chat in VS Code
 ## 2. Click paperclip → Upload this PDF
@@ -134,10 +128,7 @@ Synchronous: REST or gRPC only between gateway and first-tier services. Use gRPC
 Asynchronous: Event bus for cross-domain events. Producer owns the schema. Consumer validates on read.
 Never: Direct DB-to-DB access. Never shared schema between services. One service = one bounded context.
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 3
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ## Repository Structure — Full Platform Monorepo
 Platform monorepo — annotated
 platform-root/
@@ -186,10 +177,7 @@ Detect from
 Common choices
 ADR trigger
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 4
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 Frontend SPA
 requirements/06-stack.md or src/frontend/
 React/Next.js, Vue/Nuxt, Angular, SvelteKit
@@ -242,7 +230,6 @@ Lifetime
 Purpose
 Rule
 AGENTS.md (root)
-All agents
 Always-on, every session
 Cross-agent project context: commands, style, boundaries
 < 150 lines. Human-written. Never auto-generate.
@@ -267,27 +254,22 @@ Every tool call
 Enforcement: preToolUse can deny, others observe
 See Section 07 for all hook types
 requirements/*.md
-All agents
 Read at session start
 Source of truth for features, SLAs, constraints
 Agent reads in numeric order 00→07
 docs/architecture/overview.md
-All agents
 Read at session start
 Current architecture decisions — agent maintains
 Update after every structural change
 docs/adr/*.md
-All agents
 Read at session start
 Decision history — agent never contradicts without new ADR
 One ADR per decision
 .ai-state.md
-All agents
 Read FIRST every session
 Agent's session memory: last step, files changed, pending tasks
 Update at session end. Never delete.
 docs/data/schema-registry.yaml
-All agents
 On-demand via data-schema skill
 Canonical data schemas — governed, versioned
 See Section 10 for governance rules
@@ -297,10 +279,7 @@ Hooks = deterministic enforcement underneath everything. MCP = live external dat
 A skill can bundle scripts an agent invokes. A hook can enforce policy regardless of which skill triggered it.
 Hooks are enforcement; instructions are advice. Use hooks when a policy MUST NOT be ignored.
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 5
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ## Production Skills Library
 12 skills — install via: gh skills install or copy to .github/skills/
 ## Installation
@@ -312,7 +291,6 @@ Skills are auto-discovered by description matching. Invoke manually with /<skill
 .github/skills/architecture/SKILL.md
 ---
 name: architecture
-description: >
 Enforce platform architecture standards. Use when making
 structural decisions, designing new services, reviewing
 service boundaries, or writing ADRs.
@@ -332,13 +310,9 @@ auth model, any decision that affects >1 service.
 ■ Any deviation from requirements/*.md
 .github/skills/frontend/SKILL.md
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 6
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ---
 name: frontend
-description: >
 Frontend SPA standards. Use when creating or modifying
 components, pages, forms, routing, state management,
 API clients, or build configuration.
@@ -357,7 +331,6 @@ component-template.tsx # Scaffold for new components
 .github/skills/backend/SKILL.md
 ---
 name: backend
-description: >
 Backend service standards. Use when implementing business
 logic, data access, middleware, or service configuration.
 ---
@@ -376,13 +349,9 @@ IF src/services/<name>/pyproject.toml → Python/FastAPI
 ELSE → write ADR, choose, implement
 .github/skills/api-design/SKILL.md
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 7
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ---
 name: api-design
-description: >
 REST and gRPC API design. Use when designing endpoints,
 updating OpenAPI spec, or reviewing API contracts.
 ---
@@ -402,7 +371,6 @@ auth-patterns.md # JWT, API key, OAuth2 patterns
 .github/skills/data-schema/SKILL.md
 ---
 name: data-schema
-description: >
 Data schema design, migrations, and governance. Use when
 creating or modifying database schemas, event schemas,
 or data contracts. ALWAYS load for any DB operation.
@@ -420,13 +388,9 @@ pii-fields.md # PII inventory — load for any user data
 migration-checklist.md # Pre-migration safety checklist
 .github/skills/testing/SKILL.md
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 8
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ---
 name: testing
-description: >
 Test generation and validation. Use at workflow step 10.
 Covers unit, integration, contract, and E2E tests.
 ---
@@ -445,7 +409,6 @@ describe('UserService') > it('throws on duplicate email')
 .github/skills/code-review/SKILL.md
 ---
 name: code-review
-description: >
 Self-review and quality gate. Load at workflow step 11.
 BLOCKING — agent must not proceed if any item fails.
 allowed-tools: Bash(grep *) Bash(cat *)
@@ -464,13 +427,9 @@ allowed-tools: Bash(grep *) Bash(cat *)
 ■ .ai-state.md updated with this session's summary
 .github/skills/security/SKILL.md
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 9
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ---
 name: security
-description: >
 Security review. Load at workflow step 11. Also load
 when implementing auth, handling user input, or modifying
 any code that touches external data.
@@ -489,7 +448,6 @@ any code that touches external data.
 .github/skills/docker/SKILL.md
 ---
 name: docker
-description: >
 Docker and Docker Compose standards. Use when creating or
 modifying Dockerfiles, compose.yaml, or container config.
 ---
@@ -509,13 +467,9 @@ modifying Dockerfiles, compose.yaml, or container config.
 Dockerfile.template # Multi-stage template per language
 .github/skills/pipeline/SKILL.md
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 10
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ---
 name: pipeline
-description: >
 Data pipeline standards. Use when building or modifying
 ingest, transform, export services or event handlers.
 ---
@@ -532,7 +486,6 @@ ingest, transform, export services or event handlers.
 .github/skills/observability/SKILL.md
 ---
 name: observability
-description: >
 Logging, metrics, and tracing standards. Use when adding
 new services, endpoints, or background jobs.
 ---
@@ -549,13 +502,9 @@ db_query_duration_seconds, queue_depth (for pipeline).
 - Instrument: HTTP handlers, DB queries, event publishing.
 .github/skills/governance/SKILL.md
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 11
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ---
 name: governance
-description: >
 Data governance and compliance. Load when working with
 user data, PII, data contracts, or schema changes.
 Load for any change touching docs/data/.
@@ -579,10 +528,7 @@ $ gh skills install github/awesome-copilot codebase-mapper
 $ gh skills install github/awesome-copilot acreadiness-assess
 Or browse: github.com/github/awesome-copilot | lobehub.com/skills
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 12
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ## Production Hooks
 .github/hooks/ — enforcement + audit + quality gates
 Hooks are the enforcement layer. Unlike instructions (which the model may ignore), preToolUse hooks deterministically block or
@@ -593,11 +539,9 @@ Capability
 Production use
 sessionStart
 Agent session begins
-Observational only
 Log session, banner, load env context
 userPromptSubmitted
 User sends a prompt
-Observational only
 Audit log prompt, detect sensitive intent
 preToolUse
 BEFORE any tool runs
@@ -613,67 +557,51 @@ Blocking for quality gate
 Run test suite, verify quality gates before session ends
 subagentStop
 Subagent completes
-Observational only
 Log subagent results, pass context to parent
 errorOccurred
 Error during execution
-Observational only
 Error logging, alerting, pattern tracking
 sessionEnd
 Session terminates
-Observational only
 Cleanup, send Slack notification, generate session report
 policy.json — full production configuration:
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 13
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 // .github/hooks/policy.json
 {
 "version": 1,
 "hooks": {
 "sessionStart": [{
-"type": "command",
 "bash": "./.github/hooks/scripts/session-start.sh",
 "powershell": "./.github/hooks/scripts/session-start.ps1",
 "timeoutSec": 10
 }],
 "userPromptSubmitted": [{
-"type": "command",
 "bash": "./.github/hooks/scripts/audit-log.sh",
 "powershell": "./.github/hooks/scripts/audit-log.ps1",
 "timeoutSec": 5
 }],
 "preToolUse": [
 {
-"type": "command",
 "bash": "./.github/hooks/scripts/security-check.sh",
 "powershell": "./.github/hooks/scripts/security-check.ps1",
 "comment": "Security gate — runs first, can deny. Must be < 5s.",
 "timeoutSec": 5
 },
 {
-"type": "command",
 "bash": "./.github/hooks/scripts/audit-log.sh",
 "timeoutSec": 3
 }
 ],
 "postToolUse": [{
-"type": "command",
 "bash": "./.github/hooks/scripts/post-tool.sh",
 "timeoutSec": 10
 }],
 "agentStop": [{
-"type": "command",
 "bash": "./.github/hooks/scripts/quality-gate.sh",
 security-check.sh — preToolUse enforcement script:
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 14
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
-#!/bin/bash
 # .github/hooks/scripts/security-check.sh
 # Reads JSON from stdin. Writes allow/deny JSON to stdout.
 # MUST run in < 5 seconds.
@@ -712,10 +640,7 @@ Use multi-stage builds: one Dockerfile per service, four stages. Production imag
 DevContainer stage reuses the base image to prevent environment drift.
 Multi-stage Dockerfile template (TypeScript/Node example):
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 15
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 # infra/docker/Dockerfile.node — copy per service and adapt
 # ■■ Stage 1: Base (shared dev + prod foundation) ■■■■■■■■■■■■
 FROM node:22-alpine AS base
@@ -745,10 +670,7 @@ CMD ["/nodejs/bin/node", "-e", \
 CMD ["dist/index.js"]
 compose.yaml — development orchestration:
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 16
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 # compose.yaml (preferred filename per 2026 Compose spec)
 name: platform
 services:
@@ -791,10 +713,7 @@ Developers without Docker can use: scripts/local-setup.sh (see Section 15).
 CI always uses containers. DevContainer is recommended but never blocking.
 One devcontainer.json per service OR one root devcontainer.json using Docker Compose.
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 17
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 // .devcontainer/devcontainer.json (monorepo root — uses Compose)
 {
 "name": "Platform Dev",
@@ -831,10 +750,7 @@ Multi-service platform edition
 }
 }
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 18
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ## Data Schema + Governance
 PII inventory · schema registry · data contracts · lineage
 Data governance is non-negotiable in production. Every field must be classified. Every schema change must follow the contract
@@ -877,10 +793,7 @@ business_rules:
 - "total_amount = sum(line_items) excluding refunds processed > 30 days"
 docs/data/pii-inventory.md — governance anchor:
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 19
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 # PII Inventory — GOVERNANCE DOCUMENT
 # Human review required for any change. Do not auto-generate.
 Fields classified as PII (never log, never test fixture, encrypt at rest):
@@ -915,10 +828,7 @@ remove: "Remove only after all consumers have migrated"
 ## Ci/Cd Pipeline
 GitHub Actions — agent generates these on first scaffold
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 20
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 # .github/workflows/ci-backend.yml (agent generates per service)
 name: Backend CI
 on:
@@ -978,10 +888,7 @@ Inspect src/ + tests/
 Walk source. Identify what exists. Find compile/test failures.
 Gap list
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 21
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 PLAN
 Diff requirements vs impl
 List: unimplemented features. Undocumented code. Failing gates.
@@ -1027,10 +934,7 @@ Produce 10-section report
 Structured output: summary, assumptions, arch, files, plan, code, tests, docs, remaining, risks.
 Session report
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 22
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ## Master Agent Prompts
 copy-paste to start any session
 Bootstrap prompt — Session 1 (works for both Copilot and Claude Code):
@@ -1068,10 +972,7 @@ If any quality gate fails, fix it before producing the report.
 NEVER hardcode secrets. NEVER log PII fields.
 Resume prompt — Sessions 2+ (short version):
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 23
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 ## Resume — AI Platform Factory
 ## Platform: [YOUR PLATFORM NAME]
 Read .ai-state.md first. Then requirements/. Then docs/. Then src/.
@@ -1129,10 +1030,7 @@ Security scan
 Trivy + CodeQL + Trufflehog pass (no CRITICAL/HIGH)
 CI security-scan.yml
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 24
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 Docker build
 Production Dockerfile builds successfully (--target production)
 CI build-and-scan job
@@ -1142,7 +1040,6 @@ no Docker required — for developer machines without container runtime
 scripts/ provides non-Docker alternatives for all common tasks.
 Developers can run tests, seed databases, and check health without Docker.
 CI always runs in containers. Local scripts are developer ergonomics.
-#!/bin/bash
 # scripts/local-setup.sh — install deps for all services without Docker
 set -e
 echo "→ Checking Node.js version (requires 22+)"
@@ -1161,7 +1058,6 @@ psql "$DATABASE_URL" -c "SELECT 1" > /dev/null 2>&1 \
 fi
 echo "✓ Local setup complete. Run: scripts/run-tests.sh"
 # scripts/run-tests.sh — run all tests without Docker
-#!/bin/bash
 set -e
 echo "→ Running unit tests for all services"
 for dir in src/*/; do
@@ -1171,13 +1067,9 @@ fi
 done
 echo "✓ All tests passed"
 # scripts/check-health.sh — check service health endpoints
-#!/bin/bash
 SERVICES=("3001:frontend" "8080:gateway" "3010:user-svc")
 for entry in "${SERVICES[@]}"; do
 
-AI Platform Factory — Production Agent Runbook v2.0
 23 Jun 2026 | Page 25
-Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor | Open standard: SKILL.md + AGENTS.md + hooks
-Multi-service platform edition
 AI Platform Factory — Production Agent Runbook v2.0 | June 2026 | Multi-service: Frontend + Backend + Data Pipeline + Agent Layer | GitHub
 Copilot Agent + Claude Code | Open standard: SKILL.md + AGENTS.md + hooks

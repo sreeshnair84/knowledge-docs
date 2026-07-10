@@ -74,25 +74,21 @@ docusaurus.config.js        # Full site config
 ```html
 <details>
 <summary>Document Title</summary>
-<iframe src="/knowledge-docs/filename.pdf" width="100%" height="800px" frameborder="0"></iframe>
+&lt;iframe src="/knowledge-docs/filename.pdf" width="100%" height="800px" frameborder="0">&lt;/iframe>
 <p><a href="/knowledge-docs/filename.pdf" target="_blank">Open in new tab ↗</a></p>
 </details>
 ```
 
 ### New DOCX / PPTX (Google Docs Viewer)
 ```html
-<details>
-<summary>Document Title</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/<section>/filename.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="/knowledge-docs/filename.docx" download>Download ↓</a></p>
-</details>
+- [Document Title](/knowledge-docs/filename.docx) *(download)*
 ```
 
 ### New HTML file
 ```html
 <details>
 <summary>Title</summary>
-<iframe src="/knowledge-docs/filename.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
+&lt;iframe src="/knowledge-docs/filename.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;">&lt;/iframe>
 <p><a href="/knowledge-docs/filename.html" target="_blank">Open in new tab ↗</a></p>
 </details>
 ```

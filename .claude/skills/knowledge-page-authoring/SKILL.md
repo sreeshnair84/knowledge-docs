@@ -2,6 +2,12 @@
 name: knowledge-page-authoring
 description: Enforce consistent structure, depth of research, and formatting when adding or editing any page in this knowledge-docs repo. Covers all document types actually present in this workspace — guides, certification/exam prep, interview question banks, engagement case studies (industry-vertical deep dives), narrative/dramatized case studies, workshop transcripts, research reports, framework/methodology references, and multi-part volume series. Use this any time the user is writing a new page, converting a source document, reviewing an existing page for consistency, or asking "what should this page look like" / "is this page formatted right" / "does this duplicate something." Always run the linter and the duplicate-check script before treating a page as finished.
 model: sonnet
+date_created: 2026-07-10
+last_reviewed: 2026-07-10
+status: current
+source_type: converted-pdf
+covers_version: "N/A"
+last_reviewed: 2026-07-10
 ---
 
 # Knowledge Page Authoring

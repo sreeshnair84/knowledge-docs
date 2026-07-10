@@ -7,6 +7,7 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["cleanup-summary"]
+covers_version: "N/A"
 ---
 
 # Cleanup Summary — Restructure/Dedup 2026-07

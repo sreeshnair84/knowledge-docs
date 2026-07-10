@@ -26,36 +26,16 @@ A 12-week Principal Architect programme covering quantum foundations, Quantum ML
 
 ## IBM Certification Guides
 
-<details>
-<summary>IBM Associate Quantum Certification Guide (C1000-112)</summary>
-<iframe src="IBM_Associate_Quantum_CertGuide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="IBM_Associate_Quantum_CertGuide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [IBM Associate Quantum Certification Guide (C1000-112)](/knowledge-docs/quantum/IBM_Associate_Quantum_CertGuide)
 
-<details>
-<summary>IBM Developer Quantum Certification Guide (C1000-171)</summary>
-<iframe src="IBM_Developer_Quantum_CertGuide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="IBM_Developer_Quantum_CertGuide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [IBM Developer Quantum Certification Guide (C1000-171)](/knowledge-docs/quantum/IBM_Developer_Quantum_CertGuide)
 
 ---
 
 ## Industry Landscape Research
 
-<details>
-<summary>Quantum AI — Tech Giants Report (IBM, Google, Microsoft, AWS, NVIDIA)</summary>
-<iframe src="Quantum_AI_TechGiants_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Quantum_AI_TechGiants_Report.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Quantum AI — Tech Giants Report (IBM, Google, Microsoft, AWS, NVIDIA)](/knowledge-docs/quantum/Quantum_AI_TechGiants_Report)
 
-<details>
-<summary>Quantum AI — Startups Report (IonQ, D-Wave, Quantinuum, Multiverse, QuEra)</summary>
-<iframe src="Quantum_AI_Startups_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Quantum_AI_Startups_Report.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Quantum AI — Startups Report (IonQ, D-Wave, Quantinuum, Multiverse, QuEra)](/knowledge-docs/quantum/Quantum_AI_Startups_Report)
 
-<details>
-<summary>Quantum AI — Consultancies Report (Accenture, McKinsey, BCG X, Deloitte, IBM)</summary>
-<iframe src="Quantum_AI_Consultancies_Report.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Quantum_AI_Consultancies_Report.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Quantum AI — Consultancies Report (Accenture, McKinsey, BCG X, Deloitte, IBM)](/knowledge-docs/quantum/Quantum_AI_Consultancies_Report)

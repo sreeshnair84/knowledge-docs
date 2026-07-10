@@ -136,11 +136,7 @@ Microsoft Entra now supports **Agent ID** — agents as first-class identity obj
 
 </details>
 
-<details>
-<summary>Auth &amp; Identity Flows</summary>
-<iframe src="auth_identity_flows.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="auth_identity_flows.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Auth &amp; Identity Flows](/knowledge-docs/ai-protocols/auth/auth_identity_flows)
 
 <details>
 <summary>Tool Authentication &amp; Connectors</summary>
@@ -149,8 +145,4 @@ Microsoft Entra now supports **Agent ID** — agents as first-class identity obj
 
 </details>
 
-<details>
-<summary>Part 3 — Identity, OBO &amp; Sessions</summary>
-<iframe src="Part3_Identity_OBO_Sessions.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Part3_Identity_OBO_Sessions.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Part 3 — Identity, OBO &amp; Sessions](/knowledge-docs/ai-protocols/auth/Part3_Identity_OBO_Sessions)

@@ -202,6 +202,8 @@ Use platforms (GitHub Copilot, Vertex AI Conversation, Microsoft Foundry (former
 
 ## 4. Model Selection for Enterprise
 
+> **For the complete vendor-agnostic model landscape**, cross-provider capability matrix, open-source model strategy, routing architectures, model registry design, and vendor lock-in prevention patterns, see → [Enterprise Multi-Model AI Strategy](enterprise-multi-model-ai-strategy.md). This section covers Claude-specific details and the architectural principles that apply regardless of provider.
+
 ### 4.1 Claude Model Landscape (2026)
 
 | Model | Cost (in/out per MTok) | Context | Capability tier | Best for |
@@ -216,7 +218,23 @@ All 1M-context models support up to 128K output tokens.
 
 See [Models 2026](../../coding-tools/claude/claude-models-2026.md) for the complete capability and pricing matrix.
 
-### 4.2 Use-Case Fit
+### 4.1a Cross-Vendor Landscape Summary (2026)
+
+Enterprises should evaluate Claude alongside other providers. The table below maps the competitive landscape; detailed analysis is in the [Multi-Model Strategy Guide](enterprise-multi-model-ai-strategy.md#3-commercial-model-families-2026).
+
+| Provider | Top Model | Context | Relative Strength | Self-host? |
+|---|---|---|---|---|
+| **Anthropic** | Claude Fable 5 | 1M | Instruction following, safety, long docs, tool use | No |
+| **OpenAI** | GPT-4o / o3 | 128K / 200K | Ecosystem breadth, multimodal, coding | Azure only |
+| **Google** | Gemini 2.5 Pro | 1M | Multimodal, video, ultra-long context, GCP integration | Vertex only |
+| **Amazon** | Nova Pro (Bedrock) | 300K | AWS-native, cost leadership, multimodal | No |
+| **Meta (OSS)** | Llama 3.3 70B | 128K | Full data control, air-gap, no per-token cost | Yes |
+| **Mistral (OSS)** | Mistral Large 2 | 128K | EU data sovereignty, multilingual, Apache-friendly | Yes |
+| **DeepSeek (OSS)** | DeepSeek-R1 | 128K | Reasoning, math, cost-efficient self-hosting | Yes (check regs) |
+
+**Key principle:** No single model leads on all dimensions. Multi-model routing extracts the best capability per task type while controlling cost.
+
+### 4.2 Use-Case Fit (within Claude Tier)
 
 ```
 COMPLEXITY OF TASK
@@ -231,13 +249,19 @@ COMPLEXITY OF TASK
               COST SENSITIVITY
 ```
 
+For cross-provider task-to-model mapping, see [Dynamic Model Selection](enterprise-multi-model-ai-strategy.md#8-dynamic-model-selection).
+
 ### 4.3 Multi-Model Strategies
 
 **Routing:** Use a classifier (Haiku 4.5) to score task complexity, then route to Haiku (simple) or Sonnet 5 (complex) or Fable 5 (critical). See [Cost Optimization Routing Pattern](enterprise-ai-architecture-patterns.md#11-cost-optimisation-routing).
 
-**Fallback:** Primary model → timeout/error → fallback model. Always have a fallback. Never let a single model be a hard dependency.
+**Fallback:** Primary model → timeout/error → fallback model. Never let a single model be a hard dependency.
 
 **Cascade:** Haiku → check output quality → if below threshold → Sonnet 5 → check → if below threshold → Fable 5. Optimises cost while guaranteeing quality floor.
+
+**Cross-vendor fallback:** Primary provider down → AI gateway routes to secondary provider (e.g., GPT-4o as Claude Sonnet 5 fallback). Configure in LiteLLM or Kong AI Gateway router config. Test monthly — untested fallbacks are not reliable fallbacks.
+
+For full routing architecture patterns (classifier routing, confidence cascade, latency-aware, risk-aware), see [Model Routing Architecture](enterprise-multi-model-ai-strategy.md#9-model-routing-architecture).
 
 ### 4.4 Vendor Lock-in Risk and Mitigation
 
@@ -246,13 +270,15 @@ COMPLEXITY OF TASK
 
 | Risk | Mitigation |
 |------|-----------|
-| API schema dependency | Wrap calls in an abstraction layer (AI gateway, internal SDK) |
+| API schema dependency | Wrap calls in an abstraction layer (AI gateway, internal SDK); use OpenAI-compatible schema as the common contract |
 | Embedding lock-in | Store raw text alongside embeddings; re-embed on switch |
-| Fine-tune lock-in | Keep labelled data; document training process; use open formats |
-| Feature dependency | Track which non-standard features you depend on |
-| Pricing changes | Monitor costs; have alternative model tested and ready |
+| Fine-tune lock-in | Keep labelled data; document training process; use open-source base models where possible |
+| Feature dependency | Track which provider-specific features (e.g., extended thinking, Realtime API) you depend on; isolate behind feature flags |
+| Pricing changes | Monitor costs; have alternative model tested and ready; run quarterly cross-vendor benchmarks |
 
 **Multi-vendor strategy:** Maintain tested integration with at least two model providers. Test quarterly.
+
+For the complete vendor lock-in prevention architecture — including LiteLLM configuration, prompt portability patterns, model registry design, and abstraction layer design — see [Vendor Lock-in Prevention](enterprise-multi-model-ai-strategy.md#18-vendor-lock-in-prevention).
 
 ---
 

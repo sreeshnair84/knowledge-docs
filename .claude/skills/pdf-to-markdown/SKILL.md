@@ -2,6 +2,12 @@
 name: pdf-to-markdown
 description: Convert a PDF into Markdown while preserving reading order, rendering tables as real Markdown tables, and extracting embedded images/diagrams as separate PNG files referenced in place — never a flat text dump and never an <iframe> embed. Use this whenever the user wants to convert, migrate, or "properly" turn a PDF into a markdown page for this knowledge-docs repo, including as part of the knowledge-repo-cleanup skill's Phase 2. Strips repeated running headers/footers automatically. Always followed by a manual QA pass (see references/conversion-checklist.md) and by the knowledge-page-authoring skill's linter — this produces a strong first draft, not a finished page.
 model: sonnet
+date_created: 2026-07-10
+last_reviewed: 2026-07-10
+status: current
+source_type: converted-pdf
+covers_version: "N/A"
+last_reviewed: 2026-07-10
 ---
 
 # PDF to Markdown

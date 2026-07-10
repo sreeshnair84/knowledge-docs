@@ -15,8 +15,6 @@ covers_version: \"as of 2026-07-10\"
 
 # Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 1
 Enterprise AI Authentication Research  Part 3 of 7
 Part 3
 Identity Propagation, OBO & Session
@@ -25,8 +23,6 @@ How user identity flows through AI platforms, On-Behalf-Of patterns,
 long-running sessions, and multi-tool agent orchestration
 Enterprise Authentication & Identity Propagation for AI Agents
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 2
 Part 3A — User Authentication
 The foundational question in enterprise AI security is: when an AI agent takes an action, whose identity is
 presented to the downstream system? This section traces the authentication journey from user login
@@ -66,8 +62,6 @@ First-time consent grants refresh
 token; subsequent sessions use silent
 refresh
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 3
 Question
 Standard Answer
 Notes
@@ -118,8 +112,6 @@ Refresh token rotation on each use;
 access tokens expire and are
 reissued
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 4
 Part 3B — Identity Propagation
 Identity propagation is the process of carrying the user's verified identity from the AI platform through to
 every downstream API call. The goal is that each system the AI interacts with sees the user's identity —
@@ -192,8 +184,6 @@ GitHub)
 User identity in new
 domain's token format
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 5
 Pattern
 Standard
 When to Use
@@ -212,8 +202,6 @@ Legacy SAML IdP → OAuth
 SAML NameID mapped to
 API user
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 6
 Part 3C — On-Behalf-Of (OBO) Deep Dive
 The OAuth 2.0 On-Behalf-Of (OBO) flow (RFC 8693) enables a middle-tier service (like an AI platform) to
 exchange an incoming user token for a new token scoped to a downstream service — while preserving the
@@ -243,8 +231,6 @@ Entra ID issues new access token for Microsoft Graph, still bearing user's ident
 AI platform calls Graph API using the new token — Graph sees user's identity
 ↓
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 7
 SharePoint, Exchange, Teams enforce user's actual permissions — no elevation possible
 When OBO is Applicable vs. Impossible
 OBO Applicability Matrix
@@ -317,16 +303,12 @@ The ServiceNow platform sees API calls as coming from the named user.
  Scripted Delegation: A Flow Designer flow runs under a service account but logs the original
 requester's identity using gs.getUser() and stored in the work_notes or audit fields.
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 8
 ServiceNow OBO Pattern Recommendation
  Use OAuth 2.0 Authorization Code flow to obtain user tokens for interactive AI actions
  Pass the user's sys_user ID in all Flow context variables for audit purposes
  Implement approval workflows (Human-in-the-Loop) for privileged ServiceNow actions
  Log both the acting OAuth user and the originating AI conversation ID in sys_audit
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 9
 Part 3D — Long-Running Sessions
 Enterprise AI conversations may span hours or days — well beyond the lifetime of a typical OAuth access
 token (60-120 minutes). Production systems must handle token expiry transparently while maintaining
@@ -407,8 +389,6 @@ May require re-auth
 Balance UX vs security
 based on risk profile
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 10
 Interruption
 Survival Mechanism
 User Impact
@@ -450,8 +430,6 @@ Events That Trigger CAE Token Revocation
  High-risk sign-in detected by Entra ID Identity Protection
  Session revocation via Microsoft Entra admin portal
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 11
 Part 3E — Multi-Tool Agent Orchestration
 A common enterprise AI workflow involves an agent reading from multiple systems in a single
 conversational turn — for example, reading a GitHub PR, a linked Jira story, a Confluence design page,
@@ -479,8 +457,6 @@ Final response returned; all 5 tool calls logged with single conversation_id
 Managing Five OAuth Sessions Simultaneously
 Multi-Tool Session Management
 
-Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
-Page 12
 Challenge
 Solution
 Implementation Detail

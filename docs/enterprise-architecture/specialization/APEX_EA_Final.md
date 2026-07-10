@@ -6,9 +6,10 @@ status: current
 supersedes: "docs/enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.pdf, docs/enterprise-architecture/framework/TOGAF10_APEX_CloudNative_GlobalCorp.pdf, docs/enterprise-architecture/framework/TOGAF10_APEX_v4_PeerReviewed.pdf"
 source_type: converted-pdf
 source_file: "APEX_EA_Final.pdf"
-doc_type: framework-reference
+doc_type: guide
 framework_name: "APEX AI Platform of Platforms — TOGAF 10 + AI-DLC"
 tags: ["enterprise-architecture", "specialization", "togaf", "ai-dlc", "cloud-native"]
+covers_version: "N/A"
 ---
 
 # APEX: AI Platform of Platforms

@@ -296,6 +296,7 @@ const sidebars = {
           label: 'Processes',
           items: [
             'enterprise-architecture/process/index',
+            'enterprise-architecture/process/enterprise-technology-selection-framework',
             'enterprise-architecture/process/ai-solution-lifecycle-deliverables',
           ],
         },
@@ -323,6 +324,7 @@ const sidebars = {
           items: [
             'enterprise-architecture/ai-architecture/index',
             'enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations',
+            'enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy',
             'enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns',
             'enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance',
             'enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment',
@@ -331,6 +333,8 @@ const sidebars = {
             'enterprise-architecture/ai-architecture/machine-readable-ea',
             'enterprise-architecture/ai-architecture/agentic-ai-security-guardrails',
             'enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance',
+            'enterprise-architecture/ai-architecture/agent-reliability-engineering',
+            'enterprise-architecture/ai-architecture/enterprise-aiops-guide',
             'enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration',
             'enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive',
             'enterprise-architecture/ai-architecture/agent-memory-planning-architecture',

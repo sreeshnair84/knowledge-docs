@@ -7,6 +7,7 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["cloud-platforms", "ai-gateway"]
+covers_version: "N/A"
 ---
 
 # Kong AI Gateway — Authentication Deep Dive

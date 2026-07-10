@@ -35,8 +35,4 @@ Deep research and architecture guides for MCP — the open protocol for connecti
 
 </details>
 
-<details>
-<summary>MCP Harness AIDLC</summary>
-<iframe src="MCP_Harness_AIDLC.md.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="MCP_Harness_AIDLC.md.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [MCP Harness AIDLC](/knowledge-docs/ai-protocols/mcp/MCP_Harness_AIDLC.md)

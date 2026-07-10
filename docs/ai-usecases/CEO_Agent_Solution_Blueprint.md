@@ -194,7 +194,6 @@ model:
 "claude-opus-4-8"
 ,
 max_tokens:
-1200
 ,
 system: MEETING_PREP_SYSTEM_PROMPT,
 messages: [{
@@ -283,9 +282,7 @@ requested_entities:
 if
 ethical_wall.blocks(executive, entity):
 denial_log.append({
-"entity"
 : entity.id,
-"reason"
 :
 "ethical_wall"
 })
@@ -295,9 +292,7 @@ continue
 if
 conflict_registry.has_active_conflict(executive.firm_role, entity):
 denial_log.append({
-"entity"
 : entity.id,
-"reason"
 :
 "conflict_of_interest"
 })
@@ -309,9 +304,7 @@ if
 not
 role_policy.permits(executive.role, entity.sensitivity_level):
 denial_log.append({
-"entity"
 : entity.id,
-"reason"
 :
 "insufficient_role"
 })
@@ -352,11 +345,9 @@ ScopeGrant(approved, ttl_minutes=
 "scope_denied"
 : [
 {
-"entity"
 :
 "crm:client_855"
 ,
-"reason"
 :
 "ethical_wall"
 }

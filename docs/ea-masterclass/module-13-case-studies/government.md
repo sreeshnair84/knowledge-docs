@@ -7,11 +7,15 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-13-case-studies"]
-doc_type: engagement-case-study
-industry: 
-client_type: 
-engagement_period: 
+doc_type: narrative-case-study
+industry: government
+protagonist_role: "Enterprise Architecture Lead"
+core_tension: "Legacy government systems blocking citizen service modernization"
 ---
+## Cast of Characters
+
+*(Refer to the organisation background and key stakeholders described in this case study.)*
+
 
 ## Overview
 

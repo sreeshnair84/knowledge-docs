@@ -91,8 +91,4 @@ For the full orchestration governance guide, see [Agent Interoperability & Orche
 
 ## PDFs
 
-<details>
-<summary>AI Protocols &amp; Standards — Service Industry Guide 2026</summary>
-<iframe src="AI_Protocols_Standards_Service_Industry_Guide_2026.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Protocols_Standards_Service_Industry_Guide_2026.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [AI Protocols &amp; Standards — Service Industry Guide 2026](/knowledge-docs/ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026)

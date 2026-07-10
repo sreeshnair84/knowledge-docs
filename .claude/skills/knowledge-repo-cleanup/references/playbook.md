@@ -7,6 +7,7 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["skills", "knowledge-repo-cleanup"]
+framework_name: ""
 ---
 
 # Cleanup Playbook — Phase Detail

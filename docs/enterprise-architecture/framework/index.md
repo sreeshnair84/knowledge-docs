@@ -34,23 +34,11 @@ TOGAF 10, APEX, and AI-era framework references — including peer-reviewed case
 
 ## Communication Frameworks
 
-<details>
-<summary>EA Soft Skills Interview Master Guide</summary>
-<iframe src="EA_Soft_Skills_Interview_Master_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="EA_Soft_Skills_Interview_Master_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [EA Soft Skills Interview Master Guide](/knowledge-docs/enterprise-architecture/framework/EA_Soft_Skills_Interview_Master_Guide)
 
-<details>
-<summary>Enterprise AI Architect Communication Guide</summary>
-<iframe src="Enterprise_AI_Architect_Communication_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_AI_Architect_Communication_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Enterprise AI Architect Communication Guide](/knowledge-docs/enterprise-architecture/framework/Enterprise_AI_Architect_Communication_Guide)
 
-<details>
-<summary>Executive Communication Framework Guide</summary>
-<iframe src="Executive_Communication_Framework_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Executive_Communication_Framework_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Executive Communication Framework Guide](/knowledge-docs/enterprise-architecture/framework/Executive_Communication_Framework_Guide)
 
 ---
 

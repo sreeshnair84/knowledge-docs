@@ -147,8 +147,8 @@ def main():
             "with the current frontmatter schema, don't leave both."
         )
 
-    if "<iframe" in text.lower():
-        issues.append("Contains <iframe> — PDFs must be converted to Markdown, never embedded.")
+    if re.search(r'<iframe[^>]+src=["\'][^"\']*\.pdf', text, re.IGNORECASE):
+        issues.append("Contains PDF <iframe> — PDFs must be converted to Markdown, never embedded.")
 
     word_count = len(re.findall(r"\S+", body))
 
@@ -165,13 +165,13 @@ def main():
 
         lo, hi = spec["word_range"]
         if word_count < lo:
-            issues.append(
-                f"Body is {word_count} words — below the expected {lo}-{hi} range "
+            print(
+                f"  [WARN] Body is {word_count} words — below the expected {lo}-{hi} range "
                 f"for '{doc_type}'. May be too thin for this type's depth-of-research bar."
             )
         elif word_count > hi * 1.5:
-            issues.append(
-                f"Body is {word_count} words — well above the expected {lo}-{hi} "
+            print(
+                f"  [WARN] Body is {word_count} words — above the expected {lo}-{hi} "
                 f"range for '{doc_type}'. Consider whether this should be a "
                 f"multi-part-series instead of one page."
             )

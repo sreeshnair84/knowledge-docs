@@ -10,6 +10,9 @@ tags: ["interview-prep"]
 doc_type: interview-questions
 target_role: Interviews
 ---
+## How to Use This Guide
+
+
 
 # Interview Preparation
 
@@ -29,17 +32,9 @@ Question banks, scenario prep, and behavioral guides for Enterprise Architect an
 
 ## PDFs
 
-<details>
-<summary>AI Agent Systems Interview Guide</summary>
-<iframe src="AI_Agent_Systems_Interview_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="AI_Agent_Systems_Interview_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [AI Agent Systems Interview Guide](/knowledge-docs/interview-prep/AI_Agent_Systems_Interview_Guide)
 
-<details>
-<summary>Agentic AI Platforms Questionnaire 2025</summary>
-<iframe src="Agentic_AI_Platforms_Questionnaire_2025.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Agentic_AI_Platforms_Questionnaire_2025.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Agentic AI Platforms Questionnaire 2025](/knowledge-docs/interview-prep/Agentic_AI_Platforms_Questionnaire_2025)
 
 <details>
 <summary>EY AI Architect &amp; Consultant — Interview &amp; ECC AI-First Guide</summary>
@@ -48,30 +43,14 @@ Question banks, scenario prep, and behavioral guides for Enterprise Architect an
 
 </details>
 
-<details>
-<summary>Enterprise GenAI Architect Interview Guide</summary>
-<iframe src="Enterprise_GenAI_Architect_Interview_Guide.pdf" width="100%" height="800px" frameborder="0"></iframe>
-<p><a href="Enterprise_GenAI_Architect_Interview_Guide.pdf" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Enterprise GenAI Architect Interview Guide](/knowledge-docs/interview-prep/Enterprise_GenAI_Architect_Interview_Guide)
 
 ---
 
 ## DOCX Documents
 
-<details>
-<summary>AI Engineer Question Bank</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/interviews/AI_Engineer_Question_Bank.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://AI_Engineer_Question_Bank.docx" download>Download DOCX ↓</a></p>
-</details>
+- [AI Engineer Question Bank](/knowledge-docs/interview-prep/AI_Engineer_Question_Bank)
 
-<details>
-<summary>Hard Scenarios Interview Prep</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/interviews/Hard_Scenarios_Interview_Prep.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://Hard_Scenarios_Interview_Prep.docx" download>Download DOCX ↓</a></p>
-</details>
+- [Hard Scenarios Interview Prep](/knowledge-docs/interview-prep/Hard_Scenarios_Interview_Prep)
 
-<details>
-<summary>ML &amp; AI Interview Mastery Guide</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/interviews/ML_AI_Interview_Mastery_Guide.docx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://ML_AI_Interview_Mastery_Guide.docx" download>Download DOCX ↓</a></p>
-</details>
+- [ML &amp; AI Interview Mastery Guide](/knowledge-docs/interview-prep/ML_AI_Interview_Mastery_Guide)

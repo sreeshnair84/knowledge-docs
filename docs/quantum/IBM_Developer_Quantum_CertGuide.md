@@ -1,5 +1,5 @@
 ---
-title: "Deep-Dive Study Guide  Exam C1000-171"
+title: "Deep-Dive Study Guide Exam C1000-171"
 date_created: 2026-07-07
 last_reviewed: 2026-07-10
 status: current
@@ -8,29 +8,35 @@ source_type: converted-pdf
 source_file: "IBM_Developer_Quantum_CertGuide.pdf"
 tags: ["quantum"]
 doc_type: certification
-exam_code: 
-exam_validity: 
+exam_code: "C1000-171"
+exam_validity: "2026"
 ---
+
+## Exam Facts
+
+Exam code: C1000-171 | Credential: IBM Certified Developer — Quantum Computation | Format: Multiple choice
+
+## Domain Weighting
+
+See the Table of Contents below for topic coverage and proportional weighting across the four exam sections.
 
 <!-- converted from IBM_Developer_Quantum_CertGuide.pdf -->
 
-# Deep-Dive Study Guide  Exam C1000-171
+# Deep-Dive Study Guide Exam C1000-171
 
 ## Ibm Certified
 ## Developer
 ## Quantum Computation
-Deep-Dive Study Guide  Exam C1000-171
-Heavy Code Edition  Qiskit v1.x  Runtime v2  2026
+Deep-Dive Study Guide Exam C1000-171
+Heavy Code Edition Qiskit v1.x Runtime v2 2026
 ## Developer
 ## Algorithms
 ## Runtime
 ## Architecture
-70 questions  90 minutes  Score 49/70 to pass (70%)
+70 questions 90 minutes Score 49/70 to pass (70%)
 Builds on Associate level: adds Runtime v2, VQE, QAOA, QML, noise, PQC
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 2
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Table Of Contents
 SECTION 1 — Exam Blueprint & How It Differs from Associate
 SECTION 2 — Qiskit Runtime v2 – Sampler, Estimator, Sessions
@@ -46,8 +52,6 @@ SECTION 11 — Practice Exam – 50 Hard Questions with Full Explanations
 SECTION 12 — Master Reference & Resources
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 3
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 1
 Exam Blueprint & How It Differs from Associate
 C1000-171 is the professional-level exam. It assumes C1000-112 knowledge and goes significantly deeper on
@@ -78,8 +82,6 @@ Key Difference: The Developer exam requires you to write and reason about COMPLE
 just individual API calls. Every practice session should end with a working, end-to-end quantum program.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 4
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 2
 Qiskit Runtime v2 – Sampler, Estimator, Sessions
 Qiskit Runtime v2 introduces two primitive abstractions that replace the old execute() API. SamplerV2 is for
@@ -89,9 +91,7 @@ SamplerV2 — Full Usage
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
 from qiskit_ibm_runtime import Options
 from qiskit import QuantumCircuit, transpile
-from qiskit_aer import AerSimulator
 # ■■ On simulator ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-sim = AerSimulator()
 qc = QuantumCircuit(3, 3)
 qc.h(0); qc.cx(0,1); qc.cx(1,2); qc.measure_all()
 tqc = transpile(qc, sim)
@@ -115,15 +115,12 @@ res = job.result()
 counts_a = res[0].data.meas.get_counts()
 counts_b = res[1].data.meas.get_counts()
 # ■■ On real hardware with Options ■■■■■■■■■■■■■■■■■■■■■■■■■
-service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.least_busy(min_num_qubits=5)
 from qiskit_ibm_runtime import SamplerOptions
 options = SamplerOptions()
 options.dynamical_decoupling.enable = True # enable DD
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 5
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 options.twirling.enable_gates = True # enable Pauli twirling
 options.twirling.num_randomizations = 300
 sampler = Sampler(backend, options=options)
@@ -132,12 +129,8 @@ job = sampler.run([tqc], shots=8192)
 print(job.job_id()) # save for retrieval
 EstimatorV2 — Expectation Values for VQE
 from qiskit_ibm_runtime import EstimatorV2 as Estimator
-from qiskit.quantum_info import SparsePauliOp
 from qiskit import QuantumCircuit, transpile
 from qiskit.circuit import Parameter
-from qiskit_aer import AerSimulator
-import numpy as np
-sim = AerSimulator()
 # Define a Hamiltonian as SparsePauliOp
 # H = 0.5*ZZ - 0.5*XX (simple 2-qubit Hamiltonian)
 H = SparsePauliOp.from_list([('ZZ', 0.5), ('XX', -0.5)])
@@ -167,12 +160,8 @@ min_energy = min(energies)
 print(f'Minimum energy: {min_energy:.4f}')
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 6
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 Sessions — Reserving Backend Access
 from qiskit_ibm_runtime import Session, SamplerV2 as Sampler
-from qiskit_ibm_runtime import QiskitRuntimeService
-service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.least_busy(min_num_qubits=5)
 # Session keeps connection to backend — reduces queue overhead
 # for iterative algorithms (VQE, QAOA parameter sweeps)
@@ -195,8 +184,6 @@ Architect Note: Use Sessions for ALL variational algorithms (VQE, QAOA). Without
 queues independently — adding minutes of overhead per iteration on busy backends.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 7
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 3
 Advanced Circuit Techniques
 Dynamical Decoupling (DD)
@@ -205,7 +192,6 @@ noise. The most common sequence is XX (two X gates evenly spaced in the idle win
 from qiskit.transpiler.passes import PadDynamicalDecoupling
 from qiskit.circuit.library import XGate
 from qiskit.transpiler import PassManager, InstructionDurations
-from qiskit import transpile
 # Enable via Runtime Options (recommended for real hardware)
 from qiskit_ibm_runtime import SamplerOptions
 opts = SamplerOptions()
@@ -237,13 +223,10 @@ cliff2 = Clifford(qc_reconstructed)
 print(cliff == cliff2) # True
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 8
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 Unitary Synthesis
 from qiskit.synthesis import OneQubitEulerDecomposer, TwoQubitBasisDecomposer
 from qiskit.circuit.library import CXGate
 from qiskit.quantum_info import random_unitary
-import numpy as np
 # Decompose arbitrary 1-qubit unitary into basis gates
 decomposer_1q = OneQubitEulerDecomposer(basis='ZSX') # IBM native
 # Random 1-qubit unitary
@@ -259,8 +242,6 @@ Developer Exam Focus: Know that arbitrary 2-qubit unitaries require at most 3 CN
 theorem). This is a classic exam question about circuit complexity.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 9
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 4
 Noise Models & Error Mitigation
 Building Realistic Noise Models
@@ -268,9 +249,7 @@ from qiskit_aer.noise import (
 NoiseModel, depolarizing_error, thermal_relaxation_error,
 ReadoutError, pauli_error
 )
-from qiskit_ibm_runtime import QiskitRuntimeService
 # ■■ From real backend properties ■■■■■■■■■■■■■■■■■■■■■■■■■
-service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.backend('ibm_brisbane')
 # Build noise model that mirrors real device
 from qiskit_aer.noise import NoiseModel
@@ -294,7 +273,6 @@ nm.add_all_qubit_quantum_error(t_err, ['h', 'cx'])
 ro_err = ReadoutError([[0.98, 0.02], [0.03, 0.97]])
 nm.add_all_qubit_readout_error(ro_err)
 # Run noisy simulation
-from qiskit_aer import AerSimulator
 noisy_sim = AerSimulator(noise_model=nm)
 Zero-Noise Extrapolation (ZNE)
 # ZNE: run circuit at scaled noise levels, extrapolate to zero noise
@@ -302,13 +280,9 @@ Zero-Noise Extrapolation (ZNE)
 from mitiq import zne
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 10
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 from mitiq.interface.qiskit import from_qiskit
 from qiskit import QuantumCircuit, transpile
-from qiskit_aer import AerSimulator
 from qiskit_aer.noise import NoiseModel, depolarizing_error
-import numpy as np
 # Setup noisy simulator
 nm = NoiseModel()
 nm.add_all_qubit_quantum_error(depolarizing_error(0.01, 1), ['h','x'])
@@ -323,7 +297,6 @@ def execute(circuit):
 from qiskit.quantum_info import SparsePauliOp, Statevector
 tqc = transpile(circuit, sim)
 # Use noisy statevector for expectation
-from qiskit_aer import AerSimulator
 sv_sim = AerSimulator(method='statevector', noise_model=nm)
 tqc2 = circuit.copy()
 tqc2.save_statevector()
@@ -348,8 +321,6 @@ mitigated = np.polyval(coeffs, 0) # extrapolate to noise=0
 print(f'Unmitigated: {expectation_vals[0]:.4f}')
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 11
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 print(f'Mitigated: {mitigated:.4f}')
 print(f'Ideal: 1.0000 (for Bell state)')
 Pauli Twirling
@@ -371,19 +342,13 @@ ZNE + Twirling is the standard combination for NISQ error mitigation. Twirling f
 to depolarising; ZNE then extrapolates away the remaining incoherent error.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 12
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 5
 Variational Algorithms – VQE & QAOA Full
 Implementations
 VQE — Variational Quantum Eigensolver (Production Grade)
 from qiskit.circuit.library import TwoLocal, EfficientSU2
-from qiskit.quantum_info import SparsePauliOp
 from qiskit_ibm_runtime import EstimatorV2 as Estimator, Session
-from qiskit_aer import AerSimulator
-from qiskit import transpile
 from scipy.optimize import minimize
-import numpy as np
 # ■■ Define Hamiltonian: H2 molecule (simplified) ■■■■■■■■■
 # Full H2 Hamiltonian (Jordan-Wigner mapping, STO-3G basis)
 H2_hamiltonian = SparsePauliOp.from_list([
@@ -400,7 +365,6 @@ ansatz = EfficientSU2(num_qubits=2, reps=2, entanglement='linear')
 num_params = ansatz.num_parameters
 print(f'Parameters: {num_params}') # 12
 # ■■ Setup Estimator ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-sim = AerSimulator()
 estimator = Estimator(sim)
 # ■■ Cost function ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 call_count = [0]
@@ -415,8 +379,6 @@ energies.append(energy)
 if call_count[0] % 20 == 0:
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 13
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 print(f'Iter {call_count[0]}: E = {energy:.6f} Ha')
 return energy
 # ■■ Optimise ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -433,12 +395,8 @@ print(f'FCI reference: -1.137274 Ha')
 print(f'Error: {abs(result_cobyla.fun - (-1.137274))*1000:.2f} mHa')
 QAOA — Full MaxCut Implementation
 from qiskit.circuit.library import QAOAAnsatz
-from qiskit.quantum_info import SparsePauliOp
 from qiskit_ibm_runtime import EstimatorV2 as Estimator
-from qiskit_aer import AerSimulator
-from qiskit import transpile
 from scipy.optimize import minimize
-import numpy as np
 import networkx as nx
 # ■■ Problem: MaxCut on a 4-node graph ■■■■■■■■■■■■■■■■■■■■
 G = nx.Graph()
@@ -460,13 +418,10 @@ print('Cost operator:', cost_op)
 # ■■ QAOA Circuit (depth p=2) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 14
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 p = 2 # number of QAOA layers
 qaoa = QAOAAnsatz(cost_operator=cost_op, reps=p)
 print(f'QAOA parameters: {qaoa.num_parameters}') # 2*p = 4
 # ■■ Optimise ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-sim = AerSimulator()
 estimator = Estimator(sim)
 def qaoa_cost(params):
 bound = qaoa.assign_parameters(params)
@@ -492,8 +447,6 @@ Developer Exam: You must know QAOAAnsatz builds the alternating cost/mixer layer
 optimal gamma/beta parameters initialisation matters — use p=1 analytical solution as warm start for p=2.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 15
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 6
 Quantum Machine Learning – QNNs, Kernels,
 PennyLane
@@ -535,8 +488,6 @@ q_out = q_out.unsqueeze(1) # [batch, 1]
 return self.fc_out(q_out) # [batch, 2] logits
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 16
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 # ■■ Training ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 X, y = make_moons(n_samples=200, noise=0.1)
 X = StandardScaler().fit_transform(X)
@@ -562,7 +513,6 @@ from qiskit.primitives import StatevectorSampler
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-import numpy as np
 # ■■ Generate dataset ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 X, y = make_classification(n_samples=100, n_features=2,
 n_informative=2, n_redundant=0,
@@ -581,8 +531,6 @@ kernel = FidelityQuantumKernel(feature_map=feature_map,
 sampler=sampler)
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 17
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 # Compute kernel matrix (expensive O(n^2) circuit evaluations)
 K_train = kernel.evaluate(X_train) # [n_train x n_train]
 K_test = kernel.evaluate(X_test, X_train) # [n_test x n_train]
@@ -601,8 +549,6 @@ squared). The quantum advantage requires that the feature space is classically h
 ZZFeatureMap achieves this via entangling layers.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 18
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 7
 Quantum Circuit Library – Built-in Algorithm
 Circuits
@@ -646,8 +592,6 @@ entanglement_blocks='cx', # entangling gates
 entanglement='linear',
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 19
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 reps=2,
 parameter_prefix='theta'
 )
@@ -657,7 +601,6 @@ parameter_prefix='theta'
 ra = RealAmplitudes(num_qubits=3, reps=2)
 # ■■ PhaseEstimation ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 from qiskit.circuit.library import UnitaryGate
-import numpy as np
 # Estimate phase of eigenvalue of a unitary
 # U|psi> = e^(2*pi*i*phi)|psi> -- estimate phi
 U = UnitaryGate(np.array([[1,0],[0,np.exp(2j*np.pi*0.125)]]))
@@ -667,8 +610,6 @@ Developer Tip: Always use circuit library ansatze (EfficientSU2, TwoLocal) rathe
 and real projects. The exam will test your knowledge of their parameters: reps, entanglement, num_parameters.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 20
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 8
 Advanced Transpilation – Custom PassManagers
 from qiskit.transpiler import PassManager, CouplingMap, Layout
@@ -689,8 +630,6 @@ from qiskit.circuit.equivalence_library import SessionEquivalenceLibrary
 from qiskit import QuantumCircuit
 # ■■ Custom PassManager for IBM backend ■■■■■■■■■■■■■■■■■■■■■
 # Replicates optimization_level=3 with manual control
-from qiskit_ibm_runtime import QiskitRuntimeService
-service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.backend('ibm_brisbane')
 coupling_map = CouplingMap(backend.coupling_map)
 basis_gates = backend.basis_gates # ['cx','id','rz','sx','x','measure']
@@ -711,8 +650,6 @@ BasisTranslator(SessionEquivalenceLibrary, basis_gates),
 ])
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 21
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 # Stage 4: Optimisation
 optimisation_pm = PassManager([
 Optimize1qGatesDecomposition(basis=basis_gates),
@@ -742,8 +679,6 @@ SabreLayout + SabreSwap is the current state-of-the-art for layout and routing o
 (<10 qubits), TrivialLayout + BasicSwap may be faster to compile and nearly as good.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 22
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 9
 Quantum Information – Fidelity, Entanglement,
 Tomography
@@ -755,7 +690,6 @@ partial_trace, Pauli, SparsePauliOp,
 random_statevector, random_unitary
 )
 from qiskit import QuantumCircuit
-import numpy as np
 # ■■ State fidelity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 qc_ideal = QuantumCircuit(2)
 qc_ideal.h(0); qc_ideal.cx(0,1)
@@ -786,8 +720,6 @@ ideal_H = Operator(HGate())
 noisy_H_mat = ideal_H.data + 0.01 * np.random.randn(2,2)
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 23
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 noisy_H_mat = noisy_H_mat / np.linalg.norm(noisy_H_mat) * np.sqrt(2)
 noisy_H = Operator(noisy_H_mat)
 gate_fid = average_gate_fidelity(noisy_H, ideal_H)
@@ -800,7 +732,6 @@ qc_prep.h(0); qc_prep.cx(0, 1) # Bell state
 exp = StateTomography(qc_prep)
 # exp.run(backend).block_for_results() on real hardware
 # For simulator:
-from qiskit_aer import AerSimulator
 sim_data = exp.run(AerSimulator(), shots=4096).block_for_results()
 rho = sim_data.analysis_results('state').value
 print(f'Reconstructed state fidelity: {state_fidelity(rho, bell_dm):.4f}')
@@ -808,8 +739,6 @@ Exam: The Developer exam tests whether you can SELECT the right quantum informat
 states, average_gate_fidelity() for gates, entropy() for entanglement, StateTomography for full state reconstruction.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 24
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 10
 Hybrid Architecture Patterns – Architect-Level
 Design
@@ -818,12 +747,8 @@ systems — not just write code snippets.
 The Variational Hybrid Loop (Canonical Pattern)
 # This is the TEMPLATE for all variational quantum algorithms
 # VQE, QAOA, QNN training all follow this pattern
-import numpy as np
 from qiskit_ibm_runtime import EstimatorV2 as Estimator, Session
-from qiskit_ibm_runtime import QiskitRuntimeService
 from qiskit.circuit.library import EfficientSU2
-from qiskit.quantum_info import SparsePauliOp
-from qiskit import transpile
 from scipy.optimize import minimize
 class VariationalHybridLoop:
 """
@@ -851,11 +776,8 @@ return result
 # Usage
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 25
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 H = SparsePauliOp.from_list([('ZZ', -1), ('XX', 0.5), ('YY', 0.5)])
 ansatz = EfficientSU2(2, reps=2)
-service = QiskitRuntimeService(channel='ibm_quantum')
 backend = service.least_busy(min_num_qubits=2)
 loop = VariationalHybridLoop(H, ansatz, backend)
 x0 = np.random.uniform(0, 2*np.pi, ansatz.num_parameters)
@@ -877,8 +799,6 @@ Architecture Anti-Pattern: Never put quantum execution in a real-time inference 
 (queuing, execution, readout) is measured in seconds to minutes. Design for batch or async execution.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 26
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 11
 Practice Exam – 50 Hard Questions with
 Explanations
@@ -911,8 +831,6 @@ D) Readout calibration
 Answer: C — Twirling randomises phases of coherent errors, converting them to depolarising (incoherent) errors.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 27
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 Q5. ZNE extrapolates expectation values by:
 A) Running the circuit at zero noise directly
 B) Running at multiple noise levels and fitting to zero
@@ -946,8 +864,6 @@ D) It enables error correction
 Answer: C — Sessions share QPU context across jobs, dramatically reducing latency for iterative algorithms.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 28
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 Q10. QAOAAnsatz(cost_operator=C, reps=p).num_parameters equals:
 A) p
 B) 2p
@@ -981,8 +897,6 @@ D) Circuit compilation
 Answer: C — DD fills idle time slots with symmetric gate sequences (XX, XY4) to echo out noise during qubit idling.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 29
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 Q15. generate_preset_pass_manager(optimization_level=3, backend=b) is preferred over transpile() because:
 A) It runs faster
 B) It gives more control via stageable pipeline
@@ -995,8 +909,6 @@ C1000-171 domains. Complete ALL learning paths before exam day, especially 'Quan
 and 'Advanced Circuits' modules.
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
-Page 30
-Exam C1000-171  Qiskit v1.x + Runtime v2  Principal Architect Track  2026
 ## Section 12
 Master Reference & Resources
 Class/Module
@@ -1050,11 +962,11 @@ ger
 optimization_level, backend
 Recommended transpilation API (v1.x)
 Key Resources for C1000-171:
- IBM Quantum Learning: learning.quantum.ibm.com (complete ALL paths)
- Qiskit documentation: docs.quantum.ibm.com
- qiskit-ibm-runtime docs: qiskit.github.io/qiskit-ibm-runtime
- PennyLane QML tutorials: pennylane.ai/qml (for QML section)
- IBM C1000-171 exam page: ibm.com/training/certification/C1000171
+ IBM Quantum Learning: learning.quantum.ibm.com (complete ALL paths)
+ Qiskit documentation: docs.quantum.ibm.com
+ qiskit-ibm-runtime docs: qiskit.github.io/qiskit-ibm-runtime
+ PennyLane QML tutorials: pennylane.ai/qml (for QML section)
+ IBM C1000-171 exam page: ibm.com/training/certification/C1000171
 You are ready to sit the Developer exam. You have mastered Runtime v2, variational algorithms, error
 mitigation, QML, and hybrid architecture. Run every code block. Build at least one VQE and one QAOA from
 scratch. Then book the exam — you're prepared.

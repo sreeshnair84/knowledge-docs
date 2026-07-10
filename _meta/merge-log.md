@@ -7,6 +7,7 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["merge-log.md"]
+covers_version: "N/A"
 ---
 
 # Merge Log — Phase 3

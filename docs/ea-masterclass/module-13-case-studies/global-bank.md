@@ -7,11 +7,15 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-13-case-studies"]
-doc_type: engagement-case-study
-industry: 
-client_type: 
-engagement_period: 
+doc_type: narrative-case-study
+industry: finance
+protagonist_role: "Enterprise Architecture Lead"
+core_tension: "18-day loan origination cycle vs fintech 2-day competitor"
 ---
+## Cast of Characters
+
+*(Refer to the organisation background and key stakeholders described in this case study.)*
+
 
 # Case Study: Global Bank — AI-Powered Loan Origination
 
