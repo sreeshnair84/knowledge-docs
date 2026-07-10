@@ -159,8 +159,33 @@ into `/archive/<original-relative-path>/`. Do not hard-delete. Add a
 one-line `supersedes` frontmatter pointer in the keeper referencing what it
 replaced, and `status: archived` frontmatter on the archived copies.
 
-After each cluster: `progress.py mark --phase 3 --item <cluster-id> --status
-done`, then append a before/after entry to `_meta/merge-log.md`.
+**Post-merge validation — run after every keeper file is written:**
+
+1. **Readability check** — Open the merged file and verify it reads as a
+   coherent document, not as two documents stitched end-to-end. Merged
+   content must be integrated into the keeper's structure (correct heading
+   level, consistent terminology, no dangling cross-references to the
+   archived file).
+
+2. **knowledge-page-authoring lint** — Run the linter on the merged keeper:
+   ```bash
+   python3 .claude/skills/knowledge-page-authoring/scripts/lint_page.py <keeper-path>
+   ```
+   Fix any failures before marking the cluster done. The linter checks
+   frontmatter completeness, heading hierarchy, and structural conventions
+   that all pages in this repo must follow.
+
+3. **Frontmatter** — Confirm the keeper has all required fields after merge:
+   `title`, `date_created`, `last_reviewed` (set to today), `status: current`,
+   `supersedes` (list archived file paths), `source_type`, `source_file`, `tags`.
+
+4. **Link integrity** — Any cross-links inside the merged content must resolve
+   to pages that still exist. Update links that pointed to the now-archived
+   source files to point at the keeper instead.
+
+After each cluster passes all four checks: `progress.py mark --phase 3
+--item <cluster-id> --status done`, then append a before/after entry to
+`_meta/merge-log.md`.
 
 Mark complete once the queue is empty: `progress.py complete-phase --phase 3`.
 
