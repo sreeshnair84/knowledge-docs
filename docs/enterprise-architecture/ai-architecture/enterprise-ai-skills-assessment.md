@@ -18,8 +18,8 @@ tags: ["coding-tools", "enterprise-ai-architect"]
 **What this does NOT duplicate:**
 - Governance policy details → [Governance & Compliance](enterprise-ai-governance-compliance.md)
 - Architecture pattern implementations → [Architecture Patterns](enterprise-ai-architecture-patterns.md)
-- Claude model pricing and selection → [Models 2026](../claude/claude-models-2026.md)
-- CCA-F exam question practice → [CCA-F Exam Prep](../claude/ccaf-exam-prep-complete.md)
+- Claude model pricing and selection → [Models 2026](../../coding-tools/claude/claude-models-2026.md)
+- CCA-F exam question practice → [CCA-F Exam Prep](../../coding-tools/claude/ccaf-exam-prep-complete.md)
 
 ---
 
@@ -123,7 +123,7 @@ For EA practitioners already working with Claude, CCA-F provides external credib
 
 1. Register via [Pearson VUE](https://home.pearsonvue.com/) — search for "Anthropic" or "Claude Certified Architect"
 2. If your organisation is a Claude Partner Network member, check eligibility for the free first-5,000 voucher before paying
-3. Full preparation: [CCA-F Exam Prep — Complete Guide](../claude/ccaf-exam-prep-complete.md)
+3. Full preparation: [CCA-F Exam Prep — Complete Guide](../../coding-tools/claude/ccaf-exam-prep-complete.md)
 
 ---
 
@@ -240,22 +240,22 @@ Goal: Build the technical foundation and design first working AI systems.
 **Months 1–2: Foundations**
 
 - Read [Enterprise AI Architect — Foundations](enterprise-ai-architect-foundations.md) in full — this is your landscape map
-- Complete [Models 2026](../claude/claude-models-2026.md) — understand model selection, pricing tiers, and capability differences
+- Complete [Models 2026](../../coding-tools/claude/claude-models-2026.md) — understand model selection, pricing tiers, and capability differences
 - Build a simple LLM integration from scratch using the Anthropic API: no framework, just direct API calls with retry logic
-- Read the [Prompt Engineering guide](../claude/prompt-engineering-claude-4.md) and implement three different prompting techniques on a real problem
+- Read the [Prompt Engineering guide](../../coding-tools/claude/prompt-engineering-claude-4.md) and implement three different prompting techniques on a real problem
 
 **Months 3–4: Agents and Tools**
 
-- Read [MCP Deep Guide](../claude/mcp-deep-guide.md) — understand the protocol, build a simple MCP server
-- Read [Agent SDK Production](../claude/claude-agent-sdk-production.md) — implement a two-agent workflow
-- Study D1 and D2 of the [CCA-F Exam Prep guide](../claude/ccaf-exam-prep-complete.md)
+- Read [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) — understand the protocol, build a simple MCP server
+- Read [Agent SDK Production](../../coding-tools/claude/claude-agent-sdk-production.md) — implement a two-agent workflow
+- Study D1 and D2 of the [CCA-F Exam Prep guide](../../coding-tools/claude/ccaf-exam-prep-complete.md)
 - Build a small RAG pipeline: ingest a document corpus, embed, store in a vector DB, retrieve, and evaluate faithfulness
 
 **Months 5–6: First Systems**
 
 - Read [Architecture Patterns](enterprise-ai-architecture-patterns.md) — sections 1–8 cover the patterns you'll encounter most
 - Design (on paper) an end-to-end AI system for a real problem in your organisation
-- Study D4 and D5 of [CCA-F Exam Prep](../claude/ccaf-exam-prep-complete.md) and sit a mock exam
+- Study D4 and D5 of [CCA-F Exam Prep](../../coding-tools/claude/ccaf-exam-prep-complete.md) and sit a mock exam
 - Register for CCA-F if you score 70%+ on mock questions
 
 ### Intermediate Path (6–12 Months)
@@ -264,7 +264,7 @@ Goal: Ship production-grade AI systems with proper observability and governance.
 
 **Months 7–8: Production Engineering**
 
-- Study [Claude Enterprise 2026](../claude/claude-enterprise-2026.md) — multi-cloud deployment, Bedrock/Vertex/Azure
+- Study [Claude Enterprise 2026](../../coding-tools/claude/claude-enterprise-2026.md) — multi-cloud deployment, Bedrock/Vertex/Azure
 - Implement a 3-layer evaluation harness (see Section 6: Evaluation Harness Design below)
 - Add OTel instrumentation to an existing agent and ship traces to an observability backend
 - Run your first load test on an AI endpoint and document the latency/cost profile
@@ -274,11 +274,11 @@ Goal: Ship production-grade AI systems with proper observability and governance.
 - Read [Enterprise AI Governance & Compliance](enterprise-ai-governance-compliance.md) in full
 - Map a real AI system you own to EU AI Act risk categories and identify compliance gaps
 - Draft an AI governance policy for your team using the NIST AI RMF structure
-- Review [Constitutional AI & Safety](../claude/constitutional-ai-safety-2026.md) for harm taxonomy and four-tier priority model
+- Review [Constitutional AI & Safety](../../coding-tools/claude/constitutional-ai-safety-2026.md) for harm taxonomy and four-tier priority model
 
 **Months 11–12: Multi-Agent at Scale**
 
-- Read [Multi-Agent Orchestration](../claude/ruflo-agentic-ai-guide.md) — study framework comparison, evaluation framework, and guardrail patterns
+- Read [Multi-Agent Orchestration](../../coding-tools/claude/ruflo-agentic-ai-guide.md) — study framework comparison, evaluation framework, and guardrail patterns
 - Design and implement a multi-agent workflow with HITL gates
 - Present your AI system design to a senior stakeholder and incorporate their feedback
 - Build your first cost governance dashboard with per-feature token attribution
@@ -301,7 +301,7 @@ Goal: Lead AI architecture at organisational scale; define standards; govern a p
 
 ### 6.1 Token Economics and Cost Modelling
 
-Token economics is the discipline of translating AI API usage into predictable, controllable cost. Unlike compute instances with fixed hourly prices, LLM costs are proportional to both input and output token volumes — and both are driven by architectural decisions. A RAG pipeline that stuffs 40,000 tokens of context per query costs 20x more per call than one that retrieves 2,000 tokens of relevant context. Architects must own a token budget at the feature level, track actuals vs. budget in production, and make deliberate trade-offs between context richness and cost. Prompt caching, batching, model routing (use Haiku for simple classification, Sonnet for reasoning, Fable for complex multi-step), and output length controls are the primary levers. For pricing details by model, see [Models 2026](../claude/claude-models-2026.md).
+Token economics is the discipline of translating AI API usage into predictable, controllable cost. Unlike compute instances with fixed hourly prices, LLM costs are proportional to both input and output token volumes — and both are driven by architectural decisions. A RAG pipeline that stuffs 40,000 tokens of context per query costs 20x more per call than one that retrieves 2,000 tokens of relevant context. Architects must own a token budget at the feature level, track actuals vs. budget in production, and make deliberate trade-offs between context richness and cost. Prompt caching, batching, model routing (use Haiku for simple classification, Sonnet for reasoning, Fable for complex multi-step), and output length controls are the primary levers. For pricing details by model, see [Models 2026](../../coding-tools/claude/claude-models-2026.md).
 
 ### 6.2 Evaluation Harness Design
 
@@ -321,7 +321,7 @@ Retrieval-Augmented Generation solves the knowledge currency problem for LLMs: f
 
 ### 6.6 Multi-Agent Orchestration at Scale
 
-Multi-agent systems decompose complex tasks across specialised agents running in parallel or sequence. The EA-level decision is topology: hierarchical (orchestrator delegates to workers — predictable, auditable, good for complex coding and research), peer-to-peer (agents share a memory pool — higher coordination complexity, better for consensus tasks), or pipeline (sequential stages — simplest to reason about, lowest overhead). At enterprise scale, the additional concerns are agent failure isolation (one agent failing should not cascade), shared memory contention (agents writing to the same state simultaneously), token budget management per agent, and governance visibility (can you trace which agent made which decision?). See [Multi-Agent Orchestration](../claude/ruflo-agentic-ai-guide.md) for framework options and patterns.
+Multi-agent systems decompose complex tasks across specialised agents running in parallel or sequence. The EA-level decision is topology: hierarchical (orchestrator delegates to workers — predictable, auditable, good for complex coding and research), peer-to-peer (agents share a memory pool — higher coordination complexity, better for consensus tasks), or pipeline (sequential stages — simplest to reason about, lowest overhead). At enterprise scale, the additional concerns are agent failure isolation (one agent failing should not cascade), shared memory contention (agents writing to the same state simultaneously), token budget management per agent, and governance visibility (can you trace which agent made which decision?). See [Multi-Agent Orchestration](../../coding-tools/claude/ruflo-agentic-ai-guide.md) for framework options and patterns.
 
 ### 6.7 HITL Integration Patterns
 
@@ -585,24 +585,24 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 **Beginner:**
 
 - [Enterprise AI Architect — Foundations](enterprise-ai-architect-foundations.md) — start here
-- [Models 2026](../claude/claude-models-2026.md) — model selection and pricing
-- [Prompt Engineering](../claude/prompt-engineering-claude-4.md) — the craft of prompting
-- [CCA-F Exam Prep — Complete Guide](../claude/ccaf-exam-prep-complete.md) — certification preparation
+- [Models 2026](../../coding-tools/claude/claude-models-2026.md) — model selection and pricing
+- [Prompt Engineering](../../coding-tools/claude/prompt-engineering-claude-4.md) — the craft of prompting
+- [CCA-F Exam Prep — Complete Guide](../../coding-tools/claude/ccaf-exam-prep-complete.md) — certification preparation
 
 **Intermediate:**
 
-- [MCP Deep Guide](../claude/mcp-deep-guide.md) — MCP protocol and server development
-- [Agent SDK Production](../claude/claude-agent-sdk-production.md) — multi-agent code and patterns
-- [Enterprise Deployment](../claude/claude-enterprise-2026.md) — cloud platforms, security, cost
-- [Constitutional AI & Safety](../claude/constitutional-ai-safety-2026.md) — harm taxonomy and safety design
+- [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) — MCP protocol and server development
+- [Agent SDK Production](../../coding-tools/claude/claude-agent-sdk-production.md) — multi-agent code and patterns
+- [Enterprise Deployment](../../coding-tools/claude/claude-enterprise-2026.md) — cloud platforms, security, cost
+- [Constitutional AI & Safety](../../coding-tools/claude/constitutional-ai-safety-2026.md) — harm taxonomy and safety design
 - [Architecture Patterns](enterprise-ai-architecture-patterns.md) — the canonical 15-pattern reference
 
 **Expert:**
 
 - [Governance & Compliance](enterprise-ai-governance-compliance.md) — regulatory frameworks and policy
-- [Multi-Agent Orchestration](../claude/ruflo-agentic-ai-guide.md) — orchestration frameworks and evaluation
-- [GitHub Copilot Enterprise](../github-copilot/index.md) — enterprise developer AI tooling
-- [API Mastery](../claude/claude-api-mastery.md) — advanced API patterns
+- [Multi-Agent Orchestration](../../coding-tools/claude/ruflo-agentic-ai-guide.md) — orchestration frameworks and evaluation
+- [GitHub Copilot Enterprise](../../coding-tools/github-copilot/index.md) — enterprise developer AI tooling
+- [API Mastery](../../coding-tools/claude/claude-api-mastery.md) — advanced API patterns
 
 ### External Resources
 

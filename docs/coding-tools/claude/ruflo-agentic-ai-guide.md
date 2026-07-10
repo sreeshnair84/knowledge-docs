@@ -19,7 +19,7 @@ tags: ["coding-tools", "claude"]
 - MCP protocol fundamentals → [MCP Deep Guide](mcp-deep-guide.md)
 - Claude model pricing → [Models 2026](claude-models-2026.md)
 - Agent SDK patterns → [Agent SDK Production](claude-agent-sdk-production.md)
-- EA-level governance → [Governance & Compliance](../enterprise-ai-architect/enterprise-ai-governance-compliance.md)
+- EA-level governance → [Governance & Compliance](../../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
 
 ---
 
@@ -1276,9 +1276,9 @@ jobs:
   - [MCP Deep Guide](mcp-deep-guide.md)
   - [Agent SDK Production](claude-agent-sdk-production.md)
   - [Models 2026](claude-models-2026.md)
-  - [Enterprise AI Architecture Patterns](../enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
-  - [Governance & Compliance](../enterprise-ai-architect/enterprise-ai-governance-compliance.md)
-  - [Skills Assessment](../enterprise-ai-architect/enterprise-ai-skills-assessment.md)
+  - [Enterprise AI Architecture Patterns](../../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md)
+  - [Governance & Compliance](../../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
+  - [Skills Assessment](../../enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment.md)
 
 ---
 

@@ -15,7 +15,7 @@ tags: ["coding-tools", "enterprise-ai-architect"]
 
 **What this guide covers:** Role definition, landscape map, build-vs-buy, model selection, integration patterns, agentic fundamentals, context management, token economics, latency planning, integration architecture, data architecture, security, observability, career path, best practices, and antipatterns.
 
-**What it does NOT duplicate:** MCP implementation → [MCP Deep Guide](../claude/mcp-deep-guide.md) | Agent SDK code → [Agent SDK Production](../claude/claude-agent-sdk-production.md) | Model pricing detail → [Models 2026](../claude/claude-models-2026.md) | Governance rules → [Governance & Compliance](enterprise-ai-governance-compliance.md)
+**What it does NOT duplicate:** MCP implementation → [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) | Agent SDK code → [Agent SDK Production](../../coding-tools/claude/claude-agent-sdk-production.md) | Model pricing detail → [Models 2026](../../coding-tools/claude/claude-models-2026.md) | Governance rules → [Governance & Compliance](enterprise-ai-governance-compliance.md)
 
 ---
 
@@ -212,7 +212,7 @@ Use platforms (GitHub Copilot, Vertex AI Conversation, Microsoft Foundry (former
 
 All 1M-context models support up to 128K output tokens.
 
-See [Models 2026](../claude/claude-models-2026.md) for the complete capability and pricing matrix.
+See [Models 2026](../../coding-tools/claude/claude-models-2026.md) for the complete capability and pricing matrix.
 
 ### 4.2 Use-Case Fit
 
@@ -668,7 +668,7 @@ Model Context Protocol (MCP) standardises how AI models connect to tools and dat
 - Stateless 2026 RC specification: each MCP call is independent, enabling horizontal scaling
 - Enterprise provisioning: deploy MCP servers per team; manage via server registry
 
-For full MCP implementation details, see [MCP Deep Guide](../claude/mcp-deep-guide.md).
+For full MCP implementation details, see [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md).
 
 ---
 
@@ -883,7 +883,7 @@ The **Claude Certified Architect, Foundations (CCA-F)** is the enterprise archit
 - Demonstrates credibility with Anthropic's partner network
 - Check the Anthropic Partner Network for current partner-program certification requirements
 
-For full exam preparation and domain breakdown, see [Skills Assessment](enterprise-ai-skills-assessment.md) and [CCA-F Exam Prep](../claude/ccaf-exam-prep-complete.md).
+For full exam preparation and domain breakdown, see [Skills Assessment](enterprise-ai-skills-assessment.md) and [CCA-F Exam Prep](../../coding-tools/claude/ccaf-exam-prep-complete.md).
 
 ### 14.3 Community and Resources
 

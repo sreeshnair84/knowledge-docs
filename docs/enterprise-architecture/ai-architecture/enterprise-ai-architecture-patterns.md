@@ -15,7 +15,7 @@ tags: ["coding-tools", "enterprise-ai-architect"]
 
 **Purpose:** Canonical reference for 15 enterprise AI patterns. Each pattern includes: what problem it solves, architecture diagram, key components, implementation guidance, evaluation approach, best practices, and antipatterns.
 
-**Related sections:** [Agent SDK code examples](../claude/claude-agent-sdk-production.md) | [MCP integration](../claude/mcp-deep-guide.md) | [Governance controls](enterprise-ai-governance-compliance.md)
+**Related sections:** [Agent SDK code examples](../../coding-tools/claude/claude-agent-sdk-production.md) | [MCP integration](../../coding-tools/claude/mcp-deep-guide.md) | [Governance controls](enterprise-ai-governance-compliance.md)
 
 ---
 

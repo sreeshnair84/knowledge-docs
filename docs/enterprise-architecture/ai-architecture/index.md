@@ -96,12 +96,12 @@ Architecture deltas for 10 industry domains (banking, healthcare, insurance, ret
 
 | Topic | Location |
 |-------|----------|
-| MCP primitives, building MCP servers, enterprise provisioning | [MCP Deep Guide](../claude/mcp-deep-guide.md) |
-| Claude on AWS Bedrock, Vertex AI, Microsoft Foundry (formerly Azure AI Foundry) | [Enterprise Deployment](../claude/claude-enterprise-2026.md) |
-| Claude Agent SDK — multi-agent code, durable state, observability | [Agent SDK Production](../claude/claude-agent-sdk-production.md) |
-| Claude model pricing, capability matrix, selection guide | [Models 2026](../claude/claude-models-2026.md) |
-| Constitutional AI, four-tier priority, harm categories | [Constitutional AI & Safety](../claude/constitutional-ai-safety-2026.md) |
-| GitHub Copilot Business/Enterprise, AI Credits, MCP servers | [GitHub Copilot](../github-copilot/index.md) |
+| MCP primitives, building MCP servers, enterprise provisioning | [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) |
+| Claude on AWS Bedrock, Vertex AI, Microsoft Foundry (formerly Azure AI Foundry) | [Enterprise Deployment](../../coding-tools/claude/claude-enterprise-2026.md) |
+| Claude Agent SDK — multi-agent code, durable state, observability | [Agent SDK Production](../../coding-tools/claude/claude-agent-sdk-production.md) |
+| Claude model pricing, capability matrix, selection guide | [Models 2026](../../coding-tools/claude/claude-models-2026.md) |
+| Constitutional AI, four-tier priority, harm categories | [Constitutional AI & Safety](../../coding-tools/claude/constitutional-ai-safety-2026.md) |
+| GitHub Copilot Business/Enterprise, AI Credits, MCP servers | [GitHub Copilot](../../coding-tools/github-copilot/index.md) |
 | Enterprise Architecture strategy, frameworks, ARB | [Enterprise Architecture](../../enterprise-architecture/index.md) |
 | AI agent evaluation framework and AIDLC | [AI Development](../../ai-development/index.md) |
 | AI cost modeling and cloud cost comparison | [AI Economics](../../ai-economics/index.md) |
