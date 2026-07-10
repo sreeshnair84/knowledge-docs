@@ -335,6 +335,17 @@ const sidebars = {
       items: [
         'ai-usecases/index',
         'ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide',
+        {
+          type: 'category',
+          label: 'EU Bank AI Copilot',
+          items: [
+            'ai-usecases/eu-bank-ai-copilot-complete',
+            'ai-usecases/eu-bank-sequence-diagrams',
+          ],
+        },
+        'ai-usecases/airgapped-banking-architecture',
+        'ai-usecases/CEO_Agent_Solution_Blueprint',
+        'ai-usecases/Mental_Model_Encyclopedia',
       ],
     },
     {
@@ -471,6 +482,7 @@ const sidebars = {
             'workflow-orchestration/executive-summary',
             'workflow-orchestration/evolution-timeline',
             'workflow-orchestration/workflow-vs-agent-architecture',
+            'workflow-orchestration/durable-vs-cognitive-execution',
           ],
         },
         {
@@ -486,6 +498,23 @@ const sidebars = {
           label: 'AI & Agents',
           items: [
             'workflow-orchestration/ai-coding-orchestrators',
+            'workflow-orchestration/agent-frameworks-comparison',
+            'workflow-orchestration/tool-calling-orchestration',
+            'workflow-orchestration/mcp-impact',
+            'workflow-orchestration/a2a-orchestration-patterns',
+            'workflow-orchestration/ai-planning-vs-workflow-engines',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Enterprise Patterns',
+          items: [
+            'workflow-orchestration/human-in-the-loop-architectures',
+            'workflow-orchestration/memory-vs-workflow-state',
+            'workflow-orchestration/reliability-playbook',
+            'workflow-orchestration/observability-framework',
+            'workflow-orchestration/security-architecture',
+            'workflow-orchestration/enterprise-governance-model',
           ],
         },
         {
@@ -494,6 +523,14 @@ const sidebars = {
           items: [
             'workflow-orchestration/reference-architectures',
             'workflow-orchestration/decision-matrix',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Maturity & Anti-Patterns',
+          items: [
+            'workflow-orchestration/anti-patterns-catalog',
+            'workflow-orchestration/capability-maturity-model',
           ],
         },
         {

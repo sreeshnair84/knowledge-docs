@@ -38,3 +38,24 @@ covers_version: ""     # e.g. "as of June 2026" — guides date fast, always sta
   context.
 - Use a real Markdown table only for scannable reference data (endpoint
   lists, parameter names + types), not for narrative content.
+
+## Framework and library constraints (this repo)
+- **Do not reference Microsoft agent frameworks**: Semantic Kernel and AutoGen
+  are excluded from this repo's architecture documentation by owner preference.
+  Use LangGraph, CrewAI, PydanticAI, Google ADK, or Mastra instead.
+- **Always use the latest LTS/stable version** in `covers_version` frontmatter
+  and in ALL code examples (imports, pip install pins, version comments).
+  Never write an older version number — always verify the latest stable release
+  before writing. As of July 2026 known versions:
+    - LangGraph: 1.2.8
+    - CrewAI: 0.80
+    - PydanticAI: 0.0.54
+    - Google ADK: 1.0
+    - Mastra: 0.10
+    - MCP Python SDK: 1.8
+    - Anthropic Python SDK: 0.40
+    - Temporal Python SDK: 1.x (check pypi.org before citing)
+  Stale version numbers erode reader trust and cause "it doesn't work"
+  feedback — treat version accuracy as a correctness requirement, not a style
+  preference. If you are uncertain of the current LTS version, state
+  "verify at pypi.org/npm" rather than guessing.
