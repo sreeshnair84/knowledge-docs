@@ -3,7 +3,9 @@ title: "Tool Authentication & Connector Models"
 date_created: 2026-07-09
 last_reviewed: 2026-07-09
 status: current
-supersedes: ""
+doc_type: guide
+covers_version: "N/A"
+supersedes: "docs/ai-protocols/auth/Part2_Tool_Authentication.pdf"
 source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]

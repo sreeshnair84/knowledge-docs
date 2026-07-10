@@ -3,7 +3,10 @@ title: "EntraID 3LO: AC Gateway + AC Identity — Volume 3"
 date_created: 2026-07-09
 last_reviewed: 2026-07-09
 status: current
-supersedes: ""
+doc_type: research-report
+research_date: "2026-07-09"
+covers_through: "2026-07-09"
+supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume3.pdf"
 source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]
@@ -25,6 +28,16 @@ Builds on: Volume 1 (Standards, Architecture, Industry) + Volume 2 (Code, Vault,
 This volume covers: Multi-agent auth chains, MCP+A2A protocol stack, DORA/NIS2/EU AI Act compliance, three-lines-of-defence governance, forward-looking protocol horizon, maturity model.
 
 ---
+
+## Table of Contents
+
+1. [Multi-Agent Delegation Chains — The Hardest Problem](#19-multi-agent-delegation-chains)
+2. [The 2026 Agent Protocol Stack: MCP + A2A + Streamable HTTP](#20-the-2026-agent-protocol-stack)
+3. [Regulatory Compliance: DORA, NIS2 & EU AI Act](#21-regulatory-compliance)
+4. [Agent Identity Governance Model — Three Lines of Defence](#22-agent-identity-governance-model)
+5. [Forward-Looking: The 2027 Protocol Horizon](#23-forward-looking)
+6. [Agent Auth Maturity Model](#24-agent-auth-maturity-model)
+7. [Master Delivery Roadmap — All Volumes Synthesised](#25-master-delivery-roadmap)
 
 ## 19. Multi-Agent Delegation Chains — The Hardest Problem
 

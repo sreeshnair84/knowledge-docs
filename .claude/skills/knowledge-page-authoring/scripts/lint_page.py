@@ -107,7 +107,10 @@ def parse_frontmatter(text):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("path")
-    ap.add_argument("--type", required=True, choices=list(TYPE_REQUIREMENTS.keys()))
+    ap.add_argument("--type", required=False, default=None,
+                     choices=list(TYPE_REQUIREMENTS.keys()),
+                     help="Override the type instead of reading it from the "
+                          "page's 'doc_type' frontmatter field.")
     args = ap.parse_args()
 
     with open(args.path, encoding="utf-8") as f:
@@ -124,41 +127,57 @@ def main():
         if not fm.get(key):
             issues.append(f"Missing/empty universal frontmatter field: '{key}'")
 
+    doc_type = args.type or fm.get("doc_type")
+    if not doc_type:
+        issues.append(
+            "No --type given and no 'doc_type' frontmatter field found — "
+            "cannot check type-specific structure. Add 'doc_type: <type>' "
+            "to frontmatter (one of: " + ", ".join(TYPE_REQUIREMENTS.keys()) + ")."
+        )
+    elif doc_type not in TYPE_REQUIREMENTS:
+        issues.append(
+            f"'doc_type: {doc_type}' is not a recognized type. Must be one "
+            f"of: {', '.join(TYPE_REQUIREMENTS.keys())}."
+        )
+        doc_type = None
+
     if fm.get("parent") or fm.get("nav_order"):
         issues.append(
             "Legacy Jekyll-era 'parent'/'nav_order' fields present — replace "
             "with the current frontmatter schema, don't leave both."
         )
 
-    spec = TYPE_REQUIREMENTS[args.type]
-    for key in spec["extra_frontmatter"]:
-        if not fm.get(key):
-            issues.append(f"Missing type-specific frontmatter field for '{args.type}': '{key}'")
-
     if "<iframe" in text.lower():
         issues.append("Contains <iframe> — PDFs must be converted to Markdown, never embedded.")
 
-    body_lower = body.lower()
-    for heading in spec["required_headings"]:
-        if heading not in body_lower:
-            issues.append(f"Missing required section for type '{args.type}': '{heading}'")
-
     word_count = len(re.findall(r"\S+", body))
-    lo, hi = spec["word_range"]
-    if word_count < lo:
-        issues.append(
-            f"Body is {word_count} words — below the expected {lo}-{hi} range "
-            f"for '{args.type}'. May be too thin for this type's depth-of-research bar."
-        )
-    elif word_count > hi * 1.5:
-        issues.append(
-            f"Body is {word_count} words — well above the expected {lo}-{hi} "
-            f"range for '{args.type}'. Consider whether this should be a "
-            f"multi-part-series instead of one page."
-        )
+
+    if doc_type:
+        spec = TYPE_REQUIREMENTS[doc_type]
+        for key in spec["extra_frontmatter"]:
+            if not fm.get(key):
+                issues.append(f"Missing type-specific frontmatter field for '{doc_type}': '{key}'")
+
+        body_lower = body.lower()
+        for heading in spec["required_headings"]:
+            if heading not in body_lower:
+                issues.append(f"Missing required section for type '{doc_type}': '{heading}'")
+
+        lo, hi = spec["word_range"]
+        if word_count < lo:
+            issues.append(
+                f"Body is {word_count} words — below the expected {lo}-{hi} range "
+                f"for '{doc_type}'. May be too thin for this type's depth-of-research bar."
+            )
+        elif word_count > hi * 1.5:
+            issues.append(
+                f"Body is {word_count} words — well above the expected {lo}-{hi} "
+                f"range for '{doc_type}'. Consider whether this should be a "
+                f"multi-part-series instead of one page."
+            )
 
     if not issues:
-        print(f"OK — {args.path} passes all checks for type '{args.type}' ({word_count} words).")
+        print(f"OK — {args.path} passes all checks for type '{doc_type}' ({word_count} words).")
         return 0
     else:
         print(f"{len(issues)} issue(s) found in {args.path}:\n")

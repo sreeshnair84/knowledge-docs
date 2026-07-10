@@ -8,12 +8,31 @@ import {createRequire} from 'module';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 
-// Recursively copies all non-markdown assets from docs/ into the build output
-// so that PDF/HTML iframes resolve correctly at runtime.
+// Serves non-markdown assets (PDFs, HTML, DOCX, etc.) from docs/ both in dev
+// mode (via webpack-dev-server static middleware) and in production (postBuild copy).
 // Skips hidden directories (e.g. .claude) to avoid leaking dev config.
 function copyDocsAssetsPlugin() {
   return {
     name: 'copy-docs-assets',
+
+    // Dev server: serve docs/ directory at the same publicPath as the site
+    // so that relative PDF/HTML src paths in iframes resolve correctly.
+    configureWebpack(config, isServer) {
+      if (isServer) return {};
+      return {
+        devServer: {
+          static: [
+            {
+              directory: path.join(__dirname, 'docs'),
+              publicPath: '/knowledge-docs',
+              watch: false,
+            },
+          ],
+        },
+      };
+    },
+
+    // Production build: copy all non-md assets into the output directory.
     async postBuild({siteDir, outDir}) {
       const docsDir = path.join(siteDir, 'docs');
       const SKIP_EXT = /\.(md|mdx)$/i;
@@ -21,7 +40,7 @@ function copyDocsAssetsPlugin() {
       function copyDir(src, dest) {
         const entries = fs.readdirSync(src, {withFileTypes: true});
         for (const entry of entries) {
-          if (entry.name.startsWith('.')) continue; // skip hidden dirs/files
+          if (entry.name.startsWith('.')) continue;
           const srcPath = path.join(src, entry.name);
           const destPath = path.join(dest, entry.name);
           if (entry.isDirectory()) {

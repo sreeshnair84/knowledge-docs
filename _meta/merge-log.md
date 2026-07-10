@@ -126,3 +126,60 @@ Generated: 2026-07-09
 - Files: `Mental_Model_Encyclopedia.pdf`, `Strategic_Thinking_Handbook.pdf`
 - Similarity: 0.605
 - Decision: Different reference books on adjacent topics (mental models vs strategic frameworks). 256/350 unique tokens. Keep both.
+
+---
+
+## 2026-07-10 Restart Pass — Batch 1 (archive-pairs, clusters 01–02, 07–11, 14, 17)
+
+### cluster_07 — DONE (archive)
+- Keeper: `docs/interview-prep/EY_AI_Architect_Interview_Guide.pdf`
+- Archived: `docs/interview-prep/EY_AI_Architect_Interview_Guide_1.pdf` → `archive/docs/interview-prep/`
+- Reason: exact duplicate, score 1.000. No unique content.
+- Lint: keeper is a PDF, no lint check applicable.
+
+### cluster_08 — DONE (archive — from prior run, verified)
+- Keeper: `docs/ai-foundations/AI_Native_Architecture_Evolution_Report.pdf`
+- Archived: `docs/knowledge-engineering/data/AI_Native_Architecture_Evolution_Report.pdf` → `archive/`
+- Reason: same filename in two directories, score 1.000.
+
+### cluster_09 — DONE (archive — from prior run, verified)
+- Keeper: `docs/ai-protocols/mcp/MCP_Deep_Research_2026.md`
+- Archived: `docs/ai-protocols/mcp/MCP_Deep_Research_2026.md.pdf` → `archive/`
+- Reason: PDF is a print of the MD file, score 0.983. MD is canonical.
+- Lint: PASS. `doc_type: research-report`, `covers_through: 2026-07-28`, `research_date: 2026-04-01`.
+
+### cluster_10 — DONE (archive — from prior run, verified)
+- Keeper: `docs/ai-protocols/auth/entra-3lo-agent-auth-security-review.md`
+- Archived: `docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume4.pdf` → `archive/`
+- Reason: PDF source for Vol.4 MD, score 0.952. MD is canonical.
+- Lint: PASS. `doc_type: research-report`.
+
+### cluster_11 — DONE (archive — from prior run, verified)
+- Keeper: `docs/ai-protocols/auth/agent-identity-entra-vs-awsagentcore.md`
+- Archived: `docs/ai-protocols/auth/AgentIdentity_Research_2026.pdf` → `archive/`
+- Reason: source PDF for the comparison guide MD, score 0.890.
+- Lint: PASS. Reclassified to `doc_type: guide` (2586 words fits 1500-4000 guide range; research-report threshold is 3000).
+
+### cluster_14 — DONE (archive — from prior run, verified)
+- Keeper: `docs/coding-tools/claude/claude-api-mastery.md`
+- Archived: `docs/coding-tools/claude/Module_2_Claude_API_SDK.pdf` → `archive/`
+- Reason: PDF module is source material for the MD guide, score 0.753.
+- Lint: FAIL (word count: 1304 words < 1500 guide minimum). Content is thin — reviewer should expand with SDK code patterns from the archived PDF. No doc_type change recommended; the document is accurately typed.
+
+### cluster_17 — DONE (archive — from prior run, verified)
+- Keeper: `docs/ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md`
+- Archived: `AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix.pdf` → `archive/`
+- Reason: PDF is source material for the MD guide, score 0.636.
+- Lint: PASS. `doc_type: framework-reference`. Added `## When to Apply` section.
+
+### cluster_02 — DONE (archive PDFs — from prior run, verified)
+- Keepers: `entra-3lo-agent-auth-implementation.md` (Vol.2), `entra-3lo-agent-auth-multiagent-compliance.md` (Vol.3), `entra-3lo-agent-auth-standards-architecture.md` (Vol.1 / Research)
+- Archived: `EntraID_3LO_Agent_Auth_Volume2.pdf`, `Volume3.pdf`, `Research.pdf` → `archive/`
+- Reason: All three MDs are converted versions of the corresponding PDFs. Scores: 0.944, 0.970, 0.949.
+- Lint: All three PASS. `doc_type: research-report`, `covers_through` + `research_date` set.
+
+### cluster_01 — DONE (partial archive — from prior run, verified)
+- Keeper: `docs/ai-protocols/auth/tool-authentication-connectors.md` (converted Part 2 MD)
+- Archived: `docs/ai-protocols/auth/Part2_Tool_Authentication.pdf` → `archive/`
+- Other parts (Part1, Part3, Part5, Part7, Part4, Part6) are distinct series parts — kept as-is, no merge.
+- Lint: PASS. `doc_type: guide`, `covers_version: "N/A"`.

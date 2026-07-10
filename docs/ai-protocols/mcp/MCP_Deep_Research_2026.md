@@ -3,7 +3,10 @@ title: "MCP Deep Research 2026"
 date_created: 2026-07-06
 last_reviewed: 2026-07-09
 status: current
-supersedes: ""
+doc_type: research-report
+research_date: "2026-04-01"
+covers_through: "2026-07-28"
+supersedes: "docs/ai-protocols/mcp/MCP_Deep_Research_2026.md.pdf"
 source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "mcp"]

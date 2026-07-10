@@ -1,6 +1,6 @@
 {
   "started_at": "2026-07-10T02:43:25.199514+00:00",
-  "last_updated": "2026-07-10T02:59:14.608040+00:00",
+  "last_updated": "2026-07-10T03:11:35.500519+00:00",
   "phases": [
     {
       "id": 0,
@@ -39,48 +39,48 @@
       "queue": [
         {
           "item": "cluster_07",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:33.668754+00:00"
         },
         {
           "item": "cluster_08",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:33.898703+00:00"
         },
         {
           "item": "cluster_09",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:34.125455+00:00"
         },
         {
           "item": "cluster_10",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:34.346102+00:00"
         },
         {
           "item": "cluster_11",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:34.580565+00:00"
         },
         {
           "item": "cluster_14",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:34.804718+00:00"
         },
         {
           "item": "cluster_17",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:35.032197+00:00"
         },
         {
           "item": "cluster_02",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:35.264479+00:00"
         },
         {
           "item": "cluster_01",
-          "status": "pending",
-          "completed_at": null
+          "status": "done",
+          "completed_at": "2026-07-10T03:11:35.500519+00:00"
         },
         {
           "item": "cluster_05",

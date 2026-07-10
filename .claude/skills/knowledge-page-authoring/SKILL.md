@@ -1,6 +1,6 @@
 ---
 name: knowledge-page-authoring
-description: Enforce consistent structure, depth of research, and formatting when adding or editing any page in this knowledge-docs repo. Covers all document types actually present in this workspace — guides, certification/exam prep, interview question banks, engagement case studies (industry-vertical deep dives), narrative/dramatized case studies, workshop transcripts, research reports, framework/methodology references, and multi-part volume series. Use this any time the user is writing a new page, converting a source document, reviewing an existing page for consistency, or asking "what should this page look like" / "is this page formatted right" / "does this duplicate something." Always run the linter and the duplicate-check script before treating a page as finished. Also handles Step 4 — fixing broken PDF iframe/link references in section index pages after a PDF is archived or superseded.
+description: Enforce consistent structure, depth of research, and formatting when adding or editing any page in this knowledge-docs repo. Covers all document types actually present in this workspace — guides, certification/exam prep, interview question banks, engagement case studies (industry-vertical deep dives), narrative/dramatized case studies, workshop transcripts, research reports, framework/methodology references, and multi-part volume series. Use this any time the user is writing a new page, converting a source document, reviewing an existing page for consistency, or asking "what should this page look like" / "is this page formatted right" / "does this duplicate something." Always run the linter and the duplicate-check script before treating a page as finished.
 model: sonnet
 ---
 
@@ -52,6 +52,7 @@ status: current        # current | superseded | archived
 supersedes: ""
 source_type: native-md  # native-md | converted-pdf | converted-docx | converted-pptx
 source_file: ""
+doc_type: guide          # one of the nine types in the table above — lets tooling (lint_page.py, CI) check structure without a human specifying --type each time
 tags: []
 ---
 ```
@@ -74,41 +75,7 @@ file — add those on top of the universal block, don't replace it.
 - One H1 per page, matching `title`. Use H2 for the reference file's
   required top-level sections, H3 below that.
 
-## Step 4 — Fix section index references when archiving or converting a PDF
-
-When a PDF is **archived** (moved to `archive/`) or **superseded by a Markdown page**,
-all `<iframe>`/`<a>` references to it in `**/index.md` section pages become broken
-links. Always do this before finishing:
-
-1. Grep for the original PDF filename across `docs/**/*.md`:
-   ```bash
-   grep -rn "OldFileName.pdf" docs/ --include="*.md"
-   ```
-2. For each hit that is a `<iframe src="...">` or `<a href="...">` block, replace with
-   a `<details>` link pointing to the Markdown replacement:
-   ```html
-   <details>
-   <summary>Guide Title</summary>
-
-   → **[Read the full guide](./path-to-md-page)**
-
-   </details>
-   ```
-3. If multiple archived PDFs all map to a single combined Markdown page (e.g. three
-   TOGAF scenario PDFs → one `APEX_EA_Final.md`), keep the first `<details>` link and
-   replace the remaining blocks with a single HTML comment noting the merge:
-   ```html
-   <!-- Scenario X merged into APEX_EA_Final.md — see combined guide above -->
-   ```
-4. Section `index.md` pages that listed PDFs in a `## PDFs` section should have those
-   broken entries converted to doc links **in the same section** — do not move them to
-   the "## Markdown Guides" list unless the page structure calls for it; keep the
-   `<details>` collapsible pattern consistent with the surrounding working entries.
-
-**Scope:** only fix `docs/` pages — `archive/` and `_meta/` are not served and don't
-need their references updated.
-
-## Step 5 — Before finishing: lint and duplicate-check
+## Step 4 — Before finishing: lint and duplicate-check
 
 Always run both before telling the user a page is done:
 
@@ -138,7 +105,7 @@ skill's Phase 0 builds it), `check_against_corpus.py` will build a
 lightweight version itself from `docs/` on first run — this can take a
 minute on the full repo.
 
-## Step 6 — Depth of research
+## Step 5 — Depth of research
 
 Each reference file has a concrete rubric (word count range, minimum number
 of sourced claims, minimum dialogue turns, etc.) — these are calibrated to
