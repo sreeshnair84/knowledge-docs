@@ -4,7 +4,6 @@ date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
-last_reviewed: 2026-07-10
 doc_type: guide
 covers_version: "N/A"
 ---

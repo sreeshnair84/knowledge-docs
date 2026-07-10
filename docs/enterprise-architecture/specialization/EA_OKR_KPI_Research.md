@@ -9,7 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_through: 2026-07-10
 research_date: 2026-07-10
-last_reviewed: 2026-07-10
 ---
 
 # **OKR & KPI VALUE FRAMEWORK** 

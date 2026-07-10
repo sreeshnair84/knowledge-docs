@@ -7,7 +7,6 @@ source_file: "Case_13_StateDHS_Benefits_Navigation_Agent.pdf"
 doc_type: guide
 tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 

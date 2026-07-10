@@ -7,7 +7,6 @@ source_file: "Volume10_Collaborative_Use_Case_Transcripts.pdf"
 doc_type: workshop-transcript
 tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 session_type: "workshop"
 related_pages: ["—"]
 ---

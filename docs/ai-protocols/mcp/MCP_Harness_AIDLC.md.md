@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["ai-protocols", "mcp", "a2a"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 # MCP Harness Engineering: Testing & Evaluation Across the AIDLC 

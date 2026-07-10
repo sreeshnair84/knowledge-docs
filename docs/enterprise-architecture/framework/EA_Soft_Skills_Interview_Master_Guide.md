@@ -7,7 +7,6 @@ source_file: "EA_Soft_Skills_Interview_Master_Guide.pdf"
 doc_type: interview-questions
 tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 target_role: "AI/ML Architect"
 ---
 

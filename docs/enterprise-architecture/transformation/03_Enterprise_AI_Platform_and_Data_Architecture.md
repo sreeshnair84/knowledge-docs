@@ -7,7 +7,6 @@ source_file: "03_Enterprise_AI_Platform_and_Data_Architecture.pdf"
 doc_type: guide
 tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 

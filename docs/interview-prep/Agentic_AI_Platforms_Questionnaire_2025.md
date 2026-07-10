@@ -7,7 +7,6 @@ source_file: "Agentic_AI_Platforms_Questionnaire_2025.pdf"
 doc_type: interview-questions
 tags: ["interview-prep"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 target_role: "AI/ML Architect"
 ---
 

@@ -7,7 +7,6 @@ source_file: "Part02_GitHub_Architecture_and_Actions.pdf"
 doc_type: guide
 tags: ["coding-tools"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 

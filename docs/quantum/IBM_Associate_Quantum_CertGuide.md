@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["quantum-computing"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 **~~IBM CERTIFIED~~ ASSOCIATE DEVELOPER** **<u>QUANTUM COMPUTATION</u>** Deep-Dive Study Guide • Exam C1000-112 

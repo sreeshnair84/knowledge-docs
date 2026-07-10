@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["ai-security", "governance"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 ##### **VOLUME 6 OF 6 — CAPSTONE** 

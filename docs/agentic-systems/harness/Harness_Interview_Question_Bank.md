@@ -7,7 +7,6 @@ source_file: "Harness_Interview_Question_Bank.pdf"
 doc_type: interview-questions
 tags: ["agentic-ai", "agents"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 target_role: "AI/ML Architect"
 ---
 

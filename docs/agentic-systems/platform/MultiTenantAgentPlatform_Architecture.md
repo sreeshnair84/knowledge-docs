@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["agentic-ai", "agents"]
 last_reviewed: 2026-07-10
 framework_name: ""
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 

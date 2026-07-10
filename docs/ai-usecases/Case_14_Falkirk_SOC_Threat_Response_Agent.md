@@ -7,7 +7,6 @@ source_file: "Case_14_Falkirk_SOC_Threat_Response_Agent.pdf"
 doc_type: guide
 tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 

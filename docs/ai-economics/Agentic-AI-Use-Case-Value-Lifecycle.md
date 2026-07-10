@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["ai-economics", "enterprise-ai"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 ###### **AGENTIC AI VALUE LIFECYCLE** 

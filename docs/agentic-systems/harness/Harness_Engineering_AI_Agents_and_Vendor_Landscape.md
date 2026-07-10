@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["agentic-ai", "agents"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 **C O N C E P T P R I M E R + V E N D O R L A N D S C A P E** 

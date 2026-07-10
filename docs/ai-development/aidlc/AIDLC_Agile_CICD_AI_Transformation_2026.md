@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["ai-development", "software-engineering"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 **AIDLC · Agile · CI/CD** How the AI Revolution Is Rebuilding Software Development from the Ground Up — New Lifecycles, New Methodologies, New Pipelines, New Roles, and What Every Team Must Do Next 

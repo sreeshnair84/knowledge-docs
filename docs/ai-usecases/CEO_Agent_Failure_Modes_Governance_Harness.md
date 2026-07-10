@@ -8,7 +8,6 @@ doc_type: guide
 tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
-last_reviewed: 2026-07-10
 ---
 
 S O L U T I O N B L U E P R I N T · P A R T 2 · R E L I A B I L I T Y & G O V E R N A N C E 

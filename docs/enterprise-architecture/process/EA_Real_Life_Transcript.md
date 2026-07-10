@@ -7,7 +7,6 @@ source_file: "EA_Real_Life_Transcript.pdf"
 doc_type: workshop-transcript
 tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 session_type: "workshop"
 related_pages: ["—"]
 ---

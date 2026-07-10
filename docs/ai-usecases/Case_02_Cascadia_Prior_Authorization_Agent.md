@@ -7,7 +7,6 @@ source_file: "Case_02_Cascadia_Prior_Authorization_Agent.pdf"
 doc_type: guide
 tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 

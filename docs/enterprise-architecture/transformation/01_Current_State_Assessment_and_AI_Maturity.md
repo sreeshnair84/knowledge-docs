@@ -7,7 +7,6 @@ source_file: "01_Current_State_Assessment_and_AI_Maturity.pdf"
 doc_type: guide
 tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
-last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 
