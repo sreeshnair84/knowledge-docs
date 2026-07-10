@@ -18,7 +18,7 @@ Guides and architecture references for enterprise AI gateway deployment, with fo
 ## Markdown Guides
 
 - [Kong AI Gateway Guide](kong-ai-gateway-guide.md) — Full setup and configuration
-- [Kong AI Gateway Auth Guide](kong-ai-gateway-auth-guide.md) — Authentication patterns
+- [Kong AI Gateway Guide](kong-ai-gateway-guide.md) — Full setup, configuration, and authentication patterns (consolidated)
 - [Kong + Entra ID Integration](kong-entra-id-integration.md) — Azure AD/Entra ID setup
 
 ---

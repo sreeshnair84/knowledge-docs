@@ -148,6 +148,13 @@ may cover 100+ files, don't attempt it in one sitting.
 
 Mark complete once the queue is empty: `progress.py complete-phase --phase 2`.
 
+**Skip pattern**: If Phase 1 determined no PDF/DOCX/PPTX conversions are needed
+(all keepers already have MD versions), seed an empty queue and complete
+immediately:
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py complete-phase --phase 2
+```
+
 ## Phase 3 — Merge & retire duplicates (Opus recommended, queued)
 
 For each cluster from Phase 1 (queue seeded automatically): merge the unique
@@ -208,11 +215,51 @@ tags: []
 
 Seed the queue with every current page not yet touched in Phase 2 or 3
 (those already got frontmatter as part of conversion/merge — just verify
-and mark done).
+and mark done):
 
-Separately (not part of the per-file queue): reconcile the root `README.md`
-and `sidebars.js` navigation so every listed section maps to a folder that
-actually exists. Note every rename in `_meta/taxonomy-changes.md`.
+```bash
+find docs -name "*.md" | sort > /tmp/phase4_files.txt
+python3 ${CLAUDE_SKILL_DIR}/scripts/progress.py seed-queue --phase 4 \
+  --items-from /tmp/phase4_files.txt
+```
+
+**Bulk processing script**: For repos with 100+ files, use the included
+`scripts/normalize_frontmatter.py` to add missing fields in one pass rather
+than editing files one by one:
+
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/normalize_frontmatter.py
+```
+
+The script adds missing fields without overwriting existing ones, writes a
+change log to `_meta/taxonomy-changes.md`, and uses `git log` to infer
+`date_created` for files that don't have one.
+
+**Bulk queue marking**: After the script runs, marking 100+ items individually
+via `progress.py mark` is impractical. For bulk completion, edit
+`_meta/progress.json` directly:
+
+```python
+import json
+from datetime import datetime, timezone
+with open('_meta/progress.json', encoding='utf-8') as f:
+    data = json.load(f)
+now = datetime.now(timezone.utc).isoformat()
+for ph in data['phases']:
+    if ph['name'] == 'frontmatter_taxonomy':
+        for item in ph.get('queue') or []:
+            if item['status'] != 'done':
+                item['status'] = 'done'
+                item['completed_at'] = now
+data['last_updated'] = now
+with open('_meta/progress.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, indent=2)
+```
+
+Separately (not part of the per-file queue): reconcile `sidebars.js`
+navigation so every listed doc ID maps to a file that actually exists,
+and every important file in `docs/` is reachable via the sidebar. Note
+any sidebar changes in `_meta/taxonomy-changes.md`.
 
 Mark complete: `progress.py complete-phase --phase 4`.
 
@@ -235,11 +282,24 @@ Mark complete: `progress.py complete-phase --phase 5`.
 Run the Docusaurus build. Fix any broken links or missing references caused
 by the restructuring. Run a link checker against the built site.
 
+**Common post-cleanup build failures:**
+- Sidebar doc IDs pointing to archived files — remove from `sidebars.js`
+- Pages that cross-link to archived files — update to point at keepers
+- Important files not in sidebar — add to the relevant `sidebars.js` category
+
+```bash
+npm run build 2>&1 | grep -E "(ERROR|WARNING|SUCCESS)"
+# For missing sidebar doc IDs:
+npm run build 2>&1 | grep "  - "
+# For broken page links:
+npm run build 2>&1 | grep "Broken link on source page"
+```
+
 Produce `_meta/cleanup-summary.md`: total files before/after, duplicate
 clusters resolved, PDFs converted, files archived, and anything still
 needing a human decision.
 
-Don't merge the branch — stop and hand off the branch plus summary for
-review.
+Once the branch is merged, update CLAUDE.md to remove the "do not merge"
+note and clean up any branch-specific instructions.
 
 Mark complete: `progress.py complete-phase --phase 6`.

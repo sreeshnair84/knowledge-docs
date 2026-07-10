@@ -13,7 +13,7 @@ tags: ["ai-protocols", "auth"]
 
 > **Current as of July 2026.** Agent authentication requires moving beyond static API keys to cryptographic, per-request identity. This page summarises the key patterns; the PDFs below provide deep-dives on each.
 
-> **See also:** For Kong AI Gateway auth proxy implementation, see [Kong AI Gateway Auth Guide](../../cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md). For identity at the UI/application layer, see [Identity & Auth Architecture](../../agentic-ui/identity-auth-architecture.md). For OWASP ASI01–10 security patterns and SPIFFE/SPIRE reference, see [Agentic AI Security & Identity](../../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
+> **See also:** For Kong AI Gateway auth proxy implementation, see [Kong AI Gateway Guide](../../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md). For identity at the UI/application layer, see [Identity & Auth Architecture](../../agentic-ui/identity-auth-architecture.md). For OWASP ASI01–10 security patterns and SPIFFE/SPIRE reference, see [Agentic AI Security & Identity](../../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
 
 ---
 

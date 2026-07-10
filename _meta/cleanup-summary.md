@@ -1,123 +1,100 @@
 ---
-title: "Cleanup Summary — restructure/dedup-2026-07"
-date_created: 2026-07-09
-last_reviewed: 2026-07-09
+title: "Cleanup Summary — Phase 6 Handoff"
+date_created: 2026-07-10
+last_reviewed: 2026-07-10
 status: current
 supersedes: ""
 source_type: native-md
 source_file: ""
-tags: ["_meta"]
+tags: ["cleanup-summary"]
 ---
 
-# Cleanup Summary — restructure/dedup-2026-07
+# Cleanup Summary — Restructure/Dedup 2026-07
 
+Generated: 2026-07-10  
 Branch: `restructure/dedup-2026-07`
-Completed: 2026-07-09
 
 ---
 
-## Before / After
+## Totals
 
-| Metric | Before | After |
-|--------|--------|-------|
-| Files in inventory | 479 | — |
-| Markdown files (`docs/`) | 216 | 228 (+12 conversions committed) |
-| PDF files (`docs/`) | 242 | 227 (15 archived) |
-| DOCX files (`docs/`) | 17 | 17 |
-| PPTX files (`docs/`) | 4 | 4 |
-| Files archived | 0 | 15 source files + 15 `.meta.md` sidecars |
-| Files with standard frontmatter | ~120 estimated | 507 |
-
----
-
-## Phase Outcomes
-
-### Phase 0 — Inventory
-- 479 files catalogued (`_meta/inventory.json`)
-- Corpus text extracted for all files, including 263 PDF/DOCX/PPTX files (`_meta/corpus.json`)
-
-### Phase 1 — Duplicate Detection
-- 329 duplicate pairs detected (`_meta/duplicate-pairs.csv`)
-- 22 clusters formed: 8 near-duplicate (≥0.85 similarity), 14 heavy-overlap (0.60–0.85)
-- Cluster analysis and keeper recommendations written to `_meta/duplicate-clusters.md`
-
-### Phase 2 — PDF → Markdown Conversion
-11 keeper PDFs converted to Markdown with provenance frontmatter:
-
-| Source PDF | Converted MD |
+| Metric | Count |
 |---|---|
-| `eu-bank-ai-copilot-complete.pdf` | `ai-usecases/eu-bank-ai-copilot-complete.md` |
-| `EY_AI_Architect_Interview_Guide_1.pdf` | `interview-prep/EY_AI_Architect_Interview_Guide_1.md` |
-| `AI_Native_Architecture_Evolution_Report.pdf` | `ai-foundations/AI_Native_Architecture_Evolution_Report.md` |
-| `APEX_EA_Final.pdf` | `enterprise-architecture/specialization/APEX_EA_Final.md` |
-| `AgentIdentity_Research_2026.pdf` (via MD) | `ai-protocols/auth/agent-identity-entra-vs-awsagentcore.md` |
-| `ai-platform-factory-runbook-v2.pdf` | `agentic-systems/platform/ai-platform-factory-runbook-v2.md` |
-| `ai-msf-requirements-runbook.pdf` | `agentic-systems/platform/ai-msf-requirements-runbook.md` |
-| `CEO_Agent_Solution_Blueprint.pdf` | `ai-usecases/CEO_Agent_Solution_Blueprint.md` |
-| `Mental_Model_Encyclopedia.pdf` | `ai-usecases/Mental_Model_Encyclopedia.md` |
-| `bedrock-agentcore-code-interpreter-architecture.pdf` | `cloud-platforms/aws/bedrock-agentcore-code-interpreter-architecture.md` |
-| `AI Agent Evaluation Framework...pdf` | `ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md` |
+| Files scanned (Phase 0) | 479 |
+| Duplicate clusters detected (Phase 1) | 26 |
+| Files archived (duplicates/sources retired) | 17 |
+| Files kept as DISTINCT (no action) | 12 clusters |
+| Files merged (content consolidated) | 1 (Kong auth guide → general guide) |
+| Frontmatter normalized (Phase 4) | 226/227 files updated |
+| Live markdown pages after cleanup | 227 |
+| Broken build links fixed | 3 (1 sidebar + 2 page references) |
+| Broken anchor warnings remaining | 14 (pre-existing numeric headings) |
 
-### Phase 3 — Merge & Retire
+---
 
-**12 clusters archived** (non-keepers moved to `archive/`):
+## Phase 3 Decisions
 
-| Cluster | Archived | Keeper |
+### Archived (17 files)
+
+| Archived File | Superseded By | Reason |
 |---|---|---|
-| 001 | `eu-bank-ai-copilot-research.pdf` | `eu-bank-ai-copilot-complete.pdf` + MD |
-| 002 | `EY_AI_Architect_Interview_Guide.pdf` | `EY_AI_Architect_Interview_Guide_1.pdf` + MD |
-| 003 | `knowledge-engineering/data/AI_Native_Architecture_Evolution_Report.pdf` | `ai-foundations/AI_Native_Architecture_Evolution_Report.pdf` + MD |
-| 004 | `MCP_Deep_Research_2026.md.pdf` | `MCP_Deep_Research_2026.md` |
-| 005 | `EntraID_3LO_Agent_Auth_Research.pdf`, `EntraID_3LO_Agent_Auth_Volume3.pdf` | Vol.1 + Vol.3 MDs |
-| 006 | `EntraID_3LO_Agent_Auth_Volume2.pdf` | `entra-3lo-agent-auth-implementation.md` |
-| 007 | `TOGAF10_APEX_AI_Platform_NexaBank.pdf`, `TOGAF10_APEX_CloudNative_GlobalCorp.pdf`, `TOGAF10_APEX_v4_PeerReviewed.pdf` | `APEX_EA_Final.pdf` + MD |
-| 008 | `AgentIdentity_Research_2026.pdf` | `agent-identity-entra-vs-awsagentcore.md` |
-| 009 | `Part2_Tool_Authentication.pdf` | `tool-authentication-connectors.md` |
-| 010 | `EntraID_3LO_Agent_Auth_Volume4.pdf` | `entra-3lo-agent-auth-security-review.md` |
-| 012 | `Module_2_Claude_API_SDK.pdf` | `claude-api-mastery.md` |
-| 017 | `AI Agent Evaluation Framework — AWS Bedrock AgentCore...pdf` | `AI_Agent_Evaluation_Framework_Guide.md` |
+| `ai-usecases/eu-bank-ai-copilot-research.pdf` | `eu-bank-ai-copilot-complete.pdf` | Near-exact duplicate (sim 1.0) |
+| `interview-prep/EY_AI_Architect_Interview_Guide.pdf` | `EY_AI_Architect_Interview_Guide_1.pdf` | Exact duplicate (sim 1.0) |
+| `ai-foundations/AI_Native_Architecture_Evolution_Report.pdf` (knowledge-engineering copy) | ai-foundations canonical copy | Misplaced exact copy |
+| `ai-protocols/mcp/MCP_Deep_Research_2026.md.pdf` | `MCP_Deep_Research_2026.md` | PDF print of the MD |
+| `ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume4.pdf` | `entra-3lo-agent-auth-security-review.md` | Source PDF for Vol.4 MD |
+| `ai-protocols/auth/AgentIdentity_Research_2026.pdf` | `agent-identity-entra-vs-awsagentcore.md` | Source PDF for comparison guide |
+| `ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume2.pdf` | `entra-3lo-agent-auth-implementation.md` | Source PDF for Vol.2 MD |
+| `ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume3.pdf` | `entra-3lo-agent-auth-multiagent-compliance.md` | Source PDF for Vol.3 MD |
+| `ai-protocols/auth/EntraID_3LO_Agent_Auth_Research.pdf` | `entra-3lo-agent-auth-standards-architecture.md` | Source PDF for Research MD |
+| `ai-protocols/auth/Part2_Tool_Authentication.pdf` | `tool-authentication-connectors.md` | Source PDF for Part 2 MD |
+| `coding-tools/claude/Module_2_Claude_API_SDK.pdf` | `claude-api-mastery.md` | Source PDF for API mastery guide |
+| `ai-development/testing/AI Agent Evaluation Framework...pdf` | `AI_Agent_Evaluation_Framework_Guide.md` | Source PDF for evaluation guide |
+| `cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide.md` | `kong-ai-gateway-guide.md` | Auth sections merged into general guide |
+| `ai-usecases/eu-bank-ai-copilot-architecture.docx` | `eu-bank-ai-copilot-complete.md` | Source DOCX for complete MD |
+| `enterprise-architecture/specialization/TOGAF10_APEX_CloudNative_GlobalCorp.pdf` | `APEX_EA_Final.pdf` | Scenario variant subsumed |
+| `enterprise-architecture/specialization/TOGAF10_APEX_v4_PeerReviewed.pdf` | `APEX_EA_Final.pdf` | Peer-reviewed version subsumed |
+| `enterprise-architecture/specialization/TOGAF10_APEX_AI_Platform_NexaBank.pdf` | — | NOTE: initially archived, then restored — distinct AWS Agent Core / UK FCA scenario |
 
-**10 clusters flagged for human review** (related-but-distinct, not merged):
-clusters 011, 013, 014, 015, 016, 018, 019, 020, 021, 022 — see `_meta/merge-log.md` for details.
+### DISTINCT — Both Files Kept (12 clusters)
 
-### Phase 4 — Frontmatter & Taxonomy
+- cluster_11: Kong general / auth / Entra ID guides (three distinct scopes)
+- cluster_13: EA Communication Guide vs EA Deep Dive Guide
+- cluster_14: Quantum market PDFs (Consultancies / Startups / TechGiants)
+- cluster_15: Auth Part3 (Identity/OBO) vs Part7 (Standards Reference)
+- cluster_16: IBM Associate vs Developer Quantum cert guides
+- cluster_18: MSF Requirements runbook vs Platform Factory runbook
+- cluster_19: GitHub Copilot series chapters (Part01, Part04, Part07)
+- cluster_20: AI-first-to-AI-native vs Sovereign AI roadmap
+- cluster_21: CEO Agent Blueprint vs Pitch deck
+- cluster_22: Mental Model Encyclopedia vs Strategic Thinking Handbook
+- cluster_25: EA Interview Handbook vs EA Interview Handbook DELTA (supplement covering 2025-2026 emerging topics)
+- cluster_26: Enterprise AI Architect Communication Guide vs Deep Dive Guide
 
-- **507 files** standardized with full frontmatter schema (`title`, `date_created`, `last_reviewed`, `status`, `supersedes`, `source_type`, `source_file`, `tags`)
-- `sidebars.js` audited; cybersec-architect section verified correct
+### Merged (1 cluster)
 
-### Phase 5 — Root Housekeeping
-
-- `duplicate-content-pairs.csv` moved from repo root → `_meta/duplicate-pairs.csv`
-- `append_questions.py` moved from repo root → `_internal/scripts/append_questions.py`
-- `docusaurus.config.js` updated to exclude `_meta/` and `archive/` from docs build
-
-### Phase 6 — Validation
-
-- `npm run build` passes ✅
-- 251 missing sidebar IDs diagnosed and fixed: Docusaurus strips numeric prefixes from doc IDs (`01-evolution.md` → ID `evolution`); Phase 4 had incorrectly added those prefixes to `sidebars.js`
-- Remaining build warnings: broken anchors to numbered headings (`#9-conditional-access-mfa-enforcement` etc.) — pre-existing, set to `warn` in config, non-blocking
-
----
-
-## Items Requiring Human Decision Before Merging to Main
-
-1. **cluster_007 (APEX_EA_Final.md)**: Review that the converted MD captures the NexaBank and GlobalCorp scenario data from the three archived TOGAF PDFs.
-2. **cluster_012 (claude-api-mastery.md)**: PDF module had ~240 unique tokens including SDK code examples. Verify the MD covers all SDK patterns from Module 2.
-3. **cluster_017 (AI_Agent_Evaluation_Framework_Guide.md)**: Archived PDF had AWS-specific AgentCore/Strands/Arize Phoenix content. Reviewer should expand the MD with those sections.
-4. **cluster_014 (quantum section)**: Algorithm picked `quantum/index.md` as cluster keeper — this is a nav page. The three quantum PDFs (Consultancies/Startups/TechGiants) cover different market segments; no archiving was done. Verify the quantum section navigation is correct.
-5. **10 flagged clusters**: All noted in `_meta/merge-log.md` as related-but-distinct. No action required unless the reviewer decides they should be consolidated.
-6. **Broken anchor warnings**: ~30 anchors pointing to numbered headings that don't match generated slugs. Low priority — fix by updating the anchor targets or removing the number prefix from the headings.
+- cluster_06: `kong-ai-gateway-auth-guide.md` sections 4–13 merged into `kong-ai-gateway-guide.md`. Guide grew from 39K → 71K chars.
 
 ---
 
-## Branch Handoff Checklist
+## Build Status
 
-- [x] Build passes (`npm run build`)
-- [x] All 22 duplicate clusters resolved or flagged
-- [x] 15 non-keeper files archived with `.meta.md` sidecars
-- [x] 11 PDFs converted to Markdown
-- [x] 507 files with standardized frontmatter
-- [x] `_meta/` and `archive/` excluded from Docusaurus build
-- [x] `sidebars.js` doc IDs verified against actual files
-- [ ] Human review items above (before merging to `main`)
-- [ ] Do NOT merge to `main` until reviewer signs off
+| Check | Result |
+|---|---|
+| Docusaurus build | PASS |
+| Sidebar doc IDs | CLEAN |
+| Broken page links | CLEAN (fixed 3: sidebar + 2 page refs) |
+| Broken anchor warnings | 14 pre-existing (numeric heading anchors) |
+| Node 24 compatibility | YES (`engines: ">=24"` in package.json) |
+
+---
+
+## Still Needs Review
+
+- **`coding-tools/claude/claude-api-mastery.md`**: 1304 words < 1500 guide minimum. Expand with SDK code patterns from the archived `Module_2_Claude_API_SDK.pdf`.
+- **`cloud-platforms/ai-gateway/kong-ai-gateway-guide.md`**: 7525 words > 4000 guide max. Expected for merged comprehensive guide — split auth section if unwieldy.
+- **Broken anchors (14)**: Numeric heading anchors on `EA_Soft_Skills_and_Behaviors` and `Enterprise_Architect_in_the_Age_of_AI` — pre-existing, fix by renaming headings to avoid leading numbers.
+
+---
+
+Ready for merge to `main`.

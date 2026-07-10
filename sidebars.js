@@ -202,7 +202,6 @@ const sidebars = {
           items: [
             'cloud-platforms/ai-gateway/index',
             'cloud-platforms/ai-gateway/kong-ai-gateway-guide',
-            'cloud-platforms/ai-gateway/kong-ai-gateway-auth-guide',
             'cloud-platforms/ai-gateway/kong-entra-id-integration',
           ],
         },
@@ -294,7 +293,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Specialization',
-          items: ['enterprise-architecture/specialization/index'],
+          items: [
+            'enterprise-architecture/specialization/index',
+            'enterprise-architecture/specialization/APEX_EA_Final',
+          ],
         },
       ],
     },

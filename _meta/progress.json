@@ -1,6 +1,6 @@
 {
   "started_at": "2026-07-10T02:43:25.199514+00:00",
-  "last_updated": "2026-07-10T03:49:41.150286+00:00",
+  "last_updated": "2026-07-10T04:08:01.701097+00:00",
   "phases": [
     {
       "id": 0,
@@ -2429,8 +2429,8 @@
       "name": "root_cleanup",
       "output": null,
       "queued": false,
-      "status": "pending",
-      "completed_at": null,
+      "status": "complete",
+      "completed_at": "2026-07-10T03:50:30.628848+00:00",
       "queue": null
     },
     {
@@ -2438,8 +2438,8 @@
       "name": "validation",
       "output": "_meta/cleanup-summary.md",
       "queued": false,
-      "status": "pending",
-      "completed_at": null,
+      "status": "complete",
+      "completed_at": "2026-07-10T04:08:01.696473+00:00",
       "queue": null
     }
   ]
