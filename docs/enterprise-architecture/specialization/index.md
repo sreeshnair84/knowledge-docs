@@ -47,23 +47,11 @@ Specialist guides for enterprise architects working in data, AI transformation, 
 
 ## Presentations (PPTX)
 
-<details>
-<summary>Agentic AI — C-Suite</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/AgenticAI_Csuite.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://AgenticAI_Csuite.pptx" download>Download PPTX ↓</a></p>
-</details>
+- Agentic AI — C-Suite *(PPTX — download from [archive](/knowledge-docs/AgenticAI_Csuite.pptx))*
 
-<details>
-<summary>BizSales Agentic AI</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/BizSales_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://BizSales_AgenticAI.pptx" download>Download PPTX ↓</a></p>
-</details>
+- BizSales Agentic AI *(PPTX — download from [archive](/knowledge-docs/BizSales_AgenticAI.pptx))*
 
-<details>
-<summary>SA Dev Agentic AI</summary>
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sreeshnair84/knowledge-docs/main/docs/enterprise_architect/specialization/SA_Dev_AgenticAI.pptx&embedded=true" width="100%" height="750px" frameborder="0"></iframe>
-<p><a href="pathname://SA_Dev_AgenticAI.pptx" download>Download PPTX ↓</a></p>
-</details>
+- SA Dev Agentic AI *(PPTX — download from [archive](/knowledge-docs/SA_Dev_AgenticAI.pptx))*
 
 ---
 

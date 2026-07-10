@@ -49,17 +49,9 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 ## HTML Files
 
-<details>
-<summary>EU Bank AI Copilot Architecture</summary>
-<iframe src="eu-bank-ai-copilot-architecture.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="eu-bank-ai-copilot-architecture.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [EU Bank AI Copilot Architecture](/knowledge-docs/ai-usecases/eu-bank-ai-copilot-architecture.html)
 
-<details>
-<summary>EU Bank Sequence Diagrams</summary>
-<iframe src="eu-bank-sequence-diagrams.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="eu-bank-sequence-diagrams.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [EU Bank Sequence Diagrams](/knowledge-docs/ai-usecases/eu-bank-sequence-diagrams.html)
 
 ---
 

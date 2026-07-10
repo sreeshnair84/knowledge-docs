@@ -150,5 +150,5 @@ All major agents (Claude Code, Codex CLI, Cursor, Antigravity) now ship OS-level
 
 ## Additional Resources
 
-- [A2A Deep Research](a2a_deep_research.html) — Agent-to-Agent protocol deep dive (HTML)
-- [Agent Skills Complete Playbook 2026](Agent_Skills_Complete_Playbook_2026.pdf) — source PDF
+- [A2A Deep Research](/knowledge-docs/agentic-systems/skill/a2a_deep_research.html) — Agent-to-Agent protocol deep dive (HTML)
+- [Agent Skills Complete Playbook 2026](/knowledge-docs/agentic-systems/skill/Agent_Skills_Complete_Playbook_2026.pdf) — source PDF

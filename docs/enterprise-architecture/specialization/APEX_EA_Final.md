@@ -19,7 +19,7 @@ covers_version: "N/A"
 **Classification:** Confidential — Final Edition (April 2026)  
 **Reference:** EA-APEX-MASTER-001
 
-> Full document: [APEX_EA_Final.pdf](APEX_EA_Final.pdf)
+> Full document: [APEX_EA_Final.pdf](/knowledge-docs/enterprise-architecture/specialization/APEX_EA_Final.pdf)
 
 ---
 

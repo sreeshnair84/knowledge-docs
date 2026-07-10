@@ -62,83 +62,31 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 ## Cheatsheets
 
-<details>
-<summary>Cheatsheet 1 — Claude Code</summary>
-<iframe src="Cheatsheet_1_Claude_Code.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_1_Claude_Code.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 1 — Claude Code](/knowledge-docs/coding-tools/claude/Cheatsheet_1_Claude_Code.html)
 
-<details>
-<summary>Cheatsheet 2 — Agent SDK</summary>
-<iframe src="Cheatsheet_2_Agent_SDK.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_2_Agent_SDK.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 2 — Agent SDK](/knowledge-docs/coding-tools/claude/Cheatsheet_2_Agent_SDK.html)
 
-<details>
-<summary>Cheatsheet 3 — MCP</summary>
-<iframe src="Cheatsheet_3_MCP.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_3_MCP.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 3 — MCP](/knowledge-docs/coding-tools/claude/Cheatsheet_3_MCP.html)
 
-<details>
-<summary>Cheatsheet 4 — AI Fluency</summary>
-<iframe src="Cheatsheet_4_AI_Fluency.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_4_AI_Fluency.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 4 — AI Fluency](/knowledge-docs/coding-tools/claude/Cheatsheet_4_AI_Fluency.html)
 
-<details>
-<summary>Cheatsheet 5 — Prompt Engineering</summary>
-<iframe src="Cheatsheet_5_Prompt_Engineering.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_5_Prompt_Engineering.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 5 — Prompt Engineering](/knowledge-docs/coding-tools/claude/Cheatsheet_5_Prompt_Engineering.html)
 
-<details>
-<summary>Cheatsheet 6 — Claude CLI</summary>
-<iframe src="Cheatsheet_6_Claude_CLI.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_6_Claude_CLI.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 6 — Claude CLI](/knowledge-docs/coding-tools/claude/Cheatsheet_6_Claude_CLI.html)
 
-<details>
-<summary>Cheatsheet 7 — Claude Ecosystem</summary>
-<iframe src="Cheatsheet_7_Claude_Ecosystem.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_7_Claude_Ecosystem.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 7 — Claude Ecosystem](/knowledge-docs/coding-tools/claude/Cheatsheet_7_Claude_Ecosystem.html)
 
-<details>
-<summary>Cheatsheet 9 — Agents &amp; Parallelism</summary>
-<iframe src="Cheatsheet_9_Agents_Parallelism.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_9_Agents_Parallelism.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 9 — Agents &amp; Parallelism](/knowledge-docs/coding-tools/claude/Cheatsheet_9_Agents_Parallelism.html)
 
-<details>
-<summary>Cheatsheet 10 — Multi-Agent Production</summary>
-<iframe src="Cheatsheet_10_MultiAgent_Production.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_10_MultiAgent_Production.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 10 — Multi-Agent Production](/knowledge-docs/coding-tools/claude/Cheatsheet_10_MultiAgent_Production.html)
 
-<details>
-<summary>Cheatsheet 11 — MCP Pipeline Errors</summary>
-<iframe src="Cheatsheet_11_MCP_Pipeline_Errors.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Cheatsheet_11_MCP_Pipeline_Errors.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Cheatsheet 11 — MCP Pipeline Errors](/knowledge-docs/coding-tools/claude/Cheatsheet_11_MCP_Pipeline_Errors.html)
 
-<details>
-<summary>Questionnaire — Claude Certification</summary>
-<iframe src="Questionnaire_Claude_Certification.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Questionnaire_Claude_Certification.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Questionnaire — Claude Certification](/knowledge-docs/coding-tools/claude/Questionnaire_Claude_Certification.html)
 
-<details>
-<summary>Questionnaire Vol 2 — Claude Certification</summary>
-<iframe src="Questionnaire_Vol2_Claude_Certification.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="Questionnaire_Vol2_Claude_Certification.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Questionnaire Vol 2 — Claude Certification](/knowledge-docs/coding-tools/claude/Questionnaire_Vol2_Claude_Certification.html)
 
-<details>
-<summary>Claude Routines Guide</summary>
-<iframe src="claude_routines_guide.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="claude_routines_guide.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Claude Routines Guide](/knowledge-docs/coding-tools/claude/claude_routines_guide.html)
 
 ---
 

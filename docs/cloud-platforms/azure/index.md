@@ -19,8 +19,4 @@ Architecture references and design patterns for deploying agentic AI systems on 
 
 ## HTML Files
 
-<details>
-<summary>Azure Agent Architecture</summary>
-<iframe src="azure_agent_architecture.html" width="100%" height="700px" frameborder="0" style="border:1px solid #ddd;border-radius:4px;"></iframe>
-<p><a href="azure_agent_architecture.html" target="_blank">Open in new tab ↗</a></p>
-</details>
+- [Azure Agent Architecture](/knowledge-docs/cloud-platforms/azure/azure_agent_architecture.html)
