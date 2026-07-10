@@ -1,14 +1,3 @@
----
-title: "Togaf10 Ai Platform"
-date_created: 2026-06-29
-last_reviewed: 2026-07-09
-status: current
-supersedes: ""
-source_type: native-md
-source_file: ""
-tags: ["enterprise-architecture", "framework"]
----
-
 import { useState } from "react";
 
 const COMPANY = "NexaBank Global";
