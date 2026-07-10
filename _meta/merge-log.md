@@ -183,3 +183,9 @@ Generated: 2026-07-09
 - Archived: `docs/ai-protocols/auth/Part2_Tool_Authentication.pdf` → `archive/`
 - Other parts (Part1, Part3, Part5, Part7, Part4, Part6) are distinct series parts — kept as-is, no merge.
 - Lint: PASS. `doc_type: guide`, `covers_version: "N/A"`.
+
+### cluster_21 — DONE (DISTINCT — both files kept)
+- Files: `docs/interview-prep/ea/EA_Interview_Handbook.pdf` (45 pages, 116K), `docs/interview-prep/ea/EA_Interview_Handbook_DELTA.pdf` (40 pages, 100K)
+- Similarity: score prompted review
+- Decision: DISTINCT — no archiving, no merge. DELTA explicitly self-describes as "Supplement to: EA Interview Handbook (Distinguished Architect Edition) — Emerging & Unexplored Topics | 2025-2026". DELTA covers entirely new topics (Post-Quantum Cryptography, EU AI Act Compliance, AI FinOps, Composable Architecture, Supply Chain Security, Sustainable Architecture, DORA Compliance, Autonomous Operations, Responsible AI, Edge Computing, Integration Modernisation, Architecture Leadership 2026) not present in the original. These are additive companion documents, not overlapping versions.
+- Action: Both files kept as-is. Phase 4 should add cross-reference links between the two documents.
