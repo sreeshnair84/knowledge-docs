@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["sovereign-constitutional-ai"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 # AI Assurance & Audit Architecture (Deliverables 10 & 11)

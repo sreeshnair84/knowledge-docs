@@ -7,6 +7,9 @@ supersedes: ""
 source_type: converted-pdf
 source_file: "IBM_Developer_Quantum_CertGuide.pdf"
 tags: ["quantum"]
+doc_type: certification
+exam_code: 
+exam_validity: 
 ---
 
 <!-- converted from IBM_Developer_Quantum_CertGuide.pdf -->

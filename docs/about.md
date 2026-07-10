@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["about.md"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 # About This Knowledge Base
