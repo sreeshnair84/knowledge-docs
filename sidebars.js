@@ -340,6 +340,7 @@ const sidebars = {
           label: 'EU Bank AI Copilot',
           items: [
             'ai-usecases/eu-bank-ai-copilot-complete',
+            'ai-usecases/eu-bank-ai-copilot-architecture',
             'ai-usecases/eu-bank-sequence-diagrams',
           ],
         },
