@@ -16,7 +16,7 @@ A comprehensive performance reference for AI Platform Teams and Principal Archit
 :::note Related Guides
     - Reliability under load (circuit breakers, degradation): [`reliability-engineering.md`](reliability-engineering.md)
     - Scaling for throughput (caching, queues, autoscaling): [`scalability-engineering.md`](scalability-engineering.md)
-    - OTel GenAI observability spans: [`../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md`](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
+    - OTel GenAI observability spans: [`../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md`](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md)
 
 ---
 

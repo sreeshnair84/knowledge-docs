@@ -46,7 +46,7 @@ DeepMind's safety work is not academic-only. Their frameworks for **controllabil
 
 Agents should request only the permissions needed for the immediate task. DeepMind frames this as corrigibility-preserving: an agent with minimal footprint is easier to correct, suspend, or shut down.
 
-**Enterprise implementation:** The decision-rights matrix in [Agentic AI Security & Identity](../../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) §4 operationalizes this — typed action contracts + tier-based autonomy limits.
+**Enterprise implementation:** The decision-rights matrix in [Agentic AI Security & Identity](../../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) §4 operationalizes this — typed action contracts + tier-based autonomy limits.
 
 ### Principle 2: Avoid Side-Effects
 
@@ -58,7 +58,7 @@ Well-aligned agents should not produce unintended side-effects. In practice: age
 
 DeepMind's corrigibility research emphasizes that AI systems must not actively undermine the ability of humans to oversee and correct them. This is now codified in **EU AI Act Article 14** (human oversight for high-risk systems).
 
-**Enterprise implementation:** Approval gates, suspension procedures, audit chains, and anomaly detection are all implementations of this principle. See [Security Architecture & Guardrails](../../coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md).
+**Enterprise implementation:** Approval gates, suspension procedures, audit chains, and anomaly detection are all implementations of this principle. See [Security Architecture & Guardrails](../../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails.md).
 
 ---
 

@@ -83,7 +83,7 @@ For the deep-dive implementation guide, see [MCP Deep Guide](../mcp/index.md) an
 | x402 | Agent → Micropayment | Production | HTTP 402-based; used in AgentCore Payments |
 | AP2 | Agent → Enterprise payment | GA | Google-led; 60+ partners; cryptographic mandate signing |
 
-For the full orchestration governance guide, see [Agent Interoperability & Orchestration](../../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md).
+For the full orchestration governance guide, see [Agent Interoperability & Orchestration](../../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md).
 
 ---
 

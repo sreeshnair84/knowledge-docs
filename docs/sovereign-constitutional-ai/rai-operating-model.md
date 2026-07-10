@@ -13,10 +13,10 @@ tags: ["sovereign-constitutional-ai"]
 
 **Audience:** AI Governance Leads, Chief AI Officers, RAI Officers, Enterprise Architects, Board Advisors  
 **Purpose:** Compare global RAI frameworks, define core RAI pillars with operational metrics, and design the Responsible AI Office operating model.  
-**Related:** [AI Governance Operating Model](ai-governance-operating-model.md) · [AI Risk Taxonomy](ai-risk-taxonomy.md) · [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)
+**Related:** [AI Governance Operating Model](ai-governance-operating-model.md) · [AI Risk Taxonomy](ai-risk-taxonomy.md) · [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
 
 :::info Current as of July 2026
-    The EU AI Act Digital Omnibus update (Dec 2027 phase-in, Aug 2028 full compliance for high-risk systems) has made RAI operational frameworks a legal requirement in the EU, not merely good practice. The NIST AI RMF 1.0 and ISO 42001:2023 provide the implementation methodology. This document focuses on vendor RAI frameworks and their enterprise implementation — for regulatory deep-dives see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md).
+    The EU AI Act Digital Omnibus update (Dec 2027 phase-in, Aug 2028 full compliance for high-risk systems) has made RAI operational frameworks a legal requirement in the EU, not merely good practice. The NIST AI RMF 1.0 and ISO 42001:2023 provide the implementation methodology. This document focuses on vendor RAI frameworks and their enterprise implementation — for regulatory deep-dives see [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md).
 
 ---
 

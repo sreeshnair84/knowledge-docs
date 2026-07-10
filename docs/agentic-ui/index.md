@@ -13,7 +13,7 @@ tags: ["agentic-ui"]
 
 **Audience:** Enterprise Architects, Principal AI Architects, AI Platform Teams, CTO Organizations, AI Centers of Excellence, UX Leads, and DevOps Engineers building enterprise-grade agentic applications.  
 **Purpose:** Definitive reference for designing, selecting, and deploying agentic user-interface protocols, standards, frameworks, and production architectures through 2027.  
-**Related:** [AI Protocols Overview](../ai-protocols/index.md) · [MCP Deep Research 2026](../ai-protocols/mcp/MCP_Deep_Research_2026.md) · [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md) · [Enterprise AI Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
+**Related:** [AI Protocols Overview](../ai-protocols/index.md) · [MCP Deep Research 2026](../ai-protocols/mcp/MCP_Deep_Research_2026.md) · [Agent Interoperability & Orchestration](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md) · [Enterprise AI Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md)
 
 :::info Research Program: Current as of July 2026
     This section covers the Agentic UI & Applications knowledge domain. Protocol versions covered: AG-UI (open standard, production), A2UI v0.9 (Google, experimental), NLWeb (Microsoft open project), MCP Apps (production), OpenAI Apps SDK. Backend integrations current to July 2026 include LangGraph, CrewAI, Microsoft Agent Framework 1.0, Google ADK, AWS Bedrock AgentCore, Mastra, PydanticAI, Agno, LlamaIndex, AG2. CopilotKit raised $27M to make AG-UI the enterprise standard for in-app AI agents.
@@ -262,12 +262,12 @@ KEY PROTOCOL RELATIONSHIPS
     The following content lives in other sections. This section cross-references these resources but does not reproduce their core content.
 
 - **MCP protocol deep dive** (transport, tool lifecycle, server implementation, registry) → [MCP Deep Research 2026](../ai-protocols/mcp/MCP_Deep_Research_2026.md)
-- **A2A protocol** (agent-to-agent communication, orchestration patterns, Agent Cards) → [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md)
-- **HITL gate patterns** (approval workflow design for agentic safety guardrails) → [Enterprise AI Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md) §8
-- **Agent memory architecture** (working, episodic, semantic, procedural, long-term) → [Agent Memory & Planning Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md)
-- **OWASP ASI01–ASI10** (agentic AI security taxonomy and mitigations) → [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md)
-- **14-layer guardrails framework** (input validation, output filtering, classifiers) → [Security Architecture & Guardrails](../coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md)
-- **EU AI Act / NIST AI RMF / ISO 42001** (compliance, audit, governance lifecycle) → [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)
-- **OTel GenAI semantic conventions** (trace schema, evaluation pipeline) → [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
+- **A2A protocol** (agent-to-agent communication, orchestration patterns, Agent Cards) → [Agent Interoperability & Orchestration](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md)
+- **HITL gate patterns** (approval workflow design for agentic safety guardrails) → [Enterprise AI Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md) §8
+- **Agent memory architecture** (working, episodic, semantic, procedural, long-term) → [Agent Memory & Planning Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md)
+- **OWASP ASI01–ASI10** (agentic AI security taxonomy and mitigations) → [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md)
+- **14-layer guardrails framework** (input validation, output filtering, classifiers) → [Security Architecture & Guardrails](../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails.md)
+- **EU AI Act / NIST AI RMF / ISO 42001** (compliance, audit, governance lifecycle) → [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
+- **OTel GenAI semantic conventions** (trace schema, evaluation pipeline) → [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md)
 - **Entra 3LO / OBO flows** (agent identity, delegation, token exchange) → [Entra 3LO Implementation Guide](../ai-protocols/auth/entra-3lo-agent-auth-implementation.md)
 - **AI Gateway** (Kong rate limiting, routing, token management, cost control) → [Kong AI Gateway Guide](../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md)

@@ -100,7 +100,7 @@ The AI era introduces **new attack surfaces** (prompt injection, model extractio
 | If you need to go deeper on… | See |
 |---|---|
 | Agent identity protocols (SPIFFE, OAuth 2.1, IETF AIMS) | [AI Protocols — Auth & Identity](../ai-protocols/auth/index.md) |
-| MCP security and A2A protocol trust | [MCP & A2A Deep Dive](../coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md) |
+| MCP security and A2A protocol trust | [MCP & A2A Deep Dive](../enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive.md) |
 | AI governance maturity models | [Sovereign & Constitutional AI](../sovereign-constitutional-ai/index.md) |
 | Kong AI Gateway and API security | [AI Gateway](../cloud-platforms/ai-gateway/index.md) |
 | Bedrock AgentCore security patterns | [AWS AgentCore](../cloud-platforms/aws/index.md) |

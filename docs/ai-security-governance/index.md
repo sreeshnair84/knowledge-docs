@@ -63,10 +63,10 @@ Layer 3: Governance & Compliance
 
 | Topic | Location |
 |---|---|
-| OWASP ASI01–ASI10, SPIFFE/AIMS, bounded autonomy | [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) |
-| 18-threat catalog, 14-layer guardrail map | [Security Architecture & Guardrails](../coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md) |
-| EU AI Act, NIST AI RMF, ISO 42001, state laws | [Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) |
-| MCP OAuth 2.1 / A2A Agent Card trust | [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md) |
-| OTel GenAI observability, anomaly detection | [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md) |
+| OWASP ASI01–ASI10, SPIFFE/AIMS, bounded autonomy | [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) |
+| 18-threat catalog, 14-layer guardrail map | [Security Architecture & Guardrails](../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails.md) |
+| EU AI Act, NIST AI RMF, ISO 42001, state laws | [Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) |
+| MCP OAuth 2.1 / A2A Agent Card trust | [Agent Interoperability & Orchestration](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md) |
+| OTel GenAI observability, anomaly detection | [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md) |
 | EntraID 3LO agent auth, OBO flows | [Auth & Identity](../ai-protocols/auth/index.md) |
 

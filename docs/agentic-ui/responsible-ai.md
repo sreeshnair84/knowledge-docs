@@ -14,7 +14,7 @@ tags: ["agentic-ui"]
 **Audience:** Enterprise AI Architects, Principal AI Architects, AI Platform Teams, Security Architects, and Compliance/Risk Officers who must design, implement, and audit responsible AI practices in agentic UI systems — covering how RAI requirements manifest in UX, architecture, and operations rather than the regulatory frameworks themselves (which are covered in linked references).
 
 :::note Scope Boundary
-    This file focuses on the **UX, architecture, and operational implementation** of RAI requirements in agentic applications. For the full EU AI Act / NIST AI RMF / ISO 42001 regulatory framework details, see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md). For governance structures and decision rights, see [Governance for Agentic Applications](governance.md).
+    This file focuses on the **UX, architecture, and operational implementation** of RAI requirements in agentic applications. For the full EU AI Act / NIST AI RMF / ISO 42001 regulatory framework details, see [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md). For governance structures and decision rights, see [Governance for Agentic Applications](governance.md).
 
 ---
 
@@ -69,7 +69,7 @@ RAI principles are not just backend architectural concerns — they manifest dir
 
 ## 2. EU AI Act for Agentic UI Applications
 
-For full EU AI Act framework details and updated Digital Omnibus deadlines, see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) §2.
+For full EU AI Act framework details and updated Digital Omnibus deadlines, see [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) §2.
 
 This section focuses on how EU AI Act obligations manifest in **agentic UI design and architecture**.
 
@@ -202,7 +202,7 @@ CONFORMITY ASSESSMENT WORKFLOW (High-Risk, Annex III)
 
 ## 3. NIST AI RMF for Agentic Systems
 
-For the full NIST AI RMF framework description, see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) §2.2.
+For the full NIST AI RMF framework description, see [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) §2.2.
 
 This section focuses on how the GOVERN/MAP/MEASURE/MANAGE core functions apply to **agentic-specific scenarios**.
 
@@ -277,7 +277,7 @@ The CAISI (Comprehensive AI Safety and Integrity Standards) framework published 
 
 ## 4. OWASP LLM Top 10 (2025) in Agentic UI Applications
 
-For OWASP Agentic AI ASI01–ASI10, see [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
+For OWASP Agentic AI ASI01–ASI10, see [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md).
 
 This section maps OWASP LLM Top 10 (2025 edition, chatbot origin) to agentic UI attack surfaces specifically.
 
@@ -810,7 +810,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
     - [Governance for Agentic Applications](governance.md) — Governance structures, decision rights, 16 domains
     - [Security Architecture for Agentic Applications](security-architecture.md) — Security controls, threat models
     - [Identity & Auth Architecture](identity-auth-architecture.md) — Identity types, OAuth flows, authorization
-    - [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) — Full EU AI Act / NIST AI RMF / ISO 42001 details
-    - [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) — OWASP ASI01–ASI10
+    - [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) — Full EU AI Act / NIST AI RMF / ISO 42001 details
+    - [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) — OWASP ASI01–ASI10
     - [Sovereign AI Foundations](../sovereign-constitutional-ai/sovereign-ai-foundations.md) — Sovereign AI deployment strategies
     - [Constitutional AI Engineering](../sovereign-constitutional-ai/constitutional-ai-engineering.md) — Constitutional AI technical implementation

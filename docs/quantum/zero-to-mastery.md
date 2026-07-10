@@ -28,7 +28,7 @@ For a Principal Architect, this matters on three axes:
 | **ML / AI** | Diminishing returns from model scaling | QNNs & quantum kernels access exponentially larger feature spaces |
 | **Security** | RSA-2048 / ECC break under Shor's algorithm (2030–2035) | Post-quantum cryptography is an immediate compliance requirement |
 
-Cross-reference: [AI Foundations](../ai-foundations/index.md) · [Enterprise Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
+Cross-reference: [AI Foundations](../ai-foundations/index.md) · [Enterprise Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md)
 
 ---
 
@@ -430,7 +430,7 @@ exec(response.content[0].text)
                    └───────────────┘
 ```
 
-Cross-reference: [AI Harness & Orchestration](../coding-tools/enterprise-ai-architect/ai-harness-architecture-orchestration.md) · [Agent Interoperability](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md)
+Cross-reference: [AI Harness & Orchestration](../enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration.md) · [Agent Interoperability](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md)
 
 #### Key Architectural Decisions
 
@@ -531,7 +531,7 @@ assert shared_secret_server == shared_secret_client
 - [ ] Update certificate infrastructure to Dilithium/Falcon signatures
 - [ ] Map compliance: NIST SP 800-208, NSA CNSA 2.0, EU Quantum Flagship
 
-Cross-reference: [AI Security & Governance](../ai-security-governance/index.md) · [Security Architecture & Guardrails](../coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md)
+Cross-reference: [AI Security & Governance](../ai-security-governance/index.md) · [Security Architecture & Guardrails](../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails.md)
 
 ---
 
@@ -829,7 +829,7 @@ optimizer = GroverOptimizer(num_value_qubits=3, sampler=sampler)
 result = optimizer.solve(qp)
 ```
 
-Cross-reference: [Agentic AI Systems](../agentic-systems/index.md) · [Agent Memory & Planning](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md) · [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md)
+Cross-reference: [Agentic AI Systems](../agentic-systems/index.md) · [Agent Memory & Planning](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md) · [Agent Interoperability & Orchestration](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md)
 
 ---
 
@@ -867,7 +867,7 @@ The Hopfield network (classical associative memory) has a quantum generalisation
 
 This matters for agents with large episodic memory stores needing fast pattern recall.
 
-Cross-reference: [Agent Memory & Planning Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md)
+Cross-reference: [Agent Memory & Planning Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md)
 
 ### MCP + Quantum: Exposing QPU as a Tool
 
@@ -884,7 +884,7 @@ async def vqe_solve(molecule_smiles: str, basis_set: str = "sto-3g") -> dict:
     return {"energy_hartree": result.eigenvalue, "shots_used": shots}
 ```
 
-Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [MCP & A2A Protocol Deep Dive](../coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md)
+Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [MCP & A2A Protocol Deep Dive](../enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive.md)
 
 ---
 
@@ -979,4 +979,4 @@ The three industry research reports in this section provide deep dives into each
 ---
 
 *Cross-reference this guide with:*
-*[AI Foundations](../ai-foundations/index.md) · [Agentic AI Systems](../agentic-systems/index.md) · [Cloud Platforms](../cloud-platforms/index.md) · [AI Security & Governance](../ai-security-governance/index.md) · [Enterprise Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md)*
+*[AI Foundations](../ai-foundations/index.md) · [Agentic AI Systems](../agentic-systems/index.md) · [Cloud Platforms](../cloud-platforms/index.md) · [AI Security & Governance](../ai-security-governance/index.md) · [Enterprise Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md)*

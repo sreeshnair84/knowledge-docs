@@ -672,7 +672,7 @@ Before deploying multi-agent systems:
 
 **Related Documents:**
 - [Agent Platform Layer: Lifecycle & Registry](agentic_ai_landing_zone_platform_layer.md)
-- [Enterprise Agent Reference Architectures](../coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md)
+- [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md)
 - [Agentic AI Security](../cybersec-architect/05-agentic-ai-security.md)
 
 ---

@@ -535,7 +535,7 @@ RED TEAM EVAL PROTOCOL — AGENTIC SYSTEMS
   ────────────────────────────
   • Document all findings with reproduction steps and severity
   • Risk score per finding: Likelihood × Impact
-  • Map to OWASP ASI01-ASI10 (see: ../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md)
+  • Map to OWASP ASI01-ASI10 (see: ../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md)
   • Prioritize mitigations
 ```
 
@@ -1131,5 +1131,5 @@ A structured cadence ensures evaluation is continuous and complete, not reactive
 :::note Cross-references
     - Agent-level evaluation (planning, tool use, memory): [AI Agent Evaluation Framework Guide](../ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md)
     - Observability infrastructure for feeding real-time signals into evaluation: [Observability for Agentic Applications](observability.md)
-    - EU AI Act and governance requirements for evaluation: [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)
-    - OTel GenAI dashboards: [Agentic AI Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
+    - EU AI Act and governance requirements for evaluation: [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
+    - OTel GenAI dashboards: [Agentic AI Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md)

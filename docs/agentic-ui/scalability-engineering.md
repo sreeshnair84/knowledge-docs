@@ -16,7 +16,7 @@ A comprehensive scalability reference for AI Platform Teams and Principal Archit
 :::note Related Guides
     - Circuit breakers and degradation under load: [`reliability-engineering.md`](reliability-engineering.md)
     - AI Gateway load balancing and rate limiting: [`../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md`](../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md)
-    - Agent memory and state scaling: [`../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md`](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md)
+    - Agent memory and state scaling: [`../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md`](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md)
 
 ---
 

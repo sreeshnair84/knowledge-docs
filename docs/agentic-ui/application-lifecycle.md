@@ -14,11 +14,11 @@ tags: ["agentic-ui"]
 **Audience:** Enterprise architects, AI platform teams, and product owners governing the full delivery journey of production agentic applications from ideation through retirement.
 
 **Related:**
-[Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md) |
-[Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) |
-[Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) |
-[Observability](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md) |
-[Memory Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md) |
+[Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md) |
+[Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) |
+[Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) |
+[Observability](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md) |
+[Memory Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md) |
 [Auth Implementation](../ai-protocols/auth/entra-3lo-agent-auth-implementation.md)
 
 ---
@@ -211,7 +211,7 @@ For each data source:
 | FINRA / MiFID II | Financial services | High | Explainability, record-keeping |
 | Industry-specific | Varies | Review | Legal counsel required |
 
-See [Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) for full regulatory matrix.
+See [Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) for full regulatory matrix.
 
 ### Go / No-Go Criteria
 
@@ -397,7 +397,7 @@ Match your use case to the enterprise reference architecture patterns:
 | Code generation | Coding copilot | IDE plugin + context injection + eval harness |
 | Decision support | Decision copilot | Structured output + confidence scoring + audit |
 
-See [Enterprise Reference Architectures](../coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md).
+See [Enterprise Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md).
 
 ### Non-functional Requirements Baseline
 
@@ -427,7 +427,7 @@ See [Enterprise Reference Architectures](../coding-tools/enterprise-ai-architect
 - **Single-point-of-failure LLM:** All agents hit one LLM endpoint with no fallback. Model outages become application outages.
 - **Synchronous everything:** Long-running agentic tasks held in HTTP connections. Use async job queues for tasks > 10 seconds.
 - **Missing context window budget:** No analysis of context window consumption at scale. Context overflow causes silent truncation errors.
-- **Shared mutable memory:** Multiple agents writing to the same memory store without conflict resolution. See [Memory Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md).
+- **Shared mutable memory:** Multiple agents writing to the same memory store without conflict resolution. See [Memory Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md).
 
 ---
 
@@ -554,7 +554,7 @@ For a 200K context window model:
 | Output reservation | 4,000–8,000 | Reserve for generation |
 
 :::warning Context Overflow is Silent
-    When context exceeds the model's window, providers truncate without error. This causes the agent to silently lose conversation history or retrieved documents, producing degraded responses. Implement context window monitoring as a first-class operational metric. See [Observability](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md).
+    When context exceeds the model's window, providers truncate without error. This causes the agent to silently lose conversation history or retrieved documents, producing degraded responses. Implement context window monitoring as a first-class operational metric. See [Observability](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md).
 
 ### Prompt Versioning
 
@@ -677,7 +677,7 @@ Specify the agent's full behavioral contract: what it does, how it plans, what t
 | Collaborative (peer agents) | Independent parallel paths | High |
 | Federated (cross-org) | Multi-enterprise coordination | Very High |
 
-See [Agent Interoperability & Orchestration](../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md).
+See [Agent Interoperability & Orchestration](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md).
 
 ---
 
@@ -827,7 +827,7 @@ Identify, assess, and mitigate security risks before development investment is c
 | ASI09 | **Supply Chain Attack** | Can a malicious MCP server compromise the agent? | MCP server allowlist; tool output sandboxing |
 | ASI10 | **Insufficient Logging** | Can agent actions be attributed and audited? | Structured logging of all tool calls; audit trail integrity |
 
-See full analysis in [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
+See full analysis in [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md).
 
 ### Threat Model Template (STRIDE for Agents)
 

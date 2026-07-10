@@ -14,7 +14,7 @@ tags: ["agentic-systems", "harness"]
 Deep-dive research on engineering AI agents using Harness — covering vendor landscape, best practices, security, supply chain, observability, and interview preparation.
 
 :::tip Related guide
-    For the full harness reference architecture — runtime component catalog, 8-plane model, end-to-end task lifecycle, trust boundaries, and 14 orchestration patterns — see [AI Harness Architecture & Orchestration](../../coding-tools/enterprise-ai-architect/ai-harness-architecture-orchestration.md).
+    For the full harness reference architecture — runtime component catalog, 8-plane model, end-to-end task lifecycle, trust boundaries, and 14 orchestration patterns — see [AI Harness Architecture & Orchestration](../../enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration.md).
 
 ---
 

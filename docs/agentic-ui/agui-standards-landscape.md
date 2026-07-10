@@ -1461,4 +1461,4 @@ Testing
 ```
 
 :::tip Cross-Reference: Observability
-    For OTel span schema specific to AG-UI events (run spans, step spans, tool call spans), see [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md). For security hardening beyond this page, see [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) OWASP ASI mapping.
+    For OTel span schema specific to AG-UI events (run spans, step spans, tool call spans), see [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md). For security hardening beyond this page, see [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) OWASP ASI mapping.

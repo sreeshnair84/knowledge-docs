@@ -13,7 +13,7 @@ tags: ["knowledge-engineering", "data"]
 
 Research reports and architecture guides covering data systems, lineage, governance, and AI-native data platform evolution.
 
-> **See also:** For data governance and knowledge system governance, see [Governance & Responsible AI for Knowledge Systems](../industry-practices/governance-rai.md). For data architecture in the context of AI-first enterprise strategy, see [AI-First Enterprise](../../ai-first-enterprise/index.md). For data lineage and governance at the enterprise architecture level, see [Enterprise Data Architecture](../../enterprise-architecture/specialization/index.md).
+> **See also:** For data governance and knowledge system governance, see [Governance & Responsible AI for Knowledge Systems](../industry-practices/governance-rai.md). For data architecture in the context of AI-first enterprise strategy, see [AI-First Enterprise](../../enterprise-architecture/transformation/index.md). For data lineage and governance at the enterprise architecture level, see [Enterprise Data Architecture](../../enterprise-architecture/specialization/index.md).
 
 ---
 

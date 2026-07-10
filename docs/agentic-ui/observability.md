@@ -14,7 +14,7 @@ tags: ["agentic-ui"]
 A reference guide for AI Platform Teams and Enterprise Architects on the full observability stack for agentic systems — from distributed tracing and AG-UI stream telemetry through frontend RUM, LLM cost attribution, safety signal monitoring, and business analytics.
 
 :::note Build on the OTel GenAI foundation
-    This guide extends the OpenTelemetry GenAI semantic conventions, the 5-dashboard reference set, and burn rate alerting strategy defined in [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md). Read that guide first — this file builds the AGUI/streaming/UX telemetry layer on top of that foundation without re-explaining OTel span semantics, semantic conventions, or the dashboard scaffolding already covered there.
+    This guide extends the OpenTelemetry GenAI semantic conventions, the 5-dashboard reference set, and burn rate alerting strategy defined in [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md). Read that guide first — this file builds the AGUI/streaming/UX telemetry layer on top of that foundation without re-explaining OTel span semantics, semantic conventions, or the dashboard scaffolding already covered there.
 
 ---
 
@@ -807,7 +807,7 @@ CLOSED ──(failure_rate > 50%)──► OPEN
 | `memory.context.utilization_pct` | Histogram | % of retrieved docs used in response | < 20% = over-retrieval |
 | `memory.eviction.count` | Counter | Documents evicted by TTL/LRU | Sudden spike = TTL too aggressive |
 
-For memory architecture and tiering details, see [Memory & Planning Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md).
+For memory architecture and tiering details, see [Memory & Planning Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md).
 
 ---
 
@@ -823,7 +823,7 @@ For memory architecture and tiering details, see [Memory & Planning Architecture
 | `safety.pii.detected` | PII detected in inputs | Track trend | 90 days |
 | `safety.policy_violation.attempt` | User attempted policy-violating action | Any | 1 year |
 
-For OWASP ASI01–ASI10 security controls and guardrail policy design, see [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md).
+For OWASP ASI01–ASI10 security controls and guardrail policy design, see [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md).
 
 ### 8.2 Safety Alert Tiers
 
@@ -1034,4 +1034,4 @@ groups:
 
 ---
 
-*For the OTel GenAI baseline, burn rate SLO methodology, and 5-dashboard reference, see [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md). For eval pipeline architecture, see [AI Agent Evaluation Framework Guide](../ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md). For EU AI Act Article 26 safety logging obligations, see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md).*
+*For the OTel GenAI baseline, burn rate SLO methodology, and 5-dashboard reference, see [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md). For eval pipeline architecture, see [AI Agent Evaluation Framework Guide](../ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md). For EU AI Act Article 26 safety logging obligations, see [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md).*

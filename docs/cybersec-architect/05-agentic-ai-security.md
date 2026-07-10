@@ -18,7 +18,7 @@ tags: ["cybersec-architect"]
 [AI Security](04-ai-security.md) |
 [Identity Architecture](06-identity-architecture.md) |
 [Security Patterns](13-security-patterns.md) |
-[Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md)
+[Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md)
 
 > **Current as of July 2026.** Agentic AI introduces autonomous behaviour, tool invocation, multi-agent coordination, and persistent memory — each of which requires security controls beyond what traditional or even standard AI security provides.
 

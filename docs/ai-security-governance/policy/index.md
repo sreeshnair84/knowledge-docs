@@ -136,7 +136,7 @@ For A2A, authorization is declared in the **Agent Card** (the `authentication` b
 
 ## Related Guides
 
-- [Agentic AI Security & Identity](../../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) — SPIFFE/AIMS, bounded autonomy, delegation chains
-- [Machine-Readable EA](../../coding-tools/enterprise-ai-architect/machine-readable-ea.md) — policy-as-code as an EA standard; OPA/Cedar for enterprise-wide agent governance
-- [Agent Interoperability & Orchestration](../../coding-tools/enterprise-ai-architect/agent-interoperability-orchestration.md) — MCP OAuth 2.1, A2A Agent Card auth
+- [Agentic AI Security & Identity](../../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) — SPIFFE/AIMS, bounded autonomy, delegation chains
+- [Machine-Readable EA](../../enterprise-architecture/ai-architecture/machine-readable-ea.md) — policy-as-code as an EA standard; OPA/Cedar for enterprise-wide agent governance
+- [Agent Interoperability & Orchestration](../../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md) — MCP OAuth 2.1, A2A Agent Card auth
 

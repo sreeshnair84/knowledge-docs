@@ -14,7 +14,7 @@ tags: ["agentic-ui"]
 Reference architectures for the AGUI/UX layer across 10 industry verticals — focusing on UX design, human oversight models, regulatory constraints, and enterprise system integrations unique to each domain.
 
 :::note Backend Platform Coverage
-    For backend agent platform architecture (orchestration, memory, A2A, MCP), see [Enterprise Agent Reference Architectures](../coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md). This guide focuses on what's different at the UX and AGUI layer per industry.
+    For backend agent platform architecture (orchestration, memory, A2A, MCP), see [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md). This guide focuses on what's different at the UX and AGUI layer per industry.
 
 ---
 

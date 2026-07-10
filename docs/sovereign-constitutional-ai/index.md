@@ -13,7 +13,7 @@ tags: ["sovereign-constitutional-ai"]
 
 **Audience:** Chief AI Officers, AI Governance Leads, Principal AI Architects, AI Risk Officers, AI Security Architects, Enterprise Architects, Board Advisors  
 **Purpose:** Definitive body of knowledge for designing, governing, securing, auditing, and operating Sovereign Constitutional AI systems at enterprise, national, and regulated-industry scale through 2030.  
-**Related:** [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) · [Constitutional AI & Safety](../coding-tools/claude/constitutional-ai-safety-2026.md) · [AI Security Governance](../ai-security-governance/index.md)
+**Related:** [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) · [Constitutional AI & Safety](../coding-tools/claude/constitutional-ai-safety-2026.md) · [AI Security Governance](../ai-security-governance/index.md)
 
 :::info Research Program: 2026–2030
     This section represents the Sovereign Constitutional AI & RAI Master Research Program. Content is grounded in current standards (EU AI Act Digital Omnibus 2026, NIST AI RMF 1.0 + AI 600-1, ISO 42001:2023, Anthropic RSP, Google DeepMind FSF), industry practice, and published academic research as of July 2026.
@@ -141,9 +141,9 @@ Domain 12  Roadmap, Maturity & Standards Canon
 
 This section extends and cross-references (does **not** duplicate) existing material:
 
-- **EU AI Act / NIST AI RMF / ISO 42001 deep coverage** → [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)
+- **EU AI Act / NIST AI RMF / ISO 42001 deep coverage** → [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
 - **Anthropic Constitutional AI principles & RSP** → [Constitutional AI & Safety 2026](../coding-tools/claude/constitutional-ai-safety-2026.md)
-- **OPA/Cedar policy-as-code fundamentals** → [Policy & Authorization](../ai-security-governance/policy/index.md) and [Machine-Readable EA](../coding-tools/enterprise-ai-architect/machine-readable-ea.md)
-- **Kill switch & reliability engineering** → [Agentic AI Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
-- **Agent autonomy 4-tier operational ladder** → [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md)
+- **OPA/Cedar policy-as-code fundamentals** → [Policy & Authorization](../ai-security-governance/policy/index.md) and [Machine-Readable EA](../enterprise-architecture/ai-architecture/machine-readable-ea.md)
+- **Kill switch & reliability engineering** → [Agentic AI Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md)
+- **Agent autonomy 4-tier operational ladder** → [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md)
 - **EU Banking compliance deep-dive** → [EU Banking AI Evaluation & Compliance](../ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md)

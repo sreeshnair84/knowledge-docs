@@ -13,7 +13,7 @@ tags: ["enterprise-architecture", "process"]
 
 **Audience:** Enterprise Architects, Solution Architects, Security Architects, RAI/Governance Leads, Data Architects, Platform/MLOps Architects, Distinguished/Principal Architects, Delivery Leaders  
 **Purpose:** Comprehensive catalog of deliverables expected from each architect role at every lifecycle stage — from incubation through retirement — illustrated across three use cases: Banking Loan Underwriting, Healthcare Prior Authorization, and Government Citizen Benefits.  
-**Related:** [AI-First to AI-Native Journey](../../ai-first-enterprise/ai-first-to-ai-native.md) · [AI Governance Operating Model](../../sovereign-constitutional-ai/ai-governance-operating-model.md) · [Constitutional AI Engineering](../../sovereign-constitutional-ai/constitutional-ai-engineering.md) · [Enterprise AI Governance & Compliance](../../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)
+**Related:** [AI-First to AI-Native Journey](../transformation/ai-first-to-ai-native.md) · [AI Governance Operating Model](../../sovereign-constitutional-ai/ai-governance-operating-model.md) · [Constitutional AI Engineering](../../sovereign-constitutional-ai/constitutional-ai-engineering.md) · [Enterprise AI Governance & Compliance](../../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
 
 :::info Current as of July 2026
     This catalog aligns with EU AI Act (High-Risk AI system lifecycle requirements, Art. 9–17), ISO 42001:2023, and enterprise architecture frameworks (TOGAF 10, Zachman). Deliverable names match the TOGAF Architecture Development Method (ADM) where applicable.

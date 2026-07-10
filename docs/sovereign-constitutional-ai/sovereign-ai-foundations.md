@@ -13,7 +13,7 @@ tags: ["sovereign-constitutional-ai"]
 
 **Audience:** Chief AI Officers, Enterprise Architects, Policy Makers, CISOs, National AI Strategy Teams  
 **Purpose:** Define Sovereign AI across national, enterprise, and infrastructure dimensions; establish reference architectures and implementation patterns.  
-**Related:** [Constitutional AI Engineering](constitutional-ai-engineering.md) · [AI Governance Operating Model](ai-governance-operating-model.md) · [Machine-Readable EA](../coding-tools/enterprise-ai-architect/machine-readable-ea.md)
+**Related:** [Constitutional AI Engineering](constitutional-ai-engineering.md) · [AI Governance Operating Model](ai-governance-operating-model.md) · [Machine-Readable EA](../enterprise-architecture/ai-architecture/machine-readable-ea.md)
 
 :::info Current as of July 2026
     Sovereign AI strategies are accelerating globally following geopolitical AI supply-chain events in 2025–2026. The EU AI Act, India's IndiaAI Mission, UAE's AI Strategy 2031, and US Executive Orders on AI are all shaping national sovereignty postures. Enterprise strategies follow national frameworks.

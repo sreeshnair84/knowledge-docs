@@ -731,7 +731,7 @@ Before rolling out the Agent Platform layer, your organization should decide:
 **Related Documents:**
 - [Business Layer: Agent Portfolio & Strategy](agentic_ai_landing_zone_business_layer.md)
 - [AI Governance Operating Model](../sovereign-constitutional-ai/ai-governance-operating-model.md)
-- [Enterprise Agent Reference Architectures](../coding-tools/enterprise-ai-architect/enterprise-agent-reference-architectures.md)
+- [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md)
 
 ---
 

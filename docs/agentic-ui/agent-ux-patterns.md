@@ -14,11 +14,11 @@ tags: ["agentic-ui"]
 **Audience:** UX leads, product owners, and principal AI architects designing the human-facing layer of enterprise agentic applications.
 
 **Related:**
-[HITL Gates](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md) |
-[Memory Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md) |
-[Security/OWASP](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) |
-[Governance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) |
-[Observability](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
+[HITL Gates](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md) |
+[Memory Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md) |
+[Security/OWASP](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) |
+[Governance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) |
+[Observability](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md)
 
 ---
 
@@ -564,7 +564,7 @@ IDENCE    ├──────────────┼───────�
 - Simple fact retrieval (clutter > benefit)
 - End-user consumer app with low technical literacy
 - High-confidence, low-stakes generation (email autocomplete)
-- Regulated contexts where showing reasoning implies AI autonomy (EU AI Act Art. 14 consideration — see [Governance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md))
+- Regulated contexts where showing reasoning implies AI autonomy (EU AI Act Art. 14 consideration — see [Governance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md))
 
 ---
 
@@ -786,7 +786,7 @@ For autonomous workflows generating multiple pending approvals:
 | Final timeout | Configurable | Task cancelled. Audit log entry. |
 
 :::note Escalation Chain Design
-    Define a 3-level escalation chain for every autonomous task: primary approver → manager → task owner. Undeclared escalation chains are an operational risk for long-running autonomous workflows. See [HITL patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md).
+    Define a 3-level escalation chain for every autonomous task: primary approver → manager → task owner. Undeclared escalation chains are an operational risk for long-running autonomous workflows. See [HITL patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md).
 
 ---
 

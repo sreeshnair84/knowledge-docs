@@ -14,7 +14,7 @@ tags: ["agentic-ui"]
 **Audience:** Enterprise Architects, Principal AI Architects, AI Platform Teams, and AI Governance Leads who must design, operate, and audit the governance structures for production agentic UIs and applications — covering decision rights, ownership, processes, and maturity progression across all 16 governance domains.
 
 :::note Scope Boundary
-    This file covers governance **structures, processes, and decision rights**. Compliance requirements (EU AI Act obligations, NIST AI RMF, ISO 42001 conformity assessment) are covered in [responsible-ai.md](responsible-ai.md). Regulatory framework details are in [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md).
+    This file covers governance **structures, processes, and decision rights**. Compliance requirements (EU AI Act obligations, NIST AI RMF, ISO 42001 conformity assessment) are covered in [responsible-ai.md](responsible-ai.md). Regulatory framework details are in [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md).
 
 ---
 
@@ -1144,5 +1144,5 @@ The following anti-patterns represent governance failures observed in enterprise
     - [Responsible AI for Agentic Applications](responsible-ai.md) — RAI principles, EU AI Act compliance requirements, OWASP LLM Top 10
     - [Security Architecture for Agentic Applications](security-architecture.md) — Security controls, threat models, AGUI-specific security
     - [Identity & Auth Architecture](identity-auth-architecture.md) — Identity types, OAuth flows, authorization models
-    - [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) — Regulatory framework details
-    - [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md) — Operational governance, 5 registries
+    - [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) — Regulatory framework details
+    - [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md) — Operational governance, 5 registries

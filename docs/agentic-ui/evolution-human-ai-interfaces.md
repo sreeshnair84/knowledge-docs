@@ -293,7 +293,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 - Continuous improvement through outcome-based learning
 - Competitive differentiation through proprietary workflow intelligence
 
-**Enterprise Architecture Prerequisite:** 17-layer reference architecture (see [Enterprise Reference Architecture](enterprise-reference-architecture.md)), policy-as-code enforcement at the agent layer, and comprehensive governance (see [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md)).
+**Enterprise Architecture Prerequisite:** 17-layer reference architecture (see [Enterprise Reference Architecture](enterprise-reference-architecture.md)), policy-as-code enforcement at the agent layer, and comprehensive governance (see [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)).
 
 ---
 
@@ -562,7 +562,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 - Multi-tab and multi-device context synchronization with conflict resolution
 - Explicit context handoff when the user delegates to a colleague ("Continue this task — here is the current state")
 
-**Technical Reference:** See [Agent Memory & Planning Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md) for the memory layer design that supports context preservation.
+**Technical Reference:** See [Agent Memory & Planning Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md) for the memory layer design that supports context preservation.
 
 ---
 
@@ -813,8 +813,8 @@ Level 5 — Ambient Enterprise Intelligence
 |---|---|
 | AG-UI protocol: event taxonomy, transport, state sync | [AGUI Standards & Ecosystem Landscape](agui-standards-landscape.md) |
 | Enterprise reference architecture (17 layers) | [Enterprise Reference Architecture](enterprise-reference-architecture.md) |
-| HITL gate implementation patterns | [Enterprise AI Architecture Patterns](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md) §8 |
-| Agent memory supporting context preservation | [Agent Memory & Planning Architecture](../coding-tools/enterprise-ai-architect/agent-memory-planning-architecture.md) |
-| Security model for trust boundaries | [Agentic AI Security & Identity](../coding-tools/enterprise-ai-architect/agentic-ai-security-identity.md) |
-| EU AI Act transparency requirements | [Enterprise AI Governance & Compliance](../coding-tools/enterprise-ai-architect/enterprise-ai-governance-compliance.md) |
-| OTel observability for agent UX | [Reliability, Observability & Governance](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md) |
+| HITL gate implementation patterns | [Enterprise AI Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md) §8 |
+| Agent memory supporting context preservation | [Agent Memory & Planning Architecture](../enterprise-architecture/ai-architecture/agent-memory-planning-architecture.md) |
+| Security model for trust boundaries | [Agentic AI Security & Identity](../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) |
+| EU AI Act transparency requirements | [Enterprise AI Governance & Compliance](../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md) |
+| OTel observability for agent UX | [Reliability, Observability & Governance](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md) |

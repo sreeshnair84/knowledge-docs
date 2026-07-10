@@ -287,7 +287,7 @@ MCP Client (Agent) ←─── OAuth 2.1 ───→ MCP Server (Tool)
 - Audit logs of every MCP call including agent ID, tool, parameters, and result
 - Rate limiting per agent per tool
 
-See [MCP & A2A Deep Dive](../coding-tools/enterprise-ai-architect/mcp-a2a-protocol-deep-dive.md) for full protocol specification.
+See [MCP & A2A Deep Dive](../enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive.md) for full protocol specification.
 
 ### 4.6 Prompt Gateway
 

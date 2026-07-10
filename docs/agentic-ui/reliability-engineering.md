@@ -14,8 +14,8 @@ tags: ["agentic-ui"]
 A comprehensive engineering reference for Enterprise Architects and AI Platform Teams designing production-grade reliability for agentic UIs and agent runtimes — covering SLO frameworks, fault tolerance patterns, saga orchestration, streaming recovery, and chaos engineering.
 
 :::note Related Guides
-    - Observability instrumentation (OTel GenAI spans, burn rate dashboards): [`../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md`](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md)
-    - HITL gates and escalation architecture: [`../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md`](../coding-tools/enterprise-ai-architect/enterprise-ai-architecture-patterns.md)
+    - Observability instrumentation (OTel GenAI spans, burn rate dashboards): [`../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md`](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md)
+    - HITL gates and escalation architecture: [`../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md`](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md)
     - AI Gateway circuit breaker configuration: [`../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md`](../cloud-platforms/ai-gateway/kong-ai-gateway-guide.md)
 
 ---
@@ -62,7 +62,7 @@ At 99.9% per component, a 12-hop chain has theoretical availability of 98.8%. En
 
 ### 1.4 Why Observability Is a Reliability Prerequisite
 
-You cannot build error budgets, tune SLOs, or fire alerts on events you cannot see. Before implementing any reliability pattern in this guide, confirm that OpenTelemetry GenAI semantic conventions are instrumented across every component. See the companion guide for implementation: [`../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md`](../coding-tools/enterprise-ai-architect/agentic-ai-reliability-observability-governance.md).
+You cannot build error budgets, tune SLOs, or fire alerts on events you cannot see. Before implementing any reliability pattern in this guide, confirm that OpenTelemetry GenAI semantic conventions are instrumented across every component. See the companion guide for implementation: [`../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md`](../enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance.md).
 
 ---
 

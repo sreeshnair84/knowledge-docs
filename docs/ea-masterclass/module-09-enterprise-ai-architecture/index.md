@@ -969,3 +969,15 @@ Use this checklist to assess readiness for enterprise AI architecture responsibi
 
 !!! note "Next Module"
     Module 10 covers **AI Operating Models and the AI Centre of Excellence** — how to structure the team, governance, and ways of working that bring enterprise AI architecture to life inside an organisation.
+
+---
+
+## Reference Material
+
+The canonical reference pages for the topics covered in this module live in the **Enterprise Architecture** section:
+
+- [Enterprise AI Architecture Reference](../../enterprise-architecture/ai-architecture/index.md) — architecture patterns, agent reference architectures, governance frameworks
+- [Enterprise AI Architecture Patterns](../../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md)
+- [Enterprise Agent Reference Architectures](../../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md)
+- [AI Governance & Compliance](../../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance.md)
+- [Machine-Readable EA](../../enterprise-architecture/ai-architecture/machine-readable-ea.md)

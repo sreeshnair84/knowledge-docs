@@ -17,7 +17,7 @@ tags: ["cybersec-architect"]
 [Overview](index.md) |
 [Agentic AI Security](05-agentic-ai-security.md) |
 [EA Deliverables](12-ea-deliverables.md) |
-[Security Architecture & Guardrails](../coding-tools/enterprise-ai-architect/agentic-ai-security-guardrails.md)
+[Security Architecture & Guardrails](../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails.md)
 
 > **Current as of July 2026.** Reusable security patterns for the AI era — each described with architecture diagram, key controls, when to use, and implementation notes.
 
