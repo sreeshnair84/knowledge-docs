@@ -13,7 +13,7 @@ tags: ["ai-usecases", "eu-bank", "sequence-diagrams", "mermaid", "authentication
 
 # EU Bank AI Copilot — Sequence Diagrams
 
-Six sequence diagrams covering all major flows of the EU Bank AI Copilot Platform. See also the [architecture overview](eu-bank-ai-copilot-complete.md) and the [architecture design](eu-bank-ai-copilot-architecture.html).
+Six sequence diagrams covering all major flows of the EU Bank AI Copilot Platform. See also the [architecture overview](eu-bank-ai-copilot-complete.md) and the [architecture & code reference](eu-bank-ai-copilot-architecture.md).
 
 ---
 
