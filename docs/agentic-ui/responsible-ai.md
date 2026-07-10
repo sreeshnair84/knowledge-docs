@@ -137,7 +137,7 @@ Article 14 requires that high-risk AI systems enable human oversight. For agenti
 | **Decide not to use / override** | Prominent override controls; easy opt-out; human escalation path |
 | **Intervene in real time** | Pause / stop / cancel controls in AG-UI event stream |
 
-See [Human Oversight in Practice](#10-human-oversight-in-practice-ux-architecture) (§10) for UX and architecture implementation.
+See [Human Oversight in Practice](#10-human-oversight-in-practice-ux--architecture) (§10) for UX and architecture implementation.
 
 ### 2.5 Prohibited Practices Relevant to Agentic UX
 

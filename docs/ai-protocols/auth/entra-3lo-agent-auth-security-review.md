@@ -31,13 +31,13 @@ This volume covers: Security gate checklist, penetration test plan, OAuth attack
 
 ## Table of Contents
 
-1. [Security Gate Checklist — Pre-Production Sign-Off](#26-security-gate-checklist)
-2. [Penetration Test Plan — Agent Identity & OAuth Flows](#27-penetration-test-plan)
-3. [Known OAuth Attack Vectors — 2025-2026 Threat Landscape](#28-known-oauth-attack-vectors)
-4. [Non-Human Identity (NHI) Governance at Scale](#29-non-human-identity-governance)
+1. [Security Gate Checklist — Pre-Production Sign-Off](#26-security-gate-checklist--pre-production-sign-off)
+2. [Penetration Test Plan — Agent Identity & OAuth Flows](#27-penetration-test-plan--agent-identity--oauth-flows)
+3. [Known OAuth Attack Vectors — 2025-2026 Threat Landscape](#28-known-oauth-attack-vectors--2025-2026-threat-landscape)
+4. [Non-Human Identity (NHI) Governance at Scale](#29-non-human-identity-nhi-governance-at-scale)
 5. [CISO Briefing](#30-ciso-briefing)
-6. [Board / Risk Committee — Key Points](#31-board-risk-committee)
-7. [Complete Series Index — Volumes 1–4](#32-complete-series-index)
+6. [Board / Risk Committee — Key Points](#31-board--risk-committee--key-points)
+7. [Complete Series Index — Volumes 1–4](#32-complete-series-index--volumes-14)
 
 ## 26. Security Gate Checklist — Pre-Production Sign-Off
 

@@ -33,15 +33,15 @@ tags: [auth, identity, oauth, entra, 3lo, obo, gateway, mcp]
 
 ## Table of Contents
 
-1. [Background & Problem Statement](#1-background-problem-statement)
-2. [Standards & Theoretical Foundation](#2-standards-theoretical-foundation)
-3. [Microsoft Entra Agent ID — Architecture](#3-microsoft-entra-agent-id-architecture)
-4. [AC Gateway — Three-Plane Architecture](#4-ac-gateway-three-plane-architecture)
+1. [Background & Problem Statement](#1-background--problem-statement)
+2. [Standards & Theoretical Foundation](#2-standards--theoretical-foundation)
+3. [Microsoft Entra Agent ID — Architecture](#3-microsoft-entra-agent-id--architecture)
+4. [AC Gateway — Three-Plane Architecture](#4-ac-gateway--three-plane-architecture)
 5. [Target Resource Integrations](#5-target-resource-integrations)
-6. [Industry: Who Has Productionised 3LO for AI Agents](#6-industry)
-7. [Security, Zero Trust & Threat Model](#7-security-zero-trust)
-8. [Dependencies, Blockers & Delivery Plan](#8-dependencies-blockers)
-9. [Open Questions & Industry Gaps](#9-open-questions)
+6. [Industry: Who Has Productionised 3LO for AI Agents](#6-industry-who-has-productionised-3lo-for-ai-agents)
+7. [Security, Zero Trust & Threat Model](#7-security-zero-trust--threat-model)
+8. [Dependencies, Blockers & Delivery Plan](#8-dependencies-blockers--delivery-plan)
+9. [Open Questions & Industry Gaps](#9-open-questions--industry-gaps)
 10. [Executive Summary](#executive-summary)
 
 ## 1. Background & Problem Statement

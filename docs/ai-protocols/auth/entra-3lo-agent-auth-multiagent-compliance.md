@@ -31,13 +31,13 @@ This volume covers: Multi-agent auth chains, MCP+A2A protocol stack, DORA/NIS2/E
 
 ## Table of Contents
 
-1. [Multi-Agent Delegation Chains — The Hardest Problem](#19-multi-agent-delegation-chains)
-2. [The 2026 Agent Protocol Stack: MCP + A2A + Streamable HTTP](#20-the-2026-agent-protocol-stack)
-3. [Regulatory Compliance: DORA, NIS2 & EU AI Act](#21-regulatory-compliance)
-4. [Agent Identity Governance Model — Three Lines of Defence](#22-agent-identity-governance-model)
-5. [Forward-Looking: The 2027 Protocol Horizon](#23-forward-looking)
-6. [Agent Auth Maturity Model](#24-agent-auth-maturity-model)
-7. [Master Delivery Roadmap — All Volumes Synthesised](#25-master-delivery-roadmap)
+1. [Multi-Agent Delegation Chains — The Hardest Problem](#19-multi-agent-delegation-chains--the-hardest-problem)
+2. [The 2026 Agent Protocol Stack: MCP + A2A + Streamable HTTP](#20-the-2026-agent-protocol-stack-mcp--a2a--streamable-http)
+3. [Regulatory Compliance: DORA, NIS2 & EU AI Act](#21-regulatory-compliance-dora-nis2--eu-ai-act)
+4. [Agent Identity Governance Model — Three Lines of Defence](#22-agent-identity-governance-model--three-lines-of-defence)
+5. [Forward-Looking: The 2027 Protocol Horizon](#23-forward-looking-the-2027-protocol-horizon)
+6. [Agent Auth Maturity Model](#24-agent-auth-maturity-model--where-are-you-now)
+7. [Master Delivery Roadmap — All Volumes Synthesised](#25-master-delivery-roadmap--all-volumes-synthesised)
 
 ## 19. Multi-Agent Delegation Chains — The Hardest Problem
 

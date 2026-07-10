@@ -24,17 +24,17 @@ tags: ["ai-usecases"]
 1. [EU Regulatory Landscape Map](#1-eu-regulatory-landscape-map)
 2. [High-Risk AI Classification — Banking Taxonomy](#2-high-risk-ai-classification)
 3. [Responsible AI (RAI) Framework](#3-responsible-ai-rai-framework)
-4. [PII Detection & GDPR Compliance Layer](#4-pii-detection-gdpr-compliance-layer)
+4. [PII Detection & GDPR Compliance Layer](#4-pii-detection--gdpr-compliance-layer)
 5. [DORA Compliance Integration](#5-dora-compliance-integration)
-6. [Fairness & Bias Evaluation System](#6-fairness-bias-evaluation-system)
+6. [Fairness & Bias Evaluation System](#6-fairness--bias-evaluation-system)
 7. [Explainability (XAI) Requirements](#7-explainability-xai-requirements)
 8. [Compliance-Specific Metrics Catalogue](#8-compliance-specific-metrics-catalogue)
 9. [Human Oversight Architecture](#9-human-oversight-architecture)
-10. [Audit Trail & Documentation System](#10-audit-trail-documentation-system)
-11. [Data Residency & EU Sovereignty](#11-data-residency-eu-sovereignty)
+10. [Audit Trail & Documentation System](#10-audit-trail--documentation-system)
+11. [Data Residency & EU Sovereignty](#11-data-residency--eu-sovereignty)
 12. [Automated Compliance Pipeline](#12-automated-compliance-pipeline)
 13. [Regulatory Reporting Artefacts](#13-regulatory-reporting-artefacts)
-14. [Penalty & Risk Exposure Map](#14-penalty-risk-exposure-map)
+14. [Penalty & Risk Exposure Map](#14-penalty--risk-exposure-map)
 
 ---
 

@@ -19,20 +19,20 @@ tags: ["interview-prep"]
 ## Table of Contents
 
 1. [The Mindset Foundation](#1-the-mindset-foundation)
-2. [Self-Awareness & Emotional Intelligence](#2-self-awareness-emotional-intelligence)
-3. [Communication & Storytelling](#3-communication-storytelling)
+2. [Self-Awareness & Emotional Intelligence](#2-self-awareness--emotional-intelligence)
+3. [Communication & Storytelling](#3-communication--storytelling)
 4. [Influence Without Authority](#4-influence-without-authority)
-5. [Navigating Ambiguity & Complexity](#5-navigating-ambiguity-complexity)
+5. [Navigating Ambiguity & Complexity](#5-navigating-ambiguity--complexity)
 6. [Facilitating High-Stakes Decisions](#6-facilitating-high-stakes-decisions)
-7. [Ethical Courage & Moral Reasoning](#7-ethical-courage-moral-reasoning)
+7. [Ethical Courage & Moral Reasoning](#7-ethical-courage--moral-reasoning)
 8. [Executive Presence](#8-executive-presence)
-9. [Building & Sustaining Trust](#9-building-sustaining-trust)
+9. [Building & Sustaining Trust](#9-building--sustaining-trust)
 10. [Leading Change Through Resistance](#10-leading-change-through-resistance)
 11. [Continuous Learning Posture](#11-continuous-learning-posture)
-12. [Coaching & Growing Others](#12-coaching-growing-others)
+12. [Coaching & Growing Others](#12-coaching--growing-others)
 13. [Managing Difficult Stakeholders](#13-managing-difficult-stakeholders)
 14. [The EA Behavioral Competency Map](#14-ea-behavioral-competency-map)
-15. [Self-Assessment & Development Plan](#15-self-assessment-development-plan)
+15. [Self-Assessment & Development Plan](#15-self-assessment--development-plan)
 
 ---
 

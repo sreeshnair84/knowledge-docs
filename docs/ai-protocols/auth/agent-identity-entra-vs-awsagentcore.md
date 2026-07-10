@@ -32,7 +32,7 @@ tags: [auth, identity, oauth, entra, aws, agent-identity, multi-cloud]
 6. [Feature Comparison](#5-feature-comparison)
 7. [Decision Framework](#6-decision-framework)
 8. [Security Considerations](#7-security-considerations)
-9. [Conclusion & Recommendations](#8-conclusion-recommendations)
+9. [Conclusion & Recommendations](#8-conclusion--recommendations)
 
 ## Executive Summary
 
