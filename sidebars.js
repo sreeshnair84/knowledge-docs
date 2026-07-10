@@ -288,7 +288,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'ARB',
-          items: ['enterprise-architecture/arb/index'],
+          items: ['enterprise-architecture/architectural-review-board/index'],
         },
         {
           type: 'category',
