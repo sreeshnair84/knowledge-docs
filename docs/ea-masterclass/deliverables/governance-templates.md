@@ -7,6 +7,8 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "deliverables"]
+doc_type: guide
+covers_version: \"as of 2026-07-10\"
 ---
 
 # Deliverable Templates 7–10: Governance & Decision Frameworks

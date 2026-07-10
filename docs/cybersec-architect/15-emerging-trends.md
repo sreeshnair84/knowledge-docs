@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["cybersec-architect"]
+doc_type: multi-part-series
+series_name: Cybersecurity Architect
+series_part: 15
+series_total: 15
+series_index: index.md
 ---
 
 # Part 15 — Emerging Trends 2026–2030

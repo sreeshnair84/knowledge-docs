@@ -7,6 +7,9 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "transcripts"]
+doc_type: workshop-transcript
+session_type: 
+related_pages: []
 ---
 
 # Transcript: Retail Chain — CFO Investment Proposal Negotiation

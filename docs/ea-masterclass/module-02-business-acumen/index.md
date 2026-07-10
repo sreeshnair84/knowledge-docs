@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-02-business-acumen"]
+doc_type: multi-part-series
+series_name: EA Masterclass
+series_part: 2
+series_total: 15
+series_index: ../index.md
 ---
 
 # Module 2 — Business Acumen for Enterprise Architects

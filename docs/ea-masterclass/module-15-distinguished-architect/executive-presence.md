@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-15-distinguished-architect"]
+doc_type: multi-part-series
+series_name: EA Masterclass
+series_part: 15
+series_total: 15
+series_index: ../index.md
 ---
 
 # Executive Presence, Influence Without Authority & Stakeholder Politics

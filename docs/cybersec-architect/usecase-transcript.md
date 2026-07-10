@@ -7,6 +7,9 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["cybersec-architect"]
+doc_type: workshop-transcript
+session_type: 
+related_pages: []
 ---
 
 # Use Case Transcript — Agentic AI Security Advisory Session

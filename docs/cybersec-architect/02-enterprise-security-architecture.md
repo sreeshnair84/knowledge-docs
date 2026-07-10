@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["cybersec-architect"]
+doc_type: multi-part-series
+series_name: Cybersecurity Architect
+series_part: 2
+series_total: 15
+series_index: index.md
 ---
 
 # Part 2 — Enterprise Security Architecture

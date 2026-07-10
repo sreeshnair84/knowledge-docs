@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-01-ea-foundations"]
+doc_type: multi-part-series
+series_name: EA Masterclass
+series_part: 1
+series_total: 15
+series_index: ../index.md
 ---
 
 # Module 1 — Enterprise Architecture Foundations

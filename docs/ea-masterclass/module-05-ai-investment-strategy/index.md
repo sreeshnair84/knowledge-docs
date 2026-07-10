@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-05-ai-investment-strategy"]
+doc_type: multi-part-series
+series_name: EA Masterclass
+series_part: 5
+series_total: 15
+series_index: ../index.md
 ---
 
 # Module 5 — AI Investment Strategy

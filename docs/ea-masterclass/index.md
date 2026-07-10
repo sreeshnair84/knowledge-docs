@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass"]
+doc_type: multi-part-series
+series_name: EA Masterclass
+series_part: 
+series_total: 15
+series_index: 
 ---
 
 # EA Masterclass: From Technical Architect to Enterprise AI Investment Architect

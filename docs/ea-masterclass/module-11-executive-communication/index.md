@@ -7,6 +7,11 @@ supersedes: ""
 source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "module-11-executive-communication"]
+doc_type: multi-part-series
+series_name: EA Masterclass
+series_part: 11
+series_total: 15
+series_index: ../index.md
 ---
 
 # Module 11: Executive Communication
