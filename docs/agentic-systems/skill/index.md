@@ -15,7 +15,7 @@ covers_version: "as of 2026-07-10"
 
 Playbooks and research for designing, composing, and deploying AI agent skills — covering the SKILL.md open standard, skill architecture, A2A (Agent-to-Agent) protocol, skill discovery, and reusable tool libraries.
 
-Start with the **[Executive Summary & Reference Architecture](00-executive-summary-and-reference-architecture)** for the full landscape overview, then dive into whichever sub-series fits your role.
+Start with the **[Executive Summary & Reference Architecture](./00-executive-summary-and-reference-architecture.md)** for the full landscape overview, then dive into whichever sub-series fits your role.
 
 ---
 
@@ -44,17 +44,17 @@ Conflating these two — stuffing everything into the always-loaded file, or try
 
 ## Research Series in this section
 
-### [Executive Summary & Reference Architecture](00-executive-summary-and-reference-architecture)
+### [Executive Summary & Reference Architecture](./00-executive-summary-and-reference-architecture.md)
 
 The shared entry point for both research series below. Covers the reference architecture diagram, core definitions, the one-page responsibility matrix (Skill vs. Tool vs. MCP vs. Extension vs. Language Server vs. Dev Container), and the six key findings from the research package.
 
-### [Enterprise Agent Skills Research](enterprise/index)
+### [Enterprise Agent Skills Research](./enterprise/index.md)
 
 An 11-part deep-dive into how enterprise agent platforms (Anthropic, AWS AgentCore, Azure AI Foundry, Google ADK, Salesforce Agentforce) implement the agent skill system at the platform layer — including registry architecture, governance lifecycle, security threat model, observability, and architecture patterns with vendor case studies.
 
 **Start here if you are:** building or evaluating a central skill registry, designing multi-agent systems with cross-team skill reuse, or responsible for skill governance and security at the platform level.
 
-### [Coding Assistant Skills Research](coding/index)
+### [Coding Assistant Skills Research](./coding/index.md)
 
 A 12-part vendor-neutral deep-dive into how AI coding assistants (Claude Code, GitHub Copilot, Cursor, OpenAI Codex CLI, Antigravity CLI, Devin, Amp, JetBrains Junie) implement the SKILL.md standard at the developer-facing layer — covering skill discovery, VS Code and Dev Containers integration, repository context engineering, MCP memory, multi-agent patterns, and a full vendor comparison table.
 
@@ -145,10 +145,3 @@ Three categories of risk are well-documented as of mid-2026:
 **Supply-chain trust for shared skills** — org-provided skills distributed via a central registry carry the same supply-chain risk as any internally-distributed package. Versioning, ownership metadata, and an approval gate before promotion to the registry are the standard mitigations; see the Enterprise Platform Research series (Part 9 — Security Architecture) for the full threat model.
 
 All major agents (Claude Code, Codex CLI, Cursor, Antigravity) now ship OS-level sandboxing (Seatbelt on macOS, Landlock/bubblewrap on Linux) or container/microVM isolation as a default or strongly-recommended default. Anthropic reports an 84% reduction in permission prompts under sandboxing — it is both a security control and a usability improvement.
-
----
-
-## Additional Resources
-
-- [A2A Deep Research](/knowledge-docs/agentic-systems/skill/a2a_deep_research.html) — Agent-to-Agent protocol deep dive (HTML)
-- [Agent Skills Complete Playbook 2026](/knowledge-docs/agentic-systems/skill/Agent_Skills_Complete_Playbook_2026.pdf) — source PDF

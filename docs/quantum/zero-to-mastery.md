@@ -908,8 +908,8 @@ Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [
 
 | Certification | Provider | Level | Why It Matters |
 |--------------|----------|-------|---------------|
-| [IBM Certified Associate Developer — Quantum](/knowledge-docs/quantum/IBM_Associate_Quantum_CertGuide.pdf) | IBM | Entry | Best entry-level cert; validates Qiskit proficiency |
-| [IBM Certified Developer — Quantum](/knowledge-docs/quantum/IBM_Developer_Quantum_CertGuide.pdf) | IBM | Professional | Algorithm implementation, Runtime v2, VQE, QAOA, QML |
+| IBM Certified Associate Developer — Quantum *(PDF archived)* | IBM | Entry | Best entry-level cert; validates Qiskit proficiency |
+| IBM Certified Developer — Quantum *(PDF archived)* | IBM | Professional | Algorithm implementation, Runtime v2, VQE, QAOA, QML |
 | MIT 8.370x Quantum Information Science | edX / MIT | Academic | Rigorous physics-based foundations |
 | QOSF Mentorship Programme | Quantum Open Source | Structured | 3-month project with researcher mentor |
 

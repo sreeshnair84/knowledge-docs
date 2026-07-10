@@ -62,31 +62,7 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 ## Cheatsheets
 
-- [Cheatsheet 1 — Claude Code](/knowledge-docs/coding-tools/claude/Cheatsheet_1_Claude_Code.html)
-
-- [Cheatsheet 2 — Agent SDK](/knowledge-docs/coding-tools/claude/Cheatsheet_2_Agent_SDK.html)
-
-- [Cheatsheet 3 — MCP](/knowledge-docs/coding-tools/claude/Cheatsheet_3_MCP.html)
-
-- [Cheatsheet 4 — AI Fluency](/knowledge-docs/coding-tools/claude/Cheatsheet_4_AI_Fluency.html)
-
-- [Cheatsheet 5 — Prompt Engineering](/knowledge-docs/coding-tools/claude/Cheatsheet_5_Prompt_Engineering.html)
-
-- [Cheatsheet 6 — Claude CLI](/knowledge-docs/coding-tools/claude/Cheatsheet_6_Claude_CLI.html)
-
-- [Cheatsheet 7 — Claude Ecosystem](/knowledge-docs/coding-tools/claude/Cheatsheet_7_Claude_Ecosystem.html)
-
-- [Cheatsheet 9 — Agents &amp; Parallelism](/knowledge-docs/coding-tools/claude/Cheatsheet_9_Agents_Parallelism.html)
-
-- [Cheatsheet 10 — Multi-Agent Production](/knowledge-docs/coding-tools/claude/Cheatsheet_10_MultiAgent_Production.html)
-
-- [Cheatsheet 11 — MCP Pipeline Errors](/knowledge-docs/coding-tools/claude/Cheatsheet_11_MCP_Pipeline_Errors.html)
-
-- [Questionnaire — Claude Certification](/knowledge-docs/coding-tools/claude/Questionnaire_Claude_Certification.html)
-
-- [Questionnaire Vol 2 — Claude Certification](/knowledge-docs/coding-tools/claude/Questionnaire_Vol2_Claude_Certification.html)
-
-- [Claude Routines Guide](/knowledge-docs/coding-tools/claude/claude_routines_guide.html)
+*HTML cheatsheets are archived — content has been integrated into the Knowledge Guides above.*
 
 ---
 

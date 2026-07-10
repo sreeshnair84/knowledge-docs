@@ -37,4 +37,4 @@ Guides and playbooks for enterprise architecture processes — covering lifecycl
 
 ## Presentations (PPTX)
 
-- EA Agentic AI *(PPTX — download from [archive](/knowledge-docs/EA_AgenticAI.pptx))*
+- EA Agentic AI *(PPTX — archived)*

@@ -45,6 +45,24 @@ these are automatable with the current script — they need a human/model read.
       near their reference point — the script doesn't associate these
       automatically.
 
+## Sidebar and navigation
+- [ ] Page is added to the correct category in `sidebars.js` — not an orphan.
+- [ ] If the page is part of a multi-part series, ALL parts of the series
+      are listed under the same sidebar category, in order.
+- [ ] Any index or overview page for the section links to this page with a
+      relative `./filename.md` path (not an absolute `/knowledge-docs/…` URL
+      and not a bare filename without `.md` extension).
+
+## Section demarcation and UX
+- [ ] Every major section is headed with `##` (not buried in prose).
+- [ ] Page-break joins haven't merged a section heading into adjacent text.
+- [ ] Tables appear immediately after the text that introduces them.
+- [ ] Diagrams appear immediately after the section that references them.
+- [ ] Cover-page artifacts (large title followed by "Page 1", date stamps,
+      confidentiality banners repeated in the body) have been removed.
+- [ ] The page has been loaded in `npm run start` and visually reviewed in
+      the browser — not just checked as raw Markdown text.
+
 ## Frontmatter and typing
 - [ ] `date_created` and `last_reviewed` filled in (left blank by the
       script).

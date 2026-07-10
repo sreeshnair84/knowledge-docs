@@ -34,13 +34,6 @@ Enterprise setup, adoption playbooks, and hands-on guides for GitHub Copilot and
 
 ---
 
-## HTML Files
-
-- [Microsoft APM Guide](/knowledge-docs/coding-tools/github-copilot/microsoft-apm-guide.html)
-
-- [CopilotKit — MCP: Apps vs Tools](/knowledge-docs/coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools.html)
-
-- [CopilotKit — Server Map Call Flow](/knowledge-docs/coding-tools/github-copilot/copilotkit-server-map-call-flow.html)
 
 ---
 

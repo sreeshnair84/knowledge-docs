@@ -25,7 +25,6 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 ## PDFs
 
-- [EU Banking AI Agent Evaluation Framework (PDF)](/knowledge-docs/ai-usecases/EU%20Banking%20AI%20Agent%20Evaluation%20Framework.pdf)
 
 - [EU Bank AI Copilot — Complete Research](/knowledge-docs/ai-usecases/eu-bank-ai-copilot-complete)
 
@@ -47,12 +46,6 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 ---
 
-## HTML Files
-
-- [EU Bank AI Copilot Architecture](/knowledge-docs/ai-usecases/eu-bank-ai-copilot-architecture.html)
-
-- [EU Bank Sequence Diagrams](/knowledge-docs/ai-usecases/eu-bank-sequence-diagrams.html)
-
 ---
 
 ## DOCX Documents
@@ -72,25 +65,25 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 ## Industry Sector Playbooks
 
-- [01 — Aviation AI Use Cases](/knowledge-docs/ai-usecases/01_aviation)
+- [01 — Aviation AI Use Cases](./01_aviation.md)
 
-- [02 — Banking AI Use Cases](/knowledge-docs/ai-usecases/02_banking)
+- [02 — Banking AI Use Cases](./02_banking.md)
 
-- [03 — Healthcare AI Use Cases](/knowledge-docs/ai-usecases/03_healthcare)
+- [03 — Healthcare AI Use Cases](./03_healthcare.md)
 
-- [04 — Manufacturing AI Use Cases](/knowledge-docs/ai-usecases/04_manufacturing)
+- [04 — Manufacturing AI Use Cases](./04_manufacturing.md)
 
-- [05 — Telecom AI Use Cases](/knowledge-docs/ai-usecases/05_telecom)
+- [05 — Telecom AI Use Cases](./05_telecom.md)
 
-- [06 — Government AI Use Cases](/knowledge-docs/ai-usecases/06_government)
+- [06 — Government AI Use Cases](./06_government.md)
 
-- [07 — Pharma AI Use Cases](/knowledge-docs/ai-usecases/07_pharma)
+- [07 — Pharma AI Use Cases](./07_pharma.md)
 
-- [08 — Energy AI Use Cases](/knowledge-docs/ai-usecases/08_energy)
+- [08 — Energy AI Use Cases](./08_energy.md)
 
-- [09 — Logistics AI Use Cases](/knowledge-docs/ai-usecases/09_logistics)
+- [09 — Logistics AI Use Cases](./09_logistics.md)
 
-- [10 — Media AI Use Cases](/knowledge-docs/ai-usecases/10_media)
+- [10 — Media AI Use Cases](./10_media.md)
 
 ---
 

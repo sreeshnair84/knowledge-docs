@@ -78,19 +78,56 @@ before treating output as final. In short:
 ## After conversion
 
 1. Fill in `date_created` / `last_reviewed` in the frontmatter.
-2. Run the QA checklist above.
-3. If the `knowledge-page-authoring` skill is installed, identify the page's
-   document type and run its linter:
+
+2. **Register in sidebars.js.** Every converted page MUST be added to the
+   correct category in `sidebars.js` before it counts as done. A page not in
+   sidebars.js is an orphan — it builds but is invisible in navigation and
+   cannot be linked to reliably (see the broken-link pattern where Docusaurus
+   strips numeric prefixes from unregistered docs). Look at the surrounding
+   category entries to determine the right placement.
+
+3. **Verify section demarcation.** The font-size heuristic for headings is
+   imperfect. After conversion, manually confirm:
+   - Every major section (introduction, methodology, key findings, appendices)
+     is demarcated with an `##` heading, not buried in a wall of prose.
+   - Subheadings use `###` and `####` in consistent, nested order.
+   - Page-break joins haven't merged section headings into the paragraph that
+     follows them — look for a lone capitalized sentence that should be a
+     heading but wasn't detected as one.
+   - Tables and diagrams appear IMMEDIATELY after the section text that
+     introduces them, not displaced to the bottom of the document.
+
+4. **Verify all tables are present.** Compare the table count in the original
+   PDF against the converted output. Common failure mode: pdfplumber misses
+   borderless tables (tables drawn with whitespace and alignment rather than
+   borders). For any missing table, manually reconstruct it from the PDF
+   text as a Markdown `| --- |` table.
+
+5. **Verify all diagrams are present.** Open each extracted PNG. Common
+   failure modes: blank PNG (image was vector, not raster — screenshot it
+   manually), partially cropped PNG (bounding box clipped), missing diagram
+   (pdfplumber skipped an image below the 20×20pt threshold that was
+   actually important). For vector diagrams that pdfplumber cannot extract,
+   screenshot the PDF page at high resolution and save as PNG.
+
+6. **UX polish before publishing.** A raw conversion is a draft, not a
+   finished page. Before treating it as done:
+   - Replace `# Document Title\n\nPage 1` cover artifacts with just the title.
+   - Convert dense wall-of-text introductions into a short lead paragraph
+     (2–3 sentences) followed by a bullet list of what the document covers.
+   - Add a `## Table of Contents` with real anchor links if the document is
+     longer than 10 sections (replace extracted TOC text, which is always
+     garbled).
+   - Check that the page renders correctly in `npm run start` — load it in
+     the browser and scroll through it.
+
+7. Run the QA checklist (`references/conversion-checklist.md`).
+
+8. Run the `knowledge-page-authoring` linter:
    ```bash
    python3 <path-to-knowledge-page-authoring>/scripts/lint_page.py <output.md> --type <type>
    ```
-   The converted page will need the type-specific frontmatter fields and
-   section structure added — this script only produces the generic
-   universal frontmatter and a font-size-based heading structure, not a
-   type-conformant page.
-4. If this conversion is retiring a source PDF as part of a cleanup (per the
-   `knowledge-repo-cleanup` skill), don't delete the PDF until this output
-   has been reviewed and committed — archive it, per that skill's
-   guardrails, rather than deleting outright.
-5. Delete the intermediate PDF's `<iframe>` wrapper page, if one existed, and
-   redirect any links that pointed to it to the new Markdown page.
+
+9. If this conversion is retiring a source PDF, archive the PDF (don't
+   delete it) and remove or redirect any `<iframe>` wrapper page that
+   pointed to it.

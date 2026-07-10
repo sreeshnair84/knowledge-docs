@@ -69,16 +69,16 @@ Most large enterprises were at Level 2–3 in 2025. The shift to Level 4–5 is 
 
 ## Volume Series
 
-- [00 — Executive Summary &amp; AI Vision](/knowledge-docs/enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision)
+- [00 — Executive Summary &amp; AI Vision](./00_Executive_Summary_and_AI_Vision.md)
 
-- [01 — Current State Assessment &amp; AI Maturity](/knowledge-docs/enterprise-architecture/transformation/01_Current_State_Assessment_and_AI_Maturity)
+- [01 — Current State Assessment &amp; AI Maturity](./01_Current_State_Assessment_and_AI_Maturity.md)
 
-- [02 — AI Opportunity Portfolio](/knowledge-docs/enterprise-architecture/transformation/02_AI_Opportunity_Portfolio)
+- [02 — AI Opportunity Portfolio](./02_AI_Opportunity_Portfolio.md)
 
-- [03 — Enterprise AI Platform &amp; Data Architecture](/knowledge-docs/enterprise-architecture/transformation/03_Enterprise_AI_Platform_and_Data_Architecture)
+- [03 — Enterprise AI Platform &amp; Data Architecture](./03_Enterprise_AI_Platform_and_Data_Architecture.md)
 
-- [04 — Governance, Responsible AI &amp; Security](/knowledge-docs/enterprise-architecture/transformation/04_Governance_Responsible_AI_and_Security)
+- [04 — Governance, Responsible AI &amp; Security](./04_Governance_Responsible_AI_and_Security.md)
 
-- [05 — Target Operating Model &amp; Change](/knowledge-docs/enterprise-architecture/transformation/05_Target_Operating_Model_and_Change)
+- [05 — Target Operating Model &amp; Change](./05_Target_Operating_Model_and_Change.md)
 
-- [06 — Roadmap, Financials, KPIs &amp; Risk](/knowledge-docs/enterprise-architecture/transformation/06_Roadmap_Financials_KPIs_and_Risk)
+- [06 — Roadmap, Financials, KPIs &amp; Risk](./06_Roadmap_Financials_KPIs_and_Risk.md)

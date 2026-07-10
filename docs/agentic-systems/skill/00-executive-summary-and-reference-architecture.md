@@ -140,34 +140,34 @@ This space changed materially even within H1 2026. Load-bearing facts for everyt
 
 | File | Covers |
 |---|---|
-| [Part 1 — Foundations: What Is an Agent Skill?](enterprise/01-foundations-what-is-an-agent-skill) | Skill vs. Tool/Workflow/Agent/Prompt, progressive disclosure |
-| [Part 2 — Skill Anatomy & Metadata Schema](enterprise/02-skill-anatomy-and-metadata-schema) | Internal structure, metadata schema, Deliverable 4 |
-| [Part 3 — Execution Lifecycle & Tracing](enterprise/03-execution-lifecycle-and-tracing) | End-to-end flow, Deliverable 2 |
-| [Part 4 — Skills, Tools, MCP, A2A Relationship](enterprise/04-skills-tools-mcp-a2a-relationship) | Decision matrix, Deliverable 3 |
-| [Part 5 — Tool Definition Best Practices](enterprise/05-tool-definition-best-practices) | Best-practice template, Deliverable 5 |
-| [Part 6 — Registry, Discovery & Deduplication](enterprise/06-registry-discovery-and-deduplication) | Registry architecture, Deliverable 9 |
-| [Part 7 — Composition & Instructions Engineering](enterprise/07-composition-and-instructions-engineering) | Skill composition, instructions engineering |
-| [Part 8 — Observability & Evaluation](enterprise/08-observability-and-evaluation) | Logging, tracing, eval, Deliverable 7 |
-| [Part 9 — Security Architecture](enterprise/09-security-architecture) | Security, Deliverable 8 |
-| [Part 10 — Governance & Lifecycle](enterprise/10-governance-and-lifecycle) | Governance model, Deliverable 6 |
-| [Part 11 — Architecture Patterns, Anti-Patterns & Case Studies](enterprise/11-architecture-patterns-antipatterns-and-case-studies) | Patterns, anti-patterns, vendor cases, Deliverable 10 |
+| [Part 1 — Foundations: What Is an Agent Skill?](./enterprise/01-foundations-what-is-an-agent-skill.md) | Skill vs. Tool/Workflow/Agent/Prompt, progressive disclosure |
+| [Part 2 — Skill Anatomy & Metadata Schema](./enterprise/02-skill-anatomy-and-metadata-schema.md) | Internal structure, metadata schema, Deliverable 4 |
+| [Part 3 — Execution Lifecycle & Tracing](./enterprise/03-execution-lifecycle-and-tracing.md) | End-to-end flow, Deliverable 2 |
+| [Part 4 — Skills, Tools, MCP, A2A Relationship](./enterprise/04-skills-tools-mcp-a2a-relationship.md) | Decision matrix, Deliverable 3 |
+| [Part 5 — Tool Definition Best Practices](./enterprise/05-tool-definition-best-practices.md) | Best-practice template, Deliverable 5 |
+| [Part 6 — Registry, Discovery & Deduplication](./enterprise/06-registry-discovery-and-deduplication.md) | Registry architecture, Deliverable 9 |
+| [Part 7 — Composition & Instructions Engineering](./enterprise/07-composition-and-instructions-engineering.md) | Skill composition, instructions engineering |
+| [Part 8 — Observability & Evaluation](./enterprise/08-observability-and-evaluation.md) | Logging, tracing, eval, Deliverable 7 |
+| [Part 9 — Security Architecture](./enterprise/09-security-architecture.md) | Security, Deliverable 8 |
+| [Part 10 — Governance & Lifecycle](./enterprise/10-governance-and-lifecycle.md) | Governance model, Deliverable 6 |
+| [Part 11 — Architecture Patterns, Anti-Patterns & Case Studies](./enterprise/11-architecture-patterns-antipatterns-and-case-studies.md) | Patterns, anti-patterns, vendor cases, Deliverable 10 |
 
 ### Coding Assistant Research (12 parts)
 
 | File | Covers |
 |---|---|
-| [Part 1 — Foundations: What Is a Coding Skill?](coding/01-foundations-what-is-a-coding-skill) | Skill vs. Agent/Slash Command/Prompt/Tool/MCP Tool/IDE Action |
-| [Part 2 — Skill Anatomy & Metadata Schema](coding/02-skill-anatomy-and-metadata-schema) | Internal structure, metadata schema, Deliverable 4 |
-| [Part 3 — Discovery & Execution Lifecycle](coding/03-discovery-and-execution-lifecycle) | Discovery, execution flow, sequence diagrams, Deliverable 2 |
-| [Part 4 — Skills vs. MCP & Responsibility Stack](coding/04-skills-tools-mcp-relationship) | Responsibility matrix, Deliverable 3 |
-| [Part 5 — Tool Definitions & Instructions Engineering](coding/05-tool-definitions-and-instructions-engineering) | Tool definitions, instruction-writing best practice, Deliverable 5 |
-| [Part 6 — Repository Context Engineering](coding/06-repository-context-engineering) | README/ADR/CODEOWNERS/semantic-index retrieval, Deliverable 6 |
-| [Part 7 — VS Code & Dev Containers Integration](coding/07-vscode-devcontainers-integration) | VS Code APIs, Dev Containers, reproducibility, Deliverable 7 |
-| [Part 8 — MCP Integration & Memory](coding/08-mcp-integration-and-memory) | MCP trust/versioning, memory architecture |
-| [Part 9 — Multi-Agent & Observability](coding/09-multi-agent-and-observability) | Multi-agent orchestration, tracing, Deliverable 9 |
-| [Part 10 — Governance & Security](coding/10-governance-and-security) | Governance model, security, prompt injection, sandboxing, CVEs |
-| [Part 11 — Evaluation, Reusability & Deduplication](coding/11-evaluation-reusability-deduplication) | Evaluation, reusability, anti-duplication |
-| [Part 12 — Enterprise Workflows & Comparative Analysis](coding/12-enterprise-workflows-comparative-analysis-and-patterns) | Workflows, vendor comparison, patterns, Deliverables 1 & 10 |
+| [Part 1 — Foundations: What Is a Coding Skill?](./coding/01-foundations-what-is-a-coding-skill.md) | Skill vs. Agent/Slash Command/Prompt/Tool/MCP Tool/IDE Action |
+| [Part 2 — Skill Anatomy & Metadata Schema](./coding/02-skill-anatomy-and-metadata-schema.md) | Internal structure, metadata schema, Deliverable 4 |
+| [Part 3 — Discovery & Execution Lifecycle](./coding/03-discovery-and-execution-lifecycle.md) | Discovery, execution flow, sequence diagrams, Deliverable 2 |
+| [Part 4 — Skills vs. MCP & Responsibility Stack](./coding/04-skills-tools-mcp-relationship.md) | Responsibility matrix, Deliverable 3 |
+| [Part 5 — Tool Definitions & Instructions Engineering](./coding/05-tool-definitions-and-instructions-engineering.md) | Tool definitions, instruction-writing best practice, Deliverable 5 |
+| [Part 6 — Repository Context Engineering](./coding/06-repository-context-engineering.md) | README/ADR/CODEOWNERS/semantic-index retrieval, Deliverable 6 |
+| [Part 7 — VS Code & Dev Containers Integration](./coding/07-vscode-devcontainers-integration.md) | VS Code APIs, Dev Containers, reproducibility, Deliverable 7 |
+| [Part 8 — MCP Integration & Memory](./coding/08-mcp-integration-and-memory.md) | MCP trust/versioning, memory architecture |
+| [Part 9 — Multi-Agent & Observability](./coding/09-multi-agent-and-observability.md) | Multi-agent orchestration, tracing, Deliverable 9 |
+| [Part 10 — Governance & Security](./coding/10-governance-and-security.md) | Governance model, security, prompt injection, sandboxing, CVEs |
+| [Part 11 — Evaluation, Reusability & Deduplication](./coding/11-evaluation-reusability-deduplication.md) | Evaluation, reusability, anti-duplication |
+| [Part 12 — Enterprise Workflows & Comparative Analysis](./coding/12-enterprise-workflows-comparative-analysis-and-patterns.md) | Workflows, vendor comparison, patterns, Deliverables 1 & 10 |
 
 ---
 

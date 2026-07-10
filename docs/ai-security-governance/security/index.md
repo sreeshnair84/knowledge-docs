@@ -19,18 +19,18 @@ Enterprise agentic AI security — identity, MCP/A2A security, AI SOC, observabi
 
 ## PDFs
 
-- [01 — Foundations & Reference Architecture](/knowledge-docs/ai-security-governance/security/01-Foundations-Reference-Architecture)
+- [01 — Foundations & Reference Architecture](./01-Foundations-Reference-Architecture.md)
 
-- [02 — Identity, MCP &amp; A2A Security Blueprint](/knowledge-docs/ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint)
+- [02 — Identity, MCP &amp; A2A Security Blueprint](./02-Identity-MCP-A2A-Security-Blueprint.md)
 
-- [04 — AI SOC, Observability, Red Team &amp; Memory](/knowledge-docs/ai-security-governance/security/04-AI-SOC-Observability-RedTeam-Memory)
+- [04 — AI SOC, Observability, Red Team &amp; Memory](./04-AI-SOC-Observability-RedTeam-Memory.md)
 
-- [05 — Economic Security, FinOps, Commerce &amp; PQC](/knowledge-docs/ai-security-governance/security/05-Economic-Security-FinOps-Commerce-PQC)
+- [05 — Economic Security, FinOps, Commerce &amp; PQC](./05-Economic-Security-FinOps-Commerce-PQC.md)
 
-- [06 — Operating Model Maturity Roadmap](/knowledge-docs/ai-security-governance/security/06-Operating-Model-Maturity-Roadmap)
+- [06 — Operating Model Maturity Roadmap](./06-Operating-Model-Maturity-Roadmap.md)
 
-- [07 — Zero to Mastery Curriculum](/knowledge-docs/ai-security-governance/security/07-Zero-to-Mastery-Curriculum)
+- [07 — Zero to Mastery Curriculum](./07-Zero-to-Mastery-Curriculum.md)
 
-- [08 — Architect's Field Guide](/knowledge-docs/ai-security-governance/security/08-Architects-Field-Guide)
+- [08 — Architect's Field Guide](./08-Architects-Field-Guide.md)
 
 - [Part 4 — Runtime Security &amp; Governance](/knowledge-docs/ai-security-governance/security/Part4_Runtime_Security_Governance)

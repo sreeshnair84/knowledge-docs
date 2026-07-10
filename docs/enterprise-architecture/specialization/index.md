@@ -47,11 +47,11 @@ Specialist guides for enterprise architects working in data, AI transformation, 
 
 ## Presentations (PPTX)
 
-- Agentic AI — C-Suite *(PPTX — download from [archive](/knowledge-docs/AgenticAI_Csuite.pptx))*
+- Agentic AI — C-Suite *(PPTX — archived)*
 
-- BizSales Agentic AI *(PPTX — download from [archive](/knowledge-docs/BizSales_AgenticAI.pptx))*
+- BizSales Agentic AI *(PPTX — archived)*
 
-- SA Dev Agentic AI *(PPTX — download from [archive](/knowledge-docs/SA_Dev_AgenticAI.pptx))*
+- SA Dev Agentic AI *(PPTX — archived)*
 
 ---
 

@@ -84,10 +84,3 @@ Each tool is declared with a typed interface (JSON Schema). The agent never exec
 
 - [Agentic AI Landing Zone Architecture](agentic_ai_landing_zone_architecture.md) — Enterprise landing zone design for agentic AI systems
 
----
-
-## HTML Files
-
-- [Transformer Architectures](/knowledge-docs/ai-foundations/transformer_architectures.html)
-
-- [Transformer Concepts Deep Dive](/knowledge-docs/ai-foundations/transformer_concepts_deep.html)
