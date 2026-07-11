@@ -80,12 +80,13 @@ The agentic web has spawned a family of 11 distinct protocols in under 18 months
 | MCP | Model Context Protocol | Anthropic (Nov 2024) | Tool Access | **DOMINANT** — 97M downloads | Connecting agents to APIs, DBs, files |
 | A2A | Agent-to-Agent Protocol | Google (Apr 2025) | Agent Coordination | **DOMINANT** — 50+ partners | Cross-vendor agent collaboration |
 | ACP | Agent Communication Protocol | IBM BeeAI → Linux Foundation | Agent Messaging | **MERGED** into A2A (Aug 2025) | REST-native agent messaging |
+| ACP (commerce) | Agentic Commerce Protocol | OpenAI + Stripe (Sep 2025) | Commerce | **GROWING** — beta; live in ChatGPT Instant Checkout (Etsy, Walmart, Shopify) | Buyer ↔ agent ↔ merchant purchases; competes with UCP |
 | ANP | Agent Network Protocol | Open Source (Jul 2025) | Network Discovery | **EMERGING** — peer-to-peer | Decentralised agent discovery via DID |
-| AG-UI | Agent-User Interaction Protocol | Community / Agno (2025) | Frontend Stream | **GROWING** — streaming focus | Real-time agent-to-frontend streaming |
+| AG-UI | Agent-User Interaction Protocol | CopilotKit (2025) | Frontend Stream | **GROWING** — streaming focus | Real-time agent-to-frontend streaming |
 | A2UI | Agent-to-User Interface Protocol | Google ADK Team (2025) | UI Rendering | **EARLY** — Google ecosystem | Dynamic UI generation from agent output |
 | UCP | Universal Commerce Protocol | Google / NRF (Jan 2026) | Commerce | **NEW** — major coalition | AI agent shopping & vendor discovery |
 | AP2 | Agent Payments Protocol | Google (2025) | Payments | **EARLY** v0.1 — audit trail | Authorised, guarded agent transactions |
-| NLIP | Natural Language Interop Protocol | Ecma International (2025) | Natural Language | **NICHE** — standards body | NL-based agent communication |
+| NLIP | Natural Language Interop Protocol | Ecma TC56 — ECMA-430–434 published Dec 2025 | Natural Language | **NICHE** — published standard | NL-based agent communication |
 | LMOS | LM Operating System Protocol | Eclipse Foundation (2025) | Internet of Agents | **NICHE** — IoA vision | Full Internet of Agents ecosystem |
 | UTCP | Universal Tool Calling Protocol | Community (2025) | Tool Calling | **COMPETING** with MCP | Alternative tool invocation standard |
 
@@ -234,7 +235,7 @@ See [AGUI Standards & Ecosystem Landscape](../../agentic-ui/agui-standards-lands
 
 | Protocol | Creator | Vision | Current Status |
 |---|---|---|---|
-| **NLIP** | Ecma International | Natural language as the primary interface for agent communication — agents negotiate using human language rather than structured schemas | Standards body process — slow but authoritative |
+| **NLIP** | Ecma International (TC56) | Natural language as the primary interface for agent communication — agents negotiate using human language rather than structured schemas | Published standard — ECMA-430–434 + TR/113 (Dec 2025); adoption still early |
 | **LMOS** | Eclipse Foundation | "Internet of Agents" (IoA) — a full operating system for AI agents at internet scale; three layers: identity+security, transport, application | Niche — Eclipse ecosystem; IoA vision is ahead of current reality |
 | **UTCP** | Community (2025) | Alternative to MCP for tool-calling — claims simpler implementation; has not gained comparable adoption | Competing with MCP — unlikely to displace it given 97M MCP downloads |
 
@@ -301,14 +302,14 @@ The National Institute of Standards and Technology's AI Risk Management Framewor
 
 The EU AI Act (Regulation (EU) 2024/1689) is the world's first comprehensive AI law. Its extraterritorial scope means any organisation whose AI outputs reach EU residents must comply — regardless of where the organisation is based.
 
-**Critical deadline: August 2, 2026** — full enforcement of high-risk AI system requirements. Fines up to **€35M or 7% of global annual revenue**.
+**Critical deadlines (updated per the Digital Omnibus, final June 2026):** Article 50 transparency — **August 2, 2026** (unchanged); Annex III high-risk requirements — **December 2, 2027** (deferred from Aug 2026); Annex I embedded systems — **August 2, 2028**. Fines up to **€35M or 7% of global annual revenue**.
 
 | Risk Tier | Examples | Obligations | Deadline |
 |---|---|---|---|
 | **UNACCEPTABLE** (Prohibited) | Social scoring, subliminal manipulation, real-time remote biometric ID in public spaces | **BANNED outright** — no compliance path | Feb 2025 (enforced) |
-| **HIGH-RISK** | AI in employment, credit decisions, education access, law enforcement, healthcare devices, critical infrastructure | Risk management system, data governance, technical documentation, CE marking, human oversight, EU DB registration | **August 2, 2026** |
+| **HIGH-RISK** | AI in employment, credit decisions, education access, law enforcement, healthcare devices, critical infrastructure | Risk management system, data governance, technical documentation, CE marking, human oversight, EU DB registration | **December 2, 2027** (Annex III, deferred) / Aug 2, 2028 (Annex I) |
 | **GPAI Model Providers** | Foundation models (GPT-5, Gemini, Claude) + any fine-tuned versions placed on EU market | Training data documentation, copyright compliance, safety evaluation, systemic risk assessment if >10²⁵ FLOPs | August 2025 (enforced) |
-| **LIMITED RISK** | Chatbots, deepfakes, AI-generated content | Transparency: disclose AI interaction/generation to users | August 2026 |
+| **LIMITED RISK** | Chatbots, deepfakes, AI-generated content | Transparency: disclose AI interaction/generation to users | August 2, 2026 (Art. 50 — unchanged) |
 | **MINIMAL RISK** | Spam filters, recommendation systems, AI games | Voluntary codes of conduct | No mandatory deadline |
 
 ---
@@ -384,7 +385,7 @@ OWASP LLM Top 10 and MITRE ATLAS provide the security threat modelling layer. IE
 
 | Framework / Standard | Type | Mandatory? | Timeline | Cost Range | Priority |
 |---|---|---|---|---|---|
-| EU AI Act (High-Risk) | Regulation | YES — if EU market reach | Aug 2026 deadline | €100K–€1M+ | **CRITICAL** |
+| EU AI Act (High-Risk) | Regulation | YES — if EU market reach | Dec 2027 deadline (Annex III; Art. 50 from Aug 2026) | €100K–€1M+ | **CRITICAL** |
 | ISO/IEC 42001 | Certifiable Standard | No — but client-expected | 6–12 months | $75K–$350K | **HIGH** |
 | NIST AI RMF | Voluntary Framework | YES — US federal contractors | 3–6 months | $25K–$150K | **HIGH** |
 | OWASP LLM Top 10 | Security Checklist | No — but negligence risk if skipped | 1–2 months | Minimal | **HIGH** |
@@ -419,7 +420,7 @@ Financial services commands **19.6% of the global AI market** — the largest si
    Deploy A2A-coordinated agent networks for: AML/fraud detection (one agent flags, another investigates, third escalates), regulatory reporting (BASEL IV automation), and KYC document processing.
 
 3. **EU AI Act High-Risk Classification**
-   Classify ALL AI used in credit decisions, employment, and customer-facing advice as HIGH RISK. Begin conformity assessment NOW — August 2026 deadline is binding. Document every model.
+   Classify ALL AI used in credit decisions, employment, and customer-facing advice as HIGH RISK. Begin conformity assessment NOW — the December 2027 Annex III deadline is binding (and Art. 50 transparency already applies from August 2026). Document every model.
 
 4. **ISO/IEC 42001 Certification**
    Financial regulators (FCA, SEC, FINRA, ECB) are expected to require or reference ISO 42001. Begin AIMS implementation immediately. 12-month timeline means starting Q2 2026.

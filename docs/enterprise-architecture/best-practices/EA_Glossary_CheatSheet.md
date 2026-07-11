@@ -140,7 +140,7 @@ Event-Driven Architecture. Architecture pattern where services communicate via e
 
 **Event Mesh**
 
-EU Artificial Intelligence Act. World's first comprehensive AI regulation. Classifies AI by risk tier (unacceptable, high, limited, minimal). High-risk AI enforcement: August 2026.
+EU Artificial Intelligence Act. World's first comprehensive AI regulation. Classifies AI by risk tier (unacceptable, high, limited, minimal). High-risk (Annex III) enforcement: December 2027 (deferred from Aug 2026 by the Digital Omnibus); Art. 50 transparency from August 2026.
 
 Distributed event routing infrastructure connecting multiple event brokers across clouds and regions. Enables global event delivery.
 

@@ -76,7 +76,7 @@ Your first two days are spent in meetings and log access requests, not design wo
 |Governance|No AI Governance Board exists. The bank's existng model-risk-management (MRM) functon, built<br>for traditonal statstcal and ML credit models under SR 11-7-style governance, has never<br>reviewed an agentc system and does not have a framework for one|
 |Regulatory<br>exposure|Meridian has EU-domiciled commercial clients or otherwise meaningful EU nexus for a subset of<br>services serving roughly the EU AI Act's high-risk Annex III triggers — fagged but unconfrmed by|
 
-**Finding Detail** Legal — eight weeks before the Act's August 2026 high-risk enforcement date A near-miss four months ago: a marketing-content agent with an overly broad CRM scope drafted Prior incident and nearly auto-sent a customer email containing another customer's account details, caught only because a human reviewer happened to notice — the agent's scope was never revisited afterward
+**Finding Detail** Legal — ahead of the Act's high-risk enforcement date (December 2027 for Annex III after the Digital Omnibus deferral) A near-miss four months ago: a marketing-content agent with an overly broad CRM scope drafted Prior incident and nearly auto-sent a customer email containing another customer's account details, caught only because a human reviewer happened to notice — the agent's scope was never revisited afterward
 
 ##### **THE ARCHITECT'S REASONING**
 

@@ -589,7 +589,7 @@ Phase I gave you architecture. Phase II gave you the identity-to-trust chain. Ph
 
 ### **AI Governance, Risk & Compliance**
 
-Architecture without governance is a prototype that happens to be well-built. This stage gives you the regulatory and framework literacy to operate agentic systems in a real enterprise — including the urgency of the EU AI Act's August 2026 high-risk system deadline, which is likely close at hand by the time you're studying this.
+Architecture without governance is a prototype that happens to be well-built. This stage gives you the regulatory and framework literacy to operate agentic systems in a real enterprise — including the EU AI Act's high-risk system deadline — December 2, 2027 for Annex III systems after the June 2026 Digital Omnibus deferral (Article 50 transparency has applied since August 2026) — which is likely close at hand by the time you're studying this.
 
 ###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
 
@@ -633,7 +633,7 @@ It's tempting, once you've spent three weeks building identity and trust infrast
 
 #### **5.3 ISO 42001 and the EU AI Act — What Actually Maps**
 
-ISO/IEC 42001 is a certifiable AI management system standard — a governance backbone covering risk management, data governance, human oversight, and continual improvement. The EU AI Act is binding law for organizations operating in or serving the EU, with a risk-based four-tier classification and a critical deadline: the Act's requirements for high-risk AI systems (Annex III) become fully applicable in August 2026. The honest relationship between the two: independent analysis finds roughly 60–70% of EU AI Act documentation requirements map directly onto existing ISO 42001 clauses, with seven core articles having direct counterparts. The gaps that remain are real — conformity assessment procedures, CE marking, the depth of Annex IV technical documentation, and statutory incident-reporting timelines. Treat ISO 42001 as the foundation, not the finish line.
+ISO/IEC 42001 is a certifiable AI management system standard — a governance backbone covering risk management, data governance, human oversight, and continual improvement. The EU AI Act is binding law for organizations operating in or serving the EU, with a risk-based four-tier classification and a critical deadline: the Act's requirements for high-risk AI systems (Annex III) become fully applicable on December 2, 2027 (deferred from August 2026 by the Digital Omnibus). The honest relationship between the two: independent analysis finds roughly 60–70% of EU AI Act documentation requirements map directly onto existing ISO 42001 clauses, with seven core articles having direct counterparts. The gaps that remain are real — conformity assessment procedures, CE marking, the depth of Annex IV technical documentation, and statutory incident-reporting timelines. Treat ISO 42001 as the foundation, not the finish line.
 
 ###### **A trap to avoid**
 

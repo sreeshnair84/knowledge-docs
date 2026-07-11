@@ -19,6 +19,8 @@ tags: []
 
 Scope: This document extends the core AWS Bedrock AgentCore + Strands + Phoenix evaluation framework with the complete EU banking regulatory and RAI overlay. It covers the EU AI Act (Regulation EU 2024/1689), GDPR, DORA, EBA/ECB guidelines, AML directives, and Responsible AI standards — all mapped to concrete metrics, automated checks, and audit artefacts.
 
+> **⚖️ Digital Omnibus update (final 29 June 2026) — supersedes the timelines below.** Annex III high-risk obligations are deferred **from 2 Aug 2026 to 2 December 2027**; Annex I embedded systems from Aug 2027 to **2 August 2028**. Article 50 transparency obligations remain in force from **2 August 2026**. Where this document says "Aug 2026 — high-risk full obligations," read **Dec 2027**; the checklist content itself is unchanged.
+
 ## TABLE OF CONTENTS
 
 1. <u>EU Regulatory Landscape Map</u>
@@ -651,4 +653,4 @@ ROLE                    RESPONSIBILITY                  ESCALATION TRIGGER
 
 Chief AI Officer        AI strategy, EU AI Act          Conformity assessment AI Ethics Committee     Fairness, bias remediation      Demographic parity breach MRM Team                Model validation                Pre-deployment gate failure Legal / Compliance      Regulatory submissions          Regulator inquiry - Internal Audit          Third line assurance            Annual review, exam prep
 
-EU Banking AI Evaluation Guide v1.0 | Regulatory status as of March 2026 Regulations: EU AI Act (2024/1689), GDPR (2016/679), DORA (2022/2554), AMLD6 EBA factsheet on AI Act implications: November 2025 Review cycle: Quarterly or upon any regulatory update Next major regulatory milestone: August 2, 2026 — High-risk AI full obligations
+EU Banking AI Evaluation Guide v1.0 | Regulatory status as of March 2026 Regulations: EU AI Act (2024/1689), GDPR (2016/679), DORA (2022/2554), AMLD6 EBA factsheet on AI Act implications: November 2025 Review cycle: Quarterly or upon any regulatory update Next major regulatory milestones: August 2, 2026 — Art. 50 transparency in force; December 2, 2027 — Annex III high-risk full obligations (Digital Omnibus deferral)

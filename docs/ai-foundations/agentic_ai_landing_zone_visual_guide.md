@@ -61,7 +61,7 @@ START: Your Agent
   │  │
   │  ├─ YES → HIGH-RISK (Annex III)
   │  │   ├─ Requires: Conformity assessment ✓
-  │  │   ├─ Deadline: August 2, 2026 ⏰
+  │  │   ├─ Deadline: December 2, 2027 (Omnibus deferral) ⏰
   │  │   ├─ Effort: 3-4 weeks
   │  │   └─ Penalties: €35M if non-compliant
   │  │
@@ -70,7 +70,7 @@ START: Your Agent
   ├─ Does it interact with end users?
   │  ├─ YES → LIMITED-RISK
   │  │   ├─ Requires: Transparency disclosure ✓
-  │  │   ├─ Deadline: August 2, 2026 ⏰
+  │  │   ├─ Deadline: August 2, 2026 (Art. 50 — in force) ⏰
   │  │   ├─ Effort: 1-2 days
   │  │   └─ Example: Chatbots, recommendation systems
   │  │

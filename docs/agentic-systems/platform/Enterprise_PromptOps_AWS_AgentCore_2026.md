@@ -82,7 +82,7 @@ AWS + Arize AX for production observability and online evaluation, paired with e
 
 ### Compliance Urgency
 
-EU AI Act high-risk enforcement begins August 2, 2026. Prompt behavior is now an auditable artifact. Organizations must demonstrate versioned, approved, human-reviewed prompt governance or face regulatory exposure.
+EU AI Act high-risk (Annex III) enforcement begins December 2, 2027 — deferred from August 2026 by the Digital Omnibus; Article 50 transparency applies from August 2, 2026. Prompt behavior is now an auditable artifact. Organizations must demonstrate versioned, approved, human-reviewed prompt governance or face regulatory exposure.
 
 **Strategic Recommendation: Do not attempt to build PromptOps entirely on AWS-native services — the operational complexity is prohibitive. Do not make Arize AX the sole lifecycle platform — it lacks the registry and CI/CD gating layer. The winning architecture is AWS AppConfig (delivery) + Arize AX (observability) + Langfuse or Braintrust (registry/CI/CD) — governed by GitOps, policy-as-code, and human approval workflows.**
 
@@ -515,7 +515,7 @@ PART 8<br>Prompt Governance<br><!-- End of picture text -->
 
 RBAC, approval workflows, audit trails, digital signatures, and compliance frameworks.
 
-Prompt governance is not bureaucracy — it is risk management. With EU AI Act high-risk enforcement beginning August 2, 2026, and prompt behavior now an auditable artifact, governance is a compliance requirement, not an option.
+Prompt governance is not bureaucracy — it is risk management. With EU AI Act high-risk enforcement beginning December 2, 2027 (Annex III; Article 50 transparency already applies from August 2026), and prompt behavior now an auditable artifact, governance is a compliance requirement, not an option.
 
 ### RBAC — Prompt Permission Model
 
@@ -1513,7 +1513,7 @@ The enterprise prompt governance model is based on three principles: **Traceabil
 ### Regulatory Mapping
 
 |**Regulation**|**Prompt Governance Requirements**|**Key Controls**|
-|EU AI Act (Aug 2026<br>enforcement)|Technical documentation, risk assessment, human<br>oversight, audit trail, AIBOM for high-risk systems|Approval workflow, signed versions, audit<br>log, AIBOM generation|
+|EU AI Act (Art. 50 Aug 2026;<br>Annex III Dec 2027)|Technical documentation, risk assessment, human<br>oversight, audit trail, AIBOM for high-risk systems|Approval workflow, signed versions, audit<br>log, AIBOM generation|
 |NIST AI RMF|GOVERN, MAP, MEASURE, MANAGE functions<br>across prompt lifecycle|Risk scoring, governance board, evaluation<br>metrics, lifecycle management|
 |GDPR / CCPA|No PII in prompt templates. Data minimization. Right to<br>deletion.|PII scan gate, no PII in templates, secrets<br>separation|
 |HIPAA|PHI protection in healthcare agent prompts. BAA with<br>vendors.|PHI-free prompt templates, Arize AX HIPAA<br>compliance, BAA coverage|
@@ -1598,4 +1598,4 @@ Should Arize AX become the central Prompt Lifecycle platform, or should AWS-nati
 
 - **Prompt Supply Chain Security:** Signed prompts, SBOM-equivalent for AI (AIBOM), and supply chain attestation will become regulatory requirements for high-risk AI systems by 2027.
 
-- **EU AI Act Full Enforcement (August 2026):** Organizations without prompt versioning, approval workflows, and audit trails face regulatory exposure. Immediate action required.
+- **EU AI Act Enforcement (Art. 50 transparency from August 2026; Annex III high-risk from December 2027 per the Digital Omnibus):** Organizations without prompt versioning, approval workflows, and audit trails face regulatory exposure. The deferral does not shrink the conformity workload — start now.

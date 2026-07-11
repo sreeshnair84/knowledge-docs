@@ -28,7 +28,7 @@ Compiled from McKinsey, Deloitte, Accenture, PwC, IBM, AWS, Microsoft, Google | 
 
 ## **00  EXECUTIVE SUMMARY**
 
-The AI Development Lifecycle (AIDLC) has emerged as the defining operational framework for enterprise organizations seeking to harness artificial intelligence systematically, responsibly, and at scale. Unlike traditional SDLC paradigms, AIDLC integrates AI-specific concerns — model risk, data lineage, bias mitigation, explainability, and Constitutional AI constraints — across every phase from ideation through decommission. In 2025–2026, the stakes have fundamentally changed: AI governance is no longer optional guidance — it is enforceable law under the EU AI Act, with high-risk system obligations in full effect from August 2026.
+The AI Development Lifecycle (AIDLC) has emerged as the defining operational framework for enterprise organizations seeking to harness artificial intelligence systematically, responsibly, and at scale. Unlike traditional SDLC paradigms, AIDLC integrates AI-specific concerns — model risk, data lineage, bias mitigation, explainability, and Constitutional AI constraints — across every phase from ideation through decommission. In 2025–2026, the stakes have fundamentally changed: AI governance is no longer optional guidance — it is enforceable law under the EU AI Act, with Article 50 transparency obligations in force from August 2026 and high-risk (Annex III) obligations from December 2027 (deferred by the June 2026 Digital Omnibus).
 
 This report synthesizes research from McKinsey, Deloitte, Accenture, PwC, IBM, AWS, Microsoft, and Google to present a definitive end-to-end AIDLC blueprint for enterprise. It maps the lifecycle through eight structured phases, embeds governance guardrails at every gate, and benchmarks leading organizations' approaches to Constitutional AI policy and Responsible AI (RAI) maturity. Major big-win case studies demonstrate the productivity multipliers — up to 10–15x — achievable through disciplined AIDLC adoption.
 
@@ -148,7 +148,7 @@ A structured AIDLC enables organizations to: align business objectives with tech
 
 ## **1.2 Why AIDLC Now?**
 
-- **Regulatory Enforcement:** The EU AI Act's high-risk AI obligations are enforceable from August 2026.
+- **Regulatory Enforcement:** The EU AI Act's Article 50 transparency obligations are enforceable from August 2026; high-risk (Annex III) obligations from December 2027 per the Digital Omnibus.
 
 - Non-compliance carries penalties up to 3–7% of global annual turnover.
 
@@ -587,8 +587,9 @@ The EU AI Act entered into force on 1 August 2024. It is the world's first compr
 |August 2024|EU AI Act enters into force|
 |February 2025|Prohibited AI practices banned (social scoring, untargeted facial recognition,<br>emotion recognition in workplaces/schools). AI literacy obligations begin.|
 |August 2025|Governance infrastructure operational. GPAI model obligations begin. AI Office,<br>AI Board, Scientific Panel operational.|
-|August 2026|HIGH-RISK AI SYSTEMS (Annex III) rules in full effect. Transparency<br>obligations (Article 50) enforceable. Full enforcement begins.|
-|August 2027|High-risk AI systems embedded in regulated products (Annex I) must comply.|
+|August 2026|Transparency obligations (Article 50) enforceable. *(Digital Omnibus, June 2026:<br>Annex III high-risk rules deferred — see December 2027.)*|
+|December 2027|HIGH-RISK AI SYSTEMS (Annex III) rules in full effect (deferred from Aug 2026<br>by the Digital Omnibus).|
+|August 2028|High-risk AI systems embedded in regulated products (Annex I) must comply<br>(deferred from Aug 2027 by the Digital Omnibus).|
 
 ## **7.3 ISO/IEC 42001 — AI Management System Standard**
 
@@ -736,7 +737,7 @@ Incident response playbook: activated automatically when safety thresholds breac
 |**#**|**Priority**|**Recommendation**|**Horizon**|
 |---|---|---|---|
 |1|**CRITICAL**|Charter a permanent AI Governance Council with direct executive<br>sponsorship and budget authority. Break the vicious cycle of distrust<br>by simultaneously building trust, establishing guardrails, and fixing<br>data foundations.|0–30 days|
-|2|**HIGH**|Build and publish your AI System Inventory. Every AI system<br>including embedded SaaS AI must be cataloged and risk-classified<br>before August 2026 EU AI Act enforcement.|0–60 days|
+|2|**HIGH**|Build and publish your AI System Inventory. Every AI system<br>including embedded SaaS AI must be cataloged and risk-classified —<br>Art. 50 duties apply from Aug 2026; Annex III conformity by Dec 2027.|0–60 days|
 |3|**HIGH**|Adopt AIDLC as the mandatory lifecycle framework for all new AI<br>initiatives. Start with NIST AI RMF's Govern-Map-Measure-Manage<br>structure and layer EU AI Act obligations for T2 systems.|30–90 days|
 |4|**MEDIUM**|Develop and embed a Constitutional AI Policy for all customer-facing<br>and high-risk AI systems. Define your 8 core principles and test<br>compliance via red-teaming.|60–120<br>days|
 |5|**MEDIUM**|Implement continuous monitoring infrastructure: automated drift<br>detection, bias monitoring, audit logging, and constitutional<br>compliance sampling. Move governance from reactive to proactive.|90–180<br>days|

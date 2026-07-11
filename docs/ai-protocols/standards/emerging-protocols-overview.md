@@ -30,6 +30,8 @@ The enterprise AI stack is no longer a two-protocol world. By mid-2026, the MCP 
 
 **What is happening.** Between July 2024 and July 2026, the agent protocol space experienced a Cambrian explosion. Protocols emerged from three distinct sources: vendor consortia (Google leading UCP, AP2, A2UI, and A2A; IBM originating ACP before donating it to Linux Foundation), open-source communities (ANP, AG-UI, UTCP), and standards bodies (NLIP from Ecma International; LMOS from Eclipse Foundation). The result is a layered stack—tool access, agent communication, user interaction, payments, commerce, identity, and orchestration—with competing options at several layers.
 
+> **⚠️ Naming collision — two protocols are called "ACP".** Throughout this series, **ACP** means IBM BeeAI's **Agent Communication Protocol** (agent-to-agent messaging, merged into A2A in August 2025 and now retired). It is *not* the **Agentic Commerce Protocol** — the OpenAI + Stripe open standard (announced September 2025, beta) that powers ChatGPT Instant Checkout and connects buyers, AI agents, and merchants. The Agentic Commerce Protocol competes directly with Google's UCP at the commerce layer and is live with Etsy, Walmart, and over a million Shopify merchants; see the UCP deep dive (Section 2C) for the comparison. When you encounter "ACP" in vendor material from 2026 onward, it almost always means the commerce protocol.
+
 **Why it matters.** Enterprise architects who lock in on a single protocol layer today without understanding the full landscape will face costly renegotiation within 18 months. Specifically:
 
 1. **Protocol consolidation is still in progress.** ACP has already been merged into A2A (August 2025). UTCP may follow a similar absorption path. Choosing a protocol that will be deprecated is a three-to-five-year remediation burden.
@@ -40,7 +42,7 @@ The enterprise AI stack is no longer a two-protocol world. By mid-2026, the MCP 
 
 | Decision | Stakes | Recommended Position |
 |---|---|---|
-| **1. Adopt AG-UI or A2UI for agent frontends?** | Frontend streaming architecture lock-in; AG-UI is community/Agno, A2UI is Google ADK | Pilot AG-UI for non-Google stacks now; evaluate A2UI convergence by Q4 2026 |
+| **1. Adopt AG-UI or A2UI for agent frontends?** | Frontend streaming architecture lock-in; AG-UI is CopilotKit-governed, A2UI is Google-led (Apache 2.0) | Pilot AG-UI for non-Google stacks now; evaluate A2UI convergence by Q4 2026 |
 | **2. Use ANP for P2P agent discovery or wait for A2A to cover it?** | Decentralized agent mesh vs. centralized registry; ANP's DID model is not yet enterprise-hardened | Assess only; do not deploy in production until ANP 1.0 and DID W3C profile stabilize |
 | **3. Standardize on AP2 for agent payments or build custom?** | Payment liability, audit, and compliance exposure | Adopt AP2 if already in Google's ecosystem; use x402 as the lighter alternative for non-Google stacks |
 
@@ -58,11 +60,11 @@ The enterprise AI stack is no longer a two-protocol world. By mid-2026, the MCP 
   ▼                           ▼                          ▼              ▼           ▼           ▼
 
 MCP v1.0              A2A v0.1 (Google)         ACP donated       MCP          A2A          MCP
-announced             AG-UI v0.1 (Agno)         to LF            Auth RC       v1.0         Stateless
+announced             AG-UI v0.1 (CopilotKit)   to LF            Auth RC       v1.0         Stateless
 (Anthropic)           ANP open-source           LMOS Eclipse      (OAuth 2.1)  Stable       RC
                       A2UI Google ADK v0.9       Foundation                    (Apr 2026)   (Jul 2026)
                       AP2 announced              UTCP community
-                      NLIP Ecma TC54             ANP DID P2P
+                      NLIP Ecma TC56             ANP DID P2P
                       UCP Google/NRF             published
                                                  ACP → A2A
                                                  merged (Aug)
@@ -79,7 +81,7 @@ UI/Frontend    AG-UI ───────────────────�
                A2UI ─────────────────────[v0.9 ADK Q2 25]─────────────────────────────▶
 Commerce       UCP ──────────────────────[Q3 25 draft]────[GA Jan 26]──────────────────▶
 Payments       AP2 ──────────────────────[Q2 25 GA]───────────────────────────────────▶
-NL Interop     NLIP ─────────────────────[Ecma TC54 Q2 25]────────────────────────────▶
+NL Interop     NLIP ─────────────────────[Ecma TC56 Q2 25]───[published Dec 25]───────▶
 Orchestration  LMOS ─────────────────────[Eclipse Q3 25]──────────────────────────────▶
 Tool Calling   UTCP ─────────────────────[community Q3 25]────────────────────────────▶
 ──────────────────────────────────────────────────────────────────────────────────────────────────
@@ -109,7 +111,7 @@ The following diagram shows all 11 protocols (MCP + A2A + 9 emerging) and their 
 ║              ┌────────────▼──────────┐    ┌────────────▼────────────┐                       ║
 ║  LAYER 6:    │   AG-UI               │    │   A2UI                  │   USER INTERFACE       ║
 ║  UI/Frontend │ (SSE Streaming,       │    │ (Google ADK,            │   PROTOCOLS            ║
-║              │  community/Agno 2025) │    │  declarative UI v0.9)   │                        ║
+║              │  CopilotKit, 2025)    │    │  declarative UI v0.9)   │                        ║
 ║              └────────────┬──────────┘    └────────────┬────────────┘                       ║
 ║                           │                             │                                    ║
 ║              ┌────────────▼─────────────────────────────▼────────────┐                      ║
@@ -127,7 +129,7 @@ The following diagram shows all 11 protocols (MCP + A2A + 9 emerging) and their 
 ║                                       │                                                      ║
 ║              ┌────────────────────────▼────────────────────────────────┐                    ║
 ║  LAYER 3:    │            NATURAL LANGUAGE INTEROPERABILITY             │   SEMANTICS        ║
-║  Semantics   │  NLIP (Ecma TC54 — cross-system NL query translation)    │   PROTOCOLS        ║
+║  Semantics   │  NLIP (Ecma TC56 — cross-system NL query translation)    │   PROTOCOLS        ║
 ║              └────────────────────────┬────────────────────────────────┘                    ║
 ║                                       │                                                      ║
 ║     ┌─────────────────────────────────▼──────────────────────────────────┐                  ║
@@ -156,7 +158,7 @@ PROTOCOL KEY:
   ░░ ACP    — Legacy (merged to A2A Aug 2025); do not adopt
   ░░ ANP    — P2P decentralized discovery; assess only
   ░░ AG-UI  — SSE frontend streaming; growing adoption
-  ░░ A2UI  — Google ADK declarative UI; Google-stack only
+  ░░ A2UI  — Google-led declarative UI (Apache 2.0); ADK-first tooling
   ░░ UCP    — AI shopping/commerce; adopt in retail/marketplace
   ░░ AP2    — Agent payment guard; adopt in financial workflows
   ░░ NLIP   — NL interop; adopt for cross-system NL query
@@ -204,12 +206,12 @@ The following matrix rates all nine protocols across 17 enterprise dimensions. R
 | **Discovery** | ❌ None | ✅ DID-based P2P | ❌ Not applicable | ❌ ADK-internal | ⚠️ Merchant registry | ⚠️ Payment endpoint registry | ❌ Not applicable | ✅ Agent registry | ❌ Not applicable |
 | **Streaming** | ⚠️ Event stream | ❌ No | ✅ Core capability (SSE) | ✅ Partial | ❌ No | ❌ No | ❌ No | ⚠️ Event bus | ❌ No |
 | **Scalability** | ⚠️ Unknown | ⚠️ P2P limits | ✅ SSE scales well | ⚠️ ADK-bound | ✅ Stateless REST | ✅ Stateless REST | ⚠️ Query-bound | ✅ Designed for scale | ⚠️ Local process |
-| **Governance** | Linux Foundation (pre-merge) | Open-source community | Community/Agno | Google (ADK) | Google + NRF | Google | Ecma TC54 | Eclipse Foundation | Community |
+| **Governance** | Linux Foundation (pre-merge) | Open-source community | CopilotKit | Google (ADK) | Google + NRF | Google | Ecma TC56 | Eclipse Foundation | Community |
 | **Enterprise Readiness** | ❌ Deprecated | ⚠️ Low | ⚠️ Low-medium | ⚠️ Low-medium | ⚠️ Medium | ✅ Medium-high | ⚠️ Low-medium | ⚠️ Medium | ❌ Very low |
-| **Cloud Portability** | ✅ Yes (pre-merge) | ✅ Yes (P2P) | ✅ Yes | ❌ Google-only | ⚠️ Partial | ⚠️ Google-centric | ✅ Yes | ✅ Eclipse/any | ✅ Yes |
-| **Vendor Neutrality** | ✅ Linux Foundation | ✅ Community | ✅ Community | ❌ Google ADK only | ⚠️ Google-led | ❌ Google-led | ✅ Ecma | ✅ Eclipse | ✅ Community |
-| **Open-Source Maturity** | 🔄 Merged/archived | ⚠️ Early | ⚠️ Early | ❌ Closed | ⚠️ Early | ⚠️ Partial | ⚠️ Spec-only | ✅ Growing | ⚠️ Early |
-| **Standards Maturity** | ❌ Retired | ❌ Draft | ❌ Community spec | ❌ Google internal | ⚠️ Google/NRF draft | ⚠️ Google draft | ⚠️ Ecma draft | ⚠️ Eclipse draft | ❌ Community spec |
+| **Cloud Portability** | ✅ Yes (pre-merge) | ✅ Yes (P2P) | ✅ Yes | ⚠️ Client-neutral spec, ADK-first tooling | ⚠️ Partial | ⚠️ Google-centric | ✅ Yes | ✅ Eclipse/any | ✅ Yes |
+| **Vendor Neutrality** | ✅ Linux Foundation | ✅ Community | ⚠️ CopilotKit-led | ⚠️ Google-led, open contrib | ⚠️ Google-led | ❌ Google-led | ✅ Ecma | ✅ Eclipse | ✅ Community |
+| **Open-Source Maturity** | 🔄 Merged/archived | ⚠️ Early | ⚠️ Early | ⚠️ Early (Apache 2.0) | ⚠️ Early | ⚠️ Partial | ⚠️ Spec-only | ✅ Growing | ⚠️ Early |
+| **Standards Maturity** | ❌ Retired | ❌ Draft | ❌ Community spec | ⚠️ Open spec (Google-led) | ⚠️ Google/NRF draft | ⚠️ Google draft | ✅ Published (ECMA-430–434) | ⚠️ Eclipse draft | ❌ Community spec |
 | **Ecosystem Strength** | 🔄 Absorbed by A2A | ❌ Nascent | ⚠️ Growing | ⚠️ ADK users only | ⚠️ Retail focus | ⚠️ Google partners | ⚠️ Nascent | ⚠️ Growing | ❌ Minimal |
 | **Adoption Trajectory** | ↘ Declining (deprecated) | → Stable/slow | ↗ Growing | → Flat (ADK-bound) | ↗ Growing (retail) | ↗ Growing (Google) | → Slow | ↗ Steady | → Stagnant |
 
@@ -272,9 +274,9 @@ LEAST SECURE ◄─────────────────────�
 
 | Governance Dimension | ACP | ANP | AG-UI | A2UI | UCP | AP2 | NLIP | LMOS | UTCP |
 |---|---|---|---|---|---|---|---|---|---|
-| **Standards Body** | Linux Foundation (pre-merge) | None (community) | None (community/Agno) | Google (ADK) | Google + NRF | Google | Ecma International (TC54) | Eclipse Foundation | None (community) |
-| **Governance Model** | Open governance (archived) | Community PR | Community PR | Google product team | Google + NRF joint | Google product team | TC54 working group | Eclipse project governance | Community PR |
-| **Open-Source License** | Apache 2.0 | Apache 2.0 | MIT | Proprietary (ADK) | Apache 2.0 (partial) | Apache 2.0 (partial) | Ecma RF (royalty-free) | Eclipse Public License 2.0 | MIT |
+| **Standards Body** | Linux Foundation (pre-merge) | None (community) | None (CopilotKit-led) | Google (ADK) | Google + NRF | Google | Ecma International (TC56) | Eclipse Foundation | None (community) |
+| **Governance Model** | Open governance (archived) | Community PR | CopilotKit-maintained, community PR | Google product team | Google + NRF joint | Google product team | TC56 working group | Eclipse project governance | Community PR |
+| **Open-Source License** | Apache 2.0 | Apache 2.0 | MIT | Apache 2.0 | Apache 2.0 (partial) | Apache 2.0 (partial) | Ecma RF (royalty-free) | Eclipse Public License 2.0 | MIT |
 | **Registry** | None (archived) | DID-based (self-sovereign) | None | ADK registry | Google Merchant Center | Google Pay ecosystem | None | LMOS Agent Registry | None |
 | **Version Cadence** | N/A (deprecated) | Irregular | Irregular | ADK release cycle | Quarterly (Google-driven) | Quarterly (Google-driven) | Ecma annual | Eclipse quarterly | Irregular |
 | **Enterprise SLA** | None | None | None | Google ADK SLA | Google Cloud SLA (partial) | Google Cloud SLA | None | Eclipse SLA (partial) | None |
@@ -307,10 +309,10 @@ Five-level maturity: **Experimental** → **Emerging** → **Growing** → **Est
 | **ACP** | ❌ Retired | Merged into A2A (Aug 2025). Spec archived. No new adoption justified. |
 | **ANP** | 🟡 Experimental | DID-based P2P is architecturally sound but lacks enterprise auth hardening, stable registry, and real-world scale evidence. |
 | **AG-UI** | 🟡 Experimental → Emerging | Active community uptake for SSE-based agent frontends. No formal spec body; security model is absent. Growing but fragile. |
-| **A2UI** | 🟡 Experimental | Only meaningful within Google ADK; v0.9 is pre-stable. Not portable outside Google's ecosystem as of mid-2026. |
+| **A2UI** | 🟡 Experimental | Apache 2.0 open project (Google-led, with CopilotKit contributions); v0.9 is pre-stable. Spec is client-neutral by design, but tooling is ADK-first and portability outside Google's ecosystem is limited in practice as of mid-2026. |
 | **UCP** | 🟠 Emerging | Google + NRF backing gives it legitimacy in retail. GA since January 2026. Limited to commerce vertical; not general-purpose. |
 | **AP2** | 🟠 Emerging → Growing | Strongest security model of the nine (mandate signing). 60+ partners. Google-centric but with clear enterprise utility in agent payment workflows. |
-| **NLIP** | 🟡 Experimental | Ecma TC54 governance is a strong signal. Spec is still draft. No major platform has adopted it yet. Watch Q4 2026. |
+| **NLIP** | 🟠 Emerging | Published by Ecma TC56 as the ECMA-430–434 standards suite (+ TR/113) in December 2025 — the strongest formal-standards signal of the nine. Platform adoption is still nascent; watch for major-platform implementations through 2026. |
 | **LMOS** | 🟠 Emerging | Eclipse Foundation governance and the "Internet of Agents" vision are compelling. Growing contributor base. Still needs production case studies. |
 | **UTCP** | 🔴 Experimental (stagnant) | Community spec without governance or security model. Outcompeted by MCP in tool calling. No adoption signal that justifies investment. |
 
@@ -323,9 +325,9 @@ MATURITY RADAR — JULY 2026
             │
         GROWING ──────────────────────────── AP2 (trending)
             │
-       EMERGING ── LMOS ─── UCP ─── AP2
+       EMERGING ── LMOS ─── UCP ─── AP2 ─── NLIP
             │
-    EXPERIMENTAL ── ANP ── AG-UI ── A2UI ── NLIP ── UTCP
+    EXPERIMENTAL ── ANP ── AG-UI ── A2UI ── UTCP
             │
         RETIRED ── ACP
 ```
@@ -496,6 +498,8 @@ LEGEND:
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
+> **Competing stack:** the OpenAI + Stripe **Agentic Commerce Protocol** (not covered in the nine-protocol scope of this series) is the primary alternative to UCP + AP2 for this vertical — it is live in ChatGPT Instant Checkout with Etsy, Walmart, and Shopify merchants. Retailers should evaluate both stacks; the channel decision (ChatGPT traffic vs. Google/agent-mesh traffic) currently dictates the protocol decision.
+
 ---
 
 ### Manufacturing & Supply Chain
@@ -594,10 +598,10 @@ LEGEND:
 | **ACP** | 0% | Archived | Archived | Merged into A2A. No independent future. |
 | **ANP** | 25% | Niche (decentralized) | Possible W3C DID integration | Technically sound but lacks enterprise champion. DID ecosystem maturation is its key dependency. |
 | **AG-UI** | 40% | Absorbed by AG-UI+A2A hybrid | Possibly folded into A2A spec | SSE-based frontend streaming is valuable; may be standardized as a profile of A2A rather than a standalone spec. |
-| **A2UI** | 15% | Google ADK internal | Google ADK internal | Very unlikely to become a neutral standard. Google's interest in keeping ADK proprietary is strong. |
+| **A2UI** | 25% | Google-led open project | Possible AG-UI/A2A convergence | Apache 2.0 open project with CopilotKit contributions, but the roadmap is Google-controlled and tooling is ADK-first. Neutral-standard status would require a foundation home. |
 | **UCP** | 55% | NRF industry adoption | Possible ISO/IEC ratification | NRF's involvement gives it a real path to ISO retail standard. Depends on market adoption velocity in 2026-2027. |
 | **AP2** | 50% | Google + fintech ecosystem | Potential W3C or Open Banking integration | Payment mandate signing is genuinely valuable. Open Banking standards (PSD2 successor) may absorb or align. |
-| **NLIP** | 65% | Ecma standard draft | Ecma full standard or ISO/IEC | Ecma TC54 is the strongest governance signal. NLIP's natural language interop problem is real and unsolved elsewhere. |
+| **NLIP** | ✅ Standardized (Dec 2025) | Platform adoption growth | Possible ISO/IEC fast-track | Published by Ecma TC56 as ECMA-430–434 + TR/113 on 10 Dec 2025. The open question is no longer standardization but adoption — NLIP's natural language interop problem is real and unsolved elsewhere. |
 | **LMOS** | 60% | Eclipse GA + cloud provider adoption | CNCF adoption likely | Eclipse Foundation's track record (Jakarta EE, MicroProfile) is strong. "Internet of Agents" is a genuine architectural gap. |
 | **UTCP** | 5% | Absorbed by MCP or abandoned | Abandoned | No differentiation from MCP that justifies a separate standard. |
 
@@ -623,7 +627,7 @@ The protocol landscape of mid-2026 will not persist unchanged. Based on historic
 
 **Fragmentation risk:**
 
-The greatest fragmentation risk is at the UI layer. AG-UI (community) and A2UI (Google) are incompatible frontend protocols. If Google maintains A2UI as a proprietary ADK feature while the community doubles down on AG-UI, the result is a permanent split in how agents surface to users — with Google-ecosystem agents looking and behaving differently from the rest.
+The greatest fragmentation risk is at the UI layer. AG-UI (CopilotKit-governed) and A2UI (Google-led, Apache 2.0) are incompatible frontend protocols despite both being open source — and despite CopilotKit contributing to A2UI itself. If the two efforts fail to converge on a shared event/rendering model, the result is a lasting split in how agents surface to users — with Google-ecosystem agents looking and behaving differently from the rest. The mitigating signal: AG-UI can already carry A2UI declarative payloads as a rendering format, which is the most plausible convergence path.
 
 ```
 CONVERGENCE TIMELINE PROJECTION
@@ -638,7 +642,7 @@ CONVERGENCE TIMELINE PROJECTION
   │                       │                                                 │
   ├─ ANP experimental     ├─ ANP: DID hardening    ├─ ANP → A2A decentr?    │
   │                       │                                                 │
-  ├─ NLIP draft           ├─ NLIP Ecma standard    ├─ NLIP+LMOS joint WG?   ├─ NLIP ISO ratify?
+  ├─ NLIP published Dec 25├─ NLIP adoption grows   ├─ NLIP+LMOS joint WG?   ├─ NLIP ISO ratify?
   │                       │                                                 │
   ├─ LMOS emerging        ├─ LMOS Eclipse GA       ├─ LMOS CNCF proposal?   ├─ LMOS dominant?
   │                       │                                                 │
@@ -661,7 +665,7 @@ CONVERGENCE TIMELINE PROJECTION
 ║   │  A2A (donated)      │         │  MCP (Anthropic don.) │                       ║
 ║   │  UCP (co-lead)      │         │  ACP (IBM donated,    │                       ║
 ║   │  AP2 (Google-led)   │         │       now merged/arch)│                       ║
-║   │  A2UI (proprietary) │         └──────────────────────┘                       ║
+║   │  A2UI (Apache 2.0)  │         └──────────────────────┘                       ║
 ║   └─────────────────────┘                                                         ║
 ║             ▲                     ECLIPSE FOUNDATION                              ║
 ║        Influence                  ┌──────────────────────┐                       ║
@@ -671,7 +675,7 @@ CONVERGENCE TIMELINE PROJECTION
 ║        on enterprise                                                              ║
 ║        architects                ECMA INTERNATIONAL                               ║
 ║                                  ┌──────────────────────┐                        ║
-║   IBM                            │  NLIP (TC54)         │                        ║
+║   IBM                            │  NLIP (TC56)         │                        ║
 ║   ┌─────────────────────┐        └──────────────────────┘                        ║
 ║   │  BeeAI (now LMOS)   │                                                        ║
 ║   │  ACP (donated to LF)│        NRF (National Retail Federation)                ║
@@ -681,7 +685,7 @@ CONVERGENCE TIMELINE PROJECTION
 ║   COMMUNITY (no single owner)                                                     ║
 ║   ┌────────────────────────────────────────────────┐                             ║
 ║   │  ANP (open-source, Jul 2025)                   │                             ║
-║   │  AG-UI (Agno + community contributors)         │                             ║
+║   │  AG-UI (CopilotKit + community contributors)   │                             ║
 ║   │  UTCP (small community, low activity)          │                             ║
 ║   └────────────────────────────────────────────────┘                             ║
 ║                                                                                  ║
@@ -689,10 +693,11 @@ CONVERGENCE TIMELINE PROJECTION
 ║  POWER DYNAMICS ANALYSIS                                                          ║
 ║                                                                                  ║
 ║  Google's position is the most complex: Google has donated A2A to Linux          ║
-║  Foundation (neutral) while retaining proprietary control of AP2, A2UI, and     ║
-║  UCP. This is a deliberate "open core" strategy at the protocol layer —          ║
-║  Google benefits from A2A adoption (drives ADK/Vertex AI usage) while locking   ║
-║  payment and commerce flows through proprietary protocols.                       ║
+║  Foundation (neutral) while keeping AP2, A2UI, and UCP under Google-led          ║
+║  governance (AP2 and A2UI are Apache 2.0, but Google controls the roadmaps).     ║
+║  This is a deliberate "open core" strategy at the protocol layer — Google        ║
+║  benefits from A2A adoption (drives ADK/Vertex AI usage) while steering          ║
+║  payment and commerce flows through Google-controlled protocols.                 ║
 ║                                                                                  ║
 ║  Anthropic's position: MCP is fully donated; Anthropic retains no governance    ║
 ║  leverage. This is a genuine open-standard play. Anthropic benefits from         ║
@@ -722,7 +727,7 @@ Agent delegates to agent → A2A               Federated agent delegation: A2A +
 Agent discovered P2P → ANP (fragile)         Self-sovereign agent identity: ANP matured
 Agent pays for service → AP2 (Google)        Open payment protocol: AP2 or ISO 20022 extension
 Agent interacts with user → AG-UI/A2UI       Standardized UI: AG-UI profile of A2A
-Cross-org NL queries → NLIP (draft)          Enterprise NL interop: NLIP Ecma standard
+Cross-org NL queries → NLIP (ECMA-430–434)   Enterprise NL interop: NLIP broadly adopted
 Agent fleet managed → LMOS (emerging)        Internet of Agents OS: LMOS CNCF project
 AI shopping → UCP (retail-only)              Cross-vertical AI commerce: UCP broadened
 Tool calling alt → UTCP (niche)              Absorbed into MCP
@@ -732,11 +737,11 @@ Tool calling alt → UTCP (niche)              Absorbed into MCP
 
 | Year | Key Development |
 |---|---|
-| **2026** | MCP stateless RC → GA. A2A v1.0 ecosystem consolidates. AG-UI gains first major platform adoption. NLIP Ecma draft published. |
+| **2026** | MCP stateless RC → GA. A2A v1.0 ecosystem consolidates. AG-UI gains first major platform adoption. First implementations of the published NLIP suite (ECMA-430–434, Dec 2025) appear. |
 | **2027** | LMOS Eclipse GA. UTCP absorbed by MCP. ANP DID profile hardened for enterprise. AP2 Open Banking alignment begins. |
-| **2028** | NLIP becomes Ecma standard. LMOS proposed to CNCF. AG-UI → A2A UI profile. UCP NRF standard vote. |
+| **2028** | NLIP adoption reaches major platforms. LMOS proposed to CNCF. AG-UI → A2A UI profile. UCP NRF standard vote. |
 | **2029** | LMOS CNCF incubation. ANP → A2A decentralized profile. First cross-organizational IoA pilots. |
-| **2030–2031** | Internet of Agents: A2A + LMOS + ANP + NLIP form the interoperable mesh. Google's proprietary protocols (AP2, UCP) either open-source or face competition from open alternatives. |
+| **2030–2031** | Internet of Agents: A2A + LMOS + ANP + NLIP form the interoperable mesh. Google-controlled protocols (AP2, UCP) either move to neutral governance or face competition from open alternatives. |
 
 ---
 
@@ -852,7 +857,7 @@ The following table maps problem types to protocol choices, with detailed guidan
 
 | Problem | Options | When to Use | When to Avoid | Benefits | Risks | Enterprise Recommendation |
 |---|---|---|---|---|---|---|
-| NL queries across heterogeneous systems | **NLIP** | Healthcare, government, data silos | Systems with structured APIs only | Ecma governance, NL-native | Draft spec, no major platform GA | **Trial in cross-system scenarios** |
+| NL queries across heterogeneous systems | **NLIP** | Healthcare, government, data silos | Systems with structured APIs only | Ecma governance, NL-native | Published standard (Dec 2025) but no major platform GA yet | **Trial in cross-system scenarios** |
 | Custom NL translation | **Custom** | Highly domain-specific NL requirements | General enterprise NL interop | Full control | Maintenance burden, no standard | Use NLIP as baseline |
 
 ### Internet of Agents / Agent Fleet Management
@@ -908,7 +913,7 @@ START: I need to integrate a new agent capability
            │
            ▼
    Is it about NATURAL LANGUAGE INTEROP across systems?
-    ├── YES ──► TRIAL NLIP (Ecma TC54, draft spec)
+    ├── YES ──► TRIAL NLIP (Ecma TC56, ECMA-430–434)
     └── NO
            │
            ▼
@@ -1187,19 +1192,19 @@ The following ten anti-patterns are commonly observed when enterprises adopt eme
 | **ARB** | Architecture Review Board. Enterprise governance body that approves architectural decisions, technology adoptions, and standards. |
 | **DID** | Decentralized Identifier. W3C standard for self-sovereign digital identities that do not require a central registry. Used by ANP. |
 | **Eclipse Foundation** | European open-source foundation governing projects including Eclipse IDE, Jakarta EE, MicroProfile, and LMOS. Known for strong IP management and governance. |
-| **Ecma International** | European standards body (formerly ECMA) responsible for ECMAScript (JavaScript standard), JSON, and NLIP (TC54). Publishes royalty-free standards. |
+| **Ecma International** | European standards body (formerly ECMA) responsible for ECMAScript (JavaScript standard), JSON, and NLIP (TC56). Publishes royalty-free standards. |
 | **LMOS** | LM Operating System Protocol. Eclipse Foundation project (2025) providing an operating-system-level orchestration layer for fleets of AI agents — the "Internet of Agents" platform. |
 | **Linux Foundation** | US open-source foundation governing Kubernetes, CNCF, and AI projects including MCP (via AAIF) and A2A (Agent2Agent Project). |
 | **MCP** | Model Context Protocol. Anthropic-initiated protocol (2024), donated to Linux Foundation, providing standard agent-to-tool access. 10,000+ public servers; stateless RC July 2026. |
 | **mTLS** | Mutual TLS. TLS variant where both client and server authenticate each other via certificates. Required for Zero Trust machine-to-machine communication. |
-| **NLIP** | Natural Language Interoperability Protocol. Ecma International TC54 initiative providing a standard for translating natural language queries across heterogeneous enterprise systems. |
+| **NLIP** | Natural Language Interaction Protocol. Ecma International TC56 standard (ECMA-430–434 + TR/113, published Dec 2025) for natural-language communication between humans, agents, and heterogeneous enterprise systems. |
 | **NRF** | National Retail Federation. US retail industry association co-leading UCP with Google. |
 | **OPA** | Open Policy Agent. CNCF policy engine used for authorization enforcement across APIs and agent protocols. |
 | **P2P** | Peer-to-peer. Architecture where agents communicate directly without a central broker or registry. |
 | **PKCE** | Proof Key for Code Exchange. OAuth 2.1 extension protecting public clients from authorization code interception. |
 | **SPIFFE/SPIRE** | Secure Production Identity Framework For Everyone / SPIFFE Runtime Environment. CNCF standards for workload identity in distributed systems. Used for machine-to-machine authentication in agent networks. |
 | **SSE** | Server-Sent Events. HTTP-based protocol for server-to-client streaming of real-time events. Used by AG-UI and MCP HTTP transport. |
-| **TC54** | Technical Committee 54. Ecma working group responsible for the NLIP specification. |
+| **TC56** | Technical Committee 56. Ecma working group (formed Dec 2024) responsible for the NLIP specification suite. |
 | **UCP** | Universal Commerce Protocol. Google and NRF-led protocol (GA January 2026) for AI-driven shopping: product discovery, cart management, and order creation. |
 | **UTCP** | Universal Tool Calling Protocol. Community protocol (2025) as an alternative to MCP for tool calling. No governance, no security model; in Hold status. |
 | **W3C DID** | World Wide Web Consortium Decentralized Identifiers. Standard for self-sovereign identifiers used by ANP for agent identity without a central authority. |
@@ -1247,8 +1252,8 @@ The following ten anti-patterns are commonly observed when enterprises adopt eme
 
 ### NLIP — Natural Language Interoperability Protocol
 
-- Ecma TC54 charter and working documents: https://www.ecma-international.org/technical-committees/tc54/
-- NLIP draft specification: Ecma TC54 GitHub repository (2025)
+- Ecma TC56 charter and working documents: https://www.ecma-international.org/technical-committees/tc56/
+- NLIP published standards: ECMA-430–434 + TR/113 (Dec 2025), free from ecma-international.org; drafts at github.com/nlip-project
 - Ecma International royalty-free standards policy: https://www.ecma-international.org/policies/
 
 ### LMOS — LM Operating System Protocol

@@ -794,9 +794,9 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |NOW (Q2 2026)|GDPR|DPIAs completed for all HIGH_RISK AI systems; DPAs signed<br>with AWS, Anthropic, Arize|ACTION REQUIRED —<br>DPO must sign off before<br>any deployment|
 |NOW (Q2 2026)|EU AI Act|Technical documentation (Art.11) drafted; conformity assessment<br>started for HIGH_RISK|ACTION REQUIRED —<br>engage MRM and Legal<br>immediately|
 |NOW (Q2 2026)|All|Deploy this evaluation framework; all 8 CI/CD gates operational;<br>Phoenix monitoring live|THIS DOCUMENT —<br>implementation timeline<br>required|
-|Aug 2026|EU AI Act|HIGH_RISK AI: full conformity + CE marking + EU AI database<br>registration complete|CRITICAL DEADLINE —<br>4 months away —<br>escalate to board|
-|Aug 2026|EU AI Act|Art.12 audit trail + Art.14 human oversight + Art.13 transparency<br>mechanisms all live|CRITICAL DEADLINE —<br>must be live before this<br>date|
-|Aug 2027|EU AI Act|All remaining provisions; national market surveillance authority<br>registration|Future planning — begin<br>roadmap now|
+|Aug 2026|EU AI Act|Art. 50 transparency obligations in force (AI disclosure,<br>AI-content labeling) — unchanged by the Digital Omnibus|DEADLINE IN FORCE —<br>verify disclosure controls<br>are live|
+|Dec 2027|EU AI Act|HIGH_RISK AI (Annex III): full conformity + CE marking + EU AI<br>database registration + Art.12 audit trail + Art.14 human oversight<br>complete *(deferred from Aug 2026 by the Digital Omnibus)*|CRITICAL DEADLINE —<br>escalate to board;<br>deferral ≠ less work|
+|Aug 2028|EU AI Act|High-risk AI embedded in Annex I regulated products; remaining<br>provisions *(deferred from Aug 2027)*|Future planning — begin<br>roadmap now|
 |Dec 2030|EU AI Act|Large-scale IT systems extended transition period ends — all<br>IT-embedded AI must comply|Long-term enterprise<br>architecture roadmap|
 |Quarterly (recurring)|EBA|Independent model validation report; ongoing monitoring review<br>by MRM team|Recurring — schedule in<br>AI Governance Calendar|
 |Annually (recurring)|DORA|Full ICT risk assessment review; resilience testing (TLPT every 3<br>years for significant)|Recurring — coordinate<br>with CISO and<br>Operations|
@@ -823,7 +823,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |**Chapters**|10 chapters covering: architecture, Strands Evals, AgentCore, Phoenix, metrics, benchmarks,<br>drift, EU compliance, lifecycle, quick reference|
 |**Metrics Defined**|45+ metrics across 4 planes: response quality, RAG quality, agentic behaviour,<br>operational/infrastructure, and EU compliance|
 |**Lifecycle Phases**|9 phases: Ideation, Benchmark, Build, Pre-Deploy Gate, Deploy, Improve, Drift Response,<br>Model Upgrade, Retirement|
-|**Critical Deadline**|August 2, 2026 — EU AI Act HIGH-RISK AI full obligations come into force — all conformity<br>must be complete before this date|
+|**Critical Deadlines**|Aug 2, 2026 — Art. 50 transparency in force · Dec 2, 2027 — Annex III HIGH-RISK full<br>obligations (deferred by the June 2026 Digital Omnibus); conformity complete before then|
 |**Classification**|Confidential — Internal Use — Do Not Distribute Externally Without Legal Approval|
 |**Owner**|AI Platform Engineering Team|
 |**Review Cycle**|Quarterly — or immediately upon any EU regulatory update or significant incident|

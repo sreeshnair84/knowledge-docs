@@ -187,7 +187,7 @@ This roadmap is sequenced for an enterprise architect or security architect buil
 
 - Stand up an Agent Registry, even a minimal one, and run a discovery exercise to find every agent currently running in the enterprise — the inventory gap is almost always larger than expected.
 
-- Begin or accelerate ISO 42001 gap analysis (Volume 3, Domain 3.6), particularly if any system may fall under EU AI Act Annex III high-risk classification given the August 2026 enforcement milestone.
+- Begin or accelerate ISO 42001 gap analysis (Volume 3, Domain 3.6), particularly if any system may fall under EU AI Act Annex III high-risk classification given the December 2027 enforcement milestone (deferred from August 2026 by the Digital Omnibus; Article 50 transparency applies from August 2026).
 
 ### **Months 4–9: Identity & Protocol Security**
 

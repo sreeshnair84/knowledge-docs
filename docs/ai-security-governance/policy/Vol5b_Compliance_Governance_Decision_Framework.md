@@ -121,7 +121,7 @@ DORA (effective January 2025) mandates ICT risk management and operational resil
 
 ### **4.2 EU AI Act Compliance**
 
-The EU AI Act (effective August 2026 for high-risk AI systems) establishes requirements for AI systems deployed in regulated sectors including financial services. AI agents that make or influence credit decisions, fraud detection, or financial advice are likely classified as high-risk AI systems:
+The EU AI Act (effective December 2027 for Annex III high-risk AI systems — deferred from August 2026 by the Digital Omnibus; Article 50 transparency applies from August 2026) establishes requirements for AI systems deployed in regulated sectors including financial services. AI agents that make or influence credit decisions, fraud detection, or financial advice are likely classified as high-risk AI systems:
 
 |**EU AI Act**<br>**Article**|**Requirement**|**Authorization Architecture Control**|
 |---|---|---|

@@ -30,7 +30,7 @@ What is NEW in this edition:
 |**ID**|**Section**|**Industry Signal**|
 |---|---|---|
 |**D1**|**Post-Quantum Cryptography**|NIST mandates PQC migration. HNDL threat is live today. 2028-2031 CRQC<br>window.|
-|**D2**|**EU AI Act Compliance**|High-risk AI enforcement August 2026. Fines up to 6% global turnover.|
+|**D2**|**EU AI Act Compliance**|High-risk (Annex III) enforcement December 2027 (Digital Omnibus deferral); Art. 50 transparency from Aug 2026. Fines up to 7% global turnover.|
 |**D3**|**AI FinOps**|98% of FinOps teams now manage AI spend. Token costs are the new cloud<br>bill.|
 |**D4**|**Composable Architecture & Digital**<br>**Twins**|Gartner: composable architecture competitive differentiator by 2026.|
 |**D5**|**Supply Chain Security**|SBOM, DORA ICT vendor risk, model supply chain — fastest-growing attack<br>vector.|
@@ -62,7 +62,7 @@ What is NEW in this edition:
 
 - Technical Documentation
 
-– Human Oversight Design G **INDUSTRY SIGNAL: LIVE — EU AI Act high-risk system requirements enforcement begins August 2026. Fines up to...**
+– Human Oversight Design G **INDUSTRY SIGNAL: LIVE — EU AI Act high-risk (Annex III) enforcement begins December 2027 (Digital Omnibus deferral); Art. 50 transparency from August 2026. Fines up to...**
 
 ###### D3 — AI FinOps — Governing AI Cost at Scale
 
@@ -334,7 +334,7 @@ Governance: build a crypto migration dashboard tracking % of tokens, certificate
 
 ## **EU AI ACT ARCHITECTURE COMPLIANCE**
 
-I *INDUSTRY SIGNAL: LIVE — EU AI Act high-risk system requirements enforcement begins August 2026. Fines up to €30M or 6% global turnover. 78% of organisations use AI; most lack compliant governance architecture.*
+I *INDUSTRY SIGNAL: LIVE — EU AI Act high-risk (Annex III) enforcement begins December 2027 (deferred from Aug 2026 by the Digital Omnibus); Art. 50 transparency from August 2026. Fines up to €35M or 7% global turnover. 78% of organisations use AI; most lack compliant governance architecture.*
 
 [ Risk Classification ] [ Conformity Assessment Architecture ] [ Technical Documentation ] [ Human Oversight Design ]
 

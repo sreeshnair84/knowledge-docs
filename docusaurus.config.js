@@ -83,22 +83,24 @@ const config = {
 
   plugins: [
     copyDocsAssetsPlugin,
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: false,
-        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
-        pwaHead: [
-          {tagName: 'link', rel: 'icon', href: '/knowledge-docs/img/favicon.ico'},
-          {tagName: 'link', rel: 'manifest', href: '/knowledge-docs/manifest.json'},
-          {tagName: 'meta', name: 'theme-color', content: '#0ea5e9'},
-          {tagName: 'meta', name: 'mobile-web-app-capable', content: 'yes'},
-          {tagName: 'meta', name: 'apple-mobile-web-app-capable', content: 'yes'},
-          {tagName: 'meta', name: 'apple-mobile-web-app-status-bar-style', content: 'default'},
-          {tagName: 'meta', name: 'apple-mobile-web-app-title', content: 'Knowledge Docs'},
-        ],
-      },
-    ],
+    // PWA plugin disabled due to es-abstract/string.prototype.matchall incompatibility
+    // TODO: Re-enable when dependencies resolve the issue
+    // [
+    //   '@docusaurus/plugin-pwa',
+    //   {
+    //     debug: false,
+    //     offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
+    //     pwaHead: [
+    //       {tagName: 'link', rel: 'icon', href: '/knowledge-docs/img/favicon.ico'},
+    //       {tagName: 'link', rel: 'manifest', href: '/knowledge-docs/manifest.json'},
+    //       {tagName: 'meta', name: 'theme-color', content: '#0ea5e9'},
+    //       {tagName: 'meta', name: 'mobile-web-app-capable', content: 'yes'},
+    //       {tagName: 'meta', name: 'apple-mobile-web-app-capable', content: 'yes'},
+    //       {tagName: 'meta', name: 'apple-mobile-web-app-status-bar-style', content: 'default'},
+    //       {tagName: 'meta', name: 'apple-mobile-web-app-title', content: 'Knowledge Docs'},
+    //     ],
+    //   },
+    // ],
   ],
 
   themes: [

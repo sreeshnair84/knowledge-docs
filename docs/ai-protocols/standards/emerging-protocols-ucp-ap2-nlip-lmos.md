@@ -64,7 +64,7 @@ Before examining each protocol in depth, it is worth establishing where they sit
 |---|---|---|---|---|
 | UCP | Commerce | Google + NRF Coalition | GA — major retail coalition | Production deployments at Walmart, Target, Shopify |
 | AP2 | Payments | Google ADK Team | v0.1 Early — 60+ partners | Pilot deployments; financial compliance evolving |
-| NLIP | Natural Language | Ecma International TC-54 | Draft Standard — TC-54 | Niche; healthcare/legal NLP early adopters |
+| NLIP | Natural Language | Ecma International TC56 | Published — ECMA-430–434 + TR/113 (Dec 2025) | Niche; healthcare/legal NLP early adopters |
 | LMOS | Internet of Agents OS | Eclipse Foundation | Incubating | Research-grade; IoA vision ahead of adoption |
 
 ---
@@ -106,6 +106,14 @@ The specification explicitly defines UCP/MCP and UCP/A2A binding documents descr
 #### Open Source Status and Community Activity
 
 The reference implementation (`ucp-sdk-python`, `ucp-sdk-typescript`) is Apache 2.0 licensed. As of July 2026, the GitHub repository shows approximately 2,400 stars, 180 contributors, and active weekly commit cadence. The conformance test suite covers catalogue discovery, cart management, checkout initiation, and order status — the four core interaction domains. Shopify has published a production UCP server for its merchant base, and Walmart's developer portal includes a UCP reference documentation section.
+
+#### Competing Standard: the Agentic Commerce Protocol (OpenAI + Stripe)
+
+UCP is not the only open standard at the agentic-commerce layer. The **Agentic Commerce Protocol (ACP)** — co-developed by **OpenAI and Stripe**, announced September 2025 and in beta through 2026 — powers **Instant Checkout in ChatGPT** and connects buyers, AI agents, and merchants through a Stripe-anchored payment flow. It is live with Etsy and Walmart and rolling out to over a million Shopify merchants; OpenAI charges merchants a 4% fee on completed Instant Checkout purchases. Governance sits with OpenAI and Stripe as founding maintainers (spec at `github.com/agentic-commerce-protocol`), with a stated path toward broader community governance.
+
+⚠️ **Naming collision:** this commerce ACP is unrelated to IBM BeeAI's Agent Communication Protocol (covered in Section 2A), which merged into A2A in August 2025.
+
+The practical enterprise framing: **the channel decides the protocol.** Merchants reaching ChatGPT's shopping traffic implement the Agentic Commerce Protocol; merchants targeting Google-ecosystem and open agent-mesh traffic implement UCP (+ AP2 for payments). Large retailers (Walmart, Shopify) are visibly implementing both, which suggests the two stacks will coexist rather than converge in the near term — architect the commerce integration layer so that catalogue, cart, and order services are protocol-agnostic behind an adapter.
 
 ---
 
@@ -936,7 +944,7 @@ AP2 `PaymentReceipt` objects carry a `po_reference` field that links to purchase
 
 The Natural Language Interoperability Protocol represents a fundamentally different philosophical position from every other protocol in this section: instead of defining structured schemas and typed message formats, NLIP proposes that AI agents should communicate with each other — and with services — primarily in natural language, using the LLM's linguistic capabilities as the primary interface layer.
 
-NLIP was originated within Ecma International's Technical Committee 54 (TC-54), which was established in 2025 specifically to address AI-related interoperability standards. Ecma International is the same standards body responsible for ECMAScript (JavaScript), JSON (ECMA-404), and C# (ECMA-334) — organisations with a proven track record of producing widely-adopted technical standards through industry consensus.
+NLIP originated in the Enterprise Neurosystems Group open-source consortium (from March 2024) and was formalised within Ecma International's **Technical Committee 56 (TC56)**, established in December 2024 specifically to address AI-agent interoperability standards. Ecma International is the same standards body responsible for ECMAScript (JavaScript), JSON (ECMA-404), and C# (ECMA-334) — organisations with a proven track record of producing widely-adopted technical standards through industry consensus.
 
 The NLIP initiative was motivated by a critique of structured protocol approaches: that they require both parties (agent and service) to share a common schema definition, which creates tight coupling and limits the protocol's ability to handle novel, emergent interaction patterns. Natural language, by contrast, is self-describing and self-negotiating — a system that can read and generate English (or any human language) can, in principle, interact with any NLIP endpoint without prior schema exchange.
 
@@ -944,17 +952,17 @@ The NLIP initiative was motivated by a critique of structured protocol approache
 
 NLIP follows Ecma's formal standards development process:
 
-1. **Proposal submission** by TC-54 member organisations
-2. **Working draft** — circulated within TC-54 for review and revision
+1. **Proposal submission** by TC56 member organisations
+2. **Working draft** — circulated within TC56 for review and revision
 3. **Committee draft** — wider review including external comment period
 4. **Final draft** — submitted to Ecma General Assembly
 5. **Ecma Standard publication** — designated with an ECMA-nnn number
 
-As of July 2026, NLIP is at the Committee Draft stage, with TC-54 targeting Ecma Standard publication in late 2026 or early 2027. The standards body process is slower than community-driven approaches (MCP reached production adoption in under a year) but produces more authoritative, legally stable specifications.
+NLIP completed this process quickly by standards-body norms: TC56 approved the first draft specification on 1 May 2025, and **Ecma published the NLIP standards suite on 10 December 2025 — ECMA-430, ECMA-431, ECMA-432, ECMA-433, ECMA-434, plus Technical Report TR/113** (all freely available from Ecma). As of July 2026, TC56 continues active work on revisions and a new WebSocket binding. The standards-body process took longer than community-driven approaches (MCP reached production adoption in under a year) but produced authoritative, legally stable, royalty-free specifications.
 
 #### Key Contributors
 
-TC-54 members contributing to NLIP include major technology companies, multilingual AI platform providers, and healthcare and legal sector representatives. The inclusion of sector representatives is notable — NLIP's design reflects the needs of regulated industries where natural language is the primary form of inter-system communication (legal contracts, clinical notes, regulatory filings).
+TC56 members contributing to NLIP include major technology companies, multilingual AI platform providers, and healthcare and legal sector representatives. The inclusion of sector representatives is notable — NLIP's design reflects the needs of regulated industries where natural language is the primary form of inter-system communication (legal contracts, clinical notes, regulatory filings).
 
 #### Relationship to MCP and A2A
 
@@ -1250,10 +1258,10 @@ NLIP supports HTTP Message Signatures (RFC 9421) for message integrity. This is 
 
 | Dimension | Status | Notes |
 |---|---|---|
-| Specification stability | Committee Draft | Breaking changes likely before Standard publication |
+| Specification stability | Published standard (ECMA-430–434, Dec 2025) | Stable baseline; revisions and WebSocket binding in progress at TC56 |
 | Reference implementation | Research-grade | Academic and pilot implementations; no production SDK |
-| Conformance testing | Not yet available | TC-54 working on test methodology |
-| Multilingual support | Core feature | Active TC-54 working group on language requirements |
+| Conformance testing | Not yet available | TC56 working on test methodology |
+| Multilingual support | Core feature | Active TC56 working group on language requirements |
 | Enterprise adoption | Very early | Healthcare and legal pilots; no broad enterprise GA |
 | Tooling | Minimal | No production-grade NLIP server frameworks |
 
@@ -1776,7 +1784,7 @@ For enterprises building a comprehensive B2A (Business-to-Algorithm) commerce ca
 |---|---|---|---|---|
 | UCP | NRF + Google | Moderate — Google steward | NRF (industry body) | Low (Apache 2.0) |
 | AP2 | Google ADK Team | Low — single vendor | None yet | Low (Apache 2.0) |
-| NLIP | Ecma TC-54 | High — formal standards body | Ecma International | Very Low (Ecma IP policy) |
+| NLIP | Ecma TC56 | High — formal standards body | Ecma International | Very Low (Ecma IP policy) |
 | LMOS | Eclipse Foundation | High — Eclipse process | Eclipse Foundation | Very Low (EPL 2.0 / Apache 2.0) |
 
 ### Enterprise Adoption Roadmap Recommendations
@@ -1784,7 +1792,7 @@ For enterprises building a comprehensive B2A (Business-to-Algorithm) commerce ca
 **2026 — Evaluate and Pilot**:
 - Begin UCP integration for B2B procurement use cases where merchant support exists (Shopify, Walmart supplier portals)
 - Design AP2 architecture for future payment automation; implement compensating controls for current pilot deployments
-- Monitor NLIP TC-54 publication progress; begin NLIP proof-of-concept for knowledge management use cases
+- Track adoption of the published NLIP standards (ECMA-430–434); begin NLIP proof-of-concept for knowledge management use cases
 - Assign architect to follow LMOS Eclipse incubation
 
 **2027 — Selective Production**:
@@ -1807,7 +1815,7 @@ For enterprises building a comprehensive B2A (Business-to-Algorithm) commerce ca
 
 - UCP: `https://github.com/google/universal-commerce-protocol` (Apache 2.0)
 - AP2: `https://github.com/google/agent-payments-protocol` (Apache 2.0)
-- NLIP: Ecma TC-54 working drafts at `https://www.ecma-international.org/technical-committees/tc54/`
+- NLIP: Ecma TC56 — published standards ECMA-430–434 + TR/113 at `https://www.ecma-international.org/technical-committees/tc56/`
 - LMOS: `https://github.com/eclipse-lmos/lmos-protocol` (Apache 2.0 / EPL 2.0)
 
 ### Related Standards
@@ -1823,7 +1831,7 @@ For enterprises building a comprehensive B2A (Business-to-Algorithm) commerce ca
 
 - Linux Foundation AAIF (MCP, A2A): `https://lfaaiid.dev/`
 - NRF Technology Committee (UCP): `https://nrf.com/`
-- Ecma International TC-54 (NLIP): `https://www.ecma-international.org/`
+- Ecma International TC56 (NLIP): `https://www.ecma-international.org/`
 - Eclipse Foundation (LMOS): `https://www.eclipse.org/`
 
 ### Regulatory References

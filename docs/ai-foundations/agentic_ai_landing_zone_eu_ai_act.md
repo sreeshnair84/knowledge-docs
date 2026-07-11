@@ -1,5 +1,5 @@
 ---
-title: "Agentic AI Landing Zone: EU AI Act Compliance (August 2, 2026)"
+title: "Agentic AI Landing Zone: EU AI Act Compliance (Digital Omnibus Update — July 2026)"
 date_created: 2026-07-09
 last_reviewed: 2026-07-10
 status: current
@@ -11,27 +11,36 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# EU AI ACT COMPLIANCE: YOUR 24-DAY ACTION PLAN
+# EU AI ACT COMPLIANCE: YOUR ACTION PLAN
 
-*August 2, 2026 is your deadline. This guide de-risks compliance and avoids €35M penalties.*
+*This guide de-risks compliance and avoids €35M penalties.*
+
+> **⚖️ Digital Omnibus update (final Council approval 29 June 2026).** The AI Act simplification package changed the deadlines this guide was originally written against:
+> - **Annex III high-risk obligations: deferred from 2 Aug 2026 → 2 December 2027**
+> - **Annex I (AI embedded in regulated products): deferred from 2 Aug 2027 → 2 August 2028**
+> - **Article 50 transparency obligations: UNCHANGED — in force from 2 August 2026**
+> - **Article 5 prohibitions (social scoring etc.): already in force since 2 February 2025**
+>
+> The deferral buys time for high-risk conformity work — it does not remove it, and transparency duties bite now.
 
 ---
 
 ## CRITICAL TIMELINE
 
 ```
-TODAY: July 9, 2026
-├─ Days until Aug 2: 24 days
-├─ Article 50 transparency obligations: NOW ACTIVE
-├─ High-risk systems (Annex III): ENFORCEMENT ACTIVE
+TODAY: July 2026
+├─ Article 5 prohibitions: IN FORCE (since Feb 2, 2025)
+├─ Article 50 transparency obligations: IN FORCE from Aug 2, 2026
+├─ High-risk systems (Annex III): deadline Dec 2, 2027 (Digital Omnibus deferral)
+├─ High-risk embedded in Annex I products: deadline Aug 2, 2028
 └─ Penalties: €35M or 7% global turnover
 
 RECOMMENDATION:
-├─ Days 1-3: Agent inventory + risk classification (THIS WEEK)
-├─ Days 4-10: High-risk conformity assessment (NEXT WEEK)
-├─ Days 11-18: Documentation + remediation (WEEK 3)
-├─ Days 19-24: Audit readiness + final review (FINAL WEEK)
-└─ Day 25+: Operational compliance (ongoing)
+├─ Now:        Agent inventory + risk classification
+├─ Q3 2026:    Article 50 transparency compliance (chatbot disclosure, AI-content labeling)
+├─ Q4 2026:    High-risk gap assessment + conformity roadmap
+├─ 2027:       High-risk remediation, documentation, audit readiness (before Dec 2, 2027)
+└─ Ongoing:    Operational compliance
 ```
 
 ---
@@ -108,8 +117,8 @@ agents:
 | Risk Level | Definition | Requirements | Examples |
 | ----------- | ----------- | -------------- | ---------- |
 | **UNACCEPTABLE** | Prohibited systems | ❌ BANNED (remove immediately) | Social credit scoring, manipulation, subliminal techniques |
-| **HIGH-RISK** (Annex III) | Critical systems needing conformity assessment | ⚠️ MUST COMPLY by Aug 2 | Lending decisions, employment screening, law enforcement tools, critical infrastructure |
-| **LIMITED-RISK** | Transparency required | ⚠️ MUST DISCLOSE by Aug 2 | Chatbots, content generation, recommendation systems |
+| **HIGH-RISK** (Annex III) | Critical systems needing conformity assessment | ⚠️ MUST COMPLY by Dec 2, 2027 | Lending decisions, employment screening, law enforcement tools, critical infrastructure |
+| **LIMITED-RISK** | Transparency required | ⚠️ MUST DISCLOSE by Aug 2, 2026 | Chatbots, content generation, recommendation systems |
 | **MINIMAL-RISK** | No specific requirements | ✅ No immediate action | Spam filters, autocorrect, simple analytics |
 
 ### Classification Decision Tree
@@ -177,7 +186,7 @@ classification:
     appeals_process_required: true
 
   remediation:
-    # Can you fix this before Aug 2?
+    # Can you fix this before the Dec 2, 2027 high-risk deadline?
     compliance_possible: true
     estimated_effort: "3-4 weeks"
     priority: "CRITICAL"
@@ -439,7 +448,7 @@ Audit Log Must:
 
 ## PART 3: TRANSPARENCY OBLIGATIONS (Days 11-18)
 
-### Article 50: Transparency Requirements (NOW ACTIVE - Aug 2)
+### Article 50: Transparency Requirements (IN FORCE from Aug 2, 2026 — unchanged by the Omnibus)
 
 **What you must do:** Inform users when they're interacting with AI.
 
@@ -663,7 +672,7 @@ NEXT ACTIONS:
 
 **Print this. Check off as you complete each item.**
 
-### Before August 2, 2026
+### Before the deadlines (Art. 50 transparency: Aug 2, 2026 · Annex III high-risk: Dec 2, 2027)
 
 ```
 AGENT INVENTORY & CLASSIFICATION
@@ -731,7 +740,7 @@ REGULATORY READINESS
 ```
 Your Agent: Loan decisioning (approves/rejects loans)
 EU AI Act Classification: HIGH-RISK (Annex III)
-Compliance Deadline: August 2, 2026
+Compliance Deadline: December 2, 2027 (Digital Omnibus deferral)
 
 What you MUST have:
 ✓ Risk management system (documented risks + mitigations)
@@ -743,7 +752,7 @@ What you MUST have:
 ✓ Appeals process (users can request review)
 ✓ Bias monitoring (daily fairness checks)
 
-If you DON'T have all 8 items by Aug 2:
+If you DON'T have all 8 items by Dec 2, 2027:
 ❌ System cannot be deployed/operated
 ❌ Regulator can fine you €35M or 7% turnover
 ❌ Potential criminal liability for executives
@@ -762,8 +771,8 @@ Action Plan:
 
 ```
 Your Agent: Customer service chatbot
-EU AI Act Classification: LIMITED-RISK
-Compliance Deadline: August 2, 2026
+EU AI Act Classification: LIMITED-RISK (Article 50 — unchanged by the Omnibus)
+Compliance Deadline: August 2, 2026 (in force)
 
 What you MUST have:
 ✓ Transparency (users know they're talking to AI)
@@ -787,7 +796,7 @@ Action Plan:
 ```
 Your Agent: Scores customers on "trustworthiness" for credit
 EU AI Act Classification: UNACCEPTABLE (Article 5)
-Compliance Deadline: August 2, 2026
+Compliance Deadline: ALREADY IN FORCE (since February 2, 2025)
 
 What you MUST do:
 ❌ STOP using this system immediately
@@ -862,11 +871,11 @@ Week 3 (Jul 23-27): Documentation & Implementation
 ├─ [ ] Audit log system operational
 └─ [ ] Transparency deployed
 
-Week 4 (Jul 30-Aug 2): Final Audit & Compliance Verification
+Week 4: Final Audit & Compliance Verification
 ├─ [ ] All requirements checked
 ├─ [ ] Internal audit passed
 ├─ [ ] Regulatory readiness confirmed
-└─ [ ] August 2 compliance deadline met ✓
+└─ [ ] Deadline met (Art. 50: Aug 2, 2026 · Annex III: Dec 2, 2027) ✓
 
 ## Resources Allocated
 
@@ -874,7 +883,7 @@ Week 4 (Jul 30-Aug 2): Final Audit & Compliance Verification
 ├─ Legal counsel: [name]
 ├─ Technical team: [size]
 ├─ Budget: [amount]
-└─ Timeline: 24 days
+└─ Timeline: [per deadline — Art. 50 now; Annex III by Dec 2, 2027]
 
 ## Risks & Mitigations
 
@@ -938,6 +947,6 @@ Risk: Missing agents in inventory
 ---
 
 **Document Status:** CRITICAL - Action Required  
-**Deadline:** August 2, 2026 (24 days)  
+**Deadlines:** Art. 50 transparency — Aug 2, 2026 (in force) · Annex III high-risk — Dec 2, 2027  
 **Next Update:** After classification complete  
 **Owner:** Chief Compliance Officer / General Counsel

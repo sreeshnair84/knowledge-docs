@@ -39,8 +39,8 @@ Before diving into cross-cutting concerns, a quick reference of the 9 protocols 
 │ ANP        │ Agent Network Protocol        │ Open Source  │ EMERGING        │
 │            │                               │ Jul 2025     │ Peer-to-peer    │
 ├────────────┼───────────────────────────────┼──────────────┼─────────────────┤
-│ AG-UI      │ Agent-User Interaction Proto. │ Community /  │ GROWING         │
-│            │                               │ Agno 2025    │ SSE streaming   │
+│ AG-UI      │ Agent-User Interaction Proto. │ CopilotKit   │ GROWING         │
+│            │                               │ 2025         │ SSE streaming   │
 ├────────────┼───────────────────────────────┼──────────────┼─────────────────┤
 │ A2UI       │ Agent-to-User Interface Proto.│ Google ADK   │ EARLY v0.9      │
 │            │                               │ 2025         │ Declarative UI  │
@@ -51,8 +51,8 @@ Before diving into cross-cutting concerns, a quick reference of the 9 protocols 
 │ AP2        │ Agent Payments Protocol       │ Google 2025  │ EARLY v0.1      │
 │            │                               │              │ audit trail     │
 ├────────────┼───────────────────────────────┼──────────────┼─────────────────┤
-│ NLIP       │ Natural Language Interop.     │ Ecma Intl.   │ NICHE           │
-│            │                               │ 2025         │ standards body  │
+│ NLIP       │ Natural Language Interop.     │ Ecma TC56    │ NICHE           │
+│            │                               │ 2025         │ ECMA-430–434    │
 ├────────────┼───────────────────────────────┼──────────────┼─────────────────┤
 │ LMOS       │ LM Operating System Protocol  │ Eclipse Fdn  │ NICHE — IoA     │
 │            │                               │ 2025         │ vision          │
@@ -654,7 +654,7 @@ A2A TASK STATE MACHINE
 | **A2UI** | JSON (declarative component tree) | 18 component primitive schema | Image URLs (not inline) | HTTP gzip | Component tree: ~500KB practical | Versioned component spec (v0.9) |
 | **UCP** | JSON (REST) | OpenAPI 3.x (NRF defined) | Not applicable | HTTP gzip | Order payload: ~1MB | Semantic versioning; additive fields |
 | **AP2** | JSON | JSON Schema (mandate + receipt) | Not applicable | HTTP gzip | Mandate: ~10KB | Mandate version field |
-| **NLIP** | JSON / natural language text | Ecma-defined (not yet published) | Not specified | Not specified | Not specified | Ecma standards process |
+| **NLIP** | JSON / natural language text | Ecma-defined (ECMA-430–434, published Dec 2025) | Not specified | Not specified | Not specified | Ecma standards process |
 | **LMOS** | JSON + gRPC/Protobuf (proposed) | Protobuf IDL + JSON Schema | Protobuf bytes | gzip + Brotli | Per-capability | Protobuf field numbering |
 | **UTCP** | JSON | Tool definition schema | Base64 | HTTP gzip | Tool-defined | Schema version in tool descriptor |
 

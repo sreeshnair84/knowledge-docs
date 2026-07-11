@@ -24,7 +24,7 @@ covers_version: \"as of 2026-07-10\"
 | Driver | 2026 Reality | Impact |
 | -------- | ---------- | -------- |
 | **Autonomous Workforce Shortage** | 82% of enterprises report skill gaps; 65% planning to deploy autonomous agents within 24 months | Budget shift from hiring to platform investment |
-| **Regulatory Deadline Pressure** | EU AI Act Annex III enforcement active (Aug 2, 2026); High-risk penalties €35M or 7% turnover | Compliance-first governance now table stakes |
+| **Regulatory Deadline Pressure** | EU AI Act Art. 50 transparency in force (Aug 2, 2026); Annex III high-risk deadline Dec 2, 2027 (Digital Omnibus); penalties €35M or 7% turnover | Compliance-first governance now table stakes |
 | **Cost-Per-Decision Crisis** | LLM inference costs dropping 70% YoY; agentic automation now ROI-positive at scale | Threshold crossed: automation ROI > process outsourcing |
 | **Data Access Democratization** | 78% of enterprises now have MCP-enabled agents; data access standardized | Opportunity to unlock trapped enterprise data |
 | **Multi-Model Competition** | Claude 5, GPT-5.5, Gemini 3.5 all production-ready; no single provider dominance | Strategic imperative: vendor portability, cost optimization |
@@ -151,15 +151,15 @@ Business Unit AI Teams (Federated)
 
 ---
 
-## EU AI ACT COMPLIANCE: IMMEDIATE ACTIONS (August 2, 2026 Deadline)
+## EU AI ACT COMPLIANCE: IMMEDIATE ACTIONS
 
-**Timeline Update (July 2026):** Article 50 transparency obligations are **now active**. High-risk systems in Annex III require conformity assessment and risk management documentation **by August 2, 2026**.
+**Timeline Update (July 2026 — Digital Omnibus, final 29 June 2026):** Article 50 transparency obligations are **in force from August 2, 2026** (unchanged). High-risk systems in Annex III now require conformity assessment and risk management documentation **by December 2, 2027** (deferred from August 2, 2026); AI embedded in Annex I regulated products by **August 2, 2028**.
 
-### Compliance Checklist for August 2, 2026
+### Compliance Checklist
 
 - [ ] **Classify each agent** against EU AI Act risk levels (Unacceptable / High / Limited / Minimal)
 - [ ] **For High-Risk agents**: Conduct conformity assessment and document risk management system
-- [ ] **Implement transparency controls**: Disclose to users when AI is being used (mandatory by Aug 2)
+- [ ] **Implement transparency controls**: Disclose to users when AI is being used (mandatory from Aug 2, 2026)
 - [ ] **Establish human oversight**: Document escalation procedures for high-risk decisions
 - [ ] **Create audit trail**: Implement immutable logging of all agent actions
 - [ ] **Draft DPA amendments**: Brief legal/data protection team on how agent data flows affect GDPR

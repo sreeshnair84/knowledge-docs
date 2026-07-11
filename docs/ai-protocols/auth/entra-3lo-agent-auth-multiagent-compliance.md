@@ -233,7 +233,7 @@ Banks are 'essential entities' under NIS2 Annex I Sector 4. DORA is lex speciali
 
 ### 21.3 EU AI Act — High-Risk System Considerations
 
-The EU AI Act (applicable August 2026 for high-risk systems) intersects with DORA via Article 9(10). Agents that access user data and make decisions affecting customers may be classified as high-risk.
+The EU AI Act (applicable December 2027 for Annex III high-risk systems, deferred from August 2026 by the Digital Omnibus) intersects with DORA via Article 9(10). Agents that access user data and make decisions affecting customers may be classified as high-risk.
 
 | EU AI Act Obligation | Applicability | Control Mapping |
 | --------------------- | -------------- | ---------------- |
