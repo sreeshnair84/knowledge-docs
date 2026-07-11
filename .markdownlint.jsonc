@@ -32,8 +32,9 @@
   // MD022: Headings surrounded by blank lines
   "MD022": true,
 
-  // MD025: Single H1 per document
-  "MD025": true,
+  // MD025: Single H1 per document — disable front_matter_title so Docusaurus
+  // pages with both frontmatter title: and a body # H1 don't trigger this
+  "MD025": { "front_matter_title": "" },
 
   // MD031: Fenced code blocks surrounded by blank lines
   "MD031": true,

@@ -17,10 +17,9 @@ Standards, protocols, and communication frameworks for AI agents including MCP, 
 
 ---
 
-## Agentic AI Platform — Part Series
+## Authentication & Identity
 
-- [Part 1 — Industry Survey](/knowledge-docs/ai-protocols/Part1_Industry_Survey)
-
-- [Part 5 — Marketplace Architecture](/knowledge-docs/ai-protocols/Part5_Marketplace_Architecture)
-
-- [Part 7 — Standards Reference](/knowledge-docs/ai-protocols/Part7_Standards_Reference)
+- [Authentication Overview](./auth/index.md)
+- [Auth Standards Reference](./auth/auth-standards-reference.md) — OAuth 2.1, OIDC, RFC 8693, decision frameworks
+- [Enterprise AI Platform Auth Survey](./auth/enterprise-ai-platform-auth-survey.md) — 10 leading AI platforms compared
+- [Marketplace Connector Auth Patterns](./auth/marketplace-connector-auth-patterns.md) — GitHub, AppSource, AWS Marketplace consent flows
