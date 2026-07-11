@@ -18,33 +18,33 @@ Confidential Internal Engagement Documentation
 
 Engagement Period: February 2025 – December 2025 
 
-<u>1. Executive Summary</u> 
+1. Executive Summary 
 
-<u>2. Client Background 3. Business Problem</u> 
+2. Client Background 3. Business Problem 
 
-<u>4. Constraints</u> 
+4. Constraints 
 
-<u>5. Discovery Transcript</u> 
+5. Discovery Transcript 
 
-   - <u>5.1 Kickoff — Week 1</u> 
+   - 5.1 Kickoff — Week 1 
 
-   - <u>5.2 Shop Floor Shadowing — Week 2, Ohio Plant</u> 
+   - 5.2 Shop Floor Shadowing — Week 2, Ohio Plant 
 
-   - <u>5.3 Supply Chain Planning Shadowing — Week 3</u> 
+   - 5.3 Supply Chain Planning Shadowing — Week 3 
 
-   - <u>5.4 Capability Mapping and ROI — Week 4</u> 
+   - 5.4 Capability Mapping and ROI — Week 4 
 
-<u>6. Architecture Workshops 6.1 Business & Information Architecture</u> 
+6. Architecture Workshops 6.1 Business & Information Architecture 
 
-<u>6.2 AI/Platform Architecture — Whiteboard Session, Week 8</u> 
+6.2 AI/Platform Architecture — Whiteboard Session, Week 8 
 
-   - <u>6.3 Edge & Cloud Architecture</u> 
+   - 6.3 Edge & Cloud Architecture 
 
-   - <u>6.4 Integration & API Strategy</u> 
+   - 6.4 Integration & API Strategy 
 
-<u>7. Technical Debates</u> 
+7. Technical Debates 
 
-   - <u>7.1 Build vs. Buy for the Vision Model</u> 
+   - 7.1 Build vs. Buy for the Vision Model 
 
 |7.1 Build vs. Buy for the Vision Model<br>7.2 Per-Line Calibration—How Much Is Enough?|
 |---|

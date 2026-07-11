@@ -18,75 +18,75 @@ Confidential Internal Engagement Documentation
 
 Engagement Period: March 2025 – February 2026 
 
-<u>1. Executive Summary</u> 
+1. Executive Summary 
 
-<u>2. Client Background</u> 
+2. Client Background 
 
-<u>3. Business Problem</u> 
+3. Business Problem 
 
-<u>4. Constraints</u> 
+4. Constraints 
 
-<u>5. Discovery Transcript</u> 
+5. Discovery Transcript 
 
-   - <u>5.1 Kickoff Workshop — Week 1</u> 
+   - 5.1 Kickoff Workshop — Week 1 
 
-   - <u>5.2 Maintenance Control Shadow Session — Week 2</u> 
+   - 5.2 Maintenance Control Shadow Session — Week 2 
 
-   - <u>5.3 Business Capability Mapping — Week 3</u> 
+   - 5.3 Business Capability Mapping — Week 3 
 
-   - <u>5.4 ROI and Risk Discussion — Week 4</u> 
+   - 5.4 ROI and Risk Discussion — Week 4 
 
-<u>6. Architecture Workshops 6.1 Business & Information Architecture</u> 
+6. Architecture Workshops 6.1 Business & Information Architecture 
 
-   - <u>6.2 Data Architecture</u> 
+   - 6.2 Data Architecture 
 
-<u>6.3 AI/Platform Architecture — Whiteboard Session, Week 8 6.4 Security & Identity Architecture</u> 
+6.3 AI/Platform Architecture — Whiteboard Session, Week 8 6.4 Security & Identity Architecture 
 
-<u>6.5 Integration & API Strategy</u> 
+6.5 Integration & API Strategy 
 
-<u>7. Technical Debates</u> 
+7. Technical Debates 
 
-<u>7.1 Build vs. Buy — the OEM Predictive Maintenance Offer</u> 
+7.1 Build vs. Buy — the OEM Predictive Maintenance Offer 
 
-<u>7.2 LLM Provider Selection and Multi-Cloud Reality</u> 
+7.2 LLM Provider Selection and Multi-Cloud Reality 
 
-<u>7.3 The Autonomy Debate, Revisited — Week 14</u> 
+7.3 The Autonomy Debate, Revisited — Week 14 
 
-<u>7.4 Evaluation Strategy Debate 8. Executive Reviews</u> 
+7.4 Evaluation Strategy Debate 8. Executive Reviews 
 
-<u>8.1 Architecture Review Board — Week 11</u> 
+8.1 Architecture Review Board — Week 11 
 
-— - <u>8.2 CIO Budget Review Week 22 (Mid Engagement)</u> 
+— - 8.2 CIO Budget Review Week 22 (Mid Engagement) 
 
-<u>8.3 CISO Sign-off Review — Week 30</u> 
+8.3 CISO Sign-off Review — Week 30 
 
-<u>9. Final Architecture</u> 
+9. Final Architecture 
 
-<u>10. Delivery Roadmap</u> 
+10. Delivery Roadmap 
 
-<u>11. Risks</u> 
+11. Risks 
 
-<u>12. Governance Model</u> 
+12. Governance Model 
 
-<u>13. Production Rollout</u> 
+13. Production Rollout 
 
-<u>14. Production Incident — Month 14</u> 
+14. Production Incident — Month 14 
 
-<u>14.1 Incident Summary</u> 
+14.1 Incident Summary 
 
-<u>14.2 Incident Response Transcript 14.3 Compensating Control Deployment</u> 
+14.2 Incident Response Transcript 14.3 Compensating Control Deployment 
 
-<u>15. Lessons Learned</u> 
+15. Lessons Learned 
 
-<u>16. Enterprise Architecture Artifacts</u> 
+16. Enterprise Architecture Artifacts 
 
-<u>17. Architecture Decision Records (ADRs)</u> 
+17. Architecture Decision Records (ADRs) 
 
-<u>18. AI Evaluation Strategy</u> 
+18. AI Evaluation Strategy 
 
-<u>19. Operational Runbook</u> 
+19. Operational Runbook 
 
-<u>20. Future Roadmap</u> 
+20. Future Roadmap 
 
 # **1. Executive Summary** 
 

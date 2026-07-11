@@ -23,13 +23,13 @@ Engagement Period: April 2025 – March 2026
 |2. Client Background|
 |3. Business Problem|
 
-<u>4. Constraints</u> 
+4. Constraints 
 
-<u>5. Discovery Transcript 5.1 Kickoff — Week 1 5.2 Clinician Shadowing — Week 2</u> 
+5. Discovery Transcript 5.1 Kickoff — Week 1 5.2 Clinician Shadowing — Week 2 
 
-- <u>5.3 Utilization Management Shadowing — Week 3 5.4 Capability Mapping and ROI — Week 4</u> 
+- 5.3 Utilization Management Shadowing — Week 3 5.4 Capability Mapping and ROI — Week 4 
 
-- <u>6. Architecture Workshops 6.1 Data & Information Architecture 6.2 AI/Platform Architecture — Whiteboard Session, Week 9 6.3 Security & Identity Architecture</u> 
+- 6. Architecture Workshops 6.1 Data & Information Architecture 6.2 AI/Platform Architecture — Whiteboard Session, Week 9 6.3 Security & Identity Architecture 
 
 |6.3 Security & Identity Architecture<br>6.4 Integration & API Strategy|
 |---|

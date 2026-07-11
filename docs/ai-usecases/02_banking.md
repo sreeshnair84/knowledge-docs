@@ -18,37 +18,37 @@ Confidential Internal Engagement Documentation
 
 Engagement Period: January 2025 – November 2025 
 
-<u>1. Executive Summary</u> 
+1. Executive Summary 
 
-<u>2. Client Background</u> 
+2. Client Background 
 
-<u>3. Business Problem</u> 
+3. Business Problem 
 
-<u>4. Constraints</u> 
+4. Constraints 
 
-<u>5. Discovery Transcript</u> 
+5. Discovery Transcript 
 
-   - <u>5.1 Kickoff — Week 1</u> 
+   - 5.1 Kickoff — Week 1 
 
-   - <u>5.2 Underwriter Shadowing — Week 2</u> 
+   - 5.2 Underwriter Shadowing — Week 2 
 
-   - <u>5.3 Business Capability Mapping — Week 3</u> 
+   - 5.3 Business Capability Mapping — Week 3 
 
-   - <u>5.4 ROI and Risk Discussion — Week 4</u> 
+   - 5.4 ROI and Risk Discussion — Week 4 
 
-<u>6. Architecture Workshops</u> 
+6. Architecture Workshops 
 
-   - <u>6.1 Data & Information Architecture</u> 
+   - 6.1 Data & Information Architecture 
 
 |6.2 AI/Platform Architecture—Whiteboard Session, Week 8|
 |---|
 
-- <u>6.3 Security & Identity Architecture</u> 
+- 6.3 Security & Identity Architecture 
 
 |6.4 Integration & API Strategy|
 |---|
 
-<u>7. Technical Debates</u> 
+7. Technical Debates 
 
 |7.1 Foundation Model Selection and On-Prem vs. Cloud|
 |---|
@@ -57,9 +57,9 @@ Engagement Period: January 2025 – November 2025
 |7.3 Evaluation Strategy Debate|
 |---|
 
-<u>8. Executive Reviews</u> 
+8. Executive Reviews 
 
-<u>8.1 Model Risk Committee Review — Week 16 8.2 CRO / Board Risk Committee Briefing — Week 20 8.3 Post-Incident Executive Review — Week 34 (see Section 14 for incident detail) 9. Final Architecture 10. Delivery Roadmap 11. Risks 12. Governance Model 13. Production Rollout 14. Production Incident — Month 8 14.1 Incident Summary 14.2 Incident Response Transcript 14.3 Remediation 15. Lessons Learned 16. Enterprise Architecture Artifacts 17. Architecture Decision Records (ADRs) 18. AI Evaluation Strategy 19. Operational Runbook 20. Future Roadmap</u> 
+8.1 Model Risk Committee Review — Week 16 8.2 CRO / Board Risk Committee Briefing — Week 20 8.3 Post-Incident Executive Review — Week 34 (see Section 14 for incident detail) 9. Final Architecture 10. Delivery Roadmap 11. Risks 12. Governance Model 13. Production Rollout 14. Production Incident — Month 8 14.1 Incident Summary 14.2 Incident Response Transcript 14.3 Remediation 15. Lessons Learned 16. Enterprise Architecture Artifacts 17. Architecture Decision Records (ADRs) 18. AI Evaluation Strategy 19. Operational Runbook 20. Future Roadmap 
 
 # **1. Executive Summary** 
 
