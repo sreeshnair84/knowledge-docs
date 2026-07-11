@@ -77,7 +77,13 @@ def fix_image_references(md_text, img_dir, img_prefix, base_name):
 
         final = renamed.get(old_abs, old_abs)
         # Convert to Docusaurus /img/... absolute path (strip 'static' prefix)
-        rel = re.sub(r'^.*[/\\]static[/\\]', '/', final).replace('\\', '/')
+        norm_final = final.replace('\\', '/')
+        if '/static/' in norm_final:
+            rel = '/' + norm_final.split('/static/', 1)[1]
+        elif norm_final.startswith('static/'):
+            rel = '/' + norm_final[len('static/'):]
+        else:
+            rel = '/' + norm_final
         label = alt or f"Figure {counter[0]}"
         return f'![{label}]({rel})'
 

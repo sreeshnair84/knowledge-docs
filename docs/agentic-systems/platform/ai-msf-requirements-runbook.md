@@ -1,12 +1,14 @@
 ---
-title: "ai-msf-requirements-runbook"
-date_created: 
-last_reviewed: 
+title: "AI-MSF PoC — Shared Requirements & Agent Runbook"
+date_created: 2026-06-23
+last_reviewed: 2026-07-11
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "ai-msf-requirements-runbook.pdf"
-tags: []
+tags: ["agentic-systems", "platform", "microservice", "runbook", "requirements"]
+doc_type: guide
+covers_version: "v1.0 June 2026"
 ---
 
 <!-- converted from ai-msf-requirements-runbook.pdf -->

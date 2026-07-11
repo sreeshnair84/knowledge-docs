@@ -1,12 +1,14 @@
 ---
-title: "Enterprise_Agentic_AI_Asset_Management_2026"
-date_created: 
-last_reviewed: 
+title: "Enterprise Agentic AI Asset Management 2026"
+date_created: 2026-06-01
+last_reviewed: 2026-07-11
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Enterprise_Agentic_AI_Asset_Management_2026.pdf"
-tags: []
+tags: ["agentic-systems", "platform", "asset-management", "governance", "enterprise"]
+doc_type: research-report
+covers_version: "June 2026"
 ---
 
 <!-- converted from Enterprise_Agentic_AI_Asset_Management_2026.pdf -->
@@ -278,7 +280,7 @@ Runtime assets are ephemeral or semi-persistent artifacts generated during agent
 
 
 
-![Figure 1](static/img/agentic-systems/platform/enterprise-asset-mgmt-p8-1.png)
+![Figure 1](/img/agentic-systems/platform/enterprise-asset-mgmt-p8-1.png)
 
 
 PART 2<br>Enterprise Asset Lifecycle<br><!-- End of picture text -->
@@ -338,7 +340,7 @@ Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tool
 
 
 
-![Figure 2](static/img/agentic-systems/platform/enterprise-asset-mgmt-p10-2.png)
+![Figure 2](/img/agentic-systems/platform/enterprise-asset-mgmt-p10-2.png)
 
 
 PART 3<br>Enterprise Repositories<br><!-- End of picture text -->
@@ -416,7 +418,7 @@ III `schemas/         # Metadata schema definitions` III `catalog/         # Ass
 
 
 
-![Figure 3](static/img/agentic-systems/platform/enterprise-asset-mgmt-p12-3.png)
+![Figure 3](/img/agentic-systems/platform/enterprise-asset-mgmt-p12-3.png)
 
 
 PART 4<br>Enterprise Registries<br><!-- End of picture text -->
@@ -479,7 +481,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 
 
 
-![Figure 4](static/img/agentic-systems/platform/enterprise-asset-mgmt-p14-4.png)
+![Figure 4](/img/agentic-systems/platform/enterprise-asset-mgmt-p14-4.png)
 
 
 PART 5<br>Universal Metadata Model<br><!-- End of picture text -->
@@ -616,7 +618,7 @@ Versioning is the cornerstone of reproducibility, rollback capability, and chang
 
 
 
-![Figure 5](static/img/agentic-systems/platform/enterprise-asset-mgmt-p18-5.png)
+![Figure 5](/img/agentic-systems/platform/enterprise-asset-mgmt-p18-5.png)
 
 
 PART 7<br>Governance Frameworks<br><!-- End of picture text -->
@@ -788,7 +790,7 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 
 
 
-![Figure 6](static/img/agentic-systems/platform/enterprise-asset-mgmt-p24-6.png)
+![Figure 6](/img/agentic-systems/platform/enterprise-asset-mgmt-p24-6.png)
 
 
 PART 10<br>AI-Native SDLC<br><!-- End of picture text -->
@@ -939,7 +941,7 @@ Token costs compound rapidly at scale. Implement per-agent, per-team, and per-us
 
 
 
-![Figure 7](static/img/agentic-systems/platform/enterprise-asset-mgmt-p30-7.png)
+![Figure 7](/img/agentic-systems/platform/enterprise-asset-mgmt-p30-7.png)
 
 
 PART 13<br>Anti-Patterns<br><!-- End of picture text -->
@@ -1031,7 +1033,7 @@ Common failure modes in enterprise agentic AI asset management and how to avoid 
 
 
 
-![Figure 8](static/img/agentic-systems/platform/enterprise-asset-mgmt-p32-8.png)
+![Figure 8](/img/agentic-systems/platform/enterprise-asset-mgmt-p32-8.png)
 
 
 PART 14<br>Case Studies<br><!-- End of picture text -->

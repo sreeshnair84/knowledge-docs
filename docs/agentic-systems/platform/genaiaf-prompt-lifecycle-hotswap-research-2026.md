@@ -1,12 +1,14 @@
 ---
-title: "GENAIAF_559_PromptLifecycle_HotSwap_Research_2026"
-date_created: 
-last_reviewed: 
+title: "GENAIAF-559: Prompt Lifecycle, Versioning & Hot-Swap Research 2026"
+date_created: 2026-06-01
+last_reviewed: 2026-07-11
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "GENAIAF_559_PromptLifecycle_HotSwap_Research_2026.pdf"
-tags: []
+tags: ["agentic-systems", "platform", "prompt-management", "aws-agentcore", "observability"]
+doc_type: research-report
+covers_version: "June 2026"
 ---
 
 <!-- converted from GENAIAF_559_PromptLifecycle_HotSwap_Research_2026.pdf -->
@@ -229,7 +231,7 @@ agentcore gateway ab-test create \
 
 
 
-![Figure 1](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p8-1.png)
+![Figure 1](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p8-1.png)
 
 
 Option B: AgentCore Harness<br>§3<br>Versioning<br><!-- End of picture text -->
@@ -339,7 +341,7 @@ aws bedrock-agentcore-control update-harness-endpoint \
 
 
 
-![Figure 2](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p11-2.png)
+![Figure 2](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p11-2.png)
 
 
 Option C: Langfuse Prompt<br>§4<br>Registry + AppConfig Delivery<br><!-- End of picture text -->
@@ -492,7 +494,7 @@ def invoke(session_id: str, user_input: str, context: dict) -> str:
 
 
 
-![Figure 3](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p15-3.png)
+![Figure 3](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p15-3.png)
 
 
 §5<br>Option D: Phoenix / Arize AX Role<br><!-- End of picture text -->
@@ -565,7 +567,7 @@ response = litellm.completion(
 
 
 
-![Figure 4](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p17-4.png)
+![Figure 4](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p17-4.png)
 
 
 Option E: AppConfig Alone |<br>§6<br>Option F: CDK Hotswap<br><!-- End of picture text -->
@@ -678,7 +680,7 @@ cdk deploy --hotswap   # Skips CloudFormation, directly updates AgentCore Runtim
 
 
 
-![Figure 5](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p19-5.png)
+![Figure 5](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p19-5.png)
 
 
 Per-Prompt Trace Correlation —<br>§7<br>Complete Implementation<br><!-- End of picture text -->
@@ -890,7 +892,7 @@ Each option scored 1–5 on the six most relevant dimensions for this specific e
 
 
 
-![Figure 6](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p25-6.png)
+![Figure 6](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p25-6.png)
 
 
 §10<br>Recommended Implementation<br><!-- End of picture text -->
@@ -1024,7 +1026,7 @@ No API keys, credentials, or PII appear in any prompt template in Git. CI fails 
 
 
 
-![Figure 7](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p29-7.png)
+![Figure 7](/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p29-7.png)
 
 
 Addressing the Original Ticket —<br>§12<br>Line by Line<br><!-- End of picture text -->
