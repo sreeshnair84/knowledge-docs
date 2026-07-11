@@ -9,13 +9,11 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Necessary But Not Sufficient** 
 
 Building an Agentic Scientific Research Assistant Inside a Drug Discovery Organisation 
 
 A transcript-style account following Dr. Naledi Khumalo, Enterprise AI Architect at Aurelia Biosciences, as she designs a research agent for literature review, internal data cross-reference, and patent prior-art surfacing — discovering that citation presence, aggregate accuracy, and clean results can all mask silent, systematic gaps. 
-
 
 ## Cast of Characters
 
@@ -28,22 +26,18 @@ A transcript-style account following Dr. Naledi Khumalo, Enterprise AI Architect
 | **Dr. Ben Okonjo** | Head of IP & Patent Strategy |
 | **Claire Fenwick** | Head of Data Governance |
 
-
 :::info[Case Journey]
 **`INCUBATION`**  →  **`PITCH / APPROVE`**  →  **`DESIGN`**  →  **`BUILD`**  →  **`OPERATE`**  →  **`REVIEW`**
 :::
-
 
 *Aurelia Biosciences | Agentic Research Assistant Platform | 2026*
 
 ---
 
-
 ## Stage 1 — THE LITERATURE NOBODY HAD TIME TO READ
 
 *Scoping an agent for scientific research without scoping away the science*
 `Week 1 | Monday, 11 May 2026`
-
 
 :::note[📅 Meeting]
 **🕐 09:00**  📍 *Monday 11 May 2026 | Piotr Zielinski’s office*
@@ -53,21 +47,17 @@ A transcript-style account following Dr. Naledi Khumalo, Enterprise AI Architect
 *Attendees: Piotr Zielinski (CSO), Naledi Khumalo (EA)*
 :::
 
-
 > **Dr. Piotr Zielinski** — *Chief Scientific Officer*
 >
 > Naledi, our medicinal chemists are spending close to a third of their time on literature review and target validation research — reading papers, cross-referencing patent filings, checking prior art — before they even get to actual hypothesis generation. I want an agentic research assistant that can do the groundwork so our scientists spend more time thinking and less time reading. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That’s a compelling goal, and also one of the higher-stakes domains I could be asked to build in — if an agent misrepresents a paper’s findings or misses a critical piece of prior art, that’s not just an inefficiency, it could send a research programme down a dead end, or worse, into IP infringement territory. Before I scope this as a build, I want to understand precisely what ‘do the groundwork’ means task by task. 
 
-
 > **Dr. Piotr Zielinski** — *Chief Scientific Officer*
 >
 > Fair. Helena’s computational chemistry team would be the first users — talk to them. 
-
 
 :::note[📅 Meeting]
 **🕐 11:00**  📍 *Wednesday 13 May 2026 | Computational Chemistry Lab*
@@ -77,36 +67,29 @@ A transcript-style account following Dr. Naledi Khumalo, Enterprise AI Architect
 *Attendees: Naledi Khumalo (EA), Dr. Helena Marsh (Head of Computational Chemistry)*
 :::
 
-
 > **Dr. Helena Marsh** — *Head of Computational Chemistry*
 >
 > When we’re validating a new target, the workflow is: search the literature for everything published on the target and related pathways, check patent databases for existing IP that might block a compound class, cross-reference our internal experimental database for anything we’ve already tried, and then synthesise all of that into a target validation summary. Each of those four steps could plausibly be agent-assisted, but they carry very different risk if the agent gets something wrong. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > Walk me through the risk difference as you see it. 
 
-
 > **Dr. Helena Marsh** — *Head of Computational Chemistry*
 >
 > Literature search and summarisation — if the agent misses a paper or slightly mischaracterises a finding, a good scientist reading the summary alongside the actual sources will usually catch it, especially if we can see citations. Patent prior-art search is scarier, because a missed or misread patent could mean we invest years and tens of millions into a compound class that turns out to infringe, and by the time anyone double-checks manually, we’ve already committed resources based on the agent’s summary. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > So patent prior-art work needs a fundamentally different assurance level than literature summarisation — not because the underlying agent technology is different, but because the cost of being wrong and unnoticed is so much higher and the feedback loop for catching an error is so much slower. I want to scope this in phases with that risk gradient explicit: literature summarisation with mandatory citations first, patent prior-art as a much more heavily human-reviewed capability, introduced later and never fully autonomous. 
 
-
 > **Dr. Ben Okonjo** — *Head of IP & Patent Strategy*
 >
 > If I may — I’d go further on patents specifically. I don’t want an AI system’s prior-art assessment to ever be the sole basis for a go/no-go decision on IP freedom-to-operate. That determination legally needs to rest on qualified patent counsel’s judgment, informed by whatever the agent surfaces, not replaced by it. 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That’s exactly the boundary I want written down before design starts, not discovered as a gap later. The agent’s role in the patent domain is comprehensive, well-cited surfacing of potentially relevant prior art for counsel’s review — never an autonomous freedom-to-operate opinion. 
-
 
 :::info[📋 Artifact: AIA-2026-041]
 
@@ -136,7 +119,6 @@ Option B, phased by risk gradient, with IP & Patent Strategy as a permanent gove
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Risk gradient across four candidate research workflows identified as the central design constraint, not treated as a single undifferentiated “AI for research” problem 
@@ -149,12 +131,10 @@ Option B, phased by risk gradient, with IP & Patent Strategy as a permanent gove
 
 :::
 
-
 ## Stage 2 — CITATIONS ARE NOT OPTIONAL DECORATION
 
 *Approving a research agent that must show its work, always*
 `Week 5 | Wednesday, 17 June 2026`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Wednesday 17 June 2026 | Aurelia HQ, Executive Briefing Room*
@@ -164,36 +144,29 @@ Option B, phased by risk gradient, with IP & Patent Strategy as a permanent gove
 *Attendees: Naledi (EA), Piotr (CSO), Helena (Comp Chem), Ben (IP), Claire (Data Governance)*
 :::
 
-
 > **Dr. Ben Okonjo** — *Head of IP & Patent Strategy*
 >
 > I want the citation requirement to be more than a nice-to-have UI feature. Every factual claim the literature agent makes about a paper’s findings needs to be traceable to a specific passage in a specific source, not a general ‘based on the literature’ gesture. Scientists need to be able to verify quickly, not re-read the whole paper. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > Agreed, and I’d make that requirement even stronger: I want the agent architecturally unable to state a specific finding — a numeric result, an experimental conclusion — without an inline citation resolving to source text. This is the same discipline I’d apply to any agentic system producing claims a human will act on: fluent-but-uncited is not acceptable in this domain any more than in fraud investigation or clinical review. 
 
-
 > **Claire Fenwick** — *Head of Data Governance*
 >
 > On the internal experimental database cross-reference — that data includes some unpublished, commercially sensitive results from partner collaborations with contractual data-sharing restrictions. I need assurance the agent won’t surface partner-restricted data outside its permitted access boundary, especially if a scientist’s query spans both our data and partner data. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That needs to be enforced at the data access layer, not the prompt layer — the agent should never even receive partner-restricted records it isn’t entitled to return for a given user and a given collaboration agreement, rather than relying on the model to correctly decide not to mention something it technically has access to. I’ll design retrieval permissions to mirror our existing data-sharing agreement structure exactly, enforced before any content reaches the agent’s context window. 
 
-
 > **Dr. Helena Marsh** — *Head of Computational Chemistry*
 >
 > What’s the plan for the patent prior-art agent specifically — timeline and review process? 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > Phase 2, starting after Phase 1 literature/internal-data agents are validated in production. Every patent prior-art surfacing output goes to Ben’s team for review before it informs any research decision, and I want to build in a deliberate completeness bias — tuned to over-surface potentially relevant prior art rather than under-surface, since a false positive costs counsel some review time, but a false negative could cost years of wasted research investment. 
-
 
 I **ARTIFACT: ADR-2026-029** 
 
@@ -217,7 +190,6 @@ Approve Option B, phased. Phase 1: Literature Summarisation Agent + Internal Exp
 
 Piotr Zielinski (CSO) — DATE: 17/06/2026 
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Inline, passage-resolvable citation made an architectural requirement, not a UI feature, for any specific factual claim 
@@ -230,12 +202,10 @@ Piotr Zielinski (CSO) — DATE: 17/06/2026
 
 :::
 
-
 ## Stage 3 — THE PAPER THAT SAID SOMETHING IT DIDN’T SAY
 
 *Where citation-presence and citation-accuracy turn out to be different problems*
 `Weeks 7–14 | June–August 2026`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Tuesday 21 July 2026 | Agentic Systems Lab*
@@ -245,38 +215,31 @@ Piotr Zielinski (CSO) — DATE: 17/06/2026
 *Attendees: Naledi (EA), Andres Villalobos (Lead ML/Agentic Engineer), Helena (Comp Chem)*
 :::
 
-
 > **Andres Villalobos** — *Lead ML/Agentic Systems Engineer*
 >
 > First evaluation on the literature agent: citation presence is at 99.6% — almost every claim has an attached citation, which looked great until Helena’s team did a deeper spot-check. 
-
 
 > **Dr. Helena Marsh** — *Head of Computational Chemistry*
 >
 > Citation presence isn’t the same as citation accuracy. We manually checked eighty claims against their cited sources. Seventy-four were accurate. Six had a citation attached to a real paper, but the specific claim attributed to that paper was a subtly wrong paraphrase — not fabricated, but overstated or understated relative to what the source actually says. One example: the source paper reported a statistically significant but modest effect size, and the agent’s summary characterised it as a ‘strong’ effect. 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That’s a more dangerous failure mode than a missing citation, honestly, because a missing citation is visibly incomplete and a scientist will treat it with appropriate scepticism, whereas a confidently cited but subtly overstated claim looks fully verified at a glance. I want a second evaluation dimension specifically for this: not just ‘does a citation exist’ but ‘does the claim’s strength and specificity match the source’s actual strength and specificity,’ checked against a held-out expert-annotated sample, not just automated citation-matching. 
-
 
 > **Andres Villalobos** — *Lead ML/Agentic Systems Engineer*
 >
 > We can build a calibration check — comparing the hedging language and effect-size framing in the summary against the source’s actual reported statistics, and flag summaries where the model appears to be amplifying certainty beyond what the source supports. 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > Build it, and I want it framed to the scientists using the platform as a known and monitored limitation, not something we quietly patch and call solved — language models have a documented tendency to sharpen and amplify claims during summarisation, and no fix is likely to be perfect. Ongoing spot-check auditing needs to be a permanent feature of this platform’s operations, not a one-time pre-launch check. 
-
 
 :::tip[💭 Internal Thought]
 
 Ben’s IP concern and Helena’s calibration finding are the same underlying lesson wearing different clothes: a system that fluently cites its sources can still misrepresent them, and the fluency itself is what makes the misrepresentation dangerous — it looks more trustworthy than an honest ‘I’m not sure.’ I keep re-learning this lesson in every domain I work in, and I should stop treating it as a surprise each time and start treating it as a standing design principle: citation presence is necessary, never sufficient.
 
 :::
-
 
 :::info[📋 Artifact: SAD-2026-034]
 
@@ -298,7 +261,6 @@ Citation fidelity spot-check auditing established as a permanent, recurring oper
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Critical distinction established between citation presence (99.6%) and citation fidelity (92.5% on manual spot-check) — a gap that looked like success on the surface metric alone 
@@ -311,12 +273,10 @@ Citation fidelity spot-check auditing established as a permanent, recurring oper
 
 :::
 
-
 ## Stage 4 — THE PRIOR ART THAT ARRIVED TOO CLEAN
 
 *Testing the completeness-over-precision mandate against real patent counsel workflow*
 `Months 5–9 | September 2026–January 2027`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Thursday 12 November 2026 (Phase 2, 50% Build Review) | IP & Patent Strategy Office*
@@ -326,34 +286,27 @@ Citation fidelity spot-check auditing established as a permanent, recurring oper
 *Attendees: Naledi (EA), Andres (Lead Engineer), Ben (IP)*
 :::
 
-
 > **Dr. Ben Okonjo** — *Head of IP & Patent Strategy*
 >
 > First batch of prior-art surfacing results on a live target validation exercise. My initial reaction was actually concern, not relief — the results looked too clean. Eleven prior-art references surfaced, all clearly relevant, no obvious noise. Given how messy real patent search usually is, I asked my team to run the same search manually as a comparison. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > Good instinct — an unusually clean result from a system we explicitly tuned toward 
 
-
 completeness-over-precision should raise suspicion, not confidence, precisely because we expected some noise as the cost of not missing anything. What did the manual comparison find? 
-
 
 > **Dr. Ben Okonjo** — *Head of IP & Patent Strategy*
 >
 > My team found four additional references the agent missed entirely — not noisy or borderline, genuinely relevant prior art. All four were patents filed in non-English-language jurisdictions, machine-translated into our patent database with translation quality that apparently degraded the agent’s search-term matching. 
 
-
 > **Andres Villalobos** — *Lead ML/Agentic Systems Engineer*
 >
 > That tracks — our search agent is doing semantic matching against the patent text, and if the machine translation introduced enough terminology drift, semantically similar concepts could end up textually dissimilar enough to fall below our retrieval threshold. 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > This is a serious finding precisely because it violates the design mandate from Stage 2 — we asked for completeness bias and got an undetected completeness gap in a specific, systematic category: non-English-language filings. I don’t want a point fix for this one language pair. I want a broader review of retrieval performance segmented by filing jurisdiction and original language, because if translation-quality variance is causing silent gaps in one category, it’s plausibly happening in others we haven’t specifically tested yet. 
-
 
 :::info[📋 Artifact: GOV-2027-001]
 
@@ -375,7 +328,6 @@ IP & Patent Strategy (Ben Okonjo) jointly with AI/ML Engineering (Andres Villalo
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ An unusually clean, noise-free result from a completeness-tuned system correctly treated as a warning sign rather than a success indicator 
@@ -388,15 +340,12 @@ IP & Patent Strategy (Ben Okonjo) jointly with AI/ML Engineering (Andres Villalo
 
 :::
 
-
 ## Stage 5 — THE AMPLIFICATION AUDIT, SIX MONTHS IN
 
 *Proving a permanent monitoring commitment was worth keeping*
 `Months 10–14 | February–June 2027`
 
-
 Phase 1 (literature and internal-data agents) reaches full production adoption across the medicinal chemistry organisation by March 2027; scientists report literature review and cross-referencing time reduced from roughly 30% to 11% of working hours. Phase 2 (patent prior-art surfacing) launches in limited pilot with three target validation teams following the jurisdiction-coverage remediation. 
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Tuesday 4 May 2027 | Computational Chemistry Lab*
@@ -406,26 +355,21 @@ Phase 1 (literature and internal-data agents) reaches full production adoption a
 *Attendees: Naledi (EA), Helena (Comp Chem), Andres (Lead Engineer)*
 :::
 
-
 > **Dr. Helena Marsh** — *Head of Computational Chemistry*
 >
 > Second round of the recurring citation fidelity spot-check, six months into production. Citation presence holding at 99.7%. Citation fidelity — the deeper check on claim-strength calibration — improved from 92.5% at launch to 97.1% now. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That’s a meaningful improvement. What drove it — a model update, a prompt change, or something in how scientists are using the system? 
 
-
 > **Andres Villalobos** — *Lead ML/Agentic Systems Engineer*
 >
 > Partly a calibration-scoring refinement on our side. But Helena’s team also tells me scientists have started treating low-confidence flagged summaries differently — checking the source directly more often when the calibration score is borderline, which seems to have created a feedback loop where the flagged cases get reported and we tune against them. 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That’s the outcome I was hoping the permanent-audit commitment would produce — not a system that becomes perfect, but a monitoring and feedback loop that keeps genuinely improving it and keeps the scientists appropriately calibrated in their own trust of it. I want this audit result, including the 2.9% residual fidelity gap, reported transparently in the same format every cycle — I don’t want a good result this quarter to become a reason to quietly stop auditing next quarter. 
-
 
 :::info[📋 Artifact: OPS-2027-Q2]
 
@@ -451,7 +395,6 @@ Permanent citation fidelity audit and jurisdiction coverage review both continui
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Literature and internal-data review time reduced from approximately 30% to 11% of scientist working hours 
@@ -464,12 +407,10 @@ Permanent citation fidelity audit and jurisdiction coverage review both continui
 
 :::
 
-
 ## Stage 6 — WHAT THE PLATFORM TAUGHT THE COMPANY
 
 *Annual review — codifying "necessary but not sufficient" as a company-wide AI principle*
 `Month 15 | July 2027`
-
 
 :::note[📅 Meeting]
 **🕐 14:00**  📍 *Wednesday 14 July 2027 | Aurelia HQ, Executive Briefing Room*
@@ -479,26 +420,21 @@ Permanent citation fidelity audit and jurisdiction coverage review both continui
 *Attendees: Naledi (EA), Piotr (CSO), Ben (IP), Claire (Data Governance)*
 :::
 
-
 > **Dr. Piotr Zielinski** — *Chief Scientific Officer*
 >
 > This programme has been a genuine productivity win, and I want to expand agentic assistance into clinical trial design support next — protocol drafting, endpoint selection literature review. But I also want to make sure we’re carrying forward what we learned here, not starting from zero on risk thinking again. 
-
 
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > That’s exactly the right instinct, and I’d like to formalise it rather than rely on me personally remembering to apply these lessons to the next programme. The core principle underneath everything we did here — citation presence is necessary but not sufficient, aggregate accuracy can hide a systematic gap in an important minority, an unusually clean result from a completeness-tuned system deserves scrutiny not celebration — these aren’t specific to drug discovery. I want to write these up as standing Aurelia agentic AI design principles, reviewed and updated as we learn more, so clinical trial design and any future agentic initiative starts from this baseline instead of rediscovering it. 
 
-
 > **Dr. Ben Okonjo** — *Head of IP & Patent Strategy*
 >
 > I’d add one more from the patent side specifically: any AI-assisted output that informs a legal or regulatory determination needs an explicit, named human owner of the final call, always, regardless of how good the AI’s contribution is. That’s not a limitation of the technology — it’s a statement about where accountability has to sit. 
 
-
 > **Dr. Naledi Khumalo** — *Enterprise AI Architect*
 >
 > Agreed, and that maps directly onto clinical trial design too — endpoint selection and protocol decisions need the same permanent human-accountability boundary that freedom-to-operate has here. I’ll build that into the principles document explicitly before the next Incubation cycle starts. 
-
 
 :::info[📋 Artifact: PLATFORM-2027-003]
 
@@ -519,7 +455,6 @@ Citation/evidence presence is necessary but never sufficient — fidelity and ca
 Clinical Trial Design Support Agent enters Architecture Intake Q3 2027, built on these principles from day one.
 
 :::
-
 
 :::tip[✅ Stage Outcomes]
 

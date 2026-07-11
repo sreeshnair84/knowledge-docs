@@ -9,9 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 ### **AWS STRANDS & BEDROCK AGENTCORE** 
-
 # **DELTA SUPPLEMENT v2.0** 
 
 AgentSkills · AgentOps · Strands Labs · Steering · BidiAgent · TypeScript SDK AgentCore Policy GA · Evaluations · Episodic Memory · Memory Streaming · What's New 

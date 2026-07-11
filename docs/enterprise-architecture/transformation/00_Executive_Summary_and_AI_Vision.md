@@ -9,9 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-
 # **Executive Summary & AI Vision** 
 
 The case for becoming an AI-First Enterprise 

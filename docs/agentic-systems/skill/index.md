@@ -10,7 +10,6 @@ tags: ["agentic-systems", "skill"]
 doc_type: guide
 covers_version: "as of 2026-07-10"
 ---
-
 # Agent Skills
 
 Playbooks and research for designing, composing, and deploying AI agent skills — covering the SKILL.md open standard, skill architecture, A2A (Agent-to-Agent) protocol, skill discovery, and reusable tool libraries.

@@ -7,14 +7,12 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **CLAUDE ARCHITECT FOUNDATIONS**
 **Best Practices &**
 **Anti-Patterns Guide**
 *A Reference for the Claude Certified Architect – Foundations Exam*
 Covering all 5 domains · 25+ task statements · 6 exam scenarios
 March 2026
-
 # **How to Use This Guide**
 This document synthesizes Anthropic's official documentation, the Claude Certified Architect exam guide, and current production patterns into a single reference. Each section follows the same structure: a conceptual overview, a best practices vs. antipatterns comparison table, and detailed guidance with real-world context.
 

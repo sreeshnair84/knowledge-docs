@@ -11,9 +11,7 @@ covers_through: 2026-07-10
 research_date: 2026-07-10
 covers_version: "N/A"
 ---
-
 *Enterprise AI Authentication Research · Part 1 of 7*
-
 # Enterprise AI Platform Authentication Survey
 
 How leading AI platforms implement secure enterprise integrations — covering authentication, authorization, connector models, identity propagation, session handling, token management, governance, audit logging, and multi-tenant isolation.

@@ -8,11 +8,7 @@ source_type: converted-pdf
 source_file: "Harness_Engineering_Research_Report.pdf"
 tags: ["harness", "engineering", "research", "ci-cd"]
 ---
-
-<!-- converted from Harness_Engineering_Research_Report.pdf -->
-
 **E N G I N E E R I N G R E S E A R C H R E P O R T** 
-
 # **Harness** 
 
 Architecture, Execution Model, AI Capabilities, and Competitive Positioning for AI-Native Software Delivery 
@@ -56,7 +52,6 @@ Harness Engineering Research Report — 2
 |Network-isolated|Delegate deployed inside a specific segmented|Regulated workloads that cannot share|
 |Delegate|boundary (PCI zone, air-gapped DC)|execution infrastructure with anything<br>else|
 
-
 Source: Harness Delegate Architecture Best Practices reference doc. **<mark>DOCUMENTED</mark>** 
 
 ### **CI execution specifically** 
@@ -93,7 +88,6 @@ CD strategies are implemented natively rather than as user-scripted logic:
 |Kubernetes|Harness generates a Canary group + a Primary group;|Simpler than classic canary because|
 |Canary|Primary rollout uses native K8s RollingUpdate rather<br>than manual phased traffic shifting|Kubernetes' own rolling update<br>mechanics do the heavy lifting|
 
-
 Verification between phases can be AI-assisted: Harness compares live post-deploy metrics against a baseline window (commonly the pre-deploy period or a prior stable version) and can trigger automatic rollback if anomaly thresholds are breached — this is the modern form of what Harness originally branded "Continuous Verification," a capability the company has offered in some form since 2018, predating the current wave of "AI-native" branding. **<mark>DOCUMENTED</mark>** 
 
 ## **4. Internal Developer Portal (Backstage-based, not Backstage)** 
@@ -128,7 +122,6 @@ Harness's AI strategy is built around a shared **Software Delivery Knowledge Gra
 |Autonomous<br>Worker Agents<br>+ Agent<br>Marketplace|Any pipeline step can run as a reasoning agent (not<br>fixed script) with sandboxed containers, scoped per-<br>agent identity/credentials, and an LLM Gateway that<br>policy-checks every model call. Six prebuilt agents<br>(Autofix, Code Review, IaCM Remediation, etc.) ship<br>out of the box; agents can call Anthropic, OpenAI, or<br>Gemini models per pipeline. Also includes a Harness<br>MCP Server so external tools (Claude Code, Cursor,<br>Gemini CLI) can trigger Worker Agents.|Announced GA June 30, 2026<br>**ROADMAP**<br>**CAVEAT** — independent coverage flags<br>that Harness's own product page still lists<br>"Agent Marketplace" as an H2 2026<br>roadmap item and the broader agents<br>offering as "Limited Preview," which sits<br>awkwardly against the GA announcement.<br>Verify current status directly before<br>planning around it.|
 |Code Agent<br>(IDE extension)|Standard IDE coding assistance, differentiated<br>mainly by shared account context with the rest of the<br>Harness platform|**DOCUMENTED** ;<br>**ANALYSIS** — third-<br>party reviewers note the IDE assistance<br>itself is fairly standard vs. dedicated coding-<br>agent products; the platform-context tie-in<br>is the actual differentiator, not raw coding<br>capability|
 
-
 Harness Engineering Research Report — 6 
 
 **Governance model for agentic execution** : because Worker Agents run as pipeline-native steps, they inherit the same approval gates, RBAC, and audit trail as human-triggered deployments — an agent doesn't get to bypass a production approval gate just because it's an agent. Each agent has its own scoped identity/ credential set rather than inheriting the invoking user's or pipeline's full permission set, and prompts/context pass through a policy-checking LLM Gateway before reaching a model. This is the practical answer to "how do we let AI touch production safely" that most CI/CD vendors are still bolting on as an afterthought. 
@@ -147,7 +140,6 @@ The most common RFP mistake, per multiple independent CI/CD comparison sources, 
 |Governance/<br>RBAC depth|Native OPA<br>policy-as-code<br>across pipelines,<br>IaC, and IDP;<br>Account/Org/<br>Project nesting|Basic; relies<br>on GitHub<br>org<br>permissions<br>+ third-party<br>actions for<br>policy|Strong, integrated<br>(approvals,<br>compliance<br>frameworks,<br>higher tiers)|Plugin-<br>dependent;<br>inconsistent<br>without heavy<br>customization|RBAC via<br>K8s/Argo<br>projects; not<br>a general<br>pipeline<br>governance<br>layer|Minimal out<br>of the box;<br>enterprises<br>typically<br>build<br>custom<br>RBAC|
 |Vendor/tool<br>lock-in|Works with any<br>Git host; own<br>execution layer|Tied to<br>GitHub as<br>SCM|Best when SCM +<br>CI + registry all on<br>GitLab|None (fully<br>open) but<br>heavy plugin<br>lock-in over<br>time|Kubernetes-<br>only; needs<br>a separate<br>CI tool|None<br>(framework,<br>not a<br>product)|
 
-
 Harness Engineering Research Report — 7 
 
 |AI depth<br>(mid-2026)|Broadest:<br>agentic pipeline<br>steps, SRE/<br>AppSec/FinOps/<br>QA agents,<br>shared<br>knowledge<br>graph, GA'd<br>agent<br>governance<br>model|Copilot<br>integration<br>for code,<br>limited<br>pipeline-<br>native agent<br>tooling|GitLab Duo AI<br>features across<br>SDLC, growing<br>but narrower<br>agent-governance<br>story than<br>Harness's|Minimal<br>native AI;<br>relies on<br>plugins|None<br>natively (CD<br>reconciler,<br>not an AI<br>product)|None<br>natively|
@@ -155,7 +147,6 @@ Harness Engineering Research Report — 7
 |On-prem /<br>air-gapped|Strong (Self-<br>Managed<br>Enterprise<br>Edition, Delegate<br>model built for<br>network<br>isolation)|Weak<br>(GitHub<br>Enterprise<br>Server<br>exists but is<br>a different<br>product)|Strong (mature<br>self-managed<br>option)|Best-in-class<br>(fully self-<br>hosted by<br>design)|Good<br>(native to<br>K8s<br>clusters,<br>including<br>air-gapped)|Good (self-<br>hosted by<br>definition)|
 |Reported<br>UX friction|Peer reviews<br>note the UI feels<br>"commercialized"<br>vs. Argo/Jenkins;<br>no pipeline-as-<br>code parity with<br>GitHub Actions/<br>Jenkins; no true<br>nested child-<br>pipeline<br>execution as of<br>the review period|Simple, git-<br>native<br>YAML; large<br>marketplace<br>of 15,000+<br>actions|Mature, well-<br>understood .gitlab-<br>ci.yml model|High<br>operational<br>overhead<br>maintaining<br>plugins/infra|Steep<br>learning<br>curve for<br>non-<br>Kubernetes<br>teams|Requires<br>real<br>engineering<br>investment<br>to operate<br>at scale|
 |Pricing<br>model|Per-module<br>commercial tiers;<br>free tier exists<br>across major<br>products|Usage-<br>based<br>(minutes),<br>generous<br>free tier for<br>public repos|Per-seat tiers<br>($29–$99/user/mo<br>range reported)|Free/open-<br>source; cost<br>is operational<br>overhead|Open-<br>source<br>(CNCF);<br>cost is<br>operational<br>overhead|Open-<br>source<br>(CNCF);<br>cost is<br>operational<br>overhead|
-
 
 Synthesized from independent comparison sources (Northflank, Opsio, JetBrains State of Developer Ecosystem, PeerSpot practitioner reviews) plus Harness's own comparison pages, which are flagged as vendor-authored where used. **<mark>ANALYSIS</mark>** for the synthesis; individual factual claims sourced as noted throughout. 
 
@@ -177,7 +168,6 @@ raw adoption, and PeerSpot engagement data shows both GitHub Actions' and Harnes
 |Already deep in Kubernetes/GitOps, want a<br>pull-based CD reconciler specifically|ArgoCD<br>(paired with<br>any CI tool)|Harness CD can do this too, but if the org is<br>Kubernetes-only and doesn't need the broader<br>platform, ArgoCD is the CNCF-standard, lower-<br>overhead choice|
 |Heavy legacy Jenkins investment, air-<br>gapped requirement, maximum<br>customization need|Jenkins<br>remains<br>defensible|Full control and a mature plugin ecosystem still beat<br>migration cost/risk in many regulated on-prem<br>estates|
 |Want an internal developer portal but don't<br>want vendor lock-in or ongoing license cost,<br>and have engineering capacity to own it|Backstage<br>(self-hosted)|Full customization freedom; Harness IDP is the right<br>call instead when the org lacks capacity to run/<br>govern Backstage at scale or wants OPA/RBAC/<br>audit built-in from day one|
-
 
 Framework synthesized from the comparison sources above. **<mark>ANALYSIS</mark>** 
 
@@ -206,7 +196,6 @@ product page, which still marks parts of the offering "Limited Preview" and list
 |Software Delivery<br>Knowledge Graph|Harness's connected data layer spanning services, pipelines, deployments, security<br>findings, and cost — the shared context AI agents reason over|
 |Worker Agent|A pipeline step that runs as a reasoning LLM-backed agent instead of a fixed script, with<br>sandboxing, scoped credentials, and policy-gated model calls via an LLM Gateway|
 |IDP Scorecard|A computed score against a service in the Harness Internal Developer Portal, usable as an<br>OPA policy input (e.g., gate promotion below a score threshold)|
-
 
 This report deliberately excludes company/funding history, org chart, and go-to-market material per scope adjustment during research. For the full 23-section prompt — including per-industry reference architectures, 15 hands-on labs, and sequence diagrams — use Claude's Research feature for a dedicated multi-hour pass; this document is intentionally the technical core rather than that full deliverable. 
 

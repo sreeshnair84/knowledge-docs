@@ -9,7 +9,6 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Case Study** 
 
 Meridian Freight & Logistics — Dynamic Routing & Warehouse Robotics Multi-Agent Coordination Platform 

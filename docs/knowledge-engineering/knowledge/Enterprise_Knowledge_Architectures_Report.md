@@ -10,11 +10,7 @@ last_reviewed: 2026-07-10
 covers_through: 2026-07-10
 research_date: 2026-07-10
 ---
-
 2026 Edition 
-
-###### **ENTERPRISE KNOWLEDGE ARCHITECTURE RESEARCH REPORT** 
-
 # **Knowledge Graphs, Ontologies & GraphRAG** 
 
 RDF | OWL | Property Graphs | Semantic Layers  —  Grounding, Reasoning & Governance 
@@ -51,7 +47,6 @@ Enterprise Knowledge Architectures — Research Report  |  Confidential **CONFID
 |**Knowledge Governance**|**31**|
 |**GraphRAG vs. Traditional Architectures**|**34**|
 
-
 ## **Executive Summary** 
 
 **Key Finding:** Enterprise knowledge architecture has bifurcated into two traditions that are now converging under AI pressure: the semantic web tradition (RDF/OWL/ontologies — formal, reasoning-capable, governance-friendly, but operationally heavy) and the property graph tradition (Neo4j-style — flexible, developer-friendly, fast to build, but historically lighter on formal semantics). GraphRAG has not resolved this divide — most GraphRAG implementations use property graphs with informal, LLM-extracted schemas, inheriting property graphs' agility but also their historical weaknesses in governance and formal reasoning, at exactly the moment those weaknesses matter most for enterprise AI accountability. 
@@ -65,7 +60,6 @@ The central tension running through this report is between formality and agility
 ##### **1. The 'Knowledge Graph' Label Now Covers Two Architecturally Distinct Things** 
 
 When practitioners say 'knowledge graph' in 2026, they may mean either a formally-specified RDF/OWL graph with class hierarchies and machine-checkable constraints (the semantic web tradition's descendant), or a property graph with an informally-defined, often LLM-extracted schema of entity and relationship types (the GraphRAG-era default). These have substantially different operational properties, and conflating them — common in vendor marketing and informal discussion — leads to mismatched expectations, particularly around governance and reasoning capability. 
-
 
 ##### **2. RDF/OWL's Formal Reasoning Capability Remains Underused in AI Contexts** 
 
@@ -83,11 +77,9 @@ Semantic layers (Section 4) — originally designed to solve metric definition d
 
 A substantial amount of GraphRAG evaluation focuses on retrieval/traversal algorithms (which paths to explore, how many hops, how to rank results) — but this report's analysis finds that errors in graph construction (entity resolution errors, incomplete relationship extraction, ontology gaps) degrade multi-hop reasoning quality far more than traversal algorithm choice, because traversal algorithms operate on whatever graph exists — a well-tuned traversal over a poorly-constructed graph still produces poor results, while even simple traversal over a well-constructed graph performs reasonably. 
 
-
 ##### **6. Knowledge Governance Is the Least Mature Governance Domain Examined Across This Report Series** 
 
 Compared to data governance (mature, established practices), AI governance (developing, per the companion Operational Excellence report's Part 16), and lineage (mapped in the companion Lineage Systems report), knowledge governance — who can modify an ontology or schema, how entity resolution disputes are adjudicated, how classification propagates to derived graph structures — has the least established practice and tooling. This is a direct consequence of knowledge graphs' rapid, AI-driven adoption (companion Architecture Evolution report, Section 6) outpacing governance practice development, mirroring the pattern by which data lakes outpaced governance in the 2010s (companion Architecture Evolution report, Section 2) — with similar 'swamp'-like risk for ungoverned knowledge graphs. 
-
 
 ## **The Knowledge Architecture Landscape** 
 
@@ -114,11 +106,9 @@ Most discussions of knowledge graphs present RDF/OWL and property graphs as comp
 
 - **The GraphRAG default sits at the low-formality end** of this spectrum — which explains both its rapid adoption (low barrier to getting started) and the governance/reasoning gaps that emerge as these graphs scale into enterprise-critical infrastructure (a trajectory this report examines in detail in Sections 1, 3, and the 
 
-
 Knowledge Governance section) 
 
 **How to Read This Report:** Sections 1-4 examine each foundational component on its own terms — what it is, why it exists, and its operational characteristics. The five investigation sections that follow (Enterprise Knowledge Modeling through Knowledge Governance) are cross-cutting — each draws on multiple foundational components and examines how they interact in practice. The closing GraphRAG comparison section synthesizes both into a structured decision framework. 
-
 
 ### **Knowledge Graphs** 
 
@@ -142,7 +132,6 @@ Any knowledge graph drawing from multiple sources (or even a single source over 
 
 Even 'schema-less' property graphs have an implicit schema — the set of node labels and relationship types actually in use. The question is not whether a schema exists but how explicitly it's defined, how strictly it's enforced, and how it evolves. RDF/OWL makes schema maximally explicit (Section 2); LLM-extracted property graphs make it maximally implicit (Section 3) — but both have a schema in the sense that matters for querying and governance: a defined (if differently-defined) vocabulary of types. 
 
-
 ###### **Traversal as the Fundamental Operation** 
 
 Whether via SPARQL (RDF) or Cypher/GQL (property graphs), the fundamental operation a knowledge graph supports that distinguishes it from tabular/document storage is traversal — following relationships from a starting entity to discover connected entities, potentially many hops away. This is the capability that directly addresses RAG's multi-hop reasoning limitation (this report's Multi-Hop Reasoning section) and is common to all knowledge graph implementations regardless of formality. 
@@ -156,7 +145,6 @@ As discussed in the companion Lineage Systems report's Section 6, knowledge line
 The single most significant driver of knowledge graph adoption from 2022 onward is AI grounding — providing LLMs with structured, relationship-aware context that pure vector retrieval (companion Architecture Evolution report, Section 9) cannot provide. This connection is examined in depth in the AI Grounding section of this report, but its effect on adoption patterns is worth noting here: organizations that had previously evaluated and declined knowledge graph investment (finding the ontology design and entity resolution effort difficult to justify against unclear ROI) revisited that decision once GraphRAG provided a concrete, measurable use case — improved RAG answer quality for relationship-dependent questions. This shift in justification (from 'better enterprise search' to 'better AI grounding') has shaped which knowledge graph technologies gained traction (Section 3's property graphs, more so than Section 2's formal ontologies, for the reasons discussed in that section). 
 
 **Framing for the Rest of This Report:** 'Knowledge graph' as a category is best understood not as a single technology choice but as a design space defined by where an implementation sits on the formality/agility spectrum (this report's Executive Summary) and how rigorously it addresses entity resolution, schema evolution, and provenance — properties that matter regardless of formality level but that are addressed very differently by RDF/OWL-based (Section 2) versus property-graph-based (Section 3) implementations. 
-
 
 ### **Ontologies, RDF & OWL** 
 
@@ -184,7 +172,6 @@ Given the asserted facts 'Company A is a Subsidiary of Company B' and an ontolog
 
 Because RDF/OWL are W3C standards with established upper ontologies (e.g., FIBO — Financial Industry Business Ontology) and patterns for linking to external vocabularies (linked data), organizations in domains with established ontologies can align their internal knowledge graphs with industry-standard vocabularies — enabling a degree of semantic interoperability with external parties (regulators, partners, data providers) that proprietary property graph schemas don't provide. 
 
-
 ##### **Why Adoption Has Remained Concentrated** 
 
 Despite these capabilities, RDF/OWL adoption has remained concentrated in specific domains rather than achieving the broad enterprise adoption that property graphs have seen in the GraphRAG era. The reasons are structural rather than purely technical: 
@@ -202,7 +189,6 @@ Despite these capabilities, RDF/OWL adoption has remained concentrated in specif
 For organizations in domains with existing OWL ontologies (life sciences, financial services), the AI era presents an underexplored opportunity: these ontologies already encode formal domain knowledge that could ground AI systems with stronger guarantees than LLM-extracted property graphs provide — an OWL reasoner can guarantee that an inferred relationship follows logically from explicit facts plus formal rules, whereas an LLM-extracted relationship has no such guarantee (it reflects what the extraction model inferred from text, which may or may not be logically sound). However, as noted in this report's Executive Summary, current GraphRAG implementations predominantly use graphs for retrieval rather than reasoning — meaning even organizations with existing OWL ontologies often build separate, informal property graphs for their GraphRAG implementations rather than leveraging existing formal ontologies, missing an opportunity to combine GraphRAG's retrieval-for-LLM-grounding pattern with OWL's formal-reasoning guarantees. 
 
 **Practical Guidance:** Organizations in domains with existing OWL ontologies should evaluate whether GraphRAG implementations can query the existing ontology (via SPARQL, potentially with a translation layer making this accessible to LLM-based agents) rather than constructing a separate, informal property graph from scratch — this preserves the formal reasoning guarantees the ontology provides while extending it to AI grounding use cases. Organizations without existing ontologies should not treat 'build an OWL ontology' as a prerequisite for GraphRAG — the upfront investment is substantial and the property-graph approach (Section 3) is appropriate for domains without pre-existing formal rule systems to encode. 
-
 
 ### **Property Graphs** 
 
@@ -234,7 +220,6 @@ Property graphs (particularly Neo4j) had an established presence in application 
 
 Property graphs are often described as 'schema-less', but in practice implementations span a spectrum: 
 
-
 - **Fully informal (most common in early GraphRAG implementations):** node labels and relationship types emerge directly from LLM extraction with no predefined vocabulary — the same underlying concept might be labeled 'Organization' in one extraction batch and 'Company' in another, depending on prompt variations or model non-determinism, leading to schema fragmentation that's only discovered when queries fail to match expected patterns 
 
 - **Constrained/validated schema:** Neo4j and other property graph databases support schema constraints (e.g., uniqueness constraints, required properties, node label and relationship type validation) — applying these requires an explicit schema definition step that many GraphRAG implementations skip in early phases but increasingly adopt as graphs mature, since constraint violations surface schema fragmentation issues that would otherwise accumulate silently 
@@ -253,9 +238,7 @@ The same flexibility that makes property graphs easy to start with creates compo
 
 - **Relationship type proliferation:** LLM extraction across diverse document types tends to produce an expanding vocabulary of relationship types over time (e.g., 'SUPPLIES', 'PROVIDES', 'DELIVERS_TO', 'IS_VENDOR_FOR' as semantically-similar-but-distinct edges from different extraction runs) — without active curation, the relationship type vocabulary can grow unmanageably, complicating both querying (which relationship types must a query check?) and maintenance 
 
-
 **Practical Guidance:** The flexibility/governance tradeoff for property graphs is manageable but requires deliberate intervention — it does not resolve itself as the graph grows; if anything, the cost of intervention grows with graph size. Organizations should establish a documented schema (even if not strictly enforced) before significant graph construction begins, and should periodically audit for schema fragmentation (e.g., near-duplicate node labels or relationship types) as a recurring governance task — treating this analogously to the data catalog curation practices that prevent data lake 'swamp' formation (companion Architecture Evolution report, Section 2). 
-
 
 ### **Semantic Layers** 
 
@@ -279,7 +262,6 @@ The semantic layer maintains mappings from business terms to underlying represen
 
 Where the same real-world concept exists in both a formal ontology and an informal property graph (e.g., 'Company' exists as an OWL class with formal constraints, and also as a property graph node label from GraphRAG extraction), the semantic layer can enforce that queries against 'company' respect the formal ontology's constraints even when the underlying data comes from the less-formal property graph — effectively extending Section 2's governance benefits to Section 3's data, without requiring the property graph itself to be reformalized. 
 
-
 ###### **Single Point for Access Control Across Representations** 
 
 As discussed in the companion Architecture Evolution report's Section 6, access control on knowledge graphs is more complex than on tables — restricting access to certain relationships or entity types requires graph-aware access control that general-purpose frameworks don't natively support well. A semantic layer that mediates all access (rather than allowing direct SPARQL/Cypher access to underlying graphs) provides a single enforcement point, even if the underlying graphs themselves have inconsistent or absent native access control — echoing the semantic-layer-as-agent-interface pattern discussed for lakehouse data in the companion Architecture Evolution report's Section 7. 
@@ -293,7 +275,6 @@ As discussed in the companion Architecture Evolution report's Section 6, access 
 - **Performance characteristics vary by underlying representation:** a semantic layer query that's translated into a SPARQL query with OWL reasoning will have different latency characteristics than one translated into a Cypher traversal — from the consuming AI agent's perspective, this can create unpredictable response times depending on which underlying representation a given query happens to route to, a concern directly analogous to the companion Architecture Evolution report's discussion of data fabric's federated query performance unpredictability 
 
 **Strategic Positioning:** For enterprises with both formal ontology investments (Section 2) and growing GraphRAG property graph investments (Section 3) — increasingly common as both trends mature — the semantic layer's bridging role represents a pragmatic path that avoids forcing a single-formalism decision across the enterprise. Rather than migrating existing OWL ontologies to property graphs (losing formal reasoning guarantees) or attempting to formalize GraphRAG-extracted graphs into OWL (a substantial, likely impractical undertaking given extraction volume), a semantic layer allows each representation to be used where it's strongest — formal reasoning where the ontology provides it, flexible extraction-based retrieval where the property graph provides it — while presenting a unified interface to AI consumers. 
-
 
 ## **Enterprise Knowledge Modeling** 
 
@@ -313,7 +294,6 @@ The GraphRAG-era default (Section 3): entity and relationship types emerge from 
 
 Define a small set of core entity/relationship types upfront (a lightweight top-down seed — perhaps the 10-20 concepts most central to the enterprise's domain), then allow extraction to populate instances of these types and, separately, flag candidate new types it encounters for human review rather than automatically adding them to the schema. This bounds schema fragmentation (Section 3's concern) while preserving extraction's speed advantage for populating instances of known types. 
 
-
 ##### **Top-Down Core + Bottom-Up Periphery** 
 
 Maintain a formally-modeled core (potentially OWL-based, per Section 2) for the enterprise's most critical, stable, and regulation-relevant concepts, while allowing a less-formal property graph (Section 3) to handle peripheral, rapidly-evolving, or exploratory concepts — connected via the semantic layer bridging pattern discussed in Section 4. This is the pattern this report's Executive Summary identifies as increasingly common for enterprises with pre-existing ontology investments expanding into GraphRAG. 
@@ -325,7 +305,6 @@ Run extraction in a fully bottom-up manner for an initial period, then periodica
 #### **Modeling for Multiple Consumers: Humans, Search, and Agents** 
 
 A knowledge model designed primarily for human consumption (e.g., a knowledge graph powering an internal wiki's 'related topics' feature) and one designed primarily for AI agent consumption (e.g., GraphRAG retrieval feeding an agent's context) have different optimal characteristics — human-facing models benefit from intuitive, human-readable type names and groupings that match how people think about the domain, while agent-facing models benefit from types and relationships that map cleanly onto the kinds of multi-hop queries (this report's dedicated section) the agent needs to answer, which may not align with human-intuitive groupings. Enterprises building knowledge models that serve both audiences should expect some tension between these optimization targets, and the semantic layer bridging pattern (Section 4) is one mechanism for presenting different views of the same underlying knowledge to different consumer types without maintaining fully separate models. 
-
 
 ## **AI Grounding** 
 
@@ -351,7 +330,6 @@ The most formally rigorous grounding available (Section 2): a fact that's derive
 
 #### **Grounding Failure Modes Despite Knowledge Architecture Presence** 
 
-
 - **Retrieval doesn't reach the relevant grounding source:** a knowledge graph may contain the correct fact, but if the retrieval step (vector search for relevant starting entities, or the traversal query) doesn't surface it — due to embedding mismatch, query formulation issues, or the fact being in a part of the graph the traversal doesn't explore — the LLM generates a response without this grounding, potentially relying on parametric knowledge instead, with no signal to the user that grounding was attempted but unsuccessful 
 
 - **Grounding source itself is stale or incorrect:** per the companion Architecture Evolution report's Production Failure Analysis and this report's Section 1 discussion of entity resolution as a continuous process, the knowledge graph itself can contain stale or incorrect information — grounding to an incorrect source produces a confidently-grounded but factually wrong response, which is arguably worse than an ungrounded response since the presence of grounding (e.g., a citation) increases user trust without justification 
@@ -365,7 +343,6 @@ The most formally rigorous grounding available (Section 2): a fact that's derive
 Because grounding quality depends on matching the question type to the appropriate grounding mode (the spectrum above), enterprises should consider routing different question types to different grounding strategies rather than relying on a single retrieval pipeline for all questions — this is essentially the semantic routing concept discussed in the companion Operational Excellence report's Part 17 (Agentic AI Data Platforms), applied specifically to grounding strategy selection: factual lookup questions route to entity-level knowledge graph queries (with document-level retrieval as fallback if the entity isn't represented); relationship/reasoning questions route to multi-hop traversal; open-ended exploratory questions route to document-level retrieval; and, where applicable, questions matching patterns covered by formal ontology axioms route to OWL-reasoning-capable query paths to obtain the strongest available grounding guarantee. 
 
 **Recommendation:** Grounding should be treated as a multi-tier system with explicit fallback and explicit signaling of which tier produced a given grounding — not a single retrieval call whose results are uniformly presented as 'the grounding'. This directly mitigates the 'grounding presented without indicating its mode' failure pattern above, and aligns with this report's broader theme that knowledge architecture quality depends on deliberate design choices about formality and structure being preserved through to the AI consumption layer, rather than being flattened into a single undifferentiated retrieval interface. 
-
 
 ## **Multi-Hop Reasoning** 
 
@@ -385,7 +362,6 @@ Multi-hop reasoning in OWL can occur via explicit traversal (SPARQL property pat
 
 Multi-hop queries in Cypher/GQL explicitly specify the traversal pattern (e.g., '(a)-[:SUPPLIES]->(b)-[:PARENT_OF]-(c)-[:HEADQUARTERED_IN]->(loc)'). This is more transparent (the query directly shows what's being traversed) but places the burden of knowing the correct traversal pattern — including which relationship types and directions are relevant — on whoever writes the query, which for AI agents means the LLM generating the traversal query must correctly infer the relevant pattern from the schema, a non-trivial task especially given Section 3's relationship type proliferation concern (if there are multiple semantically-similar relationship types, which should the traversal use?). 
 
-
 ###### **GraphRAG Community-Based Multi-Hop (Microsoft GraphRAG Pattern)** 
 
 Rather than (or in addition to) explicit traversal, some GraphRAG implementations pre-compute 'communities' — clusters of densely-connected entities — and generate summaries of each community that implicitly encode multi-hop relationships within that community. A query can then retrieve relevant community summaries rather than performing live traversal — trading traversal-time flexibility for retrieval-time efficiency, at the cost of the summary's quality depending on the community detection and summarization steps' accuracy, and the summary potentially going stale as the underlying graph changes (connecting to the companion Operational Excellence report's discussion of GraphRAG construction cost and incremental update challenges). 
@@ -402,9 +378,7 @@ This report's Executive Summary identifies graph construction quality as the dom
 
 - **Directionality and cardinality assumptions:** multi-hop traversals often implicitly assume relationships have a particular directionality or cardinality (e.g., 'parent_company_of' assumed to have at most one target) — if extraction produces relationships with inconsistent directionality (sometimes 'A parent_of B', sometimes 'B subsidiary_of A' for the same real-world relationship, without consistent normalization) or unexpected cardinality (multiple 'parent companies' due to extraction errors or genuinely ambiguous corporate structures), traversal queries written with the assumed directionality/cardinality can produce incomplete or duplicated results 
 
-
 **Implication for Investment Prioritization:** Enterprises investing in GraphRAG/multi-hop reasoning capability should weight investment toward graph construction quality — entity resolution accuracy monitoring, relationship type vocabulary curation (Section 3), and completeness assessment for extraction coverage — over investment in traversal algorithm sophistication (e.g., more elaborate path-ranking or community-detection algorithms). A sophisticated traversal algorithm over a poorly-constructed graph will surface the construction errors more efficiently, but will not produce better answers than a simple traversal over a well-constructed graph would. This is a direct, practical consequence of this report's formality/agility framing: the agility of bottom-up, extraction-first construction (Section 3's preferred mode for most current GraphRAG implementations) defers exactly the quality investments that multi-hop reasoning depends on most. 
-
 
 ## **Semantic Retrieval** 
 
@@ -426,7 +400,6 @@ Strong for: questions that map to governed business metrics or entities with est
 
 #### **Hybrid Retrieval Architectures** 
 
-
 Given the complementary strengths above, production semantic retrieval architectures increasingly combine multiple mechanisms rather than relying on one — extending the GraphRAG pattern (vector search to find starting entities, then graph traversal) with a third, semantic-layer-mediated path for questions that map to governed definitions. Combination patterns include: 
 
 - **Sequential (vector** → **graph):** the standard GraphRAG pattern — vector similarity identifies candidate starting entities, then graph traversal expands from those entities to find related information that vector similarity alone wouldn't surface (since the related information might not be textually similar to the original query) 
@@ -440,7 +413,6 @@ Given the complementary strengths above, production semantic retrieval architect
 Despite semantic retrieval's prominence in AI architectures, traditional keyword/full-text search (BM25 and similar algorithms, as used in Elasticsearch/OpenSearch and similar platforms) retains specific advantages that semantic retrieval doesn't replace: exact-match precision for identifiers (part numbers, account IDs, error codes) where semantic similarity is irrelevant — a vector search for an error code string doesn't reliably retrieve documents containing that exact string, while keyword search does, by design; and interpretability — keyword search results can be explained simply ('this document contains the words you searched for'), while vector similarity scores are not directly interpretable to end users in the same way. Many production semantic retrieval architectures retain a hybrid search component (combining keyword/BM25 scoring with vector similarity scoring, often via reciprocal rank fusion) specifically to preserve exact-match capability for identifier-like queries — this is not a legacy holdover but an acknowledgment that semantic similarity and exact match serve different, both-necessary purposes. 
 
 **Recommendation:** Semantic retrieval architecture decisions should be made per-question-type (via the routing patterns above) rather than as a single enterprise-wide retrieval strategy. The most common architectural mistake observed in this research is treating vector similarity as a general-purpose replacement for all retrieval needs — leading to poor performance on the precise-lookup and multi-hop question types that graph traversal and semantic-layer queries handle better, with the failure mode often misdiagnosed as 'the embedding model isn't good enough' when the actual issue is mechanism mismatch for the question type, not embedding quality. 
-
 
 ## **Knowledge Governance** 
 
@@ -460,7 +432,6 @@ Section 1 frames entity resolution as a continuous process, not a one-time setup
 
 Section 3 identifies relationship type proliferation as a compounding issue for property-graph-based knowledge architectures. Governance for this requires: a documented (even if not strictly enforced, per Section 3's schema spectrum) vocabulary of relationship types; a process for proposing new types versus mapping a candidate new type to an existing one; and periodic consolidation review (Enterprise Knowledge Modeling section's 'periodic schema consolidation' pattern) with clear ownership for who conducts and approves this review. 
 
-
 ##### **Classification Propagation to Derived Graph Structures** 
 
 As discussed in the companion Architecture Evolution report's Section 9 (in the context of vector infrastructure) and Section 6 (knowledge graphs specifically), data classification (PII, confidentiality levels) applied to source documents/records doesn't automatically propagate to derived graph entities and relationships — a knowledge graph entity constructed from a confidential document doesn't inherently carry that document's classification as a graph property unless the extraction/construction pipeline explicitly propagates it. Knowledge governance must define and enforce this propagation, including for entities that synthesize information from multiple source documents with potentially different classification levels (what classification should the resulting entity carry — the most restrictive of its sources, by default?). 
@@ -476,7 +447,6 @@ As noted repeatedly across this report series, access control on graphs is more 
 - **Governance tooling hasn't caught up:** data governance platforms (Collibra, Atlan, DataHub, OpenMetadata — companion Operational Excellence report, Part 9) have lineage and classification features that extend reasonably well to tabular and even some graph data, but the specific governance areas above (entity resolution decisions, relationship type vocabularies, inference control) don't have established feature equivalents in these platforms as of 2026 — organizations seeking to govern these aspects must build custom processes, which few have prioritized given competing priorities 
 
 - **The formality spectrum complicates standardization:** because knowledge graphs span from highly-formal OWL ontologies to highly-informal LLM-extracted property graphs (this report's central framing), a single governance framework that's appropriate for one end of the spectrum may be inappropriate or unworkable for the other — OWL's formal change-review processes (appropriate given the cascading effects of ontology changes) would be excessive friction for a rapidly-iterating GraphRAG property graph, while the property graph's typical informal approach would be insufficient for an OWL ontology with regulatory dependencies — making a generic 'knowledge governance framework' harder to define than 'data governance framework', which doesn't face an analogous formality spectrum across its subject matter 
-
 
 - **Knowledge graphs are often perceived as 'derived/rebuildable':** echoing the companion Architecture Evolution report's discussion of vector infrastructure disaster recovery, knowledge graphs constructed from source documents are sometimes treated as fully rebuildable from source — which, while true in principle, undersells the governance value embedded in a mature graph (accumulated entity resolution decisions, curated relationship vocabularies, access control configurations) that would need to be re-established, not just re-extracted, after a rebuild — 'rebuildable' is not the same as 'governance-free', but this distinction is often not made explicit in how knowledge graphs are positioned within broader data governance discussions. 
 
@@ -504,9 +474,7 @@ Rather than reviewing all entity resolution decisions (impractical at scale), es
 
 Schedule recurring (e.g., quarterly) reviews for relationship type and entity type vocabulary consolidation — making this a standing operational responsibility (with assigned ownership per step 1) rather than an occasional 'cleanup project' that competes with other priorities and tends to be deferred indefinitely once initial pilots are deemed 'working'. 
 
-
 **Closing Note on Governance Trajectory:** The governance gaps identified in this section are likely to narrow over the coming years as both governance platform vendors and knowledge graph platform vendors recognize the gap (a trajectory consistent with the companion Operational Excellence report's Future Trends discussion of governance frameworks catching up to vector and memory infrastructure). In the interim, enterprises that establish even lightweight versions of the practices above — particularly ownership and documented schema — will be substantially better positioned to adopt more formal tooling as it emerges, having already established the organizational practices that tooling will need to integrate with, rather than needing to retrofit both organizational practice and tooling simultaneously. 
-
 
 ## **GraphRAG vs. Traditional Architectures** 
 
@@ -523,7 +491,6 @@ This is the comparison most directly addressed by GraphRAG's original motivation
 |Construction cost|Lower — embedding generation is the<br>primary cost, scales linearly with corpus<br>size|Higher — entity/relationship extraction<br>(typically LLM-based) is computationally<br>expensive and scales non-linearly with<br>corpus complexity (companion Operational<br>Excellence report, Part 17)|
 |Update/freshness|Moderate — re-embedding changed<br>documents is straightforward, though<br>synchronization discipline still required<br>(companion Architecture Evolution<br>report, Section 9)|Harder — graph updates must handle<br>entity resolution against existing entities,<br>potential relationship changes, and (for<br>community-based patterns) community<br>re-summarization (this report's Multi-Hop<br>Reasoning section)|
 |Explainability|Moderate — citations show source<br>documents, but not why those<br>documents were relevant beyond<br>similarity score|Stronger in principle (traversal path shows<br>the relationship chain) but subject to this<br>report's AI Grounding section's caveat<br>about presenting grounding mode clearly|
-
 
 |**Dimension**|**Vector-Only RAG**|**GraphRAG**|
 |---|---|---|
@@ -546,7 +513,6 @@ This comparison is less commonly made explicitly (the two are often built by dif
 |Fit for LLM-extracted<br>content|Poor direct fit — LLM extraction output<br>doesn't naturally produce OWL<br>axioms/constraints|Strong direct fit — LLM extraction output<br>maps naturally to nodes/edges (this<br>report's Section 3)|
 |Interoperability with external<br>standards|Strong where established upper<br>ontologies exist (e.g., FIBO) — this<br>report's Section 2|Weak — property graph schemas are<br>typically organization-specific without<br>standard external vocabularies|
 
-
 |**Dimension**|**Formal OWL-Based Ontology**|**GraphRAG (Property Graph)**|
 |---|---|---|
 |Best-fit domains|Domains with established formal rule<br>systems and regulatory taxonomies (life<br>sciences, financial services)|Domains without pre-existing formal<br>models, or where rapid iteration on<br>extraction-derived knowledge is<br>prioritized|
@@ -567,7 +533,6 @@ Traditional enterprise search (keyword/full-text search over documents, often wi
 |Existing enterprise investment|Very high — most enterprises have<br>substantial existing search infrastructure<br>(companion Operational Excellence<br>report's enterprise search platforms, Part<br>18)|Additive — GraphRAG is typically<br>deployed alongside, not instead of,<br>existing search infrastructure|
 
 _Table 4: GraphRAG vs. Traditional Enterprise Search_ 
-
 
 #### **Decision Framework: When Each Architecture Is Appropriate** 
 
@@ -590,7 +555,6 @@ Rarely, for AI-grounding-driven initiatives specifically — per Section 2, the 
 ##### **Retain/Extend Traditional Enterprise Search When...** 
 
 Exact-match and identifier-based queries are common in the use case (this report's Semantic Retrieval section's discussion of hybrid search); existing search infrastructure investment is substantial and provides adequate coverage for current needs; and GraphRAG/vector additions are positioned as complementary retrieval mechanisms within a hybrid architecture (this report's Semantic Retrieval section) rather than as replacements. 
-
 
 ##### **Use the Semantic Layer Bridge When...** 
 

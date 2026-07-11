@@ -7,13 +7,11 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **ANTHROPIC**
 **Claude Certified Architect**
 **Foundations (EAP-CCAF)**
 Complete Exam Preparation Guide
 *All 5 Domains  •  Practice MCQs  •  Flashcards  •  Quick-Revision Sheets*
-
 ## **Exam At-a-Glance**
 | Attribute | Detail |
 | --- | --- |

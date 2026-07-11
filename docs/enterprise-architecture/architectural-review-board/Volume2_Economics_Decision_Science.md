@@ -9,11 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-P R I N C I P A L E N T E R P R I S E A R C H I T E C T R E F E R E N C E S E R I E S 
-
-VOLUME 2 OF 8 
-
 # **Architecture Economics & Decision Science** 
 
 Putting numbers behind architecture decisions: technical debt valuation, architecture ROI, cost of delay, FinOps, GreenOps, and the formal decision frameworks (ATAM, CBAM, real options, Wardley evolution) that separate principal-level judgment from opinion. 

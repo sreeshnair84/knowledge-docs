@@ -10,9 +10,6 @@ tags: ["ai-usecases"]
 doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
-
-<!-- converted from CEO_Agent_Solution_Blueprint.pdf -->
-
 # CEO Agent & Meeting Prep Agent
 
 ## Solution Blueprint · Professional Services & Consulting

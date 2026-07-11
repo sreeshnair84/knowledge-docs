@@ -8,23 +8,16 @@ source_type: converted-pdf
 source_file: "ai-platform-factory-runbook-v2.pdf"
 tags: ["agentic-ai", "platform", "runbook", "devops", "aws"]
 ---
-
-<!-- converted from ai-platform-factory-runbook-v2.pdf -->
-
-
 ```
 // AI PLATFORM FACTORY — PRODUCTION AGENT RUNBOOK  v2.0  |  MULTI-SERVICE  |  FULL-STACK  |  JUNE 2026
 ```
-
 # **AI Platform Factory** 
 
 # **Production-Grade Requirements & Agent Runbook** 
 
 Full-stack platform  |  Frontend + Backend + Data pipeline + Agent layer  |  GitHub Copilot + Claude Code 
 
-
 ![](/img/agentic-systems/platform/ai-platform-factory-runbook-v2.pdf-0001-06.png)
-
 
 ###### **`WHAT CHANGED FROM V1 (POC)`** 
 
@@ -49,7 +42,6 @@ v1 was PoC-scoped (single microservice). v2 covers the full platform: frontend S
 |**`14`**|Quality gates + security checklist|
 |**`15`**|Local testing scripts — no Docker required variant|
 
-
 use Ctrl+F / section numbers to navigate 
 
 **`01` HOW TO USE THIS DOCUMENT** 
@@ -57,7 +49,6 @@ use Ctrl+F / section numbers to navigate
 GitHub Copilot Agent + Claude Code 
 
 ## **Four integration methods — choose by your workflow:** 
-
 
 #### **Method A — Attach to Copilot Chat** 
 
@@ -123,7 +114,6 @@ A multi-service platform consists of these layers. The agent must understand all
 |Observability|Prometheus, Grafana, Loki, traces|Metrics, logs, distributed traces|infra/observability/|
 |IaC / Infra|Terraform / Pulumi / CDK|Cloud resources, networking, secrets management|infra/|
 
-
 ###### **`SERVICE-TO-SERVICE COMMUNICATION RULES`** 
 
 Synchronous: REST or gRPC only between gateway and first-tier services. Use gRPC for high-throughput. Asynchronous: Event bus for cross-domain events. Producer owns the schema. Consumer validates on read. Never: Direct DB-to-DB access. Never shared schema between services. One service = one bounded context. 
@@ -134,13 +124,11 @@ Compatible with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor  |  Open s
 Multi-service platform edition
 ```
 
-
 ##### **`03`** 
 
 ### **REPOSITORY STRUCTURE — FULL PLATFORM MONOREPO** 
 
 Platform monorepo — annotated
-
 
 ##### `platform-root/` 
 
@@ -200,7 +188,6 @@ Agent: never hardcode. Inspect requirements/06-stack.md first, then existing src
 
 **ADR trigger** 
 
-
 |Frontend SPA|requirements/06-stack.md or src/|frontend/<br>React/Next.js, Vue/Nuxt, Angular, SvelteKit|Framework + SSR strategy|
 |---|---|---|---|
 |API Gateway|src/gateway/ or infra/ files|Kong, Traefik, AWS ALB, Nginx, custom Node|Auth model, rate limit strategy|
@@ -213,7 +200,6 @@ Agent: never hardcode. Inspect requirements/06-stack.md first, then existing src
 |IaC|infra/iac/ or requirements/07-|Terraform, Pulumi, AWS CDK, Bicep|State backend|
 |Container runtime|Docker/Podman presence|Docker + Compose, Podman, containerd|Registry choice|
 |CI/CD|.github/workflows/ presence|GitHub Actions (default), Jenkins, CircleCI|Deploy strategy|
-
 
 ### **`05` AI AGENT FILE ECOSYSTEM** AGENTS.md + CLAUDE.md + skills + hooks — how they fit together 
 
@@ -230,16 +216,13 @@ Agent: never hardcode. Inspect requirements/06-stack.md first, then existing src
 |.ai-state.md|All agents|Read FIRST every ses|sion<br>Agent's session memory: last step, files changed, pending tasks<br>Update at session end. Never delete.|
 |docs/data/schema-registry.yaml|All agents|On-demand via data-s|chema skill<br>Canonical data schemas — governed, versioned<br>See Section 10 for governance rules|
 
-
 ###### **`THE COMPOSABLE SYSTEM (FROM GITHUB COPILOT DOCS)`** 
 
 Instructions = always on.  Skills = auto-loaded on description match.  Agents = named persona for a session. Hooks = deterministic enforcement underneath everything.  MCP = live external data via tools. 
 
 A skill can bundle scripts an agent invokes. A hook can enforce policy regardless of which skill triggered it. Hooks are enforcement; instructions are advice. Use hooks when a policy MUST NOT be ignored. 
 
-
 06
-
 
 ### **PRODUCTION SKILLS LIBRARY** 
 
@@ -256,7 +239,6 @@ Or copy the skill folder to .github/skills/<skill-name>/SKILL.md manually.
 Skills are auto-discovered by description matching. Invoke manually with /<skill-name> in chat. 
 
 #### **.github/skills/architecture/SKILL.md** 
-
 
 ```
 name: architecture
@@ -283,7 +265,6 @@ name: architecture
 
 **.github/skills/frontend/SKILL.md** 
 
-
 ```
 name: frontend
   Frontend SPA standards. Use when creating or modifying
@@ -303,7 +284,6 @@ name: frontend
 
 - `API client: generated from openapi.yaml (openapi-ts or similar).` 
 
-
 ```
   design-tokens.md    # Load only when styling
   component-patterns.md  # Load only when building UI
@@ -314,7 +294,6 @@ name: frontend
 ```
 
 #### **.github/skills/backend/SKILL.md** 
-
 
 ```
 name: backend
@@ -337,11 +316,9 @@ name: backend
 
 ## Stack detection
 
-
 `IF src/services/<name>/package.json` → `TypeScript/Node IF src/services/<name>/pom.xml` → `Java/Spring Boot IF src/services/<name>/pyproject.toml` → `Python/FastAPI ELSE` → `write ADR, choose, implement` 
 
 **.github/skills/api-design/SKILL.md** 
-
 
 ```
 name: api-design
@@ -390,7 +367,6 @@ PII fields are defined in docs/data/pii-inventory.md.
 
 **.github/skills/testing/SKILL.md** 
 
-
 ```
 name: testing
 
@@ -424,7 +400,6 @@ name: testing
 
 #### **.github/skills/code-review/SKILL.md** 
 
-
 ```
 name: code-review
   Self-review and quality gate. Load at workflow step 11.
@@ -447,7 +422,6 @@ allowed-tools: Bash(grep *) Bash(cat *)
 `OpenAPI spec not updated for new/changed endpoint ## Quality checklist` I `All functions < 25 lines, single responsibility` I `No TODO in production code paths` I `README accurately reflects how to run the service` I `.ai-state.md updated with this session's summary` 
 
 **.github/skills/security/SKILL.md** 
-
 
 ```
 name: security
@@ -481,7 +455,6 @@ I `Rate limiting at gateway. 429 with Retry-After header.`
 
 #### **.github/skills/docker/SKILL.md** 
 
-
 ```
 name: docker
 
@@ -505,7 +478,6 @@ name: docker
 
 ## compose.yaml standards
 
-
 - `Use compose.yaml (not docker-compose.yml) per 2026 spec.` 
 
 - `Separate: compose.yaml (dev) compose.prod.yaml (prod overrides).` 
@@ -521,7 +493,6 @@ name: docker
 ```
 
 #### **.github/skills/pipeline/SKILL.md** 
-
 
 ```
 name: pipeline
@@ -582,7 +553,6 @@ name: observability
 
 **.github/skills/governance/SKILL.md** 
 
-
 ```
 name: governance
   Data governance and compliance. Load when working with
@@ -612,9 +582,7 @@ $ gh skills install github/awesome-copilot codebase-mapper
 
 $ gh skills install github/awesome-copilot acreadiness-assess Or browse: github.com/github/awesome-copilot  |  lobehub.com/skills 
 
-
 07
-
 
 ### **PRODUCTION HOOKS** 
 
@@ -633,9 +601,7 @@ Hooks are the enforcement layer. Unlike instructions (which the model may ignore
 |errorOccurred|Error during execution|Observational only|Error logging, alerting, pattern tracking|
 |sessionEnd|Session terminates|Observational only|Cleanup, send Slack notification, generate session report|
 
-
 #### **policy.json — full production configuration:** 
-
 
 ```
 // .github/hooks/policy.json
@@ -680,9 +646,7 @@ Hooks are the enforcement layer. Unlike instructions (which the model may ignore
 
 #### **security-check.sh — preToolUse enforcement script:** 
 
-
 #!/bin/bash
-
 
 - `# .github/hooks/scripts/security-check.sh` 
 
@@ -755,7 +719,6 @@ Use multi-stage builds: one Dockerfile per service, four stages. Production imag
 
 **Multi-stage Dockerfile template (TypeScript/Node example):** 
 
-
 `# infra/docker/Dockerfile.node  — copy per service and adapt #` II `Stage 1: Base (shared dev + prod foundation)` IIIIIIIIIIII `FROM node:22-alpine AS base WORKDIR /app COPY package*.json ./ RUN npm ci --ignore-scripts` 
 
 `#` II `Stage 2: Development / DevContainer` IIIIIIIIIIIIIIIIIIIII `FROM base AS devcontainer RUN apk add --no-cache git curl jq bash COPY . . CMD ["npm", "run", "dev"] #` II `Stage 3: Builder` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `FROM base AS builder COPY . . RUN npm run build && npm prune --production #` II `Stage 4: Production (distroless)` IIIIIIIIIIIIIIIIIIIIIIIII `FROM gcr.io/distroless/nodejs22-debian12 AS production WORKDIR /app USER 1001:1001 COPY --from=builder --chown=1001:1001 /app/dist ./dist COPY --from=builder --chown=1001:1001 /app/node_modules ./node_modules COPY --from=builder --chown=1001:1001 /app/package.json . EXPOSE 3000` 
@@ -769,7 +732,6 @@ CMD ["dist/index.js"]
 ```
 
 **compose.yaml — development orchestration:** 
-
 
 ```
 # compose.yaml  (preferred filename per 2026 Compose spec)
@@ -836,7 +798,6 @@ services:
 
 DevContainers provide consistency but require Docker Desktop or Podman. Developers without Docker can use: scripts/local-setup.sh (see Section 15). CI always uses containers. DevContainer is recommended but never blocking. One devcontainer.json per service OR one root devcontainer.json using Docker Compose. 
 
-
 ```
 // .devcontainer/devcontainer.json  (monorepo root — uses Compose)
 
@@ -894,7 +855,6 @@ DevContainers provide consistency but require Docker Desktop or Podman. Develope
 
   "forwardPorts": [3001, 8080, 3010, 5432, 6379],
 
-
 10
 ```
 
@@ -906,12 +866,9 @@ Data governance is non-negotiable in production. Every field must be classified.
 
 #### **docs/data/schema-registry.yaml — canonical schema format:** 
 
-
 ![](/img/agentic-systems/platform/ai-platform-factory-runbook-v2.pdf-0018-07.png)
 
-
 **docs/data/pii-inventory.md — governance anchor:** 
-
 
 ```
 # PII Inventory — GOVERNANCE DOCUMENT
@@ -938,11 +895,9 @@ ALWAYS use field-level encryption for payment fields.
 
 11
 
-
 ### **CI/CD PIPELINE** 
 
 GitHub Actions — agent generates these on first scaffold 
-
 
 ```
 # .github/workflows/ci-backend.yml  (agent generates per service)
@@ -1023,7 +978,6 @@ jobs:
 |03|ORIENT|Read docs/|architecture/, adr/, api/, data/schema-registry.yaml, design/plan.|Decision history|
 |04|ORIENT|Inspect src/ + tests/|Walk source. Identify what exists. Find compile/test failures.|Gap list|
 
-
 |05|PLAN|Diff requirements vs impl|List: unimplemented features. Undocumented code. Failing gates.Priority task list|
 |---|---|---|---|
 |06|PLAN|Update architecture doc|Update docs/architecture/overview.md if any service/decision changed.<br>Updated arch doc|
@@ -1037,11 +991,9 @@ jobs:
 |14|DOC|Update schema registry|If any DB/event schema changed, update docs/data/schema-registry.yaml.<br>Schema registry|
 |15|REPORT|Produce 10-section report|Structured output: summary, assumptions, arch, files, plan, code, t**es**ts, docs, remaining, risks.<br>S<br>sion report|
 
-
 copy-paste to start any session 
 
 13
-
 
 ### **MASTER AGENT PROMPTS** 
 
@@ -1098,7 +1050,6 @@ NEVER hardcode secrets. NEVER log PII fields.
 ```
 
 **Resume prompt — Sessions 2+ (short version):** 
-
 
 ```
 ## Resume — AI Platform Factory
@@ -1162,7 +1113,6 @@ Check PII compliance in every service that was modified this sprint.
 |.ai-state.md|Updated with session summary, files changed, next steps|agentStop hook|
 |Security scan|Trivy + CodeQL + Trufflehog pass (no CRITICAL/HIGH)|CI security-scan.yml|
 
-
 Docker build Production Dockerfile builds successfully (--target production) 
 
 CI build-and-scan job 
@@ -1203,7 +1153,5 @@ done
 
 - `# scripts/check-health.sh — check service health endpoints #!/bin/bash SERVICES=("3001:frontend" "8080:gateway" "3010:user-svc") for entry in "${SERVICES[@]}"; do` 
 
-
 AI Platform Factory — Production Agent Runbook v2.0 | June 2026 | Multi-service: Frontend + Backend + Data Pipeline + Agent Layer | GitHub Copilot Agent + Claude Code | Open standard: SKILL.md + AGENTS.md + hooks 
-
 

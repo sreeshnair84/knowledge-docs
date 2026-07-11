@@ -7,15 +7,11 @@ source_type: converted-pdf
 doc_type: guide
 covers_version: "N/A"
 ---
-
 **AI ENGINEER**
 **Interview Question Bank**
-
 | 100+ Questions  |  9 Categories  |  3 Difficulty Levels Python  •  LLM  •  RAG  •  MLOps  •  System Design  •  Live Coding |
 | --- |
-
 *Confidential — Internal Use Only*
-
 # **  SECTION 1 — Python & Core Engineering**
 | Tests foundational Python depth: OOP, data structures, error handling, and writing clean, production-grade code. |
 | --- |

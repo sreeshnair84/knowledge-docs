@@ -11,7 +11,6 @@ doc_type: certification
 exam_code: "C1000-171"
 exam_validity: "2026"
 ---
-
 ## Exam Facts
 
 Exam code: C1000-171 | Credential: IBM Certified Developer — Quantum Computation | Format: Multiple choice

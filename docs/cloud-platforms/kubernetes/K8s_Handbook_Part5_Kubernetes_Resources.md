@@ -9,7 +9,6 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **ENTERPRISE KUBERNETES MASTERY** 
 
 AI Platform Engineering Handbook 

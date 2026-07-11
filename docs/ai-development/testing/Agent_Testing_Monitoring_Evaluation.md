@@ -7,20 +7,15 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **DEEP TECHNICAL GUIDE**
 **Agent Testing, Monitoring & Evaluation**
 *Multi-Turn Complexity  |  Evaluation Frameworks  |  Observability  |  Production Monitoring  |  Best Practices*
-
 | This guide covers the full complexity landscape of testing, monitoring, and evaluating AI agents in production: why agents are fundamentally harder to test than APIs or ML models, how multi-turn state breaks every standard testing framework, what professional observability stacks look like, how to evaluate non-deterministic systems at scale, and the best practices that separate robust agent platforms from fragile demos. |
 | --- |
-
 **1. Why Agent Testing is Fundamentally Different**
 | Testing a REST API: send input X, verify output Y. Testing a trained ML model: benchmark on held-out data. Testing an agent: send intent I and the agent may take 1 to 47 steps, call 0 to 12 tools, make branching decisions, accumulate state across turns, and produce an output only correct in context. None of your existing testing frameworks apply cleanly. |
 | --- |
-
 **1.1  The Fundamental Properties That Break Standard Testing**
-
 | Property | Standard System | Agent System | Testing Implication |
 | --- | --- | --- | --- |
 | Determinism | Same input, same output | Same input, different sequence possible | Cannot use exact output assertions; test behavioral properties |
@@ -30,7 +25,6 @@ doc_type: guide
 | Latency | Milliseconds, predictable | Seconds to minutes, variable | P99 latency is not useful; trajectory length distribution matters more |
 | Failure modes | Exception or error code | Silent degradation, wrong tool, missed step | Many agent failures produce plausible-looking output with no error signal |
 | Coverage | Input space coverage | Trajectory space (exponential) | Full coverage is impossible; adversarial sampling required |
-
 **1.2  The Agent Evaluation Trilemma**
 Every agent evaluation system must balance three forces that pull against each other: Fidelity (test mirrors production), Speed (fast enough for CI/CD), and Coverage (enough scenarios to find real bugs). You can only pick two. High Fidelity + High Coverage = too slow for CI/CD. High Fidelity + High Speed = not enough scenarios. High Coverage + High Speed = synthetic/simulated, not real. Professional solution: a tiered test pyramid with different fidelity/speed/coverage tradeoffs at each layer.
 

@@ -7,12 +7,10 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **CCAF EXAM PREP — ADVANCED SUPPLEMENT**
 **Memory, Token Optimization, Agent Communication**
 **+ All Topics Not Covered in the Core Study Guide**
 *11 Advanced Modules  •  Architecture Diagrams  •  Code Patterns  •  MCQs  •  Flashcards*
-
 ## **What This Supplement Covers**
 | Module | Topic |
 | --- | --- |

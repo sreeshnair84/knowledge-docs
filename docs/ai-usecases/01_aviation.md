@@ -9,7 +9,6 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Meridian Global Airlines Case Study** 
 
 Meridian Global Airlines — Predictive Maintenance & Irregular Operations Multi-Agent Platform 

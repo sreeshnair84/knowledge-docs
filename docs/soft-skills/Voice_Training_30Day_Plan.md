@@ -7,18 +7,15 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **Voice Training**
 **30-Day Expert Public Speaking Plan**
 *Your personal roadmap from some experience to confident expert*
-
 **Your Profile**
 | Goal | Expert Public Speaker |
 | --- | --- |
 | Current Level | Some Experience |
 | Daily Practice Time | 20-30 Minutes |
 | Duration | 28 Days (+ ongoing) |
-
 # **Your Daily Routine (25 min)**
 Complete this every day before moving into your weekly focus. This is non-negotiable — consistency beats intensity.
 

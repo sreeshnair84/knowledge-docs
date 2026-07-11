@@ -7,13 +7,10 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 | ANTHROPIC Partner Certification Exam Enterprise Architect (EA) Complete Study Guide 250+ Practice Questions  |  Cheat Sheet  |  Domain Deep Dives |
 | --- |
-
 | EXAM OVERVIEW Domain Weightings & Structure |
 | --- |
-
 ## **About The Certification**
 The Anthropic Partner Certification (Enterprise Architect) validates your ability to design and implement production-grade applications using Claude. The ideal candidate is a solution architect with 6+ months of practical experience building with Claude APIs, Agent SDK, Claude Code, and MCP in real production environments.
 

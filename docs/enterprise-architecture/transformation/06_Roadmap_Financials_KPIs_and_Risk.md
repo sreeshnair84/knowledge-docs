@@ -9,9 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-
 # **Roadmap, Financial Model, KPIs & Risk Register** 
 
 From decision to delivery: the executable plan 

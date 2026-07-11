@@ -7,22 +7,16 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 🎙
-
 **THE WORLD'S BEST**
 **CTO VOICE & COMMUNICATION**
 **MASTERY PROGRAM**
-
 84-Day Day-by-Day Training Transcript
 Designed for a 20-Year Senior Architect at the organization
-
 **Masters Synthesized:**
 **Vinh Giang  •  Julian Treasure  •  Chris Voss**
-
 "You are only as good as you can communicate."
 — Vinh Giang
-
 # **THE THREE MASTERS — YOUR FACULTY**
 This program synthesizes the world's most practical communication frameworks from three masters, each bringing a distinct and complementary discipline.
 | Master | Domain | Signature Framework | Your Primary Application |

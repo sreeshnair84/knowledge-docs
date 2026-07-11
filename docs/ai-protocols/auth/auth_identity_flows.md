@@ -9,9 +9,6 @@ tags: ["ai-protocols", "mcp", "a2a"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-###### **AZURE AI AGENT ARCHITECTURE** 
-
 # **Authentication & Identity Flows** 
 
 Complete Auth Architecture with Supporting Diagrams 

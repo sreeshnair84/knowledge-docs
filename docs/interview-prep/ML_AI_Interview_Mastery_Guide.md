@@ -7,10 +7,8 @@ source_type: converted-pdf
 doc_type: guide
 covers_version: "N/A"
 ---
-
 | THE ML / AI PRACTITIONER'S INTERVIEW MASTERY GUIDE Thought Process · Problem Brainstorming · Solutionizing · Value Generation Based on leading AI consultant upskilling strategies  |  Search · NLP · MLOps · AI Agents |
 | --- |
-
 # **How to Use This Guide**
 Most interview prep resources teach you what to say. This guide teaches you how to think. Every section is structured around three movements:
 

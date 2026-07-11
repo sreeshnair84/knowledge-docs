@@ -9,17 +9,11 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 **Claude & GitHub Agents** Best Practices Guide — v2 Enriched Edition 
-
 Skills · Hooks · Plugins · MCP · Routing Design · Agent Teams · Anti-Patterns · Token Optimization 
-
 April 2026 · Based on Anthropic Official Docs, Community Research & Production Data 
-
 This v2 edition incorporates the **April 2026 Claude Code changelog** , the newly published **Dive-into-Claude-Code architectural analysis** (arXiv 2604.14228), official Anthropic best-practices documentation, production patterns from the awesome-claude-code community (35.9K I), and a comprehensive anti-pattern catalog drawn from real-world failure modes. New sections cover **Routing Design** , **Agent Teams** , and the **Explore-Plan-Execute pipeline** . 
-
 Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 1 
-
 # **Table of Contents** 
 
 ### **00** 

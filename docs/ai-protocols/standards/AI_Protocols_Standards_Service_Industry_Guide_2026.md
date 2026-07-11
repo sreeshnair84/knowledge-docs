@@ -9,7 +9,6 @@ tags: ["ai-protocols", "mcp", "a2a"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **AI Protocols, Frameworks & Standards 2026** 
 
 The Complete Guide for Service Industries: Every New Protocol, Standard & Framework Explained — and What Your Organisation Must Do Right Now to Lead the AI Journey 

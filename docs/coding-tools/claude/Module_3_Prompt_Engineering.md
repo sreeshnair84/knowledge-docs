@@ -9,9 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 #### **MODULE 3** 
-
 # **Prompt Engineering & Optimization — Complete Reference** 
 
 System prompts, few-shot, chain-of-thought, XML structured output, RAG pipelines, hybrid search, extended thinking, and evaluation frameworks 

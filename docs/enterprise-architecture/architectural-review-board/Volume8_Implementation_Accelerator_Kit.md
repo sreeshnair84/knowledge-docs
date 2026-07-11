@@ -9,15 +9,8 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-P R I N C I P A L E N T E R P R I S E A R C H I T E C T R E F E R E N C E S E R I E S 
-
-VOLUME 8 OF 8 
-
 **Implementation Accelerator Kit** Ready-to-adapt templates: ARB charter, Terms of Reference, RACI matrices, review forms, executive dashboards, Policy-as-Code starters, and a phased enterprise rollout roadmap. 
-
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition 
-
 # **Part A — Foundational Templates** 
 
 This final volume converts everything in Volumes 1-7 into directly usable starting templates. None of these should be adopted verbatim without adapting to your specific institution's regulatory environment, scale, and existing governance landscape (Volume 1) — but each is structured to need editing, not building from a blank page. 

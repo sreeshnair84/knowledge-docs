@@ -10,12 +10,7 @@ tags: ["agentic-systems", "platform", "microservice", "runbook", "requirements"]
 doc_type: guide
 covers_version: "v1.0 June 2026"
 ---
-
-<!-- converted from ai-msf-requirements-runbook.pdf -->
-
-
 // AI-MICROSERVICE FACTORY — SHARED REQUIREMENTS DOCUMENT v1.0
-
 # **AI-Assisted Microservice** 
 
 # **Development Framework** 
@@ -39,7 +34,6 @@ This PDF serves as the shared requirements document for an AI-assisted microserv
 ## **HOW TO USE THIS DOCUMENT WITH GITHUB COPILOT** 
 
 00
-
 
 ## **Three ways to serve this to GitHub Copilot:** 
 
@@ -77,9 +71,7 @@ This PDF serves as the shared requirements document for an AI-assisted microserv
 
 4. Use the CLAUDE.md / .github/copilot-instructions.md file to point the agent to the requirements/ folder 
 
-
 01
-
 
 ### **Method D — Paste prompt directly into agent** 
 
@@ -121,11 +113,9 @@ I `Agent resumes from current repository state without user restating context`
 
 02
 
-
 #### **`KEY RULE`** 
 
 Do NOT hardcode a language or framework. The agent must inspect requirements/ and determine the appropriate stack. If requirements/03-stack.md is present, use it. If not, detect from existing src/ files. If still ambiguous, decide and document the choice in an ADR. 
-
 
 |**Dimension**|**Agent Must Determine**|**Detection Source**|
 |---|---|---|
@@ -139,13 +129,10 @@ Do NOT hardcode a language or framework. The agent must inspect requirements/ an
 |Testing framework|Jest / JUnit / pytest / Go test|Inferred from language choice|
 |Build tool|npm / Maven / uv / Make|Inferred from language choice|
 
-
 |**REPOSITORY STRUCTURE**|`03`|
 |---|---|
 
-
 The repository is the agent's persistent memory. Every folder has a defined role. If a required folder is missing, the agent creates it. 
-
 
 ### `my-service/` 
 
@@ -213,9 +200,7 @@ The repository is the agent's persistent memory. Every folder has a defined role
 
 `README.md                    # [AGENT MAINTAINS]` Updated at the end of every session. Contains: last completed step, files changed, pending tasks, open questions, and decisions made. The agent reads this FIRST — before requirements/ — so it can resume without you re-explaining context. Never delete or edit this file manually. 
 
-
 04
-
 
 ## **AI AGENT WORKFLOW — 13 IDEMPOTENT STEPS** 
 
@@ -237,11 +222,9 @@ Every agent invocation runs these steps in order. Steps are idempotent — re-ru
 |**`12`**|**UPDATE docs**|Sync README, openapi.yaml, architecture doc, .ai-state.md to reflect what was just built.<br>All docs refreshed|
 |**`13`**|**PRODUCE report**|Output the 10-section structured report (see Section 05).<br>Session summary|
 
-
 ## **EXPECTED OUTPUT — 10-SECTION REPORT PER SESSION** 
 
 05
-
 
 After every session the agent must produce a structured report with exactly these 10 sections. This report becomes the handoff artifact between sessions. 
 
@@ -257,9 +240,7 @@ After every session the agent must produce a structured report with exactly thes
 |**`9. Remaining Work`**|Ordered list of what comes next, derived from implementation-plan.md|
 |**`10. Risks and`**<br>**`Recommendations`**|Blockers, security concerns, open questions, suggested next actions|
 
-
 06
-
 
 ## **MASTER BOOTSTRAP PROMPT — COPY AND PASTE TO START A SESSION** 
 
@@ -358,7 +339,6 @@ Produce the 10-section report.
 
 07
 
-
 Skills are plain markdown files. The agent loads only the skills relevant to the current increment. Paste these into the corresponding files in your skills/ folder. 
 
 ### **skills/architecture.md** 
@@ -391,7 +371,6 @@ Load when: step 12 (update docs). Contents: README format spec, OpenAPI sync pro
 
 08
 
-
 ### **Core quality gates** 
 
 - I `All requirements/ items reflected in the implementation plan` 
@@ -416,7 +395,6 @@ Load when: step 12 (update docs). Contents: README format spec, OpenAPI sync pro
 
 - I `CI workflow (.github/workflows/ci.yml) runs successfully` 
 
-
 #### **`STEP 11 IS BLOCKING`** 
 
 If ANY core quality gate fails, the agent MUST NOT produce the session report marked as complete. Instead it must fix the issue, re-run the verification, and only then finalise the report. 
@@ -427,17 +405,13 @@ This is the most important difference from vibe coding — the agent is responsi
 
 09
 
-
 When src/ is empty (or contains only a .gitkeep), the agent runs step 08 and generates this minimum viable scaffold. Stack-specific files are shown for the three most common choices. 
 
 ### **TypeScript / Node.js** 
 
-
 ![Figure 1](/img/agentic-systems/platform/ai-msf-runbook-p8-1.png)
 
-
 ### **Python / FastAPI** 
-
 
 ```
 # Python / FastAPI scaffold
@@ -459,7 +433,6 @@ Dockerfile  docker-compose.yml  .github/workflows/ci.yml
 ## **TEMPLATE REFERENCE — ADR FORMAT** 
 
 10
-
 
 Place this template at templates/ADR.md.tpl. The agent fills it in for every new decision. 
 
@@ -486,9 +459,7 @@ Neutral:  [Other effects]
 
 11
 
-
 Commit this file to your repository. GitHub Copilot reads it automatically at the start of every Chat session when you are working inside this repository. It makes Copilot requirements-aware without you needing to attach the PDF every time. 
-
 
 - `# GitHub Copilot Instructions` 
 
@@ -560,11 +531,9 @@ Hosted agents with memory, toolboxes, tracing, governance. Semantic Kernel + Aut
 
 12
 
-
 #### **`THE SHIFT (2026 DATA)`** 
 
 46% of all code written by active developers is now AI-generated (June 2026). Development is shifting from writing code to writing specifications — developers author intent, agents manifest it. The architect role has never been more valuable. This PoC establishes the core pattern that can later scale to multi-agent orchestration and enterprise governance. 
 
 AI-Assisted Microservice Factory PoC | Requirements & Agent Runbook | v1.0 | June 2026 | Compatible with: GitHub Copilot Agent, Claude Code, Gemini CLI, AWS Kiro, Cursor, Windsurf 
-
 

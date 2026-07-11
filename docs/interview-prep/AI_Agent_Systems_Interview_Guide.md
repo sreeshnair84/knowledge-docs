@@ -9,7 +9,6 @@ tags: ["interview-prep"]
 last_reviewed: 2026-07-10
 target_role: "AI/ML Architect"
 ---
-
 # **AI Agent Systems Senior Engineer Interview Preparation Guide** 
 
 **Memory Architecture · Planning Paradigms · Progress Detection · ReAct vs Plan-Then-Execute · Exit Criteria · Safety & Drift · Tool-Loop Control · Glossary of Field Terminology** 

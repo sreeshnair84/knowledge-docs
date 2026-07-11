@@ -10,11 +10,7 @@ last_reviewed: 2026-07-10
 covers_through: 2026-07-10
 research_date: 2026-07-10
 ---
-
 2026 Edition 
-
-###### **ENTERPRISE LINEAGE & TRACEABILITY RESEARCH REPORT** 
-
 # **End-to-End Lineage for AI-Era Data Systems** 
 
 Data | Feature | Model | Prompt | Agent | Knowledge Lineage  —  Impact Analysis & Compliance 
@@ -49,7 +45,6 @@ End-to-End Lineage Systems for AI — Research Report  |  Confidential **CONFIDE
 |**AI Traceability & Explainability**|**36**|
 |**Lineage for Multi-Agent AI Systems**|**39**|
 
-
 ## **Executive Summary** 
 
 **Key Finding:** Lineage has expanded from a single technical concern (which tables feed which other tables) into a six-layer graph spanning raw data, computed features, trained models, prompts and retrieved context, autonomous agent decisions, and derived knowledge structures. Most enterprises have mature technical (table-level) lineage but significant — often complete — gaps in the five AI-era layers. These gaps are not cosmetic: they are precisely where root-cause analysis of AI failures, compliance evidence for AI regulation, and explainability for autonomous agent decisions must occur, and where they currently cannot. 
@@ -63,7 +58,6 @@ The report then examines four cross-cutting applications of lineage — impact a
 ##### **1. Lineage Completeness Decreases Monotonically Across the Six Layers** 
 
 Data lineage (Layer 1) is mature at most enterprises with established data platforms — OpenLineage and catalog-integrated lineage cover the majority of transformation pipelines. Feature lineage (Layer 2) is moderately covered where feature stores are adopted, but adoption itself is partial. Model lineage (Layer 3) is generally well-covered within a single ML platform but fragments across multi-platform estates. Prompt lineage (Layer 4), agent lineage (Layer 5), and knowledge lineage (Layer 6) are, for most organizations as of 2026, either absent or implemented as custom, non-standardized logging — no enterprise examined in this research has end-to-end coverage across all six layers with a single integrated lineage graph. 
-
 
 ##### **2. The 'Lineage Gap' Is Where AI Incidents Become Unexplainable** 
 
@@ -81,11 +75,9 @@ DataHub and OpenMetadata's graph-based metadata models — where lineage is repr
 
 While the operational case for AI/prompt/agent lineage (faster incident resolution, better debugging) is strong, the EU AI Act's documentation requirements for high-risk systems — requiring demonstrable training data provenance and decision traceability — are emerging as the more urgent forcing function for enterprises to invest in Layers 3-5, particularly for organizations with EU exposure facing phased enforcement through 2027. 
 
-
 ##### **6. Multi-Agent Systems Will Require a Lineage Model Extension That Doesn't Yet Exist in Mature Form** 
 
 Single-agent lineage (Layer 5) can, with effort, be represented as an extended trace — a linear-ish (if branching) sequence of tool calls and decisions. Multi-agent systems, where independent agents communicate via protocols like A2A and may operate concurrently with overlapping context, require a lineage model that captures not just sequences but agent-to-agent communication graphs, shared-memory read/write conflicts, and emergent coordination patterns — a fundamentally graph-shaped (not trace-shaped) lineage problem that current distributed tracing-derived approaches (OpenTelemetry-based agent observability) are not natively designed to represent. 
-
 
 ## **The Six-Layer Lineage Model** 
 
@@ -106,9 +98,7 @@ _Table 1: The Six-Layer Lineage Model_
 
 The six layers are ordered to reflect both historical emergence and dependency structure: each layer depends on the layers before it for full traceability, while introducing lineage concerns that didn't exist in prior layers. Data lineage (Layer 1) is the foundation — without knowing where data comes from, no higher layer's lineage can be complete, since features, models, prompts, agents, and knowledge graphs are all ultimately derived from data. Feature lineage (Layer 2) extends data lineage with the specific transformation and point-in-time semantics that ML requires. Model lineage (Layer 3) extends feature lineage with training-run provenance — the same feature set can produce different models depending on code version, hyperparameters, and random seeds. Prompt lineage (Layer 4) is the first layer where the 'data' being traced (retrieved context, prompt templates) may not have existed as structured data in the traditional sense — introducing fundamentally different traceability requirements. Agent lineage (Layer 5) extends prompt lineage across multiple sequential (or concurrent) LLM interactions and tool calls that constitute a single agent task. Knowledge lineage (Layer 6) is somewhat orthogonal — it traces how source documents become graph-structured knowledge, which then becomes an input to layers 4-5 (retrieved/traversed by agents) — making it both a foundation for and a consumer of the lineage chain. 
 
-
 **How to Read This Report:** Each layer section follows a consistent structure: What Changed From the Prior Layer, What Existing Tooling Covers, What Remains a Gap, and Platform Capability Notes. This structure is designed to make explicit exactly where the lineage chain breaks for a given organization — readers should expect to identify their own organization's lineage maturity layer-by-layer rather than receiving a single 'mature' or 'immature' verdict. 
-
 
 ### **Data Lineage** 
 
@@ -140,7 +130,6 @@ Data lineage answers: for a given table or column, which source tables/columns, 
 
 ##### **Platform Capability Notes** 
 
-
 ###### **OpenLineage** 
 
 The specification itself, not a platform — defines the job/run/dataset/facet model that other tools implement. Integrations exist for Spark, Flink, dbt, Airflow, Dagster, and others. Column-level lineage is supported via the ColumnLineageDatasetFacet, though adoption of this specific facet varies by integration maturity. 
@@ -160,7 +149,6 @@ Similar graph-based approach to DataHub, with growing connector coverage for aut
 ###### **Collibra** 
 
 Enterprise-grade lineage with the deepest source-system connector library among catalog platforms, reflecting its long history in regulated-industry data governance. Lineage is tightly integrated with Collibra's policy and classification framework — a lineage edge can trigger policy propagation (e.g., a classification tag flows downstream automatically). 
-
 
 ### **Feature Lineage** 
 
@@ -190,7 +178,6 @@ Feature lineage extends data lineage with two requirements that table-level line
 
 - **Feature lineage for 'context store' / agentic features:** as discussed in the companion Architecture Evolution report, the extension of feature-store concepts toward agent context (retrieval results, conversation summaries) is ad-hoc per organization — there is no standard feature lineage model for these emerging feature types 
 
-
 ##### **Platform Capability Notes** 
 
 ###### **OpenLineage** 
@@ -216,7 +203,6 @@ Feature lineage is generally handled via Collibra's AI Governance module rather 
 ###### **Emerging: Feature-store-native lineage (Tecton, Hopsworks)** 
 
 The most complete feature lineage as of 2026 remains within feature-store-native lineage graphs rather than general-purpose catalogs — Tecton and Hopsworks both provide feature-to-source and feature-to-model lineage natively, but this lineage is generally not exported to or unified with broader enterprise catalog lineage without custom integration work. 
-
 
 ### **Model Lineage** 
 
@@ -246,7 +232,6 @@ Model lineage extends feature lineage with the additional dimensions that determ
 
 - **Continuous/online learning lineage:** for models that update continuously (online learning) rather than via discrete training runs, the experiment-tracking-based lineage model (one run = one lineage record) doesn't 
 
-
 map cleanly — lineage for continuously-updating models remains an edge case most tooling doesn't address well 
 
 ##### **Platform Capability Notes** 
@@ -275,7 +260,6 @@ Model lineage is addressed through the AI Governance module, which focuses more 
 
 Within their respective platforms, these provide the most complete model lineage available — the gap is exclusively at the cross-platform level. Emerging open standards efforts (extending OpenLineage's facet model to better represent ML experiment/model entities) are in early stages as of 2026 but not yet broadly adopted. 
 
-
 ### **Prompt Lineage** 
 
 The first layer where 'lineage' means tracing non-deterministic, context-assembled inputs 
@@ -299,7 +283,6 @@ Prompt lineage represents a qualitative shift from the prior three layers. Layer
 - **Connecting prompt lineage to upstream data/knowledge lineage:** the most significant gap. LLM observability platforms log 'these document chunks were retrieved' but typically don't connect this to Layer 1 (which source table/document version produced this chunk) or Layer 6 (which extraction run produced this knowledge graph entity that informed the response) — meaning the chain from 'this output was wrong' back to 'because this source document was outdated' frequently cannot be completed without manual cross-referencing between the LLM observability platform and the data catalog/lineage system, which are typically entirely separate tools with no integration 
 
 - **System prompt and configuration lineage:** system prompts (which encode business rules, safety constraints, and behavioral instructions) are often managed separately from user-facing prompt templates, with less consistent versioning/lineage — a change to a system prompt that affects all requests using a given application is a significant lineage event that's frequently under-tracked relative to per-request prompt template versions 
-
 
 - **Non-reproducibility as an inherent lineage limitation:** even with complete prompt lineage records, re-running the same prompt template + retrieved context + model version may not reproduce the same output (LLM outputs have inherent variability, and provider-side model updates can change behavior for a 'fixed' model version string) — prompt lineage can establish 'what was sent and what version was used' but cannot guarantee 'reproducing this would give the same result', a fundamental limitation that lineage consumers (especially for compliance purposes) need to understand explicitly 
 
@@ -327,11 +310,9 @@ Similar position to DataHub — extensible but without native prompt lineage ent
 
 Prompt lineage is addressed, to the extent it is, through the AI Governance module's prompt governance capabilities (Part 16 of the companion Operational Excellence report) — focused more on prompt version approval/review workflows than on per-request retrieval/output lineage, which remains the domain of LLM observability platforms. 
 
-
 ###### **Emerging: Langfuse, Arize Phoenix, Helicone as the prompt lineage source of truth** 
 
 These platforms provide the most complete prompt-level lineage available — prompt template versions, retrieved context, and outputs, often with OpenTelemetry-compatible tracing (Langfuse, Phoenix). The emerging direction (not yet standard) is using OpenTelemetry/OpenInference trace context as the connective layer between these platforms and data-catalog lineage — since both increasingly support OpenTelemetry-based instrumentation, a shared trace ID could in principle link a retrieval span to the data lineage of the retrieved content's source, but this linkage is not yet implemented as a standard pattern across the ecosystem. 
-
 
 ### **Agent Lineage** 
 
@@ -356,7 +337,6 @@ Prompt lineage (Layer 4) traces a single request-response interaction with an LL
 - **Connecting agent traces to upstream lineage layers:** as with prompt lineage, agent execution traces typically exist in an LLM-observability silo separate from data/feature/model/knowledge lineage systems — an agent trace shows 'the agent called the customer-lookup tool and received this data' but doesn't typically connect 'this data' back to the source table's Layer 1 lineage, the feature's Layer 2 lineage if it was a computed feature, or the knowledge graph entity's Layer 6 extraction lineage if it came from a graph traversal 
 
 - **Reasoning traceability vs. action traceability:** agent traces reliably capture what tools were called with what inputs/outputs (action traceability) but capturing why the agent chose to call a particular tool — the LLM's 'reasoning' that led to that decision — is less reliably captured, particularly for models/frameworks that don't expose explicit chain-of-thought, or where chain-of-thought is generated but not retained in logs due to volume/cost considerations (Part 12 of the companion report) 
-
 
 - **Cross-agent and cross-session continuity:** when an agent's task spans multiple sessions (e.g., a long-running task that's paused and resumed, or a task handed off between different agent instances), maintaining a continuous lineage trace across this discontinuity requires explicit trace context propagation that's inconsistently implemented — many implementations effectively restart tracing at session boundaries, fragmenting what should be a single logical lineage chain 
 
@@ -386,11 +366,9 @@ Similar position — extensible metadata model without native agent lineage enti
 
 Agent governance (Part 16 of the companion report) within Collibra's AI Governance module focuses on policy definition (what agents are permitted to do) rather than execution-level lineage (what a specific agent run actually did) — the two are complementary but distinct, and Collibra's current emphasis is the former. 
 
-
 ###### **Emerging: OpenInference + OpenTelemetry as the agent lineage substrate** 
 
 The most active area of standards development relevant to agent lineage is the extension of OpenTelemetry's GenAI semantic conventions (via OpenInference and related efforts) to cover agent-specific span types (tool calls, agent handoffs, multi-step reasoning chains). Arize Phoenix and Langfuse both support these conventions and are the most mature platforms for agent-level trace visualization as of 2026. The gap — connecting these traces to Layers 1-3 and 6 — remains the primary open integration challenge, and is the focus of early-stage efforts (not yet standardized) to propagate trace context across the data-lineage/agent-observability boundary. 
-
 
 ### **Knowledge Lineage** 
 
@@ -415,7 +393,6 @@ Knowledge lineage answers: for a given knowledge graph entity or relationship (a
 - **Entity resolution lineage:** when entity resolution merges or splits entities (e.g., determining that 'Acme Corp' and 'Acme Corporation' are the same entity, as discussed in the companion Architecture Evolution report's Section 6), the lineage of this resolution decision — what evidence supported the merge, and could it be reversed if found incorrect — is rarely tracked, even though entity resolution errors are identified as a primary knowledge graph failure mode 
 
 - **Graph update/deletion lineage:** when source documents are updated or deleted and the graph is correspondingly updated (removing or modifying entities/relationships), lineage of these update operations — what changed, when, and why — is typically not tracked with the same rigor as the initial extraction, creating a gap precisely where the 'stale knowledge served as current' failure mode (companion Operational Excellence report's Production Failure Analysis) originates 
-
 
 - **Connecting knowledge lineage to Layer 1:** source documents themselves often live in document repositories, content management systems, or unstructured data lakes that have their own (often weaker) Layer 1 lineage — connecting 'this graph entity came from this document' to 'this document came from this source system with this access control' requires bridging knowledge lineage with document-repository lineage, a connection that's rarely made explicit 
 
@@ -443,11 +420,9 @@ Similar position to DataHub — graph-based architecture provides a plausible fo
 
 No specific knowledge graph lineage capability identified; Collibra's strength in document/content classification could in principle extend to tracking which classified documents fed which knowledge graph construction processes, but this integration is not a standard capability. 
 
-
 ###### **Emerging: Custom provenance metadata within graph databases themselves** 
 
 The most common current approach — embedding provenance as node/relationship properties within Neo4j, Stardog, or other graph databases (companion Architecture Evolution report, Section 6) directly, rather than in a separate lineage system — has the advantage of co-locating lineage with the data it describes, but the disadvantage of being queryable only within that graph database's query language, not through a general-purpose lineage/catalog interface. No emerging standard has yet achieved meaningful adoption for unifying knowledge lineage with the other five layers; this is identified in this report's findings as the least mature of all six lineage layers. 
-
 
 ### **Platform Comparison** 
 
@@ -474,7 +449,6 @@ _Table 2: Lineage Layer Coverage by Platform_
 |OpenLineage|Specification — implemented<br>within producing tools (Spark,<br>dbt, Airflow, etc.)|Via consuming backend<br>(Marquez, DataHub, etc.)|Facet-based — new facet<br>types extend event schema|Standardizing how<br>lineage events are<br>emitted across<br>heterogeneous pipeline<br>tools|
 |Marquez|Self-hosted service (API + UI<br>+ storage backend)|REST API + web UI<br>lineage graph|Limited — primarily an<br>OpenLineage event<br>store/visualizer|Lightweight,<br>OpenLineage-native<br>lineage store without<br>broader catalog<br>overhead|
 
-
 |**Platform**|**Deployment Model**|**Query Interface**|**Extensibility Model**|**Best Fit**|
 |---|---|---|---|---|
 |DataHub|Self-hosted (OSS) or<br>DataHub Cloud (managed)|GraphQL API + web UI +<br>Python/Java SDKs|High — custom<br>entity/aspect types via<br>metadata model extensions|Engineering-led<br>organizations wanting a<br>unified, extensible<br>metadata graph<br>spanning data through<br>ML entities|
@@ -493,7 +467,6 @@ An open standard (built on OpenTelemetry semantic conventions) for instrumenting
 
 MLflow's tracing capability (extending its established experiment-tracking role into LLM/agent observability) represents an attempt to unify Layer 3 (model lineage, MLflow's original domain) with Layer 4-5 (prompt/agent tracing) within a single platform — relevant because it's one of the few efforts explicitly attempting to bridge these layers rather than treating them as separate tooling domains, though adoption for the Layer 4-5 portion specifically is earlier-stage than MLflow's established Layer 3 usage. 
 
-
 ##### **Unity Catalog Lineage (Databricks) / Microsoft Purview** 
 
 Platform-native lineage within major lakehouse platforms (companion Architecture Evolution report, Section 3) increasingly extends across Layers 1-3 within the platform's boundary, with Databricks' Mosaic AI and Microsoft's Copilot/Purview integrations beginning to extend toward Layer 4-5 for AI workloads run on those platforms. The relevance to this report: as discussed in the companion Architecture Evolution report's Future Forecast, platform-native lineage extension may outpace general-purpose catalog extension for organizations consolidated on a single major platform, though this creates platform lock-in for the lineage graph itself. 
@@ -503,7 +476,6 @@ Platform-native lineage within major lakehouse platforms (companion Architecture
 Older (pre-AI-era) provenance standards from the semantic web tradition (companion Architecture Evolution report, Section 6) provide a formally-specified, general-purpose model for representing 'what produced this, from what, using what process' — theoretically applicable across all six lineage layers including knowledge lineage (Layer 6), where it originated. Adoption for AI-era lineage remains minimal as of 2026 — the AI/ML lineage ecosystem has largely developed independently of semantic web provenance standards despite conceptual overlap, though some research-oriented implementations reference PROV for knowledge graph provenance specifically. 
 
 **Platform Selection Implication:** No single platform in this comparison provides mature coverage across all six layers. Organizations seeking the broadest current coverage with the most extensibility for the immature layers should weight DataHub or OpenMetadata's graph-native, extensible metadata models — but should expect to build custom integration work for Layers 4-6 regardless of platform choice. Organizations in regulated industries where Collibra's policy/governance integration is already central to their compliance posture face a tradeoff: stronger governance-process integration for the layers Collibra covers, against weaker native extensibility for the layers it doesn't yet cover. 
-
 
 ## **Impact Analysis** 
 
@@ -527,7 +499,6 @@ Impact analysis for model updates is bounded by deployment lineage (Section 3) �
 
 Impact analysis for prompt template changes is typically scoped within a single application (which application uses this template) rather than across the broader lineage graph — Langfuse and similar platforms can show 'this template is used by these applications' but generally cannot show 'this template change affects responses that inform these downstream agent decisions or knowledge graph updates', since that would require Layer 4-5-6 integration. 
 
-
 ##### **Layer 5** → **Downstream: Agent Tool/Configuration Changes** 
 
 Impact analysis for changes to an agent's available tools, permissions, or orchestration logic is largely framework-dependent — LangGraph's graph definition makes the set of possible execution paths explicit (impact analysis can reason about which paths a change affects), while less-structured agent frameworks (where the LLM's reasoning determines tool selection dynamically) make 'which scenarios would this change affect' inherently harder to enumerate statically — impact analysis in these cases often requires empirical evaluation (running test scenarios) rather than lineage-graph traversal. 
@@ -537,7 +508,6 @@ Impact analysis for changes to an agent's available tools, permissions, or orche
 Impact analysis for knowledge graph ontology changes (adding/modifying entity or relationship types) requires identifying which existing entities/relationships would need re-extraction or migration under the new ontology, and which downstream GraphRAG queries (and thus, transitively, which agent behaviors) depend on the affected graph structure — per Section 6, this requires knowledge lineage that's generally not implemented, making ontology changes in practice a high-risk, manually-assessed change category. 
 
 **Practical Implication:** Impact analysis completeness mirrors the lineage completeness gradient described in this report's Executive Summary — changes to Layer 1 assets have the most reliable impact analysis, while changes to Layer 4-6 assets (prompt templates, agent configurations, knowledge graph ontologies) frequently must be assessed through testing/evaluation rather than lineage-graph traversal, because the lineage graph itself doesn't extend reliably into these layers. Organizations should treat changes to AI-era assets with correspondingly more conservative change management (staged rollout, evaluation-based validation) precisely because lineage-based impact analysis cannot yet provide the same confidence it does for Layer 1 changes. 
-
 
 ## **Root Cause Analysis** 
 
@@ -563,7 +533,6 @@ If the retrieved context came from a knowledge graph traversal, was the traverse
 
 If the retrieved context (directly, or via the knowledge graph) traces back to a source document or table, was that source correct and current at the time of retrieval? This is where the investigation connects to the most mature lineage layer — but only if Steps 2-3 successfully connected the prompt/knowledge lineage to this layer, which per Sections 4 and 6 is frequently not the case. 
 
-
 ###### **Step 5 — Feature/Model Lineage (Layers 2-3, if a traditional ML component is involved)** 
 
 If the agent's task involved a traditional ML model (e.g., a risk score used as one input to the agent's decision), was that model's prediction based on correct, current feature values? This branch of the investigation follows the more mature Layer 2-3 lineage, but only if Layer 5's tool-call logging correctly identifies which model was called and with what inputs — connecting Layer 5 to Layer 3 (Section 5's gap). 
@@ -579,7 +548,6 @@ If the agent's task involved a traditional ML model (e.g., a risk score used as 
 - **Survivorship bias in incident reporting:** incidents where root cause analysis successfully completes (typically Layer 1-3-dominant issues, where lineage is mature) are over-represented in incident postmortems relative to incidents where investigation stalled at a Layer 4-6 gap and was closed as 'inconclusive' — creating a skewed organizational understanding of where AI incidents actually originate 
 
 **Recommendation:** Organizations should explicitly track 'investigation completeness' as a metric for AI-related incidents — what fraction of incidents reach a confirmed root cause vs. terminate at a lineage gap — both as a direct measure of operational risk and as a prioritization input for where to invest in closing lineage gaps (Sections 4-6). An incident category that frequently terminates at 'retrieved context couldn't be traced to its source document's current state' is a strong, evidence-based case for prioritizing the Layer 4-to-Layer 1 lineage connection over other candidate investments. 
-
 
 ## **Compliance Reporting** 
 
@@ -598,7 +566,6 @@ Lineage is the structural backbone of compliance evidence for the data and AI re
 
 _Table 4: Compliance Requirements Mapped to Lineage Layers_ 
 
-
 #### **The Compliance Evidence Generation Problem** 
 
 As discussed in the companion Operational Excellence report's Part 15, the recommended strategic approach to multi-framework compliance is a unified evidence-collection architecture rather than framework-by-framework point solutions. Lineage is the connective tissue of this architecture: most compliance evidence requirements (Table 4) are fundamentally lineage queries — 'show me everything derived from this data subject's records', 'show me the training data provenance for this model', 'show me the decision chain for this automated decision'. A unified evidence layer is, in large part, a unified lineage graph with compliance-specific query templates and export formats layered on top. 
@@ -614,7 +581,6 @@ As discussed in the companion Operational Excellence report's Part 15, the recom
 - **Cross-layer audit trail continuity:** compliance audits often sample specific transactions/decisions and request the complete supporting evidence trail — a single broken link anywhere in the L1-L5 chain for a sampled item can result in an audit finding, even if the organization's lineage is largely complete elsewhere; audit risk is therefore disproportionately driven by the least-complete layer relevant to the sampled population, not the average completeness across all layers 
 
 **Compliance Recommendation:** Organizations preparing for EU AI Act enforcement phases (through 2027) or sector-specific AI explainability requirements should conduct a lineage gap assessment specifically scoped to their high-risk/regulated AI use cases — identifying, for each such use case, which of the six layers' lineage is required for that use case's compliance obligations, and which of those layers currently has gaps. This targeted assessment (rather than attempting comprehensive six-layer lineage everywhere) allows prioritized remediation focused on actual compliance exposure rather than theoretical completeness. 
-
 
 ## **AI Traceability & Explainability** 
 
@@ -640,7 +606,6 @@ Requires the most simplified, individual-decision-scoped explanation — 'your r
 
 #### **Explainability Techniques and Their Lineage Dependencies** 
 
-
 - **RAG citation/source display:** showing users 'this response was based on these documents' is the most widely-deployed explainability technique for generative AI, and depends directly on Layer 4 lineage (which documents were retrieved) — but per Section 4, this typically shows the immediate retrieval result without connecting to whether that source document is current/correct (Layer 1), meaning the citation itself can be explainable while still being misleading if the cited source is stale 
 
 - **Chain-of-thought / reasoning trace display:** showing an agent's intermediate reasoning steps provides explainability for Layer 5 (why did the agent take this action), but as noted in Section 5, reasoning traces are not always retained or exposed, and even when available, raw chain-of-thought is often not in a form directly meaningful to business users or end users without further translation 
@@ -655,7 +620,6 @@ A central conclusion of this report: explainability for AI systems cannot exceed
 
 **Recommendation:** Explainability interfaces (citation displays, reasoning traces) should explicitly indicate the boundary of what's been verified versus what's been retrieved-but-not-verified — e.g., distinguishing 'this response cites Document X (last verified current as of [date])' from 'this response cites Document X (currency not verified)' where Layer 4-to-Layer 1 lineage doesn't extend to a freshness check. This is a presentation-layer mitigation for an underlying lineage gap — it doesn't close the gap, but it prevents the gap from being silently presented as completeness, which this report identifies as the more acute risk. 
 
-
 ## **Lineage for Multi-Agent AI Systems** 
 
 **Framing:** Single-agent lineage (Section 5) is a hard problem that remains substantially unsolved. Multi-agent lineage is not simply 'single-agent lineage, N times' — it introduces structural properties (concurrency, agent-to-agent communication, shared memory, emergent coordination) that change the shape of the lineage problem from a trace (a sequence with branches) to a graph (a network of interacting traces) — closer in structure to the knowledge graphs of Section 6 than to the distributed traces of Section 5, even though the underlying instrumentation (OpenTelemetry-derived tracing) was designed for the latter. 
@@ -669,7 +633,6 @@ A single agent's execution, however complex, can be represented as a trace tree 
 ##### **From Sequential Execution to Concurrent Execution** 
 
 Single-agent traces are largely sequential (even with parallel tool calls, there's a single overarching task with a defined start and end). Multi-agent systems may have multiple agents operating concurrently on related or overlapping tasks — lineage must capture not just 'what happened' but 'what was happening concurrently', since concurrent operations on shared resources (e.g., two agents both updating the same agent memory entity, per the companion Architecture Evolution report's Section 10) can produce results that depend on timing/ordering in ways that a purely sequential lineage record cannot represent. 
-
 
 ##### **Shared Memory as a New Lineage Surface** 
 
@@ -692,7 +655,6 @@ Extrapolating from the six-layer model and the structural changes above, a multi
 - **Temporal/concurrency metadata:** sufficient timing information to reconstruct the actual order of operations across agents, including identifying genuinely concurrent operations (where ordering is not meaningful) versus causally-ordered operations (where ordering matters for understanding cause and effect) 
 
 - **Aggregate/emergent outcome attribution:** for a final multi-agent system outcome, the ability to attribute the outcome to the contributing agents' individual actions in a way that's meaningful for accountability — analogous to how Layer 2 feature lineage attributes a model's behavior to specific features, but for agent contributions to a collective outcome 
-
 
 #### **Implications for the Six-Layer Model** 
 

@@ -11,13 +11,9 @@ covers_through: 2026-07-10
 research_date: 2026-07-10
 covers_version: "N/A"
 ---
-
 Amazon Bedrock AgentCore & Strands SDK Deep Technical Research Report — Architecture, Security, Operations, and Roadmap (April–June 2026) 
-
 Prepared for Enterprise Platform Architects 
-
 July 2026 
-
 # **Contents** 
 
 |**1**<br>**Executive Summary**|**5**|

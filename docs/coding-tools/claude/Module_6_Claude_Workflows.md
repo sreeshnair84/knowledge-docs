@@ -9,9 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 #### **MODULE 6** 
-
 # **Claude Dynamic Workflows — Complete Guide** 
 
 JavaScript-orchestrated parallel subagent execution, plan-as-code, Ultracode, /deep-research, cost management (released May 28 2026) 

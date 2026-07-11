@@ -9,11 +9,8 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 #### **AgentCore Memory Operations Deep-Dive** 
-
 Metadata Options · Streaming & Batch · Issues/Fixes by Phase Unit Testing · Evaluation Retirement · Cleanup Strategies 
-
 |**SECTION**|**CONTENTS**|
 |---|---|
 |1 · Metadata Options|CreateEvent metadata fields, payload types, ListEvents filters, memory-record metadata, Kinesis stream<br>event schema|
@@ -23,9 +20,6 @@ Metadata Options · Streaming & Batch · Issues/Fixes by Phase Unit Testing · E
 |5 · Unit Testing|Mock patterns, test matrix, PII tests, isolation tests, hook tests, extraction tests, erasure tests — full code|
 |6 · Evaluation & Retirement|Metric thresholds, retire/graduate criteria, shadow evaluation, A/B strategy switch, evaluation teardown|
 |7 · Cleanup Strategies|Namespace purge, TTL enforcement, actor erasure, batch sweep, test teardown, cost-driven cleanup<br>scheduler|
-
-_Companion to: AWS AgentCore Memory Architecture Guide v2.0 + Gaps & Extensions Supplement (April 2026)_ 
-
 ## **1. Metadata Options — Events, Records & Retrieval Filters** 
 
 # **1.1 CreateEvent Metadata — Key-Value Pairs on Short-Term Events** 

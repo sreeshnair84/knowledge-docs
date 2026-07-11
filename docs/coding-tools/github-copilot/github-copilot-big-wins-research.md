@@ -10,9 +10,7 @@ last_reviewed: 2026-07-10
 covers_through: 2026-07-10
 research_date: 2026-07-10
 ---
-
 **RESEARCH COMPILATION  ·  MAY 2026** 
-
 # **GitHub Copilot Big Wins & Automation Research Playbook** 
 
 How Elite Engineering Teams Automated Branching, 

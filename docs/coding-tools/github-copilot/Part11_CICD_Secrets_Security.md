@@ -9,9 +9,6 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-**PART 11–13  •  DELIVERY & SECURITY** 
-
 # **CI/CD Architecture, Secrets & Supply Chain Security** 
 
 ##### **TOPICS COVERED** 

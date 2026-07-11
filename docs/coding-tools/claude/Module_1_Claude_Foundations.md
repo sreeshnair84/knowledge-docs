@@ -9,9 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 #### **MODULE 1** 
-
 # **Claude Foundations & Ecosystem Overview** 
 
 Complete guide to the Claude model family, product suite, plans, pricing, token economics, safety philosophy, and certification pathway 

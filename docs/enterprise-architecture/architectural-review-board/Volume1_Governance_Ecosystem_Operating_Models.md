@@ -9,11 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-P R I N C I P A L E N T E R P R I S E A R C H I T E C T R E F E R E N C E S E R I E S 
-
-VOLUME 1 OF 8 
-
 # **Enterprise Governance Ecosystem & Operating Models** 
 
 How the Architecture Review Board fits into the wider enterprise governance landscape — overlaps, escalation paths, decision rights, and the operating models that make federated architecture governance actually work, with a banking/financial-services lens throughout. 

@@ -8,11 +8,6 @@ source_type: converted-pdf
 source_file: "Harness_Interview_Question_Bank.pdf"
 tags: ["harness", "interview-prep", "ci-cd", "devops"]
 ---
-
-<!-- converted from Harness_Interview_Question_Bank.pdf -->
-
-**PA R T 5 O F 5** 
-
 # **Harness** 
 
 Interview Question Bank Enterprise Architect · Platform Engineer · DevSecOps Lead 

@@ -10,7 +10,6 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-
 # **Complete AI Agent Evaluation Framework** 
 
 ### **AWS Bedrock AgentCore  ·  Strands Evals  ·  Arize Phoenix** 

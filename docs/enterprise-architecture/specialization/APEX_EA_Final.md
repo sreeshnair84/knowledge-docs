@@ -11,8 +11,6 @@ framework_name: "APEX AI Platform of Platforms — TOGAF 10 + AI-DLC"
 tags: ["enterprise-architecture", "specialization", "togaf", "ai-dlc", "cloud-native"]
 covers_version: "Final Edition — April 2026"
 ---
-
-
 # APEX: AI Platform of Platforms
 
 **Organisation:** GlobalCorp Enterprises
@@ -29,28 +27,21 @@ The authoritative Enterprise Architecture blueprint for the
 
 **EU AI Act**, DORA, GDPR, MiFID II, and internal model risk policy.
 
-
 ---
 
-
 ## Executive Summary
-
 
 ### Programme Purpose
 
 APEX is GlobalCorp's strategic programme to replace 23 siloed AI tools with a unified, governed AI Platform of Platforms built on cloud-native open standards. It applies the TOGAF 10 Architecture Development Method (ADM) as its governance framework and the AWS AI-Driven Development Lifecycle (AI-DLC) as its delivery methodology — positioning AI as a central collaborator across design, build, and operations, not merely a peripheral productivity tool. The platform provides every GlobalCorp division with reusable AI agent capabilities, governed knowledge bases, shared observability, and a self-service marketplace — eliminating the time, cost, and compliance risk of building isolated AI systems.
 
-
 > **Programme at a Glance:** 10 TOGAF ADM Phases · 30+ Architecture Documents · 5 Pioneer Domains · 6 Regulatory Frameworks · 24 Cloud-Native Patterns · 18 Team Roles Defined
-
 
 ### What This Programme Delivers
 
 APEX delivers three interlocking outcomes: • Velocity — time-to-market for AI use cases reduced from 9.2 months to a planning baseline of 5–6 weeks through AI-DLC Construction phase, reusable agent templates, and self-service onboarding • Governance — five-tier continuous governance model replacing quarterly gate reviews; automated conformance, real-time observability, and Decision Explanation Artefacts for every regulated agent decision • Platform Economics — $14M annual duplicated spend eliminated through shared infrastructure, reusable tooling, and centralised compliance — generating positive NPV within 24 months of platform go-live
 
-
 ### Programme Pain Chain — Current State vs. Target
-
 
 | Problem Area | Current State | APEX Target | Delivery Mechanism |
 | --- | --- | --- | --- |
@@ -61,9 +52,7 @@ APEX delivers three interlocking outcomes: • Velocity — time-to-market for A
 | Agents in production | 23 (siloed) | 120 (platform-governed) | Agent lifecycle management; health scoring; marketplace |
 | MTTR for AI incidents | 6.3 hours | < 30 minutes | LGTM observability; AI-DLC Operations; incident agent (Pioneer 4) |
 
-
 ---
-
 
 ## Table of Contents
 
@@ -90,16 +79,13 @@ APEX delivers three interlocking outcomes: • Velocity — time-to-market for A
 
 ## Team Structure, RACI & Responsibility Mappings
 
-
 ### APEX Operating Model — Who Does What
 
 The APEX programme operates a federated model: a Platform Core Team builds and runs the shared infrastructure; Domain Squads build and operate agents within it; Governance Bodies provide oversight and approval authority; and Specialist Functions (Security, Compliance, Data) provide embedded expertise throughout the lifecycle. Group CTO Steering Committee TIER 0 — EXEC Executive Sponsor Monthly Oversight Architecture Board Chief AI Ethics Officer Compliance Lead TIER 1 — GOVERN ARB — Weekly AI Risk & Ethics
 
 **DORA**/ EU AI Act VP AI Platform Platform Eng Lead AI/ML Eng Lead SRE Lead DevX Lead TIER 2 — PLATFORM Product Owner Infra & Runtime Agent Framework Reliability & Cost Portal & UX Domain Arch ×5 Domain Dev Teams Data Stewards TIER 3 — DOMAINS Embedded Architects Agent Builders Data Product Owners Security Architect Data Architect Model Risk Lead Reg Affairs Lead TIER 4 — SPECIALIST CISO Delegate CDO Delegate MRM Delegate Regulator Liaison
 
-
 ### Core Team Register
-
 
 | Role ID | Role | Tier | FTE | Source | Key Accountabilities |
 | --- | --- | --- | --- | --- | --- |
@@ -115,9 +101,7 @@ The APEX programme operates a federated model: a Platform Core Team builds and r
 | T-10 | SRE Engineers (×2) | 2 | 2.0 | Internal (×1) + Contractor (×1) | Observability; on-call; canary monitoring; budget enforcement |
 | T-11 | Developer Experience Lead | 2 | 1.0 | Internal | Self-service portal; developer documentation; agent marketplace UX |
 
-
 ---
-
 
 | Role ID | Role | Tier | FTE | Source | Key Accountabilities |
 | --- | --- | --- | --- | --- | --- |
@@ -131,9 +115,7 @@ The APEX programme operates a federated model: a Platform Core Team builds and r
 | T-17 | Model Risk Lead | 4 | 0.5 ( emb edde d) | Internal — MRM delegate | Model risk opinions; explainability requirements; SR 11-7 alignment |
 | T-18 | Regulatory Affairs Lead | 4 | 0.5 ( emb edde d) | Internal — Group Compliance | Regulator liaison; DORA evidence pack; EU AI Act submissions |
 
-
 ### RACI Matrix — Agent Lifecycle
-
 
 | Activity | Ent. Arch | VP AI Plat | Platform Eng | AI/ML Eng | Domain Arch | Domain Dev | Security Arch | Data Arch | Model Risk | Complia nce | SRE / FinOps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -155,12 +137,9 @@ The APEX programme operates a federated model: a Platform Core Team builds and r
 | Agent health score & budget review | I | C | C | I | C | I | I | I | I | I | R/A |
 | Agent deprecation decision | C | A | C | I | R | C | I | I | I | I | C |
 
-
 ---
 
-
 ### RACI Matrix — Platform Governance & Architecture Board
-
 
 | Activity | Ent. Arch | VP AI Plat | Platform Eng | AI/ML Eng | Domain Arch | Domain Dev | Security Arch | Data Arch | Model Risk | Complia nce | SRE / FinOps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -179,9 +158,7 @@ The APEX programme operates a federated model: a Platform Core Team builds and r
 | Platform SLA reporting | I | C | C | I | I | I | I | I | I | I | R/A |
 | FinOps & chargeback reporting | I | A | R | I | I | I | I | I | I | I | R |
 
-
 ### RACI Matrix — Regulatory & Compliance
-
 
 | Activity | Ent. Arch | VP AI Plat | Platform Eng | AI/ML Eng | Domain Arch | Domain Dev | Security Arch | Data Arch | Model Risk | Complia nce | SRE / FinOps |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -197,17 +174,13 @@ The APEX programme operates a federated model: a Platform Core Team builds and r
 | TLPT (penetration testing) oversight | C | I | C | I | I | I | R/A | I | I | C | C |
 | Compliance dashboard maintenance | I | I | R | I | I | I | I | I | I | A | I |
 
-
 ---
 
-
 ### Responsibility Assignment Matrix & Stakeholder Map
-
 
 ### Responsibility Assignment Matrix — Platform Capabilities
 
 The RAM maps each APEX platform capability to its accountable owner and key contributors. This extends the RACI to show structural ownership across the platform.
-
 
 | Platform Capability | Accountable Owner | Primary Team | Secondary Contributors | Governance Body | Review Cadence |
 | --- | --- | --- | --- | --- | --- |
@@ -229,14 +202,11 @@ The RAM maps each APEX platform capability to its accountable owner and key cont
 | Pioneer Domain 4 — Incident Agent | Domain Architect 4 | Domain Dev Team 4 | SRE, Platform Engineering | Domain ARB | Per sprint |
 | Pioneer Domain 5 — Model Monitor Agent | Domain Architect 5 | Domain Dev Team 5 | Model Risk, Compliance, AI/ML Eng | Domain ARB + MRM | Per sprint |
 
-
 ### Stakeholder Power / Interest Map
 
 Stakeholder engagement strategy is derived from power (organisational authority and decision-making ability) and interest (level of direct impact from APEX).
 
-
 ---
-
 
 | Stakeholder | Role | Power | Intere st | Quadrant | Strategy | Engagement Cadence |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -255,19 +225,15 @@ Stakeholder engagement strategy is derived from power (organisational authority 
 | HR / People Team | Change Management | Low | Mediu m | MONITOR | Change impact comms; role transition support for displaced tools | Quarterly change update |
 | External Cloud Providers | Technology Partners | Low | Low | MONITOR | SLA management; roadmap briefings | Quarterly account review |
 
-
 ### Team Interaction & Dependency Map
 
 The following matrix shows how each team tier interacts with others, the nature of the dependency, and the formal channel for that interaction.
-
 
 | From fi To | Platform Core Team | Domain Squads | ARB / Governance | Specialist Functions | External Stakeholders |
 | --- | --- | --- | --- | --- | --- |
 | Platform Core Team | Internal: sprint reviews, platform roadmap sync | Provides: infrastructure, tooling, self-service portal, CI/CD pipeline, guardrails | Reports to: ARB weekly; steering monthly. Seeks: approval for SBBs and deviations | Consults: Security (each phase), Data (KB design), Model Risk (agent risk) | Cloud provider SLA management; AWS PS engagement for AI/ML |
 
-
 ---
-
 
 | From fi To | Platform Core Team | Domain Squads | ARB / Governance | Specialist Functions | External Stakeholders |
 | --- | --- | --- | --- | --- | --- |
@@ -276,22 +242,17 @@ The following matrix shows how each team tier interacts with others, the nature 
 | Specialist Functions | Embedded in: security design, data architecture, CI/CD gates | Provides: domain-level guidance, data classification, embedded model risk reviews | Feeds into: ARB with specialist opinions. Attends: relevant ARB agenda items | Cross-functional: security–compliance alignment; data–model risk alignment | No direct external engagement; all via Compliance Lead or CISO |
 | External Stakeholders | Receives: SLA reports, FinOps dashboards, compliance packs | None (no direct domain team interaction) | Attends: quarterly regulator briefing. Reviews: DORA evidence pack, EU AI Act submissions | None direct | Peer industry: AI governance working groups; open-source community participation |
 
-
 ---
 
-
 ## AI-DLC: Methodology, Phases & EA Impacts
-
 
 ### What is AI-DLC?
 
 The AI-Driven Development Lifecycle (AI-DLC) was introduced by AWS in July 2025 and featured at AWS re:Invent 2025. It emerged from 100+ enterprise experiments and observed that AI-assisted (too narrow) and AI-autonomous (too unreliable) both produced suboptimal results. AI-DLC positions AI as a central collaborator throughout every development activity — design, build, test, deploy, and operate.
 
-
 #### Proven Results
 
 Enterprise adopters report 2–5× sustainable productivity gains across the full lifecycle. In well-scoped greenfield tasks with high-quality semantic context, gains reach 7–10×. Teams using AI-DLC consistently report improved code quality alongside velocity: the Qodo 2025 report showed quality improvements rising from 55% to 81% with AI-assisted review; the Atlassian RovoDev 2026 study found AI code review comments led to additional fixes in 38.7% of cases.
-
 
 | Ph ase | Name | AI Role | Human Role | Architecture Impact |
 | --- | --- | --- | --- | --- |
@@ -301,9 +262,7 @@ Enterprise adopters report 2–5× sustainable productivity gains across the ful
 **Phase Boundary Receipt**s for regulated data flows |
 | 3 | OPERATIONS | Applies accumulated context to IaC deployment, canary monitoring, incident pattern recognition, and drift detection | Reviews and approves all changes; monitors SLOs; makes judgment calls in novel failure scenarios | Phases F/G/H compressed into continuous delivery; every AI-driven change is a formal DORA change event with ARB record |
 
-
 ### Terminology Reference — AI-DLC vs. Traditional
-
 
 | Traditional Term | AI-DLC Term | Duration Change | Enterprise Architecture Implication |
 | --- | --- | --- | --- |
@@ -319,12 +278,9 @@ Enterprise adopters report 2–5× sustainable productivity gains across the ful
 | Code Review (PR) | AI-Augmented Quality Scan | Hours fi minutes | L1–L5 Layered Verification Model enforced in pipeline; no hero review |
 | Retrospective | Continuous Learning Loop | End of sprint fi continuous | Architecture debt auto-detected; agent health scoring continuous |
 
-
 ---
 
-
 ### AI-DLC Impact Across All 10 TOGAF ADM Phases
-
 
 | TOGAF Phase | AI-DLC Capability | Human Guard Required | Architecture Adaptation |
 | --- | --- | --- | --- |
@@ -348,20 +304,15 @@ Enterprise adopters report 2–5× sustainable productivity gains across the ful
 | Phase H — Change | AI monitors model releases and regulatory changes; flags architecture impacts automatically | Continuous change proposals require human filtering to avoid architecture instability | Change type classification; AI flags; humans prioritise; DORA change framing applied to all AI changes |
 | Req. Management | AI generates and maintains requirements traceability from business intent to deployed code | Context drift across sessions; requirements must be forward-traced before each deployment | Context Integrity Protocol; session summary archive; forward-trace validation per deployment |
 
-
 ---
-
 
 ## Preliminary Phase — Foundation
 
 PRELIMINARY Architecture capability, principles, tailored ADM, repository The Preliminary Phase establishes GlobalCorp's architecture capability for APEX. Governance structures are put in place, the ADM is tailored for regulatory context, and architecture principles that govern every subsequent decision are ratified.
 
-
 ### Architecture Principles — APD-001
 
-
 #### Business Principles
-
 
 | ID | Principle | Statement | Implication |
 | --- | --- | --- | --- |
@@ -372,9 +323,7 @@ PRELIMINARY Architecture capability, principles, tailored ADM, repository The Pr
 
 **Data Maturity Gate** (5 checks) is passed | Data maturity assessment is the first deliverable of every Pioneer Domain onboarding; it is a programme gate not a guideline |
 
-
 #### Data Principles
-
 
 | ID | Principle | Statement | Implication |
 | --- | --- | --- | --- |
@@ -384,12 +333,9 @@ PRELIMINARY Architecture capability, principles, tailored ADM, repository The Pr
 | DP-04 | AI Assets as Governed Data | Prompt templates, embeddings, feedback logs, and model lineage records are first-class governed data assets with the same rigor as operational data | Embedding Compatibility Contract applies; ML model registry tracks all lineage; DPO sign-off for sensitive-adjacent prompts |
 | DP-05 | Embedding Compatibility Enforced | Any embedding model upgrade triggers automatic full re-indexing of all dependent knowledge bases; RAGAS regression gate blocks production activation | CI/CD pipeline blocks embedding upgrade without RAGAS pass; 90-day rollback window maintained |
 
-
 #### Technology Principles
 
-
 ---
-
 
 | ID | Principle | Statement | Implication |
 | --- | --- | --- | --- |
@@ -400,27 +346,21 @@ PRELIMINARY Architecture capability, principles, tailored ADM, repository The Pr
 | TP-05 | Layered Verification | AI-generated IaC passes five verification layers (L1 static analysis, L2 AI explanation artefact, L3 property tests, L4 canary deploy, L5 drift detection) before merge; no single-person hero review is sufficient at enterprise scale | CI/CD enforces L1–L4 automatically; L2 AI explanation artefact retained 12 months per IaC commit |
 | TP-06 | Decision Explanation Artefact by Default | Every High-Risk AI agent (EU AI Act Art.6) produces a Decision Explanation Artefact (DEA) for every regulated decision — assembled from all log sources and stored immutably for 7 years | DEA generation service is a mandatory platform component; deployed with Pioneer 1 and applied to all subsequent Pioneers |
 
-
 ---
-
 
 ### Architecture Vision
 
 PHASE A Scope, mandate, and stakeholder alignment
 
-
 ### Architecture Vision Statement
 
 "By Q4 2026, GlobalCorp will operate a unified AI Agent Platform (APEX) on cloud-native open standards, reducing time-to-market for AI use cases to a planning baseline of 5–6 weeks, achieving full EU AI Act and DORA compliance, and generating positive NPV within 24 months through platform economics. Productivity gains are tracked quarterly against actuals."
-
 
 ### Programme Scope
 
 In scope: Cloud-native multi-region agent platform (4 regions); AI agent lifecycle management; multi-agent orchestration; self-service developer portal; shared knowledge bases; centralised observability and cost management; EU AI Act compliance automation; DEA generation; Agent Gateway; and 5 Pioneer Domain agents. Out of scope: Foundation model training; customer-facing AI chatbots (Digital Channel programme); autonomous execution agents (requires separate regulatory approval pathway); data mesh platform build (existing programme).
 
-
 ### Architecture Constraints — SAW-APEX-001
-
 
 | Constraint | Source | Architecture Impact |
 | --- | --- | --- |
@@ -431,9 +371,7 @@ In scope: Cloud-native multi-region agent platform (4 regions); AI agent lifecyc
 | EU AI Act enforcement from August 2026 | EU Regulation 2024/1689 | High-Risk classification at intake; DEA pattern deployed from Pioneer 1; compliance pack (WP-012) delivered in H2 |
 | All AI evolution must be framed as controlled DORA change | DORA Art.11 | Every model update, KB refresh, and agent topology change is a formal change event with ARB record and DORA change log |
 
-
 ### Five Pioneer Domains — Proof of Value
-
 
 | # | Division | Agent | Use Case | Key Regulation | AI-DLC Bolts | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -441,26 +379,20 @@ In scope: Cloud-native multi-region agent platform (4 regions); AI agent lifecyc
 | 2 | Enterprise Division | VerificationAgent | Continuous customer verification monitoring, sanctions screening, and report drafting | AML Directive, FATF 40 | 3 bolts (~7 weeks) | Domain Architect 2 |
 | 3 | Advisory Division | RebalancingAgent | Rule-based portfolio rebalancing recommendations with full suitability assessment | MiFID II Art.27, GDPR | 2 bolts (~6 weeks) | Domain Architect 3 |
 
-
 ---
-
 
 | # | Division | Agent | Use Case | Key Regulation | AI-DLC Bolts | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
 | 4 | IT Operations | IncidentAgent | L1/L2 ticket triage, root-cause pattern recognition, and auto-remediation with SRE oversight | DORA Art.11 ICT Risk | 2 bolts (~5 weeks) | Domain Architect 4 |
 | 5 | Risk & Compliance | ModelMonitorAgent | Model drift detection, backtesting orchestration, and regulatory evidence report generation | EU AI Act Art.9, Internal Policy | 3 bolts (~6 weeks) | Domain Architect 5 |
 
-
 ---
-
 
 ### Business Architecture
 
 PHASE B Capability model, value streams, and adaptive capability governance
 
-
 ### Business Capability Map — BCM-APEX-001
-
 
 | L1 Capability | Type | Critical Gaps | APEX | AI-DLC Adaptive? | Governance Model |
 | --- | --- | --- | --- | --- | --- |
@@ -472,9 +404,7 @@ PHASE B Capability model, value streams, and adaptive capability governance
 | 6. Data Integration | STATIC | 2 critical | 3/4 | PARTIAL — Data Mesh governed | Data Mesh domain governance; quarterly data product review; APEX integrates, not owns |
 | 7. Platform Enablement | STATIC | 4 critical | 4/4 | YES — portal AI-scaffolded | Standard deployment cadence; portal releases are standard CI/CD pipeline deployments |
 
-
 ### Value Stream — Agent Delivery End-to-End
-
 
 | Stage | Baseline | APEX Plan | AI-DLC Planning Baseline | Key Constraints |
 | --- | --- | --- | --- | --- |
@@ -485,17 +415,13 @@ PHASE B Capability model, value streams, and adaptive capability governance
 | Deploy & Monitor | 2–4 weeks | 1 week | 3 days | DORA change framing adds a compliance record step; canary monitoring adds 1–2 days |
 | TOTAL TIME-TO-MARKET | ~9 months | ~9.5 weeks | 5–6 weeks | Planning baseline used for budgets; 9.5 weeks used for business cases as conservative estimate |
 
-
 ---
-
 
 ### Information Systems Architecture
 
 PHASE C Data, AI-native entities, application components, and API catalogue
 
-
 ### Data Classification Framework
-
 
 | Class | Description | Examples | Guardrail Action | Retention |
 | --- | --- | --- | --- | --- |
@@ -505,9 +431,7 @@ PHASE C Data, AI-native entities, application components, and API catalogue
 | C1 — Public | Regulatory and market reference data | EU AI Act text, public rates, open standards | No restriction | Indefinite |
 | C-AI — AI Assets | Prompt catalogs, embeddings, feedback logs, model lineage | Versioned prompt templates, vector embeddings, RLHF datasets | Inherit from source data class; version-controlled; DPO sign-off for C3/C4-adjacent | Per source data class rules |
 
-
 ### AI-Native Data Entities — Governance Model
-
 
 | Entity | Classificati on | Governance Owner | Version Control | Key Control | Retention |
 | --- | --- | --- | --- | --- | --- |
@@ -521,12 +445,9 @@ PHASE C Data, AI-native entities, application components, and API catalogue
 | Model Lineage Record | C3 | Model Risk Management | ML model registry (MLflow equivalent) | New model version = formal model update event requiring ARB record | Model lifecycle + 7 years |
 | Decision Explanation Artefact | C3 | Compliance + Legal | Generated at decision time; immutable; DEA service validates completeness | Assembled from all log sources; queryable on demand; 7-year immutable retention | 7 years (EU AI Act + DORA) |
 
-
 ### Application Architecture — Cloud-Native Component Model
 
-
 ---
-
 
 | Component | Technology | Pattern | SLA | Key Design Decision |
 | --- | --- | --- | --- | --- |
@@ -542,9 +463,7 @@ PHASE C Data, AI-native entities, application components, and API catalogue
 | LGTM Observability Stack | OpenTelemetry Collector + Prometheus + Grafana + Loki + Tempo | Centralised OTEL collector; push-based metrics and traces | 99.5% ingestion; real-time dashboards | Agent health score metrics; emergent behaviour alert rules (chain >3 hops or latency >10s) |
 | Compliance Reporter | Python data pipeline + Apache Superset or Metabase | Batch + event-driven reporting | 99.5% daily run | EU AI Act and DORA report templates; DORA change record auto-writer; DEA export API |
 
-
 ### API Catalogue
-
 
 | API | Version | Style | Auth | SLA | Owner |
 | --- | --- | --- | --- | --- | --- |
@@ -556,9 +475,7 @@ PHASE C Data, AI-native entities, application components, and API catalogue
 | Chargeback API | v1 | REST / JSON | mTLS | 99.9% monthly run | SRE / FinOps |
 | Compliance Report API | v1 | REST / JSON | OAuth 2.0 + MFA | 99.5% daily run | Compliance |
 
-
 ---
-
 
 ### Technology Architecture
 
@@ -566,9 +483,7 @@ PHASE D Cloud-native infrastructure, security, CI/CD with
 
 **Layered Verification** DOC REF: TAD-APEX-001 | APPROVED
 
-
 ### Multi-Region Deployment Model
-
 
 | Region | Role | Data Scope | Key Platform Services | Regulatory Basis |
 | --- | --- | --- | --- | --- |
@@ -577,9 +492,7 @@ PHASE D Cloud-native infrastructure, security, CI/CD with
 | Region 3 — Americas | ACTIVE | US/LATAM institutional + customer data | Mirror of Region 1 topology; independent control plane and agent gateway | CCPA, LGPD, FINRA (where applicable) |
 | Region 4 — APAC | ACTIVE | SG/HK/AU customer data | Mirror of Region 1 topology; regional vector store; local object storage | PDPA (SG), PIPL (CN), Privacy Act (AU) |
 
-
 ### Security Architecture
-
 
 | Security Domain | Control | Cloud-Native Implementation | Compliance Basis |
 | --- | --- | --- | --- |
@@ -594,12 +507,9 @@ PHASE D Cloud-native infrastructure, security, CI/CD with
 | Prompt Injection | Input sanitisation and validation on all agent inputs before model invocation | Validation middleware in agent gateway; OWASP LLM Top 10 controls; red-team testing quarterly | OWASP LLM Top 10 |
 | Secrets Management | All secrets in secrets manager; zero hardcoded credentials; 90-day rotation | HashiCorp Vault or cloud-native secrets manager; Checkov enforces in CI | CIS Kubernetes, DORA |
 
-
 ### CI/CD Pipeline — Layered Verification Model (L1–L5)
 
-
 ---
-
 
 | Stage | Tools | AI-DLC Role | Gate — Bypassable? |
 | --- | --- | --- | --- |
@@ -613,17 +523,13 @@ PHASE D Cloud-native infrastructure, security, CI/CD with
 | DEA Validation | DEA generation service completeness check; validation before production mark | DEA assembled from all log sources; completeness validated | NEVER for High-Risk AI agents |
 | Post-Deploy DORA Record | Argo CD drift detection; cost tag validator; DORA change record writer | AI generates stakeholder summary; DORA change record auto-created with ARB reference | NEVER — records are mandatory; absence triggers T4 alert |
 
-
 ---
-
 
 ### Opportunities, Migration, Governance & Change
 
 PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 
-
 ### Architecture Roadmap — ROAD-APEX-001
-
 
 | Work Package | WP | Bolt s | Wks | Horizo n | Risk Level |
 | --- | --- | --- | --- | --- | --- |
@@ -640,9 +546,7 @@ PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 | Self-service portal, agent marketplace, agent health dashboard | WP-01 1 | 3 | 8 | H2 | Medium — developer experience is subjective; UX validation needed |
 | EU AI Act compliance pack + DEA template library + DORA automation | WP-01 2 | 2 | 5 | H2 | High — regulatory interpretation risk; regulatory counsel required |
 
-
 ### Solution Building Blocks — SBB-APEX-001
-
 
 | SBB | Decision | Cloud-Native Solution | AI-DLC Role in Delivery |
 | --- | --- | --- | --- |
@@ -651,9 +555,7 @@ PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 | Vector Store | OSS preferred | Weaviate / Qdrant / Milvus — Embedding Compatibility Contract applies | AI-DLC Construction generates index schema, query patterns, and RAGAS test suite |
 | Agent Control Plane | BUILD | Python FastAPI; Kubernetes; 6 services (ALM, Budget, Onboarding, Chargeback, Notification, Compliance) | AI-DLC builds each service in 1 bolt; L1–L5 verification on all IaC and code |
 
-
 ---
-
 
 | SBB | Decision | Cloud-Native Solution | AI-DLC Role in Delivery |
 | --- | --- | --- | --- |
@@ -668,9 +570,7 @@ PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 | IaC Platform | OSS (REUSE) | Terraform / OpenTofu + Argo CD (GitOps); Terratest for property tests | AI-DLC extends existing pipeline; Terratest property tests are mandatory (L3 verification) |
 | Compliance Reporter | BUILD on OSS | Python pipeline + Apache Superset or Metabase | AI-DLC generates EU AI Act and DORA report templates; DORA change record auto-writer component added |
 
-
 ### 5-Tier Governance Model — CAF-APEX-001
-
 
 | Tier | Scope | Method | SLA | Bypassable? |
 | --- | --- | --- | --- | --- |
@@ -680,17 +580,13 @@ PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 | T4 — Reg-Gate | High-Risk AI (EU AI Act Art.6); DORA-reportable change; any C4-data flow change | Compliance Lead; no delegation; Regulatory Affairs Lead engaged | 48 hours | NO — hardcoded in CI pipeline; no exception pathway exists |
 | T5 — Exec | Budget above approved threshold; strategic architecture change; programme risk escalation | Monthly Steering Committee; emergency session within 48 hrs for DORA incidents | Monthly | NO — requires Steering Committee quorum |
 
-
 ### Change Intelligence Process — ACHG-APEX-001
-
 
 | Change Type | AI Monitoring | Human Decision Authority | DORA Framing | Illustrative Example |
 | --- | --- | --- | --- | --- |
 | T1 — Techno logy-driven | Model release channels monitored; OSS project feeds; benchmark auto-run vs. GlobalCorp eval suite | Enterprise Architect reviews impact; ARB approves; T4 Reg-Gate if High-Risk agent affected | Formal change event regardless of model release frequency | Open-weight model outperforms current by 18%; ARB approves upgrade in 3 days with RAGAS regression evidence |
 
-
 ---
-
 
 | Change Type | AI Monitoring | Human Decision Authority | DORA Framing | Illustrative Example |
 | --- | --- | --- | --- | --- |
@@ -698,14 +594,11 @@ PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 | T3 — Busine ss-driven | Onboarding request submitted via self-service portal; intake workflow triggered automatically | ARB intake decision within 5 business days; architecture review within 10 business days | Standard change; ARB record created; DORA log entry if affects Tier-1 service | New Procurement Division requests APEX onboarding for contract analysis use case |
 | T4 — Simplification | Usage analytics flags agents below utilisation threshold for 3 consecutive months; auto-review prompt generated | Domain owner decides: decommission or document justification for retention | Decommission = formal change event; IaC teardown + DEA archive + compliance record | Pioneer 1 v1.2 superseded by v2.0; v1.2 parallel-run for 4 weeks then decommissioned with full evidence trail |
 
-
 ---
-
 
 ## Requirements Management — Continuous
 
 REQ MGMT Living ARS — 162 total requirements across all phases Requirements Management is the continuous central process of the TOGAF ADM. AI-DLC's Semantic Context Building and persistent context storage transform this from a periodic document into a living, AI-maintained traceability system with a human review gate before every deployment. DOC REF: ARS-APEX-001 | APPROVED | 162 total requirements
-
 
 | Req ID | Category | Statement | Priorit y | Source | Status |
 | --- | --- | --- | --- | --- | --- |
@@ -728,20 +621,15 @@ REQ MGMT Living ARS — 162 total requirements across all phases Requirements Ma
 | CR-003 | Compliance | DORA 72-hour ICT incident notification workflow automated and tested quarterly under simulated conditions | Must | DORA Art.17 | In Review |
 | CR-004 | Compliance | Every High-Risk AI agent produces a DEA for every regulated decision; DEA queryable by compliance team | Must | EU AI Act Art.13 / DEA | In Design |
 
-
 ---
-
 
 | Req ID | Category | Statement | Priorit y | Source | Status |
 | --- | --- | --- | --- | --- | --- |
 | CR-005 | Compliance | Every AI model update, KB refresh, and agent topology change recorded as a formal DORA change event with ARB reference | Must | DORA Art.11 | In Design |
 
-
 ---
 
-
 ## Regulatory Cross-Reference Matrix
-
 
 | Regulation | Key Obligations | APEX Architecture Control | Evidence Artefact |
 | --- | --- | --- | --- |
@@ -752,12 +640,9 @@ REQ MGMT Living ARS — 162 total requirements across all phases Requirements Ma
 | BCBS 239 | Data lineage for risk aggregation; accuracy, completeness, and timeliness of risk data reporting | Data catalog lineage integration; RAG retrieval log traces every agent decision to source data; DEA RAG section provides full lineage chain to regulators and auditors | Data catalog lineage reports; RAG retrieval log exports (7-year retention); DEA RAG retrieval section per regulated decision |
 | MiFID II Art.27 | Best execution obligations; suitability assessment for investment advice; record-keeping for advisory decisions | Human-in-the-Loop mandatory for all investment advisory outputs; HITL outcome written to DEA; KB-003 contains suitability rules; full session and decision logging | DEA with HITL section; Suitability assessment records; Session logs per advisory interaction; Agent audit trail |
 
-
 ---
 
-
 ## Cloud-Native Service Mapping
-
 
 | APEX Capability | OSS / Open-Standard | Provider A (AWS) | Provider B (GCP) | Provider C (Azure) |
 | --- | --- | --- | --- | --- |
@@ -785,23 +670,17 @@ REQ MGMT Living ARS — 162 total requirements across all phases Requirements Ma
 | IaC Security (L1) | Checkov + Semgrep + Trivy | CodeGuru + Inspector | Artifact Registry scanning | Defender for DevOps |
 | Runtime Security | Falco (CNCF) | GuardDuty | Security Command Center | Defender for Containers |
 
-
 ---
-
 
 | APEX Capability | OSS / Open-Standard | Provider A (AWS) | Provider B (GCP) | Provider C (Azure) |
 | --- | --- | --- | --- | --- |
 | DEA Store | PostgreSQL + object storage (WORM) + Athena | S3 Object Lock + Athena | Cloud Storage (locked) + BigQuery | Azure Immutable Blob + Synapse |
 
-
 ---
-
 
 ## Glossary
 
-
 ---
-
 
 SBB Solution Building Block — specific implementation of an Architecture Building Block; defines what is built, bought, or reused for a given platform capability. Semantic Context AI-DLC concept: rich, structured context provided to AI coding agents through steering files so they apply GlobalCorp-specific standards automatically and consistently.
 
@@ -811,9 +690,7 @@ SBB Solution Building Block — specific implementation of an Architecture Build
 
 **Zero-Trust** Security model where no identity or network location is inherently trusted; every request is authenticated, authorised, and logged regardless of origin; enforced by service mesh mTLS.
 
-
 #### Document Control
-
 
 | Versio n | Issue Date | Authors | Description | Approved By |
 | --- | --- | --- | --- | --- |

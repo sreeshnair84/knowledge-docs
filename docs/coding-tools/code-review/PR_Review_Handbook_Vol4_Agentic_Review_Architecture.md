@@ -9,7 +9,6 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **THE ENTERPRISE PR REVIEW PLAYBOOK** 
 
 Volume IV — Agentic AI Review Architecture 

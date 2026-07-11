@@ -9,9 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 #### SUPPLEMENTARY REFERENCE 
-
 # **AgentCore Memory — Gaps, Extensions & 2026 Research** 
 
 FileSessionManager · Conversation Managers · Custom Strategy Wiring Structured Extraction · Graph Memory · Emerging Research 2025-2026 

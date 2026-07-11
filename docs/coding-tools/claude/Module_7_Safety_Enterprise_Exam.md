@@ -9,9 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 #### **MODULE 7** 
-
 # **Safety, Enterprise Deployment & CCA-F Exam Prep** 
 
 Permission hierarchy, data privacy, system hardening, compliance, governance, 4-week study plan, and 20 practice questions across all 5 domains 

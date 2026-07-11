@@ -9,9 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 ENTERPRISE AI ARCHITECT · CONSULTANT TOOLKIT · 2026 EDITION 
-
 # **AI Transformation** 
 
 ### Client Engagement Bible 

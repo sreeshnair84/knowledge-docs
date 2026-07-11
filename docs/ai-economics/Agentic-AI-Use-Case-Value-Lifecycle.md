@@ -9,9 +9,6 @@ tags: ["ai-economics", "enterprise-ai"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-###### **AGENTIC AI VALUE LIFECYCLE** 
-
 # **A Worked Use Case: End-to-End Value Realization** 
 
 Property & Casualty Claims — From Opportunity Identification to Realized, Measured Value 
@@ -288,7 +285,6 @@ The value is not one number — it is a bridge of three distinct, separately-ver
 |Property (water, wind, fire)|20%|Medium|Agent-augmented|
 |Liability / bodily injury|15%|High|Agent-assisted (human-led)|
 
-
 ## **3. End-to-End Value Lifecycle** 
 
 Every stage exists to answer one question before money or scope moves forward: is there more value to capture than it costs to capture it, and can we prove it before we scale it? 
@@ -325,7 +321,6 @@ Extend to property claims and additional regions (Month 6–15), then national a
 
 Gate: unit economics (Section 10) hold or improve at each wave; no adverse regulatory or fair-claims-handling findings. 
 
-
 #### **Stage 5 — Sustain & Optimize · Month 24+** 
 
 Continuous learning loop: settlement outcomes, litigation results, and SIU findings feed back into agent training data and fraud pattern libraries (see Enterprise Cognitive Architecture, Deliverables Pack Section 6). Governance council reviews model drift and override-rate trends quarterly. 
@@ -341,7 +336,6 @@ Actual realized value (not projected) is measured against the baseline using the
 ##### **GATE CRITERIA** 
 
 Gate: realized value within 15% of plan to maintain funding pace; below that triggers a re-baseline. 
-
 
 ## **4. Architecture Snapshot** 
 
@@ -366,7 +360,6 @@ _Figure 1. Core value-lever metrics, today vs. steady-state target (Year 3)._
 |Leakage (% of indemnity paid)|4.2%|2.6%|-38% relative|
 |Claims CSAT|71%|79%|+8 pts|
 |Adjuster FTE (attrition-managed)|1,100|830|-25%, no layoffs|
-
 
 ## **6. Value Calculation Methodology** 
 
@@ -398,9 +391,7 @@ This is the softest line in the model. It assumes faster, more transparent claim
 
 ### **6.4 Value Bridge** 
 
-
 _Figure 2. Steady-state annual value by driver._ 
-
 
 ## **7. Pilot Success Thresholds (Gate to Scale)** 
 
@@ -424,7 +415,6 @@ _Figure 3. Value realized vs. cost, by year, with cumulative net value._
 
 ### **8.1 Cost Basis** 
 
-
 |**Cost item**|**Type**|**Amount**|
 |---|---|---|
 |Agent orchestration platform & integration build|One-time (Yr 1)|$8.5M|
@@ -439,7 +429,6 @@ _Figure 3. Value realized vs. cost, by year, with cumulative net value._
 |---|---|---|---|
 
 Payback is calculated on the pilot cohort specifically (auto glass + small physical-damage claims, the fastest-automating slice), not the whole portfolio: $10.3M in Year-1 one-time investment is offset by roughly $1.99M/month of net operating value once the pilot is live, for a payback of about 5 months from go-live — materially faster than the 12-month mark often assumed for enterprise AI initiatives, because the pilot deliberately targets the highest-feasibility, highest-volume slice first (see the Opportunity Matrix, Deliverables Pack Section 5). 
-
 
 ## **9. Sensitivity: Bear / Base / Bull** 
 
@@ -465,7 +454,6 @@ Even at 60% of planned value capture, the ROI stays strongly positive because mo
 |Blended average|100%|$431|-31%|
 
 Marginal cost of one additional agent-handled claim: **~$4.10** (inference + orchestration compute only, at scale). Marginal cost of one additional human-handled claim: **~$580** (loaded adjuster time). This ~140x marginal-cost gap is why STP-eligibility expansion is the highest-leverage lever in the entire model — it is worth more effort to safely move one more claim type into the STP tier than to marginally improve any individual agent's accuracy on claims it already handles. 
-
 
 ## **11. Key Assumptions & Caveats** 
 

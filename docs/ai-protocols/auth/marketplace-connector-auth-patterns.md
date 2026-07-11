@@ -10,9 +10,7 @@ tags: ["auth", "oauth", "marketplace", "connectors", "enterprise-architecture"]
 covers_through: 2026-07-10
 covers_version: "N/A"
 ---
-
 *Enterprise AI Authentication Research · Part 5 of 7*
-
 # Marketplace Connector Auth Patterns & Enterprise Architecture
 
 OAuth consent models, token lifecycle, and reference architectures for enterprise AI marketplace connectors — covering GitHub Marketplace, Atlassian Marketplace, Microsoft AppSource, ServiceNow Store, Google Workspace Marketplace, and AWS Marketplace.

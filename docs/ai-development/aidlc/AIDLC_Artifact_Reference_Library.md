@@ -10,9 +10,6 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-
-##### **ARTIFACT REFERENCE LIBRARY** 
-
 # **AIDLC Input & Output Artifact s** **<u>Templates & Example</u>** 
 
 #### All 8 AIDLC Phases · EA Artifacts · Phase Gates 

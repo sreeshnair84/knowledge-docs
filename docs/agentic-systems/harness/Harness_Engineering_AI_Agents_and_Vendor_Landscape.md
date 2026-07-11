@@ -8,11 +8,7 @@ source_type: converted-pdf
 source_file: "Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf"
 tags: ["harness", "ai-agents", "vendor-landscape", "agentic-ai"]
 ---
-
-<!-- converted from Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf -->
-
 **C O N C E P T P R I M E R + V E N D O R L A N D S C A P E** 
-
 # **Harness Engineering** 
 
 The AI-Agent Sense: Scaffolding, Control Planes, and How the DevOps/Platform Vendor Landscape Is Adopting It 
@@ -148,7 +144,6 @@ Tekton provides the underlying custom-resource pipeline engine that other projec
 |**Deep, governed agent**<br>**harness**|GitHub, GitLab,<br>Harness (from Part<br>1's research),<br>CircleCI|First-party agents with scoped identity/credentials, audit trails,<br>MCP exposure, and — critically — the same approval/RBAC gates<br>that govern human-triggered actions also gate the agent|
 |**Agent-curious,**<br>**architecturally**<br>**unresolved**|Backstage, Azure<br>DevOps|Real primitives shipped (MCP actions, custom agent selection) but<br>either explicitly "experimental" (Backstage) or explicitly secondary<br>to a sibling product getting the real investment (Azure DevOps vs.<br>GitHub)|
 |**No native harness;**<br>**agents operate above/**<br>**around it**|Jenkins, ArgoCD,<br>Spinnaker, Tekton,<br>Humanitec|Mature, often CNCF-grade infrastructure that agentic tooling treats<br>as a target to generate config for or reconcile against, rather than a<br>platform that runs agents itself|
-
 
 **The throughline back to Part 1:** the vendors in the top tier all converged, independently, on the same governance pattern that Part 1 identifies as the hard part of harness engineering — scoped per-agent identity, 
 

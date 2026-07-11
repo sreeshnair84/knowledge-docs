@@ -9,13 +9,11 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Evidence Verifiability, Not Convenience** 
 
 Building an Agentic Autonomous Claims Settlement System Inside a Mutual Insurer 
 
 A transcript-style account following Deshawn Carter, Enterprise AI Architect at Harborstone Mutual Insurance, as he builds an autonomous claims settlement system gated on evidence verifiability rather than claim size — and discovers that a fraud-resistance fix and a fairness gap can come from the very same design decision. 
-
 
 ## Cast of Characters
 
@@ -27,22 +25,18 @@ A transcript-style account following Deshawn Carter, Enterprise AI Architect at 
 | **Beatriz Nunes** | Lead AI Engineer, Claims Automation |
 | **Harold Ashby Ines Duarte** | General Counsel Head of Actuarial & Fair Practices |
 
-
 :::info[Case Journey]
 **`INCUBATION`**  →  **`PITCH / APPROVE`**  →  **`DESIGN`**  →  **`BUILD`**  →  **`OPERATE`**  →  **`REVIEW`**
 :::
-
 
 *Harborstone Mutual Insurance | Agentic Claims Processing System | 2026*
 
 ---
 
-
 ## Stage 1 — THE CLAIM THAT SAT FOR THREE WEEKS
 
 *Distinguishing straightforward claims from the ones that only look straightforward*
 `Week 1 | Monday, 6 July 2026`
-
 
 :::note[📅 Meeting]
 **🕐 09:00**  📍 *Monday 6 July 2026 | Miriam Katz’s office*
@@ -52,21 +46,17 @@ A transcript-style account following Deshawn Carter, Enterprise AI Architect at 
 *Attendees: Miriam Katz (CCO), Deshawn Carter (EA)*
 :::
 
-
 > **Miriam Katz** — *Chief Claims Officer*
 >
 > Deshawn, average claims cycle time is nineteen days, and customer satisfaction on claims is our lowest-scoring category by a wide margin. Roughly sixty percent of our auto and home claims are genuinely simple — clear coverage, straightforward damage, no red flags — yet they sit in the same queue as complex disputed claims and take almost as long. I want an agentic AI system that can resolve the simple ones fast and free up adjusters for the complex ones. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > That’s a reasonable goal, and the key design question I’ll need answered before anything else is: how do we reliably distinguish ‘genuinely simple’ from ‘looks simple at first glance’ before an agent acts on that classification? Insurance fraud specifically likes to look like a simple, unremarkable claim — that’s the whole point of committing it convincingly. I want to talk to Oscar’s fraud team before I scope anything. 
 
-
 > **Miriam Katz** — *Chief Claims Officer*
 >
 > Fair. But I don’t want fraud caution to become an excuse to automate nothing — the vast majority of our claims are legitimate and simple, and treating all of them with maximum suspicion is its own cost, both in cycle time and in how it makes honest customers feel. 
-
 
 :::note[📅 Meeting]
 **🕐 13:00**  📍 *Wednesday 8 July 2026 | Special Investigations Unit*
@@ -76,26 +66,21 @@ A transcript-style account following Deshawn Carter, Enterprise AI Architect at 
 *Attendees: Deshawn Carter (EA), Oscar Lindqvist (Head of SIU)*
 :::
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > I want to push back gently on the framing of ‘simple versus complex’ as the right axis. From a fraud perspective, the more useful distinction is ‘low information asymmetry versus high information asymmetry.’ A small, clearly-documented auto glass claim with photos, a police report, and a repair estimate that matches market rate has very little room for the claimant to be lying in a way we can’t verify. A soft-tissue injury claim with no objective imaging, self-reported pain levels, and treatment from a provider we don’t have history with — that has enormous information asymmetry even if it looks routine on the surface. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > That’s a much sharper design principle than ‘simple versus complex’ and I want to build the eligibility criteria for autonomous processing around it directly — not claim type or dollar amount alone, but the degree to which the claim’s legitimacy is independently verifiable from objective evidence versus resting on self-report. Can your team help define, quantitatively, what verifiable evidence looks like for each major claim category? 
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > Yes, and I want one more thing built in from the start, not added later: even within an ‘eligible for autonomous processing’ category, I want a continuously running fraud-pattern detection layer operating alongside the autonomous processing agent, not instead of it. Fraud rings adapt — if we ever tell a fraud ring, even implicitly through public claims-handling patterns, that a certain claim profile sails through automatically, that profile becomes the template they’ll exploit. Autonomous processing eligibility criteria need to be a living, monitored boundary, not a fixed rule we set once. 
 
-
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > Understood — I’ll design for that as a standing operational requirement, not a one-time launch condition. Autonomous processing gets built alongside continuous fraud-pattern monitoring that can dynamically tighten eligibility criteria if it detects the exploitation pattern you’re describing. 
-
 
 :::note[📧 Email]
 
@@ -106,7 +91,6 @@ A transcript-style account following Deshawn Carter, Enterprise AI Architect at 
 Ines, scoping an agentic system for autonomous processing of claims meeting an ‘independently verifiable evidence’ threshold, defined with Oscar’s SIU team. I want your team’s input from the start on whether the specific evidence-verifiability criteria we land on could inadvertently correlate with protected characteristics or geography in a way that creates disparate claims-experience outcomes — for instance, if certain claim types or documentation patterns are more common in some communities than others for reasons unrelated to claim legitimacy. I’d rather catch that in criteria design than discover it in a fair-lending-style audit after launch. Can we set up a working session? Deshawn
 
 :::
-
 
 :::info[📋 Artifact: AIA-2026-063]
 
@@ -136,7 +120,6 @@ Option B, with Fair Practices and SIU as permanent co-owners of eligibility crit
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Eligibility framework reframed from “claim simplicity” to “evidence verifiability / information asymmetry” — a materially more fraud-resistant design principle 
@@ -149,12 +132,10 @@ Option B, with Fair Practices and SIU as permanent co-owners of eligibility crit
 
 :::
 
-
 ## Stage 2 — THE SETTLEMENT AUTHORITY NOBODY WANTED TO OWN ALONE
 
 *Approving autonomous payment with three separate hands on the brake*
 `Week 5 | Tuesday, 4 August 2026`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Tuesday 4 August 2026 | Harborstone HQ, Executive Board Room*
@@ -164,51 +145,41 @@ Option B, with Fair Practices and SIU as permanent co-owners of eligibility crit
 *Attendees: Deshawn (EA), Miriam (CCO), Oscar (SIU), Harold (General Counsel), Ines (Fair Practices)*
 :::
 
-
 > **Harold Ashby** — *General Counsel*
 >
 > Deshawn, I want absolute clarity on what ‘autonomous processing’ actually authorises. Is this system issuing binding settlement offers and payments without any human touching the claim at all? 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > For claims meeting the evidence-verifiability threshold, below a defined payout ceiling, in a pre-approved claim category, and clearing the continuous fraud-pattern monitoring check — yes, the system issues the settlement and payment autonomously. I want to be direct that this is a meaningfully different risk category from a decision-support tool, and I think it’s the right design for this narrow slice specifically because the eligibility bar is evidence-verifiability, not claim size or convenience. 
 
-
 > **Harold Ashby** — *General Counsel*
 >
 > What’s the payout ceiling, and who sets it? 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > Initial ceiling proposed at $7,500, set jointly by Miriam’s claims leadership and your legal team based on your risk tolerance for autonomous financial commitment, not by engineering. I want that number owned by the business and legal, reviewable and adjustable by them, not baked into code as an engineering assumption. 
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > I want a specific SIU condition in the ADR: any claim autonomously settled still gets logged into our fraud-pattern monitoring system just as if it had gone through a human adjuster, and if a pattern later emerges across multiple autonomously-settled claims that looks suspicious in aggregate — even though none of them individually triggered a red flag — I want the authority to freeze that specific claim category’s autonomous eligibility immediately, without needing a full governance cycle to react to an active exploitation pattern. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > Agreed, and I’ll build that as a formal emergency-freeze authority for your team specifically — fast to invoke, logged and reviewed after the fact, distinct from the normal quarterly eligibility criteria review process. 
 
-
 > **Ines Duarte** — *Head of Actuarial & Fair Practices*
 >
 > My condition: quarterly disparate-impact analysis comparing claims-experience outcomes — cycle time, autonomous-eligibility rate, dispute rate — across demographic and geographic segments, specifically to catch the correlation risk I flagged during Incubation before it becomes a pattern rather than after. 
-
 
 > **Miriam Katz** — *Chief Claims Officer*
 >
 > I can support all three conditions. What’s the actual customer-experience upside if we get this right? 
 
-
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > Modelling against last year’s claim mix, roughly 35% of auto and home claims would meet the eligibility bar, with settlement in under 24 hours instead of the current 19-day average for that subset. 
-
 
 I **ARTIFACT: ADR-2026-044** 
 
@@ -230,7 +201,6 @@ Approve Option B — autonomous claims settlement for claims meeting evidence-ve
 
 Miriam Katz (CCO) — DATE: 04/08/2026 
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Autonomous settlement authority approved for a narrowly-defined, evidence-verifiability-gated claim subset, with a business/legal-owned payout ceiling 
@@ -243,12 +213,10 @@ Miriam Katz (CCO) — DATE: 04/08/2026
 
 :::
 
-
 ## Stage 3 — THE PHOTO THAT LOOKED RIGHT AND WASN’T
 
 *Evidence verification turns out to need its own evidence*
 `Weeks 6–13 | August–October 2026`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Wednesday 26 August 2026 | Claims Automation Lab*
@@ -258,26 +226,21 @@ Miriam Katz (CCO) — DATE: 04/08/2026
 *Attendees: Deshawn (EA), Beatriz Nunes (Lead AI Engineer)*
 :::
 
-
 > **Beatriz Nunes** — *Lead AI Engineer, Claims Automation*
 >
 > Core architecture: an evidence-extraction agent processes submitted photos, repair estimates, and police reports into structured claim facts; an eligibility agent checks those facts against the evidence-verifiability criteria; a settlement-calculation agent computes the payout using deterministic policy terms and market-rate repair cost data, not free generation. Question for you — how do we verify that submitted photos are actually genuine and current, not reused from a prior claim or pulled from the internet? 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > That’s exactly the kind of verification-of-verification question I want us asking at design time rather than discovering as a fraud vector after launch. What signals do we actually have available — photo metadata, reverse image matching against our own historical claims database, anything else? 
 
-
 > **Beatriz Nunes** — *Lead AI Engineer, Claims Automation*
 >
 > Photo EXIF metadata when available — though many phones strip it or claimants may screenshot rather than upload directly. We can run reverse image matching against our own historical claims photo database to catch reused images. We don’t currently have a reliable way to catch a photo sourced from outside our own history — the broader internet — without a much larger external index, which raises its own data and cost questions. 
 
-
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > I don’t want to chase a perfect solution to external image sourcing right now — that’s a genuinely hard problem and pursuing it could delay launch significantly for a marginal gain. What I do want is for photo-based evidence alone to never be sufficient for eligibility on its own; it should always need to be corroborated by at least one independent evidence type — a police report reference number we can verify against a public records lookup, or a repair estimate from a shop in our verified network. That way, a single successfully spoofed photo isn’t enough to unlock autonomous settlement by itself. 
-
 
 :::note[📅 Meeting]
 **🕐 11:00**  📍 *Thursday 24 September 2026 | Special Investigations Unit*
@@ -287,36 +250,29 @@ Miriam Katz (CCO) — DATE: 04/08/2026
 *Attendees: Deshawn (EA), Beatriz (Lead Engineer), Oscar (SIU)*
 :::
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > My team ran twenty synthetic claim scenarios specifically designed to probe the eligibility boundary — not obviously fraudulent claims, but claims constructed to just barely clear the evidence-verifiability threshold with technically-satisfying-but-suspicious documentation. Three of twenty were classified eligible for autonomous settlement by the system. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > Walk me through one of the three. 
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > A staged minor collision claim with a genuine police report, genuine repair estimate from a network shop, and photos that pass reverse-image and metadata checks — because the staging was physically real, not digitally faked. The individual evidence items are all genuinely verifiable. What makes it suspicious to a 
 
-
 trained investigator is a pattern across the claim as a whole — the timing relative to a recent policy purchase, and a repair shop with an unusually high concentration of claims from policies purchased in the same window. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > So the failure isn’t in evidence verification at all — each piece of evidence genuinely is what it claims to be. The gap is that the eligibility agent evaluates evidence-item verifiability in isolation and has no cross-claim pattern awareness, which is precisely the kind of signal a human SIU investigator builds through experience across many claims over time. I don’t think an agentic evidence-verification system should try to replicate that pattern-detection capability itself — that’s SIU’s domain expertise, not something to reinvent in a different architecture. Instead, I want the continuous fraud-pattern monitoring layer we already committed to at Incubation to run as a mandatory pre-settlement check, not just a post-hoc audit — every claim heading toward autonomous settlement gets screened against SIU’s pattern-detection models before payment issues, not after. 
-
 
 :::tip[💭 Internal Thought]
 
 This is a useful, humbling finding. I designed the evidence-verification agent well for its actual job — confirming that submitted evidence is genuine — but I initially let the eligibility boundary rest on that alone, when genuine evidence and a legitimate claim are not the same thing. Fraud pattern detection across claims is a fundamentally different kind of signal than evidence authenticity within a single claim, and I should have designed the mandatory pre-settlement fraud screen as a first-class gate from the start, not realized it needed to move earlier in the pipeline after a red-team exercise found the gap.
 
 :::
-
 
 :::info[📋 Artifact: SAD-2026-058]
 
@@ -338,7 +294,6 @@ SIU emergency-freeze authority (ADR-2026-044 SIU-001) implemented as an immediat
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Photo-evidence-alone eligibility gap closed — corroborating independent evidence type now mandatory before photo evidence contributes to eligibility 
@@ -351,12 +306,10 @@ SIU emergency-freeze authority (ADR-2026-044 SIU-001) implemented as an immediat
 
 :::
 
-
 ## Stage 4 — THE QUARTER THE DISPARATE-IMPACT REPORT WASN’T CLEAN
 
 *Following through on Ines’s condition when the data actually shows something*
 `Months 4–8 | November 2026–March 2027`
-
 
 :::note[📅 Meeting]
 **🕐 09:00**  📍 *Thursday 4 February 2027 (First Live Disparate-Impact Analysis) | Actuarial & Fair Practices Office*
@@ -366,36 +319,29 @@ SIU emergency-freeze authority (ADR-2026-044 SIU-001) implemented as an immediat
 *Attendees: Deshawn (EA), Ines Duarte (Fair Practices), Beatriz (Lead Engineer)*
 :::
 
-
 > **Ines Duarte** — *Head of Actuarial & Fair Practices*
 >
 > We ran the disparate-impact analysis against six months of shadow-mode eligibility classifications, ahead of go-live, per my ARB condition. Overall eligibility rates are reasonably even across most segments. One finding: claimants in rural zip codes are eligible for autonomous settlement at a meaningfully lower rate than urban claimants, even controlling for claim type and severity. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > That’s exactly the kind of finding I wanted this analysis positioned to catch. What’s driving it — do we have a hypothesis yet? 
 
-
 > **Ines Duarte** — *Head of Actuarial & Fair Practices*
 >
 > Working hypothesis, not yet confirmed: our ‘verified network repair shop’ corroboration requirement, which we just added in Design specifically to close the photo-evidence gap, may be harder to satisfy in rural areas with fewer network-affiliated shops nearby. If a rural claimant’s nearest repair shop isn’t in our network, their otherwise-legitimate claim can’t clear the corroboration bar even though nothing about their claim is actually less verifiable in substance. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > If that hypothesis holds, that’s a direct consequence of a fix we made for good reasons — closing the photo-evidence vulnerability — that introduced an unintended geographic disparity. I don’t want to just note this and move on; I want it tested properly before go-live, not treated as an acceptable side effect of a fraud fix. Beatriz, can we expand the acceptable corroboration evidence set to include options more accessible in rural areas — a licensed adjuster site visit, or a broader set of verifiable repair estimate sources beyond our specific network — without reopening the photo-evidence vulnerability we were originally closing? 
 
-
 > **Beatriz Nunes** — *Lead AI Engineer, Claims Automation*
 >
 > I think so — the actual requirement we need is independent verifiability, not specifically network-shop membership. A repair estimate from any licensed, independently-verifiable shop should serve the same fraud-resistance purpose as a network shop, provided we can verify the shop’s licensing status through a public registry check. 
 
-
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > That’s the right fix — it preserves the fraud-resistance intent while removing a rural-geography penalty that was never actually about claim legitimacy. I want this re-tested through the disparate-impact analysis again before go-live, not assumed fixed. 
-
 
 I **ARTIFACT: GOV-2027-002** 
 
@@ -415,7 +361,6 @@ Corroboration evidence set expanded to any licensed, independently-verifiable re
 
 Disparate-impact analysis re-run against remediated criteria before go-live authorisation; geographic eligibility-rate gap must fall within the pre-defined acceptable variance threshold before proceeding. 
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Pre-go-live disparate-impact dry run, mandated at ARB, caught a genuine unintended rural-geography disparity before any live claimant was affected 
@@ -428,15 +373,12 @@ Disparate-impact analysis re-run against remediated criteria before go-live auth
 
 :::
 
-
 ## Stage 5 — THE SIU FREEZE THAT PROVED THE MECHANISM WORKS
 
 *Watching the emergency-freeze authority actually get used*
 `Months 9–13 | April–August 2027`
 
-
 Go-live occurs 15 April 2027 following successful re-validation of the disparate-impact remediation. Autonomous settlement handles 34% of eligible auto and home claims within the first quarter, with settlement time under 24 hours for those claims versus a 19-day baseline. Customer satisfaction on autonomously-settled claims scores meaningfully higher than the historical average. 
-
 
 :::note[📅 Meeting]
 **🕐 15:00**  📍 *Wednesday 14 July 2027 | Special Investigations Unit*
@@ -446,36 +388,29 @@ Go-live occurs 15 April 2027 following successful re-validation of the disparate
 *Attendees: Deshawn (EA), Oscar (SIU), Miriam (CCO)*
 :::
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > I invoked the emergency-freeze authority Tuesday night on the windshield-damage claim category, effective immediately. Our cross-claim pattern monitoring detected a sudden cluster — fourteen claims in nine days, all from a narrow geographic radius, all using the same two repair shops, all just under the payout ceiling, all otherwise individually clean on evidence verification. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > That’s precisely the scenario this authority was built for — individually clean claims forming a suspicious pattern in aggregate, exactly like the red-team scenario from Design, but now a live signal rather than a synthetic test. Walk me through what happened mechanically when you invoked it. 
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > Freeze took effect within about ninety seconds of my authorization — windshield-damage claims in that category immediately started routing to human SIU review instead of autonomous settlement, with no need to go through the normal quarterly eligibility review process. Six claims that would otherwise have auto-settled in that window got the human review instead, and my team is investigating the whole cluster now. 
-
 
 > **Miriam Katz** — *Chief Claims Officer*
 >
 > Any customer-facing disruption from the freeze? 
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > Minimal — those claims simply route to a human adjuster instead of instant settlement, which is exactly the pre-programme experience for all claims. No claimant was denied or delayed beyond the original baseline; we just removed the fast-track for that specific pattern while we investigate. 
 
-
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > This is the design working as intended — fast, independent action available to the people with the actual fraud expertise, without needing to route through me or a full governance cycle in the middle of an active pattern. I want this documented as a case study for how the mechanism is supposed to function, and I want to check with Beatriz’s team whether the pattern-detection models can be updated with this cluster’s signature once the investigation concludes, so a similar pattern doesn’t need a fresh manual freeze next time. 
-
 
 I **ARTIFACT: OPS-2027-Q3** 
 
@@ -499,7 +434,6 @@ Post-remediation disparate-impact analysis: geographic eligibility-rate gap with
 
 Customer satisfaction score on autonomously-settled claims: significantly above historical claims-handling average. 
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ SIU emergency-freeze authority successfully invoked for the first time in production, halting a suspicious claim cluster within 90 seconds with zero customer-facing disruption beyond pre-programme baseline 
@@ -512,12 +446,10 @@ Customer satisfaction score on autonomously-settled claims: significantly above 
 
 :::
 
-
 ## Stage 6 — RAISING THE CEILING, CAREFULLY
 
 *Annual review — the payout ceiling question, answered with the same discipline as everything before it*
 `Month 14 | September 2027`
-
 
 :::note[📅 Meeting]
 **🕐 14:00**  📍 *Tuesday 14 September 2027 | Harborstone HQ, Executive Board Room*
@@ -527,31 +459,25 @@ Customer satisfaction score on autonomously-settled claims: significantly above 
 *Attendees: Deshawn (EA), Miriam (CCO), Harold (Legal), Oscar (SIU), Ines (Fair Practices)*
 :::
 
-
 > **Miriam Katz** — *Chief Claims Officer*
 >
 > Thirteen-day overall cycle time, down from nineteen. One fraud cluster caught and contained cleanly. Disparate-impact metrics holding steady. I want to propose raising the autonomous settlement payout ceiling from $7,500 to $15,000 — our data shows claims in that range have similar evidence-verifiability characteristics to what’s already eligible. 
-
 
 > **Deshawn Carter** — *Enterprise AI Architect*
 >
 > I want to apply the exact same discipline to this proposal that we’ve applied to every threshold or scope change so far in this programme — raising a ceiling isn’t a single-number decision, it’s a decision about whether the new band of claims shares the same risk profile as the validated band. Before I’d support this, I want a dedicated fraud red-team exercise from Oscar’s team specifically targeting the $7,500–$15,000 band, and a disparate-impact analysis re-run against that band specifically, the same way we tested rural geography before the original go-live. 
 
-
 > **Oscar Lindqvist** — *Head of Special Investigations Unit*
 >
 > Agreed — higher payout claims are also, generally, a more attractive target for fraud, so I wouldn’t want to assume the risk profile transfers just because the evidence-verifiability mechanics look similar on paper. 
-
 
 > **Harold Ashby** — *General Counsel*
 >
 > I’d support the ceiling increase in principle, contingent on both of those validations passing, and I want the increase itself to go through a formal ADR amendment with the same rigor as the original approval, not an operational memo. 
 
-
 > **Miriam Katz** — *Chief Claims Officer*
 >
 > Understood. I’d rather take the extra month to validate this properly than rush it and undermine the trust this programme has built over the last year. 
-
 
 :::info[📋 Artifact: RDREC-2027-009]
 
@@ -572,7 +498,6 @@ Consistent with programme-wide principle established at Stage 3 and Stage 5: thr
 Miriam Katz (CCO), Harold Ashby (General Counsel), Oscar Lindqvist (SIU)
 
 :::
-
 
 :::tip[✅ Stage Outcomes]
 

@@ -10,15 +10,8 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-
-P R I N C I P A L E N T E R P R I S E A R C H I T E C T R E F E R E N C E S E R I E S 
-
-VOLUME 9 OF 10 
-
 **Enterprise Reference Repository** A curated, practitioner-grade reference library: architecture patterns, anti-patterns, decision trees, ADR examples, governance policies, and Policy-as-Code templates — calibrated for banking and financial services environments. 
-
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition · Continuation Volume 
-
 # **Part A — Reference Architectures & Architecture Patterns** 
 
 The goal of this repository is practical reuse, not comprehensive coverage. Every entry has been selected because it represents a decision a Principal Architect in a banking context will genuinely face — not because it completes a theoretical taxonomy. Entries include what the pattern solves, its key trade-offs, when to avoid it, and a Mermaid diagram specification for versioncontrolled documentation. 

@@ -9,9 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 ### **AWS STRANDS & BEDROCK AGENTCORE** 
-
 # **ADVANCED PATTERNS v3.0** 
 
 **Hooks · HITL · Checkpointer · Code Interpreter · Browser Agent · Meta Tool · Expert Patterns** 

@@ -9,11 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 **Page 1** 
-
-###### **ENTERPRISE ARCHITECTURE** 
-
 # **STRATEGY PLAYBOOK** 
 
 #### **How EA Creates Strategy from Pitch to Retire** 

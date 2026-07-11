@@ -9,7 +9,6 @@ tags: ["knowledge-engineering"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Autonomous Knowledge Engineering System** 
 
 Design Decisions, Architecture, and Lessons from Industry A blueprint for continuous, agent-driven organizational knowledge 

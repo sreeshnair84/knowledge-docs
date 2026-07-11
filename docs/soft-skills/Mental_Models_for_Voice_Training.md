@@ -7,11 +7,9 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **Mental Models**
 **for the Expert Public Speaker**
 *Think better. Practise smarter. Grow faster.*
-
 # **What Are Mental Models?**
 A mental model is a framework for thinking — a lens that helps you understand a situation, make better decisions, and solve problems faster. The best speakers in the world don't just practise harder; they think differently about how they learn and grow.
 

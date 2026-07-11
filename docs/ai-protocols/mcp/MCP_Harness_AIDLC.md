@@ -9,7 +9,6 @@ tags: ["ai-protocols", "mcp", "a2a"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # MCP Harness Engineering: Testing & Evaluation Across the AIDLC 
 
 A layer-by-layer blueprint for instrumenting MCP at every stage of the AI Development — - Lifecycle from spec through production continuous red teaming. 

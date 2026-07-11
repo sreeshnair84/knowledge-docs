@@ -7,32 +7,25 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **DEEP TECHNICAL GUIDE**
 **Complex RAG Systems**
 *Delta Indexing · Document Versioning · Multi-Modal · Complex Tables · Temporal QnA · Knowledge Links*
-
 | This guide covers every major complexity in production-grade RAG systems: how to index only what changed, how to handle documents with images and slides, how tables with grouped headers break naive chunking, how temporal/historical knowledge must be modeled, and how knowledge links span across filenames, sections, and document hierarchies — with concrete strategies for each. |
 | --- |
-
 **1. Delta Indexing — Only Re-Index What Changed**
 | Naive RAG re-indexes the entire corpus on every document update. At enterprise scale (millions of documents), this is computationally catastrophic. Delta indexing is the architecture that makes RAG systems production-feasible. |
 | --- |
-
 **1.1  The Core Problem with Full Re-Indexing**
 Every time a policy document changes by one paragraph, a naive system re-chunks, re-embeds, and re-upserts the entire document. At scale: 100,000 documents × 500 chunks × embedding API cost = financial and latency catastrophe. The goal of delta indexing is surgical precision: identify exactly what changed, retire only the affected chunks, and insert only the new chunks.
-
 **1.2  Document Fingerprinting Strategy**
 **▌ THE MECHANISM**
 | # Document-level fingerprint doc_fingerprint = SHA256(raw_bytes)   # Detects ANY change # Section-level fingerprint (more granular) for section in parsed_sections: section_hash = SHA256(section.text + section.position_id) store(doc_id, section_id, section_hash, embedding_id) # On update: new_hashes = compute_section_hashes(new_version) old_hashes = retrieve_stored_hashes(doc_id) to_delete = old_hashes - new_hashes   # Removed or changed sections to_insert = new_hashes - old_hashes   # New or changed sections unchanged = old_hashes & new_hashes   # Do nothing — embeddings still valid |
 | --- |
-
 **What counts as a 'section' for hashing?**
 **Structural boundary: **Heading-based sections (H1, H2, H3) — most reliable for documents with clear structure
 **Semantic boundary: **Paragraph clusters separated by topic shift — requires a topic segmentation model
 **Fixed-position boundary: **Page + paragraph index — brittle if document reflows, but fast
 **Sentence-level: **Maximum granularity, maximum overhead — use only for high-churn, high-value documents
-
 **1.3  The Chunk Lineage Graph — The Critical Data Structure**
 Every chunk in the vector store must carry a complete lineage record. Without this, you cannot perform targeted deletion, version rollback, or audit trail queries.
 

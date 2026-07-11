@@ -10,9 +10,7 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-
 ### **ENTERPRISE RESEARCH** 
-
 # **AIDLC** **<u>Enterprise Framework</u>** 
 
 AI Development Lifecycle for the Enterprise Governance · Constitutional AI · Responsible AI · Big Wins 

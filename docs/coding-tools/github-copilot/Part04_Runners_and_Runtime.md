@@ -9,9 +9,6 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-**PART 04–05  •  RUNNERS & EXECUTION ENGINE** 
-
 # **GitHub Actions Runners & Runtime** 
 
 **How jobs flow from YAML to execution — runner lifecycle, ARC, scaling, and internals** 

@@ -9,7 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **ENTERPRISE ARCHITECTURE Glossary & Cheat Sheet** 
 
 Distinguished Architect / CTO / Chief AI Architect Edition 

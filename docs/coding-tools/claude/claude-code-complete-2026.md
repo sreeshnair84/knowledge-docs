@@ -10,7 +10,6 @@ tags: ["coding-tools", "claude"]
 doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
-
 # Claude Code CLI — Zero to Mastery 2026
 
 Complete guide to Claude Code — from installation and first run through advanced hooks, skills, MCP integration, and CI/CD production patterns. Audience: developers new to Claude Code through advanced production users.

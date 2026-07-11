@@ -9,7 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **ENTERPRISE DATA ARCHITECT IN THE AGE OF AI & GenAI** 
 
 Roles · Responsibilities · RFP Strategy · Artifacts · Leadership 

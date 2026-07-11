@@ -9,7 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **ENTERPRISE AI ARCHITECT BIBLE** 
 
 The definitive MAANG-targeted preparation guide for senior technologists with 20+ years of experience in Data Science, Data Engineering & Solution Architecture. 

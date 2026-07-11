@@ -9,9 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-
 # **Governance, Responsible AI & Security Architecture** 
 
 Scaling with control: trust as an accelerant, not a brake 

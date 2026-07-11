@@ -11,7 +11,6 @@ doc_type: certification
 exam_code: "CCAF"
 exam_validity: "2026"
 ---
-
 # CCAF Exam Prep — Complete Guide
 
 Complete preparation for the Certified Claude AI Fundamentals (CCAF) exam — all 5 domains, 75+ original scenario-based practice questions with full answer rationale.

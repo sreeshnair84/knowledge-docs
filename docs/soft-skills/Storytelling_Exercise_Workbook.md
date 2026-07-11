@@ -7,11 +7,9 @@ source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
 ---
-
 **Storytelling**
 **Exercise Workbook for Work Presentations**
 *Structure your stories. Hook your audience. Drive action.*
-
 # **How to Use This Workbook**
 This workbook has five sections. Work through them in order — each one builds on the last. Use a pen to fill in the worksheets directly, or type into the fields digitally.
 

@@ -9,15 +9,8 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-P R I N C I P A L E N T E R P R I S E A R C H I T E C T R E F E R E N C E S E R I E S 
-
-VOLUME 6 OF 8 
-
 **Banking & Financial Services Architecture Governance Deep-Dive** Regulatory drivers, governance structures, required architecture controls, and industryspecific anti-patterns for banking — with comparative notes against insurance and other regulated industries. 
-
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition 
-
 # **Banking — The Primary Lens** 
 
 Banking carries the heaviest, most prescriptive regulatory architecture footprint of any industry covered in this handbook, which is why this volume treats it as the primary deep-dive rather than one entry in a flat industry list. Three forces converge in banking architecture governance: prudential safety-and-soundness regulation, conduct/consumer-protection regulation, and — increasingly — operational resilience and technology-specific regulation that didn't exist in its current form a decade ago. 

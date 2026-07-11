@@ -10,9 +10,7 @@ tags: ["auth", "oauth", "oidc", "standards", "rfc", "checklist"]
 covers_through: 2026-07-10
 covers_version: "N/A"
 ---
-
 *Enterprise AI Authentication Research · Part 7 of 7*
-
 # Auth Standards Reference: OAuth 2.1, OIDC, RFC 8693 & Implementation Checklists
 
 Quick reference guide for OAuth 2.1, OIDC, RFC 8693 token exchange, RFC 7523 JWT Bearer, implementation checklists, vendor documentation, and decision frameworks for enterprise AI authentication.

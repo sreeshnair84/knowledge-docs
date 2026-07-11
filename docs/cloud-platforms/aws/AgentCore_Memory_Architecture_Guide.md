@@ -9,11 +9,8 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 **AWS ARCHITECTURE REFERENCE  v3.0** 
-
 **UPDATED JUNE 2026** 
-
 # **AgentCore Memory** **~~Architecture Guide~~** 
 
 ### **~~Strands Framework  ·  EU Banking  ·  Session Resume Patterns~~** 

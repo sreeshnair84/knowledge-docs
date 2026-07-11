@@ -9,7 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 ## ENTERPRISE AI / PRINCIPAL ARCHITECT 
 
 _A structured playbook for communicating AI architecture strategy across executive, product, engineering, and governance arenas._ 

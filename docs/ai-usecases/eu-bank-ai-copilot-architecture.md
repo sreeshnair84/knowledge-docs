@@ -9,13 +9,10 @@ doc_type: guide
 covers_version: "N/A"
 tags: ["ai-usecases", "banking", "copilotkit", "strands", "mcp", "aws-agentcore"]
 ---
-
 CONFIDENTIAL — INTERNAL
 EU Bank AI Copilot Platform
 End-to-End Architecture & Code Reference
-
 Table of Contents
-
 ## 1. Platform Overview
 
 This document provides the complete end-to-end reference for the EU Bank AI Copilot Platform. It covers every server, every package, every code snippet, and every security control required to deploy a production-grade, OWASP- and GDPR-compliant AI agent system for a regulated financial institution.

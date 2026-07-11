@@ -10,9 +10,6 @@ tags: ["ai-usecases"]
 doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
-
-<!-- converted from eu-bank-ai-copilot-complete.pdf -->
-
 # EU Bank AI Copilot Platform
 
 **Classification:** Internal Confidential — April 2026 — Version 1.0  

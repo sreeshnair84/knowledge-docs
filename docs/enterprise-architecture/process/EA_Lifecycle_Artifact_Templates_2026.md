@@ -9,9 +9,6 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-##### **ARTIFACT TEMPLATE LIBRARY** 
-
 # **Enterprise Architecture** **<u>Lifecycle Artifacts</u>** 
 
 #### TOGAF 10 ADM · All Phases · AI-First Extensions 

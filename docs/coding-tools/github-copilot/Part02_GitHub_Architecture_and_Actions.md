@@ -9,9 +9,6 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-**PART 02–03  •  PLATFORM & CI/CD ENGINE** 
-
 # **GitHub Architecture & Actions Deep Dive** 
 
 **Repository model, Enterprise topology, and the complete Actions execution engine** 

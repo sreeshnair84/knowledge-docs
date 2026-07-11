@@ -9,9 +9,6 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-**PART 04–06  •  RETRIEVAL, AGENTS & MODEL PLATFORM** 
-
 # **RAG Architecture, Agent Comparisons & GitHub Models** 
 
 How GitHub avoids sending whole repos to the model, the agentic landscape, and the model catalog 

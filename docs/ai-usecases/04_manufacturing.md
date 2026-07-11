@@ -9,7 +9,6 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Case Study** 
 
 Ironhaven Industrial — Agentic Quality Control & Supply Disruption Response Platform 

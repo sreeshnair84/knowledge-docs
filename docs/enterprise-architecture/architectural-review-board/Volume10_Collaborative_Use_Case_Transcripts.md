@@ -10,7 +10,6 @@ last_reviewed: 2026-07-10
 session_type: "workshop"
 related_pages: ["—"]
 ---
-
 ## Participants
 
 ## Audience

@@ -9,7 +9,6 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **AWS STRANDS & BEDROCK AGENTCORE PRODUCTION BUILDER JOURNEY KIT** 
 
 From Zero to Production · Multi-Agent · MCP · A2A · Auth · RAI · Observability · Compliance 

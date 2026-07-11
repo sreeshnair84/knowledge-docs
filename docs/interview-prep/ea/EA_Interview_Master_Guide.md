@@ -9,7 +9,6 @@ tags: ["interview-prep"]
 last_reviewed: 2026-07-10
 target_role: "AI/ML Architect"
 ---
-
 ## How to Use This Guide
 
 CONFIDENTIAL PREPARATION DOCUMENT 

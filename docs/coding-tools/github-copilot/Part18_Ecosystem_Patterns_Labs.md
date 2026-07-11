@@ -9,9 +9,6 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
-**PART 18–21  •  ADVANCED PATTERNS & LABS** 
-
 # **Ecosystem, Enterprise Patterns & Hands-On Labs** 
 
 ##### **TOPICS COVERED** 

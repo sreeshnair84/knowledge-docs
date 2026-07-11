@@ -9,13 +9,11 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-
 # **Decision Support, Never Decision** 
 
 Building an Agentic Prior Authorization Assistant Inside a Health Payer 
 
 A transcript-style account following Dr. Amara Osei, Enterprise AI Architect at Cascadia Health Partners, as she draws a hard line between AI-assisted clinical review and autonomous denial — and defends a narrow, clinically-governed fast-track approval pathway against pressure to expand it faster than the evidence allows. 
-
 
 ## Cast of Characters
 
@@ -29,22 +27,18 @@ A transcript-style account following Dr. Amara Osei, Enterprise AI Architect at 
 | **Sam Ortega** | Member Advocate / Appeals Lead |
 | **Dr. Felix Grant** | Medical Director, external reviewer panel |
 
-
 :::info[Case Journey]
 **`INCUBATION`**  →  **`PITCH / APPROVE`**  →  **`DESIGN`**  →  **`BUILD`**  →  **`OPERATE`**  →  **`REVIEW`**
 :::
-
 
 *Cascadia Health Partners | Agentic Prior Authorization Review | 2026*
 
 ---
 
-
 ## Stage 1 — THE QUEUE THAT DECIDES PEOPLE’S CARE
 
 *Naming the real bottleneck before naming the AI*
 `Week 1 | Monday, 9 February 2026`
-
 
 :::note[📅 Meeting]
 **🕐 09:00**  📍 *Monday 9 February 2026 | Ron Faulkner’s office*
@@ -54,21 +48,17 @@ A transcript-style account following Dr. Amara Osei, Enterprise AI Architect at 
 *Attendees: Ron Faulkner (CMO), Amara Osei (EA)*
 :::
 
-
 > **Ron Faulkner** — *Chief Medical Officer*
 >
 > Amara, prior auth turnaround is averaging 6.2 days against a state-mandated 72-hour standard for non-urgent requests. We’re getting regulator letters. Every payer in the market is talking about AI for this. I need a plan, and I need it fast. 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > Fast is exactly the risk here, Ron. Prior auth denials that turn out to be wrong don’t just cost us a grievance — they can delay someone’s cancer treatment. Before I scope any AI, I need to know: where specifically are the 6.2 days going? Intake, clinical review, or the back-and-forth for missing documentation? 
 
-
 > **Ron Faulkner** — *Chief Medical Officer*
 >
 > Linh’s team would know the breakdown better than me. 
-
 
 :::note[📅 Meeting]
 **🕐 13:00**  📍 *Wednesday 11 February 2026 | Utilization Management floor*
@@ -78,49 +68,39 @@ A transcript-style account following Dr. Amara Osei, Enterprise AI Architect at 
 *Attendees: Amara Osei (EA), Linh Tran (VP Utilization Management)*
 :::
 
-
 > **Linh Tran** — *VP Utilization Management*
 >
 > Here’s the breakdown on a typical case. Day 1: intake and eligibility check, automated, fast. Days 2–4: waiting on the provider’s office to submit clinical documentation, because our fax-based intake loses about a third of the first submission. Day 5: nurse reviewer applies medical necessity criteria. Day 6: physician reviewer signs off on anything the nurse can’t approve outright, which is about 40% of cases. 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > So three-plus of the six days are provider-side documentation friction, not our review capacity. 
 
-
 > **Linh Tran** — *VP Utilization Management*
 >
 > Correct. And of the cases that do reach clinical review, nurses spend most of their time manually checking documentation against InterQual or MCG criteria line by line. That part takes 20–25 minutes per case even when the documentation is complete. 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > So there are two very different agentic opportunities, and I don’t want to conflate them. One: an intake agent that proactively identifies missing documentation and requests it structurally instead of a fax black hole — that attacks the 3-day delay. Two: a clinical-criteria matching agent that assembles a 
 
-
 documented-evidence-to-criteria mapping for the nurse reviewer, similar to what a first-pass reviewer would produce — that attacks the 20-minute review time. Neither one makes an approval or denial decision. That’s the line I won’t move on. 
-
 
 > **Linh Tran** — *VP Utilization Management*
 >
 > Some vendors are pitching fully automated denial for cases that clearly fail criteria — no human touch at all. 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > - I know, and I want to be direct with Ron about this early: an AI system denying care autonomously, even for ‘clear-cut’ cases, is a different risk category entirely — it touches medical necessity determinations that have 
 
-
 real clinical and legal consequences, and ‘clear-cut’ according to a model is not the same as clear-cut according to a licensed clinician reading the whole chart. I’m scoping this as decision support only, full stop. 
-
 
 :::tip[💭 Internal Thought]
 
 Every payer AI vendor pitch I’ve seen leads with denial automation because it’s the flashiest ROI number. But an agent that can autonomously deny care is the one output of this whole programme I am least willing to build, regardless of what the business case says. Approval-support and documentation-completeness are both defensible, high-value, and don’t put us in the position of an algorithm telling someone their treatment isn’t medically necessary without a clinician’s eyes on the case.
 
 :::
-
 
 :::note[📧 Email]
 
@@ -133,7 +113,6 @@ Dave, scoping an agentic AI initiative for prior authorization. I want complianc
 documentation-completeness checking at intake, and (2) assembling a criteria-mapping packet for the human reviewer. I want this boundary documented before any vendor conversation happens, so we don’t drift toward autonomous denial under delivery pressure six months from now. Can we align this week? Amara
 
 :::
-
 
 :::info[📋 Artifact: AIA-2026-007]
 
@@ -171,7 +150,6 @@ Pending Compliance and CMO sign-off on scope boundary before Design.
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Root cause split identified: documentation friction (3.2 days) vs. clinical review capacity (2 days) — two distinct problems requiring two distinct agents 
@@ -184,12 +162,10 @@ Pending Compliance and CMO sign-off on scope boundary before Design.
 
 :::
 
-
 ## Stage 2 — THE LINE THE BOARD WANTED TO MOVE
 
 *Where a compelling ROI number tests a boundary that was supposed to be settled*
 `Week 5 | Thursday, 12 March 2026`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Thursday 12 March 2026 | Executive Board Room*
@@ -199,49 +175,39 @@ Pending Compliance and CMO sign-off on scope boundary before Design.
 *Attendees: Amara (EA), Ron (CMO), Dave (Compliance), Linh (UM)*
 :::
 
-
 > **Ron Faulkner** — *Chief Medical Officer*
 >
 > Amara, I’ve seen the numbers from a competitor payer running autonomous approval — not denial, just fast-track approval — for the clearest 15% of cases: total knee replacement post-op physical therapy, routine imaging follow-ups. Turnaround for those drops to under an hour. Why aren’t we considering that? 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > I want to separate two things that sound similar but aren’t. Autonomous approval and autonomous denial carry very different risk profiles. An erroneous autonomous approval mostly costs us money — we pay for something that, on full review, might not have met criteria. An erroneous autonomous denial delays or denies someone’s care and creates real clinical and legal exposure. I’m much more open to a 
 
-
 narrowly-scoped autonomous fast-track approval for a defined, low-risk, high-clarity case category than I would ever be to autonomous denial. 
-
 
 > **Dave Kowalski** — *Chief Compliance Officer*
 >
 > What would ‘narrowly scoped’ actually mean in practice? 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > A pre-approved, clinically-validated list of procedure-and-criteria combinations — built and periodically reviewed by Dr. Grant’s medical director panel, not by engineering — where the documentation either unambiguously meets criteria or it doesn’t, with no clinical judgment call in between. If the case falls outside that narrow list, or if the documentation-matching agent has anything less than full confidence, it routes to a human. And even within the fast-track category, I want a statistically sampled retrospective audit — a random 5% of auto-approved cases get full clinical review after the fact, so we catch drift before it becomes a pattern. 
-
 
 > **Linh Tran** — *VP Utilization Management*
 >
 > What’s excluded from ever being fast-track eligible, regardless of confidence score? 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > Anything involving a denial outcome, anything involving an appeal or a prior denial on the same member, anything above a defined cost threshold, and anything Dr. Grant’s panel hasn’t explicitly pre-validated. I’d rather launch with a narrow, boring list of ten procedure types than a broad list that looks impressive in a board deck and creates edge cases none of us anticipated. 
-
 
 > **Ron Faulkner** — *Chief Medical Officer*
 >
 > I can live with narrow and boring if it’s defensible. Dave, are you comfortable? 
 
-
 > **Dave Kowalski** — *Chief Compliance Officer*
 >
 > Comfortable with fast-track approval under those conditions. I remain firmly opposed to any autonomous denial pathway, now or in any future phase, without a full separate governance review and regulator consultation. 
-
 
 :::info[📋 Artifact: ADR-2026-004]
 
@@ -269,7 +235,6 @@ Ron Faulkner (CMO) — DATE: 12/03/2026
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Board pressure to expand into autonomous denial resisted; narrow autonomous fast-track approval approved instead, with denial permanently excluded 
@@ -282,12 +247,10 @@ Ron Faulkner (CMO) — DATE: 12/03/2026
 
 :::
 
-
 ## Stage 3 — THE CONFIDENCE SCORE THAT MEANT NOTHING
 
 *Where a model’s stated confidence and its actual reliability turn out to be different things*
 `Weeks 7–12 | March–April 2026`
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Tuesday 31 March 2026 | Clinical AI Lab*
@@ -297,43 +260,35 @@ Ron Faulkner (CMO) — DATE: 12/03/2026
 *Attendees: Amara (EA), Priya Bhatt (Lead ML Engineer)*
 :::
 
-
 > **Priya Bhatt** — *Lead ML Engineer*
 >
 > First calibration run on the criteria-mapping agent. It outputs a confidence score alongside every criteria match, 0 to 100. We were planning to route anything above 90 straight to fast-track eligibility checking. Problem: the confidence scores don’t track actual correctness. We had multiple cases scored 95+ confidence where the model had misread a lab value threshold — read ‘<50’ as ‘>50’ in the source note. 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > So the self-reported confidence score is really a fluency-and-certainty signal from the language model, not a calibrated probability of correctness against the actual clinical criteria. That’s a well-known failure mode and I should have flagged it before you built around it — my mistake for not raising it in Stage 2 design assumptions. We need an external, independent confidence measure, not the model grading its own homework. 
 
-
 > **Priya Bhatt** — *Lead ML Engineer*
 >
 > What would independent verification look like here? 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > Structured extraction plus deterministic rule evaluation. The agent extracts specific clinical values — lab results, diagnosis codes, prior treatment dates — into a structured schema. Then a separate, non-generative rules engine evaluates those structured values against the InterQual/MCG criteria logic, which is deterministic, not probabilistic. The LLM’s job is extraction and summarisation; the rules engine’s job is the actual criteria match. ‘Confidence’ for fast-track purposes becomes: did extraction succeed unambiguously, and did the deterministic rule evaluate cleanly to a single answer — not a number the model made up. 
 
-
 > **Priya Bhatt** — *Lead ML Engineer*
 >
 > That means building a proper extraction schema per procedure type in the fast-track list, and it means the extraction agent needs to flag its own uncertainty honestly — say ‘I can’t find this value’ rather than guessing. 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > Exactly. And critically: an extraction failure or ambiguous source document is itself a routing signal — straight to human review, not a lower confidence score that still might clear a threshold. Absence of clean extraction is a hard stop, not a soft one. 
-
 
 :::tip[💭 Internal Thought]
 
 This is a pattern I need to remember and generalise: whenever an agentic system uses a generative model’s self-reported confidence as a gate for autonomous action, that gate is unreliable by construction, because the model is scoring its own fluency, not ground truth. The fix is always the same shape — separate extraction (probabilistic, honest about uncertainty) from evaluation (deterministic, auditable) — and never let the generative component be both the evidence-gatherer and the judge.
 
 :::
-
 
 :::info[📋 Artifact: SAD-2026-005]
 
@@ -357,7 +312,6 @@ Fast-track auto-approval latency: under 5 minutes. Human-routed case: criteria p
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Critical design flaw caught pre-build: LLM self-reported confidence does not correlate with clinical correctness 
@@ -370,12 +324,10 @@ Fast-track auto-approval latency: under 5 minutes. Human-routed case: criteria p
 
 :::
 
-
 ## Stage 4 — THE LIST THAT GREW ITSELF
 
 *Governing scope creep in a system designed to stay narrow*
 `Months 4–7 | May–August 2026`
-
 
 :::note[📅 Meeting]
 **🕐 09:00**  📍 *Thursday 18 June 2026 (60% Build Review) | Clinical AI Lab*
@@ -385,36 +337,29 @@ Fast-track auto-approval latency: under 5 minutes. Human-routed case: criteria p
 *Attendees: Amara (EA), Priya (ML Eng), Dr. Felix Grant (Medical Director panel)*
 :::
 
-
 > **Priya Bhatt** — *Lead ML Engineer*
 >
 > Build update: extraction and deterministic evaluation are both performing well in shadow mode — running live in parallel with human reviewers, not yet making decisions. One flag: Dr. Grant’s panel has expanded the fast-track list from the original 10 procedure types to 34 over the last six weeks, based on shadow-mode accuracy data. 
-
 
 > **Dr. Felix Grant** — *Medical Director, external reviewer panel*
 >
 > The data supported it — extraction and evaluation accuracy on the new procedure types was consistently above 99.5% against retrospective human review. 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > I don’t doubt the accuracy data, and expanding the list through your panel, on evidence, is exactly the governance process we designed — that’s working as intended, not scope creep in the bad sense. My concern is different: has anyone reassessed the exclusion criteria as the list grew? The original ten procedures were chosen partly because none of them had meaningful clinical variability or common comorbidity interactions. Some of the newer additions — I’m looking at the physical therapy authorization category — do have comorbidity-dependent criteria that a deterministic rules engine handles less cleanly. 
-
 
 > **Dr. Felix Grant** — *Medical Director, external reviewer panel*
 >
 > Fair challenge. We added physical therapy because the base-case accuracy was excellent, but you’re right that we didn’t specifically stress-test the comorbidity edge cases the way we did for the original ten. 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > I’d like to propose a standing requirement, not just for this category: every procedure type added to the fast-track list needs an explicit edge-case stress test as part of panel sign-off, not just aggregate accuracy on the general case mix. Aggregate accuracy can hide a systematic failure on a clinically important minority of cases. 
 
-
 > **Dr. Felix Grant** — *Medical Director, external reviewer panel*
 >
 > Agreed. I’ll pull physical therapy back to shadow-only pending a dedicated comorbidity stress test, and I’ll apply the same standard going forward. 
-
 
 I **ARTIFACT: GOV-2026-002** 
 
@@ -430,7 +375,6 @@ Every procedure type nominated for the fast-track auto-approval list must pass (
 
 Medical Director panel (Dr. Felix Grant), reviewed quarterly, changes logged with rationale. 
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Fast-track list expansion process validated as functioning governance, not uncontrolled scope creep — evidence-driven, panel-owned 
@@ -443,15 +387,12 @@ Medical Director panel (Dr. Felix Grant), reviewed quarterly, changes logged wit
 
 :::
 
-
 ## Stage 5 — THE AUDIT THAT FOUND NOTHING, THEN SOMETHING
 
 *Trusting the retrospective sample when it finally disagrees*
 `Months 8–12 | September 2026–January 2027`
 
-
 Fast-track auto-approval launches 1 September 2026 on the validated 33-procedure list (physical therapy excluded pending stress test). Turnaround for fast-track cases: 4 minutes median. Overall prior auth turnaround falls from 6.2 days to 1.8 days across all case types combined, driven mainly by the Phase 1 documentation agent eliminating fax-loop delay. 
-
 
 :::note[📅 Meeting]
 **🕐 10:00**  📍 *Monday 7 December 2026 | Utilization Management floor*
@@ -461,26 +402,21 @@ Fast-track auto-approval launches 1 September 2026 on the validated 33-procedure
 *Attendees: Amara (EA), Linh (UM), Sam Ortega (Member Advocate)*
 :::
 
-
 > **Sam Ortega** — *Member Advocate / Appeals Lead*
 >
 > I want to raise something from the appeals side, not the audit sample. We’ve had two member appeals this quarter where the underlying case was fast-track auto-approved, then a downstream claims adjudication system flagged a billing mismatch — the auto-approved authorization didn’t match what was ultimately billed. Neither case was in the 5% retrospective sample. 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > That’s useful and it’s exactly the kind of signal a fixed random sample can miss — appeals and billing mismatches are a different, targeted lens on the same population. Can you get me both case files? I want to know if this is a documentation-extraction issue on our side or a provider billing discrepancy unrelated to our system. 
 
-
 > **Linh Tran** — *VP Utilization Management*
 >
 > I pulled them this morning. Both cases: the extraction agent correctly identified the authorized procedure code. In both cases the provider billed a slightly different but related procedure code that wasn’t on the fast-track list. Our system approved the originally requested code correctly; the mismatch happened at the billing stage, after our decision. 
 
-
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > So the agent performed correctly — this is a downstream billing-versus-authorization reconciliation gap, not a flaw in the fast-track decision itself. Good to confirm, but I don’t want to just close this out. I want billing-mismatch rate added as a standing supplementary signal alongside the 5% retrospective clinical audit, specifically because it surfaced two cases the random sample didn’t happen to catch. A random sample and a targeted signal are complementary, not redundant. 
-
 
 :::info[📋 Artifact: OPS-2026-Q4B]
 
@@ -506,7 +442,6 @@ Regulatory turnaround standard (72 hours) met on 96% of all cases, up from an es
 
 :::
 
-
 :::tip[✅ Stage Outcomes]
 
 - ✅ Prior auth turnaround reduced from 6.2 days to 1.8 days overall; fast-track cases resolved in minutes 
@@ -519,12 +454,10 @@ Regulatory turnaround standard (72 hours) met on 96% of all cases, up from an es
 
 :::
 
-
 ## Stage 6 — WHAT DOESN’T MAKE THE FAST-TRACK LIST
 
 *Annual governance review, and the discipline of saying no to expansion*
 `Month 13 | February 2027`
-
 
 :::note[📅 Meeting]
 **🕐 14:00**  📍 *Wednesday 10 February 2027 | Executive Board Room*
@@ -534,31 +467,25 @@ Regulatory turnaround standard (72 hours) met on 96% of all cases, up from an es
 *Attendees: Amara (EA), Ron (CMO), Dave (Compliance), Dr. Grant (Medical Director)*
 :::
 
-
 > **Ron Faulkner** — *Chief Medical Officer*
 >
 > The results speak for themselves. Some board members are now asking about extending fast-track to inpatient authorizations — much bigger cost category, much bigger visibility. 
-
 
 > **Dr. Amara Osei** — *Enterprise AI Architect*
 >
 > I want to be candid about why I’d resist that, not just note it as a future consideration. Every procedure on our current list shares a property: low clinical variability, minimal comorbidity interaction, and a criteria set that reduces cleanly to deterministic logic. Inpatient authorizations are almost definitionally the opposite — high variability, multi-factor clinical judgment, exactly the profile we’ve been deliberately excluding. Extending fast-track there isn’t a scaling exercise, it’s a different problem that would need its own Incubation stage, its own risk assessment, and very likely a different architecture entirely, not just a bigger list. 
 
-
 > **Dave Kowalski** — *Chief Compliance Officer*
 >
 > I’d go further — I think inpatient authorization decision support should stay in the same category we started with: assist the human reviewer, never approve autonomously, at least until we have multiple years of data on the current narrower programme. 
-
 
 > **Dr. Grant** — *Medical Director, external reviewer panel*
 >
 > Agreed from the clinical panel. I’d rather protect the credibility of what we’ve built — a genuinely narrow, well-audited system — than dilute it by stretching into a domain where I can’t honestly promise the same rigor. 
 
-
 > **Ron Faulkner** — *Chief Medical Officer*
 >
 > Understood. I’ll take that back to the board as the recommendation: expand documentation-agent and criteria-mapping decision support to inpatient cases, but no autonomous fast-track there, full stop, pending a dedicated future review. 
-
 
 I **ARTIFACT: RDREC-2027-001** 
 
@@ -577,7 +504,6 @@ Inpatient authorizations carry structurally higher clinical variability and como
 **APPROVED BY** 
 
 Ron Faulkner (CMO), Dave Kowalski (Compliance), Dr. Felix Grant (Medical Director Panel) 
-
 
 :::tip[✅ Stage Outcomes]
 

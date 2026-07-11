@@ -10,7 +10,6 @@ tags: ["interview-prep"]
 doc_type: interview-questions
 target_role: EY AI Architect & Consultant — Interview & ECC AI-First Guide
 ---
-
 ## How to Use This Guide
 
 <!-- converted from EY_AI_Architect_Interview_Guide_1.pdf -->
