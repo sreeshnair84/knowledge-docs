@@ -8,27 +8,27 @@ source_type: converted-pdf
 source_file: "06-Operating-Model-Maturity-Roadmap.pdf"
 tags: ["ai-security", "operating-model", "maturity", "roadmap"]
 ---
-# **Operating Model, Maturity Model & 24Month Roadmap** 
+# **Operating Model, Maturity Model & 24Month Roadmap**
 
-Enterprise Agent Operating Model, Maturity Levels, Security Review Checklists, Principal Architect Interview Guide, and the Learning Path 
+Enterprise Agent Operating Model, Maturity Levels, Security Review Checklists, Principal Architect Interview Guide, and the Learning Path
 
-**Document Code:** EASA-06 **Version:** 1.0 **Date:** June 2026 
+**Document Code:** EASA-06 **Version:** 1.0 **Date:** June 2026
 
-**Scope:** Domain 22 & Program Deliverables 
+**Scope:** Domain 22 & Program Deliverables
 
-_Enterprise Agentic AI Security Architect (2026–2030) Master Research Program_ 
+*Enterprise Agentic AI Security Architect (2026–2030) Master Research Program*
 
-## **Table of Contents** 
+## **Table of Contents**
 
-## **Executive Summary** 
+## **Executive Summary**
 
-The first five volumes of this program answered "what does a secure, governed agentic AI ecosystem look like." This volume answers the harder organizational question: who builds it, who runs it, how is success measured, and in what order should an enterprise actually do this work given finite budget and finite people. It closes the program with the operating model (Domain 22), a five-level maturity model the enterprise can use to self-assess and to set a realistic multi-year target, a consolidated set of review checklists, an interview guide for hiring into this role, and a curated learning path — because the most sophisticated reference architecture in the world is only as good as the organization's ability to staff, govern, and continuously operate it. 
+The first five volumes of this program answered "what does a secure, governed agentic AI ecosystem look like." This volume answers the harder organizational question: who builds it, who runs it, how is success measured, and in what order should an enterprise actually do this work given finite budget and finite people. It closes the program with the operating model (Domain 22), a five-level maturity model the enterprise can use to self-assess and to set a realistic multi-year target, a consolidated set of review checklists, an interview guide for hiring into this role, and a curated learning path — because the most sophisticated reference architecture in the world is only as good as the organization's ability to staff, govern, and continuously operate it.
 
-## **Domain 22 — Enterprise Agent Operating Model** 
+## **Domain 22 — Enterprise Agent Operating Model**
 
-No single team owns agentic AI security end to end, and attempting to build one monolithic team is a common and costly early mistake. The operating model this program specifies distributes accountability across five functions, deliberately mirroring how mature organizations already split traditional cybersecurity, cloud platform engineering, and data governance — because reporting agentic AI risk through entirely new, parallel structures tends to isolate it from the rest of the enterprise's risk management muscle rather than integrating with it. 
+No single team owns agentic AI security end to end, and attempting to build one monolithic team is a common and costly early mistake. The operating model this program specifies distributes accountability across five functions, deliberately mirroring how mature organizations already split traditional cybersecurity, cloud platform engineering, and data governance — because reporting agentic AI risk through entirely new, parallel structures tends to isolate it from the rest of the enterprise's risk management muscle rather than integrating with it.
 
-### **22.1 The Five Functions** 
+### **22.1 The Five Functions**
 
 |**Functon**|**Primary Mandate**|**Reports Into / Coordinates With**|
 |---|---|---|
@@ -39,7 +39,7 @@ No single team owns agentic AI security end to end, and attempting to build one 
 |AI SOC|Contnuous monitoring, detecton, and incident<br>response (Volume 4, Domain 10), including<br>operatng the kill-switch framework|Reports to the AI CISO, typically<br>integrated into or co-located with the<br>existng enterprise SOC|
 |Red Team|Adversarial testng (Volume 4, Domain 12),<br>feeding purple-team fndings back into the AI<br>SOC's detecton logic|Reports to the AI CISO, organizatonally<br>independent from the AI Security Ofce<br>to preserve adversarial objectvity|
 
-### **22.2 RACI — Core Program Activities** 
+### **22.2 RACI — Core Program Activities**
 
 |**Actvity**|**AI Gov.**<br>**Board**|**AI Security**<br>**Ofce**|**Agent Ops**|**Platorm**<br>**Eng.**|**AI SOC**|**Red Team**|
 |---|---|---|---|---|---|---|
@@ -56,9 +56,9 @@ No single team owns agentic AI security end to end, and attempting to build one 
 |Regulatory fling / incident<br>reportng|A|C|I|I|R|I|
 |Quarterly risk reportng to<br>board|A/R|C|I|I|C|I|
 
-R = Responsible, A = Accountable, C = Consulted, I = Informed. 
+R = Responsible, A = Accountable, C = Consulted, I = Informed.
 
-### **22.3 KPIs** 
+### **22.3 KPIs**
 
 |**KPI**|**Target Directon**|**Primary Source**|
 |---|---|---|
@@ -71,9 +71,9 @@ R = Responsible, A = Accountable, C = Consulted, I = Informed.
 |% of MCP servers / A2A peers passing gateway<br>validaton on frst registraton atempt|Track trend, not a<br>target directon in<br>isolaton|MCP/A2A gateway logs (Volume 2)|
 |Framework crosswalk coverage (regulatons with<br>current, evidenced control mapping)|↑ toward 100%|AI Governance Board (Volume 3, Domain<br>11)|
 
-## **Enterprise Agent Maturity Model (Levels 1–5)** 
+## **Enterprise Agent Maturity Model (Levels 1–5)**
 
-Use this model for honest self-assessment, not for marketing the program internally. Most enterprises deploying agents in production today, including ones with significant AI investment, sit at Level 1 or the early part of Level 2 — current CSA and NIST research on the state of agent identity (Volume 2, Domain 2) is consistent on this point: authentication is largely solved with static credentials, while authorization, lifecycle management, and governance are not. 
+Use this model for honest self-assessment, not for marketing the program internally. Most enterprises deploying agents in production today, including ones with significant AI investment, sit at Level 1 or the early part of Level 2 — current CSA and NIST research on the state of agent identity (Volume 2, Domain 2) is consistent on this point: authentication is largely solved with static credentials, while authorization, lifecycle management, and governance are not.
 
 |**Lev**<br>**el**|**Designaton**|**Characteristc State**|**Identty Patern**|**Governance Patern**|
 |---|---|---|---|---|
@@ -87,141 +87,141 @@ Use this model for honest self-assessment, not for marketing the program interna
 |---|---|---|---|---|
 |||rather than only consuming<br>them|||
 
-## **Security Review Checklists** 
+## **Security Review Checklists**
 
-These are intentionally condensed to the highest-leverage items from each volume — gate checklists for the two moments that matter most: approving a new agent for production, and approving a new MCP server or A2A counterparty for connection. Each should be backed by the full control detail in the referenced volume; treat this as the pass/fail gate, not the complete control set. 
+These are intentionally condensed to the highest-leverage items from each volume — gate checklists for the two moments that matter most: approving a new agent for production, and approving a new MCP server or A2A counterparty for connection. Each should be backed by the full control detail in the referenced volume; treat this as the pass/fail gate, not the complete control set.
 
-### **New Agent Production Readiness Checklist** 
+### **New Agent Production Readiness Checklist**
 
-- **☐ Identity —** Agent has a SPIFFE SVID or equivalent workload identity; no static, long-lived credentials present (Volume 2, Domain 2). 
+- **☐ Identity —** Agent has a SPIFFE SVID or equivalent workload identity; no static, long-lived credentials present (Volume 2, Domain 2).
 
-- **☐ Registry —** Agent Registry entry complete: purpose, sponsor, autonomy level, scoped tools (Volume 3, Domain 14). 
+- **☐ Registry —** Agent Registry entry complete: purpose, sponsor, autonomy level, scoped tools (Volume 3, Domain 14).
 
-- **☐ Least Agency —** Autonomy level matches a documented risk classification; no standing access beyond what the level requires (Volume 1, Domain 1; Volume 3, Domain 14). 
+- **☐ Least Agency —** Autonomy level matches a documented risk classification; no standing access beyond what the level requires (Volume 1, Domain 1; Volume 3, Domain 14).
 
-- **☐ Threat model —** MAESTRO-based threat model completed and reviewed for this agent's architecture pattern (Volume 1, Domain 1.5). 
+- **☐ Threat model —** MAESTRO-based threat model completed and reviewed for this agent's architecture pattern (Volume 1, Domain 1.5).
 
-- **☐ Runtime isolation —** Sandboxing tier assigned matches the agent's trust-boundary exposure (Volume 1, Domain 7.1). 
+- **☐ Runtime isolation —** Sandboxing tier assigned matches the agent's trust-boundary exposure (Volume 1, Domain 7.1).
 
-- **☐ Tool scope —** Every tool/MCP connection passes gateway validation; no direct, unmediated credentials held by the agent (Volume 2, Domain 5.4). 
+- **☐ Tool scope —** Every tool/MCP connection passes gateway validation; no direct, unmediated credentials held by the agent (Volume 2, Domain 5.4).
 
-- **☐ Memory governance —** Memory writes are classified and provenance-tagged at write time; retention policy assigned (Volume 4, Domain 9.3). 
+- **☐ Memory governance —** Memory writes are classified and provenance-tagged at write time; retention policy assigned (Volume 4, Domain 9.3).
 
-- **☐ Human oversight —** Approval gates defined for any irreversible or high-consequence action regardless of trust score (Volume 3, Domain 13.3). 
+- **☐ Human oversight —** Approval gates defined for any irreversible or high-consequence action regardless of trust score (Volume 3, Domain 13.3).
 
-- **☐ Observability —** Agent is instrumented to the OpenTelemetry/OpenLLMetry standard and visible to the AI SOC (Volume 4, Domain 10). 
+- **☐ Observability —** Agent is instrumented to the OpenTelemetry/OpenLLMetry standard and visible to the AI SOC (Volume 4, Domain 10).
 
-- **☐ Reliability —** SLIs/SLOs defined with an error-budget-triggered autonomy downgrade path (Volume 4, Domain 19.2). 
+- **☐ Reliability —** SLIs/SLOs defined with an error-budget-triggered autonomy downgrade path (Volume 4, Domain 19.2).
 
-- **☐ FinOps —** Budget envelope and spend-velocity anomaly detection configured (Volume 5, Domain 15.2). 
+- **☐ FinOps —** Budget envelope and spend-velocity anomaly detection configured (Volume 5, Domain 15.2).
 
-- **☐ Kill switch —** Tested, identity-layer kill-switch capability confirmed before go-live (Volume 3, Domain 14.3). 
+- **☐ Kill switch —** Tested, identity-layer kill-switch capability confirmed before go-live (Volume 3, Domain 14.3).
 
-- **☐ Compliance crosswalk —** Agent's risk tier mapped against applicable regulation (EU AI Act Annex III high-risk status, DORA, PCI DSS, GDPR memory implications) (Volume 3, Domain 3.6). 
+- **☐ Compliance crosswalk —** Agent's risk tier mapped against applicable regulation (EU AI Act Annex III high-risk status, DORA, PCI DSS, GDPR memory implications) (Volume 3, Domain 3.6).
 
-### **New MCP Server / A2A Counterparty Connection Checklist** 
+### **New MCP Server / A2A Counterparty Connection Checklist**
 
-- **☐ Provenance —** Server/agent publisher identity verified; for A2A, Agent Card signature cryptographically verified against the claimed domain (Volume 2, Domain 6.1). 
+- **☐ Provenance —** Server/agent publisher identity verified; for A2A, Agent Card signature cryptographically verified against the claimed domain (Volume 2, Domain 6.1).
 
-- **☐ Scanning —** Tool definitions and descriptions scanned for hidden-instruction / poisoning patterns prior to registration (Volume 2, Domain 5.3). 
+- **☐ Scanning —** Tool definitions and descriptions scanned for hidden-instruction / poisoning patterns prior to registration (Volume 2, Domain 5.3).
 
-- **☐ Schema validation —** Discovery-time and invocation-time schema validation both configured at the gateway, not discovery-time only (Volume 2, Domain 5.4). 
+- **☐ Schema validation —** Discovery-time and invocation-time schema validation both configured at the gateway, not discovery-time only (Volume 2, Domain 5.4).
 
-- **☐ Transport —** mTLS enforced; unauthenticated transport rejected by default policy (Volume 2, Domains 5.4 and 6.3). 
+- **☐ Transport —** mTLS enforced; unauthenticated transport rejected by default policy (Volume 2, Domains 5.4 and 6.3).
 
-- **☐ Tool signing —** Tool signatures verified where supported; re-verification triggers configured to catch "rug pull" post-install modification (Volume 2, Domain 5.2). 
+- **☐ Tool signing —** Tool signatures verified where supported; re-verification triggers configured to catch "rug pull" post-install modification (Volume 2, Domain 5.2).
 
-- **☐ Tenant isolation —** Multi-tenant servers confirmed to enforce session and credential isolation between tenants (Volume 2, Domain 5.2). 
+- **☐ Tenant isolation —** Multi-tenant servers confirmed to enforce session and credential isolation between tenants (Volume 2, Domain 5.2).
 
-- **☐ Trust broker —** External A2A counterparty has an assigned trust score and recorded trust relationship before any production task delegation (Volume 3, Domain 13.2). 
+- **☐ Trust broker —** External A2A counterparty has an assigned trust score and recorded trust relationship before any production task delegation (Volume 3, Domain 13.2).
 
-- **☐ Spend caps —** Per-task spend caps configured for any counterparty connection capable of initiating cost or financial transactions (Volume 5, Domains 15 and 16). 
+- **☐ Spend caps —** Per-task spend caps configured for any counterparty connection capable of initiating cost or financial transactions (Volume 5, Domains 15 and 16).
 
-- **☐ Audit logging —** Tamper-evident logging confirmed operational for the new connection before production traffic flows (Volume 2, Domains 5.4 and 6.3). 
+- **☐ Audit logging —** Tamper-evident logging confirmed operational for the new connection before production traffic flows (Volume 2, Domains 5.4 and 6.3).
 
-- **☐ Supply chain —** Component recorded in the AI BOM with applicable provenance documentation (Model Card / Agent Card) (Volume 3, Domain 17). 
+- **☐ Supply chain —** Component recorded in the AI BOM with applicable provenance documentation (Model Card / Agent Card) (Volume 3, Domain 17).
 
-## **Principal Architect Interview Guide** 
+## **Principal Architect Interview Guide**
 
-These questions are designed to distinguish candidates who have absorbed current best practice from those who can reason architecturally about a fast-moving, still-converging field — the latter matters more, because much of the specific tooling and even some of the standards referenced in this program will have moved by the time a hire is six months into the role. 
+These questions are designed to distinguish candidates who have absorbed current best practice from those who can reason architecturally about a fast-moving, still-converging field — the latter matters more, because much of the specific tooling and even some of the standards referenced in this program will have moved by the time a hire is six months into the role.
 
-#### **Architecture & Threat Modeling** 
+#### **Architecture & Threat Modeling**
 
-1. Walk me through how you would threat-model a multi-agent system using MAESTRO, and specifically describe a cross-layer threat that a single-layer review would miss. 
+1. Walk me through how you would threat-model a multi-agent system using MAESTRO, and specifically describe a cross-layer threat that a single-layer review would miss.
 
-2. An agent has a clean identity, a clean trust score, and has behaved correctly for six months. Describe a realistic attack path that still succeeds against this agent, and what control would have caught it. 
+2. An agent has a clean identity, a clean trust score, and has behaved correctly for six months. Describe a realistic attack path that still succeeds against this agent, and what control would have caught it.
 
-3. When would you choose Firecracker over gVisor over WASM for sandboxing an agent's tool execution, and what's the wrong reason to choose one over another? 
+3. When would you choose Firecracker over gVisor over WASM for sandboxing an agent's tool execution, and what's the wrong reason to choose one over another?
 
-#### **Identity & Trust** 
+#### **Identity & Trust**
 
-1. Explain the difference between authenticating a workload and authorizing an action, and describe a real architecture where conflating the two created a vulnerability. 
+1. Explain the difference between authenticating a workload and authorizing an action, and describe a real architecture where conflating the two created a vulnerability.
 
-2. How would you design compound identity for an agent acting on behalf of a suspended user account, and what should happen? 
+2. How would you design compound identity for an agent acting on behalf of a suspended user account, and what should happen?
 
-3. What is the structural limitation of SPIFFE for agent security, and what has to be layered on top of it? 
+3. What is the structural limitation of SPIFFE for agent security, and what has to be layered on top of it?
 
-#### **MCP / A2A** 
+#### **MCP / A2A**
 
-1. Describe tool poisoning in your own words, and explain why discovery-time schema validation alone is insufficient to prevent it. 
+1. Describe tool poisoning in your own words, and explain why discovery-time schema validation alone is insufficient to prevent it.
 
-2. A vendor pitches an MCP server with no gateway in front of it, claiming their server is "secure by design." What is your response, and what would you require before connecting it? 
+2. A vendor pitches an MCP server with no gateway in front of it, claiming their server is "secure by design." What is your response, and what would you require before connecting it?
 
-3. What changed in A2A v1.0 that materially improved enterprise trust in the protocol, and what gap still remains even with that change? 
+3. What changed in A2A v1.0 that materially improved enterprise trust in the protocol, and what gap still remains even with that change?
 
-#### **Governance & Judgment** 
+#### **Governance & Judgment**
 
-1. A business unit wants to deploy an L4 (full autonomy) agent against a use case you believe should be L2. Walk me through how you'd handle that conversation. 
+1. A business unit wants to deploy an L4 (full autonomy) agent against a use case you believe should be L2. Walk me through how you'd handle that conversation.
 
-2. How do you decide which emerging framework (a new OWASP sub-project, a new IETF draft, a new vendor "standard") is worth building architecture around versus tracking and waiting? 
+2. How do you decide which emerging framework (a new OWASP sub-project, a new IETF draft, a new vendor "standard") is worth building architecture around versus tracking and waiting?
 
-3. Describe an incident where a reliability problem and a security problem were actually the same underlying issue, and how your operating model would surface that connection rather than splitting it across two teams. 
+3. Describe an incident where a reliability problem and a security problem were actually the same underlying issue, and how your operating model would surface that connection rather than splitting it across two teams.
 
-## **24-Month Learning & Implementation Roadmap** 
+## **24-Month Learning & Implementation Roadmap**
 
-This roadmap is sequenced for an enterprise architect or security architect building both their own expertise and the organization's capability simultaneously — the realistic situation most readers of this program are in, rather than joining an already-mature function. 
+This roadmap is sequenced for an enterprise architect or security architect building both their own expertise and the organization's capability simultaneously — the realistic situation most readers of this program are in, rather than joining an already-mature function.
 
-### **Months 1–3: Foundation** 
+### **Months 1–3: Foundation**
 
-- Complete Volume 1 (Foundations & Reference Architecture) and produce the Agent Security Architecture Repository for at least one business unit as a pilot. 
+- Complete Volume 1 (Foundations & Reference Architecture) and produce the Agent Security Architecture Repository for at least one business unit as a pilot.
 
-- Stand up an Agent Registry, even a minimal one, and run a discovery exercise to find every agent currently running in the enterprise — the inventory gap is almost always larger than expected. 
+- Stand up an Agent Registry, even a minimal one, and run a discovery exercise to find every agent currently running in the enterprise — the inventory gap is almost always larger than expected.
 
-- Begin or accelerate ISO 42001 gap analysis (Volume 3, Domain 3.6), particularly if any system may fall under EU AI Act Annex III high-risk classification given the August 2026 enforcement milestone. 
+- Begin or accelerate ISO 42001 gap analysis (Volume 3, Domain 3.6), particularly if any system may fall under EU AI Act Annex III high-risk classification given the August 2026 enforcement milestone.
 
-### **Months 4–9: Identity & Protocol Security** 
+### **Months 4–9: Identity & Protocol Security**
 
-- Deploy or extend a SPIFFE/SPIRE trust domain to cover agent workloads (Volume 2, Domain 2). 
+- Deploy or extend a SPIFFE/SPIRE trust domain to cover agent workloads (Volume 2, Domain 2).
 
-- Stand up an MCP gateway with the five-stage validation pipeline (Volume 2, Domain 5.4) for at least the highest-risk tool integrations. 
+- Stand up an MCP gateway with the five-stage validation pipeline (Volume 2, Domain 5.4) for at least the highest-risk tool integrations.
 
-- Establish the AI Governance Board and produce the first version of the framework crosswalk (Volume 3, Domains 3.6 and 11). 
+- Establish the AI Governance Board and produce the first version of the framework crosswalk (Volume 3, Domains 3.6 and 11).
 
-- Define the five-level autonomy taxonomy and retroactively classify every registered agent (Volume 3, Domain 14.2). 
+- Define the five-level autonomy taxonomy and retroactively classify every registered agent (Volume 3, Domain 14.2).
 
-### **Months 10–15: Operations & Resilience** 
+### **Months 10–15: Operations & Resilience**
 
-- Stand up the AI SOC's cross-surface correlation capability, even in an early form, on top of an existing observability platform (Volume 4, Domain 10). 
+- Stand up the AI SOC's cross-surface correlation capability, even in an early form, on top of an existing observability platform (Volume 4, Domain 10).
 
-- Run the first red team exercise mapped explicitly against the OWASP ASI Top 10, and close the loop with the first purple-team detection patterns (Volume 4, Domain 12). 
+- Run the first red team exercise mapped explicitly against the OWASP ASI Top 10, and close the loop with the first purple-team detection patterns (Volume 4, Domain 12).
 
-- Define and begin tracking the first Agent Reliability Engineering SLIs/SLOs (Volume 4, Domain 19). 
+- Define and begin tracking the first Agent Reliability Engineering SLIs/SLOs (Volume 4, Domain 19).
 
-- Build and test the unified kill-switch / circuit-breaker mechanism spanning both security and FinOps triggers (Volume 5, Domain 15.2). 
+- Build and test the unified kill-switch / circuit-breaker mechanism spanning both security and FinOps triggers (Volume 5, Domain 15.2).
 
-### **Months 16–24: Scale & Future-Proofing** 
+### **Months 16–24: Scale & Future-Proofing**
 
-- Extend the A2A gateway and trust-broker infrastructure to cover external counterparties, if the enterprise's use cases require cross-organization agent collaboration (Volume 2, Domain 6.3; Volume 3, Domain 13.2). 
+- Extend the A2A gateway and trust-broker infrastructure to cover external counterparties, if the enterprise's use cases require cross-organization agent collaboration (Volume 2, Domain 6.3; Volume 3, Domain 13.2).
 
-- Pilot delegated agent spending under AP2 or an equivalent payment-mandate protocol for a bounded, low-risk use case, with full FinOps and cognitive-security controls in place first (Volume 5, Domain 16). 
+- Pilot delegated agent spending under AP2 or an equivalent payment-mandate protocol for a bounded, low-risk use case, with full FinOps and cognitive-security controls in place first (Volume 5, Domain 16).
 
-- Begin architecting crypto-agility into every new identity, MCP, A2A, and payment-mandate component (Volume 5, Domain 21) — not a full PQC migration, but ensuring nothing built in this window becomes a forklift-upgrade liability later. 
+- Begin architecting crypto-agility into every new identity, MCP, A2A, and payment-mandate component (Volume 5, Domain 21) — not a full PQC migration, but ensuring nothing built in this window becomes a forklift-upgrade liability later.
 
-- Conduct a full maturity-model self-assessment against the five-level model in this volume and set the explicit, board-approved target maturity level for the following 24 months. 
+- Conduct a full maturity-model self-assessment against the five-level model in this volume and set the explicit, board-approved target maturity level for the following 24 months.
 
-## **Certifications, Standards, and Communities to Track** 
+## **Certifications, Standards, and Communities to Track**
 
-### **Certifications** 
+### **Certifications**
 
 |**Certfcaton**|**Focus**|**Best Fit**|
 |---|---|---|
@@ -231,41 +231,40 @@ This roadmap is sequenced for an enterprise architect or security architect buil
 |||GRC professionals, privacy<br>|
 |AIGP (AI Governance Professional,<br>IAPP)|Policy, compliance, and risk management<br>rather than technical security|ofcers, and AI Governance<br>Board members rather than<br>hands-on architects|
 
-AI security roles are commanding meaningfully elevated compensation as of 2026, reported in the roughly $150,000–$290,000 range depending on seniority and specialization, reflecting both the acute skills shortage and the speed at which the field is professionalizing. 
+AI security roles are commanding meaningfully elevated compensation as of 2026, reported in the roughly $150,000–$290,000 range depending on seniority and specialization, reflecting both the acute skills shortage and the speed at which the field is professionalizing.
 
-### **Standards Bodies and Initiatives to Track Directly** 
+### **Standards Bodies and Initiatives to Track Directly**
 
-- OWASP GenAI Security Project — genai.owasp.org — primary source for the ASI Top 10, the emerging MCP Top 10, the Agentic Skills Top 10, and the AIBOM Generator initiative. 
+- OWASP GenAI Security Project — genai.owasp.org — primary source for the ASI Top 10, the emerging MCP Top 10, the Agentic Skills Top 10, and the AIBOM Generator initiative.
 
-- Cloud Security Alliance — the MAESTRO framework and ongoing CSA research notes on agent identity and NHI. 
+- Cloud Security Alliance — the MAESTRO framework and ongoing CSA research notes on agent identity and NHI.
 
-- NIST AI Agent Standards Initiative and NCCoE agent identity concept paper — track for the eventual interoperability profile (expected Q4 2026 draft). 
+- NIST AI Agent Standards Initiative and NCCoE agent identity concept paper — track for the eventual interoperability profile (expected Q4 2026 draft).
 
-- IETF WIMSE working group — workload-identity-to-workload-identity authentication standards underpinning the AIMS draft architecture (Volume 2, Domain 2.3). 
+- IETF WIMSE working group — workload-identity-to-workload-identity authentication standards underpinning the AIMS draft architecture (Volume 2, Domain 2.3).
 
-- Linux Foundation Agent2Agent Protocol Project — the neutral governance body for A2A since Google's June 2025 donation. 
+- Linux Foundation Agent2Agent Protocol Project — the neutral governance body for A2A since Google's June 2025 donation.
 
-- FIDO Alliance Payments Technical Working Group — now governing AP2's standards-track evolution, including its post-quantum profile. 
+- FIDO Alliance Payments Technical Working Group — now governing AP2's standards-track evolution, including its post-quantum profile.
 
-- MITRE ATLAS — atlas.mitre.org — continuously updated adversary-tactics knowledge base for AI-specific techniques. 
+- MITRE ATLAS — atlas.mitre.org — continuously updated adversary-tactics knowledge base for AI-specific techniques.
 
-### **Open-Source Tooling and Repositories Worth Evaluating** 
+### **Open-Source Tooling and Repositories Worth Evaluating**
 
-- SPIFFE/SPIRE (CNCF) — the reference workload-identity implementation underpinning Volume 2's identity architecture. 
+- SPIFFE/SPIRE (CNCF) — the reference workload-identity implementation underpinning Volume 2's identity architecture.
 
-- OWASP MCP-Scan and equivalent scanners (Cisco mcp-scanner, Snyk agent-scan) — pre-deployment MCP tool scanning. 
+- OWASP MCP-Scan and equivalent scanners (Cisco mcp-scanner, Snyk agent-scan) — pre-deployment MCP tool scanning.
 
-- OpenLLMetry / Traceloop — vendor-neutral OpenTelemetry instrumentation for agent and LLM traces. 
+- OpenLLMetry / Traceloop — vendor-neutral OpenTelemetry instrumentation for agent and LLM traces.
 
-- MAESTRO threat-modeling tooling (Cloud Security Alliance GitHub) — AI-assisted, layer-by-layer threat identification aligned to the seven-layer reference architecture. 
+- MAESTRO threat-modeling tooling (Cloud Security Alliance GitHub) — AI-assisted, layer-by-layer threat identification aligned to the seven-layer reference architecture.
 
-- Promptfoo and DeepTeam — open-source red-teaming frameworks with test suites mapped directly to the OWASP ASI Top 10. 
+- Promptfoo and DeepTeam — open-source red-teaming frameworks with test suites mapped directly to the OWASP ASI Top 10.
 
-- Open Policy Agent (OPA) and Cedar — the two leading policy-engine choices for the centralized authorization layer specified throughout this program. 
+- Open Policy Agent (OPA) and Cedar — the two leading policy-engine choices for the centralized authorization layer specified throughout this program.
 
-## **Closing Note: How to Use This Program** 
+## **Closing Note: How to Use This Program**
 
-Six volumes, twenty-two domains, and a stack of checklists are only useful if they change what gets built and funded. The single most consequential decision a reader of this program can make is the one flagged at the close of Volume 2: fund the identity substrate first. Almost everything else in this program — MCP gateway policy, A2A trust brokering, agent registry enforcement, FinOps circuit breakers, even post-quantum migration — becomes simpler, cheaper, and more defensible once every agent, tool, and peer in the ecosystem carries a verifiable, ephemeral, centrally governed identity. Build that first, build the governance fabric around it second, and treat the remaining domains in this program as the detailed specification for what to do once that foundation is in place — not as a checklist to attack in parallel from a standing start. 
+Six volumes, twenty-two domains, and a stack of checklists are only useful if they change what gets built and funded. The single most consequential decision a reader of this program can make is the one flagged at the close of Volume 2: fund the identity substrate first. Almost everything else in this program — MCP gateway policy, A2A trust brokering, agent registry enforcement, FinOps circuit breakers, even post-quantum migration — becomes simpler, cheaper, and more defensible once every agent, tool, and peer in the ecosystem carries a verifiable, ephemeral, centrally governed identity. Build that first, build the governance fabric around it second, and treat the remaining domains in this program as the detailed specification for what to do once that foundation is in place — not as a checklist to attack in parallel from a standing start.
 
-_This program reflects the state of a genuinely fast-moving field as of June 2026. Treat the architectural patterns — identity-first design, centralized gateways, layered threat modeling, autonomy earned rather than granted by default — as durable. Treat the specific vendor names, protocol version numbers, and standards-body timelines as a snapshot to be re-verified against current sources before any major investment decision._ 
-
+*This program reflects the state of a genuinely fast-moving field as of June 2026. Treat the architectural patterns — identity-first design, centralized gateways, layered threat modeling, autonomy earned rather than granted by default — as durable. Treat the specific vendor names, protocol version numbers, and standards-body timelines as a snapshot to be re-verified against current sources before any major investment decision.*

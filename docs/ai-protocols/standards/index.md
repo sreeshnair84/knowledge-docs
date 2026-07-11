@@ -37,7 +37,7 @@ covers_version: \"as of 2026-07-10\"
 ## MCP — Model Context Protocol
 
 | Attribute | Detail |
-|---|---|
+| --- | --- |
 | **Governance** | Linux Foundation Agentic AI Foundation (AAIF), since Dec 9, 2025 |
 | **Spec status** | 2026-07-28 stateless Release Candidate; final publishes July 28, 2026 |
 | **Adoption** | 10,000+ public servers; ~110M monthly SDK downloads |
@@ -54,7 +54,7 @@ For the deep-dive implementation guide, see [MCP Deep Guide](../mcp/index.md) an
 ## A2A — Agent-to-Agent Protocol
 
 | Attribute | Detail |
-|---|---|
+| --- | --- |
 | **Governance** | Linux Foundation (Agent2Agent Project), since June 2025 |
 | **Spec status** | v1.0 stable (April 2026) |
 | **Adoption** | 150+ supporting organizations; GA in Copilot Studio, Microsoft Foundry, Bedrock AgentCore |
@@ -66,7 +66,7 @@ For the deep-dive implementation guide, see [MCP Deep Guide](../mcp/index.md) an
 ### MCP vs A2A — Quick Decision
 
 | Question | Answer | Use |
-|---|---|---|
+| --- | --- | --- |
 | Agent calling an API, database, or tool? | Tool integration | **MCP** |
 | Agent delegating a task to another agent? | Agent collaboration | **A2A** |
 | Agent discovering what another agent can do? | Capability discovery | **A2A** (Agent Card at `/.well-known/agent.json`) |
@@ -78,7 +78,7 @@ For the deep-dive implementation guide, see [MCP Deep Guide](../mcp/index.md) an
 ## Protocol Convergence Landscape (July 2026)
 
 | Protocol | Layer | Status | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | MCP | Agent ↔ Tool | Stateless RC | Dominant; all major AI platforms support it |
 | A2A | Agent ↔ Agent | v1.0 stable | 150+ orgs; GA in major platforms |
 | ACP | Agent ↔ Agent (alt) | Draft | BeeAI / Linux Foundation; convergence with A2A ongoing |

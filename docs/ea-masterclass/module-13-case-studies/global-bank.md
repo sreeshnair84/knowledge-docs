@@ -31,7 +31,7 @@ GlobalFirst Bank (name anonymised) operates across 40 countries with consolidate
 **Regulatory environment**
 
 | Framework | Scope | EA Impact |
-|---|---|---|
+| --- | --- | --- |
 | Basel III / IV | Capital adequacy, risk-weighted assets, credit risk models | All AI credit models require independent validation before production use |
 | Fed SR 11-7 | Model risk management guidance (US operations) | Mandates model inventory, validation, ongoing monitoring, and explainability documentation |
 | OCC Guidance 2021-10 | Third-party risk for AI/ML vendors | Cloud AI vendors require risk tiering, penetration testing, and contractual audit rights |
@@ -54,7 +54,7 @@ The fintech lending landscape shifted materially between 2022 and 2025. Platform
 The 18-day average commercial loan origination cycle was not a single bottleneck — it was the cumulative result of eight sequential manual handoffs. The EA team conducted a value-stream mapping exercise across six representative branches over eight weeks.
 
 | Step | Avg Duration | Primary Bottleneck |
-|---|---|---|
+| --- | --- | --- |
 | Application intake and document collection | 2.1 days | Incomplete submissions requiring follow-up |
 | Document verification and indexing | 3.4 days | Manual review by credit analysts (14 FTE per major branch) |
 | Financial spreading (income statements, balance sheets) | 2.8 days | Spreadsheet-based; no automation |
@@ -87,7 +87,7 @@ GlobalFirst's commercial banking revenue team estimated that $340M in annual com
 The EA team was directed by the CTO to evaluate at least three alternatives before proposing an AI-led solution.
 
 | Alternative | Description | Reason Rejected |
-|---|---|---|
+| --- | --- | --- |
 | Offshore processing centre | Expand existing Manila and Hyderabad teams by 200 FTE to absorb document review and spreading workload | Addressed document processing (Steps 2–3) but not decision speed; cycle time reduction estimated at only 3–4 days; FTE cost savings marginal against recruitment and training costs; SR 11-7 third-party risk concerns for offshore credit data handling |
 | Robotic Process Automation (RPA) | Deploy RPA bots to automate data extraction from structured PDFs and transfer data between legacy systems | RPA requires structured, predictable inputs; commercial lending documents are highly variable (borrower-provided financials, third-party appraisals, environmental reports); fragility rate in pilots exceeded 30%; insufficient ROI |
 | Traditional BPM / workflow platform | Implement a modern BPM platform to orchestrate existing manual steps and reduce handoff latency | Reduces coordination friction but does not reduce per-task labour; cycle time reduction estimated at 2–4 days; does not address credit committee throughput constraint |
@@ -205,7 +205,7 @@ The EA team recommended the AI path with an explicit acknowledgement that it car
 ### Cost Structure
 
 | Category | Year 1 | Year 2 | Year 3 | Total |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | AI platform licences (document AI, ML ops) | $1.8M | $1.4M | $1.4M | $4.6M |
 | Systems integration (API adapter, data fabric) | $2.1M | $0.9M | $0.3M | $3.3M |
 | SR 11-7 model validation (independent firm) | $0.8M | $0.4M | $0.2M | $1.4M |
@@ -216,7 +216,7 @@ The EA team recommended the AI path with an explicit acknowledgement that it car
 ### Benefits Summary
 
 | Benefit Category | Year 1 | Year 2 | Year 3 | 5-Year Total |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Commercial revenue retained (conservative) | $28M | $52M | $64M | $210M |
 | FTE reallocation (credit analyst time to higher-value work) | $3.2M | $6.8M | $8.1M | $32M |
 | Error reduction (credit memo rework, regulatory findings) | $0.4M | $1.1M | $1.5M | $6M |
@@ -290,7 +290,7 @@ Month 22-24: LoanTrak API adapter upgrade to write mode,
 
 !!! info "SR 11-7 Model Risk Management"
     All AI models used in credit decisioning are subject to GlobalFirst's Model Risk Management (MRM) policy, which implements the Fed's SR 11-7 guidance. The following controls apply:
-    
+
     - **Model inventory registration:** Both the document AI and credit scoring models were registered in the bank's model inventory prior to any production use.
     - **Independent validation:** An external firm (Deloitte Financial Advisory) performed pre-deployment validation, including conceptual soundness review, outcome analysis on holdout data, and sensitivity testing.
     - **Ongoing monitoring:** Monthly performance reports submitted to the MRM Committee. Automatic model suspension triggered if Gini coefficient drops more than 5 points from baseline.
@@ -298,14 +298,14 @@ Month 22-24: LoanTrak API adapter upgrade to write mode,
 
 !!! info "Architecture Review Board (ARB) Requirements"
     The ARB imposed three mandatory requirements on the AI platform:
-    
+
     1. **Explainability mandate:** Every credit recommendation must produce a human-readable SHAP explanation. Black-box recommendations are prohibited.
     2. **Audit trail:** Every model inference must be logged with input features, output score, confidence interval, and SHAP values. Retention period: 7 years (to match credit record retention policy).
     3. **Fallback mode:** The system must support a manual fallback mode in which analysts revert to the pre-AI process if the AI platform is unavailable. LoanTrak must remain independently operable.
 
 !!! info "Responsible AI Board — Bias Review"
     Credit scoring models carrying fair lending implications are subject to review by GlobalFirst's Responsible AI Board (RAB). For this programme:
-    
+
     - Pre-deployment disparate impact analysis was performed across protected classes (race, gender, national origin proxied via HMDA-equivalent analysis).
     - The model was retrained with fairness constraints applied to ensure approval rate disparities between demographic groups remained within regulatory tolerance thresholds.
     - The RAB approved deployment with a condition: quarterly disparate impact monitoring reports to be submitted to the RAB for the first two years.
@@ -324,7 +324,7 @@ Month 22-24: LoanTrak API adapter upgrade to write mode,
 ### Financial Outcomes (Year 1 Post Full Rollout)
 
 | Metric | Target | Achieved |
-|---|---|---|
+| --- | --- | --- |
 | Origination cycle time (mean) | 4 days | 4.1 days |
 | Commercial revenue retained | $52M (Year 2 base) | $28M (Year 1 partial) |
 | Credit analyst FTE redeployed | 180 FTE | 142 FTE |

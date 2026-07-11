@@ -24,7 +24,7 @@ This playbook documents how agentic systems fail, how to detect failures, how to
 Traditional services fail in predictable ways: timeout, crash, bad data. Agentic systems fail in new ways that most monitoring does not catch:
 
 | Traditional Failure | Agentic Failure |
-|---|---|
+| --- | --- |
 | Service returns 500 | Agent returns confident wrong answer |
 | Timeout | Agent loops for 20 minutes then times out |
 | Crash | Agent completes but with hallucinated tool name |
@@ -48,6 +48,7 @@ Agent: "I'll try get_credit_report instead."  (exists — but wrong data)
 ```
 
 **Detection**:
+
 ```python
 class ToolCallValidator:
     def validate(self, tool_name: str, args: dict, registered_tools: dict) -> None:
@@ -80,6 +81,7 @@ class ToolCallValidator:
 ```
 
 **Detection and Prevention**:
+
 ```python
 from collections import Counter
 
@@ -88,14 +90,14 @@ class LoopDetector:
         self.window = window
         self.threshold = threshold
         self.call_history: list[str] = []
-    
+
     def record_call(self, tool_name: str, args_hash: str) -> None:
         call_key = f"{tool_name}:{args_hash}"
         self.call_history.append(call_key)
-        
+
         if len(self.call_history) > self.window:
             self.call_history.pop(0)
-        
+
         counts = Counter(self.call_history)
         if counts[call_key] >= self.threshold:
             raise AgentLoopError(
@@ -123,17 +125,17 @@ def trim_context(messages: list[dict], max_tokens: int = 180_000) -> list[dict]:
     """Trim middle messages to stay within limit, keeping system + recent messages."""
     if count_tokens(messages) <= max_tokens:
         return messages
-    
+
     system_messages = [m for m in messages if m["role"] == "system"]
     recent_messages = messages[-10:]  # Always keep last 10 turns
-    
+
     # Summarize the middle
     middle = messages[len(system_messages):-10]
     if middle:
         summary = summarize_messages(middle)
         summary_message = {"role": "user", "content": f"[Earlier context summary: {summary}]"}
         return system_messages + [summary_message] + recent_messages
-    
+
     return system_messages + recent_messages
 ```
 
@@ -150,6 +152,7 @@ Agent: Sends email → customer complaints
 ```
 
 **Prevention**:
+
 ```python
 @dataclass
 class MemoryEntry:
@@ -158,7 +161,7 @@ class MemoryEntry:
     created_at: datetime
     last_validated_at: Optional[datetime]
     valid_until: Optional[datetime]  # hard expiry for time-sensitive facts
-    
+
     def is_stale(self, max_age_days: int = 90) -> bool:
         age = (datetime.utcnow() - self.created_at).days
         if self.valid_until and datetime.utcnow() > self.valid_until:
@@ -167,13 +170,13 @@ class MemoryEntry:
 
 def retrieve_memories_with_freshness(entity_id: str, query: str) -> list[str]:
     memories = memory_store.retrieve(entity_id, query)
-    
+
     fresh = [m for m in memories if not m.is_stale()]
     stale = [m for m in memories if m.is_stale()]
-    
+
     if stale:
         logger.warning(f"Skipping {len(stale)} stale memories for entity {entity_id}")
-    
+
     return [m.content for m in fresh]
 ```
 
@@ -184,18 +187,19 @@ def retrieve_memories_with_freshness(entity_id: str, query: str) -> list[str]:
 **What**: Agent A waits for Agent B; Agent B waits for Agent A. Neither proceeds.
 
 **Detection**:
+
 ```python
 class DependencyTracker:
     def __init__(self):
         self.waiting_for: dict[str, str] = {}  # agent_id → blocking_agent_id
-    
+
     def agent_waiting_for(self, agent_id: str, blocking_agent: str) -> None:
         self.waiting_for[agent_id] = blocking_agent
-        
+
         if self._has_cycle():
             cycle = self._find_cycle()
             raise DeadlockError(f"Deadlock detected: {' → '.join(cycle)}")
-    
+
     def _has_cycle(self) -> bool:
         visited = set()
         for start in self.waiting_for:
@@ -242,12 +246,12 @@ def idempotency_key(operation: str, **params) -> str:
 
 async def issue_refund_idempotent(account_id: str, amount: float, reason: str) -> dict:
     key = idempotency_key("refund", account_id=account_id, amount=amount)
-    
+
     # Check if already processed
     existing = await refund_store.get(key)
     if existing:
         return existing  # Return cached result, don't double-refund
-    
+
     result = await payment_gateway.refund(account_id, amount, reason)
     await refund_store.set(key, result, ttl_hours=24)
     return result
@@ -291,17 +295,17 @@ alerts:
     condition: agent.iterations > 12  # near max_iterations limit
     severity: warning
     action: "Check for reasoning loop — review trace"
-  
+
   - name: AgentHighOverrideRate
     condition: agent.human_override_rate > 0.15  # 15%
     severity: critical
     action: "Agent decision quality degraded — review prompt version and model"
-  
+
   - name: AgentTokenSurge
     condition: agent.tokens_used > 150000  # near 200k context limit
     severity: warning
     action: "Context growing — review context trimming strategy"
-  
+
   - name: AgentHallucinationSpike
     condition: agent.tool_hallucination increase > 5 in 10m
     severity: critical

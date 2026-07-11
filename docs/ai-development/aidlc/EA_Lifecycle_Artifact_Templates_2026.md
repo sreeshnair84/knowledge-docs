@@ -9,58 +9,58 @@ tags: ["ai-development", "software-engineering"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise Architecture** **<u>Lifecycle Artifacts</u>** 
+# **Enterprise Architecture** **<u>Lifecycle Artifacts</u>**
 
-#### TOGAF 10 ADM · All Phases · AI-First Extensions 
+#### TOGAF 10 ADM · All Phases · AI-First Extensions
 
-Every artifact shown as a live template with field definitions and example content 
+Every artifact shown as a live template with field definitions and example content
 
-Companion to: AIDLC Enterprise Framework 2025 · EA Impact of AIDLC 2026 · AIDLC Artifact Reference Library 2026 
+Companion to: AIDLC Enterprise Framework 2025 · EA Impact of AIDLC 2026 · AIDLC Artifact Reference Library 2026
 
-## **HOW TO USE THESE TEMPLATES** 
+## **HOW TO USE THESE TEMPLATES**
 
-|**Blue italic text**|_Example field values filled in for a fictional "GlobalBank AI Transformation Programme_<br>_2026". Replace with your actual data._|
+|**Blue italic text**|*Example field values filled in for a fictional "GlobalBank AI Transformation Programme*<br>*2026". Replace with your actual data.*|
 |---|---|
 |**Field labels**|Every label is mandatory unless marked [OPTIONAL]. Mandatory fields require approval<br>before phase advancement.|
 |**AI Extension fields**|Fields marked!are AI-First extensions added to TOGAF 10. These are NOT in standard<br>TOGAF 10 but are required for AIDLC-integrated EA.|
 |**Artifact IDs**|Prefix format: EA-[Phase]-[Type]-[NNN]. E.g. EA-B-HATB-001 = Business Architecture,<br>Human-AI Task Boundary, first instance.|
 |**Linked artifacts**|Each artifact shows upstream inputs (←) and downstream outputs (→) to trace lineage<br>through the ADM cycle.|
 
-###### **_TOGAF 10 COMPLIANCE: All standard TOGAF 10 artifacts are included at their minimum viable form. AI-First_** 
+###### ***TOGAF 10 COMPLIANCE: All standard TOGAF 10 artifacts are included at their minimum viable form. AI-First***
 
-**_extension fields (_** ! **_) are additive — they do not replace standard TOGAF artifacts. Organisations pursuing ISO/IEC 42001 or EU AI Act compliance should use AI-First fields as mandatory._** 
+***extension fields (*** ! ***) are additive — they do not replace standard TOGAF artifacts. Organisations pursuing ISO/IEC 42001 or EU AI Act compliance should use AI-First fields as mandatory.***
 
-### **Phase PRETOGAF ADM**<sup>**Preliminary**</sup> 
+### **Phase PRETOGAF ADM**<sup>**Preliminary**</sup>
 
-ARTIFACTS: EAFC-001 · AGP-001 · ESR-001 
+ARTIFACTS: EAFC-001 · AGP-001 · ESR-001
 
-The Preliminary phase establishes the EA framework, governance model, and AI governance principles before any architecture work begins. In AI-first enterprises, this phase must produce a Constitutional AI commitment and establish the AI Governance Council as an EA stakeholder. 
+The Preliminary phase establishes the EA framework, governance model, and AI governance principles before any architecture work begins. In AI-first enterprises, this phase must produce a Constitutional AI commitment and establish the AI Governance Council as an EA stakeholder.
 
 |**EA GOVERNANCE**|**EAFC-001**|
 |---|---|
 |**EA Framework Charter**<br>||
-|Owner: Chief Architect / CIO   |   ADM P|ase: PRE   |   TOGAF 10 + AI-First Extension|
+|Owner: Chief Architect / CIO|ADM P|ase: PRE|TOGAF 10 + AI-First Extension|
 ||**CHARTER SCOPE & AUTHORITY**|
-|**Organisation**|_GlobalBank plc — Digital & Technology Division_|
-|**EA Framework Adopted**|_TOGAF 10 (The Open Group Architecture Standard, 10th Edition, 2022)_|
-|**Charter Version / Status**|_v2.1 — Approved 15 January 2026_|
-|**EA Programme Scope**|_Enterprise-wide: all business units, all technology investments >£500K, all AI systems (any_<br>_cost)_|
-|**EA Authority**|_Architecture Review Board (ARB) has binding authority over all technology architecture_<br>_decisions. No AI system may be deployed without ARB sign-off at AIDLC Phase 6._|
-|**Chief Architect**|_Dr. Priya Mehta, Group Chief Architect (Board-level authority)_|
-|**Review Cycle**|_Annual framework review; quarterly AI governance review; immediate review on regulatory_<br>_change_|
+|**Organisation**|*GlobalBank plc — Digital & Technology Division*|
+|**EA Framework Adopted**|*TOGAF 10 (The Open Group Architecture Standard, 10th Edition, 2022)*|
+|**Charter Version / Status**|*v2.1 — Approved 15 January 2026*|
+|**EA Programme Scope**|*Enterprise-wide: all business units, all technology investments >£500K, all AI systems (any*<br>*cost)*|
+|**EA Authority**|*Architecture Review Board (ARB) has binding authority over all technology architecture*<br>*decisions. No AI system may be deployed without ARB sign-off at AIDLC Phase 6.*|
+|**Chief Architect**|*Dr. Priya Mehta, Group Chief Architect (Board-level authority)*|
+|**Review Cycle**|*Annual framework review; quarterly AI governance review; immediate review on regulatory*<br>*change*|
 ||!**AI-FIRST EXTENSIONS**|
-|!**AI Governance Council**|_Established as permanent EA stakeholder body. Composition: CRO, CPO, CISO, Chief_<br>_Data Officer, Chief Architect, External AI Ethics Advisor. Quorum: 4 of 6 required for AI_<br>_system approval._|
-|!**Constitutional AI Commitment**|_GlobalBank commits to AIDLC governance for all AI systems. Constitutional AI Policy is a_<br>_mandatory output of Phase 4 (Model Design). No AI system proceeds to development_<br>_without an approved CAP._|
-|!**AIDLC Integration**|_TOGAF ADM phases B, C, D incorporate AIDLC Phase Gates as mandatory Architecture_<br>_Compliance milestones. See ACC-001 for the compliance checklist._|
-|!**Regulatory Alignment**|_EA framework explicitly aligned with: EU AI Act (all risk tiers), NIST AI RMF_<br>_(Govern-Map-Measure-Manage), ISO/IEC 42001, FCA operational resilience_<br>_requirements._|
+|!**AI Governance Council**|*Established as permanent EA stakeholder body. Composition: CRO, CPO, CISO, Chief*<br>*Data Officer, Chief Architect, External AI Ethics Advisor. Quorum: 4 of 6 required for AI*<br>*system approval.*|
+|!**Constitutional AI Commitment**|*GlobalBank commits to AIDLC governance for all AI systems. Constitutional AI Policy is a*<br>*mandatory output of Phase 4 (Model Design). No AI system proceeds to development*<br>*without an approved CAP.*|
+|!**AIDLC Integration**|*TOGAF ADM phases B, C, D incorporate AIDLC Phase Gates as mandatory Architecture*<br>*Compliance milestones. See ACC-001 for the compliance checklist.*|
+|!**Regulatory Alignment**|*EA framework explicitly aligned with: EU AI Act (all risk tiers), NIST AI RMF*<br>*(Govern-Map-Measure-Manage), ISO/IEC 42001, FCA operational resilience*<br>*requirements.*|
 
-**EA GOVERNANCE** 
+**EA GOVERNANCE**
 
-**AGP-001** Owner: AI Governance Council   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension **# Principle Statement Implementation Mechanism** 
+**AGP-001** Owner: AI Governance Council   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension **# Principle Statement Implementation Mechanism**
 
-#### **AI Governance Principles** 
+#### **AI Governance Principles**
 
-Owner: AI Governance Council   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension 
+Owner: AI Governance Council   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension
 
 |A<br>G<br>P-<br>1|Human<br>Primacy|AI systems augment human judgment;<br>they do not replace it for consequential<br>decisions. Human override capability is<br>mandatory in all TIER 1–2 AI systems.|HITL controls documented in AIDLC Phase<br>4; HITL trigger rates monitored Phase 8|
 |---|---|---|---|
@@ -74,13 +74,13 @@ Owner: AI Governance Council   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Exte
 |A<br>G<br>P-<br>7|Accountab<br>ility|A named individual owns every deployed<br>AI system. Ownership includes<br>governance compliance, performance<br>monitoring, and incident response.|AI System Inventory records owner; owner<br>signs off Phase 7 deployment runbook|
 |A<br>G<br>P-<br>8|Proportion<br>ality|AI governance intensity scales with risk<br>tier. TIER 4 (minimal risk) follows<br>lightweight AIDLC; TIER 1 (unacceptable<br>risk) is prohibited.|Risk Classification (RCS-001) determines<br>AIDLC governance track at Phase 1|
 
-**EA GOVERNANCE** 
+**EA GOVERNANCE**
 
-**ESR-001** 
+**ESR-001**
 
-#### **EA Stakeholder Register** 
+#### **EA Stakeholder Register**
 
-Owner: Chief Architect   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension 
+Owner: Chief Architect   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension
 
 |**Stakeholder**<br>**Group**|**Members**|**Intere**<br>**st**|**Influe**<br>**nce**|**EA Role**|**Engagement**<br>**Points**|
 |---|---|---|---|---|---|
@@ -96,36 +96,36 @@ Owner: Chief Architect   |   ADM Phase: PRE   |   TOGAF 10 + AI-First Extension
 |!Affected|Retail and|High|Low (c|Fairness,|FRIA consultation;|
 |Customers|corporate banking<br>customers||onsult<br>ed)|transparency, right to<br>explanation|user testing; appeal<br>channel|
 
-### **TOGAF ADM Architecture Vision Phase A** 
+### **TOGAF ADM Architecture Vision Phase A**
 
-ARTIFACTS: SAW-001 · ACA-001 · AVD-001 
+ARTIFACTS: SAW-001 · ACA-001 · AVD-001
 
-###### **PHASE OUTPUT** 
+###### **PHASE OUTPUT**
 
-###### **SAW-001** 
+###### **SAW-001**
 
-#### **Statement of Architecture Work** 
+#### **Statement of Architecture Work**
 
-Owner: Chief Architect   |   ADM Phase: A   |   TOGAF 10 + AI-First Extension 
+Owner: Chief Architect   |   ADM Phase: A   |   TOGAF 10 + AI-First Extension
 
-###### **WORK DEFINITION** 
+###### **WORK DEFINITION**
 
-|**Architecture Work Title**|_GlobalBank AI Transformation Programme — Phase 1: Core Banking AI Integration_|
+|**Architecture Work Title**|*GlobalBank AI Transformation Programme — Phase 1: Core Banking AI Integration*|
 |---|---|
-|**Sponsoring Executive**|_Marcus Chen, Chief Operating Officer_|
-|**Architecture Work Description**|_Design and govern the enterprise architecture for integrating AI systems into core banking_<br>_operations: credit risk scoring, customer service automation, fraud detection._<br>_Encompasses 5 AI use cases (see ACA-001), full AIDLC lifecycle governance, and_<br>_technology platform modernisation to support AI at scale._|
-|**Scope**|_IN SCOPE: UK Retail Banking division, core banking AI systems, data architecture for AI,_<br>_MLOps platform, agent architecture. OUT OF SCOPE: International operations (Year 2),_<br>_mortgage AI (separate programme), investment banking (separate governance)._|
-|**Constraints**|_1. EU AI Act compliance required for all credit, HR and fraud systems. 2. FCA operational_<br>_resilience rules apply. 3. Core banking system (Temenos) cannot be replaced in this_<br>_programme. 4. Maximum cloud budget: £2.8M/year._|
-|**Assumptions**|_Alternative data partners (utility, rent) contracts will be signed by Q2 2026. Azure ML_<br>_platform will remain enterprise standard for ML workloads. LLM provider contracts_<br>_available under existing Microsoft EA._|
-|**Deliverables**|_Architecture Vision (AVD-001), Business Architecture (Phase B), Data Architecture (Phase_<br>_C1), Application Architecture (Phase C2), Technology Architecture (Phase D), Migration_<br>_Plan (Phase F), Governance Framework (Phase G)_|
-|**Timeline**|_Phase A-D: Q1 2026 (12 weeks). Phase E-F: Q2 2026 (8 weeks). Phase G onwards:_<br>_ongoing._|
-|**Approved By**|_Dr. Priya Mehta (Chief Architect) · Marcus Chen (COO) · AI Governance Council — 22_<br>_January 2026_|
+|**Sponsoring Executive**|*Marcus Chen, Chief Operating Officer*|
+|**Architecture Work Description**|*Design and govern the enterprise architecture for integrating AI systems into core banking*<br>*operations: credit risk scoring, customer service automation, fraud detection.*<br>*Encompasses 5 AI use cases (see ACA-001), full AIDLC lifecycle governance, and*<br>*technology platform modernisation to support AI at scale.*|
+|**Scope**|*IN SCOPE: UK Retail Banking division, core banking AI systems, data architecture for AI,*<br>*MLOps platform, agent architecture. OUT OF SCOPE: International operations (Year 2),*<br>*mortgage AI (separate programme), investment banking (separate governance).*|
+|**Constraints**|*1. EU AI Act compliance required for all credit, HR and fraud systems. 2. FCA operational*<br>*resilience rules apply. 3. Core banking system (Temenos) cannot be replaced in this*<br>*programme. 4. Maximum cloud budget: £2.8M/year.*|
+|**Assumptions**|*Alternative data partners (utility, rent) contracts will be signed by Q2 2026. Azure ML*<br>*platform will remain enterprise standard for ML workloads. LLM provider contracts*<br>*available under existing Microsoft EA.*|
+|**Deliverables**|*Architecture Vision (AVD-001), Business Architecture (Phase B), Data Architecture (Phase*<br>*C1), Application Architecture (Phase C2), Technology Architecture (Phase D), Migration*<br>*Plan (Phase F), Governance Framework (Phase G)*|
+|**Timeline**|*Phase A-D: Q1 2026 (12 weeks). Phase E-F: Q2 2026 (8 weeks). Phase G onwards:*<br>*ongoing.*|
+|**Approved By**|*Dr. Priya Mehta (Chief Architect) · Marcus Chen (COO) · AI Governance Council — 22*<br>*January 2026*|
 
-! **AI EXTENSION AI Capability Assessment** Owner: Chief Architect + AI Lead   |   ADM Phase: A   |   TOGAF 10 + AI-First Extension 
+! **AI EXTENSION AI Capability Assessment** Owner: Chief Architect + AI Lead   |   ADM Phase: A   |   TOGAF 10 + AI-First Extension
 
-**ACA-001** 
+**ACA-001**
 
-! **_AI-First Extension: This artifact is not in standard TOGAF 10. It provides the AI capability inventory and maturity baseline that drives all subsequent AI-impacted architecture decisions._** 
+! ***AI-First Extension: This artifact is not in standard TOGAF 10. It provides the AI capability inventory and maturity baseline that drives all subsequent AI-impacted architecture decisions.***
 
 |**AI Use Case**|**EU AI Act**<br>**Tier**|**AIDLC Phase**|**Model Type**|**Strategic**<br>**Status**|**Priorit**<br>**y**|**Compliance**<br>**Requirements**|
 |---|---|---|---|---|---|---|
@@ -138,32 +138,32 @@ Owner: Chief Architect   |   ADM Phase: A   |   TOGAF 10 + AI-First Extension
 |CV Screening<br>Assistant|T2 — HIGH<br>RISK|Phase 2<br>(HOLD)|LLM +<br>Embedding|On hold — FRIA<br>first|Priority<br>3|EU AI Act Annex III<br>Cat.1|
 |Campaign<br>Targeting AI|T4 —<br>MINIMAL<br>RISK|Phase 5 (Dev)|XGBoost|Progressing<br>normally|Priority<br>4|GDPR profiling<br>consent|
 |Developer<br>Copilot (GitHub<br>Copilot)|T4 —<br>MINIMAL<br>RISK|Phase 7 (Prod)|Codex/GPT-<br>4o|Shadow AI —<br>register &<br>govern|Priority<br>3|AIDLC-Lite track|
-|!**AI Maturity Baseline**||_McKinsey AI Matur_<br>_Production MLOps_<br>_end 2026._|_ity Level 2 of 5_<br>_immature. Gov_|_(Developing). Proo_<br>_ernance framewor_|_f-of-conce_<br>_k nascent._|_pt capability exists._<br>_Target: Level 3 (Scaling) by_|
-|!**Shadow AI Exposure**||_27 unregistered AI_<br>_various ChatGPT i_<br>_within 30 days._|_tools identified_<br>_ntegrations). Al_|_in SaaS survey (G_<br>_l to be assessed an_|_itHub Copi_<br>_d register_|_lot, Grammarly, Otter.ai,_<br>_ed in AI System Inventory_|
-|!**Architecture Readine**|**ss**|_Data architecture:_<br>_enterprise platform_<br>_LOW (no zero trust_|_MEDIUM (data_<br>_). Application:_<br>_). Governance:_|_lake exists, lineage_<br>_MEDIUM (microser_<br>_LOW (nascent)._|_immature_<br>_vices parti_|_). MLOps: LOW (no_<br>_ally adopted). Security:_|
+|!**AI Maturity Baseline**||*McKinsey AI Matur*<br>*Production MLOps*<br>*end 2026.*|*ity Level 2 of 5*<br>*immature. Gov*|*(Developing). Proo*<br>*ernance framewor*|*f-of-conce*<br>*k nascent.*|*pt capability exists.*<br>*Target: Level 3 (Scaling) by*|
+|!**Shadow AI Exposure**||*27 unregistered AI*<br>*various ChatGPT i*<br>*within 30 days.*|*tools identified*<br>*ntegrations). Al*|*in SaaS survey (G*<br>*l to be assessed an*|*itHub Copi*<br>*d register*|*lot, Grammarly, Otter.ai,*<br>*ed in AI System Inventory*|
+|!**Architecture Readine**|**ss**|*Data architecture:*<br>*enterprise platform*<br>*LOW (no zero trust*|*MEDIUM (data*<br>*). Application:*<br>*). Governance:*|*lake exists, lineage*<br>*MEDIUM (microser*<br>*LOW (nascent).*|*immature*<br>*vices parti*|*). MLOps: LOW (no*<br>*ally adopted). Security:*|
 
 |**PHASE OUTPUT**<br>**Architecture Vision Do**<br>Owner: Chief Architect   |   ADM Phas|**AVD-001**<br>**cument**<br>e: A   |   TOGAF 10 + AI-First Extension|
 |---|---|
-|**Vision Statement**|_By end 2026, GlobalBank will operate a trusted, explainable, and regulatorily compliant AI_<br>_capability that delivers £7.3M+ annual value from credit risk automation, reduces manual_<br>_review by 35%, and serves as a model for responsible AI in UK financial services._|
-|**Target Architecture Descriptor**|_AI-First Enterprise Architecture: 7-layer reference stack (L1 GPU Infrastructure_→_L7_<br>_Business & Governance), AIDLC lifecycle for all AI systems, Data Mesh for AI data_<br>_products, Zero Trust for AI agents, TOGAF 10 ADM as the governance backbone._|
-|**Key Architecture Principles**|_1. Architecture before AI (no AI before the foundation is ready). 2. Data as first-class_<br>_product. 3. Explainability by design. 4. Zero Trust at every layer. 5. Governance_<br>_proportionate to risk. 6. Open standards over vendor lock-in._|
-|**Business Outcomes**|_60-second credit decisions (vs 72 hours), <5% false rejection rate (vs 12%), 100% adverse_<br>_action explanation coverage, £7.3M ROI Year 1, ISO/IEC 42001 certification Q4 2026._|
-|**Architecture Risks**|_1. Legacy Temenos integration complexity (HIGH). 2. EU AI Act compliance timeline_<br>_(HIGH). 3. Alternative data vendor contracts (MEDIUM). 4. MLOps talent gap (MEDIUM)._<br>_5. Shadow AI exposure (LOW-MEDIUM)._|
-|**ARB Approved**|_5 February 2026 — Architecture Review Board unanimous approval_|
+|**Vision Statement**|*By end 2026, GlobalBank will operate a trusted, explainable, and regulatorily compliant AI*<br>*capability that delivers £7.3M+ annual value from credit risk automation, reduces manual*<br>*review by 35%, and serves as a model for responsible AI in UK financial services.*|
+|**Target Architecture Descriptor**|*AI-First Enterprise Architecture: 7-layer reference stack (L1 GPU Infrastructure*→*L7*<br>*Business & Governance), AIDLC lifecycle for all AI systems, Data Mesh for AI data*<br>*products, Zero Trust for AI agents, TOGAF 10 ADM as the governance backbone.*|
+|**Key Architecture Principles**|*1. Architecture before AI (no AI before the foundation is ready). 2. Data as first-class*<br>*product. 3. Explainability by design. 4. Zero Trust at every layer. 5. Governance*<br>*proportionate to risk. 6. Open standards over vendor lock-in.*|
+|**Business Outcomes**|*60-second credit decisions (vs 72 hours), <5% false rejection rate (vs 12%), 100% adverse*<br>*action explanation coverage, £7.3M ROI Year 1, ISO/IEC 42001 certification Q4 2026.*|
+|**Architecture Risks**|*1. Legacy Temenos integration complexity (HIGH). 2. EU AI Act compliance timeline*<br>*(HIGH). 3. Alternative data vendor contracts (MEDIUM). 4. MLOps talent gap (MEDIUM).*<br>*5. Shadow AI exposure (LOW-MEDIUM).*|
+|**ARB Approved**|*5 February 2026 — Architecture Review Board unanimous approval*|
 
-### **TOGAF ADM Business Architecture Phase B** 
+### **TOGAF ADM Business Architecture Phase B**
 
-ARTIFACTS: ACM-001 · HATB-001 · AOM-001 · WIA-001 
+ARTIFACTS: ACM-001 · HATB-001 · AOM-001 · WIA-001
 
-###### ! **AI EXTENSION** 
+###### ! **AI EXTENSION**
 
-**ACM-001** 
+**ACM-001**
 
-#### **AI Capability Map** 
+#### **AI Capability Map**
 
-Owner: Enterprise Architect + Business Analysts   |   ADM Phase: B   |   TOGAF 10 + AI-First Extension 
+Owner: Enterprise Architect + Business Analysts   |   ADM Phase: B   |   TOGAF 10 + AI-First Extension
 
-! **_AI-First Extension: Extends the standard TOGAF Business Capability Map to include AI capabilities, their risk classification, AIDLC status, and Human-AI task boundary designation._** 
+! ***AI-First Extension: Extends the standard TOGAF Business Capability Map to include AI capabilities, their risk classification, AIDLC status, and Human-AI task boundary designation.***
 
 |**Business**<br>**Capability**|**Domain**|**AI System**|**Risk Tier**|**Human-AI Boundary**|**AIDLC**<br>**Status**|**Target Date**|
 |---|---|---|---|---|---|---|
@@ -176,17 +176,17 @@ Owner: Enterprise Architect + Business Analysts   |   ADM Phase: B   |   TOGAF 1
 |Developer Code<br>Assistance|IT/Engineeri<br>ng|GitHub Copilot<br>(registered)|T4<br>MINIMAL|AI-Augmented;<br>developer reviews all<br>output|Phase 7<br>(LIVE)|Registered;<br>AIDLC-Lite|
 |Architecture<br>Documentation|EA|EA AI Assistant<br>(proposed)|T4<br>MINIMAL|AI-Augmented; architect<br>validates|Phase 1|Proposed for<br>Q3 2026|
 
-! **AI EXTENSION** 
+! **AI EXTENSION**
 
-**HATB-001** 
+**HATB-001**
 
-#### **Human-AI Task Boundary Map** 
+#### **Human-AI Task Boundary Map**
 
-Owner: Business Architect + Ethics Lead   |   ADM Phase: B   |   TOGAF 10 + AI-First Extension 
+Owner: Business Architect + Ethics Lead   |   ADM Phase: B   |   TOGAF 10 + AI-First Extension
 
-! **_AI-First Extension: Documents the precise boundary between human and AI decision authority for every AI-impacted business process. Mandatory for all TIER 1–2 systems. This artifact is reviewed by the AI Governance Council and forms the basis for HITL design in AIDLC Phase 4._** 
+! ***AI-First Extension: Documents the precise boundary between human and AI decision authority for every AI-impacted business process. Mandatory for all TIER 1–2 systems. This artifact is reviewed by the AI Governance Council and forms the basis for HITL design in AIDLC Phase 4.***
 
-**Process Step Human-Only AI-Only Tasks HITL Trigger & Human Role Decision Tasks SLA** 
+**Process Step Human-Only AI-Only Tasks HITL Trigger & Human Role Decision Tasks SLA**
 
 |Credit<br>Application<br>Intake|Capture<br>applicant data;<br>verify identity|AI validates data<br>completeness and<br>identity (automated)|Human if identity verification<br>fails (manual override required)|Instant /<br>5 min|
 |---|---|---|---|---|
@@ -200,9 +200,9 @@ Owner: Business Architect + Ethics Lead   |   ADM Phase: B   |   TOGAF 10 + AI-F
 |**HITL Design Principles**|1. Every co<br>are set con<br>deploymen|nsequential AI decisio<br>servatively (err toward<br>t. 4. HITL effectiveness|n has a human escalation path. 2.<br>HITL). 3. HITL queue capacity is<br>is monitored monthly.|Confidence thresholds<br>resourced before|
 |**Approval Authority**|HATB-001<br>Governanc|approved by: Dr. Amar<br>e Council — 1 March 2|a Diallo (Ethics Lead), James Ha<br>026.|rtley (CRO), AI|
 
-#### ! **AI EXTENSION AI Operating Model** Owner: Business Architect + HR   |   ADM Phase: B   |   TOGAF 10 + AI-First Extension 
+#### ! **AI EXTENSION AI Operating Model** Owner: Business Architect + HR   |   ADM Phase: B   |   TOGAF 10 + AI-First Extension
 
-**AOM-001** 
+**AOM-001**
 
 |**Organisational**<br>**Unit**|**Type**|**Responsibilities**|**Operating**<br>**Cadence**|**Accountable**<br>**Owner**|
 |---|---|---|---|---|
@@ -217,27 +217,27 @@ Owner: Business Architect + Ethics Lead   |   ADM Phase: B   |   TOGAF 10 + AI-F
 |Ethics &<br>Fairness<br>Function|Independent<br>advisory<br>function|Conduct FRIAs; lead fairness<br>evaluations; advise on AGP<br>implementation; manage external<br>ethics board|Per-use-case<br>+ ongoing<br>monitoring|Dr. Amara Diallo<br>(Ethics Lead)|
 |MLOps Platform<br>Team|Platform<br>engineering<br>function|Operate MLflow, Azure ML, LLM<br>Gateway, vector database,<br>monitoring stack for all AI systems|24/7<br>production<br>support +<br>continuous<br>improvement|Priya Patel<br>(MLOps Lead)|
 
-### **TOGAF ADM Data Architecture Phase C1** 
+### **TOGAF ADM Data Architecture Phase C1**
 
-ARTIFACTS: DAB-001 · DM-001 · VDA-001 · FLS-001 
+ARTIFACTS: DAB-001 · DM-001 · VDA-001 · FLS-001
 
-**PHASE OUTPUT DAB-001 Data Architecture Blueprint** Owner: Data Architect   |   ADM Phase: C1   |   TOGAF 10 + AI-First Extension 
+**PHASE OUTPUT DAB-001 Data Architecture Blueprint** Owner: Data Architect   |   ADM Phase: C1   |   TOGAF 10 + AI-First Extension
 
-|**Data Architecture Pattern**|_Data Lakehouse (Apache Iceberg on Azure Data Lake Gen2) + Data Mesh domain_<br>_ownership + Feature Store for ML serving consistency_|
+|**Data Architecture Pattern**|*Data Lakehouse (Apache Iceberg on Azure Data Lake Gen2) + Data Mesh domain*<br>*ownership + Feature Store for ML serving consistency*|
 |---|---|
-|**Primary Platform**|_Azure Data Lake Gen2 (storage) + Azure Databricks (Iceberg/Delta) + dbt_<br>_(transformations) + Azure Event Hubs (streaming)_|
-|**Data Domains**|_6 domains: Credit & Risk, Customer, Operations, Marketing, HR, Enterprise (shared_<br>_reference data). Each domain owns its AI training data and RAG knowledge base._|
-|**AI Data Products**|_Each domain publishes: (1) Training datasets (DVC-versioned, quality-certified). (2)_<br>_Feature Store features (Feast). (3) RAG knowledge base (domain-specific vector_<br>_namespace in Weaviate)._|
-|!**Lineage Standard**|_OpenLineage (Apache Airflow + dbt plugins). All data transformations emit lineage events._<br>_Lineage graph stored in Apache Atlas. Queryable via Atlan data catalog. EU AI Act Article_<br>_10 evidence package auto-generated._|
-|!**Quality Gates**|_Data products must achieve quality score_≥_90% (completeness, accuracy, freshness,_<br>_consistency) before certification for AI training use. Quality scores published in Atlan_<br>_catalog._|
-|!**PII Handling**|_All PII fields tagged in Atlan. PII masking enforced at Feature Store and RAG retrieval_<br>_layers via Microsoft Presidio. No PII may flow into LLM prompts unmasked._|
-|!**Freshness SLAs**|_Training data refresh: weekly. Feature Store: 15-minute maximum lag. RAG knowledge_<br>_bases: 4-hour maximum lag. Inference logs: real-time. Monitoring dashboards: 5-minute_<br>_lag._|
+|**Primary Platform**|*Azure Data Lake Gen2 (storage) + Azure Databricks (Iceberg/Delta) + dbt*<br>*(transformations) + Azure Event Hubs (streaming)*|
+|**Data Domains**|*6 domains: Credit & Risk, Customer, Operations, Marketing, HR, Enterprise (shared*<br>*reference data). Each domain owns its AI training data and RAG knowledge base.*|
+|**AI Data Products**|*Each domain publishes: (1) Training datasets (DVC-versioned, quality-certified). (2)*<br>*Feature Store features (Feast). (3) RAG knowledge base (domain-specific vector*<br>*namespace in Weaviate).*|
+|!**Lineage Standard**|*OpenLineage (Apache Airflow + dbt plugins). All data transformations emit lineage events.*<br>*Lineage graph stored in Apache Atlas. Queryable via Atlan data catalog. EU AI Act Article*<br>*10 evidence package auto-generated.*|
+|!**Quality Gates**|*Data products must achieve quality score*≥*90% (completeness, accuracy, freshness,*<br>*consistency) before certification for AI training use. Quality scores published in Atlan*<br>*catalog.*|
+|!**PII Handling**|*All PII fields tagged in Atlan. PII masking enforced at Feature Store and RAG retrieval*<br>*layers via Microsoft Presidio. No PII may flow into LLM prompts unmasked.*|
+|!**Freshness SLAs**|*Training data refresh: weekly. Feature Store: 15-minute maximum lag. RAG knowledge*<br>*bases: 4-hour maximum lag. Inference logs: real-time. Monitoring dashboards: 5-minute*<br>*lag.*|
 
-! **AI EXTENSION DM-001** 
+! **AI EXTENSION DM-001**
 
-#### **Data Mesh Domain Design** 
+#### **Data Mesh Domain Design**
 
-Owner: Data Architect + Domain Architects   |   ADM Phase: C1   |   TOGAF 10 + AI-First Extension 
+Owner: Data Architect + Domain Architects   |   ADM Phase: C1   |   TOGAF 10 + AI-First Extension
 
 |**Domain**|**Key Data Assets**|**Business**<br>**Owner / Data**<br>**Owner**|**AI Data Products**<br>**Published**|**Storage**<br>**Location**|**Quality**<br>**Status**|
 |---|---|---|---|---|---|
@@ -250,73 +250,73 @@ Owner: Data Architect + Domain Architects   |   ADM Phase: C1   |   TOGAF 10 + A
 |Marketing|Campaign Data,<br>Response Rates,<br>Channel Attribution,<br>Consent|Marketing VP /<br>Domain Data<br>Owner|Campaign Targeting<br>AI training set;<br>segment propensity<br>features|S3://marketing-d<br>omain/ + Feast:<br>mkt-features|95.8%; GDPR<br>consent flag<br>mandatory|
 |HR|Job Postings, CV<br>Pool (anonymised),<br>Assessment Data,<br>Outcome Labels|Maria Santos /<br>Domain Data<br>Owner|CV Screening AI<br>(ON HOLD — FRIA<br>pending); Workforce<br>planning features|S3://hr-domain/<br>(restricted<br>access)|RESTRICTED<br>; FRIA must<br>complete<br>before AI use|
 
-###### ! **AI EXTENSION** 
+###### ! **AI EXTENSION**
 
-**VDA-001** 
+**VDA-001**
 
-#### **Vector Database Architecture** 
+#### **Vector Database Architecture**
 
-Owner: Data Architect + AI Architect   |   ADM Phase: C1   |   TOGAF 10 + AI-First Extension 
+Owner: Data Architect + AI Architect   |   ADM Phase: C1   |   TOGAF 10 + AI-First Extension
 
-|**Platform Selected**|_Weaviate (self-hosted on AKS) — selected over Pinecone (lock-in risk) and Azure AI_<br>_Search (limited OSS portability). See ADR: EA-C1-VDA-001._|
+|**Platform Selected**|*Weaviate (self-hosted on AKS) — selected over Pinecone (lock-in risk) and Azure AI*<br>*Search (limited OSS portability). See ADR: EA-C1-VDA-001.*|
 |---|---|
-|**Embedding Models**|_text-embedding-3-large (OpenAI) for knowledge bases; domain-specific fine-tuned_<br>_E5-large for credit/regulatory content. All models versioned in MLflow._|
-|**Namespace Architecture**|_One Weaviate namespace per domain-use-case: credit-kb, customer-kb, ops-kb,_<br>_regulatory-kb (shared), code-kb (IT). Namespace isolation enforces data product_<br>_boundaries._|
-|!**Access Control**|_Weaviate API key per consuming service. Agent access requires scoped API key_<br>_registered in HashiCorp Vault. No cross-namespace access without ARB approval._|
-|!**Freshness SLA**|_credit-kb:_≤_4 hours. regulatory-kb:_≤_1 hour (regulatory changes are time-sensitive). All_<br>_others:_≤_8 hours. Freshness monitored in Datadog; breach triggers P2 alert._|
-|!**Embedding Drift Monitoring**|_Weekly cosine similarity baseline check across namespaces. >10% average cosine drift_<br>_triggers embedding model review and potential re-embedding. Monitored via Arize AI._|
-|!**GDPR Deletion Capability**|_Weaviate supports object-level deletion by UUID. DPO-triggered PII deletion workflows_<br>_documented and tested. 72-hour deletion SLA from subject access request._|
-|!**EU AI Act Evidencing**|_Embedding model versions stored in MLflow with training data provenance. Namespace_<br>_contents versioned with DVC. Full lineage from source document to vector queryable via_<br>_OpenLineage._|
+|**Embedding Models**|*text-embedding-3-large (OpenAI) for knowledge bases; domain-specific fine-tuned*<br>*E5-large for credit/regulatory content. All models versioned in MLflow.*|
+|**Namespace Architecture**|*One Weaviate namespace per domain-use-case: credit-kb, customer-kb, ops-kb,*<br>*regulatory-kb (shared), code-kb (IT). Namespace isolation enforces data product*<br>*boundaries.*|
+|!**Access Control**|*Weaviate API key per consuming service. Agent access requires scoped API key*<br>*registered in HashiCorp Vault. No cross-namespace access without ARB approval.*|
+|!**Freshness SLA**|*credit-kb:*≤*4 hours. regulatory-kb:*≤*1 hour (regulatory changes are time-sensitive). All*<br>*others:*≤*8 hours. Freshness monitored in Datadog; breach triggers P2 alert.*|
+|!**Embedding Drift Monitoring**|*Weekly cosine similarity baseline check across namespaces. >10% average cosine drift*<br>*triggers embedding model review and potential re-embedding. Monitored via Arize AI.*|
+|!**GDPR Deletion Capability**|*Weaviate supports object-level deletion by UUID. DPO-triggered PII deletion workflows*<br>*documented and tested. 72-hour deletion SLA from subject access request.*|
+|!**EU AI Act Evidencing**|*Embedding model versions stored in MLflow with training data provenance. Namespace*<br>*contents versioned with DVC. Full lineage from source document to vector queryable via*<br>*OpenLineage.*|
 
-### **TOGAF ADM Application Architecture Phase C2** 
+### **TOGAF ADM Application Architecture Phase C2**
 
-ARTIFACTS: LLMG-001 · AOB-001 · CSD-001 · ASAP-001 
+ARTIFACTS: LLMG-001 · AOB-001 · CSD-001 · ASAP-001
 
-###### ! **AI EXTENSION** 
+###### ! **AI EXTENSION**
 
-**LLMG-001** 
+**LLMG-001**
 
-#### **LLM Gateway Architecture** 
+#### **LLM Gateway Architecture**
 
-Owner: AI Architect + Security Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extension 
+Owner: AI Architect + Security Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extension
 
-! **_AI-First Extension: The LLM Gateway is the mandatory control plane for ALL LLM API calls within GlobalBank. No LLM call may bypass the gateway. This is the application-layer equivalent of the network security perimeter for AI traffic._** 
+! ***AI-First Extension: The LLM Gateway is the mandatory control plane for ALL LLM API calls within GlobalBank. No LLM call may bypass the gateway. This is the application-layer equivalent of the network security perimeter for AI traffic.***
 
-|**Platform**|_Kong AI Gateway (enterprise licence) — deployed on AKS in GlobalBank's Azure_<br>_subscription_|
+|**Platform**|*Kong AI Gateway (enterprise licence) — deployed on AKS in GlobalBank's Azure*<br>*subscription*|
 |---|---|
-|**Model Routing**|_LiteLLM abstraction layer behind Kong. Routes to: Azure OpenAI (primary), Anthropic_<br>_Claude via Bedrock (secondary), Llama 3 (self-hosted, sensitive data). Failover automatic._|
-|!**Mandatory Controls**|_Every LLM call through gateway must pass: (1) Prompt injection detection (Lakera Guard_<br>_API). (2) PII masking (Presidio). (3) Content safety filter (Azure AI Content Safety). (4)_<br>_Token budget enforcement. (5) Audit log write._|
-|!**Rate Limiting**|_Per-service rate limits: Credit scoring LLM = 500 RPM. Customer Copilot = 2000 RPM._<br>_Developer Copilot = 5000 RPM. Burst: 2× sustained for 60s. Exceeding burst_→_429 +_<br>_alert._|
-|!**Audit Logging**|_100% of LLM requests logged to Splunk: service ID, model, token count, latency, safety_<br>_score, redacted prompt summary. PII-free log. Immutable append-only. Retained 7 years_<br>_(FCA)._|
-|!**Cost Attribution**|_Every LLM call tagged with: cost-centre, use-case-ID, model-version, environment. FinOps_<br>_dashboard in Azure Cost Management. Weekly cost report to business owners._|
-|!**Response Caching**|_Semantic caching enabled for deterministic queries (e.g., regulatory Q&A;). Cache TTL = 4_<br>_hours. Cache hit rate target >30% to reduce costs. Privacy: cached responses never_<br>_contain PII._|
+|**Model Routing**|*LiteLLM abstraction layer behind Kong. Routes to: Azure OpenAI (primary), Anthropic*<br>*Claude via Bedrock (secondary), Llama 3 (self-hosted, sensitive data). Failover automatic.*|
+|!**Mandatory Controls**|*Every LLM call through gateway must pass: (1) Prompt injection detection (Lakera Guard*<br>*API). (2) PII masking (Presidio). (3) Content safety filter (Azure AI Content Safety). (4)*<br>*Token budget enforcement. (5) Audit log write.*|
+|!**Rate Limiting**|*Per-service rate limits: Credit scoring LLM = 500 RPM. Customer Copilot = 2000 RPM.*<br>*Developer Copilot = 5000 RPM. Burst: 2× sustained for 60s. Exceeding burst*→*429 +*<br>*alert.*|
+|!**Audit Logging**|*100% of LLM requests logged to Splunk: service ID, model, token count, latency, safety*<br>*score, redacted prompt summary. PII-free log. Immutable append-only. Retained 7 years*<br>*(FCA).*|
+|!**Cost Attribution**|*Every LLM call tagged with: cost-centre, use-case-ID, model-version, environment. FinOps*<br>*dashboard in Azure Cost Management. Weekly cost report to business owners.*|
+|!**Response Caching**|*Semantic caching enabled for deterministic queries (e.g., regulatory Q&A;). Cache TTL = 4*<br>*hours. Cache hit rate target >30% to reduce costs. Privacy: cached responses never*<br>*contain PII.*|
 
-###### ! **AI EXTENSION** 
+###### ! **AI EXTENSION**
 
-**AOB-001** 
+**AOB-001**
 
-#### **Agent Orchestration Blueprint** 
+#### **Agent Orchestration Blueprint**
 
-Owner: AI Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extension 
+Owner: AI Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extension
 
-|**Orchestration Framework**|_LangGraph (primary for stateful multi-step agents) + LangChain (for RAG chains)._<br>_AutoGen reserved for experimental multi-agent workflows pending governance maturity._|
+|**Orchestration Framework**|*LangGraph (primary for stateful multi-step agents) + LangChain (for RAG chains).*<br>*AutoGen reserved for experimental multi-agent workflows pending governance maturity.*|
 |---|---|
-|**Integration Protocol**|_Model Context Protocol (MCP) as the standard for agent-to-enterprise-service integration._<br>_All enterprise APIs exposed via MCP servers to agents. No direct REST calls from agents._|
-|!**Agent Identity Model**|_Each agent has a dedicated service identity in Azure Managed Identity. Agent identity is_<br>_SEPARATE from human IAM. Agent credentials are short-lived (15-min TTL). Stored in_<br>_HashiCorp Vault._|
-|!**Action Boundaries**|_Agent action boundaries defined in Agent Action Boundary Register (AABR-001-EA)._<br>_Enforced at runtime by OPA (Open Policy Agent) sidecar on each agent pod. Violations_<br>_logged and alerted._|
+|**Integration Protocol**|*Model Context Protocol (MCP) as the standard for agent-to-enterprise-service integration.*<br>*All enterprise APIs exposed via MCP servers to agents. No direct REST calls from agents.*|
+|!**Agent Identity Model**|*Each agent has a dedicated service identity in Azure Managed Identity. Agent identity is*<br>*SEPARATE from human IAM. Agent credentials are short-lived (15-min TTL). Stored in*<br>*HashiCorp Vault.*|
+|!**Action Boundaries**|*Agent action boundaries defined in Agent Action Boundary Register (AABR-001-EA).*<br>*Enforced at runtime by OPA (Open Policy Agent) sidecar on each agent pod. Violations*<br>*logged and alerted.*|
 
-|!**ATF Trust Levels**|_Agents are assigned ATF trust levels 0–4 by the AI Governance Council. Promotion_<br>_requires: demonstrated accuracy over evaluation period, security audit, clean operational_<br>_history, explicit stakeholder approval._|
+|!**ATF Trust Levels**|*Agents are assigned ATF trust levels 0–4 by the AI Governance Council. Promotion*<br>*requires: demonstrated accuracy over evaluation period, security audit, clean operational*<br>*history, explicit stakeholder approval.*|
 |---|---|
-|!**Memory Architecture**|_Working memory: in-context (per session, ephemeral). Episodic memory: Redis (session_<br>_history, 24h TTL). Semantic memory: Weaviate vector store (persistent,_<br>_access-controlled). No unlimited persistent memory._|
-|!**Circuit Breakers**|_All agents wrapped with Resilience4j circuit breaker. If error rate >5% in 60s window_→<br>_circuit opens, agent paused, P1 alert. Prevents runaway agent cascades._|
+|!**Memory Architecture**|*Working memory: in-context (per session, ephemeral). Episodic memory: Redis (session*<br>*history, 24h TTL). Semantic memory: Weaviate vector store (persistent,*<br>*access-controlled). No unlimited persistent memory.*|
+|!**Circuit Breakers**|*All agents wrapped with Resilience4j circuit breaker. If error rate >5% in 60s window*→<br>*circuit opens, agent paused, P1 alert. Prevents runaway agent cascades.*|
 
-###### ! **AI EXTENSION** 
+###### ! **AI EXTENSION**
 
-**ASAP-001** 
+**ASAP-001**
 
-#### **Agent-Safe API Design Pattern** 
+#### **Agent-Safe API Design Pattern**
 
-Owner: Solution Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extension 
+Owner: Solution Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extension
 
 |**Design**<br>**Requirement**|**Standard**|**Example Implementation**|
 |---|---|---|
@@ -328,17 +328,17 @@ Owner: Solution Architect   |   ADM Phase: C2   |   TOGAF 10 + AI-First Extensio
 |Dry-Run Mode|Irreversible operations support<br>?dryRun=true parameter for<br>agent testing without side<br>effects.|DELETE /model-version?dryRun=true→returns<br>what would happen, no deletion|
 |Audit Trail in<br>Response|Every state-changing response<br>includes audit trail ID for<br>traceability from agent action to<br>business outcome.|Response: {"auditId": "AUD-2026-FIN-048371",<br>"agentId": "AGT-OPS-001"}|
 
-**TOGAF ADM Phase D** 
+**TOGAF ADM Phase D**
 
-### **Technology Architecture** 
+### **Technology Architecture**
 
-ARTIFACTS: AIB-001 · MPD-001 · ZTA-001 · FAOD-001 
+ARTIFACTS: AIB-001 · MPD-001 · ZTA-001 · FAOD-001
 
-###### **PHASE OUTPUT** 
+###### **PHASE OUTPUT**
 
-#### **AI Infrastructure Blueprint** 
+#### **AI Infrastructure Blueprint**
 
-Owner: Technology Architect + MLOps Lead   |   ADM Phase: D   |   TOGAF 10 + AI-First Extension 
+Owner: Technology Architect + MLOps Lead   |   ADM Phase: D   |   TOGAF 10 + AI-First Extension
 
 |**Component**|**Platform**|**Purpose**|**Scale Design**|**Governance Notes**|
 |---|---|---|---|---|
@@ -352,15 +352,15 @@ Owner: Technology Architect + MLOps Lead   |   ADM Phase: D   |   TOGAF 10 + AI-
 |Observability|Datadog (APM +<br>ML monitoring) +<br>Arize AI (model<br>monitoring) +<br>Splunk (SIEM)|Full-stack<br>observability: infra,<br>application, ML<br>model behaviour,<br>security events|15-second metric<br>resolution; 1-year<br>retention|PagerDuty<br>integration;<br>escalation to on-call<br>MLOps|
 |CI/CD /<br>MLOps<br>Pipeline|Azure DevOps +<br>GitHub Actions +<br>MLflow + dbt|Automated model<br>training, validation,<br>deployment; data<br>pipeline<br>orchestration|4-eyes principle:<br>automated gate +<br>human approval at<br>Phase 6|Full pipeline<br>execution <2 hours<br>for standard models|
 
-! **AI EXTENSION** 
+! **AI EXTENSION**
 
-**ZTA-001** 
+**ZTA-001**
 
-#### **Zero Trust AI Security Architecture** 
+#### **Zero Trust AI Security Architecture**
 
-Owner: Security Architect   |   ADM Phase: D   |   TOGAF 10 + AI-First Extension 
+Owner: Security Architect   |   ADM Phase: D   |   TOGAF 10 + AI-First Extension
 
-! **_AI-First Extension: Traditional Zero Trust assumes human identity. This document extends ZTA to cover AI agent identity, agentic action boundaries, model supply chain security, and AI-specific threat mitigations._** 
+! ***AI-First Extension: Traditional Zero Trust assumes human identity. This document extends ZTA to cover AI agent identity, agentic action boundaries, model supply chain security, and AI-specific threat mitigations.***
 
 |**ZTA Principle**<br>**for AI**|**Implementation Detail**|**Technology Controls**|
 |---|---|---|
@@ -372,17 +372,17 @@ Owner: Security Architect   |   ADM Phase: D   |   TOGAF 10 + AI-First Extension
 |Continuous<br>Verification|Security posture of deployed agents<br>re-assessed quarterly. Anomaly<br>detection on agent behaviour patterns<br>flags deviation from baseline.|Splunk UBA (User and Entity Behaviour<br>Analytics) extended to cover agent identities;<br>quarterly security audit|
 |Audit<br>Immutability|All agent actions logged to immutable,<br>tamper-evident audit log (WORM<br>storage). Log integrity verified via<br>cryptographic hash chain. Accessible to<br>FCA on request.|Azure Blob WORM storage + SHA-256 hash<br>chain + Splunk SIEM; 7-year retention|
 
-**TOGAF ADM Phase EF** 
+**TOGAF ADM Phase EF**
 
-### **Opportunities & Migration** 
+### **Opportunities & Migration**
 
-ARTIFACTS: AUP-001 · ARTA-001 · ARM-001 
+ARTIFACTS: AUP-001 · ARTA-001 · ARM-001
 
-! **AI EXTENSION** 
+! **AI EXTENSION**
 
-#### **AI Use Case Portfolio & Sequencing Plan** 
+#### **AI Use Case Portfolio & Sequencing Plan**
 
-Owner: Chief Architect + AI CoE Lead   |   ADM Phase: EF   |   TOGAF 10 + AI-First Extension 
+Owner: Chief Architect + AI CoE Lead   |   ADM Phase: EF   |   TOGAF 10 + AI-First Extension
 
 |**AI Use Case**|**Business**<br>**Value**|**Strategi**<br>**c Fit**|**Risk Tier**|**Est.**<br>**Duration**|**Current**<br>**Status**|**Next**<br>**Milestone**|**Target**<br>**Live**|**Key Constraints**|
 |---|---|---|---|---|---|---|---|---|
@@ -395,11 +395,11 @@ Owner: Chief Architect + AI CoE Lead   |   ADM Phase: EF   |   TOGAF 10 + AI-Fir
 |**Sequencing**|**Rationale**||Risk-adjusted<br>Risk). (2) Pro<br>(4) High-scrut|sequencing:<br>duction gap-f<br>iny on hold u|(1) High busine<br>ills second (Fra<br>ntil governance|ss value + co<br>ud governance<br>matures.|mpliance foun<br>). (3) Low-risk|dation first (Credit<br>progressions third.|
 |**Architecture**|**Dependencies**||Credit Risk AI<br>Gateway, vec<br>subsequent A|(Phase 7) is<br>tor database<br>I system can|the REFEREN<br>, and monitoring<br>reach Phase 7.|CE IMPLEMEN<br>stack must be<br>|TATION. ML<br>operational|Ops platform, LLM<br>before any|
 
-###### ! **AI EXTENSION** 
+###### ! **AI EXTENSION**
 
-#### **AI-Readiness Transition Architecture** 
+#### **AI-Readiness Transition Architecture**
 
-Owner: Chief Architect + Solution Architects   |   ADM Phase: EF   |   TOGAF 10 + AI-First Extension 
+Owner: Chief Architect + Solution Architects   |   ADM Phase: EF   |   TOGAF 10 + AI-First Extension
 
 |**Architectur**|**Data**|**MLOps /**|**Application**|**Agent Arch**|**Security Ar**|**Governanc**|**AI Ma**|
 |---|---|---|---|---|---|---|---|
@@ -412,21 +412,21 @@ Owner: Chief Architect + Solution Architects   |   ADM Phase: EF   |   TOGAF 10 
 |Transition 2<br>(Q3 2026)|Full Data<br>Mesh (6<br>domains);<br>Weaviate<br>production;<br>Feature Store<br>certified|Full LLMOps<br>monitoring:<br>Arize AI,<br>hallucination<br>detection, drift<br>alerts|RAG pipelines<br>production-gra<br>de; MCP<br>standard<br>adopted for<br>new APIs|3 production<br>agents; ATF<br>trust levels<br>active;<br>circuit<br>breakers<br>live|Zero Trust<br>for agents<br>fully implem<br>ented;<br>MAESTRO<br>threat model<br>done|ISO/IEC<br>42001 gap a<br>ssessment;<br>EU AI Act<br>compliance<br>audit|L3 (S<br>caling<br>)|
 |Target State<br>(Q4 2026)|Enterprise AI<br>Data Catalog<br>(Atlan);<br>automated<br>lineage; all AI<br>data products<br>quality-certifie<br>d|Autonomous<br>retraining<br>MVP; unified<br>MLOps+LLMO<br>ps platform|Agent mesh<br>production; full<br>MCP<br>integration;<br>semantic<br>caching|Agentic<br>workflows in<br>production<br>across 3<br>business<br>domains|Full<br>MAESTRO<br>controls;<br>quarterly<br>zero trust<br>review|ISO/IEC<br>42001<br>certified; EU<br>AI Act<br>high-risk<br>documented|L4 (O<br>ptimis<br>ing)|
 
-**TOGAF ADM Phase G** 
+**TOGAF ADM Phase G**
 
-### **Implementation Governance** 
+### **Implementation Governance**
 
-ARTIFACTS: ACC-001 · ASRF-001 · ARB-001 
+ARTIFACTS: ACC-001 · ASRF-001 · ARB-001
 
-**PHASE OUTPUT** 
+**PHASE OUTPUT**
 
-**ACC-001** 
+**ACC-001**
 
-#### **Architecture Compliance Checklist** 
+#### **Architecture Compliance Checklist**
 
-Owner: Architecture Review Board   |   ADM Phase: G   |   TOGAF 10 + AI-First Extension 
+Owner: Architecture Review Board   |   ADM Phase: G   |   TOGAF 10 + AI-First Extension
 
-**_PURPOSE: Every AI system must complete this checklist before the ARB grants Architecture Compliance Certificate (ACC). This checklist integrates TOGAF Phase G governance with AIDLC Phase 6 (Evaluation) gate requirements._** 
+***PURPOSE: Every AI system must complete this checklist before the ARB grants Architecture Compliance Certificate (ACC). This checklist integrates TOGAF Phase G governance with AIDLC Phase 6 (Evaluation) gate requirements.***
 
 |**Compliance**<br>**Artefact**|**AIDLC**<br>**Phase**|**Requirement**|**Evidence Provided**|**Status**|
 |---|---|---|---|---|
@@ -450,67 +450,67 @@ Owner: Architecture Review Board   |   ADM Phase: G   |   TOGAF 10 + AI-First Ex
 |**ARB Decision**|ARCHITEC<br>Authorised<br>(CRO), AI|TURE COMPLIANCE CE<br>for deployment. Approval:<br>Governance Council — 5 M|RTIFICATE GRANTED — Cre<br>Dr. Priya Mehta (Chief Archite<br>ay 2026.|ditRisk-XGB-v1.0.<br>ct), James Hartley|
 |**Conditions of Certificate**|1. Monthly<br>fairness au|Monitoring Reports (MMR-<br>dit maintained. 3. Any mat|001) reviewed by ARB quarter<br>erial model change requires ne|ly. 2. Annual external<br>w ACC application.|
 
-#### ! **AI EXTENSION AI System Registration Form** Owner: Business Owner + AI CoE   |   ADM Phase: G   |   TOGAF 10 + AI-First Extension 
+#### ! **AI EXTENSION AI System Registration Form** Owner: Business Owner + AI CoE   |   ADM Phase: G   |   TOGAF 10 + AI-First Extension
 
 |**ASRF-001**|
 |---|
 
-|**System ID (assigned by AI CoE)**|_AUC-2026-FIN-047_|
+|**System ID (assigned by AI CoE)**|*AUC-2026-FIN-047*|
 |---|---|
-|**System Name**|_Credit Risk AI Scoring Model_|
-|**Business Owner**|_Sarah Chen, VP Credit Risk, Retail Banking Division_|
-|**Technical Owner**|_Dr. Nina Kowalski, Head of AI CoE_|
-|**System Description**|_ML-based credit scoring model (XGBoost) with LLM adverse action notice generator_<br>_(GPT-4o fine-tuned). Used for automated credit decisions on UK retail lending applications_<br>_(50,000/month)._|
-|**AI Category**|_ML Classification (primary) + Generative AI (adverse action narrative)_|
-|**EU AI Act Risk Tier**|_TIER 2 — HIGH RISK (Annex III, Category 5b: creditworthiness assessment)_|
-|**Regulated By**|_FCA, PRA, ICO, EU AI Act National Competent Authority_|
-|**Personal Data Processed**|_YES — Applicant financial history, utility payment history, rent history. Processing basis:_<br>_Art. 6(1)(b) GDPR (contractual necessity)._|
-|**Third-Party AI Components**|_Equifax Credit Bureau API, GPT-4o (Azure OpenAI), Lakera Guard, Microsoft Presidio_|
-|**Deployment Environment**|_Production — Azure Kubernetes Service (AKS), UK South region_|
-|**Date Registered**|_5 May 2026_|
+|**System Name**|*Credit Risk AI Scoring Model*|
+|**Business Owner**|*Sarah Chen, VP Credit Risk, Retail Banking Division*|
+|**Technical Owner**|*Dr. Nina Kowalski, Head of AI CoE*|
+|**System Description**|*ML-based credit scoring model (XGBoost) with LLM adverse action notice generator*<br>*(GPT-4o fine-tuned). Used for automated credit decisions on UK retail lending applications*<br>*(50,000/month).*|
+|**AI Category**|*ML Classification (primary) + Generative AI (adverse action narrative)*|
+|**EU AI Act Risk Tier**|*TIER 2 — HIGH RISK (Annex III, Category 5b: creditworthiness assessment)*|
+|**Regulated By**|*FCA, PRA, ICO, EU AI Act National Competent Authority*|
+|**Personal Data Processed**|*YES — Applicant financial history, utility payment history, rent history. Processing basis:*<br>*Art. 6(1)(b) GDPR (contractual necessity).*|
+|**Third-Party AI Components**|*Equifax Credit Bureau API, GPT-4o (Azure OpenAI), Lakera Guard, Microsoft Presidio*|
+|**Deployment Environment**|*Production — Azure Kubernetes Service (AKS), UK South region*|
+|**Date Registered**|*5 May 2026*|
 
-**ACC Certificate Number** 
+**ACC Certificate Number**
 
-_ACC-2026-FIN-047-001 (Architecture Compliance Certificate granted 5 May 2026)_ 
+*ACC-2026-FIN-047-001 (Architecture Compliance Certificate granted 5 May 2026)*
 
-**TOGAF ADM Phase H** 
+**TOGAF ADM Phase H**
 
-### **Architecture Change Mgmt** 
+### **Architecture Change Mgmt**
 
-ARTIFACTS: ACR-001 · APR-001 · AIM-001 
+ARTIFACTS: ACR-001 · APR-001 · AIM-001
 
-###### **PHASE OUTPUT** 
+###### **PHASE OUTPUT**
 
-###### **ACR-001** 
+###### **ACR-001**
 
-#### **Architecture Change Request** 
+#### **Architecture Change Request**
 
-Owner: Requestor + Architecture Review Board   |   ADM Phase: H   |   TOGAF 10 + AI-First Extension 
+Owner: Requestor + Architecture Review Board   |   ADM Phase: H   |   TOGAF 10 + AI-First Extension
 
-|**Change Request ID**|_ACR-2026-FIN-047-002_|
+|**Change Request ID**|*ACR-2026-FIN-047-002*|
 |---|---|
-|**Date Submitted**|_15 June 2026_|
-|**Requestor**|_Dr. Nina Kowalski, Head of AI CoE_|
-|**System Affected**|_CreditRisk-XGB-v1.0 (AUC-2026-FIN-047)_|
-|**Change Title**|_Integrate Real-Time Rental Bureau Data (Experian API) — Model Retraining_|
-|**Change Description**|_Add Experian Rental Bureau as a new alternative data source for credit scoring. Requires:_<br>_(1) New data pipeline (rental-bureau-pipeline). (2) Feature engineering for 6 new rental_<br>_features. (3) Model retraining with new features. (4) Fairness re-evaluation (new data_<br>_source may affect demographic groups). (5) Red team re-assessment of new data pipeline._|
-|**Change Classification**|_SIGNIFICANT — New data source changes model behaviour and requires Phase 5-6_<br>_re-run for new features. Does NOT require full Phase 1-4 restart._|
-|!**AIDLC Impact Assessment**|_Phases required: Phase 3 (Data Sheet update for rental data)_→_Phase 5 (Retrain with_<br>_new features)_→_Phase 6 (Fairness re-evaluation, bias re-assessment)_→_Phase 7_<br>_(Re-deployment runbook). Estimated: 6 weeks._|
-|!**Regulatory Notification**<br>**Required**|_NO — change is additive, does not alter the fundamental model architecture or purpose._<br>_Legal review confirms no new regulatory obligations._|
-|**Architecture Risk Assessment**|_LOW-MEDIUM: (1) New data source may reveal unexpected bias (mitigated: mandatory_<br>_re-run of FER-001). (2) Vendor reliability of Experian Rental Bureau API (mitigated:_<br>_fallback to bureau-only scoring if API down)._|
-|**ARB Decision**|_APPROVED with conditions: (1) FER-001 re-run must show no degradation in fairness_<br>_metrics. (2) Rental data DPA signed before data ingestion. (3) Updated Data Sheet signed_<br>_by Data Governance Board. — ARB 22 June 2026_|
+|**Date Submitted**|*15 June 2026*|
+|**Requestor**|*Dr. Nina Kowalski, Head of AI CoE*|
+|**System Affected**|*CreditRisk-XGB-v1.0 (AUC-2026-FIN-047)*|
+|**Change Title**|*Integrate Real-Time Rental Bureau Data (Experian API) — Model Retraining*|
+|**Change Description**|*Add Experian Rental Bureau as a new alternative data source for credit scoring. Requires:*<br>*(1) New data pipeline (rental-bureau-pipeline). (2) Feature engineering for 6 new rental*<br>*features. (3) Model retraining with new features. (4) Fairness re-evaluation (new data*<br>*source may affect demographic groups). (5) Red team re-assessment of new data pipeline.*|
+|**Change Classification**|*SIGNIFICANT — New data source changes model behaviour and requires Phase 5-6*<br>*re-run for new features. Does NOT require full Phase 1-4 restart.*|
+|!**AIDLC Impact Assessment**|*Phases required: Phase 3 (Data Sheet update for rental data)*→*Phase 5 (Retrain with*<br>*new features)*→*Phase 6 (Fairness re-evaluation, bias re-assessment)*→*Phase 7*<br>*(Re-deployment runbook). Estimated: 6 weeks.*|
+|!**Regulatory Notification**<br>**Required**|*NO — change is additive, does not alter the fundamental model architecture or purpose.*<br>*Legal review confirms no new regulatory obligations.*|
+|**Architecture Risk Assessment**|*LOW-MEDIUM: (1) New data source may reveal unexpected bias (mitigated: mandatory*<br>*re-run of FER-001). (2) Vendor reliability of Experian Rental Bureau API (mitigated:*<br>*fallback to bureau-only scoring if API down).*|
+|**ARB Decision**|*APPROVED with conditions: (1) FER-001 re-run must show no degradation in fairness*<br>*metrics. (2) Rental data DPA signed before data ingestion. (3) Updated Data Sheet signed*<br>*by Data Governance Board. — ARB 22 June 2026*|
 
-! **AI EXTENSION APR-001** 
+! **AI EXTENSION APR-001**
 
-#### **AI Portfolio Review Report** 
+#### **AI Portfolio Review Report**
 
-Owner: Chief Architect + AI CoE Lead   |   ADM Phase: H   |   TOGAF 10 + AI-First Extension 
+Owner: Chief Architect + AI CoE Lead   |   ADM Phase: H   |   TOGAF 10 + AI-First Extension
 
-! **_AI-First Extension: Quarterly review of the full AI system portfolio. Aggregates monitoring data from all deployed systems, identifies patterns and risks, and makes portfolio-level architectural recommendations._** 
+! ***AI-First Extension: Quarterly review of the full AI system portfolio. Aggregates monitoring data from all deployed systems, identifies patterns and risks, and makes portfolio-level architectural recommendations.***
 
-> **Review Period** _Q2 2026 (April–June 2026)_ 
+> **Review Period** *Q2 2026 (April–June 2026)*
 
-> **Portfolio Status** _5 systems in production, 1 in development (Campaign Targeting), 1 on hold (CV Screening)_ **System Ti Status RA Model Fairness Incidents Action Required er G Performance Status** 
+> **Portfolio Status** *5 systems in production, 1 in development (Campaign Targeting), 1 on hold (CV Screening)* **System Ti Status RA Model Fairness Incidents Action Required er G Performance Status**
 
 |CreditRisk-XGB<br>-v1.0|T2|Production|GR<br>EE<br>N|0.827 AUC (↓0.3%<br>from baseline;<br>within threshold)|1.7pp<br>(threshold:<br>2.0pp) —<br>WATCH|0 P0, 0 P1, 1 P2<br>resolved|Rental data<br>integration approved<br>(ACR-002); no<br>immediate action|
 |---|---|---|---|---|---|---|---|
@@ -523,40 +523,40 @@ Owner: Chief Architect + AI CoE Lead   |   ADM Phase: H   |   TOGAF 10 + AI-Firs
 |**Architecture Recom**|**mend**|**ations**|1. Fraud<br>Strength<br>1.8pp ac|Detection model retr<br>en fairness monitorin<br>ross all T2 systems.|aining approved<br>g alerting: reduce|— execute Phase 5 r<br>bias delta alert thre|e-run by end Q3. 2.<br>shold from 2.0pp to|
 |**Next Portfolio Revie**|**w**||Q3 2026|— 15 September 20|26|||
 
-### **TOGAF ADM EA Cross-Cutting Artifacts Phase EA** 
+### **TOGAF ADM EA Cross-Cutting Artifacts Phase EA**
 
-ARTIFACTS: EADR-001 · AABR-EA-001 · ASI-EA-001 · RAIMP-001 
+ARTIFACTS: EADR-001 · AABR-EA-001 · ASI-EA-001 · RAIMP-001
 
-**EA CROSS-CUTTING EA Architecture Decision Record (AI-First)** Owner: Architecture Review Board   |   ADM Phase: EA   |   TOGAF 10 + AI-First Extension 
+**EA CROSS-CUTTING EA Architecture Decision Record (AI-First)** Owner: Architecture Review Board   |   ADM Phase: EA   |   TOGAF 10 + AI-First Extension
 
-**EADR-001** 
+**EADR-001**
 
-**_PURPOSE: Documents enterprise-level architecture decisions that affect multiple AI systems or the AI platform itself. Distinct from AIDLC Phase 4 ADRs (which are use-case-specific). EA ADRs are binding on all teams and permanent record._** 
+***PURPOSE: Documents enterprise-level architecture decisions that affect multiple AI systems or the AI platform itself. Distinct from AIDLC Phase 4 ADRs (which are use-case-specific). EA ADRs are binding on all teams and permanent record.***
 
-|**EA ADR ID**|_EADR-2026-PLAT-003_|
+|**EA ADR ID**|*EADR-2026-PLAT-003*|
 |---|---|
-|**Title**|_LLM Provider Strategy: Multi-Provider via LiteLLM Router — Mandatory Standard_|
-|**Status**|_ACCEPTED — Architecture Review Board — 15 March 2026_|
-|**Decision Makers**|_Dr. Priya Mehta (Chief Architect), AI Governance Council, Technology Leadership_|
-|**Context**|_GlobalBank has three AI systems consuming LLM APIs from three different providers_<br>_(Azure OpenAI, Anthropic, self-hosted Llama 3). Without standardisation, each team_<br>_manages its own client library, rate limiting, cost tracking, safety filtering, and audit logging._<br>_This creates governance gaps, duplicated effort, and single-provider dependency risk._|
-|**Decision**|_ALL LLM API calls from GlobalBank systems MUST be routed through the Kong AI_<br>_Gateway with LiteLLM abstraction layer. Direct LLM provider API calls are prohibited._<br>_Providers: Azure OpenAI (primary), Anthropic Claude (secondary via Bedrock), Llama 3_<br>_(self-hosted, sensitive data). Failover automated by LiteLLM._|
-|**Options Considered**|_(A) Multi-provider via LiteLLM gateway (SELECTED). (B) Azure OpenAI only (rejected:_<br>_vendor lock-in risk). (C) Self-hosted LLMs only (rejected: capability gap). (D) Each team_<br>_manages own clients (rejected: governance impossible)._|
-|**Consequences (Positive)**|_Single governance point for LLM traffic. Unified audit log. Cost attribution. Safety filtering_<br>_standardised. Provider switch without code changes. 30-40% cost reduction via semantic_<br>_caching._|
-|**Consequences (Negative)**|_Gateway becomes single point of failure (mitigated: active-active HA). Migration effort for 3_<br>_existing systems (estimated: 2 sprints each). LiteLLM abstraction adds ~5ms latency_<br>_(acceptable)._|
-|**Compliance Link**|_EU AI Act Article 12 (logging); NIST AI RMF GOVERN-1.7 (documentation); GlobalBank_<br>_AGP-6 (security); AGP-7 (accountability)_|
+|**Title**|*LLM Provider Strategy: Multi-Provider via LiteLLM Router — Mandatory Standard*|
+|**Status**|*ACCEPTED — Architecture Review Board — 15 March 2026*|
+|**Decision Makers**|*Dr. Priya Mehta (Chief Architect), AI Governance Council, Technology Leadership*|
+|**Context**|*GlobalBank has three AI systems consuming LLM APIs from three different providers*<br>*(Azure OpenAI, Anthropic, self-hosted Llama 3). Without standardisation, each team*<br>*manages its own client library, rate limiting, cost tracking, safety filtering, and audit logging.*<br>*This creates governance gaps, duplicated effort, and single-provider dependency risk.*|
+|**Decision**|*ALL LLM API calls from GlobalBank systems MUST be routed through the Kong AI*<br>*Gateway with LiteLLM abstraction layer. Direct LLM provider API calls are prohibited.*<br>*Providers: Azure OpenAI (primary), Anthropic Claude (secondary via Bedrock), Llama 3*<br>*(self-hosted, sensitive data). Failover automated by LiteLLM.*|
+|**Options Considered**|*(A) Multi-provider via LiteLLM gateway (SELECTED). (B) Azure OpenAI only (rejected:*<br>*vendor lock-in risk). (C) Self-hosted LLMs only (rejected: capability gap). (D) Each team*<br>*manages own clients (rejected: governance impossible).*|
+|**Consequences (Positive)**|*Single governance point for LLM traffic. Unified audit log. Cost attribution. Safety filtering*<br>*standardised. Provider switch without code changes. 30-40% cost reduction via semantic*<br>*caching.*|
+|**Consequences (Negative)**|*Gateway becomes single point of failure (mitigated: active-active HA). Migration effort for 3*<br>*existing systems (estimated: 2 sprints each). LiteLLM abstraction adds ~5ms latency*<br>*(acceptable).*|
+|**Compliance Link**|*EU AI Act Article 12 (logging); NIST AI RMF GOVERN-1.7 (documentation); GlobalBank*<br>*AGP-6 (security); AGP-7 (accountability)*|
 |**Review Date**|Reviewed annually or when major provider change occurs|
 
-**EA CROSS-CUTTING** 
+**EA CROSS-CUTTING**
 
-**AABR-EA-001** 
+**AABR-EA-001**
 
-#### **Enterprise Agent Action Boundary Register** 
+#### **Enterprise Agent Action Boundary Register**
 
-Owner: AI Architect + Security Architect   |   ADM Phase: EA   |   TOGAF 10 + AI-First Extension 
+Owner: AI Architect + Security Architect   |   ADM Phase: EA   |   TOGAF 10 + AI-First Extension
 
-> **Register Purpose** Single source of truth for all AI agent action boundaries. Enforced at runtime by OPA sidecar. Updated when agents are deployed or their scope changes. Reviewed quarterly by ARB. 
+> **Register Purpose** Single source of truth for all AI agent action boundaries. Enforced at runtime by OPA sidecar. Updated when agents are deployed or their scope changes. Reviewed quarterly by ARB.
 
-> **Enforcement Mechanism** OPA (Open Policy Agent) reads AABR as policy source. Agent presents signed manifest with claimed identity. OPA validates identity + requested action against AABR before execution. 
+> **Enforcement Mechanism** OPA (Open Policy Agent) reads AABR as policy source. Agent presents signed manifest with claimed identity. OPA validates identity + requested action against AABR before execution.
 
 |**Agent ID**|**System**|**Framewor**<br>**k**|**Permitted Actions**|**Denied Actions**|**ATF Level /**<br>**HITL**|**Hard**<br>**Boundaries**|**Owner**|
 |---|---|---|---|---|---|---|---|
@@ -565,13 +565,13 @@ Owner: AI Architect + Security Architect   |   ADM Phase: EA   |   TOGAF 10 + AI
 |AGT-IT-00<br>1|InfraAgent-v<br>1.0|AutoGen<br>sub-agent|cloudwatch:READ,<br>github-api:PR-CRE<br>ATE-ONLY,<br>slack-api:POST|production-deploy:<br>ALL, iam:ALL,<br>secrets:ALL,<br>db:WRITE|ATF 2 — All<br>code changes<br>need human<br>PR approval|No prod<br>deploys; no<br>IAM; no secret<br>access|CISO|
 |AGT-DAT<br>A-001|DataQuality<br>Agent-v1.0|LangChain<br>single-age<br>nt|data-catalog:READ,<br>quality-metrics:REA<br>D, atlan-api:TAG-W<br>RITE|training-data:WRIT<br>E, feature-store:W<br>RITE, s3:DELETE|ATF 2 —<br>Quality<br>remediations<br>>Tier2 need<br>approval|No training data<br>modification; no<br>feature deletion|Chief Data<br>Officer|
 
-**EA CROSS-CUTTING** 
+**EA CROSS-CUTTING**
 
-**RAIMP-001** 
+**RAIMP-001**
 
-#### **Responsible AI Maturity Programme** 
+#### **Responsible AI Maturity Programme**
 
-Owner: AI Governance Council   |   ADM Phase: EA   |   TOGAF 10 + AI-First Extension 
+Owner: AI Governance Council   |   ADM Phase: EA   |   TOGAF 10 + AI-First Extension
 
 |**Maturity Level**|**Characteristics**|**Remaining Gaps**|**GlobalBank**<br>**Timeline**|
 |---|---|---|---|
@@ -586,7 +586,7 @@ Owner: AI Governance Council   |   ADM Phase: EA   |   TOGAF 10 + AI-First Exten
 |**Target by Dec 2026**<br>L3 — Scaling. ISO/IEC 42001 certified. EU AI Act high-risk documentation complete. All 6<br>Data Mesh domains live. Full ZTA deployed. LLM Gateway enforced enterprise-wide.|
 |**KPIs**<br>% AI systems with full AIDLC coverage (target 100% T2); Bias delta all T2 systems <2pp;<br>HITL trigger rate within designed range; Governance cost as % of AI programme (target<br><15%)|
 
-## **ARTIFACT CROSS-REFERENCE BY ADM PHASE** 
+## **ARTIFACT CROSS-REFERENCE BY ADM PHASE**
 
 |**ADM Phase**|**Artifact Templates in This Library**|
 |---|---|
@@ -601,4 +601,4 @@ Owner: AI Governance Council   |   ADM Phase: EA   |   TOGAF 10 + AI-First Exten
 |H — Change<br>Management|ACR-001 Architecture Change Request, APR-001 AI Portfolio Review Report,<br>AIM-001 Architecture Impact Model|
 |EA — Cross-Cutting|EADR-001 EA Architecture Decision Record, AABR-EA-001 Agent Boundary<br>Register, ASI-EA-001 AI System Inventory, RAIMP-001 RAI Maturity Programme|
 
-**_LIBRARY SCOPE: 30+ EA lifecycle artifact templates across all TOGAF 10 ADM phases with AI-First extensions. Standard TOGAF artifacts are extended with_** ! **_AI-First fields covering: AI governance, Constitutional AI policy, Human-AI task boundaries, agent orchestration, zero trust for AI, and regulatory compliance. All templates shown with example content for the "GlobalBank AI Transformation Programme 2026." Replace blue italic values with your organisation's actual content._**
+***LIBRARY SCOPE: 30+ EA lifecycle artifact templates across all TOGAF 10 ADM phases with AI-First extensions. Standard TOGAF artifacts are extended with*** ! ***AI-First fields covering: AI governance, Constitutional AI policy, Human-AI task boundaries, agent orchestration, zero trust for AI, and regulatory compliance. All templates shown with example content for the "GlobalBank AI Transformation Programme 2026." Replace blue italic values with your organisation's actual content.***

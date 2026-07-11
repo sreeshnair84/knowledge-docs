@@ -28,7 +28,7 @@ series_index: ../index.md
 Technical leaders typically operate across three distinct time horizons. Distinguished Architects must be fluent in all three, and must be able to shift between them in a single conversation.
 
 | Horizon | Time Frame | Primary Activity | Common Trap |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Operational** | 0–6 months | Solving the current sprint's problems, unblocking delivery | Staying here exclusively; never generating strategic insight |
 | **Strategic** | 6 months – 3 years | Platform choices, org design, programme architecture | Over-planning in a world that changes faster than the plan |
 | **Visionary** | 3–10 years | Technology bets, industry trend positioning, capability building | Getting so abstract that it loses connection to operational reality |
@@ -157,7 +157,7 @@ The structure for communicating a technology bet:
 Traditional technology organisations are organised as pipelines: inputs flow through processes to produce outputs. A platform is different — it creates a two-sided (or multi-sided) marketplace that enables direct interaction between participants.
 
 | Dimension | Pipeline | Platform |
-|---|---|---|
+| --- | --- | --- |
 | **Value creation** | Linear; firm creates value | Networked; participants create value for each other |
 | **Primary asset** | Internal resources and processes | External network and the community of participants |
 | **Scalability** | Limited by internal capacity | Scales with network growth |
@@ -204,7 +204,7 @@ The crossover point analysis should be part of every internal platform business 
 ### Platform Business Case Structure
 
 | Section | Content |
-|---|---|
+| --- | --- |
 | **Problem Statement** | What is the current cost and fragmentation of teams solving this problem independently? |
 | **Platform Scope** | What capability does the platform deliver? What is explicitly out of scope? |
 | **Network Effect Hypothesis** | How does value increase as more teams join? What is the mechanism? |
@@ -251,7 +251,7 @@ Inverse Conway Manoeuvre:
 Matthew Skelton and Manuel Pais's Team Topologies model describes four team types:
 
 | Team Type | Purpose | EA Interaction Mode |
-|---|---|---|
+| --- | --- | --- |
 | **Stream-Aligned** | Delivers a flow of business value to an end user | Primary consumer of platform capability; EA provides standards and guardrails |
 | **Enabling** | Helps stream-aligned teams acquire new capabilities | EA often creates enabling teams for new technology domains |
 | **Complicated Subsystem** | Manages subsystems that require specialist knowledge | EA identifies where complicated subsystems justify specialist teams |
@@ -275,7 +275,7 @@ Distinguished Architects influence org design through:
 ### Common Org Design Anti-Patterns
 
 | Anti-Pattern | Description | EA Response |
-|---|---|---|
+| --- | --- | --- |
 | **Shared services bottleneck** | One team owns a capability every other team depends on, creating a queue | Advocate for X-as-a-Service model with self-service APIs |
 | **Full-stack monolith team** | One team owns end-to-end delivery of a large system, unable to scale | Domain decomposition and team splitting |
 | **Matrix organisation deadlock** | Every decision requires approval from two reporting lines | Clarify decision rights; establish clear primary ownership |

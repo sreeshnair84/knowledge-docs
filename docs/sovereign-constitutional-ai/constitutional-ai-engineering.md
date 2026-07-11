@@ -78,7 +78,7 @@ Step 4: RL fine-tuning
 ## 2. Constitutional AI vs. Alternative Alignment Approaches
 
 | Approach | Mechanism | Transparency | Scalability | Consistency | Enterprise applicability |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **RLHF** | Human preference labels → reward model → RL | Low (human subjectivity) | Medium (human bottleneck) | Low–Medium | Good for general alignment; poor for domain-specific values |
 | **RLAIF** | AI preference labels using model | Medium (AI reasoning visible) | High | High (within constitution) | Good; can use domain constitution |
 | **Constitutional AI (CAI)** | Explicit principles + AI self-critique | High (principles are explicit) | High | High | Excellent; principles are enterprise-configurable |
@@ -158,7 +158,7 @@ CONSTITUTIONAL AI BLUEPRINT
 Identify constitutional stakeholders across five dimensions:
 
 | Stakeholder Type | Examples | Their constitutional interests |
-|---|---|---|
+| --- | --- | --- |
 | **Mission stakeholders** | Board, CEO, Chief Strategy Officer | Organizational purpose, competitive bounds |
 | **Value stakeholders** | Ethics committee, employees, society | Core ethical principles, cultural values |
 | **Risk stakeholders** | CRO, Legal, Compliance, CISO | Prohibited actions, liability limits |
@@ -170,7 +170,7 @@ Identify constitutional stakeholders across five dimensions:
 Each section of the constitution must answer a specific question:
 
 | Section | Question it answers | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Mission** | What is this AI system for? | "To assist financial advisors in serving retail clients" |
 | **Values** | What principles guide all decisions? | "Client welfare first; honesty over flattery; privacy by default" |
 | **Prohibited Actions** | What must never happen? | "Never recommend investment products for which the advisor has conflicts" |
@@ -550,6 +550,7 @@ constitution:
 ### 5.1 The Problem of Multi-Agent Constitutions
 
 Single-agent constitutions assume one model with one set of values. In multi-agent systems:
+
 - Different agents have different roles and need different constraints
 - Agents interact with each other, creating emergent behavior not covered by individual constitutions
 - An agent that is individually aligned can still produce misaligned outcomes through interaction with other agents
@@ -601,7 +602,7 @@ CONSTITUTIONAL AGENT FABRIC
 ### 5.3 Shared vs. Agent-Specific Constitutions
 
 | Pattern | Use case | Trade-offs |
-|---|---|---|
+| --- | --- | --- |
 | **Shared global constitution** | Universal principles all agents inherit | Simple governance; less agent-specific tuning |
 | **Hierarchical constitutions** | Global → Domain → Agent → Task | Precise control; complexity grows with agent count |
 | **Role-based constitutions** | Constitution defined per role (Orchestrator, Worker, Reviewer) | Good for standardized role patterns |

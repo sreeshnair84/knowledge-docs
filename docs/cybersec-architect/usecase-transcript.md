@@ -8,7 +8,7 @@ source_type: native-md
 source_file: ""
 tags: ["cybersec-architect"]
 doc_type: workshop-transcript
-session_type: 
+session_type:
 related_pages: []
 ---
 
@@ -30,7 +30,7 @@ related_pages: []
 ## Participants
 
 | Name | Role | Background |
-|---|---|---|
+| --- | --- | --- |
 | **Isabel Torres** | Chief Information Officer, NorthStone Capital | Former Head of Technology, investment banking; 20 years in financial services |
 | **Marcus Webb** | Chief Information Security Officer, NorthStone Capital | Former Head of Cyber, European Central Bank; CISSP, CISM |
 | **Priya Sharma** | Chief Technology Officer, NorthStone Capital | ML background; 8 years building data platforms in asset management |
@@ -66,16 +66,19 @@ The Client Reporting Agent sounds routine, but it has access to client portfolio
 **Dr. Riya Nair:** Absolutely. Let me structure this by agent.
 
 **Investment Research Agent:**
+
 - Highest risk: indirect prompt injection via news feeds or research documents. Attackers can publish documents with embedded instructions. Your agent reads them as part of its research workflow and executes the attacker's commands.
 - Secondary risk: competitive intelligence. If an attacker can query this agent, they can learn which securities your firm is researching — that's material non-public information.
 - Tertiary risk: model manipulation to bias research summaries toward specific securities.
 
 **Client Reporting Agent:**
+
 - Primary risk: data exfiltration at scale. Read access to all client portfolios = catastrophic breach if agent is compromised.
 - Secondary risk: report manipulation. A manipulated agent could generate subtly inaccurate performance reports — regulatory and legal liability.
 - Tertiary risk: client impersonation. The agent may have access to client communication preferences; an attacker could trigger reports to wrong recipients.
 
 **Back Office Agent:**
+
 - This one concerns me most. "Flags discrepancies" — does the agent have any write access to the reconciliation system?
 
 **Priya Sharma:** In the current design, yes — it can mark a trade as reconciled and can create a discrepancy alert in the operations ticketing system.
@@ -183,6 +186,7 @@ Under EU AI Act, the Investment Research Agent and Client Reporting Agent likely
 
 **Pillar 2: Continuous Monitoring**
 Three types:
+
 - Performance monitoring: Is the agent producing accurate outputs? Portfolio managers score research quality; compliance checks report accuracy.
 - Security monitoring: Is the agent behaving within its defined parameters? AI gateway logs reviewed weekly; anomalies trigger investigation.
 - Cost monitoring: Is the agent within budget? Token usage tracked; circuit breakers prevent cost overrun.
@@ -205,7 +209,7 @@ Every quarter, our team performs a targeted adversarial test of the agents: inje
 ## Key Lessons from This Session
 
 | Principle | Session Evidence |
-|---|---|
+| --- | --- |
 | Threat model before architecture | Dr. Nair's threat model identified the Client Reporting Agent as the highest-risk component — a non-obvious finding given it "only reads" |
 | Human oversight for consequential actions | Back Office Agent write access redesigned to read-only + human approval before the architecture review completed |
 | Least privilege and credential isolation | MCP server pattern keeps Bloomberg/FactSet credentials out of agent runtime |

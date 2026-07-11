@@ -12,12 +12,13 @@ Tiers:
 Usage:
     python _meta/run_duplicate_check.py [--threshold 0.35] [--docs-dir docs]
 """
+
+import argparse
 import os
 import re
-import argparse
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import numpy as np
 
 
 def clean(t):
@@ -60,8 +61,7 @@ def main():
 
     print(f"Loaded {len(paths)} markdown files from {args.docs_dir}/")
 
-    vec = TfidfVectorizer(max_features=30000, stop_words="english",
-                          ngram_range=(1, 2), min_df=1)
+    vec = TfidfVectorizer(max_features=30000, stop_words="english", ngram_range=(1, 2), min_df=1)
     X = vec.fit_transform(texts)
     print("TF-IDF matrix built. Computing pairwise similarities...")
 
@@ -82,14 +82,14 @@ def main():
     heavy = [p for p in pairs if 0.60 <= p[0] < 0.85]
     moderate = [p for p in pairs if args.threshold <= p[0] < 0.60]
 
-    print(f"\n{'='*70}")
+    print(f"\n{'=' * 70}")
     print(f"DUPLICATE CHECK RESULTS  (threshold={args.threshold:.0%})")
-    print(f"{'='*70}")
+    print(f"{'=' * 70}")
     print(f"  Near-duplicate  (>=85%): {len(near)}")
     print(f"  Heavy overlap   (>=60%): {len(heavy)}")
     print(f"  Moderate        (>={args.threshold:.0%}): {len(moderate)}")
     print(f"  Total pairs flagged    : {len(pairs)}")
-    print(f"{'='*70}\n")
+    print(f"{'=' * 70}\n")
 
     for s, a, b in pairs:
         print(f"[{tier(s)}  {s:.0%}]")

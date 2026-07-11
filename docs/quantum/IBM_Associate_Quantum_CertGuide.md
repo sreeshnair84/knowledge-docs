@@ -9,36 +9,37 @@ tags: ["quantum-computing"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-**~~IBM CERTIFIED~~ ASSOCIATE DEVELOPER** **<u>QUANTUM COMPUTATION</u>** Deep-Dive Study Guide • Exam C1000-112 
-Heavy Code Edition • Qiskit v1.x • 2026 
-**ASSOCIATE DEVELOPER QUANTUM** 
-~~60 questions • 90 minutes • Score 43/60 to pass (72%)~~ Covers: Qiskit circuits, gates, algorithms, simulators, transpilation & real hardware 
-**Page 2** 
-# **TABLE OF CONTENTS** 
+**~~IBM CERTIFIED~~ ASSOCIATE DEVELOPER** **<u>QUANTUM COMPUTATION</u>** Deep-Dive Study Guide • Exam C1000-112
+Heavy Code Edition • Qiskit v1.x • 2026
+**ASSOCIATE DEVELOPER QUANTUM**
+~~60 questions • 90 minutes • Score 43/60 to pass (72%)~~ Covers: Qiskit circuits, gates, algorithms, simulators, transpilation & real hardware
+**Page 2**
 
-**SECTION 1** — Exam Blueprint & Domain Weights 
+# **TABLE OF CONTENTS**
 
-**SECTION 2** — Qiskit Installation & Environment Setup 
+**SECTION 1** — Exam Blueprint & Domain Weights
 
-**SECTION 3** — Quantum Circuits – QuantumCircuit API 
+**SECTION 2** — Qiskit Installation & Environment Setup
 
-**SECTION 4** — Gates – Single Qubit, Multi-Qubit, Parameterised 
+**SECTION 3** — Quantum Circuits – QuantumCircuit API
 
-**SECTION 5** — Measurements, Classical Registers & Conditionals 
+**SECTION 4** — Gates – Single Qubit, Multi-Qubit, Parameterised
 
-**SECTION 6** — Simulators – AerSimulator, StatevectorSimulator 
+**SECTION 5** — Measurements, Classical Registers & Conditionals
 
-**SECTION 7** — Visualisation – draw(), plot_histogram(), Bloch Sphere **SECTION 8** — Transpilation – PassManager, Optimization Levels **SECTION 9** — Real Hardware – IBM Quantum, Job Management 
+**SECTION 6** — Simulators – AerSimulator, StatevectorSimulator
 
-**SECTION 10** — Quantum Algorithms – Deutsch, Grover, QFT, Teleportation **SECTION 11** — Practice Exam – 40 Questions with Answers & Explanations **SECTION 12** — Quick-Reference Cheat Sheet 
+**SECTION 7** — Visualisation – draw(), plot_histogram(), Bloch Sphere **SECTION 8** — Transpilation – PassManager, Optimization Levels **SECTION 9** — Real Hardware – IBM Quantum, Job Management
 
-**Page 3** 
+**SECTION 10** — Quantum Algorithms – Deutsch, Grover, QFT, Teleportation **SECTION 11** — Practice Exam – 40 Questions with Answers & Explanations **SECTION 12** — Quick-Reference Cheat Sheet
 
-### **SECTION 1** 
+**Page 3**
 
-# **Exam Blueprint & Domain Weights** 
+### **SECTION 1**
 
-The C1000-112 exam tests your ability to write, execute, and analyse quantum circuits using Qiskit. 60 multiple-choice questions in 90 minutes. A score of 43+ (72%) passes. Questions are scenario-based — you will read code and predict output, or choose the correct API call. 
+# **Exam Blueprint & Domain Weights**
+
+The C1000-112 exam tests your ability to write, execute, and analyse quantum circuits using Qiskit. 60 multiple-choice questions in 90 minutes. A score of 43+ (72%) passes. Questions are scenario-based — you will read code and predict output, or choose the correct API call.
 
 |**Domain**|**Wei**<br>**ght**|**Key Topics**|
 |---|---|---|
@@ -47,15 +48,15 @@ The C1000-112 exam tests your ability to write, execute, and analyse quantum cir
 |Running Circuits on Backends|~22%|AerSimulator, transpile(), run(), job.result()|
 |Quantum Algorithms|~29%|Grover, QFT, Deutsch-Jozsa, quantum teleportation|
 
-_Exam Strategy: 32%+29% = 61% is circuits + algorithms. Master QuantumCircuit and the 4 algorithms cold. The remaining 39% (viz + backends) is straightforward API recall. Aim for 90%+ on circuits/algorithms; 80%+ elsewhere._ 
+*Exam Strategy: 32%+29% = 61% is circuits + algorithms. Master QuantumCircuit and the 4 algorithms cold. The remaining 39% (viz + backends) is straightforward API recall. Aim for 90%+ on circuits/algorithms; 80%+ elsewhere.*
 
-**Page 4** 
+**Page 4**
 
-### **SECTION 2** 
+### **SECTION 2**
 
-# **Installation & Environment Setup** 
+# **Installation & Environment Setup**
 
-Install the exact versions tested by the exam. Qiskit v1.x is the current exam baseline. 
+Install the exact versions tested by the exam. Qiskit v1.x is the current exam baseline.
 
 ```
 # Create isolated environment (strongly recommended)
@@ -70,7 +71,7 @@ python -c "import qiskit; print(qiskit.__version__)" # 1.3.0
 python -c "from qiskit_aer import AerSimulator; print('Aer OK')"
 ```
 
-## **IBM Quantum Account Setup — required for running on real hardware:** 
+## **IBM Quantum Account Setup — required for running on real hardware:**
 
 ```
 from qiskit_ibm_runtime import QiskitRuntimeService
@@ -86,17 +87,17 @@ backends = service.backends() # list available backends
 print([b.name for b in backends])
 ```
 
-_Exam Tip: You will NOT need an IBM account for the exam. All exam questions use simulators or conceptual backend selection. But account setup is essential for hands-on practice — do it on Day 1._ 
+*Exam Tip: You will NOT need an IBM account for the exam. All exam questions use simulators or conceptual backend selection. But account setup is essential for hands-on practice — do it on Day 1.*
 
-**Page 5** 
+**Page 5**
 
-### **SECTION 3** 
+### **SECTION 3**
 
-# **Quantum Circuits – QuantumCircuit API** 
+# **Quantum Circuits – QuantumCircuit API**
 
-QuantumCircuit is the central object in Qiskit. Every exam question either creates, manipulates, or queries a QuantumCircuit. Know every constructor signature and every method cold. 
+QuantumCircuit is the central object in Qiskit. Every exam question either creates, manipulates, or queries a QuantumCircuit. Know every constructor signature and every method cold.
 
-## **Construction Patterns** 
+## **Construction Patterns**
 
 ```
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
@@ -120,7 +121,7 @@ print(qc4.depth()) # 0 (no gates yet)
 print(len(qc4)) # 0 (number of operations)
 ```
 
-## **Circuit Composition** 
+## **Circuit Composition**
 
 ```
 # compose() — attach one circuit to another (non-destructive, returns new circuit)
@@ -138,7 +139,7 @@ sub.cx(0, 1)
 qc_full.compose(sub, qubits=[1, 2], inplace=True)
 ```
 
-**Page 6** 
+**Page 6**
 
 ```
 # append() — add a gate/instruction to specific qubits
@@ -155,7 +156,7 @@ qc.barrier() # --- separator ---
 qc.measure_all()
 ```
 
-## **Circuit Introspection** 
+## **Circuit Introspection**
 
 ```
 qc = QuantumCircuit(3, 3)
@@ -176,15 +177,15 @@ print(instruction.operation.name,
 # measure [0] ...
 ```
 
-_EXAM WATCH: depth() counts the longest path through the circuit, NOT the total number of gates. A circuit with 3 parallel H gates has depth=1, size=3. This distinction appears in ~3 exam questions._ 
+*EXAM WATCH: depth() counts the longest path through the circuit, NOT the total number of gates. A circuit with 3 parallel H gates has depth=1, size=3. This distinction appears in ~3 exam questions.*
 
-**Page 7** 
+**Page 7**
 
-### **SECTION 4** 
+### **SECTION 4**
 
-# **Gates – Single, Multi-Qubit & Parameterised** 
+# **Gates – Single, Multi-Qubit & Parameterised**
 
-## **Single-Qubit Gates** 
+## **Single-Qubit Gates**
 
 ```
 from qiskit import QuantumCircuit
@@ -213,7 +214,7 @@ qc2.h([0, 1, 2, 3]) # H on all 4 qubits
 qc2.x(range(4)) # X on all 4 qubits
 ```
 
-## **Multi-Qubit Gates** 
+## **Multi-Qubit Gates**
 
 ```
 qc = QuantumCircuit(3)
@@ -226,7 +227,7 @@ qc.cz(0, 1) # flips phase of |11> state
 qc.swap(0, 2) # swaps q[0] and q[2]
 ```
 
-**Page 8** 
+**Page 8**
 
 ```
 # Toffoli (CCX) — 3-qubit, flips target if both controls are |1>
@@ -244,7 +245,7 @@ bell.measure([0,1], [0,1])
 # Measurement: always 00 or 11, never 01 or 10
 ```
 
-## **Parameterised Circuits** 
+## **Parameterised Circuits**
 
 ```
 from qiskit.circuit import Parameter, ParameterVector
@@ -270,13 +271,13 @@ bound = qc_var.assign_parameters(dict(zip(params, vals)))
 bound2 = qc_var.assign_parameters(vals)
 ```
 
-_EXAM WATCH: assign_parameters() does NOT modify the original circuit. It returns a new circuit. Questions often test whether you know the original remains unbound after calling assign_parameters()._ 
+*EXAM WATCH: assign_parameters() does NOT modify the original circuit. It returns a new circuit. Questions often test whether you know the original remains unbound after calling assign_parameters().*
 
-**Page 9** 
+**Page 9**
 
-### **SECTION 5** 
+### **SECTION 5**
 
-# **Measurements, Classical Registers & Conditionals** 
+# **Measurements, Classical Registers & Conditionals**
 
 ```
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
@@ -313,17 +314,17 @@ print(counts)
 # This is the #1 source of confusion on the exam!
 ```
 
-_CRITICAL EXAM FACT: Qiskit bit string ordering is right-to-left. In counts key '10', the rightmost '0' is qubit 0, leftmost '1' is qubit 1. So '10' means q[0]=0, q[1]=1. This appears in 4–6 exam questions._ 
+*CRITICAL EXAM FACT: Qiskit bit string ordering is right-to-left. In counts key '10', the rightmost '0' is qubit 0, leftmost '1' is qubit 1. So '10' means q[0]=0, q[1]=1. This appears in 4–6 exam questions.*
 
-**Page 10** 
+**Page 10**
 
-### **SECTION 6** 
+### **SECTION 6**
 
-# **Simulators – AerSimulator & Statevector** 
+# **Simulators – AerSimulator & Statevector**
 
-`from qiskit_aer import AerSimulator from qiskit_aer.primitives import Sampler, Estimator from qiskit import QuantumCircuit, transpile import numpy as np #` II `AerSimulator (main exam simulator)` IIIIIIIIIIIIIIIIII `sim = AerSimulator() # method='automatic' by default # Statevector simulation (exact, no shots needed) sv_sim = AerSimulator(method='statevector') # Build a GHZ circuit qc = QuantumCircuit(3) qc.h(0); qc.cx(0,1); qc.cx(1,2) # Get statevector qc_sv = qc.copy() qc_sv.save_statevector() # Aer-specific instruction tqc = transpile(qc_sv, sv_sim) job = sv_sim.run(tqc) sv = job.result().get_statevector() print(sv) # [0.707, 0, 0, 0, 0, 0, 0, 0.707] # amplitudes for |000> and |111> #` II `Shot-based simulation` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `qc_m = qc.copy() qc_m.measure_all() tqc_m = transpile(qc_m, sim) job = sim.run(tqc_m, shots=8192) counts = job.result().get_counts() # ~4096 x '000', ~4096 x '111'` 
+`from qiskit_aer import AerSimulator from qiskit_aer.primitives import Sampler, Estimator from qiskit import QuantumCircuit, transpile import numpy as np #` II `AerSimulator (main exam simulator)` IIIIIIIIIIIIIIIIII `sim = AerSimulator() # method='automatic' by default # Statevector simulation (exact, no shots needed) sv_sim = AerSimulator(method='statevector') # Build a GHZ circuit qc = QuantumCircuit(3) qc.h(0); qc.cx(0,1); qc.cx(1,2) # Get statevector qc_sv = qc.copy() qc_sv.save_statevector() # Aer-specific instruction tqc = transpile(qc_sv, sv_sim) job = sv_sim.run(tqc) sv = job.result().get_statevector() print(sv) # [0.707, 0, 0, 0, 0, 0, 0, 0.707] # amplitudes for |000> and |111> #` II `Shot-based simulation` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `qc_m = qc.copy() qc_m.measure_all() tqc_m = transpile(qc_m, sim) job = sim.run(tqc_m, shots=8192) counts = job.result().get_counts() # ~4096 x '000', ~4096 x '111'`
 
-`#` II `Noise model simulation` IIIIIIIIIIIIIIIIIIIIIIIIIIIIII 
+`#` II `Noise model simulation` IIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 from qiskit_aer.noise import NoiseModel, depolarizing_error
@@ -338,17 +339,17 @@ noisy_sim = AerSimulator(noise_model=noise_model)
 job = noisy_sim.run(tqc_m, shots=4096)
 ```
 
-**Page 11** 
+**Page 11**
 
-`noisy_counts = job.result().get_counts() # Will show small probabilities for '001', '010', etc. (noise) #` II `Statevector probabilities` IIIIIIIIIIIIIIIIIIIIIIIIIII `from qiskit.quantum_info import Statevector qc2 = QuantumCircuit(2) qc2.h(0); qc2.cx(0,1) sv = Statevector(qc2) # directly from circuit print(sv.probabilities_dict()) # {'00': 0.5, '11': 0.5} print(sv.probabilities()) # [0.5, 0.0, 0.0, 0.5] #` II `DensityMatrix` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `from qiskit.quantum_info import DensityMatrix dm = DensityMatrix(qc2) print(dm.purity()) # 1.0 for pure state` 
+`noisy_counts = job.result().get_counts() # Will show small probabilities for '001', '010', etc. (noise) #` II `Statevector probabilities` IIIIIIIIIIIIIIIIIIIIIIIIIII `from qiskit.quantum_info import Statevector qc2 = QuantumCircuit(2) qc2.h(0); qc2.cx(0,1) sv = Statevector(qc2) # directly from circuit print(sv.probabilities_dict()) # {'00': 0.5, '11': 0.5} print(sv.probabilities()) # [0.5, 0.0, 0.0, 0.5] #` II `DensityMatrix` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `from qiskit.quantum_info import DensityMatrix dm = DensityMatrix(qc2) print(dm.purity()) # 1.0 for pure state`
 
-_Exam Tip: The exam distinguishes Statevector.probabilities() (array) from probabilities_dict() (dictionary). Know both return formats. Also: save_statevector() is AerSimulator-specific; Statevector(qc) works without Aer._ 
+*Exam Tip: The exam distinguishes Statevector.probabilities() (array) from probabilities_dict() (dictionary). Know both return formats. Also: save_statevector() is AerSimulator-specific; Statevector(qc) works without Aer.*
 
-**Page 12** 
+**Page 12**
 
-### **SECTION 7** 
+### **SECTION 7**
 
-# **Visualisation** 
+# **Visualisation**
 
 ```
 from qiskit import QuantumCircuit
@@ -370,7 +371,7 @@ qc = QuantumCircuit(2,2)
 qc.h(0); qc.cx(0,1); qc.measure([0,1],[0,1])
 ```
 
-`#` II `Circuit diagrams` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 
+`#` II `Circuit diagrams` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 print(qc.draw('text')) # ASCII (default, exam questions use this)
@@ -380,7 +381,7 @@ qc.draw('mpl', fold=20) # wrap at 20 columns
 qc.draw('mpl', filename='qc.png') # save to file
 ```
 
-`#` II `Histogram` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 
+`#` II `Histogram` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 from qiskit import transpile
@@ -396,7 +397,7 @@ fig = plot_histogram(counts)
 fig2 = plot_histogram([counts, counts], legend=['sim1','sim2'])
 ```
 
-`#` II `Bloch sphere` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 
+`#` II `Bloch sphere` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 # Shows qubit state as a point on the unit sphere
@@ -415,7 +416,7 @@ fig3 = plot_bloch_multivector(sv) # one sphere per qubit
 # |i> = positive Y-axis
 ```
 
-`#` II `State visualisations` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 
+`#` II `State visualisations` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 qc2 = QuantumCircuit(2)
@@ -431,21 +432,21 @@ plot_state_city(sv2) # 3D bar chart of density matrix
 plot_state_qsphere(sv2) # Q-sphere: global state view
 ```
 
-**Page 13** 
+**Page 13**
 
-_EXAM WATCH: draw('text') output is commonly shown in questions. Know that q_0 is the TOP wire in text/mpl drawing, and that the rightmost bit in the measurement result corresponds to q_0._ 
+*EXAM WATCH: draw('text') output is commonly shown in questions. Know that q_0 is the TOP wire in text/mpl drawing, and that the rightmost bit in the measurement result corresponds to q_0.*
 
-**Page 14** 
+**Page 14**
 
-### **SECTION 8** 
+### **SECTION 8**
 
-# **Transpilation – PassManager & Optimization Levels** 
+# **Transpilation – PassManager & Optimization Levels**
 
-Transpilation converts your logical circuit into a physical circuit that can run on a specific backend — mapping qubits to physical qubits, replacing gates with native basis gates, and inserting SWAP gates where needed. 
+Transpilation converts your logical circuit into a physical circuit that can run on a specific backend — mapping qubits to physical qubits, replacing gates with native basis gates, and inserting SWAP gates where needed.
 
-`from qiskit import QuantumCircuit, transpile from qiskit_ibm_runtime import QiskitRuntimeService from qiskit_aer import AerSimulator qc = QuantumCircuit(3) qc.h(0); qc.cx(0,1); qc.cx(1,2); qc.measure_all() #` II `transpile() — core function` IIIIIIIIIIIIIIIIIIIIIIIII `sim = AerSimulator() # Optimization level 0: no optimisation (fastest compile) tqc0 = transpile(qc, sim, optimization_level=0) # Optimization level 1: light optimisation (default) tqc1 = transpile(qc, sim, optimization_level=1) # Optimization level 2: medium optimisation tqc2 = transpile(qc, sim, optimization_level=2) # Optimization level 3: heavy optimisation (slowest compile, best circuit) tqc3 = transpile(qc, sim, optimization_level=3) print(f'Depth level 0: {tqc0.depth()}') print(f'Depth level 3: {tqc3.depth()}')` 
+`from qiskit import QuantumCircuit, transpile from qiskit_ibm_runtime import QiskitRuntimeService from qiskit_aer import AerSimulator qc = QuantumCircuit(3) qc.h(0); qc.cx(0,1); qc.cx(1,2); qc.measure_all() #` II `transpile() — core function` IIIIIIIIIIIIIIIIIIIIIIIII `sim = AerSimulator() # Optimization level 0: no optimisation (fastest compile) tqc0 = transpile(qc, sim, optimization_level=0) # Optimization level 1: light optimisation (default) tqc1 = transpile(qc, sim, optimization_level=1) # Optimization level 2: medium optimisation tqc2 = transpile(qc, sim, optimization_level=2) # Optimization level 3: heavy optimisation (slowest compile, best circuit) tqc3 = transpile(qc, sim, optimization_level=3) print(f'Depth level 0: {tqc0.depth()}') print(f'Depth level 3: {tqc3.depth()}')`
 
-`#` II `Transpile for real backend` IIIIIIIIIIIIIIIIIIIIIIIIII `service = QiskitRuntimeService(channel='ibm_quantum') backend = service.backend('ibm_brisbane') # 127-qubit Eagle` 
+`#` II `Transpile for real backend` IIIIIIIIIIIIIIIIIIIIIIIIII `service = QiskitRuntimeService(channel='ibm_quantum') backend = service.backend('ibm_brisbane') # 127-qubit Eagle`
 
 ```
 tqc_real = transpile(qc, backend=backend,
@@ -457,7 +458,7 @@ initial_layout=[0, 1, 2]) # map to specific qubits
 print(tqc_real.count_ops()) # shows native basis gates: cx, rz, sx, x
 ```
 
-`#` II `PassManager for custom transpilation` IIIIIIIIIIIIIIIII `from qiskit.transpiler import PassManager from qiskit.transpiler.passes import ( Unroller, Optimize1qGates, CXCancellation` 
+`#` II `PassManager for custom transpilation` IIIIIIIIIIIIIIIII `from qiskit.transpiler import PassManager from qiskit.transpiler.passes import ( Unroller, Optimize1qGates, CXCancellation`
 
 ```
 )
@@ -468,17 +469,17 @@ CXCancellation(), # cancel adjacent CX pairs
 ])
 ```
 
-**Page 15** 
+**Page 15**
 
-`optimised = pm.run(qc) print(f'Custom PM depth: {optimised.depth()}') #` II `Check basis gates of a backend` IIIIIIIIIIIIIIIIIIIIII `# For AerSimulator, basis gates include: cx, u, measure, reset # For IBM Eagle: ['ecr','id','rz','sx','x'] (varies by device)` 
+`optimised = pm.run(qc) print(f'Custom PM depth: {optimised.depth()}') #` II `Check basis gates of a backend` IIIIIIIIIIIIIIIIIIIIII `# For AerSimulator, basis gates include: cx, u, measure, reset # For IBM Eagle: ['ecr','id','rz','sx','x'] (varies by device)`
 
-_Exam Tip: optimization_level=3 produces the best circuit but takes longest to compile. The exam will ask you to identify which level minimises gate count (3) vs compilation time (0)._ 
+*Exam Tip: optimization_level=3 produces the best circuit but takes longest to compile. The exam will ask you to identify which level minimises gate count (3) vs compilation time (0).*
 
-**Page 16** 
+**Page 16**
 
-### **SECTION 9** 
+### **SECTION 9**
 
-# **Real Hardware – IBM Quantum & Job Management** 
+# **Real Hardware – IBM Quantum & Job Management**
 
 ```
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
@@ -486,9 +487,9 @@ from qiskit import QuantumCircuit, transpile
 service = QiskitRuntimeService(channel='ibm_quantum')
 ```
 
-`#` II `Backend selection` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `# List all available backends backends = service.backends() for b in backends: print(b.name, b.num_qubits, b.status().pending_jobs) # Get least busy backend with >= 5 qubits backend = service.least_busy(operational=True, min_num_qubits=5) print(f'Selected: {backend.name}') # Get specific backend backend = service.backend('ibm_brisbane')` 
+`#` II `Backend selection` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `# List all available backends backends = service.backends() for b in backends: print(b.name, b.num_qubits, b.status().pending_jobs) # Get least busy backend with >= 5 qubits backend = service.least_busy(operational=True, min_num_qubits=5) print(f'Selected: {backend.name}') # Get specific backend backend = service.backend('ibm_brisbane')`
 
-`#` II `Backend properties` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `config = backend.configuration() print(config.n_qubits) # 127 print(config.basis_gates) # native gate set print(config.coupling_map) # qubit connectivity` 
+`#` II `Backend properties` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `config = backend.configuration() print(config.n_qubits) # 127 print(config.basis_gates) # native gate set print(config.coupling_map) # qubit connectivity`
 
 ```
 props = backend.properties()
@@ -498,27 +499,27 @@ print(props.gate_error('cx', [0,1])) # CX error rate
 print(props.readout_error(0)) # measurement error
 ```
 
-`#` II `Submit job with SamplerV2 (Qiskit Runtime v2)` IIIIIIII `qc = QuantumCircuit(2, 2) qc.h(0); qc.cx(0,1); qc.measure([0,1],[0,1]) tqc = transpile(qc, backend, optimization_level=3) sampler = Sampler(backend) job = sampler.run([tqc], shots=4096) print(job.job_id()) # save this to retrieve results later! print(job.status()) # JobStatus.QUEUED / RUNNING / DONE / ERROR` 
+`#` II `Submit job with SamplerV2 (Qiskit Runtime v2)` IIIIIIII `qc = QuantumCircuit(2, 2) qc.h(0); qc.cx(0,1); qc.measure([0,1],[0,1]) tqc = transpile(qc, backend, optimization_level=3) sampler = Sampler(backend) job = sampler.run([tqc], shots=4096) print(job.job_id()) # save this to retrieve results later! print(job.status()) # JobStatus.QUEUED / RUNNING / DONE / ERROR`
 
-`result = job.result() # blocks until complete pub_result = result[0] counts = pub_result.data.meas.get_counts() # {'00': ~2048, '11': ~2048} #` II `Retrieve existing job by ID` IIIIIIIIIIIIIIIIIIIIIIIIII `retrieved_job = service.job('YOUR_JOB_ID_HERE')` 
+`result = job.result() # blocks until complete pub_result = result[0] counts = pub_result.data.meas.get_counts() # {'00': ~2048, '11': ~2048} #` II `Retrieve existing job by ID` IIIIIIIIIIIIIIIIIIIIIIIIII `retrieved_job = service.job('YOUR_JOB_ID_HERE')`
 
-**Page 17** 
+**Page 17**
 
 ```
 retrieved_result = retrieved_job.result()
 ```
 
-`#` II `Cancel a pending job` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `job.cancel() # only works if job is still QUEUED` 
+`#` II `Cancel a pending job` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `job.cancel() # only works if job is still QUEUED`
 
-_Exam Tip: The exam tests job lifecycle — QUEUED -> RUNNING -> DONE. Know that job.result() BLOCKS. Know that job_id() lets you retrieve results in a future session. Know that least_busy() is the recommended way to select a backend._ 
+*Exam Tip: The exam tests job lifecycle — QUEUED -> RUNNING -> DONE. Know that job.result() BLOCKS. Know that job_id() lets you retrieve results in a future session. Know that least_busy() is the recommended way to select a backend.*
 
-**Page 18** 
+**Page 18**
 
-### **SECTION 10** 
+### **SECTION 10**
 
-# **Quantum Algorithms – Full Implementations** 
+# **Quantum Algorithms – Full Implementations**
 
-## **Algorithm 1: Deutsch-Jozsa** 
+## **Algorithm 1: Deutsch-Jozsa**
 
 ```
 # Determines if f:{0,1}^n -> {0,1} is CONSTANT or BALANCED in 1 query
@@ -555,7 +556,7 @@ qc_bal = deutsch_jozsa(3, 'balanced')
 counts_b = sim.run(transpile(qc_bal,sim),shots=1024).result().get_counts()
 ```
 
-**Page 19** 
+**Page 19**
 
 ```
 print('Balanced:', counts_b) # {'111': 1024}
@@ -565,7 +566,7 @@ print('Balanced:', counts_b) # {'111': 1024}
 # KEY: if all-zeros -> CONSTANT; otherwise -> BALANCED
 ```
 
-## **Algorithm 2: Grover's Search** 
+## **Algorithm 2: Grover's Search**
 
 ```
 # Finds a marked element in unsorted database of N items
@@ -605,7 +606,7 @@ qc = QuantumCircuit(n, n)
 qc.h(range(n)) # uniform superposition
 ```
 
-**Page 20** 
+**Page 20**
 
 ```
 oracle = grover_oracle(n, marked)
@@ -622,7 +623,7 @@ top = max(counts, key=counts.get)
 print(f'Found: {top} = {int(top,2)}') # Found: 110 = 6
 ```
 
-## **Algorithm 3: Quantum Teleportation** 
+## **Algorithm 3: Quantum Teleportation**
 
 ```
 # Transmit unknown qubit state |psi> using 2 classical bits + 1 ebit
@@ -651,7 +652,7 @@ qc.measure(1, 1) # measure Bell qubit -> c[1]
 qc.barrier(label='Alice Measurement')
 ```
 
-**Page 21** 
+**Page 21**
 
 ```
 # Step 4: Bob applies correction based on classical bits
@@ -665,7 +666,7 @@ print(qc.draw('text'))
 # Expected: Bob's qubit ends in ry(1.2)|0> = same state Alice started with
 ```
 
-## **Algorithm 4: Quantum Fourier Transform** 
+## **Algorithm 4: Quantum Fourier Transform**
 
 ```
 # QFT: quantum analogue of DFT. Runs in O(n^2) vs O(n*2^n) classically.
@@ -697,205 +698,205 @@ op = Operator(qft_full)
 print(op.is_unitary()) # True
 ```
 
-**Page 22** 
+**Page 22**
 
 ```
 # op.data should be ~identity matrix
 ```
 
-_Exam Tip: You will not be asked to derive QFT from scratch. You WILL be asked: What is the gate complexity? O(n^2). What is QFT used for? Phase estimation, Shor's algorithm. What does it do? Maps computational basis to Fourier basis._ 
+*Exam Tip: You will not be asked to derive QFT from scratch. You WILL be asked: What is the gate complexity? O(n^2). What is QFT used for? Phase estimation, Shor's algorithm. What does it do? Maps computational basis to Fourier basis.*
 
-**Page 23** 
+**Page 23**
 
-### **SECTION 11** 
+### **SECTION 11**
 
-# **Practice Exam – 40 Questions with Explanations** 
+# **Practice Exam – 40 Questions with Explanations**
 
-Work through these questions under exam conditions: 60 minutes for 40 questions. Then review every explanation — especially questions you got right by guessing. 
+Work through these questions under exam conditions: 60 minutes for 40 questions. Then review every explanation — especially questions you got right by guessing.
 
-**Q1.** What does QuantumCircuit(3, 2) create? 
+**Q1.** What does QuantumCircuit(3, 2) create?
 
-A) 3 classical bits and 2 qubits 
+A) 3 classical bits and 2 qubits
 
-B) 3 qubits and 2 classical bits 
+B) 3 qubits and 2 classical bits
 
-C) A 3x2 quantum register 
+C) A 3x2 quantum register
 
-D) 3 qubits and no classical bits 
+D) 3 qubits and no classical bits
 
-_Answer: B — QuantumCircuit(n_qubits, n_clbits). First argument is always qubits._ 
+*Answer: B — QuantumCircuit(n_qubits, n_clbits). First argument is always qubits.*
 
-**Q2.** After qc.h(0); qc.cx(0,1) on |00>, the statevector is: 
+**Q2.** After qc.h(0); qc.cx(0,1) on |00>, the statevector is:
 
-A) |00> + |01> B) (|00> + |11>) / sqrt(2) C) (|01> + |10>) / sqrt(2) 
+A) |00> + |01> B) (|00> + |11>) / sqrt(2) C) (|01> + |10>) / sqrt(2)
 
-D) |11> 
+D) |11>
 
-_Answer: B — H creates superposition on q0, CNOT entangles. Result is Bell state Phi+._ 
+*Answer: B — H creates superposition on q0, CNOT entangles. Result is Bell state Phi+.*
 
-**Q3.** qc.measure([0,1],[1,0]) maps: 
+**Q3.** qc.measure([0,1],[1,0]) maps:
 
-A) qubit 0 -> cbit 0, qubit 1 -> cbit 1 
+A) qubit 0 -> cbit 0, qubit 1 -> cbit 1
 
-B) qubit 0 -> cbit 1, qubit 1 -> cbit 0 C) cbit 0 -> qubit 1, cbit 1 -> qubit 0 
+B) qubit 0 -> cbit 1, qubit 1 -> cbit 0 C) cbit 0 -> qubit 1, cbit 1 -> qubit 0
 
-D) This is invalid syntax 
+D) This is invalid syntax
 
-_Answer: B — measure(qubits_list, cbits_list) maps positionally: q[0]->c[1], q[1]->c[0]._ 
+*Answer: B — measure(qubits_list, cbits_list) maps positionally: q[0]->c[1], q[1]->c[0].*
 
-- **Q4.** What is the depth of: qc.h(0); qc.h(1); qc.cx(0,1)? 
+- **Q4.** What is the depth of: qc.h(0); qc.h(1); qc.cx(0,1)?
 
-A) 1 
+A) 1
 
-B) 2 C) 3 D) 4 
+B) 2 C) 3 D) 4
 
-_Answer: B — H(0) and H(1) execute in parallel (depth=1). CX follows (depth=2). Total=2._ 
+*Answer: B — H(0) and H(1) execute in parallel (depth=1). CX follows (depth=2). Total=2.*
 
-- **Q5.** Which Aer method gives the EXACT quantum state without measurement? 
+- **Q5.** Which Aer method gives the EXACT quantum state without measurement?
 
-A) AerSimulator(method='qasm') B) AerSimulator(method='statevector') 
+A) AerSimulator(method='qasm') B) AerSimulator(method='statevector')
 
-C) AerSimulator(method='unitary') 
+C) AerSimulator(method='unitary')
 
-D) AerSimulator(method='density_matrix') 
+D) AerSimulator(method='density_matrix')
 
-_Answer: B — method='statevector' gives exact amplitudes. 'qasm' uses shots._ 
+*Answer: B — method='statevector' gives exact amplitudes. 'qasm' uses shots.*
 
-**Page 24** 
+**Page 24**
 
-**Q6.** In counts {'01': 512, '10': 512}, what is the state of qubit 0? 
+**Q6.** In counts {'01': 512, '10': 512}, what is the state of qubit 0?
 
-A) Always |0> B) Always |1> C) 50% |0>, 50% |1> D) Superposition _Answer: C — Rightmost bit = q[0]. '01' -> q0=1; '10' -> q0=0. So q0 is 50/50._ 
+A) Always |0> B) Always |1> C) 50% |0>, 50% |1> D) Superposition *Answer: C — Rightmost bit = q[0]. '01' -> q0=1; '10' -> q0=0. So q0 is 50/50.*
 
-**Q7.** assign_parameters() on a ParameterVector circuit: 
+**Q7.** assign_parameters() on a ParameterVector circuit:
 
-A) Modifies the circuit in place 
+A) Modifies the circuit in place
 
-B) Returns a new bound circuit; original unchanged 
+B) Returns a new bound circuit; original unchanged
 
-C) Raises an error if any parameter is unbound 
+C) Raises an error if any parameter is unbound
 
-- D) Requires all parameters to be floats 
+- D) Requires all parameters to be floats
 
-- _Answer: B — assign_parameters() is non-destructive by default. Returns new circuit._ 
+- *Answer: B — assign_parameters() is non-destructive by default. Returns new circuit.*
 
-- **Q8.** What does transpile(qc, backend, optimization_level=3) do? 
+- **Q8.** What does transpile(qc, backend, optimization_level=3) do?
 
-A) Runs the circuit on the backend B) Converts the circuit to backend's native gates with maximum optimisation C) Simulates with 3 rounds of error correction D) Applies 3 transpilation passes only _Answer: B — optimization_level controls gate merging/cancellation aggressiveness (0-3)._ 
+A) Runs the circuit on the backend B) Converts the circuit to backend's native gates with maximum optimisation C) Simulates with 3 rounds of error correction D) Applies 3 transpilation passes only *Answer: B — optimization_level controls gate merging/cancellation aggressiveness (0-3).*
 
-**Q9.** The Toffoli gate (CCX) flips the target qubit when: 
+**Q9.** The Toffoli gate (CCX) flips the target qubit when:
 
-A) Either control qubit is |1> B) The first control qubit is |1> C) Both control qubits are |1> D) The target qubit is |0> _Answer: C — CCX = AND gate. Flips target only when BOTH controls are |1>._ 
+A) Either control qubit is |1> B) The first control qubit is |1> C) Both control qubits are |1> D) The target qubit is |0> *Answer: C — CCX = AND gate. Flips target only when BOTH controls are |1>.*
 
-**Q10.** qc.barrier() primarily serves to: 
+**Q10.** qc.barrier() primarily serves to:
 
-A) Measure all qubits simultaneously B) Reset all qubits to |0> C) Prevent gate reordering during transpilation and visually separate sections D) Add a time delay in the circuit _Answer: C — Barriers are optimisation fences + visual separators. No physical operation._ 
+A) Measure all qubits simultaneously B) Reset all qubits to |0> C) Prevent gate reordering during transpilation and visually separate sections D) Add a time delay in the circuit *Answer: C — Barriers are optimisation fences + visual separators. No physical operation.*
 
-**Q11.** What is the output of qc.count_ops() for a circuit with 2 H gates and 1 CX? A) 3 B) {'h': 2, 'cx': 1} C) {'count': 3} D) [H, H, CX] _Answer: B — count_ops() returns an OrderedDict mapping gate name to count._ 
+**Q11.** What is the output of qc.count_ops() for a circuit with 2 H gates and 1 CX? A) 3 B) {'h': 2, 'cx': 1} C) {'count': 3} D) [H, H, CX] *Answer: B — count_ops() returns an OrderedDict mapping gate name to count.*
 
-**Page 25** 
+**Page 25**
 
-**Q12.** To run a circuit on IBM real hardware with Runtime v2, you use: 
+**Q12.** To run a circuit on IBM real hardware with Runtime v2, you use:
 
-A) qc.run(backend) 
+A) qc.run(backend)
 
-B) backend.run(qc) 
+B) backend.run(qc)
 
-C) SamplerV2(backend).run([tqc]) 
+C) SamplerV2(backend).run([tqc])
 
-- D) execute(qc, backend) 
+- D) execute(qc, backend)
 
-_Answer: C — Qiskit Runtime v2 uses SamplerV2 or EstimatorV2 primitives._ 
+*Answer: C — Qiskit Runtime v2 uses SamplerV2 or EstimatorV2 primitives.*
 
-- **Q13.** Grover's algorithm provides which speedup over classical search? 
+- **Q13.** Grover's algorithm provides which speedup over classical search?
 
-A) Exponential 
+A) Exponential
 
-B) Quadratic (sqrt(N) vs N) 
+B) Quadratic (sqrt(N) vs N)
 
-C) Linear 
+C) Linear
 
-D) Logarithmic 
+D) Logarithmic
 
-_Answer: B — Grover: O(sqrt(N)) queries. Classical unstructured search: O(N)._ 
+*Answer: B — Grover: O(sqrt(N)) queries. Classical unstructured search: O(N).*
 
-- **Q14.** plot_bloch_multivector() is called with: 
+- **Q14.** plot_bloch_multivector() is called with:
 
-A) A counts dictionary 
+A) A counts dictionary
 
-B) A QuantumCircuit 
+B) A QuantumCircuit
 
-C) A Statevector or DensityMatrix 
+C) A Statevector or DensityMatrix
 
-D) A backend object 
+D) A backend object
 
-_Answer: C — It visualises quantum state. Input must be a state object, not raw circuit._ 
+*Answer: C — It visualises quantum state. Input must be a state object, not raw circuit.*
 
-- **Q15.** Which gate is self-inverse (gate applied twice = identity)? 
+- **Q15.** Which gate is self-inverse (gate applied twice = identity)?
 
-A) S gate B) T gate C) H gate D) Rz(pi/4) gate 
+A) S gate B) T gate C) H gate D) Rz(pi/4) gate
 
-_Answer: C — H^2 = I. X, Y, Z, CNOT are also self-inverse. S^2=Z, T^2=S (not identity)._ 
+*Answer: C — H^2 = I. X, Y, Z, CNOT are also self-inverse. S^2=Z, T^2=S (not identity).*
 
-**Q16.** A ParameterVector('theta', 4) creates: 
+**Q16.** A ParameterVector('theta', 4) creates:
 
-A) 4 independent parameters named theta_0..theta_3 
+A) 4 independent parameters named theta_0..theta_3
 
-B) One parameter named theta with value 4 C) A 4-dimensional array parameter D) 4 qubits named theta _Answer: A — ParameterVector creates an indexed collection: theta[0], theta[1], ..., theta[3]._ 
+B) One parameter named theta with value 4 C) A 4-dimensional array parameter D) 4 qubits named theta *Answer: A — ParameterVector creates an indexed collection: theta[0], theta[1], ..., theta[3].*
 
-- **Q17.** What does service.least_busy(min_num_qubits=5) return? 
+- **Q17.** What does service.least_busy(min_num_qubits=5) return?
 
-A) The backend with fewest total qubits 
+A) The backend with fewest total qubits
 
-B) The operational backend with shortest queue and at least 5 qubits 
+B) The operational backend with shortest queue and at least 5 qubits
 
-C) The fastest backend available D) A local simulator with 5 qubits _Answer: B — least_busy() selects operational backend with fewest pending jobs._ 
+C) The fastest backend available D) A local simulator with 5 qubits *Answer: B — least_busy() selects operational backend with fewest pending jobs.*
 
-**Page 26** 
+**Page 26**
 
-- **Q18.** After qc.measure_all(), the circuit has: 
+- **Q18.** After qc.measure_all(), the circuit has:
 
-   - A) Measured each qubit into a pre-existing classical register 
+  - A) Measured each qubit into a pre-existing classical register
 
-   - B) Added a new ClassicalRegister named 'meas' and measured all qubits 
+  - B) Added a new ClassicalRegister named 'meas' and measured all qubits
 
-   - C) Collapsed the quantum state permanently 
+  - C) Collapsed the quantum state permanently
 
-   - D) Applied a global measurement gate 
+  - D) Applied a global measurement gate
 
-_Answer: B — measure_all() automatically adds a 'meas' register with n bits._ 
+*Answer: B — measure_all() automatically adds a 'meas' register with n bits.*
 
-- **Q19.** The parameter shift rule computes gradients by: 
+- **Q19.** The parameter shift rule computes gradients by:
 
-   - A) Finite differences: [f(x+eps)-f(x)]/eps 
+  - A) Finite differences: [f(x+eps)-f(x)]/eps
 
-   - B) Evaluating circuit at theta+pi/2 and theta-pi/2 
+  - B) Evaluating circuit at theta+pi/2 and theta-pi/2
 
-   - C) Automatic differentiation through the gate matrix 
+  - C) Automatic differentiation through the gate matrix
 
-   - D) Approximating the Jacobian numerically 
+  - D) Approximating the Jacobian numerically
 
-_Answer: B — Parameter shift: grad = [f(theta+pi/2) - f(theta-pi/2)] / 2. Exact, not approximate._ 
+*Answer: B — Parameter shift: grad = [f(theta+pi/2) - f(theta-pi/2)] / 2. Exact, not approximate.*
 
-- **Q20.** compose(other, qubits=[2,3]) maps: 
+- **Q20.** compose(other, qubits=[2,3]) maps:
 
-   - A) Physical qubits 2,3 of the device 
+  - A) Physical qubits 2,3 of the device
 
-   - B) The qubits of 'other' onto qubits 2,3 of the base circuit 
+  - B) The qubits of 'other' onto qubits 2,3 of the base circuit
 
-   - C) Qubits 2,3 of the base circuit to qubit 0,1 of other 
+  - C) Qubits 2,3 of the base circuit to qubit 0,1 of other
 
-   - D) Both A and C 
+  - D) Both A and C
 
-_Answer: C — qubits parameter specifies which qubits in base circuit the subcircuit maps TO._ 
+*Answer: C — qubits parameter specifies which qubits in base circuit the subcircuit maps TO.*
 
-**Continue practising: IBM Quantum Learning has official practice assessments at learning.quantum.ibm.com. Complete all 'Basics of Quantum Information' and 'Fundamentals of Quantum Algorithms' learning paths before exam day.** 
+**Continue practising: IBM Quantum Learning has official practice assessments at learning.quantum.ibm.com. Complete all 'Basics of Quantum Information' and 'Fundamentals of Quantum Algorithms' learning paths before exam day.**
 
-**Page 27** 
+**Page 27**
 
-### **SECTION 12** 
+### **SECTION 12**
 
-# **Quick-Reference Cheat Sheet** 
+# **Quick-Reference Cheat Sheet**
 
 |**API / Class**|**Method**|**Description**|
 |---|---|---|
@@ -917,6 +918,6 @@ _Answer: C — qubits parameter specifies which qubits in base circuit the subci
 |QiskitRuntimeService|.least_busy()|Backend with shortest queue|
 |SamplerV2|.run([tqc], shots=N)|Run on real backend (Runtime v2)|
 
-_Bit String Order (MEMORISE): Qiskit counts keys are RIGHT-TO-LEFT. Key '01' = q[0] measured 1, q[1] measured 0. Key '10' = q[0] measured 0, q[1] measured 1._ 
+*Bit String Order (MEMORISE): Qiskit counts keys are RIGHT-TO-LEFT. Key '01' = q[0] measured 1, q[1] measured 0. Key '10' = q[0] measured 0, q[1] measured 1.*
 
-**You are ready. Study this guide, run every code block, and complete all IBM Quantum Learning paths. Register at https://www.ibm.com/training/certification/C1000112 — good luck!**
+**You are ready. Study this guide, run every code block, and complete all IBM Quantum Learning paths. Register at <https://www.ibm.com/training/certification/C1000112> — good luck!**

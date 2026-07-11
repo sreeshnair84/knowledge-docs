@@ -23,7 +23,7 @@ When a Fortune 500 company hires McKinsey, BCG, Accenture, or Deloitte to help w
 ### External Consulting vs. Internal EA: Similarities and Differences
 
 | Dimension | External Consulting | Internal EA |
-|-----------|--------------------|-----------| 
+| ----------- | -------------------- | ----------- |
 | Primary client relationship | Engagement partner and project sponsor | CIO, business unit leads, executive team |
 | Accountability | Contractual deliverables and milestones | Internal governance and performance review |
 | Knowledge of client context | Built during discovery | Pre-existing and deep |
@@ -53,7 +53,7 @@ The best internal Enterprise Architects learn from the consulting disciplines an
 Understanding how consulting is priced matters for the client relationship. Common pricing models:
 
 | Model | Description | Client Risk | Consultant Risk |
-|-------|-------------|-------------|-----------------|
+| ------- | ------------- | ------------- | ----------------- |
 | Time and materials (T&M) | Client pays for hours worked at an agreed rate | Open-ended cost exposure | Low — billed for all work |
 | Fixed price | Agreed price for a defined scope | Cost certainty; scope risk | High — cost overruns come from margin |
 | Milestone-based | Payments tied to defined deliverables | Medium — tied to outcomes | Medium — must deliver milestones |
@@ -84,6 +84,7 @@ The kickoff meeting sets the tone for the entire engagement. It is not an orient
 6. **Immediate risks** (15 min) — any known risks to the engagement that should be surfaced now
 
 **What to avoid in the kickoff meeting:**
+
 - Presenting a pre-formed hypothesis about what the problem is — you have not yet done the work
 - Describing your methodology in detail — clients hired you for the output, not the process
 - Allowing the conversation to be dominated by one powerful stakeholder who will skew your discovery
@@ -118,7 +119,7 @@ STAKEHOLDER MAP TEMPLATE
 **Key stakeholder roles in every AI consulting engagement:**
 
 | Role | Description | How to Engage |
-|------|-------------|---------------|
+| ------ | ------------- | --------------- |
 | Sponsor | Funds the engagement; owns the outcome | Weekly briefing; no surprises; decision gateway for scope changes |
 | Champion | Internal ally who facilitated the engagement; helps you navigate | Daily or near-daily; ask them who to talk to and who to avoid |
 | Economic Buyer | May differ from the sponsor; controls the budget | Ensure they understand ROI; involve in investment justification |
@@ -137,6 +138,7 @@ Use this guide for every senior discovery interview. Adapt based on the intervie
 **Core Discovery Questions (20 questions)**
 
 *Business context and strategy:*
+
 1. What are the two or three most important business outcomes your organisation needs to achieve in the next 12 months?
 2. What does success look like for your function in three years that it does not look like today?
 3. Where do you feel the most competitive pressure right now?
@@ -244,7 +246,7 @@ The application portfolio assessment answers: which applications are strategic, 
 **Application classification model:**
 
 | Quadrant | Strategic Value | Technical Health | Action |
-|----------|----------------|-----------------|--------|
+| ---------- | ---------------- | ----------------- | -------- |
 | Invest | High | High | Prioritise AI enablement |
 | Migrate | High | Low | Modernise to enable AI use cases |
 | Contain | Low | High | Maintain; do not extend |
@@ -275,7 +277,7 @@ AI programs live or die on data quality. The data assessment is the most critica
 ### AI Capability Assessment
 
 | Capability | Assessment Questions | Maturity Indicators |
-|------------|---------------------|---------------------|
+| ------------ | --------------------- | --------------------- |
 | AI in production | How many AI models are currently in production? | 0 = none; 3 = 1–5 models; 5 = 10+ models with monitoring |
 | MLOps | How are models deployed, monitored, and retrained? | 1 = manual; 3 = partial automation; 5 = full CI/CD pipeline |
 | Model governance | How are AI models approved before go-live? | 1 = no process; 3 = informal review; 5 = formal governance board |
@@ -402,7 +404,7 @@ Close with a structured dot-voting exercise: each participant gets 5 votes to al
 For each candidate use case, assess against these five dimensions. Score each 1–5.
 
 | Dimension | Questions to Ask | Score |
-|-----------|-----------------|-------|
+| ----------- | ----------------- | ------- |
 | Data availability | Is there sufficient historical data? Is it accessible? Is it labelled? | 1–5 |
 | Business outcome clarity | Is the target outcome specific and measurable? Is there a clear KPI? | 1–5 |
 | Measurability | Can we measure the impact of the AI system vs. the current state? | 1–5 |
@@ -476,6 +478,7 @@ Effort estimation in consulting follows a structured decomposition:
 5. Add reimbursable expenses (travel, accommodation, tools)
 
 **Common estimation errors:**
+
 - Underestimating client review and revision cycles (typically 30–40% of total effort)
 - Ignoring the time required to prepare, facilitate, and document workshops
 - Not accounting for internal coordination within the consulting team
@@ -596,6 +599,7 @@ AI PROGRAM ROADMAP — INDICATIVE STRUCTURE
 Quick wins serve a critical organisational function: they prove that AI works in this specific context, for these specific people, with this organisation's actual data. They build the internal credibility that sustains the larger program.
 
 Quick win criteria:
+
 - Visible to a broad audience (ideally the executive team)
 - Delivers a measurable result within 90 days
 - Does not require major infrastructure changes
@@ -607,7 +611,7 @@ Quick win criteria:
 Every roadmap initiative has dependencies. Map them explicitly:
 
 | Initiative | Depends On | Enables |
-|------------|-----------|---------|
+| ------------ | ----------- | --------- |
 | AI network operations pilot | Data platform foundation, MLOps pipeline | Scale to additional network domains |
 | Customer AI assistant | Unified customer data view, API gateway | Personalisation engine |
 | Predictive maintenance | IoT sensor data integration | Autonomous maintenance scheduling |
@@ -623,6 +627,7 @@ Dependencies that are not mapped become program failures that "nobody could have
 The transition from a strategy engagement to implementation is where many AI programs stall. The strategy team has recommended a program and departed. The implementation team has arrived but does not fully understand the rationale behind the decisions. The business sponsor is now being asked to own something they did not build.
 
 **Transition best practices:**
+
 - Produce a detailed "program brief" — a document that captures the full context of the strategy engagement for the implementation team
 - Run a transition workshop where strategy team members brief the implementation team directly
 - Confirm that the business sponsor is still in role and committed (leadership changes are the number one risk during transition)
@@ -669,7 +674,7 @@ Benefits tracking requires a baseline. Before any implementation work begins, me
 **Benefits Tracking Register Template:**
 
 | Benefit | KPI | Baseline Value | Target Value | Measurement Method | Owner | Target Date |
-|---------|-----|---------------|-------------|-------------------|-------|-------------|
+| --------- | ----- | --------------- | ------------- | ------------------- | ------- | ------------- |
 | Reduced incident resolution time | Mean time to resolve | 45 min | 4 min | ITSM system auto-report | NOC Lead | Q2 Y1 |
 | Reduced incident volume | Incidents per month | 192,000 | 75,000 | Network management platform | NOC Lead | Q4 Y1 |
 | Reduced operations cost | Cost per incident | $180 | $28 | Finance monthly report | CFO office | Q4 Y1 |
@@ -752,7 +757,7 @@ The consulting team conducted 22 interviews over three weeks. Key themes:
 **Assessment scores:**
 
 | Domain | Score | Key Finding |
-|--------|-------|------------|
+| -------- | ------- | ------------ |
 | Application portfolio | 2.8/5 | Legacy OSS/BSS is technically sound but poorly integrated; no AI-ready APIs |
 | Data | 2.1/5 | Fragmented telemetry data; no unified incident history; data quality issues in 3 of 4 systems |
 | AI capability | 1.4/5 | No AI in production in network operations; one ML proof of concept in billing (never deployed) |
@@ -783,7 +788,7 @@ The heat map revealed three clusters of high-priority AI opportunity:
 **Scoring results (top 5):**
 
 | Use Case | Value Score | Feasibility Score | Priority |
-|----------|------------|------------------|---------|
+| ---------- | ------------ | ------------------ | --------- |
 | Automated incident classification and routing | 4.8 | 4.1 | 1 |
 | Predictive fault detection | 4.6 | 3.2 | 2 |
 | AI-assisted incident resolution | 4.3 | 3.8 | 3 |
@@ -801,7 +806,7 @@ The consulting team facilitated a 4-hour investment justification workshop with 
 **Agreed business case (base case):**
 
 | Year | Investment | Cumulative Savings | Net |
-|------|-----------|-------------------|-----|
+| ------ | ----------- | ------------------- | ----- |
 | Y1 | $12M | $4.1M | $(7.9M) |
 | Y2 | $8M | $18.6M | $10.6M |
 | Y3 | $2M | $38.2M | $36.2M |
@@ -856,6 +861,7 @@ See the full 20-question guide in Phase 1 of this module. Print and adapt before
 ### Tool 2: Stakeholder Map Template
 
 Use the power/interest grid in Phase 1. For each stakeholder, record:
+
 - Name and role
 - Power level (1–5) and interest level (1–5)
 - Current position on the engagement (Champion / Neutral / Skeptic / Blocker)
@@ -865,7 +871,7 @@ Use the power/interest grid in Phase 1. For each stakeholder, record:
 ### Tool 3: AI Opportunity Scoring Matrix
 
 | Use Case | Strategic Value (1–5) | Ease of Implementation (1–5) | Data Readiness (1–5) | Org Readiness (1–5) | Regulatory Risk (1–5 inverse) | Total Score |
-|----------|----------------------|-----------------------------|--------------------|-------------------|------------------------------|-------------|
+| ---------- | ---------------------- | ----------------------------- | -------------------- | ------------------- | ------------------------------ | ------------- |
 | [Use case 1] | | | | | | |
 | [Use case 2] | | | | | | |
 | [Use case 3] | | | | | | |
@@ -919,7 +925,7 @@ Use the register format defined in Phase 10. Populate the baseline column before
 ## Common Mistakes in AI Consulting Engagements
 
 | Mistake | Why It Fails | The Better Approach |
-|---------|-------------|---------------------|
+| --------- | ------------- | --------------------- |
 | Not understanding client politics early | Political blockers can kill an engagement that has technical merit | Map stakeholders in week 1; identify blockers and develop a specific engagement plan |
 | Delivering what was asked, not what was needed | Clients pay for value, not compliance | Ask "what decision do you need to make?" not just "what deliverable do you want?" |
 | Analysis paralysis — too much discovery, not enough recommendation | Clients lose patience and confidence | Set a discovery boundary at week 4; commit to a recommendation structure by week 8 |

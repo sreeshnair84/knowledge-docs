@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 DeepMind's safety work is not academic-only. Their frameworks for **controllability**, **corrigibility** (the ability to correct or shut down an AI system), and **scalable oversight** translate directly into production design decisions:
 
 | DeepMind concept | Enterprise architecture implication |
-|---|---|
+| --- | --- |
 | **Corrigibility** | AI systems must remain interruptible and correctable; design kill-switches and suspension mechanisms into every agentic deployment |
 | **Scalable oversight** | As agents take more autonomous actions, human review cannot scale linearly; invest in automated oversight tools (LLM-as-judge, anomaly detection) rather than more human reviewers |
 | **Constitutional AI / RLHF** | Value alignment at training time reduces (but does not eliminate) need for runtime guardrails |
@@ -34,7 +34,7 @@ DeepMind's safety work is not academic-only. Their frameworks for **controllabil
 ## Key 2025–2026 Publications
 
 | Publication | Year | Relevance |
-|---|---|---|
+| --- | --- | --- |
 | **Frontier Safety Framework** | 2024 | Thresholds for dangerous capabilities; methodology for pre-deployment evaluation applicable to internal model assessments |
 | **Scalable Oversight** (debate/amplification) | Ongoing | Designs for human-AI collaborative oversight that scales as agent autonomy increases |
 | **Gemini Safety Report** | 2024–2025 | Capability evaluations, red-teaming methodology, refusal calibration — reference for enterprise AI red-team design |
@@ -70,4 +70,3 @@ DeepMind's corrigibility research emphasizes that AI systems must not actively u
 <summary>DeepMind Control Roadmap — PDF series</summary>
 <p>The PDF documents in this section contain detailed research summaries, framework designs, and control methodology from DeepMind's published safety work. Use the navigation to access them.</p>
 </details>
-

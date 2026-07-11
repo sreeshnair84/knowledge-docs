@@ -3,9 +3,10 @@ Patch frontmatter in PDF/DOCX-converted MD files to satisfy the pre-commit hook.
 Fixes: missing last_reviewed, covers_version, research fields, doc_type values,
 and adds full required frontmatter to DOCX-converted files that have minimal headers.
 """
+
 import re
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 TODAY = date.today().isoformat()
@@ -17,23 +18,23 @@ DOCTYPE_MAP = {
 
 # Fields to inject per doc_type if missing
 TYPE_DEFAULTS = {
-    "guide":               {"covers_version": '"N/A"', "last_reviewed": TODAY},
-    "research-report":     {"covers_through": TODAY, "research_date": TODAY, "last_reviewed": TODAY},
+    "guide": {"covers_version": '"N/A"', "last_reviewed": TODAY},
+    "research-report": {"covers_through": TODAY, "research_date": TODAY, "last_reviewed": TODAY},
     "framework-reference": {"framework_name": '""', "last_reviewed": TODAY},
     "interview-questions": {"last_reviewed": TODAY},
-    "certification":       {"last_reviewed": TODAY},
+    "certification": {"last_reviewed": TODAY},
     "workshop-transcript": {"last_reviewed": TODAY},
-    "case-study":          {"last_reviewed": TODAY},
-    "engagement-case-study":  {"last_reviewed": TODAY},
-    "narrative-case-study":   {"last_reviewed": TODAY},
-    "multi-part-series":      {"last_reviewed": TODAY},
+    "case-study": {"last_reviewed": TODAY},
+    "engagement-case-study": {"last_reviewed": TODAY},
+    "narrative-case-study": {"last_reviewed": TODAY},
+    "multi-part-series": {"last_reviewed": TODAY},
 }
 
 UNIVERSAL_DEFAULTS = {
-    "date_created":  TODAY,
+    "date_created": TODAY,
     "last_reviewed": TODAY,
-    "status":        "current",
-    "source_type":   "converted-pdf",
+    "status": "current",
+    "source_type": "converted-pdf",
 }
 
 
@@ -71,7 +72,7 @@ def patch_frontmatter(content: str, path: Path) -> str:
     fm_lines = fm_raw.strip().splitlines()
     existing = {}
     for line in fm_lines:
-        m = re.match(r'^(\w+):\s*(.*)', line)
+        m = re.match(r"^(\w+):\s*(.*)", line)
         if m:
             existing[m.group(1)] = m.group(2).strip()
 
@@ -82,7 +83,7 @@ def patch_frontmatter(content: str, path: Path) -> str:
     # Build updated frontmatter lines
     new_fm_lines = []
     for line in fm_lines:
-        m = re.match(r'^(doc_type):\s*(.*)', line)
+        m = re.match(r"^(doc_type):\s*(.*)", line)
         if m:
             new_fm_lines.append(f"doc_type: {new_dtype}")
         else:
@@ -108,9 +109,11 @@ def main():
     for md_path in sorted(ROOT.rglob("*.md")):
         content = md_path.read_text(encoding="utf-8", errors="replace")
         # Only patch converted files
-        if ("source_type: converted-pdf" not in content
-                and "source_type: converted-docx" not in content
-                and "source_type: native-md" not in content):
+        if (
+            "source_type: converted-pdf" not in content
+            and "source_type: converted-docx" not in content
+            and "source_type: native-md" not in content
+        ):
             # DOCX converter wrote minimal frontmatter with just title
             if not content.startswith("---\ntitle:"):
                 continue

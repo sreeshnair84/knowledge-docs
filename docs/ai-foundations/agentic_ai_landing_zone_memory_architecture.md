@@ -67,12 +67,14 @@ User Frustration: 😤 "I just told you this!"
 **Purpose:** Immediate, ephemeral storage during active reasoning.
 
 **What it stores:**
+
 - Current task state
 - Intermediate reasoning steps
 - Active variables and computations
 - Transient context from current request
 
 **Characteristics:**
+
 - ⏱️ **Lifetime**: Duration of single request/interaction
 - 💾 **Storage**: In-memory (RAM)
 - 🔄 **Scope**: Single agent instance
@@ -109,16 +111,16 @@ class WorkingMemory:
     def __init__(self):
         self.state = {}
         self.reasoning_steps = []
-    
+
     def set(self, key, value):
         self.state[key] = value
-    
+
     def get(self, key):
         return self.state.get(key)
-    
+
     def add_reasoning_step(self, step):
         self.reasoning_steps.append(step)
-    
+
     def clear(self):
         """Auto-called at end of request"""
         self.state = {}
@@ -132,12 +134,14 @@ class WorkingMemory:
 **Purpose:** Store messages within a session/conversation.
 
 **What it stores:**
+
 - User messages
 - Agent responses
 - Multi-turn dialogue history
 - Session context
 
 **Characteristics:**
+
 - ⏱️ **Lifetime**: Single session (30 min - 1 day)
 - 💾 **Storage**: In-memory cache or temp DB
 - 🔄 **Scope**: Single conversation thread
@@ -192,25 +196,25 @@ class ConversationMemory:
         self.messages = []
         self.created_at = datetime.now()
         self.ttl = ttl_minutes
-    
+
     def add_message(self, role: str, content: str):
         self.messages.append({
             "role": role,  # "user" or "agent"
             "content": content,
             "timestamp": datetime.now()
         })
-    
+
     def get_conversation_context(self):
         """Return formatted history for LLM context"""
         return "\n".join([
             f"{m['role']}: {m['content']}"
             for m in self.messages
         ])
-    
+
     def is_expired(self):
         age_minutes = (datetime.now() - self.created_at).total_seconds() / 60
         return age_minutes > self.ttl
-    
+
     def summarize(self):
         """Optional: Summarize and archive"""
         return {
@@ -229,12 +233,14 @@ class ConversationMemory:
 **Purpose:** Store specific events and experiences for retrieval.
 
 **What it stores:**
+
 - Past interactions (resolved support tickets)
 - Historical decisions and their outcomes
 - Customer behavior patterns
 - Contextual events and circumstances
 
 **Characteristics:**
+
 - ⏱️ **Lifetime**: Months to years (retention varies)
 - 💾 **Storage**: Database (PostgreSQL, Cosmos DB, etc.)
 - 🔄 **Scope**: Specific to agent/user/domain
@@ -283,13 +289,13 @@ When customer 12345 calls again:
 class EpisodicMemory:
     def __init__(self, db_connection):
         self.db = db_connection
-    
+
     def store_episode(self, episode: dict):
         """Store an event/experience"""
         episode["timestamp"] = datetime.now()
         episode["embedding"] = embed_text(episode["description"])
         self.db.insert("episodic_memory", episode)
-    
+
     def retrieve_similar_episodes(self, query: str, limit=5):
         """Find similar past experiences"""
         query_embedding = embed_text(query)
@@ -299,7 +305,7 @@ class EpisodicMemory:
             limit=limit
         )
         return similar
-    
+
     def retrieve_customer_history(self, customer_id: str):
         """Get all episodes for a customer"""
         return self.db.query(
@@ -307,7 +313,7 @@ class EpisodicMemory:
             [customer_id],
             order_by="timestamp DESC"
         )
-    
+
     def extract_patterns(self, customer_id: str):
         """Analyze episodes to find patterns"""
         episodes = self.retrieve_customer_history(customer_id)
@@ -328,6 +334,7 @@ class EpisodicMemory:
 **Purpose:** Store facts, relationships, and knowledge.
 
 **What it stores:**
+
 - Company policies and procedures
 - Product information
 - Customer preferences and segments
@@ -335,6 +342,7 @@ class EpisodicMemory:
 - Facts and rules
 
 **Characteristics:**
+
 - ⏱️ **Lifetime**: Persistent (months to years)
 - 💾 **Storage**: Knowledge graphs (Neo4j), vector DBs (Pinecone), or documents
 - 🔄 **Scope**: Shared across multiple agents
@@ -401,7 +409,7 @@ class SemanticMemory:
     def __init__(self, vector_db, knowledge_graph_db):
         self.vector_db = vector_db  # Pinecone, Weaviate
         self.kg_db = knowledge_graph_db  # Neo4j
-    
+
     def store_fact(self, fact: str, metadata: dict):
         """Store fact with embedding"""
         embedding = embed_text(fact)
@@ -411,7 +419,7 @@ class SemanticMemory:
             "embedding": embedding,
             "metadata": metadata
         })
-    
+
     def retrieve_fact(self, query: str, threshold=0.8):
         """Search for relevant facts"""
         query_embedding = embed_text(query)
@@ -421,14 +429,14 @@ class SemanticMemory:
             threshold=threshold
         )
         return results
-    
+
     def get_entity_relationships(self, entity_id: str):
         """Retrieve entity from knowledge graph"""
         return self.kg_db.query(
             f"MATCH (n {{id: '{entity_id}'}}) "
             f"RETURN n, relationships(n)"
         )
-    
+
     def update_policy(self, policy_id: str, new_policy: dict):
         """Update fact in knowledge base"""
         self.vector_db.upsert({
@@ -446,6 +454,7 @@ class SemanticMemory:
 **Purpose:** Shared knowledge across all agents and the organization.
 
 **What it stores:**
+
 - Company knowledge base (procedures, best practices)
 - Training data and examples
 - Historical decisions and precedents
@@ -453,6 +462,7 @@ class SemanticMemory:
 - Lessons learned and playbooks
 
 **Characteristics:**
+
 - ⏱️ **Lifetime**: Permanent
 - 💾 **Storage**: Central repository (Wiki, Confluence, custom DB)
 - 🔄 **Scope**: Shared across organization
@@ -530,12 +540,14 @@ Organizational Central Repo     Permanent     < 1s          $$ (medium)
 ### Memory Hygiene
 
 **What to delete (privacy/compliance):**
+
 - ✅ PII after retention period (GDPR: 7 years)
 - ✅ Financial data (older than 7 years)
 - ✅ Deleted customer data (right to erasure)
 - ✅ Sensitive credentials (never store)
 
 **What to keep:**
+
 - ✅ Anonymized patterns (for learning)
 - ✅ Aggregated statistics (trends, insights)
 - ✅ Business decisions (compliance trail)
@@ -594,16 +606,19 @@ Organizational Memory (central repo):
 ### Optimization Strategies
 
 **Compression:**
+
 - ✅ Summarize old conversations (after 30 days)
 - ✅ Archive episodic memory (move to cold storage after 2 years)
 - ✅ Prune semantic memory (remove unused facts)
 
 **Partitioning:**
+
 - ✅ Separate by customer (faster queries)
 - ✅ Separate by agent type (only agents that need it)
 - ✅ Separate by time period (hot recent, cold historical)
 
 **Deduplication:**
+
 - ✅ Remove duplicate facts (single source of truth)
 - ✅ Consolidate similar episodes
 - ✅ Remove outdated policies
@@ -658,4 +673,3 @@ Governance:
 **Next Tier 3 Document:** Agent Identity & Trust Architecture  
 **Related:** Context Engineering (how agents get data into working/conversation memory)  
 **Estimated Full Tier 3:** 5 documents, ~8,000 lines, ready by midnight
-

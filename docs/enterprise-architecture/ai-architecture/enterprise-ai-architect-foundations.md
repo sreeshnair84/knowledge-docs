@@ -35,7 +35,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 ### 1.2 Core Responsibilities
 
 | Responsibility | Description |
-|---------------|-------------|
+| --------------- | ------------- |
 | **AI strategy alignment** | Translate business objectives into AI capability roadmap |
 | **Platform selection** | Choose cloud platforms, foundation models, and tooling |
 | **Architecture design** | Design integration, data, security, and observability layers |
@@ -48,7 +48,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 ### 1.3 How EA-AI Differs from Traditional EA
 
 | Dimension | Traditional EA | Enterprise AI Architect |
-|-----------|---------------|------------------------|
+| ----------- | --------------- | ------------------------ |
 | Change cadence | Months/quarters | Days/weeks (model updates) |
 | Uncertainty | Deterministic systems | Probabilistic, non-deterministic outputs |
 | Vendor lock-in | Infrastructure lock-in | Model lock-in, embedding lock-in |
@@ -60,6 +60,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 ### 1.4 Required Skills
 
 **Technical:**
+
 - Foundation model mechanics (tokens, context window, temperature, top-p)
 - Prompt engineering and system design
 - RAG architecture (retrieval, chunking, embedding, reranking)
@@ -69,12 +70,14 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 - Observability for AI systems
 
 **Architectural:**
+
 - Enterprise integration patterns
 - Security architecture (zero-trust, secret management, data classification)
 - Cloud platform architecture (AWS, Azure, GCP)
 - Cost modelling and FinOps
 
 **Governance:**
+
 - Regulatory frameworks (EU AI Act, NIST AI RMF, ISO 42001)
 - Responsible AI principles
 - Risk assessment and management
@@ -111,6 +114,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 **Foundation models (Layer 1):** Raw language intelligence. Use when you need flexible general-purpose capability and control. Accessed via API — pay per token.
 
 **Enhanced models (Layer 2):** Domain adaptation and knowledge grounding.
+
 - **Prompt engineering**: Free; no data required; fast iteration. Good for structured tasks.
 - **RAG**: Keeps knowledge current without retraining. Gold standard for enterprise knowledge bases.
 - **Fine-tuning**: Adapts style, format, or specialised domain. Requires labelled data; adds cost and complexity. Rarely the right first choice.
@@ -126,7 +130,7 @@ The Enterprise AI Architect (EA-AI) sits at the intersection of AI/ML technology
 ### 3.1 Decision Dimensions
 
 | Dimension | Build (API) | Buy (Product) |
-|-----------|------------|---------------|
+| ----------- | ------------ | --------------- |
 | Flexibility | Full control | Product scope only |
 | Time to value | Weeks–months | Days–weeks |
 | Cost structure | Variable (tokens) | Fixed (per user/seat) |
@@ -188,7 +192,7 @@ Use platforms (GitHub Copilot, Vertex AI Conversation, Microsoft Foundry (former
 ### 3.6 Decision Matrix
 
 | Scenario | Recommendation |
-|----------|---------------|
+| ---------- | --------------- |
 | Internal knowledge base Q&A | RAG on foundation model API |
 | Code generation for developers | GitHub Copilot Enterprise |
 | Customer-facing chatbot with custom brand voice | Foundation model API + prompt engineering |
@@ -207,7 +211,7 @@ Use platforms (GitHub Copilot, Vertex AI Conversation, Microsoft Foundry (former
 ### 4.1 Claude Model Landscape (2026)
 
 | Model | Cost (in/out per MTok) | Context | Capability tier | Best for |
-|-------|----------------------|---------|----------------|---------|
+| ------- | ---------------------- | --------- | ---------------- | --------- |
 | **Claude Fable 5** | $10 / $50 | 1M | Highest | Complex multi-step agents, adversarial robustness, high-stakes decisions |
 | **Claude Sonnet 5** | $2 / $10 (intro through Aug 31, 2026; $3 / $15 from Sept 1, 2026) | 1M | High | Most enterprise workloads — balanced cost/capability |
 | **Claude Opus 4.8** | $5 / $25 (Fast mode $10 / $50, research preview) | 1M | High (extended thinking) | Deep research, mathematical reasoning, autonomous long-horizon tasks |
@@ -223,7 +227,7 @@ See [Models 2026](../../coding-tools/claude/claude-models-2026.md) for the compl
 Enterprises should evaluate Claude alongside other providers. The table below maps the competitive landscape; detailed analysis is in the [Multi-Model Strategy Guide](enterprise-multi-model-ai-strategy.md#3-commercial-model-families-2026).
 
 | Provider | Top Model | Context | Relative Strength | Self-host? |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Anthropic** | Claude Fable 5 | 1M | Instruction following, safety, long docs, tool use | No |
 | **OpenAI** | GPT-4o / o3 | 128K / 200K | Ecosystem breadth, multimodal, coding | Azure only |
 | **Google** | Gemini 2.5 Pro | 1M | Multimodal, video, ultra-long context, GCP integration | Vertex only |
@@ -269,7 +273,7 @@ For full routing architecture patterns (classifier routing, confidence cascade, 
     Embedding models, fine-tuned models, and proprietary APIs all create switching costs. Plan your exit strategy before you start.
 
 | Risk | Mitigation |
-|------|-----------|
+| ------ | ----------- |
 | API schema dependency | Wrap calls in an abstraction layer (AI gateway, internal SDK); use OpenAI-compatible schema as the common contract |
 | Embedding lock-in | Store raw text alongside embeddings; re-embed on switch |
 | Fine-tune lock-in | Keep labelled data; document training process; use open-source base models where possible |
@@ -321,7 +325,7 @@ AI coordinates multiple systems, tools, and sub-tasks to complete a complex goal
 ### 6.1 Single Agent vs Multi-Agent Systems
 
 | Dimension | Single Agent | Multi-Agent |
-|-----------|-------------|-------------|
+| ----------- | ------------- | ------------- |
 | Complexity | Lower | Higher |
 | Parallelism | Limited | Full fan-out possible |
 | Context management | One context window | Distributed context |
@@ -350,6 +354,7 @@ AI coordinates multiple systems, tools, and sub-tasks to complete a complex goal
 The orchestrator holds the overall goal and plan. Workers execute specific sub-tasks. Workers do not know about each other — communication flows through the orchestrator.
 
 **Key design decisions:**
+
 - Orchestrator model should be the most capable (Fable 5 or Sonnet 5) — it makes decisions
 - Workers can be cheaper models (Haiku) for well-defined sub-tasks
 - Pass only required context to each worker (not the full orchestrator context)
@@ -360,6 +365,7 @@ The orchestrator holds the overall goal and plan. Workers execute specific sub-t
 **Hub-and-spoke (recommended):** All agents communicate through an orchestrator. Easier to debug, monitor, and govern. Single point of coordination visibility.
 
 **Peer-to-peer:** Agents communicate directly. Higher throughput potential, but:
+
 - Hard to trace failures
 - Difficult to monitor cost
 - Governance gaps (who approved agent A calling agent B directly?)
@@ -368,12 +374,14 @@ The orchestrator holds the overall goal and plan. Workers execute specific sub-t
 ### 6.4 When to Go Agentic — and When NOT To
 
 **Go agentic when:**
+
 - Task requires more than 2–3 sequential decisions
 - External tool calls are required (search, DB, API)
 - Parallelism of independent sub-tasks provides meaningful speedup
 - Task is long-horizon (minutes to hours, not seconds)
 
 **Do NOT go agentic when:**
+
 - A single well-crafted prompt produces acceptable output
 - Latency SLA is < 2 seconds (single model call only)
 - The workflow is fully deterministic (use code, not AI)
@@ -414,7 +422,7 @@ Query → [Embedder] → Query vector
 **Advanced RAG techniques:**
 
 | Technique | What it solves |
-|-----------|---------------|
+| ----------- | --------------- |
 | **HyDE** (Hypothetical Document Embeddings) | Query-document mismatch — generate a hypothetical answer, embed it, retrieve against that |
 | **Parent-child chunking** | Context loss — small chunks for retrieval precision, parent chunks sent to generator for full context |
 | **Metadata filtering** | Irrelevant retrieval — filter by date, source, category before semantic search |
@@ -427,12 +435,14 @@ Query → [Embedder] → Query vector
 Claude supports prompt caching — frequently used prompt prefixes (system prompts, tool definitions, large document preambles) are cached server-side, reducing both cost and latency.
 
 **Cache what:**
+
 - System prompts (especially long ones with full instructions)
 - Tool definitions
 - Frequently referenced documents (company policies, API specs)
 - Few-shot examples
 
 **Cache design rules:**
+
 - Place cacheable content at the start of the prompt
 - Cache blocks must be > 1,024 tokens to be eligible
 - Cache lifetime: 5 minutes by default (refreshed on each cache hit); a 1-hour cache tier is also available at a higher write price (2× base input, vs 1.25× for the 5-minute tier)
@@ -449,6 +459,7 @@ Claude supports prompt caching — frequently used prompt prefixes (system promp
 Token budgeting is the AI equivalent of memory allocation. Unlike memory, tokens directly translate to cost and latency.
 
 **Budget components:**
+
 ```
 Total tokens = System prompt + Few-shot examples + User message
              + Retrieved context (RAG) + Conversation history
@@ -457,6 +468,7 @@ Total tokens = System prompt + Few-shot examples + User message
 ```
 
 **Rule of thumb allocations for a typical enterprise agent call:**
+
 - System prompt: 500–2,000 tokens (cache it)
 - Retrieved context (RAG): 2,000–8,000 tokens
 - User message: 100–500 tokens
@@ -470,6 +482,7 @@ Total tokens = System prompt + Few-shot examples + User message
 Implement cost attribution from day one. Without it, AI costs become invisible until they become a crisis.
 
 **Attribution model:**
+
 ```python
 # Tag every API call with the metadata body field
 response = client.messages.create(
@@ -499,6 +512,7 @@ Claude's Batch API processes requests asynchronously at significantly reduced co
 **Cost reduction:** Batch API typically costs 50% of synchronous API rates for the same model.
 
 **Implementation pattern:**
+
 ```python
 # Submit batch
 batch = client.messages.batches.create(
@@ -540,7 +554,7 @@ AI costs behave differently from traditional software costs — they scale with 
 **The Nine AI Cost Buckets (FinOps Foundation)**
 
 | Bucket | What drives cost | Typical share of AI feature spend |
-|---|---|---|
+| --- | --- | --- |
 | **LLM inference — synchronous** | Tokens × price/token | 20–35% |
 | **LLM inference — batch** | Same, at 50% discount | 5–10% |
 | **Embedding generation** | Tokens × embedding model price | 3–7% |
@@ -558,7 +572,7 @@ AI costs behave differently from traditional software costs — they scale with 
 Hyperscalers (AWS, Azure, GCP) require **3–5 year capacity commitments** for frontier GPU allocations (H100/H200/B200 cluster reservations). Neoclouds (CoreWeave, Lambda Labs, Voltage Park, Oracle Cloud GPU) offer shorter-term commitments (6–18 months) with competitive pricing but fewer managed services.
 
 | Procurement model | Commitment length | Cost saving vs on-demand | When to use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Hyperscaler reserved** | 1–3 year | 30–50% | Stable production workloads with predictable token volume |
 | **Hyperscaler Savings Plan** | 1–3 year | 20–40% | Mixed workloads, some flexibility on model/region |
 | **Neocloud committed** | 6–18 months | 40–60% vs hyperscaler | High GPU-hour workloads (training, batch inference); accept ops overhead |
@@ -588,6 +602,7 @@ headers = {
 ```
 
 **FinOps maturity stages for AI:**
+
 - **Crawl:** Track total LLM spend by project. Establish per-task cost baselines.
 - **Walk:** Tag all calls; per-team showback; identify top-10 cost drivers; model routing implemented.
 - **Run:** Real-time cost dashboards; anomaly alerting; automated routing; chargeback to BU P&Ls; FinOps reviews as part of AI CoE governance cadence.
@@ -599,7 +614,7 @@ headers = {
 ### 9.1 SLA Requirements vs Model Capabilities
 
 | Latency tier | Typical SLA | Suitable models | Notes |
-|-------------|-------------|-----------------|-------|
+| ------------- | ------------- | ----------------- | ------- |
 | Interactive | < 2s | Haiku 4.5, short Sonnet 5 calls | No extended thinking; short outputs |
 | Near-real-time | 2–10s | Sonnet 5, Fable 5 (short) | OK for most chat and workflow steps |
 | Background | 10–60s | Fable 5, Opus 4.8, extended thinking | Research, analysis, batch steps |
@@ -610,11 +625,13 @@ headers = {
 ### 9.2 Streaming vs Synchronous Responses
 
 **Use streaming when:**
+
 - User is watching the output in real time (chat UI)
 - TTFT matters for perceived responsiveness
 - You need to start processing output before it's complete
 
 **Use synchronous when:**
+
 - Output will be processed programmatically (parse JSON, call next step)
 - Total latency < 3s (streaming overhead not worth it)
 - You need the full response before taking any action
@@ -633,6 +650,7 @@ async def analyse_documents(documents):
 ```
 
 **Rate limit management:**
+
 - Anthropic enforces requests-per-minute (RPM) and tokens-per-minute (TPM) limits
 - Implement exponential backoff with jitter for 429 errors
 - Use a semaphore to cap concurrency at a safe level below your rate limit
@@ -647,21 +665,27 @@ async def analyse_documents(documents):
 ### 10.1 REST API Integration Patterns
 
 **Direct integration (simple):**
+
 ```
 Client → Claude API
 ```
+
 Use for: prototypes, low-volume internal tools. Not for production at scale (no caching, monitoring, or retry logic).
 
 **Gateway-mediated (production):**
+
 ```
 Client → AI Gateway → Claude API
 ```
+
 The gateway handles: auth, rate limiting, retry, logging, cost tracking, model routing. See [AI Gateway Pattern](enterprise-ai-architecture-patterns.md#5-ai-gateway-pattern).
 
 **SDK-mediated:**
+
 ```
 Application → Internal AI SDK → AI Gateway → Claude API
 ```
+
 The internal SDK provides a stable interface. Underneath, the SDK can change model, provider, or routing without the application knowing.
 
 ### 10.2 Event-Driven AI Workflows
@@ -691,6 +715,7 @@ User action → Event Queue (Kafka/SQS) → AI Worker → Result Queue → Downs
 Model Context Protocol (MCP) standardises how AI models connect to tools and data sources. 10,000+ public MCP servers exist, with ~110M monthly SDK downloads; MCP has been governed by the Linux Foundation's Agentic AI Foundation since December 2025. For agent-to-agent (rather than agent-to-tool) interoperability, MCP is typically paired with the A2A protocol (v1.0, April 2026, also under the Linux Foundation).
 
 **MCP in enterprise context:**
+
 - Replace ad-hoc tool integrations with standardised MCP servers
 - MCP servers expose: tools (executable functions), resources (readable data), prompts (parameterised templates)
 - Stateless 2026 RC specification: each MCP call is independent, enabling horizontal scaling
@@ -705,12 +730,14 @@ For full MCP implementation details, see [MCP Deep Guide](../../coding-tools/cla
 ### 11.1 What Data to Send to AI (and What Not To)
 
 **Send:**
+
 - Anonymised or pseudonymised business data
 - Publicly available information
 - Data the user has consented to process via AI
 - Structured data needed for the specific task
 
 **Do NOT send:**
+
 - Full PII where anonymised version works equally well
 - Credentials, API keys, passwords (ever)
 - Data classified above your vendor agreement allows
@@ -719,6 +746,7 @@ For full MCP implementation details, see [MCP Deep Guide](../../coding-tools/cla
 ### 11.2 PII Handling and Anonymisation
 
 **Anonymisation strategies:**
+
 - **Tokenisation:** Replace PII values with tokens before sending; reverse-tokenise on return
 - **Redaction:** Remove PII fields entirely if not needed for the task
 - **Pseudonymisation:** Replace real values with consistent fake values (name → "Person A")
@@ -731,7 +759,7 @@ For full MCP implementation details, see [MCP Deep Guide](../../coding-tools/cla
 **Cloud platform data residency:**
 
 | Platform | Data residency options |
-|----------|----------------------|
+| ---------- | ---------------------- |
 | AWS Bedrock | Global endpoints by default; regional endpoints at a 10% premium for Claude 4.5+ models |
 | Google Vertex AI | Regional endpoints; EU-specific options |
 | Microsoft Foundry | Region selection at resource creation; EU residency available |
@@ -742,7 +770,7 @@ For full MCP implementation details, see [MCP Deep Guide](../../coding-tools/cla
 ### 11.4 Vector Store Selection
 
 | Store | Best for | Managed? | Scale |
-|-------|---------|----------|-------|
+| ------- | --------- | ---------- | ------- |
 | **Pinecone** | Production RAG, managed simplicity | Yes | Billions |
 | **pgvector** | Existing PostgreSQL shops | Self or managed | Millions |
 | **Weaviate** | Hybrid search (BM25 + vector) | Yes/Self | Hundreds of millions |
@@ -782,6 +810,7 @@ User content: <user>{user_input}</user>
 An LLM agent with access to sensitive data and external tools (email, web) could be manipulated to exfiltrate data.
 
 **Controls:**
+
 - Restrict outbound tool permissions: email tool can only send to approved domains
 - Log all tool call arguments: detect unexpected data in outbound calls
 - Content filtering on tool outputs going external
@@ -810,11 +839,13 @@ Application → AWS Secrets Manager / Azure Key Vault / HashiCorp Vault
 ### 12.4 Network Security
 
 **For cloud-hosted AI APIs:**
+
 - Use VPC endpoints (AWS PrivateLink, Azure Private Endpoint) — traffic stays off the public internet
 - Restrict outbound NAT gateway rules to only AI API endpoints
 - TLS 1.3 minimum for all AI API calls
 
 **For self-hosted AI (Bedrock, Vertex):**
+
 - Deploy models in private subnets
 - API gateway in DMZ/public subnet
 - WAF rules for prompt injection patterns
@@ -827,7 +858,7 @@ Application → AWS Secrets Manager / Azure Key Vault / HashiCorp Vault
 ### 13.1 What to Log
 
 | Category | Log fields |
-|----------|-----------|
+| ---------- | ----------- |
 | **Request** | Timestamp, request ID, model, temperature, max_tokens, system prompt hash (not content), user message hash |
 | **Response** | Response time, TTFT (if streaming), completion tokens, stop reason, finish reason |
 | **Token usage** | Input tokens, output tokens, cache creation tokens, cache read tokens |
@@ -851,6 +882,7 @@ Application → AWS Secrets Manager / Azure Key Vault / HashiCorp Vault
 Each agent call is a span. The full agent chain is a trace.
 
 **Trace structure for a multi-agent workflow:**
+
 ```
 Trace: research-task-abc123
   ├─ Span: orchestrator-plan (200ms)
@@ -869,6 +901,7 @@ Total: 5,300ms
 Build cost dashboards as a first-class deliverable, not an afterthought.
 
 **Dashboard views:**
+
 - **Daily spend by model** — catch model drift (suddenly using Fable 5 where Haiku was expected)
 - **Cost per task** — understand unit economics (cost per summarised document, cost per customer query resolved)
 - **Cache hit rate** — measure prompt caching effectiveness
@@ -882,6 +915,7 @@ Build cost dashboards as a first-class deliverable, not an afterthought.
 ### 14.1 Skills Development Roadmap
 
 **Phase 1: AI-Aware Architect (0–6 months)**
+
 - Understand foundation model mechanics (tokens, context, temperature)
 - Hands-on with Claude API and GitHub Copilot
 - Read: Anthropic documentation, MCP specification
@@ -889,6 +923,7 @@ Build cost dashboards as a first-class deliverable, not an afterthought.
 - Certify: CCA-F (Claude Certified Architect, Foundations)
 
 **Phase 2: AI Integration Architect (6–18 months)**
+
 - Design and deploy agentic systems using Claude Agent SDK
 - Build multi-agent orchestration with HITL checkpoints
 - Implement evaluation harnesses (LLM-as-judge)
@@ -896,6 +931,7 @@ Build cost dashboards as a first-class deliverable, not an afterthought.
 - Contribute to: AI CoE patterns and standards
 
 **Phase 3: Enterprise AI Architect (18+ months)**
+
 - Own org-level AI platform decisions and vendor relationships
 - Design multi-cloud AI architectures (AWS + Azure + Anthropic)
 - Lead RAI program: bias testing, adversarial evaluation, compliance audit
@@ -907,6 +943,7 @@ Build cost dashboards as a first-class deliverable, not an afterthought.
 The **Claude Certified Architect, Foundations (CCA-F)** is the enterprise architect-level certification for the Anthropic ecosystem.
 
 **Why it matters:**
+
 - Validates understanding of Claude APIs, Agent SDK, MCP, safety, and enterprise deployment
 - Demonstrates credibility with Anthropic's partner network
 - Check the Anthropic Partner Network for current partner-program certification requirements

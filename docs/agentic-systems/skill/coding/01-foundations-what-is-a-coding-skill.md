@@ -31,39 +31,51 @@ SmartScope's guidance on this is a clean summary of the resulting two-plane spli
 ## 1.3 Skill vs. every adjacent concept
 
 ### Skill vs. Agent
+
 An **Agent** is the runtime/harness (Claude Code, Copilot agent mode, Codex CLI) that plans, selects skills/tools, executes, and validates. A Skill has no independent runtime — it's inert content the agent interprets. One agent can load many skills across a session; a skill does not itself "run."
 
 ### Skill vs. Slash Command
+
 A **Slash Command** (`/fix`, `/test`, `/review`) is typically a *shortcut that invokes a specific, predefined prompt or skill directly*, bypassing the agent's own discovery/matching step. GitHub Copilot's `/skillname` and Codex's `$skillname` are exactly this — an explicit invocation path that coexists with automatic, description-based discovery. Frontmatter fields like `user-invokable` and `disable-model-invocation` (seen in Copilot's SKILL.md spec extensions) let an author control whether a skill is reachable only via slash command, only via automatic matching, or both.
 
 ### Skill vs. Prompt
+
 A **Prompt** is a single, often one-off, instruction. A Skill is a *versioned, reusable, independently-discoverable* package that may contain many prompts, examples, and procedural steps, structured for repeated reuse across many future tasks and, often, many different team members.
 
 ### Skill vs. Tool
+
 A **Tool** is an atomic, typed capability the harness exposes (read file, run shell command, git commit). A Skill is judgment about *when and how* to combine tools to accomplish a class of task. This is the same distinction as the enterprise case (see the companion enterprise research package, file `01`), applied one layer down: a coding agent's tools are lower-level and more uniform (filesystem, terminal, git) than an enterprise agent's tools (business API calls), but the Skill/Tool boundary is conceptually identical.
 
 ### Skill vs. Workflow
+
 A **Workflow**, in the coding context, is often an *external, deterministic* process (a GitHub Actions pipeline, a CI/CD gate) that a skill's instructions may reference or trigger but does not itself constitute. A skill can *describe* a workflow in prose ("first run lint, then tests, then open a PR"), but compliance-critical or infrastructure-level workflow steps are usually better encoded as actual CI configuration than trusted to be followed via prose every time.
 
 ### Skill vs. Task
+
 A **Task** is typically the unit of work a developer or an issue tracker hands to an agent ("fix bug #4821"). A Skill is reusable knowledge that may apply across *many* different tasks of a similar shape. One task might trigger zero, one, or several skills.
 
 ### Skill vs. Command
+
 Overloaded across ecosystems: in some CLIs (Roo Code, Cline), "custom commands" are closer to macros/shortcuts than to full Skill packages; in others (Copilot CLI, Codex), "command" refers to the CLI's own subcommands (`copilot skill list`), unrelated to skill content itself. Always check the specific tool's vocabulary before assuming cross-tool equivalence.
 
 ### Skill vs. Extension / Plugin
+
 An **Extension** (VS Code extension, JetBrains plugin) is IDE-level software — it can add UI, commands, language support, and can itself *ship* skills, MCP configs, and rules bundled together, but it is a much larger unit than a Skill. A **Plugin** in the Claude Code / Codex sense is typically a *distribution bundle* that packages one or more skills plus MCP server configuration plus presentation assets (icons, display names) — visible directly in OpenAI's plugin manifest format (`agents/openai.yaml` with `interface`, `policy`, and `dependencies.tools` sections). Skills are content; Plugins/Extensions are the containers that ship content.
 
 ### Skill vs. MCP Tool
+
 An **MCP Tool** is a tool exposed over the Model Context Protocol by an external server (a GitHub MCP server's `create_pull_request` tool, a database MCP server's `run_query` tool). A Skill may *declare a dependency* on an MCP tool (OpenAI's skill manifest format explicitly supports a `dependencies.tools` list with `type: mcp`), but the skill itself contains no protocol logic — that's the MCP server's job.
 
 ### Skill vs. IDE Action
+
 An **IDE Action** (a VS Code command, a JetBrains intention/quick-fix) is a discrete, often single-keystroke-triggered editor operation, typically deterministic and not LLM-mediated at all, or LLM-mediated but scoped to a single, narrow transformation (rename symbol, extract method). Skills are broader, multi-step, and always LLM-interpreted.
 
 ### Skill vs. Background Agent
+
 A **Background Agent** (Cursor's background agents, GitHub Copilot's cloud/coding agent, Devin) is a *deployment mode* — an agent running asynchronously, often in an isolated cloud VM, triggered by an event (issue assignment, scheduled job) rather than an interactive session. Background agents consume Skills exactly as interactive agents do; "background" describes *where and how* the agent runs, not a different content type.
 
 ### Skill vs. Recipe / Template
+
 **Recipe** and **Template** are informal, community-facing synonyms often used interchangeably with "Skill" in blog content and marketplaces (e.g., "cookbook," "playbook"). Where a formal distinction exists, a Template is usually a *static* scaffold (boilerplate files) with no procedural instructions, whereas a Skill is *procedural* (instructions the agent actively follows) and may *reference* templates as bundled assets.
 
 ## 1.4 Skill vs. AGENTS.md/CLAUDE.md/Rules — the most consequential distinction
@@ -71,7 +83,7 @@ A **Background Agent** (Cursor's background agents, GitHub Copilot's cloud/codin
 This deserves its own subsection because it recurs throughout the whole package (see file `00`, §2 and §5). The field has converged on treating these as genuinely different tools for different jobs:
 
 | | AGENTS.md / CLAUDE.md / Rules | Skill |
-|---|---|---|
+| --- | --- | --- |
 | **Loading** | Always, every turn | On demand, when description matches |
 | **Content** | Stack, conventions, boundaries, verification steps — things true on every task | Deep, specialized procedural knowledge for a specific class of task |
 | **Cost model** | Fixed token cost every turn (small file ≈ negligible; large file adds up) | Zero cost until matched; then a one-time load cost |

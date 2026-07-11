@@ -53,7 +53,7 @@ By the time you complete this masterclass, you will be equipped to:
 ## Prerequisites
 
 | Prerequisite | Why It Matters |
-|---|---|
+| --- | --- |
 | 15+ years as a solutions or enterprise architect | The course assumes fluency in technical concepts — it does not teach them |
 | Experience with at least one cloud platform at scale | Cloud investment decisions are a core course topic |
 | Exposure to at least one AI/ML implementation | AI strategy modules build on first-hand experience |
@@ -194,7 +194,7 @@ EA Masterclass
 Different readers will prioritize different modules depending on their immediate goals. Use this table to identify your critical path.
 
 | Role | Immediate Goal | Priority Modules | Optional Depth |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Chief Architect** transitioning to investment leadership | Lead a $50M+ AI program investment decision | 1 → 2 → 5 → 6 → 9 → 10 → 11 | 3, 4, 8, 13 |
 | **CIO Advisor** / Technology strategist | Advise CIO on AI portfolio investment | 2 → 4 → 5 → 6 → 8 → 10 → 11 | 1, 9, 12 |
 | **AI Strategist** building an enterprise AI roadmap | Define and sequence an enterprise AI strategy | 2 → 5 → 6 → 9 → 10 → 13 | 1, 4, 11, 12 |
@@ -393,7 +393,7 @@ Every enterprise AI program produces a standard set of deliverables. This course
 ### Business Case Templates (6 templates)
 
 | # | Template | Typical Length | Primary Audience |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | BC-01 | Executive Business Case (full document) | 15–25 pages | Investment committee |
 | BC-02 | One-Page Business Case Summary | 1 page | C-suite and board |
 | BC-03 | ROI and Financial Model (spreadsheet) | 5–10 tabs | CFO and finance |
@@ -404,7 +404,7 @@ Every enterprise AI program produces a standard set of deliverables. This course
 ### Governance Templates (7 templates)
 
 | # | Template | Typical Length | Primary Audience |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | GV-01 | Program Governance Charter | 10–15 pages | Steering committee |
 | GV-02 | RACI Matrix (AI Program) | 2–4 pages | Program team |
 | GV-03 | Architecture Decision Record (ADR) | 1–2 pages per decision | ARB |
@@ -416,7 +416,7 @@ Every enterprise AI program produces a standard set of deliverables. This course
 ### Consulting Templates (7 templates)
 
 | # | Template | Typical Length | Primary Audience |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | CT-01 | Discovery Workshop Agenda and Guide | 8–12 pages | Engagement team |
 | CT-02 | Stakeholder Interview Guide | 4–6 pages | Engagement team |
 | CT-03 | Executive Findings Presentation | 15–25 slides | Client executives |

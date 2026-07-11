@@ -9,59 +9,59 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY** 
+# **ENTERPRISE KUBERNETES MASTERY**
 
-AI Platform Engineering Handbook 
+AI Platform Engineering Handbook
 
-PART XI KUBERNETES FOR AI INFRASTRUCTURE 
+PART XI KUBERNETES FOR AI INFRASTRUCTURE
 
-GPU Operator, KServe, vLLM, Ray, Kubeflow, Distributed Training 
+GPU Operator, KServe, vLLM, Ray, Kubeflow, Distributed Training
 
-Volume 11 of 16 AI Series Prerequisites: Parts I through X Edition 2025-2026 
+Volume 11 of 16 AI Series Prerequisites: Parts I through X Edition 2025-2026
 
-## **TABLE OF CONTENTS** 
+## **TABLE OF CONTENTS**
 
-1. AI Infrastructure Architecture on Kubernetes .... 3 
+1. AI Infrastructure Architecture on Kubernetes .... 3
 
-2. NVIDIA GPU Operator ............................. 8 
+2. NVIDIA GPU Operator ............................. 8
 
-3. GPU Scheduling: MIG, Time-Slicing, and Multi-Instance . 13 
+3. GPU Scheduling: MIG, Time-Slicing, and Multi-Instance . 13
 
-4. Distributed Training: PyTorch DDP and FSDP ...... 17 
+4. Distributed Training: PyTorch DDP and FSDP ...... 17
 
-5. Kubeflow: MLOps Platform ........................ 22 
+5. Kubeflow: MLOps Platform ........................ 22
 
-6. Ray and Ray Serve: Distributed AI Compute ....... 27 
+6. Ray and Ray Serve: Distributed AI Compute ....... 27
 
-7. KServe: Model Serving Framework ................. 32 
+7. KServe: Model Serving Framework ................. 32
 
-8. vLLM: High-Throughput LLM Inference ............. 37 
+8. vLLM: High-Throughput LLM Inference ............. 37
 
-9. SGLang: Structured Generation at Scale .......... 43 
+9. SGLang: Structured Generation at Scale .......... 43
 
-10. AI Gateways and Model Routing .................. 46 
+10. AI Gateways and Model Routing .................. 46
 
-11. Feature Stores with Feast ...................... 51 
+11. Feature Stores with Feast ...................... 51
 
-12. MLflow: Experiment Tracking and Model Registry . 54 
+12. MLflow: Experiment Tracking and Model Registry . 54
 
-13. Vector Databases on Kubernetes ................. 57 
+13. Vector Databases on Kubernetes ................. 57
 
-14. AMD ROCm and Intel Gaudi Support ............... 61 
+14. AMD ROCm and Intel Gaudi Support ............... 61
 
-15. AI Infrastructure Cost Optimisation ............ 64 
+15. AI Infrastructure Cost Optimisation ............ 64
 
-16. AI Infrastructure Anti-Patterns ................ 68 
+16. AI Infrastructure Anti-Patterns ................ 68
 
-17. Hands-On Exercises ............................. 71 
+17. Hands-On Exercises ............................. 71
 
-#### **CHAPTER 1** 
+#### **CHAPTER 1**
 
-## **AI Infrastructure Architecture on Kubernetes** 
+## **AI Infrastructure Architecture on Kubernetes**
 
-Kubernetes has become the de facto substrate for enterprise AI infrastructure. It provides the resource scheduling, workload management, and operational tooling that AI/ML workloads require. This part focuses exclusively on Kubernetes implementation patterns for AI infrastructure -- not AI concepts themselves. 
+Kubernetes has become the de facto substrate for enterprise AI infrastructure. It provides the resource scheduling, workload management, and operational tooling that AI/ML workloads require. This part focuses exclusively on Kubernetes implementation patterns for AI infrastructure -- not AI concepts themselves.
 
-### **AI Workload Taxonomy** 
+### **AI Workload Taxonomy**
 
 |**Workload Type**|**Duration**|**Resource Pattern**|**K8s Resource**|**Restart**<br>**Policy**|
 |---|---|---|---|---|
@@ -75,7 +75,7 @@ Kubernetes has become the de facto substrate for enterprise AI infrastructure. I
 |Notebook experiments|Interactive|Shared GPU (MIG)|StatefulSet<br>(JupyterHub)|Always|
 |Pipeline orchestration|Periodic or<br>triggered|Minimal<br>(orchestrator only)|CronJob or Argo WF|OnFailure|
 
-### **Reference AI Platform Architecture** 
+### **Reference AI Platform Architecture**
 
 ```
 AI Platform on Kubernetes -- layered architecture: LAYER 6: USER INTERFACES Backstage AI
@@ -89,13 +89,13 @@ scaling) LAYER 1: KUBERNETES FOUNDATION EKS/GKE/AKS + GPU node pools, Cilium (ne
 Ceph/WekaFS (storage), Vault (secrets), ArgoCD (GitOps)
 ```
 
-#### **CHAPTER 2** 
+#### **CHAPTER 2**
 
-## **NVIDIA GPU Operator** 
+## **NVIDIA GPU Operator**
 
-The NVIDIA GPU Operator automates the deployment and lifecycle management of all NVIDIA software components required to use GPUs in Kubernetes: drivers, container toolkit, device plugin, DCGM exporter, MIG manager, and GPU Feature Discovery. Without the GPU Operator, each component must be manually installed and maintained on every GPU node. 
+The NVIDIA GPU Operator automates the deployment and lifecycle management of all NVIDIA software components required to use GPUs in Kubernetes: drivers, container toolkit, device plugin, DCGM exporter, MIG manager, and GPU Feature Discovery. Without the GPU Operator, each component must be manually installed and maintained on every GPU node.
 
-### **GPU Operator Components** 
+### **GPU Operator Components**
 
 |**Component**|**What It Installs**|**DaemonSet/Operator**|
 |---|---|---|
@@ -108,7 +108,7 @@ The NVIDIA GPU Operator automates the deployment and lifecycle management of all
 |Node Feature<br>Discovery|General hardware feature labelling|DaemonSet (nfd)|
 |Validator|Validates GPU stack is working|Pod (validator)|
 
-##### **GPU Operator Installation** 
+##### **GPU Operator Installation**
 
 ```
 # Add NVIDIA Helm repo: helm repo add nvidia https://helm.ngc.nvidia.com/nvidia helm repo
@@ -127,7 +127,7 @@ nvidia.com/gpu.memory=81920 (80GB in MiB) # nvidia.com/gpu.count=8 #
 nvidia.com/gpu.family=ampere
 ```
 
-### **GPU Node Taint Strategy** 
+### **GPU Node Taint Strategy**
 
 ```
 # Taint GPU nodes to prevent non-GPU workloads consuming them: kubectl taint nodes -l
@@ -137,13 +137,13 @@ containers: - resources: limits: nvidia.com/gpu: '1' # NodeSelector for specific
 nodeSelector: nvidia.com/gpu.product: NVIDIA-H100-SXM5-80GB
 ```
 
-#### **CHAPTER 3** 
+#### **CHAPTER 3**
 
-## **GPU Scheduling: MIG, Time-Slicing, and Multi-Instance** 
+## **GPU Scheduling: MIG, Time-Slicing, and Multi-Instance**
 
-Full GPU allocation (one GPU per container) is often wasteful for small models or development workloads. NVIDIA provides three approaches to share GPU resources among multiple workloads, each with different isolation and performance characteristics. 
+Full GPU allocation (one GPU per container) is often wasteful for small models or development workloads. NVIDIA provides three approaches to share GPU resources among multiple workloads, each with different isolation and performance characteristics.
 
-### **GPU Sharing Approaches** 
+### **GPU Sharing Approaches**
 
 |**Approach**|**Isolation**|**Memory**|**Performance**|**Best For**|
 |---|---|---|---|---|
@@ -152,9 +152,9 @@ Full GPU allocation (one GPU per container) is often wasteful for small models o
 |Time-slicing|Temporal only|Shared (no<br>isolation)|Variable (context<br>switch)|Dev workloads, testing|
 |MPS (Multi-Process<br>Service)|Process-level|Shared|High for<br>compatible<br>workloads|Batch inference,<br>same-model multi-tenant|
 
-### **NVIDIA MIG (Multi-Instance GPU)** 
+### **NVIDIA MIG (Multi-Instance GPU)**
 
-MIG partitions an A100 or H100 GPU into up to 7 hardware-isolated instances. Each instance has dedicated streaming multiprocessors (SMs), memory bandwidth, and L2 cache. Unlike time-slicing, MIG instances cannot interfere with each other. 
+MIG partitions an A100 or H100 GPU into up to 7 hardware-isolated instances. Each instance has dedicated streaming multiprocessors (SMs), memory bandwidth, and L2 cache. Unlike time-slicing, MIG instances cannot interfere with each other.
 
 ```
 # A100 80GB MIG profiles: # 1g.10gb = 1/7 GPU, 10GB VRAM (7 instances max) # 2g.20gb = 2/7 GPU,
@@ -171,13 +171,13 @@ mig # nvidia.com/mig-1g.10gb: 7 # Request a MIG instance in a Pod: resources: li
 nvidia.com/mig-1g.10gb: '1'
 ```
 
-#### **CHAPTER 4** 
+#### **CHAPTER 4**
 
-## **Distributed Training: PyTorch DDP and FSDP** 
+## **Distributed Training: PyTorch DDP and FSDP**
 
-Training large language models requires distributing compute across multiple GPUs and often multiple nodes. Kubernetes provides the infrastructure substrate; PyTorch provides the distributed training frameworks. Understanding the parallelism strategies is essential for designing efficient training infrastructure. 
+Training large language models requires distributing compute across multiple GPUs and often multiple nodes. Kubernetes provides the infrastructure substrate; PyTorch provides the distributed training frameworks. Understanding the parallelism strategies is essential for designing efficient training infrastructure.
 
-### **Parallelism Strategies** 
+### **Parallelism Strategies**
 
 |**Strategy**|**Distributes**|**When to Use**|**Memory**<br>**Reduction**|**K8s Pattern**|
 |---|---|---|---|---|
@@ -187,7 +187,7 @@ Training large language models requires distributing compute across multiple GPU
 |Pipeline Parallel (PP)|Model layers across<br>nodes|Very deep models|Proportional to<br>PP degree|PyTorchJob,<br>multi-node|
 |Sequence Parallel|Sequence dimension<br>of attention|Very long context<br>windows|Proportional|Advanced, with<br>Megatron-LM|
 
-### **PyTorchJob with Kubeflow Training Operator** 
+### **PyTorchJob with Kubeflow Training Operator**
 
 ```
 # Distributed PyTorch training on 4 nodes x 8 GPUs = 32 GPUs total: apiVersion:
@@ -203,13 +203,13 @@ INFO - name: NCCL_SOCKET_IFNAME value: eth0 - name: NCCL_IB_DISABLE value: '0' #
 InfiniBand Worker: replicas: 3 # 3 workers + 1 master = 4 nodes total
 ```
 
-#### **CHAPTER 5** 
+#### **CHAPTER 5**
 
-## **Kubeflow: MLOps Platform** 
+## **Kubeflow: MLOps Platform**
 
-Kubeflow is a collection of Kubernetes-native ML tools that together form an end-to-end MLOps platform. It provides pipeline orchestration, distributed training, hyperparameter optimisation, model serving, and notebook management on Kubernetes. 
+Kubeflow is a collection of Kubernetes-native ML tools that together form an end-to-end MLOps platform. It provides pipeline orchestration, distributed training, hyperparameter optimisation, model serving, and notebook management on Kubernetes.
 
-### **Kubeflow Components** 
+### **Kubeflow Components**
 
 |**Component**|**Function**|**CRD / API**|
 |---|---|---|
@@ -220,7 +220,7 @@ Kubeflow is a collection of Kubernetes-native ML tools that together form an end
 |Notebooks|JupyterHub-based notebook server<br>management|Notebook|
 |Volumes|PVC management for notebooks and pipelines|PodDefault|
 
-##### **Kubeflow Pipeline Example** 
+##### **Kubeflow Pipeline Example**
 
 ```
 # KFP v2 Python SDK pipeline: from kfp import dsl, compiler from kfp.dsl import component,
@@ -254,13 +254,13 @@ register_model( model=finetune_task.outputs['output_model'], experiment_name=exp
 compiler.Compiler().compile(llm_pipeline, 'llm-pipeline.yaml')
 ```
 
-#### **CHAPTER 6** 
+#### **CHAPTER 6**
 
-## **Ray and Ray Serve: Distributed AI Compute** 
+## **Ray and Ray Serve: Distributed AI Compute**
 
-Ray is a distributed computing framework purpose-built for AI workloads. It enables scaling Python code from a laptop to a cluster without rewriting, provides native support for GPU scheduling, and includes Ray Serve for production model serving. The KubeRay Operator manages Ray clusters on Kubernetes. 
+Ray is a distributed computing framework purpose-built for AI workloads. It enables scaling Python code from a laptop to a cluster without rewriting, provides native support for GPU scheduling, and includes Ray Serve for production model serving. The KubeRay Operator manages Ray clusters on Kubernetes.
 
-### **Ray Architecture on Kubernetes** 
+### **Ray Architecture on Kubernetes**
 
 ```
 KubeRay Operator manages RayCluster CRDs: RayCluster: Head Node (Deployment): Ray head process
@@ -272,7 +272,7 @@ Long-running Ray Serve deployment Manages: head + workers + Serve deployment con
 Zero-downtime upgrades via in-place rolling updates
 ```
 
-##### **RayCluster for LLM Inference** 
+##### **RayCluster for LLM Inference**
 
 ```
 apiVersion: ray.io/v1 kind: RayCluster metadata: name: llm-serving-cluster namespace:
@@ -286,13 +286,13 @@ rayproject/ray-ml:2.20.0-py311-gpu resources: requests: { cpu: '32', memory: 256
 nvidia.com/gpu: '4' } limits: { cpu: '32', memory: 256Gi, nvidia.com/gpu: '4' }
 ```
 
-#### **CHAPTER 7** 
+#### **CHAPTER 7**
 
-## **KServe: Model Serving Framework** 
+## **KServe: Model Serving Framework**
 
-KServe (formerly KFServing, CNCF incubating) is the standard Kubernetes-native model serving framework. It abstracts model serving complexity behind a single InferenceService CRD, supporting multiple frameworks (PyTorch, TensorFlow, sklearn, XGBoost, Triton) with auto-scaling, canary deployments, and request batching. 
+KServe (formerly KFServing, CNCF incubating) is the standard Kubernetes-native model serving framework. It abstracts model serving complexity behind a single InferenceService CRD, supporting multiple frameworks (PyTorch, TensorFlow, sklearn, XGBoost, Triton) with auto-scaling, canary deployments, and request batching.
 
-### **KServe Architecture** 
+### **KServe Architecture**
 
 ```
 KServe components: InferenceService controller: Reconciles InferenceService CRD Creates:
@@ -304,7 +304,7 @@ Custom Python code for input transformation Explainer (optional): Model explanat
 KServe uses Knative for auto-scaling out of the box
 ```
 
-##### **InferenceService for LLM (vLLM runtime)** 
+##### **InferenceService for LLM (vLLM runtime)**
 
 ```
 apiVersion: serving.kserve.io/v1beta1 kind: InferenceService metadata: name:
@@ -320,23 +320,23 @@ http://llama3-70b-instruct.ai-serving.svc.cluster.local/v1/chat/completions \ -H
 '{"model":"llama3-70b","messages":[{"role":"user","content":"Hello"}]}'
 ```
 
-#### **CHAPTER 8** 
+#### **CHAPTER 8**
 
-## **vLLM: High-Throughput LLM Inference** 
+## **vLLM: High-Throughput LLM Inference**
 
-vLLM is the leading open-source LLM inference engine for production deployments. It achieves 3-24x higher throughput than naive HuggingFace Transformers inference through PagedAttention (GPU memory management), continuous batching, and prefix caching. It is OpenAI-compatible and runs on Kubernetes natively. 
+vLLM is the leading open-source LLM inference engine for production deployments. It achieves 3-24x higher throughput than naive HuggingFace Transformers inference through PagedAttention (GPU memory management), continuous batching, and prefix caching. It is OpenAI-compatible and runs on Kubernetes natively.
 
-### **vLLM Key Innovations** 
+### **vLLM Key Innovations**
 
-- **PagedAttention** : Traditional attention allocates GPU memory for maximum sequence length upfront, wasting memory on shorter sequences. PagedAttention manages KV cache memory in non-contiguous pages (like OS virtual memory), enabling near-100% GPU memory utilisation and 3-5x more concurrent requests per GPU. 
+- **PagedAttention** : Traditional attention allocates GPU memory for maximum sequence length upfront, wasting memory on shorter sequences. PagedAttention manages KV cache memory in non-contiguous pages (like OS virtual memory), enabling near-100% GPU memory utilisation and 3-5x more concurrent requests per GPU.
 
-- **Continuous Batching** : Instead of waiting for a batch to complete, new requests are added to running batches as sequences finish. This eliminates GPU idle time between batches and dramatically increases throughput for mixed-length workloads. 
+- **Continuous Batching** : Instead of waiting for a batch to complete, new requests are added to running batches as sequences finish. This eliminates GPU idle time between batches and dramatically increases throughput for mixed-length workloads.
 
-- **Prefix Caching** : Common prompt prefixes (system prompts, few-shot examples) are cached in GPU memory and reused across requests. For RAG workloads with long context, prefix caching reduces TTFT by 50-80%. 
+- **Prefix Caching** : Common prompt prefixes (system prompts, few-shot examples) are cached in GPU memory and reused across requests. For RAG workloads with long context, prefix caching reduces TTFT by 50-80%.
 
-- **Tensor Parallelism** : Model weights are sharded across multiple GPUs using tensor parallelism. A 70B model requiring 140GB VRAM can run across 2x 80GB GPUs (2-way tensor parallel) or 4x 40GB GPUs (4-way tensor parallel). 
+- **Tensor Parallelism** : Model weights are sharded across multiple GPUs using tensor parallelism. A 70B model requiring 140GB VRAM can run across 2x 80GB GPUs (2-way tensor parallel) or 4x 40GB GPUs (4-way tensor parallel).
 
-### **vLLM Production Kubernetes Deployment** 
+### **vLLM Production Kubernetes Deployment**
 
 ```
 apiVersion: apps/v1 kind: Deployment metadata: name: vllm-llama3-70b namespace: ai-serving
@@ -367,13 +367,13 @@ for 70B model load periodSeconds: 10 volumes: - name: model-weights persistentVo
 claimName: llama3-70b-weights
 ```
 
-#### **CHAPTER 9** 
+#### **CHAPTER 9**
 
-## **SGLang: Structured Generation at Scale** 
+## **SGLang: Structured Generation at Scale**
 
-SGLang (Structured Generation Language) is an LLM inference framework optimised for structured outputs and multi-call programmes. It provides RadixAttention (a more efficient variant of prefix caching) and is particularly well-suited for agentic workloads that involve structured JSON outputs, multi-step reasoning, and repeated calls with shared prefixes. 
+SGLang (Structured Generation Language) is an LLM inference framework optimised for structured outputs and multi-call programmes. It provides RadixAttention (a more efficient variant of prefix caching) and is particularly well-suited for agentic workloads that involve structured JSON outputs, multi-step reasoning, and repeated calls with shared prefixes.
 
-### **SGLang vs vLLM Comparison** 
+### **SGLang vs vLLM Comparison**
 
 |**Feature**|**vLLM**|**SGLang**|
 |---|---|---|
@@ -385,7 +385,7 @@ SGLang (Structured Generation Language) is an LLM inference framework optimised 
 |DP Attention|Partial|Full data parallelism in disaggregated serving|
 |Best for|General LLM serving, high throughput|Agentic AI, structured output, tool calling|
 
-##### **SGLang Kubernetes Deployment** 
+##### **SGLang Kubernetes Deployment**
 
 ```
 # SGLang server deployment: containers: - name: sglang image: lmsysorg/sglang:latest-cu121
@@ -395,13 +395,13 @@ command: - python - -m - sglang.launch_server args: -
 limits: { nvidia.com/gpu: '4', memory: 512Gi }
 ```
 
-#### **CHAPTER 10** 
+#### **CHAPTER 10**
 
-## **AI Gateways and Model Routing** 
+## **AI Gateways and Model Routing**
 
-An AI Gateway sits between client applications and LLM backends, providing: unified API surface across multiple models, authentication and authorisation, rate limiting and cost controls, request routing (model selection), caching, observability, and fallback handling. As LLM usage scales, an AI gateway becomes essential infrastructure. 
+An AI Gateway sits between client applications and LLM backends, providing: unified API surface across multiple models, authentication and authorisation, rate limiting and cost controls, request routing (model selection), caching, observability, and fallback handling. As LLM usage scales, an AI gateway becomes essential infrastructure.
 
-### **AI Gateway Capabilities** 
+### **AI Gateway Capabilities**
 
 |**Capability**|**Business Value**|**Implementation**|
 |---|---|---|
@@ -415,7 +415,7 @@ An AI Gateway sits between client applications and LLM backends, providing: unif
 |PII redaction|Strip sensitive data before<br>sending to external LLMs|Presidio or custom regex pipeline|
 |Prompt injection<br>detection|Detect and block adversarial<br>prompts|LLM-based or pattern-based detection|
 
-##### **LiteLLM Proxy on Kubernetes** 
+##### **LiteLLM Proxy on Kubernetes**
 
 ```
 # LiteLLM Proxy -- unified AI gateway: apiVersion: apps/v1 kind: Deployment metadata: name:
@@ -445,13 +445,13 @@ fallbacks: [{gpt-4o: [llama3-70b]}] general_settings: master_key:
 os.environ/LITELLM_MASTER_KEY database_url: postgresql://litellm:PASS@postgres:5432/litellm
 ```
 
-#### **CHAPTER 11** 
+#### **CHAPTER 11**
 
-## **Feature Stores with Feast** 
+## **Feature Stores with Feast**
 
-A feature store is the data layer that bridges data engineering and machine learning. It provides consistent, versioned, low-latency feature serving for both training (batch) and inference (online). Feast is the most widely deployed open-source feature store, with native Kubernetes integration. 
+A feature store is the data layer that bridges data engineering and machine learning. It provides consistent, versioned, low-latency feature serving for both training (batch) and inference (online). Feast is the most widely deployed open-source feature store, with native Kubernetes integration.
 
-### **Feast Architecture on Kubernetes** 
+### **Feast Architecture on Kubernetes**
 
 ```
 Feast components: Offline Store (batch features for training): Reads from: BigQuery, Redshift,
@@ -469,13 +469,13 @@ Field(name='preferred_language', dtype=String), ],
 source=BigQuerySource(table='company.features.user_features') )
 ```
 
-#### **CHAPTER 12** 
+#### **CHAPTER 12**
 
-## **MLflow: Experiment Tracking and Model Registry** 
+## **MLflow: Experiment Tracking and Model Registry**
 
-MLflow is the leading open-source MLOps platform for experiment tracking, model packaging, and model registry. In Kubernetes, MLflow serves as the system of record for all training runs, model versions, and deployment history. 
+MLflow is the leading open-source MLOps platform for experiment tracking, model packaging, and model registry. In Kubernetes, MLflow serves as the system of record for all training runs, model versions, and deployment history.
 
-### **MLflow Components on Kubernetes** 
+### **MLflow Components on Kubernetes**
 
 ```
 MLflow deployment architecture: MLflow Tracking Server (Deployment): REST API: log metrics,
@@ -495,13 +495,13 @@ train_one_epoch() mlflow.log_metric('train_loss', train_loss, step=epoch)
 mlflow.pytorch.log_model( model, 'model', registered_model_name='llama3-70b-finetune-v2' )
 ```
 
-#### **CHAPTER 13** 
+#### **CHAPTER 13**
 
-## **Vector Databases on Kubernetes** 
+## **Vector Databases on Kubernetes**
 
-Vector databases are foundational infrastructure for RAG pipelines. They store high-dimensional embeddings and enable approximate nearest neighbour (ANN) search to find semantically similar content. Production deployments require careful sizing, scaling, and operational management on Kubernetes. 
+Vector databases are foundational infrastructure for RAG pipelines. They store high-dimensional embeddings and enable approximate nearest neighbour (ANN) search to find semantically similar content. Production deployments require careful sizing, scaling, and operational management on Kubernetes.
 
-### **Vector Database Comparison** 
+### **Vector Database Comparison**
 
 |**Database**|**Algorithm**|**K8s Native**|**Scale-Out**|**Best For**|
 |---|---|---|---|---|
@@ -512,7 +512,7 @@ Vector databases are foundational infrastructure for RAG pipelines. They store h
 |Chroma|HNSW (in-process)|Deployment|Single server|Prototyping, small scale|
 |Redis<br>(RedisSearch)|HNSW + inverted<br>index|StatefulSet|Redis Cluster|Low latency, hybrid search|
 
-##### **Milvus Operator Deployment** 
+##### **Milvus Operator Deployment**
 
 ```
 # Install Milvus Operator: helm repo add milvus-operator
@@ -526,13 +526,13 @@ replicaCount: 3 } } } minio: { inCluster: { values: { mode: distributed } } } pu
 inCluster: { enabled: true } }
 ```
 
-#### **CHAPTER 14** 
+#### **CHAPTER 14**
 
-## **AMD ROCm and Intel Gaudi Support** 
+## **AMD ROCm and Intel Gaudi Support**
 
-NVIDIA dominates AI accelerator mindshare, but AMD MI300X and Intel Gaudi 3 offer compelling alternatives with significant cost advantages. Kubernetes supports all three via device plugins and operator patterns. 
+NVIDIA dominates AI accelerator mindshare, but AMD MI300X and Intel Gaudi 3 offer compelling alternatives with significant cost advantages. Kubernetes supports all three via device plugins and operator patterns.
 
-### **Accelerator Comparison** 
+### **Accelerator Comparison**
 
 |**Accelerator**|**VRAM**|**FP16**<br>**TFLOPS**|**Int8 TOPS**|**K8s Integration**|**Key Use Case**|
 |---|---|---|---|---|---|
@@ -541,7 +541,7 @@ NVIDIA dominates AI accelerator mindshare, but AMD MI300X and Intel Gaudi 3 offe
 |AMD MI300X|192GB HBM3|1,307|2,614|ROCm Device Plugin|Large models<br>(192GB = 70B+ no<br>sharding)|
 |Intel Gaudi 3|96GB HBM2e|1,835|3,670|Intel Gaudi Operator|Cost-effective<br>training, PyTorch<br>native|
 
-##### **AMD ROCm on Kubernetes** 
+##### **AMD ROCm on Kubernetes**
 
 ```
 # AMD ROCm Device Plugin: helm repo add rocm https://rocm.github.io/k8s-device-plugin helm
@@ -552,69 +552,69 @@ image: vllm/vllm-rocm:latest command: [python, -m, vllm.entrypoints.openai.api_s
 70B solo! resources: limits: { amd.com/gpu: '1' }
 ```
 
-#### **CHAPTER 15** 
+#### **CHAPTER 15**
 
-## **AI Infrastructure Cost Optimisation** 
+## **AI Infrastructure Cost Optimisation**
 
-GPU compute is the dominant cost in enterprise AI. A single H100 GPU node costs over $30/hour on-demand from AWS. Optimising GPU utilisation, scheduling strategy, and model efficiency can reduce AI infrastructure costs by 50-80%. 
+GPU compute is the dominant cost in enterprise AI. A single H100 GPU node costs over $30/hour on-demand from AWS. Optimising GPU utilisation, scheduling strategy, and model efficiency can reduce AI infrastructure costs by 50-80%.
 
-### **Cost Optimisation Strategies** 
+### **Cost Optimisation Strategies**
 
-- **GPU utilisation maximisation** : Batch requests to maximise GPU compute utilisation. vLLM continuous batching enables 70-90% GPU utilisation vs 20-30% for naive serving. Monitor DCGM_FI_DEV_GPU_UTIL -- target > 70% during serving hours. 
+- **GPU utilisation maximisation** : Batch requests to maximise GPU compute utilisation. vLLM continuous batching enables 70-90% GPU utilisation vs 20-30% for naive serving. Monitor DCGM_FI_DEV_GPU_UTIL -- target > 70% during serving hours.
 
-- **Spot/preemptible instances for training** : Use spot instances (AWS) or preemptible VMs (GCP) for batch training jobs -- 60-90% cheaper than on-demand. Implement checkpoint-based fault tolerance so jobs resume after preemption. 
+- **Spot/preemptible instances for training** : Use spot instances (AWS) or preemptible VMs (GCP) for batch training jobs -- 60-90% cheaper than on-demand. Implement checkpoint-based fault tolerance so jobs resume after preemption.
 
-- **Scale to zero for inference** : Use KEDA to scale inference deployments to zero replicas during off-peak hours. Critical for internal tools with predictable usage patterns. Model loading time (1-10 min for large LLMs) is acceptable for non-latency-sensitive apps. 
+- **Scale to zero for inference** : Use KEDA to scale inference deployments to zero replicas during off-peak hours. Critical for internal tools with predictable usage patterns. Model loading time (1-10 min for large LLMs) is acceptable for non-latency-sensitive apps.
 
-- **Reserved/committed use discounts** : Commit to 1 or 3 years of GPU instance usage for 60-70% discount over on-demand. Use for baseline inference capacity; use spot for training peaks. 
+- **Reserved/committed use discounts** : Commit to 1 or 3 years of GPU instance usage for 60-70% discount over on-demand. Use for baseline inference capacity; use spot for training peaks.
 
-- **Quantisation** : INT8 and INT4 quantisation reduces GPU memory requirements by 2-4x with minimal quality loss for most use cases. 70B FP16 model (140GB) becomes 70B INT8 (70GB) -- fits on single 80GB GPU instead of requiring 2. 
+- **Quantisation** : INT8 and INT4 quantisation reduces GPU memory requirements by 2-4x with minimal quality loss for most use cases. 70B FP16 model (140GB) becomes 70B INT8 (70GB) -- fits on single 80GB GPU instead of requiring 2.
 
-- **Model right-sizing** : Deploy the smallest model that meets quality requirements. 8B model costs 10x less to serve than 70B model. Use A/B testing to find the quality/cost tradeoff. 
+- **Model right-sizing** : Deploy the smallest model that meets quality requirements. 8B model costs 10x less to serve than 70B model. Use A/B testing to find the quality/cost tradeoff.
 
-- **Prefix caching** : Enable vLLM prefix caching for RAG workloads with long context. Cache hit rates of 50-80% reduce compute by proportional amount. Monitor vllm:gpu_prefix_cache_hit_rate metric. 
+- **Prefix caching** : Enable vLLM prefix caching for RAG workloads with long context. Cache hit rates of 50-80% reduce compute by proportional amount. Monitor vllm:gpu_prefix_cache_hit_rate metric.
 
-#### **CHAPTER 16** 
+#### **CHAPTER 16**
 
-## **AI Infrastructure Anti-Patterns** 
+## **AI Infrastructure Anti-Patterns**
 
-##### **Anti-Pattern: One model per Deployment for serving** 
+##### **Anti-Pattern: One model per Deployment for serving**
 
-**Problem** : Running separate Deployments for each LLM variant wastes GPU resources. 3 models x 4 GPUs = 12 GPUs sitting idle between requests. 
+**Problem** : Running separate Deployments for each LLM variant wastes GPU resources. 3 models x 4 GPUs = 12 GPUs sitting idle between requests.
 
-**Solution** : Use model multiplexing in vLLM (--model flag with multiple models) or Triton Inference Server for co-locating compatible models on shared GPUs. 
+**Solution** : Use model multiplexing in vLLM (--model flag with multiple models) or Triton Inference Server for co-locating compatible models on shared GPUs.
 
-##### **Anti-Pattern: Not setting GPU request == limit** 
+##### **Anti-Pattern: Not setting GPU request == limit**
 
-**Problem** : GPU resources in Kubernetes require request == limit. Setting only requests without limits causes incorrect scheduling. 
+**Problem** : GPU resources in Kubernetes require request == limit. Setting only requests without limits causes incorrect scheduling.
 
-**Solution** : Always set both: requests.nvidia.com/gpu and limits.nvidia.com/gpu to the same value. 
+**Solution** : Always set both: requests.nvidia.com/gpu and limits.nvidia.com/gpu to the same value.
 
-##### **Anti-Pattern: Training without checkpointing** 
+##### **Anti-Pattern: Training without checkpointing**
 
-**Problem** : Multi-day training job fails at 95% completion with no checkpoint. Must restart from scratch. Total loss of GPU hours. 
+**Problem** : Multi-day training job fails at 95% completion with no checkpoint. Must restart from scratch. Total loss of GPU hours.
 
-**Solution** : Checkpoint every N steps to S3/PVC. Implement resume-from-checkpoint in training code. Test checkpoint/resume in dev before long training runs. 
+**Solution** : Checkpoint every N steps to S3/PVC. Implement resume-from-checkpoint in training code. Test checkpoint/resume in dev before long training runs.
 
-##### **Anti-Pattern: LLM inference without batching** 
+##### **Anti-Pattern: LLM inference without batching**
 
-**Problem** : Serving one request at a time on a 4-GPU H100 node. GPU utilisation: 5%. Cost per token is 20x higher than necessary. 
+**Problem** : Serving one request at a time on a 4-GPU H100 node. GPU utilisation: 5%. Cost per token is 20x higher than necessary.
 
-**Solution** : Use vLLM or SGLang with continuous batching enabled. Set appropriate max-num-batched-tokens for your request mix. 
+**Solution** : Use vLLM or SGLang with continuous batching enabled. Set appropriate max-num-batched-tokens for your request mix.
 
-##### **Anti-Pattern: No GPU node taints** 
+##### **Anti-Pattern: No GPU node taints**
 
-**Problem** : General workloads scheduled onto GPU nodes. CPU-only Pods consume GPU node resources, blocking AI workloads from scheduling. 
+**Problem** : General workloads scheduled onto GPU nodes. CPU-only Pods consume GPU node resources, blocking AI workloads from scheduling.
 
-**Solution** : Always taint GPU nodes: nvidia.com/gpu=true:NoSchedule. Only Pods with explicit GPU requests and tolerations can use GPU nodes. 
+**Solution** : Always taint GPU nodes: nvidia.com/gpu=true:NoSchedule. Only Pods with explicit GPU requests and tolerations can use GPU nodes.
 
-#### **CHAPTER 17** 
+#### **CHAPTER 17**
 
-## **Hands-On Exercises** 
+## **Hands-On Exercises**
 
-### **Exercise 11.1 -- Deploy vLLM for LLM Inference** 
+### **Exercise 11.1 -- Deploy vLLM for LLM Inference**
 
-Deploy a small LLM model using vLLM on a GPU node: 
+Deploy a small LLM model using vLLM on a GPU node:
 
 ```
 # Prerequisite: GPU node with NVIDIA GPU Operator installed # Deploy vLLM with a small model
@@ -636,9 +636,9 @@ http://localhost:8000/v1/chat/completions \ -H 'Content-Type: application/json' 
 '{"model":"Qwen2.5-1.5B-Instruct","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-### **Exercise 11.2 -- GPU Utilisation Monitoring** 
+### **Exercise 11.2 -- GPU Utilisation Monitoring**
 
-Observe GPU metrics during inference load: 
+Observe GPU metrics during inference load:
 
 ```
 # Install DCGM Exporter (if not installed via GPU Operator): helm repo add gpu-helm-charts
@@ -651,6 +651,6 @@ utilisation rise in Grafana/Prometheus: # DCGM_FI_DEV_GPU_UTIL should rise towar
 DCGM_FI_DEV_FB_USED shows KV cache growing
 ```
 
-##### **End of Part XI -- Continue to Part XII: Kubernetes for Enterprise Agentic AI** 
+##### **End of Part XI -- Continue to Part XII: Kubernetes for Enterprise Agentic AI**
 
 Part XII focuses exclusively on Kubernetes implementation patterns for enterprise Agentic AI: stateless vs stateful agent execution, durable workflows with Temporal and Argo Workflows, MCP server deployment patterns, A2A communication across clusters, agent scheduling and autoscaling, tool and prompt registries, AI observability for multi-agent systems, GitOps for AI assets, and multi-region sovereign AI deployments.

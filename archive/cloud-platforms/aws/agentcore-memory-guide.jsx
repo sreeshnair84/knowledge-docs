@@ -673,7 +673,7 @@ def extract_entities(event_text):
     {{"products": [], "risk_appetite": "", "life_events": [],
       "goals": [], "preferences": []}}
     Conversation: {event_text}"""
-    
+
     response = bedrock.invoke_model(
         modelId="us.anthropic.claude-sonnet-4-6-v1",
         body=json.dumps({"messages": [{"role":"user","content": prompt}]})
@@ -828,34 +828,34 @@ function SecuritySection() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-2">Memory-Specific Policies</h4>
             <CodeBlock>{`# Natural language → Cedar auto-conversion
-"Block writing to memory namespaces 
+"Block writing to memory namespaces
  outside the agent's assigned scope"
 
-"Prevent memory reads for customers 
- where the requesting agent's role 
+"Prevent memory reads for customers
+ where the requesting agent's role
  does not match the namespace ACL"
 
-"Require PII redaction confirmation 
+"Require PII redaction confirmation
  metadata before any memory write event"
 
-"Block episodic memory reads if the 
- customer has invoked their GDPR 
+"Block episodic memory reads if the
+ customer has invoked their GDPR
  right to be forgotten"`}</CodeBlock>
           </div>
           <div>
             <h4 className="text-white font-semibold text-sm mb-2">Banking Policy Examples</h4>
-            <CodeBlock>{`"Prevent credit agent from reading 
+            <CodeBlock>{`"Prevent credit agent from reading
  fraud investigation memories unless
  escalation flag is set"
 
-"Block memory extraction if session 
+"Block memory extraction if session
  has not completed MFA verification"
 
-"Limit preference memory writes to 
- max 50 entries per customer to 
+"Limit preference memory writes to
+ max 50 entries per customer to
  prevent data bloat"
 
-"Alert compliance team if AML entity 
+"Alert compliance team if AML entity
  extracted to memory matches watchlist"`}</CodeBlock>
           </div>
         </div>
@@ -1164,7 +1164,7 @@ function StrandsSection() {
     def after_invocation(self, event: AfterInvocationEvent):
         # Session manager handles buffered flush
         self.session.flush_if_threshold_reached()
-        
+
         # Optional: checkpoint after high-value tool calls
         if self.checkpoint and event.had_tool_calls:
             self.checkpoint.save(
@@ -1433,7 +1433,7 @@ resource "aws_bedrockagentcore_memory" "compliance_memory" {
   name                  = "\${var.project}-compliance-memory"
   event_expiry_duration = 2555  # 7 years — AML directive
   encryption_key_arn    = aws_kms_key.memory_cmk.arn
-  
+
   memory_strategies {
     semantic_memory_strategy {
       name = "KYCEntities"
@@ -1530,7 +1530,7 @@ resource "aws_kms_key" "memory_cmk" {
   deletion_window_in_days  = 30       # Max window for recovery
   enable_key_rotation      = true     # Auto-rotate every 90 days
   multi_region             = false    # Single EU region key (GDPR)
-  
+
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -1637,7 +1637,7 @@ resource "aws_security_group" "agentcore_endpoint" {
     cidr_blocks = [aws_vpc.main.cidr_block]
     description = "HTTPS from within VPC only"
   }
-  
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -1762,7 +1762,7 @@ custom_evaluator = {
     check if it contains any personally identifiable information
     (names, account numbers, addresses, phone numbers, NI numbers).
     Respond with JSON: {"pii_detected": true|false, "pii_types": [...]}
-    
+
     Agent response: {output}""",
     "scale": {"type": "BINARY", "labels": ["NO_PII", "PII_DETECTED"]},
     "computeOn": "FULL_SESSION"

@@ -109,7 +109,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 1: AI Strategy & Executive Sponsorship
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | No formal AI strategy; AI initiatives are ad hoc |
 | 1 | AI vision exists at executive level but not documented |
 | 2 | AI strategy documented; investment roadmap defined |
@@ -122,7 +122,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 2: Data Infrastructure & Sovereignty
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | Data is siloed; no AI-ready data infrastructure |
 | 1 | Basic data lake exists; minimal AI feature engineering |
 | 2 | Unified data platform; data governance in place |
@@ -135,7 +135,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 3: AI Platform & MLOps Maturity
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | No AI platform; models run ad hoc on laptops |
 | 1 | Basic cloud AI APIs used; no model registry |
 | 2 | MLOps platform exists; model registry; basic CI/CD for models |
@@ -148,7 +148,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 4: Governance & Responsible AI
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | No AI governance; no accountability structure |
 | 1 | RAI principles stated; basic AI acceptable use policy |
 | 2 | AI governance structure (AI Governance Council, RAIO); model cards; AI Impact Assessments |
@@ -161,7 +161,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 5: Agent Autonomy & Constitutional Governance
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | No autonomous AI agents; all AI is L0 advisory |
 | 1 | Basic agents used in isolated contexts; no formal autonomy governance |
 | 2 | L0–L2 agents with documented autonomy levels; kill switches tested |
@@ -174,7 +174,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 6: AI Security & Threat Management
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | AI-specific security not considered |
 | 1 | Basic model security; no AI threat model |
 | 2 | AI threat model; OWASP LLM Top 10 addressed; guardrails deployed |
@@ -187,7 +187,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 7: Workforce & Culture
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | AI adoption resisted; workforce fears AI replacement |
 | 1 | AI curiosity exists but isolated to tech teams |
 | 2 | AI literacy program underway; cross-functional AI champions |
@@ -200,7 +200,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 #### Dimension 8: Value Measurement & FinOps
 
 | Score | Descriptor |
-|---|---|
+| --- | --- |
 | 0 | AI ROI not measured; costs untracked |
 | 1 | Basic cost tracking; anecdotal value stories |
 | 2 | Per-project AI ROI; cost dashboards; inference cost optimization |
@@ -213,7 +213,7 @@ Score each dimension 0–5. Maximum total = 40. Your total maps to maturity Leve
 ### 2.2 Score Interpretation
 
 | Total score | Level | Classification |
-|---|---|---|
+| --- | --- | --- |
 | 0–6 | Level 1 | **Exploring** — Isolated AI experiments; no governance or strategy |
 | 7–13 | Level 2 | **Experimenting** — AI pilots underway; basic capabilities forming |
 | 14–21 | Level 3 | **Scaling** — AI systematically deployed; governance forming |
@@ -232,7 +232,7 @@ AI-FIRST MATURITY ASSESSMENT — RADAR VIEW
          Security             Data
           (4)                 (3)
        ●                           ●
-   
+
   Workforce                         Platform
     (3)                              (4)
        ●                           ●
@@ -254,6 +254,7 @@ Total: 31 → Level 5 (AI-First)
 **Typical blockers:** No executive sponsor; AI seen as IT project; no data strategy; fear of AI replacing jobs.
 
 **Priority initiatives:**
+
 - Appoint a CAIO or senior AI sponsor with board access
 - Launch 2–3 high-visibility AI pilots in non-regulated areas
 - Establish a basic AI Working Group (cross-functional)
@@ -261,6 +262,7 @@ Total: 31 → Level 5 (AI-First)
 - Deploy AI acceptable use policy
 
 **Governance milestones:**
+
 - [ ] AI acceptable use policy published
 - [ ] RAI Champion named in at least one business unit
 - [ ] Basic AI risk register created
@@ -275,6 +277,7 @@ Total: 31 → Level 5 (AI-First)
 **Typical blockers:** AI value is clear but scaling is inconsistent; technical debt in AI infrastructure; governance not keeping pace with deployment; data quality and lineage gaps.
 
 **Priority initiatives:**
+
 - Build centralized AI platform (MLOps, model registry, eval pipeline)
 - Establish AI Governance Council with cross-functional representation
 - Implement ARB AI gate (architecture review for AI systems)
@@ -282,6 +285,7 @@ Total: 31 → Level 5 (AI-First)
 - Begin OPA/Cedar policy-as-code implementation for key AI risks
 
 **Governance milestones:**
+
 - [ ] AI Governance Council meets monthly
 - [ ] ARB AI approval gate operational
 - [ ] Model cards required for all production AI systems
@@ -297,6 +301,7 @@ Total: 31 → Level 5 (AI-First)
 **Typical blockers:** Governance is bureaucratic rather than enabling; constitutional AI not yet implemented; agent autonomy uncontrolled; fairness monitoring ad hoc rather than systematic.
 
 **Priority initiatives:**
+
 - Deploy constitutional AI for all Tier-1 AI systems
 - Implement policy-as-code with RAI Control Library (RAI-001 through RAI-015)
 - Build kill switch architecture and test quarterly
@@ -305,6 +310,7 @@ Total: 31 → Level 5 (AI-First)
 - Complete NIST AI RMF gap assessment
 
 **Governance milestones:**
+
 - [ ] Constitutional classifier live on all production agents
 - [ ] Kill switch tested quarterly (all L2+ agents)
 - [ ] Board AI briefing quarterly
@@ -321,6 +327,7 @@ Total: 31 → Level 5 (AI-First)
 **Typical blockers:** Sovereignty gaps (model and compute dependence on foreign providers); governance compliance without strategic AI integration; AI literacy gaps in non-technical leadership; regulatory uncertainty delaying high-risk AI deployment.
 
 **Priority initiatives:**
+
 - Pursue ISO 42001:2023 certification
 - Complete EU AI Act conformity assessment for all High-Risk systems
 - Develop Sovereign AI Reference Architecture (shift Tier-1 to sovereign infra)
@@ -329,6 +336,7 @@ Total: 31 → Level 5 (AI-First)
 - Launch AI FinOps governance with enterprise value framework
 
 **Governance milestones:**
+
 - [ ] ISO 42001 certification achieved
 - [ ] EU AI Act conformity assessed for all High-Risk systems
 - [ ] Sovereign infra for all Tier-1 AI workloads
@@ -345,6 +353,7 @@ Total: 31 → Level 5 (AI-First)
 **Typical blockers:** This is the hardest transition — it requires cultural transformation at the deepest level, full sovereign capability, and governance maturity that most organizations have not yet achieved (as of 2026, very few Level 6 enterprises exist).
 
 **Priority initiatives:**
+
 - Implement Collective Constitutional AI — public/employee participation in AI principles
 - Build full sovereign AI stack (own compute, own model weights, sovereign identity)
 - Deploy self-healing AI pipelines (automated retraining, drift correction, resource optimization)
@@ -353,6 +362,7 @@ Total: 31 → Level 5 (AI-First)
 - Design enterprise operating model around AI agents as first-class participants
 
 **Governance milestones:**
+
 - [ ] Public AI register published and maintained
 - [ ] Collective Constitutional AI process completed for at least 1 major system
 - [ ] Sovereign compute operational for all Tier-1 critical AI
@@ -484,12 +494,14 @@ AI-native culture:
 **Journey:** Sterling Bank (anonymized — see full case study PDF in enterprise-ai-governance) moved from ad hoc AI (Level 3) to AI-First (Level 5) over a 4-year transformation.
 
 **Key moves that accelerated the journey:**
+
 1. **Constitutional AI first** — deployed constitutional classifier before scaling agents, preventing governance debt from accumulating at scale
 2. **Sovereign infra early** — started building sovereign EU data infrastructure at Level 4, avoiding costly migration when regulatory requirements hardened
 3. **Board commitment before technical readiness** — board-level AI strategy commitment at Level 3 enabled the governance investment needed for Level 4→5 transition
 4. **Skills investment** — mandatory CIPP/E for all data governance roles; ISO 42001 training for governance leads; OPA/Rego for platform engineers
 
 **Where Sterling got stuck (and why):**
+
 - Level 3→4 took longer than expected because constitutional AI was implemented after 40+ agents were already in production — retrofitting was costly
 - Sovereign AI transition was delayed by vendor contract lock-in — contractual sovereignty guarantees should have been in RFP at Level 3
 
@@ -500,11 +512,13 @@ AI-native culture:
 **Journey:** Cascadia Health System built clinical AI governance (Level 3 → Level 4) focusing on equity and clinical safety as the organizing principles.
 
 **Key governance decisions:**
+
 1. **HITL as constitutional requirement** — clinician oversight written into HEALTH-CONST-001 before any clinical AI deployed
 2. **Equity-first evaluation** — demographic disparity analysis was the first metric, not accuracy — shaped entire ML pipeline design
 3. **IRB-AI integration** — IRB review process extended to cover all AI training on patient data
 
 **Lessons:**
+
 - Healthcare AI at Level 5+ requires dedicated clinical AI leadership (Chief Clinical AI Officer equivalent), not just IT AI governance
 - Patient advisory engagement is not optional — the level of trust required for clinical AI demands it
 
@@ -515,11 +529,13 @@ AI-native culture:
 **Journey:** State Department of Human Services deployed citizen-facing AI under strict sovereignty and accountability requirements.
 
 **Key sovereignty decisions:**
+
 1. **On-prem model inference** — all citizen data inference on state-owned infrastructure; no commercial cloud for PHI/PII
 2. **Parliamentary accountability** — regular AI reporting to state legislature embedded in governance model from Day 1
 3. **Plain-language explanation** — all AI decisions required to generate a plain-language explanation accessible to the citizen without technical literacy
 
 **What Level 5 means in government:**
+
 - Not just "AI is primary tool" — it means the state can demonstrate to any citizen that AI affecting their rights is governed by a publicly ratified constitution, with a human review right, and an independent audit trail.
 
 ---

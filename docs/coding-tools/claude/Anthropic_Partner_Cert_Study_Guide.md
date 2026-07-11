@@ -9,15 +9,20 @@ doc_type: guide
 ---
 | ANTHROPIC Partner Certification Exam Enterprise Architect (EA) Complete Study Guide 250+ Practice Questions  |  Cheat Sheet  |  Domain Deep Dives |
 | --- |
+
 | EXAM OVERVIEW Domain Weightings & Structure |
 | --- |
+
 ## **About The Certification**
+
 The Anthropic Partner Certification (Enterprise Architect) validates your ability to design and implement production-grade applications using Claude. The ideal candidate is a solution architect with 6+ months of practical experience building with Claude APIs, Agent SDK, Claude Code, and MCP in real production environments.
 
 ## **Exam Format**
+
 The exam uses scenario-based questions. 4 scenarios are selected at random from a pool of 6. Each scenario presents a realistic production context and frames a set of questions. Understanding the scenarios deeply is critical to exam success.
 
 ## **Domain Weightings**
+
 | Domain | Name | Weight | Key Focus |
 | --- | --- | --- | --- |
 | 1 | Agentic Architecture & Orchestration | 27% | Agentic loops, multi-agent systems, lifecycle hooks |
@@ -27,6 +32,7 @@ The exam uses scenario-based questions. 4 scenarios are selected at random from 
 | 5 | Context Management & Reliability | 15% | Long docs, multi-turn, handoffs, escalation |
 
 ## **The 6 Exam Scenarios**
+
 | Scenario 1: Customer Support Resolution Agent Building a customer support agent using Claude Agent SDK. Handles high-ambiguity requests (returns, billing disputes). MCP tools: get_customer, lookup_order, process_refund, escalate_to_human. Target: 80%+ first-contact resolution. Domains: Agentic Architecture, Tool Design & MCP, Context Management & Reliability |
 | --- |
 
@@ -649,7 +655,7 @@ The exam uses scenario-based questions. 4 scenarios are selected at random from 
 | ✓ B. Finds all TypeScript test files at any depth in the file tree |
 | C. Runs all test files |
 | D. Compiles TypeScript test files |
-| 💡 Explanation: Glob pattern **/*.test.tsx uses ** to match any directory depth and *.test.tsx to match files ending in .test.tsx — finding all TypeScript test files recursively. |
+| 💡 Explanation: Glob pattern **/*.test.tsx uses** to match any directory depth and *.test.tsx to match files ending in .test.tsx — finding all TypeScript test files recursively. |
 
 | Q67  |  Domain 3   What is the benefit of configuring Agent Skills in CLAUDE.md? |
 | --- |
@@ -973,6 +979,7 @@ The exam uses scenario-based questions. 4 scenarios are selected at random from 
 | --- |
 
 ## **Approach for Scenario-Based Questions**
+
 1. READ the scenario context carefully — understand what system is being built, what tools are available, and what the target metric is (e.g., 80% FCR).
 2. IDENTIFY the primary domains for the scenario — questions will focus on those domain competencies.
 3. ELIMINATE answers that contradict core principles (e.g., setting arbitrary iteration caps as PRIMARY stopping mechanism is always wrong).

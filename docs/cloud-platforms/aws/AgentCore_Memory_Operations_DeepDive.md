@@ -9,8 +9,10 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-#### **AgentCore Memory Operations Deep-Dive** 
-Metadata Options · Streaming & Batch · Issues/Fixes by Phase Unit Testing · Evaluation Retirement · Cleanup Strategies 
+#### **AgentCore Memory Operations Deep-Dive**
+
+Metadata Options · Streaming & Batch · Issues/Fixes by Phase Unit Testing · Evaluation Retirement · Cleanup Strategies
+
 |**SECTION**|**CONTENTS**|
 |---|---|
 |1 · Metadata Options|CreateEvent metadata fields, payload types, ListEvents filters, memory-record metadata, Kinesis stream<br>event schema|
@@ -20,11 +22,12 @@ Metadata Options · Streaming & Batch · Issues/Fixes by Phase Unit Testing · E
 |5 · Unit Testing|Mock patterns, test matrix, PII tests, isolation tests, hook tests, extraction tests, erasure tests — full code|
 |6 · Evaluation & Retirement|Metric thresholds, retire/graduate criteria, shadow evaluation, A/B strategy switch, evaluation teardown|
 |7 · Cleanup Strategies|Namespace purge, TTL enforcement, actor erasure, batch sweep, test teardown, cost-driven cleanup<br>scheduler|
-## **1. Metadata Options — Events, Records & Retrieval Filters** 
 
-# **1.1 CreateEvent Metadata — Key-Value Pairs on Short-Term Events** 
+## **1. Metadata Options — Events, Records & Retrieval Filters**
 
-Every **CreateEvent** call accepts a metadata map of string key-value pairs that travel with the event but are not part of the conversation payload. Metadata is indexed and filterable via **ListEvents** — enabling efficient event retrieval without semantic search overhead. 
+# **1.1 CreateEvent Metadata — Key-Value Pairs on Short-Term Events**
+
+Every **CreateEvent** call accepts a metadata map of string key-value pairs that travel with the event but are not part of the conversation payload. Metadata is indexed and filterable via **ListEvents** — enabling efficient event retrieval without semantic search overhead.
 
 |**Parameter**|**Constraint**|**Notes**|
 |---|---|---|
@@ -35,7 +38,7 @@ Every **CreateEvent** call accepts a metadata map of string key-value pairs that
 |Metadata stored with|Short-term event (not extracted to<br>long-term)|Use namespace/content for long-term recall|
 |Visible in GetEvent response|Yes — full metadata map returned|CloudTrail logs include metadata keys only|
 
-### **CreateEvent with metadata — full parameter set:** 
+### **CreateEvent with metadata — full parameter set:**
 
 ```
 import boto3, time, uuid client = boto3.client('bedrock-agentcore', region_name='eu-central-1') response
@@ -48,7 +51,7 @@ int(time.time()), metadata = { 'channel': {'stringValue': 'web-chat'}, 'product_
 'conversational': { 'content': {'text': redacted_user_message}, 'role': 'USER' } }] )
 ```
 
-# **1.2 Payload Types in CreateEvent** 
+# **1.2 Payload Types in CreateEvent**
 
 |**Payload Type**|**Structure Key**|**Use Case**|**Example**|
 |---|---|---|---|
@@ -57,7 +60,7 @@ int(time.time()), metadata = { 'channel': {'stringValue': 'web-chat'}, 'product_
 |Structured JSON|structured: {content: {text}}|Tool outputs, API responses,<br>extracted entities|Order status JSON, account details|
 |Multi-payload (array)|Array of above|Store multiple data types in one<br>event call|Text + metadata blob in same event|
 
-# **1.3 ListEvents with Metadata Filters** 
+# **1.3 ListEvents with Metadata Filters**
 
 ```
 paginator = client.get_paginator('list_events') pages = paginator.paginate( memoryId = memory_id,
@@ -66,9 +69,9 @@ actorId = actor_id, sessionId = session_id, # optional — omit for cross-sessio
 'mifid2'} ] }, PaginationConfig={'PageSize': 50} ) events = [e for page in pages for e in page['events']]
 ```
 
-# **1.4 Memory Record Metadata (Long-Term)** 
+# **1.4 Memory Record Metadata (Long-Term)**
 
-Long-term memory records (created by strategies or BatchCreateMemoryRecords) carry a different metadata concept: **namespace** (routing/isolation key) and **memoryRecordId** (idempotency + update anchor). These are set on write and are filterable by namespace prefix in ListMemoryRecords. 
+Long-term memory records (created by strategies or BatchCreateMemoryRecords) carry a different metadata concept: **namespace** (routing/isolation key) and **memoryRecordId** (idempotency + update anchor). These are set on write and are filterable by namespace prefix in ListMemoryRecords.
 
 |**Field**|**Set By**|**Purpose**|**Example Value**|
 |---|---|---|---|
@@ -81,11 +84,11 @@ Long-term memory records (created by strategies or BatchCreateMemoryRecords) car
 |createdAt / updatedAt|Service-managed|TTL decisions; staleness audit|ISO-8601 timestamps|
 |score|Returned by Retrieve<br>MemoryRecords only|Semantic relevance 0–1|0.91|
 
-## **2. Streaming Use Case — Kinesis Real-Time Change Notifications** 
+## **2. Streaming Use Case — Kinesis Real-Time Change Notifications**
 
-AgentCore Memory can push real-time notifications to a **Kinesis Data Stream** whenever a memory record is created, updated, or deleted. This enables event-driven downstream architectures — compliance dashboards, fraud monitors, CRM sync, audit pipelines — without polling the list APIs. 
+AgentCore Memory can push real-time notifications to a **Kinesis Data Stream** whenever a memory record is created, updated, or deleted. This enables event-driven downstream architectures — compliance dashboards, fraud monitors, CRM sync, audit pipelines — without polling the list APIs.
 
-# **2.1 Streaming Architecture** 
+# **2.1 Streaming Architecture**
 
 |**Layer**|**Component**|**Role**|
 |---|---|---|
@@ -95,7 +98,7 @@ AgentCore Memory can push real-time notifications to a **Kinesis Data Stream** w
 |IAM Role|bedrock-agentcore.amazonaws.co<br>m trust|Must have kinesis:PutRecord + optional kms:GenerateDataKey|
 |Encryption|SSE via KMS (optional)|If enabled, role must also have kms:Decrypt on consumer side|
 
-# **2.2 Wiring — CreateMemory with Stream Delivery** 
+# **2.2 Wiring — CreateMemory with Stream Delivery**
 
 ```
 import boto3 control = boto3.client('bedrock-agentcore-control', region_name='eu-central-1') response =
@@ -110,9 +113,9 @@ streamDeliveryResource = { 'kinesisDataStream': { 'streamArn':
 'FactExtractor'}}] )
 ```
 
-# **2.3 Kinesis Event Schema — Memory Record Lifecycle** 
+# **2.3 Kinesis Event Schema — Memory Record Lifecycle**
 
-Each Kinesis record Data payload is a JSON object with the following structure: 
+Each Kinesis record Data payload is a JSON object with the following structure:
 
 ```
 { 'eventType': 'CREATE' | 'UPDATE' | 'DELETE', 'memoryId': 'mem-abcdef1234-Ab1B2c3d4e',
@@ -123,7 +126,7 @@ DELETE 'content': {'text': 'Risk appetite: balanced'}, 'sourceEventIds': ['evt-0
 ... } # null on CREATE }
 ```
 
-# **2.4 Consumer Lambda — Compliance Audit Pipeline** 
+# **2.4 Consumer Lambda — Compliance Audit Pipeline**
 
 ```
 import json, boto3 firehose = boto3.client('firehose') def handler(event, context): for record in
@@ -137,7 +140,7 @@ a sanctioned SAR/erasure workflow if 'erasure-workflow' not in payload.get('name
 Exception(f'Unsanctioned DELETE for actor {actor_id}')
 ```
 
-### **Streaming Issues Quick-Reference:** 
+### **Streaming Issues Quick-Reference:**
 
 |**Issue**|**Symptom**|**Fix**|
 |---|---|---|
@@ -151,11 +154,11 @@ Exception(f'Unsanctioned DELETE for actor {actor_id}')
 |Duplicate events|Same memoryRecordId|Implement idempotency table (DynamoDB) keyed on record:|
 ||processed twice|sequenceNumber|
 
-## **3. Batch Use Case — BatchCreate / Update / Delete Memory Records** 
+## **3. Batch Use Case — BatchCreate / Update / Delete Memory Records**
 
-The three batch APIs operate on long-term memory records directly, bypassing the async extraction pipeline. They are used by self-managed Lambda extractors, migration scripts, SAR (Subject Access Request) cleanup, and direct data hydration. 
+The three batch APIs operate on long-term memory records directly, bypassing the async extraction pipeline. They are used by self-managed Lambda extractors, migration scripts, SAR (Subject Access Request) cleanup, and direct data hydration.
 
-# **3.1 API Comparison** 
+# **3.1 API Comparison**
 
 |**Operation**|**Endpoint**|**Max Records**|**Idempotency**|**Common Use**|
 |---|---|---|---|---|
@@ -163,11 +166,11 @@ The three batch APIs operate on long-term memory records directly, bypassing the
 |BatchUpdateMemoryRecord<br>s|POST /memories/{id}/memoryRecords/<br>batchUpdate|100 per call|memoryRecordId<br>must match existing<br>record|Correct stale preferences,<br>update entity facts<br>post-review|
 |BatchDeleteMemoryRecords|POST /memories/{id}/memoryRecords/<br>batchDelete|100 per call|Idempotent —<br>delete non-existent<br>returns success|GDPR erasure, TTL<br>sweep, stale record<br>pruning, test cleanup|
 
-# **3.2 BatchCreateMemoryRecords — Full Example** 
+# **3.2 BatchCreateMemoryRecords — Full Example**
 
-`response = client.batch_create_memory_records( memoryId = memory_id, clientToken = str(uuid.uuid4()), # call-level idempotency records = [ { 'memoryRecordId': f'{actor_id}-risk-appetite', # stable id` → `allows BatchUpdate later 'content': {'text': 'Risk appetite: balanced'}, 'namespace': f'/actors/{actor_id}/financial-profile/' }, { 'memoryRecordId': f'{actor_id}-inv-horizon', 'content': {'text': 'Investment horizon: 12 years'}, 'namespace': f'/actors/{actor_id}/financial-profile/' }, # ... up to 100 records per call ] ) # Partial failure pattern — check per-record status for result in response.get('results', []): if result['status'] != 'SUCCESS': logger.error(f'Failed: {result["memoryRecordId"]} — {result["errorMessage"]}') dead_letter_queue.send(result)` 
+`response = client.batch_create_memory_records( memoryId = memory_id, clientToken = str(uuid.uuid4()), # call-level idempotency records = [ { 'memoryRecordId': f'{actor_id}-risk-appetite', # stable id` → `allows BatchUpdate later 'content': {'text': 'Risk appetite: balanced'}, 'namespace': f'/actors/{actor_id}/financial-profile/' }, { 'memoryRecordId': f'{actor_id}-inv-horizon', 'content': {'text': 'Investment horizon: 12 years'}, 'namespace': f'/actors/{actor_id}/financial-profile/' }, # ... up to 100 records per call ] ) # Partial failure pattern — check per-record status for result in response.get('results', []): if result['status'] != 'SUCCESS': logger.error(f'Failed: {result["memoryRecordId"]} — {result["errorMessage"]}') dead_letter_queue.send(result)`
 
-# **3.3 Pagination Pattern for Batch > 100 Records** 
+# **3.3 Pagination Pattern for Batch > 100 Records**
 
 ```
 def batch_create_all(client, memory_id, records, batch_size=100): """Split large record lists into
@@ -178,7 +181,7 @@ r['status']!='SUCCESS' ]) except client.exceptions.ThrottlingException: time.sle
 batch_size)) # exponential backoff # re-queue chunk to DLQ for retry failed.extend(chunk) return failed
 ```
 
-# **3.4 Streaming vs Batch — Decision Guide** 
+# **3.4 Streaming vs Batch — Decision Guide**
 
 |**Scenario**|**Use Streaming**<br>**(Kinesis)**|**Use Batch API**|**Notes**|
 |---|---|---|---|
@@ -191,9 +194,9 @@ batch_size)) # exponential backoff # re-queue chunk to DLQ for retry failed.exte
 |Test environment teardown|No|YES —<br>BatchDelete|Delete all test actor records before next run|
 |Nightly stale preference purge|No|YES —<br>BatchDelete after<br>ListMemoryReco<br>rds|TTL-driven cleanup job|
 
-## **4. Issues, Root Causes & Fixes — By Development Phase** 
+## **4. Issues, Root Causes & Fixes — By Development Phase**
 
-# **Phase 1 — PoC (Weeks 1–4)** 
+# **Phase 1 — PoC (Weeks 1–4)**
 
 |**Issue**|**Root Cause**|**Fix**|**CloudWatch Signal**|
 |---|---|---|---|
@@ -204,7 +207,7 @@ batch_size)) # exponential backoff # re-queue chunk to DLQ for retry failed.exte
 |Memory resource in us-east-1|Default region|Force eu-central-1 in boto3 client and<br>AgentCore config|list_memories returns ARN<br>with wrong region|
 |Retrieval returns 0 results in<br>PoC|Async extraction not<br>complete; no wait|For PoC validation, add 30s sleep after<br>CreateEvent; production: use short-term<br>events first|ExtractionJobsCompleted<br>metric = 0 after 60s|
 
-# **Phase 2 — Cross-Session & Long-Term (Weeks 5–8)** 
+# **Phase 2 — Cross-Session & Long-Term (Weeks 5–8)**
 
 |**Issue**|**Root Cause**|**Fix**|**CloudWatch Signal**|
 |---|---|---|---|
@@ -215,7 +218,7 @@ batch_size)) # exponential backoff # re-queue chunk to DLQ for retry failed.exte
 |Cross-session actor_id<br>collision|Test shared actor_id across<br>test accounts|Use UUID per test actor in tests; enforce<br>actor_id length >= 20 chars|ListEvents returns unexpected<br>events for actor|
 |Right-to-erasure incomplete|memory_delete deletes only<br>one namespace|Cascade: delete events (ListEvents→<br>DeleteEvent) + all namespace prefixes +<br>vector records|Post-erasure:<br>RetrieveMemoryRecords must<br>return []|
 
-**Phase 3 — Multi-Agent (Weeks 9–12)** 
+**Phase 3 — Multi-Agent (Weeks 9–12)**
 
 |**Issue**|**Root Cause**|**Fix**|**CloudWatch Signal**|
 |---|---|---|---|
@@ -230,7 +233,7 @@ batch_size)) # exponential backoff # re-queue chunk to DLQ for retry failed.exte
 |Transaction ledger missing|CheckpointHook added after|Backfill HMAC via|Compliance audit finds events|
 |HMAC on old events|go-live of ledger|BatchUpdateMemoryRecords with<br>signed content field|without signature field|
 
-# **Phase 4 — Production (Weeks 13+)** 
+# **Phase 4 — Production (Weeks 13+)**
 
 |**Issue**|**Root Cause**|**Fix**|**CloudWatch Signal**|
 |---|---|---|---|
@@ -242,11 +245,11 @@ batch_size)) # exponential backoff # re-queue chunk to DLQ for retry failed.exte
 |Cost overrun from<br>batch_size=1 in legacy code|Old code path not updated<br>after SDK migration|Audit all Agent() constructors; enforce<br>batch_size>=10 in CI linter|CreateEvent calls > 10x<br>expected rate|
 |GDPR Art.22 automated<br>decision without review path|Episodic memory influences<br>credit decision with no<br>human override|Add HumanReviewRequired flag to<br>episodic memory namespace; block<br>auto-approval if set|Compliance: decision logs<br>without review_flag field|
 
-## **5. Unit Testing — Mocks, Test Matrix & Full Test Code** 
+## **5. Unit Testing — Mocks, Test Matrix & Full Test Code**
 
-All AgentCore Memory unit tests MUST run against mocked clients. Never call real AgentCore APIs in unit tests — they create billable events and leave orphaned test data. Use **unittest.mock.patch** or **moto** (where supported) for all boto3 clients. 
+All AgentCore Memory unit tests MUST run against mocked clients. Never call real AgentCore APIs in unit tests — they create billable events and leave orphaned test data. Use **unittest.mock.patch** or **moto** (where supported) for all boto3 clients.
 
-# **5.1 Mock Architecture** 
+# **5.1 Mock Architecture**
 
 ```
 import unittest from unittest.mock import MagicMock, patch, call import pytest # Fixture: shared mock
@@ -260,7 +263,7 @@ appetite: balanced'}, 'score': 0.92, 'memoryRecordId': 'test-actor-uuid-risk', '
 {'results': []} yield client
 ```
 
-# **5.2 Test Matrix — Complete Coverage** 
+# **5.2 Test Matrix — Complete Coverage**
 
 |**Test ID**|**What Is Tested**|**Pass Criterion**|**Fail Action**|
 |---|---|---|---|
@@ -279,7 +282,7 @@ appetite: balanced'}, 'score': 0.92, 'memoryRecordId': 'test-actor-uuid-risk', '
 |UT-MEM-01<br>3|Structured extraction produces valid<br>Pydantic model|Lambda extractor parses mock LLM<br>response into FinancialProfile without<br>ValidationError|Extraction failure|
 |UT-MEM-01<br>4|memory_delete requires DPO-admin<br>role; writer role raises 403|BatchDeleteMemoryRecords raises<br>AccessDeniedException for writer IAM<br>role mock|GDPR access control failure|
 
-# **5.3 PII Redaction Test — Zero Tolerance** 
+# **5.3 PII Redaction Test — Zero Tolerance**
 
 ```
 import re from tests.fixtures import PII_PATTERNS # IBAN, card, NIN, email, name, DOB PII_PATTERNS = [
@@ -294,7 +297,7 @@ event was still written (not silently dropped) assert '[REDACTED]' in stored_con
 stored_content
 ```
 
-# **5.4 Isolation Test — Cross-Tenant Barrier** 
+# **5.4 Isolation Test — Cross-Tenant Barrier**
 
 ```
 def test_actor_isolation(mock_agentcore): actor_a = 'cognito-sub-actor-a-uuid' actor_b =
@@ -308,7 +311,7 @@ result['memoryRecordSummaries'] == [], \ 'CRITICAL: Actor B retrieved Actor A me
 FAILED'
 ```
 
-# **5.5 Erasure Completeness Test** 
+# **5.5 Erasure Completeness Test**
 
 ```
 def test_right_to_erasure_completeness(mock_agentcore): actor_id = 'test-erasure-actor-uuid' namespaces
@@ -326,9 +329,9 @@ mock_agentcore.list_events(memoryId='test-memory', actorId=actor_id) assert even
 'Events survived erasure — GDPR Art.17 violation'
 ```
 
-## **6. Evaluation Metrics, Retirement Criteria & Strategy Switching** 
+## **6. Evaluation Metrics, Retirement Criteria & Strategy Switching**
 
-# **6.1 Full Metric Definitions & Retirement Thresholds** 
+# **6.1 Full Metric Definitions & Retirement Thresholds**
 
 |**Metric**|**Definition**|**Target**|**Graduate**<br>**Threshold**|**Retire/Rollback**<br>**Threshold**|**Alert**<br>**Level**|
 |---|---|---|---|---|---|
@@ -345,7 +348,7 @@ mock_agentcore.list_events(memoryId='test-memory', actorId=actor_id) assert even
 |Extraction Job Success<br>Rate|% of consolidation jobs<br>completing without<br>ExtractionJobsFailed metric<br>increment|≥99%|100%|<95% sustained 2h|P1|
 |Token Budget<br>Compliance|% of turns where injected<br>memory tokens≤900 token<br>budget|≥95%|100%|<80% sustained 24h|P2 — tune<br>retrieval<br>tiers|
 
-# **6.2 Graduate / Retire / Rollback Decision Logic** 
+# **6.2 Graduate / Retire / Rollback Decision Logic**
 
 ```
 def evaluate_strategy_health(metrics: dict) -> str: """ Returns: 'GRADUATE' | 'HOLD' | 'ROLLBACK' |
@@ -362,11 +365,11 @@ Graduate conditions — all green if (metrics['retrieval_relevance_7d'] >= 0.90 
 >= 0.95 and metrics['pii_leakage_rate'] == 0 and metrics['latency_p99_ms'] < 200): return 'GRADUATE'
 ```
 
-#### <mark>`return 'HOLD'`</mark> 
+#### <mark>`return 'HOLD'`</mark>
 
-# **6.3 Shadow Evaluation — A/B Strategy Switch** 
+# **6.3 Shadow Evaluation — A/B Strategy Switch**
 
-When switching extraction strategies (e.g. built-in SEMANTIC → self-managed Lambda), run shadow evaluation for 7 days before cutting over: 
+When switching extraction strategies (e.g. built-in SEMANTIC → self-managed Lambda), run shadow evaluation for 7 days before cutting over:
 
 |**Ste**<br>**p**|**Action**|**Duration**|**Success Criterion**|
 |---|---|---|---|
@@ -399,7 +402,7 @@ When switching extraction strategies (e.g. built-in SEMANTIC → self-managed La
 |ord||||
 |s||||
 
-# **6.4 Evaluation Teardown — Retiring a Memory Strategy** 
+# **6.4 Evaluation Teardown — Retiring a Memory Strategy**
 
 ```
 def retire_strategy(client, memory_id: str, strategy_id: str, actor_ids: list): """ Safely retire a
@@ -417,9 +420,9 @@ remaining['memoryRecordSummaries'], \ f'Strategy retirement incomplete — recor
 {namespace_prefix}'
 ```
 
-## **7. Cleanup Strategies — Namespace Purge, TTL, Erasure & Scheduler** 
+## **7. Cleanup Strategies — Namespace Purge, TTL, Erasure & Scheduler**
 
-# **7.1 Cleanup Taxonomy** 
+# **7.1 Cleanup Taxonomy**
 
 |**Cleanup Type**|**Trigger**|**Scope**|**API Used**|**Frequency**|
 |---|---|---|---|---|
@@ -432,15 +435,15 @@ remaining['memoryRecordSummaries'], \ f'Strategy retirement incomplete — recor
 |Full memory resource<br>deletion|Project shutdown /<br>environment destroy|All events + records in<br>memory resource|DeleteMemory<br>(irreversible)|One-time;<br>requires DPO<br>approval for<br>production|
 |Duplicate record<br>deduplication|Consolidation job or<br>scheduled Lambda|Records with identical<br>content in same<br>namespace|BatchDeleteMemory<br>Records (keep<br>latest)|Weekly /<br>post-migration|
 
-# **7.2 Actor Right-to-Erasure — Production-Grade Implementation** 
+# **7.2 Actor Right-to-Erasure — Production-Grade Implementation**
 
-`def full_actor_erasure( client, memory_id: str, actor_id: str, strategy_ids: list, dry_run: bool = True ) -> dict: """ GDPR Art.17 compliant erasure. dry_run=True audits without deleting. Returns: {events_deleted, records_deleted, namespaces_cleared} """ audit = {'events_deleted': 0, 'records_deleted': 0, 'namespaces_cleared': []} #` II `Step 1: Delete all short-term events` IIIIIIIIIIIIIIIIIIIIIIIIII `paginator = client.get_paginator('list_events') for page in paginator.paginate(memoryId=memory_id, actorId=actor_id): for event in page['events']: if not dry_run: client.delete_event( memoryId=memory_id, actorId=actor_id, eventId=event['eventId'] ) audit['events_deleted'] += 1 #` II `Step 2: Delete all long-term records across all strategy ns` III `namespaces = [ f'/strategy/{sid}/actor/{actor_id}/' for sid in strategy_ids ] + [f'/actors/{actor_id}/', f'/users/{actor_id}/'] # custom namespaces for ns in namespaces: ids_to_delete = [] paginator = client.get_paginator('list_memory_records') for page in paginator.paginate(memoryId=memory_id, namespace=ns): ids_to_delete.extend([ r['memoryRecordId'] for r in page['memoryRecordSummaries'] ]) if ids_to_delete and not dry_run: for i in range(0, len(ids_to_delete), 100):` 
+`def full_actor_erasure( client, memory_id: str, actor_id: str, strategy_ids: list, dry_run: bool = True ) -> dict: """ GDPR Art.17 compliant erasure. dry_run=True audits without deleting. Returns: {events_deleted, records_deleted, namespaces_cleared} """ audit = {'events_deleted': 0, 'records_deleted': 0, 'namespaces_cleared': []} #` II `Step 1: Delete all short-term events` IIIIIIIIIIIIIIIIIIIIIIIIII `paginator = client.get_paginator('list_events') for page in paginator.paginate(memoryId=memory_id, actorId=actor_id): for event in page['events']: if not dry_run: client.delete_event( memoryId=memory_id, actorId=actor_id, eventId=event['eventId'] ) audit['events_deleted'] += 1 #` II `Step 2: Delete all long-term records across all strategy ns` III `namespaces = [ f'/strategy/{sid}/actor/{actor_id}/' for sid in strategy_ids ] + [f'/actors/{actor_id}/', f'/users/{actor_id}/'] # custom namespaces for ns in namespaces: ids_to_delete = [] paginator = client.get_paginator('list_memory_records') for page in paginator.paginate(memoryId=memory_id, namespace=ns): ids_to_delete.extend([ r['memoryRecordId'] for r in page['memoryRecordSummaries'] ]) if ids_to_delete and not dry_run: for i in range(0, len(ids_to_delete), 100):`
 
-`client.batch_delete_memory_records( memoryId=memory_id, records=[{'memoryRecordId': rid} for rid in ids_to_delete[i:i+100]] ) audit['records_deleted'] += len(ids_to_delete) if ids_to_delete: audit['namespaces_cleared'].append(ns) #` II `Step 3: Post-erasure verification probe` IIIIIIIIIIIIIIIIIIIIIII `if not dry_run: for ns in audit['namespaces_cleared']: probe = client.retrieve_memory_records( memoryId=memory_id, namespace=ns, searchQuery='any' ) if probe['memoryRecordSummaries']: raise GDPRBreach(f'Records persist in {ns} after erasure') return audit` 
+`client.batch_delete_memory_records( memoryId=memory_id, records=[{'memoryRecordId': rid} for rid in ids_to_delete[i:i+100]] ) audit['records_deleted'] += len(ids_to_delete) if ids_to_delete: audit['namespaces_cleared'].append(ns) #` II `Step 3: Post-erasure verification probe` IIIIIIIIIIIIIIIIIIIIIII `if not dry_run: for ns in audit['namespaces_cleared']: probe = client.retrieve_memory_records( memoryId=memory_id, namespace=ns, searchQuery='any' ) if probe['memoryRecordSummaries']: raise GDPRBreach(f'Records persist in {ns} after erasure') return audit`
 
-# **7.3 Nightly TTL Sweep Lambda** 
+# **7.3 Nightly TTL Sweep Lambda**
 
-`from datetime import datetime, timedelta, timezone def ttl_sweep_handler(event, context): """ EventBridge Scheduler` → `nightly at 02:00 UTC. Deletes records older than per-namespace TTL config. """ TTL_CONFIG = { '/actors/{actor_id}/preferences/': timedelta(days=365),` 
+`from datetime import datetime, timedelta, timezone def ttl_sweep_handler(event, context): """ EventBridge Scheduler` → `nightly at 02:00 UTC. Deletes records older than per-namespace TTL config. """ TTL_CONFIG = { '/actors/{actor_id}/preferences/': timedelta(days=365),`
 
 ```
 '/actors/{actor_id}/financial-profile/': timedelta(days=730), '/strategy/*/actor/*/session/':
@@ -462,7 +465,7 @@ Namespace='AgentCore/Memory',
 MetricData=[{'MetricName':'TTLSweepDeleted','Value':deleted,'Unit':'Count'}] )
 ```
 
-# **7.4 CI/CD Test Teardown Pattern** 
+# **7.4 CI/CD Test Teardown Pattern**
 
 ```
 def pytest_sessionfinish(session, exitstatus): """pytest plugin hook — runs after all tests regardless
@@ -481,7 +484,7 @@ memoryId=os.environ['TEST_MEMORY_ID'], records=[{'memoryRecordId': rid} for rid 
 print(f'[teardown] Deleted {len(test_ids)} test memory records')
 ```
 
-# **7.5 Cleanup Decision Matrix** 
+# **7.5 Cleanup Decision Matrix**
 
 |**Scenario**|**Best Cleanup Strategy**|**Risk if Skipped**|
 |---|---|---|
@@ -494,4 +497,4 @@ print(f'[teardown] Deleted {len(test_ids)} test memory records')
 |AML/KYC memory after 7-year<br>retention end|S3 WORM expiry + BatchDeleteMemoryRecords from<br>AgentCore|Legal obligation to delete; ongoing<br>storage cost|
 |Session-scoped memories after 90<br>days|Automatic via eventExpiryDuration setting on Memory<br>Resource|Short-term events accumulate; minor<br>cost growth|
 
-_Production Reference · April 2026 · Companion to AgentCore Memory Architecture Guide v2.0 + Gaps & Extensions Supplement. All code examples use mock clients in unit test context and boto3 in production context. Regulatory citations follow GDPR (2018), DORA (2025), MiFID II, EBA ML Guidelines._
+*Production Reference · April 2026 · Companion to AgentCore Memory Architecture Guide v2.0 + Gaps & Extensions Supplement. All code examples use mock clients in unit test context and boto3 in production context. Regulatory citations follow GDPR (2018), DORA (2025), MiFID II, EBA ML Guidelines.*

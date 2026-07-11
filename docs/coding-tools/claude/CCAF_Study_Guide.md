@@ -12,7 +12,9 @@ doc_type: guide
 **Foundations (EAP-CCAF)**
 Complete Exam Preparation Guide
 *All 5 Domains  •  Practice MCQs  •  Flashcards  •  Quick-Revision Sheets*
+
 ## **Exam At-a-Glance**
+
 | Attribute | Detail |
 | --- | --- |
 | Format | Multiple choice — 1 correct + 3 distractors per question |
@@ -29,6 +31,7 @@ Complete Exam Preparation Guide
 | --- |
 
 # **HOW TO USE THIS GUIDE**
+
 This guide is structured in five domain modules matching the exam blueprint. Each module contains:
 Concept explanation (plain English, then technical deep-dive)
 Architecture diagrams
@@ -37,16 +40,24 @@ Comparison tables (VS concepts)
 Exam traps & tips
 Practice MCQs with explanations
 
-**Recommended Study Order: **Domain 1 → Domain 3 → Domain 4 → Domain 2 → Domain 5 → Practice Questions → Flashcards → Quick-Revision Sheet.
+**Recommended Study Order:**Domain 1 → Domain 3 → Domain 4 → Domain 2 → Domain 5 → Practice Questions → Flashcards → Quick-Revision Sheet.
 
 **DOMAIN 1: Agentic Architecture & Orchestration — 27% of exam**
+
 # **DOMAIN 1: Agentic Architecture & Orchestration**
+
 *27% of scored content — the most heavily tested domain.*
+
 ## **1.1  The Agentic Loop Lifecycle**
+
 ### **Plain-English Explanation**
+
 Imagine sending a message to Claude and giving it tools (like a calculator or a database lookup). Instead of responding once and stopping, Claude can decide to use a tool, get a result, think about it, use another tool, and eventually give you a final answer. This cycle is the agentic loop.
+
 ### **Technical Deep-Dive**
+
 The agentic loop works via the API's stop_reason field:
+
 | stop_reason Value | What to Do |
 | --- | --- |
 | stop_reason = "tool_use" | Claude wants to call one or more tools. Your code must execute those tools, append results to conversation history, and call the API again. |
@@ -54,6 +65,7 @@ The agentic loop works via the API's stop_reason field:
 | stop_reason = "max_tokens" | Token limit hit — handle gracefully, do NOT treat as end_turn. |
 
 ### **Architecture Diagram**
+
 | ┌─────────────────────────────────────────────────────────────┐ │                     AGENTIC LOOP                           │ │                                                             │ │   User Prompt                                               │ │       │                                                     │ │       ▼                                                     │ │  ┌─────────┐  stop_reason=tool_use  ┌──────────────────┐   │ │  │  CLAUDE  │ ──────────────────────▶│  Execute Tools   │   │ │  │   API    │                        │  (your code)     │   │ │  └─────────┘ ◀──────────────────────└──────────────────┘   │ │       │        tool_result in history                       │ │       │ stop_reason=end_turn                                │ │       ▼                                                     │ │  Final Response → User                                      │ └─────────────────────────────────────────────────────────────┘ |
 | --- |
 
@@ -61,17 +73,24 @@ The agentic loop works via the API's stop_reason field:
 | --- |
 
 ### **Key Points for Exam**
+
 **Always check stop_reason** — never parse Claude's text for loop control.
 **Tool results go INTO conversation history** — append as user turn with role 'user' and content type 'tool_result'.
 Claude decides WHICH tool to call next based on context — this is **model-driven decision making**, not hard-coded routing.
+
 ## **1.2  Multi-Agent: Coordinator–Subagent Pattern**
+
 ### **Plain-English Explanation**
+
 Think of a manager (coordinator) who receives a big project and assigns parts to specialists (subagents). The manager never lets specialists talk to each other directly — all communication flows through the manager. Each specialist knows only what the manager tells them.
+
 ### **Architecture Diagram**
+
 | ┌────────────────┐ User ─────────▶│  COORDINATOR   │◀───────── User │    AGENT       │ └───────┬────────┘ ┌────────────────┼────────────────┐ ▼                ▼                ▼ ┌──────────┐    ┌──────────┐    ┌──────────────┐ │  SEARCH  │    │ ANALYSIS │    │  SYNTHESIS   │ │ Subagent │    │ Subagent │    │  Subagent    │ └──────────┘    └──────────┘    └──────────────┘ web_search      analyze_doc      synthesize tools only      tools only       verify_fact ⚠  Subagents do NOT share memory. Each gets its own fresh context. ⚠  Coordinator routes ALL inter-agent communication. |
 | --- |
 
 ### **Critical Knowledge**
+
 | Concept | Detail |
 | --- | --- |
 | Hub-and-spoke architecture | Coordinator manages ALL communication. Subagents never call each other directly. |
@@ -87,7 +106,9 @@ Think of a manager (coordinator) who receives a big project and assigns parts to
 | --- |
 
 ## **1.3  Subagent Context Passing & AgentDefinition**
+
 Subagents have zero memory of prior runs. Everything they need must be injected into their prompt. Use structured data to separate content from metadata.
+
 | Concept | Detail |
 | --- | --- |
 | AgentDefinition | Config object for each subagent type: description, system prompt, allowedTools. |
@@ -97,7 +118,9 @@ Subagents have zero memory of prior runs. Everything they need must be injected 
 | Metadata preservation | Include source URLs, doc names, page numbers in structured format when passing context. |
 
 ## **1.4  Multi-Step Workflows: Enforcement vs Prompt Guidance**
+
 This is a HIGH-PRIORITY topic. The exam frequently tests the difference between programmatic enforcement and prompt-based guidance.
+
 | Approach | Detail |
 | --- | --- |
 | Prompt-based guidance | Instructing Claude in the system prompt: 'Always call get_customer first.' Probabilistic — will fail ~12% of time in production. |
@@ -110,6 +133,7 @@ This is a HIGH-PRIORITY topic. The exam frequently tests the difference between 
 | --- |
 
 ## **1.5  Task Decomposition Strategies**
+
 | Strategy | Best For |
 | --- | --- |
 | Prompt chaining | Fixed sequential pipeline. Best for predictable multi-aspect reviews (e.g., code review: analyze each file, then cross-file integration pass). |
@@ -118,6 +142,7 @@ This is a HIGH-PRIORITY topic. The exam frequently tests the difference between 
 | Adaptive investigation | First map structure, identify high-impact areas, create prioritized plan that adapts as dependencies are discovered. |
 
 ## **1.6  Session State: Resume & Fork**
+
 | Mechanism | Use Case |
 | --- | --- |
 | --resume <name> | Continue a named prior session. Use when prior context is mostly valid. |
@@ -152,16 +177,20 @@ This is a HIGH-PRIORITY topic. The exam frequently tests the difference between 
 | Explanation: When errors have financial consequences, programmatic enforcement is the only approach that provides deterministic guarantees. A and B are probabilistic — they reduce failure rate but cannot reach 0%. D is over-engineered and still probabilistic. |
 
 **DOMAIN 2: Tool Design & MCP Integration — 18% of exam**
+
 # **DOMAIN 2: Tool Design & MCP Integration**
+
 ## **2.1  Writing Effective Tool Descriptions**
+
 ### **Plain-English Explanation**
+
 Tool descriptions are the menu Claude reads when deciding which tool to use. A one-line description like 'Retrieves information' is like a restaurant menu that just says 'Food'. Claude will guess — and guess wrong.
 A complete tool description must include:
-**Purpose: **What this tool does and what it returns.
-**Input formats: **What parameters it accepts and in what format.
-**Example queries: **When a user says X, use this tool.
-**Boundary explanations: **When NOT to use this tool vs. similar tools.
-**Edge cases: **What happens with invalid inputs.
+**Purpose:**What this tool does and what it returns.
+**Input formats:**What parameters it accepts and in what format.
+**Example queries:**When a user says X, use this tool.
+**Boundary explanations:**When NOT to use this tool vs. similar tools.
+**Edge cases:**What happens with invalid inputs.
 
 | 🔴  HIGH-PRIORITY EXAM TOPIC Tool descriptions are the PRIMARY mechanism LLMs use for tool selection. Minimal descriptions → unreliable selection. This is the FIRST thing to fix when tools are being misrouted, BEFORE adding few-shot examples or routing layers. |
 | --- |
@@ -170,7 +199,9 @@ A complete tool description must include:
 | --- |
 
 ## **2.2  Structured Error Responses**
+
 ### **Error Category Taxonomy**
+
 | errorCategory | Meaning & Handling |
 | --- | --- |
 | transient | Timeouts, service unavailability. isRetryable: true. Agent should retry. |
@@ -185,7 +216,9 @@ A complete tool description must include:
 | --- |
 
 ## **2.3  Tool Distribution & tool_choice**
+
 Giving an agent too many tools degrades reliability. The exam tests the principle: fewer, well-scoped tools per agent > many generic tools.
+
 | Config / Concept | Detail |
 | --- | --- |
 | tool_choice: 'auto' | Model may call a tool OR return conversational text. Default behavior. |
@@ -195,6 +228,7 @@ Giving an agent too many tools degrades reliability. The exam tests the principl
 | Cross-role tools | One or two high-frequency cross-role tools (e.g., verify_fact for synthesis agent) are acceptable. |
 
 ## **2.4  MCP Server Configuration**
+
 | Concept | Detail |
 | --- | --- |
 | .mcp.json (project-level) | Shared team MCP servers checked into version control. Available to all developers. |
@@ -204,6 +238,7 @@ Giving an agent too many tools degrades reliability. The exam tests the principl
 | Discovery | All tools from all configured MCP servers are discovered at connection time and available simultaneously. |
 
 ## **2.5  Built-in Tool Selection Guide**
+
 | Tool | When to Use |
 | --- | --- |
 | Grep | Search FILE CONTENTS for patterns. Use: find all callers of a function, locate error messages, find import statements. |
@@ -235,9 +270,13 @@ Giving an agent too many tools degrades reliability. The exam tests the principl
 | Explanation: Generic error messages hide the error category and retryability from the agent. Without knowing whether an error is transient (retry) vs. validation (fix input) vs. business (escalate), the agent cannot make intelligent recovery decisions. |
 
 **DOMAIN 3: Claude Code Configuration & Workflows — 20% of exam**
+
 # **DOMAIN 3: Claude Code Configuration & Workflows**
+
 ## **3.1  CLAUDE.md Configuration Hierarchy**
+
 ### **The Three Levels**
+
 | ┌───────────────────────────────────────────────────────┐ │  ~/.claude/CLAUDE.md        ← USER-LEVEL              │ │  (personal settings, NOT shared via version control)  │ │                                                        │ │  .claude/CLAUDE.md or CLAUDE.md  ← PROJECT-LEVEL      │ │  (checked into git, ALL team members get this)        │ │                                                        │ │  src/api/CLAUDE.md          ← DIRECTORY-LEVEL         │ │  (applies only within that directory)                 │ └───────────────────────────────────────────────────────┘ @import syntax: reference external files from CLAUDE.md .claude/rules/ directory: topic-specific rule files /memory command: diagnose which memory files are loaded |
 | --- |
 
@@ -248,7 +287,9 @@ Giving an agent too many tools degrades reliability. The exam tests the principl
 | --- |
 
 ## **3.2  Path-Specific Rules (.claude/rules/)**
+
 Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional loading. This is more powerful than subdirectory CLAUDE.md files for conventions that span multiple directories.
+
 | Pattern / Concept | Detail |
 | --- | --- |
 | paths: ["terraform/**/*"] | Only loads when editing Terraform files — wherever they live in the codebase. |
@@ -260,6 +301,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | --- |
 
 ## **3.3  Custom Slash Commands & Skills**
+
 | Concept | Detail |
 | --- | --- |
 | .claude/commands/ (project) | Checked into version control. Available to ALL developers who clone the repo. Team-wide commands. |
@@ -273,6 +315,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | --- |
 
 ## **3.4  Plan Mode vs Direct Execution**
+
 | Mode | When to Use |
 | --- | --- |
 | Plan Mode — USE WHEN | Large-scale changes, architectural decisions, multiple valid approaches, multi-file modifications (45+ files), microservice restructuring, library migrations. |
@@ -284,6 +327,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | --- |
 
 ## **3.5  Iterative Refinement Techniques**
+
 | Technique | When / How to Use |
 | --- | --- |
 | Input/output examples | The MOST effective technique when prose descriptions produce inconsistent results. Provide 2-3 concrete examples. |
@@ -293,6 +337,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | Sequential iteration | When issues are INDEPENDENT — fix one at a time, verify, then next. |
 
 ## **3.6  CI/CD Integration**
+
 | Feature / Pattern | Detail |
 | --- | --- |
 | -p / --print flag | Runs Claude Code in NON-INTERACTIVE mode. REQUIRED for CI/CD pipelines — prevents indefinite hang waiting for input. |
@@ -331,10 +376,15 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | Explanation: .claude/rules/ with glob path patterns is purpose-built for conventions that must apply to files by type regardless of directory location. Option A requires inference (unreliable). Option B requires maintaining CLAUDE.md in every directory (unmaintainable). Option D requires manual skill invocation rather than automatic application. |
 
 **DOMAIN 4: Prompt Engineering & Structured Output — 20% of exam**
+
 # **DOMAIN 4: Prompt Engineering & Structured Output**
+
 ## **4.1  Explicit Criteria vs Vague Instructions**
+
 ### **The Core Principle**
+
 Vague instructions produce vague results. 'Check that comments are accurate' tells Claude nothing about WHEN to flag an issue. 'Flag a comment ONLY when the claimed behavior directly contradicts the actual code behavior' gives Claude a testable rule.
+
 | Type | Example / Impact |
 | --- | --- |
 | ❌ Vague | "Be conservative" / "Only report high-confidence findings" / "Check for code quality issues" |
@@ -343,8 +393,11 @@ Vague instructions produce vague results. 'Check that comments are accurate' tel
 | Severity criteria | Define each severity level with a concrete code example showing exactly what qualifies. |
 
 ## **4.2  Few-Shot Prompting**
+
 ### **When and How to Use**
+
 Few-shot examples are the MOST effective technique when detailed instructions alone produce inconsistent results. They show the model how to handle ambiguous cases by example rather than rule.
+
 | Aspect | Guidance |
 | --- | --- |
 | Quantity | 2-4 examples for ambiguous scenarios. Too many wastes tokens; too few doesn't generalize. |
@@ -358,7 +411,9 @@ Few-shot examples are the MOST effective technique when detailed instructions al
 | --- |
 
 ## **4.3  Structured Output via Tool Use & JSON Schemas**
+
 ### **The Reliability Spectrum**
+
 | Approach | Reliability |
 | --- | --- |
 | Plain text instructions | Lowest reliability. Model can deviate from format. JSON syntax errors possible. |
@@ -369,11 +424,12 @@ Few-shot examples are the MOST effective technique when detailed instructions al
 | --- |
 
 Schema design best practices:
-**Nullable / optional fields: **Use for information that MAY NOT exist in the source document. Prevents Claude from fabricating values to satisfy required fields.
-**Enum with 'other' + detail: **Add 'unclear' for ambiguous cases, 'other' + free-text field for extensible categorization.
-**Format normalization: **Include normalization rules in prompts (e.g., 'normalize all dates to ISO 8601') alongside the schema.
+**Nullable / optional fields:**Use for information that MAY NOT exist in the source document. Prevents Claude from fabricating values to satisfy required fields.
+**Enum with 'other' + detail:**Add 'unclear' for ambiguous cases, 'other' + free-text field for extensible categorization.
+**Format normalization:**Include normalization rules in prompts (e.g., 'normalize all dates to ISO 8601') alongside the schema.
 
 ### **tool_choice Decision Guide**
+
 | Setting | When to Use |
 | --- | --- |
 | tool_choice: 'auto' | Model may return text OR call a tool. Use when conversational responses are acceptable. |
@@ -381,6 +437,7 @@ Schema design best practices:
 | tool_choice: {type:'tool',name:'X'} | Model MUST call tool X. Use to enforce a mandatory first step (e.g., extract_metadata before any enrichment). |
 
 ## **4.4  Validation, Retry & Feedback Loops**
+
 | Pattern | Detail |
 | --- | --- |
 | Retry-with-error-feedback | On validation failure: resend the original document + the failed extraction + the specific error. Model corrects format/structure. |
@@ -390,6 +447,7 @@ Schema design best practices:
 | Self-correction validation | Extract 'calculated_total' alongside 'stated_total'. Add 'conflict_detected' boolean for inconsistent source data. |
 
 ## **4.5  Batch Processing (Message Batches API)**
+
 | Attribute | Value |
 | --- | --- |
 | Cost savings | 50% versus synchronous API calls. |
@@ -403,6 +461,7 @@ Schema design best practices:
 | --- |
 
 ## **4.6  Multi-Instance & Multi-Pass Review**
+
 | Pattern | Detail |
 | --- | --- |
 | Self-review limitation | A model that generated code retains reasoning context from generation — less likely to question its own decisions. Use a SEPARATE fresh instance for review. |
@@ -437,9 +496,13 @@ Schema design best practices:
 | Explanation: Required fields pressure the model to fabricate values to satisfy the schema. Making fields optional/nullable for information that may not exist in source documents is the correct schema design principle. It tells the model it's acceptable to return null rather than invent data. |
 
 **DOMAIN 5: Context Management & Reliability — 15% of exam**
+
 # **DOMAIN 5: Context Management & Reliability**
+
 ## **5.1  Context Window Management**
+
 ### **The Problems**
+
 | Problem | Description |
 | --- | --- |
 | Progressive summarization risk | Condensing numerical values, percentages, dates, customer expectations into vague summaries. Precision is lost. |
@@ -448,6 +511,7 @@ Schema design best practices:
 | Stale context in resume | Resumed sessions may contain tool results from before code was modified — those results are now wrong. |
 
 ### **Solutions**
+
 | Solution | How It Helps |
 | --- | --- |
 | Persistent 'case facts' block | Extract transactional facts (amounts, dates, order numbers, statuses) into a persistent block included in EVERY prompt, OUTSIDE summarized history. |
@@ -458,7 +522,9 @@ Schema design best practices:
 | Structured subagent output | Require subagents to include metadata (dates, source URLs, methodological context) — not just content — in structured outputs. |
 
 ## **5.2  Escalation & Ambiguity Resolution**
+
 ### **When to Escalate**
+
 Customer EXPLICITLY requests a human — honor IMMEDIATELY, no investigation first.
 Policy is ambiguous or SILENT on the customer's specific request (not just complex cases).
 Agent cannot make meaningful progress after reasonable attempts.
@@ -471,6 +537,7 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | --- |
 
 ## **5.3  Error Propagation in Multi-Agent Systems**
+
 | Concept | Detail |
 | --- | --- |
 | Structured error context | Include: failure type, attempted query, partial results, potential alternative approaches. |
@@ -481,6 +548,7 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | Coverage annotations | Synthesis output should indicate which areas are well-supported vs. which have gaps due to unavailable sources. |
 
 ## **5.4  Large Codebase Context Management**
+
 | Pattern | When to Use |
 | --- | --- |
 | Context degradation signal | Model starts referencing 'typical patterns' instead of specific classes discovered earlier. Start fresh with summary. |
@@ -490,6 +558,7 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | Crash recovery | Each agent exports state to a known location (manifest). Coordinator loads manifest on resume and injects into agent prompts. |
 
 ## **5.5  Human Review & Confidence Calibration**
+
 | Concept | Detail |
 | --- | --- |
 | Aggregate accuracy risk | 97% overall accuracy may mask 70% accuracy on a specific document type. Always segment by type and field. |
@@ -499,6 +568,7 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | Before automation | Validate accuracy by document type AND field segment before reducing human review rates. |
 
 ## **5.6  Information Provenance in Multi-Source Synthesis**
+
 | Concept | Detail |
 | --- | --- |
 | Claim-source mappings | Each finding from subagents must include: claim, source URL/document name, relevant excerpt, publication date. |
@@ -528,7 +598,8 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 # **SCENARIO-BASED PRACTICE QUESTIONS**
 
 ## **Scenario A: Multi-Agent Research System (3 Questions)**
-*Context: *You are building a multi-agent research system. A coordinator delegates to: web_search subagent, document_analysis subagent, synthesis subagent, report_generation subagent.
+
+*Context:*You are building a multi-agent research system. A coordinator delegates to: web_search subagent, document_analysis subagent, synthesis subagent, report_generation subagent.
 
 | Q14: [Scenario A - Q1] The synthesis subagent frequently needs to verify simple facts (dates, names) during synthesis. Currently each verification requires 3 round-trips through the coordinator to the web_search subagent, adding 40% latency. 85% of verifications are simple facts; 15% require deep investigation. What is the best solution? |
 | --- |
@@ -555,7 +626,8 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | Explanation: Conflicting statistics from credible sources should be preserved with both values, each with source attribution, and explicitly annotated as conflicting. The synthesis agent should NOT make an editorial decision about which is 'right' — that judgment belongs higher in the pipeline. Averaging (B) loses the original data. Option D adds unnecessary latency. |
 
 ## **Scenario B: Structured Data Extraction (3 Questions)**
-*Context: *You are building an extraction system that processes research papers into structured JSON for a database. Papers have varying formats: some have explicit methodology sections, others embed methodology in narrative text. Some papers are from the 1990s, others from 2024.
+
+*Context:*You are building an extraction system that processes research papers into structured JSON for a database. Papers have varying formats: some have explicit methodology sections, others embed methodology in narrative text. Some papers are from the 1990s, others from 2024.
 
 | Q17: [Scenario B - Q1] 25% of papers don't have a dedicated methodology section, causing the model to fabricate plausible-sounding methodology text. What is the most effective fix? |
 | --- |
@@ -582,9 +654,11 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | Explanation: This is the key distinction: tool_use with JSON schema eliminates SYNTAX errors (malformed JSON, wrong types, missing required fields) but does NOT prevent SEMANTIC errors (values that are internally inconsistent, calculations that don't add up, dates in wrong sequence). Semantic validation requires post-processing business logic in your application code. |
 
 # **FLASHCARDS**
+
 Study these card pairs. Cover the right side, answer, then check.
 
 ## **Domain 1 Flashcards**
+
 | D1 AGENTIC LOOP What does stop_reason='tool_use' mean and what must you do? | ANSWER Claude wants to call tools. Execute the tools, append tool_results to conversation history, call the API again. |
 | --- | --- |
 
@@ -675,7 +749,9 @@ Study these card pairs. Cover the right side, answer, then check.
 | --- | --- |
 
 # **COMPARISON TABLES (High-Value Exam Topics)**
+
 ## **Programmatic Enforcement vs Prompt Guidance**
+
 | Attribute | Programmatic Enforcement | Prompt Guidance |
 | --- | --- | --- |
 | Guarantee | 100% deterministic | Probabilistic (~88-95%) |
@@ -685,6 +761,7 @@ Study these card pairs. Cover the right side, answer, then check.
 | Example | Block process_refund until get_customer verified | 'Always verify customer identity before refunds' |
 
 ## **batch API vs Synchronous API**
+
 | Attribute | Message Batches API | Synchronous API |
 | --- | --- | --- |
 | Cost | 50% savings | Full price |
@@ -694,6 +771,7 @@ Study these card pairs. Cover the right side, answer, then check.
 | Failure handling | Resubmit by custom_id | Retry in loop |
 
 ## **Plan Mode vs Direct Execution**
+
 | Attribute | Plan Mode | Direct Execution |
 | --- | --- | --- |
 | Use for | Architectural decisions, 45+ file changes, migrations, multiple valid approaches | Single-file bug fixes, adding one validation, clear scope |
@@ -702,6 +780,7 @@ Study these card pairs. Cover the right side, answer, then check.
 | Combined approach | Plan first, then direct execution for implementation | N/A |
 
 ## **project-level vs user-level Configuration**
+
 | Concept | Project / Shared | User / Personal |
 | --- | --- | --- |
 | .claude/CLAUDE.md | Checked into git — ALL team members | .claude/commands/ |
@@ -710,6 +789,7 @@ Study these card pairs. Cover the right side, answer, then check.
 | AgentDefinition config | N/A — defined in code | N/A |
 
 ## **tool_choice Options**
+
 | Setting | Behavior | Use Case |
 | --- | --- | --- |
 | 'auto' | Model CHOOSES: tool call OR text response | General use, flexible interactions |
@@ -717,9 +797,11 @@ Study these card pairs. Cover the right side, answer, then check.
 | {type:'tool', name:'X'} | Model MUST call tool X specifically | Enforce required first step (e.g., extract_metadata first) |
 
 # **QUICK REVISION SHEET**
+
 *One-page summary of the highest-probability exam topics.*
 
 ## **🔴 Must-Know Rules (Highest Exam Probability)**
+
 stop_reason DRIVES agentic loop. 'tool_use' → continue. 'end_turn' → terminate. NEVER parse text.
 Subagents have ZERO memory inheritance. Always inject context explicitly.
 Parallel subagents: emit MULTIPLE Task calls in ONE response (not sequentially).
@@ -734,6 +816,7 @@ Conflicting statistics → preserve BOTH with source attribution. Never arbitrar
 97% aggregate accuracy may mask poor performance on specific segments. Always segment.
 
 ## **⚠️ Top Exam Traps**
+
 Arbitrary iteration cap as PRIMARY stopping mechanism → WRONG.
 CLAUDE_HEADLESS=true or --batch flag → DO NOT EXIST.
 Coordinator decomposes too narrowly → root cause is coordinator, not subagents.
@@ -744,6 +827,7 @@ Same Claude session for code generation AND review → biased, less effective.
 Resuming with stale tool results → better to start fresh with injected summary.
 
 ## **📊 Domain Weights Quick Reference**
+
 | Domain | Topic | Weight |
 | --- | --- | --- |
 | Domain 1 | Agentic Architecture & Orchestration | 27% |
@@ -752,36 +836,42 @@ Resuming with stale tool results → better to start fresh with injected summary
 | Domain 4 | Prompt Engineering & Structured Output | 20% |
 | Domain 5 | Context Management & Reliability | 15% |
 
-**Highest ROI: **Master Domains 1, 3, and 4 first — they cover 67% of the exam.
+**Highest ROI:**Master Domains 1, 3, and 4 first — they cover 67% of the exam.
 
-**No penalty for guessing: **Always answer every question. If uncertain, eliminate clearly wrong choices and pick from the remainder.
+**No penalty for guessing:**Always answer every question. If uncertain, eliminate clearly wrong choices and pick from the remainder.
 
 ## **🧠 Memory Techniques**
+
 ### **Agentic Loop: 'TEAR'**
-**T: **Tool_use → continue. End_turn → stop.
-**E: **Execute tools in your code.
-**A: **Append results to conversation history.
-**R: **Return to API call again.
+
+**T:**Tool_use → continue. End_turn → stop.
+**E:**Execute tools in your code.
+**A:**Append results to conversation history.
+**R:**Return to API call again.
 
 ### **Tool Description Quality: 'PIEEB'**
-**P: **Purpose — what does it do, what does it return.
-**I: **Input formats — parameters and formats.
-**E: **Examples — show which queries should use this tool.
-**E: **Edge cases — invalid inputs, limits.
-**B: **Boundaries — when NOT to use vs. similar tools.
+
+**P:**Purpose — what does it do, what does it return.
+**I:**Input formats — parameters and formats.
+**E:**Examples — show which queries should use this tool.
+**E:**Edge cases — invalid inputs, limits.
+**B:**Boundaries — when NOT to use vs. similar tools.
 
 ### **Escalation Triggers: 'CPI'**
-**C: **Customer explicitly requests human — escalate IMMEDIATELY.
-**P: **Policy is ambiguous/silent on the specific request.
-**I: **Inability to make meaningful progress.
+
+**C:**Customer explicitly requests human — escalate IMMEDIATELY.
+**P:**Policy is ambiguous/silent on the specific request.
+**I:**Inability to make meaningful progress.
 
 ### **Error Response: 'TRAP'**
-**T: **Type — transient/validation/business/permission.
-**R: **Retryable — boolean flag.
-**A: **Attempted — what was tried.
-**P: **Partial results — what was accomplished before failure.
+
+**T:**Type — transient/validation/business/permission.
+**R:**Retryable — boolean flag.
+**A:**Attempted — what was tried.
+**P:**Partial results — what was accomplished before failure.
 
 # **GOOD LUCK ON YOUR EXAM!**
+
 You've covered all 5 domains, 19+ practice questions, 30+ flashcards, and the top exam traps. Remember: the exam rewards architectural judgment over memorization. Ask yourself 'what provides the strongest guarantee?' and 'what is the root cause?' for each question.
 
 **Passing score: 720/1000  •  Always guess  •  No negative marking**

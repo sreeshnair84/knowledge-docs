@@ -12,6 +12,7 @@ target_role: EA Senior Interview Questions
 ---
 
 # Enterprise Architect Interview — Scenario Question Bank
+
 ## For Candidates with 20+ Years of Experience
 
 > **How to use this guide:** Each question includes three layers — the **Interviewer's Intent** (what they're actually testing), the **Thinking Approach** (how to structure your response before speaking), and a **Model Answer** (a senior-level response that demonstrates depth). Adapt language and examples to your own experience.
@@ -34,12 +35,14 @@ At this level, interviewers are not testing knowledge. They are testing **judgme
 ---
 
 ### Question 1
+
 **"You've just joined as Head of Enterprise Architecture at a $5B financial services company. In your first discovery conversations, you find the organisation has 14 different AI initiatives running in parallel, no shared infrastructure, three competing LLM vendor relationships, and no governance. The CTO wants an AI strategy in 90 days. Walk me through exactly what you do."**
 
 **Interviewer's Intent:**
 Tests executive-level thinking, prioritisation under pressure, ability to create order from chaos without alienating people who built the chaos, and whether you understand the difference between a strategy and a document.
 
 **Thinking Approach:**
+
 - Don't start with the technology — start with the people and the risk
 - Show that 90 days is for diagnosis and direction, not a complete solution
 - Demonstrate stakeholder intelligence, not just technical intelligence
@@ -62,12 +65,14 @@ What I would not do is come in with a framework from my last company and apply i
 ---
 
 ### Question 2
+
 **"The CEO has read about autonomous AI agents and wants to deploy them across the enterprise within 6 months. Your risk assessment says 18 months minimum. How do you handle this?"**
 
 **Interviewer's Intent:**
 Tests the ability to manage upward with conviction, to translate technical risk into business language, and to find a path that honours urgency without compromising safety — and whether you fold under executive pressure.
 
 **Thinking Approach:**
+
 - Don't just say "no" — that ends the conversation and your credibility
 - Find the legitimate urgency underneath the request
 - Reframe the timeline question as a scope question
@@ -88,12 +93,14 @@ If they push back and say the 6-month timeline is non-negotiable, I'd document m
 ---
 
 ### Question 3
+
 **"You're designing an AI reference architecture for a global enterprise operating across 40 countries, each with different data residency laws. How do you approach this?"**
 
 **Interviewer's Intent:**
 Tests real-world complexity handling, regulatory literacy, ability to design for heterogeneity rather than forcing uniformity, and practical delivery instinct.
 
 **Thinking Approach:**
+
 - Show that you've operated at this scale before — or that your reasoning reflects it
 - Demonstrate that you understand the tension between global consistency and local compliance
 - Don't oversimplify: this is a problem with no clean solution, and recognising that is itself a signal of experience
@@ -119,12 +126,14 @@ The thing I'd refuse to do is design a single-architecture solution that works o
 ---
 
 ### Question 4
+
 **"You discover that a high-performing business unit has been running a production AI system for six months that was never reviewed or approved. It processes customer data and is making credit decisions. How do you respond?"**
 
 **Interviewer's Intent:**
 Tests judgment under a real governance failure — whether you use the situation punitively or constructively, whether you understand the difference between compliance and compliance culture, and whether you can manage the legal, ethical, and political dimensions simultaneously.
 
 **Thinking Approach:**
+
 - First move is assessment of harm, not assessment of blame
 - Involve Legal and CISO before escalating to leadership
 - Don't destroy the relationship with the business unit — you need them to be honest with you about future shadow AI
@@ -146,12 +155,14 @@ The systemic question is why the governance process was so unattractive that a t
 ---
 
 ### Question 5
+
 **"Your AI Architecture Review Board is seen as a bottleneck. Business leaders are going around it and deploying AI directly. What went wrong and how do you fix it?"**
 
 **Interviewer's Intent:**
 Tests whether you treat governance as a service or as control — and whether you can diagnose your own failure.
 
 **Thinking Approach:**
+
 - Own the failure before diagnosing it
 - The answer is almost never "people need to follow the process better"
 - Governance that gets bypassed is poorly designed governance
@@ -173,12 +184,14 @@ The measure of success isn't 'everyone goes through the AARB.' It's 'AI systems 
 ---
 
 ### Question 6
+
 **"A senior data scientist argues that your AI governance process is stifling innovation and that your competitors are moving faster because they don't have your bureaucracy. How do you respond?"**
 
 **Interviewer's Intent:**
 Tests whether you can engage on substance under pressure, whether you understand the innovation-governance tension at a sophisticated level, and whether you have data to back your position.
 
 **Thinking Approach:**
+
 - Don't be defensive — engage the argument seriously
 - Have the data: what do competitors actually do? What does research show about fast-versus-safe AI?
 - Distinguish between governance that enables and governance that controls
@@ -202,12 +215,14 @@ What I'd close with is this: the goal was never governance for its own sake. The
 ---
 
 ### Question 7
+
 **"You're asked to architect a multi-agent system for your company's finance operations — one that can autonomously process invoices, flag anomalies, initiate payment workflows, and escalate edge cases to humans. What are the five most important architectural decisions you'd make and why?"**
 
 **Interviewer's Intent:**
 Tests whether you have genuine depth in agentic system design — not just conceptual familiarity, but the judgment that comes from thinking through failure modes, trust boundaries, and operational realities.
 
 **Thinking Approach:**
+
 - Go deep on each decision — don't list five surface-level choices
 - Show the reasoning behind each, including what you're trading off
 - Bring in real operational and security considerations
@@ -229,12 +244,14 @@ Tests whether you have genuine depth in agentic system design — not just conce
 ---
 
 ### Question 8
+
 **"An AI agent you deployed 3 months ago has started behaving unexpectedly — it's approving requests it should be escalating and the business hasn't noticed because volumes are high. You discover this via a routine audit. What do you do in the next 24 hours?"**
 
 **Interviewer's Intent:**
 Tests incident response instinct, accountability under pressure, and the operational maturity to act decisively while preserving the information needed to understand what happened.
 
 **Thinking Approach:**
+
 - First move is always: stop the bleeding, preserve evidence
 - Don't rush to root cause before containment
 - Communicate proactively — don't let stakeholders find out from someone else
@@ -260,12 +277,14 @@ What I would not do is quietly remediate and not tell anyone. Even if the busine
 ---
 
 ### Question 9
+
 **"The CISO and the Chief Digital Officer are in open conflict over AI deployment pace. The CISO wants a 6-month security review for every AI initiative. The CDO says that would kill the programme. You're in the middle. What do you do?"**
 
 **Interviewer's Intent:**
 Tests political navigation at the C-suite level, ability to resolve structural conflicts without taking sides, and whether you understand that this is as much an organisational design problem as a technical one.
 
 **Thinking Approach:**
+
 - Don't side with either — find the underlying shared interest
 - The conflict is usually about risk tolerance, not about the specific policy
 - Propose a structural solution, not a political compromise
@@ -287,12 +306,14 @@ The thing I'd flag honestly to both of them is that the framework only works if 
 ---
 
 ### Question 10
+
 **"A business unit leader comes to you privately and says their team has built a fantastic AI system but they're afraid to bring it to the AARB because 'EA always kills our ideas.' How do you respond in that conversation?"**
 
 **Interviewer's Intent:**
 Tests self-awareness — whether you can hear critical feedback about your own practice and respond constructively. Also tests relationship skills and whether you can turn a complaint into a productive engagement.
 
 **Thinking Approach:**
+
 - Listen before defending
 - This is the most valuable feedback you could receive
 - Use this as an opportunity to understand the real experience, not to counter-argue
@@ -312,12 +333,14 @@ The longer-term implication of what they've told me is that I have a reputation 
 ---
 
 ### Question 11
+
 **"You've inherited an EA team that is technically excellent but has no credibility with the business. They're seen as people who produce diagrams no one reads and slow down projects. How do you turn this around in your first year?"**
 
 **Interviewer's Intent:**
 Tests leadership and change management ability, and whether you understand that technical quality is necessary but not sufficient for EA relevance.
 
 **Thinking Approach:**
+
 - The problem is not technical — it's relational and cultural
 - Quick wins matter enormously for rebuilding trust
 - The team needs to see themselves differently, not just be directed differently
@@ -343,12 +366,14 @@ By month six, the measure of progress is whether business units are coming to us
 ---
 
 ### Question 12
+
 **"Your organisation is considering a major platform bet — either building a proprietary LLM infrastructure or standardising on a hyperscaler's AI platform. Each approach has strong advocates internally. How do you make this decision?"**
 
 **Interviewer's Intent:**
 Tests structured decision-making, ability to manage competing internal advocates, and strategic technology thinking at the platform level.
 
 **Thinking Approach:**
+
 - This is a classic build-vs-buy decision with AI-specific dimensions
 - Show that you evaluate across multiple dimensions, not just technical capability
 - The political dimension — managing internal advocates — is as important as the technical one
@@ -370,12 +395,14 @@ I'd also be honest about the time horizon: 'We're going to make the best decisio
 ---
 
 ### Question 13
+
 **"You've been asked to define the data architecture for an enterprise RAG system that will be used by 5,000 employees across legal, finance, HR, and customer service — each with different data sensitivity requirements. What are the three hardest problems and how do you solve them?"**
 
 **Interviewer's Intent:**
 Tests genuine depth in RAG system design, understanding of access control complexity, and ability to identify real problems rather than theoretical ones.
 
 **Thinking Approach:**
+
 - Don't describe a generic RAG architecture — identify what's specifically hard about this scenario
 - Show that you think about operational and governance challenges, not just the happy path
 
@@ -402,12 +429,14 @@ Every response must log: the query, the retrieved chunks and their source docume
 ---
 
 ### Question 14
+
 **"You're tasked with integrating AI capabilities into a 25-year-old core banking system that was never designed for APIs, runs on-premise on COBOL, and cannot be touched for fear of disruption. How do you approach this?"**
 
 **Interviewer's Intent:**
 Tests legacy modernisation experience, pragmatic problem-solving, and the ability to create value in constrained environments — a very common real-world scenario.
 
 **Thinking Approach:**
+
 - Show that you don't need greenfield conditions to make progress
 - The strangler fig pattern and event-driven extraction are your friends here
 - Risk management around the legacy system is as important as the technical approach
@@ -433,12 +462,14 @@ What I'd never promise is that this is simple. It requires deep knowledge of the
 ---
 
 ### Question 15
+
 **"An AI system your team approved is later found to have been producing biased outputs that disadvantaged a protected group in hiring decisions over 18 months. You didn't design the bias in — it emerged from training data. How do you handle this, and what does it change about how you work going forward?"**
 
 **Interviewer's Intent:**
 Tests ethical maturity, accountability, and whether you have genuine learning responses to failure versus defensive ones. One of the most important questions at this seniority level.
 
 **Thinking Approach:**
+
 - Take real responsibility — not performative responsibility
 - Show that you understand the human cost, not just the technical failure
 - Demonstrate systemic change, not just process-level fix
@@ -458,12 +489,14 @@ The hardest part of this to sit with is that a well-designed review process migh
 ---
 
 ### Question 16
+
 **"Your organisation is considering using AI to significantly automate a function currently performed by 200 employees. The business case is compelling. You've been asked to architect it. How do you think about your role in this decision?"**
 
 **Interviewer's Intent:**
 Tests ethical depth on a genuinely difficult question — whether the EA has a view on their responsibility when the architecture they design has significant human consequences.
 
 **Thinking Approach:**
+
 - This is not a technical question — it's an ethical one with a technical dimension
 - Show that you engage with the human dimension seriously, not perfunctorily
 - Demonstrate that you have a view, but that you hold it in the right place
@@ -487,12 +520,14 @@ What I won't do is pretend this is purely a technical problem or that my role en
 ---
 
 ### Question 17
+
 **"Tell me about the most significant architectural decision you've made in your career that turned out to be wrong. Not a small mistake — a real one. What happened and what did it teach you?"**
 
 **Interviewer's Intent:**
 Tests honesty and self-awareness above everything else. Also tests the quality of learning derived from failure. Candidates who can't answer this haven't done enough hard things. Candidates who give a "strength disguised as a weakness" answer have low self-awareness.
 
 **Thinking Approach:**
+
 - This must be a real failure, not a polished anecdote
 - The learning must be specific and have changed how you actually work
 - Don't underdo it and don't overdramatise it
@@ -512,12 +547,14 @@ The other thing it taught me: be more humble about the cost of being right about
 ---
 
 ### Question 18
+
 **"AI is evolving faster than any governance framework can keep pace with. How do you prevent your architecture standards from becoming obsolete while still providing stability and direction to the organisation?"**
 
 **Interviewer's Intent:**
 Tests adaptive governance thinking — whether you can design frameworks that are durable without being rigid. A critical capability for the AI era.
 
 **Thinking Approach:**
+
 - The answer is principles-based governance, not rules-based governance
 - Show that you understand the difference and have applied it
 - Demonstrate a concrete mechanism for staying current
@@ -541,12 +578,14 @@ The most important behaviour change I made was separating 'approved' from 'requi
 ---
 
 ### Question 19
+
 **"Where do you think enterprise architecture as a discipline will be in 5 years, and what does that mean for the skills you're developing today?"**
 
 **Interviewer's Intent:**
 Tests forward-thinking, self-awareness about the discipline's evolution, and whether the candidate has a genuine intellectual engagement with where things are going — not just what they've mastered.
 
 **Thinking Approach:**
+
 - Be specific and directional — not vague or diplomatic
 - Show that you have a real view, even if it's not comfortable
 - Connect it to your own development honestly
@@ -568,12 +607,14 @@ The EAs who struggle in five years will be the ones who doubled down on the prod
 ---
 
 ### Question 20
+
 **"You have been in enterprise architecture for 20 years. What do you know now that you wish you had known at year five — and what would you tell a talented architect who's 10 years into their career?"**
 
 **Interviewer's Intent:**
 Tests wisdom distillation, mentorship instinct, and genuine reflection on a long career. This question separates people who've had 20 years of experience from those who've had one year of experience 20 times.
 
 **Thinking Approach:**
+
 - Be honest and personal — platitudes don't work here
 - Show the specific ways your thinking has evolved
 - The advice to the 10-year person should be genuinely useful, not generic
@@ -593,12 +634,14 @@ I'd also tell them to invest in the human skills now — not later. Every archit
 ---
 
 ### Question 21 (Bonus)
+
 **"You're presenting your AI architecture strategy to the board. Halfway through, the board chair interrupts and says 'this all sounds very theoretical. Our competitor launched an AI product last week. Why aren't we doing that?' How do you respond in the room?"**
 
 **Interviewer's Intent:**
 Tests composure under pressure, ability to pivot without losing the thread, executive-level communication, and whether you can distinguish between a real challenge and a performance of impatience.
 
 **Thinking Approach:**
+
 - Do not get defensive
 - Acknowledge the urgency before addressing the substance
 - Come back to what they actually need: confidence that you're moving and that you're managing risk
@@ -626,7 +669,7 @@ After the meeting, I'd follow up with a one-page competitive summary. That's wha
 When evaluating a 20-year EA's responses, assess against these dimensions:
 
 | Dimension | Underprepared (1-2) | Experienced (3-4) | Exceptional (5) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Systemic Thinking** | Answers the question at face value | Sees second-order effects | Reframes the question to expose the real problem |
 | **Stakeholder Intelligence** | Focuses on technical elements | Names stakeholder dynamics naturally | Designs the human system alongside the technical one |
 | **Scar Tissue** | Answers from theory | Cites experience without vulnerability | Names specific failures and what genuinely changed |

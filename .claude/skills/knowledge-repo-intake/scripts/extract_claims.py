@@ -9,6 +9,7 @@ verification method.
 Usage:
     python3 extract_claims.py <draft.md>
 """
+
 import re
 import sys
 
@@ -52,7 +53,6 @@ def main():
 
     lines = text.splitlines()
     flagged = []
-    in_table = False
     for line in lines:
         stripped = line.strip()
         if stripped.startswith("|"):
@@ -68,14 +68,18 @@ def main():
                 flagged.append((sentence, hits))
 
     if not flagged:
-        print("No claim-like patterns found. Note: this only catches "
-              "numbers/dates/versions/currency/superlatives — still read "
-              "the draft yourself for claims that don't match those patterns.")
+        print(
+            "No claim-like patterns found. Note: this only catches "
+            "numbers/dates/versions/currency/superlatives — still read "
+            "the draft yourself for claims that don't match those patterns."
+        )
         return 0
 
-    print(f"{len(flagged)} sentence(s) with checkable claims — verify each "
-          f"against your source (search results or source document) before "
-          f"publishing:\n")
+    print(
+        f"{len(flagged)} sentence(s) with checkable claims — verify each "
+        f"against your source (search results or source document) before "
+        f"publishing:\n"
+    )
     for i, (sentence, hits) in enumerate(flagged, 1):
         print(f"{i}. [{', '.join(hits)}]")
         print(f"   {sentence}\n")

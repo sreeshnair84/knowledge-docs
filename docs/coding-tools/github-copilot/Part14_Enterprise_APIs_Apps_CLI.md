@@ -9,55 +9,55 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise GitHub, APIs, Apps & CLI** 
+# **Enterprise GitHub, APIs, Apps & CLI**
 
-**Identity federation, REST/GraphQL APIs, GitHub Apps architecture, and CLI automation** 
+**Identity federation, REST/GraphQL APIs, GitHub Apps architecture, and CLI automation**
 
-##### **TOPICS COVERED** 
+##### **TOPICS COVERED**
 
-- **›  GitHub Enterprise Cloud vs Server** 
+- **›  GitHub Enterprise Cloud vs Server**
 
-- **›  RBAC & Repository Governance** 
+- **›  RBAC & Repository Governance**
 
-- **›  Data Residency & Backup** 
+- **›  Data Residency & Backup**
 
-- **›  REST API Architecture** 
+- **›  REST API Architecture**
 
-- **›  Webhook Architecture & Events** 
+- **›  Webhook Architecture & Events**
 
-- **›  GitHub Apps Architecture** 
+- **›  GitHub Apps Architecture**
 
-- **›  OAuth Apps vs GitHub Apps** 
+- **›  OAuth Apps vs GitHub Apps**
 
-- **›  gh CLI Scripting & Automation** 
+- **›  gh CLI Scripting & Automation**
 
-- **›  Release & PR Automation** 
+- **›  Release & PR Automation**
 
-- **›  SSO, SAML, SCIM, OIDC** 
+- **›  SSO, SAML, SCIM, OIDC**
 
-- **›  Compliance & Audit Logs** 
+- **›  Compliance & Audit Logs**
 
-- **›  Disaster Recovery & HA** 
+- **›  Disaster Recovery & HA**
 
-- **›  GraphQL API & Analytics** 
+- **›  GraphQL API & Analytics**
 
-- **›  Fine-Grained PATs** 
+- **›  Fine-Grained PATs**
 
-- **›  Installation Tokens & JWT** 
+- **›  Installation Tokens & JWT**
 
-- **›  Deploy Keys & Machine Users** 
+- **›  Deploy Keys & Machine Users**
 
-- **›  GitHub CLI Extensions** 
+- **›  GitHub CLI Extensions**
 
-- **›  Enterprise Administration via CLI** 
+- **›  Enterprise Administration via CLI**
 
-**GitHub & Modern CI/CD** 
+**GitHub & Modern CI/CD**
 
-**Principal Platform Engineer Reference Series  •  Enterprise Edition** 
+**Principal Platform Engineer Reference Series  •  Enterprise Edition**
 
-## **PART 14 — Enterprise GitHub** 
+## **PART 14 — Enterprise GitHub**
 
-## **14.1 GitHub Enterprise Cloud vs Server** 
+## **14.1 GitHub Enterprise Cloud vs Server**
 
 |**Feature**|**GHEC**|**GHES**|
 |---|---|---|
@@ -75,64 +75,64 @@ covers_version: "N/A"
 |Cost model|Per-user/month|License + hosting|
 |Support|GitHub Enterprise Support|GitHub Enterprise Support + Infra|
 
-## **14.2 Identity — SSO, SAML, SCIM, OIDC** 
+## **14.2 Identity — SSO, SAML, SCIM, OIDC**
 
-### **SAML SSO** 
+### **SAML SSO**
 
-SAML (Security Assertion Markup Language) 2.0 is the standard for enterprise GitHub authentication. When enabled, users must authenticate via the organization's Identity Provider (Okta, Azure AD, Ping, OneLogin) to access organization resources. 
+SAML (Security Assertion Markup Language) 2.0 is the standard for enterprise GitHub authentication. When enabled, users must authenticate via the organization's Identity Provider (Okta, Azure AD, Ping, OneLogin) to access organization resources.
 
-- `# SAML Configuration checklist:` 
+- `# SAML Configuration checklist:`
 
-- `# In GitHub: Settings > Authentication security > SAML SSO` 
+- `# In GitHub: Settings > Authentication security > SAML SSO`
 
-- `# Configure:` 
+- `# Configure:`
 
-- `#   - Sign-on URL: https://mycompany.okta.com/app/github/sso/saml` 
+- `#   - Sign-on URL: https://mycompany.okta.com/app/github/sso/saml`
 
-- `#   - Issuer: https://mycompany.okta.com` 
+- `#   - Issuer: https://mycompany.okta.com`
 
-- `#   - Public certificate: [X.509 cert from IdP]` 
+- `#   - Public certificate: [X.509 cert from IdP]`
 
-- `# Important behaviors:` 
+- `# Important behaviors:`
 
-- `# - Users must link their GitHub account to SAML identity` 
+- `# - Users must link their GitHub account to SAML identity`
 
-- `# - Active sessions are checked on each API call (optional: can be periodic)` 
+- `# - Active sessions are checked on each API call (optional: can be periodic)`
 
-- `# - Machine users (bots) need their own SAML-authorized tokens` 
+- `# - Machine users (bots) need their own SAML-authorized tokens`
 
-- `# - Fine-grained PATs and GitHub Apps support SAML SSO (need authorization)` 
+- `# - Fine-grained PATs and GitHub Apps support SAML SSO (need authorization)`
 
-- `# Authorize an existing PAT for SAML:` 
+- `# Authorize an existing PAT for SAML:`
 
-- `# GitHub.com > Settings > Developer settings > PATs >` 
+- `# GitHub.com > Settings > Developer settings > PATs >`
 
-- `#   Click PAT > "Configure SSO" > Authorize for org` 
+- `#   Click PAT > "Configure SSO" > Authorize for org`
 
-- `# Check SAML-linked external identities:` 
+- `# Check SAML-linked external identities:`
 
-**Page 2** 
+**Page 2**
 
 ```
 gh api orgs/myorg/members --paginate \
   --jq '.[] | {login: .login, id: .id}'
 ```
 
-### **SCIM Provisioning** 
+### **SCIM Provisioning**
 
-SCIM (System for Cross-domain Identity Management) automates user provisioning and deprovisioning. When an employee is onboarded in Okta/Azure AD, they are automatically added to GitHub organizations. When offboarded, they are automatically removed. 
+SCIM (System for Cross-domain Identity Management) automates user provisioning and deprovisioning. When an employee is onboarded in Okta/Azure AD, they are automatically added to GitHub organizations. When offboarded, they are automatically removed.
 
 ```
 # SCIM lifecycle:
 ```
 
-- `# 1. IdP creates user` → `GitHub creates/links account, adds to org` 
+- `# 1. IdP creates user` → `GitHub creates/links account, adds to org`
 
-`# 2. IdP updates user` → `GitHub syncs attributes (name, email)` 
+`# 2. IdP updates user` → `GitHub syncs attributes (name, email)`
 
-`# 3. IdP deactivates user` → `GitHub removes from org (not from GitHub.com)` 
+`# 3. IdP deactivates user` → `GitHub removes from org (not from GitHub.com)`
 
-- `# 4. IdP deletes user` → `GitHub revokes org membership, removes SAML link` 
+- `# 4. IdP deletes user` → `GitHub revokes org membership, removes SAML link`
 
 ```
 # SCIM-managed attributes:
@@ -154,37 +154,37 @@ SCIM (System for Cross-domain Identity Management) automates user provisioning a
 # - active (deactivation triggers org removal)
 ```
 
-- `# - groups` → `GitHub Teams (group push)` 
+- `# - groups` → `GitHub Teams (group push)`
 
 ```
 # Team sync with IdP groups:
 ```
 
-- `# Settings > Teams > [Team] > Settings > Team sync` 
+- `# Settings > Teams > [Team] > Settings > Team sync`
 
 ```
 # Map IdP group "platform-engineers" to GitHub team "platform-engineers"
 ```
 
-- `# Members added/removed in IdP are synced to GitHub team automatically` 
+- `# Members added/removed in IdP are synced to GitHub team automatically`
 
-### **Enterprise Managed Users (EMUs)** 
+### **Enterprise Managed Users (EMUs)**
 
-EMUs are a special GHEC configuration where ALL user accounts are managed by the enterprise. Users cannot create personal GitHub accounts — their accounts are owned by the enterprise and prefixed with the enterprise slug (user@enterprise). 
+EMUs are a special GHEC configuration where ALL user accounts are managed by the enterprise. Users cannot create personal GitHub accounts — their accounts are owned by the enterprise and prefixed with the enterprise slug (user@enterprise).
 
-- Strongest enterprise control — no personal account mixing 
+- Strongest enterprise control — no personal account mixing
 
-- Users cannot have public repositories or contribute to public repos 
+- Users cannot have public repositories or contribute to public repos
 
-- Requires full SCIM provisioning — no manual account creation 
+- Requires full SCIM provisioning — no manual account creation
 
-- Best for regulated industries requiring strict identity governance 
+- Best for regulated industries requiring strict identity governance
 
-   - I _EMUs are a significant commitment — migrating back to standard accounts is complex. Evaluate carefully before adopting, especially if your engineers contribute to open source._ 
+  - I *EMUs are a significant commitment — migrating back to standard accounts is complex. Evaluate carefully before adopting, especially if your engineers contribute to open source.*
 
-## **14.3 Audit Logs** 
+## **14.3 Audit Logs**
 
-GitHub Enterprise provides comprehensive audit logs for all events: repository creation/deletion, permission changes, workflow runs, secret access, SSO events, and more. 
+GitHub Enterprise provides comprehensive audit logs for all events: repository creation/deletion, permission changes, workflow runs, secret access, SSO events, and more.
 
 ```
 # Access audit log via API:
@@ -213,11 +213,11 @@ gh api /enterprises/myenterprise/audit-log/streaming \
   --method PUT \
 ```
 
-**Page 3** 
+**Page 3**
 
-`--field enabled=true \ --field vendor_name=splunk \ --field url="https://inputs.example.splunkcloud.com:8088" \ --field token="splunk-hec-token" # Key audit events to monitor: # org.add_member / org.remove_member # repo.create / repo.destroy / repo.transfer # protected_branch.policy_override` ← `admin bypassed branch protection # secret.access` ← `secret accessed # workflow.run` ← `workflow execution # two_factor_authentication.disabled` ← `security regression` 
+`--field enabled=true \ --field vendor_name=splunk \ --field url="https://inputs.example.splunkcloud.com:8088" \ --field token="splunk-hec-token" # Key audit events to monitor: # org.add_member / org.remove_member # repo.create / repo.destroy / repo.transfer # protected_branch.policy_override` ← `admin bypassed branch protection # secret.access` ← `secret accessed # workflow.run` ← `workflow execution # two_factor_authentication.disabled` ← `security regression`
 
-## **14.4 Backup and Disaster Recovery** 
+## **14.4 Backup and Disaster Recovery**
 
 ```
 # GitHub Enterprise Backup Utilities (GHES only):
@@ -236,23 +236,23 @@ bin/ghe-backup
 bin/ghe-restore github.mycompany-dr.com
 ```
 
-`# High availability setup: # Primary appliance` → `replicates to replica via ghe-repl # Automatic failover: ~30-60 seconds with DNS update # Set up replica: ghe-repl-setup github.mycompany-replica.com ghe-repl-start # Check replication status: ghe-repl-status` 
+`# High availability setup: # Primary appliance` → `replicates to replica via ghe-repl # Automatic failover: ~30-60 seconds with DNS update # Set up replica: ghe-repl-setup github.mycompany-replica.com ghe-repl-start # Check replication status: ghe-repl-status`
 
-**Page 4** 
+**Page 4**
 
-## **PART 15 — GitHub APIs** 
+## **PART 15 — GitHub APIs**
 
-## **15.1 REST API** 
+## **15.1 REST API**
 
-GitHub's REST API follows REST conventions with resource-based URLs. The current version is v3 (implied in the Accept header). 
+GitHub's REST API follows REST conventions with resource-based URLs. The current version is v3 (implied in the Accept header).
 
-- `# Base URL: https://api.github.com # GHES: https://github.mycompany.com/api/v3` 
+- `# Base URL: https://api.github.com # GHES: https://github.mycompany.com/api/v3`
 
 ```
 # Authentication:
 ```
 
-- `curl -H "Authorization: Bearer $GITHUB_TOKEN" \ -H "Accept: application/vnd.github+json" \ -H "X-GitHub-Api-Version: 2022-11-28" \ https://api.github.com/repos/myorg/myrepo` 
+- `curl -H "Authorization: Bearer $GITHUB_TOKEN" \ -H "Accept: application/vnd.github+json" \ -H "X-GitHub-Api-Version: 2022-11-28" \ https://api.github.com/repos/myorg/myrepo`
 
 ```
 # Pagination (link header):
@@ -276,13 +276,13 @@ gh api /repos/myorg/myrepo/issues --paginate --jq '.[].title'
 # Authenticated REST: 5,000 req/hour (per token)
 ```
 
-- `# GitHub App: 5,000-15,000/hour depending on installation` 
+- `# GitHub App: 5,000-15,000/hour depending on installation`
 
-- `# Search API: 30 req/min (authenticated)` 
+- `# Search API: 30 req/min (authenticated)`
 
-- `# Check your rate limit: gh api /rate_limit` 
+- `# Check your rate limit: gh api /rate_limit`
 
-### **Key REST API Endpoints** 
+### **Key REST API Endpoints**
 
 |**Area**|**Key Endpoints**|
 |---|---|
@@ -295,13 +295,13 @@ gh api /repos/myorg/myrepo/issues --paginate --jq '.[].title'
 |Deployments|POST /deployments, POST /deployments/{id}/statuses|
 |Webhooks|POST /repos/{owner}/{repo}/hooks|
 
-## **15.2 GraphQL API** 
+## **15.2 GraphQL API**
 
-GitHub's GraphQL API (api.github.com/graphql) enables fetching exactly the data needed in a single request — critical for analytics dashboards and tooling that would otherwise require dozens of REST calls. 
+GitHub's GraphQL API (api.github.com/graphql) enables fetching exactly the data needed in a single request — critical for analytics dashboards and tooling that would otherwise require dozens of REST calls.
 
-> `# GraphQL query example — repository metrics: query OrgDashboard($org: String!, $cursor: String) { organization(login: $org) { repositories(first: 100, after: $cursor, orderBy: {field: UPDATED_AT, direction: DESC}) {` 
+> `# GraphQL query example — repository metrics: query OrgDashboard($org: String!, $cursor: String) { organization(login: $org) { repositories(first: 100, after: $cursor, orderBy: {field: UPDATED_AT, direction: DESC}) {`
 
-**Page 5** 
+**Page 5**
 
 ```
       pageInfo {
@@ -345,9 +345,9 @@ gh api graphql -f query="$(cat query.graphql)" \
     {name: .name, alerts: .vulnerabilityAlerts.totalCount}'
 ```
 
-### **Webhook Architecture** 
+### **Webhook Architecture**
 
-Webhooks deliver real-time event notifications to your infrastructure via HTTP POST. GitHub sends events when actions happen (pushes, PRs, deployments, etc.). 
+Webhooks deliver real-time event notifications to your infrastructure via HTTP POST. GitHub sends events when actions happen (pushes, PRs, deployments, etc.).
 
 ```
 # Webhook delivery guarantees:
@@ -386,13 +386,13 @@ def handler(event, context):
     return {"statusCode": 200}
 ```
 
-**Page 6** 
+**Page 6**
 
-## **PART 16 — GitHub Apps** 
+## **PART 16 — GitHub Apps**
 
-## **16.1 GitHub Apps Architecture** 
+## **16.1 GitHub Apps Architecture**
 
-GitHub Apps are the preferred way to integrate with GitHub. Unlike PATs, GitHub Apps are installations per-repository or per-organization, with fine-grained permissions, and do not consume a user's rate limit. 
+GitHub Apps are the preferred way to integrate with GitHub. Unlike PATs, GitHub Apps are installations per-repository or per-organization, with fine-grained permissions, and do not consume a user's rate limit.
 
 ```
 # GitHub App authentication flow:
@@ -436,7 +436,7 @@ curl -H "Authorization: token ghs_xxxx" \
      https://api.github.com/repos/myorg/myrepo/pulls
 ```
 
-### **Credential Comparison Matrix** 
+### **Credential Comparison Matrix**
 
 |**Type**|**Rate limit**|**Scope**|**Expiry**|**Recommended for**|
 |---|---|---|---|---|
@@ -447,9 +447,9 @@ curl -H "Authorization: token ghs_xxxx" \
 |GITHUB_TOKEN|1k/hr per repo|Workflow scope|Job lifetime|In-workflow only|
 |Deploy Key|N/A (git only)|Single repo, read or write|Never|Read-only CI clone|
 
-I _Never use classic PATs for automation. They are tied to a user account, have no expiry by default, have coarse scope, and if the user leaves the org, all automation breaks. Use GitHub Apps for all automation._ 
+I *Never use classic PATs for automation. They are tied to a user account, have no expiry by default, have coarse scope, and if the user leaves the org, all automation breaks. Use GitHub Apps for all automation.*
 
-### **GitHub App Permissions (Fine-Grained)** 
+### **GitHub App Permissions (Fine-Grained)**
 
 ```
 # Example App permissions configuration (app manifest):
@@ -469,7 +469,7 @@ I _Never use classic PATs for automation. They are tied to a user account, have 
     "packages": "write",          # Push to GHCR
 ```
 
-**Page 7** 
+**Page 7**
 
 ```
     "statuses": "write"           # Update commit statuses
@@ -496,13 +496,13 @@ I _Never use classic PATs for automation. They are tied to a user account, have 
     # Now push commits will be authored by the App, not the user
 ```
 
-**Page 8** 
+**Page 8**
 
-## **PART 17 — GitHub CLI** 
+## **PART 17 — GitHub CLI**
 
-## **17.1 gh CLI Overview** 
+## **17.1 gh CLI Overview**
 
-The GitHub CLI (gh) is the official command-line tool for GitHub. It enables scripting almost any GitHub operation without leaving the terminal, and integrates tightly with git for a seamless workflow. 
+The GitHub CLI (gh) is the official command-line tool for GitHub. It enables scripting almost any GitHub operation without leaving the terminal, and integrates tightly with git for a seamless workflow.
 
 ```
 # Install:
@@ -523,7 +523,7 @@ gh config set git_protocol ssh
 gh auth status
 ```
 
-### **PR Automation** 
+### **PR Automation**
 
 ```
 # Create PR with all options:
@@ -550,7 +550,7 @@ for repo in $(gh repo list myorg --limit 100 --json name -q '.[].name'); do
 done
 ```
 
-### **Release Automation** 
+### **Release Automation**
 
 ```
 # Create a release with auto-generated notes:
@@ -567,13 +567,13 @@ gh release download v2.0.0 --pattern '*.tar.gz' --dir ./downloads
 # Edit a release (add assets post-publish):
 ```
 
-**Page 9** 
+**Page 9**
 
 ```
 gh release upload v2.1.0 ./dist/app-windows-amd64.exe
 ```
 
-### **Enterprise Administration via CLI** 
+### **Enterprise Administration via CLI**
 
 ```
 # List all repositories in an org with metadata:
@@ -608,9 +608,9 @@ gh repo list myorg --json name -q '.[].name' | while read repo; do
 done
 ```
 
-### **gh CLI Extensions** 
+### **gh CLI Extensions**
 
-gh CLI supports custom extensions written in any language, distributed as GitHub repositories prefixed with gh-. 
+gh CLI supports custom extensions written in any language, distributed as GitHub repositories prefixed with gh-.
 
 ```
 # Install popular extensions:
@@ -639,24 +639,24 @@ chmod +x gh-my-extension
 gh extension install .
 ```
 
-**Page 10** 
+**Page 10**
 
-## **Interview Questions — Enterprise, APIs & Apps** 
+## **Interview Questions — Enterprise, APIs & Apps**
 
-#### **Q: What is the difference between a GitHub App and an OAuth App?** 
+#### **Q: What is the difference between a GitHub App and an OAuth App?**
 
-A: GitHub Apps are installations (scoped to repos/orgs) with fine-grained permissions, dedicated rate limits, short-lived tokens (1 hour), and are tied to the installation not a user. OAuth Apps act on behalf of a user, inherit the user's permissions, share the user's rate limit, and tokens don't expire. GitHub Apps are always preferred for automation because they don't depend on a user account and have better security scoping. 
+A: GitHub Apps are installations (scoped to repos/orgs) with fine-grained permissions, dedicated rate limits, short-lived tokens (1 hour), and are tied to the installation not a user. OAuth Apps act on behalf of a user, inherit the user's permissions, share the user's rate limit, and tokens don't expire. GitHub Apps are always preferred for automation because they don't depend on a user account and have better security scoping.
 
-#### **Q: Explain SCIM provisioning and why enterprises need it.** 
+#### **Q: Explain SCIM provisioning and why enterprises need it.**
 
-A: SCIM automates user lifecycle management between an Identity Provider (Okta, Azure AD) and GitHub. When HR creates an employee in the IdP, SCIM automatically adds them to GitHub and the correct teams. When they leave, SCIM removes their access immediately. Without SCIM, offboarding requires manual GitHub deprovisioning — a security risk in large organizations where manual processes are error-prone. 
+A: SCIM automates user lifecycle management between an Identity Provider (Okta, Azure AD) and GitHub. When HR creates an employee in the IdP, SCIM automatically adds them to GitHub and the correct teams. When they leave, SCIM removes their access immediately. Without SCIM, offboarding requires manual GitHub deprovisioning — a security risk in large organizations where manual processes are error-prone.
 
-#### **Q: What are the rate limits for the GitHub APIs, and how do GitHub Apps differ?** 
+#### **Q: What are the rate limits for the GitHub APIs, and how do GitHub Apps differ?**
 
-A: REST API authenticated requests: 5,000/hour per token. GraphQL API: 5,000 points/hour. GitHub Apps get installation-based limits: 5,000/hour baseline plus 50 requests per user per hour up to 15,000/hour for high-traffic installations. GITHUB_TOKEN in Actions: 1,000/hour per repo. Search API: 30/minute authenticated. 
+A: REST API authenticated requests: 5,000/hour per token. GraphQL API: 5,000 points/hour. GitHub Apps get installation-based limits: 5,000/hour baseline plus 50 requests per user per hour up to 15,000/hour for high-traffic installations. GITHUB_TOKEN in Actions: 1,000/hour per repo. Search API: 30/minute authenticated.
 
-#### **Q: How would you audit all repositories in an organization for missing branch protection?** 
+#### **Q: How would you audit all repositories in an organization for missing branch protection?**
 
-A: Use the GitHub GraphQL API or REST API via 'gh api' with pagination: list all repos, then check /repos/{owner}/{repo}/branches/main/protection for each. A bash script using gh repo list + gh api can do this efficiently. For org-wide enforcement, use Repository Rulesets which apply to ALL repos matching a pattern without requiring per-repo configuration. 
+A: Use the GitHub GraphQL API or REST API via 'gh api' with pagination: list all repos, then check /repos/{owner}/{repo}/branches/main/protection for each. A bash script using gh repo list + gh api can do this efficiently. For org-wide enforcement, use Repository Rulesets which apply to ALL repos matching a pattern without requiring per-repo configuration.
 
 **Page 11**

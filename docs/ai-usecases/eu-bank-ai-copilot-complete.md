@@ -20,6 +20,7 @@ covers_version: \"as of 2026-07-10\"
 ---
 
 ## Executive Summary
+
 This document presents the complete end-to-end architecture, implementation reference, and security
 analysis for the EU Bank AI Copilot Platform. The platform enables authorised bank staff to query accounts,
 initiate payments, assess risk, and perform KYC operations through a conversational AI interface, while
@@ -32,12 +33,14 @@ CRITICALal Design Constraint
 AgentCore Gateway is not an approved service. All traffic from the BFF to AgentCore Runtime uses private VPC
 endpoints and SigV4-signed requests only. No direct browser-to-AgentCore communication is permitted under any
 circumstance.
+
 ## Table of Contents
 
 1. EU Regulatory Compliance
 2. Infrastructure & Deployment
 
 ## 1. Platform Overview & Architecture Zones
+
 The platform spans five security zones. Traffic between zones is strictly controlled with mTLS, IAM role
 validation, and VPC-level network segmentation. Every zone-to-zone call is logged to an immutable audit
 stream.
@@ -89,6 +92,7 @@ eu-central-1), enforced by Service Control Policy.
 Strands interrupt_before flows.
 
 ## 2. Technology Stack & Component Map
+
 Layer
 Package / Service
 Version
@@ -161,8 +165,11 @@ Infrastructure as code — Checkov + OPA
 policy gates in CI
 
 ## 3. CopilotKit MCP Tools vs MCP Apps — Design
+
 Decision
+
 ### 3.1 The Fundamental Difference
+
 CopilotKit exposes two distinct integration patterns for MCP. MCP Tools follow the original MCP
 specification: the agent calls a function, receives JSON/data, and the host application decides how to render
 it via useCopilotAction. MCP Apps are a newer extension (January 2026, CopilotKit + community): the MCP
@@ -194,13 +201,18 @@ GDPR / PII Risk
 Data in controlled codebase
 Must NOT pass PII into iframe — opaque refs
 only
+
 ### 3.2 Recommendation for EU Bank
+
 ### Recommended Strategy: Tiered Hybrid
+
 Use MCP Tools as the default for all data retrieval and background orchestration (account queries, risk scores,
 AML checks, transaction history). Reserve MCP Apps for domain-owned interactive workflows where a team needs
 full UX autonomy (payment forms, KYC wizards, FX booking). Both share the same Tool Registry and Strands
 agent session.
+
 ### 3.3 Banking Use Case Assignment
+
 Use Case
 Pattern
 Rationale
@@ -225,7 +237,9 @@ Hybrid
 MCP Tools for bureau queries + MCP App for application form
 
 ## 4. Server Topology — Where Everything Lives
+
 ### 4.1 Package Location Matrix
+
 Package / Component
 Runs On
 Server / Container
@@ -286,7 +300,9 @@ AWS Managed
 eu-west-1 VPC endpoint
 Foundation model inference — no
 training on bank data
+
 ### 4.2 Network Call Matrix
+
 From
 To
 Protocol
@@ -331,21 +347,28 @@ event.origin validated: assets.bank.eu
 only
 
 ## 5. Sequence Diagrams
+
 The following six sequence diagrams cover every significant flow in the platform. Each was rendered at high
 resolution (1600–3100px wide) from validated Mermaid source. Step numbers correspond to the
 implementation code in sections 6–9.
+
 ### 5.1 Authentication & Session — Entra ID OIDC + PKCE
+
 The browser initiates PKCE auth with Entra ID. The BFF acts as the confidential OIDC client — client_secret
 and tokens never reach the browser. Only an HttpOnly session cookie is set. All subsequent /api/copilotkit
 calls use this cookie plus a CSRF double-submit token.
 Figure: Diagram 01 — Entra ID OIDC + PKCE Authentication & Session Establishment
+
 ### 5.2 MCP Tools — Data Query Flow
+
 User asks a question. Strands consults Bedrock, which decides to call get_account_balance. The MCP client
 calls the Core Banking MCP server over Streamable-HTTP. PII is stripped before the result returns. AG-UI
 streams events back to the browser where useCopilotAction renders a native React card.
 
 Figure: Diagram 02 — MCP Tools: Account Balance Query (Core Banking MCP → Bedrock → Chat)
+
 ### 5.3 MCP Apps — Interactive iframe UI
+
 The Payment MCP server returns a ui:// resource reference alongside its tool result. MCPAppsMiddleware
 fetches the bundle, verifies the SHA-384 SRI hash, and CopilotKit renders it in a sandboxed iframe. The
 AG-UI protocol synchronises form state back to the Strands agent in real time.
@@ -353,12 +376,15 @@ AG-UI protocol synchronises form state back to the Strands agent in real time.
 Figure: Diagram 03 — MCP Apps: Payment Initiation with Sandboxed iframe (ui:// flow)
 
 ### 5.4 Payment Approval — 4-Eyes Human-in-the-Loop
+
 All payment executions pause at Strands interrupt_before. The Maker creates a pending approval in
 DynamoDB. A Checker (different user, server-side validated) reviews and approves via a signed HMAC
 token. The agent resumes only after the approval token is verified. Same-user approval is rejected
 server-side unconditionally.
 Figure: Diagram 04 — 4-Eyes Payment Approval: Maker → DynamoDB → Checker → Signed Token → Agent Resume
+
 ### 5.5 Dynamic Tool & UI Registration
+
 Domain teams push a tool manifest to Git. CI/CD runs parallel security gates (SAST, SCA, Trivy, Checkov,
 TruffleHog), signs the container and manifest, deploys the MCP server to AgentCore, and registers in the
 Tool Registry. Strands discovers the new tool on the next agent session — zero downtime for the core
@@ -367,6 +393,7 @@ platform.
 Figure: Diagram 05 — Dynamic Tool Registration: CI/CD → AgentCore → CDN → Tool Registry → Strands Discovery
 
 ### 5.6 Full System — All Layers End-to-End
+
 A multi-tool query ("check my balance and risk profile") showing all nine participants. The agent executes two
 tool calls sequentially (Core Banking MCP, then Risk Engine MCP), streams results as AG-UI events, and
 returns a combined natural-language response. Every step publishes an audit event to Kinesis.
@@ -374,7 +401,9 @@ Figure: Diagram 06 — Full Stack: Multi-Tool Query across Browser, WAF, BFF, Ag
 APIs, and Audit
 
 ## 6. Frontend — React + CopilotKit Code Reference
+
 ### 6.1 CopilotKit Provider (layout.tsx)
+
 src/app/layout.tsx — CopilotKit Provider wrapping entire app
 "use client";
 import { CopilotKit } from "@copilotkit/react-core";
@@ -383,14 +412,16 @@ import { MsalProvider } from "@azure/msal-react";
 export default function RootLayout({ children }) {
 return (
 <MsalProvider instance={msalInstance}>
-{/* runtimeUrl points ONLY to BFF — never directly to AgentCore */}
+{/*runtimeUrl points ONLY to BFF — never directly to AgentCore*/}
 <CopilotKit runtimeUrl="/api/copilotkit" agent="strands_agent">
 {children}
 </CopilotKit>
 </MsalProvider>
 );
 }
+
 ### 6.2 Dynamic Tool Loader (DynamicToolLoader.tsx)
+
 src/components/DynamicToolLoader.tsx
 "use client";
 import { useCopilotAction } from "@copilotkit/react-core";
@@ -401,7 +432,7 @@ async function loadWithSRICheck(url, integrity) {
 const resp = await fetch(url, { integrity, credentials: "omit" });
 const text = await resp.text();
 const blob = new Blob([text], { type: "application/javascript" });
-return import(/* webpackIgnore: true */ URL.createObjectURL(blob));
+return import(/*webpackIgnore: true*/ URL.createObjectURL(blob));
 }
 
 function ToolActionRegistrar({ tool }) {
@@ -425,6 +456,7 @@ return null;
 }
 
 ### 6.3 MSAL Auth Configuration
+
 src/lib/auth.ts — MSAL configuration
 import { PublicClientApplication } from "@azure/msal-browser";
 
@@ -432,7 +464,7 @@ const msalConfig = {
 auth: {
 clientId: process.env.NEXT_PUBLIC_AZURE_CLIENT_ID,
 authority: `https://login.microsoftonline.com/${TENANT_ID}`,
-redirectUri: "https://copilot.bank.eu/auth/callback",
+redirectUri: "<https://copilot.bank.eu/auth/callback>",
 },
 cache: {
 cacheLocation: "sessionStorage", // Never localStorage for banking apps
@@ -445,7 +477,9 @@ export const msalInstance = new PublicClientApplication(msalConfig);
 export const loginRequest = { scopes: ["openid", "profile", "email"] };
 
 ## 7. BFF — Backend For Frontend Code Reference
+
 ### 7.1 CopilotKit Runtime Endpoint
+
 src/app/api/copilotkit/route.ts — Core BFF endpoint
 // src/app/api/copilotkit/route.ts
 import { CopilotRuntime, ExperimentalEmptyAdapter,
@@ -489,7 +523,9 @@ endpoint: "/api/copilotkit",
 });
 return handleRequest(req);
 };
+
 ### 7.2 Session Validation
+
 src/lib/session.ts — Session + CSRF validation
 // src/lib/session.ts
 import { createRemoteJWKSet, jwtVerify } from "jose";
@@ -522,7 +558,9 @@ session = await refreshTokenSilently(session);
 
 return { upn: session.upn, roles: session.roles, traceId: crypto.randomUUID() };
 }
+
 ### 7.3 HTTP Security Headers
+
 src/middleware.ts — Security headers middleware
 // src/middleware.ts — Applied to every response
 export function middleware(req) {
@@ -546,19 +584,27 @@ return res;
 }
 
 ## 8. AgentCore + Strands Agent Code Reference
+
 ### 8.1 Agent Container Entry Point
+
 agent/main.py — AgentCore container entry point
+
 # agent/main.py
+
 from fastapi import FastAPI
 from ag_ui_strands import StrandsAgent
 from .agent import build_agent
 
 app = FastAPI()
 
-# StrandsAgent wraps your Strands agent and exposes AG-UI endpoints:
+# StrandsAgent wraps your Strands agent and exposes AG-UI endpoints
+
 # :8080/invocations — SSE (AG-UI)
+
 # :8080/ws — WebSocket (AG-UI)
+
 # :8080/ping — Health check
+
 strands_instance = None
 
 @app.on_event("startup")
@@ -569,22 +615,31 @@ strands_instance = await build_agent()
 agui = StrandsAgent(get_agent=lambda: strands_instance)
 app.include_router(agui.router)
 
-# AgentCore deploy command (March 2026 GA):
+# AgentCore deploy command (March 2026 GA)
+
 # agentcore configure -e agent/main.py --protocol AGUI --region eu-west-1
+
 # agentcore deploy
+
 ### 8.2 Strands Agent Builder
+
 agent/agent.py — Strands agent builder
+
 # agent/agent.py
+
 from strands import Agent
 from strands.models import BedrockModel
 from mcp.client.streamable_http import streamablehttp_client
 
 async def build_agent() -> Agent:
+
 # 1. Discover active MCP tools from Tool Registry
+
 registry = await ToolRegistry.fetch_all()
 mcp_tools = await collect_mcp_tools(registry.endpoints)
 
 # 2. Bedrock model with EU-region Guardrails
+
 model = BedrockModel(
 model_id="anthropic.claude-3-5-sonnet-20241022-v2:0",
 region_name="eu-west-1",
@@ -592,6 +647,7 @@ guardrails={"guardrailId": "eu-bank-guardrail-01", "trace": "enabled"}
 )
 
 # 3. Agent with human-in-loop on all write operations
+
 return Agent(
 model=model,
 tools=mcp_tools,
@@ -610,9 +666,13 @@ async with ClientSession(r, w) as s:
 await s.initialize()
 all_tools.extend((await s.list_tools()).tools)
 return all_tools
+
 ### 8.3 Hardened System Prompt
+
 agent/prompts.py — Hardened system prompt
+
 # agent/prompts.py
+
 ```python
 SYSTEM_PROMPT = """
 You are a secure internal AI copilot for a regulated EU bank.

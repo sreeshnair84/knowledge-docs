@@ -35,7 +35,7 @@ Security principles are the foundational, technology-agnostic rules that govern 
 ### 1.1 Example Enterprise Security Principles
 
 | # | Principle | Rationale | Implications |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | P1 | **Least Privilege** | Limiting access scope reduces blast radius of any compromise | All human, machine, and agent identities scoped to minimum necessary access |
 | P2 | **Assume Breach** | Perimeter controls alone cannot guarantee secure interior | Defence-in-depth; microsegmentation; rapid detection and response |
 | P3 | **Security by Design** | Retrofitting security is 10× more expensive than designing it in | Security requirements captured at initiative inception; threat model before build |
@@ -63,7 +63,7 @@ functions driving change: AI adoption, regulatory requirements, threat landscape
 ### Where We Need to Be (3-Year Target)
 [A clear statement of the target security operating model: e.g.,
 "A Zero Trust security posture with AI-native security operations, full
-data classification coverage, and ISO 42001-certified AI governance — 
+data classification coverage, and ISO 42001-certified AI governance —
 enabling confident adoption of agentic AI across the enterprise."]
 
 ### The Journey
@@ -83,6 +83,7 @@ enabling confident adoption of agentic AI across the enterprise."]
 ### 3.1 Baseline Architecture Document (Security View)
 
 Captures the current state:
+
 - Inventory of security tools and platforms
 - Network architecture diagrams with trust zones marked
 - Identity architecture: IdP, MFA coverage, privilege model
@@ -192,6 +193,7 @@ storage risk.
 ### 5.2 Security-Critical ADR Catalogue
 
 Every enterprise should maintain ADRs for:
+
 - AI agent identity standard
 - AI gateway platform selection
 - Zero Trust network architecture approach
@@ -257,7 +259,7 @@ A threat model systematically identifies threats to an architecture.
 ### 7.1 STRIDE for AI Systems
 
 | Threat | Category | AI Example | Control |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **S**poofing | Identity | Attacker impersonates agent to invoke MCP tools | Agent authentication (managed identity, mTLS) |
 | **T**ampering | Integrity | Training data poisoned to alter model behaviour | Data lineage; integrity checks; validation |
 | **R**epudiation | Non-repudiation | Agent takes action with no audit trail | Immutable audit logging per agent action |
@@ -272,7 +274,7 @@ A threat model systematically identifies threats to an architecture.
 ### 8.1 Zero Trust Pillars (CISA Model)
 
 | Pillar | Description | Key Controls |
-|---|---|---|
+| --- | --- | --- |
 | **Identity** | Verify every user and entity before granting access | FIDO2; continuous auth; UEBA |
 | **Device** | Verify device health before granting access | MDM; device compliance; conditional access |
 | **Network** | Segment networks; encrypt all traffic | ZTNA; microsegmentation; mTLS |
@@ -296,6 +298,7 @@ The traditional 7 pillars do not account for AI agents. Two additional pillars r
 ### 9.1 Phased Security Roadmap Template
 
 **Phase 1: Foundation (0–6 months)**
+
 - [ ] Deploy FIDO2 MFA for all privileged users
 - [ ] Implement AI gateway for all enterprise AI access
 - [ ] Deploy CSPM across all cloud environments
@@ -303,6 +306,7 @@ The traditional 7 pillars do not account for AI agents. Two additional pillars r
 - [ ] Publish AI security policy and acceptable use policy
 
 **Phase 2: Enhancement (6–18 months)**
+
 - [ ] SPIFFE/managed identity for all AI agents (eliminate API keys)
 - [ ] DSPM deployment covering all cloud data stores
 - [ ] AI red team programme (quarterly cadence)
@@ -310,6 +314,7 @@ The traditional 7 pillars do not account for AI agents. Two additional pillars r
 - [ ] ISO 42001 gap assessment and remediation
 
 **Phase 3: Optimisation (18–36 months)**
+
 - [ ] AI-assisted SOC (automated tier-1 triage > 60%)
 - [ ] Continuous compliance monitoring (automated evidence)
 - [ ] ISO 42001 certification
@@ -321,7 +326,7 @@ The traditional 7 pillars do not account for AI agents. Two additional pillars r
 Align technology investments to roadmap phases:
 
 | Phase | Initiative | Investment | Risk Reduction | Priority |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | AI Gateway deployment | $200K | High | Critical |
 | 1 | FIDO2 rollout | $150K | High | Critical |
 | 1 | CSPM (Wiz/Orca) | $350K/yr | Very High | Critical |

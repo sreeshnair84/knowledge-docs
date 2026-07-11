@@ -9,55 +9,55 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **GitHub Architecture & Actions Deep Dive** 
+# **GitHub Architecture & Actions Deep Dive**
 
-**Repository model, Enterprise topology, and the complete Actions execution engine** 
+**Repository model, Enterprise topology, and the complete Actions execution engine**
 
-##### **TOPICS COVERED** 
+##### **TOPICS COVERED**
 
-- **›  GitHub Platform Architecture** 
+- **›  GitHub Platform Architecture**
 
-- **›  Permissions & RBAC** 
+- **›  Permissions & RBAC**
 
-- **›  GitHub Security Features** 
+- **›  GitHub Security Features**
 
-- **›  Secret Scanning & Push Protection** 
+- **›  Secret Scanning & Push Protection**
 
-- **›  Workflow YAML anatomy** 
+- **›  Workflow YAML anatomy**
 
-- **›  Jobs, Steps & Actions** 
+- **›  Jobs, Steps & Actions**
 
-- **›  Expressions & Contexts** 
+- **›  Expressions & Contexts**
 
-- **›  Execution Flow (YAML → VM)** 
+- **›  Execution Flow (YAML → VM)**
 
-- **›  Organizations & Enterprise** 
+- **›  Organizations & Enterprise**
 
-- **›  Fork Model & Visibility** 
+- **›  Fork Model & Visibility**
 
-- **›  Dependabot & CodeQL** 
+- **›  Dependabot & CodeQL**
 
-- **›  Advanced Security** 
+- **›  Advanced Security**
 
-- **›  Triggers & Events (all 30+)** 
+- **›  Triggers & Events (all 30+)**
 
-- **›  Composite & Reusable Workflows** 
+- **›  Composite & Reusable Workflows**
 
-- **›  Concurrency & Matrices** 
+- **›  Concurrency & Matrices**
 
-- **›  OIDC Token Generation** 
+- **›  OIDC Token Generation**
 
-**GitHub & Modern CI/CD** 
+**GitHub & Modern CI/CD**
 
-**Principal Platform Engineer Reference Series  •  Enterprise Edition** 
+**Principal Platform Engineer Reference Series  •  Enterprise Edition**
 
-## **PART 2 — GitHub Architecture** 
+## **PART 2 — GitHub Architecture**
 
-## **2.1 GitHub Platform Overview** 
+## **2.1 GitHub Platform Overview**
 
-GitHub is a developer platform built atop Git that provides hosting, collaboration, security, and automation infrastructure. At its core, GitHub is a multi-tenant SaaS platform serving millions of repositories, but it is also available as GitHub Enterprise Server (GHES) — an on-premise appliance — and GitHub Enterprise Cloud (GHEC) — a dedicated cloud environment with data residency options. 
+GitHub is a developer platform built atop Git that provides hosting, collaboration, security, and automation infrastructure. At its core, GitHub is a multi-tenant SaaS platform serving millions of repositories, but it is also available as GitHub Enterprise Server (GHES) — an on-premise appliance — and GitHub Enterprise Cloud (GHEC) — a dedicated cloud environment with data residency options.
 
-### **Deployment Models** 
+### **Deployment Models**
 
 |**Model**|**Where it runs**|**Data residency**|**Scale**|
 |---|---|---|---|
@@ -67,11 +67,11 @@ GitHub is a developer platform built atop Git that provides hosting, collaborati
 |GitHub Enterprise Server (G|HES)Your datacenter/cloud|Full customer control|Air-gapped support|
 |GitHub AE (deprecated)|Isolated Azure tenant|N/A (discontinued)|N/A|
 
-## **2.2 Repository Architecture** 
+## **2.2 Repository Architecture**
 
-A GitHub repository is more than a Git repository. It wraps the Git object store with metadata, access control, CI/CD integration, issue tracking, discussions, wiki, releases, packages, and a web interface. Internally, GitHub uses a Git backend (Gitaly, as open-sourced by GitLab; GitHub uses its own proprietary equivalent) fronted by a Ruby on Rails web application and backed by MySQL, Redis, Elasticsearch, and various microservices. 
+A GitHub repository is more than a Git repository. It wraps the Git object store with metadata, access control, CI/CD integration, issue tracking, discussions, wiki, releases, packages, and a web interface. Internally, GitHub uses a Git backend (Gitaly, as open-sourced by GitLab; GitHub uses its own proprietary equivalent) fronted by a Ruby on Rails web application and backed by MySQL, Redis, Elasticsearch, and various microservices.
 
-### **Repository Visibility** 
+### **Repository Visibility**
 
 |**Visibility**|**Who can see?**|**Who can fork?**|**Enterprise use**|
 |---|---|---|---|
@@ -79,33 +79,33 @@ A GitHub repository is more than a Git repository. It wraps the Git object store
 |Private|Repo members + org admins|Only org members (if enabled)|Most internal work|
 |Internal|All org members (GHEC/GHES)|Any org member|InnerSource|
 
-I _Internal repositories are the key to InnerSource programs. They enable read access for the whole company without making code publicly visible, while maintaining fine-grained write access control._ 
+I *Internal repositories are the key to InnerSource programs. They enable read access for the whole company without making code publicly visible, while maintaining fine-grained write access control.*
 
-### **Fork Model** 
+### **Fork Model**
 
-GitHub's fork model creates a full copy of a repository under a different owner, maintaining an upstream relationship. Key behaviors: 
+GitHub's fork model creates a full copy of a repository under a different owner, maintaining an upstream relationship. Key behaviors:
 
-**Page 2** 
+**Page 2**
 
-- Forks share the underlying object store with the upstream (network repository) — no extra disk space for shared objects 
+- Forks share the underlying object store with the upstream (network repository) — no extra disk space for shared objects
 
-- Pull requests can be created from a fork back to the upstream — the standard open-source contribution model 
+- Pull requests can be created from a fork back to the upstream — the standard open-source contribution model
 
-- Private repository forks inherit the parent's visibility; they cannot be made public 
+- Private repository forks inherit the parent's visibility; they cannot be made public
 
-- Enterprise admins can restrict forking to within the organization 
+- Enterprise admins can restrict forking to within the organization
 
-I _Fork network objects: when a private repo is deleted, its fork network may retain access to blobs. Enterprise security policy should prohibit forking of sensitive repositories to external orgs._ 
+I *Fork network objects: when a private repo is deleted, its fork network may retain access to blobs. Enterprise security policy should prohibit forking of sensitive repositories to external orgs.*
 
-## **2.3 Organizations, Teams, and Permissions** 
+## **2.3 Organizations, Teams, and Permissions**
 
-### **Permission Hierarchy** 
+### **Permission Hierarchy**
 
-GitHub's permission model is hierarchical: Enterprise → Organization → Repository → Branch → Environment. 
+GitHub's permission model is hierarchical: Enterprise → Organization → Repository → Branch → Environment.
 
-`Enterprise` III `Organization A` I III `Team: platform-engineers` I I III `Members: alice, bob, carol` I III `Repository: api-service` I I III `Team: platform-engineers` → `Admin` I I III `Team: developers` → `Write` I I III `Team: security-review` → `Read` I III `Environment: production` I III `Required reviewers: [alice, bob]` I III `Wait timer: 10 minutes` III `Organization B` III `...` 
+`Enterprise` III `Organization A` I III `Team: platform-engineers` I I III `Members: alice, bob, carol` I III `Repository: api-service` I I III `Team: platform-engineers` → `Admin` I I III `Team: developers` → `Write` I I III `Team: security-review` → `Read` I III `Environment: production` I III `Required reviewers: [alice, bob]` I III `Wait timer: 10 minutes` III `Organization B` III `...`
 
-### **Repository Roles** 
+### **Repository Roles**
 
 |**Role**|**Read**|**Triage**|**Write**|**Maintain**|**Admin**|
 |---|---|---|---|---|---|
@@ -116,17 +116,17 @@ GitHub's permission model is hierarchical: Enterprise → Organization → Repos
 |Manage branch protection||||||
 |Manage repo settings||||||
 
-## **2.4 GitHub Advanced Security (GHAS)** 
+## **2.4 GitHub Advanced Security (GHAS)**
 
-GitHub Advanced Security is a suite of security features available free on public repositories and as a paid add-on for private repositories on GHEC/GHES. It encompasses three main capabilities: 
+GitHub Advanced Security is a suite of security features available free on public repositories and as a paid add-on for private repositories on GHEC/GHES. It encompasses three main capabilities:
 
-### **Code Scanning with CodeQL** 
+### **Code Scanning with CodeQL**
 
-CodeQL is a semantic code analysis engine that models code as a queryable database. It can find complex security vulnerabilities like SQL injection, XSS, path traversal, and deserialization flaws that simple pattern 
+CodeQL is a semantic code analysis engine that models code as a queryable database. It can find complex security vulnerabilities like SQL injection, XSS, path traversal, and deserialization flaws that simple pattern
 
-**Page 3** 
+**Page 3**
 
-matching misses. 
+matching misses.
 
 ```
 # .github/workflows/codeql.yml
@@ -158,19 +158,19 @@ jobs:
           category: /language:${{ matrix.language }}
 ```
 
-### **Secret Scanning** 
+### **Secret Scanning**
 
-GitHub's secret scanning engine uses patterns from 200+ token providers to detect secrets committed to repositories. It supports two modes: 
+GitHub's secret scanning engine uses patterns from 200+ token providers to detect secrets committed to repositories. It supports two modes:
 
-- **Push protection** : Blocks the push before the secret enters the repository (preferred — remediation at the source) 
+- **Push protection** : Blocks the push before the secret enters the repository (preferred — remediation at the source)
 
-• **Retroactive scanning** : Scans entire repository history, alerting on secrets already committed `# Repository-level secret scanning configuration # .github/secret_scanning.yml paths-ignore: - 'tests/fixtures/**' - '**/*.test.js' - 'docs/**'` 
+• **Retroactive scanning** : Scans entire repository history, alerting on secrets already committed `# Repository-level secret scanning configuration # .github/secret_scanning.yml paths-ignore: - 'tests/fixtures/**' - '**/*.test.js' - 'docs/**'`
 
-I _Push protection is the only mechanism that prevents a secret from ever entering git history. Once committed, the secret must be treated as compromised and rotated IMMEDIATELY, even if the commit is rewritten — pack files may have been distributed._ 
+I *Push protection is the only mechanism that prevents a secret from ever entering git history. Once committed, the secret must be treated as compromised and rotated IMMEDIATELY, even if the commit is rewritten — pack files may have been distributed.*
 
-### **Dependabot** 
+### **Dependabot**
 
-Dependabot performs three functions: security alerts, security updates (auto-PRs for vulnerable dependencies), and version updates (scheduled version bump PRs). 
+Dependabot performs three functions: security alerts, security updates (auto-PRs for vulnerable dependencies), and version updates (scheduled version bump PRs).
 
 ```
 # .github/dependabot.yml
@@ -190,7 +190,7 @@ updates:
     ignore:
 ```
 
-**Page 4** 
+**Page 4**
 
 ```
       - dependency-name: "lodash"
@@ -205,27 +205,27 @@ updates:
       interval: weekly
 ```
 
-## **2.5 Codespaces** 
+## **2.5 Codespaces**
 
-GitHub Codespaces provides cloud-hosted development environments backed by Azure VMs. Each codespace runs a Docker container (or multi-container dev container) with VS Code (browser or desktop tunnel), preconfigured with tools, extensions, and secrets. 
+GitHub Codespaces provides cloud-hosted development environments backed by Azure VMs. Each codespace runs a Docker container (or multi-container dev container) with VS Code (browser or desktop tunnel), preconfigured with tools, extensions, and secrets.
 
-`# .devcontainer/devcontainer.json { "name": "API Service Dev Environment", "image": "mcr.microsoft.com/devcontainers/python:3.11", "features": { "ghcr.io/devcontainers/features/docker-in-docker:2": {}, "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}, "ghcr.io/devcontainers/features/node:1": {"version": "20"} }, "forwardPorts": [3000, 5432, 6379], "postCreateCommand": "make dev-setup", "secrets": { "DATABASE_URL": {}, "GITHUB_TOKEN": {} }, "customizations": { "vscode": { "extensions": ["ms-python.python", "hashicorp.terraform", "ms-kubernetes-tools.vscode-kubernetes-tools"] } } }` I _Codespaces prebuilds (configured in repository settings) pre-warm containers with cloned repositories and run postCreateCommand ahead of time, reducing startup from 3-5 minutes to under 30 seconds._ 
+`# .devcontainer/devcontainer.json { "name": "API Service Dev Environment", "image": "mcr.microsoft.com/devcontainers/python:3.11", "features": { "ghcr.io/devcontainers/features/docker-in-docker:2": {}, "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}, "ghcr.io/devcontainers/features/node:1": {"version": "20"} }, "forwardPorts": [3000, 5432, 6379], "postCreateCommand": "make dev-setup", "secrets": { "DATABASE_URL": {}, "GITHUB_TOKEN": {} }, "customizations": { "vscode": { "extensions": ["ms-python.python", "hashicorp.terraform", "ms-kubernetes-tools.vscode-kubernetes-tools"] } } }` I *Codespaces prebuilds (configured in repository settings) pre-warm containers with cloned repositories and run postCreateCommand ahead of time, reducing startup from 3-5 minutes to under 30 seconds.*
 
-**Page 5** 
+**Page 5**
 
-## **PART 3 — GitHub Actions Deep Dive** 
+## **PART 3 — GitHub Actions Deep Dive**
 
-## **3.1 Workflow YAML Anatomy** 
+## **3.1 Workflow YAML Anatomy**
 
-A GitHub Actions workflow is a YAML file in .github/workflows/. Each workflow consists of triggers (on:), optional global settings, and one or more jobs. 
+A GitHub Actions workflow is a YAML file in .github/workflows/. Each workflow consists of triggers (on:), optional global settings, and one or more jobs.
 
 ```
 name: Production Deployment Pipeline
 ```
 
-`#` II `Triggers` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `on: push: branches: [main] paths-ignore: ['docs/**', '*.md'] pull_request: branches: [main] types: [opened, synchronize, reopened, ready_for_review] workflow_dispatch: inputs: environment: description: 'Target environment' required: true type: choice options: [staging, production] dry_run: description: 'Dry run (no actual deployment)' type: boolean default: false #` II `Global settings` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `concurrency: group: ${{ github.workflow }}-${{ github.ref }} cancel-in-progress: ${{ github.ref != 'refs/heads/main' }} permissions: contents: read id-token: write   # Required for OIDC packages: write env: REGISTRY: ghcr.io IMAGE_NAME: ${{ github.repository }} PYTHON_VERSION: "3.11" #` II `Jobs` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `jobs: lint-and-test: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - uses: actions/setup-python@v5 with: python-version: ${{ env.PYTHON_VERSION }} cache: pip - run: pip install -r requirements-dev.txt - run: ruff check . - run: pytest --cov=src --cov-report=xml - uses: codecov/codecov-action@v4 build-image: needs: lint-and-test runs-on: ubuntu-latest outputs: image-digest: ${{ steps.build.outputs.digest }} image-ref: ${{ steps.meta.outputs.tags }} steps: - uses: actions/checkout@v4 - uses: docker/metadata-action@v5 id: meta` 
+`#` II `Triggers` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `on: push: branches: [main] paths-ignore: ['docs/**', '*.md'] pull_request: branches: [main] types: [opened, synchronize, reopened, ready_for_review] workflow_dispatch: inputs: environment: description: 'Target environment' required: true type: choice options: [staging, production] dry_run: description: 'Dry run (no actual deployment)' type: boolean default: false #` II `Global settings` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `concurrency: group: ${{ github.workflow }}-${{ github.ref }} cancel-in-progress: ${{ github.ref != 'refs/heads/main' }} permissions: contents: read id-token: write   # Required for OIDC packages: write env: REGISTRY: ghcr.io IMAGE_NAME: ${{ github.repository }} PYTHON_VERSION: "3.11" #` II `Jobs` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `jobs: lint-and-test: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - uses: actions/setup-python@v5 with: python-version: ${{ env.PYTHON_VERSION }} cache: pip - run: pip install -r requirements-dev.txt - run: ruff check . - run: pytest --cov=src --cov-report=xml - uses: codecov/codecov-action@v4 build-image: needs: lint-and-test runs-on: ubuntu-latest outputs: image-digest: ${{ steps.build.outputs.digest }} image-ref: ${{ steps.meta.outputs.tags }} steps: - uses: actions/checkout@v4 - uses: docker/metadata-action@v5 id: meta`
 
-**Page 6** 
+**Page 6**
 
 ```
         with:
@@ -269,9 +269,9 @@ name: Production Deployment Pipeline
             --force-new-deployment
 ```
 
-## **3.2 Events — Complete Reference** 
+## **3.2 Events — Complete Reference**
 
-### **Code Events** 
+### **Code Events**
 
 |**Event**|**Trigger**|**Key filters**|**Enterprise use**|
 |---|---|---|---|
@@ -282,7 +282,7 @@ name: Production Deployment Pipeline
 |delete|Branch/tag deleted|—|Cleanup stale environments|
 |merge_group|Merge queue batch|branches|CI in merge queue|
 
-### **Workflow Control Events** 
+### **Workflow Control Events**
 
 |**Event**|**Trigger**|**Key use**|
 |---|---|---|
@@ -292,9 +292,9 @@ name: Production Deployment Pipeline
 |workflow_run|Another workflow completes|Notification, cleanup after CI|
 |schedule|CRON expression|Nightly builds, security scans|
 
-**Page 7** 
+**Page 7**
 
-### **Security and Release Events** 
+### **Security and Release Events**
 
 |**Event**|**Trigger**|
 |---|---|
@@ -305,11 +305,11 @@ name: Production Deployment Pipeline
 |security_advisory|GitHub security advisory activity|
 |dependabot_alert|Dependabot alert activity|
 
-I _pull_request_target runs in the context of the BASE branch, not the fork. It has access to secrets and is trusted — attackers can use it to exfiltrate secrets if you check out PR code and run it. Never use actions/checkout in pull_request_target without restricting to trusted actors._ 
+I *pull_request_target runs in the context of the BASE branch, not the fork. It has access to secrets and is trusted — attackers can use it to exfiltrate secrets if you check out PR code and run it. Never use actions/checkout in pull_request_target without restricting to trusted actors.*
 
-## **3.3 Expressions and Contexts** 
+## **3.3 Expressions and Contexts**
 
-GitHub Actions expressions use ${{ }} syntax and are evaluated at runtime. They provide access to contexts (structured data about the workflow run) and built-in functions. 
+GitHub Actions expressions use ${{ }} syntax and are evaluated at runtime. They provide access to contexts (structured data about the workflow run) and built-in functions.
 
 ```
 # Context hierarchy:
@@ -347,17 +347,17 @@ ${{ startsWith(github.ref, 'refs/tags/') }}
 ${{ hashFiles('**/package-lock.json') }}
 ```
 
-## **3.4 Concurrency Control** 
+## **3.4 Concurrency Control**
 
-**Page 8** 
+**Page 8**
 
-Concurrency groups prevent multiple workflow runs from conflicting over shared resources (environments, infrastructure). They can either queue new runs or cancel in-progress ones. 
+Concurrency groups prevent multiple workflow runs from conflicting over shared resources (environments, infrastructure). They can either queue new runs or cancel in-progress ones.
 
-`# Cancel in-progress runs on PR pushes (save runner minutes): concurrency: group: pr-${{ github.event.pull_request.number }} cancel-in-progress: true # Queue deployments — never cancel production deploys: concurrency: group: deploy-${{ github.event.inputs.environment }} cancel-in-progress: false # Per-branch isolation: concurrency: group: ${{ github.workflow }}-${{ github.ref }} cancel-in-progress: ${{ github.ref != 'refs/heads/main' }} #` → `Cancel on feature branches, queue on main` 
+`# Cancel in-progress runs on PR pushes (save runner minutes): concurrency: group: pr-${{ github.event.pull_request.number }} cancel-in-progress: true # Queue deployments — never cancel production deploys: concurrency: group: deploy-${{ github.event.inputs.environment }} cancel-in-progress: false # Per-branch isolation: concurrency: group: ${{ github.workflow }}-${{ github.ref }} cancel-in-progress: ${{ github.ref != 'refs/heads/main' }} #` → `Cancel on feature branches, queue on main`
 
-## **3.5 Matrix Strategies** 
+## **3.5 Matrix Strategies**
 
-Matrix strategies run a job multiple times with different variable combinations, enabling cross-platform testing and parameterized pipelines. 
+Matrix strategies run a job multiple times with different variable combinations, enabling cross-platform testing and parameterized pipelines.
 
 ```
 jobs:
@@ -399,13 +399,13 @@ jobs:
           echo 'matrix=["staging","canary","production"]' >> $GITHUB_OUTPUT
 ```
 
-## **3.6 Composite Actions and Reusable Workflows** 
+## **3.6 Composite Actions and Reusable Workflows**
 
-**Page 9** 
+**Page 9**
 
-### **Composite Actions** 
+### **Composite Actions**
 
-A composite action bundles multiple steps into a single reusable action, callable from any workflow with uses: org/repo/path@version. 
+A composite action bundles multiple steps into a single reusable action, callable from any workflow with uses: org/repo/path@version.
 
 ```
 # .github/actions/setup-python-env/action.yml
@@ -443,9 +443,9 @@ runs:
         fi
 ```
 
-### **Reusable Workflows** 
+### **Reusable Workflows**
 
-Reusable workflows share entire job definitions (with runners, services, environment gates) across repositories — not just steps. 
+Reusable workflows share entire job definitions (with runners, services, environment gates) across repositories — not just steps.
 
 ```
 # .github/workflows/deploy-reusable.yml (in platform-team/workflows repo)
@@ -472,15 +472,15 @@ jobs:
       url: ${{ steps.deploy.outputs.url }}
 ```
 
-**Page 10** 
+**Page 10**
 
-`steps: - id: deploy run: | echo "url=https://${{ inputs.environment }}.example.com" >> $GITHUB_OUTPUT #` II `Caller workflow` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `# In any team's repository: jobs: deploy: uses: platform-team/workflows/.github/workflows/deploy-reusable.yml@v1 with: environment: production image-tag: ${{ needs.build.outputs.tag }} secrets: DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}` 
+`steps: - id: deploy run: | echo "url=https://${{ inputs.environment }}.example.com" >> $GITHUB_OUTPUT #` II `Caller workflow` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `# In any team's repository: jobs: deploy: uses: platform-team/workflows/.github/workflows/deploy-reusable.yml@v1 with: environment: production image-tag: ${{ needs.build.outputs.tag }} secrets: DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}`
 
-I _Reusable workflows support inheriting secrets with 'secrets: inherit' — useful for organization-level secrets that should flow to all callers without explicit passing._ 
+I *Reusable workflows support inheriting secrets with 'secrets: inherit' — useful for organization-level secrets that should flow to all callers without explicit passing.*
 
-## **3.7 OIDC Token Generation and Cloud Authentication** 
+## **3.7 OIDC Token Generation and Cloud Authentication**
 
-GitHub Actions supports OIDC (OpenID Connect) to authenticate with cloud providers without storing long-lived credentials as secrets. The Actions runner contacts GitHub's OIDC provider to receive a signed JWT, which the cloud provider exchanges for short-lived credentials. 
+GitHub Actions supports OIDC (OpenID Connect) to authenticate with cloud providers without storing long-lived credentials as secrets. The Actions runner contacts GitHub's OIDC provider to receive a signed JWT, which the cloud provider exchanges for short-lived credentials.
 
 ```
 # AWS OIDC Setup (one-time IAM configuration):
@@ -524,32 +524,32 @@ jobs:
           workload_identity_provider: projects/123/locations/global/workloadIdentityPools/github/providers/github
 ```
 
-**Page 11** 
+**Page 11**
 
 ```
           service_account: deploy@project.iam.gserviceaccount.com
 ```
 
-I _Always use the most restrictive OIDC claim possible in your trust policy. Restrict by repo AND environment (not just repo) to prevent any workflow in the repo from assuming production roles._ 
+I *Always use the most restrictive OIDC claim possible in your trust policy. Restrict by repo AND environment (not just repo) to prevent any workflow in the repo from assuming production roles.*
 
-**Page 12** 
+**Page 12**
 
-## **Interview Questions — GitHub & Actions** 
+## **Interview Questions — GitHub & Actions**
 
-#### **Q: What is the difference between pull_request and pull_request_target events?** 
+#### **Q: What is the difference between pull_request and pull_request_target events?**
 
-A: pull_request runs in the context of the head (fork) branch with limited permissions and no secret access. pull_request_target runs in the context of the base branch with full secret access. The latter is dangerous if you checkout and run fork code, as an attacker can exfiltrate secrets. 
+A: pull_request runs in the context of the head (fork) branch with limited permissions and no secret access. pull_request_target runs in the context of the base branch with full secret access. The latter is dangerous if you checkout and run fork code, as an attacker can exfiltrate secrets.
 
-#### **Q: Explain the OIDC authentication flow for GitHub Actions to AWS.** 
+#### **Q: Explain the OIDC authentication flow for GitHub Actions to AWS.**
 
-A: The runner requests a JWT from GitHub's OIDC endpoint (token.actions.githubusercontent.com). The JWT contains claims like the repo, ref, environment, and actor. AWS STS verifies the JWT signature against GitHub's public key, checks the trust policy conditions, and issues temporary credentials via AssumeRoleWithWebIdentity. No secrets are stored in GitHub. 
+A: The runner requests a JWT from GitHub's OIDC endpoint (token.actions.githubusercontent.com). The JWT contains claims like the repo, ref, environment, and actor. AWS STS verifies the JWT signature against GitHub's public key, checks the trust policy conditions, and issues temporary credentials via AssumeRoleWithWebIdentity. No secrets are stored in GitHub.
 
-#### **Q: When would you use a composite action vs a reusable workflow?** 
+#### **Q: When would you use a composite action vs a reusable workflow?**
 
-A: Use composite actions for reusable steps within a job (setup, build steps, notifications). Use reusable workflows for entire pipelines that need their own runner, services, environment gates, or approval requirements. Reusable workflows are the enterprise standard for shared deployment pipelines. 
+A: Use composite actions for reusable steps within a job (setup, build steps, notifications). Use reusable workflows for entire pipelines that need their own runner, services, environment gates, or approval requirements. Reusable workflows are the enterprise standard for shared deployment pipelines.
 
-#### **Q: How does concurrency: cancel-in-progress affect different branch types?** 
+#### **Q: How does concurrency: cancel-in-progress affect different branch types?**
 
-A: For feature branches and PRs, cancelling in-progress is desirable to save runner minutes on superseded pushes. For main/release branches, you want to queue (cancel-in-progress: false) to ensure every commit is tested/deployed. A common pattern: cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}. 
+A: For feature branches and PRs, cancelling in-progress is desirable to save runner minutes on superseded pushes. For main/release branches, you want to queue (cancel-in-progress: false) to ensure every commit is tested/deployed. A common pattern: cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}.
 
 **Page 13**

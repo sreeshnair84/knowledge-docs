@@ -21,7 +21,7 @@ series_index: "agentic-systems/skill/coding/index"
 ### 13.1 The emerging role taxonomy
 
 | Role | Function | Observed examples |
-|---|---|---|
+| --- | --- | --- |
 | **Planner** | Decomposes a large task into subtasks, sequences work across other agents | Codex CLI's subagent orchestration; Warp's multi-agent parallel dispatch |
 | **Research Agent** | Gathers external context (docs, web, related code) before implementation begins | Codex's "search the web for up-to-date information" pattern; a dedicated research pass ahead of coding |
 | **Coding Agent** | Implements the actual change | The default role most tools optimize for by default |
@@ -105,7 +105,7 @@ Telemetry ─────────  everything above, emitted as structured s
 ### 14.2 Tooling landscape
 
 | Category | Examples | Notes for coding-agent use specifically |
-|---|---|---|
+| --- | --- | --- |
 | Vendor-native session telemetry | Claude Code's own session logs/telemetry, VS Code Copilot's telemetry, GitHub's Copilot usage/audit telemetry | Best default for single-vendor shops; least effort to enable |
 | OTel-based GenAI observability | Same `gen_ai.*` semantic conventions as the enterprise case (companion package file `08`) | Increasingly the right choice once more than one agent vendor is in use across a team, to get one unified view |
 | Dedicated LLM-app observability | Langfuse, LangSmith, Phoenix | More common when a team has built *custom* agent tooling (e.g., an internal Codex-MCP-orchestrated pipeline) than when using off-the-shelf CLI/IDE agents directly |

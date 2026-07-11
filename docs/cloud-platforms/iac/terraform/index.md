@@ -14,4 +14,3 @@ covers_version: \"as of 2026-07-10\"
 # Terraform
 
 Guides covering Terraform mastery and AI-assisted infrastructure as code practices.
-

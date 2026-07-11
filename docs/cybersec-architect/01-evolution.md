@@ -35,7 +35,7 @@ Security did not evolve in a straight line. Each era responded to a dominant fai
 ### 1.1 Era Timeline
 
 | Era | Approx. Years | Dominant Paradigm | Core Control |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Network Security** | 1990–2000 | Perimeter defence | Firewall, IDS/IPS |
 | **Infrastructure Security** | 2000–2007 | Host hardening | Patch management, anti-virus |
 | **Application Security** | 2005–2012 | Secure SDLC | OWASP Top 10, SAST/DAST |
@@ -68,6 +68,7 @@ Each collapse forced a paradigm shift. The current shift — from identity-centr
 **Core idea:** Build a wall. Trust what is inside.
 
 **Key technologies:**
+
 - Packet-filtering firewalls (Cisco PIX, Checkpoint)
 - Stateful inspection
 - Intrusion Detection Systems (Snort, ISS)
@@ -85,6 +86,7 @@ Each collapse forced a paradigm shift. The current shift — from identity-centr
 **Core idea:** Harden the hosts, not just the boundary.
 
 **Key technologies:**
+
 - OS hardening (CIS Benchmarks, DISA STIGs)
 - Vulnerability management (Nessus, Qualys)
 - Patch management (WSUS, SCCM)
@@ -102,6 +104,7 @@ Each collapse forced a paradigm shift. The current shift — from identity-centr
 **Core idea:** Security must be embedded in the software development lifecycle.
 
 **Key technologies:**
+
 - OWASP Top 10 (first published 2003, formalized 2004)
 - Static Application Security Testing (SAST): Fortify, Checkmarx
 - Dynamic Application Security Testing (DAST): Burp Suite, OWASP ZAP
@@ -119,6 +122,7 @@ Each collapse forced a paradigm shift. The current shift — from identity-centr
 **Core idea:** Adapt controls to the shared responsibility model.
 
 **Key technologies:**
+
 - Cloud Security Posture Management (CSPM): Prisma Cloud, Wiz, Orca
 - Cloud Identity & Access Management (AWS IAM, Azure RBAC, GCP IAM)
 - Cloud-native encryption (KMS, HSM-backed keys)
@@ -126,6 +130,7 @@ Each collapse forced a paradigm shift. The current shift — from identity-centr
 - Security Groups, Network ACLs, VPC design
 
 **Shared responsibility model:**
+
 ```
 Cloud Provider owns:       You own:
   Physical security          Identity & access management
@@ -146,6 +151,7 @@ Cloud Provider owns:       You own:
 **Core idea:** Identity is the new perimeter. Verify every access request regardless of network location.
 
 **Key technologies:**
+
 - Multi-Factor Authentication (MFA): TOTP, FIDO2/passkeys
 - Privileged Access Management (PAM): CyberArk, BeyondTrust
 - Identity Governance & Administration (IGA): SailPoint, Saviynt
@@ -155,7 +161,7 @@ Cloud Provider owns:       You own:
 **The identity explosion problem:**
 
 | Identity Type | 2015 Count (typical enterprise) | 2026 Count |
-|---|---|---|
+| --- | --- | --- |
 | Human users | ~5,000 | ~5,000 |
 | Service accounts | ~200 | ~2,000 |
 | Machine identities | ~500 | ~50,000 |
@@ -172,6 +178,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** Never trust any request implicitly — verify continuously based on identity, device posture, behaviour, and context.
 
 **NIST SP 800-207 Zero Trust Principles:**
+
 1. All data sources and services are resources
 2. All communication is secured regardless of network location
 3. Access to resources is granted per-session
@@ -181,6 +188,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 7. Collect data to improve security posture
 
 **Key technologies:**
+
 - Zero Trust Network Access (ZTNA): Zscaler, Cloudflare Access, Netskope
 - Microsegmentation: Illumio, Guardicore
 - Continuous authentication and risk-based access
@@ -196,6 +204,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** Shift security left into the development pipeline. Security as code.
 
 **Key capabilities:**
+
 - Pipeline security gates (SAST, DAST, SCA, secret scanning)
 - Infrastructure-as-code security (Checkov, tfsec, Trivy)
 - Container image scanning (Snyk, Anchore, Twistlock)
@@ -203,6 +212,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 - Security Champions programs
 
 **Impact on AI:** DevSecOps extends to AI model development:
+
 - Model cards and datasheets as security artefacts
 - Training data provenance and lineage scanning
 - Adversarial robustness testing in the ML pipeline
@@ -215,6 +225,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** Consolidate overlapping point solutions into integrated security platforms to reduce complexity, improve signal quality, and lower TCO.
 
 **Platform categories:**
+
 - **CNAPP** (Cloud-Native Application Protection Platform): combines CSPM + CWPP + CIEM + DAST
 - **XDR** (Extended Detection and Response): unifies endpoint, network, cloud, identity telemetry
 - **SASE** (Secure Access Service Edge): merges SD-WAN + SSE (CASB + SWG + ZTNA) in a cloud-delivered model
@@ -229,6 +240,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** Data is the ultimate target. Secure it directly, not just the perimeter around it.
 
 **Key technologies:**
+
 - Data Security Posture Management (DSPM): Cyera, Varonis, BigID
 - Data Loss Prevention (DLP): Microsoft Purview, Forcepoint, Nightfall
 - Encryption-in-use (Confidential Computing): Azure Confidential VMs, AWS Nitro Enclaves
@@ -244,6 +256,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** AI models, inference endpoints, and AI-powered applications introduce a new class of attacks that existing controls cannot detect.
 
 **New attack categories (summary — see [Part 4](04-ai-security.md) for full taxonomy):**
+
 - Prompt injection (direct and indirect)
 - Data poisoning and training data manipulation
 - Model extraction and membership inference
@@ -251,6 +264,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 - Embedding poisoning and context manipulation
 
 **Key controls:**
+
 - AI gateway / prompt gateway with input/output filtering
 - Model red teaming and adversarial testing
 - AI-specific logging and observability
@@ -264,6 +278,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** Autonomous AI agents that plan, act, and coordinate introduce unique security challenges: they can take real-world actions with broad blast radius, and they may be manipulated through their environment rather than direct interaction.
 
 **Unique threat vectors:**
+
 - **Indirect prompt injection**: malicious instructions embedded in documents, emails, or web pages that an agent reads and executes
 - **Agent hijacking**: redirecting an agent's goals mid-task
 - **Tool credential theft**: agents hold API keys and tokens that attackers can exfiltrate
@@ -271,6 +286,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 - **Goal drift**: agents drifting from original intent through accumulated context manipulation
 
 **Key controls (see [Part 5](05-agentic-ai-security.md)):**
+
 - Agent identity and least-privilege scoping
 - MCP server authentication and trust enforcement
 - Sandboxing and blast-radius isolation (microVM, container)
@@ -284,6 +300,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 **Core idea:** Security operations themselves become AI-driven — autonomous threat detection, investigation, and remediation with minimal human intervention.
 
 **Emerging capabilities:**
+
 - AI-native SOC with 24/7 autonomous triage and enrichment
 - Self-healing infrastructure that patches vulnerabilities without human approval
 - Continuous adaptive trust that re-evaluates access in real time
@@ -297,7 +314,7 @@ Machine and AI identity management is now the dominant identity challenge — no
 ## 14. Comparative Analysis: Three Security Models
 
 | Dimension | Traditional Security | Cloud-Native Security | AI-Native Security |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Trust model** | Implicit internal trust | Zero Trust, identity-centric | Behavioural trust, continuous intent verification |
 | **Perimeter** | Physical network boundary | Identity + device posture | Identity + behaviour + context + intent |
 | **Subject of policy** | User or IP address | Identity + device | Identity + agent + task + risk score |

@@ -13,9 +13,11 @@ research_date: 2026-07-10
 ---
 
 # AI Value Creators for Agentic AI and Beyond
+
 *A synthesis for Principal Enterprise Architects, Chief AI Officers, CTOs, Strategy Consultants, AI Platform Teams, and AI Transformation Leaders*
 
 ## TL;DR
+
 - **AI value is now a scaling and operating-model problem, not a technology problem.** Adoption is near-universal — McKinsey's *State of AI* (published 5 Nov 2025, n=1,993 across 105 countries) reports 88% of organizations use AI regularly in at least one function (up from 78% a year earlier) — but enterprise financial impact is rare: only ~6% are "AI high performers" (109 respondents with 5%+ of EBIT attributable to AI), 39% report *any* enterprise-level EBIT impact, and only about one-third have begun scaling enterprise-wide (7% "fully scaled"). The differentiator is workflow redesign, proprietary data/context, and governance — not model choice.
 - **Agentic AI is the next value frontier, and value accrues to compounding systems.** BCG's *Widening AI Value Gap* (30 Sept 2025) finds agents account for 17% of total AI value in 2025, rising to a projected 29% by 2028. Leaders treat AI as a self-reinforcing flywheel (data → model → decisions → outcomes → more data) on a decision-centric context layer. But Gartner projects over 40% of agentic AI projects will be canceled by end-2027, and S&P Global found 42% of firms abandoned most AI initiatives in 2025 — the anti-pattern is deploying autonomy on ungoverned data.
 - **Winners re-architect the enterprise as a cognitive system.** They combine a shared AI platform ("freedom within a frame"), decision intelligence, human-agent operating models (hub-and-spoke CoE evolving to federated), and outcome-based measurement. Over 3–10 years the pattern points toward AI-native operating models, digital workforces measured as capacity, and autonomous business units — but with humans accountable for the hardest ~20% of decisions.
@@ -78,6 +80,7 @@ Inference for GPT-3.5-class performance fell >280x (Stanford AI Index). Yet zero
 ### Theme 4 — AI Value Patterns (reusable archetypes)
 
 A pattern library from advisor → analyst → engineer → operator → planner → orchestrator → digital employee → manager → executive → operating system. For each: architecture, economics, risk, ROI, adoption.
+
 - **Advisor/Analyst (copilot):** low risk, fast ROI, augmentation; JPMorgan LLM Suite (200,000+ employees, 30–40% efficiency gains reported).
 - **Engineer:** coding assistants, 10–20% developer productivity (JPMorgan).
 - **Operator:** autonomous execution on bounded workflows (Klarna support; Salesforce Agentforce ~32,000 conversations/week, 83% resolution, escalations halved).
@@ -175,6 +178,7 @@ Successes detailed above (JPMorgan, Klarna, Moderna, Walmart, DHL, Airbus, Merca
 - **Market sizing (projections, treat as speculative):** agentic AI market ~$8–11B in 2026, forecast $45B+ by 2030 (multiple analysts, wide range).
 
 ## Deliverables Index
+
 This report contains the requested artifacts, embedded within the themes above: **AI Value Creation Reference Model** (T1); **Enterprise AI Value Map & AI Leverage/Opportunity Matrix & Value Heatmap** (T2); **AI Business Capability Map & Investment Hierarchy** (T2); **AI Economics Model** (T3); **AI Value Patterns library** (T4); **Agentic Enterprise Reference Architecture & AI Platform Reference Architecture** (T9); **Enterprise Cognitive Architecture & Organizational Memory Reference Architecture** (T6); **Executive Decision Framework** (T7); **AI Operating Model Blueprint & AI Organization Design Blueprint & AI Governance Model** (T8); **AI Portfolio Framework** (T10); **AI Value Scorecard & Capability Maturity Model** (T11); **AI Transformation Roadmap & AI Strategy Playbook** (T12); **Enterprise Architect Playbook** (T9 + Recommendations); **Chief AI Officer Playbook** (T8, T11, T12 + Recommendations).
 
 ## Recommendations

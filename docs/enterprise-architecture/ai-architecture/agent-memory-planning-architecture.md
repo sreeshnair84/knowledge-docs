@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 Seven distinct memory types, each with its own store, lifecycle, and risk profile. Conflating them (one vector DB for everything) is the most common memory architecture mistake.
 
 | Memory type | Contents | Store | Lifecycle |
-|-------------|----------|-------|-----------|
+| ------------- | ---------- | ------- | ----------- |
 | **Working memory** | Current context window: task, recent observations | Context manager (in-loop) | Per-iteration; compaction under pressure |
 | **Scratchpad** | Agent's explicit notes/todo files ("context offloading") | Sandbox FS / object store per task | Task TTL; the Claude Code/Manus pattern — agents write plans & findings to files instead of holding them in-window |
 | **Conversation memory** | Session transcript | Session store (KV/DB) | Session TTL; summarized on rollover |
@@ -47,7 +47,7 @@ Raw turns
 The engines differ in *how* each stage works, which matters for selection:
 
 | Engine | Approach | Distinguishing property |
-|--------|----------|------------------------|
+| -------- | ---------- | ------------------------ |
 | **Mem0** | Extract-and-retrieve layer in front of any LLM call; v3 (April 2026) moved to single-pass ADD-only extraction with cross-memory entity linking | Lightest integration, broadest framework support; fastest retrieval (~80ms p50) |
 | **Zep** | Temporal knowledge graph (Graphiti engine): extracts entities/facts, attaches **time validity** | Answers "what was true on date X" — bi-temporal queries; ~150ms retrieval (graph traversals) |
 | **Letta** (ex-MemGPT) | Full agent runtime with memory hierarchy: memory blocks, archival memory, recall memory | Stateful agents as the unit of computation, not a bolt-on layer |
@@ -85,7 +85,7 @@ Last-write-wins is wrong for facts. Use per-fact versions with source confidence
 Consistency promises to engineer for:
 
 | Scope | Promise |
-|-------|---------|
+| ------- | --------- |
 | Within a task | Read-your-writes |
 | Across agents | Eventual |
 | Retrieval | **Snapshot reads** — query pinned to a version timestamp so a task's evidence set is stable and reproducible |
@@ -146,7 +146,7 @@ Attach acceptance criteria **at plan time**; verification without pre-declared c
 ### 5.3 Failure Recovery Mapping
 
 | Failure class | Response |
-|---------------|----------|
+| --------------- | ---------- |
 | Step-transient | Retry (idempotent) |
 | Step-semantic | Local re-plan |
 | Precondition collapse | Subtree re-plan |

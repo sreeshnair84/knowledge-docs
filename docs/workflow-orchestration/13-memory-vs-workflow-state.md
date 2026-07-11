@@ -46,12 +46,14 @@ Hybrid agentic systems have four distinct state/memory layers. Conflating them c
 Workflow state is the **ground truth of process execution**. It lives in Temporal's event log and is fully recoverable from it.
 
 **What belongs here**:
+
 - Current step in the process
 - Accumulated data from completed activities (IDs, timestamps, decisions)
 - Signals received (approvals, cancellations, external events)
 - Timers and deadlines
 
 **What does NOT belong here**:
+
 - Agent reasoning traces (these are memory, not state)
 - Large binary blobs (embeddings, documents)
 - Ephemeral context that doesn't affect process branching
@@ -61,20 +63,20 @@ Workflow state is the **ground truth of process execution**. It lives in Tempora
 @dataclass
 class LoanWorkflowState:
     application_id: str
-    
+
     # Process state — drives branching
     credit_check_result: Optional[CreditCheckResult] = None
     compliance_cleared: Optional[bool] = None
     underwriting_decision: Optional[str] = None  # "approved" | "rejected" | "pending_docs"
-    
+
     # Timestamps — for SLA tracking
     submitted_at: datetime = field(default_factory=datetime.utcnow)
     credit_check_completed_at: Optional[datetime] = None
-    
+
     # Human signals received
     manual_override: Optional[str] = None
     override_by: Optional[str] = None
-    
+
     # IDs of completed activities — for audit
     charge_id: Optional[str] = None
     notification_sent: bool = False
@@ -90,7 +92,7 @@ Temporal replay on crash:
   2. Re-execute workflow code (does NOT re-execute activities)
   3. Activity results come from event log (cached)
   4. Workflow returns to exact state before crash
-  
+
 Result: deterministic, guaranteed recovery
 ```
 
@@ -101,6 +103,7 @@ Result: deterministic, guaranteed recovery
 Working memory is the **context window of a single agent run**. It includes the conversation history, tool call results, and reasoning trace for the current execution.
 
 **What belongs here**:
+
 - The conversation/message history for this run
 - Tool call inputs and outputs from this run
 - Intermediate reasoning steps
@@ -116,15 +119,15 @@ import operator
 class AgentWorkingMemory(TypedDict):
     # Conversation history — accumulates during the run
     messages: Annotated[list, operator.add]
-    
+
     # Intermediate findings — ephemeral
     tools_called: Annotated[list, operator.add]
     facts_found: dict
-    
+
     # Run-level constraints
     max_amount: float
     allowed_tools: list[str]
-    
+
     # Output to return to Temporal
     decision: Optional[str]
     decision_rationale: Optional[str]
@@ -139,7 +142,7 @@ from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 
 async with AsyncPostgresSaver.from_conn_string(DATABASE_URL) as checkpointer:
     app = graph.compile(checkpointer=checkpointer)
-    
+
     # The graph can pause mid-run and resume from last checkpoint
     config = {"configurable": {"thread_id": "run-abc123"}}
     result = await app.ainvoke({"messages": [...]}, config)
@@ -211,10 +214,10 @@ def retrieve_relevant_memories(conn, entity_id: str, query: str, top_k: int = 5)
 def build_agent_context(customer_id: str, current_query: str) -> str:
     with get_db_connection() as conn:
         memories = retrieve_relevant_memories(conn, customer_id, current_query)
-    
+
     if not memories:
         return ""
-    
+
     return "Relevant context from past interactions:\n" + "\n".join(f"- {m}" for m in memories)
 ```
 
@@ -257,7 +260,7 @@ async def fetch_customer_context(customer_id: str) -> dict:
     profile = await crm_client.get_customer(customer_id)
     risk_score = await risk_service.get_score(customer_id)
     account_balance = await banking_api.get_balance(customer_id)
-    
+
     return {
         "profile": profile,
         "risk_score": risk_score,
@@ -300,7 +303,7 @@ Workflow continues to next step
 ## Recovery Matrix
 
 | Layer | Survives crash? | Recovery method | Guaranteed? |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Workflow state | Yes | Temporal event log replay | Yes — deterministic |
 | Agent working memory | No (by default) | LangGraph checkpointer (opt-in) | Yes if checkpointer configured |
 | Long-term memory | Yes | Stored in external DB | Yes (DB durability) |
@@ -349,9 +352,9 @@ async def migrate_memories_for_model_upgrade(
     """
     memories = await memory_store.get_all(entity_id)
     old_model_memories = [m for m in memories if m.model_version == old_model]
-    
+
     results = {"reviewed": 0, "flagged": 0, "archived": 0}
-    
+
     for memory in old_model_memories:
         # Re-validate: ask new model if memory still makes sense
         validation = await new_model_client.messages.create(
@@ -362,14 +365,14 @@ async def migrate_memories_for_model_upgrade(
                 "content": f"Is this statement still accurate and well-formed? Answer YES or NO only: '{memory.content}'"
             }],
         )
-        
+
         if "NO" in validation.content[0].text.upper():
             await memory_store.archive(memory)
             results["archived"] += 1
         else:
             await memory_store.update_model_tag(memory, new_model)
             results["reviewed"] += 1
-    
+
     return results
 ```
 

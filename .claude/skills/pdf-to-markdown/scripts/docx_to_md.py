@@ -1,7 +1,9 @@
 """Convert DOCX files to Markdown, preserving headings, lists, tables, and bold/italic."""
+
 import io
 import re
 from pathlib import Path
+
 from docx import Document
 from docx.oxml.ns import qn
 

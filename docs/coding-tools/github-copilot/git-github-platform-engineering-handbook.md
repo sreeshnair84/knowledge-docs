@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 ## Core Concepts at a Glance
 
 | Term | Definition | Mutates history? |
-|---|---|---|
+| --- | --- | --- |
 | **Repository** | Object DB + refs + config (`.git/`) | — |
 | **Working Tree** | Checked-out files on disk | No |
 | **Staging Area (Index)** | Pending snapshot for next commit | No |
@@ -38,7 +38,7 @@ covers_version: \"as of 2026-07-10\"
 ## Git Objects
 
 | Object | Contains |
-|---|---|
+| --- | --- |
 | **Blob** | Raw file content (no name/metadata) |
 | **Tree** | Directory listing: mode, type, hash, filename |
 | **Commit** | Tree pointer + parent(s) + author/date/message |
@@ -51,7 +51,7 @@ covers_version: \"as of 2026-07-10\"
 ## Merge vs Rebase vs Cherry-pick — When to Use
 
 | Action | Use when | Avoid when |
-|---|---|---|
+| --- | --- | --- |
 | **Merge** | Shared/long-lived branches; want true history of divergence | History clutter isn't a concern |
 | **Rebase** | Cleaning up a *local/unshared* feature branch before PR | Branch already pushed & others built on it |
 | **Cherry-pick** | Backporting one fix (e.g., hotfix → release branch) | Repeated bulk-syncing between branches |
@@ -77,7 +77,7 @@ graph LR
 ## Repository Management
 
 | Command | Purpose | Common Flags | When to Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `git init` | Create new repo | `--bare`, `--object-format=sha256` | Starting a new project |
 | `git clone <url>` | Copy remote repo + history | `--depth=1` (shallow), `--branch <b>`, `--recurse-submodules` | Getting an existing repo locally / CI checkout |
 | `git config` | Set config (user, aliases, behavior) | `--global`, `--local`, `--list` | Identity setup, repo-specific overrides |
@@ -86,7 +86,7 @@ graph LR
 ## Daily Development
 
 | Command | Purpose | Common Flags | When to Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `git status` | Show working tree/staging state | `-s` (short) | Before/after every change |
 | `git add` | Stage changes | `-p` (patch/hunks), `-A`, `.` | Preparing a commit |
 | `git commit` | Record staged snapshot | `-m`, `-am`, `--amend`, `-S` (sign) | Saving logical units of work |
@@ -98,7 +98,7 @@ graph LR
 ## Branching
 
 | Command | Purpose | Common Flags | When to Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `git branch` | List/create/delete branches | `-a`, `-d`, `-D`, `-m`, `-vv` | Branch management |
 | `git switch` | Switch branches (modern) | `-c` (create+switch), `-d` (detach) | Preferred over checkout for branch switching |
 | `git checkout` | Switch branches / restore files (legacy, multi-purpose) | `-b`, `--`, `-- <file>` | Older syntax; still used for detached HEAD, file restore |
@@ -109,7 +109,7 @@ graph LR
 ## History & Inspection
 
 | Command | Purpose | Common Flags | When to Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `git log` | View commit history | `--oneline`, `--graph`, `--all`, `-p`, `--stat`, `-- <path>` | Reviewing history, debugging |
 | `git show` | Show a specific object/commit | `<commit>:<path>` | Inspect one commit's full diff/content |
 | `git blame` | Per-line authorship | `-L <range>`, `-w` (ignore whitespace) | Tracing when/why a line changed |
@@ -118,7 +118,7 @@ graph LR
 ## Recovery
 
 | Command | Purpose | Common Flags | When to Use | Recovery Scope |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `git reset` | Move HEAD/branch pointer | `--soft`, `--mixed` (default), `--hard` | Undo commits (soft=keep staged, hard=discard all) | Reflog recovers commits, **hard discards working tree changes** |
 | `git revert` | New commit that undoes a prior commit | `-n` (no auto-commit), `-m` (for merge commits) | Undo on **shared/public** branches safely | Fully recoverable — adds history, doesn't rewrite |
 | `git restore` | Restore working tree/staged files | `--staged`, `--source=<commit>` | Discard local edits or unstage files | Working tree changes lost unless committed/stashed |
@@ -128,7 +128,7 @@ graph LR
 ## Advanced
 
 | Command | Purpose | Common Flags | When to Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `git stash` | Shelve uncommitted changes | `push -m`, `pop`, `apply`, `list`, `-u` (untracked) | Context-switch without committing |
 | `git bisect` | Binary-search history for a bad commit | `start`, `good`, `bad`, `run <script>` | Finding which commit introduced a regression |
 | `git worktree` | Multiple working trees from one repo | `add`, `list`, `remove` | Work on hotfix + feature simultaneously, no stash needed |
@@ -160,7 +160,7 @@ graph TD
 ## Internals Commands
 
 | Command | Purpose | When to Use |
-|---|---|---|
+| --- | --- | --- |
 | `git cat-file -p <hash>` | Pretty-print any object's content | Inspect raw blob/tree/commit objects |
 | `git cat-file -t <hash>` | Show object type | Debugging object references |
 | `git rev-parse` | Resolve refs/shorthand to full SHA | Scripting, resolving `HEAD`, `HEAD~2`, etc. |
@@ -170,7 +170,7 @@ graph TD
 ## Refs, Tags, Packfiles, GC
 
 | Concept | Location | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Refs** | `.git/refs/heads/`, `.git/refs/tags/`, `.git/refs/remotes/` | Plain files (or packed-refs) pointing to SHAs |
 | **HEAD** | `.git/HEAD` | Symbolic ref → `refs/heads/<branch>` |
 | **Packfiles** | `.git/objects/pack/*.pack` + `.idx` | Compressed, delta-encoded object storage |
@@ -190,7 +190,7 @@ graph TD
 ## Comparison Matrix
 
 | Strategy | Pros | Cons | Scaling Limit | Best Team Size |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **GitHub Flow** | Simple: `main` + short-lived feature branches + PR + deploy | No formal release branches; needs strong CI/CD & feature flags | Scales well with good CI | Small–large, continuous deployment shops |
 | **Git Flow** | Structured (develop/release/hotfix/feature branches), good for versioned releases | Heavyweight, slow, merge-conflict prone, poor fit for CD | Struggles with high commit velocity | Teams shipping versioned/on-prem software |
 | **Trunk-Based Development** | Single shared trunk, tiny short-lived branches (≤1 day), feature flags for incomplete work | Requires excellent test automation & flags discipline | Scales very well (Google-style) | Medium–large, high CI maturity |
@@ -230,7 +230,7 @@ graph TD
 ## Core Collaboration Features
 
 | Feature | Purpose | Workflow Use | Governance / Enterprise Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Repositories** | Code + history container | Base unit of access control & CI | Visibility (public/private/internal), org-owned vs personal |
 | **Organizations** | Container for repos, teams, billing | Central admin for company/product | SSO, SCIM, audit log scope (Part 21) |
 | **Teams** | Group users for permissions | Map to squads/departments | Nested teams, repo-level permission grants |
@@ -247,7 +247,7 @@ graph TD
 ## Pull Requests — Review & Merge
 
 | Feature | What It Does | When to Use |
-|---|---|---|
+| --- | --- | --- |
 | **Reviews** | Approve / request changes / comment | Standard code review gate |
 | **Required Reviews** | Branch protection rule requiring N approvals | Enforce review on protected branches (main, release) |
 | **Review Assignment** | Auto-assign reviewers (round-robin, CODEOWNERS) | Balance review load across team |
@@ -257,7 +257,7 @@ graph TD
 ## Merge Strategies
 
 | Strategy | Result | Best For | Avoid When |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Merge Commit** | Preserves full branch history + adds merge commit | Need full audit trail of feature development | History readability matters more than detail |
 | **Squash Merge** | All PR commits → one commit on target branch | Clean linear history, one commit per feature/PR | Need to preserve granular commit-by-commit history |
 | **Rebase Merge** | PR commits replayed individually onto target, no merge commit | Linear history while preserving individual commits | PR has messy/WIP commits not worth preserving |
@@ -267,7 +267,7 @@ graph TD
 ## CODEOWNERS
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **File location** | `.github/CODEOWNERS`, `CODEOWNERS`, or `docs/CODEOWNERS` |
 | **Purpose** | Auto-request review from path-specific owners |
 | **Governance use** | Enforce that infra/security-sensitive paths require specific team approval |
@@ -283,7 +283,7 @@ graph TD
 # PART 6 — GitHub Wiki
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **Architecture** | Git-backed repo (`<repo>.wiki.git`), Markdown pages, cloneable/editable like code |
 | **Use cases** | Runbooks, architecture docs, onboarding guides, SOPs |
 | **Strength** | Zero extra tooling, versioned, integrated with repo permissions |
@@ -292,7 +292,7 @@ graph TD
 ## Wiki vs Alternatives
 
 | Tool | Best For | Weakness |
-|---|---|---|
+| --- | --- | --- |
 | **GitHub Wiki** | Lightweight, repo-scoped docs | Poor cross-repo search/structure |
 | **Confluence** | Org-wide structured knowledge base, rich permissions | Separate tool, sync drift from code |
 | **Notion** | Flexible docs + databases, great UX | Not git-versioned, harder to enforce as source-of-truth |
@@ -306,7 +306,7 @@ graph TD
 # PART 7 — GitHub Pages
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **What it is** | Free static site hosting directly from a repo (branch or `/docs` folder, or Actions-built artifact) |
 | **Common uses** | Product docs, API reference, engineering handbooks, internal developer portals |
 | **Static site generators** | Jekyll (native support, no build step needed), MkDocs (Python/Markdown), Docusaurus (React/Markdown) |
@@ -357,7 +357,7 @@ jobs:
 # PART 8 — GitHub Projects
 
 | Feature | Description | Use Case |
-|---|---|---|
+| --- | --- | --- |
 | **Boards** | Kanban-style columns (To Do / In Progress / Done) | Sprint boards, simple workflow tracking |
 | **Tables** | Spreadsheet-like view of issues/PRs with custom fields | Backlog grooming, filtering/sorting at scale |
 | **Roadmaps** | Timeline/Gantt-style view | Quarter/release planning |
@@ -374,7 +374,7 @@ jobs:
 ## Comparison vs Dedicated PM Tools
 
 | Tool | Strength | Weakness vs GitHub Projects |
-|---|---|---|
+| --- | --- | --- |
 | **Jira** | Mature workflows, extensive reporting, enterprise integrations | Separate from code, sync overhead, cost at scale |
 | **Azure Boards** | Deep Azure DevOps integration, enterprise reporting | Best only if already on Azure DevOps |
 | **Linear** | Fast UX, opinionated workflows, great keyboard-driven flow | Separate billing/tool, requires GitHub sync for code linkage |
@@ -392,7 +392,7 @@ jobs:
 # PART 9 — GitHub Packages
 
 | Registry Type | Package Format | Typical Command |
-|---|---|---|
+| --- | --- | --- |
 | **Container Registry (GHCR)** | OCI/Docker images | `docker push ghcr.io/org/app:tag` |
 | **npm** | Node packages | `npm publish --registry=https://npm.pkg.github.com` |
 | **PyPI-compatible** | Python packages | `twine upload --repository-url https://pypi.pkg.github.com/...` (via configured index) |
@@ -411,7 +411,7 @@ jobs:
 # PART 10 — GitHub Releases
 
 | Concept | Description |
-|---|---|
+| --- | --- |
 | **Tags** | Git tags (usually annotated) mark the exact commit for a release |
 | **Release Notes** | Markdown description attached to a tag; can be auto-generated from merged PRs |
 | **Changelogs** | Often generated from conventional commits or PR labels |
@@ -437,7 +437,7 @@ jobs:
 # PART 11 — GitHub Codespaces
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **What it is** | Cloud-hosted, container-based dev environments defined via `.devcontainer/devcontainer.json` |
 | **Dev Containers** | Standardized image + tooling/extensions, reproducible across all team members |
 | **Prebuilds** | Pre-build the container/dependencies on push so Codespaces start in seconds |
@@ -446,7 +446,7 @@ jobs:
 ## Comparison
 
 | Option | Strength | Weakness |
-|---|---|---|
+| --- | --- | --- |
 | **Codespaces** | Zero local setup, scales with GitHub permissions, prebuilds | Per-hour cost, requires good devcontainer config |
 | **Local Development** | Full control, no usage cost, offline-capable | Environment drift, onboarding friction |
 | **Gitpod** | Similar cloud dev-env model, multi-VCS support | Separate billing/platform from GitHub |
@@ -493,7 +493,7 @@ sequenceDiagram
 ## Config Building Blocks
 
 | Element | Purpose |
-|---|---|
+| --- | --- |
 | `image` / `build.dockerfile` / `dockerComposeFile` | Base environment definition |
 | `features` | Composable add-ons (install CLIs like node, python, gh, terraform without writing Dockerfile RUN lines) |
 | `customizations.vscode.extensions` | Auto-install editor extensions |
@@ -528,7 +528,7 @@ Edit `devcontainer.json` directly, or in VS Code: Command Palette → "Codespace
 ## Collaboration & Enterprise Notes
 
 | Capability | Detail |
-|---|---|
+| --- | --- |
 | **Live collaboration** | Multiple devs can join the same running codespace for simultaneous editing/debugging — useful for pairing, live PR review |
 | **Persistent storage** | Configure mounts to persist specific directories on the underlying VM across rebuilds |
 | **Data residency** | Enterprise Codespaces infrastructure supports regional data-residency compliance requirements |
@@ -537,7 +537,7 @@ Edit `devcontainer.json` directly, or in VS Code: Command Palette → "Codespace
 ## When to Use vs Not
 
 | Use Codespaces / Dev Containers when | Avoid / reconsider when |
-|---|---|
+| --- | --- |
 | Onboarding speed matters (new hires productive in minutes) | Heavy local-hardware-bound work (GPU training without cloud GPU SKUs) |
 | Team suffers "works on my machine" drift | Already-standardized local setups with low drift, cost-sensitive |
 | OSS/contractor contributors need disposable environments | Strict offline-development requirements |
@@ -552,7 +552,7 @@ Edit `devcontainer.json` directly, or in VS Code: Command Palette → "Codespace
 # PART 12 — GitHub CLI (`gh`)
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **Installation** | `brew install gh` / `winget install GitHub.cli` / apt/dnf packages |
 | **Authentication** | `gh auth login` (browser or token-based), `gh auth status` |
 | **Architecture** | Thin wrapper over GitHub REST/GraphQL APIs + git; extensible via `gh extension` |
@@ -560,7 +560,7 @@ Edit `devcontainer.json` directly, or in VS Code: Command Palette → "Codespace
 ## Core Commands
 
 | Command | Purpose | When to Use |
-|---|---|---|
+| --- | --- | --- |
 | `gh repo create` | Create new repo (local+remote) | New project bootstrap |
 | `gh repo clone` | Clone with auth handled | Standard clone shortcut |
 | `gh issue create` / `gh issue list` | Manage issues from terminal | Triage without context-switching to browser |
@@ -575,7 +575,7 @@ Edit `devcontainer.json` directly, or in VS Code: Command Palette → "Codespace
 
 ```bash
 # Create issue, then PR referencing it, then watch CI
-gh issue create --title "Fix login bug" --body "Repro steps..." 
+gh issue create --title "Fix login bug" --body "Repro steps..."
 gh pr create --fill --base main
 gh run watch
 ```
@@ -604,7 +604,7 @@ graph TD
 ## Key Concepts
 
 | Concept | Description | When to Use |
-|---|---|---|
+| --- | --- | --- |
 | **Workflow** | YAML file in `.github/workflows/`, triggered by events | One per pipeline (CI, release, deploy) |
 | **Job** | Group of steps on one runner; jobs run in parallel by default | Split build/test/deploy stages |
 | **Step** | Single command or action invocation | Smallest unit of execution |
@@ -622,7 +622,7 @@ graph TD
 ## Trigger Reference
 
 | Trigger | When to Use |
-|---|---|
+| --- | --- |
 | `push` | Run on commits to specified branches |
 | `pull_request` | CI checks on PRs (tests, lint, security scans) |
 | `schedule` (cron) | Nightly builds, scheduled cleanup/reports |
@@ -635,7 +635,7 @@ graph TD
 # PART 14 — Most Common GitHub Actions
 
 | Action | Purpose | Popularity | Enterprise Usage | Alternatives |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `actions/checkout` | Clone repo into runner | Near-universal (first step in ~all workflows) | Standard everywhere | N/A |
 | `actions/cache` | Cache deps/build outputs between runs | Very high | Speeds up CI cost & time at scale | `actions/setup-*` built-in caching |
 | `actions/setup-python` | Install/configure Python | Very high | Pin versions org-wide via reusable workflows | `uv`-based setup |
@@ -660,7 +660,7 @@ graph TD
 ## GitHub Agent HQ
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **What it is** | A platform feature for orchestrating AI agents from multiple providers (OpenAI, Anthropic, Google, custom) directly inside GitHub, acting as a unified control center. |
 | **Status** | Launched in public preview across GitHub, GitHub Mobile, and VS Code for Copilot subscribers, integrating Claude and Codex alongside Copilot. |
 | **Core value prop** | Removes multi-day setup friction by embedding agent context directly in the platform, and shifts the question from "which single AI assistant is best" to "how does a fleet of agents improve the whole workflow." |
@@ -692,7 +692,7 @@ npm install && npm test  # validate locally
 ## GitHub Copilot — 2026 Capability Map
 
 | Capability | Description | Plan Tier |
-|---|---|---|
+| --- | --- | --- |
 | **Inline completions** | Original autocomplete feature — single-line, multi-line, and full-function suggestions as you type | All tiers |
 | **Coding Agent** | Fully autonomous PR creation from an assigned issue/task | Pro+/Enterprise (via Agent HQ) |
 | **Agentic Code Review** | Gathers full project context before suggesting changes, and can pass suggestions to the coding agent to generate fix PRs automatically | Higher tiers |
@@ -709,7 +709,7 @@ npm install && npm test  # validate locally
 ## Multi-Agent Decision Matrix
 
 | Need | Recommended Approach |
-|---|---|
+| --- | --- |
 | Autonomous PR for well-scoped issue | Assign via Agent HQ to coding agent (Copilot/Claude/Codex) |
 | Deep reasoning / complex refactor across files | Claude (via Agent HQ or Claude Code directly) |
 | Fast prototype / internal tool from a description | GitHub Spark, then promote to standard repo workflow |
@@ -730,7 +730,7 @@ npm install && npm test  # validate locally
 ## Dependency Management
 
 | Tool | Strength | Weakness | Recommendation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **uv** | Extremely fast (Rust-based), drop-in for pip/venv/poetry workflows, lockfiles | Newer, smaller ecosystem of guides | **Default choice for new projects (2025–2026)** |
 | **Poetry** | Mature, lockfile + packaging in one tool, good dependency resolution | Slower than uv, occasional resolver edge cases | Solid if already adopted; migrate to uv opportunistically |
 | **pip** | Universal, simplest, always available | No lockfile by default, manual venv management | Fine for scripts/simple cases; pair with `pip-tools` for repeatability |
@@ -748,20 +748,20 @@ uv lock && uv sync
 ## Formatting
 
 | Tool | Command | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Black** | `black .` / `black --check .` | Opinionated, zero-config formatter — standard default |
 | **isort** | `isort .` | Import sorting; often run via Ruff instead now |
 
 ## Linting
 
 | Tool | Command | Comparison |
-|---|---|---|
+| --- | --- | --- |
 | **Ruff** | `ruff check .` / `ruff check . --fix` | Rust-based, extremely fast, replaces Flake8 + isort + many plugins; **2025–2026 default** |
 | **Flake8** | `flake8 .` | Mature, plugin ecosystem, slower; largely superseded by Ruff |
 | **Pylint** | `pylint src/` | Deepest static analysis (design/convention checks), slowest, noisiest by default |
 
 | Criterion | Ruff | Flake8 | Pylint |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Speed | Very fast | Moderate | Slow |
 | Config simplicity | High | Moderate | Low (verbose) |
 | Depth of checks | High (growing) | Moderate (plugin-dependent) | Very high |
@@ -770,7 +770,7 @@ uv lock && uv sync
 ## Type Checking
 
 | Tool | Performance | Accuracy | IDE Integration |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **MyPy** | Moderate | High, most mature type-checking rules | Good (most editors) |
 | **Pyright** | Fast (incremental, used by Pylance) | High, excellent inference | Best-in-class in VS Code |
 
@@ -779,7 +779,7 @@ uv lock && uv sync
 ## Testing — Pytest
 
 | Command | Purpose |
-|---|---|
+| --- | --- |
 | `pytest` | Run all tests |
 | `pytest -v` | Verbose output |
 | `pytest --cov` | With coverage (requires `pytest-cov`) |
@@ -787,7 +787,7 @@ uv lock && uv sync
 | `pytest -x` | Stop on first failure |
 
 | Concept | Description |
-|---|---|
+| --- | --- |
 | **Unit Tests** | Isolated, fast, no external dependencies |
 | **Integration Tests** | Test interactions across components/services |
 | **Fixtures** | Reusable setup/teardown (`@pytest.fixture`) |
@@ -805,14 +805,14 @@ coverage html   # generate browsable report
 ## Documentation
 
 | Tool | Best For |
-|---|---|
+| --- | --- |
 | **MkDocs** | Markdown-based docs, fast setup, Material theme popular |
 | **Sphinx** | Auto-generated API docs from docstrings, reStructuredText, long-standing standard for libraries |
 
 ## Packaging
 
 | Tool | Command | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **build** | `python -m build` | PEP 517 standard build frontend |
 | **hatch** | `hatch build` | Modern project management + packaging |
 | **poetry build** | `poetry build` | If using Poetry for deps |
@@ -827,7 +827,7 @@ coverage html   # generate browsable report
 # PART 16 — Software Quality Engineering
 
 | Concept | Description | Tooling |
-|---|---|---|
+| --- | --- | --- |
 | **Code Quality** | Adherence to style, conventions, complexity limits | Ruff, Pylint |
 | **Technical Debt** | Accumulated cost of shortcuts/suboptimal code | SonarQube debt ratio metric |
 | **Maintainability** | Ease of future modification (complexity, duplication) | SonarQube maintainability rating |
@@ -858,7 +858,7 @@ graph TD
 # PART 17 — SonarQube Deep Dive
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **Architecture** | Server (web UI + DB) + Scanner (CLI/CI plugin) that analyzes code and uploads results |
 | **Scanners** | `sonar-scanner` CLI, language-specific (Maven/Gradle/.NET/JS) integrations |
 | **Quality Gates** | Configurable pass/fail conditions (e.g., coverage on new code ≥ 80%, zero new bugs) |
@@ -870,7 +870,7 @@ graph TD
 ## Key Metrics
 
 | Metric | What It Measures |
-|---|---|
+| --- | --- |
 | **Bugs** | Code that is demonstrably wrong / will misbehave |
 | **Vulnerabilities** | Exploitable security weaknesses |
 | **Code Smells** | Maintainability issues (not bugs, but bad practice) |
@@ -901,7 +901,7 @@ graph TD
 ## Toolchain by Category
 
 | Category | Tools | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | **SAST** | CodeQL, Semgrep, SonarQube | Find vulnerable code patterns via static analysis |
 | **Dependency Scanning** | Dependabot, Snyk, pip-audit, Safety | Detect known-vulnerable dependencies (CVEs) |
 | **Secret Detection** | GitHub Secret Scanning, Push Protection, Gitleaks, TruffleHog | Catch committed credentials/keys |
@@ -929,7 +929,7 @@ graph TD
 ## Tool Selection Notes
 
 | Decision | Guidance |
-|---|---|
+| --- | --- |
 | CodeQL vs Semgrep | CodeQL: deep semantic analysis, GitHub-native, free for public repos, part of GHAS (cost for private). Semgrep: faster, simpler rules, easier custom rule authoring, good OSS tier. |
 | Gitleaks vs TruffleHog | Both scan for secrets; Gitleaks is lighter/faster for CI; TruffleHog adds verification (checks if found secrets are *live*). |
 | Trivy vs Grype | Both solid for container/image CVE scanning; Trivy also covers IaC/SBOM/secret scanning in one tool — often preferred for breadth. |
@@ -953,7 +953,7 @@ graph TD
 # PART 19 — Supply Chain Security
 
 | Concept | Description | Tooling |
-|---|---|---|
+| --- | --- | --- |
 | **SBOM** (Software Bill of Materials) | Inventory of all components/dependencies in a build | Syft (generate), formats: SPDX, CycloneDX |
 | **SPDX / CycloneDX** | Standard SBOM formats | Interchangeable via Syft/other generators |
 | **Cosign / Sigstore** | Sign & verify container images and artifacts | `cosign sign`, `cosign verify` |
@@ -965,7 +965,7 @@ graph TD
 ## SLSA Levels Summary
 
 | Level | Requirement Summary |
-|---|---|
+| --- | --- |
 | **SLSA 1** | Build process documented, provenance exists |
 | **SLSA 2** | Provenance generated by build service, tamper-resistant |
 | **SLSA 3** | Hardened build platform, provenance non-falsifiable |
@@ -985,7 +985,7 @@ cosign verify --key cosign.pub myorg/myapp:latest
 # PART 20 — GitHub Advanced Security (GHAS)
 
 | Feature | Description | Cost/Licensing Note |
-|---|---|---|
+| --- | --- | --- |
 | **CodeQL** | Semantic SAST | Free for public repos; licensed per-committer for private repos under GHAS |
 | **Dependabot** | Automated dependency update PRs + vulnerability alerts | Free for all repos (alerts); update PRs free |
 | **Secret Scanning** | Detects committed secrets across history | Free alerts for public repos; GHAS for private |
@@ -1005,7 +1005,7 @@ cosign verify --key cosign.pub myorg/myapp:latest
 # PART 21 — Identity, Governance & Compliance
 
 | Concept | Description | Enterprise Pattern |
-|---|---|---|
+| --- | --- | --- |
 | **SAML SSO** | Org authentication delegated to external IdP (Okta, Azure AD, etc.) | Required for most enterprise plans; enforced org-wide |
 | **SCIM** | Automated user provisioning/deprovisioning from IdP | New hires auto-get GitHub access; offboarding auto-revokes |
 | **Enterprise Managed Users (EMU)** | GitHub accounts fully owned/controlled by the enterprise (no personal account crossover) | High-compliance orgs (finance, gov, healthcare) |
@@ -1038,7 +1038,7 @@ graph TD
 ## Traditional Secrets vs OIDC
 
 | Aspect | Long-lived Secrets | OIDC (Token Exchange) |
-|---|---|---|
+| --- | --- | --- |
 | **Storage** | Static keys stored in GitHub Secrets | Nothing stored — short-lived token issued per run |
 | **Rotation** | Manual/periodic | Automatic (tokens expire in minutes) |
 | **Blast radius if leaked** | High — valid until rotated | Low — expires almost immediately, scoped to one run |
@@ -1063,7 +1063,7 @@ sequenceDiagram
 ## Provider Setup Patterns
 
 | Cloud | Mechanism | Action |
-|---|---|---|
+| --- | --- | --- |
 | **AWS** | IAM OIDC Identity Provider + IAM Role trust policy scoped to repo/branch | `aws-actions/configure-aws-credentials` |
 | **Azure** | Federated credentials on App Registration | `azure/login` with `client-id`/`tenant-id`/`subscription-id` |
 | **GCP** | Workload Identity Federation pool + provider | `google-github-actions/auth` |
@@ -1095,14 +1095,14 @@ steps:
 ## Copilot CLI & Coding Agent Commands
 
 | Command | Purpose |
-|---|---|
+| --- | --- |
 | `gh copilot suggest` | Suggest a shell command for a described task |
 | `gh copilot explain` | Explain what a given shell command does |
 
 ## AI Coding Tool Landscape Comparison
 
 | Tool | Interface | Strength | Best Fit |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **GitHub Copilot** | IDE-embedded (broadest IDE support), Agent HQ | Inline completions, agentic PR review, ecosystem breadth | Teams standardized on GitHub + multiple IDEs |
 | **Claude Code** | Terminal-based agent | Deep reasoning, multi-file refactors, strong tool-use | Complex refactors, agentic terminal workflows |
 | **ChatGPT (Codex)** | Web/IDE, Agent HQ | General-purpose + autonomous coding agent | Broad task range, available via Agent HQ |
@@ -1124,7 +1124,7 @@ steps:
 ## Risk Categories
 
 | Risk | Description | Mitigation |
-|---|---|---|
+| --- | --- | --- |
 | **Prompt Injection** | Malicious instructions embedded in content the AI processes (issue text, file contents, web pages) override intended behavior | Treat all external content as untrusted data, not instructions; sandbox agent actions; require human approval for sensitive operations |
 | **Tool Abuse** | Agent misuses available tools (e.g., excessive API calls, destructive file operations) | Least-privilege tool scoping, dry-run modes, rate limits |
 | **Agent Security** | Autonomous agents with repo/cloud access become high-value attack targets/vectors | Signed commits, scoped credentials (OIDC), audit trails (Part 14b) |
@@ -1135,7 +1135,7 @@ steps:
 ## AI Security Testing Tools
 
 | Tool | Purpose |
-|---|---|
+| --- | --- |
 | **Promptfoo** | Test/eval prompts and LLM app outputs for regressions, security issues |
 | **Garak** | LLM vulnerability scanner (probes for prompt injection, jailbreaks, etc.) |
 | **Lakera** | Real-time prompt injection / AI guardrail detection |
@@ -1404,7 +1404,7 @@ jobs:
 Branch protection rules prevent force-pushes, require reviews, and gate merges behind status checks — applied per branch pattern, most commonly `main` and `release/**`.
 
 | Setting | Recommended Value | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | **Require a pull request before merging** | Enabled | No direct pushes to protected branches |
 | **Required approving reviews** | 2 (1 for small teams) | Dual control; prevents solo merges |
 | **Dismiss stale reviews on new commits** | Enabled | Prevents approving a safe diff, then pushing unsafe code |
@@ -1467,6 +1467,7 @@ resource "github_branch_protection" "main" {
 ```
 
 **Best practices:**
+
 - Keep CODEOWNERS files small and navigable — granular is good, but hundreds of entries become unmanageable.
 - Use team slugs (`@org/team`), not individual usernames — individuals leave; teams persist.
 - Review CODEOWNERS quarterly; stale owners block PRs without anyone noticing until it's urgent.
@@ -1476,7 +1477,7 @@ resource "github_branch_protection" "main" {
 Organization-level policies (GitHub Enterprise Cloud) cascade down to all repositories:
 
 | Policy Area | Setting | Recommendation |
-|---|---|---|
+| --- | --- | --- |
 | **Repository creation** | Members cannot create public repos | Prevent accidental public exposure |
 | **Repository forking** | Disable forking of private repos | Data containment |
 | **Default branch name** | `main` | Standardize across all repos |
@@ -1617,7 +1618,7 @@ jobs:
 **Query suites:**
 
 | Suite | Scope | Use when |
-|---|---|---|
+| --- | --- | --- |
 | `security-extended` | OWASP Top 10 + more security queries | Baseline security scanning |
 | `security-and-quality` | Security + code quality / correctness | Full-fidelity scan, slower |
 | Custom `.ql` files | Domain-specific patterns | Internal API misuse, compliance rules |
@@ -1649,12 +1650,14 @@ custom_patterns:
 ```
 
 **Push Protection bypass workflow:**
+
 1. Developer attempts push → blocked by push protection.
 2. Developer reviews the flagged secret: if truly a false positive, they select a reason in the GitHub UI and bypass.
 3. Bypass is logged in the audit log with the reason — reviewable by security teams.
 4. Security team reviews bypass logs weekly; escalates any non-false-positive bypasses.
 
 **Remediation playbook when a real secret is detected:**
+
 1. Revoke the secret immediately at the provider (before doing anything else).
 2. Rotate to a new credential.
 3. Remove from history: `git filter-repo --path-glob '*.env' --invert-paths` or BFG Repo Cleaner.
@@ -1710,7 +1713,7 @@ updates:
 ## GHAS Org Policies
 
 | Policy | Enforcement |
-|---|---|
+| --- | --- |
 | Enable secret scanning on all new repos | Org setting → Code security and analysis → Auto-enable |
 | Require CodeQL to pass before merge | Branch protection → Required status checks → `CodeQL` |
 | Block push protection bypass for high-severity patterns | GitHub Enterprise org policy |
@@ -1770,7 +1773,7 @@ jobs:
 ## Seat Management
 
 | Task | How |
-|---|---|
+| --- | --- |
 | Assign seats | GitHub org → Settings → Copilot → Seat management → Add teams/members |
 | Bulk-assign via API | `PUT /orgs/\{org}/copilot/billing/selected_teams` |
 | Remove seats | Revoke from seat management; billing stops at next billing cycle |
@@ -1789,7 +1792,7 @@ gh api /orgs/myorg/copilot/billing/seats --paginate | jq '.seats[] | {login: .as
 Effective June 1, 2026, GitHub Copilot uses AI Credits billing for premium features:
 
 | Plan | Included credits/user/month | Credit value |
-|---|---|---|
+| --- | --- | --- |
 | Copilot Business | 1,900 credits | $19 worth |
 | Copilot Enterprise | 3,900 credits | $39 worth |
 
@@ -1805,6 +1808,7 @@ gh api --method PATCH /orgs/myorg/settings/billing/actions \
 ```
 
 **Budget alert workflow:**
+
 1. Configure spend alerts at 50%, 75%, 90%, 100% of monthly budget.
 2. Alert routes to `#platform-eng-alerts` Slack channel via GitHub webhook.
 3. At 90%: review top consumers via Copilot Metrics API, identify optimization opportunities.
@@ -1813,7 +1817,7 @@ gh api --method PATCH /orgs/myorg/settings/billing/actions \
 **Cost optimization levers:**
 
 | Lever | Estimated Credit Saving | Trade-off |
-|---|---|---|
+| --- | --- | --- |
 | Use GPT-4o for completion, Claude/Gemini only for complex chat | 20–40% | Slightly less reasoning depth on completions |
 | Disable Copilot code review for low-risk repos | Per-review saving | Less automated review coverage |
 | Batch coding agent tasks (one agent session vs. many) | 15–30% | Slightly longer iteration cycle |
@@ -1825,11 +1829,13 @@ gh api --method PATCH /orgs/myorg/settings/billing/actions \
 Codebase indexing gives Copilot semantic understanding of your entire repository — suggestions and chat responses become aware of your APIs, conventions, and project structure.
 
 **Setup:**
+
 1. GitHub org → Settings → Copilot → Codebase indexing → Enable for repository.
 2. Index builds on push to default branch; initial index takes minutes to hours depending on repo size.
 3. Index is re-built incrementally on subsequent pushes.
 
 **Optimizing index quality:**
+
 - Keep the repo's default branch clean — the index reflects `main`, not feature branches.
 - Add a `copilot-instructions.md` (or `.github/copilot-instructions.md`) with project conventions:
 
@@ -1856,7 +1862,7 @@ All API endpoints live in `src/api/`; database models in `src/models/`.
 GitHub Copilot Enterprise supports fine-tuned code completion models trained on your private codebase.
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **Eligibility** | GitHub Copilot Enterprise plan; org must have sufficient code volume (GitHub guidance: tens of thousands of files) |
 | **What improves** | Code completion suggestions — aligned to your naming conventions, internal APIs, and patterns |
 | **What it does NOT improve** | Chat, agent mode, code review — these use foundation models with context injection |
@@ -1865,6 +1871,7 @@ GitHub Copilot Enterprise supports fine-tuned code completion models trained on 
 | **Governance** | Opt specific repos in/out; data never leaves your enterprise isolation boundary |
 
 **Governance checklist before enabling fine-tuned models:**
+
 - [ ] Legal/privacy review of which repos are included in training data.
 - [ ] Exclude repos with third-party licensed code that restricts ML training (check license terms).
 - [ ] Document which model version is deployed (for compliance audit trail).
@@ -1875,7 +1882,7 @@ GitHub Copilot Enterprise supports fine-tuned code completion models trained on 
 MCP (Model Context Protocol) connects Copilot to external tools. Enterprise admins control this via a single control plane:
 
 | Control | Location | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | **Allow-list** | Org → Settings → Copilot → MCP → Allowed servers | Prevent developers from connecting arbitrary MCP servers |
 | **Audit logs** | Org → Settings → Audit log → filter: `copilot.mcp` | Track which MCP servers were used, by whom, when |
 | **Policy enforcement** | Org policy: "Allow only approved MCP servers" | Enforced client-side; MCP connection blocked if server not on allow-list |
@@ -1884,7 +1891,7 @@ MCP (Model Context Protocol) connects Copilot to external tools. Enterprise admi
 ## Enterprise Data Privacy
 
 | Guarantee | Status |
-|---|---|
+| --- | --- |
 | Code is not used to train shared Copilot models | With signed Data Processing Agreement (DPA) |
 | Prompts and suggestions are not stored beyond session | Enterprise tier with zero-retention option |
 | Data residency | Available for Enterprise; region selection during org setup |
@@ -1951,6 +1958,7 @@ Follow the existing module structure in modules/rds/ as a template."
 ```
 
 **Agent mode workflow for IaC:**
+
 1. Assign the task in VS Code or JetBrains agent mode.
 2. Agent reads existing modules, variable conventions, provider versions.
 3. Agent proposes file structure: `main.tf`, `variables.tf`, `outputs.tf`, `versions.tf`.
@@ -1999,6 +2007,7 @@ body:
 ```
 
 When a developer submits this issue, the Copilot coding agent:
+
 1. Reads the issue, extracts `service-name`, `tier`, and `team`.
 2. Searches the repo for the existing service template (e.g., `templates/microservice/`).
 3. Generates: Terraform module, Kubernetes deployment manifest, GitHub Actions CI workflow, Datadog dashboard JSON.
@@ -2020,6 +2029,7 @@ graph TD
 ```
 
 **Guardrails for AI-assisted incident response:**
+
 - Agent mode has read access to logs and metrics tools via MCP; write access to infrastructure is gated behind explicit human approval.
 - All agent actions during incidents are logged to the audit trail (MCP audit logs + agent session trace).
 - Copilot drafts remediation commands; humans execute — no autonomous infra changes during incidents.
@@ -2116,7 +2126,7 @@ Assign Copilot as a reviewer on Terraform/CloudFormation/Kubernetes PRs:
 DORA (DevOps Research and Assessment) defines four key metrics that predict organizational performance:
 
 | Metric | Definition | Elite | High | Medium | Low |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **Deployment Frequency** | How often code deploys to production | On-demand (multiple/day) | Weekly–monthly | Monthly–6 months | >6 months |
 | **Lead Time for Changes** | Commit → production | <1 hour | 1 day–1 week | 1 week–1 month | >1 month |
 | **Change Failure Rate** | % deploys causing incident/rollback | 0–5% | 5–10% | 10–15% | 15–50% |
@@ -2190,7 +2200,7 @@ gh api /orgs/myorg/copilot/metrics \
 ```
 
 | Metric | Formula | Target | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Completion acceptance rate** | acceptances / suggestions | >30% | Consistent below 20% = context quality issue |
 | **Active seat ratio** | active_users / assigned_seats | >80% | Below 60% = adoption or UX friction |
 | **AI-assisted PRs ratio** | PRs with Copilot activity / total PRs | Trending up | Tracks adoption depth |
@@ -2242,6 +2252,7 @@ QUALITY GAIN (harder to quantify but significant)
 ```
 
 **Presenting ROI to executives:**
+
 - Lead with the acceptance rate and active seat ratio — these prove adoption.
 - Pair with a developer survey (quarterly NPS for Copilot) — qualitative reinforcement.
 - Track a "before/after" baseline: measure average PR lead time and change failure rate in the 3 months before Copilot rollout vs. after. The DORA improvement is the most compelling executive-level evidence.
@@ -2249,7 +2260,7 @@ QUALITY GAIN (harder to quantify but significant)
 ## Quarterly Platform Engineering Review Template
 
 | Section | Metrics | Owner |
-|---|---|---|
+| --- | --- | --- |
 | **Deployment Health** | Deployment frequency, change failure rate, MTTR | Platform lead |
 | **Developer Velocity** | Lead time, PR cycle time, review turnaround | Dev experience team |
 | **AI Adoption** | Copilot active seat ratio, acceptance rate, coding agent PR rate | AI enablement team |
@@ -2270,6 +2281,7 @@ graph LR
 ```
 
 **Experiment examples:**
+
 - "Will adding Copilot as required reviewer on all PRs reduce change failure rate?" — A/B across two similar teams for one quarter.
 - "Will switching completions model from GPT-4o to standard tier for dev environment reduce credits spend without impacting acceptance rate?" — Monitor for 4 weeks.
 - "Will issue templates with auto-assign to `copilot` reduce time-to-PR for standard infra requests?" — Track lead time for infra issues before/after.

@@ -49,7 +49,7 @@ MCP-Discoverable Skills    (Google ADK-style dynamic registries — less common
 ### 3.2 Lookup mechanisms
 
 | Mechanism | How it works | Where observed |
-|---|---|---|
+| --- | --- | --- |
 | **Keyword/description matching** | Agent compares the user's request text against every loaded skill's `description` | Universal baseline mechanism across all SKILL.md-compatible tools |
 | **Slash/explicit invocation** | User types `/skill-name` or `$skill-name`, bypassing matching entirely | Copilot (`/name`), Codex (`$name`), Claude Code (`/name`) |
 | **Semantic/embedding search** | Registry-level search over skill descriptions for near-miss phrasing | `gh skill` search across GitHub-hosted skill repos; marketplace search (Agensi and similar) |
@@ -146,6 +146,7 @@ Developer      Agent Harness      Skill Store      Repo Index      Sandbox      
 ### 4.3 Failure and multi-step paths
 
 **A. Validation failure loop**
+
 ```
 [8] Validation → tests fail
         │
@@ -160,6 +161,7 @@ Developer      Agent Harness      Skill Store      Repo Index      Sandbox      
 ```
 
 **B. Skill-not-found / ambiguous match**
+
 ```
 [3] Skill Selection: no skill's description clearly matches
         │
@@ -170,6 +172,7 @@ Developer      Agent Harness      Skill Store      Repo Index      Sandbox      
 ```
 
 **C. Cross-tool delegation (MCP-mediated)**
+
 ```
 [4] Tool Selection determines the needed capability lives outside the
     built-in tool set (e.g., "check the related Jira ticket")

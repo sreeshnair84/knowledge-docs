@@ -3,36 +3,38 @@ Batch convert PDF files to Markdown using pymupdf4llm.
 Skips files that already have .md counterparts.
 Adds Docusaurus-compatible frontmatter to each output.
 """
+
 import re
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 import pymupdf4llm
 
-
 # ── Tag + doc-type inference from path/filename ───────────────────────────────
 DIR_TAGS = {
-    "agentic-systems":            ["agentic-ai", "agents"],
-    "ai-development":             ["ai-development", "software-engineering"],
-    "ai-economics":               ["ai-economics", "enterprise-ai"],
-    "ai-foundations":             ["ai-foundations"],
-    "ai-protocols":               ["ai-protocols", "mcp", "a2a"],
-    "ai-security-governance":     ["ai-security", "governance"],
-    "ai-usecases":                ["ai-usecases"],
-    "cloud-platforms":            ["cloud-platforms"],
-    "coding-tools":               ["coding-tools"],
-    "enterprise-architecture":    ["enterprise-architecture"],
-    "interview-prep":             ["interview-prep"],
-    "knowledge-engineering":      ["knowledge-engineering"],
-    "quantum":                    ["quantum-computing"],
-    "soft-skills":                ["soft-skills"],
+    "agentic-systems": ["agentic-ai", "agents"],
+    "ai-development": ["ai-development", "software-engineering"],
+    "ai-economics": ["ai-economics", "enterprise-ai"],
+    "ai-foundations": ["ai-foundations"],
+    "ai-protocols": ["ai-protocols", "mcp", "a2a"],
+    "ai-security-governance": ["ai-security", "governance"],
+    "ai-usecases": ["ai-usecases"],
+    "cloud-platforms": ["cloud-platforms"],
+    "coding-tools": ["coding-tools"],
+    "enterprise-architecture": ["enterprise-architecture"],
+    "interview-prep": ["interview-prep"],
+    "knowledge-engineering": ["knowledge-engineering"],
+    "quantum": ["quantum-computing"],
+    "soft-skills": ["soft-skills"],
 }
+
 
 def infer_tags(pdf_path: Path) -> list:
     for part in pdf_path.parts:
         if part in DIR_TAGS:
             return DIR_TAGS[part]
     return []
+
 
 def infer_doc_type(pdf_path: Path) -> str:
     name = pdf_path.stem.lower()
@@ -77,15 +79,15 @@ def convert_pdf(pdf_path: Path, out_path: Path) -> bool:
     tag_str = '["' + '", "'.join(tags) + '"]' if tags else "[]"
 
     frontmatter = (
-        f'---\n'
+        f"---\n"
         f'title: "{title}"\n'
-        f'date_created: {date.today().isoformat()}\n'
-        f'status: current\n'
-        f'source_type: converted-pdf\n'
+        f"date_created: {date.today().isoformat()}\n"
+        f"status: current\n"
+        f"source_type: converted-pdf\n"
         f'source_file: "{pdf_path.name}"\n'
-        f'doc_type: {doc_type}\n'
-        f'tags: {tag_str}\n'
-        f'---\n'
+        f"doc_type: {doc_type}\n"
+        f"tags: {tag_str}\n"
+        f"---\n"
     )
 
     out_path.write_text(frontmatter + "\n" + md_body + "\n", encoding="utf-8")

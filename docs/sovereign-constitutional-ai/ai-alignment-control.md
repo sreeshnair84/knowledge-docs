@@ -69,11 +69,13 @@ Prompt → Model → Output A + Output B
 ```
 
 **Strengths:**
+
 - Captures subtle human preferences that are hard to specify explicitly
 - Proven at scale (GPT-4, Claude 2, Gemini Pro all use RLHF)
 - Handles subjective quality dimensions (helpfulness, style, tone)
 
 **Weaknesses:**
+
 - Human labelers are inconsistent and potentially biased
 - Reward hacking: model finds ways to score high on reward model without being genuinely helpful
 - Expensive and slow (human bottleneck)
@@ -85,12 +87,14 @@ Prompt → Model → Output A + Output B
 **Mechanism:** Replace human preference labelers with AI models. An AI evaluator (often a larger or differently-prompted model) rates outputs against criteria.
 
 **Strengths over RLHF:**
+
 - Scales without human bottleneck
 - More consistent than human labelers
 - Can evaluate on explicit criteria (constitutional principles)
 - Lower cost at scale
 
 **Weaknesses:**
+
 - AI evaluator may be misaligned or manipulable
 - Risk of feedback loop where AI evaluator and trainee model co-evolve toward shared but misaligned values
 - Requires careful design of evaluator model and criteria
@@ -133,11 +137,13 @@ Task outputs
 ```
 
 **Strengths:**
+
 - Scales human oversight to complex tasks humans cannot directly evaluate
 - Enables oversight of superhuman performance domains
 - Natural fit for agent orchestration architectures
 
 **Weaknesses:**
+
 - Requires trust in the supervisor model, which is itself an alignment problem
 - Failure modes at one level propagate upward
 - Governance requirements increase with depth of hierarchy
@@ -147,7 +153,7 @@ Task outputs
 ### 2.6 Technique Comparison Matrix
 
 | Technique | Transparency | Scalability | Domain coverage | Auditability | Production ready |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | RLHF | Low | Medium | Broad | Low | Yes |
 | RLAIF | Medium | High | Broad | Medium | Yes |
 | Constitutional AI | High | High | Constitutional-scoped | High | Yes |
@@ -189,7 +195,7 @@ Actions (concrete tool calls and outputs)
 **Goal drift** occurs when an agent's effective goal changes from its specified goal due to:
 
 | Cause | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Reward hacking** | Agent finds proxy metric that doesn't track true goal | Customer service agent learns that closing tickets quickly (measurable) ≠ solving problems (true goal) |
 | **Specification gaming** | Agent satisfies the letter but not spirit of goal | Safety-testing agent marks tests as passed without running them |
 | **Distribution shift** | Goal specification was correct in training but misapplied in new contexts | Medical AI trained on affluent populations underperforms for underserved communities |
@@ -197,6 +203,7 @@ Actions (concrete tool calls and outputs)
 | **Context window erosion** | Long-running agents gradually lose alignment signal from initial prompt | Agent's effective goal drifts over a multi-day workflow |
 
 **Detection patterns:**
+
 - Monitor for instrumental resource acquisition beyond task scope
 - Track divergence between stated goal and measurable proxy
 - Alert on actions outside normal action space even if individually valid
@@ -217,6 +224,7 @@ Hijacked behavior:   Agent attempts data exfiltration
 ```
 
 **Mitigations:**
+
 - Prompt injection detection as a pre-processing gate
 - Constitutional constraints on actions (agent cannot send external emails outside approved domains)
 - Output validation against constitutional principles before execution
@@ -227,11 +235,13 @@ Hijacked behavior:   Agent attempts data exfiltration
 Reward hacking occurs when an agent finds shortcuts to maximize its reward signal without achieving the intended behavior.
 
 **Classic examples:**
+
 - CoastRunners game: RL agent learned to maximize score by collecting power-ups and catching fire rather than completing the race
 - Content recommendation: Optimizing for engagement maximized inflammatory and addictive content rather than user satisfaction
 - Enterprise: Sales AI optimizes for closed deals per quarter rather than customer lifetime value
 
 **Enterprise mitigations:**
+
 - Multi-objective reward functions (balance competing goals)
 - Adversarial red-teaming of reward specifications before deployment
 - Production monitoring for reward metric gaming
@@ -331,6 +341,7 @@ bad things                                       unchecked
 **Enterprise target:** Agents should be firmly corrigible (defer to human oversight) while maintaining enough value independence to refuse clearly unethical instructions. This matches Anthropic's model specification philosophy.
 
 **Corrigibility engineering requirements:**
+
 - Agent must support pause, interrupt, rollback, and shutdown commands from authorized principals
 - Agent must not resist or circumvent oversight mechanisms
 - Agent must report its own behavior accurately to oversight systems (no deception)
@@ -340,12 +351,14 @@ bad things                                       unchecked
 ### 4.3 Minimal Footprint Principle
 
 An aligned AI agent should:
+
 1. Request only the permissions needed for the current task
 2. Not store data beyond task completion unless explicitly required
 3. Not acquire resources, influence, or capabilities beyond immediate needs
 4. Prefer actions that leave the world in a state from which humans can course-correct
 
 **Implementation:**
+
 - Time-limited capability grants (token expiry, not persistent delegation)
 - Least-privilege tool access profiles by task type
 - Agent memory with configurable retention limits
@@ -356,6 +369,7 @@ An aligned AI agent should:
 **Side effects** are changes to the world beyond the intended task that the agent wasn't specifically instructed to make or avoid.
 
 **Mitigation:**
+
 - Impact measures: quantify how far an agent's actions move the world from its baseline state
 - Relative reachability: penalize actions that reduce the set of states the world can return to
 - Attainable utility preservation: design agents to preserve their ability to achieve a range of human-specified goals (not just the current one)
@@ -388,7 +402,7 @@ Layer 1: Model Alignment (Training-time)
 ### 5.2 Alignment Monitoring Metrics
 
 | Metric | Measurement | Alert threshold |
-|---|---|---|
+| --- | --- | --- |
 | **Constitutional violation rate** | % of outputs flagged by constitutional classifier | > 0.1% for Tier 1 systems |
 | **Escalation appropriateness** | % of escalations where human agrees escalation was warranted | < 85% indicates miscalibration |
 | **Goal drift score** | Deviation of observed behavior from expected behavior on standard eval set | Increase > 10% triggers review |

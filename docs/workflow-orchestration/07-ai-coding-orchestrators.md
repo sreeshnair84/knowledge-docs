@@ -18,6 +18,7 @@ covers_version: \"as of 2026-07-10\"
 Traditional orchestrators (Temporal, Camunda) coordinate **business workflows** and **microservices**. AI coding orchestrators coordinate **development tasks**, **tools**, **LLMs**, and **subagents**.
 
 **Platforms**:
+
 - Claude Code (Anthropic)
 - GitHub Copilot Agent Mode (OpenAI/Microsoft)
 - Cursor (anysphere)
@@ -62,7 +63,7 @@ These systems make **meta-level decisions**: "Should I write code? Run tests? Ca
 ### How It Differs from Traditional Orchestrators
 
 | Aspect | Temporal/Camunda | Claude Code |
-|---|---|---|
+| --- | --- | --- |
 | **Scope** | Business processes | Development work |
 | **Primitives** | Activities, workflows | Tools, models, MCP servers |
 | **Coordination** | Sequential/parallel | Reasoning-driven |
@@ -123,7 +124,7 @@ Adjusts next action based on result
 ```
 Claude Code: "I can run tests and linting in parallel"
          ↓
-Spawns: 
+Spawns:
   - bash_tool("npm test") → running
   - bash_tool("npm run lint") → running
          ↓
@@ -157,7 +158,7 @@ Execution:
   1. Read requirements ✓
   2. Plan architecture ✓
   3. Write code → [USER INTERRUPTS: "Wait, change the API"]
-  
+
 User feedback interrupts execution
          ↓
 Claude Code adjusts plan
@@ -170,7 +171,7 @@ Resumes from checkpoint (not from start)
 ## Comparison: Claude Code vs. GitHub Copilot Agent
 
 | Aspect | Claude Code | GitHub Copilot Agent |
-|---|---|---|
+| --- | --- | --- |
 | **Focus** | Any development task | Code generation + testing |
 | **LLM** | Claude 4 | GPT-4o |
 | **Tool access** | MCP servers | GitHub APIs + web |
@@ -250,15 +251,15 @@ Claude Code:
 ```
 Task: "Deploy to prod"
 
-Attempt 1: 
+Attempt 1:
   kubectl apply → fails: "Insufficient resources"
-  
+
 Claude Code reasons:
   "Not enough CPU. I should scale up first."
-  
+
 Attempt 2:
   kubectl scale deployment → wait → retry apply
-  
+
 Succeeds.
 ```
 
@@ -269,22 +270,27 @@ Succeeds.
 ## Why Claude Code Doesn't Use Traditional Orchestrators
 
 ### 1. **Fixed vs. Dynamic**
+
 - Temporal: "Define workflow upfront"
 - Claude Code: "Reason about workflow as you go"
 
 ### 2. **Determinism isn't Needed**
+
 - Temporal: "Replay must be identical"
 - Claude Code: "Different approaches OK; any success counts"
 
 ### 3. **Tool Invocation is Unbounded**
+
 - Temporal: "Activities are fixed"
 - Claude Code: "Tools discovered at runtime via MCP"
 
 ### 4. **Learning Matters**
+
 - Temporal: "Same workflow always runs the same"
 - Claude Code: "Reasoning improves from context and feedback"
 
 ### 5. **Human Interaction is Different**
+
 - Temporal: "Approve or reject" (binary)
 - Claude Code: "Guide, interrupt, provide context" (dialogue)
 
@@ -322,7 +328,7 @@ Task: "Write a login form"
 
 Attempt 1: Claude Code generates code
   → Tests fail: "Email validation too strict"
-  
+
 Is this a failure? In traditional sense, yes (tests failed).
 In agentic sense, no (code is improvable).
 
@@ -343,6 +349,7 @@ Claude Code: Retry with different approach
 ```
 
 Example:
+
 ```
 "I need to merge two Git branches"
 
@@ -405,16 +412,19 @@ AI coding trace:
 ## Predictions: AI Coding Orchestrators (2026–2030)
 
 **Likely**:
+
 1. MCP becomes industry standard for tool discovery
 2. Multi-agent coordination frameworks mature (CrewAI, Mastra)
 3. Reasoning traces become first-class in observability
 4. Agents can orchestrate other agents seamlessly
 
 **Unlikely**:
+
 - Replacing Temporal (different problem domain)
 - Single platform winning (specialization wins)
 
-**Most likely**: 
+**Most likely**:
+
 - Claude Code pattern becomes standard for developer-facing AI
 - Enterprises run Claude Code + Temporal + LangGraph together
 - Meta-orchestration becomes architectural pattern
@@ -426,6 +436,7 @@ AI coding trace:
 Here's where the research needs your input: **How should enterprises integrate Claude Code (or similar) with Temporal + Camunda?**
 
 Consider:
+
 - When does Claude Code initiate a Temporal workflow vs. handling it directly?
 - How do you debug failures that cross multiple orchestrators?
 - What observability and governance strategy works?

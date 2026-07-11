@@ -20,6 +20,7 @@ covers_version: \"as of 2026-07-10\"
 ## Why Multi-Agent?
 
 **Business Reality (2026):**
+
 - 73% of production agents use specialist agents (not monolithic)
 - Complex workflows require collaboration (order processing, compliance review, customer service escalation)
 - Different specialists (expert in returns, expert in billing, expert in escalation)
@@ -82,28 +83,28 @@ Response to User
    Input: "I want to return my order"
    Task: Understand request, extract order ID
    Output: {order_id: 98765, customer_id: 12345, request_type: "return"}
-   
+
    ↓ passes to
-   
+
 2. Validation Agent
    Input: {order_id, customer_id, request_type}
    Task: Verify order exists, check return window, verify customer
    Output: {valid: true, return_window: "30 days", days_elapsed: 8, eligible: true}
-   
+
    ↓ passes to
-   
+
 3. Policy Agent
    Input: {order_id, eligible: true}
    Task: Determine return shipping method, refund amount, timeline
    Output: {refund_amount: $99.99, shipping_label: "...", timeline: "5-7 days"}
-   
+
    ↓ passes to
-   
+
 4. Communication Agent
    Input: {refund_amount, shipping_label, timeline}
    Task: Compose response to customer
    Output: "Your return is approved. Here's your shipping label: ..."
-   
+
    ↓
 Response to Customer
 ```
@@ -114,23 +115,24 @@ Response to Customer
 async def sequential_workflow(user_request):
     # Step 1: Intake
     intake_result = await intake_agent.run(user_request)
-    
+
     # Step 2: Validation
     validation_result = await validation_agent.run(intake_result)
-    
+
     if not validation_result.valid:
         return validation_result.error_message  # Early exit
-    
+
     # Step 3: Policy
     policy_result = await policy_agent.run(validation_result)
-    
+
     # Step 4: Communication
     response = await communication_agent.run(policy_result)
-    
+
     return response
 ```
 
 ### When to Use Sequential
+
 - ✅ Clear linear process (step 1 → 2 → 3)
 - ✅ Each step must complete before next
 - ✅ Output of one agent feeds into next
@@ -140,7 +142,7 @@ async def sequential_workflow(user_request):
 ### Pros & Cons
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Simple to understand | Slow (serial execution) |
 | Easy to debug | Must wait for each step |
 | Clear handoff points | No parallelization |
@@ -158,7 +160,7 @@ async def sequential_workflow(user_request):
 User → Supervisor Agent ─┼─ Specialist Agent B (Billing)
           │
           └─ Specialist Agent C (Technical Support)
-          
+
 Supervisor: "This is a billing question → call Billing Agent"
 ```
 
@@ -186,7 +188,7 @@ Parallel Execution:
    └─ Output: "Stuck in Denver facility. Investigating."
 
 Supervisor Synthesis:
-├─ Combines: "Your refund is being processed ($20). 
+├─ Combines: "Your refund is being processed ($20).
              Your package is stuck but moving today."
 └─ Escalates: "I'm escalating the logistics issue to our ops team."
 
@@ -205,29 +207,30 @@ class SupervisorAgent:
             "logistics": LogisticsAgent(),
             "technical": TechnicalAgent(),
         }
-    
+
     async def route_and_execute(self, user_request, context):
         # Step 1: Analyze request
         analysis = await self.analyze(user_request, context)
         # Output: {issues: ["billing", "logistics"], priority: ["billing"]}
-        
+
         # Step 2: Route to specialists
         tasks = []
         for issue in analysis.issues:
             specialist = self.specialists[issue]
             task = specialist.handle(user_request, context)
             tasks.append(task)
-        
+
         # Step 3: Parallel execution
         results = await asyncio.gather(*tasks)
-        
+
         # Step 4: Synthesize results
         response = await self.synthesize(results, analysis)
-        
+
         return response
 ```
 
 ### When to Use Supervisor
+
 - ✅ Multiple independent specialists
 - ✅ Supervisor can parallelize work
 - ✅ Dynamic routing (different specialists for different requests)
@@ -238,7 +241,7 @@ class SupervisorAgent:
 ### Pros & Cons
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Parallel specialist execution | Supervisor can become complex |
 | Clear specialization | Harder for specialists to coordinate |
 | Good for diverse problems | May miss cross-domain patterns |
@@ -270,16 +273,16 @@ CEO Agent
 ```
 CEO Agent
   Role: Route customer request to appropriate VP
-  
+
   User: "I placed an order 3 days ago. It hasn't shipped yet."
-  
+
   └─ Delegates to: VP Operations Agent
       Role: Handle operational issues
-      
+
       ├─ Analyzes: Issue is about order status + shipping
       ├─ Delegates to: Tier 1 Support Agent
       │   Role: Handle standard inquiries
-      │   
+      │  
       │   ├─ Checks order status: Shows "processing"
       │   ├─ Checks current date: 3 days is normal for processing
       │   ├─ Standard response: "Your order is being processed..."
@@ -288,7 +291,7 @@ CEO Agent
       │
       └─ (If Tier 1 escalates) Delegates to: Tier 2 Support Agent
           Role: Handle complex/escalated issues
-          
+
           ├─ Deep investigation: Order flagged for manual review (fraud check)
           ├─ Explanation: "Security review in progress, ships tomorrow"
           ├─ Compensation: "Free express shipping as apology"
@@ -303,30 +306,31 @@ class HierarchicalAgent:
         self.role = role
         self.level = level  # CEO=0, VP=1, Manager=2, IC=3
         self.delegates_to = delegates_to or []
-    
+
     async def handle(self, request, context):
         # Level 1: Try to handle at this level
         if self.can_handle(request):
             return await self.execute(request, context)
-        
+
         # Level 2: Find appropriate delegate
         for delegate in self.delegates_to:
             if delegate.can_handle(request):
                 return await delegate.handle(request, context)
-        
+
         # Level 3: Escalate up the chain
         return await self.escalate(request, context)
-    
+
     def can_handle(self, request):
         # Does this agent's role match request domain?
         return request.domain in self.responsibilities
-    
+
     async def escalate(self, request, context):
         # Pass to higher level (parent)
         return await self.parent.handle(request, context)
 ```
 
 ### When to Use Hierarchical
+
 - ✅ Clear organizational structure
 - ✅ Different expertise at different levels
 - ✅ Natural escalation paths
@@ -337,7 +341,7 @@ class HierarchicalAgent:
 ### Pros & Cons
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Maps to org structure | Slow escalation |
 | Clear authority levels | Potential bottlenecks at top |
 | Supports tier system | Rigid structure |
@@ -396,17 +400,17 @@ class MeshAgent:
         self.agent_id = agent_id
         self.peers = {}  # Dict of peer agents
         self.state = {}  # Local state
-    
+
     async def call_peer(self, peer_id, action, params):
         # Direct peer-to-peer call
         peer = self.peers[peer_id]
         result = await peer.handle(action, params)
         return result
-    
+
     async def handle(self, request):
         # This agent's work
         result = await self.execute(request)
-        
+
         # Potentially call other peers
         if result.needs_inventory_check:
             inventory = await self.call_peer(
@@ -414,15 +418,16 @@ class MeshAgent:
                 "check_stock",
                 {"product": result.product_id}
             )
-        
+
         return result
-    
+
     def register_peer(self, agent_id, agent):
         # Discover and register peers
         self.peers[agent_id] = agent
 ```
 
 ### When to Use Mesh
+
 - ✅ All agents have similar authority
 - ✅ Complex interdependencies
 - ✅ Dynamic collaboration patterns
@@ -434,7 +439,7 @@ class MeshAgent:
 ### Pros & Cons
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Flexible | Chaotic |
 | No bottlenecks | Hard to trace execution |
 | Direct communication | Potential infinite loops |
@@ -454,7 +459,7 @@ class MeshAgent:
    Agent A   Agent B   Agent C
   (same        (same      (same
   capability)  capability) capability)
-  
+
 User requests distributed across pool.
 ```
 
@@ -473,7 +478,7 @@ With Pool (3 agents):
 ├─ Agent A: processes invoices 1-3,333
 ├─ Agent B: processes invoices 3,334-6,666
 └─ Agent C: processes invoices 6,667-10,000
-  
+
   ├─ Total time: 10,000 / 3 ≈ 3,333 seconds ≈ 55 minutes (3x faster)
   └─ Latency: Invoice processed within ~2 minutes
 
@@ -491,11 +496,11 @@ class AgentPool:
     def __init__(self, agent_class, pool_size=3):
         self.agents = [agent_class(f"agent_{i}") for i in range(pool_size)]
         self.queue = asyncio.Queue()
-    
+
     async def add_task(self, task):
         # Queue incoming task
         await self.queue.put(task)
-    
+
     async def run(self):
         # Each agent processes from shared queue
         tasks = [
@@ -503,7 +508,7 @@ class AgentPool:
             for agent in self.agents
         ]
         await asyncio.gather(*tasks)
-    
+
     async def worker(self, agent):
         while True:
             task = await self.queue.get()
@@ -512,7 +517,7 @@ class AgentPool:
                 await self.publish_result(result)
             finally:
                 self.queue.task_done()
-    
+
     async def auto_scale(self):
         # Monitor queue depth, adjust pool size
         while True:
@@ -527,6 +532,7 @@ class AgentPool:
 ```
 
 ### When to Use Pool
+
 - ✅ Many identical tasks
 - ✅ Throughput-focused (not latency)
 - ✅ Stateless agents
@@ -537,7 +543,7 @@ class AgentPool:
 ### Pros & Cons
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Simple scaling | All agents identical |
 | High throughput | No specialization |
 | Cost-effective | Stateless only |
@@ -589,6 +595,7 @@ Swarm of 50 Research Agents:
 ```
 
 ### When to Use Swarm
+
 - ✅ Exploration problems (find patterns in large space)
 - ✅ Emergent behavior desired
 - ✅ Robustness required
@@ -600,7 +607,7 @@ Swarm of 50 Research Agents:
 ### Pros & Cons
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Emergence | Unpredictable |
 | Resilient | Hard to debug |
 | Adapts dynamically | Not for deterministic workflows |
@@ -673,6 +680,7 @@ Before deploying multi-agent systems:
 ---
 
 **Related Documents:**
+
 - [Agent Platform Layer: Lifecycle & Registry](agentic_ai_landing_zone_platform_layer.md)
 - [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md)
 - [Agentic AI Security](../cybersec-architect/05-agentic-ai-security.md)
@@ -682,4 +690,3 @@ Before deploying multi-agent systems:
 **Document Status:** DRAFT (July 2026)  
 **Owner:** Platform Architecture  
 **Audience:** Architects designing agent systems
-

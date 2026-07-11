@@ -26,6 +26,7 @@ covers_version: "as of 2026-07-10"
 ## Table of Contents
 
 **Part I — The Case for Multi-Model**
+
 1. [Why Multi-Model Matters](#1-why-multi-model-matters)
 2. [Strategy Comparison](#2-strategy-comparison-single-vs-multi-vs-hybrid)
 
@@ -62,6 +63,7 @@ covers_version: "as of 2026-07-10"
 20. [Future Trends 2026–2030](#20-future-trends-20262030)
 
 **Appendices**
+
 - [Best Practices & Anti-Patterns](#best-practices--anti-patterns)
 - [Migration Roadmap](#migration-roadmap)
 - [Governance Checklist](#governance-checklist)
@@ -79,7 +81,7 @@ covers_version: "as of 2026-07-10"
 Standardising on one foundation model is superficially appealing — simpler operations, fewer integration points, one vendor relationship. But it introduces structural fragility that materialises in predictable ways:
 
 | Risk Category | Manifestation | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Pricing volatility** | Costs double overnight with no notice period | OpenAI raised GPT-4 API prices 3× in 18 months (2023–2024) |
 | **Availability shock** | Provider outage takes down all AI-dependent workloads | Single-provider outages caused cascading failures in AI-dependent SaaS products |
 | **Geopolitical exposure** | Export controls restrict access to specific models | DeepSeek access blocked in South Korea and several EU regulatory reviews (2025) |
@@ -139,7 +141,7 @@ Different models have genuinely different capability profiles — not just marke
 ## 2. Strategy Comparison: Single vs Multi vs Hybrid
 
 | Dimension | Single-Model | Multi-Model | Hybrid |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Operational complexity** | Low | High | Medium |
 | **Cost optimisation ceiling** | Limited (one price point) | High (route to cheapest viable model) | Medium-high |
 | **Vendor risk** | Maximum | Minimum | Medium |
@@ -200,7 +202,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 3.1 Anthropic Claude
 
 | Model | Input $/MTok | Output $/MTok | Context | Key Strengths |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Claude Fable 5 | $10 | $50 | 1M | Safety, complex agents, adversarial robustness |
 | Claude Sonnet 5 | $2 | $10 | 1M | Best enterprise balance: cost vs capability |
 | Claude Opus 4.8 | $5 | $25 | 1M | Extended thinking, research, mathematical reasoning |
@@ -219,7 +221,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 3.2 OpenAI GPT
 
 | Model | Input $/MTok | Output $/MTok | Context | Key Strengths |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | GPT-4o | $2.50 | $10 | 128K | Multimodal (text, image, audio), broad ecosystem |
 | GPT-4o mini | $0.15 | $0.60 | 128K | Low-cost multimodal, high throughput |
 | o3 | $10 | $40 | 200K | Advanced reasoning, competitive math/coding |
@@ -238,7 +240,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 3.3 Google Gemini
 
 | Model | Input $/MTok | Output $/MTok | Context | Key Strengths |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Gemini 2.5 Pro | $1.25 | $10 | 1M | Multimodal, long-context, reasoning |
 | Gemini 2.0 Flash | $0.10 | $0.40 | 1M | Extremely fast, low-cost, tool calling |
 | Gemini 2.0 Flash-Lite | $0.075 | $0.30 | 1M | Ultra-low-cost, classification, triage |
@@ -256,7 +258,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 3.4 Amazon Nova (Bedrock)
 
 | Model | Input $/MTok | Output $/MTok | Context | Key Strengths |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Nova Pro | $0.80 | $3.20 | 300K | Multimodal, AWS-native, balanced |
 | Nova Lite | $0.06 | $0.24 | 300K | Low-cost document and image analysis |
 | Nova Micro | $0.035 | $0.14 | 128K | Ultra-low-cost text-only |
@@ -272,7 +274,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 3.5 Cohere Command R+
 
 | Model | Input $/MTok | Output $/MTok | Context | Key Strengths |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Command R+ | $2.50 | $10 | 128K | RAG, enterprise search, tool calling |
 | Command R | $0.15 | $0.60 | 128K | Cost-effective RAG workloads |
 | Embed 3 | $0.10 | — | — | Embedding, multilingual retrieval |
@@ -288,7 +290,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 3.6 xAI Grok
 
 | Model | Context | Key Strengths |
-|---|---|---|
+| --- | --- | --- |
 | Grok 3 | 131K | Real-time X/Twitter data, news reasoning |
 | Grok 3 Mini | 131K | Cost-effective with reasoning trace |
 
@@ -305,7 +307,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.1 Meta Llama
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Llama 3.3 70B | 70B | 128K | Best open-source generalist; near-GPT-4-class reasoning |
 | Llama 3.1 405B | 405B | 128K | Frontier-competitive; requires A100/H100 cluster |
 | Llama 3.2 11B / 90B | 11B / 90B | 128K | Multimodal; efficient on single A100 |
@@ -320,7 +322,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.2 Mistral AI
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Mistral Large 2 | ~123B | 128K | Strong reasoning, multilingual, function calling |
 | Mistral Small 3.1 | 24B | 128K | Efficient; competitive with GPT-4o mini |
 | Codestral | 22B | 32K | Code generation; 80+ programming languages |
@@ -335,7 +337,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.3 DeepSeek
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | DeepSeek-V3 | 671B MoE | 128K | Frontier-class; exceptional value ($0.27/MTok) |
 | DeepSeek-R1 | 671B MoE | 128K | Chain-of-thought reasoning; math/coding |
 | DeepSeek-Coder-V2 | 236B MoE | 128K | Top coding benchmark performance |
@@ -350,7 +352,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.4 Alibaba Qwen
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Qwen2.5 72B | 72B | 128K | Multilingual (Chinese/English/50+ languages), coding |
 | Qwen2.5-Coder 32B | 32B | 128K | Strong coding benchmark; HumanEval competitive |
 | Qwen2-VL 72B | 72B | ~32K | Multimodal vision-language |
@@ -365,7 +367,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.5 Google Gemma
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Gemma 3 27B | 27B | 128K | Strong reasoning; vision; multimodal |
 | Gemma 3 12B / 4B | 12B / 4B | 128K | Efficient deployment; edge/mobile |
 | Gemma 3 1B | 1B | 32K | On-device inference; mobile |
@@ -380,7 +382,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.6 Microsoft Phi
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Phi-4 | 14B | 16K | Strong reasoning relative to size; math |
 | Phi-3 Mini | 3.8B | 128K | On-device; mobile; edge inference |
 | Phi-3 Small | 7B | 128K | Efficient; instruction following |
@@ -392,7 +394,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.7 IBM Granite
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Granite 3.1 8B | 8B | 128K | Enterprise coding, RAG, function calling |
 | Granite 3.1 2B | 2B | 128K | Edge and embedded enterprise workloads |
 | Granite Code 34B | 34B | 128K | Enterprise coding, repository understanding |
@@ -404,7 +406,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.8 Allen AI OLMo
 
 | Model | Parameters | Context | Strengths |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | OLMo 2 13B | 13B | 4K | Fully open research model (weights + data + training code) |
 | OLMo 2 32B | 32B | 4K | Research-grade open transparency |
 
@@ -415,7 +417,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 ### 4.9 Open-Source Deployment Infrastructure
 
 | Tool | Use Case | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **vLLM** | High-throughput inference server | PagedAttention; OpenAI-compatible API; GPU required |
 | **Ollama** | Local and development inference | CPU/GPU; easiest setup; supports most models |
 | **TGI (HF)** | Production inference (HuggingFace) | Good for Kubernetes; supports quantisation |
@@ -433,7 +435,7 @@ Most enterprises land on a hybrid: **one or two commercial providers plus one se
 Scale: ✦✦✦✦✦ = industry-leading | ✦✦✦ = competitive | ✦ = limited
 
 | Capability | Claude Fable 5 | GPT-4o | Gemini 2.5 Pro | Llama 3.3 70B | Mistral Large 2 | DeepSeek-R1 | Qwen2.5 72B |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | **Instruction following** | ✦✦✦✦✦ | ✦✦✦✦ | ✦✦✦✦ | ✦✦✦ | ✦✦✦ | ✦✦✦ | ✦✦✦ |
 | **Reasoning (general)** | ✦✦✦✦✦ | ✦✦✦✦ | ✦✦✦✦✦ | ✦✦✦✦ | ✦✦✦ | ✦✦✦✦✦ | ✦✦✦✦ |
 | **Mathematical reasoning** | ✦✦✦✦ | ✦✦✦✦ | ✦✦✦✦✦ | ✦✦✦ | ✦✦✦ | ✦✦✦✦✦ | ✦✦✦✦ |
@@ -478,7 +480,7 @@ Scale: ✦✦✦✦✦ = industry-leading | ✦✦✦ = competitive | ✦ = limi
 ### 6.2 Reasoning Depth and Chain-of-Thought
 
 | Model | Reasoning mode | GPQA Diamond | MATH-500 | ARC-Challenge |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Claude Fable 5 (extended thinking) | Extended thinking | ~83% | ~96% | ~98% |
 | GPT-4o (with o3) | System 2 reasoning | ~87% | ~97% | ~98% |
 | Gemini 2.5 Pro | Thinking mode | ~84% | ~97% | ~98% |
@@ -514,7 +516,7 @@ Hallucination rates are task-dependent. General patterns from practitioner resea
 ### 6.5 Coding Capabilities
 
 | Benchmark | GPT-4o | Claude Fable 5 | Gemini 2.5 Pro | DeepSeek-V3 | Qwen2.5-Coder 32B |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | HumanEval | ~90% | ~88% | ~91% | ~90% | ~92% |
 | SWE-Bench Verified | ~49% | ~49% | ~63% | ~47% | ~37% |
 | BigCodeBench | ~63% | ~64% | ~68% | ~66% | ~65% |
@@ -550,7 +552,7 @@ Self-hosted (GPU cost):
 ### 6.7 Context Window Strategy by Provider
 
 | Provider / Model | Max Context | Practical Limit | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Claude Fable 5 | 1M tokens | ~900K reliable | Best-in-class faithfulness at long context |
 | Gemini 2.5 Pro | 1M tokens | ~800K reliable | Strong; some loss-in-the-middle reported |
 | GPT-4o | 128K tokens | ~100K reliable | Hard limit forces chunking for long docs |
@@ -646,7 +648,7 @@ Gemini 2.5     Coder          Claude Fable   (Whisper
 ### 7.2 Task-to-Model Mapping
 
 | Task Category | Primary Model | Fallback | Rationale |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Complex reasoning / research | Claude Fable 5, o3, Gemini 2.5 Pro | Claude Sonnet 5 | Extended thinking; long context |
 | Code generation (general) | GPT-4o, Claude Sonnet 5 | DeepSeek-Coder | Broad language support |
 | Code review / refactoring | Claude Fable 5, Gemini 2.5 Pro | GPT-4o | Long context + reasoning |
@@ -669,7 +671,7 @@ Gemini 2.5     Coder          Claude Fable   (Whisper
 Structure your enterprise catalog as three tiers:
 
 | Tier | Criteria | Examples | Approval Required |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **T1: Approved Production** | Security reviewed, SLA backed, DPA signed, benchmarked on enterprise tasks | Claude Sonnet 5, GPT-4o, Gemini 2.5 Pro, Llama 3.3 70B (self-hosted) | Architecture review board |
 | **T2: Approved Experimental** | Evaluated but limited production use; monitoring required | DeepSeek-R1 (self-hosted), Qwen2.5, Mistral Large 2 | Team lead + security sign-off |
 | **T3: Sandbox Only** | Not approved for production data; dev/test only | New model releases, community models, unreviewed weights | Engineer self-service in sandbox |
@@ -732,6 +734,7 @@ Request
 ```
 
 Quality scoring approaches:
+
 - LLM-as-judge (fast model checking output completeness)
 - Length-based heuristics (suspiciously short responses flagged)
 - Confidence token analysis (models supporting logprobs)
@@ -742,7 +745,7 @@ Quality scoring approaches:
 For chat or agentic applications, route based on detected user intent:
 
 | Intent Signal | Routing Decision | Example |
-|---|---|---|
+| --- | --- | --- |
 | "Write code" / "Fix bug" | → Code specialist model | Codestral, GPT-4o |
 | "Analyse this document" | → Long-context model | Claude Fable 5, Gemini 2.5 Pro |
 | "Translate" | → Multilingual model | GPT-4o, Qwen2.5, Mistral Large 2 |
@@ -767,7 +770,7 @@ Request with SLA tag
 Not all tasks are equal in impact of failure:
 
 | Risk Level | Failure Impact | Model Tier | Gate |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Critical** | Legal, financial, safety consequence | T1 only; highest capability | Mandatory HITL |
 | **High** | Customer-facing; reputational | T1; production-stable models | Guardrails enabled |
 | **Medium** | Internal; correctable | T1 or T2; most current model | Soft guardrails |
@@ -784,7 +787,7 @@ Not all tasks are equal in impact of failure:
 See [Enterprise AI Architecture Patterns — Pattern 11: Cost Optimisation Routing](enterprise-ai-architecture-patterns.md#11-cost-optimisation-routing) and [Pattern 5: AI Gateway](enterprise-ai-architecture-patterns.md#5-ai-gateway-pattern) for canonical implementation blueprints.
 
 | Pattern | Description | Best For | Complexity |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Rule-based** | Static rules map task type to model | Predictable workloads; low ops overhead | Low |
 | **Classifier routing** | Lightweight LLM classifies intent → routes | General-purpose enterprise API | Medium |
 | **Semantic router** | Embedding similarity routes to specialised handlers | Domain-specific multi-model setup | Medium |
@@ -839,7 +842,7 @@ PROVIDER LAYER
 ### 9.3 Implementation Tools for the Abstraction Layer
 
 | Tool | Type | Routing | Cost tracking | Self-host | Notes |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **LiteLLM** | Open-source proxy | ✓ | ✓ | ✓ | 100+ providers; OpenAI-compatible; Python |
 | **Kong AI Gateway** | Enterprise gateway | ✓ | ✓ | ✓ | Plugin ecosystem; Kubernetes-native |
 | **OpenRouter** | Hosted gateway | ✓ | ✓ | ✗ | External service; good for prototyping |
@@ -908,7 +911,7 @@ In complex agentic systems, different models serve different roles based on thei
 ### 10.2 Agent Role → Model Assignment Table
 
 | Agent Role | Purpose | Recommended Model Tier | Cost Weight |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Planner** | Goal decomposition, strategy, agent coordination | T1 Premium (Fable 5, o3) | Low (called once) |
 | **Reasoner** | Deep analysis, inference chains | T1 Extended thinking | Low-Medium |
 | **Executor** | API calls, data extraction, actions | T3 Efficient (Haiku, Flash) | High (called many times) |
@@ -924,12 +927,15 @@ In complex agentic systems, different models serve different roles based on thei
 ### 10.3 Model Collaboration Patterns
 
 **Sequential (Pipeline):** Output of one model feeds directly to the next.
+
 ```
 Planner → Researcher (RAG) → Writer → Critic → Formatter → Output
 ```
+
 Cost pattern: high model (once) → medium (once) → medium (once) → low (once)
 
 **Parallel Fan-Out:** Planner spawns multiple specialist models simultaneously.
+
 ```
                   Planner
            ┌─────────┼─────────┐
@@ -938,14 +944,17 @@ Cost pattern: high model (once) → medium (once) → medium (once) → low (onc
            └─────────┼─────────┘
                   Planner (aggregates)
 ```
+
 See [Parallel Fan-Out Pattern](enterprise-ai-architecture-patterns.md#4-parallel-fan-out).
 
 **Debate / Ensemble:** Multiple models independently answer; a judge selects or synthesises best answer.
+
 ```
 Question → [Model A (Claude)] ─┐
          → [Model B (GPT-4o)] ─┼→ [Judge (Sonnet 5)] → Best answer
          → [Model C (Gemini)] ─┘
 ```
+
 Use for: high-stakes decisions, conflict resolution, reducing single-model hallucination risk. Cost: 3× inference plus judge call.
 
 ---
@@ -955,7 +964,7 @@ Use for: high-stakes decisions, conflict resolution, reducing single-model hallu
 ### 11.1 When to Use Each Context Size
 
 | Context Size | Use Case | Model Options | Trade-off |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **< 32K** | Single document Q&A; short chat; classification | Any model | No constraint |
 | **32K – 128K** | Multi-document analysis; codebase context; conversation history | GPT-4o, Llama 3.3, Mistral Large | Cost scales with tokens |
 | **128K – 500K** | Full repository analysis; book-length documents; legal contracts | Claude Sonnet 5, Nova Pro | Higher cost; verify model faithfulness |
@@ -970,6 +979,7 @@ Use for: high-stakes decisions, conflict resolution, reducing single-model hallu
 **Context compression:** Use a cheap model (Haiku, Flash) to summarise prior conversation history before each long-horizon agent step.
 
 **Memory layers:**
+
 ```
 Short-term: Current conversation window (tokens)
 Working: Task-specific scratchpad (compressed summaries)
@@ -1131,7 +1141,7 @@ All gateways report to:
 Public benchmarks measure narrow, standardised tasks under controlled conditions. Enterprise AI fails for different reasons:
 
 | Benchmark limitation | Enterprise reality |
-|---|---|
+| --- | --- |
 | Clean, formatted inputs | Messy, inconsistent real-world data |
 | Single-turn Q&A | Multi-turn conversations with context |
 | Public data | Proprietary domain knowledge required |
@@ -1144,7 +1154,7 @@ Public benchmarks measure narrow, standardised tasks under controlled conditions
 ### 13.2 Enterprise Evaluation Stack
 
 | Tool | Purpose | OSS? | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **DeepEval** | Comprehensive LLM eval framework | ✓ | Metrics: hallucination, faithfulness, relevance, toxicity |
 | **Phoenix (Arize)** | Tracing + eval + LLM observability | ✓ | Visual UI; OpenTelemetry-native |
 | **Ragas** | RAG-specific evaluation | ✓ | Context precision/recall, faithfulness, answer relevance |
@@ -1157,24 +1167,28 @@ Public benchmarks measure narrow, standardised tasks under controlled conditions
 ### 13.3 Enterprise Evaluation Dimensions
 
 **Accuracy dimensions:**
+
 - Factual correctness on domain-specific questions
 - Faithfulness to provided context (RAG tasks)
 - Format compliance (JSON schema, XML structure)
 - Task completion rate (did it do what was asked?)
 
 **Safety dimensions:**
+
 - PII leakage rate
 - Harmful content refusal rate
 - Prompt injection resistance
 - Jailbreak resistance
 
 **Operational dimensions:**
+
 - P50 / P95 / P99 latency
 - Cost per successful task
 - Retry rate (model errors / refusals)
 - Throughput under load
 
 **Regression dimensions:**
+
 - Quality delta vs. previous model version
 - Behaviour consistency across temperature=0 runs
 - Edge case handling
@@ -1182,7 +1196,7 @@ Public benchmarks measure narrow, standardised tasks under controlled conditions
 ### 13.4 Key Public Benchmarks with Enterprise Relevance
 
 | Benchmark | What It Measures | Enterprise Relevance |
-|---|---|---|
+| --- | --- | --- |
 | **MMLU** | Knowledge across 57 subjects | Broad domain coverage assessment |
 | **GPQA Diamond** | Graduate-level scientific reasoning | Complex domain expertise |
 | **HumanEval** | Python code generation | Coding capability baseline |
@@ -1229,6 +1243,7 @@ Public benchmarks measure narrow, standardised tasks under controlled conditions
 The primary lever of multi-model strategy is cost: routing to the cheapest model that can adequately handle each task.
 
 **Observed savings from routing:**
+
 - Simple → efficient model: 60–80% cost reduction on classified tasks
 - Semantic caching: 20–40% reduction on repeated or similar queries
 - Batch inference: 40–50% reduction (available on Claude, GPT-4o, Gemini)
@@ -1237,7 +1252,7 @@ The primary lever of multi-model strategy is cost: routing to the cheapest model
 ### 14.2 Cost Optimisation Techniques
 
 | Technique | Cost Saving | Quality Impact | Complexity |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Model routing** (complex → cheap model) | 60–80% | None (if classified correctly) | Medium |
 | **Semantic caching** | 20–40% | None | Medium |
 | **Batch inference** | 40–50% | None | Low |
@@ -1263,6 +1278,7 @@ headers:
 ```
 
 This enables:
+
 - Per-team showback/chargeback
 - Per-use-case cost baselines
 - Anomaly detection (>20% drift from baseline triggers alert)
@@ -1271,7 +1287,7 @@ This enables:
 ### 14.4 FinOps Maturity for AI
 
 | Stage | Capability | Typical Saving |
-|---|---|---|
+| --- | --- | --- |
 | **Crawl** | Total AI spend tracked; per-project breakdown | Baseline |
 | **Walk** | Per-team tagging; top-10 cost drivers identified; model routing live | 30–50% |
 | **Run** | Real-time dashboards; anomaly alerts; automatic routing; chargeback; model governance reviews | 50–70% |
@@ -1285,6 +1301,7 @@ See [AI FinOps in Foundations](enterprise-ai-architect-foundations.md#85-ai-fino
 ### 15.1 Why a Model Registry Matters
 
 Without a registry, enterprises face:
+
 - Shadow AI — teams using unapproved models with production data
 - Audit gaps — no record of which model made which decision
 - Ungoverned deprecation — models silently removed; applications break
@@ -1302,7 +1319,7 @@ model:
   family: "Claude"
   version: "5.0"
   release_date: "2025-09-01"
-  
+
 capabilities:
   context_window: 1000000
   output_tokens_max: 128000
@@ -1313,7 +1330,7 @@ capabilities:
   batch_inference: true
   structured_output: true
   mcp_support: true
-  
+
 performance:
   # From internal evaluation on enterprise task set
   accuracy_score: 0.91
@@ -1321,13 +1338,13 @@ performance:
   format_compliance: 0.98
   p50_latency_ms: 1200
   p95_latency_ms: 4500
-  
+
 cost:
   input_per_mtok: 2.00
   output_per_mtok: 10.00
   batch_discount: 0.50
   context_cache_discount: 0.90
-  
+
 governance:
   tier: "T1"              # T1 / T2 / T3
   status: "approved"      # approved / experimental / deprecated / retired
@@ -1336,29 +1353,29 @@ governance:
   security_review: "passed"
   security_review_date: "2026-03-10"
   data_classification_allowed: ["T1", "T2", "T3"]  # NOT T0 (personal/clinical)
-  
+
 compliance:
   soc2_type2: true
   hipaa: true
   gdpr: true
   pci_dss: true
   fedramp: false
-  
+
 regions:
   supported: ["us-east-1", "eu-west-1", "ap-southeast-1"]
   restricted: []
-  
+
 deployment:
   api_endpoint: "https://api.anthropic.com/v1"
   bedrock_model_id: "anthropic.claude-sonnet-5-20250901-v1:0"
   vertex_model_id: "claude-sonnet-5@20250901"
   self_hosting: false
-  
+
 lifecycle:
   expected_deprecation: "2027-09-01"
   successor_model: "claude-sonnet-6"
   migration_guide: "https://docs.anthropic.com/migration/sonnet-5-to-6"
-  
+
 ownership:
   platform_owner: "AI Platform Team"
   business_owner: "AI CoE"
@@ -1418,7 +1435,7 @@ Enterprise model governance answers: Who approves what model for what use, with 
 **Governance bodies:**
 
 | Body | Scope | Cadence | Decisions |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **AI Architecture Review Board** | Model approval, tier assignment | Monthly | Add/remove models from registry |
 | **AI CoE (Centre of Excellence)** | Standards, patterns, training | Quarterly | Guidance, tooling selection |
 | **Business Unit AI Leads** | Use case approval | Per project | Use case risk assessment |
@@ -1456,7 +1473,7 @@ Before deploying any AI feature to production:
 ### 16.4 Regulatory Framework Alignment
 
 | Regulation | Key AI Requirements | Architecture Response |
-|---|---|---|
+| --- | --- | --- |
 | **EU AI Act** | High-risk AI systems: transparency, human oversight, accuracy | Risk classification; HITL for high-risk; audit logs |
 | **NIST AI RMF** | Govern, Map, Measure, Manage | Governance board; risk registry; evals; incident process |
 | **ISO 42001** | AI management system | Policy framework; documented processes; audit readiness |
@@ -1474,7 +1491,7 @@ Before deploying any AI feature to production:
 Multi-model architectures expand the threat surface:
 
 | Threat | Attack Vector | Mitigation |
-|---|---|---|
+| --- | --- | --- |
 | **Prompt injection** | Malicious content in user input manipulates model behaviour | Input sanitisation; prompt injection testing; output validation |
 | **Tool abuse** | Agent uses tools in unintended ways | Tool permission scoping; least-privilege tool access; action confirmation |
 | **Model poisoning** | Malicious fine-tune or weight modification | Model provenance verification; registry integrity checks; SBOM |
@@ -1488,6 +1505,7 @@ Multi-model architectures expand the threat surface:
 ### 17.2 Security Architecture Controls
 
 **Network isolation:**
+
 ```
 Applications → AI Gateway (DMZ) → Provider endpoints (TLS 1.3+)
                     │
@@ -1495,18 +1513,21 @@ Applications → AI Gateway (DMZ) → Provider endpoints (TLS 1.3+)
 ```
 
 **Identity and access:**
+
 - API keys scoped per team, per environment, per model tier
 - Short-lived credentials preferred (AWS IAM, Azure Managed Identity)
 - API key rotation every 90 days at maximum
 - No hardcoded credentials in code; vault-managed secrets
 
 **Data controls:**
+
 - PII scanner at gateway ingress and egress
 - Data classification tag enforced before model routing
 - All responses logged with retention per data classification
 - Encryption at rest and in transit for all AI interactions
 
 **Model integrity (self-hosted):**
+
 ```bash
 # Verify model weights before loading
 sha256sum llama-3.3-70b-instruct.gguf
@@ -1531,7 +1552,7 @@ sha256sum llama-3.3-70b-instruct.gguf
 ### 18.1 The Four Lock-in Vectors
 
 | Vector | Mechanism | Risk Level | Mitigation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **API schema lock-in** | Provider-specific request format | High | OpenAI-compatible abstraction layer |
 | **Feature lock-in** | Proprietary features (extended thinking, Realtime API) | Medium | Track feature dependencies; avoid in shared libraries |
 | **Embedding lock-in** | Vectors incompatible across providers | High | Store raw text; rebuild index on switch; use portable formats |
@@ -1572,17 +1593,17 @@ model_list:
     litellm_params:
       model: "anthropic/claude-fable-5-20251101"
       api_key: "os.environ/ANTHROPIC_API_KEY"
-  
+
   - model_name: "production-standard"
     litellm_params:
       model: "anthropic/claude-sonnet-5-20250901"
       api_key: "os.environ/ANTHROPIC_API_KEY"
-  
+
   - model_name: "high-volume-triage"
     litellm_params:
       model: "gemini/gemini-2.0-flash"
       api_key: "os.environ/GOOGLE_API_KEY"
-  
+
   - model_name: "air-gapped-workload"
     litellm_params:
       model: "ollama/llama3.3:70b"
@@ -1599,6 +1620,7 @@ router_settings:
 Design prompts to be model-agnostic:
 
 **Avoid model-specific syntax in shared templates:**
+
 ```xml
 <!-- BAD: Claude-specific XML tags in a shared template -->
 <claude_instructions>
@@ -1613,6 +1635,7 @@ Design prompts to be model-agnostic:
 ```
 
 **Model-specific tuning in adapters, not prompts:**
+
 ```python
 class ModelAdapter:
     def format_prompt(self, template: str, model_id: str) -> str:
@@ -1683,6 +1706,7 @@ RESPONSE_SCHEMA = {
 Few-shot examples are the most portable prompt component — they work identically across all providers. When moving between models, these require no changes. System prompt framing and output format instructions may need minor adaptation.
 
 **Migration checklist when switching models:**
+
 - [ ] Re-test all system prompts on new model (10-sample golden set)
 - [ ] Check structured output compliance (JSON schema may parse differently)
 - [ ] Verify tool call format (some models use different function call schemas)
@@ -1700,6 +1724,7 @@ Few-shot examples are the most portable prompt component — they work identical
 Foundation model capabilities are converging rapidly at each price tier. GPT-4o-class capability that cost $60/MTok in 2023 costs $2.50/MTok in 2026. This trend continues:
 
 **Implication:** Differentiation will shift from raw capability to:
+
 - Specialisation (domain-tuned models for medicine, law, finance)
 - Ecosystem and tooling quality (MCP, A2A, developer experience)
 - Reliability and trust (uptime SLAs, safety certifications)
@@ -1722,6 +1747,7 @@ Phi-4, Gemma 3 4B, Llama 3.2 3B, and similar models are reaching practical utili
 ### 20.4 Domain-Specific Foundation Models
 
 Purpose-built models for regulated domains are proliferating:
+
 - **Healthcare:** BioMedLM, Med-PaLM 3, clinical fine-tunes of Llama
 - **Legal:** Harvey, Thomson Reuters CoCounsel (GPT-4 backbone)
 - **Financial:** Bloomberg GPT successors, Morgan Stanley internal
@@ -1766,7 +1792,7 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 ### Do's
 
 | Practice | Why |
-|---|---|
+| --- | --- |
 | Build an AI gateway abstraction layer from day one | Switching cost is 10× higher if you wire providers directly into applications |
 | Maintain a tested integration with at least two providers | Single provider failure should not take down AI-dependent services |
 | Benchmark on your own data, not just public benchmarks | Model scores on your tasks can differ by 30%+ from published benchmarks |
@@ -1781,7 +1807,7 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 ### Don'ts
 
 | Anti-pattern | Consequence |
-|---|---|
+| --- | --- |
 | Hardcode model IDs in application code | Every model change requires code deploy across all services |
 | Use T1 (premium) models for T3 (triage) tasks | 10–50× unnecessary cost; teams hit budget limits prematurely |
 | Trust public benchmark rankings for production decisions | Benchmark ≠ your task; always evaluate on representative samples |
@@ -1837,6 +1863,7 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 ## Governance Checklist
 
 **Model approval (run for each new model):**
+
 - [ ] Vendor DPA signed with legal
 - [ ] Security assessment completed (API endpoint, data handling)
 - [ ] License compatible with enterprise use
@@ -1848,6 +1875,7 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 - [ ] Team notification sent
 
 **Use case approval (run for each production deployment):**
+
 - [ ] Model in registry with correct data classification approval
 - [ ] System prompt version-controlled and reviewed
 - [ ] Guardrails configured
@@ -1862,7 +1890,7 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 ## Glossary
 
 | Term | Definition |
-|---|---|
+| --- | --- |
 | **A2A** | Agent-to-Agent — protocol for agents to communicate tasks and results to each other |
 | **Abstraction layer** | Software layer that hides provider-specific details; applications call the abstraction, not the provider directly |
 | **AI gateway** | Central control plane for AI requests: auth, routing, caching, rate limiting, observability |
@@ -1896,24 +1924,28 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 ## Further Reading
 
 **Vendor Documentation**
+
 - [Anthropic Documentation](https://docs.anthropic.com) — Claude API, Agent SDK, MCP
 - [OpenAI API Reference](https://platform.openai.com/docs) — GPT-4o, o3, function calling
 - [Google Vertex AI Docs](https://cloud.google.com/vertex-ai/docs) — Gemini on GCP
 - [AWS Bedrock Documentation](https://docs.aws.amazon.com/bedrock) — Multi-model managed service
 
 **Standards and Frameworks**
+
 - [NIST AI Risk Management Framework](https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf)
 - [EU AI Act Full Text](https://artificialintelligenceact.eu)
 - [ISO/IEC 42001:2023](https://www.iso.org/standard/81230.html) — AI Management Systems
 - [FinOps Foundation AI FinOps Framework](https://www.finops.org/wg/ai-finops/)
 
 **Benchmarks and Evaluation**
+
 - [HELM Benchmark](https://crfm.stanford.edu/helm/) — Stanford holistic evaluation
 - [SWE-Bench](https://www.swebench.com) — Real-world software engineering tasks
 - [LiveBench](https://livebench.ai) — Contamination-free monthly benchmark
 - [LMSYS Chatbot Arena](https://lmarena.ai) — Human preference leaderboard
 
 **Tools and Frameworks**
+
 - [LiteLLM](https://github.com/BerriAI/litellm) — Multi-provider proxy; 100+ models
 - [DeepEval](https://github.com/confident-ai/deepeval) — LLM evaluation framework
 - [Phoenix (Arize)](https://github.com/Arize-ai/phoenix) — LLM tracing and evaluation
@@ -1921,6 +1953,7 @@ Agents that evaluate their own outputs, generate synthetic training data, and re
 - [Promptfoo](https://github.com/promptfoo/promptfoo) — Prompt testing and red-teaming
 
 **Internal Cross-References**
+
 - [Enterprise AI Architect Foundations](enterprise-ai-architect-foundations.md) — Role, token economics, integration patterns
 - [Enterprise AI Architecture Patterns](enterprise-ai-architecture-patterns.md) — 15 canonical patterns including routing, caching, evaluation
 - [Enterprise AI Governance & Compliance](enterprise-ai-governance-compliance.md) — Governance framework detail

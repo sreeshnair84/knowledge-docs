@@ -56,7 +56,7 @@ ASL-4  Approaching transformative capability
 Before deploying frontier models, labs run red-team evaluations for:
 
 | Domain | What is tested | Restriction trigger |
-|---|---|---|
+| --- | --- | --- |
 | **CBRN uplift** | Meaningful uplift to WMD creation | Any significant uplift above public sources |
 | **Cyberoffense** | Autonomous cyberweapon development | Capability above current tools |
 | **Persuasion** | Convincing influence operations at scale | Indistinguishable from human campaigns |
@@ -99,7 +99,7 @@ SL4 — Critical Risk
 ```
 
 | Requirement | SL1 | SL2 | SL3 | SL4 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | AI Impact Assessment | Not required | Standard | Full | Extended + external |
 | ARB approval | Not required | RAI Champion | RAIO Head | AI Gov Council |
 | Kill switch SLA | Not required | < 5 min | < 2 min | < 1 min |
@@ -143,7 +143,7 @@ AI SAFETY STACK
 **Compensating controls — if a layer fails:**
 
 | Layer | Failure mode | Compensated by |
-|---|---|---|
+| --- | --- | --- |
 | Model (L1) | Model trained to bypass own safety ("jailbreak") | Guardrails (L2) catch outputs; governance (L5) audits |
 | Guardrail (L2) | Novel attack bypasses classifier | Tool sandboxing (L3) limits damage; action gates (L4) block irreversible harm |
 | Tool (L3) | Tool supply chain compromised | Action sandboxing (L4) limits blast radius; kill switch (L5) terminates |

@@ -26,7 +26,7 @@ series_index: ../index.md
 A business case is a **structured argument for investment**. It is not a project plan. It is not a requirements document. It is not a proof of concept write-up. It is a document that answers four fundamental questions:
 
 | Question | What It Tests |
-|----------|---------------|
+| ---------- | --------------- |
 | **Why this?** | Is this the right solution to the right problem? |
 | **Why now?** | What is the cost of delay or inaction? |
 | **Why this much?** | Is the investment proportionate to the return? |
@@ -37,7 +37,7 @@ Every sentence in a business case should serve one of those four questions. If a
 ### How a Business Case Differs from Related Documents
 
 | Document | Primary Purpose | Primary Audience |
-|----------|-----------------|-----------------|
+| ---------- | ----------------- | ----------------- |
 | **Business Case** | Justify the investment decision | Executives, board, investment committee |
 | **Feasibility Study** | Determine whether the solution is achievable | Project sponsors, technical leads |
 | **Project Charter** | Authorise the project once approved | Project manager, delivery team |
@@ -133,7 +133,7 @@ This section establishes the burning platform. It quantifies the pain in busines
 #### How to Quantify Pain in Business Terms
 
 | Pain Category | How to Measure | Example Metric |
-|--------------|----------------|----------------|
+| -------------- | ---------------- | ---------------- |
 | **Revenue impact** | Lost sales, missed opportunities | $2.4M annual revenue at risk from customer churn |
 | **Cost inefficiency** | Manual effort, rework, waste | 14,000 person-hours per year on manual reconciliation |
 | **Risk exposure** | Regulatory fines, breach probability | $5M maximum regulatory fine under current non-compliance |
@@ -189,7 +189,7 @@ Show how the investment directly enables the stated corporate strategy. Quote th
 If there is a regulatory deadline, name the regulation, the deadline, and the penalty. Regulators have more persuasive power than architects.
 
 | Regulation | Requirement | Deadline | Non-compliance Penalty |
-|------------|-------------|----------|----------------------|
+| ------------ | ------------- | ---------- | ---------------------- |
 | PCI DSS v4.0 | Real-time transaction monitoring | March 2025 | Up to $100K/month |
 | APRA CPS 234 | Information security capability | Ongoing | Remediation orders |
 | AML/CTF Act | Transaction threshold monitoring | June 2025 | Criminal liability |
@@ -218,7 +218,7 @@ This section describes what the business looks like *after* the investment succe
 #### Business Outcomes vs. Technology Features
 
 | Wrong (Technology Features) | Right (Business Outcomes) |
-|-----------------------------|--------------------------|
+| ----------------------------- | -------------------------- |
 | Deploy a real-time ML scoring engine | Fraud detected in under 200ms, stopping 94% of fraudulent transactions before settlement |
 | Implement API-based integration layer | New banking products launched in 6 weeks instead of 9 months |
 | Migrate to cloud-native architecture | Processing capacity scales automatically during peak periods with no manual intervention |
@@ -257,7 +257,7 @@ Every credible business case presents at least three options. Presenting only th
 #### The Three Minimum Options
 
 | Option | Also Known As | Purpose in the Analysis |
-|--------|--------------|-------------------------|
+| -------- | -------------- | ------------------------- |
 | **Do Nothing** | Status Quo | Baseline; establishes cost of inaction |
 | **Minimum Viable** | Tactical Fix / Point Solution | Lower cost, lower benefit; the "cheap" alternative |
 | **Recommended** | Strategic / Full Solution | Optimal balance of cost, benefit, risk, and strategic fit |
@@ -269,7 +269,7 @@ You may add a fourth option (e.g. "Enhanced / Premium") if there is a genuine de
 Score each option across five dimensions. Use a consistent scale (e.g. 1–5) and document the rationale for each score.
 
 | Evaluation Dimension | Do Nothing | Minimum Viable | Recommended |
-|---------------------|-----------|---------------|-------------|
+| --------------------- | ----------- | --------------- | ------------- |
 | **Total Cost (3yr)** | $6.6M (inaction cost) | $1.8M | $4.2M |
 | **Total Benefit (3yr)** | $0 | $2.1M | $9.8M |
 | **Net Benefit (3yr)** | -$6.6M | $0.3M | $5.6M |
@@ -296,7 +296,7 @@ Cost analysis must be complete, honest, and independently verifiable. The CFO's 
 Break costs into categories and show year-by-year for 3–5 years.
 
 | Cost Category | Description | Examples |
-|--------------|-------------|---------|
+| -------------- | ------------- | --------- |
 | **Software Licences** | Vendor licences, SaaS subscriptions | Platform licence, API calls, data feeds |
 | **Infrastructure** | Compute, storage, networking | Cloud hosting, data centre, networking |
 | **Implementation** | Professional services, internal staff | SI partner fees, internal project team |
@@ -332,7 +332,7 @@ implementation activities. All costs are in FY26 dollars.*
 Always separate these clearly. One-time costs are typically capitalised (CapEx); recurring costs are typically expensed (OpEx). This distinction matters for how the investment appears on the balance sheet and P&L.
 
 | Type | Examples | Accounting Treatment |
-|------|----------|---------------------|
+| ------ | ---------- | --------------------- |
 | **One-time** | Software purchase, implementation, migration, hardware | CapEx (depreciated) |
 | **Recurring** | SaaS subscriptions, support, operations staff, cloud run cost | OpEx (expensed) |
 
@@ -360,7 +360,7 @@ Benefits are the heart of the business case. They must be credible, traceable, a
 Every tangible benefit line must include: the dollar amount, the calculation method, and the key assumptions.
 
 | Benefit | Year 1 | Year 2 | Year 3 | Total | Calculation Basis |
-|---------|--------|--------|--------|-------|------------------|
+| --------- | -------- | -------- | -------- | ------- | ------------------ |
 | Fraud loss reduction | $1.2M | $2.4M | $2.8M | $6.4M | 35% reduction in fraud rate × $8M annual fraud loss |
 | FTE reduction (ops) | $0.3M | $0.6M | $0.6M | $1.5M | 3 FTE redeployed × $100K fully-loaded cost |
 | Investigation efficiency | $0.1M | $0.3M | $0.4M | $0.8M | 40% reduction in investigation time × 4 FTE × $100K |
@@ -372,7 +372,7 @@ Every tangible benefit line must include: the dollar amount, the calculation met
 Intangible benefits must not be hand-waved. Each one needs a proxy measure that connects the intangible to a business outcome.
 
 | Intangible Benefit | Proxy Measure | How It Will Be Tracked |
-|-------------------|--------------|------------------------|
+| ------------------- | -------------- | ------------------------ |
 | Improved customer trust | NPS score in affected segment | Monthly NPS survey, baseline vs. post-implementation |
 | Regulatory confidence | Number of regulatory findings | Annual regulatory audit score |
 | Staff morale | Attrition rate in operations team | HR exit data, quarterly pulse survey |
@@ -397,7 +397,7 @@ Year 3+:     100% benefits — steady state
 Every benefit must have a named owner who commits to delivering it. Without a benefit owner, benefits are aspirations.
 
 | Benefit | Owner | Commitment |
-|---------|-------|------------|
+| --------- | ------- | ------------ |
 | Fraud loss reduction | Chief Risk Officer | Signed benefit realisation plan |
 | FTE redeployment | COO | Headcount plan approved |
 | Customer NPS improvement | Chief Customer Officer | NPS target in scorecard |
@@ -414,7 +414,7 @@ A risk analysis that only lists implementation risks is incomplete. You must cov
 #### Dimension 1 — Investment Risks (Risks of Doing This)
 
 | Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|-----------|
+| ------ | ----------- | -------- | ----------- |
 | Vendor fails to deliver on time | Medium | High | Contractual milestones with penalties; fixed-price contract |
 | Internal team capacity insufficient | High | Medium | Resource plan confirmed before approval; backfill budget included |
 | Data quality issues delay migration | Medium | High | Data assessment sprint in Phase 0; $150K contingency allocated |
@@ -424,7 +424,7 @@ A risk analysis that only lists implementation risks is incomplete. You must cov
 #### Dimension 2 — Business Risks (Risks to the Business If We Proceed)
 
 | Risk | Description | Mitigation |
-|------|-------------|-----------|
+| ------ | ------------- | ----------- |
 | Operational disruption | Migration causes downtime during peak period | Migration scheduled for low-volume window; rollback plan documented |
 | Third-party dependency | Critical API from external vendor | SLA agreed; fallback to batch processing available |
 | Regulatory scrutiny | New system must be validated by regulator | Engage regulator in design phase; regulatory review milestone in plan |
@@ -434,7 +434,7 @@ A risk analysis that only lists implementation risks is incomplete. You must cov
 This is often omitted and is arguably the most important risk section.
 
 | Risk of Inaction | Current Probability | Financial Exposure |
-|-----------------|--------------------|--------------------|
+| ----------------- | -------------------- | -------------------- |
 | Regulatory enforcement action | Medium | $5M fine + remediation cost |
 | Fraud losses continue to grow | High | $1M additional per year |
 | Competitor advantage widens | High | Estimated 8% market share risk over 3 years |
@@ -500,12 +500,12 @@ A positive NPV means the investment creates value in today's dollars.
 Show what happens to NPV if key assumptions change. This demonstrates that you have stress-tested your numbers and increases confidence in the analysis.
 
 | Scenario | Assumption Change | NPV | Payback |
-|----------|------------------|-----|---------|
+| ---------- | ------------------ | ----- | --------- |
 | **Base Case** | As modelled | $3.0M | 20 months |
 | **Pessimistic** | Benefits 25% lower, costs 15% higher | $0.4M | 32 months |
 | **Optimistic** | Benefits 15% higher, costs as modelled | $4.8M | 16 months |
 | **Cost Overrun Only** | Costs 30% higher, benefits as modelled | $1.8M | 26 months |
-| **Benefit Shortfall Only** | Benefits 40% lower, costs as modelled | -$0.3M | Never | 
+| **Benefit Shortfall Only** | Benefits 40% lower, costs as modelled | -$0.3M | Never |
 
 !!! warning "Flag the Break-Even Point"
     In the pessimistic scenario above, the NPV is still positive. In the benefit shortfall scenario, it is slightly negative. Use this to identify the break-even point: "Benefits can fall up to 38% from base case before this investment destroys value. We consider this scenario unlikely because [REASON]."
@@ -542,7 +542,7 @@ This recommendation is made on the basis that:
 #### High-Level Phased Roadmap
 
 | Phase | Timeframe | Key Activities | Exit Criteria |
-|-------|-----------|---------------|--------------|
+| ------- | ----------- | --------------- | -------------- |
 | **Phase 0: Discovery** | Months 1–2 | Data assessment, architecture design, vendor selection | Architecture sign-off, vendor contracted |
 | **Phase 1: Foundation** | Months 3–8 | Core platform build, data pipeline, model training | Model achieving >90% detection accuracy in test |
 | **Phase 2: Pilot** | Months 9–11 | Limited live deployment, 20% transaction volume | <0.5% false positive rate confirmed |
@@ -849,6 +849,7 @@ MidWest Community Bank's legacy fraud detection system is causing $8.2M in annua
 Following analysis of three options, this business case recommends implementation of an AI-powered fraud detection platform (FraudShield AI, or equivalent) at a total investment of **$4.2M** over 18 months.
 
 The recommended option delivers:
+
 - **$6.4M** in fraud loss reduction over 3 years (35% reduction in fraud rate)
 - **$2.1M** in operational savings from reduced false positives and FTE redeployment
 - **$1.3M** in avoided regulatory costs
@@ -857,7 +858,7 @@ The recommended option delivers:
 **3-year financial summary:**
 
 | Metric | Value |
-|--------|-------|
+| -------- | ------- |
 | Total investment (3yr) | $5.0M |
 | Total benefit (3yr) | $9.8M |
 | Net benefit | $4.8M |
@@ -876,7 +877,7 @@ The recommended option delivers:
 #### Quantified Pain
 
 | Pain Area | Current Metric | Annual Business Impact |
-|-----------|---------------|----------------------|
+| ----------- | --------------- | ---------------------- |
 | Undetected fraud | 65% detection rate | $6.1M fraud losses |
 | False positive rate | 38% of flagged transactions | $2.1M investigation cost (14 FTE) |
 | Manual review volume | 4,200 cases/month | 14,000 person-hours/year |
@@ -886,7 +887,7 @@ The recommended option delivers:
 #### Cost of Inaction
 
 | Cost of Delay (12 months) | Amount |
-|--------------------------|--------|
+| -------------------------- | -------- |
 | Continued fraud losses | $6.1M |
 | Investigation operations | $2.1M |
 | Regulatory enforcement risk | $0.5M |
@@ -910,7 +911,7 @@ The recommended option delivers:
 ### Options Analysis (Worked)
 
 | Dimension | Option 1: Do Nothing | Option 2: Rules Enhancement | Option 3: AI Platform (Recommended) |
-|-----------|---------------------|---------------------------|--------------------------------------|
+| ----------- | --------------------- | --------------------------- | -------------------------------------- |
 | 3-yr benefit | $0 | $3.1M | $9.8M |
 | 3-yr cost | $10.5M (inaction) | $1.4M | $5.0M |
 | Net benefit | -$10.5M | $1.7M | $4.8M |
@@ -928,7 +929,7 @@ The recommended option delivers:
 ### Cost Analysis (Worked)
 
 | Cost Item | Year 0 | Year 1 | Year 2 | Year 3 | Total |
-|-----------|--------|--------|--------|--------|-------|
+| ----------- | -------- | -------- | -------- | -------- | ------- |
 | FraudShield AI Licence | $200K | $420K | $441K | $463K | $1,524K |
 | Cloud Infrastructure (AWS) | $60K | $312K | $328K | $344K | $1,044K |
 | Implementation (SI Partner) | $820K | $180K | — | — | $1,000K |
@@ -950,7 +951,7 @@ The recommended option delivers:
 #### Tangible Benefits
 
 | Benefit | Year 1 | Year 2 | Year 3 | Total | Calculation |
-|---------|--------|--------|--------|-------|-------------|
+| --------- | -------- | -------- | -------- | ------- | ------------- |
 | Fraud loss reduction | $1.2M | $2.4M | $2.8M | $6.4M | 35% detection improvement × $8M fraud loss base; phased from Month 10 |
 | False positive cost reduction | $0.3M | $0.6M | $0.6M | $1.5M | 60% false positive reduction × $2.1M ops cost; phased from Month 10 |
 | FTE redeployment | $0.2M | $0.4M | $0.4M | $1.0M | 4 FTE × $100K fully-loaded; redeployed to growth activities |
@@ -961,7 +962,7 @@ The recommended option delivers:
 #### Intangible Benefits
 
 | Benefit | Proxy Measure | Baseline | Target |
-|---------|--------------|---------|--------|
+| --------- | -------------- | --------- | -------- |
 | Customer trust | NPS, fraud-affected segment | -14 | +10 |
 | Regulatory confidence | FDIC examination findings | 1 open finding | 0 findings |
 | Staff satisfaction | Attrition, fraud ops team | 28% annual attrition | <15% |
@@ -970,7 +971,7 @@ The recommended option delivers:
 #### Benefit Realisation Timeline
 
 | Period | Benefit % | Rationale |
-|--------|----------|-----------|
+| -------- | ---------- | ----------- |
 | Month 1–9 | 0% | Implementation and pilot |
 | Month 10–12 | 40% | Partial deployment, 40% transaction volume |
 | Year 2 | 85% | Full deployment, model tuning |
@@ -981,7 +982,7 @@ The recommended option delivers:
 ### Risk Register (Worked)
 
 | ID | Risk | Likelihood | Impact | Score | Mitigation |
-|----|------|-----------|--------|-------|-----------|
+| ---- | ------ | ----------- | -------- | ------- | ----------- |
 | R01 | FraudShield model underperforms (<85% detection rate) | Low | High | Medium | Contractual accuracy SLA; 3-month parallel run before cutover |
 | R02 | Internal team capacity gap | High | Medium | High | Dedicated project team approved; backfill for 2 FTE in operations |
 | R03 | Data quality issues delay model training | Medium | High | High | 6-week data assessment sprint in Phase 0; $160K migration budget |
@@ -993,7 +994,7 @@ The recommended option delivers:
 **Risk of Inaction (Top 3):**
 
 | Risk | Probability | Financial Exposure |
-|------|------------|-------------------|
+| ------ | ------------ | ------------------- |
 | FDIC Consent Order | Medium | $1M+ civil penalty + mandatory remediation |
 | Fraud losses grow 15% YoY | High | Additional $0.9M loss per year |
 | Emergency replacement (post-enforcement) | High | 3× cost ($12M+) under time pressure |
@@ -1003,7 +1004,7 @@ The recommended option delivers:
 ### Financial Summary (Worked)
 
 | Metric | Value | Notes |
-|--------|-------|-------|
+| -------- | ------- | ------- |
 | Total 3-year investment | $5.1M | Including Year 0 setup |
 | Total 3-year benefit | $10.0M | Tangible benefits only |
 | Net 3-year benefit | $4.9M | |
@@ -1015,7 +1016,7 @@ The recommended option delivers:
 #### Sensitivity Table
 
 | Scenario | Benefit Assumption | Cost Assumption | NPV | Payback |
-|----------|------------------|----------------|-----|---------|
+| ---------- | ------------------ | ---------------- | ----- | --------- |
 | Base Case | 100% | 100% | $3.2M | 20 months |
 | Benefits -25% | 75% | 100% | $1.4M | 26 months |
 | Costs +20% | 100% | 120% | $2.2M | 23 months |
@@ -1031,12 +1032,14 @@ The investment remains NPV-positive under all scenarios except extreme benefit s
 This business case recommends **Option 3: FraudShield AI Platform** at a total investment of **$4.2M in Year 1** ($3.1M CapEx, $1.1M OpEx).
 
 This recommendation is made because:
+
 1. It is the only option that achieves full FDIC compliance by the March 2025 deadline.
 2. The 96% ROI and 20-month payback represent strong value relative to the investment committee's 30-month payback threshold.
 3. The risk of inaction ($10.5M cost of 12-month delay) is 2.5× the investment.
 4. The platform positions the bank to develop new fraud-based analytics products, supporting Strategic Goal 6 (product innovation).
 
 **The Board Investment Committee is asked to:**
+
 1. Approve Option 3 at $4.2M Year 1 (CapEx $3.1M / OpEx $1.1M)
 2. Designate the Chief Risk Officer as Executive Sponsor
 3. Authorise the Programme Director to begin vendor contract negotiation

@@ -56,7 +56,7 @@ Apply this at every level: the proposal opens with the recommendation, each sect
 A well-formatted proposal guides the eye through information in order of importance.
 
 | Element | Purpose | Guidance |
-|---|---|---|
+| --- | --- | --- |
 | Section headers | Navigation and signposting | Descriptive, not generic ("Legacy Integration Doubles Risk" not "Current State") |
 | Lead sentences | Carry the argument | Bold or pull-quote for executives skimming |
 | Tables | Compare options or show structured data | Max 5–6 columns; always include a "Recommendation" column |
@@ -151,7 +151,7 @@ Include a single target-state architecture diagram. Guidelines:
 List 5–8 architecture guiding principles. Format each as a statement + rationale + implication.
 
 | Principle | Rationale | Implication |
-|---|---|---|
+| --- | --- | --- |
 | API-first design | Enables composability and future channel flexibility | All new capabilities must expose REST or GraphQL APIs before internal UI |
 | Cloud-native by default | Reduces operational overhead; improves scalability | No new on-premises deployments; lift-and-shift only as migration step |
 | Data as a product | Enables self-service analytics and AI use cases | Each domain owns and publishes a data product with defined SLOs |
@@ -182,7 +182,7 @@ Do not describe problems in general terms. Every pain point should have a number
 Create a debt-to-risk mapping table. This forces the reader to see technical debt as a business concern, not an IT housekeeping matter.
 
 | Architecture Debt Item | Age | Business Risk | Risk Level | Annual Cost of Inaction |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Monolithic order platform | 11 years | Cannot scale during peak periods | High | $1.2M revenue loss |
 | Manual ETL pipelines | 6 years | Reporting lag >24 hours; data errors | High | $400K analyst rework |
 | Unsupported middleware | 4 years | Vendor support ends Q3 2025 | Critical | Compliance exposure |
@@ -193,7 +193,7 @@ Create a debt-to-risk mapping table. This forces the reader to see technical deb
 Use a capability maturity model (CMM or CMMI-inspired) to show current state across architecture dimensions.
 
 | Capability Domain | Current Level | Target Level | Gap |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Data Management | 1 — Initial | 3 — Defined | 2 levels |
 | Integration Architecture | 2 — Managed | 4 — Quantitatively Managed | 2 levels |
 | Security Architecture | 2 — Managed | 4 — Quantitatively Managed | 2 levels |
@@ -219,7 +219,7 @@ Describe the recommended architecture in terms of capabilities, not just technol
 Structure the description by architectural layer:
 
 | Layer | Current State | Future State | Key Technologies |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Presentation | Monolithic web app | Micro-frontend, headless | React, Next.js, CDN |
 | Application | Monolith + scattered microservices | Domain-aligned microservices | Java/Spring, Node.js |
 | Integration | Point-to-point, batch ETL | Event-driven, API gateway | Kafka, Kong, AsyncAPI |
@@ -266,7 +266,7 @@ Technology recommendations are the section most likely to be perceived as vendor
 Define criteria in four categories:
 
 | Category | Example Criteria |
-|---|---|
+| --- | --- |
 | Functional fit | Covers required features; API completeness; integration capability |
 | Non-functional fit | Performance at required scale; security certifications; availability SLA |
 | Commercial | Total cost of ownership; licensing model; vendor financial stability |
@@ -275,7 +275,7 @@ Define criteria in four categories:
 **Evaluation Scorecard Template**
 
 | Criterion | Weight | Vendor A | Vendor B | Vendor C |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Functional coverage | 25% | 4/5 | 5/5 | 3/5 |
 | Scalability | 20% | 5/5 | 4/5 | 4/5 |
 | Security certifications | 15% | 5/5 | 5/5 | 3/5 |
@@ -287,7 +287,7 @@ Define criteria in four categories:
 **Build vs. Buy Decision Framework**
 
 | Build When | Buy When |
-|---|---|
+| --- | --- |
 | The capability is a true differentiator | A vendor solution meets 70%+ of requirements |
 | No vendor solution covers the requirement | Build would duplicate commodity capability |
 | Vendor lock-in risk outweighs build cost | Time-to-market is a priority |
@@ -304,7 +304,7 @@ Migration is where proposals win or lose executive trust. A credible migration s
 Never recommend big-bang migration. Phase the work to deliver value incrementally and reduce risk.
 
 | Phase | Scope | Duration | Key Deliverables |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Phase 0 — Foundation | Governance, tooling, skills uplift | 8 weeks | Architecture runbook, CI/CD pipeline, cloud landing zone |
 | Phase 1 — Quick Wins | [Specific bounded scope] | 12 weeks | [Named deliverable], [named deliverable] |
 | Phase 2 — Core Migration | [Priority domains] | 6 months | [Named deliverables] |
@@ -315,7 +315,7 @@ Never recommend big-bang migration. Phase the work to deliver value incrementall
 Recommend the right pattern for each workload. Do not apply one pattern universally.
 
 | Pattern | When to Use | Risk | Speed |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Strangler Fig | Incrementally replace monolith functionality | Low | Slow |
 | Parallel Run | Run old and new systems simultaneously for validation | Medium | Medium |
 | Lift-and-Shift | Move to cloud infrastructure without refactoring | Low | Fast |
@@ -353,7 +353,7 @@ Poor governance sinks well-designed programmes. Address it explicitly.
 **Programme Governance Structure**
 
 | Body | Membership | Meeting Cadence | Authority |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Steering Committee | C-suite sponsor, programme director, EA lead | Monthly | Budget approval; programme go/no-go |
 | Programme Board | Workstream leads, delivery director, PMO | Fortnightly | Issue escalation; dependency management |
 | Architecture Review Board | EA lead, domain architects, security lead | Weekly during delivery | Design approval; standards compliance |
@@ -362,7 +362,7 @@ Poor governance sinks well-designed programmes. Address it explicitly.
 **Decision Rights Matrix (RACI)**
 
 | Decision | Business Sponsor | EA Lead | Programme Director | Domain Architect |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Architecture principles | A | R | C | C |
 | Technology selection | C | R | C | A |
 | Budget changes >10% | A | C | R | I |
@@ -415,7 +415,7 @@ Phase 1 must deliver something visible and valuable within 90 days. Quick wins s
     Select Phase 1 deliverables that: (1) deliver genuine business value, (2) are technically de-risked, (3) demonstrate the target architecture in miniature, and (4) create reusable foundations for later phases. Avoid "quick wins" that are only visible to IT.
 
 | Quick Win | Business Value | Delivery Time | Architecture Value |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Self-service reporting portal | Reduces analyst time by 40% | Week 8 | Proves data product pattern |
 | API gateway implementation | Enables three new integrations | Week 10 | Establishes integration backbone |
 | Cloud landing zone | Enables all subsequent cloud workloads | Week 6 | Foundation for all later phases |
@@ -439,7 +439,7 @@ Use a 3x3 probability-impact matrix. Calculate inherent risk (before mitigation)
 These risks appear in virtually every large enterprise programme. If you have not addressed them, your risk register is incomplete.
 
 | Risk | Why It Must Be Addressed |
-|---|---|
+| --- | --- |
 | Scope creep | The #1 cause of programme overruns; needs formal change control |
 | Key person dependency | Loss of one architect or sponsor can stall the programme |
 | Integration complexity underestimated | Legacy integration is always harder than estimated; needs contingency |
@@ -458,7 +458,7 @@ Benefits are the reason the programme exists. Make them concrete, measurable, an
 **Benefit Summary Table**
 
 | Benefit | Type | Quantification | Timeframe | Owner |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Reduced operational cost | Financial | $2.1M annually | Year 2 onwards | COO |
 | Faster time-to-market | Strategic | 40% reduction in feature delivery cycle | Year 1 | CPO |
 | Improved customer NPS | Customer | +15 NPS points | Year 2 | CMO |
@@ -470,7 +470,7 @@ Benefits are the reason the programme exists. Make them concrete, measurable, an
 Distinguish leading indicators (predict future performance) from lagging indicators (confirm past performance).
 
 | KPI | Type | Baseline | Target | Measurement Method | Frequency |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Deployment frequency | Leading | Monthly | Daily | DORA metrics | Weekly |
 | API adoption rate | Leading | 0% | 80% of integrations | API gateway analytics | Monthly |
 | Mean time to recovery | Leading | 4 hours | <30 minutes | Incident management system | Monthly |
@@ -505,7 +505,7 @@ Do not end a proposal with a summary. End it with a decision request.
 Give the executive a bounded set of options. Never present a binary yes/no unless there is genuinely no alternative. Options give the executive agency while keeping them within a reasonable solution space.
 
 | Option | Description | Implication |
-|---|---|---|
+| --- | --- | --- |
 | Option A — Approve as Proposed | Full programme approved at recommended investment | Maximum benefit realisation; lowest unit cost |
 | Option B — Phase 1 Only | Approve Phase 1 with review before committing to later phases | Reduced initial risk; higher total cost; delayed benefits |
 | Option C — Defer 6 Months | Programme postponed pending [specific condition] | Increases cost of inaction by approximately $X; delays competitive advantage |
@@ -515,7 +515,7 @@ Give the executive a bounded set of options. Never present a binary yes/no unles
 Close with a specific, dated action list.
 
 | Action | Owner | Date |
-|---|---|---|
+| --- | --- | --- |
 | Steering committee approval of this proposal | [Executive Sponsor] | [Date] |
 | Programme director appointment | HR / [Sponsor] | [Date] |
 | Vendor briefing (shortlisted vendors) | EA Lead | [Date] |
@@ -546,7 +546,7 @@ Example:
 Consulting proposals use active voice. Passive voice obscures accountability and weakens recommendations.
 
 | Passive (Avoid) | Active (Use) |
-|---|---|
+| --- | --- |
 | "It is recommended that..." | "We recommend..." |
 | "The system was found to be..." | "The current system cannot..." |
 | "Approval is required by..." | "The Steering Committee must approve..." |
@@ -556,7 +556,7 @@ Consulting proposals use active voice. Passive voice obscures accountability and
 ### Data Visualisation Guidance
 
 | Visualisation Type | When to Use | Avoid When |
-|---|---|---|
+| --- | --- | --- |
 | Bar chart | Comparing discrete categories | More than 8 categories |
 | Line chart | Showing trends over time | Showing a single point in time |
 | Heat map (risk matrix) | Risk probability vs. impact | Few risks (a table is cleaner) |
@@ -578,7 +578,7 @@ Use callout boxes for three purposes only:
 ### Length Guidance Per Section
 
 | Section | Recommended Length | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Executive Summary | 1–2 pages | Must stand alone |
 | Architecture Vision | 3–5 pages | Include North Star diagram |
 | Current-State Assessment | 4–6 pages | Data-heavy; include architecture diagram |
@@ -646,7 +646,7 @@ Deploy a three-layer AI document processing platform:
 ### Investment Ask (Worked)
 
 | Cost Category | Phase 1 | Phase 2 | Phase 3 | Total |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Platform build (internal + vendor) | $820K | $680K | $420K | $1.92M |
 | Data and model training | $280K | $140K | $60K | $480K |
 | Integration and testing | $200K | $180K | $80K | $460K |

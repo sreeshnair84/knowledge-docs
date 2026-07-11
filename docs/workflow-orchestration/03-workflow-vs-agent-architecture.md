@@ -19,7 +19,7 @@ A **workflow** is a predetermined sequence of steps with explicit decision point
 An **agent** is a system that observes context, reasons about actions, and adapts in real-time.
 
 | Aspect | Workflow | Agent |
-|---|---|---|
+| --- | --- | --- |
 | **Control flow** | Pre-defined in code/diagram | Emergent, learned |
 | **State representation** | Explicit (step N of M) | Implicit (memory + context) |
 | **Decision logic** | If-then rules or code | Reasoning over observations |
@@ -32,6 +32,7 @@ An **agent** is a system that observes context, reasons about actions, and adapt
 ### Visual Comparison
 
 #### Workflow (Camunda/Temporal)
+
 ```
 ┌──────────┐
 │  Start   │
@@ -66,6 +67,7 @@ An **agent** is a system that observes context, reasons about actions, and adapt
 ---
 
 #### Agent (LangGraph)
+
 ```
 ┌─────────────────────────────────────────┐
 │  Agent with tools + memory              │
@@ -92,9 +94,11 @@ An **agent** is a system that observes context, reasons about actions, and adapt
 ## The Four Workflow Paradigms
 
 ### 1. **Deterministic Workflow** (Temporal, Camunda)
+
 **Model**: `State A → Transition (deterministic) → State B`
 
 **Example: Payment Processing**
+
 ```
 Order received →
   Validate payment details (fail → reject order) →
@@ -105,6 +109,7 @@ Complete
 ```
 
 **Characteristics**:
+
 - Path is knowable before execution
 - Same inputs = same path (replay works)
 - Failures are expected, handled explicitly
@@ -115,9 +120,11 @@ Complete
 ---
 
 ### 2. **Probabilistic Workflow** (LangGraph with LLMs)
+
 **Model**: `Context + Reasoning → Probabilistic Action → Observe → Loop`
 
 **Example: Customer Support Ticket**
+
 ```
 Ticket received →
   Agent reads ticket, prior interactions, policies
@@ -125,12 +132,13 @@ Ticket received →
   → If refund: "What's the issue? Within policy? History?"
     → May invoke tools: refund policy lookup, customer history, precedent search
     → Decides: "Approve refund" or "Escalate"
-  → If technical: "Can I resolve this?" 
+  → If technical: "Can I resolve this?"
     → Invokes knowledge base, logs, past solutions
     → Attempts fix → Test → Success? → Complete
 ```
 
 **Characteristics**:
+
 - Path is not predetermined
 - Same inputs might take different paths (non-deterministic)
 - Reasoning is the control flow
@@ -141,9 +149,11 @@ Ticket received →
 ---
 
 ### 3. **Adaptive Workflow** (Agentic AI with learning)
+
 **Model**: `Observe → Reason → Act → Learn → Adjust future behavior`
 
 **Example: Inventory Optimization**
+
 ```
 Daily: Agent observes
   - Current inventory levels
@@ -157,7 +167,7 @@ Reasons: "Which SKUs should we order?"
   - Considers constraints (budget, warehouse space)
   - Evaluates risk (stockout vs overstock)
 
-Acts: 
+Acts:
   - Places orders
   - Sets reorder points
   - Adjusts prices if needed
@@ -170,6 +180,7 @@ Learns:
 ```
 
 **Characteristics**:
+
 - Behavior changes based on outcomes
 - Same situation today ≠ same action tomorrow
 - Models improve over time
@@ -180,14 +191,16 @@ Learns:
 ---
 
 ### 4. **Autonomous Workflow** (Future state)
+
 **Model**: `Self-modifying orchestration + multi-agent coordination`
 
 **Example: Fraud Detection (Speculative)**
+
 ```
 System detects unusual transaction
-  → Agent A (data analyst): 
+  → Agent A (data analyst):
       Investigates historical patterns, flags anomaly
-  → Agent B (compliance): 
+  → Agent B (compliance):
       Checks regulations, determines risk level
   → Agent C (decision maker):
       Coordinates A + B → Decides action (approve, review, decline)
@@ -199,6 +212,7 @@ System detects unusual transaction
 ```
 
 **Characteristics**:
+
 - Multiple agents coordinate autonomously
 - System improves without human code changes
 - Objectives may shift dynamically
@@ -284,11 +298,13 @@ Most enterprises don't choose: **Workflow OR Agent**. They choose **Workflow + A
 ```
 
 **Ownership**:
+
 - **Temporal**: Coordinates the overall flow, ensures reliability, tracks state
 - **LangGraph Agent**: Makes the complex decision (reasoning, tool invocation)
 - **Activities**: Deterministic actions (validation, email, API calls)
 
 **Benefits**:
+
 - Temporal handles **reliability** (what if agent times out? → retry logic)
 - Agent handles **reasoning** (complex decisions)
 - Clear separation of concerns
@@ -300,7 +316,7 @@ Most enterprises don't choose: **Workflow OR Agent**. They choose **Workflow + A
 workflow LoanApproval {
   const application = await activities.getApplication(appId)
   await activities.validateInputs(application)  // deterministic
-  
+
   // Delegate decision to agent
   const agentDecision = await activities.getApprovalDecision(application)
   // Agent invoked LangGraph:
@@ -308,7 +324,7 @@ workflow LoanApproval {
   //   - Checked income verification
   //   - Looked up precedents
   //   - Returned: { decision: 'approve', reasoning: '...', score: 750 }
-  
+
   if (agentDecision.decision === 'approve') {
     await activities.fundLoan(application)
   } else {
@@ -322,6 +338,7 @@ workflow LoanApproval {
 ## State Management: Workflow State vs. Agent Memory
 
 ### Workflow State (Temporal)
+
 **What**: "What task are we on? What variables have we set?"  
 **Where**: Workflow history (event sourced)  
 **Durability**: Permanent; survives crashes  
@@ -337,6 +354,7 @@ Event Log:
 ```
 
 ### Agent Memory (LangGraph)
+
 **What**: "What does the agent know? What's the context?"  
 **Where**: Vector store, message history, knowledge graph  
 **Durability**: Persistent but mutable; learned over time  
@@ -363,6 +381,7 @@ Agent asks: **What should we do next?**
 ## Observability: What to Log Where
 
 ### Workflow Observability (Temporal)
+
 ```json
 {
   "workflowId": "loan-123",
@@ -378,12 +397,14 @@ Agent asks: **What should we do next?**
 ```
 
 **Questions it answers**:
+
 - Where is the workflow?
 - When did each step complete?
 - How many retries happened?
 - When did it finish?
 
 ### Agent Observability (LangGraph + Tracing)
+
 ```json
 {
   "agentId": "loan-approver",
@@ -399,13 +420,16 @@ Agent asks: **What should we do next?**
 ```
 
 **Questions it answers**:
+
 - What was the agent thinking?
 - Which tools did it invoke?
 - Why did it make this decision?
 - What was the confidence level?
 
 ### Combined Observability
+
 A mature system logs **both**:
+
 - Workflow traces (for SLA/operational monitoring)
 - Agent reasoning traces (for explainability/audit)
 - Business outcome traces (did the decision work?)
@@ -415,6 +439,7 @@ A mature system logs **both**:
 ## Error Handling: Workflow vs. Agent
 
 ### Workflow Error Handling
+
 ```typescript
 workflow PaymentSettlement {
   try {
@@ -431,6 +456,7 @@ workflow PaymentSettlement {
 **Semantics**: Fail and retry. If exhausted, escalate.
 
 ### Agent Error Handling
+
 ```python
 agent_state = {
   "objective": "approve loan",
@@ -441,14 +467,14 @@ agent_state = {
 while not done:
   reasoning = llm.think(agent_state)
   tool = reasoning.select_tool()
-  
+
   try:
     result = tool.invoke(reasoning.args)
   except ToolError:
     # Agent learns: "This tool doesn't work for this input"
     reasoning.add_context("Tool failed; try different approach")
     continue
-  
+
   agent_state.memory.append(result)
 ```
 
@@ -459,6 +485,7 @@ while not done:
 ## Security & Compliance
 
 ### Workflow-based Compliance
+
 - **Audit trail**: Event log proves workflow followed intended path
 - **Version control**: Workflow code is versioned, approved, deployed
 - **Determinism**: Replay can verify correctness
@@ -471,6 +498,7 @@ while not done:
 ```
 
 ### Agent-based Compliance (Harder)
+
 - **Audit trail**: Reasoning trace shows what agent thought
 - **Version control**: Prompt version, model version matter (not code version)
 - **Non-determinism**: Same input today ≠ same action tomorrow
@@ -484,6 +512,7 @@ while not done:
 ```
 
 **Enterprise implication**: For compliance-critical decisions, **combine**:
+
 - Agent reasoning (for analysis)
 - Workflow coordination (for audit trail)
 - Human review (for approval)
@@ -493,7 +522,7 @@ while not done:
 ## Summary: Choose Your Layer
 
 | If you need... | Use | Why |
-|---|---|---|
+| --- | --- | --- |
 | Reliable coordination across services | Workflow (Temporal) | Determinism + retry guarantees |
 | Visual process modeling for stakeholders | Workflow (Camunda) | BPMN is the lingua franca |
 | Complex decision-making | Agent (LangGraph) | Reasoning over context |
@@ -506,6 +535,7 @@ while not done:
 ---
 
 **Next steps**:
+
 - Deep dive into [Temporal Architecture](./temporal-deep-dive) for deterministic workflows
 - Explore [Camunda & BPM](./camunda-deep-dive) for visual modeling
 - Study [AI Coding Orchestrators](./ai-coding-orchestrators) for agent patterns

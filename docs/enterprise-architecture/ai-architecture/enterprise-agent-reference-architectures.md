@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 All domains share the Vol 1 harness; this table captures the **deltas** — what each domain must add or tighten.
 
 | Domain | Dominant constraints | Architecture deltas |
-|--------|---------------------|---------------------|
+| -------- | --------------------- | --------------------- |
 | **Banking** | Model risk management (SR 11-7 lineage), DORA, PCI, AML/KYC auditability | Agents classed as models → MRM validation before prod; dual-control on any funds-adjacent pivot; deterministic calculation engines (agents *orchestrate* pricing/risk engines, never compute them); full decision replay; on-soil model routing; A2A internal directories already live at scale (trade recon, KYC, reg reporting) |
 | **Healthcare** | HIPAA/PHI, clinical safety, FDA boundary (decision support vs. device) | PHI tokenization before model egress; BAAs constrain provider list; clinician-in-the-loop on anything care-adjacent; provenance-cited outputs mandatory; strict separation of admin agents (scheduling, coding) from clinical-context agents |
 | **Insurance** | Fairness/discrimination law on underwriting & claims, state regulators | Bias evals per release as gate; adverse-decision explanations (plan+evidence rendered human-readable); actuarial models stay deterministic behind tools; claims agents = classic Saga territory (reserve→adjust→pay with compensations) |
@@ -60,7 +60,7 @@ The agent platform is a **product, run by a platform team, with golden paths.** 
 Scores: ● strong ◐ partial ○ weak/N-A. "Enterprise readiness" = managed isolation + identity + audit + support posture.
 
 | Capability | AWS AgentCore | OpenAI Agents SDK | Google ADK | LangGraph | Semantic Kernel | CrewAI | AutoGen* | OpenHands | Claude Code | Copilot (agent) | Cursor |
-|------------|---------------|-------------------|------------|-----------|-----------------|--------|----------|-----------|-------------|-----------------|--------|
+| ------------ | --------------- | ------------------- | ------------ | ----------- | ----------------- | -------- | ---------- | ----------- | ------------- | ----------------- | -------- |
 | **Category** | Managed runtime + services | Framework (+ managed tools) | Framework + managed platform | Framework + platform | Framework (.NET/Py) | Framework (+cloud) | Framework | Coding agent (OSS) | Coding agent (product) | Coding agent (product) | AI IDE/agent |
 | **Architecture** | Runtime/Gateway/Memory/Identity/Observability as separable services; microVM sessions | Lean loop: agents, handoffs, guardrails, sessions | Code-first, multi-language v1.0; deep A2A; deploy anywhere | Explicit state graph, checkpointers, interrupts | Kernel + plugins + planners; process framework; converging with Agent Framework | Role-based crews/flows | Conversation-centric multi-agent (lineage continues in MS Agent Framework) | Sandboxed dev-loop, event stream | Terminal-native loop, skills, sub-agents, hooks | Repo-native task agents in CI/PR flow | Editor-embedded agent + background agents |
 | **Security posture** | ● (session microVM isolation, IAM/Identity svc) | ◐ (guardrail hooks; infra yours) | ● (Model Armor, IAM, zero-trust guidance) | ◐ (platform adds auth; DIY otherwise) | ◐ (Azure integration strong) | ◐ | ◐ | ◐ (sandbox strong; enterprise DIY) | ● (permissioned tools, sandbox modes, enterprise policies) | ● (GitHub org policy surface) | ◐ |
@@ -109,7 +109,7 @@ Deliverables your architecture repo should contain:
 **Technology radar (mid-2026):**
 
 | Ring | Items |
-|------|-------|
+| ------ | ------- |
 | **Adopt** | MCP, A2A, OTel GenAI conventions, Temporal-style durable execution, Cedar/OPA, SPIFFE, microVM sandboxes, eval-gated CI |
 | **Trial** | MCP Tasks/Apps (post-2026-07-28), AP2, guard-model ensembles, semantic caching, agent identity extensions to OAuth |
 | **Assess** | Computer-use agents in prod, cross-org agent marketplaces, CRDT shared plans |
@@ -118,7 +118,7 @@ Deliverables your architecture repo should contain:
 **Capability map & maturity model** — capabilities = the Vol 1 component list grouped by plane; maturity:
 
 | Level | State |
-|-------|-------|
+| ------- | ------- |
 | **L1** | Pilots — single agent, manual review |
 | **L2** | Productionized — gateway, registry, evals |
 | **L3** | Governed scale — policy-as-code, HITL tiers, cost mgmt |
@@ -203,7 +203,7 @@ Non-determinism is managed by testing **distributions against thresholds**, not 
 ## 7. Migration Roadmap (Typical 4 Quarters)
 
 | Quarter | Theme | Deliverables |
-|---------|-------|--------------|
+| --------- | ------- | -------------- |
 | **Q1 — Foundations** | Mediation + visibility | AI gateway in front of all model traffic; registries stood up; OTel + audit lake; identity fabric (SPIFFE/STS) for agent workloads; first agent moved behind the harness in shadow mode |
 | **Q2 — Governed production** | Policy + durability | Policy-as-code PDP/PEPs; approval engine; eval-gated CI; checkpointing on Temporal/workflow spine; 2–3 use cases GA at risk tier ≤T2 |
 | **Q3 — Scale** | Registry + memory + cost | MCP private registry + tiered onboarding; memory services with ACL/provenance; cost management with pre-flight budgets; canary/shadow automation; first T3 use case with dense HITL |

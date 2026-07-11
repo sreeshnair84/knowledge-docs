@@ -20,6 +20,6 @@ Research on AI agent memory architectures — covering short-term context manage
 
 ---
 
-## PDFs
+## Research guide
 
 - [AI Memory Agent Innovations Research Report](/knowledge-docs/agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report)

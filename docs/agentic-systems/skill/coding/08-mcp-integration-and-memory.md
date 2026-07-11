@@ -21,7 +21,7 @@ series_index: "agentic-systems/skill/coding/index"
 ### 11.1 Common MCP servers in coding workflows
 
 | Server | Typical capability exposed |
-|---|---|
+| --- | --- |
 | Filesystem MCP | Sandboxed file access, sometimes used instead of a fully-native filesystem tool for extra policy control |
 | Git MCP | Structured git operations, sometimes preferred over native git for auditable, policy-checked commits |
 | GitHub MCP | Issues, PRs, Actions status, code search — the most heavily used external-system MCP server in this domain |
@@ -50,7 +50,7 @@ series_index: "agentic-systems/skill/coding/index"
 ### 12.1 Memory scopes
 
 | Scope | Typical lifetime | Example content |
-|---|---|---|
+| --- | --- | --- |
 | **Conversation/session** | Single chat session | Current task's working state, files touched so far |
 | **Workspace/repository** | Persistent, tied to the repo | Learned conventions, past decisions the agent should remember for this project specifically |
 | **Developer/personal** | Persistent, tied to the individual | Personal preferences ("I prefer functional components"), independent of which repo is open |

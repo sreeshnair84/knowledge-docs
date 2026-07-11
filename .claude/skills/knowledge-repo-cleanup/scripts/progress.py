@@ -13,11 +13,12 @@ Subcommands:
     mark --phase N --item X --status done  Mark one queue item complete
     complete-phase --phase N               Mark an entire phase complete
 """
-import os
-import re
-import json
+
 import argparse
 import datetime
+import json
+import os
+import re
 
 META_DIR = "_meta"
 PROGRESS_PATH = os.path.join(META_DIR, "progress.json")
@@ -34,7 +35,7 @@ PHASES = [
 
 
 def now():
-    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+    return datetime.datetime.now(datetime.UTC).isoformat()
 
 
 def load():
@@ -60,8 +61,7 @@ def cmd_init(_args):
         "started_at": now(),
         "last_updated": now(),
         "phases": [
-            {**p, "status": "pending", "completed_at": None, "queue": [] if p["queued"] else None}
-            for p in PHASES
+            {**p, "status": "pending", "completed_at": None, "queue": [] if p["queued"] else None} for p in PHASES
         ],
     }
     save(state)
@@ -143,8 +143,7 @@ def cmd_seed_queue(args):
     if p["status"] == "pending":
         p["status"] = "in_progress"
     save(state)
-    print(f"Seeded {added} new items into Phase {args.phase} queue "
-          f"({len(p['queue'])} total).")
+    print(f"Seeded {added} new items into Phase {args.phase} queue ({len(p['queue'])} total).")
 
 
 def cmd_mark(args):
@@ -162,8 +161,9 @@ def cmd_mark(args):
             print(f"Marked '{args.item}' as {args.status} in Phase {args.phase}.")
             return
     # not found — add it directly as done, so ad-hoc items still get tracked
-    p["queue"].append({"item": args.item, "status": args.status,
-                        "completed_at": now() if args.status == "done" else None})
+    p["queue"].append(
+        {"item": args.item, "status": args.status, "completed_at": now() if args.status == "done" else None}
+    )
     save(state)
     print(f"'{args.item}' was not in the queue; added and marked {args.status}.")
 

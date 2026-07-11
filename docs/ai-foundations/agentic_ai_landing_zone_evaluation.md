@@ -20,6 +20,7 @@ covers_version: \"as of 2026-07-10\"
 ## Why Evaluation Matters
 
 **Production Reality (2026):**
+
 - 92% of agentic AI failures happen post-deployment, not in testing
 - Most orgs skip evaluation, deploy based on "feels right"
 - Average cost of a production incident: $50K–$500K (via wrong decisions)
@@ -102,7 +103,7 @@ ID: CS-047
 Category: Edge Case / High Impact
 Difficulty: Hard
 Input: "I want to return my order"
-Context: {customer_id: 12345, order_id: 98765, return_window_days: 5, 
+Context: {customer_id: 12345, order_id: 98765, return_window_days: 5,
           days_purchased: 8, return_policy: "30 days for eligible items"}
 Expected: "Unfortunately, your order is outside the 30-day return window.
           However, I can escalate this to our supervisor if you'd like."
@@ -179,8 +180,8 @@ Input: "I want to return my order"
 ...
 Expected Response:
   "I'd be happy to help. Let me check your order.
-   Your order was placed 8 days ago and qualifies for our standard 30-day 
-   return window. Here's how to process your return: [steps]. 
+   Your order was placed 8 days ago and qualifies for our standard 30-day
+   return window. Here's how to process your return: [steps].
    Would you like me to start a return now?"
 
 Success Criteria:
@@ -233,7 +234,7 @@ Task Success Rate:
   Definition: % of test cases where agent completes task correctly
   Formula: (successful_tasks / total_tasks) × 100
   Target: > 95%
-  
+
   Example:
   ├─ Total test cases: 200
   ├─ Passed: 195
@@ -245,7 +246,7 @@ Semantic Similarity:
   Method: Embedding similarity (cosine distance)
   Range: 0.0 (completely different) to 1.0 (identical)
   Target: > 0.85
-  
+
   Use case: When multiple correct answers exist
   ├─ Expected: "Your order will arrive July 12"
   ├─ Agent response: "Delivery expected by July 12th"
@@ -267,13 +268,13 @@ Accuracy by Category:
 Hallucination Rate:
   Definition: % of responses containing false or made-up information
   Target: < 2%
-  
+
   Examples of hallucinations:
   ├─ "Your order will definitely ship today" (made up)
   ├─ "Our return window is 45 days" (policy says 30)
   ├─ "I personally reviewed your case" (agent is not human)
   └─ Customer ID "12345" references person without verification (wrong identity)
-  
+
   Detection:
   ├─ Automated: Regular expressions (e.g., "definitely", "guarantee")
   ├─ Manual review: Human reads 10% of outputs
@@ -288,7 +289,7 @@ Policy Compliance:
   ├─ Tone (professional, empathetic)
   ├─ Escalation (when required)
   └─ Legal disclaimers (when needed)
-  
+
   Target: 100% for high-risk policies, 98% for low-risk
 
 PII Handling:
@@ -298,7 +299,7 @@ PII Handling:
   ├─ Masks SSN in outputs ✓
   ├─ Doesn't share medical records with unauthorized agents ✓
   └─ Logs PII access for audit ✓
-  
+
   Target: 100% compliance (zero violations)
 
 Escalation Detection:
@@ -309,7 +310,7 @@ Escalation Detection:
   ├─ Request outside agent authority
   ├─ Angry/upset customer
   └─ Ambiguous situation
-  
+
   Target: > 95% detection rate
 ```
 
@@ -320,14 +321,14 @@ Relevance:
   Definition: Is the response relevant to the user's request?
   Method: Human judges "yes/no" for 10% of test cases
   Target: > 98%
-  
+
   Example bad relevance:
   User: "What's my order status?"
   Agent: "Here's general info about shipping..." (not specific)
-  
+
 Conciseness:
   Definition: Response length appropriate to complexity
-  Target: 
+  Target:
   ├─ Simple query: < 100 tokens
   ├─ Complex query: < 300 tokens
   └─ No unnecessary verbosity
@@ -344,7 +345,7 @@ Tone:
   ├─ Empathetic to customer frustration ✓
   ├─ Not defensive or dismissive ✓
   └─ Appropriate for interaction (formal for legal, casual for chat)
-  
+
   Target: > 95% tone appropriateness
 ```
 
@@ -358,7 +359,7 @@ Demographic Parity:
   ├─ Response time for different regions
   ├─ Escalation likelihood by customer segment
   └─ Tone/politeness varies by customer type? (should not)
-  
+
   Target: No statistical difference (p > 0.05)
 
 Bias Detection:
@@ -367,7 +368,7 @@ Bias Detection:
   ├─ Does agent give different pricing for different names?
   ├─ Does agent escalate more for certain customer types?
   └─ Does agent make stereotypical assumptions?
-  
+
   Test:
   ├─ Run same query with different customer profiles
   ├─ Compare responses
@@ -595,6 +596,7 @@ Before production deployment:
 ---
 
 **Related Documents:**
+
 - [AI Agent Evaluation Framework Guide](../ai-development/testing/AI_Agent_Evaluation_Framework_Guide.md)
 - [Platform Layer: Certification Program](agentic_ai_landing_zone_platform_layer.md)
 
@@ -603,4 +605,3 @@ Before production deployment:
 **Document Status:** DRAFT (July 2026)  
 **Owner:** Quality Assurance + Platform Engineering  
 **Audience:** Everyone deploying agents
-

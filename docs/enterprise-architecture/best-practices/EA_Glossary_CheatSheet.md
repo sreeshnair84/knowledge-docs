@@ -9,59 +9,59 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE ARCHITECTURE Glossary & Cheat Sheet** 
+# **ENTERPRISE ARCHITECTURE Glossary & Cheat Sheet**
 
-Distinguished Architect / CTO / Chief AI Architect Edition 
+Distinguished Architect / CTO / Chief AI Architect Edition
 
-300+ Terms · Regulation Quick Reference · PQC Migration Guide AI Security Threat Map · Identity Patterns · Interview Frameworks DORA Compliance Checklist · EU AI Act Tier Guide · Distinguished vs. Principal Signals 
+300+ Terms · Regulation Quick Reference · PQC Migration Guide AI Security Threat Map · Identity Patterns · Interview Frameworks DORA Compliance Checklist · EU AI Act Tier Guide · Distinguished vs. Principal Signals
 
-Companion to: Volume 1 (EA Foundations) · Volume 2 (Delta: Emerging Topics) · Volume 3 (CTO & AI) Targeting: Microsoft · Google · JPMorgan · Goldman Sachs · Barclays · HSBC · Visa · ServiceNow 
+Companion to: Volume 1 (EA Foundations) · Volume 2 (Delta: Emerging Topics) · Volume 3 (CTO & AI) Targeting: Microsoft · Google · JPMorgan · Goldman Sachs · Barclays · HSBC · Visa · ServiceNow
 
-#### **TABLE OF CONTENTS** 
+#### **TABLE OF CONTENTS**
 
-- G Glossary (A–Z) 
+- G Glossary (A–Z)
 
-- 300+ terms covering: AI, Security, Identity, Cloud, EA Frameworks, Regulations, Protocols 
+- 300+ terms covering: AI, Security, Identity, Cloud, EA Frameworks, Regulations, Protocols
 
-- G Cheat Sheet 1 — Regulatory Quick Reference 
+- G Cheat Sheet 1 — Regulatory Quick Reference
 
-- DORA, EU AI Act, SR 11-7, GDPR, PCI-DSS, BCBS 239, NIS2, CSRD 
+- DORA, EU AI Act, SR 11-7, GDPR, PCI-DSS, BCBS 239, NIS2, CSRD
 
-- G Cheat Sheet 2 — Post-Quantum Cryptography Guide 
+- G Cheat Sheet 2 — Post-Quantum Cryptography Guide
 
-- Current standards, vulnerable algorithms, migration targets, NIST FIPS status 
+- Current standards, vulnerable algorithms, migration targets, NIST FIPS status
 
-- G Cheat Sheet 3 — DORA Compliance Checklist 
+- G Cheat Sheet 3 — DORA Compliance Checklist
 
-   - All DORA requirements with architecture controls and evidence required 
+  - All DORA requirements with architecture controls and evidence required
 
-- G Cheat Sheet 4 — EU AI Act Tier Guide 
+- G Cheat Sheet 4 — EU AI Act Tier Guide
 
-   - Risk categories, key obligations, penalties, architecture implications 
+  - Risk categories, key obligations, penalties, architecture implications
 
-- G Cheat Sheet 5 — Cloud Architecture Patterns 
+- G Cheat Sheet 5 — Cloud Architecture Patterns
 
-   - 8 essential patterns with components and when-to-use guidance 
+  - 8 essential patterns with components and when-to-use guidance
 
-- G Cheat Sheet 6 — AI Security Threat Map 
+- G Cheat Sheet 6 — AI Security Threat Map
 
-   - 11 AI-specific threats with attack vectors, defences, and detection signals 
+  - 11 AI-specific threats with attack vectors, defences, and detection signals
 
-- G Cheat Sheet 7 — Identity & Access Patterns 
+- G Cheat Sheet 7 — Identity & Access Patterns
 
-   - 8 identity patterns with standards, use cases, and token structures 
+  - 8 identity patterns with standards, use cases, and token structures
 
-- G Cheat Sheet 8 — Interview Frameworks 
+- G Cheat Sheet 8 — Interview Frameworks
 
-   - 9 essential frameworks with structure and common pitfalls 
+  - 9 essential frameworks with structure and common pitfalls
 
-- G Cheat Sheet 9 — Distinguished Architect Signals 
+- G Cheat Sheet 9 — Distinguished Architect Signals
 
-   - 10 behaviour dimensions: Principal vs. Distinguished comparison 
+  - 10 behaviour dimensions: Principal vs. Distinguished comparison
 
-### **GLOSSARY** 
+### **GLOSSARY**
 
-_Key terms used across all four volumes. Color coding: Security/Risk Architecture/Platform Identity/Protocol Governance/Framework Operations/SRE AI/ML Financial/Cloud_ 
+*Key terms used across all four volumes. Color coding: Security/Risk Architecture/Platform Identity/Protocol Governance/Framework Operations/SRE AI/ML Financial/Cloud*
 
 |**A**<br>**ABAC**|Attribute-Based Access Control. Authorisation policy where access decisions are based<br>on attributes of the user, resource, and environment rather than predefined roles.|
 |---|---|
@@ -82,79 +82,79 @@ _Key terms used across all four volumes. Color coding: Security/Risk Architectur
 |**CAIO**|Chief AI Officer. Executive responsible for enterprise AI strategy, governance, and<br>deployment.|
 |**CIAM**|Customer Identity and Access Management. Identity platform managing external<br>customer identities, authentication, and consent.|
 
-**Circuit Breaker** 
+**Circuit Breaker**
 
-**CloudEvents** 
+**CloudEvents**
 
-**CMDB Conway's Law CRQC CSRD CVE CycloneDX** 
+**CMDB Conway's Law CRQC CSRD CVE CycloneDX**
 
-Design pattern that prevents cascading failures by stopping calls to a failing dependency after a failure threshold is exceeded. 
+Design pattern that prevents cascading failures by stopping calls to a failing dependency after a failure threshold is exceeded.
 
-CNCF specification standardising the structure of events generated by cloud services — enables portability across event brokers. 
+CNCF specification standardising the structure of events generated by cloud services — enables portability across event brokers.
 
-Configuration Management Database. Repository of all IT assets (hardware, software, services) and their relationships. 
+Configuration Management Database. Repository of all IT assets (hardware, software, services) and their relationships.
 
-Observation by Melvin Conway: organisations design systems that mirror their own communication structure. Architectural implication: the org chart determines the architecture. 
+Observation by Melvin Conway: organisations design systems that mirror their own communication structure. Architectural implication: the org chart determines the architecture.
 
-Cryptographically Relevant Quantum Computer. A quantum computer powerful enough to break current public-key cryptography (RSA, ECDSA). Estimated arrival: 2028-2031. 
+Cryptographically Relevant Quantum Computer. A quantum computer powerful enough to break current public-key cryptography (RSA, ECDSA). Estimated arrival: 2028-2031.
 
-Corporate Sustainability Reporting Directive. EU directive mandating large companies report on environmental, social, and governance factors including technology carbon emissions (from 2025). 
+Corporate Sustainability Reporting Directive. EU directive mandating large companies report on environmental, social, and governance factors including technology carbon emissions (from 2025).
 
-Common Vulnerabilities and Exposures. Standardised list of publicly known software vulnerabilities. CVSS score 0-10 quantifies severity. 
+Common Vulnerabilities and Exposures. Standardised list of publicly known software vulnerabilities. CVSS score 0-10 quantifies severity.
 
-OWASP SBOM standard. Machine-readable format for Software Bill of Materials — widely adopted alongside SPDX. 
+OWASP SBOM standard. Machine-readable format for Software Bill of Materials — widely adopted alongside SPDX.
 
-## **D** 
+## **D**
 
-**Data Mesh DAST DCR DORA (Software)** 
+**Data Mesh DAST DCR DORA (Software)**
 
-**DORA (EU) DP-SGD** 
+**DORA (EU) DP-SGD**
 
-**DTO** 
+**DTO**
 
-Architectural pattern where data ownership and quality responsibility is distributed to domain teams, with a central data platform providing self-service infrastructure. 
+Architectural pattern where data ownership and quality responsibility is distributed to domain teams, with a central data platform providing self-service infrastructure.
 
-Dynamic Application Security Testing. Security testing method that tests a running application from outside, simulating real attacks. 
+Dynamic Application Security Testing. Security testing method that tests a running application from outside, simulating real attacks.
 
-Disaster Recovery. Processes and technologies for restoring IT systems and data after a major failure or disaster. 
+Disaster Recovery. Processes and technologies for restoring IT systems and data after a major failure or disaster.
 
-DORA (DevOps Research and Assessment). Research programme identifying four key metrics of software delivery performance: Deployment Frequency, Lead Time, MTTR, Change Failure Rate. 
+DORA (DevOps Research and Assessment). Research programme identifying four key metrics of software delivery performance: Deployment Frequency, Lead Time, MTTR, Change Failure Rate.
 
-EU Digital Operational Resilience Act. Regulation mandating operational resilience for EU financial institutions: ICT risk management, third-party risk, incident reporting, resilience testing. In force 2025. 
+EU Digital Operational Resilience Act. Regulation mandating operational resilience for EU financial institutions: ICT risk management, third-party risk, incident reporting, resilience testing. In force 2025.
 
-Differentially Private Stochastic Gradient Descent. Training algorithm that adds calibrated noise to gradients to prevent training data memorisation and limit data poisoning impact. 
+Differentially Private Stochastic Gradient Descent. Training algorithm that adds calibrated noise to gradients to prevent training data memorisation and limit data poisoning impact.
 
-Digital Twin of the Organisation. A live, computable model of the enterprise — systems, capabilities, costs, risks, dependencies — enabling real-time scenario analysis. 
+Digital Twin of the Organisation. A live, computable model of the enterprise — systems, capabilities, costs, risks, dependencies — enabling real-time scenario analysis.
 
-## **E** 
+## **E**
 
-**ECDSA** 
+**ECDSA**
 
-**EDA** 
+**EDA**
 
-Elliptic Curve Digital Signature Algorithm. Current standard for digital signatures — quantum-vulnerable. To be replaced by ML-DSA (CRYSTALS-Dilithium) under NIST PQC standards. 
+Elliptic Curve Digital Signature Algorithm. Current standard for digital signatures — quantum-vulnerable. To be replaced by ML-DSA (CRYSTALS-Dilithium) under NIST PQC standards.
 
-Event-Driven Architecture. Architecture pattern where services communicate via events rather than direct calls — enables loose coupling and real-time processing. 
+Event-Driven Architecture. Architecture pattern where services communicate via events rather than direct calls — enables loose coupling and real-time processing.
 
-**EU AI Act** 
+**EU AI Act**
 
-**Event Mesh** 
+**Event Mesh**
 
-EU Artificial Intelligence Act. World's first comprehensive AI regulation. Classifies AI by risk tier (unacceptable, high, limited, minimal). High-risk AI enforcement: August 2026. 
+EU Artificial Intelligence Act. World's first comprehensive AI regulation. Classifies AI by risk tier (unacceptable, high, limited, minimal). High-risk AI enforcement: August 2026.
 
-Distributed event routing infrastructure connecting multiple event brokers across clouds and regions. Enables global event delivery. 
+Distributed event routing infrastructure connecting multiple event brokers across clouds and regions. Enables global event delivery.
 
-## **F** 
+## **F**
 
-**FIDO2 FinOps Fitness Function** 
+**FIDO2 FinOps Fitness Function**
 
-Fast Identity Online 2. Authentication standard enabling passwordless login using public-key cryptography. Basis for passkeys. 
+Fast Identity Online 2. Authentication standard enabling passwordless login using public-key cryptography. Basis for passkeys.
 
-Cloud Financial Operations. Practice of optimising cloud costs through engineering, finance, and business alignment. Extended to AI FinOps for LLM token cost governance. 
+Cloud Financial Operations. Practice of optimising cloud costs through engineering, finance, and business alignment. Extended to AI FinOps for LLM token cost governance.
 
-Automated test that measures an architecture characteristic (e.g., coupling, latency, security posture). Used to govern architectural drift. 
+Automated test that measures an architecture characteristic (e.g., coupling, latency, security posture). Used to govern architectural drift.
 
-## **G** 
+## **G**
 
 |**GDPR**|General Data Protection Regulation. EU data protection law governing personal data<br>processing. Article 22: rights against solely automated decisions. Article 17: right to<br>erasure.|
 |---|---|
@@ -170,25 +170,25 @@ Automated test that measures an architecture characteristic (e.g., coupling, lat
 |**ISO/IEC 27090**|International standard providing guidance on AI cybersecurity including prompt<br>injection, adversarial attacks, and privilege escalation through tool chains. Finalised<br>March 2026.|
 |**ISO 20022**|International standard for financial messaging. XML-based successor to SWIFT MT<br>formats for payment and securities messaging.|
 
-## **J** 
+## **J**
 
-**JWT JIT** 
+**JWT JIT**
 
-JSON Web Token. Compact, URL-safe token format for representing claims between parties. Used for API authentication and authorisation. 
+JSON Web Token. Compact, URL-safe token format for representing claims between parties. Used for API authentication and authorisation.
 
-Just-in-Time. Access provisioning model where permissions are granted only when needed for a specific task and automatically revoked afterwards. 
+Just-in-Time. Access provisioning model where permissions are granted only when needed for a specific task and automatically revoked afterwards.
 
-## **K** 
+## **K**
 
-**KMS KPIs L LLM LLM Gateway** 
+**KMS KPIs L LLM LLM Gateway**
 
-Key Management Service. Cloud service for creating, managing, and controlling cryptographic keys (AWS KMS, Azure Key Vault, Google Cloud KMS). 
+Key Management Service. Cloud service for creating, managing, and controlling cryptographic keys (AWS KMS, Azure Key Vault, Google Cloud KMS).
 
-Key Performance Indicators. Measurable values used to track progress toward strategic objectives. 
+Key Performance Indicators. Measurable values used to track progress toward strategic objectives.
 
-Large Language Model. AI model trained on vast text corpora capable of natural language understanding and generation (GPT-4, Claude, Gemini). 
+Large Language Model. AI model trained on vast text corpora capable of natural language understanding and generation (GPT-4, Claude, Gemini).
 
-Centralised entry point for all LLM API calls that enforces: authentication, PII scrubbing, injection detection, model routing, caching, cost attribution, and audit logging. 
+Centralised entry point for all LLM API calls that enforces: authentication, PII scrubbing, injection detection, model routing, caching, cost attribution, and audit logging.
 
 |**M**<br>**MACH**|Microservices, API-first, Cloud-native, Headless. Architecture philosophy emphasising<br>composable, independently deployable technology components.|
 |---|---|
@@ -202,61 +202,61 @@ Centralised entry point for all LLM API calls that enforces: authentication, PII
 |**NIST PQC**|NIST Post-Quantum Cryptography Standardisation. Programme that selected<br>ML-KEM, ML-DSA, and SLH-DSA as quantum-resistant cryptographic standards.<br>Algorithms published August 2024.|
 |**NPV**|Net Present Value. Financial metric calculating the present value of future cash flows<br>minus the initial investment. Positive NPV = value-creating investment.|
 
-## **O** 
+## **O**
 
-**OIDC OPA** 
+**OIDC OPA**
 
-**OBO** 
+**OBO**
 
-OpenID Connect. Authentication layer on top of OAuth 2.0. Standard protocol for federated identity — widely used for enterprise SSO. 
+OpenID Connect. Authentication layer on top of OAuth 2.0. Standard protocol for federated identity — widely used for enterprise SSO.
 
-Open Policy Agent. CNCF policy engine for unified policy enforcement across the stack (infrastructure, Kubernetes, APIs, application). Policy written in Rego language. 
+Open Policy Agent. CNCF policy engine for unified policy enforcement across the stack (infrastructure, Kubernetes, APIs, application). Policy written in Rego language.
 
-On-Behalf-Of. OAuth2 flow (RFC 8693) where a service exchanges a user's token for a new token to call downstream services while maintaining user identity. 
+On-Behalf-Of. OAuth2 flow (RFC 8693) where a service exchanges a user's token for a new token to call downstream services while maintaining user identity.
 
-## **P** 
+## **P**
 
-**PAM PBC PCI-DSS PII PKI PQC PSD2** 
+**PAM PBC PCI-DSS PII PKI PQC PSD2**
 
-Privileged Access Management. Security controls for managing, monitoring, and controlling access to privileged accounts and sensitive systems (CyberArk, BeyondTrust). 
+Privileged Access Management. Security controls for managing, monitoring, and controlling access to privileged accounts and sensitive systems (CyberArk, BeyondTrust).
 
-Packaged Business Capability. Self-contained, independently deployable business capability exposed via APIs — building block of composable architecture. 
+Packaged Business Capability. Self-contained, independently deployable business capability exposed via APIs — building block of composable architecture.
 
-Payment Card Industry Data Security Standard. Security standard mandating controls for organisations handling cardholder data. 
+Payment Card Industry Data Security Standard. Security standard mandating controls for organisations handling cardholder data.
 
-Personally Identifiable Information. Any data that can identify a specific individual. Subject to GDPR and data protection regulations. 
+Personally Identifiable Information. Any data that can identify a specific individual. Subject to GDPR and data protection regulations.
 
-Public Key Infrastructure. Framework of policies, hardware, software, and procedures for managing digital certificates and public-key encryption. 
+Public Key Infrastructure. Framework of policies, hardware, software, and procedures for managing digital certificates and public-key encryption.
 
-Post-Quantum Cryptography. Cryptographic algorithms designed to be secure against both classical and quantum computers. 
+Post-Quantum Cryptography. Cryptographic algorithms designed to be secure against both classical and quantum computers.
 
-Payment Services Directive 2. EU directive mandating open banking, strong customer authentication, and third-party access to payment accounts. 
+Payment Services Directive 2. EU directive mandating open banking, strong customer authentication, and third-party access to payment accounts.
 
-## **R** 
+## **R**
 
-**RAG** 
+**RAG**
 
-**RBAC RFC 8693 RTO RPO** 
+**RBAC RFC 8693 RTO RPO**
 
-Retrieval-Augmented Generation. AI pattern combining LLM generation with retrieval from a knowledge base — grounds model responses in specific, current information. 
+Retrieval-Augmented Generation. AI pattern combining LLM generation with retrieval from a knowledge base — grounds model responses in specific, current information.
 
-Role-Based Access Control. Access control model where permissions are assigned to roles, and users are assigned to roles. 
+Role-Based Access Control. Access control model where permissions are assigned to roles, and users are assigned to roles.
 
-OAuth 2.0 Token Exchange. Standard protocol for exchanging one OAuth token for another — used for delegated access in multi-hop agent chains. 
+OAuth 2.0 Token Exchange. Standard protocol for exchanging one OAuth token for another — used for delegated access in multi-hop agent chains.
 
-Recovery Time Objective. Maximum acceptable time a system can be unavailable after a failure. 
+Recovery Time Objective. Maximum acceptable time a system can be unavailable after a failure.
 
-Recovery Point Objective. Maximum acceptable amount of data loss measured in time — how far back can a system recover to? 
+Recovery Point Objective. Maximum acceptable amount of data loss measured in time — how far back can a system recover to?
 
-## **S** 
+## **S**
 
-**SAML SAST SBB** 
+**SAML SAST SBB**
 
-Security Assertion Markup Language. XML-based standard for exchanging authentication and authorisation data between identity providers and service providers. 
+Security Assertion Markup Language. XML-based standard for exchanging authentication and authorisation data between identity providers and service providers.
 
-Static Application Security Testing. Analysing source code for security vulnerabilities without executing the program. 
+Static Application Security Testing. Analysing source code for security vulnerabilities without executing the program.
 
-Solution Building Block. TOGAF term for a specific product, tool, or technology used to implement an Architecture Building Block. 
+Solution Building Block. TOGAF term for a specific product, tool, or technology used to implement an Architecture Building Block.
 
 |**SBOM**|Software Bill of Materials. Machine-readable inventory of all software components and<br>dependencies in an application — required for supply chain security.|
 |---|---|
@@ -278,31 +278,31 @@ Solution Building Block. TOGAF term for a specific product, tool, or technology 
 |**V**<br>**vLLM**|Open-source LLM inference engine optimised for high throughput and low latency<br>using PagedAttention. Common choice for self-hosted LLM serving.|
 |**VMSS**|Virtual Machine Scale Set (Azure) / Auto Scaling Group (AWS). Cloud infrastructure<br>that automatically scales compute capacity based on demand.|
 
-## **W** 
+## **W**
 
-**WAF** 
+**WAF**
 
-**WORM W3C Trace Context** 
+**WORM W3C Trace Context**
 
-Web Application Firewall. Security control filtering HTTP/HTTPS traffic to protect against common attacks (OWASP Top 10). 
+Web Application Firewall. Security control filtering HTTP/HTTPS traffic to protect against common attacks (OWASP Top 10).
 
-Write Once Read Many. Storage that prevents modification or deletion of data after writing — required for regulatory audit trail immutability. 
+Write Once Read Many. Storage that prevents modification or deletion of data after writing — required for regulatory audit trail immutability.
 
-W3C standard for distributed tracing — defines HTTP headers for passing trace context across service boundaries. 
+W3C standard for distributed tracing — defines HTTP headers for passing trace context across service boundaries.
 
-## **Z** 
+## **Z**
 
-**Zero Trust Zachman Framework ZTA** 
+**Zero Trust Zachman Framework ZTA**
 
-Security model: 'never trust, always verify.' No implicit trust based on network location. Every request authenticated, authorised, and encrypted. Reference: NIST SP 800-207. 
+Security model: 'never trust, always verify.' No implicit trust based on network location. Every request authenticated, authorised, and encrypted. Reference: NIST SP 800-207.
 
-Enterprise architecture framework organising architectural artefacts across two dimensions: stakeholder perspectives and abstraction levels. 
+Enterprise architecture framework organising architectural artefacts across two dimensions: stakeholder perspectives and abstraction levels.
 
-Zero Trust Architecture. Implementation of Zero Trust principles through a combination of identity, device, network, and data controls. 
+Zero Trust Architecture. Implementation of Zero Trust principles through a combination of identity, device, network, and data controls.
 
-###### **CHEAT SHEET 1** 
+###### **CHEAT SHEET 1**
 
-### **REGULATORY QUICK REFERENCE** 
+### **REGULATORY QUICK REFERENCE**
 
 |**Regulation**|**Jurisdiction**|**Scope**|**Key Architecture Obligations**|**Penalties**|
 |---|---|---|---|---|
@@ -316,11 +316,11 @@ Zero Trust Architecture. Implementation of Zero Trust principles through a combi
 |NIS2|EU/EEA|Essential and<br>important entities<br>incl. financial|Cybersecurity risk management, incident<br>reporting, supply chain security, encryption|€10M or 2% global<br>turnover|
 |CSRD|EU/EEA|Large EU<br>companies (phased<br>from 2025)|Technology carbon reporting (Scope 1/2/3),<br>sustainability due diligence, double materiality<br>assessment|Public reporting<br>obligation, auditor<br>sign-off|
 
-###### **CHEAT SHEET 2** 
+###### **CHEAT SHEET 2**
 
-### **POST-QUANTUM CRYPTOGRAPHY MIGRATION GUIDE** 
+### **POST-QUANTUM CRYPTOGRAPHY MIGRATION GUIDE**
 
-_HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs arrive (est. 2028-2031). Long-lived sensitive data (10+ yr retention) must be protected_ **_now_** _. NIST mandate: migrate to PQC standards by 2035; financial services regulators expect earlier._ 
+*HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs arrive (est. 2028-2031). Long-lived sensitive data (10+ yr retention) must be protected* ***now*** *. NIST mandate: migrate to PQC standards by 2035; financial services regulators expect earlier.*
 
 |**Algorithm**<br>**Type**|**Replaces**|**NIST Status**|**Use Case**|
 |---|---|---|---|
@@ -341,9 +341,9 @@ _HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs
 |6th<br>SSH keys and code signing||Migrate DevOps infrastructur|e credentials|
 |7th<br>Legacy data at rest (archival)||Re-encrypt high-value long-t|erm archives with AES-256 + new key|
 
-###### **CHEAT SHEET 3** 
+###### **CHEAT SHEET 3**
 
-### **DORA COMPLIANCE ARCHITECTURE CHECKLIST** 
+### **DORA COMPLIANCE ARCHITECTURE CHECKLIST**
 
 |**DORA Requirement**|**Article**|**Architecture Control**|**Evidence Required**|
 |---|---|---|---|
@@ -357,9 +357,9 @@ _HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs
 |TLPT (Threat-Led Pen<br>Testing)|Art. 26|3-year TLPT cycle with approved external<br>red team|TLPT report, regulator notification,<br>remediation plan|
 |Exit Plans for Tier 1 Vendors|Art. 28|Documented, tested exit plan per Tier 1 ICT<br>vendor|Exit plan documents, annual test<br>records|
 
-###### **CHEAT SHEET 4** 
+###### **CHEAT SHEET 4**
 
-### **EU AI ACT — RISK TIER GUIDE** 
+### **EU AI ACT — RISK TIER GUIDE**
 
 |**Risk Category**|**Definition**|**Examples**|**Key Obligations**|
 |---|---|---|---|
@@ -382,9 +382,9 @@ _HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs
 |Conformity assess|ment<br>Art. 43|Self-assessment (most) or third-p|arty (biometrics, critical infra)|
 |EU database regist|ration<br>Art. 51|Register high-risk AI systems in E|U AI systems database before deployment|
 
-###### **CHEAT SHEET 5** 
+###### **CHEAT SHEET 5**
 
-### **CLOUD ARCHITECTURE PATTERNS** 
+### **CLOUD ARCHITECTURE PATTERNS**
 
 |**Pattern**|**Problem Solved**|**Key Components**<br>**When to Use**|
 |---|---|---|
@@ -401,9 +401,9 @@ _HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs
 |CQRS|Read/write separation for<br>scale|Command model, query model,<br>event store<br>High-read workloads,<br>event-sourced systems|
 |Saga|Distributed transactions|Choreography or orchestration,<br>compensating transactions<br>Multi-service transactions<br>requiring eventual consistency|
 
-###### **CHEAT SHEET 6** 
+###### **CHEAT SHEET 6**
 
-### **AI SECURITY THREAT MAP** 
+### **AI SECURITY THREAT MAP**
 
 |**Threat**|**Attack Vector**|
 |---|---|
@@ -422,51 +422,51 @@ _HNDL Risk: Adversaries are archiving encrypted data TODAY to decrypt when CRQCs
 |Membership Inference|Querying model to determine<br>if specific data was in training<br>set|
 |Supply Chain Attack|Compromised open-source<br>dependency or model weights|
 
-**Architectural Defence** Instruction hierarchy, input classifier, privilege separation 
+**Architectural Defence** Instruction hierarchy, input classifier, privilege separation
 
-Zero-trust treatment of external content, RAG chunk signing Provenance chain, canary records, differential privacy 
+Zero-trust treatment of external content, RAG chunk signing Provenance chain, canary records, differential privacy
 
-Authenticated ingestion, corpus signing, source tiering Rate limiting, query pattern monitoring, output perturbation Encrypted registry, HSM key protection, DLP, access audit SPIFFE identity, tool permission model, sandbox, blast radius limits 
+Authenticated ingestion, corpus signing, source tiering Rate limiting, query pattern monitoring, output perturbation Encrypted registry, HSM key protection, DLP, access audit SPIFFE identity, tool permission model, sandbox, blast radius limits
 
-Tool registry, JIT grants, OPA enforcement Differential privacy in training 
+Tool registry, JIT grants, OPA enforcement Differential privacy in training
 
-SBOM, SCA scanning, model signing, container signing 
+SBOM, SCA scanning, model signing, container signing
 
-###### **Detection Signal** 
+###### **Detection Signal**
 
-Output classifier detects instruction leakage 
+Output classifier detects instruction leakage
 
-Agent attempts unexpected tool calls 
+Agent attempts unexpected tool calls
 
-Canary query wrong answers, fairness drift 
+Canary query wrong answers, fairness drift
 
-Canary queries, consistency checks vs baseline 
+Canary queries, consistency checks vs baseline
 
-High query volume, systematic input patterns 
+High query volume, systematic input patterns
 
-Anomalous model registry access 
+Anomalous model registry access
 
-Anomalous tool call patterns, scope violations 
+Anomalous tool call patterns, scope violations
 
-Tool call rejected by policy engine Statistical analysis of output confidence patterns 
+Tool call rejected by policy engine Statistical analysis of output confidence patterns
 
-CVE alerts, integrity check failures 
+CVE alerts, integrity check failures
 
-###### **CHEAT SHEET 7** 
+###### **CHEAT SHEET 7**
 
-### **IDENTITY & ACCESS PATTERNS** 
+### **IDENTITY & ACCESS PATTERNS**
 
-**Pattern Standard Use Case** Human AuthN — OIDC/SAML Workforce login to applications SSO Machine-to-Machine OAuth2 Client Service-to-service API calls Credentials Delegated User RFC 8693 Token Agent acting on behalf of user Context Exchange Workload Identity SPIFFE/SPIRE Agent and service authentication Just-in-Time Access PAM + Vault Privileged session access Federated Identity SAML/OIDC Cross-org or cross-cloud trust Federation Passkey/FIDO2 WebAuthn Passwordless user authentication Managed Identity Azure MI / AWS Cloud workload identity IAM Role 
+**Pattern Standard Use Case** Human AuthN — OIDC/SAML Workforce login to applications SSO Machine-to-Machine OAuth2 Client Service-to-service API calls Credentials Delegated User RFC 8693 Token Agent acting on behalf of user Context Exchange Workload Identity SPIFFE/SPIRE Agent and service authentication Just-in-Time Access PAM + Vault Privileged session access Federated Identity SAML/OIDC Cross-org or cross-cloud trust Federation Passkey/FIDO2 WebAuthn Passwordless user authentication Managed Identity Azure MI / AWS Cloud workload identity IAM Role
 
-###### **Key Claims/Tokens** 
+###### **Key Claims/Tokens**
 
-id_token: sub, email, groups; access_token: scope access_token: client_id, scope, aud sub=user, act={sub=agent}, scope=narrowed X.509 SVID: spiffe://domain/agent/type/id Time-limited credential, session recording Assertion from trusted IdP, local token issued Credential ID, authenticator assertion 
+id_token: sub, email, groups; access_token: scope access_token: client_id, scope, aud sub=user, act={sub=agent}, scope=narrowed X.509 SVID: spiffe://domain/agent/type/id Time-limited credential, session recording Assertion from trusted IdP, local token issued Credential ID, authenticator assertion
 
-Cloud-native credential, auto-rotated 
+Cloud-native credential, auto-rotated
 
-###### **CHEAT SHEET 8** 
+###### **CHEAT SHEET 8**
 
-### **INTERVIEW ANSWER FRAMEWORKS** 
+### **INTERVIEW ANSWER FRAMEWORKS**
 
 |**Framework**|**When to Use**|**Structure**|
 |---|---|---|
@@ -488,41 +488,41 @@ Cloud-native credential, auto-rotated
 |C4 Model|Architecture<br>diagrams|Context→Container→Component→<br>Code diagrams|
 |OKRs|Goal-setting/leader<br>ship questions|Objectives (qualitative) + Key Results<br>(measurable, time-bound)|
 
-###### **Pitfall** 
+###### **Pitfall**
 
-Getting lost in phases — focus on business value, not process 
+Getting lost in phases — focus on business value, not process
 
-Too abstract — pair with concrete examples Implementing as naming convention only — must change how teams interact Underinvesting in H1 — core must be stable before transform Binary thinking — must be proportionate, not all-or-nothing Optimising metrics rather than the outcomes they represent Staying in Crawl — must have aggressive Walk/Run timeline Skipping Context — always start with business context, not technical components KRs that are activities not outcomes: 'run 3 workshops' vs '40% faster deployment' 
+Too abstract — pair with concrete examples Implementing as naming convention only — must change how teams interact Underinvesting in H1 — core must be stable before transform Binary thinking — must be proportionate, not all-or-nothing Optimising metrics rather than the outcomes they represent Staying in Crawl — must have aggressive Walk/Run timeline Skipping Context — always start with business context, not technical components KRs that are activities not outcomes: 'run 3 workshops' vs '40% faster deployment'
 
-###### **CHEAT SHEET 9** 
+###### **CHEAT SHEET 9**
 
-### **DISTINGUISHED ARCHITECT SIGNALS** 
+### **DISTINGUISHED ARCHITECT SIGNALS**
 
-_These are the behaviours that separate Distinguished from Principal in senior architecture interviews. Practice each one deliberately — they are learnable._ 
+*These are the behaviours that separate Distinguished from Principal in senior architecture interviews. Practice each one deliberately — they are learnable.*
 
-**Interview Behaviour Principal** Answering questions Answers the question asked. Technically complete. Technical depth Deep in 2-3 areas. Surface-level elsewhere. Business connection Can explain business impact when asked. Ambiguity handling Asks clarifying questions before answering. Tradeoff articulation Describes tradeoffs when discussing options. Regulatory awareness Aware of relevant regulations. Mentions them. Organisational awareness Technical solution is technically sound. Whiteboard Draws accurate technical diagrams. Follow-up challenges Defends original answer. May concede under pressure. 
+**Interview Behaviour Principal** Answering questions Answers the question asked. Technically complete. Technical depth Deep in 2-3 areas. Surface-level elsewhere. Business connection Can explain business impact when asked. Ambiguity handling Asks clarifying questions before answering. Tradeoff articulation Describes tradeoffs when discussing options. Regulatory awareness Aware of relevant regulations. Mentions them. Organisational awareness Technical solution is technically sound. Whiteboard Draws accurate technical diagrams. Follow-up challenges Defends original answer. May concede under pressure.
 
-Executive communication Can summarise in 5 minutes. 
+Executive communication Can summarise in 5 minutes.
 
-###### **Distinguished** 
+###### **Distinguished**
 
-Reframes the question to surface underlying concern. Answers both. Deep across multiple domains. Explicitly acknowledges knowledge boundaries. Leads with business impact. Translates every technical decision to financial/strategic terms. 
+Reframes the question to surface underlying concern. Answers both. Deep across multiple domains. Explicitly acknowledges knowledge boundaries. Leads with business impact. Translates every technical decision to financial/strategic terms.
 
-Makes assumptions explicit, answers with them, then asks if the assumption holds. 
+Makes assumptions explicit, answers with them, then asks if the assumption holds.
 
-Articulates tradeoffs before being asked. Explains which tradeoff they would make and why. 
+Articulates tradeoffs before being asked. Explains which tradeoff they would make and why.
 
-Integrates regulatory requirements into architecture as first-class constraints. Knows specific articles/sections. 
+Integrates regulatory requirements into architecture as first-class constraints. Knows specific articles/sections.
 
-Anticipates organisational and political impediments. Designs for adoption, not just correctness. 
+Anticipates organisational and political impediments. Designs for adoption, not just correctness.
 
-Draws diagrams that tell a story. Labels for the audience in the room, not for themselves. 
+Draws diagrams that tell a story. Labels for the audience in the room, not for themselves.
 
-Updates view when presented with new information. Holds position when pushback is not evidence-based. 
+Updates view when presented with new information. Holds position when pushback is not evidence-based.
 
-Has a 30-second version ready. Leads with the conclusion. Follows with evidence only if asked. 
+Has a 30-second version ready. Leads with the conclusion. Follows with evidence only if asked.
 
-##### **QUICK-FIRE INTERVIEW TIPS** 
+##### **QUICK-FIRE INTERVIEW TIPS**
 
 |**Tip**|**Description**|
 |---|---|
@@ -538,19 +538,19 @@ Has a 30-second version ready. Leads with the conclusion. Follows with evidence 
 |boundaries|certainty levels.|
 |Connect to the business|Every technical choice must connect to a business outcome. If you can't articulate the connection,<br>reconsider the choice.|
 
-**Tip** Whiteboard discipline 
+**Tip** Whiteboard discipline
 
-###### **Description** 
+###### **Description**
 
-Start with a title. Label all boxes. Show data flow direction. Write the key decision/question the diagram answers. 
+Start with a title. Label all boxes. Show data flow direction. Write the key decision/question the diagram answers.
 
-Follow-up challenge test 
+Follow-up challenge test
 
-Executive summary habit Regulatory integration 
+Executive summary habit Regulatory integration
 
-When challenged, ask yourself: is this new information or just pressure? Update your view only for the former. End every answer with a one-sentence summary: 'In short: [conclusion in plain business terms].' In financial services: proactively mention the relevant regulation. Don't wait to be asked. It signals domain depth. 
+When challenged, ask yourself: is this new information or just pressure? Update your view only for the former. End every answer with a one-sentence summary: 'In short: [conclusion in plain business terms].' In financial services: proactively mention the relevant regulation. Don't wait to be asked. It signals domain depth.
 
-### **EA INTERVIEW HANDBOOK — COMPLETE SERIES** 
+### **EA INTERVIEW HANDBOOK — COMPLETE SERIES**
 
 |**Volume**|**Title**|**Contents**|
 |---|---|---|

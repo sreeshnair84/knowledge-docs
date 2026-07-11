@@ -128,19 +128,19 @@ async def run_underwriting_agent(application_id: str, context: dict) -> dict:
             "trace.id": get_parent_trace_id(),  # correlate to workflow trace
         },
     ) as span:
-        
+
         graph = build_underwriting_graph()
         result = await graph.ainvoke(
             {"application_id": application_id, "context": context},
             config={"configurable": {"thread_id": application_id}},
         )
-        
+
         # Record agent-level metrics in the span
         span.set_attribute("agent.iterations", result["iteration_count"])
         span.set_attribute("agent.tokens_used", result["total_tokens"])
         span.set_attribute("agent.tool_calls", len(result["tool_calls"]))
         span.set_attribute("agent.decision", result["decision"])
-        
+
         return result
 ```
 
@@ -214,12 +214,12 @@ async def record_business_outcome(
         "prompt_version": prompt_version,
         "model_id": model_id,
     }
-    
+
     decision_distribution.record(1, attributes)
-    
+
     if overridden:
         human_override.add(1, attributes)
-    
+
     if decision == "approved":
         loans_approved_amount.record(amount, attributes)
 ```
@@ -240,12 +240,12 @@ class LoanWorkflow:
     @workflow.run
     async def run(self, application_id: str) -> dict:
         tracer = trace.get_tracer("workflow")
-        
+
         with tracer.start_as_current_span(f"workflow.loan_approval.{application_id}") as root_span:
             # Extract trace context for injection into activity
             carrier = {}
             inject(carrier)  # puts traceparent + tracestate into carrier dict
-            
+
             # Pass carrier to agent activity so it continues the same trace
             result = await workflow.execute_activity(
                 run_agent_activity,
@@ -260,7 +260,7 @@ async def run_agent_activity(input_data: dict) -> dict:
     # Restore the trace context from the workflow
     ctx = extract(input_data["trace_carrier"])
     token = context.attach(ctx)
-    
+
     try:
         tracer = trace.get_tracer("agent")
         with tracer.start_as_current_span("activity.agent_run") as span:
@@ -337,20 +337,20 @@ groups:
         for: 2m
         annotations:
           summary: "Workflow error rate above 2% — check Temporal for failed workflows"
-      
+
       - alert: AgentIterationsHigh
         expr: histogram_quantile(0.95, agent.iterations) > 10
         for: 5m
         annotations:
           summary: "Agent p95 iterations above 10 — possible reasoning loops forming"
-      
+
       - alert: BusinessOverrideRateHigh
         expr: business.human_override_rate > 0.15
         for: 10m
         annotations:
           summary: "Human override rate above 15% — agent decision quality degraded"
           runbook: "https://wiki.internal/runbooks/agent-override-rate-high"
-      
+
       - alert: PromptVersionDrift
         expr: count(distinct(business.decision{prompt_version=~".+"})) > 2
         for: 0m
@@ -367,25 +367,25 @@ When a stakeholder questions a specific agent decision weeks after it happened, 
 ```python
 async def reconstruct_decision(decision_id: str) -> dict:
     """Full reconstruction of an agent decision for audit or debugging."""
-    
+
     # Retrieve the audit record (immutable — stored at decision time)
     record = await audit_db.get_decision(decision_id)
-    
+
     # Retrieve the prompt version active at that time
     prompt = await prompt_registry.get_version(
         record.prompt_id, record.prompt_version
     )
-    
+
     # Retrieve the tool call log
     tool_calls = await trace_store.get_tool_calls(record.run_id)
-    
+
     # Reconstruct the full conversation the LLM saw
     reconstructed_messages = rebuild_conversation(
         system_prompt=prompt.content,
         tool_calls=tool_calls,
         tool_results=record.tool_results,
     )
-    
+
     return {
         "decision_id": decision_id,
         "made_at": record.timestamp.isoformat(),
@@ -405,7 +405,7 @@ This reconstruction capability is a regulatory requirement in many jurisdictions
 ## Tool Choices
 
 | Use Case | Tool | Why |
-|---|---|---|
+| --- | --- | --- |
 | Workflow traces | Temporal Web UI | Built-in, zero setup, full event log |
 | Agent reasoning traces | LangSmith | First-class LangGraph support, trace diffing |
 | Distributed tracing | Grafana Tempo + OpenTelemetry | Correlate across all systems |

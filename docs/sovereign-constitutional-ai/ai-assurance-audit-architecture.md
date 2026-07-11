@@ -94,7 +94,7 @@ THREE LINES OF DEFENSE FOR AI
 ### 1.3 Assurance Framework Components
 
 | Component | Purpose | Frequency | Owner |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **AI Impact Assessment** | Pre-deployment risk and benefit analysis | Before each significant deployment | RAIO |
 | **Model Card** | Documented model performance, limitations, intended use | Each model version | ML team + RAIO |
 | **AI FactSheet / System Card** | System-level documentation (model + deployment context) | Each system deployment | Solution Architect + RAIO |
@@ -196,7 +196,7 @@ Audit Query API (read-only)
 ### 2.3 Audit Ledger Retention Policy
 
 | AI System Tier | Minimum retention | Regulatory driver |
-|---|---|---|
+| --- | --- | --- |
 | **SL4 / Tier 1 Critical** | 10 years | EU AI Act Art. 12; SR 11-7 |
 | **SL3 / Tier 2 Significant** | 7 years | GDPR; DORA; MiFID II |
 | **SL2 / Tier 3 Standard** | 3 years | Internal policy |
@@ -209,7 +209,7 @@ Audit Query API (read-only)
 ### 3.1 Explainability Requirements by Stakeholder
 
 | Stakeholder | Required explanation type | Format | Timing |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Individual user** | Why did the AI make this decision? | Plain language, < 200 words | On request, within 30 days |
 | **Regulator** | How does this model work? What are its limitations? | Technical + non-technical (model card) | Before deployment + on examination |
 | **Court / legal** | Reconstruct the specific decision chain | Audit ledger + full reasoning trace | On order |
@@ -240,6 +240,7 @@ shap.plots.waterfall(shap_values[applicant_idx])
 ### 3.3 Global Explainability (Model-Level)
 
 Global explanations describe overall model behavior:
+
 - **Feature importance** — which inputs most influence predictions overall
 - **Partial dependence plots** — how each feature affects output across its range
 - **Model cards** — documented intended use, performance, limitations, biases
@@ -281,7 +282,7 @@ ISO 42001 is the international standard for AI Management Systems (AIMS). It spe
 **Key clauses for assurance:**
 
 | Clause | Requirement | Evidence required |
-|---|---|---|
+| --- | --- | --- |
 | 6.1 | Risk and opportunity assessment | AI risk register; risk assessment methodology |
 | 8.4 | AI system impact assessment | AI Impact Assessment documents |
 | 9.1 | Performance monitoring | Monitoring metrics; fairness reports |

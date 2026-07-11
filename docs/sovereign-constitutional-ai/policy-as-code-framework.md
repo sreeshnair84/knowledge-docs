@@ -25,13 +25,14 @@ covers_version: \"as of 2026-07-10\"
 ## 1. Policy Engine Comparison
 
 | Engine | Policy language | Paradigm | Strengths | AI governance use case |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **OPA (Open Policy Agent)** | Rego | General-purpose; unified policy | Kubernetes-native; broad ecosystem; HTTP API | Authorization decisions; input/output filtering; compliance checks |
 | **Cedar** | Cedar | Fine-grained; entity-based; fast | AWS-native; explicitly safe (formally verified); easy reasoning | Agent capability controls; resource access; action authorization |
 | **OpenFGA** | JSON tuples | Relationship-based (Zanzibar) | Google-inspired; great for social graphs and delegated access | Agent delegation chains; multi-principal access; trust hierarchies |
 | **Casbin** | Model + policy files | RBAC/ABAC/PBAC | Simple to deploy; multi-language SDK | Basic RBAC for agent tool access |
 
 **Recommended combination for enterprise constitutional AI:**
+
 - **Cedar** for agent capability authorization (what agents can do and to what resources)
 - **OPA** for complex compliance checks (multi-condition, cross-system)
 - **OpenFGA** for delegation chains (orchestrator → worker → tool authorization)
@@ -285,7 +286,7 @@ Policy-Based Access Control (PBAC) goes beyond role-based and attribute-based co
 policy:
   id: "POL-AGENT-CREDIT-001"
   name: "Credit Decision Authorization"
-  
+
   statements:
     - effect: ALLOW
       principal:
@@ -303,7 +304,7 @@ policy:
         - constitutional_compliance_rate: ">= 0.99"
         - fair_lending_check: "COMPLETED"
         - market_hours: "true"
-    
+
     - effect: ALLOW
       principal:
         type: Agent
@@ -330,7 +331,7 @@ The RAI Control Library is a catalogued set of reusable policy controls — the 
 ### 5.1 Core Control Catalog
 
 | Control ID | Category | Name | Policy engine | Enforcement |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **RAI-001** | Privacy | PII detection and blocking | OPA | Block output if PII detected for unauthorized recipient |
 | **RAI-002** | Privacy | Data residency enforcement | Cedar | Block data transfer to non-sovereign destination |
 | **RAI-003** | Fairness | Demographic parity gate | OPA | Block batch decision if demographic parity gap > threshold |

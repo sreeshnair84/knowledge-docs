@@ -31,7 +31,7 @@ The SDK is distinct from the raw Messages API (which you manage entirely) and fr
 ### Agent SDK vs Managed Agents — Decision Matrix
 
 | Criterion | Agent SDK | Managed Agents |
-|-----------|-----------|----------------|
+| ----------- | ----------- | ---------------- |
 | **Where it runs** | Your infrastructure | Anthropic-hosted sandbox |
 | **Integration style** | Python/TypeScript library | REST API calls |
 | **Data residency** | Stays in your environment | Processed in Anthropic's sandbox |
@@ -42,12 +42,14 @@ The SDK is distinct from the raw Messages API (which you manage entirely) and fr
 | **Best for** | Complex custom workflows, data-sensitive tasks | Rapid prototyping, light integration |
 
 **Choose Agent SDK when:**
+
 - Your data must not leave your infrastructure
 - You need custom tools, custom state stores, or custom cost controls
 - You are building multi-tenant SaaS with per-customer billing isolation
 - You need circuit breakers, custom retry logic, or partial-result recovery
 
 **Choose Managed Agents when:**
+
 - You want zero infrastructure overhead
 - You are prototyping or building internal tools with standard capability sets
 - You are integrating Claude into a product that already uses Anthropic's REST APIs
@@ -55,7 +57,7 @@ The SDK is distinct from the raw Messages API (which you manage entirely) and fr
 ### SDK vs Raw Messages API
 
 | Capability | Raw Messages API | Agent SDK |
-|------------|-----------------|-----------|
+| ------------ | ----------------- | ----------- |
 | Tool execution loop | You write it | Built-in |
 | Subagent spawning | Manual | `agent.spawn_subagent()` |
 | Session persistence | You manage | Automatic |
@@ -340,7 +342,7 @@ async def run_command(command: str) -> dict:
 The Agent SDK ships with eight built-in tools you can enable by name:
 
 | Built-in Tool | Description | Governance Note |
-|---------------|-------------|-----------------|
+| --------------- | ------------- | ----------------- |
 | `file_editor` | Read, write, edit files | Require HITL for writes outside sandbox |
 | `bash` | Execute shell commands | Block network access; apply allow-list |
 | `web_search` | Search the web | Log queries; apply content filtering |
@@ -1230,7 +1232,7 @@ def batch_classify(texts: list[str]) -> list[str]:
 Match model to task complexity. Over-specifying the model is the single largest source of unnecessary cost in production agentic systems.
 
 | Task Type | Recommended Model | Rationale |
-|-----------|-------------------|-----------|
+| ----------- | ------------------- | ----------- |
 | Classification, routing, short extraction | `claude-haiku-4-5` | Sub-100ms, minimal reasoning required |
 | Summarisation (< 10K tokens) | `claude-haiku-4-5` | Fast, accurate, cost-efficient |
 | Code generation (< 500 lines) | `claude-sonnet-4-6` | Strong coding, good speed |
@@ -1563,7 +1565,7 @@ async def traced_agent_run(prompt: str, carrier: dict | None = None) -> str:
 ### Key Metrics to Track
 
 | Metric | Description | Alert Threshold |
-|--------|-------------|-----------------|
+| -------- | ------------- | ----------------- |
 | `task_completion_rate` | % tasks finishing without error | < 95% |
 | `avg_tokens_per_task` | Token efficiency over time | > 3× baseline |
 | `tool_error_rate` | % tool calls returning errors | > 5% |
@@ -1773,12 +1775,14 @@ async def stress_test(agent: Agent, n_concurrent: int = 20, n_total: int = 100):
 Managed Agents is a hosted REST product where Anthropic runs the agent sandbox. You call it via HTTP and receive results without managing any infrastructure.
 
 **Switch from Agent SDK to Managed Agents when:**
+
 - You need zero-infrastructure deployment for a lightweight tool
 - You are building a product integration that just needs Claude to act in a sandboxed environment
 - Your data is not sensitive and does not need to stay on your infrastructure
 - You are prototyping and want to defer infrastructure decisions
 
 **Stay on Agent SDK when:**
+
 - Data residency or network isolation is required
 - You need custom state stores, billing, or rate limiting
 - Your agent orchestration logic is complex (multi-tenant, multi-agent DAGs)
@@ -1837,7 +1841,7 @@ For enterprise cloud deployment (AWS Bedrock, GCP Vertex AI, Azure AI Foundry), 
 From **June 15, 2026**, Agent SDK usage is included in Claude.ai subscription plans via a monthly credit allocation. Credits are consumed per SDK agent run, distinct from direct API token billing.
 
 | Plan | Monthly Credits | Approx. Agent Runs |
-|------|-----------------|--------------------|
+| ------ | ----------------- | -------------------- |
 | Pro | $20/month | ~100–400 typical tasks |
 | Max 5× | $100/month | ~500–2,000 typical tasks |
 | Max 20× | $200/month | ~1,000–4,000 typical tasks |
@@ -1846,12 +1850,14 @@ From **June 15, 2026**, Agent SDK usage is included in Claude.ai subscription pl
     Credits apply when using the Agent SDK through Claude.ai. Direct API usage (raw Messages API) is billed at standard token rates regardless of subscription plan. If you are building a SaaS product that bills your own customers for agent usage, use the API directly with your API key, not subscription credits.
 
 **Credit consumption factors:**
+
 - Model selected (Haiku < Sonnet < Fable < Opus)
 - Total tokens per run (input + output + cache operations)
 - Number of tool calls per run
 - Subagent spawning (each subagent run consumes separate credits)
 
 **Credit optimisation:**
+
 - Use Haiku for high-volume, simple subagent tasks
 - Enable prompt caching for repeated stable context blocks
 - Set `max_tokens` to the minimum required for each task type

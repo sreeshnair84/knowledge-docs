@@ -124,13 +124,13 @@ class LoanApprovalWorkflow:
         self._approval_received = False
         self._approved = False
         self._approver_notes = ""
-    
+
     @workflow.signal
     async def receive_approval(self, approved: bool, notes: str = "") -> None:
         self._approval_received = True
         self._approved = approved
         self._approver_notes = notes
-    
+
     @workflow.run
     async def run(self, application_id: str) -> dict:
         # Phase 1: automated analysis
@@ -139,7 +139,7 @@ class LoanApprovalWorkflow:
             application_id,
             start_to_close_timeout=timedelta(minutes=5),
         )
-        
+
         # Phase 2: human approval gate
         # Notify approvers via email/Slack/Teams
         await workflow.execute_activity(
@@ -147,7 +147,7 @@ class LoanApprovalWorkflow:
             {"application_id": application_id, "analysis": analysis},
             start_to_close_timeout=timedelta(seconds=30),
         )
-        
+
         # Wait for human signal — timeout after 48 hours
         try:
             await workflow.wait_condition(
@@ -156,10 +156,10 @@ class LoanApprovalWorkflow:
             )
         except asyncio.TimeoutError:
             return {"status": "expired", "reason": "No approval within 48 hours"}
-        
+
         if not self._approved:
             return {"status": "rejected", "notes": self._approver_notes}
-        
+
         # Phase 3: execute approved decision
         result = await workflow.execute_activity(
             disburse_loan,
@@ -220,7 +220,7 @@ from langgraph.types import Command, interrupt
 def research_step(state: WorkflowState) -> WorkflowState:
     # Execute some research
     findings = research_tool.invoke(state["query"])
-    
+
     # Interrupt: ask human for guidance before proceeding
     human_guidance = interrupt({
         "question": "The research found conflicting data. Which source should I prioritize?",
@@ -228,13 +228,13 @@ def research_step(state: WorkflowState) -> WorkflowState:
         "option_b": "Industry reports (more current, less rigorous)",
         "findings_so_far": findings,
     })
-    
+
     # Agent incorporates guidance and continues
     if human_guidance["choice"] == "A":
         state["source_preference"] = "academic"
     else:
         state["source_preference"] = "industry"
-    
+
     return {"findings": findings, "source_preference": state["source_preference"]}
 
 # Human sends response via update_state
@@ -287,7 +287,7 @@ APPROVAL_ROUTING = {
 def assess_risk(decision: dict) -> RiskLevel:
     amount = decision.get("amount", 0)
     is_irreversible = decision.get("irreversible", False)
-    
+
     if is_irreversible and amount > 100_000:
         return RiskLevel.CRITICAL
     elif amount > 50_000 or is_irreversible:
@@ -305,10 +305,10 @@ class ApprovalWithEscalation:
     @workflow.run
     async def run(self, request: ApprovalRequest) -> ApprovalResult:
         routing = APPROVAL_ROUTING[request.risk_level]
-        
+
         # Primary approvers
         await send_approval_request(routing["approvers"])
-        
+
         try:
             result = await workflow.wait_condition(
                 lambda: self._approval_received,
@@ -317,12 +317,12 @@ class ApprovalWithEscalation:
         except asyncio.TimeoutError:
             # Escalate to next level
             await send_escalation_alert(routing["approvers"] + ["director"])
-            
+
             result = await workflow.wait_condition(
                 lambda: self._approval_received,
                 timeout=timedelta(hours=2),  # tight escalation window
             )
-        
+
         return self._approval_result
 ```
 
@@ -403,7 +403,7 @@ async def record_override(
     notes: str,
 ) -> None:
     await audit_db.record_override(decision_id, reviewer_id, override_decision, reason, notes)
-    
+
     # Route to the right improvement process
     if reason in (OverrideReason.HALLUCINATION, OverrideReason.INCORRECT_POLICY):
         await flag_for_prompt_review(decision_id, reason)
@@ -426,7 +426,7 @@ class AppealsWorkflow:
             get_decision_record, original_decision_id,
             start_to_close_timeout=timedelta(seconds=10),
         )
-        
+
         # Route appeals to a different (more senior) approver pool
         await workflow.execute_activity(
             notify_appeals_reviewers,
@@ -437,13 +437,13 @@ class AppealsWorkflow:
             },
             start_to_close_timeout=timedelta(seconds=30),
         )
-        
+
         # Wait for appeals decision
         await workflow.wait_condition(
             lambda: self._appeals_decision_received,
             timeout=timedelta(hours=48),
         )
-        
+
         if self._appeals_upheld:
             return {"outcome": "original_decision_upheld", "notes": self._appeals_notes}
         else:

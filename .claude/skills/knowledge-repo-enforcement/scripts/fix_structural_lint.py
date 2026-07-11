@@ -8,6 +8,7 @@ Fix remaining structural pre-commit lint failures:
 - workshop-transcript missing session_type/related_pages/audience section
 - IBM quantum guide missing universal frontmatter
 """
+
 import re
 from pathlib import Path
 
@@ -114,27 +115,46 @@ def main():
         fix(f, changes_fm=changes or None, add_sections=sections or None)
 
     # 3. certification missing exam_code, exam_validity
-    fix("docs/coding-tools/claude/ccaf-exam-prep-complete.md",
-        changes_fm={"exam_code": '"CCAF"', "exam_validity": '"2026"'})
+    fix(
+        "docs/coding-tools/claude/ccaf-exam-prep-complete.md",
+        changes_fm={"exam_code": '"CCAF"', "exam_validity": '"2026"'},
+    )
 
     # 4. ea-masterclass/index.md multi-part-series fields
-    fix("docs/ea-masterclass/index.md",
-        changes_fm={"series_part": "0", "series_index": '"index"'})
+    fix("docs/ea-masterclass/index.md", changes_fm={"series_part": "0", "series_index": '"index"'})
 
     # 5. engagement-case-study missing industry, client_type, engagement_period
     case_industry = {
-        "docs/ea-masterclass/module-13-case-studies/global-bank.md":
-            {"industry": "finance", "client_type": '"Global Bank"', "engagement_period": '"2025"'},
-        "docs/ea-masterclass/module-13-case-studies/government.md":
-            {"industry": "government", "client_type": '"Government Agency"', "engagement_period": '"2025"'},
-        "docs/ea-masterclass/module-13-case-studies/healthcare.md":
-            {"industry": "healthcare", "client_type": '"Healthcare System"', "engagement_period": '"2025"'},
-        "docs/ea-masterclass/module-13-case-studies/manufacturing.md":
-            {"industry": "manufacturing", "client_type": '"Manufacturing Enterprise"', "engagement_period": '"2025"'},
-        "docs/ea-masterclass/module-13-case-studies/retail.md":
-            {"industry": "retail", "client_type": '"Retail Corporation"', "engagement_period": '"2025"'},
-        "docs/ea-masterclass/module-13-case-studies/telecom.md":
-            {"industry": "telecommunications", "client_type": '"Telecom Provider"', "engagement_period": '"2025"'},
+        "docs/ea-masterclass/module-13-case-studies/global-bank.md": {
+            "industry": "finance",
+            "client_type": '"Global Bank"',
+            "engagement_period": '"2025"',
+        },
+        "docs/ea-masterclass/module-13-case-studies/government.md": {
+            "industry": "government",
+            "client_type": '"Government Agency"',
+            "engagement_period": '"2025"',
+        },
+        "docs/ea-masterclass/module-13-case-studies/healthcare.md": {
+            "industry": "healthcare",
+            "client_type": '"Healthcare System"',
+            "engagement_period": '"2025"',
+        },
+        "docs/ea-masterclass/module-13-case-studies/manufacturing.md": {
+            "industry": "manufacturing",
+            "client_type": '"Manufacturing Enterprise"',
+            "engagement_period": '"2025"',
+        },
+        "docs/ea-masterclass/module-13-case-studies/retail.md": {
+            "industry": "retail",
+            "client_type": '"Retail Corporation"',
+            "engagement_period": '"2025"',
+        },
+        "docs/ea-masterclass/module-13-case-studies/telecom.md": {
+            "industry": "telecommunications",
+            "client_type": '"Telecom Provider"',
+            "engagement_period": '"2025"',
+        },
     }
     for f, fields in case_industry.items():
         fix(f, changes_fm=fields)
@@ -172,14 +192,16 @@ def main():
             new_content = (
                 f'---\ntitle: "IBM Developer Quantum Certification Guide"\n'
                 f"date_created: {TODAY}\nlast_reviewed: {TODAY}\nstatus: current\n"
-                f'source_type: converted-pdf\ndoc_type: certification\n'
+                f"source_type: converted-pdf\ndoc_type: certification\n"
                 f'exam_code: "IBM-Quantum"\nexam_validity: "2026"\ncovers_version: "N/A"\n---\n'
             ) + content
             p.write_text(new_content, encoding="utf-8")
             print("  fixed: docs/quantum/IBM_Developer_Quantum_CertGuide.md (added frontmatter)")
         else:
-            fix("docs/quantum/IBM_Developer_Quantum_CertGuide.md",
-                changes_fm={"date_created": TODAY, "last_reviewed": TODAY, "status": "current"})
+            fix(
+                "docs/quantum/IBM_Developer_Quantum_CertGuide.md",
+                changes_fm={"date_created": TODAY, "last_reviewed": TODAY, "status": "current"},
+            )
 
     print("\nDone.")
 

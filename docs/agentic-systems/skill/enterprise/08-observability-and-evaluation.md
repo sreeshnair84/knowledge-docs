@@ -25,7 +25,7 @@ Despite that immaturity, adoption is already broad: major backends (Datadog, Hon
 **Core span types (from the spec and vendor implementations reviewed):**
 
 | Span | Key attributes |
-|---|---|
+| --- | --- |
 | `invoke_agent` (parent) | `gen_ai.system`, `agent.name`, `session.id` |
 | `chat` (LLM call, child) | `gen_ai.request.model`, `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`, `gen_ai.response.finish_reasons` |
 | `execute_tool` (child) | tool name, arguments (as events, not attributes — see below), latency, result status |
@@ -91,12 +91,13 @@ Session Trace          (owned by: platform/SRE — cross-turn continuity)
                 └── MCP Trace  (owned by: MCP server operator)
                      └── API Trace (owned by: backend system owner)
 ```
+
 Propagate `trace_id`/`session_id` via W3C Trace Context end-to-end so a single incident can be reconstructed across every ownership boundary above — critical in enterprises where the skill owner, tool owner, and backend owner are three different teams.
 
 ## 8.4 Observability tooling landscape
 
 | Category | Examples | Notes |
-|---|---|---|
+| --- | --- | --- |
 | LLM/agent-native observability platforms | Langfuse, LangSmith, Arize (Phoenix), MLflow (tracing) | Purpose-built for GenAI traces; increasingly OTel-ingesting rather than proprietary-only |
 | General APM/observability | Datadog, Grafana, New Relic, Honeycomb | Adding `gen_ai.*` support; good when GenAI observability must live alongside existing infra observability in one pane |
 | Hyperscaler-native | AWS CloudWatch (+ AgentCore Observability), Azure Monitor (+ Foundry tracing/evaluators), Google Cloud Trace (+ ADK trace tree/trajectory diagrams) | Tightest integration with the platform's own runtime; best default if single-cloud |
@@ -105,7 +106,7 @@ Propagate `trace_id`/`session_id` via W3C Trace Context end-to-end so a single i
 ## 8.5 Evaluation — what to measure
 
 | Dimension | Metric examples | Method |
-|---|---|---|
+| --- | --- | --- |
 | **Coverage** | % of representative task types with a passing skill/tool path | Golden dataset audit |
 | **Accuracy** | Correct final answer / correct action taken | Golden dataset + human or LLM-judge scoring |
 | **Correct tool/skill selection** | % of turns where the *right* skill/tool was chosen | Trace analysis against labeled intents |
@@ -148,4 +149,5 @@ Human review + approval (governance layer, file `10`)
         ▼
 New skill/tool version → regression suite → canary → full rollout
 ```
+
 Treat this loop as a first-class part of the observability program, not an afterthought — it's what turns a trace archive into a continuously improving system rather than a forensic-only tool.

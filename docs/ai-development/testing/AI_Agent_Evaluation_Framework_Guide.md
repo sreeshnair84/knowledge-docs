@@ -12,7 +12,9 @@ tags: ["ai-development", "testing"]
 ---
 
 # 🧠 Complete AI Agent Evaluation Framework
+
 ## AWS Bedrock AgentCore · Strands · Arize Phoenix
+
 ### From Ideation → Build → Evaluate → Monitor → Retire
 
 ---
@@ -307,7 +309,7 @@ AgentCore Evaluations is a **fully managed continuous assessment service** with 
 #### PLANE 1 — RESPONSE QUALITY METRICS
 
 | Metric | Framework | Type | Range | Description |
-|--------|-----------|------|-------|-------------|
+| -------- | ----------- | ------ | ------- | ------------- |
 | **Helpfulness** | AgentCore Built-in | LLM-Judge | 0–1 | Does the response deliver user value? |
 | **Correctness** | AgentCore / DeepEval | LLM-Judge | 0–1 | Factual accuracy vs. ground truth |
 | **Coherence** | AgentCore / Phoenix | LLM-Judge | 0–1 | Logical flow and readability |
@@ -322,7 +324,7 @@ AgentCore Evaluations is a **fully managed continuous assessment service** with 
 #### PLANE 2 — RAG QUALITY METRICS
 
 | Metric | Framework | Formula | Description |
-|--------|-----------|---------|-------------|
+| -------- | ----------- | --------- | ------------- |
 | **Faithfulness** | RAGAS | Claims\_supported / Total\_claims | Every answer claim grounded in context |
 | **Context Precision** | RAGAS | Relevant\_chunks / Retrieved\_chunks | Signal-to-noise of retriever |
 | **Context Recall** | RAGAS | Relevant\_GT\_in\_context / GT\_items | How much ground truth is retrieved |
@@ -335,7 +337,7 @@ AgentCore Evaluations is a **fully managed continuous assessment service** with 
 #### PLANE 3 — AGENTIC BEHAVIOR METRICS
 
 | Metric | Framework | Type | Description |
-|--------|-----------|------|-------------|
+| -------- | ----------- | ------ | ------------- |
 | **Tool Selection Accuracy** | AgentCore Built-in | LLM-Judge | Correct tool chosen for the task |
 | **Tool Parameter Accuracy** | AgentCore Built-in | LLM-Judge | Correct parameters extracted from query |
 | **Tool Call Sequence** | AgentCore Built-in | LLM-Judge | Correct ordering of tool invocations |
@@ -350,7 +352,7 @@ AgentCore Evaluations is a **fully managed continuous assessment service** with 
 #### OPERATIONAL / INFRASTRUCTURE METRICS
 
 | Metric | Source | Description |
-|--------|--------|-------------|
+| -------- | -------- | ------------- |
 | **Latency P50/P95/P99** | CloudWatch / Phoenix | Response time distribution |
 | **Token Usage** | AgentCore / CloudWatch | Input + output token counts |
 | **Cost per Session** | CloudWatch | Compute + model inference cost |
@@ -767,19 +769,19 @@ cloudwatch_alarm = {
 def drift_response_handler(event):
     # Increase sampling: 10% → 50%
     update_sampling_rate(0.50)
-    
+
     # Pull recent traces from Phoenix
     recent_traces = phoenix.get_traces(
         time_window="24h",
         filter="score < 0.75"
     )
-    
+
     # Run detailed on-demand evaluation
     agentcore.run_on_demand_evaluation(
         trace_ids=[t.id for t in recent_traces],
         evaluators=FULL_EVALUATOR_SET
     )
-    
+
     # Post results to incident channel
     notify_on_call(results, channel="slack-ai-incidents")
 ```
@@ -953,16 +955,16 @@ custom_evaluator_config = {
     },
     "evaluation_prompt": """
     You are evaluating an AI agent's response for a {domain} application.
-    
+
     EVALUATION CRITERIA:
     1. Domain Accuracy (0-1): Is the information correct for {domain}?
     2. Compliance (0-1): Does it follow {regulatory_framework} guidelines?
     3. User Value (0-1): Does it meaningfully help the user?
-    
+
     TASK: {task}
     AGENT RESPONSE: {response}
     REFERENCE: {reference}
-    
+
     Respond ONLY with JSON:
     {
       "domain_accuracy": <0-1>,
@@ -1044,7 +1046,7 @@ custom_evaluator_config = {
 ### 10.2 Tool Comparison Matrix
 
 | Capability | AgentCore Evals | Arize Phoenix | RAGAS | DeepEval | Langfuse |
-|------------|----------------|---------------|-------|----------|----------|
+| ------------ | ---------------- | --------------- | ------- | ---------- | ---------- |
 | Online eval | ✅ Native | ✅ Online eval | ❌ | ❌ | ✅ |
 | On-demand eval | ✅ Native | ✅ Experiments | ✅ | ✅ | ✅ |
 | Strands integration | ✅ Native | ✅ OTEL | ✅ Via LangFuse | ✅ | ✅ Native |
@@ -1138,14 +1140,14 @@ from deepeval.test_case import LLMTestCase
 
 def test_agent_quality():
     test_cases = load_golden_dataset("s3://my-bucket/benchmarks/golden_v3.jsonl")
-    
+
     metrics = [
         AnswerRelevancyMetric(threshold=0.75),
         FaithfulnessMetric(threshold=0.80),
         HallucinationMetric(threshold=0.15),  # Lower is better
         ToolCorrectnessMetric(threshold=0.85)
     ]
-    
+
     deepeval.assert_test(test_cases, metrics)   # Pytest compatible
 ```
 

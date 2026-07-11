@@ -16,11 +16,12 @@ will use that instead).
 
 Requires: scikit-learn (pip install --break-system-packages scikit-learn)
 """
+
+import argparse
+import json
 import os
 import re
 import sys
-import json
-import argparse
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -63,9 +64,11 @@ def main():
             corpus = json.load(f)
         print(f"Using existing corpus: {args.corpus} ({len(corpus)} files)")
     else:
-        print(f"No {args.corpus} found — building a lightweight markdown-only "
-              f"corpus from {args.docs_dir}/ (run knowledge-repo-cleanup's "
-              f"extract_corpus.py for full PDF/DOCX/PPTX coverage instead).")
+        print(
+            f"No {args.corpus} found — building a lightweight markdown-only "
+            f"corpus from {args.docs_dir}/ (run knowledge-repo-cleanup's "
+            f"extract_corpus.py for full PDF/DOCX/PPTX coverage instead)."
+        )
         corpus = build_lightweight_corpus(args.docs_dir)
         print(f"Built corpus: {len(corpus)} markdown files")
 
@@ -91,12 +94,11 @@ def main():
     draft_clean = clean(draft_text)
     all_texts = texts + [draft_clean]
 
-    vec = TfidfVectorizer(max_features=30000, stop_words="english",
-                           ngram_range=(1, 2), min_df=1)
+    vec = TfidfVectorizer(max_features=30000, stop_words="english", ngram_range=(1, 2), min_df=1)
     X = vec.fit_transform(all_texts)
     sims = cosine_similarity(X[-1], X[:-1])[0]
 
-    ranked = sorted(zip(sims, paths), reverse=True)[: args.top]
+    ranked = sorted(zip(sims, paths, strict=False), reverse=True)[: args.top]
     flagged = [(s, p) for s, p in ranked if s >= args.threshold]
 
     if not flagged:

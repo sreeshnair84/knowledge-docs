@@ -194,6 +194,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Key frameworks:** CopilotKit (`@copilotkit/react-ui`, `@copilotkit/react-core`), custom React hooks consuming SSE streams, Vue/Angular equivalents, React Native for mobile.
 
 **Anti-patterns:**
+
 - Rendering agent tool call arguments as HTML without sanitization (XSS via tool output)
 - Displaying raw `STATE_SNAPSHOT` values in DOM without escaping
 - Blocking the UI thread during SSE stream parsing (use a Web Worker)
@@ -205,6 +206,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** TLS termination, DDoS mitigation, WAF rule enforcement, static asset delivery. SSE streams must bypass caching — ensure `Cache-Control: no-cache` propagates through the CDN.
 
 **Anti-patterns:**
+
 - Caching SSE responses (breaks streaming; silently delivers stale snapshots)
 - Terminating TLS at the CDN without re-encrypting to origin (breaks mTLS assumptions)
 - Missing WAF rules for prompt injection in request bodies
@@ -214,6 +216,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Route HTTP requests to appropriate services. Maintain connection affinity for SSE streams (a client must reconnect to the same backend pod to resume a stream, unless state is stored in Redis).
 
 **Anti-patterns:**
+
 - Round-robin load balancing for SSE streams without sticky sessions (stream disconnect on every LB rotation)
 - Missing connection timeout tuning for long-lived SSE connections (default 60s timeout kills multi-minute agent runs)
 
@@ -224,6 +227,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Recommended:** Kong AI Gateway (native token metering), AWS API Gateway (managed), Azure API Management (enterprise APIM policies).
 
 **Anti-patterns:**
+
 - No per-user token budget cap (unbounded LLM cost exposure)
 - Sharing API keys across tenants (no isolation for multi-tenant deployments)
 - Allowing unauthenticated access to `/agent/run` in staging environments that share production data
@@ -233,6 +237,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Accept `POST /agent/run` with `{messages, state, context}`, emit the SSE event stream, accept `POST /agent/action` for HITL interactions. Manage stream lifecycle and reconnection.
 
 **Anti-patterns:**
+
 - Returning raw LLM provider errors in the SSE stream (information leakage)
 - Not validating the `Content-Type: text/event-stream` Accept header before streaming
 - Missing `retry:` directive in SSE response (client cannot reconnect)
@@ -243,6 +248,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Issue agent identity tokens, manage OBO delegation chains, validate OIDC tokens from clients, enforce MCP Resource Indicators (RFC 8707) token binding.
 
 **Anti-patterns:**
+
 - Long-lived static agent credentials (violates least-privilege; not rotatable)
 - Cloning the human user's full identity onto the agent (excess privilege)
 - Missing RFC 8707 resource binding (token replayable against unintended MCP server)
@@ -252,6 +258,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Implement the pause/approve/edit/retry/escalate state machine. Maintain timeout SLAs. Emit audit events on every human decision. Route notifications via email/Slack/Teams.
 
 **Anti-patterns:**
+
 - Auto-approving on timeout instead of blocking (security regression under load)
 - No audit trail for approval decisions (compliance failure)
 - HITL bypass via direct tool invocation endpoint (architecture flaw: tool endpoint must require agent context, not be independently callable)
@@ -261,6 +268,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Input validation (detect prompt injection, jailbreaks, PII in user input), output filtering (toxicity, PII in agent responses, off-topic content), structured output validation.
 
 **Anti-patterns:**
+
 - Only applying guardrails on user input, not on tool call results flowing back into the context (tool result injection)
 - Using the LLM itself as the sole guardrail evaluator (cannot self-check)
 - No latency budget for guardrails (blocking calls add 200–500 ms per turn if synchronous)
@@ -270,6 +278,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Execute the agent planning loop. Delegate tasks to sub-agents via A2A. Emit AG-UI events at each step. Enforce tool permission manifest.
 
 **Anti-patterns:**
+
 - Allowing sub-agents to acquire credentials from parent agent context without explicit delegation (privilege escalation)
 - No planning horizon limit (unbounded loops consuming tokens)
 - Sub-agent results treated as trusted input (they may be compromised; apply guardrails on A2A responses)
@@ -279,6 +288,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Generate text, tool call arguments, and structured output. Route to appropriate model based on task (Haiku for classification, Sonnet for reasoning, Opus for complex planning).
 
 **Anti-patterns:**
+
 - Single model for all tasks (cost inefficiency; 10–100× overpaying for classification tasks)
 - No fallback model configured (single-provider outage takes down the agent)
 - Sending full conversation history without context management (hitting token limits, excessive cost)
@@ -288,6 +298,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Maintain the registry of available tools. Route tool calls to appropriate MCP servers. Enforce `permission_manifest`. Log every tool invocation with correlation ID.
 
 **Anti-patterns:**
+
 - Registry accessible without authentication (tool enumeration by untrusted agents)
 - No rate limiting on tool invocations (tool abuse by prompt-injected agents)
 - Skipping permission_manifest check under "trusted" internal agent conditions
@@ -297,6 +308,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Execute tool calls against backend systems. Enforce per-server authorization. Return structured results. OAuth 2.1 + RFC 9728 + RFC 8707 required per server.
 
 **Anti-patterns:**
+
 - Sharing one MCP server connection across all agents (no isolation)
 - No connection pooling (connection exhaustion under load)
 - Broad filesystem/network access for MCP servers that only need narrow access
@@ -306,6 +318,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Retrieve relevant documents, code snippets, or structured data to inject into agent context. Apply access-control filtering (users can only retrieve documents they can access).
 
 **Anti-patterns:**
+
 - No per-user access filtering on retrieval results (all users retrieve all documents)
 - Injecting retrieved content without source attribution (hallucination debugging impossible)
 - No retrieval quality gate (injecting low-relevance chunks degrades response quality)
@@ -315,6 +328,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Persist and retrieve working memory (session-scoped Redis), episodic memory (conversation history in PostgreSQL), semantic memory (vector DB), procedural memory (skill/tool registry).
 
 **Anti-patterns:**
+
 - Storing sensitive data in working memory without encryption-at-rest
 - No TTL on working memory (unbounded memory growth under concurrent users)
 - Cross-session memory bleed (one user's episodic memory accessible to another)
@@ -324,6 +338,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Event-source the AG-UI `STATE_DELTA` stream. Maintain the canonical state store. Replay events for debugging and audit. Support multi-agent shared state.
 
 **Anti-patterns:**
+
 - Mutable state store without event log (cannot audit what changed, when, and why)
 - Not validating JSON Patch RFC 6902 before application (malformed deltas corrupt state)
 - No conflict resolution for concurrent agent state writes (multi-agent shared workspace)
@@ -333,6 +348,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Emit OpenTelemetry spans for every AG-UI event, tool call, model invocation, and HITL decision. Persist an immutable audit log. Feed into SIEM for anomaly detection.
 
 **Anti-patterns:**
+
 - Sampling traces in production without keeping 100% of HITL and tool call spans (compliance gap)
 - Logging raw LLM prompts without PII redaction
 - No latency SLO defined for agent runs (cannot distinguish slow from broken)
@@ -342,6 +358,7 @@ ADDITIONAL TRUST BOUNDARIES (cross-cutting)
 **Primary responsibility:** Expose data and actions to the agent stack. Enforce their own authorization independent of the agent layer (defense in depth). Never trust that the calling agent has already authorized the action.
 
 **Anti-patterns:**
+
 - Backend APIs trusting `X-Agent-Authorized: true` header (trivially forgeable)
 - Allowing broad SQL queries from MCP servers (SQL injection via tool arguments)
 - No per-agent rate limiting at the backend (one rogue agent can DoS the backend)
@@ -395,7 +412,7 @@ TB8  Human Approval Gate (HITL)
 ```
 
 | TB | Boundary | Primary Controls | OWASP ASI Mapping |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | TB1 | User ↔ Browser | CSP, HTTPS, SRI | ASI10 (Human-Agent Trust) |
 | TB2 | Browser ↔ Perimeter | WAF, DDoS, rate limit | ASI02 (Tool Misuse via crafted inputs) |
 | TB3 | Perimeter ↔ App | mTLS, JWT validation | ASI03 (Identity & Privilege Abuse) |
@@ -410,7 +427,7 @@ TB8  Human Approval Gate (HITL)
 ## 4. Technology Mapping Table (17 Layers)
 
 | Layer | OSS / Community | Cloud-Native (AWS) | Cloud-Native (Azure) | Cloud-Native (GCP) | Enterprise Commercial |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 1 — Client | CopilotKit, React, Vue, Angular | - | - | - | Microsoft Teams AI, Salesforce Einstein |
 | 2 — CDN/Edge | Cloudflare (free tier) | CloudFront + Shield | Azure Front Door | Cloud CDN | Akamai, Fastly |
 | 3 — Ingress | Nginx, Traefik, HAProxy | ALB, NLB | Application Gateway | Cloud Load Balancing | F5 BIG-IP |
@@ -713,7 +730,7 @@ EDGE DESIGN CONSTRAINTS
 The 51+ anti-patterns documented in §2 per layer fall into six families:
 
 | Family | Count | Example Pattern | Impact |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Authentication bypass** | 9 | Trusting `X-Agent-Authorized` header from agent call | Complete authorization bypass |
 | **Context leakage** | 11 | Returning raw LLM prompts in error responses | System prompt / credential exposure |
 | **Streaming misconfigurations** | 7 | CDN caching SSE stream | Silent state delivery failure |

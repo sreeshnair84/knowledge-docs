@@ -8,7 +8,7 @@ source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "transcripts"]
 doc_type: workshop-transcript
-session_type: 
+session_type:
 related_pages: []
 ---
 
@@ -20,9 +20,11 @@ related_pages: []
 **Location:** Board Room, Network Head Office
 
 **Programme Lead:**
+
 - Rachel Osei — EA Lead, Digital Health Transformation
 
 **Executive Steering Committee:**
+
 - Dr. Patricia Lim — Chief Executive Officer
 - David Torres — Chief Financial Officer
 - Dr. Ahmad Karimi — Chief Medical Officer

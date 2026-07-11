@@ -8,20 +8,21 @@ source_type: converted-pdf
 source_file: "Enterprise_PromptOps_AWS_AgentCore_2026.pdf"
 tags: ["agentic-ai", "promptops", "aws", "agentcore", "prompt-lifecycle"]
 ---
-**ENTERPRISE PROMPTOPS PROMPT LIFECYCLE MANAGEMENT FOR AWS AGENTCORE RUNTIME** 
-Arize AX · Phoenix · LangSmith · Langfuse · Braintrust · MLflow 24-Part Research Report — Arize AX vs AWS-Native vs All Alternatives 
-**2026 Edition** 
-**Classification** 
-Enterprise Research 
-**Coverage** 
-24 Parts · PromptOps Maturity · Registry · Governance · RAI · Security · Architecture · Decision Matrix 
-**Primary Focus** 
-AWS AgentCore Runtime + Arize AX/Phoenix — Reference Architecture & Platform Selection 
-**Edition** 
-June 2026 
-## **Table of Contents** 
+**ENTERPRISE PROMPTOPS PROMPT LIFECYCLE MANAGEMENT FOR AWS AGENTCORE RUNTIME**
+Arize AX · Phoenix · LangSmith · Langfuse · Braintrust · MLflow 24-Part Research Report — Arize AX vs AWS-Native vs All Alternatives
+**2026 Edition**
+**Classification**
+Enterprise Research
+**Coverage**
+24 Parts · PromptOps Maturity · Registry · Governance · RAI · Security · Architecture · Decision Matrix
+**Primary Focus**
+AWS AgentCore Runtime + Arize AX/Phoenix — Reference Architecture & Platform Selection
+**Edition**
+June 2026
 
-#### **Executive Summary** 
+## Table of Contents
+
+### Executive Summary
 
 |**Part 1**|PromptOps Evolution & Maturity Model|
 |**Part 2**|The Complete Prompt Lifecycle|
@@ -51,47 +52,47 @@ June 2026
 |**Appendix B**|Prompt Governance Model|
 |**Appendix C**|Final Recommendation|
 
-## **Executive Summary** 
+## Executive Summary
 
-Prompts are the behaviour layer of enterprise AI. As organizations deploy autonomous agents on AWS AgentCore Runtime, the discipline of **PromptOps** — systematic lifecycle management of prompts from authoring through retirement — has moved from optional engineering hygiene to a compliance and operational necessity. 
+Prompts are the behaviour layer of enterprise AI. As organizations deploy autonomous agents on AWS AgentCore Runtime, the discipline of **PromptOps** — systematic lifecycle management of prompts from authoring through retirement — has moved from optional engineering hygiene to a compliance and operational necessity.
 
-This research answers a single strategic question for regulated enterprises running AWS AgentCore Runtime: **Should Arize AX become the central Prompt Lifecycle platform, or should AWS-native capabilities own lifecycle management?** 
+This research answers a single strategic question for regulated enterprises running AWS AgentCore Runtime: **Should Arize AX become the central Prompt Lifecycle platform, or should AWS-native capabilities own lifecycle management?**
 
-### **Key Findings** 
+### Key Findings
 
-#### **The Gap is Real** 
+### The Gap is Real
 
-AWS AgentCore Runtime (GA October 2025) provides excellent agent execution infrastructure but has no built-in prompt registry, approval workflow, semantic versioning, or evaluation pipeline. These must come from external platforms or be built. 
+AWS AgentCore Runtime (GA October 2025) provides excellent agent execution infrastructure but has no built-in prompt registry, approval workflow, semantic versioning, or evaluation pipeline. These must come from external platforms or be built.
 
-#### **Arize AX is Observability-First** 
+### Arize AX is Observability-First
 
-Arize AX is the industry leader for production LLM observability and online evaluation — processing 1 trillion spans monthly — but prompt lifecycle management (versioning, approval workflow, CI/CD gating) is not its primary product surface. The Prompt IDE and Prompt Learning features exist but are experimentation-oriented, not registry-oriented. 
+Arize AX is the industry leader for production LLM observability and online evaluation — processing 1 trillion spans monthly — but prompt lifecycle management (versioning, approval workflow, CI/CD gating) is not its primary product surface. The Prompt IDE and Prompt Learning features exist but are experimentation-oriented, not registry-oriented.
 
-#### **Humanloop is Gone** 
+### Humanloop is Gone
 
-Anthropic acquired Humanloop in July 2025 and shut it down September 8, 2025. Teams migrating from Humanloop should prioritise Langfuse (open-source), Braintrust (eval-CI/CD), or Agenta (OSS lifecycle). 
+Anthropic acquired Humanloop in July 2025 and shut it down September 8, 2025. Teams migrating from Humanloop should prioritise Langfuse (open-source), Braintrust (eval-CI/CD), or Agenta (OSS lifecycle).
 
-#### **No Single Platform Covers All 24 Dimensions** 
+### No Single Platform Covers All 24 Dimensions
 
-The research confirms a capability gap across all platforms: none provides complete authoring + registry + versioning + approval + CI/CD + deployment + runtime routing + online monitoring + rollback in one unified system. 
+The research confirms a capability gap across all platforms: none provides complete authoring + registry + versioning + approval + CI/CD + deployment + runtime routing + online monitoring + rollback in one unified system.
 
-#### **Recommended Architecture** 
+### Recommended Architecture
 
-AWS + Arize AX for production observability and online evaluation, paired with either Langfuse (data-sovereignty) or Braintrust (eval-gated CI/CD) for prompt lifecycle management, and AWS AppConfig for zero-downtime runtime delivery. 
+AWS + Arize AX for production observability and online evaluation, paired with either Langfuse (data-sovereignty) or Braintrust (eval-gated CI/CD) for prompt lifecycle management, and AWS AppConfig for zero-downtime runtime delivery.
 
-#### **Compliance Urgency** 
+### Compliance Urgency
 
-EU AI Act high-risk enforcement begins August 2, 2026. Prompt behavior is now an auditable artifact. Organizations must demonstrate versioned, approved, human-reviewed prompt governance or face regulatory exposure. 
+EU AI Act high-risk enforcement begins August 2, 2026. Prompt behavior is now an auditable artifact. Organizations must demonstrate versioned, approved, human-reviewed prompt governance or face regulatory exposure.
 
-**Strategic Recommendation: Do not attempt to build PromptOps entirely on AWS-native services — the operational complexity is prohibitive. Do not make Arize AX the sole lifecycle platform — it lacks the registry and CI/CD gating layer. The winning architecture is AWS AppConfig (delivery) + Arize AX (observability) + Langfuse or Braintrust (registry/CI/CD) — governed by GitOps, policy-as-code, and human approval workflows.** 
+**Strategic Recommendation: Do not attempt to build PromptOps entirely on AWS-native services — the operational complexity is prohibitive. Do not make Arize AX the sole lifecycle platform — it lacks the registry and CI/CD gating layer. The winning architecture is AWS AppConfig (delivery) + Arize AX (observability) + Langfuse or Braintrust (registry/CI/CD) — governed by GitOps, policy-as-code, and human approval workflows.**
 
 PromptOps Evolution &<br>PART 1<br>Maturity Model<br><!-- End of picture text -->
 
-How the discipline evolved from prompt engineering to autonomous prompt optimization — and where enterprises sit in 2026. 
+How the discipline evolved from prompt engineering to autonomous prompt optimization — and where enterprises sit in 2026.
 
-### **The Eight Stages of PromptOps Evolution** 
+### The Eight Stages of PromptOps Evolution
 
-PromptOps has matured through distinct phases, each adding governance, tooling, and automation. Understanding the progression reveals why enterprises in 2026 face a critical inflection point. 
+PromptOps has matured through distinct phases, each adding governance, tooling, and automation. Understanding the progression reveals why enterprises in 2026 face a critical inflection point.
 
 |**Stage 1: Prompt**<br>**Engineering (2022–2023)**|Individual practitioners manually craft prompts in playgrounds. No version control.<br>No evaluation. No governance. Prompts live in notebooks, READMEs, or<br>application code strings. Works at individual scale; fails completely at team scale.|M|
 |**Stage 2: Prompt**<br>**Management (2023)**|Teams begin storing prompts in shared files, Git repositories, or basic CMS-style<br>tools. PromptLayer (2022) emerges as first dedicated tool. Basic logging of<br>inputs/outputs. No systematic evaluation or approval.|M|
@@ -102,29 +103,29 @@ PromptOps has matured through distinct phases, each adding governance, tooling, 
 |**Stage 7: Autonomous**<br>**Prompt Optimization**<br>**(2025–2026)**|LLM-driven prompt improvement loops. Production failures automatically become<br>evaluation cases. DSPy-style optimization with compiled prompts. Arize AX Prompt<br>Learning, Braintrust Loop AI, FutureAGI self-improvement. Human approval gates<br>remain mandatory for production.|M|
 |**Stage 8: Self-Healing**<br>**Prompts (Emerging**<br>**2026–2027)**|Agents monitor their own prompt performance, detect drift, generate improvement<br>candidates, run offline evaluation, and propose PRs — with humans in the approval<br>loop. Policy-driven auto-rollback on quality degradation. The prompt becomes a<br>living, self-maintaining artifact.||
 
-### **PromptOps Maturity Model — Levels 0–5** 
+### PromptOps Maturity Model — Levels 0–5
 
-**Level 0 Chaotic** 
+**Level 0 Chaotic**
 
-|Prompts embedd<br>ownership. Produ<br>Individual heroics|ed in source code or spreadsheets. No versioning. No<br>ction incidents from uncontrolled changes. No evaluation.<br>required.|_~15% of enterprises in 2026_|
+|Prompts embedd<br>ownership. Produ<br>Individual heroics|ed in source code or spreadsheets. No versioning. No<br>ction incidents from uncontrolled changes. No evaluation.<br>required.|*~15% of enterprises in 2026*|
 |**Level 1**|**Initial**||
-|Prompts in Git fil<br>deployment. One|es. Basic README documentation. Ad-hoc testing before<br>person owns 'the AI stuff'. Manual senior approval.|_~35% of enterprises in 2026_|
+|Prompts in Git fil<br>deployment. One|es. Basic README documentation. Ad-hoc testing before<br>person owns 'the AI stuff'. Manual senior approval.|*~35% of enterprises in 2026*|
 |**Level 2**|**Defined**||
-|Dedicated promp<br>suite for major ag|t repository with metadata. CI validates schema. Evaluation<br>ents. Defined ownership. Basic versioning with rollback.|_~28% of enterprises in 2026_|
+|Dedicated promp<br>suite for major ag|t repository with metadata. CI validates schema. Evaluation<br>ents. Defined ownership. Basic versioning with rollback.|*~28% of enterprises in 2026*|
 |**Level 3**|**Managed**||
-|Centralized prom<br>evaluation gates.<br>updates via App|pt registry. Semantic search. Approval workflows. Automated<br>RAI review. Cost monitoring. Developer portal. Zero-downtime<br>Config.|_~15% of enterprises in 2026_|
+|Centralized prom<br>evaluation gates.<br>updates via App|pt registry. Semantic search. Approval workflows. Automated<br>RAI review. Cost monitoring. Developer portal. Zero-downtime<br>Config.|*~15% of enterprises in 2026*|
 |**Level 4**|**Quantitative**||
-|Online evaluation<br>Cross-team mark<br>AX or equivalent|in production. A/B testing. Automatic regression detection.<br>etplace. AIBOM. Full lineage. Compliance automation. Arize<br>in production.|_~6% of enterprises in 2026_|
+|Online evaluation<br>Cross-team mark<br>AX or equivalent|in production. A/B testing. Automatic regression detection.<br>etplace. AIBOM. Full lineage. Compliance automation. Arize<br>in production.|*~6% of enterprises in 2026*|
 |**Level 5**|**Optimizing**||
-|Autonomous pro<br>models. Policy-dr<br>prompts.|mpt improvement with human approval. Predictive quality<br>iven rollback. Cross-organizational federation. Self-healing|_<1% of enterprises in 2026_|
+|Autonomous pro<br>models. Policy-dr<br>prompts.|mpt improvement with human approval. Predictive quality<br>iven rollback. Cross-organizational federation. Self-healing|*<1% of enterprises in 2026*|
 
-#### **PART 2** 
+### PART 2
 
-# **The Complete Prompt Lifecycle** 
+# The Complete Prompt Lifecycle
 
-18-stage end-to-end lifecycle from business requirement through audit archive — with ownership, tooling, and governance at each stage. 
+18-stage end-to-end lifecycle from business requirement through audit archive — with ownership, tooling, and governance at each stage.
 
-Every production prompt must traverse a defined lifecycle. Skipping stages — especially RAI validation, red team testing, and formal approval — is the primary cause of production AI safety incidents. The lifecycle is not a waterfall; prompts cycle through improvement loops continuously. 
+Every production prompt must traverse a defined lifecycle. Skipping stages — especially RAI validation, red team testing, and formal approval — is the primary cause of production AI safety incidents. The lifecycle is not a waterfall; prompts cycle through improvement loops continuously.
 
 |**1. Business Requirement**|Product Owner documents business capability, constraints, success metrics, and<br>regulatory context. AI Architect reviews feasibility. Risk classification assigned<br>(low/medium/high/critical).|M|
 |**2. Prompt Authoring**|Prompt Engineer designs system/task/chain prompts. Iterative playground<br>experimentation (Arize Prompt IDE, Langfuse). Template system selected (Jinja2,<br>Mustache, structured JSON). v0.1.0-alpha tagged.|M|
@@ -146,7 +147,7 @@ Every production prompt must traverse a defined lifecycle. Skipping stages — e
 |**17. Retirement**|Deprecation notice issued (30+ days). Migration guide published. Traffic gradually<br>migrated to successor. Final retirement removes from active registry. Archive<br>record created.|M|
 |**18. Audit Archive**|Immutable archive with complete history: all versions, evaluations, approvals,<br>deployments, incidents, and retirement record. Retained per regulatory<br>requirements (7+ years for financial, healthcare).||
 
-### **Lifecycle Ownership Matrix** 
+### Lifecycle Ownership Matrix
 
 |**Stage**|**Primary Owner**|**Approver**|**Tooling**|
 |Requirement–Design|AI Product Owner|AI Architect|Jira, ADR|
@@ -163,20 +164,20 @@ Every production prompt must traverse a defined lifecycle. Skipping stages — e
 |Rollback|SRE / On-Call|Incident Commander|Registry API, AppConfig|
 |Archive|AI Platform Engineer|Compliance Team|S3 Glacier, CloudTrail|
 
-# **Prompt Registry Design** 
+# Prompt Registry Design
 
-Enterprise prompt registry architecture — metadata model, versioning, lineage, dependency graphs, and implementation patterns. 
+Enterprise prompt registry architecture — metadata model, versioning, lineage, dependency graphs, and implementation patterns.
 
-A prompt registry is the authoritative source of truth for approved, versioned, discoverable prompts consumed at runtime. It is architecturally distinct from a repository (source control) and a configuration store (runtime delivery). All three are required in a production PromptOps stack. 
+A prompt registry is the authoritative source of truth for approved, versioned, discoverable prompts consumed at runtime. It is architecturally distinct from a repository (source control) and a configuration store (runtime delivery). All three are required in a production PromptOps stack.
 
-### **Registry vs Repository vs Configuration Store** 
+### Registry vs Repository vs Configuration Store
 
 |**Layer**|**Purpose**|**Examples**|**Enterprise Role**|
 |Repository|Source control, version history,<br>collaboration, PR workflow|Git (GitHub/GitLab/CodeCommit)|Authoring, peer review,<br>branching, history|
 |Registry|Discovery, governance, evaluation<br>history, lineage, deployment|MLflow Prompt Registry, Langfuse<br>Prompts, Custom|Approval gate, semantic search,<br>dependency graph|
 |Configuration Store|Runtime delivery, hot reload,<br>caching, A/B routing|AWS AppConfig, Parameter Store,<br>Redis|Zero-downtime updates, canary<br>routing, TTL cache|
 
-### **Universal Prompt Registry Metadata Schema** 
+### Universal Prompt Registry Metadata Schema
 
 ```
 # Prompt Registry Schema v2.0 (YAML)
@@ -226,53 +227,53 @@ benchmark_history:
     date:    '2026-02-01'
 ```
 
-### **Key Registry Capabilities** 
+### Key Registry Capabilities
 
-##### **Semantic Search** 
+### Semantic Search
 
-Vector-based discovery across prompt names, descriptions, capabilities, and tags. Engineers find existing prompts before creating duplicates. 
+Vector-based discovery across prompt names, descriptions, capabilities, and tags. Engineers find existing prompts before creating duplicates.
 
-##### **Semantic Versioning** 
+### Semantic Versioning
 
-MAJOR for behavioral breaking changes; MINOR for backward-compatible capability additions; PATCH for typos and documentation. Pre-release suffixes (-alpha, -beta, -rc) block production promotion. 
+MAJOR for behavioral breaking changes; MINOR for backward-compatible capability additions; PATCH for typos and documentation. Pre-release suffixes (-alpha, -beta, -rc) block production promotion.
 
-##### **Immutable Versions** 
+### Immutable Versions
 
-Once a version is released, its content is immutable. Signed SHA-256 hash attached at release. Any tampering is detectable. 
+Once a version is released, its content is immutable. Signed SHA-256 hash attached at release. Any tampering is detectable.
 
-##### **Signed Prompts** 
+### Signed Prompts
 
-Release manager signs the prompt hash using organizational PKI. Runtime validates signature before loading. Prevents supply-chain attacks. 
+Release manager signs the prompt hash using organizational PKI. Runtime validates signature before loading. Prevents supply-chain attacks.
 
-##### **Lineage Tracking** 
+### Lineage Tracking
 
-Full provenance graph: derived-from, authoring tool, evaluation run IDs, model used in testing. Enables impact analysis when a dependency changes. 
+Full provenance graph: derived-from, authoring tool, evaluation run IDs, model used in testing. Enables impact analysis when a dependency changes.
 
-##### **Dependency Graph** 
+### Dependency Graph
 
-Tracks which macros, tools, and models each prompt version depends on. Breaking change in a dependency triggers re-evaluation of all dependents. 
+Tracks which macros, tools, and models each prompt version depends on. Breaking change in a dependency triggers re-evaluation of all dependents.
 
-##### **Evaluation History** 
+### Evaluation History
 
-All evaluation runs linked to specific prompt versions. Score trends over time. Benchmark comparisons across versions visible in single view. 
+All evaluation runs linked to specific prompt versions. Score trends over time. Benchmark comparisons across versions visible in single view.
 
-##### **Rollback Support** 
+### Rollback Support
 
-One-API-call rollback to any previous stable version. Rollback event logged with reason. Active sessions optionally migrated or grandfathered. 
+One-API-call rollback to any previous stable version. Rollback event logged with reason. Active sessions optionally migrated or grandfathered.
 
-##### **Approval Records** 
+### Approval Records
 
-Digital approval records attached to each version. Multi-stage workflow audit trail. Cannot be manually overridden outside the workflow. 
+Digital approval records attached to each version. Multi-stage workflow audit trail. Cannot be manually overridden outside the workflow.
 
-#### **PART 4** 
+### PART 4
 
-# **AWS AgentCore Runtime Integration** 
+# AWS AgentCore Runtime Integration
 
-Where prompts should live, how AgentCore retrieves them, caching strategies, and propagation patterns. 
+Where prompts should live, how AgentCore retrieves them, caching strategies, and propagation patterns.
 
-AWS AgentCore Runtime (GA October 2025) is a serverless execution environment for AI agents. It provides session isolation, authentication, observability, and up-to-8-hour autonomous execution. It does NOT provide a built-in prompt registry, versioning, or approval workflow. 
+AWS AgentCore Runtime (GA October 2025) is a serverless execution environment for AI agents. It provides session isolation, authentication, observability, and up-to-8-hour autonomous execution. It does NOT provide a built-in prompt registry, versioning, or approval workflow.
 
-### **Prompt Storage Options — Comparison** 
+### Prompt Storage Options — Comparison
 
 |**Storage Option**|**Use Case**|**Latency**|**Versioning**|**Governance**|**Recommendation**|
 |Embedded in code|Prototype only|0ms|Git only|None|IAnti-pattern|
@@ -284,37 +285,37 @@ AWS AgentCore Runtime (GA October 2025) is a serverless execution environment fo
 |External Registry<br>(Langfuse/Braintrust)|Full lifecycle<br>management|10–50ms<br>(cached)|Full semver<br>+ lineage|Full<br>governance|IBest for governance layer|
 |Redis Cache|Hot prompt cache in<br>agent|0.5–2ms|Cache<br>invalidation|None (cache<br>only)|IRequired at scale|
 
-### **Recommended Architecture: Layered Prompt Delivery** 
+### Recommended Architecture: Layered Prompt Delivery
 
-The production pattern uses three layers: the Registry (governance), AppConfig (delivery), and an in-process cache (performance). This separation keeps concerns clean and enables zero-downtime updates. 
+The production pattern uses three layers: the Registry (governance), AppConfig (delivery), and an in-process cache (performance). This separation keeps concerns clean and enables zero-downtime updates.
 
 |**Layer 1: Prompt Registry**<br>**(Langfuse / Braintrust /**<br>**MLflow)**|Authoritative source of truth. Stores approved, versioned prompts with full<br>metadata, lineage, evaluation history, and governance records. Engineers interact<br>with this layer for authoring, review, and approval.|M|
 |**Layer 2: AWS AppConfig**<br>**(Delivery)**|Pulls approved prompt versions from the registry on release. Applies deployment<br>strategies (instant, linear, canary). Serves to AgentCore via sidecar/Lambda<br>extension. Handles rollback. Exposes localhost HTTP endpoint to agents.|M|
 |**Layer 3: In-Process Cache**<br>**(Redis / Local LRU)**|Agent caches the current prompt version in memory or Redis with a configurable<br>TTL (default: 60s). Background poller checks AppConfig for new versions. On TTL<br>expiry or poll response, cache refreshed without restarting agent.||
 
-### **Prompt Cache & Bedrock Prompt Caching** 
+### Prompt Cache & Bedrock Prompt Caching
 
-AWS Bedrock offers built-in **Prompt Caching** (GA 2025) which caches processed token KV-states at the model layer, reducing latency and cost for long, repeated system prompts. Key details: 
+AWS Bedrock offers built-in **Prompt Caching** (GA 2025) which caches processed token KV-states at the model layer, reducing latency and cost for long, repeated system prompts. Key details:
 
-- Default TTL: 5 minutes. Extended TTL: 1 hour available for Claude Opus 4.5, Haiku 4.5, Sonnet 4.5. 
+- Default TTL: 5 minutes. Extended TTL: 1 hour available for Claude Opus 4.5, Haiku 4.5, Sonnet 4.5.
 
-- Cache checkpoint markers embedded in system prompt signals Bedrock to cache from beginning of prompt up to that point. 
+- Cache checkpoint markers embedded in system prompt signals Bedrock to cache from beginning of prompt up to that point.
 
-- Cache hit: ~10x faster response, ~80% lower token cost for cached portion. 
+- Cache hit: ~10x faster response, ~80% lower token cost for cached portion.
 
-- Cache invalidation: automatic on TTL expiry. Manual: update the prompt content (hash mismatch invalidates). 
+- Cache invalidation: automatic on TTL expiry. Manual: update the prompt content (hash mismatch invalidates).
 
-- Critical: Bedrock prompt caching operates at the MODEL layer, not the application layer. It is complementary to, not a replacement for, AppConfig delivery or Registry versioning. 
+- Critical: Bedrock prompt caching operates at the MODEL layer, not the application layer. It is complementary to, not a replacement for, AppConfig delivery or Registry versioning.
 
-- Multi-region: Bedrock prompt caching works with cross-region inference for HA deployments. 
+- Multi-region: Bedrock prompt caching works with cross-region inference for HA deployments.
 
 Dynamic Prompt Update<br>PART 5<br>Architecture<br><!-- End of picture text -->
 
-How to update prompts without redeploying, restarting, or interrupting running agents. 
+How to update prompts without redeploying, restarting, or interrupting running agents.
 
-Zero-downtime prompt updates are the single most operationally complex challenge in PromptOps. Agents may run for hours; sessions may number in the tens of thousands. This part covers all major architectural patterns and their tradeoffs. 
+Zero-downtime prompt updates are the single most operationally complex challenge in PromptOps. Agents may run for hours; sessions may number in the tens of thousands. This part covers all major architectural patterns and their tradeoffs.
 
-### **Update Architectures — Comparison** 
+### Update Architectures — Comparison
 
 |**Pattern**|**Latency to**<br>**Update**|**Complexit**<br>**y**|**Session Safety**|**Best For**|
 |Hot Reload / AppConfig Poll|30–120s|Low|New sessions<br>only|Standard production deployments|
@@ -325,9 +326,9 @@ Zero-downtime prompt updates are the single most operationally complex challenge
 |Prompt Gateway (API)|On-demand|High|Per-request|Fine-grained routing, A/B testing|
 |Feature Flags<br>(LaunchDarkly-style)|~1s|Medium|User/session<br>targeting|Canary rollouts, tenant control|
 
-### **Recommended Pattern: AppConfig + Redis Pub/Sub** 
+### Recommended Pattern: AppConfig + Redis Pub/Sub
 
-For most enterprise AgentCore deployments, the optimal architecture combines AWS AppConfig for governed delivery with Redis Pub/Sub for real-time invalidation: 
+For most enterprise AgentCore deployments, the optimal architecture combines AWS AppConfig for governed delivery with Redis Pub/Sub for real-time invalidation:
 
 ```
 # Agent startup: initialize prompt cache
@@ -359,9 +360,9 @@ def invalidation_listener():
             CACHE.pop(prompt_id, None)  # Force next fetch from AppConfig
 ```
 
-### **AWS AppConfig Deployment Strategies** 
+### AWS AppConfig Deployment Strategies
 
-AppConfig supports several deployment strategies matching different risk profiles: 
+AppConfig supports several deployment strategies matching different risk profiles:
 
 |**Strategy**|**Duration**|**Use Case**|**Rollback**|
 |Instant (AllAtOnce)|0 min|Low-risk patches, typos, metadata|Manual or automated|
@@ -370,31 +371,31 @@ AppConfig supports several deployment strategies matching different risk profile
 |Exponential Ramp|30–60 min|High-risk MAJOR version changes|Automated on any alarm|
 |Manual Bake Time|Custom|Safety-critical prompts|Manual sign-off required|
 
-### **Prompt CDN / Prompt Gateway Pattern** 
+### Prompt CDN / Prompt Gateway Pattern
 
-For global, high-throughput deployments, a Prompt Gateway (API service) centralizes routing, caching, and policy enforcement across all agents and regions: 
+For global, high-throughput deployments, a Prompt Gateway (API service) centralizes routing, caching, and policy enforcement across all agents and regions:
 
-- Single endpoint for all agent prompt requests: GET 
+- Single endpoint for all agent prompt requests: GET
 
-- /v1/prompts/{id}?version=latest&tenant;=acme&model;=claude-sonnet 
+- /v1/prompts/{id}?version=latest&tenant;=acme&model;=claude-sonnet
 
-- Gateway applies routing policy: A/B assignment, canary percentage, tenant overrides, model-specific variants 
+- Gateway applies routing policy: A/B assignment, canary percentage, tenant overrides, model-specific variants
 
-- Redis cluster behind gateway provides sub-millisecond cache hits at scale 
+- Redis cluster behind gateway provides sub-millisecond cache hits at scale
 
-- Gateway publishes invalidation events on update, all downstream caches refresh 
+- Gateway publishes invalidation events on update, all downstream caches refresh
 
-- Gateway enforces authorization: only authorized agents can access specific prompts 
+- Gateway enforces authorization: only authorized agents can access specific prompts
 
-- Gateway logs every prompt access for audit trail 
+- Gateway logs every prompt access for audit trail
 
 Running Conversations &<br>PART 6<br>Session Consistency<br><!-- End of picture text -->
 
-What happens when Prompt v15 is updated to v16 while 10,000 sessions are running. 
+What happens when Prompt v15 is updated to v16 while 10,000 sessions are running.
 
-Session consistency is the most nuanced operational challenge in PromptOps. The question 'should active sessions migrate to the new version?' has no universal answer — it depends on risk profile, compliance requirements, and whether the version change is behavioral or cosmetic. 
+Session consistency is the most nuanced operational challenge in PromptOps. The question 'should active sessions migrate to the new version?' has no universal answer — it depends on risk profile, compliance requirements, and whether the version change is behavioral or cosmetic.
 
-### **Session Consistency Strategies** 
+### Session Consistency Strategies
 
 |**Strategy**|**Behavior**|**Use Case**|**Risk**|
 |Pin to session-start<br>version|Session uses version active at<br>session creation for entire lifetime|Long-running workflows,<br>high-stakes agentic tasks|Low — deterministic per<br>session|
@@ -403,9 +404,9 @@ Session consistency is the most nuanced operational challenge in PromptOps. The 
 |Tenant-controlled<br>migration|Each tenant controls their own<br>migration timing|Multi-tenant SaaS, enterprise<br>customers with compliance<br>requirements|Low — customer controls<br>risk|
 |Model/runtime decides|Agent framework detects version<br>update and decides per session<br>context|Advanced agentic frameworks with<br>session state awareness|Medium — framework<br>dependent|
 
-### **Recommended Pattern: Session Version Pinning** 
+### Recommended Pattern: Session Version Pinning
 
-The safest production pattern for regulated enterprises pins the prompt version at session creation and stores it in session state. New sessions pick up the current approved version; running sessions are guaranteed consistency: 
+The safest production pattern for regulated enterprises pins the prompt version at session creation and stores it in session state. New sessions pick up the current approved version; running sessions are guaranteed consistency:
 
 ```
 # Session creation: pin prompt version
@@ -431,21 +432,21 @@ def get_prompt_for_session(session_id: str, prompt_id: str) -> str:
     return registry.get_prompt(prompt_id, version=pinned_version)
 ```
 
-### **Exception: Safety Patches** 
+### Exception: Safety Patches
 
-Safety and security patches must be propagated to ALL active sessions immediately. The pattern: 
+Safety and security patches must be propagated to ALL active sessions immediately. The pattern:
 
-- Tag the update as SAFETY_PATCH in registry metadata 
+- Tag the update as SAFETY_PATCH in registry metadata
 
-- On deployment, set override_pin=true flag in AppConfig configuration 
+- On deployment, set override_pin=true flag in AppConfig configuration
 
-- Prompt Gateway detects override flag and bypasses session pinning for this specific prompt 
+- Prompt Gateway detects override flag and bypasses session pinning for this specific prompt
 
-- All in-flight sessions receive the patched version on their next prompt fetch (within TTL or invalidation signal) 
+- All in-flight sessions receive the patched version on their next prompt fetch (within TTL or invalidation signal)
 
-- Event logged: 'SAFETY_OVERRIDE applied to N active sessions at T' 
+- Event logged: 'SAFETY_OVERRIDE applied to N active sessions at T'
 
-### **How Leading Platforms Handle Session Consistency** 
+### How Leading Platforms Handle Session Consistency
 
 |**Platform**|**Session Consistency Approach**|
 |AWS AppConfig|No session concept — delivers configuration to all consumers. Application must implement session<br>pinning.|
@@ -457,9 +458,9 @@ Safety and security patches must be propagated to ALL active sessions immediatel
 
 PART 7<br>Prompt Version Routing<br><!-- End of picture text -->
 
-A/B testing, canary deployments, champion/challenger, and dynamic routing patterns. 
+A/B testing, canary deployments, champion/challenger, and dynamic routing patterns.
 
-### **Routing Strategy Matrix** 
+### Routing Strategy Matrix
 
 |**Strategy**|**Mechanism**|**Traffic Split**|**Rollback**|**Best For**|
 |A/B Testing|Random assignment to A or B at<br>session start. Consistent within<br>session. Statistical significance<br>required for promotion.|50/50 or custom<br>split|Kill switch to<br>100%<br>champion|Quality comparisons<br>between versions|
@@ -471,23 +472,23 @@ A/B testing, canary deployments, champion/challenger, and dynamic routing patter
 |Model-Specific|Different prompt version for<br>different foundation models<br>(Claude vs GPT).|By model ID|Per-model<br>rollback|Multi-model deployments|
 |Agent-Type Routing|Planner, Worker, Evaluator agents<br>get different prompt variants.|By agent role|Per-role<br>rollback|Multi-agent systems|
 
-### **Automatic Rollback Triggers** 
+### Automatic Rollback Triggers
 
-Production prompt deployments must have automatic rollback armed before any traffic reaches the new version. Key triggers: 
+Production prompt deployments must have automatic rollback armed before any traffic reaches the new version. Key triggers:
 
-- Quality score drops more than X% below baseline (configurable per prompt, default: 5%) 
+- Quality score drops more than X% below baseline (configurable per prompt, default: 5%)
 
-- Safety score drops below absolute threshold (default: 0.95) 
+- Safety score drops below absolute threshold (default: 0.95)
 
-- Error rate exceeds threshold (default: 2x baseline) 
+- Error rate exceeds threshold (default: 2x baseline)
 
-- Latency p99 exceeds SLO (default: 2x baseline) 
+- Latency p99 exceeds SLO (default: 2x baseline)
 
-- Hallucination rate spike detected by online evaluation 
+- Hallucination rate spike detected by online evaluation
 
-- Manual rollback triggered by on-call engineer 
+- Manual rollback triggered by on-call engineer
 
-- Policy violation detected by guardrail engine 
+- Policy violation detected by guardrail engine
 
 ```
 # Prompt routing policy (stored in AppConfig or registry)
@@ -512,11 +513,11 @@ routing_policy:
 
 PART 8<br>Prompt Governance<br><!-- End of picture text -->
 
-RBAC, approval workflows, audit trails, digital signatures, and compliance frameworks. 
+RBAC, approval workflows, audit trails, digital signatures, and compliance frameworks.
 
-Prompt governance is not bureaucracy — it is risk management. With EU AI Act high-risk enforcement beginning August 2, 2026, and prompt behavior now an auditable artifact, governance is a compliance requirement, not an option. 
+Prompt governance is not bureaucracy — it is risk management. With EU AI Act high-risk enforcement beginning August 2, 2026, and prompt behavior now an auditable artifact, governance is a compliance requirement, not an option.
 
-### **RBAC — Prompt Permission Model** 
+### RBAC — Prompt Permission Model
 
 |**Role**|**Creat**<br>**e**|**Read**|**Evalu**<br>**ate**|**Appro**<br>**ve**|**Publis**<br>**h**|**Depre**<br>**cate**|**Rollba**<br>**ck**|**Delete**|**Audit**|
 |---|---|---|---|---|---|---|---|---|---|
@@ -529,7 +530,7 @@ Prompt governance is not bureaucracy — it is risk management. With EU AI Act h
 |Governance Board|I|I|I|I(Tier<br>4–5)|I|I|I|I|I|
 |Compliance Auditor|I|I|I|I|I|I|I|I|I|
 
-### **Approval Workflow Tiers** 
+### Approval Workflow Tiers
 
 |**Tier 1 — Automated (0**<br>**humans)**|PATCH changes: typos, metadata, documentation. CI validates schema and tests<br>pass. Auto-approved. SLA: 5 minutes. No human review.|M|
 |**Tier 2 — Peer Review (1**<br>**human)**|Standard MINOR changes (non-safety). Single senior engineer approval via PR<br>review. Evaluation gate must pass. SLA: 24 hours.|M|
@@ -537,9 +538,9 @@ Prompt governance is not bureaucracy — it is risk management. With EU AI Act h
 |**Tier 4 — Governance Board**<br>**(4+ humans)**|MAJOR versions, safety-critical prompts, high-risk agents, external tool<br>integrations. Formal governance board sign-off. Full red team test. SLA: 5 business<br>days.|M|
 |**Tier 5 — Emergency Track**<br>**(2 humans parallel)**|Production incident / safety vulnerability only. CISO + RAI Officer parallel approval.<br>SLA: 2 hours. Mandatory post-incident review within 48h.||
 
-### **Policy-as-Code with OPA** 
+### Policy-as-Code with OPA
 
-Approval workflows and promotion gates are enforced as machine-readable OPA (Open Policy Agent) Rego policies evaluated in CI/CD pipelines: 
+Approval workflows and promotion gates are enforced as machine-readable OPA (Open Policy Agent) Rego policies evaluated in CI/CD pipelines:
 
 ```
 # OPA Policy: production promotion gate
@@ -566,25 +567,25 @@ deny[msg] {
 }
 ```
 
-### **Digital Signatures & Audit Trail** 
+### Digital Signatures & Audit Trail
 
-- Every released prompt version is signed by the release manager using organizational PKI. SHA-256 content hash embedded in registry metadata. 
+- Every released prompt version is signed by the release manager using organizational PKI. SHA-256 content hash embedded in registry metadata.
 
-- AgentCore agent verifies signature at load time. Unsigned or tampered prompts are rejected and incident logged. 
+- AgentCore agent verifies signature at load time. Unsigned or tampered prompts are rejected and incident logged.
 
-- All lifecycle events (create, review, approve, deploy, rollback, retire) written to CloudTrail and immutable audit log. 
+- All lifecycle events (create, review, approve, deploy, rollback, retire) written to CloudTrail and immutable audit log.
 
-- Audit records retained per regulatory requirements: 7 years for financial services, 10 years for healthcare, minimum 3 years for all. 
+- Audit records retained per regulatory requirements: 7 years for financial services, 10 years for healthcare, minimum 3 years for all.
 
-- Compliance reports auto-generated from audit log: who approved what, when, with what evaluation scores. 
+- Compliance reports auto-generated from audit log: who approved what, when, with what evaluation scores.
 
-# **Responsible AI Integration** 
+# Responsible AI Integration
 
-How Prompt Lifecycle integrates with RAI: risk scoring, safety testing, prompt injection defenses, and guardrails. 
+How Prompt Lifecycle integrates with RAI: risk scoring, safety testing, prompt injection defenses, and guardrails.
 
-### **Prompt Risk Scoring Framework** 
+### Prompt Risk Scoring Framework
 
-Every prompt must be assigned a risk score before entering the approval workflow. The score determines which approval tier is required and which security controls apply. 
+Every prompt must be assigned a risk score before entering the approval workflow. The score determines which approval tier is required and which security controls apply.
 
 |**Risk Dimension**|**Low**|**Medium**|**High**|**Critical**|
 |Output Scope|Internal read-only<br>summaries|Customer-facing text|Financial<br>recommendations|Medical/legal decisions|
@@ -594,37 +595,37 @@ Every prompt must be assigned a risk score before entering the approval workflow
 |Audience|Internal teams|SME customers|General public|Vulnerable populations|
 |Autonomy Level|Human-in-loop every<br>step|Supervised automation|Supervised autonomy|Full autonomy, high<br>stakes|
 
-### **Security Threat Taxonomy for Prompts** 
+### Security Threat Taxonomy for Prompts
 
-##### **Direct Prompt Injection** 
+### Direct Prompt Injection
 
-User crafts input designed to override system prompt instructions or jailbreak model safety. OWASP LLM01 — top vulnerability 2025–2026. 
+User crafts input designed to override system prompt instructions or jailbreak model safety. OWASP LLM01 — top vulnerability 2025–2026.
 
-##### **Indirect Prompt Injection** 
+### Indirect Prompt Injection
 
-Adversarial instructions embedded in external content (web pages, documents, emails) that the agent retrieves and processes. CVE-2025-32711 (EchoLeak) demonstrated data exfiltration from M365 Copilot via this vector. 
+Adversarial instructions embedded in external content (web pages, documents, emails) that the agent retrieves and processes. CVE-2025-32711 (EchoLeak) demonstrated data exfiltration from M365 Copilot via this vector.
 
-##### **Tool Poisoning** 
+### Tool Poisoning
 
-MCP tool descriptions or OpenAPI specs contain hidden instructions that hijack agent behavior when the tool schema is included in the context window. 
+MCP tool descriptions or OpenAPI specs contain hidden instructions that hijack agent behavior when the tool schema is included in the context window.
 
-##### **Memory Poisoning** 
+### Memory Poisoning
 
-Adversarial content stored in agent long-term memory (AgentCore Memory) that activates malicious behavior on retrieval in future sessions. 
+Adversarial content stored in agent long-term memory (AgentCore Memory) that activates malicious behavior on retrieval in future sessions.
 
-##### **Context Poisoning** 
+### Context Poisoning
 
-Injected content in RAG-retrieved documents or knowledge bases that manipulates agent reasoning. 
+Injected content in RAG-retrieved documents or knowledge bases that manipulates agent reasoning.
 
-##### **Prompt Leakage** 
+### Prompt Leakage
 
-System prompt contents extracted via prompt injection, side-channel attacks, or model verbatim output. Trade secrets and safety rules exposed. 
+System prompt contents extracted via prompt injection, side-channel attacks, or model verbatim output. Trade secrets and safety rules exposed.
 
-##### **Supply Chain Attack** 
+### Supply Chain Attack
 
-Prompt registry compromised, signed prompts replaced with tampered versions. Signature verification is the primary defense. 
+Prompt registry compromised, signed prompts replaced with tampered versions. Signature verification is the primary defense.
 
-### **Defense Layers** 
+### Defense Layers
 
 |**Defense Layer**|**Implementation**|**AWS Service / Tool**|
 |Input Sanitization|Strip XML/HTML markers, unusual unicode,<br>instruction-like patterns from user inputs before<br>appending to prompt context|Lambda pre-processing, custom sanitizer|
@@ -637,27 +638,27 @@ Prompt registry compromised, signed prompts replaced with tampered versions. Sig
 |Output Validation|Structured output parsing with schema validation.<br>JSON/XML mode enforcement.|Pydantic, jsonschema, Instructor|
 |Red Team Testing|Regular adversarial testing by security team and/or<br>Promptfoo (acquired by OpenAI, still OSS)|Promptfoo, internal red team|
 
-### **AgentCore Policy (GA March 2026)** 
+### AgentCore Policy (GA March 2026)
 
-AgentCore Policy, reaching GA in March 2026, enforces behavioral boundaries for agents using natural language policy definitions, verified outside the agent's reasoning loop before reaching tools or data. Key capabilities: 
+AgentCore Policy, reaching GA in March 2026, enforces behavioral boundaries for agents using natural language policy definitions, verified outside the agent's reasoning loop before reaching tools or data. Key capabilities:
 
-- Natural language policy definitions: 'Agent can issue refunds up to $100 without human approval' 
+- Natural language policy definitions: 'Agent can issue refunds up to $100 without human approval'
 
-- Policies verified by automated reasoning (same technology as IAM and S3 policy verification) 
+- Policies verified by automated reasoning (same technology as IAM and S3 policy verification)
 
-- Checked at AgentCore Gateway before each tool invocation — agent cannot bypass 
+- Checked at AgentCore Gateway before each tool invocation — agent cannot bypass
 
-- Integrates with Salesforce, Slack, and other third-party systems in access control decisions 
+- Integrates with Salesforce, Slack, and other third-party systems in access control decisions
 
-- Policy violations logged, alerted, and trigger human escalation 
+- Policy violations logged, alerted, and trigger human escalation
 
-# **Security Hardening** 
+# Security Hardening
 
-Signed prompts, encrypted storage, secrets separation, multi-region replication, and tamper detection. 
+Signed prompts, encrypted storage, secrets separation, multi-region replication, and tamper detection.
 
-### **Secrets Separation Pattern** 
+### Secrets Separation Pattern
 
-Prompts and secrets must NEVER co-exist. The pattern: prompts contain placeholder variables; secrets are injected at runtime from Secrets Manager. 
+Prompts and secrets must NEVER co-exist. The pattern: prompts contain placeholder variables; secrets are injected at runtime from Secrets Manager.
 
 ```
 # WRONG — Secret in prompt (critical anti-pattern)
@@ -677,9 +678,9 @@ def render_prompt(template: str, context: dict) -> str:
     return jinja2.Template(template).render(**context)
 ```
 
-### **Prompt Integrity Verification** 
+### Prompt Integrity Verification
 
-Before loading any prompt into an agent, verify the cryptographic signature matches the registry record: 
+Before loading any prompt into an agent, verify the cryptographic signature matches the registry record:
 
 ```
 import hashlib, json
@@ -695,7 +696,7 @@ def verify_prompt_integrity(prompt_content: str, metadata: dict) -> bool:
     return True  # Signature valid
 ```
 
-### **Security Controls Summary** 
+### Security Controls Summary
 
 |**Control**|**Implementation**|**AWS Service**|
 |Encryption at rest|AES-256 for all prompt storage — DynamoDB, S3, Parameter<br>Store|AWS KMS + default encryption|
@@ -710,73 +711,73 @@ def verify_prompt_integrity(prompt_content: str, metadata: dict) -> bool:
 |Access reviews|Quarterly RBAC access reviews. Automated access removal<br>for inactive users.|IAM Access Analyzer + custom<br>Lambda|
 |Prompt injection scanning|Pre-merge automated scanning for injection patterns in prompt<br>templates|Custom Lambda in CI/CD|
 
-# **AWS AgentCore Runtime — PART 11 Capabilities & Gaps** 
+# AWS AgentCore Runtime — PART 11 Capabilities & Gaps
 
-What AgentCore provides natively, what it expects external systems to provide, and the PromptOps gap analysis. 
+What AgentCore provides natively, what it expects external systems to provide, and the PromptOps gap analysis.
 
-### **What AgentCore Runtime Provides (GA October 2025)** 
+### What AgentCore Runtime Provides (GA October 2025)
 
-- **Serverless Execution:** Deploy any Python agent (LangGraph, Strands, OpenAI SDK) with zero infrastructure 
+- **Serverless Execution:** Deploy any Python agent (LangGraph, Strands, OpenAI SDK) with zero infrastructure
 
-- management. Auto-scaling. 
+- management. Auto-scaling.
 
-- **Session Isolation:** Complete execution isolation per session. Security boundary enforced at platform layer. 
+- **Session Isolation:** Complete execution isolation per session. Security boundary enforced at platform layer.
 
-- **AgentCore Identity:** Agents securely access AWS services and third-party tools (GitHub, Salesforce, Slack) 
+- **AgentCore Identity:** Agents securely access AWS services and third-party tools (GitHub, Salesforce, Slack)
 
-- via OAuth, token management, and audit trails. 
+- via OAuth, token management, and audit trails.
 
-- **AgentCore Gateway:** Transforms REST APIs and Lambda functions into agent-ready tools with semantic 
+- **AgentCore Gateway:** Transforms REST APIs and Lambda functions into agent-ready tools with semantic
 
-- routing. MCP protocol support. 
+- routing. MCP protocol support.
 
-- **AgentCore Memory:** Persistent session memory across conversations. Long-term knowledge storage. 
+- **AgentCore Memory:** Persistent session memory across conversations. Long-term knowledge storage.
 
-- **AgentCore Browser:** Managed web browser instances for web automation workflows. 
+- **AgentCore Browser:** Managed web browser instances for web automation workflows.
 
-- **AgentCore Code Interpreter:** Isolated environment for code execution. 
+- **AgentCore Code Interpreter:** Isolated environment for code execution.
 
-- **AgentCore Observability:** CloudWatch integration with OTel compatibility (Arize Phoenix, Arize AX, 
+- **AgentCore Observability:** CloudWatch integration with OTel compatibility (Arize Phoenix, Arize AX,
 
-- LangSmith, Langfuse). 
+- LangSmith, Langfuse).
 
-- **AgentCore Policy (GA March 2026):** Natural language behavioral boundaries verified by automated 
+- **AgentCore Policy (GA March 2026):** Natural language behavioral boundaries verified by automated
 
-- reasoning outside agent loop. 
+- reasoning outside agent loop.
 
-- **AgentCore Registry (Preview April 2026):** Skill/tool catalog — metadata storage, NOT a prompt registry. 
+- **AgentCore Registry (Preview April 2026):** Skill/tool catalog — metadata storage, NOT a prompt registry.
 
-- **Hot Reload (local dev only):** agentcore dev provides local hot reload for agent code. Production does NOT 
+- **Hot Reload (local dev only):** agentcore dev provides local hot reload for agent code. Production does NOT
 
-- have hot reload. 
+- have hot reload.
 
-- **Built-in Evaluator (Preview):** Quality evaluation via agentcore add evaluator command. Limited — not a full 
+- **Built-in Evaluator (Preview):** Quality evaluation via agentcore add evaluator command. Limited — not a full
 
-- evaluation platform. 
+- evaluation platform.
 
-### **What AgentCore Does NOT Provide (as of June 2026)** 
+### What AgentCore Does NOT Provide (as of June 2026)
 
-**Critical Gap: AgentCore has no built-in prompt registry, prompt versioning, prompt approval workflow, semantic versioning, evaluation history, or prompt-level lineage tracking. These must be supplied by external platforms or custom-built.** 
+**Critical Gap: AgentCore has no built-in prompt registry, prompt versioning, prompt approval workflow, semantic versioning, evaluation history, or prompt-level lineage tracking. These must be supplied by external platforms or custom-built.**
 
-- No prompt registry (AgentCore Registry is a skill/tool catalog, not a prompt registry) 
+- No prompt registry (AgentCore Registry is a skill/tool catalog, not a prompt registry)
 
-- No prompt versioning with semver, lineage, or evaluation history 
+- No prompt versioning with semver, lineage, or evaluation history
 
-- No approval workflow for prompts 
+- No approval workflow for prompts
 
-- No zero-downtime prompt hot-reload in production (must use AppConfig or equivalent) 
+- No zero-downtime prompt hot-reload in production (must use AppConfig or equivalent)
 
-- No A/B testing or canary routing for prompts (must build or use external system) 
+- No A/B testing or canary routing for prompts (must build or use external system)
 
-- No prompt-level CI/CD quality gates 
+- No prompt-level CI/CD quality gates
 
-- No prompt-level RBAC (only agent-level IAM) 
+- No prompt-level RBAC (only agent-level IAM)
 
-- No offline evaluation pipeline integrated with prompt versions 
+- No offline evaluation pipeline integrated with prompt versions
 
-- No prompt signature verification 
+- No prompt signature verification
 
-### **What AgentCore Expects External Systems to Provide** 
+### What AgentCore Expects External Systems to Provide
 
 |**Capability**|**Recommended External System**|
 |Prompt Registry|Langfuse, Braintrust, MLflow Prompt Registry, or custom DynamoDB|
@@ -790,17 +791,17 @@ What AgentCore provides natively, what it expects external systems to provide, a
 |Prompt-level RBAC|Custom DynamoDB + IAM or external registry RBAC|
 |Audit Trail|AWS CloudTrail + immutable S3 + custom audit API|
 
-# **Arize AX — Deep Dive** 
+# Arize AX — Deep Dive
 
-Architecture, prompt capabilities, evaluation engine, governance, enterprise adoption, pricing, and honest limitations. 
+Architecture, prompt capabilities, evaluation engine, governance, enterprise adoption, pricing, and honest limitations.
 
-### **What Arize AX Is** 
+### What Arize AX Is
 
-Arize AX is an enterprise AI engineering platform for production monitoring, evaluation, and self-improvement of LLM and agentic AI applications. It is built on open standards (OpenTelemetry, OpenInference) and runs on a proprietary OLAP database (ADB — Arize Database) designed for processing billions of traces at petabyte scale. As of June 2026, Arize AX processes 1 trillion spans and runs 50+ million evaluations monthly. 
+Arize AX is an enterprise AI engineering platform for production monitoring, evaluation, and self-improvement of LLM and agentic AI applications. It is built on open standards (OpenTelemetry, OpenInference) and runs on a proprietary OLAP database (ADB — Arize Database) designed for processing billions of traces at petabyte scale. As of June 2026, Arize AX processes 1 trillion spans and runs 50+ million evaluations monthly.
 
-Arize occupies the **observability and online evaluation layer** of the PromptOps stack. Its enterprise customers include DoorDash, Instacart, Reddit, Uber, Booking.com, Roblox, PagerDuty, Air Canada, Siemens, Microsoft, and the US Navy. AX is available on AWS Marketplace and Azure Marketplace with SOC 2 Type II, ISO 27001, PCI DSS, HIPAA, and GDPR compliance. 
+Arize occupies the **observability and online evaluation layer** of the PromptOps stack. Its enterprise customers include DoorDash, Instacart, Reddit, Uber, Booking.com, Roblox, PagerDuty, Air Canada, Siemens, Microsoft, and the US Navy. AX is available on AWS Marketplace and Azure Marketplace with SOC 2 Type II, ISO 27001, PCI DSS, HIPAA, and GDPR compliance.
 
-### **Arize AX Architecture** 
+### Arize AX Architecture
 
 |**Component**|**Description**|
 |ADB (Arize Database)|Proprietary OLAP engine built for massive-scale trace ingestion and querying. Replaces<br>ClickHouse for enterprise-scale workloads. Processes billions of traces with real-time ingestion<br>and fast querying.|
@@ -815,7 +816,7 @@ Arize occupies the **observability and online evaluation layer** of the PromptOp
 |Organizations API|Full RBAC management: organizations, spaces, roles, resource restrictions, API keys via REST<br>API and Python/JS SDKs (released April 2026).|
 |Annotations|Human feedback and labeling on traces. Annotation queues with configurable caps. Batch<br>annotation endpoints.|
 
-### **Arize AX — PromptOps Capability Assessment** 
+### Arize AX — PromptOps Capability Assessment
 
 |**Capability**|**Rating**|**Notes**|
 |Production Observability|IExcellent|Industry-leading trace ingestion at scale. 1T spans/month<br>processed.|
@@ -832,33 +833,33 @@ Arize occupies the **observability and online evaluation layer** of the PromptOp
 |AWS AgentCore Integration|IGood|OTel-native. Integrates via AgentCore Observability (CloudWatch).<br>Arize AX cited as compatible observability partner.|
 |Pricing|IIEnterprise|AX starts ~$50K/year. AX Pro from $50/month (limited). Enterprise<br>custom pricing. Span-based pricing can escalate on agent<br>workloads.|
 
-### **Honest Limitations of Arize AX for PromptOps** 
+### Honest Limitations of Arize AX for PromptOps
 
-- Prompt lifecycle management (versioning, approval, deployment) is NOT Arize's primary product surface. It is an observability-first platform. 
+- Prompt lifecycle management (versioning, approval, deployment) is NOT Arize's primary product surface. It is an observability-first platform.
 
-- No git-style prompt branching comparable to Confident AI or Braintrust's PR model. 
+- No git-style prompt branching comparable to Confident AI or Braintrust's PR model.
 
-- No built-in CI/CD gate that blocks PR merges on prompt quality regression (must build with AX API). 
+- No built-in CI/CD gate that blocks PR merges on prompt quality regression (must build with AX API).
 
-- Span-based pricing can become expensive on agentic workloads emitting thousands of spans per run. 
+- Span-based pricing can become expensive on agentic workloads emitting thousands of spans per run.
 
-- Graduating from Phoenix (free) to AX is a contract/repricing event, not a tier upgrade. 
+- Graduating from Phoenix (free) to AX is a contract/repricing event, not a tier upgrade.
 
-- Documentation is extensive but has steep learning curve per G2 and AWS Marketplace reviews. 
+- Documentation is extensive but has steep learning curve per G2 and AWS Marketplace reviews.
 
-- Limited pre-production simulation capabilities — strong in production, weaker in staging. 
+- Limited pre-production simulation capabilities — strong in production, weaker in staging.
 
-**Strategic Verdict: Arize AX should be the observability and online evaluation layer for enterprise AWS AgentCore deployments. It should NOT be the primary prompt registry or lifecycle management platform. Pair it with Langfuse or Braintrust for the registry/CI/CD layer.** 
+**Strategic Verdict: Arize AX should be the observability and online evaluation layer for enterprise AWS AgentCore deployments. It should NOT be the primary prompt registry or lifecycle management platform. Pair it with Langfuse or Braintrust for the registry/CI/CD layer.**
 
 PART 13<br>Phoenix — Deep Dive<br><!-- End of picture text -->
 
-Open-source tracing, evaluation, and prompt management — comparison against Arize AX. 
+Open-source tracing, evaluation, and prompt management — comparison against Arize AX.
 
-### **What Phoenix Is** 
+### What Phoenix Is
 
-Arize Phoenix is the open-source library for LLM tracing, evaluation, and prompt management. It has 10,200+ GitHub stars (June 2026) and is licensed under Elastic License 2.0 (ELv2). Phoenix runs locally, in Docker, in Jupyter notebooks, or cloud-hosted. It is the open-source foundation of the Arize ecosystem — the path is 'start with Phoenix, graduate to AX when you need enterprise features.' 
+Arize Phoenix is the open-source library for LLM tracing, evaluation, and prompt management. It has 10,200+ GitHub stars (June 2026) and is licensed under Elastic License 2.0 (ELv2). Phoenix runs locally, in Docker, in Jupyter notebooks, or cloud-hosted. It is the open-source foundation of the Arize ecosystem — the path is 'start with Phoenix, graduate to AX when you need enterprise features.'
 
-### **Phoenix Capabilities** 
+### Phoenix Capabilities
 
 |**Capability**|**Phoenix Rating**|**Notes**|
 |LLM Tracing|IExcellent|OpenInference/OTel native. Most widely adopted OTel semantic<br>conventions for LLM. Works with all major frameworks.|
@@ -874,7 +875,7 @@ Arize Phoenix is the open-source library for LLM tracing, evaluation, and prompt
 |Long Agent Trace UX|IILimited|Phoenix was designed for prompt/completion pairs + eval score. Long<br>agentic traces (1000+ spans) are displayable but not optimized for<br>debugging.|
 |Pricing|IFree (self-hosted)|Self-hosted is free. AX Pro from $50/month. AX Enterprise: custom<br>(~$50K+/year).|
 
-### **Phoenix vs Arize AX — Decision** 
+### Phoenix vs Arize AX — Decision
 
 |**Dimension**|**Choose Phoenix**|**Choose Arize AX**|
 |Team Size|< 20 engineers, single team|> 20 engineers, multi-team|
@@ -886,15 +887,15 @@ Arize Phoenix is the open-source library for LLM tracing, evaluation, and prompt
 |Data Residency|Full control required (self-host)|VPC deployment acceptable|
 |CLI Workflow|Terminal-first (January 2026 CLI)|Platform UI + API + CLI|
 
-**For enterprise AWS AgentCore deployments in regulated industries: Use Phoenix in development and CI for zero-cost evaluation during authoring. Graduate to Arize AX in production for online evaluation, alerts, and compliance-grade observability. Do not depend on Phoenix for production prompt registry — use Langfuse, Braintrust, or custom DynamoDB registry instead.** 
+**For enterprise AWS AgentCore deployments in regulated industries: Use Phoenix in development and CI for zero-cost evaluation during authoring. Graduate to Arize AX in production for online evaluation, alerts, and compliance-grade observability. Do not depend on Phoenix for production prompt registry — use Langfuse, Braintrust, or custom DynamoDB registry instead.**
 
-# **AWS-Native Alternative** 
+# AWS-Native Alternative
 
-How much PromptOps can be built using only AWS services — and where native services fall short. 
+How much PromptOps can be built using only AWS services — and where native services fall short.
 
-### **AWS-Native PromptOps Stack** 
+### AWS-Native PromptOps Stack
 
-A fully AWS-native PromptOps stack is possible but requires significant custom engineering. Each capability requires combining multiple services: 
+A fully AWS-native PromptOps stack is possible but requires significant custom engineering. Each capability requires combining multiple services:
 
 |**PromptOps Capability**|**AWS Services**|**Engineering Effort**|**Maturity**|
 |Prompt Repository|CodeCommit / GitHub|Low — use existing Git|IMature|
@@ -913,31 +914,31 @@ A fully AWS-native PromptOps stack is possible but requires significant custom e
 |PII Scanning|Amazon Comprehend + Lambda +<br>Macie|Medium — Comprehend<br>integration|IGood|
 |Cost Attribution|Cost Explorer + Resource Tagging<br>+ Lambda|Medium — tagging<br>discipline required|IGood|
 
-### **AWS-Native Verdict** 
+### AWS-Native Verdict
 
-**An AWS-native PromptOps platform can be built, but the total engineering effort is enormous: 6–12 months for a team of 4–6 engineers to build a Level 3 capable system. The operational burden is significant. For most enterprises, buying an external platform (Langfuse, Braintrust, or Arize AX) for the registry and evaluation layers is 10x cheaper than building equivalent capabilities. The exception: organizations with extreme data-sovereignty requirements or pre-existing investment in AWS-native tooling.** 
+**An AWS-native PromptOps platform can be built, but the total engineering effort is enormous: 6–12 months for a team of 4–6 engineers to build a Level 3 capable system. The operational burden is significant. For most enterprises, buying an external platform (Langfuse, Braintrust, or Arize AX) for the registry and evaluation layers is 10x cheaper than building equivalent capabilities. The exception: organizations with extreme data-sovereignty requirements or pre-existing investment in AWS-native tooling.**
 
-### **What AWS-Native Does Well** 
+### What AWS-Native Does Well
 
-- **AppConfig:** Best-in-class for zero-downtime prompt delivery. Use this regardless of which registry platform 
+- **AppConfig:** Best-in-class for zero-downtime prompt delivery. Use this regardless of which registry platform
 
-- you choose. 
+- you choose.
 
-- **CloudTrail + S3 Object Lock:** Immutable, tamper-evident audit trail. Required for compliance. Use this 
+- **CloudTrail + S3 Object Lock:** Immutable, tamper-evident audit trail. Required for compliance. Use this
 
-- natively. 
+- natively.
 
-- **Bedrock Guardrails:** Content safety layer. Best deployed as AWS-native regardless of external platform. 
+- **Bedrock Guardrails:** Content safety layer. Best deployed as AWS-native regardless of external platform.
 
-- **IAM + Secrets Manager:** Secrets separation and least-privilege access. Always AWS-native. 
+- **IAM + Secrets Manager:** Secrets separation and least-privilege access. Always AWS-native.
 
-- **CloudWatch + OTel:** Baseline observability available natively. Arize AX or Langfuse add value on top. 
+- **CloudWatch + OTel:** Baseline observability available natively. Arize AX or Langfuse add value on top.
 
-- **Bedrock Prompt Caching:** Model-layer KV cache. Always AWS-native — no external platform provides this. 
+- **Bedrock Prompt Caching:** Model-layer KV cache. Always AWS-native — no external platform provides this.
 
 PART 15<br>Platform Comparison Matrix<br><!-- End of picture text -->
 
-Comprehensive comparison of all major PromptOps platforms for enterprise AWS deployments. 
+Comprehensive comparison of all major PromptOps platforms for enterprise AWS deployments.
 
 |**Platform**|**Prompt**<br>**Registry**|**Versioni**<br>**ng**|**Approval**<br>**Workflo**<br>**w**|**CI/CD**<br>**Gates**|**Online**<br>**Eval**|**RBAC**|**Self-H**<br>**ost**|**AWS Inte**<br>**gration**|**Pricing**|
 |---|---|---|---|---|---|---|---|---|---|
@@ -952,53 +953,53 @@ Comprehensive comparison of all major PromptOps platforms for enterprise AWS dep
 |Humanloop|SHUTDO<br>WN|SHUTDO<br>WN|SHUTDO<br>WN|SHUTDO<br>WN|SHUTDO<br>WN|SHUTD<br>OWN|SHUTD<br>OWN|SHUTDO<br>WN|SHUTDO<br>WN|
 |AWS Native|Custom|Custom|Custom|Custom|Custom|IAM-ba<br>sed|N/A|INative|Engineerin<br>g cost|
 
-### **Platform Descriptions** 
+### Platform Descriptions
 
-##### **Arize AX** 
+### Arize AX
 
-Production observability & online evaluation leader. OTel-native. Enterprise compliance. Prompt IDE for experimentation. Limited registry/CI/CD. 
+Production observability & online evaluation leader. OTel-native. Enterprise compliance. Prompt IDE for experimentation. Limited registry/CI/CD.
 
-##### **Phoenix (OSS)** 
+### Phoenix (OSS)
 
-Free self-hosted Arize foundation. Excellent development-time tracing and eval. ELv2 license. Limited for production monitoring. 
+Free self-hosted Arize foundation. Excellent development-time tracing and eval. ELv2 license. Limited for production monitoring.
 
-##### **LangSmith** 
+### LangSmith
 
-LangChain-native tracing, eval, Prompt Hub versioning. Best for LangChain/LangGraph teams. Limited A/B testing, no approval workflow. 
+LangChain-native tracing, eval, Prompt Hub versioning. Best for LangChain/LangGraph teams. Limited A/B testing, no approval workflow.
 
-##### **Langfuse** 
+### Langfuse
 
-Best open-source self-hosted option post-Humanloop shutdown. MIT license. Good tracing, prompt versioning. Less polished CI/CD than Braintrust. 
+Best open-source self-hosted option post-Humanloop shutdown. MIT license. Good tracing, prompt versioning. Less polished CI/CD than Braintrust.
 
-##### **Braintrust** 
+### Braintrust
 
-Best eval-gated CI/CD integration. Native GitHub Action. Eval blocks PR merges. Production traces → test cases. $80M Series B. 
+Best eval-gated CI/CD integration. Native GitHub Action. Eval blocks PR merges. Production traces → test cases. $80M Series B.
 
-##### **MLflow Prompt Reg.** 
+### MLflow Prompt Reg
 
-Apache 2.0. Linux Foundation. Most widely adopted OSS. Strong model registry + prompt versioning. Lower LLM eval depth than pure-play platforms. 
+Apache 2.0. Linux Foundation. Most widely adopted OSS. Strong model registry + prompt versioning. Lower LLM eval depth than pure-play platforms.
 
-##### **W&B; Weave** 
+### W&B; Weave
 
-Strong experiment tracking pedigree. Weave adds LLM tracing and eval. Good for teams with ML experiment tracking culture. $50/user/month. 
+Strong experiment tracking pedigree. Weave adds LLM tracing and eval. Good for teams with ML experiment tracking culture. $50/user/month.
 
-##### **PromptLayer** 
+### PromptLayer
 
-Low-friction prompt management CMS. Good for non-technical collaboration. Limited governance depth. $500/month team plan. 
+Low-friction prompt management CMS. Good for non-technical collaboration. Limited governance depth. $500/month team plan.
 
-##### **Humanloop** 
+### Humanloop
 
-ACQUIRED AND SHUT DOWN by Anthropic, September 8, 2025. Do not evaluate or plan on. 
+ACQUIRED AND SHUT DOWN by Anthropic, September 8, 2025. Do not evaluate or plan on.
 
-##### **AWS Native Only** 
+### AWS Native Only
 
-Maximum data sovereignty. Very high engineering investment. AppConfig + CloudTrail + Bedrock Guardrails are the best AWS-native PromptOps primitives. 
+Maximum data sovereignty. Very high engineering investment. AppConfig + CloudTrail + Bedrock Guardrails are the best AWS-native PromptOps primitives.
 
 Agent Runtime Integration<br>PART 16<br>Patterns<br><!-- End of picture text -->
 
-How agents fetch, cache, and receive prompts — latency implications and tradeoffs. 
+How agents fetch, cache, and receive prompts — latency implications and tradeoffs.
 
-### **Integration Pattern Comparison** 
+### Integration Pattern Comparison
 
 |**Pattern**|**P50**<br>**Latency**|**P99**<br>**Latency**|**Freshness**|**Complexit**<br>**y**|**Best For**|
 |Fetch every request (no cache)|50–200ms|500ms+|Always fresh|Low|Dev/test only —<br>unacceptable for production|
@@ -1008,9 +1009,9 @@ How agents fetch, cache, and receive prompts — latency implications and tradeo
 |Prompt Gateway (dedicated<br>service)|2–10ms|20ms|Policy-controlled|High|A/B testing, per-tenant<br>routing, global deployments|
 |Local memory (sidecar)|< 1ms|< 1ms|Full restart to<br>refresh|Low|Immutable prompts only|
 
-### **Recommended Implementation: AppConfig Lambda Extension** 
+### Recommended Implementation: AppConfig Lambda Extension
 
-The AppConfig Lambda extension (or sidecar for containerized agents) is the production-recommended pattern. It runs locally, handles caching, polling, and rollback transparently: 
+The AppConfig Lambda extension (or sidecar for containerized agents) is the production-recommended pattern. It runs locally, handles caching, polling, and rollback transparently:
 
 ```
 # AgentCore agent: fetch prompt via AppConfig sidecar
@@ -1038,11 +1039,11 @@ def invoke(session: dict, user_input: str) -> str:
     return response['output']['message']['content'][0]['text']
 ```
 
-# **Multi-Agent Systems** 
+# Multi-Agent Systems
 
-How Planner, Coordinator, Worker, Supervisor, and Reflection agents share and compose prompts. 
+How Planner, Coordinator, Worker, Supervisor, and Reflection agents share and compose prompts.
 
-### **Agent Role** → **Prompt Type Mapping** 
+### Agent Role**→**Prompt Type Mapping
 
 |**Agent Role**|**Primary Prompt Types**|**Sharing Pattern**|**Versioning**|
 |Orchestrator / Planner|Goal decomposition, task<br>delegation, progress synthesis|Centrally owned, inherited by<br>sub-agents as context|MAJOR version gate —<br>changes affect entire system|
@@ -1053,29 +1054,29 @@ How Planner, Coordinator, Worker, Supervisor, and Reflection agents share and co
 |Memory Agent|Storage rules, retrieval criteria,<br>summarization policies|Central platform, version pinned<br>per deployment|MAJOR — changes affect all<br>memory operations|
 |Tool Agent|Tool selection heuristics,<br>parameter formatting, error<br>handling|Tool-specific, co-versioned with<br>tool schema|Versioned with tool<br>compatibility matrix|
 
-### **Prompt Composition Patterns** 
+### Prompt Composition Patterns
 
-##### **Central Registry (Recommended)** 
+### Central Registry (Recommended)
 
-All agents fetch prompts from the central registry. Each agent knows its role and requests the appropriate prompt type. Governance, versioning, and audit happen centrally. Dependency graph tracks which agent uses which prompt. 
+All agents fetch prompts from the central registry. Each agent knows its role and requests the appropriate prompt type. Governance, versioning, and audit happen centrally. Dependency graph tracks which agent uses which prompt.
 
-##### **Inheritance** 
+### Inheritance
 
-Orchestrator system prompt inherited by sub-agents as context. Sub-agent cannot override orchestrator constraints. Hierarchy enforced at runtime by Orchestrator injecting its constraints as context into sub-agent calls. 
+Orchestrator system prompt inherited by sub-agents as context. Sub-agent cannot override orchestrator constraints. Hierarchy enforced at runtime by Orchestrator injecting its constraints as context into sub-agent calls.
 
-##### **Composition / Macro System** 
+### Composition / Macro System
 
-Large prompts assembled from smaller reusable fragments (macros): safety-clause-v1, brand-voice-v2, tool-usage-policy-v3. Each macro versioned independently. Assembled prompt's hash reflects composition. 
+Large prompts assembled from smaller reusable fragments (macros): safety-clause-v1, brand-voice-v2, tool-usage-policy-v3. Each macro versioned independently. Assembled prompt's hash reflects composition.
 
-##### **Overrides** 
+### Overrides
 
-Tenant-specific overrides applied on top of base prompt. Override stored separately in registry with its own approval record. Base + override assembled by Prompt Gateway at request time. 
+Tenant-specific overrides applied on top of base prompt. Override stored separately in registry with its own approval record. Base + override assembled by Prompt Gateway at request time.
 
-# **Prompt Template Systems** 
+# Prompt Template Systems
 
-Jinja2, Mustache, DSPy, structured prompts, and composition patterns. 
+Jinja2, Mustache, DSPy, structured prompts, and composition patterns.
 
-### **Template Engine Comparison** 
+### Template Engine Comparison
 
 |**Engine**|**Syntax**|**Logic Support**|**Safety**|**Enterprise**<br>**Use**|**Recommendation**|
 |Jinja2 (Python)|{{ var }}, {% if %}|Full logic, loops,<br>filters|II<br>Requires<br>sanitizatio<br>n|Very<br>common|IRECOMMENDED — most<br>expressive|
@@ -1085,7 +1086,7 @@ Jinja2, Mustache, DSPy, structured prompts, and composition patterns.
 |XML/YAML Prompts|YAML/XML structure<br>with variable refs|Limited|ISafe|Enterprise|IGood for structured agents|
 |DSPy|Programmatic<br>module definitions,<br>auto-optimization|Full Python logic|I<br>Compiled<br>output|Research /<br>advanced|IIBest for teams with ML<br>expertise|
 
-### **Recommended Template Pattern: Jinja2 with Security Controls** 
+### Recommended Template Pattern: Jinja2 with Security Controls
 
 ```
 # template: customer-support-system-v2.jinja2
@@ -1106,23 +1107,23 @@ You are {{ persona.name }}, a customer support specialist for {{ company.name }}
 {% endfor %}
 ```
 
-### **DSPy — Programmatic Prompt Optimization** 
+### DSPy — Programmatic Prompt Optimization
 
-DSPy (Declarative Self-improving Python) treats prompts as compiled programs rather than hand-written strings. The optimizer generates optimized prompts through empirical testing against training data. Key considerations for enterprise: 
+DSPy (Declarative Self-improving Python) treats prompts as compiled programs rather than hand-written strings. The optimizer generates optimized prompts through empirical testing against training data. Key considerations for enterprise:
 
-- Compiled prompts are deterministic given the same optimizer run — versioning must capture optimizer configuration AND compiled output 
+- Compiled prompts are deterministic given the same optimizer run — versioning must capture optimizer configuration AND compiled output
 
-- DSPy optimizations may be opaque — RAI review must assess compiled prompt content, not just the module definition 
+- DSPy optimizations may be opaque — RAI review must assess compiled prompt content, not just the module definition
 
-- Excellent for automated prompt improvement (Stage 7 of PromptOps maturity) 
+- Excellent for automated prompt improvement (Stage 7 of PromptOps maturity)
 
-- Integration pattern: DSPy optimizes offline; compiled prompt stored in registry as v-next candidate; human approval before production promotion 
+- Integration pattern: DSPy optimizes offline; compiled prompt stored in registry as v-next candidate; human approval before production promotion
 
-# **Enterprise Reference PART 19 Architecture** 
+# Enterprise Reference PART 19 Architecture
 
-Complete production architecture for PromptOps on AWS AgentCore Runtime. 
+Complete production architecture for PromptOps on AWS AgentCore Runtime.
 
-### **Architecture Layer Overview** 
+### Architecture Layer Overview
 
 |**L7: Developer Experience**|Author Portal (Langfuse/Braintrust UI) · Prompt IDE (Arize AX) · CLI (git, registry<br>CLI) · VS Code Extension · Slack/JIRA Integration|M|
 |**L6: Governance & Approval**|Approval Workflow Engine (Step Functions) · RAI Checklist Service · Security Scan<br>Gate · RBAC Service · Policy Engine (OPA) · Audit Logger|M|
@@ -1133,7 +1134,7 @@ Complete production architecture for PromptOps on AWS AgentCore Runtime.
 |**L1: Observability**|Arize AX (online eval + production tracing) · CloudWatch (metrics/logs) · OTel<br>Collector · Cost Attribution (per-prompt token tracking)|M|
 |**L0: Foundation**|Amazon Bedrock (models + Guardrails + Prompt Caching) · Secrets Manager ·<br>KMS · IAM · VPC + PrivateLink · CloudTrail + S3 Object Lock||
 
-### **Sequence: Prompt Update Flow (Zero-Downtime)** 
+### Sequence: Prompt Update Flow (Zero-Downtime)
 
 |**1. Author creates PR**|Prompt Engineer commits new version to Git repo. Automated CI triggers: schema<br>validation, secret scanning, PII check, prompt injection scan.|M|
 |**2. Peer Review**|Senior Engineer reviews PR. Automated evaluation runs (Phoenix/Braintrust SDK)<br>against golden dataset. Score posted as PR comment.|M|
@@ -1143,11 +1144,11 @@ Complete production architecture for PromptOps on AWS AgentCore Runtime.
 |**6. Canary Rollout**|AppConfig serves new version to canary % of agents. Arize AX monitors online<br>eval scores and quality metrics during rollout.|M|
 |**7. Automatic Promotion or**<br>**Rollback**|If quality gates pass after evaluation window: promote to 100%. If any gate fails:<br>AppConfig automatic rollback to previous version.|M|
 
-###### **8. Audit Record** 
+### 8. Audit Record
 
-All events (publish, deploy, rollout, rollback) written to immutable CloudTrail audit log. Compliance report auto-generated. 
+All events (publish, deploy, rollout, rollback) written to immutable CloudTrail audit log. Compliance report auto-generated.
 
-### **Multi-Account Topology** 
+### Multi-Account Topology
 
 |**AWS Account**|**Purpose**|**Key Services**|
 |Security Account|Prompt registry, approval workflow, signing keys,<br>audit logs|DynamoDB, Lambda, KMS, CloudTrail, S3<br>Object Lock|
@@ -1157,11 +1158,11 @@ All events (publish, deploy, rollout, rollback) written to immutable CloudTrail 
 |Observability|Arize AX, CloudWatch cross-account, cost<br>attribution|CloudWatch, OTel Collector, Cost Explorer|
 |Development|Author portal, Phoenix local, Braintrust offline evals|Development tooling, no production data|
 
-# **PromptOps CI/CD** 
+# PromptOps CI/CD
 
-GitOps, branching, evaluation gates, promotion rings, and feature flags for prompts. 
+GitOps, branching, evaluation gates, promotion rings, and feature flags for prompts.
 
-### **Git Branching Strategy for Prompts** 
+### Git Branching Strategy for Prompts
 
 |**Branch**|**Purpose**|**Merge Target**|**CI/CD Action**|
 |main / trunk|Production-approved prompts only|—|Triggers registry publish +<br>AppConfig deploy|
@@ -1171,7 +1172,7 @@ GitOps, branching, evaluation gates, promotion rings, and feature flags for prom
 |experiment/name|A/B test candidates, shadow<br>prompts|Never auto-merged|Eval suite, register as experiment<br>in Braintrust/AX|
 |hotfix/security|Emergency safety patches|main directly|Security scan + RAI review only<br>(Tier 5 fast path)|
 
-### **GitHub Actions Pipeline** 
+### GitHub Actions Pipeline
 
 ```
 # .github/workflows/prompt-ci.yml
@@ -1211,7 +1212,7 @@ jobs:
         run: promptfoo redteam --config redteam.yaml
 ```
 
-### **Release Rings** 
+### Release Rings
 
 |**Ring**|**Traffic %**|**Population**|**Promotion Gate**|
 |Ring 0 — Canary|1%|Internal teams only|Manual approval after 30 min|
@@ -1220,127 +1221,127 @@ jobs:
 |Ring 3 — Full Production|100%|All customers|Auto if Ring 2 gates pass for 8h|
 |Emergency Rollback|100%→<br>0%|All sessions migrated|Automatic on quality breach or manual trigger|
 
-# **Anti-Patterns** 
+# Anti-Patterns
 
-The 15 most dangerous failure modes in enterprise PromptOps and how to remediate them. 
+The 15 most dangerous failure modes in enterprise PromptOps and how to remediate them.
 
-#### **Prompt Archaeology [CRITICAL]** 
+### Prompt Archaeology [CRITICAL]
 
-**Problem:** Prompts stored in source code comments, README files, Slack messages, or spreadsheets. No version history. No ownership. No evaluation. 
+**Problem:** Prompts stored in source code comments, README files, Slack messages, or spreadsheets. No version history. No ownership. No evaluation.
 
-**Remediation:** Mandatory prompt repository policy with automated scanning. Zero-tolerance enforcement. Migration sprint to centralize all prompts. 
+**Remediation:** Mandatory prompt repository policy with automated scanning. Zero-tolerance enforcement. Migration sprint to centralize all prompts.
 
-#### **God Prompt [HIGH]** 
+### God Prompt [HIGH]
 
-**Problem:** A single system prompt attempting to define persona, safety rules, tool policies, domain knowledge, and escalation criteria. 3000+ tokens. Unmaintainable, ungovernable. 
+**Problem:** A single system prompt attempting to define persona, safety rules, tool policies, domain knowledge, and escalation criteria. 3000+ tokens. Unmaintainable, ungovernable.
 
-**Remediation:** Decompose into macro system: separate safety-clause, persona, tool-policy, and domain-specific components. Compose at runtime. 
+**Remediation:** Decompose into macro system: separate safety-clause, persona, tool-policy, and domain-specific components. Compose at runtime.
 
-#### **Hardcoded Secrets [CRITICAL]** 
+### Hardcoded Secrets [CRITICAL]
 
-**Problem:** API keys, credentials, or personal data embedded directly in prompt templates. Exposed via prompt leakage attacks or repository access. 
+**Problem:** API keys, credentials, or personal data embedded directly in prompt templates. Exposed via prompt leakage attacks or repository access.
 
-**Remediation:** Mandatory secrets management (Secrets Manager). Template variables for all sensitive references. Automated secret scanning in CI blocks all PRs with credentials. 
+**Remediation:** Mandatory secrets management (Secrets Manager). Template variables for all sensitive references. Automated secret scanning in CI blocks all PRs with credentials.
 
-#### **No Rollback Strategy [CRITICAL]** 
+### No Rollback Strategy [CRITICAL]
 
-**Problem:** Production prompt deployments with no defined rollback procedure. Recovery from bad updates requires emergency engineering and potential downtime. 
+**Problem:** Production prompt deployments with no defined rollback procedure. Recovery from bad updates requires emergency engineering and potential downtime.
 
-**Remediation:** AppConfig with automatic rollback triggers. Registry always retains N previous stable versions. One-command rollback runbook documented and tested quarterly. 
+**Remediation:** AppConfig with automatic rollback triggers. Registry always retains N previous stable versions. One-command rollback runbook documented and tested quarterly.
 
-#### **Cross-Model Prompt Reuse [HIGH]** 
+### Cross-Model Prompt Reuse [HIGH]
 
-**Problem:** Prompts developed and evaluated for Claude deployed unchanged on GPT or Gemini without re-evaluation. Model behavior differences cause silent quality degradation. 
+**Problem:** Prompts developed and evaluated for Claude deployed unchanged on GPT or Gemini without re-evaluation. Model behavior differences cause silent quality degradation.
 
-**Remediation:** Mandatory compatibility matrix. Model-specific evaluation gates in CI. Prompt migration testing protocol for every model version upgrade. 
+**Remediation:** Mandatory compatibility matrix. Model-specific evaluation gates in CI. Prompt migration testing protocol for every model version upgrade.
 
-#### **Ownerless Prompts [HIGH]** 
+### Ownerless Prompts [HIGH]
 
-**Problem:** Prompts with no identified team or individual owner. When they break, no one knows. They never get deprecated, updated, or retired. 
+**Problem:** Prompts with no identified team or individual owner. When they break, no one knows. They never get deprecated, updated, or retired.
 
-**Remediation:** CODEOWNERS enforcement for all prompt directories. Owner field mandatory in metadata schema. Orphaned prompt auto-escalation after 30 days. 
+**Remediation:** CODEOWNERS enforcement for all prompt directories. Owner field mandatory in metadata schema. Orphaned prompt auto-escalation after 30 days.
 
-#### **Evaluation Debt [HIGH]** 
+### Evaluation Debt [HIGH]
 
-**Problem:** Evaluation only at initial deployment. No regression suite. No golden datasets. Quality degradation discovered via production incidents and user complaints. 
+**Problem:** Evaluation only at initial deployment. No regression suite. No golden datasets. Quality degradation discovered via production incidents and user complaints.
 
-**Remediation:** Continuous evaluation as platform primitive. Mandatory regression suite before every version promotion. Automated quality alerts on production traffic. 
+**Remediation:** Continuous evaluation as platform primitive. Mandatory regression suite before every version promotion. Automated quality alerts on production traffic.
 
-#### **Prompt Sprawl [MEDIUM]** 
+### Prompt Sprawl [MEDIUM]
 
-**Problem:** Dozens of near-identical prompts for similar use cases. None discoverable. All maintained independently. Divergence creates inconsistency. 
+**Problem:** Dozens of near-identical prompts for similar use cases. None discoverable. All maintained independently. Divergence creates inconsistency.
 
-**Remediation:** Discovery-before-creation policy. Semantic similarity detection in CI. Prompt macro library and inheritance system. 
+**Remediation:** Discovery-before-creation policy. Semantic similarity detection in CI. Prompt macro library and inheritance system.
 
-#### **Missing Lineage [HIGH]** 
+### Missing Lineage [HIGH]
 
-**Problem:** No tracking of which prompt produced which output, or which knowledge base grounded which agent response. Impact analysis impossible. 
+**Problem:** No tracking of which prompt produced which output, or which knowledge base grounded which agent response. Impact analysis impossible.
 
-**Remediation:** Mandatory lineage metadata. Automatic lineage capture in evaluation and deployment pipelines. OpenLineage integration. 
+**Remediation:** Mandatory lineage metadata. Automatic lineage capture in evaluation and deployment pipelines. OpenLineage integration.
 
-#### **Prompt in CI/CD Only [MEDIUM]** 
+### Prompt in CI/CD Only [MEDIUM]
 
-**Problem:** Prompts stored only in CI/CD secrets or environment variables. No central registry. No search. No governance. Different environments drift. 
+**Problem:** Prompts stored only in CI/CD secrets or environment variables. No central registry. No search. No governance. Different environments drift.
 
-**Remediation:** Centralized registry as the authoritative source. CI/CD fetches from registry. Never store prompts as CI/CD secrets. 
+**Remediation:** Centralized registry as the authoritative source. CI/CD fetches from registry. Never store prompts as CI/CD secrets.
 
-#### **No Session Version Pinning [HIGH]** 
+### No Session Version Pinning [HIGH]
 
-**Problem:** Long-running agent sessions switch prompt versions mid-conversation when a new version deploys. Behavioral inconsistency, compliance violations, debugging nightmares. 
+**Problem:** Long-running agent sessions switch prompt versions mid-conversation when a new version deploys. Behavioral inconsistency, compliance violations, debugging nightmares.
 
-**Remediation:** Session version pinning at session creation. Version stored in AgentCore Memory or DynamoDB with session TTL. 
+**Remediation:** Session version pinning at session creation. Version stored in AgentCore Memory or DynamoDB with session TTL.
 
-#### **One-Shot Red Team [HIGH]** 
+### One-Shot Red Team [HIGH]
 
-**Problem:** Red team testing only at initial launch. No ongoing adversarial testing. Attack surface grows as tools and integrations evolve. 
+**Problem:** Red team testing only at initial launch. No ongoing adversarial testing. Attack surface grows as tools and integrations evolve.
 
-**Remediation:** Quarterly red team exercises as compliance requirement. Automated Promptfoo red team runs in CI for high-risk prompts. Incident-triggered ad-hoc red team. 
+**Remediation:** Quarterly red team exercises as compliance requirement. Automated Promptfoo red team runs in CI for high-risk prompts. Incident-triggered ad-hoc red team.
 
-#### **Context Bloat [MEDIUM]** 
+### Context Bloat [MEDIUM]
 
-**Problem:** Agent context window grows without bound as conversation history accumulates. Prompt quality degrades. Token costs spiral. Eventually hits model context limit. 
+**Problem:** Agent context window grows without bound as conversation history accumulates. Prompt quality degrades. Token costs spiral. Eventually hits model context limit.
 
-**Remediation:** Context window management policy. Automatic summarization at token budget threshold. Per-agent token budget enforcement. 
+**Remediation:** Context window management policy. Automatic summarization at token budget threshold. Per-agent token budget enforcement.
 
-#### **No Cost Governance [HIGH]** 
+### No Cost Governance [HIGH]
 
-**Problem:** No per-prompt, per-agent, or per-team token cost tracking. Cost surprises discovered on AWS bill. No budget alerts or circuit breakers. 
+**Problem:** No per-prompt, per-agent, or per-team token cost tracking. Cost surprises discovered on AWS bill. No budget alerts or circuit breakers.
 
-**Remediation:** Token cost metadata in every prompt evaluation record. Per-agent cost budget in AppConfig. CloudWatch alarms on token spend rate. Monthly cost review process. 
+**Remediation:** Token cost metadata in every prompt evaluation record. Per-agent cost budget in AppConfig. CloudWatch alarms on token spend rate. Monthly cost review process.
 
-#### **Approval Theater [HIGH]** 
+### Approval Theater [HIGH]
 
-**Problem:** Approval workflow exists on paper but approvers rubber-stamp everything without reading. Security and RAI review become checkbox exercises. 
+**Problem:** Approval workflow exists on paper but approvers rubber-stamp everything without reading. Security and RAI review become checkbox exercises.
 
-**Remediation:** Structured approval checklists with mandatory evidence requirements. Approver training. Rotation of approvers. Spot audits of approval quality. Accountability for post-approval incidents. 
+**Remediation:** Structured approval checklists with mandatory evidence requirements. Approver training. Rotation of approvers. Spot audits of approval quality. Accountability for post-approval incidents.
 
-# **Complete Enterprise Reference Architecture** 
+# Complete Enterprise Reference Architecture
 
-Full production architecture for AWS AgentCore Runtime with multi-account, multi-region, multi-tenant, HA, DR, and zero-downtime prompt updates. 
+Full production architecture for AWS AgentCore Runtime with multi-account, multi-region, multi-tenant, HA, DR, and zero-downtime prompt updates.
 
-### **Architecture Principles** 
+### Architecture Principles
 
-- **Separation of Concerns:** Registry (governance), AppConfig (delivery), AgentCore (execution), Arize AX 
+- **Separation of Concerns:** Registry (governance), AppConfig (delivery), AgentCore (execution), Arize AX
 
-- (observability) — each layer owns its responsibility. 
+- (observability) — each layer owns its responsibility.
 
-- **Zero-Trust:** All prompt fetches authenticated. Signatures verified. No implicit trust between services. 
+- **Zero-Trust:** All prompt fetches authenticated. Signatures verified. No implicit trust between services.
 
-- **Defense in Depth:** Bedrock Guardrails + AgentCore Policy + OPA + Prompt Scanner + Signature Verification. 
+- **Defense in Depth:** Bedrock Guardrails + AgentCore Policy + OPA + Prompt Scanner + Signature Verification.
 
-- No single point of safety failure. 
+- No single point of safety failure.
 
-- **GitOps-First:** All prompt changes flow through Git. Immutable audit trail from commit to production. 
+- **GitOps-First:** All prompt changes flow through Git. Immutable audit trail from commit to production.
 
-- **Policy-as-Code:** All governance rules in OPA Rego policies. Machine-evaluated, version-controlled, 
+- **Policy-as-Code:** All governance rules in OPA Rego policies. Machine-evaluated, version-controlled,
 
-- auditable. 
+- auditable.
 
-- **Observability by Default:** Every prompt invocation traced with OTel. Every evaluation result persisted. Every 
+- **Observability by Default:** Every prompt invocation traced with OTel. Every evaluation result persisted. Every
 
-- cost attributed. 
+- cost attributed.
 
-### **Complete Service Inventory** 
+### Complete Service Inventory
 
 |**Layer**|**Service / Component**|**Purpose**|**Justification**|
 |Source Control|GitHub / AWS<br>CodeCommit|Prompt source, version history, PR<br>workflow|GitOps foundation|
@@ -1365,29 +1366,29 @@ Full production architecture for AWS AgentCore Runtime with multi-account, multi
 |DR|Multi-region DynamoDB<br>Global Tables +<br>AppConfig multi-region|RPO < 1hr, RTO < 15min for prompt<br>delivery|HA requirement for production|
 |IaC|AWS CDK (TypeScript)|All infrastructure as code, GitOps<br>managed|Reproducible, auditable deployments|
 
-### **Multi-Tenant Architecture** 
+### Multi-Tenant Architecture
 
-For SaaS deployments, tenant isolation is enforced at multiple layers: 
+For SaaS deployments, tenant isolation is enforced at multiple layers:
 
-- Prompt Gateway routes based on tenant ID in request context 
+- Prompt Gateway routes based on tenant ID in request context
 
-- Per-tenant prompt overrides stored in registry with tenant-scoped RBAC 
+- Per-tenant prompt overrides stored in registry with tenant-scoped RBAC
 
-- AgentCore sessions isolated per tenant (full session isolation at platform layer) 
+- AgentCore sessions isolated per tenant (full session isolation at platform layer)
 
-- Token cost attributed per tenant via resource tags 
+- Token cost attributed per tenant via resource tags
 
-- Per-tenant evaluation dashboards in Arize AX via organization separation 
+- Per-tenant evaluation dashboards in Arize AX via organization separation
 
-- Tenant-controlled migration timing for new prompt versions 
+- Tenant-controlled migration timing for new prompt versions
 
 PART 23<br>Decision Matrix<br><!-- End of picture text -->
 
-Weighted comparison of AWS-only, AWS + Arize AX, AWS + Langfuse, AWS + Braintrust, and hybrid architectures. 
+Weighted comparison of AWS-only, AWS + Arize AX, AWS + Langfuse, AWS + Braintrust, and hybrid architectures.
 
-### **Scoring Methodology** 
+### Scoring Methodology
 
-Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regulated enterprise priorities (compliance > performance > vendor risk). Weighted scores are summed and normalized to 100. 
+Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regulated enterprise priorities (compliance > performance > vendor risk). Weighted scores are summed and normalized to 100.
 
 |**Dimension**|**Weight**|**Why It Matters for Regulated Enterprises**|
 |Prompt Lifecycle Completeness|15%|Covers all 18 lifecycle stages from authoring to archive|
@@ -1404,7 +1405,7 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 |Community Maturity|4%|OSS community, documentation quality, ecosystem|
 |Operational Complexity|7%|Runbooks, on-call burden, deployment complexity|
 
-### **Decision Matrix Scores** 
+### Decision Matrix Scores
 
 |**Dimension (Weight)**|**AWS Only**|**AWS + Arize**<br>**AX**|**AWS +**<br>**Langfuse**|**AWS +**<br>**Braintrust**|**AWS + AX +**<br>**Langfuse**<br>**(Hybrid)**|
 |Lifecycle Completeness (15%)|2 (must build)|3 (AX adds<br>eval)|4 (Langfuse<br>adds registry)|4 (Braintrust<br>adds CI/CD)|5 (combined<br>coverage)|
@@ -1423,13 +1424,13 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 |Operational Complexity (7%)|2 (very high)|3 (manageable)|4 (simpler)|4 (simpler)|3 (multi-vendor<br>ops)|
 |**WEIGHTED TOTAL**|**3.54/5.0**|**4.15/5.0**|**4.51/5.0**|**4.28/5.0**|**4.94/5.0**|
 
-**Matrix Winner: AWS + Arize AX + Langfuse (Hybrid) scores 4.94/5.0, highest on governance, RAI, lifecycle completeness, and enterprise readiness. Pure AWS-native scores lowest (3.54) due to engineering cost and governance gaps. AWS + Langfuse alone (4.51) is the best single-vendor option for cost-sensitive teams.** 
+**Matrix Winner: AWS + Arize AX + Langfuse (Hybrid) scores 4.94/5.0, highest on governance, RAI, lifecycle completeness, and enterprise readiness. Pure AWS-native scores lowest (3.54) due to engineering cost and governance gaps. AWS + Langfuse alone (4.51) is the best single-vendor option for cost-sensitive teams.**
 
-# **Implementation Blueprint** 
+# Implementation Blueprint
 
-4-phase implementation roadmap from MVP to autonomous prompt optimization. 
+4-phase implementation roadmap from MVP to autonomous prompt optimization.
 
-**Phase 1 — Foundation MVP (Weeks 1–4)** 
+**Phase 1 — Foundation MVP (Weeks 1–4)**
 
 |**Deliverable**|**Description / AWS Services**|
 |Prompt Repository|GitHub monorepo with /prompts directory structure, CODEOWNERS, branch protection,<br>required status checks|
@@ -1441,9 +1442,9 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 |Bedrock Guardrails|Content safety layer for all AgentCore agent invocations. PII redaction policy applied.|
 |Baseline Observability|AgentCore Observability→CloudWatch. OTel collector. Basic dashboards for latency,<br>errors, token cost.|
 
-**Success Metrics:** All prompts in repository, zero hardcoded secrets, schema validation passing, AppConfig delivering prompts, basic quality eval running in CI. 
+**Success Metrics:** All prompts in repository, zero hardcoded secrets, schema validation passing, AppConfig delivering prompts, basic quality eval running in CI.
 
-**Phase 2 — Production Pilot (Weeks 5–12)** 
+**Phase 2 — Production Pilot (Weeks 5–12)**
 
 |**Deliverable**|**Description / AWS Services**|
 |Prompt Registry API|DynamoDB + Lambda + API Gateway. Semver, lineage tracking, signed releases, evaluation<br>history. CDK infrastructure.|
@@ -1455,9 +1456,9 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 |Session Version Pinning|Session creation writes pinned prompt versions to AgentCore Memory. Invocation reads<br>pinned version.|
 |Security Controls|Prompt signature verification. IAM least privilege audit. Secrets Manager for all credentials.<br>RBAC in Langfuse.|
 
-**Success Metrics:** Zero-downtime prompt updates validated, canary rollout tested end-to-end, approval workflow processing all changes, Arize AX monitoring online quality. 
+**Success Metrics:** Zero-downtime prompt updates validated, canary rollout tested end-to-end, approval workflow processing all changes, Arize AX monitoring online quality.
 
-**Phase 3 — Enterprise Rollout (Months 4–9)** 
+**Phase 3 — Enterprise Rollout (Months 4–9)**
 
 |**Deliverable**|**Description / AWS Services**|
 |Multi-Account Topology|Security account (registry, keys), Shared Services (AppConfig, Redis), AgentCore Prod,<br>AgentCore Staging, Observability|
@@ -1469,9 +1470,9 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 |Developer Portal|Self-service UI for prompt discovery, publishing, approval requests. Built on Langfuse UI or<br>custom React.|
 |DR & HA|DynamoDB Global Tables for multi-region registry. AppConfig multi-region. RTO < 15 min<br>validated.|
 
-**Success Metrics:** Level 3 maturity attained, EU AI Act audit evidence package ready, AIBOM generated for all production systems, DR tested successfully. 
+**Success Metrics:** Level 3 maturity attained, EU AI Act audit evidence package ready, AIBOM generated for all production systems, DR tested successfully.
 
-**Phase 4 — Autonomous Prompt Optimization (Months 10–18)** 
+**Phase 4 — Autonomous Prompt Optimization (Months 10–18)**
 
 |**Deliverable**|**Description / AWS Services**|
 |Production→Test Case Pipeline|Arize AX production failures automatically converted to evaluation test cases via webhook.<br>Dataset grows with every incident.|
@@ -1482,11 +1483,11 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 |Cross-Team Marketplace|Internal prompt marketplace with usage analytics, ratings, and curated collections.<br>Fork/extend pattern for sharing.|
 |Policy Auto-Update|Low-risk policy changes auto-generated by AI and submitted as PR. Human approval still<br>required for all policy changes.|
 
-**Success Metrics:** Level 4+ maturity, prompt quality improving without manual intervention, autonomous A/B test cadence, marketplace adoption across 3+ teams. 
+**Success Metrics:** Level 4+ maturity, prompt quality improving without manual intervention, autonomous A/B test cadence, marketplace adoption across 3+ teams.
 
-## **Appendix A: Capability Heat Map** 
+## Appendix A: Capability Heat Map
 
-The heat map below rates each platform across the 10 most critical PromptOps capabilities for regulated enterprise deployments. I = Full II = Partial I = Absent 
+The heat map below rates each platform across the 10 most critical PromptOps capabilities for regulated enterprise deployments. I = Full II = Partial I = Absent
 
 |**Platform**|**Regis**<br>**try**|**SemV**<br>**er**|**Appro**<br>**val**|**CI**<br>**Gate**|**Onlin**<br>**e Eval**|**RBAC**|**Self-H**<br>**ost**|**Comp**<br>**liance**|**Linea**<br>**ge**|**Zero-**<br>**DT**|
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -1501,15 +1502,15 @@ The heat map below rates each platform across the 10 most critical PromptOps cap
 |W&B; Weave|II|II|I|I|I|I|II|I|II|I|
 |Recommended Hybrid|I|I|I|I|I|I|I|I|I|I|
 
-**No single platform achieves** I **across all 10 capabilities. The Recommended Hybrid (AWS AppConfig + Arize AX + Langfuse) achieves full coverage by combining best-in-class tools at each layer.** 
+**No single platform achieves** I **across all 10 capabilities. The Recommended Hybrid (AWS AppConfig + Arize AX + Langfuse) achieves full coverage by combining best-in-class tools at each layer.**
 
-## **Appendix B: Prompt Governance Model** 
+## Appendix B: Prompt Governance Model
 
-### **Governance Framework Summary** 
+### Governance Framework Summary
 
-The enterprise prompt governance model is based on three principles: **Traceability** (every prompt change traced from author to production), **Accountability** (named human accountable for every approved production prompt), and **Auditability** (immutable record of all lifecycle events accessible for regulatory review). 
+The enterprise prompt governance model is based on three principles: **Traceability** (every prompt change traced from author to production), **Accountability** (named human accountable for every approved production prompt), and **Auditability** (immutable record of all lifecycle events accessible for regulatory review).
 
-### **Regulatory Mapping** 
+### Regulatory Mapping
 
 |**Regulation**|**Prompt Governance Requirements**|**Key Controls**|
 |EU AI Act (Aug 2026<br>enforcement)|Technical documentation, risk assessment, human<br>oversight, audit trail, AIBOM for high-risk systems|Approval workflow, signed versions, audit<br>log, AIBOM generation|
@@ -1520,7 +1521,7 @@ The enterprise prompt governance model is based on three principles: **Traceabil
 |Colorado AI Act (2023)|Reasonable care aligned with ISO/IEC 42001 or NIST<br>AI RMF|Documented governance framework, eval<br>metrics, human oversight|
 |Texas AI Act (Jan 2026)|Affirmative defense requires documented AI risk<br>management|Governance board charter, risk<br>assessments, RACI documented|
 
-### **Governance RACI Summary** 
+### Governance RACI Summary
 
 |**Decision**|**Responsible**|**Accountable**|**Consulted**|**Informed**|
 |Create/author prompt|Prompt Engineer|Tech Lead|RAI Officer|Product Owner|
@@ -1532,15 +1533,15 @@ The enterprise prompt governance model is based on three principles: **Traceabil
 |Retire / Archive|AI Platform Eng|Product Owner|Compliance Team|Audit Team|
 |Policy Update|RAI Officer|Governance Board|CISO, Legal|All Teams|
 
-## **Appendix C: Final Recommendation** 
+## Appendix C: Final Recommendation
 
-### **The Question Answered** 
+### The Question Answered
 
-Should Arize AX become the central Prompt Lifecycle platform, or should AWS-native capabilities own lifecycle management? 
+Should Arize AX become the central Prompt Lifecycle platform, or should AWS-native capabilities own lifecycle management?
 
-###### **Answer: Neither alone. The winning architecture is a purposeful three-layer hybrid.** 
+### Answer: Neither alone. The winning architecture is a purposeful three-layer hybrid
 
-### **Recommended Architecture: The Three-Layer Stack** 
+### Recommended Architecture: The Three-Layer Stack
 
 |**Layer 1 — Governance &**<br>**Registry (Langfuse or**<br>**Braintrust)**|Owns: Prompt registry, semantic versioning, lineage, approval workflow, CI/CD<br>quality gates, dataset management. Recommendation: Langfuse OSS (self-hosted)<br>for maximum data sovereignty and open-source licensing; or Braintrust if<br>eval-gated CI/CD is the primary bottleneck.|M|
 |**Layer 2 — Delivery (AWS**<br>**AppConfig)**|Owns: Zero-downtime hot delivery, canary deployment strategies, automatic<br>rollback, per-environment prompt serving. This is always AWS-native regardless of<br>other choices. AppConfig is purpose-built for this problem.|M|
@@ -1548,7 +1549,7 @@ Should Arize AX become the central Prompt Lifecycle platform, or should AWS-nati
 |**Online Evaluation (Arize**|detection, cost attribution, alerts. Arize AX is the clear enterprise leader here.||
 |**AX)**|Deploy via AWS Marketplace for compliance credentials.||
 
-### **Architecture By Organization Size** 
+### Architecture By Organization Size
 
 |**Team Size**|**Recommended Stack**|**Rationale**|
 |< 5 engineers (startup)|Phoenix (local) + AppConfig + Bedrock Guardrails|Zero platform cost. AppConfig solves delivery.<br>Phoenix solves eval. Build governance light.|
@@ -1557,21 +1558,21 @@ Should Arize AX become the central Prompt Lifecycle platform, or should AWS-nati
 |100+ engineers<br>(enterprise)|Custom Registry (DynamoDB) + AppConfig +<br>Langfuse + Arize AX + Step Functions governance|Custom registry for full control. AppConfig<br>delivery. Arize AX production. Step Functions<br>governance.|
 |Regulated (FS,<br>Healthcare, Gov)|Custom Registry + AppConfig + Arize AX (AWS<br>Marketplace) + Full governance stack|Full audit trail. Arize AX SOC2/HIPAA. Custom<br>approval workflow. EU AI Act compliance<br>posture.|
 
-### **What NOT to Do** 
+### What NOT to Do
 
-- Do NOT make Arize AX the sole platform for prompt lifecycle management — it lacks the registry, approval workflow, and CI/CD gate layer. 
+- Do NOT make Arize AX the sole platform for prompt lifecycle management — it lacks the registry, approval workflow, and CI/CD gate layer.
 
-- Do NOT build a fully AWS-native PromptOps platform from scratch — the engineering cost is 6–12 months and the result will be less capable than Langfuse OSS. 
+- Do NOT build a fully AWS-native PromptOps platform from scratch — the engineering cost is 6–12 months and the result will be less capable than Langfuse OSS.
 
-- Do NOT depend on AgentCore Registry as a prompt registry — it is a skill/tool catalog, not a prompt lifecycle platform. 
+- Do NOT depend on AgentCore Registry as a prompt registry — it is a skill/tool catalog, not a prompt lifecycle platform.
 
-- Do NOT store prompts in Secrets Manager or SSM Parameter Store as a primary registry — these are for secrets, not prompt governance. 
+- Do NOT store prompts in Secrets Manager or SSM Parameter Store as a primary registry — these are for secrets, not prompt governance.
 
-- Do NOT use Humanloop — it was acquired by Anthropic and shut down September 8, 2025. 
+- Do NOT use Humanloop — it was acquired by Anthropic and shut down September 8, 2025.
 
-- Do NOT skip AppConfig for prompt delivery — embedding prompts in code or using only S3 makes zero-downtime updates extremely complex. 
+- Do NOT skip AppConfig for prompt delivery — embedding prompts in code or using only S3 makes zero-downtime updates extremely complex.
 
-### **Key Decisions — Summary** 
+### Key Decisions — Summary
 
 |**Decision**|**Recommendation**|**Confidence**|
 |Prompt Registry|Langfuse OSS (self-hosted) or Braintrust|High|
@@ -1587,15 +1588,14 @@ Should Arize AX become the central Prompt Lifecycle platform, or should AWS-nati
 |Session Consistency|Session version pinning via AgentCore Memory|High|
 |Zero-DT Updates|AppConfig canary + Redis invalidation + Arize AX<br>monitoring|Very High|
 
-### **2026–2028 Trends to Watch** 
+### 2026–2028 Trends to Watch
 
-- **AgentCore Prompt Registry:** AWS may ship a native prompt registry. Watch AWS re:Invent 2026 for announcements. Until then, external platforms fill the gap. 
+- **AgentCore Prompt Registry:** AWS may ship a native prompt registry. Watch AWS re:Invent 2026 for announcements. Until then, external platforms fill the gap.
 
-- **Autonomous Prompt Optimization:** DSPy, Arize AX Prompt Learning, and FutureAGI's self-improvement loop will reduce manual prompt authoring. Human approval gates remain mandatory. 
+- **Autonomous Prompt Optimization:** DSPy, Arize AX Prompt Learning, and FutureAGI's self-improvement loop will reduce manual prompt authoring. Human approval gates remain mandatory.
 
-- **Policy-Driven PromptOps:** OPA and Cedar policies will replace manual approval for low-risk changes. Policy-as-code becomes the new guardrail layer. 
+- **Policy-Driven PromptOps:** OPA and Cedar policies will replace manual approval for low-risk changes. Policy-as-code becomes the new guardrail layer.
 
-- **Prompt Supply Chain Security:** Signed prompts, SBOM-equivalent for AI (AIBOM), and supply chain attestation will become regulatory requirements for high-risk AI systems by 2027. 
+- **Prompt Supply Chain Security:** Signed prompts, SBOM-equivalent for AI (AIBOM), and supply chain attestation will become regulatory requirements for high-risk AI systems by 2027.
 
-- **EU AI Act Full Enforcement (August 2026):** Organizations without prompt versioning, approval workflows, and audit trails face regulatory exposure. Immediate action required. 
-
+- **EU AI Act Full Enforcement (August 2026):** Organizations without prompt versioning, approval workflows, and audit trails face regulatory exposure. Immediate action required.

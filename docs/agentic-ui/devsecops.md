@@ -22,7 +22,7 @@ A comprehensive guide to the engineering disciplines, pipelines, and operational
 Traditional software delivery pipelines catch code regressions — broken tests, type errors, security vulnerabilities in code. Agentic systems have additional artifact types that change independently and require their own delivery discipline:
 
 | Artifact | Change frequency | Failure mode | Traditional CI catches? |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Application code | Low (weeks) | Build errors, test failures | ✅ Yes |
 | Prompt templates | High (days) | Quality regression, tone drift, safety failures | ❌ No |
 | Agent configuration | Medium (weeks) | Behavioral change, tool misconfiguration | ❌ No |
@@ -34,7 +34,7 @@ Traditional software delivery pipelines catch code regressions — broken tests,
 ### The 9 Agentic Ops Disciplines
 
 | Discipline | What it manages | Primary concern |
-|---|---|---|
+| --- | --- | --- |
 | **PromptOps** | Prompt templates, system prompts, few-shot examples | Quality regression, tone drift |
 | **ContextOps** | Context assembly templates, retrieval configs | Answer quality, context poisoning |
 | **AgentOps** | Agent specs (prompts + tools + memory + eval config) | Behavioral consistency, rollback |
@@ -127,7 +127,7 @@ git push
 Track these metrics per prompt version (not per overall system):
 
 | Metric | Target | Alert threshold |
-|---|---|---|
+| --- | --- | --- |
 | Task completion rate | > 85% | < 80% |
 | User satisfaction (thumbs) | > 75% positive | < 70% |
 | Guardrail trigger rate | < 2% | > 5% |
@@ -153,13 +153,13 @@ async def eval_context_change(old_config, new_config, golden_qa):
     for qa in golden_qa:
         old_context = await assemble_context(qa["query"], old_config)
         new_context = await assemble_context(qa["query"], new_config)
-        
+
         old_answer = await generate(old_context, qa["query"])
         new_answer = await generate(new_context, qa["query"])
-        
+
         quality_delta = await judge(qa["query"], old_answer, new_answer, qa["expected"])
         results.append(quality_delta)
-    
+
     return {
         "improved": sum(1 for r in results if r["delta"] > 0.05),
         "regressed": sum(1 for r in results if r["delta"] < -0.05),
@@ -224,12 +224,12 @@ evaluation:
     │
     ├── 95% → Agent v2.4.0 (current stable)
     └── 5%  → Agent v2.4.1 (canary)
-    
+
     Promotion criteria (after 24h):
     - Task completion rate delta: < -2%
     - User satisfaction delta: < -3%
     - Error rate delta: < +1%
-    
+
     Automatic rollback if:
     - Error rate spikes > 5%
     - Safety trigger rate spikes > 2x
@@ -243,13 +243,13 @@ evaluation:
     │
     └──▶ Agent v2.4.1 (shadow — processes request,
                         logs result, NEVER shown to user)
-    
+
     Compare shadow vs. production results:
     - Quality score distribution
     - Tool call patterns
     - Response length distribution
     - Error frequency
-    
+
     After 1000 shadow comparisons with acceptable delta:
     → Promote to canary
     ```
@@ -260,10 +260,10 @@ evaluation:
     │
     ├── Blue (current): Agent v2.4.0 — 100% traffic
     └── Green (new):    Agent v2.4.1 — 0% traffic (warm standby)
-    
+
     Switchover: traffic instantly routes to Green
     Rollback: instantly route back to Blue
-    
+
     Use for: breaking changes, major version upgrades
     ```
 
@@ -316,7 +316,7 @@ Production (full traffic)
 ### Model Routing Decision Matrix
 
 | Task Type | Latency Budget | Complexity | Recommended Tier |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Intent classification / routing | < 100ms | Low | SLM (Haiku) |
 | FAQ / factual lookup | < 2s | Low | Fast mid-tier |
 | Standard analysis | < 5s | Medium | Mid-tier |
@@ -360,7 +360,7 @@ Knowledge Base (Production)
 Before any knowledge base update goes to production:
 
 | Check | Method | Pass Criteria |
-|---|---|---|
+| --- | --- | --- |
 | Retrieval quality | Golden query set | P95 relevance score > 0.72 |
 | Coverage | Question set mapped to expected sources | > 90% of golden Qs have relevant match |
 | Freshness | Max age of indexed content | < SLA per source (e.g., 7 days for policies) |
@@ -421,7 +421,7 @@ agents:
 Automated eval catches regressions; human eval catches subtle quality issues that automated metrics miss:
 
 | Frequency | Sample Size | Focus |
-|---|---|---|
+| --- | --- | --- |
 | Weekly (high-stakes agents) | 50 randomly sampled production sessions | Tone, helpfulness, edge cases |
 | Monthly (all production agents) | 25 sessions per agent | Quality baseline calibration |
 | Post-incident | All sessions from incident window | Root cause confirmation |
@@ -439,7 +439,7 @@ Guardrail policies and access control policies change independently from code. T
     ```python
     # tools/policy_check.py
     import httpx
-    
+
     async def check_tool_access(user_id: str, tool_name: str, context: dict) -> bool:
         """Query OPA policy decision point."""
         async with httpx.AsyncClient() as client:
@@ -462,22 +462,22 @@ Guardrail policies and access control policies change independently from code. T
     ```rego
     # policies/agent/tool_access.rego
     package agent.tool_access
-    
+
     default allow = false
-    
+
     # Allow read-only tools for all authenticated users
     allow {
         input.tool in data.tools.read_only
         user_has_valid_session(input.user_id)
     }
-    
+
     # Allow write tools only if user has write permission
     allow {
         input.tool in data.tools.write
         user_has_permission(input.user_id, "agent:write")
         not is_outside_business_hours
     }
-    
+
     # Require HITL for destructive tools — policy returns false, HITL gate triggered
     allow {
         input.tool in data.tools.destructive
@@ -507,21 +507,21 @@ Memory schemas evolve as agent capabilities change. Migrations require care:
 async def migrate_memory_schema(user_id: str, from_version: str, to_version: str):
     """Safe in-place memory schema migration."""
     memories = await memory_store.get_all(user_id)
-    
+
     migrated = []
     errors = []
-    
+
     for memory in memories:
         try:
             migrated_memory = apply_migration(memory, from_version, to_version)
             migrated.append(migrated_memory)
         except MigrationError as e:
             errors.append({"memory_id": memory.id, "error": str(e)})
-    
+
     if errors:
         # Log but don't fail — preserve old memories on error
         log.warning(f"Migration errors for {user_id}: {errors}")
-    
+
     # Atomic write: all or nothing
     await memory_store.replace_all(user_id, migrated)
     return {"migrated": len(migrated), "errors": len(errors)}
@@ -542,7 +542,7 @@ async def process_erasure_request(user_id: str, request_id: str):
         conversation_archive.delete_all(user_id),
         return_exceptions=True
     )
-    
+
     # Log completion for GDPR compliance record
     await audit_log.write({
         "event": "gdpr_erasure_completed",
@@ -713,7 +713,7 @@ Use feature flags to control which users see new agent features:
 # Using LaunchDarkly or similar
 async def handle_user_query(user_id: str, query: str):
     flags = await feature_flags.get_flags(user_id)
-    
+
     if flags.get("new_reasoning_display"):
         # New feature: show structured reasoning steps
         return await agent_with_reasoning_display(query)
@@ -723,6 +723,7 @@ async def handle_user_query(user_id: str, query: str):
 ```
 
 Feature flag release checklist:
+
 - [ ] Flag created in feature flag system
 - [ ] Default value is "off" (safe default)
 - [ ] Kill switch configured (can disable instantly)
@@ -739,7 +740,7 @@ async def get_system_prompt(user_id: str) -> str:
         flag_key="prompt-verbosity-experiment",
         user_id=user_id
     )
-    
+
     if variant == "concise":
         return prompts.load("system-prompt-concise-v1")
     elif variant == "detailed":
@@ -825,7 +826,7 @@ resource "kubernetes_stateful_set" "qdrant" {
 ### Rollback Decision Matrix
 
 | What changed | Rollback scope | Time to rollback | Authorization |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Prompt only | Revert prompt in git | < 5 minutes | Prompt owner or on-call |
 | Tool configuration | Revert tool config | < 5 minutes | Platform team |
 | Model version | Route back to previous model | < 2 minutes | On-call engineer |
@@ -860,7 +861,7 @@ resource "kubernetes_stateful_set" "qdrant" {
 ## 14. DevSecOps Anti-patterns
 
 | Name | Category | Description | Risk | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Prompt Cowboy** | PromptOps | Editing prompts directly in production console with no version control | Silent behavior change with no audit trail; impossible to rollback | All prompt changes via git PR; no direct production access |
 | **No Eval Gate** | EvalOps | Deploying agent changes without running eval regression | Silent quality regressions ship to all users undetected | Make eval regression a mandatory CI gate |
 | **Big-bang Agent Launch** | Deployment | Deploying new agent version to 100% of users at once | Regression affects all users; rollback coordination under pressure | Canary releases: 5% → 25% → 100% with auto-rollback |

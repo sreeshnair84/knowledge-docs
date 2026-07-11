@@ -93,8 +93,8 @@ Step Funcs:   → (stable, cloud-platform dependent)
 ### Example: Workflow as Prompt (2029)
 
 ```
-User: "Create a workflow: When customer pays invoice, 
-        mark as paid, update accounting, check for 
+User: "Create a workflow: When customer pays invoice,
+        mark as paid, update accounting, check for
         related orders, and offer a loyalty reward."
 
 System:
@@ -280,7 +280,7 @@ An orchestration OS would:
   - Manage resources (CPU, memory, agents)
   - Handle security (auth, audit)
   - Provide observability
-  
+
 Who might build this?
   - Temporal (if they expand beyond workflows)
   - Cloud providers (AWS / Azure / GCP)
@@ -323,6 +323,7 @@ Single source of truth for orchestration governance.
 ## Trend: Everything Becomes Versionable
 
 ### Code (Today)
+
 ```
 Version: 2.1.3
 When deployed: Performance regressed
@@ -330,6 +331,7 @@ Rollback: Easy (revert code)
 ```
 
 ### Workflows (2028)
+
 ```
 Workflow version: 3.2.1
 When deployed: Decision logic changed
@@ -337,6 +339,7 @@ Rollback: Easy (revert to 3.2.0)
 ```
 
 ### Prompts (2030)
+
 ```
 Prompt version: 2.4.1
 Model version: Claude 3.5
@@ -345,6 +348,7 @@ Rollback: Easy (revert prompt or model)
 ```
 
 ### Models (2032)
+
 ```
 Model version: Claude 4.1
 When deployed: New behavior (better or worse?)
@@ -358,6 +362,7 @@ Rollback: Easy (revert to Claude 3.5)
 ## Trend: Observability Diverges
 
 ### Workflow Observability
+
 ```
 What: "Which step are we on?"
 Timeline: Start → Activity1 → Activity2 → End
@@ -366,6 +371,7 @@ Tool: Temporal Cockpit, Camunda Operate
 ```
 
 ### Agent Observability
+
 ```
 What: "Why did the agent choose this?"
 Timeline: Thought → Tool → Observation → Thought → Tool
@@ -374,6 +380,7 @@ Tool: LangSmith, Phoenix, custom traces
 ```
 
 ### Business Observability
+
 ```
 What: "Is this profitable? Compliant?"
 Timeline: Order placed → Process steps → Profit calculated

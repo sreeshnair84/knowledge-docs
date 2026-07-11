@@ -56,7 +56,7 @@ covers_version: "as of 2026-07-10"
 Enterprise technology selection should be governed by a set of explicit principles that prevent arbitrary, politically driven, or fad-driven decisions.
 
 | Principle | Description | Anti-pattern it prevents |
-|---|---|---|
+| --- | --- | --- |
 | **Business-first** | Technology is selected to solve a business problem, not because it is new or interesting | Technology-first architecture |
 | **Capability-driven** | Select for the capability required, not the feature list offered | Feature checklist bias |
 | **Strategic alignment** | Technology must fit or accelerate the enterprise's 3–5 year strategy | Tactical decisions that contradict strategy |
@@ -73,7 +73,7 @@ Enterprise technology selection should be governed by a set of explicit principl
 The eternal tension in enterprise technology:
 
 | Dimension | Strategic Platform | Best-of-Breed |
-|---|---|---|
+| --- | --- | --- |
 | **Integration overhead** | Low (same vendor/ecosystem) | High (every tool is a separate integration) |
 | **Operational complexity** | Low (one team, one contract, one upgrade cycle) | High (multiple vendors, multiple upgrade cycles) |
 | **Capability ceiling** | Limited by platform roadmap | High (pick the best at each layer) |
@@ -109,7 +109,7 @@ Optionality has a cost (abstraction overhead). Pay it only for decisions where s
 Different categories of technology warrant different levels of evaluation rigour.
 
 | Category | Definition | Example | Evaluation Rigour |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Strategic Platform** | Foundational enterprise capability; affects every team; multi-year commitment | Cloud platform, identity provider, AI platform | Maximum — ARB full review |
 | **Core Enterprise Service** | Shared service consumed by most teams; standardised | ITSM, CMDB, log aggregation, secrets management | High — ARB review + security |
 | **Shared Engineering Platform** | Developer platform used across engineering | CI/CD, artifact registry, IaC tooling, API gateway | High — Architecture forum |
@@ -149,7 +149,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 #### Business Dimension
 
 | Criterion | Description | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Strategic alignment** | Does this advance our 3-year strategy? | Map to strategic objectives (1–5 scale) |
 | **Business value** | What problem does it solve? What is the value of that solution? | Quantified benefit: revenue, cost, risk, speed |
 | **Time to value** | How quickly will we realise benefit after investment? | Weeks from start to first production value |
@@ -160,7 +160,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 #### Technical Dimension
 
 | Criterion | Description | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Architecture fit** | Does it fit our reference architecture? | Architecture fitness assessment (Section 6) |
 | **Scalability** | Does it handle 10×–100× current load? | Load test results; vendor published limits |
 | **Reliability** | What is the vendor SLA? What is our actual measured uptime? | SLA + historical uptime data |
@@ -174,7 +174,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 #### Operational Dimension
 
 | Criterion | Description | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Operational complexity** | How hard is it to operate day-to-day? | Hours/week of platform team effort |
 | **Automation support** | Can infrastructure and config be automated? | IaC support; GitOps compatibility |
 | **Upgrade model** | How painful are version upgrades? | Upgrade frequency; breaking change history |
@@ -186,7 +186,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 #### Financial Dimension
 
 | Criterion | Description | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Total cost of ownership** | Full 3–5 year cost (see Section 13) | TCO model output |
 | **Licensing model** | Predictable vs unpredictable? Per-seat, per-use, enterprise? | Model the cost at 2× and 5× scale |
 | **Infrastructure costs** | Compute, storage, networking requirements | Cloud cost estimate at target scale |
@@ -197,7 +197,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 #### Security and Compliance Dimension
 
 | Criterion | Description | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Security posture** | Is the vendor's security posture strong? | Security assessment, pen test results, CVE history |
 | **Identity integration** | Integrates with enterprise IdP (Entra ID, Okta, etc.)? | SAML, OIDC, SCIM support |
 | **Compliance certifications** | SOC 2 Type II, ISO 27001, HIPAA, PCI-DSS, FedRAMP? | Vendor compliance documentation |
@@ -209,7 +209,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 #### Organisational Dimension
 
 | Criterion | Description | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Existing skills** | Do we have people who know this today? | Skill inventory |
 | **Learning curve** | How long to productive competency? | Median time to first production contribution |
 | **Internal champions** | Are there internal advocates for this technology? | Team survey |
@@ -223,7 +223,7 @@ Every technology decision should be assessed across five dimensions. Weight each
 ### 4.1 Choosing the Right Method
 
 | Method | Best For | Complexity | Output |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Weighted scoring matrix** | Most enterprise decisions; structured comparison of 2–5 options | Low-Medium | Numeric score per option |
 | **MoSCoW prioritisation** | Feature or requirement prioritisation before evaluation | Low | Must/Should/Could/Won't classification |
 | **Pairwise comparison (AHP)** | Many options with unclear relative weight; when team disagrees on priorities | High | Prioritised weight set |
@@ -240,7 +240,7 @@ Use for most technology decisions involving 2–5 competing options.
 Weights should reflect what matters most for THIS decision in THIS organisation at THIS time. Weights should sum to 100.
 
 | Criterion Group | Weight (example) | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Business value | 25 | Higher for strategic platforms |
 | Technical fit | 25 | Higher for infrastructure decisions |
 | Security & compliance | 20 | Higher for regulated industries |
@@ -251,7 +251,7 @@ Weights should reflect what matters most for THIS decision in THIS organisation 
 **Step 2: Score each option on each criterion (1–5 scale)**
 
 | Criterion | Weight | Option A | Option B | Option C |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Strategic alignment | 10 | 4 (40) | 3 (30) | 5 (50) |
 | Business value | 15 | 5 (75) | 4 (60) | 3 (45) |
 | Architecture fit | 15 | 4 (60) | 5 (75) | 3 (45) |
@@ -351,7 +351,7 @@ NEW CAPABILITY NEEDED
 ### 5.2 Options Compared
 
 | Dimension | Buy (SaaS/Product) | Build | Extend | Open Source | Partner |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **Time to value** | Fast | Slow | Medium | Medium | Medium |
 | **Initial cost** | Medium | High (engineering) | Low-Medium | Low | Variable |
 | **Long-term cost** | Predictable (licence) | Low (maintenance) | Low | Low | High (ongoing) |
@@ -365,6 +365,7 @@ NEW CAPABILITY NEEDED
 ### 5.3 When to Build
 
 Build only when:
+
 - The capability is a core differentiator and constitutes IP
 - No commercial or open-source alternative achieves ≥70% fit
 - You have the engineering capacity AND intend to maintain it long-term
@@ -377,7 +378,7 @@ Build only when:
 Open source is frequently the best answer for infrastructure and platform components:
 
 | Use case | Why OSS wins |
-|---|---|
+| --- | --- |
 | Container orchestration | Kubernetes is the standard; no commercial alternative matches ecosystem |
 | Observability pipeline | OpenTelemetry; vendor-neutral; avoids telemetry lock-in |
 | Self-hosted AI models | Data control; no per-token cost; compliance for sensitive data |
@@ -397,7 +398,7 @@ Feature checklists compare what a technology can do. Architecture fitness assess
 ### 6.2 Fitness Dimensions
 
 | Dimension | Assessment Question | Evidence Needed |
-|---|---|---|
+| --- | --- | --- |
 | **EA alignment** | Does it fit our target architecture (cloud-native, event-driven, API-first)? | Architecture diagram of integration |
 | **Cloud strategy fit** | Compatible with our cloud platform strategy (AWS / Azure / GCP)? | Deployment options; managed service availability |
 | **Data architecture fit** | How does it handle data flows, schemas, lineage? | Data flow diagram; schema compatibility |
@@ -459,7 +460,7 @@ EVALUATE → PILOT → LIMITED ADOPTION → ENTERPRISE STANDARD → MAINTENANCE 
 ```
 
 | Stage | Description | Who Can Use | Entry Criteria | Exit Criteria |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Evaluate** | Research, PoC, market assessment | Platform team, selected engineers | Technology identified as candidate | PoC complete; decision to advance or reject |
 | **Pilot** | Production pilot with limited scope | 1–2 volunteer teams | PoC success; ARB approval to pilot | Pilot success criteria met; wider adoption recommended |
 | **Limited Adoption** | Available to all teams; not yet mandatory | Any team (opt-in) | Pilot success; ARB approval; runbook published | Sufficient adoption; operational maturity demonstrated |
@@ -473,7 +474,7 @@ EVALUATE → PILOT → LIMITED ADOPTION → ENTERPRISE STANDARD → MAINTENANCE 
 Inspired by the Thoughtworks Technology Radar format:
 
 | Zone | Meaning | Action |
-|---|---|---|
+| --- | --- | --- |
 | **Adopt** | We use this in production; proven value; recommended as default | Use it for new projects; invest in skills |
 | **Trial** | Worth pursuing; explore with intent to adopt; controlled risk | Use on a project; gather data; re-assess in 6 months |
 | **Assess** | Worth knowing about; not yet ready to trial | Sandbox exploration; monitor; reassess in 12 months |
@@ -501,6 +502,7 @@ When retiring a technology:
 ### 8.1 The PoC Problem
 
 PoCs that succeed on technical dimensions are often promoted to production without proper validation. This creates two failure modes:
+
 1. **Technical PoC ≠ production system:** PoC code becomes production code with all its shortcuts
 2. **PoC ≠ enterprise context:** PoC runs in ideal conditions; production has different data, scale, and operational constraints
 
@@ -516,7 +518,7 @@ poc_name: "LLM Platform Evaluation — Q3 2026"
 problem_statement: |
   We need an AI inference platform for 3 production use cases.
   Current state: multiple teams using different providers, no central governance.
-  
+
 evaluation_options:
   - name: "Option A"
     description: "Commercial managed service"
@@ -546,7 +548,7 @@ exit_criteria:
   promote: "All success criteria met"
   iterate: "≥80% met; gaps have clear remediation plan"
   reject: "<80% met; or any critical finding"
-  
+
 constraints:
   duration: "6 weeks"
   team: "2 platform engineers + 1 security engineer"
@@ -557,7 +559,7 @@ constraints:
 ### 8.3 PoC Validation Dimensions
 
 | Dimension | What to Validate | Who Validates |
-|---|---|---|
+| --- | --- | --- |
 | **Technical** | Core functionality, integration with enterprise systems, performance at target scale | Platform team |
 | **Security** | Authentication, authorisation, data handling, vulnerability assessment | Security architect |
 | **Operational** | Deployment automation, monitoring, alerting, runbook | SRE / Platform ops |
@@ -570,6 +572,7 @@ constraints:
 PoC creep is when a PoC accumulates users, production data, and dependencies before formal approval.
 
 Controls:
+
 - PoC environments are isolated from production networks by default
 - PoC data policies: synthetic or anonymised data only
 - PoC has a hard expiry date (maximum 8 weeks); extensions require ARB approval
@@ -620,7 +623,7 @@ When a team needs to deviate from a mandatory or preferred standard:
 Maintain a living standards registry accessible to all engineers:
 
 | Category | Standard | Status | Since | Next Review |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Identity | Microsoft Entra ID | Mandatory | 2024-01 | 2027-01 |
 | Secrets management | HashiCorp Vault | Mandatory | 2023-06 | 2026-06 |
 | Observability | OpenTelemetry + Datadog | Preferred | 2025-03 | 2026-12 |
@@ -637,6 +640,7 @@ Maintain a living standards registry accessible to all engineers:
 ### 10.1 The Platform Sprawl Problem
 
 Without active rationalization, enterprises accumulate:
+
 - Multiple tools solving identical problems (tool sprawl)
 - Overlapping platforms from department-level acquisition
 - Zombie licenses for unused SaaS tools
@@ -649,6 +653,7 @@ The FinOps Foundation estimates 30–40% of enterprise SaaS spend is on underuti
 **Step 1: Inventory**
 
 Create a complete technology inventory:
+
 - Query CMDB, IT asset management, finance (license payments)
 - Query cloud accounts (all running resources)
 - Survey teams for shadow IT (tools used but not centrally tracked)
@@ -670,7 +675,7 @@ CAPABILITY: "Workflow automation"
 **Step 3: Functional Overlap Analysis**
 
 | Tool | Primary Capability | Secondary Capabilities | Unique Features | Users | Cost/year |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Tool A | Workflow automation | Notifications, integrations | Custom AI step | 50 | $24K |
 | Tool B | Workflow automation | Approval workflows | None | 120 | $36K |
 | Tool C | Workflow automation | Scheduling | SFTP connector | 30 | $18K |
@@ -680,7 +685,7 @@ Winner: Tool B covers most users; negotiate enterprise licence; migrate Tool A a
 **Step 4: Consolidation Plan**
 
 | Quarter | Action |
-|---|---|
+| --- | --- |
 | Q1 | Notify Tool A and C users; document migration path |
 | Q2 | Migrate Tool A users to Tool B |
 | Q3 | Migrate Tool C users to Tool B |
@@ -727,7 +732,7 @@ DEBT QUADRANT
 ### 11.1 Technology Risk Dimensions
 
 | Risk Category | Specific Risks | Assessment Questions |
-|---|---|---|
+| --- | --- | --- |
 | **Vendor / product maturity** | Immature product; unstable APIs; frequent breaking changes | How many production deployments at comparable scale? |
 | **Vendor financial stability** | Vendor acquired, pivoted, or shut down | Revenue trajectory; VC funding status; profitable? |
 | **Product roadmap** | Roadmap doesn't align with our needs; key features won't be built | Is our use case on the roadmap? What's the release cadence? |
@@ -744,7 +749,7 @@ DEBT QUADRANT
 Score each risk category: 1 = Low / 2 = Medium / 3 = High
 
 | Risk | Likelihood (1–3) | Impact (1–3) | Risk Score (L × I) | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Vendor financial stability | 1 | 3 | 3 | |
 | Lock-in risk | 2 | 3 | 6 | Abstraction layer; data export testing |
 | Skills availability | 3 | 2 | 6 | Training plan; external support contract |
@@ -779,6 +784,7 @@ A great product from a troubled vendor is a high-risk investment. Evaluate the v
 ### 12.2 Vendor Assessment Dimensions
 
 **Financial health:**
+
 - Revenue trajectory: growing or declining?
 - Profitability: can they fund their roadmap without additional fundraising?
 - Funding status: VC-backed vs. bootstrapped vs. public? (Each has different risk profiles)
@@ -787,6 +793,7 @@ A great product from a troubled vendor is a high-risk investment. Evaluate the v
 Indicators: Annual reports, Crunchbase funding data, Glassdoor trends (warning sign if dropping), customer reference calls.
 
 **Product roadmap:**
+
 - Does their roadmap align with our 3-year needs?
 - What has their roadmap delivery track record been?
 - Do they prioritise enterprise needs or consumer/SMB features?
@@ -794,6 +801,7 @@ Indicators: Annual reports, Crunchbase funding data, Glassdoor trends (warning s
 Verify: Ask for the last 3 roadmap presentations and compare to what shipped.
 
 **Enterprise support:**
+
 - SLA for P1 issues (4-hour response or next-day?)
 - Dedicated customer success manager at our account tier?
 - Escalation path for critical issues?
@@ -802,26 +810,31 @@ Verify: Ask for the last 3 roadmap presentations and compare to what shipped.
 Test before committing: Submit a non-trivial support ticket during evaluation. Evaluate response quality and time.
 
 **Customer references:**
+
 - Can they provide 3 reference customers at similar size and industry?
 - Can you talk directly to the reference customers' architects (not just their marketing contacts)?
 - What are the reference customers' biggest operational pain points?
 
 **Ecosystem and partner network:**
+
 - Is there a healthy partner / ISV ecosystem?
 - Are there multiple system integrators who can help us implement?
 - Does the vendor depend on us to build all integrations ourselves?
 
 **Innovation velocity:**
+
 - Feature release cadence: monthly, quarterly?
 - Do they have R&D investment proportional to their revenue?
 - Are they leading or following in their category?
 
 **Acquisition risk:**
+
 - Is the vendor likely acquisition target?
 - If acquired, what happens to our contract and roadmap?
 - Are there contract clauses protecting against material feature removal post-acquisition?
 
 **Contract flexibility:**
+
 - Month-to-month vs. multi-year only?
 - Can you reduce seats if your usage drops?
 - Is there a data export guarantee in the contract?
@@ -830,7 +843,7 @@ Test before committing: Submit a non-trivial support ticket during evaluation. E
 ### 12.3 Vendor Scorecard
 
 | Dimension | Weight | Score (1–5) | Weighted |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Financial health | 20 | | |
 | Product fit | 25 | | |
 | Enterprise support quality | 15 | | |
@@ -875,7 +888,7 @@ HIDDEN (what architects must surface):
 ### 13.2 TCO Model Structure
 
 | Category | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | Total |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **Acquisition / Licence** | | | | | | |
 | Subscription fee (base) | | | | | | |
 | Enterprise add-ons / modules | | | | | | |
@@ -907,7 +920,7 @@ HIDDEN (what architects must surface):
 ### 13.3 Hidden Costs Frequently Missed
 
 | Hidden Cost | Typical Miss Reason | How to Capture |
-|---|---|---|
+| --- | --- | --- |
 | Integration maintenance | "We'll do it once and it'll work" | Estimate 15–20% of initial integration cost annually |
 | Upgrade engineering | "Upgrades are free" | Budget 2–4 engineer-weeks per major version |
 | Training new hires | "The team already knows it" | $3–10K per new engineer for certification + ramp time |
@@ -924,7 +937,7 @@ HIDDEN (what architects must surface):
 Even the right technology selection fails without organisational readiness. Assess readiness before committing.
 
 | Dimension | Questions to Assess | Readiness Indicators |
-|---|---|---|
+| --- | --- | --- |
 | **Skills** | Do we have people who can operate this today? | ≥2 engineers with demonstrated expertise |
 | **Team structure** | Is there a team accountable for this platform? | Named owner; clear on-call responsibility |
 | **Operating model** | How will we support this in production? | Runbook exists; escalation path defined |
@@ -944,7 +957,7 @@ Total > 28: Ready; proceed with standard governance.
 ### 14.3 Skill Gap Closure Strategies
 
 | Gap Level | Closure Strategy | Timeline |
-|---|---|---|
+| --- | --- | --- |
 | **Zero internal expertise** | Hire specialist; engage SI partner; vendor training programme | 3–6 months to functional competency |
 | **Basic familiarity, no depth** | Structured training; hands-on PoC; pair with vendor PS | 1–3 months |
 | **One expert, no redundancy** | Train second engineer; document institutional knowledge | 1 month |
@@ -961,6 +974,7 @@ See [Architectural Review Board](../architectural-review-board/index.md) for the
 All technology decisions above the departmental tool level require an ARB submission:
 
 **Minimum required artefacts:**
+
 - Problem statement (what capability gap does this address?)
 - Options considered (minimum 3, or justify why fewer)
 - Weighted decision matrix completed
@@ -971,6 +985,7 @@ All technology decisions above the departmental tool level require an ARB submis
 - Recommended decision with rationale
 
 **Optional but recommended:**
+
 - PoC results
 - Reference architecture diagram
 - Migration plan from current state
@@ -978,7 +993,7 @@ All technology decisions above the departmental tool level require an ARB submis
 ### 15.2 Decision Gates
 
 | Gate | Trigger | Decision | Timeline |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Pre-PoC gate** | Request to PoC a candidate technology | Approve / reject PoC scope and budget | 1 week |
 | **Post-PoC gate** | PoC complete; team wants to proceed | Approve for pilot / reject / more data needed | 2 weeks |
 | **Standard designation gate** | Team wants enterprise-wide standard | Approve as Preferred / Mandatory / reject | 4 weeks |
@@ -988,7 +1003,7 @@ All technology decisions above the departmental tool level require an ARB submis
 ### 15.3 Stakeholder Roles in the Decision
 
 | Role | Responsibility | Decision Authority |
-|---|---|---|
+| --- | --- | --- |
 | **Submitting team** | Prepare submission; present to ARB | Propose; implement |
 | **Enterprise architect** | Assess strategic fit; provide guidance before submission | Review; advise |
 | **Security architect** | Security risk assessment | Approve / reject on security grounds |
@@ -1004,6 +1019,7 @@ All technology decisions above the departmental tool level require an ARB submis
 ### 16.1 Why ADRs Matter
 
 Architecture Decision Records capture: what was decided, why, what options were rejected, and what consequences to expect. Without ADRs:
+
 - Future teams re-litigate decisions that were already made
 - Context for a decision is lost when team members leave
 - Post-mortems can't distinguish wrong decisions from right decisions badly implemented
@@ -1129,7 +1145,7 @@ For lower-risk, lower-scope decisions:
 Define success metrics at decision time — not after deployment.
 
 | Metric Category | Example KPIs | Target | Measurement Method |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Adoption** | % of target teams actively using the technology | 80% within 6 months | Platform telemetry / user survey |
 | **User satisfaction** | Developer experience score | ≥4/5 | Quarterly survey |
 | **Platform stability** | Uptime / availability | ≥99.9% | Monitoring dashboard |
@@ -1142,7 +1158,7 @@ Define success metrics at decision time — not after deployment.
 ### 17.2 Post-Implementation Review Schedule
 
 | Timing | Review Focus | Output |
-|---|---|---|
+| --- | --- | --- |
 | **30 days post-launch** | Technical issues; onboarding friction | Issue list; quick fixes |
 | **90 days post-launch** | Adoption progress; cost tracking vs. model | Go/continue decision |
 | **6 months post-launch** | User satisfaction; stability; cost vs. model | Decision validation |
@@ -1156,7 +1172,7 @@ Define success metrics at decision time — not after deployment.
 ### 18.1 The Fourteen Anti-Patterns
 
 | Anti-Pattern | Description | Detection Signal | Countermeasure |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Feature checklist bias** | Selecting the tool with the longest feature list, not the best fit | RFP built from feature marketing materials | Evaluate against your specific use cases only |
 | **Vendor marketing influence** | Decision driven by sales relationship, not evaluation | Architecture team hasn't tested the product | Require PoC with own data; bar vendor from ARB |
 | **Shiny object syndrome** | Adopting new technology because it's exciting, not because it solves a problem | No problem statement exists | Require problem statement before evaluation starts |
@@ -1181,6 +1197,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Speed to value → Cost → Operational simplicity → Standards.
 
 **Approach:**
+
 - Minimise custom infrastructure; use managed SaaS for everything possible
 - Resist premature standardisation; let patterns emerge from 2–3 real use cases
 - Use high-trust vendors with monthly contracts (no 3-year lock-in)
@@ -1194,6 +1211,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Strategic alignment → Operational efficiency → Cost → Standardisation.
 
 **Approach:**
+
 - Establish an ARB (2-week review cycle, not heavyweight)
 - Define Preferred standards for top 5–7 capability categories
 - Start technology radar (quarterly)
@@ -1207,6 +1225,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Strategic alignment → Security/compliance → Standardisation → Operational at scale.
 
 **Approach:**
+
 - Full ARB with designated roles; 2–4 week review cycle
 - Mandatory standards for strategic platforms
 - Quarterly technology radar; annual rationalization
@@ -1220,6 +1239,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Compliance → Security → Operational control → Standards → Business value.
 
 **Approach:**
+
 - Compliance gate before any evaluation starts
 - Data residency non-negotiable; vendor DPA mandatory
 - Security assessment required for all technologies (not just critical)
@@ -1233,6 +1253,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Sovereignty → Security → Compliance → Operational → Cost.
 
 **Approach:**
+
 - National security classification may restrict vendor set
 - FedRAMP (US) / NCSC (UK) / BSI (Germany) certification required
 - Procurement framework constraints (G-Cloud, GSA Schedule, etc.)
@@ -1246,6 +1267,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Patient safety → HIPAA/clinical compliance → Security → Clinical fit → Cost.
 
 **Approach:**
+
 - Clinical workflow impact assessment required for any patient-facing technology
 - HIPAA BAA required for all PHI-touching systems
 - Medical device classification review if AI touches clinical decisions
@@ -1259,6 +1281,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Regulatory compliance → Risk management → Security → Operational resilience → Cost.
 
 **Approach:**
+
 - MAS TRM / EBA ICT guidelines / OCC model risk management
 - Model risk management process for any AI/ML system
 - Third-party risk management programme for all vendors
@@ -1272,6 +1295,7 @@ Define success metrics at decision time — not after deployment.
 **Priority order:** Operational continuity → Integration with OT systems → Security → Cost → Innovation.
 
 **Approach:**
+
 - OT/IT boundary must be explicitly addressed in any deployment
 - Industrial protocol support (MQTT, OPC-UA, Modbus) required where applicable
 - Edge deployment capability critical for factory floor
@@ -1335,6 +1359,7 @@ REVIEWER: _______________ DATE: _______________
 ### 20.3 ARB Submission Checklist
 
 Before submitting for ARB review:
+
 - [ ] Problem statement documented
 - [ ] Minimum 3 options evaluated (or fewer options justified)
 - [ ] Weighted decision matrix completed
@@ -1363,7 +1388,7 @@ Before submitting for ARB review:
 ## Glossary
 
 | Term | Definition |
-|---|---|
+| --- | --- |
 | **ADR** | Architecture Decision Record — documented record of a technology decision and its rationale |
 | **AHP** | Analytic Hierarchy Process — pairwise comparison method for deriving objective weights |
 | **ARB** | Architecture Review Board — governance body for technology decisions |
@@ -1388,22 +1413,26 @@ Before submitting for ARB review:
 ## Further Reading
 
 **Standards and Frameworks**
+
 - [TOGAF 10 — ADM and Technology Architecture](https://www.opengroup.org/togaf)
 - [NIST AI RMF 1.0](https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf)
 - [ISO/IEC 25010 — Software Quality](https://www.iso.org/standard/35733.html)
 - [Thoughtworks Technology Radar](https://www.thoughtworks.com/radar)
 
 **Decision Methods**
+
 - Kepner and Tregoe, *The Rational Manager* — structured decision analysis
 - Saaty, *The Analytic Hierarchy Process* — pairwise comparison method
 - Ulwick, *Jobs to be Done: Theory to Practice* — capability-driven evaluation
 
 **Enterprise Architecture Practice**
+
 - [Gartner Magic Quadrant and Critical Capabilities](https://www.gartner.com/en/methodologies/magic-quadrant) — market context (supplement, not replace, internal evaluation)
 - [FinOps Foundation Framework](https://www.finops.org/framework/)
 - [CNCF Landscape](https://landscape.cncf.io) — cloud-native technology inventory
 
 **Internal Cross-References**
+
 - [Architectural Review Board Operating Model](../architectural-review-board/index.md)
 - [Technology Investment Fundamentals](../../ea-masterclass/module-04-technology-investment/index.md)
 - [AI Solution Lifecycle Deliverables](ai-solution-lifecycle-deliverables.md)

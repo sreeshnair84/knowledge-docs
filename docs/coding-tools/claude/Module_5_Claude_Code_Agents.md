@@ -9,38 +9,39 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-#### **MODULE 5** 
-# **Claude Code, Hooks, Skills & Subagents** 
+#### **MODULE 5**
 
-Agentic architecture, deterministic hooks, SKILL.md, subagent delegation, Agent SDK, and GitHub CI/CD integration 
+# **Claude Code, Hooks, Skills & Subagents**
 
-**Domain 4 — 22% of CCA-F Exam** 
+Agentic architecture, deterministic hooks, SKILL.md, subagent delegation, Agent SDK, and GitHub CI/CD integration
 
-**Claude Certified Architect (CCA-F) | Professional Enterprise Architect | May 2026** 
+**Domain 4 — 22% of CCA-F Exam**
 
-### **What You Will Master in This Module** 
+**Claude Certified Architect (CCA-F) | Professional Enterprise Architect | May 2026**
 
-I Claude Code: dual-model, context sources, auto-compaction, 9 built-in tools 
+### **What You Will Master in This Module**
 
-I CLAUDE.md: probabilistic user context vs deterministic system prompt — architecture impact 
+I Claude Code: dual-model, context sources, auto-compaction, 9 built-in tools
 
-I Hooks system: 6 lifecycle events, 4 handler types — deterministic governance 
+I CLAUDE.md: probabilistic user context vs deterministic system prompt — architecture impact
 
-I Hook patterns: block dangerous commands, auto-lint, Slack notifications, SIEM 
+I Hooks system: 6 lifecycle events, 4 handler types — deterministic governance
 
-I Agent Skills (SKILL.md): complete frontmatter schema, triggering, distribution 
+I Hook patterns: block dangerous commands, auto-lint, Slack notifications, SIEM
 
-I Subagents: isolated contexts, custom agent definitions, structured output design 
+I Agent Skills (SKILL.md): complete frontmatter schema, triggering, distribution
 
-I Multi-agent patterns: orchestrator-worker, pipeline, router, fan-out/fan-in 
+I Subagents: isolated contexts, custom agent definitions, structured output design
 
-I Claude Agent SDK: TypeScript programmatic agent execution for CI/CD 
+I Multi-agent patterns: orchestrator-worker, pipeline, router, fan-out/fan-in
 
-I GitHub Actions: automated PR review, test generation, code quality gates 
+I Claude Agent SDK: TypeScript programmatic agent execution for CI/CD
 
-### **5.1 Claude Code Architecture** 
+I GitHub Actions: automated PR review, test generation, code quality gates
 
-Claude Code is Anthropic's terminal-based agentic platform. More accurately: a general computer automation framework — anything achievable via terminal is within scope. 
+### **5.1 Claude Code Architecture**
+
+Claude Code is Anthropic's terminal-based agentic platform. More accurately: a general computer automation framework — anything achievable via terminal is within scope.
 
 |**<b>Primary model</b>**|Claude Sonnet 4.6 for main agentic loop: planning, tool selection, synthesis|
 |---|---|
@@ -52,13 +53,13 @@ Claude Code is Anthropic's terminal-based agentic platform. More accurately: a g
 |**<b>Config directory</b>**|.claude/ — contains settings.json, commands/, agents/, skills/, hooks/|
 |**<b>Memory system</b>**|File-based markdown (no vector DB). Auto-generated, injected into CLAUDE.md. Inspectable, ed|
 
-#### **Critical: CLAUDE.md is User Context, NOT System Prompt** 
+#### **Critical: CLAUDE.md is User Context, NOT System Prompt**
 
-CLAUDE.md is delivered probabilistically as user context. Claude may override it with its own judgment. For mandatory rules, use Hooks — they execute deterministic code that cannot be bypassed by the model. 
+CLAUDE.md is delivered probabilistically as user context. Claude may override it with its own judgment. For mandatory rules, use Hooks — they execute deterministic code that cannot be bypassed by the model.
 
-### **5.2 Hooks System — Deterministic Governance** 
+### **5.2 Hooks System — Deterministic Governance**
 
-Hooks fire at lifecycle events and run deterministic code — the model cannot override them. This makes hooks the correct choice for security controls, compliance gates, and mandatory quality checks. 
+Hooks fire at lifecycle events and run deterministic code — the model cannot override them. This makes hooks the correct choice for security controls, compliance gates, and mandatory quality checks.
 
 |**<b>Event</b>**|**<b>Trigger</b>**|**<b>Control</b>**|**<b>Use Cases</b>**|
 |---|---|---|---|
@@ -69,13 +70,13 @@ Hooks fire at lifecycle events and run deterministic code — the model cannot o
 |<b>SubagentStop</b>|Subagent completes|Informational only|Aggregate results, validate subagent outputs|
 |<b>Notification</b>|Claude requests attenti|onInformational only|Desktop alerts, mobile push, Slack pings|
 
-## **Handler Types: 4 Implementation Options** 
+## **Handler Types: 4 Implementation Options**
 
-**<b>Type</b> <b>Description</b> <b>Example</b>** <b>Command (shell)</b>Shell script via stdin JSON. Exit code controls. Fastest option for simple enforcement.Block dangerous bash patterns <b>Prompt (LLM eval)</b>Single-turn Claude evaluation for nuanced policy judgment requiring understanding.'Does this change expose credentials?' 
+**<b>Type</b> <b>Description</b> <b>Example</b>** <b>Command (shell)</b>Shell script via stdin JSON. Exit code controls. Fastest option for simple enforcement.Block dangerous bash patterns <b>Prompt (LLM eval)</b>Single-turn Claude evaluation for nuanced policy judgment requiring understanding.'Does this change expose credentials?'
 
-<b>Agent (subagent)</b>Full subagent with tool access for complex verification. Can run teRun test **s** t suites., fail if coverage drops <b>Webhook</b> HTTP POST to external system. For SIEM, change management, PagerDuty, Slack.Every bash command POSTed to audit SIEM 
+<b>Agent (subagent)</b>Full subagent with tool access for complex verification. Can run teRun test **s** t suites., fail if coverage drops <b>Webhook</b> HTTP POST to external system. For SIEM, change management, PagerDuty, Slack.Every bash command POSTed to audit SIEM
 
-## **PreToolUse Hook — Block Dangerous Commands** 
+## **PreToolUse Hook — Block Dangerous Commands**
 
 ```
 #!/usr/bin/env bash # .claude/hooks/pre-bash.sh — exit 0=allow, 1=warn, 2=BLOCK CMD=$(cat | python3
@@ -86,9 +87,9 @@ Hooks fire at lifecycle events and run deterministic code — the model cannot o
 exit 1 fi exit 0
 ```
 
-### **5.3 Agent Skills (SKILL.md)** 
+### **5.3 Agent Skills (SKILL.md)**
 
-Skills package domain expertise into reusable instruction modules. They prevent repeated copy-pasting and ensure consistent execution of common tasks. 
+Skills package domain expertise into reusable instruction modules. They prevent repeated copy-pasting and ensure consistent execution of common tasks.
 
 ```
 --- name: api-endpoint-generator description: > Use when creating a new REST API endpoint, adding a
@@ -107,7 +108,7 @@ Report Files created: [list with line counts] Route: [METHOD /path] Tests: [coun
 Assumptions: [decisions made without explicit instruction]
 ```
 
-### **5.4 Subagents, Multi-agent Patterns & Agent SDK** 
+### **5.4 Subagents, Multi-agent Patterns & Agent SDK**
 
 |**<b>Context isolation</b>**|Sub-agent has ZERO access to parent history. Only what's in the Task prompt is available.|
 |---|---|
@@ -116,18 +117,18 @@ Assumptions: [decisions made without explicit instruction]
 |**<b>maxTurns</b>**|Always set. Short tasks: 10-20 turns. Complex analysis: 30-50 turns. Prevents runaway agents.|
 |**<b>context: fork</b>**|Runs in isolated subagent context. context:current runs inline. Use fork for long/heavy skills.|
 
-## **Multi-agent Patterns** 
+## **Multi-agent Patterns**
 
 |**<b>Pattern</b>**|**<b>Description</b>**<br>**<b>Example</b>**|
 |---|---|
 |<b>Orchestrator-Worke|r</b><br>Main decomposes→workers run in parallel→main aggregates<br>100 files→10 workers of 10|
 |<b>Pipeline/Chain</b>|Output of each stage feeds next→sequential refinement<br>Draft→Review→Edit→Ship|
 
-<b>Router</b> Classifier routes to specialists → reduces context pollutionTicket → billing/tech/shipping agent 
+<b>Router</b> Classifier routes to specialists → reduces context pollutionTicket → billing/tech/shipping agent
 
-<b>Fan-out/Fan-in</b> N agents evaluate same problem → main synthesizes5 architecture perspectives → unified review 
+<b>Fan-out/Fan-in</b> N agents evaluate same problem → main synthesizes5 architecture perspectives → unified review
 
-## **Agent SDK — TypeScript CI/CD Integration** 
+## **Agent SDK — TypeScript CI/CD Integration**
 
 ```
 import { ClaudeAgent } from '@anthropic-ai/claude-agent-sdk'; async function reviewPR(diff: string)

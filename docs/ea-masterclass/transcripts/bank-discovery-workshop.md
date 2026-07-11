@@ -8,7 +8,7 @@ source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "transcripts"]
 doc_type: workshop-transcript
-session_type: 
+session_type:
 related_pages: []
 ---
 
@@ -19,10 +19,12 @@ related_pages: []
 **Location:** Executive Conference Room, Head Office
 
 **EA Team:**
+
 - Sarah Chen — EA Lead
 - Tom Park — Architecture Specialist
 
 **Bank Attendees:**
+
 - Marcus Webb — Chief Information Officer
 - Priya Nair — Chief Data Officer
 - James Okafor — Head of Commercial Banking

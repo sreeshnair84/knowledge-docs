@@ -9,32 +9,33 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-# **Governance, Responsible AI & Security Architecture** 
+AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-Scaling with control: trust as an accelerant, not a brake 
+# **Governance, Responsible AI & Security Architecture**
 
-### **Contents of this deliverable** 
+Scaling with control: trust as an accelerant, not a brake
 
-- AI governance operating model and decision rights 
+### **Contents of this deliverable**
 
-- Responsible AI framework and risk tiering 
+- AI governance operating model and decision rights
 
-- Model and agent lifecycle governance 
+- Responsible AI framework and risk tiering
 
-- Security architecture for AI systems, including non-human identity 
+- Model and agent lifecycle governance
 
-- Data governance, compliance, auditability, and FinOps controls 
+- Security architecture for AI systems, including non-human identity
 
-Deliverable 04  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout. 
+- Data governance, compliance, auditability, and FinOps controls
 
-Governance, Responsible AI   & Security Architecture 
+Deliverable 04  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout.
 
-AI-First Enterprise Transformation 
+Governance, Responsible AI   & Security Architecture
 
-## **1. AI Governance Operating Model** 
+AI-First Enterprise Transformation
 
-Governance is designed as a two-speed system: a light-touch paved road for low-risk uses, and rigorous review concentrated where consequences are real. The failure mode to avoid is a single committee reviewing everything - it becomes a queue, teams route around it, and shadow AI wins. 
+## **1. AI Governance Operating Model**
+
+Governance is designed as a two-speed system: a light-touch paved road for low-risk uses, and rigorous review concentrated where consequences are real. The failure mode to avoid is a single committee reviewing everything - it becomes a queue, teams route around it, and shadow AI wins.
 
 |**Body**|**Composition**|**Mandate**|**Cadence**|
 |---|---|---|---|
@@ -43,23 +44,23 @@ Governance is designed as a two-speed system: a light-touch paved road for low-r
 |Responsible AI Review<br>Board|Risk, Legal, Security, Data,<br>domain experts; independent<br>chair|Reviews Tier-1/Tier-2 systems<br>pre-deployment and on material change;<br>owns incident taxonomy|Weekly triage;<br>deep reviews as<br>scheduled|
 |Platform & Standards<br>Authority|CoE architecture leads +<br>federated architects|Owns reference architecture, MCP/tooling<br>standards, model approvals, exception<br>process|Continuous, with<br>2-week exception<br>SLA|
 
-## **2. Responsible AI Framework and Risk Tiering** 
+## **2. Responsible AI Framework and Risk Tiering**
 
-### **Principles (operationalized, not poster-ware)** 
+### **Principles (operationalized, not poster-ware)**
 
-- **Human accountability.** Every AI system and agent has a named accountable owner; AI never owns a decision, a person does. 
+- **Human accountability.** Every AI system and agent has a named accountable owner; AI never owns a decision, a person does.
 
-- **Proportionate oversight.** Control intensity scales with risk tier, aligned to EU AI Act classes and sector rules on automated decision-making. 
+- **Proportionate oversight.** Control intensity scales with risk tier, aligned to EU AI Act classes and sector rules on automated decision-making.
 
-- **Transparency.** Users and customers know when they interact with AI; consequential outputs carry provenance and, where feasible, citations. 
+- **Transparency.** Users and customers know when they interact with AI; consequential outputs carry provenance and, where feasible, citations.
 
-- **Fairness with evidence.** Systems touching people (hiring, credit-like decisions, pricing) undergo bias testing pre-deployment and in production monitoring. 
+- **Fairness with evidence.** Systems touching people (hiring, credit-like decisions, pricing) undergo bias testing pre-deployment and in production monitoring.
 
-- **Privacy by design.** Data minimization in prompts and memory; retention TTLs; deletion requests propagate through indexes and vector stores. 
+- **Privacy by design.** Data minimization in prompts and memory; retention TTLs; deletion requests propagate through indexes and vector stores.
 
-- **Contestability.** Any person affected by an AI-influenced decision has a route to human review. 
+- **Contestability.** Any person affected by an AI-influenced decision has a route to human review.
 
-### **Risk tiers and required controls** 
+### **Risk tiers and required controls**
 
 |**Tier**|**Definition & examples**|**Required controls**|
 |---|---|---|
@@ -68,13 +69,13 @@ Governance is designed as a two-speed system: a light-touch paved road for low-r
 ||determinations, autonomous customer|decision rights preserved; enhanced logging; annual|
 ||commitments, regulated communications|revalidation; Executive Council visibility|
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
-Deliverable 04  |  Page 1 
+Deliverable 04  |  Page 1
 
-Governance, Responsible AI   & Security Architecture 
+Governance, Responsible AI   & Security Architecture
 
-AI-First Enterprise Transformation 
+AI-First Enterprise Transformation
 
 |**Tier**|**Definition & examples**|**Required controls**|
 |---|---|---|
@@ -82,7 +83,7 @@ AI-First Enterprise Transformation
 |business|financial-process automation, agentic actions<br>on systems of record|owner sign-off; monitoring with alert thresholds;<br>incident playbook|
 |Tier 3 - Internal<br>productivity|Drafting, summarization, search, coding<br>assistance within governed tools|Paved-road self-service; acceptable-use policy;<br>data-classification guardrails; sampling-based quality<br>review|
 
-## **3. Model and Agent Lifecycle Governance** 
+## **3. Model and Agent Lifecycle Governance**
 
 |**Stage**|**Governance requirement**|
 |---|---|
@@ -94,9 +95,9 @@ AI-First Enterprise Transformation
 |Incident|AI incident taxonomy (hallucination-caused harm, data leakage, unauthorized action, bias event);<br>severity-based response; RAI Board post-mortems feed policy|
 |Retirement|Decommission checklist: entitlements revoked, memory purged per retention policy, inventory updated|
 
-## **4. Security Architecture for AI Systems** 
+## **4. Security Architecture for AI Systems**
 
-**New threat surface, extended zero-trust** 
+**New threat surface, extended zero-trust**
 
 |**Threat**|**Primary controls**|
 |---|---|
@@ -107,36 +108,36 @@ AI-First Enterprise Transformation
 |Abuse & jailbreak of customer-facing AI|Safety classifiers; rate limiting; abuse monitoring; red-team program with quarterly<br>exercises|
 |Shadow AI|Discovery via CASB/network analytics; sanctioned alternatives that are genuinely<br>better; graduated enforcement|
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
-Deliverable 04  |  Page 2 
+Deliverable 04  |  Page 2
 
-Governance, Responsible AI   & Security Architecture 
+Governance, Responsible AI   & Security Architecture
 
-AI-First Enterprise Transformation 
+AI-First Enterprise Transformation
 
-### **Identity and access for humans and agents** 
+### **Identity and access for humans and agents**
 
-- **Every agent is a first-class identity** in the IAM system - registered, credentialed (short-lived tokens, no shared secrets), and owned by a named human sponsor. 
+- **Every agent is a first-class identity** in the IAM system - registered, credentialed (short-lived tokens, no shared secrets), and owned by a named human sponsor.
 
-- **Entitlements are per-agent and per-tool** , expressed as scopes on MCP servers; the effective permission of an agent acting for a user is the _intersection_ of agent scope and user entitlement, never the union. 
+- **Entitlements are per-agent and per-tool** , expressed as scopes on MCP servers; the effective permission of an agent acting for a user is the *intersection* of agent scope and user entitlement, never the union.
 
-- **Delegation chains are recorded.** When agent A invokes agent B, the originating human context propagates so audit can answer 'who caused this action' for every write. 
+- **Delegation chains are recorded.** When agent A invokes agent B, the originating human context propagates so audit can answer 'who caused this action' for every write.
 
-- **Segregation of duties applies to agents** exactly as to people: an agent that prepares a payment cannot approve it. 
+- **Segregation of duties applies to agents** exactly as to people: an agent that prepares a payment cannot approve it.
 
-## **5. Data Governance, Compliance, Auditability, and FinOps** 
+## **5. Data Governance, Compliance, Auditability, and FinOps**
 
-- **Data governance.** Classification drives what may enter prompts, indexes, and fine-tunes; consent and purpose limitation enforced at the retrieval service; lineage from source to AI output. 
+- **Data governance.** Classification drives what may enter prompts, indexes, and fine-tunes; consent and purpose limitation enforced at the retrieval service; lineage from source to AI output.
 
-- **Regulatory compliance.** Obligations register mapped to controls: EU AI Act deployer duties (inventory, transparency, human oversight, logging), privacy regimes (DPIAs for Tier-1/2, deletion propagation), sector rules on automated decisions; regulatory-change monitoring feeds quarterly control updates. 
+- **Regulatory compliance.** Obligations register mapped to controls: EU AI Act deployer duties (inventory, transparency, human oversight, logging), privacy regimes (DPIAs for Tier-1/2, deletion propagation), sector rules on automated decisions; regulatory-change monitoring feeds quarterly control updates.
 
-- **Auditability.** For every consequential AI action: input, retrieved context references, model + version, tool calls, output, human approvals - retained per policy and reconstructable; this is the evidence base for regulators, auditors, and internal challenge. 
+- **Auditability.** For every consequential AI action: input, retrieved context references, model + version, tool calls, output, human approvals - retained per policy and reconstructable; this is the evidence base for regulators, auditors, and internal challenge.
 
-- **Risk management integration.** AI risks in the enterprise risk register with owners and KRIs (Deliverable 06); internal audit builds AI-assurance capability in Year 1. 
+- **Risk management integration.** AI risks in the enterprise risk register with owners and KRIs (Deliverable 06); internal audit builds AI-assurance capability in Year 1.
 
-- **FinOps controls.** Budget guardrails per team at the gateway; anomaly alerts on token spend; quarterly unit-economics review by the Portfolio Board so cost discipline is governed, not hoped for. 
+- **FinOps controls.** Budget guardrails per team at the gateway; anomaly alerts on token spend; quarterly unit-economics review by the Portfolio Board so cost discipline is governed, not hoped for.
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
 Deliverable 04  |  Page 3

@@ -42,7 +42,7 @@ Single-agent 3LO is a solved problem. The harder frontier is **multi-hop delegat
 OAuth's RFC 8693 was designed for pairwise exchange, not multi-hop agent chains. Three structural limitations emerge in production:
 
 | Limitation | Description | Risk in GENAI Context |
-|-----------|-------------|----------------------|
+| ----------- | ------------- | ---------------------- |
 | No cross-domain trust | Each trust domain needs its own auth server. No mechanism for cross-domain token verification without pre-established federation. | Agents calling Atlassian + Graph + GHE in sequence each need separate token exchange — no shared trust fabric. |
 | Opaque delegation history | Token exchange produces a new token with no cryptographic record of the original delegation chain. | Audit log cannot prove "Sub-Agent B acted because Orchestrator A was delegated by User X". Chain is asserted, not proven. |
 | No holder-side attenuation | Only the auth server can narrow scopes. An intermediary agent cannot further constrain what it delegates. | If Orchestrator receives `write:jira-work`, it can delegate the full scope to Sub-Agent — even if Sub-Agent only needs `read`. |
@@ -79,7 +79,7 @@ RFC 8693 token exchange supports the `act` claim in the resulting JWT, which car
 Until the IETF OAuth WG formalises cryptographic chain binding, the pragmatic production pattern is the **scope attenuation ladder**:
 
 | Hop | Actor | Token Received | Exchange To | Scope Rule |
-|-----|-------|---------------|-------------|-----------|
+| ----- | ------- | --------------- | ------------- | ----------- |
 | 0 — User | Human user signs in | User token Tc (full delegated scope) | Passes Tc to Orchestrator | User's full consent scope |
 | 1 — Orchestrator | Orchestrator Agent Identity | Receives Tc; exchanges via OBO to T_orch | Passes T_orch to Sub-Agent or Tool | Request ONLY what current task needs — not full Tc scope |
 | 2 — Sub-Agent | Sub-Agent Agent Identity | Receives T_orch; exchanges via OBO to T_sub | Passes T_sub to Tool/API | Further narrow: only scope for this specific tool call |
@@ -119,7 +119,7 @@ X-User-OID: a3b4c5d6-...              # Original user OID — never allow agent 
 ### 19.5 Maximum Delegation Depth Policy
 
 | Policy | Recommended Value | Rationale |
-|--------|------------------|-----------|
+| -------- | ------------------ | ----------- |
 | Max delegation depth | 3 hops (user → orchestrator → sub-agent → tool) | Beyond 3, audit chain is practically unverifiable; attack surface grows exponentially |
 | Min scope at each hop | Only the scope required for the immediate tool call | Principle of least privilege; prevents sub-agents inheriting orchestrator's full authority |
 | Token TTL reduction | Each hop halves the remaining TTL | Limits blast radius if a mid-chain token is compromised; ensures chain expires |
@@ -133,7 +133,7 @@ X-User-OID: a3b4c5d6-...              # Original user OID — never allow agent 
 The ecosystem has converged on a three-layer protocol stack for production agent systems:
 
 | Layer | Protocol | Governs | Auth Mechanism | Status (June 2026) |
-|-------|---------|---------|---------------|-------------------|
+| ------- | --------- | --------- | --------------- | ------------------- |
 | Tool access | MCP (Model Context Protocol) | How agent calls tools, reads data, invokes prompts | OAuth 2.1 + PKCE mandatory for remote HTTP servers; Dynamic Client Registration | Production; 2025-11-05 spec; mandated by ChatGPT (Sept 2025), Claude, Copilot |
 | Agent coordination | A2A (Agent-to-Agent) | How agents delegate tasks to other agents; capability discovery via Agent Cards | RFC 8693 token exchange; OAuth 2.0 M2M per agent identity | v1.0 released April 2026; 150+ orgs including AWS, Microsoft, Salesforce, SAP |
 | Transport | Streamable HTTP (MCP 2025-03-26 spec) | Bidirectional streaming between agent and tool server | Bearer token in Authorization header; token bound to session via RFC 8707 | Replaced SSE as primary MCP transport; production in all major frameworks |
@@ -144,7 +144,7 @@ The ecosystem has converged on a three-layer protocol stack for production agent
 The MCP specification mandates OAuth 2.1 for all remote (HTTP) MCP servers:
 
 | Step | Actor | Action |
-|------|-------|--------|
+| ------ | ------- | -------- |
 | 1 | MCP Client (Agent) | Contacts MCP server without auth |
 | 2 | MCP Server | Returns 401 + Protected Resource Metadata (RFC 9728) pointing to authorisation server |
 | 3 | MCP Client | Fetches auth server metadata; performs Dynamic Client Registration if needed |
@@ -195,7 +195,7 @@ X-Delegation-Depth: 2
 ### 20.3 Protocol Choice Matrix for GENAI Agent Foundry
 
 | Scenario | Protocol | Auth Pattern | AC Gateway Role |
-|----------|---------|-------------|----------------|
+| ---------- | --------- | ------------- | ---------------- |
 | Agent calls Jira/Confluence REST API | Direct HTTPS (no MCP/A2A) | 3LO: per-user `refresh_token` in vault → `access_token` injected at gateway | Credential vault lookup + injection + audit log |
 | Agent calls internal MCP tool server (e.g., Jira MCP) | MCP (Streamable HTTP) | OAuth 2.1 Bearer token; gateway proxies and re-signs with agent identity | Token validation inbound + outbound MCP auth header injection |
 | Orchestrator delegates to Jira sub-agent | A2A v1.0 | RFC 8693 OBO exchange; scope attenuated at each hop; `act` chain in JWT | Enforce max delegation depth; validate `act` chain; propagate `correlation_id` |
@@ -213,7 +213,7 @@ AI agents that access ICT systems are within scope of DORA and NIS2. The 3LO + A
 DORA became fully applicable 17 January 2025. In 2026, regulators have moved from reviewing paperwork to demanding real-time proof of control.
 
 | DORA Pillar | Specific Requirement | How This Architecture Addresses It |
-|------------|---------------------|-----------------------------------|
+| ------------ | --------------------- | ----------------------------------- |
 | 1. ICT Risk Management | Art. 6-10: Identify, protect, detect, respond, recover. Log all ICT operations. | Every agent API call logged with `agent_id`, `user_oid`, scope, resource, result, timestamp. Entra Identity Protection detects anomalous token usage. |
 | 2. ICT Incident Reporting | Art. 17-19: Classify, report to NCA within 24h (early warning), 72h (full report). | P0 incident playbook (Vol. 2 §15) maps to DORA classification. Correlation IDs allow reconstructing full impact scope for regulators. |
 | 3. Digital Operational Resilience Testing | Art. 24-27: Annual TLPT for significant institutions. | Token vault, AC Gateway, and Entra Agent ID are in-scope ICT systems for TLPT. Include 3LO token theft scenarios, delegation chain splicing, and prompt injection in test plans. |
@@ -225,7 +225,7 @@ DORA became fully applicable 17 January 2025. In 2026, regulators have moved fro
 Banks are 'essential entities' under NIS2 Annex I Sector 4. DORA is lex specialis for ICT risk management, but NIS2 still applies for CSIRT reporting and supply chain security.
 
 | NIS2 Article | Requirement | Architectural Control |
-|------------|------------|----------------------|
+| ------------ | ------------ | ---------------------- |
 | Art. 21 — Security measures | Access control, least privilege, MFA, encryption, audit logging | 3LO per-user scoped tokens (not shared accounts). FIC+MSI (no passwords). AES-256-GCM vault encryption. Full audit log. Conditional Access enforced at blueprint level. |
 | Art. 21 — Supply chain security | Assess security of ICT suppliers and their practices | Atlassian, GitHub, Microsoft are ICT suppliers for agent-accessed data. Their 3LO implementations must be assessed: PKCE enforced? Refresh token rotation? Scope granularity? |
 | Art. 22 — Incident reporting | Early warning within 24h of significant incident to national CSIRT | P0 playbook (§15.2) includes CSIRT notification step. Significant incident = agent accessing data it was not authorised to access, or credential vault breach. |
@@ -236,7 +236,7 @@ Banks are 'essential entities' under NIS2 Annex I Sector 4. DORA is lex speciali
 The EU AI Act (applicable August 2026 for high-risk systems) intersects with DORA via Article 9(10). Agents that access user data and make decisions affecting customers may be classified as high-risk.
 
 | EU AI Act Obligation | Applicability | Control Mapping |
-|---------------------|--------------|----------------|
+| --------------------- | -------------- | ---------------- |
 | Human oversight (Art. 14) | High-risk: agent makes decisions affecting users (credit, fraud, customer service actions) | CIBA gate for irreversible actions. Access Reviews for agent permissions. Human escalation path in agent workflow design. |
 | Technical documentation (Art. 11) | High-risk: full lifecycle documentation required | Volume 1-4 document series. Architecture Decision Records. |
 | Logging & audit (Art. 12) | High-risk: logs must enable post-hoc reconstruction of AI decisions | Full delegation chain log (§19.4). User OID + `agent_id` + scope + resource + timestamp on every call. |
@@ -253,7 +253,7 @@ The EU AI Act (applicable August 2026 for high-risk systems) intersects with DOR
 DORA explicitly requires three independent lines of defence for ICT risk:
 
 | Line | Role | Responsibilities for Agent Identity | Tools |
-|------|------|-------------------------------------|-------|
+| ------ | ------ | ------------------------------------- | ------- |
 | Line 1 — Agent Owner / Builder | Business unit / team that builds and operates the agent | Define minimal scope set. Register OAuth apps with least-privilege scopes. Implement sidecar pattern. Configure CIBA gates for high-risk tools. Ensure `offline_access` only requested when background operation is needed. | Entra Agent ID portal, AC Gateway config, Atlassian/GHE dev console |
 | Line 2 — Security / Identity Team | Independent risk function | Review all new agent identity registrations. Define consent flow standards. Set Conditional Access policies on blueprints. Monitor Entra Identity Protection alerts for agent identities. Perform quarterly access reviews. | Entra admin centre, Identity Protection, Access Reviews, Security SIEM |
 | Line 3 — Internal Audit | Independent assurance | Annual audit: verify Line 1 controls work. Verify Line 2 independence. Sample audit log entries: confirm `agent_id` + `user_oid` + scope present on all entries. DORA TLPT coordination: confirm agents are in-scope for penetration testing. | Audit sampling tools, log analytics, TLPT coordination |
@@ -263,7 +263,7 @@ DORA explicitly requires three independent lines of defence for ICT risk:
 Every deployed agent identity must be registered with the following mandatory fields:
 
 | Field | Type | Purpose |
-|-------|------|---------|
+| ------- | ------ | --------- |
 | `agent_id` | UUID (Entra Agent Identity SP object ID) | Primary key; used in all audit logs |
 | `blueprint_id` | UUID (Entra Blueprint app registration ID) | Links instance to its policy template |
 | `agent_name` | String | Human-readable; appears in consent screens and audit UIs |
@@ -280,7 +280,7 @@ Every deployed agent identity must be registered with the following mandatory fi
 ### 22.2 Access Review Schedule
 
 | Review Type | Frequency | Who Performs | Output |
-|------------|-----------|-------------|--------|
+| ------------ | ----------- | ------------- | -------- |
 | Quarterly scope review | Every 90 days | Security sponsor + owning team | Confirm each scope still needed; remove unused scopes; escalate if dormant |
 | Annual full review | Yearly | Security team + Internal Audit | Full agent identity inventory; decommission unused; DORA evidence |
 | Event-triggered review | On incident / personnel change | Security team | Immediate review of all agent identities owned by departing person; transfer or revoke |
@@ -293,7 +293,7 @@ Every deployed agent identity must be registered with the following mandatory fi
 ### 23.1 Emerging IETF Standards (2026 Drafts)
 
 | Draft | What It Defines | Relevance | Likely Timeline |
-|-------|----------------|-----------|----------------|
+| ------- | ---------------- | ----------- | ---------------- |
 | `draft-oauth-ai-agents-on-behalf-of-user` (-02, Aug 2025) | Extends Auth Code flow: `requested_actor` param names the agent on consent screen; `actor_token` authenticates agent at token endpoint | Directly relevant: users will see agent name on Atlassian/Graph consent screens. | Expected OAuth WG adoption 2026-2027 |
 | `draft-mw-spice-actor-chain` | Cryptographically verifiable actor chains for OAuth 2.0 Token Exchange | Solves delegation chain splicing (§19.2). When ratified, replace `correlation_id` approach with cryptographic binding. | Draft stage; experimental implementations 2026 |
 | `draft-ietf-oauth-identity-chaining` | OAuth identity and authorisation chaining across trust domains | Solves cross-domain agent calls. Relevant if GENAI agents need to federate across partner organisations. | Active WG discussion; 2027 target |
@@ -304,7 +304,7 @@ Every deployed agent identity must be registered with the following mandatory fi
 ### 23.2 Platform Roadmap Watch
 
 | Platform | Expected Development | Impact on This Architecture |
-|---------|---------------------|----------------------------|
+| --------- | --------------------- | ---------------------------- |
 | Microsoft Entra Agent ID | Agent 365 admin centre (M365 admin view for all agents). GA of beta Graph APIs (`agentIdentities`). SCIM provisioning for agent identities. | Simplifies agent registry — Agent 365 may replace bespoke registry. GA APIs remove beta risk. |
 | Atlassian | Admin-level revocation for 3LO grants (currently only per-user or app uninstall). Richer MCP server for Jira/Confluence. | Solves OQ-3 (admin cannot revoke per-user grant). MCP server removes need for direct REST token management. |
 | GitHub Enterprise | Fine-grained PATs reaching enterprise admin controls. GitHub App improvements for org-level agent access. | Reduces reliance on OAuth App long-lived tokens. Fine-grained PATs solve the GHE refresh token gap. |
@@ -315,7 +315,7 @@ Every deployed agent identity must be registered with the following mandatory fi
 ## 24. Agent Auth Maturity Model — Where Are You Now?
 
 | Level | Name | Characteristics | Target for GENAI Foundry |
-|-------|------|----------------|--------------------------|
+| ------- | ------ | ---------------- | -------------------------- |
 | 0 — Unsafe | Credential in agent | Static API keys or service account tokens embedded in agent code or env vars. No per-user isolation. No audit trail. Global blast radius. | NOT acceptable. Zero tolerance policy. |
 | 1 — Authenticated | Agent has identity | Agent has its own Entra service principal. Uses client credentials (2LO). Tokens not in code — in Key Vault or env. Centralised logging. | Minimum for autonomous (non-user-data) agents |
 | 2 — Delegated | User-delegated access (3LO) | 3LO consent flow implemented. Per-user `refresh_tokens` in encrypted vault. Proactive refresh. Rotating tokens. User can revoke. Scope minimised. | **Target for MD-1, MD-2, MD-3 (Minimal Delivery)** |
@@ -328,7 +328,7 @@ Every deployed agent identity must be registered with the following mandatory fi
 ## 25. Master Delivery Roadmap — All Volumes Synthesised
 
 | Phase | Timeline | Maturity Target | Key Deliverables | Blockers / Dependencies |
-|-------|----------|----------------|-----------------|------------------------|
+| ------- | ---------- | ---------------- | ----------------- | ------------------------ |
 | Phase 0 — Unblocked now | Q3 2026 | Level 1 → 2 design | 1. This research (Volumes 1-3) published. 2. Security/Identity alignment session (MD-2). 3. Atlassian + GHE OAuth app registrations (dev tenant). 4. Entra Agent Identity Blueprint registered (dev tenant). 5. Agent Registry schema designed and approved. 6. Credential vault schema + encryption design approved. | None — all can proceed immediately |
 | Phase 1 — After gateway whitelist | Q3-Q4 2026 | Level 2 — Delegated | 1. AC Gateway live with 3-plane architecture. 2. Credential vault deployed (encrypted, KMS-backed). 3. 3LO consent flow live (Atlassian + GHE). 4. OBO flow live (Graph API via sidecar). 5. Proactive refresh with distributed locking. 6. Full audit log: `agent_id` + `user_oid` + scope + resource + ts. 7. Reference implementation merged (MD-3). | AC Gateway whitelist; AC Identity whitelist; FT/Entra self-service Security approval |
 | Phase 2 — Production hardening | Q4 2026 – Q1 2027 | Level 3 — Governed | 1. FIC+MSI credential on all blueprints (no client secrets). 2. OPA policy engine on AC Gateway (RBAC + ABAC). 3. CIBA gate live for high-risk tool actions. 4. Agent Registry live + integrated with Entra lifecycle. 5. Quarterly Access Reviews scheduled and running. 6. Multi-agent scope attenuation ladder implemented. 7. `correlation_id` propagated across all agent hops. 8. OWASP Agentic Top 10 review completed. | Phase 1 complete; OPA/policy engine decision; CIBA provider selection |

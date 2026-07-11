@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 ### 1.1 Mechanism Catalog
 
 | Mechanism | Role in agent systems | Strengths | Weaknesses / cautions |
-|-----------|----------------------|-----------|----------------------|
+| ----------- | ---------------------- | ----------- | ---------------------- |
 | **A2A** | Cross-framework/cross-org agent↔agent tasks (Agent Cards, task lifecycle, Artifacts; JSON-RPC + gRPC bindings, SSE streaming) | Vendor-neutral; discovery + auth + streaming + task states in one spec; Signed Agent Cards for trust | Young operational tooling; you still need your own contract/entitlement layer per remote agent |
 | **MCP** | Agent↔tool/data (tools, resources, prompts; 2026-07-28: stateless HTTP core, Tasks extension) | Dominant tool standard (~10k public servers); OAuth-aligned authZ; LB-friendly (Mcp-Method/Mcp-Name headers, no protocol sessions) | Tool descriptions are an injection surface; registry/trust of third-party servers is on you |
 | **HTTP/REST** | Synchronous service calls; the substrate under MCP/A2A | Universal; gateway/WAF ecosystem mature | Request/response only; you build retries, idempotency, streaming semantics |
@@ -53,7 +53,7 @@ covers_version: \"as of 2026-07-10\"
 ### 1.3 Choosing the Channel
 
 | Situation | Channel |
-|-----------|---------|
+| ----------- | --------- |
 | Synchronous capability invocation | MCP |
 | Delegating a *task with lifecycle* to another agent | A2A |
 | Decoupled reaction to business facts | Events |
@@ -73,7 +73,7 @@ The central design problem of 2025–26 agent security is the **delegation gap**
 ### 2.2 Identity per Boundary
 
 | Boundary | Mechanism | Notes |
-|----------|-----------|-------|
+| ---------- | ----------- | ------- |
 | **Human** | OIDC (enterprise IdP: Entra/Okta/Ping); phishing-resistant MFA for approval actions | Human identity anchors the chain; approvals re-authenticate for high-risk actions (step-up) |
 | **Agent (workload)** | SPIFFE/SPIRE SVIDs (X.509 or JWT) issued per runtime via node+workload attestation; or cloud-native equivalents (IAM roles, Entra Workload ID, GCP WIF) | Agents get *born* with identity from platform attestation — never from baked-in secrets. SVID TTL minutes, auto-rotated |
 | **Sub-agent** | Child SVID or STS-minted scoped token derived from parent, carrying task context; spawn depth + scope monotonically non-increasing | Delegation must only **narrow** privileges |
@@ -100,7 +100,7 @@ SPIFFE deployment detail, OWASP ASI mapping, and Entra Agent ID coverage: [Agent
 ### 3.1 Model Selection
 
 | Model | Use in agent platforms |
-|-------|----------------------|
+| ------- | ---------------------- |
 | **RBAC** | Baseline entitlements: which roles may *deploy/invoke* which agents. Too coarse alone — agents explode role counts |
 | **ABAC** | The workhorse: decisions over attributes of principal (human+agent chain), action, resource, and *context* (task purpose, risk score, time, data classification, environment) |
 | **ReBAC** | Zanzibar-style (SpiceDB/OpenFGA) for data-scoped questions: "may this agent read *this* document?" — mirrors doc/folder/org graphs; ideal for memory & retrieval ACLs |
@@ -144,7 +144,7 @@ Without a gateway, every team wires model credentials into app code: no unified 
 ### 4.2 Responsibility Matrix
 
 | Responsibility | Implementation notes |
-|----------------|---------------------|
+| ---------------- | --------------------- |
 | **Authentication** | Terminate workload identity (SVID/OIDC); virtual keys per team/agent, mapped to real provider creds held only here |
 | **Authorization** | PEP → PDP call per request: may this agent use this model/feature (tools, vision) at this size for this data class? |
 | **Prompt inspection** | Injection classifiers, policy screens; inspect *before* spend |

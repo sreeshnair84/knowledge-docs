@@ -33,7 +33,7 @@ The reason is that AI agent failures do not map to traditional software failure 
 Agent systems fail in four distinct classes, each requiring different treatment machinery:
 
 | Failure Class | Description | Correct Response | Wrong Response |
-|--------------|-------------|-----------------|----------------|
+| -------------- | ------------- | ----------------- | ---------------- |
 | **Transport** | Timeouts, 429 rate limits, network errors, transient provider unavailability | Retry with exponential backoff + full jitter, honoring provider `Retry-After` | Blind retry without jitter (causes retry storms) |
 | **Semantic** | Bad reasoning, wrong output, hallucinated tool arguments, plan failure | Verification-gate → re-plan with different strategy | Retry with same input (produces same wrong output) |
 | **Systemic** | Provider outage, quota exhaustion, sustained degradation | Failover to alternate provider/model; graceful degradation | Retry hoping the outage resolves |
@@ -49,7 +49,7 @@ Agent systems fail in four distinct classes, each requiring different treatment 
 Research across production deployments in 2026 identifies eight failure patterns that account for the majority of high-severity incidents. Eliminate these before tuning advanced reliability features.
 
 | Anti-Pattern | What Happens | Documented Impact | Fix |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Unconstrained retry loop** | Agent retries indefinitely on the same failing step without a budget | $437 overnight API bill documented in April 2026; thousands of identical failing tool calls | Set retry budget (≤10% of calls); after 3 consecutive failures on same step, halt and escalate |
 | **Unevaluated fallback** | Cheaper model is substituted without prior evaluation for the specific task class | Silent quality degradation that metrics miss (no error codes; just wrong outputs) | All fallbacks must pass eval suite for the specific task class before being eligible |
 | **Semantic failure as transport retry** | Re-sends the same prompt to get a different answer after a bad reasoning output | Same bad reasoning, same bad output — wastes tokens and delays escalation | Classify failure type first; semantic failures get a re-plan, not a retry |
@@ -72,6 +72,7 @@ Classical retry logic applied naively to agentic systems causes **retry storms**
 **Retry budget rule:** ≤10% of calls to any provider endpoint may be retries at any point in time. Beyond this threshold, circuit-break rather than retry.
 
 **Retry implementation requirements:**
+
 - Exponential backoff with **full jitter** (not equal jitter or additive jitter) — critical for preventing synchronized retry waves
 - Honor provider `Retry-After` headers — providers embed these precisely to prevent the storms described above
 - **Idempotency keys** on all mutating operations — make retries safe on actions that have side effects (tool calls that write, update, or transact)
@@ -85,7 +86,7 @@ Classic circuit breakers trip on error rate + latency per endpoint. Agentic syst
 Circuit breaker states for agent systems:
 
 | State | Condition | Behavior |
-|-------|-----------|----------|
+| ------- | ----------- | ---------- |
 | **Closed** | Normal operation | Route all traffic normally |
 | **Open** | Error rate > threshold OR semantic failure rate > threshold | Fail fast; route to fallback or degrade |
 | **Half-Open** | After cooldown period | Send probe traffic; promote to Closed if healthy |
@@ -113,7 +114,7 @@ Additional requirement: **wall-clock ceilings on loops** — agent reasoning loo
 Every agent product must declare its degradation ladder before going to production. The standard 5-rung ladder:
 
 | Rung | Mode | Triggers | What Changes |
-|------|------|---------|--------------|
+| ------ | ------ | --------- | -------------- |
 | **1** | Full capability | Normal operation | Frontier model, full toolset |
 | **2** | Cheaper model fallback | Frontier model unavailable or cost threshold exceeded | Evaluated cheaper model substitute |
 | **3** | Cached/templated response | Both model options unavailable | Pre-generated responses for common queries |
@@ -134,6 +135,7 @@ Every agent product must declare its degradation ladder before going to producti
 Multi-step agent workflows must support crash recovery as **replay from checkpoint**, not restart from beginning.
 
 Architecture requirements:
+
 - **Step-boundary checkpoints** — after each tool call and reasoning step, the agent state is durably persisted
 - **Durable workflow engine** — checkpoints stored in a state store with transactional guarantees (Temporal, Azure Durable Functions, AWS Step Functions provide this natively)
 - **Agent failover** — if the agent runtime crashes, a new runtime picks up from the last checkpoint; identity is re-attested via SPIFFE before resumption
@@ -142,7 +144,7 @@ Architecture requirements:
 ### 4.2 Progressive Delivery for Agentic Systems
 
 | Delivery Mode | Description | When to Use |
-|--------------|-------------|-------------|
+| -------------- | ------------- | ------------- |
 | **Shadow mode** | New agent version runs alongside production, receives same inputs, produces outputs that are logged but not acted on | Best de-risking tool before GA — catches behavioral regressions without side effects |
 | **Canary** | 1–5% of tasks routed to new agent version; judged on **eval metrics**, not just error rates | Catching quality regressions that wouldn't appear as 5xx errors |
 | **Blue-Green** | Full parallel harness environment; instant switchover | For infrastructure-level changes to the agent harness itself |
@@ -158,6 +160,7 @@ Kill switches at four scopes, all reachable in **under 1 minute**:
 4. **Platform-wide model egress** — cut all LLM calls across the entire platform
 
 **Emergency shutdown sequence** (documented and quarterly drilled):
+
 1. Drain queues (stop accepting new tasks)
 2. Cancel in-flight (MCP and A2A cancellation signals)
 3. Revoke agent identities (SVID revocation)
@@ -170,7 +173,7 @@ Kill switches at four scopes, all reachable in **under 1 minute**:
 Agentic AI systems require a fundamentally different SLO structure than traditional services. The standard per-agent SLO template:
 
 | SLO Dimension | Metric | Example Target |
-|--------------|--------|----------------|
+| -------------- | -------- | ---------------- |
 | **Task success rate** | % tasks completing within acceptance criteria | ≥95% |
 | **p95 task latency** | 95th percentile end-to-end task completion time | ≤30s for interactive; ≤10m for batch |
 | **Cost per successful task** | Token cost + infrastructure cost / successful tasks | Budget-specific; tracked as FinOps metric |
@@ -204,6 +207,7 @@ User request → API Gateway → Agent Loop → MCP Tool Call → Downstream API
 All appearing as one span tree in any OTel-compatible backend (Datadog, Honeycomb, New Relic, Grafana Tempo).
 
 **Correlation ID mandate:** Every log line, event, and audit record must carry three IDs:
+
 - `trace_id` — W3C trace context trace ID
 - `task_id` — the agent's logical task identifier (persists across agent restarts)
 - `session_id` — the user-facing session identifier
@@ -221,7 +225,7 @@ Decision graphs with **time-travel from checkpoints** allow engineers to replay 
 Production observability for agentic AI requires seven distinct signal types beyond standard application telemetry:
 
 | Signal | Contents | Primary Consumers |
-|--------|----------|------------------|
+| -------- | ---------- | ------------------ |
 | **Distributed Traces** | Full causal chain including model spans, tool spans, retrieval spans, sub-agent spans | Engineering debugging, latency analysis, incident forensics |
 | **Prompt Provenance / Evidence Store** | Exact prompts + responses, context-segment origins, access-controlled, retention-policied | Forensics, compliance audit, eval mining, legal discovery |
 | **Tool Audit Log** | Actor chain, tool arguments (sanitized/redacted), result hash, policy decision + version, idempotency key | Security review, compliance evidence, debugging tool failures |
@@ -240,6 +244,7 @@ Production observability for agentic AI requires seven distinct signal types bey
 A mature agentic AI operations center runs five distinct dashboards:
 
 ### Dashboard 1: Fleet Health
+
 - Task throughput (tasks/minute, success/error breakdown by failure class)
 - Queue depth and backpressure indicators
 - Provider status (live / degraded / down per model endpoint)
@@ -247,18 +252,21 @@ A mature agentic AI operations center runs five distinct dashboards:
 - Kill switch status (all green / any active)
 
 ### Dashboard 2: Quality
+
 - Eval score trends (groundedness, task success rate, acceptance criteria pass rate)
 - HITL escalation rate trend
 - Verification gate failure rate
 - Behavioral delta from baseline (tool-call distribution shift, verbosity change, refusal-rate change)
 
 ### Dashboard 3: Cost (FinOps)
+
 - Spend by tenant / agent version / model
 - Cost per successful task vs budget
 - Cache hit rate (prompt caching effectiveness)
 - Budget burn rate vs plan
 
 ### Dashboard 4: Safety
+
 - Guardrail firings by layer (input / output / context / memory / tool / etc.)
 - Injection detection events
 - DLP hits and blocked egress events
@@ -266,6 +274,7 @@ A mature agentic AI operations center runs five distinct dashboards:
 - HITL approval flood indicators
 
 ### Dashboard 5: Trace Explorer
+
 - Decision graphs with time-travel from checkpoints
 - Full reasoning chain visualization
 - Cross-agent lineage for multi-agent workflows
@@ -282,7 +291,7 @@ The governance architecture is a single spine with five registries. The operatio
 ### Registry 1: Agent Registry
 
 | Field | Description |
-|-------|-------------|
+| ------- | ------------- |
 | Owner | Team and individual accountable for the agent |
 | Purpose | Intended use case and deployment context |
 | Risk Class | T1–T4 (see Section 10) |
@@ -294,7 +303,7 @@ The governance architecture is a single spine with five registries. The operatio
 ### Registry 2: Tool / MCP Registry
 
 | Field | Description |
-|-------|-------------|
+| ------- | ------------- |
 | Manifest Hash | Cryptographic hash of tool definition — changes require re-review |
 | Review Tier | Tier 1 (public, reviewed) / Tier 2 (internal, approved) / Tier 3 (restricted) |
 | Sandbox Profile | Required sandbox level for tool execution (microVM / process / container) |
@@ -312,6 +321,7 @@ Signed Cedar/OPA policy bundles. Policies are version-controlled in Git; changes
 ### Registry 5: Model Registry
 
 Approved model versions per data classification and geographic region. Fields include:
+
 - Model card (capabilities, limitations, eval results, escalation paths)
 - Provider terms compliance confirmation
 - Data residency classification (which regions the model can process which data classes)
@@ -324,7 +334,7 @@ Approved model versions per data classification and geographic region. Fields in
 ### 10.1 Risk Classification — Tiers T1–T4
 
 | Tier | Description | Example | Required Controls |
-|------|-------------|---------|------------------|
+| ------ | ------------- | --------- | ------------------ |
 | **T1** | Advisory only — outputs inform human decisions | Summarization, analysis, recommendations | Basic eval, human review of sample |
 | **T2** | Automated with human-reviewable outcomes | Email drafting, document classification, internal reporting | Eval gate, guardrail suite, audit log |
 | **T3** | Autonomous execution in defined scope — consequential but bounded | CRM updates, calendar management, code generation with human merge | Full eval suite, HITL for scope expansions, security review sign-off |
@@ -341,6 +351,7 @@ PR Review → Automated Eval Suite (merge gate) → Shadow Mode → Canary → G
 ```
 
 Release governance by risk tier:
+
 - **T1/T2:** Automated eval gate + one peer review
 - **T3:** Automated eval gate + security team review + domain owner review
 - **T4:** All T3 + legal review + formal change advisory board approval
@@ -350,6 +361,7 @@ Release governance by risk tier:
 ### 10.3 Audit, Records, and Compliance
 
 **Immutability requirements:**
+
 - Regulated industries: WORM storage (Write Once Read Many) — AWS S3 Object Lock, Azure Immutable Blob Storage, GCS Bucket Lock
 - All industries: append-only audit lake with cryptographic chain-of-custody
 
@@ -360,7 +372,7 @@ Release governance by risk tier:
 **Compliance evidence mapping:**
 
 | Framework | Evidence Generated Automatically from Audit Lake |
-|-----------|--------------------------------------------------|
+| ----------- | -------------------------------------------------- |
 | ISO 42001 | AI risk assessment records, control effectiveness data |
 | ISO 27001 | Security event log, access control decisions, incident records |
 | SOC 2 | CC-series evidence (availability, confidentiality, processing integrity) |
@@ -376,16 +388,19 @@ Release governance by risk tier:
 Google's production agentic AI operations embody SRE book principles extended for AI:
 
 **Reliability:**
+
 - **Error budgets for agent quality** — not just uptime. A Gemini agent product that is "up" but producing low-quality outputs burns its quality error budget just as SLO violations burn the availability budget
 - **Borg-level bulkheads** — agent workloads on Google's internal infrastructure run in dedicated Borg cells per tenant classification, preventing noisy-neighbor effects at the scheduler level
 - **Chaos injection** — automated chaos is part of production readiness review (PRR) for any Gemini agent feature; injection suites simulate provider 429s, tool latency, malformed tool output
 
 **Observability:**
+
 - **Cloud Trace (OTel-compatible)** — distributed tracing for agent reasoning chains; Vertex AI natively emits OTel spans for inference calls, tool executions, and agent steps
 - **Cloud Logging + Bigquery** — audit lake for agent actions; legal hold implemented via Bigquery table snapshots and locked datasets
 - **Google SecOps (formerly Chronicle SIEM)** — behavioral analytics on agent action sequences; threat detection rules maintained by the AI security team
 
 **Governance:**
+
 - **Vertex AI Model Registry** — the Model registry of record; model versions promoted through eval gates before being eligible for agent use; model cards generated and published internally per version
 - **Vertex AI Pipelines** — the eval-gated promotion pipeline; agents cannot reference a model version not present in the registry
 - **Spanner** — WORM-equivalent audit storage for the most sensitive agent records (using Spanner's read-only transaction guarantees + Cloud Audit Logs)
@@ -397,16 +412,19 @@ Google's production agentic AI operations embody SRE book principles extended fo
 Microsoft's agent operations architecture is built on Azure AI Foundry as the governance hub:
 
 **Reliability:**
+
 - **Azure Durable Functions / Azure Service Bus** — checkpoint/resume infrastructure for agentic workflows; state checkpointed after each activity step; replay on failure
 - **Azure API Management circuit breaking** — native circuit breaker policy at the API gateway layer; configurable thresholds per backend (model endpoint, tool endpoint)
 - **Multi-region failover via Azure Front Door** — global load balancing with automatic failover; agent request routing to healthy regional endpoints
 
 **Observability:**
+
 - **Azure Monitor + Application Insights** — OTel ingestion with native GenAI span support; custom dashboards for the 5-dashboard set described in Section 8
 - **Microsoft Purview** — data lineage tracking from source systems through agent context into outputs; legal hold applied to the evidence store; GDPR right-to-erasure enforced via lineage-based deletion
 - **Microsoft Responsible AI Dashboard** — quality drift monitoring for Azure AI model deployments; fairness and reliability metrics tracked per agent deployment version
 
 **Governance:**
+
 - **Azure AI Foundry** — the governance hub integrating all 5 registries; model catalog as the Model Registry; prompt catalog as the Prompt Registry; policy management for the Policy Registry
 - **Azure DevOps eval gates** — eval suite runs as Azure Pipeline stages; merge blocked if eval thresholds not met; staged deployment via Azure Deployment Environments
 - **Azure Cost Management + FinOps toolkit** — cost per successful task showback; budget alerts and enforced spending limits per agent workload
@@ -418,16 +436,19 @@ Microsoft's agent operations architecture is built on Azure AI Foundry as the go
 AWS's agentic AI operations stack uses Bedrock, SageMaker, and CloudWatch:
 
 **Reliability:**
+
 - **AWS Step Functions + Bedrock Agents** — native checkpoint/resume for Bedrock agent workflows; each orchestration step is a durable state machine transition; crash recovery via step function history replay
 - **Multi-AZ with automatic failover** — Bedrock endpoints are regional multi-AZ; agent infrastructure on ECS/EKS with multi-AZ node groups and automatic pod restart on failure
 - **Bedrock model fallback** — Bedrock Prompt Router and ModelInvocation retry logic; configurable fallback models per use case with automatic routing when primary model exceeds error threshold
 
 **Observability:**
+
 - **CloudWatch GenAI Observability (2026)** — native OTel-compatible telemetry for Bedrock agent invocations, tool calls, and knowledge base retrievals; automatic correlation with CloudWatch traces
 - **Bedrock model invocation logging** — every inference request and response logged to S3 with automatic CloudWatch Logs integration; retention policies and S3 Object Lock for WORM compliance
 - **AWS X-Ray** — distributed tracing for multi-service agent workflows; end-to-end trace from API Gateway → Lambda → Bedrock → downstream tools; GenAI-specific service map visualization
 
 **Governance:**
+
 - **SageMaker MLflow** — model registry and eval gating; model versions promoted through registered eval suite runs; model cards with evaluation reports attached to each version
 - **AWS Config** — compliance evidence generation; Config rules enforce that agent infrastructure meets policy requirements; conformance packs for SOC 2, ISO 27001, NIST AI RMF
 - **S3 Object Lock (WORM)** — immutable audit storage; Object Lock in COMPLIANCE mode prevents deletion even by account administrators; applied to audit lake and evidence store buckets
@@ -441,7 +462,7 @@ AWS's agentic AI operations stack uses Bedrock, SageMaker, and CloudWatch:
 Accenture's end-to-end lifecycle framework for enterprise agentic AI:
 
 | Phase | Activities | Key Deliverables |
-|-------|-----------|-----------------|
+| ------- | ----------- | ----------------- |
 | **Design** | Threat modeling, architecture design, governance framework setup, registry initialization | Architecture decision records, threat model, risk classification matrix |
 | **Build** | Agent development, guardrail integration, eval suite construction, shadow mode testing | Agent code, eval suite, shadow mode baseline results |
 | **Deploy** | Canary rollout, eval gate execution, progressive traffic shift, go-live | Canary eval report, deployment runbook, runbook testing |
@@ -451,6 +472,7 @@ Accenture's end-to-end lifecycle framework for enterprise agentic AI:
 ### McKinsey — AI Operations Model
 
 McKinsey's AI Ops model for enterprise agentic AI structures the production lifecycle around three operating rhythms:
+
 - **Daily** — Fleet health monitoring, cost tracking, guardrail FP review
 - **Weekly** — Quality eval trend review, HITL escalation analysis, capacity planning
 - **Quarterly** — Red-team exercises, chaos game days, model requalification, risk register review, compliance evidence audit
@@ -458,6 +480,7 @@ McKinsey's AI Ops model for enterprise agentic AI structures the production life
 ### Deloitte — AI Governance Framework for Regulated Industries
 
 Deloitte's approach to regulated industry (financial services, healthcare, government) agentic AI lifecycle:
+
 1. **Pre-deployment** — Risk classification, regulatory pre-notification (for T4 agents in EU AI Act Annex III scope), formal architecture review with documented ADRs
 2. **Deployment** — Shadow mode baseline establishment, canary with extended eval period, regulatory evidence package preparation
 3. **Post-deployment** — Monthly model drift assessment, quarterly adversarial testing, annual regulatory conformity review
@@ -485,6 +508,7 @@ The shadow mode phase is described by practitioners as "the single best de-riski
 ### Goldman Sachs — GS AI Platform FinOps Enabling CFO Sign-Off
 
 Goldman Sachs's internal AI platform for analyst automation required cost-per-task transparency before the CFO would approve at-scale deployment. The reliability and observability architecture was the business enabler:
+
 - Cost per successful task tracking (not just infrastructure cost) gave the CFO a unit economics model that mapped directly to headcount equivalents
 - SLO on task success rate (with error budget) gave risk management a formal quality guarantee
 - WORM audit trail satisfied the SEC's record-keeping requirements for AI-assisted research outputs
@@ -494,6 +518,7 @@ The combination of FinOps transparency and compliance-ready audit infrastructure
 ### Walmart — Agentic Supply Chain AI Surviving Peak Load
 
 Walmart's agentic supply chain optimization system handles 10× normal load during Black Friday. The graceful degradation ladder was the architectural enabler:
+
 - When frontier model capacity was constrained during peak, the system automatically degraded to a pre-evaluated cheaper model for non-critical inventory queries
 - When the cheaper model also hit limits, it fell back to cached templated recommendations for common queries
 - Only truly novel supply chain scenarios required HITL escalation; routine cases were handled throughout
@@ -503,6 +528,7 @@ Without the pre-declared degradation ladder with pre-evaluated fallbacks, the sy
 ### Google DeepMind — AlphaFold 3 API Reliability at Research Scale
 
 Google's AlphaFold 3 protein structure prediction API, accessed by thousands of research institutions, applies the same agent reliability patterns to AI-as-a-service:
+
 - Per-tenant bulkheads prevent large pharmaceutical company queries from starving academic research labs
 - Circuit breakers on model inference time prevent timeout cascades during GPU contention
 - The shadow mode deployment pipeline (new model checkpoint runs alongside production, outputs compared before cutover) is how new AlphaFold model versions are safely deployed to production without risking regression for active research workflows

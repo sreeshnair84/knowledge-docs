@@ -18,6 +18,7 @@ covers_version: \"as of 2026-07-10\"
 **Purpose:** A structured competency model, self-assessment tool, and learning path for Enterprise AI Architects — paired with 20 scenario-based interview/review questions that test real EA judgment.
 
 **What this does NOT duplicate:**
+
 - Governance policy details → [Governance & Compliance](enterprise-ai-governance-compliance.md)
 - Architecture pattern implementations → [Architecture Patterns](enterprise-ai-architecture-patterns.md)
 - Claude model pricing and selection → [Models 2026](../../coding-tools/claude/claude-models-2026.md)
@@ -36,7 +37,7 @@ This assessment serves three purposes:
 ### Who Should Use This
 
 | Role | How to use this assessment |
-|------|---------------------------|
+| ------ | --------------------------- |
 | **Aspiring EA-AI** | Complete self-assessment, identify gaps, follow beginner or intermediate path |
 | **Practicing EA-AI** | Use scenario questions as mock architecture review or interview prep |
 | **Engineering manager** | Use competency table to define hiring criteria and growth plans |
@@ -52,7 +53,7 @@ This assessment serves three purposes:
 The EA-AI certification landscape expanded significantly in 2026. Three credentials now cover the core of the role; a fourth (Google) is emerging. Choose based on your primary platform and role focus:
 
 | Certification | Issuer | Cost | Focus | Status |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **CCA-F** — Claude Certified Architect, Foundations | Anthropic (via Pearson VUE) | $99 | Agentic architecture, MCP/tool design, prompt engineering, context management; Claude-centric | GA since Mar 12, 2026 |
 | **AB-100** — Agentic AI Business Solutions Architect | Microsoft (via Microsoft Learn) | $165 | Multi-agent orchestration, Copilot Studio, Microsoft Foundry, MCP, A2A, enterprise deployment; Microsoft-centric | GA; updated July 22, 2026 |
 | **AWS Certified AI Practitioner** | AWS | $150 | Foundational AI/ML on AWS, Bedrock, responsible AI; broad coverage, less architect-depth | GA; updated 2025 |
@@ -65,7 +66,7 @@ The EA-AI certification landscape expanded significantly in 2026. Three credenti
 The **AB-100** ([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-business-solutions-architect/)) is Microsoft's flagship architect credential for the agentic era, updated July 22, 2026:
 
 | Item | Detail |
-|------|--------|
+| ------ | -------- |
 | Full name | Microsoft Certified: Agentic AI Business Solutions Architect |
 | Exam code | AB-100 |
 | Cost | $165 USD |
@@ -76,7 +77,7 @@ The **AB-100** ([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/
 **AB-100 domains** (July 2026 update):
 
 | Domain | Coverage |
-|---|---|
+| --- | --- |
 | Agent design principles | Bounded autonomy, decision-rights, HITL gates |
 | Copilot Studio & Foundry | Agent creation, MCP server integration, publishing |
 | Multi-agent orchestration | A2A v1.0, agent-to-agent delegation, registry patterns |
@@ -96,7 +97,7 @@ For EA practitioners already working with Claude, CCA-F provides external credib
 ### Exam Facts at a Glance
 
 | Item | Detail |
-|------|--------|
+| ------ | -------- |
 | Full name | Claude Certified Architect, Foundations |
 | Launched | 12 March 2026 |
 | Platform | Pearson VUE (online proctored) |
@@ -111,7 +112,7 @@ For EA practitioners already working with Claude, CCA-F provides external credib
 ### CCA-F Domain Mapping to EA Responsibilities
 
 | CCA-F Domain | Weight | Questions | EA Responsibility It Validates |
-|-------------|--------|-----------|-------------------------------|
+| ------------- | -------- | ----------- | ------------------------------- |
 | D1: Agentic Architecture & Orchestration | 27% | ~16 | Multi-agent topology design, orchestrator vs. subagent patterns, delegation and error handling |
 | D2: Tool Design & MCP Integration | 18% | ~11 | MCP server design, tool interface contracts, security boundaries, 10,000+ public MCP server ecosystem (~110M monthly SDK downloads; governed by the Linux Foundation's Agentic AI Foundation since Dec 2025) |
 | D3: Claude Code Configuration & Workflows | 20% | ~12 | Developer toolchain governance, CI/CD integration, hooks and automations |
@@ -140,7 +141,7 @@ Each competency area has three levels:
 ### 3.1 Technical Competencies
 
 | Competency Area | Awareness | Practitioner | Expert |
-|----------------|-----------|--------------|--------|
+| ---------------- | ----------- | -------------- | -------- |
 | **LLM APIs & SDKs** | Understands request/response model; knows what a system prompt is | Builds production integrations; handles streaming, errors, retries | Designs multi-provider abstraction layers; owns token/cost strategy; tunes retry policies |
 | **Agent Patterns** | Knows what an agent is; understands tool use conceptually | Implements sequential, fan-out, and DAG patterns; handles tool errors | Designs multi-agent topologies; makes orchestration vs. chaining vs. routing decisions at system level |
 | **MCP** | Knows MCP exists; understands the tool/resource/prompt distinction | Builds and registers MCP servers; configures auth; uses public registry | Designs MCP server architecture for enterprise; governs a catalogue of 10+ internal servers; designs stateless vs. stateful MCP strategy |
@@ -153,7 +154,7 @@ Each competency area has three levels:
 ### 3.2 Architecture Competencies
 
 | Competency Area | Awareness | Practitioner | Expert |
-|----------------|-----------|--------------|--------|
+| ---------------- | ----------- | -------------- | -------- |
 | **System Design** | Understands component diagrams; can read an architecture document | Designs AI-augmented systems end-to-end; makes make-vs-buy decisions; documents ADRs | Designs for scale, resilience, and cost simultaneously; leads architecture review boards; defines reference architectures |
 | **Integration Patterns** | Knows REST and event-driven patterns exist | Integrates AI APIs into enterprise systems; handles async flows; manages API versioning | Designs AI gateway layer; governs API contract changes; handles backward compatibility at org scale |
 | **Security Architecture** | Knows AI has security risks; understands prompt injection conceptually | Implements input/output filtering; designs secret management; applies least-privilege to tool access | Designs enterprise AI security model; conducts threat modelling; governs tool permission matrices; responds to prompt injection incidents |
@@ -163,7 +164,7 @@ Each competency area has three levels:
 ### 3.3 Governance Competencies
 
 | Competency Area | Awareness | Practitioner | Expert |
-|----------------|-----------|--------------|--------|
+| ---------------- | ----------- | -------------- | -------- |
 | **AI Policy** | Knows AI governance policies exist; has read their company's AI policy | Implements policy controls in AI systems; documents policy compliance; participates in policy reviews | Drafts and owns AI governance policies; leads policy review cycle; bridges technical and legal language |
 | **Compliance** | Knows EU AI Act, GDPR, HIPAA names; understands high-risk classification exists | Maps specific AI systems to applicable regulations; identifies gaps; prepares compliance artefacts | Leads regulatory compliance programmes for AI; interprets new regulations for technical teams; manages regulatory relationship |
 | **Risk Management** | Understands risk registers exist; can name AI risk categories | Maintains AI risk register; rates and tracks risks; escalates appropriately | Designs enterprise AI risk framework; owns risk appetite decisions; governs risk across portfolio of AI systems |
@@ -172,7 +173,7 @@ Each competency area has three levels:
 ### 3.4 Leadership Competencies
 
 | Competency Area | Awareness | Practitioner | Expert |
-|----------------|-----------|--------------|--------|
+| ---------------- | ----------- | -------------- | -------- |
 | **Stakeholder Management** | Can present to technical peers; understands different stakeholders exist | Presents AI proposals to non-technical executives; manages competing stakeholder interests; builds consensus | Drives board-level AI investment decisions; manages C-suite relationships; translates AI risk into business language |
 | **Change Management** | Understands change management exists; has participated in change programmes | Leads AI adoption initiatives; designs developer enablement programmes; manages resistance | Leads enterprise AI transformation; redesigns operating models; manages cultural change at scale |
 | **AI Strategy** | Has read about AI strategy; understands the concept of an AI roadmap | Develops team-level AI roadmaps; prioritises AI investments within a domain | Develops enterprise AI strategy; aligns AI capability to business objectives; presents to board; governs strategy execution |
@@ -186,7 +187,7 @@ Answer Yes (1) or No (0) for each item. Score yourself at the end.
 ### Domain A: Technical Foundations (Questions 1–5)
 
 | # | Question | Y/N |
-|---|----------|-----|
+| --- | ---------- | ----- |
 | 1 | I can explain token pricing for at least two current Claude models and calculate a monthly cost estimate for a given workload | |
 | 2 | I have built at least one production or near-production AI integration using a real LLM API (not just a UI wrapper) | |
 | 3 | I can explain what an MCP server is, what resources/tools/prompts it exposes, and when you would build one vs. use an existing one | |
@@ -196,7 +197,7 @@ Answer Yes (1) or No (0) for each item. Score yourself at the end.
 ### Domain B: Agent Architecture (Questions 6–10)
 
 | # | Question | Y/N |
-|---|----------|-----|
+| --- | ---------- | ----- |
 | 6 | I can draw a multi-agent architecture diagram for a real use case and explain why I chose that topology over alternatives | |
 | 7 | I understand the difference between an orchestrator agent and a subagent and can explain how error handling differs between them | |
 | 8 | I can explain what HITL is, give three examples of action categories that should require human approval, and describe how to implement a HITL gate in an agent workflow | |
@@ -206,7 +207,7 @@ Answer Yes (1) or No (0) for each item. Score yourself at the end.
 ### Domain C: Governance & Compliance (Questions 11–15)
 
 | # | Question | Y/N |
-|---|----------|-----|
+| --- | ---------- | ----- |
 | 11 | I can classify an AI system under the EU AI Act high-risk categories and explain what compliance obligations follow | |
 | 12 | I have contributed to or reviewed an AI governance policy document (not just read one) | |
 | 13 | I can explain the NIST AI RMF's four core functions (Govern, Map, Measure, Manage) and give one concrete action under each | |
@@ -216,7 +217,7 @@ Answer Yes (1) or No (0) for each item. Score yourself at the end.
 ### Domain D: Enterprise Architecture Skills (Questions 16–20)
 
 | # | Question | Y/N |
-|---|----------|-----|
+| --- | ---------- | ----- |
 | 16 | I can make a build-vs-buy-vs-configure decision for an AI capability with a structured decision framework | |
 | 17 | I have presented an AI architecture proposal to senior stakeholders and addressed questions about cost, risk, and business value | |
 | 18 | I can design an AI observability stack (what to instrument, where to ship data, what dashboards to build) for a production agent system | |
@@ -226,7 +227,7 @@ Answer Yes (1) or No (0) for each item. Score yourself at the end.
 ### Scoring
 
 | Score | Level | Interpretation |
-|-------|-------|---------------|
+| ------- | ------- | --------------- |
 | 0–8 | Beginner | Strong foundation in adjacent skills; focus first on the technical competency areas (Domains A and B) |
 | 9–14 | Practitioner | Working knowledge across most areas; deepen governance competencies and target scenario-based practice |
 | 15–20 | Expert | Broad EA-AI mastery; focus on leadership competencies and edge-case scenario depth |
@@ -508,7 +509,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Security (5 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | S1 | Prompt injection risk assessed; mitigations designed and documented | | |
 | S2 | All secrets (API keys, credentials) stored in a secrets manager — no hardcoding | | |
 | S3 | Tool and MCP server access follows least-privilege — each agent has only the permissions it requires | | |
@@ -518,7 +519,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Compliance & Governance (5 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | C1 | EU AI Act risk classification completed and documented; high-risk obligations identified | | |
 | C2 | Data Processing Agreement (DPA) executed with all AI vendors processing personal data | | |
 | C3 | Data residency requirements met; confirmed no cross-border transfer violations | | |
@@ -528,7 +529,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Cost & Token Economics (4 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | T1 | Per-feature token budget defined and enforced | | |
 | T2 | Prompt caching enabled on all high-frequency, stable system prompt content | | |
 | T3 | Model tier matched to task complexity — no over-provisioning of expensive models for simple tasks | | |
@@ -537,7 +538,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Performance & Reliability (4 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | P1 | Latency SLA defined; P95 latency measured in load test | | |
 | P2 | Circuit breaker implemented on LLM API path with documented fallback behaviour | | |
 | P3 | Retry logic implemented with exponential backoff and jitter | | |
@@ -546,7 +547,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Human-in-the-Loop (3 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | H1 | Action categories requiring human approval identified and documented | | |
 | H2 | HITL gates implemented and tested for all irreversible or high-impact actions | | |
 | H3 | Timeout handling defined for HITL gates — system knows what to do if human does not respond | | |
@@ -554,7 +555,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Observability (4 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | O1 | OTel tracing instrumented on all agent actions, tool calls, and decision branches | | |
 | O2 | Traces shipped to an observability backend with defined retention period | | |
 | O3 | Alert configured for anomalous error rates, latency spikes, or cost events | | |
@@ -563,7 +564,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### Evaluation & Quality (4 items)
 
 | # | Check | Pass/Fail | Finding |
-|---|-------|-----------|---------|
+| --- | ------- | ----------- | --------- |
 | E1 | Offline evaluation dataset exists with at least 50 representative test cases | | |
 | E2 | Evaluation runs in CI/CD and blocks deployment on regression | | |
 | E3 | Acceptance thresholds defined collaboratively with governance stakeholders | | |
@@ -609,7 +610,7 @@ Use this 30-point checklist when reviewing a new AI system design or auditing an
 ### External Resources
 
 | Resource | What it covers | URL |
-|----------|---------------|-----|
+| ---------- | --------------- | ----- |
 | Anthropic Documentation | Claude API reference, model cards, safety policies | docs.anthropic.com |
 | MCP Specification | Model Context Protocol official spec and registry | modelcontextprotocol.io |
 | EU AI Act Text | Full regulation text and implementing acts | eur-lex.europa.eu |

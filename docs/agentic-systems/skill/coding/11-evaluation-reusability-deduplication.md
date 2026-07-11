@@ -21,7 +21,7 @@ series_index: "agentic-systems/skill/coding/index"
 ### 17.1 What to measure
 
 | Dimension | Metric | Notes specific to coding agents |
-|---|---|---|
+| --- | --- | --- |
 | Correct skill selection | % of tasks where the matching skill actually loaded | Directly measurable via the `skill_selected` trace event (file `09`) |
 | Correct tool selection | % of tasks using the "right" tool (structured tool vs. raw terminal, file `06`) | A raw-terminal call where a structured tool existed is a specific, flaggable anti-pattern |
 | Correct repository retrieval | Precision/recall of files retrieved vs. files actually relevant | Over-retrieval (file `06`) is measurable as "files loaded but never referenced in the final diff" |
@@ -55,7 +55,7 @@ Automated metrics (compile/test pass, benchmark scores) catch correctness regres
 ### 18.1 Sharing mechanisms observed
 
 | Mechanism | Scope | Maturity |
-|---|---|---|
+| --- | --- | --- |
 | Repository-committed skills (`.github/skills/`, `.claude/skills/`) | Team, via git | Mature, widely used |
 | Personal/global skills (`~/.copilot/skills/`, etc.) | Individual developer, cross-project | Mature, widely used |
 | Organization catalog | Org-wide | Announced/roadmap on multiple platforms, not broadly shipped |
@@ -81,7 +81,7 @@ In the enterprise case (companion package file `06`), a central platform team ca
 ### 19.2 Concrete anti-duplication practices
 
 | Practice | What it prevents |
-|---|---|
+| --- | --- |
 | **Single canonical source + generated/symlinked overlays** (the sync-script or `ruler`-style pattern from §18.2) | The five-near-identical-files problem directly |
 | **Standardize on AGENTS.md as the primary always-loaded file** wherever supported | Reduces the number of files that need to exist at all, rather than just keeping duplicates in sync |
 | **Naming conventions for skills** (`domain-verb-noun`, e.g., `github-issues`, `webapp-testing`) | Reduces accidental near-duplicate skill creation by making existing coverage more discoverable by name alone |

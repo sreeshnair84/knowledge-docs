@@ -61,7 +61,7 @@ Practitioner guidance for 2026:
 Production systems increasingly treat generation as untrusted until verified:
 
 | Pattern | Mechanism |
-|---|---|
+| --- | --- |
 | **Mandatory citations** | Generator must attach source references per claim; uncited claims are stripped or the answer is rejected |
 | **Dual-LLM verification** | One model generates, a second independently checks each claim against the retrieved context |
 | **Refusal outside the corpus** | Questions not answerable from the curated knowledge base get an explicit refusal, not a best guess |

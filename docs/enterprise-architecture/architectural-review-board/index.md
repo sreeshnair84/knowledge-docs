@@ -27,7 +27,7 @@ An **Architectural Review Board** is a governance body that ensures technology d
 ## ARB Core Functions
 
 | Function | Description |
-|----------|-------------|
+| ---------- | ------------- |
 | **Architecture Review** | Evaluate solution designs against enterprise standards before build |
 | **Standards Governance** | Define, publish, and maintain architectural patterns and reference architectures |
 | **Risk Assessment** | Identify technical, security, compliance, and AI-specific risks |
@@ -43,7 +43,7 @@ An **Architectural Review Board** is a governance body that ensures technology d
 ### Meeting Cadence
 
 | Forum | Frequency | Scope |
-|-------|-----------|-------|
+| ------- | ----------- | ------- |
 | Weekly ARB | Weekly | Active project reviews, exception requests |
 | Architecture Forum | Monthly | Standards updates, patterns library, retrospectives |
 | Strategic Review | Quarterly | Technology radar update, portfolio alignment |
@@ -122,7 +122,7 @@ For any submission involving LLMs, generative AI, or agentic systems, the ARB ev
 ### Model & Provider Assessment
 
 | Criterion | Questions |
-|-----------|-----------|
+| ----------- | ----------- |
 | **Model selection** | Why this model? Is there a cheaper/faster alternative for the use case? |
 | **Data residency** | Where is inference performed? Does it cross data sovereignty boundaries? |
 | **Cost model** | Input/output token pricing, caching strategy, batch vs real-time split |
@@ -132,7 +132,7 @@ For any submission involving LLMs, generative AI, or agentic systems, the ARB ev
 ### Agentic System Assessment
 
 | Criterion | Questions |
-|-----------|-----------|
+| ----------- | ----------- |
 | **Agent scope** | What tools/permissions does the agent have? Are permissions scoped minimally? |
 | **Human oversight** | Is HITL/HOTL/HOOL implemented appropriately for the risk level? |
 | **Prompt injection** | How is the system protected against indirect prompt injection? |
@@ -143,7 +143,7 @@ For any submission involving LLMs, generative AI, or agentic systems, the ARB ev
 ### Safety & Ethics Assessment
 
 | Criterion | Questions |
-|-----------|-----------|
+| ----------- | ----------- |
 | **Output validation** | Is there post-processing to catch harmful, incorrect, or sensitive outputs? |
 | **Bias testing** | Has the system been tested for demographic bias, language bias, or stereotyping? |
 | **Responsible AI policy** | Does the deployment comply with the organisation's RAI policy? |
@@ -157,7 +157,7 @@ For any submission involving LLMs, generative AI, or agentic systems, the ARB ev
 ### TCO Template
 
 | Cost Component | Year 1 | Year 2 | Year 3 | Notes |
-|----------------|--------|--------|--------|-------|
+| ---------------- | -------- | -------- | -------- | ------- |
 | Infrastructure | | | | Cloud compute, storage, networking |
 | AI/LLM API costs | | | | Model inference (per token pricing) |
 | Licensing | | | | SaaS, enterprise agreements |
@@ -185,7 +185,7 @@ Benefit Sources:
 ### Approved Patterns
 
 | Pattern | Version | Status | Reference |
-|---------|---------|--------|-----------|
+| --------- | --------- | -------- | ----------- |
 | Multi-Agent Orchestrator | 2.1 | Approved | [Agent SDK Guide](../../coding-tools/claude/claude-agent-sdk-production.md) |
 | MCP Tool Design | 1.3 | Approved | [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) |
 | RAG Architecture | 3.0 | Approved | [Knowledge & RAG](../../knowledge-engineering/knowledge/index.md) |
@@ -196,7 +196,7 @@ Benefit Sources:
 ### Technology Radar (July 2026)
 
 | Technology | Ring | Notes |
-|-----------|------|-------|
+| ----------- | ------ | ------- |
 | Claude Sonnet 4.6 | **Adopt** | Default model for production agentic workloads |
 | MCP (Model Context Protocol) | **Adopt** | Standard for tool integration |
 | Agent SDK (Anthropic) | **Adopt** | Multi-agent orchestration |
@@ -215,6 +215,7 @@ Benefit Sources:
 **Common reason**: Team wants GPT-4o instead of Claude for a specific task.
 
 **ARB evaluation criteria**:
+
 - Is there a measurable capability gap in the approved model?
 - Has benchmarking been done on the specific task?
 - What is the incremental cost?
@@ -228,6 +229,7 @@ Benefit Sources:
 **Common reason**: Agent needs broad database access for exploratory tasks.
 
 **ARB evaluation criteria**:
+
 - Is the permission scope time-limited or task-scoped?
 - Is HITL implemented for irreversible actions?
 - Is there a rollback mechanism?
@@ -238,7 +240,7 @@ Benefit Sources:
 ## ARB Contacts
 
 | Role | Responsibility |
-|------|---------------|
+| ------ | --------------- |
 | ARB Chair | Final escalation, CTO/CIO liaison |
 | ARB Secretariat | Submission management, scheduling, decision records |
 | Security Architect | Security and compliance review lead |

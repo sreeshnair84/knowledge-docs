@@ -72,6 +72,7 @@ Visual standard for process modeling. Example:
 ```
 
 **Visual elements**:
+
 - **Events**: Start, End, Intermediate
 - **Tasks**: Service, User, Script, Send, Receive
 - **Gateways**: Exclusive (if/else), Parallel (AND), Inclusive (OR)
@@ -79,6 +80,7 @@ Visual standard for process modeling. Example:
 - **Sub-processes**: Nested workflows
 
 **Advantages over code**:
+
 - Business analysts can read/modify it
 - Visual inspection catches logic errors
 - Easier to document processes
@@ -104,6 +106,7 @@ Output: Approval Status
 ```
 
 **Benefits**:
+
 - Non-technical business users can maintain rules
 - Version control is easy (compare table versions)
 - Easy to test (input → expected output)
@@ -128,6 +131,7 @@ Camunda: "Task complete, continuing..."
 ```
 
 **Advantages**:
+
 - Workers can be written in any language
 - Workers can be deployed independently
 - Camunda doesn't need to run your code
@@ -151,6 +155,7 @@ Workflow resumes with decision
 ```
 
 **Features**:
+
 - Task assignment (by role, pool, or claim)
 - Forms (collect data from user)
 - Due dates and escalations
@@ -169,6 +174,7 @@ CREATED → ACTIVE (executing) → COMPLETED (success)
 ```
 
 Each instance has:
+
 - **State**: Which element are we at?
 - **Variables**: Data accumulated during execution
 - **History**: Full log of what happened
@@ -193,6 +199,7 @@ Execution 4: FAILED → move to dead letter queue
 ### 3. **Clustering & Scalability**
 
 Multiple engine instances share:
+
 - Single database
 - Distributed lock on tasks
 - Automatic load balancing
@@ -202,7 +209,7 @@ Multiple engine instances share:
 ## Camunda vs. Temporal: Head to Head
 
 | Aspect | Camunda | Temporal |
-|---|---|---|
+| --- | --- | --- |
 | **Model** | Visual (BPMN/DMN) | Code (TypeScript, Java, Python) |
 | **Primary audience** | Business analysts | Developers |
 | **Determinism** | Supported | Required |
@@ -247,6 +254,7 @@ Replace DMN table with AI service:
 ```
 
 **Trade-off**:
+
 - ✅ Camunda retains control flow
 - ✅ Process is still visible in BPMN
 - ❌ Decision logic is hidden in agent
@@ -269,6 +277,7 @@ Make AI-aided decision explicit:
 ```
 
 **Trade-off**:
+
 - ✅ Human-in-loop (governance)
 - ✅ Transparent AI reasoning
 - ❌ Slower (human review step)
@@ -290,11 +299,13 @@ Treat prompts like business rules:
 ```
 
 **Challenges**:
+
 - Prompt becomes "production code" (needs versioning, testing, CR)
 - Behavior can change with model updates
 - Non-deterministic (same input ≠ same output)
 
 **How to handle**:
+
 - Version prompts (semantic versioning)
 - Fix model version (Claude 3.5 Sonnet vs. Claude 4)
 - Add temperature/seed for partial reproducibility
@@ -304,25 +315,31 @@ Treat prompts like business rules:
 ## Camunda in 2026: AI Integration Strategy
 
 ### Phase 1: Today (Service Integration)
+
 ```
 BPMN → External Task → AI Service (LangGraph) → Result
 ```
+
 - AI runs outside Camunda
 - BPMN sees only result
 - Camunda unchanged
 
 ### Phase 2: Near-term (Prompt-as-Task)
+
 ```
 BPMN → New element: "Prompt Task" → LLM → Result
 ```
+
 - Camunda adds native prompt invocation
 - Prompts versioned like BPMN models
 - Decision trace visible
 
 ### Phase 3: Long-term (Process Generation)
+
 ```
 "Describe process in English" → AI generates BPMN → Deploy
 ```
+
 - Prompts design processes
 - BPMN is generated artifact
 - Manual editing still possible
@@ -332,7 +349,7 @@ BPMN → New element: "Prompt Task" → LLM → Result
 ## Reference: Camunda Concepts Glossary
 
 | Term | Meaning |
-|---|---|
+| --- | --- |
 | **Process** | BPMN model definition |
 | **Instance** | Running execution of a process |
 | **Activity** | Task, sub-process, or event |
@@ -350,6 +367,7 @@ BPMN → New element: "Prompt Task" → LLM → Result
 ## Decision: When to Use Camunda
 
 ### ✅ Good Fit
+
 - Regulated industries (compliance, audit)
 - Long-running human processes (approval chains)
 - Visual process understanding needed (stakeholders)
@@ -357,11 +375,13 @@ BPMN → New element: "Prompt Task" → LLM → Result
 - Complex business rules (DMN)
 
 ### ❌ Poor Fit
+
 - Microservice coordination (use Temporal)
 - Real-time latency-critical workflows (use Temporal)
 - Purely deterministic code (use Temporal)
 
 ### ⚖️ Hybrid (Enterprise)
+
 - **Camunda**: User-facing processes (compliance, approval)
 - **Temporal**: Internal orchestration (services)
 - **Both**: Larger enterprises run both
@@ -398,11 +418,13 @@ BPMN → New element: "Prompt Task" → LLM → Result
 ## Camunda Predictions (2026–2030)
 
 **Likely**:
+
 1. Native prompt task support
 2. Reasoning trace export
 3. Tighter integration with AI frameworks
 
 **Unlikely**:
+
 - Camunda abandoning BPMN (visual is core value)
 - Camunda competing with Temporal (different audiences)
 

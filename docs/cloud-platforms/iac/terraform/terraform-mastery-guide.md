@@ -19,7 +19,7 @@ A comprehensive guide covering 18 parts: IaC fundamentals, architecture, state m
 ## Table of Contents
 
 | Part | Topic |
-|------|-------|
+| ------ | ------- |
 | 1 | Terraform Fundamentals & IaC Evolution |
 | 2 | Terraform Architecture Deep Dive |
 | 3 | Resource Matching Internals |
@@ -65,7 +65,7 @@ Infrastructure as Code (IaC) is the practice of managing and provisioning comput
 **The Evolution of Infrastructure Management:**
 
 | Era | Approach | Tools | Problems Solved | New Problems Introduced |
-|-----|----------|-------|-----------------|------------------------|
+| ----- | ---------- | ------- | ----------------- | ------------------------ |
 | Gen 1 ~2000s | Manual Provisioning | SSH, Web Console, CLI | Direct control | No repeatability, snowflakes, tribal knowledge |
 | Gen 2 ~2008-2014 | Config Management | Chef, Puppet, Ansible, SaltStack | Repeatable config, idempotent | Mutable infra, drift, ordering issues |
 | Gen 3 ~2014-2019 | Orchestration IaC | Terraform, CloudFormation | Immutable infra, declarative | State management complexity |
@@ -94,7 +94,7 @@ flowchart LR
 ### 1.2 IaC Tool Comparison Matrix
 
 | Tool | Type | Language | State Mgmt | Multi-Cloud | Provider Ecosystem | Best For |
-|------|------|----------|------------|-------------|-------------------|----------|
+| ------ | ------ | ---------- | ------------ | ------------- | ------------------- | ---------- |
 | Terraform | Declarative | HCL | tfstate file | Native | 4,000+ providers | Multi-cloud enterprise |
 | OpenTofu | Declarative | HCL | tfstate file | Native | Terraform-compatible | Open-source Terraform |
 | CloudFormation | Declarative | YAML/JSON | AWS managed | AWS only | AWS services only | AWS-native teams |
@@ -177,7 +177,7 @@ flowchart TD
 **The Command Lifecycle:**
 
 | Command | Phase | What It Does | Side Effects | Safe? |
-|---------|-------|-------------|--------------|-------|
+| --------- | ------- | ------------- | -------------- | ------- |
 | `terraform init` | Initialization | Downloads providers, configures backend | Creates `.terraform/` dir | Always safe |
 | `terraform validate` | Validation | Checks HCL syntax and basic schema | None | Always safe |
 | `terraform fmt` | Formatting | Rewrites `.tf` files to canonical style | Modifies `.tf` files | Always safe |
@@ -276,6 +276,7 @@ resource "aws_iam_role_policy_attachment" "lambda_vpc" {
 ### 3.1 Resource Addressing & Identity
 
 **Address formats:**
+
 ```
 Root-level:       aws_instance.web
 Root + count:     aws_instance.web[0]
@@ -367,7 +368,7 @@ flowchart TD
 **Three strategies for handling drift:**
 
 | Strategy | When to Use | Command | Risk |
-|----------|-------------|---------|------|
+| ---------- | ------------- | --------- | ------ |
 | Reconcile to code | Code is the source of truth | `terraform apply` | Changes live infra back to code |
 | Accept drift into state | Manual change was intentional | `terraform apply -refresh-only` | Code and state diverge |
 | Ignore attribute | External system controls the value | `ignore_changes = [attr]` | Ongoing drift accumulation |
@@ -724,23 +725,27 @@ flowchart LR
 ### 7.2 Enterprise Decommission Playbook
 
 **Phase 1: Inventory & Dependencies**
+
 ```bash
 terraform state list > decommission-inventory.txt
 terraform graph | dot -Tpng > dependency-graph.png
 ```
 
 **Phase 2: Data Archival & Compliance**
+
 - Create final snapshots of all databases (RDS, DynamoDB export)
 - Archive S3 data to Glacier or secondary storage
 - Document data retention requirements (GDPR, HIPAA, SOX)
 - Verify backup restoration works before destroying source
 
 **Phase 3: Traffic Cutover**
+
 - Remove DNS records pointing to retiring infrastructure
 - Remove from load balancer target groups
 - Verify zero traffic for minimum 24–48 hours
 
 **Phase 4: Remove Destroy Protections**
+
 ```bash
 grep -r "prevent_destroy" . --include="*.tf"
 # Remove lifecycle { prevent_destroy = true } from all resources
@@ -748,6 +753,7 @@ terraform plan -destroy   # Review the full destruction plan
 ```
 
 **Phase 5: Controlled Destruction Order**
+
 1. Stateless resources first: EC2, ECS, Lambda
 2. Load balancers and security groups
 3. Databases (after final snapshot confirmed)
@@ -755,12 +761,14 @@ terraform plan -destroy   # Review the full destruction plan
 5. IAM roles and policies last
 
 **Phase 6: Validation**
+
 ```bash
 terraform state list   # Should return empty
 terraform plan         # Should show "No changes"
 ```
 
 **Phase 7: Audit Evidence**
+
 - Archive final state file (even the empty one)
 - Archive Git history of decommission changes
 - Archive cloud provider billing reports pre/post
@@ -1000,7 +1008,7 @@ resource "aws_db_instance" "main" {
 ```
 
 | Lifecycle Option | Use Case | Risk Level | Example Scenario |
-|-----------------|----------|------------|-----------------|
+| ----------------- | ---------- | ------------ | ----------------- |
 | `create_before_destroy` | Zero-downtime resource replacement | Medium — doubles resources briefly | SSL cert rotation, DB instance class change |
 | `prevent_destroy` | Production safeguard for critical resources | Low — just prevents accidents | Production RDS, S3 data buckets |
 | `ignore_changes` | External system manages specific attributes | Medium — drift accumulates silently | ASG `desired_count` managed by autoscaling |
@@ -1049,7 +1057,7 @@ resource "aws_instance" "app" {
 ### 12.2 Monorepo vs Multi-Repo
 
 | Factor | Monorepo | Multi-Repo |
-|--------|----------|------------|
+| -------- | ---------- | ------------ |
 | Atomic changes | Change VPC + app in one PR | Multiple PRs required |
 | Blast radius | Anyone can change anything | Isolated per team/service |
 | Versioning | Implicit (git SHA) | Explicit semver tags |
@@ -1089,7 +1097,7 @@ infrastructure/
 ### 13.2 GitOps Integration Patterns
 
 | Tool | Type | Key Feature | Best For |
-|------|------|------------|---------|
+| ------ | ------ | ------------ | --------- |
 | GitHub Actions | CI/CD | Native GitHub integration, free tier | GitHub-based orgs |
 | GitLab CI | CI/CD | Built-in, no external tools needed | GitLab-based orgs |
 | Atlantis | Terraform-specific | PR-based plan/apply comments | Teams wanting PR workflow |
@@ -1199,7 +1207,7 @@ resource "aws_db_instance" "main" {
 *17 Critical Terraform Anti-Patterns & Remediation*
 
 | # | Anti-Pattern | Problem | Fix |
-|---|-------------|---------|-----|
+| --- | ------------- | --------- | ----- |
 | AP-01 | All environments in one state file | A failed prod apply can corrupt all environments | Split state by environment AND layer (networking/compute/data) |
 | AP-02 | Local state on developer's laptop | No locking, no sharing, high risk of overwrites | Always use remote backends (S3+DynamoDB, Terraform Cloud, GCS) |
 | AP-03 | Manual console changes bypassing Terraform | State drift accumulates silently | Enforce IaC-only changes via IAM SCPs, Azure Policies, or org policies |
@@ -1225,6 +1233,7 @@ resource "aws_db_instance" "main" {
 ### 16.1 Error Resolution Quick Reference
 
 **`Error acquiring the state lock`**
+
 ```bash
 terraform force-unlock <LOCK_ID>   # Find ID in error message
 # Verify no other terraform process is running first!
@@ -1233,12 +1242,14 @@ aws dynamodb delete-item --table-name terraform-locks \
 ```
 
 **`Error: Resource already exists`**
+
 - Resource exists in cloud but not in state
 - Option A: `terraform import <resource> <cloud_id>`
 - Option B: Rename your resource to not conflict
 - Option C: Delete the cloud resource if not needed
 
 **`Error: Provider version conflict`**
+
 ```bash
 terraform init -upgrade
 rm .terraform.lock.hcl && terraform init
@@ -1246,21 +1257,25 @@ terraform providers lock -platform=linux_amd64 -platform=darwin_arm64
 ```
 
 **`Inconsistent dependency lock file`**
+
 ```bash
 rm .terraform.lock.hcl && terraform init
 # Commit the regenerated lock file
 ```
 
 **`Plan shows unexpected resource replacements`**
+
 - Check for attribute changes marked `ForceNew` in provider docs
 - Review `moved {}` blocks for missing migrations
 - Run `terraform state show <resource>` to compare with config
 
 **`terraform destroy fails on S3 bucket`**
+
 - Bucket has objects — empty manually or add `force_destroy = true`
 - If versioned: `aws s3 rm s3://bucket --recursive` first
 
 **`Import fails with 'no resource with address found'`**
+
 - Ensure the resource block EXISTS in your `.tf` files before running import
 - For modules: `terraform import module.name.resource_type.name`
 - Use `import {}` blocks (Terraform 1.5+) for reliability
@@ -1272,7 +1287,7 @@ rm .terraform.lock.hcl && terraform init
 ### 17.1 Retirement Scenarios
 
 | Scenario | Terraform's Role | Key Features Used |
-|---------|-----------------|---------------------------|
+| --------- | ----------------- | --------------------------- |
 | Data Center Exit | Inventory all managed resources, orderly teardown | `state list`, `plan -destroy`, `prevent_destroy` removal |
 | End-of-Life Application | Map all resources, controlled sunset | Tags-based filtering, module destroy |
 | Cloud Migration Cleanup | Retire old VMs/DBs after workload moved | `import` to get old infra into state, then destroy |
@@ -1333,7 +1348,7 @@ timeline
 ### 18.2 OpenTofu vs Terraform Feature Comparison
 
 | Feature | Terraform | OpenTofu |
-|---------|-----------|----------|
+| --------- | ----------- | ---------- |
 | License | BUSL-1.1 (restricted commercial) | MPL-2.0 (open source) |
 | State format | tfstate JSON | Compatible tfstate JSON |
 | HCL syntax | Terraform HCL | 100% compatible HCL |
@@ -1379,7 +1394,7 @@ tofu init && tofu plan && tofu apply
 ## Appendix A — CLI Cheat Sheet
 
 | Category | Command | Notes |
-|----------|---------|-------|
+| ---------- | --------- | ------- |
 | Init | `terraform init` | Initialize working directory |
 | Init | `terraform init -upgrade` | Upgrade providers to latest matching |
 | Init | `terraform init -reconfigure` | Force backend reconfiguration |
@@ -1556,6 +1571,7 @@ tofu init && tofu plan && tofu apply
 ## Appendix C — Production Readiness Checklist
 
 ### State Management
+
 - [ ] Remote backend configured (S3+DynamoDB / Azure Blob / GCS)
 - [ ] State file encryption enabled (at-rest and in-transit)
 - [ ] State versioning enabled (S3 bucket versioning / GCS object versioning)
@@ -1565,6 +1581,7 @@ tofu init && tofu plan && tofu apply
 - [ ] State file never committed to Git (`.gitignore` includes `*.tfstate`)
 
 ### Security
+
 - [ ] No secrets/passwords in `.tf` files or `.tfvars`
 - [ ] All sensitive variables marked `sensitive = true`
 - [ ] Secrets sourced from Secrets Manager / Key Vault / Vault
@@ -1575,6 +1592,7 @@ tofu init && tofu plan && tofu apply
 - [ ] `.terraform.lock.hcl` committed to Git
 
 ### Destroy Protection
+
 - [ ] `lifecycle { prevent_destroy = true }` on all production stateful resources
 - [ ] Production databases have `deletion_protection = true`
 - [ ] S3 buckets with critical data do NOT have `force_destroy = true`
@@ -1582,6 +1600,7 @@ tofu init && tofu plan && tofu apply
 - [ ] Final snapshot `before_destroy` configured for databases
 
 ### Code Quality
+
 - [ ] `required_version` constraint set in all root modules
 - [ ] `required_providers` versions pinned with `~>`
 - [ ] `terraform fmt -recursive` passes with no changes
@@ -1591,6 +1610,7 @@ tofu init && tofu plan && tofu apply
 - [ ] No hardcoded account IDs, region names, or environment values
 
 ### CI/CD Pipeline
+
 - [ ] `terraform plan` runs on every PR and posts results as comment
 - [ ] `terraform apply` only runs from main/master branch
 - [ ] Plan output reviewed before apply is triggered
@@ -1600,6 +1620,7 @@ tofu init && tofu plan && tofu apply
 - [ ] Drift detection job runs on schedule (daily minimum)
 
 ### Operations
+
 - [ ] Runbook exists for common operations (apply, destroy, import)
 - [ ] Runbook exists for state corruption recovery
 - [ ] On-call engineers can manually unlock state
@@ -1674,7 +1695,8 @@ terraform init -upgrade && terraform plan
 ---
 
 *For further reading:*
-- *https://developer.hashicorp.com/terraform/docs*
-- *https://opentofu.org/docs/*
-- *https://registry.terraform.io*
-- *https://github.com/opentofu/opentofu*
+
+- *<https://developer.hashicorp.com/terraform/docs>*
+- *<https://opentofu.org/docs/>*
+- *<https://registry.terraform.io>*
+- *<https://github.com/opentofu/opentofu>*

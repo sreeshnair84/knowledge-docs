@@ -29,7 +29,7 @@ This volume covers: Code patterns, sidecar pattern, credential vault design, ops
 The Microsoft Entra SDK for Agent ID runs as a containerised sidecar alongside the agent. The agent never handles tokens directly — it makes a simple HTTP call to the sidecar, which performs the full FIC→OBO chain and returns an `Authorization` header.
 
 | Sidecar Endpoint | Purpose | Query Params |
-|-----------------|---------|-------------|
+| ----------------- | --------- | ------------- |
 | `/AuthorizationHeader/Graph` | Get delegated token for MS Graph (OBO) | `AgentIdentity=\{guid}`, `AgentUserId=\{oid}` or `AgentUsername=\{upn}` |
 | `/AuthorizationHeader/Graph` (no params) | Standard OBO — use incoming user token identity | None (inherits from Bearer token) |
 | `/AuthorizationHeader/Graph?AgentIdentity=…` | Autonomous agent-only token (no user context) | `AgentIdentity=\{guid}` only |
@@ -177,7 +177,7 @@ async def call_jira_api(user_oid: str, cloud_id: str, issue_key: str, vault):
 ### 12.1 Why Tokens Must Never Live in the Agent
 
 | Anti-Pattern | Risk | Correct Pattern |
-|-------------|------|----------------|
+| ------------- | ------ | ---------------- |
 | Token in environment variable | Exposed to all processes in container; leaked in logs | Encrypted vault; agent requests token via API call |
 | Token in LLM context / prompt | LLM may echo token; prompt injection extracts it | Agent calls vault SDK; token injected into HTTP client, never into prompt |
 | Shared service account token | One compromise = full org access; no per-user audit trail | Per-user, per-provider token stored with `(user_oid, provider)` key |
@@ -264,7 +264,7 @@ async def refresh_sweeper(vault):
 ### 12.4 Encryption & Key Management
 
 | Layer | Mechanism | Notes |
-|-------|-----------|-------|
+| ------- | ----------- | ------- |
 | Encryption at rest | AES-256-GCM per token field | Key stored in Azure Key Vault / AWS KMS; never in application config |
 | Key hierarchy | Data Encryption Key (DEK) wrapped by Key Encryption Key (KEK) | KEK rotated annually; DEK rotated on each token write |
 | Key access | Managed Identity granted Key Vault 'get' on DEK only | Agent service never has Key Vault admin rights |
@@ -279,7 +279,7 @@ async def refresh_sweeper(vault):
 ### 13.1 Three Consent Models
 
 | Model | When to Use | Trigger | User Experience |
-|-------|------------|---------|----------------|
+| ------- | ------------ | --------- | ---------------- |
 | Admin pre-consent | Agent accesses org-level data; no user-specific data; internal analytics | Admin grants consent once in Entra portal for all users | Invisible to end user. Requires admin to explicitly approve agent scopes. |
 | User just-in-time consent (3LO) | Agent accesses user's personal resources (email, calendar, Jira tickets) | First time agent attempts to use that resource for that user | User sees consent screen: "Agent X wants to access your Jira. Allow?" — must explicitly approve. |
 | CIBA — backchannel approval | High-risk or irreversible action (delete, send bulk, financial) | Before executing the risky tool call | Push notification to user's phone: "Agent wants to send this email to 500 people. Approve / Deny." |
@@ -287,7 +287,7 @@ async def refresh_sweeper(vault):
 ### 13.2 Consent Screen Requirements (GDPR + Zero Trust)
 
 | Requirement | Detail |
-|------------|--------|
+| ------------ | -------- |
 | Name the agent | Consent screen MUST show the specific agent name (not just the app). IETF draft `requested_actor` parameter enables this. |
 | Scope plain language | Don't show `write:jira-work`. Show: "Create and update your Jira issues". Map technical scopes to human-readable descriptions. |
 | Minimal scope | Request only what is needed for the current task. Use incremental consent — add scopes lazily, not upfront. |
@@ -327,7 +327,7 @@ async def ensure_atlassian_consent(user_oid: str, required_scopes: list[str], va
 ### 14.1 Onboarding a New Agent Identity
 
 | # | Step | Who | Command / Action |
-|---|------|-----|-----------------|
+| --- | ------ | ----- | ----------------- |
 | 1 | Register Blueprint | Identity Admin | `az ad app create --display-name 'GenAI-AgentBlueprint-\{name}' --sign-in-audience AzureADMyOrg` |
 | 2 | Create Blueprint Service Principal | Identity Admin | `az ad sp create --id \{blueprint_app_id}` |
 | 3 | Assign Managed Identity as FIC | Identity Admin | Graph API: `POST /applications/\{blueprint_id}/federatedIdentityCredentials` with issuer, subject (MSI object ID), audiences |
@@ -342,7 +342,7 @@ async def ensure_atlassian_consent(user_oid: str, required_scopes: list[str], va
 ### 14.2 Revoking User Access
 
 | Scenario | Action | Where |
-|----------|--------|-------|
+| ---------- | -------- | ------- |
 | User requests revoke | Set `revoked_at` in vault; delete `refresh_token` | Vault API; also revoke at provider (Atlassian Connected Apps, GHE OAuth token) |
 | User leaves org | Entra offboarding disables user account → all delegated tokens invalidated automatically for Graph/Entra-backed resources | Entra offboarding + vault sweep job |
 | Security incident | Revoke all credentials for `agent_id`: `UPDATE agent_credentials SET revoked_at=NOW() WHERE agent_id='\{id}'` | Vault DB + alert SRE team |
@@ -377,7 +377,7 @@ az keyvault certificate delete --vault-name {kv} --name 'blueprint-cert'
 ### 14.4 Monitoring & Alerting
 
 | Alert | Metric / Signal | Threshold | Action |
-|-------|----------------|-----------|--------|
+| ------- | ---------------- | ----------- | -------- |
 | Token refresh failure rate | `vault.refresh.errors / vault.refresh.total` | >5% over 5min | Page SRE; check provider status; check lock contention |
 | Refresh lag spike | P99 latency of `ensure_fresh_token()` | >3s | Check distributed lock; scale refresh sweeper workers |
 | 401 rate from downstream APIs | `http.client.4xx\{status=401}` by provider | >1% of calls | Token vault out of sync; trigger full re-consent for affected users |
@@ -393,7 +393,7 @@ az keyvault certificate delete --vault-name {kv} --name 'blueprint-cert'
 ### 15.1 Incident Classification
 
 | Severity | Definition | Examples | SLA |
-|----------|-----------|---------|-----|
+| ---------- | ----------- | --------- | ----- |
 | P0 — Critical | Agent acting outside authorised scope; data exfiltration suspected | Agent accessing resources user never consented to; token seen in external logs | Immediate: disable agent identity within 15min; notify CISO |
 | P1 — High | Token leak or compromise confirmed | `refresh_token` in application logs; vault database exposed | 1hr: rotate all tokens; notify affected users; Security investigation |
 | P2 — Medium | Auth flow broken for subset of users or providers | Atlassian token refresh failing; GHE OAuth app rate-limited | 4hr: restore service; root cause within 24hr |
@@ -438,7 +438,7 @@ DELETE /applications/{client_id}/tokens/{access_token}
 ### 15.3 Common Failure Modes & Fixes
 
 | Failure | Entra Error Code | Root Cause | Fix |
-|---------|-----------------|-----------|-----|
+| --------- | ----------------- | ----------- | ----- |
 | OBO exchange fails | AADSTS82001 | Using RFC 8693 `token-exchange` grant (wrong grant type) | Switch to `jwt-bearer` grant for OBO: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer` |
 | Blueprint token fails | AADSTS700211 | Scope format wrong | Always use `/.default` in both exchange steps, not individual scope strings |
 | Agent permission 403 | 403 Forbidden | Permission granted to Blueprint SP instead of Agent Identity SP | Grant permissions to Agent Identity SP; admin consent propagation may take 30-120s — retry with backoff |
@@ -452,7 +452,7 @@ DELETE /applications/{client_id}/tokens/{access_token}
 ## 16. OWASP Agentic Top 10 — Auth Controls Mapping
 
 | OWASP Agentic Risk | Control in This Architecture |
-|-------------------|------------------------------|
+| ------------------- | ------------------------------ |
 | **A01 — Excessive Agency**: Agent performs actions beyond what user authorised | 3LO: tokens bounded by intersection of user permissions + agent-granted scopes. PDP policy check at gateway before every tool call. CIBA gate for high-risk actions. |
 | **A02 — Prompt Injection**: Malicious input tricks agent into misusing its token | Token never in LLM context. Gateway (not agent) executes API calls. PDP evaluates action independent of LLM output — LLM is not trusted for auth decisions. |
 | **A03 — Insecure Output Handling**: Token or credential leaks in agent response | Structured logging middleware strips all token-like strings (regex: `Bearer\s+eyJ[A-Za-z0-9._-]+`). Agent receives API results, not raw tokens. |
@@ -493,7 +493,7 @@ SIDECAR SHORTCUT:
 ### Do / Don't Reference
 
 | Do | Don't |
-|----|-------|
+| ---- | ------- |
 | Use FIC + MSI for Blueprint credential | Use `client_secret` in production |
 | Use `jwt-bearer` grant for OBO exchange | Use RFC 8693 `token-exchange` grant (AADSTS82001) |
 | Use `/.default` scope in all exchange steps | Use individual scope strings in exchange |
@@ -510,7 +510,7 @@ SIDECAR SHORTCUT:
 ### Provider-Specific Gotchas
 
 | Provider | Critical Gotcha |
-|----------|----------------|
+| ---------- | ---------------- |
 | Atlassian | MUST include `offline_access` in scope to get `refresh_token`. Token rotation: new `refresh_token` issued on every refresh — always store the latest or you get `400 invalid_grant`. |
 | GHE OAuth App | No `refresh_token` — access tokens are long-lived by default. Prefer GitHub App installation tokens (1hr, auto-renewable, fine-grained). |
 | MS Graph (delegated) | OBO requires audience of Tc to match Blueprint `client_id`. `token_version`/nonce mismatch causes AADSTS70011. |

@@ -89,14 +89,14 @@ class PromptRegistry:
     def get_active(self, prompt_id: str, context: dict) -> PromptVersion:
         """Returns the active prompt version, respecting rollout percentages."""
         versions = self.db.get_active_versions(prompt_id)
-        
+
         # Sort by rollout: newer version gets its percentage, rest on stable
         for version in versions:
             if self._should_use(version, context):
                 return version
-        
+
         return self.db.get_stable(prompt_id)
-    
+
     def _should_use(self, version: PromptVersion, context: dict) -> bool:
         """Canary rollout: percentage of requests use the new version."""
         import hashlib
@@ -140,7 +140,7 @@ MODEL_ASSIGNMENTS = {
 Different changes carry different risk — route them accordingly.
 
 | Change Type | Required Approval | SLA | Deployment Gate |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | PATCH: prompt typo fix | Tech lead | 4h | Staging test pass |
 | MINOR: new tool added | Tech lead + product | 24h | Integration test pass + 1h canary |
 | MAJOR: prompt intent change | Tech lead + product + risk | 48h | A/B test + risk sign-off |
@@ -177,20 +177,20 @@ async def submit_change_request(cr: ChangeRequest) -> str:
 
 async def approve_change(change_id: str, approver: str, notes: str) -> None:
     cr = await cr_db.get(change_id)
-    
+
     if approver not in cr.approvers_required:
         raise ValueError(f"{approver} not in required approvers for this change")
-    
+
     cr.approvals_received.append({
         "approver": approver,
         "notes": notes,
         "approved_at": datetime.utcnow().isoformat(),
     })
-    
+
     if len(cr.approvals_received) >= required_quorum(cr.change_type):
         cr.status = "approved"
         await deploy_change(cr)
-    
+
     await cr_db.update(cr)
     await audit_log.record("change_request.approved", {"change_id": change_id, "approver": approver})
 ```
@@ -210,32 +210,32 @@ class DecisionAuditRecord:
     decision_id: str
     workflow_id: str
     workflow_version: str
-    
+
     # What version of each artifact was active
     prompt_id: str
     prompt_version: str
     model_id: str
     tool_versions: dict[str, str]
-    
+
     # What the agent saw
     input_data: dict
     retrieved_context: dict  # what memory/RAG retrieved
-    
+
     # What the agent did
     tool_calls: list[dict]
     reasoning_trace: str  # agent's chain of thought
     proposed_decision: str
-    
+
     # Human review (if applicable)
     human_reviewer: Optional[str]
     human_decision: Optional[str]
     human_notes: Optional[str]
     human_reviewed_at: Optional[datetime]
-    
+
     # Final outcome
     final_decision: str
     outcome_applied_at: datetime
-    
+
     # Compliance
     regulatory_flags: list[str]
     audit_trail_hash: str  # hash of this entire record for tamper detection
@@ -243,7 +243,7 @@ class DecisionAuditRecord:
 async def record_decision(record: DecisionAuditRecord) -> None:
     record.audit_trail_hash = compute_hash(record)
     await audit_db.insert_immutable(record)
-    
+
     # Emit to compliance reporting pipeline
     await compliance_stream.publish(record)
 ```
@@ -291,18 +291,18 @@ from temporalio.client import Client, WorkflowHandle
 
 async def rollback_workflow_version(workflow_type: str, target_version: str) -> None:
     """Point new workflow instances at a previous version."""
-    
+
     # Update the version registry — new instances will pick up the previous version
     await version_registry.set_active(workflow_type, target_version)
-    
+
     # Optional: drain in-flight workflows
     client = await Client.connect("localhost:7233")
     active = await client.list_workflows(f"WorkflowType='{workflow_type}' AND Status='Running'")
-    
+
     print(f"Rolling back {workflow_type} to {target_version}")
     print(f"  New instances: will use {target_version} immediately")
     print(f"  In-flight ({len(active)} workflows): will complete with their original version")
-    
+
     await audit_log.record("rollback.initiated", {
         "workflow_type": workflow_type,
         "rolled_back_to": target_version,
@@ -315,22 +315,22 @@ async def rollback_workflow_version(workflow_type: str, target_version: str) -> 
 ```python
 async def rollback_prompt(prompt_id: str, target_version: str, reason: str) -> None:
     """Roll back a prompt to a previous version — effective on next invocation."""
-    
+
     current = await prompt_registry.get_active_version(prompt_id)
-    
+
     # Set previous version as active (rollout=100%)
     await prompt_registry.set_active(prompt_id, target_version, rollout_percentage=100)
-    
+
     # Invalidate any caches
     await cache.invalidate_pattern(f"prompt:{prompt_id}:*")
-    
+
     await audit_log.record("prompt.rollback", {
         "prompt_id": prompt_id,
         "from_version": current.version,
         "to_version": target_version,
         "reason": reason,
     })
-    
+
     print(f"Prompt {prompt_id} rolled back from {current.version} → {target_version}")
     print("Effective immediately — no redeploy required")
 ```

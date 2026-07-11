@@ -33,6 +33,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Establishes why the EA function exists and how to use the handbook.
 
 **Typical Contents**:
+
 - Mission and vision of the EA function
 - Scope: what EA covers and what it does not
 - How the handbook is maintained and versioned
@@ -46,6 +47,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Describes the organisation the architecture serves — its strategy, structure, and operating environment.
 
 **Typical Contents**:
+
 - Organisational mission and strategic priorities (current planning cycle)
 - Business capability map (top two levels)
 - Key business processes and value streams
@@ -59,6 +61,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Defines the non-negotiable rules that guide all architecture decisions.
 
 **Typical Contents**:
+
 - Format for stating a principle (Name / Statement / Rationale / Implications)
 - Business principles (e.g., "Architecture decisions are driven by business outcomes")
 - Technology principles (e.g., "Prefer cloud-native, standards-based solutions")
@@ -69,7 +72,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Example Principle Table**:
 
 | # | Principle | Statement | Rationale | Implications |
-|---|-----------|-----------|-----------|--------------|
+| --- | ----------- | ----------- | ----------- | -------------- |
 | P1 | Business Outcome First | All architecture decisions are justified by a business outcome | Technology without business value is waste | Architects must quantify value before proposing solutions |
 | P2 | Cloud-Native by Default | New workloads are deployed on cloud infrastructure unless a specific exception is approved | Cost, agility, and scalability advantages of cloud | Exceptions require ARB approval; legacy exceptions are time-bound |
 | P3 | API-First Integration | Systems expose capabilities via APIs; direct database integration is prohibited | Decoupling reduces brittleness; APIs enable reuse | All new systems must publish an API contract at design time |
@@ -81,6 +84,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Defines how the EA team works — the methods and frameworks used for architecture development.
 
 **Typical Contents**:
+
 - Adopted frameworks (e.g., TOGAF ADM, Zachman, custom hybrid)
 - Architecture development process (phases, inputs, outputs)
 - Architecture viewpoints used by the organisation (business, data, application, technology)
@@ -94,6 +98,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Documents the target architecture for each major domain. This is the largest chapter and is typically subdivided.
 
 **Sub-chapters**:
+
 - 5.1 Business Architecture (capability model, operating model, process standards)
 - 5.2 Data Architecture (data domains, data governance, master data, analytics platform)
 - 5.3 Application Architecture (portfolio, integration patterns, API standards, SaaS guidelines)
@@ -108,6 +113,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Defines how architecture decisions are made, reviewed, and enforced.
 
 **Typical Contents**:
+
 - Architecture governance model (ARB charter, membership, decision authority)
 - Decision-making process (proposal, review, approval, record)
 - Architecture decision record (ADR) format and process
@@ -121,6 +127,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Provides approved standards and reusable reference architectures.
 
 **Typical Contents**:
+
 - Technology standards register (approved tools, platforms, languages, versions)
 - Reference architectures (microservices, event-driven, data mesh, AI/ML pipeline)
 - Integration patterns catalogue
@@ -134,6 +141,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Describes the tools the EA team uses and where architecture artefacts are stored.
 
 **Typical Contents**:
+
 - Architecture repository (e.g., LeanIX, Sparx EA, Confluence)
 - Modelling tools and standards
 - Portfolio management tool
@@ -147,6 +155,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Defines who does what in enterprise architecture.
 
 **Typical Contents**:
+
 - EA team structure and reporting lines
 - Role definitions (Chief EA, Principal EA, Senior EA, Domain Architect, Solution Architect)
 - RACI for key EA activities
@@ -160,6 +169,7 @@ The EA Handbook is the definitive reference document for the EA function. It def
 **Purpose**: Reference materials and supporting documents.
 
 **Typical Contents**:
+
 - Acronym glossary
 - Technology lifecycle register (current, strategic, retire)
 - Architecture assessment scoring criteria
@@ -180,6 +190,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Request received (from executive, programme, or self-initiated opportunity).
 
 **Key Activities**:
+
 - Clarify the ask: what decision does this proposal need to support?
 - Identify the primary audience and their decision-making criteria
 - Agree the deadline and format requirements
@@ -198,6 +209,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Proposal brief approved.
 
 **Key Activities**:
+
 - Conduct stakeholder interviews (minimum three, using Discovery Questionnaire Library)
 - Review existing documentation (strategy, architecture, financials, previous proposals)
 - Assess the current-state problem or opportunity with evidence
@@ -208,6 +220,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Time estimate**: 3–10 days (depending on complexity)
 
 **Output**:
+
 - Discovery notes (structured by category)
 - Problem statement (draft, one paragraph)
 - Initial list of solution options
@@ -219,6 +232,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Discovery complete and problem clearly defined.
 
 **Key Activities**:
+
 - Generate a minimum of three options (including a "do nothing" option)
 - For each option, assess: cost, benefit, risk, feasibility, and timeline
 - Select a recommended option and document the rationale
@@ -237,6 +251,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Recommendation agreed internally.
 
 **Key Activities**:
+
 - Draft all sections using the Executive Business Case Template (Template 4)
 - Write the executive summary last
 - Use the Proposal Writing Handbook (Template 5) for quality guidance
@@ -255,6 +270,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: First draft complete.
 
 **Key Activities**:
+
 - Peer review using the peer review checklist (Template 14)
 - Technical review by relevant SMEs
 - Financial review (validate all numbers)
@@ -273,6 +289,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Internal review complete and comments incorporated.
 
 **Key Activities**:
+
 - Share draft with key stakeholder(s) before formal submission
 - Gather informal feedback (especially on framing, tone, and ask)
 - Revise based on feedback
@@ -290,6 +307,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Stakeholder preview complete.
 
 **Key Activities**:
+
 - Apply final formatting and document standards
 - Apply final pre-submission checklist (Template 14)
 - Submit via agreed channel (email, portal, document management system)
@@ -308,6 +326,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 **Trigger**: Proposal accepted for review by decision-making body.
 
 **Key Activities**:
+
 - Prepare a verbal summary (10 minutes maximum)
 - Anticipate and prepare for likely objections
 - Deliver presentation and handle Q&A
@@ -324,7 +343,7 @@ This playbook defines the end-to-end process for producing an enterprise technol
 ### Proposal Stages Summary
 
 | Stage | Key Output | Participants | Est. Duration |
-|-------|------------|--------------|---------------|
+| ------- | ------------ | -------------- | --------------- |
 | 1. Brief | Proposal brief | Lead + sponsor | 1–2 days |
 | 2. Discovery | Discovery notes + problem statement | Lead + stakeholders | 3–10 days |
 | 3. Options | Options comparison + recommendation | Lead + SMEs + finance | 2–5 days |
@@ -345,7 +364,7 @@ Use this guide when evaluating AI technology options — whether selecting a pla
 Rate each option against the following criteria. Each criterion is rated 1–5 (1 = very poor fit, 5 = excellent fit).
 
 | Criterion | Weight | Description |
-|-----------|--------|-------------|
+| ----------- | -------- | ------------- |
 | Strategic alignment | 20% | How well does this option align to the organisation's AI strategy and business priorities? |
 | Functional fit | 20% | Does the solution address the defined use case requirements? |
 | Data compatibility | 15% | Can the solution work with the organisation's existing data assets and infrastructure? |
@@ -366,7 +385,7 @@ Maximum possible score = 5.00
 ### Section 2: Vendor Scoring Matrix
 
 | Criterion | Weight | Vendor A Score | Vendor A Weighted | Vendor B Score | Vendor B Weighted | Vendor C Score | Vendor C Weighted |
-|-----------|--------|----------------|-------------------|----------------|-------------------|----------------|-------------------|
+| ----------- | -------- | ---------------- | ------------------- | ---------------- | ------------------- | ---------------- | ------------------- |
 | Strategic alignment | 20% | [1–5] | | [1–5] | | [1–5] | |
 | Functional fit | 20% | [1–5] | | [1–5] | | [1–5] | |
 | Data compatibility | 15% | [1–5] | | [1–5] | | [1–5] | |
@@ -383,7 +402,7 @@ Maximum possible score = 5.00
 Use this framework when the organisation is deciding between building a custom AI solution and purchasing a commercial product.
 
 | Factor | Build | Buy |
-|--------|-------|-----|
+| -------- | ------- | ----- |
 | **Differentiation** | High: the capability is a source of competitive advantage | Low: the capability is a commodity or table stakes |
 | **Customisation need** | The required functionality cannot be achieved with commercial products | Commercial products can meet 80%+ of requirements |
 | **Data sensitivity** | Extremely sensitive data that cannot leave the organisation's infrastructure | Data can be processed in a vendor's environment with appropriate controls |
@@ -410,23 +429,23 @@ Ask these questions of every AI vendor before making an investment decision:
 
 **Data and Privacy**
 
-5. Where is our data processed and stored — in what regions and jurisdictions?
-6. Is our data used to train or improve the vendor's shared models?
-7. What data is retained after a session, and for how long?
-8. How does the vendor comply with GDPR and applicable data protection regulations?
+1. Where is our data processed and stored — in what regions and jurisdictions?
+2. Is our data used to train or improve the vendor's shared models?
+3. What data is retained after a session, and for how long?
+4. How does the vendor comply with GDPR and applicable data protection regulations?
 
 **Security**
 
-9. What security certifications does the product hold (SOC 2, ISO 27001, etc.)?
-10. How is access controlled, and does the product support our IAM standards?
-11. What is the vendor's penetration testing and vulnerability disclosure process?
+1. What security certifications does the product hold (SOC 2, ISO 27001, etc.)?
+2. How is access controlled, and does the product support our IAM standards?
+3. What is the vendor's penetration testing and vulnerability disclosure process?
 
 **Commercial**
 
-12. What is the pricing model, and how does cost scale with usage?
-13. What is included in the base license, and what requires additional purchase?
-14. What are the contract exit provisions, and how do we extract our data on termination?
-15. What SLAs apply to availability, and what are the remedies for breach?
+1. What is the pricing model, and how does cost scale with usage?
+2. What is included in the base license, and what requires additional purchase?
+3. What are the contract exit provisions, and how do we extract our data on termination?
+4. What SLAs apply to availability, and what are the remedies for breach?
 
 ---
 
@@ -489,7 +508,7 @@ Ask these questions of every AI vendor before making an investment decision:
 [List the key components: technology, process change, people, data. For each, provide a one-line description.]
 
 | Component | Description | Responsibility |
-|-----------|-------------|----------------|
+| ----------- | ------------- | ---------------- |
 | [Technology platform] | [What it is and what it does] | [Vendor / internal team] |
 | [Process change] | [What changes and for whom] | [Business unit] |
 | [Data requirements] | [What data is needed and where it comes from] | [Data team] |
@@ -518,7 +537,7 @@ Ask these questions of every AI vendor before making an investment decision:
 **5.1 Investment Required**
 
 | Cost Category | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | Total |
-|---------------|--------|--------|--------|--------|--------|-------|
+| --------------- | -------- | -------- | -------- | -------- | -------- | ------- |
 | Software / licensing | | | | | | |
 | Implementation | | | | | | |
 | Infrastructure | | | | | | |
@@ -530,7 +549,7 @@ Ask these questions of every AI vendor before making an investment decision:
 **5.2 Expected Benefits**
 
 | Benefit Category | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | Total |
-|------------------|--------|--------|--------|--------|--------|-------|
+| ------------------ | -------- | -------- | -------- | -------- | -------- | ------- |
 | Revenue increase | | | | | | |
 | Cost reduction | | | | | | |
 | Cost avoidance | | | | | | |
@@ -540,7 +559,7 @@ Ask these questions of every AI vendor before making an investment decision:
 **5.3 Return Metrics**
 
 | Metric | Value |
-|--------|-------|
+| -------- | ------- |
 | Net Present Value (NPV) | |
 | Internal Rate of Return (IRR) | |
 | Payback period | |
@@ -553,7 +572,7 @@ Ask these questions of every AI vendor before making an investment decision:
 [Define how and when benefits will be measured and realised.]
 
 | Benefit | Measure | Baseline | Target | Realisation Date | Owner |
-|---------|---------|---------|--------|-----------------|-------|
+| --------- | --------- | --------- | -------- | ----------------- | ------- |
 | [Benefit 1] | [KPI] | [Current value] | [Target value] | [Quarter/Year] | [Role] |
 | [Benefit 2] | [KPI] | [Current value] | [Target value] | [Quarter/Year] | [Role] |
 
@@ -564,7 +583,7 @@ Ask these questions of every AI vendor before making an investment decision:
 **7.1 Delivery Phasing**
 
 | Phase | Scope | Duration | Investment | Key Milestone |
-|-------|-------|----------|------------|---------------|
+| ------- | ------- | ---------- | ------------ | --------------- |
 | Phase 1 — Foundation | [Scope] | [Duration] | [$] | [Milestone] |
 | Phase 2 — Scaling | [Scope] | [Duration] | [$] | [Milestone] |
 | Phase 3 — Optimisation | [Scope] | [Duration] | [$] | [Milestone] |
@@ -584,7 +603,7 @@ Ask these questions of every AI vendor before making an investment decision:
 ### Section 8 — Risk Assessment
 
 | Risk | Likelihood (H/M/L) | Impact (H/M/L) | Mitigation |
-|------|-------------------|----------------|------------|
+| ------ | ------------------- | ---------------- | ------------ |
 | [Risk 1] | | | |
 | [Risk 2] | | | |
 | [Risk 3] | | | |
@@ -596,7 +615,7 @@ Ask these questions of every AI vendor before making an investment decision:
 ### Section 9 — Governance and Accountability
 
 | Role | Individual | Responsibility |
-|------|-----------|----------------|
+| ------ | ----------- | ---------------- |
 | Executive Sponsor | [Name / Title] | Overall accountability for the programme |
 | Business Owner | [Name / Title] | Business outcome ownership |
 | Programme Lead | [Name / Title] | Day-to-day delivery |
@@ -630,7 +649,7 @@ Ask these questions of every AI vendor before making an investment decision:
 **Immediate next steps** (if approved):
 
 | Action | Owner | Due Date |
-|--------|-------|----------|
+| -------- | ------- | ---------- |
 | [Action 1] | [Owner] | [Date] |
 | [Action 2] | [Owner] | [Date] |
 | [Action 3] | [Owner] | [Date] |
@@ -743,6 +762,7 @@ Apply the final pre-submission checklist. Format for the target audience — exe
 **Objective**: Establish a clear, board-approved statement of what AI will mean for this organisation.
 
 **Key Questions**:
+
 - What business outcomes do we expect AI to enable over the next 3–5 years?
 - Which aspects of AI are most important to us: efficiency, growth, customer experience, or risk management?
 - What kind of AI company do we aspire to be — a fast follower, an innovation leader, or a selective adopter?
@@ -760,7 +780,7 @@ Apply the final pre-submission checklist. Format for the target audience — exe
 Apply the AI Maturity Model across five dimensions:
 
 | Dimension | What to Assess | Rating (1–5) |
-|-----------|---------------|--------------|
+| ----------- | --------------- | -------------- |
 | Strategy | Is there a defined AI strategy aligned to business goals? | |
 | Data | Are the right data assets available, accessible, and governed? | |
 | Technology | Is the technology platform capable of supporting AI at scale? | |
@@ -768,6 +788,7 @@ Apply the AI Maturity Model across five dimensions:
 | Governance | Are there processes for approving, monitoring, and retiring AI solutions? | |
 
 **Rating Scale**:
+
 - **1 — Ad hoc**: No defined approach; AI used opportunistically if at all
 - **2 — Defined**: Approach defined but inconsistently applied
 - **3 — Managed**: Defined, consistently applied, and measured
@@ -785,7 +806,7 @@ Apply the AI Maturity Model across five dimensions:
 **Step 2 — Score each use case** using the following criteria:
 
 | Criterion | Weight | Description |
-|-----------|--------|-------------|
+| ----------- | -------- | ------------- |
 | Strategic value | 30% | How directly does this use case advance a strategic priority? |
 | Financial impact | 25% | What is the estimated 3-year net financial benefit? |
 | Feasibility | 20% | How achievable is this given current data, technology, and skills? |
@@ -803,7 +824,7 @@ Apply the AI Maturity Model across five dimensions:
 Define how AI will actually operate in the organisation:
 
 | Operating Model Element | Decision |
-|------------------------|----------|
+| ------------------------ | ---------- |
 | Centralised or federated? | [Centralised AI COE / Federated teams / Hybrid] |
 | Build or buy? | [Build custom / Buy commercial / Hybrid] |
 | Talent model | [Hire / Train / Partner / Augment] |
@@ -819,7 +840,7 @@ Define how AI will actually operate in the organisation:
 Define the AI platform architecture:
 
 | Layer | Decision |
-|-------|----------|
+| ------- | ---------- |
 | Foundation models | [Which LLMs / models to adopt as standard, and on what basis] |
 | MLOps platform | [Platform for training, deploying, and monitoring models] |
 | Data platform | [Data lake, feature store, vector store] |
@@ -836,7 +857,7 @@ Define the AI platform architecture:
 Define the governance framework for AI:
 
 | Governance Element | Detail |
-|-------------------|--------|
+| ------------------- | -------- |
 | AI principles | [The organisation's responsible AI principles — typically 5–8] |
 | Use case review process | [How new AI use cases are assessed before implementation] |
 | Model risk management | [How models are tested, approved, and monitored for drift] |
@@ -851,7 +872,7 @@ Define the governance framework for AI:
 ### AI Strategy Playbook Summary Table
 
 | Stage | Key Output | Primary Owner | Typical Duration |
-|-------|------------|---------------|-----------------|
+| ------- | ------------ | --------------- | ----------------- |
 | 1. Vision | AI vision statement | CTO / CDO | 2–4 weeks |
 | 2. Maturity | Maturity assessment | EA Lead | 3–6 weeks |
 | 3. Use cases | Prioritised use case list | EA + Business | 4–8 weeks |

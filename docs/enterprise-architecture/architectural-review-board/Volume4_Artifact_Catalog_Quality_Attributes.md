@@ -9,21 +9,21 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Artifact Catalog & Quality Attributes** 
+# **Artifact Catalog & Quality Attributes**
 
-Every artifact an Architecture Review Board should expect to see — purpose, owner, consumers, lifecycle, and automation — paired with a modern quality attribute taxonomy that goes beyond generic NFRs to cover AI explainability, agent reliability, and memory consistency. 
+Every artifact an Architecture Review Board should expect to see — purpose, owner, consumers, lifecycle, and automation — paired with a modern quality attribute taxonomy that goes beyond generic NFRs to cover AI explainability, agent reliability, and memory consistency.
 
-Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition 
+Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition
 
-## **Part A — The Complete Artifact Catalog** 
+## **Part A — The Complete Artifact Catalog**
 
-An ARB that doesn't have a clear, enforced artifact catalog ends up with wildly inconsistent submission quality — some teams over-document trivial decisions, others under-document significant ones, and reviewers waste cycles asking for missing information rather than evaluating substance. This catalog defines what "good" looks like for every artifact a mature banking ARB should expect across the full lifecycle, from business case through retirement. 
+An ARB that doesn't have a clear, enforced artifact catalog ends up with wildly inconsistent submission quality — some teams over-document trivial decisions, others under-document significant ones, and reviewers waste cycles asking for missing information rather than evaluating substance. This catalog defines what "good" looks like for every artifact a mature banking ARB should expect across the full lifecycle, from business case through retirement.
 
-#### **HOW TO READ THIS CATALOG** 
+#### **HOW TO READ THIS CATALOG**
 
-Each artifact entry covers five dimensions: **Purpose** (what decision or understanding it enables), **Owner** (who is accountable for its accuracy), **Consumers** (who relies on it), **Lifecycle** (when it's created, updated, retired), and **Automation** (whether and how it can be generated or validated automatically rather than hand-maintained). 
+Each artifact entry covers five dimensions: **Purpose** (what decision or understanding it enables), **Owner** (who is accountable for its accuracy), **Consumers** (who relies on it), **Lifecycle** (when it's created, updated, retired), and **Automation** (whether and how it can be generated or validated automatically rather than hand-maintained).
 
-### **7.1 Strategy & Vision Artifacts** 
+### **7.1 Strategy & Vision Artifacts**
 
 |**Artifact**|**Purpose**|**Owner**|**Consumers**|**Automation**|
 |---|---|---|---|---|
@@ -32,7 +32,7 @@ Each artifact entry covers five dimensions: **Purpose** (what decision or unders
 |**Architecture Vision**|Translates business vision into<br>target architecture direction and<br>guiding principles|Chief Architect /<br>Lead Solution<br>Architect|ARB, all<br>contributing<br>architects|Low — references the pattern catalog<br>and reference architectures from<br>Volume 3|
 |**Capability Map**|Traces the initiative to business<br>capabilities affected (see Volume 3,<br>Part B)|Business capability<br>owner + Enterprise<br>Architect|ARB, capability<br>redundancy<br>analysis|Medium — generated/updated from the<br>knowledge graph|
 
-### **7.2 Architecture Description Artifacts** 
+### **7.2 Architecture Description Artifacts**
 
 |**Artifact**|**Purpose**|**Owner**|**Consumers**|**Automation**|
 |---|---|---|---|---|
@@ -41,7 +41,7 @@ Each artifact entry covers five dimensions: **Purpose** (what decision or unders
 |**Deployment**<br>**Diagram**|Maps the architecture onto<br>physical/cloud infrastructure<br>topology|Cloud/Platform<br>Architect|ARB, CCoE,<br>operations,<br>security|High — should be generated directly from IaC<br>(Terraform/CloudFormation) rather than hand-<br>drawn, to guarantee accuracy|
 |**Threat Model**|Identifies attack surfaces, threat<br>actors, and mitigations (e.g., STRIDE-<br>based analysis)|Security<br>Architect|Cyber<br>Security<br>Council,<br>ARB|Medium — threat modeling tools can pre-populate<br>from architecture diagrams, but expert review<br>remains essential|
 
-### **7.3 Decision & Risk Artifacts** 
+### **7.3 Decision & Risk Artifacts**
 
 |**Artifact**|**Purpose**|**Owner**||**Consumers**|**Automation**|
 |---|---|---|---|---|---|
@@ -54,7 +54,7 @@ Each artifact entry covers five dimensions: **Purpose** (what decision or unders
 |**API Specification**|Formal, typically<br>OpenAPI/Swagger-based<br>definition of a REST API's<br>structure and behavior<br><br>|API-owning<br>team|API consumers,<br>API gateway,<br>developer porta|l<br>High — should<br>gateway and do<br>not a parallel h|be the literal source of truth the<br>cumentation are generated from,<br>and-maintained document|
 |**AsyncAPI**|Equivalent specification standard<br>for event-driven/asynchronous<br>interfaces<br><br><br>|Event-<br>publishing<br>team|Event<br>consumers,<br>event<br>catalog/registry|High — same p<br>to event schem|rinciple as API Specification, applied<br>as|
 
-### **7.5 AI-Specific Artifacts** 
+### **7.5 AI-Specific Artifacts**
 
 |**Artifact**|**Purpose**|**Owner**|**Consumers**|**Automation**|
 |---|---|---|---|---|
@@ -64,7 +64,7 @@ Each artifact entry covers five dimensions: **Purpose** (what decision or unders
 |**MCP Tool Contract**|Defines the interface, permissions, and<br>behavioral contract for a tool exposed<br>to AI agents via Model Context Protocol<br>or equivalent|Tool-<br>owning<br>team|Agent developers,<br>security (tool<br>permissions are a<br>security-critical<br>surface), ARB|High — should be machine-validated<br>against actual tool implementation, given<br>the security sensitivity of agent tool<br>access|
 |**A2A Contract**|Defines the interaction protocol and<br>trust boundary between two<br>autonomous AI agents (agent-to-agent)|Both<br>agent-<br>owning<br>teams<br>(jointly)|ARB, AI Governance<br>Board, security|Medium — an emerging artifact type as<br>multi-agent architectures mature; tooling<br>is still developing as of 2026|
 
-### **7.6 Operational & Lifecycle Artifacts** 
+### **7.6 Operational & Lifecycle Artifacts**
 
 |**Artifact**|**Purpose**|**Owner**|**Consumers**|**Automation**|
 |---|---|---|---|---|
@@ -72,13 +72,13 @@ Each artifact entry covers five dimensions: **Purpose** (what decision or unders
 |**Support Model**|Defines who supports the<br>system, escalation tiers, SLAs,<br>and handoff between<br>development and operations|Service Owner|Operations,<br>ARB (to<br>confirm<br>sustainability<br>before<br>approval),<br>CAB|Low — organizational/process artifact|
 |**Retirement**<br>**Checklist**|Ensures clean, complete<br>decommissioning — data<br>archival/deletion per retention<br>policy, dependency verification,<br>access revocation|Service Owner,<br>with Data<br>Governance and<br>Security sign-off|ARB, Data<br>Governance<br>Council,<br>Internal Audit|Medium — dependency verification can be<br>automated via the knowledge graph (Volume 3);<br>data handling steps require careful manual<br>verification given regulatory consequences of<br>getting this wrong|
 
-#### **THE MOST COMMONLY SKIPPED ARTIFACT** 
+#### **THE MOST COMMONLY SKIPPED ARTIFACT**
 
-The Retirement Checklist is, by a wide margin, the most frequently skipped artifact in this catalog — decommissioning rarely has an executive sponsor pushing for rigor the way a new build does, and the consequences of skipping it (orphaned data, undiscovered dependencies, incomplete access revocation) often surface years later as audit findings or security incidents rather than immediately. Treating Retirement Checklist completion as a mandatory ARB gate, with the same rigor as new-build approval, is one of the highestleverage low-cost governance improvements available to a Principal Architect. 
+The Retirement Checklist is, by a wide margin, the most frequently skipped artifact in this catalog — decommissioning rarely has an executive sponsor pushing for rigor the way a new build does, and the consequences of skipping it (orphaned data, undiscovered dependencies, incomplete access revocation) often surface years later as audit findings or security incidents rather than immediately. Treating Retirement Checklist completion as a mandatory ARB gate, with the same rigor as new-build approval, is one of the highestleverage low-cost governance improvements available to a Principal Architect.
 
-## **Part B — Architecture Quality Attributes** 
+## **Part B — Architecture Quality Attributes**
 
-Generic non-functional requirements ("the system should be fast and secure") are useless as governance criteria because they aren't testable. This part defines twenty-one quality attributes with banking-relevant, testable framing for each — including six AI/agent-specific attributes that don't appear in pre-2023 architecture references and that most ARB charters still haven't formally incorporated. 
+Generic non-functional requirements ("the system should be fast and secure") are useless as governance criteria because they aren't testable. This part defines twenty-one quality attributes with banking-relevant, testable framing for each — including six AI/agent-specific attributes that don't appear in pre-2023 architecture references and that most ARB charters still haven't formally incorporated.
 
 |**8.1 Classic**<br>**Attribute**|**al Quality Attributes**<br>**Testable Framing**|**Banking-Specific Note**|
 |---|---|---|
@@ -97,9 +97,9 @@ Generic non-functional requirements ("the system should be fast and secure") are
 |**Portability**|Effort required to move the system to a different infrastructure<br>provider or environment|Directly relevant to vendor-concentration risk<br>management (see Volume 2, Section 3.6)|
 |**Usability**|Task completion rate and time-on-task for defined user<br>journeys, typically measured via usability testing|Customer-facing and internal operations/back-office<br>usability are both relevant and frequently under-<br>prioritized for the latter|
 
-### **8.2 AI & Agent-Specific Quality Attributes** 
+### **8.2 AI & Agent-Specific Quality Attributes**
 
-These seven attributes are the newest additions to the architecture quality vocabulary, and the area where ARB charters most commonly lag behind actual practice. A Principal Architect operating in 2026 should treat fluency here as a baseline expectation, not a specialization. 
+These seven attributes are the newest additions to the architecture quality vocabulary, and the area where ARB charters most commonly lag behind actual practice. A Principal Architect operating in 2026 should treat fluency here as a baseline expectation, not a specialization.
 
 |**Attribute**|**Testable Framing**|**Banking-Specific Note**|
 |---|---|---|
@@ -111,14 +111,14 @@ These seven attributes are the newest additions to the architecture quality voca
 |**Agent Reliability**|Task completion rate for defined agent workflows,<br>including graceful failure and appropriate escalation<br>when the agent cannot complete a task, rather than silent<br>failure or fabricated success|Particularly critical where agents take real-world actions<br>(initiating payments, modifying records) rather than only<br>generating text, given the higher cost of an unreliable<br>action versus an unreliable response|
 |**Memory Consistency**|An AI agent's recalled context/memory remains accurate<br>and internally consistent across a session and across<br>sessions where persistence is intended|A novel attribute with essentially no pre-2023 precedent;<br>testing methodology is still maturing across the industry,<br>and ARBs should expect to evolve their review criteria as<br>practice matures|
 
-#### **CONTEXT FRESHNESS — AN EIGHTH EMERGING ATTRIBUTE** 
+#### **CONTEXT FRESHNESS — AN EIGHTH EMERGING ATTRIBUTE**
 
-Closely related to Memory Consistency but distinct: whether the information an AI system is reasoning over (retrieved documents, tool outputs, cached context) reflects current reality versus stale data. For RAG-based architectures and AI agents acting on enterprise data, a context-freshness SLA (e.g., "retrieved data must be no more than 15 minutes stale for transaction-related queries") should be a named, testable requirement — most current AI architecture reviews don't yet ask this question explicitly, and it is becoming a more frequent source of production incidents as the gap between this practice and increasing AI deployment scale widens. 
+Closely related to Memory Consistency but distinct: whether the information an AI system is reasoning over (retrieved documents, tool outputs, cached context) reflects current reality versus stale data. For RAG-based architectures and AI agents acting on enterprise data, a context-freshness SLA (e.g., "retrieved data must be no more than 15 minutes stale for transaction-related queries") should be a named, testable requirement — most current AI architecture reviews don't yet ask this question explicitly, and it is becoming a more frequent source of production incidents as the gap between this practice and increasing AI deployment scale widens.
 
-### **8.3 Resolving Quality Attribute Trade-offs** 
+### **8.3 Resolving Quality Attribute Trade-offs**
 
-Many of these attributes are in direct tension — Security and Usability frequently trade off against each other; Performance and Auditability can conflict when comprehensive audit logging adds latency; AI Explainability and raw model performance often trade off, since the most explainable model architectures aren't always the most accurate ones. This is precisely the territory ATAM and CBAM (Volume 2, Part B) are designed to navigate systematically rather than leaving these trade-offs to be resolved implicitly and inconsistently by whichever engineer happens to be making the call in the moment. 
+Many of these attributes are in direct tension — Security and Usability frequently trade off against each other; Performance and Auditability can conflict when comprehensive audit logging adds latency; AI Explainability and raw model performance often trade off, since the most explainable model architectures aren't always the most accurate ones. This is precisely the territory ATAM and CBAM (Volume 2, Part B) are designed to navigate systematically rather than leaving these trade-offs to be resolved implicitly and inconsistently by whichever engineer happens to be making the call in the moment.
 
-#### **A GOVERNANCE DISCIPLINE WORTH ADOPTING** 
+#### **A GOVERNANCE DISCIPLINE WORTH ADOPTING**
 
 For any architecturally significant initiative, require an explicit statement of which quality attributes were deliberately prioritized and which were consciously deprioritized, with rationale — rather than a checklist where every attribute is rated "addressed." A design that explicitly says "we are accepting reduced AI Explainability in exchange for materially better fraud detection accuracy, because [rationale], and this trade-off has been reviewed by [Responsible AI Council]" is far more defensible under audit than one that silently doesn't mention explainability at all.

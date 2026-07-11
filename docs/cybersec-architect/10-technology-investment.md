@@ -42,7 +42,7 @@ Security investment narratives fail when they are framed as cost centres. Succes
 ### 1.2 Business Case Structure
 
 | Section | Content |
-|---|---|
+| --- | --- |
 | **Executive Summary** | Problem, proposed solution, investment ask, expected outcome in 2–3 sentences |
 | **Problem Statement** | Current risk position, capability gap, regulatory exposure |
 | **Proposed Solution** | Capability description, vendor/technology selection rationale |
@@ -68,7 +68,7 @@ Loss Magnitude = Primary Loss + Secondary Loss
 **Example FAIR analysis (ransomware scenario):**
 
 | Factor | Estimate |
-|---|---|
+| --- | --- |
 | Threat event frequency | 0.3 events/year (30% chance of significant ransomware attempt) |
 | Vulnerability | 40% chance attempt succeeds (without proposed control) |
 | Loss magnitude — primary | $5M (recovery costs, lost revenue, forensics) |
@@ -119,7 +119,7 @@ Baseline:            Enhance:             Optimise:            Lead:
 A heat map visualises security capability maturity across domains:
 
 | Domain | Current Maturity | Target Maturity | Gap | Priority |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Identity | 3 | 4 | 1 | High |
 | Endpoint | 3 | 4 | 1 | High |
 | Cloud Security | 2 | 4 | 2 | Very High |
@@ -137,7 +137,7 @@ A heat map visualises security capability maturity across domains:
 Value stream analysis maps security capabilities to the business processes they enable:
 
 | Business Process | Supporting Security Capability | Value at Risk | Investment Priority |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Customer data processing | Data encryption, DLP, DSPM | $50M (breach liability) | Critical |
 | AI-powered product delivery | AI security controls, prompt gateway | $20M (product liability + brand) | Critical |
 | Cloud-hosted services | CSPM, CWPP, CNAPP | $15M (service disruption) | Very High |
@@ -153,7 +153,7 @@ Value stream analysis maps security capabilities to the business processes they 
 Score each security investment on three dimensions:
 
 | Dimension | Weight | Score (1–5) |
-|---|---|---|
+| --- | --- | --- |
 | **Risk reduction value** | 40% | FAIR-based financial impact reduction |
 | **Regulatory / compliance urgency** | 30% | Penalty exposure, audit findings |
 | **Strategic enablement** | 20% | Business capability unlocked |
@@ -178,7 +178,7 @@ Expected Benefit = Σ(Probability of scenario × Financial impact of scenario) �
 **Platform consolidation economics:**
 
 | Scenario | Annual Cost | Complexity | Visibility |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 45 point security tools | $8.5M | Very High | Fragmented |
 | Consolidated platform (10–15 tools) | $5.5M | Medium | Unified |
 | **Saving from consolidation** | **$3M/year** | | |
@@ -194,7 +194,7 @@ Expected Benefit = Σ(Probability of scenario × Financial impact of scenario) �
 TCO includes all costs over the technology lifecycle:
 
 | Cost Category | Examples |
-|---|---|
+| --- | --- |
 | **Licensing / subscription** | Annual SaaS subscription; per-seat pricing |
 | **Implementation** | Professional services; internal engineering time |
 | **Integration** | API integration; SIEM connector development |
@@ -222,6 +222,7 @@ Where:
 ### 5.3 IRR (Internal Rate of Return)
 
 IRR is the discount rate at which NPV = 0. Compare IRR to the organization's hurdle rate:
+
 - IRR > hurdle rate: invest
 - IRR < hurdle rate: do not invest (unless strategic or regulatory requirement)
 
@@ -232,6 +233,7 @@ Typical security investment IRR: 20–150% for high-priority risk reduction inve
 Simple payback period: Time until cumulative benefit equals initial investment.
 
 **Rule of thumb for security investments:**
+
 - Critical risk reduction: Accept 18–36 months payback
 - Operational efficiency: Require < 18 months payback
 - Strategic enablement: May accept 36–48 months if aligned to long-term strategy
@@ -243,7 +245,7 @@ Simple payback period: Time until cumulative benefit equals initial investment.
 ### 6.1 Vendor Evaluation Framework
 
 | Criterion | Weight | Evaluation Method |
-|---|---|---|
+| --- | --- | --- |
 | **Functional capability** | 30% | PoC evaluation; RFP response scoring |
 | **Integration depth** | 20% | Native integrations to existing stack |
 | **Vendor viability** | 15% | Financial health; market position; roadmap |
@@ -254,7 +256,7 @@ Simple payback period: Time until cumulative benefit equals initial investment.
 ### 6.2 Build vs. Buy Decision Matrix
 
 | Factor | Lean Buy | Lean Build |
-|---|---|---|
+| --- | --- | --- |
 | **Differentiation** | Non-differentiating capability | Core competitive advantage |
 | **Time to value** | Vendor solution available now | Custom solution needed |
 | **Complexity** | Well-understood problem | Novel, unique requirement |
@@ -274,6 +276,7 @@ Simple payback period: Time until cumulative benefit equals initial investment.
 Security debt is the accumulated risk from deferred security controls, legacy systems, and technical shortcuts that increase vulnerability over time.
 
 **Sources of security debt:**
+
 - Unsupported operating systems and software (Windows Server 2012, Python 2.7)
 - Unpatched vulnerabilities > 90 days old
 - Legacy authentication (passwords without MFA, NTLM)
@@ -285,7 +288,7 @@ Security debt is the accumulated risk from deferred security controls, legacy sy
 ### 7.2 Security Debt Quantification
 
 | Debt Category | Inventory Item | Risk Score | Remediation Cost | Priority |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Unpatched critical CVEs | 47 instances | 9.2/10 | $120K | Critical |
 | Legacy OS (EOL) | 12 servers | 8.5/10 | $200K | Critical |
 | Hardcoded credentials | 23 repos | 8.0/10 | $80K | Critical |
@@ -309,6 +312,7 @@ Annual Security Budget Cycle
 ```
 
 **Target allocation (mature enterprise):**
+
 - Run: 50–60% of security budget
 - Grow: 25–35%
 - Transform: 10–20%

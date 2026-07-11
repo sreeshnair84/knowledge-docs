@@ -32,9 +32,8 @@
   // MD022: Headings surrounded by blank lines
   "MD022": true,
 
-  // MD025: Single H1 per document — disable front_matter_title so Docusaurus
-  // pages with both frontmatter title: and a body # H1 don't trigger this
-  "MD025": { "front_matter_title": "" },
+  // MD025: Single H1 per document — off; case study docs use numbered H1 sections
+  "MD025": false,
 
   // MD031: Fenced code blocks surrounded by blank lines
   "MD031": true,
@@ -55,5 +54,31 @@
   "MD049": { "style": "asterisk" },
 
   // MD050: Strong style — asterisks
-  "MD050": { "style": "asterisk" }
+  "MD050": { "style": "asterisk" },
+
+  // MD001: Heading increment — off; PDF-converted docs often jump levels
+  "MD001": false,
+
+  // MD040: Fenced code language — off; many converted blocks have no language tag
+  "MD040": false,
+
+  // MD055: Table pipe style — off; PDF conversions produce varied pipe styles
+  "MD055": false,
+
+  // MD056: Table column count — off; some tables have intentional unequal columns
+  "MD056": false,
+
+  // MD052: Reference links/images must be defined — off; algorithmic notation
+  // like dp[i][j] and code references like known_hashes[server][tool.name]
+  // are false-positive matches for reference-style links
+  "MD052": false,
+
+  // MD060: Table column style — off; PDF conversions produce mixed alignment
+  "MD060": false,
+
+  // MD028: No blank line inside blockquote — off; narrative docs use spaced blockquotes
+  "MD028": false,
+
+  // MD046: Code block style — allow both fenced and indented (converted docs use both)
+  "MD046": false
 }

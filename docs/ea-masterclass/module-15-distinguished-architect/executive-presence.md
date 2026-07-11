@@ -30,7 +30,7 @@ Executive presence is the quality that makes people in a room pay attention to s
 The most widely used model of executive presence has three components:
 
 | Component | Definition | Technical Leader's Common Gap |
-|---|---|---|
+| --- | --- | --- |
 | **Gravitas** | Exuding confidence, decisiveness, and calm under pressure | Reluctance to state conclusions before all data is in |
 | **Communication** | Adapting message, vocabulary, and pacing to the audience | Defaulting to technical language with non-technical stakeholders |
 | **Appearance** | Physical presence, energy, and intentional self-presentation | Underinvesting in visible signals of authority |
@@ -73,7 +73,7 @@ At Distinguished Architect level, most of what you need to accomplish requires t
 Robert Cialdini's six principles of influence were developed in sales and persuasion research but map directly to the EA context:
 
 | Principle | EA Application |
-|---|---|
+| --- | --- |
 | **Reciprocity** | Provide architectural guidance, reviews, and support to teams before asking for their compliance with standards. People who owe you are easier to influence than people who don't. |
 | **Commitment & Consistency** | Get teams to agree to small architecture principles in writing early. When a later decision requires adherence to those principles, the prior commitment provides leverage. |
 | **Social Proof** | Reference other respected internal teams or industry peers who have adopted the approach you are recommending. Nobody wants to be the last to move. |
@@ -137,7 +137,7 @@ The standard mistake is to treat the Brilliant Skeptic as an opponent to be defe
 The Thomas-Kilmann model describes five responses to conflict on two axes: assertiveness (how much you pursue your own concerns) and cooperativeness (how much you accommodate others' concerns).
 
 | Mode | Assertiveness | Cooperation | When to Use in EA Context |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Competing** | High | Low | Safety-critical decisions where a wrong outcome has irreversible consequences |
 | **Collaborating** | High | High | Strategic architecture decisions where commitment from multiple parties is essential for implementation |
 | **Compromising** | Medium | Medium | Time-constrained decisions where a good-enough outcome is preferable to a delayed perfect one |
@@ -201,7 +201,7 @@ The multiplier model requires a shift in where you invest time: less time on ind
 ### Structured Mentoring Framework
 
 | Phase | Activities | Frequency |
-|---|---|---|
+| --- | --- | --- |
 | **Contracting** | Establish goals, format, confidentiality, time commitment | Once at start |
 | **Assessment** | Identify gaps between current capability and target state | Monthly |
 | **Challenge** | Assign work that is 20% beyond current comfort zone | Ongoing |
@@ -260,7 +260,7 @@ When a production architecture failure occurs — a major outage, a data breach,
 In the first four hours:
 
 | Hour | Action |
-|---|---|
+| --- | --- |
 | **0–1** | Establish contact with incident commander. Confirm that the right technical people are engaged. Do not add noise to the incident channel. |
 | **1–2** | Brief the CTO and CIO: impact scope, estimated duration, containment status, and what is known vs. unknown. Use the SBAR format (Situation, Background, Assessment, Recommendation). |
 | **2–3** | Determine whether the incident requires board-level or regulatory notification. Engage Legal and Compliance if data is involved. |

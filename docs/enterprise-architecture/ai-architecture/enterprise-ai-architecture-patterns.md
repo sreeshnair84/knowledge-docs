@@ -24,7 +24,7 @@ covers_version: \"as of 2026-07-10\"
 ## Pattern Catalog Overview
 
 | # | Pattern | Problem | Complexity |
-|---|---------|---------|------------|
+| --- | --------- | --------- | ------------ |
 | 1 | [RAG](#1-retrieval-augmented-generation-rag) | Knowledge grounding, factual accuracy | Medium |
 | 2 | [Agentic RAG](#2-agentic-rag) | Dynamic retrieval decisions | High |
 | 3 | [Multi-Agent Orchestration](#3-multi-agent-orchestration) | Parallel sub-tasks, specialisation | High |
@@ -46,6 +46,7 @@ covers_version: \"as of 2026-07-10\"
 ## 1. Retrieval-Augmented Generation (RAG)
 
 ### Problem
+
 Foundation models have a knowledge cutoff and no access to your enterprise data. Without grounding, they hallucinate or refuse to answer. Fine-tuning is expensive and quickly stale. RAG provides current, authoritative knowledge without retraining.
 
 ### Architecture
@@ -84,7 +85,7 @@ Foundation models have a knowledge cutoff and no access to your enterprise data.
 ### Key Components
 
 | Component | Role | Technology options |
-|-----------|------|--------------------|
+| ----------- | ------ | -------------------- |
 | **Chunker** | Split documents into retrieval units | LangChain, LlamaIndex, custom |
 | **Embedder** | Convert text to vectors | text-embedding-3-large, Cohere Embed, Voyage |
 | **Vector store** | ANN search over embeddings | Pinecone, pgvector, Weaviate, Qdrant |
@@ -94,6 +95,7 @@ Foundation models have a knowledge cutoff and no access to your enterprise data.
 ### Naive RAG → Advanced RAG
 
 **Naive RAG:** Fixed chunk size → embed → retrieve top-k → generate. Works for structured, homogeneous corpora. Fails for:
+
 - Long, complex documents (context loss at chunk boundaries)
 - Questions requiring multi-hop reasoning
 - Mixed content types (tables, code, prose)
@@ -156,7 +158,7 @@ Foundation models have a knowledge cutoff and no access to your enterprise data.
 ### Evaluation
 
 | Metric | What it measures | Tool |
-|--------|-----------------|------|
+| -------- | ----------------- | ------ |
 | **Retrieval precision@k** | Are retrieved chunks relevant? | RAGAS, manual |
 | **Retrieval recall** | Are all relevant chunks retrieved? | RAGAS |
 | **Answer faithfulness** | Does answer stay within retrieved context? | RAGAS, LLM-as-judge |
@@ -184,6 +186,7 @@ Foundation models have a knowledge cutoff and no access to your enterprise data.
 ## 2. Agentic RAG
 
 ### Problem
+
 Standard RAG uses a fixed retrieval strategy for every query. Some queries need no retrieval (the model knows the answer). Others need multiple retrieval rounds (multi-hop reasoning). Agentic RAG lets the model decide when and what to retrieve.
 
 ### Architecture
@@ -282,6 +285,7 @@ Results merged → Agent synthesises unified answer
 ## 3. Multi-Agent Orchestration
 
 ### Problem
+
 Some tasks are too large for a single agent's context window, benefit from parallelism across specialised agents, or require different model capabilities for different sub-tasks.
 
 ### Architecture
@@ -328,7 +332,7 @@ Some tasks are too large for a single agent's context window, benefit from paral
 ### Result Aggregation
 
 | Pattern | When to use |
-|---------|-------------|
+| --------- | ------------- |
 | **Merge all results** | Sub-tasks produce complementary outputs (sections of a report) |
 | **Vote/consensus** | Run same task N times; take majority answer (increases reliability, 3× cost) |
 | **Best-of-N** | Run N times; judge selects best output (LLM-as-judge or rule-based) |
@@ -368,6 +372,7 @@ Worker fails
 ## 4. Parallel Fan-Out
 
 ### Problem
+
 A large batch of independent AI tasks needs to complete in acceptable time. Sequential processing is too slow; a map-reduce approach is needed.
 
 ### Architecture
@@ -424,11 +429,13 @@ async def fan_out(items):
 ### Concurrency Limits and Rate Limit Management
 
 **Rate limit types:**
+
 - **Requests per minute (RPM):** Number of API calls per minute
 - **Tokens per minute (TPM):** Total tokens (input + output) per minute
 - **Tokens per day (TPD):** Some tiers have daily limits
 
 **Safe concurrency formula:**
+
 ```
 Max concurrent = min(
     your_RPM_limit / average_call_duration_seconds,
@@ -439,6 +446,7 @@ Max concurrent = min(
 Start at 10, measure 429 rate, adjust upward until 429s exceed 0.5%.
 
 **Exponential backoff pattern:**
+
 ```python
 import random, time
 
@@ -474,6 +482,7 @@ Failed validations: retry once with rephrased prompt; if still fails, route to m
 ## 5. AI Gateway Pattern
 
 ### Problem
+
 Multiple teams, services, and applications each implement their own AI integration — with no unified auth, no centralised cost tracking, no rate limiting, and no ability to swap models. The AI Gateway centralises all AI traffic through a single control plane.
 
 ### Architecture
@@ -507,7 +516,7 @@ Multiple teams, services, and applications each implement their own AI integrati
 ### Gateway Capabilities
 
 | Capability | Business value |
-|-----------|---------------|
+| ----------- | --------------- |
 | **Unified authentication** | One API key per team; gateway holds provider keys |
 | **Rate limiting per team** | Prevent one team from consuming all capacity |
 | **Cost tracking** | Token usage attributed per team, product, environment |
@@ -544,6 +553,7 @@ def route_request(request):
 ## 6. Semantic Caching
 
 ### Problem
+
 Many AI applications receive near-identical queries repeatedly (FAQ bots, search assistants, document Q&A). Calling the model for every query is wasteful when a cached response would serve equally well.
 
 ### Architecture
@@ -582,7 +592,7 @@ The threshold determines how similar a query must be to a cached query to count 
 ### TTL Strategy
 
 | Content type | Recommended TTL |
-|-------------|-----------------|
+| ------------- | ----------------- |
 | Product FAQ | 24 hours |
 | Policy documents | 1 week |
 | Breaking news / market data | Do not cache |
@@ -606,6 +616,7 @@ Net saving: $1,196/day — ~40% cost reduction
 ## 7. LLM-as-Judge Evaluation
 
 ### Problem
+
 Evaluating AI output quality at scale is expensive if done by humans and impossible to do manually for every output. Using a capable AI model to judge another model's output provides scalable quality measurement.
 
 ### Architecture
@@ -630,11 +641,13 @@ Aggregate metrics            Route to HITL
 ### Avoiding Judge Bias
 
 LLM judges exhibit biases:
+
 - **Position bias:** Prefers the first option when comparing two responses
 - **Verbosity bias:** Prefers longer, more elaborate responses regardless of accuracy
 - **Self-preference bias:** Claude tends to prefer Claude-generated text
 
 **Mitigations:**
+
 - **Blind evaluation:** Remove model name from input; judge doesn't know which model generated the output
 - **Swap positions:** If comparing A vs B, run twice with positions swapped; count only agreements
 - **Reference anchor:** Provide a human-written reference answer; score against it, not just A vs B
@@ -662,12 +675,13 @@ See [Evaluation Harness Pattern](#13-evaluation-harness) for the full harness im
 ## 8. Human-in-the-Loop (HITL) Gates
 
 ### Problem
+
 AI agents make mistakes. For high-stakes, irreversible, or regulated actions, the cost of an unreviewed AI error exceeds the benefit of full automation.
 
 ### When to Insert HITL
 
 | Trigger | Example |
-|---------|---------|
+| --------- | --------- |
 | **High-stakes action** | Send mass email, delete records, execute financial transaction |
 | **Low confidence output** | Model's self-assessed confidence < 0.75 |
 | **Sensitive domain** | Medical, legal, financial advice to end users |
@@ -724,7 +738,7 @@ AI agents make mistakes. For high-stakes, irreversible, or regulated actions, th
     {"confidence": 0.0-1.0, "reasoning": "why you are/aren't confident"}""",
         messages=[...]
     )
-    
+
     confidence = extract_confidence(response)
     if confidence < HITL_THRESHOLD:  # e.g., 0.75
         route_to_human_queue(task, response, confidence)
@@ -748,6 +762,7 @@ Tier 4 (no-AI): Edge cases; human handles entirely without AI assistance
 ## 9. Guardrail Pipeline
 
 ### Problem
+
 Raw model output can contain: harmful content, PII, off-topic responses, competitor mentions, regulatory violations, prompt leaks. A guardrail pipeline validates both inputs and outputs before they reach users or downstream systems.
 
 ### Architecture
@@ -790,7 +805,7 @@ User Input
 ### Content Classifiers
 
 | Classifier | What it detects | Implementation |
-|-----------|----------------|----------------|
+| ----------- | ---------------- | ---------------- |
 | **PII** | Names, emails, SSN, credit cards | Microsoft Presidio, AWS Comprehend |
 | **Toxicity** | Hate speech, harassment, violence | Perspective API, custom model |
 | **Topic drift** | Off-topic or out-of-scope responses | Claude Haiku classifier |
@@ -817,6 +832,7 @@ FALLBACK_RESPONSES = {
 ## 10. Explainability Pipeline
 
 ### Problem
+
 Regulated industries (finance, healthcare, HR) require explanations for AI-assisted decisions. Auditors need to trace how conclusions were reached. End users may have a right to explanation (GDPR Article 22).
 
 ### Architecture
@@ -873,7 +889,7 @@ audit_log.store({
 ### Compliance Audit Trail
 
 | Element | Retention | Access |
-|---------|-----------|--------|
+| --------- | ----------- | -------- |
 | Decision ID and timestamp | Per regulation (5–7 years in finance) | Compliance, legal |
 | Model version and parameters | Same as decision | Compliance |
 | Retrieved context (anonymised) | Same as decision | Compliance |
@@ -885,6 +901,7 @@ audit_log.store({
 ## 11. Cost Optimisation Routing
 
 ### Problem
+
 Not all tasks need the same model. Using Fable 5 for everything is 10–50× more expensive than using Haiku for simple tasks. A routing layer assigns each task to the cheapest model that can handle it.
 
 ### Architecture
@@ -951,6 +968,7 @@ return result
 ## 12. Stress Testing Pattern
 
 ### Problem
+
 AI endpoints have different performance profiles than conventional APIs. Model latency is high (0.5–10s), variable, and affected by token count. Concurrency limits and rate limits behave differently under load. You need to validate performance before launch.
 
 ### Load Testing Strategy
@@ -968,7 +986,7 @@ AI endpoints have different performance profiles than conventional APIs. Model l
 ### Timeout and Retry Configuration
 
 | Timeout type | Recommended value | Rationale |
-|-------------|-------------------|-----------|
+| ------------- | ------------------- | ----------- |
 | Connect timeout | 5s | Network issue — fail fast |
 | Read timeout per token | 300ms | Flag stalled streams |
 | Total request timeout | 120s for Fable 5, 60s for Sonnet | Covers P99 of complex calls |
@@ -997,6 +1015,7 @@ Offline mode: Notify user; queue request for later processing
 ## 13. Evaluation Harness
 
 ### Problem
+
 AI systems degrade silently. A new model version, a prompt change, or a RAG config change can regress quality without triggering any alerting. An evaluation harness provides automated regression testing and A/B testing infrastructure.
 
 ### Architecture
@@ -1035,6 +1054,7 @@ AI systems degrade silently. A new model version, a prompt change, or a RAG conf
 ### Test Dataset Management
 
 **Dataset requirements:**
+
 - 200–500 representative examples for meaningful statistics
 - Coverage across all task types the system handles
 - Adversarial examples (edge cases, ambiguous queries, injection attempts)
@@ -1085,7 +1105,7 @@ After N samples (power analysis → min 200 per group):
 Technical quality metrics (faithfulness, precision) must align to business metrics:
 
 | Technical metric | Business metric |
-|-----------------|-----------------|
+| ----------------- | ----------------- |
 | Answer faithfulness | Reduction in human follow-up queries |
 | Retrieval precision | Time to resolve customer issue |
 | Task completion rate | Support ticket deflection rate |
@@ -1099,6 +1119,7 @@ Measure both. Optimise for business metrics; use technical metrics to diagnose.
 ## 14. Blue-Green AI Deployment
 
 ### Problem
+
 Changing models or system prompts in production is risky. A bad change can silently degrade quality or break output schemas. Blue-green AI deployment allows gradual rollout with rollback capability.
 
 ### Architecture
@@ -1129,7 +1150,7 @@ Changing models or system prompts in production is risky. A bad change can silen
 ### Traffic Split for Gradual Rollout
 
 | Day | Green traffic | Condition to proceed |
-|-----|--------------|---------------------|
+| ----- | -------------- | --------------------- |
 | 1 | 1% | No errors; quality ≥ blue |
 | 2–3 | 5% | P95 latency ≤ blue × 1.1 |
 | 4–7 | 25% | Quality score ≥ blue; cost ≤ blue × 1.2 |
@@ -1139,7 +1160,7 @@ Changing models or system prompts in production is risky. A bad change can silen
 ### Rollback Trigger Conditions
 
 | Condition | Rollback trigger level |
-|-----------|----------------------|
+| ----------- | ---------------------- |
 | Quality score drop > 10% | Immediate: route 100% to blue |
 | Error rate > 2% | Immediate |
 | P95 latency > blue × 1.5 | Immediate |
@@ -1151,6 +1172,7 @@ Changing models or system prompts in production is risky. A bad change can silen
 ## 15. CALM Context Management
 
 ### Problem
+
 Enterprise AI systems handle long conversations, multi-session continuity, complex document analysis, and multi-turn workflows. Without a structured context strategy, models receive either too little context (poor answers) or too much (expensive, loses-in-the-middle degradation).
 
 ### The CALM Framework
@@ -1166,7 +1188,7 @@ Enterprise AI systems handle long conversations, multi-session continuity, compl
 ### Context Compression Strategies
 
 | Strategy | Approach | When to use |
-|----------|----------|-------------|
+| ---------- | ---------- | ------------- |
 | **Sliding window** | Keep last N turns; discard older | Simple conversations |
 | **Summarisation** | Summarise older turns; keep recent verbatim | Long conversations |
 | **Selective retention** | Keep only turns with task-relevant facts | Structured workflows |

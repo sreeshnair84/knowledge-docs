@@ -56,7 +56,7 @@ response = client.messages.create(model="claude-sonnet-4-6", max_tokens=1024, me
 ### Key Parameters
 
 | Parameter | Type | Description |
-|-----------|------|-------------|
+| ----------- | ------ | ------------- |
 | `model` | string | Model ID (always pin to specific version) |
 | `max_tokens` | int | Max output tokens (required) |
 | `system` | string | System prompt |
@@ -309,6 +309,7 @@ for result in client.messages.batches.results(batch.id):
 ```
 
 **Key facts:**
+
 - 50% price discount vs synchronous API
 - Most batches complete in < 1 hour
 - Compatible with prompt caching (additional discount)
@@ -380,7 +381,7 @@ messages=[
 ### Caching Rules
 
 | Rule | Detail |
-|------|--------|
+| ------ | -------- |
 | Minimum prefix | 1,024 tokens |
 | Cache TTL | 5 minutes (resets on each hit) |
 | Cache read discount | 90% off input token price |
@@ -390,6 +391,7 @@ messages=[
 ### Best Practice: Stable Prefix Design
 
 Structure prompts so stable content comes first:
+
 ```
 [System prompt]          ← cache here
 [Document / context]     ← cache here
@@ -466,7 +468,7 @@ def call_with_retry(messages, max_retries=3):
 ### Common Error Codes
 
 | Code | Meaning | Action |
-|------|---------|--------|
+| ------ | --------- | -------- |
 | 401 | Invalid API key | Check key |
 | 403 | Permission denied | Check model access |
 | 429 | Rate limit exceeded | Exponential backoff |

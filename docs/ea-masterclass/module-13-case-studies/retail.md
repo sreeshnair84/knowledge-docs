@@ -26,7 +26,7 @@ core_tension: "E-commerce disruption requiring AI-powered personalization at sca
 RetailCo is a mid-market general merchandise chain operating 2,400 stores across 38 states. Revenue stands at $22B annually, with approximately 60% derived from consumables and household essentials, and 40% from apparel, seasonal, and home categories. The business grew significantly through acquisition over the prior decade, absorbing seven regional chains of varying sizes and technology maturity.
 
 | Dimension | Detail |
-|---|---|
+| --- | --- |
 | Stores | 2,400 across 38 states |
 | Annual Revenue | $22B |
 | SKU Count (active) | ~420,000 |
@@ -166,7 +166,7 @@ The current state had no automated feedback loop. Stockouts were discovered by s
 The EA team evaluated two market-leading SaaS platforms before recommending a custom build on Azure ML.
 
 | Criterion | Blue Yonder | o9 Solutions | Custom Azure ML |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | License Cost | $12M/yr | $9.5M/yr | $0 (OSS + Azure consumption) |
 | Implementation Cost | $4M | $3.5M | $6.8M total |
 | 3-Year TCO | $40M | $32.5M | $11.2M |
@@ -180,7 +180,7 @@ The decisive factor was supplier API non-standardisation. RetailCo's supplier ba
 ### Financial Model
 
 | Category | Amount | Timing |
-|---|---|---|
+| --- | --- | --- |
 | Total Investment | $6.8M | 18 months |
 | Inventory Reduction (Working Capital) | $180M | Yr 1–2 (balance sheet) |
 | Stockout Revenue Recovery | $42M | Yr 1–3 (P&L) |
@@ -200,6 +200,7 @@ The EA team presented the following framing to the RetailCo Executive Committee:
 **The Core Argument:** RetailCo's inventory problem is not a buying problem — buyers are capable. It is a data and computation problem. The volume and velocity of signals required to forecast 420,000 SKUs across 2,400 stores exceeds human cognitive capacity. AI does not replace buyer judgment; it gives buyers the right information at the right time to exercise that judgment effectively.
 
 **Risk Mitigation Framing:**
+
 - The $800M excess inventory is already a realized loss — every month of delay extends carrying costs.
 - A 12% stockout rate means RetailCo is training customers to shop elsewhere. The revenue at risk compounds over time.
 - The $6.8M investment is 3.8% of the quantified $180M working capital benefit.
@@ -211,7 +212,7 @@ The EA team presented the following framing to the RetailCo Executive Committee:
 ## 8. Implementation Roadmap
 
 | Phase | Duration | Activities | Investment | Exit Criteria |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 0 — Foundation | Months 1–3 | Data audit, POS schema mapping, Databricks environment setup | $0.8M | Data quality report; unified POS schema defined |
 | 1 — Core Platform | Months 4–9 | Lakehouse build, feature store, top 500 SKU models, buyer UI (MVP) | $2.4M | Forecast MAPE < 18% on holdout; buyer UI live |
 | 2 — Supplier Integration | Months 10–14 | Supplier API onboarding (14 formats), lead time models, reorder optimization | $2.1M | 80% of top-50 suppliers integrated |
@@ -227,7 +228,7 @@ The EA team presented the following framing to the RetailCo Executive Committee:
 ### Decision Rights
 
 | Decision | Owner | Escalation |
-|---|---|---|
+| --- | --- | --- |
 | AI model deployment to production | VP of Supply Chain + EA Review Board | CTO for P1 incidents |
 | Buyer override of AI recommendation | Category Buyer | No escalation required |
 | Override pattern triggers model review | ML Engineering Lead | VP Supply Chain if >15% override rate |
@@ -240,7 +241,7 @@ The EA team presented the following framing to the RetailCo Executive Committee:
     Each demand forecasting model is assigned a confidence tier. Tier 1 models (top 500 SKUs, >24 months of clean history) are deployed with automated reorder recommendations. Tier 2 models (5,000 SKUs, 12–24 months history) require buyer confirmation before order placement. Tier 3 models (remainder) provide advisory forecasts only.
 
 | Control | Mechanism |
-|---|---|
+| --- | --- |
 | Drift detection | Weekly MAPE monitoring; alert if MAPE degrades >20% from baseline |
 | Data pipeline failure | Dead-letter queue with PagerDuty alert; fallback to last-known-good forecast |
 | Bias monitoring | Quarterly review of forecast error by store demographic cluster |
@@ -257,7 +258,7 @@ The EA team presented the following framing to the RetailCo Executive Committee:
     Results at 24 months post-go-live fell short of the original business case on both primary metrics. The data quality constraint was the dominant cause.
 
 | Metric | Target | Realized | Gap | Primary Cause |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Stockout Rate | 12% → 8% (−33%) | 12% → 10.9% (−9%) | −24% shortfall | Historical data quality; 29% of records unusable |
 | Inventory Reduction | $180M | $95M | −$85M | Supplier API adoption slower than planned (42% vs. 80%) |
 | Forecast MAPE (top 500 SKUs) | <18% | 21.3% | −3.3pp | Insufficient clean history in 8 of 12 categories |
@@ -291,7 +292,7 @@ The EA team presented the following framing to the RetailCo Executive Committee:
 ## 12. Key Takeaways
 
 | # | Takeaway |
-|---|---|
+| --- | --- |
 | 1 | AI demand forecasting delivers measurable inventory improvement, but results are bounded by data quality — not algorithmic sophistication. |
 | 2 | Acquisition-heavy organisations carry a data debt that must be explicitly quantified and addressed before AI programmes begin. |
 | 3 | Separating working capital, P&L, and cost avoidance benefits in financial cases prevents approval delays and establishes trust with CFOs. |

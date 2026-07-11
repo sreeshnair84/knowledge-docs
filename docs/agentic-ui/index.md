@@ -158,7 +158,7 @@ Cluster 5   Operations & Governance (4 pages)
 ## Navigate by Role
 
 | Your Role | Start Here | Then Go To |
-|---|---|---|
+| --- | --- | --- |
 | **Enterprise Architect** | [Evolution of Human-AI Interfaces](evolution-human-ai-interfaces.md) | [Enterprise Reference Architecture](enterprise-reference-architecture.md) → [AGUI Standards & Ecosystem](agui-standards-landscape.md) |
 | **Principal AI Architect** | [AGUI Standards & Ecosystem Landscape](agui-standards-landscape.md) | [Enterprise Reference Architecture](enterprise-reference-architecture.md) → [Evolution of Human-AI Interfaces](evolution-human-ai-interfaces.md) |
 | **AI Platform Lead** | [Enterprise Reference Architecture](enterprise-reference-architecture.md) | [AGUI Standards & Ecosystem Landscape](agui-standards-landscape.md) §2 AG-UI → §4 MCP Apps |
@@ -171,7 +171,7 @@ Cluster 5   Operations & Governance (4 pages)
 ## Deliverables Index
 
 | # | Deliverable | Where to Find It |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Agentic UI Evolution Timeline (12 eras) | [Evolution of Human-AI Interfaces](evolution-human-ai-interfaces.md) §1 |
 | 2 | Why Chat is Insufficient — 12-Point Analysis | [Evolution of Human-AI Interfaces](evolution-human-ai-interfaces.md) §2 |
 | 3 | Human-Agent Collaboration Models (5 models) | [Evolution of Human-AI Interfaces](evolution-human-ai-interfaces.md) §3 |

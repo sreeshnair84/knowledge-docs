@@ -10,45 +10,46 @@ last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
 Enterprise AI Authentication Research • Part
-# **Part 6** 
 
-## **Banking Case Study** 
+# **Part 6**
 
-Production architecture for a highly regulated bank: Zero Trust AI agents with AWS, Entra ID, MCP, GitHub Enterprise, ServiceNow, Confluence, Jira, M365, SharePoint, and Slack 
+## **Banking Case Study**
 
-Enterprise Authentication & Identity Propagation for AI Agents 
+Production architecture for a highly regulated bank: Zero Trust AI agents with AWS, Entra ID, MCP, GitHub Enterprise, ServiceNow, Confluence, Jira, M365, SharePoint, and Slack
 
-### **Case Study — Regulated Banking Institution** 
+Enterprise Authentication & Identity Propagation for AI Agents
 
-This case study designs a production-grade enterprise AI platform for a global bank subject to SOC 2, ISO 27001, PCI DSS, NIST SP 800-63, and financial regulations including MAS TRM, FCA SYSC, and SOX. The architecture prioritises identity traceability, least-privilege access, human oversight for privileged actions, and complete audit trails. 
+### **Case Study — Regulated Banking Institution**
 
-###### **Bank Technology Stack** 
+This case study designs a production-grade enterprise AI platform for a global bank subject to SOC 2, ISO 27001, PCI DSS, NIST SP 800-63, and financial regulations including MAS TRM, FCA SYSC, and SOX. The architecture prioritises identity traceability, least-privilege access, human oversight for privileged actions, and complete audit trails.
 
-- Cloud: AWS (primary), with M365 SaaS for productivity 
+###### **Bank Technology Stack**
 
-- Identity Provider: Microsoft Entra ID (primary) + legacy ADFS federation 
+- Cloud: AWS (primary), with M365 SaaS for productivity
 
-- AI Runtime: AWS Bedrock AgentCore + MCP servers + A2A for agent orchestration 
+- Identity Provider: Microsoft Entra ID (primary) + legacy ADFS federation
 
-- Source Code: GitHub Enterprise (GHES) — on-premises 
+- AI Runtime: AWS Bedrock AgentCore + MCP servers + A2A for agent orchestration
 
-- ITSM: ServiceNow (SaaS) 
+- Source Code: GitHub Enterprise (GHES) — on-premises
 
-- Knowledge: Confluence (Data Center on-prem) + SharePoint Online 
+- ITSM: ServiceNow (SaaS)
 
-- Project Tracking: Jira (Data Center on-prem) 
+- Knowledge: Confluence (Data Center on-prem) + SharePoint Online
 
-- Productivity: Microsoft 365 (Exchange, Teams, OneDrive) 
+- Project Tracking: Jira (Data Center on-prem)
 
-- Communication: Slack Enterprise Grid 
+- Productivity: Microsoft 365 (Exchange, Teams, OneDrive)
 
-- Authorization Policy Engine: Open Policy Agent (OPA) with Rego 
+- Communication: Slack Enterprise Grid
 
-- SIEM: Splunk Enterprise Security 
+- Authorization Policy Engine: Open Policy Agent (OPA) with Rego
 
-#### **Architecture Layers** 
+- SIEM: Splunk Enterprise Security
 
-##### **Banking Architecture Layers** 
+#### **Architecture Layers**
+
+##### **Banking Architecture Layers**
 
 |**Layer**|**Component**|**Purpose**|
 |---|---|---|
@@ -65,37 +66,37 @@ This case study designs a production-grade enterprise AI platform for a global b
 |Human Oversight|ServiceNow Approval Workflows +|Required approval gate for privileged|
 ||Slack approval bots|AI actions|
 
-### **Identity Architecture** 
+### **Identity Architecture**
 
-#### **Multi-Layer Identity Stack** 
+#### **Multi-Layer Identity Stack**
 
-##### **Banking Identity Stack — 6 Layers** 
+##### **Banking Identity Stack — 6 Layers**
 
-- **1** [Layer 1] Entra ID External Identities: governs all human user accounts (banking staff) 
+- **1** [Layer 1] Entra ID External Identities: governs all human user accounts (banking staff)
 
-↓ 
+↓
 
-**2** [Layer 2] ADFS Federation: bridges legacy on-prem Kerberos systems to OIDC/SAML 
+**2** [Layer 2] ADFS Federation: bridges legacy on-prem Kerberos systems to OIDC/SAML
 
-↓ 
+↓
 
-**3** [Layer 3] AWS IAM Identity Center: maps Entra ID identities to AWS IAM principals ↓ 
+**3** [Layer 3] AWS IAM Identity Center: maps Entra ID identities to AWS IAM principals ↓
 
-- **4** [Layer 4] AI Platform Identity: Bedrock AgentCore receives user identity via OIDC token 
+- **4** [Layer 4] AI Platform Identity: Bedrock AgentCore receives user identity via OIDC token
 
-↓ 
+↓
 
-- **5** [Layer 5] MCP Server Identity: each MCP server validates user identity via signed JWT 
+- **5** [Layer 5] MCP Server Identity: each MCP server validates user identity via signed JWT
 
-↓ 
+↓
 
-**6** [Layer 6] Tool Identity: each tool (GitHub, ServiceNow etc.) receives user's own OAuth token 
+**6** [Layer 6] Tool Identity: each tool (GitHub, ServiceNow etc.) receives user's own OAuth token
 
-#### **ADFS Federation Bridge** 
+#### **ADFS Federation Bridge**
 
-The bank's ADFS (Active Directory Federation Services) infrastructure federates on-premises Active Directory to Microsoft Entra ID. Modern cloud services (AWS, Slack, ServiceNow SaaS) authenticate via Entra ID SAML/OIDC endpoints. Legacy on-prem systems (Confluence DC, Jira DC, GHES) continue to use Kerberos or LDAP, with identity bridged via ADFS. 
+The bank's ADFS (Active Directory Federation Services) infrastructure federates on-premises Active Directory to Microsoft Entra ID. Modern cloud services (AWS, Slack, ServiceNow SaaS) authenticate via Entra ID SAML/OIDC endpoints. Legacy on-prem systems (Confluence DC, Jira DC, GHES) continue to use Kerberos or LDAP, with identity bridged via ADFS.
 
-##### **Identity Integration by System** 
+##### **Identity Integration by System**
 
 |**System**|**Auth Protocol**|**Identity Source**|**MFA Enforced By**|
 |---|---|---|---|
@@ -110,13 +111,13 @@ The bank's ADFS (Active Directory Federation Services) infrastructure federates 
 |Confluence DC (on-prem)|Kerberos / LDAP|Active Directory|AD-integrated MFA (ADFS)|
 |Jira DC (on-prem)|Kerberos / LDAP|Active Directory|AD-integrated MFA (ADFS)|
 
-### **OAuth 2.1 and OBO Implementation** 
+### **OAuth 2.1 and OBO Implementation**
 
-The bank standardises on OAuth 2.1 for all new integrations. OAuth 2.1 consolidates security best practices from OAuth 2.0 RFCs: PKCE is mandatory, implicit flow is prohibited, and refresh token rotation is required. On-Behalf-Of (RFC 8693) is used wherever the AI agent needs to call downstream APIs preserving user identity. 
+The bank standardises on OAuth 2.1 for all new integrations. OAuth 2.1 consolidates security best practices from OAuth 2.0 RFCs: PKCE is mandatory, implicit flow is prohibited, and refresh token rotation is required. On-Behalf-Of (RFC 8693) is used wherever the AI agent needs to call downstream APIs preserving user identity.
 
-#### **OAuth 2.1 Requirements Checklist** 
+#### **OAuth 2.1 Requirements Checklist**
 
-**OAuth 2.1 vs 2.0 Requirements** 
+**OAuth 2.1 vs 2.0 Requirements**
 
 |**Requirement**|**OAuth 2.0**|**OAuth 2.1**|**Bank Implementation**|
 |---|---|---|---|
@@ -127,25 +128,25 @@ The bank standardises on OAuth 2.1 for all new integrations. OAuth 2.1 consolida
 |Exact Redirect URI<br>matching|Approximate OK|EXACT MATCH<br>REQUIRED|App registrations use exact<br>URI only|
 |Bearer token in URL query|Allowed (not<br>recommended)|PROHIBITED|API gateway rejects tokens<br>in query string|
 
-#### **Complete OBO Chain — User** → **Bedrock** → **MCP** → **GitHub** 
+#### **Complete OBO Chain — User** → **Bedrock** → **MCP** → **GitHub**
 
-##### **Bank OBO Chain — 13 Steps** 
+##### **Bank OBO Chain — 13 Steps**
 
-- **1** Bank employee logs in to AI portal via Entra ID SSO (MFA enforced) 
+- **1** Bank employee logs in to AI portal via Entra ID SSO (MFA enforced)
 
-↓ 
+↓
 
-**2** Entra ID issues: ID token + access token (aud: ai-platform-client-id) 
+**2** Entra ID issues: ID token + access token (aud: ai-platform-client-id)
 
-↓ 
+↓
 
-**3** AI portal sends user request to Bedrock AgentCore with access token 
+**3** AI portal sends user request to Bedrock AgentCore with access token
 
-↓ 
+↓
 
-**4** AgentCore validates token: signature, aud, exp, Conditional Access claims 
+**4** AgentCore validates token: signature, aud, exp, Conditional Access claims
 
-↓ 
+↓
 
 |**5**|AgentCore identifies tool needed: github-enterprise-mcp-server|
 |---|---|
@@ -168,11 +169,11 @@ The bank standardises on OAuth 2.1 for all new integrations. OAuth 2.1 consolida
 |↓||
 |**14**|GHES returns PR data; MCP server formats response; logs all steps|
 
-### **Fine-Grained Authorization with OPA** 
+### **Fine-Grained Authorization with OPA**
 
-The bank deploys Open Policy Agent (OPA) as a sidecar to the MCP Server Gateway. Every tool call passes through OPA before execution. Rego policies encode the bank's authorization rules, including data classification checks, business hours restrictions, and privileged action approval requirements. 
+The bank deploys Open Policy Agent (OPA) as a sidecar to the MCP Server Gateway. Every tool call passes through OPA before execution. Rego policies encode the bank's authorization rules, including data classification checks, business hours restrictions, and privileged action approval requirements.
 
-##### **Sample OPA Rego Policy — GitHub Tool Authorization** 
+##### **Sample OPA Rego Policy — GitHub Tool Authorization**
 
 ```
 package bank.ai.github
@@ -198,9 +199,9 @@ allow if {
 }
 ```
 
-#### **OPA Decision Points in the AI Workflow** 
+#### **OPA Decision Points in the AI Workflow**
 
-##### **OPA Decision Points** 
+##### **OPA Decision Points**
 
 |**Decision Point**|**OPA Input**|**Policy Checks**|**On Deny**|
 |---|---|---|---|
@@ -213,11 +214,11 @@ allow if {
 |Privileged action|User identity, action type,<br>approval chain|Has action been approved<br>by required approver?|Action deferred; approval<br>request sent to ServiceNow|
 |Tool response delivery|Response content, data<br>classification labels|Does response contain<br>data user shouldn't see?|Response redacted; Splunk<br>alert raised|
 
-### **Human-in-the-Loop for Privileged Actions** 
+### **Human-in-the-Loop for Privileged Actions**
 
-The bank requires human approval before AI agents execute any privileged action — defined as any action that creates, modifies, or deletes production data, or any action that could affect regulatory-controlled systems (PCI, SOX scope). 
+The bank requires human approval before AI agents execute any privileged action — defined as any action that creates, modifies, or deletes production data, or any action that could affect regulatory-controlled systems (PCI, SOX scope).
 
-##### **Privileged Action Approval Requirements** 
+##### **Privileged Action Approval Requirements**
 
 |**Action Category**|**Examples**|**Approver**|**Approval Channel**|**SLA**|
 |---|---|---|---|---|
@@ -228,7 +229,7 @@ The bank requires human approval before AI agents execute any privileged action 
 |External<br>communications|Send email to<br>external parties|Compliance officer|Slack approval bot|1 hour|
 |Financial data<br>modification|Update cost centre,<br>budget records|CFO delegate|ServiceNow + audit<br>log|2 hours|
 
-##### **Human Approval Workflow — 10 Steps** 
+##### **Human Approval Workflow — 10 Steps**
 
 |**1**<br> ↓|AI agent determines action requires privileged operation (e.g. merge PR to main)|
 |---|---|
@@ -249,9 +250,9 @@ The bank requires human approval before AI agents execute any privileged action 
 |**9**<br> ↓|AI agent executes action; logs: {action, user, approver, approval_token, correlation_id}|
 |**10**|ServiceNow ticket closed with resolution; Splunk audit event recorded|
 
-### **Compliance Framework Mapping** 
+### **Compliance Framework Mapping**
 
-##### **Compliance Framework to Architecture Control Mapping** 
+##### **Compliance Framework to Architecture Control Mapping**
 
 |**Framework**|**Key AI-Relevant**<br>**Requirements**|**Architecture Control**|**Evidence**|
 |---|---|---|---|
@@ -263,9 +264,9 @@ The bank requires human approval before AI agents execute any privileged action 
 |NIST SP 800-63 AAL2|Multi-factor authentication<br>for regulated systems|Entra CA enforces MFA<br>before AI portal access|Entra sign-in logs showing<br>MFA satisfied|
 |SOX (ITGC)|Change management;<br>access controls; audit trail|Human approval for<br>code/data changes;<br>complete audit chain|ServiceNow change<br>records; GitHub audit log;<br>Splunk|
 
-#### **Zero Trust Posture Summary** 
+#### **Zero Trust Posture Summary**
 
-##### **Zero Trust Maturity Assessment** 
+##### **Zero Trust Maturity Assessment**
 
 |**Zero Trust Pillar**|**Bank Implementation**|**Maturity Level**|
 |---|---|---|
@@ -280,9 +281,9 @@ The bank requires human approval before AI agents execute any privileged action 
 |Infrastructure|AWS IAM roles (no static keys); STS<br>short-term credentials; GuardDuty|Advanced|
 |Visibility|Splunk ES with AI-specific detections;<br>CloudTrail; real-time anomaly alerts|Advanced|
 
-### **Common Anti-Patterns to Avoid** 
+### **Common Anti-Patterns to Avoid**
 
-##### **Banking AI Architecture Anti-Patterns** 
+##### **Banking AI Architecture Anti-Patterns**
 
 |**Anti-Pattern**|**Risk**|**Correct Pattern**|
 |---|---|---|
@@ -295,18 +296,18 @@ The bank requires human approval before AI agents execute any privileged action 
 |Single OAuth scope for all GitHub<br>operations|Read token used for write operations<br>by confused AI|Separate scopes per operation type;<br>OPA validates scope matches<br>requested action|
 |No token revocation on employee<br>offboarding|Departed employee's AI sessions<br>continue to operate on their behalf|HR-triggered Entra ID disable; CAE<br>immediately revokes active tokens;<br>Secrets Manager rotation|
 
-###### **Summary: Banking Architecture Decision Principles** 
+###### **Summary: Banking Architecture Decision Principles**
 
-- Identity: Entra ID as single IdP; ADFS bridge for legacy; no local accounts for AI services 
+- Identity: Entra ID as single IdP; ADFS bridge for legacy; no local accounts for AI services
 
-- Authentication: OAuth 2.1 + PKCE everywhere; OBO for multi-hop; JWT Bearer for service identity 
+- Authentication: OAuth 2.1 + PKCE everywhere; OBO for multi-hop; JWT Bearer for service identity
 
-- Authorization: OPA with Rego; deny by default; explicit allow per user-role-tool-data combination 
+- Authorization: OPA with Rego; deny by default; explicit allow per user-role-tool-data combination
 
-- Secrets: AWS Secrets Manager + HashiCorp Vault; automatic rotation; KMS encryption; no static keys 
+- Secrets: AWS Secrets Manager + HashiCorp Vault; automatic rotation; KMS encryption; no static keys
 
-- Audit: 10-step complete audit chain; Splunk ES; CloudTrail; non-repudiable; 7-year retention 
+- Audit: 10-step complete audit chain; Splunk ES; CloudTrail; non-repudiable; 7-year retention
 
-- Human Oversight: ServiceNow approval workflows for all privileged actions; Slack bot for speed 
+- Human Oversight: ServiceNow approval workflows for all privileged actions; Slack bot for speed
 
 - Compliance: OPA policies encode PCI, SOX, MAS TRM rules; automated compliance evidence generation

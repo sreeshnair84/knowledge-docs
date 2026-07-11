@@ -76,7 +76,7 @@ The pattern the hyperscalers built internally is what **Glean** productized for 
 ## Pattern summary
 
 | Pattern | Pioneered by | Now standard as |
-|---|---|---|
+| --- | --- | --- |
 | Metadata hub with lineage | LinkedIn DataHub, Netflix Metacat | Data catalogs / context layer under RAG |
 | Feature/asset store with sharing & governance | Uber Palette | Governed embedding & prompt stores |
 | Trust signals in discovery | Airbnb Dataportal | Authoritative-source curation |

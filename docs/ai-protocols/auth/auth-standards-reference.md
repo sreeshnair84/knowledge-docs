@@ -11,6 +11,7 @@ covers_through: 2026-07-10
 covers_version: "N/A"
 ---
 *Enterprise AI Authentication Research · Part 7 of 7*
+
 # Auth Standards Reference: OAuth 2.1, OIDC, RFC 8693 & Implementation Checklists
 
 Quick reference guide for OAuth 2.1, OIDC, RFC 8693 token exchange, RFC 7523 JWT Bearer, implementation checklists, vendor documentation, and decision frameworks for enterprise AI authentication.
@@ -24,7 +25,7 @@ Quick reference guide for OAuth 2.1, OIDC, RFC 8693 token exchange, RFC 7523 JWT
 ### OAuth 2.0 and OAuth 2.1
 
 | **Standard** | **RFC / Spec** | **Key Requirements** | **AI Agent Relevance** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | OAuth 2.0 Core | RFC 6749 | Authorization Code, Client Credentials, Implicit, ROPC grants | Foundation for all AI tool authentication |
 | OAuth 2.0 Bearer Tokens | RFC 6750 | Bearer token usage in Authorization header | Every AI API call uses bearer tokens |
 | OAuth 2.1 (draft) | draft-ietf-oauth-v2-1 | PKCE mandatory; Implicit + ROPC prohibited; exact redirect URI | New AI integrations should target 2.1 |
@@ -36,7 +37,7 @@ Quick reference guide for OAuth 2.1, OIDC, RFC 8693 token exchange, RFC 7523 JWT
 ### OpenID Connect (OIDC)
 
 | **Specification** | **Purpose** | **Key Claims** | **AI Agent Use** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | OIDC Core 1.0 | ID token format and validation | `sub`, `iss`, `aud`, `exp`, `iat`, `nonce` | User identity in ID token; passed to MCP servers |
 | OIDC Discovery | `/.well-known/openid-configuration` | Authorization, token, JWKS endpoints | AI platform discovers IdP endpoints automatically |
 | OIDC Dynamic Registration | Client registration at IdP | Client metadata, redirect URIs | AI agent self-registers with enterprise IdP |
@@ -50,7 +51,7 @@ RFC 8693 defines the `token-exchange` grant type, enabling a service to obtain a
 **RFC 8693 Token Exchange Request Parameters**
 
 | **Parameter** | **Value / Description** |
-|---|---|
+| --- | --- |
 | `grant_type` | `urn:ietf:params:oauth:grant-type:token-exchange` |
 | `subject_token` | The incoming token (user's access token to exchange) |
 | `subject_token_type` | `urn:ietf:params:oauth:token-type:access_token` |
@@ -67,7 +68,7 @@ RFC 7523 defines how a JWT can be used as an OAuth 2.0 grant type ('JWT Bearer')
 **RFC 7523 JWT Bearer Use Cases**
 
 | **Use Case** | **JWT Bearer Application** |
-|---|---|
+| --- | --- |
 | GitHub App authentication | GitHub App signs JWT with private key; exchanges for installation token |
 | Salesforce JWT Bearer flow | App presents user-asserting JWT; Salesforce issues user access token |
 | Service account assertion | AI service signs JWT claiming service identity; IdP issues access token |
@@ -80,7 +81,7 @@ Downscoping is the practice of obtaining a token with reduced scopes from a broa
 **Downscoping Patterns**
 
 | **Pattern** | **Mechanism** | **Example** |
-|---|---|---|
+| --- | --- | --- |
 | Google Credential Downscoping | `google-auth` `DownscopedCredentials` class | Broad storage token → read-only token for specific GCS bucket |
 | Entra OBO with limited scope | `scope` parameter in OBO request | Full Graph token → `Files.Read.All` only for SharePoint calls |
 | AWS STS AssumeRole with policy | Inline session policy in `AssumeRole` | Admin role → read-only S3 session for specific prefix |
@@ -95,7 +96,7 @@ Downscoping is the practice of obtaining a token with reduced scopes from a broa
 Use this decision framework when adding a new tool connector to an enterprise AI platform:
 
 | **Question** | **If YES →** | **If NO →** |
-|---|---|---|
+| --- | --- | --- |
 | Does the target API support OAuth 2.0? | Use OAuth 2.0 (proceed to next question) | Consider SAML Bearer, API key, or PAT (with strict rotation) |
 | Do you need user identity in the API call? | Use OAuth 2.0 Authorization Code + PKCE (user-delegated) | Use Client Credentials (service account); document that user identity is lost |
 | Is this a public client (CLI, browser, IDE)? | PKCE is MANDATORY; do not use client secret | Confidential client: use client secret + PKCE |
@@ -107,7 +108,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 ### Choosing Between Service Account and Delegated Access
 
 | **Factor** | **Use Delegated (User Token)** | **Use Service Account** |
-|---|---|---|
+| --- | --- | --- |
 | Trigger | User actively requests the action | Background task, scheduled job, indexing |
 | Audit requirement | Must know which user did the action | System action; no specific user context needed |
 | Permission level | User's own permissions (least privilege) | Admin-granted narrow permissions |
@@ -181,7 +182,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 ## Vendor Documentation References
 
 | **Topic** | **Source** | **Reference** |
-|---|---|---|
+| --- | --- | --- |
 | Microsoft Entra OBO | Microsoft Docs | learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-on-behalf-of-flow |
 | M365 Copilot Architecture | Microsoft | learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-architecture |
 | M365 Copilot Audit | Microsoft Purview | learn.microsoft.com/en-us/purview/audit-copilot-interaction |
@@ -204,7 +205,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 | OIDC Core 1.0 | OpenID Foundation | openid.net/specs/openid-connect-core-1_0.html |
 | OIDC FAPI 2.0 (Banking) | OpenID Foundation | openid.net/specs/fapi-2_0-security-profile.html |
 | NIST SP 800-63B | NIST | pages.nist.gov/800-63-4/sp800-63b.html |
-| OPA (Open Policy Agent) | OPA | www.openpolicyagent.org/docs/latest |
+| OPA (Open Policy Agent) | OPA | <www.openpolicyagent.org/docs/latest> |
 | AWS Cedar Policy Language | AWS | docs.cedarpolicy.com |
 | Zero Trust Architecture | NIST SP 800-207 | csrc.nist.gov/publications/detail/sp/800-207/final |
 
@@ -213,7 +214,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 ## Glossary
 
 | **Term** | **Definition** |
-|---|---|
+| --- | --- |
 | OAuth 2.0 | Industry-standard protocol for delegated authorization; enables apps to access resources on behalf of users |
 | OAuth 2.1 | Consolidated update to OAuth 2.0; mandates PKCE, prohibits implicit flow and ROPC |
 | PKCE | Proof Key for Code Exchange (RFC 7636); prevents authorization code interception attacks |

@@ -47,39 +47,48 @@ Three design principles recur across every mature implementation studied (Anthro
 This is the section enterprises get wrong most often — using "Skill" as a catch-all for anything an agent can do. Precise boundaries:
 
 ### Skill vs. Tool
+
 - A **Tool** is an atomic, typed, callable operation with a fixed input/output contract — `get_order_status(order_id)`. It has no opinion about *when* to be used.
 - A **Skill** is procedural knowledge that may *reference* one or more Tools, plus the judgment about when, why, and in what sequence to call them, plus non-tool content (policy text, examples, decision trees).
 - Rule of thumb: if removing the item would only remove a *capability*, it's a Tool. If removing it would remove *judgment* about existing capabilities, it's a Skill.
 
 ### Skill vs. Workflow
+
 - A **Workflow** is a specific sequence of steps, often with a deterministic control-flow representation (a Flow, a Step Function, an Agentforce Script, a Joule Studio pipeline).
 - A Skill *can contain* a workflow description in its instructions ("first do X, then Y, unless Z"), but a Skill is not itself the execution engine — it's the knowledge that tells the agent (or a downstream deterministic workflow engine) what to do.
 - In practice: deterministic, compliance-critical sequences (e.g., "always run KYC before disbursing funds") should be encoded as an actual workflow/flow with enforced control flow, not merely as skill instructions the model might not follow exactly. Salesforce's Agentforce Script and SAP's hybrid reasoning are explicit responses to this — encoding rule-based determinism *alongside* natural-language instructions rather than relying on the model to always follow prose correctly.
 
 ### Skill vs. Agent
+
 - An **Agent** is the runtime loop — the thing that plans, selects skills/tools, executes, and reflects.
 - A Skill has no independent runtime; it is inert until an agent loads and interprets it. An agent can consume many skills; a skill (in the base Anthropic/AAIF model) does not "run" other skills — though enterprise platforms increasingly support skill-to-skill and skill-to-subagent invocation (see file `07`, Skill Composition).
 
 ### Skill vs. Prompt
+
 - A **Prompt** (in the "system prompt" or "prompt template" sense) is typically a single, monolithic, always-loaded block of instructions for one agent.
 - A **Skill** is modular, independently versioned, conditionally loaded, and — critically — **reusable across multiple agents and even multiple platforms** if it conforms to the open spec.
 - A Skill's SKILL.md *contains* prompt-like instruction text, but the packaging, discovery, and lifecycle model is what differentiates it from "a prompt."
 
 ### Skill vs. MCP Server
+
 - An **MCP Server** is infrastructure: a process exposing Tools/Resources/Prompts over a protocol, with its own connection, auth, and versioning lifecycle.
 - A **Skill** is content: it may *reference* an MCP server's tools by name inside its instructions, but does not itself implement network calls, auth handshakes, or protocol framing.
 - Do not build "a skill" when what you actually need is "a new MCP server" — see Part 6 anti-patterns in file `06`. Conversely, do not build a new MCP server just to encode a procedure that involves tools you already have — that's a Skill.
 
 ### Skill vs. Plugin
+
 - "Plugin" is heavily overloaded across ecosystems. In the Claude Code / Skills ecosystem, a **Plugin** is typically a distribution mechanism (a marketplace-installable bundle that can include one or more Skills, MCP server configs, and slash commands together). A Skill is a *content unit*; a Plugin is a *packaging/distribution unit* that may bundle several content units.
 
 ### Skill vs. Capability
+
 - **Capability** is the informal, business-facing term ("this agent has the capability to process refunds"). A Capability is typically realized by *some combination* of one or more Skills and Tools. Enterprise capability registries (see file `06`) map business capabilities to the underlying Skills/Tools that implement them — this mapping is itself valuable governance metadata.
 
 ### Skill vs. Function
+
 - A **Function** (in the "function calling" sense) is the technical mechanism by which a model requests a Tool invocation. It is a synonym for Tool at the protocol level, not for Skill.
 
 ### Skill vs. API
+
 - An **API** is the backend interface a Tool or MCP server wraps. Skills never talk to APIs directly; that responsibility belongs to Tools/MCP servers/backend services (see the decision matrix in file `04`).
 
 ## 1.5 When to create a new Skill vs. reuse an existing one

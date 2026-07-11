@@ -25,7 +25,7 @@ These four templates are copy-paste-ready for enterprise architecture governance
 ### 7.1 Evaluation Dimensions and Weights
 
 | Dimension | Weight | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Strategic Fit | 25% | Alignment to enterprise strategy, architecture principles, and roadmap |
 | Financial Return | 25% | Expected ROI, NPV, payback period, and cost avoidance |
 | Risk | 20% | Technical, vendor, security, regulatory, and execution risk |
@@ -37,7 +37,7 @@ These four templates are copy-paste-ready for enterprise architecture governance
 #### Strategic Fit (Weight: 25%)
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 4 | Directly enables a Tier-1 strategic objective; aligns with target architecture; referenced in the 3-year roadmap |
 | 3 | Supports a strategic objective indirectly; consistent with architecture principles; no conflicts with roadmap |
 | 2 | Neutral — no strategic conflict but no measurable strategic contribution |
@@ -47,7 +47,7 @@ These four templates are copy-paste-ready for enterprise architecture governance
 #### Financial Return (Weight: 25%)
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 4 | NPV > $5M or ROI > 150% within 3 years; strong quantified benefits with high confidence |
 | 3 | NPV $1M–$5M or ROI 75%–150%; benefits quantified with moderate confidence |
 | 2 | NPV $0–$1M or ROI 25%–75%; benefits partially quantified or reliant on soft savings |
@@ -60,7 +60,7 @@ These four templates are copy-paste-ready for enterprise architecture governance
     Risk is an **inverse** dimension. Score 4 = lowest risk. Score 0 = highest risk.
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 4 | Proven technology; well-understood implementation; low vendor concentration; no regulatory exposure |
 | 3 | Mature technology; minor integration complexity; stable vendor; manageable compliance requirements |
 | 2 | Emerging technology or complex integration; moderate vendor risk; some regulatory uncertainty |
@@ -70,7 +70,7 @@ These four templates are copy-paste-ready for enterprise architecture governance
 #### Feasibility (Weight: 15%)
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 4 | Existing team skills; clear implementation path; available capacity; proven delivery model |
 | 3 | Minor skill gaps addressable with training; delivery approach clear; capacity manageable |
 | 2 | Moderate skill gaps requiring hiring or contracting; delivery approach partially defined |
@@ -80,7 +80,7 @@ These four templates are copy-paste-ready for enterprise architecture governance
 #### Urgency (Weight: 15%)
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 4 | Regulatory deadline within 6 months OR active operational failure threatening revenue/compliance |
 | 3 | Competitive disadvantage already materialising OR deadline within 12 months |
 | 2 | Emerging competitive threat OR deadline 12–24 months out |
@@ -102,7 +102,7 @@ Maximum Possible Score = 4.0
 ### 7.4 Decision Thresholds
 
 | Weighted Score | Recommendation | Action |
-|---|---|---|
+| --- | --- | --- |
 | > 3.0 | **Recommend** | Proceed to business case approval; include in investment plan |
 | 2.0 – 3.0 | **Conditional** | Address identified gaps before approval; re-score at next gate |
 | < 2.0 | **Decline** | Do not fund; document rationale; revisit in next planning cycle |
@@ -118,7 +118,7 @@ Maximum Possible Score = 4.0
 #### Raw Scores
 
 | Dimension | Weight | Investment A | Investment B | Investment C |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Strategic Fit | 25% | 4 | 3 | 2 |
 | Financial Return | 25% | 3 | 2 | 2 |
 | Risk | 20% | 3 | 1 | 3 |
@@ -128,7 +128,7 @@ Maximum Possible Score = 4.0
 #### Weighted Scores
 
 | Dimension | Weight | A Weighted | B Weighted | C Weighted |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Strategic Fit | 25% | 1.00 | 0.75 | 0.50 |
 | Financial Return | 25% | 0.75 | 0.50 | 0.50 |
 | Risk | 20% | 0.60 | 0.20 | 0.60 |
@@ -139,7 +139,7 @@ Maximum Possible Score = 4.0
 #### Decisions
 
 | Investment | Score | Decision | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | A — Cloud Data Platform | 3.10 | Recommend | Strong strategic alignment and financial return; proceed to full business case |
 | B — Gen AI Chatbot | 2.05 | Conditional | Risk score is low; require proof-of-concept and risk mitigation plan before approval |
 | C — ERP Upgrade | 2.65 | Conditional | Urgency is driven by vendor end-of-support; require vendor roadmap confirmation |
@@ -179,7 +179,7 @@ The ARB does not govern:
 #### Membership
 
 | Role | Title | Voting? | Quorum Required? |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Chair | Chief Architect | Yes | Yes |
 | Deputy Chair | Domain Architect Lead | Yes | No |
 | Infrastructure Domain | Head of Infrastructure | Yes | Yes |
@@ -194,7 +194,7 @@ The ARB does not govern:
 #### Authority
 
 | Decision Type | ARB Authority |
-|---|---|
+| --- | --- |
 | Standard Approval | Final decision; no escalation required |
 | Conditional Approval | ARB sets conditions; sponsor must confirm resolution |
 | Escalation to Executive | ARB recommendation only; CTO/CIO makes final call for investments > $5M |
@@ -209,7 +209,7 @@ The ARB does not govern:
 ### 8.2 ARB Membership Roles and Responsibilities
 
 | Role | Key Responsibilities | Time Commitment |
-|---|---|---|
+| --- | --- | --- |
 | Chair | Set agenda; facilitate decisions; own ARB charter; report to CTO | 4 hrs/fortnight |
 | Domain Architect (each) | Review submissions in domain; prepare domain-specific questions; vote | 3 hrs/fortnight |
 | Business Representative | Validate business case alignment; flag business risk | 1.5 hrs/fortnight |
@@ -377,7 +377,7 @@ not. If conditional, list all conditions.]
 ### 8.7 Decision Types and Escalation Paths
 
 | Decision Type | Trigger | Process | Escalation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Standard Approval | New technology in scope | Full ARB review | None — ARB is final |
 | Emergency Approval | Production risk; regulatory deadline < 5 days | Chair + 2 members via email/call | Ratified at next ARB |
 | Architecture Principle Exception | Proposal violates a published principle | Full ARB review; exception register updated | CTO if unanimous ARB concern |
@@ -540,7 +540,7 @@ Responsible AI Board Decision: ____________  Date: ____________
 ### 9.5 AI Ongoing Monitoring Requirements
 
 | What to Monitor | Metric | Frequency | Owner | Alert Threshold |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Model performance (classification) | Accuracy, F1, AUC | Weekly | ML Engineer | >5% degradation vs. baseline |
 | Model performance (regression) | RMSE, MAE | Weekly | ML Engineer | >10% degradation vs. baseline |
 | Input data distribution | PSI (Population Stability Index) | Monthly | Data Engineer | PSI > 0.2 |
@@ -605,7 +605,7 @@ outputs, and how outputs flow into business processes.]
 ### 9.7 AI Incident Response Playbook
 
 | Severity | Definition | Response Time | Incident Commander |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Severity 1 | Harm to individuals; regulatory breach; major financial loss; system unavailable | Immediate — 15 min to acknowledge; 4 hrs to resolve or contain | CISO + CTO + CDO |
 | Severity 2 | Model producing significantly incorrect outputs at scale; data breach risk; fairness violation discovered in production | 2-hour acknowledgement; 24-hour response plan | AI CoE Lead + Business Owner |
 | Severity 3 | Performance degradation within acceptable bounds; minor data quality issue; low-impact anomaly | Next business day acknowledgement; 5-day resolution | ML Engineer + Data Engineer |
@@ -696,7 +696,7 @@ Where:
 **Step 4 — Interpret the result**
 
 | NPV Result | Interpretation |
-|---|---|
+| --- | --- |
 | NPV > 0 | Investment creates value at the chosen discount rate; proceed |
 | NPV = 0 | Investment returns exactly the hurdle rate; borderline |
 | NPV < 0 | Investment destroys value at the chosen discount rate; requires justification |
@@ -712,7 +712,7 @@ Use this to test how sensitive the NPV is to changes in key assumptions. Populat
 **Base Case NPV: $___________M | Discount Rate: ___% | Horizon: ___ years**
 
 | Variable | Change | NPV ($M) | NPV Change vs. Base | Payback (yrs) |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Base Case | — | $0 | — | 0 |
 | Implementation Cost | +20% | $0 | $0 | 0 |
 | Implementation Cost | -20% | $0 | $0 | 0 |
@@ -728,7 +728,7 @@ Use this to test how sensitive the NPV is to changes in key assumptions. Populat
 ### 10.4 Scenario Analysis Template
 
 | Scenario | Description | Cost Assumption | Benefit Assumption | Probability | NPV ($M) | Expected NPV ($M) |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Best Case | Accelerated adoption; favourable vendor pricing; productivity gains exceed targets | Base -15% | Base +30% | 20% | $0 | $0 |
 | Base Case | On-plan delivery; benefits as modelled | Base | Base | 60% | $0 | $0 |
 | Worst Case | Delayed delivery; cost overrun; slower adoption | Base +25% | Base -30% | 20% | $0 | $0 |
@@ -744,7 +744,7 @@ Probability-Weighted NPV = (Best NPV × 0.20) + (Base NPV × 0.60) + (Worst NPV 
     These are indicative industry benchmarks. Actual results vary by organisation size, sector, and implementation quality. Always validate against your organisation's actual cost base.
 
 | Investment Type | Typical ROI Range | Typical Payback | Typical NPV (5-yr, $5–20M investment) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Cloud Migration (lift-and-shift) | 40–80% | 2–3 years | 1–3× investment |
 | Cloud Migration (re-architecture) | 80–150% | 2–4 years | 1.5–4× investment |
 | ERP Implementation | 25–70% | 3–5 years | 0.5–2× investment |

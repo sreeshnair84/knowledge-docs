@@ -12,6 +12,7 @@ target_role: EA Quality, Resilience & Testing Interview Questions
 ---
 
 # Enterprise Architect Interview — Quality, Resilience & Testing Scenario Question Bank
+
 ## Stress Testing · Availability · Data Integrity · NFRs · AI Model Evaluation · Production Drift · Test Automation
 
 > **Scope of this document:** These questions target the intersection of enterprise architecture and quality engineering — the layer where systems are designed not just to function but to survive, degrade gracefully, recover autonomously, and remain trustworthy in production over time. At 20 years of experience, you are expected to have opinions forged by real production failures, not textbook theory.
@@ -21,7 +22,7 @@ target_role: EA Quality, Resilience & Testing Interview Questions
 ## Document Structure
 
 | Section | Theme | Questions |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Stress Testing & Performance Architecture | Q1–Q4 |
 | 2 | Availability, Resilience & Fault Tolerance | Q5–Q8 |
 | 3 | Chaos Engineering & Failure Design | Q9–Q10 |
@@ -38,6 +39,7 @@ target_role: EA Quality, Resilience & Testing Interview Questions
 ## How to Use This Guide
 
 Each question contains:
+
 - **Interviewer's Intent** — what they are actually evaluating beneath the surface of the question
 - **Thinking Approach** — how to structure your thinking before speaking; the mental model to bring to the answer
 - **Model Answer** — a senior-level response demonstrating operational depth, hard-won insight, and architectural maturity
@@ -52,12 +54,14 @@ Every answer should carry the signature of lived experience: specific failure mo
 ---
 
 ### Question 1
+
 **"You are asked to define the performance testing strategy for an enterprise AI platform that will serve 50,000 concurrent users, process real-time inference requests, and feed downstream workflow automation systems. Walk me through how you architect the entire testing approach — not just what tests you run, but how you design the system to be testable in the first place."**
 
 **Interviewer's Intent:**
 Tests whether you understand that testability is an architectural property that must be designed in, not bolted on. Also tests the ability to think across the full performance testing spectrum and distinguish between different load profiles for AI workloads, which behave differently from conventional applications.
 
 **Thinking Approach:**
+
 - Lead with architecture for testability — instrumentation, environment parity, data isolation
 - Distinguish AI inference performance from conventional application performance (token latency, GPU utilisation, streaming response characteristics)
 - Cover the full spectrum: baseline → load → stress → soak → spike → chaos
@@ -88,12 +92,14 @@ The performance acceptance criteria I'd define are not just latency targets. The
 ---
 
 ### Question 2
+
 **"During a stress test of your enterprise AI platform, you observe that the system performs well under gradual load increase but fails suddenly when load jumps from 60% to 80% of capacity in under 30 seconds. The failure mode is not errors — it's latency that goes from 200ms to 45 seconds and never recovers without a restart. How do you diagnose this and what architectural changes do you make?"**
 
 **Interviewer's Intent:**
 Tests real diagnostic instinct — whether you can reason about complex failure modes from symptoms, and whether your architectural response addresses root cause rather than symptom.
 
 **Thinking Approach:**
+
 - The symptom profile (latency cliff, non-recovery) points to specific architectural failure modes — identify them
 - Distinguish between several possible root causes: thread pool exhaustion, connection pool exhaustion, garbage collection storm, GPU memory saturation, queue depth spiral
 - The fix is architectural, not operational
@@ -117,12 +123,14 @@ Non-recovery without restart is almost always a resource leak or a deadlocked th
 ---
 
 ### Question 3
+
 **"Your organisation is about to migrate a tier-1 trading system to a new AI-enhanced architecture. The business cannot tolerate more than 4 hours of performance degradation in any quarter and zero tolerance for transaction loss. How do you design the performance testing programme and what are your go/no-go criteria for production cutover?"**
 
 **Interviewer's Intent:**
 Tests the ability to design a testing programme proportionate to business criticality, translate business constraints into engineering requirements, and make defensible go/no-go calls under pressure.
 
 **Thinking Approach:**
+
 - Zero transaction loss is a hard constraint that drives specific architectural choices — idempotency, durable queuing, saga patterns
 - 4 hours degradation per quarter is an SLO, not just an SLA aspiration — it must be tested, not promised
 - Go/no-go criteria must be objective and pre-agreed, not decided in the heat of a cutover window
@@ -142,6 +150,7 @@ With that foundation, the performance testing programme has three phases.
 Go/no-go criteria I'd define — and publish — before the first test runs:
 
 **Hard stop criteria** — any single one fails the cutover:
+
 - Any transaction loss event, regardless of scale, in the integration test period
 - p99 latency exceeding the legacy system's p99 by more than 10% under equivalent load
 - Any inference failure that propagates to the transaction layer rather than falling back
@@ -149,6 +158,7 @@ Go/no-go criteria I'd define — and publish — before the first test runs:
 - Any failure in the transaction replay reconciliation — every replayed transaction must produce bit-for-bit identical results
 
 **Conditional criteria** — require specific remediation before cutover:
+
 - p95 latency within 5% of legacy under peak load
 - Zero unhandled exceptions in the AI layer over the final 2-week observation period
 - Circuit breaker validated: AI layer disabled, system continues processing without it, latency difference less than 20ms
@@ -158,12 +168,14 @@ The cutover itself would be a phased parallel run — new system processes trans
 ---
 
 ### Question 4
+
 **"You're asked to design a continuous performance testing programme — not just pre-release testing, but performance validation that runs in production permanently. How do you approach this, and how do you distinguish performance testing from production monitoring?"**
 
 **Interviewer's Intent:**
 Tests sophistication around the intersection of testing and observability, understanding of shift-right testing practices, and the ability to design systems that provide continuous performance intelligence rather than point-in-time snapshots.
 
 **Thinking Approach:**
+
 - The distinction between testing and monitoring is not as sharp as it used to be — modern practice blurs them intentionally
 - Synthetic monitoring, traffic shadowing, and canary analysis are the bridge
 - The discipline is to treat production as a testing environment without exposing real users to risk
@@ -192,12 +204,14 @@ The distinction from pure monitoring is intentionality. Monitoring tells you wha
 ---
 
 ### Question 5
+
 **"You're defining the availability architecture for an enterprise AI platform that must meet five-nines (99.999%) availability. This means less than 5 minutes of downtime per year. The platform runs large language model inference, a vector database, and real-time workflow orchestration. Walk me through the specific architectural decisions you'd make to achieve this."**
 
 **Interviewer's Intent:**
 Tests whether you understand that five-nines is not a monitoring target — it's an architectural design constraint that changes every decision from deployment topology to failure detection to recovery automation. Also tests whether you know the specific failure modes of AI infrastructure, which differ from conventional web services.
 
 **Thinking Approach:**
+
 - Five-nines requires: redundancy at every layer, automated failure detection and recovery, zero planned downtime deployments, and elimination of single points of failure including human decision-makers in the recovery path
 - AI inference infrastructure has unique failure modes: GPU failure, model loading time, VRAM exhaustion, model version incompatibility
 - Translate the math: 5 minutes/year means 0.3 seconds/day; recovery must be measured in seconds, not minutes
@@ -223,12 +237,14 @@ Let me walk through the layers.
 ---
 
 ### Question 6
+
 **"Your enterprise platform has a defined RTO of 15 minutes and RPO of 30 seconds for a critical AI-powered customer service system. During a real disaster recovery drill, you achieve RTO of 47 minutes and RPO of 4 minutes. The business is satisfied with 'close enough.' How do you respond?"**
 
 **Interviewer's Intent:**
 Tests whether you hold a line on engineering standards under business pressure, and whether you understand the specific risks of DR targets that sound close but aren't — particularly for AI systems where state recovery is complex.
 
 **Thinking Approach:**
+
 - RTO and RPO are not aspirational — they are contractual or regulatory commitments with consequences
 - 'Close enough' is never acceptable when the targets were derived from business requirements
 - The gap must be analysed, root-caused, and closed with a committed timeline
@@ -251,12 +267,14 @@ The remediation plan would include specific engineering changes with target outc
 ---
 
 ### Question 7
+
 **"Design a resilience pattern for an enterprise multi-agent system where Agent A feeds Agent B which feeds Agent C, and a failure in any agent must not corrupt the overall workflow state or cause a silent incorrect output to reach the end user."**
 
 **Interviewer's Intent:**
 Tests deep understanding of distributed system failure modes applied to agentic architectures, and whether you understand that agent failures are more dangerous than service failures because they can produce wrong answers, not just no answers.
 
 **Thinking Approach:**
+
 - The key insight: in agent systems, the dangerous failure is not unavailability — it's incorrect output that appears correct
 - Saga pattern, compensating transactions, idempotency, and explicit state checkpointing are the tools
 - Human-in-the-loop is an architectural pattern, not just a UX choice
@@ -278,12 +296,14 @@ For this three-agent pipeline, I'd apply four patterns in combination.
 ---
 
 ### Question 8
+
 **"An enterprise solution you've architected has a dependency on three external SaaS APIs — a payment processor, a credit bureau, and an identity verification service. Any one of them going down degrades your service. How do you design for their failure, and how do you test that your resilience patterns actually work?"**
 
 **Interviewer's Intent:**
 Tests real-world experience with third-party dependency management — one of the most common and most underarchitected resilience challenges in enterprise systems.
 
 **Thinking Approach:**
+
 - Each dependency has a different failure mode, a different SLA, and a different acceptable degraded mode
 - Circuit breakers, fallbacks, and graceful degradation must be specific to the business impact of each dependency
 - Testing must validate the degraded paths — most teams only test the happy path
@@ -312,12 +332,14 @@ On testing: this is where most teams fall short. The happy path is heavily teste
 ---
 
 ### Question 9
+
 **"Make the case for running chaos engineering experiments in a production environment for an enterprise AI platform. Then design the governance framework that makes it safe to do so."**
 
 **Interviewer's Intent:**
 Tests strategic conviction on a technically and politically controversial practice, and the ability to design safety structures that make a risky practice manageable.
 
 **Thinking Approach:**
+
 - The case for production chaos is specific and evidence-based, not just philosophical
 - The governance framework must address: scope control, blast radius containment, real-time abort, stakeholder communication, and learning rituals
 - Show that you've actually done this, not just theorised about it
@@ -345,12 +367,14 @@ The governance framework that makes this safe has six components.
 ---
 
 ### Question 10
+
 **"What are the five most dangerous failure modes specific to AI-powered enterprise systems that traditional IT resilience practices would miss — and how do you test for them?"**
 
 **Interviewer's Intent:**
 Tests genuine depth of understanding of AI-specific failure modes — distinguishing candidates who understand AI systems as infrastructure from those who understand them as a qualitatively different class of system.
 
 **Thinking Approach:**
+
 - Think beyond availability and performance — AI systems fail in ways conventional systems don't
 - The key AI-specific failures: silent model degradation, adversarial input exploitation, cascading hallucination, context window overflow, and training-serving skew
 - Each needs a specific detection and testing approach
@@ -379,12 +403,14 @@ The five most dangerous AI-specific failure modes I've encountered:
 ---
 
 ### Question 11
+
 **"You inherit an enterprise data platform that feeds six downstream AI systems. The data quality is inconsistent — you know this because the AI systems produce inconsistent outputs, but nobody has instrumented the data layer itself. Where do you start and how do you build a systematic data quality programme?"**
 
 **Interviewer's Intent:**
 Tests diagnostic instinct for data quality problems, and whether you can design systematic data quality management rather than whack-a-mole fixes.
 
 **Thinking Approach:**
+
 - The starting point is always: define what quality means for this data, which varies by use case
 - Instrument before you fix — you need to see the data to know what's wrong
 - Build quality as a pipeline property, not an audit activity
@@ -406,12 +432,14 @@ The governance change I'd make is ownership. Every dataset that feeds an AI syst
 ---
 
 ### Question 12
+
 **"Walk me through how you architect data integrity validation for a real-time AI pipeline that processes financial transactions. The pipeline receives 50,000 transactions per minute, enriches them with AI-derived risk scores, and feeds downstream systems for fraud detection, regulatory reporting, and customer analytics — each with different integrity requirements."**
 
 **Interviewer's Intent:**
 Tests the ability to design layered data validation proportionate to different downstream requirements — recognising that 'data integrity' is not a single standard but a family of requirements that vary by consumer.
 
 **Thinking Approach:**
+
 - At 50,000 transactions per minute, validation must be efficient — you cannot afford heavyweight validation on every record
 - The three downstream systems have fundamentally different integrity requirements: fraud detection needs speed; regulatory reporting needs completeness and auditability; analytics needs consistency
 - Validate at the right layer for the right consumer — not everything needs to be validated everywhere
@@ -433,12 +461,14 @@ The architectural principle underlying all three paths: make the validation laye
 ---
 
 ### Question 13
+
 **"You've been told that a critical AI system 'uses production data for testing.' When you investigate, you find customer PII, financial records, and health information being used in a test environment that has weaker security controls than production and is accessed by offshore contractors. How do you handle this and what architecture do you put in place going forward?"**
 
 **Interviewer's Intent:**
 Tests whether you understand the regulatory and ethical severity of this situation, can act decisively while managing relationships, and can design a systematic solution rather than a one-time fix.
 
 **Thinking Approach:**
+
 - This is a live compliance incident, not just a process gap — treat it with urgency
 - The immediate response involves Legal and the CISO before it involves the engineering team
 - The architectural solution is test data management at enterprise scale
@@ -462,12 +492,14 @@ The systematic solution is an enterprise test data management (TDM) platform wit
 ---
 
 ### Question 14
+
 **"Define your complete approach to data lineage for an enterprise AI system, including why it matters for AI specifically, what you capture, how you make it queryable, and how you use it operationally."**
 
 **Interviewer's Intent:**
 Tests strategic and operational depth on data lineage — a topic most architects understand conceptually but few have designed at enterprise scale for AI workloads.
 
 **Thinking Approach:**
+
 - Lineage for AI is different from lineage for conventional BI — it extends to training data, model versions, and inference inputs
 - The operational use cases for lineage (debugging, regulatory response, incident investigation, bias detection) drive what must be captured
 - Make lineage a first-class architectural concern, not an afterthought
@@ -498,12 +530,14 @@ Operationally, I'd use lineage for four things: incident investigation (when som
 ---
 
 ### Question 15
+
 **"Design a comprehensive model evaluation framework for an LLM that will be used in a regulated financial services context for customer-facing decisions about loan eligibility. What do you evaluate, how do you evaluate it, and what are your go/no-go thresholds?"**
 
 **Interviewer's Intent:**
 Tests whether you understand the regulatory obligations that govern AI in financial services, and whether you can design evaluation that satisfies both technical quality requirements and compliance requirements.
 
 **Thinking Approach:**
+
 - Financial services AI is subject to Fair Lending Act, Equal Credit Opportunity Act, and potentially EU AI Act high-risk classification
 - Evaluation must cover: accuracy, fairness across protected groups, explainability, adversarial robustness, and regulatory compliance
 - Go/no-go thresholds must be defensible to a regulator, not just to an engineering review
@@ -531,12 +565,14 @@ Go/no-go thresholds: any disparate impact violation is a hard stop and blocks de
 ---
 
 ### Question 16
+
 **"Your organisation has deployed 12 different AI models across various business functions over the past 18 months. You have no standardised evaluation framework — each model was evaluated differently by the team that built it. How do you establish a retroactive evaluation standard and assess which models can remain in production?"**
 
 **Interviewer's Intent:**
 Tests whether you can bring order to an organic AI portfolio without creating a crisis, and whether you understand the specific risks of AI models that have been in production without adequate evaluation.
 
 **Thinking Approach:**
+
 - This is a risk triage, not a technical audit — start with the highest-risk models
 - Some models may be fine; don't shut down everything while you build governance
 - The retroactive evaluation is an opportunity to build the framework, not just audit the past
@@ -569,12 +605,14 @@ The output of this exercise is a model registry entry for each model, with: curr
 ---
 
 ### Question 17
+
 **"Explain the difference between data drift, concept drift, and model drift. Give a real example of each occurring in an enterprise AI system, describe how you detect each type, and explain how each changes your architectural response."**
 
 **Interviewer's Intent:**
 Tests genuine depth of understanding of drift as a phenomenon — not just whether you know the terminology, but whether you understand the different causal mechanisms and why they require different responses.
 
 **Thinking Approach:**
+
 - The three types have different causes, different detection approaches, and different fixes
 - Real examples demonstrate whether you're speaking from experience or theory
 - The architectural response is the most important part — drift detected but not acted upon is not better than drift undetected
@@ -610,12 +648,14 @@ Architectural response: for external providers, require version pinning as a con
 ---
 
 ### Question 18
+
 **"Design the complete monitoring architecture for an enterprise AI system in production. What do you monitor, at what frequency, with what alerting logic, and how do you distinguish between a model problem, a data problem, and an infrastructure problem?"**
 
 **Interviewer's Intent:**
 Tests the ability to design monitoring as an architectural discipline — not as an operational afterthought — and whether you understand the layered nature of AI system monitoring.
 
 **Thinking Approach:**
+
 - AI system monitoring has three layers: infrastructure monitoring (conventional), model operational monitoring (AI-specific), and business outcome monitoring (often missed)
 - The diagnostic separation between model, data, and infrastructure problems is the most practically valuable skill
 - Alerting logic must be designed to avoid both over-alerting (creates alert fatigue) and under-alerting (misses real problems)
@@ -647,12 +687,14 @@ The alert routing logic sends infrastructure alerts to the SRE team, data alerts
 ---
 
 ### Question 19
+
 **"You detect significant data drift in a production AI system that is making credit decisions at 20,000 applications per day. The drift is confirmed — the input distribution has shifted meaningfully. How do you decide whether to retrain, rollback, or continue running — and how do you manage the business during this decision?"**
 
 **Interviewer's Intent:**
 Tests decision-making under operational pressure with real business consequences, and whether you understand that 'retrain' is not always the right answer when drift is detected.
 
 **Thinking Approach:**
+
 - Drift detection is the start of a decision process, not the answer
 - The first question is: has performance actually degraded, or just the input distribution changed?
 - The business communication and the technical decision must happen simultaneously
@@ -683,12 +725,14 @@ During all of this, I'd communicate to the business owner and risk team every fo
 ---
 
 ### Question 20
+
 **"Design the complete test automation architecture for an enterprise AI platform, covering the full test pyramid from unit tests at the bottom to production validation at the top. How does the AI test pyramid differ from a conventional application test pyramid?"**
 
 **Interviewer's Intent:**
 Tests strategic and technical depth on AI-specific testing — whether you understand that conventional test automation patterns don't apply directly to AI systems because AI outputs are probabilistic, not deterministic.
 
 **Thinking Approach:**
+
 - The fundamental difference: conventional tests assert exact outputs; AI tests assert output properties, statistical distributions, and constraint satisfaction
 - The AI test pyramid has layers that don't exist in conventional testing: prompt tests, model evaluation, behavioural contracts
 - Shift-left and shift-right both apply, with different tooling
@@ -714,12 +758,14 @@ The tooling I'd standardise on: pytest with a custom AI assertion library for th
 ---
 
 ### Question 21
+
 **"You've inherited a test automation estate for an enterprise system that has 4,000 automated tests, a 40% flakiness rate, a 3-hour execution time, and a 12% false failure rate. The engineering team has stopped trusting the results. How do you fix it?"**
 
 **Interviewer's Intent:**
 Tests whether you understand test automation as a system that must be designed and maintained, not just written. Also tests whether you can identify the specific failure modes of a degraded test estate and apply targeted fixes rather than starting over.
 
 **Thinking Approach:**
+
 - A 40% flakiness rate and 12% false failure rate means the test suite is producing noise, not signal — the team is right not to trust it
 - Don't start over — triage and fix; rewriting 4,000 tests is a year of work that produces another broken suite without addressing root causes
 - The goal is a test suite that the team uses to make decisions, not one they run to satisfy a process
@@ -748,12 +794,14 @@ The measure of success is not coverage percentage or test count. It's whether en
 ---
 
 ### Question 22
+
 **"Walk me through how you define, negotiate, and operationalise NFRs for a new enterprise AI platform. How do NFRs for AI systems differ from NFRs for conventional applications?"**
 
 **Interviewer's Intent:**
 Tests strategic and practical NFR management — whether you understand that NFRs must be negotiated as business decisions, not decreed as technical standards, and whether you know the AI-specific NFRs that don't appear in conventional NFR frameworks.
 
 **Thinking Approach:**
+
 - NFRs for AI have dimensions that don't exist for conventional apps: model accuracy, fairness, explainability, drift tolerance, hallucination rate
 - NFRs are business decisions expressed as engineering requirements — the EA's job is translation, not specification
 - Operationalising means monitoring and enforcement, not just documentation
@@ -767,11 +815,13 @@ I'd start NFR definition with a business conversation, not a technical one. For 
 For an AI platform, the NFR dimensions I'd cover:
 
 **Conventional dimensions, AI-calibrated values:**
+
 - Availability: five-nines vs. three-nines is a 100x cost difference in AI infrastructure — the business needs to understand that trade-off
 - Latency: for LLM systems, latency is measured differently — time-to-first-token matters as much as total response time for streaming interfaces
 - Scalability: AI workloads scale differently from CPU workloads — GPU scaling is discrete, not continuous, and cold-start time for model loading is a scaling constraint
 
 **AI-specific dimensions that don't exist in conventional NFRs:**
+
 - Accuracy threshold: the minimum acceptable model accuracy on a defined evaluation set, with the evaluation methodology specified
 - Fairness constraints: demographic parity or equalised odds requirements for any system affecting decisions about people
 - Hallucination tolerance: for generative AI, the maximum acceptable rate of factually incorrect outputs, measured on a defined benchmark
@@ -785,12 +835,14 @@ For an AI platform, the NFR dimensions I'd cover:
 ---
 
 ### Question 23
+
 **"Define your architecture approach to observability for an enterprise AI system. What is the difference between monitoring, observability, and explainability in the context of AI — and why does that distinction matter?"**
 
 **Interviewer's Intent:**
 Tests conceptual clarity and practical depth on a topic that is often used loosely, and whether you understand the AI-specific dimension of explainability as distinct from technical observability.
 
 **Thinking Approach:**
+
 - Monitoring tells you that something is wrong; observability lets you diagnose why; explainability tells you why the AI made the decision it made
 - These are three different capabilities requiring three different architectural approaches
 - The business and regulatory implications are different for each
@@ -817,12 +869,14 @@ The mistake I see is organisations that invest heavily in monitoring, declare th
 ---
 
 ### Question 24
+
 **"Design the disaster recovery architecture for an enterprise AI platform where the AI capabilities are now embedded in 30+ business processes across the organisation. Some of those processes are tier-1 (cannot stop), some are tier-2, and some are tier-3. Walk me through your tiered DR approach."**
 
 **Interviewer's Intent:**
 Tests whether you understand DR as a business prioritisation exercise, not just a technical replication problem — and whether you can design tiered recovery that is cost-appropriate to each tier.
 
 **Thinking Approach:**
+
 - DR tiers must be derived from business impact analysis, not from technical convenience
 - AI-specific DR has unique challenges: model weight replication, vector database consistency, in-flight agent workflow recovery
 - The tier-1 requirement often means the AI must fail back to a human or rule-based process, not just to a secondary AI infrastructure
@@ -849,12 +903,14 @@ The AI-specific DR considerations that differentiate this from conventional DR: 
 ---
 
 ### Question 25
+
 **"You are presenting to the board on the overall 'quality posture' of the enterprise AI estate. How do you present this — what metrics, what narrative, what level of confidence do you give them — and what questions are you prepared for?"**
 
 **Interviewer's Intent:**
 Tests strategic communication at board level on technical quality topics, and whether you can translate engineering quality metrics into board-level risk and governance language.
 
 **Thinking Approach:**
+
 - Boards do not need metrics dashboards — they need a risk-informed view of whether the organisation's AI is trustworthy
 - The narrative is: here is what we've built, here is how we know it's working, here is where we have exposure, here is what we're doing about it
 - Prepare for: competitor questions, regulatory questions, 'are we safe?' questions
@@ -878,12 +934,14 @@ Board questions I'd prepare for: 'What happens if one of these systems fails cat
 ---
 
 ### Question 26
+
 **"In your 20 years, what is the single most important lesson you've learned about building enterprise systems that actually work in production — and how does that lesson apply to the AI systems you're designing today?"**
 
 **Interviewer's Intent:**
 Tests the quality of wisdom extracted from long experience, the ability to synthesise across domains, and whether the candidate has a distinctive and defensible point of view developed through genuine reflection.
 
 **Thinking Approach:**
+
 - This must be personal and genuine — not a general principle from a book
 - It should have a narrative of where the lesson came from and what changed because of it
 - The connection to AI must be specific, not generic
@@ -907,7 +965,7 @@ The honest design question for AI today is: if this model starts producing worse
 ### What Exceptional Answers Demonstrate
 
 | Dimension | Underprepared | Experienced | Exceptional |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Production Instinct** | Describes patterns from documentation | Cites experience with specific systems | Names the failure mode before the question finishes |
 | **AI-Specific Depth** | Treats AI as conventional software | Applies conventional patterns with AI adaptations | Identifies AI-unique failure modes with novel solutions |
 | **Business Translation** | Stays in technical language | Translates metrics to business impact when prompted | Leads with business language; offers technical depth on demand |

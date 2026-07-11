@@ -18,6 +18,7 @@ covers_version: \"as of 2026-07-10\"
 **What this guide covers:** Installation, core architecture, multi-agent patterns with working code, evaluation harness, stress testing, parallelism, token and cost optimisation, guardrails, governance, and CI/CD integration.
 
 **What it does NOT duplicate:**
+
 - MCP protocol fundamentals → [MCP Deep Guide](mcp-deep-guide.md)
 - Claude model pricing → [Models 2026](claude-models-2026.md)
 - Agent SDK patterns → [Agent SDK Production](claude-agent-sdk-production.md)
@@ -133,7 +134,7 @@ claude-flow implements a **hive-mind** orchestration model: a Queen agent that d
 ### Supported Topologies
 
 | Topology | When to use |
-|----------|-------------|
+| ---------- | ------------- |
 | `hierarchical` | Complex tasks with clear decomposition; Queen has full authority |
 | `mesh` | Collaborative tasks where agents need to share findings peer-to-peer |
 | `ring` | Pipeline tasks where each agent hands off to the next |
@@ -183,7 +184,7 @@ node quick-start.js
 ## 5. Framework Comparison
 
 | Framework | Language | Orchestration model | Memory | Tool integration | Cloud hosting | Best for |
-|-----------|----------|---------------------|--------|-----------------|---------------|----------|
+| ----------- | ---------- | --------------------- | -------- | ----------------- | --------------- | ---------- |
 | **claude-flow** | TypeScript / Node.js | Hive-mind (Queen + Workers), SPARC pipeline | SQLite + vector index | MCP servers, bash, file system | Self-hosted | AI-native software development, multi-phase coding tasks |
 | **LangGraph** | Python | Directed acyclic graph (nodes + edges) | Built-in checkpointing, time-travel | LangChain tool ecosystem | LangSmith Cloud | Production stateful workflows, highest control and auditability |
 | **CrewAI** | Python | Role-based crew (sequential or hierarchical) | Task output passing | CrewAI tools, custom tools | CrewAI Enterprise | Business process automation, fastest prototype to first result |
@@ -393,7 +394,7 @@ npx claude-flow memory delete --key "patterns:auth" --namespace "project-pattern
 ### Shared Context Strategies
 
 | Strategy | When to use | Implementation |
-|----------|-------------|---------------|
+| ---------- | ------------- | --------------- |
 | **Namespace per workflow** | Default; isolates context per feature or session | `--namespace "workflow-id"` |
 | **Shared pattern namespace** | Reusable engineering patterns across workflows | Long-lived namespace; curated manually |
 | **Session namespace** | Ephemeral; auto-deleted after session ends | `--namespace "session-$(date +%s)"` |
@@ -450,7 +451,7 @@ Layer 3 — Business Alignment
 Define thresholds before the first eval run — not after deployment. These are starting points; adjust to your specific domain and risk tolerance.
 
 | Metric | Minimum acceptable | Target | Block deployment below |
-|--------|-------------------|--------|----------------------|
+| -------- | ------------------- | -------- | ---------------------- |
 | Correctness | 0.80 | 0.90 | 0.75 |
 | Faithfulness (RAG) | 0.85 | 0.95 | 0.80 |
 | Task success rate | 0.75 | 0.90 | 0.70 |
@@ -826,7 +827,7 @@ const swarm = await flow.createSwarm(\{
 **Model reference (July 2026):**
 
 | Model | Input (per MTok) | Output (per MTok) | Best for in multi-agent |
-|-------|-----------------|------------------|-----------------------|
+| ------- | ----------------- | ------------------ | ----------------------- |
 | Claude Haiku 4.5 | Low cost | Low cost | Routing, classification, test generation, summarisation |
 | Claude Sonnet 4.6 | Moderate | Moderate | Implementation, research, standard reasoning |
 | Claude Sonnet 5 | $3 | $15 | Production-quality reasoning, most enterprise tasks |

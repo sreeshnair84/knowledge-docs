@@ -34,14 +34,14 @@ Identical baseline to the enterprise case (see companion package, file `02`), be
 ### Spec-baseline (portable everywhere)
 
 | Field | Required | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `name` | **Yes** | Lowercase, hyphens, no spaces. GitHub caps this at 64 characters. Must match across the directory name convention in most implementations. |
 | `description` | **Yes** | The single field every implementation uses for discovery matching. GitHub caps this at 1024 characters. Must state both *what* the skill does and *when* to use it — descriptions that only say "what" produce weak triggering. |
 
 ### Common extensions (vendor-added, not in the minimal spec, but widely supported)
 
 | Field | Seen in | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `license` | GitHub Copilot | Legal terms for shared/marketplace skills |
 | `argument-hint` | GitHub Copilot | Tells the user what to type after the slash command (`/webapp-testing for the login page`) |
 | `user-invokable` | GitHub Copilot, others | Whether the skill appears in the manual `/` menu (default: true) |
@@ -59,7 +59,7 @@ Identical baseline to the enterprise case (see companion package, file `02`), be
 ### Enterprise/team governance extensions (not vendor-native; recommended overlay)
 
 | Field | Why add it for organizational use |
-|---|---|
+| --- | --- |
 | `owner` | Accountability — who fixes it when the underlying tool/API changes |
 | `version` (semver) | Enables safe updates and rollback in an org skill catalog |
 | `repo_scope` | Which repositories/languages this skill is valid for — prevents cross-project misfire |
@@ -82,7 +82,7 @@ Recommended structure, synthesized from Anthropic's authoring guidance, GitHub's
 ## 2.4 Mandatory vs. optional fields — summary table
 
 | Category | Mandatory | Optional |
-|---|---|---|
+| --- | --- | --- |
 | Spec baseline | `name`, `description`, body | — |
 | Invocation control | — | `argument-hint`, `user-invokable`, `disable-model-invocation` / `allow_implicit_invocation` |
 | Presentation | — | `license`, `interface.*` |

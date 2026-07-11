@@ -37,7 +37,7 @@ The SABSA (Sherwood Applied Business Security Architecture) framework and TOGAF'
 ### 1.1 Business Capability → Security Capability Mapping
 
 | Business Capability | Security Capability Required |
-|---|---|
+| --- | --- |
 | Customer data processing | Data classification, encryption, DLP, privacy controls |
 | Employee productivity (SaaS, cloud tools) | Identity governance, CASB, endpoint DLP |
 | AI-powered products and services | AI security controls, prompt gateway, model governance |
@@ -92,7 +92,7 @@ Enterprise Security Capabilities
 The security operating model defines how security capabilities are organized, staffed, funded, and governed.
 
 | Dimension | Options | Decision Factors |
-|---|---|---|
+| --- | --- | --- |
 | **Structure** | Centralised / Federated / Hybrid | Organization size, regulatory environment, risk appetite |
 | **Ownership** | CISO-led / CTO-embedded / Distributed | Culture, transformation maturity, board mandate |
 | **Sourcing** | Insourced / Managed Security Service (MSSP) / Hybrid | Cost, skill availability, 24x7 requirements |
@@ -123,6 +123,7 @@ Enterprise cyber risk management quantifies this using frameworks like:
 - **COSO ERM**: Business risk integration at board level
 
 **AI risk additions:**
+
 - Model failure risk (hallucination, misalignment)
 - Agent autonomous action risk (unintended real-world effects)
 - AI supply chain risk (third-party model or data compromise)
@@ -133,7 +134,7 @@ Enterprise cyber risk management quantifies this using frameworks like:
 **CMMI-based security maturity levels:**
 
 | Level | Name | Characteristics |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Initial | Ad hoc, reactive, no defined processes |
 | 2 | Managed | Basic processes exist; mostly reactive |
 | 3 | Defined | Documented, consistent processes across org |
@@ -153,7 +154,7 @@ Data classification is the foundation of information security. Without knowing w
 **Standard classification tiers:**
 
 | Tier | Label | Definition | Example |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 0 | Public | Freely shareable | Marketing materials, published docs |
 | 1 | Internal | For employees only | Internal policies, org charts |
 | 2 | Confidential | Restricted access | Financial forecasts, roadmaps |
@@ -161,6 +162,7 @@ Data classification is the foundation of information security. Without knowing w
 | 4 | Regulated | Subject to legal obligations | PHI (HIPAA), cardholder data (PCI), biometrics |
 
 **AI data classification challenges:**
+
 - Training datasets may contain mixed-classification data
 - LLM outputs may synthesise restricted information from public inputs
 - RAG pipelines mix document sensitivity levels in a single context window
@@ -169,7 +171,7 @@ Data classification is the foundation of information security. Without knowing w
 ### 3.2 CIA Triad in the AI Era
 
 | Property | Traditional Control | AI-Era Extension |
-|---|---|---|
+| --- | --- | --- |
 | **Confidentiality** | Encryption, access control, DLP | Prompt injection prevention, output filtering, RAG access control |
 | **Integrity** | Checksums, digital signatures, audit logs | Training data integrity, model card verification, AIBOM attestation |
 | **Availability** | Redundancy, DDoS protection, BCP | Model serving resilience, inference rate limiting, fallback model chains |
@@ -187,6 +189,7 @@ Privacy is a sub-property of confidentiality with legal consequences. Seven foun
 7. Respect for user privacy
 
 **AI privacy risks:**
+
 - Membership inference: Can an attacker determine if a specific person's data was in the training set?
 - Model inversion: Can training data be reconstructed from model outputs?
 - Re-identification: Can anonymised data be re-identified using AI?
@@ -219,7 +222,7 @@ Data Collection → Data Curation → Training → Fine-tuning → Inference →
 ### 4.1 Secure Application Architecture Principles
 
 | Principle | Description |
-|---|---|
+| --- | --- |
 | **Least privilege** | Applications request only the permissions they need for each operation |
 | **Defence in depth** | Multiple independent controls at each layer |
 | **Fail secure** | On error, deny access rather than grant it |
@@ -236,7 +239,7 @@ APIs are the primary integration surface of modern enterprise applications and t
 **API security controls:**
 
 | Control Layer | Technology | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Authentication | OAuth 2.1 / OIDC / mTLS | Verify caller identity |
 | Authorization | RBAC / ABAC / OPA policies | Control what caller can do |
 | Rate limiting | API gateway policies | Prevent abuse and DDoS |
@@ -246,6 +249,7 @@ APIs are the primary integration surface of modern enterprise applications and t
 | Logging & monitoring | Structured API logs → SIEM | Detect anomalies |
 
 **AI agent API security additions:**
+
 - Agent token scoping (short-lived, least-privilege per-task tokens)
 - Tool invocation audit trails per agent session
 - Rate limiting per agent identity (not just per IP)
@@ -277,6 +281,7 @@ Service meshes (Istio, Linkerd, Consul) provide automatic mTLS between microserv
 The Model Context Protocol (MCP) is the emerging standard for AI agent tool integration.
 
 **MCP trust model:**
+
 ```
 MCP Client (Agent) ←─── OAuth 2.1 ───→ MCP Server (Tool)
         ↑                                      ↑
@@ -286,6 +291,7 @@ MCP Client (Agent) ←─── OAuth 2.1 ───→ MCP Server (Tool)
 ```
 
 **MCP security controls:**
+
 - Server authentication before tool invocation
 - Per-tool permission scoping
 - Tool output validation before agent processing
@@ -322,7 +328,7 @@ See [Security Patterns — Enterprise Prompt Gateway](13-security-patterns.md) f
 ### 5.1 Network Security Technologies
 
 | Technology | Purpose | Modern Implementation |
-|---|---|---|
+| --- | --- | --- |
 | Segmentation | Isolate network zones | Software-defined microsegmentation (Illumio, Guardicore) |
 | Zero Trust Network Access | Replace VPN with identity-aware access | Zscaler ZPA, Cloudflare Access, Netskope |
 | SASE | Converge SD-WAN + SSE | Palo Alto Prisma SASE, Zscaler SASE, Cisco+ |
@@ -334,7 +340,7 @@ See [Security Patterns — Enterprise Prompt Gateway](13-security-patterns.md) f
 Kubernetes is the dominant container orchestration platform. Security controls at each layer:
 
 | Layer | Control | Tool |
-|---|---|---|
+| --- | --- | --- |
 | **API server** | RBAC, admission controllers, audit logs | OPA Gatekeeper, Kyverno |
 | **Node** | CIS Benchmark hardening, immutable OS | Bottlerocket, Flatcar |
 | **Pod** | Security contexts, no root, read-only FS | Pod Security Standards |
@@ -350,7 +356,7 @@ Confidential computing protects data **while in use** (in memory during computat
 **Technology stack:**
 
 | Technology | Provider | Use Case |
-|---|---|---|
+| --- | --- | --- |
 | **Intel TDX** (Trust Domain Extensions) | Intel | VM-level memory encryption |
 | **AMD SEV-SNP** | AMD | Secure Encrypted Virtualization |
 | **AWS Nitro Enclaves** | AWS | Isolated compute for sensitive processing |
@@ -358,6 +364,7 @@ Confidential computing protects data **while in use** (in memory during computat
 | **Google Confidential VMs** | Google | GCP confidential compute |
 
 **AI use cases for confidential computing:**
+
 - Private inference: customer data never leaves encrypted memory during LLM inference
 - Confidential fine-tuning: model training on sensitive data without exposure to cloud provider
 - Secure multi-party computation: collaborative model training without data sharing
@@ -365,7 +372,7 @@ Confidential computing protects data **while in use** (in memory during computat
 ### 5.4 Hardware Security
 
 | Technology | Purpose | Relevance |
-|---|---|---|
+| --- | --- | --- |
 | **TPM 2.0** (Trusted Platform Module) | Platform attestation, key storage | Device health verification in Zero Trust |
 | **HSM** (Hardware Security Module) | Cryptographic key management | Key generation, storage, and operations for PKI and encryption |
 | **Secure Boot** | Firmware integrity verification | Prevent boot-level malware (bootkits) |
@@ -376,6 +383,7 @@ Confidential computing protects data **while in use** (in memory during computat
 Software supply chain attacks (SolarWinds, Log4Shell, XZ Utils) have elevated supply chain security to board-level concern.
 
 **Controls:**
+
 - **SBOM** (Software Bill of Materials): Inventory of all software components and dependencies
 - **AIBOM** (AI Bill of Materials): Inventory of model components, training data sources, and inference dependencies
 - **Sigstore / Cosign**: Cryptographic signing of software artefacts

@@ -8,136 +8,137 @@ source_type: converted-pdf
 source_file: "Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf"
 tags: ["harness", "ai-agents", "vendor-landscape", "agentic-ai"]
 ---
-**C O N C E P T P R I M E R + V E N D O R L A N D S C A P E** 
-# **Harness Engineering** 
+**C O N C E P T P R I M E R + V E N D O R L A N D S C A P E**
 
-The AI-Agent Sense: Scaffolding, Control Planes, and How the DevOps/Platform Vendor Landscape Is Adopting It 
+# Harness Engineering
 
-Scope: What "harness engineering" means for LLM agents · Short profiles of 10 CI/CD, GitOps, and platformengineering vendors Research date: July 2026 
+The AI-Agent Sense: Scaffolding, Control Planes, and How the DevOps/Platform Vendor Landscape Is Adopting It
 
-Harness Engineering (AI Agents) — 1 
+Scope: What "harness engineering" means for LLM agents · Short profiles of 10 CI/CD, GitOps, and platformengineering vendors Research date: July 2026
 
-## **Part 1 — What "Harness Engineering" Means** 
+Harness Engineering (AI Agents) — 1
 
-**Agent = Model + Harness.** That equation is the entire concept. The model is a stateless token predictor — it produces text, nothing else. It cannot edit a file, run a command, remember yesterday's conversation, or know when to stop. The **harness** is everything else: the code that turns raw next-token prediction into an autonomous system that reliably takes action in the world. Anthropic is widely credited with popularizing the term ("agent harness" or "scaffolding") to describe this infrastructure layer, and by 2026 it has become standard vocabulary across every major lab shipping agents. **<mark>DOCUMENTED</mark>** 
+## Part 1 — What "Harness Engineering" Means
 
-**Why this matters more than model choice, in practice:** in March 2026 the LangChain engineering team moved their coding agent from 30th to 5th place on Terminal-Bench 2.0 — without changing the underlying model at all. The entire gain came from optimizing the harness around it. Separately, GitHub's own published benchmarking of its Copilot agentic harness (June 2026) explicitly frames the harness — not the model — as the thing that determines token efficiency, speed, and predictability across Claude, GPT, and other models running through it. **<mark>DOCUMENTED</mark>** 
+**Agent = Model + Harness.** That equation is the entire concept. The model is a stateless token predictor — it produces text, nothing else. It cannot edit a file, run a command, remember yesterday's conversation, or know when to stop. The **harness** is everything else: the code that turns raw next-token prediction into an autonomous system that reliably takes action in the world. Anthropic is widely credited with popularizing the term ("agent harness" or "scaffolding") to describe this infrastructure layer, and by 2026 it has become standard vocabulary across every major lab shipping agents. **<mark>DOCUMENTED</mark>**
 
-### **The formal decomposition** 
+**Why this matters more than model choice, in practice:** in March 2026 the LangChain engineering team moved their coding agent from 30th to 5th place on Terminal-Bench 2.0 — without changing the underlying model at all. The entire gain came from optimizing the harness around it. Separately, GitHub's own published benchmarking of its Copilot agentic harness (June 2026) explicitly frames the harness — not the model — as the thing that determines token efficiency, speed, and predictability across Claude, GPT, and other models running through it. **<mark>DOCUMENTED</mark>**
 
-2026 academic surveys have converged on a six-component formalization: **H = (E, T, C, S, L, V)** — Environment, Tools, Context, State, Loop/Logic, and Verification. Practitioners generally collapse this into a simpler five-layer mental model: 
+### The formal decomposition
 
-`1. Tool orchestration — what actions the agent can take, and how calls are dispatched` 
+2026 academic surveys have converged on a six-component formalization: **H = (E, T, C, S, L, V)** — Environment, Tools, Context, State, Loop/Logic, and Verification. Practitioners generally collapse this into a simpler five-layer mental model:
 
-`2. Context & memory — what the model sees each turn; how state persists across long tasks` 
+`1. Tool orchestration — what actions the agent can take, and how calls are dispatched`
 
-`3. The execution loop — think → act → observe → think again, and when to stop` 
+`2. Context & memory — what the model sees each turn; how state persists across long tasks`
 
-`4. Guardrails — permissions, sandboxing, approval gates, scoped credentials` 
+`3. The execution loop — think → act → observe → think again, and when to stop`
 
-`5. Observability — tracing, audit logs, cost controls, evals` 
+`4. Guardrails — permissions, sandboxing, approval gates, scoped credentials`
 
-Source: Faros AI ("Harness Engineering: Making AI Coding Agents Work in 2026"); corroborated independently by GitHub's VS Code team writeup of the Copilot coding harness and multiple 2026 academic surveys (Meng et al., 22-harness-system survey). **<mark>DOCUMENTED</mark>** 
+`5. Observability — tracing, audit logs, cost controls, evals`
 
-### **Concretely, what the harness does that the model can't** 
+Source: Faros AI ("Harness Engineering: Making AI Coding Agents Work in 2026"); corroborated independently by GitHub's VS Code team writeup of the Copilot coding harness and multiple 2026 academic surveys (Meng et al., 22-harness-system survey). **<mark>DOCUMENTED</mark>**
 
-When a model's output says "edit this file," it is the harness that computes the diff and writes it to disk. When the model says "run this command," it is the harness that spawns the process, captures stdout/ stderr, and feeds the result back in. The harness decides how much conversation history to keep versus compact away, which tools are exposed to the model at all, and whether a given action needs a human's sign-off before it executes. None of this is model behavior — it's software engineering around the model, and it is where most of 2026's production agent engineering investment is actually going. 
+### Concretely, what the harness does that the model can't
 
-Harness Engineering (AI Agents) — 2 
+When a model's output says "edit this file," it is the harness that computes the diff and writes it to disk. When the model says "run this command," it is the harness that spawns the process, captures stdout/ stderr, and feeds the result back in. The harness decides how much conversation history to keep versus compact away, which tools are exposed to the model at all, and whether a given action needs a human's sign-off before it executes. None of this is model behavior — it's software engineering around the model, and it is where most of 2026's production agent engineering investment is actually going.
 
-### **Why harness defects, not model limits, cause most failures** 
+Harness Engineering (AI Agents) — 2
 
-Industry analysis circulating in 2026 attributes roughly two-thirds of enterprise agent failures to harnesslevel defects — specifically _context drift_ (the model loses track of what's actually true as conversation grows), _schema misalignment_ (tool outputs don't match what the model expects), and _state degradation_ (long-running tasks losing coherent state). The practical implication: throwing a more capable model at a broken harness yields diminishing returns, because the harness — not raw reasoning — is usually the bottleneck. **<mark>ANALYSIS</mark>** — this figure comes from practitioner/industry commentary rather than a single controlled study; treat it directionally. 
+### Why harness defects, not model limits, cause most failures
 
-### **Enterprise governance: the part that matters for platform teams** 
+Industry analysis circulating in 2026 attributes roughly two-thirds of enterprise agent failures to harnesslevel defects — specifically *context drift* (the model loses track of what's actually true as conversation grows), *schema misalignment* (tool outputs don't match what the model expects), and *state degradation* (long-running tasks losing coherent state). The practical implication: throwing a more capable model at a broken harness yields diminishing returns, because the harness — not raw reasoning — is usually the bottleneck. **<mark>ANALYSIS</mark>** — this figure comes from practitioner/industry commentary rather than a single controlled study; treat it directionally.
 
-As harnesses move from personal coding assistants into pipeline-native, production-facing agents, three concerns dominate the 2026 discussion: 
+### Enterprise governance: the part that matters for platform teams
 
-- **Excessive agency** — OWASP's LLM06:2025 category covers over-provisioned tool access, unnecessary permissions, and missing approval mechanisms; it has become the standard checklist for auditing a harness's permission scope against least-privilege. 
+As harnesses move from personal coding assistants into pipeline-native, production-facing agents, three concerns dominate the 2026 discussion:
 
-- **Agent identity** — leading platforms are converging on giving each agent its own scoped credential set (not inheriting the invoking user's full permissions), so an agent's blast radius is bounded regardless of what its prompt says. 
+- **Excessive agency** — OWASP's LLM06:2025 category covers over-provisioned tool access, unnecessary permissions, and missing approval mechanisms; it has become the standard checklist for auditing a harness's permission scope against least-privilege.
 
-- **Approval fatigue** — Anthropic has published on this specifically: when users rubber-stamp roughly 93% of permission prompts, per-action approval stops being a meaningful safety control. The emerging alternative is a two-stage classifier — a fast, cheap gate on every action, with expensive chain-ofthought reasoning reserved only for actions that gate flags as risky. 
+- **Agent identity** — leading platforms are converging on giving each agent its own scoped credential set (not inheriting the invoking user's full permissions), so an agent's blast radius is bounded regardless of what its prompt says.
 
-### **MCP as the connective tissue** 
+- **Approval fatigue** — Anthropic has published on this specifically: when users rubber-stamp roughly 93% of permission prompts, per-action approval stops being a meaningful safety control. The emerging alternative is a two-stage classifier — a fast, cheap gate on every action, with expensive chain-ofthought reasoning reserved only for actions that gate flags as risky.
 
-The Model Context Protocol has become the de facto standard for how a harness exposes tools and context to a model, and — increasingly — how one platform's harness talks to another's. By mid-2026, MCP servers exist for essentially every major DevOps surface: GitHub, Azure DevOps, CircleCI, Backstage (via a dedicated MCP Actions Backend plugin), Google Cloud services, and Harness itself. This is what lets an agent running in Cursor, Claude Code, or Copilot reach into a CI/CD platform's live pipeline data without that platform needing to build a bespoke integration for every possible AI client. 
+### MCP as the connective tissue
 
-**<mark>DOCUMENTED</mark>** 
+The Model Context Protocol has become the de facto standard for how a harness exposes tools and context to a model, and — increasingly — how one platform's harness talks to another's. By mid-2026, MCP servers exist for essentially every major DevOps surface: GitHub, Azure DevOps, CircleCI, Backstage (via a dedicated MCP Actions Backend plugin), Google Cloud services, and Harness itself. This is what lets an agent running in Cursor, Claude Code, or Copilot reach into a CI/CD platform's live pipeline data without that platform needing to build a bespoke integration for every possible AI client.
 
-Harness Engineering (AI Agents) — 3 
+**<mark>DOCUMENTED</mark>**
 
-## **Part 2 — How the DevOps/Platform Vendor Landscape Is Adopting It** 
+Harness Engineering (AI Agents) — 3
 
-All ten companies from the original comparison set below now claim some form of AI-agent capability. What differs sharply is **how deep the harness goes** — whether it's a chat assistant bolted onto the product, a governed execution layer where agents run as first-class, audited citizens, or (for several of the older CNCF projects) essentially nothing native at all. 
+## Part 2 — How the DevOps/Platform Vendor Landscape Is Adopting It
 
-#### **1. GitHub Actions / GitHub Copilot** 
+All ten companies from the original comparison set below now claim some form of AI-agent capability. What differs sharply is **how deep the harness goes** — whether it's a chat assistant bolted onto the product, a governed execution layer where agents run as first-class, audited citizens, or (for several of the older CNCF projects) essentially nothing native at all.
 
-_The deepest, most publicly benchmarked harness in the category._ 
+### 1. GitHub Actions / GitHub Copilot
 
-GitHub's "agentic harness" is a single shared component powering Copilot CLI, the Copilot app, and code review — improve it once, every surface benefits. Custom agents are defined as Markdown files with YAML frontmatter <mark>(</mark> <mark>`.github/agents/*.agent.md` )</mark> , scoped at repo or org level, and can be picked up by Copilot's cloud agent, VS Code, JetBrains, Xcode, and other IDEs. Enterprise governance runs through an "agent control plane" for visibility/audit, MCP server registry curation, ephemeral runner enforcement, and firewall allowlisting for cloud agents. GitHub publishes controlled cross-model benchmarks (Claude, GPT) of its own harness's efficiency — unusually transparent for the category. **<mark>DOCUMENTED</mark>** 
+*The deepest, most publicly benchmarked harness in the category.*
 
-#### **2. GitLab** 
+GitHub's "agentic harness" is a single shared component powering Copilot CLI, the Copilot app, and code review — improve it once, every surface benefits. Custom agents are defined as Markdown files with YAML frontmatter <mark>(</mark> <mark>`.github/agents/*.agent.md` )</mark> , scoped at repo or org level, and can be picked up by Copilot's cloud agent, VS Code, JetBrains, Xcode, and other IDEs. Enterprise governance runs through an "agent control plane" for visibility/audit, MCP server registry curation, ephemeral runner enforcement, and firewall allowlisting for cloud agents. GitHub publishes controlled cross-model benchmarks (Claude, GPT) of its own harness's efficiency — unusually transparent for the category. **<mark>DOCUMENTED</mark>**
 
-_Broadest lifecycle-wide orchestration model, GA'd January 2026._ 
+### 2. GitLab
 
-GitLab Duo Agent Platform reached general availability with a distinct architecture: **Agents** (singlepurpose, e.g. Planner Agent, Security Analyst Agent) versus **Flows** (multi-agent chains automating a whole task, like turning an open issue into a merge request end to end). All agents query **GitLab Orbit** , a lifecycle context graph connecting code, pipelines, and deployments — architecturally the closest direct analog to Harness's Software Delivery Knowledge Graph. Notably supports external agents (Claude Code, Codex CLI) natively inside the GitLab workflow rather than only first-party agents, and an AI Catalog for publishing/versioning custom agents org-wide. **<mark>DOCUMENTED</mark>** 
+*Broadest lifecycle-wide orchestration model, GA'd January 2026.*
 
-Harness Engineering (AI Agents) — 4 
+GitLab Duo Agent Platform reached general availability with a distinct architecture: **Agents** (singlepurpose, e.g. Planner Agent, Security Analyst Agent) versus **Flows** (multi-agent chains automating a whole task, like turning an open issue into a merge request end to end). All agents query **GitLab Orbit** , a lifecycle context graph connecting code, pipelines, and deployments — architecturally the closest direct analog to Harness's Software Delivery Knowledge Graph. Notably supports external agents (Claude Code, Codex CLI) natively inside the GitLab workflow rather than only first-party agents, and an AI Catalog for publishing/versioning custom agents org-wide. **<mark>DOCUMENTED</mark>**
 
-#### **3. Azure DevOps** 
+Harness Engineering (AI Agents) — 4
 
-_Explicitly the "legacy" half of a two-product AI strategy — Microsoft is steering agent investment toward GitHub._ 
+### 3. Azure DevOps
 
-Microsoft's own 2026 messaging is unusually direct: "AI is the forcing function" for migrating repos to GitHub, where "Copilot, agents, and new AI workflows ship first." Azure DevOps gets an MCP server (preview) exposing work items/builds/PRs to agentic workflows, GitHub Copilot custom-agent selection inside Azure Boards, and an Azure SRE Agent for reliability operations — but Microsoft is actively running an Enterprise Live Migration tool to move teams' source control to GitHub specifically to "unlock the full agentic development experience." Treat Azure DevOps as receiving maintenancelevel AI investment, not first-line harness development. **<mark>DOCUMENTED</mark>** 
+*Explicitly the "legacy" half of a two-product AI strategy — Microsoft is steering agent investment toward GitHub.*
 
-#### **4. CircleCI** 
+Microsoft's own 2026 messaging is unusually direct: "AI is the forcing function" for migrating repos to GitHub, where "Copilot, agents, and new AI workflows ship first." Azure DevOps gets an MCP server (preview) exposing work items/builds/PRs to agentic workflows, GitHub Copilot custom-agent selection inside Azure Boards, and an Azure SRE Agent for reliability operations — but Microsoft is actively running an Enterprise Live Migration tool to move teams' source control to GitHub specifically to "unlock the full agentic development experience." Treat Azure DevOps as receiving maintenancelevel AI investment, not first-line harness development. **<mark>DOCUMENTED</mark>**
 
-_Positions itself specifically as validation infrastructure for agent-generated code, not as an agent-builder._ 
+### 4. CircleCI
 
-CircleCI's AI bet is narrower and arguably more defensible than "add a chatbot": the **Chunk** agent autonomously analyzes pipelines for flaky tests, failed builds, and configuration drift, proposing fixes validated in the customer's own environment before being applied. **Chunk Sidecars** (mid-2026) push that validation earlier — into the coding agent's own inner loop, running tests/linting/formatting before code is even committed. A CircleCI MCP server (also available via AWS Bedrock AgentCore) lets external agents in Cursor, Claude Desktop, or Windsurf trigger builds and diagnose failures in natural language. The framing is consistent: as AI-generated code accelerates commit velocity, CircleCI sells itself as the checkpoint that keeps validation from becoming the bottleneck. **<mark>DOCUMENTED</mark>** 
+*Positions itself specifically as validation infrastructure for agent-generated code, not as an agent-builder.*
 
-#### **5. Jenkins** 
+CircleCI's AI bet is narrower and arguably more defensible than "add a chatbot": the **Chunk** agent autonomously analyzes pipelines for flaky tests, failed builds, and configuration drift, proposing fixes validated in the customer's own environment before being applied. **Chunk Sidecars** (mid-2026) push that validation earlier — into the coding agent's own inner loop, running tests/linting/formatting before code is even committed. A CircleCI MCP server (also available via AWS Bedrock AgentCore) lets external agents in Cursor, Claude Desktop, or Windsurf trigger builds and diagnose failures in natural language. The framing is consistent: as AI-generated code accelerates commit velocity, CircleCI sells itself as the checkpoint that keeps validation from becoming the bottleneck. **<mark>DOCUMENTED</mark>**
 
-_Minimal native AI; whatever agent capability exists comes from the plugin ecosystem, not the core project._ 
+### 5. Jenkins
 
-No evidence of a first-party Jenkins agent harness comparable to the above emerged in current research. Jenkins' AI story in 2026 is largely third-party: LLM-assisted tools exist for converting Jenkinsfiles to other platforms' pipeline formats (notably GitLab's own "Convert Jenkins to GitLab CI/ CD" flow, built to migrate people _off_ Jenkins), and generic AI coding assistants can of course write Groovy pipeline scripts like any other code. For organizations with heavy Jenkins investment, the practical AI story is "bring your own IDE agent to write Jenkinsfiles," not a governed, pipeline-native agent execution layer. **<mark>ANALYSIS</mark>** 
+*Minimal native AI; whatever agent capability exists comes from the plugin ecosystem, not the core project.*
 
-Harness Engineering (AI Agents) — 5 
+No evidence of a first-party Jenkins agent harness comparable to the above emerged in current research. Jenkins' AI story in 2026 is largely third-party: LLM-assisted tools exist for converting Jenkinsfiles to other platforms' pipeline formats (notably GitLab's own "Convert Jenkins to GitLab CI/ CD" flow, built to migrate people *off* Jenkins), and generic AI coding assistants can of course write Groovy pipeline scripts like any other code. For organizations with heavy Jenkins investment, the practical AI story is "bring your own IDE agent to write Jenkinsfiles," not a governed, pipeline-native agent execution layer. **<mark>ANALYSIS</mark>**
 
-#### **6. ArgoCD** 
+Harness Engineering (AI Agents) — 5
 
-_No native agent harness; GitOps' pull-based reconciliation model is itself somewhat agent-adjacent by design._ 
+### 6. ArgoCD
 
-ArgoCD remains a CNCF-graduated, Kubernetes-native GitOps reconciler with no evidence of a firstparty AI agent layer. Worth noting architecturally: ArgoCD's pull-based "Git is the source of truth, cluster reconciles to match it" model is philosophically close to how a well-designed agent harness should treat state — declarative, diffable, convergent — even though ArgoCD itself isn't AI-driven. Where agentic workflows touch ArgoCD today, it's typically an external agent (via a CI tool's MCP server, or a platform like Harness/GitLab) generating or modifying the Kubernetes manifests that ArgoCD then reconciles, not an agent embedded in ArgoCD itself. **<mark>ANALYSIS</mark>** 
+*No native agent harness; GitOps' pull-based reconciliation model is itself somewhat agent-adjacent by design.*
 
-#### **7. Backstage** 
+ArgoCD remains a CNCF-graduated, Kubernetes-native GitOps reconciler with no evidence of a firstparty AI agent layer. Worth noting architecturally: ArgoCD's pull-based "Git is the source of truth, cluster reconciles to match it" model is philosophically close to how a well-designed agent harness should treat state — declarative, diffable, convergent — even though ArgoCD itself isn't AI-driven. Where agentic workflows touch ArgoCD today, it's typically an external agent (via a CI tool's MCP server, or a platform like Harness/GitLab) generating or modifying the Kubernetes manifests that ArgoCD then reconciles, not an agent embedded in ArgoCD itself. **<mark>ANALYSIS</mark>**
 
-_The most-discussed "is this architecture agent-ready?" case in the category — and the honest answer as of 2026 is "not yet, and not without rework."_ 
+### 7. Backstage
 
-Backstage shipped real primitives toward agent-readiness: v1.40's **Actions Registry** lets plugins register typed, schema-validated actions with permission enforcement, and <mark>`@backstage/plugin-mcp-actions-backend`</mark> exposes those actions as MCP tools so agents in Cursor or Claude can discover and invoke them. v1.43 added OAuth-based Dynamic Client Registration, replacing static-token auth with real per-user identity for MCP calls. However, Backstage's own documentation and independent platform-engineering commentary describe the MCP integration as "highly experimental," and a widely-circulated 2026 industry critique argues the deeper problem is architectural: Backstage centers the UI with everything else serving it, whereas an agent-native platform needs the catalog/context-graph to be the center, with the UI as just one consumer among agent-native interfaces. That's characterized as a re-architecture, not a version bump. **<mark>DOCUMENTED</mark>** for the shipped primitives; **<mark>ANALYSIS</mark>** for the architectural critique, which is one influential commentator's framing, not a Backstage project position. 
+*The most-discussed "is this architecture agent-ready?" case in the category — and the honest answer as of 2026 is "not yet, and not without rework."*
 
-#### **8. Humanitec** 
+Backstage shipped real primitives toward agent-readiness: v1.40's **Actions Registry** lets plugins register typed, schema-validated actions with permission enforcement, and <mark>`@backstage/plugin-mcp-actions-backend`</mark> exposes those actions as MCP tools so agents in Cursor or Claude can discover and invoke them. v1.43 added OAuth-based Dynamic Client Registration, replacing static-token auth with real per-user identity for MCP calls. However, Backstage's own documentation and independent platform-engineering commentary describe the MCP integration as "highly experimental," and a widely-circulated 2026 industry critique argues the deeper problem is architectural: Backstage centers the UI with everything else serving it, whereas an agent-native platform needs the catalog/context-graph to be the center, with the UI as just one consumer among agent-native interfaces. That's characterized as a re-architecture, not a version bump. **<mark>DOCUMENTED</mark>** for the shipped primitives; **<mark>ANALYSIS</mark>** for the architectural critique, which is one influential commentator's framing, not a Backstage project position.
 
-_Governance-first platform orchestrator; positions itself as what runs underneath a portal (including Backstage) rather than as an agent-harness product itself._ 
+### 8. Humanitec
 
-Humanitec is a Platform Orchestrator focused on standardizing infrastructure operations and selfservice, commonly paired with Backstage via official plugins (workload/environment/resource visibility inside a Backstage portal) rather than replacing it. No evidence surfaced of a first-party LLM agent harness comparable to GitLab's or GitHub's; Humanitec's relevance to the agent-harness conversation is more indirect — it's frequently cited as the kind of deterministic, policy-driven "execution substrate" that agent-facing platforms (per the Backstage critique above) are being pushed toward building. **<mark>ANALYSIS</mark>** 
+*Governance-first platform orchestrator; positions itself as what runs underneath a portal (including Backstage) rather than as an agent-harness product itself.*
 
-Harness Engineering (AI Agents) — 6 
+Humanitec is a Platform Orchestrator focused on standardizing infrastructure operations and selfservice, commonly paired with Backstage via official plugins (workload/environment/resource visibility inside a Backstage portal) rather than replacing it. No evidence surfaced of a first-party LLM agent harness comparable to GitLab's or GitHub's; Humanitec's relevance to the agent-harness conversation is more indirect — it's frequently cited as the kind of deterministic, policy-driven "execution substrate" that agent-facing platforms (per the Backstage critique above) are being pushed toward building. **<mark>ANALYSIS</mark>**
 
-#### **9. Spinnaker** 
+Harness Engineering (AI Agents) — 6
 
-_Mature multi-cloud CD platform; effectively no 2026 AI-agent narrative in current research._ 
+### 9. Spinnaker
 
-Originally built at Netflix for multi-cloud continuous delivery with sophisticated deployment strategies (canary, blue/green, highlander), Spinnaker shows no evidence of native agent-harness investment as of mid-2026. Multiple comparison sources instead frame Spinnaker itself as the thing organizations are moving _away_ from toward lighter, more AI-native alternatives, citing setup complexity and maintenance burden as the more pressing 2026 conversation for Spinnaker users rather than AI capability. **<mark>ANALYSIS</mark>** 
+*Mature multi-cloud CD platform; effectively no 2026 AI-agent narrative in current research.*
 
-#### **10. Tekton** 
+Originally built at Netflix for multi-cloud continuous delivery with sophisticated deployment strategies (canary, blue/green, highlander), Spinnaker shows no evidence of native agent-harness investment as of mid-2026. Multiple comparison sources instead frame Spinnaker itself as the thing organizations are moving *away* from toward lighter, more AI-native alternatives, citing setup complexity and maintenance burden as the more pressing 2026 conversation for Spinnaker users rather than AI capability. **<mark>ANALYSIS</mark>**
 
-_Kubernetes-native pipeline building blocks; AI activity is happening at the layer above it, not inside it._ 
+### 10. Tekton
 
-Tekton provides the underlying custom-resource pipeline engine that other projects (Jenkins X, OpenShift Pipelines) build on top of; it has no native agent harness of its own. The one concrete AI use case found in current research is LLM-assisted _migration into_ Tekton — generative tooling trained on paired pipeline examples to convert other platforms' pipeline definitions into Tekton YAML. Separately, emerging CNCF-ecosystem projects like OpenChoreo (an Internal Developer Platform in the CNCF Sandbox as of early 2026) are exposing MCP servers on top of Kubernetes-native stacks for agent-driven deployment and reasoning — a sign that agent-harness capability in the Kubernetesnative world is being built as a layer above tools like Tekton, not inside them. **<mark>DOCUMENTED</mark>** for what exists; **<mark>ANALYSIS</mark>** for the layering interpretation. 
+*Kubernetes-native pipeline building blocks; AI activity is happening at the layer above it, not inside it.*
 
-## **Part 3 — The Pattern Across All Ten** 
+Tekton provides the underlying custom-resource pipeline engine that other projects (Jenkins X, OpenShift Pipelines) build on top of; it has no native agent harness of its own. The one concrete AI use case found in current research is LLM-assisted *migration into* Tekton — generative tooling trained on paired pipeline examples to convert other platforms' pipeline definitions into Tekton YAML. Separately, emerging CNCF-ecosystem projects like OpenChoreo (an Internal Developer Platform in the CNCF Sandbox as of early 2026) are exposing MCP servers on top of Kubernetes-native stacks for agent-driven deployment and reasoning — a sign that agent-harness capability in the Kubernetesnative world is being built as a layer above tools like Tekton, not inside them. **<mark>DOCUMENTED</mark>** for what exists; **<mark>ANALYSIS</mark>** for the layering interpretation.
+
+## Part 3 — The Pattern Across All Ten
 
 |**Tier**|**Vendors**|**What characterizes it**|
 |---|---|---|
@@ -145,13 +146,12 @@ Tekton provides the underlying custom-resource pipeline engine that other projec
 |**Agent-curious,**<br>**architecturally**<br>**unresolved**|Backstage, Azure<br>DevOps|Real primitives shipped (MCP actions, custom agent selection) but<br>either explicitly "experimental" (Backstage) or explicitly secondary<br>to a sibling product getting the real investment (Azure DevOps vs.<br>GitHub)|
 |**No native harness;**<br>**agents operate above/**<br>**around it**|Jenkins, ArgoCD,<br>Spinnaker, Tekton,<br>Humanitec|Mature, often CNCF-grade infrastructure that agentic tooling treats<br>as a target to generate config for or reconcile against, rather than a<br>platform that runs agents itself|
 
-**The throughline back to Part 1:** the vendors in the top tier all converged, independently, on the same governance pattern that Part 1 identifies as the hard part of harness engineering — scoped per-agent identity, 
+**The throughline back to Part 1:** the vendors in the top tier all converged, independently, on the same governance pattern that Part 1 identifies as the hard part of harness engineering — scoped per-agent identity,
 
-Harness Engineering (AI Agents) — 7 
+Harness Engineering (AI Agents) — 7
 
-policy gates shared with human workflows, and audit trails — rather than on model choice or raw agent capability. That convergence is itself evidence for Part 1's central claim: the harness, not the model, is where 2026's real engineering investment is going. 
+policy gates shared with human workflows, and audit trails — rather than on model choice or raw agent capability. That convergence is itself evidence for Part 1's central claim: the harness, not the model, is where 2026's real engineering investment is going.
 
-Company profiles are necessarily compressed for comparability; treat "no evidence found" for Jenkins/ArgoCD/Spinnaker/Tekton as a statement about current public research, not a certainty that no such capability exists anywhere in those ecosystems' plugin/ vendor long tail. 
+Company profiles are necessarily compressed for comparability; treat "no evidence found" for Jenkins/ArgoCD/Spinnaker/Tekton as a statement about current public research, not a certainty that no such capability exists anywhere in those ecosystems' plugin/ vendor long tail.
 
-Harness Engineering (AI Agents) — 8 
-
+Harness Engineering (AI Agents) — 8

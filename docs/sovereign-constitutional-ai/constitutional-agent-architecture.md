@@ -163,7 +163,7 @@ L5 — MISSION AUTONOMOUS
 ### 2.2 Autonomy Level → Governance Mapping
 
 | Requirement | L0 | L1 | L2 | L3 | L4 | L5 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Constitution | Optional | Recommended | Required | Required | Required | Certified |
 | Approval level | RAI Champion | RAI Champion | RAIO Head | AI Gov Council | Board | Govt + Board |
 | Kill switch SLA | Not required | 5 min | 2 min | 1 min | 30 sec | Real-time |
@@ -310,6 +310,7 @@ ORCHESTRATOR AGENT (L3)
 ```
 
 **Inter-agent trust rules:**
+
 - An agent may not grant another agent permissions it doesn't itself have
 - Constitutional constraints from parent agents propagate to child agents
 - Constitutional violations in any agent propagate upward as escalation triggers

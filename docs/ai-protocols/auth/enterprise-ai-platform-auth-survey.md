@@ -12,6 +12,7 @@ research_date: 2026-07-10
 covers_version: "N/A"
 ---
 *Enterprise AI Authentication Research · Part 1 of 7*
+
 # Enterprise AI Platform Authentication Survey
 
 How leading AI platforms implement secure enterprise integrations — covering authentication, authorization, connector models, identity propagation, session handling, token management, governance, audit logging, and multi-tenant isolation.
@@ -141,7 +142,7 @@ Microsoft 365 Copilot is the most deeply integrated enterprise AI platform from 
 **M365 Copilot OBO Flow**
 
 | Step | Action |
-|---|---|
+| --- | --- |
 | 1 | User signs in to M365 with Entra ID credentials (MFA enforced) |
 | 2 | Entra ID issues OIDC ID token + OAuth access token for Microsoft Graph |
 | 3 | Copilot receives user access token (delegated permission, not application permission) |
@@ -289,7 +290,7 @@ Moveworks is an AI platform focused on employee IT and HR automation. It connect
 ## Cross-Platform Comparison
 
 | **Platform** | **IdP Integration** | **OBO / Delegated** | **MCP Support** | **Audit Log** |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Google Gemini | Google Identity / SAML | Google OBO (service acct) | Via Extensions | Workspace Audit |
 | Claude | SAML 2.0 / SCIM | MCP server OBO pattern | Native MCP | Admin Audit Log |
 | ChatGPT Enterprise | SAML 2.0 / SCIM | GPT Action OAuth (user) | Via Actions | OpenAI Audit Log |

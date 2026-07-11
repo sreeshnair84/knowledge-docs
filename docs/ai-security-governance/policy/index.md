@@ -28,7 +28,7 @@ Traditional access control assumes humans or deterministic applications make req
 The two leading engines for AI agent policy are **Open Policy Agent (OPA)** and **Cedar** (AWS):
 
 | | OPA (Rego) | Cedar (AWS Verified Permissions) |
-|---|---|---|
+| --- | --- | --- |
 | **Language** | Rego (Datalog-inspired) | Cedar (purpose-built) |
 | **Evaluation** | Open-source, any runtime | Managed via AWS |
 | **Best for** | Kubernetes/service mesh, custom infra | AWS-native agent workloads, Bedrock AgentCore |
@@ -119,6 +119,7 @@ permit(
 ## Authorization in the MCP / A2A Stack
 
 MCP's 2026-07-28 stateless spec RC mandates **OAuth 2.1** with:
+
 - RFC 9207 issuer validation (prevents token-redirect attacks)
 - PKCE (Proof Key for Code Exchange) required for all flows
 - Resource indicators (RFC 8707) so tokens are scoped to specific MCP servers
@@ -141,4 +142,3 @@ For A2A, authorization is declared in the **Agent Card** (the `authentication` b
 - [Agentic AI Security & Identity](../../enterprise-architecture/ai-architecture/agentic-ai-security-identity.md) — SPIFFE/AIMS, bounded autonomy, delegation chains
 - [Machine-Readable EA](../../enterprise-architecture/ai-architecture/machine-readable-ea.md) — policy-as-code as an EA standard; OPA/Cedar for enterprise-wide agent governance
 - [Agent Interoperability & Orchestration](../../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md) — MCP OAuth 2.1, A2A Agent Card auth
-

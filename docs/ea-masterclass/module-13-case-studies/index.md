@@ -72,7 +72,7 @@ A vertically integrated energy utility operating 18,000 kilometers of transmissi
 ## Industry Comparison Table
 
 | Industry | Use Case | Investment | Payback Period | Key Outcome |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Global Banking | AI-powered commercial loan origination | $12M / 3 years | 28 months | Origination reduced from 18 days to 4 days; $28M retained revenue Year 1 |
 | Healthcare | Ambient AI clinical documentation | $8.5M / 2 years | 22 months | 52% documentation time reduction; physician NPS from 23 to 61 |
 | Global Retail | Federated ML demand forecasting | $15M / 3 years | 31 months | Inventory carrying cost down 18%; out-of-stock rate down from 12% to 4.2% |
@@ -155,7 +155,7 @@ Synthesizes the most transferable insights from each case — the principles tha
 ## Case Study Navigation
 
 | Case Study | Industry | Primary AI Capability | Complexity |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Global Bank — AI Loan Origination](global-bank.md) | Financial Services | Document AI + ML credit scoring | High |
 | [Healthcare Network — Clinical Documentation](healthcare.md) | Healthcare | Ambient AI + NLP + FHIR integration | High |
 | [Global Retailer — Demand Forecasting](retail.md) | Retail | Federated ML + real-time POS integration | Medium-High |

@@ -4,6 +4,7 @@ The DOCX binary files in this repo are corrupted and cannot be converted,
 so we replace the Google Docs Viewer iframes (which never work) with
 a styled notice block and a download link.
 """
+
 import re
 from pathlib import Path
 

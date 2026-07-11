@@ -27,7 +27,7 @@ Agentic applications are fundamentally different from deterministic software. A 
 ### 1.1 Why Traditional Software Testing Is Insufficient
 
 | Traditional Testing Assumption | Why It Fails for Agentic Systems |
-|-------------------------------|----------------------------------|
+| ------------------------------- | ---------------------------------- |
 | Deterministic output | LLM outputs vary across calls; same input ≠ same output |
 | Binary pass/fail | Agent outputs require graded, multi-dimensional scoring |
 | Unit test isolation | Agent behavior emerges from system interactions, not individual functions |
@@ -86,7 +86,7 @@ Agentic applications are fundamentally different from deterministic software. A 
 Statistical rigor is mandatory when evaluating LLM-based systems.
 
 | Principle | Implementation |
-|-----------|---------------|
+| ----------- | --------------- |
 | **Repeat runs** | Run each test case N≥5 times; report mean ± std dev, not single-run result |
 | **Confidence intervals** | Report 95% CI for all aggregate metrics; don't claim improvement without statistical significance |
 | **Effect size** | A 0.1% improvement on 1000 cases may not be significant; use Cohen's d or similar |
@@ -121,7 +121,7 @@ CONTINUOUS EVAL REGRESSION TRACKING
 A complete agentic system evaluation covers 18 dimensions across UX, technical quality, safety, and business value.
 
 | Dimension | What to Measure | How to Measure | Target |
-|-----------|----------------|----------------|--------|
+| ----------- | ---------------- | ---------------- | -------- |
 | **Task Completion** | Did the agent complete the intended task? | Automated checklist, LLM judge, human rater | >90% on golden set |
 | **UX Quality** | Was the experience satisfying and usable? | CSAT, NPS, usability testing, session analysis | CSAT >4.2/5 |
 | **Planning Quality** | Did the agent form a correct, efficient plan? | Step trace analysis, LLM judge of plan quality | >85% correct plans |
@@ -152,7 +152,7 @@ A complete agentic system evaluation covers 18 dimensions across UX, technical q
 Traditional NPS and CSAT require adaptation. A user who was happy with the answer but found the agent experience confusing or slow will score differently on each dimension.
 
 | Metric | Traditional Form | Adapted for Agentic AI | Collection Method |
-|--------|-----------------|------------------------|-------------------|
+| -------- | ----------------- | ------------------------ | ------------------- |
 | **CSAT** | "How satisfied were you?" (1-5) | Per-task completion satisfaction + "Did the agent behave as you expected?" | In-app thumbs/stars after task |
 | **NPS** | "Would you recommend?" (0-10) | "Would you use this agent again for similar tasks?" (0-10) | Monthly survey |
 | **Task Success Rate** | Click-through or form submit | Did user complete their intended goal without manual correction? | Session analysis + exit survey |
@@ -182,7 +182,7 @@ TASK SUCCESS CLASSIFICATION
 **Target benchmarks by use case type:**
 
 | Use Case Type | Full Success Target | Partial OK | Notes |
-|--------------|---------------------|------------|-------|
+| -------------- | --------------------- | ------------ | ------- |
 | Information retrieval (Q&A) | >85% | Up to 10% | High precision needed |
 | Document drafting | >70% | Up to 25% | Human refinement expected |
 | Data analysis | >75% | Up to 20% | Interpretation often needs verification |
@@ -193,7 +193,7 @@ TASK SUCCESS CLASSIFICATION
 ### 3.3 Time-on-Task and Productivity
 
 | Metric | Formula | Measurement |
-|--------|---------|-------------|
+| -------- | --------- | ------------- |
 | **Time-on-task** | Wall clock from first query to user-accepted result | Session event timestamps |
 | **Time savings vs. baseline** | (Baseline time - Agent time) / Baseline time | A/B with/without agent group |
 | **Time savings per user per week** | Avg daily sessions × avg time saved × 5 | Instrumentation + baseline study |
@@ -203,7 +203,7 @@ TASK SUCCESS CLASSIFICATION
 ### 3.4 Error Rate and Correction Metrics
 
 | Signal | What It Indicates | How to Capture |
-|--------|------------------|----------------|
+| -------- | ------------------ | ---------------- |
 | **User-initiated retry** | Agent failed to meet intent | Track retry button clicks / new query after recent similar query |
 | **Explicit correction** | Agent output was wrong/incomplete | Track edit events in agent output surfaces |
 | **Undo action** | Agent executed something user wanted reversed | Track undo events, compensating transactions |
@@ -241,7 +241,7 @@ TRUST CALIBRATION MODEL
 **Measuring trust in production:**
 
 | Signal | Trust Direction | Collection |
-|--------|----------------|------------|
+| -------- | ---------------- | ------------ |
 | Approval rate by action risk tier | Over/under trust by tier | Action logs |
 | Time spent reviewing agent output | Under-trust indicator | Event timing |
 | Re-verification rate (user checks agent work externally) | Under-trust | Survey / user interview |
@@ -251,7 +251,7 @@ TRUST CALIBRATION MODEL
 ### 3.6 Abandonment Rate and Streaming UX Metrics
 
 | Metric | Definition | Target | Alert Threshold |
-|--------|-----------|--------|----------------|
+| -------- | ----------- | -------- | ---------------- |
 | **Session abandonment rate** | Sessions where user left without completing or cancelling cleanly | <10% | >20% |
 | **Mid-stream cancellation rate** | User cancelled while agent was still generating | <15% | >25% |
 | **Time-to-first-token (TTFT)** | Time from user submit to first streaming token appearing | <1.5s (P95) | >3s |
@@ -263,7 +263,7 @@ TRUST CALIBRATION MODEL
 ### 3.7 Approval Workflow Usability
 
 | Metric | Definition | Target |
-|--------|-----------|--------|
+| -------- | ----------- | -------- |
 | **Approval rate** | Fraction of approvals where user clicks approve (vs. reject/edit) | Depends on agent accuracy; >80% if agent is accurate |
 | **Approval time** | Time from approval prompt display to user decision | P95 <60s for low-stakes; no SLO for high-stakes |
 | **Approval edit rate** | User clicked "edit before approve" — indicates agent got 80% right | <30% for well-tuned agents |
@@ -293,7 +293,7 @@ Standard usability testing must be adapted for agentic UX. The nondeterminism of
 ### 4.1 Evaluation Methods Comparison
 
 | Method | Precision | Cost | Scale | Best For |
-|--------|-----------|------|-------|---------|
+| -------- | ----------- | ------ | ------- | --------- |
 | **Exact match** | High | Low | Unlimited | Structured outputs (JSON, SQL, code) |
 | **Semantic match** | Medium-High | Medium | High (with embeddings) | Natural language answers |
 | **LLM-as-judge** | Medium | Medium | High | Complex reasoning tasks |
@@ -338,7 +338,7 @@ MULTI-STEP TASK EVALUATION RUBRIC
 ### 4.3 Partial Credit Scoring
 
 | Completion Level | Suggested Score | Notes |
-|-----------------|----------------|-------|
+| ----------------- | ---------------- | ------- |
 | Correct and complete | 1.0 | All required elements present and accurate |
 | Correct but incomplete | 0.7 | Right answer, missing detail |
 | Partially correct | 0.5 | Core element correct, supporting elements mixed |
@@ -349,7 +349,7 @@ MULTI-STEP TASK EVALUATION RUBRIC
 ### 4.4 Completion Under Constraint
 
 | Constraint Type | Measurement | Target |
-|----------------|-------------|--------|
+| ---------------- | ------------- | -------- |
 | **Time budget** | % of tasks completed within time SLA | >90% within defined time budget |
 | **Cost budget** | % of tasks completed within token cost budget | >95% within cost cap |
 | **Tool call budget** | % of tasks completed within max tool calls | >85% within N tool calls |
@@ -365,7 +365,7 @@ MULTI-STEP TASK EVALUATION RUBRIC
 Tool selection is evaluated as an information retrieval problem: did the agent choose the correct tool(s) for the query?
 
 | Metric | Formula | Target |
-|--------|---------|--------|
+| -------- | --------- | -------- |
 | **Tool precision** | TP / (TP + FP) — tools selected that were correct | >90% |
 | **Tool recall** | TP / (TP + FN) — correct tools that were selected | >85% |
 | **Tool F1** | Harmonic mean of precision and recall | >87% |
@@ -380,7 +380,7 @@ Build a per-tool confusion matrix across your golden eval set. Identify which to
 ### 5.2 Tool Parameter Quality
 
 | Metric | Definition | Target |
-|--------|-----------|--------|
+| -------- | ----------- | -------- |
 | **Parameter exact match** | % tool calls where all parameters exactly match expected | >75% |
 | **Parameter semantic match** | % where parameters are semantically equivalent to expected | >88% |
 | **Required parameter fill rate** | % required parameters that are correctly populated | >97% |
@@ -391,7 +391,7 @@ Build a per-tool confusion matrix across your golden eval set. Identify which to
 ### 5.3 Tool Chaining Quality
 
 | Metric | Definition | Target |
-|--------|-----------|--------|
+| -------- | ----------- | -------- |
 | **Correct chain rate** | % multi-step tasks where tool call sequence matches expected sequence | >80% |
 | **Premature termination rate** | Agent stopped calling tools before task completion | <8% |
 | **Infinite loop rate** | Agent called same tool repeatedly without progress | <0.5% (must be near zero) |
@@ -439,7 +439,7 @@ TOOL CALL ERROR TAXONOMY
 ### 6.1 Faithfulness and Groundedness
 
 | Metric | Definition | Measurement Method | Target |
-|--------|-----------|-------------------|--------|
+| -------- | ----------- | ------------------- | -------- |
 | **Faithfulness** | Claims in response are supported by retrieved context | NLI-based check; compare claims to context | >90% faithful |
 | **Groundedness** | Every factual claim has an identifiable source | Source attribution check; citation rate | >85% grounded |
 | **Context utilization** | What fraction of retrieved context contributed to response | Overlap analysis between context and response | >40% utilization |
@@ -449,7 +449,7 @@ TOOL CALL ERROR TAXONOMY
 ### 6.2 Hallucination Detection
 
 | Hallucination Type | Example | Detection Method |
-|-------------------|---------|-----------------|
+| ------------------- | --------- | ----------------- |
 | **Factual hallucination** | Wrong dates, names, numbers | Fact-checking against external source |
 | **Source hallucination** | "According to [nonexistent study]..." | Citation verification |
 | **Inference hallucination** | Conclusion not supported by provided context | NLI entailment check |
@@ -459,7 +459,7 @@ TOOL CALL ERROR TAXONOMY
 **Hallucination severity tiers:**
 
 | Severity | Definition | Required Action |
-|----------|-----------|----------------|
+| ---------- | ----------- | ---------------- |
 | **Critical** | Medical, legal, financial misinformation with harm potential | Block; trigger safety review; incident report |
 | **High** | Factually incorrect claim in business context | Flag for human review; don't serve to user |
 | **Medium** | Incorrect detail that doesn't materially change meaning | Log; include in eval trending; fix prompt |
@@ -468,7 +468,7 @@ TOOL CALL ERROR TAXONOMY
 ### 6.3 Instruction Following and Format Compliance
 
 | Metric | Definition | Target |
-|--------|-----------|--------|
+| -------- | ----------- | -------- |
 | **Instruction following rate** | % responses that address the question as asked | >92% |
 | **Format compliance rate** | % responses matching requested output format | >95% (JSON schema, markdown, etc.) |
 | **Length appropriateness** | Response length appropriate to query complexity (not too long/short) | LLM judge score >3.5/5 |
@@ -483,7 +483,7 @@ TOOL CALL ERROR TAXONOMY
 ### 7.1 Safety Evaluation Taxonomy
 
 | Safety Dimension | What to Measure | Method | Target |
-|-----------------|----------------|--------|--------|
+| ----------------- | ---------------- | -------- | -------- |
 | **Harmful content** | Does response contain violent, sexual, or dangerous content? | Safety classifier (OpenAI Moderation, custom) | <0.01% harmful response rate |
 | **Policy compliance** | Does response comply with system operator policies? | Policy classifier | >99.9% compliant |
 | **PII exposure** | Does response expose personal data not provided by the user? | PII scanner in output | <0.001% PII exposure rate |
@@ -550,7 +550,7 @@ RED TEAM EVAL PROTOCOL — AGENTIC SYSTEMS
 LLM-as-judge is the scalable solution to agentic evaluation at production volumes. A well-designed judge achieves >80% agreement with human raters.
 
 | Principle | Implementation |
-|-----------|---------------|
+| ----------- | --------------- |
 | **Rubric-based** | Never ask "is this good?" — always provide explicit scoring criteria |
 | **Calibrated** | Validate judge scores against human scores on 100+ samples before trusting |
 | **Independent** | Use a different model or a different prompt than the evaluated model |
@@ -681,7 +681,7 @@ LLM-as-judge is the scalable solution to agentic evaluation at production volume
 ### 8.3 Meta-Evaluation (Evaluating the Evaluator)
 
 | Meta-Eval Metric | Definition | Target |
-|-----------------|-----------|--------|
+| ----------------- | ----------- | -------- |
 | **Human-judge agreement** | % scores within ±1 of human score on same inputs | >80% |
 | **Judge consistency** | Same input → same score across repeated calls | >90% (test with N=5 reruns) |
 | **Judge calibration** | Distribution of judge scores matches expected distribution | KS test p > 0.05 |
@@ -692,7 +692,7 @@ LLM-as-judge is the scalable solution to agentic evaluation at production volume
 ### 8.4 When NOT to Use LLM-as-Judge
 
 | Scenario | Alternative |
-|----------|------------|
+| ---------- | ------------ |
 | Safety classification at scale | Dedicated safety classifier (not a general LLM) |
 | PII detection | Regex + NER-based PII scanner |
 | JSON/schema validation | Schema validator — never an LLM |
@@ -753,7 +753,7 @@ RATER CALIBRATION PROTOCOL
 ### 9.3 Inter-Rater Reliability Targets
 
 | Metric | Acceptable | Good | Excellent |
-|--------|-----------|------|-----------|
+| -------- | ----------- | ------ | ----------- |
 | **Cohen's κ (categorical)** | >0.60 | >0.70 | >0.80 |
 | **Krippendorff's α (ordinal)** | >0.60 | >0.70 | >0.80 |
 | **Spearman correlation (continuous)** | >0.70 | >0.80 | >0.90 |
@@ -765,7 +765,7 @@ RATER CALIBRATION PROTOCOL
 Human evaluation is expensive. Use sampling to maximize signal efficiency.
 
 | Sampling Strategy | When to Use | Sample Rate |
-|------------------|-------------|-------------|
+| ------------------ | ------------- | ------------- |
 | **Random sampling** | Baseline quality monitoring | 0.5–2% of production traffic |
 | **Failure-biased sampling** | When you need to find and fix failure modes | Sample 20%+ of flagged sessions |
 | **User-reported sampling** | When users flag problems | 100% of user-reported issues |
@@ -783,7 +783,7 @@ Human evaluation is expensive. Use sampling to maximize signal efficiency.
 20-dimension quality scorecard. Score each dimension 0–5. Compute weighted total out of 100.
 
 | # | Dimension | Weight | Score (0-5) | Weighted Score | Notes |
-|---|-----------|--------|-------------|----------------|-------|
+| --- | ----------- | -------- | ------------- | ---------------- | ------- |
 | 1 | Task completion rate | 8% | ___ | ___ | Weighted FSR + 0.5×PSR |
 | 2 | Instruction following | 6% | ___ | ___ | % responses addressing query |
 | 3 | Faithfulness to context | 7% | ___ | ___ | NLI faithfulness score |
@@ -809,7 +809,7 @@ Human evaluation is expensive. Use sampling to maximize signal efficiency.
 **Score interpretation:**
 
 | Score | Status | Recommendation |
-|-------|--------|----------------|
+| ------- | -------- | ---------------- |
 | 85–100 | Production-ready | Monitor; schedule quarterly review |
 | 70–84 | Conditional go-live | Address Critical/High issues before launch |
 | 55–69 | Staging-only | Significant gaps; do not expose to production users |
@@ -823,7 +823,7 @@ Human evaluation is expensive. Use sampling to maximize signal efficiency.
 25-gate checklist. Each gate: Pass / Conditional / Fail. All Critical gates must Pass. No more than 3 Conditionals.
 
 | # | Gate | Severity | Pass Criteria | Status |
-|---|------|----------|---------------|--------|
+| --- | ------ | ---------- | --------------- | -------- |
 | 1 | Task completion rate ≥ target | Critical | FSR ≥ defined target for use case | ___ |
 | 2 | Safety classifier active | Critical | Real-time safety classification on all responses | ___ |
 | 3 | Prompt injection tests pass | Critical | 99%+ pass rate on injection test suite | ___ |
@@ -857,7 +857,7 @@ Human evaluation is expensive. Use sampling to maximize signal efficiency.
 15-dimension UX quality assessment.
 
 | # | Dimension | Measurement Method | Target | Current | Status |
-|---|-----------|-------------------|--------|---------|--------|
+| --- | ----------- | ------------------- | -------- | --------- | -------- |
 | 1 | Task success rate (full) | Session analysis + user feedback | >75% | ___ | ___ |
 | 2 | CSAT score | Post-task in-app rating (1-5) | >4.2 | ___ | ___ |
 | 3 | Customer Effort Score | Post-task survey (1-7) | <3.0 (easier = lower) | ___ | ___ |
@@ -932,7 +932,7 @@ CONTINUOUS EVALUATION PIPELINE — CI/CD INTEGRATION
 ### 11.2 Golden Dataset Management
 
 | Lifecycle Stage | Activity | Frequency |
-|----------------|----------|-----------|
+| ---------------- | ---------- | ----------- |
 | **Creation** | Sample from production traffic; annotate with expert raters | At launch and monthly thereafter |
 | **Curation** | Remove duplicates; ensure coverage of all task types | Monthly |
 | **Versioning** | Tag dataset versions with date and coverage stats | Every update |
@@ -943,7 +943,7 @@ CONTINUOUS EVALUATION PIPELINE — CI/CD INTEGRATION
 **Dataset coverage targets:**
 
 | Dimension | Target Coverage |
-|-----------|----------------|
+| ----------- | ---------------- |
 | Task types | All defined task categories represented |
 | Risk levels | Low, medium, high risk tasks (30/40/30 split) |
 | User roles | All user personas represented |
@@ -955,7 +955,7 @@ CONTINUOUS EVALUATION PIPELINE — CI/CD INTEGRATION
 ### 11.3 Evaluation Tools Comparison
 
 | Tool | Trace Support | LLM-Native | Auto-Eval | Human Eval | Self-Hostable | Open Source | Pricing Model |
-|------|--------------|-----------|-----------|------------|---------------|-------------|---------------|
+| ------ | -------------- | ----------- | ----------- | ------------ | --------------- | ------------- | --------------- |
 | **Braintrust** | Yes | Yes | Yes (rubric-based) | Yes | No | No | Usage-based |
 | **LangSmith** | Yes | Yes | Yes | Yes | Yes (Enterprise) | Partial | Freemium + Enterprise |
 | **Weights & Biases** | Yes | Yes (Weave) | Yes | Yes | No | Partial (core) | Usage-based |
@@ -980,7 +980,7 @@ CONTINUOUS EVALUATION PIPELINE — CI/CD INTEGRATION
 ### 12.1 Productivity Metrics
 
 | Metric | Formula | Data Sources |
-|--------|---------|-------------|
+| -------- | --------- | ------------- |
 | **Time saved per task** | Baseline task time − Agent-assisted task time | Time tracking, session analysis |
 | **Hours saved per user per week** | Time saved per task × tasks per week | Session analytics × user survey |
 | **FTE equivalent savings** | Hours saved per week × user count / 40 | Above × headcount |
@@ -1034,7 +1034,7 @@ ROI CALCULATION TEMPLATE — AGENTIC APPLICATION
 ### 12.3 Adoption Metrics
 
 | Metric | Definition | Target |
-|--------|-----------|--------|
+| -------- | ----------- | -------- |
 | **DAU/MAU ratio** | Daily/monthly active user ratio (engagement density) | >0.4 (indicates habitual use) |
 | **Feature adoption rate** | % active users using core agent features (not just chat) | >30% using advanced features |
 | **Task volume growth** | Month-over-month task volume growth rate | >10% MoM for first 6 months |
@@ -1050,7 +1050,7 @@ ROI CALCULATION TEMPLATE — AGENTIC APPLICATION
 The following anti-patterns are the most common ways evaluation programs fail in production agentic systems.
 
 | # | Anti-pattern | What Happens | Mitigation |
-|---|-------------|-------------|------------|
+| --- | ------------- | ------------- | ------------ |
 | 1 | **Evaluating only happy paths** | Failure modes in production are never caught in eval; system looks better than it is | 20%+ of golden set must be known-difficult or adversarial cases |
 | 2 | **Single-run evaluation** | LLM nondeterminism means a single run is statistically meaningless; variance is invisible | Minimum N=5 runs per test case; report mean ± std dev |
 | 3 | **Exact string match on prose** | Rejects correct but differently-worded responses; penalizes model improvements | Use semantic match (BERTScore, embedding cosine) for prose outputs |
@@ -1086,7 +1086,7 @@ A structured cadence ensures evaluation is continuous and complete, not reactive
 ### Daily Checks (Automated)
 
 | Check | Tool | Alert Threshold |
-|-------|------|----------------|
+| ------- | ------ | ---------------- |
 | Safety classifier pass rate | Production monitoring | <99.9% → PagerDuty |
 | Error rate (task failures) | Metrics dashboard | >5% error rate → Slack alert |
 | Latency P95 | Metrics dashboard | >SLA threshold → Slack alert |
@@ -1096,7 +1096,7 @@ A structured cadence ensures evaluation is continuous and complete, not reactive
 ### Weekly Reviews (Semi-automated with Human Review)
 
 | Activity | Participants | Output |
-|----------|-------------|--------|
+| ---------- | ------------- | -------- |
 | Eval score review (trending charts for all scorecard dimensions) | AI Platform Team | Weekly eval report; flag regressions |
 | CSAT aggregation and review | Product + AI Team | User satisfaction trend; action items |
 | Failed session deep-dive (worst 20 sessions) | AI Engineer + Product | Root cause identification; backlog items |
@@ -1106,7 +1106,7 @@ A structured cadence ensures evaluation is continuous and complete, not reactive
 ### Monthly Reviews (Human-driven)
 
 | Activity | Participants | Output |
-|----------|-------------|--------|
+| ---------- | ------------- | -------- |
 | Golden dataset refresh (add 20 new items, retire 10 stale) | Eval Team | Updated golden dataset v(N+1) |
 | LLM-as-judge calibration check | Eval Team | Judge accuracy vs. human; retrain if α <0.75 |
 | Full human eval sample (100 sessions) | Annotators + Product | Monthly human eval report |
@@ -1116,7 +1116,7 @@ A structured cadence ensures evaluation is continuous and complete, not reactive
 ### Quarterly Reviews (Strategic)
 
 | Activity | Participants | Output |
-|----------|-------------|--------|
+| ---------- | ------------- | -------- |
 | Full red team exercise | Security Team + External | Penetration test report; mitigations |
 | Formal usability study (N=8 participants) | UX Team + AI Team | Usability report; UX roadmap |
 | Scorecard A full run (20 dimensions) | AI Center of Excellence | Quarterly quality report |

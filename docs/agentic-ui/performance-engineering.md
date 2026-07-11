@@ -29,7 +29,7 @@ Agentic applications require a new vocabulary of performance metrics. Traditiona
 ### 1.1 Full Metrics Taxonomy
 
 | Metric | Abbreviation | Measurement Point | What It Represents |
-|--------|-------------|------------------|-------------------|
+| -------- | ------------- | ------------------ | ------------------- |
 | Time to First Byte | TTFB | Server → first HTTP byte | Server processing start; includes routing, auth |
 | Time to First Token | TTFT | Server → first SSE token event | LLM begins generating; most important UX metric |
 | Time to Usable UI | TTUI | Browser → first meaningful render | User sees something useful; skeleton → content |
@@ -48,7 +48,7 @@ Agentic applications require a new vocabulary of performance metrics. Traditiona
 ### 1.2 Metrics by User Interaction Type
 
 | Interaction Type | Primary Metric | Secondary Metrics | P95 Target |
-|-----------------|---------------|------------------|-----------|
+| ----------------- | --------------- | ------------------ | ----------- |
 | Simple Q&A (no tools) | TTFT | E2E, Streaming Lag | TTFT < 800ms, E2E < 5s |
 | Tool-augmented Q&A | TTFT + Tool Latency | CAT, E2E | TTFT < 1s, E2E < 8s |
 | Multi-step agentic task | E2E | Progress events P95, PL | E2E < 45s for 5-step task |
@@ -62,7 +62,7 @@ Agentic applications require a new vocabulary of performance metrics. Traditiona
 Single-user benchmarks are misleading. Always report metrics under representative concurrent load:
 
 | Metric | Single User | 10 Concurrent | 50 Concurrent | 200 Concurrent |
-|--------|------------|--------------|--------------|----------------|
+| -------- | ------------ | -------------- | -------------- | ---------------- |
 | TTFT P50 | 450ms | 480ms | 520ms | 750ms |
 | TTFT P95 | 800ms | 950ms | 1,200ms | 2,100ms |
 | E2E P50 | 4.2s | 4.5s | 5.1s | 7.8s |
@@ -80,7 +80,7 @@ Degradation above 200 concurrent users (in this example) signals a scalability b
 A performance budget allocates the total latency allowance across layers. Tracking against budgets in CI catches regressions before they reach production.
 
 | Interaction | Total Budget | TTFT Budget | CAT Budget | Tool Budget | Render Budget |
-|------------|-------------|------------|-----------|-------------|--------------|
+| ------------ | ------------- | ------------ | ----------- | ------------- | -------------- |
 | Simple Q&A | 5,000ms | 800ms | 200ms | 0ms | 100ms |
 | RAG Q&A | 8,000ms | 1,000ms | 600ms | 400ms | 100ms |
 | Tool-augmented | 10,000ms | 1,200ms | 400ms | 2,000ms | 150ms |
@@ -157,7 +157,7 @@ Total TTFT: ~400ms (best) to ~2,600ms (worst case with RAG)
 ### 3.2 Optimization Techniques
 
 | Technique | Latency Reduction | Complexity | Notes |
-|-----------|------------------|-----------|-------|
+| ----------- | ------------------ | ----------- | ------- |
 | **Prompt prefix caching** | 30–60% on TTFT | Low | Provider-side; mark stable prefix with cache_control |
 | **Context pre-warming** | 100–400ms | Medium | Pre-fetch likely context before user submits |
 | **Parallel context assembly** | 50–70% of sequential CAT | Medium | Embedding + vector search in parallel |
@@ -170,7 +170,7 @@ Total TTFT: ~400ms (best) to ~2,600ms (worst case with RAG)
 ### 3.3 Provider-Side TTFT by Model Tier (2026 Reference)
 
 | Provider + Model | TTFT P50 | TTFT P95 | Token Speed | Best For |
-|-----------------|---------|---------|------------|---------|
+| ----------------- | --------- | --------- | ------------ | --------- |
 | Claude claude-haiku-4-5 | 150ms | 350ms | 180 tok/s | Planning, routing, classification |
 | Claude claude-sonnet-4-5 | 400ms | 900ms | 120 tok/s | Standard agentic tasks |
 | Claude Opus 4 | 800ms | 1,800ms | 70 tok/s | Complex reasoning, analysis |
@@ -190,7 +190,7 @@ Total TTFT: ~400ms (best) to ~2,600ms (worst case with RAG)
 ### 4.1 SSE vs WebSocket Benchmark Comparison
 
 | Attribute | SSE (Server-Sent Events) | WebSocket |
-|-----------|------------------------|-----------|
+| ----------- | ------------------------ | ----------- |
 | **Protocol** | HTTP/1.1+; native browser EventSource | Custom upgrade; binary framing |
 | **Direction** | Server → client only | Bidirectional |
 | **Reconnect** | Automatic with Last-Event-ID | Manual |
@@ -481,7 +481,7 @@ async def prefetch_likely_tools(user_message: str, session_context: dict):
 Each additional tool in the agent's tool set increases planning time and the probability of wrong tool selection. Optimize by:
 
 | Strategy | Latency Impact | Quality Impact | Implementation |
-|----------|--------------|--------------|----------------|
+| ---------- | -------------- | -------------- | ---------------- |
 | Dynamic tool selection | -200ms planning | +5% accuracy | Select tools based on query category |
 | Tool set tiering | -100ms planning | Neutral | Basic tier (5 tools) vs full tier (25 tools) |
 | Tool description compression | -50ms TTFT | Neutral | Shorter tool descriptions = fewer tokens |
@@ -507,7 +507,7 @@ Load conv. history → 30ms               ↓
      ↓                            Rerank → 200ms (parallel w/ history)
 Load user prefs → 20ms                  ↓
      ↓                            Merge + format → 20ms
-Merge + format → 20ms             
+Merge + format → 20ms  
                                   Total: ~420ms (vs 480ms sequential)
 Total: 480ms                      Savings: ~12% + eliminates idle waits
 ```
@@ -517,7 +517,7 @@ Total: 480ms                      Savings: ~12% + eliminates idle waits
 When the retrieved context exceeds the token budget, compression is necessary. The choice of algorithm affects both latency and quality.
 
 | Algorithm | Latency | Compression Ratio | Quality Loss | Use Case |
-|-----------|---------|-------------------|-------------|---------|
+| ----------- | --------- | ------------------- | ------------- | --------- |
 | **Truncation** (tail) | 0ms | Up to 90% | High (loses context) | Never recommended |
 | **Truncation** (smart: preserve system prompt + recent) | 1ms | Up to 70% | Medium | Last resort |
 | **Extractive summarization** | 50–150ms | 60–80% | Low | Conversation history |
@@ -533,7 +533,7 @@ When the retrieved context exceeds the token budget, compression is necessary. T
 The document chunking strategy used at indexing time directly affects retrieval latency at query time.
 
 | Chunking Strategy | Chunk Size | Retrieval Recall | Retrieval Latency | Notes |
-|------------------|-----------|-----------------|------------------|-------|
+| ------------------ | ----------- | ----------------- | ------------------ | ------- |
 | Fixed-size (512 tokens) | Fixed | Medium | Fast | Simple; misses cross-chunk context |
 | Sentence-aware | Variable (50–200 tokens) | High | Fast | Better boundaries; more chunks |
 | Paragraph-aware | Variable (100–500 tokens) | High | Medium | Good default |
@@ -548,7 +548,7 @@ The document chunking strategy used at indexing time directly affects retrieval 
 ### 7.1 Vector DB Performance Comparison
 
 | Vector DB | Latency P50 (1M vectors) | Latency P95 (1M vectors) | QPS (single node) | Best For |
-|-----------|------------------------|------------------------|------------------|---------|
+| ----------- | ------------------------ | ------------------------ | ------------------ | --------- |
 | **Pinecone** (managed) | 10–30ms | 50–80ms | 500–2,000 | Production; managed; fast setup |
 | **Weaviate** (managed) | 15–40ms | 60–100ms | 400–1,500 | Hybrid search; multi-tenancy |
 | **Qdrant** (self-hosted) | 5–20ms | 20–50ms | 1,000–5,000 | High performance; self-hosted |
@@ -558,6 +558,7 @@ The document chunking strategy used at indexing time directly affects retrieval 
 | **Redis Vector** | 2–8ms | 10–25ms | 5,000–20,000 | Ultra-low latency; small corpus |
 
 **Choose when:**
+
 - Pinecone / Weaviate: managed cloud, production use, moderate scale
 - Qdrant / Milvus: self-hosted, > 10M vectors, high QPS requirement
 - pgvector: already using PostgreSQL, < 500K vectors, operational simplicity
@@ -649,7 +650,7 @@ async def readiness_check() -> bool:
 ### 8.1 HTTP/2 and HTTP/3 for Streaming
 
 | Protocol | Multiplexing | Header Compression | Connection Setup | SSE Support |
-|---------|-------------|------------------|-----------------|-------------|
+| --------- | ------------- | ------------------ | ----------------- | ------------- |
 | HTTP/1.1 | No (one stream per connection) | None | 1 RTT (TLS: 2 RTT) | Yes (one stream) |
 | HTTP/2 | Yes (multiple streams per connection) | HPACK | 1 RTT (TLS: 1 RTT with 0-RTT) | Yes (per-stream) |
 | HTTP/3 (QUIC) | Yes (without head-of-line blocking) | QPACK | 0 RTT (0-RTT handshake) | Yes |
@@ -694,7 +695,7 @@ async def stream_response(session_id: str):
 ### 9.1 React Streaming Best Practices
 
 | Practice | Latency Improvement | Implementation |
-|---------|-------------------|----------------|
+| --------- | ------------------- | ---------------- |
 | `startTransition` for token updates | Prevents blocking urgent updates | Wrap token appends in `startTransition` |
 | `useDeferredValue` for heavy renders | Defers re-render until browser is idle | Apply to conversation history list |
 | Virtualized conversation list | Eliminates off-screen render cost | `react-window` or `react-virtual` for > 50 messages |
@@ -785,7 +786,7 @@ function renderMessage(content: string, id: string): Promise<string> {
 ### 10.1 Quantization Trade-Offs
 
 | Quantization | VRAM Usage | Quality Loss | Throughput Gain | Use Case |
-|-------------|-----------|-------------|----------------|---------|
+| ------------- | ----------- | ------------- | ---------------- | --------- |
 | **FP32** (full precision) | 4× FP16 | None (baseline) | 0.5× FP16 | Training only |
 | **FP16** (half precision) | Baseline | Negligible | Baseline | Standard production |
 | **BF16** | Same as FP16 | Negligible | Same as FP16 | Preferred on H100/A100 |
@@ -796,7 +797,7 @@ function renderMessage(content: string, id: string): Promise<string> {
 ### 10.2 Inference Server Comparison
 
 | Server | Continuous Batching | Multi-Model | Quantization | Best For |
-|--------|-------------------|------------|-------------|---------|
+| -------- | ------------------- | ------------ | ------------- | --------- |
 | **vLLM** | Yes (PagedAttention) | Yes | GPTQ, AWQ, INT8 | General purpose; high throughput |
 | **TGI** (HuggingFace) | Yes | Yes | INT8, INT4 | HuggingFace models; easy setup |
 | **SGLang** | Yes (RadixAttention) | Yes | INT8 | Complex multi-call workloads |
@@ -827,7 +828,7 @@ With PagedAttention (vLLM):
 ### 10.4 Request Batching Strategies
 
 | Strategy | Throughput | Latency | Implementation |
-|----------|-----------|--------|----------------|
+| ---------- | ----------- | -------- | ---------------- |
 | **Static batching** | Medium | High (waits for batch) | Batch size N; wait until full |
 | **Dynamic batching** | High | Medium | Batch with timeout; send partial batch if timeout reached |
 | **Continuous batching** | Highest | Low | Insert new requests as old ones finish tokens |
@@ -888,7 +889,7 @@ async def handle_user_message(session_id: str, message: str):
             "message.length": len(message),
         }
     ) as root_span:
-        
+
         # Context assembly
         with tracer.start_as_current_span("context.assemble") as ctx_span:
             context = await assemble_context(session_id, message)
@@ -1133,7 +1134,7 @@ datadogRum.startView(\{
 ### 13.1 TTFT Ranges by Model Tier (2026, API-hosted)
 
 | Model Tier | P50 | P95 | P99 | Notes |
-|-----------|-----|-----|-----|-------|
+| ----------- | ----- | ----- | ----- | ------- |
 | Ultra-fast (Haiku/Flash) | 150–300ms | 400–700ms | 700–1,200ms | Best for classification, routing |
 | Standard (Sonnet/GPT-4o) | 350–600ms | 800–1,400ms | 1,400–2,500ms | Best for general tasks |
 | Advanced (Opus/GPT-4o-Preview) | 700–1,200ms | 1,500–3,000ms | 3,000–5,000ms | Best for complex reasoning |
@@ -1143,7 +1144,7 @@ datadogRum.startView(\{
 ### 13.2 Tool Latency Ranges by Type
 
 | Tool Category | P50 | P95 | P99 | Notes |
-|--------------|-----|-----|-----|-------|
+| -------------- | ----- | ----- | ----- | ------- |
 | In-memory lookup | 1–5ms | 5–15ms | 15–50ms | Redis, local state |
 | Database read (indexed) | 5–30ms | 30–80ms | 80–200ms | Postgres, DynamoDB |
 | Vector DB search | 10–50ms | 50–150ms | 150–400ms | Depends on index size |
@@ -1156,7 +1157,7 @@ datadogRum.startView(\{
 ### 13.3 Vector Retrieval Latency by DB and Index Size
 
 | Vector DB | 100K vectors | 1M vectors | 10M vectors | 100M vectors |
-|-----------|-------------|-----------|------------|-------------|
+| ----------- | ------------- | ----------- | ------------ | ------------- |
 | Pinecone (s1) | 5–15ms | 10–30ms | 20–60ms | 40–120ms |
 | Qdrant (HNSW) | 3–10ms | 5–20ms | 10–40ms | 20–80ms |
 | Milvus (IVF_FLAT) | 5–20ms | 15–50ms | 30–100ms | 60–200ms |
@@ -1168,7 +1169,7 @@ datadogRum.startView(\{
 ## 14. Performance Anti-Patterns
 
 | # | Anti-Pattern | Description | Impact | Correct Pattern |
-|---|-------------|-------------|--------|-----------------|
+| --- | ------------- | ------------- | -------- | ----------------- |
 | 1 | **Sequential Tool Calls** | Tools called one-at-a-time even when independent | N × tool latency instead of max(tool latency) | Parallel execution with `asyncio.gather` / `Promise.allSettled` |
 | 2 | **No Prompt Cache** | System prompt rebuilt and billed in full every call | 100% input token cost for stable prefix | Mark stable prefix with `cache_control` |
 | 3 | **Full Re-render per Token** | React state update on every token | Browser jank; main thread blocking | `startTransition` + text node append |

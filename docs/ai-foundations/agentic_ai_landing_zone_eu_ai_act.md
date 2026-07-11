@@ -75,25 +75,25 @@ agents:
     status: "production"
     owner: "Customer Operations"
     users: "100K+ customers/month"
-    
+
   - id: "loan-approval-v1.0"
     name: "Loan Decisioning Agent"
     status: "staging"
     owner: "Credit Risk"
     users: "Processing ~500 loans/day"
-    
+
   - id: "compliance-monitor-v1"
     name: "Regulatory Compliance Monitor"
     status: "production"
     owner: "Compliance & Risk"
     users: "Internal (monitoring ~200 transactions/hour)"
-    
+
   - id: "research-assistant-pilot"
     name: "Research & Market Intelligence"
     status: "pilot"
     owner: "Strategy Team"
     users: "Internal (10 users in pilot)"
-    
+
   # ... continue for all agents
 ```
 
@@ -106,7 +106,7 @@ agents:
 **EU AI Act Risk Framework:**
 
 | Risk Level | Definition | Requirements | Examples |
-|-----------|-----------|--------------|----------|
+| ----------- | ----------- | -------------- | ---------- |
 | **UNACCEPTABLE** | Prohibited systems | ❌ BANNED (remove immediately) | Social credit scoring, manipulation, subliminal techniques |
 | **HIGH-RISK** (Annex III) | Critical systems needing conformity assessment | ⚠️ MUST COMPLY by Aug 2 | Lending decisions, employment screening, law enforcement tools, critical infrastructure |
 | **LIMITED-RISK** | Transparency required | ⚠️ MUST DISCLOSE by Aug 2 | Chatbots, content generation, recommendation systems |
@@ -149,29 +149,29 @@ Fill this out for **EACH agent**:
 classification:
   agent_id: "loan-approval-v1.0"
   agent_name: "Loan Decisioning Agent"
-  
+
   risk_assessment:
     # Does it affect fundamental rights?
     affects_fundamental_rights: true
     # Which rights? (employment, credit, justice, migration, safety, etc.)
     rights_affected: ["credit_access", "financial_wellbeing"]
-    
+
     # Is it a use case in Annex III?
     in_annex_iii: true
     annex_iii_category: "Credit provision (4.1)"
-    
+
     # Final classification
     risk_level: "HIGH-RISK"
     requires_conformity_assessment: true
     compliance_deadline: "2026-08-02"
-    
+
   decision_impact:
     # How many people affected?
     users_affected: 500  # loans/day × 250 days/year
-    
+
     # What are the consequences of wrong decisions?
     consequences_of_error: "Loan rejection (financial harm), unfair treatment"
-    
+
     # Can user appeal or understand why?
     explainability_required: true
     appeals_process_required: true
@@ -221,7 +221,7 @@ REQUIREMENT                        STATUS    EVIDENCE NEEDED
   - Likelihood: Medium
   - Impact: High (loan rejections)
   - Mitigation: [What you're doing]
-  
+
 - **Risk 2**: Hallucinated justifications (model invents reasons for decisions)
   - Likelihood: Low
   - Impact: Medium (poor customer experience)
@@ -271,6 +271,7 @@ Risk: Bias against women in loan decisions
 **What is it?** Evidence that your training/operational data is fit for purpose.
 
 **Requirements:**
+
 ```
 ✓ Data collection documented (where did data come from?)
 ✓ Data quality checked (is it accurate, complete, representative?)
@@ -284,21 +285,21 @@ Risk: Bias against women in loan decisions
 ```yaml
 data_governance:
   agent: "loan-approval-v1.0"
-  
+
   training_data:
     source: "Historical loan decisions (2020-2025)"
     volume: "50,000 approved loans + 30,000 rejected loans"
-    
+
     quality_assurance:
       completeness: "99.2% (0.8% missing fields)"
       accuracy: "Audited by compliance team (spot-check 500 records)"
       timeliness: "Data refreshed monthly"
-    
+
     bias_assessment:
       protected_classes_checked: ["gender", "age", "race", "disability"]
       disparate_impact_test: "Passed (approval rate difference < 5%)"
       mitigation: "Removed proxy features (zip code, name) that correlate with protected class"
-    
+
     privacy_controls:
       pii_handling: "Social Security numbers encrypted at rest, masked in logs"
       data_minimization: "Only features required for prediction"
@@ -310,7 +311,7 @@ data_governance:
       - loan_application_db
       - credit_score_api
       - income_verification_service
-    
+
     freshness: "Real-time (within 5 minutes)"
     validation: "Automated schema validation before inference"
     pii_protection: "Customer SSN masked, only last 4 digits used"
@@ -388,7 +389,7 @@ Audit Log Must:
 {
   "timestamp": "2026-07-09T14:30:15Z",
   "audit_log_id": "LOG-2026-0847201",
-  
+
   "input": {
     "loan_amount": 250000,
     "credit_score": 720,
@@ -396,13 +397,13 @@ Audit Log Must:
     "employment_years": 8,
     "debt_to_income": 0.28
   },
-  
+
   "agent": {
     "id": "loan-approval-v1.0",
     "version": "1.2.3",
     "model": "claude-opus-4-8"
   },
-  
+
   "decision": {
     "recommendation": "APPROVE",
     "approved_amount": 250000,
@@ -410,23 +411,23 @@ Audit Log Must:
     "confidence": 0.94,
     "reasoning": "Strong credit profile, stable employment, acceptable debt ratio"
   },
-  
+
   "policy_check": {
     "applied_policies": ["lending-policy-v2.1", "fair-lending-policy-v3.0"],
     "policy_satisfied": true,
     "constraints": "No issues detected"
   },
-  
+
   "human_review": {
     "required": false,
     "status": "N/A"
   },
-  
+
   "user_context": {
     "user_id": "advisor-456",
     "organization": "Wealth Management Division"
   },
-  
+
   "signature": "sha256:abc123...", // Cryptographic signature
   "retention_until": "2033-07-09"  // 7-year retention
 }
@@ -668,7 +669,7 @@ NEXT ACTIONS:
 AGENT INVENTORY & CLASSIFICATION
 └─ [ ] List all agents (production, staging, pilots, shadow)
    └─ [ ] For each: document purpose, users, scope
-   
+
 HIGH-RISK AGENT REMEDIATION (For each HIGH-RISK agent)
 ├─ [ ] Risk Management System documented
 ├─ [ ] Data Governance & Quality documented
@@ -910,7 +911,7 @@ Risk: Missing agents in inventory
    - Implement compliance plan within grace period
    - Regulators often give 30-90 day remediation window if you show effort
 
-**Recommendation:** 
+**Recommendation:**
 > Even if you're not 100% done by Aug 2, have evidence that you started in good faith. A partial compliance plan with demonstrable progress is better than nothing.
 
 ---
@@ -918,14 +919,15 @@ Risk: Missing agents in inventory
 ## RESOURCES & CONTACTS
 
 ### EU AI Act Official Resources
-- EU AI Act Text: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1689
-- NIST AI RMF Crosswalk: https://airc.nist.gov/
+
+- EU AI Act Text: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1689>
+- NIST AI RMF Crosswalk: <https://airc.nist.gov/>
 - Your country's competent authority (see table below)
 
 ### Competent Authorities by Country
 
 | Country | Authority | Contact |
-|---------|-----------|---------|
+| --------- | ----------- | --------- |
 | **Germany** | Bundesamt für Arbeit und Soziales (BAS) | [contact] |
 | **France** | CNIL (Data Protection) + others | [contact] |
 | **Spain** | AEPD | [contact] |
@@ -939,4 +941,3 @@ Risk: Missing agents in inventory
 **Deadline:** August 2, 2026 (24 days)  
 **Next Update:** After classification complete  
 **Owner:** Chief Compliance Officer / General Counsel
-

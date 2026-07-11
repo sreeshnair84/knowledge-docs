@@ -28,7 +28,7 @@ Most architecture career frameworks draw a hard line between Principal/Chief and
 The four separating characteristics:
 
 | Characteristic | Principal / Chief Architect | Distinguished Architect |
-|---|---|---|
+| --- | --- | --- |
 | **Primary output** | Architecture decisions and artefacts | Organisational capability and strategic direction |
 | **Time horizon** | 1–3 years | 3–10 years |
 | **Influence scope** | One programme or business unit | Enterprise-wide and cross-industry |
@@ -44,15 +44,19 @@ The four separating characteristics:
 This module is organised into four topic files. Each domain is necessary — Distinguished Architects who excel technically but lack executive presence plateau quickly; those with political skill but weak strategic thinking make expensive bets.
 
 ### Domain 1 — Executive Presence & Influence
+
 How technical leaders develop the gravitas, communication style, and political acumen needed to operate at Board and C-suite level. Covers influence without authority, stakeholder management, conflict resolution, organisational politics, mentoring, crisis management, decision-making under uncertainty, and negotiation.
 
 ### Domain 2 — Strategic Thinking & Technology Bets
+
 Frameworks for evaluating technology directions and committing organisational resources to multi-year bets. Covers the adoption S-curve, platform economics, engineering organisation design (Conway's Law, Team Topologies), and AI programme governance failure patterns.
 
 ### Domain 3 — Architecture Leadership & CTO Readiness
+
 How to build and lead an EA practice, drive organisational change, and position yourself for a CTO or equivalent role. Covers the three leadership modes, Kotter's 8 steps applied to architecture transformations, Distinguished Architect responsibilities in AI programmes, and a CTO readiness self-assessment.
 
 ### Domain 4 — Fortune 100 Modernisation Playbook
+
 The specific challenges of leading architecture transformation at the largest enterprises: scale, political complexity, multi-tenure programmes, legacy debt quantification, AI integration sequencing, and the eight canonical modernisation patterns.
 
 ---
@@ -60,7 +64,7 @@ The specific challenges of leading architecture transformation at the largest en
 ## Navigation Table
 
 | Topic | What You Learn | Who It Is For |
-|---|---|---|
+| --- | --- | --- |
 | [Executive Presence & Influence](executive-presence.md) | Gravitas, stakeholder politics, conflict resolution, crisis communication, negotiation | Architects moving into VP/Fellow/CTO tracks |
 | [Strategic Thinking & Technology Bets](strategic-thinking.md) | S-curve analysis, platform economics, org design, AI governance failure patterns | EAs responsible for multi-year technology direction |
 | [Architecture Leadership & CTO Readiness](architecture-leadership.md) | EA practice leadership, change management, AI programme governance, CTO gap assessment | Senior architects targeting executive roles |

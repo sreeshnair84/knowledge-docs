@@ -20,7 +20,7 @@ A curated, open-access knowledge base covering Agentic AI, Enterprise Architectu
 ## Site
 
 | | |
-|---|---|
+| --- | --- |
 | **Live URL** | [sreeshnair84.github.io/knowledge-docs](https://sreeshnair84.github.io/knowledge-docs/) |
 | **Stack** | Docusaurus 3 (Modern theme) |
 | **Hosting** | GitHub Pages (auto-deployed on push to `main`) |
@@ -61,16 +61,20 @@ docusaurus.config.js        # Full site config
 ## Adding Content
 
 ### New markdown guide
+
 1. Drop the `.md` file into the relevant `docs/<section>/` folder.
 2. Add front matter at the top:
+
    ```yaml
    ---
    title: Page Title
    ---
    ```
+
 3. Add the file to `sidebars.js` under the correct section.
 
 ### New PDF
+
 ```html
 <details>
 <summary>Document Title</summary>
@@ -80,11 +84,13 @@ docusaurus.config.js        # Full site config
 ```
 
 ### New DOCX / PPTX (Google Docs Viewer)
+
 ```html
 - [Document Title](/knowledge-docs/filename.docx) *(download)*
 ```
 
 ### New HTML file
+
 ```html
 <details>
 <summary>Title</summary>
@@ -94,6 +100,7 @@ docusaurus.config.js        # Full site config
 ```
 
 ### New section
+
 1. Create `docs/<section>/index.md` with `title:` front matter.
 2. Add it to `sidebars.js` under the correct section.
 

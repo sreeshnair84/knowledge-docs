@@ -31,7 +31,7 @@ MeridianHealth Network (name anonymised) operates 85 hospitals across 12 states,
 **Clinical profile**
 
 | Specialty Group | Physician Count | Documentation Intensity |
-|---|---|---|
+| --- | --- | --- |
 | Primary care / family medicine | 4,200 | Very high (high visit volume, broad documentation scope) |
 | Internal medicine / hospitalists | 3,100 | Very high (complex patients, extensive history requirements) |
 | Surgery (general + subspecialty) | 2,400 | High (pre/post-op notes, operative reports) |
@@ -64,7 +64,7 @@ MeridianHealth's annual physician engagement survey (2025, n=11,400 respondents,
 The EA team conducted time-motion studies across six pilot specialties over 10 weeks. Physicians carried secure wrist-worn timers and logged activity categories via a mobile app. The data confirmed and extended the survey findings.
 
 | Documentation Activity | Average Daily Time | Notes |
-|---|---|---|
+| --- | --- | --- |
 | In-encounter note-taking / EHR entry | 1.1 hours | Time that could otherwise be used for patient interaction |
 | Post-encounter note completion | 1.4 hours | Majority of "pajama time" occurred here |
 | Order entry and prior authorisation | 0.6 hours | Partially separate problem; noted but out of scope |
@@ -76,7 +76,7 @@ Emergency medicine and primary care physicians were at the high end (3.5–4.1 h
 ### Financial Impact
 
 | Cost Category | Annual Cost | Basis |
-|---|---|---|
+| --- | --- | --- |
 | Direct physician documentation labour cost | $180M | 18,000 physicians × 2.5 hrs/day × 250 working days × $16/hr implicit cost (at $280/hr fully loaded, 2.5/8 hrs of each physician's day) |
 | Physician turnover cost | $68M | 8% turnover × 1,900 departures × $480K/departure × partial attribution to documentation (70% attribution) |
 | Recruitment agency fees and locum costs | $24M | Backfill costs during physician vacancy periods |
@@ -92,7 +92,7 @@ The EA team's investment case focused on the $180M direct documentation cost as 
 ### Alternatives Evaluated
 
 | Alternative | Description | Reason Rejected |
-|---|---|---|
+| --- | --- | --- |
 | Offshore clinical scribes | Hire remote scribes in lower-cost locations (India, Philippines) to listen to patient encounters via secure audio and produce notes | Quality concerns for complex clinical documentation; latency (4–6 hour turnaround); physician resistance to third parties listening to encounters; HIPAA business associate agreement complexity with offshore vendors; cost savings marginal ($28M/yr reduction) vs. AI target ($60M/yr) |
 | On-site medical scribes | Assign scribes to high-volume physicians (primary care, emergency) | Limited scalability (1:1 physician-to-scribe ratio for full benefit); scribe market tight; estimated $48M annual cost for full programme coverage; does not address "pajama time" notes completed without scribes |
 | Voice recognition / speech-to-text | Existing Dragon Medical dictation tools expanded across the network | Dragon already deployed selectively; feedback consistent: dictation reduces typing time but not cognitive load; physicians must still structure, edit, and verify output; studies showed only 15–20% documentation time reduction; does not address Epic field-by-field data entry |
@@ -203,7 +203,7 @@ The EA team's investment case focused on the $180M direct documentation cost as 
 ### Cost Structure
 
 | Category | Year 1 | Year 2 | Total |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | AI platform licences (ambient AI vendor, per-physician SaaS) | $2.4M | $2.4M | $4.8M |
 | Epic FHIR integration and customisation | $1.6M | $0.6M | $2.2M |
 | FDA SaMD assessment and regulatory documentation | $0.4M | $0.1M | $0.5M |
@@ -215,7 +215,7 @@ The EA team's investment case focused on the $180M direct documentation cost as 
 ### Benefits Projection
 
 | Benefit Category | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | 5-Year Total |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Physician time savings (47% reduction, $280/hr) | $8.5M | $17.0M | $17.0M | $17.0M | $17.0M | $76.5M |
 | Physician turnover reduction (target: 50% reduction in doc-attributed turnover) | $8.0M | $16.0M | $16.0M | $16.0M | $16.0M | $72.0M |
 | Productivity uplift (more patients per physician per day) | $1.2M | $2.8M | $3.1M | $3.1M | $3.1M | $13.3M |
@@ -303,7 +303,7 @@ Month 23-24: Full network steady-state governance handoff
 
 !!! info "HIPAA Privacy Compliance"
     Clinical audio captured during patient encounters is Protected Health Information (PHI). The programme's privacy architecture was reviewed and approved by MeridianHealth's Privacy Officer:
-    
+
     - Patient consent for AI documentation captured via Epic MyChart consent workflow, documented in patient chart.
     - Audio retained for maximum 24 hours post-note generation; deleted upon physician approval of note.
     - All ambient AI vendor personnel accessing MeridianHealth systems are covered under a HIPAA Business Associate Agreement (BAA) with annual review.
@@ -311,7 +311,7 @@ Month 23-24: Full network steady-state governance handoff
 
 !!! info "FDA Software as a Medical Device (SaMD) Assessment"
     The EA team engaged MeridianHealth's regulatory affairs team to assess whether the ambient AI documentation system constituted a Medical Device under FDA definitions.
-    
+
     - **Determination:** SaMD Class I (lowest risk class), based on the argument that the AI generates a draft documentation aid that does not inform clinical diagnosis or treatment decisions, and that a physician reviews and approves all output before it enters the medical record.
     - **Timeline impact:** The SaMD assessment and documentation process added 4 months to Phase 1. The EA team had not scoped regulatory assessment into the original programme timeline — this was the programme's most significant planning miss.
     - **Ongoing compliance:** Annual review of SaMD classification required as AI capabilities expand. Any expansion into AI-generated diagnostic suggestions would require reclassification to Class II or III, triggering substantially more rigorous FDA oversight.
@@ -323,7 +323,7 @@ Month 23-24: Full network steady-state governance handoff
 
 !!! info "Physician Champion Programme"
     The physician champion programme was treated as a governance mechanism, not merely a change management tool:
-    
+
     - Champions had veto authority over deployment readiness in their specialty cohort.
     - Champions co-designed the AI review and approval workflow to ensure it matched clinical mental models.
     - Champion feedback was logged and tracked as formal programme input, not advisory opinion.
@@ -343,7 +343,7 @@ Month 23-24: Full network steady-state governance handoff
 ### Physician Outcomes
 
 | Metric | Baseline (2025) | Phase 1 Pilot (Month 8) | Full Network (Month 18) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Physician NPS | 23 | 57 | 61 |
 | Burnout rate (MBI-PE subscale) | 34% | 24% (pilot cohort) | 27% (network) |
 | Annual physician turnover | 8% | 4.1% (pilot cohort, annualised) | 5.2% (network) |
@@ -358,7 +358,7 @@ The 94% retention rate for at-risk pilot physicians was the metric that most pow
 ### Financial Outcomes (Year 1 Post Full Rollout)
 
 | Metric | Projected | Actual |
-|---|---|---|
+| --- | --- | --- |
 | Physician turnover reduction (documentation-attributed) | 50% | 35% |
 | Annual physician replacement cost avoidance | $34M | $22M |
 | Productivity uplift (additional patient encounters) | $2.8M | $3.4M |

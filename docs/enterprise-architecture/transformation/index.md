@@ -20,7 +20,7 @@ A comprehensive 7-volume strategy series for organisations transforming into AI-
 ## Series Overview
 
 | Volume | Title | Key questions answered |
-|---|---|---|
+| --- | --- | --- |
 | **Vol 00** | Executive Summary & AI Vision | What does an AI-first enterprise look like? What is the strategic case? |
 | **Vol 01** | Current State Assessment & AI Maturity | Where are we now? How do we measure AI maturity objectively? |
 | **Vol 02** | AI Opportunity Portfolio | Which AI initiatives deliver the most value? How do we prioritise? |
@@ -46,7 +46,7 @@ A comprehensive 7-volume strategy series for organisations transforming into AI-
 ## AI Maturity Model (Vol 01 Summary)
 
 | Level | Name | Characteristics |
-|---|---|---|
+| --- | --- | --- |
 | **1** | Exploring | Ad-hoc pilots; no enterprise AI strategy; shadow AI common |
 | **2** | Experimenting | Structured pilots; AI CoE forming; governance being defined |
 | **3** | Scaling | Production AI systems; established governance; measurable ROI |

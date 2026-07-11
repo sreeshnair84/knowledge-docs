@@ -68,7 +68,7 @@ Accenture's distinctive move is workforce-scale enablement backed by policy: it 
 ## Cross-firm patterns
 
 | Pattern | Evidence |
-|---|---|
+| --- | --- |
 | **Curated corpus over "index everything"** | Lilli's 40+ *curated* sources; quality gates on what enters the knowledge base |
 | **Citations + expert routing** | Lilli surfaces sources inline and routes to human experts — grounding plus human oversight in one flow |
 | **Ingestion is the hard part** | McKinsey's PowerPoint parsing (15% → 85%) |

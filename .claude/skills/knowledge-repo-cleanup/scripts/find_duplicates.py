@@ -12,10 +12,11 @@ Usage:
 
 Requires: scikit-learn (pip install --break-system-packages scikit-learn)
 """
+
+import argparse
+import csv
 import json
 import re
-import csv
-import argparse
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -61,9 +62,7 @@ def main():
 
     print(f"Usable docs after cleaning: {len(paths)} / {len(corpus)}")
 
-    vec = TfidfVectorizer(
-        max_features=30000, stop_words="english", ngram_range=(1, 2), min_df=2
-    )
+    vec = TfidfVectorizer(max_features=30000, stop_words="english", ngram_range=(1, 2), min_df=2)
     X = vec.fit_transform(texts)
     sim = cosine_similarity(X)
 

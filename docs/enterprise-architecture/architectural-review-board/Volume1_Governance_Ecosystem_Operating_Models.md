@@ -9,21 +9,21 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise Governance Ecosystem & Operating Models** 
+# **Enterprise Governance Ecosystem & Operating Models**
 
-How the Architecture Review Board fits into the wider enterprise governance landscape — overlaps, escalation paths, decision rights, and the operating models that make federated architecture governance actually work, with a banking/financial-services lens throughout. 
+How the Architecture Review Board fits into the wider enterprise governance landscape — overlaps, escalation paths, decision rights, and the operating models that make federated architecture governance actually work, with a banking/financial-services lens throughout.
 
-Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition Companion volumes: Economics & Decision Science · Knowledge & Capability Mapping · Artifact Catalog & Quality Attributes · Review Questions & Scorecards · Banking Industry Deep-Dive · AI-Native ARB & Case Studies · Implementation Accelerator Kit 
+Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition Companion volumes: Economics & Decision Science · Knowledge & Capability Mapping · Artifact Catalog & Quality Attributes · Review Questions & Scorecards · Banking Industry Deep-Dive · AI-Native ARB & Case Studies · Implementation Accelerator Kit
 
-## **Part A — The Enterprise Governance Ecosystem** 
+## **Part A — The Enterprise Governance Ecosystem**
 
-A common failure mode for newly-formed or newly-led Architecture Review Boards (ARBs) is to design the board in isolation — as if it were the only governance body that touches technology decisions. In any bank or financial institution of meaningful size, the ARB is one node in a dense mesh of councils, committees, and boards, each with its own charter, cadence, and (often informally negotiated) jurisdiction. A Principal Enterprise Architect who doesn't understand this mesh will either (a) have the ARB's decisions overridden or duplicated elsewhere, or (b) become a bottleneck because everything gets routed through the ARB by default, out of organizational confusion rather than design. 
+A common failure mode for newly-formed or newly-led Architecture Review Boards (ARBs) is to design the board in isolation — as if it were the only governance body that touches technology decisions. In any bank or financial institution of meaningful size, the ARB is one node in a dense mesh of councils, committees, and boards, each with its own charter, cadence, and (often informally negotiated) jurisdiction. A Principal Enterprise Architect who doesn't understand this mesh will either (a) have the ARB's decisions overridden or duplicated elsewhere, or (b) become a bottleneck because everything gets routed through the ARB by default, out of organizational confusion rather than design.
 
-This part maps sixteen governance bodies commonly found in regulated financial institutions, their typical responsibilities, where they overlap with the ARB, where conflicts emerge in practice, and how mature organizations resolve them. 
+This part maps sixteen governance bodies commonly found in regulated financial institutions, their typical responsibilities, where they overlap with the ARB, where conflicts emerge in practice, and how mature organizations resolve them.
 
-##### **HOW TO USE THIS MAP** 
+##### **HOW TO USE THIS MAP**
 
-Treat the table below as a starting hypothesis to validate against your own organization's charters, not a universal template. Bodies are frequently merged, renamed, or split differently bank to bank — e.g., some institutions fold the Cyber Security Council into the Risk Committee structure; others run it as a fully independent line to the CISO. What matters is that every decision type has exactly one accountable home, even if multiple bodies are consulted. 
+Treat the table below as a starting hypothesis to validate against your own organization's charters, not a universal template. Bodies are frequently merged, renamed, or split differently bank to bank — e.g., some institutions fold the Cyber Security Council into the Risk Committee structure; others run it as a fully independent line to the CISO. What matters is that every decision type has exactly one accountable home, even if multiple bodies are consulted.
 
 |**1.1 The Sixtee**<br>**Body**|**n-Body Governance Map**<br>**Core Mandate**|**Typical Cadence & Membership**|**Relationship to ARB**|
 |---|---|---|---|
@@ -47,19 +47,19 @@ Treat the table below as a starting hypothesis to validate against your own orga
 |**Model Risk**<br>**Committee**|Quantitative model validation, model risk<br>management per SR 11-7 (US) /<br>equivalent regulatory regimes, model<br>inventory|Monthly; Model Risk Management<br>(MRM) function, quants, validators|For any architecture embedding a<br>quantitative or AI/ML model (credit<br>scoring, fraud detection, trading<br>algorithms), Model Risk Committee<br>approval of the model is a<br>prerequisite to, or parallel track<br>with, ARB approval of the<br>surrounding architecture|
 |**Responsible AI**<br>**Council**<br>**1.2 Where Re**|AI ethics, fairness testing, explainability<br>standards, bias audits — narrower and<br>more technical than the AI Governance<br>Board's policy mandate<br>**sponsibilities Genuinely O**|Monthly; data scientists, ethicists,<br>legal/compliance, select architects<br>**verlap**|Often a technical working group<br>that feeds findings up to the AI<br>Governance Board; ARB consumes<br>its fairness/explainability sign-off as<br>one input gate for AI-enabled<br>architectures|
 
-Four overlap zones account for the large majority of governance friction in regulated financial institutions. Each is detailed below with the practical resolution pattern used by mature programs. 
+Four overlap zones account for the large majority of governance friction in regulated financial institutions. Each is detailed below with the practical resolution pattern used by mature programs.
 
-**Overlap Zone 1 — ARB vs. Technology Standards Board** 
+**Overlap Zone 1 — ARB vs. Technology Standards Board**
 
-The ARB approves _specific architectures_ ; the Standards Board approves _the building blocks those architectures are made from_ . The friction case: an architect proposes a sound design using a technology not yet on the approved list (a new event-streaming platform, for instance). The ARB cannot approve the design outright without either (a) the Standards Board fast-tracking an exception, or (b) the ARB approving conditionally pending standards ratification. 
+The ARB approves *specific architectures* ; the Standards Board approves *the building blocks those architectures are made from* . The friction case: an architect proposes a sound design using a technology not yet on the approved list (a new event-streaming platform, for instance). The ARB cannot approve the design outright without either (a) the Standards Board fast-tracking an exception, or (b) the ARB approving conditionally pending standards ratification.
 
-##### **RESOLUTION PATTERN** 
+##### **RESOLUTION PATTERN**
 
-Mature banks give the ARB chair a standing "conditional approval with standards exception" authority for a single use, time-boxed to 90 days, automatically triggering a Standards Board agenda item. This prevents the ARB from becoming a de facto standards-setting body through repeated one-off exceptions — a common anti-pattern (see 1.4). 
+Mature banks give the ARB chair a standing "conditional approval with standards exception" authority for a single use, time-boxed to 90 days, automatically triggering a Standards Board agenda item. This prevents the ARB from becoming a de facto standards-setting body through repeated one-off exceptions — a common anti-pattern (see 1.4).
 
-#### **Overlap Zone 2 — ARB vs. AI Governance Board vs. Responsible AI Council vs. Model Risk Committee** 
+#### **Overlap Zone 2 — ARB vs. AI Governance Board vs. Responsible AI Council vs. Model Risk Committee**
 
-This is the most consequential overlap in the current environment. A single AI-enabled lending decision system, for example, may need: Model Risk Committee sign-off on the model itself, Responsible AI Council sign-off on fairness/explainability testing, AI Governance Board sign-off on regulatory and risk-appetite alignment, and ARB sign-off on the surrounding solution architecture (data pipelines, integration, deployment topology, observability). 
+This is the most consequential overlap in the current environment. A single AI-enabled lending decision system, for example, may need: Model Risk Committee sign-off on the model itself, Responsible AI Council sign-off on fairness/explainability testing, AI Governance Board sign-off on regulatory and risk-appetite alignment, and ARB sign-off on the surrounding solution architecture (data pipelines, integration, deployment topology, observability).
 
 |**Question**|**Owning Body**|
 |---|---|
@@ -68,29 +68,29 @@ This is the most consequential overlap in the current environment. A single AI-e
 |Does this use case fit within enterprise AI risk appetite and regulatory posture?|AI Governance Board|
 |Is the surrounding architecture (data flow, security, resilience, integration) sound?|ARB|
 
-##### **RESOLUTION PATTERN** 
+##### **RESOLUTION PATTERN**
 
-Leading banks run a single combined "AI Solution Review" intake form that routes findings to all four bodies in parallel rather than sequentially, with a joint sign-off matrix. Sequential routing (ARB then AI Governance Board then Model Risk) routinely adds 8-14 weeks to time-to-production; parallel routing with a shared intake typically cuts this to 3-5 weeks. See Volume 7 for the AI-Native ARB operating pattern that formalizes this. 
+Leading banks run a single combined "AI Solution Review" intake form that routes findings to all four bodies in parallel rather than sequentially, with a joint sign-off matrix. Sequential routing (ARB then AI Governance Board then Model Risk) routinely adds 8-14 weeks to time-to-production; parallel routing with a shared intake typically cuts this to 3-5 weeks. See Volume 7 for the AI-Native ARB operating pattern that formalizes this.
 
-#### **Overlap Zone 3 — ARB vs. Data Governance Council** 
+#### **Overlap Zone 3 — ARB vs. Data Governance Council**
 
-A new data product, pipeline, or integration touches both architecture fitness (ARB) and data policy compliance — classification, lineage, retention, privacy (Data Governance Council). In practice, the friction is sequencing: which approval gates first? 
+A new data product, pipeline, or integration touches both architecture fitness (ARB) and data policy compliance — classification, lineage, retention, privacy (Data Governance Council). In practice, the friction is sequencing: which approval gates first?
 
-##### **RESOLUTION PATTERN** 
+##### **RESOLUTION PATTERN**
 
-Data classification and lineage requirements should be established _before_ architecture design begins (shift-left), making Data Governance Council input a design constraint the ARB validates against, not a parallel approval gate. Banks that get this wrong end up redesigning approved architectures after the Data Governance Council flags an issue post-ARB-approval — a costly rework loop. 
+Data classification and lineage requirements should be established *before* architecture design begins (shift-left), making Data Governance Council input a design constraint the ARB validates against, not a parallel approval gate. Banks that get this wrong end up redesigning approved architectures after the Data Governance Council flags an issue post-ARB-approval — a costly rework loop.
 
-#### **Overlap Zone 4 — ARB vs. CAB vs. Platform Engineering Council** 
+#### **Overlap Zone 4 — ARB vs. CAB vs. Platform Engineering Council**
 
-This is a lifecycle-sequencing overlap rather than a jurisdictional one. ARB approves the target architecture; Platform Engineering Council governs the paved-road implementation patterns used to build it; CAB governs the actual production deployment. The common failure: ARB approval is treated as a one-time gate, but the implementation drifts from the approved architecture by the time it reaches CAB, and CAB has no architecture context to detect the drift. 
+This is a lifecycle-sequencing overlap rather than a jurisdictional one. ARB approves the target architecture; Platform Engineering Council governs the paved-road implementation patterns used to build it; CAB governs the actual production deployment. The common failure: ARB approval is treated as a one-time gate, but the implementation drifts from the approved architecture by the time it reaches CAB, and CAB has no architecture context to detect the drift.
 
-##### **WHERE THIS BREAKS IN PRACTICE** 
+##### **WHERE THIS BREAKS IN PRACTICE**
 
-CAB members are rarely architects and are not equipped to assess architectural drift — they assess deployment risk, not design fidelity. Without a fitness-function or architecture-conformance check wired into the CI/CD pipeline (see Volume 3, Architecture Knowledge Management, and Volume 7, Continuous Architecture Validation), drift goes undetected until an incident or audit surfaces it. 
+CAB members are rarely architects and are not equipped to assess architectural drift — they assess deployment risk, not design fidelity. Without a fitness-function or architecture-conformance check wired into the CI/CD pipeline (see Volume 3, Architecture Knowledge Management, and Volume 7, Continuous Architecture Validation), drift goes undetected until an incident or audit surfaces it.
 
-### **1.3 Escalation Paths** 
+### **1.3 Escalation Paths**
 
-A clean escalation model answers one question precisely: when two bodies disagree, who breaks the tie, and within what timeframe? The table below reflects a composite of escalation models observed across large regulated banks. 
+A clean escalation model answers one question precisely: when two bodies disagree, who breaks the tie, and within what timeframe? The table below reflects a composite of escalation models observed across large regulated banks.
 
 |**Dispute Type**|**First-Line Resolution**|**Escalation If Unresolved**|
 |---|---|---|
@@ -101,31 +101,31 @@ A clean escalation model answers one question precisely: when two bodies disagre
 |Architect vs. ARB on a rejected proposal|Architect may request reconsideration with new<br>evidence at next ARB session|Chief Architect review, then CTO Council if still<br>contested|
 |Cross-divisional architecture disputes<br>(shared platform decisions)|Federated ARB model's central architecture<br>function arbitrates (see Part B)|CIO Council, since this is fundamentally an<br>operating-model and resourcing question|
 
-##### **DESIGN PRINCIPLE** 
+##### **DESIGN PRINCIPLE**
 
-Every escalation path should resolve within two hops. If a dispute regularly takes three or more escalation steps to resolve, that's a signal the underlying charter or decision-rights model (RACI) is ambiguous, not that the people involved are being unreasonable. Fix the charter, not the people. 
+Every escalation path should resolve within two hops. If a dispute regularly takes three or more escalation steps to resolve, that's a signal the underlying charter or decision-rights model (RACI) is ambiguous, not that the people involved are being unreasonable. Fix the charter, not the people.
 
-### **1.4 Common Anti-Patterns in the Governance Mesh** 
+### **1.4 Common Anti-Patterns in the Governance Mesh**
 
-##### **THE SHADOW STANDARDS BOARD** 
+##### **THE SHADOW STANDARDS BOARD**
 
-The ARB repeatedly grants one-off technology exceptions without routing them through the Technology Standards Board, effectively becoming an unofficial standards-setting body through accumulated precedent. Symptom: architects start citing "ARB approved X for project Y" as justification for using X elsewhere, without any actual standard existing. 
+The ARB repeatedly grants one-off technology exceptions without routing them through the Technology Standards Board, effectively becoming an unofficial standards-setting body through accumulated precedent. Symptom: architects start citing "ARB approved X for project Y" as justification for using X elsewhere, without any actual standard existing.
 
-##### **GOVERNANCE THEATER VIA PARALLEL APPROVAL** 
+##### **GOVERNANCE THEATER VIA PARALLEL APPROVAL**
 
-Bodies are added to a review chain ("just to be safe") without genuine decision authority, creating sign-off ceremonies that add weeks of latency without changing outcomes. A useful test: if a body's "no" has never once been observed to block a decision in the last 12 months, it is not a governance gate — it is a notification list, and should be re-scoped as such. 
+Bodies are added to a review chain ("just to be safe") without genuine decision authority, creating sign-off ceremonies that add weeks of latency without changing outcomes. A useful test: if a body's "no" has never once been observed to block a decision in the last 12 months, it is not a governance gate — it is a notification list, and should be re-scoped as such.
 
-##### **THE INNOVATION COUNCIL BLACK HOLE** 
+##### **THE INNOVATION COUNCIL BLACK HOLE**
 
-Proofs of concept funded and governed by the Innovation Council quietly graduate into production-adjacent systems without ever passing through ARB, because no one owns the handoff trigger. This is how shadow IT and unsupported production dependencies are born in well-governed enterprises — not through rebellion, but through an undefined transition point. 
+Proofs of concept funded and governed by the Innovation Council quietly graduate into production-adjacent systems without ever passing through ARB, because no one owns the handoff trigger. This is how shadow IT and unsupported production dependencies are born in well-governed enterprises — not through rebellion, but through an undefined transition point.
 
-##### **RISK COMMITTEE AS RUBBER STAMP** 
+##### **RISK COMMITTEE AS RUBBER STAMP**
 
-Technology risk items are reported to the Risk Committee in a format (raw architecture risk register entries) that non-technical board-level members cannot meaningfully evaluate, so approval becomes pro forma rather than substantive oversight — which is itself a regulatory exposure in supervised institutions. 
+Technology risk items are reported to the Risk Committee in a format (raw architecture risk register entries) that non-technical board-level members cannot meaningfully evaluate, so approval becomes pro forma rather than substantive oversight — which is itself a regulatory exposure in supervised institutions.
 
-### **1.5 Decision Ownership Matrix (Condensed RACI)** 
+### **1.5 Decision Ownership Matrix (Condensed RACI)**
 
-A fuller RACI template appears in Volume 8 (Implementation Accelerator Kit). The condensed version below illustrates the pattern for the five decision types that generate the most cross-body friction. 
+A fuller RACI template appears in Volume 8 (Implementation Accelerator Kit). The condensed version below illustrates the pattern for the five decision types that generate the most cross-body friction.
 
 |**Decision**|**Accountable**|**Responsible**|**Consulted**|**Informed**|
 |---|---|---|---|---|
@@ -135,13 +135,13 @@ A fuller RACI template appears in Volume 8 (Implementation Accelerator Kit). The
 |Approve cloud landing zone<br>change|CCoE Lead|Cloud Platform Architect|Security Council, FinOps<br>Council|ARB, Platform<br>Engineering Council|
 |Approve production deployment<br>of an ARB-approved architecture|CAB Chair|Release Manager|Platform Engineering<br>Council, Service Owner|ARB (for drift visibility)|
 
-## **Part B — Enterprise Architecture Operating Models** 
+## **Part B — Enterprise Architecture Operating Models**
 
-The same ARB charter produces wildly different outcomes depending on the operating model it sits inside. A Principal Enterprise Architect should be able to diagnose which model an organization is actually running (as opposed to which model is on the org chart) and recognize the early symptoms when a model is being outgrown. Ten operating models are covered below, each assessed on the same dimensions: advantages, disadvantages, appropriate organization size, when to adopt, how it scales, and its characteristic anti-pattern. 
+The same ARB charter produces wildly different outcomes depending on the operating model it sits inside. A Principal Enterprise Architect should be able to diagnose which model an organization is actually running (as opposed to which model is on the org chart) and recognize the early symptoms when a model is being outgrown. Ten operating models are covered below, each assessed on the same dimensions: advantages, disadvantages, appropriate organization size, when to adopt, how it scales, and its characteristic anti-pattern.
 
-### **2.1 Centralized ARB** 
+### **2.1 Centralized ARB**
 
-A single ARB, typically chaired by the Chief Architect, reviews all architecturally significant decisions across the enterprise. All architects report into a central architecture function regardless of which business line they support. 
+A single ARB, typically chaired by the Chief Architect, reviews all architecturally significant decisions across the enterprise. All architects report into a central architecture function regardless of which business line they support.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -152,9 +152,9 @@ A single ARB, typically chaired by the Chief Architect, reviews all architectura
 |**Scaling model**|Does not scale well by headcount alone — typically transitions to a federated model once review queue depth exceeds<br>2-3 weeks consistently|
 |**Anti-pattern**|"Ivory tower architecture" — central architects design in the abstract without delivery accountability, producing<br>architectures that are theoretically sound but operationally unworkable|
 
-### **2.2 Federated ARB** 
+### **2.2 Federated ARB**
 
-A central architecture function sets enterprise-wide standards and arbitrates cross-domain decisions, while domain-level or business-unit ARBs handle decisions local to their scope, escalating only when a decision crosses domain boundaries or breaches enterprise standards. 
+A central architecture function sets enterprise-wide standards and arbitrates cross-domain decisions, while domain-level or business-unit ARBs handle decisions local to their scope, escalating only when a decision crosses domain boundaries or breaches enterprise standards.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -165,9 +165,9 @@ A central architecture function sets enterprise-wide standards and arbitrates cr
 |**Scaling model**|Scales well horizontally — new business units stand up their own domain ARB against the central charter template;<br>central function headcount grows sub-linearly relative to engineering headcount|
 |**Anti-pattern**|"Federation drift" — domain ARBs quietly diverge from enterprise standards over 18-24 months with no mechanism<br>forcing reconciliation, discovered only at audit or major incident time|
 
-### **2.3 Embedded Architects** 
+### **2.3 Embedded Architects**
 
-Architects sit permanently within product or delivery teams rather than a separate architecture function; a lightweight central guild coordinates standards but holds no formal approval authority. 
+Architects sit permanently within product or delivery teams rather than a separate architecture function; a lightweight central guild coordinates standards but holds no formal approval authority.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -178,9 +178,9 @@ Architects sit permanently within product or delivery teams rather than a separa
 |**Scaling model**|Scales with product team count, but requires increasing investment in automated governance (Policy-as-Code,<br>architecture fitness functions) to remain auditable as it scales|
 |**Anti-pattern**|"Governance by absence" — no one is actually checking architectural decisions against enterprise risk appetite, and<br>this is only discovered when a regulator asks for an audit trail that does not exist|
 
-### **2.4 Architecture Guild** 
+### **2.4 Architecture Guild**
 
-A voluntary community of architects across the organization that shares patterns, runs informal peer review, and influences through reputation rather than authority. Usually layered on top of one of the other models rather than standing alone. 
+A voluntary community of architects across the organization that shares patterns, runs informal peer review, and influences through reputation rather than authority. Usually layered on top of one of the other models rather than standing alone.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -191,9 +191,9 @@ A voluntary community of architects across the organization that shares patterns
 |**Scaling model**|Scales well via chapter/sub-guild structures by domain (data architecture guild, security architecture guild, etc.) as<br>the architect population grows|
 |**Anti-pattern**|Mistaking the Guild for a governance body — a regulator or auditor asking "where was this decision formally<br>approved" will not accept "it was discussed in the architecture guild" as an answer|
 
-### **2.5 Platform-First Governance** 
+### **2.5 Platform-First Governance**
 
-Governance is enforced primarily through what the platform allows (paved roads, golden paths, guardrails baked into the platform itself) rather than through human review boards. The platform engineering team effectively encodes architecture standards into the tooling. 
+Governance is enforced primarily through what the platform allows (paved roads, golden paths, guardrails baked into the platform itself) rather than through human review boards. The platform engineering team effectively encodes architecture standards into the tooling.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -204,11 +204,11 @@ Governance is enforced primarily through what the platform allows (paved roads, 
 |**Scaling model**|Scales exceptionally well once mature, since governance cost per additional team approaches zero; the constraint<br>shifts from review capacity to platform team capacity to build new golden paths|
 |**Anti-pattern**|"Golden path tunnel vision" — legitimate architectural innovation gets discouraged because anything outside the<br>paved road faces disproportionate friction, even when the deviation is well-justified|
 
-### **2.6 Product-Centric Governance** 
+### **2.6 Product-Centric Governance**
 
-Architecture decisions are organized and reviewed around products (a mortgage origination platform, a payments product) 
+Architecture decisions are organized and reviewed around products (a mortgage origination platform, a payments product)
 
-rather than technology layers or organizational units, with product architects accountable for the full lifecycle. 
+rather than technology layers or organizational units, with product architects accountable for the full lifecycle.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -219,9 +219,9 @@ rather than technology layers or organizational units, with product architects a
 |**Scaling model**|Scales with product portfolio growth; requires an enterprise architecture layer (often federated-model-style) to<br>handle cross-product concerns as the product count grows|
 |**Anti-pattern**|Duplicate platform capability built independently by multiple products because no one owns cross-product<br>architecture — a frequent and expensive failure mode in banks mid-transition to product operating models|
 
-### **2.7 Domain-Centric Governance** 
+### **2.7 Domain-Centric Governance**
 
-Aligned to Domain-Driven Design bounded contexts (e.g., Customer, Account, Payments, Risk) rather than products or org units; each domain has architecture ownership and a domain-level review function. 
+Aligned to Domain-Driven Design bounded contexts (e.g., Customer, Account, Payments, Risk) rather than products or org units; each domain has architecture ownership and a domain-level review function.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -232,9 +232,9 @@ Aligned to Domain-Driven Design bounded contexts (e.g., Customer, Account, Payme
 |**Scaling model**|Scales well once domain boundaries stabilize; early instability (boundaries shifting every few months) makes<br>governance feel arbitrary and erodes trust in the model|
 |**Anti-pattern**|"Domain boundary churn" — re-litigating bounded context definitions repeatedly without ever stabilizing, which<br>prevents any governance model layered on top from gaining legitimacy|
 
-### **2.8 Business Capability Governance** 
+### **2.8 Business Capability Governance**
 
-Architecture review and investment decisions are organized around the enterprise business capability model (see Volume 3, Section 6) rather than technology or org structure — e.g., "Loan Origination" or "Customer Onboarding" as the unit of governance. 
+Architecture review and investment decisions are organized around the enterprise business capability model (see Volume 3, Section 6) rather than technology or org structure — e.g., "Loan Origination" or "Customer Onboarding" as the unit of governance.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -245,9 +245,9 @@ Architecture review and investment decisions are organized around the enterprise
 |**Scaling model**|Scales with capability model maturity rather than headcount — the binding constraint is capability map quality and<br>currency, not organizational size|
 |**Anti-pattern**|Capability maps that are built once for a consulting engagement and never updated, becoming governance theater<br>dressed up as strategic rigor|
 
-### **2.9 AI-First Governance** 
+### **2.9 AI-First Governance**
 
-An emerging model (2024-2026) where AI risk and capability considerations are the primary organizing lens for architecture governance, with traditional architecture review treated as a subset of AI-aware review rather than the reverse. 
+An emerging model (2024-2026) where AI risk and capability considerations are the primary organizing lens for architecture governance, with traditional architecture review treated as a subset of AI-aware review rather than the reverse.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -258,9 +258,9 @@ An emerging model (2024-2026) where AI risk and capability considerations are th
 |**Scaling model**|Scaling pattern still emerging; early evidence suggests it works best layered onto a Federated model rather than<br>replacing foundational architecture governance|
 |**Anti-pattern**|Treating every architecture decision through an AI lens even when AI is incidental, adding governance overhead to<br>initiatives that don't warrant it|
 
-### **2.10 Hybrid Governance** 
+### **2.10 Hybrid Governance**
 
-In practice, almost every large bank runs a hybrid: a federated ARB skeleton, with platform-first guardrails handling routine decisions automatically, embedded architects for high-velocity digital product teams, and a central function retaining authority over enterprise-wide and AI-significant decisions. 
+In practice, almost every large bank runs a hybrid: a federated ARB skeleton, with platform-first guardrails handling routine decisions automatically, embedded architects for high-velocity digital product teams, and a central function retaining authority over enterprise-wide and AI-significant decisions.
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -271,16 +271,16 @@ In practice, almost every large bank runs a hybrid: a federated ARB skeleton, wi
 |**Scaling model**|Scales well precisely because different parts of the model scale through different mechanisms (automation for<br>routine, federation for domain, central for enterprise-critical)|
 |**Anti-pattern**|"Complexity without clarity" — a hybrid model with no clear routing logic becomes worse than any single pure model,<br>because no one can predict which gate applies to their initiative, so they default to asking the central architecture<br>function for everything, recreating the centralized bottleneck inside a model designed to avoid it|
 
-### **2.11 Selecting and Evolving the Right Model** 
+### **2.11 Selecting and Evolving the Right Model**
 
-##### **A PRACTICAL DIAGNOSTIC SEQUENCE** 
+##### **A PRACTICAL DIAGNOSTIC SEQUENCE**
 
-1. **Measure review queue depth and cycle time.** If architecture decisions routinely wait more than 2-3 weeks for review, a centralized model is under strain. 
+1. **Measure review queue depth and cycle time.** If architecture decisions routinely wait more than 2-3 weeks for review, a centralized model is under strain.
 
-2. **Audit standards drift.** If domain or product teams have meaningfully diverged from enterprise standards without anyone noticing for 12+ months, federation has decayed into fragmentation. 
+2. **Audit standards drift.** If domain or product teams have meaningfully diverged from enterprise standards without anyone noticing for 12+ months, federation has decayed into fragmentation.
 
-3. **Check decision traceability.** If you cannot produce an audit trail for "why was this architecture approved" within an hour of an auditor asking, your model — whatever it's called — is not actually functioning as governance. 
+3. **Check decision traceability.** If you cannot produce an audit trail for "why was this architecture approved" within an hour of an auditor asking, your model — whatever it's called — is not actually functioning as governance.
 
-4. **Assess platform leverage.** If more than 60% of architecture review time is spent on decisions that are structurally similar to ones already approved, that volume should be moved to Platform-First guardrails, freeing the ARB for genuinely novel decisions. 
+4. **Assess platform leverage.** If more than 60% of architecture review time is spent on decisions that are structurally similar to ones already approved, that volume should be moved to Platform-First guardrails, freeing the ARB for genuinely novel decisions.
 
 Operating model transitions in banking are rarely announced as such — they happen by accretion (a new council gets added, a guild gets formalized) or by crisis (an audit finding forces centralization). A Principal Enterprise Architect's highest-leverage move is often not designing the "ideal" model from scratch, but correctly diagnosing which model the organization is already drifting toward and steering that drift deliberately rather than letting it happen by accident.

@@ -164,7 +164,7 @@
   'due_date': string (ISO 8601) | null
 }
 
-Return ONLY the JSON object. No explanation. 
+Return ONLY the JSON object. No explanation.
 If a field is missing, use null."</span>
         </div>
         <div class="warn mt4">⚠ Under-specified schemas → inconsistent field names, structures, missing fields across calls</div>
@@ -288,15 +288,15 @@ Text: {document_text}"</span>
 <span class="kw">const</span> shouldEscalate = (ctx) => {
   <span class="cm">// Confidence threshold</span>
   <span class="kw">if</span> (ctx.confidence < <span class="val">0.7</span>) <span class="kw">return</span> <span class="val">true</span>;
-  
+
   <span class="cm">// Issue category rules</span>
   <span class="kw">if</span> (FRAUD_CASES.<span class="fn">includes</span>(ctx.category))
     <span class="kw">return</span> <span class="val">true</span>;
-    
+
   <span class="cm">// Policy boundary</span>
   <span class="kw">if</span> (ctx.refundAmount > <span class="val">500</span>)
     <span class="kw">return</span> <span class="val">true</span>;
-    
+
   <span class="kw">return</span> <span class="val">false</span>;
 };
             </div>

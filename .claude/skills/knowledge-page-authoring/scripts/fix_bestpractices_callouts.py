@@ -8,6 +8,7 @@ Fix agentic_platform_bestpractices.md:
   6. Remove duplicate table header rows
   7. Add Resolution: labels in Section 8
 """
+
 import re
 from pathlib import Path
 
@@ -55,10 +56,10 @@ def fix_key_findings(content: str) -> str:
 
 # Emoji/prefix → admonition type
 CALLOUT_MAP = [
-    (re.compile(r"^[ℹ️ ]+\s*NOTE\s+", re.UNICODE),    ":::note",                         ":::"),
-    (re.compile(r"^✅\s+BEST PRACTICE\s+"),             ":::tip[✅ Best Practice]",         ":::"),
-    (re.compile(r"^❌\s+ANTIPATTERN\s+"),               ":::danger[❌ Antipattern]",        ":::"),
-    (re.compile(r"^⚠️\s+WARNING\s+"),                   ":::warning",                      ":::"),
+    (re.compile(r"^[ℹ️ ]+\s*NOTE\s+", re.UNICODE), ":::note", ":::"),
+    (re.compile(r"^✅\s+BEST PRACTICE\s+"), ":::tip[✅ Best Practice]", ":::"),
+    (re.compile(r"^❌\s+ANTIPATTERN\s+"), ":::danger[❌ Antipattern]", ":::"),
+    (re.compile(r"^⚠️\s+WARNING\s+"), ":::warning", ":::"),
 ]
 CODE_RE = re.compile(r"^#\s*(✅|❌)")
 
@@ -83,12 +84,7 @@ def fix_callout_tables(content: str) -> str:
     while i < len(lines):
         line = lines[i]
         # Detect: | text |\n| --- |
-        if (
-            line.startswith("| ")
-            and line.endswith(" |")
-            and i + 1 < len(lines)
-            and lines[i + 1].strip() == "| --- |"
-        ):
+        if line.startswith("| ") and line.endswith(" |") and i + 1 < len(lines) and lines[i + 1].strip() == "| --- |":
             # Check it's a single-column table (no inner | separating columns)
             inner = line[2:-2]
             # Multi-column: inner has unescaped |
@@ -142,6 +138,7 @@ def fix_duplicate_header_rows(content: str) -> str:
 
 def fix_resolution_labels(content: str) -> str:
     """Add **Resolution:** before bullet lists following :::warning blocks in Section 8."""
+
     # Find :::warning ... ::: blocks followed by bullet lists without a Resolution label
     def _add_resolution(m):
         warning_block = m.group(1)

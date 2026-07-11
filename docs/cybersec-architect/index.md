@@ -9,7 +9,7 @@ source_file: ""
 tags: ["cybersec-architect"]
 doc_type: multi-part-series
 series_name: Cybersecurity Architect
-series_part: 
+series_part:
 series_total: 15
 series_index: ../index.md
 ---
@@ -47,7 +47,7 @@ This handbook provides a complete reference for advisors who need to speak autho
 ## 15-Part Handbook Map
 
 | Part | Title | Key Topics |
-|---|---|---|
+| --- | --- | --- |
 | [1](01-evolution.md) | Cyber Security Evolution | Network → AI → Autonomous security; Traditional vs Cloud-Native vs AI-Native |
 | [2](02-enterprise-security-architecture.md) | Enterprise Security Architecture | Business / Information / Application / Technology layers |
 | [3](03-security-domains.md) | Security Domains | Identity, Cloud, Network, Endpoint, Application, Data, Infrastructure, Operations |
@@ -91,7 +91,7 @@ Enterprise security architecture is not a technology problem — it is a **busin
 ## Three Eras of Enterprise Security (Summary)
 
 | Era | Focus | Model | Failure Mode |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Traditional** (pre-2015) | Perimeter defence | Castle-and-moat | Assumes trusted interior |
 | **Cloud-Native** (2015–2022) | Identity-centric, Zero Trust | Never trust, always verify | Identity sprawl, misconfiguration |
 | **AI-Native** (2023→) | Behaviour-based, autonomous | Adaptive, agentic controls | Model manipulation, agent hijack |
@@ -103,7 +103,7 @@ The AI era introduces **new attack surfaces** (prompt injection, model extractio
 ## Cross-Section Navigation
 
 | If you need to go deeper on… | See |
-|---|---|
+| --- | --- |
 | Agent identity protocols (SPIFFE, OAuth 2.1, IETF AIMS) | [AI Protocols — Auth & Identity](../ai-protocols/auth/index.md) |
 | MCP security and A2A protocol trust | [MCP & A2A Deep Dive](../enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive.md) |
 | AI governance maturity models | [Sovereign & Constitutional AI](../sovereign-constitutional-ai/index.md) |

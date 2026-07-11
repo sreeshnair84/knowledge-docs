@@ -17,8 +17,11 @@ Designed for a 20-Year Senior Architect at the organization
 **Vinh Giang  •  Julian Treasure  •  Chris Voss**
 "You are only as good as you can communicate."
 — Vinh Giang
+
 # **THE THREE MASTERS — YOUR FACULTY**
+
 This program synthesizes the world's most practical communication frameworks from three masters, each bringing a distinct and complementary discipline.
+
 | Master | Domain | Signature Framework | Your Primary Application |
 | --- | --- | --- | --- |
 | Vinh Giang | Vocal Mastery & Communication | 5 Vocal Foundations, 4 Archetypes, Storytelling Formula | Voice, Presence, Storytelling, Archetypes |
@@ -26,6 +29,7 @@ This program synthesizes the world's most practical communication frameworks fro
 | Chris Voss | Negotiation & Influence | Tactical Empathy, Mirroring, Calibrated Questions | High-Stakes Meetings, Difficult Conversations |
 
 ## **THE COMPLETE FRAMEWORK MAP**
+
 | Layer | Framework | Master | Applied To |
 | --- | --- | --- | --- |
 | Mindset | Habitual vs Natural Voice | Vinh | Day 1 — foundation belief |
@@ -55,6 +59,7 @@ This program synthesizes the world's most practical communication frameworks fro
 | Practice | Pre-Call Ritual (7 min) | All | Every important meeting |
 
 ## **YOUR 12-WEEK CURRICULUM OVERVIEW**
+
 | Week | Theme | Primary Framework | Milestone |
 | --- | --- | --- | --- |
 | 1 | Voice Fundamentals I | Vinh: Rate + Volume | Julian: HAIL + 7 Sins | Baseline recording + volume shift |
@@ -70,8 +75,8 @@ This program synthesizes the world's most practical communication frameworks fro
 | 11 | Mastery Approach | All: Ritual + Improv + Signature Story + Listening | Signature story finalized |
 | 12 | Final Performance | All: Live deployment + Debrief + Forever Practice | Day 84 recording vs Day 1 |
 
-**  WEEK 1 OF 12  **
-**  YOUR VOICE IS AN INSTRUMENT  **
+**WEEK 1 OF 12**
+**YOUR VOICE IS AN INSTRUMENT**
 
 **WEEK 1  •  DAY 1**     [VINH FRAMEWORK]
 **The Habitual Voice — Breaking Free**
@@ -148,8 +153,8 @@ Which HAIL pillar felt most foreign today? Where did you feel yourself slipping 
 
 📚 Source: Julian Treasure, TED Global 2013 & Podwise summary (podwise.org): 'HAIL — Honesty: being true, straight, clear. Authenticity: being yourself, standing in your own truth. Integrity: being your word. Love: wishing people well — it is nearly impossible to judge someone while you are genuinely wishing them well.'
 
-**  WEEK 2 OF 12  **
-**  THE FULL VOCAL TOOLBOX  **
+**WEEK 2 OF 12**
+**THE FULL VOCAL TOOLBOX**
 
 **WEEK 2  •  DAY 1**     [VINH FRAMEWORK]
 **Pitch & Melody — The 88-Key Piano**
@@ -226,8 +231,8 @@ Did the ritual change how the meeting started? Could you feel the difference in 
 
 📚 Source: Julian Treasure, TED Global 2013 (singjupost.com): 'Finally — no toolbox works unless the engine is heated. Julian demonstrates 6 simple exercises which can be done to warm up the voice, lips, and tongue — this should be done before any important speaking occasion.' / Vinh Giang: 5 Vocal Foundations warm-up protocol (vinhgiang.com).
 
-**  WEEK 3 OF 12  **
-**  THE 4 VOCAL ARCHETYPES  **
+**WEEK 3 OF 12**
+**THE 4 VOCAL ARCHETYPES**
 
 **WEEK 3  •  DAY 1**     [VINH FRAMEWORK]
 **The 4 Vocal Archetypes — Who Are You When You Speak?**
@@ -304,8 +309,8 @@ Does this sequence feel forced or natural? Which transition between archetypes i
 
 📚 Source: Keefe Chee, Stage Academy Review (keefechee.com) & Vinh Giang Stage Academy: 'Connection first as Friend, then why as Motivator, then what as Educator, then how as Coach — and connection again as Friend to close. This is the sequence that most technical and analytical people skip, and it is exactly why their data lands but their leadership does not.'
 
-**  WEEK 4 OF 12  **
-**  PRESENCE, BODY & INFLUENCE  **
+**WEEK 4 OF 12**
+**PRESENCE, BODY & INFLUENCE**
 
 **WEEK 4  •  DAY 1**     [VINH FRAMEWORK]
 **Vocal Image — What They Decide Before You Speak**
@@ -382,8 +387,8 @@ What did people share after you mirrored them? Was it more information? More emo
 
 📚 Source: Chris Voss, Never Split the Difference (predictableprofits.com): 'Mirrors work magic. Repeat the last three words — or the critical one to three words — of what someone has just said. We fear what is different and are drawn to what is similar. Mirroring builds rapport and keeps people talking.'
 
-**  WEEK 5 OF 12  **
-**  STORYTELLING FUNDAMENTALS  **
+**WEEK 5 OF 12**
+**STORYTELLING FUNDAMENTALS**
 
 **WEEK 5  •  DAY 1**     [VINH FRAMEWORK]
 **Why Stories Work — The Hormone Framework**
@@ -460,8 +465,8 @@ Did the Accusation Audit feel vulnerable to deliver? Did it change the energy of
 
 📚 Source: Chris Voss, Never Split the Difference (teamgate.com): 'The Accusation Audit: preemptively name all negative things the other side might be thinking — this disarms objections before they form. Calibrated questions starting with How or What force the other person to think and emotionally invest in the solution. Never Why — it sounds accusatory.'
 
-**  WEEK 6 OF 12  **
-**  COMMANDING CALLS & PRESENTATIONS  **
+**WEEK 6 OF 12**
+**COMMANDING CALLS & PRESENTATIONS**
 
 **WEEK 6  •  DAY 1**     [COMBINED MASTERS]
 **Opening a Call Like a CTO**
@@ -538,8 +543,8 @@ Watch your full recording. Compare it to your Week 1 Day 1 baseline. What is dra
 
 📚 Source: Vinh Giang (vinhgiang.com) + Julian Treasure (ted.com) + Chris Voss (blackswanltd.com) — integrated application across all frameworks covered in Weeks 1-6.
 
-**  WEEK 7 OF 12  **
-**  STORYTELLING MASTERY  **
+**WEEK 7 OF 12**
+**STORYTELLING MASTERY**
 
 **WEEK 7  •  DAY 1**     [VINH FRAMEWORK]
 **The 7 Storytelling Secrets — Part 1**
@@ -616,8 +621,8 @@ How did it feel to tell the story in a real context? What was the room's reactio
 
 📚 Source: Vinh Giang, Stage Academy Storytelling Module (vinhgiang.com): 'Stories are powerful only when they are relevant. Learn how to make your stories meaningful and impactful in meetings, presentations, and everyday conversations. Turn boring topics into engaging stories.'
 
-**  WEEK 8 OF 12  **
-**  CONFIDENCE & MINDSET  **
+**WEEK 8 OF 12**
+**CONFIDENCE & MINDSET**
 
 **WEEK 8  •  DAY 1**     [VINH FRAMEWORK]
 **The 4 Stages of Mastery — Where Are You Now?**
@@ -694,8 +699,8 @@ What did you notice about the other person that you normally miss when you are i
 
 📚 Source: Vinh Giang, FAQ and Course Content (vinhgiang.com): 'The Golden Rule of Communication eliminates ALL distracting behaviors from your speech — allowing you to convey your message clearly and effectively. It is not about you. The moment you focus on whether your message is landing for them, your performance transforms.'
 
-**  WEEK 9 OF 12  **
-**  INFLUENCE MASTERY  **
+**WEEK 9 OF 12**
+**INFLUENCE MASTERY**
 
 **WEEK 9  •  DAY 1**     [VOSS FRAMEWORK]
 **That's Right — The Most Powerful 2 Words**
@@ -772,8 +777,8 @@ When did you feel most authentic in your communication this week? When did you f
 
 📚 Source: Vinh Giang, Top 10 Communication Tips Video (vinhgiang.com author page, timestamp 43:54): 'How to develop your communication style — the goal is not to become someone else. It is to amplify the best parts of who you already are. Do not attach so strongly to who you are in the present that you do not give the future version of you a chance.'
 
-**  WEEK 10 OF 12  **
-**  INTEGRATION I — SYSTEMS UNDER PRESSURE  **
+**WEEK 10 OF 12**
+**INTEGRATION I — SYSTEMS UNDER PRESSURE**
 
 **WEEK 10  •  DAY 1**     [VINH FRAMEWORK]
 **Breaking Out of Your Mold — Deliberate Discomfort**
@@ -850,8 +855,8 @@ What is the most significant change you can see between Week 1 and Week 10? What
 
 📚 Source: Vinh Giang (vinhgiang.com) full program: 'The goal of all this training is not mastery of techniques — it is becoming the fullest, most amplified version of who you already are. Your progress is evidence. Let it fuel you.'
 
-**  WEEK 11 OF 12  **
-**  MASTERY APPROACH  **
+**WEEK 11 OF 12**
+**MASTERY APPROACH**
 
 **WEEK 11  •  DAY 1**     [COMBINED MASTERS]
 **Your Pre-Call Ritual — Final Version**
@@ -928,8 +933,8 @@ Which aspect of Week 12's performance are you most nervous about? That nervous e
 
 📚 Source: Vinh Giang, Stage Academy (vinhgiang.com): 'The goal is not to become a good communicator during training — it is to become a great communicator in the moments that matter. Prepare meticulously. Trust your practice. Show up fully.'
 
-**  WEEK 12 OF 12  **
-**  THE FINAL PERFORMANCE  **
+**WEEK 12 OF 12**
+**THE FINAL PERFORMANCE**
 
 **WEEK 12  •  DAY 1**     [COMBINED MASTERS]
 **The Final Week — Integration and Performance**
@@ -1007,7 +1012,9 @@ What is the most important thing that changed — not in your technique, but in 
 📚 Source: Vinh Giang (vinhgiang.com): 'You are only as good as you can communicate. Do not be so attached to who you are in the present that you do not give the future version of you a chance.' / Julian Treasure (ted.com): 'I would like to live in a world where understanding is the norm — and that world is built one voice at a time.' / Chris Voss (blackswanltd.com): 'Negotiation, and all communication, is the art of letting someone else have your way — through genuine empathy, clarity, and presence.'
 
 # **APPENDIX — QUICK REFERENCE CARDS**
+
 ## **The 7-Minute Pre-Call Ritual**
+
 Min 1: Siren humming — low to high to low, 3 cycles
 Min 2: Lip trills — motorboat sound, steady airflow
 Min 3: Over-articulation — 'red leather yellow leather' x10
@@ -1017,6 +1024,7 @@ Min 6: Chest register — hum, feel vibration, speak from it
 Min 7: Face warm — smile, recall something genuine
 
 ## **The Archetype Sequence Quick Card**
+
 Open: FRIEND — Warm, personal, melodic, relaxed (60-90 sec)
 Shift: MOTIVATOR — Stakes, why it matters, high energy (60-90 sec)
 Core: EDUCATOR — Data, structure, BLUF format (main time)
@@ -1024,6 +1032,7 @@ Close: COACH — Clear ask, named owner, specific deadline
 Exit: FRIEND — Warmth, openness, invitation to connect
 
 ## **The Voss Toolkit Quick Card**
+
 Mirror: Repeat last 3 words with upward inflection — invite elaboration
 Label: 'It seems like...' or 'It sounds like...' — name the emotion
 Calibrated Q: 'What would...' or 'How would...' — never Why
@@ -1032,6 +1041,7 @@ That's Right: Engineer full summary → confirmation of understanding
 FM DJ Voice: Slow, low, calm, certain — for any tense moment
 
 ## **HAIL + 7 Sins Quick Card**
+
 H — Honesty: Say what is actually true. Always.
 A — Authenticity: Be the amplified version of yourself. Not someone else.
 I — Integrity: Do exactly what you said you would do.
@@ -1046,11 +1056,13 @@ Sin 6 — Embellishment: Breaks trust. Be precise.
 Sin 7 — Dogmatism: Shuts dialogue. Ask questions instead.
 
 ## **The Forever Practice (3 Habits)**
+
 WEEKLY: Record one professional interaction. Audio-only review. One refinement target.
 MONTHLY: Add one Story Bank entry. Practice to 90-second fluency.
 QUARTERLY: 3-minute self-assessment video. Compare to previous quarter. One goal forward.
 
 ## **Citation Reference**
+
 Vinh Giang: vinhgiang.com, Stage Academy (coursesdwn.com), Jay Shetty On Purpose Podcast (iheart.com), UNSTOPPABLE Podcast Transcript (ytscribe.com), Key Communication Lessons (oratoryclub.com), Vocal Archetypes (linkedin.com/in/vinhgiang), Stage Academy Review by Keefe Chee (keefechee.com), 7 Tips to Become More Confident (cmispeakers.com).
 
 Julian Treasure: TED Global 2013 'How to Speak So That People Want to Listen' (ted.com), Full Transcript (singjupost.com), TED Podcast with Chris Duffy (ted.com), How to Speak Summary (speeko.co), Podwise Summary (podwise.org), Book Butter Club Summary (bookbutterclub.com).

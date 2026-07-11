@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 ### Business Imperative
 
 | Driver | 2026 Reality | Impact |
-|--------|----------|--------|
+| -------- | ---------- | -------- |
 | **Autonomous Workforce Shortage** | 82% of enterprises report skill gaps; 65% planning to deploy autonomous agents within 24 months | Budget shift from hiring to platform investment |
 | **Regulatory Deadline Pressure** | EU AI Act Annex III enforcement active (Aug 2, 2026); High-risk penalties €35M or 7% turnover | Compliance-first governance now table stakes |
 | **Cost-Per-Decision Crisis** | LLM inference costs dropping 70% YoY; agentic automation now ROI-positive at scale | Threshold crossed: automation ROI > process outsourcing |
@@ -55,7 +55,7 @@ Enterprise capabilities are what your organization *does* (not *how* it does it)
 Build a heat map across your business:
 
 | Capability | Business Value (1-5) | AI Readiness (1-5) | Automation Potential | Regulatory Risk | Priority |
-|------------|----------------------|-------------------|----------------------|-----------------|----------|
+| ------------ | ---------------------- | ------------------- | ---------------------- | ----------------- | ---------- |
 | Customer Service | 5 | 4 | 80% | Low | **Tier 1** |
 | Compliance Reporting | 5 | 3 | 60% | **High** | **Tier 1** |
 | Financial Analysis | 4 | 3 | 70% | Medium | **Tier 2** |
@@ -118,17 +118,17 @@ Board / Executive Steering
 AI Governance Board (CIO, CISO, CDO, Chief AI Officer, Legal)
     ├─ Sets policy, approves high-risk agents, manages compliance
     └─ Meets monthly + incident-driven
-    
+
     ↓ delegates capability to
-    
+
 Platform Engineering + AI CoE (Central)
     ├─ Operates shared platform
     ├─ Manages model governance
     ├─ Sets security/observability standards
     └─ Enables self-service for business units
-    
+
     ↓ enables
-    
+
 Business Unit AI Teams (Federated)
     ├─ Build domain-specific agents
     ├─ Own agent lifecycle within policy guardrails
@@ -139,7 +139,7 @@ Business Unit AI Teams (Federated)
 ### Critical Roles (Map to Your Organization)
 
 | Role | Responsibility | Reports To | 2026 Avg Salary |
-|------|----------------|-----------|-----------------|
+| ------ | ---------------- | ----------- | ----------------- |
 | Chief AI Officer | AI strategy, portfolio, governance | CEO/CTO | $350K–$500K |
 | Director, AI Platform Engineering | Platform architecture, MLOps, infrastructure | CTO | $280K–$380K |
 | AI Risk & Compliance Officer | EU AI Act, ISO 42001, risk assessment | Chief Risk Officer | $200K–$280K |
@@ -168,7 +168,7 @@ Business Unit AI Teams (Federated)
 ### Mapping Your Agents to EU AI Act Risk Tiers
 
 | Agent Type | Examples | Risk Level | Annex III? | Requirements |
-|------------|----------|-----------|-----------|--------------|
+| ------------ | ---------- | ----------- | ----------- | -------------- |
 | Customer Service Bot | Order tracking, FAQ responses | **Limited** | No | Transparency disclosure only |
 | Loan / Credit Decisioning | Auto-approve applications | **High** | Yes | ⚠️ Full conformity assessment required |
 | Employee Hiring Agent | Resume screening, candidate ranking | **High** | Yes | ⚠️ Full conformity assessment required |
@@ -214,23 +214,23 @@ Stage 4: MARKETPLACE / REUSE
 agent:
   id: "cust-service-v2.3"
   name: "Customer Service Orchestrator"
-  
+
   ownership:
     owner: "Customer Service Leadership"
     team: "AI Platform Team"
     sla_contact: "ai-ops@company.com"
-  
+
   business:
     business_value: "revenue_protection"  # revenue_generation, cost_reduction, risk_mitigation, compliance
     estimated_annual_impact: "$2.5M cost savings"
     business_unit: "Customer Operations"
-  
+
   technical:
     framework: "langgraph-0.4.x"
     model: "claude-sonnet-4-6"
     runtime: "kubernetes:prod-agents"
     sla: "99.5% uptime"
-  
+
   governance:
     autonomy_level: 2  # 0-4 scale
     risk_level: "limited"  # unacceptable, high, limited, minimal
@@ -238,7 +238,7 @@ agent:
     eu_ai_act_annex_iii: false
     approval_gate: "AI Governance Board"
     last_review: "2026-07-09"
-  
+
   observability:
     traces_exported_to: "datadog"
     logs_exported_to: "splunk"
@@ -253,7 +253,7 @@ agent:
 ### Agentic AI Investment Tiers
 
 | Tier | Annual Spend | Typical Organizations | ROI Timeline | Key Metrics |
-|------|--------------|----------------------|--------------|-------------|
+| ------ | -------------- | ---------------------- | -------------- | ------------- |
 | **Pilot** | $0.5M–$2M | Early adopters | 6–12 months | Proof of concept, business case validation |
 | **Growth** | $2M–$10M | Committed enterprises | 12–18 months | Portfolio of 5–20 agents, cost savings demonstrable |
 | **Scale** | $10M–$50M | Mature programs | 18–36 months | 50+ agents, federated governance, org-wide adoption |
@@ -331,7 +331,7 @@ Technical Architecture Layers
     ├─ Layer 4: Data & Knowledge (RAG, vector stores)
     ├─ Layer 5: Agent Applications (orchestration, domain agents)
     └─ Layer 6: Operations (CI/CD, MLOps, AgentOps)
-    
+
     ↓ measured by
 Business KPIs & Outcomes (time to production, cost per agent, compliance rate)
 ```
@@ -355,4 +355,3 @@ See [Agentic AI Landing Zone Architecture](agentic_ai_landing_zone_architecture.
 **Next Review:** When first pilot agents enter production  
 **Owner:** Chief AI Officer / Enterprise Architecture Office  
 **Audience:** Executive leadership, business unit heads, AI governance board
-

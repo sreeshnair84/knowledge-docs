@@ -4,17 +4,18 @@ pointing to the converted .md files. Only replaces iframes whose PDF
 has a corresponding .md file in the same directory.
 Also updates sidebars.js to include the new MD pages.
 """
+
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 
 IFRAME_RE = re.compile(
-    r'<details>\s*\n'
-    r'<summary>([^<]+)</summary>\s*\n'
+    r"<details>\s*\n"
+    r"<summary>([^<]+)</summary>\s*\n"
     r'<iframe src="([^"]+\.pdf)"[^>]*></iframe>\s*\n'
-    r'(?:<p>.*?</p>\s*\n)?'
-    r'</details>',
+    r"(?:<p>.*?</p>\s*\n)?"
+    r"</details>",
     re.MULTILINE | re.DOTALL,
 )
 

@@ -10,25 +10,25 @@ tags: ["agentic-systems", "platform", "asset-management", "governance", "enterpr
 doc_type: research-report
 covers_version: "June 2026"
 ---
-# **ENTERPRISE AGENTIC AI ASSET MANAGEMENT** 
+# ENTERPRISE AGENTIC AI ASSET MANAGEMENT
 
-A Comprehensive Reference for the AI-Era Enterprise 
+A Comprehensive Reference for the AI-Era Enterprise
 
-**2026 Edition** 
+**2026 Edition**
 
-**Classification** 
+**Classification**
 
-Enterprise Reference 
+Enterprise Reference
 
-**Scope Edition** 
+**Scope Edition**
 
-Hyperscalers · Fortune 500 · Open Source · Standards Bodies 
+Hyperscalers · Fortune 500 · Open Source · Standards Bodies
 
-June 2026 
+June 2026
 
-### **Table of Contents** 
+### Table of Contents
 
-##### **Executive Summary** 
+### Executive Summary
 
 |**Part 1**|Complete Enterprise Agent Asset Taxonomy|
 |---|---|
@@ -50,43 +50,43 @@ June 2026
 |**Appendix C**|Implementation Checklist|
 |**Appendix D**|Future Trends 2026–2030|
 
-### **Executive Summary** 
+### Executive Summary
 
-The rapid proliferation of autonomous AI agents across enterprises in 2026 has created an urgent new operational discipline: **Agentic AI Asset Management (AAAM)** . Just as source code demanded Git, APIs demanded API Gateways, and containers demanded OCI registries, agentic AI systems now demand a first-class platform for governing the sprawling ecosystem of prompts, agent definitions, tools, knowledge bases, evaluation datasets, policies, and runtime artifacts that constitute enterprise AI systems. 
+The rapid proliferation of autonomous AI agents across enterprises in 2026 has created an urgent new operational discipline: **Agentic AI Asset Management (AAAM)** . Just as source code demanded Git, APIs demanded API Gateways, and containers demanded OCI registries, agentic AI systems now demand a first-class platform for governing the sprawling ecosystem of prompts, agent definitions, tools, knowledge bases, evaluation datasets, policies, and runtime artifacts that constitute enterprise AI systems.
 
-Without systematic asset management, enterprises face uncontrolled prompt sprawl, ungoverned agent deployments, duplicated knowledge bases, failed compliance audits, runaway inference costs, and catastrophic production incidents caused by unvalidated prompt or model changes. This report provides the definitive reference for designing and operating an **Agent Asset Management Platform (AAMP)** . 
+Without systematic asset management, enterprises face uncontrolled prompt sprawl, ungoverned agent deployments, duplicated knowledge bases, failed compliance audits, runaway inference costs, and catastrophic production incidents caused by unvalidated prompt or model changes. This report provides the definitive reference for designing and operating an **Agent Asset Management Platform (AAMP)** .
 
-#### **Key Findings** 
+### Key Findings
 
-- **Asset Explosion:** A mature enterprise AI programme manages 500–5,000+ distinct agentic assets spanning 
+- **Asset Explosion:** A mature enterprise AI programme manages 500–5,000+ distinct agentic assets spanning
 
-- 9 major categories and 80+ sub-types. 
+- 9 major categories and 80+ sub-types.
 
-- **Lifecycle Complexity:** Each asset traverses a 17-stage lifecycle from ideation through retirement, requiring distinct tooling, ownership, and governance at every stage. 
+- **Lifecycle Complexity:** Each asset traverses a 17-stage lifecycle from ideation through retirement, requiring distinct tooling, ownership, and governance at every stage.
 
-- **Registry Gap:** Most organizations lack purpose-built registries for prompts, agents, and MCP 
+- **Registry Gap:** Most organizations lack purpose-built registries for prompts, agents, and MCP
 
-- tools—defaulting to ad-hoc file storage that creates severe governance deficits. 
+- tools—defaulting to ad-hoc file storage that creates severe governance deficits.
 
-- **Standards Convergence:** MCP, A2A, OpenAPI, OpenTelemetry, and AIBOM are converging into a coherent standards stack enabling interoperability across platforms. 
+- **Standards Convergence:** MCP, A2A, OpenAPI, OpenTelemetry, and AIBOM are converging into a coherent standards stack enabling interoperability across platforms.
 
-- **Governance Urgency:** EU AI Act, NIST AI RMF, and OWASP Agentic AI guidelines require traceable, 
+- **Governance Urgency:** EU AI Act, NIST AI RMF, and OWASP Agentic AI guidelines require traceable,
 
-- auditable, human-approved AI assets—making governance-as-code mandatory. 
+- auditable, human-approved AI assets—making governance-as-code mandatory.
 
-- **Maturity Gap:** Fewer than 8% of enterprises operate at Maturity Level 3+ (Managed) for agentic asset 
+- **Maturity Gap:** Fewer than 8% of enterprises operate at Maturity Level 3+ (Managed) for agentic asset
 
-- management as of mid-2026. 
+- management as of mid-2026.
 
-**Strategic Recommendation: Treat the Agent Asset Management Platform (AAMP) as foundational AI infrastructure — equivalent in importance to your CI/CD platform, API Gateway, and data catalog combined.** 
+**Strategic Recommendation: Treat the Agent Asset Management Platform (AAMP) as foundational AI infrastructure — equivalent in importance to your CI/CD platform, API Gateway, and data catalog combined.**
 
-## **Complete Enterprise Agent PART 1 Asset Taxonomy** 
+## Complete Enterprise Agent PART 1 Asset Taxonomy
 
-A systematic classification of every asset type in enterprise agentic AI systems. 
+A systematic classification of every asset type in enterprise agentic AI systems.
 
-An **Agentic AI Asset** is any versioned, governable artifact that contributes to the design, operation, evaluation, or governance of an autonomous AI agent. Assets span nine primary categories differentiated by nature, lifecycle, and governance requirements. 
+An **Agentic AI Asset** is any versioned, governable artifact that contributes to the design, operation, evaluation, or governance of an autonomous AI agent. Assets span nine primary categories differentiated by nature, lifecycle, and governance requirements.
 
-#### **Asset Category Overview** 
+### Asset Category Overview
 
 |**Category**|**Nature / Primary Type / Governance Weight**|
 |---|---|
@@ -100,165 +100,165 @@ An **Agentic AI Asset** is any versioned, governable artifact that contributes t
 |Development Assets|Templates/Standards · Scaffolds, guides · Low-Medium|
 |Model Assets|Binary/Configuration · Weights, adapters · Critical|
 
-#### **1.1 Prompt Assets** 
+### 1.1 Prompt Assets
 
-Prompt assets are the foundational configuration layer of every LLM-based agent. They determine behaviour, safety, persona, and capability. Unlike code, prompts are natural-language artifacts requiring specialized authoring, testing, and versioning. 
+Prompt assets are the foundational configuration layer of every LLM-based agent. They determine behaviour, safety, persona, and capability. Unlike code, prompts are natural-language artifacts requiring specialized authoring, testing, and versioning.
 
-**System Prompts:** Root-level instructions establishing agent identity, boundaries, persona, and operational constraints. Highest-governance prompt type — changes require security and RAI review. 
+**System Prompts:** Root-level instructions establishing agent identity, boundaries, persona, and operational constraints. Highest-governance prompt type — changes require security and RAI review.
 
-**Task & Developer Prompts:** Intent-specific instructions injected at the user or task turn. Often parameterized. Managed per use-case but inherit system prompt context. 
+**Task & Developer Prompts:** Intent-specific instructions injected at the user or task turn. Often parameterized. Managed per use-case but inherit system prompt context.
 
-**Chain Prompts:** Sequences of prompts executing multi-step reasoning pipelines (plan → act → reflect → summarize). Require dependency tracking between steps. 
+**Chain Prompts:** Sequences of prompts executing multi-step reasoning pipelines (plan → act → reflect → summarize). Require dependency tracking between steps.
 
-**Dynamic Prompt Templates:** Parameterized Jinja2/Handlebars templates with runtime variable injection. Must be validated for prompt injection safety. 
+**Dynamic Prompt Templates:** Parameterized Jinja2/Handlebars templates with runtime variable injection. Must be validated for prompt injection safety.
 
-**Prompt Macros & Reusable Components:** Atomic prompt fragments (instructions, personas, safety clauses) composed into larger prompts. Enable DRY prompt engineering across teams. 
+**Prompt Macros & Reusable Components:** Atomic prompt fragments (instructions, personas, safety clauses) composed into larger prompts. Enable DRY prompt engineering across teams.
 
-**Few-Shot Examples:** Curated input-output demonstration sets steering model behaviour. Managed as evaluation-adjacent assets requiring human review and periodic refresh. 
+**Few-Shot Examples:** Curated input-output demonstration sets steering model behaviour. Managed as evaluation-adjacent assets requiring human review and periodic refresh.
 
-**Role & Persona Prompts:** Definitions of agent identity, tone, expertise domain, and response style. Must align with brand, legal, and RAI guidelines. 
+**Role & Persona Prompts:** Definitions of agent identity, tone, expertise domain, and response style. Must align with brand, legal, and RAI guidelines.
 
-**Safety & Guardrail Prompts:** Injected instructions enforcing output safety, scope restriction, and refusal behaviours. Require RAI team ownership and mandatory version review. 
+**Safety & Guardrail Prompts:** Injected instructions enforcing output safety, scope restriction, and refusal behaviours. Require RAI team ownership and mandatory version review.
 
-**Evaluation & Judge Prompts:** LLM-as-judge prompts and scoring rubrics used in automated evaluation pipelines. Critical for continuous quality assessment. 
+**Evaluation & Judge Prompts:** LLM-as-judge prompts and scoring rubrics used in automated evaluation pipelines. Critical for continuous quality assessment.
 
-**Reflection & Repair Prompts:** Self-assessment and error-correction prompts enabling agents to critique and revise their own outputs for agentic resilience. 
+**Reflection & Repair Prompts:** Self-assessment and error-correction prompts enabling agents to critique and revise their own outputs for agentic resilience.
 
-**Prompt Routing Rules:** Logic determining which prompt or chain handles a given input class. Expressed as YAML classifiers or decision trees. Version-controlled as code. 
+**Prompt Routing Rules:** Logic determining which prompt or chain handles a given input class. Expressed as YAML classifiers or decision trees. Version-controlled as code.
 
-**Prompt Libraries & Packs:** Curated, versioned collections of related prompts published as installable packages for reuse across teams and products. 
+**Prompt Libraries & Packs:** Curated, versioned collections of related prompts published as installable packages for reuse across teams and products.
 
-#### **1.2 Agent Assets** 
+### 1.2 Agent Assets
 
-Agent assets define the structure, behaviour, and policies of autonomous agents — the highest-level composable unit in the agentic asset hierarchy. 
+Agent assets define the structure, behaviour, and policies of autonomous agents — the highest-level composable unit in the agentic asset hierarchy.
 
-**Agent Manifest:** Canonical descriptor: identity, version, capabilities, tool bindings, memory strategy, model requirements, and governance metadata. The 'package.json' of an agent. 
+**Agent Manifest:** Canonical descriptor: identity, version, capabilities, tool bindings, memory strategy, model requirements, and governance metadata. The 'package.json' of an agent.
 
-**Agent Configuration:** Runtime-overridable parameters: temperature, max_tokens, timeout, retry policy, escalation rules, cost limits. Separated from manifest for environment-specific deployment. 
+**Agent Configuration:** Runtime-overridable parameters: temperature, max_tokens, timeout, retry policy, escalation rules, cost limits. Separated from manifest for environment-specific deployment.
 
-**Agent Instructions:** Detailed behavioural guidelines beyond the system prompt: decision frameworks, escalation criteria, delegation rules, termination conditions. 
+**Agent Instructions:** Detailed behavioural guidelines beyond the system prompt: decision frameworks, escalation criteria, delegation rules, termination conditions.
 
-**Goals, Plans & Strategies:** Declarative specification of agent objectives and decomposition. Reasoning strategy (ReAct, CoT, ToT), memory strategy, and planning approach. Versioned separately. 
+**Goals, Plans & Strategies:** Declarative specification of agent objectives and decomposition. Reasoning strategy (ReAct, CoT, ToT), memory strategy, and planning approach. Versioned separately.
 
-**Skills & Capabilities:** Discrete, reusable behavioural modules — the agent-layer equivalent of microservices. Published to skill registry for cross-agent reuse. 
+**Skills & Capabilities:** Discrete, reusable behavioural modules — the agent-layer equivalent of microservices. Published to skill registry for cross-agent reuse.
 
-**Execution, Retry & Escalation Policies:** Error handling, retry backoff, circuit breakers, fallback strategies, human escalation conditions, and delegation rules for tool failures and model errors. 
+**Execution, Retry & Escalation Policies:** Error handling, retry backoff, circuit breakers, fallback strategies, human escalation conditions, and delegation rules for tool failures and model errors.
 
-**Checkpoint Strategy:** Rules for state persistence: checkpoint frequency, storage backend, resume semantics, expiry policies. Critical for long-running agentic tasks. 
+**Checkpoint Strategy:** Rules for state persistence: checkpoint frequency, storage backend, resume semantics, expiry policies. Critical for long-running agentic tasks.
 
-**Agent Templates & Blueprints:** Pre-configured archetypes (Research Agent, Code Review Agent, Support Agent) that teams instantiate and customize for specific use cases. 
+**Agent Templates & Blueprints:** Pre-configured archetypes (Research Agent, Code Review Agent, Support Agent) that teams instantiate and customize for specific use cases.
 
-**Agent Contracts:** Formal interface specifications: accepted inputs, produced outputs, guarantees offered, SLAs targeted. Enable safe multi-agent composition. 
+**Agent Contracts:** Formal interface specifications: accepted inputs, produced outputs, guarantees offered, SLAs targeted. Enable safe multi-agent composition.
 
-**Sub-Agent Definitions:** Child agent specifications in hierarchical orchestrator-worker architectures. Include communication protocols and capability grants. 
+**Sub-Agent Definitions:** Child agent specifications in hierarchical orchestrator-worker architectures. Include communication protocols and capability grants.
 
-#### **1.3 Tool Assets** 
+### 1.3 Tool Assets
 
-Tools extend agent capabilities by providing access to external systems, APIs, databases, and computation. Tool assets must be rigorously defined, versioned, permissioned, and certified before production use. 
+Tools extend agent capabilities by providing access to external systems, APIs, databases, and computation. Tool assets must be rigorously defined, versioned, permissioned, and certified before production use.
 
-**Tool Definitions / Function Schemas:** JSON Schema or OpenAPI-compliant input/output/error specifications — the contract between agent and tool. 
+**Tool Definitions / Function Schemas:** JSON Schema or OpenAPI-compliant input/output/error specifications — the contract between agent and tool.
 
-**MCP Tool Definitions:** Model Context Protocol server manifests exposing tools, resources, and prompts. Rapidly becoming de facto tool integration standard. 
+**MCP Tool Definitions:** Model Context Protocol server manifests exposing tools, resources, and prompts. Rapidly becoming de facto tool integration standard.
 
-**A2A Skills:** Google Agent-to-Agent skill descriptors enabling cross-platform cross-agent capability discovery and invocation. 
+**A2A Skills:** Google Agent-to-Agent skill descriptors enabling cross-platform cross-agent capability discovery and invocation.
 
-**OpenAPI Specifications:** Full HTTP API specifications including authentication, rate limits, and error models for web-based tool integrations. 
+**OpenAPI Specifications:** Full HTTP API specifications including authentication, rate limits, and error models for web-based tool integrations.
 
-**SDK Tool Wrappers:** Language-specific adapters wrapping external SDKs (Salesforce, SAP, Databricks) into agent-compatible tool interfaces. 
+**SDK Tool Wrappers:** Language-specific adapters wrapping external SDKs (Salesforce, SAP, Databricks) into agent-compatible tool interfaces.
 
-**Tool Policies & Permissions:** Authorization rules specifying which agents, roles, and contexts may invoke each tool, and under what rate/cost limits. 
+**Tool Policies & Permissions:** Authorization rules specifying which agents, roles, and contexts may invoke each tool, and under what rate/cost limits.
 
-**Tool Compatibility Matrix:** Versioned mapping of which tool versions are compatible with which agent, model, and schema versions. 
+**Tool Compatibility Matrix:** Versioned mapping of which tool versions are compatible with which agent, model, and schema versions.
 
-**Tool Certification Records:** Audit artifacts documenting security review, penetration testing, data classification assessment, and RAI evaluation for each tool. 
+**Tool Certification Records:** Audit artifacts documenting security review, penetration testing, data classification assessment, and RAI evaluation for each tool.
 
-#### **1.4 Knowledge Assets** 
+### 1.4 Knowledge Assets
 
-Knowledge assets provide the grounding information that agents retrieve and reason over. Managing quality, freshness, and access control is as critical as managing the agents themselves. 
+Knowledge assets provide the grounding information that agents retrieve and reason over. Managing quality, freshness, and access control is as critical as managing the agents themselves.
 
-**RAG Collections:** Curated document collections for retrieval-augmented generation. Require version control, freshness policies, and access classification. 
+**RAG Collections:** Curated document collections for retrieval-augmented generation. Require version control, freshness policies, and access classification.
 
-**Vector Indexes:** Embedding-based semantic search indexes. Version-sensitive: embedding model changes require full re-indexing. Must track embedding model version. 
+**Vector Indexes:** Embedding-based semantic search indexes. Version-sensitive: embedding model changes require full re-indexing. Must track embedding model version.
 
-**Embeddings:** Dense vector representations of text chunks. Managed as binary artifacts with model-version provenance metadata. 
+**Embeddings:** Dense vector representations of text chunks. Managed as binary artifacts with model-version provenance metadata.
 
-**Knowledge Graphs & Ontologies:** Structured semantic networks and concept hierarchies enabling precise, traceable reasoning beyond vector search. 
+**Knowledge Graphs & Ontologies:** Structured semantic networks and concept hierarchies enabling precise, traceable reasoning beyond vector search.
 
-**Context Packs:** Pre-assembled, versioned bundles of context (documents, facts, examples) optimized for specific agent tasks or domains. 
+**Context Packs:** Pre-assembled, versioned bundles of context (documents, facts, examples) optimized for specific agent tasks or domains.
 
-**Memory Stores:** Persistent storage of agent episodic memory, conversation history, and learned preferences. Require strict PII governance. 
+**Memory Stores:** Persistent storage of agent episodic memory, conversation history, and learned preferences. Require strict PII governance.
 
-**Grounding & Freshness Policies:** Rules specifying trusted knowledge sources, citation requirements, trust weights, and TTL/refresh schedules for knowledge assets. 
+**Grounding & Freshness Policies:** Rules specifying trusted knowledge sources, citation requirements, trust weights, and TTL/refresh schedules for knowledge assets.
 
-**Chunking & Retrieval Policies:** Document splitting strategy configuration and semantic search tuning: chunk size, overlap, similarity thresholds, hybrid search weights. 
+**Chunking & Retrieval Policies:** Document splitting strategy configuration and semantic search tuning: chunk size, overlap, similarity thresholds, hybrid search weights.
 
-#### **1.5 Evaluation Assets** 
+### 1.5 Evaluation Assets
 
-Evaluation assets transform subjective quality assessment into repeatable, automated measurement — the quality assurance infrastructure of agentic systems. 
+Evaluation assets transform subjective quality assessment into repeatable, automated measurement — the quality assurance infrastructure of agentic systems.
 
-**Golden Datasets:** Human-curated input-output pairs representing correct agent behaviour. Immutable ground truth for regression testing. 
+**Golden Datasets:** Human-curated input-output pairs representing correct agent behaviour. Immutable ground truth for regression testing.
 
-**Benchmark Suites:** Standardized evaluation tasks measuring capability dimensions: reasoning, tool use, instruction following, safety, factuality. 
+**Benchmark Suites:** Standardized evaluation tasks measuring capability dimensions: reasoning, tool use, instruction following, safety, factuality.
 
-**Prompt, Agent & Tool Tests:** Unit, integration, and E2E tests validating individual assets and complete workflows against defined success criteria. 
+**Prompt, Agent & Tool Tests:** Unit, integration, and E2E tests validating individual assets and complete workflows against defined success criteria.
 
-**Safety & Red Team Scenarios:** Adversarial test cases designed to elicit unsafe, harmful, or policy-violating behaviour. Required before any production promotion. 
+**Safety & Red Team Scenarios:** Adversarial test cases designed to elicit unsafe, harmful, or policy-violating behaviour. Required before any production promotion.
 
-**Evaluation Rubrics & Quality Gates:** Scoring criteria defining excellent/acceptable/failing behaviour, and automated pass/fail thresholds in CI/CD pipelines. 
+**Evaluation Rubrics & Quality Gates:** Scoring criteria defining excellent/acceptable/failing behaviour, and automated pass/fail thresholds in CI/CD pipelines.
 
-**Synthetic Data:** Programmatically generated evaluation inputs augmenting human-curated datasets for broader coverage and edge-case testing. 
+**Synthetic Data:** Programmatically generated evaluation inputs augmenting human-curated datasets for broader coverage and edge-case testing.
 
-**Simulation Assets:** Environment simulators, mock tool servers, and scenario engines for safe offline agent testing without real external calls. 
+**Simulation Assets:** Environment simulators, mock tool servers, and scenario engines for safe offline agent testing without real external calls.
 
-#### **1.6 Governance Assets** 
+### 1.6 Governance Assets
 
-Governance assets codify enterprise policy, regulatory compliance, and Responsible AI principles as enforceable, versioned artifacts — enabling policy-as-code for agentic systems. 
+Governance assets codify enterprise policy, regulatory compliance, and Responsible AI principles as enforceable, versioned artifacts — enabling policy-as-code for agentic systems.
 
-**AI Constitution & Principles:** Top-level statements of AI values, ethical boundaries, and behavioural constraints applying to all agents. The authoritative reference for RAI decisions. 
+**AI Constitution & Principles:** Top-level statements of AI values, ethical boundaries, and behavioural constraints applying to all agents. The authoritative reference for RAI decisions.
 
-**Guardrail Definitions:** Technical enforcement rules (input/output filters, topic restrictions, PII redaction) implemented as runtime policy engines. 
+**Guardrail Definitions:** Technical enforcement rules (input/output filters, topic restrictions, PII redaction) implemented as runtime policy engines.
 
-**Responsible AI Rules:** Codified fairness, accountability, transparency, and safety requirements. Versioned alongside model cards and system cards. 
+**Responsible AI Rules:** Codified fairness, accountability, transparency, and safety requirements. Versioned alongside model cards and system cards.
 
-**Compliance Rules:** Jurisdiction-specific requirements (EU AI Act, GDPR, HIPAA, SOX) translated into agent behavioral constraints and audit requirements. 
+**Compliance Rules:** Jurisdiction-specific requirements (EU AI Act, GDPR, HIPAA, SOX) translated into agent behavioral constraints and audit requirements.
 
-**Approval Workflows:** Structured review and sign-off processes for promoting assets through lifecycle stages. Must be auditable and non-bypassable. 
+**Approval Workflows:** Structured review and sign-off processes for promoting assets through lifecycle stages. Must be auditable and non-bypassable.
 
-**Risk Assessments & Audit Trails:** Documented harm analysis and immutable logs of all asset changes, approvals, deployments, and runtime decisions. 
+**Risk Assessments & Audit Trails:** Documented harm analysis and immutable logs of all asset changes, approvals, deployments, and runtime decisions.
 
-**Human Approval Policies:** Rules defining which agent actions, decisions, and outputs require human review before execution or delivery. 
+**Human Approval Policies:** Rules defining which agent actions, decisions, and outputs require human review before execution or delivery.
 
-#### **1.7 Runtime Assets** 
+### 1.7 Runtime Assets
 
-Runtime assets are ephemeral or semi-persistent artifacts generated during agent execution. Critical for observability, debugging, cost management, and compliance. 
+Runtime assets are ephemeral or semi-persistent artifacts generated during agent execution. Critical for observability, debugging, cost management, and compliance.
 
-**Sessions & Context Windows:** Active conversation state and context during execution. Managed for token budget compliance and PII handling. 
+**Sessions & Context Windows:** Active conversation state and context during execution. Managed for token budget compliance and PII handling.
 
-**Execution Plans & Graphs:** Dynamically generated task decomposition trees and DAG representations of tool calls and reasoning steps. 
+**Execution Plans & Graphs:** Dynamically generated task decomposition trees and DAG representations of tool calls and reasoning steps.
 
-**Memory Snapshots & Checkpoints:** Periodic captures of agent working memory enabling checkpoint/resume and post-mortem analysis for long-running tasks. 
+**Memory Snapshots & Checkpoints:** Periodic captures of agent working memory enabling checkpoint/resume and post-mortem analysis for long-running tasks.
 
-**Traces, Metrics & Logs:** OTel-compliant distributed traces, cost attribution, error rates, and structured execution logs for debugging and audit. 
+**Traces, Metrics & Logs:** OTel-compliant distributed traces, cost attribution, error rates, and structured execution logs for debugging and audit.
 
-**Agent Events & Event Streams:** Structured records of significant agent lifecycle moments published to event brokers for downstream consumption. 
+**Agent Events & Event Streams:** Structured records of significant agent lifecycle moments published to event brokers for downstream consumption.
 
-#### **1.8 Development Assets** 
+### 1.8 Development Assets
 
-**Project Scaffolds & Templates:** CLI-generated project templates pre-configured with directory structure, CI/CD, linting, and evaluation harnesses. 
+**Project Scaffolds & Templates:** CLI-generated project templates pre-configured with directory structure, CI/CD, linting, and evaluation harnesses.
 
-**Reference Architectures:** Validated patterns for common agent use cases: RAG agent, orchestrator-worker, human-in-the-loop, event-driven. 
+**Reference Architectures:** Validated patterns for common agent use cases: RAG agent, orchestrator-worker, human-in-the-loop, event-driven.
 
-**Coding, Prompt & Agent Standards:** Style guides, naming conventions, and structural requirements ensuring consistency across teams. 
+**Coding, Prompt & Agent Standards:** Style guides, naming conventions, and structural requirements ensuring consistency across teams.
 
-**Playbooks & Runbooks:** Step-by-step procedures for deployment, rollback, incident response, model upgrade, and cost optimization scenarios. 
+**Playbooks & Runbooks:** Step-by-step procedures for deployment, rollback, incident response, model upgrade, and cost optimization scenarios.
 
 ![Figure 1](/img/agentic-systems/platform/enterprise-asset-mgmt-p8-1.png)
 
 PART 2<br>Enterprise Asset Lifecycle<br><!-- End of picture text -->
 
-How assets move from conception to retirement through a governed, multi-stage process. 
+How assets move from conception to retirement through a governed, multi-stage process.
 
-Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tooling, and governance requirements change at each stage. Skipping stages — especially validation, simulation, and approval — is the root cause of most production AI incidents. 
+Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tooling, and governance requirements change at each stage. Skipping stages — especially validation, simulation, and approval — is the root cause of most production AI incidents.
 
 |**Ideation**|Business need identified. Initial capability assessment. Asset request<br>created by Product Owner.|M|
 |---|---|---|
@@ -281,7 +281,7 @@ Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tool
 |---|---|---|
 |**Retirement**|Removed from production. Archived with immutable record. Successor<br>asset documented.||
 
-#### **Ownership by Lifecycle Stage** 
+### Ownership by Lifecycle Stage
 
 |**Stage**|**Primary Owner / Approver / Tooling**|
 |---|---|
@@ -302,11 +302,11 @@ Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tool
 
 PART 3<br>Enterprise Repositories<br><!-- End of picture text -->
 
-How enterprises organize version-controlled storage for agentic AI assets. 
+How enterprises organize version-controlled storage for agentic AI assets.
 
-Repository strategy is a foundational architectural decision affecting discoverability, governance, CI/CD complexity, and developer experience. 
+Repository strategy is a foundational architectural decision affecting discoverability, governance, CI/CD complexity, and developer experience.
 
-#### **Strategy Comparison** 
+### Strategy Comparison
 
 |**Strategy**|**Best For / Advantages / Disadvantages**|
 |---|---|
@@ -315,7 +315,7 @@ Repository strategy is a foundational architectural decision affecting discovera
 |Polyrepo (Per asset type)|Mature platform teams · Clean ownership, independent versioning ·<br>Discovery overhead, dependency complexity|
 |Hybrid (Monorepo + Feeds)#|Enterprise standard (recommended) · Best of both · Requires tooling<br>investment and governance discipline|
 
-#### **Recommended Directory Structure** 
+### Recommended Directory Structure
 
 |`enterpris`|`e-ai-platform/`|||
 |---|---|---|---|
@@ -347,11 +347,11 @@ Repository strategy is a foundational architectural decision affecting discovera
 |I III|`workflows/`|`#`|`CI/CD pipeline definitions`|
 |I III|`CODEOWNERS`|`#`|`Asset ownership map`|
 
-III `metadata/` 
+III `metadata/`
 
-III `schemas/         # Metadata schema definitions` III `catalog/         # Asset catalog entries` 
+III `schemas/         # Metadata schema definitions` III `catalog/         # Asset catalog entries`
 
-#### **Repository Governance Requirements** 
+### Repository Governance Requirements
 
 |**Requirement**|**Implementation**|
 |---|---|
@@ -366,11 +366,11 @@ III `schemas/         # Metadata schema definitions` III `catalog/         # Ass
 
 PART 4<br>Enterprise Registries<br><!-- End of picture text -->
 
-Centralized discovery, publishing, and governance hubs for agentic AI assets. 
+Centralized discovery, publishing, and governance hubs for agentic AI assets.
 
-A registry is the runtime-facing complement to a repository. While repositories store source assets, registries serve as the authoritative publication point for approved, versioned, discoverable artifacts consumed at runtime. 
+A registry is the runtime-facing complement to a repository. While repositories store source assets, registries serve as the authoritative publication point for approved, versioned, discoverable artifacts consumed at runtime.
 
-#### **Registry Types** 
+### Registry Types
 
 |**Registry**|**Purpose and Key Capabilities**|
 |---|---|
@@ -384,7 +384,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 |Policy Registry|Authoritative guardrail definitions, compliance rules, and approval workflow<br>specs consumed by policy engines.|
 |Model Registry|Approved base models, fine-tuned adapters, embedding models with<br>benchmarks and deployment constraints.|
 
-#### **Universal Registry Capability Requirements** 
+### Universal Registry Capability Requirements
 
 |**Capability**|**Notes**|
 |---|---|
@@ -400,7 +400,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 |OCI Artifact Support|Binary asset storage (models, embeddings) as OCI artifacts for toolchain<br>portability.|
 |Webhook Integration|Events on publication, deprecation, certification, policy violations — for<br>automation pipelines.|
 
-#### **Registry Environment Strategy** 
+### Registry Environment Strategy
 
 |**Development Registry**|Team-scoped. Unrestricted publish. No approval gates. Experimentation<br>environment.|M|
 |---|---|---|
@@ -413,9 +413,9 @@ A registry is the runtime-facing complement to a repository. While repositories 
 
 PART 5<br>Universal Metadata Model<br><!-- End of picture text -->
 
-A canonical schema enabling discovery, governance, lineage, and interoperability across all asset types. 
+A canonical schema enabling discovery, governance, lineage, and interoperability across all asset types.
 
-A unified metadata model is the connective tissue of the AAMP platform. It enables semantic search, dependency resolution, governance enforcement, cost attribution, and regulatory compliance across all asset types. Every asset must carry a complete metadata record. 
+A unified metadata model is the connective tissue of the AAMP platform. It enables semantic search, dependency resolution, governance enforcement, cost attribution, and regulatory compliance across all asset types. Every asset must carry a complete metadata record.
 
 ```
 # Universal Agentic AI Asset Metadata Schema v2.1
@@ -470,7 +470,7 @@ change_history:
     summary:      'Initial release'
 ```
 
-#### **Field Governance Rules** 
+### Field Governance Rules
 
 |**Field Group**|**Governance Rule**|
 |---|---|
@@ -486,13 +486,13 @@ change_history:
 |**PART 6**|
 |---|
 
-## **Versioning Strategy** 
+## Versioning Strategy
 
-Principles for managing asset versions across the enterprise AI portfolio. 
+Principles for managing asset versions across the enterprise AI portfolio.
 
-Versioning is the cornerstone of reproducibility, rollback capability, and change management. Unlike software libraries, AI asset versioning must account for behavioral changes not expressed in structural diffs — a single word change in a prompt can radically alter agent behaviour. 
+Versioning is the cornerstone of reproducibility, rollback capability, and change management. Unlike software libraries, AI asset versioning must account for behavioral changes not expressed in structural diffs — a single word change in a prompt can radically alter agent behaviour.
 
-#### **Semantic Versioning for AI Assets** 
+### Semantic Versioning for AI Assets
 
 |**Version Component**|**Increment When / Examples**|
 |---|---|
@@ -501,7 +501,7 @@ Versioning is the cornerstone of reproducibility, rollback capability, and chang
 |PATCH (0.0.X)|Backward-compatible fix: typo correction, minor wording improvement,<br>metadata or documentation update. e.g. 1.0.0→1.0.1|
 |Pre-release (-rc)|Development stages before stable release. Not eligible for production<br>deployment without explicit override.|
 
-#### **Asset-Specific Rules** 
+### Asset-Specific Rules
 
 |**Asset Type**|**Key Versioning Rules**|
 |---|---|
@@ -512,27 +512,27 @@ Versioning is the cornerstone of reproducibility, rollback capability, and chang
 |Evaluation Assets|New evaluation dimension→MAJOR. New annotations→MINOR. Error<br>corrections→PATCH. Golden datasets are immutable — create new<br>versions.|
 |Governance Assets|Fundamental policy change→MAJOR. Clarification→MINOR. Always<br>requires change impact assessment before release.|
 
-#### **Compatibility & Rollback** 
+### Compatibility & Rollback
 
-**Compatibility Matrix:** Machine-readable YAML mapping each agent version to compatible tool, prompt, knowledge, and model versions. Updated on every release. Validated in CI. 
+**Compatibility Matrix:** Machine-readable YAML mapping each agent version to compatible tool, prompt, knowledge, and model versions. Updated on every release. Validated in CI.
 
-**Dependency Pinning:** Production deployments pin exact versions. Development may use range constraints. Pin resolution automated by AAMP platform. 
+**Dependency Pinning:** Production deployments pin exact versions. Development may use range constraints. Pin resolution automated by AAMP platform.
 
-**Breaking Change Protocol:** Before MAJOR: publish deprecation notice (min 30 days internal / 90 days cross-team), provide migration guide, ensure backward-compatible adapter is available. 
+**Breaking Change Protocol:** Before MAJOR: publish deprecation notice (min 30 days internal / 90 days cross-team), provide migration guide, ensure backward-compatible adapter is available.
 
-**Rollback Strategy:** Every production deployment retains previous two stable versions. Rollback is a one-command operation. Triggers full evaluation comparison automatically. 
+**Rollback Strategy:** Every production deployment retains previous two stable versions. Rollback is a one-command operation. Triggers full evaluation comparison automatically.
 
-**Prompt Diffing:** Specialized tooling compares prompt versions as semantic diffs: added/removed instructions, changed constraints, tone shifts, safety clause modifications. 
+**Prompt Diffing:** Specialized tooling compares prompt versions as semantic diffs: added/removed instructions, changed constraints, tone shifts, safety clause modifications.
 
 ![Figure 5](/img/agentic-systems/platform/enterprise-asset-mgmt-p18-5.png)
 
 PART 7<br>Governance Frameworks<br><!-- End of picture text -->
 
-Policies, processes, and structures ensuring responsible, compliant agentic AI. 
+Policies, processes, and structures ensuring responsible, compliant agentic AI.
 
-Governance is not bureaucracy — it is risk management at scale. Effective governance enables speed by creating clear, fast approval pathways rather than slow ad-hoc decision-making. 
+Governance is not bureaucracy — it is risk management at scale. Effective governance enables speed by creating clear, fast approval pathways rather than slow ad-hoc decision-making.
 
-#### **Governance RACI Matrix** 
+### Governance RACI Matrix
 
 |**Asset Decision**|**AI Prod**<br>**Owner**|**Eng**|**RAI Officer**|**CISO**|**Gov Board**|
 |---|---|---|---|---|---|
@@ -547,9 +547,9 @@ Governance is not bureaucracy — it is risk management at scale. Effective gove
 |Approve model upgrade|C|R|A|C|I|
 |Approve governance policy||C|R|C|A|
 
-_R = Responsible A = Accountable C = Consulted I = Informed_ 
+*R = Responsible A = Accountable C = Consulted I = Informed*
 
-#### **Approval Workflow Tiers** 
+### Approval Workflow Tiers
 
 |**Tier 1 — Automated**|Low-risk patches (metadata, docs, minor wording). CI validates and<br>auto-approves. No human required. SLA: 5 minutes.|M|
 |---|---|---|
@@ -558,7 +558,7 @@ _R = Responsible A = Accountable C = Consulted I = Informed_
 |**Tier 4 — Governance Board**|Major versions, safety-critical prompts, high-risk agents, external tool<br>integrations. Formal sign-off. SLA: 5 days.|M|
 |**Tier 5 — Emergency Track**|Production incident response only. CISO + RAI Officer parallel approval.<br>SLA: 2 hours. Mandatory post-incident review within 48h.||
 
-#### **Policy-as-Code** 
+### Policy-as-Code
 
 |**Policy Engine**|**Function**|
 |---|---|
@@ -572,11 +572,11 @@ _R = Responsible A = Accountable C = Consulted I = Informed_
 |**PART 8**|
 |---|
 
-## **Standards Landscape** 
+## Standards Landscape
 
-Emerging technical and regulatory standards governing enterprise agentic AI systems. 
+Emerging technical and regulatory standards governing enterprise agentic AI systems.
 
-#### **Standards Reference** 
+### Standards Reference
 
 |**Standard / Org / Type**|**Purpose and Enterprise Relevance**|
 |---|---|
@@ -597,7 +597,7 @@ Emerging technical and regulatory standards governing enterprise agentic AI syst
 |**Model & System Cards**|Standardized documentation covering intended use, performance|
 |Google/Hugging Face · Documentation|characteristics, limitations, ethical considerations, and evaluation results for<br>models and AI systems.|
 
-#### **Implementation Priority** 
+### Implementation Priority
 
 |**Priority**|**Standard / Action**|
 |---|---|
@@ -608,13 +608,13 @@ Emerging technical and regulatory standards governing enterprise agentic AI syst
 |Near-term (2026-2027)|AIBOM — Implement for all production systems. Required for EU AI Act<br>compliance.|
 |Medium-term (2027+)|ISO/IEC 42001 — Certification readiness for regulated industries.|
 
-## **Enterprise Reference PART 9 Architecture** 
+## Enterprise Reference PART 9 Architecture
 
-A comprehensive platform architecture for enterprise-scale Agentic AI Asset Management. 
+A comprehensive platform architecture for enterprise-scale Agentic AI Asset Management.
 
-The Agent Asset Management Platform (AAMP) is a multi-layered platform providing the AI-era equivalent of GitHub + Maven + Docker Registry + API Gateway + Service Catalog for all agentic assets. 
+The Agent Asset Management Platform (AAMP) is a multi-layered platform providing the AI-era equivalent of GitHub + Maven + Docker Registry + API Gateway + Service Catalog for all agentic assets.
 
-#### **Architecture Layers** 
+### Architecture Layers
 
 |**L6: Developer Experience**|Developer Portal · IDE Plugins · CLI · Asset Marketplace · Documentation<br>Hub · Onboarding Wizard|M|
 |---|---|---|
@@ -626,7 +626,7 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 |**Cross: Security & Identity**|IAM · RBAC · mTLS · Secrets Management · Encryption at Rest/Transit ·<br>Zero-Trust Network|M|
 |**Cross: Observability**|OTel Collector · Metrics Platform · Log Aggregation · Tracing · Cost<br>Attribution · Alerting||
 
-#### **Core Platform Components** 
+### Core Platform Components
 
 |**Component**|**Function**|
 |---|---|
@@ -642,27 +642,27 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 |Observability Platform|OTel-native collection of traces, costs, quality signals, and safety incidents.<br>Closes feedback loop.|
 |Developer Portal|Self-service web UI for discovery, publishing, approval requests,<br>marketplace, and documentation.|
 
-#### **Deployment Topology Notes** 
+### Deployment Topology Notes
 
-- Control plane (registries, catalog, policy engine) deployed in dedicated management cluster 
+- Control plane (registries, catalog, policy engine) deployed in dedicated management cluster
 
-- Data plane (evaluation runners, simulation) deployed in isolated execution namespaces 
+- Data plane (evaluation runners, simulation) deployed in isolated execution namespaces
 
-- Multi-region active-active for production registry — high availability requirement 
+- Multi-region active-active for production registry — high availability requirement
 
-- Air-gapped deployment option for classified or regulated environments 
+- Air-gapped deployment option for classified or regulated environments
 
-- GitOps-managed platform configuration with Flux or ArgoCD 
+- GitOps-managed platform configuration with Flux or ArgoCD
 
-- Service mesh (Istio/Linkerd) for mTLS and traffic policy between AAMP services 
+- Service mesh (Istio/Linkerd) for mTLS and traffic policy between AAMP services
 
 ![Figure 6](/img/agentic-systems/platform/enterprise-asset-mgmt-p24-6.png)
 
 PART 10<br>AI-Native SDLC<br><!-- End of picture text -->
 
-The complete software development lifecycle adapted for agentic AI systems. 
+The complete software development lifecycle adapted for agentic AI systems.
 
-The AI-native SDLC extends traditional software engineering with AI-specific disciplines: prompt design, knowledge preparation, evaluation, and responsible AI review. Every stage produces governed assets flowing into the AAMP platform. 
+The AI-native SDLC extends traditional software engineering with AI-specific disciplines: prompt design, knowledge preparation, evaluation, and responsible AI review. Every stage produces governed assets flowing into the AAMP platform.
 
 |**Requirements & Design**|Capabilities, constraints, and success metrics defined before any asset<br>authoring. Evaluation criteria specified upfront.|M|
 |---|---|---|
@@ -678,7 +678,7 @@ The AI-native SDLC extends traditional software engineering with AI-specific dis
 |**Observability & Optimize**|Continuous quality/cost/safety monitoring. A/B testing of prompt variants.<br>Feedback collection and improvement cycle.|M|
 |**Retirement Planning**|Deprecation notice. Migration path documented. Traffic migrated. Asset<br>archived with immutable record.||
 
-#### **AI SDLC vs Traditional SDLC** 
+### AI SDLC vs Traditional SDLC
 
 |**SDLC Dimension**|**Traditional / AI-Native**|
 |---|---|
@@ -691,11 +691,11 @@ The AI-native SDLC extends traditional software engineering with AI-specific dis
 |Review requirement|Code review / Code + RAI + Security + Eval gate|
 |Performance metric|Latency/throughput / Quality score + safety score + cost per task + latency|
 
-## **PART 11 Enterprise Operating Model** 
+## PART 11 Enterprise Operating Model
 
-Organizational roles, team structures, and responsibilities for agentic AI asset management. 
+Organizational roles, team structures, and responsibilities for agentic AI asset management.
 
-The enterprise AI operating model requires new specialist roles combining AI expertise with software engineering discipline. These augment existing engineers with AI-specific skills and governance responsibilities. 
+The enterprise AI operating model requires new specialist roles combining AI expertise with software engineering discipline. These augment existing engineers with AI-specific skills and governance responsibilities.
 
 |**Role**|**Responsibilities / Key Skills**|
 |---|---|
@@ -710,7 +710,7 @@ The enterprise AI operating model requires new specialist roles combining AI exp
 |AI Security Architect|Threat modeling, security policies, red team exercises, AI security incident<br>management. Cybersecurity, prompt injection, OWASP Agentic AI|
 |Governance Board Member|Approve high-risk assets, set AI policies, adjudicate disputes, executive AI<br>governance. AI governance, risk, legal/regulatory awareness|
 
-#### **Recommended Team Topology (500+ person org)** 
+### Recommended Team Topology (500+ person org)
 
 |**Team**|**Size / Scope / Key Responsibilities**|
 |---|---|
@@ -721,443 +721,442 @@ The enterprise AI operating model requires new specialist roles combining AI exp
 |---|---|
 |Governance Board (Virtual)|Part-time committee. CISO, Legal, RAI Officer, CTO rep. Bi-weekly<br>high-risk approvals and policy updates.|
 
-**PART 12** 
+**PART 12**
 
-## **Best Practices** 
+## Best Practices
 
-Proven principles for enterprise-grade Agentic AI Asset Management. 
+Proven principles for enterprise-grade Agentic AI Asset Management.
 
-##### **Treat all AI assets as first-class, version-controlled artifacts** 
+### Treat all AI assets as first-class, version-controlled artifacts
 
-Every prompt, manifest, tool schema, knowledge config, and evaluation dataset must live in a version-controlled repository with full change history, owner attribution, and CI/CD integration. Storing prompts in application code comments or shared documents is a critical anti-pattern. 
+Every prompt, manifest, tool schema, knowledge config, and evaluation dataset must live in a version-controlled repository with full change history, owner attribution, and CI/CD integration. Storing prompts in application code comments or shared documents is a critical anti-pattern.
 
-##### **Maintain immutable, signed releases for production assets** 
+### Maintain immutable, signed releases for production assets
 
-Production deployments must reference exact, immutable release versions — never floating references like 'latest'. All releases must be cryptographically signed and verified by the deployment pipeline. This enables reproducible deployments, reliable rollback, and forensic incident analysis. 
+Production deployments must reference exact, immutable release versions — never floating references like 'latest'. All releases must be cryptographically signed and verified by the deployment pipeline. This enables reproducible deployments, reliable rollback, and forensic incident analysis.
 
-##### **Separate authoring, staging, and production registries** 
+### Separate authoring, staging, and production registries
 
-Three-environment isolation prevents experiments from contaminating production and ensures every production-eligible asset has passed defined quality gates. Assets flow upward only — never directly from development to production. 
+Three-environment isolation prevents experiments from contaminating production and ensures every production-eligible asset has passed defined quality gates. Assets flow upward only — never directly from development to production.
 
-##### **Use metadata-rich catalogs with semantic search and lineage tracking** 
+### Use metadata-rich catalogs with semantic search and lineage tracking
 
-An asset that cannot be discovered is an asset that gets recreated — generating waste and inconsistency. Invest in rich metadata schemas, vector-based semantic search, and complete lineage graphs enabling engineers to find, understand, and safely reuse existing assets. 
+An asset that cannot be discovered is an asset that gets recreated — generating waste and inconsistency. Invest in rich metadata schemas, vector-based semantic search, and complete lineage graphs enabling engineers to find, understand, and safely reuse existing assets.
 
-##### **Enforce policy-as-code for approvals, security, and RAI compliance** 
+### Enforce policy-as-code for approvals, security, and RAI compliance
 
-Manual policy enforcement does not scale. Implement guardrails, compliance rules, and approval thresholds as machine-readable policies evaluated in CI/CD pipelines. This provides consistent, auditable, and rapidly updatable governance that keeps pace with evolving regulations. 
+Manual policy enforcement does not scale. Implement guardrails, compliance rules, and approval thresholds as machine-readable policies evaluated in CI/CD pipelines. This provides consistent, auditable, and rapidly updatable governance that keeps pace with evolving regulations.
 
-##### **Establish standardized evaluation pipelines with regression testing before promotion** 
+### Establish standardized evaluation pipelines with regression testing before promotion
 
-Every asset promotion between environments must trigger automated evaluation against defined test suites and golden datasets. A quality gate failure blocks promotion. This prevents silent quality regressions from reaching production — the most common source of AI system degradation. 
+Every asset promotion between environments must trigger automated evaluation against defined test suites and golden datasets. A quality gate failure blocks promotion. This prevents silent quality regressions from reaching production — the most common source of AI system degradation.
 
-##### **Design modular, composable prompts and skills** 
+### Design modular, composable prompts and skills
 
-Monolithic agent definitions mixing concerns become unmaintainable. Design small, single-purpose prompt macros, reusable skills, and composable blueprints that can be assembled into complex behaviours while remaining individually testable and governable. 
+Monolithic agent definitions mixing concerns become unmaintainable. Design small, single-purpose prompt macros, reusable skills, and composable blueprints that can be assembled into complex behaviours while remaining individually testable and governable.
 
-##### **Maintain compatibility matrices across models, tools, and schema versions** 
+### Maintain compatibility matrices across models, tools, and schema versions
 
-Model upgrades, tool API changes, and schema evolutions create complex compatibility challenges. Maintain machine-readable compatibility matrices encoding which asset versions work with which dependencies. Run compatibility validation automatically when any dependency changes. 
+Model upgrades, tool API changes, and schema evolutions create complex compatibility challenges. Maintain machine-readable compatibility matrices encoding which asset versions work with which dependencies. Run compatibility validation automatically when any dependency changes.
 
-##### **Continuously monitor runtime performance, cost, safety, and quality** 
+### Continuously monitor runtime performance, cost, safety, and quality
 
-Agent quality in production is not static — it drifts as world knowledge changes, user behaviour evolves, and model updates occur. Implement continuous evaluation with scheduled offline assessments and production traffic sampling, triggering improvement cycles when quality declines. 
+Agent quality in production is not static — it drifts as world knowledge changes, user behaviour evolves, and model updates occur. Implement continuous evaluation with scheduled offline assessments and production traffic sampling, triggering improvement cycles when quality declines.
 
-##### **Implement AI Bill of Materials (AIBOM) for all production systems** 
+### Implement AI Bill of Materials (AIBOM) for all production systems
 
-Maintain a complete, machine-readable inventory of every AI component in each production system: models, prompts, tools, knowledge sources, and evaluation datasets. AIBOMs enable rapid impact analysis when vulnerabilities or policy violations are discovered. 
+Maintain a complete, machine-readable inventory of every AI component in each production system: models, prompts, tools, knowledge sources, and evaluation datasets. AIBOMs enable rapid impact analysis when vulnerabilities or policy violations are discovered.
 
-##### **Retire obsolete assets through defined deprecation workflows** 
+### Retire obsolete assets through defined deprecation workflows
 
-Implement formal deprecation workflows with required migration paths, communication periods, and archive procedures. Preserve immutable records without leaving zombie assets in active registries. 
+Implement formal deprecation workflows with required migration paths, communication periods, and archive procedures. Preserve immutable records without leaving zombie assets in active registries.
 
-##### **Establish cost governance from day one** 
+### Establish cost governance from day one
 
-Token costs compound rapidly at scale. Implement per-agent, per-team, and per-use-case cost budgets from the first production deployment. Cost alerts, circuit breakers, and monthly reporting must be built into the platform — not retrofitted after costs become unmanageable. 
+Token costs compound rapidly at scale. Implement per-agent, per-team, and per-use-case cost budgets from the first production deployment. Cost alerts, circuit breakers, and monthly reporting must be built into the platform — not retrofitted after costs become unmanageable.
 
 ![Figure 7](/img/agentic-systems/platform/enterprise-asset-mgmt-p30-7.png)
 
 PART 13<br>Anti-Patterns<br><!-- End of picture text -->
 
-Common failure modes in enterprise agentic AI asset management and how to avoid them. 
+Common failure modes in enterprise agentic AI asset management and how to avoid them.
 
-##### **Prompt Archaeology [CRITICAL]** 
+### Prompt Archaeology [CRITICAL]
 
-**Problem:** Prompts stored in application code, README files, spreadsheets, or Slack messages. No version history. No ownership. 
+**Problem:** Prompts stored in application code, README files, spreadsheets, or Slack messages. No version history. No ownership.
 
-**Remediation:** Mandatory prompt repository policy. Automated codebase scanning. Migration sprint to centralize all prompts. 
+**Remediation:** Mandatory prompt repository policy. Automated codebase scanning. Migration sprint to centralize all prompts.
 
-##### **The God Agent [HIGH]** 
+### The God Agent [HIGH]
 
-**Problem:** A single agent given 50+ tools, multi-domain knowledge, and unlimited token budgets. Unmaintainable and opaque. 
+**Problem:** A single agent given 50+ tools, multi-domain knowledge, and unlimited token budgets. Unmaintainable and opaque.
 
-**Remediation:** Decompose into specialized agents with clear boundaries. Implement Agent Contracts. Apply single-responsibility principle. 
+**Remediation:** Decompose into specialized agents with clear boundaries. Implement Agent Contracts. Apply single-responsibility principle.
 
-##### **Hardcoded Credentials in Tools [CRITICAL]** 
+### Hardcoded Credentials in Tools [CRITICAL]
 
-**Problem:** API keys and passwords embedded in tool wrapper code or agent manifests. 
+**Problem:** API keys and passwords embedded in tool wrapper code or agent manifests.
 
-**Remediation:** Mandatory secrets management integration. Automated credential scanning in CI. Vault-based runtime injection. 
+**Remediation:** Mandatory secrets management integration. Automated credential scanning in CI. Vault-based runtime injection.
 
-##### **Ownerless Assets [HIGH]** 
+### Ownerless Assets [HIGH]
 
-**Problem:** Prompts and agents with no identified owner. When they break, no one knows who to contact. They never get retired. 
+**Problem:** Prompts and agents with no identified owner. When they break, no one knows who to contact. They never get retired.
 
-**Remediation:** CODEOWNERS enforcement in every directory. Owner validation in metadata schema. Orphaned asset auto-escalation. 
+**Remediation:** CODEOWNERS enforcement in every directory. Owner validation in metadata schema. Orphaned asset auto-escalation.
 
-##### **Cross-Model Prompt Reuse [HIGH]** 
+### Cross-Model Prompt Reuse [HIGH]
 
-**Problem:** Prompts developed for one model deployed unchanged on a different model without validation. 
+**Problem:** Prompts developed for one model deployed unchanged on a different model without validation.
 
-**Remediation:** Mandatory compatibility matrix. Model-specific evaluation gates. Prompt migration testing protocol for model changes. 
+**Remediation:** Mandatory compatibility matrix. Model-specific evaluation gates. Prompt migration testing protocol for model changes.
 
-##### **Unrestricted Tool Access [CRITICAL]** 
+### Unrestricted Tool Access [CRITICAL]
 
-**Problem:** Agents granted access to all available tools without scope restriction. No authorization. No rate limits. 
+**Problem:** Agents granted access to all available tools without scope restriction. No authorization. No rate limits.
 
-**Remediation:** Principle of least privilege for tool access. Grants tied to agent certification level. Runtime access monitoring. 
+**Remediation:** Principle of least privilege for tool access. Grants tied to agent certification level. Runtime access monitoring.
 
-##### **Evaluation Debt [HIGH]** 
+### Evaluation Debt [HIGH]
 
-**Problem:** Evaluation only at initial deployment. No regression testing. Quality degradation discovered via production incidents. 
+**Problem:** Evaluation only at initial deployment. No regression testing. Quality degradation discovered via production incidents.
 
-**Remediation:** Continuous evaluation as platform primitive. Mandatory quarterly re-evaluation. Automated regression alerting. 
+**Remediation:** Continuous evaluation as platform primitive. Mandatory quarterly re-evaluation. Automated regression alerting.
 
-##### **Prompt Archipelago [MEDIUM]** 
+### Prompt Archipelago [MEDIUM]
 
-**Problem:** Dozens of near-identical prompts for similar use cases, none discoverable, all independently maintained. 
+**Problem:** Dozens of near-identical prompts for similar use cases, none discoverable, all independently maintained.
 
-**Remediation:** Asset discovery-before-creation mandate. Prompt similarity detection in CI. Prompt library and macro system. 
+**Remediation:** Asset discovery-before-creation mandate. Prompt similarity detection in CI. Prompt library and macro system.
 
-##### **Missing Lineage [HIGH]** 
+### Missing Lineage [HIGH]
 
-**Problem:** No tracking of which prompt produced which output or which knowledge base grounded which agent response. 
+**Problem:** No tracking of which prompt produced which output or which knowledge base grounded which agent response.
 
-**Remediation:** Mandatory lineage metadata. OpenLineage integration. Automatic lineage capture in eval and deployment pipelines. 
+**Remediation:** Mandatory lineage metadata. OpenLineage integration. Automatic lineage capture in eval and deployment pipelines.
 
-##### **No Rollback Strategy [CRITICAL]** 
+### No Rollback Strategy [CRITICAL]
 
-**Problem:** Production deployments with no rollback procedure. Recovery from bad updates requires emergency engineering. 
+**Problem:** Production deployments with no rollback procedure. Recovery from bad updates requires emergency engineering.
 
-**Remediation:** Immutable versioned releases. One-command rollback capability. Pre-defined rollback triggers and runbooks. 
+**Remediation:** Immutable versioned releases. One-command rollback capability. Pre-defined rollback triggers and runbooks.
 
-##### **Context Bloat [MEDIUM]** 
+### Context Bloat [MEDIUM]
 
-**Problem:** Agents continuously growing context windows with irrelevant history — degraded performance and spiraling costs. 
+**Problem:** Agents continuously growing context windows with irrelevant history — degraded performance and spiraling costs.
 
-**Remediation:** Context window management policies. Automatic summarization. Token budget enforcement. Context freshness monitoring. 
+**Remediation:** Context window management policies. Automatic summarization. Token budget enforcement. Context freshness monitoring.
 
-##### **Agent Silos [HIGH]** 
+### Agent Silos [HIGH]
 
-**Problem:** Each team builds independent agent infrastructure with no sharing, no standardization, massive duplication. 
+**Problem:** Each team builds independent agent infrastructure with no sharing, no standardization, massive duplication.
 
-**Remediation:** Central AAMP platform investment. Platform-as-product team. Internal developer portal and marketplace. 
+**Remediation:** Central AAMP platform investment. Platform-as-product team. Internal developer portal and marketplace.
 
-##### **One-Shot Evaluation [HIGH]** 
+### One-Shot Evaluation [HIGH]
 
-**Problem:** Evaluation as a one-time deployment gate only. No A/B testing. No production quality monitoring. 
+**Problem:** Evaluation as a one-time deployment gate only. No A/B testing. No production quality monitoring.
 
-**Remediation:** Evaluation platform with continuous and scheduled modes. A/B testing infrastructure. Production quality feedback loop. 
+**Remediation:** Evaluation platform with continuous and scheduled modes. A/B testing infrastructure. Production quality feedback loop.
 
 ![Figure 8](/img/agentic-systems/platform/enterprise-asset-mgmt-p32-8.png)
 
 PART 14<br>Case Studies<br><!-- End of picture text -->
 
-How leading organizations approach Agentic AI Asset Management in practice. 
+How leading organizations approach Agentic AI Asset Management in practice.
 
-#### **Microsoft** 
+### Microsoft
 
-_Platform: Azure AI Studio + GitHub Copilot Ecosystem_ 
+*Platform: Azure AI Studio + GitHub Copilot Ecosystem*
 
-Microsoft manages AI assets through Azure AI Studio (prompt flows, model deployments), GitHub (source control for prompts and agent definitions), and Azure DevOps (CI/CD pipelines). Prompt Flow enables visual authoring of LLM pipelines with version control and evaluation. The Microsoft AI Red Team (MART) conducts systematic red teaming before production. Responsible AI guidelines are embedded in Azure AI Content Safety APIs serving as runtime guardrails. 
+Microsoft manages AI assets through Azure AI Studio (prompt flows, model deployments), GitHub (source control for prompts and agent definitions), and Azure DevOps (CI/CD pipelines). Prompt Flow enables visual authoring of LLM pipelines with version control and evaluation. The Microsoft AI Red Team (MART) conducts systematic red teaming before production. Responsible AI guidelines are embedded in Azure AI Content Safety APIs serving as runtime guardrails.
 
-- Azure AI Studio for prompt flow management and versioning 
+- Azure AI Studio for prompt flow management and versioning
 
-- GitHub Copilot uses enterprise-scale prompt management internally 
+- GitHub Copilot uses enterprise-scale prompt management internally
 
-- Content Safety API as managed runtime guardrail layer 
+- Content Safety API as managed runtime guardrail layer
 
-- AI Red Team conducts mandatory red team exercises pre-production 
+- AI Red Team conducts mandatory red team exercises pre-production
 
-- Azure AI Foundry provides model and agent registry capabilities 
+- Azure AI Foundry provides model and agent registry capabilities
 
-#### **Google** 
+### Google
 
-_Platform: Vertex AI + A2A Protocol_ 
+*Platform: Vertex AI + A2A Protocol*
 
-Google manages AI assets through Vertex AI, providing model registry, prompt management, evaluation pipelines, and agent deployment. Google's Agent-to-Agent (A2A) protocol represents a strategic bet on standardized cross-agent interoperability. Internally, Google operates sophisticated prompt management with A/B testing supporting billions of prompt variants across Search, Ads, and other products. 
+Google manages AI assets through Vertex AI, providing model registry, prompt management, evaluation pipelines, and agent deployment. Google's Agent-to-Agent (A2A) protocol represents a strategic bet on standardized cross-agent interoperability. Internally, Google operates sophisticated prompt management with A/B testing supporting billions of prompt variants across Search, Ads, and other products.
 
-- Vertex AI provides integrated prompt and model registry 
+- Vertex AI provides integrated prompt and model registry
 
-- A2A Protocol enables cross-agent capability sharing 
+- A2A Protocol enables cross-agent capability sharing
 
-- Agent Builder for low-code agent composition with managed deployment 
+- Agent Builder for low-code agent composition with managed deployment
 
-- Google DeepMind uses internal evaluation frameworks for model assessment 
+- Google DeepMind uses internal evaluation frameworks for model assessment
 
-- Colab Enterprise for collaborative prompt and agent development 
+- Colab Enterprise for collaborative prompt and agent development
 
-#### **Amazon Web Services** 
+### Amazon Web Services
 
-###### _Platform: Bedrock + SageMaker MLOps_ 
+### *Platform: Bedrock + SageMaker MLOps*
 
-AWS manages AI assets through Amazon Bedrock (model access, Knowledge Bases, Agents for Bedrock) and SageMaker (MLOps pipelines, Model Registry, Feature Store). Bedrock Agents provides managed agent 
+AWS manages AI assets through Amazon Bedrock (model access, Knowledge Bases, Agents for Bedrock) and SageMaker (MLOps pipelines, Model Registry, Feature Store). Bedrock Agents provides managed agent
 
-execution with tool integration and memory management. Bedrock Guardrails implements content filtering and PII redaction as managed services. 
+execution with tool integration and memory management. Bedrock Guardrails implements content filtering and PII redaction as managed services.
 
-- Bedrock Agents for managed agent deployment and tool integration 
+- Bedrock Agents for managed agent deployment and tool integration
 
-- Bedrock Guardrails as managed safety layer 
+- Bedrock Guardrails as managed safety layer
 
-- SageMaker Model Registry for fine-tuned model management 
+- SageMaker Model Registry for fine-tuned model management
 
-- AWS Step Functions for multi-agent workflow orchestration 
+- AWS Step Functions for multi-agent workflow orchestration
 
-- Bedrock Knowledge Bases for managed RAG with automatic chunking 
+- Bedrock Knowledge Bases for managed RAG with automatic chunking
 
-#### **Anthropic** 
+### Anthropic
 
-###### _Platform: Claude + MCP Ecosystem_ 
+### *Platform: Claude + MCP Ecosystem*
 
-Anthropic pioneered the Model Context Protocol (MCP) as an open standard for tool integration, enabling a rich ecosystem of tool servers. Constitutional AI embeds governance principles into model training. Claude.ai enterprise provides prompt management, conversation analytics, and team workspace capabilities. 
+Anthropic pioneered the Model Context Protocol (MCP) as an open standard for tool integration, enabling a rich ecosystem of tool servers. Constitutional AI embeds governance principles into model training. Claude.ai enterprise provides prompt management, conversation analytics, and team workspace capabilities.
 
-- MCP (Model Context Protocol) as open tool integration standard 
+- MCP (Model Context Protocol) as open tool integration standard
 
-- Constitutional AI embeds governance into model training itself 
+- Constitutional AI embeds governance into model training itself
 
-- System prompt management through Claude.ai enterprise workspaces 
+- System prompt management through Claude.ai enterprise workspaces
 
-- Evaluations API for model and prompt benchmarking 
+- Evaluations API for model and prompt benchmarking
 
-- Projects feature for persistent context and prompt management 
+- Projects feature for persistent context and prompt management
 
-#### **Databricks** 
+### Databricks
 
-###### _Platform: MLflow + Mosaic AI_ 
+### *Platform: MLflow + Mosaic AI*
 
-Databricks leverages MLflow — the industry's most widely adopted MLOps platform — extended for LLM and agent management. MLflow Prompt Engineering UI provides prompt versioning and experiment tracking. Mosaic AI Agent Framework provides orchestration and quality evaluation. Unity Catalog extends data governance to AI assets. 
+Databricks leverages MLflow — the industry's most widely adopted MLOps platform — extended for LLM and agent management. MLflow Prompt Engineering UI provides prompt versioning and experiment tracking. Mosaic AI Agent Framework provides orchestration and quality evaluation. Unity Catalog extends data governance to AI assets.
 
-- MLflow for prompt versioning, experiment tracking, and evaluation 
+- MLflow for prompt versioning, experiment tracking, and evaluation
 
-- Mosaic AI Agent Framework for production agent management 
+- Mosaic AI Agent Framework for production agent management
 
-- Unity Catalog for AI asset governance and lineage tracking 
+- Unity Catalog for AI asset governance and lineage tracking
 
-- LakehouseIQ as enterprise knowledge graph for AI grounding 
+- LakehouseIQ as enterprise knowledge graph for AI grounding
 
-- Genie (AI assistant) demonstrates internal agent management practices 
+- Genie (AI assistant) demonstrates internal agent management practices
 
-#### **Salesforce** 
+### Salesforce
 
-_Platform: Agentforce + Einstein Platform_ 
+*Platform: Agentforce + Einstein Platform*
 
-Salesforce's Agentforce represents one of the most comprehensive enterprise AI agent management systems, deeply integrated with CRM data. The Atlas Reasoning Engine handles planning. The Einstein Trust Layer provides data security, PII masking, and audit logging for all AI interactions. 
+Salesforce's Agentforce represents one of the most comprehensive enterprise AI agent management systems, deeply integrated with CRM data. The Atlas Reasoning Engine handles planning. The Einstein Trust Layer provides data security, PII masking, and audit logging for all AI interactions.
 
-- Agentforce Builder provides declarative agent definition 
+- Agentforce Builder provides declarative agent definition
 
-- Einstein Trust Layer for data security and audit compliance 
+- Einstein Trust Layer for data security and audit compliance
 
-- Data Cloud as enterprise knowledge grounding system 
+- Data Cloud as enterprise knowledge grounding system
 
-- Prompt Builder for reusable, versioned prompt templates 
+- Prompt Builder for reusable, versioned prompt templates
 
-- Flow Builder for human-in-the-loop workflow integration 
+- Flow Builder for human-in-the-loop workflow integration
 
-#### **ServiceNow** 
+### ServiceNow
 
-###### _Platform: Now Assist + AI Control Tower_ 
+### *Platform: Now Assist + AI Control Tower*
 
-ServiceNow integrates AI agents into enterprise ITSM with strong governance emphasis given regulated enterprise customers. The AI Control Tower provides centralized visibility over all AI models and agents. AI governance capabilities include centralized policy management, model performance monitoring, and audit trails integrated with ITSM workflows. 
+ServiceNow integrates AI agents into enterprise ITSM with strong governance emphasis given regulated enterprise customers. The AI Control Tower provides centralized visibility over all AI models and agents. AI governance capabilities include centralized policy management, model performance monitoring, and audit trails integrated with ITSM workflows.
 
-- AI Control Tower for centralized governance and monitoring 
+- AI Control Tower for centralized governance and monitoring
 
-- Now Assist integrates AI agents into ITSM approval workflows 
+- Now Assist integrates AI agents into ITSM approval workflows
 
-- Responsible AI framework with built-in bias detection 
+- Responsible AI framework with built-in bias detection
 
-- AI policy management integrated with enterprise policy lifecycle 
+- AI policy management integrated with enterprise policy lifecycle
 
-- Model performance dashboards with automated quality alerts 
+- Model performance dashboards with automated quality alerts
 
-#### **LangChain** 
+### LangChain
 
-_Platform: LangSmith + LangGraph_ 
+*Platform: LangSmith + LangGraph*
 
-LangChain's LangSmith has emerged as the most widely adopted developer tool for LLM application observability, prompt management, and evaluation. LangSmith Hub provides prompt versioning and sharing. LangGraph enables stateful multi-agent workflows with persistence and human-in-the-loop. 
+LangChain's LangSmith has emerged as the most widely adopted developer tool for LLM application observability, prompt management, and evaluation. LangSmith Hub provides prompt versioning and sharing. LangGraph enables stateful multi-agent workflows with persistence and human-in-the-loop.
 
-- LangSmith Hub for versioned prompt sharing and discovery 
+- LangSmith Hub for versioned prompt sharing and discovery
 
-- LangSmith Datasets for evaluation dataset management 
+- LangSmith Datasets for evaluation dataset management
 
-- LangGraph for stateful multi-agent workflow definitions 
+- LangGraph for stateful multi-agent workflow definitions
 
-- LangSmith Tracing for agent execution observability 
+- LangSmith Tracing for agent execution observability
 
-- LangSmith Evaluators for automated quality assessment 
+- LangSmith Evaluators for automated quality assessment
 
-#### **GitHub (Microsoft)** 
+### GitHub (Microsoft)
 
-_Platform: Copilot Workspace + Actions_ 
+*Platform: Copilot Workspace + Actions*
 
-GitHub's position is unique because GitHub itself is the primary repository platform for AI assets. GitHub Copilot uses sophisticated internal prompt management with model-specific optimizations. GitHub Actions serves as CI/CD backbone for AI asset pipelines. Copilot Workspace demonstrates AI-assisted development with embedded agent workflows. 
+GitHub's position is unique because GitHub itself is the primary repository platform for AI assets. GitHub Copilot uses sophisticated internal prompt management with model-specific optimizations. GitHub Actions serves as CI/CD backbone for AI asset pipelines. Copilot Workspace demonstrates AI-assisted development with embedded agent workflows.
 
-- GitHub itself as the source control standard for AI assets 
+- GitHub itself as the source control standard for AI assets
 
-- Copilot uses enterprise-scale prompt management internally 
+- Copilot uses enterprise-scale prompt management internally
 
-- GitHub Actions as primary AI asset CI/CD pipeline platform 
+- GitHub Actions as primary AI asset CI/CD pipeline platform
 
-- Copilot Workspace for AI-assisted agent workflow generation 
+- Copilot Workspace for AI-assisted agent workflow generation
 
-- GHAS (GitHub Advanced Security) being extended for AI code scanning 
+- GHAS (GitHub Advanced Security) being extended for AI code scanning
 
-### **Appendix B: AAMP Maturity Model — Levels 0–5** 
+### Appendix B: AAMP Maturity Model — Levels 0–5
 
-A structured progression path for enterprises building agentic AI asset management capabilities. Each level represents a coherent set of capabilities building on the previous level. 
+A structured progression path for enterprises building agentic AI asset management capabilities. Each level represents a coherent set of capabilities building on the previous level.
 
-#### **Level 0** 
+### Level 0
 
-###### **Ad Hoc / Chaotic** 
+### Ad Hoc / Chaotic
 
-Prompts embedded in code. No versioning. No ownership. No evaluation. Production incidents caused by uncontrolled changes. Individual heroics required for every deployment. 
+Prompts embedded in code. No versioning. No ownership. No evaluation. Production incidents caused by uncontrolled changes. Individual heroics required for every deployment.
 
-_Prevalence: < 5% of enterprises above this in 2024. Starting point for all organizations._ 
+*Prevalence: < 5% of enterprises above this in 2024. Starting point for all organizations.*
 
-#### **Level 1 Initial / Aware** 
+### Level 1 Initial / Aware
 
-Prompts moved to files in Git. Basic README documentation. _Prevalence: ~40% of enterprises in_ Ad-hoc testing before deployment. One or two engineers own 'the _2026. Typical early AI programme maturity._ AI stuff'. Manual senior engineer approval. 
+Prompts moved to files in Git. Basic README documentation. *Prevalence: ~40% of enterprises in* Ad-hoc testing before deployment. One or two engineers own 'the *2026. Typical early AI programme maturity.* AI stuff'. Manual senior engineer approval.
 
-#### **Level 2 Developing / Managed** 
+### Level 2 Developing / Managed
 
-Separate prompt repository with basic metadata. CI pipeline with _Prevalence: ~35% of enterprises in_ schema validation. Evaluation suite for major agents. Defined _2026. Reached after 12–18 months of deliberate investment._ ownership. Some reuse through shared prompt files. 
+Separate prompt repository with basic metadata. CI pipeline with *Prevalence: ~35% of enterprises in* schema validation. Evaluation suite for major agents. Defined *2026. Reached after 12–18 months of deliberate investment.* ownership. Some reuse through shared prompt files.
 
-#### **Level 3 Defined / Governed** 
+### Level 3 Defined / Governed
 
-Centralized AAMP platform with registry services. Full metadata _Prevalence: ~15% of enterprises in_ catalog with semantic search. Automated evaluation gates in _2026. Requires dedicated platform team investment._ CI/CD. RAI review process. Cost monitoring. Developer portal. **Level 4 Quantitatively Managed** Continuous evaluation with automated regression detection. _Prevalence: ~7% of enterprises in_ Predictive quality models. A/B testing infrastructure. Cross-team _2026. Leading AI-native organizations._ asset marketplace. Full lineage and AIBOM. Compliance automation. 
+Centralized AAMP platform with registry services. Full metadata *Prevalence: ~15% of enterprises in* catalog with semantic search. Automated evaluation gates in *2026. Requires dedicated platform team investment.* CI/CD. RAI review process. Cost monitoring. Developer portal. **Level 4 Quantitatively Managed** Continuous evaluation with automated regression detection. *Prevalence: ~7% of enterprises in* Predictive quality models. A/B testing infrastructure. Cross-team *2026. Leading AI-native organizations.* asset marketplace. Full lineage and AIBOM. Compliance automation.
 
-#### **Level 5 Optimizing / Pioneering** 
+### Level 5 Optimizing / Pioneering
 
-Self-optimizing assets using evaluation feedback. Automated _Prevalence: < 3% of enterprises in_ prompt improvement. Predictive deprecation. Cross-organizational _2026. Hyperscalers and advanced AI labs only._ federation. AI-generated governance artifacts. 
+Self-optimizing assets using evaluation feedback. Automated *Prevalence: < 3% of enterprises in* prompt improvement. Predictive deprecation. Cross-organizational *2026. Hyperscalers and advanced AI labs only.* federation. AI-generated governance artifacts.
 
-### **Appendix C: Implementation Checklist** 
+### Appendix C: Implementation Checklist
 
-Use this checklist to assess and guide your AAMP implementation journey, organized by maturity level target. 
+Use this checklist to assess and guide your AAMP implementation journey, organized by maturity level target.
 
-#### **Foundation (Level 1** → **2)** 
+### Foundation (Level 1**→**2)
 
-- I Create dedicated Git repository for all AI assets 
+- I Create dedicated Git repository for all AI assets
 
-- I Define asset directory structure and naming conventions 
+- I Define asset directory structure and naming conventions
 
-- I Implement CODEOWNERS for all asset directories 
+- I Implement CODEOWNERS for all asset directories
 
-- I Create metadata schema template for all asset types 
+- I Create metadata schema template for all asset types
 
-- I Establish basic CI pipeline with schema validation and secret scanning 
+- I Establish basic CI pipeline with schema validation and secret scanning
 
-- I Document asset ownership and peer review process 
+- I Document asset ownership and peer review process
 
-- I Create initial prompt, agent, and tool design standards 
+- I Create initial prompt, agent, and tool design standards
 
-- I Set up basic cost monitoring for AI API usage 
+- I Set up basic cost monitoring for AI API usage
 
-- I Conduct inventory of all existing AI assets 
+- I Conduct inventory of all existing AI assets
 
-- I Define lifecycle states and promotion criteria 
+- I Define lifecycle states and promotion criteria
 
-#### **Platform (Level 2** → **3)** 
+### Platform (Level 2**→**3)
 
-- I Deploy centralized asset registry (prompt, agent, tool) 
+- I Deploy centralized asset registry (prompt, agent, tool)
 
-- I Implement semantic search over asset catalog 
+- I Implement semantic search over asset catalog
 
-- I Build evaluation pipeline with golden datasets and quality gates 
+- I Build evaluation pipeline with golden datasets and quality gates
 
-- I Create approval workflow engine with full audit trail 
+- I Create approval workflow engine with full audit trail
 
-- I Implement policy-as-code with OPA or equivalent 
+- I Implement policy-as-code with OPA or equivalent
 
-- I Deploy developer portal with asset marketplace 
+- I Deploy developer portal with asset marketplace
 
-- I Integrate MCP for standardized tool exposure 
+- I Integrate MCP for standardized tool exposure
 
-- I Implement OpenTelemetry instrumentation for all agents 
+- I Implement OpenTelemetry instrumentation for all agents
 
-- I Create RAI review process and checklist 
+- I Create RAI review process and checklist
 
-- I Establish cost budget governance with alerting 
+- I Establish cost budget governance with alerting
 
-- I Deploy secrets management integration 
+- I Deploy secrets management integration
 
-- I Create rollback runbooks for all production agents 
+- I Create rollback runbooks for all production agents
 
-#### **Governance (Level 3** → **4)** 
+### Governance (Level 3**→**4)
 
-- I Implement continuous evaluation with automated regression detection 
+- I Implement continuous evaluation with automated regression detection
 
-- I Deploy A/B testing infrastructure for prompt optimization 
+- I Deploy A/B testing infrastructure for prompt optimization
 
-- I Create AIBOM generation for all production AI systems 
+- I Create AIBOM generation for all production AI systems
 
-- I Implement compliance rule engine for EU AI Act requirements 
+- I Implement compliance rule engine for EU AI Act requirements
 
-- I Establish cross-team asset sharing marketplace 
+- I Establish cross-team asset sharing marketplace
 
-- I Deploy full lineage tracking with OpenLineage integration 
+- I Deploy full lineage tracking with OpenLineage integration
 
-- I Create governance board charter and RACI 
+- I Create governance board charter and RACI
 
-- I Implement risk assessment workflow for new agents 
+- I Implement risk assessment workflow for new agents
 
-- I Deploy dependency graph visualization 
+- I Deploy dependency graph visualization
 
-- I Create agent certification program with defined levels 
+- I Create agent certification program with defined levels
 
-#### **Optimization (Level 4** → **5)** 
+### Optimization (Level 4**→**5)
 
-- I Implement predictive quality regression models 
+- I Implement predictive quality regression models
 
-- I Deploy automated prompt improvement pipelines 
+- I Deploy automated prompt improvement pipelines
 
-- I Create AI-assisted governance artifact drafting 
+- I Create AI-assisted governance artifact drafting
 
-- I Establish cross-organizational asset federation 
+- I Establish cross-organizational asset federation
 
-- I Implement automated compatibility matrix maintenance 
+- I Implement automated compatibility matrix maintenance
 
-- I Deploy predictive deprecation recommendations 
+- I Deploy predictive deprecation recommendations
 
-### **Appendix D: Future Trends 2026–2030** 
+### Appendix D: Future Trends 2026–2030
 
-**2026** 
+**2026**
 
-###### **MCP & A2A Maturation** 
+### MCP & A2A Maturation
 
-MCP and A2A become universal standards with major platform convergence. First MCP-native enterprise AAMP platforms emerge. Tool marketplaces with hundreds of certified MCP servers become common. 
+MCP and A2A become universal standards with major platform convergence. First MCP-native enterprise AAMP platforms emerge. Tool marketplaces with hundreds of certified MCP servers become common.
 
-**2026-2027 AI-Generated Asset Creation** 
+**2026-2027 AI-Generated Asset Creation**
 
-AI systems generate first drafts of prompts, manifests, and evaluation datasets. Human roles shift from authoring to review and refinement. Prompt engineering evolves into Prompt Architecture. 
+AI systems generate first drafts of prompts, manifests, and evaluation datasets. Human roles shift from authoring to review and refinement. Prompt engineering evolves into Prompt Architecture.
 
-**2027** 
+**2027**
 
-###### **Regulatory Compliance Automation** 
+### Regulatory Compliance Automation
 
-EU AI Act conformity assessment automation. AIBOM generation becomes mandatory platform feature. Automated regulatory reporting from asset metadata. Real-time compliance dashboards. 
+EU AI Act conformity assessment automation. AIBOM generation becomes mandatory platform feature. Automated regulatory reporting from asset metadata. Real-time compliance dashboards.
 
-**2027-2028 Autonomous Asset Optimization** 
+**2027-2028 Autonomous Asset Optimization**
 
-Agents continuously monitor their own performance and propose optimizations. Automated A/B testing cycles with human approval gates. Self-evolving prompt libraries based on production feedback. 
+Agents continuously monitor their own performance and propose optimizations. Automated A/B testing cycles with human approval gates. Self-evolving prompt libraries based on production feedback.
 
-**2028 Cross-Enterprise Asset Federation** 
+**2028 Cross-Enterprise Asset Federation**
 
-Industry consortia share certified AI assets through federated registries. Open-source AI asset ecosystems analogous to npm/PyPI emerge for agentic components. 
+Industry consortia share certified AI assets through federated registries. Open-source AI asset ecosystems analogous to npm/PyPI emerge for agentic components.
 
-**2028-2029 Quantum-Safe AI Asset Security** 
+**2028-2029 Quantum-Safe AI Asset Security**
 
-Migration to post-quantum cryptographic signatures for asset signing. Quantum-resistant authentication for registry access. New threat models for agentic AI in post-quantum environments. 
+Migration to post-quantum cryptographic signatures for asset signing. Quantum-resistant authentication for registry access. New threat models for agentic AI in post-quantum environments.
 
-###### **2029-2030 Autonomous Agent Governance** 
+### 2029-2030 Autonomous Agent Governance
 
-AI agents participate in their own governance: self-certifying against criteria, generating documentation, flagging compliance concerns, and proposing retirement when obsolete. 
-
+AI agents participate in their own governance: self-certifying against criteria, generating documentation, flagging compliance concerns, and proposing retirement when obsolete.

@@ -17,6 +17,6 @@ Enterprise agentic AI configuration management — patterns, best practices, and
 
 ---
 
-## PDFs
+## Guide
 
 - [Enterprise Agentic AI Configuration Management 2026](/knowledge-docs/agentic-systems/config/enterprise-agentic-ai-config-management-2026)

@@ -10,6 +10,7 @@ doc_type: guide
 **DEEP TECHNICAL GUIDE**
 **Complex RAG Systems**
 *Delta Indexing · Document Versioning · Multi-Modal · Complex Tables · Temporal QnA · Knowledge Links*
+
 | This guide covers every major complexity in production-grade RAG systems: how to index only what changed, how to handle documents with images and slides, how tables with grouped headers break naive chunking, how temporal/historical knowledge must be modeled, and how knowledge links span across filenames, sections, and document hierarchies — with concrete strategies for each. |
 | --- |
 **1. Delta Indexing — Only Re-Index What Changed**
@@ -22,10 +23,10 @@ Every time a policy document changes by one paragraph, a naive system re-chunks,
 | # Document-level fingerprint doc_fingerprint = SHA256(raw_bytes)   # Detects ANY change # Section-level fingerprint (more granular) for section in parsed_sections: section_hash = SHA256(section.text + section.position_id) store(doc_id, section_id, section_hash, embedding_id) # On update: new_hashes = compute_section_hashes(new_version) old_hashes = retrieve_stored_hashes(doc_id) to_delete = old_hashes - new_hashes   # Removed or changed sections to_insert = new_hashes - old_hashes   # New or changed sections unchanged = old_hashes & new_hashes   # Do nothing — embeddings still valid |
 | --- |
 **What counts as a 'section' for hashing?**
-**Structural boundary: **Heading-based sections (H1, H2, H3) — most reliable for documents with clear structure
-**Semantic boundary: **Paragraph clusters separated by topic shift — requires a topic segmentation model
-**Fixed-position boundary: **Page + paragraph index — brittle if document reflows, but fast
-**Sentence-level: **Maximum granularity, maximum overhead — use only for high-churn, high-value documents
+**Structural boundary:**Heading-based sections (H1, H2, H3) — most reliable for documents with clear structure
+**Semantic boundary:**Paragraph clusters separated by topic shift — requires a topic segmentation model
+**Fixed-position boundary:**Page + paragraph index — brittle if document reflows, but fast
+**Sentence-level:**Maximum granularity, maximum overhead — use only for high-churn, high-value documents
 **1.3  The Chunk Lineage Graph — The Critical Data Structure**
 Every chunk in the vector store must carry a complete lineage record. Without this, you cannot perform targeted deletion, version rollback, or audit trail queries.
 
@@ -37,10 +38,12 @@ Every chunk in the vector store must carry a complete lineage record. Without th
 | --- |
 
 **1.5  What Can Go Wrong — Delta Indexing Failure Modes**
+
 | Failure Mode Section boundary shift: a doc restructures headings — same text, different section_id → false re-index of entire doc Whitespace-only changes trigger re-embedding unnecessarily Table reformatting: column reordered → hash changes but semantic content unchanged Image replacement: binary hash changes even if image is visually identical Race condition: two versions processed concurrently → chunk lineage corrupted | Mitigation Strategy Normalize text before hashing: strip whitespace, lowercase, remove formatting artifacts Two-level hash: coarse (section-level) gates fine (paragraph-level) diff Table-specific hasher: hash on cell content, not positional layout Image semantic hash: perceptual hash (pHash) not byte hash for images Document-level processing lock: mutex per doc_id in the pipeline |
 | --- | --- |
 
 **2. Versioned Documents — The Temporal Knowledge Problem**
+
 | This is one of the hardest problems in enterprise RAG. When a policy changes, which version applies to a query? When a user asks 'what was the data retention policy in Q3 2024?' the system must retrieve the correct version — not the latest. Naive RAG has no concept of time. |
 | --- |
 
@@ -71,14 +74,17 @@ This is a specific class of temporal query that breaks standard RAG entirely. Wh
 | --- |
 
 **Solution: Temporal Entity Graph Overlay**
+
 | # Store leadership/role transitions as a graph, not just documents ENTITY NODE: { entity_id:    'role:head-of-risk', entity_type:  'ROLE', occupant:     'Sarah Chen', valid_from:   '2023-06-01', valid_until:  None,          # Current predecessor:  { occupant: 'James Okafor', from: '2020-01', until: '2023-05' }, successor:    None } # Query decomposition for 'who preceded Sarah Chen as Head of Risk?' Step 1: Entity extraction → (Sarah Chen, Head of Risk) Step 2: Graph lookup → find entity_id where occupant='Sarah Chen' Step 3: Traverse → return predecessor.occupant = 'James Okafor' Step 4: Augment with doc chunks for context if needed # Hybrid answer: graph gives the fact, RAG gives the context |
 | --- |
 
 **Knowledge Graph + RAG Hybrid Architecture**
+
 | User Query ↓ [Query Classifier] ├── Factual/Entity → [Knowledge Graph Query]  → precise fact ├── Temporal chain → [KG + Temporal Traversal] → ordered entities ├── Contextual     → [Vector Search RAG]       → rich context └── Mixed          → [KG + RAG fusion]         → fact + context ↓ [Answer Synthesis] → combines graph facts + RAG context into coherent answer 'James Okafor served as Head of Risk from Jan 2020 to May 2023, when Sarah Chen succeeded him. [Source: Org Chart v4.2, Board Minutes Mar 2023]' |
 | --- |
 
 **3. Multi-Modal Documents — Images, PPTs, Charts**
+
 | A PowerPoint slide with a chart is not a text document with an image attached. The chart IS the content. A process diagram in a PDF contains knowledge that cannot be extracted by any text parser. Multi-modal RAG is fundamentally different from text RAG. |
 | --- |
 
@@ -96,14 +102,17 @@ This is a specific class of temporal query that breaks standard RAG entirely. Wh
 A PowerPoint slide rarely makes sense without its surrounding context. Slide 7 that shows a bar chart labeled 'Revenue by Region' is meaningless without: the deck title (Q3 2024 Board Review), the section (APAC Performance), and the previous slide (sets up the baseline). Chunking slide 7 in isolation loses all of this.
 
 **Slide Chunk Metadata — The Full Context Envelope**
+
 | # Every slide chunk carries its full presentational context { chunk_id:           'ppt-q3board-slide7-chunk1', source_file:        'Q3_2024_Board_Review_FINAL.pptx', deck_title:         'Q3 2024 Board Review', deck_author:        'Finance Team', deck_date:          '2024-10-15', slide_number:       7, total_slides:       42, slide_title:        'APAC Revenue — Q3 Performance', section_name:       'Regional Performance', section_slide_start:5, preceding_slide_title:  'APAC — Context and Targets',   # Slide 6 following_slide_title:  'APAC — Key Drivers',           # Slide 8 content_types:      ['text', 'bar_chart', 'table'], chart_description:  'Bar chart: Revenue by sub-region Q3 vs Q2. Y-axis: USD millions. X-axis: AU, JP, SG, IN, KR.', extracted_data:     { AU: 142.3, JP: 89.1, SG: 67.4 },  # From chart via vision model speaker_notes:      'Highlight AU outperformance. JP decline driven by FX headwinds.', is_hidden_slide:    False, slide_layout:       'Two Content', } |
 | --- |
 
 **The Slide-to-Chunk Hierarchy**
+
 | CHUNKING STRATEGY FOR PRESENTATIONS: Level 1: DECK chunk — title, author, date, section outline → 1 chunk per deck Purpose: 'Find me the Q3 board deck' queries Level 2: SECTION chunk — section title + all slide titles within → 1 per section Purpose: 'What was covered in the APAC section?' queries Level 3: SLIDE chunk — full slide context envelope (see above) → 1 per slide Purpose: Most common retrieval unit for content queries Level 4: ELEMENT chunk — individual chart/table/diagram → 1 per visual element Purpose: 'Show me the revenue chart' or data extraction queries Retrieval: query hits Level 3, returns Level 3 + Level 2 context in answer Cross-slide: if answer spans slides, retrieve slide N and N±1 as a window |
 | --- |
 
 **3.3  Image and Chart Extraction — The Pipeline**
+
 | MULTI-MODAL EXTRACTION PIPELINE: [Source Document] ↓ [Document Parser]  → separates text blocks from image/chart regions ↓ ┌──────────────────────────────────────┐ │         PER VISUAL ELEMENT:          │ │                                      │ │  [Vision Model — GPT-4o / Claude]    │ │    → Chart type identification       │ │    → Axis labels, legend extraction  │ │    → Data value extraction           │ │    → Relationship description        │ │    → Generated alt-text (detailed)   │ │                                      │ │  [OCR Layer]  (for text in images)   │ │    → Text within diagrams            │ │    → Labels, annotations             │ │                                      │ │  [Diagram Analyzer]                  │ │    → Node extraction from flowcharts │ │    → Edge/relationship extraction    │ │    → Sequence detection              │ └──────────────────────────────────────┘ ↓ [Text Synthesis]  → combine: surrounding_text + vision_description + OCR ↓ [Embedding]       → embed the synthesized text representation ↓ [Store]           → chunk with image_url reference + synthesized_text + raw_data |
 | --- |
 
@@ -114,6 +123,7 @@ A diagram on slide 3 shows a process. Slide 11 shows performance metrics for tha
 | --- |
 
 **4. Complex Table Structures — The Hardest Chunking Problem**
+
 | Tables are the most frequently broken content in enterprise RAG. A cell in row 7, column 4 of a merged-header table has NO meaning without its row header, its column header, its column group header, and potentially the document section header that contextualizes the entire table. Standard text chunking destroys all of this. |
 | --- |
 
@@ -178,6 +188,7 @@ The filename itself is a knowledge source. 'ISP-APAC-v3.2-APPROVED-2025-01.pdf' 
 | --- |
 
 **5. Cross-Document Knowledge Links**
+
 | In an enterprise knowledge base, no document is an island. A risk register references a control framework. An API spec references a data dictionary. A contract references a policy. A product manual references a safety bulletin. RAG systems that treat documents in isolation break all of these links. |
 | --- |
 
@@ -200,10 +211,12 @@ Cross-document links cannot be handled by a pure vector store. They require a gr
 | --- |
 
 **5.3  Graph-Augmented Retrieval — The Full Flow**
+
 | GRAPH-AUGMENTED RAG RETRIEVAL: Query: 'What controls apply to third-party data access?' Step 1: Vector search → top-5 chunks → Chunk A: 'Third-party access requirements' (from Data Policy v3.1) → Chunk B: 'Vendor management controls' (from Risk Framework v2.0) Step 2: Graph traversal from retrieved chunks → Chunk A → [:REFERENCES] → Section 7 of 'Third Party Agreement Template' → Chunk A → [:GOVERNED_BY] → ISO27001 Control A.15 (external doc) → Chunk B → [:SUPERSEDES] → Chunk C (old version — exclude from results) → Chunk B → [:CONTAINS] → Entity 'Third-party data access' (same as query) Step 3: Expand context → Add referenced Section 7 chunk (not in top-5 but graph says relevant) → Add superseded flag to any old chunks that appear Step 4: Synthesize answer → 'Based on Data Policy v3.1 (Section 4) and Risk Framework v2.0 (Section 7), third-party data access requires: [1] ... [2] ... See also: Third Party Agreement Template Section 7 for contractual controls.' |
 | --- |
 
 **6. Strategies for Keeping Information Latest and Greatest**
+
 | A RAG system that retrieves stale information is worse than no RAG system — it confidently returns wrong answers. The index freshness problem is not just a technical pipeline problem. It is an architectural problem that spans detection, processing, validation, and retrieval-time filtering. |
 | --- |
 
@@ -221,10 +234,11 @@ Cross-document links cannot be handled by a pure vector store. They require a gr
 **6.2  Retrieval-Time Freshness Enforcement**
 Even with the best update pipeline, the retrieval layer must enforce freshness as a hard constraint — not just a preference. A stale chunk that happens to be semantically very similar to the query will score higher than a fresh but less similar chunk. This is the silent freshness bug.
 
-| # Retrieval-time freshness enforcement strategies # Strategy 1: Hard temporal filter (pre-filter before vector search) results = vector_store.search( query_embedding=embed(query), filter={ 'is_active': True,              # Hard filter: never return superseded 'valid_until': None,            # Hard filter: only currently valid # For temporal queries: 'valid_from': {'$lte': query_date}, 'valid_until': {'$gte': query_date, '$or': None}, }, top_k=20 ) # Strategy 2: Recency score boost (post-retrieval re-ranking) for chunk in results: age_days = (today - chunk.valid_from).days recency_score = 1.0 / (1.0 + log(1 + age_days / 365)) chunk.final_score = (0.7 * chunk.semantic_score) + (0.3 * recency_score) # Strategy 3: Conflict detection (multiple versions returned) def detect_version_conflict(results): by_section = group_by(results, 'section_id') conflicts = [g for g in by_section if len(g) > 1] if conflicts: # Return only highest version, flag conflict in response return max(g, key=lambda c: c.doc_version), flag_conflict=True |
+| # Retrieval-time freshness enforcement strategies # Strategy 1: Hard temporal filter (pre-filter before vector search) results = vector_store.search( query_embedding=embed(query), filter={ 'is_active': True,              # Hard filter: never return superseded 'valid_until': None,            # Hard filter: only currently valid # For temporal queries: 'valid_from': {'$lte': query_date}, 'valid_until': {'$gte': query_date, '$or': None}, }, top_k=20 ) # Strategy 2: Recency score boost (post-retrieval re-ranking) for chunk in results: age_days = (today - chunk.valid_from).days recency_score = 1.0 / (1.0 + log(1 + age_days / 365)) chunk.final_score = (0.7 *chunk.semantic_score) + (0.3* recency_score) # Strategy 3: Conflict detection (multiple versions returned) def detect_version_conflict(results): by_section = group_by(results, 'section_id') conflicts = [g for g in by_section if len(g) > 1] if conflicts: # Return only highest version, flag conflict in response return max(g, key=lambda c: c.doc_version), flag_conflict=True |
 | --- |
 
 **6.3  The Version Conflict Response — What to Tell the User**
+
 | # When the system detects conflicting versions of the same content: response = { 'answer': 'Based on the current approved version (v3.2, effective Jan 2025)...', 'version_used': 'ISP-v3.2-APPROVED-2025-01.pdf', 'conflict_detected': True, 'conflict_note': 'An earlier version (v3.1, valid until Dec 2024) exists.', 'If you need the historical version, ask with a specific date.', 'sources': [ { 'doc': 'ISP-v3.2-APPROVED-2025-01.pdf', 'section': '4.2', 'status': 'ACTIVE' }, { 'doc': 'ISP-v3.1-APPROVED-2024-01.pdf', 'section': '4.2', 'status': 'SUPERSEDED' } ] } # The user ALWAYS knows which version answered their question. # The system NEVER silently serves a superseded version. |
 | --- |
 
@@ -235,6 +249,7 @@ A product recall notice doesn't just add new information — it invalidates exis
 | --- |
 
 **7. The Complete Complexity Map — All Known Hard Problems**
+
 | This section catalogs every significant complexity in enterprise RAG, categorized by layer. Use this as a checklist when designing or auditing a RAG system. |
 | --- |
 

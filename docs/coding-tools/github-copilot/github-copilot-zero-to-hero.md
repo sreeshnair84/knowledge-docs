@@ -49,6 +49,7 @@ covers_version: \"as of 2026-07-10\"
 GitHub Copilot is an AI pair programmer embedded directly in your development environment. It started as an inline code-completion tool in 2021 and has evolved into a full agentic development platform — capable of reading your codebase, planning work, implementing changes across multiple files, running terminal commands, reviewing pull requests, and autonomously resolving GitHub issues.
 
 **Core value proposition:**
+
 - **Inline completions**: ghost-text suggestions as you type, from single lines to whole functions.
 - **Chat interface**: conversational AI for code explanation, debugging, and generation.
 - **Agent mode**: autonomous multi-step task execution — reads files, proposes edits, runs commands, monitors output, self-corrects.
@@ -56,6 +57,7 @@ GitHub Copilot is an AI pair programmer embedded directly in your development en
 - **Coding agent**: assign a GitHub issue to `copilot` and receive an implemented PR.
 
 **What Copilot is NOT:**
+
 - A replacement for code review or engineering judgment.
 - Guaranteed-correct output — all suggestions require human validation.
 - A search engine — it generates, it does not retrieve verified documentation.
@@ -163,7 +165,7 @@ Copilot is pre-configured in GitHub Codespaces for repos with Copilot-enabled or
 GitHub Copilot supports multiple AI models. Model selection is available in VS Code, JetBrains, and GitHub.com chat on Pro/Business/Enterprise plans.
 
 | Model | Provider | Strengths | Best Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **GPT-4o** | OpenAI | Fast, broad knowledge, excellent for completions | Default for inline completions, quick chat queries |
 | **Claude Sonnet 4.6** | Anthropic | Strong reasoning, long-context, code quality | Complex multi-file refactors, architecture questions |
 | **Claude Sonnet 5** | Anthropic | Latest Claude, improved code generation | Agent mode tasks, complex problem-solving |
@@ -227,7 +229,7 @@ def extract_user_id_from_token(token: str, jwks_url: str) -> str:
 ### Ghost Text Navigation
 
 | Action | Shortcut (VS Code) |
-|---|---|
+| --- | --- |
 | Accept suggestion | `Tab` |
 | Dismiss suggestion | `Escape` |
 | See next suggestion | `Alt+]` (Windows/Linux) / `Option+]` (macOS) |
@@ -253,7 +255,7 @@ Open: `Ctrl+Shift+I` (Windows/Linux) / `Cmd+Shift+I` (macOS), or click the chat 
 **Chat participants (slash commands):**
 
 | Command | Purpose |
-|---|---|
+| --- | --- |
 | `/explain` | Explain selected code |
 | `/fix` | Suggest a fix for selected code or error |
 | `/tests` | Generate unit tests for selected code |
@@ -264,6 +266,7 @@ Open: `Ctrl+Shift+I` (Windows/Linux) / `Cmd+Shift+I` (macOS), or click the chat 
 | `@terminal` | Get help with terminal commands |
 
 **Inline chat (in-editor):**
+
 - Select code → `Ctrl+I` / `Cmd+I` → type your instruction.
 - Example: select a function → `/fix the off-by-one error in the loop`.
 
@@ -275,6 +278,7 @@ Open: `Ctrl+Shift+I` (Windows/Linux) / `Cmd+Shift+I` (macOS), or click the chat 
 ### GitHub.com Copilot Chat
 
 Accessible at github.com → Copilot icon. Supports:
+
 - Querying across repositories (with codebase indexing on Enterprise).
 - Creating issues, PRs, and branches directly from chat.
 - Explaining files, commits, and PRs.
@@ -303,7 +307,7 @@ Agent mode transforms Copilot from a suggestion engine into an autonomous implem
 ### Agent Mode vs Chat Mode
 
 | Capability | Chat Mode | Agent Mode |
-|---|---|---|
+| --- | --- | --- |
 | Answer questions | Yes | Yes |
 | Suggest code for single file | Yes | Yes |
 | Read multiple files automatically | No | Yes |
@@ -369,6 +373,7 @@ update the requirements file, and verify existing tests still pass."
 ```
 
 Agent will:
+
 1. Run `pip install httpx` (or `uv add httpx` based on project conventions).
 2. Update `requirements.txt` or `pyproject.toml`.
 3. Run `pytest` to verify.
@@ -482,7 +487,7 @@ After saving, VS Code Copilot Chat shows the connected MCP tools in the "Tools" 
 Enterprise admins manage MCP from a single control plane:
 
 | Control | Location | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | **Allow-list** | Org Settings → Copilot → MCP → Allowed servers | Prevent unapproved MCP server connections |
 | **Audit logs** | Org → Audit log → filter: `copilot.mcp` | Track MCP server usage by user and time |
 | **Policy enforcement** | "Allow only approved MCP servers" org policy | Blocked at the client; engineers cannot connect non-approved servers |
@@ -615,6 +620,7 @@ async def call_tool(name: str, arguments: dict):
 ```
 
 **Security note:** MCP servers that access databases must:
+
 - Use read-only database credentials.
 - Enforce query allow-lists or statement type filtering.
 - Never connect to production databases.
@@ -634,6 +640,7 @@ Since March 5, 2026, Copilot's code review has used an agentic architecture. Ins
 4. Understands the full context of the change before commenting.
 
 This means Copilot will catch issues like:
+
 - Breaking a contract that callers in other files depend on.
 - Introducing a pattern inconsistent with the rest of the codebase.
 - Missing updates to related tests or documentation.
@@ -682,6 +689,7 @@ review:
 ### Review Quality
 
 Copilot review quality is highest when:
+
 - The PR is well-scoped (one concern per PR).
 - The PR description explains the intent (Copilot reads it as context).
 - A `copilot-instructions.md` exists (see Section 12).
@@ -770,6 +778,7 @@ graph LR
 ```
 
 **Reviewing agent-authored PRs:**
+
 - Check the run trace (in the PR description) — see every file read, every command run.
 - Verify the diff is scoped to the described task; agent should not have touched unrelated files.
 - Run the tests locally if the task is security-sensitive.
@@ -822,11 +831,12 @@ From June 1, 2026, GitHub Copilot uses a credit system for premium feature consu
 ### Credit Allocation by Plan
 
 | Plan | Monthly cost | Included credits | Credits value |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Business | $19/user/month | 1,900 credits/user | $19 worth |
 | Enterprise | $39/user/month | 3,900 credits/user | $39 worth |
 
 **Enterprise pooling example:**
+
 - 100 Business users → 190,000 shared credits/month ($1,900 worth).
 - 50 Enterprise users → 195,000 shared credits/month ($1,950 worth).
 - Credits are shared across the org; heavy agent-mode users consume from the same pool as light users.
@@ -834,7 +844,7 @@ From June 1, 2026, GitHub Copilot uses a credit system for premium feature consu
 ### Per-Feature Credit Costs
 
 | Feature | Credit consumption | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Inline completions (standard model)** | Included in base quota | No credit charge for completions within quota |
 | **Inline completions (premium model)** | Low per completion | Charged when exceeding base quota |
 | **Chat (standard model)** | Low per message | GPT-4o tier |
@@ -890,7 +900,7 @@ async def billing_alert(request: Request):
 ### Cost Optimization Strategies
 
 | Strategy | Estimated Saving | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | Use GPT-4o for completions; premium models only for complex tasks | 20–40% | Team policy + model selection guide |
 | Disable code review for low-risk/auto-generated repos | Per-review savings | CODEOWNERS — exclude from Copilot review |
 | Use `.copilotignore` to exclude vendor/generated code | 5–15% | Create `.copilotignore` at repo root |
@@ -923,7 +933,7 @@ gh api /orgs/myorg/copilot/billing/seats --paginate \
 ### Policy Controls
 
 | Policy | Location | Options |
-|---|---|---|
+| --- | --- | --- |
 | Suggestions matching public code | Org → Copilot → Policies | Allow / Block |
 | Copilot in GitHub.com | Org → Copilot → Policies | Enabled / Disabled |
 | Copilot Chat | Org → Copilot → Policies | Enabled / Disabled |
@@ -936,6 +946,7 @@ gh api /orgs/myorg/copilot/billing/seats --paginate \
 Codebase indexing enables Copilot to give suggestions and chat responses that understand your full repository structure.
 
 **Enabling:**
+
 1. Org → Settings → Copilot → Codebase indexing.
 2. Select repositories to index.
 3. Initial index builds on next push to default branch.
@@ -975,13 +986,14 @@ refunds, and subscription billing for B2B customers.
 Available on Copilot Enterprise for organizations with sufficient code volume.
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | Scope | Code completion suggestions only (not chat, agent, or review) |
 | Benefit | Suggestions aligned to your naming conventions, internal APIs, domain patterns |
 | Training data | Your chosen repositories; GitHub uses a separate fine-tuning pipeline that never shares data with the shared model |
 | Governance | Opt specific repos in/out; legal/compliance review required before enabling |
 
 **Pre-enablement governance checklist:**
+
 - [ ] Legal review: confirm included repos contain no third-party code with ML-training restrictions in license terms.
 - [ ] Security review: ensure no secrets or PII exist in training repos (run GHAS secret scanning first).
 - [ ] Document: record which repos are included, the model version deployed, and the retraining cadence.
@@ -1000,6 +1012,7 @@ Result: Copilot access follows HR system lifecycle
 ```
 
 **Practical setup (Okta example):**
+
 1. Add GitHub as a SAML application in Okta.
 2. Configure SCIM provisioning (Okta → GitHub app → Provisioning → Enable SCIM).
 3. Map Okta groups to GitHub teams.
@@ -1008,7 +1021,7 @@ Result: Copilot access follows HR system lifecycle
 ### Data Privacy
 
 | Guarantee | Condition |
-|---|---|
+| --- | --- |
 | Your code is not used to train shared Copilot models | Requires signed Data Processing Agreement (DPA) |
 | Prompts not retained beyond session | Enterprise tier with zero-retention configuration |
 | Data residency (region selection) | Available; configured during Enterprise org setup |
@@ -1065,6 +1078,7 @@ gh issue edit 103 --add-assignee copilot
 ```
 
 **Parallel agent best practices:**
+
 - Use independent, non-overlapping issues — agents working on overlapping files will create merge conflicts.
 - Monitor progress via the GitHub Copilot dashboard or `gh run list`.
 - Review PRs as they come in — don't let multiple agent PRs accumulate unreviewed.
@@ -1088,7 +1102,7 @@ Each session has its own context and does not interfere with the others (assumin
 ### Model Selection Per Task
 
 | Task | Recommended Model | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Inline completions (all) | GPT-4o (default) | Speed + cost; sufficient for completions |
 | Quick chat questions | GPT-4o | Low-complexity queries don't need deep reasoning |
 | Complex architecture discussion | Claude Sonnet | Better reasoning for design questions |
@@ -1176,6 +1190,7 @@ Agent mode reads files to build context. Long files consume more tokens (credits
 ### Content Exclusions (`.copilotignore`)
 
 See Section 14 for `.copilotignore` syntax. Use it to exclude:
+
 - Files containing secrets or credentials (defense-in-depth beyond GHAS).
 - Files with highly sensitive business logic you don't want sent to the AI provider.
 - Third-party licensed code where the license may restrict use as AI training data.
@@ -1220,6 +1235,7 @@ graph LR
 ```
 
 **For agent mode specifically:**
+
 1. Agent mode changes must go through your normal PR + CI pipeline — no bypassing CI because the code was AI-generated.
 2. If the agent runs tests and they pass locally but fail in CI, investigate — the agent's environment may differ from CI.
 3. Security-sensitive changes (auth, crypto, data access) require human security review regardless of agent confidence.
@@ -1255,10 +1271,12 @@ and what assumptions you're making."
 ### Agent Mode Run Traces
 
 All agent mode sessions produce a run trace visible in:
+
 - VS Code: agent mode panel → "View Trace" after task completion.
 - Coding agent PRs: the PR description includes a full trace of files read, commands run, and decisions made.
 
 The run trace shows:
+
 - Which files were read (and why).
 - Which files were modified (and the proposed edits).
 - Which commands were executed and their output.
@@ -1269,6 +1287,7 @@ This trace is your explainability artifact for audit purposes — save it for co
 ### Explaining Copilot Decisions to Stakeholders
 
 When justifying AI-assisted code in regulated environments:
+
 1. Save the agent run trace as a PR attachment or link from the PR description.
 2. Document the human review steps taken (who reviewed, what they checked).
 3. Note which validation workflows ran (CI checks, security scans).
@@ -1285,7 +1304,7 @@ This creates an audit trail: AI proposed → human validated → CI confirmed �
 Agent mode gates potentially impactful actions behind human confirmation:
 
 | Action Type | Default Behavior |
-|---|---|
+| --- | --- |
 | File creation/modification | Auto-proceed (shows diff) |
 | Running `read-only` terminal commands | Auto-proceed |
 | Installing packages | Prompt for confirmation |
@@ -1295,6 +1314,7 @@ Agent mode gates potentially impactful actions behind human confirmation:
 | Database modifications | Always prompt |
 
 **Configure confirmation policy** in VS Code Settings:
+
 ```json
 {
   "github.copilot.agent.confirmTerminalCommands": "always",  // or "risky" or "never"
@@ -1307,6 +1327,7 @@ Agent mode gates potentially impactful actions behind human confirmation:
 ### Plan Review Before Execution
 
 Always use Plan Mode for tasks that:
+
 - Touch more than 5 files.
 - Involve schema changes.
 - Modify authentication, authorization, or security logic.
@@ -1357,7 +1378,7 @@ graph TD
 ### GDPR Compliance
 
 | Requirement | GitHub Copilot Enterprise provision |
-|---|---|
+| --- | --- |
 | Lawful basis for processing | Covered under DPA as legitimate interest / contract performance |
 | Data subject rights (access, deletion) | GitHub provides mechanisms; enterprise admin coordinates |
 | Data processing agreement | Required — request from GitHub account team |
@@ -1367,6 +1388,7 @@ graph TD
 ### Data Residency
 
 Copilot Enterprise supports regional data residency for inference (prompt processing). Configure during Enterprise organization setup:
+
 - Available regions: United States, European Union.
 - Customer code and prompts are processed in the configured region.
 - Audit logs include region confirmation.
@@ -1376,6 +1398,7 @@ Note: Data residency for inference does not extend to model training — all fin
 ### SOC 2 Type II
 
 GitHub holds SOC 2 Type II certification covering:
+
 - Security (CC6–CC9): access controls, monitoring, incident response.
 - Availability (A1): uptime commitments.
 - Confidentiality (C1–C2): data protection.
@@ -1421,6 +1444,7 @@ When deploying Copilot Enterprise, establish a responsible AI use policy coverin
 ### Copilot and Software Supply Chain
 
 AI-generated code has the same supply chain requirements as human-written code:
+
 - Must pass SAST scanning (CodeQL, Semgrep, SonarQube) — see [Git & GitHub Platform Engineering Handbook](git-github-platform-engineering-handbook.md) Part 27.
 - Must pass dependency scanning (Dependabot, pip-audit) — AI may suggest vulnerable package versions.
 - Agent-authored commits should be signed (configure in branch protection).
@@ -1507,7 +1531,7 @@ AI-generated code has the same supply chain requirements as human-written code:
 ### VS Code (Windows/Linux)
 
 | Action | Shortcut |
-|---|---|
+| --- | --- |
 | Accept suggestion | `Tab` |
 | Dismiss suggestion | `Escape` |
 | Next suggestion | `Alt+]` |
@@ -1523,7 +1547,7 @@ AI-generated code has the same supply chain requirements as human-written code:
 ### VS Code (macOS)
 
 | Action | Shortcut |
-|---|---|
+| --- | --- |
 | Accept suggestion | `Tab` |
 | Dismiss suggestion | `Escape` |
 | Next suggestion | `Option+]` |
@@ -1536,7 +1560,7 @@ AI-generated code has the same supply chain requirements as human-written code:
 ### JetBrains (All Platforms)
 
 | Action | Shortcut |
-|---|---|
+| --- | --- |
 | Accept suggestion | `Tab` |
 | Dismiss suggestion | `Escape` |
 | Next suggestion | `Alt+]` |

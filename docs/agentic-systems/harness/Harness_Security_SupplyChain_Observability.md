@@ -8,20 +8,21 @@ source_type: converted-pdf
 source_file: "Harness_Security_SupplyChain_Observability.pdf"
 tags: ["harness", "security", "supply-chain", "observability", "devops"]
 ---
-#### **PA R T 3 O F 3** 
-# **Harness** 
+### PA R T 3 O F 3
 
-Security Architecture, Supply Chain Assurance, Secrets Management, and Observability / DORA Metrics 
+# Harness
 
-Continuation of the earlier architecture and AI-agent reports · Research date: July 2026 
+Security Architecture, Supply Chain Assurance, Secrets Management, and Observability / DORA Metrics
 
-Harness Security, Supply Chain & Observability — 1 
+Continuation of the earlier architecture and AI-agent reports · Research date: July 2026
 
-## **1. Supply Chain Security (SCS / SSCA)** 
+Harness Security, Supply Chain & Observability — 1
 
-Harness's supply chain module (branded SCS, originally launched as SSCA — Software Supply Chain Assurance) is built around three artifacts that travel with every build: an **SBOM** (what's inside), **SLSA provenance** (how and where it was built), and a cryptographic **attestation** binding the two together so downstream systems can verify neither has been tampered with. **<mark>DOCUMENTED</mark>** 
+## 1. Supply Chain Security (SCS / SSCA)
 
-### **How attestation actually works** 
+Harness's supply chain module (branded SCS, originally launched as SSCA — Software Supply Chain Assurance) is built around three artifacts that travel with every build: an **SBOM** (what's inside), **SLSA provenance** (how and where it was built), and a cryptographic **attestation** binding the two together so downstream systems can verify neither has been tampered with. **<mark>DOCUMENTED</mark>**
+
+### How attestation actually works
 
 ```
 Build → SBOM/SLSA provenance generated → Cosign signs it → → Keyless: OIDC
@@ -32,9 +33,9 @@ Sigstore's public Rekor transparency log → Downstream consumer verifies signat
 against trusted root before deploy/promote
 ```
 
-The keyless path is the operationally important one: it eliminates long-lived private key custody by using workload identity (OIDC) to obtain a short-lived signing certificate at build time, which Cosign uses and immediately discards. This follows the standard Sigstore toolchain (Fulcio for certs, Cosign for signing, Rekor for the transparency log) that has become the de facto industry standard for artifact signing. **<mark>DOCUMENTED</mark>** 
+The keyless path is the operationally important one: it eliminates long-lived private key custody by using workload identity (OIDC) to obtain a short-lived signing certificate at build time, which Cosign uses and immediately discards. This follows the standard Sigstore toolchain (Fulcio for certs, Cosign for signing, Rekor for the transparency log) that has become the de facto industry standard for artifact signing. **<mark>DOCUMENTED</mark>**
 
-### **SLSA compliance levels** 
+### SLSA compliance levels
 
 |**Level**|**Requirement**|**Harness support**|
 |---|---|---|
@@ -43,33 +44,33 @@ The keyless path is the operationally important one: it eliminates long-lived pr
 |Level|Adds: isolated, ephemeral build infrastructure (new infra|**SaaS-hosted builds only**— not achievable in|
 |3|per run, destroyed after) + non-privileged, no-volume-<br>mount build steps so provenance-signing keys are<br>unreachable even by the build script itself|Self-Managed Enterprise Edition, because it<br>requires Harness-hosted, per-run ephemeral<br>build infrastructure|
 
-Source: Harness SCS documentation. **<mark>DOCUMENTED</mark>** — this is a genuinely useful diligence item: an organization requiring SLSA Level 3 as a compliance bar cannot get there on a fully self-managed/air-gapped Harness deployment. 
+Source: Harness SCS documentation. **<mark>DOCUMENTED</mark>** — this is a genuinely useful diligence item: an organization requiring SLSA Level 3 as a compliance bar cannot get there on a fully self-managed/air-gapped Harness deployment.
 
-### **Air-gapped caveats worth flagging to security reviewers** 
+### Air-gapped caveats worth flagging to security reviewers
 
-- Repository Security Posture Management is **not supported** in air-gapped environments. 
+- Repository Security Posture Management is **not supported** in air-gapped environments.
 
-- 
+-
 
-- SBOM license data for some dependencies falls back to "NOASSERTION" in air-gapped mode, reducing SBOM quality score (does not affect generation itself). 
+- SBOM license data for some dependencies falls back to "NOASSERTION" in air-gapped mode, reducing SBOM quality score (does not affect generation itself).
 
-Harness Security, Supply Chain & Observability — 2 
+Harness Security, Supply Chain & Observability — 2
 
-- Rekor public transparency-log logging is skipped in air-gapped mode (does not affect the attestation's validity, just its public visibility). 
+- Rekor public transparency-log logging is skipped in air-gapped mode (does not affect the attestation's validity, just its public visibility).
 
-Policy enforcement runs through the same OPA engine covered in the architecture report: SBOM-based policies can block a build based on component name, license, or package URL (PURL), and a "zero-day remediation" workflow lets teams search for a newly-disclosed CVE across all SBOMs and block it in the next build via policy — without waiting for a full re-scan cycle. **<mark>DOCUMENTED</mark>** 
+Policy enforcement runs through the same OPA engine covered in the architecture report: SBOM-based policies can block a build based on component name, license, or package URL (PURL), and a "zero-day remediation" workflow lets teams search for a newly-disclosed CVE across all SBOMs and block it in the next build via policy — without waiting for a full re-scan cycle. **<mark>DOCUMENTED</mark>**
 
-## **2. Secrets Management** 
+## 2. Secrets Management
 
-Harness ships a built-in secret manager but is designed to defer to external ones — AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, HashiCorp Vault, and CyberArk Conjur (via custom secret manager) are all first-class connector types, and the docs explicitly recommend disabling the built-in manager once a real one is wired up. **<mark>DOCUMENTED</mark>** 
+Harness ships a built-in secret manager but is designed to defer to external ones — AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, HashiCorp Vault, and CyberArk Conjur (via custom secret manager) are all first-class connector types, and the docs explicitly recommend disabling the built-in manager once a real one is wired up. **<mark>DOCUMENTED</mark>**
 
-Notable operational detail on the Vault integration: Harness supports AWS Auth to Vault via IAM principals or EC2 instance identity, meaning the Delegate can retrieve a Vault token without ever handling a static Vault credential — the recommended pattern specifically because it avoids managing long-lived tokens, usernames, or passwords by hand. 
+Notable operational detail on the Vault integration: Harness supports AWS Auth to Vault via IAM principals or EC2 instance identity, meaning the Delegate can retrieve a Vault token without ever handling a static Vault credential — the recommended pattern specifically because it avoids managing long-lived tokens, usernames, or passwords by hand.
 
-**Industry context worth noting:** Vault itself is widely regarded in 2026 as the most feature-complete secrets platform for high-security environments (dynamic secrets, encryption-as-a-service, PKI, SSH credential brokering) but also the one with the highest operational overhead — several 2026 comparison sources flag it as requiring genuine platform-engineering capacity to run well, versus lighter developer-first tools (Doppler, Infisical) that suit less regulated teams. This is a general secrets-management market observation, not Harness-specific, but relevant when an enterprise is deciding whether to pair Harness with Vault or a lighterweight secrets backend. **<mark>ANALYSIS</mark>** 
+**Industry context worth noting:** Vault itself is widely regarded in 2026 as the most feature-complete secrets platform for high-security environments (dynamic secrets, encryption-as-a-service, PKI, SSH credential brokering) but also the one with the highest operational overhead — several 2026 comparison sources flag it as requiring genuine platform-engineering capacity to run well, versus lighter developer-first tools (Doppler, Infisical) that suit less regulated teams. This is a general secrets-management market observation, not Harness-specific, but relevant when an enterprise is deciding whether to pair Harness with Vault or a lighterweight secrets backend. **<mark>ANALYSIS</mark>**
 
-## **3. Observability: DORA Metrics and Software Engineering Insights** 
+## 3. Observability: DORA Metrics and Software Engineering Insights
 
-Harness tracks the four (now sometimes five, adding Reliability/MTBF) DORA metrics — Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Mean Time to Restore — at **two distinct layers** , and the distinction matters for what each one can actually tell you: 
+Harness tracks the four (now sometimes five, adding Reliability/MTBF) DORA metrics — Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Mean Time to Restore — at **two distinct layers** , and the distinction matters for what each one can actually tell you:
 
 |**Layer**|**Scope**|**Best for**|
 |---|---|---|
@@ -78,19 +79,18 @@ Harness tracks the four (now sometimes five, adding Reliability/MTBF) DORA metri
 |**Engineering**|data sources (Jira, GitHub, GitLab, Jenkins,|surfacing that delays trace to code-review|
 |**Insights (SEI)**|PagerDuty, etc.) against a configurable**DORA**<br>**Profile**and**correlation engine**|bottlenecks in GitHub rather than anything<br>in the CD pipeline itself|
 
-Harness Security, Supply Chain & Observability — 3 
+Harness Security, Supply Chain & Observability — 3
 
-The correlation engine is the differentiated piece: rather than just reporting four numbers, SEI is explicitly built to trace a metric back to its upstream cause across tools Harness doesn't own — flaky Jenkins tests driving change failure rate, GitHub review latency driving lead time, and so on. **<mark>DOCUMENTED</mark>** — note this SEI capability originates from Harness's 2022 acquisition of Propelo (visible in the product's internal URL namespace, <mark>`propelo-sei` )</mark> , a useful data point if evaluating maturity/integration depth of this specific module versus newer-built ones. 
+The correlation engine is the differentiated piece: rather than just reporting four numbers, SEI is explicitly built to trace a metric back to its upstream cause across tools Harness doesn't own — flaky Jenkins tests driving change failure rate, GitHub review latency driving lead time, and so on. **<mark>DOCUMENTED</mark>** — note this SEI capability originates from Harness's 2022 acquisition of Propelo (visible in the product's internal URL namespace, <mark>`propelo-sei` )</mark> , a useful data point if evaluating maturity/integration depth of this specific module versus newer-built ones.
 
-## **4. How This Connects Back to the Earlier Reports** 
+## 4. How This Connects Back to the Earlier Reports
 
-- **To the architecture report:** supply-chain policy enforcement and DORA correlation both run through the same OPA-based governance model and the same Delegate execution boundary already covered — this isn't a bolted-on security product, it's the same control plane applying policy to a different entity type. 
+- **To the architecture report:** supply-chain policy enforcement and DORA correlation both run through the same OPA-based governance model and the same Delegate execution boundary already covered — this isn't a bolted-on security product, it's the same control plane applying policy to a different entity type.
 
-- **To the AI-agent report:** a Worker Agent's own actions (e.g., an Autofix or IaCM Remediation agent committing a change) are auditable through the same DORA/SEI correlation pipeline as a humantriggered deployment — meaning "did agent-generated changes increase our change failure rate?" is, in principle, an answerable SEI query rather than a blind spot. This wasn't independently verified in current research and is worth confirming directly if agentic change volume is expected to be material. 
+- **To the AI-agent report:** a Worker Agent's own actions (e.g., an Autofix or IaCM Remediation agent committing a change) are auditable through the same DORA/SEI correlation pipeline as a humantriggered deployment — meaning "did agent-generated changes increase our change failure rate?" is, in principle, an answerable SEI query rather than a blind spot. This wasn't independently verified in current research and is worth confirming directly if agentic change volume is expected to be material.
 
-##### **<mark>ANALYSIS</mark>** 
+### <mark>ANALYSIS</mark>
 
-This closes out the three-part scoped treatment (Architecture → AI Agents & Vendor Landscape → Security/Supply Chain/ Observability) of the original 23-section research prompt. Remaining untouched sections — per-industry reference architectures, the 15 hands-on labs, sequence diagrams, and interview question banks — are lower-leverage for an architect's decision-making and are better suited to the Research feature if still wanted. 
+This closes out the three-part scoped treatment (Architecture → AI Agents & Vendor Landscape → Security/Supply Chain/ Observability) of the original 23-section research prompt. Remaining untouched sections — per-industry reference architectures, the 15 hands-on labs, sequence diagrams, and interview question banks — are lower-leverage for an architect's decision-making and are better suited to the Research feature if still wanted.
 
-Harness Security, Supply Chain & Observability — 4 
-
+Harness Security, Supply Chain & Observability — 4

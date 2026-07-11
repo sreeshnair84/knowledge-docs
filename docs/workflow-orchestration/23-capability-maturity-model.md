@@ -46,7 +46,7 @@ Most enterprises in 2026 are at **Level 2–3**. Early movers are at **Level 4**
 ### Symptoms of Level 1
 
 | Symptom | Example |
-|---|---|
+| --- | --- |
 | No workflow definition | "We process refunds manually — John knows the steps" |
 | No durability | Cron job fails at 2am, nobody knows until morning |
 | No versioning | "What changed last week?" "Not sure" |
@@ -255,6 +255,7 @@ Level 5 behaviors:
 ### Level 5 Risk Factors
 
 Level 5 is powerful and dangerous:
+
 - **Autonomy amplifies errors**: A self-optimizing agent that drifts in the wrong direction can make thousands of wrong decisions before detection
 - **Explainability degrades**: Self-modified agents may be harder to audit
 - **Governance must be continuous**: Manual governance review cycles are insufficient at Level 5 — automated governance required
@@ -273,7 +274,7 @@ MATURITY_ASSESSMENT = {
     "basic_monitoring": 0,                   # Success/failure/duration tracked?
     "cicd_for_workflows": 0,                 # Deployed via pipeline?
     "on_call_playbook": 0,                   # Recovery procedure documented?
-    
+
     # Level 3 capabilities (min score: 10/12 to advance)
     "artifact_versioning": 0,               # All workflow artifacts versioned?
     "change_management": 0,                  # Formal approval process?
@@ -281,7 +282,7 @@ MATURITY_ASSESSMENT = {
     "standards_documented": 0,              # Standards enforced?
     "rollback_procedures": 0,               # Tested rollback documented?
     "sla_measurement": 0,                   # SLA tracked and reported?
-    
+
     # Level 4 capabilities (min score: 10/12 to advance)
     "llm_integration": 0,                   # Agents making decisions?
     "prompt_versioning": 0,                  # Prompts in registry with history?
@@ -289,7 +290,7 @@ MATURITY_ASSESSMENT = {
     "hitl_for_high_risk": 0,               # Human gate for high-stakes decisions?
     "model_version_pinning": 0,            # Models pinned, upgrade process?
     "multi_system_orchestration": 0,       # Temporal + LangGraph coordinated?
-    
+
     # Level 5 capabilities
     "proactive_agents": 0,                  # Agents initiate work without prompting?
     "multi_agent_coordination": 0,          # A2A patterns implemented?
@@ -302,7 +303,7 @@ def assess_level(scores: dict) -> int:
     l3_score = sum(scores[k] for k in list(scores.keys())[5:11])
     l4_score = sum(scores[k] for k in list(scores.keys())[11:17])
     l5_score = sum(scores[k] for k in list(scores.keys())[17:])
-    
+
     if l2_score < 8:
         return 1
     if l3_score < 10:
@@ -319,7 +320,7 @@ def assess_level(scores: dict) -> int:
 ## Investment Summary
 
 | Level | Timeline | Team Size | Primary Technology | Key Risk |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 → 2 | 3–6 months | 2–4 engineers | Temporal or Camunda | Change management |
 | 2 → 3 | 3–6 months | +1 platform/governance | Governance tooling, audit store | Governance friction |
 | 3 → 4 | 6–12 months | +2 AI engineers | LangGraph, LLM APIs, vector store | AI quality degradation |

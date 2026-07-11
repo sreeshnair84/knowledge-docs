@@ -34,7 +34,7 @@ series_index: index.md
 Before governance mechanics, the foundational ethical principles that all governance frameworks encode:
 
 | Principle | Description | Governance Control |
-|---|---|---|
+| --- | --- | --- |
 | **Fairness** | AI systems treat individuals equitably; no discriminatory outcomes | Bias testing; diverse training data; demographic parity metrics |
 | **Transparency** | AI decision-making is explainable and auditable | Explainability tools (SHAP, LIME); model cards; logging |
 | **Accountability** | Clear ownership of AI system outcomes | Model owner; AI product owner; governance committee oversight |
@@ -51,7 +51,7 @@ Before governance mechanics, the foundational ethical principles that all govern
 ### 2.1 Governance Roles
 
 | Role | Responsibility |
-|---|---|
+| --- | --- |
 | **AI Ethics Board** | Sets principles and policies; escalation point for contested decisions |
 | **Chief AI Officer (CAIO)** | Owns AI strategy and governance programme |
 | **CISO** | Owns AI security controls; AI red team; model risk integration |
@@ -81,6 +81,7 @@ The NIST AI RMF is the US government's voluntary framework for managing AI risk.
 ### 3.1 GOVERN
 
 Establishes organizational practices, culture, and accountability:
+
 - AI policies and procedures documented and communicated
 - AI risk tolerance defined and approved by leadership
 - Roles and responsibilities assigned for AI risk management
@@ -89,6 +90,7 @@ Establishes organizational practices, culture, and accountability:
 ### 3.2 MAP
 
 Identifies AI risks in context:
+
 - AI system categorized by application domain and risk level
 - Stakeholders identified (users, affected parties, operators)
 - Potential harms enumerated (physical, financial, psychological, societal)
@@ -97,6 +99,7 @@ Identifies AI risks in context:
 ### 3.3 MEASURE
 
 Quantifies and tracks AI risks:
+
 - Bias and fairness metrics defined and measured
 - Performance metrics established with acceptable thresholds
 - Uncertainty and confidence calibration assessed
@@ -106,12 +109,14 @@ Quantifies and tracks AI risks:
 ### 3.4 MANAGE
 
 Treats and monitors AI risks:
+
 - Risk treatment decisions documented (accept, mitigate, transfer, avoid)
 - Incident response plan for AI failures
 - Escalation procedures for unexpected AI behaviour
 - Decommissioning criteria defined
 
 **NIST AI 100-1** (AI RMF 1.0) is supplemented by:
+
 - **NIST AI 100-2**: Red teaming guidance for generative AI
 - **NIST AI 100-4**: Reducing risks posed by synthetic content
 - **NIST CAISI**: Standards for agentic AI security (February 2026)
@@ -125,6 +130,7 @@ ISO 42001 is the first certifiable AI management system standard.
 ### 4.1 Scope
 
 Analogous to ISO 27001 for information security, ISO 42001 establishes an AI Management System (AIMS) covering:
+
 - AI policy and objectives
 - AI system lifecycle management
 - Risk management for AI systems
@@ -135,7 +141,7 @@ Analogous to ISO 27001 for information security, ISO 42001 establishes an AI Man
 ### 4.2 Key Controls (Annex A)
 
 | Control Group | Examples |
-|---|---|
+| --- | --- |
 | **AI system design** | Document intended purpose; assess impact; design for transparency |
 | **Data for AI** | Classify training data; validate quality; document provenance |
 | **Testing and evaluation** | Define evaluation criteria; red team; validate against requirements |
@@ -148,6 +154,7 @@ Analogous to ISO 27001 for information security, ISO 42001 establishes an AI Man
 ### 4.3 ISO 42001 vs ISO 27001 Relationship
 
 ISO 42001 is **designed to integrate with** ISO 27001:
+
 - Both use the ISO High-Level Structure (HLS)
 - AI risks are added to the ISO 27001 risk register
 - Existing ISMS controls are extended (not replaced) to cover AI
@@ -169,7 +176,7 @@ Foundation information security management standard. Key 2022 updates relevant t
 ## 6. OWASP LLM Top 10 (2025 Edition)
 
 | # | Vulnerability | Description | Primary Control |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | LLM01 | **Prompt Injection** | Attacker injects instructions via input | Input validation; privilege separation |
 | LLM02 | **Sensitive Information Disclosure** | Model reveals training data or system prompt | Output filtering; differential privacy |
 | LLM03 | **Supply Chain** | Compromised model, data, or dependencies | AIBOM; provenance verification; signing |
@@ -190,7 +197,7 @@ MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems) i
 ### 7.1 ATLAS Tactic Categories
 
 | Tactic | Description | Example Technique |
-|---|---|---|
+| --- | --- | --- |
 | **Reconnaissance** | Gather information about AI system | AML.T0000: Search for victim AI information |
 | **Resource Development** | Prepare attack resources | AML.T0002: Obtain capabilities |
 | **Initial Access** | Gain access to AI system | AML.T0012: Valid accounts |
@@ -221,7 +228,7 @@ ATLAS: Exfiltration (model inference → training data extraction)
 The EU AI Act is the world's first comprehensive AI regulation. Enforcement timeline:
 
 | Date | Milestone |
-|---|---|
+| --- | --- |
 | Feb 2, 2025 | Prohibited AI practices banned (Article 5) |
 | Aug 2, 2025 | GPAI model governance obligations in effect |
 | **Aug 2, 2026** | **Article 50 transparency obligations; notified body requirements** |
@@ -231,7 +238,7 @@ The EU AI Act is the world's first comprehensive AI regulation. Enforcement time
 ### 8.1 Risk Classification
 
 | Risk Level | Category | Obligations |
-|---|---|---|
+| --- | --- | --- |
 | **Unacceptable Risk** | Prohibited AI (social scoring, real-time biometric) | Banned entirely |
 | **High Risk** | Critical infrastructure, education, employment, law enforcement, etc. | Full conformity assessment; registration; HRIA |
 | **Limited Risk** | Chatbots, deepfakes, AI-generated content | Transparency / disclosure obligations |
@@ -240,11 +247,13 @@ The EU AI Act is the world's first comprehensive AI regulation. Enforcement time
 ### 8.2 GPAI (General Purpose AI) Obligations
 
 LLMs like Claude, GPT-4, and Gemini are classified as GPAI models. Obligations (in force since Aug 2025):
+
 - Technical documentation (training data summary, evaluation results)
 - Copyright compliance (EUCC data provenance)
 - Transparency (information for downstream deployers)
 
 **Systemic risk GPAI** (models trained on > 10²⁵ FLOP, including frontier models): Additional obligations:
+
 - Model evaluation and red teaming
 - Adversarial testing
 - Incident reporting to EU AI Office
@@ -258,6 +267,7 @@ LLMs like Claude, GPT-4, and Gemini are classified as GPAI models. Obligations (
 
 **Scope:** Financial entities in the EU (banks, insurers, investment firms, crypto service providers)
 **Key AI obligations:**
+
 - AI systems used in critical or important functions require ICT risk assessment
 - Third-party AI providers (LLM vendors) subject to oversight if systemic
 - Incident reporting for ICT incidents including AI-related failures
@@ -267,6 +277,7 @@ LLMs like Claude, GPT-4, and Gemini are classified as GPAI models. Obligations (
 
 **Scope:** Operators of essential and important services across EU member states
 **AI relevance:**
+
 - Cybersecurity risk management must cover AI systems in scope
 - Incident reporting obligations apply to AI-related incidents affecting service continuity
 - Supply chain security obligations apply to AI model providers as third parties
@@ -276,7 +287,7 @@ LLMs like Claude, GPT-4, and Gemini are classified as GPAI models. Obligations (
 GDPR applies to AI systems that process personal data of EU residents. Key intersections:
 
 | GDPR Requirement | AI Implementation |
-|---|---|
+| --- | --- |
 | **Legal basis for processing** | Consent or legitimate interest required before using personal data in AI training |
 | **Data minimisation** | Include only necessary data in training sets; avoid PII in prompts |
 | **Right to explanation** | High-stakes AI decisions require explanation (automated decision-making, Art. 22) |
@@ -286,6 +297,7 @@ GDPR applies to AI systems that process personal data of EU residents. Key inter
 ### 9.4 PCI DSS v4.0 (2024)
 
 PCI DSS applies to AI systems that store, process, or transmit cardholder data:
+
 - AI inference endpoints processing card data are in-scope for PCI
 - Requirements 6 (secure development) and 12 (policies) apply to AI model deployment
 - Requirement 8 (identity) applies to AI access to cardholder data environments
@@ -293,6 +305,7 @@ PCI DSS applies to AI systems that store, process, or transmit cardholder data:
 ### 9.5 HIPAA
 
 HIPAA applies to AI systems processing Protected Health Information (PHI):
+
 - PHI must not be submitted to public AI APIs without BAA
 - AI model fine-tuned on PHI requires same safeguards as any PHI system
 - AI-generated clinical notes are covered if they contain PHI
@@ -302,7 +315,7 @@ HIPAA applies to AI systems processing Protected Health Information (PHI):
 ## 10. AI Governance Maturity Model
 
 | Level | Name | Characteristics |
-|---|---|---|
+| --- | --- | --- |
 | 0 | **Unaware** | No AI governance; ad hoc AI use; no risk visibility |
 | 1 | **Reactive** | Governance triggered by incidents; informal policies |
 | 2 | **Defined** | AI policy exists; roles assigned; basic inventory of AI systems |
@@ -317,7 +330,7 @@ HIPAA applies to AI systems processing Protected Health Information (PHI):
 ## 11. AI Governance KPIs
 
 | KPI | Target (Mature) | Measurement |
-|---|---|---|
+| --- | --- | --- |
 | AI systems inventoried | 100% | Annual AI system audit |
 | AI systems with risk assessment | 100% of high-risk | Risk assessment per new deployment |
 | AI systems with documented owner | 100% | CMDB integration |

@@ -60,7 +60,7 @@ Data architecture, principal architect guides, enterprise data and manager roles
 ## Quick Reference
 
 | Topic | Section |
-|-------|---------|
+| ------- | --------- |
 | AI Transformation Blueprint & CTO Guide | [Strategy](strategy/index.md) |
 | TOGAF 10 APEX AI Platform | [Frameworks](framework/index.md) |
 | EA Lifecycle & Mastery Guide | [Processes](process/index.md) |

@@ -9,59 +9,59 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY** 
+# **ENTERPRISE KUBERNETES MASTERY**
 
-AI Platform Engineering Handbook 
+AI Platform Engineering Handbook
 
-### PART VIII KUBERNETES SECURITY 
+### PART VIII KUBERNETES SECURITY
 
-Zero Trust, SPIFFE, Vault, Policy-as-Code, Confidential Computing, Compliance 
+Zero Trust, SPIFFE, Vault, Policy-as-Code, Confidential Computing, Compliance
 
-Volume 8 of 16 Core Series Prerequisites: Parts I through VII Edition 2025-2026 
+Volume 8 of 16 Core Series Prerequisites: Parts I through VII Edition 2025-2026
 
-## **TABLE OF CONTENTS** 
+## **TABLE OF CONTENTS**
 
-1. Enterprise Security Model for Kubernetes ...... 3 
+1. Enterprise Security Model for Kubernetes ...... 3
 
-2. Zero Trust Architecture on Kubernetes ......... 7 
+2. Zero Trust Architecture on Kubernetes ......... 7
 
-3. Authentication: Users, OIDC, Service Accounts . 11 
+3. Authentication: Users, OIDC, Service Accounts . 11
 
-4. RBAC: Design and Hardening .................... 15 
+4. RBAC: Design and Hardening .................... 15
 
-5. SPIFFE and SPIRE: Workload Identity ........... 20 
+5. SPIFFE and SPIRE: Workload Identity ........... 20
 
-6. Secret Management: Vault and External Secrets . 24 
+6. Secret Management: Vault and External Secrets . 24
 
-7. Certificate Lifecycle: cert-manager ........... 29 
+7. Certificate Lifecycle: cert-manager ........... 29
 
-8. mTLS and Encryption in Transit ................ 33 
+8. mTLS and Encryption in Transit ................ 33
 
-9. Pod Security: Standards, Contexts, Profiles ... 36 
+9. Pod Security: Standards, Contexts, Profiles ... 36
 
-10. Policy-as-Code: OPA Gatekeeper and Kyverno ... 41 
+10. Policy-as-Code: OPA Gatekeeper and Kyverno ... 41
 
-11. Supply Chain Security at Scale ............... 46 
+11. Supply Chain Security at Scale ............... 46
 
-12. Runtime Security: Falco and Tetragon ......... 49 
+12. Runtime Security: Falco and Tetragon ......... 49
 
-13. Confidential Containers and Confidential Computing . 53 
+13. Confidential Containers and Confidential Computing . 53
 
-14. Kubernetes Security Hardening Checklist ...... 57 
+14. Kubernetes Security Hardening Checklist ...... 57
 
-15. Compliance Mapping: NIST, CIS, SOC2, PCI, HIPAA, EU AI Act . 61 
+15. Compliance Mapping: NIST, CIS, SOC2, PCI, HIPAA, EU AI Act . 61
 
-16. Security Incident Response on Kubernetes ..... 66 
+16. Security Incident Response on Kubernetes ..... 66
 
-17. Hands-On Exercises ........................... 69 
+17. Hands-On Exercises ........................... 69
 
-##### **CHAPTER 1** 
+##### **CHAPTER 1**
 
-## **Enterprise Security Model for Kubernetes** 
+## **Enterprise Security Model for Kubernetes**
 
-Kubernetes security requires a layered, defence-in-depth approach. No single control is sufficient; attackers who defeat one layer must face additional barriers. Enterprise Kubernetes security addresses four fundamental questions: Who are you? (identity), What can you do? (authorisation), What are you running? (workload security), and What is it doing? (runtime detection). 
+Kubernetes security requires a layered, defence-in-depth approach. No single control is sufficient; attackers who defeat one layer must face additional barriers. Enterprise Kubernetes security addresses four fundamental questions: Who are you? (identity), What can you do? (authorisation), What are you running? (workload security), and What is it doing? (runtime detection).
 
-#### **Kubernetes Threat Model** 
+#### **Kubernetes Threat Model**
 
 |**Threat**|**Attack Vector**|**Kubernetes Impact**|**Primary Controls**|
 |---|---|---|---|
@@ -75,7 +75,7 @@ Kubernetes security requires a layered, defence-in-depth approach. No single con
 |etcd compromise|Direct etcd access|All secrets/config<br>exposed|TLS client auth, encryption at rest, firewall|
 |Insider threat|Malicious admin|Any cluster action|Audit logging, MFA, break-glass procedures|
 
-#### **Security Control Layers** 
+#### **Security Control Layers**
 
 ```
 LAYER 1: SUPPLY CHAIN Image signing (Cosign), SBOM, vulnerability scanning, SLSA provenance
@@ -92,23 +92,23 @@ detection, SIEM integration LAYER 8: AUDIT AND COMPLIANCE API audit logs, compli
 penetration testing
 ```
 
-##### **CHAPTER 2** 
+##### **CHAPTER 2**
 
-## **Zero Trust Architecture on Kubernetes** 
+## **Zero Trust Architecture on Kubernetes**
 
-Zero Trust rejects the perimeter security model. In Kubernetes, Zero Trust means: every workload must prove its identity before accessing any resource; every connection is authenticated and encrypted (mTLS); every access is authorised per-request; and every action is logged and monitored. The implicit trust within a flat cluster network is eliminated. 
+Zero Trust rejects the perimeter security model. In Kubernetes, Zero Trust means: every workload must prove its identity before accessing any resource; every connection is authenticated and encrypted (mTLS); every access is authorised per-request; and every action is logged and monitored. The implicit trust within a flat cluster network is eliminated.
 
-#### **Zero Trust Principles Applied to Kubernetes** 
+#### **Zero Trust Principles Applied to Kubernetes**
 
-- **Verify explicitly** : Every service-to-service call carries a cryptographic identity (SPIFFE SVID). The receiving service verifies the identity before processing. Implemented via service mesh mTLS (Istio, Linkerd, Cilium mTLS). 
+- **Verify explicitly** : Every service-to-service call carries a cryptographic identity (SPIFFE SVID). The receiving service verifies the identity before processing. Implemented via service mesh mTLS (Istio, Linkerd, Cilium mTLS).
 
-- **Least privilege access** : No workload has access beyond what it needs for its function. RBAC policies deny by default. Service accounts have minimal permissions. NetworkPolicies deny all traffic not explicitly allowed. 
+- **Least privilege access** : No workload has access beyond what it needs for its function. RBAC policies deny by default. Service accounts have minimal permissions. NetworkPolicies deny all traffic not explicitly allowed.
 
-- **Assume breach** : Security controls assume an attacker already has code execution inside the cluster. Runtime monitoring (Falco) detects lateral movement. Blast radius is minimised through namespace isolation and network segmentation. 
+- **Assume breach** : Security controls assume an attacker already has code execution inside the cluster. Runtime monitoring (Falco) detects lateral movement. Blast radius is minimised through namespace isolation and network segmentation.
 
-- **Continuous verification** : Certificates expire (short TTL). Tokens are rotated. Policy is continuously enforced at admission and runtime. Audit logs capture every action for forensic analysis. 
+- **Continuous verification** : Certificates expire (short TTL). Tokens are rotated. Policy is continuously enforced at admission and runtime. Audit logs capture every action for forensic analysis.
 
-#### **Zero Trust Implementation Roadmap** 
+#### **Zero Trust Implementation Roadmap**
 
 |**Phase**|**Controls**|**Timeline**|**Complexity**|
 |---|---|---|---|
@@ -120,13 +120,13 @@ Zero Trust rejects the perimeter security model. In Kubernetes, Zero Trust means
 |Phase 6:<br>Runtime|Falco deployment, alert routing, SIEM<br>integration, IR playbooks|Month 7-9|High|
 |Phase 7:<br>Confidential|Confidential Containers, attestation, HSM<br>integration|Month 9-12|Very High|
 
-##### **CHAPTER 3** 
+##### **CHAPTER 3**
 
-## **Authentication: Users, OIDC, Service Accounts** 
+## **Authentication: Users, OIDC, Service Accounts**
 
-Kubernetes supports multiple authentication mechanisms. Choosing the right mechanism for each identity type -- human users, CI/CD systems, and workloads -- is foundational to a secure cluster. 
+Kubernetes supports multiple authentication mechanisms. Choosing the right mechanism for each identity type -- human users, CI/CD systems, and workloads -- is foundational to a secure cluster.
 
-#### **Authentication Methods** 
+#### **Authentication Methods**
 
 |**Method**|**Identity Type**|**Token Lifetime**|**Enterprise Recommendation**|
 |---|---|---|---|
@@ -137,7 +137,7 @@ Kubernetes supports multiple authentication mechanisms. Choosing the right mecha
 |IRSA (EKS) / Workload<br>Identity (GKE)|Cloud API<br>access from<br>Pods|Short (hours)|Best for cloud service access from Pods|
 |Webhook Token Auth|Any|Depends on<br>webhook|Integrates with external IdP when OIDC not<br>available|
 
-#### **OIDC Integration -- kube-apiserver Configuration** 
+#### **OIDC Integration -- kube-apiserver Configuration**
 
 ```
 # kube-apiserver flags for OIDC (kubeadm ClusterConfiguration): apiServer: extraArgs:
@@ -153,13 +153,13 @@ subjects: - kind: Group name: 'oidc:platform-admins' apiGroup: rbac.authorizatio
 roleRef: kind: ClusterRole name: cluster-admin apiGroup: rbac.authorization.k8s.io
 ```
 
-##### **CHAPTER 4** 
+##### **CHAPTER 4**
 
-## **RBAC: Design and Hardening** 
+## **RBAC: Design and Hardening**
 
-RBAC is the most frequently misconfigured Kubernetes security control. Overly permissive RBAC -- wildcard verbs, cluster-admin for application service accounts, namespace-admin for everyone -- is the most common path to cluster compromise in production environments. 
+RBAC is the most frequently misconfigured Kubernetes security control. Overly permissive RBAC -- wildcard verbs, cluster-admin for application service accounts, namespace-admin for everyone -- is the most common path to cluster compromise in production environments.
 
-#### **Common RBAC Roles Architecture** 
+#### **Common RBAC Roles Architecture**
 
 ```
 # Tiered RBAC architecture for enterprise: CLUSTER LEVEL (ClusterRole + ClusterRoleBinding):
@@ -173,23 +173,23 @@ app-sa: Only what the specific application needs Example: leader-election lease 
 only
 ```
 
-#### **RBAC Hardening Rules** 
+#### **RBAC Hardening Rules**
 
-- **Never use wildcards** : spec.rules[].verbs: ['*'] or resources: ['*'] grants excessive permission. Always enumerate specific verbs and resources. 
+- **Never use wildcards** : spec.rules[].verbs: ['*'] or resources: ['*'] grants excessive permission. Always enumerate specific verbs and resources.
 
-- **Never bind cluster-admin to service accounts** : Application SA with cluster-admin is a critical risk. If a container is compromised, the attacker has full cluster access. 
+- **Never bind cluster-admin to service accounts** : Application SA with cluster-admin is a critical risk. If a container is compromised, the attacker has full cluster access.
 
-- **Audit regularly** : Use rbac-lookup, rakkess, or kubectl-who-can to audit who can do what. Automate weekly audits. 
+- **Audit regularly** : Use rbac-lookup, rakkess, or kubectl-who-can to audit who can do what. Automate weekly audits.
 
-- **Separate read and write** : Create separate roles for read and write operations. CI/CD pipelines that only read should not have write access. 
+- **Separate read and write** : Create separate roles for read and write operations. CI/CD pipelines that only read should not have write access.
 
-- **Use aggregated ClusterRoles** : Define view/edit/admin ClusterRoles using aggregationRule; extend built-in roles cleanly. 
+- **Use aggregated ClusterRoles** : Define view/edit/admin ClusterRoles using aggregationRule; extend built-in roles cleanly.
 
-- **Avoid ClusterRoleBindings for namespace work** : Prefer RoleBinding with ClusterRole to limit scope to a specific namespace. 
+- **Avoid ClusterRoleBindings for namespace work** : Prefer RoleBinding with ClusterRole to limit scope to a specific namespace.
 
-- **Time-limited elevated access** : Use tools like Pinniped or custom webhooks to grant temporary elevated access with automatic expiry for break-glass scenarios. 
+- **Time-limited elevated access** : Use tools like Pinniped or custom webhooks to grant temporary elevated access with automatic expiry for break-glass scenarios.
 
-###### **RBAC Audit Queries** 
+###### **RBAC Audit Queries**
 
 ```
 # Find all subjects with cluster-admin: kubectl get clusterrolebindings -o json | \ python3 -c
@@ -203,13 +203,13 @@ json,sys d=json.load(sys.stdin) for item in d['items']: for rule in item.get('ru
 detailed matrix view: kubectl krew install rakkess kubectl rakkess --sa production:myapp-sa
 ```
 
-##### **CHAPTER 5** 
+##### **CHAPTER 5**
 
-## **SPIFFE and SPIRE: Workload Identity** 
+## **SPIFFE and SPIRE: Workload Identity**
 
-SPIFFE (Secure Production Identity Framework For Everyone) is a CNCF graduated standard for workload identity. It assigns cryptographic identities to workloads regardless of where they run, enabling strong mutual authentication between services without managing application-level credentials. 
+SPIFFE (Secure Production Identity Framework For Everyone) is a CNCF graduated standard for workload identity. It assigns cryptographic identities to workloads regardless of where they run, enabling strong mutual authentication between services without managing application-level credentials.
 
-#### **SPIFFE Architecture** 
+#### **SPIFFE Architecture**
 
 ```
 SPIFFE Identity: spiffe://trust-domain/path Example:
@@ -227,7 +227,7 @@ socket - Rotates SVIDs automatically before expiry Workload API (UNIX socket:
 No secrets, no passwords, no API keys required - SDK available for Go, Java, Python, Rust, C
 ```
 
-###### **SPIRE on Kubernetes** 
+###### **SPIRE on Kubernetes**
 
 ```
 # Install SPIRE with Helm: helm repo add spiffe https://spiffe.github.io/helm-charts/ helm
@@ -247,13 +247,13 @@ type: DirectoryOrCreate containers: - volumeMounts: - name: spire-agent-socket m
 unix:///run/spire/sockets/agent.sock
 ```
 
-##### **CHAPTER 6** 
+##### **CHAPTER 6**
 
-## **Secret Management: Vault and External Secrets** 
+## **Secret Management: Vault and External Secrets**
 
-Kubernetes Secrets are insufficient for enterprise secret management: they are base64-encoded (not encrypted) by default, difficult to audit, and lack dynamic secret generation, automatic rotation, and fine-grained access policies. HashiCorp Vault and the External Secrets Operator address these gaps. 
+Kubernetes Secrets are insufficient for enterprise secret management: they are base64-encoded (not encrypted) by default, difficult to audit, and lack dynamic secret generation, automatic rotation, and fine-grained access policies. HashiCorp Vault and the External Secrets Operator address these gaps.
 
-#### **HashiCorp Vault Architecture** 
+#### **HashiCorp Vault Architecture**
 
 ```
 Vault provides a unified secrets management platform: Secret Engines: KV v2: Static key-value
@@ -269,7 +269,7 @@ server.ha.replicas=3 \ --set server.ha.raft.enabled=true \ --set injector.enable
 csi.enabled=true
 ```
 
-#### **Vault Kubernetes Auth and Dynamic Database Secrets** 
+#### **Vault Kubernetes Auth and Dynamic Database Secrets**
 
 ```
 # Configure Vault Kubernetes auth: vault auth enable kubernetes vault write
@@ -300,7 +300,7 @@ vault write database/roles/myapp-role \ db_name=myapp-db \ creation_statements="
 auto-expires
 ```
 
-#### **External Secrets Operator** 
+#### **External Secrets Operator**
 
 ```
 apiVersion: external-secrets.io/v1beta1 kind: ClusterSecretStore metadata: name: vault-backend
@@ -314,13 +314,13 @@ property: api-key - secretKey: db-password remoteRef: key: secret/production/mya
 db-password
 ```
 
-##### **CHAPTER 7** 
+##### **CHAPTER 7**
 
-## **Certificate Lifecycle: cert-manager** 
+## **Certificate Lifecycle: cert-manager**
 
-cert-manager is the de facto standard for TLS certificate lifecycle management in Kubernetes. It automates certificate issuance, renewal, and rotation from multiple certificate authorities: Let's Encrypt, HashiCorp Vault, AWS ACM, Venafi, and self-signed/internal CAs. 
+cert-manager is the de facto standard for TLS certificate lifecycle management in Kubernetes. It automates certificate issuance, renewal, and rotation from multiple certificate authorities: Let's Encrypt, HashiCorp Vault, AWS ACM, Venafi, and self-signed/internal CAs.
 
-#### **cert-manager Architecture** 
+#### **cert-manager Architecture**
 
 ```
 cert-manager components: cert-manager controller: Watches Certificate resources; calls issuers
@@ -332,7 +332,7 @@ a Kubernetes Secret containing CA key/cert Self-signed: Self-signed certificates
 CAs) Venafi: Enterprise PKI integration AWS ACM PCA: AWS Private Certificate Authority
 ```
 
-###### **cert-manager ClusterIssuer and Certificate** 
+###### **cert-manager ClusterIssuer and Certificate**
 
 ```
 # Internal CA ClusterIssuer (for mTLS between services): apiVersion: cert-manager.io/v1 kind:
@@ -356,13 +356,13 @@ api.example.com ipAddresses: - 10.96.50.100 issuerRef: name: vault-issuer kind: 
 privateKey: algorithm: ECDSA size: 384
 ```
 
-##### **CHAPTER 8** 
+##### **CHAPTER 8**
 
-## **mTLS and Encryption in Transit** 
+## **mTLS and Encryption in Transit**
 
-Mutual TLS (mTLS) provides both encryption and mutual authentication: both client and server present certificates and verify each other's identity. In Kubernetes, mTLS is implemented at different layers with different trade-offs. 
+Mutual TLS (mTLS) provides both encryption and mutual authentication: both client and server present certificates and verify each other's identity. In Kubernetes, mTLS is implemented at different layers with different trade-offs.
 
-#### **mTLS Implementation Options** 
+#### **mTLS Implementation Options**
 
 |**Approach**|**Where**<br>**Implemented**|**Operation**|**Overhead**|**Best For**|
 |---|---|---|---|---|
@@ -372,7 +372,7 @@ Mutual TLS (mTLS) provides both encryption and mutual authentication: both clien
 |SPIFFE/SPIRE +<br>app SDK|Application code|App manages<br>SVID|Highest<br>control|Zero trust native apps|
 |cert-manager + app|Application code|Manual cert<br>loading|App manages<br>rotation|Legacy apps with TLS support|
 
-#### **Istio PeerAuthentication -- Strict mTLS** 
+#### **Istio PeerAuthentication -- Strict mTLS**
 
 ```
 # Enforce strict mTLS for all services in a namespace: apiVersion: security.istio.io/v1 kind:
@@ -384,13 +384,13 @@ cluster-wide spec: mtls: mode: STRICT # Verify mTLS is working: istioctl authn t
 ..svc.cluster.local # Should show: OK / mTLS
 ```
 
-##### **CHAPTER 9** 
+##### **CHAPTER 9**
 
-## **Pod Security: Standards, Contexts, Profiles** 
+## **Pod Security: Standards, Contexts, Profiles**
 
-Hardening Pod security reduces the blast radius if a container is compromised. Multiple controls work together: Pod Security Standards (namespace-level policy), securityContext (per-Pod/container), seccomp (syscall filtering), and AppArmor/SELinux (mandatory access control). 
+Hardening Pod security reduces the blast radius if a container is compromised. Multiple controls work together: Pod Security Standards (namespace-level policy), securityContext (per-Pod/container), seccomp (syscall filtering), and AppArmor/SELinux (mandatory access control).
 
-#### **Pod Security Standards (PSS)** 
+#### **Pod Security Standards (PSS)**
 
 |**Control**|**Privileged**|**Baseline**|**Restricted**|
 |---|---|---|---|
@@ -404,7 +404,7 @@ Hardening Pod security reduces the blast radius if a container is compromised. M
 |readOnlyRootFilesystem|Not required|Not required|Required|
 |Volume types|Any|Limited set|ConfigMap, Secret, PVC, projected,<br>emptyDir|
 
-###### **Complete Restricted Pod Security Context** 
+###### **Complete Restricted Pod Security Context**
 
 ```
 # Fully compliant with PSS Restricted: apiVersion: v1 kind: Pod spec: securityContext:
@@ -416,13 +416,13 @@ drop: [ALL] seccompProfile: type: RuntimeDefault # Writable paths via emptyDir: 
 tmp, emptyDir: { medium: Memory } } - { name: cache, emptyDir: {} }
 ```
 
-##### **CHAPTER 10** 
+##### **CHAPTER 10**
 
-## **Policy-as-Code: OPA Gatekeeper and Kyverno** 
+## **Policy-as-Code: OPA Gatekeeper and Kyverno**
 
-Policy-as-code enforces security and operational standards at admission time, preventing non-compliant workloads from being deployed rather than detecting violations after the fact. Two systems dominate the Kubernetes policy landscape: OPA Gatekeeper (using Rego) and Kyverno (using YAML/CEL). 
+Policy-as-code enforces security and operational standards at admission time, preventing non-compliant workloads from being deployed rather than detecting violations after the fact. Two systems dominate the Kubernetes policy landscape: OPA Gatekeeper (using Rego) and Kyverno (using YAML/CEL).
 
-#### **OPA Gatekeeper -- Rego Policies** 
+#### **OPA Gatekeeper -- Rego Policies**
 
 ```
 # Gatekeeper ConstraintTemplate (defines the policy): apiVersion: templates.gatekeeper.sh/v1
@@ -440,7 +440,7 @@ spec: enforcementAction: deny match: kinds: [{apiGroups: [apps], kinds: [Deploym
 parameters: labels: [team, cost-center, environment]
 ```
 
-#### **Kyverno -- YAML-Native Policies** 
+#### **Kyverno -- YAML-Native Policies**
 
 ```
 # Kyverno policy: require non-root, read-only filesystem: apiVersion: kyverno.io/v1 kind:
@@ -457,13 +457,13 @@ default-deny-all namespace: '{{request.object.metadata.name}}' data: spec: podSe
 policyTypes: [Ingress, Egress]
 ```
 
-##### **CHAPTER 11** 
+##### **CHAPTER 11**
 
-## **Supply Chain Security at Scale** 
+## **Supply Chain Security at Scale**
 
-At enterprise scale, supply chain security must be automated and enforced as policy rather than relying on developer discipline. The goal is a continuous verification pipeline from source code to running container. 
+At enterprise scale, supply chain security must be automated and enforced as policy rather than relying on developer discipline. The goal is a continuous verification pipeline from source code to running container.
 
-#### **End-to-End Supply Chain Pipeline** 
+#### **End-to-End Supply Chain Pipeline**
 
 ```
 SOURCE CODE Signed commits (GPG/SSH) Branch protection + CODEOWNERS Dependency scanning
@@ -478,13 +478,13 @@ unexpected processes Tetragon: block unexpected network calls Regular re-evaluat
 (continuous compliance)
 ```
 
-##### **CHAPTER 12** 
+##### **CHAPTER 12**
 
-## **Runtime Security: Falco and Tetragon** 
+## **Runtime Security: Falco and Tetragon**
 
-#### **Falco -- CNCF Runtime Security** 
+#### **Falco -- CNCF Runtime Security**
 
-Falco monitors system calls and Kubernetes audit events to detect anomalous behaviour at runtime. It uses eBPF probes (preferred) or a kernel module to observe every syscall made by every process in every container on a node. 
+Falco monitors system calls and Kubernetes audit events to detect anomalous behaviour at runtime. It uses eBPF probes (preferred) or a kernel module to observe every syscall made by every process in every container on a node.
 
 ```
 # Critical Falco rules for AI platform security: # 1. Detect crypto mining (GPU abuse): -
@@ -506,7 +506,7 @@ k8s.pod.label.tier = ai output: Shell in AI container (user=%user.name cmd=%proc
 priority: WARNING
 ```
 
-###### **Falco Alerting Integration** 
+###### **Falco Alerting Integration**
 
 ```
 # Falco Sidekick routes alerts to multiple destinations: helm install falco
@@ -519,13 +519,13 @@ Prometheus: falco_events_total{rule=~'.*',priority='CRITICAL'} > 0 # Alert: any 
 event in production namespace
 ```
 
-##### **CHAPTER 13** 
+##### **CHAPTER 13**
 
-## **Confidential Containers and Confidential Computing** 
+## **Confidential Containers and Confidential Computing**
 
-Confidential Computing protects data in use -- while it is being processed in memory -- using hardware-based Trusted Execution Environments (TEEs). This addresses the attack vector that all other security controls leave open: a privileged attacker (cloud provider admin, compromised hypervisor) reading memory. 
+Confidential Computing protects data in use -- while it is being processed in memory -- using hardware-based Trusted Execution Environments (TEEs). This addresses the attack vector that all other security controls leave open: a privileged attacker (cloud provider admin, compromised hypervisor) reading memory.
 
-#### **Confidential Computing Hardware** 
+#### **Confidential Computing Hardware**
 
 |**Technology**|**Vendor**|**Protection**|**Kubernetes Integration**|
 |---|---|---|---|
@@ -535,9 +535,9 @@ Confidential Computing protects data in use -- while it is being processed in me
 |Intel SGX (Software Guard<br>Extensions)|Intel (older)|Enclave-level (user app)|EGo, Gramine; complex; limited<br>memory|
 |NVIDIA H100 Confidential<br>Computing|NVIDIA|GPU memory encryption;<br>TEE attestation|NVIDIA Confidential Containers;<br>AI workloads|
 
-#### **Confidential Containers (CoCo) Project** 
+#### **Confidential Containers (CoCo) Project**
 
-The Confidential Containers CNCF project enables running standard OCI containers inside hardware TEEs with cryptographic attestation. This provides confidentiality for AI model weights and inference data against cloud provider-level attackers. 
+The Confidential Containers CNCF project enables running standard OCI containers inside hardware TEEs with cryptographic attestation. This provides confidentiality for AI model weights and inference data against cloud provider-level attackers.
 
 ```
 CoCo architecture: Kubernetes API | RuntimeClass: kata-remote (Confidential Containers
@@ -551,87 +551,87 @@ kata-remote containers: - name: llm-inference image: company/llm-server:v1 # Mod
 decrypted only inside TEE # Cloud provider cannot access model or inference data
 ```
 
-##### **CHAPTER 14** 
+##### **CHAPTER 14**
 
-## **Kubernetes Security Hardening Checklist** 
+## **Kubernetes Security Hardening Checklist**
 
-###### **Control Plane** 
+###### **Control Plane**
 
-- API server: --anonymous-auth=false 
+- API server: --anonymous-auth=false
 
-- API server: --audit-log-path, --audit-log-maxage=30, --audit-log-maxbackup=3 
+- API server: --audit-log-path, --audit-log-maxage=30, --audit-log-maxbackup=3
 
-- API server: --tls-min-version=VersionTLS12 
+- API server: --tls-min-version=VersionTLS12
 
-- API server: --disable-admission-plugins does not include NodeRestriction 
+- API server: --disable-admission-plugins does not include NodeRestriction
 
-- etcd: --client-cert-auth=true, --peer-client-cert-auth=true 
+- etcd: --client-cert-auth=true, --peer-client-cert-auth=true
 
-- etcd: encryption at rest enabled (EncryptionConfiguration with AES-GCM or KMS) 
+- etcd: encryption at rest enabled (EncryptionConfiguration with AES-GCM or KMS)
 
-- Scheduler: --profiling=false 
+- Scheduler: --profiling=false
 
-- Controller manager: --profiling=false, --use-service-account-credentials=true 
+- Controller manager: --profiling=false, --use-service-account-credentials=true
 
-###### **Node/kubelet** 
+###### **Node/kubelet**
 
-- kubelet: --anonymous-auth=false, --authorization-mode=Webhook 
+- kubelet: --anonymous-auth=false, --authorization-mode=Webhook
 
-- kubelet: --rotate-certificates=true, --rotate-server-certificates=true 
+- kubelet: --rotate-certificates=true, --rotate-server-certificates=true
 
-- kubelet: --protect-kernel-defaults=true 
+- kubelet: --protect-kernel-defaults=true
 
-- kubelet: --event-qps=0 (disable event rate limiting for audit) 
+- kubelet: --event-qps=0 (disable event rate limiting for audit)
 
-- Node OS: CIS hardened image (Bottlerocket, Flatcar, Ubuntu CIS) 
+- Node OS: CIS hardened image (Bottlerocket, Flatcar, Ubuntu CIS)
 
-- Node OS: SSH access restricted; no direct SSH in production (use kubectl debug) 
+- Node OS: SSH access restricted; no direct SSH in production (use kubectl debug)
 
-- Node: no direct internet access; egress via NAT gateway or proxy 
+- Node: no direct internet access; egress via NAT gateway or proxy
 
-###### **Workloads** 
+###### **Workloads**
 
-- Pod Security Standards: Restricted for all production namespaces 
+- Pod Security Standards: Restricted for all production namespaces
 
-- All Pods: runAsNonRoot: true, readOnlyRootFilesystem: true 
+- All Pods: runAsNonRoot: true, readOnlyRootFilesystem: true
 
-- All Pods: capabilities drop: ALL 
+- All Pods: capabilities drop: ALL
 
-- All Pods: seccompProfile: RuntimeDefault 
+- All Pods: seccompProfile: RuntimeDefault
 
-- No Pods with hostNetwork, hostPID, hostIPC 
+- No Pods with hostNetwork, hostPID, hostIPC
 
-- No privileged containers 
+- No privileged containers
 
-- Resource requests and limits on all containers 
+- Resource requests and limits on all containers
 
-###### **RBAC and Identity** 
+###### **RBAC and Identity**
 
-- No cluster-admin bindings for service accounts 
+- No cluster-admin bindings for service accounts
 
-- No wildcard verbs or resources in RBAC rules 
+- No wildcard verbs or resources in RBAC rules
 
-- ServiceAccount automountServiceAccountToken: false by default 
+- ServiceAccount automountServiceAccountToken: false by default
 
-- OIDC for human authentication (not static kubeconfig with certs) 
+- OIDC for human authentication (not static kubeconfig with certs)
 
-- Workload Identity (IRSA/GKE WI) for cloud API access 
+- Workload Identity (IRSA/GKE WI) for cloud API access
 
-###### **Network** 
+###### **Network**
 
-- Default-deny NetworkPolicy in all production namespaces 
+- Default-deny NetworkPolicy in all production namespaces
 
-- API server not publicly exposed (private endpoint only) 
+- API server not publicly exposed (private endpoint only)
 
-- Node-to-node communication encrypted (Cilium WireGuard or IPsec) 
+- Node-to-node communication encrypted (Cilium WireGuard or IPsec)
 
-- Egress NetworkPolicy restricts outbound to known endpoints 
+- Egress NetworkPolicy restricts outbound to known endpoints
 
-##### **CHAPTER 15** 
+##### **CHAPTER 15**
 
-## **Compliance Mapping: NIST, CIS, SOC2, PCI, HIPAA, EU AI Act** 
+## **Compliance Mapping: NIST, CIS, SOC2, PCI, HIPAA, EU AI Act**
 
-Enterprise Kubernetes deployments must satisfy multiple overlapping compliance frameworks. The following mapping shows which Kubernetes controls satisfy requirements from the most common frameworks. 
+Enterprise Kubernetes deployments must satisfy multiple overlapping compliance frameworks. The following mapping shows which Kubernetes controls satisfy requirements from the most common frameworks.
 
 |**Kubernetes Control**|**NIST SP**<br>**800-53**|**CIS K8s**<br>**Benchmark**|**SOC2**|**PCI**<br>**DSS**|**HIPAA**|**EU AI Act**|
 |---|---|---|---|---|---|---|
@@ -647,27 +647,27 @@ Enterprise Kubernetes deployments must satisfy multiple overlapping compliance f
 |Vulnerability scanning|RA-5, SI-2|Implicit|CC7.1|6.3.3|164.308(a<br>)(1)|Art.15|
 |Backup + DR|CP-9, CP-10|Implicit|A1.2|12.10.1|164.308(a<br>)(7)|Art.12|
 
-###### **EU AI Act -- Kubernetes-Specific Requirements** 
+###### **EU AI Act -- Kubernetes-Specific Requirements**
 
-The EU AI Act (fully applicable August 2026) introduces specific requirements for high-risk AI systems that directly impact Kubernetes AI platform design: 
+The EU AI Act (fully applicable August 2026) introduces specific requirements for high-risk AI systems that directly impact Kubernetes AI platform design:
 
-- **Article 9 -- Risk management** : Implement RBAC, NetworkPolicy, and admission controls to enforce access boundaries around AI model access and inference endpoints. 
+- **Article 9 -- Risk management** : Implement RBAC, NetworkPolicy, and admission controls to enforce access boundaries around AI model access and inference endpoints.
 
-- **Article 10 -- Data governance** : Use encrypted PVCs for training data, implement data lineage tracking (MLflow), enforce namespace isolation between data categories. 
+- **Article 10 -- Data governance** : Use encrypted PVCs for training data, implement data lineage tracking (MLflow), enforce namespace isolation between data categories.
 
-- **Article 12 -- Record keeping** : Maintain immutable audit logs (Kubernetes audit + Falco events) stored outside the cluster. Log all model access, inference requests to high-risk models, and configuration changes. 
+- **Article 12 -- Record keeping** : Maintain immutable audit logs (Kubernetes audit + Falco events) stored outside the cluster. Log all model access, inference requests to high-risk models, and configuration changes.
 
-- **Article 13 -- Transparency** : Maintain SBOM for all AI components. Document model versions, training data provenance in model registry. 
+- **Article 13 -- Transparency** : Maintain SBOM for all AI components. Document model versions, training data provenance in model registry.
 
-- **Article 15 -- Accuracy and robustness** : Implement canary deployments and A/B testing for model updates. Monitor inference accuracy metrics in Prometheus/Grafana. 
+- **Article 15 -- Accuracy and robustness** : Implement canary deployments and A/B testing for model updates. Monitor inference accuracy metrics in Prometheus/Grafana.
 
-##### **CHAPTER 16** 
+##### **CHAPTER 16**
 
-## **Security Incident Response on Kubernetes** 
+## **Security Incident Response on Kubernetes**
 
-When a Kubernetes security incident occurs -- compromised container, credential theft, suspicious lateral movement -- the response must be fast and systematic. Kubernetes provides unique tools for containment and forensics. 
+When a Kubernetes security incident occurs -- compromised container, credential theft, suspicious lateral movement -- the response must be fast and systematic. Kubernetes provides unique tools for containment and forensics.
 
-#### **Incident Response Playbook** 
+#### **Incident Response Playbook**
 
 ```
 PHASE 1: DETECTION (seconds to minutes) Falco alert fires: shell spawned in production
@@ -692,13 +692,13 @@ scratch Apply missing security controls (PSS, NetworkPolicy, seccomp) Update Fal
 new attack pattern identified
 ```
 
-##### **CHAPTER 17** 
+##### **CHAPTER 17**
 
-## **Hands-On Exercises** 
+## **Hands-On Exercises**
 
-#### **Exercise 8.1 -- RBAC Hardening** 
+#### **Exercise 8.1 -- RBAC Hardening**
 
-Audit and fix over-privileged RBAC: 
+Audit and fix over-privileged RBAC:
 
 ```
 # Identify over-privileged service accounts: kubectl auth can-i --list \
@@ -719,9 +719,9 @@ kubectl auth can-i get secrets \ --as=system:serviceaccount:default:myapp-minima
 default
 ```
 
-#### **Exercise 8.2 -- Kyverno Policy Enforcement** 
+#### **Exercise 8.2 -- Kyverno Policy Enforcement**
 
-Deploy Kyverno and enforce security policies: 
+Deploy Kyverno and enforce security policies:
 
 ```
 # Install Kyverno: helm repo add kyverno https://kyverno.github.io/kyverno/ helm install
@@ -735,6 +735,6 @@ request # Deploy compliant Pod: kubectl run nonroot-test --image=nginx:alpine \
 --overrides='{"spec":{"securityContext":{"runAsNonRoot":true,"runAsUser":101}}}'
 ```
 
-###### **End of Part VIII -- Continue to Part IX: Platform Engineering** 
+###### **End of Part VIII -- Continue to Part IX: Platform Engineering**
 
 Part IX covers the complete platform engineering stack: GitOps with ArgoCD and Flux, Helm and Kustomize patterns, Backstage Internal Developer Platform, Crossplane for infrastructure-as-code, progressive delivery with Argo Rollouts, multi-tenancy architectures (vCluster, namespace-as-a-service), cluster lifecycle management, and platform engineering for AI workloads.

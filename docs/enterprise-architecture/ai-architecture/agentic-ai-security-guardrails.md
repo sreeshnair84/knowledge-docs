@@ -31,7 +31,7 @@ This doctrine inverts the traditional security posture. In classical application
 Three architectural principles follow:
 
 | Principle | Implementation |
-|-----------|---------------|
+| ----------- | --------------- |
 | **Least privilege per agent** | Each agent gets the minimum tool set required — no cross-agent tool sharing without explicit policy |
 | **Egress control as invariant** | All agent outbound traffic flows through a proxied allowlist — no direct internet egress from agent runtimes |
 | **Blast-radius isolation** | Tenant/workload separation ensures a compromised agent in one namespace cannot read or affect another |
@@ -47,7 +47,7 @@ Each threat class is mapped to four treatment stages: **Architecture** (structur
 ### 2.1 Input and Context Threats
 
 | Threat | Attack Shape | Architecture (Prevent) | Detection | Mitigation/Containment | Recovery |
-|--------|-------------|----------------------|-----------|----------------------|----------|
+| -------- | ------------- | ---------------------- | ----------- | ---------------------- | ---------- |
 | **Prompt Injection (Direct)** | User crafts input overriding policy | Instruction hierarchy; system-prompt integrity hash; input classifiers | Injection classifiers; jailbreak heuristics; anomaly on refusal-rate | Refuse/strip; degrade to restricted toolset | Session quarantine; pattern → detector update |
 | **Indirect Injection** | Instructions embedded in retrieved docs/webpages/emails/tool results | Provenance tagging (untrusted spans); spotlighting/delimiting; lethal-trifecta separation (private data ∥ untrusted content ∥ egress never co-resident) | Tool-result scanners; canary instructions; egress DLP hits | Drop tainted span; require approval for post-taint actions | Purge tainted context/memory; blocklist source |
 | **Context Poisoning** | Adversary shapes long-lived context (files, tickets) agent will read | Same as indirect + content signing for internal sources | Diffing trusted sources; write-audit on agent-readable stores | Re-fetch from source of record | Invalidate derived memories by provenance |
@@ -55,7 +55,7 @@ Each threat class is mapped to four treatment stages: **Architecture** (structur
 ### 2.2 Memory and Persistence Threats
 
 | Threat | Attack Shape | Architecture (Prevent) | Detection | Mitigation/Containment | Recovery |
-|--------|-------------|----------------------|-----------|----------------------|----------|
+| -------- | ------------- | ---------------------- | ----------- | ---------------------- | ---------- |
 | **Tool Poisoning** | Malicious MCP tool descriptions / rug-pull updates | Private registry, manifest hash pinning, review tiers | Manifest-change alerts; behavioral diff of tool outputs | Suspend server; tier downgrade | Rotate creds it saw; audit calls since change |
 | **Memory Poisoning** | Implant persistent instructions/facts into long-term memory | Gated writes, provenance, quarantine pipeline | Write anomaly detection; instruction-like-memory classifier | Quarantine records | Bulk invalidation by provenance/time window |
 | **Vector DB Poisoning** | Adversarial embeddings/documents steer retrieval | Ingest validation + provenance; per-tenant collections; embedding-space outlier checks (OWASP LLM08) | Retrieval-quality drift; outlier density | Remove vectors; re-embed clean corpus | Snapshot restore of collection |
@@ -63,7 +63,7 @@ Each threat class is mapped to four treatment stages: **Architecture** (structur
 ### 2.3 Identity and Credential Threats
 
 | Threat | Attack Shape | Architecture (Prevent) | Detection | Mitigation/Containment | Recovery |
-|--------|-------------|----------------------|-----------|----------------------|----------|
+| -------- | ------------- | ---------------------- | ----------- | ---------------------- | ---------- |
 | **Agent Impersonation** | Rogue process claims agent identity | SPIFFE attestation-issued identity; no static agent API keys | Cert/token misuse analytics; unknown-SVID alerts | Revoke SVID (stop renewal) | Re-attest fleet; audit actions under stolen identity |
 | **Tool Impersonation** | Fake MCP server / typosquatted card or package | Signed Agent Cards (A2A), registry-only resolution, TLS pinning to registered endpoints | Card-signature failures; endpoint drift | Block; catalog alert | Purge results consumed from impostor |
 | **Identity/Credential Theft** | Token exfiltrated from sandbox/logs | Short-TTL, DPoP/mTLS-bound, audience-scoped tokens; secrets never in context; log redaction | Token-replay detection (binding failures); impossible-travel for workloads | Stop renewal; kill sessions | Rotate; review actor-chain audit |
@@ -71,7 +71,7 @@ Each threat class is mapped to four treatment stages: **Architecture** (structur
 ### 2.4 Output and Action Threats
 
 | Threat | Attack Shape | Architecture (Prevent) | Detection | Mitigation/Containment | Recovery |
-|--------|-------------|----------------------|-----------|----------------------|----------|
+| -------- | ------------- | ---------------------- | ----------- | ---------------------- | ---------- |
 | **Data Exfiltration** | Hijacked agent leaks via tool params, URLs, DNS, markdown images, A2A artifacts | Egress allowlist; DLP on all outbound; no raw-context sharing cross-boundary | DLP alerts; unusual destination/volume | Block channel; kill task | Incident response; rotate exposed secrets |
 | **Hallucinated Actions** | Agent invents tool/params/entities → wrong real-world effects | Schema validation (nonexistent tool = hard fail); reference-validity checks (IDs must exist); acceptance criteria | Verification-gate failures; downstream reconciliation breaks | Block commit; re-plan | Saga compensation of committed steps |
 | **Jailbreaks** | Roleplay/encoding/multi-turn erosion of safety | Safety engine layers; conversation-level (not turn-level) analysis | Multi-turn drift detectors; shared industry severity rubrics (cross-vendor CVSS-for-jailbreaks efforts) | Terminate session; restrict caps | Red-team → retrain filters |
@@ -79,7 +79,7 @@ Each threat class is mapped to four treatment stages: **Architecture** (structur
 ### 2.5 Supply Chain and Infrastructure Threats
 
 | Threat | Attack Shape | Architecture (Prevent) | Detection | Mitigation/Containment | Recovery |
-|--------|-------------|----------------------|-----------|----------------------|----------|
+| -------- | ------------- | ---------------------- | ----------- | ---------------------- | ---------- |
 | **Supply Chain** | Compromised model, SDK, MCP package, prompt template, fine-tune data | Signed artifacts (Sigstore), SBOM + AI-BOM (models, datasets, prompts), pinned versions, private mirrors | Dependency scanning; registry diff alerts | Version rollback; registry freeze | Rebuild from attested sources |
 | **Sandbox Escape** | Malicious code (agent-written or tool) breaks isolation | microVM/gVisor; syscall filtering; no host mounts; egress proxy; non-root | Runtime sensors (Falco-class); unexpected syscalls/egress | Kill microVM (disposable by design) | Rebuild from image; forensic snapshot |
 | **Model Extraction/Abuse** | Systematic querying to clone or misuse capacity | Gateway quotas, anomaly-based throttling, watermark/canary responses | Query-distribution analytics | Rate-limit; ban keys | Legal/contractual |
@@ -87,7 +87,7 @@ Each threat class is mapped to four treatment stages: **Architecture** (structur
 ### 2.6 Multi-Agent and Human-Layer Threats
 
 | Threat | Attack Shape | Architecture (Prevent) | Detection | Mitigation/Containment | Recovery |
-|--------|-------------|----------------------|-----------|----------------------|----------|
+| -------- | ------------- | ---------------------- | ----------- | ---------------------- | ---------- |
 | **Cross-Agent Contamination** | Compromised agent spreads instructions via shared memory/messages/A2A | Mediated edges only; per-agent namespaces; content screening on inter-agent messages | Lineage tracing (which agents consumed X) | Isolate agent (identity revoke) | Contamination graph walk → invalidate downstream state |
 | **Insider Threat** | Privileged human abuses agent platform (policy edits, registry, memory) | Separation of duties; policy/registry changes need 2-person review; admin actions fully audited | UEBA on admin ops | Freeze change; access review | Restore signed policy bundles |
 | **HITL Bypass / Approval Fatigue** | Flooding approvals or crafting misleading summaries | Approval UI shows raw action + diff, not agent prose; rate-limits on approval requests; risk-tiered routing | Approval-latency/override analytics | Auto-deny on timeout; batch-suspicious escalation | Retrospective review of approvals granted under flood |
@@ -105,7 +105,7 @@ Apply **STRIDE per trust boundary** (as defined in your architecture's trust-bou
 **Continuous adversarial testing cadence:**
 
 | Cadence | Activity |
-|---------|----------|
+| --------- | ---------- |
 | Every CI run | Automated injection suites (promptfoo / garak-class tooling) across regression fixtures |
 | Weekly | Automated red-team scanning against staging environment |
 | Quarterly | Human red-team exercises, bug bounty scope review including agent behaviors |
@@ -122,11 +122,13 @@ The [Skills Assessment checklist](enterprise-ai-skills-assessment.md) section A1
 Two fundamentally different control types are combined in production guardrail stacks:
 
 **Deterministic controls** (regex/schema/policy/allowlists/quotas):
+
 - Same input → same verdict; fully auditable
 - Use for **invariants**: spend caps, tool allowlists, PII patterns, schema validation, egress domains, approval routing
 - Never fail silently — errors are actionable
 
 **Probabilistic controls** (classifiers, guard models, critic LLMs, Bedrock Guardrails, Azure Content Safety, Model Armor, Llama-Guard-class):
+
 - Handle semantics that deterministic rules cannot
 - Have error rates → **never the sole control for an unacceptable outcome**
 - Track FP/FN rates as SLOs; a guardrail with unmeasured error rate is decoration
@@ -147,7 +149,7 @@ Every guardrail in a production system must:
 ## 5. The 14-Layer Guardrail Map
 
 | Layer | Deterministic Controls | Probabilistic Controls |
-|-------|----------------------|----------------------|
+| ------- | ---------------------- | ---------------------- |
 | **Input** | Length/format limits; encoding normalization; known-pattern blocklists; system-prompt hash check | Injection/jailbreak classifiers; intent screening |
 | **Output** | Schema validation; secret/PII regex+detectors; link/domain allowlist; license/copyright rules | Toxicity/harm classifiers; groundedness/hallucination scoring vs sources |
 | **Context** | Budget enforcement; provenance tags required; untrusted-span delimiting | Contextual-relevance and contradiction detection |
@@ -171,16 +173,19 @@ Every guardrail in a production system must:
 Google's agentic AI security stack integrates its cloud-native security fabric with AI-specific controls:
 
 **Threat prevention layer:**
+
 - **Vertex AI Model Armor** — Google's managed guardrail service for prompt injection detection, jailbreak classification, and toxicity filtering, integrated directly into Vertex AI endpoints
 - **Sensitive Data Protection (DLP API)** — Applied at output layer for PII detection and redaction before agent responses reach downstream systems
 - **Cloud Armor + Apigee** — Gateway-layer DDoS/rate-limiting and API management providing the deterministic outer shell; quota enforcement and allowlisted egress paths
 
 **Identity and isolation layer:**
+
 - **Workload Identity Federation** — OIDC-based agent identity without static API keys, equivalent to SPIFFE/SPIRE for GKE-hosted agents
 - **GKE Sandbox (gVisor)** — User-space kernel for agent-executed code, providing syscall-level isolation without hardware VM overhead; microVM-equivalent blast-radius containment
 - **Binary Authorization** — Signed container images enforced at deployment; supply chain integrity for agent runtimes
 
 **Detection and response layer:**
+
 - **Chronicle SIEM** — Centralized security analytics ingesting agent audit logs, tool call logs, and egress events; behavioral analytics on agent action sequences
 - **Security Command Center** — Aggregated view of guardrail findings, DLP hits, and anomaly detections across the agent fleet
 - **Gemini Security AI** — AI-powered threat hunting within Chronicle, enabling natural-language queries over agent behavioral logs
@@ -194,16 +199,19 @@ Google's agentic AI security stack integrates its cloud-native security fabric w
 Microsoft's approach integrates Azure security services with its Responsible AI principles:
 
 **Threat prevention layer:**
+
 - **Azure AI Content Safety — Prompt Shield** — Dedicated indirect injection classifier, specifically trained on the attack pattern of instructions embedded in retrieved documents and tool results (the hardest guardrail problem to solve deterministically)
 - **Azure Content Safety** — Multi-modal classifier for toxicity, harm, and policy violation in both inputs and outputs; FP/FN tracking via the Azure AI Foundry evaluation hub
 - **Azure API Management** — Gateway-layer rate limiting, IP allowlisting, JWT validation, and egress control for all agent-to-external-system traffic
 
 **Identity and isolation layer:**
+
 - **Entra Agent ID (Workload Identity)** — Microsoft's managed identity for AI agents; federated credentials eliminate static secrets; audience-scoped tokens with short TTLs
 - **Azure Confidential Computing** — Hardware-based trusted execution environments (TEEs) for agent runtimes processing regulated data; enclave-level isolation for the most sensitive workloads
 - **Azure Policy** — Guardrail enforcement at the infrastructure layer; deny policies for non-compliant agent configurations (e.g., public endpoint exposure, unencrypted storage)
 
 **Detection and response layer:**
+
 - **Microsoft Defender for Cloud — AI Threat Protection** — Real-time detection of prompt injection, anomalous tool usage, and data exfiltration patterns in Azure AI deployments
 - **Microsoft Sentinel** — SIEM with pre-built playbooks for agent security incidents; automated response workflows for identity revocation and session termination
 - **Purview Information Protection** — Data lineage tracking from source systems through agent context into outputs; legal hold capability for agent evidence store
@@ -217,16 +225,19 @@ Microsoft's approach integrates Azure security services with its Responsible AI 
 AWS's security architecture for agentic AI centers on Bedrock Guardrails and the broader AWS security fabric:
 
 **Threat prevention layer:**
+
 - **Amazon Bedrock Guardrails** — Managed guardrail service with six control types: content filters (configurable severity thresholds), topic deny lists (semantic blocking), word filters (exact and wildcard), PII detection+redaction (20+ PII entity types), grounding checks (RAG answer faithfulness), and sensitive information filters (regex + ML patterns)
 - **AWS WAF + CloudFront** — Deterministic outer shell for rate limiting, geo-blocking, and IP allowlisting at the API gateway level before requests reach agent infrastructure
 - **Amazon Macie** — DLP service scanning S3 buckets used as agent knowledge stores and evidence stores for sensitive data classification and access anomaly detection
 
 **Identity and isolation layer:**
+
 - **AWS Nitro Enclaves** — Isolated compute environments for agent runtimes processing regulated data; no persistent storage, no operator access; attestation via the Nitro Attestation Document
 - **IAM roles for service accounts (IRSA)** — Short-lived credentials bound to Kubernetes service accounts; equivalent to SPIFFE/SVID for EKS-hosted agents; audience-scoped and rotation-handled
 - **Amazon Inspector** — Automated vulnerability scanning of agent container images and AI-BOM (tracking which model versions, SDK versions, and MCP package versions are in each agent deployment)
 
 **Detection and response layer:**
+
 - **Amazon GuardDuty** — Runtime threat detection for unusual API call patterns, credential exfiltration signals, and cross-account activity from agent roles
 - **AWS Security Hub** — Aggregated findings across GuardDuty, Inspector, and Macie with custom insights for agent-specific threat patterns
 - **CloudWatch Logs + Contributor Insights** — Tool audit logging at scale with anomaly detection on agent call distributions; behavioral delta alerting on tool-call frequency changes
@@ -242,6 +253,7 @@ Global consultancies have developed structured security frameworks for enterpris
 ### Accenture — "Responsible AI Shield"
 
 Accenture's 5-layer security model for agentic AI deployments:
+
 1. **Perimeter** — API gateway controls, authentication, rate limiting
 2. **Behavioral** — Guardrail classifiers and policy engines per request
 3. **Identity** — Agent workload identity, delegation chain integrity
@@ -253,6 +265,7 @@ Their engagement model typically starts with a 4-week AI threat-model workshop, 
 ### McKinsey — AI Security Maturity Model
 
 McKinsey's maturity stages for enterprise agentic AI security:
+
 - **Level 1 (Reactive)** — Basic content filters; manual incident response; security added after deployment
 - **Level 2 (Proactive)** — Systematic threat modeling; automated guardrails; security in the design process
 - **Level 3 (Embedded)** — Security-by-design; continuous adversarial testing in CI; behavioral monitoring as business-as-usual
@@ -263,6 +276,7 @@ McKinsey's research indicates most enterprises deploying agentic AI in 2025–20
 ### Deloitte — AI Trust Model
 
 Deloitte's AI trust framework for regulated industries (financial services, healthcare, public sector) structures AI security as a trust assurance problem:
+
 - **Technical trust** — Guardrails, testing, and security architecture
 - **Process trust** — Change management, incident response, audit trails
 - **Regulatory trust** — Compliance mapping, evidence generation, regulator engagement
@@ -273,6 +287,7 @@ Their approach emphasizes that in regulated industries, the audit trail and the 
 ### Big-4 Common Playbook for Regulated Industries
 
 Across finance and healthcare deployments, the common engagement pattern is:
+
 1. **AI-BOM creation** — Inventory all model versions, SDK versions, prompt templates, and fine-tuning datasets
 2. **Trust boundary mapping** — Formal diagram of all agent-to-system and agent-to-agent data flows
 3. **Threat model workshop** — STRIDE + OWASP agentic taxonomy applied to each boundary
@@ -286,7 +301,9 @@ Across finance and healthcare deployments, the common engagement pattern is:
 ## 10. Real-World Big Wins
 
 ### JPMorgan Chase — Contract Intelligence (COIN) Successor
+
 JPMorgan's COIN program (contract review AI) was expanded into a multi-agent agentic system handling loan servicing, compliance checking, and trade processing. The security architecture that enabled regulatory approval:
+
 - Egress control as an invariant: agents cannot reach external networks; all external calls route through a proxied, allowlisted API gateway
 - Hallucination containment: schema validation + reference-validity checks before any financial record mutation; saga compensation for rollback
 - Audit completeness: every agent action is logged with the full actor chain; this was a non-negotiable requirement from the OCC (Office of the Comptroller of the Currency)
@@ -294,7 +311,9 @@ JPMorgan's COIN program (contract review AI) was expanded into a multi-agent age
 The guardrail architecture allowed JPMorgan to demonstrate to regulators that even in a worst-case injection attack, no agent could authorize a transaction outside its bounded decision scope.
 
 ### Salesforce Agentforce — Einstein Trust Layer at Scale
+
 Salesforce's Agentforce platform (which uses Claude from Anthropic as the underlying LLM, accessed via the Einstein Trust Layer) is built on a multi-layer guardrail stack that implements the core principles from Section 5:
+
 - **Einstein Trust Layer** — Enforces zero data retention, PII masking, prompt-injection defense, toxicity scoring, and geo-aware routing before any prompt leaves the Salesforce environment and reaches the LLM provider
 - **Zero-data retention** — LLM calls routed through Salesforce infrastructure with contractual no-training commitment from all model providers; data residency per region
 - **Audit trail** — Every agent action logged to the Einstein Activity Platform with full actor-chain capture; customer-accessible audit API
@@ -303,7 +322,9 @@ Salesforce's Agentforce platform (which uses Claude from Anthropic as the underl
 The trust layer is the primary enterprise sales differentiator — it enables Agentforce to be deployed in financial services, healthcare, and government contexts that would otherwise reject agentic AI.
 
 ### ServiceNow + Moveworks — FedRAMP-Authorized Agentic AI
+
 ServiceNow (the platform) holds FedRAMP High authorization. Moveworks from ServiceNow (its conversational AI and agentic front-door product) achieved FedRAMP **Moderate** authorization in February 2026, enabling deployment to federal agencies and defense contractors. The security architecture that enabled authorization:
+
 - Zero-data-retention contracts with all underlying LLM providers
 - Complete audit log with immutable storage for federal customers
 - Human-in-the-loop as a mandatory gate for any workflow step touching access control changes
@@ -316,7 +337,7 @@ This demonstrates that the guardrail architecture described in Section 5 is not 
 ## 11. Compliance Overlay
 
 | Framework | Relevant Requirements | Architect Action |
-|-----------|----------------------|-----------------|
+| ----------- | ---------------------- | ----------------- |
 | **NIST AI RMF** | Map (categorize risk), Measure (quantify), Manage (controls), Govern (oversight) | Map each threat class to a Manage function control; use the risk register as the Measure artifact |
 | **ISO 42001 AIMS** | Clause 6.1 (AI risk assessment), Clause 8.4 (AI system operation), Annex A (AI-specific controls) | Align guardrail telemetry to 42001 Annex A controls A.6.1–A.6.3 (AI risk treatment) |
 | **ISO 27001** | Annex A controls (especially A.8 Technology controls for AI-extended threat surface) | AI-BOM, dependency scanning, registry controls map to A.8.7, A.8.20, A.8.22 |
@@ -333,7 +354,7 @@ Cross-keyed to the [Agentic AI Security & Identity](agentic-ai-security-identity
 **G-series: Guardrail Architecture**
 
 | # | Check | Pass Criteria |
-|---|-------|--------------|
+| --- | ------- | -------------- |
 | G1 | Deterministic outer shell defined | Input, output, and egress have deterministic rules before probabilistic classifiers |
 | G2 | Probabilistic controls measured | FP and FN rates tracked as SLOs; not sole control for any unacceptable outcome |
 | G3 | All guardrails emit telemetry | fired/passed/latency metrics on every evaluation; no silent guardrails |

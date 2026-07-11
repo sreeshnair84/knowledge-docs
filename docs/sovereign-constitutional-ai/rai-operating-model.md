@@ -33,7 +33,7 @@ The good news: despite surface-level differences, all major frameworks converge 
 ### 1.2 Major Framework Comparison
 
 | Dimension | Microsoft RAI | Google PAIR/RAI | IBM Trustworthy AI | OECD AI Principles | UNESCO AI Ethics | NIST AI RMF |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **Published** | 2018 (revised 2022) | 2019 (revised 2023) | 2018 (revised 2021) | 2019 | 2021 | 2023 |
 | **Primary audience** | Enterprise customers | Developers & society | Enterprise clients | Governments | All stakeholders | US federal + enterprise |
 | **Governance emphasis** | Strong internal governance model | Responsible practices for product teams | AI governance lifecycle | Policy and regulation | Human rights | Risk management |
@@ -100,7 +100,7 @@ UNIVERSAL RAI CONVERGENCE
 Microsoft's RAI framework (2022 revision) defines six principles with a strong implementation focus:
 
 | Principle | Definition | Key tools / implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Fairness** | AI should treat all people fairly | Fairlearn, InterpretML, Azure AI Fairness Assessment |
 | **Reliability and Safety** | AI should perform reliably and safely | Azure Content Safety, Safety Evaluations |
 | **Privacy and Security** | AI should be secure and respect privacy | Microsoft Presidio, Azure Confidential Computing |
@@ -111,6 +111,7 @@ Microsoft's RAI framework (2022 revision) defines six principles with a strong i
 ### 2.2 Microsoft RAI Governance Structure
 
 Microsoft's internal RAI governance operates through:
+
 - **Responsible AI Council** — Senior leadership body setting policy
 - **Office of Responsible AI** — Policy development and enforcement
 - **Senior Leadership Team** — Accountability for RAI outcomes
@@ -128,6 +129,7 @@ Microsoft's internal RAI governance operates through:
 Google's AI Principles (2018, updated 2023) define both what Google will build and what it will not build:
 
 **Will build AI that:**
+
 1. Is socially beneficial
 2. Avoids creating or reinforcing unfair bias
 3. Is built and tested for safety
@@ -137,6 +139,7 @@ Google's AI Principles (2018, updated 2023) define both what Google will build a
 7. Is made available for uses that accord with these principles
 
 **Will NOT build AI for:**
+
 - Technologies that cause or are likely to cause overall harm
 - Weapons or technologies whose purpose is to cause injury
 - Technologies that gather or use information for surveillance violating international norms
@@ -145,6 +148,7 @@ Google's AI Principles (2018, updated 2023) define both what Google will build a
 ### 3.2 Google's PAIR (People + AI Research)
 
 Google PAIR focuses on the human-centered design of AI systems. Key contributions:
+
 - **People + AI Guidebook** — Practical UX guidance for AI product teams
 - **Model Cards** — Standardized documentation of model performance, limitations, and intended use
 - **FACETS** — Visualization tools for understanding training datasets
@@ -157,7 +161,7 @@ Google PAIR focuses on the human-centered design of AI systems. Key contribution
 IBM's framework emphasizes five pillars with strong tooling via the AI Fairness 360 (AIF360) open-source toolkit:
 
 | Pillar | IBM definition | Key tool |
-|---|---|---|
+| --- | --- | --- |
 | **Explainability** | AI must be able to explain its decisions | AI Explainability 360 (AIX360) |
 | **Fairness** | AI must be free from bias | AI Fairness 360 (AIF360) |
 | **Robustness** | AI must be accurate, reliable, and safe | Adversarial Robustness Toolbox (ART) |
@@ -210,7 +214,7 @@ RESPONSIBLE AI OFFICE — ORGANIZATIONAL DESIGN
 RAI must be integrated at every stage of the AI development lifecycle:
 
 | Stage | RAI activities | Owner | Output |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Idea / Incubation** | AI Impact Assessment (preliminary) | RAI Policy Team | Impact Assessment v0 |
 | **Design** | Fairness requirements definition; bias risk identification | RAI Champion + ML team | Fairness specification |
 | **Data** | Dataset audit (bias, representation, consent) | Data Architect + RAI Engineering | Dataset card |
@@ -229,7 +233,7 @@ RAI must be integrated at every stage of the AI development lifecycle:
 **Key metrics:**
 
 | Metric | Formula | Acceptable threshold |
-|---|---|---|
+| --- | --- | --- |
 | **Demographic Parity** | \|P(Y=1\|A=0) - P(Y=1\|A=1)\| | < 0.05 for most enterprise contexts; 0 for legal decisions |
 | **Equalized Odds** | \|TPR_A0 - TPR_A1\| + \|FPR_A0 - FPR_A1\| | < 0.1 |
 | **Individual Fairness** | Similar individuals receive similar outputs | Context-dependent similarity metric |
@@ -244,7 +248,7 @@ RAI must be integrated at every stage of the AI development lifecycle:
 **Transparency levels:**
 
 | Level | Who needs it | Mechanism |
-|---|---|---|
+| --- | --- | --- |
 | **Model-level** | Regulators, auditors | Model card, AI FactSheet |
 | **Decision-level** | Individual users, courts | LIME/SHAP explanation |
 | **System-level** | Board, public | AI system register, annual RAI report |
@@ -281,7 +285,7 @@ On-call Eng  — Accountability for incident response
 **Privacy-preserving AI techniques:**
 
 | Technique | Description | Use case |
-|---|---|---|
+| --- | --- | --- |
 | **Federated Learning** | Model trains on distributed data without centralizing it | Healthcare, cross-organization learning |
 | **Differential Privacy** | Add calibrated noise to protect individual records | Analytics, training data queries |
 | **Homomorphic Encryption** | Compute on encrypted data | Cloud inference without data exposure |
@@ -297,7 +301,7 @@ On-call Eng  — Accountability for incident response
 ### 5.4 RAI Governance Cadence
 
 | Meeting | Frequency | Participants | Agenda |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | RAI Weekly Standup | Weekly | RAI Engineering, MLOps | Monitoring alerts, bias drift, open incidents |
 | Model Review Board | Bi-weekly | RAI Assurance, Product Owners | Pre-deployment reviews, model card sign-off |
 | RAI Policy Review | Monthly | RAIO + Legal + Compliance | Policy updates, regulatory changes, exception review |
@@ -309,15 +313,19 @@ On-call Eng  — Accountability for incident response
 ## 6. How Leading Organizations Implement RAI
 
 ### Microsoft (Internal)
+
 Microsoft's Office of Responsible AI operates 6 sensitivity use cases requiring mandatory Responsible AI Impact Assessment (RAIA) before deployment — any product using AI for consequential decisions in health, finance, legal, safety, or identity must pass RAIA review. This is enforced through product launch gating.
 
 ### Google (Internal)
+
 Google's AI Responsibility team reviews high-risk AI projects through a Sensitive Use Review process. Google DeepMind publishes Frontier Safety Frameworks publicly. Google Cloud publishes AI Principles Progress Updates annually.
 
 ### IBM
+
 IBM's AI Ethics Board reviews high-stakes AI deployments. IBM has committed to open-sourcing all RAI toolkits (AIF360, AIX360, ART). Enterprise clients use IBM Watson OpenScale for production RAI monitoring.
 
 ### Financial Sector
+
 EU banks operating under the EU AI Act are building mandatory AI registers, RAI Impact Assessment processes, and human oversight mechanisms for all High-Risk AI systems. The European Banking Authority (EBA) has published RAI implementation guidelines for credit risk models.
 
 ---

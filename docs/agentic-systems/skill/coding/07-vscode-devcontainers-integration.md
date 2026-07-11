@@ -21,7 +21,7 @@ series_index: "agentic-systems/skill/coding/index"
 VS Code is the most common host surface studied across this research, and it contributes several capabilities a bare terminal-based agent (Claude Code without an IDE, raw Codex CLI) does not have natively:
 
 | VS Code capability | What it adds |
-|---|---|
+| --- | --- |
 | **Language Server Protocol (LSP) integration** | Ground-truth symbol resolution, type info, and diagnostics the agent's tools can consult, rather than re-deriving structure via text search alone |
 | **Workspace APIs** | Structured knowledge of open folders, multi-root workspaces, and settings scope — informs which AGENTS.md/rules apply |
 | **Task APIs** | Reuses the project's own defined build/test/lint tasks (`tasks.json`) rather than the agent guessing shell commands |
@@ -51,7 +51,7 @@ VS Code is the most common host surface studied across this research, and it con
 ### 10.2 Components
 
 | Component | Role for an agent workflow |
-|---|---|
+| --- | --- |
 | `.devcontainer/devcontainer.json` | Main configuration VS Code (and increasingly Cursor, via an extension) reads to build/attach |
 | Container Features | Modular, composable installs (language runtimes, CLIs) without hand-rolling a Dockerfile from scratch |
 | Prebuilds | Pre-baked images/layers to cut container startup time — matters for agent iteration speed |

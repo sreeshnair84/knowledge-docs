@@ -29,7 +29,7 @@ Traditional web application reliability engineering operates on a foundation of 
 ### 1.1 The Five Dimensions of Agentic Unreliability
 
 | Dimension | Traditional App | Agentic App | Reliability Impact |
-|-----------|----------------|-------------|-------------------|
+| ----------- | ---------------- | ------------- | ------------------- |
 | **Determinism** | Same input → same output | Same input → different output each call | Cannot rely on retry producing correct result |
 | **State** | Stateless per-request | Stateful conversation, multi-turn history | Failure mid-conversation corrupts or orphans state |
 | **Duration** | Milliseconds to seconds | Seconds to minutes per task | More exposure window; heartbeat + checkpoint required |
@@ -53,7 +53,7 @@ At 99.9% per component, a 12-hop chain has theoretical availability of 98.8%. En
 ### 1.3 Four Failure Classes That Require Different Machinery
 
 | Failure Class | Trigger | Correct Response | Dangerous Incorrect Response |
-|--------------|---------|-----------------|------------------------------|
+| -------------- | --------- | ----------------- | ------------------------------ |
 | **Transport** | Network timeout, HTTP 429, DNS failure | Retry with exponential backoff + jitter, honour `Retry-After` | Blind retry without jitter (thundering herd) |
 | **Semantic** | Bad reasoning, hallucinated tool args, wrong plan | Re-plan with different strategy or context | Retry with identical input (same wrong output) |
 | **Systemic** | Provider outage, quota exhaustion | Failover to alternate provider; activate degradation ladder | Retry hoping outage resolves |
@@ -73,7 +73,7 @@ You cannot build error budgets, tune SLOs, or fire alerts on events you cannot s
 ### 2.1 Terminology
 
 | Term | Definition | Agentic-Specific Note |
-|------|-----------|----------------------|
+| ------ | ----------- | ---------------------- |
 | **SLI** (Service Level Indicator) | A measurable signal of service behavior | Must include semantic quality signals, not just transport metrics |
 | **SLO** (Service Level Objective) | Target threshold for an SLI | Set by product × reliability engineering jointly, not infrastructure alone |
 | **SLA** (Service Level Agreement) | Contractual commitment to customer | Typically SLO minus a safety margin (10–20%) |
@@ -83,7 +83,7 @@ You cannot build error budgets, tune SLOs, or fire alerts on events you cannot s
 ### 2.2 Availability SLOs by Workload Class
 
 | Workload Class | Recommended Availability SLO | Rationale |
-|----------------|------------------------------|-----------|
+| ---------------- | ------------------------------ | ----------- |
 | Interactive chat (best-effort) | 99.5% | Latency tolerance high; graceful degradation acceptable |
 | Interactive chat (business-critical) | 99.9% | Revenue-impacting; enterprise SLA expectation |
 | Autonomous workflows (batch) | 99.5% | Async; retry at workflow level is acceptable |
@@ -95,7 +95,7 @@ You cannot build error budgets, tune SLOs, or fire alerts on events you cannot s
 ### 2.3 Latency SLIs: Full Taxonomy
 
 | SLI Name | Measurement Point | P50 Target | P95 Target | P99 Target | Alert Threshold |
-|----------|------------------|-----------|-----------|-----------|-----------------|
+| ---------- | ------------------ | ----------- | ----------- | ----------- | ----------------- |
 | **TTFT** (Time to First Token) | Server-sent first SSE event | 600ms | 1,200ms | 2,500ms | P95 > 2,000ms for 5min |
 | **Streaming Lag** | Gap between token generation and browser render | < 50ms | < 150ms | < 500ms | P99 > 500ms for 2min |
 | **Tool Completion Latency** | Tool call start → result return | 300ms | 1,500ms | 5,000ms | Varies by tool |
@@ -110,7 +110,7 @@ You cannot build error budgets, tune SLOs, or fire alerts on events you cannot s
 Quality SLIs measure whether the agent is producing correct, useful outputs — not whether it responded at all. These require evaluation pipelines, not just infrastructure monitoring.
 
 | Quality SLI | Definition | Measurement Method | Target | Alert Threshold |
-|-------------|-----------|-------------------|--------|-----------------|
+| ------------- | ----------- | ------------------- | -------- | ----------------- |
 | **Task Completion Rate** | % of tasks that reach a successful completion state | Automated judge + sampling | ≥ 92% | < 88% for 1hr |
 | **Tool Success Rate** | % of tool calls that return valid, usable results | Tool call outcome tracking | ≥ 97% | < 94% for 15min |
 | **Hallucination Rate** | % of responses containing factually incorrect claims | LLM judge evaluation on sample | < 3% | > 6% for 30min |
@@ -145,7 +145,7 @@ Status: WITHIN BUDGET — monitoring for acceleration
 ### 2.6 Burn Rate Alert Configuration
 
 | Alert Name | Condition | Window | Severity | Response |
-|------------|-----------|--------|---------|---------|
+| ------------ | ----------- | -------- | --------- | --------- |
 | Fast Burn Critical | Burn rate > 14.4× (2% budget in 1hr) | 1 hour | P1 | Immediate on-call page |
 | Fast Burn Warning | Burn rate > 6× (5% budget in 6hr) | 6 hours | P2 | Notify team lead |
 | Slow Burn Warning | Burn rate > 3× (10% budget in 3 days) | 3 days | P3 | Review in next standup |
@@ -479,7 +479,7 @@ Bulkhead Architecture — Agentic Runtime
 Timeouts must be nested: inner timeouts must be shorter than outer timeouts or the outer timeout can never fire.
 
 | Timeout Type | Recommended Default | Scope | Behaviour on Expiry |
-|-------------|-------------------|-------|---------------------|
+| ------------- | ------------------- | ------- | --------------------- |
 | UI Response Timeout | 120s | Browser keeps connection alive | Display "still working" heartbeat |
 | Agent Task Timeout | 300s | Max wall-clock time for a complete task | Task marked TIMEOUT; HITL escalation option |
 | LLM API Call Timeout | 60s | Per LLM provider HTTP request | Circuit breaker increment; try fallback provider |
@@ -500,7 +500,7 @@ The degradation ladder defines the service behavior at each level of impairment.
 ### 4.1 Degradation Levels
 
 | Level | Name | Conditions for Entry | Active Capabilities | UX Behavior |
-|-------|------|---------------------|-------------------|-------------|
+| ------- | ------ | --------------------- | ------------------- | ------------- |
 | **L1** | Full Agentic Mode | All systems nominal | All tools, memory, planning, streaming | Full interactive agent experience |
 | **L2** | Reduced Tool Set | 1–2 non-critical tools unavailable | Core tools only; non-essential tools disabled | Agent continues; mentions it "cannot perform X right now" |
 | **L3** | Read-Only Mode | Write tools unavailable; DB or external APIs degraded | Read-only tools (search, retrieve, summarize) | Agent explains it's in "read-only mode"; no mutations |
@@ -537,7 +537,7 @@ START: New request received
 ### 4.3 UX Behavior at Each Level
 
 | Level | UI Indicator | Message Pattern | Allow User Actions |
-|-------|-------------|-----------------|-------------------|
+| ------- | ------------- | ----------------- | ------------------- |
 | L1 | None (normal) | — | All |
 | L2 | Yellow dot, tooltip on hover | "Some capabilities are temporarily limited." | All except unavailable tools |
 | L3 | Amber banner | "Running in read-only mode. Changes require manual confirmation." | Read + explicit user-confirmed writes |
@@ -629,10 +629,10 @@ class RetryBudget:
                 self._request_times.popleft()
             while self._retry_times and self._retry_times[0] < cutoff:
                 self._retry_times.popleft()
-            
+
             total = len(self._request_times) + 1  # +1 for current
             current_retry_rate = len(self._retry_times) / max(total, 1)
-            
+
             if current_retry_rate >= self.budget_fraction:
                 return False  # Budget exhausted
             return True
@@ -649,7 +649,7 @@ class RetryBudget:
 ### 5.3 Retryable vs Non-Retryable Failures
 
 | Category | Examples | Retry? | Action |
-|----------|----------|--------|--------|
+| ---------- | ---------- | -------- | -------- |
 | **Transport — Transient** | HTTP 429, 503, 504, network timeout | Yes | Backoff with jitter; honour `Retry-After` |
 | **Transport — Permanent** | HTTP 400 (bad request), 404, 405 | No | Fix request before retrying |
 | **Auth** | HTTP 401, 403 | No | Refresh token first; then single retry |
@@ -726,7 +726,7 @@ class IdempotencyStore:
 ### 6.1 What to Checkpoint and When
 
 | Checkpoint Type | What to Save | Trigger | Storage | Retention |
-|----------------|-------------|---------|---------|-----------|
+| ---------------- | ------------- | --------- | --------- | ----------- |
 | **Turn Checkpoint** | User message + agent response + tool calls | Every conversation turn | Redis (hot) | 24 hours |
 | **Step Checkpoint** | Individual agent action + state before/after | Every tool call | Redis + DB | 7 days |
 | **Plan Checkpoint** | Current plan + completed steps + remaining steps | After planning phase | DB | Task lifetime |
@@ -749,23 +749,23 @@ class AgentStepCheckpoint:
     task_id: str = ""
     step_number: int = 0
     created_at: datetime = field(default_factory=datetime.utcnow)
-    
+
     # State
     plan: dict = field(default_factory=dict)          # Current plan
     completed_steps: list = field(default_factory=list)  # Completed steps
     remaining_steps: list = field(default_factory=list)  # Remaining steps
     tool_results: dict = field(default_factory=dict)  # Accumulated tool results
-    
+
     # Context
     conversation_history: list = field(default_factory=list)
     user_preferences: dict = field(default_factory=dict)
-    
+
     # Metadata
     last_tool_call: Optional[dict] = None
     last_tool_result: Optional[Any] = None
     error_count: int = 0
     last_error: Optional[str] = None
-    
+
     # Recovery
     is_terminal: bool = False
     recovery_attempts: int = 0
@@ -834,7 +834,7 @@ SSE Event format with ID:
 ### 7.1 Choreography vs Orchestration Sagas
 
 | Aspect | Choreography Saga | Orchestration Saga |
-|--------|-------------------|-------------------|
+| -------- | ------------------- | ------------------- |
 | **Control** | Distributed — each tool publishes events; next tool subscribes | Centralized — orchestrator directs each tool call |
 | **Coupling** | Low — tools independent | Higher — tools depend on orchestrator |
 | **Visibility** | Hard to trace end-to-end flow | Easy to trace; single execution log |
@@ -848,7 +848,7 @@ SSE Event format with ID:
 Every tool call that causes side effects must have a defined compensation (rollback) action.
 
 | Tool Call | Side Effect | Compensation Action | Compensation Safety |
-|-----------|------------|---------------------|---------------------|
+| ----------- | ------------ | --------------------- | --------------------- |
 | `create_file` | File created in object store | `delete_file(file_id)` | Safe to retry |
 | `send_email` | Email sent | Cannot unsend — log compensation failure | Requires deduplication |
 | `write_database` | Row inserted/updated | `rollback_transaction(tx_id)` | Idempotent |
@@ -943,7 +943,7 @@ User     Browser        Gateway        Orchestrator       Store
 ### 8.2 Session Expiry Handling
 
 | Expiry Scenario | Detection | Recovery | User Experience |
-|----------------|-----------|---------|-----------------|
+| ---------------- | ----------- | --------- | ----------------- |
 | Idle timeout (< 30min) | Session TTL check | Resume from last turn checkpoint | "Resuming your conversation..." |
 | Idle timeout (30–120min) | Session TTL check | Reload full session from DB | Brief loading state; full context restored |
 | Idle timeout (> 2hr) | Session TTL check | Offer to summarize and restart | "Your session expired. Here's a summary of what we discussed." |
@@ -1060,7 +1060,7 @@ Backpressure implementation rules:
 When a stream is interrupted mid-response, partial content must be handled gracefully:
 
 | Scenario | Detection | Recovery Strategy |
-|----------|-----------|------------------|
+| ---------- | ----------- | ------------------ |
 | Stream interrupted mid-sentence | Client received partial `delta` events without `done` | On reconnect, replay missing events; merge with partial |
 | Stream interrupted mid-tool-call | `tool_call_start` received; no `tool_call_result` | Re-execute tool call with idempotency key |
 | Stream interrupted during thinking | `thinking` block incomplete | Discard incomplete thinking block; restart from last turn checkpoint |
@@ -1073,7 +1073,7 @@ When a stream is interrupted mid-response, partial content must be handled grace
 ### 10.1 Local State Caching Strategy
 
 | Cache Type | Storage Mechanism | Scope | TTL | Eviction Policy |
-|------------|-----------------|-------|-----|-----------------|
+| ------------ | ----------------- | ------- | ----- | ----------------- |
 | Conversation history | IndexedDB | Session | 7 days | LRU per session |
 | User preferences | localStorage | User | Permanent | Manual clear |
 | Tool response cache | IndexedDB | Session | 1 hour | TTL expiry |
@@ -1124,12 +1124,12 @@ Queue-and-Sync Flow
 
 User (offline) → Request queued in IndexedDB
                  → UI shows "Will send when online"
-                 
+
 Network restored → Service Worker: flush queue
                  → POST each queued request in order
                  → Handle conflicts (server state may have changed)
                  → Update UI with server responses
-                 
+
 Conflict resolution:
   • Read-only requests: always safe to replay
   • Write requests: use idempotency key + last-write-wins or user prompt
@@ -1143,7 +1143,7 @@ Conflict resolution:
 ### 11.1 Active-Active vs Active-Passive
 
 | Architecture | Active-Active | Active-Passive |
-|-------------|--------------|----------------|
+| ------------- | -------------- | ---------------- |
 | **Traffic distribution** | All regions serve traffic | Primary serves all; secondary on standby |
 | **Failover time** | Seconds (load balancer reroute) | Minutes (DNS change + warm-up) |
 | **State complexity** | High — state must be replicated across regions | Low — single authoritative primary |
@@ -1181,7 +1181,7 @@ Incoming Request
 ### 11.3 State Replication Strategy
 
 | State Type | Replication Method | RPO | Consistency Model |
-|------------|-------------------|-----|-------------------|
+| ------------ | ------------------- | ----- | ------------------- |
 | Conversation checkpoints | Async replication (Redis Streams) | < 5s | Eventual |
 | User preferences | Synchronous write (primary + immediate replication) | 0 | Strong |
 | Session metadata | Async replication | < 2s | Eventual |
@@ -1196,7 +1196,7 @@ Incoming Request
 ### 12.1 Chaos Test Catalog
 
 | Experiment | Failure Mode | Hypothesis | Success Criteria |
-|------------|-------------|-----------|-----------------|
+| ------------ | ------------- | ----------- | ----------------- |
 | **LLM Provider Timeout** | Inject 30s delay on all LLM calls | System degrades to L2 and uses fallback provider | TTFT degrades gracefully; no 500 errors to user |
 | **Tool Failure Injection** | 50% failure rate on `search_web` tool | Agent replans using alternate information sources | Task completion rate drops < 15%; no crashes |
 | **Context Overflow Stress** | Force context to 95% of max token budget | Context compression activates; response quality maintained | No silent truncation of system prompt; latency < 2× baseline |
@@ -1280,7 +1280,7 @@ For each chaos experiment, run the following validation sequence:
 ### 13.1 Error Budget Policy
 
 | Budget Remaining | Engineering Stance | Allowed Activities | Prohibited Activities |
-|-----------------|------------------|--------------------|-----------------------|
+| ----------------- | ------------------ | -------------------- | ----------------------- |
 | > 75% | Feature velocity | All releases; A/B experiments; infrastructure changes | None |
 | 50–75% | Normal caution | All releases with standard review | Risky infra migrations |
 | 25–50% | Elevated caution | Features only with enhanced testing | Non-critical infra changes |
@@ -1345,7 +1345,7 @@ When the error budget is exhausted, the following recovery sequence applies:
 Score each dimension 0–5 (0 = not implemented; 3 = partially implemented; 5 = fully implemented with monitoring and runbooks).
 
 | # | Reliability Dimension | Score (0–5) | Evidence | Priority |
-|---|----------------------|-------------|---------|---------|
+| --- | ---------------------- | ------------- | --------- | --------- |
 | 1 | SLO defined for all critical paths | | | |
 | 2 | SLI measurement automated and dashboarded | | | |
 | 3 | Error budget calculated and tracked | | | |
@@ -1370,7 +1370,7 @@ Score each dimension 0–5 (0 = not implemented; 3 = partially implemented; 5 = 
 **Scoring Guidance:**
 
 | Total Score | Maturity Level | Recommended Action |
-|-------------|---------------|-------------------|
+| ------------- | --------------- | ------------------- |
 | 0–40 | Initial | Focus on SLOs, circuit breakers, and checkpointing first |
 | 41–60 | Developing | Implement retry budgets, saga patterns, chaos tests |
 | 61–80 | Defined | Tune multi-region, streaming recovery, offline support |
@@ -1384,7 +1384,7 @@ Score each dimension 0–5 (0 = not implemented; 3 = partially implemented; 5 = 
 ### 15.1 Agentic System Incident Classification
 
 | Severity | Criteria | Response Time | Escalation |
-|----------|---------|---------------|-----------|
+| ---------- | --------- | --------------- | ----------- |
 | **SEV-1** | Total agent unavailability; data loss; safety guardrail bypassed | 5 minutes | On-call engineer + team lead + VP Engineering |
 | **SEV-2** | > 50% task failure rate; > 5min TTFT for all users; LLM provider down | 15 minutes | On-call engineer + team lead |
 | **SEV-3** | Degraded mode active; quality SLI breach; > 20% tool failure rate | 1 hour | On-call engineer |
@@ -1413,12 +1413,12 @@ STEP 2 — IMMEDIATE MITIGATION (5–15 min):
     □ Enable fallback provider in AI Gateway config
     □ Verify fallback circuit breaker is CLOSED
     □ Monitor: task completion rate should recover within 2 min
-  
+
   If code regression (recent deploy):
     □ Roll back last deploy: kubectl rollout undo deploy/agent-orchestrator
     □ Verify rollback completes: kubectl rollout status deploy/agent-orchestrator
     □ Monitor error rate for 5 min
-  
+
   If infrastructure failure:
     □ Activate degradation Level 5 (human handoff mode)
     □ Notify customer success team: users being routed to human agents
@@ -1473,7 +1473,7 @@ RECOVERY:
 ## 16. Reliability Anti-Patterns
 
 | # | Anti-Pattern | Description | Impact | Correct Pattern |
-|---|-------------|-------------|--------|-----------------|
+| --- | ------------- | ------------- | -------- | ----------------- |
 | 1 | **Unbounded Retry Loop** | Agent retries indefinitely on the same failing step | Cost explosion; thundering herd | Retry budget ≤ 10%; 3-strike halt rule |
 | 2 | **Safety Bypass Retry** | Rephrasing prompt to get around guardrail block | Security incident | Halt and escalate on any safety block |
 | 3 | **Semantic Failure as Transport Retry** | Retrying same prompt after bad reasoning | Same wrong output | Detect failure class; re-plan for semantic failures |

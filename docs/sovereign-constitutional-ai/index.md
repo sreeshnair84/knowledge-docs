@@ -96,7 +96,7 @@ Domain 12  Roadmap, Maturity & Standards Canon
 ## Navigate by Role
 
 | Your Role | Start Here | Then Go To |
-|---|---|---|
+| --- | --- | --- |
 | **Chief AI Officer** | [Sovereign AI Foundations](sovereign-ai-foundations.md) | [AI Governance Operating Model](ai-governance-operating-model.md) → [Roadmap & Maturity](sovereign-ai-roadmap-maturity.md) |
 | **AI Governance Lead / RAI Lead** | [RAI Operating Model](rai-operating-model.md) | [AI Risk Taxonomy](ai-risk-taxonomy.md) → [AI Assurance & Audit](ai-assurance-audit-architecture.md) |
 | **Principal AI Architect** | [Constitutional AI Engineering](constitutional-ai-engineering.md) | [Constitutional Agent Architecture](constitutional-agent-architecture.md) → [Policy-as-Code Framework](policy-as-code-framework.md) |
@@ -111,7 +111,7 @@ Domain 12  Roadmap, Maturity & Standards Canon
 ## 24 Required Deliverables — Index
 
 | # | Deliverable | Where to find it |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Sovereign AI Reference Architecture | [Sovereign AI Foundations](sovereign-ai-foundations.md) §4 |
 | 2 | Constitutional AI Blueprint | [Constitutional AI Engineering](constitutional-ai-engineering.md) §3 |
 | 3 | Responsible AI Operating Model | [RAI Operating Model](rai-operating-model.md) §5 |

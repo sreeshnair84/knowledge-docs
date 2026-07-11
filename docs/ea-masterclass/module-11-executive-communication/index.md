@@ -52,7 +52,7 @@ Different executives have different fears, priorities, and frames of reference. 
 ### The Executive Priority Map
 
 | Executive | Primary Concern | What They Fear | What Motivates Them | How to Engage |
-|-----------|----------------|----------------|---------------------|---------------|
+| ----------- | ---------------- | ---------------- | --------------------- | --------------- |
 | CEO | Growth, competitive position, culture | Disruption by competitors, PR disasters, strategic irrelevance | Big bets that move the needle | Lead with market opportunity and competitive consequence |
 | CFO | Cost, ROI, capital allocation, financial risk | Budget overruns, poor investments, audit findings | Rigorous numbers with clear payback | Use scenarios: best/base/worst case with timelines |
 | CIO | IT delivery, reliability, security, vendor management | Outages, security breaches, shadow IT, failed programs | Platform stability and delivery velocity | Show how it reduces operational risk and improves delivery |
@@ -143,7 +143,7 @@ Data tells executives what is happening. Story tells them why they should care.
 The structure that makes films, books, and speeches memorable also works in board rooms. The hero's journey applied to enterprise technology:
 
 | Story Element | In Technology Proposals |
-|---------------|------------------------|
+| --------------- | ------------------------ |
 | The Hero | Your business, your customers, or your operations team |
 | The Ordinary World | Current state — how things work today |
 | The Call to Adventure | The strategic opportunity or threat |
@@ -167,6 +167,7 @@ Notice what this narrative does not contain: no mention of technology stack, no 
 Executives need a reason to act now rather than later. The burning platform narrative creates urgency, but it must be grounded in fact.
 
 **Effective urgency drivers:**
+
 - A competitor who has already deployed the equivalent capability
 - A regulatory deadline with real financial consequence
 - A technical end-of-life event with known risk
@@ -174,6 +175,7 @@ Executives need a reason to act now rather than later. The burning platform narr
 - A cost trajectory that accelerates if action is deferred
 
 **Ineffective urgency (and why it backfires):**
+
 - "AI is moving fast and we need to keep up" — too vague to motivate action
 - "Our competitors are all doing this" — sounds like herd mentality
 - Inflated risk scenarios without evidence — executives recognize fear-mongering
@@ -190,7 +192,7 @@ Board presentations are a different category of communication. The stakes are hi
 ### How Board Presentations Differ
 
 | Dimension | Executive Team Presentation | Board Presentation |
-|-----------|----------------------------|--------------------|
+| ----------- | ---------------------------- | -------------------- |
 | Length | 20–40 minutes | 10–20 minutes |
 | Slides | 15–25 slides | 5–10 slides |
 | Detail level | Operational and tactical | Strategic and directional |
@@ -293,7 +295,7 @@ Before-and-after diagrams work because they tell a story without requiring techn
 ### Business Outcome Diagrams vs. Technical Architecture Diagrams
 
 | Diagram Type | Audience | Purpose | What to Show |
-|--------------|----------|---------|-------------|
+| -------------- | ---------- | --------- | ------------- |
 | Business outcome diagram | C-suite, board | Communicate value | Flow of business activity, time savings, cost reduction |
 | Capability diagram | Business sponsors | Communicate what the system does | Business capabilities enabled, not implementation |
 | Technical architecture diagram | Engineering teams, ARB | Communicate how to build | Components, integrations, data flows |
@@ -328,8 +330,8 @@ DATE:     [Date]
 RE:       Recommendation to [specific action]
 
 RECOMMENDATION
-[One clear sentence stating what you recommend. Not "we have three options." 
-A recommendation. "We recommend Option A: cloud-native customer data platform 
+[One clear sentence stating what you recommend. Not "we have three options."
+A recommendation. "We recommend Option A: cloud-native customer data platform
 implementation, commencing Q3 FY26, with a total investment of $14.2M."]
 
 SITUATION
@@ -381,7 +383,7 @@ Compare this to: "There are some risks but we are managing them." The first earn
 Analogies are not dumbing things down. They are making complex concepts accessible to people who have not spent years thinking about them. The best executive communicators maintain a personal analogy library.
 
 | Technology Concept | Effective Analogy |
-|-------------------|-------------------|
+| ------------------- | ------------------- |
 | Artificial Intelligence | "A pattern-recognition consultant that never sleeps, has read every book ever written, and can give an answer in milliseconds — but needs careful instruction to give the right answer." |
 | Machine Learning | "Like a new employee. You show them thousands of examples of good and bad work. Eventually they learn the difference and can make the judgment themselves." |
 | Cloud Computing | "Renting computing power the way businesses rent office space — you pay for what you use, scale up or down based on demand, and someone else handles the building maintenance." |
@@ -396,7 +398,7 @@ Analogies are not dumbing things down. They are making complex concepts accessib
 Every technical statement must pass the "so what" test before it enters an executive communication. Apply it ruthlessly:
 
 | Technical Statement | "So What?" | Executive Version |
-|--------------------|-----------|------------------|
+| -------------------- | ----------- | ------------------ |
 | "We are moving to a microservices architecture." | Why does that matter to the business? | "We will be able to deploy new features in days instead of months, reducing time-to-market for new products." |
 | "We are implementing a data mesh." | What does that do for the business? | "Business units will get access to the data they need without waiting for IT, accelerating their analytics and AI use cases." |
 | "Our API gateway will be replaced." | And? | "The system that 43 external partners connect to will become more reliable and secure, reducing partner integration failures by an estimated 80%." |
@@ -417,6 +419,7 @@ Every investment proposal faces objections. The architects who succeed in execut
 This is the most dangerous objection because it carries emotional weight. The executive is not just raising a logical concern — they may be protecting themselves from being associated with another failure.
 
 Response strategy:
+
 1. Acknowledge the previous failure genuinely: "You are right, and the 2019 program is worth understanding in detail."
 2. Diagnose what was different: "After reviewing that program, we found three specific causes of failure: insufficient executive sponsorship, an implementation partner who underestimated complexity, and a go-live date that was not moved when scope expanded."
 3. Show what is different now: "This proposal addresses all three directly. Here is how."
@@ -426,6 +429,7 @@ Response strategy:
 Never defend ROI numbers as if they are facts. They are estimates. The right response is to show your working.
 
 Response strategy:
+
 1. "I appreciate that scrutiny — let me show you the assumptions behind the number."
 2. Share the sensitivity analysis: "If we assume 20% lower adoption than our base case, the ROI drops from 340% to 210% — still a strong return."
 3. Offer to validate: "We could commission an independent validation of the benefit assumptions before the final investment decision if that would help."
@@ -435,6 +439,7 @@ Response strategy:
 This objection often signals that the executive does not yet understand the problem. Do not argue — educate.
 
 Response strategy:
+
 1. Validate the instinct: "That is always our first question too — before recommending new investment, we always ask whether existing capabilities can solve the problem."
 2. Show the analysis: "Here is the assessment of our current platform against the four requirements of this use case. In three of the four areas, the current platform cannot meet the need without significant customisation — and that customisation would cost 60% as much as the new solution, with none of the long-term scalability benefits."
 
@@ -443,6 +448,7 @@ Response strategy:
 This objection often signals a different underlying question: "Can we get the benefit faster and cheaper?"
 
 Response strategy:
+
 1. Do not immediately concede scope — understand the constraint first: "Is the concern primarily about the total investment, or about the timeline to first value?"
 2. Offer a phased approach if one exists: "We can structure this as a pilot that delivers [specific outcome] in six months for [fraction of total cost]. That validates the approach before the full commitment."
 3. Show the cost of delay: "Each quarter we defer this program costs approximately $[X] in [missed savings / lost revenue / increased risk exposure]."
@@ -452,6 +458,7 @@ Response strategy:
 This question is an invitation to demonstrate market intelligence. Be prepared.
 
 Response strategy:
+
 1. Have competitive intelligence ready: "Of our five direct competitors, three have announced equivalent programs. [Competitor A] went live in Q1 and reported a 15% improvement in [relevant metric]."
 2. Frame the gap: "We are currently 18 months behind the industry leaders. This program closes that gap within 12 months."
 3. Avoid overreach: Only cite sources you can defend. If you do not have the data, say so.
@@ -461,6 +468,7 @@ Response strategy:
 This is often a legitimate concern. Respect it.
 
 Response strategy:
+
 1. Show the skills assessment: "We conducted a skills inventory across our architecture and engineering teams. Here is where we have coverage and where we have gaps."
 2. Present the plan: "The gap is in [specific area]. Our plan is to [hire / train / partner / use managed service] to fill it. Here is the timeline and cost."
 3. Reference the delivery model: "The implementation partner we have selected has delivered 14 equivalent programs in the past three years. They bring the skills we need to stand up alongside our team."
@@ -486,7 +494,7 @@ BATNA is the most important concept in negotiation. It is what you will do if th
 **Example scenarios:**
 
 | Scenario | Your BATNA | Their BATNA | Your negotiating position |
-|----------|-----------|-------------|--------------------------|
+| ---------- | ----------- | ------------- | -------------------------- |
 | Vendor pricing negotiation | Use Vendor B | Lose this contract | Moderate — let them know Vendor B exists |
 | Scope expansion demand | Deliver original scope, defer new items | Escalate to sponsor | Strong — hold to original scope unless budget increases |
 | Timeline compression | Push back with risk analysis | Escalate over your head | Understand who has authority before this conversation |
@@ -507,6 +515,7 @@ When you understand the interest rather than the position, you can often find so
 A business sponsor is asking you to add three new integration requirements to a project that is already underway. There is no budget for additional scope.
 
 Approach:
+
 1. Do not immediately say no. Understand the urgency: "Help me understand — are these requirements blocking the business outcome, or are they enhancements?"
 2. If blocking: raise it to the sponsor as a budget discussion, not a technical conversation
 3. If enhancement: propose a phase 2: "These are valuable additions. Let us deliver the original scope on schedule and budget, then scope phase 2 with a business case for the additional investment."
@@ -516,6 +525,7 @@ Approach:
 An enterprise software vendor has quoted $2.4M for a three-year license. Your budget is $1.8M.
 
 Approach:
+
 1. Never show the full budget — open with "we need this closer to $1.5M"
 2. Ask what is in the price: "Walk me through what is included at $2.4M. Are there modules we will not use?"
 3. Offer something in exchange for a lower price: longer term, faster payment, a reference case, a co-marketing agreement
@@ -561,6 +571,7 @@ In any major decision-making process, the formal meeting is rarely where the dec
 **Task:** Take a technical architecture document (any document from your work experience) and convert it into a 3-paragraph executive brief using the SCR framework.
 
 **Constraints:**
+
 - Paragraph 1 (Situation): One sentence of context. No technical terms.
 - Paragraph 2 (Complication): The business problem this creates. One or two sentences.
 - Paragraph 3 (Resolution): Your recommendation with the business outcome. Quantify the outcome.
@@ -582,6 +593,7 @@ In any major decision-making process, the formal meeting is rarely where the dec
 **Task:** Write a 1-page recommendation memo recommending a cloud migration for a hypothetical financial services company. The company has 60% of its applications on aging on-premises infrastructure. Use the memo format defined in this module.
 
 **Include:**
+
 - A clear recommendation (not "we have options")
 - A business case summary (three numbers)
 - Three risks with mitigations
@@ -592,6 +604,7 @@ In any major decision-making process, the formal meeting is rarely where the dec
 **Task:** Prepare a 5-slide board presentation on AI readiness for a company with 20,000 employees. The board has never had a formal AI briefing.
 
 **Slide structure:**
+
 - Slide 1: What is happening in the AI landscape that is relevant to our business (one chart, three bullets)
 - Slide 2: Where we are today — our AI readiness status (one maturity chart)
 - Slide 3: What we are doing about it — the AI program (timeline, investment, outcomes)
@@ -637,7 +650,7 @@ In any major decision-making process, the formal meeting is rarely where the dec
 ## Common Mistakes in Executive Communication
 
 | Mistake | Why It Fails | The Better Approach |
-|---------|-------------|---------------------|
+| --------- | ------------- | --------------------- |
 | Leading with technology | Executives care about outcomes, not tools | Open with the business problem and the business outcome |
 | Too many slides | Signals inability to prioritise | Use 8–12 slides for executive presentations; 5–7 for board |
 | No clear recommendation | Executives pay for judgment, not options | Always make a recommendation, even if you note uncertainty |

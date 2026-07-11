@@ -46,7 +46,7 @@ Kong AI Gateway is an **enterprise-grade, open-source AI infrastructure layer** 
 ### Key Value Propositions
 
 | Problem | Kong AI Gateway Solution |
-|---|---|
+| --- | --- |
 | Multiple LLM provider SDKs | Single unified API surface |
 | No token usage visibility | Built-in token metering & analytics |
 | Prompt injection risks | Guardrail plugins |
@@ -446,7 +446,7 @@ curl -X POST http://localhost:8000/openai/v1/chat/completions \
 ### Route Types Supported
 
 | Route Type | Description |
-|---|---|
+| --- | --- |
 | `llm/v1/chat` | Chat completions (multi-turn) |
 | `llm/v1/completions` | Text completions |
 | `llm/v1/embeddings` | Vector embeddings |
@@ -540,7 +540,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 ### Threshold Tuning
 
 | Threshold | Behavior |
-|---|---|
+| --- | --- |
 | `0.99` | Only near-identical questions hit cache |
 | `0.90` | Moderate similarity — recommended starting point |
 | `0.75` | Aggressive caching — may return slightly off-topic answers |
@@ -1039,6 +1039,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 
 
 ### Advanced Authentication Patterns
+>
 > The following patterns extend the auth fundamentals above. Source: Kong AI Gateway Auth Deep Dive.
 
 ### 4. Auth Proxy Offloading Patterns
@@ -1553,7 +1554,7 @@ Never store raw LLM API keys in Kong's config. Use Vault to retrieve secrets dyn
 ### Supported Vault Backends
 
 | Vault | Config Key |
-|---|---|
+| --- | --- |
 | HashiCorp Vault | `hcv` |
 | AWS Secrets Manager | `aws` |
 | GCP Secret Manager | `gcp` |
@@ -1944,6 +1945,7 @@ curl "http://localhost:8001/audit/requests?path=/consumers" | jq .
 ### 13. Complete Working Example: Private AI API
 
 This example builds a fully private AI API where:
+
 - Clients **never see** the OpenAI API key
 - Every consumer has **scoped access** with token limits
 - Auth is **offloaded entirely** to Kong
@@ -2286,7 +2288,7 @@ curl -X POST http://localhost:8001/consumers/my-app/plugins \
 Streaming modes:
 
 | Mode | Behavior |
-|---|---|
+| --- | --- |
 | `allow` | Passes through streaming if client requests it |
 | `deny` | Forces all responses to be buffered |
 | `always` | Forces streaming even if client didn't request it |

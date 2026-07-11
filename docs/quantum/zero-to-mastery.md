@@ -12,6 +12,7 @@ covers_version: \"as of 2026-07-10\"
 ---
 
 # Quantum AI: Zero to Mastery
+
 **Principal Architect Track · 12-Week Programme · 2026 Edition**
 
 > The quantum era is not coming — it is here. By 2030, quantum advantage will disrupt cryptography, drug discovery, logistics optimisation, financial modelling, and machine learning itself. This guide takes you from first principles to production-grade quantum system design.
@@ -25,7 +26,7 @@ The second quantum revolution is commercial. McKinsey's 2026 Quantum Technology 
 For a Principal Architect, this matters on three axes:
 
 | Axis | Classical Limit | Quantum Opportunity |
-|------|----------------|---------------------|
+| ------ | ---------------- | --------------------- |
 | **Optimisation** | NP-hard problems scale exponentially | QAOA approximates solutions on NISQ hardware today |
 | **ML / AI** | Diminishing returns from model scaling | QNNs & quantum kernels access exponentially larger feature spaces |
 | **Security** | RSA-2048 / ECC break under Shor's algorithm (2030–2035) | Post-quantum cryptography is an immediate compliance requirement |
@@ -107,7 +108,7 @@ You do not need a physics PhD. You need a working engineer's understanding of th
 Quantum gates are reversible and correspond to rotations on the Bloch sphere.
 
 | Gate | Symbol | Action | Matrix |
-|------|--------|--------|--------|
+| ------ | -------- | -------- | -------- |
 | Pauli-X (NOT) | X | Flips \|0⟩↔\|1⟩ | `[[0,1],[1,0]]` |
 | Hadamard | H | Creates superposition | `[[1,1],[1,-1]]/√2` |
 | CNOT | CX | Entangles two qubits | Flips target if control=\|1⟩ |
@@ -138,7 +139,7 @@ print(qc.draw())
 ### Week 3: Quantum Algorithms — Grover, Shor, Deutsch-Jozsa
 
 | Algorithm | Problem | Speedup | Architect's Note |
-|-----------|---------|---------|-----------------|
+| ----------- | --------- | --------- | ----------------- |
 | **Deutsch-Jozsa** | Is a function constant or balanced? | Exponential (1 query vs N/2) | First proof of quantum advantage. Understand the oracle pattern. |
 | **Grover's** | Unstructured search in N elements | Quadratic (√N vs N) | Oracle pattern is the ancestor of QNN loss encoding. |
 | **Shor's** | Integer factorisation | Exponential | Why RSA will break. Requires QFT + phase estimation. |
@@ -168,7 +169,7 @@ qc.measure_all()
 #### Hardware Modalities
 
 | Platform | Provider | Gate Time | Coherence | Connectivity | Best For |
-|----------|----------|-----------|-----------|--------------|----------|
+| ---------- | ---------- | ----------- | ----------- | -------------- | ---------- |
 | **Superconducting** | IBM, Google | ~50 ns | ~100 µs | Nearest-neighbour | Large qubit count, fast iteration |
 | **Trapped Ion** | IonQ, Quantinuum | ~1 ms | Seconds | All-to-all | High fidelity, near-term algorithms |
 | **Photonic** | Xanadu | Room temp | Short | Gaussian boson sampling | QML, continuous-variable QC |
@@ -207,7 +208,7 @@ mitigated_result = zne.execute_with_zne(
 Before building quantum ML models, understand which classical ML operations have quantum analogues.
 
 | Classical Operation | Quantum Analogue | Potential Advantage |
-|--------------------|-----------------|---------------------|
+| -------------------- | ----------------- | --------------------- |
 | Matrix-vector multiply | Quantum matrix inversion (HHL) | Exponential (with strict caveats) |
 | Kernel function | Quantum kernel (Hilbert space inner product) | Exponential feature space |
 | Gradient descent | Parameter shift rule | Exact gradients without backprop |
@@ -329,7 +330,7 @@ svc.fit(X_train, y_train)
 **Key QNN Architectures:**
 
 | Architecture | Use Case | Advantage |
-|-------------|----------|-----------|
+| ------------- | ---------- | ----------- |
 | Data re-uploading | General classification | Expressibility via repeated encoding |
 | QCNN | Structured spatial data | Avoids barren plateaus, translationally symmetric |
 | Quantum Boltzmann Machine | Generative modelling | Quantum generalisation of RBMs |
@@ -356,7 +357,7 @@ circuits = [ansatz(d) for d in diagrams]
 #### LLM × Quantum Integration Patterns
 
 | Pattern | Description | Timeline |
-|---------|-------------|----------|
+| --------- | ------------- | ---------- |
 | **LLM as Circuit Designer** | Use Claude/GPT to generate Qiskit from natural language | Available now |
 | **Quantum-Enhanced Embeddings** | Replace classical embeddings with quantum feature maps for molecular/graph data | NISQ-era |
 | **Quantum RAG** | Quantum approximate nearest-neighbour search for retrieval | 2–3 years |
@@ -394,7 +395,7 @@ exec(response.content[0].text)
 #### The Hybrid Quantum-Classical Stack
 
 | Layer | Components | Architect's Responsibility |
-|-------|------------|---------------------------|
+| ------- | ------------ | --------------------------- |
 | **Application** | Business logic, API, UI | Problem formulation, quantum ROI |
 | **Orchestration** | Job scheduler, workflow engine | Circuit queuing, hybrid execution |
 | **Quantum Runtime** | Transpiler, error mitigation, sampler | Backend selection, shot budgets |
@@ -447,7 +448,7 @@ Cross-reference: [AI Harness & Orchestration](../enterprise-architecture/ai-arch
 **Hardware Selection Matrix**
 
 | Requirement | Best Choice | Why |
-|-------------|------------|-----|
+| ------------- | ------------ | ----- |
 | High gate fidelity | IonQ / Quantinuum | Trapped-ion all-to-all connectivity |
 | Large qubit count | IBM (433Q Eagle) | Superconducting scalability |
 | QML research | PennyLane + any backend | Hardware-agnostic autodiff |
@@ -460,7 +461,7 @@ Cross-reference: [AI Harness & Orchestration](../enterprise-architecture/ai-arch
 ### Week 10: Quantum Cloud Platforms & SDK Deep Dive
 
 | Platform | Qubits | SDK | Pricing Model | Best For |
-|----------|--------|-----|--------------|----------|
+| ---------- | -------- | ----- | -------------- | ---------- |
 | **IBM Quantum** | 127–433Q | Qiskit v1.x | Free tier + Premium | Ecosystem maturity, Qiskit Runtime |
 | **Google Quantum AI** | 105Q Willow | Cirq | Partnership only | Error correction research |
 | **AWS Braket** | Multi-provider | braket-sdk | Pay-per-shot | Multi-provider, SageMaker integration |
@@ -506,7 +507,7 @@ def circuit(x):
 #### NIST Post-Quantum Standards (2024)
 
 | Standard | Algorithm | Use Case | Security Basis |
-|----------|-----------|----------|---------------|
+| ---------- | ----------- | ---------- | --------------- |
 | **FIPS 203** | ML-KEM (Kyber) | Key encapsulation | Module lattice |
 | **FIPS 204** | ML-DSA (Dilithium) | Digital signatures | Module lattice |
 | **FIPS 205** | SLH-DSA (SPHINCS+) | Digital signatures | Hash-based |
@@ -690,7 +691,7 @@ optimal_weights = portfolio.interpret(result)
 **Architecture for production:**
 
 | Component | Technology | Notes |
-|-----------|-----------|-------|
+| ----------- | ----------- | ------- |
 | Data ingestion | AWS Kinesis | Real-time market data |
 | Problem formulation | Python + Qiskit Finance | QUBO mapping |
 | QPU execution | AWS Braket (IonQ + D-Wave) | Multi-provider hedge |
@@ -787,7 +788,7 @@ Cross-reference: [AI Security & Governance](../ai-security-governance/index.md) 
 **Quantum Solution Design:**
 
 | Stage | Technology | Output |
-|-------|-----------|--------|
+| ------- | ----------- | -------- |
 | Grid state ingestion | SCADA → Kafka | Real-time sensor stream |
 | QUBO formulation | Qiskit Optimisation | Load-balancing Hamiltonian |
 | Quantum solve | D-Wave Advantage (annealing) | Optimal switching schedule |
@@ -895,7 +896,7 @@ Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [
 ### 90-Day Milestone Map
 
 | Milestone | Deliverable | Success Metric |
-|-----------|-------------|---------------|
+| ----------- | ------------- | --------------- |
 | End of Week 2 | Quantum circuits on real IBM hardware | >95% correct measurement on ibmq backend |
 | End of Week 4 | Error mitigation strategy designed | Phase 1 architecture brief peer-reviewed |
 | End of Week 6 | VQE or QAOA on a real problem | Energy estimate within 5% of classical |
@@ -907,7 +908,7 @@ Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [
 ### Certifications
 
 | Certification | Provider | Level | Why It Matters |
-|--------------|----------|-------|---------------|
+| -------------- | ---------- | ------- | --------------- |
 | IBM Certified Associate Developer — Quantum *(PDF archived)* | IBM | Entry | Best entry-level cert; validates Qiskit proficiency |
 | IBM Certified Developer — Quantum *(PDF archived)* | IBM | Professional | Algorithm implementation, Runtime v2, VQE, QAOA, QML |
 | MIT 8.370x Quantum Information Science | edX / MIT | Academic | Rigorous physics-based foundations |
@@ -916,7 +917,7 @@ Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [
 ### Target Roles
 
 | Role | Employers | Requires |
-|------|-----------|---------|
+| ------ | ----------- | --------- |
 | **Quantum Solutions Architect** | IBM, AWS, Azure Quantum, Quantinuum | Phases 1–3 + business communication |
 | **Quantum AI Research Engineer** | Google DeepMind, Quantinuum, national labs | Deep Phase 2 + research publication |
 | **Principal Quantum Architect** | Banks, pharma, aerospace | All phases + enterprise delivery track record |
@@ -927,7 +928,7 @@ Cross-reference: [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md) · [
 ## Appendix E — Tooling Cheat Sheet
 
 | Tool | Category | Install | Primary Use |
-|------|----------|---------|-------------|
+| ------ | ---------- | --------- | ------------- |
 | **Qiskit** | SDK | `pip install qiskit` | IBM hardware, circuits, simulation |
 | **PennyLane** | SDK/ML | `pip install pennylane` | QML, autodiff, hardware-agnostic |
 | **Cirq** | SDK | `pip install cirq` | Google hardware, research circuits |
@@ -968,7 +969,7 @@ The three industry research reports in this section provide deep dives into each
 ## Further Reading & Communities
 
 | Resource | Type | Why |
-|----------|------|-----|
+| ---------- | ------ | ----- |
 | Nielsen & Chuang: *Quantum Computation and Quantum Information* | Book | The definitive reference — read Chapters 1–5 and 10 |
 | IBM Quantum Learning (learning.quantum.ibm.com) | Online | Free, hands-on, real hardware access |
 | PennyLane Tutorials (pennylane.ai/qml) | Tutorial | Best QML tutorials — VQE, QNN, kernels, QNLP |

@@ -9,14 +9,15 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-**Claude & GitHub Agents** Best Practices Guide — v2 Enriched Edition 
-Skills · Hooks · Plugins · MCP · Routing Design · Agent Teams · Anti-Patterns · Token Optimization 
-April 2026 · Based on Anthropic Official Docs, Community Research & Production Data 
-This v2 edition incorporates the **April 2026 Claude Code changelog** , the newly published **Dive-into-Claude-Code architectural analysis** (arXiv 2604.14228), official Anthropic best-practices documentation, production patterns from the awesome-claude-code community (35.9K I), and a comprehensive anti-pattern catalog drawn from real-world failure modes. New sections cover **Routing Design** , **Agent Teams** , and the **Explore-Plan-Execute pipeline** . 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 1 
-# **Table of Contents** 
+**Claude & GitHub Agents** Best Practices Guide — v2 Enriched Edition
+Skills · Hooks · Plugins · MCP · Routing Design · Agent Teams · Anti-Patterns · Token Optimization
+April 2026 · Based on Anthropic Official Docs, Community Research & Production Data
+This v2 edition incorporates the **April 2026 Claude Code changelog** , the newly published **Dive-into-Claude-Code architectural analysis** (arXiv 2604.14228), official Anthropic best-practices documentation, production patterns from the awesome-claude-code community (35.9K I), and a comprehensive anti-pattern catalog drawn from real-world failure modes. New sections cover **Routing Design** , **Agent Teams** , and the **Explore-Plan-Execute pipeline** .
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 1
 
-### **00** 
+# **Table of Contents**
+
+### **00**
 
 |**01**|**Architecture Deep Dive**|
 |---|---|
@@ -46,19 +47,19 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 1
 |New repos, skills, Agent Teams, claude-devtools, SkillKit|
 |Setup checklist, decision trees, env vars, cost math|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 2 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 2
 
-### **01** 
+### **01**
 
-# **Architecture Deep Dive** 
+# **Architecture Deep Dive**
 
-A 2026 source-level analysis of Claude Code v2.1.88 (~1,900 TypeScript files, ~512K LOC) reveals a counterintuitive truth: **only 1.6% of the codebase is AI decision logic** . The other 98.4% is deterministic infrastructure — permission gates, context management, tool routing, and recovery logic. 
+A 2026 source-level analysis of Claude Code v2.1.88 (~1,900 TypeScript files, ~512K LOC) reveals a counterintuitive truth: **only 1.6% of the codebase is AI decision logic** . The other 98.4% is deterministic infrastructure — permission gates, context management, tool routing, and recovery logic.
 
-##### I **Architectural Insight** 
+##### I **Architectural Insight**
 
-The agent loop is a simple ReAct-pattern while-loop. The real engineering complexity lives in the systems around it: 5 compaction shapers, 9 context sources, 27 hook events, and a 7-layer safety system. Build your agents the same way — keep AI narrow, infrastructure wide. 
+The agent loop is a simple ReAct-pattern while-loop. The real engineering complexity lives in the systems around it: 5 compaction shapers, 9 context sources, 27 hook events, and a 7-layer safety system. Build your agents the same way — keep AI narrow, infrastructure wide.
 
-## **The 9-Step Pipeline Per Turn** 
+## **The 9-Step Pipeline Per Turn**
 
 |**Step**|**Name**|**What It Does**|
 |---|---|---|
@@ -68,9 +69,9 @@ The agent loop is a simple ReAct-pattern while-loop. The real engineering comple
 |4-8|5 Compaction shapers|Budget Reduction→Snip→Microcompact→Context Collapse→Auto-Compact|
 |9|Model call + dispatch|Tool requests→Permission gate→Execution→Stop condition check|
 
-## **The 5-Layer Compaction Pipeline** 
+## **The 5-Layer Compaction Pipeline**
 
-Before every model call, five shapers run sequentially — cheapest first. Each targets a different type of context pressure: 
+Before every model call, five shapers run sequentially — cheapest first. Each targets a different type of context pressure:
 
 |**Laye**<br>**r**|**Name**|**Triggers When**|**Cost**|
 |---|---|---|---|
@@ -80,41 +81,41 @@ Before every model call, five shapers run sequentially — cheapest first. Each 
 |4|Context Collapse|History extremely long|Medium|
 |5|Auto-Compact|Semantic compression needed (last resort)|High|
 
-##### II **Context Rot — Real Threshold** 
+##### II **Context Rot — Real Threshold**
 
-Quality degrades at 20-40% context full, NOT 80-90% as commonly assumed. Set 
+Quality degrades at 20-40% context full, NOT 80-90% as commonly assumed. Set
 
-CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60 to trigger compaction before degradation. The 1M token window on Opus 4.7 is large but does not eliminate this degradation curve. 
+CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60 to trigger compaction before degradation. The 1M token window on Opus 4.7 is large but does not eliminate this degradation curve.
 
-## **The 9 Context Sources (Ordered)** 
+## **The 9 Context Sources (Ordered)**
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 3 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 3
 
-Claude Code builds the context window from 9 ordered sources. Understanding this order is critical for debugging unexpected behavior: 
+Claude Code builds the context window from 9 ordered sources. Understanding this order is critical for debugging unexpected behavior:
 
-- I **1.** System prompt (deterministic — always obeyed) 
+- I **1.** System prompt (deterministic — always obeyed)
 
-- I **2.** Managed settings / org-level policies 
+- I **2.** Managed settings / org-level policies
 
-- I **3.** Project CLAUDE.md (delivered as **user context** — probabilistic compliance, not system prompt!) 
+- I **3.** Project CLAUDE.md (delivered as **user context** — probabilistic compliance, not system prompt!)
 
-- I **4.** User-level CLAUDE.md (~/.claude/CLAUDE.md) 
+- I **4.** User-level CLAUDE.md (~/.claude/CLAUDE.md)
 
-- I **5.** Active skills (up to 25K shared token budget, most recent first) 
+- I **5.** Active skills (up to 25K shared token budget, most recent first)
 
-- I **6.** Subagent system prompts (isolated per subagent) 
+- I **6.** Subagent system prompts (isolated per subagent)
 
-- I **7.** Tool schemas / MCP tool definitions 
+- I **7.** Tool schemas / MCP tool definitions
 
-- I **8.** Conversation history (with compaction) 
+- I **8.** Conversation history (with compaction)
 
-- I **9.** Current turn input + tool results 
+- I **9.** Current turn input + tool results
 
-##### I **Critical: CLAUDE.md is NOT the System Prompt** 
+##### I **Critical: CLAUDE.md is NOT the System Prompt**
 
-CLAUDE.md instructions are delivered as user context, giving probabilistic compliance. For deterministic enforcement, use Hooks. For standing domain knowledge, use Skills. CLAUDE.md is for project conventions Claude gets wrong without it — keep it under 80 lines. 
+CLAUDE.md instructions are delivered as user context, giving probabilistic compliance. For deterministic enforcement, use Hooks. For standing domain knowledge, use Skills. CLAUDE.md is for project conventions Claude gets wrong without it — keep it under 80 lines.
 
-## **Five Workflow Patterns (Anthropic Canonical)** 
+## **Five Workflow Patterns (Anthropic Canonical)**
 
 |**Pattern**|**Description**|**Claude Code Implementation**|
 |---|---|---|
@@ -124,15 +125,15 @@ CLAUDE.md instructions are delivered as user context, giving probabilistic compl
 |Orchestrator-Workers|Master delegates to workers|Main agent + subagents (primary pattern)|
 |Evaluator-Optimizer|Output critiqued and improved|Stop hook→evaluate→re-invoke loop|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 4 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 4
 
-### **02** 
+### **02**
 
-# **Agent Skills — v2 Best Practices** 
+# **Agent Skills — v2 Best Practices**
 
-Skills are the primary mechanism for giving Claude domain expertise. The open standard (Dec 2025) means the same SKILL.md works across Claude Code, Claude.ai, the API, Cursor, Gemini CLI, Codex CLI, and Antigravity IDE. The SkillKit marketplace (Apr 2026) now offers 400,000+ skills. 
+Skills are the primary mechanism for giving Claude domain expertise. The open standard (Dec 2025) means the same SKILL.md works across Claude Code, Claude.ai, the API, Cursor, Gemini CLI, Codex CLI, and Antigravity IDE. The SkillKit marketplace (Apr 2026) now offers 400,000+ skills.
 
-## **SKILL.md — Full Frontmatter Reference** 
+## **SKILL.md — Full Frontmatter Reference**
 
 ```
 ---
@@ -181,14 +182,14 @@ You are a CFO-level financial analyst. Follow this exact pipeline:
 NEVER invent numbers. Confidence score required (0-100).
 ```
 
-## **Description Engineering — The Routing Key** 
+## **Description Engineering — The Routing Key**
 
-The description field is Claude's routing key for auto-invocation. Poor descriptions cause skills to never fire or fire on everything: 
+The description field is Claude's routing key for auto-invocation. Poor descriptions cause skills to never fire or fire on everything:
 
 |**Pattern**|I**Bad**<br>I**Good**|
 |---|---|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 5 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 5
 
 |Trigger phrase|'Handles documents'|'Use PROACTIVELY when user asks to create Excel (.xlsx) or<br>analyze spreadsheet data'|
 |---|---|---|
@@ -197,9 +198,9 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 5
 |Action verbs|'For reports'|'Generates, analyzes, extracts, transforms, validates'|
 |Negative examples|(none)|'Examples that should NOT trigger: word count, sorting a list, unit<br>conversion'|
 
-## **SkillTool vs AgentTool — Critical Distinction** 
+## **SkillTool vs AgentTool — Critical Distinction**
 
-Not all skill invocations are equal. The context field determines which mechanism is used: 
+Not all skill invocations are equal. The context field determines which mechanism is used:
 
 |**Field**|**context: inline (SkillTool)**|**context: fork (AgentTool)**|
 |---|---|---|
@@ -209,7 +210,7 @@ Not all skill invocations are equal. The context field determines which mechanis
 |Compaction|Shared 25K skill budget|Completely isolated|
 |Can modify files?|Yes (inherits permissions)|Only with allowed-tools: Write|
 
-## **Pre-built Skills (Updated Apr 2026)** 
+## **Pre-built Skills (Updated Apr 2026)**
 
 |**Skill ID**|**Purpose**|**API Beta**|**Installs**|
 |---|---|---|---|
@@ -220,17 +221,17 @@ Not all skill invocations are equal. The context field determines which mechanis
 |claude-api|Up-to-date API reference, SDK docs|Bundled|–|
 |frontend-desig<br>n|Distinctive UI avoiding 'AI slop' aesthetics|Bundled|277K+|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 6 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 6
 
-### **03** 
+### **03**
 
-# **Routing Design & Subagents** 
+# **Routing Design & Subagents**
 
-Routing is the highest-leverage design decision in any multi-agent system. Claude Code routes via subagent descriptions, model selection per agent, and the Explore-Plan-Execute pipeline. Getting this right prevents the two most common failures: context bloat and wrong model for the task. 
+Routing is the highest-leverage design decision in any multi-agent system. Claude Code routes via subagent descriptions, model selection per agent, and the Explore-Plan-Execute pipeline. Getting this right prevents the two most common failures: context bloat and wrong model for the task.
 
-## **The Explore-Plan-Execute Pipeline (Official Pattern)** 
+## **The Explore-Plan-Execute Pipeline (Official Pattern)**
 
-The canonical routing pattern from Anthropic's internal teams and the official best-practices docs: 
+The canonical routing pattern from Anthropic's internal teams and the official best-practices docs:
 
 ```
 # CLAUDE.md — Agent Delegation Rules
@@ -240,13 +241,13 @@ For ANY task touching >3 files or involving refactoring:
 1. Invoke @explore subagent to map relevant files (read-only, Haiku)
 ```
 
-`2. Feed output to @plan subagent with specific scope` 
+`2. Feed output to @plan subagent with specific scope`
 
-`3. Present plan to user for approval` 
+`3. Present plan to user for approval`
 
-`4. Only then invoke @execute with the approved plan as context ### Direct execution (skip pipeline)` 
+`4. Only then invoke @execute with the approved plan as context ### Direct execution (skip pipeline)`
 
-- `Quick targeted fix: 1 file, <20 lines - File already open in conversation context` 
+- `Quick targeted fix: 1 file, <20 lines - File already open in conversation context`
 
 ```
 - Tasks needing frequent back-and-forth
@@ -254,13 +255,13 @@ For ANY task touching >3 files or involving refactoring:
 For features spanning multiple domains, spawn parallel agents:
 ```
 
-- `Frontend (React/CSS): @frontend-agent (Haiku)` 
+- `Frontend (React/CSS): @frontend-agent (Haiku)`
 
-- `Backend (Node/DB): @backend-agent (Sonnet)` 
+- `Backend (Node/DB): @backend-agent (Sonnet)`
 
-- `Security review: @security-agent (Opus)` 
+- `Security review: @security-agent (Opus)`
 
-## **Built-in Subagents (2026)** 
+## **Built-in Subagents (2026)**
 
 |**Agent**|**Default Model**|**Tools**|**Auto-invoked When**|
 |---|---|---|---|
@@ -268,7 +269,7 @@ For features spanning multiple domains, spawn parallel agents:
 |Plan|Haiku 4.5|Read, Grep, Glob (read-only)|Plan mode — codebase research before strategy|
 |General-purpose|Sonnet 4.6|Full tool access|Complex multi-step tasks needing both exploration<br>and modification|
 
-## **Custom Subagent Design** 
+## **Custom Subagent Design**
 
 ```
 # .claude/agents/security-reviewer.md
@@ -281,7 +282,7 @@ description: |
   Specialized security code reviewer. Use PROACTIVELY on any changes
 ```
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 7 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 7
 
 ```
   to auth/, payments/, api/, or middleware/. Checks for OWASP Top 10,
@@ -302,9 +303,9 @@ SEVERITY LEVELS: [CRITICAL] [HIGH] [MEDIUM] [LOW] [INFO]
 Return: structured JSON with findings array + risk_score (0-100).
 ```
 
-## **Agent Teams — Experimental Feature (2026)** 
+## **Agent Teams — Experimental Feature (2026)**
 
-Agent Teams removes the subagent communication bottleneck. Subagents run within a single session and can only report results back. Agent Teams lets teammates message each other, claim tasks from a shared list, and coordinate directly. 
+Agent Teams removes the subagent communication bottleneck. Subagents run within a single session and can only report results back. Agent Teams lets teammates message each other, claim tasks from a shared list, and coordinate directly.
 
 ```
 # Enable Agent Teams (experimental)
@@ -337,13 +338,13 @@ export CLAUDE_CODE_FORK_SUBAGENT=1
 |Best for|Independent parallel tasks|Tasks needing active collaboration|
 |Stability|Production-ready|Experimental (2026)|
 
-##### II **Agent Teams Cost Warning** 
+##### II **Agent Teams Cost Warning**
 
-Agent Teams use roughly 3-4× the tokens of a single session doing the same work sequentially. Plan mode agent teams cost ~7× tokens. Use Agent Teams only when active coordination between specialists is required — not just parallelism. 
+Agent Teams use roughly 3-4× the tokens of a single session doing the same work sequentially. Plan mode agent teams cost ~7× tokens. Use Agent Teams only when active coordination between specialists is required — not just parallelism.
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 8 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 8
 
-## **Model Selection Routing Guide** 
+## **Model Selection Routing Guide**
 
 |**Task Type**|**Model**|**Reason**|
 |---|---|---|
@@ -354,19 +355,19 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 8
 |Hook evaluation, prompt classification|Haiku 4.5|Semantic classification at minimal cost|
 |Agent Teams — leaf workers|Haiku 4.5|Never use Opus for leaf nodes|
 
-##### I **The /agents Redesign (Apr 2026)** 
+##### I **The /agents Redesign (Apr 2026)**
 
-The /agents command now has a tabbed layout: a Running tab shows live subagents, the Library tab adds 'Run agent' and 'View running instance' actions. Use /agents to monitor multi-agent sessions in real time. 
+The /agents command now has a tabbed layout: a Running tab shows live subagents, the Library tab adds 'Run agent' and 'View running instance' actions. Use /agents to monitor multi-agent sessions in real time.
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 9 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 9
 
-### **04** 
+### **04**
 
-# **Hooks — All 27 Events (2026)** 
+# **Hooks — All 27 Events (2026)**
 
-Hooks are the deterministic enforcement layer. The April 2026 release expanded hooks significantly: 27 events across 5 categories, 4 execution types, PostToolUseFailure now included, and duration_ms in PostToolUse inputs. 
+Hooks are the deterministic enforcement layer. The April 2026 release expanded hooks significantly: 27 events across 5 categories, 4 execution types, PostToolUseFailure now included, and duration_ms in PostToolUse inputs.
 
-## **27 Hook Events — Categorized** 
+## **27 Hook Events — Categorized**
 
 |**Category**|**Event**|**Can Block?**|**New in 2026?**|
 |---|---|---|---|
@@ -383,7 +384,7 @@ Hooks are the deterministic enforcement layer. The April 2026 release expanded h
 |Notification|Notification|No|–|
 |Monitoring|StatusLine|N/A (display<br>only)|–|
 
-## **4 Handler Types** 
+## **4 Handler Types**
 
 |**Type**|**How It Works**|**Best For**|**Error on Failure**|
 |---|---|---|---|
@@ -392,13 +393,13 @@ Hooks are the deterministic enforcement layer. The April 2026 release expanded h
 |prompt|Sends to Claude model for semantic<br>eval|AI-based code review, quality gates|Depends on fast model response|
 |agent|Spawns subagent with<br>Read/Grep/Glob|Deep verification, complex analysis|Non-blocking|
 
-## **Async Hooks (Jan 2026)** 
+## **Async Hooks (Jan 2026)**
 
 ```
 # Run in background without blocking Claude
 ```
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 10 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 10
 
 ```
 {
@@ -418,9 +419,9 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 10
 }
 ```
 
-## **PostToolUseFailure — New in 2026** 
+## **PostToolUseFailure — New in 2026**
 
-The new PostToolUseFailure event fires when a tool execution fails. It now also receives duration_ms in its input payload, enabling performance-aware error handling: 
+The new PostToolUseFailure event fires when a tool execution fails. It now also receives duration_ms in its input payload, enabling performance-aware error handling:
 
 ```
 #!/usr/bin/env python3
@@ -439,9 +440,9 @@ with open('/tmp/claude-hook-failures.log', 'a') as f:
     f.write(json.dumps({'tool': tool, 'error': error, 'ms': duration_ms}) + '\n')
 ```
 
-## **Security Gate — Bash Hardening (Apr 2026)** 
+## **Security Gate — Bash Hardening (Apr 2026)**
 
-The April 2026 changelog patched multiple Bash permission bypasses. Your PreToolUse hook must now handle compound commands, env-var prefixes, redirects, and piped cd segments: 
+The April 2026 changelog patched multiple Bash permission bypasses. Your PreToolUse hook must now handle compound commands, env-var prefixes, redirects, and piped cd segments:
 
 ```
 #!/usr/bin/env bash
@@ -454,7 +455,7 @@ DANGEROUS=('rm -rf' 'curl | bash' 'wget | sh' '/dev/tcp' 'base64 -d' 'eval' 'exe
            '&&' '||'  # Compound commands — now caught
 ```
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 11 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 11
 
 ```
            'ANTHROPIC_API_KEY='  # Env-var prefix bypass — now caught
@@ -468,17 +469,17 @@ done
 echo '{"decision":"approve"}'
 ```
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 12 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 12
 
-**05** 
+**05**
 
-# **MCP & Plugins** 
+# **MCP & Plugins**
 
-MCP (Model Context Protocol) tools load their definitions directly into context. The GitHub MCP server alone carries 35 tools (~26K tokens of definitions). At scale, MCP tool definitions overload the context window — this is 'the 35-tool problem'. 
+MCP (Model Context Protocol) tools load their definitions directly into context. The GitHub MCP server alone carries 35 tools (~26K tokens of definitions). At scale, MCP tool definitions overload the context window — this is 'the 35-tool problem'.
 
-## **The 35-Tool Problem & ToolSearch** 
+## **The 35-Tool Problem & ToolSearch**
 
-Anthropic's solution (2026): the **ToolSearch tool** . Instead of loading all tool definitions upfront, Claude can discover tools on demand — reducing initial context overhead dramatically: 
+Anthropic's solution (2026): the **ToolSearch tool** . Instead of loading all tool definitions upfront, Claude can discover tools on demand — reducing initial context overhead dramatically:
 
 ```
 # Enable ToolSearch in API calls
@@ -496,7 +497,7 @@ response = client.messages.create(
 # the actual tool instead of description-matching siblings
 ```
 
-## **MCP Tool Design Rules** 
+## **MCP Tool Design Rules**
 
 |**Rule**|**Description**|**Impact if Violated**|
 |---|---|---|
@@ -507,65 +508,65 @@ response = client.messages.create(
 |PROACTIVELY signal|'Use PROACTIVELY when...' prefix for auto-selection|Under-triggering|
 |Limit total tools|Target <20 tools per server (Manus, Claude Code use<br>~12-20)|Context bloat|
 
-## **Plugin Manifest — 10 Component Types** 
+## **Plugin Manifest — 10 Component Types**
 
-Claude Code plugins (2026) accept 10 component types in a single manifest: 
+Claude Code plugins (2026) accept 10 component types in a single manifest:
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 13 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 13
 
-I commands 
+I commands
 
-I agents 
+I agents
 
-I skills 
+I skills
 
-I hooks 
+I hooks
 
-I mcp_servers 
+I mcp_servers
 
-I lsp_servers 
+I lsp_servers
 
-I output_styles 
+I output_styles
 
-I channels 
+I channels
 
-I settings 
+I settings
 
-I user_config 
+I user_config
 
-## **Google gws — New MCP Server (Mar 2026)** 
+## **Google gws — New MCP Server (Mar 2026)**
 
-##### I **Google Workspace MCP (gws)** 
+##### I **Google Workspace MCP (gws)**
 
-Released March 2026, hit 4,900 GitHub stars in 3 days. One command gives your agent full access to Drive, Gmail, Calendar, and Sheets via a built-in MCP server. Install: npm install -g @googleworkspace/cli && gws mcp -s drive,gmail,calendar,sheets 
+Released March 2026, hit 4,900 GitHub stars in 3 days. One command gives your agent full access to Drive, Gmail, Calendar, and Sheets via a built-in MCP server. Install: npm install -g @googleworkspace/cli && gws mcp -s drive,gmail,calendar,sheets
 
-## **Concurrent MCP Startup (Apr 2026)** 
+## **Concurrent MCP Startup (Apr 2026)**
 
-Subagent and SDK MCP server reconfiguration now connects servers in parallel instead of serially. Faster startup when both local and claude.ai MCP servers are configured (concurrent connect now default). Resources/templates/list is deferred to first @-mention — reducing startup latency further. 
+Subagent and SDK MCP server reconfiguration now connects servers in parallel instead of serially. Faster startup when both local and claude.ai MCP servers are configured (concurrent connect now default). Resources/templates/list is deferred to first @-mention — reducing startup latency further.
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 14 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 14
 
-### **06** 
+### **06**
 
-# **CLAUDE.md & Context Engineering** 
+# **CLAUDE.md & Context Engineering**
 
-Context Engineering is the discipline of optimizing token utility within LLM constraints. The CLAUDE.md + .claudeignore pair is the project-level control surface. Memory is file-based — fully inspectable, editable, and version-controllable (no vector DB required). 
+Context Engineering is the discipline of optimizing token utility within LLM constraints. The CLAUDE.md + .claudeignore pair is the project-level control surface. Memory is file-based — fully inspectable, editable, and version-controllable (no vector DB required).
 
-## **CLAUDE.md Rules — Official Anthropic Guidance** 
+## **CLAUDE.md Rules — Official Anthropic Guidance**
 
-- I **Under 80 lines** — loaded every turn; ruthlessly prune 
+- I **Under 80 lines** — loaded every turn; ruthlessly prune
 
-- I **Corrections only** — never repeat what Claude already knows 
+- I **Corrections only** — never repeat what Claude already knows
 
-- I **Use imperative language** — 'ALWAYS run tests' not 'prefer to run tests' 
+- I **Use imperative language** — 'ALWAYS run tests' not 'prefer to run tests'
 
-I **Architecture, not tutorials** — key dirs, naming conventions, non-obvious decisions 
+I **Architecture, not tutorials** — key dirs, naming conventions, non-obvious decisions
 
-- I **Reference skills, not inline** — 'See /financial-analysis for P&L rules' 
+- I **Reference skills, not inline** — 'See /financial-analysis for P&L rules'
 
-I **Hooks > CLAUDE.md for enforcement** — CLAUDE.md = probabilistic; hooks = deterministic 
+I **Hooks > CLAUDE.md for enforcement** — CLAUDE.md = probabilistic; hooks = deterministic
 
-## **Optimal CLAUDE.md Template** 
+## **Optimal CLAUDE.md Template**
 
 ```
 # Project: MyApp  [KEEP UNDER 80 LINES]
@@ -605,7 +606,7 @@ See agent delegation rules in .claude/agents/ directory.
 # [Total: ~25 lines — well under 80 limit]
 ```
 
-## **.claudeignore — Context Scoping** 
+## **.claudeignore — Context Scoping**
 
 ```
 # .claudeignore — Exclude from Claude's file access
@@ -617,7 +618,7 @@ coverage/           # Test coverage reports
 data/raw/           # Large raw data files
 ```
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 15 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 15
 
 ```
 *.csv *.parquet     # Data files (use dedicated data skill instead)
@@ -635,25 +636,25 @@ src/generated/      # Auto-generated code
 __pycache__/ .venv/ # Python artifacts
 ```
 
-##### I **Memory Architecture** 
+##### I **Memory Architecture**
 
-Claude Code uses file-based memory — no vector DB. This means memory is inspectable, editable, diffable, and version-controllable via git. Use ~/.claude/memory/ for personal persistent context across projects. Use .claude/memory/ for project-specific persistent context shared by the team. 
+Claude Code uses file-based memory — no vector DB. This means memory is inspectable, editable, diffable, and version-controllable via git. Use ~/.claude/memory/ for personal persistent context across projects. Use .claude/memory/ for project-specific persistent context shared by the team.
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 16 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 16
 
-### **07** 
+### **07**
 
-# **Token & Cost Optimization** 
+# **Token & Cost Optimization**
 
-Combined optimization can reduce monthly API costs by **60-80%** for production agent applications. Average enterprise cost: $13/developer/active day, $150-250/developer/month. 90% of users stay under $30/active day. 
+Combined optimization can reduce monthly API costs by **60-80%** for production agent applications. Average enterprise cost: $13/developer/active day, $150-250/developer/month. 90% of users stay under $30/active day.
 
-**60-80% $13 40-70%** Monthly cost Avg daily cost Reduction from reduction possible per developer basic strategies alone 
+**60-80% $13 40-70%** Monthly cost Avg daily cost Reduction from reduction possible per developer basic strategies alone
 
-## **The 6-Tier Optimization Stack** 
+## **The 6-Tier Optimization Stack**
 
-#### **Tier 1: Prompt Caching (Biggest Win)** 
+#### **Tier 1: Prompt Caching (Biggest Win)**
 
-Cache-aware rate limits (2026): cached tokens no longer count against ITPM limits. This compounds with pricing discounts on cache reads: 
+Cache-aware rate limits (2026): cached tokens no longer count against ITPM limits. This compounds with pricing discounts on cache reads:
 
 ```
 # Cache system prompt + large knowledge base
@@ -671,7 +672,7 @@ response = client.messages.create(
 # Claude Code would be cost-prohibitive without caching
 ```
 
-#### **Tier 2: Token-Efficient Tool Use** 
+#### **Tier 2: Token-Efficient Tool Use**
 
 ```
 # One header = 20-30% output token reduction
@@ -683,11 +684,11 @@ extra_headers={'anthropic-beta': 'token-efficient-tools-2025-02-19'}
 # Combined with caching: 60-80% total reduction
 ```
 
-#### **Tier 3: Model Tiering** 
+#### **Tier 3: Model Tiering**
 
-Obsessing over Opus vs Sonnet is the 4th or 5th most important optimization. Structural decisions (context, isolation, hooks) matter more: 
+Obsessing over Opus vs Sonnet is the 4th or 5th most important optimization. Structural decisions (context, isolation, hooks) matter more:
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 17 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 17
 
 |**Task**|**Model**|**Why**|
 |---|---|---|
@@ -696,31 +697,31 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 17
 |Explore/Plan subagents, search|Haiku 4.5|Fast, cheap, read-only|
 |Hook evaluation, classification|Haiku 4.5|Sub-cent per call|
 
-#### **Tier 4: Context Management** 
+#### **Tier 4: Context Management**
 
-- I **/clear between tasks** — stale context wastes tokens on every subsequent message 
+- I **/clear between tasks** — stale context wastes tokens on every subsequent message
 
-- I **CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60** — compact at 60% full, before quality degradation 
+- I **CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60** — compact at 60% full, before quality degradation
 
-- I **.claudeignore** — exclude node_modules, dist, logs — highest single-file leverage 
+- I **.claudeignore** — exclude node_modules, dist, logs — highest single-file leverage
 
-- I **Subagents for exploration** — file reads in subagents return summaries, not raw content 
+- I **Subagents for exploration** — file reads in subagents return summaries, not raw content
 
-- I **Specific file references** — 'Read src/auth/login.ts' beats 'read the auth module' 
+- I **Specific file references** — 'Read src/auth/login.ts' beats 'read the auth module'
 
-#### **Tier 5: Preprocessing Hooks** 
+#### **Tier 5: Preprocessing Hooks**
 
-Hooks run outside model context — zero token cost. Highest ROI preprocessing: 
+Hooks run outside model context — zero token cost. Highest ROI preprocessing:
 
-- I Filter 10,000-line logs → 50 error lines before Claude sees them 
+- I Filter 10,000-line logs → 50 error lines before Claude sees them
 
-- I Pre-summarize large JSON API responses to key fields only 
+- I Pre-summarize large JSON API responses to key fields only
 
-- I SkillActivationHook: load only relevant skills based on prompt keywords (21 categories) 
+- I SkillActivationHook: load only relevant skills based on prompt keywords (21 categories)
 
-- I Convert binary files to text summaries before Read tool fires 
+- I Convert binary files to text summaries before Read tool fires
 
-#### **Tier 6: Automation Safeguards** 
+#### **Tier 6: Automation Safeguards**
 
 ```
 # Cap automation — prevent runaway costs in CI/CD
@@ -738,7 +739,7 @@ claude --max-turns 15 --timeout-minutes 30 'Run test suite'
 # Console > Workspaces > Claude Code > Spend Limit
 ```
 
-- `# Environment variables for budget enforcement` 
+- `# Environment variables for budget enforcement`
 
 ```
 export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60
@@ -748,7 +749,7 @@ export CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60
 export ANTHROPIC_BUDGET_TOKEN=your-budget-token
 ```
 
-## **Agent Teams Cost Math** 
+## **Agent Teams Cost Math**
 
 |**Configuration**|**Token Multiplier**|**When Worth It**|
 |---|---|---|
@@ -757,15 +758,15 @@ export ANTHROPIC_BUDGET_TOKEN=your-budget-token
 |Agent Teams (3 members)|~3-4×|Active coordination needed|
 |Agent Teams (plan mode)|~7×|Avoid unless critical|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 18 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 18
 
-**08** 
+**08**
 
-# **GitHub Actions & CI/CD** 
+# **GitHub Actions & CI/CD**
 
-The April 2026 Claude Code update brought major CI/CD improvements: --from-pr now accepts GitLab merge-request, Bitbucket pull-request, and GitHub Enterprise PR URLs. OpenTelemetry tracing now honors privacy flags. 
+The April 2026 Claude Code update brought major CI/CD improvements: --from-pr now accepts GitLab merge-request, Bitbucket pull-request, and GitHub Enterprise PR URLs. OpenTelemetry tracing now honors privacy flags.
 
-## **Multi-Platform PR Integration (Apr 2026)** 
+## **Multi-Platform PR Integration (Apr 2026)**
 
 ```
 # .github/workflows/claude-review.yml
@@ -799,7 +800,7 @@ jobs:
             missing tests, performance regressions. Be specific with line refs.
 ```
 
-## **OpenTelemetry Tracing (Privacy-Aware)** 
+## **OpenTelemetry Tracing (Privacy-Aware)**
 
 ```
 # .env — Privacy-first tracing (Apr 2026)
@@ -809,9 +810,9 @@ OTEL_LOG_TOOL_CONTENT=false     # Opt-in only
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 ```
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 19 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 19
 
-## **CI/CD Pattern Matrix** 
+## **CI/CD Pattern Matrix**
 
 |**Pattern**|**Model**|**Trigger**|**Max Turns**|
 |---|---|---|---|
@@ -823,19 +824,19 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 19
 |Release Notes Generator|Sonnet 4.6|on: push to release/v*|10|
 |Test Failure Analysis|Haiku 4.5|on: CI failure|5|
 
-##### I **CI Cost Tip** 
+##### I **CI Cost Tip**
 
-Add 'skip-review' label support to skip Claude review on docs-only PRs. Use concurrency groups to cancel in-progress reviews when new commits arrive. Together these reduce CI costs 25-35% on active repos. 
+Add 'skip-review' label support to skip Claude review on docs-only PRs. Use concurrency groups to cancel in-progress reviews when new commits arrive. Together these reduce CI costs 25-35% on active repos.
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 20 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 20
 
-### **09** 
+### **09**
 
-# **Security — CVEs & Hardening** 
+# **Security — CVEs & Hardening**
 
-Security in Claude Code operates at 7 layers. The April 2026 changelog patched several critical permission bypass vulnerabilities in Bash handling. This chapter covers all known CVEs, the MCP rug pull attack, and hardening patterns. 
+Security in Claude Code operates at 7 layers. The April 2026 changelog patched several critical permission bypass vulnerabilities in Bash handling. This chapter covers all known CVEs, the MCP rug pull attack, and hardening patterns.
 
-## **CVE Registry — Full List (Apr 2026)** 
+## **CVE Registry — Full List (Apr 2026)**
 
 |**CVE**|**CVSS**|**Description**|**Fixed In**|
 |---|---|---|---|
@@ -845,33 +846,33 @@ Security in Claude Code operates at 7 layers. The April 2026 changelog patched s
 |CVE-2026-21852|5.3|API key exfiltration via malicious ANTHROPIC_BASE_URL|v1.1.x|
 |CVE-2026-33068|7.7|Workspace trust dialog bypass via repo-controlled settings files|v2.1.53|
 |Bash CVE (Apr 2026)|TBD|Backslash-escaped flag auto-allowed as read-only→arbitrary<br>code exec|v2.1.88+|
-|Compound Bash|TBD|Compound commands (&&, ||) bypassed safety prompts|v2.1.88+|
+|Compound Bash|TBD|Compound commands (&&,||) bypassed safety prompts|v2.1.88+|
 |POSIX which CVE|TBD|Command injection in POSIX which fallback for LSP binary<br>detection|Patched|
 
-##### I **Critical Rule** 
+##### I **Critical Rule**
 
-NEVER use --dangerously-skip-permissions in directories you don't fully control. CVE-2025-59536 shows that hooks/MCP can execute before the trust dialog — meaning code runs before you can consent. Fixed in v1.0.111 but the flag itself remains dangerous with untrusted repository content. 
+NEVER use --dangerously-skip-permissions in directories you don't fully control. CVE-2025-59536 shows that hooks/MCP can execute before the trust dialog — meaning code runs before you can consent. Fixed in v1.0.111 but the flag itself remains dangerous with untrusted repository content.
 
-## **MCP Rug Pull Attack Pattern** 
+## **MCP Rug Pull Attack Pattern**
 
-A malicious MCP server can initially present safe tools, earn trust/caching, then change tool behavior mid-session. Defense: 
+A malicious MCP server can initially present safe tools, earn trust/caching, then change tool behavior mid-session. Defense:
 
-- I Pin MCP server URLs to specific commit hashes, not branch names 
+- I Pin MCP server URLs to specific commit hashes, not branch names
 
-- I Audit all MCP servers before connecting — review source code 
+- I Audit all MCP servers before connecting — review source code
 
-- I Use PreToolUse hooks to log all tool invocations for audit trail 
+- I Use PreToolUse hooks to log all tool invocations for audit trail
 
-- I Restrict MCP servers to minimum required tools via allowedTools 
+- I Restrict MCP servers to minimum required tools via allowedTools
 
-- I Never connect to MCP servers from untrusted repositories 
+- I Never connect to MCP servers from untrusted repositories
 
-## **7-Layer Defense Architecture** 
+## **7-Layer Defense Architecture**
 
 |**Layer**<br>**Mechanism**<br>**Failure Mode**|
 |---|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 21 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 21
 
 |1 - Trust Model|Graduated permissions (sandbox→plan→<br>acceptEdits→bypass)|All share same performance constraints|
 |---|---|---|
@@ -882,163 +883,163 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 21
 |6 - Audit Logging|PostToolUse + PostToolUseFailure logging|Logs don't prevent, only detect|
 |7 - Human Review|Human-in-the-loop for destructive ops|27% of tasks attempted only with AI|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 22 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 22
 
-### **10** 
+### **10**
 
-# **Anti-Patterns Catalog** 
+# **Anti-Patterns Catalog**
 
-These are documented failure modes drawn from Anthropic's official best-practices docs, the Dive-into-Claude-Code architectural analysis, and community research across thousands of production deployments. 
+These are documented failure modes drawn from Anthropic's official best-practices docs, the Dive-into-Claude-Code architectural analysis, and community research across thousands of production deployments.
 
-## **Skills Anti-Patterns** 
+## **Skills Anti-Patterns**
 
-#### **Anti-Pattern #1: Kitchen Sink CLAUDE.md** 
+#### **Anti-Pattern #1: Kitchen Sink CLAUDE.md**
 
-Problem: CLAUDE.md over 80 lines, includes things Claude already knows, tutorials instead of corrections. Important rules get lost in the noise — Claude ignores half. 
+Problem: CLAUDE.md over 80 lines, includes things Claude already knows, tutorials instead of corrections. Important rules get lost in the noise — Claude ignores half.
 
-**Fix: Ruthlessly prune to <80 lines. If Claude does it correctly without the instruction, delete it or convert to a hook.** 
+**Fix: Ruthlessly prune to <80 lines. If Claude does it correctly without the instruction, delete it or convert to a hook.**
 
-#### **Anti-Pattern #2: Description-less Skills** 
+#### **Anti-Pattern #2: Description-less Skills**
 
-Problem: Skills with vague or absent descriptions: 'Handles documents', 'For financial stuff'. Claude never auto-loads them, or loads them on everything. 
+Problem: Skills with vague or absent descriptions: 'Handles documents', 'For financial stuff'. Claude never auto-loads them, or loads them on everything.
 
-**Fix: Write descriptions as routing rules with PROACTIVELY signals, negative examples, and explicit trigger phrases.** 
+**Fix: Write descriptions as routing rules with PROACTIVELY signals, negative examples, and explicit trigger phrases.**
 
-#### **Anti-Pattern #3: Overlapping Skills** 
+#### **Anti-Pattern #3: Overlapping Skills**
 
-Problem: Two skills that could handle the same input (e.g., 'data-analysis' and 'csv-processor'). Claude picks arbitrarily — non-deterministic behavior. 
+Problem: Two skills that could handle the same input (e.g., 'data-analysis' and 'csv-processor'). Claude picks arbitrarily — non-deterministic behavior.
 
-- **Fix: Ensure skills are self-contained and non-overlapping. Every skill must justify its existence independently.** 
+- **Fix: Ensure skills are self-contained and non-overlapping. Every skill must justify its existence independently.**
 
-#### **Anti-Pattern #4: Inline Everything** 
+#### **Anti-Pattern #4: Inline Everything**
 
-Problem: All skill knowledge embedded in CLAUDE.md or as inline system prompt context instead of loading on demand. Wastes tokens every turn even when irrelevant. 
+Problem: All skill knowledge embedded in CLAUDE.md or as inline system prompt context instead of loading on demand. Wastes tokens every turn even when irrelevant.
 
-**Fix: Move domain knowledge to context: fork skills. Load on demand, not on every turn.** 
+**Fix: Move domain knowledge to context: fork skills. Load on demand, not on every turn.**
 
-## **Subagent & Routing Anti-Patterns** 
+## **Subagent & Routing Anti-Patterns**
 
-#### **Anti-Pattern #5: Agent Teams for Simple Parallelism** 
+#### **Anti-Pattern #5: Agent Teams for Simple Parallelism**
 
-Problem: Using Agent Teams (3-4× token cost, 7× in plan mode) when subagents would suffice. Teams add coordination overhead and amplify errors. 
+Problem: Using Agent Teams (3-4× token cost, 7× in plan mode) when subagents would suffice. Teams add coordination overhead and amplify errors.
 
-**Fix: Use Agent Teams only when active teammate-to-teammate coordination is required. Use subagents for independent parallel tasks.** 
+**Fix: Use Agent Teams only when active teammate-to-teammate coordination is required. Use subagents for independent parallel tasks.**
 
-#### **Anti-Pattern #6: Raw File Content Returns** 
+#### **Anti-Pattern #6: Raw File Content Returns**
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 23 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 23
 
-Problem: Subagents returning raw file contents to main context instead of summaries. Completely defeats the purpose of context isolation. 
+Problem: Subagents returning raw file contents to main context instead of summaries. Completely defeats the purpose of context isolation.
 
-**Fix: Subagents must return structured summaries. Use 'Return ONLY a structured summary — do not include raw file contents' in system prompt.** 
+**Fix: Subagents must return structured summaries. Use 'Return ONLY a structured summary — do not include raw file contents' in system prompt.**
 
-#### **Anti-Pattern #7: All-Opus Routing** 
+#### **Anti-Pattern #7: All-Opus Routing**
 
-Problem: Using Claude Opus for every task regardless of complexity. Leaf node agents, explorers, and classifiers running on Opus when Haiku suffices. 
+Problem: Using Claude Opus for every task regardless of complexity. Leaf node agents, explorers, and classifiers running on Opus when Haiku suffices.
 
-**Fix: Route by task type: Opus for architecture/security review, Sonnet for implementation, Haiku for search/classify/format.** 
+**Fix: Route by task type: Opus for architecture/security review, Sonnet for implementation, Haiku for search/classify/format.**
 
-#### **Anti-Pattern #8: Subagent Nesting** 
+#### **Anti-Pattern #8: Subagent Nesting**
 
-Problem: Attempting to spawn subagents from within subagents (infinite nesting). Claude Code prevents this — subagents cannot spawn other subagents. 
+Problem: Attempting to spawn subagents from within subagents (infinite nesting). Claude Code prevents this — subagents cannot spawn other subagents.
 
-**Fix: Use the orchestrator-workers pattern with the main agent as orchestrator. Plan subagent handles research in plan mode.** 
+**Fix: Use the orchestrator-workers pattern with the main agent as orchestrator. Plan subagent handles research in plan mode.**
 
-## **Hooks Anti-Patterns** 
+## **Hooks Anti-Patterns**
 
-#### **Anti-Pattern #9: Over-Formatting Hook** 
+#### **Anti-Pattern #9: Over-Formatting Hook**
 
-Problem: Auto-formatting hooks (prettier/black) running on every Edit. Reported to consume 160K+ tokens in 3 rounds due to context inflation from repeated outputs. 
+Problem: Auto-formatting hooks (prettier/black) running on every Edit. Reported to consume 160K+ tokens in 3 rounds due to context inflation from repeated outputs.
 
-**Fix: Run formatters manually between sessions or in PostToolUse with strict output size limits. Consider async hooks to avoid blocking.** 
+**Fix: Run formatters manually between sessions or in PostToolUse with strict output size limits. Consider async hooks to avoid blocking.**
 
-#### **Anti-Pattern #10: Complex Slash Commands** 
+#### **Anti-Pattern #10: Complex Slash Commands**
 
-Problem: Long list of complex custom slash commands as a substitute for skills. Slash commands are manually invoked; skills auto-load when relevant. 
+Problem: Long list of complex custom slash commands as a substitute for skills. Slash commands are manually invoked; skills auto-load when relevant.
 
-**Fix: Convert complex slash commands to skills with invocation: auto. Reserve slash commands for explicit user-triggered actions.** 
+**Fix: Convert complex slash commands to skills with invocation: auto. Reserve slash commands for explicit user-triggered actions.**
 
-#### **Anti-Pattern #11: Broad allowedTools in Skills** 
+#### **Anti-Pattern #11: Broad allowedTools in Skills**
 
-Problem: Skills with allowed-tools: '*' or overly broad permissions. Skills execute code — a malicious skill with broad permissions is a security risk. 
+Problem: Skills with allowed-tools: '*' or overly broad permissions. Skills execute code — a malicious skill with broad permissions is a security risk.
 
-**Fix: Apply least-privilege to every skill. List only the specific tools needed: allowed-tools: Bash(python3 AnalysisScript.py), Read** 
+**Fix: Apply least-privilege to every skill. List only the specific tools needed: allowed-tools: Bash(python3 AnalysisScript.py), Read**
 
-## **Context & Cost Anti-Patterns** 
+## **Context & Cost Anti-Patterns**
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 24 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 24
 
-#### **Anti-Pattern #12: The Kitchen Sink Session** 
+#### **Anti-Pattern #12: The Kitchen Sink Session**
 
-Problem: One session used for multiple unrelated tasks. Context fills with irrelevant history. Performance degrades silently. 
+Problem: One session used for multiple unrelated tasks. Context fills with irrelevant history. Performance degrades silently.
 
-- **Fix: Use /clear between unrelated tasks. Use /rename before clearing so you can /resume later.** 
+- **Fix: Use /clear between unrelated tasks. Use /rename before clearing so you can /resume later.**
 
-#### **Anti-Pattern #13: Correction Loop** 
+#### **Anti-Pattern #13: Correction Loop**
 
-Problem: Claude does something wrong → you correct → still wrong → correct again. Context is now polluted with failed approaches, making the problem worse. 
+Problem: Claude does something wrong → you correct → still wrong → correct again. Context is now polluted with failed approaches, making the problem worse.
 
-- **Fix: After two failed corrections: /clear and write a better initial prompt incorporating what you learned.** 
+- **Fix: After two failed corrections: /clear and write a better initial prompt incorporating what you learned.**
 
-#### **Anti-Pattern #14: Trust-Then-Verify Gap** 
+#### **Anti-Pattern #14: Trust-Then-Verify Gap**
 
-Problem: Accepting plausible-looking implementation without verification. AI-generated code has 1.5-2× higher security vulnerability rates than human-written code. 
+Problem: Accepting plausible-looking implementation without verification. AI-generated code has 1.5-2× higher security vulnerability rates than human-written code.
 
-- **Fix: Always provide verification criteria upfront: tests, linter, screenshot comparison. Claude performs** 
+- **Fix: Always provide verification criteria upfront: tests, linter, screenshot comparison. Claude performs**
 
-- **dramatically better when it can verify its own work.** 
+- **dramatically better when it can verify its own work.**
 
-#### **Anti-Pattern #15: Raw Log Reads** 
+#### **Anti-Pattern #15: Raw Log Reads**
 
-Problem: Asking Claude to read a 10,000-line log file to find errors. Consumes tens of thousands of tokens when a grep would suffice. 
+Problem: Asking Claude to read a 10,000-line log file to find errors. Consumes tens of thousands of tokens when a grep would suffice.
 
-**Fix: Use a PreToolUse hook to preprocess logs before Claude sees them. Filter** → **50 relevant lines** → **massive token reduction.** 
+**Fix: Use a PreToolUse hook to preprocess logs before Claude sees them. Filter** → **50 relevant lines** → **massive token reduction.**
 
-## **MCP & Plugin Anti-Patterns** 
+## **MCP & Plugin Anti-Patterns**
 
-#### **Anti-Pattern #16: 35-Tool MCP Server** 
+#### **Anti-Pattern #16: 35-Tool MCP Server**
 
-Problem: Connecting a single MCP server with 35+ tools (e.g., GitHub MCP server unfiltered). ~26K tokens of tool definitions loaded every turn. 
+Problem: Connecting a single MCP server with 35+ tools (e.g., GitHub MCP server unfiltered). ~26K tokens of tool definitions loaded every turn.
 
-- **Fix: Use ToolSearch for discovery. Restrict MCP servers to the tools actually needed via the tools parameter.** 
+- **Fix: Use ToolSearch for discovery. Restrict MCP servers to the tools actually needed via the tools parameter.**
 
-#### **Anti-Pattern #17: Untrusted MCP Server** 
+#### **Anti-Pattern #17: Untrusted MCP Server**
 
-Problem: Installing MCP servers from unknown sources without code review. MCP rug pull: server can change tool behavior mid-session after earning trust. 
+Problem: Installing MCP servers from unknown sources without code review. MCP rug pull: server can change tool behavior mid-session after earning trust.
 
-**Fix: Only use MCP servers from trusted sources. Pin to commit hashes. Use PreToolUse hooks to audit all invocations.** 
+**Fix: Only use MCP servers from trusted sources. Pin to commit hashes. Use PreToolUse hooks to audit all invocations.**
 
-## **GitHub Actions Anti-Patterns** 
+## **GitHub Actions Anti-Patterns**
 
-#### **Anti-Pattern #18: Unpinned Model Version** 
+#### **Anti-Pattern #18: Unpinned Model Version**
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 25 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 25
 
-Problem: Using model: claude-latest or not pinning the model version in CI/CD. Model updates can change behavior unexpectedly in automated workflows. 
+Problem: Using model: claude-latest or not pinning the model version in CI/CD. Model updates can change behavior unexpectedly in automated workflows.
 
-- **Fix: Always pin: model: claude-sonnet-4-6. Update deliberately, not automatically.** 
+- **Fix: Always pin: model: claude-sonnet-4-6. Update deliberately, not automatically.**
 
-#### **Anti-Pattern #19: No Concurrency Group** 
+#### **Anti-Pattern #19: No Concurrency Group**
 
-Problem: Multiple Claude reviews running simultaneously on the same PR when new commits arrive. Wastes tokens and produces conflicting review comments. 
+Problem: Multiple Claude reviews running simultaneously on the same PR when new commits arrive. Wastes tokens and produces conflicting review comments.
 
-**Fix: Add concurrency: group: claude-review-${{ github.event.pull_request.number }}, cancel-in-progress: true** 
+**Fix: Add concurrency: group: claude-review-${{ github.event.pull_request.number }}, cancel-in-progress: true**
 
-#### **Anti-Pattern #20: Artifact Paradox** 
+#### **Anti-Pattern #20: Artifact Paradox**
 
-Problem: Polished AI-generated outputs (code, files) reduce critical human evaluation. Research shows: -5.2pp missing context, -3.7pp fact-checking, -3.1pp reasoning challenge. 
+Problem: Polished AI-generated outputs (code, files) reduce critical human evaluation. Research shows: -5.2pp missing context, -3.7pp fact-checking, -3.1pp reasoning challenge.
 
-**Fix: Maintain human review as a required step. Set CLAUDE.md rule: 'I am ultimately responsible for all code in PRs with my name on it.'** 
+**Fix: Maintain human review as a required step. Set CLAUDE.md rule: 'I am ultimately responsible for all code in PRs with my name on it.'**
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 26 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 26
 
-### **11** 
+### **11**
 
-# **Latest Additions (Apr 2026)** 
+# **Latest Additions (Apr 2026)**
 
-The awesome-claude-code repo (now 35.9K+ I, 903 commits) hit issue #1000 on March 12 and posted its April 2026 update on April 6. Submissions continue at ~10+ per week. 
+The awesome-claude-code repo (now 35.9K+ I, 903 commits) hit issue #1000 on March 12 and posted its April 2026 update on April 6. Submissions continue at ~10+ per week.
 
-## **New Skills Repos** 
+## **New Skills Repos**
 
 |**APR 2026**|
 |---|
@@ -1066,85 +1067,85 @@ The awesome-claude-code repo (now 35.9K+ I, 903 commits) hit issue #1000 on Marc
 |claude-devtools (matt1398)|Desktop app|Session log analysis, turn-based context data, compaction visualization,<br>subagent execution trees, custom notification triggers.|
 |notch-so-good|macOS notch<br>widget|Pixel-art crab lives in Mac notch watching Claude Code. Live timers,<br>color-coded notifications, 13 idle animations, mouse-reactive eyes.|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 27 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 27
 
 |codebase-graph|MCP + npm|42-language tree-sitter AST parsing, FalkorDB knowledge graphs, 0.944<br>MRR search quality. npm: @anthropic/codegraph|
 |---|---|---|
 |Claudex (Kunwar Shah)|Web browser|Browse Claude Code conversation history across projects. Full-text search,<br>high-level analytics, export options. Completely local, no telemetry.|
 |CodeBurn|CLI dashboard|CLI usage analytics: costs, token consumption, efficiency scoring, weekly<br>reports. Supports Codex and Cursor too.|
 
-## **April 2026 Changelog Highlights** 
+## **April 2026 Changelog Highlights**
 
 |**CHANGELOG**|
 |---|
 
-- I **--from-pr** now accepts GitLab MR, Bitbucket PR, and GitHub Enterprise PR URLs 
+- I **--from-pr** now accepts GitLab MR, Bitbucket PR, and GitHub Enterprise PR URLs
 
-- I **PostToolUseFailure hook** + duration_ms in PostToolUse inputs 
+- I **PostToolUseFailure hook** + duration_ms in PostToolUse inputs
 
-I **MCP parallel startup** — servers connect concurrently instead of serially 
+I **MCP parallel startup** — servers connect concurrently instead of serially
 
-- I **CLAUDE_CODE_FORK_SUBAGENT=1** — enables forked subagents on external builds 
+- I **CLAUDE_CODE_FORK_SUBAGENT=1** — enables forked subagents on external builds
 
-- I **/agents redesign** — tabbed layout with Running and Library tabs 
+- I **/agents redesign** — tabbed layout with Running and Library tabs
 
-- I **/resume** now offers to summarize stale large sessions before re-reading 
+- I **/resume** now offers to summarize stale large sessions before re-reading
 
-- I **Bash permission hardening** — compound commands, env-var prefixes, redirects patched 
+- I **Bash permission hardening** — compound commands, env-var prefixes, redirects patched
 
-- I **Opus 4.7 context fix** — was incorrectly computing against 200K instead of 1M window 
+- I **Opus 4.7 context fix** — was incorrectly computing against 200K instead of 1M window
 
-- I **OTEL privacy flags** — user prompts and tool content now opt-in for tracing 
+- I **OTEL privacy flags** — user prompts and tool content now opt-in for tracing
 
-- I **Plugin auto-dependency resolution** — claude plugin marketplace add now resolves deps 
+- I **Plugin auto-dependency resolution** — claude plugin marketplace add now resolves deps
 
-## **Academic Resources** 
+## **Academic Resources**
 
-###### **RESEARCH** 
+###### **RESEARCH**
 
-I **Dive-into-Claude-Code** (arXiv 2604.14228) — Source-level analysis of v2.1.88. Key finding: 98.4% deterministic infra, 1.6% AI. Five values → 13 principles → implementation. 
+I **Dive-into-Claude-Code** (arXiv 2604.14228) — Source-level analysis of v2.1.88. Key finding: 98.4% deterministic infra, 1.6% AI. Five values → 13 principles → implementation.
 
-I **FlorianBruniaux/claude-code-ultimate-guide** — 41 interactive diagrams, 9-category quiz, configuration decision guide across all 7 config layers. 
+I **FlorianBruniaux/claude-code-ultimate-guide** — 41 interactive diagrams, 9-category quiz, configuration decision guide across all 7 config layers.
 
-I **VILA-Lab/Dive-into-Claude-Code** — 27 hook events (not 12), 10-component plugin manifest, 15+ SKILL.md frontmatter fields documented from source. 
+I **VILA-Lab/Dive-into-Claude-Code** — 27 hook events (not 12), 10-component plugin manifest, 15+ SKILL.md frontmatter fields documented from source.
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 28 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 28
 
-# **12 Quick Reference & Checklists** 
+# **12 Quick Reference & Checklists**
 
-## **New Project Setup Checklist** 
+## **New Project Setup Checklist**
 
-1. Create CLAUDE.md (<80 lines, corrections only, architecture overview) 
+1. Create CLAUDE.md (<80 lines, corrections only, architecture overview)
 
-2. Add .claudeignore (node_modules, dist, logs, *.csv, *.lock, .git) 
+2. Add .claudeignore (node_modules, dist, logs, *.csv,*.lock, .git)
 
-3. Set CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60 in environment 
+3. Set CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60 in environment
 
-4. Install relevant pre-built skills: pptx, xlsx, docx, pdf, frontend-design 
+4. Install relevant pre-built skills: pptx, xlsx, docx, pdf, frontend-design
 
-5. Create .claude/agents/ with domain-specific subagent definitions 
+5. Create .claude/agents/ with domain-specific subagent definitions
 
-6. Add PreToolUse security hook (credential protection + Bash hardening) 
+6. Add PreToolUse security hook (credential protection + Bash hardening)
 
-7. Add PostToolUse formatting hook (pre-commit or prettier — async: true) 
+7. Add PostToolUse formatting hook (pre-commit or prettier — async: true)
 
-8. Add Stop hook for async notifications (async: true) 
+8. Add Stop hook for async notifications (async: true)
 
-9. Set up cost monitoring: ccflare or ccxray dashboard 
+9. Set up cost monitoring: ccflare or ccxray dashboard
 
-10. Configure workspace spend limits in Claude Console 
+10. Configure workspace spend limits in Claude Console
 
-11. Add token-efficient-tools beta header to all API calls 
+11. Add token-efficient-tools beta header to all API calls
 
-12. Enable prompt caching on system prompts and large repeated context 
+12. Enable prompt caching on system prompts and large repeated context
 
-13. Pin model versions everywhere — never use 'latest' in production 
+13. Pin model versions everywhere — never use 'latest' in production
 
-14. Add SKIP_REVIEW label support to GitHub Actions workflows 
+14. Add SKIP_REVIEW label support to GitHub Actions workflows
 
-15. Add concurrency groups to all Claude CI/CD jobs 
+15. Add concurrency groups to all Claude CI/CD jobs
 
-## **Mechanism Decision Guide** 
+## **Mechanism Decision Guide**
 
 |**'When should I use...'**|**Answer**|
 |---|---|
@@ -1156,14 +1157,14 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 28
 |MCP|External services, APIs, databases. Keep total tools <20 per server.|
 |Slash commands|Explicit user-triggered workflows. Not for things Claude should auto-detect.|
 
-## **Key Environment Variables** 
+## **Key Environment Variables**
 
 |**Variable**|**Purpose**|**Recommended Value**|
 |---|---|---|
 |CLAUDE_AUTOCOMPACT_PCT_OVERRIDE|Trigger compaction before quality degrades|60|
 |CLAUDE_CODE_FORK_SUBAGENT|Enable forked subagents on external builds|1|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 29 
+Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 29
 
 |CLAUDE_CODE_EXPERIMENTAL_AGENT_TE<br>AMS|Enable Agent Teams (experimental)|1|
 |---|---|---|
@@ -1171,7 +1172,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 29
 |OTEL_LOG_USER_PROMPTS|Include user prompts in telemetry|false (default)|
 |ANTHROPIC_BUDGET_TOKEN|Budget enforcement token|your-budget-token|
 
-## **Essential Reference Repos** 
+## **Essential Reference Repos**
 
 |**Repo**|**Stars**|**What to Get From It**|
 |---|---|---|
@@ -1182,8 +1183,8 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 29
 |K-Dense-AI/claude-scientific-skills|New|Research, science, engineering, finance skills|
 |anthropics/claude-code (Releases)|Official|Changelog, CVE fixes, new features|
 
-##### I **Final Summary** 
+##### I **Final Summary**
 
-The biggest wins are structural, not model selection. Ranking by impact: (1) Context architecture — .claudeignore, skills, compaction tuning. (2) Prompt caching — system prompt + cache-aware ITPM. (3) Hook enforcement — convert best practices to deterministic rules. (4) Model routing — Haiku for leaf nodes, Opus only for critical review. (5) Model selection — last, not first. Developers consistently achieve 60-80% cost reduction with structural changes alone, often in one day of setup. 
+The biggest wins are structural, not model selection. Ranking by impact: (1) Context architecture — .claudeignore, skills, compaction tuning. (2) Prompt caching — system prompt + cache-aware ITPM. (3) Hook enforcement — convert best practices to deterministic rules. (4) Model routing — Haiku for leaf nodes, Opus only for critical review. (5) Model selection — last, not first. Developers consistently achieve 60-80% cost reduction with structural changes alone, often in one day of setup.
 
 Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 30

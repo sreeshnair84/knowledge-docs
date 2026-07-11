@@ -34,7 +34,7 @@ series_index: index.md
 Traditional security controls assume a **human in the loop** — a person initiates requests, reviews outputs, and takes actions. Agentic AI breaks this assumption:
 
 | Assumption | Traditional System | Agentic System |
-|---|---|---|
+| --- | --- | --- |
 | Who initiates actions? | Human | Agent (autonomously) |
 | Who reviews outputs? | Human | Downstream agent or automated system |
 | How long does a session last? | Minutes | Hours, days, or indefinitely |
@@ -90,7 +90,7 @@ Orchestrator Agent
 ### 2.3 Agent Platforms (2026)
 
 | Platform | Provider | Key Security Features |
-|---|---|---|
+| --- | --- | --- |
 | **AWS Bedrock Agents** | Amazon | IAM role-based agent identity, VPC isolation, Guardrails |
 | **Azure AI Foundry Agents** | Microsoft | Entra Agent ID, managed identity, private networking |
 | **Google Vertex AI Agents** | Google | Workload identity federation, VPC Service Controls |
@@ -114,7 +114,7 @@ Orchestrator Agent
 ### 3.2 Agent Identity Standards (2026)
 
 | Standard | Body | Maturity | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **IETF AIMS** (AI Model Statement) | IETF | Draft RFC | Framework for AI system identity claims |
 | **SPIFFE/SPIRE** | CNCF | Stable | Workload identity via X.509 SVIDs — applicable to agent workloads |
 | **Entra Agent ID** | Microsoft | GA (2026) | Microsoft's agent identity in Azure ecosystem |
@@ -124,6 +124,7 @@ Orchestrator Agent
 ### 3.3 Agent Authentication Patterns
 
 **Pattern 1 — Managed Identity (Cloud-native):**
+
 ```
 Agent workload (running in cloud)
         ↓ (IMDS call — no secret required)
@@ -133,6 +134,7 @@ Agent uses token to access cloud resources
 ```
 
 **Pattern 2 — SPIFFE SVID:**
+
 ```
 SPIRE server attests agent workload (via k8s annotations or hardware attestation)
         ↓ issues
@@ -142,6 +144,7 @@ mTLS-secured endpoints (MCP servers, APIs, databases)
 ```
 
 **Pattern 3 — OAuth Client Credentials:**
+
 ```
 Agent registered as OAuth client with client_id + client_secret (in Vault)
         ↓ requests
@@ -157,7 +160,7 @@ Agent uses token for API calls
 Authorization for agents must be **more restrictive** than for humans:
 
 | Principle | Human User | Agent |
-|---|---|---|
+| --- | --- | --- |
 | Scope | Role-based broad access | Task-specific, per-session scoping |
 | Duration | Session-lifetime tokens | Per-task short-lived tokens (minutes) |
 | Delegation | Manager-to-employee delegation | Explicit, audited delegation chains |
@@ -169,6 +172,7 @@ Authorization for agents must be **more restrictive** than for humans:
 When a human delegates a task to an agent, the agent must carry the human's authorization context — but with reduced scope.
 
 **OAuth 2.0 OBO flow:**
+
 ```
 Human authenticates (gets user token)
         ↓
@@ -203,6 +207,7 @@ Backend Resource (Database, API, File System)
 **Critical security property:** The agent **never receives** the backend resource credentials. The MCP server holds credentials and acts as an authorized proxy.
 
 **MCP security controls:**
+
 - **Server authentication**: Agent must authenticate to each MCP server before invoking tools
 - **Tool-level authorization**: Not all tools are available to all agents — per-tool ACLs
 - **Input validation**: MCP server validates tool parameters before executing
@@ -215,6 +220,7 @@ Backend Resource (Database, API, File System)
 A2A is the emerging standard for inter-agent communication.
 
 **A2A trust model:**
+
 ```
 Agent A (Sender)
         ↓ (signed message with A's identity)
@@ -225,6 +231,7 @@ Agent B (Receiver)
 ```
 
 **A2A security controls:**
+
 - Message signing: each inter-agent message signed with sender's private key
 - Attestation: receiver verifies sender's identity before processing
 - Scope enforcement: messages can only trigger actions within the receiver's defined capability
@@ -235,6 +242,7 @@ Agent B (Receiver)
 AG-UI governs how agents present interfaces to human users — important for security because it determines what users can approve, reject, or redirect.
 
 **Security-relevant AG-UI elements:**
+
 - **Approval dialogs**: Presented before irreversible agent actions
 - **Progress visibility**: Users can see what the agent is doing in real time
 - **Interruption controls**: User can pause or cancel agent tasks
@@ -249,7 +257,7 @@ AG-UI governs how agents present interfaces to human users — important for sec
 Agents that can execute code, browse the web, or access files must be isolated to prevent escape and cross-contamination.
 
 | Isolation Technology | Provider | Isolation Level | Overhead |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **MicroVM** (Firecracker) | AWS | Near-VM isolation, millisecond boot | Low |
 | **gVisor** | Google | Kernel syscall interception | Low-Medium |
 | **Docker container** | OCI | Namespace isolation only | Very low |
@@ -273,7 +281,7 @@ Sandboxing limits what an agent can do **within** its execution environment:
 Governance controls define what agents are permitted to do at a policy level:
 
 | Governance Control | Description | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Agent registry** | Central inventory of all deployed agents | CMDB entry per agent with owner, capability, and approval |
 | **Capability approval** | Each new capability requires explicit approval | ARB or AI governance committee review |
 | **Human-in-the-loop gates** | Approval required before high-impact actions | Workflow integration (email, Slack, ticketing) |
@@ -289,7 +297,7 @@ Governance controls define what agents are permitted to do at a policy level:
 Not all agent actions warrant the same level of oversight. A tiered model:
 
 | Tier | Oversight Model | Trigger Condition | Implementation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 0 | **Autonomous** | Low-risk, reversible, frequently repeated actions | Agent acts without human input |
 | 1 | **Human-in-the-Loop (HITL)** | Moderate-risk or first-time actions | Agent pauses, human approves, agent continues |
 | 2 | **Human-on-the-Loop (HOTL)** | Actions in progress, human monitors | Agent acts, human can interrupt |
@@ -317,6 +325,7 @@ Risk level: CRITICAL → block, require senior approval + audit trail
 A kill switch is an emergency control that immediately halts all agent operations.
 
 **Kill switch hierarchy:**
+
 ```
 Global kill switch (stops all agents org-wide)
     ↓
@@ -328,6 +337,7 @@ Individual agent kill switch (stops a single agent instance)
 ```
 
 **Implementation requirements:**
+
 - Kill switch must be reachable even when agent infrastructure is compromised
 - Kill switch action must be logged with reason, who triggered it, and timestamp
 - Kill switch should gracefully complete in-flight safe operations before halting
@@ -338,7 +348,7 @@ Individual agent kill switch (stops a single agent instance)
 Circuit breakers automatically stop agent operations when predefined thresholds are exceeded:
 
 | Trigger | Threshold Example | Response |
-|---|---|---|
+| --- | --- | --- |
 | Cost overrun | > $1,000 in 1 hour | Halt, alert, require manual re-enable |
 | Error rate | > 20% tool failures in 10 minutes | Halt, alert, root cause investigation |
 | Anomalous output | Content classifier flags > 5 outputs/hour | Halt, human review |

@@ -4,6 +4,7 @@ Fix formatting issues in remaining ai-usecases files:
   - 05-10 industry files: check for and strip any HTML tags
   - CEO agent files: merge broken multi-column PDF paragraph fragments
 """
+
 import re
 from pathlib import Path
 
@@ -15,9 +16,16 @@ DOCS = ROOT / "docs/ai-usecases"
 # ──────────────────────────────────────────────────────────────────────────────
 
 INDUSTRY_FILES = [
-    "01_aviation.md", "02_banking.md", "03_healthcare.md", "04_manufacturing.md",
-    "05_telecom.md", "06_government.md", "07_pharma.md", "08_energy.md",
-    "09_logistics.md", "10_media.md",
+    "01_aviation.md",
+    "02_banking.md",
+    "03_healthcare.md",
+    "04_manufacturing.md",
+    "05_telecom.md",
+    "06_government.md",
+    "07_pharma.md",
+    "08_energy.md",
+    "09_logistics.md",
+    "10_media.md",
 ]
 
 HTML_TAG_RE = re.compile(r"</?(?:u|b|i|strong|em|span[^>]*)>", re.IGNORECASE)
@@ -160,6 +168,7 @@ def fix_numbered_section_headers(content: str) -> str:
 # ──────────────────────────────────────────────────────────────────────────────
 # Main
 # ──────────────────────────────────────────────────────────────────────────────
+
 
 def main():
     changed = []

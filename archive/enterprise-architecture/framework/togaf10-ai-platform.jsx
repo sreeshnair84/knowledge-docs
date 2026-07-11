@@ -948,10 +948,10 @@ instruction: |
   2. Route to the appropriate specialist sub-agent
   3. Aggregate results and ensure compliance checks pass
   4. Escalate to human review when confidence < 85% or policy thresholds exceeded
-  
-  Always cite your reasoning. Never fabricate data. 
+
+  Always cite your reasoning. Never fabricate data.
   If uncertain, escalate immediately.
-  
+
 idle_session_ttl: 1800  # 30 minutes
 memory_configuration:
   enabled_memory_types:
@@ -962,7 +962,7 @@ knowledge_bases:
 action_groups:
   - name: "ComplianceActions"
     lambda_arn: "arn:aws:lambda:eu-west-1:123456789:function:apex-compliance-tools"
-  - name: "EscalationActions"  
+  - name: "EscalationActions"
     lambda_arn: "arn:aws:lambda:eu-west-1:123456789:function:apex-escalation-tools"
 guardrail_configuration:
   guardrail_id: "apex-guardrail-prod"
@@ -978,7 +978,7 @@ content_policy_config:
       input_strength: HIGH
       output_strength: HIGH
     - type: HATE
-      input_strength: HIGH  
+      input_strength: HIGH
       output_strength: HIGH
 sensitive_information_policy:
   pii_entities_config:
@@ -1535,8 +1535,8 @@ Any deviation from the approved architecture must:
 **APEX Architecture Change Request (ACR)**
 \`\`\`
 ACR Number:    ACR-APEX-[YYYY]-[NNN]
-Date Raised:   
-Raised By:     
+Date Raised:
+Raised By:
 Priority:      Critical / High / Medium / Low
 Type:          Type 1 / 2 / 3 / 4
 

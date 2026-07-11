@@ -21,7 +21,7 @@ series_index: "agentic-systems/skill/coding/index"
 ### 6.1 The coding-specific tool taxonomy
 
 | Category | Examples | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Filesystem | read_file, write_file, list_directory, glob | Near-universal, native to every harness |
 | Search | grep/ripgrep-backed search, semantic/embedding search | Ripgrep-style exact search is fast/cheap; semantic search is used for concept-level queries ("where do we handle auth") |
 | AST/structural | tree-sitter-backed symbol search, "find all references" | Bridges to Language Server ground truth (file `04`) |
@@ -53,7 +53,7 @@ The single highest-value piece of guidance surfaced across multiple vendor docs 
 ### 7.1 What belongs in instructions, and where
 
 | Content | AGENTS.md/Rules | Skill |
-|---|---|---|
+| --- | --- | --- |
 | Language/framework conventions (naming, formatting) | ✅ (always true) | Only if framework-specific and rarely invoked |
 | Architecture overview | ✅ (or reference to ADRs, file `06`) | |
 | Testing rules (coverage bar, required patterns) | ✅ if always-true | ✅ if a specific, deep testing methodology |
@@ -74,7 +74,7 @@ The single highest-value piece of guidance surfaced across multiple vendor docs 
 ### 7.3 Anti-patterns
 
 | Anti-pattern | Why it hurts | Fix |
-|---|---|---|
+| --- | --- | --- |
 | **Prompt duplication** | Five near-identical files (`.cursorrules`, `CLAUDE.md`, `.windsurfrules`, `.clinerules/base.md`, `AGENTS.md`) drift out of sync as only one gets updated | Single canonical source + sync script/symlinks (a documented, common community pattern), or migrate fully to AGENTS.md where the target tool supports it |
 | **Conflicting instructions** | A skill and AGENTS.md (or two skills) give contradictory guidance | Skills should defer to AGENTS.md for anything always-true; skills should only add task-specific detail, never override standing rules |
 | **Huge prompts** | A single, giant AGENTS.md with everything crammed in degrades reliability and burns tokens every turn | Keep AGENTS.md under roughly 500 lines (the commonly cited community guideline); push deep/rare content to Skills |

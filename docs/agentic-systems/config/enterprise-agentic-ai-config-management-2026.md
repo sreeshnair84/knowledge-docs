@@ -8,77 +8,78 @@ source_type: converted-pdf
 source_file: "enterprise-agentic-ai-config-management-2026.pdf"
 tags: ["agentic-ai", "configuration", "aws", "parameter-store", "feature-flags", "secrets-management"]
 ---
-**ENTERPRISE ARCHITECTURE SERIES** 
-# **Enterprise Configuration & Parameter Management** 
+**ENTERPRISE ARCHITECTURE SERIES**
 
-for Agentic AI Platforms on AWS 
+# Enterprise Configuration & Parameter Management
 
-###### **2026 Edition** 
+for Agentic AI Platforms on AWS
 
-A comprehensive architecture-level research report covering how modern 
+### 2026 Edition
 
-enterprises design, govern, secure, and operate centralized configuration 
+A comprehensive architecture-level research report covering how modern
 
-management for large-scale Agentic AI platforms. 
+enterprises design, govern, secure, and operate centralized configuration
 
-Document Type Scope 
+management for large-scale Agentic AI platforms.
 
-Primary Cloud Classification Edition 
+Document Type Scope
 
-Architecture Reference Enterprise Agent Builder Platform AWS (multi-cloud considerations included) Internal — Architecture Review 2026 | v1.0 
+Primary Cloud Classification Edition
 
-### **Table of Contents** 
+Architecture Reference Enterprise Agent Builder Platform AWS (multi-cloud considerations included) Internal — Architecture Review 2026 | v1.0
 
-###### **Executive Summary** 
+### Table of Contents
 
-###### **Part 1 — Configuration Taxonomy** 
+### Executive Summary
+
+### Part 1 — Configuration Taxonomy
 
 |**Part 0**<br>**Part 1**|
 |---|
 
-I Infrastructure & Application Configuration I Runtime, Agent & Workflow Configuration I Security, Compliance & Governance Configuration I AI-Specific Configuration Categories 
+I Infrastructure & Application Configuration I Runtime, Agent & Workflow Configuration I Security, Compliance & Governance Configuration I AI-Specific Configuration Categories
 
-###### **Part 2 — Enterprise Architecture Patterns** 
+### Part 2 — Enterprise Architecture Patterns
 
 |**Part 2**|
 |---|
 
-I Configuration as Code & GitOps I Dynamic Runtime & Externalized Configuration I Progressive Delivery & Feature Flags I Internal Developer Platforms & Golden Paths 
+I Configuration as Code & GitOps I Dynamic Runtime & Externalized Configuration I Progressive Delivery & Feature Flags I Internal Developer Platforms & Golden Paths
 
-###### **Part 3 — AWS Services Deep Dive** 
+### Part 3 — AWS Services Deep Dive
 
 |**Part 3**|
 |---|
 
-I AWS Systems Manager Parameter Store I AWS AppConfig I AWS Secrets Manager I AWS Cloud Map & Service Discovery I DynamoDB, S3 & EventBridge for Configuration I Bedrock AgentCore Runtime I ECS / EKS / Lambda Integration 
+I AWS Systems Manager Parameter Store I AWS AppConfig I AWS Secrets Manager I AWS Cloud Map & Service Discovery I DynamoDB, S3 & EventBridge for Configuration I Bedrock AgentCore Runtime I ECS / EKS / Lambda Integration
 
-###### **Part 4 — Runtime Configuration** 
+### Part 4 — Runtime Configuration
 
 |**Part 4**|
 |---|
 
-I Dynamic Refresh Patterns I Push vs Pull Models I Configuration Cache & Distributed Cache I Failure Recovery & Rollback 
+I Dynamic Refresh Patterns I Push vs Pull Models I Configuration Cache & Distributed Cache I Failure Recovery & Rollback
 
-###### **Part 5 — Feature Flag Platforms** 
+### Part 5 — Feature Flag Platforms
 
 |**Part 5**|
 |---|
 
-I AWS AppConfig Feature Flags I LaunchDarkly, Split, Unleash, OpenFeature I Progressive Rollout Strategies 
+I AWS AppConfig Feature Flags I LaunchDarkly, Split, Unleash, OpenFeature I Progressive Rollout Strategies
 
-###### **Part 6 — Secrets Management** 
+### Part 6 — Secrets Management
 
 |**Part 6**|
 |---|
 
-I AWS Secrets Manager Deep Dive I HashiCorp Vault I Cross-Account & Multi-Region Secrets I Dynamic Secrets & Certificate Management 
+I AWS Secrets Manager Deep Dive I HashiCorp Vault I Cross-Account & Multi-Region Secrets I Dynamic Secrets & Certificate Management
 
-###### **Part 7 — Configuration Hierarchy Design** 
+### Part 7 — Configuration Hierarchy Design
 
 |**Part 7**|
 |---|
 
-I Hierarchy Levels & Inheritance I Override Precedence & Conflict Resolution I Version Management & Dependencies 
+I Hierarchy Levels & Inheritance I Override Precedence & Conflict Resolution I Version Management & Dependencies
 
 |**Part 8 — Configuration Schema Design**|**Part 8**|
 |IAgent, Workflow & Prompt Schemas||
@@ -113,29 +114,29 @@ I Hierarchy Levels & Inheritance I Override Precedence & Conflict Resolution I V
 |**Implementation Roadmap (4 Phases)**|**Appendix B**|
 |**RFC Template & Implementation Checklist**|**Appendix C**|
 
-### **Executive Summary** 
+### Executive Summary
 
-As enterprises scale Agentic AI platforms to support hundreds or thousands of autonomous agents across multiple teams, environments, and cloud regions, configuration management emerges as a foundational architectural discipline — one that determines whether those platforms are safe, governable, cost-effective, and operationally resilient. 
+As enterprises scale Agentic AI platforms to support hundreds or thousands of autonomous agents across multiple teams, environments, and cloud regions, configuration management emerges as a foundational architectural discipline — one that determines whether those platforms are safe, governable, cost-effective, and operationally resilient.
 
-This report provides a comprehensive, architecture-level analysis of how leading organizations design, govern, secure, and operate centralized configuration management for large-scale Agentic AI platforms on AWS. It synthesizes lessons from AWS, Microsoft, Google, Netflix, Uber, Airbnb, LinkedIn, Anthropic, Databricks, and others where publicly available, producing actionable recommendations for enterprise Agent Builder platforms. 
+This report provides a comprehensive, architecture-level analysis of how leading organizations design, govern, secure, and operate centralized configuration management for large-scale Agentic AI platforms on AWS. It synthesizes lessons from AWS, Microsoft, Google, Netflix, Uber, Airbnb, LinkedIn, Anthropic, Databricks, and others where publicly available, producing actionable recommendations for enterprise Agent Builder platforms.
 
-##### **Key Findings** 
+### Key Findings
 
-• **Configuration is a first-class platform concern.** Modern Agentic AI systems require more configuration categories (20+) than traditional applications, spanning infrastructure, runtime, model, prompt, memory, RAI policy, cost governance, and compliance domains. Treating configuration as an afterthought leads to sprawl, drift, and safety incidents. 
+• **Configuration is a first-class platform concern.** Modern Agentic AI systems require more configuration categories (20+) than traditional applications, spanning infrastructure, runtime, model, prompt, memory, RAI policy, cost governance, and compliance domains. Treating configuration as an afterthought leads to sprawl, drift, and safety incidents.
 
-• **No single AWS service solves the complete problem.** The optimal architecture combines AWS AppConfig (dynamic flags and feature rollout), Parameter Store (static non-sensitive values), Secrets Manager (credentials and API keys), DynamoDB (custom configuration service), and S3 (large configuration artifacts) in a layered, purpose-built configuration plane. 
+• **No single AWS service solves the complete problem.** The optimal architecture combines AWS AppConfig (dynamic flags and feature rollout), Parameter Store (static non-sensitive values), Secrets Manager (credentials and API keys), DynamoDB (custom configuration service), and S3 (large configuration artifacts) in a layered, purpose-built configuration plane.
 
-• **Runtime hot-reloading is non-negotiable for AI agents.** Unlike traditional microservices, AI agents must update LLM model selections, prompt versions, RAI guardrails, knowledge base references, and kill switches without redeployment. This requires event-driven refresh mechanisms anchored to EventBridge, SQS, and local configuration caches. 
+• **Runtime hot-reloading is non-negotiable for AI agents.** Unlike traditional microservices, AI agents must update LLM model selections, prompt versions, RAI guardrails, knowledge base references, and kill switches without redeployment. This requires event-driven refresh mechanisms anchored to EventBridge, SQS, and local configuration caches.
 
-• **Hierarchical configuration with inheritance is the enterprise standard.** A 14-level hierarchy (Enterprise → Org → BU → Platform → Environment → Region → Tenant → Project → Agent → Workflow → Tool → Session → User → Request) enables reuse, override, and governance at every scope without configuration duplication. 
+• **Hierarchical configuration with inheritance is the enterprise standard.** A 14-level hierarchy (Enterprise → Org → BU → Platform → Environment → Region → Tenant → Project → Agent → Workflow → Tool → Session → User → Request) enables reuse, override, and governance at every scope without configuration duplication.
 
-• **Security must be embedded by design.** Configuration planes must implement Zero Trust with ABAC using AWS IAM and Cedar policy, short-lived credentials, configuration signing (KMS), tamper detection, and complete audit trails via CloudTrail and OpenTelemetry. 
+• **Security must be embedded by design.** Configuration planes must implement Zero Trust with ABAC using AWS IAM and Cedar policy, short-lived credentials, configuration signing (KMS), tamper detection, and complete audit trails via CloudTrail and OpenTelemetry.
 
-• **Developer experience determines adoption.** Platform teams must invest in self-service portals, typed SDKs, CLI tooling, GitOps workflows, and configuration testing frameworks. Poor DX causes teams to bypass governance and hardcode values — the most dangerous anti-pattern for AI systems. 
+• **Developer experience determines adoption.** Platform teams must invest in self-service portals, typed SDKs, CLI tooling, GitOps workflows, and configuration testing frameworks. Poor DX causes teams to bypass governance and hardcode values — the most dangerous anti-pattern for AI systems.
 
-• **Progressive delivery is mandatory for AI configuration changes.** Prompt version updates, model changes, and guardrail modifications must support canary rollout, A/B testing, and instant kill switches. A bad prompt update can cause cascading failures across all agent instances globally within seconds. 
+• **Progressive delivery is mandatory for AI configuration changes.** Prompt version updates, model changes, and guardrail modifications must support canary rollout, A/B testing, and instant kill switches. A bad prompt update can cause cascading failures across all agent instances globally within seconds.
 
-##### **Strategic Recommendations** 
+### Strategic Recommendations
 
 |**Phase**|**Label**|**Key Actions**|
 |Immediate (0–90 days)|PoC|Establish naming conventions, Parameter Store hierarchy, and Secrets<br>Manager baseline. Implement AppConfig for feature flags. Create<br>configuration ownership model.|
@@ -143,411 +144,411 @@ This report provides a comprehensive, architecture-level analysis of how leading
 |Medium-term (180–365<br>days)|Enterprise<br>Scale|Implement full 14-level hierarchy with inheritance engine. Deploy<br>Prompt Registry with versioning and approval workflows. Enable<br>canary rollout for all configuration types.|
 |Long-term<br>(12–24<br>months)|Global|Achieve global multi-region configuration federation. Implement<br>AI-driven configuration optimization. Deploy configuration marketplace<br>for cross-team reuse. Enable sovereign deployments with local<br>configuration replicas.|
 
-I Critical Risk: Enterprise Agent Builder Platforms without proper configuration governance face significant risks including prompt injection via misconfigured guardrails, cost overruns from uncontrolled model selection, compliance violations from misconfigured RAI policies, and cascading failures from uncontrolled configuration updates. The investment in a proper configuration plane pays back within the first quarter of operation at scale. 
+I Critical Risk: Enterprise Agent Builder Platforms without proper configuration governance face significant risks including prompt injection via misconfigured guardrails, cost overruns from uncontrolled model selection, compliance violations from misconfigured RAI policies, and cascading failures from uncontrolled configuration updates. The investment in a proper configuration plane pays back within the first quarter of operation at scale.
 
-## **Configuration Taxonomy** 
+## Configuration Taxonomy
 
-What Exactly Constitutes Configuration in Modern Agentic AI Systems 
+What Exactly Constitutes Configuration in Modern Agentic AI Systems
 
-Modern Agentic AI systems require a dramatically expanded understanding of configuration. Unlike traditional applications where configuration means environment variables and database connection strings, AI agent platforms must manage 22 distinct configuration categories across the full agent lifecycle — from infrastructure provisioning to real-time safety policy enforcement. 
+Modern Agentic AI systems require a dramatically expanded understanding of configuration. Unlike traditional applications where configuration means environment variables and database connection strings, AI agent platforms must manage 22 distinct configuration categories across the full agent lifecycle — from infrastructure provisioning to real-time safety policy enforcement.
 
-###### **1. Infrastructure Configuration** 
+### 1. Infrastructure Configuration
 
-- VPC IDs, subnet IDs, security group IDs • S3 bucket names, DynamoDB table names • ECS cluster ARNs, EKS cluster endpoints, • Regional endpoint overrides Lambda function ARNs • Availability zone configuration • Load balancer ARNs, target group ARNs • Auto-scaling policies and thresholds 
+- VPC IDs, subnet IDs, security group IDs • S3 bucket names, DynamoDB table names • ECS cluster ARNs, EKS cluster endpoints, • Regional endpoint overrides Lambda function ARNs • Availability zone configuration • Load balancer ARNs, target group ARNs • Auto-scaling policies and thresholds
 
-- RDS endpoints, ElastiCache cluster endpoints 
+- RDS endpoints, ElastiCache cluster endpoints
 
-###### **2. Application Configuration** 
+### 2. Application Configuration
 
-- Service endpoints and base URLs • Retry policies (backoff strategy, max retries, jitter) • Thread pool sizes, connection pool sizes • Timeout configurations (connection, read, write) • Cache TTLs and eviction policies • Batch sizes and parallelism settings • Circuit breaker thresholds • Health check intervals 
+- Service endpoints and base URLs • Retry policies (backoff strategy, max retries, jitter) • Thread pool sizes, connection pool sizes • Timeout configurations (connection, read, write) • Cache TTLs and eviction policies • Batch sizes and parallelism settings • Circuit breaker thresholds • Health check intervals
 
-###### **3. Runtime Configuration** 
+### 3. Runtime Configuration
 
-- Feature flags (agent capabilities on/off) • Rate limits per tenant/agent/user • Kill switches (emergency stop for agents or tools) • Traffic routing weights • A/B test assignments • Experiment group assignments • Canary rollout percentages • Dark launch flags 
+- Feature flags (agent capabilities on/off) • Rate limits per tenant/agent/user • Kill switches (emergency stop for agents or tools) • Traffic routing weights • A/B test assignments • Experiment group assignments • Canary rollout percentages • Dark launch flags
 
-###### **4. Agent Configuration** 
+### 4. Agent Configuration
 
-- Agent identity and description • Human approval thresholds (when to escalate) • Agent role and permission group • Memory type (short-term / long-term / episodic) • Max concurrent sessions • Planning strategy (ReAct / Plan-and-Execute / • Agent behavioral constraints Tree-of-Thought) • Multi-agent routing rules and orchestration mode 
+- Agent identity and description • Human approval thresholds (when to escalate) • Agent role and permission group • Memory type (short-term / long-term / episodic) • Max concurrent sessions • Planning strategy (ReAct / Plan-and-Execute / • Agent behavioral constraints Tree-of-Thought) • Multi-agent routing rules and orchestration mode
 
-###### **5. Workflow Configuration** 
+### 5. Workflow Configuration
 
-- Step definitions and DAG structure • Compensation/rollback actions 
+- Step definitions and DAG structure • Compensation/rollback actions
 
-- Conditional branching rules 
+- Conditional branching rules
 
-- Parallel execution limits 
+- Parallel execution limits
 
-- Step timeout and retry policies 
+- Step timeout and retry policies
 
-- Human-in-the-loop trigger conditions 
+- Human-in-the-loop trigger conditions
 
-- Workflow version and activation flags 
+- Workflow version and activation flags
 
-- Input/output schema references 
+- Input/output schema references
 
-###### **6. Tool Configuration** 
+### 6. Tool Configuration
 
-- Tool endpoint URLs (REST/gRPC/MCP) • Tool health check endpoints • Tool authentication method and credential • Tool timeout and retry policy references • Tool capability declarations • Tool input/output schemas • Tool version pinning 
+- Tool endpoint URLs (REST/gRPC/MCP) • Tool health check endpoints • Tool authentication method and credential • Tool timeout and retry policy references • Tool capability declarations • Tool input/output schemas • Tool version pinning
 
-- Tool rate limits and quota settings 
+- Tool rate limits and quota settings
 
-###### **7. Prompt Configuration** 
+### 7. Prompt Configuration
 
-- Prompt template versions and ARNs 
+- Prompt template versions and ARNs
 
-- System prompt references (Prompt Registry) 
+- System prompt references (Prompt Registry)
 
-- Few-shot example references 
+- Few-shot example references
 
-   - Chain-of-thought instructions • Persona definitions 
+  - Chain-of-thought instructions • Persona definitions
 
-   - Language and localization settings 
+  - Language and localization settings
 
-- Output format specifications • Prompt approval status and rollback version 
+- Output format specifications • Prompt approval status and rollback version
 
-###### **8. Model Configuration** 
+### 8. Model Configuration
 
-- Foundation Model IDs (Bedrock model IDs) 
+- Foundation Model IDs (Bedrock model IDs)
 
-- Model version pinning 
+- Model version pinning
 
-- Temperature, top-p, top-k sampling parameters 
+- Temperature, top-p, top-k sampling parameters
 
-- Max token limits (input + output) 
+- Max token limits (input + output)
 
-• Stop sequences • Response format (JSON mode, structured output) • Model fallback chains • Embedding model selection 
+• Stop sequences • Response format (JSON mode, structured output) • Model fallback chains • Embedding model selection
 
-###### **9. Memory Configuration** 
+### 9. Memory Configuration
 
-- Short-term memory window size (context tokens) • Memory compression strategy • Long-term memory store references (vector DB • Session persistence settings ARNs) • Cross-session memory policies • Memory retrieval strategy (similarity threshold, • Memory access control rules 
+- Short-term memory window size (context tokens) • Memory compression strategy • Long-term memory store references (vector DB • Session persistence settings ARNs) • Cross-session memory policies • Memory retrieval strategy (similarity threshold, • Memory access control rules
 
-- Memory retrieval strategy (similarity threshold, top-k) 
+- Memory retrieval strategy (similarity threshold, top-k)
 
-- Memory TTL and expiration policies 
+- Memory TTL and expiration policies
 
-###### **10. Security Configuration** 
+### 10. Security Configuration
 
-- IAM role ARNs and permission boundaries 
+- IAM role ARNs and permission boundaries
 
-- OAuth 2.0 client IDs and token endpoint URLs 
+- OAuth 2.0 client IDs and token endpoint URLs
 
-- API Gateway authorizer references 
+- API Gateway authorizer references
 
-- VPC endpoint configurations 
+- VPC endpoint configurations
 
-- TLS certificate ARNs • KMS key ARNs for encryption 
+- TLS certificate ARNs • KMS key ARNs for encryption
 
-- WAF rule group references 
+- WAF rule group references
 
-- Network firewall policy ARNs 
+- Network firewall policy ARNs
 
-###### **11. Authorization Configuration** 
+### 11. Authorization Configuration
 
-- RBAC role definitions 
+- RBAC role definitions
 
-- ABAC attribute schemas 
+- ABAC attribute schemas
 
-- Cedar policy store references 
+- Cedar policy store references
 
-- OPA policy bundle URLs 
+- OPA policy bundle URLs
 
-- Permission group membership rules 
+- Permission group membership rules
 
-- Scope definitions for OAuth 
+- Scope definitions for OAuth
 
-- Resource-level permission matrices 
+- Resource-level permission matrices
 
-- Cross-tenant isolation rules 
+- Cross-tenant isolation rules
 
-###### **12. Feature Configuration** 
+### 12. Feature Configuration
 
-- Feature flags per agent type • Dependency flags (features requiring other • Capability enablement by environment features) • Beta feature opt-in lists • Feature expiration dates • Graduated rollout targeting rules • Feature flag evaluation context schema • Override rules for specific tenants/users 
+- Feature flags per agent type • Dependency flags (features requiring other • Capability enablement by environment features) • Beta feature opt-in lists • Feature expiration dates • Graduated rollout targeting rules • Feature flag evaluation context schema • Override rules for specific tenants/users
 
-###### **13. Experiment Configuration** 
+### 13. Experiment Configuration
 
-- Experiment IDs and hypothesis definitions • Experiment start/end dates • Treatment assignment rules • Early stopping criteria • Sample size and statistical power settings • Holdout group configuration • Metric collection configuration • Result analysis endpoints 
+- Experiment IDs and hypothesis definitions • Experiment start/end dates • Treatment assignment rules • Early stopping criteria • Sample size and statistical power settings • Holdout group configuration • Metric collection configuration • Result analysis endpoints
 
-- **14. Cost Governance Configuration** • Monthly token budget per agent/tenant • Token counting strategy • Cost alert thresholds • Cost allocation tags • Model tier restrictions (e.g., no GPT-4 in dev) • Budget exhaustion behavior (throttle vs block) • Batch inference vs real-time routing thresholds • Reserved capacity allocations 
+- **14. Cost Governance Configuration** • Monthly token budget per agent/tenant • Token counting strategy • Cost alert thresholds • Cost allocation tags • Model tier restrictions (e.g., no GPT-4 in dev) • Budget exhaustion behavior (throttle vs block) • Batch inference vs real-time routing thresholds • Reserved capacity allocations
 
-- **15. Observability Configuration** • OpenTelemetry collector endpoints • Metric export intervals • Phoenix/Langfuse server URLs • Alert routing configurations • Trace sampling rates • Dashboard template references • Log levels per component • SLO definitions and error budgets 
+- **15. Observability Configuration** • OpenTelemetry collector endpoints • Metric export intervals • Phoenix/Langfuse server URLs • Alert routing configurations • Trace sampling rates • Dashboard template references • Log levels per component • SLO definitions and error budgets
 
-###### **14. Cost Governance Configuration** 
+### 14. Cost Governance Configuration
 
-###### **15. Observability Configuration** 
+### 15. Observability Configuration
 
-###### **16. Compliance Configuration** 
+### 16. Compliance Configuration
 
-- Data residency requirements (allowed regions) • Audit log requirements • Data classification policies • Regulatory framework references (SOC2, GDPR, • Retention periods per data type HIPAA) • PII detection and masking rules • Right-to-erasure policy references • Consent management configurations 
+- Data residency requirements (allowed regions) • Audit log requirements • Data classification policies • Regulatory framework references (SOC2, GDPR, • Retention periods per data type HIPAA) • PII detection and masking rules • Right-to-erasure policy references • Consent management configurations
 
-###### **17. Operational Configuration** 
+### 17. Operational Configuration
 
-- On-call rotation references • Deployment freeze periods • Incident severity thresholds • Capacity reservation settings • Runbook URLs per failure mode • DR failover trigger conditions • Maintenance window definitions • Chaos engineering parameters 
+- On-call rotation references • Deployment freeze periods • Incident severity thresholds • Capacity reservation settings • Runbook URLs per failure mode • DR failover trigger conditions • Maintenance window definitions • Chaos engineering parameters
 
-###### **18. Tenant Configuration** 
+### 18. Tenant Configuration
 
-- Tenant ID and display name • Tenant data isolation mode (shared/dedicated) • Tenant tier (Basic/Pro/Enterprise) • Billing account references • Custom domain configurations • Tenant-specific model allowlists • Tenant-specific feature overrides • White-label branding configuration 
+- Tenant ID and display name • Tenant data isolation mode (shared/dedicated) • Tenant tier (Basic/Pro/Enterprise) • Billing account references • Custom domain configurations • Tenant-specific model allowlists • Tenant-specific feature overrides • White-label branding configuration
 
-###### **19. Environment Configuration** 
+### 19. Environment Configuration
 
-- Environment name (dev/test/uat/prod) • Environment-specific secret store references 
+- Environment name (dev/test/uat/prod) • Environment-specific secret store references
 
-- Environment-specific endpoint overrides 
+- Environment-specific endpoint overrides
 
-   - Approval workflow requirements by environment 
+  - Approval workflow requirements by environment
 
-- Debug flags (verbose logging in dev only) • Environment promotion rules 
+- Debug flags (verbose logging in dev only) • Environment promotion rules
 
-- Mock service endpoints for testing • Blue/green environment routing weights 
+- Mock service endpoints for testing • Blue/green environment routing weights
 
-###### **20. Disaster Recovery Configuration** 
+### 20. Disaster Recovery Configuration
 
-- RTO/RPO targets per service 
+- RTO/RPO targets per service
 
-- Backup schedule definitions 
+- Backup schedule definitions
 
-- Failover region priority order 
+- Failover region priority order
 
-   - Warm standby vs cold standby settings 
+  - Warm standby vs cold standby settings
 
-   - Configuration snapshot frequency 
+  - Configuration snapshot frequency
 
-   - DR test schedule and runbook references 
+  - DR test schedule and runbook references
 
-- Data replication lag thresholds • Cross-region replication ARNs 
+- Data replication lag thresholds • Cross-region replication ARNs
 
-###### **21. Policy Configuration** 
+### 21. Policy Configuration
 
-- RAI (Responsible AI) policy references 
+- RAI (Responsible AI) policy references
 
-   - Bias detection policy versions 
+  - Bias detection policy versions
 
-- Guardrail configuration (Bedrock Guardrails • Toxicity filter configurations ARNs) • Output validation rule references 
+- Guardrail configuration (Bedrock Guardrails • Toxicity filter configurations ARNs) • Output validation rule references
 
-- Constitutional AI policy document references 
+- Constitutional AI policy document references
 
-   - Escalation policy for policy violations 
+  - Escalation policy for policy violations
 
-- Content moderation threshold settings 
+- Content moderation threshold settings
 
-###### **22. Context Engineering Configuration** 
+### 22. Context Engineering Configuration
 
-- Context window budget allocation strategy 
+- Context window budget allocation strategy
 
-   - Context priority rules (recency vs relevance) 
+  - Context priority rules (recency vs relevance)
 
-- RAG retrieval configuration (top-k, similarity threshold) • Dynamic context injection rules 
+- RAG retrieval configuration (top-k, similarity threshold) • Dynamic context injection rules
 
-   - Conversation history truncation strategy 
+  - Conversation history truncation strategy
 
-   - Context validation schemas 
+  - Context validation schemas
 
-- Knowledge Base ARNs and index references 
+- Knowledge Base ARNs and index references
 
-- Context compression settings 
+- Context compression settings
 
-## **Enterprise Architecture Patterns** 
+## Enterprise Architecture Patterns
 
 How Leading Organizations Solve Configuration at Scale<br><!-- End of picture text -->
 
-##### **Configuration as Code (CaC)** 
+### Configuration as Code (CaC)
 
-Configuration as Code treats every configuration artifact — parameter definitions, feature flag schemas, secret references, agent blueprints — as version-controlled source code with the same review, testing, and deployment rigor as application code. 
+Configuration as Code treats every configuration artifact — parameter definitions, feature flag schemas, secret references, agent blueprints — as version-controlled source code with the same review, testing, and deployment rigor as application code.
 
-- All configuration stored in Git repositories alongside infrastructure code 
+- All configuration stored in Git repositories alongside infrastructure code
 
-- Pull requests required for any configuration change (no direct console edits in prod) 
+- Pull requests required for any configuration change (no direct console edits in prod)
 
-- Automated linting, schema validation, and policy checks in CI pipelines 
+- Automated linting, schema validation, and policy checks in CI pipelines
 
-- GitOps operators (Flux, ArgoCD) reconcile desired state to actual state 
+- GitOps operators (Flux, ArgoCD) reconcile desired state to actual state
 
-- Immutable configuration artifacts (versioned S3 objects, Parameter Store versions) 
+- Immutable configuration artifacts (versioned S3 objects, Parameter Store versions)
 
-- Configuration changes trigger deployment pipelines, not manual steps 
+- Configuration changes trigger deployment pipelines, not manual steps
 
-**Enterprise Adoption:** Netflix pioneered CaC for their distributed systems with Archaius. AWS CodePipeline with CloudFormation/Terraform represents the AWS-native implementation. For AI platforms, prompt templates and agent schemas must be included in the CaC scope. 
+**Enterprise Adoption:** Netflix pioneered CaC for their distributed systems with Archaius. AWS CodePipeline with CloudFormation/Terraform represents the AWS-native implementation. For AI platforms, prompt templates and agent schemas must be included in the CaC scope.
 
-##### **GitOps for Configuration** 
+### GitOps for Configuration
 
-GitOps extends CaC by making Git the single source of truth for both infrastructure and configuration, with automated reconciliation ensuring the deployed state always matches the Git state. This is the enterprise standard for Kubernetes-based platforms. 
+GitOps extends CaC by making Git the single source of truth for both infrastructure and configuration, with automated reconciliation ensuring the deployed state always matches the Git state. This is the enterprise standard for Kubernetes-based platforms.
 
-- Git repository per environment (or branch-per-environment strategy) 
+- Git repository per environment (or branch-per-environment strategy)
 
-- Automated drift detection alerts when deployed state diverges from Git 
+- Automated drift detection alerts when deployed state diverges from Git
 
-- Reconciliation loop continuously syncs configuration from Git to runtime 
+- Reconciliation loop continuously syncs configuration from Git to runtime
 
-- Rollback is a Git revert — simple, auditable, and reversible 
+- Rollback is a Git revert — simple, auditable, and reversible
 
-- Signed commits (GPG) enforce configuration provenance 
+- Signed commits (GPG) enforce configuration provenance
 
-- Branch protection rules prevent unauthorized configuration changes 
+- Branch protection rules prevent unauthorized configuration changes
 
-**Enterprise Adoption:** Kubernetes-based Agent Builder platforms should use FluxCD or ArgoCD for GitOps. AWS CodePipeline with SSM Parameter Store provides an AWS-native alternative. Anthropic and similar AI infrastructure teams use GitOps for model deployment pipelines. 
+**Enterprise Adoption:** Kubernetes-based Agent Builder platforms should use FluxCD or ArgoCD for GitOps. AWS CodePipeline with SSM Parameter Store provides an AWS-native alternative. Anthropic and similar AI infrastructure teams use GitOps for model deployment pipelines.
 
-##### **Externalized Configuration** 
+### Externalized Configuration
 
-The Externalized Configuration pattern (from the 12-Factor App methodology) separates configuration from code entirely, injecting all environment-specific values at runtime from an external configuration service rather than bundling them in container images or deployment packages. 
+The Externalized Configuration pattern (from the 12-Factor App methodology) separates configuration from code entirely, injecting all environment-specific values at runtime from an external configuration service rather than bundling them in container images or deployment packages.
 
-- Zero hardcoded values in application code or container images 
+- Zero hardcoded values in application code or container images
 
-- Configuration injected via environment variables, mounted files, or SDK calls 
+- Configuration injected via environment variables, mounted files, or SDK calls
 
-- Configuration service acts as the authoritative source (AppConfig, Parameter Store) 
+- Configuration service acts as the authoritative source (AppConfig, Parameter Store)
 
-- Applications fail fast at startup if required configuration is missing 
+- Applications fail fast at startup if required configuration is missing
 
-- Configuration schema validation enforced at injection time 
+- Configuration schema validation enforced at injection time
 
-- Supports multiple configuration sources with clear precedence order 
+- Supports multiple configuration sources with clear precedence order
 
-**Enterprise Adoption:** AWS Lambda, ECS, and EKS all support externalized configuration natively via environment variables, SSM Parameter Store integration, and Secrets Manager. The AWS AppConfig Agent extension provides a local proxy for ECS/EKS workloads. 
+**Enterprise Adoption:** AWS Lambda, ECS, and EKS all support externalized configuration natively via environment variables, SSM Parameter Store integration, and Secrets Manager. The AWS AppConfig Agent extension provides a local proxy for ECS/EKS workloads.
 
-##### **Hierarchical Configuration with Inheritance** 
+### Hierarchical Configuration with Inheritance
 
-A hierarchical configuration model organizes configuration in a tree structure where lower levels inherit from higher levels and can selectively override specific values. This dramatically reduces duplication and simplifies multi-environment, multi-tenant configuration management. 
+A hierarchical configuration model organizes configuration in a tree structure where lower levels inherit from higher levels and can selectively override specific values. This dramatically reduces duplication and simplifies multi-environment, multi-tenant configuration management.
 
-- Enterprise-level defaults apply everywhere unless overridden 
+- Enterprise-level defaults apply everywhere unless overridden
 
-- Environment-level overrides (dev gets verbose logging, prod gets minimal) 
+- Environment-level overrides (dev gets verbose logging, prod gets minimal)
 
-- Tenant-level overrides (Enterprise tier gets different model limits) 
+- Tenant-level overrides (Enterprise tier gets different model limits)
 
-- Agent-level overrides for specific behavioral customizations 
+- Agent-level overrides for specific behavioral customizations
 
-- Merge strategy defined per configuration key (last-wins, deep-merge, append) 
+- Merge strategy defined per configuration key (last-wins, deep-merge, append)
 
-- Circular reference detection in inheritance chains 
+- Circular reference detection in inheritance chains
 
-**Enterprise Adoption:** AWS AppConfig supports hierarchical configuration profiles. Spring Cloud Config pioneered this pattern in the Java ecosystem. For Agentic AI platforms, the hierarchy must extend to the agent, workflow, and session levels. 
+**Enterprise Adoption:** AWS AppConfig supports hierarchical configuration profiles. Spring Cloud Config pioneered this pattern in the Java ecosystem. For Agentic AI platforms, the hierarchy must extend to the agent, workflow, and session levels.
 
-##### **Progressive Delivery** 
+### Progressive Delivery
 
-Progressive delivery applies continuous deployment techniques — canary releases, feature flags, ring deployments, A/B tests — to configuration changes, allowing teams to validate configuration changes with a subset of agents/tenants before full rollout. 
+Progressive delivery applies continuous deployment techniques — canary releases, feature flags, ring deployments, A/B tests — to configuration changes, allowing teams to validate configuration changes with a subset of agents/tenants before full rollout.
 
-- Configuration changes deployed to canary agents (1% → 10% → 50% → 100%) 
+- Configuration changes deployed to canary agents (1% → 10% → 50% → 100%)
 
-- Automated rollback on error rate increase or latency degradation 
+- Automated rollback on error rate increase or latency degradation
 
-- Feature flags enable runtime toggling without deployment 
+- Feature flags enable runtime toggling without deployment
 
-- A/B testing framework measures impact of configuration changes 
+- A/B testing framework measures impact of configuration changes
 
-- Ring deployment: dev → internal users → beta customers → general availability 
+- Ring deployment: dev → internal users → beta customers → general availability
 
-- Kill switches provide instant global rollback capability 
+- Kill switches provide instant global rollback capability
 
-**Enterprise Adoption:** LaunchDarkly and AWS AppConfig provide native progressive delivery for configuration. For AI platforms, prompt version rollouts and model upgrades must use progressive delivery to prevent quality regressions from reaching all users simultaneously. 
+**Enterprise Adoption:** LaunchDarkly and AWS AppConfig provide native progressive delivery for configuration. For AI platforms, prompt version rollouts and model upgrades must use progressive delivery to prevent quality regressions from reaching all users simultaneously.
 
-##### **Configuration Federation** 
+### Configuration Federation
 
-Configuration Federation allows multiple teams and systems to own and manage different portions of the configuration namespace, while a central configuration plane provides unified access, governance, and observability across all configuration sources. 
+Configuration Federation allows multiple teams and systems to own and manage different portions of the configuration namespace, while a central configuration plane provides unified access, governance, and observability across all configuration sources.
 
-- Each platform team owns their configuration namespace 
+- Each platform team owns their configuration namespace
 
-- Central platform provides discovery, caching, and governance layer 
+- Central platform provides discovery, caching, and governance layer
 
-- Configuration consumers get a unified API regardless of backend source 
+- Configuration consumers get a unified API regardless of backend source
 
-- Cross-team configuration dependencies are explicitly declared and versioned 
+- Cross-team configuration dependencies are explicitly declared and versioned
 
-- Federation layer enforces naming conventions and schema standards 
+- Federation layer enforces naming conventions and schema standards
 
-- Circular dependency detection across team boundaries 
+- Circular dependency detection across team boundaries
 
-**Enterprise Adoption:** Uber's configuration management at scale uses federation where team-owned stores are aggregated by a central configuration mesh. For an Enterprise Agent Builder Platform, each AI team manages their agent configs while the platform team governs the shared guardrails, models, and security policies. 
+**Enterprise Adoption:** Uber's configuration management at scale uses federation where team-owned stores are aggregated by a central configuration mesh. For an Enterprise Agent Builder Platform, each AI team manages their agent configs while the platform team governs the shared guardrails, models, and security policies.
 
-##### **Policy-Driven Configuration** 
+### Policy-Driven Configuration
 
-Policy-Driven Configuration uses declarative policy engines (OPA, Cedar, AWS SCPs) to automatically enforce constraints on configuration values — preventing invalid, unsafe, or non-compliant configurations from being deployed regardless of who submits the change. 
+Policy-Driven Configuration uses declarative policy engines (OPA, Cedar, AWS SCPs) to automatically enforce constraints on configuration values — preventing invalid, unsafe, or non-compliant configurations from being deployed regardless of who submits the change.
 
-- OPA policies validate configuration changes in CI pipelines 
+- OPA policies validate configuration changes in CI pipelines
 
-- Cedar policies enforce real-time configuration access control 
+- Cedar policies enforce real-time configuration access control
 
-- AWS Service Control Policies prevent cross-account configuration leakage 
+- AWS Service Control Policies prevent cross-account configuration leakage
 
-- Automated remediation for configuration drift 
+- Automated remediation for configuration drift
 
-- Policy-as-code versioned alongside configuration 
+- Policy-as-code versioned alongside configuration
 
-- Compliance reporting generated from policy evaluation results 
+- Compliance reporting generated from policy evaluation results
 
-**Enterprise Adoption:** HashiCorp Sentinel and AWS Config Rules implement policy-driven configuration. For Agentic AI platforms, policies must enforce RAI guardrail minimums, cost limit maximums, and required observability configuration. 
+**Enterprise Adoption:** HashiCorp Sentinel and AWS Config Rules implement policy-driven configuration. For Agentic AI platforms, policies must enforce RAI guardrail minimums, cost limit maximums, and required observability configuration.
 
-##### **Intent-Driven Configuration** 
+### Intent-Driven Configuration
 
-Intent-Driven Configuration allows developers to declare what they need (high throughput agent, cost-optimized agent, safety-critical agent) and lets the platform translate intents into concrete configuration values — abstracting implementation details from agent developers. 
+Intent-Driven Configuration allows developers to declare what they need (high throughput agent, cost-optimized agent, safety-critical agent) and lets the platform translate intents into concrete configuration values — abstracting implementation details from agent developers.
 
-- Agent developers specify intent profiles (FAST, SAFE, CHEAP, BALANCED) 
+- Agent developers specify intent profiles (FAST, SAFE, CHEAP, BALANCED)
 
-- Platform translates intent to concrete model, prompt, and resource configuration 
+- Platform translates intent to concrete model, prompt, and resource configuration
 
-- Intent profiles are platform-maintained and optimized continuously 
+- Intent profiles are platform-maintained and optimized continuously
 
-- Developers can override specific values while keeping intent profile baseline 
+- Developers can override specific values while keeping intent profile baseline
 
-- Intent profiles are versioned and A/B tested for quality 
+- Intent profiles are versioned and A/B tested for quality
 
-- New model releases automatically update intent profile mappings 
+- New model releases automatically update intent profile mappings
 
-**Enterprise Adoption:** This pattern is emerging in enterprise AI platforms where developers should not need to know specific Bedrock model IDs or optimal temperature settings. The platform maintains curated profiles that encode best practices and safety defaults. 
+**Enterprise Adoption:** This pattern is emerging in enterprise AI platforms where developers should not need to know specific Bedrock model IDs or optimal temperature settings. The platform maintains curated profiles that encode best practices and safety defaults.
 
-##### **Internal Developer Platform (IDP) for Configuration** 
+### Internal Developer Platform (IDP) for Configuration
 
-An IDP provides the developer-facing interface for configuration management: a self-service portal, CLI tools, Terraform providers, and configuration APIs that make it easy to correctly create, update, and consume configuration without deep knowledge of underlying infrastructure. 
+An IDP provides the developer-facing interface for configuration management: a self-service portal, CLI tools, Terraform providers, and configuration APIs that make it easy to correctly create, update, and consume configuration without deep knowledge of underlying infrastructure.
 
-- Self-service configuration portal with form-based agent creation 
+- Self-service configuration portal with form-based agent creation
 
-- Golden path templates for common agent archetypes 
+- Golden path templates for common agent archetypes
 
-- Configuration CLI with tab completion and validation 
+- Configuration CLI with tab completion and validation
 
-- Terraform provider for infrastructure-as-code configuration 
+- Terraform provider for infrastructure-as-code configuration
 
-- Configuration marketplace for sharing reusable components 
+- Configuration marketplace for sharing reusable components
 
-- Automated documentation generation from configuration schemas 
+- Automated documentation generation from configuration schemas
 
-**Enterprise Adoption:** Platform engineering teams at companies like Spotify (Backstage), Airbnb, and Shopify have built IDPs that include configuration management as a core capability. For Agentic AI platforms, Backstage plugins for agent configuration represent the current state of the art. 
+**Enterprise Adoption:** Platform engineering teams at companies like Spotify (Backstage), Airbnb, and Shopify have built IDPs that include configuration management as a core capability. For Agentic AI platforms, Backstage plugins for agent configuration represent the current state of the art.
 
-## **AWS Services Deep Dive** 
+## AWS Services Deep Dive
 
-#### Comprehensive Evaluation of AWS Configuration Services 
+### Comprehensive Evaluation of AWS Configuration Services
 
-##### **AWS Systems Manager Parameter Store** 
+### AWS Systems Manager Parameter Store
 
-Hierarchical key-value store for non-secret configuration values, supporting plain text (Standard Tier) and encrypted (SecureString) parameters. 
+Hierarchical key-value store for non-secret configuration values, supporting plain text (Standard Tier) and encrypted (SecureString) parameters.
 
 Ease of Use # 4/5<br>Scalability # 3/5<br>Hot Reload # 2/5<br>Security # 4/5<br>Cost # 5/5<br>Feature Flags # 1/5<br>Governance # 3/5<br><!-- End of picture text -->
 
-**Latency:** 5–15ms (Standard), 15–30ms (SecureString/KMS) **Availability:** 99.9% SLA **Throughput:** 40–1000 TPS depending on tier **Value size:** 4KB (Standard) / 8KB (Advanced) **Versions:** Up to 100 per parameter **Cost:** Free (Standard) / $0.05 per Advanced parameter/month **Hot Reload:** Not native — requires polling or EventBridge **Rollback:** Manual version retrieval (GetParameter with version label) 
+**Latency:** 5–15ms (Standard), 15–30ms (SecureString/KMS) **Availability:** 99.9% SLA **Throughput:** 40–1000 TPS depending on tier **Value size:** 4KB (Standard) / 8KB (Advanced) **Versions:** Up to 100 per parameter **Cost:** Free (Standard) / $0.05 per Advanced parameter/month **Hot Reload:** Not native — requires polling or EventBridge **Rollback:** Manual version retrieval (GetParameter with version label)
 
 |• Native AWS integration — works seamlessly with<br>IAM, Lambda, ECS, EKS, CloudFormation<br>•<br>Hierarchical<br>namespacing<br>with<br>path-based<br>organization (/platform/env/service/key)<br>• CloudFormation and Terraform native support<br>(SSM Parameter references)<br>• Free tier for Standard parameters (up to 10,000<br>parameters)<br>• GetParametersByPath API enables bulk retrieval<br>by prefix<br>• Event-driven updates via EventBridge when<br>parameters change<br>• CloudTrail audit logging for all parameter access<br>and modifications<br>• AWS Lambda Extensions support for local<br>parameter caching<br>• Parameter versioning (up to 100 versions per<br>parameter)|• No native dynamic refresh/push notification to<br>running applications<br>• API throughput limits: 40 TPS (Standard) / 1000<br>TPS (Advanced) — can bottleneck at scale<br>• No feature flag semantics — purely key-value, no<br>targeting or rollout logic<br>• Maximum value size: 4KB (Standard) / 8KB<br>(Advanced)<br>•<br>Cross-region<br>replication<br>requires<br>custom<br>implementation<br>• No built-in schema validation or type safety<br>• SecureString requires KMS calls which add latency<br>• Hierarchical path limit: 15 levels deep<br>• No native configuration grouping or atomic<br>multi-parameter updates|
 |→Static non-sensitive configuration (endpoints,<br>ARNs, region names)<br>→CloudFormation/Terraform variable injection<br>→Environment-specific baseline configuration<br>→Infrastructure parameter sharing across accounts<br>(cross-account SSM)<br>→<br>Application<br>startup<br>configuration<br>(not<br>runtime-hot-reloaded)|Secrets and credentials (use Secrets Manager<br>instead)<br>Feature flags with targeting rules (use AppConfig)<br>High-frequency runtime configuration reads (>100<br>TPS per parameter)<br>Large configuration documents (>8KB)<br>Configuration requiring atomic updates across<br>multiple parameters|
 
-##### **AWS AppConfig** 
+### AWS AppConfig
 
-Managed configuration deployment service with built-in progressive rollout, automated validation, deployment strategies, and real-time configuration distribution to running applications. The primary choice for dynamic, hot-reloadable configuration. 
+Managed configuration deployment service with built-in progressive rollout, automated validation, deployment strategies, and real-time configuration distribution to running applications. The primary choice for dynamic, hot-reloadable configuration.
 
-**Latency:** <1ms (agent cache hit), 10–50ms (cache miss / API call) **Availability:** 99.9% SLA 
+**Latency:** <1ms (agent cache hit), 10–50ms (cache miss / API call) **Availability:** 99.9% SLA
 
-**Max Doc Size:** 1MB 
+**Max Doc Size:** 1MB
 
-**Cache TTL:** Configurable (default 90s for AppConfig Agent) **Rollback:** Automatic on CW alarm or manual stop-deployment **Cost:** $0.0008 per deployment + $0.0008 per 1000 client calls **Hot Reload:** Yes — long-poll or agent-based 
+**Cache TTL:** Configurable (default 90s for AppConfig Agent) **Rollback:** Automatic on CW alarm or manual stop-deployment **Cost:** $0.0008 per deployment + $0.0008 per 1000 client calls **Hot Reload:** Yes — long-poll or agent-based
 
-**Feature Flags:** Native (simple), advanced requires Evidently/LaunchDarkly 
+**Feature Flags:** Native (simple), advanced requires Evidently/LaunchDarkly
 
-• Built-in deployment strategies: Linear, Exponential, • Maximum configuration document size: 1MB — AllAtOnce with configurable bake times insufficient for very large agent schemas • Automated rollback on CloudWatch alarm triggers • No native multi-level hierarchy (must implement via • Configuration validation via Lambda validators or conventions) JSON Schema • Targeting rules (per-user/per-tenant flags) require • AppConfig Agent (Lambda Extension / sidecar) AWS Evidently or LaunchDarkly provides local caching with sub-millisecond reads • Pricing adds up at scale: $0.0008 per configuration • Supports multiple configuration types: Feature deployment + client calls Flags, Freeform (JSON/YAML/text) • Learning curve for deployment strategy • Native integration with Bedrock, Lambda, ECS, configuration EKS • No built-in A/B testing or experiment framework • Configuration environments and applications • Configuration retrieval requires knowledge of provide logical grouping application/environment/profile structure • Long-poll API enables efficient change detection • Limited querying capabilities (no configuration without excessive API calls search) • Canary and blue/green deployment support • AWS IAM and resource-based policies for fine-grained access control 
+• Built-in deployment strategies: Linear, Exponential, • Maximum configuration document size: 1MB — AllAtOnce with configurable bake times insufficient for very large agent schemas • Automated rollback on CloudWatch alarm triggers • No native multi-level hierarchy (must implement via • Configuration validation via Lambda validators or conventions) JSON Schema • Targeting rules (per-user/per-tenant flags) require • AppConfig Agent (Lambda Extension / sidecar) AWS Evidently or LaunchDarkly provides local caching with sub-millisecond reads • Pricing adds up at scale: $0.0008 per configuration • Supports multiple configuration types: Feature deployment + client calls Flags, Freeform (JSON/YAML/text) • Learning curve for deployment strategy • Native integration with Bedrock, Lambda, ECS, configuration EKS • No built-in A/B testing or experiment framework • Configuration environments and applications • Configuration retrieval requires knowledge of provide logical grouping application/environment/profile structure • Long-poll API enables efficient change detection • Limited querying capabilities (no configuration without excessive API calls search) • Canary and blue/green deployment support • AWS IAM and resource-based policies for fine-grained access control
 
 |→Feature flags and kill switches for agents and<br>tools<br>→Dynamic runtime configuration (prompt versions,<br>model parameters)<br>→Progressive rollout of configuration changes<br>(canary, linear)|Secrets and credentials (use Secrets Manager)<br>Infrastructure-level configuration (CloudFormation<br>parameters)<br>Very large configuration documents (>1MB)<br><br>Fine-grained<br>user/tenant<br>targeting<br>without<br>Evidently|
 |→Any configuration that must update without agent<br>redeployment<br>→Freeform JSON configuration documents for<br>complex agent schemas|High-frequency writes (AppConfig is primarily<br>read-optimized)|
 
-##### **AWS Secrets Manager** 
+### AWS Secrets Manager
 
-Managed secrets storage with automatic rotation, cross-account access, multi-region replication, and tight IAM integration for managing credentials, API keys, OAuth client secrets, and other sensitive configuration values. 
+Managed secrets storage with automatic rotation, cross-account access, multi-region replication, and tight IAM integration for managing credentials, API keys, OAuth client secrets, and other sensitive configuration values.
 
-**Latency:** 20–50ms (API), 1–5ms (SDK cache hit) **Availability:** 99.99% SLA **Max Size:** 65KB per secret **Rotation:** Built-in for RDS/Redshift, Lambda for custom **Replication:** Multi-region (eventual consistency) **Cost:** $0.40/secret/month + $0.05/10K API calls **Hot Reload:** Via SDK caching client (configurable TTL) **Audit:** Full CloudTrail logging 
+**Latency:** 20–50ms (API), 1–5ms (SDK cache hit) **Availability:** 99.99% SLA **Max Size:** 65KB per secret **Rotation:** Built-in for RDS/Redshift, Lambda for custom **Replication:** Multi-region (eventual consistency) **Cost:** $0.40/secret/month + $0.05/10K API calls **Hot Reload:** Via SDK caching client (configurable TTL) **Audit:** Full CloudTrail logging
 
 |**STRENGTHS**|**WEAKNESSES**|
 |• Automatic secret rotation for supported databases<br>(RDS, Redshift, Elasticsearch)<br>• Custom Lambda rotation functions for any secret<br>type (OAuth tokens, API keys)<br>• Cross-account access via resource-based policies<br>without credential sharing|• Cost: $0.40 per secret/month + $0.05 per 10,000<br>API calls — expensive at scale<br>• No native dynamic injection (applications must call<br>API or use SDK caching client)<br>• Rotation requires careful implementation to avoid<br>race conditions|
@@ -562,29 +563,29 @@ Managed secrets storage with automatic rotation, cross-account access, multi-reg
 |→TLS certificate private keys|Configuration requiring sub-millisecond access|
 |→Encryption keys that need rotation<br>→Service-to-service credentials|without caching|
 
-##### **AWS AppConfig with Evidently** 
+### AWS AppConfig with Evidently
 
-AWS CloudWatch Evidently provides enterprise feature flagging, A/B testing, and experimentation on top of AppConfig, enabling per-user/per-tenant targeting with statistical analysis of configuration change impacts. 
+AWS CloudWatch Evidently provides enterprise feature flagging, A/B testing, and experimentation on top of AppConfig, enabling per-user/per-tenant targeting with statistical analysis of configuration change impacts.
 
-**Targeting:** Segment-based (user attributes, custom rules) **Rollout:** Percentage-based with traffic splits **A/B Testing:** Native statistical significance **Integration:** CloudWatch Metrics, AppConfig **Cost:** Pay-per-evaluation after free tier **Hot Reload:** Yes, via AppConfig 
+**Targeting:** Segment-based (user attributes, custom rules) **Rollout:** Percentage-based with traffic splits **A/B Testing:** Native statistical significance **Integration:** CloudWatch Metrics, AppConfig **Cost:** Pay-per-evaluation after free tier **Hot Reload:** Yes, via AppConfig
 
-**STRENGTHS** 
+**STRENGTHS**
 
-• Percentage-based feature rollout with targeting • Less mature than LaunchDarkly for complex rules targeting scenarios • Built-in A/B testing with statistical significance • SDK ecosystem smaller than commercial calculation alternatives • Integration with AppConfig for configuration • No built-in code reference management delivery • Experiment analysis requires CloudWatch • Real-time experiment metric collection via expertise CloudWatch • No native integration with third-party analytics • Segment-based targeting (by user attributes, platforms tenant tier, region) • Pricing model can be complex for large-scale • Overrides for specific users/tenants experiments (whitelist/blacklist) • Launch events for progressive feature enablement • No SDK dependency for basic flag evaluation (REST API) 
+• Percentage-based feature rollout with targeting • Less mature than LaunchDarkly for complex rules targeting scenarios • Built-in A/B testing with statistical significance • SDK ecosystem smaller than commercial calculation alternatives • Integration with AppConfig for configuration • No built-in code reference management delivery • Experiment analysis requires CloudWatch • Real-time experiment metric collection via expertise CloudWatch • No native integration with third-party analytics • Segment-based targeting (by user attributes, platforms tenant tier, region) • Pricing model can be complex for large-scale • Overrides for specific users/tenants experiments (whitelist/blacklist) • Launch events for progressive feature enablement • No SDK dependency for basic flag evaluation (REST API)
 
 |→A/B testing prompt variants<br>→Progressive rollout of new model versions|<br>Complex<br>multi-dimensional<br>targeting<br>(use<br>LaunchDarkly)|
 |→Tenant-tier based feature enablement|Non-AWS environments|
 |→Experiment-driven agent capability rollout|Require rich SDK ecosystem across many<br>languages|
 
-##### **DynamoDB-backed Configuration Service** 
+### DynamoDB-backed Configuration Service
 
-A custom configuration microservice built on DynamoDB provides maximum flexibility for enterprise-specific configuration schemas, complex queries, hierarchical inheritance, and integration with existing governance workflows. 
+A custom configuration microservice built on DynamoDB provides maximum flexibility for enterprise-specific configuration schemas, complex queries, hierarchical inheritance, and integration with existing governance workflows.
 
 Ease of Use # 2/5<br>Scalability # 5/5<br>Hot Reload # 5/5<br>Security # 4/5<br>Cost # 3/5<br>Feature Flags # 3/5<br>Governance # 4/5<br><!-- End of picture text -->
 
-**Latency:** <1ms (DAX cache), 1–3ms (DynamoDB direct) **Availability:** 99.999% (Global Tables) **Throughput:** Unlimited (with proper key design) **Item Size:** 400KB per item **Hot Reload:** Yes (via Streams + Lambda/SNS/SQS/EventBridge) **Replication:** Global Tables (active-active, <1s replication) **Cost:** Variable — DynamoDB pricing + service infrastructure **Rollback:** Custom implementation required 
+**Latency:** <1ms (DAX cache), 1–3ms (DynamoDB direct) **Availability:** 99.999% (Global Tables) **Throughput:** Unlimited (with proper key design) **Item Size:** 400KB per item **Hot Reload:** Yes (via Streams + Lambda/SNS/SQS/EventBridge) **Replication:** Global Tables (active-active, <1s replication) **Cost:** Variable — DynamoDB pricing + service infrastructure **Rollback:** Custom implementation required
 
-**STRENGTHS** 
+**STRENGTHS**
 
 |• Unlimited flexibility for configuration schema and<br>query patterns<br>• DynamoDB Streams enable real-time push<br>notification of configuration changes|• Requires building and maintaining a custom<br>service (significant engineering investment)<br>• Need to implement all governance, validation, and<br>rollout logic from scratch|
 |• Single-digit millisecond latency with DAX caching<br>•<br>Hierarchical<br>configuration<br>via<br>DynamoDB<br>partition/sort key design<br>•<br>Native<br>support<br>for<br>complex<br>configuration<br>documents (JSON up to 400KB per item)<br>• Global Tables provide multi-region active-active<br>replication<br>•<br>DynamoDB<br>Streams<br>+<br>Lambda<br>enable<br>event-driven configuration propagation<br>• No vendor lock-in to specific configuration<br>semantics|• DynamoDB table design is critical — mistakes are<br>costly to fix<br>• Must implement own SDK, API, and developer<br>tooling<br>• Operational overhead of managing the service<br>itself<br>• Requires careful capacity planning (on-demand vs<br>provisioned throughput)<br>• Hot partition risk if many agents read the same<br>configuration key simultaneously|
@@ -594,11 +595,11 @@ Ease of Use # 2/5<br>Scalability # 5/5<br>Hot Reload # 5/5<br>Security # 4/5<br>
 |AppConfig (>1MB, complex hierarchies)<br>→Configuration requiring complex query patterns<br>(search by agent type, tenant, capability)<br>→<br>Multi-tenant<br>configuration<br>with<br>complex<br>inheritance rules|Store — lower operational overhead)<br>Secrets (use Secrets Manager)<br>Teams without DynamoDB expertise<br>MVP/PoC phase — too much engineering<br>investment up-front|
 |→Configuration marketplace — searchable, tagged,<br>reusable components<br>→Audit history and configuration lineage tracking||
 
-##### **Bedrock AgentCore Runtime** 
+### Bedrock AgentCore Runtime
 
-AWS Bedrock AgentCore Runtime provides managed infrastructure for deploying AI agents at scale, with built-in configuration integration, memory management, tool connectivity, and observability — specifically designed for Agentic AI workloads. 
+AWS Bedrock AgentCore Runtime provides managed infrastructure for deploying AI agents at scale, with built-in configuration integration, memory management, tool connectivity, and observability — specifically designed for Agentic AI workloads.
 
-**Launch Year:** 2024 (GA 2025) **Scaling:** Auto-scaling (managed) **Model Support:** Bedrock-native models **Tool Integration:** Lambda, API, MCP **Observability:** CloudWatch, X-Ray native **Memory:** Built-in session + external store 
+**Launch Year:** 2024 (GA 2025) **Scaling:** Auto-scaling (managed) **Model Support:** Bedrock-native models **Tool Integration:** Lambda, API, MCP **Observability:** CloudWatch, X-Ray native **Memory:** Built-in session + external store
 
 |• Native integration with Bedrock models, knowledge<br>bases, and guardrails|• Relatively new service (2024/2025) — not yet<br>production-proven at large enterprise scale|
 |• Built-in session management and agent memory<br>• Managed tool connectivity (API, Lambda, MCP|• Limited to AWS Bedrock model ecosystem (not<br>model-agnostic)|
@@ -607,107 +608,107 @@ AWS Bedrock AgentCore Runtime provides managed infrastructure for deploying AI a
 
 |→AWS-native agent deployments using Bedrock<br>models<br>→<br>Rapid<br>agent<br>deployment<br>without<br>custom<br>infrastructure<br>→Agents requiring built-in memory and tool<br>management<br>→Enterprises wanting fully managed agent runtime|Multi-cloud or model-agnostic agent frameworks<br>Complex custom agent orchestration patterns<br>Organizations with strict vendor lock-in policies|
 
-## **Runtime Configuration** 
+## Runtime Configuration
 
-#### How Enterprises Update Configuration Without Redeployment 
+### How Enterprises Update Configuration Without Redeployment
 
-The ability to update configuration at runtime — without redeploying application code — is one of the most critical capabilities for enterprise Agentic AI platforms. A misconfigured prompt, a model that produces poor outputs, or an enabled capability that causes compliance issues must be correctable in seconds, not hours. 
+The ability to update configuration at runtime — without redeploying application code — is one of the most critical capabilities for enterprise Agentic AI platforms. A misconfigured prompt, a model that produces poor outputs, or an enabled capability that causes compliance issues must be correctable in seconds, not hours.
 
-##### **Configuration Refresh Patterns** 
+### Configuration Refresh Patterns
 
-###### **Pull-Based Polling** 
+### Pull-Based Polling
 
-Applications periodically poll the configuration service for updates. Simple to implement but introduces update latency equal to the polling interval. 
+Applications periodically poll the configuration service for updates. Simple to implement but introduces update latency equal to the polling interval.
 
-   - Polling interval: 30s–300s depending on criticality 
+- Polling interval: 30s–300s depending on criticality
 
-   - Exponential backoff on configuration service failures 
+- Exponential backoff on configuration service failures
 
-   - Last-known-good cache prevents failures if service is unavailable 
+- Last-known-good cache prevents failures if service is unavailable
 
-   - Jitter added to polling interval to prevent thundering herd 
+- Jitter added to polling interval to prevent thundering herd
 
-   - Checksum/ETag comparison avoids unnecessary deserialization 
+- Checksum/ETag comparison avoids unnecessary deserialization
 
-   - AppConfig Agent uses efficient long-polling (not busy-polling) 
+- AppConfig Agent uses efficient long-polling (not busy-polling)
 
-- → _Best for: AppConfig (built-in long-poll), Parameter Store polling, low-criticality flags_ 
+- → *Best for: AppConfig (built-in long-poll), Parameter Store polling, low-criticality flags*
 
-###### **Push-Based Event-Driven** 
+### Push-Based Event-Driven
 
-Configuration service pushes changes to subscribers via messaging systems. Near-real-time updates with minimal polling overhead, but requires message broker infrastructure. 
+Configuration service pushes changes to subscribers via messaging systems. Near-real-time updates with minimal polling overhead, but requires message broker infrastructure.
 
-   - EventBridge rules trigger on Parameter Store / AppConfig changes 
+- EventBridge rules trigger on Parameter Store / AppConfig changes
 
-   - SNS fan-out to per-service SQS queues for guaranteed delivery 
+- SNS fan-out to per-service SQS queues for guaranteed delivery
 
-   - Lambda functions process configuration change events 
+- Lambda functions process configuration change events
 
-   - ECS/EKS sidecar containers receive updates and apply to agent config 
+- ECS/EKS sidecar containers receive updates and apply to agent config
 
-   - WebSocket connections for truly real-time configuration streaming 
+- WebSocket connections for truly real-time configuration streaming
 
-   - Dead letter queues for failed configuration update processing 
+- Dead letter queues for failed configuration update processing
 
-- → _Best for: kill switches (must propagate in <5s), emergency guardrail updates_ 
+- → *Best for: kill switches (must propagate in <5s), emergency guardrail updates*
 
-###### **Local Configuration Cache** 
+### Local Configuration Cache
 
-Each agent instance maintains an in-memory or on-disk cache of its configuration. This provides sub-millisecond configuration reads and resilience against configuration service outages. 
+Each agent instance maintains an in-memory or on-disk cache of its configuration. This provides sub-millisecond configuration reads and resilience against configuration service outages.
 
-   - AppConfig Agent extension maintains local cache (default 90s TTL) 
+- AppConfig Agent extension maintains local cache (default 90s TTL)
 
-   - Redis/ElastiCache as distributed cache for EKS agent fleets 
+- Redis/ElastiCache as distributed cache for EKS agent fleets
 
-   - SQLite-backed local cache for Lambda (persistent across warm starts) 
+- SQLite-backed local cache for Lambda (persistent across warm starts)
 
-   - Cache invalidation on configuration change events 
+- Cache invalidation on configuration change events
 
-   - Stale-while-revalidate pattern: serve cached value while refreshing 
+- Stale-while-revalidate pattern: serve cached value while refreshing
 
-   - Cache warming on agent startup (pre-load all required configuration) 
+- Cache warming on agent startup (pre-load all required configuration)
 
-- → _Critical: agents must NEVER fail if configuration service is temporarily unavailable_ 
+- → *Critical: agents must NEVER fail if configuration service is temporarily unavailable*
 
-###### **Configuration Snapshots** 
+### Configuration Snapshots
 
-Point-in-time snapshots of complete configuration state, stored in S3. Agents boot from snapshots and apply incremental updates from the change stream. 
+Point-in-time snapshots of complete configuration state, stored in S3. Agents boot from snapshots and apply incremental updates from the change stream.
 
-   - Daily full snapshots to S3 for disaster recovery 
+- Daily full snapshots to S3 for disaster recovery
 
-   - Incremental change log for replay from any point in time 
+- Incremental change log for replay from any point in time
 
-   - Snapshot integrity verification (SHA-256 hash) 
+- Snapshot integrity verification (SHA-256 hash)
 
-   - Agents download and validate snapshot on cold start 
+- Agents download and validate snapshot on cold start
 
-   - Snapshot compression for large configuration sets 
+- Snapshot compression for large configuration sets
 
-   - Cross-region snapshot replication for DR scenarios 
+- Cross-region snapshot replication for DR scenarios
 
-- → _Enables fast recovery and rollback to any previous configuration state_ 
+- → *Enables fast recovery and rollback to any previous configuration state*
 
-###### **Distributed Cache Pattern** 
+### Distributed Cache Pattern
 
-ElastiCache (Redis) or DAX (for DynamoDB-backed config) provides a shared distributed cache for agent fleets running on ECS/EKS, enabling consistent configuration reads across hundreds of instances. 
+ElastiCache (Redis) or DAX (for DynamoDB-backed config) provides a shared distributed cache for agent fleets running on ECS/EKS, enabling consistent configuration reads across hundreds of instances.
 
-   - Redis Pub/Sub for real-time configuration change notification 
+- Redis Pub/Sub for real-time configuration change notification
 
-   - DAX cluster in front of DynamoDB for consistent <1ms reads 
+- DAX cluster in front of DynamoDB for consistent <1ms reads
 
-   - Cache cluster sized for peak agent concurrency 
+- Cache cluster sized for peak agent concurrency
 
-   - Redis Cluster mode for horizontal scaling 
+- Redis Cluster mode for horizontal scaling
 
-   - Separate cache namespaces per tenant for isolation 
+- Separate cache namespaces per tenant for isolation
 
-   - Cache warmup scripts for Blue/Green deployment switches 
+- Cache warmup scripts for Blue/Green deployment switches
 
-- → _Required for large EKS deployments (100+ agent pods) to avoid Parameter Store TPS limits_ 
+- → *Required for large EKS deployments (100+ agent pods) to avoid Parameter Store TPS limits*
 
-##### **Configuration Update Latency Targets** 
+### Configuration Update Latency Targets
 
-Different configuration types have different acceptable update latency windows. Enterprises must design their configuration delivery pipeline to meet these targets. 
+Different configuration types have different acceptable update latency windows. Enterprises must design their configuration delivery pipeline to meet these targets.
 
 |**Configuration Type**|**Max Acceptable**<br>**Latency**|**Recommended Mechanism**|**Failure Mode**|
 |Kill Switches|<5 seconds|EventBridge + Push|Block all requests|
@@ -721,35 +722,35 @@ Different configuration types have different acceptable update latency windows. 
 |Tool Endpoints|<15 minutes|Parameter Store polling|Use cached endpoint|
 |Static Configuration|Restart cycle|Parameter Store / S3|Fail to start|
 
-##### **Failure Recovery & Rollback** 
+### Failure Recovery & Rollback
 
-Configuration changes are the #1 cause of production incidents in distributed systems. Every configuration update must include a tested rollback path that can be executed in under 60 seconds. 
+Configuration changes are the #1 cause of production incidents in distributed systems. Every configuration update must include a tested rollback path that can be executed in under 60 seconds.
 
-- **AppConfig automatic rollback:** Configure CloudWatch alarms (error rate, latency) that trigger 
+- **AppConfig automatic rollback:** Configure CloudWatch alarms (error rate, latency) that trigger
 
-- automatic deployment rollback via AppConfig stop-deployment API 
+- automatic deployment rollback via AppConfig stop-deployment API
 
-- **Feature flag kill switch:** All feature flags have an emergency off switch that bypasses all targeting 
+- **Feature flag kill switch:** All feature flags have an emergency off switch that bypasses all targeting
 
-- rules and immediately disables the feature globally 
+- rules and immediately disables the feature globally
 
-- **Configuration version labels:** Parameter Store versions labeled STABLE, CURRENT, CANARY — 
+- **Configuration version labels:** Parameter Store versions labeled STABLE, CURRENT, CANARY —
 
-- instant rollback by changing the CURRENT label to point to STABLE version 
+- instant rollback by changing the CURRENT label to point to STABLE version
 
-• **Snapshot rollback:** Agents can be instructed to boot from a specific configuration snapshot for full environment rollback 
+• **Snapshot rollback:** Agents can be instructed to boot from a specific configuration snapshot for full environment rollback
 
-• **Git revert:** GitOps-managed configuration is rolled back via Git revert PR, automatically triggering the deployment pipeline 
+• **Git revert:** GitOps-managed configuration is rolled back via Git revert PR, automatically triggering the deployment pipeline
 
-• **Blue/Green configuration swap:** Maintain two complete configuration sets (blue and green), instant switchover by changing routing configuration 
+• **Blue/Green configuration swap:** Maintain two complete configuration sets (blue and green), instant switchover by changing routing configuration
 
-## **Feature Flag Platforms** 
+## Feature Flag Platforms
 
-#### Enterprise Feature Flag Architecture for Agentic AI 
+### Enterprise Feature Flag Architecture for Agentic AI
 
-Feature flags are the control plane for progressive delivery of AI agent capabilities. Unlike traditional software where a bad feature causes a UI bug, a bad AI feature flag can expose unsafe agent behaviors to production users. Enterprise feature flag platforms for AI must support emergency kill switches, per-tenant targeting, and integration with RAI policy enforcement. 
+Feature flags are the control plane for progressive delivery of AI agent capabilities. Unlike traditional software where a bad feature causes a UI bug, a bad AI feature flag can expose unsafe agent behaviors to production users. Enterprise feature flag platforms for AI must support emergency kill switches, per-tenant targeting, and integration with RAI policy enforcement.
 
-###### **AWS AppConfig Feature Flags** 
+### AWS AppConfig Feature Flags
 
 |**Architecture**|Managed AWS service storing feature flag definitions as JSON documents in AppConfig.<br>Integrates natively with Lambda (extension), ECS/EKS (sidecar), and EC2. Evaluation<br>happens client-side using downloaded flag document.|
 |**Targeting**|Basic targeting via flag document structure. Advanced targeting requires CloudWatch<br>Evidently (segment-based) or custom evaluation logic.|
@@ -758,7 +759,7 @@ Feature flags are the control plane for progressive delivery of AI agent capabil
 |**Pricing**|$0.0008 per configuration deployment + API call costs. Essentially free for low-volume flag<br>operations.|
 |**Recommendatio**<br>**n**|USE for simple binary flags and AWS-only deployments. AUGMENT with Evidently for<br>targeting. REPLACE with LaunchDarkly for complex enterprise needs.|
 
-###### **LaunchDarkly** 
+### LaunchDarkly
 
 |**Architecture**|SaaS feature management platform with edge SDK evaluation. Flag rules evaluated<br>client-side from locally cached rule set streamed via SSE. Sub-millisecond flag evaluation<br>latency. Enterprise adoption: Netflix, IBM, HP, Atlassian.|
 |**Targeting**|Multi-dimensional targeting: user attributes, custom context types, percentage rollouts,<br>targeting rules with boolean/string/number/JSON flag types. Tenant-based, region-based,<br>agent-type-based targeting.|
@@ -768,7 +769,7 @@ Feature flags are the control plane for progressive delivery of AI agent capabil
 |**Pricing**|Enterprise pricing (custom). Developer tier from $20/month. Seats-based pricing — can be<br>expensive for large teams.|
 |**Recommendatio**<br>**n**|BEST choice for complex multi-tenant enterprise feature flags. Superior targeting, SDK<br>ecosystem, and experiment management vs AWS-native options.|
 
-###### **OpenFeature + Flagsmith** 
+### OpenFeature + Flagsmith
 
 |**Architecture**|OpenFeature is a CNCF standard API for feature flags that decouples application code from<br>specific feature flag providers. Flagsmith is an open-source implementation deployable on<br>AWS. Enables vendor switching without code changes.|
 |**Targeting**|Flagsmith: rule-based targeting, percentage rollouts, identity-based flags. OpenFeature:<br>provider-agnostic targeting via evaluation context.|
@@ -777,7 +778,7 @@ Feature flags are the control plane for progressive delivery of AI agent capabil
 |**Pricing**|Flagsmith: Open source (self-hosted free) or SaaS from $45/month. OpenFeature: CNCF<br>open source (free).|
 |**Recommendatio**<br>**n**|USE when vendor neutrality is required or budget is constrained. OpenFeature standard<br>protects against future migration costs.|
 
-###### **Unleash (Self-Hosted)** 
+### Unleash (Self-Hosted)
 
 |**Architecture**|Open-source feature flag platform (hosted or self-hosted on AWS). SDK available for Go,<br>Python, Java, Node.js, .NET. PostgreSQL or MySQL backend. Enterprise version with SSO,<br>RBAC, audit logs.|
 |**Targeting**|Activation strategies: gradual rollout, user ID list, IP address, hostname, custom strategies.<br>Variants for A/B testing.|
@@ -786,35 +787,35 @@ Feature flags are the control plane for progressive delivery of AI agent capabil
 |**Pricing**|Open source (free self-hosted). Enterprise from $50/month for hosted.|
 |**Recommendatio**<br>**n**|USE for cost-sensitive deployments where LaunchDarkly pricing is prohibitive. Good for<br>regulated industries requiring on-premise data residency.|
 
-##### **AI-Specific Feature Flag Patterns** 
+### AI-Specific Feature Flag Patterns
 
-- **Model Version Flag:** Flag 'use_claude_4' enables routing to new model. Canary to 5% of agents → 
+- **Model Version Flag:** Flag 'use_claude_4' enables routing to new model. Canary to 5% of agents →
 
-- measure quality metrics → expand. Instant rollback if quality degrades. 
+- measure quality metrics → expand. Instant rollback if quality degrades.
 
-- **Prompt Version Flag:** Flag 'prompt_version' returns 'v2.3.1' or 'v2.2.0'. AppConfig deployment 
+- **Prompt Version Flag:** Flag 'prompt_version' returns 'v2.3.1' or 'v2.2.0'. AppConfig deployment
 
-- strategy with 30-minute bake time and CW alarm rollback. 
+- strategy with 30-minute bake time and CW alarm rollback.
 
-- **RAI Guardrail Flag:** Flag 'enable_strict_guardrails' overrides default. Emergency ON switch that 
+- **RAI Guardrail Flag:** Flag 'enable_strict_guardrails' overrides default. Emergency ON switch that
 
-- bypasses all targeting rules — any compliance event enables globally. 
+- bypasses all targeting rules — any compliance event enables globally.
 
-- **Tool Availability Flag:** Flag 'enable_web_search_tool' controls tool availability per agent type and 
+- **Tool Availability Flag:** Flag 'enable_web_search_tool' controls tool availability per agent type and
 
-- tenant tier. Gradual rollout with error rate monitoring. 
+- tenant tier. Gradual rollout with error rate monitoring.
 
-- **Human Approval Flag:** Flag 'require_human_approval_for_financial' — kill switch that forces human 
+- **Human Approval Flag:** Flag 'require_human_approval_for_financial' — kill switch that forces human
 
-- review for all financial operations, regardless of configured threshold. 
+- review for all financial operations, regardless of configured threshold.
 
-- **Cost Control Flag:** Flag 'enforce_token_budget' enables/disables strict token counting per agent. 
+- **Cost Control Flag:** Flag 'enforce_token_budget' enables/disables strict token counting per agent.
 
-- Emergency switch to prevent runaway cost events. 
+- Emergency switch to prevent runaway cost events.
 
 PART 6<br>Secrets Management<br>Enterprise Secrets Architecture for Agentic AI Platforms<br><!-- End of picture text -->
 
-Agentic AI platforms handle a large volume of secrets: LLM API keys, OAuth credentials for tool integrations, database passwords, vector database API keys, observability tokens, and inter-service authentication credentials. A mature secrets management architecture is non-negotiable for enterprise AI platforms. 
+Agentic AI platforms handle a large volume of secrets: LLM API keys, OAuth credentials for tool integrations, database passwords, vector database API keys, observability tokens, and inter-service authentication credentials. A mature secrets management architecture is non-negotiable for enterprise AI platforms.
 
 |**Capability**|**AWS Secrets**<br>**Manager**|**HashiCorp Vault**|**Azure Key Vault**|**Google Secret**<br>**Manager**|
 |---|---|---|---|---|
@@ -830,29 +831,29 @@ Agentic AI platforms handle a large volume of secrets: LLM API keys, OAuth crede
 |Complexity|Low|High|Medium|Medium|
 |AWS IAM Integ|Native|Via auth method|Limited|Limited|
 
-##### **AWS Secrets Manager — Enterprise Implementation** 
+### AWS Secrets Manager — Enterprise Implementation
 
-###### **Secret Naming Convention** 
+### Secret Naming Convention
 
-Use hierarchical naming: /{environment}/{platform}/{service}/{secret-type}. Example: /prod/agent-platform/bedrock/api-key, /prod/agent-platform/langfuse/token, /prod/agent-platform/oauth/{tool-name}/client-secret. Tag every secret with: Environment, Platform, Team, DataClassification, RotationSchedule. 
+Use hierarchical naming: /{environment}/{platform}/{service}/{secret-type}. Example: /prod/agent-platform/bedrock/api-key, /prod/agent-platform/langfuse/token, /prod/agent-platform/oauth/{tool-name}/client-secret. Tag every secret with: Environment, Platform, Team, DataClassification, RotationSchedule.
 
-###### **Automatic Rotation Architecture** 
+### Automatic Rotation Architecture
 
-Configure Lambda rotation functions for all API keys and OAuth tokens. Rotation Lambda: (1) Generate new credential, (2) Test new credential, (3) Update secret with AWSPENDING label, (4) Validate, (5) Promote to AWSCURRENT, (6) Delete old credential. Set rotation window: 30 days for API keys, 90 days for service accounts, 7 days for OAuth refresh tokens. 
+Configure Lambda rotation functions for all API keys and OAuth tokens. Rotation Lambda: (1) Generate new credential, (2) Test new credential, (3) Update secret with AWSPENDING label, (4) Validate, (5) Promote to AWSCURRENT, (6) Delete old credential. Set rotation window: 30 days for API keys, 90 days for service accounts, 7 days for OAuth refresh tokens.
 
-###### **Cross-Account Access Pattern** 
+### Cross-Account Access Pattern
 
-Agent services in isolated AWS accounts access secrets via resource-based policies. Pattern: Secrets Manager resource policy allows specific IAM roles from child accounts. Avoids cross-account credential sharing. Audit log in the secrets owner account. Use AWS Organizations SCPs to enforce that secrets are only accessed from approved accounts. 
+Agent services in isolated AWS accounts access secrets via resource-based policies. Pattern: Secrets Manager resource policy allows specific IAM roles from child accounts. Avoids cross-account credential sharing. Audit log in the secrets owner account. Use AWS Organizations SCPs to enforce that secrets are only accessed from approved accounts.
 
-###### **SDK Caching Client** 
+### SDK Caching Client
 
-Use AWS Secrets Manager caching client in all agent code. Default cache TTL: 3600 seconds. Reduces API calls by 99%+ for frequently accessed secrets. Force refresh on rotation event via EventBridge → Lambda → cache invalidation. Never call GetSecretValue in hot paths — always use the caching client. 
+Use AWS Secrets Manager caching client in all agent code. Default cache TTL: 3600 seconds. Reduces API calls by 99%+ for frequently accessed secrets. Force refresh on rotation event via EventBridge → Lambda → cache invalidation. Never call GetSecretValue in hot paths — always use the caching client.
 
-###### **Dynamic Secrets via HashiCorp Vault** 
+### Dynamic Secrets via HashiCorp Vault
 
-For advanced use cases, deploy HashiCorp Vault for dynamic secrets: Database secrets that auto-generate per-session credentials with 1-hour TTL. AWS STS credentials generated on-demand via Vault AWS secrets engine. Zero standing privileges — agents only get credentials when actively needed. Vault sidecar injection for EKS workloads via Agent Injector. 
+For advanced use cases, deploy HashiCorp Vault for dynamic secrets: Database secrets that auto-generate per-session credentials with 1-hour TTL. AWS STS credentials generated on-demand via Vault AWS secrets engine. Zero standing privileges — agents only get credentials when actively needed. Vault sidecar injection for EKS workloads via Agent Injector.
 
-##### **Secret Classification Matrix** 
+### Secret Classification Matrix
 
 |**Secret Type**|**Store**|**Rotation**<br>**Period**|**Access Pattern**|**Risk Level**|
 |---|---|---|---|---|
@@ -867,13 +868,13 @@ For advanced use cases, deploy HashiCorp Vault for dynamic secrets: Database sec
 |TLS Certificates|ACM / Vault|Annual (auto-ren|ew)ACM managed|CRITICAL|
 |Webhook Signing Keys|Secrets Manager|30 days|Read at startup|HIGH|
 
-## **Configuration Hierarchy Design** 
+## Configuration Hierarchy Design
 
-#### Organizing Configuration for Enterprise Scale 
+### Organizing Configuration for Enterprise Scale
 
-A well-designed configuration hierarchy is the cornerstone of scalable enterprise configuration management. It eliminates duplication, enables governed override, and provides clear ownership at every level of the organization. 
+A well-designed configuration hierarchy is the cornerstone of scalable enterprise configuration management. It eliminates duplication, enables governed override, and provides clear ownership at every level of the organization.
 
-##### **The 14-Level Configuration Hierarchy** 
+### The 14-Level Configuration Hierarchy
 
 |**L1: Enterprise**|Global defaults that apply to every agent across all organizations. Security minimums,<br>compliance baselines, cost governance defaults, RAI policy minimums. Managed by:<br>Platform Security & Architecture team. Change requires: Architecture Review Board<br>approval.|
 |**L2: Organization**|Organizational unit overrides. Business unit specific policies, regulatory constraints,<br>approved model lists. Managed by: BU Platform Engineering. Change requires: BU CTO<br>approval.|
@@ -891,9 +892,9 @@ A well-designed configuration hierarchy is the cornerstone of scalable enterpris
 |**L13: User**|User-level preferences and overrides: language, persona, access tier, user-specific feature<br>flags. Retrieved from user profile service.|
 |**L14: Request**|Per-request runtime context: dynamic context injection, request-specific tool restrictions,<br>real-time cost limits. Set by calling application at request time.|
 
-##### **Parameter Store Hierarchy Implementation** 
+### Parameter Store Hierarchy Implementation
 
-The 14-level hierarchy maps directly to SSM Parameter Store paths: 
+The 14-level hierarchy maps directly to SSM Parameter Store paths:
 
 ```
 /enterprise/defaults/security/min-guardrail-version
@@ -910,35 +911,35 @@ The 14-level hierarchy maps directly to SSM Parameter Store paths:
 /tool/{tool-id}/auth-secret-arn
 ```
 
-##### **Inheritance Rules** 
+### Inheritance Rules
 
-- **Last-writer-wins:** Lower levels override higher levels for the same key 
+- **Last-writer-wins:** Lower levels override higher levels for the same key
 
-- **Deep merge for maps:** Nested JSON objects are merged recursively (not replaced) 
+- **Deep merge for maps:** Nested JSON objects are merged recursively (not replaced)
 
-- **Append for lists:** List values (e.g., allowed-tools) are unioned by default; explicit 'replace' prefix 
+- **Append for lists:** List values (e.g., allowed-tools) are unioned by default; explicit 'replace' prefix
 
-- overrides 
+- overrides
 
-- **Explicit null to remove:** A lower level can remove an inherited value by explicitly setting null 
+- **Explicit null to remove:** A lower level can remove an inherited value by explicitly setting null
 
-- **Protected values:** Enterprise-level security minimums cannot be overridden (marked 'immutable' in 
+- **Protected values:** Enterprise-level security minimums cannot be overridden (marked 'immutable' in
 
-- schema) 
+- schema)
 
-- **Dependency resolution:** Configuration values referencing other values (e.g., 
+- **Dependency resolution:** Configuration values referencing other values (e.g.,
 
-- ${env/prod/bedrock/endpoint}) are resolved at evaluation time 
+- ${env/prod/bedrock/endpoint}) are resolved at evaluation time
 
-- **Cycle detection:** Configuration resolver detects circular references and fails with descriptive error 
+- **Cycle detection:** Configuration resolver detects circular references and fails with descriptive error
 
-## **Configuration Schema Design** 
+## Configuration Schema Design
 
-#### Type-Safe, Versioned Schemas for Every Configuration Category 
+### Type-Safe, Versioned Schemas for Every Configuration Category
 
-Configuration schemas are the contract between configuration producers (platform teams, agent developers) and configuration consumers (agents at runtime). Strict JSON Schema validation with schema versioning prevents misconfiguration incidents and enables safe schema evolution over time. 
+Configuration schemas are the contract between configuration producers (platform teams, agent developers) and configuration consumers (agents at runtime). Strict JSON Schema validation with schema versioning prevents misconfiguration incidents and enables safe schema evolution over time.
 
-##### **Agent Configuration Schema** 
+### Agent Configuration Schema
 
 ```
 { "$schema": "https://json-schema.org/draft/2020-12/schema", "$id":
@@ -973,37 +974,37 @@ Configuration schemas are the contract between configuration producers (platform
 "type": "string" }, "registryArn": { "type": "string" } } } } }
 ```
 
-##### **Schema Evolution Rules** 
+### Schema Evolution Rules
 
-- **MINOR version bump** (1.2.0 → 1.3.0): Adding optional fields with defaults. Fully backward 
+- **MINOR version bump** (1.2.0 → 1.3.0): Adding optional fields with defaults. Fully backward
 
-- compatible. Existing configurations remain valid. 
+- compatible. Existing configurations remain valid.
 
-- **MAJOR version bump** (1.x.x → 2.0.0): Removing required fields, renaming fields, changing field 
+- **MAJOR version bump** (1.x.x → 2.0.0): Removing required fields, renaming fields, changing field
 
-- types. Requires migration script and dual-write period. 
+- types. Requires migration script and dual-write period.
 
-- **Schema registry:** All schema versions stored in S3 with immutable versioned paths. Agents specify 
+- **Schema registry:** All schema versions stored in S3 with immutable versioned paths. Agents specify
 
-- the schema version they consume. 
+- the schema version they consume.
 
-- **Validation pipeline:** Every configuration change validated against schema in CI. AppConfig Lambda 
+- **Validation pipeline:** Every configuration change validated against schema in CI. AppConfig Lambda
 
-- validator enforces schema at deployment time. 
+- validator enforces schema at deployment time.
 
-- **Schema deprecation:** Deprecated schemas remain valid for 6 months with deprecation warning. 
+- **Schema deprecation:** Deprecated schemas remain valid for 6 months with deprecation warning.
 
-- Platform migrates consumers before end-of-life. 
+- Platform migrates consumers before end-of-life.
 
-- **Breaking change process:** RFC required for breaking schema changes. Minimum 30-day notice. 
+- **Breaking change process:** RFC required for breaking schema changes. Minimum 30-day notice.
 
-- Migration tooling provided by platform team. 
+- Migration tooling provided by platform team.
 
-## **Configuration Lifecycle** 
+## Configuration Lifecycle
 
-#### From Design Through Archival 
+### From Design Through Archival
 
-Configuration has a complete lifecycle that must be managed with the same discipline as application code: design, review, approval, publishing, distribution, consumption, versioning, deprecation, and archival. 
+Configuration has a complete lifecycle that must be managed with the same discipline as application code: design, review, approval, publishing, distribution, consumption, versioning, deprecation, and archival.
 
 |**1. Design**|Configuration schema drafted in YAML/JSON. Peer review by 2 platform engineers.<br>Schema linting via CI pipeline. Owner assigned (team + individual). Documentation<br>written.|
 |**2. Review &**<br>**Approval**|Pull request in GitOps repository. Automated checks: schema validation, naming<br>convention, security policy, cost impact. Human review: platform team approval for<br>cross-cutting config, owner review for agent-specific.|
@@ -1014,299 +1015,299 @@ Configuration has a complete lifecycle that must be managed with the same discip
 |**7. Deprecation**|Deprecation notice added to schema (deprecatedAt field). 6-month deprecation period<br>with active migration support. Platform dashboard shows consumers still using<br>deprecated configs. Automated PR creation for automated migrations.|
 |**8. Archival**|Archived configurations moved to S3 Glacier after 90 days. Retained for 7 years for<br>compliance. Audit log retained separately in CloudWatch Logs Insights. Archived configs<br>can be restored for DR scenarios.|
 
-## **Platform Engineering** 
+## Platform Engineering
 
-#### Internal Developer Platform for Configuration 
+### Internal Developer Platform for Configuration
 
-An Internal Developer Platform (IDP) for configuration management dramatically improves developer productivity and ensures configuration governance is embedded in the developer workflow rather than applied as a gate after the fact. 
+An Internal Developer Platform (IDP) for configuration management dramatically improves developer productivity and ensures configuration governance is embedded in the developer workflow rather than applied as a gate after the fact.
 
-###### **Self-Service Configuration Portal** 
+### Self-Service Configuration Portal
 
-→ `Web UI for browsing and creating agent configurations (Backstage plugin)` 
+→ `Web UI for browsing and creating agent configurations (Backstage plugin)`
 
-→ `Form-based agent builder with real-time schema validation` 
+→ `Form-based agent builder with real-time schema validation`
 
-→ `Configuration diff viewer for change review` → `One-click deployment to non-prod environments` 
+→ `Configuration diff viewer for change review` → `One-click deployment to non-prod environments`
 
-→ `Approval workflow UI for production deployments` 
+→ `Approval workflow UI for production deployments`
 
-→ `Configuration health dashboard per agent/environment` 
+→ `Configuration health dashboard per agent/environment`
 
-→ `Usage analytics: which configurations are actively consumed` 
+→ `Usage analytics: which configurations are actively consumed`
 
-###### **Configuration CLI (platform-config)** 
+### Configuration CLI (platform-config)
 
-→ `platform-config init agent --template bedrock-rag-agent` 
+→ `platform-config init agent --template bedrock-rag-agent`
 
-→ `platform-config validate --config agent.yaml --env prod` 
+→ `platform-config validate --config agent.yaml --env prod`
 
-→ `platform-config deploy --config agent.yaml --env test --strategy canary` 
+→ `platform-config deploy --config agent.yaml --env test --strategy canary`
 
-→ `platform-config rollback --agent my-agent --version v2.1.0 --env prod` 
+→ `platform-config rollback --agent my-agent --version v2.1.0 --env prod`
 
-→ `platform-config diff --agent my-agent --from prod --to test` → `platform-config get --agent my-agent --env prod --key modelConfig.primaryModelId` 
+→ `platform-config diff --agent my-agent --from prod --to test` → `platform-config get --agent my-agent --env prod --key modelConfig.primaryModelId`
 
-→ `platform-config audit --agent my-agent --from 2025-01-01 --to 2025-12-31` 
+→ `platform-config audit --agent my-agent --from 2025-01-01 --to 2025-12-31`
 
-###### **Terraform Provider (provider 'agentplatform')** 
+### Terraform Provider (provider 'agentplatform')
 
-→ `resource 'agentplatform_agent' 'my_agent' { ... } — full agent configuration as IaC` → `data 'agentplatform_model_list' 'approved' { tier = 'enterprise' } — discover approved models` 
+→ `resource 'agentplatform_agent' 'my_agent' { ... } — full agent configuration as IaC` → `data 'agentplatform_model_list' 'approved' { tier = 'enterprise' } — discover approved models`
 
-→ `resource 'agentplatform_feature_flag' 'web_search' { ... } — feature flags as code` → `resource 'agentplatform_prompt' 'system' { ... } — prompt registration in IaC` → `Automatic dependency resolution between related resources` → `Import command for existing configurations` 
+→ `resource 'agentplatform_feature_flag' 'web_search' { ... } — feature flags as code` → `resource 'agentplatform_prompt' 'system' { ... } — prompt registration in IaC` → `Automatic dependency resolution between related resources` → `Import command for existing configurations`
 
-###### **Configuration SDK (Python/TypeScript/Java/Go)** 
+### Configuration SDK (Python/TypeScript/Java/Go)
 
-→ `from agent_platform import ConfigClient, AgentConfig` 
+→ `from agent_platform import ConfigClient, AgentConfig`
 
-→ `config = await ConfigClient.load(agent_id='my-agent', env='prod')` 
+→ `config = await ConfigClient.load(agent_id='my-agent', env='prod')`
 
-→ `model_id = config.model.primary_model_id # typed, IDE autocomplete` 
+→ `model_id = config.model.primary_model_id # typed, IDE autocomplete`
 
-→ `config.on_change('modelConfig', lambda c: reload_model(c)) # hot reload` 
+→ `config.on_change('modelConfig', lambda c: reload_model(c)) # hot reload`
 
-→ `config.validate() # raises ConfigValidationError on schema violation` 
+→ `config.validate() # raises ConfigValidationError on schema violation`
 
-→ `config.mock({'modelConfig.temperature': 0.0}) # for testing` 
+→ `config.mock({'modelConfig.temperature': 0.0}) # for testing`
 
-###### **Golden Path Templates** 
+### Golden Path Templates
 
-→ `bedrock-rag-agent: RAG agent with Knowledge Base, Guardrails, memory` → `bedrock-orchestrator: Multi-agent orchestration with routing rules` 
+→ `bedrock-rag-agent: RAG agent with Knowledge Base, Guardrails, memory` → `bedrock-orchestrator: Multi-agent orchestration with routing rules`
 
-→ `tool-specialist: Single-purpose agent with specific tool set` 
+→ `tool-specialist: Single-purpose agent with specific tool set`
 
-→ `compliance-agent: Pre-configured with strict RAI and audit settings` 
+→ `compliance-agent: Pre-configured with strict RAI and audit settings`
 
-→ `cost-optimized-agent: Haiku model, aggressive caching, token limits` 
+→ `cost-optimized-agent: Haiku model, aggressive caching, token limits`
 
-→ `research-agent: High context window, web search, extended memory` 
+→ `research-agent: High context window, web search, extended memory`
 
-## **Security & Zero Trust** 
+## Security & Zero Trust
 
-#### Securing Configuration in Agentic AI Platforms 
+### Securing Configuration in Agentic AI Platforms
 
-Configuration security for Agentic AI platforms must address a unique threat model: adversarial prompt injection via misconfigured guardrails, cost attacks via model selection manipulation, data exfiltration via compromised tool endpoints, and unauthorized capability escalation via feature flag tampering. 
+Configuration security for Agentic AI platforms must address a unique threat model: adversarial prompt injection via misconfigured guardrails, cost attacks via model selection manipulation, data exfiltration via compromised tool endpoints, and unauthorized capability escalation via feature flag tampering.
 
-###### **Zero Trust Configuration Access** 
+### Zero Trust Configuration Access
 
-- No implicit trust — every configuration read requires explicit authorization 
+- No implicit trust — every configuration read requires explicit authorization
 
-- IAM roles scoped to minimum required configuration paths 
+- IAM roles scoped to minimum required configuration paths
 
-- VPC endpoints for all configuration service access (no public internet) 
+- VPC endpoints for all configuration service access (no public internet)
 
-- mTLS for service-to-service configuration API calls 
+- mTLS for service-to-service configuration API calls
 
-- Short-lived STS tokens for cross-account configuration access 
+- Short-lived STS tokens for cross-account configuration access
 
-- IAM conditions: aws:SourceVpc, aws:RequestedRegion, aws:PrincipalTag 
+- IAM conditions: aws:SourceVpc, aws:RequestedRegion, aws:PrincipalTag
 
-###### **ABAC with Cedar Policy** 
+### ABAC with Cedar Policy
 
-- Cedar policies define fine-grained access rules for configuration 
+- Cedar policies define fine-grained access rules for configuration
 
-- Example: permit agent with tag AgentTier=='enterprise' to read configuration in path '/enterprise/**' 
+- Example: permit agent with tag AgentTier=='enterprise' to read configuration in path '/enterprise/**'
 
-- Configuration access context includes: agent-id, tenant-id, environment, IP range 
+- Configuration access context includes: agent-id, tenant-id, environment, IP range
 
-- Policy evaluation cached in AVP (Amazon Verified Permissions) 
+- Policy evaluation cached in AVP (Amazon Verified Permissions)
 
-- Policy as code — Cedar policies versioned in Git alongside configuration 
+- Policy as code — Cedar policies versioned in Git alongside configuration
 
-- Real-time policy evaluation at configuration read time (not just write time) 
+- Real-time policy evaluation at configuration read time (not just write time)
 
-###### **Configuration Signing & Tamper Detection** 
+### Configuration Signing & Tamper Detection
 
-- All configuration artifacts signed with KMS asymmetric key (RSA-2048) 
+- All configuration artifacts signed with KMS asymmetric key (RSA-2048)
 
-- Agents verify signature before applying configuration 
+- Agents verify signature before applying configuration
 
-- SHA-256 hash stored alongside configuration for integrity verification 
+- SHA-256 hash stored alongside configuration for integrity verification
 
-- Tamper detection: CloudWatch alarm on signature verification failures 
+- Tamper detection: CloudWatch alarm on signature verification failures
 
-- Configuration provenance: who created, who approved, who deployed 
+- Configuration provenance: who created, who approved, who deployed
 
-- SBOM linkage: configuration version linked to deploying pipeline run 
+- SBOM linkage: configuration version linked to deploying pipeline run
 
-###### **Configuration Encryption** 
+### Configuration Encryption
 
-- All configuration at rest encrypted with customer-managed KMS keys 
+- All configuration at rest encrypted with customer-managed KMS keys
 
-- KMS key per environment (separate keys for dev/test/uat/prod) 
+- KMS key per environment (separate keys for dev/test/uat/prod)
 
-- KMS key policies enforce principle of least privilege 
+- KMS key policies enforce principle of least privilege
 
-- Envelope encryption for large configuration documents (S3) 
+- Envelope encryption for large configuration documents (S3)
 
-- SecureString parameters encrypted at Parameter Store level 
+- SecureString parameters encrypted at Parameter Store level
 
-- Configuration caches encrypted at rest (Redis AUTH + TLS, EBS encryption) 
+- Configuration caches encrypted at rest (Redis AUTH + TLS, EBS encryption)
 
-###### **Configuration Drift Detection** 
+### Configuration Drift Detection
 
-- AWS Config Rules detect drift from approved configuration baselines 
+- AWS Config Rules detect drift from approved configuration baselines
 
-- Scheduled Lambda functions compare runtime config with Git source of truth 
+- Scheduled Lambda functions compare runtime config with Git source of truth
 
-- Alerts on manual console edits that bypass GitOps pipeline 
+- Alerts on manual console edits that bypass GitOps pipeline
 
-- Automated remediation: SNS alert + optional auto-rollback to Git state 
+- Automated remediation: SNS alert + optional auto-rollback to Git state
 
-- Configuration audit reports generated weekly for security review 
+- Configuration audit reports generated weekly for security review
 
-- Drift score tracked as SLA metric for platform reliability 
+- Drift score tracked as SLA metric for platform reliability
 
-## **Configuration Observability** 
+## Configuration Observability
 
-Monitoring Configuration Changes, Propagation, and Failures 
+Monitoring Configuration Changes, Propagation, and Failures
 
-Configuration observability answers the critical operational questions: Did my configuration change propagate to all agents? Is the new prompt version being used? Did the kill switch activate globally? Why is Agent-X still using the old model? 
+Configuration observability answers the critical operational questions: Did my configuration change propagate to all agents? Is the new prompt version being used? Did the kill switch activate globally? Why is Agent-X still using the old model?
 
-###### **Configuration Change Events** 
+### Configuration Change Events
 
-All configuration changes published to EventBridge as structured events. Schema: {eventType: 'configuration.updated', agentId, configPath, oldVersion, newVersion, deployedBy, deploymentStrategy, timestamp}. Events consumed by: audit log (CloudWatch), notification service (SNS), propagation tracker (DynamoDB), dashboard (Grafana). 
+All configuration changes published to EventBridge as structured events. Schema: {eventType: 'configuration.updated', agentId, configPath, oldVersion, newVersion, deployedBy, deploymentStrategy, timestamp}. Events consumed by: audit log (CloudWatch), notification service (SNS), propagation tracker (DynamoDB), dashboard (Grafana).
 
-###### **Propagation Monitoring** 
+### Propagation Monitoring
 
-After each configuration deployment, propagation tracker polls a random 10% sample of running agent instances to verify they have received the new version. Alert if <95% of instances have updated within SLA window (90s for AppConfig, 300s for polling). Dashboard shows propagation heatmap by region and availability zone. 
+After each configuration deployment, propagation tracker polls a random 10% sample of running agent instances to verify they have received the new version. Alert if <95% of instances have updated within SLA window (90s for AppConfig, 300s for polling). Dashboard shows propagation heatmap by region and availability zone.
 
-###### **Configuration Failure Detection** 
+### Configuration Failure Detection
 
-Agent SDK emits metric 'config.read.failure' on any configuration read error. CloudWatch alarm triggers on >1% failure rate. Separate alarm for 'config.validation.failure' (schema mismatch at runtime). PagerDuty integration for P1 configuration failures (kill switch, guardrail). 
+Agent SDK emits metric 'config.read.failure' on any configuration read error. CloudWatch alarm triggers on >1% failure rate. Separate alarm for 'config.validation.failure' (schema mismatch at runtime). PagerDuty integration for P1 configuration failures (kill switch, guardrail).
 
-###### **Rollback Event Tracking** 
+### Rollback Event Tracking
 
-Every rollback event recorded with: trigger (manual/automatic), triggering alarm, time-to-rollback, affected agents, root cause label. Monthly rollback report reviewed by platform team. Rollback frequency tracked as key metric. 
+Every rollback event recorded with: trigger (manual/automatic), triggering alarm, time-to-rollback, affected agents, root cause label. Monthly rollback report reviewed by platform team. Rollback frequency tracked as key metric.
 
-###### **Feature Flag Usage Analytics** 
+### Feature Flag Usage Analytics
 
-Langfuse / Phoenix integration tracks which prompt versions, model IDs, and feature flags are active per agent execution. Enables correlation: configuration version X → quality metric Y. Powers configuration impact analysis for prompt and model updates. 
+Langfuse / Phoenix integration tracks which prompt versions, model IDs, and feature flags are active per agent execution. Enables correlation: configuration version X → quality metric Y. Powers configuration impact analysis for prompt and model updates.
 
-###### **Audit Trail** 
+### Audit Trail
 
-CloudTrail captures all API calls to Parameter Store, AppConfig, Secrets Manager. Custom CloudWatch Logs Insights queries for: who changed what, when, from where. Audit reports exported to S3 for compliance (SOC2, GDPR, HIPAA). 7-year retention for regulated industries. 
+CloudTrail captures all API calls to Parameter Store, AppConfig, Secrets Manager. Custom CloudWatch Logs Insights queries for: who changed what, when, from where. Audit reports exported to S3 for compliance (SOC2, GDPR, HIPAA). 7-year retention for regulated industries.
 
-###### **OpenTelemetry Integration** 
+### OpenTelemetry Integration
 
-Agent SDK instruments configuration reads with OTel spans: span attributes include config-path, config-version, cache-hit/miss, latency. Traces sent to Phoenix/Langfuse for AI-specific observability. Config read latency tracked as P99 SLO metric. 
+Agent SDK instruments configuration reads with OTel spans: span attributes include config-path, config-version, cache-hit/miss, latency. Traces sent to Phoenix/Langfuse for AI-specific observability. Config read latency tracked as P99 SLO metric.
 
-## **AI-Specific Configuration Requirements** 
+## AI-Specific Configuration Requirements
 
-#### Configuration Patterns Unique to Agentic AI Systems 
+### Configuration Patterns Unique to Agentic AI Systems
 
-Agentic AI platforms require configuration capabilities that have no equivalent in traditional software systems. Prompt versioning, model routing, RAI policy management, and MCP server registries are examples of AI-specific configuration domains that must be designed from the ground up. 
+Agentic AI platforms require configuration capabilities that have no equivalent in traditional software systems. Prompt versioning, model routing, RAI policy management, and MCP server registries are examples of AI-specific configuration domains that must be designed from the ground up.
 
-##### **Prompt Registry & Versioning** 
+### Prompt Registry & Versioning
 
-- Centralized Prompt Registry stores all prompt templates with semantic versioning (MAJOR.MINOR.PATCH) 
+- Centralized Prompt Registry stores all prompt templates with semantic versioning (MAJOR.MINOR.PATCH)
 
-- MAJOR bump: fundamental change to prompt structure or persona 
+- MAJOR bump: fundamental change to prompt structure or persona
 
-- MINOR bump: additional instructions, updated examples, clarifications 
+- MINOR bump: additional instructions, updated examples, clarifications
 
-- PATCH bump: typo fixes, formatting improvements 
+- PATCH bump: typo fixes, formatting improvements
 
-- Prompt approval workflow: draft → review → approved → active → deprecated 
+- Prompt approval workflow: draft → review → approved → active → deprecated
 
-- Automatic A/B testing on prompt version upgrades (10% traffic to new version, compare quality metrics) 
+- Automatic A/B testing on prompt version upgrades (10% traffic to new version, compare quality metrics)
 
-- Rollback: instant revert to previous approved version via label switch 
+- Rollback: instant revert to previous approved version via label switch
 
-- Prompt templates stored in S3 (versioned), referenced by AppConfig 
+- Prompt templates stored in S3 (versioned), referenced by AppConfig
 
-- Prompt rendering at runtime (late binding variables: {user_name}, {current_date}) 
+- Prompt rendering at runtime (late binding variables: {user_name}, {current_date})
 
-- Prompt injection detection rules embedded in prompt registry validation 
+- Prompt injection detection rules embedded in prompt registry validation
 
-##### **Model Registry & Routing** 
+### Model Registry & Routing
 
-- Model Registry catalogs all approved models with metadata: provider, context window, cost/token, capabilities 
+- Model Registry catalogs all approved models with metadata: provider, context window, cost/token, capabilities
 
-- Model routing rules: intent profile → model selection (FAST→Haiku, BALANCED→Sonnet, ACCURATE→Opus) 
+- Model routing rules: intent profile → model selection (FAST→Haiku, BALANCED→Sonnet, ACCURATE→Opus)
 
-- Fallback chain: primary model → fallback model → emergency model 
+- Fallback chain: primary model → fallback model → emergency model
 
-- Model availability monitoring: circuit breaker on model errors > threshold 
+- Model availability monitoring: circuit breaker on model errors > threshold
 
-- Model upgrade path: canary 5% → monitor quality → expand to 50% → 100% 
+- Model upgrade path: canary 5% → monitor quality → expand to 50% → 100%
 
-- Embedding model registry: separate registry for text embedding models (for RAG) 
+- Embedding model registry: separate registry for text embedding models (for RAG)
 
-- Model cost tracking: real-time token consumption tracked per agent/model 
+- Model cost tracking: real-time token consumption tracked per agent/model
 
-- Model allowlist per environment: no Opus in dev (cost control), no Haiku in safety-critical workflows 
+- Model allowlist per environment: no Opus in dev (cost control), no Haiku in safety-critical workflows
 
-##### **MCP Server Registry** 
+### MCP Server Registry
 
-- MCP (Model Context Protocol) Server Registry: catalog of available tool servers with endpoints, capabilities, auth 
+- MCP (Model Context Protocol) Server Registry: catalog of available tool servers with endpoints, capabilities, auth
 
-- Registration includes: server ID, display name, endpoint URL, auth method, capability schema, SLA, owner 
+- Registration includes: server ID, display name, endpoint URL, auth method, capability schema, SLA, owner
 
-- MCP server health monitoring: synthetic probes every 60 seconds 
+- MCP server health monitoring: synthetic probes every 60 seconds
 
-- Agent-to-MCP connection pool management: connection limits per tenant 
+- Agent-to-MCP connection pool management: connection limits per tenant
 
-- MCP server version pinning: agents pin to specific server version to prevent breaking changes 
+- MCP server version pinning: agents pin to specific server version to prevent breaking changes
 
-- Discovery API: agents query registry for available tools matching capability requirements 
+- Discovery API: agents query registry for available tools matching capability requirements
 
-- Rate limit configuration per MCP server, per tenant, per agent 
+- Rate limit configuration per MCP server, per tenant, per agent
 
-- Cost tracking: external tool call costs attributed to calling agent 
+- Cost tracking: external tool call costs attributed to calling agent
 
-##### **Knowledge Base Registry** 
+### Knowledge Base Registry
 
-- Catalog of all Bedrock Knowledge Bases with metadata: domain, last-indexed, doc count, embedding model 
+- Catalog of all Bedrock Knowledge Bases with metadata: domain, last-indexed, doc count, embedding model
 
-- Knowledge base access control: which agent types/projects can access which KBs 
+- Knowledge base access control: which agent types/projects can access which KBs
 
-- Multi-KB routing: agent queries multiple KBs and merges results based on configured strategy 
+- Multi-KB routing: agent queries multiple KBs and merges results based on configured strategy
 
-- Knowledge Base versioning: track when KB was last updated, alert on stale KBs 
+- Knowledge Base versioning: track when KB was last updated, alert on stale KBs
 
-- Retrieval configuration per KB: top-k, similarity threshold, search type (semantic/hybrid/keyword) 
+- Retrieval configuration per KB: top-k, similarity threshold, search type (semantic/hybrid/keyword)
 
-- Knowledge base health: monitor embedding quality, query latency, retrieval accuracy 
+- Knowledge base health: monitor embedding quality, query latency, retrieval accuracy
 
-##### **RAI Policy & Guardrail Configuration** 
+### RAI Policy & Guardrail Configuration
 
-- RAI (Responsible AI) Policy Registry: versioned policy documents with approval workflow 
+- RAI (Responsible AI) Policy Registry: versioned policy documents with approval workflow
 
-- Bedrock Guardrail ARNs registered per policy type (content, topic, PII, grounding) 
+- Bedrock Guardrail ARNs registered per policy type (content, topic, PII, grounding)
 
-- Policy hierarchy: enterprise minimum → BU policy → project policy → agent policy 
+- Policy hierarchy: enterprise minimum → BU policy → project policy → agent policy
 
-- Emergency guardrail switch: instant enable of maximum restrictions across all agents 
+- Emergency guardrail switch: instant enable of maximum restrictions across all agents
 
-- Policy version testing: validate new RAI policies against test query set before activation 
+- Policy version testing: validate new RAI policies against test query set before activation
 
-- Constitutional AI principle references: link agent configs to specific constitutional principles 
+- Constitutional AI principle references: link agent configs to specific constitutional principles
 
-- Evaluation threshold configuration: minimum RAGAS scores, human evaluation sample rates 
+- Evaluation threshold configuration: minimum RAGAS scores, human evaluation sample rates
 
-- Safety incident playbook references: configuration links to runbooks for policy violations 
+- Safety incident playbook references: configuration links to runbooks for policy violations
 
-##### **Memory & Context Configuration** 
+### Memory & Context Configuration
 
-- Memory type registry: short-term (context window), episodic (session), semantic (vector), procedural (tool memory) 
+- Memory type registry: short-term (context window), episodic (session), semantic (vector), procedural (tool memory)
 
-- Context budget allocation: how to split context window between system prompt, history, retrieved context, user input 
+- Context budget allocation: how to split context window between system prompt, history, retrieved context, user input
 
-- RAG retrieval configuration per agent: embedding model, top-k, similarity threshold, reranker 
+- RAG retrieval configuration per agent: embedding model, top-k, similarity threshold, reranker
 
-- Memory TTL policies: session memory expires after 24h, project memory after 30 days, user memory permanent 
+- Memory TTL policies: session memory expires after 24h, project memory after 30 days, user memory permanent
 
-- Cross-agent memory sharing rules: which agents can read shared memory pools 
+- Cross-agent memory sharing rules: which agents can read shared memory pools
 
-- Memory compression configuration: when to summarize conversation history vs retain verbatim 
+- Memory compression configuration: when to summarize conversation history vs retain verbatim
 
-## **PART 14–15** 
+## PART 14–15
 
-## **Configuration Delivery & Developer Experience** 
+## Configuration Delivery & Developer Experience
 
-Pull/Push Models, SDKs, and Hot Reload Patterns 
+Pull/Push Models, SDKs, and Hot Reload Patterns
 
-##### **Configuration Delivery Models** 
+### Configuration Delivery Models
 
 |**Model**|**Mechanism**<br>**Latency**|**Complexity**|**Best For**|
 |Pull (Polling)|SDK polls AppConfig/SSM API every N seconds<br>Poll interval (30–|300s)Low|Feature flags, model config|
@@ -1318,9 +1319,9 @@ Pull/Push Models, SDKs, and Hot Reload Patterns
 |Distributed Cac|heRedis Pub/Sub + ElastiCache<br><10ms|High|High-scale EKS deployments|
 |EventBridge Pi|pesEventBridge Pipes→Kinesis→agents<br><10 seconds|Medium|Multi-region fan-out|
 
-##### **Developer Experience — SDK Design** 
+### Developer Experience — SDK Design
 
-The configuration SDK is the primary interface for agent developers. It must be typed, self-documenting, testable, and support hot reload with minimal boilerplate. 
+The configuration SDK is the primary interface for agent developers. It must be typed, self-documenting, testable, and support hot reload with minimal boilerplate.
 
 ```
 # Python SDK — Agent Configuration Client from agent_platform.config import
@@ -1345,181 +1346,181 @@ Observability — all reads traced automatically (OTel) # Metrics: config.read.l
 config.cache.hit_rate, config.validation.errors
 ```
 
-## **Anti-Patterns** 
+## Anti-Patterns
 
-#### Common Enterprise Configuration Failures to Avoid 
+### Common Enterprise Configuration Failures to Avoid
 
-Configuration anti-patterns are the most common cause of production incidents in enterprise AI platforms. Understanding and proactively preventing these failures is as important as implementing the right patterns. 
+Configuration anti-patterns are the most common cause of production incidents in enterprise AI platforms. Understanding and proactively preventing these failures is as important as implementing the right patterns.
 
-###### I **Configuration Sprawl** 
+### I **Configuration Sprawl**
 
-**Problem:** Configuration values spread across 10+ different systems with no single source of truth. Teams cannot find which service owns which configuration. Inconsistent values between services cause mysterious failures. 
+**Problem:** Configuration values spread across 10+ different systems with no single source of truth. Teams cannot find which service owns which configuration. Inconsistent values between services cause mysterious failures.
 
-**Solution:** Solution: Implement configuration ownership model. Central registry maps every config key to its authoritative source. Configuration audit quarterly to identify orphaned values. 
+**Solution:** Solution: Implement configuration ownership model. Central registry maps every config key to its authoritative source. Configuration audit quarterly to identify orphaned values.
 
-###### I **Secret Leakage via Parameter Store** 
+### I **Secret Leakage via Parameter Store**
 
-**Problem:** API keys, passwords, and OAuth secrets stored as plain-text Parameter Store parameters. CloudTrail logs expose secret values. IAM policies too broad. 
+**Problem:** API keys, passwords, and OAuth secrets stored as plain-text Parameter Store parameters. CloudTrail logs expose secret values. IAM policies too broad.
 
-**Solution:** Solution: ALL secrets go to Secrets Manager. Parameter Store for non-sensitive values ONLY. Automated scanner (git-secrets, detect-secrets) runs in CI to catch accidental secret commits. 
+**Solution:** Solution: ALL secrets go to Secrets Manager. Parameter Store for non-sensitive values ONLY. Automated scanner (git-secrets, detect-secrets) runs in CI to catch accidental secret commits.
 
-###### I **Hardcoded Configuration Values** 
+### I **Hardcoded Configuration Values**
 
-**Problem:** Model IDs, endpoint URLs, knowledge base ARNs hardcoded in container images. Requires redeployment for any value change. Different values in different environments require different images — violates 12-Factor principles. 
+**Problem:** Model IDs, endpoint URLs, knowledge base ARNs hardcoded in container images. Requires redeployment for any value change. Different values in different environments require different images — violates 12-Factor principles.
 
-**Solution:** Solution: Zero hardcoded values. All values from external configuration. Startup validation fails fast if any required configuration is missing. 
+**Solution:** Solution: Zero hardcoded values. All values from external configuration. Startup validation fails fast if any required configuration is missing.
 
-###### I **Environment-Specific Code Branches** 
+### I **Environment-Specific Code Branches**
 
-**Problem:** if env == 'prod': use_real_model() else: use_mock(). Environment branches in application code. Configuration values embedded in conditionals. Tests don't reflect production behavior. 
+**Problem:** if env == 'prod': use_real_model() else: use_mock(). Environment branches in application code. Configuration values embedded in conditionals. Tests don't reflect production behavior.
 
-**Solution:** Solution: Externalized configuration with environment-specific values in configuration store, not in code. Feature flags for behavior differences, not environment checks. 
+**Solution:** Solution: Externalized configuration with environment-specific values in configuration store, not in code. Feature flags for behavior differences, not environment checks.
 
-###### I **Monolithic Configuration Blobs** 
+### I **Monolithic Configuration Blobs**
 
-**Problem:** Single JSON document containing all configuration for all agents in the platform. Every configuration change deploys the entire blob. Merge conflicts when multiple teams edit simultaneously. Blast radius of a misconfiguration is the entire platform. 
+**Problem:** Single JSON document containing all configuration for all agents in the platform. Every configuration change deploys the entire blob. Merge conflicts when multiple teams edit simultaneously. Blast radius of a misconfiguration is the entire platform.
 
-**Solution:** Solution: Fine-grained configuration — one AppConfig profile per agent or per concern. Separate deployable units. Atomic updates with minimal blast radius. 
+**Solution:** Solution: Fine-grained configuration — one AppConfig profile per agent or per concern. Separate deployable units. Atomic updates with minimal blast radius.
 
-###### I **Overusing AppConfig for Secrets** 
+### I **Overusing AppConfig for Secrets**
 
-**Problem:** Storing database passwords and API keys in AppConfig freeform configurations instead of Secrets Manager. No rotation, no encryption at field level, secrets visible in AppConfig console. 
+**Problem:** Storing database passwords and API keys in AppConfig freeform configurations instead of Secrets Manager. No rotation, no encryption at field level, secrets visible in AppConfig console.
 
-**Solution:** Solution: AppConfig for non-sensitive configuration values only. Secrets Manager for all credentials. AppConfig stores ARN references to Secrets Manager secrets. 
+**Solution:** Solution: AppConfig for non-sensitive configuration values only. Secrets Manager for all credentials. AppConfig stores ARN references to Secrets Manager secrets.
 
-###### I **No Configuration Versioning** 
+### I **No Configuration Versioning**
 
-**Problem:** Configuration changes overwrite previous values with no history. When an incident is caused by a configuration change, impossible to identify what changed or roll back. No audit trail for compliance. 
+**Problem:** Configuration changes overwrite previous values with no history. When an incident is caused by a configuration change, impossible to identify what changed or roll back. No audit trail for compliance.
 
-**Solution:** Solution: Immutable configuration versions. Every change creates new version. Current version labeled — rollback is just changing the label to a previous version. 
+**Solution:** Solution: Immutable configuration versions. Every change creates new version. Current version labeled — rollback is just changing the label to a previous version.
 
-###### I **Storing Runtime State as Configuration** 
+### I **Storing Runtime State as Configuration**
 
-**Problem:** Agent conversation history, session data, or dynamic counters stored in Parameter Store or AppConfig. These services are not designed for high-write state. Throttling errors in production. 
+**Problem:** Agent conversation history, session data, or dynamic counters stored in Parameter Store or AppConfig. These services are not designed for high-write state. Throttling errors in production.
 
-**Solution:** Solution: Configuration services for configuration only (infrequently changing values). DynamoDB, ElastiCache, or S3 for runtime state. Clear separation of configuration and state. 
+**Solution:** Solution: Configuration services for configuration only (infrequently changing values). DynamoDB, ElastiCache, or S3 for runtime state. Clear separation of configuration and state.
 
-###### I **No Configuration Testing** 
+### I **No Configuration Testing**
 
-**Problem:** Configuration changes deployed directly to production without testing. Schema violations discovered at runtime. Configuration incompatibilities between services not caught until they cause agent failures. 
+**Problem:** Configuration changes deployed directly to production without testing. Schema violations discovered at runtime. Configuration incompatibilities between services not caught until they cause agent failures.
 
-**Solution:** Solution: Configuration test pipeline: schema validation → integration tests in dev → canary deployment to UAT → smoke tests → production. No configuration change skips testing. 
+**Solution:** Solution: Configuration test pipeline: schema validation → integration tests in dev → canary deployment to UAT → smoke tests → production. No configuration change skips testing.
 
-###### I **Configuration Coupled with Deployment** 
+### I **Configuration Coupled with Deployment**
 
-**Problem:** Configuration changes require code deployments. New environment variable requires new container image. No way to update configuration without downtime. Emergency guardrail update takes 45 minutes instead of 45 seconds. 
+**Problem:** Configuration changes require code deployments. New environment variable requires new container image. No way to update configuration without downtime. Emergency guardrail update takes 45 minutes instead of 45 seconds.
 
-**Solution:** Solution: Strict separation of configuration and deployment lifecycles. AppConfig, Parameter Store, and Secrets Manager enable configuration changes completely independent of container image or Lambda function deployments. 
+**Solution:** Solution: Strict separation of configuration and deployment lifecycles. AppConfig, Parameter Store, and Secrets Manager enable configuration changes completely independent of container image or Lambda function deployments.
 
-## **Best Practices Catalog** 
+## Best Practices Catalog
 
-Comprehensive Configuration Governance for Enterprise Scale 
+Comprehensive Configuration Governance for Enterprise Scale
 
-###### **Naming Standards** 
+### Naming Standards
 
-- Use lowercase-kebab-case for all configuration keys 
+- Use lowercase-kebab-case for all configuration keys
 
-- Follow hierarchy: /{layer}/{environment}/{service}/{category}/{key} 
+- Follow hierarchy: /{layer}/{environment}/{service}/{category}/{key}
 
-- Include version suffix for breaking changes: /agent-config/v2/... 
+- Include version suffix for breaking changes: /agent-config/v2/...
 
-- No abbreviations — prefer clarity over brevity: 'primary-model-id' not 'pm-id' 
+- No abbreviations — prefer clarity over brevity: 'primary-model-id' not 'pm-id'
 
-- Environment names: dev, test, uat, prod (never: d, t, u, p or development, production) 
+- Environment names: dev, test, uat, prod (never: d, t, u, p or development, production)
 
-- Tag all resources: Environment, Team, Owner, CostCenter, DataClassification 
+- Tag all resources: Environment, Team, Owner, CostCenter, DataClassification
 
-###### **Ownership & Governance** 
+### Ownership & Governance
 
-- Every configuration key has an explicit owner (team + individual) 
+- Every configuration key has an explicit owner (team + individual)
 
-- Configuration without an owner is considered a critical finding in quarterly audits 
+- Configuration without an owner is considered a critical finding in quarterly audits
 
-- Platform team owns enterprise-level and platform-level configuration 
+- Platform team owns enterprise-level and platform-level configuration
 
-- Agent developer teams own agent-level and workflow-level configuration 
+- Agent developer teams own agent-level and workflow-level configuration
 
-- Secrets owned by security team with delegated access to consuming teams 
+- Secrets owned by security team with delegated access to consuming teams
 
-- Configuration changes to prod require approval from both owner and security reviewer 
+- Configuration changes to prod require approval from both owner and security reviewer
 
-###### **Schema & Validation** 
+### Schema & Validation
 
-- Every configuration type has a JSON Schema (minimum version 2020-12) 
+- Every configuration type has a JSON Schema (minimum version 2020-12)
 
-- Schema validation in CI pipeline (pre-commit hook + pipeline check) 
+- Schema validation in CI pipeline (pre-commit hook + pipeline check)
 
-- AppConfig Lambda validator enforces schema at deployment time 
+- AppConfig Lambda validator enforces schema at deployment time
 
-- Agent SDK validates configuration schema at startup (fail-fast) 
+- Agent SDK validates configuration schema at startup (fail-fast)
 
-- Schema evolution: additive changes only in MINOR versions; document breaking changes 
+- Schema evolution: additive changes only in MINOR versions; document breaking changes
 
-- Type safety: use typed configuration clients (never raw dict/map access in production) 
+- Type safety: use typed configuration clients (never raw dict/map access in production)
 
-###### **Security Baselines** 
+### Security Baselines
 
-- No secrets in Parameter Store — all credentials in Secrets Manager 
+- No secrets in Parameter Store — all credentials in Secrets Manager
 
-- All configuration encrypted at rest (KMS customer-managed keys) 
+- All configuration encrypted at rest (KMS customer-managed keys)
 
-- Separate KMS keys per environment 
+- Separate KMS keys per environment
 
-- Minimum IAM permission: read-only access to specific parameter paths only 
+- Minimum IAM permission: read-only access to specific parameter paths only
 
-- Configuration signing: all configuration artifacts signed with asymmetric KMS key 
+- Configuration signing: all configuration artifacts signed with asymmetric KMS key
 
-- Audit logging mandatory: no configuration access without CloudTrail record 
+- Audit logging mandatory: no configuration access without CloudTrail record
 
-- Configuration changes to prod require 2-person approval (4-eyes principle) 
+- Configuration changes to prod require 2-person approval (4-eyes principle)
 
-###### **Resilience & Caching** 
+### Resilience & Caching
 
-- Always cache configuration locally (AppConfig Agent / SDK cache) 
+- Always cache configuration locally (AppConfig Agent / SDK cache)
 
-- Implement fail-open: use last-known-good configuration on service failure 
+- Implement fail-open: use last-known-good configuration on service failure
 
-- Configuration cache TTL: 90s for feature flags, 300s for static config 
+- Configuration cache TTL: 90s for feature flags, 300s for static config
 
-- Circuit breaker on configuration service calls (open after 5 consecutive failures) 
+- Circuit breaker on configuration service calls (open after 5 consecutive failures)
 
-- Configuration snapshot for disaster recovery (full state backup to S3 daily) 
+- Configuration snapshot for disaster recovery (full state backup to S3 daily)
 
-- Test configuration service failure regularly in chaos engineering exercises 
+- Test configuration service failure regularly in chaos engineering exercises
 
-###### **Progressive Delivery** 
+### Progressive Delivery
 
-- No configuration change goes directly to production without canary testing 
+- No configuration change goes directly to production without canary testing
 
-- Standard rollout: dev → test → UAT → canary 5% prod → 25% → 100% prod 
+- Standard rollout: dev → test → UAT → canary 5% prod → 25% → 100% prod
 
-- Automated rollback on CloudWatch alarm (error rate > 1% or latency > SLO) 
+- Automated rollback on CloudWatch alarm (error rate > 1% or latency > SLO)
 
-- Bake time: minimum 30 minutes at each percentage stage for prod rollouts 
+- Bake time: minimum 30 minutes at each percentage stage for prod rollouts
 
-- Kill switch mandatory for all feature flags and capability toggles 
+- Kill switch mandatory for all feature flags and capability toggles
 
-- Configuration change freeze windows: no non-emergency changes during peak traffic 
+- Configuration change freeze windows: no non-emergency changes during peak traffic
 
-###### **Automation & GitOps** 
+### Automation & GitOps
 
-- All configuration changes via pull request — no direct console edits in prod 
+- All configuration changes via pull request — no direct console edits in prod
 
-- GitOps reconciliation: pipeline auto-detects and alerts on drift from Git state 
+- GitOps reconciliation: pipeline auto-detects and alerts on drift from Git state
 
-- Automated testing: every PR runs configuration validation test suite 
+- Automated testing: every PR runs configuration validation test suite
 
-- One-click deployment to non-prod environments for fast iteration 
+- One-click deployment to non-prod environments for fast iteration
 
-- Automated rollback pipeline: triggered by alarm → execute rollback → notify team 
+- Automated rollback pipeline: triggered by alarm → execute rollback → notify team
 
-- Monthly automated audits: unused configuration, expired feature flags, orphaned secrets 
+- Monthly automated audits: unused configuration, expired feature flags, orphaned secrets
 
-## **Comprehensive Comparison Matrix** 
+## Comprehensive Comparison Matrix
 
-#### 40+ Decision Criteria Across 14 Configuration Solutions 
+### 40+ Decision Criteria Across 14 Configuration Solutions
 
-The following matrix evaluates 14 configuration management solutions across 40+ criteria relevant to Enterprise Agentic AI platforms on AWS. Scores are 1–5 (5 = best). Use this matrix to select the right tool for each configuration category. 
+The following matrix evaluates 14 configuration management solutions across 40+ criteria relevant to Enterprise Agentic AI platforms on AWS. Scores are 1–5 (5 = best). Use this matrix to select the right tool for each configuration category.
 
 |**PERFORMANCE**|**SSM**<br>**Param**<br>**Store**|**AWS A**<br>**ppConf**<br>**ig**|**Secrets**<br>**Manag**<br>**er**|**Dynam**<br>**oDB**<br>**Config**<br>**Svc**|**HashiC**<br>**orp**<br>**Vault**|**Launch**<br>**Darkly**|**Open**<br>**Feature**|**K8s Co**<br>**nfigMa**<br>**ps**|**Spring**<br>**Cl.**<br>**Config**|**Consul**|
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -1540,7 +1541,7 @@ The following matrix evaluates 14 configuration management solutions across 40+ 
 |Hierarchy|**4**|**3**|**2**|**5**|**4**|**3**|**3**|**2**|**5**|**4**|
 |Schema Validation|**2**|**4**|**2**|**5**|**3**|**4**|**4**|**2**|**4**|**3**|
 
-**Dynam SSM AWS A Secrets oDB HashiC K8s Co Spring Param ppConf Manag Config orp Launch Open nfigMa Cl. SECURITY Store ig er Svc Vault Darkly Feature ps Config Consul** 
+**Dynam SSM AWS A Secrets oDB HashiC K8s Co Spring Param ppConf Manag Config orp Launch Open nfigMa Cl. SECURITY Store ig er Svc Vault Darkly Feature ps Config Consul**
 
 |Encryption at Rest|**4**|**4**|**5**|**4**|**5**|**4**|**3**|**3**|**3**|**4**|
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -1574,85 +1575,85 @@ The following matrix evaluates 14 configuration management solutions across 40+ 
 |CloudFormation|**5**|**5**|**5**|**3**|**3**|**3**|**2**|**3**|**3**|**3**|
 |Cost (1=expensive)|**5**|**4**|**4**|**3**|**2**|**2**|**5**|**5**|**4**|**4**|
 
-_Legend: 5=Excellent 4=Good 3=Adequate 2=Limited 1=Poor/Not Supported_ 
+*Legend: 5=Excellent 4=Good 3=Adequate 2=Limited 1=Poor/Not Supported*
 
-## **Production Reference Architecture** 
+## Production Reference Architecture
 
-#### Enterprise Agent Builder Platform on AWS 
+### Enterprise Agent Builder Platform on AWS
 
-The following reference architecture defines a production-grade configuration management system for an Enterprise Agent Builder Platform on AWS. It is designed for multi-account AWS Organizations, multi-region deployment, and supports thousands of concurrent AI agents across multiple teams and tenants. 
+The following reference architecture defines a production-grade configuration management system for an Enterprise Agent Builder Platform on AWS. It is designed for multi-account AWS Organizations, multi-region deployment, and supports thousands of concurrent AI agents across multiple teams and tenants.
 
-##### **Architecture Overview** 
+### Architecture Overview
 
-**LAYER 1: Configuration Control Plane (Central Tooling Account)** 
+**LAYER 1: Configuration Control Plane (Central Tooling Account)**
 
-→ Git Repository (CodeCommit / GitHub): Single source of truth for all configuration 
+→ Git Repository (CodeCommit / GitHub): Single source of truth for all configuration
 
-- → AWS CodePipeline: CI/CD for configuration changes with validation gates 
+- → AWS CodePipeline: CI/CD for configuration changes with validation gates
 
-- → AWS CodeBuild: Linting, schema validation, policy checks, integration tests 
+- → AWS CodeBuild: Linting, schema validation, policy checks, integration tests
 
-- → Parameter Store (us-east-1 primary): Enterprise and platform-level configuration 
+- → Parameter Store (us-east-1 primary): Enterprise and platform-level configuration
 
-- → AppConfig Application 'AgentPlatform': All feature flags and dynamic configuration 
+- → AppConfig Application 'AgentPlatform': All feature flags and dynamic configuration
 
-- → Secrets Manager: Centralized secrets with cross-account resource policies 
+- → Secrets Manager: Centralized secrets with cross-account resource policies
 
-- → S3 Configuration Archive: Configuration snapshots, schemas, prompt templates 
+- → S3 Configuration Archive: Configuration snapshots, schemas, prompt templates
 
-- → AWS Config: Compliance rules and drift detection 
+- → AWS Config: Compliance rules and drift detection
 
-- → CloudTrail (organization-level): Immutable audit log for all configuration API calls 
+- → CloudTrail (organization-level): Immutable audit log for all configuration API calls
 
-- → EventBridge (default event bus): Configuration change event routing 
+- → EventBridge (default event bus): Configuration change event routing
 
-###### **LAYER 2: Configuration Distribution Layer** 
+### LAYER 2: Configuration Distribution Layer
 
-→ EventBridge Rules: Route configuration.* events to downstream consumers 
+→ EventBridge Rules: Route configuration.* events to downstream consumers
 
-- → SNS Topic 'config-changes': Fan-out to per-environment SQS queues 
+- → SNS Topic 'config-changes': Fan-out to per-environment SQS queues
 
-- → SQS Queues per environment: Guaranteed delivery of configuration change notifications 
+- → SQS Queues per environment: Guaranteed delivery of configuration change notifications
 
-- → Lambda 'config-propagation': Processes change events, invalidates caches, notifies agents 
+- → Lambda 'config-propagation': Processes change events, invalidates caches, notifies agents
 
-- → ElastiCache (Redis): Distributed configuration cache for EKS agent fleets 
+- → ElastiCache (Redis): Distributed configuration cache for EKS agent fleets
 
-- → CloudFront + S3: Global distribution of large configuration artifacts (schemas, prompts) 
+- → CloudFront + S3: Global distribution of large configuration artifacts (schemas, prompts)
 
-###### **LAYER 3: Workload Accounts (Dev / Test / UAT / Prod)** 
+### LAYER 3: Workload Accounts (Dev / Test / UAT / Prod)
 
-- → Parameter Store (local): Environment-specific overrides, inherited from central 
+- → Parameter Store (local): Environment-specific overrides, inherited from central
 
-- → AppConfig Agent Extension: Deployed in Lambda layers and ECS sidecars 
+- → AppConfig Agent Extension: Deployed in Lambda layers and ECS sidecars
 
-- → EKS Cluster: Agent pods with AppConfig sidecar container and Redis cache client 
+- → EKS Cluster: Agent pods with AppConfig sidecar container and Redis cache client
 
-- → ECS Services: Agent containers with AppConfig Extension Lambda layer 
+- → ECS Services: Agent containers with AppConfig Extension Lambda layer
 
-- → Lambda Functions: Agent handlers with AppConfig SDK + SSM Parameter caching 
+- → Lambda Functions: Agent handlers with AppConfig SDK + SSM Parameter caching
 
-- → Bedrock AgentCore Runtime: Managed agents with built-in config integration 
+- → Bedrock AgentCore Runtime: Managed agents with built-in config integration
 
-- → Bedrock Knowledge Bases: Referenced via configuration (ARN stored in Parameter Store) 
+- → Bedrock Knowledge Bases: Referenced via configuration (ARN stored in Parameter Store)
 
-- → Bedrock Guardrails: ARNs managed in configuration, applied per-agent-type 
+- → Bedrock Guardrails: ARNs managed in configuration, applied per-agent-type
 
-###### **LAYER 4: Observability & Governance** 
+### LAYER 4: Observability & Governance
 
-→ CloudWatch Metrics: Configuration read latency, cache hit rates, propagation delay 
+→ CloudWatch Metrics: Configuration read latency, cache hit rates, propagation delay
 
-- → CloudWatch Alarms: Trigger auto-rollback on error rate spike post-deployment 
+- → CloudWatch Alarms: Trigger auto-rollback on error rate spike post-deployment
 
-- → OpenTelemetry Collector (EKS DaemonSet): Traces configuration reads as spans 
+- → OpenTelemetry Collector (EKS DaemonSet): Traces configuration reads as spans
 
-- → Phoenix / Langfuse: AI-specific observability with configuration version correlation 
+- → Phoenix / Langfuse: AI-specific observability with configuration version correlation
 
-- → AWS Security Hub: Configuration compliance findings aggregated centrally 
+- → AWS Security Hub: Configuration compliance findings aggregated centrally
 
-- → Grafana Dashboard: Configuration health, propagation status, feature flag usage 
+- → Grafana Dashboard: Configuration health, propagation status, feature flag usage
 
-##### **Configuration Publishing Sequence** 
+### Configuration Publishing Sequence
 
 |**Ste**<br>**p**|**Actor**|**Action**|
 |**1**|**Developer**|git push to feature branch with configuration change in YAML|
@@ -1674,63 +1675,63 @@ The following reference architecture defines a production-grade configuration ma
 |**15**|**Propagation**<br>**Lambda**|Invalidates Redis cache, notifies EKS agents via SQS|
 |**16**|**Audit Log**|CloudTrail records complete deployment with approver identity|
 
-##### **Multi-Account AWS Organizations Architecture** 
+### Multi-Account AWS Organizations Architecture
 
-- **Management Account:** AWS Organizations, SCPs that prevent direct configuration API calls 
+- **Management Account:** AWS Organizations, SCPs that prevent direct configuration API calls
 
-- bypassing pipeline, centralized CloudTrail, Security Hub aggregation 
+- bypassing pipeline, centralized CloudTrail, Security Hub aggregation
 
-- **Tooling Account:** CodePipeline, CodeBuild, central Parameter Store, central Secrets Manager, 
+- **Tooling Account:** CodePipeline, CodeBuild, central Parameter Store, central Secrets Manager,
 
-- AppConfig application definitions, S3 configuration archive 
+- AppConfig application definitions, S3 configuration archive
 
-- **Shared Services Account:** ElastiCache (Redis) for shared configuration cache, EventBridge custom 
+- **Shared Services Account:** ElastiCache (Redis) for shared configuration cache, EventBridge custom
 
-- event bus, SNS/SQS for configuration propagation 
+- event bus, SNS/SQS for configuration propagation
 
-- **Dev Account:** Dev environment Parameter Store overrides, AppConfig dev environment, all 
+- **Dev Account:** Dev environment Parameter Store overrides, AppConfig dev environment, all
 
-- workloads for development 
+- workloads for development
 
-- **Test Account:** Test environment configuration, synthetic credentials, integration test infrastructure 
+- **Test Account:** Test environment configuration, synthetic credentials, integration test infrastructure
 
-- **UAT Account:** UAT environment configuration, production-like settings with test data, acceptance 
+- **UAT Account:** UAT environment configuration, production-like settings with test data, acceptance
 
-- testing 
+- testing
 
-- **Production Account:** Production configuration, real credentials (cross-account from Tooling 
+- **Production Account:** Production configuration, real credentials (cross-account from Tooling
 
-- Account), production workloads 
+- Account), production workloads
 
-- **Log Archive Account:** All CloudTrail logs consolidated for 7-year immutable retention, compliance 
+- **Log Archive Account:** All CloudTrail logs consolidated for 7-year immutable retention, compliance
 
-- reports 
+- reports
 
-##### **High Availability & Disaster Recovery** 
+### High Availability & Disaster Recovery
 
-- Parameter Store: Cross-region SSM parameter replication via EventBridge + Lambda automation 
+- Parameter Store: Cross-region SSM parameter replication via EventBridge + Lambda automation
 
-- AppConfig: Deployed independently per region — each region has full AppConfig stack 
+- AppConfig: Deployed independently per region — each region has full AppConfig stack
 
-- Secrets Manager: Multi-region secret replication enabled for all production secrets 
+- Secrets Manager: Multi-region secret replication enabled for all production secrets
 
-- ElastiCache: Redis Global Datastore for <1s cross-region configuration cache replication 
+- ElastiCache: Redis Global Datastore for <1s cross-region configuration cache replication
 
-- DynamoDB (custom config service): Global Tables for active-active multi-region configuration 
+- DynamoDB (custom config service): Global Tables for active-active multi-region configuration
 
-- S3 Configuration Archive: Cross-region replication with S3 versioning and MFA delete 
+- S3 Configuration Archive: Cross-region replication with S3 versioning and MFA delete
 
-- RTO Target: <15 minutes for full configuration plane restoration in DR region 
+- RTO Target: <15 minutes for full configuration plane restoration in DR region
 
-- RPO Target: <5 minutes for configuration data (DynamoDB Global Tables + S3 replication) 
+- RPO Target: <5 minutes for configuration data (DynamoDB Global Tables + S3 replication)
 
-- Configuration snapshot: Full configuration state backed up to S3 every 6 hours 
+- Configuration snapshot: Full configuration state backed up to S3 every 6 hours
 
-- Runbook: Automated DR failover playbook tested quarterly via chaos engineering exercises 
+- Runbook: Automated DR failover playbook tested quarterly via chaos engineering exercises
 
-### **Appendix A: Decision Matrix — Technology Selection** 
+### Appendix A: Decision Matrix — Technology Selection
 
-This decision matrix provides the authoritative mapping of configuration categories to recommended AWS services and patterns for the Enterprise Agent Builder Platform. 
+This decision matrix provides the authoritative mapping of configuration categories to recommended AWS services and patterns for the Enterprise Agent Builder Platform.
 
 |**Configuration Category**|**Primary Service**|**Secondary**|**Rationale**|
 |LLM Model Selection|AWS AppConfig|DynamoDB Config|SvcHot reload required; canary rollout for model upgrades|
@@ -1766,7 +1767,7 @@ This decision matrix provides the authoritative mapping of configuration categor
 |Encryption Key References|Parameter Store (KMS AR|Ns)—|KMS key ARNs; never secrets themselves|
 |Infrastructure ARNs|CloudFormation Outputs +|SSM<br>Terraform Remot|e StateIaC outputs→SSM for cross-stack reference|
 
-### **Appendix B: Implementation Roadmap** 
+### Appendix B: Implementation Roadmap
 
 |**Phase 1: Pro**|**of of Concept**<br>0–90 Days|
 |**Goal**|Validate key technology choices; demonstrate hot reload for one agent type|
@@ -1789,7 +1790,7 @@ This decision matrix provides the authoritative mapping of configuration categor
 |**Security Baseline**|KMS encryption for all config. IAM ABAC policies. Audit logging.|
 |**Success Metrics**|100% agents using config platform. 0 hardcoded values. P99 read <5ms.|
 
-##### **Phase 3: Enterprise Scale** 
+### Phase 3: Enterprise Scale
 
 |180–365 Days|
 |---|
@@ -1817,97 +1818,96 @@ This decision matrix provides the authoritative mapping of configuration categor
 |**Zero-Downtime**<br>**Schema Migration**|Automated dual-write migration for breaking schema changes.|
 |**Success Metrics**|10,000+ agents. 5 regions. 99.999% configuration availability. <1s global propagation.|
 
-### **Appendix C: RFC Template & Implementation Checklist** 
+### Appendix C: RFC Template & Implementation Checklist
 
-##### **Configuration Change RFC Template** 
+### Configuration Change RFC Template
 
-`RFC-{NUMBER}: {TITLE}` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `METADATA Status: DRAFT | REVIEW | APPROVED | IMPLEMENTED | REJECTED Author: {name} <{email}> Reviewers: {platform-engineer}, {security-reviewer}, {business-owner} Created: {YYYY-MM-DD} Target Deploy: {YYYY-MM-DD} (prod) Priority: P0 (emergency) | P1 (this sprint) | P2 (this quarter) SUMMARY {One paragraph describing the configuration change and its purpose.} MOTIVATION Problem being solved: Current state (how is this handled today): Consequences of not making this change: CONFIGURATION CHANGES PROPOSED Service: [ ] Parameter Store [ ] AppConfig [ ] Secrets Manager [ ] DynamoDB Config Svc [ ] Other: ________ Configuration Path(s): - /env/{env}/platform/{service}/{key} [BEFORE: value]` → `[AFTER: value] Schema Changes: [ ] None [ ] Additive (MINOR bump) [ ] Breaking (MAJOR bump) Hierarchy Level: [ ] Enterprise [ ] Org [ ] BU [ ] Platform [ ] Environment [ ] Region [ ] Tenant [ ] Project [ ] Agent [ ] Workflow ROLLOUT STRATEGY Strategy: [ ] AllAtOnce [ ] Linear_10%/10min [ ] Canary_5%/30min [ ] Custom Rollback Plan: {Describe exact rollback steps and time-to-rollback estimate} Rollback Time: {estimated time to complete rollback} Kill Switch: [ ] Yes (flag: {flag-name}) [ ] No (explain why not needed) RISK ASSESSMENT Blast Radius: [ ] Single agent [ ] All agents of type X [ ] All tenants [ ] Global Risk Level: [ ] LOW [ ] MEDIUM [ ] HIGH [ ] CRITICAL Breaking Change: [ ] Yes (requires consumer migration) [ ] No Data Migration: [ ] Yes (describe migration steps) [ ] No Downtime Risk: [ ] None [ ] Brief (<1 min) [ ] Significant (planned maintenance) VALIDATION Schema Validated: [ ] Yes (CI pipeline) Naming Convention: [ ] Yes (reviewed by platform team) Security Review: [ ] Yes (security team sign-off) Test Environment: [ ] Yes (tested in dev/test since {date}) Integration Tests: [ ] Pass [ ] Fail (describe) OBSERVABILITY Monitoring Alert: [ ] CloudWatch alarm created for this change Propagation Check: [ ] Automated propagation test configured Rollback Alarm: [ ] Auto-rollback on {metric} > {threshold} Audit Trail: [ ] CloudTrail logging verified APPROVALS Platform Engineer: _____________ Date: _________ Security Reviewer: _____________ Date: _________ Business Owner: _____________ (for P0/P1 prod changes) Deployment by: _____________ Date: _________` 
+`RFC-{NUMBER}: {TITLE}` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `METADATA Status: DRAFT | REVIEW | APPROVED | IMPLEMENTED | REJECTED Author: {name} <{email}> Reviewers: {platform-engineer}, {security-reviewer}, {business-owner} Created: {YYYY-MM-DD} Target Deploy: {YYYY-MM-DD} (prod) Priority: P0 (emergency) | P1 (this sprint) | P2 (this quarter) SUMMARY {One paragraph describing the configuration change and its purpose.} MOTIVATION Problem being solved: Current state (how is this handled today): Consequences of not making this change: CONFIGURATION CHANGES PROPOSED Service: [ ] Parameter Store [ ] AppConfig [ ] Secrets Manager [ ] DynamoDB Config Svc [ ] Other: ________ Configuration Path(s): - /env/{env}/platform/{service}/{key} [BEFORE: value]` → `[AFTER: value] Schema Changes: [ ] None [ ] Additive (MINOR bump) [ ] Breaking (MAJOR bump) Hierarchy Level: [ ] Enterprise [ ] Org [ ] BU [ ] Platform [ ] Environment [ ] Region [ ] Tenant [ ] Project [ ] Agent [ ] Workflow ROLLOUT STRATEGY Strategy: [ ] AllAtOnce [ ] Linear_10%/10min [ ] Canary_5%/30min [ ] Custom Rollback Plan: {Describe exact rollback steps and time-to-rollback estimate} Rollback Time: {estimated time to complete rollback} Kill Switch: [ ] Yes (flag: {flag-name}) [ ] No (explain why not needed) RISK ASSESSMENT Blast Radius: [ ] Single agent [ ] All agents of type X [ ] All tenants [ ] Global Risk Level: [ ] LOW [ ] MEDIUM [ ] HIGH [ ] CRITICAL Breaking Change: [ ] Yes (requires consumer migration) [ ] No Data Migration: [ ] Yes (describe migration steps) [ ] No Downtime Risk: [ ] None [ ] Brief (<1 min) [ ] Significant (planned maintenance) VALIDATION Schema Validated: [ ] Yes (CI pipeline) Naming Convention: [ ] Yes (reviewed by platform team) Security Review: [ ] Yes (security team sign-off) Test Environment: [ ] Yes (tested in dev/test since {date}) Integration Tests: [ ] Pass [ ] Fail (describe) OBSERVABILITY Monitoring Alert: [ ] CloudWatch alarm created for this change Propagation Check: [ ] Automated propagation test configured Rollback Alarm: [ ] Auto-rollback on {metric} > {threshold} Audit Trail: [ ] CloudTrail logging verified APPROVALS Platform Engineer: _____________ Date: _________ Security Reviewer: _____________ Date: _________ Business Owner: _____________ (for P0/P1 prod changes) Deployment by: _____________ Date: _________`
 
-##### **Implementation Checklist — New Agent Configuration** 
+### Implementation Checklist — New Agent Configuration
 
-###### **Design Phase** 
+### Design Phase
 
-- [ ] Agent schema defined using platform JSON Schema template 
+- [ ] Agent schema defined using platform JSON Schema template
 
-- [ ] Configuration hierarchy level determined (which levels need overrides) 
+- [ ] Configuration hierarchy level determined (which levels need overrides)
 
-- [ ] Naming convention followed for all parameter paths 
+- [ ] Naming convention followed for all parameter paths
 
-- [ ] Secret vs non-secret classification done for all values 
+- [ ] Secret vs non-secret classification done for all values
 
-- [ ] Owner assigned to all configuration keys 
+- [ ] Owner assigned to all configuration keys
 
-- [ ] Schema reviewed by platform team 
+- [ ] Schema reviewed by platform team
 
-###### **Development Phase** 
+### Development Phase
 
-- [ ] Configuration defined in YAML file in GitOps repository 
+- [ ] Configuration defined in YAML file in GitOps repository
 
-- [ ] Schema validation passes in local dev 
+- [ ] Schema validation passes in local dev
 
-- [ ] SDK integrated in agent code (no raw API calls in application code) 
+- [ ] SDK integrated in agent code (no raw API calls in application code)
 
-- [ ] Hot reload handler implemented for critical configuration keys 
+- [ ] Hot reload handler implemented for critical configuration keys
 
-- [ ] Mock configuration implemented for unit tests 
+- [ ] Mock configuration implemented for unit tests
 
-- [ ] Integration test verifies configuration is read correctly 
+- [ ] Integration test verifies configuration is read correctly
 
-- [ ] No hardcoded values in container image or Lambda package 
+- [ ] No hardcoded values in container image or Lambda package
 
-###### **Security Review** 
+### Security Review
 
-- [ ] All secrets in Secrets Manager (none in Parameter Store or environment variables) 
+- [ ] All secrets in Secrets Manager (none in Parameter Store or environment variables)
 
-- [ ] IAM role scoped to minimum required configuration paths 
+- [ ] IAM role scoped to minimum required configuration paths
 
-- [ ] KMS encryption verified for all configuration stores 
+- [ ] KMS encryption verified for all configuration stores
 
-- [ ] Configuration signing enabled if classified as SENSITIVE 
+- [ ] Configuration signing enabled if classified as SENSITIVE
 
-- [ ] Cross-account access policy reviewed if applicable 
+- [ ] Cross-account access policy reviewed if applicable
 
-- [ ] Audit logging verified in CloudTrail 
+- [ ] Audit logging verified in CloudTrail
 
-###### **Pre-Production Deployment** 
+### Pre-Production Deployment
 
-- [ ] Configuration deployed to dev via CI pipeline (not manually) 
+- [ ] Configuration deployed to dev via CI pipeline (not manually)
 
-- [ ] Integration tests pass in dev environment 
+- [ ] Integration tests pass in dev environment
 
-- [ ] Schema validation passes in AppConfig Lambda validator 
+- [ ] Schema validation passes in AppConfig Lambda validator
 
-- [ ] Configuration promoted to test environment 
+- [ ] Configuration promoted to test environment
 
-- [ ] UAT testing completed with production-equivalent configuration 
+- [ ] UAT testing completed with production-equivalent configuration
 
-- [ ] RFC created and approved for production deployment 
+- [ ] RFC created and approved for production deployment
 
-###### **Production Deployment** 
+### Production Deployment
 
-- [ ] Production deployment uses AppConfig deployment strategy (canary or linear) 
+- [ ] Production deployment uses AppConfig deployment strategy (canary or linear)
 
-- [ ] CloudWatch alarms configured for auto-rollback 
+- [ ] CloudWatch alarms configured for auto-rollback
 
-- [ ] On-call engineer notified of deployment start 
+- [ ] On-call engineer notified of deployment start
 
-- [ ] Propagation monitoring dashboard reviewed post-deployment 
+- [ ] Propagation monitoring dashboard reviewed post-deployment
 
-- [ ] All running agent instances confirmed to have received new configuration 
+- [ ] All running agent instances confirmed to have received new configuration
 
-- [ ] Deployment status documented in incident tracking system 
+- [ ] Deployment status documented in incident tracking system
 
-###### **Post-Deployment** 
+### Post-Deployment
 
-- [ ] Configuration visible in Internal Developer Platform portal 
+- [ ] Configuration visible in Internal Developer Platform portal
 
-- [ ] Documentation updated in team runbook 
+- [ ] Documentation updated in team runbook
 
-- [ ] Ownership recorded in configuration registry 
+- [ ] Ownership recorded in configuration registry
 
-- [ ] Monitoring alert thresholds calibrated based on baseline metrics 
+- [ ] Monitoring alert thresholds calibrated based on baseline metrics
 
-- [ ] Feature flag expiry date set if applicable 
+- [ ] Feature flag expiry date set if applicable
 
-- [ ] Next review date scheduled for configuration 
-
+- [ ] Next review date scheduled for configuration

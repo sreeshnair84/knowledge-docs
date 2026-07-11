@@ -14,4 +14,3 @@ covers_version: \"as of 2026-07-10\"
 # Infrastructure as Code
 
 Documentation and resources for Infrastructure as Code.
-

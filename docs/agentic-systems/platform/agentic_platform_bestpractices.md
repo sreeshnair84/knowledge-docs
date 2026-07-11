@@ -9,19 +9,22 @@ doc_type: guide
 ---
 **ENTERPRISE AGENTIC PLATFORM — Best Practices, Antipatterns & Implementation Guide**
 *Strands Agents · AgentCore · MCP · ADFS/FT Rights · Multitenancy · Langfuse*
+
 | Document Type | Best Practices & Antipatterns Guide |
 | --- | --- |
 | Companion To | Enterprise Agentic Platform Architecture v1.0 |
 | Version | 1.0 — Based on Research to March 2026 |
 | Classification | INTERNAL — RESTRICTED |
 | Coverage | Strands Agents SDK, AgentCore GA, MCP, ADFS, Multitenancy, Langfuse |
-# **Table of Contents**
 
-# **1. Executive Summary & Research Findings**
+# Table of Contents
+
+# 1. Executive Summary & Research Findings
 
 This document consolidates research-backed best practices and antipatterns for implementing the Enterprise Agentic Platform. It covers five major capability layers: Strands Agents SDK (open-sourced by AWS in May 2025, 14M+ downloads), Amazon Bedrock AgentCore (GA October 2025), MCP tool integration, ADFS/FT Rights authentication propagation, and Langfuse observability. It also introduces the multitenancy model specific to a financial-services use case where multiple business divisions or external clients share platform infrastructure.
 
 Key research findings that affect the architecture design:
+
 - AgentCore reached General Availability in October 2025 with full VPC, PrivateLink, CloudFormation support — moving from the preview architecture assumed in the companion document to production-grade infrastructure.
 - AgentCore Identity now natively supports Microsoft Entra ID (ADFS/Azure AD) as an identity provider, enabling direct IDP integration for agent authentication without custom BFF token bridging.
 - AgentCore Gateway now includes built-in multitenancy interceptors, fine-grained tool access control, and identity propagation — this significantly changes how FT rights can be enforced.
@@ -29,9 +32,9 @@ Key research findings that affect the architecture design:
 - AgentCore Runtime provides microVM-level session isolation (Firecracker), meaning each user session gets dedicated CPU, memory, and filesystem — this is the correct multitenancy model for financial services.
 - Strands Agent SOPs (Standard Operating Procedures) provide a natural-language workflow specification format that can encode FT rights requirements directly into agent behaviour contracts.
 
-# **2. Strands Agents SDK — Best Practices & Antipatterns**
+# 2. Strands Agents SDK — Best Practices & Antipatterns
 
-## **2.1 Core Design Principles**
+## 2.1 Core Design Principles
 
 :::note
 
@@ -39,7 +42,7 @@ Strands Agents is a model-driven SDK where the LLM does the planning — not the
 
 :::
 
-### **2.1.1 Agent Initialisation**
+### 2.1.1 Agent Initialisation
 
 :::tip[✅ Best Practice]
 
@@ -57,7 +60,7 @@ Passing every available tool to a single agent. Strands documentation explicitly
 # ✅  CORRECT: Focused agent with bounded toolset from strands import Agent from strands.models import BedrockModel customer_agent = Agent( model=BedrockModel(model_id="anthropic.claude-sonnet-4-20250514"), system_prompt=CUSTOMER_AGENT_SOP,   # see Section 2.3 for SOPs tools=[get_customer_profile, get_account_summary, get_recent_transactions], # bounded FT scope: only CUST_VIEW tools ) # ❌  WRONG: Mega-agent with all tools god_agent = Agent( model=..., tools=[*customer_tools, *trading_tools, *reporting_tools, *admin_tools], # model cannot reason correctly over 40+ tools )
 ```
 
-### **2.1.2 Context Window Management**
+### 2.1.2 Context Window Management
 
 :::tip[✅ Best Practice]
 
@@ -75,7 +78,7 @@ Accumulating the full conversation history indefinitely. In multi-step financial
 # ✅  CORRECT: Custom ConversationManager with FT-aware summarisation from strands.agent.conversation_manager import ConversationManager class BankConversationManager(ConversationManager): def __init__(self, max_turns=15, dynamo_table=None): self.max_turns = max_turns self.dynamo = dynamo_table def apply_management(self, messages): # Keep last max_turns, summarise older turns if len(messages) > self.max_turns: summary = self._summarise(messages[:-self.max_turns]) self.dynamo.put_item(Item={'session_id': ..., 'summary': summary}) return messages[-self.max_turns:] return messages def reduce_context(self, messages): # Called when token limit exceeded — hard-trim to last 8 turns return messages[-8:]
 ```
 
-### **2.1.3 Error Handling & Resilience**
+### 2.1.3 Error Handling & Resilience
 
 :::tip[✅ Best Practice]
 
@@ -93,7 +96,7 @@ Relying on the agent to self-terminate gracefully. Without max_iterations limits
 # ✅  CORRECT: Bounded agent invocation with budget guard import asyncio from strands import Agent async def invoke_agent_safely(agent: Agent, prompt: str, max_tokens: int = 8000) -> dict: try: response = await asyncio.wait_for( agent.invoke_async(prompt, max_iterations=15), timeout=90.0  # hard wall-clock timeout ) if response.token_count > max_tokens: raise BudgetExceededError(f'Agent used {response.token_count} tokens') return response except asyncio.TimeoutError: return {'error': 'AGENT_TIMEOUT', 'retryable': True} except Exception as e: log_to_langfuse(span_id=..., error=str(e)) return {'error': 'AGENT_FAILURE', 'message': str(e)}
 ```
 
-## **2.2 Multi-Agent Patterns**
+## 2.2 Multi-Agent Patterns
 
 :::note
 
@@ -101,7 +104,7 @@ Strands supports four multi-agent collaboration patterns: Agents-as-Tools (hiera
 
 :::
 
-### **2.2.1 Pattern Selection Guide**
+### 2.2.1 Pattern Selection Guide
 
 | Pattern | Description | Best For (Bank Context) | Watch Out For |
 | --- | --- | --- | --- |
@@ -122,13 +125,13 @@ Using Swarm pattern for actions that modify state (write operations). In a Swarm
 
 :::
 
-### **2.2.2 Supervisor Agent FT Enforcement Pattern**
+### 2.2.2 Supervisor Agent FT Enforcement Pattern
 
 ```python
 # ✅  CORRECT: Supervisor checks FT rights before delegating from strands import Agent, tool @tool def delegate_to_portfolio_agent(task: str, user_ft_rights: list) -> str: """Delegate portfolio analysis to specialist agent. Requires FT:PORTFOLIO_READ in user_ft_rights. """ if "FT:PORTFOLIO_READ" not in user_ft_rights: return "ACCESS_DENIED: FT:PORTFOLIO_READ required for portfolio operations" # Only create sub-agent if FT check passes portfolio_agent = Agent(model=..., tools=portfolio_tools) return portfolio_agent(task) # Supervisor receives enriched context from API gateway supervisor = Agent( model=..., tools=[delegate_to_portfolio_agent, delegate_to_customer_agent], system_prompt=f'User FT rights: {ft_rights_from_jwt}. Check rights before delegation.' )
 ```
 
-## **2.3 Strands Agent SOPs (Standard Operating Procedures)**
+## 2.3 Strands Agent SOPs (Standard Operating Procedures)
 
 :::note
 
@@ -152,7 +155,7 @@ Embedding business rules, FT requirements, and compliance constraints in ad-hoc 
 # ✅  CORRECT: SOP as system prompt (stored in version-controlled markdown) PORTFOLIO_AGENT_SOP = ''' # Portfolio Analysis Agent SOP ## Preconditions - The calling user MUST have FT:PORTFOLIO_READ in their ft_rights claim - The agent MUST NOT access customer PII unless FT:SENSITIVE_DATA is also present - The agent MUST log all data access actions to the audit span ## Steps 1. MUST validate the portfolio_id belongs to the authenticated customer 2. SHOULD retrieve the current holdings using the get_portfolio tool 3. MAY calculate derived metrics (P&L, risk score) using the analytics tool 4. MUST NOT expose raw account numbers in the final response ## Postconditions - The response MUST include a data_accessed_at timestamp - All tool calls MUST be traceable in Langfuse with ft_context metadata ''' portfolio_agent = Agent(model=..., tools=[...], system_prompt=PORTFOLIO_AGENT_SOP)
 ```
 
-## **2.4 Strands AgentOps — Observability**
+## 2.4 Strands AgentOps — Observability
 
 :::note
 
@@ -160,7 +163,7 @@ Strands Agents ships with native OpenTelemetry (OTEL) instrumentation. Installin
 
 :::
 
-### **2.4.1 OTEL Integration with Langfuse**
+### 2.4.1 OTEL Integration with Langfuse
 
 :::tip[✅ Best Practice]
 
@@ -168,7 +171,7 @@ Configure Strands' OTEL exporter to target the self-hosted Langfuse OTLP endpoin
 
 :::
 
-| # requirements.txt strands-agents[otel] langfuse # ── Environment variables (set via AWS Secrets Manager / ECS Task Definition) ── # OTEL_EXPORTER_OTLP_ENDPOINT=http://langfuse-internal.vpc:4318/api/public/otel # OTEL_EXPORTER_OTLP_HEADERS=Authorization=Basic <base64(pk:sk)> # OTEL_SERVICE_NAME=agentic-platform-{env} # OTEL_TRACES_SAMPLER=always_on # ── Agent code — no changes required for basic tracing ── from strands import Agent from langfuse.decorators import observe, langfuse_context @observe(name='supervisor_agent_invoke') async def invoke_supervisor(user_prompt: str, enriched_ctx: dict): # Add bank-specific span attributes langfuse_context.update_current_observation( metadata={ 'ft_rights': enriched_ctx.get('ft_rights', []), 'tenant_id': enriched_ctx.get('tenant_id'), 'session_id': enriched_ctx.get('session_id'), 'user_upn':  enriched_ctx.get('upn'),  # pseudonymised in Langfuse } ) return await supervisor_agent.invoke_async(user_prompt) |
+| # requirements.txt strands-agents[otel] langfuse # ── Environment variables (set via AWS Secrets Manager / ECS Task Definition) ── # OTEL_EXPORTER_OTLP_ENDPOINT=<http://langfuse-internal.vpc:4318/api/public/otel> # OTEL_EXPORTER_OTLP_HEADERS=Authorization=Basic <base64(pk:sk)> # OTEL_SERVICE_NAME=agentic-platform-{env} # OTEL_TRACES_SAMPLER=always_on # ── Agent code — no changes required for basic tracing ── from strands import Agent from langfuse.decorators import observe, langfuse_context @observe(name='supervisor_agent_invoke') async def invoke_supervisor(user_prompt: str, enriched_ctx: dict): # Add bank-specific span attributes langfuse_context.update_current_observation( metadata={ 'ft_rights': enriched_ctx.get('ft_rights', []), 'tenant_id': enriched_ctx.get('tenant_id'), 'session_id': enriched_ctx.get('session_id'), 'user_upn':  enriched_ctx.get('upn'),  # pseudonymised in Langfuse } ) return await supervisor_agent.invoke_async(user_prompt) |
 | --- |
 
 :::danger[❌ Antipattern]
@@ -177,7 +180,7 @@ Logging raw PII (customer names, account numbers, UPNs) into Langfuse trace meta
 
 :::
 
-### **2.4.2 Key Metrics to Instrument**
+### 2.4.2 Key Metrics to Instrument
 
 | Metric | Strands Instrumentation Point | Bank-Specific Alert |
 | --- | --- | --- |
@@ -190,7 +193,7 @@ Logging raw PII (customer names, account numbers, UPNs) into Langfuse trace meta
 | Conversation manager reduce_context events | Custom counter in ConversationManager | Alert if > 5% of sessions hit context limit |
 | Sub-agent delegation depth | Custom span attribute: delegation_depth | Alert if depth > 3 (latency and cost risk) |
 
-## **2.5 Strands Skills (Pre-built Tools)**
+## 2.5 Strands Skills (Pre-built Tools)
 
 :::note
 
@@ -224,9 +227,9 @@ Enabling the Dynamic MCP Client tool (strands_tools.mcp) in production. The Dyna
 | memory (Mem0/Knowledge Bases) | Approved — use with tenant-scoped namespaces |
 | retrieve | Approved — use with FT-scoped OpenSearch indices |
 
-# **3. Amazon Bedrock AgentCore — Best Practices**
+# 3. Amazon Bedrock AgentCore — Best Practices
 
-## **3.1 AgentCore Runtime — Session Isolation**
+## 3.1 AgentCore Runtime — Session Isolation
 
 :::note
 
@@ -250,7 +253,7 @@ Reusing a single AgentCore Runtime session across multiple users to save cold-st
 # ✅  CORRECT: Per-user session management (BFF layer) import boto3, hashlib, time def get_or_create_session(user_sub: str, conversation_id: str) -> str: '''Map user + conversation to an AgentCore session ID.' # Deterministic session ID from user + conversation (no DB lookup needed) session_id = hashlib.sha256( f"{user_sub}:{conversation_id}".encode() ).hexdigest()[:32] # Record session-user mapping in DynamoDB for audit trail dynamo.put_item( TableName='agent-sessions', Item={ 'session_id': session_id, 'user_sub': user_sub, 'created_at': int(time.time()), 'ttl': int(time.time()) + 1800  # 30 min session TTL }, ConditionExpression='attribute_not_exists(session_id)' ) return session_id
 ```
 
-## **3.2 AgentCore Gateway — FT Rights with Interceptors**
+## 3.2 AgentCore Gateway — FT Rights with Interceptors
 
 :::note
 
@@ -268,7 +271,7 @@ Implement an AgentCore Gateway interceptor that extracts the enriched context JW
 # ✅  CORRECT: AgentCore Gateway interceptor for FT rights enforcement import json, jwt, boto3 from functools import lru_cache # Tool → required FT rights mapping TOOL_FT_MAP = { 'get_customer_profile':   ['FT:CUST_VIEW'], 'get_portfolio':          ['FT:CUST_VIEW', 'FT:PORTFOLIO_READ'], 'submit_trade_order':     ['FT:CUST_VIEW', 'FT:TRADE_SUBMIT'], 'export_report':          ['FT:REPORT_EXPORT'], } @lru_cache(maxsize=1024) def get_jwks() -> dict: # Cached JWKS from BFF — refreshed by background job return secrets_manager.get_secret_value(SecretId='bff-jwks')['SecretString'] def lambda_handler(event, context): tool_name = event.get('toolName') auth_header = event.get('headers', {}).get('X-Enriched-Context', '') # Validate enriched context token try: claims = jwt.decode(auth_header, get_jwks(), algorithms=['RS256']) ft_rights = claims.get('ft_rights', []) except jwt.ExpiredSignatureError: return {'action': 'DENY', 'statusCode': 401, 'message': 'TOKEN_EXPIRED'} # Check FT rights for the requested tool required = TOOL_FT_MAP.get(tool_name, []) if not all(ft in ft_rights for ft in required): missing = [ft for ft in required if ft not in ft_rights] return { 'action': 'DENY', 'statusCode': 403, 'message': f'MISSING_FT_RIGHTS: {missing}', 'auditContext': {'user': claims['upn'], 'tool': tool_name} } # Enrich forwarded request with user identity return { 'action': 'ALLOW', 'additionalHeaders': { 'X-User-UPN': claims['upn'], 'X-Tenant-ID': claims.get('tenant_id', 'default'), 'X-FT-Rights': ','.join(ft_rights), } }
 ```
 
-## **3.3 AgentCore Identity — ADFS Integration**
+## 3.3 AgentCore Identity — ADFS Integration
 
 :::tip[✅ Best Practice]
 
@@ -282,7 +285,7 @@ Implementing a custom token validation middleware inside the agent code. Token v
 
 :::
 
-## **3.4 AgentCore Memory — Tenant-Scoped Design**
+## 3.4 AgentCore Memory — Tenant-Scoped Design
 
 :::tip[✅ Best Practice]
 
@@ -300,7 +303,7 @@ Storing sensitive financial data (account balances, positions, PII) in AgentCore
 # ✅  CORRECT: FT-scoped, tenant-aware memory storage from bedrock_agentcore import AgentCoreMemory memory_client = AgentCoreMemory() async def store_interaction_summary(user_sub: str, tenant_id: str, ft_rights: list, summary: str): # Namespace isolates memory per tenant namespace = f'tenant:{tenant_id}:user:{user_sub}' # Only store summary, never raw financial data sanitised = sanitise_pii(summary)  # remove names, account numbers await memory_client.store( actor_id=user_sub, namespace=namespace, content=sanitised, metadata={ 'ft_rights_at_store': ft_rights,   # for retrieval filtering 'tenant_id': tenant_id, 'stored_at': datetime.utcnow().isoformat() } )
 ```
 
-# **4. Multitenancy Design**
+# 4. Multitenancy Design
 
 :::note
 
@@ -308,7 +311,7 @@ In the bank context, multitenancy has two meanings: (a) multiple business divisi
 
 :::
 
-## **4.1 Multitenancy Isolation Model**
+## 4.1 Multitenancy Isolation Model
 
 | Layer | Internal Multitenancy | External Multitenancy |
 | --- | --- | --- |
@@ -322,7 +325,7 @@ In the bank context, multitenancy has two meanings: (a) multiple business divisi
 | Agent SOPs | Shared SOPs parameterised by tenant policy | Tenant-specific SOPs with tenant-specific rules |
 | IAM / Roles | Single IAM role per agent type | Separate IAM role per external tenant (IAM boundary) |
 
-## **4.2 Tenant Context Propagation**
+## 4.2 Tenant Context Propagation
 
 :::tip[✅ Best Practice]
 
@@ -336,7 +339,7 @@ Inferring tenant from the user's email domain or UPN suffix. Email domains can b
 
 :::
 
-## **4.3 Cross-Tenant Data Leakage Prevention**
+## 4.3 Cross-Tenant Data Leakage Prevention
 
 :::warning
 
@@ -356,7 +359,7 @@ Relying solely on MCP server-side row-level filtering for tenant isolation. If t
 
 :::
 
-## **4.4 Tenant-Specific Rate Limiting and Cost Governance**
+## 4.4 Tenant-Specific Rate Limiting and Cost Governance
 
 :::tip[✅ Best Practice]
 
@@ -368,9 +371,9 @@ Implement per-tenant token budgets using a Redis-backed counter. Each tenant sho
 # ✅  CORRECT: Per-tenant token budget enforcement import redis class TenantBudgetGuard: def __init__(self, redis_client, budgets: dict): self.redis = redis_client self.budgets = budgets  # {tenant_id: daily_token_limit} async def check_and_deduct(self, tenant_id: str, estimated_tokens: int) -> str: key = f'token_budget:{tenant_id}:{date.today().isoformat()}' current = int(self.redis.get(key) or 0) budget = self.budgets.get(tenant_id, 100000) usage_pct = current / budget if usage_pct > 1.0: return 'BLOCKED' elif usage_pct > 0.85: return 'DEGRADED'  # switch to lighter model self.redis.incrby(key, estimated_tokens) self.redis.expire(key, 86400)  # 24h TTL return 'ALLOWED'
 ```
 
-# **5. MCP Security — Best Practices & Antipatterns**
+# 5. MCP Security — Best Practices & Antipatterns
 
-## **5.1 MCP Server Design**
+## 5.1 MCP Server Design
 
 :::tip[✅ Best Practice]
 
@@ -384,7 +387,7 @@ Implementing MCP tools that accept and execute raw SQL or shell commands constru
 
 :::
 
-## **5.2 MCP Server Versioning and Compatibility**
+## 5.2 MCP Server Versioning and Compatibility
 
 :::tip[✅ Best Practice]
 
@@ -398,7 +401,7 @@ Breaking MCP tool schema changes in place (renaming fields, changing types, remo
 
 :::
 
-## **5.3 MCP Tool Call Idempotency**
+## 5.3 MCP Tool Call Idempotency
 
 :::tip[✅ Best Practice]
 
@@ -412,7 +415,7 @@ Allowing agents to retry failed mutating tool calls without idempotency keys. If
 
 :::
 
-## **5.4 Tool Result Validation**
+## 5.4 Tool Result Validation
 
 :::tip[✅ Best Practice]
 
@@ -426,9 +429,9 @@ Passing raw database query results directly to the agent context without sanitis
 
 :::
 
-# **6. ADFS / FT Rights — Known Issues & Solutions**
+# 6. ADFS / FT Rights — Known Issues & Solutions
 
-## **6.1 Known Issue: ADFS 2019 Resource Parameter**
+## 6.1 Known Issue: ADFS 2019 Resource Parameter
 
 :::warning
 
@@ -446,7 +449,7 @@ Always include the resource parameter in all ADFS 2019 token requests. The resou
 # ✅  CORRECT: ADFS 2019 token request with resource parameter import httpx async def get_system_token(client_id: str, client_secret: str, resource: str) -> dict: '''Obtain ADFS 2019 system token with AD group claims. resource: Must match the Service Application name in Cloud2. e.g., 'gtat.dhcli' or your service's registered name. ''' async with httpx.AsyncClient() as client: response = await client.post( 'https://sts.danskebank.com/adfs/oauth2/token', data={ 'grant_type': 'client_credentials', 'client_id': client_id, 'client_secret': client_secret, 'resource': resource,  # CRITICAL: omitting causes missing group claims } ) token_data = response.json() # Validate group claims are present import jwt as pyjwt claims = pyjwt.decode(token_data['access_token'], options={'verify_signature': False}) if not claims.get('groups'): raise ValueError('ADFS token missing group claims — verify resource parameter') return token_data
 ```
 
-## **6.2 Known Issue: FT Rights Staleness (Mid-Session Revocation)**
+## 6.2 Known Issue: FT Rights Staleness (Mid-Session Revocation)
 
 :::warning
 
@@ -464,7 +467,7 @@ Implement a real-time FT revocation webhook. When the FT Service revokes rights,
 # ✅  CORRECT: FT revocation webhook handler (Lambda, triggered by SNS) import boto3, json redis_client = boto3.client('elasticache')  # Use redis-py in actual implementation def lambda_handler(event, context): for record in event['Records']: message = json.loads(record['Sns']['Message']) user_sub = message['user_sub'] revoked_fts = message['revoked_rights'] # Find all active sessions for this user (pattern scan — careful with Redis) session_keys = redis_client.scan(match=f'session:*:{user_sub}:*', count=100) for session_key in session_keys: session_data = json.loads(redis_client.get(session_key)) current_fts = session_data.get('ft_rights', []) # Remove revoked rights and force refresh updated_fts = [ft for ft in current_fts if ft not in revoked_fts] if len(updated_fts) < len(current_fts): # FT rights changed — force session termination redis_client.delete(session_key) # Force re-authentication on next request log_security_event('FT_REVOCATION', user_sub, revoked_fts)
 ```
 
-## **6.3 Known Issue: JWKS Cache Poisoning**
+## 6.3 Known Issue: JWKS Cache Poisoning
 
 :::warning
 
@@ -478,7 +481,7 @@ Implement JWKS certificate pinning for the ADFS endpoint. Cache the expected cer
 
 :::
 
-## **6.4 Known Issue: JWT Claim Namespace Collisions**
+## 6.4 Known Issue: JWT Claim Namespace Collisions
 
 :::warning
 
@@ -488,7 +491,7 @@ When the BFF adds custom claims (ft_rights, enriched_at, tenant_id) to the JWT, 
 
 :::tip[✅ Best Practice]
 
-Namespace all custom BFF-injected claims with a bank-specific prefix. Use a URI-style namespace for production: https://bank.eu/claims/ft_rights instead of ft_rights. Validate the namespace in all downstream claim extraction code.
+Namespace all custom BFF-injected claims with a bank-specific prefix. Use a URI-style namespace for production: <https://bank.eu/claims/ft_rights> instead of ft_rights. Validate the namespace in all downstream claim extraction code.
 
 :::
 
@@ -496,9 +499,9 @@ Namespace all custom BFF-injected claims with a bank-specific prefix. Use a URI-
 # ✅  CORRECT: Namespaced custom JWT claims CLAIM_NAMESPACE = 'https://bank.eu/claims/' bff_claims = { f'{CLAIM_NAMESPACE}ft_rights':    ft_rights_list, f'{CLAIM_NAMESPACE}tenant_id':    tenant_id, f'{CLAIM_NAMESPACE}enriched_at':  datetime.utcnow().isoformat(), f'{CLAIM_NAMESPACE}enriched_by':  'bff-v2.3.1', f'{CLAIM_NAMESPACE}session_id':   session_id, } # Extraction in downstream services def get_ft_rights(claims: dict) -> list: return claims.get(f'{CLAIM_NAMESPACE}ft_rights', [])
 ```
 
-# **7. Langfuse Observability — Best Practices**
+# 7. Langfuse Observability — Best Practices
 
-## **7.1 Strands + Langfuse Native Integration**
+## 7.1 Strands + Langfuse Native Integration
 
 :::note
 
@@ -512,7 +515,7 @@ Deploy Langfuse with its own dedicated RDS PostgreSQL (Multi-AZ) and S3 bucket w
 
 :::
 
-## **7.2 Evaluation Pipeline**
+## 7.2 Evaluation Pipeline
 
 :::tip[✅ Best Practice]
 
@@ -526,7 +529,7 @@ Evaluating only LLM output quality (correctness, helpfulness) without evaluating
 
 :::
 
-## **7.3 PII Protection in Traces**
+## 7.3 PII Protection in Traces
 
 :::tip[✅ Best Practice]
 
@@ -538,13 +541,13 @@ Configure Langfuse's field masking to redact specific fields before trace storag
 | --- | --- |
 | Data Type | Langfuse Masking Approach |
 | Account numbers (IBAN/BBAN) | Regex: [A-Z]{2}[0-9]{2}[A-Z0-9]{4,30} → IBAN-REDACTED |
-| Customer UPN / email | Pseudonymise: SHA256(upn)[:8] → shown as user_abc12345 |
+| Customer UPN / email | Pseudonymise: SHA256[upn](:8) → shown as user_abc12345 |
 | Customer full name | Partial: 'John D.' format or full redaction |
 | Social Security / National ID | Full redaction |
 | Trade amounts > EUR 100k | Redact in trace, preserve in separate audit log |
 | Credentials / tokens in headers | Full redaction — never log Authorization headers |
 
-# **8. Architecture Issues Found & Resolutions**
+# 8. Architecture Issues Found & Resolutions
 
 :::note
 
@@ -552,7 +555,7 @@ Based on the companion architecture document v1.0 and current research (March 20
 
 :::
 
-## **Issue #1: BFF as Trust Root without Rotation Automation**
+## Issue #1: BFF as Trust Root without Rotation Automation
 
 :::warning
 
@@ -568,7 +571,7 @@ Add a CloudWatch alarm that triggers if the KMS key is accessed from outside the
 # ✅  CORRECT: KMS-backed JWT signing import boto3, base64 from cryptography.hazmat.primitives import hashes kms = boto3.client('kms', region_name='eu-west-1') KEY_ID = 'arn:aws:kms:eu-west-1:123456789:key/bff-signing-key' def sign_jwt_payload(payload_b64: str, header_b64: str) -> str: signing_input = f'{header_b64}.{payload_b64}'.encode() response = kms.sign( KeyId=KEY_ID, Message=signing_input, MessageType='RAW', SigningAlgorithm='RSASSA_PKCS1_V1_5_SHA_256' ) sig = base64.urlsafe_b64encode(response['Signature']).rstrip(b'=').decode() return f'{header_b64}.{payload_b64}.{sig}'
 ```
 
-## **Issue #2: Redis Session Cache — Single Point of Failure**
+## Issue #2: Redis Session Cache — Single Point of Failure
 
 :::warning
 
@@ -580,7 +583,7 @@ Deploy ElastiCache Redis with Multi-AZ and automatic failover. Configure a 60-se
 Implement a short-lived in-memory fallback: the BFF stores the last validated session in memory (LRU cache, TTL = 60 seconds, max 1000 entries) to serve during Redis reconnection.
 Add a Redis health check to the BFF's readiness probe. If Redis is down for > 30 seconds, mark the BFF pod as not-ready, allowing the load balancer to drain it.
 
-## **Issue #3: AgentCore Runtime VPC Connectivity (Preview vs. GA)**
+## Issue #3: AgentCore Runtime VPC Connectivity (Preview vs. GA)
 
 :::warning
 
@@ -592,7 +595,7 @@ Deploy AgentCore Runtime in VPC-only mode. Create a VPC endpoint for the AgentCo
 Use PrivateLink for all AgentCore service calls (Runtime, Memory, Gateway, Identity, Observability). This ensures no agent invocation traffic traverses the internet.
 Update CloudFormation/CDK templates to use the AgentCore GA resource types (now available in CloudFormation, which was not available in preview).
 
-## **Issue #4: MCP Server Lambda Cold Start Latency**
+## Issue #4: MCP Server Lambda Cold Start Latency
 
 :::warning
 
@@ -604,7 +607,7 @@ Deploy customer-mcp and portfolio-mcp (the most frequently called tools) on ECS 
 For Lambda MCP servers that must remain Lambda, enable Provisioned Concurrency for the Lambda function. Set it to minimum 5 concurrent executions for production.
 Implement a tool warmup Lambda that pings all MCP Lambda servers every 10 minutes to prevent cold starts during off-peak hours.
 
-## **Issue #5: Strands Agent Loop — No Governance on Cost**
+## Issue #5: Strands Agent Loop — No Governance on Cost
 
 :::warning
 
@@ -616,7 +619,7 @@ Implement the TenantBudgetGuard pattern described in Section 4.4. Apply daily an
 Use the Strands callback_handler to monitor token usage in real time. If the current session approaches the per-session budget, inject a system message instructing the agent to summarise and conclude.
 Create a Langfuse alert on per-tenant token usage. Integrate with a cost anomaly detection Lambda that triggers a PagerDuty alert if any tenant's hourly spend exceeds 3x the rolling 7-day average.
 
-## **Issue #6: Strands Tools Batch Execution Without Tenant Context**
+## Issue #6: Strands Tools Batch Execution Without Tenant Context
 
 :::warning
 
@@ -627,9 +630,9 @@ The Strands Batch Tool (from strands_tools) allows an agent to call multiple too
 Avoid using the generic strands_tools.batch tool. Instead, implement a bank-specific batch wrapper that injects tenant_id and ft_rights into every parallel tool call before dispatch.
 All custom @tool functions must extract tenant_id from the thread-local context (set at agent invocation time) rather than relying on the caller to pass it. This prevents tenant context from being accidentally dropped in batch calls.
 
-# **9. Security Antipatterns — Comprehensive List**
+# 9. Security Antipatterns — Comprehensive List
 
-### **Authentication & Token Management Antipatterns**
+### Authentication & Token Management Antipatterns
 
 :::danger[❌ Antipattern]
 
@@ -655,7 +658,7 @@ Using symmetric (HS256) signing for the enriched context JWT. Use RS256 (asymmet
 
 :::
 
-### **Agent & LLM Security Antipatterns**
+### Agent & LLM Security Antipatterns
 
 :::danger[❌ Antipattern]
 
@@ -681,7 +684,7 @@ Using the same Bedrock model endpoint for all agent types without inference para
 
 :::
 
-### **MCP & Tool Antipatterns**
+### MCP & Tool Antipatterns
 
 :::danger[❌ Antipattern]
 
@@ -701,7 +704,7 @@ Returning error details from MCP tools that include stack traces, database query
 
 :::
 
-# **10. Implementation Roadmap**
+# 10. Implementation Roadmap
 
 | Priority | Item | Section Ref | Effort |
 | --- | --- | --- | --- |
@@ -727,7 +730,7 @@ Returning error details from MCP tools that include stack traces, database query
 | P3 — Normal | Implement GraphBuilder for trade workflows | Sec 2.2.1 | 2 weeks |
 | P3 — Normal | Deploy Strands Labs AI Functions for edge cases | Sec 2 notes | TBD |
 
-# **Appendix A: Decision Matrix — Strands vs. AgentCore Native vs. Hybrid**
+# Appendix A: Decision Matrix — Strands vs. AgentCore Native vs. Hybrid
 
 | Scenario | Recommended Approach | Rationale |
 | --- | --- | --- |
@@ -741,7 +744,7 @@ Returning error details from MCP tools that include stack traces, database query
 | Regulated trading operations | GraphBuilder workflow + human-in-the-loop step | Deterministic ordering + approval gate before trade execution |
 | Observability and debugging | Strands OTEL → Langfuse self-hosted | GDPR-compliant; traces stay in EU VPC; best-in-class LLM-specific UI |
 
-# **Appendix B: Strands Agents Feature Reference (March 2026)**
+# Appendix B: Strands Agents Feature Reference (March 2026)
 
 | Feature | Status / Notes |
 | --- | --- |

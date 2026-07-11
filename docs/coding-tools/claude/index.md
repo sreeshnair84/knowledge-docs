@@ -20,7 +20,7 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 ## Knowledge Guides (June 2026)
 
 | Guide | Description |
-|-------|-------------|
+| ------- | ------------- |
 | [Models 2026](claude-models-2026.md) | Opus 4.x, Sonnet 4.6, Haiku 4.5 — capabilities, pricing, selection matrix |
 | [API Mastery](claude-api-mastery.md) | Messages API, Extended Thinking, Tool Use, Vision, Batch API, Files API, Streaming |
 | [Claude Code CLI](claude-code-complete-2026.md) | Installation, CLAUDE.md hierarchy, 60+ slash commands, custom commands, skills, hooks, CI/CD |

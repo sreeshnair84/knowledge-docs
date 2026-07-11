@@ -39,7 +39,7 @@ Before formal governance, large enterprises learned painful lessons:
 Good governance has four characteristics:
 
 | Characteristic | Description | Observable Signal |
-|---|---|---|
+| --- | --- | --- |
 | **Clear decision rights** | Every significant decision has exactly one owner | You can name the person or body that approved each major choice |
 | **Proportional process** | High-risk decisions get more scrutiny; low-risk decisions move fast | A $10K SaaS tool does not need Investment Committee approval |
 | **Separation of concerns** | Financial, architectural, risk, and ethical concerns reviewed by appropriate experts | You are not asking accountants to evaluate encryption algorithms |
@@ -69,7 +69,7 @@ The Architecture Review Board is the primary governance body for technology arch
 ### Who Sits on the ARB
 
 | Role | Responsibility | Voting |
-|---|---|---|
+| --- | --- | --- |
 | Chief Architect / Enterprise Architect | Chair; overall architectural alignment | Yes |
 | Domain Architects (Cloud, Data, Security, Integration) | Technical depth in their domains | Yes |
 | Infrastructure Lead | Operational feasibility | Yes |
@@ -105,7 +105,7 @@ Bi-weekly standing meeting (90 minutes):
 ### Decision Types
 
 | Decision | Meaning | What Happens Next |
-|---|---|---|
+| --- | --- | --- |
 | **Approve** | Submission meets all standards | Project proceeds; decision logged in architecture register |
 | **Conditional Approval** | Minor gaps; specific conditions must be met | Sponsor documents remediation; follows up within agreed timeframe |
 | **Defer** | Incomplete submission; needs more information | Sponsor revises and resubmits at next meeting |
@@ -141,7 +141,7 @@ Work through this checklist before submitting:
 ### What Gets Rejected and Why
 
 | Rejection Reason | Common Scenario |
-|---|---|
+| --- | --- |
 | **Vendor not approved** | Team chose a niche vendor without going through vendor assessment |
 | **Standards conflict** | Solution uses a deprecated integration pattern or unsupported database type |
 | **Missing security review** | CISO has not seen the submission before the ARB meeting |
@@ -259,7 +259,7 @@ The Investment Committee (IC) governs financial decisions for technology and cha
 ### Membership
 
 | Role | Responsibility |
-|---|---|
+| --- | --- |
 | CFO or Finance Director | Financial stewardship, budget authority |
 | CIO or CTO | Technology strategy alignment |
 | Business Unit Sponsors | Demand validation and benefit ownership |
@@ -270,7 +270,7 @@ The Investment Committee (IC) governs financial decisions for technology and cha
 ### Dollar Thresholds (Typical)
 
 | Investment Level | Threshold | Approval Body |
-|---|---|---|
+| --- | --- | --- |
 | Operational | < $100K | Department head |
 | Tactical | $100K – $500K | CIO / VP Technology |
 | Strategic | $500K – $2M | Investment Committee |
@@ -337,7 +337,7 @@ Typically senior: CTO chair, Chief Architect, domain CTO/VPs from major business
 The Technology Council typically meets quarterly. Its outputs govern everything that flows through the ARB and IC:
 
 | Output | Description |
-|---|---|
+| --- | --- |
 | **Approved technology standards** | List of approved platforms, patterns, and vendors for each domain |
 | **Technology radar** | Adopted / Trial / Assess / Hold classifications for emerging technologies |
 | **Portfolio health assessment** | View of the current technology estate — modern vs. aging vs. end-of-life |
@@ -360,7 +360,7 @@ The Risk Committee governs the enterprise risk register, sets risk appetite, and
 ### Technology Risk Taxonomy
 
 | Risk Category | Examples | Key Controls |
-|---|---|---|
+| --- | --- | --- |
 | **Operational** | System outages, data loss, process failures | DR/BCP plans, SLA monitoring, incident management |
 | **Cyber** | Ransomware, data breach, phishing, insider threat | SIEM, vulnerability management, access controls, training |
 | **Vendor** | Vendor insolvency, SLA breach, concentration risk | Vendor due diligence, contract protections, multi-vendor strategy |
@@ -425,7 +425,7 @@ Security review is not optional. For any solution handling regulated data, inter
 ### When Security Review Is Triggered
 
 | Trigger | Example |
-|---|---|
+| --- | --- |
 | New internet-facing application | Customer portal, API exposed to partners |
 | New data store handling regulated data | PII database, payment records |
 | Third-party vendor access to internal systems | SaaS integration, outsourced support |
@@ -436,32 +436,38 @@ Security review is not optional. For any solution handling regulated data, inter
 ### What Security Reviewers Look For
 
 **Data Classification**
+
 - Is all data the system stores or transmits correctly classified?
 - Are controls appropriate for the classification level?
 
 **Access Controls**
+
 - Principle of least privilege enforced?
 - Multi-factor authentication required for privileged access?
 - Service accounts use dedicated credentials, not shared?
 - Access reviews scheduled?
 
 **Encryption**
+
 - Data at rest encrypted with approved algorithm (AES-256 minimum)?
 - Data in transit encrypted (TLS 1.3 preferred, TLS 1.2 minimum)?
 - Key management through enterprise key vault?
 
 **Vulnerability Management**
+
 - Dependency scanning integrated into CI/CD pipeline?
 - Container scanning for container-based deployments?
 - Penetration test scheduled before go-live for high-risk systems?
 - Patch management process defined?
 
 **Logging and Monitoring**
+
 - Security events logged to SIEM?
 - Retention period meets policy requirements?
 - Alerting configured for critical events?
 
 **Incident Response**
+
 - Security incident response plan documented?
 - System owner identified for incident notification?
 
@@ -471,6 +477,7 @@ Security review is not optional. For any solution handling regulated data, inter
     The fastest path through security review is to engage the security architecture team early — before you have finalized your design. A 30-minute conversation with a security architect at the start of design will prevent weeks of rework after a security review surfaces issues.
 
 Pre-socialization steps:
+
 1. Schedule a **preliminary security conversation** during the design phase
 2. Share your **data flow diagram** and data classification before formal submission
 3. Ask: "What are your biggest concerns with this type of solution?" and address them in your design
@@ -494,7 +501,7 @@ The Responsible AI Board (sometimes called AI Ethics Committee, AI Governance Co
 ### Membership
 
 | Role | Perspective |
-|---|---|
+| --- | --- |
 | Chief AI Officer / Head of AI | AI strategy and capability |
 | Chief Data Officer | Data governance and ethics |
 | Chief Risk Officer | Enterprise risk alignment |
@@ -508,7 +515,7 @@ The Responsible AI Board (sometimes called AI Ethics Committee, AI Governance Co
 The board reviews AI use cases, not just AI systems. Every significant AI use case should pass through this governance:
 
 | Review Area | Questions Asked |
-|---|---|
+| --- | --- |
 | **Use case legitimacy** | Is there a legitimate business purpose? Is AI the appropriate tool? |
 | **Model selection** | Is the model appropriate for the task? Are there less intrusive alternatives? |
 | **Data usage** | What training data was used? Was consent obtained? Is it representative? |
@@ -524,11 +531,13 @@ The board reviews AI use cases, not just AI systems. Every significant AI use ca
 Before presenting an AI use case to the Responsible AI Board, work through this checklist:
 
 **Use Case Definition**
+
 - [ ] Clear articulation of the AI's purpose and the decision it supports or makes
 - [ ] Defined scope of automated decisions vs. human-reviewed decisions
 - [ ] Documentation of the business case for AI vs. non-AI approaches
 
 **Data Governance**
+
 - [ ] Training data sources documented and approved
 - [ ] Data lineage traceable for all training inputs
 - [ ] Consent or legitimate interest basis documented for personal data
@@ -536,6 +545,7 @@ Before presenting an AI use case to the Responsible AI Board, work through this 
 - [ ] Data retention and deletion policy for training data defined
 
 **Model Governance**
+
 - [ ] Model card completed (model purpose, architecture, training approach, known limitations)
 - [ ] Performance metrics defined and measured across demographic groups
 - [ ] Fairness metrics defined and measured (equal opportunity, demographic parity as appropriate)
@@ -543,18 +553,21 @@ Before presenting an AI use case to the Responsible AI Board, work through this 
 - [ ] Model versioning and reproducibility approach
 
 **Human Oversight**
+
 - [ ] Human-in-the-loop design documented for high-stakes decisions
 - [ ] Override mechanism designed and tested
 - [ ] Escalation path for edge cases and low-confidence predictions
 - [ ] Training for human reviewers completed
 
 **Monitoring and Governance**
+
 - [ ] Model performance monitoring implemented (accuracy, drift, bias metrics)
 - [ ] Incident response plan for model failures
 - [ ] Regular review cadence defined (quarterly model audits recommended)
 - [ ] Feedback loop from business outcomes to model team
 
 **Regulatory and Compliance**
+
 - [ ] Applicable AI regulations assessed (EU AI Act, NIST AI RMF, sector-specific rules)
 - [ ] High-risk classification assessment (EU AI Act Article 6 if applicable)
 - [ ] Regulatory disclosure obligations documented
@@ -571,7 +584,7 @@ The Executive Steering Committee (ESC) provides strategic oversight for a major 
 ### Membership
 
 | Role | Responsibility |
-|---|---|
+| --- | --- |
 | Executive Sponsor (CEO, COO, or Business Unit ELT) | Accountable for program outcomes |
 | CIO / CTO | Technology delivery |
 | CFO Representative | Financial oversight |
@@ -688,7 +701,7 @@ Enterprise Architects maintain the authoritative view of the technology portfoli
 Decision rights define who can do what. The RACI model — **R**esponsible, **A**ccountable, **C**onsulted, **I**nformed — is the standard tool.
 
 | Decision | EA | ARB | IC | Tech Council | Risk Cttee | ESC | CISO | RAI Board |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **Approve technology standards** | R | A | I | C | I | I | C | I |
 | **Approve architecture for major project** | R | A | I | C | C | I | C | C |
 | **Approve investment > $2M** | C | C | A | I | C | R | I | I |
@@ -818,6 +831,7 @@ Level 6 — Board notification / approval
 The single most effective governance strategy is to have relationships with the key decision-makers before you need their signature on anything.
 
 Practical steps:
+
 - **Attend ARB meetings as an observer** in your first 90 days. Understand what the board cares about.
 - **Have coffee with the CISO's architecture team** before your first security review. Understand their top concerns.
 - **Meet the CFO's Chief of Staff** before your first IC submission. Learn what the IC has rejected recently and why.
@@ -880,7 +894,7 @@ When a governance body raises an objection, resist the urge to defend immediatel
 The most common timing mistake is running governance processes in the wrong order:
 
 | Wrong Order | Why It Fails |
-|---|---|
+| --- | --- |
 | IC before ARB | IC will ask for ARB sign-off; you are sent back |
 | Security review after ARB | ARB wants security sign-off; you are deferred |
 | Vendor selected before ARB | ARB cannot approve; vendor is already contracted |
@@ -1020,6 +1034,7 @@ The team submits to the ARB. The submission includes:
 **ARB decision**: **Conditional Approval**
 
 Conditions:
+
 1. Data residency contractual amendment must be executed before go-live (evidence required)
 2. Penetration test must be completed before production launch
 3. API gateway rate limiting must be implemented on all 6 integration points
@@ -1038,6 +1053,7 @@ Conditions:
 With ARB conditional approval in hand (conditions tracked; most completed or in progress), the team submits to the IC.
 
 **Business case summary:**
+
 - Investment: $3.2M over 3 years
 - Benefits: $4.2M cost reduction + $600K in customer satisfaction improvements (NPS-linked revenue)
 - NPV (5 year): $2.1M
@@ -1184,29 +1200,34 @@ Receiving a conditional approval and then failing to track and close the conditi
 Use this checklist to assess your governance competency as an enterprise architect.
 
 ### Foundational Understanding
+
 - [ ] I can explain the difference between the ARB, IC, Technology Council, and Risk Committee to a non-technical business stakeholder
 - [ ] I know the dollar approval thresholds for my organization's governance bodies
 - [ ] I can describe the four ARB decision types and what each means for a project
 - [ ] I understand why governance sequence matters and can state the correct sequence for a major investment
 
 ### Preparation and Process
+
 - [ ] I can prepare a complete ARB submission from scratch using the checklist in this module
 - [ ] I can write a business case for an IC submission, including NPV, IRR, and sensitivity analysis
 - [ ] I can complete a Responsible AI checklist for an AI use case
 - [ ] I can write a technology risk submission for the Risk Committee
 
 ### Relationships and Navigation
+
 - [ ] I have a working relationship with the ARB chair and can have informal conversations about submissions in progress
 - [ ] I know the CISO's top 3 security concerns for my organization's current technology portfolio
 - [ ] I can name the members of the Investment Committee and understand each member's primary concerns
 - [ ] I have attended at least one ARB meeting as an observer and understand how decisions are actually made in that room
 
 ### Pre-Socialization
+
 - [ ] I habitually pre-socialize major submissions with key stakeholders before formal submission
 - [ ] I can identify likely objections to a proposal before submitting and address them proactively
 - [ ] I know how to handle a governance objection constructively without becoming defensive
 
 ### Advanced Practice
+
 - [ ] I can design a governance pathway for a complex AI investment, identifying every body that needs to review it and the correct sequence
 - [ ] I can identify at least 3 governance anti-patterns and explain how to address each
 - [ ] I can maintain a conditions register and drive ARB conditional approvals to closure

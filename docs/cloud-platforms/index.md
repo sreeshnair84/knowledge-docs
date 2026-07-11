@@ -14,4 +14,3 @@ covers_version: \"as of 2026-07-10\"
 # Cloud Platforms
 
 Documentation and resources for Cloud Platforms.
-

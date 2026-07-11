@@ -20,7 +20,7 @@ core_tension: "Legacy government systems blocking citizen service modernization"
 ## Overview
 
 | Attribute | Detail |
-|-----------|--------|
+| ----------- | -------- |
 | Organisation | National Tax Authority (NTA) |
 | Sector | Government / Public Administration |
 | Scale | 40 million tax returns per year, 18,000 staff |
@@ -51,7 +51,7 @@ The trigger for the engagement was a Treasury-commissioned review that found the
 The NTA's technology environment had accumulated over three decades of investment across three separate legislative domains, each with its own IT system and governance model.
 
 | System | Domain | Age | Records | Integration |
-|--------|--------|-----|---------|-------------|
+| -------- | -------- | ----- | --------- | ------------- |
 | ReturnLink | Income tax (individuals + corporates) | Built 1994, extended 2008 | 40M returns/year | No real-time API; batch extract nightly |
 | VATIS | Value-Added Tax (VAT/GST) | Built 2001 | 6.2M registered entities | Separate identity model; no TFN linkage |
 | CustomsNet | Customs and import/export duty | Built 1998 (acquired system) | 400K traders | Different taxpayer identifier (ABN subset) |
@@ -156,13 +156,13 @@ A non-negotiable architectural constraint: if a taxpayer was selected for audit 
 
 !!! example "Explainability Output Example"
     **AI Risk Selection Notice to Taxpayer:**
-    
+
     Your 2023-24 income tax return was selected for review. The primary factors considered were:
-    
+
     - Your reported business income was 34% lower than the average for businesses of similar size and industry (hospitality, metro area).
     - Your claimed vehicle deductions were in the top 2% of claimants in your income bracket.
     - A discrepancy was identified between your reported GST sales and income tax sales figures.
-    
+
     This notice is provided in accordance with your rights under the Taxpayer Charter.
 
 ### Sovereign Data Residency
@@ -176,7 +176,7 @@ All components — ML training infrastructure, model artefacts, data fabric, cas
 ### Government-Specific Constraints
 
 | Constraint | Impact | Mitigation |
-|-----------|--------|-----------|
+| ----------- | -------- | ----------- |
 | Public tender required (procurement regulations) | 8-month procurement cycle added to total timeline | Engaged market via pre-RFT briefing to accelerate vendor readiness |
 | Parliamentary ICT Committee review | Architecture decisions subject to committee scrutiny and potential disallowance | Prepared plain-language architecture briefing; briefed committee secretariat early |
 | Privacy Commissioner consultation | Formal privacy impact assessment required; Commissioner could block or impose conditions | Engaged Privacy Commissioner as a partner in the design process (see Lesson 2) |
@@ -186,7 +186,7 @@ All components — ML training infrastructure, model artefacts, data fabric, cas
 ### Risk Register (Top 5)
 
 | Risk | Likelihood | Impact | Owner |
-|------|-----------|--------|-------|
+| ------ | ----------- | -------- | ------- |
 | Data quality in VATIS insufficient for cross-system linkage | High | High | Data Architect |
 | Privacy Commissioner imposes restrictions on third-party data use | Medium | High | EA Lead |
 | Procurement extends beyond 8 months, compressing delivery | Medium | High | Programme Manager |
@@ -200,7 +200,7 @@ All components — ML training infrastructure, model artefacts, data fabric, cas
 ### Cost Summary
 
 | Category | Year 1 | Year 2 | Total |
-|----------|--------|--------|-------|
+| ---------- | -------- | -------- | ------- |
 | Data fabric and entity resolution | $1.2M | $0.4M | $1.6M |
 | ML platform (build + licences) | $1.8M | $0.6M | $2.4M |
 | Case management integration | $0.9M | $0.3M | $1.2M |
@@ -214,11 +214,11 @@ Note: procurement phase costs ($0.8M internal staff time) are excluded from the 
 ### Benefit Case
 
 | Benefit | Year 1 | Year 2 | Year 3 | Basis |
-|---------|--------|--------|--------|-------|
+| --------- | -------- | -------- | -------- | ------- |
 | Additional tax recovered (higher precision audits) | $180M | $190M | $200M | Audit precision 22% → 75%; average adjustment value $84,000 |
 | Audit staff efficiency (natural attrition, 600 → 0 net reduction over 3 years) | $8M | $22M | $32M | Average fully-loaded cost $53,000/FTE |
 | Taxpayer enquiry cost reduction (AI handles 40% of inbound calls) | $6M | $8M | $10M | Call centre handle cost reduction |
-| **Total Benefits** | **$194M** | **$220M** | **$242M** |  |
+| **Total Benefits** | **$194M** | **$220M** | **$242M** | |
 
 **Payback period:** < 30 days of Year 1 benefit recovery (investment recovered in first quarter of operation).
 
@@ -254,7 +254,7 @@ All three conditions were accommodated in the architecture and budget.
 The Government's Responsible AI Framework required formal self-assessment against six principles. The NTA's AI Risk Scoring Platform was classified as a **Tier 1 High-Risk** system (AI making decisions with significant impact on individuals' rights and obligations).
 
 | Principle | Assessment | Architecture Response |
-|-----------|-----------|----------------------|
+| ----------- | ----------- | ---------------------- |
 | Transparency | Partial (model is complex) | Explainability layer; audit selection notices |
 | Fairness | Requires testing | Demographic bias testing in UAT; ongoing monitoring |
 | Privacy | Conditions imposed | PIA conditions fully incorporated |
@@ -309,6 +309,7 @@ The NTA did not have internal ML engineering capability. The delivery model used
 The Community and Public Sector Union (CPSU) represented the 2,400 audit officers whose roles were impacted. The EA Lead and Change Lead briefed the CPSU before the investment case was published, not after.
 
 Key commitments made to the union:
+
 - No forced redundancies. Headcount reduction (from 2,400 to 1,800) would occur over 3 years through natural attrition only.
 - Audit officers would be retrained as "AI-assisted case reviewers" — human review remained mandatory for all audit decisions.
 - A joint NTA-CPSU working group would monitor implementation and flag concerns.
@@ -336,7 +337,7 @@ Overall project: delivered within budget; delivered 6 weeks late against origina
 ### Go-Live Metrics (Month 1 Post-Go-Live)
 
 | Metric | Target | Actual |
-|--------|--------|--------|
+| -------- | -------- | -------- |
 | System availability | 99.5% | 99.8% |
 | Risk score processing time (per return) | < 2 seconds | 0.8 seconds |
 | Explainability notice generation time | < 30 seconds | 18 seconds |
@@ -350,7 +351,7 @@ Overall project: delivered within budget; delivered 6 weeks late against origina
 ### Year 1 Outcomes (12 months post go-live)
 
 | KPI | Target | Actual | Variance |
-|-----|--------|--------|----------|
+| ----- | -------- | -------- | ---------- |
 | Audit precision rate | 75% | 67% | -8 pp |
 | Additional tax recovered | $180M | $156M | -$24M |
 | Audit case throughput (per officer) | +35% | +28% | -7 pp |
@@ -359,17 +360,18 @@ Overall project: delivered within budget; delivered 6 weeks late against origina
 
 !!! warning "Target Miss — Audit Precision"
     The audit precision target of 75% was not met. Achieved precision was 67%. The root cause was data quality in the VATIS (VAT) system, which provided unreliable cross-system linkage signals. The ML model's cross-system features (income vs. GST sales comparison) were the most predictive features in the model but had a 14% error rate due to VATIS data entry inconsistencies.
-    
+
     A VATIS data quality remediation programme was initiated in Year 2.
 
 !!! warning "Target Miss — Revenue Recovery"
     The $180M Year 1 revenue target was not met; $156M was recovered. The primary cause was the procurement delay compressing the effective implementation period — the system went live in Month 9 (of a 12-month Year 1 performance window), leaving only 3 months of full-year audit activity under the new system.
-    
+
     Year 2 trajectory is on track for $185M.
 
 ### Year 2 Projection
 
 With VATIS data quality remediated and a full year of operation, Year 2 projections are:
+
 - Audit precision: 73% (approaching the 75% target)
 - Revenue recovery: $185M
 - Staff efficiency: on track for 1,800 FTE by end of Year 3
@@ -393,6 +395,7 @@ The 8-month procurement cycle was not a surprise — it was the known regulatory
 Initial stakeholder analysis classified the Privacy Commissioner's office as a "gating risk" — an external party that could block or delay the programme. This framing led to a proposed strategy of submitting the Privacy Impact Assessment after the investment case was approved, to avoid early exposure.
 
 The EA Lead challenged this strategy. The alternative approach — engaging the Privacy Commissioner at architecture design stage — produced three benefits:
+
 1. The Commissioner's team identified a data minimisation improvement that strengthened the architecture.
 2. Conditions imposed were designed into the architecture rather than retrofitted.
 3. The Commissioner became a public supporter of the programme's responsible approach, which neutralised media criticism about AI in tax enforcement.
@@ -404,6 +407,7 @@ The EA Lead challenged this strategy. The alternative approach — engaging the 
 ### Lesson 3 — Union Communication Strategy
 
 The CPSU's initial position was active opposition. The approach that shifted them to conditional support was:
+
 - Engaging before the programme was public (no surprises)
 - Distinguishing between "roles changing" and "jobs lost" — the natural attrition pathway was credible
 - Creating genuine participation (the joint working group had real standing, not symbolic standing)
@@ -416,6 +420,7 @@ The CPSU's initial position was active opposition. The approach that shifted the
 ### Lesson 4 — Government Responsible AI Requirements Add Time and Cost
 
 The Responsible AI Framework compliance process was more demanding than initially estimated. A Tier 1 High-Risk classification required:
+
 - Independent AI ethics review ($120K cost, 10-week timeline)
 - Demographic bias testing across 12 protected attributes
 - Human-in-the-loop requirement that constrained automation ambitions
@@ -436,11 +441,11 @@ The VATIS data quality issue was identified during discovery but assessed as "me
 
 !!! success "Programme Outcome"
     Despite missing both the precision and revenue targets in Year 1, the NTA's AI Risk-Based Audit Intelligence programme delivered a fundamentally transformed compliance capability. Year 1 additional revenue of $156M against a $7.4M investment represents a 21:1 return. The programme established a reusable data fabric and ML platform infrastructure that the NTA is now extending to GST compliance and import duty risk scoring.
-    
+
     The architecture decisions that will be debated for years: the choice of on-shore deployment (limited cloud-native ML tooling) and the human-review mandate (capped automation potential) were both correct given the government regulatory context. They were not concessions to risk-aversion; they were requirements of the operating environment.
 
 | Programme Metric | Value |
-|-----------------|-------|
+| ----------------- | ------- |
 | Total investment | $7.4M |
 | Year 1 benefit | $156M |
 | Year 1 ROI | 21:1 |

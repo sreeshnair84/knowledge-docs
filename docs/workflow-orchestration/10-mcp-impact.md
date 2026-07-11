@@ -113,7 +113,7 @@ async def update_application_status(
     valid_statuses = {"pending", "under_review", "approved", "rejected", "cancelled"}
     if new_status not in valid_statuses:
         return {"error": f"Invalid status. Must be one of: {valid_statuses}"}
-    
+
     result = await loan_db.update_status(
         application_id=application_id,
         status=new_status,
@@ -150,14 +150,14 @@ async def run_agent_with_mcp(goal: str) -> str:
         command="python",
         args=["loan_mcp_server.py"],
     )
-    
+
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(read, write) as session:
             await session.initialize()
-            
+
             # Discover tools at runtime — no hardcoding needed
             tools_response = await session.list_tools()
-            
+
             # Convert MCP tool format to Anthropic tool format
             anthropic_tools = [
                 {
@@ -167,10 +167,10 @@ async def run_agent_with_mcp(goal: str) -> str:
                 }
                 for tool in tools_response.tools
             ]
-            
+
             client = anthropic.Anthropic()
             messages = [{"role": "user", "content": goal}]
-            
+
             while True:
                 response = client.messages.create(
                     model="claude-sonnet-4-6",
@@ -178,12 +178,12 @@ async def run_agent_with_mcp(goal: str) -> str:
                     tools=anthropic_tools,  # dynamically discovered
                     messages=messages,
                 )
-                
+
                 messages.append({"role": "assistant", "content": response.content})
-                
+
                 if response.stop_reason == "end_turn":
                     return next(b.text for b in response.content if hasattr(b, "text"))
-                
+
                 if response.stop_reason == "tool_use":
                     tool_results = []
                     for block in response.content:
@@ -209,21 +209,21 @@ MCP servers advertise capabilities during initialization. Clients choose which t
 ```python
 async with ClientSession(read, write) as session:
     init_result = await session.initialize()
-    
+
     # Server tells client what it supports
     server_capabilities = init_result.capabilities
-    
+
     supports_resources = server_capabilities.resources is not None
     supports_prompts = server_capabilities.prompts is not None
     supports_tools = server_capabilities.tools is not None
     supports_logging = server_capabilities.logging is not None
-    
+
     print(f"Server capabilities: resources={supports_resources}, tools={supports_tools}")
-    
+
     # Only call list_resources() if server supports it
     if supports_resources:
         resources = await session.list_resources()
-        
+
     if supports_tools:
         tools = await session.list_tools()
 ```
@@ -273,7 +273,7 @@ async def update_application_status(
     caller_scope = ctx.client_info.get("scope", "")
     if "loan:write" not in caller_scope:
         return {"error": "Insufficient permissions — loan:write scope required"}
-    
+
     # Log every write for audit
     await audit_log.record(
         action="update_application_status",
@@ -281,7 +281,7 @@ async def update_application_status(
         resource=application_id,
         change={"new_status": new_status, "reason": reason},
     )
-    
+
     return await loan_db.update_status(application_id, new_status, reason)
 ```
 
@@ -320,12 +320,12 @@ from mcp.client.stdio import stdio_client
 @activity.defn
 async def run_mcp_agent_activity(goal: str, mcp_server_url: str) -> str:
     server_params = StdioServerParameters(command="python", args=[mcp_server_url])
-    
+
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(read, write) as session:
             await session.initialize()
             tools = await session.list_tools()
-            
+
             # Run the full agent loop within this activity
             return await execute_agent_loop(goal, tools, session)
 ```
@@ -337,7 +337,7 @@ async def run_mcp_agent_activity(goal: str, mcp_server_url: str) -> str:
 ## Impact on Orchestration Patterns
 
 | Before MCP | With MCP |
-|---|---|
+| --- | --- |
 | Tools hardcoded in agent code | Tools discovered at runtime from servers |
 | Adding tools requires redeploy | Adding tools requires updating MCP server only |
 | Tool auth per-function | Tool auth centralized in MCP server |
@@ -379,7 +379,7 @@ async def get_tools_for_agent_role(role: str) -> list:
     """Aggregate tools from all MCP servers the agent role is authorized to use."""
     authorized_servers = ROLE_SERVER_MAP.get(role, [])
     all_tools = []
-    
+
     for server_name in authorized_servers:
         server_config = MCP_SERVER_REGISTRY[server_name]
         server_params = StdioServerParameters(
@@ -391,7 +391,7 @@ async def get_tools_for_agent_role(role: str) -> list:
                 await session.initialize()
                 tools = await session.list_tools()
                 all_tools.extend(tools.tools)
-    
+
     return all_tools
 ```
 
@@ -402,7 +402,7 @@ async def get_tools_for_agent_role(role: str) -> list:
 MCP adds latency at tool discovery time. Profile before and after introducing MCP:
 
 | Operation | Without MCP | With MCP (stdio) | With MCP (HTTP) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Tool discovery | 0ms (hardcoded) | 50–100ms (startup) | 20–50ms (cached) |
 | Tool invocation | Direct function call | +5–15ms IPC overhead | +10–30ms HTTP overhead |
 | Session initialization | N/A | 100–300ms (once per session) | 50–150ms |

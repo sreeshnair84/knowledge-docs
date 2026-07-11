@@ -86,7 +86,7 @@ The MCP Server is the implementation you build. It registers tools, resources, a
 ### Why MCP vs Custom Tool Use
 
 | Dimension | Custom Tool Use | MCP |
-|-----------|-----------------|-----|
+| ----------- | ----------------- | ----- |
 | Portability | Per-application wiring | Works with any MCP client |
 | Discovery | Static tool list | Dynamic at runtime via `tools/list` |
 | Ecosystem | Build everything | 19,831+ public servers (July 2026) |
@@ -159,7 +159,7 @@ MCP defines exactly three primitive types. Everything in the protocol is built f
 **Resource URI schemes** (by convention):
 
 | Scheme | Example | Typical Content |
-|--------|---------|-----------------|
+| -------- | --------- | ----------------- |
 | `file://` | `file:///var/data/schema.sql` | Local files |
 | `postgres://` | `postgres://db/table_name` | Database query results |
 | `https://` | `https://api.company.com/config` | REST API responses |
@@ -298,6 +298,7 @@ traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
 Best for Claude Code integrations where the MCP server runs as a local subprocess. The client launches the server process and communicates over stdin/stdout.
 
 **When to use stdio:**
+
 - Local development tools (file system access, local database connections)
 - Claude Code integrations installed per-developer
 - Processes that need OS-level access (Docker, local shells)
@@ -327,6 +328,7 @@ Best for Claude Code integrations where the MCP server runs as a local subproces
 Replaces Server-Sent Events (SSE) as the remote transport standard in the **2025-11-25 spec**. SSE is formally deprecated for new server implementations.
 
 **When to use Streamable HTTP:**
+
 - Remote servers serving multiple clients or teams
 - Enterprise deployments with centralised access control
 - Servers that require OAuth 2.1 authentication
@@ -350,7 +352,7 @@ Replaces Server-Sent Events (SSE) as the remote transport standard in the **2025
 **Transport comparison:**
 
 | Dimension | stdio | Streamable HTTP |
-|-----------|-------|-----------------|
+| ----------- | ------- | ----------------- |
 | Setup complexity | Minimal | Requires HTTP server |
 | Authentication | OS-level (process owner) | OAuth 2.1 / Bearer token |
 | Multi-client | No (single process) | Yes (horizontal scale) |
@@ -581,6 +583,7 @@ if __name__ == "__main__":
 ### @mcp.tool() — Decorator Details
 
 The `@mcp.tool()` decorator:
+
 - Infers the JSON schema from Python type annotations (including `Annotated` for descriptions)
 - Uses the docstring as the tool's `description` field — write it from the model's perspective
 - Returns value is automatically serialised to the `content` array
@@ -886,7 +889,7 @@ async def get_exchange_rates(base_currency: str) -> dict:
 `cacheScope` values:
 
 | Scope | Meaning |
-|-------|---------|
+| ------- | --------- |
 | `"session"` | Cache per client session only |
 | `"user"` | Cache per authenticated user |
 | `"global"` | Shared cache across all sessions and users |
@@ -1364,6 +1367,7 @@ async def quota_middleware(message, call_next):
 ### Scale
 
 As of July 2026:
+
 - **19,831+ MCP servers** indexed across public registries
 - **97 million monthly SDK downloads** (Python + TypeScript combined)
 - Supported by all major AI hosts: Claude, Claude Code, Cursor, Windsurf, Zed, Continue, and others
@@ -1371,7 +1375,7 @@ As of July 2026:
 ### Registries
 
 | Registry | URL | Focus |
-|----------|-----|-------|
+| ---------- | ----- | ------- |
 | Glama | glama.ai/mcp | Quality-reviewed, curated |
 | MCP.so | mcp.so | Community directory, searchable |
 | npm (`@modelcontextprotocol/`) | npmjs.com | Official TypeScript servers |
@@ -1382,7 +1386,7 @@ As of July 2026:
 **Development:**
 
 | Package | Install | Provides |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | `@modelcontextprotocol/server-github` | `npx` | GitHub repos, PRs, issues, actions |
 | `@modelcontextprotocol/server-filesystem` | `npx` | Local file system (configurable roots) |
 | `@modelcontextprotocol/server-git` | `npx` | Git operations |
@@ -1391,7 +1395,7 @@ As of July 2026:
 **Data & Databases:**
 
 | Package | Install | Provides |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | `@modelcontextprotocol/server-postgres` | `npx` | PostgreSQL queries |
 | `@modelcontextprotocol/server-sqlite` | `npx` | SQLite |
 | `mcp-server-bigquery` | `pip` | BigQuery |
@@ -1400,7 +1404,7 @@ As of July 2026:
 **Productivity:**
 
 | Package | Install | Provides |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | `@modelcontextprotocol/server-slack` | `npx` | Slack messages, channels, DMs |
 | `mcp-server-jira` | `pip` | Jira tickets, sprints |
 | `mcp-server-notion` | `pip` | Notion databases and pages |
@@ -1589,13 +1593,14 @@ def redact_secrets(text: str) -> str:
 ### Who Can Install MCP Servers
 
 | Context | Governance Model |
-|---------|-----------------|
+| --------- | ----------------- |
 | Individual developer (Claude Code personal) | Self-serve; user accepts responsibility |
 | Team (Claude Code Teams) | Team admin approves server additions |
 | Enterprise (Claude for Enterprise) | Central IT/Security allow-list; IdP group assignment |
 | CI/CD pipelines | Platform team controls; pinned server versions only |
 
 **Recommended enterprise approval process:**
+
 1. Developer or team proposes a new MCP server (GitHub PR to central config repo)
 2. Security review: validate the server's code, permissions requested, and data access scope
 3. IT admin adds to group allow-list in Okta/Entra ID assignment
@@ -1975,7 +1980,7 @@ async def run_tool_eval(agent: Agent) -> dict:
 **Latency benchmarks:**
 
 | Tool Type | Expected p50 | Expected p95 | Alert if |
-|-----------|-------------|-------------|---------|
+| ----------- | ------------- | ------------- | --------- |
 | Sync DB query | < 200ms | < 800ms | p95 > 2s |
 | External API call | < 500ms | < 2,000ms | p95 > 5s |
 | Vector search | < 300ms | < 1,000ms | p95 > 3s |
@@ -2010,7 +2015,7 @@ curl -X POST https://mcp.company.internal/mcp \
 **Common issues and fixes:**
 
 | Symptom | Likely Cause | Fix |
-|---------|-------------|-----|
+| --------- | ------------- | ----- |
 | Server not appearing in `/mcp` | `command` path not on PATH | Use absolute path in `mcpServers` config |
 | Tool calls failing silently | Server process crashing | Check `~/.claude/logs/mcp-*.log` |
 | Auth errors on remote server | Token expired or missing | Refresh token; check `Authorization` header in Inspector |

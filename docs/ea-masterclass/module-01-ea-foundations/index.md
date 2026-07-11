@@ -123,6 +123,7 @@ This era established the precedent that large-scale technology investment requir
 The Open Group Architecture Framework (TOGAF) was first published in 1995, derived from the U.S. Department of Defense's Technical Architecture Framework for Information Management (TAFIM). TOGAF has since become the most widely adopted enterprise architecture framework in the world, with over 100,000 certified practitioners globally.
 
 TOGAF provides:
+
 - A common vocabulary for enterprise architecture
 - A methodology for doing EA work (the Architecture Development Method, or ADM)
 - A content framework defining what artifacts EA produces
@@ -229,6 +230,7 @@ The key word in Gartner's definition is **change**. For Gartner, EA is not a doc
 The Open Group defines architecture as "the fundamental concepts or properties of a system in its environment, embodied in its elements, relationships, and in the principles of its design and evolution."
 
 Applied to enterprises, this definition emphasizes:
+
 - **Fundamental concepts**: the things that are durable and do not change with every technology trend
 - **Environment**: the organization exists in a business and technology context that shapes its architecture
 - **Relationships**: architecture is about how things relate, not just what they are
@@ -249,7 +251,7 @@ Enterprise Architecture is organized into domains — each covering a distinct l
 **Key deliverables:**
 
 | Deliverable | Description |
-|---|---|
+| --- | --- |
 | Business Capability Map | An inventory of what the business needs to do, organized hierarchically, independent of how it is done today |
 | Value Stream Map | The end-to-end sequence of activities that delivers value to a customer or stakeholder |
 | Operating Model | The blueprint for how the organization delivers value — which capabilities are standardized across the enterprise and which are localized to business units |
@@ -269,7 +271,7 @@ Enterprise Architecture is organized into domains — each covering a distinct l
 **Key deliverables:**
 
 | Deliverable | Description |
-|---|---|
+| --- | --- |
 | Application Portfolio Catalog | An inventory of all applications: name, business capability supported, technology stack, vendor, lifecycle status |
 | Application Landscape Diagram | A visual representation of application relationships and dependencies |
 | Integration Architecture | How applications exchange data — APIs, messaging, events, file transfers |
@@ -287,7 +289,7 @@ Enterprise Architecture is organized into domains — each covering a distinct l
 **Key deliverables:**
 
 | Deliverable | Description |
-|---|---|
+| --- | --- |
 | Conceptual Data Model | A high-level representation of the key data entities and their relationships, in business terms |
 | Data Governance Framework | Policies, roles, and processes for managing data as an enterprise asset |
 | Master Data Management (MDM) Architecture | How key shared data entities (customer, product, location) are defined and maintained |
@@ -305,7 +307,7 @@ Enterprise Architecture is organized into domains — each covering a distinct l
 **Key deliverables:**
 
 | Deliverable | Description |
-|---|---|
+| --- | --- |
 | Technology Standards Catalog | The approved and preferred technology products and versions for each technology category |
 | Infrastructure Architecture | Compute, network, storage, and cloud platform architecture |
 | Platform Architecture | Shared platforms (integration, DevOps, security, observability) and their reference architectures |
@@ -323,7 +325,7 @@ Enterprise Architecture is organized into domains — each covering a distinct l
 **Key deliverables:**
 
 | Deliverable | Description |
-|---|---|
+| --- | --- |
 | Security Reference Architecture | Standard security patterns for the enterprise: identity, access, network segmentation, encryption |
 | Threat Model | A structured analysis of threats to a system or capability, used to drive security requirements |
 | Security Standards and Controls | The specific security requirements that all systems must meet |
@@ -341,7 +343,7 @@ Enterprise Architecture is organized into domains — each covering a distinct l
 **Key deliverables:**
 
 | Deliverable | Description |
-|---|---|
+| --- | --- |
 | AI Platform Reference Architecture | The standard platform for developing, deploying, and operating AI models at enterprise scale |
 | AI Model Catalog | An inventory of AI models in production: purpose, version, accuracy metrics, owner, review date |
 | MLOps / LLMOps Architecture | The pipelines for training, evaluating, deploying, monitoring, and retraining models |
@@ -448,7 +450,7 @@ An AI investment proposal that ignores the operating model will propose the wron
 These three terms are used imprecisely in most organizations. Here is the precise meaning of each:
 
 | Term | Scope | Audience | Lifecycle | Example |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Enterprise Architecture | The whole organization's current and target state | CIO, CTO, executives | Evolves over 3–5 year cycles | "The enterprise's data architecture moves to a lakehouse model on Azure" |
 | Reference Architecture | A pattern or template for a class of solutions, reusable across the enterprise | Architects, engineering leads | Evolves as patterns mature | "The reference architecture for AI inference services at enterprise scale" |
 | Solution Architecture | The architecture of a specific system or initiative | Project team, ARB | Valid for the life of the project | "The architecture of the Fraud Detection AI system for the retail banking division" |
@@ -599,7 +601,7 @@ What does NOT typically go to an ARB:
 **Typical ARB membership:**
 
 | Role | Responsibility |
-|---|---|
+| --- | --- |
 | Enterprise Architect (Chair) | Leads the review; owns the architecture standards |
 | Domain Architects | Subject matter experts for business, application, data, security, and infrastructure domains |
 | Chief Information Security Officer (CISO) or delegate | Security review |
@@ -694,7 +696,7 @@ Timing: Before implementation       Timing: Before architecture review
 Understanding what causes ARB rejections is as important as understanding what causes approvals. The most common reasons for rejection or conditional approval:
 
 | Rejection Reason | Root Cause | Prevention |
-|---|---|---|
+| --- | --- | --- |
 | Does not align with architecture principles | Architect not aware of or ignored the principles | Review principles catalog before designing |
 | Introduces security risk without adequate controls | Security was not considered during design | Engage CISO early; use threat modeling |
 | Duplicates an existing capability | Did not check the application portfolio | Review the portfolio catalog first |
@@ -732,6 +734,7 @@ EA interacts with every major technology investment: reviewing proposals before 
 From a pure architecture discipline perspective, EA is about managing complexity at scale. Individual systems have architects. EA manages the relationships between systems.
 
 The key deliverables are:
+
 - Current state architecture (what exists today, in all its complexity)
 - Target state architecture (where we want to be in 3–5 years)
 - Gap analysis (the delta between current and target)
@@ -755,6 +758,7 @@ The CIO's question is not "do we have good architecture?" but "does our architec
 McKinsey, BCG, Accenture, and Deloitte all have enterprise architecture practices. Their approach to EA differs from internal EA functions in one key way: they are hired to accelerate transformation, not to maintain standards.
 
 Consultants use EA frameworks as diagnostic tools:
+
 - Where is the current architecture creating business risk or constraint?
 - Where does the target architecture need to be to support the three-year strategy?
 - What is the investment required to close the gap, and what is the ROI?

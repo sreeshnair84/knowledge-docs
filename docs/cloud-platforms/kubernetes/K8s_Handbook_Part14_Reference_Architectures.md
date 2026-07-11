@@ -9,25 +9,25 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY** 
+# **ENTERPRISE KUBERNETES MASTERY**
 
-AI Platform Engineering Handbook 
+AI Platform Engineering Handbook
 
-PART XIV ENTERPRISE REFERENCE ARCHITECTURES 
+PART XIV ENTERPRISE REFERENCE ARCHITECTURES
 
-Financial Services, Healthcare, Government, AI Platforms, RAG, Agentic AI 
+Financial Services, Healthcare, Government, AI Platforms, RAG, Agentic AI
 
-Volume 14 of 16 Architecture Series | Edition 2025-2026 
+Volume 14 of 16 Architecture Series | Edition 2025-2026
 
-**ENTERPRISE KUBERNETES MASTERY — AI PLATFORM ENGINEERING HANDBOOK** 
+**ENTERPRISE KUBERNETES MASTERY — AI PLATFORM ENGINEERING HANDBOOK**
 
-PART XIV  REFERENCE ARCHITECTURES 
+PART XIV  REFERENCE ARCHITECTURES
 
-#### **CHAPTER 1** 
+#### **CHAPTER 1**
 
-## **Enterprise Kubernetes Platform -- Full Stack Architecture** 
+## **Enterprise Kubernetes Platform -- Full Stack Architecture**
 
-The following reference architecture represents a production-grade enterprise Kubernetes platform meeting security, compliance, observability, and operational requirements for regulated industries. Each layer is independently selectable and all components are CNCF-graduated or widely adopted in production. 
+The following reference architecture represents a production-grade enterprise Kubernetes platform meeting security, compliance, observability, and operational requirements for regulated industries. Each layer is independently selectable and all components are CNCF-graduated or widely adopted in production.
 
 ```
 LAYER 8: AI PLATFORM GPU Operator (NVIDIA) + MIG Manager + DCGM Exporter Volcano (gang
@@ -53,7 +53,7 @@ pools + GPU node pools (A100/H100) Private VPC, no public node IPs Cloud IAM + H
 management
 ```
 
-### **Financial Services Reference Architecture** 
+### **Financial Services Reference Architecture**
 
 |**Requirement**|**Control**|**Implementation**|
 |---|---|---|
@@ -63,13 +63,13 @@ management
 |Privileged access|MFA + break-glass<br>audit|OIDC + Okta MFA; Vault lease-based admin; every action audited|
 |Vulnerability SLA|CRITICAL: 24h; HIGH:<br>7d|Trivy CI gate + Harbor daily scan + Kyverno image age policy|
 
-Confidential 
+Confidential
 
-Enterprise Kubernetes Mastery Handbook 
+Enterprise Kubernetes Mastery Handbook
 
-**ENTERPRISE KUBERNETES MASTERY — AI PLATFORM ENGINEERING HANDBOOK** 
+**ENTERPRISE KUBERNETES MASTERY — AI PLATFORM ENGINEERING HANDBOOK**
 
-PART XIV  REFERENCE ARCHITECTURES 
+PART XIV  REFERENCE ARCHITECTURES
 
 |**Requirement**|**Control**|**Implementation**|
 |---|---|---|
@@ -78,21 +78,21 @@ PART XIV  REFERENCE ARCHITECTURES
 |AI model audit (EU AI<br>Act)|Article 12: complete<br>audit trail|OTel GenAI traces -> Tempo; MLflow lineage; immutable S3 audit<br>log|
 |PCI DSS v4|Cardholder data<br>isolation|Dedicated namespace + cluster; NetworkPolicy + Vault for card data|
 
-### **Healthcare Reference Architecture** 
+### **Healthcare Reference Architecture**
 
-Healthcare Kubernetes deployments must satisfy HIPAA, HITRUST, and increasingly FDA 21 CFR Part 11 for AI/ML medical devices. Key additions to the base platform: 
+Healthcare Kubernetes deployments must satisfy HIPAA, HITRUST, and increasingly FDA 21 CFR Part 11 for AI/ML medical devices. Key additions to the base platform:
 
-- **PHI isolation** : Dedicated namespace per patient data category. Kubernetes NetworkPolicy: no cross-namespace communication for PHI workloads. Encryption at rest with FIPS 140-2 validated modules. 
+- **PHI isolation** : Dedicated namespace per patient data category. Kubernetes NetworkPolicy: no cross-namespace communication for PHI workloads. Encryption at rest with FIPS 140-2 validated modules.
 
-- **De-identification pipeline** : AI-powered PII/PHI detection (Presidio) deployed as admission webhook: blocks any attempt to log raw PHI to non-compliant systems. All PHI hashed/tokenised before AI model processing. 
+- **De-identification pipeline** : AI-powered PII/PHI detection (Presidio) deployed as admission webhook: blocks any attempt to log raw PHI to non-compliant systems. All PHI hashed/tokenised before AI model processing.
 
-- **Audit trail** : Every access to PHI data logged with: user identity, timestamp, purpose (clinical/research/admin), data elements accessed. Immutable audit log in compliance-certified object storage. 
+- **Audit trail** : Every access to PHI data logged with: user identity, timestamp, purpose (clinical/research/admin), data elements accessed. Immutable audit log in compliance-certified object storage.
 
-- **Medical AI governance** : FDA 21 CFR Part 11: electronic records and signatures for AI model validation, versioning, and deployment approval. MLflow + custom approval workflow CRD for pre-market submission artifacts. 
+- **Medical AI governance** : FDA 21 CFR Part 11: electronic records and signatures for AI model validation, versioning, and deployment approval. MLflow + custom approval workflow CRD for pre-market submission artifacts.
 
-### **Enterprise Agentic AI Platform Reference Architecture** 
+### **Enterprise Agentic AI Platform Reference Architecture**
 
-Full-stack enterprise agentic AI platform (derived from Part XII): 
+Full-stack enterprise agentic AI platform (derived from Part XII):
 
 ```
 REQUEST ENTRY API Gateway (Kong) -> WebSocket / REST endpoint Authentication: OIDC JWT
@@ -112,6 +112,6 @@ tool call, agent step TTFT, TPS, queue depth, cost/session in Prometheus Agent d
 Loki (compliance retention 1 year) Grafana AI platform dashboard
 ```
 
-Confidential 
+Confidential
 
 Enterprise Kubernetes Mastery Handbook

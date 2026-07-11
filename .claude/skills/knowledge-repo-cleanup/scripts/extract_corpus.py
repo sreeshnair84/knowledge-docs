@@ -14,11 +14,11 @@ extracted files are skipped.
 Requires: pypdf, python-docx, python-pptx (pip install --break-system-packages
 pypdf python-docx python-pptx)
 """
-import os
-import sys
-import json
-import time
+
 import argparse
+import json
+import os
+import time
 
 try:
     from pypdf import PdfReader
@@ -122,7 +122,7 @@ def main():
         out = {}
 
     t0 = time.time()
-    for path in files[args.start:args.end]:
+    for path in files[args.start : args.end]:
         if path in out:
             continue
         low = path.lower()

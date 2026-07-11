@@ -31,7 +31,7 @@ Two architectural stances define production practice:
 **Stance 2 — The harness is where product quality lives.** Production experience from Claude Code, Devin, Manus, and OpenHands shows teams running the *same frontier model* with different harnesses see order-of-magnitude differences in task completion. Context management, tool ergonomics, and recovery behavior dominate model choice. Anthropic's multi-agent research system work reached the same conclusion from the prompt side: agent-tool interfaces are as critical as human-computer interfaces, and fixing a flawed tool description cut task completion times by ~40%.
 
 | Guarantee class | Enforcement point | Examples |
-|-----------------|------------------|----------|
+| ----------------- | ------------------ | ---------- |
 | **Invariant (100%)** | Harness, deterministic | AuthZ decisions, budget ceilings, audit trail, data residency, iteration caps |
 | **Quality (most of the time)** | Model + probabilistic checks | Tone, plan quality, relevance, summarization fidelity |
 
@@ -42,7 +42,7 @@ Two architectural stances define production practice:
 The canonical decomposition below is the reference component model. In small deployments several components collapse into one process; at enterprise scale each becomes an independently scaled, independently governed service.
 
 | Component | Responsibility | Production notes / failure characteristics |
-|-----------|---------------|--------------------------------------------|
+| ----------- | --------------- | -------------------------------------------- |
 | **Agent Runtime** | Sandboxed execution environment hosting the loop: process/microVM per session (AgentCore uses per-session microVM isolation; OpenHands/Claude Code use containers or local sandboxes) | Must be disposable and reproducible. Session-scoped compute isolation is the primary tenant boundary. Runtime crash must never lose committed state — state lives outside |
 | **Execution Loop** | The perceive→plan→act→observe cycle; enforces max-iterations, budgets, stop conditions | Loop-runaway (agent oscillation) is a top-3 production incident class; require hard iteration/token/wall-clock ceilings enforced outside model reasoning |
 | **Planner** | Decomposes goals into steps/DAGs; may be the same model, a distinct model, or a workflow engine | Separate plan *representation* from plan *execution* so plans are inspectable, diffable, approvable, and resumable (see [Memory & Planning](agent-memory-planning-architecture.md)) |
@@ -108,7 +108,7 @@ Trigger → Scheduler (admission + budget) → Queue → Runtime spawn
 Lifecycle guarantees to enforce at each stage:
 
 | Stage | Guarantee | Failure handling |
-|-------|-----------|-----------------|
+| ------- | ----------- | ----------------- |
 | **Trigger → Admission** | Pre-flight budget + capacity check passes before any compute is spent | Reject/queue with backpressure signal |
 | **Runtime spawn** | Fresh sandbox, short-lived workload identity, no standing credentials | Spawn failure = retry from queue; nothing to clean up |
 | **Context assembly** | Invariants (policy header, task goal, approvals) survive every compaction | Compaction checkpointed; raw transcript in evidence store |
@@ -127,7 +127,7 @@ Every arrow emits an OTel span; every policy decision and tool call lands in the
 Enumerate and defend these boundaries explicitly — they feed the threat model in [Security Architecture & Guardrails](agentic-ai-security-guardrails.md):
 
 | # | Boundary | Crossing controls |
-|---|----------|-------------------|
+| --- | ---------- | ------------------- |
 | **TB1** | Human ↔ Agent | AuthN (OIDC), intent capture, input safety screen, session binding |
 | **TB2** | Agent ↔ Model | AI gateway only; prompt provenance tags; response filtering |
 | **TB3** | Agent ↔ Tool/MCP | Tool gateway; per-call authZ; schema validation; sandbox; result injection-scan (data crossing *into* context is untrusted) |
@@ -155,7 +155,7 @@ Default guidance across Anthropic and OpenAI engineering material: **start singl
 ### 6.2 Pattern Comparison
 
 | Pattern | Mechanics | Advantages | Disadvantages | Latency | Scalability | Governance | Failure modes | Recovery | Enterprise fit |
-|---------|-----------|------------|---------------|---------|-------------|------------|---------------|----------|----------------|
+| --------- | ----------- | ------------ | --------------- | --------- | ------------- | ------------ | --------------- | ---------- | ---------------- |
 | **Supervisor** | One orchestrator model routes/delegates to workers; owns final answer | Simple mental model; single audit/decision point; easy HITL insertion | Supervisor is bottleneck & single point of misjudgment; context bloat at hub | +1 hop per delegation | Moderate (fan-out limited by supervisor context) | Strong — central choke point | Supervisor loop/misroute; worker result mis-integration | Restart from supervisor checkpoint | **Default enterprise pattern** |
 | **Manager–Worker** | Supervisor variant with homogeneous worker pool + queue | Elastic parallelism; simple retries per work item | Task must shard cleanly; result merge logic | Low per item | High (queue-driven) | Strong | Skew/straggler workers; merge conflicts | Re-queue failed shards | Batch/ETL-like agent workloads |
 | **Hierarchical** | Multi-level supervisors (org-chart of agents) | Scales scope; domain encapsulation; per-level policy | Latency & error compounding per level; blame diffusion | High (depth × hop) | High in scope | Good if each level logs | Mis-delegation cascades | Sub-tree restart via checkpoints | Large multi-domain platforms |
@@ -182,7 +182,7 @@ Default guidance across Anthropic and OpenAI engineering material: **start singl
 ### 6.4 Anti-Patterns Observed in Production
 
 | Anti-pattern | Shape | Fix |
-|--------------|-------|-----|
+| -------------- | ------- | ----- |
 | **The Committee** | N agents "discussing" with shared context — token burn with convergence to the loudest prompt | Actor pattern + independent critic |
 | **Supervisor-as-God** | Supervisor accumulates every worker transcript until context collapse | Pass summaries/artifacts, not transcripts (artifact-passing via shared object store is the Claude Code / Manus pattern) |
 | **Recursive delegation without depth caps** | Agent spawns sub-agent spawns sub-agent | Enforce max spawn depth and global task budget in the harness, not prompts |

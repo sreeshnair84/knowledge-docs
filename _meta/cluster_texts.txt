@@ -679,7 +679,7 @@ TOTAL
 $14.0M/yr
 $7.6M reduction
 $1.5M additional reduction
-$1.1M 
+$1.1M
 ... [TRUNCATED at 25000 of 50996 chars] ...
 
 
@@ -3958,7 +3958,7 @@ may be stale; Data
 Maturity Gate required
 before AI elaboration
 begins
-Data Maturity Gate: 5-check assessment 
+Data Maturity Gate: 5-check assessment
 ... [TRUNCATED at 25000 of 74913 chars] ...
 
 
@@ -4872,7 +4872,7 @@ architect who can close this gap — reliably, across all audiences — becomes 
 Five Communication Properties That Signal Principal Level
 1
 Precision without jargon
-You can describe an embedding model, a retrieval pipeline, or a multi-agent orchestration 
+You can describe an embedding model, a retrieval pipeline, or a multi-agent orchestration
 2
 Frame-first thinking
 You establish the decision context before the content. Stakeholders never feel that they a
@@ -4887,7 +4887,7 @@ Risk proportionality
 You calibrate the depth of risk discussion to the audience. Executives get the three risks
 5
 Consistent artifact production
-You produce the same quality of documentation — one-pagers, use case sheets, architecture 
+You produce the same quality of documentation — one-pagers, use case sheets, architecture
 How to Use This Guide
 This guide is structured as a practitioner's reference, not a linear read. The recommended approach for
 first-time readers is: complete the self-assessment rubric in Section 13 before reading anything else. This
@@ -5126,7 +5126,7 @@ Invisible assumptions
 The architect proceeds on unstated assumptions about data readiness, organisational change
 3
 Stakeholder disengagement
-When stakeholders sense that the architect is not genuinely curious about their context — 
+When stakeholders sense that the architect is not genuinely curious about their context —
 The Readiness Assessment Conversation
 The single most important listening tool for an AI architect is the readiness assessment — a structured
 diagnostic conversation that should precede every AI engagement. Its purpose is to surface the hidden
@@ -5398,5 +5398,3 @@ give the three-sentence rationale. Do
 not hedge excessively — executives
 rea
 ... [TRUNCATED at 25000 of 108834 chars] ...
-
-

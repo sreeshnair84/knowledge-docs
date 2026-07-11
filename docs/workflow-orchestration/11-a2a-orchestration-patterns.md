@@ -73,12 +73,12 @@ def supervisor(state: SupervisorState) -> SupervisorState:
         # Decompose the goal into subtasks
         subtasks = planner_llm.invoke(f"Decompose: {state['goal']}")
         return {"subtasks": subtasks}
-    
+
     if all(t["id"] in state["results"] for t in state["subtasks"]):
         # All done — aggregate
         answer = aggregator_llm.invoke(f"Synthesize: {state['results']}")
         return {"final_answer": answer}
-    
+
     # Delegate next pending subtask
     next_task = next(t for t in state["subtasks"] if t["id"] not in state["results"])
     return {"current_task": next_task}
@@ -119,7 +119,7 @@ class HandoffContext(TypedDict):
 async def research_agent(request: str) -> HandoffContext:
     """Does research, then hands off to writing agent."""
     findings = await run_research(request)
-    
+
     return HandoffContext(
         original_request=request,
         agent_a_output={"findings": findings, "sources": sources},
@@ -159,7 +159,7 @@ async def architect_agent(state: CollaborationState) -> CollaborationState:
     if not state["proposal"]:
         proposal = await llm.ainvoke("Design a payment gateway architecture")
         return {"proposal": proposal, "round": 1}
-    
+
     # Revise based on security agent's feedback
     if state["reviews"]:
         last_review = state["reviews"][-1]
@@ -203,7 +203,7 @@ import asyncio
 
 async def research_coordinator(question: str) -> str:
     """Fan out to specialized agents in parallel, then synthesize."""
-    
+
     # Fan-out: run all agents concurrently
     results = await asyncio.gather(
         academic_agent.run(question),      # searches academic papers
@@ -212,17 +212,17 @@ async def research_coordinator(question: str) -> str:
         competitor_agent.run(question),     # competitive landscape
         return_exceptions=True,             # don't fail if one agent errors
     )
-    
+
     # Fan-in: filter errors, aggregate successes
     valid_results = {
         name: result
         for name, result in zip(["academic", "industry", "regulatory", "competitor"], results)
         if not isinstance(result, Exception)
     }
-    
+
     if len(valid_results) < 2:
         raise RuntimeError("Insufficient agent results for synthesis")
-    
+
     return await synthesis_agent.run(question, context=valid_results)
 ```
 
@@ -247,16 +247,16 @@ class NegotiationState(TypedDict):
 
 async def resource_broker_agent(state: NegotiationState) -> NegotiationState:
     """Decides whether to accept, counter, or reject."""
-    
+
     if state["round"] > 5:
         return {"agreed": False}  # Negotiation failed, escalate
-    
+
     analysis = await llm.ainvoke(
         f"Resource: {state['resource']}\n"
         f"Current offer: {state['offer']}\n"
         "Should we accept, counter with X, or reject? Current capacity: 70%."
     )
-    
+
     if "ACCEPT" in analysis:
         return {"agreed": True}
     elif "COUNTER" in analysis:

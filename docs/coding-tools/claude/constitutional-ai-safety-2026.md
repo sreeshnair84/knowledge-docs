@@ -26,10 +26,12 @@ Constitutional AI (CAI) is Anthropic's training methodology that teaches Claude 
 The training process combines two mechanisms:
 
 **Step 1 — Supervised Learning from Human Feedback (SL-CAI):**
+
 - A human-written dataset covers helpful, harmless, and honest behaviours
 - Claude learns a base policy from this data
 
 **Step 2 — Reinforcement Learning from AI Feedback (RLAIF):**
+
 - Claude generates responses to potentially harmful prompts
 - A separate "critique" model evaluates each response against constitutional principles
 - The critique model asks: *"Which response is more harmful? Which is more honest? Which better supports human oversight?"*
@@ -41,7 +43,7 @@ The training process combines two mechanisms:
 ### 1.2 CAI vs Traditional Content Filtering
 
 | Approach | Traditional Filter | Constitutional AI |
-|----------|-------------------|------------------|
+| ---------- | ------------------- | ------------------ |
 | Mechanism | Pattern matching / classifier | Principled reasoning |
 | Novel inputs | Fails on unseen patterns | Handles by applying principles |
 | Explainability | Low — blocked by rule | High — can explain reasoning |
@@ -76,6 +78,7 @@ When values or instructions conflict, Claude follows this strict priority order.
 The highest priority tier focuses on maintaining human oversight and control during this critical period of AI development. The reasoning: AI training is imperfect. Claude may have subtly miscalibrated values without being aware of it. Supporting human ability to identify and correct such errors is therefore the most important thing Claude can do — even if Claude believes its own values are correct.
 
 **What this means in practice:**
+
 - Claude will not help undermine AI oversight mechanisms
 - Claude will not take actions designed to concentrate power inappropriately — even if instructed by Anthropic itself
 - Claude behaves consistently whether or not it believes it is being observed or tested
@@ -88,6 +91,7 @@ The highest priority tier focuses on maintaining human oversight and control dur
 Avoiding clearly unethical actions — harm to individuals, society, or the world. This tier takes precedence over Anthropic's own stated policies because policies are an imperfect approximation of ethics; if they conflict, ethics wins.
 
 **What this means in practice:**
+
 - Claude won't follow operator instructions that require deceiving users in ways that damage their interests
 - Claude will acknowledge being an AI if sincerely asked, regardless of persona instructions
 - Claude refuses to facilitate clearly harmful acts against users even under operator instruction
@@ -110,7 +114,7 @@ Being genuinely useful to operators and users. Helpfulness is not in tension wit
 These behaviors are fixed in Claude's training. No operator system prompt, user instruction, persuasive argument, or escalated trust level can override them.
 
 | Category | What Claude Will Never Do |
-|----------|--------------------------|
+| ---------- | -------------------------- |
 | CBRN weapons | Provide meaningful technical uplift for chemical, biological, radiological, or nuclear weapons capable of mass casualties |
 | CSAM | Generate any sexual content involving minors — no exceptions, no framing |
 | Critical infrastructure attacks | Help plan or execute attacks on power grids, water systems, financial systems, or safety-critical systems |
@@ -130,7 +134,7 @@ Softcoded behaviors are defaults that can be adjusted through system prompt inst
 ### 4.1 Default-On Behaviors (Operators Can Turn Off)
 
 | Default Behavior | Who Can Disable | Example Use Case |
-|-----------------|-----------------|-----------------|
+| ----------------- | ----------------- | ----------------- |
 | Safe messaging guidelines for suicide/self-harm | Operators | Mental health professional tools |
 | Safety caveats for dangerous activities | Operators | Safety research applications |
 | Balanced perspectives on controversial topics | Operators | Debate practice platforms |
@@ -140,7 +144,7 @@ Softcoded behaviors are defaults that can be adjusted through system prompt inst
 ### 4.2 Default-Off Behaviors (Operators Can Enable)
 
 | Non-Default Behavior | Who Can Enable | Example Use Case |
-|---------------------|----------------|-----------------|
+| --------------------- | ---------------- | ----------------- |
 | Explicit sexual content | Operators (adults-only platforms) | Adult content platforms with age verification |
 | Detailed information about controlled substances | Operators | Harm reduction platforms |
 | Clinical detail on prescription medications | Operators | Healthcare provider tools |
@@ -149,6 +153,7 @@ Softcoded behaviors are defaults that can be adjusted through system prompt inst
 ### 4.3 What Operators Cannot Grant Themselves
 
 Regardless of system prompt instructions, operators cannot:
+
 - Authorise Claude to actively harm users
 - Authorise Claude to deceive users in ways that damage their interests
 - Authorise Claude to deny being an AI when sincerely asked
@@ -160,7 +165,7 @@ Regardless of system prompt instructions, operators cannot:
 Users can adjust some behaviors within the scope operators permit:
 
 | User-Adjustable | Default | Example |
-|----------------|---------|---------|
+| ---------------- | --------- | --------- |
 | Disclaimers on persuasive essays | On | "I know this is one-sided — skip the disclaimer" |
 | Breaking character in roleplay | On | "Stay in character no matter what" |
 | Suggesting professional help | On | "Don't redirect me to therapy — just talk" |
@@ -211,7 +216,7 @@ Treat their requests with the same latitude you would afford an operator.
 ### 5.3 Conflict Resolution Rules
 
 | Conflict Type | Resolution |
-|--------------|-----------|
+| -------------- | ----------- |
 | User requests something operator restricts | Follow operator restriction; tell user you can't help |
 | Operator instruction would harm users | Refuse — safety > operator trust |
 | Operator instruction violates ethics | Refuse |
@@ -221,6 +226,7 @@ Treat their requests with the same latitude you would afford an operator.
 ### 5.4 Baseline User Protections (Always Applied)
 
 Regardless of operator instructions, Claude always:
+
 - Tells users what it cannot help with (so they can seek help elsewhere)
 - Acknowledges being an AI when sincerely asked
 - Provides emergency safety information for life-threatening situations
@@ -236,7 +242,7 @@ The Responsible Scaling Policy defines how Anthropic evaluates AI capability lev
 ### 6.1 AI Safety Levels (ASL)
 
 | Level | Description | Key Triggers | Safeguards Required |
-|-------|-------------|-------------|---------------------|
+| ------- | ------------- | ------------- | --------------------- |
 | ASL-1 | Models clearly below human expert level in dangerous domains | N/A | Standard practices |
 | ASL-2 | Models with early dangerous capability indicators; require uplift studies | Showing meaningful CBRN research capability | Basic red-teaming; deployment restrictions |
 | ASL-3 | Models that could provide meaningful uplift for CBRN weapons or enable cyberattacks at nation-state scale | Clear uplift on biological agents; autonomous replication capability | Strict deployment controls; enhanced red-teaming; government notification |
@@ -245,6 +251,7 @@ The Responsible Scaling Policy defines how Anthropic evaluates AI capability lev
 ### 6.2 RSP Implications for Developers
 
 Current Claude models (as of mid-2026) operate under ASL-2 safeguards. The RSP explains:
+
 - Why Claude refuses certain chemistry or biology questions even with professional framing
 - Why certain cybersecurity capabilities are restricted to verified security researchers
 - Why "research purposes" is not sufficient justification for crossing capability thresholds
@@ -284,7 +291,7 @@ It might seem that a highly ethical AI should act autonomously on its values. Th
 Claude is trained to uphold six specific honesty properties:
 
 | Property | Definition | Implication |
-|----------|-----------|-------------|
+| ---------- | ----------- | ------------- |
 | **Truthful** | Only sincerely asserts things it believes to be true | Won't state falsehoods, even to please the user |
 | **Calibrated** | Expresses appropriate uncertainty; acknowledges what it doesn't know | Won't project false confidence; will say "I'm not certain" |
 | **Transparent** | Doesn't pursue hidden agendas or lie about itself | Won't hide its reasoning (though can decline to share it) |
@@ -688,7 +695,7 @@ def write_audit_record(record: AuditRecord, store):
 ### 12.1 When HITL Is Required vs Optional
 
 | Action Category | Recommended Tier | Rationale |
-|----------------|-----------------|-----------|
+| ---------------- | ----------------- | ----------- |
 | Irreversible data deletion | HITL (approve before act) | Cannot be undone |
 | Financial transactions > threshold | HITL | Reversible, but costly to reverse |
 | Production deployment | HITL or HOTL | High blast radius |
@@ -910,7 +917,7 @@ class FairnessEvaluator:
 Structure red-team exercises across these attack categories:
 
 | Category | Test Examples | Frequency |
-|----------|--------------|-----------|
+| ---------- | -------------- | ----------- |
 | Prompt injection | Instructions embedded in documents, tool outputs | Every deployment |
 | Jailbreak resistance | Roleplay, hypothetical framing, multi-turn manipulation | Monthly |
 | Information extraction | System prompt extraction, training data extraction | Every deployment |
@@ -1130,7 +1137,7 @@ class SafetyEvaluationHarness:
 The EU AI Act designates certain AI applications as "high-risk" (Annex III), requiring:
 
 | Requirement | Implementation for Claude-based Systems |
-|------------|----------------------------------------|
+| ------------ | ---------------------------------------- |
 | Risk management system | Document risk assessment before deployment; maintain risk register |
 | Data governance | Validate training data relevance; document prompts and few-shot examples |
 | Technical documentation | Document system architecture, model used, intended purpose |
@@ -1140,6 +1147,7 @@ The EU AI Act designates certain AI applications as "high-risk" (Annex III), req
 | Logging and auditability | Maintain audit logs; ensure logs are tamper-proof |
 
 High-risk categories most likely to apply to Claude deployments:
+
 - Employment / HR screening tools
 - Access to education
 - Credit and insurance scoring
@@ -1149,7 +1157,7 @@ High-risk categories most likely to apply to Claude deployments:
 ### 15.2 NIST AI RMF Mapping
 
 | NIST Function | Actions for Claude Deployment |
-|--------------|------------------------------|
+| -------------- | ------------------------------ |
 | GOVERN | Establish AI governance policy; define accountability; train teams |
 | MAP | Identify AI risks; categorise use cases by risk level |
 | MEASURE | Run red-team exercises; collect bias metrics; track safety KPIs |
@@ -1158,12 +1166,14 @@ High-risk categories most likely to apply to Claude deployments:
 ### 15.3 ISO 42001 AI Management System
 
 ISO 42001 requires an AI management system covering:
+
 - AI policy and objectives
 - Risk and opportunity assessment
 - Performance evaluation
 - Continual improvement
 
 For Claude-based systems:
+
 - Maintain a model register (model version, intended use, risk rating)
 - Document operator-user trust levels and principal hierarchy decisions
 - Run quarterly fairness and safety evaluations; document findings
@@ -1172,7 +1182,7 @@ For Claude-based systems:
 ### 15.4 Banking and Financial Services
 
 | Requirement | Source | Implementation |
-|------------|--------|----------------|
+| ------------ | -------- | ---------------- |
 | SR 11-7 Model Risk Management | Federal Reserve | Model validation; independent review; ongoing monitoring |
 | EU Banking Authority AI guidance | EBA | Risk-based categorisation; explainability requirements |
 | FFIEC AI guidance | FFIEC | Consumer protection; fair lending (ECOA/FHA analysis) |
@@ -1232,18 +1242,21 @@ def classify_content_pipeline(text: str) -> dict:
 ### 17.1 When Safety Failures Occur
 
 **Immediate (0-1 hour):**
+
 1. Preserve evidence: capture the full conversation, request/response, metadata
 2. Determine scope: is this a one-off edge case or a systematic failure?
 3. Containment: if systematic, consider rate-limiting or temporarily suspending the affected endpoint
 4. Notify: alert security team and legal if PHI, PII, or regulated content was involved
 
 **Short-term (1-24 hours):**
+
 1. Root cause analysis: which layer failed? Was it a prompt injection, a model error, or a guardrail gap?
 2. Impact assessment: how many users were affected? What data was exposed?
 3. Fix: update guardrails, system prompt, or input validation as appropriate
 4. Re-test: run full red-team suite on the fix before re-enabling
 
 **Follow-up (1-7 days):**
+
 1. Incident retrospective: document what happened, why, and how it was fixed
 2. Update eval dataset: add the failure case to your evaluation suite
 3. Regulatory notification: assess whether the incident triggers breach notification (GDPR 72-hour rule, HIPAA)
@@ -1349,6 +1362,7 @@ class IncidentResponseSystem:
 ### 20.1 Model Card Review
 
 Before deploying a new model version:
+
 - Review Anthropic's published model card for the new version
 - Document changes in capability relevant to your use case
 - Re-run safety evaluation suite; check for regression
@@ -1360,7 +1374,7 @@ Before deploying a new model version:
 Maintain the following for regulated deployments:
 
 | Document | Description | Update Frequency |
-|----------|-------------|-----------------|
+| ---------- | ------------- | ----------------- |
 | AI Impact Assessment | Risk evaluation for the specific use case | Before launch; major changes |
 | Model Register | Model version, intended use, risk rating | On every model update |
 | Bias Evaluation Report | Fairness metrics across demographic groups | Quarterly |

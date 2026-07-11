@@ -8,7 +8,7 @@ source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "transcripts"]
 doc_type: workshop-transcript
-session_type: 
+session_type:
 related_pages: []
 ---
 
@@ -137,7 +137,7 @@ In every transcript, the EA practitioner's goal is not to win the argument — i
 ## Navigation Table
 
 | Transcript | Setting | EA Practitioner | Key Stakeholders | Primary Skill |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | [Bank Discovery Workshop](bank-discovery-workshop.md) | Day 1 morning session, 9am–12pm | Sarah Chen (EA Lead), Tom Park (Architecture Specialist) | Marcus Webb (CIO), Priya Nair (CDO), James Okafor (Head of Commercial Banking) | Open discovery, assumption deferral, political tension management |
 | [Healthcare Steering Committee](healthcare-executive-presentation.md) | Month 6 executive update, 45 min | Rachel Osei (EA Lead) | Dr. Patricia Lim (CEO), David Torres (CFO), Dr. Ahmad Karimi (CMO), Lena Park (CIO) | Proactive bad-news disclosure, financial challenge, corrective action |
 | [Manufacturing ARB](manufacturing-arb-review.md) | Architecture Review Board session | David Osei (EA) | Kim Santos (Chief Architect / ARB Chair), Robert Feng (CISO), Elena Vasquez (OT Security), Marcus Hill (Cloud Platform) | ARB defence, hostile objection handling, conditional approval |

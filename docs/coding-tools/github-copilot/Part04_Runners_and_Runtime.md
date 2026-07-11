@@ -9,59 +9,59 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **GitHub Actions Runners & Runtime** 
+# **GitHub Actions Runners & Runtime**
 
-**How jobs flow from YAML to execution — runner lifecycle, ARC, scaling, and internals** 
+**How jobs flow from YAML to execution — runner lifecycle, ARC, scaling, and internals**
 
-##### **TOPICS COVERED** 
+##### **TOPICS COVERED**
 
-- **›  Hosted Runner Architecture** 
+- **›  Hosted Runner Architecture**
 
-- **›  Runner Lifecycle & Registration** 
+- **›  Runner Lifecycle & Registration**
 
-- **›  Job Scheduling Algorithm** 
+- **›  Job Scheduling Algorithm**
 
-- **›  Ephemeral Runners** 
+- **›  Ephemeral Runners**
 
-- **›  ARC (Actions Runner Controller)** 
+- **›  ARC (Actions Runner Controller)**
 
-- **›  Autoscaling Patterns** 
+- **›  Autoscaling Patterns**
 
-- **›  YAML → Execution Flow** 
+- **›  YAML → Execution Flow**
 
-- **›  Dependency Graph** 
+- **›  Dependency Graph**
 
-- **›  Artifact & Cache Infrastructure** 
+- **›  Artifact & Cache Infrastructure**
 
-- **›  Self-Hosted Runner Architecture** 
+- **›  Self-Hosted Runner Architecture**
 
-- **›  Authentication & Heartbeat** 
+- **›  Authentication & Heartbeat**
 
-- **›  Runner Labels & Groups** 
+- **›  Runner Labels & Groups**
 
-- **›  Container Runners** 
+- **›  Container Runners**
 
-- **›  Kubernetes Runners** 
+- **›  Kubernetes Runners**
 
-- **›  High Availability** 
+- **›  High Availability**
 
-- **›  Workflow Parser & Job Planner** 
+- **›  Workflow Parser & Job Planner**
 
-- **›  Secrets Injection** 
+- **›  Secrets Injection**
 
-**›  Cost Optimization** 
+**›  Cost Optimization**
 
-**GitHub & Modern CI/CD** 
+**GitHub & Modern CI/CD**
 
-**Principal Platform Engineer Reference Series  •  Enterprise Edition** 
+**Principal Platform Engineer Reference Series  •  Enterprise Edition**
 
-## **PART 4 — GitHub Actions Runner Deep Dive** 
+## **PART 4 — GitHub Actions Runner Deep Dive**
 
-## **4.1 Hosted Runners** 
+## **4.1 Hosted Runners**
 
-GitHub-hosted runners are ephemeral VMs provisioned on demand by GitHub's infrastructure. Each job receives a fresh VM that is terminated after the job completes. This guarantees isolation but means no persistent state between jobs. 
+GitHub-hosted runners are ephemeral VMs provisioned on demand by GitHub's infrastructure. Each job receives a fresh VM that is terminated after the job completes. This guarantees isolation but means no persistent state between jobs.
 
-### **Runner Specifications** 
+### **Runner Specifications**
 
 |**Runner Label**|**OS**|**CPU**|**RAM**|**Storage**|**Notes**|
 |---|---|---|---|---|---|
@@ -72,11 +72,11 @@ GitHub-hosted runners are ephemeral VMs provisioned on demand by GitHub's infras
 |ubuntu-latest-16-cores|Ubuntu 24.04|16 vCPU|64 GB|150 GB SSD|Larger runner; paid|
 |ubuntu-latest-64-cores|Ubuntu 24.04|64 vCPU|256 GB|2 TB SSD|Larger runner; paid|
 
-I _macOS runners are billed at 10x the Linux rate due to Apple hardware licensing restrictions. Always evaluate whether macOS is truly required — many build/test tasks work on Linux with cross-compilation._ 
+I *macOS runners are billed at 10x the Linux rate due to Apple hardware licensing restrictions. Always evaluate whether macOS is truly required — many build/test tasks work on Linux with cross-compilation.*
 
-### **Hosted Runner Software** 
+### **Hosted Runner Software**
 
-GitHub-hosted runners come pre-installed with hundreds of tools. The full list is maintained in the runner-images repository at github.com/actions/runner-images. This includes: Docker, Node.js (multiple versions), Python (multiple versions), Java (Temurin), .NET SDK, Go, Ruby, AWS CLI, Azure CLI, Google Cloud SDK, kubectl, Helm, Terraform, Packer, and many more. 
+GitHub-hosted runners come pre-installed with hundreds of tools. The full list is maintained in the runner-images repository at github.com/actions/runner-images. This includes: Docker, Node.js (multiple versions), Python (multiple versions), Java (Temurin), .NET SDK, Go, Ruby, AWS CLI, Azure CLI, Google Cloud SDK, kubectl, Helm, Terraform, Packer, and many more.
 
 ```
 # See exactly what's installed on a runner:
@@ -92,13 +92,13 @@ GitHub-hosted runners come pre-installed with hundreds of tools. The full list i
     echo "=== Full list ===" && dpkg -l | grep -E "^ii" | wc -l
 ```
 
-## **4.2 Self-Hosted Runner Architecture** 
+## **4.2 Self-Hosted Runner Architecture**
 
-Self-hosted runners run on infrastructure you control (bare metal, VMs, Kubernetes, or containers). They communicate outbound to GitHub's API over HTTPS/443 — no inbound firewall rules required. 
+Self-hosted runners run on infrastructure you control (bare metal, VMs, Kubernetes, or containers). They communicate outbound to GitHub's API over HTTPS/443 — no inbound firewall rules required.
 
-### **Runner Registration Flow** 
+### **Runner Registration Flow**
 
-**Page 2** 
+**Page 2**
 
 ```
 # 1. Generate a registration token (expires in 1 hour):
@@ -108,9 +108,9 @@ Self-hosted runners run on infrastructure you control (bare metal, VMs, Kubernet
 curl -L -X POST \
 ```
 
-- `-H "Authorization: Bearer $GITHUB_TOKEN" \` 
+- `-H "Authorization: Bearer $GITHUB_TOKEN" \`
 
-- `-H "Accept: application/vnd.github+json" \` 
+- `-H "Accept: application/vnd.github+json" \`
 
 ```
   https://api.github.com/repos/ORG/REPO/actions/runners/registration-token
@@ -148,33 +148,33 @@ sudo ./svc.sh install
 sudo ./svc.sh start
 ```
 
-### **Runner Communication Protocol** 
+### **Runner Communication Protocol**
 
-The runner uses a long-polling protocol over HTTPS. It is NOT a persistent WebSocket — it polls the Actions service at intervals. 
+The runner uses a long-polling protocol over HTTPS. It is NOT a persistent WebSocket — it polls the Actions service at intervals.
 
-`# Runner` → `GitHub polling loop:` 
+`# Runner` → `GitHub polling loop:`
 
-`1. POST /runner/session` → `Get session token (JWT)` 
+`1. POST /runner/session` → `Get session token (JWT)`
 
-`2. GET  /runner/message?sessionId=... (30s long poll)` 
+`2. GET  /runner/message?sessionId=... (30s long poll)`
 
-- → `If job available: returns JobMessage with credentials` 
+- → `If job available: returns JobMessage with credentials`
 
-- → `If timeout: repeat` 
+- → `If timeout: repeat`
 
-`3. POST /runner/session (renew credentials)` 
+`3. POST /runner/session (renew credentials)`
 
-`4. Execute job steps` 
+`4. Execute job steps`
 
-`5. Stream logs via WebSocket to log service` 
+`5. Stream logs via WebSocket to log service`
 
-`6. POST /runner/complete` → `Report job result` 
+`6. POST /runner/complete` → `Report job result`
 
-I _The runner's outbound HTTPS communication means it works through corporate proxies. Configure_ 
+I *The runner's outbound HTTPS communication means it works through corporate proxies. Configure*
 
-_HTTPS_PROXY, HTTP_PROXY, and NO_PROXY environment variables in the runner service environment._ 
+*HTTPS_PROXY, HTTP_PROXY, and NO_PROXY environment variables in the runner service environment.*
 
-### **Security: Runner Isolation** 
+### **Security: Runner Isolation**
 
 |**Isolation level**|**Mechanism**|**Security**|**Performance**|
 |---|---|---|---|
@@ -184,17 +184,17 @@ _HTTPS_PROXY, HTTP_PROXY, and NO_PROXY environment variables in the runner servi
 |ARC container|Kubernetes pod per job|Good (namespace i|solation)<br>~5-15s startup|
 |ARC VM (KubeVirt)|VM per job on K8s|Excellent|~30s startup|
 
-I _NEVER use persistent self-hosted runners for untrusted code (public repos or external PRs). Malicious PR code can read GITHUB_TOKEN, access previous job artifacts, or access mounted credentials. Always use ephemeral runners._ 
+I *NEVER use persistent self-hosted runners for untrusted code (public repos or external PRs). Malicious PR code can read GITHUB_TOKEN, access previous job artifacts, or access mounted credentials. Always use ephemeral runners.*
 
-## **4.3 ARC — Actions Runner Controller** 
+## **4.3 ARC — Actions Runner Controller**
 
-ARC is a Kubernetes operator that manages the lifecycle of self-hosted GitHub Actions runners on Kubernetes. It replaces the need for custom scripts to register/deregister runners and provides auto-scaling based on the Actions 
+ARC is a Kubernetes operator that manages the lifecycle of self-hosted GitHub Actions runners on Kubernetes. It replaces the need for custom scripts to register/deregister runners and provides auto-scaling based on the Actions
 
-**Page 3** 
+**Page 3**
 
-job queue. 
+job queue.
 
-### **ARC Architecture** 
+### **ARC Architecture**
 
 ```
 # ARC components:
@@ -279,9 +279,9 @@ spec:
         - myorg/frontend
 ```
 
-**Page 4** 
+**Page 4**
 
-### **ARC Runner Modes** 
+### **ARC Runner Modes**
 
 |**Mode**|**How it works**|**Docker support**|**Best for**|
 |---|---|---|---|
@@ -289,11 +289,11 @@ spec:
 |DinD mode|Docker-in-Docker in runner container|Full Docker daemon|Flexibility, Docker builds|
 |VM mode (KubeVirt)|Actual VMs scheduled by K8s|Full Docker|Maximum isolation|
 
-## **4.4 Artifact and Cache Infrastructure** 
+## **4.4 Artifact and Cache Infrastructure**
 
-### **Artifacts** 
+### **Artifacts**
 
-Actions artifacts are files uploaded during a workflow run and stored on GitHub's infrastructure for a configurable retention period (default 90 days, minimum 1 day). 
+Actions artifacts are files uploaded during a workflow run and stored on GitHub's infrastructure for a configurable retention period (default 90 days, minimum 1 day).
 
 ```
 # Upload artifacts:
@@ -320,9 +320,9 @@ Actions artifacts are files uploaded during a workflow run and stored on GitHub'
     merge-multiple: true
 ```
 
-### **Caching** 
+### **Caching**
 
-The actions/cache action stores and retrieves build caches using content-addressable keys. Cache entries are stored at the organization level and shared across repositories in the same org. 
+The actions/cache action stores and retrieves build caches using content-addressable keys. Cache entries are stored at the organization level and shared across repositories in the same org.
 
 ```
 # Cache with restore keys fallback chain:
@@ -344,19 +344,19 @@ The actions/cache action stores and retrieves build caches using content-address
 # Cache eviction:
 ```
 
-**Page 5** 
+**Page 5**
 
-- `# - Entries expire after 7 days of non-access` 
+- `# - Entries expire after 7 days of non-access`
 
-- `# - Max cache size: 10 GB per repository` 
+- `# - Max cache size: 10 GB per repository`
 
-- `# - When limit is reached, oldest entries are evicted first` 
+- `# - When limit is reached, oldest entries are evicted first`
 
-- `# - Cross-repo sharing within org requires same cache key` 
+- `# - Cross-repo sharing within org requires same cache key`
 
-- `# Advanced: save cache even on failure:` 
+- `# Advanced: save cache even on failure:`
 
-- `uses: actions/cache/save@v4` 
+- `uses: actions/cache/save@v4`
 
 ```
   if: always()
@@ -365,7 +365,7 @@ The actions/cache action stores and retrieves build caches using content-address
     key: ${{ steps.cache.outputs.cache-primary-key }}
 ```
 
-### **Cache Strategy Patterns** 
+### **Cache Strategy Patterns**
 
 |**Language**|**Paths to cache**|**Key strategy**|
 |---|---|---|
@@ -378,11 +378,11 @@ The actions/cache action stores and retrieves build caches using content-address
 |Rust (Cargo)|~/.cargo + target/|OS + hashFiles('Cargo.lock')|
 |Docker layers|via BuildKit gha exporter|Automatic via docker/build-push-action|
 
-## **4.5 Cost Optimization** 
+## **4.5 Cost Optimization**
 
-### **Runner Minute Billing** 
+### **Runner Minute Billing**
 
-GitHub Actions is billed per minute of runner usage. Free tier: 2,000 min/month (personal), 3,000 min/month (Team), unlimited (Enterprise). Paid rates: 
+GitHub Actions is billed per minute of runner usage. Free tier: 2,000 min/month (personal), 3,000 min/month (Team), unlimited (Enterprise). Paid rates:
 
 |**Runner type**|**Rate**|**Multiplier vs Linux**|
 |---|---|---|
@@ -394,25 +394,25 @@ GitHub Actions is billed per minute of runner usage. Free tier: 2,000 min/month 
 |Linux 16-core|$0.064/min|8x|
 |Linux 64-core|$0.256/min|32x|
 
-### **Cost Reduction Strategies** 
+### **Cost Reduction Strategies**
 
-- **Path filtering** : Use paths: and paths-ignore: to skip workflows when only docs change 
+- **Path filtering** : Use paths: and paths-ignore: to skip workflows when only docs change
 
-- **Concurrency cancel** : Cancel in-progress runs on PR pushes — saves minutes on superseded commits 
+- **Concurrency cancel** : Cancel in-progress runs on PR pushes — saves minutes on superseded commits
 
-**Page 6** 
+**Page 6**
 
-- **Conditional jobs** : Use if: conditions to skip downstream jobs when upstream fails 
+- **Conditional jobs** : Use if: conditions to skip downstream jobs when upstream fails
 
-- **Cache aggressively** : A warm cache can reduce a 10-minute build to 2 minutes 
+- **Cache aggressively** : A warm cache can reduce a 10-minute build to 2 minutes
 
-- **Self-hosted runners** : For high-volume orgs, self-hosted on ARM (Graviton) or spot instances is 5-10x cheaper 
+- **Self-hosted runners** : For high-volume orgs, self-hosted on ARM (Graviton) or spot instances is 5-10x cheaper
 
-- **Merge queue** : Test only merged combinations rather than each PR independently 
+- **Merge queue** : Test only merged combinations rather than each PR independently
 
-- **Larger runners for faster builds** : A 16-core runner at 4x cost that finishes in 1/4 the time is cost-neutral but 
+- **Larger runners for faster builds** : A 16-core runner at 4x cost that finishes in 1/4 the time is cost-neutral but
 
-- faster 
+- faster
 
 ```
 # Cost-efficient workflow pattern:
@@ -443,33 +443,33 @@ jobs:
     runs-on: ubuntu-latest-16-cores  # Larger runner for speed
 ```
 
-**Page 7** 
+**Page 7**
 
-## **PART 5 — GitHub Actions Runtime** 
+## **PART 5 — GitHub Actions Runtime**
 
-## **5.1 YAML to Execution: The Complete Flow** 
+## **5.1 YAML to Execution: The Complete Flow**
 
-Understanding the internal execution flow helps diagnose issues and optimize workflow performance. Here is the complete pipeline: 
+Understanding the internal execution flow helps diagnose issues and optimize workflow performance. Here is the complete pipeline:
 
-`TRIGGER EVENT` I M `GitHub Actions Service 1. Parse workflow YAML` II `Validate syntax, resolve reusable workflows 2. Evaluate 'on:' conditions` II `Match event, filters (branches, paths, tags) 3. Plan jobs` II `Build dependency graph from 'needs:'` II `Evaluate 'if:' conditions on jobs 4. Assign jobs to runners` II `Match labels` → `runner group` → `available runner` II `Queue job if no runner available` I M `Runner (VM or container) 5. Runner picks up job message via long poll 6. Download job definition from GitHub 7. Create workspace directory ($GITHUB_WORKSPACE)` 
+`TRIGGER EVENT` I M `GitHub Actions Service 1. Parse workflow YAML` II `Validate syntax, resolve reusable workflows 2. Evaluate 'on:' conditions` II `Match event, filters (branches, paths, tags) 3. Plan jobs` II `Build dependency graph from 'needs:'` II `Evaluate 'if:' conditions on jobs 4. Assign jobs to runners` II `Match labels` → `runner group` → `available runner` II `Queue job if no runner available` I M `Runner (VM or container) 5. Runner picks up job message via long poll 6. Download job definition from GitHub 7. Create workspace directory ($GITHUB_WORKSPACE)`
 
-`8. Set up environment:` II `Inject GITHUB_TOKEN (scoped to job permissions)` II `Inject secrets (from org/repo/environment)` II `Set environment variables (env: context) 9. Execute steps sequentially:` II `For 'uses:'` → `Download action, execute` II `For 'run:'` → `Execute shell script in temp file` II `Stream logs to GitHub log service (WebSocket)` II `Capture outputs` → `$GITHUB_OUTPUT` II `Capture env mutations` → `$GITHUB_ENV` II `Capture path mutations` → `$GITHUB_PATH 10. Upload artifacts (if configured)` 
+`8. Set up environment:` II `Inject GITHUB_TOKEN (scoped to job permissions)` II `Inject secrets (from org/repo/environment)` II `Set environment variables (env: context) 9. Execute steps sequentially:` II `For 'uses:'` → `Download action, execute` II `For 'run:'` → `Execute shell script in temp file` II `Stream logs to GitHub log service (WebSocket)` II `Capture outputs` → `$GITHUB_OUTPUT` II `Capture env mutations` → `$GITHUB_ENV` II `Capture path mutations` → `$GITHUB_PATH 10. Upload artifacts (if configured)`
 
-`11. Post-steps (cleanup) in reverse order 12. Report job result to Actions service` I M `Actions Service` 
+`11. Post-steps (cleanup) in reverse order 12. Report job result to Actions service` I M `Actions Service`
 
-`13. Update job status` 
+`13. Update job status`
 
-`14. Trigger dependent jobs (needs: satisfied)` 
+`14. Trigger dependent jobs (needs: satisfied)`
 
-`15. Update deployment status (if environment used)` 
+`15. Update deployment status (if environment used)`
 
 ```
  16. Send notifications (if configured)
 ```
 
-### **GITHUB_TOKEN Scoping** 
+### **GITHUB_TOKEN Scoping**
 
-Each job receives a unique GITHUB_TOKEN with permissions scoped to that job's 'permissions:' block. The token is minted by GitHub's token service and automatically expires when the job ends. 
+Each job receives a unique GITHUB_TOKEN with permissions scoped to that job's 'permissions:' block. The token is minted by GitHub's token service and automatically expires when the job ends.
 
 ```
 # Token permissions (default depends on org settings):
@@ -487,7 +487,7 @@ permissions:
   statuses: write        # Update commit statuses
 ```
 
-**Page 8** 
+**Page 8**
 
 ```
 # Principle of least privilege:
@@ -500,19 +500,19 @@ permissions:
   packages: write
 ```
 
-### **Secrets Injection** 
+### **Secrets Injection**
 
-Secrets are injected into the runner environment by the Actions service, not stored on the runner host. They are: 
+Secrets are injected into the runner environment by the Actions service, not stored on the runner host. They are:
 
-- Encrypted at rest using GitHub's key management service 
+- Encrypted at rest using GitHub's key management service
 
-- Transmitted to the runner over a TLS-encrypted channel 
+- Transmitted to the runner over a TLS-encrypted channel
 
-- Masked in logs — any output matching the secret value is replaced with *** 
+- Masked in logs — any output matching the secret value is replaced with ***
 
-- Available only to jobs that match the environment's protection rules 
+- Available only to jobs that match the environment's protection rules
 
-- Scoped to the requesting repository (not leaked to forked repos) 
+- Scoped to the requesting repository (not leaked to forked repos)
 
 ```
 # Secret masking — GitHub automatically masks secrets in logs.
@@ -522,7 +522,7 @@ Secrets are injected into the runner environment by the Actions service, not sto
 # But watch for these masking bypass patterns:
 ```
 
-- `name: WRONG - logs base64-encoded secret run: echo "$SECRET" | base64  # Masked value, different encoding = leaked!` 
+- `name: WRONG - logs base64-encoded secret run: echo "$SECRET" | base64  # Masked value, different encoding = leaked!`
 
 ```
 - name: RIGHT - add masks explicitly for derived values
@@ -534,25 +534,25 @@ Secrets are injected into the runner environment by the Actions service, not sto
     SECRET: ${{ secrets.API_KEY }}
 ```
 
-## **5.2 Log Streaming Architecture** 
+## **5.2 Log Streaming Architecture**
 
-Actions logs are streamed in real-time from the runner to GitHub's log infrastructure via a WebSocket connection. Logs are: 
+Actions logs are streamed in real-time from the runner to GitHub's log infrastructure via a WebSocket connection. Logs are:
 
-- Chunked into numbered, ordered packets 
+- Chunked into numbered, ordered packets
 
-- Compressed with gzip before transmission 
+- Compressed with gzip before transmission
 
-- Stored in Azure Blob Storage 
+- Stored in Azure Blob Storage
 
-- Retained for 90 days by default (configurable 1-400 days) 
+- Retained for 90 days by default (configurable 1-400 days)
 
-- Searchable via the GitHub web UI and available via API 
+- Searchable via the GitHub web UI and available via API
 
 ```
 # Structured log output using workflow commands:
 ```
 
-- `name: Structured logging demo run: |` 
+- `name: Structured logging demo run: |`
 
 ```
     # Create a named log group (collapsible in UI):
@@ -586,31 +586,31 @@ Actions logs are streamed in real-time from the runner to GitHub's log infrastru
     echo "::error file=src/auth.py,line=17::Missing input validation"
 ```
 
-**Page 9** 
+**Page 9**
 
 ```
     # Fail a step without exiting shell:
     echo "::error::Validation failed" && exit 1
 ```
 
-**Page 10** 
+**Page 10**
 
-## **Interview Questions — Runners & Runtime** 
+## **Interview Questions — Runners & Runtime**
 
-#### **Q: How does a self-hosted runner communicate with GitHub? What ports need to be open?** 
+#### **Q: How does a self-hosted runner communicate with GitHub? What ports need to be open?**
 
-A: The runner communicates outbound over HTTPS (port 443) using a long-polling protocol. No inbound ports are required. The runner polls GitHub's Actions service API for job messages, then streams logs back via WebSocket (also port 443). Only outbound 443 to github.com and *.actions.githubusercontent.com is needed. 
+A: The runner communicates outbound over HTTPS (port 443) using a long-polling protocol. No inbound ports are required. The runner polls GitHub's Actions service API for job messages, then streams logs back via WebSocket (also port 443). Only outbound 443 to github.com and *.actions.githubusercontent.com is needed.
 
-#### **Q: What is the difference between an artifact and a cache in GitHub Actions?** 
+#### **Q: What is the difference between an artifact and a cache in GitHub Actions?**
 
-A: Artifacts are output files from a workflow run (build binaries, test reports, logs) kept for a configurable retention period and available for download by users. Caches are dependency or build caches shared between runs of the same workflow to speed up builds. Caches expire after 7 days of non-access; artifacts after their retention period. Both are stored on GitHub infrastructure. 
+A: Artifacts are output files from a workflow run (build binaries, test reports, logs) kept for a configurable retention period and available for download by users. Caches are dependency or build caches shared between runs of the same workflow to speed up builds. Caches expire after 7 days of non-access; artifacts after their retention period. Both are stored on GitHub infrastructure.
 
-#### **Q: Why should ephemeral runners be used for self-hosted runners with public repositories?** 
+#### **Q: Why should ephemeral runners be used for self-hosted runners with public repositories?**
 
-A: Persistent runners maintain state between jobs. A malicious PR can write secrets to disk, modify scripts in PATH, or leave backdoors that get picked up by subsequent legitimate jobs. Ephemeral runners start fresh for each job (a clean VM or container), eliminating this cross-job contamination risk. 
+A: Persistent runners maintain state between jobs. A malicious PR can write secrets to disk, modify scripts in PATH, or leave backdoors that get picked up by subsequent legitimate jobs. Ephemeral runners start fresh for each job (a clean VM or container), eliminating this cross-job contamination risk.
 
-#### **Q: Explain how ARC (Actions Runner Controller) auto-scales runners.** 
+#### **Q: Explain how ARC (Actions Runner Controller) auto-scales runners.**
 
-A: ARC's HorizontalRunnerAutoscaler watches the GitHub Actions queue via the API (for org-level runners) or webhooks. When queued jobs exceed available runners, it scales up by creating new runner pods. When the queue drains, it scales down with a configurable cooldown period. The minimum scale-to-zero is supported for cost efficiency. 
+A: ARC's HorizontalRunnerAutoscaler watches the GitHub Actions queue via the API (for org-level runners) or webhooks. When queued jobs exceed available runners, it scales up by creating new runner pods. When the queue drains, it scales down with a configurable cooldown period. The minimum scale-to-zero is supported for cost efficiency.
 
 **Page 11**

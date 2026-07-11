@@ -23,71 +23,85 @@ Architectural decision-making, governance, strategy, and **production operations
 ## Guides in This Section
 
 ### 🎓 **Foundations**
+
 Zero-to-mastery guide for architects new to enterprise AI. Covers the full landscape: model selection, build-vs-buy, integration patterns, token economics, security, and observability.
 
 **→ [Read: Foundations](enterprise-ai-architect-foundations.md)**
 
 ### 📊 **Architecture Patterns**
+
 Canonical reference for 15 enterprise AI patterns — RAG, agentic RAG, multi-agent orchestration, AI gateway, guardrail pipeline, LLM-as-judge evaluation harness, and more.
 
 **→ [Read: Architecture Patterns](enterprise-ai-architecture-patterns.md)**
 
 ### ✅ **Governance & Compliance**
+
 Regulatory landscape (EU AI Act, NIST AI RMF, ISO 42001, GDPR, HIPAA, SR 11-7), RAI framework, operating model, bias testing, stress testing, and vendor assessment.
 
 **→ [Read: Governance & Compliance](enterprise-ai-governance-compliance.md)**
 
 ### 🏆 **Skills Assessment & CCA-F**
+
 Competency model, self-assessment checklist, learning paths, 20+ EA-level scenario questions, and 30-point architecture review checklist. Includes CCA-F certification alignment.
 
 **→ [Read: Skills Assessment](enterprise-ai-skills-assessment.md)**
 
 ### 🔒 **Agentic AI Security & Identity**
+
 OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10), SPIFFE/SPIRE agent identity stack, IETF AIMS, bounded autonomy decision-rights framework, rogue agent defenses, and a regulated-enterprise reference architecture.
 
 **→ [Read: Security & Identity](agentic-ai-security-identity.md)**
 
 ### 🔄 **Agent Interoperability & Orchestration**
+
 MCP + A2A two-layer protocol stack, Agent Cards, enterprise agent registries, multi-agent governance, agentic payments (AP2/x402), OTel GenAI observability, and the orchestrator-vs-mesh decision guide.
 
 **→ [Read: Interoperability & Orchestration](agent-interoperability-orchestration.md)**
 
 ### 📝 **Machine-Readable EA**
+
 EA's shift from static docs to runtime agent context: policy-as-code (OPA/Cedar), EA repository via MCP, request-level governance, SLM-first as an EA standard, sovereignty drivers, and the migration roadmap.
 
 **→ [Read: Machine-Readable EA](machine-readable-ea.md)**
 
 ### 🛡️ **Security Architecture & Guardrails**
+
 18-threat catalog with prevent/detect/mitigate/recover controls, the 14-layer guardrail map (deterministic + probabilistic), and how Google, Microsoft, AWS, Salesforce, JPMorgan, and top consultancies implement production-grade agentic AI security.
 
 **→ [Read: Security Architecture & Guardrails](agentic-ai-security-guardrails.md)**
 
 ### 📈 **Reliability, Observability & Governance Lifecycle**
+
 End-to-end production lifecycle: 4 failure classes, 8 anti-patterns, graceful degradation ladder, OTel GenAI observability, 5 signal types, 5-dashboard set, 5-registry governance spine, and how Google, Microsoft, AWS, and McKinsey/Accenture/Deloitte run agentic AI at scale.
 
 **→ [Read: Reliability & Observability](agentic-ai-reliability-observability-governance.md)**
 
 ### 🤖 **AI Harness Architecture & Orchestration**
+
 The deterministic shell around the model: 24-component runtime catalog, 8-plane logical architecture, end-to-end task lifecycle, trust boundaries TB1–TB8, 14 orchestration patterns compared, and how AWS/Azure/Google/Anthropic/Temporal implement the harness in production.
 
 **→ [Read: AI Harness & Orchestration](ai-harness-architecture-orchestration.md)**
 
 ### ↔️ **MCP & A2A Protocol Deep Dive**
+
 The 2026-07-28 MCP revision (stateless core, Extensions, Tasks, MCP Apps), registry-of-record and trust tiers, MCP-specific attack surfaces, A2A v1.x Signed Agent Cards and federation, the MCP-vs-A2A decision table, and the 6-stage enterprise protocol adoption lifecycle.
 
 **→ [Read: MCP & A2A Deep Dive](mcp-a2a-protocol-deep-dive.md)**
 
 ### 🧠 **Agent Memory & Planning Architecture**
+
 7-type memory taxonomy with store mapping, the extract-consolidate-retrieve pipeline (Mem0/Zep/Letta/AgentCore compared), end-to-end memory lifecycle with GDPR erasure cascade, memory security, and plans as versioned first-class artifacts with governance gates.
 
 **→ [Read: Memory & Planning Architecture](agent-memory-planning-architecture.md)**
 
 ### 🌐 **Communication, Identity & AI Gateway**
+
 Agent communication mechanism catalog with delivery semantics (idempotency keys, sagas, pivot points), the cryptographic identity chain and delegation gap, the RBAC→ABAC→ReBAC→capability composite authorization model, and the AI gateway responsibility matrix.
 
 **→ [Read: Communication, Identity & Gateway](agent-communication-identity-gateway.md)**
 
 ### 🏙️ **Reference Architectures & Checklists**
+
 Architecture deltas for 10 industry domains (banking, healthcare, insurance, retail, manufacturing…), the platform-engineering operating model, the July 2026 framework comparison (AgentCore vs ADK vs LangGraph vs SK vs Claude Code…), maturity model L1–L5, review checklists, and the 4-quarter migration roadmap.
 
 **→ [Read: Reference Architectures](enterprise-agent-reference-architectures.md)**
@@ -97,7 +111,7 @@ Architecture deltas for 10 industry domains (banking, healthcare, insurance, ret
 ## Key Resources in Other Sections
 
 | Topic | Location |
-|-------|----------|
+| ------- | ---------- |
 | MCP primitives, building MCP servers, enterprise provisioning | [MCP Deep Guide](../../coding-tools/claude/mcp-deep-guide.md) |
 | Claude on AWS Bedrock, Vertex AI, Microsoft Foundry (formerly Azure AI Foundry) | [Enterprise Deployment](../../coding-tools/claude/claude-enterprise-2026.md) |
 | Claude Agent SDK — multi-agent code, durable state, observability | [Agent SDK Production](../../coding-tools/claude/claude-agent-sdk-production.md) |
@@ -135,7 +149,7 @@ Architecture deltas for 10 industry domains (banking, healthcare, insurance, ret
 ## At a Glance: Model Landscape (2026)
 
 | Model | Pricing (in/out per MTok) | Best for |
-|-------|--------------------------|----------|
+| ------- | -------------------------- | ---------- |
 | Claude Fable 5 | $10 / $50 | Complex reasoning, multi-step agents, high-stakes decisions |
 | Claude Sonnet 5 | $2 / $10 (intro through Aug 31, 2026; $3 / $15 from Sept 1, 2026) | Balanced capability/cost, most enterprise workloads |
 | Claude Opus 4.8 | $5 / $25 (Fast mode $10 / $50, research preview) | Extended thinking, research, adversarial robustness |

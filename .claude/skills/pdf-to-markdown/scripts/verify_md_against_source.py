@@ -13,6 +13,7 @@ Usage:
     python3 scripts/verify_md_against_source.py docs/path/file.md  # single file
     python3 scripts/verify_md_against_source.py --fail-only        # show only FAIL/WARN
 """
+
 import re
 import sys
 from pathlib import Path
@@ -57,12 +58,14 @@ def extract_md_body(md_path: Path) -> str:
 def pdf_word_count(pdf_path: Path) -> int | None:
     try:
         import pymupdf4llm  # type: ignore
+
         md = pymupdf4llm.to_markdown(str(pdf_path))
         return word_count(md)
     except ImportError:
         pass
     try:
         import fitz  # type: ignore
+
         doc = fitz.open(str(pdf_path))
         text = "\n".join(page.get_text() for page in doc)
         return word_count(text)
@@ -73,6 +76,7 @@ def pdf_word_count(pdf_path: Path) -> int | None:
 def docx_word_count(docx_path: Path) -> int | None:
     try:
         import docx as python_docx  # type: ignore
+
         doc = python_docx.Document(str(docx_path))
         text = "\n".join(p.text for p in doc.paragraphs)
         return word_count(text)

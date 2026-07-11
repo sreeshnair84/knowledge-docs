@@ -50,7 +50,7 @@ Tech companies and consultancies arrived at the same shape from opposite directi
 ## In this section
 
 | Page | What it covers |
-|---|---|
+| --- | --- |
 | [How Tech Companies Serve Knowledge](tech-companies.md) | Uber Michelangelo, LinkedIn DataHub & Economic Graph, Netflix Metacat, Airbnb Dataportal, Microsoft Graph/semantic index, Meta, Amazon — the internal platforms and the patterns they pioneered |
 | [Consulting Firm AI Platforms](consulting-firms.md) | McKinsey Lilli, BCG GENE & Deckster, Deloitte PairD, EY.ai/EYQ, KPMG KymChat, Accenture — what they built and the published lessons |
 | [Governance & Responsible AI](governance-rai.md) | The governance layer upstream of retrieval, runtime RAI enforcement, and the NIST AI RMF / ISO 42001 / EU AI Act standards stack |

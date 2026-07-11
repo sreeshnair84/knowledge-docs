@@ -47,7 +47,7 @@ Claude produces final response
 ### What Makes It Different from Claude.ai Chat?
 
 | Feature | Claude.ai Chat | Claude Code CLI |
-|---|---|---|
+| --- | --- | --- |
 | File system access | No | Yes (configurable scope) |
 | Shell command execution | No | Yes (with confirmation) |
 | MCP server integration | Limited | Full |
@@ -144,7 +144,7 @@ claude
 ### Key Interactive Patterns
 
 | Action | What to Do |
-|---|---|
+| --- | --- |
 | Accept a proposed change | Press `y` or `Enter` when prompted |
 | Reject a proposed change | Press `n` |
 | Interrupt the agent | Press `Ctrl+C` |
@@ -218,7 +218,7 @@ Always verify changes work before moving on:
 Claude Code reads `CLAUDE.md` files from multiple locations and merges them in order:
 
 | Location | Purpose | Scope |
-|---|---|---|
+| --- | --- | --- |
 | `~/.claude/CLAUDE.md` | User-level preferences, personal style | All projects |
 | Parent directories (walking up from CWD) | Monorepo / workspace-level instructions | All sub-projects |
 | `<project-root>/CLAUDE.md` | Project-specific conventions | Current project |
@@ -281,7 +281,7 @@ Brief description of what this project does and its tech stack.
 Slash commands are Claude Code's built-in interactive commands. All verified commands as of 2026:
 
 | Command | Purpose |
-|---|---|
+| --- | --- |
 | `/help` | Show all available commands and their descriptions |
 | `/clear` | Clear the current conversation context |
 | `/compact` | Summarize and compress the conversation to reduce token usage |
@@ -321,6 +321,7 @@ Claude Code maintains persistent memory across sessions via the **MEMORY.md** fi
 ```
 
 Claude Code opens your `MEMORY.md` in your configured editor. You can:
+
 - Add facts you want Claude to remember across sessions
 - Remove outdated information
 - Structure preferences in any Markdown format
@@ -366,7 +367,7 @@ Hooks are shell commands that Claude Code executes automatically at defined life
 ### Hook Types
 
 | Hook Type | When It Fires | Common Uses |
-|---|---|---|
+| --- | --- | --- |
 | `PreToolUse` | Before Claude calls any tool | Block dangerous commands, log intent, request confirmation |
 | `PostToolUse` | After Claude calls any tool | Log results, trigger side effects, update state |
 | `Stop` | When the agent session ends | Post-session reports, cleanup, notifications |
@@ -655,7 +656,7 @@ If no issues are found, explicitly state that the reviewed code appears secure.
 ### YAML Frontmatter Fields
 
 | Field | Type | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `description` | string | Shown in `/help` output |
 | `allowed_tools` | array of strings | Tools Claude may use (restricts permissions) |
 | `model` | string | Model to use for this command (overrides default) |
@@ -802,7 +803,7 @@ Permissions are set in `.claude/settings.json` (project level) or `~/.claude/set
 ### Tool Name Patterns
 
 | Pattern | Matches |
-|---|---|
+| --- | --- |
 | `"Read"` | All file reads |
 | `"Write"` | All file writes |
 | `"Bash"` | All bash commands |
@@ -852,6 +853,7 @@ claude --ci --print "Run tests and report failures"
 ```
 
 In CI mode:
+
 - No interactive prompts are shown
 - Unallowed tool calls are rejected (not prompted)
 - Output is printed to stdout and process exits when complete
@@ -945,7 +947,7 @@ exit 0
 ### Environment Variables Reference
 
 | Variable | Purpose |
-|---|---|
+| --- | --- |
 | `ANTHROPIC_API_KEY` | API key for direct Anthropic API access |
 | `CLAUDE_CI` | Set to `1` to enable CI (non-interactive) mode |
 | `CLAUDE_CODE_USE_BEDROCK` | Set to `1` to use Amazon Bedrock |
@@ -962,6 +964,7 @@ exit 0
 Install from the VS Code Marketplace: search for **"Claude Code"** by Anthropic.
 
 Features:
+
 - Inline code completions powered by Claude
 - Chat panel within VS Code
 - Context-aware suggestions based on open files
@@ -981,6 +984,7 @@ Install from JetBrains Marketplace: search for **"Claude Code"**.
 Supported IDEs: IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider.
 
 Features:
+
 - Chat panel in the IDE sidebar
 - Code completion integration
 - Inline explain and refactor actions
@@ -989,7 +993,7 @@ Features:
 ### IDE vs. CLI Trade-offs
 
 | Capability | CLI | IDE Extension |
-|---|---|---|
+| --- | --- | --- |
 | Full file system access | Yes | Limited to project |
 | Shell command execution | Yes | Via integrated terminal |
 | Hooks system | Yes | No |
@@ -1376,7 +1380,7 @@ cat ~/.claude/settings.json | python3 -m json.tool
 Common causes and fixes:
 
 | Symptom | Likely Cause | Fix |
-|---|---|---|
+| --- | --- | --- |
 | Slow first token | Large context being processed | Use /compact or /clear |
 | All responses slow | Rate limiting | Check /cost; wait or upgrade tier |
 | Specific tool slow | MCP server latency | Check MCP server performance |

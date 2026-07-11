@@ -33,7 +33,7 @@ By mid-2026, the SKILL.md standard is natively supported by GitHub Copilot (Apri
 The most important structural insight in this entire section: **Skills and always-loaded instruction files solve different problems, and both are necessary.**
 
 | Layer | Examples | When it loads | What it carries |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Always-loaded context** | `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/*.mdc`, `.github/copilot-instructions.md` | Every turn, unconditionally | Standing rules, coding standards, "always true about this repo" |
 | **Skill (on-demand)** | `SKILL.md` files in `.claude/skills/`, `.github/skills/` | Only when a task matches the skill's name/description | Specialized, procedural knowledge for a specific class of task |
 
@@ -123,7 +123,7 @@ This is exactly progressive disclosure in practice. The index overhead is consta
 ## Skill placement: where skills live on disk
 
 | Scope | Path | Who controls |
-|---|---|---|
+| --- | --- | --- |
 | **Project-local** | `.claude/skills/<name>/SKILL.md` or `.github/skills/<name>.md` | Repository authors — skill ships with the repo |
 | **User-global** | `~/.claude/skills/<name>/SKILL.md` (Claude Code), `~/.codex/skills/` (Codex CLI) | Individual developer — available across all projects |
 | **Org/enterprise** | Configured via org-level MDM, `.claude/settings.json` `skillDirectories`, or a central registry URL | Platform team — skills distributed to all org members |

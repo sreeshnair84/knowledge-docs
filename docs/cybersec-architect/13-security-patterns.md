@@ -297,7 +297,7 @@ Any Consumer
 ### 6.3 Implementation Options
 
 | Option | Product | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Cloud-native** | Azure API Management + AI extensions | Best for Azure-only; deep Entra integration |
 | **API Gateway** | Kong AI Gateway | Multi-cloud; plugin ecosystem; self-hosted or SaaS |
 | **Open source** | LiteLLM + custom filters | Flexible; requires engineering to add security controls |
@@ -343,7 +343,7 @@ Risk Classifier
 ### 7.3 Risk Classification Examples
 
 | Action | Risk Level | Oversight |
-|---|---|---|
+| --- | --- | --- |
 | Read a document | LOW | Autonomous |
 | Search the web | LOW | Autonomous |
 | Send an internal Slack message | MEDIUM | HOTL (notify) |
@@ -396,7 +396,7 @@ Comprehensive observability for AI systems covering requests, costs, latency, co
 ### 9.2 Metrics to Capture
 
 | Category | Metric | Alert Threshold |
-|---|---|---|
+| --- | --- | --- |
 | **Performance** | p50/p95/p99 latency | p99 > 5s → alert |
 | **Cost** | Tokens/hour; $/hour | > $500/hour → alert |
 | **Quality** | Groundedness score (RAG) | < 0.7 → review |
@@ -452,7 +452,7 @@ Masked/filtered response → User
 ### 11.2 DLP Policy Examples
 
 | Policy | Trigger | Action |
-|---|---|---|
+| --- | --- | --- |
 | Block PAN submission | Input contains 16-digit card pattern | Block + alert user |
 | Mask SSN in response | Output contains SSN pattern | Mask SSN in response |
 | Block SECRET classification | Input labelled SECRET | Block; log; alert CISO |

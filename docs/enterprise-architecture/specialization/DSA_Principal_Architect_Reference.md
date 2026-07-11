@@ -10,25 +10,25 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-# Principal Architect **DSA Deep-Reference** 
+# Principal Architect **DSA Deep-Reference**
 
-Hard & Medium Concepts · Snippets · Examples · Tradeoffs 
+Hard & Medium Concepts · Snippets · Examples · Tradeoffs
 
-Graphs & Trees · Dynamic Programming · System-Design DSA · Arrays / Strings / Sorting 
+Graphs & Trees · Dynamic Programming · System-Design DSA · Arrays / Strings / Sorting
 
-Principal Architect DSA Reference  |  Page 1 
+Principal Architect DSA Reference  |  Page 1
 
-## **1 · Graphs & Trees** 
+## **1 · Graphs & Trees**
 
-### **1.1 Topological Sort** 
+### **1.1 Topological Sort**
 
-Topological ordering of a DAG — critical for build systems, task scheduling, dependency resolution. Two canonical algorithms: 
+Topological ordering of a DAG — critical for build systems, task scheduling, dependency resolution. Two canonical algorithms:
 
-#### **Kahn's Algorithm (BFS-based)** 
+#### **Kahn's Algorithm (BFS-based)**
 
-Maintain in-degree counts. Repeatedly extract zero-in-degree nodes into result. If result length < V, a cycle exists. 
+Maintain in-degree counts. Repeatedly extract zero-in-degree nodes into result. If result length < V, a cycle exists.
 
-##### **Kahn's Topological Sort — O(V+E)** 
+##### **Kahn's Topological Sort — O(V+E)**
 
 ```
 from collections import deque
@@ -54,11 +54,11 @@ graph = {5:[2,0], 4:[0,1], 2:[3], 3:[1], 0:[], 1:[]}
 print(topo_sort_kahn(graph, 6))  # [4, 5, 0, 2, 3, 1]
 ```
 
-#### **DFS-based Topological Sort** 
+#### **DFS-based Topological Sort**
 
-Post-order DFS; reverse the finish stack. Use 3-color marking (0=white, 1=gray, 2=black) to detect back edges (cycles). 
+Post-order DFS; reverse the finish stack. Use 3-color marking (0=white, 1=gray, 2=black) to detect back edges (cycles).
 
-##### **DFS Topological Sort with cycle detection** 
+##### **DFS Topological Sort with cycle detection**
 
 ```
 def topo_sort_dfs(graph, num_nodes):
@@ -67,7 +67,7 @@ def topo_sort_dfs(graph, num_nodes):
     stack = []
 ```
 
-Principal Architect DSA Reference  |  Page 2 
+Principal Architect DSA Reference  |  Page 2
 
 ```
     has_cycle = [False]
@@ -95,9 +95,9 @@ Principal Architect DSA Reference  |  Page 2
     return stack[::-1]               # reverse = topological order
 ```
 
-I _Kahn's makes cycle detection explicit (queue empties early). DFS post-order is elegant but risks stack overflow on very deep graphs — convert to iterative for production._ 
+I *Kahn's makes cycle detection explicit (queue empties early). DFS post-order is elegant but risks stack overflow on very deep graphs — convert to iterative for production.*
 
-### **1.2 Shortest Path Algorithms** 
+### **1.2 Shortest Path Algorithms**
 
 |**Algorithm**|**Graph Type**|**Complexity**|**Key Use Case**|
 |---|---|---|---|
@@ -107,7 +107,7 @@ I _Kahn's makes cycle detection explicit (queue empties early). DFS post-order i
 |`A*`|`Weighted +`<br>`heuristic`|`O(E log V) avg`|`Game pathfinding`|
 |`Floyd-Warshall`|`All-pairs`|`O(V³)`|`Dense graphs, small V`|
 
-##### **Dijkstra & Bellman-Ford** 
+##### **Dijkstra & Bellman-Ford**
 
 ```
 import heapq
@@ -126,7 +126,7 @@ def dijkstra(graph, src, n):
         d, u = heapq.heappop(pq)
 ```
 
-Principal Architect DSA Reference  |  Page 3 
+Principal Architect DSA Reference  |  Page 3
 
 ```
         if d > dist[u]:       # stale entry
@@ -151,13 +151,13 @@ def bellman_ford(edges, n, src):
     return dist
 ```
 
-I _Dijkstra fails with negative edges because it assumes once a node is popped from the heap its distance is final. Bellman-Ford's V-1 passes guarantee propagation even through negative weights._ 
+I *Dijkstra fails with negative edges because it assumes once a node is popped from the heap its distance is final. Bellman-Ford's V-1 passes guarantee propagation even through negative weights.*
 
-### **1.3 Bridges & Articulation Points (Tarjan's)** 
+### **1.3 Bridges & Articulation Points (Tarjan's)**
 
-Identifies single points/edges whose removal disconnects the graph. Critical for network SPOF analysis. 
+Identifies single points/edges whose removal disconnects the graph. Critical for network SPOF analysis.
 
-##### **Tarjan's Bridge Finding — O(V+E)** 
+##### **Tarjan's Bridge Finding — O(V+E)**
 
 ```
 def find_bridges(n, edges):
@@ -176,7 +176,7 @@ def find_bridges(n, edges):
                 low[u] = min(low[u], low[v])
 ```
 
-Principal Architect DSA Reference  |  Page 4 
+Principal Architect DSA Reference  |  Page 4
 
 ```
                 if low[v] > disc[u]:   # bridge condition
@@ -191,13 +191,13 @@ Principal Architect DSA Reference  |  Page 4
 # (different condition — see extended version)
 ```
 
-I _Real-world use: mapping microservice dependency graphs to find single points of failure. If removing service X splits the call graph, X is an articulation point requiring redundancy._ 
+I *Real-world use: mapping microservice dependency graphs to find single points of failure. If removing service X splits the call graph, X is an articulation point requiring redundancy.*
 
-### **1.4 Segment Tree** 
+### **1.4 Segment Tree**
 
-Supports range queries and point/range updates in O(log n). Lazy propagation defers updates for range-update efficiency. 
+Supports range queries and point/range updates in O(log n). Lazy propagation defers updates for range-update efficiency.
 
-##### **Segment Tree with Lazy Propagation — O(log n) query/update** 
+##### **Segment Tree with Lazy Propagation — O(log n) query/update**
 
 ```
 class SegmentTree:
@@ -222,7 +222,7 @@ class SegmentTree:
             self.lazy[node] = 0
 ```
 
-Principal Architect DSA Reference  |  Page 5 
+Principal Architect DSA Reference  |  Page 5
 
 ```
     def range_update(self, l, r, val, node=0, start=None, end=None):
@@ -252,9 +252,9 @@ st.range_update(1, 3, 10)
 print(st.range_query(1, 3))   # 39 (12+13+14)
 ```
 
-**1.5 Lowest Common Ancestor (Binary Lifting)** Binary lifting preprocesses O(n log n) ancestor jumps, enabling O(log n) LCA queries. 
+**1.5 Lowest Common Ancestor (Binary Lifting)** Binary lifting preprocesses O(n log n) ancestor jumps, enabling O(log n) LCA queries.
 
-##### **Binary Lifting LCA — O(n log n) build, O(log n) query** 
+##### **Binary Lifting LCA — O(n log n) build, O(log n) query**
 
 ```
 import math
@@ -273,7 +273,7 @@ class LCA:
     def _bfs(self, root, graph):
 ```
 
-Principal Architect DSA Reference  |  Page 6 
+Principal Architect DSA Reference  |  Page 6
 
 ```
         from collections import deque
@@ -304,15 +304,15 @@ Principal Architect DSA Reference  |  Page 6
         return self.up[0][u]
 ```
 
-Principal Architect DSA Reference  |  Page 7 
+Principal Architect DSA Reference  |  Page 7
 
-## **2 · Dynamic Programming** 
+## **2 · Dynamic Programming**
 
-### **2.1 Interval DP — Burst Balloons** 
+### **2.1 Interval DP — Burst Balloons**
 
-Classic interval DP: dp[i][j] = answer for subarray [i..j]. Fill by increasing length. Key insight in Burst Balloons: think 'which balloon to pop LAST' — it cleanly separates left and right subproblems. 
+Classic interval DP: dp[i][j] = answer for subarray [i..j]. Fill by increasing length. Key insight in Burst Balloons: think 'which balloon to pop LAST' — it cleanly separates left and right subproblems.
 
-**Burst Balloons — Interval DP O(n³)** 
+**Burst Balloons — Interval DP O(n³)**
 
 ```
 def maxCoins(nums):
@@ -336,13 +336,13 @@ def maxCoins(nums):
 print(maxCoins([3, 1, 5, 8]))  # 167
 ```
 
-I _The 'last balloon' framing avoids dependency issues: at the moment k is popped, left and right are already-empty boundaries, not other balloons._ 
+I *The 'last balloon' framing avoids dependency issues: at the moment k is popped, left and right are already-empty boundaries, not other balloons.*
 
-### **2.2 DP on Trees — Maximum Independent Set** 
+### **2.2 DP on Trees — Maximum Independent Set**
 
-dp[node][include/exclude] computed from leaves upward. Captures the 'no two adjacent nodes selected' constraint elegantly. 
+dp[node][include/exclude] computed from leaves upward. Captures the 'no two adjacent nodes selected' constraint elegantly.
 
-##### **Tree DP — Max Independent Set O(n)** 
+##### **Tree DP — Max Independent Set O(n)**
 
 ```
 def max_independent_set(n, edges):
@@ -354,7 +354,7 @@ def max_independent_set(n, edges):
     dp = {}
 ```
 
-Principal Architect DSA Reference  |  Page 8 
+Principal Architect DSA Reference  |  Page 8
 
 ```
     def dfs(node, parent):
@@ -374,17 +374,17 @@ Principal Architect DSA Reference  |  Page 8
 print(max_independent_set(7, [(0,1),(0,2),(1,3),(1,4),(2,5),(2,6)]))  # 4
 ```
 
-### **2.3 Knapsack Variants** 
+### **2.3 Knapsack Variants**
 
-**Type Recurrence** `0/1 Knapsack dp[w] = max(dp[w], dp[w-wt]+val) Unbounded dp[w] = max(dp[w], dp[w-wt]+val) Bounded Binary group items into powers of 2 Bitmask DP dp[mask|1<<j] = min(dp[mask]+cost)` 
+**Type Recurrence** `0/1 Knapsack dp[w] = max(dp[w], dp[w-wt]+val) Unbounded dp[w] = max(dp[w], dp[w-wt]+val) Bounded Binary group items into powers of 2 Bitmask DP dp[mask|1<<j] = min(dp[mask]+cost)`
 
-**Trick** `Iterate w backward Iterate w forward Reduces to 0/1 TSP, assignment` 
+**Trick** `Iterate w backward Iterate w forward Reduces to 0/1 TSP, assignment`
 
-##### **Knapsack variants + Bitmask TSP** 
+##### **Knapsack variants + Bitmask TSP**
 
-`# 0/1 Knapsack — O(nW) def knapsack_01(weights, values, W): dp = [0] * (W + 1) for wt, val in zip(weights, values): for w in range(W, wt - 1, -1):    #` ← `backward dp[w] = max(dp[w], dp[w - wt] + val) return dp[W] # Unbounded Knapsack (e.g. coin change max value) — O(nW) def knapsack_unbounded(weights, values, W): dp = [0] * (W + 1) for w in range(1, W + 1):             #` → `forward for wt, val in zip(weights, values): if wt <= w: dp[w] = max(dp[w], dp[w - wt] + val) return dp[W] # Bitmask DP — TSP O(2^n * n^2) def tsp(dist):` 
+`# 0/1 Knapsack — O(nW) def knapsack_01(weights, values, W): dp = [0] * (W + 1) for wt, val in zip(weights, values): for w in range(W, wt - 1, -1):    #` ← `backward dp[w] = max(dp[w], dp[w - wt] + val) return dp[W] # Unbounded Knapsack (e.g. coin change max value) — O(nW) def knapsack_unbounded(weights, values, W): dp = [0] * (W + 1) for w in range(1, W + 1):             #` → `forward for wt, val in zip(weights, values): if wt <= w: dp[w] = max(dp[w], dp[w - wt] + val) return dp[W] # Bitmask DP — TSP O(2^n * n^2) def tsp(dist):`
 
-Principal Architect DSA Reference  |  Page 9 
+Principal Architect DSA Reference  |  Page 9
 
 ```
     n = len(dist)
@@ -403,11 +403,11 @@ Principal Architect DSA Reference  |  Page 9
     return min(dp[full][u] + dist[u][0] for u in range(n))
 ```
 
-### **2.4 DP Optimization — Convex Hull Trick** 
+### **2.4 DP Optimization — Convex Hull Trick**
 
-When recurrence is dp[i] = min over j of (dp[j] + b[j]*a[i]), maintain a lower convex hull of lines y = b[j]*x + dp[j]. Reduces O(n²) to O(n) with monotone queries. 
+When recurrence is dp[i] = min over j of (dp[j] + b[j]*a[i]), maintain a lower convex hull of lines y = b[j]*x + dp[j]. Reduces O(n²) to O(n) with monotone queries.
 
-##### **Convex Hull Trick — O(n) amortized** 
+##### **Convex Hull Trick — O(n) amortized**
 
 ```
 class ConvexHullTrick:
@@ -432,7 +432,7 @@ class ConvexHullTrick:
                self.lines[self.ptr][0]*x + self.lines[self.ptr][1]):
 ```
 
-Principal Architect DSA Reference  |  Page 10 
+Principal Architect DSA Reference  |  Page 10
 
 ```
             self.ptr += 1
@@ -454,15 +454,15 @@ Principal Architect DSA Reference  |  Page 10
 # where cost = (prefix[i] - prefix[j])^2
 ```
 
-Principal Architect DSA Reference  |  Page 11 
+Principal Architect DSA Reference  |  Page 11
 
-## **3 · System-Design Adjacent DSA** 
+## **3 · System-Design Adjacent DSA**
 
-### **3.1 LRU Cache** 
+### **3.1 LRU Cache**
 
-HashMap + doubly-linked list. MRU at head, LRU at tail. Both get and put are O(1). 
+HashMap + doubly-linked list. MRU at head, LRU at tail. Both get and put are O(1).
 
-**LRU Cache — O(1) get/put** 
+**LRU Cache — O(1) get/put**
 
 ```
 class Node:
@@ -501,17 +501,17 @@ class LRUCache:
             self._remove(lru)
 ```
 
-Principal Architect DSA Reference  |  Page 12 
+Principal Architect DSA Reference  |  Page 12
 
 ```
             del self.map[lru.k]
 ```
 
-### **3.2 LFU Cache** 
+### **3.2 LFU Cache**
 
-Two maps: key→(val,freq) and freq→LinkedHashSet. Track minFreq. All operations O(1). 
+Two maps: key→(val,freq) and freq→LinkedHashSet. Track minFreq. All operations O(1).
 
-##### **LFU Cache — O(1) all operations** 
+##### **LFU Cache — O(1) all operations**
 
 ```
 from collections import defaultdict, OrderedDict
@@ -549,17 +549,17 @@ class LFUCache:
             self.min_freq = 1
 ```
 
-### **3.3 Rate Limiting Algorithms** 
+### **3.3 Rate Limiting Algorithms**
 
-**Algorithm** 
+**Algorithm**
 
-**Memory** 
+**Memory**
 
-**Allows Burst?** 
+**Allows Burst?**
 
-**Accuracy Used By** 
+**Accuracy Used By**
 
-Principal Architect DSA Reference  |  Page 13 
+Principal Architect DSA Reference  |  Page 13
 
 |`Fixed Window`|`O(1)`|`Edge burst`<br>`(2x)`|`Approx`|`Simple APIs`|
 |---|---|---|---|---|
@@ -568,7 +568,7 @@ Principal Architect DSA Reference  |  Page 13
 |`Leaky Bucket`|`O(queue)`|`No (smooth)`|`Exact`|`Network QoS`|
 |`Sliding Win`<br>`Counter`|`O(1)`|`Limited`|`~1%`|`Redis, Cloudflare`|
 
-**Token Bucket & Sliding Window Counter** 
+**Token Bucket & Sliding Window Counter**
 
 ```
 import time
@@ -624,7 +624,7 @@ class SlidingWindowCounter:
             self.prev_count = self.curr_count if elapsed < 2*self.window else 0
 ```
 
-Principal Architect DSA Reference  |  Page 14 
+Principal Architect DSA Reference  |  Page 14
 
 ```
             self.curr_count = 0
@@ -654,13 +654,13 @@ Principal Architect DSA Reference  |  Page 14
         return False
 ```
 
-I _Distributed rate limiting: use Redis INCRBY + EXPIRE for atomic counters, or Lua scripts for Token Bucket to avoid race conditions between check and decrement._ 
+I *Distributed rate limiting: use Redis INCRBY + EXPIRE for atomic counters, or Lua scripts for Token Bucket to avoid race conditions between check and decrement.*
 
-### **3.4 Bloom Filter** 
+### **3.4 Bloom Filter**
 
-Probabilistic set membership. False positives possible; false negatives impossible. Used in Cassandra/HBase to avoid disk lookups for missing keys. 
+Probabilistic set membership. False positives possible; false negatives impossible. Used in Cassandra/HBase to avoid disk lookups for missing keys.
 
-##### **Bloom Filter — O(k) add/lookup, k = (m/n)ln2** 
+##### **Bloom Filter — O(k) add/lookup, k = (m/n)ln2**
 
 ```
 import math, mmh3
@@ -687,7 +687,7 @@ def _hash_fn(item, seed, m):
 # bf = BloomFilter(1000, fp_rate=0.01)
 ```
 
-Principal Architect DSA Reference  |  Page 15 
+Principal Architect DSA Reference  |  Page 15
 
 ```
 # bf.add("user:123"); "user:123" in bf  -> True (definite)
@@ -697,13 +697,13 @@ Principal Architect DSA Reference  |  Page 15
 # "user:999" in bf                      -> False (definite miss) or True (FP)
 ```
 
-I _FP rate_ ≈ _(1 - e^(-kn/m))^k. Counting Bloom Filter supports deletes by storing counts instead of bits. Cuckoo Filter offers better FP rate and delete support._ 
+I *FP rate* ≈ *(1 - e^(-kn/m))^k. Counting Bloom Filter supports deletes by storing counts instead of bits. Cuckoo Filter offers better FP rate and delete support.*
 
-### **3.5 Consistent Hashing** 
+### **3.5 Consistent Hashing**
 
-Virtual nodes on a hash ring. Adding/removing a node only remaps keys in the adjacent arc. Used in Dynamo, Cassandra, Redis Cluster. 
+Virtual nodes on a hash ring. Adding/removing a node only remaps keys in the adjacent arc. Used in Dynamo, Cassandra, Redis Cluster.
 
-##### **Consistent Hashing with Virtual Nodes — O(log n) lookup** 
+##### **Consistent Hashing with Virtual Nodes — O(log n) lookup**
 
 ```
 import hashlib, bisect
@@ -756,23 +756,23 @@ ring = ConsistentHashRing(["node-A","node-B","node-C"])
 print(ring.get_node("user:42"))   # deterministic assignment
 ```
 
-Principal Architect DSA Reference  |  Page 16 
+Principal Architect DSA Reference  |  Page 16
 
-I _150 vnodes per physical node is the Cassandra default. More vnodes = better load balance but more memory for the ring metadata._ 
+I *150 vnodes per physical node is the Cassandra default. More vnodes = better load balance but more memory for the ring metadata.*
 
-Principal Architect DSA Reference  |  Page 17 
+Principal Architect DSA Reference  |  Page 17
 
-## **4 · Arrays, Strings & Sorting** 
+## **4 · Arrays, Strings & Sorting**
 
-### **4.1 Monotonic Stack — Core Patterns** 
+### **4.1 Monotonic Stack — Core Patterns**
 
-Monotonic stacks solve 'nearest smaller/larger' problems in O(n) amortized — each element is pushed and popped at most once. 
+Monotonic stacks solve 'nearest smaller/larger' problems in O(n) amortized — each element is pushed and popped at most once.
 
-**Monotonic Stack: Histogram, Sliding Max, Trapping Rain Water** 
+**Monotonic Stack: Histogram, Sliding Max, Trapping Rain Water**
 
-`#` II `Largest Rectangle in Histogram` II `O(n) def largest_rectangle(heights): stack = []   # increasing stack of indices max_area = 0 heights = heights + [0]   # sentinel to flush stack for i, h in enumerate(heights): start = i while stack and stack[-1][1] > h: idx, ht = stack.pop() max_area = max(max_area, ht * (i - idx)) start = idx stack.append((start, h)) return max_area #` II `Sliding Window Maximum (Monotonic Deque)` II `O(n) from collections import deque def sliding_window_max(nums, k): dq = deque()   # stores indices; front = max result = [] for i, num in enumerate(nums): # Pop elements out of window if dq and dq[0] < i - k + 1: dq.popleft() # Maintain decreasing order while dq and nums[dq[-1]] < num: dq.pop() dq.append(i) if i >= k - 1: result.append(nums[dq[0]]) return result #` II `Trapping Rain Water` II `O(n) def trap(height): stack = [] water = 0 for i, h in enumerate(height):` 
+`#` II `Largest Rectangle in Histogram` II `O(n) def largest_rectangle(heights): stack = []   # increasing stack of indices max_area = 0 heights = heights + [0]   # sentinel to flush stack for i, h in enumerate(heights): start = i while stack and stack[-1][1] > h: idx, ht = stack.pop() max_area = max(max_area, ht * (i - idx)) start = idx stack.append((start, h)) return max_area #` II `Sliding Window Maximum (Monotonic Deque)` II `O(n) from collections import deque def sliding_window_max(nums, k): dq = deque()   # stores indices; front = max result = [] for i, num in enumerate(nums): # Pop elements out of window if dq and dq[0] < i - k + 1: dq.popleft() # Maintain decreasing order while dq and nums[dq[-1]] < num: dq.pop() dq.append(i) if i >= k - 1: result.append(nums[dq[0]]) return result #` II `Trapping Rain Water` II `O(n) def trap(height): stack = [] water = 0 for i, h in enumerate(height):`
 
-Principal Architect DSA Reference  |  Page 18 
+Principal Architect DSA Reference  |  Page 18
 
 ```
         while stack and height[stack[-1]] < h:
@@ -788,11 +788,11 @@ print(sliding_window_max([1,3,-1,-3,5,3,6,7], 3))  # [3,3,5,5,6,7]
 print(trap([0,1,0,2,1,0,1,3,2,1,2,1]))  # 6
 ```
 
-### **4.2 Sliding Window — Minimum Window Substring** 
+### **4.2 Sliding Window — Minimum Window Substring**
 
-Template: expand right, then shrink left when constraint violated. Use a frequency map and a 'formed' counter to track validity in O(1). 
+Template: expand right, then shrink left when constraint violated. Use a frequency map and a 'formed' counter to track validity in O(1).
 
-**Sliding Window — O(n) both problems** 
+**Sliding Window — O(n) both problems**
 
 ```
 from collections import Counter
@@ -820,7 +820,7 @@ def min_window(s, t):
     return best
 ```
 
-Principal Architect DSA Reference  |  Page 19 
+Principal Architect DSA Reference  |  Page 19
 
 ```
 # Longest substring with at most k distinct characters
@@ -840,21 +840,21 @@ print(min_window("ADOBECODEBANC", "ABC"))  # "BANC"
 print(longest_k_distinct("eceba", 2))      # 3 ("ece")
 ```
 
-### **4.3 Binary Search on Answer** 
+### **4.3 Binary Search on Answer**
 
-Any 'find minimum X such that condition holds' problem → binary search X, validate with greedy check. The key insight: the feasibility function is monotone. 
+Any 'find minimum X such that condition holds' problem → binary search X, validate with greedy check. The key insight: the feasibility function is monotone.
 
-**Binary Search on Answer — O(n log range)** 
+**Binary Search on Answer — O(n log range)**
 
-`#` II `Split Array Largest Sum` II `O(n log(sum)) def split_array(nums, m): def can_split(mid):      # can we split into m groups, each <= mid? groups, cur = 1, 0 for n in nums: if cur + n > mid: groups += 1; cur = 0 cur += n return groups <= m lo, hi = max(nums), sum(nums) while lo < hi: mid = (lo + hi) // 2 if can_split(mid): hi = mid else:              lo = mid + 1 return lo #` II `Koko Eating Bananas` II `O(n log max) def min_eating_speed(piles, h): def can_finish(speed): import math return sum(math.ceil(p / speed) for p in piles) <= h` 
+`#` II `Split Array Largest Sum` II `O(n log(sum)) def split_array(nums, m): def can_split(mid):      # can we split into m groups, each <= mid? groups, cur = 1, 0 for n in nums: if cur + n > mid: groups += 1; cur = 0 cur += n return groups <= m lo, hi = max(nums), sum(nums) while lo < hi: mid = (lo + hi) // 2 if can_split(mid): hi = mid else:              lo = mid + 1 return lo #` II `Koko Eating Bananas` II `O(n log max) def min_eating_speed(piles, h): def can_finish(speed): import math return sum(math.ceil(p / speed) for p in piles) <= h`
 
-Principal Architect DSA Reference  |  Page 20 
+Principal Architect DSA Reference  |  Page 20
 
-`lo, hi = 1, max(piles) while lo < hi: mid = (lo + hi) // 2 if can_finish(mid): hi = mid else:               lo = mid + 1 return lo #` II `Capacity to Ship Packages` II `O(n log(sum)) def ship_within_days(weights, days): def can_ship(cap): trips, cur = 1, 0 for w in weights: if cur + w > cap: trips += 1; cur = 0 cur += w return trips <= days lo, hi = max(weights), sum(weights) while lo < hi: mid = (lo + hi) // 2 if can_ship(mid): hi = mid else:             lo = mid + 1 return lo print(split_array([7,2,5,10,8], 2))          # 18 print(min_eating_speed([3,6,7,11], 8))       # 4 print(ship_within_days([1,2,3,4,5,6,7,8,9,10], 5))  # 15` 
+`lo, hi = 1, max(piles) while lo < hi: mid = (lo + hi) // 2 if can_finish(mid): hi = mid else:               lo = mid + 1 return lo #` II `Capacity to Ship Packages` II `O(n log(sum)) def ship_within_days(weights, days): def can_ship(cap): trips, cur = 1, 0 for w in weights: if cur + w > cap: trips += 1; cur = 0 cur += w return trips <= days lo, hi = max(weights), sum(weights) while lo < hi: mid = (lo + hi) // 2 if can_ship(mid): hi = mid else:             lo = mid + 1 return lo print(split_array([7,2,5,10,8], 2))          # 18 print(min_eating_speed([3,6,7,11], 8))       # 4 print(ship_within_days([1,2,3,4,5,6,7,8,9,10], 5))  # 15`
 
-**4.4 Merge Sort Applications — Count Inversions** During the merge step, every time we pick from the right half, all remaining elements in the left half form inversions with it. 
+**4.4 Merge Sort Applications — Count Inversions** During the merge step, every time we pick from the right half, all remaining elements in the left half form inversions with it.
 
-##### **Inversion Count + K-way Merge — O(n log n) / O(n log k)** 
+##### **Inversion Count + K-way Merge — O(n log n) / O(n log k)**
 
 ```
 def count_inversions(arr):
@@ -871,7 +871,7 @@ def count_inversions(arr):
             merged.append(left[i]); i += 1
 ```
 
-Principal Architect DSA Reference  |  Page 21 
+Principal Architect DSA Reference  |  Page 21
 
 ```
         else:
@@ -919,7 +919,7 @@ print(k_way_merge([[1,4,7],[2,5,8],[3,6,9]]))
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-### **4.5 String Algorithms** 
+### **4.5 String Algorithms**
 
 |**Algorithm**|**Use Case**|
 |---|---|
@@ -929,7 +929,7 @@ print(k_way_merge([[1,4,7],[2,5,8],[3,6,9]]))
 |`Aho-Corasick`|`Simultaneous multi-pattern search`|
 |`Suffix Array`|`All substring queries, LCP`|
 
-##### **Time** 
+##### **Time**
 
 ```
 O(n+m)
@@ -939,23 +939,23 @@ O(n+m+matches)
 O(n log n) build
 ```
 
-**KMP + Rabin-Karp string matching** 
+**KMP + Rabin-Karp string matching**
 
-Principal Architect DSA Reference  |  Page 22 
+Principal Architect DSA Reference  |  Page 22
 
-`#` II `KMP — O(n+m)` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `def kmp_search(text, pattern): def build_lps(p): lps = [0] * len(p) length = 0; i = 1 while i < len(p): if p[i] == p[length]: length += 1; lps[i] = length; i += 1 elif length: length = lps[length - 1] else: lps[i] = 0; i += 1 return lps lps = build_lps(pattern) matches = []; j = 0 for i, ch in enumerate(text): while j and ch != pattern[j]: j = lps[j - 1] if ch == pattern[j]: j += 1 if j == len(pattern): matches.append(i - j + 1) j = lps[j - 1] return matches #` II `Rabin-Karp — Rolling Hash — O(n+m) avg` IIIIIIIIIIIIIIIIIIIII `def rabin_karp(text, pattern, base=31, mod=10**9+7): n, m = len(text), len(pattern) if m > n: return [] ph = th = 0; power = 1 for i in range(m): ph = (ph + (ord(pattern[i]) - 96) * power) % mod th = (th + (ord(text[i])    - 96) * power) % mod if i < m - 1: power = power * base % mod matches = [] if ph == th: matches.append(0) for i in range(1, n - m + 1): th = (th - (ord(text[i-1]) - 96)) % mod th = (th * pow(base, mod-2, mod)) % mod   # mod inverse th = (th + (ord(text[i+m-1]) - 96) * power) % mod if th == ph: matches.append(i)   # verify to avoid hash collision return matches` 
+`#` II `KMP — O(n+m)` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `def kmp_search(text, pattern): def build_lps(p): lps = [0] * len(p) length = 0; i = 1 while i < len(p): if p[i] == p[length]: length += 1; lps[i] = length; i += 1 elif length: length = lps[length - 1] else: lps[i] = 0; i += 1 return lps lps = build_lps(pattern) matches = []; j = 0 for i, ch in enumerate(text): while j and ch != pattern[j]: j = lps[j - 1] if ch == pattern[j]: j += 1 if j == len(pattern): matches.append(i - j + 1) j = lps[j - 1] return matches #` II `Rabin-Karp — Rolling Hash — O(n+m) avg` IIIIIIIIIIIIIIIIIIIII `def rabin_karp(text, pattern, base=31, mod=10**9+7): n, m = len(text), len(pattern) if m > n: return [] ph = th = 0; power = 1 for i in range(m): ph = (ph + (ord(pattern[i]) - 96) * power) % mod th = (th + (ord(text[i])    - 96) * power) % mod if i < m - 1: power = power * base % mod matches = [] if ph == th: matches.append(0) for i in range(1, n - m + 1): th = (th - (ord(text[i-1]) - 96)) % mod th = (th * pow(base, mod-2, mod)) % mod   # mod inverse th = (th + (ord(text[i+m-1]) - 96) * power) % mod if th == ph: matches.append(i)   # verify to avoid hash collision return matches`
 
-Principal Architect DSA Reference  |  Page 23 
+Principal Architect DSA Reference  |  Page 23
 
 ```
 print(kmp_search("aabaacaadaabaaba", "aaba"))   # [0, 9, 12]
 ```
 
-##### **Aho-Corasick — O(n + sum(pattern lengths) + matches)** 
+##### **Aho-Corasick — O(n + sum(pattern lengths) + matches)**
 
-`#` II `Aho-Corasick — Multi-pattern in one pass` IIIIIIIIIIIIIIIIIIII `from collections import deque class AhoCorasick: def __init__(self, patterns): self.goto   = [{}] self.fail   = [0] self.output = [[]] self._build(patterns) def _build(self, patterns): for pid, pat in enumerate(patterns): cur = 0 for ch in pat: if ch not in self.goto[cur]: self.goto[cur][ch] = len(self.goto) self.goto.append({}) self.fail.append(0) self.output.append([]) cur = self.goto[cur][ch] self.output[cur].append(pid) # BFS to set failure links q = deque() for ch, s in self.goto[0].items(): q.append(s) while q: r = q.popleft() for ch, s in self.goto[r].items(): f = self.fail[r] while f and ch not in self.goto[f]: f = self.fail[f] self.fail[s] = self.goto[f].get(ch, 0) if self.fail[s] == s: self.fail[s] = 0 self.output[s] += self.output[self.fail[s]] q.append(s) def search(self, text): cur = 0; results = [] for i, ch in enumerate(text): while cur and ch not in self.goto[cur]:` 
+`#` II `Aho-Corasick — Multi-pattern in one pass` IIIIIIIIIIIIIIIIIIII `from collections import deque class AhoCorasick: def __init__(self, patterns): self.goto   = [{}] self.fail   = [0] self.output = [[]] self._build(patterns) def _build(self, patterns): for pid, pat in enumerate(patterns): cur = 0 for ch in pat: if ch not in self.goto[cur]: self.goto[cur][ch] = len(self.goto) self.goto.append({}) self.fail.append(0) self.output.append([]) cur = self.goto[cur][ch] self.output[cur].append(pid) # BFS to set failure links q = deque() for ch, s in self.goto[0].items(): q.append(s) while q: r = q.popleft() for ch, s in self.goto[r].items(): f = self.fail[r] while f and ch not in self.goto[f]: f = self.fail[f] self.fail[s] = self.goto[f].get(ch, 0) if self.fail[s] == s: self.fail[s] = 0 self.output[s] += self.output[self.fail[s]] q.append(s) def search(self, text): cur = 0; results = [] for i, ch in enumerate(text): while cur and ch not in self.goto[cur]:`
 
-Principal Architect DSA Reference  |  Page 24 
+Principal Architect DSA Reference  |  Page 24
 
 ```
                 cur = self.fail[cur]
@@ -976,11 +976,11 @@ ac = AhoCorasick(["he","she","his","hers"])
 print(ac.search("ushers"))  # [(2,'she'),(3,'he'),(5,'hers')]
 ```
 
-I _Aho-Corasick is the go-to for real-time log scanning against thousands of error patterns, content moderation keyword matching, or network intrusion detection._ 
+I *Aho-Corasick is the go-to for real-time log scanning against thousands of error patterns, content moderation keyword matching, or network intrusion detection.*
 
-Principal Architect DSA Reference  |  Page 25 
+Principal Architect DSA Reference  |  Page 25
 
-## **Quick Reference — Complexity Cheat Sheet** 
+## **Quick Reference — Complexity Cheat Sheet**
 
 |**Problem / Structure**|**Algorithm**|**Time**|**Space**|
 |---|---|---|---|
@@ -1009,20 +1009,20 @@ Principal Architect DSA Reference  |  Page 25
 |`K-way external merge`|`Min-Heap`|`O(n log k)`|`O(k)`|
 |`Single pattern search`<br>`Multi-pattern search`|`KMP`<br>`Aho-Corasick`|`O(n+m)`<br>`O(n+sum(m))`|`O(m)`<br>`O(sum(m))`|
 
-### **Principal Architect Interview Tips** 
+### **Principal Architect Interview Tips**
 
-- State complexity before coding — show you've already analyzed it. 
+- State complexity before coding — show you've already analyzed it.
 
-- Mention the scalability pivot: 'At 10 TB this needs external sort / distributed sharding.' 
+- Mention the scalability pivot: 'At 10 TB this needs external sort / distributed sharding.'
 
-- Name the tradeoff explicitly: 'Token bucket over leaky bucket here because we need to allow controlled bursts.' 
+- Name the tradeoff explicitly: 'Token bucket over leaky bucket here because we need to allow controlled bursts.'
 
-Principal Architect DSA Reference  |  Page 26 
+Principal Architect DSA Reference  |  Page 26
 
-• Watch for integer overflow in hash/rolling hash computations — use mod arithmetic. 
+• Watch for integer overflow in hash/rolling hash computations — use mod arithmetic.
 
-• For graph problems, always clarify: directed/undirected, cyclic?, connected?, weighted? 
+• For graph problems, always clarify: directed/undirected, cyclic?, connected?, weighted?
 
-• Clean code signals seniority: meaningful variable names, no magic numbers, helper functions. 
+• Clean code signals seniority: meaningful variable names, no magic numbers, helper functions.
 
 Principal Architect DSA Reference  |  Page 27

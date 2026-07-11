@@ -22,7 +22,7 @@ This page provides worked examples for the deliverables defined in [Section 11 �
 ## Quick Reference
 
 | # | Artifact / Metric | Jump to |
-|---|---|---|
+| --- | --- | --- |
 | A1 | AI Reference Architecture | [→](#1-ai-reference-architecture) |
 | A2 | Agent Topology Diagram | [→](#2-agent-topology-diagram) |
 | A3 | AI Decision Register | [→](#3-ai-decision-register) |
@@ -91,7 +91,7 @@ The canonical blueprint every NexaBank AI system must conform to. It defines the
 **Mandatory standards for all NexaBank AI systems:**
 
 | Standard | Requirement |
-|---|---|
+| --- | --- |
 | Guardrail routing | All LLM responses must pass through the Guardrail Service before reaching consumers |
 | PII handling | Customer PII must be tokenised before entering any AI context window |
 | Audit logging | Every AI decision must produce an immutable audit log entry within 200 ms |
@@ -143,7 +143,7 @@ Orchestrator ──[confidence < 0.7]──► Human Agent Queue
 Tracks every automated decision, the model responsible, its risk tier, whether human review is required, and when it was last assessed.
 
 | ID | System | Decision Type | Model | Risk Tier | Automated | Human Review Required | Approval Owner | Last Reviewed |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADR-001 | Credit Scoring Agent | Credit limit recommendation | XGBoost + Claude Sonnet | High | Partial | Yes — final by human credit officer | Chief Risk Officer | 2026-06-15 |
 | ADR-002 | Customer Service Bot | Account balance query | Claude Haiku | Low | Yes | No | Head of Channels | 2026-05-01 |
 | ADR-003 | Fraud Detection | Transaction block | Proprietary ML + rules engine | Critical | Yes — block only | Yes — post-hoc within 4 h | Head of Fraud | 2026-06-20 |
@@ -206,7 +206,7 @@ Mortgage Broker ← summary response
 Scores are 1–10; weighted score = sum(score × weight).
 
 | Criterion | Weight | Claude Sonnet 4.6 | GPT-4o | Gemini 1.5 Pro | Llama 3.1 70B (self-hosted) |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Instruction following accuracy | 20% | 9 | 8 | 8 | 7 |
 | UK financial regulatory alignment (FCA) | 20% | 8 | 7 | 7 | 6 |
 | Data residency — UK/EU | 15% | 8 | 6 | 7 | 10 |
@@ -231,7 +231,7 @@ Scores are 1–10; weighted score = sum(score × weight).
 All production prompts are stored in the `nexabank/ai-prompts` Git repository under `prompts/<system>/<version>/system_prompt.txt`. Versioning follows semver:
 
 | Change type | Version bump | Approval required |
-|---|---|---|
+| --- | --- | --- |
 | Wording tweak with no behavioural change | PATCH (1.0.0 → 1.0.1) | AI Engineering Lead |
 | New instruction or tool added | MINOR (1.0.x → 1.1.0) | AI Engineering Lead + QA sign-off |
 | Risk tier change or major behaviour change | MAJOR (1.x.x → 2.0.0) | Architecture Review Board |
@@ -241,7 +241,7 @@ All production prompts are stored in the `nexabank/ai-prompts` Git repository un
 All prompts must pass these gates before production deployment:
 
 | Gate | Requirement | Owner |
-|---|---|---|
+| --- | --- | --- |
 | G1 — Baseline | ≥ 95% pass rate on golden dataset (500 curated test cases) | AI Engineering |
 | G2 — Adversarial | Pass red-team prompt injection battery (50 cases, 0 critical failures) | AI Security |
 | G3 — Bias & Fairness | No demographic disparity > 3% across protected characteristics | AI Ethics |
@@ -261,7 +261,7 @@ All prompts must pass these gates before production deployment:
 #### Pattern Card 1 — Retrieval-Augmented Generation (RAG)
 
 | Field | Detail |
-|---|---|
+| --- | --- |
 | Pattern | Retrieval-Augmented Generation |
 | Use Case at NexaBank | Answer policy and compliance questions from 10,000-page FCA-regulated policy corpus |
 | When to Use | When the LLM needs grounding in proprietary, recent, or regulated documents not in its training data |
@@ -273,7 +273,7 @@ All prompts must pass these gates before production deployment:
 #### Pattern Card 2 — Hierarchical Multi-Agent Orchestration
 
 | Field | Detail |
-|---|---|
+| --- | --- |
 | Pattern | Hierarchical Multi-Agent Orchestration |
 | Use Case at NexaBank | Mortgage application processing: 10 sub-tasks delegated across 4 specialist agents |
 | When to Use | When a single business task decomposes into parallel, specialist sub-tasks that require different tools or data |
@@ -285,7 +285,7 @@ All prompts must pass these gates before production deployment:
 #### Pattern Card 3 — Human-in-the-Loop Approval Gate
 
 | Field | Detail |
-|---|---|
+| --- | --- |
 | Pattern | Human-in-the-Loop (HITL) Approval Gate |
 | Use Case at NexaBank | Regulatory filing (SAR submission) — MLRO must approve every AI-drafted Suspicious Activity Report |
 | When to Use | High-risk decisions; confidence below threshold; regulatory mandate; financial or legal consequence |
@@ -301,7 +301,7 @@ All prompts must pass these gates before production deployment:
 **NexaBank — AI Security Controls by Risk Tier**
 
 | Control | Tier 1 — Low | Tier 2 — Medium | Tier 3 — High / Critical |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Example systems** | HR chatbot, FAQ bot | Document summariser, code reviewer | Credit scoring, fraud detection, regulatory filings |
 | **Authentication** | OAuth 2.0 + RBAC | OAuth 2.0 + RBAC + MFA | OAuth 2.0 + RBAC + MFA + PAM for privileged operations |
 | **PII in context window** | Permitted with tokenisation | Permitted with tokenisation + field-level encryption | Prohibited — PII referenced by opaque token only |
@@ -318,7 +318,7 @@ All prompts must pass these gates before production deployment:
 **NexaBank — AI Use Case Review Stage Gates**
 
 | Stage | Name | Key Activities | Required Artefacts | Reviewers | Exit Criteria |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | S0 | Intake | Business sponsor submits use case brief | Use Case Brief (1-page standard template) | Business Sponsor | Brief accepted by Head of AI COE |
 | S1 | Feasibility | EA + AI Engineering assess technical fit; assign risk tier | Feasibility Assessment, Risk Tier Assignment form | EA, AI Security Lead | Risk tier confirmed; data sources and owners identified |
 | S2 | Architecture Design | EA produces solution design; DFD produced; ADR entries created | Solution Architecture Doc, Data Flow Diagram, ADR | EA, Data Architect, Security Architect | Architecture approved by ARB (majority vote) |
@@ -333,7 +333,7 @@ All prompts must pass these gates before production deployment:
 **Credit Scoring Agent v2.1 — Model Risk Assessment**
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | System Name | Credit Scoring Agent |
 | Version | 2.1 |
 | Risk Tier | High (Tier 3) |
@@ -345,7 +345,7 @@ All prompts must pass these gates before production deployment:
 **Purpose:** Generates credit limit recommendations (£500 – £25,000) for personal loan applications. A human credit officer makes the final decision; the model output is advisory.
 
 | Risk Dimension | Rating | Finding | Mitigant |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Model accuracy | Medium | 94.2% precision on holdout set; 3.1% false-negative rate on borderline band (£3k–£5k) | Monthly retraining on latest 6 months of data; human review mandatory for borderline band |
 | Data quality | Medium | 2.3% missing income fields in training data — imputed | Imputation pipeline documented; missing-field flag surfaced in model output metadata |
 | Fairness / bias | Low | Gender disparity: 0.8% difference in approval rate (within FCA 3% threshold) | Quarterly fairness audit; results published to Chief Risk Officer |
@@ -364,7 +364,7 @@ Conditions: (1) Human-in-the-loop is mandatory for all decisions; (2) Monthly fa
 **IRP-AI-003 — Hallucination in Customer-Facing Output**
 
 | Step | Action | Owner | Timeframe |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1. Detect | Guardrail service flags a response with hallucination score > 0.8 — **or** a customer complaint explicitly references incorrect information from the AI | Guardrail service (automated) / Customer Operations | Immediate |
 | 2. Contain | Disable the affected AI response pathway; route affected use case to human agents via fallback rule in the API gateway | AI Ops On-call | < 15 minutes |
 | 3. Assess | Retrieve audit logs for affected sessions; determine scope (isolated single-user event vs. systemic across multiple sessions) | AI Risk Analyst | < 1 hour |
@@ -384,7 +384,7 @@ Conditions: (1) Human-in-the-loop is mandatory for all decisions; (2) Monthly fa
 Scores are 1–10; weighted score = sum(score × weight).
 
 | Dimension | Weight | Anthropic (Claude) | OpenAI (GPT-4o) | Google (Gemini) | AWS Bedrock | Azure OpenAI |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | UK/EU data residency | 25% | 8 | 6 | 7 | 9 | 9 |
 | Security certifications (ISO 27001, SOC 2, CSA STAR) | 20% | 9 | 9 | 8 | 9 | 9 |
 | FCA/PRA regulatory alignment posture | 20% | 8 | 7 | 7 | 8 | 8 |
@@ -403,7 +403,7 @@ Scores are 1–10; weighted score = sum(score × weight).
 **NexaBank AI Capability Roadmap — 2026–2028**
 
 | Capability | 12 months — Q4 2026 | 24 months — Q4 2027 | 36 months — Q4 2028 | Owner |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Customer Service AI | Production: balance, complaints, FAQs (live) | Expand: loan status, dispute handling, product comparisons | Proactive: outbound financial health nudges at customer consent | Head of Channels |
 | Document Intelligence | Mortgage pack summarisation (MVP in production) | Automated doc classification + structured data extraction | Straight-through processing for standard mortgage cases | Head of Mortgages |
 | Credit AI | Human-in-loop recommendations (live, Tier 3) | Automated decisions for loans < £5k; HITL for larger | Full automated credit journey with real-time explainability | Chief Risk Officer |
@@ -419,7 +419,7 @@ Scores are 1–10; weighted score = sum(score × weight).
 **NexaBank — Legacy AI / ML / RPA Technical Debt Register**
 
 | ID | System | Technology | Age | Core Problem | Business Impact | Migration Priority | Target State | Owner |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | TD-001 | RPA-Mortgage-001 | Blue Prism (v6) | 7 years | No audit trail; brittle to UI changes in source app; no error recovery | **High** — 40% of mortgage ops volume routes through this bot | **P1** — Migrate by Q2 2027 | AI agent with structured Core Banking API integration | Head of Mortgages |
 | TD-002 | ML-FraudV1 | Scikit-learn SVM | 5 years | No explainability; training data pre-dates GDPR; model drift detected Q1 2026 | **Critical** — blocks FCA Consumer Duty compliance | **P1** — Replace by Q4 2026 | XGBoost + LLM rationale layer (in progress) | Head of Fraud |
 | TD-003 | RPA-Collections-003 | AutomationAnywhere (v11) | 4 years | Hardcoded business logic; duplicates features now available natively in CRM | **Medium** — manual workaround available | **P2** — Decommission by Q3 2027 | CRM native automation (Salesforce Flow) | Head of Collections |
@@ -433,7 +433,7 @@ Scores are 1–10; weighted score = sum(score × weight).
 **NexaBank — LLMOps Maturity Progression**
 
 | Stage | Name | Characteristics | Key Milestones to Reach This Stage | NexaBank Status |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | Ad-Hoc | Individual developers use LLM APIs directly with personal accounts; prompts hardcoded in application code; no logging; no governance | — | **Completed** (was Q1 2025) |
 | 2 | Managed | Central prompt registry operational; shared API keys retired; basic logging enabled; team-level usage guidelines published | Prompt registry live; audit logging enabled; API key rotation policy enforced; usage reporting to Head of AI COE | **Current** (Q3 2026) |
 | 3 | Standardised | ARB review process enforced for all AI use cases; Model Risk Assessments completed; CI/CD pipeline for prompt changes; performance dashboards in place | All 5 prompt test gates enforced in CI; monthly model drift reports; ARB gate mandatory before production | **Target** Q2 2027 |
@@ -453,6 +453,7 @@ All metrics use NexaBank Q2 2026 data (April – June 2026) unless stated otherw
 **What it measures:** The percentage of agent task attempts that complete successfully without an unhandled error or an unexpected escalation to a human agent.
 
 **Formula:**
+
 ```
 Agent Reliability Rate = (Successful Completions / Total Task Attempts) × 100
 ```
@@ -460,13 +461,14 @@ Agent Reliability Rate = (Successful Completions / Total Task Attempts) × 100
 **NexaBank Q2 2026 — Customer Service Agent:**
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Total task attempts | 48,320 |
 | Tasks completed successfully | 46,150 |
 | Tasks that errored (unhandled exception) | 820 |
 | Tasks unexpectedly escalated to human (confidence < 0.7) | 1,350 |
 
 **Calculation:**
+
 ```
 Successful = 48,320 − 820 − 1,350 = 46,150
 Agent Reliability Rate = (46,150 / 48,320) × 100 = 95.5%
@@ -475,7 +477,7 @@ Agent Reliability Rate = (46,150 / 48,320) × 100 = 95.5%
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Target — Tier 2 system | ≥ 97% |
 | Target — Tier 1 system | ≥ 99% |
 | NexaBank Q2 result | 95.5% — **BELOW TARGET** |
@@ -489,6 +491,7 @@ Root cause: 820 errors traced to Core Banking API timeouts during peak hours (8�
 **What it measures:** Uptime of a production AI service against its SLA target, measured per system and rolled up to a portfolio average.
 
 **Formula:**
+
 ```
 Availability = (Total Minutes − Downtime Minutes) / Total Minutes × 100
 
@@ -498,13 +501,14 @@ Downtime = Planned maintenance + Unplanned outages
 **NexaBank Q2 2026 — Customer Service Agent:**
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Total minutes in quarter (91 days) | 130,960 |
 | Planned maintenance windows | 240 minutes |
 | Unplanned downtime (2 incidents) | 85 minutes |
 | SLA target | 99.5% |
 
 **Calculation:**
+
 ```
 Available minutes = 130,960 − 240 − 85 = 130,635
 Availability = (130,635 / 130,960) × 100 = 99.75%
@@ -526,6 +530,7 @@ Remaining unplanned downtime budget before SLA breach: 215 − 85 = 130 minutes 
 **What it measures:** How much AI system behaviour drifts over time — particularly as underlying models update. Drift is measured as the divergence between current model outputs and a fixed golden output baseline.
 
 **Formula:**
+
 ```
 Prompt Drift Index (PDI) = 1 − mean(cosine_similarity(current_outputs, golden_outputs))
 
@@ -539,13 +544,14 @@ Where:
 **NexaBank — Mortgage Document Summariser, June 2026:**
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Baseline model | Claude Sonnet 4.5 (January 2026) |
 | Current model | Claude Sonnet 4.6 (June 2026) |
 | Golden dataset size | 500 prompt/response pairs |
 | Mean cosine similarity across 500 pairs | 0.93 |
 
 **Calculation:**
+
 ```
 PDI = 1 − 0.93 = 0.07
 ```
@@ -553,7 +559,7 @@ PDI = 1 − 0.93 = 0.07
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Alert threshold | PDI > 0.08 |
 | NexaBank June 2026 | PDI = 0.07 — **BELOW THRESHOLD** (no action required) |
 
@@ -566,6 +572,7 @@ However, 12 specific prompts showed individual cosine similarity < 0.85 (high lo
 **What it measures:** The proportion of retrieved context chunks that are genuinely relevant to the query. Low precision means the LLM receives irrelevant context, wasting tokens and increasing hallucination risk.
 
 **Formula:**
+
 ```
 RAG Retrieval Precision = (Relevant Chunks Retrieved / Total Chunks Retrieved) × 100
 
@@ -577,7 +584,7 @@ Relevance assessed by:
 **NexaBank Q2 2026 — Policy FAQ Agent:**
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Evaluation set size | 200 representative queries |
 | Chunks retrieved per query (top-k) | 5 |
 | Total chunks evaluated | 1,000 |
@@ -585,6 +592,7 @@ Relevance assessed by:
 | Chunks rated irrelevant | 160 |
 
 **Calculation:**
+
 ```
 RAG Retrieval Precision = (840 / 1,000) × 100 = 84.0%
 ```
@@ -605,6 +613,7 @@ Primary cause: dense-only embedding retrieval struggles with exact regulatory cl
 **What it measures:** The average number of calendar days from when a business team submits an AI use case at Stage S0 (Intake) to the point the ARB issues a decision at Stage S2.
 
 **Formula:**
+
 ```
 Cycle Time = mean(S2_decision_date − S0_submission_date) across all cases in the period
 ```
@@ -612,7 +621,7 @@ Cycle Time = mean(S2_decision_date − S0_submission_date) across all cases in t
 **NexaBank Q2 2026 — 14 cases reviewed (sample of 5 shown):**
 
 | Use Case | Submitted | ARB Decision | Days |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | HR Leave Bot | 2026-04-03 | 2026-04-17 | 14 |
 | Fraud Alert Summariser | 2026-04-08 | 2026-04-30 | 22 |
 | Mortgage Rate FAQs | 2026-04-15 | 2026-05-06 | 21 |
@@ -621,6 +630,7 @@ Cycle Time = mean(S2_decision_date − S0_submission_date) across all cases in t
 | (9 further cases) | — | — | avg 16 |
 
 **Calculation:**
+
 ```
 Full Q2 mean (14 cases) = 18.7 calendar days ≈ 13.4 business days
 ```
@@ -641,6 +651,7 @@ The SAR Draft Generator case (27 days) was an outlier due to MLRO availability d
 **What it measures:** The count of unapproved AI tools, models, or API integrations detected in use across the organisation in a given quarter. Detected via network/DLP scanning, expense audits, GitHub secret scanning, and staff self-disclosure.
 
 **Formula:**
+
 ```
 Shadow AI Count = number of distinct unapproved AI tool instances detected in the period
 
@@ -650,12 +661,13 @@ This is a count metric — lower is better; target is zero (practically: < 2 per
 **NexaBank Q2 2026:**
 
 | # | Tool Detected | How Found | Team | Action Taken |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | ChatGPT Enterprise (personal account, 4 users) | Expense audit flagged subscription | Retail Banking Analytics | Blocked; team migrated to approved NexaBank Claude environment |
 | 2 | Cursor AI IDE (unlicensed, 2 developers) | GitHub Copilot usage audit identified non-standard editor | Software Engineering | Replaced with approved GitHub Copilot Enterprise |
 | 3 | Perplexity Pro (3 users) | DLP network scan detected Perplexity API calls from internal IPs | Legal | Reviewed — approved as low-risk research tool and added to approved list |
 
 **Calculation:**
+
 ```
 Shadow AI Incidents Q2 2026 = 3
 ```
@@ -663,7 +675,7 @@ Shadow AI Incidents Q2 2026 = 3
 **Interpretation:**
 
 | Period | Count | Trend |
-|---|---|---|
+| --- | --- | --- |
 | Q1 2026 baseline | 7 | — |
 | Q2 2026 | 3 | −57% quarter-on-quarter |
 | Target by Q4 2026 | < 2 | On track |
@@ -677,23 +689,25 @@ The decline is attributed to the AI tool awareness programme launched in March 2
 **What it measures:** The percentage of AI models currently running in production that have a completed, current Model Risk Assessment on file.
 
 **Formula:**
+
 ```
 Model Risk Coverage = (Models with Current MRA / Total Production AI Models) × 100
 
-"Current" = MRA completed within the last 12 months, 
+"Current" = MRA completed within the last 12 months,
             OR within 30 days of a major underlying model version change
 ```
 
 **NexaBank Q2 2026:**
 
 | Category | Count |
-|---|---|
+| --- | --- |
 | Total AI models in production | 18 |
 | Models with a current MRA | 14 |
 | Models with expired MRA (> 12 months old) | 3 |
 | Models with no MRA on file | 1 |
 
 **Calculation:**
+
 ```
 Model Risk Coverage = (14 / 18) × 100 = 77.8%
 ```
@@ -701,7 +715,7 @@ Model Risk Coverage = (14 / 18) × 100 = 77.8%
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Target (FCA expectation under SR 11-7) | 100% by Q4 2026 |
 | NexaBank Q2 result | 77.8% — **BELOW TARGET** |
 
@@ -714,6 +728,7 @@ The 4 uncovered models are all from the Technical Debt Register (TD-001 through 
 **What it measures:** The percentage of audit control items that passed during a formal AI system compliance audit, assessed against NexaBank's internal AI standards (and optionally against ISO 42001 or NIST AI RMF).
 
 **Formula:**
+
 ```
 Compliance Audit Pass Rate = (Passed Audit Items / Total Audit Items Assessed) × 100
 ```
@@ -721,13 +736,14 @@ Compliance Audit Pass Rate = (Passed Audit Items / Total Audit Items Assessed) �
 **NexaBank — Credit Scoring Agent External ISO 42001 Audit, June 2026:**
 
 | Result | Count |
-|---|---|
+| --- | --- |
 | Total control items assessed | 47 |
 | Controls passed | 41 |
 | Controls with minor findings (low severity) | 4 |
 | Controls with major findings (high severity) | 2 |
 
 **Calculation:**
+
 ```
 Overall Pass Rate       = (41 / 47) × 100 = 87.2%
 Pass + minor findings   = (45 / 47) × 100 = 95.7%
@@ -737,7 +753,7 @@ Major control failures  = 2 / 47           = 4.3%
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Target — major controls | 100% pass |
 | Target — overall | ≥ 90% |
 | NexaBank June 2026 | 87.2% — **BELOW TARGET** (2 major findings) |
@@ -751,6 +767,7 @@ The two major findings: (1) Explainability documentation for credit decisions wa
 **What it measures:** The net financial return on AI automation investment, expressed as a percentage of the total cost deployed.
 
 **Formula:**
+
 ```
 Automation ROI = ((Value Saved − Total Cost) / Total Cost) × 100
 
@@ -761,7 +778,7 @@ Total Cost  = Infrastructure + API fees + Tooling licences + Engineering time
 **NexaBank Q2 2026 — Customer Service Agent:**
 
 | Item | Value |
-|---|---|
+| --- | --- |
 | Total queries handled without human intervention | 41,200 |
 | Average human handling time per query | 8 minutes |
 | Hours saved by automation | 41,200 × 8 ÷ 60 = **5,493 hours** |
@@ -775,6 +792,7 @@ Total Cost  = Infrastructure + API fees + Tooling licences + Engineering time
 | **Total Cost** | **£50,600** |
 
 **Calculation:**
+
 ```
 Automation ROI = ((£168,213 − £50,600) / £50,600) × 100
               = (£117,613 / £50,600) × 100
@@ -784,7 +802,7 @@ Automation ROI = ((£168,213 − £50,600) / £50,600) × 100
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Year 1 target | 150% ROI |
 | NexaBank Q2 result | 232.4% — **EXCEEDS TARGET** |
 | Payback period | ~5 weeks |
@@ -798,6 +816,7 @@ Excludes intangible benefits: 24/7 availability (no shift premiums), consistent 
 **What it measures:** The percentage increase in engineering throughput (story points delivered per sprint) attributable to AI-assisted development tools.
 
 **Formula:**
+
 ```
 Developer Velocity Lift = ((Post-AI Velocity − Pre-AI Velocity) / Pre-AI Velocity) × 100
 
@@ -807,11 +826,12 @@ Velocity = average story points delivered per 2-week sprint per developer
 **NexaBank — 3 teams, 38 developers:**
 
 | Period | Duration | Avg Story Points / Dev / Sprint |
-|---|---|---|
+| --- | --- | --- |
 | Pre-AI baseline | Sept 2025 – Feb 2026 (6 months) | 42 |
 | Post-AI adoption | Mar 2026 – May 2026 (3 months) | 54 |
 
 **Calculation:**
+
 ```
 Velocity Lift = ((54 − 42) / 42) × 100
              = (12 / 42) × 100
@@ -821,7 +841,7 @@ Velocity Lift = ((54 − 42) / 42) × 100
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Target (within 6 months of adoption) | ≥ 20% |
 | NexaBank result | 28.6% — **EXCEEDS TARGET** |
 
@@ -834,6 +854,7 @@ Caveat: story point inflation is a known risk — teams may unconsciously inflat
 **What it measures:** The proportion of decisions made with AI assistance that achieved the expected business outcome, assessed retrospectively after sufficient time has elapsed to observe the outcome.
 
 **Formula:**
+
 ```
 AI-Assisted Decision Quality = (Correct AI-Assisted Decisions / Total AI-Assisted Decisions Assessed) × 100
 
@@ -845,13 +866,14 @@ AI-Assisted Decision Quality = (Correct AI-Assisted Decisions / Total AI-Assiste
 **NexaBank — Credit Scoring Agent, Q4 2025 cohort reviewed at 6-month mark (Q2 2026):**
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Total AI-assisted credit decisions in Q4 2025 | 3,840 |
 | Decisions assessed at 6-month outcome window | 3,840 (100%) |
 | Decisions where outcome matched model expectation | 3,648 |
 | Unexpected outcomes (default, dispute, or identified model error) | 192 |
 
 **Calculation:**
+
 ```
 AI-Assisted Decision Quality = (3,648 / 3,840) × 100 = 95.0%
 ```
@@ -859,7 +881,7 @@ AI-Assisted Decision Quality = (3,648 / 3,840) × 100 = 95.0%
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Target (aligned with human credit officer benchmark) | ≥ 95% |
 | Human credit officer baseline | 94.7% |
 | NexaBank Q2 result | 95.0% — **MEETS TARGET** and outperforms human baseline |
@@ -873,6 +895,7 @@ The 192 unexpected outcomes (5%) are reviewed by the Model Risk team each quarte
 **What it measures:** The total cost incurred per single AI-processed transaction or interaction. Used for FinOps tracking, budget forecasting, and optimisation decisions.
 
 **Formula:**
+
 ```
 Cost per AI Transaction = (Monthly Infrastructure + Monthly API Fees + Monthly Tooling) / Monthly AI Transactions
 
@@ -882,7 +905,7 @@ Include: compute, storage, egress, API token costs, prorated tooling and licence
 **NexaBank — Customer Service Agent, June 2026:**
 
 | Cost Component | Monthly Cost |
-|---|---|
+| --- | --- |
 | Azure AKS compute (inference pods) | £8,200 |
 | Anthropic API — Claude Haiku (2.1B tokens processed) | £6,300 |
 | Azure AI Search — vector retrieval | £1,100 |
@@ -891,6 +914,7 @@ Include: compute, storage, egress, API token costs, prorated tooling and licence
 | **Total Monthly Transactions** | **16,450** |
 
 **Calculation:**
+
 ```
 Cost per AI Transaction = £16,400 / 16,450 = £0.997 ≈ £1.00 per transaction
 ```
@@ -898,7 +922,7 @@ Cost per AI Transaction = £16,400 / 16,450 = £0.997 ≈ £1.00 per transaction
 **Interpretation:**
 
 | Rating | Threshold |
-|---|---|
+| --- | --- |
 | Target cost per transaction | ≤ £1.20 |
 | Human handling cost per equivalent query | £6.80 |
 | NexaBank June 2026 | £1.00 — **MEETS TARGET** |

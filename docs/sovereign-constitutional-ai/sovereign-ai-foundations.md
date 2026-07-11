@@ -66,7 +66,7 @@ Data sovereignty is the principle that data is subject to the laws and governanc
 **Key components:**
 
 | Component | Description | Implementation mechanism |
-|---|---|---|
+| --- | --- | --- |
 | Data localization | Data must remain within national borders | Sovereign cloud regions; on-prem data centers |
 | Data governance | National laws govern data use, access, sharing | Data residency agreements; DPA contracts |
 | Data portability | Citizens/organizations can move their data | Open data standards; portability APIs |
@@ -74,6 +74,7 @@ Data sovereignty is the principle that data is subject to the laws and governanc
 | Data deletion rights | Right to be forgotten applies across AI systems | GDPR Art. 17 + AI system delete cascades |
 
 **AI-specific data sovereignty challenges:**
+
 - Training data used to build models may embed patterns from protected datasets even after deletion ("memorization")
 - RAG systems pull data dynamically from sources that may cross jurisdictions
 - Agent memory stores accumulate user data across sessions; residency must be maintained
@@ -105,6 +106,7 @@ Data sovereignty is the principle that data is subject to the laws and governanc
 Compute sovereignty is control over the hardware (GPUs, TPUs, NPUs) and infrastructure that runs AI workloads.
 
 **The compute dependency problem:** In 2025, approximately 90% of global AI compute was concentrated in three hyperscaler clouds (AWS, Azure, GCP) and a handful of GPU manufacturers. Nations and enterprises dependent on this compute have their AI capabilities subject to:
+
 - Export control restrictions (US BIS Entity List, ITAR)
 - Hyperscaler pricing and availability decisions
 - Jurisdiction of the compute provider's home nation
@@ -112,7 +114,7 @@ Compute sovereignty is control over the hardware (GPUs, TPUs, NPUs) and infrastr
 **Sovereign compute pathways:**
 
 | Pathway | Description | Examples | Timeline |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **National AI compute clusters** | Government-funded GPU clusters on sovereign infrastructure | France's GENCI, India's AI supercomputers, UAE's Falcon compute | 3–7 years to full capability |
 | **Sovereign cloud regions** | Hyperscaler regions with national data isolation guarantees | AWS GovCloud, Azure Government, OVHcloud (France), G42 (UAE) | Available now |
 | **Private AI infrastructure** | Enterprise-owned on-prem or co-lo GPU clusters | Financial sector, defense, telcos | Available now (CapEx intensive) |
@@ -140,7 +142,7 @@ control         limited control weights            pipeline
 **National model sovereignty programs (July 2026):**
 
 | Nation | Model Program | Status |
-|---|---|---|
+| --- | --- | --- |
 | UAE | Falcon (TII) | Operational; Falcon 180B released |
 | France | BLOOM, Mistral (gov-supported) | Operational; EU flagship |
 | India | IndiaAI Foundation Models | In development; BharatGPT initiative |
@@ -151,6 +153,7 @@ control         limited control weights            pipeline
 | China | Full domestic model stack | Operational (regulatory mandate) |
 
 **Enterprise model sovereignty patterns:**
+
 - Fine-tuned open-weight models (Llama 3, Mistral, Falcon) on proprietary data
 - Retrieval-augmented generation over sovereign knowledge bases
 - Enterprise-specific instruction-tuning and RLHF pipelines
@@ -165,7 +168,7 @@ Infrastructure sovereignty encompasses compute, networking, storage, and the ope
 **Sovereign cloud tiers:**
 
 | Tier | Definition | Examples |
-|---|---|---|
+| --- | --- | --- |
 | **Data Residency** | Data stays in-country; operated by global hyperscaler | AWS eu-west-1, Azure Germany |
 | **Operational Sovereignty** | Operated by national entity with foreign technology | T-Systems (Azure), Capgemini (AWS France) |
 | **Technology Sovereignty** | National entity controls both operations and underlying technology | G42 (UAE), OVHcloud (FR), Cloudreach (UK) |
@@ -174,6 +177,7 @@ Infrastructure sovereignty encompasses compute, networking, storage, and the ope
 **Critical infrastructure AI sovereignty requirements:**
 
 For power grids, water systems, defense systems, and financial market infrastructure, sovereignty requirements extend beyond cloud to include:
+
 - Air-gapped AI operations (no external connectivity during critical functions)
 - Hardware security modules (HSMs) for model weight encryption
 - Quantum-resistant cryptography for model signing chains
@@ -184,6 +188,7 @@ For power grids, water systems, defense systems, and financial market infrastruc
 A nation or enterprise with full data, compute, model, and infrastructure sovereignty but dependent on foreign talent retains a critical vulnerability.
 
 **Talent sovereignty components:**
+
 - National AI curriculum and university programs
 - AI researcher immigration and retention policies
 - Enterprise AI Center of Excellence (CoE) with institutional knowledge retention
@@ -191,6 +196,7 @@ A nation or enterprise with full data, compute, model, and infrastructure sovere
 - Open-source contribution programs to build national reputation
 
 **Enterprise talent sovereignty risks:**
+
 - Key-person dependency in AI governance and model operations
 - Brain drain to frontier AI labs or foreign enterprises
 - Contractor/SI dependency with no internal capability transfer
@@ -201,6 +207,7 @@ A nation or enterprise with full data, compute, model, and infrastructure sovere
 Governance sovereignty is the ability to make autonomous decisions about how AI systems operate within your jurisdiction — without external veto or override capability.
 
 **What governance sovereignty enables:**
+
 - Setting your own AI risk thresholds independent of vendor defaults
 - Modifying model behavior (fine-tuning, RAG, guardrails) without vendor permission
 - Auditing model behavior at the weight level if required
@@ -220,7 +227,7 @@ Enterprise Sovereign AI is the organizational equivalent of national sovereign A
 **Why enterprises build or own models rather than only consuming APIs:**
 
 | Driver | Detail |
-|---|---|
+| --- | --- |
 | **Proprietary data advantage** | Training on internal data creates models with unique domain knowledge not accessible to competitors |
 | **Data security** | Sensitive customer, financial, clinical data cannot flow to external API endpoints |
 | **Regulatory compliance** | Regulators (SEC, FDA, PRA) may require explainability and access to model internals |
@@ -261,6 +268,7 @@ Enterprise Sovereign AI is the organizational equivalent of national sovereign A
 Air-gapped AI operates with no network connectivity to external services — required for classified government operations, critical national infrastructure, and some regulated financial environments.
 
 **Air-gapped AI design requirements:**
+
 - All model weights stored on encrypted local storage (HSM-backed)
 - No telemetry, usage metrics, or update requests leaving the enclave
 - MCP servers and tools operate on internal networks only
@@ -268,6 +276,7 @@ Air-gapped AI operates with no network connectivity to external services — req
 - Offline license validation and usage tracking
 
 **Air-gapped AI operational challenges:**
+
 - Model staleness — no access to frontier model updates
 - Tool ecosystem — MCP tools must be fully self-contained
 - Evaluation — no access to external benchmarks; must run internal evals
@@ -276,6 +285,7 @@ Air-gapped AI operates with no network connectivity to external services — req
 ### 3.4 Regulatory AI and Internal Agent Ecosystems
 
 **Regulatory AI** refers to AI systems purpose-built for compliance functions: regulatory reporting, risk assessment, audit, and supervisory interaction. These systems have heightened sovereignty requirements because:
+
 - They generate outputs submitted to regulators
 - They must be explainable at the decision level, not just the model level
 - They may be subject to regulatory inspection
@@ -353,7 +363,7 @@ SOVEREIGN AI REFERENCE ARCHITECTURE — ENTERPRISE GRADE
 **Reference architecture decision points:**
 
 | Decision | Sovereign-Maximizing Choice | Pragmatic Alternative |
-|---|---|---|
+| --- | --- | --- |
 | Model | Own pre-trained or fine-tuned open-weight | Fine-tuned open-weight on sovereign infra |
 | Inference | On-prem GPU cluster | Sovereign cloud region with dedicated capacity |
 | Data storage | On-prem encrypted storage | Sovereign cloud with customer-managed keys |
@@ -366,6 +376,7 @@ SOVEREIGN AI REFERENCE ARCHITECTURE — ENTERPRISE GRADE
 ## 5. AI Digital Twins and Infrastructure Control
 
 **AI Digital Twins** are live replicas of AI system state — model versions, data lineage, agent behavior logs, policy states — used for:
+
 - Simulating proposed changes before production rollout
 - Regulatory demonstration of AI system behavior
 - Disaster recovery and audit replay
@@ -378,7 +389,7 @@ SOVEREIGN AI REFERENCE ARCHITECTURE — ENTERPRISE GRADE
 ## 6. Sovereign AI Maturity Assessment
 
 | Dimension | Level 1 (Dependent) | Level 2 (Partial) | Level 3 (Managed) | Level 4 (Sovereign) |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Data** | All data flows to foreign clouds | Data residency enforced for sensitive classes | Full residency + lineage for all AI data | Data sovereignty verified by independent audit |
 | **Compute** | 100% foreign hyperscaler | Sovereign cloud for regulated workloads | Hybrid: sovereign primary, foreign for burst | Full sovereign compute for critical AI |
 | **Model** | API-only consumption | Fine-tuned foreign model on sovereign infra | Own domain-specific models | Full pre-training + RLHF on sovereign stack |
@@ -390,18 +401,23 @@ SOVEREIGN AI REFERENCE ARCHITECTURE — ENTERPRISE GRADE
 ## 7. How Leading Nations Are Building Sovereign AI
 
 ### France / EU
+
 LEAM, Mistral, and the EU AI Act together create a regulatory + industry strategy: mandate transparency and risk controls via law, fund sovereign model development, and build sovereign cloud (OVHcloud, T-Systems, Capgemini partnerships with hyperscalers).
 
 ### UAE
+
 G42's Falcon models (TII) represent the most advanced emerging-market sovereign AI strategy: RLHF-aligned models, sovereign compute, and governance frameworks aligned to UAE AI Strategy 2031. G42's partnership with Microsoft includes a $1.5B investment with UAE data sovereignty guarantees.
 
 ### India
+
 IndiaAI Mission (2024–2029) combines compute infrastructure (10,000 GPU cluster), a foundation models program (BharatGPT, Sarvam), and a regulatory sandbox. Key differentiator: India has 22 official languages, requiring sovereign multilingual models not available from US providers.
 
 ### Singapore
+
 AI Singapore's SEA-LION model targets Southeast Asian languages. Singapore's approach is pragmatic: use global frontier models for capability, build sovereign models for cultural/linguistic accuracy, and enforce data governance via PDPA and sector regulations.
 
 ### Enterprise Sector
+
 Banks (Deutsche Bank, JPMorgan, HSBC), healthcare systems (NHS, Mayo Clinic), and telecom operators (BT, STC) are building private AI platforms as "regulatory AI" infrastructure — not to avoid frontier models entirely, but to maintain control over regulated workloads.
 
 ---

@@ -4,12 +4,9 @@ Adds missing required fields without overwriting existing ones.
 Writes a changes log to stdout and to _meta/taxonomy-changes.md.
 """
 
-import os
 import re
-import sys
 import subprocess
 from pathlib import Path
-from datetime import date
 
 REPO_ROOT = Path(__file__).parents[4]
 DOCS_DIR = REPO_ROOT / "docs"
@@ -18,7 +15,16 @@ TAXONOMY_LOG = REPO_ROOT / "_meta" / "taxonomy-changes.md"
 TODAY = "2026-07-10"
 LAST_REVIEWED = "2026-07-10"
 
-REQUIRED_FIELDS = ["title", "date_created", "last_reviewed", "status", "supersedes", "source_type", "source_file", "tags"]
+REQUIRED_FIELDS = [
+    "title",
+    "date_created",
+    "last_reviewed",
+    "status",
+    "supersedes",
+    "source_type",
+    "source_file",
+    "tags",
+]
 
 DEFAULTS = {
     "last_reviewed": LAST_REVIEWED,
@@ -34,10 +40,9 @@ def git_file_date(fpath: Path) -> str:
     """Return oldest git commit date for file as YYYY-MM-DD, or TODAY."""
     try:
         result = subprocess.run(
-            ["git", "log", "--follow", "--format=%as", "--", str(fpath)],
-            capture_output=True, text=True, cwd=REPO_ROOT
+            ["git", "log", "--follow", "--format=%as", "--", str(fpath)], capture_output=True, text=True, cwd=REPO_ROOT
         )
-        lines = [l.strip() for l in result.stdout.strip().splitlines() if l.strip()]
+        lines = [line.strip() for line in result.stdout.strip().splitlines() if line.strip()]
         if lines:
             return lines[-1]  # oldest commit
     except Exception:
@@ -48,7 +53,7 @@ def git_file_date(fpath: Path) -> str:
 def extract_title_from_body(body: str) -> str:
     """Extract first H1 from markdown body."""
     for line in body.splitlines():
-        m = re.match(r'^#\s+(.+)', line)
+        m = re.match(r"^#\s+(.+)", line)
         if m:
             return m.group(1).strip()
     return ""
@@ -62,11 +67,11 @@ def parse_frontmatter(text: str):
     if end == -1:
         return None, None, text
     fm_raw = text[3:end].strip()
-    body = text[end + 4:].lstrip("\r\n")
+    body = text[end + 4 :].lstrip("\r\n")
     # Parse fm_raw into a simple dict (preserve order, raw values)
     fm_dict = {}
     for line in fm_raw.splitlines():
-        m = re.match(r'^(\w[\w_-]*):\s*(.*)', line)
+        m = re.match(r"^(\w[\w_-]*):\s*(.*)", line)
         if m:
             fm_dict[m.group(1)] = m.group(2).strip()
     return fm_dict, fm_raw, body

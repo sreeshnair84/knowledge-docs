@@ -9,15 +9,15 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE AI GATEWAY** 
+# **ENTERPRISE AI GATEWAY**
 
-Design · Integration · Governance · Future 
+Design · Integration · Governance · Future
 
-A Comprehensive Enterprise Architecture Reference for AI Gateway Strategy, Security, Resilience, Observability, and Operational Excellence 
+A Comprehensive Enterprise Architecture Reference for AI Gateway Strategy, Security, Resilience, Observability, and Operational Excellence
 
-Enterprise AI Architecture Practice · April 2026 Version 1.0 · CONFIDENTIAL 
+Enterprise AI Architecture Practice · April 2026 Version 1.0 · CONFIDENTIAL
 
-## **Table of Contents** 
+## **Table of Contents**
 
 |**CHAP**|**TER —**<br>**Table of C**|
 |---|---|
@@ -32,17 +32,17 @@ Enterprise AI Architecture Practice · April 2026 Version 1.0 · CONFIDENTIAL
 |**09**|The Future of AI Gateways|
 |**10**|Appendix — Snippets Reference|
 
-**CHAPTER 01** 
+**CHAPTER 01**
 
-## **Market Landscape & Big Wins** 
+## **Market Landscape & Big Wins**
 
-The emergence of large language models (LLMs) as production workloads has created a new infrastructure layer — the **AI Gateway** . Analogous to the API gateway revolution of the 2010s, the AI gateway is the critical control plane that mediates every interaction between enterprise consumers and AI providers (OpenAI, Anthropic, Cohere, Azure OpenAI, AWS Bedrock, Google Vertex AI, open-source Llama/Mistral, and private fine-tuned models). It is the single pane of glass for routing, cost management, security enforcement, observability, and policy compliance across a heterogeneous AI estate. 
+The emergence of large language models (LLMs) as production workloads has created a new infrastructure layer — the **AI Gateway** . Analogous to the API gateway revolution of the 2010s, the AI gateway is the critical control plane that mediates every interaction between enterprise consumers and AI providers (OpenAI, Anthropic, Cohere, Azure OpenAI, AWS Bedrock, Google Vertex AI, open-source Llama/Mistral, and private fine-tuned models). It is the single pane of glass for routing, cost management, security enforcement, observability, and policy compliance across a heterogeneous AI estate.
 
-### **01.1 Defining the AI Gateway** 
+### **01.1 Defining the AI Gateway**
 
-An AI Gateway is a reverse-proxy, policy engine, and observability hub positioned inline between all AI consumers (applications, agents, pipelines) and AI providers. It abstracts provider APIs behind a unified interface, enforcing cross-cutting concerns without requiring application-level changes. 
+An AI Gateway is a reverse-proxy, policy engine, and observability hub positioned inline between all AI consumers (applications, agents, pipelines) and AI providers. It abstracts provider APIs behind a unified interface, enforcing cross-cutting concerns without requiring application-level changes.
 
-### **01.2 Key Market Players** 
+### **01.2 Key Market Players**
 
 |**Gateway**|**Origin**|**Key Differentiator**|**Target Segment**|**License**|
 |---|---|---|---|---|
@@ -61,7 +61,7 @@ An AI Gateway is a reverse-proxy, policy engine, and observability hub positione
 |WSO2 Choreo AI|WSO2|Open-source, microgateway, Ballerina|OSS enterprise|Apache 2|
 |GW||native|||
 
-### **01.3 Big Wins Delivered by AI Gateways** 
+### **01.3 Big Wins Delivered by AI Gateways**
 
 |I**Cost**<br>**Reduction**<br>**40–70%**<br>Semantic caching returns cached responses for semantically equivalent prompts,<br>eliminating redundant LLM calls. Organisations deploying Kong's semantic cache<br>plugin report token spend reductions of 40–70% on high-volume RAG workloads.|
 |---|
@@ -70,43 +70,43 @@ An AI Gateway is a reverse-proxy, policy engine, and observability hub positione
 |I**Developer**<br>**Velocity**<br>A single SDK against a unified gateway endpoint removes per-provider integration<br>work. Teams ship AI features 3x faster than point-to-point integrations.|
 |I**Security**<br>**Posture**<br>Gateway-level prompt injection detection, jailbreak prevention, and output content<br>filtering catch threats before they reach business logic layers.|
 
-**CHAPTER 02** 
+**CHAPTER 02**
 
-## **Problems AI Gateways Solve** 
+## **Problems AI Gateways Solve**
 
-Without a gateway layer, enterprises face a sprawl of point-to-point integrations, inconsistent security postures, uncontrolled costs, and zero cross-cutting observability. The following taxonomy covers the full problem surface that AI gateways address. 
+Without a gateway layer, enterprises face a sprawl of point-to-point integrations, inconsistent security postures, uncontrolled costs, and zero cross-cutting observability. The following taxonomy covers the full problem surface that AI gateways address.
 
-#### **Provider Lock-in & API Fragmentation** 
+#### **Provider Lock-in & API Fragmentation**
 
-Each AI provider has a distinct API schema, authentication mechanism, error taxonomy, and rate-limit strategy. Applications hardcoded to one provider cannot leverage competitive pricing, regional availability, or specialised model capabilities. The gateway abstracts all providers behind a unified OpenAI-compatible endpoint. 
+Each AI provider has a distinct API schema, authentication mechanism, error taxonomy, and rate-limit strategy. Applications hardcoded to one provider cannot leverage competitive pricing, regional availability, or specialised model capabilities. The gateway abstracts all providers behind a unified OpenAI-compatible endpoint.
 
-#### **Cost Explosion & Token Sprawl** 
+#### **Cost Explosion & Token Sprawl**
 
-Unbounded LLM consumption leads to unpredictable cloud bills. Without per-team budget enforcement, token quotas, and semantic caching, costs scale linearly — or super-linearly — with user growth. Gateways implement budget guardrails, quota exhaustion policies (queue, throttle, or reject), and caching layers that dramatically reduce token burn. 
+Unbounded LLM consumption leads to unpredictable cloud bills. Without per-team budget enforcement, token quotas, and semantic caching, costs scale linearly — or super-linearly — with user growth. Gateways implement budget guardrails, quota exhaustion policies (queue, throttle, or reject), and caching layers that dramatically reduce token burn.
 
-#### **Security Surface Expansion** 
+#### **Security Surface Expansion**
 
-AI endpoints introduce novel attack vectors: prompt injection, jailbreak attempts, data exfiltration via crafted prompts, PII leakage in completions, and model inversion. Traditional API gateways lack LLM-aware threat models. AI gateways include semantic guards, regex + ML-based PII detectors, and output content classifiers. 
+AI endpoints introduce novel attack vectors: prompt injection, jailbreak attempts, data exfiltration via crafted prompts, PII leakage in completions, and model inversion. Traditional API gateways lack LLM-aware threat models. AI gateways include semantic guards, regex + ML-based PII detectors, and output content classifiers.
 
-#### **Observability Blind Spots** 
+#### **Observability Blind Spots**
 
-Token usage, latency distributions per model, prompt/completion content for audit, semantic drift, and hallucination rates are invisible without specialised telemetry. AI gateways emit rich structured logs, metrics (TTFT, TPS, token counts), and traces to OpenTelemetry collectors, Grafana, Datadog, and Splunk. 
+Token usage, latency distributions per model, prompt/completion content for audit, semantic drift, and hallucination rates are invisible without specialised telemetry. AI gateways emit rich structured logs, metrics (TTFT, TPS, token counts), and traces to OpenTelemetry collectors, Grafana, Datadog, and Splunk.
 
-#### **Governance & Compliance Gaps** 
+#### **Governance & Compliance Gaps**
 
-GDPR, HIPAA, SOC 2, EU AI Act, and internal AI Ethics policies require audit trails, data residency enforcement, model explainability records, and consent management. Gateways enforce data residency routing, retain immutable audit logs, and integrate with policy-as-code frameworks (OPA, Styra). 
+GDPR, HIPAA, SOC 2, EU AI Act, and internal AI Ethics policies require audit trails, data residency enforcement, model explainability records, and consent management. Gateways enforce data residency routing, retain immutable audit logs, and integrate with policy-as-code frameworks (OPA, Styra).
 
-#### **Reliability & Resilience Deficits** 
+#### **Reliability & Resilience Deficits**
 
-LLM providers experience outages, rate-limit spikes, and latency degradation. Without circuit breakers, retry logic, and multi-provider fallback, a single provider hiccup cascades to full application failure. Gateways implement health-aware load balancing, exponential backoff, bulkhead isolation, and automatic failover. 
+LLM providers experience outages, rate-limit spikes, and latency degradation. Without circuit breakers, retry logic, and multi-provider fallback, a single provider hiccup cascades to full application failure. Gateways implement health-aware load balancing, exponential backoff, bulkhead isolation, and automatic failover.
 
-**CHAPTER 03** 
+**CHAPTER 03**
 
-## **Core Design — Architecture Blueprint** 
+## **Core Design — Architecture Blueprint**
 
-The reference architecture is organised in five horizontal planes. Each plane is independently scalable and replaceable, enabling progressive adoption and avoiding monolithic coupling. The design targets cloud-native Kubernetes deployment with GitOps-managed configuration. 
+The reference architecture is organised in five horizontal planes. Each plane is independently scalable and replaceable, enabling progressive adoption and avoiding monolithic coupling. The design targets cloud-native Kubernetes deployment with GitOps-managed configuration.
 
-### **03.1 Five-Plane Reference Architecture** 
+### **03.1 Five-Plane Reference Architecture**
 
 |**CONSUMER**<br>**PLANE**|`Web / Mobile Apps Agent Frameworks (LangChain, AutoGen) CI/CD Pipelines BI / Analytics`<br>`Tools 3rd-party SaaS`|
 |---|---|
@@ -115,9 +115,9 @@ The reference architecture is organised in five horizontal planes. Each plane is
 |**OBSERVABILI**<br>**TY PLANE**|`OTel Collector Prometheus + Grafana Jaeger Distributed Tracing LLM-specific Metrics`<br>`Dashboard Cost Attribution (Finops)`|
 |**GOVERNANCE**<br>**PLANE**|`OPA Policy Engine Audit Log Store (immutable S3/Splunk) Data Residency Enforcer AI Ethics`<br>`Policy Registry Compliance Reporter (SOC2/GDPR/HIPAA)`|
 
-### **03.2 Gateway Internal Components** 
+### **03.2 Gateway Internal Components**
 
-Within the Gateway Plane, the following micro-components process each request in a deterministic pipeline. The pipeline is expressed as an ordered plugin chain executed per-request: 
+Within the Gateway Plane, the following micro-components process each request in a deterministic pipeline. The pipeline is expressed as an ordered plugin chain executed per-request:
 
 |**1. Ingress TLS Termination**|mTLS, certificate rotation, ALPN negotiation|
 |---|---|
@@ -135,7 +135,7 @@ Within the Gateway Plane, the following micro-components process each request in
 |**11. Cache Populate**|Store response embedding + text in vector cache with TTL|
 |**12. Telemetry Emit**|OTel spans, token metrics, cost attribution, audit log record|
 
-### **03.3 Data Flow Snippet** 
+### **03.3 Data Flow Snippet**
 
 |I**Kong AI Gateway — Declarative Route Config (snippet)**<br>|
 |---|
@@ -169,27 +169,27 @@ Within the Gateway Plane, the following micro-components process each request in
 |`allowed_fails: 2`|
 |`cooldown_time: 30`|
 
-#### **CHAPTER 04** 
+#### **CHAPTER 04**
 
-## **Harness & AGUI Integration** 
+## **Harness & AGUI Integration**
 
-The AI Gateway integrates with two rapidly evolving paradigms: the **AI Harness** (the orchestration and agent execution layer) and **AGUI** (Agent-to-UI protocol, enabling real-time streaming agent state into frontend interfaces). Together these define how complex agentic workflows interact with the gateway at runtime. 
+The AI Gateway integrates with two rapidly evolving paradigms: the **AI Harness** (the orchestration and agent execution layer) and **AGUI** (Agent-to-UI protocol, enabling real-time streaming agent state into frontend interfaces). Together these define how complex agentic workflows interact with the gateway at runtime.
 
-### **04.1 AI Harness Integration** 
+### **04.1 AI Harness Integration**
 
-AI Harnesses — frameworks such as LangChain, LlamaIndex, AutoGen, CrewAI, and Semantic Kernel — orchestrate multi-step, multi-model workflows. The gateway is the single egress point for all LLM calls originating inside the harness, ensuring that observability, rate limiting, and guardrails apply regardless of which model or step is executing. 
+AI Harnesses — frameworks such as LangChain, LlamaIndex, AutoGen, CrewAI, and Semantic Kernel — orchestrate multi-step, multi-model workflows. The gateway is the single egress point for all LLM calls originating inside the harness, ensuring that observability, rate limiting, and guardrails apply regardless of which model or step is executing.
 
-- Single endpoint injection: harness is configured with **OPENAI_BASE_URL=https://gateway/v1** — no per-model client changes required. 
+- Single endpoint injection: harness is configured with **OPENAI_BASE_URL=<https://gateway/v1>** — no per-model client changes required.
 
-- Context propagation: W3C TraceContext headers carried through harness → gateway → provider for end-to-end distributed tracing. 
+- Context propagation: W3C TraceContext headers carried through harness → gateway → provider for end-to-end distributed tracing.
 
-- Tool call interception: gateway can log, cache, or gate function/tool call results passing through the harness execution loop. 
+- Tool call interception: gateway can log, cache, or gate function/tool call results passing through the harness execution loop.
 
-- Multi-agent token budgeting: each agent identity carries a JWT sub-claim mapped to a gateway quota bucket, preventing runaway agent spend. 
+- Multi-agent token budgeting: each agent identity carries a JWT sub-claim mapped to a gateway quota bucket, preventing runaway agent spend.
 
-- Streaming support: gateway transparently proxies Server-Sent Events (SSE) chunks, enabling real-time token streaming to harness consumers. 
+- Streaming support: gateway transparently proxies Server-Sent Events (SSE) chunks, enabling real-time token streaming to harness consumers.
 
-- Prompt versioning: harness injects **X-Prompt-Version** header; gateway routes to the model version that was validated for that prompt template. 
+- Prompt versioning: harness injects **X-Prompt-Version** header; gateway routes to the model version that was validated for that prompt template.
 
 |I**LangChain**→**Gateway (snippet)**|
 |---|
@@ -202,31 +202,31 @@ AI Harnesses — frameworks such as LangChain, LlamaIndex, AutoGen, CrewAI, and 
 |`'X-Team-ID': 'platform-engineering',`|
 |`'X-Trace-ID': trace_context.span_id,`<br>`}`<br>`)`|
 
-### **04.2 AGUI — Agent-to-UI Protocol** 
+### **04.2 AGUI — Agent-to-UI Protocol**
 
-AGUI (open protocol, CopilotKit reference implementation) defines a streaming event schema that lets agent backends push structured state updates — text deltas, tool calls, state snapshots, lifecycle events — directly to 
+AGUI (open protocol, CopilotKit reference implementation) defines a streaming event schema that lets agent backends push structured state updates — text deltas, tool calls, state snapshots, lifecycle events — directly to
 
-React/Vue frontends via SSE. The AI Gateway participates in this flow as a transparent streaming proxy with additional control capabilities. 
+React/Vue frontends via SSE. The AI Gateway participates in this flow as a transparent streaming proxy with additional control capabilities.
 
-##### **SSE Proxy & Fan-out** 
+##### **SSE Proxy & Fan-out**
 
-Gateway proxies AGUI SSE streams without buffering, maintaining sub-10ms forwarding latency. Fan-out allows one agent stream to be delivered to multiple UI sessions (e.g., collaborative agent views). 
+Gateway proxies AGUI SSE streams without buffering, maintaining sub-10ms forwarding latency. Fan-out allows one agent stream to be delivered to multiple UI sessions (e.g., collaborative agent views).
 
-##### **Event Filtering** 
+##### **Event Filtering**
 
-Gateway strips internal tool-call events marked sensitive before forwarding to untrusted frontend origins. Configurable event-type allow-lists per consumer. 
+Gateway strips internal tool-call events marked sensitive before forwarding to untrusted frontend origins. Configurable event-type allow-lists per consumer.
 
-##### **Session Affinity** 
+##### **Session Affinity**
 
-Sticky routing ensures all AGUI events for a conversation session reach the same upstream agent pod, preventing state fragmentation. 
+Sticky routing ensures all AGUI events for a conversation session reach the same upstream agent pod, preventing state fragmentation.
 
-##### **Back-pressure Management** 
+##### **Back-pressure Management**
 
-When frontend consumers are slow, gateway applies back-pressure signalling to the agent backend, preventing buffer bloat and OOM conditions. 
+When frontend consumers are slow, gateway applies back-pressure signalling to the agent backend, preventing buffer bloat and OOM conditions.
 
-##### **AGUI Auth Injection** 
+##### **AGUI Auth Injection**
 
-Gateway injects short-lived signed AGUI session tokens, eliminating the need for frontend clients to hold long-lived credentials. 
+Gateway injects short-lived signed AGUI session tokens, eliminating the need for frontend clients to hold long-lived credentials.
 
 |I**AGUI SSE Gateway Route — Nginx upstream snippet**|
 |---|
@@ -241,91 +241,91 @@ Gateway injects short-lived signed AGUI session tokens, eliminating the need for
 |`# Kong plugin strips sensitive tool_call events:`|
 |`# plugin: agui-event-filter { deny: [tool_call_internal] }`<br>`}`|
 
-#### **CHAPTER 05** 
+#### **CHAPTER 05**
 
-## **Resilience & Sustainability** 
+## **Resilience & Sustainability**
 
-### **05.1 Resilience Patterns** 
+### **05.1 Resilience Patterns**
 
-AI gateway resilience encompasses provider-level fault tolerance, gateway-level high availability, and downstream consumer protection. The following patterns are implemented as composable plugins: 
+AI gateway resilience encompasses provider-level fault tolerance, gateway-level high availability, and downstream consumer protection. The following patterns are implemented as composable plugins:
 
-#### **Circuit Breaker** 
+#### **Circuit Breaker**
 
-Tracks consecutive 5xx / timeout errors per provider. Opens circuit after configurable threshold; half-open probes after cooldown. Prevents cascade failures during provider degradation events. 
+Tracks consecutive 5xx / timeout errors per provider. Opens circuit after configurable threshold; half-open probes after cooldown. Prevents cascade failures during provider degradation events.
 
-###### I **Config snippet** 
+###### I **Config snippet**
 
 ```
 cb_config: { threshold: 5, window: 30s, half_open_after: 60s }
 ```
 
-#### **Retry with Exponential Backoff + Jitter** 
+#### **Retry with Exponential Backoff + Jitter**
 
-Retries transient errors (429, 503) with exponential base and ±jitter to prevent thundering-herd against providers. Idempotency keys prevent duplicate charges on retried payment-model calls. 
+Retries transient errors (429, 503) with exponential base and ±jitter to prevent thundering-herd against providers. Idempotency keys prevent duplicate charges on retried payment-model calls.
 
-###### I **Config snippet** 
+###### I **Config snippet**
 
 ```
 retry: { attempts: 3, base_delay: 0.5s, max_delay: 10s, jitter: 0.2 }
 ```
 
-#### **Bulkhead Isolation** 
+#### **Bulkhead Isolation**
 
-Semaphore-per-model limits concurrent in-flight requests, preventing a runaway consumer from exhausting connection pools shared with critical business workloads. 
+Semaphore-per-model limits concurrent in-flight requests, preventing a runaway consumer from exhausting connection pools shared with critical business workloads.
 
-###### I **Config snippet** 
+###### I **Config snippet**
 
 ```
 bulkhead: { max_concurrent: 50, queue_size: 100, timeout: 5s }
 ```
 
-#### **Multi-provider Fallback Chain** 
+#### **Multi-provider Fallback Chain**
 
-Ordered provider list with health-check state. On primary failure, traffic is shed to secondary (e.g., Azure OpenAI), then tertiary (e.g., Bedrock Claude). SLA is preserved even during major outages. 
+Ordered provider list with health-check state. On primary failure, traffic is shed to secondary (e.g., Azure OpenAI), then tertiary (e.g., Bedrock Claude). SLA is preserved even during major outages.
 
-###### I **Config snippet** 
+###### I **Config snippet**
 
 ```
 fallback_chain: [openai, azure-openai, bedrock-claude, local-llama]
 ```
 
-#### **Semantic Cache as Reliability Buffer** 
+#### **Semantic Cache as Reliability Buffer**
 
-Cache hit rate forms a natural buffer: if all providers are down, cached responses continue serving semantically equivalent recent queries. TTL-aware freshness prevents stale responses in time-sensitive domains. 
+Cache hit rate forms a natural buffer: if all providers are down, cached responses continue serving semantically equivalent recent queries. TTL-aware freshness prevents stale responses in time-sensitive domains.
 
-###### I **Config snippet** 
+###### I **Config snippet**
 
 ```
 cache: { ttl: 3600, similarity_threshold: 0.88, fallback_on_miss: true }
 ```
 
-#### **Health-aware Load Balancing** 
+#### **Health-aware Load Balancing**
 
-Active health probes (HEAD /health) + passive monitoring of latency percentiles (TTFB, TPS). Traffic weight dynamically adjusts: healthy fast providers receive higher weight. 
+Active health probes (HEAD /health) + passive monitoring of latency percentiles (TTFB, TPS). Traffic weight dynamically adjusts: healthy fast providers receive higher weight.
 
-###### I **Config snippet** 
+###### I **Config snippet**
 
 ```
 lb_strategy: weighted-latency-aware, probe_interval: 15s
 ```
 
-### **05.2 Sustainability & FinOps** 
+### **05.2 Sustainability & FinOps**
 
-AI compute is among the most energy and cost-intensive enterprise workloads. Sustainability is a first-class concern at the gateway layer through the following mechanisms: 
+AI compute is among the most energy and cost-intensive enterprise workloads. Sustainability is a first-class concern at the gateway layer through the following mechanisms:
 
-- Semantic caching eliminates redundant GPU compute at provider data centres — equivalent to removing thousands of inference calls per day. 
+- Semantic caching eliminates redundant GPU compute at provider data centres — equivalent to removing thousands of inference calls per day.
 
-- Model right-sizing routes low-complexity prompts to smaller, cheaper, lower-carbon models (GPT-4o-mini, Haiku) and reserves frontier models for tasks that require them. 
+- Model right-sizing routes low-complexity prompts to smaller, cheaper, lower-carbon models (GPT-4o-mini, Haiku) and reserves frontier models for tasks that require them.
 
-- Batch scheduling: non-latency-sensitive workloads (summarisation, embedding generation) are deferred to off-peak hours using gateway queue policies, leveraging renewable energy windows. 
+- Batch scheduling: non-latency-sensitive workloads (summarisation, embedding generation) are deferred to off-peak hours using gateway queue policies, leveraging renewable energy windows.
 
-- Carbon-aware routing: integrates with Electricity Maps API to prefer providers operating in regions with lower current carbon intensity. 
+- Carbon-aware routing: integrates with Electricity Maps API to prefer providers operating in regions with lower current carbon intensity.
 
-- Token budget enforcement prevents waste: guardrails truncate excessively long prompts, enforce max_token ceilings, and block runaway agent loops. 
+- Token budget enforcement prevents waste: guardrails truncate excessively long prompts, enforce max_token ceilings, and block runaway agent loops.
 
-- Cost attribution dashboards per team / product / feature enable chargeback, driving engineers to optimise prompt efficiency. 
+- Cost attribution dashboards per team / product / feature enable chargeback, driving engineers to optimise prompt efficiency.
 
-###### I **Carbon-aware routing plugin (pseudo-snippet)** 
+###### I **Carbon-aware routing plugin (pseudo-snippet)**
 
 ```
 -- Kong custom plugin: carbon-router
@@ -343,13 +343,13 @@ route_to_primary(request)
 end
 ```
 
-#### **CHAPTER 06** 
+#### **CHAPTER 06**
 
-## **Security & Governance** 
+## **Security & Governance**
 
-### **06.1 Threat Model for AI Gateways** 
+### **06.1 Threat Model for AI Gateways**
 
-AI gateways face a superset of traditional API security threats, augmented by LLM-specific attack surfaces. The OWASP LLM Top 10 (2025) provides the canonical taxonomy; the gateway is the primary enforcement point for mitigations. 
+AI gateways face a superset of traditional API security threats, augmented by LLM-specific attack surfaces. The OWASP LLM Top 10 (2025) provides the canonical taxonomy; the gateway is the primary enforcement point for mitigations.
 
 |**OWASP LLM Risk**|**Description**|**Gateway Mitigation**|
 |---|---|---|
@@ -362,41 +362,41 @@ AI gateways face a superset of traditional API security threats, augmented by LL
 |LLM09 — Misinformation|Model outputs falsehoods presented as<br>facts|Confidence scoring, RAG grounding verification,<br>hallucination rate metrics|
 |LLM10 — Unbounded<br>Consumption|Resource exhaustion via large prompts /<br>token flooding|Token-count pre-check, max_tokens<br>enforcement, per-consumer rate limits|
 
-### **06.2 Authentication & Authorisation Architecture** 
+### **06.2 Authentication & Authorisation Architecture**
 
-The gateway implements a layered AuthN/AuthZ model that decouples consumer identity from provider credentials, eliminating secret sprawl across teams: 
+The gateway implements a layered AuthN/AuthZ model that decouples consumer identity from provider credentials, eliminating secret sprawl across teams:
 
-##### **Virtual Keys** 
+##### **Virtual Keys**
 
-Gateway issues team-scoped virtual API keys. Each key is mapped to a set of allowed models, token budgets, and provider credentials stored in a secrets vault (HashiCorp Vault / AWS Secrets Manager). Applications never hold provider keys. 
+Gateway issues team-scoped virtual API keys. Each key is mapped to a set of allowed models, token budgets, and provider credentials stored in a secrets vault (HashiCorp Vault / AWS Secrets Manager). Applications never hold provider keys.
 
-##### **JWT + OIDC Validation** 
+##### **JWT + OIDC Validation**
 
-Inbound requests from internal services carry OIDC JWTs. Gateway validates signature, issuer, audience, and expiry. Claims (sub, groups, tenant_id) map to RBAC policies in OPA. 
+Inbound requests from internal services carry OIDC JWTs. Gateway validates signature, issuer, audience, and expiry. Claims (sub, groups, tenant_id) map to RBAC policies in OPA.
 
-##### **mTLS for Service-to-Service** 
+##### **mTLS for Service-to-Service**
 
-Internal microservices authenticate to the gateway using SPIFFE SVIDs issued by SPIRE. Eliminates static shared secrets in service mesh. 
+Internal microservices authenticate to the gateway using SPIFFE SVIDs issued by SPIRE. Eliminates static shared secrets in service mesh.
 
-##### **Scoped Provider Credentials** 
+##### **Scoped Provider Credentials**
 
-Gateway uses dedicated per-team Azure Managed Identities or AWS IAM roles to call providers. Audit logs correlate provider calls back to the originating consumer identity. 
+Gateway uses dedicated per-team Azure Managed Identities or AWS IAM roles to call providers. Audit logs correlate provider calls back to the originating consumer identity.
 
-### **06.3 Governance & Policy-as-Code** 
+### **06.3 Governance & Policy-as-Code**
 
-I **OPA Policy — Model Access Control (snippet)** <mark>`package ai.gateway.authz default allow = false allow if { allowed_models[input.model] team_budget_ok not data.blocked_consumers[input.consumer_id] } allowed_models = {"gpt-4o", "claude-3-5-sonnet", "llama-3-70b"} team_budget_ok if input.tokens_used < data.budgets[input.team_id].daily_limit`</mark> 
+I **OPA Policy — Model Access Control (snippet)** <mark>`package ai.gateway.authz default allow = false allow if { allowed_models[input.model] team_budget_ok not data.blocked_consumers[input.consumer_id] } allowed_models = {"gpt-4o", "claude-3-5-sonnet", "llama-3-70b"} team_budget_ok if input.tokens_used < data.budgets[input.team_id].daily_limit`</mark>
 
-I **PII Redaction Plugin — Pattern Registry (snippet)** <mark>`pii_patterns: - name: credit_card regex: '\b(?:\d{4}[- ]?){3}\d{4}\b' action: redact # replace with [CREDIT_CARD] - name: ssn regex: '\b\d{3}-\d{2}-\d{4}\b' action: reject # block request entirely - name: email regex: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' action: tokenise # replace with stable pseudonym`</mark> 
+I **PII Redaction Plugin — Pattern Registry (snippet)** <mark>`pii_patterns: - name: credit_card regex: '\b(?:\d{4}[- ]?){3}\d{4}\b' action: redact # replace with [CREDIT_CARD] - name: ssn regex: '\b\d{3}-\d{2}-\d{4}\b' action: reject # block request entirely - name: email regex: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' action: tokenise # replace with stable pseudonym`</mark>
 
-**CHAPTER 07** 
+**CHAPTER 07**
 
-## **Operational Excellence — End-to-End Ops Support** 
+## **Operational Excellence — End-to-End Ops Support**
 
-### **07.1 Deployment Topology** 
+### **07.1 Deployment Topology**
 
-The reference topology deploys the gateway as a Kubernetes Deployment behind an NLB/ALB, with HPA scaling on custom metrics (requests-per-second, token-throughput). Gateway configuration is managed via GitOps (ArgoCD / Flux), with Kong's decK CLI or Helm values driving declarative state. 
+The reference topology deploys the gateway as a Kubernetes Deployment behind an NLB/ALB, with HPA scaling on custom metrics (requests-per-second, token-throughput). Gateway configuration is managed via GitOps (ArgoCD / Flux), with Kong's decK CLI or Helm values driving declarative state.
 
-I **Kubernetes HPA on Token Throughput** 
+I **Kubernetes HPA on Token Throughput**
 
 |`apiVersion:`|`autoscaling/v2`|
 |---|---|
@@ -425,27 +425,27 @@ I **Kubernetes HPA on Token Throughput**
 |`destination: { namespace: ai-gateway, server: https://kubernetes.default.svc }`|
 |`syncPolicy: { automated: { prune: true, selfHeal: true } }`|
 
-### **07.2 Observability Stack** 
+### **07.2 Observability Stack**
 
-Full-stack observability requires metrics, logs, traces, and AI-specific signals aggregated in a unified platform. The gateway emits all four signals via OpenTelemetry SDK, routing to provider-specific backends: 
+Full-stack observability requires metrics, logs, traces, and AI-specific signals aggregated in a unified platform. The gateway emits all four signals via OpenTelemetry SDK, routing to provider-specific backends:
 
-##### **Metrics (Prometheus / Datadog)** 
+##### **Metrics (Prometheus / Datadog)**
 
-gateway_request_total, gateway_token_usage_total{model,team,provider}, gateway_latency_ttfb_seconds{model}, gateway_cache_hit_ratio, gateway_circuit_breaker_state{provider}, gateway_cost_usd_total{team} 
+gateway_request_total, gateway_token_usage_total{model,team,provider}, gateway_latency_ttfb_seconds{model}, gateway_cache_hit_ratio, gateway_circuit_breaker_state{provider}, gateway_cost_usd_total{team}
 
-##### **Distributed Traces (Jaeger / Tempo)** 
+##### **Distributed Traces (Jaeger / Tempo)**
 
-Span per gateway stage: auth_check, policy_eval, cache_lookup, provider_call, response_filter. Baggage carries consumer identity and prompt_version for cross-service correlation. 
+Span per gateway stage: auth_check, policy_eval, cache_lookup, provider_call, response_filter. Baggage carries consumer identity and prompt_version for cross-service correlation.
 
-##### **Structured Logs (Loki / Splunk)** 
+##### **Structured Logs (Loki / Splunk)**
 
-JSON log per request: timestamp, consumer_id, model, provider, prompt_tokens, completion_tokens, latency_ms, cache_hit, pii_detected, injection_score, cost_usd, trace_id. Immutable append to compliance log store. 
+JSON log per request: timestamp, consumer_id, model, provider, prompt_tokens, completion_tokens, latency_ms, cache_hit, pii_detected, injection_score, cost_usd, trace_id. Immutable append to compliance log store.
 
-##### **LLM-specific Signals** 
+##### **LLM-specific Signals**
 
-Hallucination confidence score (0–1), semantic drift from baseline embeddings, prompt injection probability, output toxicity score. Pushed as Prometheus histograms and alertable via Alertmanager rules. 
+Hallucination confidence score (0–1), semantic drift from baseline embeddings, prompt injection probability, output toxicity score. Pushed as Prometheus histograms and alertable via Alertmanager rules.
 
-###### I **OTel Collector Pipeline — AI Gateway (snippet)** 
+###### I **OTel Collector Pipeline — AI Gateway (snippet)**
 
 ```
 receivers:
@@ -461,9 +461,9 @@ jaeger: { endpoint: jaeger-collector:14250 }
 splunk_hec: { token: ${SPLUNK_TOKEN}, endpoint: https://splunk.corp/hec }
 ```
 
-### **07.3 Incident Management & SLOs** 
+### **07.3 Incident Management & SLOs**
 
-Gateway SLOs are defined per consumer tier and enforced via Error Budget policies in the SRE practice. Alerting is stratified by severity: 
+Gateway SLOs are defined per consumer tier and enforced via Error Budget policies in the SRE practice. Alerting is stratified by severity:
 
 |**SLO**|**Target**|**Alert Threshold**|**Severity**|
 |---|---|---|---|
@@ -475,17 +475,17 @@ Gateway SLOs are defined per consumer tier and enforced via Error Budget policie
 |PII Leak Rate|0%|Any detection|P1|
 |Token Budget Overrun|0 per day|Any overrun event|P2|
 
-**CHAPTER 08** 
+**CHAPTER 08**
 
-## **Integration Patterns & Ecosystem** 
+## **Integration Patterns & Ecosystem**
 
-The AI gateway integrates across the enterprise technology stack. The following patterns address common integration scenarios encountered in production deployments. 
+The AI gateway integrates across the enterprise technology stack. The following patterns address common integration scenarios encountered in production deployments.
 
-### **08.x CI/CD Pipeline Integration** 
+### **08.x CI/CD Pipeline Integration**
 
-Shift-left AI quality gates: pull-request pipelines invoke the gateway to run automated prompt regression tests, hallucination benchmarks, and safety evals against staging models before deployment. Gateway returns structured eval reports that can fail builds. 
+Shift-left AI quality gates: pull-request pipelines invoke the gateway to run automated prompt regression tests, hallucination benchmarks, and safety evals against staging models before deployment. Gateway returns structured eval reports that can fail builds.
 
-###### I **CI/CD Pipeline Integration — snippet** 
+###### I **CI/CD Pipeline Integration — snippet**
 
 ```
 # GitHub Actions — AI Gateway eval gate (snippet)
@@ -496,11 +496,11 @@ llm-eval run --gateway $GW_URL \
 --fail-on-regression 5% # fail if score drops >5%
 ```
 
-### **08.x Data Platform & RAG Integration** 
+### **08.x Data Platform & RAG Integration**
 
-Gateway sits between RAG orchestrators (LlamaIndex, Haystack) and both the embedding model endpoints and completion endpoints. It enforces namespace-level data access controls — ensuring retrieval results from one tenant's vector store cannot leak into another tenant's context window. 
+Gateway sits between RAG orchestrators (LlamaIndex, Haystack) and both the embedding model endpoints and completion endpoints. It enforces namespace-level data access controls — ensuring retrieval results from one tenant's vector store cannot leak into another tenant's context window.
 
-###### I **Data Platform & RAG Integration — snippet** 
+###### I **Data Platform & RAG Integration — snippet**
 
 ```
 # LlamaIndex — Gateway-routed embedding (snippet)
@@ -512,11 +512,11 @@ additional_kwargs={'X-Namespace': tenant_id}
 )
 ```
 
-### **08.x SIEM & SOC Integration** 
+### **08.x SIEM & SOC Integration**
 
-Gateway audit logs are forwarded in real-time to SIEM platforms (Splunk, Microsoft Sentinel, Elastic SIEM). Correlation rules detect anomalies: sudden spike in injection scores, unusual model-access patterns, or bulk data extraction attempts via crafted prompts. 
+Gateway audit logs are forwarded in real-time to SIEM platforms (Splunk, Microsoft Sentinel, Elastic SIEM). Correlation rules detect anomalies: sudden spike in injection scores, unusual model-access patterns, or bulk data extraction attempts via crafted prompts.
 
-I **SIEM & SOC Integration — snippet** 
+I **SIEM & SOC Integration — snippet**
 
 ```
 # Splunk alert rule (SPL snippet)
@@ -536,11 +536,11 @@ index=ai_gateway pii_detected=true
 | sendalert pii_leak_alert
 ```
 
-### **08.x Service Mesh Integration (Istio)** 
+### **08.x Service Mesh Integration (Istio)**
 
-Gateway runs as a dedicated Istio Ingress Gateway or as an Egress Gateway controlling outbound LLM traffic. mTLS is enforced end-to-end via SPIFFE. Istio AuthorizationPolicies complement gateway-level RBAC for defence-in-depth. 
+Gateway runs as a dedicated Istio Ingress Gateway or as an Egress Gateway controlling outbound LLM traffic. mTLS is enforced end-to-end via SPIFFE. Istio AuthorizationPolicies complement gateway-level RBAC for defence-in-depth.
 
-###### I **Service Mesh Integration (Istio) — snippet** 
+###### I **Service Mesh Integration (Istio) — snippet**
 
 ```
 # Istio EgressGateway for LLM traffic (snippet)
@@ -554,11 +554,11 @@ resolution: DNS
 location: MESH_EXTERNAL
 ```
 
-#### **CHAPTER 09** 
+#### **CHAPTER 09**
 
-## **The Future of AI Gateways** 
+## **The Future of AI Gateways**
 
-The AI gateway market is evolving at the pace of LLM capability expansion. The following trends define the next 24–36 months of gateway architecture: 
+The AI gateway market is evolving at the pace of LLM capability expansion. The following trends define the next 24–36 months of gateway architecture:
 
 |I<br>**Agentic Protocol**<br>**Gateways (MCP-native)**|Model Context Protocol (MCP) is becoming the de-facto standard for<br>agent-to-tool communication. Future gateways will be first-class MCP<br>servers and routers — brokering tool registries, managing tool-call<br>authorisation, caching tool results, and enforcing least-privilege tool access<br>scopes per agent identity. The gateway becomes the MCP Hub of the<br>enterprise, analogous to how service meshes centralised microservice<br>communication.|
 |---|---|
@@ -567,15 +567,15 @@ The AI gateway market is evolving at the pace of LLM capability expansion. The f
 |I<br>**Confidential AI &**<br>**Homomorphic Inference**|Regulated industries (healthcare, finance, defence) cannot send raw data to<br>external LLM providers. Future gateways will orchestrate confidential<br>computing enclaves (Azure Confidential Containers, AWS Nitro Enclaves)<br>and early-stage fully homomorphic encryption (FHE) inference, where data<br>remains encrypted throughout the inference pipeline. The gateway manages<br>attestation, key escrow, and enclave routing.|
 |I<br>**Federated & Edge AI**<br>**Gateways**|As inference moves to edge devices (mobile, IoT, on-prem GPUs),<br>gateways must operate in a federated topology: a cloud control plane<br>synchronises policy, model versions, and routing tables to lightweight edge<br>gateway<br>instances<br>running<br>on<br>K3s<br>or<br>WebAssembly<br>runtimes.<br>Offline-capable operation with eventual-consistency policy sync is a key<br>design challenge.|
 
-**Autonomous** Machine learning will be applied to the gateway's own configuration: I **Self-Tuning Gateways** RL-based routing agents that optimise cost-latency-quality trade-offs in real time, anomaly detectors that auto-tune rate limits based on consumer behaviour patterns, and chaos engineering bots that continuously probe resilience. The gateway becomes an intelligent adaptive system rather than a static policy engine. **Regulatory & AI Act** The EU AI Act (fully in force 2026) requires conformity assessments, I **Compliance Automation** transparency obligations, and human oversight for high-risk AI systems. I Gateways will automate compliance: generating Article 13 transparency 
+**Autonomous** Machine learning will be applied to the gateway's own configuration: I **Self-Tuning Gateways** RL-based routing agents that optimise cost-latency-quality trade-offs in real time, anomaly detectors that auto-tune rate limits based on consumer behaviour patterns, and chaos engineering bots that continuously probe resilience. The gateway becomes an intelligent adaptive system rather than a static policy engine. **Regulatory & AI Act** The EU AI Act (fully in force 2026) requires conformity assessments, I **Compliance Automation** transparency obligations, and human oversight for high-risk AI systems. I Gateways will automate compliance: generating Article 13 transparency
 
-The EU AI Act (fully in force 2026) requires conformity assessments, transparency obligations, and human oversight for high-risk AI systems. Gateways will automate compliance: generating Article 13 transparency notices per interaction, enforcing human-in-the-loop interrupts for high-risk decisions, logging model identity and version for post-hoc audits, and integrating with national AI supervisory authority reporting APIs. 
+The EU AI Act (fully in force 2026) requires conformity assessments, transparency obligations, and human oversight for high-risk AI systems. Gateways will automate compliance: generating Article 13 transparency notices per interaction, enforcing human-in-the-loop interrupts for high-risk decisions, logging model identity and version for post-hoc audits, and integrating with national AI supervisory authority reporting APIs.
 
-**CHAPTER 10** 
+**CHAPTER 10**
 
-## **Appendix — Snippets Quick Reference** 
+## **Appendix — Snippets Quick Reference**
 
-### **Gateway Decision Matrix** 
+### **Gateway Decision Matrix**
 
 |**Criteria**|**Kong AI GW**|**LiteLLM Proxy**|**AWS Bedrock GW**|**Cloudflare AI GW**|
 |---|---|---|---|---|
@@ -589,7 +589,7 @@ The EU AI Act (fully in force 2026) requires conformity assessments, transparenc
 |Enterprise support|IEnt|IICommunity|IAWS|ICloudflare|
 |Open-source core|IApache 2|IMIT|I|I|
 
-### **Key Technology Stack** 
+### **Key Technology Stack**
 
 |**Gateway Engine**|Kong Gateway 3.x, Envoy Proxy, Nginx (OpenResty)|
 |---|---|
@@ -603,28 +603,28 @@ The EU AI Act (fully in force 2026) requires conformity assessments, transparenc
 |**GitOps**|ArgoCD, Flux v2, Kong decK CLI|
 |**Cost Tracking**|OpenCost, Kubecost, custom FinOps dashboards|
 
-### **Recommended Reading & Standards** 
+### **Recommended Reading & Standards**
 
-- OWASP LLM Top 10 (2025 Edition) — 
+- OWASP LLM Top 10 (2025 Edition) —
 
-owasp.org/www-project-top-10-for-large-language-model-applications 
+owasp.org/www-project-top-10-for-large-language-model-applications
 
-- EU AI Act — Final Text (2024) — eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689 
+- EU AI Act — Final Text (2024) — eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689
 
-- NIST AI RMF 1.0 — Artificial Intelligence Risk Management Framework — nist.gov/airmf 
+- NIST AI RMF 1.0 — Artificial Intelligence Risk Management Framework — nist.gov/airmf
 
-- Model Context Protocol Specification — modelcontextprotocol.io 
+- Model Context Protocol Specification — modelcontextprotocol.io
 
-- ag-ui Agent-to-UI Protocol — github.com/ag-ui-protocol/ag-ui 
+- ag-ui Agent-to-UI Protocol — github.com/ag-ui-protocol/ag-ui
 
-- Kong AI Gateway Documentation — docs.konghq.com/gateway/latest/ai-gateway 
+- Kong AI Gateway Documentation — docs.konghq.com/gateway/latest/ai-gateway
 
-- OpenTelemetry Semantic Conventions for GenAI — opentelemetry.io/docs/specs/semconv/gen-ai 
+- OpenTelemetry Semantic Conventions for GenAI — opentelemetry.io/docs/specs/semconv/gen-ai
 
-- LiteLLM Proxy Documentation — docs.litellm.ai/docs/proxy 
+- LiteLLM Proxy Documentation — docs.litellm.ai/docs/proxy
 
-- Electricity Maps API (Carbon-aware routing) — electricitymaps.com 
+- Electricity Maps API (Carbon-aware routing) — electricitymaps.com
 
-- SPIFFE / SPIRE (Service Identity) — spiffe.io 
+- SPIFFE / SPIRE (Service Identity) — spiffe.io
 
-_This document is produced by the Enterprise AI Architecture Practice. It represents current best practices as of April 2026 and should be reviewed quarterly given the pace of change in the AI infrastructure landscape._
+*This document is produced by the Enterprise AI Architecture Practice. It represents current best practices as of April 2026 and should be reviewed quarterly given the pace of change in the AI infrastructure landscape.*

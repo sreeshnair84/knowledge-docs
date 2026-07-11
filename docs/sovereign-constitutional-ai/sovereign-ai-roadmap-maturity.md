@@ -24,7 +24,7 @@ covers_version: \"as of 2026-07-10\"
 ### 1.1 Five Maturity Levels
 
 | Level | Name | Characteristics | Indicators |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **1** | **Ad Hoc** | No formal AI governance; decisions made case-by-case; no risk register | Shadow AI everywhere; no accountability chain; reactive only |
 | **2** | **Developing** | Basic policies documented; AI register being built; governance roles assigned | AI acceptable use policy exists; RAI Champion named; basic model cards |
 | **3** | **Defined** | Formal governance operating model; policy-as-code implemented; fairness monitoring active | AI Governance Council operational; ARB approval gate; fairness reports monthly |
@@ -36,7 +36,7 @@ covers_version: \"as of 2026-07-10\"
 Score 0–4 on each dimension. Total score maps to maturity level.
 
 | Dimension | 0 (None) | 1 (Basic) | 2 (Defined) | 3 (Managed) | 4 (Optimising) |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **AI Strategy** | No AI strategy | Informal vision | Documented strategy | Aligned to enterprise strategy | AI-native; board-level strategic commitment |
 | **AI Governance Structure** | None | Named CAIO | Governance Council | Full 6-layer operating model | Board-integrated; external advisory |
 | **Risk Management** | No AI risk register | Basic register | Tiered risk register | Continuous monitoring | Predictive risk management |
@@ -55,7 +55,7 @@ Score 0–4 on each dimension. Total score maps to maturity level.
 ### 2.1 Regulatory Landscape Map (July 2026)
 
 | Regulation | Jurisdiction | Effective | Scope | Key requirements |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **EU AI Act** | EU | Aug 2024 (prohibitions); Aug 2026 (GPAI); Dec 2027 / Aug 2028 (High-Risk) | AI systems in EU market | Risk classification; conformity assessment; transparency; human oversight |
 | **GDPR Art. 22** | EU | 2018 | Automated individual decisions | Right to human review; explanation; opt-out |
 | **DORA** | EU Financial | Jan 2025 | Digital operational resilience | ICT risk; incident reporting; resilience testing |
@@ -71,7 +71,7 @@ Score 0–4 on each dimension. Total score maps to maturity level.
 ### 2.2 Compliance Control Mapping
 
 | Control | EU AI Act | GDPR | NIST AI RMF | ISO 42001 | SR 11-7 |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | AI Risk Classification | Art. 6, 9 | — | MAP 1.1 | Cl. 6.1 | §4 |
 | AI Impact Assessment | Art. 9 | DPIA (Art. 35) | MAP 5.1 | Cl. 8.4 | §4 |
 | Model documentation | Art. 11, Annex IV | — | GOVERN 6.1 | Cl. 8.5 | §4 |
@@ -121,7 +121,7 @@ Sovereign Trust (is control maintained?)
 ### 3.2 Trust Signals and Evidence
 
 | Trust dimension | Evidence | How measured |
-|---|---|---|
+| --- | --- | --- |
 | Performance | Model card benchmarks; production metrics | Monthly performance report |
 | Robustness | Red-team results; adversarial test pass rate | Quarterly security review |
 | Fairness | Demographic parity gap; equalized odds | Monthly fairness dashboard |
@@ -138,6 +138,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 ### Months 1–6: Foundations
 
 **Technical foundations:**
+
 - [ ] Complete NIST AI RMF Core training (free: airc.nist.gov)
 - [ ] Study EU AI Act in full (eur-lex.europa.eu — read Articles 1-16, 49-51, 72-85)
 - [ ] Read ISO 42001:2023 (purchase or institutional access)
@@ -147,6 +148,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 - [ ] Read: "Anthropic Model Specification" (2024)
 
 **Governance foundations:**
+
 - [ ] Complete AI Governance course (MIT Sloan, Coursera, or LinkedIn Learning)
 - [ ] Study 3 major RAI frameworks: Microsoft, Google, IBM
 - [ ] Study OECD AI Principles and UNESCO AI Ethics Recommendation
@@ -156,6 +158,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 ### Months 7–12: Intermediate
 
 **Technical intermediate:**
+
 - [ ] Implement a complete constitutional AI pipeline (constitution → Rego policy → runtime enforcement → audit)
 - [ ] Complete AI Fairness 360 (AIF360) tutorial; run bias audit on sample dataset
 - [ ] Implement SHAP explanations for a classification model
@@ -163,6 +166,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 - [ ] Design and test a kill switch for an agent system
 
 **Governance intermediate:**
+
 - [ ] Write an AI Impact Assessment for a hypothetical use case
 - [ ] Design an AI Governance Operating Model (board → agent ops) for a regulated org
 - [ ] Study SR 11-7 for AI/ML model risk management (banking)
@@ -170,6 +174,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 - [ ] Complete CIPP/E or CIPM certification (privacy foundation)
 
 **Certifications to pursue:**
+
 - [ ] AWS Certified AI Practitioner (foundation)
 - [ ] Microsoft AI-900 or AI-102 (Azure AI)
 - [ ] CIPP/E (IAPP — privacy) or CIPP/US
@@ -177,6 +182,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 ### Months 13–18: Advanced
 
 **Technical advanced:**
+
 - [ ] Implement a multi-agent constitutional system with hierarchical constitutions
 - [ ] Design and implement an AI audit ledger (WORM storage + chained hashing)
 - [ ] Study and implement OpenFGA for agent delegation chains
@@ -184,6 +190,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 - [ ] Contribute to an open-source AI governance project (AIF360, OpenPolicyAgent)
 
 **Governance advanced:**
+
 - [ ] Lead an ISO 42001 gap assessment for a real organization
 - [ ] Write an AI Board Reporting pack (full quarterly pack)
 - [ ] Complete EU AI Act conformity assessment for a High-Risk system
@@ -191,6 +198,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 - [ ] Present AI governance topic at a professional conference or meetup
 
 **Certifications:**
+
 - [ ] ISACA CGEIT (Governance of Enterprise IT) or CRISC (Risk)
 - [ ] AWS Security Specialty or Azure Security Engineer (cloud security depth)
 - [ ] ISO 42001 Lead Implementer or Lead Auditor
@@ -198,6 +206,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 ### Months 19–24: Expert
 
 **Expert-level activities:**
+
 - [ ] Lead a full AI governance operating model design and implementation
 - [ ] Author or contribute to an AI constitution for an enterprise or government body
 - [ ] Design and implement a sovereign AI reference architecture
@@ -206,6 +215,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 - [ ] Present at global AI governance forum (AI Safety Summit, OECD, GovAI)
 
 **Certifications:**
+
 - [ ] Certified Information Systems Auditor (CISA — ISACA)
 - [ ] ISO 42001 Lead Auditor
 - [ ] Advanced TOGAF (for enterprise architecture depth)
@@ -220,7 +230,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 ### 5.1 Role Levels and Interview Depth
 
 | Level | Title examples | Expected depth |
-|---|---|---|
+| --- | --- | --- |
 | **Senior** | Senior AI Governance Architect, AI Risk Architect | Design knowledge; can implement; knows regulations |
 | **Principal** | Principal AI Architect, Head of AI Governance | End-to-end design + delivery experience; can mentor; speaks to board |
 | **Distinguished** | Distinguished Architect, Chief AI Architect | Industry shaping; standards contribution; can design governance for enterprise-scale multi-agent systems; advises regulators |
@@ -230,7 +240,7 @@ For professionals targeting the **Principal AI Governance Architect** role:
 ### 5.2 Core Competency Areas and Interview Signals
 
 | Competency | What strong candidates demonstrate | Red flags |
-|---|---|---|
+| --- | --- | --- |
 | **AI Governance Strategy** | Can design board-to-ops model with RACI; knows how governance fails at scale; speaks to political dynamics | Treats governance as pure compliance; no operational experience |
 | **Constitutional AI** | Constitution engineering methodology end-to-end; can write and explain Rego/Cedar; knows CAI vs. RLHF | Cites Anthropic blog posts without engineering depth |
 | **Risk Taxonomy** | Classifies risks by category, severity, and sovereignty dimension; can populate risk register live | Only knows NIST or only knows vendor framework |
@@ -255,6 +265,7 @@ These questions test whether you can design governance architecture from first p
 **What the interviewer is testing:** Architecture from scratch under realistic constraints. Can you translate governance principles into an operating structure?
 
 **Strong answer structure:**
+
 ```
 1. Governance chain (6 layers):
    Board AI Committee → AI Governance Council (C-suite)
@@ -277,6 +288,7 @@ These questions test whether you can design governance architecture from first p
 ```
 
 **Follow-up questions:**
+
 - "How does the RAIO interact with the existing Risk Office — do they overlap?"
 - "What happens when a business unit disagrees with RAIO's AI Impact Assessment?"
 - "How do you make this governance model enable rather than block AI deployment?"
@@ -288,6 +300,7 @@ These questions test whether you can design governance architecture from first p
 **What the interviewer is testing:** Executive communication; strategic framing of a technical topic; awareness of business drivers beyond compliance.
 
 **Strong answer structure:**
+
 ```
 Frame as four business risks:
 
@@ -315,6 +328,7 @@ not a technology preference.
 ```
 
 **Follow-up questions:**
+
 - "What's the minimum viable sovereign AI stack if full sovereignty isn't achievable in year 1?"
 - "How do you measure sovereign AI ROI?"
 - "What sovereign AI looks like for a company with 80% cloud-native workloads already?"
@@ -326,6 +340,7 @@ not a technology preference.
 **What the interviewer is testing:** Operational crisis management; audit capability; regulatory engagement; governance chain activation.
 
 **Strong answer structure:**
+
 ```
 Hour 0-1 (triage):
   - Identify the decision: loan ID, model version, timestamp
@@ -357,6 +372,7 @@ Day 3-30 (remediate):
 ```
 
 **Follow-up questions:**
+
 - "How long do you retain audit ledger records, and what format satisfies court admissibility?"
 - "If the root cause is a model you bought from a vendor, what contractual obligation do you invoke?"
 - "How do you communicate this to the regulator without creating additional liability?"
@@ -368,6 +384,7 @@ Day 3-30 (remediate):
 **What the interviewer is testing:** Sector-specific depth; regulatory knowledge (HIPAA, FDA SaMD); clinical safety governance.
 
 **Strong answer structure:**
+
 ```
 Key constraints to establish first:
 1. FDA SaMD — is this AI making or assisting clinical decisions?
@@ -445,6 +462,7 @@ contract_necessity_established if {
 ```
 
 **Follow-up questions:**
+
 - "How do you handle the case where the applicant exercises their right to request human review after receiving an automated decision?"
 - "How do you deploy this policy to production without blocking 100% of credit decisions on Day 1?"
 - "How does this Rego interact with the Cedar policy for agent capability authorization?"
@@ -508,6 +526,7 @@ Reconstruction capability:
 ```
 
 **Follow-up questions:**
+
 - "What happens if the model has been retrained since the decision — can you still reconstruct it?"
 - "How do you handle the GDPR right to erasure vs. the regulatory obligation to retain AI decision records?"
 - "How do you prove to a court that the audit ledger has not been tampered with?"
@@ -532,12 +551,12 @@ Root cause investigation:
     it to exploit out-of-scope actions
     → Check: was the reward signal recently changed?
     → Check: did context change (new tools added to registry)?
-  
+
   Category B — Policy gap: the action was not explicitly prohibited
     in Cedar/Rego because the boundary case wasn't anticipated
     → Check: is there a Cedar DENY rule covering this action type?
     → Fix: add explicit DENY rule; redeploy via shadow → canary → full
-  
+
   Category C — Constitutional violation: the action violated a
     constitutional principle the agent was supposed to follow
     → Check: constitutional trace — did classifier flag this action?
@@ -634,6 +653,7 @@ EU AI Act Annex III lists categories of High-Risk AI systems. Category 5(b) expl
 - Art. 51: Registration in EU database of High-Risk AI systems
 
 **Follow-up:** "GDPR Art. 22 and EU AI Act Art. 14 — are they duplicative or complementary?"
+
 - They are complementary: GDPR Art. 22 gives the data subject a right (to not be subject to solely automated decisions). EU AI Act Art. 14 imposes a supply-side obligation on the deployer (to maintain meaningful human oversight). A bank must comply with both: deployer implements human oversight (AI Act) AND subject can exercise opt-out right (GDPR).
 
 ---
@@ -643,7 +663,7 @@ EU AI Act Annex III lists categories of High-Risk AI systems. Category 5(b) expl
 **Strong answer structure:**
 
 | Dimension | ISO 42001 | ISO 27001 |
-|---|---|---|
+| --- | --- | --- |
 | Focus | AI Management System | Information Security Management System |
 | Core structure | PDCA; Clause 4-10 (HLS) | PDCA; Clause 4-10 (HLS) |
 | Unique to subject | AI system inventory; AI impact assessment; AI risk; AI objectives | Asset inventory; security risk; security controls |
@@ -653,6 +673,7 @@ EU AI Act Annex III lists categories of High-Risk AI systems. Category 5(b) expl
 | Relationship | Can be integrated with ISO 27001 (shared management system) | Often precedes 42001 implementation |
 
 Key ISO 42001 clauses a Principal Architect must know:
+
 - Cl. 4.3: Scope definition (which AI systems are in scope)
 - Cl. 6.1: AI risk management planning
 - Cl. 8.4: AI impact assessment
@@ -688,12 +709,14 @@ These questions appear at Principal level and above — they test judgment, infl
 **What the interviewer is testing:** Courage under pressure; ability to hold governance standards without being obstructive; political navigation.
 
 **Strong answer signals:**
+
 - Named a specific governance requirement (not just "governance principles")
 - Offered a path forward (faster track, reduced scope) not just a veto
 - Engaged the business leader's underlying goal, not just the compliance gap
 - Maintained the governance requirement without capitulation
 
 **Red flag signals:**
+
 - Capitulated without getting adequate mitigations in place
 - Simply blocked without offering an alternative
 - No specific governance requirement cited — "it just didn't feel right"
@@ -707,6 +730,7 @@ These questions appear at Principal level and above — they test judgment, infl
 > "Think of it like a company's code of conduct — but for AI. Right now, most AI is trained on data and asked to do a job. But there's no explicit set of rules it must never break. Constitutional AI is when we write down those rules — we call them the AI constitution — and make the AI check every action against them before it does anything. If an action would violate the constitution, the AI refuses and flags it for human review, just like a good employee who says 'I can't do that, it violates our code of conduct.' The difference from other AI safety approaches is that the rules are explicit and auditable — your board can read the AI constitution, understand what your AI is and isn't allowed to do, and audit whether it's actually following the rules. That's very different from trusting that a black-box model was 'trained safely.' Constitutional AI gives you accountability."
 
 **Follow-up interviewers often ask:**
+
 - "What if the constitution itself contains a wrong principle?"
 - "How do you handle an agent that's technically constitutional but still producing bad outcomes?"
 
@@ -717,6 +741,7 @@ These questions appear at Principal level and above — they test judgment, infl
 **What the interviewer is testing:** Judgment about governance essentials vs. overhead; ability to make hard prioritization decisions.
 
 **Strong answer structure:**
+
 ```
 Never cut (safety-critical governance):
   - Kill switch testing (if this fails, you can't stop a runaway agent)
@@ -759,6 +784,7 @@ Propose a joint design review: map all constitutional principles to one of three
 **What the interviewer is testing:** Organizational complexity; ability to navigate multi-stakeholder tension; governance model evolution.
 
 **Strong answer structure:**
+
 ```
 This is a governance maturity problem — the model was right
 for deployment, now needs to evolve for scale.
@@ -802,6 +828,7 @@ These are live architecture exercises given in final rounds for Principal/Distin
 **Whiteboard Challenge 1:** "Design the agent governance fabric for a financial services firm running 200 agents across 15 business units. 45 minutes."
 
 **Evaluators look for:**
+
 - Start with the problem constraints (regulatory, scale, operational)
 - Five registries identified and their relationships explained
 - Policy deployment pipeline (how constitutional changes propagate to 200 agents)
@@ -814,6 +841,7 @@ These are live architecture exercises given in final rounds for Principal/Distin
 **Whiteboard Challenge 2:** "A new EU regulation requires all AI systems to be able to generate a human-readable explanation of any decision within 24 hours of a request. Redesign your audit and explainability architecture to meet this. 30 minutes."
 
 **Evaluators look for:**
+
 - SHAP value storage at decision time (not recomputed on request)
 - Natural language explanation generation pipeline
 - SLA design: 24-hour requirement → internal SLA of 4 hours to have time for human review
@@ -830,6 +858,7 @@ These are live architecture exercises given in final rounds for Principal/Distin
 **Q17:** "It's 3am. An automated alert says your L3 trading support agent has made 800 transactions in 90 minutes — 10x normal rate. On-call alerts you. Walk me through your response."
 
 **Strong answer:**
+
 ```
 Minute 0-5:
   - Kill switch: invoke L4 (system-level pause) for this agent immediately
@@ -862,6 +891,7 @@ Post-incident:
 **Q18:** "A civil society organization has published a report claiming your bank's AI lending system discriminates against minority applicants. The press is calling. You have 2 hours before a public statement is needed. What's your governance response?"
 
 **Strong answer:**
+
 ```
 Hour 0-30 (facts before statement):
   - Pull last 12 months of demographic parity reports from fairness dashboard
@@ -919,7 +949,7 @@ These questions test whether you are current on the frontier of AI governance.
 ### 5.10 Scoring Rubric (for Hiring Panels)
 
 | Score | Indicator |
-|---|---|
+| --- | --- |
 | **5 — Exceptional** | Design is complete, constraints are handled, tradeoffs are explicit, can defend under pushback, adds insights the interviewer hadn't considered |
 | **4 — Strong** | Design is sound, key elements are present, handles most follow-up questions |
 | **3 — Adequate** | Framework correct, some gaps, handles direct questions but struggles with follow-ups |
@@ -937,6 +967,7 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 ### 6.1 Standards & Regulations
 
 **Must-know standards:**
+
 - ISO 42001:2023 — AI Management System (the ISO 27001 equivalent for AI)
 - ISO/IEC 23894:2023 — AI Risk Management
 - ISO/IEC 42006:2025 — AI Governance (emerging)
@@ -945,6 +976,7 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 - OECD AI Principles (2019, 2024 update)
 
 **Must-know regulations:**
+
 - EU AI Act (2024) + Digital Omnibus Amendment (2026)
 - GDPR Arts. 5, 6, 22 — data protection and automated decisions
 - DORA (EU) — digital operational resilience
@@ -956,7 +988,7 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 ### 6.2 Certifications
 
 | Certification | Body | Domain | Level |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ISO 42001 Lead Implementer | Multiple accredited CBs | AI management | Advanced |
 | ISO 42001 Lead Auditor | Multiple accredited CBs | AI audit | Advanced |
 | CISA | ISACA | IT/AI audit | Professional |
@@ -970,6 +1002,7 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 ### 6.3 Essential Books
 
 **AI Governance & Ethics:**
+
 - "The Alignment Problem" — Brian Christian (2020)
 - "Weapons of Math Destruction" — Cathy O'Neil (2016)
 - "Atlas of AI" — Kate Crawford (2021)
@@ -977,17 +1010,20 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 - "Power and Progress" — Daron Acemoglu & Simon Johnson (2023)
 
 **AI Safety & Alignment (technical):**
+
 - "Artificial Intelligence Safety and Security" — ed. Roman Yampolskiy (2018)
 - "AI Safety Gridworlds" — Leike et al. (2017, arxiv)
 - "Constitutional AI" — Bai et al. (2022, arxiv)
 - "Collective Constitutional AI" — Ganguli et al. (2023, arxiv)
 
 **Enterprise AI Governance:**
+
 - "Trustworthy AI" — Beena Ammanath (2022)
 - NIST AI RMF Playbook (free download)
 - "Responsible AI: Best Practices for Creating Trustworthy AI Systems" — Adnan Masood (2024)
 
 **Policy & Law:**
+
 - "The Age of Surveillance Capitalism" — Shoshana Zuboff (2019)
 - "Automating Inequality" — Virginia Eubanks (2018)
 - "AI and the Law" — various law review collections
@@ -1006,7 +1042,7 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 ### 6.5 Communities & Organizations
 
 | Organization | Focus | URL |
-|---|---|---|
+| --- | --- | --- |
 | Partnership on AI | Multi-stakeholder AI governance | partnershiponai.org |
 | AI Now Institute | Social implications of AI | ainowinstitute.org |
 | Center for AI Safety | AI safety research | safe.ai |
@@ -1020,7 +1056,7 @@ Minimum bar for **Distinguished Architect / Chief AI Governance Officer:** Score
 ### 6.6 Tools
 
 | Tool | Category | Use |
-|---|---|---|
+| --- | --- | --- |
 | **AI Fairness 360 (AIF360)** | Fairness | Bias detection and mitigation |
 | **Fairlearn** | Fairness | Microsoft fairness toolkit |
 | **SHAP** | Explainability | Decision-level feature attribution |

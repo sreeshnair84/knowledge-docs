@@ -28,7 +28,7 @@ series_index: ../index.md
 A Distinguished Architect leads through three distinct modes depending on the situation. The ability to recognise which mode is required and shift between them deliberately is itself a leadership skill.
 
 | Mode | How It Works | When to Use | Risk If Overused |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Authority** | You have formal decision rights. The decision is made and communicated. | Safety-critical decisions, regulatory compliance, irreversible choices | Teams become dependent; learning stops |
 | **Influence** | You shape the decision without formal authority. You question, frame, and advocate. | Cross-functional decisions, federated architecture models | Takes longer; requires patience |
 | **Inspiration** | You create a compelling picture of what good looks like and people align to it voluntarily | Culture-setting, capability-building, long-horizon direction | Hard to use in urgent situations |
@@ -104,7 +104,7 @@ When an EA practice grows to the point of requiring its own management structure
 ### EA Team Performance Management
 
 | Dimension | What to Measure | How to Measure |
-|---|---|---|
+| --- | --- | --- |
 | **Decision quality** | Are architecture decisions holding up over time? | Decision retrospective at 12 months |
 | **Speed** | How long does it take a team to get an architecture decision? | Time from request to decision record |
 | **Adoption** | Are architecture standards being followed? | Compliance audit, exception rate |
@@ -120,7 +120,7 @@ When an EA practice grows to the point of requiring its own management structure
 John Kotter's 8-step model for leading change is the most widely validated framework for large-scale organisational transformation. It maps directly to the specific challenges of leading architecture-driven change.
 
 | Step | Kotter's Description | Architecture Context |
-|---|---|---|
+| --- | --- | --- |
 | **1. Create Urgency** | Make the case that the status quo is more dangerous than change | Quantify the cost of the current architecture: outage rate, delivery lead time, security exposure, talent cost |
 | **2. Build a Guiding Coalition** | Assemble a group with authority and credibility to lead the change | Identify 4–6 senior technical and business leaders who understand the need and have credibility with their peers |
 | **3. Form a Vision** | Create a compelling picture of the desired future state | Target architecture: not the implementation detail but the business outcomes enabled by the new architecture |
@@ -142,6 +142,7 @@ Not all resistance to architecture change looks the same. The response must be t
 Root cause: Fear that their existing expertise will be devalued, or genuine technical disagreement with the approach.
 
 Response:
+
 - Separate the two causes. Genuine technical disagreement should be engaged seriously — see the Brilliant Skeptic approach in Domain 1.
 - Create an explicit role for existing expertise in the new architecture: what did we learn from the previous approach that we must not lose?
 - Provide training and growth opportunity that converts existing expertise to the new context.
@@ -151,6 +152,7 @@ Response:
 Root cause: Previous failed transformations have produced distrust. Expectation that the new architecture will disrupt their current workflows without delivering the promised benefits.
 
 Response:
+
 - Acknowledge the history explicitly. "The last three transformations were disruptive without delivering the benefits we promised. Here is specifically what we are doing differently this time."
 - Identify a business user champion in each affected area who can interpret the change for their peers.
 - Minimise disruption to existing workflows in the early waves. Prove the benefit before asking for behavioural change.
@@ -160,6 +162,7 @@ Response:
 Root cause: Competing priorities for capital, concerns about programme execution risk, or scepticism about architecture team's ability to deliver.
 
 Response:
+
 - The business case must be built in the language of financial risk and return, not technical quality.
 - Reference comparable organisations that have made this transition and the outcomes they achieved.
 - Propose a gate-based commitment structure: full commitment is not required upfront; the commitment grows as milestones are achieved.
@@ -169,6 +172,7 @@ Response:
 Root cause: Architecture transformation often changes who has power, responsibility, and visibility. Middle managers may lose control of technology decisions that currently give them influence.
 
 Response:
+
 - Identify explicitly how middle managers' roles are enhanced (not threatened) by the transformation.
 - Involve middle managers in the design of the new operating model.
 - Recognise and reward middle managers who actively support the change.
@@ -186,6 +190,7 @@ An AI programme large enough to have a Distinguished Architect involved has cros
 The Distinguished Architect defines the principles that bound all AI architecture decisions in the programme. These are not implementation standards — they are the non-negotiable properties of any AI system built or operated by the organisation.
 
 Example principles:
+
 - Human oversight: No AI system makes an irreversible operational decision without human review
 - Explainability: Every AI output that affects a customer must be explainable to that customer in plain language
 - Data minimisation: AI systems use the minimum data required to achieve their purpose
@@ -220,7 +225,7 @@ Beyond commercial negotiation, the Distinguished Architect manages the strategic
 The following table compares the capabilities of a Distinguished Enterprise Architect against the capabilities typically required in a CTO role, and suggests specific strategies to close each gap.
 
 | Dimension | Distinguished EA Capability | CTO Additional Requirement | Strategy to Close Gap |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Technology Vision** | Sets enterprise-wide architecture direction | Sets company-wide technology direction, including product-technology integration | Develop fluency in product strategy; build relationships with Product leadership |
 | **Business Strategy Integration** | Translates business strategy into technology implications | Co-creates business strategy; technology is a competitive differentiator, not a support function | Seek exposure to P&L ownership, pricing decisions, and market positioning |
 | **Talent Leadership** | Leads EA practice team; sponsors individual architects | Accountable for entire engineering organisation culture, hiring bar, and performance | Request interim leadership of a large engineering team; shadow the engineering VP |
@@ -241,17 +246,20 @@ The following table compares the capabilities of a Distinguished Enterprise Arch
 **Background:** Distinguished EA in a FTSE 100 or Fortune 500 company. Has led a major modernisation programme. Reports to the CIO.
 
 **Typical Path:**
+
 1. Promoted to VP of Architecture or Chief Architect with P&L accountability for a technology business unit
 2. Expanded scope to include engineering organisation leadership (typically 200–500 engineers)
 3. Elevated to CTO with full accountability for technology strategy, talent, and budget
 4. Timeline: 5–8 years from Distinguished EA
 
 **Key Accelerators:**
+
 - Public attribution of successful programmes to architecture leadership
 - Board-level exposure on regulatory or transformation programmes
 - External reputation (speaking, writing, advisory board roles)
 
 **Common Blockers:**
+
 - Never having owned a P&L or engineering budget directly
 - Being perceived as too internally focused for an externally-facing CTO role
 
@@ -260,17 +268,20 @@ The following table compares the capabilities of a Distinguished Enterprise Arch
 **Background:** Distinguished EA in a large enterprise who led the AI programme governance framework and produced measurable AI-driven business value.
 
 **Typical Path:**
+
 1. Appointed as Chief AI Officer (CAIO) or VP of AI following AI programme success
 2. CAIO scope expands to include all AI-related technology investment
 3. Transition to CTO as AI becomes the dominant technology agenda
 4. Timeline: 3–6 years from Distinguished EA
 
 **Key Accelerators:**
+
 - Quantified business value from AI programme (revenue, cost, risk reduction) with personal attribution
 - External thought leadership on enterprise AI governance
 - Experience presenting AI risk to the Board
 
 **Common Blockers:**
+
 - Being perceived as "the AI person" rather than a general technology leader
 - Not having breadth across the non-AI technology estate
 
@@ -279,17 +290,20 @@ The following table compares the capabilities of a Distinguished Enterprise Arch
 **Background:** Distinguished EA in a major technology consultancy or advisory firm. Has led architecture on 5–10 enterprise client programmes.
 
 **Typical Path:**
+
 1. Partner or Managing Director in a consulting firm with CTO advisory specialisation
 2. Appointed Fractional CTO for a scale-up or mid-market company
 3. Permanent CTO appointment based on demonstrated success
 4. Timeline: 4–7 years from Distinguished EA
 
 **Key Accelerators:**
+
 - Breadth of industry exposure accelerates pattern recognition
 - Consulting reputation substitutes for single-company track record
 - Network provides access to opportunities not advertised externally
 
 **Common Blockers:**
+
 - Perceived lack of "skin in the game" compared to operators
 - Consulting billing pressure prevents the deep organisational embedding that CTO roles require
 

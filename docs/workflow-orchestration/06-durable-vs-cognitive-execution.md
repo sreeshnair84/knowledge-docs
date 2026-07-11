@@ -50,7 +50,7 @@ Replay is **deterministic** because every activity result is cached in the log. 
 ### Key Properties
 
 | Property | Behavior |
-|---|---|
+| --- | --- |
 | **State model** | Event log is source of truth; workflow state is derived |
 | **Recovery** | Replay from last completed event; no re-execution of completed steps |
 | **Retry semantics** | Retry the *same* activity with *same* input until success or max retries |
@@ -137,7 +137,7 @@ Agent Execution Loop (ReAct pattern):
 ### Key Properties
 
 | Property | Behavior |
-|---|---|
+| --- | --- |
 | **State model** | Conversation history + working memory |
 | **Recovery** | Restart from scratch or from last checkpoint |
 | **Retry semantics** | Retry with *different reasoning* (not the same action) |
@@ -150,11 +150,13 @@ Agent Execution Loop (ReAct pattern):
 ### The Non-Determinism Challenge
 
 In a Temporal workflow, you can guarantee:
+
 - "Activity A always runs before Activity B"
 - "If Activity A fails, we retry it exactly 3 times"
 - "The compensation saga always runs if step 5 fails"
 
 In a cognitive system, you cannot guarantee:
+
 - "The agent will always check balance before applying refund"
 - "The agent will always ask for approval before making changes"
 - "The agent will not invent a tool that does not exist"
@@ -166,7 +168,7 @@ This is not a defect—it is a feature. The agent adapts to unexpected situation
 ## Head-to-Head Comparison
 
 | Dimension | Durable Execution | Cognitive Execution |
-|---|---|---|
+| --- | --- | --- |
 | **Control flow** | Code-defined graph | LLM-determined at runtime |
 | **Predictability** | High (same path each time) | Low-Medium (varies by context) |
 | **Adaptability** | Low (must handle all cases in code) | High (adapts to novel situations) |
@@ -254,7 +256,7 @@ If the agent fails, Temporal can retry the entire activity (re-running the agent
 ### When to Use Hybrid
 
 | Scenario | Pattern |
-|---|---|
+| --- | --- |
 | Complex, variable decision within a structured process | Agent as Temporal activity |
 | Structured steps before/after free-form reasoning | Temporal wrapping agent |
 | Compliance-required audit trail + adaptive logic | Temporal outer + LangGraph inner |
@@ -310,7 +312,7 @@ Do not use an LLM where a simple rule works. Do not use a rigid workflow where j
 ## Summary
 
 | What You Need | Use |
-|---|---|
+| --- | --- |
 | "Process runs exactly as defined" | Durable execution |
 | "Process adapts based on context" | Cognitive execution |
 | "Exact audit trail required" | Durable execution |

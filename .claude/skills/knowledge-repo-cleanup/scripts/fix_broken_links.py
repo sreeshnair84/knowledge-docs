@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """Fix broken Docusaurus links found in the build output."""
-import re, os
+
+import os
+import re
 
 REPO = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
+
 
 def read(relpath):
     with open(os.path.join(REPO, relpath), encoding="utf-8") as f:
         return f.read()
 
+
 def write(relpath, text):
     with open(os.path.join(REPO, relpath), "w", encoding="utf-8") as f:
         f.write(text)
+
 
 def fix(relpath, old, new):
     t = read(relpath)
@@ -25,12 +30,16 @@ def fix(relpath, old, new):
 print("\n[A] skill/index.md")
 F = "docs/agentic-systems/skill/index.md"
 
-fix(F, "(00-executive-summary-and-reference-architecture)**",
-        "(./00-executive-summary-and-reference-architecture.md)**")
-fix(F, "](00-executive-summary-and-reference-architecture)\n",
-        "](./00-executive-summary-and-reference-architecture.md)\n")
+fix(
+    F, "(00-executive-summary-and-reference-architecture)**", "(./00-executive-summary-and-reference-architecture.md)**"
+)
+fix(
+    F,
+    "](00-executive-summary-and-reference-architecture)\n",
+    "](./00-executive-summary-and-reference-architecture.md)\n",
+)
 fix(F, "](enterprise/index)\n", "](./enterprise/index.md)\n")
-fix(F, "](coding/index)\n",   "](./coding/index.md)\n")
+fix(F, "](coding/index)\n", "](./coding/index.md)\n")
 # Remove Additional Resources section (broken HTML + PDF links)
 t = read(F)
 t = re.sub(r"\n---\n\n## Additional Resources\n\n.*", "", t, flags=re.DOTALL)
@@ -41,8 +50,11 @@ print("  OK  removed Additional Resources section")
 print("\n[B] skill/coding/index.md")
 F = "docs/agentic-systems/skill/coding/index.md"
 
-fix(F, "](../00-executive-summary-and-reference-architecture)",
-        "](../00-executive-summary-and-reference-architecture.md)")
+fix(
+    F,
+    "](../00-executive-summary-and-reference-architecture)",
+    "](../00-executive-summary-and-reference-architecture.md)",
+)
 fix(F, "](../enterprise/index)", "](../enterprise/index.md)")
 
 CODING_PARTS = [
@@ -66,8 +78,11 @@ for p in CODING_PARTS:
 print("\n[C] skill/enterprise/index.md")
 F = "docs/agentic-systems/skill/enterprise/index.md"
 
-fix(F, "](../00-executive-summary-and-reference-architecture)",
-        "](../00-executive-summary-and-reference-architecture.md)")
+fix(
+    F,
+    "](../00-executive-summary-and-reference-architecture)",
+    "](../00-executive-summary-and-reference-architecture.md)",
+)
 fix(F, "](../coding/index)", "](../coding/index.md)")
 
 ENTERPRISE_PARTS = [
@@ -98,13 +113,13 @@ for p in CODING_PARTS:
 print("\n[E] ai-security-governance/security/index.md")
 F = "docs/ai-security-governance/security/index.md"
 SEC = [
-    ("01-Foundations-Reference-Architecture",    "01 — Foundations &amp; Reference Architecture"),
-    ("02-Identity-MCP-A2A-Security-Blueprint",   "02 — Identity, MCP &amp; A2A Security Blueprint"),
-    ("04-AI-SOC-Observability-RedTeam-Memory",   "04 — AI SOC, Observability, Red Team &amp; Memory"),
+    ("01-Foundations-Reference-Architecture", "01 — Foundations &amp; Reference Architecture"),
+    ("02-Identity-MCP-A2A-Security-Blueprint", "02 — Identity, MCP &amp; A2A Security Blueprint"),
+    ("04-AI-SOC-Observability-RedTeam-Memory", "04 — AI SOC, Observability, Red Team &amp; Memory"),
     ("05-Economic-Security-FinOps-Commerce-PQC", "05 — Economic Security, FinOps, Commerce &amp; PQC"),
-    ("06-Operating-Model-Maturity-Roadmap",      "06 — Operating Model Maturity Roadmap"),
-    ("07-Zero-to-Mastery-Curriculum",            "07 — Zero to Mastery Curriculum"),
-    ("08-Architects-Field-Guide",                "08 — Architect&#39;s Field Guide"),
+    ("06-Operating-Model-Maturity-Roadmap", "06 — Operating Model Maturity Roadmap"),
+    ("07-Zero-to-Mastery-Curriculum", "07 — Zero to Mastery Curriculum"),
+    ("08-Architects-Field-Guide", "08 — Architect&#39;s Field Guide"),
 ]
 for slug, label in SEC:
     # Try both apostrophe encodings
@@ -117,13 +132,13 @@ for slug, label in SEC:
 print("\n[F] enterprise-architecture/transformation/index.md")
 F = "docs/enterprise-architecture/transformation/index.md"
 TRANSFORM = [
-    ("00_Executive_Summary_and_AI_Vision",            "00 — Executive Summary &amp; AI Vision"),
-    ("01_Current_State_Assessment_and_AI_Maturity",   "01 — Current State Assessment &amp; AI Maturity"),
-    ("02_AI_Opportunity_Portfolio",                   "02 — AI Opportunity Portfolio"),
-    ("03_Enterprise_AI_Platform_and_Data_Architecture","03 — Enterprise AI Platform &amp; Data Architecture"),
-    ("04_Governance_Responsible_AI_and_Security",     "04 — Governance, Responsible AI &amp; Security"),
-    ("05_Target_Operating_Model_and_Change",          "05 — Target Operating Model &amp; Change"),
-    ("06_Roadmap_Financials_KPIs_and_Risk",           "06 — Roadmap, Financials, KPIs &amp; Risk"),
+    ("00_Executive_Summary_and_AI_Vision", "00 — Executive Summary &amp; AI Vision"),
+    ("01_Current_State_Assessment_and_AI_Maturity", "01 — Current State Assessment &amp; AI Maturity"),
+    ("02_AI_Opportunity_Portfolio", "02 — AI Opportunity Portfolio"),
+    ("03_Enterprise_AI_Platform_and_Data_Architecture", "03 — Enterprise AI Platform &amp; Data Architecture"),
+    ("04_Governance_Responsible_AI_and_Security", "04 — Governance, Responsible AI &amp; Security"),
+    ("05_Target_Operating_Model_and_Change", "05 — Target Operating Model &amp; Change"),
+    ("06_Roadmap_Financials_KPIs_and_Risk", "06 — Roadmap, Financials, KPIs &amp; Risk"),
 ]
 for slug, label in TRANSFORM:
     old = f"[{label}](/knowledge-docs/enterprise-architecture/transformation/{slug})"
@@ -134,16 +149,16 @@ for slug, label in TRANSFORM:
 print("\n[G] ai-usecases/index.md")
 F = "docs/ai-usecases/index.md"
 SECTORS = [
-    ("01_aviation",     "01 — Aviation AI Use Cases"),
-    ("02_banking",      "02 — Banking AI Use Cases"),
-    ("03_healthcare",   "03 — Healthcare AI Use Cases"),
-    ("04_manufacturing","04 — Manufacturing AI Use Cases"),
-    ("05_telecom",      "05 — Telecom AI Use Cases"),
-    ("06_government",   "06 — Government AI Use Cases"),
-    ("07_pharma",       "07 — Pharma AI Use Cases"),
-    ("08_energy",       "08 — Energy AI Use Cases"),
-    ("09_logistics",    "09 — Logistics AI Use Cases"),
-    ("10_media",        "10 — Media AI Use Cases"),
+    ("01_aviation", "01 — Aviation AI Use Cases"),
+    ("02_banking", "02 — Banking AI Use Cases"),
+    ("03_healthcare", "03 — Healthcare AI Use Cases"),
+    ("04_manufacturing", "04 — Manufacturing AI Use Cases"),
+    ("05_telecom", "05 — Telecom AI Use Cases"),
+    ("06_government", "06 — Government AI Use Cases"),
+    ("07_pharma", "07 — Pharma AI Use Cases"),
+    ("08_energy", "08 — Energy AI Use Cases"),
+    ("09_logistics", "09 — Logistics AI Use Cases"),
+    ("10_media", "10 — Media AI Use Cases"),
 ]
 for slug, label in SECTORS:
     old = f"[{label}](/knowledge-docs/ai-usecases/{slug})"
@@ -153,13 +168,9 @@ for slug, label in SECTORS:
 # Remove broken PDF and HTML static asset links
 t = read(F)
 # Remove PDF line
-t = re.sub(
-    r"\n- \[EU Banking AI Agent Evaluation Framework \(PDF\)\]\([^)]+\)\n",
-    "\n", t)
+t = re.sub(r"\n- \[EU Banking AI Agent Evaluation Framework \(PDF\)\]\([^)]+\)\n", "\n", t)
 # Remove HTML Files section
-t = re.sub(
-    r"\n---\n\n## HTML Files\n\n(?:- \[[^\]]+\]\([^)]+\)\n\n?)+",
-    "\n---\n\n", t)
+t = re.sub(r"\n---\n\n## HTML Files\n\n(?:- \[[^\]]+\]\([^)]+\)\n\n?)+", "\n---\n\n", t)
 write(F, t)
 print("  OK  removed broken PDF + HTML section")
 

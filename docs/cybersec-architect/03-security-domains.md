@@ -35,7 +35,7 @@ Identity is the primary control plane for modern enterprise security. Every acce
 ### 1.1 IAM (Identity & Access Management)
 
 | Capability | Description | Leading Tools (2026) |
-|---|---|---|
+| --- | --- | --- |
 | **Directory Services** | Canonical identity store | Entra ID, Okta, Google Workspace, AD DS |
 | **Authentication** | Verify identity claims | FIDO2/passkeys, MFA, SSO |
 | **Authorization** | Enforce access policies | RBAC, ABAC, ReBAC (Google Zanzibar model) |
@@ -47,6 +47,7 @@ Identity is the primary control plane for modern enterprise security. Every acce
 Privileged accounts — admin, root, service accounts — are the primary targets of attackers who have gained initial access.
 
 **Core PAM capabilities:**
+
 - **Credential vaulting**: Secrets checked out per session, never stored on endpoints
 - **Session recording**: Full keylog and video recording of privileged sessions
 - **Just-in-Time (JIT) access**: Privileges granted only when needed and for the minimum duration
@@ -58,7 +59,7 @@ Privileged accounts — admin, root, service accounts — are the primary target
 ### 1.3 Federation Protocols
 
 | Protocol | Use Case | Key Flows |
-|---|---|---|
+| --- | --- | --- |
 | **SAML 2.0** | Web SSO, enterprise applications | SP-initiated, IdP-initiated |
 | **OAuth 2.1** | API authorization, agent delegation | Auth Code + PKCE, Client Credentials |
 | **OIDC** | Identity layer on OAuth | ID Token, UserInfo endpoint |
@@ -83,6 +84,7 @@ As of 2026, machine identities outnumber human identities 10:1 in the average en
 CSPM continuously assesses cloud configurations against security benchmarks and regulatory requirements.
 
 **Key capabilities:**
+
 - Multi-cloud visibility (AWS, Azure, GCP, OCI)
 - Misconfiguration detection (public S3 buckets, overly permissive IAM, unencrypted storage)
 - Compliance posture against CIS Benchmarks, NIST, PCI DSS, HIPAA
@@ -96,6 +98,7 @@ CSPM continuously assesses cloud configurations against security benchmarks and 
 CWPP protects cloud workloads — VMs, containers, serverless — at runtime.
 
 **Capabilities:**
+
 - Vulnerability assessment of running workloads
 - Runtime threat detection (process anomalies, network connections, file system changes)
 - Container image scanning and policy enforcement
@@ -109,6 +112,7 @@ CIEM addresses the identity permission explosion in cloud environments.
 **Problem statement:** The average cloud environment has 10,000+ identities with excessive permissions. Attackers exploit over-permissioned roles to escalate privileges.
 
 **CIEM capabilities:**
+
 - Discovery of all cloud identities (human + machine + service)
 - Permission baselining (what permissions are actually used vs. what is granted)
 - Over-permission detection and right-sizing recommendations
@@ -129,7 +133,7 @@ CNAPP consolidates CSPM + CWPP + CIEM + infrastructure-as-code scanning into a s
 ### 3.1 Network Segmentation
 
 | Approach | Description | Use Case |
-|---|---|---|
+| --- | --- | --- |
 | **VLAN segmentation** | L2 isolation | Legacy on-prem environments |
 | **Firewall zones** | L3/L4 policy enforcement | DMZ, production/dev isolation |
 | **Microsegmentation** | L7 workload-to-workload policies | Zero Trust for data centres and cloud |
@@ -152,6 +156,7 @@ User Device (verified posture)
 ```
 
 **Advantages over VPN:**
+
 - No network-level access — only application-level
 - Device posture enforced at access time
 - Identity-aware; works for unmanaged devices
@@ -168,7 +173,7 @@ SSE = CASB + SWG + ZTNA + (optionally FWaaS, DLP, RBI)
 ```
 
 | Component | Function |
-|---|---|
+| --- | --- |
 | **SD-WAN** | Optimised, policy-driven network routing |
 | **CASB** | Control over SaaS app usage and data |
 | **SWG** | Web traffic filtering and threat protection |
@@ -187,6 +192,7 @@ SSE = CASB + SWG + ZTNA + (optionally FWaaS, DLP, RBI)
 EDR provides continuous monitoring and recording of endpoint activity for threat detection and investigation.
 
 **Core capabilities:**
+
 - Process, network, file system, registry event collection
 - Behavioural detection (anomaly + threat intelligence + ML)
 - Automated response (process kill, network isolation, file quarantine)
@@ -293,7 +299,7 @@ DSPM discovers, classifies, and monitors data across cloud environments:
 DLP prevents sensitive data from leaving the organization through unauthorized channels:
 
 | Channel | DLP Control |
-|---|---|
+| --- | --- |
 | Email | Scan outbound email attachments and body |
 | Web browser | Block upload of classified data to personal sites |
 | Removable media | Block or encrypt data copied to USB |
@@ -306,7 +312,7 @@ DLP prevents sensitive data from leaving the organization through unauthorized c
 ### 6.3 Encryption
 
 | State | Technology | Key Management |
-|---|---|---|
+| --- | --- | --- |
 | **At rest** | AES-256 (database, file system, object storage) | Cloud KMS (AWS KMS, Azure Key Vault, GCP Cloud KMS) |
 | **In transit** | TLS 1.3 (all communications) | Certificate lifecycle automation |
 | **In use** | Confidential Computing (Intel TDX, AMD SEV) | Hardware-backed TEE |
@@ -359,6 +365,7 @@ Scan     Scan     Drift   Threat
 ```
 
 **CNAPP risk correlation example:**
+
 - CSPM finds: S3 bucket with public read policy
 - CIEM finds: Lambda function has s3:GetObject on that bucket with over-broad role
 - CWPP finds: Lambda has known CVE in its runtime library
@@ -398,7 +405,7 @@ SOAR automates repetitive security operations tasks:
 **Intelligence types:**
 
 | Type | TTL | Example | Consumer |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Strategic** | Months–Years | Nation-state targeting of sector | CISO, Board |
 | **Operational** | Weeks–Months | Campaign targeting financial firms with spearphish | SOC Manager |
 | **Tactical** | Days–Weeks | Specific malware family TTPs | SOC Analyst |
@@ -420,7 +427,7 @@ Security analytics applies statistical and machine learning techniques to securi
 **Domain summary table:**
 
 | Domain | Primary Concern | Key Metrics | Investment Priority (2026) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Identity | Credential theft, privilege abuse | Time-to-provision, MFA adoption, identity risk score | Very High |
 | Cloud | Misconfiguration, exposed data | Cloud security score, critical misconfigs/week | Very High |
 | Network | Lateral movement, exfiltration | Detection coverage, ZTNA adoption % | High |

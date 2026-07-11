@@ -40,7 +40,7 @@ Start with the [shared executive summary and reference architecture](../00-execu
 The parts are designed to be read in order on first pass; experienced practitioners can navigate directly to the part covering their current decision. Each part opens with a one-sentence "continues from" link to the prior part.
 
 | Part | Title | What's unique to this part |
-|---|---|---|
+| --- | --- | --- |
 | 1 | [Foundations: What Is an Agent Skill?](./01-foundations-what-is-an-agent-skill.md) | Enterprise definition, progressive disclosure model, skill vs. tool/workflow/agent/prompt — enterprise platform framing across Anthropic, AWS, Azure, Google ADK |
 | 2 | [Skill Anatomy & Metadata Schema](./02-skill-anatomy-and-metadata-schema.md) | Internal SKILL.md structure, YAML frontmatter schema, canonical deliverable 4 template |
 | 3 | [Skill Execution Lifecycle & Tracing](./03-execution-lifecycle-and-tracing.md) | End-to-end execution flow from intent detection to response validation, sequence diagrams, deliverable 2 |

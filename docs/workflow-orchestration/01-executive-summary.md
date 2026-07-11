@@ -22,16 +22,19 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 ## The Core Challenge
 
 ### Yesterday (2010–2020): Deterministic Workflows
+
 - **Camunda, Airflow, Azure Logic Apps**: Define the process once, execute reliably.
 - Model: `BPMN diagram → Deploy → Monitor → Execute exactly as designed`
 - Assumption: The process is knowable upfront. Exceptions are codified.
 
 ### Today (2020–2025): Microservice Orchestration  
+
 - **Temporal, Durable Functions, Durable Execution**: Ensure reliability across distributed systems.
 - Model: `Workflow code → Deterministic replay → Event sourcing → Recover from failures`
 - Assumption: Deterministic code is better than BPMN. State matters more than the model.
 
 ### Tomorrow (2025–2035): Agentic Orchestration
+
 - **LangGraph, Claude Code, AgentCore, CrewAI**: Let AI design and adapt workflows.
 - Model: `Agent decision → Tool invocation → Observation → Reasoning → Next action → Learn`
 - Assumption: Some processes are too complex, variable, or data-dependent to pre-define. AI can reason about execution.
@@ -43,6 +46,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 ## What Changes in the Agentic Era
 
 ### 1. **Determinism is No Longer Guaranteed**
+
 - **Traditional**: Workflow replay ensures identical behavior.
 - **Agentic**: The same input + same prompt + same model version might produce different outputs.
 - **Enterprise impact**: How do you debug, audit, and ensure compliance when outcomes are probabilistic?
@@ -50,6 +54,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 **→ Answer**: Separate concerns: Temporal/workflow engines handle **coordination reliability**. Agents handle **reasoning optionality**. Keep the boundary explicit.
 
 ### 2. **Workflow State Splits Into Layers**
+
 - **Workflow state** (Temporal): "What task are we on?" (deterministic, recoverable)
 - **Agent memory** (LangGraph, RAG): "What does the agent know?" (probabilistic, learned)
 - **Decision state** (AI planner): "What should we do next?" (adaptive, evaluated)
@@ -57,6 +62,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 **→ Answer**: Workflows coordinate. Agents decide. Memory informs both. They are not the same.
 
 ### 3. **Tool Calling Replaces Fixed Activities**
+
 - **Traditional**: Define activities in code, invoke them from workflow.
 - **Agentic**: Agents discover and invoke tools dynamically; tools can be stateful.
 - **Enterprise impact**: How do you prevent infinite tool loops? Ensure tools are called correctly?
@@ -64,6 +70,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 **→ Answer**: MCP (Model Context Protocol) + tool governance. Let agents call any tool, but instrument observation/verification.
 
 ### 4. **Adaptive Routing Replaces Decision Tables**
+
 - **Traditional**: DMN decision tables encode business rules → deterministic routing.
 - **Agentic**: Agents reason about context, constraints, and history → adaptive routing.
 - **Enterprise impact**: How do you version, audit, and change adaptive decisions?
@@ -71,6 +78,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 **→ Answer**: Treat AI decisions as policies. Version prompts and models. Audit reasoning traces.
 
 ### 5. **Humans Escalate, Not Approve**
+
 - **Traditional**: Workflow pauses for human approval → human decides → workflow resumes.
 - **Agentic**: Agent proposes action → human reviews reasoning → approves/modifies → agent learns.
 - **Enterprise impact**: Approval becomes dialogue, not binary gate.
@@ -84,7 +92,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 ### Platforms That Survive the Shift
 
 | **Platform** | **Era** | **Best For** | **Survives As** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Camunda** | BPM (visual, compliance) | Regulated processes, non-technical stakeholders | Process mining, governance layer |
 | **Temporal** | Microservice orchestration | Distributed systems, retries, state machines | Workflow execution engine + state store |
 | **Durable Functions** | Azure orchestration | Azure-first enterprises | Coordination layer for cloud-native apps |
@@ -96,6 +104,7 @@ Enterprises are moving from **designed workflows** (human-defined, deterministic
 ### Key Insight: **Specialization Wins**
 
 No single platform should do everything. Winners in 2026–2030:
+
 1. **Camunda** evolves toward process intelligence + AI decision support (not pure AI execution)
 2. **Temporal** becomes the standard for SLA-critical orchestration (stays deterministic)
 3. **LangGraph** becomes the default for agentic workflows (replaces Airflow for AI)
@@ -105,25 +114,29 @@ No single platform should do everything. Winners in 2026–2030:
 
 ## Enterprise Decision Framework
 
-### Choose **Temporal** If:
+### Choose **Temporal** If
+
 - You have long-running distributed transactions (financial settlement, order fulfillment)
 - Deterministic replay and recovery are non-negotiable (compliance, audit)
 - You need sub-millisecond coordination (trading, real-time systems)
 - Your workflow logic is stable; you want to optimize execution reliability
 
-### Choose **Camunda** If:
+### Choose **Camunda** If
+
 - Your stakeholders need to see and modify process models visually (business users)
 - Compliance requires documented, versioned processes (regulated industries)
 - You use external task workers or human approvals (hybrid human-system workflows)
 - You want process mining and analytics built-in
 
-### Choose **LangGraph** (or similar agent framework) If:
+### Choose **LangGraph** (or similar agent framework) If
+
 - Your workflow decisions require reasoning over data/context (not just routing)
 - You want agents to discover and invoke tools dynamically
 - You need agents to learn from past interactions (memory, feedback loops)
 - Your process evolves based on outcomes (adaptive workflows)
 
-### Choose **Hybrid** (Most Enterprises) If:
+### Choose **Hybrid** (Most Enterprises) If
+
 - You have **deterministic core processes** (Temporal) + **agentic decision logic** (LangGraph)
 - Humans must review high-stakes decisions (HITL layer on top)
 - You need compliance audit trails + agent reasoning traces (dual governance)
@@ -134,6 +147,7 @@ No single platform should do everything. Winners in 2026–2030:
 ## The Governance Crisis & Solution
 
 ### The Problem
+
 - **Temporal workflows**: "Why did this happen?" → Deterministic replay, clear answer.
 - **Agent workflows**: "Why did this happen?" → "The LLM decided based on this context..." (harder to debug, version, control)
 - **Hybrid**: "Who decided?" → It's unclear who owns the decision.
@@ -160,6 +174,7 @@ No single platform should do everything. Winners in 2026–2030:
 ```
 
 Each layer:
+
 - Has **clear ownership** (who changes it?)
 - Has **versioning** (prompt version, workflow version, tool version)
 - Has **audit trails** (reasoning trace, execution trace)
@@ -190,7 +205,7 @@ Each layer:
 ## What This Research Covers
 
 | Section | Depth |
-|---|---|
+| --- | --- |
 | **Evolution Timeline** | How we got here (BPM → microservices → agentic) |
 | **Temporal Deep Dive** | Architecture, patterns, limitations with AI |
 | **Camunda Deep Dive** | BPMN/DMN, visual modeling, AI integration points |

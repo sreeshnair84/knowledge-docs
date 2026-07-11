@@ -44,7 +44,7 @@ The organization employs approximately 22,000 people, of which roughly 3,100 are
 Unplanned downtime was the single largest controllable cost driver in the business. The CFO's office had tracked the problem for three years before the EA engagement began.
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Annual unplanned downtime rate | 8.0% of available production hours |
 | Annual cost of unplanned downtime | $120M |
 | Average cost per incident | $340,000 |
@@ -112,7 +112,7 @@ CURRENT STATE — Plant Architecture (replicated x15, each different)
 ```
 
 | Architecture Dimension | Current State | Gap |
-|---|---|---|
+| --- | --- | --- |
 | Data collection | Per-plant SCADA historians, isolated | No aggregation or cross-plant visibility |
 | Data schemas | 47 equipment brands × 15 plants = non-standard | No common equipment ontology |
 | Analytics capability | Manual spot-checks by plant engineers | No automated anomaly detection |
@@ -189,7 +189,7 @@ FUTURE STATE — AI Predictive Maintenance Platform
 ### Cost Summary
 
 | Category | Investment |
-|---|---|
+| --- | --- |
 | IoT sensor hardware (15 plants) | $2.8M |
 | Edge gateway infrastructure | $0.9M |
 | Azure cloud platform (3-year) | $1.4M |
@@ -202,7 +202,7 @@ FUTURE STATE — AI Predictive Maintenance Platform
 ### Benefit Projection (5-Year)
 
 | Benefit Category | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | Total |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Downtime reduction (8% → 4%) | $8M | $15M | $15M | $15M | $14M | $67M |
 | Delivery penalty avoidance | $6M | $9M | $9M | $9M | $8M | $41M |
 | Reactive maintenance labor reduction | $2M | $4M | $4M | $4M | $4M | $18M |
@@ -284,7 +284,7 @@ Union consultation added three months to Phase 0 (originally planned as one mont
 ## 9. Governance Setup
 
 | Governance Body | Membership | Cadence | Authority |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Program Steering Committee | CFO, CTO, COO, VP Operations | Monthly | Budget approval, risk escalation |
 | OT Security Review Board | CISO, OT Security Lead, Plant Engineering Leads | Bi-weekly (Phase 0–1), Monthly thereafter | OT architecture approval |
 | Union Liaison Committee | HR VP, 3 Shop Steward Representatives, Program Manager | Monthly | Consultation compliance |
@@ -297,7 +297,7 @@ Union consultation added three months to Phase 0 (originally planned as one mont
 **Risk register highlights:**
 
 | Risk | Likelihood | Impact | Mitigation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Equipment too old to instrument | Medium | High | Phase 3 assessment gate to evaluate feasibility |
 | Data quality insufficient for ML | High | High | Data quality scoring before model training begins |
 | Union resistance | Medium | Critical | Dedicated consultation process; no monitoring without agreement |
@@ -328,7 +328,7 @@ Union consultation added three months to Phase 0 (originally planned as one mont
     Plants 5, 6, 9, and 13 had SCADA historians that had been reconfigured multiple times without consistent tag naming. The data quality score (a metric developed during Phase 0) came back at 38–51% on a scale where 75% was the minimum for reliable ML training. Additional data cleansing was performed, but the resulting models for these plants had 40% higher false positive rates than the pilot plants. High false positive rates led to alert fatigue; technicians in these plants dismissed alerts at a rate of 67% vs. 12% in the pilot plants.
 
 | Plant Group | Downtime Before | Downtime After | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Pilot plants (2) | 8.1% | 3.8% | Exceeded target |
 | Good data plants (7) | 7.9% | 4.9% | Met target |
 | Poor data quality plants (4) | 8.2% | 7.1% | Partial improvement |

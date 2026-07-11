@@ -27,7 +27,7 @@ covers_version: \"as of 2026-07-10\"
 Traditional IT governance was designed for deterministic systems: a change request produces a known output, a code deployment is testable before release, a database query returns predictable results. Agentic systems break every one of these assumptions.
 
 | Governance Challenge | Traditional IT Systems | Agentic AI Systems |
-|---|---|---|
+| --- | --- | --- |
 | **Output predictability** | Deterministic for same inputs | Non-deterministic; same prompt may produce different actions |
 | **Change boundary** | Code + config is the system | Prompt, model, memory, tools, context, and retrieved data all affect behavior |
 | **Testing completeness** | Full coverage achievable | Behavior space is effectively infinite; combinatorial explosion |
@@ -50,7 +50,7 @@ Traditional IT governance was designed for deterministic systems: a change reque
 Agentic systems require governance across 16 distinct domains. Each domain has a primary owner, a governance body, and a set of processes:
 
 | # | Domain | Primary Owner | Governance Body | Key Process |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | Architecture | Principal AI Architect | Platform Architecture Board (PAB) | ARB review, exception process |
 | 2 | Platform | AI Platform Lead | Platform Product Team | SLA management, versioning |
 | 3 | Prompt | AI Application Owner | Prompt Review Committee | Prompt versioning, review, deploy |
@@ -127,7 +127,7 @@ OPERATING MODES
 ### 1.4 RACI Framework for Agentic Governance
 
 | Domain | AI Gov Committee | PAB | AI CoE | AI Platform Team | LOB AI Team | DPO | CISO | CCO | CAB |
-|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **Architecture** | A | R | C | C | I | I | C | I | I |
 | **Platform** | I | A | C | R | C | I | C | I | I |
 | **Prompt** | I | C | C | I | R | C | I | I | A |
@@ -156,7 +156,7 @@ OPERATING MODES
 The PAB is the highest architectural authority for agentic system design. It evaluates and approves reference architectures, sets technology standards, adjudicates exceptions, and manages the technology radar.
 
 | PAB Role | Member | Meeting Cadence | Voting Rights |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Chair** | Principal AI Architect | Every meeting | Yes |
 | **Platform Lead** | AI Platform Engineering Lead | Every meeting | Yes |
 | **Security Architect** | AI-focused Security Architect | Every meeting | Yes |
@@ -167,6 +167,7 @@ The PAB is the highest architectural authority for agentic system design. It eva
 | **CoE Lead** | AI CoE Director | Every meeting | Advisory |
 
 **PAB Operating Rules:**
+
 - Decisions require quorum of 4 voting members
 - Disputed decisions escalate to AI Governance Committee within 5 business days
 - All decisions recorded in Architecture Decision Record (ADR) format
@@ -178,7 +179,7 @@ The PAB is the highest architectural authority for agentic system design. It eva
 The ARB reviews individual agentic applications before production deployment. Review thresholds:
 
 | Application Type | Review Required | Reviewers | SLA |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **New agentic application (any tier)** | Full ARB review | PAB quorum + CISO | 10 business days |
 | **New tool integration (financial/external/execute-class)** | ARB review | Platform Lead + Security | 5 business days |
 | **New MCP server integration** | Light-touch review | Platform Lead | 3 business days |
@@ -206,7 +207,7 @@ The ARB reviews individual agentic applications before production deployment. Re
 ### 2.3 Technology Radar for Agentic Stack
 
 | Tier | Technology/Pattern | Status | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **ADOPT** | AG-UI protocol (open standard) | Adopt | Production-ready; CopilotKit reference implementation |
 | **ADOPT** | MCP v0.7+ (tool protocol) | Adopt | Production standard for tool connectivity |
 | **ADOPT** | OAuth 2.1 + PKCE | Adopt | Mandatory for user-interactive agents |
@@ -263,7 +264,7 @@ Team identifies need to deviate from reference architecture
 **Exception severity levels:**
 
 | Severity | Criteria | Approval Authority | Max Duration |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Low** | Minor deviation from style/pattern, no security or compliance impact | PAB Chair only | 12 months |
 | **Medium** | Deviation from reference architecture with compensating controls | PAB quorum | 6 months |
 | **High** | Deviation from security or compliance requirements | PAB + CISO + CCO | 3 months with monthly review |
@@ -278,7 +279,7 @@ Team identifies need to deviate from reference architecture
 The AI Platform team must manage the platform as a product with formal SLAs, versioning, and deprecation policies — not as an informal shared service.
 
 | Platform SLA Category | Target | Measurement | Escalation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Agent runtime availability** | 99.9% monthly | Uptime monitoring | P1 alert at 99.5% |
 | **API gateway latency (p99)** | < 500ms (excluding LLM) | APM tracing | P2 alert at 800ms |
 | **LLM proxy latency overhead** | < 50ms added | APM tracing | P2 alert at 100ms |
@@ -291,7 +292,7 @@ The AI Platform team must manage the platform as a product with formal SLAs, ver
 ### 3.2 Tenant Governance in Multi-Tenant AI Platforms
 
 | Governance Dimension | Policy | Enforcement Mechanism |
-|---|---|---|
+| --- | --- | --- |
 | **Tenant isolation** | Complete isolation of context, memory, tools, and audit logs between tenants | Namespace-level isolation in Kubernetes; tenant ID as partition key in all data stores |
 | **Resource quotas** | Per-tenant token budgets, tool call limits, concurrent session limits | API gateway rate limiting with tenant-aware policies |
 | **Tool access** | Each tenant only sees tools explicitly granted to them | Tool registry ACL with tenant scope |
@@ -305,7 +306,7 @@ The AI Platform team must manage the platform as a product with formal SLAs, ver
 ### 3.3 Platform API Versioning
 
 | Version Policy | Rule |
-|---|---|
+| --- | --- |
 | **Major versions (v1 → v2)** | Breaking changes; 12-month deprecation notice; migration guide published |
 | **Minor versions (v1.1 → v1.2)** | Additive changes only; no notice required; backward compatible |
 | **Patch versions** | Bug fixes, security patches; no API change; deployed immediately |
@@ -316,7 +317,7 @@ The AI Platform team must manage the platform as a product with formal SLAs, ver
 ### 3.4 Resource Quotas and Fair Use Policy
 
 | Resource | Default Quota | Enterprise Tier Quota | Override Process |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Tokens per day** | 1M input + 500K output | 10M input + 5M output | Quota increase request to Platform Lead |
 | **Concurrent agent sessions** | 20 | 200 | Architecture review if > 500 |
 | **Tool calls per session** | 50 | 500 | Hard cap; exception requires PAB |
@@ -334,12 +335,13 @@ The AI Platform team must manage the platform as a product with formal SLAs, ver
 Prompts are first-class software artifacts that require version control, review, and deployment governance. Adopt semantic versioning for prompts:
 
 | Version Change | When | Example | Approval Required |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Major (X.0.0)** | Fundamental change to agent persona, capability scope, or prohibited behaviors | 1.0.0 → 2.0.0 | Full ARB review |
 | **Minor (x.X.0)** | New capability added, new topic handled, new escalation path | 1.3.0 → 1.4.0 | Prompt Review Committee |
 | **Patch (x.x.X)** | Wording improvement, clarification, formatting — no behavior change | 1.3.0 → 1.3.1 | App Owner self-approval with peer review |
 
 **Prompt registry requirements:**
+
 - Every system prompt stored in version-controlled prompt registry (e.g., Git with signed commits)
 - Each version tagged with: version number, author, reviewer, approval date, production deployment date, change summary
 - Rollback capability within 15 minutes to any previous version
@@ -396,7 +398,7 @@ Prompt Author writes new/modified system prompt
 Before any system prompt reaches production, it must pass:
 
 | Test Category | What is Tested | Minimum Pass Threshold |
-|---|---|---|
+| --- | --- | --- |
 | **Prohibited content refusal** | Jailbreak attempts, CSAM requests, violence, credential extraction | 100% refusal (zero tolerance) |
 | **Sensitive topic handling** | Medical, legal, financial advice — correct escalation | 99% correct escalation |
 | **PII handling** | User shares PII — agent handles per privacy policy | 100% compliant handling |
@@ -409,7 +411,7 @@ Before any system prompt reaches production, it must pass:
 ### 4.4 Prompt Change Management
 
 | Change Type | Change Advisory Board? | Rollback Plan Required | Communication to Users |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Major version** | Yes — full CAB review | Yes — tested rollback within 15 min | Yes — advance notice per change comms policy |
 | **Minor version** | Yes — abbreviated CAB review | Yes | Yes — if behavior visible to users |
 | **Patch version** | No — App Owner authority | Yes — automated | No — unless tone/persona changes |
@@ -418,7 +420,7 @@ Before any system prompt reaches production, it must pass:
 ### 4.5 Sensitive Topic Handling Policies
 
 | Topic Category | Policy | Escalation Path |
-|---|---|---|
+| --- | --- | --- |
 | **Medical advice** | Provide information only; recommend professional consultation; never diagnose | Escalate to human agent if urgency indicators present |
 | **Legal advice** | Provide general information only; recommend legal counsel | Always recommend attorney for specific legal situations |
 | **Financial advice** | Provide factual information; never recommend specific securities | Escalate to licensed advisor for investment decisions |
@@ -436,7 +438,7 @@ Before any system prompt reaches production, it must pass:
 Context governance defines what data the agent runtime is permitted to include in the context window sent to the LLM provider.
 
 | Data Category | Allowed in Context | Conditions / Controls |
-|---|---|---|
+| --- | --- | --- |
 | **User's own messages** | Yes | User-provided content only; no injection from other users |
 | **User's public profile data** | Yes | First-party data with user consent |
 | **User's private profile data** | Conditional | Explicit user consent required; data minimization applied |
@@ -455,7 +457,7 @@ Context governance defines what data the agent runtime is permitted to include i
 The context sent to any LLM provider must be processed through PII controls before transmission:
 
 | PII Type | Treatment in Context | Technical Control |
-|---|---|---|
+| --- | --- | --- |
 | **Email addresses** | Tokenize or mask | DLP scan at context assembly gateway |
 | **Phone numbers** | Tokenize or mask | DLP scan |
 | **National ID / SSN** | Always mask | DLP scan + output filter |
@@ -469,7 +471,7 @@ The context sent to any LLM provider must be processed through PII controls befo
 ### 5.3 Cross-Tenant Context Isolation
 
 | Isolation Requirement | Implementation | Verification |
-|---|---|---|
+| --- | --- | --- |
 | **No cross-tenant context bleed** | Tenant ID partition key on all context stores | Automated isolation test suite run nightly |
 | **Session isolation within tenant** | Session ID partition key; no shared context between sessions | Session boundary validation at context assembly |
 | **No context persistence beyond session** | Default context TTL = session duration; explicit long-term memory requires opt-in | Automated context expiry validation |
@@ -479,7 +481,7 @@ The context sent to any LLM provider must be processed through PII controls befo
 ### 5.4 Context Retention and Deletion Policies
 
 | Retention Period | Data Type | Legal Basis | Deletion Mechanism |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Session duration only** | Default conversational context | Operational necessity | Auto-expire on session close |
 | **30 days** | Audit logs for operational debugging | Operational necessity | Automated deletion job |
 | **90 days** | Security incident investigation data | Security necessity | Deletion with CISO sign-off |
@@ -494,7 +496,7 @@ The context sent to any LLM provider must be processed through PII controls befo
 ### 6.1 Memory Retention Policies by Memory Type
 
 | Memory Type | Description | Default Retention | User Control | Audit |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Working memory** | In-session conversation context | Session only | None needed | Session log |
 | **Episodic memory** | Past interaction summaries | 90 days | View + delete | Access log |
 | **Semantic memory** | Learned user preferences, facts | 1 year with renewal | View + edit + delete | Access log |
@@ -507,7 +509,7 @@ The context sent to any LLM provider must be processed through PII controls befo
 Long-term memory is subject to consent requirements that vary by jurisdiction and data type:
 
 | Memory Action | Consent Required | Consent Mechanism | Re-consent Trigger |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Enable long-term memory** | Explicit opt-in | Informed consent UI with clear description | First use; material change to what is stored |
 | **Expand memory scope** | New consent | Re-consent notification | Any addition of new data category |
 | **Share memory across agent instances** | Explicit consent | Separate consent for each sharing context | Each new sharing context |
@@ -517,7 +519,7 @@ Long-term memory is subject to consent requirements that vary by jurisdiction an
 ### 6.3 Memory Access Controls
 
 | Role | Access Level | Memory Types |
-|---|---|---|
+| --- | --- | --- |
 | **End User (own memory)** | Read + Delete all own memory | All types for own user ID |
 | **Agent (authorized)** | Read only | Types explicitly granted in agent capability scope |
 | **Agent (authorized, learning)** | Read + Write | With explicit user consent for learning |
@@ -574,7 +576,7 @@ User submits erasure request (via API, UI, or email to DPO)
 Every memory operation must be logged:
 
 | Event | Required Log Fields |
-|---|---|
+| --- | --- |
 | **Memory write** | timestamp, user_id, agent_id, session_id, memory_type, data_category, size_bytes, source (user_provided / agent_derived), consent_reference |
 | **Memory read** | timestamp, user_id, agent_id, session_id, memory_type, query_summary, records_returned |
 | **Memory delete** | timestamp, actor (user / agent / admin / GDPR_cascade), memory_type, records_deleted, trigger_type |
@@ -590,7 +592,7 @@ Every memory operation must be logged:
 All tools must be classified before approval. Classification determines the level of review required and the runtime controls applied:
 
 | Class | Description | Examples | Review Level | Runtime Controls |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **READ** | Read-only data access | Search, knowledge base query, document retrieval | Light-touch | Rate limit only |
 | **WRITE** | Data modification within tenant | CRM update, document creation, calendar event | Standard | Rate limit + audit |
 | **EXECUTE** | Code or process execution | Code interpreter, shell, automation script | Full ARB | Sandbox + rate limit + audit |
@@ -655,7 +657,7 @@ Developer/Team proposes new tool integration
 ### 7.3 Tool Security Requirements
 
 | Requirement | READ | WRITE | EXECUTE | FINANCIAL | EXTERNAL | ADMIN |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **Auth mechanism** | API key min | OAuth 2.1 | mTLS + OAuth | mTLS + OAuth + HSM | OAuth 2.1 | mTLS + OAuth + MFA |
 | **Audit logging** | Request/response summary | Full audit | Full + execution trace | Full + financial audit | Full + DLP | Full + admin trail |
 | **Input validation** | Schema validation | Schema + business rule | Schema + code analysis | Schema + amount limits | Schema + DLP | Schema + admin scope |
@@ -723,7 +725,7 @@ REVIEW & RETIRE
 ### 8.2 Policy Conflict Resolution
 
 | Conflict Type | Resolution Rule | Authority |
-|---|---|---|
+| --- | --- | --- |
 | **Same-level policy conflict** | More restrictive policy wins | PAB + Policy Committee |
 | **Platform vs. LOB policy** | Platform policy wins | Platform Architecture Board |
 | **Security vs. usability conflict** | Escalate to AI Governance Committee | AI Governance Committee |
@@ -735,7 +737,7 @@ REVIEW & RETIRE
 When an urgent business or security situation requires bypassing normal policy:
 
 | Step | Action | Time Limit |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Requester identifies specific policy blocking urgent business need | — |
 | 2 | Requester contacts CISO or CCO (depending on policy type) for emergency override authorization | — |
 | 3 | CISO/CCO issues time-limited override with: reason, scope, duration | Immediate |
@@ -754,7 +756,7 @@ When an urgent business or security situation requires bypassing normal policy:
 All content added to agent knowledge bases requires review before ingestion:
 
 | Content Type | Review Required | Reviewer | SLA |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Internal policies and procedures** | Yes | Business owner + Compliance | 3 business days |
 | **Product documentation** | Yes | Product team + Legal | 2 business days |
 | **Public regulatory documents** | Light-touch | Knowledge Lead | 1 business day |
@@ -766,7 +768,7 @@ All content added to agent knowledge bases requires review before ingestion:
 ### 9.2 Knowledge Freshness Policies
 
 | Content Category | Max Age Before Review | Auto-Expiry | Staleness Alert |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Regulatory/compliance content** | 30 days | No — requires human review | Alert at 25 days |
 | **Product pricing/features** | 7 days | No | Alert at 5 days |
 | **Internal policies** | 90 days | No | Alert at 75 days |
@@ -777,7 +779,7 @@ All content added to agent knowledge bases requires review before ingestion:
 ### 9.3 Knowledge Access Controls by User Tier
 
 | User Tier | Knowledge Access Level | Examples |
-|---|---|---|
+| --- | --- | --- |
 | **Public / unauthenticated** | Public knowledge only | Product FAQs, general information |
 | **Authenticated user** | Public + user-relevant internal content | Account-specific policies, user guides |
 | **Premium/Enterprise user** | Public + extended internal content | Advanced product docs, configuration guides |
@@ -792,7 +794,7 @@ All content added to agent knowledge bases requires review before ingestion:
 ### 10.1 Model Selection Approval Process
 
 | Trigger | Review Required | Reviewers | SLA |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **First model from a provider** | Full ARB review + security assessment | PAB + CISO + Legal | 10 business days |
 | **New model from existing provider** | Model Review Committee | Platform Lead + AI Lead | 3 business days |
 | **Model upgrade (same family)** | Platform Lead approval | Platform Lead | 1 business day |
@@ -805,7 +807,7 @@ All content added to agent knowledge bases requires review before ingestion:
 Before any model can be used in production:
 
 | Evaluation Category | Minimum Requirement | Test Suite |
-|---|---|---|
+| --- | --- | --- |
 | **Safety refusals** | Pass all prohibited content tests | OWASP LLM safety test suite |
 | **Benchmark performance** | Maintain or improve on task benchmarks | Domain-specific benchmark suite |
 | **Prompt injection resistance** | >95% resistance on injection test suite | Custom injection test suite |
@@ -820,7 +822,7 @@ Before any model can be used in production:
 Before contracting with or deploying an LLM provider in production:
 
 | SLA Requirement | Minimum Standard | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Availability** | 99.9% monthly | Measured at API level |
 | **API latency (p99)** | < 30s for standard requests | Provider-published SLA |
 | **Incident communication** | < 30 minutes for P1 incidents | Status page + direct notification |
@@ -839,7 +841,7 @@ Before contracting with or deploying an LLM provider in production:
 Every agent deployed in the enterprise must be registered in the Agent Registry:
 
 | Registry Field | Required | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Agent ID** | Yes | Unique identifier; used for all audit logging |
 | **Agent Name** | Yes | Human-readable; must follow naming convention |
 | **Owner** | Yes | Team + primary contact |
@@ -857,7 +859,7 @@ Every agent deployed in the enterprise must be registered in the Agent Registry:
 ### 11.2 Agent Behavior Monitoring
 
 | Metric | Description | Alert Threshold | Response |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Tool call volume** | Number of tool calls per session | >150% of baseline | P2 alert + investigation |
 | **Refusal rate** | % of user requests refused | > 20% or < 2% | P3 alert + prompt review |
 | **Escalation rate** | % of interactions requiring human review | >50% deviation from baseline | P2 alert + review |
@@ -915,7 +917,7 @@ REACTIVATION:
 ### 12.1 Data Classification for Agent-Accessible Data
 
 | Classification | Definition | Agent Access | Controls Required |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Public** | Intentionally public information | Unrestricted | None beyond standard |
 | **Internal** | Business information for internal use | With authentication | Standard auth + audit |
 | **Confidential** | Sensitive business, client, or employee data | Need-to-know basis | Explicit authorization + audit |
@@ -927,7 +929,7 @@ REACTIVATION:
 When an agent application requires access to a new data source:
 
 | Step | Action | Owner | SLA |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Data Access Request submitted with: data source, data categories, business justification, data volumes | App Owner | — |
 | 2 | Data classification verified | Data Governance Lead | 1 day |
 | 3 | Privacy impact assessment (if PII) | DPO | 3 days |
@@ -944,7 +946,7 @@ When an agent application requires access to a new data source:
 ### 13.1 Agentic Application Portfolio Management
 
 | Lifecycle Stage | Stage Entry Criteria | Stage Exit Criteria | Governance Actions |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Ideation** | Business need identified | Architecture concept approved by PAB | PAB pre-review |
 | **Development** | Architecture approved | All ARB checklist items complete | ARB review |
 | **Staging** | Development complete | All test suites pass; UAT complete | Pre-production security review |
@@ -958,7 +960,7 @@ When an agent application requires access to a new data source:
 Every active agentic application undergoes quarterly governance review:
 
 | Review Item | Green | Amber | Red |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **SLO attainment** | >99% | 95–99% | <95% |
 | **Security vulnerabilities** | None open > 30 days | None critical > 7 days | Any critical open |
 | **Compliance status** | All obligations met | Minor gaps with remediation plan | Any major gap |
@@ -976,7 +978,7 @@ Every active agentic application undergoes quarterly governance review:
 ### 14.1 Approval Authority Matrix
 
 | Decision Type | Approver Level 1 | Approver Level 2 | Approver Level 3 | Emergency |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **New agentic application (low risk)** | AI App Owner | PAB | — | — |
 | **New agentic application (high risk, EU AI Act)** | AI App Owner | PAB + CISO | AI Governance Committee | CTO (48h) |
 | **Production model change** | App Owner | Platform Lead | — | Platform Lead (24h) |
@@ -993,7 +995,7 @@ Every active agentic application undergoes quarterly governance review:
 Every approval must be logged with:
 
 | Field | Requirement |
-|---|---|
+| --- | --- |
 | **Decision ID** | Unique, immutable identifier |
 | **Decision type** | From approval authority matrix |
 | **Requestor identity** | Authenticated identity, not just name |
@@ -1014,7 +1016,7 @@ Every approval must be logged with:
 ### 15.1 Change Categories for Agentic Systems
 
 | Change Category | Risk | CAB Required | Notification | Rollback Plan |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Standard change** (pre-approved) | Low | No | None | Standard |
 | **Normal change** (model patch, prompt patch) | Low–Medium | Light review | 48-hour notice | Required |
 | **Significant change** (model upgrade, new tool) | Medium | Full review | 5-day notice | Required + tested |
@@ -1024,7 +1026,7 @@ Every approval must be logged with:
 ### 15.2 Rollback Governance
 
 | Rollback Scenario | Trigger | Rollback Time SLA | Approver |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Prompt rollback** | Behavioral regression detected | < 15 minutes | App Owner or on-call |
 | **Model rollback** | Significant quality/safety regression | < 30 minutes | Platform Lead |
 | **Tool configuration rollback** | Tool malfunction or security event | < 15 minutes | Platform Lead or on-call |
@@ -1034,7 +1036,7 @@ Every approval must be logged with:
 ### 15.3 Change Communication to Users
 
 | Change Type | Communication Required | Lead Time | Channel |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Agent persona change** | Yes | 5 days | In-app notification + email |
 | **New capability added** | Yes (positive) | At deploy | In-app notification |
 | **Capability removed** | Yes | 14 days | Email + in-app + help article |
@@ -1050,7 +1052,7 @@ Every approval must be logged with:
 ### 16.1 Compliance Calendar
 
 | Date | Obligation | Applies To | Action Required |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Aug 2, 2026** | EU AI Act Art. 50 transparency obligations; GPAI enforcement begins | All AI systems interacting with EU users | AI disclosure in UX; GPAI technical documentation complete |
 | **Dec 2, 2026** | EU AI Act watermarking grace period ends for existing systems | AI-generated content systems | AI-generated content marking in production |
 | **Dec 2, 2027** | EU AI Act Annex III high-risk obligations (Digital Omnibus deadline) | High-risk AI systems (Annex III) | Conformity assessment complete; HITL in production |
@@ -1064,7 +1066,7 @@ Every approval must be logged with:
 Compliance evidence should be automatically collected wherever possible:
 
 | Evidence Type | Automation Level | Collection Method | Storage |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Audit logs** | Fully automated | OTel → audit log store | Immutable log storage, 7 years |
 | **Model documentation** | Semi-automated | Model card generation from registry | Compliance document store |
 | **HITL records** | Fully automated | Approval workflow system → log | Audit log store |
@@ -1083,7 +1085,7 @@ Compliance evidence should be automatically collected wherever possible:
 Five-level maturity model for agentic AI governance:
 
 | Level | Name | Characteristics | Indicators |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **1 — Initial** | Ad hoc governance | No formal processes; governance reactive; individual heroics; no audit | Agents deployed without review; no prompt versioning; no audit logs |
 | **2 — Developing** | Repeatable processes | Basic processes exist; inconsistently followed; key-person dependency; limited audit | ARB exists but not always followed; some prompt versioning; partial audit |
 | **3 — Defined** | Standardized governance | Documented processes; consistently followed; roles defined; audit exists | Full ARB process; prompt governance; tool approval; basic audit trail |
@@ -1093,7 +1095,7 @@ Five-level maturity model for agentic AI governance:
 **Assessment questionnaire for each domain:**
 
 | Domain | Level 1 | Level 3 | Level 5 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Architecture** | No ARB | ARB exists, followed consistently | ADRs automated; architecture compliance checked in CI/CD |
 | **Prompt** | Prompts edited directly in production | Prompt versioning with review | Automated prompt testing in CI/CD; ML-based anomaly detection |
 | **Memory** | No memory governance | Retention policies defined and enforced | Automated GDPR erasure; consent management platform |
@@ -1108,7 +1110,7 @@ Five-level maturity model for agentic AI governance:
 The following anti-patterns represent governance failures observed in enterprise agentic AI deployments:
 
 | # | Anti-Pattern | Description | Consequence | Fix |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | **Prompt as config, not code** | System prompts edited directly in production without version control | Untracked changes; no rollback; audit gaps | Prompt registry with semantic versioning |
 | 2 | **Governance theater** | ARB process exists but always approves; rubber stamp committee | No real risk management; false safety | Empower committee to reject; track rejection rate |
 | 3 | **One-time compliance sprint** | Compliance work done for initial audit then abandoned | Drift from requirements; failed re-audits | Compliance-as-continuous-process with calendar |

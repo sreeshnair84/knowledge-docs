@@ -34,6 +34,7 @@ An **AI agent** is a system that perceives its environment, reasons over it, and
 ```
 
 Each iteration the agent:
+
 1. **Perceives** — reads its context window (system prompt + conversation + tool results + memory)
 2. **Reasons** — generates a chain of thought to decide what to do next
 3. **Plans** — selects the next action (tool call, sub-agent delegation, or final answer)
@@ -43,7 +44,7 @@ Each iteration the agent:
 ### The Four Building Blocks
 
 | Building block | What it does | Example |
-|---|---|---|
+| --- | --- | --- |
 | **LLM backbone** | Provides reasoning, language understanding, and planning | Claude Fable 5, Sonnet 5 |
 | **Tools** | Connect the agent to systems outside the model | MCP servers, APIs, databases |
 | **Memory** | Persist information across turns and sessions | Vector DB, key-value store, context window |
@@ -52,7 +53,7 @@ Each iteration the agent:
 ### Memory Taxonomy
 
 | Type | Scope | Implementation | Use case |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **In-context** | Current conversation | Context window | Short-term task state |
 | **External / episodic** | Session or long-term | Vector DB, database | Past interactions, user preferences |
 | **Semantic** | Persistent knowledge | Knowledge graph, RAG | Facts, domain knowledge |
@@ -83,4 +84,3 @@ Each tool is declared with a typed interface (JSON Schema). The agent never exec
 ## Markdown Guides
 
 - [Agentic AI Landing Zone Architecture](agentic_ai_landing_zone_architecture.md) — Enterprise landing zone design for agentic AI systems
-

@@ -108,7 +108,7 @@ def execute_tool(tool_name: str, tool_input: dict) -> str:
 
 def run_agent(goal: str, max_iterations: int = 10) -> str:
     messages = [{"role": "user", "content": goal}]
-    
+
     for iteration in range(max_iterations):
         response = client.messages.create(
             model="claude-sonnet-4-6",
@@ -116,14 +116,14 @@ def run_agent(goal: str, max_iterations: int = 10) -> str:
             tools=tools,
             messages=messages,
         )
-        
+
         # Add assistant's response to history
         messages.append({"role": "assistant", "content": response.content})
-        
+
         if response.stop_reason == "end_turn":
             # Agent decided it's done
             return next(b.text for b in response.content if hasattr(b, "text"))
-        
+
         if response.stop_reason == "tool_use":
             # Execute all requested tool calls
             tool_results = []
@@ -135,10 +135,10 @@ def run_agent(goal: str, max_iterations: int = 10) -> str:
                         "tool_use_id": block.id,
                         "content": result,
                     })
-            
+
             # Feed results back to the agent
             messages.append({"role": "user", "content": tool_results})
-    
+
     raise RuntimeError(f"Agent did not complete within {max_iterations} iterations")
 
 result = run_agent("Check account A-123 and issue a $50 refund for the duplicate charge")
@@ -256,11 +256,11 @@ class AgentExecutor:
         self.max_tokens_total = max_tokens_total
         self.iteration_count = 0
         self.tokens_used = 0
-    
+
     def check_limits(self, response_usage) -> None:
         self.iteration_count += 1
         self.tokens_used += response_usage.input_tokens + response_usage.output_tokens
-        
+
         if self.iteration_count >= self.max_iterations:
             raise RuntimeError(
                 f"Agent exceeded {self.max_iterations} iterations — possible reasoning loop"
@@ -269,7 +269,7 @@ class AgentExecutor:
             raise RuntimeError(
                 f"Agent exceeded {self.max_tokens_total} tokens — likely runaway"
             )
-    
+
     def detect_tool_repeat(self, tool_calls: list, history: list) -> bool:
         """Detect if agent is calling the same tool with the same args repeatedly."""
         recent_calls = [c for step in history[-3:] for c in step.get("tool_calls", [])]
@@ -292,10 +292,10 @@ from typing import Any
 
 def sanitize_tool_output(tool_name: str, raw_output: Any) -> str:
     """Validate and sanitize tool output before feeding back to LLM."""
-    
+
     if raw_output is None:
         return json.dumps({"error": "Tool returned no data"})
-    
+
     # Convert to JSON string if not already
     if not isinstance(raw_output, str):
         try:
@@ -304,11 +304,11 @@ def sanitize_tool_output(tool_name: str, raw_output: Any) -> str:
             return json.dumps({"error": f"Tool output not serializable: {e}"})
     else:
         output = raw_output
-    
+
     # Enforce size limit — large outputs bloat the context window
     if len(output) > 8_000:
         output = output[:8_000] + "... [truncated]"
-    
+
     # Detect prompt injection patterns in tool responses
     injection_patterns = [
         r"ignore previous instructions",
@@ -318,7 +318,7 @@ def sanitize_tool_output(tool_name: str, raw_output: Any) -> str:
     for pattern in injection_patterns:
         if re.search(pattern, output, re.IGNORECASE):
             return json.dumps({"error": "Tool output contained potentially unsafe content and was blocked"})
-    
+
     return output
 ```
 
@@ -364,7 +364,7 @@ support_tools = authorized_tools_for("customer_support")
 ## Tool Calling vs Temporal Activities: Key Differences
 
 | Aspect | Temporal Activity | LLM Tool Call |
-|---|---|---|
+| --- | --- | --- |
 | **Invocation decision** | Developer (in workflow code) | LLM (via reasoning) |
 | **Retry on failure** | Same activity, same args | Different tool/args if LLM decides |
 | **State persistence** | Event log | Conversation history |
@@ -407,10 +407,10 @@ def get_tool_for_agent(tool_name: str, agent_version_constraint: str = "latest")
     """Resolve the correct tool version for an agent — never use deprecated tools for new agents."""
     versions = TOOL_REGISTRY.get(tool_name, [])
     active = [v for v in versions if v.deprecated_at is None]
-    
+
     if not active:
         raise ValueError(f"Tool '{tool_name}' has no active versions — all deprecated")
-    
+
     # Return latest active version (sorted by semver)
     return sorted(active, key=lambda v: tuple(int(x) for x in v.version.split(".")))[-1]
 ```

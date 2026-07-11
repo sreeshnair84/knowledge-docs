@@ -26,7 +26,7 @@ covers_version: \"as of 2026-07-10\"
 This shift is not incremental — it redefines what enterprise architecture teams produce.
 
 | Dimension | Traditional EA | Machine-Readable EA |
-|---|---|---|
+| --- | --- | --- |
 | **Output** | Diagrams, Word docs, Confluence pages | Executable policies, queryable models, MCP-served contexts |
 | **Enforcement** | Review boards, manual audits | Runtime policy evaluation (OPA/Cedar) |
 | **Latency** | Days (ARB review) | Milliseconds (per-request evaluation) |
@@ -48,6 +48,7 @@ Consider the difference between these two policy artifacts:
 An agent performing a data-processing task cannot read, interpret, or enforce this. It will either ignore it or — if given the document via RAG — hallucinate an interpretation.
 
 **Machine-readable:**
+
 ```rego
 # data_residency.rego (Open Policy Agent)
 package ea.data_residency
@@ -76,7 +77,7 @@ An agent's MCP gateway evaluates this policy on every data-related tool call. Th
 ### 2.1 The Four Artifacts to Structurize
 
 | Artifact | Traditional form | Machine-readable form |
-|---|---|---|
+| --- | --- | --- |
 | **Policies** | Word doc / Confluence | OPA Rego / Cedar policies, evaluated per-request |
 | **Constraints** | Architecture principles doc | Typed constraint objects queryable via API or MCP |
 | **Dependencies** | Architecture diagrams | Machine-readable service catalog (Backstage, ServiceNow, custom) |
@@ -114,6 +115,7 @@ Agent Tool Call Request
 ### 3.2 Policy Categories for EA Teams to Own
 
 **Access control policies** — which agents can access which data classifications, systems, and APIs:
+
 ```cedar
 // Cedar policy (AWS Verified Permissions style)
 permit(
@@ -127,6 +129,7 @@ permit(
 ```
 
 **Cost governance policies** — per-agent, per-task, per-day spending limits:
+
 ```rego
 deny[msg] if {
     input.action == "llm.complete"
@@ -136,6 +139,7 @@ deny[msg] if {
 ```
 
 **Human oversight policies** — which action classes require human approval:
+
 ```rego
 require_approval[action] if {
     action in {"bank.transfer", "data.delete", "email.send", "access.grant"}
@@ -150,6 +154,7 @@ require_approval[action] if {
 ### 3.3 Policy Governance
 
 Treat policies like code:
+
 - **Version control** (Git) — every change is a PR with review
 - **CI testing** — policy unit tests validate rules against known inputs/outputs
 - **Staged rollout** — new policies in `AUDIT` mode (log-but-allow) before `ENFORCE` mode
@@ -164,7 +169,7 @@ The most practical near-term change: **expose your architecture repository as an
 ### 4.1 What to Expose as MCP Tools
 
 | MCP Tool | What it returns | Agents use it to |
-|---|---|---|
+| --- | --- | --- |
 | `get_data_classification(system_name)` | Data classification level + handling rules | Determine appropriate encryption, logging, residency before tool calls |
 | `get_approved_regions(data_type)` | List of approved cloud regions | Validate resource placement |
 | `get_dependency_graph(service_name)` | Upstream/downstream dependencies | Assess blast radius of a change |
@@ -195,7 +200,7 @@ The EA MCP server is a high-trust surface — it represents authoritative policy
 The ARB (Architecture Review Board) model was designed for systems that change slowly. Agent deployments can introduce hundreds of new tool integrations per day.
 
 | Mode | ARB / Design-time | Dynamic / Runtime |
-|---|---|---|
+| --- | --- | --- |
 | **When it runs** | Before deployment | On every request |
 | **Latency** | Days to weeks | Milliseconds |
 | **Coverage** | New systems only | Every action, including runtime behavior |
@@ -206,6 +211,7 @@ The ARB (Architecture Review Board) model was designed for systems that change s
 The right model is **both** — use ARB-style review for system onboarding and major architecture decisions; use runtime policy evaluation for every agent action. The EA team's job shifts from gatekeeping deployments to authoring and maintaining the policies that govern them at runtime.
 
 **Practical transition:**
+
 1. Identify the 5–10 policies your ARB enforces most consistently (data residency, access tiers, approved tech stack, cost limits)
 2. Encode them as OPA/Cedar rules
 3. Deploy in audit mode (log violations, don't block yet) to calibrate false-positive rate
@@ -221,7 +227,7 @@ The right model is **both** — use ARB-style review for system onboarding and m
 The EU AI Act's Digital Omnibus (Council final approval June 29, 2026) changed the compliance timeline:
 
 | Obligation | Applies from |
-|---|---|
+| --- | --- |
 | GPAI model obligations (Art. 53/55) | August 2, 2025 (already in force) |
 | Commission enforcement + fines for GPAI | **August 2, 2026** |
 | Transparency obligations (Art. 50) | **August 2, 2026** |
@@ -317,7 +323,7 @@ Enterprise architects in regulated sectors should designate certain data classif
 ### Maturity Model
 
 | Level | Description | Key Indicator |
-|---|---|---|
+| --- | --- | --- |
 | **1 — Ad-hoc** | Policies in docs; manual enforcement | ARB reviews all agent deployments |
 | **2 — Encoded** | Core policies in OPA/Cedar; audit mode | Policy violations visible in dashboards |
 | **3 — Enforced** | Policies block non-compliant actions; EA MCP server live | New agents deploy without ARB review |

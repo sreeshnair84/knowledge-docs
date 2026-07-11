@@ -8,7 +8,7 @@ source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "transcripts"]
 doc_type: workshop-transcript
-session_type: 
+session_type:
 related_pages: []
 ---
 
@@ -19,9 +19,11 @@ related_pages: []
 **Duration:** 60 minutes
 
 **Presenter:**
+
 - James Whitfield — EA Lead, Supply Chain Transformation
 
 **Investment Committee:**
+
 - Sandra Kim — Chief Financial Officer (primary decision authority)
 - Wei Chen — Chief Technology Officer
 - Fatima Al-Rashid — Chief Data Officer

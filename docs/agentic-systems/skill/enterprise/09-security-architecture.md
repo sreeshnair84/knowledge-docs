@@ -57,7 +57,7 @@ This is precisely how AWS AgentCore's guardrail model works in production: devel
 ## 9.3 Identity architecture
 
 | Concept | Purpose | Implementation examples |
-|---|---|---|
+| --- | --- | --- |
 | **Agent identity** | The agent itself is a first-class identity, not an anonymous process | Entra Agent ID (Azure), AgentCore Identity, dedicated integration users (Salesforce's explicit guidance: never clone the running user's own profile onto the agent's service identity) |
 | **On-Behalf-Of (OBO) / delegation** | Agent acts with a *scoped subset* of the requesting human's permissions, not the agent's own broad service identity | OAuth 2.1 token exchange patterns; MCP's Resource Indicators (RFC 8707) bind a token to the specific downstream server it was issued for, preventing token replay against an unintended resource |
 | **Service identity** | For autonomous, non-human-triggered agent runs (scheduled, event-driven) | Dedicated service principal per agent, least-privilege scoped, never shared across agents |
@@ -68,7 +68,7 @@ This is precisely how AWS AgentCore's guardrail model works in production: devel
 ## 9.4 Policy engines
 
 | Engine | Model | Where it fits |
-|---|---|---|
+| --- | --- | --- |
 | **Cedar** (AWS, open-source) | Explicit allow/deny policy language, verifiable via automated reasoning | Natural PEP choice on AWS; increasingly used standalone given its formal-verification properties |
 | **OPA / Rego** (CNCF) | General-purpose policy-as-code, widely adopted across Kubernetes/cloud-native stacks | Good default when the enterprise already runs OPA for other authorization surfaces — reuse rather than introduce a second policy language |
 | **RBAC** | Role-based — coarse-grained, easy to reason about | Baseline for discovery filtering (file `06`) and simple deployments |
@@ -85,7 +85,7 @@ This is precisely how AWS AgentCore's guardrail model works in production: devel
 Mitigations mapped to the OWASP AST10 risk classes surfaced in research:
 
 | Risk | Mitigation |
-|---|---|
+| --- | --- |
 | Unsigned/tampered skill content | Require `content_hash` + cryptographic signature (e.g., ed25519) before a skill is loadable in any non-dev environment (file `02` schema) |
 | Registry poisoning (malicious skill published to a marketplace) | Mandatory security review before certification (file `10`); automated scanning tuned for *natural-language* attack patterns, not just code signatures, since regex/pattern-matching alone misses a meaningful share of malicious instructions |
 | Sandbox escape via bundled scripts | Execute skill-bundled scripts in an isolated sandbox (microVM/container) with no default host filesystem/network access — never assume "it's just a script" is safe by default |

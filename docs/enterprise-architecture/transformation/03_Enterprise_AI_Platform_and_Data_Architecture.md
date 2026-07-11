@@ -9,44 +9,45 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-# **Enterprise AI Platform, Data & Agentic Architecture** 
+AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-One paved road for every AI workload 
+# **Enterprise AI Platform, Data & Agentic Architecture**
 
-### **Contents of this deliverable** 
+One paved road for every AI workload
 
-- Architecture principles and future-state overview 
+### **Contents of this deliverable**
 
-- Reference platform: layer-by-layer blueprint 
+- Architecture principles and future-state overview
 
-- Data & knowledge architecture 
+- Reference platform: layer-by-layer blueprint
 
-- Agentic AI strategy: MCP, agent-to-agent, and graduated autonomy 
+- Data & knowledge architecture
 
-- Platform engineering, observability, evaluation, FinOps, and resilience 
+- Agentic AI strategy: MCP, agent-to-agent, and graduated autonomy
 
-Deliverable 03  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout. 
+- Platform engineering, observability, evaluation, FinOps, and resilience
 
-AI-First Enterprise Transformation 
+Deliverable 03  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout.
 
-Enterprise AI Platform,   Data & Agentic Architecture 
+AI-First Enterprise Transformation
 
-## **1. Architecture Principles** 
+Enterprise AI Platform,   Data & Agentic Architecture
 
-- **Model-agnostic by construction.** All model access flows through a gateway; frontier models are swappable commodities and no use case binds directly to a vendor SDK. 
+## **1. Architecture Principles**
 
-- **Paved road, not police road.** The platform must be the easiest way to ship an AI feature - golden paths, templates, and self-service - or teams will route around it. 
+- **Model-agnostic by construction.** All model access flows through a gateway; frontier models are swappable commodities and no use case binds directly to a vendor SDK.
 
-- **Permissions travel with data.** Source-system entitlements are enforced at retrieval time; an AI system must never widen a user's effective access. 
+- **Paved road, not police road.** The platform must be the easiest way to ship an AI feature - golden paths, templates, and self-service - or teams will route around it.
 
-- **Everything observable, everything evaluated.** No production AI without logging, tracing, evaluation suites, and cost attribution. 
+- **Permissions travel with data.** Source-system entitlements are enforced at retrieval time; an AI system must never widen a user's effective access.
 
-- **Autonomy is earned, not granted.** Agents progress through defined autonomy levels based on demonstrated evaluation performance (Section 4). 
+- **Everything observable, everything evaluated.** No production AI without logging, tracing, evaluation suites, and cost attribution.
 
-- **Build the scarce, buy the commodity.** Buy models, vector stores, and orchestration primitives; build the knowledge corpus, evaluation assets, domain agents, and integration fabric - that is where advantage lives. 
+- **Autonomy is earned, not granted.** Agents progress through defined autonomy levels based on demonstrated evaluation performance (Section 4).
 
-## **2. Reference Platform Blueprint** 
+- **Build the scarce, buy the commodity.** Buy models, vector stores, and orchestration primitives; build the knowledge corpus, evaluation assets, domain agents, and integration fabric - that is where advantage lives.
+
+## **2. Reference Platform Blueprint**
 
 |**Layer**|**Capabilities**|**Approach & key decisions**|
 |---|---|---|
@@ -58,21 +59,21 @@ Enterprise AI Platform,   Data & Agentic Architecture
 |2. Data platform|Lakehouse, streaming, data products,<br>semantic layer, feature store, data quality &<br>lineage|Detailed in Section 3|
 |1. Infrastructure|Primary hyperscaler for the platform core;<br>secondary cloud for resilience and model<br>diversity; GPU capacity strategy; on-prem<br>integration|Multi-cloud pragmatism: portable at the gateway and<br>data layers, not force-fitted everywhere; capacity<br>reserved for predictable inference, burst for<br>training/experimentation|
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
-Deliverable 03  |  Page 1 
+Deliverable 03  |  Page 1
 
-AI-First Enterprise Transformation 
+AI-First Enterprise Transformation
 
-Enterprise AI Platform,   Data & Agentic Architecture 
+Enterprise AI Platform,   Data & Agentic Architecture
 
 |**Layer**|**Capabilities**|**Approach & key decisions**|
 |---|---|---|
 |0. Cross-cutting|Identity (human + non-human), secrets,<br>network segmentation, observability,<br>evaluation service, FinOps, CI/CD for agents<br>and prompts|Detailed in Section 5 and Deliverable 04|
 
-## **3. Data & Knowledge Architecture** 
+## **3. Data & Knowledge Architecture**
 
-**From data estate to decision fuel** 
+**From data estate to decision fuel**
 
 |**Component**|**Purpose**|**Design notes**|
 |---|---|---|
@@ -83,9 +84,9 @@ Enterprise AI Platform,   Data & Agentic Architecture
 |Feature store & ML data|Reusable features for classical ML<br>(forecasting, risk scoring)|Shared with LLM workloads where hybrid patterns<br>apply|
 |Knowledge engineering<br>program|Systematic capture of expert know-how<br>(interviews, process mining, annotation)<br>into retrievable and evaluable form|Treat expert time as the scarcest input; prioritize<br>domains with retirement-driven knowledge risk|
 
-## **4. Agentic AI Strategy** 
+## **4. Agentic AI Strategy**
 
-### **Graduated autonomy model** 
+### **Graduated autonomy model**
 
 |**Level**|**Description**|**Human role**|**Example gates to advance**|
 |---|---|---|---|
@@ -94,25 +95,25 @@ Enterprise AI Platform,   Data & Agentic Architecture
 |A2 - Act with<br>oversight|Agent executes within hard limits;<br>humans review samples and<br>exceptions|Human-on-the-loop|Sustained A1 performance; rollback<br>tested; limits (value, scope, rate)<br>encoded|
 |A3 - Autonomous<br>in bounds|End-to-end execution in a narrow,<br>reversible domain|Human sets policy,<br>audits outcomes|Independent risk sign-off; kill switch<br>and circuit breakers proven in<br>game-day exercise|
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
-Deliverable 03  |  Page 2 
+Deliverable 03  |  Page 2
 
-AI-First Enterprise Transformation 
+AI-First Enterprise Transformation
 
-Enterprise AI Platform,   Data & Agentic Architecture 
+Enterprise AI Platform,   Data & Agentic Architecture
 
-### **Multi-agent and interoperability standards** 
+### **Multi-agent and interoperability standards**
 
-- **MCP as the tool contract.** Agents never integrate point-to-point with systems; they call governed MCP servers whose scopes are permissioned per agent identity. This turns integration sprawl into a managed catalog. 
+- **MCP as the tool contract.** Agents never integrate point-to-point with systems; they call governed MCP servers whose scopes are permissioned per agent identity. This turns integration sprawl into a managed catalog.
 
-- **Agent-to-agent (A2A) collaboration** is permitted only between registered agents, with typed task contracts, budget limits (tokens, time, spend), and full trace propagation so a cross-agent workflow is auditable end to end. 
+- **Agent-to-agent (A2A) collaboration** is permitted only between registered agents, with typed task contracts, budget limits (tokens, time, spend), and full trace propagation so a cross-agent workflow is auditable end to end.
 
-- **Orchestration patterns.** Prefer supervisor/worker and pipeline patterns with explicit checkpoints over free-form agent swarms; determinism at the workflow layer, flexibility inside each step. 
+- **Orchestration patterns.** Prefer supervisor/worker and pipeline patterns with explicit checkpoints over free-form agent swarms; determinism at the workflow layer, flexibility inside each step.
 
-- **Every agent has an owner.** A named human accountable for its scope, entitlements, evaluation results, and retirement - no orphan agents. 
+- **Every agent has an owner.** A named human accountable for its scope, entitlements, evaluation results, and retirement - no orphan agents.
 
-## **5. Platform Engineering, Observability, Evaluation, and FinOps** 
+## **5. Platform Engineering, Observability, Evaluation, and FinOps**
 
 |**Discipline**|**Minimum standard at scale**|
 |---|---|
@@ -123,8 +124,8 @@ Enterprise AI Platform,   Data & Agentic Architecture
 |FinOps for AI|Per-use-case token and GPU cost attribution; routing policies that downshift to smaller models<br>where quality permits; caching; monthly unit-economics review (cost per resolved ticket, per PR,<br>per document)|
 |Resilience|Multi-model failover at the gateway; degraded-mode design (fall back to search/human) so AI<br>outage never equals business outage; capacity and quota management|
 
-_The platform's success metric is not its feature list. It is the median time for a business team to go from idea to governed production deployment - target under 30 days by month 18._ 
+*The platform's success metric is not its feature list. It is the median time for a business team to go from idea to governed production deployment - target under 30 days by month 18.*
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
 Deliverable 03  |  Page 3

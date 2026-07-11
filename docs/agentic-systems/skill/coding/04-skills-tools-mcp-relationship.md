@@ -41,7 +41,7 @@ Language Server         (symbol/type/diagnostic ground truth — usually consult
 ## 5.2 What belongs in each layer
 
 | Layer | Owns | Does NOT own |
-|---|---|---|
+| --- | --- | --- |
 | **Skill** | Procedure, sequencing, project-specific judgment, output-format conventions | File I/O, process execution, protocol handshakes |
 | **AGENTS.md/Rules** | Always-true facts and boundaries (stack, conventions, verification steps) | Deep multi-step procedures (that's a Skill's job — see file `01`) |
 | **Tool** (built-in) | Filesystem, terminal, git, basic search (grep/ripgrep) — typically shipped natively by the harness | Business/procedural judgment about when to use them |
@@ -58,6 +58,7 @@ Cloud → Language Server
 ```
 
 Mapped concretely:
+
 - **Skill** references a **Tool** by name/intent in its instructions ("use the test-runner tool").
 - The **Tool** is exposed by either the **IDE** (VS Code's built-in file/terminal/git tools) or the **CLI** (Claude Code's, Codex's own built-in tool set) — largely redundant implementations of the same primitives across surfaces.
 - **Git** and **Filesystem** are near-universally *built-in* tools, not MCP-mediated, in every mainstream coding agent studied — this is a deliberate design choice for latency and reliability; MCP is reserved for genuinely external systems.
@@ -76,7 +77,7 @@ The most common coding-assistant-specific duplication failure mode, not present 
 ## 5.5 Deliverable 3 — Responsibility Matrix
 
 | Question | Skill | AGENTS.md/Rules | Tool | MCP Server | Extension/IDE | Language Server | Dev Container |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Defines *when/why* to approach a task a certain way | ✅ | partial (boundaries only) | | | | | |
 | States facts true on every single turn | | ✅ | | | | | |
 | Executes a file read/write | | | ✅ | possible | | | |

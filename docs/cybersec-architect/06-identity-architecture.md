@@ -31,7 +31,7 @@ series_index: index.md
 ## 1. Identity Taxonomy (2026)
 
 | Identity Type | Description | Scale | Primary Protocol | Key Challenge |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Human Identity** | Employees, contractors, partners, customers | Thousands | OIDC / SAML / FIDO2 | Phishing, credential theft, privilege creep |
 | **Machine Identity** | Servers, services, CI/CD pipelines, IoT | Tens of thousands | X.509 / mTLS / OAuth | Certificate sprawl, expiry management |
 | **AI Identity** | LLM endpoints, embedding services, model APIs | Hundreds | OAuth 2.1 / API keys | Key rotation, abuse detection |
@@ -49,7 +49,7 @@ series_index: index.md
 **Authentication factors:**
 
 | Factor | Type | Phishing-Resistant | Recommended for |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Password | Knowledge | No | Legacy only; supplement with MFA |
 | TOTP (Google Authenticator) | Possession | No | General users where FIDO2 unavailable |
 | SMS OTP | Possession | No | Avoid — SIM swap attacks |
@@ -63,7 +63,7 @@ series_index: index.md
 ### 2.2 Machine and Service Authentication
 
 | Method | Use Case | Risk | Mitigation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Long-lived API key** | Legacy integrations | High — key theft or leak | Rotation policy; detect in git via secret scanning |
 | **mTLS** | Service-to-service | Low | Certificate lifecycle management (cert-manager, Vault PKI) |
 | **OAuth Client Credentials** | Service-to-API | Medium | Short TTL tokens; client secret in Vault, not config |
@@ -91,7 +91,7 @@ Agents are software principals — they cannot use human authentication flows.
 ### 3.1 Authorization Models
 
 | Model | Description | Best For |
-|---|---|---|
+| --- | --- | --- |
 | **RBAC** (Role-Based) | Permissions assigned to roles; users/agents assigned to roles | Enterprise applications, most IAM systems |
 | **ABAC** (Attribute-Based) | Permissions based on attributes of subject, resource, action, environment | Fine-grained control; contextual access decisions |
 | **ReBAC** (Relationship-Based) | Permissions based on relationships between entities (Google Zanzibar model) | Google Drive-like sharing; hierarchical ownership |
@@ -103,6 +103,7 @@ Agents are software principals — they cannot use human authentication flows.
 Modern authorization uses code-based policies evaluated at runtime:
 
 **Open Policy Agent (OPA) example:**
+
 ```rego
 # Allow agent to read documents if agent is authorized and document is not restricted
 allow if {
@@ -119,6 +120,7 @@ agent_authorized(agent_id) if {
 ```
 
 **Cedar (AWS) example:**
+
 ```cedar
 permit(
     principal is Agent,
@@ -151,6 +153,7 @@ Agent authorization scopes must be **task-specific and time-limited**:
 ```
 
 **What this achieves:**
+
 - Agent can only access `search` and `docs` MCP servers
 - Agent can only read, not write
 - Token expires in 15 minutes — even if stolen, limited window of abuse
@@ -173,6 +176,7 @@ Sub-agent token (even more limited scope)
 ```
 
 **Key parameters:**
+
 - `subject_token`: The token being exchanged
 - `requested_token_type`: The type of token requested (access token, JWT, etc.)
 - `scope`: The scope of the new token (must be subset of subject_token scope)
@@ -183,6 +187,7 @@ Sub-agent token (even more limited scope)
 OBO is a specific token exchange pattern where a service acts on behalf of a user:
 
 **Microsoft Entra OBO flow:**
+
 ```
 1. User authenticates → receives user_token (scope: read_documents)
 2. User delegates to agent
@@ -202,7 +207,7 @@ OBO is a specific token exchange pattern where a service acts on behalf of a use
 An STS is the component that issues, validates, and exchanges tokens:
 
 | STS | Provider | Features |
-|---|---|---|
+| --- | --- | --- |
 | Microsoft Entra ID | Microsoft | SAML, OIDC, OBO, managed identity, Entra Agent ID |
 | AWS IAM / STS | Amazon | AssumeRole, OIDC federation, Cognito |
 | Google Cloud IAM | Google | Workload identity federation, service account keys |
@@ -220,6 +225,7 @@ JWT is the most widely used token format for API authorization.
 **Structure:** `header.payload.signature` (base64url-encoded, dot-separated)
 
 **Security requirements:**
+
 - Always verify signature before trusting claims
 - Validate `exp` (expiry), `iss` (issuer), and `aud` (audience)
 - Use short expiry for sensitive operations (5–15 minutes)
@@ -238,6 +244,7 @@ PASETO is a more secure alternative to JWT that eliminates common JWT pitfalls:
 ### 5.3 Short-Lived Credentials
 
 **Why short-lived credentials matter:**
+
 - Stolen short-lived credentials have a limited window of abuse
 - Encourages automation of credential rotation (builds capability, removes human bottleneck)
 - Reduces blast radius of compromise
@@ -245,7 +252,7 @@ PASETO is a more secure alternative to JWT that eliminates common JWT pitfalls:
 **Target lifetimes by credential type:**
 
 | Credential Type | Maximum Lifetime | Rotation Mechanism |
-|---|---|---|
+| --- | --- | --- |
 | User session token | 1–8 hours | Re-authentication or refresh token |
 | Agent access token | 5–15 minutes | Automatic re-issuance before expiry |
 | Service-to-service token | 15–60 minutes | Client credentials flow or managed identity |
@@ -261,7 +268,7 @@ PASETO is a more secure alternative to JWT that eliminates common JWT pitfalls:
 ### 6.1 Anti-Patterns to Eliminate
 
 | Anti-Pattern | Risk | Migration Path |
-|---|---|---|
+| --- | --- | --- |
 | Hardcoded credentials in source code | Any repo access = credential theft | Secret scanning + immediate revocation + secrets manager |
 | Secrets in environment variables | Process listing or logging exposes secrets | Secrets manager with dynamic injection |
 | Secrets in container images | Image pull = credential theft | Build-time injection via CI secrets, or managed identity |
@@ -297,6 +304,7 @@ Certificate expiry has caused major outages (Microsoft Teams 2020, Azure AD 2019
 Eliminates the need for long-lived secrets by trusting the identity of the workload itself:
 
 **Pattern (GitHub Actions → AWS):**
+
 ```
 GitHub Actions OIDC provider issues JWT for the workflow
         ↓ (presented to AWS STS)

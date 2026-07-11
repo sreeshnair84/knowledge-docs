@@ -27,7 +27,7 @@ Every generation of enterprise technology has been accompanied by claims that "t
 ### The Prior Technology Waves
 
 | Technology Wave | ROI Model | Implementation Risk | Talent Model | Obsolescence Risk |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | ERP (1990s–2000s) | Cost reduction via process standardization | High, but well-understood | Hire integrators | Low (upgrade cycles) |
 | Cloud (2005–2015) | CapEx → OpEx shift, elasticity | Medium | Train existing ops | Medium (multi-year) |
 | Mobile (2010–2020) | New channel revenue, productivity | Low–Medium | New dev discipline | Medium (OS upgrades) |
@@ -151,7 +151,7 @@ Level 0: No AI
 ### Level-by-Level Assessment Criteria
 
 | Level | Governance | Infrastructure | Talent | Use Cases | Data |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 0 | None | None | None | 0 | Unmanaged |
 | 1 | Ad hoc | None | 1–2 data scientists | < 3 pilots | Basic data warehouse |
 | 2 | Project-level | Shared notebooks | 3–10 ML staff | 2–5 in prod | Data lake emerging |
@@ -214,7 +214,7 @@ AI systems cannot be tested with traditional unit tests alone. Evaluation framew
 **4. Observability and Monitoring**
 
 | Monitoring Layer | What to Track | Why It Matters |
-|---|---|---|
+| --- | --- | --- |
 | Infrastructure | Latency, throughput, error rates | Operational reliability |
 | Model | Accuracy drift, output distribution | Model degradation detection |
 | Business | Task completion rate, user satisfaction | Business outcome tracking |
@@ -252,7 +252,7 @@ The platform must make it easy for application teams to consume AI capabilities.
 ### Buy vs. Build Decision Matrix
 
 | Criterion | Buy (Managed Platform) | Build (Custom Platform) |
-|---|---|---|
+| --- | --- | --- |
 | Time to value | Fast (weeks) | Slow (months–years) |
 | Total cost | Higher license cost, lower build cost | Lower license cost, very high build cost |
 | Flexibility | Limited to vendor roadmap | Full control |
@@ -300,7 +300,7 @@ Human ──► Goal ──► Agent ──► Plan ──► Tool Call 1 ──
 ### Investment Profile Comparison
 
 | Dimension | Generative AI | Agentic AI |
-|---|---|---|
+| --- | --- | --- |
 | Starting cost | Low (API access) | Medium–High (platform + tools) |
 | Time to first value | Days–weeks | Weeks–months |
 | Platform investment required | Low | High |
@@ -370,12 +370,14 @@ Strategic Value:   Low           Medium          Very High
 ### Why Shared Capabilities Have the Best ROI for Enterprises
 
 Consider a large bank with 40 product teams, each of which needs document classification. If each team builds their own:
+
 - 40 separate investments
 - 40 separate maintenance burdens
 - 40 different quality levels
 - No enterprise-wide improvement when a better model becomes available
 
 If the enterprise builds a shared document classification service:
+
 - 1 investment, amortized across 40 consumers
 - 1 maintenance burden
 - Consistent quality across the enterprise
@@ -407,7 +409,7 @@ The platform investment pays off when the cumulative savings from shared infrast
 Let's model this:
 
 | Parameter | Value |
-|---|---|
+| --- | --- |
 | Cost of bespoke AI solution per use case | $200,000 |
 | Annual maintenance per bespoke solution | $50,000 |
 | Cost of AI platform (one-time build) | $800,000 |
@@ -417,11 +419,13 @@ Let's model this:
 **Break-even calculation over 3 years (10 use cases):**
 
 Bespoke approach:
+
 - Year 1: 10 × $200,000 = $2,000,000
 - Year 2–3: 10 × $50,000 × 2 = $1,000,000
 - Total: $3,000,000
 
 Platform approach:
+
 - Platform build: $800,000
 - 10 use cases on platform: 10 × $30,000 = $300,000
 - Platform maintenance: $150,000 × 2 = $300,000
@@ -522,7 +526,7 @@ An AI Center of Excellence is a dedicated organizational unit that establishes a
 ### CoE Team Structure
 
 | Role | Responsibility | Typical Headcount |
-|---|---|---|
+| --- | --- | --- |
 | CoE Director / Head of AI | Strategy, executive engagement, budget | 1 |
 | AI Architects | Platform design, standards, use case reviews | 2–4 |
 | ML Platform Engineers | Platform build and operations | 3–6 |
@@ -569,7 +573,7 @@ An AI Center of Excellence is a dedicated organizational unit that establishes a
 **Indicative Budget for a Minimum Viable AI CoE (Year 1)**
 
 | Category | Annual Cost |
-|---|---|
+| --- | --- |
 | Staff (8 FTEs, blended rate $150K) | $1,200,000 |
 | AI platform licenses / tooling | $300,000 |
 | Training and enablement materials | $50,000 |
@@ -596,6 +600,7 @@ An internal AI marketplace is a governed catalog of reusable AI services, models
 ### Why Large Enterprises Need One
 
 Without a marketplace, the following happens repeatedly:
+
 - Team A builds a document classifier. Team B, unaware, builds a different document classifier. Team C is building a third one.
 - Each team builds from scratch: models, prompts, evaluation datasets, API wrappers.
 - There is no quality signal: a team cannot know whether a given AI service is reliable enough to use.
@@ -606,7 +611,7 @@ Without a marketplace, the following happens repeatedly:
 **Core Catalog Entities**
 
 | Entity Type | Description | Examples |
-|---|---|---|
+| --- | --- | --- |
 | AI Services | Internal APIs wrapping AI capabilities | Document classifier, entity extractor, translation |
 | Foundation Models | Approved model providers and versions | GPT-4o, Claude 3.5, Llama 3 (on-prem) |
 | Prompt Templates | Versioned prompts for common tasks | Summarization prompt v3, classification prompt v2 |
@@ -625,6 +630,7 @@ Without a marketplace, the following happens repeatedly:
 ### Governance Model
 
 Every listing in the internal marketplace must pass a **Service Readiness Review** covering:
+
 - Responsible AI assessment (bias, fairness, safety)
 - Security review (data handling, access controls)
 - SLA definition (availability, latency, error rate)
@@ -640,7 +646,7 @@ Every listing in the internal marketplace must pass a **Service Readiness Review
 AI introduces cost drivers that do not exist in traditional software:
 
 | Cost Driver | Description | Optimization Lever |
-|---|---|---|
+| --- | --- | --- |
 | Input tokens | Characters/words sent to the model | Prompt compression, context management |
 | Output tokens | Characters/words generated by the model | Output length controls |
 | Embedding costs | Vector generation for RAG systems | Caching, batching |
@@ -672,7 +678,7 @@ In a multi-team AI environment, costs must be attributed to the correct business
 Establish these unit economics for each AI use case:
 
 | Metric | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | Cost per AI interaction | Total AI cost ÷ number of interactions | $0.08 per customer chat turn |
 | Cost per AI decision | Total AI cost ÷ number of automated decisions | $0.002 per fraud screening |
 | Cost per document processed | Total AI cost ÷ number of documents | $0.45 per contract analyzed |
@@ -697,7 +703,7 @@ Responsible AI (RAI) is not a nice-to-have or a PR exercise. It is a hard requir
 ### Investment Required for RAI
 
 | RAI Investment Area | What It Includes | Indicative Cost |
-|---|---|---|
+| --- | --- | --- |
 | Tooling | Bias detection tools, explainability frameworks, audit logging | $50K–$200K per year |
 | Governance | RAI policy development, risk classification framework, review process | $100K–$300K per year (people cost) |
 | Training | RAI training for all AI practitioners and executives | $20K–$100K per year |
@@ -720,7 +726,7 @@ Every AI investment proposal must include a Responsible AI cost line. A credible
 Use this scorecard to evaluate and compare AI investment proposals.
 
 | Criterion | Weight | Score (1–5) | Weighted Score |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Strategic alignment | 20% | | |
 | Business impact (quantified) | 20% | | |
 | Technical feasibility | 15% | | |
@@ -741,7 +747,7 @@ Proposals scoring below 3.0 weighted average should be deferred or restructured 
 Rate each dimension 0–5 using the level descriptions above. Capture evidence for each rating.
 
 | Dimension | Current Level (0–5) | Evidence | Target Level (12-month) | Gap Actions |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Governance | | | | |
 | Infrastructure / Platform | | | | |
 | Talent and Skills | | | | |
@@ -800,7 +806,7 @@ REVIEW CYCLE
 Answer each question Yes or No. Count Yes answers.
 
 | Question | Yes / No |
-|---|---|
+| --- | --- |
 | Will more than 5 teams need AI capabilities in the next 18 months? | |
 | Are there cross-cutting AI needs (e.g., entity extraction, translation) shared by multiple teams? | |
 | Does the organization have (or plan to hire) a dedicated platform engineering team? | |
@@ -809,6 +815,7 @@ Answer each question Yes or No. Count Yes answers.
 | Will there be 10+ AI use cases in the next 3 years? | |
 
 **Decision guide**:
+
 - 5–6 Yes: Platform investment strongly recommended.
 - 3–4 Yes: Platform investment likely worthwhile; run break-even analysis.
 - 1–2 Yes: Start with project investment; design for future platform evolution.

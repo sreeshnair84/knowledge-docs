@@ -12,6 +12,7 @@ target_role: Enterprise Architect in the Age of AI
 ---
 
 # Enterprise Architect in the Age of AI Agents, Copilots & Workflow Automation
+
 ### A Comprehensive Role Definition for the Modern Era
 
 ---
@@ -42,6 +43,7 @@ target_role: Enterprise Architect in the Age of AI
 The enterprise architect (EA) role has undergone a seismic shift. Historically, EAs were primarily concerned with application portfolios, infrastructure topology, integration patterns, and IT-business alignment. In the current era of generative AI, autonomous agents, code copilots, and pervasive workflow automation, the EA must now govern an entirely new layer of the technology stack — one that **reasons, decides, generates, and acts** on behalf of the enterprise.
 
 The modern EA sits at the intersection of:
+
 - **Technology Strategy** — Which AI capabilities do we build, buy, or partner for?
 - **System Design** — How do agents, humans, and systems safely co-operate?
 - **Governance** — Who is accountable when an AI agent makes a consequential decision?
@@ -50,7 +52,7 @@ The modern EA sits at the intersection of:
 ### 1.2 The Three Forces Reshaping the Role
 
 | Force | What It Means for EAs |
-|---|---|
+| --- | --- |
 | **AI Agents** | Systems that autonomously plan, use tools, and execute multi-step tasks — EAs must define their scope, authority, and safety boundaries |
 | **Code Copilots** | AI embedded in developer workflows (GitHub Copilot, Cursor, etc.) — EAs must govern code quality, IP risk, and platform standardization |
 | **Workflow Automation** | AI-enhanced RPA, low-code/no-code platforms, and LLM-native pipelines — EAs must design for reliability, auditability, and scale |
@@ -89,7 +91,7 @@ The modern EA operates across six core domains, all of which have been fundament
 ### 2.1 Responsibilities at a Glance
 
 | Domain | Traditional EA Focus | AI-Era EA Focus (Added) |
-|---|---|---|
+| --- | --- | --- |
 | Business Architecture | Process mapping, capability models | Human-AI workflow design, automation ROI modeling |
 | Data Architecture | Data models, pipelines, governance | Vector stores, RAG design, training data curation |
 | Application Architecture | Microservices, APIs, SaaS portfolio | Agent design, LLM selection, prompt engineering standards |
@@ -106,12 +108,14 @@ The modern EA operates across six core domains, all of which have been fundament
 The EA must translate board-level AI ambitions into an actionable architecture roadmap. This includes:
 
 **Strategic Responsibilities:**
+
 - Developing the **AI Capability Taxonomy** — categorizing what the enterprise will use AI for (generation, classification, reasoning, planning, execution)
 - Conducting **Build vs. Buy vs. Partner** analysis for AI capabilities (e.g., fine-tune your own model vs. use OpenAI/Anthropic APIs vs. embed a partner solution)
 - Defining the **AI Investment Portfolio** across automation tiers: rule-based → ML-assisted → LLM-powered → fully autonomous agents
 - Creating the **AI Principles & Ethics Charter** in collaboration with Legal, HR, and Compliance
 
 **Governance Responsibilities:**
+
 - Establishing an **AI Architecture Review Board (AARB)** — a cross-functional body that reviews and approves AI use cases before deployment
 - Defining **AI Risk Tiers** (Low / Medium / High / Critical) based on autonomy level, data sensitivity, and decision reversibility
 - Creating the **AI Decision Register** — a living catalog of every automated decision the enterprise makes, what model drives it, who approved it, and how it's monitored
@@ -146,6 +150,7 @@ The EA must translate board-level AI ambitions into an actionable architecture r
 ### 4.1 Understanding Agentic Systems
 
 Agents are AI systems that can autonomously:
+
 - **Plan** a sequence of steps to achieve a goal
 - **Use tools** (APIs, databases, code execution, web search, file systems)
 - **React** to outputs and change course mid-execution
@@ -173,6 +178,7 @@ The EA must design the overall agentic architecture — not just approve individ
 ### 4.3 Multi-Agent Architecture Patterns
 
 **Pattern 1: Hierarchical (Orchestrator + Sub-Agents)**
+
 ```
 User Request
      │
@@ -185,17 +191,21 @@ Orchestrator Agent
 Research Agent    Execution Agent
 (web, RAG, DB)    (writes, sends, deploys)
 ```
+
 *Best for: Complex tasks with clear subtask decomposition*
 
 **Pattern 2: Peer-to-Peer Agent Mesh**
+
 ```
 Agent A ◄──────► Agent B
   │                 │
   └────► Agent C ◄──┘
 ```
+
 *Best for: Collaborative workflows where no single agent has full context*
 
 **Pattern 3: Event-Driven Agents**
+
 ```
 Event Bus (Kafka / EventBridge)
      │
@@ -205,12 +215,13 @@ Agent A    Agent B          Agent C
 (triggers  (triggers       (triggers
 on event1) on event2)      on event3)
 ```
+
 *Best for: Reactive automation, real-time processing, scalable pipelines*
 
 ### 4.4 Key Agent Architecture Decisions
 
 | Decision | Options | EA Guidance |
-|---|---|---|
+| --- | --- | --- |
 | Agent Framework | LangGraph, AutoGen, CrewAI, custom | Standardize on one per use case type; avoid sprawl |
 | LLM Backend | OpenAI, Anthropic, Azure OpenAI, local/open-source | Define criteria: latency, cost, data residency, capability |
 | Memory Store | Pinecone, Weaviate, pgvector, Redis | Choose based on query patterns and scale |
@@ -228,16 +239,19 @@ Code copilots (GitHub Copilot, Cursor, Amazon CodeWhisperer, Tabnine, etc.) are 
 ### 5.2 EA Responsibilities for Code Copilot Governance
 
 **Platform Standardization:**
+
 - Selecting and standardizing which copilot tool(s) the enterprise supports
 - Evaluating tools on: code quality, IP indemnification, data privacy (does the vendor train on your code?), IDE support, language coverage, and enterprise SSO/audit log support
 - Defining a **Copilot Tier Model** — which tools are approved for which sensitivity levels (e.g., Cursor allowed for internal tools, not for regulated systems handling PII)
 
 **Developer Experience (DX) Architecture:**
+
 - Designing **context injection systems** — giving copilots access to internal knowledge: architecture decision records (ADRs), internal APIs, coding standards, and domain glossaries via RAG or custom context files
 - Creating **prompt engineering standards** for developers — how to write effective prompts that produce enterprise-grade, secure, and consistent code
 - Designing **copilot feedback loops** — capturing which suggestions are accepted/rejected to improve context quality over time
 
 **Code Quality & Security:**
+
 - Integrating AI-generated code into existing **static analysis, SAST/DAST, and code review pipelines** — AI code must pass the same gates as human-written code
 - Defining **IP & license risk policies** — training developers on when AI-generated code may reproduce copyrighted material or open-source license-encumbered code
 - Establishing **secure coding guardrails** in copilot configuration — suppressing suggestions that include known vulnerability patterns (e.g., SQL injection templates, hardcoded credentials)
@@ -274,6 +288,7 @@ Operate               →    Operate + AI log analysis,
 ### 5.4 Agentic Development: The Next Step
 
 Beyond copilots, the EA must prepare the enterprise for **agentic software development**:
+
 - **AI coding agents** (e.g., Devin, Claude Code) that can take a ticket and produce a complete pull request autonomously
 - Designing the **human review checkpoints** that must exist in these agentic pipelines
 - Defining **agent-generated code ownership** — who is accountable for production issues in AI-written code?
@@ -303,17 +318,20 @@ Autonomy                                               Autonomy
 ### 6.2 Core EA Responsibilities for Workflow Automation
 
 **Architecture Standards:**
+
 - Defining the **Automation Platform Portfolio** — which tools are approved (Power Automate, n8n, Zapier, MuleSoft, Temporal, Prefect, etc.) and for which use cases
 - Creating an **Automation Pattern Library** — reusable templates for common workflow types (approval flows, data sync, notification chains, human escalation patterns)
 - Designing the **Automation Governance Model** — who can build automations, what review is required, and how citizen developer automations are brought into enterprise governance
 
 **Reliability & Resilience:**
+
 - Designing for **idempotency** — workflows that can safely retry without duplicating effects
 - Defining **dead letter queue (DLQ) patterns** — what happens when a workflow step fails; how errors surface and are handled
 - Building **observability into every automation** — structured logging, distributed tracing, alerting, and dashboards for every automated process
 - Designing **circuit breaker patterns** for automations that call external services
 
 **LLM-Powered Workflow Design:**
+
 - Defining when an LLM step is appropriate in a workflow vs. a deterministic function
 - Designing **prompt versioning and testing** pipelines so that LLM steps in workflows can be updated without breaking production
 - Building **output validation layers** — when an LLM generates a structured output used downstream, that output must be validated before it flows to the next step
@@ -362,18 +380,21 @@ AI systems are voracious data consumers with unique requirements that traditiona
 ### 7.2 EA Responsibilities for AI Data Architecture
 
 **RAG (Retrieval-Augmented Generation) Architecture:**
+
 - Designing the **knowledge ingestion pipeline** — how enterprise documents, wikis, databases, and structured data are chunked, embedded, and indexed
 - Selecting **vector database infrastructure** (Pinecone, Weaviate, pgvector, Chroma, Azure AI Search) based on scale, query latency, and hybrid search needs
 - Designing **retrieval quality controls** — relevance scoring, re-ranking, and filtering to ensure agents get accurate context
 - Defining **knowledge freshness SLAs** — how frequently source documents are re-ingested and re-indexed
 
 **Data Governance for AI:**
+
 - Extending the **data catalog** to include AI-specific metadata: which datasets have been used for training, fine-tuning, or RAG; consent and provenance records
 - Defining **data lineage for AI outputs** — tracing every AI-generated output back to the data that influenced it
 - Creating **sensitive data policies for AI** — defining which data categories (PII, PHI, financial, IP) may be sent to which models (internal, third-party API, open-source)
 - Designing **data residency controls** for AI workloads to meet regulatory requirements
 
 **Feature & Embedding Stores:**
+
 - Building a **centralized embedding store** so embeddings are computed once and reused across multiple AI applications
 - Designing **feature stores** for ML models embedded in automation pipelines — ensuring consistent feature computation between training and inference
 
@@ -386,7 +407,7 @@ AI systems are voracious data consumers with unique requirements that traditiona
 AI systems introduce a fundamentally new attack surface that the EA must understand and architect defenses for:
 
 | Threat | Description | EA Defense |
-|---|---|---|
+| --- | --- | --- |
 | Prompt Injection | Malicious input hijacks agent instructions | Input sanitization, system prompt hardening, output validation |
 | Data Exfiltration via LLM | Sensitive data leaked through model outputs | Data classification enforcement, output filtering, DLP integration |
 | Agent Privilege Escalation | Agent gains more access than intended | Least privilege tool access, agent identity isolation |
@@ -440,6 +461,7 @@ AI systems create a new class of integration requirements. The EA must govern ho
 ### 9.2 Model Context Protocol (MCP) Architecture
 
 MCP (Model Context Protocol) is emerging as the standard protocol for agents to discover and use tools. The EA must:
+
 - Design the **enterprise MCP server registry** — a governed catalog of MCP servers that expose internal capabilities to agents
 - Define **MCP server development standards** — how internal teams expose their services as agent-consumable tools
 - Establish **MCP security standards** — authentication, authorization, rate limiting, and audit logging for every MCP server
@@ -448,6 +470,7 @@ MCP (Model Context Protocol) is emerging as the standard protocol for agents to 
 ### 9.3 API Strategy for AI-First Enterprises
 
 Every API in the enterprise is now a potential agent tool. The EA must:
+
 - **Audit the existing API portfolio** for agent-readiness: Are they RESTful? Do they have OpenAPI specs? Are they idempotent? Do they have appropriate rate limits?
 - Design **agent-friendly APIs** — APIs designed from the ground up to be called by AI agents (semantic naming, machine-readable error messages, structured outputs)
 - Build the **Agent API Gateway** — a dedicated gateway layer that adds agent-specific features: tool discovery, intent logging, per-agent rate limiting, and cost attribution
@@ -478,7 +501,7 @@ Perhaps the most underappreciated responsibility of the modern EA is shaping how
 ### 10.2 New Roles the EA Must Define and Support
 
 | Role | Description |
-|---|---|
+| --- | --- |
 | **AI Product Owner** | Owns the AI use case end-to-end: business outcome, data requirements, model performance, and adoption |
 | **Prompt Engineer / AI Interaction Designer** | Designs and optimizes the prompts, system instructions, and interaction patterns for AI systems |
 | **LLM Engineer / AI Application Developer** | Builds LLM-powered applications, RAG pipelines, and agent systems |
@@ -504,24 +527,28 @@ The modern EA must produce an evolved set of artifacts that reflect the AI-first
 > **See also:** [EA Artifacts & Metrics — Real-World Examples](ea-ai-artifacts-and-metrics.md) — fully populated example of every artifact below, set in a fictional bank context.
 
 ### Architecture Documentation
+
 - **AI Reference Architecture** — the canonical architecture blueprint for AI-powered systems in the enterprise
 - **Agent Topology Diagrams** — visual maps of all agents, their tools, memory systems, and human touchpoints
 - **AI Decision Register** — catalog of all automated decisions, associated models, risk tier, and approval record
 - **Data Flow Diagrams for AI Systems** — showing how data moves into, through, and out of AI components
 
 ### Standards & Patterns
+
 - **LLM Selection Criteria Matrix** — criteria and scoring rubric for choosing AI models
 - **Prompt Engineering Standards** — guidelines for writing, testing, versioning, and governing prompts
 - **Agent Design Patterns Library** — reusable patterns for common agentic use cases
 - **AI Security Architecture Standards** — technical controls required for each AI risk tier
 
 ### Governance & Process
+
 - **AI Architecture Review Process** — workflow for submitting, reviewing, and approving AI use cases
 - **Model Risk Assessment Template** — structured assessment for each AI model in production
 - **AI Incident Response Playbook** — defined response procedures for AI system failures and misbehaviors
 - **AI Vendor Assessment Framework** — criteria for evaluating AI tool and model vendors
 
 ### Roadmaps
+
 - **AI Capability Roadmap** — 12/24/36-month view of planned AI capabilities
 - **Technical Debt Register for Legacy AI** — tracking older ML/RPA systems that need migration or governance uplift
 - **LLMOps Maturity Roadmap** — evolution from ad hoc model use to fully governed, observable AI operations
@@ -533,7 +560,7 @@ The modern EA must produce an evolved set of artifacts that reflect the AI-first
 ### 12.1 Technical Skills
 
 | Skill Area | Specific Competencies |
-|---|---|
+| --- | --- |
 | **AI/ML Fundamentals** | Transformer architectures, LLM capabilities and limitations, fine-tuning concepts, RAG patterns, embedding models |
 | **Agentic Systems** | Multi-agent frameworks (LangGraph, AutoGen), tool use patterns, memory architectures, orchestration design |
 | **Data Engineering** | Vector databases, streaming data, feature stores, data lineage, embedding pipelines |
@@ -546,7 +573,7 @@ The modern EA must produce an evolved set of artifacts that reflect the AI-first
 ### 12.2 Non-Technical Skills (Equally Critical)
 
 | Skill Area | Why It Matters for AI-Era EAs |
-|---|---|
+| --- | --- |
 | **Ethical Reasoning** | AI systems can cause harm at scale; EAs must apply ethical frameworks to design decisions |
 | **Risk Tolerance Calibration** | AI systems fail in novel ways; EAs must help the org understand and accept appropriate AI risk |
 | **Executive Communication** | Translating AI architecture complexity into business language for boards and executives |
@@ -563,18 +590,21 @@ The EA must define and track metrics that demonstrate the health and value of th
 > **See also:** [EA Artifacts & Metrics — Real-World Examples → Part 2](ea-ai-artifacts-and-metrics.md#part-2--metrics--kpi-calculations) — worked calculations with formulas and real data for every metric below.
 
 ### Architecture Quality Metrics
+
 - **Agent Reliability Rate** — % of agent task completions without error or unexpected human escalation
 - **AI System Availability** — uptime for production AI services vs. SLA targets
 - **Prompt Drift Index** — measure of how much AI system behavior drifts over time as underlying models update
 - **RAG Retrieval Precision** — % of retrieved context chunks that are relevant to the query
 
 ### Governance Metrics
+
 - **AI Use Case Review Cycle Time** — average time from submission to Architecture Review Board decision
 - **Shadow AI Incidents** — number of unapproved AI tools detected in use
 - **Model Risk Coverage** — % of production AI models with completed risk assessments
 - **Compliance Audit Pass Rate** — results of AI system audits against defined standards
 
 ### Business Value Metrics
+
 - **Automation ROI** — dollar value of time saved vs. cost of automation infrastructure
 - **Developer Velocity Lift** — % increase in story points delivered with AI-augmented development
 - **AI-Assisted Decision Quality** — business outcome metrics for decisions supported by AI systems

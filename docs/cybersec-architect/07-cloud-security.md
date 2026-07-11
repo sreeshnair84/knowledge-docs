@@ -34,7 +34,7 @@ series_index: index.md
 The classic shared responsibility model has been extended for AI workloads:
 
 | Responsibility Area | IaaS | PaaS | SaaS | Managed AI (e.g., Bedrock, Azure OpenAI) |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Physical security | Cloud | Cloud | Cloud | Cloud |
 | Hypervisor | Cloud | Cloud | Cloud | Cloud |
 | OS | **You** | Cloud | Cloud | Cloud |
@@ -59,7 +59,7 @@ The classic shared responsibility model has been extended for AI workloads:
 ### 2.1 AWS Identity & Access Management
 
 | Service | Purpose | Security Best Practice |
-|---|---|---|
+| --- | --- | --- |
 | **IAM** | Core identity and access | Least privilege; use roles not users; no root access |
 | **IAM Identity Center (SSO)** | Federated human access | SAML/OIDC federation from corporate IdP |
 | **AWS STS** | Temporary credentials | AssumeRole for all cross-account and automation |
@@ -83,6 +83,7 @@ VPC (10.0.0.0/16)
 ```
 
 **Key controls:**
+
 - Security Groups: stateful L4 allow-lists (no deny rules needed)
 - Network ACLs: stateless subnet-level controls
 - VPC Endpoints (Private Link): keep traffic off public internet
@@ -92,7 +93,7 @@ VPC (10.0.0.0/16)
 ### 2.3 AWS AI Security (Bedrock)
 
 | Control | Service | Configuration |
-|---|---|---|
+| --- | --- | --- |
 | **Private API access** | VPC Endpoint for Bedrock | Disable public access; route via Private Link |
 | **IAM authorization** | Bedrock resource policy | Per-model access control; restrict by principal ARN |
 | **Guardrails** | Amazon Bedrock Guardrails | Content filtering, PII detection, grounding, topic denial |
@@ -102,6 +103,7 @@ VPC (10.0.0.0/16)
 | **Prompt flows** | Bedrock Prompt Management | Version-controlled, access-controlled prompt templates |
 
 **AWS AgentCore security** (GA 2026):
+
 - Agent identity via AWS IAM role (not API keys)
 - VPC-isolated agent runtime with network egress controls
 - Integrated with Bedrock Guardrails for output filtering
@@ -110,7 +112,7 @@ VPC (10.0.0.0/16)
 ### 2.4 AWS Security Services Summary
 
 | Domain | AWS Service | Equivalent Control |
-|---|---|---|
+| --- | --- | --- |
 | Posture management | AWS Security Hub | CSPM |
 | Runtime protection | Amazon GuardDuty | UEBA + network threat detection |
 | Vulnerability management | Amazon Inspector | CWPP / vulnerability scanning |
@@ -130,7 +132,7 @@ VPC (10.0.0.0/16)
 ### 3.1 Azure Identity & Access
 
 | Service | Purpose | Security Best Practice |
-|---|---|---|
+| --- | --- | --- |
 | **Entra ID** (formerly AAD) | Enterprise identity platform | Conditional Access; FIDO2; PIM for privileged roles |
 | **Entra PIM** | Privileged Identity Management | JIT elevation; approval workflows; access reviews |
 | **Entra ID Governance** | IGA | Automated access reviews; entitlement management |
@@ -157,7 +159,7 @@ Azure Region
 ### 3.3 Azure AI Security (Azure OpenAI + AI Foundry)
 
 | Control | Service | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Private deployment** | Private Endpoint | Azure OpenAI accessible only via VNet |
 | **Identity** | Managed Identity | App/agent uses managed identity for OpenAI access |
 | **Content filtering** | Azure AI Content Safety | Output moderation; custom categories |
@@ -170,7 +172,7 @@ Azure Region
 ### 3.4 Azure Security Services Summary
 
 | Domain | Azure Service | Equivalent Control |
-|---|---|---|
+| --- | --- | --- |
 | Posture management | Microsoft Defender for Cloud | CNAPP (CSPM + CWPP + CIEM) |
 | SIEM/XDR | Microsoft Sentinel + Defender XDR | SIEM + XDR |
 | Endpoint protection | Microsoft Defender for Endpoint | EDR/XDR |
@@ -188,7 +190,7 @@ Azure Region
 ### 4.1 GCP Identity & Access
 
 | Service | Purpose | Security Best Practice |
-|---|---|---|
+| --- | --- | --- |
 | **Cloud IAM** | Resource access control | Principle of least privilege; prefer pre-defined roles |
 | **Workload Identity Federation** | Machine/CI identity | No service account keys; OIDC-based trust |
 | **Service Account** | Non-human principal | One service account per workload; no key file |
@@ -198,7 +200,7 @@ Azure Region
 ### 4.2 GCP AI Security (Vertex AI + Gemini)
 
 | Control | Service | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Private access** | Private Service Connect | Vertex AI accessible only via VPC |
 | **Identity** | Workload Identity Federation | No service account keys for Vertex access |
 | **Data governance** | Data Access Logs (Cloud Audit) | Log all model invocations |
@@ -210,7 +212,7 @@ Azure Region
 ### 4.3 GCP Security Services Summary
 
 | Domain | GCP Service | Equivalent Control |
-|---|---|---|
+| --- | --- | --- |
 | Posture management | Security Command Center | CSPM + threat detection |
 | Network security | Cloud Armor + Cloud Firewall | WAF + L3/L4 controls |
 | SIEM | Google Chronicle | Cloud-native SIEM + threat intel |
@@ -247,7 +249,7 @@ AWS Account          Azure Subscription       GCP Project
 ### 5.2 Multi-Cloud AI Security Patterns
 
 | Pattern | Description | When to Use |
-|---|---|---|
+| --- | --- | --- |
 | **Single cloud AI** | All AI workloads on one cloud | Simplest; highest integration; vendor lock-in |
 | **Best-of-breed AI** | Different models from different cloud AI services | Optimize for capability; complex security controls |
 | **Private AI** | Models deployed in your cloud account, not managed service | Data sovereignty; regulated industries |
@@ -263,7 +265,7 @@ AI inference and training workloads run on GPU clusters. GPU security is an emer
 ### 6.1 GPU Attack Surface
 
 | Attack Vector | Description | Control |
-|---|---|---|
+| --- | --- | --- |
 | **GPU memory snooping** | Co-tenant reads GPU memory of another workload | Confidential VMs with GPU TEE (NVIDIA H100 CC mode) |
 | **Model weight theft** | Exfiltrate model weights from GPU memory | Encrypted model loading; memory isolation |
 | **Side-channel attacks** | Infer model architecture or inputs from GPU cache timing | Confidential computing; noise injection |
@@ -290,7 +292,7 @@ For organizations where data cannot leave their perimeter, private AI deployment
 ### 7.1 Private AI Deployment Models
 
 | Model | Architecture | Data Control | Cost | Capability |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Managed AI API** | Cloud service | Limited (provider processes data) | Low | Highest (GPT-4o, Claude, Gemini) |
 | **Private cloud AI** | Your VPC; provider manages model | Full | Medium | High (same models, private endpoint) |
 | **Self-hosted cloud** | Your VPC; you manage model | Full | High | Medium (open-source or licensed models) |
@@ -318,6 +320,7 @@ Enterprise Private Network
 ```
 
 **Security properties of this architecture:**
+
 - No data leaves the private network
 - Model weights stored in encrypted private object storage
 - All access authenticated via corporate identity

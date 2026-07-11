@@ -73,7 +73,7 @@ DEMOCRATIC AI — CORE PRINCIPLES
 ### 1.3 Citizen Oversight Mechanisms
 
 | Mechanism | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | **AI Public Register** | Government-published registry of all AI systems used in public functions, with plain-language descriptions | UK Government AI Register (2025); EU AI Act public database |
 | **Algorithmic Impact Assessment (public)** | Published impact assessments for high-risk public AI, open to civil society comment | Canada's Directive on Automated Decision-Making |
 | **Parliamentary AI Committees** | Dedicated legislative oversight of AI in government | UK House of Lords AI Committee; EU Parliament Special Committee on AI |
@@ -125,11 +125,13 @@ COLLECTIVE CONSTITUTIONAL AI PROCESS
 ### 2.2 CCAI in Practice
 
 **Anthropic's 2023 pilot:** Used the Polis platform to gather constitutional preferences from ~1,000 US participants. Key findings:
+
 - Strong consensus on basic honesty and harm avoidance
 - Significant disagreement on political and social topics — documented rather than averaged
 - Public-trained constitution showed different behavior on contested topics than researcher-trained version
 
 **Policy implications for enterprise and government:**
+
 - High-impact public AI systems (justice, benefits, policing) should have constitutions informed by public input
 - Constitutions governing AI in democratic contexts should be published and subject to amendment via democratic processes
 - Audit of constitutional compliance should be accessible to civil society, not only internal governance teams
@@ -137,7 +139,7 @@ COLLECTIVE CONSTITUTIONAL AI PROCESS
 ### 2.3 Participatory Governance Models
 
 | Model | Description | Appropriate for |
-|---|---|---|
+| --- | --- | --- |
 | **Deliberative polling** | Representative sample deliberates with information; measures preference change | AI policy on contested social issues |
 | **Citizens' assemblies** | 50–150 randomly selected citizens deliberate over weeks | Major AI governance frameworks |
 | **Polis / pol.is** | Online platform for scalable opinion mapping | Constitutional principle polling |
@@ -154,7 +156,7 @@ COLLECTIVE CONSTITUTIONAL AI PROCESS
 Existing international human rights law applies to AI systems, even without AI-specific legislation:
 
 | Human Right | AI dimension | Legal basis |
-|---|---|---|
+| --- | --- | --- |
 | **Right to non-discrimination** | AI systems must not discriminate based on protected characteristics | ICCPR Art. 26; ECHR Art. 14; EU Charter Art. 21 |
 | **Right to privacy** | AI systems must respect data privacy and not enable surveillance beyond legal limits | UDHR Art. 12; GDPR; ECHR Art. 8 |
 | **Right to due process / fair trial** | AI decisions affecting rights must be challengeable; no secret algorithms in justice | ICCPR Art. 14; ECHR Art. 6 |
@@ -186,7 +188,7 @@ The US White House AI Bill of Rights (2022) established five principles for Amer
 **Enterprise implementation of AI Bill of Rights principles:**
 
 | Principle | Enterprise implementation | Verification |
-|---|---|---|
+| --- | --- | --- |
 | Safe and effective | SL classification; safety testing; model cards | Independent safety audit |
 | Non-discrimination | Fairness evaluation; bias monitoring; disparate impact testing | Fairness audit; regulator review |
 | Data privacy | GDPR / sector privacy compliance; minimal data collection | Privacy audit; DPIA |
@@ -202,7 +204,7 @@ The US White House AI Bill of Rights (2022) established five principles for Amer
 **High-value AI for public health:**
 
 | Application | AI role | Governance requirement |
-|---|---|---|
+| --- | --- | --- |
 | **Disease surveillance** | Pattern detection in aggregate health data | Aggregate-only; no individual identification |
 | **Diagnostic support** | AI-assisted clinical decision support | FDA SaMD; clinician retains decision authority |
 | **Drug discovery** | AI in clinical trial design and molecule screening | IRB oversight; safety monitoring |
@@ -210,6 +212,7 @@ The US White House AI Bill of Rights (2022) established five principles for Amer
 | **Mental health** | AI triage and support tools | HITL always; crisis protocols; patient consent |
 
 **Public health AI governance requirements:**
+
 - Open publication of training data sources and model limitations
 - Mandatory equity evaluation across demographic groups
 - Human clinical authority preserved at point of care
@@ -220,13 +223,14 @@ The US White House AI Bill of Rights (2022) established five principles for Amer
 **AI in education — governance considerations:**
 
 | Application | Opportunity | Risk | Safeguard |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Adaptive learning** | Personalized pacing and content | Stereotype reinforcement; reduced challenge | Bias audits; educator oversight |
 | **Automated grading** | Consistent, fast feedback | Perpetuates historical grading biases | Human review of high-stakes grades |
 | **Early intervention** | Identify at-risk students early | Labeling; self-fulfilling prophecy | Educator review; student privacy |
 | **AI tutors** | 24/7 accessible support | Inequality (AI quality varies by resource) | Universal access; equity assessment |
 
 **Constitutional requirements for educational AI:**
+
 - Never automate high-stakes decisions (grade promotion, exclusion) without human review
 - Mandatory bias audits across socioeconomic, racial, and disability groups
 - Student data protected; no commercial use; right to deletion
@@ -239,7 +243,7 @@ AI in justice systems requires the highest governance standards — consequences
 **High-risk AI in justice:**
 
 | Application | Risk level | Governance minimum |
-|---|---|---|
+| --- | --- | --- |
 | **Recidivism prediction** (COMPAS-type) | Extremely High | BANNED in several EU jurisdictions under EU AI Act; human decision authority only |
 | **Facial recognition for prosecution** | Extremely High | EU AI Act real-time biometric restriction; warrant required |
 | **Sentencing recommendation** | Extremely High | Advisory only; mandatory human decision; full explainability to defendant |
@@ -273,7 +277,7 @@ GOVERNMENT AI GOVERNANCE REQUIREMENTS
 ## 5. Democratic AI Maturity Model
 
 | Level | Name | Characteristics |
-|---|---|---|
+| --- | --- | --- |
 | **0** | Unaccountable | AI in public functions with no transparency, oversight, or accountability |
 | **1** | Disclosed | AI systems listed in public register; basic transparency |
 | **2** | Explainable | Explanations available on request; complaints process exists |

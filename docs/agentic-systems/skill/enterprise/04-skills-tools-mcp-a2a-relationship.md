@@ -65,7 +65,7 @@ Interestingly, **A2A's own canonical data model includes an `AgentSkill` type** 
 ```
 
 | Layer | Owns | Does NOT own |
-|---|---|---|
+| --- | --- | --- |
 | **Skill** | Judgment, sequencing, policy text, examples, escalation rules, output format | Network calls, auth tokens, schema validation, rate limiting |
 | **Tool** | Typed input/output contract, semantic description of a single action | Business judgment about *when* to call it, retry/backoff mechanics (usually delegated to the gateway) |
 | **MCP Server** | Protocol framing, auth boundary for a connected system, tool/resource/prompt exposure, rate limiting | Business policy, cross-system orchestration |
@@ -79,7 +79,7 @@ These are **backend systems**, accessed via **Tools** (often MCP-hosted: e.g., A
 ## 4.4 Deliverable 3 — Decision Matrix (expanded)
 
 | Question | Skill | Tool | MCP Server | Backend Service |
-|---|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: |
 | Does it define *when/why* to act? | ✅ | | | |
 | Does it define a *single typed action*? | | ✅ | ✅ (hosts) | ✅ (implements) |
 | Does it hold business policy / decision criteria? | ✅ | | | |

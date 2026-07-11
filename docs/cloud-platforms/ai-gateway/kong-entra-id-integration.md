@@ -12,6 +12,7 @@ covers_version: \"as of 2026-07-10\"
 ---
 
 # Kong AI Gateway — Microsoft Entra ID Integration
+
 ## Complete End-to-End Guide
 
 ---
@@ -81,7 +82,7 @@ Microsoft Entra ID (formerly Azure Active Directory) becomes the **single source
 ### Key Entra ID Concepts Used
 
 | Concept | Role in Kong Integration |
-|---|---|
+| --- | --- |
 | **App Registration** | Represents Kong in Entra ID; defines scopes and roles |
 | **Client Credentials** | M2M auth — services authenticate as the app itself |
 | **Authorization Code** | User SSO — humans log in with corporate accounts |
@@ -434,6 +435,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 ```
 
 Kong automatically tries each `auth_method` in order:
+
 1. Checks for a session cookie → if valid, use it
 2. Checks for a `Bearer` token in the `Authorization` header → validate JWT
 3. Falls back to authorization code redirect → browser SSO
@@ -811,6 +813,7 @@ curl -X POST http://localhost:8001/services/openai-service/plugins \
 ```
 
 When `consumer_optional: false`, Kong will:
+
 1. Extract the `email` claim from the Entra token
 2. Search for a Kong consumer with that username
 3. If not found → create the consumer automatically

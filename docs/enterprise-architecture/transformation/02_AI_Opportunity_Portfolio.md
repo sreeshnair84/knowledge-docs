@@ -9,28 +9,29 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-# **AI Opportunity Portfolio & Prioritization** 
+AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-Where the value is, and in what order to capture it 
+# **AI Opportunity Portfolio & Prioritization**
 
-### **Contents of this deliverable** 
+Where the value is, and in what order to capture it
 
-- Portfolio method: value cases, not use cases 
+### **Contents of this deliverable**
 
-- Opportunity inventory across 16 business functions 
+- Portfolio method: value cases, not use cases
 
-- Deep-dive cards for the five lighthouse candidates 
+- Opportunity inventory across 16 business functions
 
-- Impact vs. Effort prioritization matrix and sequencing logic 
+- Deep-dive cards for the five lighthouse candidates
 
-Deliverable 02  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout. 
+- Impact vs. Effort prioritization matrix and sequencing logic
 
-## **1. Portfolio Method** 
+Deliverable 02  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout.
 
-Each opportunity is assessed on business value, complexity, technical feasibility, required data, AI technique, expected ROI horizon, and principal risks. Two disciplines matter more than the list itself: **(1)** benefits are counted only when audited by Finance against a pre-registered baseline, and **(2)** every funded opportunity must consume the shared platform (Deliverable 03), so each use case makes the next one cheaper. 
+## **1. Portfolio Method**
 
-## **2. Opportunity Inventory by Function** 
+Each opportunity is assessed on business value, complexity, technical feasibility, required data, AI technique, expected ROI horizon, and principal risks. Two disciplines matter more than the list itself: **(1)** benefits are counted only when audited by Finance against a pre-registered baseline, and **(2)** every funded opportunity must consume the shared platform (Deliverable 03), so each use case makes the next one cheaper.
+
+## **2. Opportunity Inventory by Function**
 
 |**Function / opportunity**|**Value driver**|**Value**|**Comple**<br>**xity**|**Data required**|**Technique**|**ROI**<br>**horiz**|
 |---|---|---|---|---|---|---|
@@ -46,7 +47,7 @@ Each opportunity is assessed on business value, complexity, technical feasibilit
 |Supply chain - demand sensing<br>& disruption watch|10-20% forecast-error<br>reduction; earlier<br>disruption response|H|H|Orders, POS,<br>logistics, external<br>signals|ML forecasting +<br>LLM signal fusion|12-24<br>mo|
 |Manufacturing/ops - quality &<br>maintenance|15-30%<br>unplanned-downtime<br>reduction|H|H|Sensor/IoT,<br>maintenance logs|Predictive ML +<br>technician copilot|12-24<br>mo|
 
-Deliverable 02  |  Page 1 
+Deliverable 02  |  Page 1
 
 |**Function / opportunity**|**Value driver**|**Value**|**Comple**<br>**xity**|**Data required**|**Technique**|**ROI**<br>**horiz**|
 |---|---|---|---|---|---|---|
@@ -56,11 +57,11 @@ Deliverable 02  |  Page 1
 |Risk & compliance - monitoring<br>& reg-change|60-80% faster regulatory<br>impact analysis|M-H|M|Policy corpus,<br>regulatory feeds,<br>controls library|RAG + classification<br>+ workflow|9-18|
 |Executive decision support -<br>enterprise copilot|Faster, evidence-linked<br>decisions|H|H|Semantic layer over<br>governed metrics|Text-to-analytics +<br>narrative synthesis|18-30<br>mo|
 
-Value/Complexity: VH very high, H high, M medium, L low. ROI horizon = time from build start to audited net benefit. 
+Value/Complexity: VH very high, H high, M medium, L low. ROI horizon = time from build start to audited net benefit.
 
-## **3. Lighthouse Deep-Dive Cards** 
+## **3. Lighthouse Deep-Dive Cards**
 
-### **Lighthouse 1 - Customer Service AI (copilot first, autonomy second)** 
+### **Lighthouse 1 - Customer Service AI (copilot first, autonomy second)**
 
 |**Aspect**|**Detail**|
 |---|---|
@@ -69,7 +70,7 @@ Value/Complexity: VH very high, H high, M medium, L low. ROI horizon = time from
 |Key risks|Hallucinated policy answers (mitigate: retrieval-grounded with citation checks, refusal on low<br>confidence); agent morale (mitigate: position as augmentation, involve agents in design).|
 |Why first|Rich data, measurable baseline, high visibility, and it forces the knowledge platform to be built<br>properly.|
 
-### **Lighthouse 2 - AI-Assisted Software Engineering** 
+### **Lighthouse 2 - AI-Assisted Software Engineering**
 
 |**Aspect**|**Detail**|
 |---|---|
@@ -78,9 +79,9 @@ Value/Complexity: VH very high, H high, M medium, L low. ROI horizon = time from
 |Key risks|Insecure generated code (mitigate: security scanning in CI, provenance tagging); license<br>contamination (mitigate: policy + tooling).|
 |Why first|Fastest time-to-value in the portfolio and it builds the internal skill base the platform team needs.|
 
-### **Lighthouse 3 - Enterprise Knowledge Platform** 
+### **Lighthouse 3 - Enterprise Knowledge Platform**
 
-Deliverable 02  |  Page 2 
+Deliverable 02  |  Page 2
 
 |**Aspect**|**Detail**|
 |---|---|
@@ -89,7 +90,7 @@ Deliverable 02  |  Page 2
 |Key risks|Over-permissive retrieval leaking sensitive content (mitigate: document-level ACL enforcement at<br>query time, not index time only).|
 |Why first|Every ambitious use case dies without it; building it once prevents 20 teams building it badly.|
 
-### **Lighthouse 4 - Finance Close & FP&A; Copilot** 
+### **Lighthouse 4 - Finance Close & FP&A; Copilot**
 
 |**Aspect**|**Detail**|
 |---|---|
@@ -98,7 +99,7 @@ Deliverable 02  |  Page 2
 |Key risks|Errors in financial reporting (mitigate: AI drafts, humans certify; full audit trail; SOX-aligned<br>controls).|
 |Why first|Creates a credible, CFO-sponsored proof that AI works under control-heavy conditions - unlocking<br>governance trust.|
 
-### **Lighthouse 5 - IT Ops & Security Triage** 
+### **Lighthouse 5 - IT Ops & Security Triage**
 
 |**Aspect**|**Detail**|
 |---|---|
@@ -107,7 +108,7 @@ Deliverable 02  |  Page 2
 |Key risks|Automated actions causing outages (mitigate: read-only Phase A; graduated autonomy per<br>Deliverable 04).|
 |Why first|IT is a willing early adopter and the telemetry to measure impact already exists.|
 
-## **4. Impact vs. Effort Prioritization** 
+## **4. Impact vs. Effort Prioritization**
 
 |**Quadrant**|**Opportunities**|**Decision rule**|
 |---|---|---|
@@ -116,12 +117,12 @@ Deliverable 02  |  Page 2
 |Fill-ins (moderate impact,|Meeting/document summarization; HR policy|Deliver via platform self-service, minimal|
 |low effort)|assistant; sales-call summaries|central investment|
 
-Deliverable 02  |  Page 3 
+Deliverable 02  |  Page 3
 
 |**Quadrant**|**Opportunities**|**Decision rule**|
 |---|---|---|
 |Deprioritize (low impact or<br>unready)|Executive enterprise copilot (until semantic layer<br>exists); fully autonomous HR decisions (regulatory);<br>moonshot product bets without data|Revisit at 12-month portfolio review|
 
-Sequencing logic: quick wins fund credibility, strategic bets build the moat, and the platform mandate ensures the two share infrastructure. The portfolio is rebalanced quarterly by the AI Portfolio Board (Deliverable 05) with explicit kill criteria - a pilot that cannot show a path to audited value within two quarters is stopped and harvested for lessons. 
+Sequencing logic: quick wins fund credibility, strategic bets build the moat, and the platform mandate ensures the two share infrastructure. The portfolio is rebalanced quarterly by the AI Portfolio Board (Deliverable 05) with explicit kill criteria - a pilot that cannot show a path to audited value within two quarters is stopped and harvested for lessons.
 
 Deliverable 02  |  Page 4

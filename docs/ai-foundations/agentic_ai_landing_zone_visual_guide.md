@@ -298,12 +298,12 @@ def validation_agent(state: OrderState):
     # Fetch from DB via MCP
     customer = fetch_customer(state["customer_id"])
     order = fetch_order(state["order_id"])
-    
+
     days_since_purchase = (datetime.now() - order["date"]).days
     window_days = state["policies"]["return_window"]
-    
+
     eligible = days_since_purchase <= window_days
-    
+
     return {
         "customer_profile": customer,
         "order_details": order,
@@ -319,7 +319,7 @@ def policy_agent(state: OrderState):
     else:
         decision = "APPROVE"
         reason = "Eligible for return"
-    
+
     return {"decision": decision}
 
 # Node 4: Communication Agent (generate response)
@@ -369,7 +369,7 @@ class CustomerServiceState(TypedDict):
 def supervisor(state: CustomerServiceState):
     """Route query to appropriate specialist"""
     client = anthropic.Anthropic()
-    
+
     message = client.messages.create(
         model="claude-opus-4-8",
         max_tokens=100,
@@ -379,7 +379,7 @@ def supervisor(state: CustomerServiceState):
                       f"Respond with ONE word: billing, returns, technical, or general"
         }]
     )
-    
+
     intent = message.content[0].text.lower().strip()
     return {"intent": intent}
 
@@ -433,7 +433,7 @@ def synthesizer(state: CustomerServiceState):
         response = state["technical_response"]
     else:
         response = "I can help with billing, returns, or technical support."
-    
+
     return {"final_response": response}
 
 # Build graph (Supervisor pattern)
@@ -474,56 +474,56 @@ import json
 
 class ContextOrchestrator:
     """Manages context assembly for agents"""
-    
+
     def __init__(self, budget_kb=8, ttl_seconds=300):
         self.budget_kb = budget_kb
         self.ttl_seconds = ttl_seconds
         self.client = anthropic.Anthropic()
-    
+
     def assemble_context(self, user_query, customer_id):
         """Assemble context from multiple sources"""
-        
+
         # Determine what context is needed
         context_items = {}
-        
+
         # Fetch customer profile (via MCP)
         context_items["customer"] = self.fetch_mcp(
             "database_server",
             "query",
             {"sql": f"SELECT * FROM customers WHERE id = {customer_id}"}
         )
-        
+
         # Fetch recent orders (via MCP)
         context_items["orders"] = self.fetch_mcp(
             "database_server",
             "query",
             {"sql": f"SELECT * FROM orders WHERE customer_id = {customer_id} LIMIT 5"}
         )
-        
+
         # Fetch policies (via MCP to knowledge base)
         context_items["policies"] = self.fetch_mcp(
             "knowledge_server",
             "search",
             {"query": "return policy refund"}
         )
-        
+
         # Compress if over budget
         total_size = sum(
-            len(json.dumps(v).encode()) 
+            len(json.dumps(v).encode())
             for v in context_items.values()
         )
-        
+
         if total_size > self.budget_kb * 1024:
             context_items = self.compress(context_items)
-        
+
         return context_items
-    
+
     def fetch_mcp(self, server_id, method, params):
         """Call MCP server to fetch data"""
         # This would call actual MCP protocol
         # Simplified for example
         return {"data": "fetched via MCP"}
-    
+
     def compress(self, items):
         """Compress context to fit budget"""
         compressed = {}
@@ -534,10 +534,10 @@ class ContextOrchestrator:
             else:
                 compressed[key] = value
         return compressed
-    
+
     def inject_into_prompt(self, context, user_query):
         """Inject context into prompt for agent"""
-        
+
         system_prompt = f"""You are a helpful customer service agent.
 Here is context about the customer:
 {json.dumps(context, indent=2)}
@@ -546,7 +546,7 @@ Follow these policies when responding:
 - Return window is 30 days
 - Refunds processed within 5-7 days
 - Escalate to human if customer is upset"""
-        
+
         response = self.client.messages.create(
             model="claude-opus-4-8",
             max_tokens=500,
@@ -556,7 +556,7 @@ Follow these policies when responding:
                 "content": user_query
             }]
         )
-        
+
         return response.content[0].text
 
 # Usage
@@ -582,6 +582,7 @@ print(response)
 An autonomous AI system capable of perceiving its environment, making decisions, and taking actions to achieve goals. Often uses an LLM as the reasoning engine.
 
 **Agent Autonomy Level (0-4)**
+
 - 0: Advisory only (recommendations, no actions)
 - 1: Supervised execution (human approves each action)
 - 2: Constrained autonomy (agent acts within guardrails)
@@ -719,7 +720,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 ### Table 1: Compliance Checklist by Risk Level
 
 | Requirement | HIGH-RISK | LIMITED-RISK | MINIMAL-RISK |
-|-------------|-----------|--------------|--------------|
+| ------------- | ----------- | -------------- | -------------- |
 | Risk Management System | ✅ MUST | ❌ No | ❌ No |
 | Data Governance Doc | ✅ MUST | ❌ No | ❌ No |
 | Technical Docs | ✅ MUST | ⚠️ Recommended | ❌ No |
@@ -732,7 +733,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 ### Table 2: Multi-Agent Pattern Comparison
 
 | Pattern | Latency | Complexity | Parallelism | Best For |
-|---------|---------|------------|------------|----------|
+| --------- | --------- | ------------ | ------------ | ---------- |
 | Sequential | Slowest | Low | None | Linear workflows |
 | Supervisor | Fast | Medium | High | Parallel specialists |
 | Hierarchical | Slow | High | Medium | Escalation paths |
@@ -743,7 +744,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 ### Table 3: Context Assembly Strategy Selection
 
 | Strategy | Latency | Cost | Context Quality | Best For |
-|----------|---------|------|-----------------|----------|
+| ---------- | --------- | ------ | ----------------- | ---------- |
 | Eager | Fast (~200ms) | High | Complete | Simple requests |
 | Lazy | Slow (~400ms) | Low | Precise | Complex queries |
 | Hybrid | Medium (~300ms) | Medium | Balanced | Production systems |
@@ -751,7 +752,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 ### Table 4: Evaluation Metrics by Stage
 
 | Stage | Focus Metric | Target | Gate |
-|-------|--------------|--------|------|
+| ------- | -------------- | -------- | ------ |
 | **Offline** | Success Rate | > 80% | Proceed if ✓ |
 | **Staging** | Error Rate | < 1% | ARB approval if ✓ |
 | **Canary** | Latency p95 | < SLA | Auto-proceed if ✓ |
@@ -760,7 +761,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 ### Table 5: Implementation Timelines
 
 | Activity | Duration | Effort | Team Size |
-|----------|----------|--------|-----------|
+| ---------- | ---------- | -------- | ----------- |
 | Deploy First Agent | 8 weeks | Medium | 3-5 |
 | Set Up Registry | 2 weeks | Low | 1-2 |
 | Build Golden Dataset | 3 weeks | Medium | 2-3 |
@@ -775,6 +776,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 ### How to Read This Knowledge Base
 
 **By Role:**
+
 - **CEO/CIO**: Start → Business Layer → Compliance (EU AI Act)
 - **Architect**: Start → Technical layers (0-6) → Multi-Agent patterns
 - **Engineer**: Implementation Playbooks → Code examples → Platform layer
@@ -782,6 +784,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 - **Operations**: Playbooks → Evaluation framework → Monitoring dashboard
 
 **By Timeline:**
+
 - **Week 1**: Business Layer + EU AI Act audit
 - **Week 2-3**: Architecture & Playbook 1 planning
 - **Week 4-8**: Execute Playbook 1 (first agent)
@@ -790,6 +793,7 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 - **Week 15-20**: Playbook 5 (multi-agent)
 
 **By Urgency:**
+
 1. 🚨 **CRITICAL (24 days)**: EU AI Act compliance → Start immediately
 2. 🟠 **HIGH (Weeks 2-4)**: First agent design & architecture
 3. 🟡 **MEDIUM (Weeks 5-10)**: Platform setup & operations
@@ -801,27 +805,27 @@ Cryptographically signed claim about an agent's identity, capabilities, or deleg
 Business Layer
     ├─ Links to: Operating Model, Portfolio, ROI
     └─ Used by: Executives, product owners, governance boards
-    
+
 EU AI Act Compliance
     ├─ Links to: Risk classification, governance, audit readiness
     └─ Used by: Legal, compliance, security teams
-    
+
 Platform Layer
     ├─ Links to: Agent lifecycle, registry schema, marketplace
     └─ Used by: Architects, platform engineers
-    
+
 Context Engineering
     ├─ Links to: Data sources, compression, security
     └─ Used by: Engineers, data architects
-    
+
 Evaluation Framework
     ├─ Links to: Golden datasets, metrics, gates
     └─ Used by: QA, product teams, operations
-    
+
 Multi-Agent Architectures
     ├─ Links to: Patterns, decision trees, implementations
     └─ Used by: Architects, advanced teams
-    
+
 Implementation Playbooks
     ├─ Links to: All other documents
     └─ Used by: Teams executing each phase
@@ -832,6 +836,7 @@ Implementation Playbooks
 ## PART 7: RECOMMENDED READING ORDER
 
 ### Executive Track (4 hours)
+
 1. Business Layer & Capability Mapping (1 hour)
 2. EU AI Act Compliance - Executive Summary (30 min)
 3. Implementation Playbooks - Overview (30 min)
@@ -839,6 +844,7 @@ Implementation Playbooks
 5. ROI Framework & Roadmap (1 hour)
 
 ### Architect Track (8 hours)
+
 1. Original Landing Zone Architecture (2 hours)
 2. All 7 layers explained (3 hours)
 3. Multi-Agent Architectures (1 hour)
@@ -846,6 +852,7 @@ Implementation Playbooks
 5. Context Engineering (1 hour)
 
 ### Engineer Track (6 hours)
+
 1. Implementation Playbooks - Playbook 1 (1 hour)
 2. Code Examples (1.5 hours)
 3. Evaluation Framework (1 hour)
@@ -853,6 +860,7 @@ Implementation Playbooks
 5. Context Engineering - Implementation (1 hour)
 
 ### Compliance Track (5 hours)
+
 1. EU AI Act Compliance (2 hours)
 2. Business Layer - Risk & Governance (1 hour)
 3. Platform Layer - Audit & Logging (1 hour)
@@ -864,4 +872,3 @@ Implementation Playbooks
 **Total Knowledge Base:** 9 documents, ~15,000 lines  
 **Ready to Share:** YES (with leadership, teams, external partners)  
 **Next Step:** Push to GitHub + schedule team briefings
-

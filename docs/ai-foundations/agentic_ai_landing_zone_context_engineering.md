@@ -22,7 +22,7 @@ covers_version: \"as of 2026-07-10\"
 **2026 Reality:** Agents fail not because of models, but because of context.
 
 | Failure Mode | Root Cause | Impact |
-|--------------|-----------|--------|
+| -------------- | ----------- | -------- |
 | Hallucinated facts | Incomplete context (missing knowledge sources) | Wrong decisions, customer dissatisfaction |
 | Inconsistent behavior | Changing context between calls (drift) | Unpredictable, untrusted agents |
 | Slow responses | Context too large (all historical data) | Latency SLA violations |
@@ -178,11 +178,13 @@ Agent Output:
 ```
 
 **Pros:**
+
 - ✅ Simple, predictable
 - ✅ No mid-conversation delays
 - ✅ Full context available for reasoning
 
 **Cons:**
+
 - ❌ Wastes tokens on unused context
 - ❌ Latency increases with data size
 - ❌ Harder to keep fresh during long conversations
@@ -205,18 +207,20 @@ Agent Decides: "I need to check transactions and account history"
 Agent calls MCP tools on demand:
     - mcp://db/fetch_transactions(account_id, date_range)
     - mcp://kb/search(query="refund policy")
-    
+
 Context grows dynamically: 5KB → 15KB → 25KB
 
 Latency: ~400ms (higher, but context is fresh)
 ```
 
 **Pros:**
+
 - ✅ Only fetch what's needed
 - ✅ Cost-efficient (smaller prompts)
 - ✅ Can adapt to conversation flow
 
 **Cons:**
+
 - ❌ Introduces latency (tool calls mid-conversation)
 - ❌ Harder to reason about (incomplete context initially)
 - ❌ Risk of "forgotten" relevant facts
@@ -258,6 +262,7 @@ Latency Profile:
 ### Problem: Context Bloat
 
 **Scenario:** Customer asks about a product.
+
 ```
 Naive Context Injection:
 ├─ Product DB row (500B)
@@ -337,7 +342,7 @@ Semantic Summary: 2KB (vs 500KB)
 ### Compression Rules of Thumb
 
 | Data Type | Compression Strategy | Max Size | Example |
-|-----------|---------------------|----------|---------|
+| ----------- | --------------------- | ---------- | --------- |
 | Customer profile | Keep current, discard archived | 1KB | Name, ID, status, account age |
 | Order history | Summarize, keep last 5 | 2KB | "20 orders, avg $120, 85% success" |
 | Support history | Last 3 unresolved tickets | 5KB | Recent issues, last resolution |
@@ -467,7 +472,7 @@ Customer Service Agent:
   max_context_size_kb: 8       # Physical limit (~8KB)
   max_fetch_latency_ms: 200    # Context assembly deadline
   cost_budget_per_query: $0.05 # Max cost for context + inference
-  
+
   Breakdown:
   ├─ Context tokens: 1000 (~$0.003)
   ├─ Model reasoning: 800 (~$0.006)
@@ -518,13 +523,13 @@ Long-running agent (multi-turn conversation):
 
 Turn 1 (14:00):
   Context: Customer order status = "In Transit"
-  
+
 Turn 5 (14:15): [15 minutes later]
   Agent references: "Your order is in transit"
-  
+
 BUT: Order delivered in the meantime!
   Real status (14:15): "Delivered"
-  
+
 PROBLEM: Context drifted! Agent is misinformed.
 
 SOLUTION:
@@ -571,19 +576,19 @@ class ContextOrchestrator:
     Manages context lifecycle for agents.
     Handles: fetching, compression, security, freshness, budgeting.
     """
-    
+
     def __init__(self, agent_id, budget_kb=8, ttl_seconds=300):
         self.agent_id = agent_id
         self.budget_kb = budget_kb
         self.ttl_seconds = ttl_seconds
         self.cache = {}
-        
+
     def assemble_context(self, user_query, user_id):
         """Assemble context for a user query."""
-        
+
         # Step 1: Determine what context is needed
         required_sources = self.identify_sources(user_query)
-        
+
         # Step 2: Fetch from each source (with MCP calls)
         context_items = {}
         for source in required_sources:
@@ -593,73 +598,73 @@ class ContextOrchestrator:
                 agent_id=self.agent_id
             )
             context_items[source] = data
-        
+
         # Step 3: Compress if exceeding budget
         compressed = self.compress(
             items=context_items,
             max_size_kb=self.budget_kb
         )
-        
+
         # Step 4: Cache for later use
         self.cache[user_id] = {
             'context': compressed,
             'timestamp': now(),
             'ttl': self.ttl_seconds
         }
-        
+
         return compressed
-    
+
     def fetch_with_security(self, source, user_id, agent_id):
         """Fetch with access control and auditing."""
-        
+
         # Check permissions
         if not self.can_access(agent_id, source, user_id):
             raise PermissionError(f"Agent {agent_id} cannot access {source}")
-        
+
         # Fetch data
         data = self.call_mcp(source, user_id)
-        
+
         # Apply row/column security
         data = self.apply_security_filters(data, user_id)
-        
+
         # Log for audit
         self.audit_log(agent_id, source, user_id, len(data))
-        
+
         return data
-    
+
     def compress(self, items, max_size_kb):
         """Compress context to fit budget."""
-        
+
         total_size = sum(len(v) for v in items.values())
-        
+
         if total_size <= max_size_kb * 1024:
             return items  # Already under budget
-        
+
         # Prioritize high-signal data
         prioritized = self.prioritize(items)
-        
+
         # Summarize if needed
         if total_size > max_size_kb * 1024 * 1.5:
             prioritized = self.summarize(prioritized)
-        
+
         return prioritized
-    
+
     def is_context_fresh(self, user_id):
         """Check if cached context is still valid."""
-        
+
         if user_id not in self.cache:
             return False
-        
+
         cached = self.cache[user_id]
         age = now() - cached['timestamp']
-        
+
         if age > cached['ttl']:
             return False  # Expired
-        
+
         # Check for invalidation events
         if self.has_invalidation_event(user_id):
             return False
-        
+
         return True
 ```
 
@@ -680,6 +685,7 @@ Before deploying agents at scale, decide:
 ---
 
 **Related Documents:**
+
 - [Platform Layer: MCP Integration](agentic_ai_landing_zone_platform_layer.md)
 - [MCP Deep Guide](../coding-tools/claude/mcp-deep-guide.md)
 - [Secure RAG Pattern](../agentic-ui/security-architecture.md)
@@ -689,4 +695,3 @@ Before deploying agents at scale, decide:
 **Document Status:** DRAFT (July 2026)  
 **Owner:** Platform Engineering  
 **Audience:** Architects, engineers deploying production agents
-

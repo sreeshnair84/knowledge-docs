@@ -9,50 +9,51 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-# **Roadmap, Financial Model, KPIs & Risk Register** 
+AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-From decision to delivery: the executable plan 
+# **Roadmap, Financial Model, KPIs & Risk Register**
 
-### **Contents of this deliverable** 
+From decision to delivery: the executable plan
 
-- Delivery roadmap: 30/90-day plans and 6/12/24/36-month horizons 
+### **Contents of this deliverable**
 
-- Investment and cost model with benefits realization plan 
+- Delivery roadmap: 30/90-day plans and 6/12/24/36-month horizons
 
-- KPI framework and executive steering dashboard 
+- Investment and cost model with benefits realization plan
 
-- Risk register with mitigations 
+- KPI framework and executive steering dashboard
 
-- Board presentation outline 
+- Risk register with mitigations
 
-Deliverable 06  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout. 
+- Board presentation outline
 
-## **1. Delivery Roadmap** 
+Deliverable 06  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout.
 
-### **First 30 days - mobilize** 
+## **1. Delivery Roadmap**
 
-- Appoint transformation leader; charter CoE and governance bodies; confirm executive sponsors per lighthouse. 
+### **First 30 days - mobilize**
 
-- Launch discovery sprint: validate assumptions, baseline metrics for the five lighthouses, inventory in-flight AI work and shadow usage. 
+- Appoint transformation leader; charter CoE and governance bodies; confirm executive sponsors per lighthouse.
 
-- Publish interim AI acceptable-use policy and data-classification guardrails (stops the bleeding while full governance lands). 
+- Launch discovery sprint: validate assumptions, baseline metrics for the five lighthouses, inventory in-flight AI work and shadow usage.
 
-- Select AI gateway and initial model set; stand up sandbox environment; begin vendor contract remediation (data-use, indemnity terms). 
+- Publish interim AI acceptable-use policy and data-classification guardrails (stops the bleeding while full governance lands).
 
-- Communicate workforce principles enterprise-wide before rumor fills the vacuum. 
+- Select AI gateway and initial model set; stand up sandbox environment; begin vendor contract remediation (data-use, indemnity terms).
 
-### **First 90 days - foundations and first proof** 
+- Communicate workforce principles enterprise-wide before rumor fills the vacuum.
 
-- Platform core v1 live: gateway, logging/tracing, evaluation harness v1, first golden-path template. 
+### **First 90 days - foundations and first proof**
 
-- Governance operating: risk tiering in force, use-case inventory live, RAI Board reviewing first Tier-2 cases. 
+- Platform core v1 live: gateway, logging/tracing, evaluation harness v1, first golden-path template.
 
-- Lighthouses 1-3 in build (service copilot, engineering assist, knowledge platform v1); engineering assist in production for first 200 developers. 
+- Governance operating: risk tiering in force, use-case inventory live, RAI Board reviewing first Tier-2 cases.
 
-- Skills wave 1: champions network recruited; manager workshop pilot; all-employee AI fluency module launched. 
+- Lighthouses 1-3 in build (service copilot, engineering assist, knowledge platform v1); engineering assist in production for first 200 developers.
 
-- Portfolio Board operating with kill criteria; benefits-audit method agreed with Finance. 
+- Skills wave 1: champions network recruited; manager workshop pilot; all-employee AI fluency module launched.
+
+- Portfolio Board operating with kill criteria; benefits-audit method agreed with Finance.
 
 |**Horizon**|**Milestones (exit criteria)**|**Key dependencies**|**Principal risks**|
 |---|---|---|---|
@@ -61,9 +62,9 @@ Deliverable 06  |  July 2026  |  Draft for discussion Illustrative engagement pa
 |24 months|Maturity Level 4; 25-40 production use cases;<br>A2 agents in bounded domains; product-based<br>funding fully adopted; cumulative net position<br>near breakeven; first AI-embedded product<br>feature in market|Governance scaling without<br>queueing;<br>knowledge-engineering<br>throughput; talent retention|Governance bottleneck or a<br>public AI incident (counter:<br>two-speed model, incident<br>playbooks, red-teaming)|
 |36 months|AI-native operations in 2-3 selected processes<br>(A3 in bounds); AI-embedded products<br>contributing revenue; CoE shrunk as designed;<br>cumulative net benefit $70-130M; maturity<br>Level 5 markers present|Sustained exec sponsorship<br>across budget cycles;<br>regulatory landscape<br>absorbed|Strategy drift after leadership<br>change (counter: board-level<br>KPI reporting,<br>institutionalized operating<br>model)|
 
-Deliverable 06  |  Page 1 
+Deliverable 06  |  Page 1
 
-## **2. Investment and Cost Model (Illustrative)** 
+## **2. Investment and Cost Model (Illustrative)**
 
 |**Category**|**Yr 1**|**Yr 2**|**Yr 3**|**Notes**|
 |---|---|---|---|---|
@@ -75,7 +76,7 @@ Deliverable 06  |  Page 1
 |Governance, security & assurance|$2-3M|$2-3M|$2-3M|Tooling + assurance capacity in<br>risk/audit|
 |**Total investment**|**$28-38M**|**$35-48M**|**$30-42M**|Released in tranches against<br>value gates|
 
-### **Benefits realization plan** 
+### **Benefits realization plan**
 
 |**Benefit stream**|**Steady-state**<br>**share**|**How it is counted**|
 |---|---|---|
@@ -83,16 +84,16 @@ Deliverable 06  |  Page 1
 |Revenue (win-rate, personalization, AI-embedded<br>product features)|~30%|Attribution via controlled rollouts / holdout groups<br>where feasible; conservative haircuts applied|
 |Risk, quality & speed (error reduction, faster close,<br>compliance efficiency)|~15%|Quantified where defensible; otherwise reported as<br>non-financial KPIs, never double-counted|
 
-Governing rule: the program reports **net** value after platform and run costs, and the Portfolio Board publishes kill decisions alongside wins - credibility is a compounding asset. 
+Governing rule: the program reports **net** value after platform and run costs, and the Portfolio Board publishes kill decisions alongside wins - credibility is a compounding asset.
 
-## **3. KPI Framework and Executive Steering Dashboard** 
+## **3. KPI Framework and Executive Steering Dashboard**
 
 |**Layer**|**KPIs (steering set)**|**Target trajectory**|
 |---|---|---|
 |Value|Audited net benefit ($); benefit run-rate vs plan; % benefits<br>Finance-verified|Breakeven months 20-27; 100%<br>verification|
 |Adoption|Weekly active governed-AI users (% knowledge workforce); use<br>cases in production; median tasks/user|30% by mo 6, 60% by mo 12, 80%+ by<br>mo 24|
 
-Deliverable 06  |  Page 2 
+Deliverable 06  |  Page 2
 
 |**Layer**|**KPIs (steering set)**|**Target trajectory**|
 |---|---|---|
@@ -102,9 +103,9 @@ Deliverable 06  |  Page 2
 |People|Certified practitioners; internal mobility from affected roles;<br>sentiment index; attrition in key AI roles|Reskilling commitments met; key-role<br>attrition <10%|
 |Economics|Cost per unit of work (per resolved ticket, per PR, per document);<br>token spend vs budget|Unit costs declining quarter over quarter|
 
-The Executive Steering Dashboard presents exactly these seven rows monthly, one page, red/amber/green with trend arrows, plus the top three decisions needed. Anything longer will not be read. 
+The Executive Steering Dashboard presents exactly these seven rows monthly, one page, red/amber/green with trend arrows, plus the top three decisions needed. Anything longer will not be read.
 
-## **4. Risk Register (Top 10)** 
+## **4. Risk Register (Top 10)**
 
 |**#**|**Risk**|**L**|**I**|**Mitigation / owner**|
 |---|---|---|---|---|
@@ -119,11 +120,11 @@ The Executive Steering Dashboard presents exactly these seven rows monthly, one 
 |9|Cost overrun: token/GPU spend scales faster than<br>value|M|M|FinOps guardrails; routing to smaller models;<br>unit-economics review - CFO/CTO|
 |10|Transformation fatigue / leadership change breaks<br>continuity|M|H|Board-level KPI reporting; institutionalized<br>operating model; staged wins narrative - CEO|
 
-L = likelihood, I = impact (H/M/L). Register reviewed monthly by Portfolio Board; Tier-1 risks reported to the Board's risk committee quarterly. 
+L = likelihood, I = impact (H/M/L). Register reviewed monthly by Portfolio Board; Tier-1 risks reported to the Board's risk committee quarterly.
 
-## **5. Board Presentation Outline (12 slides)** 
+## **5. Board Presentation Outline (12 slides)**
 
-Deliverable 06  |  Page 3 
+Deliverable 06  |  Page 3
 
 |**Slide**|**Content**|
 |---|---|
@@ -140,6 +141,6 @@ Deliverable 06  |  Page 3
 |11|Top risks and how we govern them|
 |12|Decisions requested today (funding tranche 1, leadership appointment, governance adoption)|
 
-_Recommended board ask: approve direction and Tranche 1 only. Asking for 36 months of money on day one invites a no; asking for gated tranches against audited value invites a partnership._ 
+*Recommended board ask: approve direction and Tranche 1 only. Asking for 36 months of money on day one invites a no; asking for gated tranches against audited value invites a partnership.*
 
 Deliverable 06  |  Page 4

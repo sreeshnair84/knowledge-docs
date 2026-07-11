@@ -27,7 +27,7 @@ covers_version: \"as of 2026-07-10\"
 Traditional AI risk assessment was designed for models that return text in response to queries. Agentic UIs with real-time event streaming, tool execution, persistent memory, and autonomous action change the risk surface fundamentally:
 
 | Risk Dimension | Chatbot AI | Agentic UI |
-|---|---|---|
+| --- | --- | --- |
 | **Agency** | None — returns text only | High — executes tool calls, modifies state, takes real-world actions |
 | **Persistence** | Stateless | Persistent memory across sessions; long-term personalization |
 | **Scope of effect** | One conversation | Multi-system impact through tool chains |
@@ -56,7 +56,7 @@ Traditional AI risk assessment was designed for models that return text in respo
 RAI principles are not just backend architectural concerns — they manifest directly in user interface design:
 
 | RAI Principle | UX Manifestation | Interface Pattern |
-|---|---|---|
+| --- | --- | --- |
 | **Transparency** | Users must know they are interacting with AI | AI disclosure indicator; first-use notice; persistent badge |
 | **Explainability** | Users can understand why agent took an action | Reasoning disclosure (progressive); action justification |
 | **Consent** | Users authorize agent memory, tool use, data access | Memory opt-in flow; tool capability consent screen |
@@ -80,7 +80,7 @@ This section focuses on how EU AI Act obligations manifest in **agentic UI desig
 Agentic applications in the following categories are likely high-risk under Annex III (obligations apply December 2, 2027):
 
 | Application Domain | High-Risk Criterion | Agentic UI Examples |
-|---|---|---|
+| --- | --- | --- |
 | **Employment decisions** | AI used in hiring, task assignment, performance evaluation | Agentic HR assistants, automated scheduling tools |
 | **Credit/financial services** | AI evaluating creditworthiness, setting terms | Agentic financial advisors with recommendation capability |
 | **Healthcare** | AI in clinical decision support, triage | Agentic health assistants with symptom assessment |
@@ -98,7 +98,7 @@ Agentic applications in the following categories are likely high-risk under Anne
 If your agentic application is built on a GPAI model (Claude, GPT-5-family, Gemini, open-source frontier models), your organization has pass-through obligations under EU AI Act Article 53:
 
 | GPAI Obligation | What This Means for Agentic App Builders | Architecture Implication |
-|---|---|---|
+| --- | --- | --- |
 | **Technical documentation** | Maintain documentation of how you deploy the GPAI model | Architecture decision records; deployment configuration version control |
 | **Usage policy compliance** | Use model consistent with provider's terms of use and usage policies | Usage policy review in vendor assessment; contract clause |
 | **Copyright compliance** | Do not use GPAI to generate content that infringes copyright | Output filtering for copyright-sensitive use cases |
@@ -109,7 +109,7 @@ If your agentic application is built on a GPAI model (Claude, GPT-5-family, Gemi
 Article 50 requires that users interacting with AI systems be informed they are doing so. For agentic UIs:
 
 | Transparency Requirement | Implementation Option | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **AI disclosure at point of interaction** | Persistent "AI" badge in chat header | Must be visible throughout interaction, not buried |
 | **First-use notice** | Welcome screen with AI disclosure | Clear, plain language; not buried in T&Cs |
 | **Agent identity disclosure** | Agent name + "AI agent" in interface | "Aria (AI Agent)" not just "Aria" |
@@ -120,7 +120,7 @@ Article 50 requires that users interacting with AI systems be informed they are 
 **Disclosure UX patterns ranked by compliance strength:**
 
 | Pattern | Compliance Strength | User Experience | When to Use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Persistent status indicator** | High | Low friction | Always — minimum baseline |
 | **First-use consent screen** | Very High | Medium friction | Recommended for all agentic apps |
 | **In-conversation disclosure** | High | Low friction | When agent performs sensitive actions |
@@ -132,7 +132,7 @@ Article 50 requires that users interacting with AI systems be informed they are 
 Article 14 requires that high-risk AI systems enable human oversight. For agentic UIs, this maps to:
 
 | Art. 14 Requirement | AGUI Implementation |
-|---|---|
+| --- | --- |
 | **Understand capabilities and limitations** | Capability disclosure at onboarding; in-context help |
 | **Aware of automation bias** | Training for power users; bias warnings for high-stakes decisions |
 | **Interpret output correctly** | Reasoning disclosure; confidence indicators; uncertainty acknowledgment |
@@ -146,7 +146,7 @@ See [Human Oversight in Practice](#10-human-oversight-in-practice-ux--architectu
 EU AI Act Article 5 prohibitions that specifically apply to agentic UI design:
 
 | Prohibited Practice | How It Applies to Agentic UIs |
-|---|---|
+| --- | --- |
 | **Subliminal manipulation** | Agent must not use techniques below conscious awareness to influence user decisions; no dark patterns in HITL approval UI |
 | **Exploiting vulnerabilities** | Agent must not exploit user's emotional state, cognitive vulnerabilities, or crisis state to drive decisions |
 | **Social scoring** | Agent must not score users based on behavior and treat them differently (affects personalization limits) |
@@ -211,7 +211,7 @@ This section focuses on how the GOVERN/MAP/MEASURE/MANAGE core functions apply t
 ### 3.1 GOVERN — Governance Structures for Agentic Apps
 
 | GOVERN Activity | Agentic AI Implementation | Owner |
-|---|---|---|
+| --- | --- | --- |
 | **GV-1: AI risk tolerance** | Define acceptable risk levels for autonomous action; financial limits; PII exposure limits | AI Governance Committee |
 | **GV-2: Accountability** | Agent Registry with clear owner for each agent; RACI for all governance domains | AI Platform Lead |
 | **GV-3: Oversight** | Human oversight models (HITL/HOTL/HOOL) documented and justified per application | App Owner + PAB |
@@ -222,7 +222,7 @@ This section focuses on how the GOVERN/MAP/MEASURE/MANAGE core functions apply t
 ### 3.2 MAP — Agentic-Specific Risk Scenarios
 
 | Risk Scenario | Category | Likelihood | Impact | Priority |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Autonomous action without authorization** | Agent behavior | Medium | High | P1 |
 | **Context poisoning via document retrieval** | Input integrity | High | High | P1 |
 | **Agent impersonation via spoofed A2A identity** | Identity | Low | Critical | P1 |
@@ -241,7 +241,7 @@ This section focuses on how the GOVERN/MAP/MEASURE/MANAGE core functions apply t
 ### 3.3 MEASURE — Metrics for Agentic AI Risk
 
 | Risk Category | Metric | Measurement Method | Target |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Autonomous action risk** | % of high-risk actions that had human approval | Approval workflow logs | 100% |
 | **Context integrity** | % of context assembly events with detected injection attempts | DLP + injection detection | Track; alert at >5% |
 | **Identity assurance** | % of agent-to-agent calls with valid, verified identity | mTLS + token validation logs | 100% |
@@ -256,7 +256,7 @@ This section focuses on how the GOVERN/MAP/MEASURE/MANAGE core functions apply t
 ### 3.4 MANAGE — Risk Treatment for High-Risk Scenarios
 
 | Risk Scenario | Treatment | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Autonomous action without authorization** | Preventive: action authorization matrix; Detective: anomaly monitoring; Corrective: automatic suspension | Tool capability classification + HITL gates + rogue agent playbook |
 | **Context poisoning** | Preventive: input sanitization; Detective: injection detection; Corrective: session invalidation | DLP at context assembly + injection classifier |
 | **PII exfiltration** | Preventive: output filtering; Detective: DLP on outputs; Corrective: incident response | Output DLP + PII detection |
@@ -268,7 +268,7 @@ This section focuses on how the GOVERN/MAP/MEASURE/MANAGE core functions apply t
 The CAISI (Comprehensive AI Safety and Integrity Standards) framework published in February 2026 extends NIST AI RMF 2.0 for agentic contexts. Key additions:
 
 | CAISI Extension | Description | Agentic UI Implication |
-|---|---|---|
+| --- | --- | --- |
 | **Agentic autonomy risk tiers** | Classifies agents by autonomy level (A1–A5); higher autonomy = higher governance requirements | Map agents to CAISI tier; apply corresponding controls |
 | **Multi-agent accountability chain** | Defines accountability propagation in orchestrated agent systems | Document accountability chain for each multi-agent pipeline |
 | **Real-time oversight requirements** | Specifies minimum oversight for autonomous actions | Define HITL/HOTL/HOOL per CAISI tier |
@@ -286,7 +286,7 @@ This section maps OWASP LLM Top 10 (2025 edition, chatbot origin) to agentic UI 
 ### 4.1 LLM01–LLM10 Mapped to AGUI Attack Surfaces
 
 | OWASP ID | Category | How It Manifests in AGUI Apps | Mitigation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **LLM01** | Prompt Injection | Malicious content in tool responses, retrieved docs, or A2UI payloads hijacks agent behavior; indirect injection via knowledge base | Input sanitization at context assembly; trust tier enforcement; content classifiers |
 | **LLM02** | Insecure Output Handling | Agent-generated content rendered in browser without sanitization causes XSS; A2UI malicious widget injection | Output sanitization; DOMPurify for rendered content; A2UI schema validation |
 | **LLM03** | Training Data Poisoning | Poisoned fine-tuning data causes systematic bias; contaminated RAG knowledge base affects all queries | Data provenance verification; knowledge content review process |
@@ -341,7 +341,7 @@ Level 4: USER PREFERENCES (within principles 1-3)
 Constitutional AI includes a self-critique mechanism where the agent evaluates its planned actions against its constitutional principles before executing:
 
 | Stage | Action | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Planning** | Agent proposes action plan | Standard agent reasoning |
 | **Constitutional review** | Agent evaluates plan against Level 1–3 principles | Programmatic or LLM-based policy check |
 | **Critique** | If violation detected: agent generates critique explaining the issue | Critique prompt template |
@@ -387,7 +387,7 @@ COMPLIANT   VIOLATION DETECTED
 When an agent has multiple tools available to complete a task, constitutional principles govern tool selection:
 
 | Principle | Tool Selection Behavior |
-|---|---|
+| --- | --- |
 | **Least privilege** | Prefer READ tool over WRITE tool when read is sufficient |
 | **User autonomy** | Prefer tools that give user the information to act vs. acting on their behalf |
 | **Reversibility** | Prefer reversible tool operations; flag irreversible before executing |
@@ -400,7 +400,7 @@ When an agent has multiple tools available to complete a task, constitutional pr
 In multi-agent pipelines, constitutional constraints must be enforced at each agent level:
 
 | Challenge | Constitutional Solution |
-|---|---|
+| --- | --- |
 | **Orchestrator delegates beyond its scope** | Sub-agents verify that delegated task is within orchestrator's declared scope |
 | **Sub-agent receives malicious instruction** | Sub-agent applies its own Level 1–2 constraints independently of orchestrator |
 | **Goal drift across agent hops** | Each agent re-evaluates goal against original user intent (not just orchestrator instruction) |
@@ -418,7 +418,7 @@ Sovereign AI refers to AI deployment strategies that ensure an organization or n
 Data residency requirements impose constraints on where data can be processed and stored. For agentic UIs, this affects every component:
 
 | Component | Data Residency Concern | Sovereign Option |
-|---|---|---|
+| --- | --- | --- |
 | **LLM inference** | Prompts containing sensitive/sovereign data sent to LLM provider | On-premises model; EU-hosted cloud region; private deployment |
 | **Agent context** | Context window contains sensitive data; transmitted to LLM | Same as LLM inference; context filtering before LLM transmission |
 | **Vector store** | Embeddings contain semantic information about sensitive data | On-premises or sovereign-region vector database |
@@ -429,7 +429,7 @@ Data residency requirements impose constraints on where data can be processed an
 ### 6.2 Deployment Models for Sovereignty-Constrained Deployments
 
 | Deployment Model | Data Residency | Sovereignty | Cost | Performance |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **On-premises (air-gapped)** | Complete | Full | Very High | Limited by local hardware |
 | **On-premises (connected)** | Complete for storage; LLM inference configurable | High | High | Depends on model quality |
 | **Private cloud (dedicated region)** | Contractual; cloud provider dependent | Medium-High | Medium-High | Good |
@@ -448,7 +448,7 @@ Data residency requirements impose constraints on where data can be processed an
 Enterprise knowledge embedded in agent knowledge bases represents a proprietary asset that requires sovereign treatment:
 
 | Knowledge Asset | Sovereignty Risk | Mitigation |
-|---|---|---|
+| --- | --- | --- |
 | **Internal policies and procedures** | Provider may train on customer data | No-training DPA clause; on-premises RAG |
 | **Proprietary product information** | Knowledge base content at cloud provider | Encrypted at rest; on-premises vector store |
 | **Customer data (in context)** | Customer PII at third-party LLM provider | Anonymize before LLM; sovereign deployment |
@@ -462,7 +462,7 @@ Enterprise knowledge embedded in agent knowledge bases represents a proprietary 
 ### 7.1 When to Disclose AI Involvement
 
 | Scenario | Disclosure Required | Legal Basis | Timing |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Any chat/conversational interface** | Yes — persistent indicator | EU AI Act Art. 50 (Aug 2026) | At first interaction |
 | **AI-generated content (text, images)** | Yes — machine-readable marking | EU AI Act Art. 50 (Dec 2026 for existing) | At content generation |
 | **Automated decision affecting user** | Yes — disclosure + explanation right | GDPR Art. 22 | At decision point |
@@ -474,7 +474,7 @@ Enterprise knowledge embedded in agent knowledge bases represents a proprietary 
 ### 7.2 Disclosure UX Pattern Catalog
 
 | Pattern | Description | Implementation | Compliance Strength |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Persistent badge** | Small "AI" indicator in UI header throughout session | CSS badge; always visible; not intrusive | Good — minimum baseline |
 | **First-use modal** | Full disclosure at first interaction with agent | Modal dialog; must be actively dismissed; plain language | Excellent |
 | **Contextual inline disclosure** | "This response was generated by AI" inline in chat | Inline label; appears with every agent message | Excellent |
@@ -486,7 +486,7 @@ Enterprise knowledge embedded in agent knowledge bases represents a proprietary 
 ### 7.3 System Transparency vs. User Transparency vs. Regulator Transparency
 
 | Transparency Type | Audience | What is Disclosed | Format |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **User transparency** | End users | AI nature; capabilities; memory; actions taken | UX disclosure patterns |
 | **Operator transparency** | Application operators | Agent behavior; tool usage; session data; costs | Operator dashboard; API |
 | **Regulator transparency** | EU/national AI regulators, auditors | Technical documentation; conformity assessment; incident reports | Structured reports; API access |
@@ -501,7 +501,7 @@ Enterprise knowledge embedded in agent knowledge bases represents a proprietary 
 These are distinct concepts that are frequently conflated:
 
 | Concept | Definition | Examples | Audience |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Explainability** | Post-hoc account of why the agent produced a specific output or took a specific action; does not need to show internal reasoning | "I recommended X because your history shows Y and the policy allows Z" | Users, auditors, regulators |
 | **Reasoning exposure** | Showing the agent's actual chain-of-thought or internal deliberation process | Displaying `<thinking>` tags; showing intermediate steps | Developers, power users |
 | **Chain-of-thought disclosure** | Displaying the step-by-step reasoning process | Step-by-step visible in UI | Technical users |
@@ -510,7 +510,7 @@ These are distinct concepts that are frequently conflated:
 ### 8.2 When Reasoning Exposure Makes Explainability Worse
 
 | Problem | Description | Example | Mitigation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Confidence inflation** | Users see confident-sounding reasoning and overestimate reliability | Model reasons "Based on strong evidence..." when evidence is weak | Calibrate uncertainty display; use confidence indicators |
 | **Selective reasoning display** | Only part of reasoning shown; gives misleading picture | Showing only the supportive steps; not the uncertainty | Show complete reasoning or none |
 | **Post-hoc rationalization** | Model generates plausible-sounding but inaccurate explanation of its actual process | Explanation doesn't match actual attention patterns | Caveat that explanations are approximate |
@@ -520,7 +520,7 @@ These are distinct concepts that are frequently conflated:
 ### 8.3 Explainability for Different Audiences
 
 | Audience | What They Need | Level of Detail | Format |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **End user** | Why did the agent recommend X? What actions did it take? | Plain language; no technical detail | Natural language explanation in chat |
 | **Power user / operator** | What data sources? What tools? What confidence? | Medium technical detail | Expandable detail panel |
 | **Developer** | What was the reasoning trace? What tools were called? What errors? | Full technical detail | Developer console; trace viewer |
@@ -536,7 +536,7 @@ These are distinct concepts that are frequently conflated:
 Agentic systems introduce bias sources not present in static model deployments:
 
 | Bias Source | Description | Example | Detection |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Retrieval bias** | RAG pipeline over-retrieves documents matching majority group patterns | HR agent retrieves more resumes from one demographic | Retrieval audit; demographic analysis of retrieved results |
 | **Tool selection bias** | Agent systematically selects different tools for different demographic groups | Agent uses basic search for some users, advanced analytics for others | Tool selection audit by group |
 | **Personalization drift** | Memory-based personalization amplifies early differences | User's first interaction influences agent's tone; groups treated differently from session 1 | Longitudinal fairness monitoring |
@@ -548,7 +548,7 @@ Agentic systems introduce bias sources not present in static model deployments:
 ### 9.2 Fairness Metrics for Agentic Systems
 
 | Metric | Definition | Measurement Frequency | Alert Threshold |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Demographic parity** | Probability of positive outcome same across groups | Monthly | > 20% disparity |
 | **Equalized odds** | True positive and false positive rates same across groups | Monthly | > 20% disparity |
 | **Individual fairness** | Similar users receive similar treatment | Quarterly | Anomaly detection |
@@ -560,7 +560,7 @@ Agentic systems introduce bias sources not present in static model deployments:
 ### 9.3 Bias Mitigation Strategies
 
 | Strategy | Applies To | Implementation |
-|---|---|---|
+| --- | --- | --- |
 | **Balanced retrieval** | RAG pipeline | Diversity-aware retrieval; re-ranking for demographic balance |
 | **Memory fairness constraints** | Personalization | Constrained personalization; fairness-aware memory weighting |
 | **Tool access audit** | Tool selection | Regular audit of tool access patterns; alert on disparity |
@@ -576,7 +576,7 @@ Agentic systems introduce bias sources not present in static model deployments:
 ### 10.1 Implementing HITL/HOTL/HOOL as Required by EU AI Act Art. 14
 
 | Oversight Model | Description | When Required | Architecture |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **HITL — Human in the Loop** | Human approves each high-stakes action before execution | High-risk AI systems; financial/legal/medical actions; EU AI Act Art. 14 for Annex III | Approval gate in AG-UI event stream; async human review queue |
 | **HOTL — Human on the Loop** | Human monitors and can intervene; agent acts but human can override | Medium-risk; operational workflows; business process automation | Monitoring dashboard; kill switch; intervention API |
 | **HOOL — Human out of the Loop** | Fully autonomous; human reviews in aggregate | Low-risk; well-understood tasks; where speed is essential | Audit log; anomaly detection; periodic human review |
@@ -584,7 +584,7 @@ Agentic systems introduce bias sources not present in static model deployments:
 **Risk threshold matrix for oversight model selection:**
 
 | Action Category | Impact Level | Reversibility | Required Model | Justification Required |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Financial transaction > threshold** | High | Low | HITL | EU AI Act; financial regulations |
 | **Data deletion** | High | None | HITL | Irreversibility |
 | **External communication** | Medium | Medium | HOTL | Reputation risk |
@@ -598,7 +598,7 @@ Agentic systems introduce bias sources not present in static model deployments:
 A compliant HITL approval UI must meet:
 
 | Requirement | Implementation | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Clear action description** | Plain language; what will happen | No technical jargon |
 | **Impact preview** | Show what will change before approval | Diff view for data changes; preview for communications |
 | **Reversibility indicator** | Clearly mark if action is irreversible | Warning icon + text for irreversible actions |
@@ -613,7 +613,7 @@ A compliant HITL approval UI must meet:
 For EU AI Act conformity assessment, human oversight must be demonstrable through logs:
 
 | Log Event | Required Fields | Retention |
-|---|---|---|
+| --- | --- | --- |
 | **Approval gate triggered** | agent_id, action_type, action_details, timestamp, user_notified | 7 years (high-risk) |
 | **User approved** | gate_id, approver_identity, approval_timestamp, modified_by_user | 7 years |
 | **User declined** | gate_id, decliner_identity, decline_timestamp, reason_if_provided | 7 years |
@@ -630,7 +630,7 @@ For EU AI Act conformity assessment, human oversight must be demonstrable throug
 For high-risk AI systems under EU AI Act, the following events must be logged:
 
 | Event Category | Required Events | Retention | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **User interactions** | Each interaction start/end; user inputs (metadata); agent outputs (metadata) | 6 months minimum | Content may be anonymized; event types must be preserved |
 | **Automated decisions** | Each decision with input factors, model version, output, timestamp | 7 years (financial/high-risk) | Enables post-hoc explanation |
 | **Human oversight events** | All HITL/HOTL events; override events | 7 years | See §10.3 |
@@ -668,6 +668,7 @@ Evidence Export
 ```
 
 **Immutability requirements:**
+
 - Log entries cannot be deleted (except GDPR erasure: anonymize, not delete)
 - Log entries cannot be modified
 - Cryptographic hash of each entry
@@ -680,7 +681,7 @@ Evidence Export
 For EU AI Act conformity assessment, evidence packages must be assembled:
 
 | Evidence Category | Contents | Automated | Source |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Architecture documentation** | System description, component diagram, data flow | Manual | Architecture team |
 | **Risk assessment** | Risk register, threat model, residual risk | Semi-automated | Security team |
 | **Bias evaluation** | Bias test results, fairness metrics, mitigation evidence | Automated | Evaluation pipeline |
@@ -698,6 +699,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 ### 12.1 Pre-Deployment RAI Checklist
 
 **Transparency:**
+
 - [ ] AI disclosure shown to all users before or at first interaction
 - [ ] Agent name includes clear indication of AI nature
 - [ ] Agent capabilities documented and accessible to users
@@ -705,6 +707,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Tool usage notified to user at runtime
 
 **Human Oversight:**
+
 - [ ] HITL/HOTL/HOOL model documented and justified for each application
 - [ ] Approval UI designed per §10.2 compliance requirements
 - [ ] Override and intervention mechanisms functional and tested
@@ -712,6 +715,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Timeout behavior defined and tested for all approval gates
 
 **Fairness and Bias:**
+
 - [ ] Bias evaluation completed before deployment
 - [ ] Fairness metrics baseline established
 - [ ] Disparate impact assessment completed for primary demographic groups
@@ -720,6 +724,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Bias monitoring plan in place for post-deployment
 
 **Privacy:**
+
 - [ ] Data minimization applied at context assembly
 - [ ] PII handling policy implemented and tested
 - [ ] Memory consent mechanism implemented
@@ -728,6 +733,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Data residency requirements documented and implemented
 
 **Safety:**
+
 - [ ] Constitutional constraint hierarchy defined
 - [ ] Safety refusal tests passed (100% for prohibited categories)
 - [ ] Prompt injection resistance tested
@@ -736,6 +742,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Emergency stop / agent suspension mechanism tested
 
 **Accountability:**
+
 - [ ] Agent Registry entry complete with owner, capability scope, oversight model
 - [ ] Audit logging implemented for all required event types
 - [ ] Audit log immutability verified
@@ -743,6 +750,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Accountability chain documented for multi-agent pipelines
 
 **EU AI Act Compliance (if applicable):**
+
 - [ ] Risk tier classification completed with justification
 - [ ] Technical documentation prepared
 - [ ] Conformity assessment initiated (if high-risk)
@@ -750,6 +758,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 - [ ] Article 50 transparency obligations implemented (if applicable)
 
 **Robustness:**
+
 - [ ] Failure mode analysis completed
 - [ ] Degraded-mode UX designed and tested
 - [ ] Behavioral regression tests passing
@@ -758,7 +767,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 ### 12.2 Ongoing RAI Monitoring
 
 | Monitoring Activity | Frequency | Owner | Output |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Bias metric review** | Monthly | AI CoE | Bias dashboard; alert if threshold crossed |
 | **Safety refusal audit** | Monthly | Security team | Refusal rate report; prompt injection test results |
 | **Fairness benchmark** | Quarterly | AI CoE | Fairness evaluation report |
@@ -771,7 +780,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 ### 12.3 RAI Incident Classification
 
 | Severity | Criteria | Response Time | Notification |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Critical (P1)** | Harm to user; privacy breach; discriminatory action; unauthorized agent action with real-world impact | < 1 hour | CISO, CCO, CTO; regulators if required |
 | **High (P2)** | Near-miss for harm; bias detected at scale; unauthorized data access without confirmed breach | < 4 hours | CISO, CCO; App Owner |
 | **Medium (P3)** | Quality degradation; fairness metric breach; transparency failure at scale | < 24 hours | App Owner; AI CoE |
@@ -782,7 +791,7 @@ For EU AI Act conformity assessment, evidence packages must be assembled:
 ## 13. RAI Anti-Patterns
 
 | # | Anti-Pattern | Description | Consequence | Fix |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | **AI disclosure buried in T&Cs** | AI nature disclosed only in terms of service; no runtime disclosure | EU AI Act Art. 50 violation from August 2026 | Persistent AI indicator; first-use modal |
 | 2 | **Bias testing at deployment only** | Bias evaluated once before launch; never repeated | Drift undetected; potential discrimination at scale | Continuous fairness monitoring |
 | 3 | **HITL as rubber stamp** | Human approval gate exists but reviewers never decline | False compliance; no real oversight; risk unmitigated | HITL reviewer training; review quality metrics |

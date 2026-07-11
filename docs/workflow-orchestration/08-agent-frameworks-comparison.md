@@ -103,6 +103,7 @@ result = app.invoke(
 **Temporal integration**: LangGraph runs naturally inside a Temporal activity. The compiled `app.invoke(...)` is a single function call.
 
 **When to choose LangGraph**:
+
 - You need explicit control over the reasoning loop
 - You want pause/resume for human-in-the-loop gates
 - You are building multi-agent workflows with defined handoffs
@@ -169,6 +170,7 @@ print(result.raw)
 **Multi-agent**: Built-in via crew composition. `Process.hierarchical` adds a manager agent that delegates and routes tasks.
 
 **When to choose CrewAI**:
+
 - Your problem naturally decomposes into roles (researcher, analyst, writer, reviewer)
 - You want a readable, declarative team definition
 - You are building content pipelines, research workflows, or report generation
@@ -234,6 +236,7 @@ assert isinstance(decision.approved, bool)  # always — Pydantic guarantees it
 **Testing**: Straightforward to unit test — mock tools, assert on typed output. No hidden state to account for.
 
 **When to choose PydanticAI**:
+
 - Structured output correctness is critical (finance, compliance, healthcare, legal)
 - You need to validate LLM output against a business schema before acting
 - You want simple, testable agents without orchestration overhead
@@ -290,7 +293,7 @@ async def run_research(query: str) -> str:
     session = await session_service.create_session(app_name="research_app", user_id="user-1")
     content = types.Content(role="user", parts=[types.Part(text=query)])
     events = runner.run_async(user_id="user-1", session_id=session.id, new_message=content)
-    
+
     async for event in events:
         if event.is_final_response():
             return event.content.parts[0].text
@@ -303,6 +306,7 @@ result = asyncio.run(run_research("Latest enterprise orchestration trends 2026")
 **A2A protocol**: ADK implements Google's A2A protocol natively — agents discover each other via `.well-known/agent.json` endpoints and communicate via structured messages.
 
 **When to choose Google ADK**:
+
 - You are on Google Cloud (Vertex AI, BigQuery, GKE)
 - You need Google Search grounding out of the box
 - You want A2A protocol compliance for multi-agent interoperability
@@ -368,6 +372,7 @@ console.log(response.text);
 **Multi-agent**: Supported via agent handoffs in workflows. One agent can invoke another as a step.
 
 **When to choose Mastra**:
+
 - Your team works in TypeScript and prefers a Node.js ecosystem
 - You are building a full application (API + agent + UI) not just the agent layer
 - You want memory management out of the box without configuring vector stores
@@ -382,6 +387,7 @@ console.log(response.text);
 Microsoft Agent Framework SDK (part of Azure AI Foundry, GA 2025) is Microsoft's **production-grade, managed agent development SDK** — positioned as the enterprise path distinct from the research-oriented AutoGen and the lower-level Semantic Kernel integration toolkit. It provides a standardised way to build, host, and orchestrate agents on Azure with native integration to Azure AI services, Microsoft Entra ID, and Microsoft 365 Copilot extensibility.
 
 **Positioning vs. other Microsoft offerings:**
+
 - **Semantic Kernel**: Lower-level AI integration SDK for building plugins/skills; useful as a building block but not a complete agent framework
 - **AutoGen (AG2)**: Multi-agent research framework for AI-to-AI conversation patterns; not recommended for production enterprise agents
 - **Microsoft Agent Framework SDK**: The recommended production path — managed hosting, enterprise auth, compliance controls, M365 integration
@@ -455,7 +461,7 @@ for msg in messages.data:
 **Enterprise capabilities built in:**
 
 | Capability | Implementation |
-|---|---|
+| --- | --- |
 | **Identity & access** | Microsoft Entra ID integration; agent identity is an Entra service principal; function tools can enforce Entra roles |
 | **Audit trail** | All agent runs logged to Azure Monitor; queryable via Log Analytics |
 | **Compliance** | Azure compliance controls (GDPR, HIPAA, FedRAMP) inherited; data residency enforced by Azure region |
@@ -505,6 +511,7 @@ async def run_foundry_agent(customer_id: str, task: str) -> str:
 ```
 
 **When to choose Microsoft Agent Framework SDK:**
+
 - Your enterprise is Azure-first with Entra ID and Microsoft 365
 - You need compliance-ready agents (GDPR, HIPAA, FedRAMP) without bespoke compliance engineering
 - You want to deploy agents as Microsoft 365 Copilot extensions
@@ -517,7 +524,7 @@ async def run_foundry_agent(customer_id: str, task: str) -> str:
 ## Comparison Matrix
 
 | Feature | LangGraph | CrewAI | PydanticAI | Google ADK | Mastra | **MS Agent Framework** |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **Language** | Python | Python | Python | Python | TypeScript | Python / .NET |
 | **Control model** | Explicit graph | Role + task | Typed pipeline | Session + agent | Workflow + agent | Thread + managed run |
 | **State / memory** | Checkpoints | Task context | Stateless | Session service | Built-in (threadId) | Thread (Cosmos DB) |
@@ -574,10 +581,10 @@ from datetime import timedelta
 @activity.defn
 async def run_langgraph_agent(input_data: dict) -> dict:
     from langgraph.checkpoint.sqlite import SqliteSaver
-    
+
     memory = SqliteSaver.from_conn_string(":memory:")
     app = build_graph().compile(checkpointer=memory)
-    
+
     result = await app.ainvoke(
         {"messages": [{"role": "user", "content": input_data["goal"]}]},
         config={"configurable": {"thread_id": input_data["run_id"]}},

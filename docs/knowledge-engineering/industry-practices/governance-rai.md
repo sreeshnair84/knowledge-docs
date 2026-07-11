@@ -48,7 +48,7 @@ End-to-end lineage (source → transformation → chunk → embedding → answer
 The 2026 shift is that RAI moved from principles decks to **infrastructure-level runtime enforcement**:
 
 | Mechanism | Example | What it does |
-|---|---|---|
+| --- | --- | --- |
 | Safeguard models | Meta **Llama Guard** (Purple Llama) | Classifies prompts *and* responses into safety risk categories as an I/O filter |
 | Managed guardrails | **Amazon Bedrock Guardrails** | Six policies: content moderation, prompt-attack detection, topic controls, PII redaction, hallucination/grounding checks, and Automated Reasoning checks with verifiable explanations; applies across any model, including third-party |
 | Grounding verification | Vertex AI grounding, dual-LLM verify | Checks generations against retrieved/authoritative sources before serving |
@@ -74,7 +74,7 @@ The three frameworks are complementary, not competing. The common formulation: *
 ### EU AI Act — the timeline that matters for knowledge systems
 
 | Date | Obligation |
-|---|---|
+| --- | --- |
 | Aug 2, 2025 | GPAI model provider obligations apply (technical documentation, training-data summary, risk policies, systemic-risk notification to the AI Office) |
 | **Aug 2, 2026** | Commission **enforcement** of GPAI obligations begins; Act broadly applicable |
 | **Jun 8, 2026** | Final technical guidelines for high-risk systems published — **explicitly covering retrieval-based generative architectures** (systems fetching context from knowledge bases/vector stores must meet the same transparency, accountability, and fairness standards as other regulated decision tools) |

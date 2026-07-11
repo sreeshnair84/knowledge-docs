@@ -25,7 +25,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 ### 1.1 Comparative Overview
 
 | Era | Period | Paradigm | Primary Interaction | Trust Model | Technical Ceiling |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Classic GUI | 1970s–1990s | WIMP (Windows, Icons, Menus, Pointer) | Direct manipulation of graphical objects | Deterministic: same action = same result | Static UIs, no ambient intelligence |
 | Web & Search | 1990s–2000s | Hyperlinks + query interfaces | Click navigation + keyword search | Stateless: each request independent | No personalization, no context memory |
 | Virtual Assistants | 2010–2016 | Voice-first, single-turn | Spoken natural language commands | Command-response: one intent → one action | No multi-turn context, no tool use |
@@ -49,12 +49,14 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** The WIMP model — Windows, Icons, Menus, Pointer — gave users a spatial metaphor for computing. Objects could be manipulated directly: drag a file, double-click to open, right-click for context options. The desktop metaphor mapped physical office concepts onto digital representations.
 
 **What It Enabled:**
+
 - Mass adoption of personal computing (Xerox PARC 1973, Apple Lisa 1983, Windows 1.0 1985)
 - Direct manipulation without programming knowledge
 - Immediate visual feedback confirming state changes
 - Application composition through file exchange
 
 **Technical Limitations That Drove the Transition:**
+
 - **Static and isolated:** Each application managed its own state with no interoperability
 - **No ambient intelligence:** The interface could not observe context or adapt
 - **Task completion required full user attention:** No background operations visible in context
@@ -70,12 +72,14 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** The World Wide Web replaced the spatial desktop metaphor with the link-document model. Information was navigated through hypertext rather than file hierarchies. Search engines (AltaVista, Google) introduced the query-as-navigation pattern.
 
 **What It Enabled:**
+
 - Global information retrieval without institutional access
 - Hyperlinking created emergent discovery paths
 - Search democratized access beyond navigational knowledge
 - Web forms enabled transactional interactions (e-commerce, banking)
 
 **Technical Limitations That Drove the Transition:**
+
 - **Stateless by design:** HTTP was designed for document retrieval, not conversation
 - **Manual navigation:** Users had to know what to search for; serendipitous discovery was the ceiling
 - **No personalization:** Every user saw the same result for the same query
@@ -91,12 +95,14 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Voice-first, single-turn command interfaces. Siri (2011), Google Now (2012), Cortana (2014), Alexa (2014). The paradigm: user speaks a command → system executes exactly one action → confirms completion. Context does not persist between turns.
 
 **What It Enabled:**
+
 - Natural language as primary interaction modality (no typing required)
 - Hands-free device control (phone, car, smart home)
 - Integration of search, calendar, messaging through unified voice command
 - Consumer-scale NLU deployment
 
 **Technical Limitations That Drove the Transition:**
+
 - **Single-turn only:** Each utterance was independent; "her" referred to no one
 - **Command recognition, not understanding:** Intent classification against a fixed taxonomy
 - **Shallow world model:** Could not reason about multi-step tasks
@@ -113,12 +119,14 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Decision-tree dialogue systems deployed in customer service, HR, and IT support. Users navigated pre-authored dialogue trees using text input or button selection. Backend integrations delivered real transactions (ticket creation, account lookup, password reset).
 
 **What It Enabled:**
+
 - 24/7 self-service for high-volume transactional use cases
 - Reduced live agent load for FAQ and routine transactions
 - Structured data collection from unstructured text
 - Measurable ROI in customer contact centres
 
 **Technical Limitations That Drove the Transition:**
+
 - **Brittle beyond the happy path:** Any input not matching a predefined branch required escalation
 - **Maintenance overhead:** Every new policy change required manual dialogue tree update
 - **No understanding:** The system matched patterns, not meanings
@@ -135,6 +143,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Intent classification and slot filling replaced hard-coded decision trees. Models like Rasa, Dialogflow, and LUIS could generalize across phrasings of the same intent. Multi-turn dialogue was supported within a session. Integration with backend systems enabled transactional completion.
 
 **What It Enabled:**
+
 - Generalisation across paraphrase variants without manual rules
 - Multi-turn context within a single conversation session
 - Entity extraction for structured data collection (dates, names, account numbers)
@@ -142,6 +151,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 - Confidence scores enabled graceful escalation
 
 **Technical Limitations That Drove the Transition:**
+
 - **Domain-specific training:** Models trained on customer service could not generalize to engineering queries
 - **No reasoning:** Could classify intents but could not reason about complex multi-step problems
 - **Context window:** Multi-turn was supported but context degraded over long conversations
@@ -156,6 +166,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Large language models embedded in domain-specific tools. GitHub Copilot (2021) provided inline code suggestions. Microsoft 365 Copilot (2023) added AI to Word, Excel, Teams, and Outlook. The paradigm shifted from command-response to suggestion-acceptance: the AI proposed, the human accepted or modified.
 
 **What It Enabled:**
+
 - LLM capabilities brought to high-frequency professional workflows
 - Context drawn from open files, documents, and meeting transcripts
 - Dramatic productivity improvements for code authoring, document drafting, and data analysis
@@ -163,6 +174,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 - Grounded the "AI as junior colleague" mental model
 
 **Technical Limitations That Drove the Transition:**
+
 - **Single-turn suggestion model:** Each suggestion was independent; no planning horizon
 - **No task execution:** Could propose code or text but could not execute multi-step tasks autonomously
 - **Session-scoped context:** Context was limited to the open documents in the current session
@@ -179,6 +191,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Document-aware, multi-modal AI integrated into collaboration platforms. Notion AI, Confluence AI, Google Workspace AI, Salesforce Einstein GPT. The paradigm: AI reads the full workspace context (documents, tickets, CRM records, emails) and generates summaries, drafts, and analyses.
 
 **What It Enabled:**
+
 - Retrieval-augmented generation grounded in enterprise knowledge
 - Cross-document reasoning and synthesis
 - Multi-modal inputs (text, images, spreadsheets, presentations)
@@ -186,6 +199,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 - Meeting notes, ticket triage, and document classification at scale
 
 **Technical Limitations That Drove the Transition:**
+
 - **Read-heavy, write-light:** Strong at summarizing existing content; weak at executing new tasks
 - **No autonomy:** Required explicit invocation for each operation
 - **No cross-system coordination:** Each workspace AI operated in its own silo
@@ -200,6 +214,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Multi-step task execution with explicit planning, tool use, and human approval gates. The paradigm: user specifies a goal → agent decomposes into sub-tasks → executes with visible progress → pauses at defined approval points → delivers structured result. AG-UI protocol standardized the event stream between agent and UI in this era.
 
 **What It Enabled:**
+
 - End-to-end task completion for complex, multi-tool workflows
 - Real-time progress visibility (streaming intermediate steps)
 - Human-in-the-loop approval at defined trust boundaries
@@ -207,6 +222,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 - Multi-agent coordination for parallel sub-task execution
 
 **Technical Limitations Being Resolved:**
+
 - **Context window exhaustion:** Long-running tasks exceed model context limits → requires memory architecture
 - **Planning quality variance:** Agent plan quality varies significantly by task complexity
 - **HITL latency:** Human approval gates create throughput bottlenecks at scale
@@ -221,12 +237,14 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** The agent itself proposes the UI surface appropriate for the task context. Instead of rendering a static form, the agent emits a JSON description of the optimal component for the current data and task. A2UI v0.9 (Google) provides the declarative specification; AG-UI carries the A2UI payload in the CUSTOM event type.
 
 **What It Enables:**
+
 - Task-specific interface components generated on demand
 - Data tables, charts, forms, and action cards rendered natively per platform
 - Elimination of generic chat bubbles for structured data presentation
 - Framework-agnostic portability: same agent, different render targets
 
 **Current Limitations (as of July 2026):**
+
 - A2UI is v0.9 — experimental, not yet GA
 - Framework fragmentation: each host application implements its own widget registry
 - Accessibility standards for generated UI components not yet formalized
@@ -239,12 +257,14 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Interface layout, density, interaction patterns, and communication style adapt based on a persistent user preference model. The system learns from approval/rejection patterns, edit frequencies, and explicit feedback. Users with high technical expertise receive dense data; casual users receive progressive disclosure by default.
 
 **What It Enables:**
+
 - Cognitive load optimization per user and per context
 - Reduced time-to-value as the system adapts to working patterns
 - Personalized communication style (technical, narrative, executive summary)
 - Proactive surface adjustments before user requests them
 
 **Open Problems:**
+
 - User model drift: learned preferences may diverge from current user intent
 - Privacy tension: preference learning requires persistent behavioral monitoring with explicit consent
 - Auditability: adaptive UI decisions may be difficult to explain to security reviewers
@@ -256,6 +276,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Multiple specialized agents operate in a shared workspace simultaneously. A research agent retrieves information while a drafting agent writes. A validation agent checks outputs while an orchestrator manages priorities. Human operators set goals, review outputs, and manage exceptions from a unified command surface.
 
 **What It Enables:**
+
 - Parallel execution of complex task portfolios
 - Specialization: each agent optimized for its domain
 - Resilience: failure of one agent does not halt the entire workspace
@@ -264,6 +285,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **Key Protocols:** AG-UI nested composition with scoped state; A2A agent delegation; shared memory architecture.
 
 **Current Engineering Challenges:**
+
 - State consistency across agents writing to shared context
 - Attribution: which agent produced which artifact
 - Conflict resolution when agents propose contradictory outputs
@@ -276,6 +298,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** AI operates without an explicit interface. Events trigger agent actions. The user sets high-level preferences and policies; the AI monitors conditions and acts within defined boundaries. Notifications surface only when human decision is required.
 
 **What It Enables:**
+
 - Zero-interaction automation for routine workflows
 - Event-driven proactive assistance (e.g., "flag any contract over $500K for review")
 - Background monitoring and alerting
@@ -290,6 +313,7 @@ Enterprise Architects and Principal AI Architects will find here the definitive 
 **UX Pattern:** Human-over-the-loop. Humans specify goals, policies, and constraints; applications execute entire business processes autonomously. Humans review outcomes, audit decisions, and update policies. Individual task approval is replaced by policy governance.
 
 **What It Enables:**
+
 - Business process automation at orders of magnitude higher complexity than RPA
 - Self-healing workflows that adapt to changing conditions
 - Continuous improvement through outcome-based learning
@@ -306,7 +330,7 @@ Chat interfaces — from early chatbots to current LLM chat — impose structura
 ### 2.1 The 12 Fundamental Limitations of Chat
 
 | # | Limitation | Root Cause | Why It Matters at Enterprise Scale |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | **No persistent state across sessions** | HTTP statelessness + session-scoped context windows | Enterprise workflows span days or weeks; context must survive session boundaries |
 | 2 | **No partial result visualization** | Chat designed for complete text responses | Multi-step tasks take minutes or hours; users need progress signals to maintain trust |
 | 3 | **No structured approval flows** | Chat assumes linear turn-taking | HITL requires pause-evaluate-decide-resume semantics not available in chat |
@@ -323,7 +347,7 @@ Chat interfaces — from early chatbots to current LLM chat — impose structura
 ### 2.2 Additional Limitations for Specific Domains
 
 | Domain | Specific Chat Limitation | Required Capability |
-|---|---|---|
+| --- | --- | --- |
 | **Financial Services** | Cannot display approval chains with delegation metadata | Structured workflow approval with named approvers, deadlines, and audit log |
 | **Healthcare** | Cannot present structured clinical decision support | FHIR-structured data rendering, clinical form integration, safety override flows |
 | **Legal** | Cannot show redline document changes with agent justification | Inline annotation UI, clause comparison tables, review-and-approve workflows |
@@ -353,7 +377,7 @@ Five distinct collaboration models exist between human operators and AI agents. 
 ### 3.1 The Five Models
 
 | Model | Abbreviation | Agent Autonomy | Human Role | Use Cases | UI Requirements |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Human-in-the-Loop | HITL | Executes steps only with explicit human approval at each gate | Decision-maker at every gate | High-stakes financial transactions, legal document modification, clinical order entry | Approval panel, pause state, edit-before-approve, reject-with-reason |
 | Human-on-the-Loop | HOTL | Executes continuously; human can interrupt, override, or redirect | Monitor and exception handler | Code generation pipelines, research synthesis, batch document processing | Live activity feed, interrupt button, rollback action, override injection |
 | Human-over-the-Loop | HOOL | Executes entire workflows autonomously within policy boundaries | Goal-setter and outcome reviewer | Routine procurement, compliance reporting, data pipeline maintenance | Goal specification UI, policy configuration, outcome dashboard, exception inbox |
@@ -363,7 +387,7 @@ Five distinct collaboration models exist between human operators and AI agents. 
 ### 3.2 Model Selection Matrix
 
 | Criterion | HITL | HOTL | HOOL | Shared Cognition | Invisible AI |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **Regulatory requirement for human approval** | Required | Optional | Not required (post-hoc review) | N/A | Requires consent record |
 | **Task reversibility requirement** | Every step reversible | Reversible via rollback | Policy-gated rollback | Co-author undo | Requires explicit undo capability |
 | **Agent error tolerance** | Near-zero | Low | Moderate (recoverable) | Moderate | Low (errors affect production) |
@@ -451,7 +475,7 @@ User          AG-UI Client       Agent Backend        Tool/API
 ### 3.4 Collaboration Model × Regulatory Domain Matrix
 
 | Regulatory Domain | Minimum Required Model | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | **Clinical decision support (HIPAA, MDR)** | HITL | EU MDR Annex XIV requires clinical evidence for AI-assisted decisions; FDA guidance requires physician review |
 | **Algorithmic trading (MiFID II)** | HOTL | Real-time trading requires throughput incompatible with HITL; but human override capability is required |
 | **Consumer credit decisions (ECOA, GDPR Art. 22)** | HITL | Automated decision-making prohibition for individual credit outcomes; human review required |
@@ -474,6 +498,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** The user interface reveals agent state commensurate with user attention and task risk. Background operations are summarized; active operations are streamed; high-risk operations require explicit user focus.
 
 **Implementation:**
+
 - Background tasks: notification badge + summary on demand
 - Active tasks: streaming step indicators with expandable detail
 - High-risk operations (irreversible actions, large resource consumption): modal interruption requiring explicit acknowledgment
@@ -487,6 +512,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** Every state-modifying agent action must have an explicit undo path. Reversibility is not optional for "important" actions; it is required for all actions.
 
 **Implementation:**
+
 - All tool calls that modify state must implement a compensating transaction
 - The UI must surface an "undo last action" control for a configurable window (minimum 30 seconds)
 - Irreversible actions (email sends, financial transfers, external API calls) require a HITL gate and explicit irreversibility warning before execution
@@ -501,6 +527,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** When the agent is uncertain, the interface makes that uncertainty visible and actionable — not hidden behind confident-sounding prose.
 
 **Implementation:**
+
 - Confidence scores surfaced on structured outputs (table cells, classification decisions)
 - "I am uncertain about X — would you like me to proceed anyway, clarify, or escalate?" prompts at uncertainty thresholds
 - Alternative answers or recommendations displayed when confidence is below threshold
@@ -515,6 +542,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** Any agent execution must be interruptible at any point without data corruption, resource leakage, or inconsistent state.
 
 **Implementation:**
+
 - Interrupt button always visible and functional during agent execution (never disabled)
 - Interrupt generates a graceful cancellation signal, not a hard kill
 - Agent receives interrupt and completes the current atomic action (if safe) before halting
@@ -530,6 +558,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** Every agent output — every claim, every generated artifact, every proposed action — must carry a visible attribution path connecting it to the source data and reasoning that produced it.
 
 **Implementation:**
+
 - Inline source citations on RAG-grounded content (document name, page, excerpt)
 - Tool call provenance: "This recommendation is based on the result of calling `get_customer_history` at 14:32:07 UTC"
 - Chain-of-thought summary: collapsible panel showing agent's reasoning steps
@@ -544,6 +573,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** The interface is designed to minimize the cognitive load imposed on the human at each interaction point, particularly at approval gates.
 
 **Implementation:**
+
 - Present only the information required to make the approval decision at each gate
 - Pre-summarize long tool outputs; offer expandable detail on demand
 - Group related actions into a single approval decision when safe to do so
@@ -559,6 +589,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** The agent maintains and surfaces the user's working context across sessions, interruptions, tab switches, and device changes.
 
 **Implementation:**
+
 - Session state serialized to durable storage at each step boundary
 - Context summary surfaced when user returns after an interruption ("When you left, the agent was halfway through X. Here is where things stand.")
 - Multi-tab and multi-device context synchronization with conflict resolution
@@ -573,6 +604,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** The interface is designed to be useful and safe during agent failures, not just during successful execution.
 
 **Implementation:**
+
 - Every error state has a user-facing message, a recommended action, and a path to recovery
 - Partial results are surfaced and labeled as such (not discarded silently)
 - Agent failures do not corrupt user-visible state; the previous consistent state is restored
@@ -588,6 +620,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** Before the agent collects data, executes an action, or accesses a resource, explicit user consent is obtained and recorded.
 
 **Implementation:**
+
 - Permission grants are presented with scope, duration, and revocability clearly stated
 - Consent is granular: "access read-only" vs. "access read-write" vs. "access read-write-delete"
 - Consent records are persisted in the audit log alongside the action that relied on them
@@ -603,6 +636,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** When AI capabilities are unavailable (model outage, tool failure, context limit exceeded), the interface degrades to a functional state that preserves user productivity.
 
 **Implementation:**
+
 - AI-powered features fail open to manual equivalents (AI-assisted form → standard form)
 - Context limit exhaustion triggers a graceful summarization and continuation, not a hard stop
 - Tool unavailability triggers a "manual input requested" prompt rather than silent failure
@@ -618,6 +652,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** The interface supports the modality most appropriate to the task context — text, voice, structured form, data visualization, code view — and allows the user to switch between modalities without losing state.
 
 **Implementation:**
+
 - Text chat for conversational queries
 - Structured form for data collection where accuracy is paramount
 - Data table/chart for structured data presentation
@@ -634,6 +669,7 @@ Enterprise agentic applications require a new UX design philosophy that replaces
 **Definition:** The interface actively helps users develop accurate mental models of agent capabilities and limitations — preventing both over-trust (accepting all outputs uncritically) and under-trust (rejecting useful outputs reflexively).
 
 **Implementation:**
+
 - Onboarding flow demonstrates failure modes explicitly, not just successes
 - Confidence indicators normalized against observable performance history
 - "Why the AI suggested this" panel available on all major recommendations
@@ -651,7 +687,7 @@ The following 18 anti-patterns appear repeatedly in enterprise AI deployments th
 ### 5.1 Anti-Pattern Catalog
 
 | # | Anti-Pattern | Origin | Manifestation in Agentic Systems | Correct Treatment |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1 | **Options Menu Chatbot** | Rule-based chatbot decision trees | "Please select: 1. Create task, 2. Check status, 3. Escalate" | Use natural language intent understanding + context-aware action suggestions |
 | 2 | **Single-Response Bubble** | Turn-based chat | All agent output (progress, data, confirmations) rendered in same text bubble | Use appropriate native components (tables, progress bars, approval panels) per content type |
 | 3 | **Silent Execution** | Background job model | Agent executes multi-step plan with no intermediate progress signals | Stream step indicators via AG-UI STEP_STARTED/STEP_FINISHED events |
@@ -709,7 +745,7 @@ Trust & Transparency
 Each anti-pattern carries measurable enterprise costs. The following estimates are based on industry case studies and published HCI research:
 
 | Anti-Pattern Cluster | Typical Enterprise Cost | Evidence Type |
-|---|---|---|
+| --- | --- | --- |
 | AP#3 Silent Execution + AP#13 Perpetual Spinner | 40–60% task abandonment rate on tasks >30 seconds | User research (Nielsen Norman Group, 2024) |
 | AP#4 Approval-as-Message + AP#14 All-or-Nothing Approval | 2-4x higher approval error rate vs. structured approval UI | Internal A/B testing reported by financial services adopters |
 | AP#5 Context Amnesia | 15–25% of agent sessions include redundant context re-specification | Session log analysis across enterprise deployments |
@@ -812,7 +848,7 @@ Level 5 — Ambient Enterprise Intelligence
 ## 7. Cross-References and Next Steps
 
 | Topic | Where to Go |
-|---|---|
+| --- | --- |
 | AG-UI protocol: event taxonomy, transport, state sync | [AGUI Standards & Ecosystem Landscape](agui-standards-landscape.md) |
 | Enterprise reference architecture (17 layers) | [Enterprise Reference Architecture](enterprise-reference-architecture.md) |
 | HITL gate implementation patterns | [Enterprise AI Architecture Patterns](../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns.md) §8 |

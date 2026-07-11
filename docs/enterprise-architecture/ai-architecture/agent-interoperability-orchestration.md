@@ -45,6 +45,7 @@ The industry converged on two complementary standards that now form the **enterp
 MCP was created by Anthropic (November 2024) and donated to the **Linux Foundation's Agentic AI Foundation (AAIF)** on December 9, 2025, co-founded with Block and OpenAI; backed by Google, Microsoft, and AWS. [(Anthropic announcement)](https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation)
 
 **July 2026 status:**
+
 - **10,000+ public MCP servers** in official registry; community aggregators list 16–20k
 - **~110M monthly SDK downloads** ([AAIF, 2026](https://aaif.io/blog/mcp-is-growing-up/))
 - **2026-07-28 stateless spec release candidate** — the protocol layer is stateless; all state lives in the application; final spec publishes July 28, 2026 ([MCP blog](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/))
@@ -53,13 +54,14 @@ MCP was created by Anthropic (November 2024) and donated to the **Linux Foundati
 ### 2.2 Core Primitives
 
 | Primitive | What it is | Use for |
-|---|---|---|
+| --- | --- | --- |
 | **Tools** | Executable functions the agent can call | API calls, database queries, computations |
 | **Resources** | Read-only data the agent can retrieve | Documents, config, live data feeds |
 | **Prompts** | Parameterized prompt templates | Consistent agent behaviors |
 | **Sampling** | Agent-initiated LLM completion requests | Nested reasoning, evaluation |
 
 **2026 spec additions:**
+
 - **Extensions** — a formal framework for protocol extensions (replaces ad-hoc custom features)
 - **Tasks** (promoted from experimental) — long-running async operations with status tracking
 - **MCP Apps** — bundled configurations for sharing agent setups
@@ -84,6 +86,7 @@ Enterprise MCP Registry
 ```
 
 Governance controls:
+
 - **Allow-list only** — agents cannot call MCP servers not in the enterprise registry
 - **Version pinning** — pin to exact MCP server versions; automated alerts on upstream changes
 - **Tool-call audit** — every MCP tool call logged (server, tool, parameters, result, agent SVID)
@@ -98,6 +101,7 @@ Governance controls:
 Google released A2A in April 2025 and donated it to the **Linux Foundation** as the *Agent2Agent Project* in June 2025 ([Google Developers Blog](https://developers.googleblog.com/en/google-cloud-donates-a2a-to-linux-foundation/)). Members include AWS, Cisco, Microsoft, Salesforce, SAP, and ServiceNow.
 
 **July 2026 status:**
+
 - **A2A v1.0 stable** — shipped April 2026
 - **150+ supporting organizations** ([Linux Foundation press release](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year))
 - **GA integrations:** Microsoft Copilot Studio, Microsoft Foundry, Amazon Bedrock AgentCore
@@ -106,7 +110,7 @@ Google released A2A in April 2025 and donated it to the **Linux Foundation** as 
 ### 3.2 Core Primitives
 
 | Primitive | Description |
-|---|---|
+| --- | --- |
 | **Agent Card** | A JSON-LD document an agent serves at `/.well-known/agent.json` declaring: name, version, capabilities, supported modalities, authentication requirements, endpoint URL |
 | **Task** | A unit of work sent from one agent to another; has status (pending, running, completed, failed, cancelled) |
 | **Artifact** | The output of a completed Task — structured data, files, or messages |
@@ -149,7 +153,7 @@ The `governance` block is non-standard — add it as an enterprise extension. To
 ## 4. Protocol Landscape: MCP, A2A, ACP, x402, AP2
 
 | Protocol | Layer | Governed by | Status | Use case |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **MCP** | Agent ↔ Tool | Linux Foundation AAIF | Stateless spec RC (July 2026) | Tools, resources, prompts |
 | **A2A** | Agent ↔ Agent | Linux Foundation | v1.0 stable (April 2026) | Task delegation, collaboration |
 | **ACP** (Agent Communication Protocol) | Agent ↔ Agent (alternate) | BeeAI / Linux Foundation | Draft | Alternative to A2A; convergence discussions ongoing |
@@ -182,7 +186,7 @@ Agent Invocation
 **Governance lifecycle via the registry:**
 
 | Stage | Registry Action |
-|---|---|
+| --- | --- |
 | **Provisioning** | Agent registered with SVID, capability declaration, owner, oversight tier |
 | **Active** | Monitored; capability drift alerts; version updates tracked |
 | **Suspended** | Agent blocked from invocation (security incident or compliance hold) |
@@ -265,7 +269,7 @@ Enterprise agents that transact financially need payment protocols as rigorous a
 Regardless of payment protocol, enforce spend controls at the orchestrator:
 
 | Control | Implementation |
-|---|---|
+| --- | --- |
 | Per-task budget cap | Orchestrator rejects tool calls that would exceed task budget |
 | Daily/monthly agent limits | Registry-enforced spending envelope per agent identity |
 | Anomaly detection | Alert when agent spend rate exceeds 2× 7-day average |
@@ -278,7 +282,7 @@ Regardless of payment protocol, enforce spend controls at the orchestrator:
 The **OpenTelemetry GenAI semantic conventions** ([OTel blog 2026](https://opentelemetry.io/blog/2026/genai-observability/)) define standard span attributes for agent operations, enabling vendor-neutral tracing across A2A hops:
 
 | Span name | Attributes | Use |
-|---|---|---|
+| --- | --- | --- |
 | `invoke_agent` | `gen_ai.agent.name`, `gen_ai.agent.id`, `gen_ai.system` | Trace delegation across agents |
 | `execute_tool` | `gen_ai.tool.name`, `gen_ai.tool.type`, `gen_ai.agent.id` | Trace every tool call |
 | `gen_ai.client.token.usage` | `input_tokens`, `output_tokens`, `model`, `agent_id` | Token cost attribution |
@@ -295,7 +299,7 @@ Traditional LLM evals test: *did the model give the right answer?*
 Agent evals must also test: *did the agent take the right path?*
 
 | Eval type | What it checks | When to use |
-|---|---|---|
+| --- | --- | --- |
 | Final-answer | Did the task complete correctly? | Always; baseline |
 | Trajectory | Did the agent use the right tools, in the right order, with appropriate scope? | Production readiness; regulatory compliance |
 | Cost trajectory | Did the agent accomplish the task within budget? | Cost governance |
@@ -307,7 +311,7 @@ A documented **37% lab-to-production performance gap** ([Morph, 2026](https://ww
 ## 9. Failure Modes & Mitigations
 
 | Failure | Description | Mitigation |
-|---|---|---|
+| --- | --- | --- |
 | **Cascading delegation loop** | Agent A calls Agent B which calls Agent A; infinite loop burns tokens | Max delegation depth (§6.2) + call graph cycle detection |
 | **Runaway spend** | Agent spawns sub-agents each spawning more; cost compounds exponentially | Concurrent sub-agent cap + total task spend cap + circuit breaker |
 | **Split-brain orchestration** | Two orchestrators both delegate to the same sub-agent with conflicting tasks | Sub-agent registry: one owner per task; task claim/lock before execution |
@@ -319,7 +323,7 @@ A documented **37% lab-to-production performance gap** ([Morph, 2026](https://ww
 ## 10. Decision Guide: Single Orchestrator vs Peer Mesh
 
 | Criterion | Single Orchestrator | Registry-Mediated Peer Mesh |
-|---|---|---|
+| --- | --- | --- |
 | **Simplicity** | ✅ Easier to reason about | Requires registry infrastructure |
 | **Scale** | Bottleneck at orchestrator | ✅ Horizontal scaling |
 | **Fault tolerance** | Single point of failure | ✅ Agents can reroute around failures |

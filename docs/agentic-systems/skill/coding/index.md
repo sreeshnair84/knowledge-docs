@@ -44,7 +44,7 @@ Before Skills, coding assistants had tools (filesystem, terminal, git) and a sin
 ## Series structure
 
 | Part | Title | What's unique to this part |
-|---|---|---|
+| --- | --- | --- |
 | 1 | [Foundations: What Is a Coding Skill?](./01-foundations-what-is-a-coding-skill.md) | Coding-assistant definition of a skill, SKILL.md standard history, skill vs. slash command/prompt/tool/MCP tool/background agent — every adjacent concept disambiguated |
 | 2 | [Skill Anatomy & Metadata Schema](./02-skill-anatomy-and-metadata-schema.md) | SKILL.md frontmatter fields, vendor-specific extensions (Copilot `user-invokable`, `disable-model-invocation`), canonical deliverable 4 template |
 | 3 | [Skill Discovery & Execution Lifecycle](./03-discovery-and-execution-lifecycle.md) | How agents discover skills (description-based matching vs. explicit `/skillname` invocation), end-to-end execution sequence diagrams, deliverable 2 |

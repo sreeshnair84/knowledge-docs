@@ -19,7 +19,7 @@ series_index: "agentic-systems/skill/coding/index"
 ## PART A: How Skills Support Enterprise Development Workflows
 
 | Workflow | How Skills/AGENTS.md/context engineering apply |
-|---|---|
+| --- | --- |
 | **Greenfield development** | Lower skill dependency (less existing convention to encode); AGENTS.md scaffolding and templates (file `01`, §1.5) matter more than deep procedural skills early on |
 | **Legacy modernization** | High skill value — encode migration-specific procedures (e.g., a specific ORM-to-ORM migration pattern) as a dedicated skill; repository context engineering (file `06`, especially ADRs) is critical to avoid the agent "fixing" deliberate legacy workarounds |
 | **Bug fixing** | Debugging-methodology skills (root-cause-first, reproduce-before-fix) show measurable value; testing-agent separation (file `09`) reduces the risk of a fix that only satisfies the bug's literal symptom |
@@ -44,7 +44,7 @@ series_index: "agentic-systems/skill/coding/index"
 ### Comparison table
 
 | Dimension | Claude Code / Claude Desktop | GitHub Copilot (Agent Mode) | Cursor | OpenAI Codex CLI | Antigravity CLI (f/k/a Gemini CLI) | Devin | Amp (Sourcegraph) | JetBrains Junie |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Skill packaging | SKILL.md (origin implementation) | SKILL.md (adopted Apr 2026) | SKILL.md-compatible + native `.mdc` rules | SKILL.md + plugin manifest (`agents/openai.yaml`) | Emerging under Antigravity's new harness | Not skill-packaged in the SKILL.md sense — procedural knowledge largely implicit/model-driven | SKILL.md-compatible | Native, less skill-marketplace-oriented |
 | Always-loaded context | CLAUDE.md | `.github/copilot-instructions.md`, `*.instructions.md` (glob-scoped) | `.cursor/rules/*.mdc`, AGENTS.md | AGENTS.md (native, "intentionally simpler than CLAUDE.md") | GEMINI.md (legacy) / Antigravity-native equivalent | AGENTS.md (nearest-file-in-tree) | AGENTS.md (falls back to CLAUDE.md if absent) | — |
 | MCP support | Native, mature | Native | Native | Native, TOML-configured; can itself run *as* an MCP server | Native | Native | Native | Native |
@@ -68,6 +68,7 @@ See file `00`, §3 for the full diagram. In one sentence: **an always-loaded con
 ## Deliverable 10 — Design Patterns, Anti-Patterns, Migration Strategies, and Future Trends
 
 ### Patterns
+
 1. **AGENTS.md as router**: always-loaded file explicitly tells the agent when to reach for which skill (file `01`, `05`) — empirically validated to roughly 26-point pass-rate improvement (53%→79%) over unguided skill discovery.
 2. **Single canonical instruction source + generated overlays**: solves the five-file-duplication problem (file `19`) without waiting for org-catalog tooling to mature.
 3. **Dev Container as security boundary, not just reproducibility tool**: run high-autonomy agents only inside isolated, network-egress-limited containers (file `07`, `10`).
@@ -75,6 +76,7 @@ See file `00`, §3 for the full diagram. In one sentence: **an always-loaded con
 5. **Structured tools over raw terminal invocation** wherever a structured tool exists (file `05`, `06`) — better safety enforcement, better output parsing, better agent reasoning.
 
 ### Anti-patterns
+
 1. **Auto-loading unreviewed, externally-sourced skills/rules files** — the single highest-frequency root cause across the CVE catalog in file `10`.
 2. **Cramming deep procedural knowledge into an always-loaded file** instead of a skill — burns tokens every turn for content only occasionally needed.
 3. **Five divergent instruction files per repo**, unsynced (file `19`).
@@ -84,11 +86,13 @@ See file `00`, §3 for the full diagram. In one sentence: **an always-loaded con
 7. **Treating agent-authored code telemetry as a separate silo** from normal CI/PR observability (file `09`).
 
 ### Migration strategies
+
 - Consolidate legacy tool-specific rule files (`.cursorrules`, `.windsurfrules`, `.clinerules`) toward **AGENTS.md** as the primary always-loaded source, keeping thin, generated tool-specific files only where a tool genuinely lacks AGENTS.md support (file `19`, §18.2).
 - When migrating between agent vendors entirely (as forced by events like the Gemini CLI → Antigravity or Windsurf → Devin consolidations), the SKILL.md and AGENTS.md portability properties (file `01`, `02`) mean **skill and always-loaded-context investment survives the migration**; only vendor-specific frontmatter fields and MCP configuration syntax need to be redone.
 - Treat any single-vendor-specific investment (a vendor's proprietary memory feature, a vendor-only plugin format) as higher migration risk and budget for it accordingly, given the demonstrated pace of vendor consolidation in this category.
 
 ### Future trends worth tracking
+
 - **Organization-level skill/rule distribution** maturing from "coming soon" to shipped, closing the governance gap that is today the clearest weakness of the whole ecosystem relative to enterprise business-agent platforms (companion package).
 - **Formal quality/security scoring for public skill marketplaces**, analogous to the enterprise-side SkillsBench development (companion package file `06`) — early, narrower precedents already exist (`gh skill`'s spec-validation `--dry-run`, security-audited marketplaces like the ones referenced in file `18`) and are likely to broaden.
 - **Convergence toward AGENTS.md + SKILL.md as the durable, cross-vendor standards**, with individual vendors competing on harness quality, sandboxing, and IDE integration rather than on proprietary instruction formats — the clearest strategic signal from this entire research window is that betting on open standards over any single vendor's proprietary format is the lower-risk long-term choice.

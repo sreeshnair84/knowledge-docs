@@ -112,7 +112,7 @@ Spread all sticky notes on a surface. Participants (silently or with minimal dis
 #### MURAL / Miro Instructions
 
 | Step | Action |
-|---|---|
+| --- | --- |
 | 1 | Create a board before the session; share the link in the pre-read |
 | 2 | Set up frames for each session — one frame per output |
 | 3 | Use the sticky note tool for brainstorming (assign a colour per participant) |
@@ -123,7 +123,7 @@ Spread all sticky notes on a surface. Participants (silently or with minimal dis
 ### 11.3 Virtual Workshop Considerations
 
 | Challenge | Mitigation |
-|---|---|
+| --- | --- |
 | Participant disengagement | Max 90 minutes without a break; use polls and chat prompts every 10–15 min |
 | Domination by vocal participants | Use silent brainstorming and structured round-robin, not open discussion |
 | Technical failures | Test platform 24 hrs before; have a backup video link ready; designate a tech co-host |
@@ -179,55 +179,55 @@ Spread all sticky notes on a surface. Participants (silently or with minimal dis
 
 ### Category B — Technology Landscape (10 Questions)
 
-11. How would you describe your current technology landscape — modern, aging, mixed? What is your biggest technical liability?
-12. What percentage of your applications are on-premises, in a public cloud, or in a private cloud? Is that proportion changing?
-13. Where are your most significant integration challenges — which systems are hardest to connect and why?
-14. What does your vendor landscape look like? Are there consolidation opportunities, or is multi-vendor diversity intentional?
-15. How do you currently manage technical debt? Is there a formal programme, informal backlog, or is it not tracked?
-16. What is your approach to build versus buy versus SaaS? Has that changed in the last three years?
-17. How mature is your DevOps and delivery capability — from idea to production, how long does a typical change take?
-18. What are your most critical non-functional requirements — availability, performance, security — and are you meeting them today?
-19. How do you manage your technology roadmap? Who owns it, and how often is it refreshed?
-20. What technology decisions made in the last five years are you most proud of, and which do you most regret?
+1. How would you describe your current technology landscape — modern, aging, mixed? What is your biggest technical liability?
+2. What percentage of your applications are on-premises, in a public cloud, or in a private cloud? Is that proportion changing?
+3. Where are your most significant integration challenges — which systems are hardest to connect and why?
+4. What does your vendor landscape look like? Are there consolidation opportunities, or is multi-vendor diversity intentional?
+5. How do you currently manage technical debt? Is there a formal programme, informal backlog, or is it not tracked?
+6. What is your approach to build versus buy versus SaaS? Has that changed in the last three years?
+7. How mature is your DevOps and delivery capability — from idea to production, how long does a typical change take?
+8. What are your most critical non-functional requirements — availability, performance, security — and are you meeting them today?
+9. How do you manage your technology roadmap? Who owns it, and how often is it refreshed?
+10. What technology decisions made in the last five years are you most proud of, and which do you most regret?
 
 ### Category C — Data and AI Readiness (10 Questions)
 
-21. How would you rate your organisation's data maturity — from ad hoc and siloed to data-driven and governed?
-22. Where does your most valuable data live today, and who has access to it?
-23. Do you have a single source of truth for your most critical business metrics? If not, where do the disagreements typically arise?
-24. What are your biggest data quality pain points, and what is the business impact when data quality fails?
-25. Have you deployed any AI or machine learning models in production? If so, describe the use case and the outcome.
-26. What AI use cases are you currently exploring or piloting? What is blocking you from moving faster?
-27. How are decisions made about what data can be used for AI training, and who oversees that process?
-28. What does your data governance look like today — is there a data catalogue, data owners, data quality monitoring?
-29. How prepared is your organisation to comply with AI-specific regulations such as the EU AI Act or sector-specific AI guidelines?
-30. If I told you we could give every employee a personal AI assistant tomorrow, what would be the biggest risk?
+1. How would you rate your organisation's data maturity — from ad hoc and siloed to data-driven and governed?
+2. Where does your most valuable data live today, and who has access to it?
+3. Do you have a single source of truth for your most critical business metrics? If not, where do the disagreements typically arise?
+4. What are your biggest data quality pain points, and what is the business impact when data quality fails?
+5. Have you deployed any AI or machine learning models in production? If so, describe the use case and the outcome.
+6. What AI use cases are you currently exploring or piloting? What is blocking you from moving faster?
+7. How are decisions made about what data can be used for AI training, and who oversees that process?
+8. What does your data governance look like today — is there a data catalogue, data owners, data quality monitoring?
+9. How prepared is your organisation to comply with AI-specific regulations such as the EU AI Act or sector-specific AI guidelines?
+10. If I told you we could give every employee a personal AI assistant tomorrow, what would be the biggest risk?
 
 ### Category D — Governance Maturity (10 Questions)
 
-31. How are technology architecture decisions made today? Is there a formal review body, or does it happen informally?
-32. How are IT and the business aligned on investment priorities? Where does misalignment typically occur?
-33. Do you have documented architecture principles? When were they last reviewed?
-34. How do you manage vendor risk at an enterprise level — is there a vendor register, risk scoring, and regular reviews?
-35. When a project goes off-track, what does the escalation path look like? How effective is it?
-36. How are cybersecurity and technology risk managed — separately or as part of an integrated enterprise risk framework?
-37. How does your organisation handle technology standards — do you have approved technology lists, and are they enforced?
-38. What does your technology assurance or audit function review, and how does its output feed back into governance?
-39. How are architecture decisions documented and communicated across the organisation?
-40. If a new team started a technology project today without going through formal governance, what would actually happen?
+1. How are technology architecture decisions made today? Is there a formal review body, or does it happen informally?
+2. How are IT and the business aligned on investment priorities? Where does misalignment typically occur?
+3. Do you have documented architecture principles? When were they last reviewed?
+4. How do you manage vendor risk at an enterprise level — is there a vendor register, risk scoring, and regular reviews?
+5. When a project goes off-track, what does the escalation path look like? How effective is it?
+6. How are cybersecurity and technology risk managed — separately or as part of an integrated enterprise risk framework?
+7. How does your organisation handle technology standards — do you have approved technology lists, and are they enforced?
+8. What does your technology assurance or audit function review, and how does its output feed back into governance?
+9. How are architecture decisions documented and communicated across the organisation?
+10. If a new team started a technology project today without going through formal governance, what would actually happen?
 
 ### Category E — Organisational Readiness (10 Questions)
 
-41. How would you describe the relationship between IT and the business — collaborative partner, order-taker, or something else?
-42. What is your current approach to technology talent — build internally, hire externally, or lean on partners?
-43. Where are your most significant technology skill gaps today, and how are you addressing them?
-44. How does your organisation approach change management when deploying new technology?
-45. How is the technology function structured — centralised, federated, product-aligned, or hybrid?
-46. What is the cultural attitude toward risk and experimentation in your organisation?
-47. How does leadership model and signal the importance of technology and data to the wider organisation?
-48. What happened the last time a major technology change programme did not go as planned? What did the organisation learn?
-49. How do you measure the productivity and performance of your technology function?
-50. If you could change one thing about how your organisation approaches technology, what would it be?
+1. How would you describe the relationship between IT and the business — collaborative partner, order-taker, or something else?
+2. What is your current approach to technology talent — build internally, hire externally, or lean on partners?
+3. Where are your most significant technology skill gaps today, and how are you addressing them?
+4. How does your organisation approach change management when deploying new technology?
+5. How is the technology function structured — centralised, federated, product-aligned, or hybrid?
+6. What is the cultural attitude toward risk and experimentation in your organisation?
+7. How does leadership model and signal the importance of technology and data to the wider organisation?
+8. What happened the last time a major technology change programme did not go as planned? What did the organisation learn?
+9. How do you measure the productivity and performance of your technology function?
+10. If you could change one thing about how your organisation approaches technology, what would it be?
 
 ---
 
@@ -239,7 +239,7 @@ Spread all sticky notes on a surface. Participants (silently or with minimal dis
     Slide time: approximately 3 minutes per slide for a 30-minute pitch. Leave 10 minutes for Q&A. Deck should be readable without narration — executives often pre-read before the meeting.
 
 | Slide | Title | Key Content | Design Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Cover | Investment name; presenter name and title; date; confidentiality classification | Clean; logo; single hero image relevant to the technology |
 | 2 | The Problem We Are Solving | 2–3 sentences describing the business pain; quantify if possible ("we lose $Xm per year to...") | No bullet lists; large statement text; support with one metric |
 | 3 | Why Now | The urgency driver — regulatory deadline, competitive move, operational event | Timeline graphic showing the window of opportunity closing |
@@ -254,7 +254,7 @@ Spread all sticky notes on a surface. Participants (silently or with minimal dis
 ### (b) Board AI Readiness Update — 6-Slide Structure
 
 | Slide | Title | Key Content | Design Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Cover | "AI Readiness Update — [Quarter] [Year]"; Board-level confidential | Minimal; date prominent |
 | 2 | Where We Stand | Current AI maturity score or assessment summary; what has changed since last update | Radar chart or maturity dial; use consistent scoring scale across updates |
 | 3 | AI Initiatives in Flight | Status of each active AI initiative (RAG status, key milestone, risk flag) | Table: Initiative / Status / Next Milestone / Owner / Risk |
@@ -265,7 +265,7 @@ Spread all sticky notes on a surface. Participants (silently or with minimal dis
 ### (c) ARB Architecture Presentation — 8-Slide Structure
 
 | Slide | Title | Key Content | Design Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Cover | Submission title; sponsor; ARB date; ARB reference number | Standard ARB template |
 | 2 | Business Context | Problem being solved; business driver; urgency | Two sentences maximum per point |
 | 3 | Solution Overview | What is being proposed at a conceptual level | Single solution diagram — no code, no protocol detail |
@@ -373,7 +373,7 @@ Run this in the last 30 minutes before submission.
 ### 15.2 Milestone Types
 
 | Symbol | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `[A]` | Assessment | Evaluate current state; define baseline |
 | `[B]` | Build | Construct infrastructure, platform, or capability |
 | `[P]` | Pilot | Test with limited scope; validate hypothesis |
@@ -418,7 +418,7 @@ DEPENDENCIES    Credit Score Pilot (Q1 2026) requires Data Foundation Assessment
 ### 15.4 Dependency Notation Guide
 
 | Notation | Meaning | Example |
-|---|---|---|
+| --- | --- | --- |
 | Arrow `→` | Sequential dependency (B cannot start until A completes) | Data Assessment → Platform Build |
 | Bracket `[A requires B]` | Conditional dependency (A can start but cannot complete without B) | GenAI Pilot [requires RAI Framework] |
 | Dashed line `- - -` | Parallel track with coordination required | Two use case pilots running simultaneously |
@@ -756,7 +756,7 @@ ________________________________________________________________
 ### Rating Scale
 
 | Rating | Label | Description |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Awareness | I understand this area conceptually; I have not yet applied it independently |
 | 2 | Foundation | I have applied this with guidance; I need support for complex situations |
 | 3 | Practitioner | I can apply this independently in standard situations; I can guide others on basics |
@@ -1013,7 +1013,7 @@ You have been engaged as the Lead Enterprise Architect for a 12-week discovery a
 #### Required Deliverables
 
 | # | Deliverable | Template Reference | Marks |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Current-State Architecture Assessment Summary | Template 16.1 (ToC structure) | 10% |
 | 2 | Technology Investment Decision Framework — scored for 3 candidate investments of your choice | Template 7 | 15% |
 | 3 | Target-State Architecture (conceptual) | Template 16.2 (ToC structure) | 15% |
@@ -1029,7 +1029,7 @@ You have been engaged as the Lead Enterprise Architect for a 12-week discovery a
 You may use the following assumptions to populate financial models. Do not research real-world pricing — use these figures.
 
 | Item | Assumption |
-|---|---|
+| --- | --- |
 | Cloud migration cost (per application) | $180K average |
 | Data platform build cost | $4.2M (Year 0–1) |
 | AI platform build cost | $2.8M (Year 0–1) |
@@ -1044,7 +1044,7 @@ You may use the following assumptions to populate financial models. Do not resea
 #### Assessment Criteria
 
 | Criterion | Weight | What Assessors Look For |
-|---|---|---|
+| --- | --- | --- |
 | Quality of analysis and insight | 30% | Depth of current-state diagnosis; logical connection between findings and recommendations |
 | Rigour of frameworks and templates | 25% | Correct and complete application of masterclass templates; credible financial modelling |
 | Strategic coherence | 20% | Recommendations are internally consistent; roadmap is achievable; priorities are justified |

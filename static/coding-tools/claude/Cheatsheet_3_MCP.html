@@ -170,10 +170,10 @@
 { name: <span class="st">"analyze_document"</span>, description: <span class="st">"Analyzes documents"</span> }
 
 <span class="cm">// ✅ GOOD — distinct, specific boundaries</span>
-{ name: <span class="st">"analyze_content"</span>, description: <span class="st">"Extracts key topics 
-  from SHORT text snippets (under 500 tokens). Do NOT use for PDFs 
+{ name: <span class="st">"analyze_content"</span>, description: <span class="st">"Extracts key topics
+  from SHORT text snippets (under 500 tokens). Do NOT use for PDFs
   or multi-page documents. Input: plain text string."</span> }
-{ name: <span class="st">"analyze_document"</span>, description: <span class="st">"Processes structured 
+{ name: <span class="st">"analyze_document"</span>, description: <span class="st">"Processes structured
   files (PDF, DOCX). Use for multi-page documents. Input: file path."</span> }
         </div>
       </div>
@@ -272,9 +272,9 @@
 
 <span class="cm">// TOOL — executable with side effects</span>
 server.<span class="fn">tool</span>(<span class="st">"process_refund"</span>, {
-  description: <span class="st">"Processes a refund for an order. Use ONLY when 
-    customer confirms they want a refund and order is eligible. 
-    Input: orderId (string), amount (number, max 500), 
+  description: <span class="st">"Processes a refund for an order. Use ONLY when
+    customer confirms they want a refund and order is eligible.
+    Input: orderId (string), amount (number, max 500),
     reason (string). Returns: confirmation_id or error."</span>,
   parameters: {
     orderId: { type: <span class="st">"string"</span>, description: <span class="st">"Order ID from lookup_order"</span> },
@@ -288,7 +288,7 @@ server.<span class="fn">tool</span>(<span class="st">"process_refund"</span>, {
 
 <span class="cm">// RESOURCE — read-only data catalog</span>
 server.<span class="fn">resource</span>(<span class="st">"refund-policies"</span>, {
-  description: <span class="st">"Read-only refund policy documentation and 
+  description: <span class="st">"Read-only refund policy documentation and
     eligibility rules. No side effects."</span>
 }, <span class="kw">async</span> () => {
   <span class="kw">return</span> <span class="kw">await</span> <span class="fn">getPolicyDocs</span>(); <span class="cm">// read only</span>
@@ -305,22 +305,22 @@ server.<span class="fn">resource</span>(<span class="st">"refund-policies"</span
 {
   name: <span class="st">"lookup_order"</span>,
   description: <span class="st">`
-  PURPOSE: Retrieves complete order details 
+  PURPOSE: Retrieves complete order details
   including status, items, and tracking info.
-  
+
   USE WHEN: Customer provides an order ID and needs
   order status, delivery info, or item details.
-  
-  DO NOT USE: For account-level queries (use 
-  get_customer) or refund processing (use 
+
+  DO NOT USE: For account-level queries (use
+  get_customer) or refund processing (use
   process_refund).
-  
+
   INPUT: orderId — string, format "ORD-XXXXXX"
   EXAMPLE: "ORD-123456", "ORD-789012"
-  
-  RETURNS: { status, items[], tracking, 
+
+  RETURNS: { status, items[], tracking,
              estimated_delivery, eligible_for_refund }
-  
+
   ERRORS: Returns null if order not found.
   `</span>
 }

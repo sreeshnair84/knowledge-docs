@@ -14,4 +14,3 @@ covers_version: \"as of 2026-07-10\"
 # Azure Agentic AI
 
 Architecture references and design patterns for deploying agentic AI systems on Microsoft Azure — covering Azure AI Foundry, Azure OpenAI, and multi-agent orchestration on Azure infrastructure.
-

@@ -22,7 +22,7 @@ A comprehensive 16-part guide to AI-assisted Infrastructure as Code: autonomy sp
 ## Contents
 
 | Part | Topic |
-|------|-------|
+| ------ | ------- |
 | 1 | The AI-IaC Paradigm |
 | 2 | IaC Autonomy Spectrum |
 | 3 | Chat-Based Terraform Generation |
@@ -54,7 +54,7 @@ The marriage of Large Language Models (LLMs) with Infrastructure as Code represe
 **What AI does well in IaC contexts:**
 
 | Capability | Example | Confidence Level |
-|-----------|---------|-----------------|
+| ----------- | --------- | ----------------- |
 | Boilerplate generation | "Generate an S3 bucket with versioning and encryption" | High |
 | Pattern recognition | "This HCL looks like the VPC module pattern — suggest improvements" | High |
 | Plan explanation | "Explain why this plan shows a resource replacement" | High |
@@ -77,7 +77,7 @@ The marriage of Large Language Models (LLMs) with Infrastructure as Code represe
 ### 1.2 LLM Selection for IaC Tasks
 
 | Model Family | IaC Code Gen | Plan Analysis | Security Review | Best Use Case |
-|-------------|-------------|--------------|----------------|---------------|
+| ------------- | ------------- | -------------- | ---------------- | --------------- |
 | Claude Sonnet 4.6 | Excellent | Excellent | Excellent | Primary assistant, complex reasoning |
 | Claude Opus 4.8 | Best-in-class | Best-in-class | Best-in-class | Architect-level design, complex governance |
 | Claude Haiku 4.5 | Good | Good | Good | High-volume, low-latency generation |
@@ -110,7 +110,7 @@ flowchart LR
 ```
 
 | Level | Human Role | AI Role | When to Use | Risk Level |
-|-------|-----------|---------|-------------|------------|
+| ------- | ----------- | --------- | ------------- | ------------ |
 | 1: Copilot | Primary author | Autocomplete, suggestions | Always safe for daily development | Very Low |
 | 2: Generator | Reviewer and approver | Generates full resource blocks | Greenfield code, boilerplate heavy tasks | Low |
 | 3: Reviewer | Decision maker | Flags issues, suggests improvements | Code reviews, security scanning | Low |
@@ -199,7 +199,7 @@ Output: Terraform HCL only, no explanation. Include locals for the SSM/Secrets M
 **Common mistakes in IaC prompts:**
 
 | Poor Prompt | Problem | Better Approach |
-|------------|---------|----------------|
+| ------------ | --------- | ---------------- |
 | "Make me an S3 bucket" | Too vague — insecure defaults | Specify versioning, encryption, public access block |
 | "Create a VPC" | Missing CIDR, subnets, AZs | Specify topology, environment, IP ranges |
 | "Generate Terraform for my app" | Impossible — no specifics | Describe exact resources, sizes, connections |
@@ -256,7 +256,7 @@ Combining AI natural language review with deterministic static analysis tools pr
 **Static analysis tools — all deterministic:**
 
 | Tool | What It Checks | Integration | Speed |
-|------|---------------|-------------|-------|
+| ------ | --------------- | ------------- | ------- |
 | Checkov | Security misconfigs (500+ rules) | CLI, GitHub Actions | Fast |
 | tfsec | Terraform-specific security | CLI, GitHub Actions | Fast |
 | Terrascan | Multi-cloud policy enforcement | CLI, GitHub Actions | Medium |
@@ -266,6 +266,7 @@ Combining AI natural language review with deterministic static analysis tools pr
 | Infracost | Cost estimation | CLI, GitHub Actions, PR comments | Medium |
 
 **AI review complements these by catching:**
+
 - Architectural concerns that rules cannot express
 - Intent mismatch between comment and code
 - Module design anti-patterns
@@ -897,7 +898,7 @@ Generate Terraform code following these conventions exactly.
 ### 13.1 Three-Layer Governance Model
 
 | Layer | Tool | When Enforced | Visibility | Who Owns |
-|-------|------|-------------|------------|----------|
+| ------- | ------ | ------------- | ------------ | ---------- |
 | Development | IDE lint, pre-commit | Before commit | Developer | Developer |
 | CI/CD | Checkov, OPA/Conftest | PR creation, CI | Engineering | Platform team |
 | Cloud | SCP, Azure Policy, GCP Org Policy | API call | Ops/Security | Security/Cloud CoE |
@@ -1130,7 +1131,7 @@ The trajectory is toward increasingly autonomous infrastructure management, with
 **5-Year Outlook:**
 
 | Capability | 2024 State | 2026 Projection | 2029 Vision |
-|-----------|-----------|----------------|-------------|
+| ----------- | ----------- | ---------------- | ------------- |
 | Code generation | Chat-based, human-curated | Integrated in IDE, auto-suggests | Natural language to code, no HCL needed |
 | Plan interpretation | AI explains in plain English | Risk-scored, auto-routed approvals | Context-aware, cost/risk/compliance in one view |
 | Drift remediation | Detected + alerted | Auto-PR for low-risk drift | Auto-apply within policy for known-safe changes |
@@ -1145,6 +1146,7 @@ The trajectory is toward increasingly autonomous infrastructure management, with
 The key principle: autonomy should expand gradually as trust is established, with each expansion gated by demonstrated reliability and safety.
 
 **Autonomy Roadmap:**
+
 - **Months 1–3:** Level 1–2 — AI generates code, humans review 100% of changes
 - **Months 3–6:** Level 2–3 — AI reviews code, flags issues before human review
 - **Months 6–12:** Level 3–4 — Auto-remediation PRs for tag/config drift (human merge)
@@ -1162,7 +1164,7 @@ The key principle: autonomy should expand gradually as trust is established, wit
 ### 16.3 Responsible AI-IaC Principles
 
 | Principle | Application in IaC |
-|-----------|------------------|
+| ----------- | ------------------ |
 | **Explainability** | AI must explain WHY it generated specific code, not just WHAT |
 | **Auditability** | All AI-generated changes logged in immutable audit trail |
 | **Human oversight** | Every destructive or high-risk action requires human approval |
@@ -1178,7 +1180,7 @@ The key principle: autonomy should expand gradually as trust is established, wit
 ### AI Models
 
 | Use Case | Recommended Model | Rationale |
-|---------|-----------------|-----------|
+| --------- | ----------------- | ----------- |
 | Daily IaC generation | claude-sonnet-4-6 | Best balance of speed, accuracy, and cost |
 | Architect-level design | claude-opus-4-8 | Maximum reasoning quality for complex decisions |
 | High-volume generation | claude-haiku-4-5 | Low latency, cost-effective for templating |
@@ -1188,7 +1190,7 @@ The key principle: autonomy should expand gradually as trust is established, wit
 ### Static Analysis Tools
 
 | Tool | Primary Purpose | Priority | Integration |
-|------|---------------|----------|-------------|
+| ------ | --------------- | ---------- | ------------- |
 | Checkov | Security misconfig detection | Must have | CLI, GitHub Actions, pre-commit |
 | tfsec | Terraform-specific security | Must have | CLI, GitHub Actions |
 | Infracost | Cost estimation | Strongly recommended | CLI, GitHub Actions, PR comments |
@@ -1201,7 +1203,7 @@ The key principle: autonomy should expand gradually as trust is established, wit
 ### GitOps / Platform Tools
 
 | Tool | Type | Self-Hosted | Best For |
-|------|------|------------|---------|
+| ------ | ------ | ------------ | --------- |
 | Atlantis | Terraform GitOps | Yes | Teams wanting PR workflow |
 | Spacelift | SaaS IaC platform | No | Enterprise governance, drift detection |
 | Terraform Cloud | HashiCorp SaaS | No | HashiCorp ecosystem |
@@ -1333,7 +1335,8 @@ Generate all resources following this exact style.
 ---
 
 *Related guides:*
+
 - *[Terraform from Zero to Mastery](terraform-mastery-guide.md) — Core Terraform guide*
-- *Terraform Documentation: https://developer.hashicorp.com/terraform/docs*
-- *OpenTofu Documentation: https://opentofu.org/docs/*
-- *Claude API Documentation: https://docs.anthropic.com/en/api/*
+- *Terraform Documentation: <https://developer.hashicorp.com/terraform/docs>*
+- *OpenTofu Documentation: <https://opentofu.org/docs/>*
+- *Claude API Documentation: <https://docs.anthropic.com/en/api/>*

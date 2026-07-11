@@ -27,7 +27,7 @@ Traditional observability rests on three pillars: traces, metrics, and logs. Age
 ### 1.1 Four-Pillar Definitions
 
 | Pillar | What It Captures | Instrumentation Point | Unique Challenge for Agentic |
-|--------|-----------------|----------------------|------------------------------|
+| -------- | ----------------- | ---------------------- | ------------------------------ |
 | **Traces** | Causal chain of work across components | OTel SDK in every agent component | Multi-hop propagation across A2A boundaries; async tool calls break linear trace trees |
 | **Metrics** | Aggregated numerical measurements over time | OTel Metrics SDK, Prometheus, custom exporters | Token counts, cost, streaming throughput are new metric families not in standard dashboards |
 | **Logs** | Structured event records with context | Structured logging + OTel log bridge | LLM request/response bodies are large; privacy constraints limit raw log retention |
@@ -72,7 +72,7 @@ Pillar 4: EVALUATION SIGNALS
 ### 1.3 Signal Priority Matrix
 
 | Signal Type | Latency to Dashboard | Retention | Privacy Sensitivity | Cost to Collect |
-|-------------|---------------------|-----------|---------------------|-----------------|
+| ------------- | --------------------- | ----------- | --------------------- | ----------------- |
 | Infrastructure traces | < 30s | 30 days hot, 1yr cold | Low | Low |
 | LLM call spans | < 30s | 30 days hot | Medium (contains query/response) | Medium |
 | Token/cost metrics | < 1 min | 90 days | Low | Low |
@@ -163,7 +163,7 @@ ROOT SPAN: user.request
 Every span in an agentic trace MUST carry a standard attribute set. Custom attributes go into the span attribute bag using the `gen_ai.*` namespace from OTel GenAI semantic conventions.
 
 | Attribute | Type | Required On | Description |
-|-----------|------|-------------|-------------|
+| ----------- | ------ | ------------- | ------------- |
 | `session.id` | string | All spans | User session identifier (stable, anonymizable) |
 | `agent.id` | string | All spans | Agent identity (`research-agent-v2`) |
 | `task.id` | string | Planning + child spans | Task/job identifier for correlation |
@@ -218,7 +218,7 @@ Sub-agent returns response:
 ### 2.4 Sampling Strategy
 
 | Scenario | Sampling Rate | Rationale |
-|----------|--------------|-----------|
+| ---------- | -------------- | ----------- |
 | Error responses (any span) | **100%** | All errors must be traced; no sampling |
 | Safety/guardrail triggers | **100%** | Compliance and forensics requirement |
 | Latency outliers (P95+) | **100%** | Tail latency debugging requires full traces |
@@ -391,7 +391,7 @@ Use **tail-based sampling** (decide to keep/drop after the full trace completes)
 AG-UI defines a structured event protocol between agent backend and frontend. Each event type carries distinct observability significance.
 
 | AG-UI Event Type | Description | Key Metric | Alert Threshold |
-|-----------------|-------------|-----------|-----------------|
+| ----------------- | ------------- | ----------- | ----------------- |
 | `RUN_STARTED` | Agent begins processing | Rate per minute | < 0.1/min (dead) or > 1000/min (spike) |
 | `RUN_FINISHED` | Agent completed normally | Completion rate % | < 90% triggers investigation |
 | `RUN_ERROR` | Agent encountered error | Error rate % | > 5% triggers PagerDuty |
@@ -412,7 +412,7 @@ AG-UI defines a structured event protocol between agent backend and frontend. Ea
 **Time to First Token (TTFT)** — measured from user submitting request to first `TEXT_MESSAGE_CHUNK` delivered to browser:
 
 | TTFT Percentile | Target | Acceptable | Needs Investigation |
-|----------------|--------|------------|---------------------|
+| ---------------- | -------- | ------------ | --------------------- |
 | P50 | < 800ms | < 1.5s | > 3s |
 | P90 | < 2s | < 4s | > 8s |
 | P99 | < 5s | < 10s | > 15s |
@@ -420,7 +420,7 @@ AG-UI defines a structured event protocol between agent backend and frontend. Ea
 **Streaming Throughput** — tokens per second after first token:
 
 | Model Class | Expected | Slow Threshold | Stalled Threshold |
-|-------------|---------|---------------|-------------------|
+| ------------- | --------- | --------------- | ------------------- |
 | Small (Haiku-class) | 80–120 tokens/sec | < 40 tokens/sec | < 5 tokens/sec |
 | Medium (Sonnet-class) | 60–90 tokens/sec | < 30 tokens/sec | < 5 tokens/sec |
 | Large (Opus-class) | 30–50 tokens/sec | < 15 tokens/sec | < 3 tokens/sec |
@@ -570,7 +570,7 @@ STREAM_INTERRUPTED — connection dropped               target: < 2%
 ### 4.1 Browser Performance Metrics for Agentic Interfaces
 
 | Metric | Collection Method | Target | Alert |
-|--------|-----------------|--------|-------|
+| -------- | ----------------- | -------- | ------- |
 | App shell LCP | `PerformanceObserver` (LCP) | < 2.5s | > 4s |
 | Agent TTFT (custom) | `performance.mark` / `performance.measure` | < 1s | > 3s |
 | Streaming frame rate | `requestAnimationFrame` FPS during stream | > 30 FPS | < 20 FPS |
@@ -580,7 +580,7 @@ STREAM_INTERRUPTED — connection dropped               target: < 2%
 ### 4.2 Core Web Vitals Adaptation for Streaming
 
 | CWV Metric | Standard Definition | Agentic Adaptation | Target |
-|-----------|--------------------|--------------------|--------|
+| ----------- | -------------------- | -------------------- | -------- |
 | **LCP** | Largest image/text block rendered | First meaningful agent content chunk | < 2.5s from request submit |
 | **INP** | Worst interaction latency | Approve/cancel button response during streaming | < 200ms |
 | **CLS** | Unexpected layout movement | Layout shift score during token streaming | < 0.1 |
@@ -618,7 +618,7 @@ ERROR RECOVERY
 ### 4.4 Rage Clicks and Abandonment Detection
 
 | Signal | Definition | Collection Method | Action |
-|--------|-----------|------------------|--------|
+| -------- | ----------- | ------------------ | -------- |
 | **Rage click on progress indicator** | 3+ clicks in 2s on non-interactive element | Click event listener + velocity detection | Log `agui.ux.rage_click`; tag session for review |
 | **Abandonment during streaming** | Page hidden/unload during active stream | `visibilitychange` + `beforeunload` | Log `agui.ux.stream_abandoned` with progress_pct |
 | **Repeated identical queries** | Same prompt within same session | Session query dedup | Quality signal; agent not solving problem |
@@ -706,7 +706,7 @@ Organization / Tenant
 ```
 
 | Attribution Level | Span Attribute | Example |
-|------------------|---------------|---------|
+| ------------------ | --------------- | --------- |
 | Tenant | `tenant.id` | `"bank-retail-division"` |
 | Team | `team.id` | `"coe-ai-platform"` |
 | Agent | `agent.id` | `"risk-analysis-agent-v3"` |
@@ -731,7 +731,7 @@ Gateway → Client        5–20ms          > 100ms
 ### 5.3 Core LLM Metrics
 
 | Metric Name | Type | Labels | Description |
-|------------|------|--------|-------------|
+| ------------ | ------ | -------- | ------------- |
 | `llm.request.total` | Counter | agent_id, model_id, status | Total LLM API calls |
 | `llm.ttft.ms` | Histogram | agent_id, model_id | Time to first token |
 | `llm.tpot.ms` | Histogram | agent_id, model_id | Time per output token |
@@ -746,7 +746,7 @@ Gateway → Client        5–20ms          > 100ms
 ### 5.4 Cache Hit Rate Tracking
 
 | Cache Layer | What It Caches | Instrumentation | Target Hit Rate |
-|------------|---------------|-----------------|-----------------|
+| ------------ | --------------- | ----------------- | ----------------- |
 | **Provider prompt cache** | Shared prefix of system prompt | `usage.cache_read_input_tokens > 0` | > 60% for stable system prompts |
 | **Semantic cache** | Similar past queries (embedding similarity) | Custom cache middleware | > 30% for repetitive workloads |
 | **Response cache** | Identical queries (exact match) | HTTP cache layer | > 10% for deterministic queries |
@@ -754,7 +754,7 @@ Gateway → Client        5–20ms          > 100ms
 ### 5.5 Quality Proxy Signals
 
 | Signal | Formula | Quality Interpretation | Alert Threshold |
-|--------|---------|------------------------|-----------------|
+| -------- | --------- | ------------------------ | ----------------- |
 | **Rephrasing rate** | `rephrase_count / total_queries` | High = agent not understanding user | > 30% |
 | **Regeneration rate** | `regenerate_clicks / total_responses` | High = poor response quality | > 15% |
 | **Copy rate** | `copy_clicks / total_responses` | Low = unhelpful responses | < 20% |
@@ -768,7 +768,7 @@ Gateway → Client        5–20ms          > 100ms
 ### 6.1 Tool Call SLOs
 
 | Tool Category | Latency P50 SLO | Latency P99 SLO | Availability SLO | Retry Safe? |
-|--------------|----------------|----------------|-----------------|-------------|
+| -------------- | ---------------- | ---------------- | ----------------- | ------------- |
 | Search / web retrieval | < 1s | < 5s | 99% | Yes |
 | Database query | < 100ms | < 500ms | 99.9% | Yes (read) |
 | REST API call (external) | < 500ms | < 3s | 98% | Depends |
@@ -799,7 +799,7 @@ CLOSED ──(failure_rate > 50%)──► OPEN
 ### 7.1 Memory System Metrics
 
 | Metric | Type | Description | Target |
-|--------|------|-------------|--------|
+| -------- | ------ | ------------- | -------- |
 | `memory.retrieval.latency_ms` | Histogram | Vector similarity search duration | P99 < 200ms |
 | `memory.retrieval.results_count` | Histogram | Documents returned per query | Typically 3–10 |
 | `memory.retrieval.top_score` | Gauge | Top similarity score | < 0.7 = quality concern |
@@ -818,7 +818,7 @@ For memory architecture and tiering details, see [Memory & Planning Architecture
 ### 8.1 Safety Metrics
 
 | Metric | Description | Alert Threshold | Retention |
-|--------|-------------|-----------------|-----------|
+| -------- | ------------- | ----------------- | ----------- |
 | `safety.guardrail.trigger.count` | Total policy triggers by policy_id | Sudden 10x spike | 1 year |
 | `safety.guardrail.trigger.rate` | Triggers per 1000 requests | > 50/1000 | 1 year |
 | `safety.prompt_injection.detected` | Prompt injection attempts detected | Any | 1 year |
@@ -830,7 +830,7 @@ For OWASP ASI01–ASI10 security controls and guardrail policy design, see [Agen
 ### 8.2 Safety Alert Tiers
 
 | Tier | Trigger | Response Time | Who Gets Paged |
-|------|---------|--------------|----------------|
+| ------ | --------- | -------------- | ---------------- |
 | **SEV-1 Safety** | Active prompt injection / policy bypass | 5 min | CISO + On-call Security |
 | **SEV-2 Safety** | 3x guardrail trigger spike in 15 min | 15 min | Security Engineer |
 | **SEV-3 Safety** | Unusual policy trigger pattern | 1 hour | AI Security team |
@@ -846,7 +846,7 @@ For OWASP ASI01–ASI10 security controls and guardrail policy design, see [Agen
 ### 9.1 Session-Level Metrics
 
 | Metric | Definition | Use |
-|--------|-----------|-----|
+| -------- | ----------- | ----- |
 | **Session length distribution** | Turns per session histogram | Bimodal (1 turn vs 10+) reveals distinct use cases |
 | **Task success rate** | Sessions marked task_completed_success | Primary quality KPI |
 | **First-turn resolution rate** | Task completed in exactly 1 turn | Directness quality signal |
@@ -876,7 +876,7 @@ TOPIC CLUSTERING PIPELINE
 ### 10.1 Real-Time Operations Dashboard
 
 | Widget | Metric | Visualization | Refresh |
-|--------|--------|--------------|---------|
+| -------- | -------- | -------------- | --------- |
 | Active sessions | Live sessions with open streams | Gauge + sparkline | 30s |
 | Requests/min | Incoming request rate | Time series (1h window) | 30s |
 | Error rate | `run_error / (run_finished + run_error)` | Gauge with SLO line | 30s |
@@ -887,7 +887,7 @@ TOPIC CLUSTERING PIPELINE
 ### 10.2 Product Analytics Dashboard (7-Day Trends)
 
 | Widget | Metric | Visualization | Refresh |
-|--------|--------|--------------|---------|
+| -------- | -------- | -------------- | --------- |
 | Task completion rate | % sessions with task_completed_success | Line chart (7d) + WoW delta | Daily |
 | DAU | Distinct users with ≥1 session | Line chart (7d) | Daily |
 | MAU | Distinct users in 30d | Single stat + trend | Daily |
@@ -897,7 +897,7 @@ TOPIC CLUSTERING PIPELINE
 ### 10.3 Cost Attribution Dashboard
 
 | Widget | Metric | Visualization |
-|--------|--------|--------------|
+| -------- | -------- | -------------- |
 | Cost per successful task | Total cost / completed tasks | Gauge + trend |
 | Cost by tenant | LLM + tool costs by tenant_id | Stacked bar |
 | Cost by model | Spend per model_id | Pie chart |
@@ -911,7 +911,7 @@ TOPIC CLUSTERING PIPELINE
 ### 11.1 Alert Severity Taxonomy
 
 | Severity | Definition | Response SLA | Channel |
-|---------|-----------|-------------|---------|
+| --------- | ----------- | ------------- | --------- |
 | **SEV-1 Critical** | Production down or active security incident | 5 min acknowledge | PagerDuty |
 | **SEV-2 High** | SLO breach or severe degradation | 15 min | PagerDuty (business hours) |
 | **SEV-3 Medium** | Quality degradation, approaching SLO | 2 hours | Slack #ai-platform-alerts |
@@ -920,7 +920,7 @@ TOPIC CLUSTERING PIPELINE
 ### 11.2 SLO Burn Rate Alert Configuration
 
 | Alert | Burn Rate | Window | Severity |
-|-------|----------|--------|---------|
+| ------- | ---------- | -------- | --------- |
 | Fast burn | 14× | 1h + 5min | SEV-2 |
 | Slow burn | 3× | 6h + 1h | SEV-3 |
 | Budget at 50% | N/A | Monthly | SEV-4 |
@@ -984,7 +984,7 @@ groups:
 ## 12. Observability Tool Comparison
 
 | Tool | Trace Support | LLM-Native Features | Cost Model | Self-Hostable | Open Source | Best For |
-|------|-------------|--------------------|-----------|-----------|-----------|----|
+| ------ | ------------- | -------------------- | ----------- | ----------- | ----------- | ---- |
 | **Datadog APM** | Full OTel + proprietary | LLM Observability — tokens, cost, prompts | Per host/user | No | No | Enterprise teams already on Datadog |
 | **Grafana + Prometheus** | OTel via Tempo | None native; custom dashboards | Free OSS | Yes | Yes | Cost-sensitive, ops-heavy teams |
 | **Honeycomb** | Native OTel, queryable | None native; flexible columns | Per event | No | No | High-cardinality trace exploration |
@@ -1004,7 +1004,7 @@ groups:
 ## 13. Observability Anti-Patterns
 
 | # | Anti-Pattern | Category | Severity | Detectability | Description | Risk | Mitigation |
-|---|-------------|----------|----------|---------------|-------------|------|-----------|
+| --- | ------------- | ---------- | ---------- | --------------- | ------------- | ------ | ----------- |
 | 1 | **Logging raw prompts/responses** | Privacy | Critical | Easy | Storing user queries and agent responses verbatim | PII leak, GDPR violation | PII scrubbing before any log write; hash or truncate sensitive fields |
 | 2 | **No trace correlation** | Tracing | High | Medium | Different IDs in logs, traces, and metrics — cannot correlate | Cannot debug multi-component failures | Propagate single trace_id + session_id through all layers |
 | 3 | **Head-based sampling** | Tracing | High | Hard | Deciding to sample at request start, before knowing if errors occur | Errors and outliers get sampled out | Use tail-based sampling; always keep errors |

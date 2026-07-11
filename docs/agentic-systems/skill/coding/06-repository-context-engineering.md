@@ -23,7 +23,7 @@ AGENTS.md and Skills are *authored* context — someone deliberately wrote them 
 ## 8.2 Source-by-source retrieval strategy
 
 | Source | What it uniquely provides | Retrieval approach |
-|---|---|---|
+| --- | --- | --- |
 | **README** | High-level project purpose, setup steps | Usually loaded eagerly/early — cheap, high value, low volatility |
 | **Architecture docs / design docs** | System boundaries, major components, data flow | Retrieved on demand when a task touches cross-cutting concerns; too large to always-load in most repos |
 | **ADRs (Architecture Decision Records)** | The *why* behind a past technical choice — critical for avoiding an agent "helpfully" reverting a deliberate decision | Semantic search over the ADR directory, triggered when a task's scope overlaps a documented decision |
@@ -66,22 +66,26 @@ fact true of the whole repo? ──yes──► Belongs in AGENTS.md (pre-loaded
 ## 8.5 Deliverable 6 — Repository Context Engineering Framework
 
 **Tier 1 — Always-loaded (belongs in AGENTS.md/CLAUDE.md, not retrieved):**
+
 - Stack and tooling (languages, frameworks, package manager, build system).
 - Core conventions (naming, formatting — beyond what a linter auto-enforces).
 - Hard boundaries ("never touch `legacy/`," "the billing service requires a second approver").
 - Verification steps ("run `pnpm test` before considering a task complete").
 
 **Tier 2 — Retrieved on demand, triggered by task scope:**
+
 - README (cheap enough to often sit in Tier 1 for smaller repos).
 - Architecture docs / ADRs, retrieved when the task's file scope overlaps a documented area.
 - CONTRIBUTING/SECURITY, retrieved when the task involves a PR or touches sensitive surface area.
 - CODEOWNERS, retrieved when routing review or resolving whose convention applies in ambiguous cases.
 
 **Tier 3 — Retrieved via structural/semantic search, not stored as documents at all:**
+
 - Codebase content itself, via AST/tree-sitter for exact queries and embeddings for conceptual queries.
 - Issue/PR/wiki content, via MCP-mediated API queries scoped tightly to the current task.
 
 **Governance overlay:**
+
 - Tier 1 content changes should go through the same PR review as code.
 - Tier 2 content (especially ADRs) should be linked from Tier 1 where highly relevant, so the always-loaded context can point the agent to deeper material rather than trying to inline it.
 - Tier 3 retrieval infrastructure (the semantic index) should have an owner and a freshness SLA tied to CI, exactly like any other piece of build infrastructure.

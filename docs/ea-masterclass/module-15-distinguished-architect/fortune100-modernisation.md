@@ -28,7 +28,7 @@ This page is for Distinguished Architects and senior Enterprise Architects who a
 Most architects have managed complexity at the system or product level. Fortune 100 modernisation introduces a different category of challenge:
 
 | Dimension | Typical Project | Fortune 100 Modernisation |
-|-----------|----------------|--------------------------|
+| ----------- | ---------------- | -------------------------- |
 | Scale | Hundreds of users | Millions of customers, hundreds of thousands of staff |
 | Technology estate | 5–10 years old | 20–50 years, multiple acquisitions |
 | Integration points | Tens | Hundreds to thousands |
@@ -98,7 +98,7 @@ Data Sync Patterns (in order of complexity):
 Not all legacy is equal. The first step is classification:
 
 | Category | Description | Action |
-|----------|-------------|--------|
+| ---------- | ------------- | -------- |
 | **Sunset Candidate** | Low usage, no strategic value, high cost | Retire within 24 months |
 | **Maintain** | Stable, low risk, limited strategic impact | Keep running, no investment |
 | **Modernise** | High strategic value, current architecture limiting | Incremental modernisation |
@@ -111,12 +111,14 @@ A portfolio of 200 legacy systems typically breaks down: 30% Sunset, 40% Maintai
 Large enterprises often have mainframe systems running core banking, insurance, or supply chain workloads. The modernisation question is one of the most financially significant decisions an EA can be asked to make.
 
 **Arguments for mainframe modernisation:**
+
 - Talent scarcity: COBOL and PL/I skills are retiring faster than being replaced
 - Integration cost: modern API-first architectures are hard to connect to batch-oriented mainframes
 - Cost per MIPS: cloud-equivalent compute is now cheaper at the right scale thresholds
 - AI integration: mainframes are difficult to integrate with AI/ML pipelines
 
 **Arguments for keeping mainframes:**
+
 - Reliability: mainframes have uptime records that no cloud platform matches
 - Transaction throughput: CICS can process millions of transactions per day at low latency
 - Security: decades of hardening, physical and logical controls
@@ -136,16 +138,16 @@ Phase 1: Metadata migration
   - Schema validation
   - Data profile (volumes, distributions, nulls, formats)
   - Quality baseline (% of records meeting quality thresholds)
-  
+
 Phase 2: Seed migration (historical data, non-live)
   - Chunked: migrate in 100M-record batches
   - Validate each chunk before proceeding
   - Target: 85–90% of total data volume
-  
+
 Phase 3: Delta migration (changes since seed)
   - Run in parallel with business operations
   - CDC-based or timestamp-based delta capture
-  
+
 Phase 4: Cutover migration (remaining delta)
   - Timed to lowest-traffic window
   - Target: <4 hour cutover window
@@ -153,6 +155,7 @@ Phase 4: Cutover migration (remaining delta)
 ```
 
 **Validation checkpoints** — non-negotiable before proceeding between phases:
+
 - Record count reconciliation (source = target ± 0.001%)
 - Business key integrity (no orphaned child records)
 - Financial balance check (sum of values = target)
@@ -220,7 +223,7 @@ This is a real pattern. Experienced EAs recognise it and use it deliberately: wh
 Governance for a 5-year modernisation program must evolve. The governance model that works in Year 1 will be wrong for Year 3.
 
 | Year | Primary focus | Governance model |
-|------|--------------|-----------------|
+| ------ | -------------- | ----------------- |
 | 1 | Foundation and quick wins | Centralised — single EA team, tight control |
 | 2–3 | Scale and acceleration | Hub-and-spoke — central standards, distributed delivery |
 | 4–5 | Embedding and optimisation | Federated — business units own delivery, EA provides guardrails |
@@ -276,7 +279,7 @@ Apply this at each phase gate. Ask: "Is this genuinely necessary to proceed, or 
 These patterns appear repeatedly across Fortune 100 modernisation programs. Each is a legitimate approach in the right context.
 
 | # | Pattern | When to Use | Common Mistake |
-|---|---------|------------|----------------|
+| --- | --------- | ------------ | ---------------- |
 | 1 | **Bimodal IT** | Large, stable legacy core + need for fast digital capability | Treating Bimodal as permanent — it's a transition, not a destination |
 | 2 | **Domain-Driven Migration** | Bounded contexts are clear, business owns capability domains | Migrating by system boundary instead of business capability |
 | 3 | **Data-First Modernisation** | AI initiatives blocked by data quality; analytics failing | Treating data as an IT project, not a business capability |

@@ -8,19 +8,20 @@ Also:
   - Updates any remaining relative .pdf/.docx/.html links in .md files to
     point to the new location or the .md counterpart where one exists
 """
+
 import re
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-DOCS  = ROOT / "docs"
+DOCS = ROOT / "docs"
 ARCHIVE = ROOT / "archive"
-STATIC  = ROOT / "static"
+STATIC = ROOT / "static"
 
 # HTML stays accessible via Docusaurus (served from static/)
 ARCHIVE_EXTS = {".pdf", ".docx", ".jsx"}
-STATIC_EXTS  = {".html"}
+STATIC_EXTS = {".html"}
 
 
 # ---------------------------------------------------------------------------
@@ -82,7 +83,7 @@ def replace_html_iframes(md_path: Path) -> int:
 #   - Otherwise → point to archived location (won't be served, just reference)
 # ---------------------------------------------------------------------------
 
-LINK_RE = re.compile(r'\[([^\]]+)\]\(([^)]+\.(pdf|docx|html|jsx))\)', re.IGNORECASE)
+LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+\.(pdf|docx|html|jsx))\)", re.IGNORECASE)
 
 
 def patch_source_links(md_path: Path) -> int:
@@ -91,7 +92,7 @@ def patch_source_links(md_path: Path) -> int:
 
     def _sub(m):
         nonlocal changed
-        text, href, ext = m.group(1), m.group(2), m.group(3).lower()
+        text, href, _ = m.group(1), m.group(2), m.group(3).lower()
         # Skip absolute URLs
         if href.startswith("http://") or href.startswith("https://") or href.startswith("/"):
             return m.group(0)
@@ -120,11 +121,14 @@ def patch_source_links(md_path: Path) -> int:
 # Step 3: git mv
 # ---------------------------------------------------------------------------
 
+
 def git_mv(src: Path, dst: Path) -> bool:
     dst.parent.mkdir(parents=True, exist_ok=True)
     result = subprocess.run(
         ["git", "mv", str(src), str(dst)],
-        capture_output=True, text=True, cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+        cwd=str(ROOT),
     )
     if result.returncode != 0:
         print(f"  ERROR: git mv {src.relative_to(ROOT)} -> {dst.relative_to(ROOT)}: {result.stderr.strip()}")
@@ -135,6 +139,7 @@ def git_mv(src: Path, dst: Path) -> bool:
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main():
     dry_run = "--dry-run" in sys.argv
@@ -160,13 +165,13 @@ def main():
 
     # Collect files to move
     archive_files = []
-    static_files  = []
+    static_files = []
     for ext in ARCHIVE_EXTS:
         archive_files.extend(DOCS.rglob(f"*{ext}"))
     for ext in STATIC_EXTS:
         static_files.extend(DOCS.rglob(f"*{ext}"))
     archive_files = sorted(archive_files)
-    static_files  = sorted(static_files)
+    static_files = sorted(static_files)
 
     print(f"Files to archive ({len(archive_files)}):")
     for ext in ARCHIVE_EXTS:

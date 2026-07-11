@@ -11,6 +11,7 @@ covers_through: 2026-07-10
 covers_version: "N/A"
 ---
 *Enterprise AI Authentication Research · Part 5 of 7*
+
 # Marketplace Connector Auth Patterns & Enterprise Architecture
 
 OAuth consent models, token lifecycle, and reference architectures for enterprise AI marketplace connectors — covering GitHub Marketplace, Atlassian Marketplace, Microsoft AppSource, ServiceNow Store, Google Workspace Marketplace, and AWS Marketplace.
@@ -30,7 +31,7 @@ GitHub Marketplace distributes GitHub Apps and OAuth Apps. GitHub Apps are the p
 **GitHub Marketplace — App Lifecycle**
 
 | **Lifecycle Stage** | **GitHub App Model** | **OAuth App Model** |
-|---|---|---|
+| --- | --- | --- |
 | Initial consent | Org admin installs via Marketplace; selects repos + permissions | User OAuth consent per user; no org admin requirement |
 | Admin consent | Required for org-level installation | Optional (owner can pre-approve) |
 | OAuth authorization | Installation token via JWT exchange (no user OAuth required) | User-level OAuth consent per user per app |
@@ -47,7 +48,7 @@ Atlassian Marketplace apps are distributed as Connect apps (cloud), Forge apps (
 **Atlassian Marketplace — Consent & Token Models**
 
 | **Consent Type** | **Forge App** | **Connect App** | **DC/Server App** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | User consent | OAuth 2.0 consent per user (3LO) | OAuth 2.0 consent per user | Admin-configured, user trust implied |
 | Admin consent | Site admin approves app installation | Site admin approves + configures | Admin installs; org-level consent |
 | OAuth flow | 3LO (auth code + PKCE) | 3LO (auth code) | Not OAuth — uses JWT lifecycle |
@@ -63,7 +64,7 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 **Microsoft AppSource — Consent Model**
 
 | **Consent Type** | **Description** | **Required For** |
-|---|---|---|
+| --- | --- | --- |
 | User consent | Individual user grants delegated permissions | Files.ReadWrite (user's own files only) |
 | Admin consent (tenant-wide) | Global Admin grants application-wide permissions | Mail.Read (all mailboxes), Audit logs |
 | Owner consent | Resource owner grants access to specific resources | SharePoint site-level permissions |
@@ -85,7 +86,7 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 **ServiceNow Store — App Lifecycle**
 
 | **Stage** | **Implementation** |
-|---|---|
+| --- | --- |
 | App distribution | ServiceNow Store (HI portal); customer downloads to their instance |
 | User consent | ServiceNow admin activates plugin; no per-user OAuth consent needed |
 | OAuth authorization | IntegrationHub Spokes use OAuth entity profiles per external system |
@@ -98,7 +99,7 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 **Google Workspace Marketplace — App Lifecycle**
 
 | **Stage** | **Implementation** |
-|---|---|
+| --- | --- |
 | App distribution | Google Workspace Marketplace; admin installs domain-wide or users self-install |
 | User consent | OAuth 2.0 consent screen; scopes listed explicitly |
 | Admin consent | Domain-wide installation grants access without per-user consent |
@@ -112,7 +113,7 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 **AWS Marketplace — Auth Model**
 
 | **Stage** | **Implementation** |
-|---|---|
+| --- | --- |
 | App distribution | AWS Marketplace SaaS listings; customer subscribes via AWS account |
 | Authentication | AWS IAM STS for API access; OIDC for Workload Identity Federation |
 | Authorization | IAM roles with trust policies; resource-based policies per service |
@@ -171,7 +172,7 @@ Production enterprise AI deployments follow established architecture patterns th
 ### Initial Consent & Token Lifecycle
 
 | **Stage** | **Actor** | **Action** | **Output** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Discovery | User | Finds AI tool in marketplace | App identified; scopes reviewed |
 | Admin evaluation | IT Admin | Reviews requested permissions in IdP | Risk assessment completed |
 | Admin pre-consent | Global/Tenant Admin | Grants admin consent for app permissions | Admin consent recorded in IdP |
@@ -193,7 +194,7 @@ Production enterprise AI deployments follow established architecture patterns th
 ### Revocation Scenarios and Latency
 
 | **Revocation Trigger** | **What Is Revoked** | **Effect** | **Latency** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | User offboarding (HR) | All refresh tokens for user | All AI sessions terminated; CAE invalidates active tokens | Near-real-time (CAE) or next refresh |
 | Password reset | All refresh tokens | User must re-authenticate everywhere | Immediate (CAE for CAE-capable apps) |
 | Admin policy change | Conditional Access re-evaluation | Active tokens fail CAE check | < 30 seconds (CAE) |

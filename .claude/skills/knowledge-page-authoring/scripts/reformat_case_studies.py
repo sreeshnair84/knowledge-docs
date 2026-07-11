@@ -3,6 +3,7 @@ Reformat the Agentic AI in the Enterprise case study MD files to restore
 the visual structure of the PDF originals using Docusaurus admonitions,
 blockquotes, and tables.
 """
+
 import re
 from pathlib import Path
 
@@ -37,6 +38,7 @@ def is_person_name(s: str) -> bool:
 # State-machine transformer
 # ---------------------------------------------------------------------------
 
+
 class Transformer:
     def __init__(self):
         self.lines: list = []
@@ -66,33 +68,33 @@ class Transformer:
     def emit(self, *lines) -> None:
         self.out.extend(lines)
 
-    RE_SERIES_HDR  = re.compile(r"^####\s+\*\*AGENTIC AI IN THE ENTERPRISE\*\*")
-    RE_JOURNEY     = re.compile(r"^####\s+\*\*INCUBATION\*\*")
-    RE_CAST_HDR    = re.compile(r"^####\s+\*\*CAST OF CHARACTERS\*\*")
-    RE_STAGE_HDR   = re.compile(r"^##\s+\*\*STAGE\s+(\d+)\s+[—–-]+\s+(.+?)\*\*\s*$")
-    RE_SUBTITLE    = re.compile(r"^_(.+\|.+)_\s*$")
-    RE_TIME        = re.compile(r"^####\s+_(\d{1,2}:\d{2}[^_]*)_\s*$")
-    RE_ATTENDEES   = re.compile(r"^####\s+\*\*(.+?)\*\*\s*$")
-    RE_SPEAKER     = re.compile(r"^###\s+\*\*([^*—–]+)\s*[—–]\s*([^*]+)\*\*\s*$")
-    RE_THOUGHT     = re.compile(r"^####\s+.*INTERNAL\s+THOUGHT", re.IGNORECASE)
-    RE_EMAIL       = re.compile(r"^####\s+u?\s*\*\*EMAIL\*\*", re.IGNORECASE)
-    RE_ARTIFACT    = re.compile(r"^####\s+I?\s*\*\*ARTIFACT:\s*([A-Z0-9\-]+)\*\*", re.IGNORECASE)
-    RE_OUTCOMES    = re.compile(r"^###\s+\*\*STAGE OUTCOMES\*\*", re.IGNORECASE)
-    RE_FOOTER      = re.compile(r"^[A-Z][^|\n]+\|[^|\n]+\|\s*\d{4}\s*$")
-    RE_H4_BOLD     = re.compile(r"^####\s+\*\*([^*]+)\*\*\s*$")
-    RE_H4_ITALIC   = re.compile(r"^####\s+_([^_]+)_\s*$")
-    RE_H4_GENERIC  = re.compile(r"^####\s+")
-    RE_CHECK       = re.compile(r"^-\s+I\s+")
+    RE_SERIES_HDR = re.compile(r"^####\s+\*\*AGENTIC AI IN THE ENTERPRISE\*\*")
+    RE_JOURNEY = re.compile(r"^####\s+\*\*INCUBATION\*\*")
+    RE_CAST_HDR = re.compile(r"^####\s+\*\*CAST OF CHARACTERS\*\*")
+    RE_STAGE_HDR = re.compile(r"^##\s+\*\*STAGE\s+(\d+)\s+[—–-]+\s+(.+?)\*\*\s*$")
+    RE_SUBTITLE = re.compile(r"^_(.+\|.+)_\s*$")
+    RE_TIME = re.compile(r"^####\s+_(\d{1,2}:\d{2}[^_]*)_\s*$")
+    RE_ATTENDEES = re.compile(r"^####\s+\*\*(.+?)\*\*\s*$")
+    RE_SPEAKER = re.compile(r"^###\s+\*\*([^*—–]+)\s*[—–]\s*([^*]+)\*\*\s*$")
+    RE_THOUGHT = re.compile(r"^####\s+.*INTERNAL\s+THOUGHT", re.IGNORECASE)
+    RE_EMAIL = re.compile(r"^####\s+u?\s*\*\*EMAIL\*\*", re.IGNORECASE)
+    RE_ARTIFACT = re.compile(r"^####\s+I?\s*\*\*ARTIFACT:\s*([A-Z0-9\-]+)\*\*", re.IGNORECASE)
+    RE_OUTCOMES = re.compile(r"^###\s+\*\*STAGE OUTCOMES\*\*", re.IGNORECASE)
+    RE_FOOTER = re.compile(r"^[A-Z][^|\n]+\|[^|\n]+\|\s*\d{4}\s*$")
+    RE_H4_BOLD = re.compile(r"^####\s+\*\*([^*]+)\*\*\s*$")
+    RE_H4_ITALIC = re.compile(r"^####\s+_([^_]+)_\s*$")
+    RE_H4_GENERIC = re.compile(r"^####\s+")
+    RE_CHECK = re.compile(r"^-\s+I\s+")
 
-    RE_STAGE_STOP  = [
+    RE_STAGE_STOP = [
         re.compile(r"^##\s+Stage "),
         re.compile(r"^##\s+\*\*STAGE"),
     ]
-    RE_EMAIL_STOP  = RE_STAGE_STOP + [
+    RE_EMAIL_STOP = RE_STAGE_STOP + [
         re.compile(r"^####\s+I?\s*\*\*ARTIFACT:"),
         re.compile(r"^###\s+\*\*STAGE OUTCOMES\*\*", re.IGNORECASE),
     ]
-    RE_ART_STOP    = RE_STAGE_STOP + [
+    RE_ART_STOP = RE_STAGE_STOP + [
         re.compile(r"^###\s+\*\*STAGE OUTCOMES\*\*", re.IGNORECASE),
     ]
 
@@ -185,7 +187,7 @@ class Transformer:
             re.compile(r"^###\s+"),
             re.compile(r"^##\s+"),
             re.compile(r"^:::"),
-            re.compile(r"^####\s+\*\*INCUBATION\*\*"),         # journey pipeline
+            re.compile(r"^####\s+\*\*INCUBATION\*\*"),  # journey pipeline
             re.compile(r"^[A-Z][^|\n]+\|[^|\n]+\|\s*\d{4}"),  # footer line
         ]
         chars = []
@@ -361,6 +363,7 @@ class Transformer:
 # File processor
 # ---------------------------------------------------------------------------
 
+
 def process_file(md_path: Path) -> bool:
     content = md_path.read_text(encoding="utf-8", errors="replace")
     if not content.startswith("---"):
@@ -405,6 +408,7 @@ TARGET_FILES = [
 
 def main():
     import sys
+
     if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
         targets = [ROOT / sys.argv[1]]
     else:

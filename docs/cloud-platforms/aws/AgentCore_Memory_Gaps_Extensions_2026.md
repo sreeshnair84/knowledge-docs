@@ -9,10 +9,11 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-#### SUPPLEMENTARY REFERENCE 
-# **AgentCore Memory — Gaps, Extensions & 2026 Research** 
+#### SUPPLEMENTARY REFERENCE
 
-FileSessionManager · Conversation Managers · Custom Strategy Wiring Structured Extraction · Graph Memory · Emerging Research 2025-2026 
+# **AgentCore Memory — Gaps, Extensions & 2026 Research**
+
+FileSessionManager · Conversation Managers · Custom Strategy Wiring Structured Extraction · Graph Memory · Emerging Research 2025-2026
 
 |**TOPIC**<br>**FileSessionManager**|COVERAGE IN THIS DOCUMENT<br>When to use, backends, vs AgentCore Memory, wiring code|
 |---|---|
@@ -22,15 +23,15 @@ FileSessionManager · Conversation Managers · Custom Strategy Wiring Structured
 |**Graph Memory**|Graphiti/Zep, MAGMA, integration patterns with AgentCore|
 |**2025-2026 Research**|MemOS, Nemori, sleep-time compute, MAGMA, HyperGraphRAG, Hindsight|
 
-_Supplement to: AWS AgentCore Memory Architecture Guide v2.0 (April 2026)_ 
+*Supplement to: AWS AgentCore Memory Architecture Guide v2.0 (April 2026)*
 
-### **1. FileSessionManager — The Missing Chapter** 
+### **1. FileSessionManager — The Missing Chapter**
 
-## **1.1 What the Source Document Omitted** 
+## **1.1 What the Source Document Omitted**
 
-The Architecture Guide covers AgentCore Memory exhaustively but makes no mention of the Strands SDK's own built-in session persistence layer: **FileSessionManager** and **S3SessionManager** . These are _not_ the same as AgentCore Memory. They are lighter-weight mechanisms that persist the raw conversation message list to disk or S3 so an agent can resume exactly where it left off after a process restart, without incurring any AgentCore API costs. 
+The Architecture Guide covers AgentCore Memory exhaustively but makes no mention of the Strands SDK's own built-in session persistence layer: **FileSessionManager** and **S3SessionManager** . These are *not* the same as AgentCore Memory. They are lighter-weight mechanisms that persist the raw conversation message list to disk or S3 so an agent can resume exactly where it left off after a process restart, without incurring any AgentCore API costs.
 
-## **1.2 Decision Matrix — FileSessionManager vs AgentCore Memory** 
+## **1.2 Decision Matrix — FileSessionManager vs AgentCore Memory**
 
 |**Criterion**<br>**What is stored**|FileSessionManager / S3SessionManager<br>Full raw message list (JSON files per message)|AgentCore Memory<br>Events→extracted long-term memories (vector<br>store)|
 |---|---|---|
@@ -43,22 +44,22 @@ The Architecture Guide covers AgentCore Memory exhaustively but makes no mention
 |**Best for**|Local dev, PoC, single-user resumption after restart|Production; personalisation; multi-session continuity|
 |**Conflict with AgentCore?**|Can be used together — orthogonal layers|N/A|
 
-## **1.3 When to Use FileSessionManager** 
+## **1.3 When to Use FileSessionManager**
 
-**Use FileSessionManager when:** (1) You want zero infrastructure and zero API cost for conversation continuity. (2) Your use case is a single-user CLI tool, desktop app, or developer workflow where a session must resume after a restart but cross-session semantic recall is not required. (3) You are building a Proof-of-Concept and want to iterate quickly without provisioning AgentCore. (4) You run **BidiAgent** (bidirectional streaming / voice) — FileSessionManager handles the reconnect-after-timeout pattern natively for that agent class. 
+**Use FileSessionManager when:** (1) You want zero infrastructure and zero API cost for conversation continuity. (2) Your use case is a single-user CLI tool, desktop app, or developer workflow where a session must resume after a restart but cross-session semantic recall is not required. (3) You are building a Proof-of-Concept and want to iterate quickly without provisioning AgentCore. (4) You run **BidiAgent** (bidirectional streaming / voice) — FileSessionManager handles the reconnect-after-timeout pattern natively for that agent class.
 
-**Do NOT use FileSessionManager as a substitute for AgentCore Memory when:** You need semantic search over historical context, user preference extraction, GDPR right-to-erasure by actor_id, multi-session recall across days or weeks, or multi-agent shared memory. 
+**Do NOT use FileSessionManager as a substitute for AgentCore Memory when:** You need semantic search over historical context, user preference extraction, GDPR right-to-erasure by actor_id, multi-session recall across days or weeks, or multi-agent shared memory.
 
-## **1.4 Backends Available** 
+## **1.4 Backends Available**
 
 |**Backend**<br>**FileSessionManager**|Import<br>strands.session.file_session_manager|Storage Path<br>./sessions/ (default:<br>/tmp/strands/sessions)|When to Use<br>Local dev, PoC,<br>desktop agents|
 |---|---|---|---|
 |**S3SessionManager**|strands.session.s3_session_manager|s3://bucket/prefix/session_/|Production;<br>serverless Lambda<br>agents|
 |**RepositorySessionManage**<br>**r**|strands.session.repository_session_manager|Custom backend (DynamoDB, RDS,<br>etc.)|Enterprise; custom<br>compliance<br>requirements|
 
-## **1.5 Wiring Code — Key Patterns** 
+## **1.5 Wiring Code — Key Patterns**
 
-#### **Single agent (file backend):** 
+#### **Single agent (file backend):**
 
 ```
 from strands import Agent from strands.session.file_session_manager import FileSessionManager
@@ -70,7 +71,7 @@ NOT use /tmp in production ) agent = Agent( agent_id='support_bot', # REQUIRED w
 session manager session_manager=session_manager, tools=[...] )
 ```
 
-#### **Multi-agent constraint (critical):** 
+#### **Multi-agent constraint (critical):**
 
 ```
 WARNING You CANNOT attach a session manager to individual agents inside a multi-agent graph or
@@ -79,7 +80,7 @@ without one. # CORRECT orchestrator = Agent(session_manager=session_manager, ...
 Agent(...) # no session_manager sub_agent_b = Agent(...) # no session_manager
 ```
 
-#### **S3 backend (production):** 
+#### **S3 backend (production):**
 
 ```
 from strands.session.s3_session_manager import S3SessionManager session_manager =
@@ -87,20 +88,20 @@ S3SessionManager( session_id='user-abc-123', bucket='my-agent-sessions', prefix=
 region='eu-central-1' )
 ```
 
-Tip: For EU banking deployments using S3SessionManager, apply S3 server-side encryption with CMK (SSE-KMS), enable versioning, and set a lifecycle rule to expire objects after your retention window. FileSessionManager has no built-in encryption — never use it with real PII. 
+Tip: For EU banking deployments using S3SessionManager, apply S3 server-side encryption with CMK (SSE-KMS), enable versioning, and set a lifecycle rule to expire objects after your retention window. FileSessionManager has no built-in encryption — never use it with real PII.
 
-### **2. Conversation Managers — Sliding Window, Summarising & Null** 
+### **2. Conversation Managers — Sliding Window, Summarising & Null**
 
-The Architecture Guide references 'context compaction' and the ACON framework but does not explain the three built-in ConversationManagers in the Strands SDK. These are independent of AgentCore Memory and control how the in-memory message list is trimmed before each model call. 
+The Architecture Guide references 'context compaction' and the ACON framework but does not explain the three built-in ConversationManagers in the Strands SDK. These are independent of AgentCore Memory and control how the in-memory message list is trimmed before each model call.
 
-## **2.1 The Three Managers** 
+## **2.1 The Three Managers**
 
 |**Manager**<br>**SlidingWindowConversationMan**<br>**ager**|Default?<br>YES|What It Does<br>Keeps the last N messages. Drops oldest when<br>window_size exceeded. Handles dangling message<br>cleanup and overflow trimming.|When to Use<br>Most agents. Simple,<br>predictable, low overhead.|
 |---|---|---|---|
 |**SummarizingConversationManag**<br>**er**|No|Summarises the oldest (summary_ratio) fraction of<br>history with an LLM call. Preserves<br>preserve_recent_messages most recent turns<br>verbatim.|Long advisory sessions, 1h+<br>conversations, wealth<br>management agents.|
 |**NullConversationManager**|No|Does nothing. Full history grows unbounded.|Short single-turn queries;<br>testing; agents where full history<br>is required and context budget is<br>managed externally.|
 
-## **2.2 SlidingWindowConversationManager — Full Config** 
+## **2.2 SlidingWindowConversationManager — Full Config**
 
 ```
 from strands.agent.conversation_manager import SlidingWindowConversationManager agent = Agent(
@@ -110,9 +111,9 @@ or apply every 3 model calls (reduces overhead) should_truncate_results=True # t
 oversized tool results ) )
 ```
 
-When sliding window alone is used with AgentCore Memory, the pattern is: AgentCore long-term memories (injected via MemoryRetrievalHook into the system prompt) survive the window trim because they live in the system prompt, not the message list. Only raw conversation turns are dropped. This is the preferred pattern for most production agents. 
+When sliding window alone is used with AgentCore Memory, the pattern is: AgentCore long-term memories (injected via MemoryRetrievalHook into the system prompt) survive the window trim because they live in the system prompt, not the message list. Only raw conversation turns are dropped. This is the preferred pattern for most production agents.
 
-## **2.3 SummarizingConversationManager — Config & Prompt Customisation** 
+## **2.3 SummarizingConversationManager — Config & Prompt Customisation**
 
 ```
 from strands.agent.conversation_manager import SummarizingConversationManager
@@ -129,7 +130,7 @@ when reducing preserve_recent_messages=10, # always keep last 10 turns verbatim
 summary_prompt=BANKING_SUMMARY_PROMPT # domain-specific prompt ) )
 ```
 
-## **2.4 Interaction Matrix — Conversation Manager vs AgentCore Memory** 
+## **2.4 Interaction Matrix — Conversation Manager vs AgentCore Memory**
 
 |**Combination**<br>**SlidingWindow + AgentCore**<br>**short-term**|Behaviour<br>Raw turns trimmed in RAM; full event log persisted to<br>AgentCore. No conflict.|Recommended?<br>YES — default production<br>pattern|
 |---|---|---|
@@ -137,13 +138,13 @@ summary_prompt=BANKING_SUMMARY_PROMPT # domain-specific prompt ) )
 |**Summarising + AgentCore**<br>**SUMMARIZATION strategy**|Double summarisation. AgentCore already summarises<br>post-session. Redundant cost.|AVOID — pick one or the other|
 |**Summarising + AgentCore**<br>**USER_PREFERENCE**|Summariser may drop preference signals before AgentCore<br>extraction fires. Risk of missed preferences.|CAUTION — lower<br>summary_ratio; set AgentCore<br>trigger earlier|
 
-**Null + AgentCore Memory** Full history grows unbounded in RAM. AgentCore handles Only for short sessions (<50 persistence. Works for short sessions. turns) 
+**Null + AgentCore Memory** Full history grows unbounded in RAM. AgentCore handles Only for short sessions (<50 persistence. Works for short sessions. turns)
 
-### **3. Custom Strategy Wiring — Built-in Overrides & Self-Managed Lambda** 
+### **3. Custom Strategy Wiring — Built-in Overrides & Self-Managed Lambda**
 
-The Architecture Guide mentions 'self-managed strategy Lambda' but does not explain the three-tier strategy system or the infrastructure wiring required. This section fills that gap. 
+The Architecture Guide mentions 'self-managed strategy Lambda' but does not explain the three-tier strategy system or the infrastructure wiring required. This section fills that gap.
 
-## **3.1 Three Strategy Tiers** 
+## **3.1 Three Strategy Tiers**
 
 |**Tier**<br>**Built-in**|Who Runs Extraction<br>AgentCore service account (fully<br>managed)|Customisation Level<br>Zero — fixed algorithms|Extra Infrastructure<br>None|
 |---|---|---|---|
@@ -151,9 +152,9 @@ The Architecture Guide mentions 'self-managed strategy Lambda' but does not expl
 |**(Custom Prompt)**|appended|model choice|account|
 |**Self-Managed**|Your Lambda / pipeline (you own<br>everything)|Full — any model, any schema, any<br>logic|S3 bucket + SNS topic + IAM<br>role + Lambda|
 
-## **3.2 Built-in Override — Prompt Customisation (No Lambda Needed)** 
+## **3.2 Built-in Override — Prompt Customisation (No Lambda Needed)**
 
-Built-in overrides let you append domain-specific instructions to AgentCore's managed extraction prompt. This is the right choice when the built-in schema (fact / preference / summary) is sufficient but the extraction misses domain terms. 
+Built-in overrides let you append domain-specific instructions to AgentCore's managed extraction prompt. This is the right choice when the built-in schema (fact / preference / summary) is sufficient but the extraction misses domain terms.
 
 ```
 import boto3 client = boto3.client('bedrock-agentcore-control') client.update_memory(
@@ -166,9 +167,9 @@ inheritance, divorce Extract these as facts even if expressed informally. ''', '
 'anthropic.claude-sonnet-4-5' } } } } } ] )
 ```
 
-## **3.3 Self-Managed Strategy — Full Infrastructure Wiring** 
+## **3.3 Self-Managed Strategy — Full Infrastructure Wiring**
 
-#### **Required infrastructure (Terraform / CDK):** 
+#### **Required infrastructure (Terraform / CDK):**
 
 |**Resource**<br>**S3 bucket (payload delivery)**|Purpose<br>AgentCore drops batched event payloads here as<br>JSON|Key Config<br>Lifecycle: delete after 7 days; SSE-KMS|
 |---|---|---|
@@ -177,7 +178,7 @@ inheritance, divorce Extract these as facts even if expressed informally. ''', '
 |**Lambda function (extractor)**|Your custom extraction + consolidation logic|Timeout: 5 min; mem: 1 GB; VPC if needed|
 |**EventBridge / SQS (trigger)**|Routes SNS notification to Lambda|DLQ mandatory; retry=2; visibility 300s|
 
-#### **Self-managed trigger configuration in CreateMemory:** 
+#### **Self-managed trigger configuration in CreateMemory:**
 
 ```
 client.create_memory( name='banking-self-managed', memoryStrategies=[ {
@@ -189,11 +190,11 @@ client.create_memory( name='banking-self-managed', memoryStrategies=[ {
 'arn:aws:sns:eu-central-1:123:memory-jobs' } } } } } ] )
 ```
 
-### **4. Structured Extraction — Schema, Wiring & Prompt Changes** 
+### **4. Structured Extraction — Schema, Wiring & Prompt Changes**
 
-Structured extraction transforms free-form conversation into typed, queryable memory records. The Architecture Guide mentions it for 'KYC facts, product knowledge, org hierarchy' but omits the exact schema, wiring, and prompt engineering required. 
+Structured extraction transforms free-form conversation into typed, queryable memory records. The Architecture Guide mentions it for 'KYC facts, product knowledge, org hierarchy' but omits the exact schema, wiring, and prompt engineering required.
 
-## **4.1 When Structured Extraction Is Needed** 
+## **4.1 When Structured Extraction Is Needed**
 
 |**Signal**<br>**Domain-specific entities**|Example<br>ISIN, LEI, BIC, product code, risk rating|Extraction Type<br>Self-managed Lambda with custom schema|
 |---|---|---|
@@ -204,7 +205,7 @@ Structured extraction transforms free-form conversation into typed, queryable me
 |**Standard preferences**|Preferred language, preferred channel|Built-in USER_PREFERENCE — no custom wiring|
 |**Session summaries**|What happened in this support call|Built-in SUMMARIZATION — no custom wiring|
 
-## **4.2 Entity Schema — Pydantic Model (Banking Example)** 
+## **4.2 Entity Schema — Pydantic Model (Banking Example)**
 
 ```
 from pydantic import BaseModel, Field from typing import Optional, List from enum import Enum
@@ -225,7 +226,7 @@ mentioned - Return {} if no financial profile data found - NEVER invent values n
 conversation Return only valid JSON matching the schema. No explanation. '''
 ```
 
-## **4.3 Lambda Extractor Skeleton** 
+## **4.3 Lambda Extractor Skeleton**
 
 ```
 import json, boto3 from pydantic import ValidationError bedrock =
@@ -251,9 +252,9 @@ f'users/{actor_id}/financial-profile', 'memoryRecordId': f'{actor_id}-{field}' }
 agentcore.batch_create_memory_records( memoryId=memory_id, records=records )
 ```
 
-## **4.4 System Prompt Changes Required** 
+## **4.4 System Prompt Changes Required**
 
-When structured extraction memories are retrieved and injected into the system prompt, you must change how the agent interprets and uses them. Add the following block to your system prompt: 
+When structured extraction memories are retrieved and injected into the system prompt, you must change how the agent interprets and uses them. Add the following block to your system prompt:
 
 ```
 ## Structured Memory Context The following structured facts have been retrieved from long-term
@@ -267,13 +268,13 @@ balanced — is that still the case?' 4. If a structured field is present, do no
 customer to repeat that information.
 ```
 
-### **5. Graph Memory — Graphiti, MAGMA & Integration Patterns** 
+### **5. Graph Memory — Graphiti, MAGMA & Integration Patterns**
 
-The Architecture Guide briefly mentions Zep/Graphiti as the 'best for temporal graph reasoning' but does not explain when graph memory becomes necessary, how it works, or how it integrates with AgentCore Memory. This section fills that gap. 
+The Architecture Guide briefly mentions Zep/Graphiti as the 'best for temporal graph reasoning' but does not explain when graph memory becomes necessary, how it works, or how it integrates with AgentCore Memory. This section fills that gap.
 
-## **5.1 What Graph Memory Solves** 
+## **5.1 What Graph Memory Solves**
 
-Vector stores answer 'what memories are semantically similar to this query?' Graph memory answers 'how do these entities relate, how did those relationships change over time, and what can I infer by traversing the relationship graph?' 
+Vector stores answer 'what memories are semantically similar to this query?' Graph memory answers 'how do these entities relate, how did those relationships change over time, and what can I infer by traversing the relationship graph?'
 
 |**Problem**<br>**Alice was PM until Jan; Bob**<br>**took over**|Vector Store (AgentCore)<br>Both facts retrieved — model must infer<br>recency|Graph Memory (Graphiti/MAGMA)<br>Temporal edge: Alice[valid_to=Jan],<br>Bob[valid_from=Jan]. Query returns correct current<br>owner.|
 |---|---|---|
@@ -282,13 +283,13 @@ Vector stores answer 'what memories are semantically similar to this query?' Gra
 |**Organisation hierarchy**<br>**changed**|Stale facts accumulate|Edge invalidation: old edge [valid_to=now]; new edge<br>created — history preserved|
 |**Who approved the loan?**|May retrieve multiple approval facts|Path: [Loan:L001] -[APPROVED_BY]-> [Person:Jane]<br>with timestamp|
 
-## **5.2 Graphiti Architecture (Zep's Open-Source Core)** 
+## **5.2 Graphiti Architecture (Zep's Open-Source Core)**
 
-Graphiti ingests 'episodes' (raw text, JSON, or structured records) and autonomously decomposes them into: (1) **Entities** — named nodes (Person, Account, Product, Organisation). (2) **Edges** — typed relationships with validity windows (t_valid, t_invalid). (3) **Episode nodes** — ground truth provenance tracing every fact to its source. Retrieval uses a triple-modality hybrid: semantic embeddings + BM25 keyword search + graph traversal — no LLM calls during retrieval, achieving P95 latency of ~300ms. 
+Graphiti ingests 'episodes' (raw text, JSON, or structured records) and autonomously decomposes them into: (1) **Entities** — named nodes (Person, Account, Product, Organisation). (2) **Edges** — typed relationships with validity windows (t_valid, t_invalid). (3) **Episode nodes** — ground truth provenance tracing every fact to its source. Retrieval uses a triple-modality hybrid: semantic embeddings + BM25 keyword search + graph traversal — no LLM calls during retrieval, achieving P95 latency of ~300ms.
 
-## **5.3 MAGMA — Multi-Graph Architecture (2026)** 
+## **5.3 MAGMA — Multi-Graph Architecture (2026)**
 
-MAGMA (Multi-Graph based Agentic Memory Architecture, arXiv 2601.03236, Jan 2026) represents the current state-of-the-art research direction. It decomposes memory into four orthogonal graph layers: 
+MAGMA (Multi-Graph based Agentic Memory Architecture, arXiv 2601.03236, Jan 2026) represents the current state-of-the-art research direction. It decomposes memory into four orthogonal graph layers:
 
 |**Graph Layer**<br>**Semantic graph**|Stores<br>Entity facts and properties|Example Query<br>What products does Alice hold?|
 |---|---|---|
@@ -296,11 +297,11 @@ MAGMA (Multi-Graph based Agentic Memory Architecture, arXiv 2601.03236, Jan 2026
 |**Causal graph**|Cause-effect relationships between events|Why was the limit reduced? (causal chain)|
 |**Entity graph**|Cross-entity relationships and hierarchies|Who reports to the compliance officer?|
 
-MAGMA achieves an LLM-as-judge score of 0.70 on the LoCoMo benchmark — the highest reported in peer-reviewed evaluation as of Q1 2026, outperforming Graphiti/Zep, A-MEM, MemoryOS, and Nemori by 18-45% relative margin. 
+MAGMA achieves an LLM-as-judge score of 0.70 on the LoCoMo benchmark — the highest reported in peer-reviewed evaluation as of Q1 2026, outperforming Graphiti/Zep, A-MEM, MemoryOS, and Nemori by 18-45% relative margin.
 
-## **5.4 Integration Pattern — Graphiti + AgentCore Memory** 
+## **5.4 Integration Pattern — Graphiti + AgentCore Memory**
 
-Graphiti and AgentCore Memory are complementary, not competing. The recommended pattern for EU banking agents requiring temporal relationship tracking: 
+Graphiti and AgentCore Memory are complementary, not competing. The recommended pattern for EU banking agents requiring temporal relationship tracking:
 
 |**Layer**<br>**Short-term events**|System<br>AgentCore Memory|Stores<br>Raw conversation turns (7-90d)|Retrieved By<br>AgentCoreMemorySessionManag|
 |---|---|---|---|
@@ -311,7 +312,7 @@ Graphiti and AgentCore Memory are complementary, not competing. The recommended 
 |---|---|---|---|
 |**Audit ledger**|AgentCore (Transaction<br>pattern) + S3 WORM|Immutable event log|CloudTrail / S3 query|
 
-#### **Graphiti wiring in a Strands hook:** 
+#### **Graphiti wiring in a Strands hook:**
 
 ```
 from graphiti_core import Graphiti class GraphitiRetrievalHook: def __init__(self, graphiti:
@@ -329,13 +330,13 @@ GraphitiRetrievalHook(graphiti_client, actor_id), ConsentCheckHook(consent_servi
 MemoryPersistenceHook(session_manager), ] )
 ```
 
-**EU Banking Note: Self-hosting Graphiti requires Neo4j Enterprise for production (AuraDB available in eu-west-1). Apply AES-256 encryption at rest, TLS 1.3 in transit, and ensure all graph data stays within the EU. Graphiti does not provide a managed GDPR right-to-erasure — build a custom node-deletion workflow triggered by the memory_delete skill.** 
+**EU Banking Note: Self-hosting Graphiti requires Neo4j Enterprise for production (AuraDB available in eu-west-1). Apply AES-256 encryption at rest, TLS 1.3 in transit, and ensure all graph data stays within the EU. Graphiti does not provide a managed GDPR right-to-erasure — build a custom node-deletion workflow triggered by the memory_delete skill.**
 
-### **6. Emerging Research & Adoptions — Agent Memory 2025–2026** 
+### **6. Emerging Research & Adoptions — Agent Memory 2025–2026**
 
-## **6.1 Research Taxonomy** 
+## **6.1 Research Taxonomy**
 
-The field of agent memory has matured significantly since the Architecture Guide's reference points. The ICLR 2026 MemAgents Workshop marked the field's academic coming-of-age. Key research directions as of April 2026: 
+The field of agent memory has matured significantly since the Architecture Guide's reference points. The ICLR 2026 MemAgents Workshop marked the field's academic coming-of-age. Key research directions as of April 2026:
 
 |**System / Paper**<br>**Zep / Graphiti (arXiv**<br>**2501.13956)**|Year<br>2025|Key Contribution<br>Temporal knowledge graph with bitemporal edges. 94.8%<br>on DMR benchmark. Hybrid retrieval: semantic + BM25 +<br>graph traversal. P95 < 300ms.|Production Relevance<br>HIGH — GA product; used in CRM,<br>compliance, medical agents. Best<br>temporal reasoning available.|
 |---|---|---|---|
@@ -349,7 +350,7 @@ The field of agent memory has matured significantly since the Architecture Guide
 |**Amazon S3 Vectors (GA**<br>**re:Invent 2025)**|Dec<br>2025|Native vector storage in S3. Billion-vector scale.<br>Purpose-built for AI agents; subsecond latency for<br>frequent queries. AWS-native alternative to managed<br>vector DBs.|HIGH — AWS-native; integrates with<br>Strands S3SessionManager pattern<br>for hybrid memory.|
 |**Cognee (2025-2026)**|2025|Poly-store: Neo4j/FalkorDB + SQLite/Postgres + vector.<br>Background Memify Pipeline enriches existing knowledge.<br>Fully local deployment for air-gapped environments.|MEDIUM — best for<br>data-residency-strict environments<br>where both graph and local<br>deployment are required.|
 
-## **6.2 Benchmark Comparison (April 2026)** 
+## **6.2 Benchmark Comparison (April 2026)**
 
 |**System**<br>**Graphiti / Zep**|DMR<br>94.8%|LoCoMo (LLM Judge)<br>~0.65|LongMemEval<br>63.8%|Retrieval Latency<br>P95 ~300ms|
 |---|---|---|---|---|
@@ -359,9 +360,9 @@ The field of agent memory has matured significantly since the Architecture Guide
 |**AgentCore Memory**|—|—|—|~200ms p99|
 |**Letta / MemGPT**|93.4%|~0.50|—|Varies (file traversal)|
 
-_Note: — indicates not publicly evaluated on that benchmark as of April 2026._ 
+*Note: — indicates not publicly evaluated on that benchmark as of April 2026.*
 
-## **6.3 What to Watch in H2 2026** 
+## **6.3 What to Watch in H2 2026**
 
 |**Development**<br>**MAGMA open-source release**|Why It Matters for EU Banking Architects<br>If OSS, could complement AgentCore with causal graph layer for AML pattern detection|
 |---|---|
@@ -371,9 +372,9 @@ _Note: — indicates not publicly evaluated on that benchmark as of April 2026._
 |**LoCoMo-Plus benchmark adoption**|New benchmark shows all systems degrade on cue-trigger semantic disconnect —<br>re-evaluate vendor claims against LoCoMo-Plus not original LoCoMo|
 |**EU AI Act Article 13 transparency rules**|Memory systems influencing high-risk AI outputs may require new disclosure obligations<br>effective 2026|
 
-### **7. Consolidated Decision Guide — Which Memory Layer for Which Problem** 
+### **7. Consolidated Decision Guide — Which Memory Layer for Which Problem**
 
-## **7.1 Complete Memory Layer Selection Matrix** 
+## **7.1 Complete Memory Layer Selection Matrix**
 
 |**Requirement**<br>**Resume after process**<br>**restart**|FileSession<br>Manager<br>YES — primary<br>use|Conversation<br>Manager<br>No|AgentCore<br>Short-Term<br>Partial (events<br>persist)|AgentCore<br>Long-Term<br>No|Graphiti / Graph<br>No|
 |---|---|---|---|---|---|
@@ -386,7 +387,7 @@ _Note: — indicates not publicly evaluated on that benchmark as of April 2026._
 |**Cost vs. no memory**|Near-zero|Zero (in-process)|Low (per GB)|Medium (per API<br>call)|Medium-high<br>(Neo4j)|
 |**Production GDPR**<br>**compliance**|Operator-mana<br>ged|N/A|YES (managed)|YES (CMK,<br>erasure)|Operator-managed|
 
-## **7.2 Five Rules Not in the Original Document** 
+## **7.2 Five Rules Not in the Original Document**
 
 |**Rule**<br>**1. FileSessionManager**≠**AgentCore**<br>**Memory**|Detail<br>Use FileSessionManager for restartability. Use AgentCore for intelligence (recall, personalisation,<br>extraction). They stack — one does not replace the other.|
 |---|---|
@@ -395,4 +396,4 @@ _Note: — indicates not publicly evaluated on that benchmark as of April 2026._
 |**4. Graph memory is complementary,**<br>**not competing**|Add Graphiti when you need 'who owned X until when?' — not to replace AgentCore. Run both<br>hooks; inject both contexts into the system prompt.|
 |**5. New benchmarks break old**<br>**rankings**|LoCoMo-Plus (Feb 2026) shows all systems degrade on indirect cue queries. Do not evaluate<br>memory vendors on LoCoMo alone. Run your own domain evals.|
 
-_Supplement prepared April 2026. Aligns with Strands Agents SDK 1.0, AgentCore Memory GA (Oct 2025), Graphiti/Zep current release, and peer-reviewed research to Q1 2026. Review alongside the primary Architecture Guide v2.0. Regulatory citations follow the same framework: GDPR (2018), DORA (2025), EBA ML Guidelines, MiFID II._
+*Supplement prepared April 2026. Aligns with Strands Agents SDK 1.0, AgentCore Memory GA (Oct 2025), Graphiti/Zep current release, and peer-reviewed research to Q1 2026. Review alongside the primary Architecture Guide v2.0. Regulatory citations follow the same framework: GDPR (2018), DORA (2025), EBA ML Guidelines, MiFID II.*

@@ -25,7 +25,7 @@ The most consistent theme across this entire research package: **individual deve
 ### 15.2 Approval and publishing
 
 | Stage | Practice observed | Gap to close for org use |
-|---|---|---|
+| --- | --- | --- |
 | **Authoring** | Individual developer writes a `SKILL.md`, commits it to `.github/skills/` | Goes through the same PR review as any other repo change *if the team enforces that* — not automatic |
 | **Marketplace publishing** | `gh skill` supports publish with validation (`--dry-run` checks against the Agent Skills spec, tag protection, secret scanning, code scanning) | Genuine, useful tooling — but marketplace skills are explicitly documented as **not verified by GitHub**, with an explicit warning that skills "may contain prompt injections, hidden instructions, or malicious scripts" |
 | **Organization Skills** | Announced roadmap item on more than one platform, not yet broadly shipped | Until available, the practical substitute is a shared, org-owned git repository of skills that individual repos reference/clone from — treat it with the same access control and review rigor as a shared library |
@@ -50,7 +50,7 @@ Given the security findings in Part B below, these three review types should be 
 This is the area where coding-assistant-specific research has moved fastest and produced the most concrete, named findings. A representative (non-exhaustive) sample from systematic 2025–2026 security research:
 
 | Vulnerability class | Example CVE(s) / named finding | Mechanism |
-|---|---|---|
+| --- | --- | --- |
 | **Rules File Backdoor** | AIShellJack framework: 314 payloads across 70 MITRE ATT&CK techniques, 41–84% success rate | A malicious `.cursorrules`/`.clinerules`/`copilot-instructions.md` committed to a repo instructs the agent to run attacker code; survives forking — every downstream clone inherits it |
 | **README/instruction-file injection** | Documented by Pillar Security and Cloud Security Alliance research | Instructions hidden in README or other repo-committed prose, styled to look like normal documentation to a human reviewer while parsing as instructions to the agent |
 | **Filename-based injection** | Tenable TRA-2025-53; CVE-2025-36730 (Windsurf) | A crafted *filename* itself carries injected instructions, appended into the agent's prompt during normal file listing |
@@ -69,7 +69,7 @@ This is the area where coding-assistant-specific research has moved fastest and 
 Every major agent studied now ships some form of default or strongly-recommended isolation:
 
 | Agent | Default sandbox mechanism |
-|---|---|
+| --- | --- |
 | OpenAI Codex CLI | Default-on; Seatbelt (macOS), Landlock + seccomp (Linux), restricted tokens (Windows); modes: read-only, workspace-write, danger-full-access |
 | Anthropic Claude Code | Sandboxed bash tool via `@anthropic-ai/sandbox-runtime` (Seatbelt/bubblewrap + a network-filtering proxy); cloud sessions run in full microVMs |
 | Google Gemini CLI / Antigravity | Seatbelt (macOS) or Docker/Podman containers via a declared sandbox Dockerfile |

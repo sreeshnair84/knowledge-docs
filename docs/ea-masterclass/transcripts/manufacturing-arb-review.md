@@ -8,7 +8,7 @@ source_type: native-md
 source_file: ""
 tags: ["ea-masterclass", "transcripts"]
 doc_type: workshop-transcript
-session_type: 
+session_type:
 related_pages: []
 ---
 
@@ -19,9 +19,11 @@ related_pages: []
 **Duration:** 90 minutes
 
 **Proposer:**
+
 - David Osei — Enterprise Architect, Digital Manufacturing
 
 **ARB Panel:**
+
 - Kim Santos — Chief Architect (ARB Chair)
 - Robert Feng — Chief Information Security Officer (CISO)
 - Elena Vasquez — OT Security Architect

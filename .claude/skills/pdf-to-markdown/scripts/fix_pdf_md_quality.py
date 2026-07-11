@@ -5,19 +5,20 @@ Post-process PDF-converted Markdown files to fix common quality issues:
 3. Fix page-number-only lines
 4. Fix title extraction in frontmatter when the actual title wasn't found
 """
+
 import re
-from pathlib import Path
 from collections import Counter
+from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 
 # Lines that are definitely structural and should never be removed
 KEEP_PATTERNS = [
     re.compile(r"^\|[\s\-|]+\|$"),  # table separator rows
-    re.compile(r"^#{1,6}\s"),        # headings
-    re.compile(r"^-\s"),             # list items
-    re.compile(r"^\d+\.\s"),         # numbered list items
-    re.compile(r"^\|"),              # table rows
+    re.compile(r"^#{1,6}\s"),  # headings
+    re.compile(r"^-\s"),  # list items
+    re.compile(r"^\d+\.\s"),  # numbered list items
+    re.compile(r"^\|"),  # table rows
 ]
 
 PAGE_NUM_RE = re.compile(r"^\s*(?:Page\s*)?\d+\s*$", re.IGNORECASE)  # bare page numbers: "1", "Page 1"
@@ -30,7 +31,7 @@ def is_structural(line: str) -> bool:
 
 def find_repeats(lines: list[str], threshold: int) -> set[str]:
     """Find non-structural lines that repeat more than threshold times."""
-    counts = Counter(l.strip() for l in lines if l.strip() and not is_structural(l))
+    counts = Counter(line.strip() for line in lines if line.strip() and not is_structural(line))
     return {text for text, count in counts.items() if count >= threshold and len(text) > 5}
 
 

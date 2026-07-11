@@ -9,67 +9,67 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY** 
+# **ENTERPRISE KUBERNETES MASTERY**
 
-AI Platform Engineering Handbook 
+AI Platform Engineering Handbook
 
-### PART X OBSERVABILITY 
+### PART X OBSERVABILITY
 
-OpenTelemetry, Prometheus, Grafana, Loki, Tempo, Cost and AI Observability 
+OpenTelemetry, Prometheus, Grafana, Loki, Tempo, Cost and AI Observability
 
-Volume 10 of 16 Advanced Series Prerequisites: Parts I through IX Edition 2025-2026 
+Volume 10 of 16 Advanced Series Prerequisites: Parts I through IX Edition 2025-2026
 
-## **TABLE OF CONTENTS** 
+## **TABLE OF CONTENTS**
 
-1. Observability Philosophy: The Three Pillars ..... 3 
+1. Observability Philosophy: The Three Pillars ..... 3
 
-2. OpenTelemetry: The Unified Instrumentation Standard . 7 
+2. OpenTelemetry: The Unified Instrumentation Standard . 7
 
-3. Prometheus: Metrics Collection at Scale ......... 12 
+3. Prometheus: Metrics Collection at Scale ......... 12
 
-4. Thanos: Long-Term Metrics Storage ............... 18 
+4. Thanos: Long-Term Metrics Storage ............... 18
 
-5. Grafana: Dashboards and Alerting ................ 22 
+5. Grafana: Dashboards and Alerting ................ 22
 
-6. Loki: Log Aggregation for Kubernetes ............ 27 
+6. Loki: Log Aggregation for Kubernetes ............ 27
 
-7. Tempo: Distributed Tracing ...................... 31 
+7. Tempo: Distributed Tracing ...................... 31
 
-8. Fluent Bit: Log Pipeline Engineering ............ 35 
+8. Fluent Bit: Log Pipeline Engineering ............ 35
 
-9. Elastic Stack on Kubernetes ..................... 39 
+9. Elastic Stack on Kubernetes ..................... 39
 
-10. SLOs, SLAs, and Error Budgets .................. 42 
+10. SLOs, SLAs, and Error Budgets .................. 42
 
-11. Alerting Strategy and Runbooks ................. 46 
+11. Alerting Strategy and Runbooks ................. 46
 
-12. Cost Observability with OpenCost ............... 50 
+12. Cost Observability with OpenCost ............... 50
 
-13. GPU Observability with DCGM .................... 54 
+13. GPU Observability with DCGM .................... 54
 
-14. AI and LLM Observability ....................... 57 
+14. AI and LLM Observability ....................... 57
 
-15. Capacity Planning with Observability Data ...... 62 
+15. Capacity Planning with Observability Data ...... 62
 
-16. Observability Anti-Patterns .................... 65 
+16. Observability Anti-Patterns .................... 65
 
-17. Hands-On Exercises ............................. 68 
+17. Hands-On Exercises ............................. 68
 
-##### **CHAPTER 1** 
+##### **CHAPTER 1**
 
-## **Observability Philosophy: The Three Pillars** 
+## **Observability Philosophy: The Three Pillars**
 
-Observability is the ability to understand the internal state of a system from its external outputs. In the context of Kubernetes and distributed systems, observability is not a nice-to-have -- it is the operational foundation that makes everything else possible: incident response, capacity planning, SLO compliance, security forensics, and cost optimisation. 
+Observability is the ability to understand the internal state of a system from its external outputs. In the context of Kubernetes and distributed systems, observability is not a nice-to-have -- it is the operational foundation that makes everything else possible: incident response, capacity planning, SLO compliance, security forensics, and cost optimisation.
 
-#### **The Three Pillars** 
+#### **The Three Pillars**
 
-- **Metrics** : Numeric time-series data describing system behaviour over time. Metrics are aggregated, low-cardinality, and cheap to store. They answer: Is the system healthy? Is it meeting its SLO? What is the trend? Implemented in Kubernetes via Prometheus. 
+- **Metrics** : Numeric time-series data describing system behaviour over time. Metrics are aggregated, low-cardinality, and cheap to store. They answer: Is the system healthy? Is it meeting its SLO? What is the trend? Implemented in Kubernetes via Prometheus.
 
-- **Logs** : Discrete, timestamped records of events. Logs are high-cardinality, rich with context, and expensive to store. They answer: What exactly happened? What were the surrounding conditions? What is the error message? Implemented via Loki, Elastic, or cloud logging services. 
+- **Logs** : Discrete, timestamped records of events. Logs are high-cardinality, rich with context, and expensive to store. They answer: What exactly happened? What were the surrounding conditions? What is the error message? Implemented via Loki, Elastic, or cloud logging services.
 
-- **Traces** : End-to-end records of requests flowing through distributed systems. Traces show causality: which service called which, what was the latency at each hop, where did the error originate? Implemented via OpenTelemetry, Tempo, or Jaeger. 
+- **Traces** : End-to-end records of requests flowing through distributed systems. Traces show causality: which service called which, what was the latency at each hop, where did the error originate? Implemented via OpenTelemetry, Tempo, or Jaeger.
 
-#### **The Four Golden Signals (Google SRE)** 
+#### **The Four Golden Signals (Google SRE)**
 
 |**Signal**|**Metric Type**|**Kubernetes Metric Example**|**Alert Threshold**|
 |---|---|---|---|
@@ -78,7 +78,7 @@ Observability is the ability to understand the internal state of a system from i
 |Errors|Counter|http_requests_total{status=~'5..'}|Error rate > 1% of traffic|
 |Saturation|Gauge|container_cpu_usage / requests|CPU throttle > 25% of periods|
 
-#### **Observability Stack Architecture** 
+#### **Observability Stack Architecture**
 
 ```
 Enterprise Kubernetes observability stack: METRICS PIPELINE: Application -> Prometheus scrape
@@ -90,21 +90,21 @@ Jaeger EVENTS PIPELINE: Kubernetes Events -> kube-state-metrics -> Prometheus Ku
 dashboards COST PIPELINE: OpenCost (DaemonSet) -> Prometheus -> Grafana cost dashboards
 ```
 
-##### **CHAPTER 2** 
+##### **CHAPTER 2**
 
-## **OpenTelemetry: The Unified Instrumentation Standard** 
+## **OpenTelemetry: The Unified Instrumentation Standard**
 
-OpenTelemetry (OTel) is the CNCF standard for generating, collecting, and exporting telemetry data (metrics, logs, traces). It merges OpenCensus and OpenTracing into a single, vendor-neutral SDK and wire protocol (OTLP). For Kubernetes platforms, OpenTelemetry enables auto-instrumentation without code changes and provides a unified collection pipeline that routes to any backend. 
+OpenTelemetry (OTel) is the CNCF standard for generating, collecting, and exporting telemetry data (metrics, logs, traces). It merges OpenCensus and OpenTracing into a single, vendor-neutral SDK and wire protocol (OTLP). For Kubernetes platforms, OpenTelemetry enables auto-instrumentation without code changes and provides a unified collection pipeline that routes to any backend.
 
-#### **OpenTelemetry Components** 
+#### **OpenTelemetry Components**
 
-- **OTel SDK** : Language-specific libraries (Go, Java, Python, Node.js, Rust, .NET) that add instrumentation to application code. Provides APIs for spans, metrics, and logs. Auto-instrumentation libraries instrument popular frameworks (HTTP servers, database clients, message queues) without code changes. 
+- **OTel SDK** : Language-specific libraries (Go, Java, Python, Node.js, Rust, .NET) that add instrumentation to application code. Provides APIs for spans, metrics, and logs. Auto-instrumentation libraries instrument popular frameworks (HTTP servers, database clients, message queues) without code changes.
 
-- **OTel Collector** : A vendor-agnostic agent/gateway that receives telemetry from applications (via OTLP, Jaeger, Zipkin, Prometheus), processes it (batch, filter, transform, sample), and exports to backends. Deployed as a DaemonSet (agent mode) or centralised Deployment (gateway mode). 
+- **OTel Collector** : A vendor-agnostic agent/gateway that receives telemetry from applications (via OTLP, Jaeger, Zipkin, Prometheus), processes it (batch, filter, transform, sample), and exports to backends. Deployed as a DaemonSet (agent mode) or centralised Deployment (gateway mode).
 
-- **OTLP (OTel Protocol)** : The wire protocol for all OTel data. gRPC and HTTP/protobuf. Backends that support OTLP include: Tempo, Jaeger, Datadog, Dynatrace, New Relic, Honeycomb, and dozens more. 
+- **OTLP (OTel Protocol)** : The wire protocol for all OTel data. gRPC and HTTP/protobuf. Backends that support OTLP include: Tempo, Jaeger, Datadog, Dynatrace, New Relic, Honeycomb, and dozens more.
 
-#### **OTel Collector Deployment on Kubernetes** 
+#### **OTel Collector Deployment on Kubernetes**
 
 ```
 # OTel Collector as DaemonSet (agent mode -- per node): # Collects: host metrics, container
@@ -131,7 +131,7 @@ pipelines: traces: { receivers: [otlp], processors: [batch, k8sattributes], expo
 [prometheusremotewrite] }
 ```
 
-###### **Auto-Instrumentation with OTel Operator** 
+###### **Auto-Instrumentation with OTel Operator**
 
 ```
 # Instrument a Python application without code changes: apiVersion: opentelemetry.io/v1alpha1
@@ -146,13 +146,13 @@ instrumentation.opentelemetry.io/inject-python: 'true' # OTel Operator injects i
 that installs # opentelemetry-distro and configures OTLP exporter
 ```
 
-##### **CHAPTER 3** 
+##### **CHAPTER 3**
 
-## **Prometheus: Metrics Collection at Scale** 
+## **Prometheus: Metrics Collection at Scale**
 
-Prometheus is the de facto metrics system for Kubernetes. It uses a pull model (scraping HTTP endpoints) with a powerful time-series database and PromQL query language. Understanding Prometheus internals is essential for designing reliable, scalable monitoring at enterprise scale. 
+Prometheus is the de facto metrics system for Kubernetes. It uses a pull model (scraping HTTP endpoints) with a powerful time-series database and PromQL query language. Understanding Prometheus internals is essential for designing reliable, scalable monitoring at enterprise scale.
 
-#### **Prometheus Architecture** 
+#### **Prometheus Architecture**
 
 ```
 Prometheus components: Prometheus Server: Scrape engine: Discovers and scrapes /metrics
@@ -165,7 +165,7 @@ silencing, inhibition, grouping Pushgateway: Accepts pushed metrics (for Jobs th
 scraped) Caution: not a replacement for scraping; use for batch Jobs only
 ```
 
-#### **Prometheus Operator and ServiceMonitors** 
+#### **Prometheus Operator and ServiceMonitors**
 
 ```
 # Install kube-prometheus-stack (Prometheus Operator + Grafana + node_exporter): helm repo add
@@ -183,7 +183,7 @@ scrapeTimeout: 10s metricRelabelings: - sourceLabels: [__name__] regex: 'go_.*' 
 Drop Go runtime metrics to save cardinality
 ```
 
-#### **Essential Kubernetes PromQL Queries** 
+#### **Essential Kubernetes PromQL Queries**
 
 |**What to Monitor**|**PromQL Query**|
 |---|---|
@@ -198,13 +198,13 @@ Drop Go runtime metrics to save cardinality
 |HTTP error rate|sum(rate(http_requests_total{status=~'5..'}[5m])) / sum(rate(http_requests_total[5m]))|
 |Deployment replica lag|kube_deployment_spec_replicas - kube_deployment_status_replicas_available|
 
-##### **CHAPTER 4** 
+##### **CHAPTER 4**
 
-## **Thanos: Long-Term Metrics Storage** 
+## **Thanos: Long-Term Metrics Storage**
 
-Prometheus is excellent for short-term metrics (30-90 days local retention) but its single-node TSDB does not scale for enterprise requirements: multi-cluster queries, years of retention, high availability, and deduplication across replicas. Thanos solves all of these by adding a distributed layer over Prometheus. 
+Prometheus is excellent for short-term metrics (30-90 days local retention) but its single-node TSDB does not scale for enterprise requirements: multi-cluster queries, years of retention, high availability, and deduplication across replicas. Thanos solves all of these by adding a distributed layer over Prometheus.
 
-#### **Thanos Architecture** 
+#### **Thanos Architecture**
 
 ```
 Thanos components: Sidecar (runs alongside each Prometheus): Uploads completed TSDB blocks to
@@ -220,7 +220,7 @@ Receive (optional, push model): Accepts Prometheus remote_write Enables multi-cl
 without Sidecar
 ```
 
-###### **Thanos Deployment Pattern** 
+###### **Thanos Deployment Pattern**
 
 ```
 # Thanos Sidecar in Prometheus StatefulSet: containers: - name: prometheus image:
@@ -240,13 +240,13 @@ name: objstore-config mountPath: /etc/thanos # objstore.yaml (S3 backend): type:
 bucket: company-thanos-metrics region: us-east-1 endpoint: s3.amazonaws.com
 ```
 
-##### **CHAPTER 5** 
+##### **CHAPTER 5**
 
-## **Grafana: Dashboards and Alerting** 
+## **Grafana: Dashboards and Alerting**
 
-Grafana is the primary visualisation and alerting layer for the Prometheus/Loki/Tempo observability stack. In enterprise environments, Grafana serves as the unified observability portal: operators, developers, and executives all use Grafana dashboards to understand system health. 
+Grafana is the primary visualisation and alerting layer for the Prometheus/Loki/Tempo observability stack. In enterprise environments, Grafana serves as the unified observability portal: operators, developers, and executives all use Grafana dashboards to understand system health.
 
-#### **Essential Kubernetes Dashboards** 
+#### **Essential Kubernetes Dashboards**
 
 |**Dashboard**|**Source**|**What It Shows**|
 |---|---|---|
@@ -260,7 +260,7 @@ Grafana is the primary visualisation and alerting layer for the Prometheus/Loki/
 |ArgoCD|ArgoCD plugin|Application sync status, health, history|
 |Loki Dashboard|Loki|Log volumes, error rates, log search|
 
-#### **Grafana Alerting Configuration** 
+#### **Grafana Alerting Configuration**
 
 ```
 # Grafana unified alerting rule (PromQL-based): apiVersion: 1 groups: - orgId: 1 name:
@@ -277,13 +277,13 @@ Contact points (notification channels): contactPoints: - name: pagerduty-critica
 type: pagerduty settings: integrationKey: XXXXXXXXXXXXXXXX severity: critical
 ```
 
-##### **CHAPTER 6** 
+##### **CHAPTER 6**
 
-## **Loki: Log Aggregation for Kubernetes** 
+## **Loki: Log Aggregation for Kubernetes**
 
-Loki (Grafana Labs) is a horizontally scalable log aggregation system designed for Kubernetes. Unlike Elasticsearch (which indexes all log content), Loki only indexes labels and stores log chunks compressed in object storage. This makes Loki dramatically cheaper than Elasticsearch for high-volume Kubernetes log ingestion. 
+Loki (Grafana Labs) is a horizontally scalable log aggregation system designed for Kubernetes. Unlike Elasticsearch (which indexes all log content), Loki only indexes labels and stores log chunks compressed in object storage. This makes Loki dramatically cheaper than Elasticsearch for high-volume Kubernetes log ingestion.
 
-#### **Loki Architecture** 
+#### **Loki Architecture**
 
 ```
 Loki components (microservices mode): Distributor: Receives log streams from Fluent
@@ -296,7 +296,7 @@ options: monolithic: Single binary (dev, small clusters) simple-scalable: Read/w
 split (medium clusters) microservices: Full component split (large enterprise)
 ```
 
-#### **LogQL -- Loki Query Language** 
+#### **LogQL -- Loki Query Language**
 
 ```
 # Log stream selector (label-based): {namespace='production', app='api-server'} # Filter for
@@ -311,13 +311,13 @@ sum(rate({namespace="production"} |= "ERROR" [5m])) by (app) > 10 for: 5m annota
 summary: High error rate in {{ $labels.app }}
 ```
 
-##### **CHAPTER 7** 
+##### **CHAPTER 7**
 
-## **Tempo: Distributed Tracing** 
+## **Tempo: Distributed Tracing**
 
-Distributed tracing follows a request as it flows through multiple services, recording the time spent at each hop and any errors encountered. In Kubernetes microservice environments, tracing is the only way to understand end-to-end latency and pinpoint bottlenecks across service boundaries. 
+Distributed tracing follows a request as it flows through multiple services, recording the time spent at each hop and any errors encountered. In Kubernetes microservice environments, tracing is the only way to understand end-to-end latency and pinpoint bottlenecks across service boundaries.
 
-#### **Tracing Concepts** 
+#### **Tracing Concepts**
 
 ```
 Trace: A directed acyclic graph of spans representing one request Span: A unit of work with:
@@ -329,7 +329,7 @@ events: timestamped log-like records within a span Context propagation: tracepar
 passes traceparent to Service B -> same trace_id -> connected spans
 ```
 
-###### **Tempo Deployment and Configuration** 
+###### **Tempo Deployment and Configuration**
 
 ```
 # Install Tempo with S3 backend: helm repo add grafana https://grafana.github.io/helm-charts
@@ -343,13 +343,13 @@ jsonData: tracesToLogsV2: datasourceUid: loki filterByTraceID: true filterBySpan
 serviceMap: datasourceUid: prometheus
 ```
 
-##### **CHAPTER 8** 
+##### **CHAPTER 8**
 
-## **Fluent Bit: Log Pipeline Engineering** 
+## **Fluent Bit: Log Pipeline Engineering**
 
-Fluent Bit is the lightweight, high-performance log processor deployed as a DaemonSet on every Kubernetes node. It collects container logs, enriches them with Kubernetes metadata (pod name, namespace, labels), filters and transforms them, and routes to multiple destinations. 
+Fluent Bit is the lightweight, high-performance log processor deployed as a DaemonSet on every Kubernetes node. It collects container logs, enriches them with Kubernetes metadata (pod name, namespace, labels), filters and transforms them, and routes to multiple destinations.
 
-#### **Fluent Bit Pipeline Architecture** 
+#### **Fluent Bit Pipeline Architecture**
 
 ```
 Fluent Bit pipeline (per node DaemonSet): INPUT FILTER OUTPUT -> Loki tail (container logs) ->
@@ -357,7 +357,7 @@ Elasticsearch /var/log/pods/ -> kubernetes -> S3 (long-term archive) (enrich wit
 OpenSearch systemd (node logs) K8s metadata) -> Splunk -> Datadog
 ```
 
-###### **Fluent Bit ConfigMap for Kubernetes** 
+###### **Fluent Bit ConfigMap for Kubernetes**
 
 ```
 # fluent-bit.conf: [SERVICE] Flush 1 Log_Level info Parsers_File parsers.conf HTTP_Server On
@@ -375,13 +375,13 @@ job=fluent-bit,namespace=$kubernetes['namespace_name'],app=$kubernetes['labels']
 Batch_Wait 1s Batch_Size 1048576 Line_Format json Remove_Keys kubernetes,stream
 ```
 
-##### **CHAPTER 9** 
+##### **CHAPTER 9**
 
-## **Elastic Stack on Kubernetes** 
+## **Elastic Stack on Kubernetes**
 
-The Elastic Stack (Elasticsearch, Kibana, Logstash/Fluent Bit, Beats) provides full-text search and analytics over logs, metrics, and security events. ECK (Elastic Cloud on Kubernetes) is the official Operator for deploying Elastic Stack on Kubernetes. 
+The Elastic Stack (Elasticsearch, Kibana, Logstash/Fluent Bit, Beats) provides full-text search and analytics over logs, metrics, and security events. ECK (Elastic Cloud on Kubernetes) is the official Operator for deploying Elastic Stack on Kubernetes.
 
-#### **Loki vs Elasticsearch Decision Matrix** 
+#### **Loki vs Elasticsearch Decision Matrix**
 
 |**Dimension**|**Loki**|**Elasticsearch**|
 |---|---|---|
@@ -395,13 +395,13 @@ The Elastic Stack (Elasticsearch, Kibana, Logstash/Fluent Bit, Beats) provides f
 |SIEM capability|Limited|Native (Elastic Security, ECS schema)|
 |Best for|Kubernetes log aggregation|SIEM, compliance, full-text search|
 
-##### **CHAPTER 10** 
+##### **CHAPTER 10**
 
-## **SLOs, SLAs, and Error Budgets** 
+## **SLOs, SLAs, and Error Budgets**
 
-Service Level Objectives (SLOs) are the internal targets that define what good service looks like. They are the operational commitment that reliability work is measured against. SLOs translate business requirements into measurable technical targets, and error budgets give teams permission to take risk. 
+Service Level Objectives (SLOs) are the internal targets that define what good service looks like. They are the operational commitment that reliability work is measured against. SLOs translate business requirements into measurable technical targets, and error budgets give teams permission to take risk.
 
-#### **SLO Definitions** 
+#### **SLO Definitions**
 
 ```
 SLI (Service Level Indicator): The metric being measured. Example: ratio of successful HTTP
@@ -413,7 +413,7 @@ error budget = 43.8 min/month acceptable downtime 99.99% SLO = 0.01% = 4.38 min/
 SLO = 0.001% = 26.3 sec/month
 ```
 
-#### **Sloth: SLO-as-Code** 
+#### **Sloth: SLO-as-Code**
 
 ```
 # Sloth generates Prometheus recording rules from SLO definitions: version: prometheus/v1
@@ -433,13 +433,13 @@ slo:error_budget:ratio (remaining error budget) # Grafana SLO dashboard: burn ra
 remaining, alerts
 ```
 
-##### **CHAPTER 11** 
+##### **CHAPTER 11**
 
-## **Alerting Strategy and Runbooks** 
+## **Alerting Strategy and Runbooks**
 
-Effective alerting is harder than collecting metrics. The two failure modes are alert fatigue (too many alerts, on-call ignores them) and alert blindness (not enough alerts, incidents discovered by customers). Good alerting requires discipline: every alert must be actionable, have a runbook, and page someone who can act on it. 
+Effective alerting is harder than collecting metrics. The two failure modes are alert fatigue (too many alerts, on-call ignores them) and alert blindness (not enough alerts, incidents discovered by customers). Good alerting requires discipline: every alert must be actionable, have a runbook, and page someone who can act on it.
 
-#### **Alert Hierarchy** 
+#### **Alert Hierarchy**
 
 |**Lev**<br>**el**|**Severity**|**Response Time**|**Channel**|**Example**|
 |---|---|---|---|---|
@@ -449,7 +449,7 @@ Effective alerting is harder than collecting metrics. The two failure modes are 
 |P4|Low|Next sprint|Ticket only|Slow memory growth; minor config drift|
 |Info|Information<br>al|Never pages|Dashboard only|Deployment completed; autoscaling event|
 
-###### **Alertmanager Production Configuration** 
+###### **Alertmanager Production Configuration**
 
 ```
 # alertmanager.yaml: global: resolve_timeout: 5m slack_api_url:
@@ -463,13 +463,13 @@ pagerduty_configs: - routing_key: XXXXXXXXXXXXXXXX description: '{{ .CommonAnnot
 }}' links: - href: '{{ .CommonAnnotations.runbook_url }}' text: Runbook
 ```
 
-##### **CHAPTER 12** 
+##### **CHAPTER 12**
 
-## **Cost Observability with OpenCost** 
+## **Cost Observability with OpenCost**
 
-Kubernetes cost visibility is a critical operational capability. Without it, teams over-provision resources (wasting money) or under-provision (causing performance issues). OpenCost (CNCF sandbox) provides real-time, workload-level cost allocation that integrates with Prometheus and Grafana. 
+Kubernetes cost visibility is a critical operational capability. Without it, teams over-provision resources (wasting money) or under-provision (causing performance issues). OpenCost (CNCF sandbox) provides real-time, workload-level cost allocation that integrates with Prometheus and Grafana.
 
-#### **OpenCost Architecture** 
+#### **OpenCost Architecture**
 
 ```
 OpenCost components: OpenCost Deployment: Queries Kubernetes API for resource requests and
@@ -484,7 +484,7 @@ https://opencost.github.io/opencost-helm-chart helm install opencost opencost/op
 \ --set opencost.prometheus.external.url=http://prometheus:9090
 ```
 
-###### **Cost Allocation Queries** 
+###### **Cost Allocation Queries**
 
 ```
 # OpenCost REST API -- cost by namespace (last 7 days): curl
@@ -503,13 +503,13 @@ on(node) group_left() node_gpu_hourly_cost # Monthly cost projection per team:
 sum(opencost:container:cpu_allocation:rate1h) by (label_team) * 720
 ```
 
-##### **CHAPTER 13** 
+##### **CHAPTER 13**
 
-## **GPU Observability with DCGM** 
+## **GPU Observability with DCGM**
 
-GPU workloads require specialised observability. CPU metrics tell you nothing about whether a GPU is being efficiently utilised for AI training or inference. NVIDIA Data Center GPU Manager (DCGM) provides comprehensive GPU telemetry that integrates with Prometheus and Grafana. 
+GPU workloads require specialised observability. CPU metrics tell you nothing about whether a GPU is being efficiently utilised for AI training or inference. NVIDIA Data Center GPU Manager (DCGM) provides comprehensive GPU telemetry that integrates with Prometheus and Grafana.
 
-#### **DCGM Exporter Metrics Reference** 
+#### **DCGM Exporter Metrics Reference**
 
 |**Metric**|**Unit**|**What It Means**|**Alert Threshold**|
 |---|---|---|---|
@@ -523,7 +523,7 @@ GPU workloads require specialised observability. CPU metrics tell you nothing ab
 |DCGM_FI_PROF_GR_ENGIN<br>E_ACTIVE|Ratio|Graphics/compute engine<br>active fraction|Low during 'training' = I/O bound|
 |DCGM_FI_PROF_TENSOR_A<br>CTIVE|Ratio|Tensor core utilisation|Low during DL training = poor CUDA<br>kernel|
 
-###### **DCGM Exporter Deployment** 
+###### **DCGM Exporter Deployment**
 
 ```
 # Install DCGM Exporter as DaemonSet on GPU nodes: helm repo add gpu-helm-charts
@@ -554,13 +554,13 @@ summary: GPU {{ $labels.gpu }} in {{ $labels.pod }} below 10% utilisation for 30
 Investigate if training job is stuck or misconfigured
 ```
 
-##### **CHAPTER 14** 
+##### **CHAPTER 14**
 
-## **AI and LLM Observability** 
+## **AI and LLM Observability**
 
-AI and LLM inference workloads require observability beyond standard application metrics. The quality and behaviour of AI responses -- not just the latency of the HTTP response -- must be monitored. This requires a new layer of AI-specific observability integrated into the Kubernetes monitoring stack. 
+AI and LLM inference workloads require observability beyond standard application metrics. The quality and behaviour of AI responses -- not just the latency of the HTTP response -- must be monitored. This requires a new layer of AI-specific observability integrated into the Kubernetes monitoring stack.
 
-#### **LLM Inference Metrics** 
+#### **LLM Inference Metrics**
 
 |**Metric**|**Source**|**What It Measures**|**SLO Target**|
 |---|---|---|---|
@@ -573,7 +573,7 @@ AI and LLM inference workloads require observability beyond standard application
 |Request reject rate|vLLM|Requests dropped due to<br>overload|Any rejection = scale<br>trigger|
 |Token budget<br>exceeded|Application|Requests hitting<br>max_tokens limit|High rate = prompt<br>tuning needed|
 
-#### **vLLM Metrics Configuration** 
+#### **vLLM Metrics Configuration**
 
 ```
 # vLLM exposes Prometheus metrics natively: # Start vLLM with metrics enabled: python -m
@@ -596,7 +596,7 @@ KV cache utilisation) vllm:gpu_prefix_cache_hit_rate (gauge: prefix cache effici
 vllm:num_preemptions_total (counter: preempted requests)
 ```
 
-###### **LLM Observability with OpenTelemetry** 
+###### **LLM Observability with OpenTelemetry**
 
 ```
 # OpenLLMetry: OpenTelemetry for LLM applications: # Auto-instruments: OpenAI, Anthropic,
@@ -610,25 +610,25 @@ LLM_call # Each LLM call span shows: model, tokens, latency, cost # Agent loop s
 planning, tool execution, synthesis
 ```
 
-##### **CHAPTER 15** 
+##### **CHAPTER 15**
 
-## **Capacity Planning with Observability Data** 
+## **Capacity Planning with Observability Data**
 
-Observability data is the foundation of capacity planning. Rather than provisioning on intuition or over-provisioning for safety, capacity planning uses historical metrics to predict future needs with confidence intervals. 
+Observability data is the foundation of capacity planning. Rather than provisioning on intuition or over-provisioning for safety, capacity planning uses historical metrics to predict future needs with confidence intervals.
 
-#### **Capacity Planning Signals** 
+#### **Capacity Planning Signals**
 
-- **CPU headroom** : Identify nodes consistently above 70% CPU utilisation. predict_linear(cpu_usage[7d], 30*24*3600) to project 30-day trend. Scale cluster before reaching saturation. 
+- **CPU headroom** : Identify nodes consistently above 70% CPU utilisation. predict_linear(cpu_usage[7d], 30*24*3600) to project 30-day trend. Scale cluster before reaching saturation.
 
-- **Memory pressure** : Nodes with frequent page cache eviction or swap usage. Containers with memory usage approaching their limits (risk of OOM). Correlate container memory growth with data volume growth. 
+- **Memory pressure** : Nodes with frequent page cache eviction or swap usage. Containers with memory usage approaching their limits (risk of OOM). Correlate container memory growth with data volume growth.
 
-- **Storage growth rate** : PVCs with predict_linear(usage, 30d) exceeding capacity. Identify which namespaces/workloads are growing fastest. Alert when projected fill date is within 14 days. 
+- **Storage growth rate** : PVCs with predict_linear(usage, 30d) exceeding capacity. Identify which namespaces/workloads are growing fastest. Alert when projected fill date is within 14 days.
 
-- **GPU utilisation trends** : Model serving GPU utilisation by time of day and day of week. Identify peak hours for scaling policies. Project GPU needs for model upgrades (70B model requires 4x the VRAM of 7B model). 
+- **GPU utilisation trends** : Model serving GPU utilisation by time of day and day of week. Identify peak hours for scaling policies. Project GPU needs for model upgrades (70B model requires 4x the VRAM of 7B model).
 
-- **Network bandwidth** : Identify inter-service communication patterns for network capacity planning. Detect N+1 query patterns (many small requests) vs expected batch patterns. 
+- **Network bandwidth** : Identify inter-service communication patterns for network capacity planning. Detect N+1 query patterns (many small requests) vs expected batch patterns.
 
-###### **Capacity Planning Prometheus Queries** 
+###### **Capacity Planning Prometheus Queries**
 
 ```
 # Project PVC fill date (which PVCs will fill in < 7 days): predict_linear(
@@ -643,47 +643,47 @@ serving deployment: predict_linear( DCGM_FI_DEV_FB_USED{pod=~'llm-inference.*'}[
 predict_linear(kube_node_info[7d], 30*24*3600)
 ```
 
-##### **CHAPTER 16** 
+##### **CHAPTER 16**
 
-## **Observability Anti-Patterns** 
+## **Observability Anti-Patterns**
 
-###### **Anti-Pattern: Alert fatigue -- alerting on symptoms not causes** 
+###### **Anti-Pattern: Alert fatigue -- alerting on symptoms not causes**
 
-**Problem** : Hundreds of alerts fire simultaneously during an incident. On-call engineer cannot identify root cause amid noise. Alerts page for things that auto-recover. 
+**Problem** : Hundreds of alerts fire simultaneously during an incident. On-call engineer cannot identify root cause amid noise. Alerts page for things that auto-recover.
 
-**Solution** : Alert on SLO burn rate (user impact), not individual metrics. Use inhibition rules. Every alert must have a runbook and be actionable. 
+**Solution** : Alert on SLO burn rate (user impact), not individual metrics. Use inhibition rules. Every alert must have a runbook and be actionable.
 
-###### **Anti-Pattern: High cardinality metric explosions** 
+###### **Anti-Pattern: High cardinality metric explosions**
 
-**Problem** : Using user IDs, request IDs, or trace IDs as metric labels. 1M users = 1M time series = Prometheus OOM or extreme cost. 
+**Problem** : Using user IDs, request IDs, or trace IDs as metric labels. 1M users = 1M time series = Prometheus OOM or extreme cost.
 
-**Solution** : Labels must be low cardinality (max 10,000 unique values per label). Use trace IDs in tracing backends (Tempo), not Prometheus labels. 
+**Solution** : Labels must be low cardinality (max 10,000 unique values per label). Use trace IDs in tracing backends (Tempo), not Prometheus labels.
 
-###### **Anti-Pattern: No trace context propagation** 
+###### **Anti-Pattern: No trace context propagation**
 
-**Problem** : Services do not pass W3C traceparent headers. Traces are broken: each service shows isolated spans with no connection. 
+**Problem** : Services do not pass W3C traceparent headers. Traces are broken: each service shows isolated spans with no connection.
 
-**Solution** : Enforce trace context propagation via service mesh (Istio/Linkerd) or OTel SDK. Validate with OTel Collector trace sampling. 
+**Solution** : Enforce trace context propagation via service mesh (Istio/Linkerd) or OTel SDK. Validate with OTel Collector trace sampling.
 
-###### **Anti-Pattern: Logging everything at DEBUG level in production** 
+###### **Anti-Pattern: Logging everything at DEBUG level in production**
 
-**Problem** : Production services logging at DEBUG level generate 100x more logs. Loki ingestion costs explode. Log search becomes slow. 
+**Problem** : Production services logging at DEBUG level generate 100x more logs. Loki ingestion costs explode. Log search becomes slow.
 
-**Solution** : Production default: INFO or WARN. DEBUG only via dynamic log level adjustment (Zap, logrus, structured logging frameworks). Filter debug logs in Fluent Bit before shipping. 
+**Solution** : Production default: INFO or WARN. DEBUG only via dynamic log level adjustment (Zap, logrus, structured logging frameworks). Filter debug logs in Fluent Bit before shipping.
 
-###### **Anti-Pattern: No SLOs -- alerting without user impact context** 
+###### **Anti-Pattern: No SLOs -- alerting without user impact context**
 
-**Problem** : Teams track hundreds of internal metrics but cannot answer: Is the service meeting its availability commitment to users? 
+**Problem** : Teams track hundreds of internal metrics but cannot answer: Is the service meeting its availability commitment to users?
 
-**Solution** : Define SLOs for every customer-facing service. Multi-window multi-burn-rate alerts are more actionable than threshold alerts. 
+**Solution** : Define SLOs for every customer-facing service. Multi-window multi-burn-rate alerts are more actionable than threshold alerts.
 
-##### **CHAPTER 17** 
+##### **CHAPTER 17**
 
-## **Hands-On Exercises** 
+## **Hands-On Exercises**
 
-#### **Exercise 10.1 -- Deploy the Full Observability Stack** 
+#### **Exercise 10.1 -- Deploy the Full Observability Stack**
 
-Install the kube-prometheus-stack and configure Loki: 
+Install the kube-prometheus-stack and configure Loki:
 
 ```
 # Add Helm repos: helm repo add prometheus-community
@@ -703,9 +703,9 @@ monitoring kubectl port-forward -n monitoring svc/kube-prom-kube-prometheus-prom
 Query: count(kube_pod_info)
 ```
 
-#### **Exercise 10.2 -- Write SLO Alerts** 
+#### **Exercise 10.2 -- Write SLO Alerts**
 
-Create a PrometheusRule for availability SLO: 
+Create a PrometheusRule for availability SLO:
 
 ```
 # Deploy a sample HTTP application: kubectl create deployment slo-demo --image=nginx:alpine
@@ -720,6 +720,6 @@ rate(nginx_http_requests_total{status!~'5..'}[5m]) / rate(nginx_http_requests_to
 0.001 for: 2m labels: severity: critical annotations: summary: SLO burn rate high YAML
 ```
 
-###### **End of Part X -- Continue to Part XI: Kubernetes for AI Infrastructure** 
+###### **End of Part X -- Continue to Part XI: Kubernetes for AI Infrastructure**
 
 Part XI covers production AI infrastructure on Kubernetes: Kubeflow pipelines, KServe model serving, vLLM distributed inference, Ray and Ray Serve, the NVIDIA GPU Operator, MIG partitioning, distributed training with PyTorch DDP and FSDP, AI gateways and model routing, feature stores with Feast, and production deployment patterns for LLM serving at enterprise scale.

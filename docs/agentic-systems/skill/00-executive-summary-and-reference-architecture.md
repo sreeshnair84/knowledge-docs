@@ -36,7 +36,7 @@ This space changed materially even within H1 2026. Load-bearing facts for everyt
 ## 2. Core definitions used throughout this package
 
 | Term | Definition |
-|---|---|
+| --- | --- |
 | **Skill** | An on-demand-loaded, named unit of procedural knowledge (`SKILL.md` + optional scripts/references/assets) that a coding agent discovers via its `name`/`description` and loads in full only when a task matches. |
 | **AGENTS.md / CLAUDE.md / GEMINI.md** | An always-loaded, project- or user-scoped context file — the "persistent baseline," analogous to onboarding docs a new hire reads on day one, not a specialized procedure they consult only when needed. |
 | **Custom Instructions / Rules** | Vendor-native flavors of the always-loaded concept (`.cursor/rules/*.mdc`, `.clinerules/`, `.roo/rules/`, `.windsurf/rules/`, `.github/copilot-instructions.md`) — pre-`AGENTS.md` and still in heavy use, often with glob-scoping frontmatter that `AGENTS.md` itself lacks. |
@@ -98,6 +98,7 @@ This space changed materially even within H1 2026. Load-bearing facts for everyt
 ```
 
 **Reading the diagram:**
+
 - **Always-loaded context** and **Skills** are architecturally distinct planes even though both often live under `.github/`, `.claude/`, or similar directories — one is a cost paid every turn, the other is paid only on match (file `01`, `05`).
 - **Repository context** (README, ADRs, CODEOWNERS, semantic index) is a first-class input to both planes, not an afterthought — the agent's context-collection step increasingly retrieves from this material dynamically rather than relying solely on what's pre-loaded (file `06`).
 - **The Dev Container / sandbox layer** is what makes "safe autonomy" possible at all — nearly every mainstream agent now defaults to some form of OS-level or container-level isolation specifically because rules-file and repository-content injection attacks are real and already cataloged with CVEs (file `10`).
@@ -110,7 +111,7 @@ This space changed materially even within H1 2026. Load-bearing facts for everyt
 (Full version with rationale in file `04`.)
 
 | Concern | Skill | AGENTS.md/Rules | Tool | MCP Server | Extension/IDE | Language Server | Dev Container |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | "How to do X, step by step" (occasional) | ✅ | | | | | | |
 | "Always true about this repo" (every turn) | | ✅ | | | | | |
 | Single typed capability (read file, run tests) | | | ✅ | ✅ (hosts) | | | |
@@ -139,7 +140,7 @@ This space changed materially even within H1 2026. Load-bearing facts for everyt
 ### Enterprise Platform Research (11 parts)
 
 | File | Covers |
-|---|---|
+| --- | --- |
 | [Part 1 — Foundations: What Is an Agent Skill?](./enterprise/01-foundations-what-is-an-agent-skill.md) | Skill vs. Tool/Workflow/Agent/Prompt, progressive disclosure |
 | [Part 2 — Skill Anatomy & Metadata Schema](./enterprise/02-skill-anatomy-and-metadata-schema.md) | Internal structure, metadata schema, Deliverable 4 |
 | [Part 3 — Execution Lifecycle & Tracing](./enterprise/03-execution-lifecycle-and-tracing.md) | End-to-end flow, Deliverable 2 |
@@ -155,7 +156,7 @@ This space changed materially even within H1 2026. Load-bearing facts for everyt
 ### Coding Assistant Research (12 parts)
 
 | File | Covers |
-|---|---|
+| --- | --- |
 | [Part 1 — Foundations: What Is a Coding Skill?](./coding/01-foundations-what-is-a-coding-skill.md) | Skill vs. Agent/Slash Command/Prompt/Tool/MCP Tool/IDE Action |
 | [Part 2 — Skill Anatomy & Metadata Schema](./coding/02-skill-anatomy-and-metadata-schema.md) | Internal structure, metadata schema, Deliverable 4 |
 | [Part 3 — Discovery & Execution Lifecycle](./coding/03-discovery-and-execution-lifecycle.md) | Discovery, execution flow, sequence diagrams, Deliverable 2 |

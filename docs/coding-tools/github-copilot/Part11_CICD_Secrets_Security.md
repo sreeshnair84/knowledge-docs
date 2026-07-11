@@ -9,57 +9,57 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **CI/CD Architecture, Secrets & Supply Chain Security** 
+# **CI/CD Architecture, Secrets & Supply Chain Security**
 
-##### **TOPICS COVERED** 
+##### **TOPICS COVERED**
 
-- **›  CI / CD / CDeploy Distinctions** 
+- **›  CI / CD / CDeploy Distinctions**
 
-- **›  Canary Releases** 
+- **›  Canary Releases**
 
-- **›  Feature Flags & Progressive Delivery** 
+- **›  Feature Flags & Progressive Delivery**
 
-- **›  Promotion Pipelines & Environment Gates** 
+- **›  Promotion Pipelines & Environment Gates**
 
-- **›  GitHub Secrets Architecture** 
+- **›  GitHub Secrets Architecture**
 
-- **›  OIDC Passwordless Cloud Auth** 
+- **›  OIDC Passwordless Cloud Auth**
 
-- **›  Dynamic Secrets & Rotation** 
+- **›  Dynamic Secrets & Rotation**
 
-- **›  Sigstore / Cosign / Rekor** 
+- **›  Sigstore / Cosign / Rekor**
 
-- **›  Branch Protection & Rulesets** 
+- **›  Branch Protection & Rulesets**
 
-- **›  SBOM Generation** 
+- **›  SBOM Generation**
 
-**›  Blue-Green Deployments** 
+**›  Blue-Green Deployments**
 
-- **›  Rolling Updates** 
+- **›  Rolling Updates**
 
-**›  GitOps Patterns** 
+**›  GitOps Patterns**
 
-- **›  Quality Gates & Rollback** 
+- **›  Quality Gates & Rollback**
 
-- **›  Organization & Environment Secrets** 
+- **›  Organization & Environment Secrets**
 
-- **›  HashiCorp Vault Integration** 
+- **›  HashiCorp Vault Integration**
 
-- **›  Supply Chain Security (SLSA)** 
+- **›  Supply Chain Security (SLSA)**
 
-- **›  Artifact Attestations** 
+- **›  Artifact Attestations**
 
-- **›  Merge Queue** 
+- **›  Merge Queue**
 
-- **›  OpenSSF Scorecards** 
+- **›  OpenSSF Scorecards**
 
-**GitHub & Modern CI/CD** 
+**GitHub & Modern CI/CD**
 
-**Principal Platform Engineer Reference Series  •  Enterprise Edition** 
+**Principal Platform Engineer Reference Series  •  Enterprise Edition**
 
-## **PART 11 — CI/CD Architecture** 
+## **PART 11 — CI/CD Architecture**
 
-## **11.1 Continuous Integration, Delivery, and Deployment** 
+## **11.1 Continuous Integration, Delivery, and Deployment**
 
 |**Stage**|**Definition**<br>**Human gate?**|**Example**|
 |---|---|---|
@@ -67,7 +67,7 @@ covers_version: "N/A"
 |Continuous Delivery (CD)|Software always releasable; deploy is a decision<br>Yes (release de|cision)<br>Staging auto-deploy, prod manual|
 |Continuous Deployment (CD|eploy)<br>Every passing commit deploys to production automatic<br>No|ally<br>Tech startups, SaaS products|
 
-### **Enterprise Pipeline Architecture** 
+### **Enterprise Pipeline Architecture**
 
 ```
 # Multi-stage promotion pipeline:
@@ -110,7 +110,7 @@ jobs:
     needs: integration-tests
 ```
 
-**Page 2** 
+**Page 2**
 
 ```
     environment:
@@ -121,11 +121,11 @@ jobs:
           --namespace production
 ```
 
-## **11.2 Deployment Strategies** 
+## **11.2 Deployment Strategies**
 
-### **Blue-Green Deployment** 
+### **Blue-Green Deployment**
 
-Maintain two identical production environments (blue and green). Deploy to the inactive environment, run smoke tests, then switch traffic. Provides instant rollback by switching back. 
+Maintain two identical production environments (blue and green). Deploy to the inactive environment, run smoke tests, then switch traffic. Provides instant rollback by switching back.
 
 ```
 # Blue-Green with AWS ALB:
@@ -154,13 +154,13 @@ Maintain two identical production environments (blue and green). Deploy to the i
       --actions Type=forward,TargetGroupArn=$BLUE_TG_ARN
 ```
 
-### **Canary Deployment** 
+### **Canary Deployment**
 
-Gradually shift traffic to the new version, monitoring metrics at each step. Limits blast radius of issues to a small percentage of users before full rollout. 
+Gradually shift traffic to the new version, monitoring metrics at each step. Limits blast radius of issues to a small percentage of users before full rollout.
 
-`# Canary with Argo Rollouts (GitOps): # rollout.yaml: apiVersion: argoproj.io/v1alpha1 kind: Rollout metadata: name: api-service spec: replicas: 10 strategy: canary: steps: - setWeight: 5     # 5%` → `canary - pause: duration: 10m  # Wait and monitor` 
+`# Canary with Argo Rollouts (GitOps): # rollout.yaml: apiVersion: argoproj.io/v1alpha1 kind: Rollout metadata: name: api-service spec: replicas: 10 strategy: canary: steps: - setWeight: 5     # 5%` → `canary - pause: duration: 10m  # Wait and monitor`
 
-**Page 3** 
+**Page 3**
 
 ```
         - setWeight: 20    # 20%
@@ -199,15 +199,15 @@ spec:
             sum(rate(http_requests_total{service="{{args.service-name}}"}[5m]))
 ```
 
-### **GitOps Pattern** 
+### **GitOps Pattern**
 
-GitOps uses Git as the single source of truth for declarative infrastructure and application state. A GitOps operator (Flux or ArgoCD) continuously reconciles the cluster state with the desired state in Git. 
+GitOps uses Git as the single source of truth for declarative infrastructure and application state. A GitOps operator (Flux or ArgoCD) continuously reconciles the cluster state with the desired state in Git.
 
 ```
 # GitOps workflow:
 ```
 
-`# 1. Developer merges PR to application repo` → `CI builds image, pushes to GHCR # 2. CI updates the image tag in the GitOps config repo # 3. ArgoCD/Flux detects the config change and applies it to the cluster` 
+`# 1. Developer merges PR to application repo` → `CI builds image, pushes to GHCR # 2. CI updates the image tag in the GitOps config repo # 3. ArgoCD/Flux detects the config change and applies it to the cluster`
 
 ```
 # GitHub Actions step to update GitOps repo:
@@ -227,7 +227,7 @@ GitOps uses Git as the single source of truth for declarative infrastructure and
     GIT_TOKEN: ${{ secrets.GITOPS_PAT }}
 ```
 
-## **11.3 Environment Protection Rules** 
+## **11.3 Environment Protection Rules**
 
 ```
 # Environment configuration (via GitHub UI or API):
@@ -247,7 +247,7 @@ GitOps uses Git as the single source of truth for declarative infrastructure and
 # Using environments in workflow:
 ```
 
-**Page 4** 
+**Page 4**
 
 ```
 deploy:
@@ -269,15 +269,15 @@ deploy:
     echo "Environment: $STATUS"
 ```
 
-**Page 5** 
+**Page 5**
 
-## **PART 12 — Secrets Management** 
+## **PART 12 — Secrets Management**
 
-## **12.1 GitHub Secrets Architecture** 
+## **12.1 GitHub Secrets Architecture**
 
-GitHub secrets are encrypted at rest using libsodium (NaCl) public-key cryptography. The public key for a repository is used to encrypt the secret value client-side (in the browser or via API) before it's transmitted. GitHub stores only the encrypted ciphertext and never has access to the plaintext. 
+GitHub secrets are encrypted at rest using libsodium (NaCl) public-key cryptography. The public key for a repository is used to encrypt the secret value client-side (in the browser or via API) before it's transmitted. GitHub stores only the encrypted ciphertext and never has access to the plaintext.
 
-### **Secret Scoping** 
+### **Secret Scoping**
 
 |**Scope**|**Set by**|**Available to**|**Override?**|
 |---|---|---|---|
@@ -345,32 +345,32 @@ gh secret set PROD_API_KEY \
   --repo myorg/api-service
 ```
 
-### **Variables (Non-Secret Configuration)** 
+### **Variables (Non-Secret Configuration)**
 
-GitHub Variables (distinct from Secrets) store non-sensitive configuration in plaintext. They are visible in logs and in the GitHub UI. 
+GitHub Variables (distinct from Secrets) store non-sensitive configuration in plaintext. They are visible in logs and in the GitHub UI.
 
-> `# Variables vs Secrets:` 
+> `# Variables vs Secrets:`
 
-> `# Use secrets for: passwords, API keys, tokens, certificates` 
+> `# Use secrets for: passwords, API keys, tokens, certificates`
 
-> `# Use variables for: URLs, region names, feature flags, non-sensitive config` 
+> `# Use variables for: URLs, region names, feature flags, non-sensitive config`
 
-> `# Set a variable: gh variable set AWS_REGION --body "us-east-1" --repo myorg/api-service gh variable set APP_VERSION --body "2.1.0" --org myorg` 
+> `# Set a variable: gh variable set AWS_REGION --body "us-east-1" --repo myorg/api-service gh variable set APP_VERSION --body "2.1.0" --org myorg`
 
 ```
 # Access in workflow:
 ```
 
-**Page 6** 
+**Page 6**
 
 ```
 ${{ vars.AWS_REGION }}
 ${{ vars.APP_VERSION }}
 ```
 
-## **12.2 OIDC — Passwordless Cloud Authentication** 
+## **12.2 OIDC — Passwordless Cloud Authentication**
 
-OIDC federation is the modern replacement for long-lived cloud credentials stored as GitHub secrets. See Part 3.7 for the technical flow. 
+OIDC federation is the modern replacement for long-lived cloud credentials stored as GitHub secrets. See Part 3.7 for the technical flow.
 
 ```
 # Enterprise OIDC setup guide:
@@ -418,9 +418,9 @@ gcloud iam service-accounts add-iam-policy-binding \
   --member="principalSet://iam.googleapis.com/.../attribute.repository/myorg/api-service"
 ```
 
-## **12.3 HashiCorp Vault Integration** 
+## **12.3 HashiCorp Vault Integration**
 
-For enterprises requiring dynamic secrets, audit trails, and centralized secret management, HashiCorp Vault integrates with GitHub Actions via the official vault-action. 
+For enterprises requiring dynamic secrets, audit trails, and centralized secret management, HashiCorp Vault integrates with GitHub Actions via the official vault-action.
 
 ```
 # Vault integration workflow:
@@ -431,7 +431,7 @@ For enterprises requiring dynamic secrets, audit trails, and centralized secret 
     method: jwt                    # GitHub OIDC JWT
 ```
 
-**Page 7** 
+**Page 7**
 
 ```
     role: github-actions
@@ -446,7 +446,7 @@ For enterprises requiring dynamic secrets, audit trails, and centralized secret 
       aws/creds/deploy secret_key | AWS_SECRET_KEY;
 ```
 
-- `name: Use secrets from Vault` 
+- `name: Use secrets from Vault`
 
 ```
   run: echo "DB connected" # ${{ steps.vault.outputs.DB_PASSWORD }} is masked
@@ -468,33 +468,33 @@ For enterprises requiring dynamic secrets, audit trails, and centralized secret 
 # - Auto-revoked after TTL or on Vault token expiry
 ```
 
-- `# - Full audit trail of who requested credentials and when` 
+- `# - Full audit trail of who requested credentials and when`
 
-I _Dynamic secrets from Vault are the gold standard for cloud credentials. They expire automatically, are unique per job, and leave a full audit trail in Vault's audit log._ 
+I *Dynamic secrets from Vault are the gold standard for cloud credentials. They expire automatically, are unique per job, and leave a full audit trail in Vault's audit log.*
 
-**Page 8** 
+**Page 8**
 
-## **PART 13 — Supply Chain Security** 
+## **PART 13 — Supply Chain Security**
 
-## **13.1 SLSA — Supply Chain Levels for Software Artifacts** 
+## **13.1 SLSA — Supply Chain Levels for Software Artifacts**
 
-SLSA (pronounced 'salsa') is a security framework from Google that establishes levels of supply chain integrity guarantees for software artifacts. SLSA 1-4 represent increasing levels of hardening. 
+SLSA (pronounced 'salsa') is a security framework from Google that establishes levels of supply chain integrity guarantees for software artifacts. SLSA 1-4 represent increasing levels of hardening.
 
-**Level Requirements What it prevents** SLSA 1 Scripted build (not manual), basic provenance Ad-hoc builds, no audit trail SLSA 2 Version-controlled build config, authenticated provenanceTampering with build scripts SLSA 3 Hardened build platform, source verified, non-falsifiable provenanceCompromised build system SLSA 4 Two-person review, hermetic build, strong provenanceInsider threats, supply chain attacks `# Generate SLSA provenance with GitHub Actions: # GitHub Actions itself satisfies SLSA 3 for hosted runners. name: Build with SLSA Provenance on: push: tags: ['v*'] jobs: build: outputs: digests: ${{ steps.hash.outputs.digests }} runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - name: Build artifact run: | go build -o app-linux-amd64 . sha256sum app-linux-amd64 > checksums.txt - name: Upload artifacts uses: actions/upload-artifact@v4 with: name: binaries path: | app-linux-amd64 checksums.txt - name: Generate digest id: hash run: | echo "digests=$(cat checksums.txt | base64 -w0)" >> $GITHUB_OUTPUT # SLSA Provenance generation: provenance: needs: build permissions: actions: read id-token: write contents: write uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0 with: base64-subjects: ${{ needs.build.outputs.digests }} upload-assets: true` 
+**Level Requirements What it prevents** SLSA 1 Scripted build (not manual), basic provenance Ad-hoc builds, no audit trail SLSA 2 Version-controlled build config, authenticated provenanceTampering with build scripts SLSA 3 Hardened build platform, source verified, non-falsifiable provenanceCompromised build system SLSA 4 Two-person review, hermetic build, strong provenanceInsider threats, supply chain attacks `# Generate SLSA provenance with GitHub Actions: # GitHub Actions itself satisfies SLSA 3 for hosted runners. name: Build with SLSA Provenance on: push: tags: ['v*'] jobs: build: outputs: digests: ${{ steps.hash.outputs.digests }} runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - name: Build artifact run: | go build -o app-linux-amd64 . sha256sum app-linux-amd64 > checksums.txt - name: Upload artifacts uses: actions/upload-artifact@v4 with: name: binaries path: | app-linux-amd64 checksums.txt - name: Generate digest id: hash run: | echo "digests=$(cat checksums.txt | base64 -w0)" >> $GITHUB_OUTPUT # SLSA Provenance generation: provenance: needs: build permissions: actions: read id-token: write contents: write uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0 with: base64-subjects: ${{ needs.build.outputs.digests }} upload-assets: true`
 
-**Page 9** 
+**Page 9**
 
-## **13.2 Sigstore / Cosign / Rekor** 
+## **13.2 Sigstore / Cosign / Rekor**
 
-Sigstore is an open-source project providing free, transparent, and automated signing infrastructure. It consists of Cosign (signing tool), Rekor (transparency log), Fulcio (certificate authority), and Policy Controller (Kubernetes admission controller). 
+Sigstore is an open-source project providing free, transparent, and automated signing infrastructure. It consists of Cosign (signing tool), Rekor (transparency log), Fulcio (certificate authority), and Policy Controller (Kubernetes admission controller).
 
-- `# Keyless signing with Cosign (OIDC-based, no key management):` 
+- `# Keyless signing with Cosign (OIDC-based, no key management):`
 
-- `# In GitHub Actions:` 
+- `# In GitHub Actions:`
 
-- `uses: sigstore/cosign-installer@v3` 
+- `uses: sigstore/cosign-installer@v3`
 
-- `# Sign a container image:` 
+- `# Sign a container image:`
 
 ```
 - name: Sign container image
@@ -504,11 +504,11 @@ Sigstore is an open-source project providing free, transparent, and automated si
   # Creates:
 ```
 
-- `# 1. Certificate from Fulcio CA (with OIDC identity embedded)` 
+- `# 1. Certificate from Fulcio CA (with OIDC identity embedded)`
 
-- `# 2. Signature # 3. Entry in Rekor transparency log # Certificate expires in 10 minutes — signature is permanent in Rekor` 
+- `# 2. Signature # 3. Entry in Rekor transparency log # Certificate expires in 10 minutes — signature is permanent in Rekor`
 
-- `# Verify (in deployment pipeline or admission controller):` 
+- `# Verify (in deployment pipeline or admission controller):`
 
 ```
 - name: Verify image signature
@@ -542,9 +542,9 @@ cosign verify-attestation \
   ghcr.io/myorg/api-service:latest
 ```
 
-## **13.3 Branch Protection and Rulesets** 
+## **13.3 Branch Protection and Rulesets**
 
-Branch protection rules (and the newer Repository Rulesets, which support organization-wide policies) enforce code review, status check, and signing requirements before code can be merged or pushed. 
+Branch protection rules (and the newer Repository Rulesets, which support organization-wide policies) enforce code review, status check, and signing requirements before code can be merged or pushed.
 
 ```
 # Branch protection via GitHub CLI:
@@ -562,13 +562,13 @@ gh api repos/myorg/api-service/branches/main/protection \
   --field allow_deletions=false
 ```
 
-- `# CODEOWNERS file (.github/CODEOWNERS):` 
+- `# CODEOWNERS file (.github/CODEOWNERS):`
 
-- `# Global owners (review required for all files):` 
+- `# Global owners (review required for all files):`
 
-- `@platform-team` 
+- `@platform-team`
 
-**Page 10** 
+**Page 10**
 
 ```
 # Service-specific owners:
@@ -581,7 +581,7 @@ gh api repos/myorg/api-service/branches/main/protection \
 /.github/workflows/    @platform-team @security-team
 ```
 
-### **Repository Rulesets (Organization-Wide)** 
+### **Repository Rulesets (Organization-Wide)**
 
 ```
 # Rulesets can be applied to ALL repositories in an org:
@@ -625,9 +625,9 @@ gh api orgs/myorg/rulesets \
 EOF
 ```
 
-## **13.4 Merge Queue** 
+## **13.4 Merge Queue**
 
-Merge Queue solves the 'pending head problem': when multiple PRs are approved but each was tested against an older main. The queue batches PRs, tests each merge combination, and merges only when the test passes. 
+Merge Queue solves the 'pending head problem': when multiple PRs are approved but each was tested against an older main. The queue batches PRs, tests each merge combination, and merges only when the test passes.
 
 ```
 # Enable merge queue on branch protection:
@@ -641,7 +641,7 @@ on:
 # The merge queue:
 ```
 
-**Page 11** 
+**Page 11**
 
 ```
 # 1. PR approved + all checks pass
@@ -654,7 +654,7 @@ on:
 # 7. If CI fails: remove from queue, notify developer
 ```
 
-## **13.5 OpenSSF Scorecard** 
+## **13.5 OpenSSF Scorecard**
 
 ```
 # Generate and track OpenSSF Security Scorecard:
@@ -699,28 +699,28 @@ jobs:
 # - License            - Security-Policy
 ```
 
-**Page 12** 
+**Page 12**
 
-## **Interview Questions — CI/CD, Secrets & Security** 
+## **Interview Questions — CI/CD, Secrets & Security**
 
-#### **Q: Explain blue-green vs canary deployments and when to use each.** 
+#### **Q: Explain blue-green vs canary deployments and when to use each.**
 
-A: Blue-green maintains two full environments and switches 100% of traffic instantly — ideal for low-latency cutover and immediate rollback, but requires double the infrastructure. Canary shifts traffic gradually (5% → 20% → 100%) enabling metric-driven rollout with limited blast radius — ideal for risky changes or large user bases. Use blue-green for strict compliance requirements (no mixed versions); use canary for normal feature releases. 
+A: Blue-green maintains two full environments and switches 100% of traffic instantly — ideal for low-latency cutover and immediate rollback, but requires double the infrastructure. Canary shifts traffic gradually (5% → 20% → 100%) enabling metric-driven rollout with limited blast radius — ideal for risky changes or large user bases. Use blue-green for strict compliance requirements (no mixed versions); use canary for normal feature releases.
 
-#### **Q: What is SLSA and what does it provide at each level?** 
+#### **Q: What is SLSA and what does it provide at each level?**
 
-A: SLSA (Supply Chain Levels for Software Artifacts) is a framework defining increasing levels of build integrity. Level 1: scripted builds with basic provenance. Level 2: version-controlled build config with authenticated provenance. Level 3: hardened build platform with non-falsifiable provenance (GitHub hosted runners qualify). Level 4: two-person review and hermetic (fully isolated) builds. 
+A: SLSA (Supply Chain Levels for Software Artifacts) is a framework defining increasing levels of build integrity. Level 1: scripted builds with basic provenance. Level 2: version-controlled build config with authenticated provenance. Level 3: hardened build platform with non-falsifiable provenance (GitHub hosted runners qualify). Level 4: two-person review and hermetic (fully isolated) builds.
 
-#### **Q: How does Sigstore keyless signing work?** 
+#### **Q: How does Sigstore keyless signing work?**
 
-A: Instead of managing long-lived signing keys, Sigstore uses short-lived X.509 certificates issued by Fulcio CA based on OIDC identity. The workflow: (1) request OIDC token from GitHub, (2) Fulcio issues a 10-minute certificate embedding the OIDC identity, (3) Cosign signs the artifact with the ephemeral key, (4) the certificate, signature, and artifact hash are logged in Rekor (public transparency log). Verification checks Rekor rather than trusting a stored key. 
+A: Instead of managing long-lived signing keys, Sigstore uses short-lived X.509 certificates issued by Fulcio CA based on OIDC identity. The workflow: (1) request OIDC token from GitHub, (2) Fulcio issues a 10-minute certificate embedding the OIDC identity, (3) Cosign signs the artifact with the ephemeral key, (4) the certificate, signature, and artifact hash are logged in Rekor (public transparency log). Verification checks Rekor rather than trusting a stored key.
 
-#### **Q: Why is pull_request_target dangerous and when is it necessary?** 
+#### **Q: Why is pull_request_target dangerous and when is it necessary?**
 
-A: pull_request_target runs in the base branch context with full secrets access, designed for PRs from forks. It's dangerous because if you add an actions/checkout step, you execute untrusted fork code with secret access. It's necessary for use cases like auto-labeling or commenting on fork PRs (which need write permissions). Safe pattern: use pull_request_target only for actions that use the event payload (github.event.*) without checking out code. 
+A: pull_request_target runs in the base branch context with full secrets access, designed for PRs from forks. It's dangerous because if you add an actions/checkout step, you execute untrusted fork code with secret access. It's necessary for use cases like auto-labeling or commenting on fork PRs (which need write permissions). Safe pattern: use pull_request_target only for actions that use the event payload (github.event.*) without checking out code.
 
-#### **Q: What is the difference between GitHub Secrets, Variables, and Environments?** 
+#### **Q: What is the difference between GitHub Secrets, Variables, and Environments?**
 
-A: Secrets store sensitive encrypted values (API keys, passwords) masked in logs. Variables store non-sensitive configuration in plaintext (regions, URLs). Environments group secrets/variables with protection rules (required reviewers, deployment branches) for specific deployment targets. Secrets and variables can be scoped to enterprise, org, repo, or environment. Environment-scoped secrets override repo-scoped ones with the same name. 
+A: Secrets store sensitive encrypted values (API keys, passwords) masked in logs. Variables store non-sensitive configuration in plaintext (regions, URLs). Environments group secrets/variables with protection rules (required reviewers, deployment branches) for specific deployment targets. Secrets and variables can be scoped to enterprise, org, repo, or environment. Environment-scoped secrets override repo-scoped ones with the same name.
 
 **Page 13**

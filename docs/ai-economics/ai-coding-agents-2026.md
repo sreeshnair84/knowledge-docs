@@ -13,6 +13,7 @@ research_date: 2026-07-10
 ---
 
 # AI Coding Agent Assistants: The Complete 2026 Landscape
+
 ## Caveman, Ruflo, and Every Major Tool — Deep Research Guide
 
 > **The market in one sentence:** In 2026, "AI coding assistant" covers five distinct shapes — token-compression skills, terminal agents, agentic IDEs, fully autonomous cloud engineers, and multi-agent orchestration platforms. Picking the wrong category costs months. This guide maps the whole space.
@@ -54,7 +55,7 @@ The category itself has fractured. In 2024 you had GitHub Copilot and a handful 
 **Key 2026 pricing snapshot:**
 
 | Tool | Entry Price | Heavy Use |
-|---|---|---|
+| --- | --- | --- |
 | Cline | Free (API costs only) | ~$50–$150/mo API |
 | GitHub Copilot | $10/mo Pro | $19/mo Business, $39/mo Pro+ |
 | Windsurf | $20/mo (was $15) | $20/mo Pro |
@@ -135,7 +136,7 @@ Code, URLs, file paths, and technical accuracy remain byte-perfect. Only the nat
 #### Compression Levels
 
 | Level | Behavior |
-|---|---|
+| --- | --- |
 | `/caveman lite` | Light compression; removes filler, keeps most prose |
 | `/caveman full` | Default; telegraphic fragments, drops articles |
 | `/caveman ultra` | Extreme compression; minimal prose |
@@ -149,6 +150,7 @@ Auto-triggers on efficiency requests; reverts to normal mode for security warnin
 #### Real Benchmark Numbers
 
 Claimed: 75% output token reduction. Honest benchmarks:
+
 - Discursive text output: **61–68% reduction**
 - But discursive text is ~25% of a total session
 - **Overall session savings: 4–10%** on real workloads
@@ -159,6 +161,7 @@ A March 2026 arXiv paper ("Brevity Constraints Reverse Performance Hierarchies")
 #### Annual Savings Math (Real Numbers)
 
 Using Claude Sonnet pricing (~$15/million output tokens, early 2026):
+
 - 10,000 API calls/day × 200 avg output tokens = 2M output tokens → ~$30/day
 - With 70% reduction: 600K output tokens → ~$9/day
 - **Annual savings: ~$7,665 for a single moderate-volume pipeline**
@@ -201,7 +204,7 @@ Unlike every other tool in this list, Ruflo is not a UI or an IDE — it's the *
 #### Key Differentiators vs. Other Tools
 
 | Dimension | Ruflo | Others |
-|---|---|---|
+| --- | --- | --- |
 | Agent count | ~100 parallel | 1–5 agents |
 | Memory | Persistent across sessions (AgentDB) | Ephemeral or basic |
 | Learning | Self-optimizes from past executions | Static |
@@ -230,6 +233,7 @@ Setup complexity is higher than any other tool in this list. Budget experimentat
 Claude Code is Anthropic's CLI-driven coding agent. It's terminal-native, project-aware, and designed for long-context multi-file agentic work. It does not live inside an IDE — it runs in your terminal and operates on your codebase directly.
 
 Key characteristics:
+
 - **Longest reasoning ceiling** of any tool (Opus 4.8 access)
 - Reads entire codebases, maintains project context across long sessions
 - Can execute terminal commands, run tests, create files, and iterate
@@ -255,6 +259,7 @@ Real-world heavy use runs $100–200/month. The agentic features handle 5–15-s
 Cursor is a VS Code fork with deep AI integration — the most mature agentic IDE ecosystem in 2026. It has the widest array of features, the most polished developer experience, and the largest community of agentic IDE tools.
 
 Key features:
+
 - **Composer / Composer 2.5:** Multi-file AI editing with project-wide context
 - **Build in Parallel (Cursor 3):** Parallel agent workstreams within the IDE
 - **Model access:** Supports Claude, GPT, Gemini, and local models
@@ -300,6 +305,7 @@ The acquisition created direction uncertainty — the Cognition ownership raises
 GitHub Copilot is the most widely adopted AI coding tool. It's embedded in VS Code, JetBrains, Visual Studio, and others. It started as autocomplete-and-chat; in 2026, **Agent Mode** shipped with MCP support, turning Copilot from a completion tool into something closer to an actual agent.
 
 Key 2026 developments:
+
 - **Agent Mode + MCP:** Copilot can now call external tools, making it genuinely agentic
 - **Copilot Extensions:** Third-party integrations via Skills system
 - **VS 2026 Agent Mode:** Full Skills workflow inside Visual Studio 2026 — discover, manage, author Copilot Skills with whole-solution context
@@ -327,6 +333,7 @@ Cline is an open-source VS Code extension that functions as a full coding agent 
 It's the **vendor-independence play**. No lock-in to one model provider. No subscription to cancel. Full control over which model runs which task.
 
 Tradeoffs:
+
 - You manage your own API keys, budgets, and model selection
 - UX is functional but not as polished as Cursor or Windsurf
 - No built-in model routing (you pick the model manually)
@@ -351,6 +358,7 @@ The go-to tool for developers who want **cost control and provider independence*
 Devin is genuinely a different category from every other tool on this list. It is not a coding assistant — it is an **autonomous software engineer** that you assign work to and walk away from.
 
 How it works:
+
 1. You give Devin a task (from Linear, Jira, Slack, plain text)
 2. Devin gets a fresh sandboxed VM with its own IDE, browser, terminal, and shell
 3. It reads documentation, installs packages, writes code, runs tests, creates a pull request, and iterates on review feedback — **entirely on its own**
@@ -392,6 +400,7 @@ The 2026 consensus: Devin **replaces tasks, not roles**. It acts as a force mult
 #### What It Is
 
 OpenAI Codex (the 2025 AI agent, distinct from the original 2021 code model) is available as:
+
 - **Codex CLI:** Terminal-native coding agent
 - **Codex Cloud:** Background cloud agent (assign tasks, come back to results)
 - **Desktop app:** macOS and Windows (shipped 2026)
@@ -422,6 +431,7 @@ Codex is positioned as a broader enterprise agent platform that could expand bey
 Google Antigravity is Google's agent-first IDE, built from scratch rather than forked from VS Code. The April 2026 update overhauled the permissions system and integrated **AgentKit 2.0** with deeper agent-building capabilities.
 
 Key features:
+
 - **Dual interface views:** Standard editor + Agent Manager panel
 - **A2A (Agent-to-Agent) protocol support:** A Antigravity agent can discover and invoke agents built with LangGraph, CrewAI, or any other A2A-compatible framework
 - **Antigravity 2.0 (May 19, 2026):** Dynamic subagents, scheduled background tasks (cron-style), async long-running tasks, Antigravity CLI (Go), public SDK, Gemini 3.5 Flash integration
@@ -448,6 +458,7 @@ Active CVEs noted in independent evaluations and limited enterprise documentatio
 Kiro is AWS's strategic entry into agentic coding, encompassing what was previously Amazon Q Developer CLI. Its defining philosophy: **spec-driven development**.
 
 Before writing any code, Kiro generates and enforces three spec documents:
+
 1. **Requirements** (EARS format — Easy Approach to Requirements Syntax)
 2. **Design** (system structure, interfaces, data flows)
 3. **Tasks** (implementation plan, scoped units of work)
@@ -457,7 +468,7 @@ Only after you validate these does Kiro write code. The agent architecture proce
 #### Kiro vs. Antigravity
 
 | Dimension | Kiro | Antigravity |
-|---|---|---|
+| --- | --- | --- |
 | Spec philosophy | Enforced before code (EARS format) | Artifacts generated alongside code |
 | Agent architecture | Sequential with hooks | Parallel multi-agent |
 | Enterprise readiness | Strong (AWS-native) | Improving (limited docs) |
@@ -506,6 +517,7 @@ Aider wins on **git-native open-source CLI work**. It's the tool for developers 
 Amazon Q Developer is AWS's AI coding companion — deeply integrated with the AWS ecosystem (CloudFormation, CDK, Lambda, CodePipeline, etc.). It lives inside VS Code, JetBrains, and the AWS Console itself.
 
 Beyond standard coding assistance, Q Developer can:
+
 - Explain and generate AWS infrastructure-as-code
 - Debug AWS Lambda functions with context from CloudWatch logs
 - Suggest security remediations for AWS-specific vulnerabilities
@@ -538,7 +550,7 @@ Best for large teams with large codebases where understanding the existing syste
 ## 4. Comparison Matrix
 
 | Tool | Category | Price/mo | Model Lock-in | Best SWE Task | Agentic Level |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **Caveman** | Token skill | Free | None (works on all) | Cost reduction | N/A (modifier) |
 | **Ruflo** | Orchestration | Free + API | Claude / multi | Complex parallel dev | ⭐⭐⭐⭐⭐ |
 | **Claude Code** | Terminal agent | $20–200 | Claude | Large autonomous tasks | ⭐⭐⭐⭐⭐ |
@@ -603,6 +615,7 @@ TASK: "We have a huge private codebase and need AI that understands it"
 The most effective developers in 2026 don't pick one tool — they combine two or three:
 
 **Combo A: The Daily Driver Stack (most common)**
+
 ```
 Cursor (IDE, inline edits, multi-file work)
 + Claude Code (terminal, large autonomous tasks)
@@ -610,6 +623,7 @@ Cursor (IDE, inline edits, multi-file work)
 ```
 
 **Combo B: The Cost-Controlled Stack**
+
 ```
 Cline (BYOM, VS Code, no markup)
 + Caveman (60–75% output token reduction)
@@ -617,6 +631,7 @@ Cline (BYOM, VS Code, no markup)
 ```
 
 **Combo C: The Enterprise Parallel Stack**
+
 ```
 Ruflo (multi-agent orchestration, SPARC methodology)
 + Claude Code (execution layer)
@@ -624,12 +639,14 @@ Ruflo (multi-agent orchestration, SPARC methodology)
 ```
 
 **Combo D: The Google-Native Stack**
+
 ```
 Google Antigravity (IDE + multi-agent)
 + OpenAI Codex or Claude Code (cross-provider fallback via A2A)
 ```
 
 **Combo E: The AWS-Native Stack**
+
 ```
 Kiro (spec-driven IDE)
 + Amazon Q Developer (infrastructure-aware context)
@@ -642,7 +659,7 @@ Kiro (spec-driven IDE)
 **SWE-bench Verified** (% of real GitHub issues solved autonomously):
 
 | Tool / Setup | Score |
-|---|---|
+| --- | --- |
 | Google Antigravity | 76.2% |
 | Claude Code (Opus 4.8) | High (deepest reasoning ceiling) |
 | Devin | 67% PR merge rate on defined tasks |
@@ -654,7 +671,7 @@ Kiro (spec-driven IDE)
 **Caveman token compression benchmarks:**
 
 | Task Type | Output Token Reduction |
-|---|---|
+| --- | --- |
 | Discursive/explanatory text | 61–68% |
 | Mixed code + prose sessions | 4–10% overall |
 | Pure code generation | 0% (code preserved exactly) |

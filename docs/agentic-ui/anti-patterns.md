@@ -20,7 +20,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## Master Index
 
 | Name | Category | Severity | Detectability |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Chat-first Architecture | Architecture | Critical | Medium |
 | Monolithic Agent | Architecture | High | Easy |
 | No Agent Scope Boundary | Architecture | Critical | Medium |
@@ -182,7 +182,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 1. Architecture Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Chat-first Architecture** | Building the agentic system on top of chatbot logic — request/response pairs with no persistent state, no tool integration layer, no plan execution. | Feature ceiling: can't do multi-step tasks without rewriting from scratch. | Codebase has no planning or tool layer; everything goes through a single chat API call. | Adopt agent-native patterns (ReAct, plan-then-execute) from the start. |
 | **Monolithic Agent** | One agent handles all tasks, all domains, and all tools with no decomposition. | Exponential prompt complexity, context overflow, worse performance at scale. | Single agent with 30+ tools and a massive system prompt. | Decompose into specialist agents behind a supervisor/router. |
 | **No Agent Scope Boundary** | No explicit definition of what the agent is and isn't allowed to do. Scope expands with each new feature request. | Scope creep leads to unpredictable behavior, security gaps, and unmaintainable prompts. | Agent's stated capabilities have grown beyond original design without a review. | Define bounded capability spec at registration. Gate new capabilities through ARB review. |
@@ -209,7 +209,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 2. UX Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Reasoning Overexposure** | Displaying raw chain-of-thought, internal monologue, or tool call details to non-technical end users. | Confuses users; creates false impressions about how AI works; exposes internal system details. | Non-technical user research shows confusion at "thinking" steps. | Show summarized status ("Searching company knowledge base...") instead of raw CoT. Offer expanded view for power users. |
 | **Hidden Agent Actions** | Agent modifies documents, sends messages, or executes actions without surfacing what it did in the UI. | Users lose trust when they discover things happened they didn't know about. Creates accountability gaps. | Audit log has actions not shown in the conversation timeline. | Surface all consequential actions inline in the conversation with timestamps and undo options. |
 | **No Progress Indicator** | Long-running multi-step tasks show no indication of what stage they are at or how long remains. | Users don't know if the agent is working or broken. Abandonment rate spikes after 10 seconds of silence. | User testing shows rage-clicks and F5 refreshes after silent pauses. | Stream progress events: step name, completion percentage, ETA for each tool call. |
@@ -236,7 +236,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 3. Security Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Prompt Spaghetti** | Unvalidated user input concatenated directly into system prompt or few-shot examples without sanitization. | Direct prompt injection: user can override system prompt, jailbreak guardrails, or exfiltrate data. | System prompt construction involves string concatenation of user-supplied strings. | Strictly separate user input from system prompt. Treat user input as data, not instruction. Use structured prompts. |
 | **Overprivileged Agent** | Agent has access to tools and APIs far beyond what its stated task requires. | If agent is compromised via prompt injection, attacker gains access to all connected systems. | Agent's tool list includes capabilities not needed for any of its defined use cases. | Principle of least privilege: scope tools to task. Request additional tools only when needed, with user approval. |
 | **Token Forwarding Without Scope** | Agent forwards the user's full access token to downstream APIs without narrowing scopes. | Downstream API receives more privilege than the agent should have. OBO chains may grant unintended access. | Agent passes received token directly without exchanging for scoped token. | Use OBO/Token Exchange to request minimum required scopes for each downstream call. Never forward tokens verbatim. |
@@ -263,7 +263,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 4. Context Engineering Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Context Bloat** | Every available data source is injected into context regardless of relevance. | Token cost grows exponentially; model performance degrades; context limit errors. | Average context size > 60% of max window for typical queries. | Implement selective retrieval. Score every candidate fragment by relevance before injection. |
 | **No Context Compression** | Full retrieved documents injected verbatim instead of compressed summaries. | Wasted token budget; important information squeezed out by irrelevant document filler. | Retrieved text occupies > 50% of context but provides < 10% of useful signal. | Apply contextual compression (LLMLingua, RECOMP) before injection. Target 3-5x compression on retrieved docs. |
 | **Stale Context** | Cached context fragments are reused without freshness validation. | Agent answers questions based on outdated information without surfacing that the information may be stale. | Agent gives answers that contradict the current state of the system/data. | Add timestamp to every retrieved fragment. Validate freshness before injection. Reject fragments older than TTL threshold. |
@@ -285,7 +285,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 5. Memory Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Memory Leak** | Agent continuously adds to memory stores with no eviction, archival, or size limits. | Storage costs grow unboundedly. Memory retrieval quality degrades as noise accumulates. | Memory store size grows monotonically with no plateau. | Implement TTL-based eviction. Archive low-relevance memories. Cap memory store size per user. |
 | **No TTL** | Memory entries have no expiry date and are retained indefinitely. | Memory about a user's job at Company X retained 3 years after they left. Irrelevant or wrong personalization. | Memory store contains entries with `created_at` but no `expires_at`. | Assign TTL to every memory type. Preferences: 6 months. Episodic: 90 days. Procedural: 1 year. Review periodically. |
 | **Cross-tenant Contamination** | Shared memory pool across all users; no namespace isolation by tenant or user. | User A's memories leak to User B's sessions. PII exposure. Regulatory violation. | Memory queries return results from other users' sessions. | Namespace every memory entry with `tenant_id` + `user_id`. Enforce partition in every read/write operation. |
@@ -307,7 +307,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 6. Tool Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Tool Explosion** | Agent has 30, 50, or 100+ tools registered, all visible in the context window simultaneously. | LLM tool selection quality degrades measurably above 20 tools. Model picks wrong tool or combines tools incorrectly. | Tool selection accuracy in eval drops as tool count increases. | Group tools by domain. Dynamically load only relevant tools based on task routing. Keep active tool list under 15-20. |
 | **Tool Ambiguity** | Multiple tools have overlapping descriptions or nearly identical capabilities, making it unclear which to choose. | LLM picks the wrong tool, or alternates between tools inconsistently. | Two tools called `search_documents` and `find_documents` with similar descriptions. | Audit tool descriptions for uniqueness. Consolidate overlapping tools. Make descriptions explicitly exclusive. |
 | **Idempotency Failure** | Tools that write data are not idempotent; calling them twice creates duplicate records, sends duplicate emails, or charges twice. | Agent retries on timeout and the action executes twice. Duplicate records, double charges, spam. | Tool has no deduplication key. Retries on failure are unguarded. | Design all write tools to be idempotent via idempotency key. Return the original result on duplicate call. |
@@ -329,7 +329,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 7. Evaluation Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **No Evaluation** | Agent is deployed to production without any automated evaluation. | No quality baseline. Regressions go undetected. No data to improve the system. | No evaluation runs in CI/CD pipeline. No quality metrics in dashboard. | Implement minimum viable eval before first production deployment: 20-30 golden examples, basic quality metrics. |
 | **Happy-path-only Tests** | Evaluation only covers well-formed, polite, in-scope requests. | Edge cases, adversarial inputs, and ambiguous queries fail silently in production. | Eval dataset contains only textbook-correct queries with unambiguous answers. | Include edge cases: ambiguous queries, out-of-scope requests, adversarial inputs, multi-turn conversations, recovery from errors. |
 | **Golden Dataset Rot** | Golden evaluation dataset was created at launch and never updated as the system or world changed. | Baseline drifts from actual user behavior. Model optimized for old distribution underperforms on current queries. | Golden dataset accuracy improves over time while real-world quality declines. | Review and update golden dataset quarterly. Add examples from recent production failures. |
@@ -351,7 +351,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 8. Governance Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **No AI Governance** | Agents deployed without any governance process: no review, no risk assessment, no oversight structure. | Compliance exposure. Unreviewed agents cause harm. No accountability when things go wrong. | Agents deployed without ARB review or risk assessment. | Establish minimum viable governance: registration, risk tier classification, review gate, lifecycle policy. |
 | **Shadow AI** | Business units deploy agents without IT, security, or platform team knowledge. | Unvetted models, uncontrolled data access, no security review, no audit trail. | IT discovers agents in production they didn't know existed. | Establish AI governance program with discovery process. Create approved platform that makes "official" agents easy enough that shadow AI is unattractive. |
 | **Approval-by-Committee** | Every governance decision requires a committee of 10+ people; approval takes weeks. | Teams bypass governance to meet delivery timelines. Governance theater develops. | Average time from submission to governance decision > 2 weeks. | Implement risk-tiered governance: low-risk agents self-service with checklist; high-risk agents get full review. Target 48-hour SLA for standard reviews. |
@@ -373,7 +373,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 9. Operations Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **No Rollback Plan** | Agent deployed with no documented rollback procedure. | When things go wrong, rollback coordination takes hours; problem persists while team figures out process. | Incident post-mortem reveals rollback took > 2 hours due to no documented procedure. | Before every deployment, document the rollback procedure: what triggers it, how to execute, who authorizes it. |
 | **Deploy-and-Forget** | Agent deployed to production with no ongoing monitoring, quality tracking, or health checks. | Quality drift, performance degradation, and accumulating failures go unnoticed until user complaints spike. | No monitoring dashboard. No alerts. Problems first reported by users. | Implement minimum monitoring: task success rate, P95 latency, error rate, cost per session. Set alert thresholds. |
 | **Alert Fatigue** | Every INFO log entry and minor warning triggers a PagerDuty alert. | On-call engineers ignore all alerts because they're overwhelmed with noise. Critical alerts missed. | On-call team acknowledges all alerts as false positives without investigation. | Tier alerts by severity. Only page on actionable, high-severity conditions. Route informational alerts to dashboard, not pager. |
@@ -390,7 +390,7 @@ A comprehensive reference of 150+ failure modes across architecture, UX, securit
 ## 10. Deployment Anti-patterns
 
 | Name | Description | Risk | Detection | Mitigation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Big-bang Deployment** | New agent version deployed to 100% of users simultaneously with no gradual rollout. | Regression affects all users at once; rollback requires coordination while all users are impacted. | Deployment strategy is "all at once." | Canary release: 1% → 5% → 25% → 100% with automatic rollback if quality metrics regress. |
 | **No Shadow Mode** | New agent version never run in shadow mode (parallel execution, results compared, no user impact). | First real traffic exposure reveals problems that shadow mode would have caught. | No shadow testing capability exists. | Run new agent version in shadow mode on 10% of production traffic before canary. Compare results against production version. |
 | **Insufficient Load Testing** | Agent platform load-tested at expected average load, not at peak or stress scenarios. | 3x traffic spike causes outage. Auto-scaling doesn't respond fast enough. | Platform behaves correctly up to 100 concurrent users; crashes at 500. | Load test at 2-3x expected peak. Validate auto-scaling responds before limits are reached. Include streaming workloads in load tests. |

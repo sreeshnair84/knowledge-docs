@@ -168,13 +168,17 @@ user's token for the target
 service
 Original user identity (sub)
 On-Behalf-Of (OBO)
+
 ## Rfc 8693 / Ms Obo
+
 Multi-hop: AI platform A →
 Service B → API C
 User identity propagated
 through the chain
 Token Exchange
+
 ## Rfc 8693
+
 Cross-domain token
 translation (e.g. Entra →
 GitHub)
@@ -186,7 +190,9 @@ Standard
 When to Use
 Resulting Identity
 JWT Bearer Assertion
+
 ## Rfc 7523
+
 Service asserting user
 identity without direct user
 token
@@ -195,7 +201,9 @@ Asserted user identity
 SAML Bearer Assertion
 OAuth 2.0 SAML 2.0 Profile
 Legacy SAML IdP → OAuth
+
 ### 2.0 API
+
 SAML NameID mapped to
 API user
 
@@ -219,7 +227,7 @@ requested_token_use=on_behalf_of
 ↓
 assertion=
 ↓
-scope=https://graph.microsoft.com/Files.ReadWrite
+scope=<https://graph.microsoft.com/Files.ReadWrite>
 ↓
 Entra ID validates that AI platform app has 'Act on behalf of user' (Scp claim)
 ↓
@@ -270,7 +278,9 @@ Basic Auth only
 NO (no token exchange
 possible)
 Privileged service account
-+ extra audit
+
+- extra audit
+
 Identity propagation lost;
 compliance risk
 AI A calls AI B

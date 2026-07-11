@@ -62,7 +62,7 @@ Microsoft Entra Agent ID reached general availability on May 1, 2026 as part of 
 Entra Agent ID introduces a three-tier identity hierarchy:
 
 | Tier | Object | Purpose |
-|------|--------|---------|
+| ------ | -------- | --------- |
 | Blueprint | Agent Identity Blueprint | Reusable template defining the security envelope for a class of agents. Sets allowed scopes, lifecycle policies, owner/sponsor assignments, and Conditional Access requirements. |
 | Identity | Agent Identity | The actual identity instance created from a Blueprint. A special service principal in Entra ID with no credentials of its own — tokens are acquired via the Blueprint. |
 | User | Agent User Account | A backing user identity for on-behalf-of (OBO) scenarios. Enables an agent to acquire user-scoped tokens that carry the user's identity claims to downstream services. |
@@ -175,7 +175,7 @@ AWS AgentCore Identity reached general availability in October 2025, several mon
 AgentCore Identity is built around **Workload Identities** — a stable identity anchor that abstracts multiple credential types (IAM, OAuth2, API keys) behind a unified interface.
 
 | Component | Description |
-|-----------|-------------|
+| ----------- | ------------- |
 | Workload Identity | The primary identity object for an agent. Identified by a Workload Identity ARN. Created automatically via AgentCore Runtime/Gateway, or manually. |
 | Token Vault | Secure storage for OAuth refresh tokens, enabling agents to maintain long-lived access to third-party services without re-authorisation. |
 | Credential Providers | Configured connections to external OAuth services (Microsoft Graph, Salesforce, etc.). Agents call `GetResourceOauth2Token` for a scoped token per downstream service. |
@@ -301,7 +301,7 @@ The most powerful enterprise pattern combines both platforms: agents built and d
 ### 4.1 Architecture Flow
 
 | Step | Actor | Action |
-|------|-------|--------|
+| ------ | ------- | -------- |
 | 1 | User | Authenticates via your app using Entra ID (or Cognito/Okta). App receives a user JWT. |
 | 2 | App | Calls the AWS-hosted Bedrock agent, passing the user JWT as a bearer token. |
 | 3 | AgentCore | Validates the inbound token via OIDC against your IdP (Entra/Cognito). |
@@ -384,7 +384,7 @@ class CrossCloudAgent:
 ## 5. Feature Comparison
 
 | Feature | Microsoft Entra Agent ID | AWS AgentCore Identity |
-|---------|--------------------------|------------------------|
+| --------- | -------------------------- | ------------------------ |
 | **GA Date** | May 1, 2026 | October 2025 |
 | **Identity Model** | Service Principal (Blueprint + Instance) | Workload Identity (auto or manual) |
 | **User Delegation** | Native OBO via Entra grant | OBO Token Exchange (April 2026) |

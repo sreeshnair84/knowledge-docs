@@ -18,7 +18,7 @@ tags: ["ai-protocols", "auth"]
 *GENAI Agent Foundry · June 2026*
 
 | | |
-|---|---|
+| --- | --- |
 | **Scope** | 3-Legged OAuth enabling agents to act on behalf of users |
 | **Consumers** | M365 (Graph API), GitHub Enterprise (GHE), Atlassian (Jira/Confluence) |
 | **Compiled** | June 2026 |
@@ -54,7 +54,7 @@ A simple "redirect and store the token" approach works in demos but fails under 
 ### 1.2 The Three Identity Questions Agents Must Answer
 
 | Question | Traditional Answer | Agent-Specific Answer |
-|----------|-------------------|-----------------------|
+| ---------- | ------------------- | ----------------------- |
 | Who is acting? | The authenticated user | The agent acting FOR the user (dual identity) |
 | What can they do? | User's role/permission set | Intersection of user permissions AND agent-granted scopes |
 | For how long? | Browser session lifetime | Until task complete or token revoked — even days later |
@@ -66,7 +66,7 @@ A simple "redirect and store the token" approach works in demos but fails under 
 ### 2.1 Core RFCs
 
 | RFC / Spec | What It Defines | Agent Relevance |
-|-----------|----------------|----------------|
+| ----------- | ---------------- | ---------------- |
 | RFC 6749 | OAuth 2.0 — Auth Code Grant (3LO), Client Credentials (2LO) | Foundation for all agent auth flows |
 | RFC 7636 PKCE | Proof Key for Code Exchange — binds code to verifier | Mandatory for public clients; prevents code injection |
 | RFC 8693 | Token Exchange — OBO flow: swap user token for agent-scoped token | Core mechanism for agent acting on behalf of user |
@@ -80,7 +80,7 @@ A simple "redirect and store the token" approach works in demos but fails under 
 The 3-Legged OAuth flow involves three parties: the Client (the AI agent/app), the Authorization Server (Entra ID / Atlassian auth), and the Resource Owner (the user). Unlike 2LO (machine-to-machine), 3LO requires explicit user consent before any token is issued.
 
 | Step | Actor | Action / Token |
-|------|-------|---------------|
+| ------ | ------- | --------------- |
 | 1 | Agent/App | Redirect user to `/authorize?client_id=…&scope=…&code_challenge=PKCE_HASH&state=CSRF_TOKEN` |
 | 2 | Auth Server | Display consent screen showing what the agent will access on user's behalf |
 | 3 | User | Grant (or deny) access; Auth Server issues short-lived `authorization_code` |
@@ -114,7 +114,7 @@ scope=https://graph.microsoft.com/Mail.Read
 Microsoft Entra Agent ID introduces a purpose-built identity model that separates identity definition from identity instances:
 
 | Tier | Object | Purpose |
-|------|--------|---------|
+| ------ | -------- | --------- |
 | 1 — Blueprint | Agent Identity Blueprint (App Registration) | Template defining agent type, permissions, credential type. Admin sets Conditional Access here. One blueprint → many instances. |
 | 2 — Identity | Agent Identity (Service Principal child) | Per-deployment instance. Holds scoped permissions. Can impersonate Agent User. Token exchange uses FIC → MSI chain. |
 | 3 — User | Agent User Account (optional) | Synthetic user principal for agents that need a mailbox, calendar, or full user-scoped Graph access. |
@@ -149,7 +149,7 @@ Step 3: Agent calls resource API with resulting delegated token
 ### 3.3 Supported Grant Types for Agent Entities
 
 | Grant Type | Supported By | Use Case |
-|-----------|-------------|---------|
+| ----------- | ------------- | --------- |
 | `client_credentials` | Blueprint + Identity | Bootstrap token for FIC chain; autonomous app-only operations |
 | `jwt-bearer` (OBO) | Blueprint + Identity | User-delegated access; agent acts on behalf of signed-in user |
 | `refresh_token` | Agent Identity | Background long-running tasks; maintain user context across sessions |
@@ -161,7 +161,7 @@ Step 3: Agent calls resource API with resulting delegated token
 ### 3.4 Microsoft Entra Agent ID — Governance Capabilities
 
 | Capability | Mechanism | Benefit |
-|-----------|-----------|---------|
+| ----------- | ----------- | --------- |
 | Conditional Access | Apply CA policies to Blueprint → all instances inherit | Enforce MFA, location, risk-based controls on agents |
 | Access Packages | Entitlement Management API assigns scoped permissions | Governed, time-bound access; auto-expiry with sponsor notification |
 | Access Reviews | Periodic review of agent identity permissions | Compliance: verify agent still needs its access |
@@ -178,7 +178,7 @@ Step 3: Agent calls resource API with resulting delegated token
 Traditional API gateways sit in front of APIs, controlling inbound traffic. Agentic architectures are different — the agent itself mediates between user and infrastructure. The AC Gateway must therefore operate as a **policy enforcement point** at the execution layer. It owns three distinct planes:
 
 | Plane | Responsibility | Key Mechanism |
-|-------|---------------|--------------|
+| ------- | --------------- | -------------- |
 | Inbound Auth | Validate who is calling the agent | Verify Entra bearer token; extract user OID + agent identity |
 | Access Control | What can this agent do for this user? | OPA/PDP policy: RBAC + ABAC + approval thresholds |
 | Outbound Auth | Credential to call downstream API | Per-user credential vault; 3LO refresh token → access token; agent never sees raw credentials |
@@ -186,7 +186,7 @@ Traditional API gateways sit in front of APIs, controlling inbound traffic. Agen
 ### 4.2 Token Lifecycle at the Gateway
 
 | Event | Gateway Action |
-|-------|---------------|
+| ------- | --------------- |
 | User first consent | Store `\{access_token, expires_at, refresh_token, scopes, provider_metadata}` encrypted, keyed by `(user_id, provider)` |
 | Agent makes tool call | Lookup credential vault; if `access_token` valid → inject; if expiring → refresh first |
 | Token near expiry (80%) | Background proactive refresh; acquire per-(user,provider) distributed lock to avoid race conditions |
@@ -197,7 +197,7 @@ Traditional API gateways sit in front of APIs, controlling inbound traffic. Agen
 ### 4.3 2LO vs 3LO Decision Framework
 
 | Condition | Use 2LO (Client Credentials) | Use 3LO (Auth Code) |
-|-----------|------------------------------|---------------------|
+| ----------- | ------------------------------ | --------------------- |
 | Data ownership | Org-level / shared data (no user owner) | User's personal data (email, calendar, issues assigned to them) |
 | Consent | Admin pre-consents once for all agents | Each user must explicitly consent (GDPR requirement) |
 | Token subject | Application identity (agent) | User identity (delegated; user + agent named) |
@@ -207,7 +207,7 @@ Traditional API gateways sit in front of APIs, controlling inbound traffic. Agen
 ### 4.4 Production Runtime Flow (End-to-End)
 
 | # | Stage | Detail |
-|---|-------|--------|
+| --- | ------- | -------- |
 | 1 | User prompt | User: "Close ticket DEMO-123 in Jira" |
 | 2 | Agent plan | LLM determines: call Jira API → update issue status |
 | 3 | Gateway inbound | Validate user Entra bearer token; extract `user_oid` |
@@ -227,7 +227,7 @@ Traditional API gateways sit in front of APIs, controlling inbound traffic. Agen
 Graph API is the primary target for M365 user-delegated access. The agent must use the OBO flow (Section 3.2) to exchange the user's Entra token for a Graph-scoped delegated token.
 
 | Scope | Access Granted | Notes |
-|-------|---------------|-------|
+| ------- | --------------- | ------- |
 | `Mail.Read` | Read user's email | Delegated; requires user consent |
 | `Mail.Send` | Send email as user | High risk; consider CIBA approval gate |
 | `Calendars.ReadWrite` | Read/write user calendar | Delegated |
@@ -243,7 +243,7 @@ Graph API is the primary target for M365 user-delegated access. The agent must u
 GHE supports both OAuth Apps (user-delegated 3LO) and GitHub Apps (installation-scoped 2LO). For agent access to user-owned repositories, OAuth App with 3LO is required.
 
 | Aspect | Detail |
-|--------|--------|
+| -------- | -------- |
 | Authorization URL | `https://\{ghe-host}/login/oauth/authorize?client_id=…&scope=repo read:user` |
 | Token URL | `https://\{ghe-host}/login/oauth/access_token` |
 | Scopes | `repo` (full repo access), `read:org`, `read:user`, `workflow` — use minimal set |
@@ -275,7 +275,7 @@ API Call:
 ```
 
 | Key Scope | Permission Granted |
-|-----------|-------------------|
+| ----------- | ------------------- |
 | `read:jira-work` | Read issues, projects, workflows |
 | `write:jira-work` | Create/update issues, transitions |
 | `read:jira-user` | Read user profiles |
@@ -286,7 +286,7 @@ API Call:
 
 :::note Atlassian Scope Behaviour
     User permissions always constrain the app. If a user lacks "Administer Jira", the agent cannot administer Jira even if the scope is granted. Least privilege is automatic.
-    
+
     Rotating refresh tokens: each use issues a new `refresh_token`. The gateway must store the latest one atomically.
 
 ---
@@ -294,7 +294,7 @@ API Call:
 ## 6. Industry: Who Has Productionised 3LO for AI Agents
 
 | Organisation | Product / Pattern | Key Production Details | Status |
-|-------------|------------------|----------------------|--------|
+| ------------- | ------------------ | ---------------------- | -------- |
 | AWS / Amazon Bedrock | AgentCore Identity | Full 3LO + 2LO. Secure token vault with KMS encryption. Per user+agent credential isolation. `@requires_access_token` decorator handles entire consent + refresh flow. Pre-built integrations: GitHub, Slack, Salesforce, Google Drive. | GA (Sept 2025) |
 | Microsoft | Entra Agent ID + Microsoft.Identity.Web | Blueprint→Identity→OBO chain. FIC+MSI as preferred credential (no secrets). `services.AddAgentIdentities()` in .NET SDK. Conditional Access, Identity Protection, Access Reviews all extended to agents. | GA 2026 |
 | Atlassian | 3LO for Forge/Connect apps | Rotating refresh tokens. `offline_access` scope for background agents. `cloudId`-based API routing. Account-level consent (per-user, per-site). | Production (long-standing) |
@@ -337,7 +337,7 @@ code_challenge = BASE64URL(SHA256(code_verifier))
 ### 7.2 Threat Model & Mitigations
 
 | Threat | Attack Vector | Mitigation |
-|--------|--------------|-----------|
+| -------- | -------------- | ----------- |
 | Token theft | Stolen `access_token` used by attacker | Short TTL (minutes). mTLS binding. Monitor for concurrent use from different IPs. |
 | Refresh token theft | Stolen `refresh_token` used to mint new access tokens | Refresh token rotation: stolen token triggers detection (legitimate client fails next refresh). |
 | Prompt injection → token misuse | Malicious input tricks agent into using tokens for unintended actions | PDP policy check at gateway; action is independent of LLM output. Zero trust: LLM not trusted for auth decisions. |
@@ -352,7 +352,7 @@ code_challenge = BASE64URL(SHA256(code_verifier))
 Client-Initiated Backchannel Authentication (CIBA) is an OAuth 2.0 extension for decoupled, asynchronous user approval for irreversible or high-risk actions.
 
 | Step | Action |
-|------|--------|
+| ------ | -------- |
 | 1 | Agent identifies high-risk action (e.g., "send email to all-company list", "delete Jira project") |
 | 2 | Agent sends CIBA authorisation request to Auth Server |
 | 3 | Auth Server sends push notification to user's mobile device |
@@ -370,7 +370,7 @@ Client-Initiated Backchannel Authentication (CIBA) is an OAuth 2.0 extension for
 ### 8.1 Phased Delivery Roadmap
 
 | Phase | Milestone | Key Activities |
-|-------|-----------|---------------|
+| ------- | ----------- | --------------- |
 | **Phase 0** (Unblocked now) | Alignment & Design | 1. Document 3LO pattern. 2. Security/Identity meeting: agree consent flow model. 3. Register OAuth apps in Atlassian & GHE dev consoles. 4. Define agent identity blueprint in Entra dev tenant. |
 | **Phase 1** (After gateway whitelist) | AC Gateway + AC Identity online | 1. AC Gateway live with 3-plane architecture. 2. AC Identity whitelisted. 3. Implement credential vault (per-user, per-provider, AES-256 encrypted). 4. Implement proactive refresh with distributed locking. |
 | **Phase 2** (Reference impl) | End-to-End Working Flow | 1. Reference impl: agent calls Jira/GHE/Graph via OBO chain. 2. Consent flow: user redirect → approval → `refresh_token` stored in vault. 3. Audit logging: `agent_id` + `user_oid` + scope + resource + timestamp. |
@@ -379,7 +379,7 @@ Client-Initiated Backchannel Authentication (CIBA) is an OAuth 2.0 extension for
 ### 8.2 Minimal Delivery Checklist
 
 | # | Deliverable | Acceptance Criteria |
-|---|-------------|---------------------|
+| --- | ------------- | --------------------- |
 | MD-1 | EntraID 3LO pattern documented for ≥1 scope | Living document covering flow, token chain, scope selection, and gateway config for at least one of: M365 / GHE / Atlassian. |
 | MD-2 | Security/Identity team alignment on consent flow | Agreed consent UX pattern; defined which agent types require user consent vs admin pre-consent; CIBA policy for high-risk actions. |
 | MD-3 | Reference implementation for user-delegated token flows | Working code (e.g., using `Microsoft.Identity.Web` + `AddAgentIdentities()`) demonstrating OBO chain: Blueprint → Identity → Resource API with FIC/MSI credentials. |
@@ -389,7 +389,7 @@ Client-Initiated Backchannel Authentication (CIBA) is an OAuth 2.0 extension for
 ## 9. Open Questions & Industry Gaps
 
 | # | Open Question / Gap | Current State | Recommended Action |
-|---|---------------------|--------------|-------------------|
+| --- | --------------------- | -------------- | ------------------- |
 | OQ-1 | IETF `draft-oauth-ai-agents-on-behalf-of`: timing for adoption? | Draft -02 (Aug 2025). Not yet adopted by OAuth WG. | Track IETF OAuth WG. Design consent screen to show agent name now (can retrofit draft params later). |
 | OQ-2 | GitHub Enterprise: no refresh token for OAuth Apps — how to handle long-running agent tasks? | GHE OAuth App access tokens are long-lived (no expiry by default) — security risk. | Prefer GitHub App (installation token, 1hr TTL, fine-grained) for server-side agents. |
 | OQ-3 | Atlassian consent: user must repeat per-site. How to handle multi-site agents? | Current Atlassian 3LO is per-site. Admin cannot revoke individual user grants; must uninstall app. | Document limitation. Design agent to request per-site consent lazily (just-in-time). |

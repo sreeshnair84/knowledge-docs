@@ -57,7 +57,7 @@ KEY PRINCIPLE: Each MCP server receives a token bound ONLY to itself.
 ### 2.1 Four Identity Roles in Agentic UI
 
 | Role | Description | Implementation | Principle |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Human User Identity** | The end user who initiated the interaction | OIDC id_token from IdP (Entra, Okta, Cognito) | Source of truth; never impersonated |
 | **Agent Service Identity** | The agent process itself, independent of any user | Service principal / managed identity (not a human account) | Exists even for autonomous/scheduled runs |
 | **Delegated Agent Identity** | Agent acting on behalf of a specific user | OBO token (scoped subset of user's access) | Used for user-initiated interactive tasks |
@@ -237,7 +237,7 @@ WHAT THE MCP SERVER DOES NOT TRUST
 ### 4.2 MCP Auth Stack Summary
 
 | Standard | Role | Status (July 2026) |
-|---|---|---|
+| --- | --- | --- |
 | OAuth 2.1 | Authorization framework (replaces OAuth 2.0) | Required per MCP spec |
 | OIDC | User identity and ID token issuance | Required for user-delegated flows |
 | RFC 8693 | Token exchange (OBO flow) | Required for delegation chains |
@@ -415,7 +415,7 @@ WRONG PATTERNS
 ```
 
 | Secrets Store | Use Case | TTL Recommendation |
-|---|---|---|
+| --- | --- | --- |
 | Azure Key Vault | Entra-native workloads, certificate rotation | 90 days max for secrets; use managed identity where possible |
 | AWS Secrets Manager | AWS-native workloads, RDS password rotation | Auto-rotation enabled; 30-day rotation for API keys |
 | HashiCorp Vault | Multi-cloud, dynamic secrets | Dynamic secrets (generated per-request, expire after use) |
@@ -468,7 +468,7 @@ WEBSOCKET VARIANT:
 ## 10. Identity Anti-Patterns
 
 | Anti-Pattern | Risk | Correct Pattern |
-|---|---|---|
+| --- | --- | --- |
 | Cloning human user identity onto agent | Agent can do anything the human can (excess privilege) | Dedicated service principal with least-privilege |
 | Shared service account across all agents | No per-agent audit; one compromise affects all | One identity per agent type |
 | Long-lived static API keys in env vars | Key rotation is manual; leaked key persists | Workload Identity Federation + dynamic secrets |

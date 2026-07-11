@@ -45,7 +45,7 @@ Skills and tools are no longer a handful of hand-built integrations reviewed onc
 ## 10.3 Ownership model
 
 | Role | Responsibility |
-|---|---|
+| --- | --- |
 | **Skill/Tool Owner** | Accountable for correctness, timely updates when upstream policy/API changes, and first-line incident response |
 | **Domain/Business Owner** | Accountable for the business policy the skill encodes being current and correctly represented |
 | **Security Reviewer** | Independent review against the permission manifest, supply-chain checks (file `09`), sign-off required for `certified` state |
@@ -99,7 +99,7 @@ Canary rollout (A/B against existing behavior, file `08`) → full deployment
 ## 10.7 Testing requirements before certification
 
 | Test type | Requirement |
-|---|---|
+| --- | --- |
 | Unit-level tool schema validation | 100% of declared parameters/returns exercised |
 | Golden dataset regression | Meets or exceeds `min_pass_rate` from metadata (file `02`) |
 | Adversarial/red-team pass | At minimum, the relevant OWASP ASI/AST10 risk classes for this skill's blast radius (file `09`) |
@@ -113,7 +113,7 @@ Every lifecycle transition (submitted, reviewed, approved, deployed, deprecated,
 ## 10.9 Deliverable 6 — Governance model summary table
 
 | Dimension | Policy |
-|---|---|
+| --- | --- |
 | **Ownership** | Every artifact has exactly one accountable owner + domain owner; no orphaned artifacts permitted past `draft` |
 | **Approval** | Multi-gate (automated → security → compliance → peer → regression → sign-off) before `certified` |
 | **Versioning** | Semver, independent per artifact, pinned dependencies, instant-rollback default-version pointer |

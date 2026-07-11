@@ -33,7 +33,7 @@ series_index: index.md
 Understanding the risk side first prevents naive "AI will solve security" thinking.
 
 | Risk Category | Mechanism | Business Impact |
-|---|---|---|
+| --- | --- | --- |
 | **Expanded attack surface** | Every AI system (model endpoint, RAG store, agent) is a new attack target | More assets to secure; higher total cost of security |
 | **Prompt injection at scale** | AI agents process untrusted content at machine speed | A single injection can trigger enterprise-wide data exfiltration |
 | **AI-powered adversaries** | Attackers use LLMs to generate novel malware, phishing, and social engineering | Faster attack cycles; harder to detect synthetic threats |
@@ -50,7 +50,7 @@ Understanding the risk side first prevents naive "AI will solve security" thinki
 The ROI case for AI in security:
 
 | Opportunity | AI Function | Estimated Value |
-|---|---|---|
+| --- | --- | --- |
 | **Alert triage automation** | LLM summarises and classifies alerts; reduces analyst reading time 60–70% | $300K–$800K/year (2–3 analyst FTE equivalent) |
 | **Automated incident response** | SOAR + LLM auto-resolves tier-1 incidents without analyst | $200K–$500K/year; faster MTTR |
 | **Vulnerability prioritisation** | AI ranks vulnerabilities by exploitability and business context | 40% reduction in patch effort |
@@ -71,7 +71,7 @@ The ROI case for AI in security:
 Not all security tasks benefit equally from AI automation:
 
 | Task | Automation Suitability | AI Approach |
-|---|---|---|
+| --- | --- | --- |
 | Alert triage (tier 1) | High — repetitive, pattern-based | LLM classification + summarisation |
 | Vulnerability scanning | High — technical, deterministic | Existing tools + AI prioritisation |
 | Compliance evidence | High — repetitive document assembly | AI agent + audit log queries |
@@ -95,7 +95,7 @@ Example: AI alert triage tool
   Labour value saved: $90,000/year
   Risk reduction (faster MTTR → fewer breaches): $120,000/year (probabilistic)
   Tool cost: $80,000/year
-  
+
   ROI = ($90,000 + $120,000 - $80,000) / $80,000 = 163%
 ```
 
@@ -106,7 +106,7 @@ Example: AI alert triage tool
 ### 4.1 Build vs. Buy for AI Security
 
 | Capability | Recommendation | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | **AI prompt gateway** | Buy (or use cloud-native) | Kong AI Gateway, Azure APIM, AWS API Gateway — proven solutions |
 | **AI red team tooling** | Buy + customise | Garak + custom test cases; building from scratch is wasteful |
 | **AI content safety** | Buy (cloud-native) | Azure AI Content Safety, AWS Guardrails — continuously updated |
@@ -120,7 +120,7 @@ Example: AI alert triage tool
 ### 4.2 Open Source vs. Managed AI
 
 | Dimension | Open Source Model | Managed AI API |
-|---|---|---|
+| --- | --- | --- |
 | **Cost model** | Compute cost; engineering effort | Per-token pricing; minimal engineering |
 | **Data control** | Full — model runs in your environment | Limited — data processed by vendor |
 | **Compliance** | Full control; easier for regulated data | Vendor BAA/DPA required |
@@ -135,7 +135,7 @@ Example: AI alert triage tool
 ### 4.3 Cloud vs. On-Premises AI
 
 | Factor | Cloud AI | On-Premises AI |
-|---|---|---|
+| --- | --- | --- |
 | **Capital cost** | None (OpEx model) | High (GPU hardware, data centre) |
 | **Operational cost** | Per-use pricing (can be high at scale) | Fixed infrastructure cost |
 | **Data sovereignty** | Depends on cloud region and terms | Complete |
@@ -148,7 +148,7 @@ Example: AI alert triage tool
 ### 4.4 Single Model vs. Multi-Model
 
 | Approach | Advantages | Disadvantages |
-|---|---|---|
+| --- | --- | --- |
 | **Single model (e.g., Claude-only)** | Simpler security controls; unified governance; lower integration cost | Vendor lock-in; single point of failure; no best-of-breed capability |
 | **Multi-model** | Best model for each task; resilience; competitive pricing | Complex routing; multiple vendor security controls; higher governance overhead |
 
@@ -157,7 +157,7 @@ Example: AI alert triage tool
 ### 4.5 AI Gateway vs. Direct Model Access
 
 | Factor | Direct Model Access | AI Gateway |
-|---|---|---|
+| --- | --- | --- |
 | **Security controls** | Per-application | Centralized, consistent |
 | **Cost control** | Per-application | Centralized rate limiting + cost tracking |
 | **Model switching** | Application code change | Gateway configuration change |
@@ -170,7 +170,7 @@ Example: AI alert triage tool
 ### 4.6 Centralized AI Platform vs. Federated Teams
 
 | Approach | Centralized Platform | Federated (Team-owned) |
-|---|---|---|
+| --- | --- | --- |
 | **Governance** | Strong central control | Inconsistent; governance burden on teams |
 | **Speed of adoption** | Slower (central bottleneck) | Faster per team |
 | **Security** | Consistent controls | Team-dependent; risk of gaps |
@@ -222,6 +222,7 @@ Value                       |                Value
 ```
 
 **Investment priority order:**
+
 1. High Business Value + High Security Risk: Address risk to enable the value
 2. High Business Value + Low Security Risk: Accelerate adoption
 3. Low Business Value + High Security Risk: Remediate or deprecate
@@ -232,12 +233,13 @@ Value                       |                Value
 **AI security as % of total AI budget (2026 guidance):**
 
 | Maturity Level | AI Security Budget % | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Early AI adopter | 25–30% | Heavy investment required to establish baseline security |
 | Growing AI usage | 15–20% | Security scales sub-linearly with capability investment |
 | Mature AI organization | 10–15% | Established controls; security is operational, not project |
 
 **Industry benchmarks:**
+
 - Financial services: 20–25% of AI budget on AI security
 - Healthcare: 18–22%
 - Retail/e-commerce: 12–15%

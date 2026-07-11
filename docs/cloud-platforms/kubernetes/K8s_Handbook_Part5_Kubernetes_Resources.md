@@ -9,59 +9,59 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY** 
+# **ENTERPRISE KUBERNETES MASTERY**
 
-AI Platform Engineering Handbook 
+AI Platform Engineering Handbook
 
-### PART V KUBERNETES RESOURCES 
+### PART V KUBERNETES RESOURCES
 
-Every Core Resource: Deep Dive with YAML, Security, and Best Practices 
+Every Core Resource: Deep Dive with YAML, Security, and Best Practices
 
-Volume 5 of 16 Core Series Prerequisites: Parts I through IV Edition 2025-2026 
+Volume 5 of 16 Core Series Prerequisites: Parts I through IV Edition 2025-2026
 
-## **TABLE OF CONTENTS** 
+## **TABLE OF CONTENTS**
 
-1. Resource Taxonomy and API Conventions ........... 3 
+1. Resource Taxonomy and API Conventions ........... 3
 
-2. Pods -- The Atomic Unit ......................... 5 
+2. Pods -- The Atomic Unit ......................... 5
 
-3. Workload Resources: Deployment, StatefulSet, DaemonSet . 12 
+3. Workload Resources: Deployment, StatefulSet, DaemonSet . 12
 
-4. Batch Resources: Jobs and CronJobs .............. 20 
+4. Batch Resources: Jobs and CronJobs .............. 20
 
-5. Service and Endpoint Resources .................. 24 
+5. Service and Endpoint Resources .................. 24
 
-6. Ingress and Gateway API ......................... 29 
+6. Ingress and Gateway API ......................... 29
 
-7. Configuration: ConfigMaps and Secrets ........... 34 
+7. Configuration: ConfigMaps and Secrets ........... 34
 
-8. Storage: PV, PVC, StorageClass, CSI ............. 38 
+8. Storage: PV, PVC, StorageClass, CSI ............. 38
 
-9. Namespaces, ResourceQuota, LimitRange ........... 44 
+9. Namespaces, ResourceQuota, LimitRange ........... 44
 
-10. Identity and Access: ServiceAccounts and RBAC .. 48 
+10. Identity and Access: ServiceAccounts and RBAC .. 48
 
-11. Network Policies ............................... 53 
+11. Network Policies ............................... 53
 
-12. Autoscaling: HPA, VPA, KEDA, Cluster Autoscaler . 57 
+12. Autoscaling: HPA, VPA, KEDA, Cluster Autoscaler . 57
 
-13. Scheduling: PriorityClass, Taints, Affinity, TopologySpread . 63 
+13. Scheduling: PriorityClass, Taints, Affinity, TopologySpread . 63
 
-14. Reliability: PodDisruptionBudgets .............. 67 
+14. Reliability: PodDisruptionBudgets .............. 67
 
-15. Runtime and Policy: RuntimeClass, PodSecurity .. 70 
+15. Runtime and Policy: RuntimeClass, PodSecurity .. 70
 
-16. Resource Anti-Patterns Reference ............... 73 
+16. Resource Anti-Patterns Reference ............... 73
 
-17. Hands-On Exercises ............................. 76 
+17. Hands-On Exercises ............................. 76
 
-##### **CHAPTER 1** 
+##### **CHAPTER 1**
 
-## **Resource Taxonomy and API Conventions** 
+## **Resource Taxonomy and API Conventions**
 
-Every Kubernetes resource follows a consistent structure and set of conventions. Mastering these conventions allows you to work with any resource -- built-in or custom -- without memorising each one individually. 
+Every Kubernetes resource follows a consistent structure and set of conventions. Mastering these conventions allows you to work with any resource -- built-in or custom -- without memorising each one individually.
 
-#### **Universal Resource Structure** 
+#### **Universal Resource Structure**
 
 ```
 # Every Kubernetes resource has this structure: apiVersion: GROUP/VERSION # e.g. apps/v1, v1,
@@ -75,7 +75,7 @@ optimistic concurrency token uid: abc-def-123 # immutable unique identifier spec
 state (user-controlled) ... status: # ACTUAL state (system-controlled) ...
 ```
 
-#### **Resource Scope and Taxonomy** 
+#### **Resource Scope and Taxonomy**
 
 |**Category**|**Resources**|**Scope**|**Primary Purpose**|
 |---|---|---|---|
@@ -100,15 +100,15 @@ state (user-controlled) ... status: # ACTUAL state (system-controlled) ...
 |Nodes|Node, CSINode|Cluster|Worker node representation|
 |Cluster|Namespace, PersistentVolume|Cluster|Cluster-wide organisation|
 
-##### **CHAPTER 2** 
+##### **CHAPTER 2**
 
-## **Pods -- The Atomic Unit** 
+## **Pods -- The Atomic Unit**
 
-A Pod is the smallest deployable unit in Kubernetes. It represents one or more containers that share a network namespace (same IP address and port space), IPC namespace, and optionally a PID namespace. Containers in a Pod are always co-located, co-scheduled, and share storage volumes. 
+A Pod is the smallest deployable unit in Kubernetes. It represents one or more containers that share a network namespace (same IP address and port space), IPC namespace, and optionally a PID namespace. Containers in a Pod are always co-located, co-scheduled, and share storage volumes.
 
-#### **Complete Production Pod Specification** 
+#### **Complete Production Pod Specification**
 
-#### **Pod Health Probe Decision Guide** 
+#### **Pod Health Probe Decision Guide**
 
 |**Probe**|**Triggers On Failure**|**When to Use**|**Recommended Check**|
 |---|---|---|---|
@@ -116,25 +116,25 @@ A Pod is the smallest deployable unit in Kubernetes. It represents one or more c
 |livenessProbe|Container restart|Detect deadlocks, hung<br>processes|Lightweight internal health check; never<br>external deps|
 |readinessProbe|Remove from Service<br>endpoints|Temporary unreadiness (DB<br>reconnect, warmup)|Include dependency checks (DB, cache<br>reachable)|
 
-#### **Multi-Container Pod Patterns** 
+#### **Multi-Container Pod Patterns**
 
-- **Sidecar** : A helper container augmenting the main container: log shipper, metrics exporter, secret refresher, Istio Envoy proxy. Shares Pod lifetime. 
+- **Sidecar** : A helper container augmenting the main container: log shipper, metrics exporter, secret refresher, Istio Envoy proxy. Shares Pod lifetime.
 
-- **Init Container** : Runs before app containers to perform setup: wait for dependencies, populate a shared volume, run database migrations. Runs once to completion. 
+- **Init Container** : Runs before app containers to perform setup: wait for dependencies, populate a shared volume, run database migrations. Runs once to completion.
 
-- **Sidecar (native, K8s 1.29+)** : New native sidecar type: init container with restartPolicy: Always. Starts before app containers, stops after them. Solves ordering issue with Istio Envoy and log shippers. 
+- **Sidecar (native, K8s 1.29+)** : New native sidecar type: init container with restartPolicy: Always. Starts before app containers, stops after them. Solves ordering issue with Istio Envoy and log shippers.
 
-- **Ephemeral Container** : Debug container added to running Pod without restart. kubectl debug in-cluster. Does not persist; cannot use volumes. 
+- **Ephemeral Container** : Debug container added to running Pod without restart. kubectl debug in-cluster. Does not persist; cannot use volumes.
 
-- **Ambassador** : Proxy container that simplifies external service access. App connects to localhost; ambassador handles service discovery and auth. 
+- **Ambassador** : Proxy container that simplifies external service access. App connects to localhost; ambassador handles service discovery and auth.
 
-##### **CHAPTER 3** 
+##### **CHAPTER 3**
 
-## **Workload Resources: Deployment, StatefulSet, DaemonSet** 
+## **Workload Resources: Deployment, StatefulSet, DaemonSet**
 
-#### **Deployment -- Stateless Workloads** 
+#### **Deployment -- Stateless Workloads**
 
-Deployments manage stateless application replicas. They provide rolling updates, rollback capability, and scaling. Under the hood, a Deployment manages ReplicaSets which manage Pods. 
+Deployments manage stateless application replicas. They provide rolling updates, rollback capability, and scaling. Under the hood, a Deployment manages ReplicaSets which manage Pods.
 
 ```
 apiVersion: apps/v1 kind: Deployment metadata: name: api-server namespace: production spec:
@@ -149,11 +149,11 @@ kubernetes.io/hostname containers: - name: api image: harbor.corp/api@sha256:abc
 requests: { cpu: 500m, memory: 512Mi } limits: { memory: 1Gi }
 ```
 
-#### **StatefulSet -- Stateful Workloads** 
+#### **StatefulSet -- Stateful Workloads**
 
-StatefulSets manage stateful applications that require stable network identities, stable persistent storage, and ordered deployment/scaling. The canonical use cases are databases, message queues, and distributed caches. 
+StatefulSets manage stateful applications that require stable network identities, stable persistent storage, and ordered deployment/scaling. The canonical use cases are databases, message queues, and distributed caches.
 
-###### **StatefulSet Guarantees vs. Deployment** 
+###### **StatefulSet Guarantees vs. Deployment**
 
 |**Property**|**Deployment**|**StatefulSet**|
 |---|---|---|
@@ -183,9 +183,9 @@ volumeClaimTemplates: - metadata: name: data spec: accessModes: [ReadWriteOnce]
 storageClassName: fast-ssd resources: requests: storage: 100Gi
 ```
 
-#### **DaemonSet -- Node-Level Workloads** 
+#### **DaemonSet -- Node-Level Workloads**
 
-DaemonSets ensure exactly one Pod runs on every node (or every node matching a selector). DaemonSets are used for node-level infrastructure: log collection, monitoring agents, network plugins, storage drivers, security agents. 
+DaemonSets ensure exactly one Pod runs on every node (or every node matching a selector). DaemonSets are used for node-level infrastructure: log collection, monitoring agents, network plugins, storage drivers, security agents.
 
 |**Use Case**|**Example DaemonSet**|**Notes**|
 |---|---|---|
@@ -197,13 +197,13 @@ DaemonSets ensure exactly one Pod runs on every node (or every node matching a s
 |GPU management|NVIDIA device plugin|Expose GPU resources to scheduler|
 |Cluster DNS|CoreDNS (can also run as<br>Deployment)|Per-node DNS caching|
 
-##### **CHAPTER 4** 
+##### **CHAPTER 4**
 
-## **Batch Resources: Jobs and CronJobs** 
+## **Batch Resources: Jobs and CronJobs**
 
-#### **Jobs -- Run-to-Completion Workloads** 
+#### **Jobs -- Run-to-Completion Workloads**
 
-A Job creates one or more Pods that run to completion. Unlike Deployments (which keep Pods running), Jobs are designed for finite tasks: database migrations, batch data processing, ML training runs, report generation. 
+A Job creates one or more Pods that run to completion. Unlike Deployments (which keep Pods running), Jobs are designed for finite tasks: database migrations, batch data processing, ML training runs, report generation.
 
 ```
 apiVersion: batch/v1 kind: Job metadata: name: data-migration-v2 spec: completions: 1 # Total
@@ -218,7 +218,7 @@ parallelism=5 (5 workers drain a queue) # Indexed Jobs (1.21+): completionMode: 
 Pod gets JOB_COMPLETION_INDEX)
 ```
 
-###### **AI/ML Training Job Pattern** 
+###### **AI/ML Training Job Pattern**
 
 ```
 # Distributed PyTorch training Job: apiVersion: batch/v1 kind: Job metadata: name:
@@ -230,9 +230,9 @@ command: - torchrun - --nproc_per_node=8 - --nnodes=1 - train.py resources: limi
 nvidia.com/gpu: 8 requests: nvidia.com/gpu: 8 memory: 256Gi cpu: 64
 ```
 
-#### **CronJobs** 
+#### **CronJobs**
 
-CronJobs create Jobs on a schedule (cron syntax). Used for periodic tasks: database backups, report generation, cache warming, cleanup jobs. 
+CronJobs create Jobs on a schedule (cron syntax). Used for periodic tasks: database backups, report generation, cache warming, cleanup jobs.
 
 ```
 apiVersion: batch/v1 kind: CronJob metadata: name: database-backup spec: schedule: '0 2 * * *'
@@ -244,13 +244,13 @@ backup image: harbor.corp/pg-backup:latest env: - name: BACKUP_DESTINATION value
 s3://backups/postgres/ resources: requests: { cpu: 200m, memory: 256Mi }
 ```
 
-##### **CHAPTER 5** 
+##### **CHAPTER 5**
 
-## **Service and Endpoint Resources** 
+## **Service and Endpoint Resources**
 
-Services provide stable network identities (IP addresses and DNS names) for groups of Pods. Without Services, Pods would need to track each other's ephemeral IPs directly -- an impossible task at scale. 
+Services provide stable network identities (IP addresses and DNS names) for groups of Pods. Without Services, Pods would need to track each other's ephemeral IPs directly -- an impossible task at scale.
 
-#### **Service Types Reference** 
+#### **Service Types Reference**
 
 ```
 # ClusterIP (default) -- internal cluster communication: apiVersion: v1 kind: Service
@@ -266,9 +266,9 @@ selector: app: postgres # ExternalName -- DNS CNAME to external service: spec: t
 ExternalName externalName: legacy-api.internal.corp
 ```
 
-#### **EndpointSlices -- How Services Find Pods** 
+#### **EndpointSlices -- How Services Find Pods**
 
-EndpointSlices (replaced Endpoints in 1.21+) track the IP addresses and ports of Pods matching a Service's selector. kube-proxy watches EndpointSlices to update its routing rules. The EndpointSlice controller creates/updates them as Pods come and go: 
+EndpointSlices (replaced Endpoints in 1.21+) track the IP addresses and ports of Pods matching a Service's selector. kube-proxy watches EndpointSlices to update its routing rules. The EndpointSlice controller creates/updates them as Pods come and go:
 
 ```
 # View EndpointSlices for a Service: kubectl get endpointslices -l
@@ -280,13 +280,13 @@ addresses: ['10.244.1.5'] conditions: ready: true serving: true terminating: fal
 }] # Topology hints for zone-aware routing ports: - name: http port: 8080 protocol: TCP
 ```
 
-##### **CHAPTER 6** 
+##### **CHAPTER 6**
 
-## **Ingress and Gateway API** 
+## **Ingress and Gateway API**
 
-Ingress and Gateway API provide HTTP-level routing from external traffic into cluster Services. Ingress is the original API (stable since 1.19); Gateway API is the successor with richer routing semantics and role-based management. 
+Ingress and Gateway API provide HTTP-level routing from external traffic into cluster Services. Ingress is the original API (stable since 1.19); Gateway API is the successor with richer routing semantics and role-based management.
 
-#### **Ingress** 
+#### **Ingress**
 
 ```
 apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: api-ingress annotations:
@@ -298,9 +298,9 @@ service: name: api-v1 port: { number: 80 } - path: /v2 pathType: Prefix backend:
 name: api-v2 port: { number: 80 }
 ```
 
-#### **Gateway API -- The Ingress Successor** 
+#### **Gateway API -- The Ingress Successor**
 
-Gateway API (stable in 1.28) separates infrastructure (Gateway) from routing (HTTPRoute) and supports multi-tenancy through role separation. Different teams manage different parts of the routing configuration: 
+Gateway API (stable in 1.28) separates infrastructure (Gateway) from routing (HTTPRoute) and supports multi-tenancy through role separation. Different teams manage different parts of the routing configuration:
 
 ```
 # Infrastructure team manages the Gateway (allocates LB): apiVersion:
@@ -317,11 +317,11 @@ api-v3-canary port: 80 weight: 10 filters: - type: RequestHeaderModifier
 requestHeaderModifier: add: - name: X-Forwarded-By value: gateway
 ```
 
-##### **CHAPTER 7** 
+##### **CHAPTER 7**
 
-## **Configuration: ConfigMaps and Secrets** 
+## **Configuration: ConfigMaps and Secrets**
 
-#### **ConfigMaps -- Externalised Non-Secret Configuration** 
+#### **ConfigMaps -- Externalised Non-Secret Configuration**
 
 ```
 apiVersion: v1 kind: ConfigMap metadata: name: app-config namespace: production data: # Simple
@@ -334,13 +334,13 @@ configMapKeyRef: { name: app-config, key: LOG_LEVEL } # Mount as files: volumes:
 config configMap: name: app-config items: - key: nginx.conf path: nginx.conf mode: 0444
 ```
 
-#### **Secrets -- Sensitive Configuration** 
+#### **Secrets -- Sensitive Configuration**
 
-Kubernetes Secrets store sensitive data (passwords, TLS certs, API keys). Secrets are base64-encoded (NOT encrypted) by default -- encryption at rest requires additional configuration or an external secrets manager. 
+Kubernetes Secrets store sensitive data (passwords, TLS certs, API keys). Secrets are base64-encoded (NOT encrypted) by default -- encryption at rest requires additional configuration or an external secrets manager.
 
-###### **<mark>Secret Security Warning</mark>** 
+###### **<mark>Secret Security Warning</mark>**
 
-Kubernetes Secrets are NOT encrypted by default -- only base64-encoded. Anyone with RBAC access to read Secrets can decode them. Enable etcd encryption at rest (EncryptionConfiguration) and use External Secrets Operator with HashiCorp Vault, AWS Secrets Manager, or GCP Secret Manager for production secret management. Never commit Secrets to Git. 
+Kubernetes Secrets are NOT encrypted by default -- only base64-encoded. Anyone with RBAC access to read Secrets can decode them. Enable etcd encryption at rest (EncryptionConfiguration) and use External Secrets Operator with HashiCorp Vault, AWS Secrets Manager, or GCP Secret Manager for production secret management. Never commit Secrets to Git.
 
 ```
 # Secret types: # Opaque: generic key-value (most common) # kubernetes.io/tls: TLS certificate
@@ -353,7 +353,7 @@ Ingress/Gateway TLS): apiVersion: v1 kind: Secret metadata: name: api-tls type:
 kubernetes.io/tls data: tls.crt: tls.key:
 ```
 
-###### **External Secrets Operator -- Production Secret Management** 
+###### **External Secrets Operator -- Production Secret Management**
 
 ```
 apiVersion: external-secrets.io/v1beta1 kind: ExternalSecret metadata: name: db-credentials
@@ -362,13 +362,13 @@ ClusterSecretStore target: name: db-credentials creationPolicy: Owner deletionPo
 data: - secretKey: password remoteRef: key: secret/production/database property: password
 ```
 
-##### **CHAPTER 8** 
+##### **CHAPTER 8**
 
-## **Storage: PV, PVC, StorageClass, CSI** 
+## **Storage: PV, PVC, StorageClass, CSI**
 
-Kubernetes abstracts storage through a three-layer model: StorageClass (defines storage capabilities), PersistentVolume (represents actual storage), and PersistentVolumeClaim (requests storage for a workload). CSI drivers implement the actual storage operations. 
+Kubernetes abstracts storage through a three-layer model: StorageClass (defines storage capabilities), PersistentVolume (represents actual storage), and PersistentVolumeClaim (requests storage for a workload). CSI drivers implement the actual storage operations.
 
-#### **Storage Architecture** 
+#### **Storage Architecture**
 
 ```
 Dynamic provisioning flow: 1. StorageClass defined (once, by storage admin): parameters,
@@ -385,7 +385,7 @@ deleted (use Retain for prod) volumeBindingMode: WaitForFirstConsumer # Provisio
 Pod allowVolumeExpansion: true
 ```
 
-###### **Access Modes** 
+###### **Access Modes**
 
 |**Mode**|**Abbreviation**|**Semantics**|**Typical Use**|
 |---|---|---|---|
@@ -394,23 +394,23 @@ Pod allowVolumeExpansion: true
 |ReadWriteMany|RWX|Read/write by many nodes<br>simultaneously|Shared ML datasets, NFS workloads|
 |ReadWriteOncePod|RWOP|Read/write by exactly one Pod|Strongest guarantee; K8s 1.22+|
 
-#### **AI/ML Storage Patterns** 
+#### **AI/ML Storage Patterns**
 
-- **Model artifacts** : Large read-only model weights (10-700GB). Store in object storage (S3, GCS). Mount read-only via CSI or init container download. Consider ReadOnlyMany PVC backed by NFS or parallel filesystem for multi-replica serving. 
+- **Model artifacts** : Large read-only model weights (10-700GB). Store in object storage (S3, GCS). Mount read-only via CSI or init container download. Consider ReadOnlyMany PVC backed by NFS or parallel filesystem for multi-replica serving.
 
-- **Training datasets** : Massive datasets (TB scale). Use ReadOnlyMany PVCs backed by parallel filesystems (Lustre, GPFS, WekaFS) for high-throughput sequential read. Or stream from object storage (S3) with dataset caching layer. 
+- **Training datasets** : Massive datasets (TB scale). Use ReadOnlyMany PVCs backed by parallel filesystems (Lustre, GPFS, WekaFS) for high-throughput sequential read. Or stream from object storage (S3) with dataset caching layer.
 
-- **Checkpoints** : Write-heavy during training, read-heavy during restart. Use ReadWriteOnce SSD PVC for low-latency checkpoint writes. Async copy to object storage for durability. 
+- **Checkpoints** : Write-heavy during training, read-heavy during restart. Use ReadWriteOnce SSD PVC for low-latency checkpoint writes. Async copy to object storage for durability.
 
-- **Vector databases** : High-performance read/write with specific IOPS requirements. Use gp3 EBS (AWS) or Premium SSD (Azure) with StorageClass IOPS tuning. Size for 2-3x index size for memory-mapped files. 
+- **Vector databases** : High-performance read/write with specific IOPS requirements. Use gp3 EBS (AWS) or Premium SSD (Azure) with StorageClass IOPS tuning. Size for 2-3x index size for memory-mapped files.
 
-##### **CHAPTER 9** 
+##### **CHAPTER 9**
 
-## **Namespaces, ResourceQuota, LimitRange** 
+## **Namespaces, ResourceQuota, LimitRange**
 
-Namespaces provide a virtual cluster within a physical cluster. They partition resources between teams, environments, or tenants. ResourceQuota and LimitRange provide the governance layer: controlling how much resource a namespace can consume and enforcing default resource specifications. 
+Namespaces provide a virtual cluster within a physical cluster. They partition resources between teams, environments, or tenants. ResourceQuota and LimitRange provide the governance layer: controlling how much resource a namespace can consume and enforcing default resource specifications.
 
-#### **Namespace Strategy** 
+#### **Namespace Strategy**
 
 |**Pattern**|**Namespaces**|**Isolation**|**Use Case**|
 |---|---|---|---|
@@ -420,7 +420,7 @@ Namespaces provide a virtual cluster within a physical cluster. They partition r
 |Per tenant|tenant-acme,<br>tenant-globex|Medium-High|SaaS multi-tenancy|
 |Per cluster|(all in one namespace)|Highest|Dedicated cluster per env/tenant|
 
-#### **ResourceQuota -- Namespace Resource Limits** 
+#### **ResourceQuota -- Namespace Resource Limits**
 
 ```
 apiVersion: v1 kind: ResourceQuota metadata: name: production-quota namespace: production
@@ -431,7 +431,7 @@ Object counts: pods: '50' services: '20' services.loadbalancers: '2' configmaps:
 '30' # Check quota usage: kubectl describe resourcequota -n production
 ```
 
-#### **LimitRange -- Per-Pod Defaults and Constraints** 
+#### **LimitRange -- Per-Pod Defaults and Constraints**
 
 ```
 apiVersion: v1 kind: LimitRange metadata: name: default-limits namespace: production spec:
@@ -441,13 +441,13 @@ max: cpu: '4' memory: 8Gi - type: PersistentVolumeClaim min: { storage: 1Gi } ma
 100Gi }
 ```
 
-##### **CHAPTER 10** 
+##### **CHAPTER 10**
 
-## **Identity and Access: ServiceAccounts and RBAC** 
+## **Identity and Access: ServiceAccounts and RBAC**
 
-RBAC (Role-Based Access Control) is the primary authorisation mechanism in Kubernetes. It controls which identities (users, groups, service accounts) can perform which operations on which resources. ServiceAccounts provide identity for Pods. 
+RBAC (Role-Based Access Control) is the primary authorisation mechanism in Kubernetes. It controls which identities (users, groups, service accounts) can perform which operations on which resources. ServiceAccounts provide identity for Pods.
 
-#### **RBAC Model** 
+#### **RBAC Model**
 
 ```
 RBAC primitives: Role: namespaced permissions ClusterRole: cluster-wide permissions (or shared
@@ -461,7 +461,7 @@ production subjects: - kind: ServiceAccount name: monitoring-agent namespace: pr
 roleRef: kind: Role name: pod-reader apiGroup: rbac.authorization.k8s.io
 ```
 
-#### **ServiceAccount Workload Identity** 
+#### **ServiceAccount Workload Identity**
 
 ```
 # Minimal ServiceAccount for an application: apiVersion: v1 kind: ServiceAccount metadata:
@@ -477,13 +477,13 @@ ServiceAccount per application # 4. Audit with: kubectl auth can-i
 mounting cloud credentials
 ```
 
-##### **CHAPTER 11** 
+##### **CHAPTER 11**
 
-## **Network Policies** 
+## **Network Policies**
 
-NetworkPolicies are the Kubernetes firewall. They define which Pods can communicate with which other Pods and external endpoints. By default, all Pod-to-Pod communication is allowed (no NetworkPolicies = no restrictions). Applying a NetworkPolicy to a Pod makes that Pod's traffic subject to the policy's rules. 
+NetworkPolicies are the Kubernetes firewall. They define which Pods can communicate with which other Pods and external endpoints. By default, all Pod-to-Pod communication is allowed (no NetworkPolicies = no restrictions). Applying a NetworkPolicy to a Pod makes that Pod's traffic subject to the policy's rules.
 
-#### **Default Deny -- Zero Trust Starting Point** 
+#### **Default Deny -- Zero Trust Starting Point**
 
 ```
 # Apply to a namespace to block all traffic by default: # Then add explicit allow rules for
@@ -492,7 +492,7 @@ default-deny-all namespace: production spec: podSelector: {} # Selects ALL pods 
 policyTypes: - Ingress - Egress # No ingress/egress rules = deny all
 ```
 
-###### **Microservices Network Policy Pattern** 
+###### **Microservices Network Policy Pattern**
 
 ```
 # Allow frontend to reach backend only: apiVersion: networking.k8s.io/v1 kind: NetworkPolicy
@@ -507,11 +507,11 @@ kube-dns } ports: [{ port: 53, protocol: UDP }] - to: - ipBlock: cidr: 10.0.0.0/
 services only ports: [{ port: 443, protocol: TCP }]
 ```
 
-##### **CHAPTER 12** 
+##### **CHAPTER 12**
 
-## **Autoscaling: HPA, VPA, KEDA, Cluster Autoscaler** 
+## **Autoscaling: HPA, VPA, KEDA, Cluster Autoscaler**
 
-#### **Autoscaling Layers** 
+#### **Autoscaling Layers**
 
 |**Scaler**|**Dimension**|**Trigger**|**Response Time**|
 |---|---|---|---|
@@ -521,7 +521,7 @@ services only ports: [{ port: 443, protocol: TCP }]
 |Cluster Autoscaler|Node count|Unschedulable pods; underutilised<br>nodes|1-5 minutes|
 |Karpenter|Node count + type|Unschedulable pods (intelligent<br>bin-packing)|30-90 seconds|
 
-#### **HPA -- Horizontal Pod Autoscaler** 
+#### **HPA -- Horizontal Pod Autoscaler**
 
 ```
 apiVersion: autoscaling/v2 kind: HorizontalPodAutoscaler metadata: name: api-hpa namespace:
@@ -536,9 +536,9 @@ scaleUp: stabilizationWindowSeconds: 0 # Scale up immediately policies: - type: 
 100 periodSeconds: 15 # Can double every 15 seconds
 ```
 
-#### **KEDA -- Event-Driven Autoscaling for AI Workloads** 
+#### **KEDA -- Event-Driven Autoscaling for AI Workloads**
 
-KEDA (Kubernetes Event-Driven Autoscaling) is essential for AI inference serving: scale to zero when no requests, scale up based on queue depth or request rate. 
+KEDA (Kubernetes Event-Driven Autoscaling) is essential for AI inference serving: scale to zero when no requests, scale up based on queue depth or request rate.
 
 ```
 # Scale LLM inference deployment based on request queue depth: apiVersion: keda.sh/v1alpha1
@@ -551,13 +551,13 @@ inference_queue_depth query: sum(inference_requests_pending) threshold: '5' # Sc
 inference-requests mode: QueueLength value: '10'
 ```
 
-##### **CHAPTER 13** 
+##### **CHAPTER 13**
 
-## **Scheduling: PriorityClass, Affinity, TopologySpread** 
+## **Scheduling: PriorityClass, Affinity, TopologySpread**
 
-#### **PriorityClass -- Workload Preemption** 
+#### **PriorityClass -- Workload Preemption**
 
-PriorityClasses define the scheduling priority of Pods. Higher-priority Pods can preempt (evict) lower-priority Pods when cluster resources are scarce. This is critical for AI platforms where inference serving (revenue-generating) must preempt batch training jobs. 
+PriorityClasses define the scheduling priority of Pods. Higher-priority Pods can preempt (evict) lower-priority Pods when cluster resources are scarce. This is critical for AI platforms where inference serving (revenue-generating) must preempt batch training jobs.
 
 ```
 # Define priority tiers: apiVersion: scheduling.k8s.io/v1 kind: PriorityClass metadata: name:
@@ -570,9 +570,9 @@ others description: 'ML training jobs -- preemptable' # Assign to Pod: spec:
 priorityClassName: ai-inference-serving
 ```
 
-#### **TopologySpread Constraints -- Zone-Aware Spreading** 
+#### **TopologySpread Constraints -- Zone-Aware Spreading**
 
-TopologySpreadConstraints distribute Pods evenly across topology domains (availability zones, nodes) for high availability: 
+TopologySpreadConstraints distribute Pods evenly across topology domains (availability zones, nodes) for high availability:
 
 ```
 spec: topologySpreadConstraints: # Spread evenly across availability zones: - maxSkew: 1
@@ -584,11 +584,11 @@ any two topology domains # whenUnsatisfiable: DoNotSchedule = hard requirement #
 whenUnsatisfiable: ScheduleAnyway = soft preference
 ```
 
-##### **CHAPTER 14** 
+##### **CHAPTER 14**
 
-## **Reliability: PodDisruptionBudgets** 
+## **Reliability: PodDisruptionBudgets**
 
-PodDisruptionBudgets (PDBs) protect applications from being disrupted by voluntary disruptions: node drain, cluster upgrades, Cluster Autoscaler scale-down. They guarantee a minimum number of Pods remain available during disruptions. 
+PodDisruptionBudgets (PDBs) protect applications from being disrupted by voluntary disruptions: node drain, cluster upgrades, Cluster Autoscaler scale-down. They guarantee a minimum number of Pods remain available during disruptions.
 
 ```
 apiVersion: policy/v1 kind: PodDisruptionBudget metadata: name: api-server-pdb namespace:
@@ -603,19 +603,19 @@ always create PDB for production Deployments # with replicas > 1. Without PDB, a
 evicted simultaneously.
 ```
 
-###### **PDB Anti-Patterns** 
+###### **PDB Anti-Patterns**
 
-- **minAvailable: 100% or maxUnavailable: 0** : If PDB requires ALL Pods available, node drains and upgrades block permanently. 
+- **minAvailable: 100% or maxUnavailable: 0** : If PDB requires ALL Pods available, node drains and upgrades block permanently.
 
-- **PDB with single-replica Deployment** : minAvailable: 1 + replicas: 1 = cluster upgrades blocked forever. 
+- **PDB with single-replica Deployment** : minAvailable: 1 + replicas: 1 = cluster upgrades blocked forever.
 
-- **No PDB for stateful services** : Without PDB, all PostgreSQL replicas can be evicted simultaneously during upgrade, causing data unavailability. 
+- **No PDB for stateful services** : Without PDB, all PostgreSQL replicas can be evicted simultaneously during upgrade, causing data unavailability.
 
-##### **CHAPTER 15** 
+##### **CHAPTER 15**
 
-## **Runtime and Policy: RuntimeClass, PodSecurity** 
+## **Runtime and Policy: RuntimeClass, PodSecurity**
 
-###### **RuntimeClass** 
+###### **RuntimeClass**
 
 ```
 apiVersion: node.k8s.io/v1 kind: RuntimeClass metadata: name: kata-qemu handler: kata-qemu
@@ -624,7 +624,7 @@ scheduling: nodeClassification: tolerations: - key: kata-containers operator: Ex
 NoSchedule # Use in Pod: spec: runtimeClassName: kata-qemu
 ```
 
-#### **Pod Security Standards** 
+#### **Pod Security Standards**
 
 |**Policy**|**Restrictions**<br>**Use Case**|
 |---|---|
@@ -633,9 +633,9 @@ NoSchedule # Use in Pod: spec: runtimeClassName: kata-qemu
 |Restricted|Strict: requires non-root, no privilege escalation,<br>seccomp, dropped caps<br>Security-critical; PCI, HIPAA|
 |`# Enforce Pod`<br>`name: product`<br>`pod-security.`<br>`pod-security.`|`Security Standards at namespace level: apiVersion: v1 kind: Namespace metadata:`<br>`ion labels: pod-security.kubernetes.io/enforce: restricted`<br>`kubernetes.io/enforce-version: v1.30 pod-security.kubernetes.io/warn: restricted`<br>`kubernetes.io/audit: restricted`|
 
-##### **CHAPTER 16** 
+##### **CHAPTER 16**
 
-## **Resource Anti-Patterns Reference** 
+## **Resource Anti-Patterns Reference**
 
 |**Anti-Pattern**|**Problem**|**Solution**|
 |---|---|---|
@@ -650,13 +650,13 @@ NoSchedule # Use in Pod: spec: runtimeClassName: kata-qemu
 |No NetworkPolicy (open flat<br>network)|Any Pod can talk to any Pod; lateral<br>movement trivial|Default-deny per namespace; explicit allow rules|
 |Jobs without<br>ttlSecondsAfterFinished|Completed Jobs accumulate; etcd<br>grows unboundedly|Set ttlSecondsAfterFinished on all Jobs;<br>configure CronJob history limits|
 
-##### **CHAPTER 17** 
+##### **CHAPTER 17**
 
-## **Hands-On Exercises** 
+## **Hands-On Exercises**
 
-#### **Exercise 5.1 -- StatefulSet DNS** 
+#### **Exercise 5.1 -- StatefulSet DNS**
 
-Deploy a StatefulSet and verify per-Pod stable DNS: 
+Deploy a StatefulSet and verify per-Pod stable DNS:
 
 ```
 kubectl apply -f statefulset-nginx.yaml kubectl get pods -l app=nginx-sts -w # Verify stable
@@ -665,9 +665,9 @@ nginx-0.nginx-headless.default.svc.cluster.local # Delete Pod; verify it returns
 name: kubectl delete pod nginx-1 kubectl get pods -l app=nginx-sts -w
 ```
 
-#### **Exercise 5.2 -- HPA Load Test** 
+#### **Exercise 5.2 -- HPA Load Test**
 
-Deploy an HPA and observe CPU-triggered scaling: 
+Deploy an HPA and observe CPU-triggered scaling:
 
 ```
 kubectl create deployment php-apache --image=registry.k8s.io/hpa-example kubectl expose
@@ -677,9 +677,9 @@ deployment php-apache --port=80 kubectl autoscale deployment php-apache --cpu-pe
 terminal: kubectl get hpa php-apache -w kubectl get pods -l app=php-apache -w
 ```
 
-#### **Exercise 5.3 -- RBAC Audit** 
+#### **Exercise 5.3 -- RBAC Audit**
 
-Audit and tighten RBAC permissions for a namespace: 
+Audit and tighten RBAC permissions for a namespace:
 
 ```
 # List all bindings: kubectl get rolebindings,clusterrolebindings -A # Check default SA
@@ -695,6 +695,6 @@ default-deny-all.yaml kubectl run test-client --image=busybox --restart=Never -i
 http://api-backend
 ```
 
-###### **End of Part V -- Continue to Part VI: Kubernetes Networking** 
+###### **End of Part V -- Continue to Part VI: Kubernetes Networking**
 
 Part VI delivers the complete networking deep-dive: Pod networking fundamentals, CNI architecture, Calico vs Cilium vs Flannel, eBPF data plane, VXLAN overlays, Service Mesh with Istio and Linkerd, Ambient Mesh, end-to-end packet flow tracing, Gateway API advanced patterns, east-west and north-south traffic, and multi-cluster networking with Submariner and Cilium Cluster Mesh.

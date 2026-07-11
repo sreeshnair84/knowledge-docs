@@ -21,7 +21,7 @@ series_index: "agentic-systems/skill/enterprise/index"
 ### 11.1 Central vs. Domain vs. Federated Skill Registry
 
 | Pattern | Description | Best for |
-|---|---|---|
+| --- | --- | --- |
 | **Central Registry** | One registry, one team, one schema, org-wide | Small-to-mid enterprises, or early-stage programs establishing discipline before scaling |
 | **Domain Registry** | Each business domain (finance, HR, supply chain) runs its own registry with domain-appropriate ownership | Large enterprises where domains have genuinely independent compliance regimes (e.g., financial-close skills vs. HR skills have almost no overlap and different regulators) |
 | **Federated Registry** | Domain registries remain independently operated but publish a common metadata schema (file `02`) into a shared discovery/search layer | The realistic end-state for most large enterprises running multiple vendor platforms (Azure Foundry *and* SAP Joule *and* Salesforce Agentforce simultaneously) — avoids forcing one vendor's native format on every team while still preventing cross-platform duplication (file `06`) |
@@ -51,7 +51,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 ## PART B: Common Anti-Patterns
 
 | Anti-pattern | Why it fails | Correct pattern |
-|---|---|---|
+| --- | --- | --- |
 | **Creating a Skill for every API** | Reintroduces the 1:1 tool-per-integration sprawl Skills were meant to abstract away; skills become thin, low-value wrappers | Only create a Skill where genuine judgment/sequencing exists; a bare API call is a Tool (file `01`, `04`) |
 | **Embedding business logic in prompts** | Invisible to auditors, easy to silently violate, drifts from the real policy source of truth | Extract compliance-critical logic to a deterministic workflow/tool; skill references it (file `07`) |
 | **Massive skill instructions** | Degrades instruction-following; buries important rules | Progressive disclosure — split into `references/*.md` (file `02`) |
@@ -78,6 +78,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 *Reflects publicly documented capability as of mid-2026; verify current state before procurement, given the pace of releases in this space.*
 
 ### AWS Bedrock AgentCore
+
 - **Skill packaging**: AWS-curated skills catalog (toggle-enabled), plus prebuilt coding-assistant skills (Kiro, Claude Code, Codex, Cursor) for platform-specific guidance.
 - **Tool/MCP integration**: AgentCore Gateway converts APIs/Lambda functions into MCP-exposed tools automatically; native Web Search tool exposed as an MCP gateway target.
 - **Observability**: OTel-based AgentCore Observability; trace-tree bundling of repeated spans; unified across runtime, Lambda, EKS, and non-AWS environments.
@@ -87,6 +88,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 - **Notable differentiator**: harness is explicitly decoupled from the model (switch models mid-session), and exportable from managed config to full Strands-based code when custom orchestration is needed.
 
 ### Microsoft Foundry (Azure AI Foundry Agent Service)
+
 - **Skill packaging**: Skills explicitly implement the open Agent Skills specification — `SKILL.md` with YAML front matter, versioned via a dedicated Skills API (`/skills/{name}/versions`), independent of the Toolbox (tool) catalog.
 - **Tool/MCP integration**: Toolboxes provide a single managed MCP-compatible endpoint per curated tool set; Tool Search selects a relevant subset per task rather than exposing everything; 1,400+ MCP-enabled tool connections cited.
 - **Observability**: End-to-end OTel tracing with built-in evaluators (coherence, relevance, groundedness, safety) in the Foundry Control Plane.
@@ -95,6 +97,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 - **Notable differentiator**: the clearest direct adoption of Anthropic's open Skills spec among the hyperscalers, making cross-platform skill portability most concrete here.
 
 ### Google ADK / Vertex AI Agent Platform
+
 - **Skill packaging**: Agent Skill objects following the Agent Skills specification; skills can bundle scripts/assets/references, loaded incrementally.
 - **Tool/MCP integration**: Rich tool ecosystem including MCP tools and cross-framework adapters (LangChain, CrewAI).
 - **Registry**: Google Cloud Skill Registry — explicit collision-prevention against locally loaded skill names, semantic/keyword `search_skills` query, session-level caching of dynamically loaded skills.
@@ -102,6 +105,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 - **Notable differentiator**: A2A was originated by Google and remains most natively integrated here; ADK is explicitly framework-agnostic on the model side.
 
 ### Salesforce Agentforce
+
 - **Skill equivalent**: Topics (scope/persona/instructions) + Actions (Apex, Flow, Prompt Template, or external API) — functionally a Skill/Tool split under different vocabulary; the Atlas Reasoning Engine performs skill-selection-equivalent (topic/action selection) and a grounding check before final response.
 - **Determinism control**: Agentforce Script blends natural-language instruction with rule-based, deterministic control flow in one governed artifact — a direct, productized answer to the "hidden business logic in prompts" anti-pattern.
 - **Interoperability**: Exposes agents as A2A endpoints; consumes MCP tools; every custom agent is discoverable/delegatable to partner agents via Flow.
@@ -110,6 +114,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 - **Notable differentiator**: tightest native binding between agent capability and the underlying CRM's own permission model (field-level security, sharing rules) — the governance model is inherited from the platform rather than bolted on.
 
 ### SAP Joule / SAP Business AI Platform
+
 - **Skill packaging**: ~2,400 "Joule Skills" across 40+ specialized agents (Q1 2026 figures), built via low-code Joule Studio or pro-code SAP Cloud SDK for AI with LangGraph/AutoGen/CrewAI/Google ADK framework adapters.
 - **Grounding**: SAP Knowledge Graph provides the semantic layer connecting business entities, workflows, and operational systems that skills reason over.
 - **Interoperability**: A2A for cross-vendor multi-agent collaboration (agents expose A2A-compliant server endpoints); MCP for internally exposing SAP business capabilities with semantically enriched access.
@@ -117,6 +122,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 - **Notable differentiator**: strongest "audit-ready by construction" positioning for transactional financial/HR/procurement domains — every agent action is logged with what it did, why, and what data it used, marketed explicitly as "traceability by design."
 
 ### ServiceNow AI Platform
+
 - **Skill equivalent**: Generative AI "skills" as one category of tool an AI Agent uses (alongside scripts and flows) within an Agentic Workflow; AI Agent Studio for building/customizing agents.
 - **Orchestration/governance**: AI Agent Orchestrator coordinates multi-agent teams toward a shared outcome with modular responsibilities and centralized governance; AI Control Tower provides cross-agent, cross-model, cross-source governance and monitoring — explicitly positioned as an "AI control tower" layer above individual agent frameworks, competing on governance rather than raw agent-building.
 - **Notable differentiator**: the most governance-first framing among the platforms studied — ServiceNow explicitly critiques standalone agent frameworks as "capability without control" and positions itself as the control/audit layer that sits above them.
@@ -124,7 +130,7 @@ The full chain: draft → automated gate → security/compliance review → regr
 ### Comparison summary table
 
 | Dimension | AWS AgentCore | Azure Foundry | Google ADK | Salesforce Agentforce | SAP Joule | ServiceNow |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Skill = spec-conformant SKILL.md? | Curated catalog, coding-focused | ✅ explicit | ✅ explicit | ❌ (Topics/Actions, native model) | ❌ (Joule Skills, native model) | ❌ (native model) |
 | Dedicated Skill Registry separate from Tool registry | ✅ (catalog vs. Gateway) | ✅ (Skills API vs. Toolbox) | ✅ (Skill Registry vs. tool ecosystem) | Implicit (Topic vs. Action) | Implicit (Joule Skills vs. Agent Hub) | Implicit |
 | Native A2A support | Via Runtime | Preview | Native (Google-originated) | ✅ (endpoints for every custom agent) | ✅ | Partnered (Google Cloud) |

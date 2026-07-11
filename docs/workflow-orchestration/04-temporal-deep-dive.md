@@ -54,23 +54,25 @@ Temporal is the de facto standard for **durable execution** in microservice arch
 ### Key Concepts
 
 #### 1. **Workflows** (Orchestration Logic)
+
 ```typescript
 workflow MyWorkflow {
   // This code runs once per workflow execution
   // But can be replayed multiple times for recovery
-  
+
   const result1 = await activity1()
   const result2 = await activity2(result1)
-  
+
   if (result2.needsApproval) {
     await waitForSignal('approval')
   }
-  
+
   return { status: 'complete', data: result2 }
 }
 ```
 
 **Properties**:
+
 - Must be **deterministic** (same inputs → same code path)
 - Can be replayed from any checkpoint
 - Never loses state (even if server crashes)
@@ -79,17 +81,19 @@ workflow MyWorkflow {
 ---
 
 #### 2. **Activities** (Real Work)
+
 ```typescript
 activity getCustomer(customerId: string) {
   // This can fail, timeout, be retried
   // Temporal handles retry logic automatically
-  
+
   const customer = await db.query({ id: customerId })
   return customer
 }
 ```
 
 **Properties**:
+
 - Can fail, timeout, be retried
 - Side effects are OK (calling APIs, writing to DB)
 - Retry policy is declarative
@@ -105,29 +109,29 @@ activity getCustomer(customerId: string) {
 Timeline:
   T1: Workflow starts
       → Event: WorkflowStarted
-  
+
   T2: Activity1 invoked
       → Event: ActivityTaskScheduled
-  
+
   T3: Activity1 completes
       → Event: ActivityTaskCompleted { result: "..." }
-  
+
   T4: Activity2 invoked
       → Event: ActivityTaskScheduled
-  
+
   T5: WORKER CRASHES
       → No event written yet for Activity2 result
-  
+
   [Worker restarts]
-  
+
   T6: Temporal server checks history
       → Sees: Started, Activity1Done, Activity2Scheduled
       → "Activity2 was scheduled but never completed"
       → Reschedules Activity2 on another worker
-  
+
   T7: Activity2 completes on retry
       → Event: ActivityTaskCompleted
-  
+
   T8: Workflow resumes from T4
       → (No need to re-run Activity1)
       → (Temporal replays to T4, then continues)
@@ -179,6 +183,7 @@ workflow TransferMoney {
 ```
 
 **Semantics**:
+
 - If both succeed: transfer complete
 - If deposit fails: automatically refund A
 - Temporal ensures compensation runs even if server crashes
@@ -190,10 +195,10 @@ workflow TransferMoney {
 ```typescript
 workflow ApprovalProcess {
   const submission = await activity.getSubmission(id)
-  
+
   // Wait for human to approve (could be days)
   const approval = await waitForSignal('approval')
-  
+
   if (approval.approved) {
     await activity.processApproved(submission)
   } else {
@@ -283,7 +288,7 @@ workflow ProcessWithAgent {
     tools: [...],
     context: applicationData
   })
-  
+
   // Agent completes internally
   // Result is deterministic for this workflow run
 }
@@ -296,7 +301,7 @@ workflow ProcessWithAgent {
 ## Temporal Limitations with Agentic AI
 
 | Aspect | Traditional Workflow | Agentic Integration | Gap |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Determinism** | Required | Breaks easily | Need versioning + caching |
 | **Tool invocation** | Fixed set of activities | Unbounded tools | Need tool registry |
 | **Reasoning** | Rules engine | LLM reasoning | Can't replay LLM internal state |
@@ -309,7 +314,7 @@ workflow ProcessWithAgent {
 ## Reference: Temporal Concepts Glossary
 
 | Term | Meaning |
-|---|---|
+| --- | --- |
 | **Workflow** | Orchestration logic; the "script" |
 | **Activity** | A unit of work; can fail and retry |
 | **Worker** | Process running workflow/activity code |
@@ -327,17 +332,20 @@ workflow ProcessWithAgent {
 ## Decision: When to Use Temporal
 
 ### ✅ Good Fit
+
 - Payment settlements (long-running, must be reliable)
 - Order fulfillment (distributed, retry-heavy)
 - Saga transactions (coordination across services)
 - SLA-critical workflows (must complete predictably)
 
 ### ❌ Poor Fit
+
 - Workflows requiring reasoning (use agents instead)
 - High-frequency decisions (sub-second)
 - Highly variable processes (use agents)
 
 ### ⚖️ Hybrid (Most Enterprises)
+
 - **Temporal**: Coordinates the flow
 - **Agent (Activity)**: Makes complex decisions
 - **Result**: Reliable + Adaptive
@@ -366,6 +374,7 @@ workflow ProcessWithAgent {
 ```
 
 **Ownership**:
+
 - Temporal: Reliability, state, retry logic
 - Agent: Reasoning, tool invocation, adaptivity
 
@@ -374,11 +383,13 @@ workflow ProcessWithAgent {
 ## Temporal in 2026: Predictions
 
 **Likely Evolution**:
+
 1. Better LLM integration (built-in prompt versioning?)
 2. Agent SDK compatibility (agents as first-class)
 3. Reasoning trace export (to match agent tracing)
 
 **Unlikely**:
+
 - Temporal adding agentic reasoning (stays deterministic)
 - LLMs replacing workflows (different concerns)
 

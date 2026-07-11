@@ -76,7 +76,7 @@ Proposals exist because organisations cannot make large, irreversible spending d
 **Success factors:**
 
 | Factor | What It Looks Like |
-|---|---|
+| --- | --- |
 | Problem clarity | The problem is stated in business terms, not technical terms |
 | Stakeholder alignment | Key stakeholders have shaped the proposal, not just reviewed it |
 | Evidence base | Claims are supported by data, benchmarks, or references |
@@ -88,7 +88,7 @@ Proposals exist because organisations cannot make large, irreversible spending d
 **Failure factors:**
 
 | Factor | What It Looks Like |
-|---|---|
+| --- | --- |
 | Technology-first framing | Leads with architecture before establishing the business problem |
 | Assumed context | Assumes the reader knows the current-state pain |
 | Passive voice everywhere | Makes it impossible to identify who is accountable |
@@ -156,7 +156,7 @@ Opportunities do not arrive neatly packaged. In most organisations they surface 
     Enterprise Architects who are embedded in strategic conversations — not locked in ivory-tower architecture work — hear about opportunities months before they become formal requests. This lead time is enormously valuable.
 
 | Source | Typical Identifier |
-|---|---|
+| --- | --- |
 | Strategic planning | Chief Strategy Officer, CIO, Business Unit head |
 | Problem escalation | Operations lead, IT Service Manager |
 | Regulatory trigger | Chief Risk Officer, Legal, Compliance |
@@ -268,7 +268,7 @@ being issued. Vendors are not reimbursed for RFI costs.
 Create a simple scoring matrix. Evaluate on:
 
 | Criterion | Weight | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Capability match | 30% | Does the vendor actually solve the problem? |
 | Enterprise maturity | 20% | Reference customers, support model, SLAs |
 | Integration readiness | 20% | Pre-built connectors for your stack |
@@ -372,7 +372,7 @@ Document your organisation's non-negotiable architecture standards that any vend
 Establish a cross-functional evaluation panel — at minimum: EA, a business lead, procurement, security, and a subject-matter expert. Score independently before convening. Use a structured scorecard:
 
 | Requirement Area | Weight | Vendor A | Vendor B | Vendor C |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Functional fit | 25% | 8/10 | 7/10 | 9/10 |
 | Technical architecture | 20% | 9/10 | 6/10 | 8/10 |
 | Security & compliance | 20% | 9/10 | 8/10 | 7/10 |
@@ -398,7 +398,7 @@ An RFQ is used when the solution is already well-defined and the primary differe
 ### Difference from RFP
 
 | Dimension | RFP | RFQ |
-|---|---|---|
+| --- | --- | --- |
 | Solution definition | Open — vendors propose their approach | Closed — you specify exactly what you want |
 | Primary differentiator | Capability, methodology, fit | Price |
 | Evaluation complexity | High | Low |
@@ -467,7 +467,7 @@ Start: [date]  End: [date]  Review: [date]
 Common lock-in vectors:
 
 | Vector | Example | Mitigation |
-|---|---|---|
+| --- | --- | --- |
 | Proprietary data format | Data stored in vendor-specific schema | Require open export formats; test export during PoC |
 | API dependency | 200 integrations built on vendor's private API | Prefer open standards (REST, GraphQL, gRPC) |
 | Skill lock-in | Only vendor-certified staff can operate the system | Require knowledge transfer; insist on open documentation |
@@ -596,7 +596,7 @@ Produce these artefacts from discovery:
 Organise pain points by dimension:
 
 | Dimension | Example Pain Points |
-|---|---|
+| --- | --- |
 | Speed | "Report takes 4 days; business needs it same day" |
 | Accuracy | "Data in System A contradicts System B — manual reconciliation weekly" |
 | Cost | "20 FTE doing manual data entry that should be automated" |
@@ -682,7 +682,7 @@ Risks:    [What could go wrong with this decision?]
 A complete cost estimate covers:
 
 | Category | Examples |
-|---|---|
+| --- | --- |
 | Software licences | Perpetual licences, SaaS subscriptions, usage-based fees |
 | Infrastructure | Cloud compute, storage, networking, DR environment |
 | Implementation | Vendor professional services, SI fees, internal staff cost |
@@ -728,7 +728,7 @@ Breaks the work into atomic tasks, estimates each task, and rolls up. Most accur
 Contingency guidelines by stage and complexity:
 
 | Project Stage | Low Complexity | Medium Complexity | High Complexity |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Concept (pre-discovery) | 40% | 60% | 80%+ |
 | Post-discovery | 25% | 35% | 50% |
 | Post-design | 15% | 20% | 30% |
@@ -743,7 +743,7 @@ Contingency guidelines by stage and complexity:
 Before evaluating specific products, establish the make-or-buy posture:
 
 | Option | Definition | Best When | Avoid When |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Build | Internal development of custom software | Capability is a competitive differentiator; no market solution fits | Commodity capability; limited engineering capacity |
 | Buy | Purchase commercial off-the-shelf (COTS) software | Mature market; capability is not differentiating | Heavy customisation will be needed (kills the value of COTS) |
 | Partner | Co-development or white-labelling with a third party | You need speed and some differentiating capability | Partner's roadmap is not aligned with yours |
@@ -919,7 +919,7 @@ ARB Day: Present for 10 minutes, leave 50 minutes for questions
 ### Common ARB Objections and How to Respond
 
 | Objection | What It Really Means | Response Strategy |
-|---|---|---|
+| --- | --- | --- |
 | "This doesn't align with our cloud strategy" | You are proposing something on the wrong cloud | Show the alignment; if misaligned, show the waiver path |
 | "How does this affect our data platform?" | Concern about data duplication or inconsistency | Show the data flow; explain the integration pattern |
 | "The NFRs are not specific enough" | They want measurable targets, not platitudes | Come with specific numbers: "99.9% availability = 8.7 hours downtime per year" |
@@ -987,7 +987,7 @@ EA's are often excluded from commercial negotiation. This is a mistake. Architec
 Key commercial terms with architecture implications:
 
 | Term | Architecture Concern |
-|---|---|
+| --- | --- |
 | Licence model (per user / per transaction / unlimited) | Affects cost at scale; model your growth |
 | Data volume pricing | At what point does your data volume break the pricing tier? |
 | SLA and credits | Are the SLA metrics the right ones? Credits are rarely the right incentive |
@@ -999,7 +999,7 @@ Key commercial terms with architecture implications:
 ### Vendor Negotiation Tactics (and Counter-Tactics)
 
 | Vendor Tactic | What Is Happening | Counter |
-|---|---|---|
+| --- | --- | --- |
 | "This price is only valid until Friday" | Artificial urgency to prevent competitive comparison | "We will extend our RFP process if needed. The deadline is ours, not yours." |
 | "Our reference customer list is confidential" | Hiding weak references | "References are a mandatory RFP criterion. No references = disqualification." |
 | "The integration is straightforward" | Underestimating integration to win the deal | "We need that in writing in the SOW with a fixed-price commitment." |
@@ -1225,7 +1225,7 @@ The programme was structured into four phases over 36 months. Governance was est
 At Month 6 post-go-live (Phase 1: Germany pilot):
 
 | Benefit | Target | Actual | Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Claims processing time | 9 days → 4 days | 9 days → 5.5 days | Partially achieved |
 | Fraud detection rate | 2.1% → 4.0% | 2.1% → 3.6% | Partially achieved |
 | Manual processing FTE | 12 FTE → 7 FTE | 12 FTE → 9 FTE | Delayed — HR process |
@@ -1433,7 +1433,7 @@ This means discovery (Stage 6) is not just a technical exercise — it is a trus
 The following mistakes are drawn from real engagement experience. At least one of these will occur in any large proposal — knowing them in advance is the only defence.
 
 | Stage | Common Mistake | Why It Happens | How to Prevent |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Opportunity ID | Framing the problem as a technology problem | EA's natural instinct | Force a "so what for the business?" test on every problem statement |
 | RFI | Issuing an RFI when you already know the answer | Procurement compliance theatre | Be honest internally; if you know the answer, document why and proceed to RFP |
 | RFI | Asking vague questions | Written by committee | Single editor with a review cycle; test each question: "What would a bad answer to this look like?" |

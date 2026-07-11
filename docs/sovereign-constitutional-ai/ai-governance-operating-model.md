@@ -137,7 +137,7 @@ Monitor + Measure     Exception Handling
 **Policy taxonomy:**
 
 | Policy type | Scope | Owner | Review frequency |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **AI Risk Appetite Statement** | All AI | Board Risk Committee | Annual |
 | **AI Acceptable Use Policy** | All staff | RAIO + Legal | Annual |
 | **AI Development Standards** | Development teams | AI Platform + RAIO | Semi-annual |
@@ -225,7 +225,7 @@ Beyond model approval, agents must demonstrate:
 When an AI system needs to operate outside its approved parameters:
 
 | Exception type | Process | Approval level | Max duration |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Minor exception** (parameter tuning) | Documented in exception log | RAIO + Platform Lead | 30 days |
 | **Standard exception** (new tool, expanded data) | Exception request form + review | RAIO + CRO | 90 days |
 | **Major exception** (autonomy level increase) | Full risk assessment | AI Governance Council | 180 days |
@@ -266,7 +266,7 @@ Accepted risk added to AI Risk Register with:
 ### 2.6 Compliance Monitoring
 
 | Activity | Frequency | Tool | Output |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Constitutional violation monitoring | Real-time | Policy engine alerts | Violation dashboard |
 | Fairness metric monitoring | Daily | Fairness monitoring pipeline | Drift alert |
 | Model performance monitoring | Continuous | MLOps platform | Degradation alert |
@@ -283,7 +283,7 @@ The AI Review Board (ARB-AI) is the technical governance body that reviews AI ar
 ### 3.1 ARB-AI Composition
 
 | Role | Responsibility |
-|---|---|
+| --- | --- |
 | **Principal AI Architect** (Chair) | Technical architecture authority |
 | **AI Security Architect** | Security and threat model review |
 | **RAI Champion** | RAI and constitutional compliance |
@@ -321,7 +321,7 @@ Stage 3: Post-Production Review (90 days after deployment)
 ## 4. RACI Matrix
 
 | Activity | Board | AI Gov Council | CRO | RAIO | Platform | Agent Ops |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | AI risk appetite | A | C | R | C | I | I |
 | AI constitution | I | A | C | R | C | I |
 | Model approval (T1) | I | A | C | R | R | I |
@@ -384,7 +384,7 @@ See [Policy-as-Code Framework](policy-as-code-framework.md) for implementation d
 ## 6. Governance Cadence
 
 | Meeting | Frequency | Participants | Agenda |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Agent Operations Standup | Daily | Agent Ops, Platform on-call | Health, alerts, incidents |
 | AI Platform Review | Weekly | Platform, RAI Champions | Deployments, drift, exceptions |
 | RAI Governance Review | Monthly | RAIO, CRO, Legal | Policy, fairness, audit readiness |
@@ -413,6 +413,7 @@ Regulatory Examinations:     [pending/completed]
 ```
 
 **Section 2: Strategic AI Update (1-2 pages)**
+
 - AI portfolio summary: systems by category and tier
 - Value delivered: cost savings, revenue impact, productivity
 - Major deployments this quarter
@@ -420,11 +421,13 @@ Regulatory Examinations:     [pending/completed]
 - Regulatory landscape changes impacting the organization
 
 **Section 3: Risk Deep-Dives (2-3 pages)**
+
 - Top 3 AI risks: description, current mitigation, residual rating
 - Emerging risk horizon (next quarter)
 - External AI incident context (industry incidents, regulatory signals)
 
 **Section 4: Governance Health (1 page)**
+
 - Model approval pipeline: throughput, average review time
 - RAI training completion rate
 - Audit readiness score (vs. ISO 42001, EU AI Act)
@@ -433,7 +436,7 @@ Regulatory Examinations:     [pending/completed]
 ### 7.2 Board-Level KPIs
 
 | KPI | Definition | Target | Current |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | AI Risk Exposure Score | Weighted average risk rating across portfolio | < 12 (moderate) | — |
 | Constitutional Compliance Rate | % of interactions with no constitutional violations | > 99.9% | — |
 | Fairness Threshold Compliance | % of systems meeting all fairness thresholds | 100% | — |

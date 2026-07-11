@@ -29,7 +29,7 @@ Agentic applications impose fundamentally different scalability constraints than
 ### 1.1 The Four Hard Problems
 
 | Scalability Problem | Traditional App | Agentic App | Engineering Impact |
-|--------------------|----------------|-------------|-------------------|
+| -------------------- | ---------------- | ------------- | ------------------- |
 | **Stateful conversations** | Each request independent | Session state must follow user or be accessible from any instance | Session affinity OR expensive state externalization |
 | **Long-running tasks** | < 1s per request | 30s – 30min per task | Persistent connections; heartbeats; worker lifecycle management |
 | **Token throughput bottleneck** | CPU/memory bound | LLM token generation is the primary ceiling | Cannot scale past provider TPM (tokens-per-minute) limits |
@@ -78,7 +78,7 @@ Agentic Application Scalability Layers
 LLM token generation is the hard scalability ceiling for most agentic deployments. Unlike CPU or memory, which can be scaled horizontally with cost, token throughput is governed by provider limits.
 
 | Constraint Type | Source | Typical Limit | Scale-Out Option |
-|----------------|--------|---------------|-----------------|
+| ---------------- | -------- | --------------- | ----------------- |
 | RPM (requests per minute) | Provider tier | 500 – 10,000 RPM | Multi-provider routing; multiple API keys |
 | TPM (tokens per minute) | Provider tier | 40K – 4M TPM | Distribute across provider tiers |
 | TPD (tokens per day) | Provider tier | Hard daily cap | Batch workloads in off-peak windows |
@@ -94,7 +94,7 @@ LLM token generation is the hard scalability ceiling for most agentic deployment
 Moving session state out of the agent worker process enables any instance to serve any request, enabling true horizontal scaling.
 
 | Storage Option | Latency | Consistency | Cost | Best For |
-|---------------|---------|-------------|------|---------|
+| --------------- | --------- | ------------- | ------ | --------- |
 | **Redis Cluster** | < 1ms | Strong (single shard) | Medium | Hot session data; streaming position |
 | **DynamoDB / Cosmos DB** | 5–15ms | Strong (provisioned) | Medium-high | Session metadata; turn history |
 | **PostgreSQL** | 5–20ms | ACID | Low-medium | Structured conversation history |
@@ -165,7 +165,7 @@ Benefits:
   • Built-in audit trail
   • Natural replay for debugging
   • Streaming resync via Last-Event-ID
-  
+
 Trade-offs:
   • State reconstruction cost grows with event count
   • Requires periodic snapshots for long sessions
@@ -175,7 +175,7 @@ Trade-offs:
 ### 2.3 Stateless vs Stateful Worker Trade-Offs
 
 | Aspect | Stateless Workers | Stateful Workers |
-|--------|-------------------|-----------------|
+| -------- | ------------------- | ----------------- |
 | Scaling | Simple horizontal — add instances | Complex — must migrate or drain sessions |
 | Memory efficiency | Load state on each request (cache miss cost) | Keep hot state in memory (fast) |
 | Fault tolerance | Any worker can take over on crash | Session lost unless migrated first |
@@ -197,6 +197,7 @@ Sticky sessions route a user's requests to the same backend instance. They are r
 4. **Tool connection pools** — the worker has an open, authenticated connection to a tool API that cannot be transferred
 
 Sticky sessions are NOT required when:
+
 - State is fully externalized (Redis)
 - Request is idempotent (retrieval, read-only)
 - Task is queued and not yet started
@@ -214,7 +215,7 @@ Consistent Hashing Ring — Agent Worker Assignment
 
 Session routing:
   hash(session_id) mod ring_size → nearest worker clockwise
-  
+
   Example:
     session-001 → hash: 0x3F → nearest clockwise: Worker-B
     session-002 → hash: 0x7A → nearest clockwise: Worker-C
@@ -291,7 +292,7 @@ Task Queue (Kafka/SQS)
 The LLM proxy is a critical scaling layer. It should be stateless and scaled independently from agent workers.
 
 | Concern | Pattern | Config Example |
-|---------|---------|---------------|
+| --------- | --------- | --------------- |
 | Multi-provider routing | Weighted round-robin | Claude 60%, GPT-4o 30%, Gemini 10% |
 | Rate limit distribution | Token bucket per provider | 400K TPM per provider instance |
 | Semantic caching | Embedding similarity > 0.95 → return cache | TTL: 5min for deterministic; 0 for creative |
@@ -384,7 +385,7 @@ New query: "What is the capital of France?"
 Semantic cache configuration decisions:
 
 | Parameter | Conservative | Balanced | Aggressive |
-|-----------|-------------|---------|-----------|
+| ----------- | ------------- | --------- | ----------- |
 | Similarity threshold | 0.97 | 0.92 | 0.85 |
 | Cache TTL | 1 hour | 6 hours | 24 hours |
 | Max cache size | 10K entries | 100K entries | 1M entries |
@@ -395,7 +396,7 @@ Semantic cache configuration decisions:
 ### 5.2 Tool Response Caching
 
 | Tool Type | Cacheable? | TTL | Cache Key | Invalidation |
-|-----------|-----------|-----|-----------|-------------|
+| ----------- | ----------- | ----- | ----------- | ------------- |
 | Web search | Yes (soft) | 5 min | query + date | Time-based |
 | Database read | Yes | 30 sec | SQL hash + params | Write invalidation |
 | File read | Yes | 60 sec | path + etag | etag change |
@@ -451,7 +452,7 @@ response = client.messages.create(
 **Cache cost analysis:**
 
 | Scenario | Without Cache | With Cache (steady state) | Cost Reduction |
-|----------|-------------|--------------------------|----------------|
+| ---------- | ------------- | -------------------------- | ---------------- |
 | 10K token system prompt, 1000 users/day | $30/day | $4/day | 87% |
 | 50K token document analysis, 500 users/day | $150/day | $20/day | 87% |
 | 1K token system prompt (small) | $3/day | $2.4/day | 20% (break-even at ~50 uses) |
@@ -510,7 +511,7 @@ CDN Edge (Cloudflare Workers / Fastly / CloudFront)
   │     • Edge buffers and replays for reconnects
   │
   └── /api/tools/* → Origin (cannot cache; side effects)
-  
+
 Origin (Regional)
   ├── Agent Orchestrator (k8s)
   ├── LLM Proxy
@@ -522,7 +523,7 @@ Origin (Regional)
 Terminating SSE at the edge (rather than origin) reduces the number of long-lived connections that origin servers must maintain.
 
 | Metric | Without Edge SSE | With Edge SSE |
-|--------|-----------------|--------------|
+| -------- | ----------------- | -------------- |
 | Long-lived connections at origin | = concurrent users | = CDN PoP count |
 | Origin server thread/connection cost | High (per-user) | Low (per PoP) |
 | User latency | Origin latency | Edge latency (< 20ms) |
@@ -545,27 +546,27 @@ Standard round-robin load balancing breaks streaming connections. Streaming requ
 # Nginx config for sticky streaming with AG-UI
 upstream agent_workers {
     least_conn;  # Route new connections to least-loaded worker
-    
+
     server worker-1:8080;
     server worker-2:8080;
     server worker-3:8080;
-    
+
     keepalive 128;  # Keep upstream connections open
 }
 
 server {
     location /stream/ {
         proxy_pass http://agent_workers;
-        
+
         # Streaming-specific settings
         proxy_buffering off;          # Disable response buffering for SSE
         proxy_cache off;
         proxy_read_timeout 3600s;     # Keep connection alive for 1 hour
         proxy_send_timeout 3600s;
-        
+
         # Session affinity by session_id cookie
         proxy_set_header X-Session-ID $cookie_session_id;
-        
+
         # SSE headers
         proxy_set_header Accept-Encoding "";
         add_header Cache-Control no-cache;
@@ -578,7 +579,7 @@ server {
 ### 7.2 LLM Provider Load Balancing
 
 | Strategy | Best For | Configuration |
-|----------|---------|---------------|
+| ---------- | --------- | --------------- |
 | **Round-robin** | Homogeneous providers | Distribute evenly across identical providers |
 | **Weighted round-robin** | Primary + secondary split | Claude 70% (primary) + GPT-4o 30% (secondary) |
 | **Least connections** | Minimizing latency variance | Route to provider with fewest active requests |
@@ -632,13 +633,13 @@ WebSocket / Polling endpoint:
         config:
           retention.ms: 3600000    # 1 hour (tasks expire)
           max.message.bytes: 1048576  # 1MB max task payload
-          
+
       agent-tasks-normal:
         partitions: 30
         replication-factor: 3
         config:
           retention.ms: 86400000   # 24 hours
-          
+
       agent-tasks-dlq:
         partitions: 6
         replication-factor: 3
@@ -679,7 +680,7 @@ WebSocket / Polling endpoint:
 ### 8.3 Queue Depth Monitoring and Autoscaling Triggers
 
 | Queue | Scale-Out Trigger | Scale-In Trigger | Max Workers | Min Workers |
-|-------|------------------|-----------------|-------------|-------------|
+| ------- | ------------------ | ----------------- | ------------- | ------------- |
 | agent-tasks-high | depth > 5 for 30s | depth = 0 for 5min | 20 | 2 |
 | agent-tasks-normal | depth > 20 for 60s | depth < 3 for 5min | 50 | 2 |
 | agent-tasks-batch | depth > 100 for 5min | depth < 10 for 15min | 30 | 0 (scale-to-zero) |
@@ -865,7 +866,7 @@ spec:
 Scale-to-zero introduces cold start latency (model loading, dependency initialization). Mitigation strategies:
 
 | Strategy | Latency Reduction | Cost Overhead | Complexity |
-|---------|------------------|---------------|-----------|
+| --------- | ------------------ | --------------- | ----------- |
 | **Warm pool** (keep N idle workers) | Eliminates cold start | Cost of N idle workers | Low |
 | **Pre-initialized containers** | 50–70% reduction | Container image size | Medium |
 | **Lazy model loading** (load on first request) | None | None | Low |
@@ -881,7 +882,7 @@ Scale-to-zero introduces cold start latency (model loading, dependency initializ
 ### 11.1 Concurrency Limits at Each Layer
 
 | Layer | Limit Type | Recommended Default | Enforcement Mechanism |
-|-------|-----------|--------------------|-----------------------|
+| ------- | ----------- | -------------------- | ----------------------- |
 | Per-user concurrent sessions | Per-user | 3 | Application middleware |
 | Per-tenant concurrent sessions | Per-tenant | 100 | Rate limiter (Redis) |
 | Per-user concurrent tool calls | Per-user | 10 | Semaphore in orchestrator |
@@ -980,7 +981,7 @@ Replication:
 ### 12.2 Data Sovereignty Constraints
 
 | Constraint | Impact | Design Response |
-|-----------|--------|----------------|
+| ----------- | -------- | ---------------- |
 | EU GDPR: data must stay in EU | Cannot replicate EU user data to US | EU session data never leaves EU region; global LB enforces geo-fencing |
 | Healthcare (HIPAA): PHI must stay in compliant region | No session state replication to non-compliant regions | Compliant region isolated; failover within-region only |
 | Financial (SOC2/PCI): audit logs must be complete | Cannot lose events in replication | Synchronous event log replication; accept higher latency |
@@ -995,7 +996,7 @@ Replication:
 For organizations running their own LLM inference, GPU scheduling is the primary scalability constraint.
 
 | Model Size | VRAM Required | Suitable GPU | Concurrent Requests (naive) | With Continuous Batching |
-|-----------|--------------|-------------|---------------------------|--------------------------|
+| ----------- | -------------- | ------------- | --------------------------- | -------------------------- |
 | 7B FP16 | 14 GB | A100 40GB (×1) | 1–2 | 8–12 |
 | 13B FP16 | 26 GB | A100 40GB (×1) | 1 | 5–8 |
 | 70B FP16 | 140 GB | H100 80GB (×2) | 1 | 3–5 |
@@ -1026,7 +1027,7 @@ Continuous Batching (vLLM):
 When running multiple models on shared GPU infrastructure, use time-sharing with priority queues:
 
 | Model | Role | Priority | Max VRAM | SLO (TTFT) |
-|-------|------|---------|---------|-----------|
+| ------- | ------ | --------- | --------- | ----------- |
 | Claude claude-haiku-4-5 equivalent (small) | Planning, routing | High | 14GB | 200ms |
 | Claude Sonnet equivalent (medium) | Standard tasks | Normal | 28GB | 800ms |
 | Claude Opus equivalent (large) | Complex reasoning | Low | 80GB | 3,000ms |
@@ -1038,7 +1039,7 @@ When running multiple models on shared GPU infrastructure, use time-sharing with
 ### 14.1 Connection Pool Configuration
 
 | Component | Pool Size | Max Idle | Timeout | Validation |
-|-----------|-----------|---------|---------|------------|
+| ----------- | ----------- | --------- | --------- | ------------ |
 | LLM Provider HTTP client | 50 | 20 | 60s connect; 120s read | TCP keepalive |
 | Tool API HTTP clients | 20 per tool | 10 | 15s connect; 30s read | Health check before use |
 | PostgreSQL (session storage) | 20 per worker | 10 | 5s connect; 30s query | SELECT 1 |
@@ -1078,7 +1079,7 @@ Peak tool call rate:
 ### 15.2 Sizing Formulas
 
 | Component | Formula | Example |
-|-----------|---------|---------|
+| ----------- | --------- | --------- |
 | Agent workers | `ceil(peak_sessions / sessions_per_worker)` | `ceil(500 / 10) = 50 workers` |
 | LLM proxy instances | `ceil(peak_TPM / TPM_per_proxy_instance)` | `ceil(700K / 200K) = 4 instances` |
 | Tool executor instances | `ceil(peak_tool_calls_per_min / calls_per_instance)` | `ceil(2000 / 500) = 4 instances` |
@@ -1088,7 +1089,7 @@ Peak tool call rate:
 ### 15.3 Cost Model
 
 | Architecture Decision | Monthly Cost Impact | Notes |
-|----------------------|-------------------|-------|
+| ---------------------- | ------------------- | ------- |
 | Active-active multi-region (3 regions) | 2.5–3× single region | Full redundancy cost |
 | Scale-to-zero batch workers | 40–60% reduction vs always-on | Cold start trade-off |
 | Semantic caching (35% hit rate) | 25–30% LLM cost reduction | Higher for repetitive workloads |
@@ -1105,7 +1106,7 @@ Peak tool call rate:
 Unlike pure throughput benchmarks, agentic workloads require measuring quality degradation under load, not just latency and throughput.
 
 | Scenario | Description | Duration | Success Criteria |
-|----------|-------------|---------|-----------------|
+| ---------- | ------------- | --------- | ----------------- |
 | **Ramp test** | Linearly increase load 0 → 2× peak over 10 min | 10 min | No error rate increase until 80% peak |
 | **Soak test** | Sustain 80% peak load for 4 hours | 4 hours | Error rate stable; no memory leak; quality maintained |
 | **Spike test** | Instant 5× load spike for 60 seconds | 60 sec spike | System recovers to baseline within 5 min post-spike |
@@ -1118,7 +1119,7 @@ Unlike pure throughput benchmarks, agentic workloads require measuring quality d
 In addition to latency (P50/P95/P99) and throughput (requests/second), agentic benchmarks must measure:
 
 | Metric | Why It Matters | Measurement Method |
-|--------|--------------|-------------------|
+| -------- | -------------- | ------------------- |
 | Task completion rate under load | Quality may degrade before latency | LLM judge on sampled outputs |
 | Tool success rate under load | Tool APIs may throttle under spike | Tool result outcome tracking |
 | Context assembly time under load | Memory service may become bottleneck | OTel spans |
@@ -1130,7 +1131,7 @@ In addition to latency (P50/P95/P99) and throughput (requests/second), agentic b
 ## 17. Scalability Anti-Patterns
 
 | # | Anti-Pattern | Description | Impact | Correct Pattern |
-|---|-------------|-------------|--------|-----------------|
+| --- | ------------- | ------------- | -------- | ----------------- |
 | 1 | **State in Worker Memory** | Session state stored only in agent worker process | Instance crash = session loss; cannot scale horizontally | Externalize state to Redis/DB |
 | 2 | **Synchronous Tool Fan-Out** | Agent calls 10 tools sequentially | 10× latency vs parallel | Parallel tool execution with semaphores |
 | 3 | **No Connection Pooling** | New HTTP connection per LLM call | 100ms TLS overhead per call at scale | Connection pools with keep-alive |
@@ -1161,7 +1162,7 @@ In addition to latency (P50/P95/P99) and throughput (requests/second), agentic b
 ## 18. Scalability Decision Matrix
 
 | Decision | Option A | Option B | Choose A When | Choose B When |
-|----------|---------|---------|--------------|--------------|
+| ---------- | --------- | --------- | -------------- | -------------- |
 | **Session state** | Stateless (externalized) | Stateful (in-memory) | Sessions < 5 min; horizontal scale priority | Long-running tasks > 5 min; latency critical |
 | **LLM routing** | Single provider | Multi-provider | Development/test; cost simplicity | Production; > 99.9% availability required |
 | **Queue system** | Managed (SQS/Pub Sub) | Self-hosted (Kafka) | < 1M msg/day; ops simplicity | > 1M msg/day; complex routing; compliance |

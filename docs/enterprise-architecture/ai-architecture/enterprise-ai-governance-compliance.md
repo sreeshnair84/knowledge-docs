@@ -29,7 +29,7 @@ covers_version: \"as of 2026-07-10\"
 ### 1.1 What Needs Governing
 
 | Governance domain | Core question |
-|------------------|---------------|
+| ------------------ | --------------- |
 | **Model selection** | Which models are approved? What risk assessment is required? |
 | **Data handling** | What data can be sent to AI systems? How is it protected? |
 | **Output quality** | How is accuracy, fairness, and safety measured and maintained? |
@@ -42,7 +42,7 @@ covers_version: \"as of 2026-07-10\"
 ### 1.2 Who Owns What
 
 | Role | Governance responsibilities |
-|------|-----------------------------|
+| ------ | ----------------------------- |
 | **AI Governance Committee** | Policy, risk appetite, cross-org decisions, vendor approval |
 | **Enterprise AI Architect** | Architecture standards, pattern approval, technical governance |
 | **AI Center of Excellence (CoE)** | Pattern library, tooling, education, community of practice |
@@ -66,7 +66,7 @@ In force since August 2024 (phased application); GDPR-style territorial reach �
 **Risk categories:**
 
 | Category | Definition | Examples | Obligations |
-|----------|------------|----------|-------------|
+| ---------- | ------------ | ---------- | ------------- |
 | **Unacceptable risk** | Prohibited | Social scoring, real-time biometric surveillance in public spaces, manipulation of vulnerable groups, AI-generated NCII/CSAM (added by the Digital Omnibus; transition to Dec 2, 2026) | **Banned** — cannot deploy |
 | **High risk** | Significant potential harm | AI in hiring, credit, medical devices, critical infrastructure, law enforcement | Conformity assessment, transparency, HITL, logging, bias testing (Annex III from Dec 2, 2027; Annex I from Aug 2, 2028) |
 | **Limited risk** | Transparency obligations | Chatbots, deepfake generation | Must disclose AI interaction to users (Art. 50, applies Aug 2, 2026; watermarking grace to Dec 2, 2026 for existing systems) |
@@ -74,6 +74,7 @@ In force since August 2024 (phased application); GDPR-style territorial reach �
 | **General-purpose AI (GPAI)** | Foundation/general-purpose models | Claude, GPT-5-family, Gemini | Art. 53 transparency, technical documentation, copyright policy; Art. 55 additional duties for systemic-risk models. In force since Aug 2, 2025; Commission enforcement and fines from Aug 2, 2026 |
 
 **Key obligations for high-risk AI systems:**
+
 - Risk management system throughout the AI lifecycle
 - Data governance: training/validation/test data quality, relevance, and bias testing
 - Technical documentation (model card equivalent)
@@ -86,6 +87,7 @@ In force since August 2024 (phased application); GDPR-style territorial reach �
 **Penalties:** Up to €35M or 7% of global annual turnover, whichever is higher.
 
 **Action items for architects:**
+
 1. Classify each AI system by EU AI Act risk tier
 2. Document classification rationale
 3. For high-risk: implement full conformity requirements
@@ -144,6 +146,7 @@ The NIST AI Risk Management Framework (AI RMF 1.0, January 2023) provides a volu
 ISO 42001 (published December 2023) is the first international standard for AI management systems — analogous to ISO 27001 for information security.
 
 **Key requirements:**
+
 - AI management system (AIMS) documented and maintained
 - Context analysis: understand internal/external context for AI
 - Leadership commitment and AI policy
@@ -153,6 +156,7 @@ ISO 42001 (published December 2023) is the first international standard for AI m
 - Continual improvement
 
 **Certification process:**
+
 1. Gap analysis against ISO 42001 requirements
 2. AIMS design and documentation
 3. Implementation (policies, procedures, controls)
@@ -172,7 +176,7 @@ The General Data Protection Regulation applies when personal data is processed b
 **Key GDPR obligations for AI:**
 
 | Obligation | AI-specific application |
-|-----------|------------------------|
+| ----------- | ------------------------ |
 | **Lawful basis** | Identify lawful basis for AI processing of personal data (consent, legitimate interest, contract) |
 | **Data minimisation** | Send only the minimum personal data needed for the AI task |
 | **Purpose limitation** | AI output cannot be used for purposes incompatible with the original purpose |
@@ -188,6 +192,7 @@ The General Data Protection Regulation applies when personal data is processed b
 California Consumer Privacy Act / California Privacy Rights Act applies to businesses meeting California thresholds that process California consumer personal information.
 
 **AI-specific requirements:**
+
 - Disclose use of automated decision-making in privacy notices
 - CPRA: consumers may opt out of automated decision-making for profiling with significant effects
 - **CPPA ADMT regulations** (approved September 2025): businesses using automated decision-making technology for significant decisions must comply by **January 1, 2027** — pre-use notices, opt-out rights, and risk assessments
@@ -197,13 +202,14 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 ### 2.6 Financial Services
 
 | Regulation | Jurisdiction | AI relevance |
-|-----------|-------------|-------------|
+| ----------- | ------------- | ------------- |
 | **SR 11-7** (Model Risk) | US (Fed/OCC guidance) | AI models as "models" subject to model risk management; validation, documentation, governance |
 | **DORA** (Digital Operational Resilience Act) | EU (effective Jan 2025) | ICT risk including AI systems; resilience testing; third-party ICT risk management |
 | **SEC AI disclosure** | US (public companies) | Material AI risks disclosed in 10-K/10-Q; AI system failures as material events |
 | **MAS TRM** | Singapore | Technology Risk Management guidelines applied to AI systems |
 
 **SR 11-7 model risk management applied to AI:**
+
 - Model inventory: register all AI models used in material business decisions
 - Validation: independent validation of model methodology, performance, and limitations
 - Ongoing monitoring: track model performance drift; alert on threshold breach
@@ -212,11 +218,13 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 ### 2.7 Healthcare
 
 **HIPAA and AI:**
+
 - Protected Health Information (PHI) cannot be sent to AI APIs without a Business Associate Agreement (BAA) with the vendor
 - Anthropic, AWS (Bedrock), Microsoft (Foundry — formerly Azure AI Foundry), and Google (Vertex) offer BAAs for qualifying enterprise tiers
 - De-identification before AI processing: Safe Harbor method (remove 18 HIPAA identifiers) or Expert Determination method
 
 **FDA AI/ML guidance:**
+
 - Software as a Medical Device (SaMD) using AI: subject to FDA oversight
 - Predetermined Change Control Plans (PCCP): describe how AI model will be updated post-market without new 510(k)
 - AI/ML in medical devices: performance monitoring and transparency requirements
@@ -236,7 +244,7 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 ### 3.1 RAI Principles
 
 | Principle | Definition | Measurement |
-|-----------|-----------|-------------|
+| ----------- | ----------- | ------------- |
 | **Fairness** | AI systems do not discriminate against protected groups | Demographic parity difference, equalized odds difference |
 | **Accountability** | Clear ownership of AI decisions and outcomes | Audit trail completeness, decision traceability |
 | **Transparency** | How AI works is explainable to appropriate stakeholders | Model card coverage, explainability score |
@@ -250,7 +258,7 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 **Group fairness (statistical):**
 
 | Metric | Definition | Formula |
-|--------|-----------|---------|
+| -------- | ----------- | --------- |
 | **Demographic parity** | Equal positive prediction rates across groups | P(Ŷ=1 \| A=0) = P(Ŷ=1 \| A=1) |
 | **Equalized odds** | Equal TPR and FPR across groups | TPR and FPR equal across A=0, A=1 |
 | **Predictive parity** | Equal precision across groups | P(Y=1 \| Ŷ=1, A=0) = P(Y=1 \| Ŷ=1, A=1) |
@@ -261,6 +269,7 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 ### 3.3 Model Cards and System Cards
 
 **Model card (for each AI model used):**
+
 - Model name and version
 - Intended use cases and out-of-scope uses
 - Training data description (source, preprocessing, known biases)
@@ -269,6 +278,7 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 - Evaluation results
 
 **System card (for each AI system deployed):**
+
 - System purpose and scope
 - Models and tools used
 - Data flows and data handling
@@ -285,7 +295,7 @@ California Consumer Privacy Act / California Privacy Rights Act applies to busin
 A risk register documents each AI system with its risk profile. Reviewed quarterly; updated on each system change.
 
 | Field | Description |
-|-------|-------------|
+| ------- | ------------- |
 | System ID | Unique identifier |
 | System name | Human-readable name |
 | Business purpose | What business process it supports |
@@ -315,7 +325,7 @@ Reversibility factor:
 ```
 
 | Score range | Risk tier | Governance response |
-|-------------|-----------|---------------------|
+| ------------- | ----------- | --------------------- |
 | 1–10 | **Low** | Standard controls; annual review |
 | 11–25 | **Medium** | Enhanced monitoring; semi-annual review |
 | 26–50 | **High** | Full oversight; quarterly review; HITL required |
@@ -324,7 +334,7 @@ Reversibility factor:
 ### 4.3 Tiered Governance
 
 | Tier | Risk level | Controls required |
-|------|-----------|-------------------|
+| ------ | ----------- | ------------------- |
 | **Tier 1** | Low risk | Self-service; standard API; basic logging |
 | **Tier 2** | Medium risk | AI gateway; cost controls; output validation; semi-annual review |
 | **Tier 3** | High risk | HITL checkpoints; bias testing; explainability; quarterly ARB review |
@@ -337,6 +347,7 @@ Reversibility factor:
 ### 5.1 AI Governance Committee
 
 **Composition:**
+
 - CTO or CIO (executive sponsor)
 - Chief Risk Officer or delegate
 - Chief Legal Officer or General Counsel delegate
@@ -347,11 +358,13 @@ Reversibility factor:
 - HR representative (for people-impacting AI)
 
 **Cadence:**
+
 - Monthly operational review (risk register, incidents, spend)
 - Quarterly strategic review (policy updates, vendor assessment, regulatory changes)
 - Ad hoc: new high-risk AI system approval, incident response, regulatory enforcement
 
 **Decision rights (RACI):**
+
 - AI risk appetite: Approve → Committee; Recommend → CRO; Inform → Board
 - New high-risk AI system: Approve → Committee; Recommend → EA Architect + Legal
 - AI vendor approval: Approve → Committee; Recommend → Procurement + Security
@@ -362,6 +375,7 @@ Reversibility factor:
 The AI CoE enables self-service within guardrails. It prevents governance from becoming a bottleneck.
 
 **CoE responsibilities:**
+
 - Maintain approved pattern library (architecture patterns approved for use)
 - Provide internal AI SDK / gateway for teams to build on
 - Run education programs (prompt engineering, cost optimisation, governance)
@@ -370,6 +384,7 @@ The AI CoE enables self-service within guardrails. It prevents governance from b
 - Track AI spend across the enterprise
 
 **CoE does NOT:**
+
 - Approve individual AI features (teams self-service within approved patterns)
 - Review every prompt (establish guidelines, not approval gates)
 - Own all AI systems (federated ownership with central standards)
@@ -379,7 +394,7 @@ The AI CoE enables self-service within guardrails. It prevents governance from b
 For new or materially changed AI systems:
 
 | Review stage | Trigger | Reviewer |
-|-------------|---------|----------|
+| ------------- | --------- | ---------- |
 | **Light review** | Tier 1 or 2 system, uses approved patterns | EA Architect only; 2 business days |
 | **Standard review** | Tier 3 system, new pattern, new vendor | ARB full review; 2 weeks |
 | **Deep review** | Tier 4 system, regulated domain, critical data | ARB + Legal + Risk + Security; 4 weeks |
@@ -403,6 +418,7 @@ Identify need → Draft (CoE + Legal) → Stakeholder review (4 weeks)
 Track: where training/fine-tuning data came from, who processed it, what transformations were applied, what models used it, and what outputs it influenced.
 
 **Metadata to capture:**
+
 - Source system and timestamp
 - Data classification (public, internal, confidential, restricted)
 - PII categories present
@@ -415,7 +431,7 @@ Track: where training/fine-tuning data came from, who processed it, what transfo
 AI outputs are only as good as the data that grounds them. Establish minimum quality thresholds:
 
 | Dimension | Minimum requirement |
-|-----------|---------------------|
+| ----------- | --------------------- |
 | **Completeness** | > 95% of required fields populated |
 | **Accuracy** | Error rate < 1% for structured fields |
 | **Freshness** | Within acceptable staleness for the use case |
@@ -425,7 +441,7 @@ AI outputs are only as good as the data that grounds them. Establish minimum qua
 ### 6.3 Vendor Data Handling Policies
 
 | Provider | Data used for training? | Data retention | DPA available? |
-|----------|------------------------|---------------|----------------|
+| ---------- | ------------------------ | --------------- | ---------------- |
 | **Anthropic API** | No (by default); opt-in for research | 30 days (logs) | Yes |
 | **AWS Bedrock** | No | Per AWS data policy | Yes (AWS BAA) |
 | **Microsoft Foundry** | No (Azure policy) | Per Azure retention | Yes (Microsoft DPA) |
@@ -442,7 +458,7 @@ AI outputs are only as good as the data that grounds them. Establish minimum qua
 Every AI model used in production requires an entry in the model inventory.
 
 | Field | Description |
-|-------|-------------|
+| ------- | ------------- |
 | Model ID | e.g., claude-sonnet-5 (current-generation Claude model IDs carry no date suffix) |
 | Model name | Claude Sonnet 5 |
 | Provider | Anthropic |
@@ -470,7 +486,7 @@ Before approving a new foundation model for enterprise use:
 ### 7.3 Vendor Lock-in Risk Management
 
 | Lock-in type | Risk | Mitigation |
-|-------------|------|-----------|
+| ------------- | ------ | ----------- |
 | API schema | Breaking API changes affect all integrations | Abstract behind internal AI SDK |
 | Embedding model | Re-embedding cost if switching | Store raw text; document embedding model version |
 | Fine-tuned model | Training data and compute to recreate | Keep labelled data; document process |
@@ -496,7 +512,7 @@ AI agents introduce a new lifecycle challenge: unlike static API integrations, a
 Every agent must be registered before it can be provisioned with credentials or listed in the agent directory.
 
 | Registry field | Description |
-|---|---|
+| --- | --- |
 | `agent_id` | Unique identifier (UUID) |
 | `name` | Human-readable name |
 | `owner_team` | Team responsible for the agent |
@@ -510,6 +526,7 @@ Every agent must be registered before it can be provisioned with credentials or 
 **Stage 2 — Provisioning**
 
 Once registered, the orchestration platform:
+
 - Issues a SPIFFE SVID (X.509 workload certificate, hourly rotation)
 - Creates scoped credentials for each permitted MCP server
 - Publishes an A2A Agent Card at `/.well-known/agent.json` if the agent is accessible to other agents
@@ -518,7 +535,7 @@ Once registered, the orchestration platform:
 **Stage 3 — Monitoring (Continuous)**
 
 | Signal | How detected | Alert |
-|---|---|---|
+| --- | --- | --- |
 | **Credential use outside permitted tools** | Gateway policy enforcement | P1 — immediate |
 | **Abnormal token consumption** | > 3× 7-day rolling average | P2 — team alert |
 | **Tool call volume spike** | > 5× baseline within 15 min | P2 — auto-suspend |
@@ -529,6 +546,7 @@ Once registered, the orchestration platform:
 **Stage 4 — Periodic Review**
 
 Agents must be reviewed and renewed at the expiry date (default 90 days). The review confirms:
+
 - [ ] Use case still active
 - [ ] Owner team still responsible
 - [ ] Permitted tools still accurate (remove unused)
@@ -562,7 +580,7 @@ OWASP ASI10 (Rogue Agents) covers the scenario where a compromised, misconfigure
 **Governance anti-patterns to avoid:**
 
 | Anti-pattern | Risk | Correct approach |
-|---|---|---|
+| --- | --- | --- |
 | No expiry on agent credentials | Zombie agents accumulate indefinitely | Mandatory expiry + renewal workflow |
 | Shared API keys across agents | Cannot revoke one agent without affecting others | Per-agent credentials via SPIFFE or secrets manager |
 | Manual-only decommissioning | Process skipped under time pressure | Automated suspension at expiry; manual re-activation required |
@@ -584,6 +602,7 @@ Change proposed → Risk assessment → Evaluation harness run
 ```
 
 **AI-specific change types:**
+
 - **Model version upgrade:** Run evaluation harness; watch for schema changes in structured output
 - **System prompt change:** Version the prompt; run A/B test; monitor quality metrics
 - **RAG index update:** Test retrieval quality before and after; validate coverage of key topics
@@ -594,7 +613,7 @@ Change proposed → Risk assessment → Evaluation harness run
 **AI-specific incident categories:**
 
 | Category | Example | Response |
-|----------|---------|----------|
+| ---------- | --------- | ---------- |
 | **Hallucination incident** | AI generates false information used in decision | Identify affected decisions; notify impacted parties; retrace to root cause; update system prompt/RAG |
 | **Safety incident** | AI generates harmful content | Immediate: disable or route around affected capability; investigate; notify trust & safety team |
 | **Data exposure** | PII appears in AI output | Treat as data breach; GDPR 72-hour notification assessment; forensic trace of what was exposed |
@@ -605,7 +624,7 @@ Change proposed → Risk assessment → Evaluation harness run
 **Incident severity:**
 
 | Severity | Definition | Response time | Escalation |
-|---------|------------|--------------|-----------|
+| --------- | ------------ | -------------- | ----------- |
 | P1 | Data exposure, safety, regulatory breach | 1 hour | Executive, Legal, CISO |
 | P2 | Material quality degradation, system unavailable | 4 hours | EA Architect, Product Lead |
 | P3 | Minor quality issue, cost anomaly | 24 hours | AI CoE |
@@ -616,7 +635,7 @@ Change proposed → Risk assessment → Evaluation harness run
 Define SLAs that go beyond uptime:
 
 | Dimension | Metric | Example target |
-|-----------|--------|----------------|
+| ----------- | -------- | ---------------- |
 | **Accuracy** | Pass rate on evaluation harness | > 85% |
 | **Latency** | P95 end-to-end response time | < 5 seconds |
 | **Availability** | API availability | > 99.5% |
@@ -629,7 +648,7 @@ Define SLAs that go beyond uptime:
 **What to monitor:**
 
 | Signal | How | Alert threshold |
-|--------|-----|----------------|
+| -------- | ----- | ---------------- |
 | **Accuracy drift** | Regular eval harness runs | > 5% drop from baseline |
 | **Latency drift** | P95 response time trend | > 20% increase |
 | **Token usage drift** | Average tokens per call | > 15% increase (prompt bloat) |
@@ -647,6 +666,7 @@ Define SLAs that go beyond uptime:
 Prompt injection is an AI-native attack where adversarial content in user input or retrieved data manipulates model behaviour to bypass safety controls, leak system instructions, or execute unintended actions.
 
 **Attack types:**
+
 - **Direct injection:** User input contains instructions ("ignore previous instructions and...")
 - **Indirect injection:** Malicious content in retrieved documents (web page, email, PDF) instructs the model
 - **Jailbreak:** Crafted prompts designed to bypass Constitutional AI safety layers
@@ -654,7 +674,7 @@ Prompt injection is an AI-native attack where adversarial content in user input 
 **Security controls:**
 
 | Control | Layer | Implementation |
-|---------|-------|---------------|
+| --------- | ------- | --------------- |
 | Input sanitisation | Input | Strip/escape known injection patterns; use delimiters to separate system and user content |
 | Principal hierarchy enforcement | System prompt | Explicitly instruct model to ignore user instructions that contradict system prompt |
 | Output validation | Output | Check model output does not contain system prompt content |
@@ -665,7 +685,7 @@ Prompt injection is an AI-native attack where adversarial content in user input 
 ### 9.2 API Key Management Policy
 
 | Policy element | Requirement |
-|----------------|-------------|
+| ---------------- | ------------- |
 | Storage | Secrets manager (AWS Secrets Manager, Azure Key Vault, HashiCorp Vault) only — never in code, environment files, or config files checked into source control |
 | Scoping | Separate key per environment (dev/staging/prod) and per team |
 | Rotation | Quarterly mandatory rotation; automated where possible |
@@ -678,6 +698,7 @@ Prompt injection is an AI-native attack where adversarial content in user input 
 AI systems can amplify insider threats: an insider with AI agent access can exfiltrate data at scale.
 
 **Controls:**
+
 - Principle of least privilege: agents have only the tools and data access the task requires
 - Break-glass access: elevated AI capabilities require approval and audit
 - Outbound filtering: agent cannot send data to external destinations not on approved list
@@ -691,7 +712,7 @@ AI systems can amplify insider threats: an insider with AI agent access can exfi
 ### 10.1 AI Spend Policy
 
 | Policy element | Requirement |
-|----------------|-------------|
+| ---------------- | ------------- |
 | **Budget approval** | AI spend > $X/month requires FinOps or CFO approval |
 | **Cost attribution** | Every AI call tagged with team, product, environment |
 | **Spend caps** | Per-team monthly spend caps enforced at AI gateway |
@@ -709,7 +730,7 @@ AI systems can amplify insider threats: an insider with AI agent access can exfi
 ### 10.3 Cost Anomaly Alerting
 
 | Alert type | Threshold | Action |
-|-----------|-----------|--------|
+| ----------- | ----------- | -------- |
 | Daily spend spike | > 2× 7-day average | Notify team + FinOps |
 | Unexpected model usage | Expensive model used by cost-sensitive team | Notify team; investigate |
 | Cache hit rate drop | > 20% drop | Investigate prompt caching configuration |
@@ -720,6 +741,7 @@ AI systems can amplify insider threats: an insider with AI agent access can exfi
 ROI = (Business Value Delivered − AI Cost) / AI Cost
 
 **Business value proxies:**
+
 - Hours saved per task × hourly rate of employees
 - Ticket deflection rate × average cost per support ticket
 - Revenue uplift from AI-assisted decisions
@@ -727,6 +749,7 @@ ROI = (Business Value Delivered − AI Cost) / AI Cost
 - Speed improvement × value of time-to-market
 
 **Tracking framework:**
+
 - Baseline before AI: measure current KPI
 - Target: define expected AI-driven improvement
 - Actual: measure post-AI-deployment
@@ -739,10 +762,10 @@ ROI = (Business Value Delivered − AI Cost) / AI Cost
 ### 11.1 Fairness Metrics Reference
 
 | Metric | Definition | Acceptable range |
-|--------|-----------|-----------------|
-| **Demographic parity difference** | |P(Ŷ=1\|A=0) - P(Ŷ=1\|A=1)| | < 0.10 |
-| **Equalized odds difference** | Max of |TPR diff| and |FPR diff| across groups | < 0.10 |
-| **Equal opportunity difference** | |TPR(A=0) - TPR(A=1)| | < 0.10 |
+| -------- | ----------- | ----------------- |
+| **Demographic parity difference** | | P(Ŷ=1\|A=0) - P(Ŷ=1\|A=1) | | < 0.10 |
+| **Equalized odds difference** | Max of | TPR diff | and | FPR diff | across groups | < 0.10 |
+| **Equal opportunity difference** | | TPR(A=0) - TPR(A=1) | | < 0.10 |
 | **Individual fairness** | Consistency of outcomes for similar individuals | Context-dependent |
 
 Thresholds vary by domain — consult legal for regulated use cases (hiring, credit, benefits).
@@ -784,7 +807,7 @@ Step 9: Ongoing monitoring — monthly bias test run; alert on drift
 ### 11.3 Bias Testing Tools
 
 | Tool | Provider | Capability |
-|------|----------|-----------|
+| ------ | ---------- | ----------- |
 | **Fairlearn** | Microsoft (open source) | Fairness metrics, constraint-based mitigation |
 | **AI Fairness 360** | IBM (open source) | 70+ fairness metrics, bias mitigation algorithms |
 | **RAGAS** | Open source | RAG-specific evaluation including bias in retrieval |
@@ -802,7 +825,7 @@ Red teaming: a structured adversarial exercise to find vulnerabilities before at
 **Red team scope for AI systems:**
 
 | Test category | What is probed |
-|---------------|---------------|
+| --------------- | --------------- |
 | **Prompt injection** | Can user content override system instructions? |
 | **Jailbreak resistance** | Can safety layers be bypassed? |
 | **Data exfiltration** | Can the agent be tricked into leaking sensitive data? |
@@ -846,6 +869,7 @@ def run_injection_tests(system_under_test):
 See [Stress Testing Pattern](enterprise-ai-architecture-patterns.md#12-stress-testing-pattern) for full implementation.
 
 **Governance requirements for load testing:**
+
 - Must be completed before any AI system handles > 1,000 requests/day in production
 - Results must be documented and approved by EA Architect
 - Failure modes and degraded mode behaviour must be documented
@@ -858,7 +882,7 @@ See [Stress Testing Pattern](enterprise-ai-architecture-patterns.md#12-stress-te
 ### 13.1 What to Document
 
 | Document | Who uses it | Retention |
-|----------|------------|-----------|
+| ---------- | ------------ | ----------- |
 | **Architecture Decision Record (ADR)** | Future architects, audit | Permanent |
 | **Model card** | Risk, compliance, legal | Model lifetime + 3 years |
 | **System card** | Governance committee, audit | System lifetime + 3 years |
@@ -934,23 +958,27 @@ See [Stress Testing Pattern](enterprise-ai-architecture-patterns.md#12-stress-te
 Key questions to ask AI vendors:
 
 **Data handling:**
+
 - Is my data used to train your models? (If yes: consent, opt-out, data deletion process?)
 - Where is my data processed and stored?
 - What is the data retention period for prompts and completions?
 - Do you offer data residency options (EU, specific regions)?
 
 **Security:**
+
 - What certifications do you hold? (SOC 2 Type II, ISO 27001, etc.)
 - How is data encrypted in transit and at rest?
 - What access controls exist for Anthropic/vendor employees to see my data?
 - What is your incident notification SLA for data breaches?
 
 **Availability and reliability:**
+
 - What is your published uptime SLA?
 - What is your incident history (status.anthropic.com / status page)?
 - What is your rate limit policy and how do you handle limit increases?
 
 **Compliance:**
+
 - Do you offer a Data Processing Agreement (DPA)?
 - Are you GDPR compliant? (as data processor)
 - Do you offer a BAA for HIPAA-covered entities?
@@ -990,6 +1018,7 @@ Plan your exit before you start:
 The Claude Certified Architect, Foundations (CCA-F) from the Anthropic Partner Network provides a governance baseline for teams building on Claude.
 
 **Relevance to governance:** CCA-F validates that the team building on Claude has foundational knowledge of:
+
 - Responsible use of Claude's capabilities
 - Principal hierarchy and operator responsibilities
 - Anthropic's usage policies
@@ -1015,6 +1044,7 @@ Claude (model — executes within set constraints)
 ```
 
 **As an operator, you are responsible for:**
+
 - Complying with Anthropic's usage policies
 - Configuring Claude's behaviour within your system prompt appropriately for your use case
 - Ensuring your users are informed they are interacting with AI
@@ -1026,7 +1056,7 @@ Claude (model — executes within set constraints)
 Claude has "softcoded" behaviours — defaults that operators can adjust via system prompt within Anthropic's policy bounds.
 
 | Behaviour | Default | Operator can... |
-|-----------|---------|-----------------|
+| ----------- | --------- | ----------------- |
 | Safe messaging guidelines for sensitive topics | On | Enable more clinical discussion for medical platforms |
 | Safe-harbour disclaimer on professional advice | On | Turn off for verified professional platforms |
 | Language of response | Match user | Lock to specific language |
@@ -1038,6 +1068,7 @@ See [Constitutional AI & Safety](../../coding-tools/claude/constitutional-ai-saf
 ### 15.4 Claude Enterprise Admin Controls
 
 For Claude Enterprise plan:
+
 - **Domain verification:** Lock SSO to corporate identity provider
 - **Usage policies:** Enforce org-level acceptable use policy at sign-in
 - **Audit logs:** Export conversation metadata (not content) for compliance
@@ -1053,7 +1084,7 @@ For Claude Enterprise plan:
 Available in GitHub Copilot Enterprise (not Business):
 
 | Control | How |
-|---------|-----|
+| --------- | ----- |
 | Feature enable/disable | Organisation or repository level via GitHub Admin Console |
 | Suggestion acceptance logging | Enterprise audit log |
 | Network routing | GitHub Enterprise Server deployment; traffic stays internal |
@@ -1089,6 +1120,7 @@ Governance requirement: Maintain `.copilotignore` policy at org level; review qu
 GitHub Copilot Enterprise uses AI Credits for premium features (Copilot Chat with advanced models, custom instructions).
 
 **Governance controls:**
+
 - Set monthly AI Credits budget per organisation
 - Alert on 80% budget consumption
 - Review top consumers monthly
@@ -1214,7 +1246,7 @@ Before any AI system touches production data or users:
 ### 19.2 Vendor Assessment Scorecard
 
 | Category | Weight | Max score | Score |
-|----------|--------|-----------|-------|
+| ---------- | -------- | ----------- | ------- |
 | Data security | 25% | 25 | |
 | Data privacy / DPA quality | 20% | 20 | |
 | Availability / SLA | 15% | 15 | |

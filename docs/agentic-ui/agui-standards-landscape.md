@@ -75,7 +75,7 @@ RELATIONSHIP SUMMARY
 ### 1.1 Protocol Responsibility Matrix
 
 | Concern | AG-UI | A2UI | MCP | A2A | NLWeb | MCP Apps |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Text streaming | Primary | No | No | No | No | No |
 | Generative UI rendering | Carries payload | Primary definition | No | No | No | Renders alongside tool |
 | Tool invocation (backend) | Event emission | No | Primary | No | No | Yes (bundled) |
@@ -105,7 +105,7 @@ AG-UI (Agent-User Interface Protocol) is an open, lightweight, event-based proto
 AG-UI communication is entirely event-driven. The server emits a stream of typed events; the client renders incrementally as events arrive. Every event carries a `type` field that determines how it is processed.
 
 | Event Type | Direction | Purpose | Carries |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `RUN_STARTED` | Server → Client | Signals that an agent run has begun | `run_id`, `thread_id`, metadata |
 | `RUN_FINISHED` | Server → Client | Signals successful run completion | `run_id`, final status, timing |
 | `RUN_ERROR` | Server → Client | Signals agent run failure | `run_id`, error code, message, retry hint |
@@ -223,7 +223,7 @@ CLIENT-TO-SERVER STATE WRITES
 AG-UI distinguishes two categories of tools:
 
 | Category | Execution Location | Authorization | Streaming | Examples |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Backend Tools** | Agent backend (Python/Node/Java process) | Bearer token / mTLS from backend to tool | Results streamed via TOOL_CALL_RESULT | database query, API call, file read |
 | **Frontend Tools** | Browser / mobile client | User's browser session credentials | Synchronous (result returned via POST /action) | camera access, local file read, user geolocation, clipboard |
 
@@ -266,7 +266,7 @@ Agent                     AG-UI Client              Browser API
 AG-UI supports two modes of generative UI:
 
 | Mode | How It Works | When to Use | A2UI Role |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Static / Typed** | Agent returns structured JSON matching a known component schema registered in the client | When the UI component library is predefined and agent selects from known options | Optional; can use bespoke schema |
 | **Declarative / Dynamic** | Agent emits an A2UI JSON surface definition in a CUSTOM event; client renders the declared widget tree | When the agent determines the optimal UI surface for the current data and task at runtime | Primary carrier of A2UI payloads |
 
@@ -317,7 +317,7 @@ Client renders using host widget library → no component registry required
 AG-UI's HITL model supports five interrupt types:
 
 | Interrupt Type | Trigger | Client Action Required | Agent Behavior |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `pause` | `TOOL_CALL_START` with `hitl: true` | Display tool args, await user decision | Halts execution, holds connection open |
 | `approve` | User clicks Approve | `POST /agent/action \{"type":"approve","tool_call_id":"..."}` | Executes the tool call with original args |
 | `edit` | User modifies tool args | `POST /agent/action \{"type":"edit","tool_call_id":"...","args":\{...}}` | Executes the tool call with modified args |
@@ -398,7 +398,7 @@ CopilotKit MCPAppsMiddleware sits between Agent Runner and Guardrail Middleware
 ### 2.9 Security Model
 
 | Security Concern | AG-UI Treatment | Enterprise Requirement |
-|---|---|---|
+| --- | --- | --- |
 | **Transport security** | TLS 1.3 required for all AG-UI connections | Mutual TLS for backend-to-agent connections |
 | **Authentication** | Bearer token or API key in Authorization header | Short-lived JWTs with audience binding; OBO flow for delegated identity |
 | **Event stream integrity** | SSE over TLS prevents tampering; no message-level signing in base spec | Add message signing for high-assurance contexts (see HMAC event signing pattern) |
@@ -718,7 +718,7 @@ A2UI (Agent-to-UI) is a declarative specification developed by Google for genera
 ### 3.1 Design Philosophy
 
 | Principle | Implementation | What It Prevents |
-|---|---|---|
+| --- | --- | --- |
 | **No arbitrary code execution** | A2UI widgets are JSON data, never executable code | XSS, code injection through generative UI surfaces |
 | **Schema validation required** | Every A2UI payload must validate against the A2UI JSON Schema before rendering | Malformed or malicious widget trees reaching the render layer |
 | **Framework-agnostic** | A2UI defines widget semantics, not implementation; each host renders with native components | Vendor lock-in; enables same agent to target web, mobile, and desktop |
@@ -728,7 +728,7 @@ A2UI (Agent-to-UI) is a declarative specification developed by Google for genera
 ### 3.2 Widget Catalog
 
 | Widget Type | Description | Key Properties | Renders As |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `text` | Styled text block | `content`, `style` (heading/body/caption/code), `markdown` (bool) | Paragraph, heading, code block |
 | `form` | Data collection form | `fields` (array), `submit_label`, `validation_rules` | Native form with labeled inputs |
 | `table` | Tabular data display | `columns` (array), `rows` (array), `sortable` (bool), `filterable` (bool) | Data grid |
@@ -805,7 +805,7 @@ A2UI (Agent-to-UI) is a declarative specification developed by Google for genera
 ### 3.4 A2UI vs. Comparable Technologies
 
 | Dimension | A2UI v0.9 | React Server Components | JSON Schema Form | OpenAI Tool Cards |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Execution model** | Pure declarative JSON, no execution | Server renders React components (JSX) | JSON Schema drives form generation | JSON definition, platform renders |
 | **Arbitrary code** | Prohibited by design | Yes (server-side React) | Limited (validators) | No |
 | **Framework dependency** | None (host renders with native widgets) | React (Next.js / Remix) | Various libraries | OpenAI platform |
@@ -837,7 +837,7 @@ A2UI (Agent-to-UI) is a declarative specification developed by Google for genera
 ### 3.5 Production Readiness Assessment (July 2026)
 
 | Criterion | Status | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Schema stability | Low — v0.9 is pre-GA | Breaking schema changes expected before 1.0 |
 | Widget coverage | Moderate — 12 widget types | Charts require host library integration |
 | Accessibility | Partial — spec mentions ARIA roles | No conformance certification yet |
@@ -911,7 +911,7 @@ MCP APPS TOOL EXECUTION — STEP BY STEP
 ### 4.3 MCP Apps Security Model
 
 | Security Layer | Implementation | Enterprise Requirement |
-|---|---|---|
+| --- | --- | --- |
 | **UI resource sandboxing** | Components run in sandboxed iframe or isolated renderer | Content Security Policy; no access to parent DOM |
 | **Component signing** | MCP server should sign UI resource bundles | Verify signature before rendering (not yet standard) |
 | **Approval gate enforcement** | MCPAppsMiddleware enforces HITL for tools marked `requires_approval: true` | Cannot be bypassed by agent instruction |
@@ -1056,7 +1056,7 @@ ALSO EXPOSES:
 Cloudflare added native NLWeb support via AutoRAG in early 2026. This allows any Cloudflare-hosted website to become an NLWeb-compatible MCP server without self-hosting infrastructure:
 
 | Deployment Model | Setup | Scalability | Cost | Governance |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Self-hosted NLWeb (Python)** | Clone repo, configure data sources, deploy | Manual scaling | Self-managed | Full control |
 | **Cloudflare AutoRAG** | Enable in Cloudflare dashboard, point at content | Auto-scaling (Cloudflare edge) | Usage-based | Cloudflare data processing |
 | **Azure AI Search + NLWeb adapter** | Custom integration | Enterprise-scale | Azure consumption | Azure governance |
@@ -1064,7 +1064,7 @@ Cloudflare added native NLWeb support via AutoRAG in early 2026. This allows any
 ### 5.3 NLWeb vs. Competing Approaches
 
 | Approach | Query Type | Data Source | Setup Complexity | Agent Integration | Governance |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **NLWeb** | Natural language | Existing website content (Schema.org/RSS) | Low (uses existing markup) | Native MCP server | Content owner controlled |
 | **Custom RAG** | Natural language | Any document corpus | High (ingestion, chunking, embedding) | Requires MCP wrapper | Fully custom |
 | **Azure AI Search** | Keyword + semantic | Enterprise documents | Medium (index configuration) | Requires MCP wrapper | Microsoft/enterprise |
@@ -1097,7 +1097,7 @@ Cloudflare added native NLWeb support via AutoRAG in early 2026. This allows any
     Every NLWeb instance is, by design, publicly queryable as an MCP server. This makes previously navigational-only website content fully extractable by any agent that discovers the MCP endpoint. Organizations must review their website content against data classification policies before enabling NLWeb.
 
 | Governance Concern | Mitigation |
-|---|---|
+| --- | --- |
 | Unintended data exposure | Audit all content indexed by NLWeb before enabling; use `noindex` meta tags for excluded content |
 | Rate limit abuse | Implement per-caller rate limiting at the MCP server layer |
 | Data freshness | Configure crawl/re-index frequency; stale content may produce incorrect agent responses |
@@ -1130,7 +1130,7 @@ Browser Host Application
 ### 6.2 JSON-RPC 2.0 Transport
 
 | Method | Direction | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `ui/render` | App → Host | Request rendering of a UI component |
 | `ui/notifications/tool-input` | Host → App | Deliver user-approved tool arguments |
 | `tools/execute` | App → Host | Request tool execution |
@@ -1182,7 +1182,7 @@ Microsoft Agent Framework 1.0 was released in April 2026 as a production-ready m
 ### 7.1 Core Capabilities
 
 | Capability | Python SDK | .NET SDK |
-|---|---|---|
+| --- | --- | --- |
 | Multi-agent orchestration | Yes | Yes |
 | Multi-provider model support | Yes (Azure OpenAI, OpenAI, Anthropic, Bedrock) | Yes |
 | AG-UI transport (HttpAgent) | Yes | Yes |
@@ -1224,7 +1224,7 @@ MICROSOFT AGENT FRAMEWORK + AG-UI + COPILOTKIT
 ### 7.3 Azure Deployment Targets
 
 | Target | Use Case | AG-UI Connectivity | Scale |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Azure App Service** | Simple HTTP agent endpoint | Direct HTTPS + SSE | Up to 10 concurrent runs per instance |
 | **Azure Container Apps** | Microservices architecture | Ingress controller + SSE | Auto-scale to zero; KEDA event-driven |
 | **Azure Kubernetes Service (AKS)** | High-scale enterprise | Nginx ingress + SSE | Unlimited with HPA; best for >100 concurrent |
@@ -1300,7 +1300,7 @@ MICROSOFT AGENT FRAMEWORK + AG-UI + COPILOTKIT
 The following matrix covers 15 frameworks and protocols relevant to enterprise agentic UI architecture. Enterprise Readiness (L1–L5) is assessed across: production deployments, enterprise SLA, governance tooling, security certifications, and multi-tenant support.
 
 | Framework / Protocol | Protocol | Frontend Framework | Backend Framework | Streaming | Generative UI | HITL Support | MCP Compatible | A2A Compatible | Enterprise Readiness | License | Maturity |
-|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | **AG-UI** | AG-UI (own) | Any | Any | Native (SSE) | Yes (static + A2UI) | Native (pause/approve/edit/retry) | Complementary | Complementary | L4 | Apache 2.0 | Production |
 | **CopilotKit** | AG-UI | React (primary) | Any AG-UI backend | AG-UI stream | Yes (component registry + A2UI) | Yes (useCopilotAction render) | Yes (MCPAppsMiddleware) | Via orchestrator | L4 | MIT | Production |
 | **A2UI** | Carried in AG-UI | Host-rendered | AG-UI backend | Via AG-UI | Native (is the spec) | Via AG-UI | No | No | L2 (v0.9 experimental) | Google | Experimental |

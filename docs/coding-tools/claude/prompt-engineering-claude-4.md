@@ -24,7 +24,7 @@ Claude 4.x represents a significant behavioral shift from Claude 3.x. Understand
 ### What Changed
 
 | Behavior | Claude 3.x | Claude 4.x |
-|---|---|---|
+| --- | --- | --- |
 | Response style | Conversational hedging; frequent caveats | Direct, task-focused, fewer qualifications |
 | Refusals | Frequent on borderline topics | More context-aware; follows intent |
 | Instruction following | Approximate | Precise; Claude will do exactly what you say |
@@ -84,7 +84,7 @@ response = client.messages.create(
 ### Role Responsibilities
 
 | Role | Purpose | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `system` | Persona, constraints, output format, context | Loaded once per conversation; treated as authoritative instructions |
 | `user` | Task, question, input data | What the human says |
 | `assistant` | Model response | Can be pre-filled to guide format (see Section 5) |
@@ -222,7 +222,7 @@ Produce your response here.
 ### When to Use XML Tags
 
 | Use Tags When | Use Plain Text When |
-|---|---|
+| --- | --- |
 | Multiple distinct content blocks exist | Single instruction, single input |
 | Injecting variable data into a template | Static prompt with no substitution |
 | Few-shot examples with structured I/O | Conversational back-and-forth |
@@ -314,7 +314,7 @@ Few-shot examples (also called in-context learning) are one of the highest-lever
 ### When to Use Few-Shot
 
 | Situation | Value |
-|---|---|
+| --- | --- |
 | Complex output format | High — shows exact expected structure |
 | Domain-specific reasoning | High — grounds Claude in your domain |
 | Edge case handling | High — demonstrates non-obvious decisions |
@@ -358,7 +358,7 @@ A good few-shot set covers:
 ### How Many Examples?
 
 | Task Complexity | Recommended Count |
-|---|---|
+| --- | --- |
 | Simple classification (2–3 classes) | 1–3 examples |
 | Multi-class or multi-label | 3–6 examples |
 | Complex structured output | 5–10 examples |
@@ -403,7 +403,7 @@ for block in response.content:
 ### budget_tokens Parameter
 
 | Value | Effect |
-|---|---|
+| --- | --- |
 | 1024 | Minimum — minimal internal reasoning |
 | 5000–10000 | Good starting point for moderate complexity |
 | 20000–50000 | Deep reasoning for complex math, code planning |
@@ -435,7 +435,7 @@ with client.messages.stream(
 ### When to Enable Extended Thinking
 
 | Task Type | Enable Thinking? | Suggested budget_tokens |
-|---|---|---|
+| --- | --- | --- |
 | Multi-step math / proofs | Yes | 10000–50000 |
 | Complex algorithm design | Yes | 10000–30000 |
 | Code architecture planning | Yes | 5000–20000 |
@@ -448,6 +448,7 @@ with client.messages.stream(
 ### Cost Impact of Extended Thinking
 
 Thinking tokens are billed as output tokens. At Fable 5 pricing ($50/M output):
+
 - `budget_tokens: 10000` = up to $0.50 in thinking per request
 - `budget_tokens: 50000` = up to $2.50 in thinking per request
 
@@ -776,7 +777,7 @@ For offline workloads, use the Batch API instead of threading. See [Claude Model
 ### What to Include vs. Omit
 
 | Include | Omit |
-|---|---|
+| --- | --- |
 | Task-relevant instructions | Generic background Claude already knows |
 | Input data for the specific request | Historical context irrelevant to current task |
 | Recent conversation turns | Old turns that are no longer relevant |
@@ -891,7 +892,7 @@ messages = [
 ### Caching Rules
 
 | Rule | Detail |
-|---|---|
+| --- | --- |
 | Minimum cacheable size | 1,024 tokens per block |
 | Maximum breakpoints | 4 per request |
 | Cache TTL | 5 minutes (ephemeral) |

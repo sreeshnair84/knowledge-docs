@@ -3,6 +3,7 @@ The DOCX iframes were earlier replaced with :::note blocks.
 Now that the DOCX files have been converted to MD, replace those note blocks
 with proper Markdown links to the converted pages.
 """
+
 import re
 from pathlib import Path
 
@@ -10,11 +11,11 @@ ROOT = Path(__file__).parent.parent
 
 # Pattern for the details+note block left by fix_docx_iframes.py
 DETAILS_NOTE_RE = re.compile(
-    r'<details>\s*\n'
-    r'<summary>([^<]+)</summary>\s*\n'
-    r':::note\n.*?:::\s*\n'
+    r"<details>\s*\n"
+    r"<summary>([^<]+)</summary>\s*\n"
+    r":::note\n.*?:::\s*\n"
     r'(?:<p><a href="([^"]*)" download>([^<]*)</a></p>\s*\n)?'
-    r'</details>',
+    r"</details>",
     re.DOTALL,
 )
 
@@ -27,7 +28,7 @@ def fix_file(md_path: Path) -> int:
         nonlocal count
         summary = m.group(1).strip()
         download_href = m.group(2) or ""
-        download_label = m.group(3) or "Download"
+        _download_label = m.group(3) or "Download"
 
         # Derive the DOCX filename from the download href or summary
         docx_name = Path(download_href).name if download_href else ""

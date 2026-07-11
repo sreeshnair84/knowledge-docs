@@ -12,6 +12,7 @@ covers_version: "N/A"
 **AI Invoice Auditor**
 Enterprise Architecture & Complete Requirements Specification
 **v5.0 — No-Docker Windows · SQLite-First · LangChain HITL Middleware · Handoffs · Skills · Runtime · Memory**
+
 | Attribute | Value |
 | --- | --- |
 | Document Version | 5.0 — March 2026 | Supersedes v4.0 |
@@ -19,6 +20,7 @@ Enterprise Architecture & Complete Requirements Specification
 | Checkpointer | SQLite (langgraph-checkpoint-sqlite) — replaces PostgreSQL/MemorySaver |
 | Observability | SQLite MetricsDB only — replaces LangFuse/Docker |
 | 🆕 New in v5.0 | HumanInTheLoopMiddleware (approve/edit/reject) · SQLite checkpointer · Short+Long-term memory (SQLite store) · Multi-agent Handoffs · Skills as prompt tools · Runtime context injection |
+
 # **1. What Changed in v5.0 — Executive Summary**
 
 v5.0 is a targeted ground-up rewrite of the runtime-layer choices made in v3/v4, driven by the constraint of running entirely on a single Windows machine with no Docker or cloud services. Simultaneously, all agent patterns have been upgraded to match the current LangChain 0.3+ official documentation for HITL middleware, multi-agent handoffs, skill loading, runtime injection, and long-term memory.
@@ -38,7 +40,9 @@ v5.0 is a targeted ground-up rewrite of the runtime-layer choices made in v3/v4,
 # **2. SQLite-First Infrastructure — No Docker Required**
 
 ## **2.1 Three SQLite Files — One Per Concern**
+
 The entire v5.0 persistence layer uses three SQLite database files stored locally on the Windows machine. No servers, no Docker containers, no network dependencies.
+
 | File | Path (Windows) | Purpose |
 | --- | --- | --- |
 | checkpoints.db | %APPDATA%\InvoiceAuditor\checkpoints.db | LangGraph graph state — SqliteSaver checkpointer. Survives process restarts. Required for HITL interrupt/resume. |
@@ -46,13 +50,16 @@ The entire v5.0 persistence layer uses three SQLite database files stored locall
 | metrics.db | %APPDATA%\InvoiceAuditor\metrics.db | Observability — all agent node timings, MCP tool call timings, HITL decisions, RAG scores. Queried by Observability UI page. |
 
 ## **2.2 SQLite Checkpointer Setup**
+
 # src/core/persistence.py  — v5.0
+
 from pathlib import Path
 import os
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.store.sqlite import SqliteStore          # long-term memory
 
 # Windows-safe APPDATA path
+
 APP_DIR = Path(os.getenv('APPDATA', Path.home())) / 'InvoiceAuditor'
 APP_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -61,24 +68,30 @@ STORE_DB       = APP_DIR / 'store.db'
 METRICS_DB     = APP_DIR / 'metrics.db'
 
 # SqliteSaver — drop-in replacement for PostgresSaver / MemorySaver
+
 # Thread-safe, file-based, zero config
+
 checkpointer = SqliteSaver.from_conn_string(str(CHECKPOINTS_DB))
 
 # SqliteStore — long-term memory (namespaced key-value)
+
 # Supports vector search when an embed function is provided
+
 from sentence_transformers import SentenceTransformer
 _embed_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 def _embed(texts: list[str]) -> list[list[float]]:
-    return _embed_model.encode(texts).tolist()
+    return_embed_model.encode(texts).tolist()
 
 store = SqliteStore.from_conn_string(
     str(STORE_DB),
-    index={'embed': _embed, 'dims': 384}  # MiniLM dims
+    index={'embed':_embed, 'dims': 384}  # MiniLM dims
 )
 
 ## **2.3 Port Map — All Native Windows Processes**
+
 With Docker removed, every service is a native Windows Python process or .exe. The entire system starts from one .bat file.
+
 | Port | Service | Process Type | Notes |
 | --- | --- | --- | --- |
 | 8501 | Streamlit UI | Python (native) | All 6 UI pages — opens in browser automatically |
@@ -89,6 +102,7 @@ With Docker removed, every service is a native Windows Python process or .exe. T
 | ✅ None | SQLite files | File system | checkpoints.db / store.db / metrics.db in %APPDATA%\InvoiceAuditor\ |
 
 ## **2.4 start_all.bat — v5.0 (Docker-Free)**
+
 @echo off
 SETLOCAL
 SET ROOT=%~dp0
@@ -114,17 +128,18 @@ start "Streamlit" cmd /c "%VENV%\streamlit.exe run ui\app.py"
 
 echo ─────────────────────────────────────────────────────────────────
 echo  All services started (no Docker required)
-echo  UI:      http://localhost:8501
-echo  ERP API: http://localhost:8000/docs
+echo  UI:      <http://localhost:8501>
+echo  ERP API: <http://localhost:8000/docs>
 echo  SQLite:  %APPDATA%\InvoiceAuditor\
 echo ─────────────────────────────────────────────────────────────────
 pause
 
 # **3. Human-in-the-Loop — HumanInTheLoopMiddleware (v5.0)**
 
-Source: *https://docs.langchain.com/oss/python/langchain/human-in-the-loop*
+Source: *<https://docs.langchain.com/oss/python/langchain/human-in-the-loop>*
 
 ## **3.1 How It Works — Official Pattern**
+
 The official LangChain HITL pattern uses **HumanInTheLoopMiddleware** added to the agent's **middleware** list at creation time. The middleware intercepts tool calls after the model generates them but before execution. If a tool matches **interrupt_on**, it raises an **interrupt** and the graph state is saved to the SQLite checkpointer. The UI then presents the action and collects a decision (**approve**, **edit**, or **reject**). Execution resumes via **Command(resume={"decisions":[...]})** with the same thread_id.
 
 | Decision Type | Symbol | Invoice Auditor Meaning |
@@ -134,7 +149,9 @@ The official LangChain HITL pattern uses **HumanInTheLoopMiddleware** added to t
 | reject | ❌ Cancel + feedback | Auditor rejects invoice — message fed back to agent to generate rejection report |
 
 ## **3.2 Agent Creation with HumanInTheLoopMiddleware**
+
 # src/agents/invoice_audit_agent.py  — v5.0
+
 from langchain.agents import create_agent, AgentState
 from langchain.agents.middleware import HumanInTheLoopMiddleware
 from src.core.persistence import checkpointer, store
@@ -156,9 +173,13 @@ class InvoiceAuditState(AgentState):
     auditor_id:         str   = ''
 
 # ── Tools that require human approval before execution ─────────────────
+
 # approve_invoice  — approve payment: high-stakes, all decisions allowed
+
 # reject_invoice   — reject vendor:   approve or reject only, no edit
+
 # override_invoice_field — field edit: must edit before execution
+
 # flag_for_escalation   — safe: auto-approve, no human needed
 
 audit_agent = create_agent(
@@ -201,7 +222,9 @@ audit_agent = create_agent(
 )
 
 ## **3.3 Invoking the Agent — Interrupt & Resume Flow**
+
 # src/agents/hitl_runner.py  — v5.0
+
 from langgraph.types import Command
 from src.agents.invoice_audit_agent import audit_agent
 from src.observability.metrics_db import MetricsDB
@@ -283,7 +306,9 @@ def stream_audit(invoice_id: str, discrepancies: list, auditor_id: str):
                    'interrupt': chunk['__interrupt__']}
 
 ## **3.4 Streamlit HITL Review Page — Decision UI**
+
 # ui/pages/3_HITL_Review.py  — v5.0
+
 import streamlit as st
 import httpx, json
 
@@ -294,7 +319,7 @@ invoice_id = st.selectbox('Invoice awaiting review', get_pending_hitl_invoices()
 if invoice_id:
     # Load the interrupt payload from Chat API Gateway
     interrupt_data = httpx.get(
-        f'http://localhost:8502/hitl/{invoice_id}/interrupt').json()
+        f'<http://localhost:8502/hitl/{invoice_id}/interrupt').json(>)
 
     for i, action in enumerate(interrupt_data['action_requests']):
         st.subheader(f'Action {i+1}: {action["name"]}')
@@ -338,12 +363,14 @@ if invoice_id:
 
 # **4. Multi-Agent Handoffs — Invoice Processing Stages**
 
-Source: *https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs*
+Source: *<https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs>*
 
 ## **4.1 Why Handoffs Fit Invoice Processing**
+
 The official LangChain handoffs pattern is ideal for the Invoice Auditor because invoice processing is a **sequential, state-driven flow** where each stage unlocks the next only when preconditions are met (e.g., extraction must succeed before translation; translation must reach 0.80 confidence before validation). The **single-agent middleware approach** is used here — one agent changes its system prompt and available tools based on the **current_step** state variable, updated by handoff tools returning **Command(update={...})**.
 
 ## **4.2 Invoice Processing Stages via Handoffs**
+
 | current_step | Agent Configuration | Handoff Tool → Next Step |
 | --- | --- | --- |
 | triage | Detect format + language; read meta.json | complete_triage() → 'extraction' |
@@ -354,7 +381,9 @@ The official LangChain handoffs pattern is ideal for the Invoice Auditor because
 | reporting | Generate HTML report + index to FAISS | End of pipeline |
 
 ## **4.3 Handoff Implementation — Single Agent Middleware**
+
 # src/agents/pipeline_agent.py  — v5.0 Handoffs pattern
+
 from langchain.agents import AgentState, create_agent
 from langchain.agents.middleware import wrap_model_call, ModelRequest, ModelResponse
 from langchain.tools import tool, ToolRuntime
@@ -366,6 +395,7 @@ from src.core.llm_factory import get_llm
 from typing import Callable
 
 # ── State carries current_step across all turns ────────────────────────
+
 class InvoicePipelineState(AgentState):
     invoice_id:             str
     raw_file_path:          str
@@ -378,6 +408,7 @@ class InvoicePipelineState(AgentState):
     final_status:           str   = ''
 
 # ── Handoff tools — each updates current_step via Command ──────────────
+
 @tool
 def complete_triage(
     detected_language: str,
@@ -428,6 +459,7 @@ def complete_validation(
     })
 
 # ── Stage configuration map ────────────────────────────────────────────
+
 STAGE_CONFIGS = {
     'triage': {
         'prompt': 'Detect the invoice language and format. Call complete_triage when done.',
@@ -456,6 +488,7 @@ STAGE_CONFIGS = {
 }
 
 # ── Middleware: apply stage config based on current_step ───────────────
+
 @wrap_model_call
 def apply_stage_config(
     request: ModelRequest,
@@ -470,6 +503,7 @@ def apply_stage_config(
     return handler(request)
 
 # ── Pipeline agent — single agent, all stages ──────────────────────────
+
 pipeline_agent = create_agent(
     model=get_llm(),
     tools=[
@@ -496,12 +530,14 @@ pipeline_agent = create_agent(
 
 # **5. Runtime Context Injection**
 
-Source: *http://docs.langchain.com/oss/python/langchain/runtime*
+Source: *<http://docs.langchain.com/oss/python/langchain/runtime>*
 
 LangChain's Runtime provides dependency injection for tools and middleware. Instead of global config objects, database connections and request-scoped values are declared in a **context_schema** dataclass and injected via **ToolRuntime[Context]**. This makes all tools testable in isolation and eliminates thread-safety issues from shared mutable state.
 
 ## **5.1 InvoiceContext — Dependency Schema**
+
 # src/context.py  — v5.0
+
 from dataclasses import dataclass
 from src.protocols.mcp_client import InstrumentedMCPClient
 from src.observability.metrics_db import MetricsDB
@@ -516,10 +552,12 @@ class InvoiceContext:
     auditor_id: str = ''                 # set when human is involved
     mcp:        InstrumentedMCPClient = None  # MCP tool client (instrumented)
     metrics:    MetricsDB = None          # SQLite metrics writer
-    erp_base_url: str = 'http://localhost:8000'
+    erp_base_url: str = '<http://localhost:8000>'
 
 ## **5.2 Using ToolRuntime in MCP Tool Wrappers**
+
 # src/tools/invoice_tools.py  — v5.0
+
 import time
 from langchain.tools import tool, ToolRuntime
 
@@ -569,7 +607,9 @@ def approve_invoice(
     return f'Invoice {invoice_id} approved. Reason: {reason}'
 
 ## **5.3 Agent Invocation with Context**
+
 # Invoking the pipeline agent with full context injection
+
 from src.agents.pipeline_agent import pipeline_agent
 from src.protocols.mcp_client import InstrumentedMCPClient
 from src.observability.metrics_db import MetricsDB
@@ -593,20 +633,25 @@ result = pipeline_agent.invoke(
 
 # **6. Short-Term & Long-Term Memory**
 
-Sources: *https://docs.langchain.com/oss/python/langchain/short-term-memory*  |  *https://docs.langchain.com/oss/python/langchain/long-term-memory*
+Sources: *<https://docs.langchain.com/oss/python/langchain/short-term-memory>*  |  *<https://docs.langchain.com/oss/python/langchain/long-term-memory>*
 
 ## **6.1 Two Memory Tiers — Clear Separation**
+
 | Tier | LangChain Mechanism | Invoice Auditor Usage |
 | --- | --- | --- |
 | Short-term | AgentState.messages list — persisted per thread in SqliteSaver checkpointer | All conversation turns within a single invoice run. Auditor chat history. Agent reasoning and tool call results in context window. |
 | Long-term | SqliteStore via langgraph.store.sqlite — namespaced key-value, vector-searchable | Approved override patterns across invoices. Auditor preference profiles. Vendor risk history. Past HITL decisions (ground-truth for future auto-approval tuning). |
 
 ## **6.2 Short-Term Memory — AgentState**
+
 Short-term memory requires no special setup. The **AgentState.messages** list is automatically persisted to the SQLite checkpointer between invocations. When the agent is resumed (after HITL interrupt or across separate API calls), the **thread_id** in config is used to reload the full message history from checkpoints.db.
+
 # Short-term memory is automatic via SqliteSaver + thread_id
+
 # The agent remembers everything within a conversation thread
 
 # Turn 1 — initial processing
+
 result1 = pipeline_agent.invoke(
     {'messages': [{'role':'user','content':'Process INV-1001'}]},
     config={'configurable': {'thread_id': 'pipeline:INV-1001'}},
@@ -614,22 +659,31 @@ result1 = pipeline_agent.invoke(
 )
 
 # Turn 2 — after HITL decision (SqliteSaver restores all state automatically)
+
 result2 = pipeline_agent.invoke(
     Command(resume={'decisions': [{'type': 'approve'}]}),
     config={'configurable': {'thread_id': 'pipeline:INV-1001'}},  # same thread
     context=ctx,
 )
+
 # Agent has full context of turn 1 — no state passed manually
 
 ## **6.3 Long-Term Memory — SqliteStore**
+
 Long-term memory is stored in store.db using LangGraph's **SqliteStore**. It is organised by namespace tuples (like folders) and keys. Tools access it via **runtime.store** — the same store instance passed to **create_agent(store=store)**. Vector search is enabled for semantic recall.
+
 # src/memory/long_term.py  — v5.0 memory namespaces
+
 from src.core.persistence import store
 
 # ── Namespace design ─────────────────────────────────────────────────
+
 # ('vendors', vendor_id)       → vendor risk profile + payment history
+
 # ('invoices', 'decisions')    → all HITL decisions per invoice_id key
+
 # ('auditors', auditor_id)     → auditor preference + override patterns
+
 # ('patterns', 'overrides')    → approved override templates by type
 
 @tool
@@ -698,9 +752,10 @@ def semantic_recall_override_patterns(
 
 # **7. Skills — Prompt-Driven Progressive Disclosure (v5.0)**
 
-Source: *https://docs.langchain.com/oss/python/langchain/multi-agent/skills*
+Source: *<https://docs.langchain.com/oss/python/langchain/multi-agent/skills>*
 
 ## **7.1 What Changed — Class-Based → Prompt-Driven**
+
 The previous architecture used an abstract **Skill(ABC)** class with a **run()** method — this is NOT the pattern in the current LangChain skills documentation. The official pattern is:
 Skills are specialised prompts + optionally specific tools, packaged as files or database records
 A single load_skill(skill_name) tool gives the agent access to any skill's prompt and context on demand
@@ -709,28 +764,36 @@ Different teams can maintain skill prompt files independently (prompts/ director
 Dynamic tool registration: loading a skill can also register new tools by updating state
 
 ## **7.2 Skill Prompt Files**
+
 # prompts/skills/extraction_skill.yaml
+
 name: extraction_skill
 version: '1.0'
 description: 'Expert invoice data extraction from PDF, DOCX, and scanned PNG'
 prompt: |
   You are an expert invoice data extraction specialist.
   Use the data_harvester MCP tool to extract the following fields:
-  - invoice_no, invoice_date, vendor_id, currency, total_amount
-  - line_items: item_code, description, qty, unit_price, total
+
+- invoice_no, invoice_date, vendor_id, currency, total_amount
+- line_items: item_code, description, qty, unit_price, total
 
   Rules:
-  - For PDFs: use pdfplumber via data_harvester
-  - For DOCX: use python-docx via data_harvester
-  - For PNG: use pytesseract via data_harvester (set ocr=True)
-  - Attach a confidence score (0.0-1.0) based on field completeness
-  - If field count < 80% of expected, confidence < 0.6
+
+- For PDFs: use pdfplumber via data_harvester
+- For DOCX: use python-docx via data_harvester
+- For PNG: use pytesseract via data_harvester (set ocr=True)
+- Attach a confidence score (0.0-1.0) based on field completeness
+- If field count < 80% of expected, confidence < 0.6
 
   Call complete_extraction(confidence=<score>) when done.
 required_tools:
-  - data_harvester
+
+- data_harvester
+
 ---
+
 # prompts/skills/translation_skill.yaml
+
 name: translation_skill
 version: '1.0'
 description: 'Multilingual invoice translation — ES/DE/FR to EN'
@@ -741,19 +804,24 @@ prompt: |
   Supported source languages: Spanish (es), German (de), French (fr).
 
   Rate your confidence (0.0–1.0):
-  - 1.0 = all fields translated unambiguously
-  - 0.8 = minor ambiguities in non-financial fields
-  - <0.8 = route to HITL for human verification
 
-  Call complete_translation(translation_confidence=<score>) when done.
+- 1.0 = all fields translated unambiguously
+- 0.8 = minor ambiguities in non-financial fields
+- <0.8 = route to HITL for human verification
+
+Call complete_translation(translation_confidence=<score>) when done.
 required_tools: []
+
 ---
+
 # prompts/skills/validation_skill.yaml
+
 name: validation_skill
 version: '1.0'
 description: 'Invoice completeness and ERP cross-validation'
 prompt: |
   You are an invoice validation specialist.
+
   1. Check field completeness against rules.yaml thresholds
   2. Call business_validator MCP tool to compare with ERP purchase orders
   3. Apply tolerance rules: price=5%, quantity=0%, tax=2%
@@ -762,11 +830,14 @@ prompt: |
 
   Call complete_validation(discrepancies=[...], confidence=<score>) when done.
 required_tools:
-  - data_completeness_checker
-  - business_validator
+
+- data_completeness_checker
+- business_validator
 
 ## **7.3 load_skill Tool — Progressive Disclosure**
+
 # src/tools/skills_tool.py  — v5.0 official Skills pattern
+
 import yaml
 from pathlib import Path
 from langchain.tools import tool, ToolRuntime
@@ -818,8 +889,11 @@ def load_skill(
     )
 
 ## **7.4 Pipeline Agent With Skills Tool**
+
 The **pipeline_agent** from Section 4 is extended with **load_skill** so each stage starts by loading the relevant skill prompt before calling MCP tools. The handoff middleware still controls stage transitions, but the skill provides the specialist prompt context dynamically.
+
 # Extension to pipeline_agent — add load_skill to all stage tool lists
+
 from src.tools.skills_tool import load_skill
 
 pipeline_agent = create_agent(
@@ -848,6 +922,7 @@ pipeline_agent = create_agent(
 )
 
 ## **7.5 Skill Audit — All 12 Skill Modules → Prompt Files**
+
 | Old Class Module | New Prompt File | Key Change |
 | --- | --- | --- |
 | monitor_skill.py | prompts/skills/monitor_skill.yaml | Removed class. Replaced by triage stage in handoffs + complete_triage tool. |
@@ -866,7 +941,9 @@ pipeline_agent = create_agent(
 With Docker removed, LangFuse is eliminated. The SQLite MetricsDB (metrics.db) provides complete local observability for agent nodes, MCP tool calls, LLM calls, HITL events, and skill loads. The Observability UI page queries it directly.
 
 ## **8.1 MetricsDB Schema**
+
 # src/observability/metrics_db.py  — v5.0 SQLite-only
+
 import sqlite3, json, time, hashlib
 from pathlib import Path
 from src.core.persistence import METRICS_DB
@@ -938,7 +1015,7 @@ CREATE TABLE IF NOT EXISTS rag_scores (
 '''
 
 class MetricsDB:
-    def __init__(self, path: Path = METRICS_DB):
+    def **init**(self, path: Path = METRICS_DB):
         path.parent.mkdir(parents=True, exist_ok=True)
         self.conn = sqlite3.connect(str(path), check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
@@ -998,6 +1075,7 @@ class MetricsDB:
 # **9. UI Pages Specification — All 6 Streamlit Pages**
 
 ## **9.0 Shared Sidebar**
+
 | Element | Detail |
 | --- | --- |
 | Navigation | Links to all 6 pages with icons. HITL badge count (red) shows invoices awaiting human review. |
@@ -1006,6 +1084,7 @@ class MetricsDB:
 | Current Stage | If pipeline active: current_step badge (triage→extraction→translation→validation→hitl→reporting). |
 
 ## **9.1 Page 1 — Pipeline Monitor**
+
 | Attribute | Specification |
 | --- | --- |
 | File | ui/pages/1_Pipeline_Monitor.py |
@@ -1016,6 +1095,7 @@ class MetricsDB:
 | Interactions | Click stage badge → show timing for that stage. Click invoice_id → open Chat page. 'Upload Invoice' file widget → triggers new pipeline run. |
 
 ## **9.2 Page 2 — Invoice Chat**
+
 | Attribute | Specification |
 | --- | --- |
 | File | ui/pages/2_Invoice_Chat.py |
@@ -1026,6 +1106,7 @@ class MetricsDB:
 | Memory Display | 'Vendor History' expander shows SqliteStore entries for this vendor (long-term). Chat history is the short-term memory in context. |
 
 ## **9.3 Page 3 — HITL Review**
+
 | Attribute | Specification |
 | --- | --- |
 | File | ui/pages/3_HITL_Review.py |
@@ -1036,6 +1117,7 @@ class MetricsDB:
 | Memory | 'Past decisions for this vendor' from SqliteStore shown as context. Decision is saved to long-term memory via save_audit_decision tool after submit. |
 
 ## **9.4 Page 4 — Executive Dashboard**
+
 | Attribute | Specification |
 | --- | --- |
 | File | ui/pages/4_Executive_Dashboard.py |
@@ -1045,6 +1127,7 @@ class MetricsDB:
 | Interactions | Period selector 7d/30d/90d. PDF export. Click tile → per-invoice drill-down modal. |
 
 ## **9.5 Page 5 — Observability**
+
 | Attribute | Specification |
 | --- | --- |
 | File | ui/pages/5_Observability.py |
@@ -1054,6 +1137,7 @@ class MetricsDB:
 | Alerts | Red tab badge if: tool error_rate >5% | avg_stage_ms > threshold | RAG score < threshold. |
 
 ## **9.6 Page 6 — Settings**
+
 | Attribute | Specification |
 | --- | --- |
 | File | ui/pages/6_Settings.py |
@@ -1139,6 +1223,7 @@ ai-invoice-auditor\
 # **11. requirements.txt (v5.0 — No Docker/LangFuse/PostgreSQL)**
 
 # ── Orchestration ─────────────────────────────────────────────────────
+
 langgraph>=0.3.0
 langgraph-checkpoint-sqlite>=0.1.0      # SqliteSaver — replaces PostgresSaver
 langchain>=0.3.0
@@ -1147,14 +1232,19 @@ langchain-ollama>=0.1.0
 langchain-openai>=0.1.0                 # optional — for Azure switch
 
 # ── HITL Middleware ────────────────────────────────────────────────────
+
 # HumanInTheLoopMiddleware is in langchain>=0.3 — no extra package
 
 # ── Memory ────────────────────────────────────────────────────────────
+
 # SqliteStore is in langgraph>=0.3 — no extra package
+
 # sqlite3 is Python stdlib — no install needed
+
 sentence-transformers>=2.7.0            # embeddings for SqliteStore vector search
 
 # ── Chat API Gateway ──────────────────────────────────────────────────
+
 fastapi>=0.111.0
 uvicorn[standard]>=0.29.0
 httpx>=0.27.0
@@ -1162,49 +1252,64 @@ sse-starlette>=1.8.0
 ag-ui-sdk>=0.1.0
 
 # ── Protocols ─────────────────────────────────────────────────────────
+
 fastmcp>=0.9.0
 a2a-sdk>=0.2.0
 
 # ── Document Parsing ─────────────────────────────────────────────────
+
 pdfplumber>=0.10.0
 python-docx>=1.1.0
 pytesseract>=0.3.10
 Pillow>=10.0.0
 
 # ── Vector DB (RAG) ──────────────────────────────────────────────────
+
 faiss-cpu>=1.8.0
 qdrant-client>=1.9.0                    # optional — if Qdrant preferred
 chromadb>=0.5.0                         # optional — if Chroma preferred
 
 # ── RAG Evaluation ────────────────────────────────────────────────────
+
 trulens-eval>=0.30.0
 
 # ── Schema Validation ────────────────────────────────────────────────
+
 pydantic>=2.7.0
 pydantic-settings>=2.2.0
 
 # ── Frontend ─────────────────────────────────────────────────────────
+
 streamlit>=1.35.0
 pdfkit>=1.0.0                           # Executive Dashboard PDF export
 
 # ── Config + Utilities ────────────────────────────────────────────────
+
 pyyaml>=6.0.1
 python-dotenv>=1.0.1
 structlog>=24.0.0
 
 # ── Windows compatibility ─────────────────────────────────────────────
+
 colorama>=0.4.6                         # Windows terminal colour support
 
 # ── Testing ───────────────────────────────────────────────────────────
+
 pytest>=8.2.0
 pytest-asyncio>=0.23.0
 
 # ── REMOVED vs v4.0 ──────────────────────────────────────────────────
+
 # langfuse                — removed (no Docker, no LangFuse server)
+
 # langgraph-checkpoint-postgres — removed (SQLite replaces PostgreSQL)
+
 # psycopg[binary]        — removed (no PostgreSQL)
+
 # redis                  — removed (no Redis; SqliteStore for memory)
+
 # langchain-redis        — removed
+
 # pywin32                — removed (not needed)
 
 # **12. Updated Sprint Plan (v5.0)**

@@ -5,6 +5,7 @@ Fix pre-commit hook failures:
 3. framework-reference files with proper sections → add framework_name field
 4. Add missing covers_version for guide type files
 """
+
 import re
 from pathlib import Path
 
@@ -26,14 +27,14 @@ def build_content(fm_raw: str, body: str) -> str:
 
 
 def get_field(fm_raw: str, field: str) -> str:
-    m = re.search(rf'^{field}:\s*(.+)$', fm_raw, re.MULTILINE)
+    m = re.search(rf"^{field}:\s*(.+)$", fm_raw, re.MULTILINE)
     return m.group(1).strip() if m else ""
 
 
 def set_field(fm_raw: str, field: str, value: str) -> str:
     # Replace existing field
-    if re.search(rf'^{field}:', fm_raw, re.MULTILINE):
-        return re.sub(rf'^{field}:.*$', f'{field}: {value}', fm_raw, flags=re.MULTILINE)
+    if re.search(rf"^{field}:", fm_raw, re.MULTILINE):
+        return re.sub(rf"^{field}:.*$", f"{field}: {value}", fm_raw, flags=re.MULTILINE)
     # Append new field before end of frontmatter
     return fm_raw.rstrip() + f"\n{field}: {value}\n"
 

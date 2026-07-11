@@ -53,7 +53,7 @@ where:
 Consider a data integration platform investment:
 
 | Item | Amount |
-|------|--------|
+| ------ | -------- |
 | Platform licence (3-year) | $180,000 |
 | Implementation services | $220,000 |
 | Internal staff time (implementation) | $60,000 |
@@ -61,7 +61,7 @@ Consider a data integration platform investment:
 | **Total Investment** | **$500,000** |
 
 | Benefit Source | Year 1 | Year 2 | Year 3 | Total |
-|----------------|--------|--------|--------|-------|
+| ---------------- | -------- | -------- | -------- | ------- |
 | Reduced manual data reconciliation | $200,000 | $250,000 | $280,000 | $730,000 |
 | Faster reporting (revenue cycle) | $80,000 | $120,000 | $140,000 | $340,000 |
 | Avoided FTE hire | $0 | $65,000 | $65,000 | $130,000 |
@@ -77,7 +77,7 @@ Over three years this investment returns $1.40 for every $1.00 spent — a 140% 
 ### ROI Benchmarks
 
 | ROI Range | Interpretation |
-|-----------|----------------|
+| ----------- | ---------------- |
 | < 0% | Investment destroys value; requires strategic justification |
 | 0–15% | Below typical cost of capital; weak case |
 | 15–25% | Typical threshold for IT investments |
@@ -92,7 +92,7 @@ Over three years this investment returns $1.40 for every $1.00 spent — a 140% 
 Architects routinely undercount costs. Finance teams will find the gaps and your credibility suffers. Use this checklist:
 
 | Cost Category | Examples Architects Often Miss |
-|---------------|-------------------------------|
+| --------------- | ------------------------------- |
 | Acquisition | Licence fees, hardware, cloud credits |
 | Implementation | Vendor professional services, SI partner fees |
 | Internal labour | Architecture time, PM time, dev time (at loaded cost rate) |
@@ -130,7 +130,7 @@ Scenario: A 500-user CRM system.
 #### On-Premises Option
 
 | Cost Item | Year 0 | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | 5-Year Total |
-|-----------|--------|--------|--------|--------|--------|--------|-------------|
+| ----------- | -------- | -------- | -------- | -------- | -------- | -------- | ------------- |
 | Server hardware | $120,000 | — | — | $60,000 | — | — | $180,000 |
 | OS & DB licences | $45,000 | $9,000 | $9,000 | $9,000 | $9,000 | $9,000 | $90,000 |
 | CRM software licence | $200,000 | $40,000 | $40,000 | $40,000 | $40,000 | $40,000 | $400,000 |
@@ -147,7 +147,7 @@ Scenario: A 500-user CRM system.
 #### SaaS Option
 
 | Cost Item | Year 0 | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | 5-Year Total |
-|-----------|--------|--------|--------|--------|--------|--------|-------------|
+| ----------- | -------- | -------- | -------- | -------- | -------- | -------- | ------------- |
 | SaaS subscription (500 users × $80/mo) | — | $480,000 | $494,000 | $509,000 | $524,000 | $540,000 | $2,547,000 |
 | Implementation / SI | $95,000 | — | — | — | — | — | $95,000 |
 | Internal IT staff (0.15 FTE) | — | $16,500 | $17,000 | $17,500 | $18,000 | $18,500 | $87,500 |
@@ -168,7 +168,7 @@ Delta:                   $1,299,500 higher for SaaS
 ### Hidden Costs Architects Miss
 
 | Hidden Cost | Typical Range | Why It's Easy to Miss |
-|-------------|--------------|----------------------|
+| ------------- | -------------- | ---------------------- |
 | Integration middleware | $40K–$200K | Assumed "it's just an API" |
 | Data migration & cleansing | $30K–$150K | Underestimated scope |
 | End-user productivity dip (ramp-up) | $50K–$300K | Not a line item in vendor quotes |
@@ -193,7 +193,7 @@ NPV adjusts all future cash flows back to their value in today's dollars using a
 The discount rate represents the minimum acceptable return — the opportunity cost of capital.
 
 | Discount Rate Source | Typical Range | When to Use |
-|---------------------|--------------|-------------|
+| --------------------- | -------------- | ------------- |
 | WACC (Weighted Average Cost of Capital) | 6–12% | When investment is funded by a mix of debt and equity |
 | Hurdle rate | 10–20% | Company-set minimum required return on investments |
 | Risk-adjusted rate | WACC + 3–8% | For high-risk or experimental initiatives |
@@ -215,7 +215,7 @@ where:
 The discount factor for each year at 12%:
 
 | Year | Formula | Discount Factor |
-|------|---------|----------------|
+| ------ | --------- | ---------------- |
 | 0 | 1.00 | 1.0000 |
 | 1 | 1/1.12¹ | 0.8929 |
 | 2 | 1/1.12² | 0.7972 |
@@ -229,7 +229,7 @@ The discount factor for each year at 12%:
 **Projected annual net cash flows** (benefits minus ongoing operating costs):
 
 | Year | Benefits | Ongoing Costs | Net Cash Flow | Discount Factor (12%) | Present Value |
-|------|----------|--------------|--------------|----------------------|--------------|
+| ------ | ---------- | -------------- | -------------- | ---------------------- | -------------- |
 | 0 (today) | — | $2,000,000 investment | −$2,000,000 | 1.0000 | −$2,000,000 |
 | 1 | $650,000 | $120,000 | $530,000 | 0.8929 | $473,237 |
 | 2 | $950,000 | $135,000 | $815,000 | 0.7972 | $649,718 |
@@ -264,7 +264,7 @@ IRR is found iteratively (by trial and error or financial software — Excel's `
 ### Why IRR Complements NPV
 
 | Metric | What It Tells You | What It Misses |
-|--------|-----------------|----------------|
+| -------- | ----------------- | ---------------- |
 | NPV | Dollar value created today | Does not show percentage return |
 | IRR | Percentage return on investment | Does not show dollar scale |
 
@@ -275,7 +275,7 @@ Executives often think in percentage returns. "This project delivers 28% IRR" is
 Your company's hurdle rate is the minimum IRR that justifies investment approval. Common thresholds:
 
 | Risk Level | Typical Hurdle Rate |
-|-----------|---------------------|
+| ----------- | --------------------- |
 | Low risk (cost reduction, proven technology) | 12–15% |
 | Medium risk (market expansion, new platform) | 15–20% |
 | High risk (new market, unproven technology) | 20–30% |
@@ -288,7 +288,7 @@ Your company's hurdle rate is the minimum IRR that justifies investment approval
 Using the same AI platform cash flows (Year 0: −$2M, Years 1–4: $530K, $815K, $950K, $1.04M):
 
 | Trial Discount Rate | NPV |
-|--------------------|-----|
+| -------------------- | ----- |
 | 12% | +$460,085 |
 | 20% | +$148,230 |
 | 25% | −$21,440 |
@@ -334,7 +334,7 @@ For non-uniform benefits, use cumulative cash flow tracking.
 Scenario: $500K integration platform investment with benefits ramping up over time.
 
 | Period | Monthly Net Benefit | Cumulative Net Benefit | Cumulative Cash Position |
-|--------|--------------------|-----------------------|-------------------------|
+| -------- | -------------------- | ----------------------- | ------------------------- |
 | Month 0 (investment) | — | — | −$500,000 |
 | Month 1–3 (implementation) | $0 | $0 | −$500,000 |
 | Month 4 | $12,000 | $12,000 | −$488,000 |
@@ -367,7 +367,7 @@ For the same investment at 12% annual (1% monthly) discount rate, the discounted
 ### Benchmarks
 
 | Payback Period | Interpretation |
-|----------------|----------------|
+| ---------------- | ---------------- |
 | < 12 months | Exceptional; almost always approved |
 | 12–18 months | Strong; typically approved |
 | 18–24 months | Standard for IT investments |
@@ -386,7 +386,7 @@ For the same investment at 12% annual (1% monthly) discount rate, the discounted
 Understanding when to ask for money is as important as knowing how much to ask for.
 
 | Quarter | Activity |
-|---------|----------|
+| --------- | ---------- |
 | Q1 (Jan–Mar) | Current year execution. New initiatives rarely approved mid-year. |
 | Q2 (Apr–Jun) | Finance teams begin preliminary planning for next year. Good time to plant seeds. |
 | Q3 (Jul–Sep) | **Budget submission season.** Submit business cases now. This is when to push hard. |
@@ -400,7 +400,7 @@ Understanding when to ask for money is as important as knowing how much to ask f
 Finance teams classify spending differently, and this affects approval pathways.
 
 | Budget Type | Definition | Examples | Approval Path |
-|-------------|-----------|----------|---------------|
+| ------------- | ----------- | ---------- | --------------- |
 | **CapEx** (Capital Expenditure) | Investment in assets expected to provide benefit over multiple years | Servers, enterprise software licences, custom software development | CFO / Board; depreciated over useful life |
 | **OpEx** (Operating Expenditure) | Day-to-day running costs of the business | SaaS subscriptions, cloud hosting, support contracts, staff salaries | Business unit budget; expensed in the year incurred |
 | **Project Budget** | Time-limited, outcome-specific spending pool | Initiative-funded implementation, transformation programme | Programme/portfolio office; specific approval |
@@ -441,7 +441,7 @@ Every financial model rests on assumptions. Sensitivity analysis shows how the N
 #### Varying Cost Estimate by ±20%
 
 | Cost Scenario | Investment | NPV | Change vs. Base |
-|--------------|-----------|-----|----------------|
+| -------------- | ----------- | ----- | ---------------- |
 | Costs 20% lower | $1,600,000 | $860,085 | +$400,000 |
 | Costs 10% lower | $1,800,000 | $660,085 | +$200,000 |
 | **Base case** | **$2,000,000** | **$460,085** | — |
@@ -451,7 +451,7 @@ Every financial model rests on assumptions. Sensitivity analysis shows how the N
 #### Varying Benefit Estimate by ±30%
 
 | Benefit Scenario | Annual Benefit Multiplier | NPV | Change vs. Base |
-|----------------|--------------------------|-----|----------------|
+| ---------------- | -------------------------- | ----- | ---------------- |
 | Benefits 30% lower | 0.70× | −$302,148 | −$762,233 |
 | Benefits 20% lower | 0.80× | −$96,079 | −$556,164 |
 | Benefits 10% lower | 0.90× | +$182,003 | −$278,082 |
@@ -488,7 +488,7 @@ The shape (wide at top, narrow at bottom — like a tornado) tells you where to 
 Rather than varying one assumption at a time (sensitivity analysis), scenario analysis varies multiple assumptions simultaneously in coherent combinations.
 
 | Scenario | Assumptions | Likelihood |
-|----------|------------|------------|
+| ---------- | ------------ | ------------ |
 | **Best case** | Benefits 20% higher than forecast; costs 10% lower; adoption full at Month 6 | 20% |
 | **Base case** | Benefits as forecast; costs as forecast; adoption full at Month 12 | 55% |
 | **Worst case** | Benefits 25% lower than forecast; costs 15% higher; adoption full at Month 18 | 25% |
@@ -527,7 +527,7 @@ Expected NPV of +$370,747 — still positive even after weighting the worst case
 ### Definitions
 
 | Term | Definition | Example |
-|------|-----------|---------|
+| ------ | ----------- | --------- |
 | **Cost reduction** | Eliminating a cost that currently exists in the budget | Replacing 5 FTEs with automation; headcount is reduced |
 | **Cost avoidance** | Preventing a future cost from being incurred | Avoiding a $2M legacy upgrade by migrating to cloud |
 
@@ -569,7 +569,7 @@ With investment:
 #### Investment Overview
 
 | Parameter | Value |
-|-----------|-------|
+| ----------- | ------- |
 | Initiative | AI-powered supply chain demand forecasting and inventory optimisation |
 | Organisation | 8,000-employee manufacturing company |
 | Scope | Demand forecasting, inventory optimisation, supplier risk management |
@@ -580,7 +580,7 @@ With investment:
 #### Investment Schedule
 
 | Investment Item | Year 0 | Year 1 | Total |
-|----------------|--------|--------|-------|
+| ---------------- | -------- | -------- | ------- |
 | AI platform licence (5-year prepay) | $600,000 | — | $600,000 |
 | Implementation partner (SI) | $800,000 | $400,000 | $1,200,000 |
 | Internal architecture & PM (loaded) | $150,000 | $200,000 | $350,000 |
@@ -597,7 +597,7 @@ With investment:
 #### Benefit Schedule (Base Case — 80% Adoption)
 
 | Benefit Source | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 | Total |
-|----------------|--------|--------|--------|--------|--------|-------|
+| ---------------- | -------- | -------- | -------- | -------- | -------- | ------- |
 | Labour savings (planning, reconciliation) — 15 FTEs at $120K loaded | $450,000 | $1,800,000 | $1,800,000 | $1,800,000 | $1,800,000 | $7,650,000 |
 | Inventory reduction (one-time — working capital release) | $4,000,000 | — | — | — | — | $4,000,000 |
 | Stockout prevention (lost sales avoided) | $225,000 | $900,000 | $900,000 | $900,000 | $900,000 | $3,825,000 |
@@ -609,7 +609,7 @@ Note: Year 1 benefits are partial (system goes live Month 9; 4 months of operati
 #### Ongoing Operating Costs
 
 | Cost Item | Year 1 | Year 2 | Year 3 | Year 4 | Year 5 |
-|-----------|--------|--------|--------|--------|--------|
+| ----------- | -------- | -------- | -------- | -------- | -------- |
 | Platform support & maintenance | $80,000 | $120,000 | $120,000 | $120,000 | $120,000 |
 | Cloud infrastructure (ongoing) | $60,000 | $180,000 | $190,000 | $200,000 | $210,000 |
 | Internal operations (0.5 FTE) | $30,000 | $60,000 | $62,000 | $64,000 | $66,000 |
@@ -618,7 +618,7 @@ Note: Year 1 benefits are partial (system goes live Month 9; 4 months of operati
 #### 5-Year Net Cash Flow Model
 
 | Year | Investment | Benefits | Ongoing Costs | Net Cash Flow | Discount Factor (12%) | Present Value |
-|------|-----------|----------|--------------|--------------|----------------------|--------------|
+| ------ | ----------- | ---------- | -------------- | -------------- | ---------------------- | -------------- |
 | 0 | −$2,287,000 | — | — | −$2,287,000 | 1.0000 | −$2,287,000 |
 | 1 | −$1,100,000 | $4,725,000 | −$170,000 | $3,455,000 | 0.8929 | $3,084,965 |
 | 2 | — | $2,900,000 | −$360,000 | $2,540,000 | 0.7972 | $2,024,888 |
@@ -652,7 +652,7 @@ IRR ≈ 87% (high due to large Year 1 inventory cash release)
 #### Sensitivity — Adoption Rate: 60% vs. 80%
 
 | Metric | 60% Adoption | 80% Adoption (Base) | Delta |
-|--------|-------------|---------------------|-------|
+| -------- | ------------- | --------------------- | ------- |
 | Labour savings (Year 2+) | $1,350,000/yr | $1,800,000/yr | −$450,000/yr |
 | Stockout prevention (Year 2+) | $675,000/yr | $900,000/yr | −$225,000/yr |
 | 5-year recurring benefit delta | −$2,700,000 | — | — |
@@ -665,7 +665,7 @@ Even at 60% adoption the investment is strongly positive. The critical adoption 
 #### 5-Year TCO (AI Platform vs. Status Quo)
 
 | Item | Status Quo (5yr) | AI Platform (5yr) | Difference |
-|------|-----------------|-------------------|-----------|
+| ------ | ----------------- | ------------------- | ----------- |
 | Legacy planning tools (licences + maintenance) | $350,000 | $0 | −$350,000 |
 | Planning headcount (15 FTEs avoided, saved from Year 2) | $7,200,000 | $0 | −$7,200,000 |
 | AI platform licence & support | $0 | $1,200,000 | +$1,200,000 |

@@ -20,7 +20,7 @@ Deep-dive research on engineering AI agents using Harness — covering vendor la
 
 ---
 
-## PDFs
+## Research guides
 
 - [Harness Engineering Research Report](/knowledge-docs/agentic-systems/harness/Harness_Engineering_Research_Report)
 

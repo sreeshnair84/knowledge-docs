@@ -54,7 +54,7 @@ Payment API         ──── confirms Alice authorized this, via this chain
 3LO is the standard for agents acting on behalf of a human user:
 
 | Leg | Party | What happens |
-|---|---|---|
+| --- | --- | --- |
 | 1 | User → Auth Server | User authenticates; grants consent to agent acting on their behalf |
 | 2 | Auth Server → Agent | Auth server issues authorization code to agent |
 | 3 | Agent → Auth Server | Agent exchanges code for access token + refresh token |
@@ -88,6 +88,7 @@ See [Agentic AI Security & Identity](../../enterprise-architecture/ai-architectu
 ### MCP OAuth 2.1 (2026 Spec)
 
 MCP's 2026-07-28 stateless spec RC mandates:
+
 - **OAuth 2.1** (not 2.0) — implicit flow removed
 - **PKCE** required for all authorization code flows
 - **RFC 9207 issuer validation** — prevents token-redirect attacks by requiring the token issuer matches the expected server

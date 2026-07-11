@@ -43,24 +43,31 @@ This research answers:
 Navigate by area of focus:
 
 ### [**Evolution & Foundations**](./executive-summary)
+
 Executive summary, technology timeline, and conceptual foundations.
 
 ### [**Architecture Patterns**](./workflow-vs-agent-architecture)
+
 Workflow vs. agent architecture, determinism vs. adaptivity, and design principles.
 
 ### [**Platform Deep Dives**](./temporal-deep-dive)
+
 In-depth analysis of Temporal, Camunda, durable execution, and AI coding orchestrators.
 
 ### [**Agent & AI Orchestration**](./ai-coding-orchestrators)
+
 How AI agents orchestrate themselves: LangGraph, CrewAI, Semantic Kernel, Claude Code, and emerging patterns.
 
 ### [**Enterprise Patterns**](./workflow-vs-agent-architecture)
+
 Governance, reliability, security, observability, and human-in-the-loop design.
 
 ### [**Decision Frameworks**](./decision-matrix)
+
 Decision matrices, CMM models, and recommendations for different enterprise contexts.
 
 ### [**Future Outlook**](./future-predictions)
+
 2026–2035 predictions: Will BPM disappear? Will workflows become prompts? Will orchestrators become operating systems?
 
 ---

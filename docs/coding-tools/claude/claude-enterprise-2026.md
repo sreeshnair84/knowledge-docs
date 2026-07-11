@@ -20,7 +20,7 @@ Reference guide for enterprise architects and platform engineers deploying Claud
 ## 1. Deployment Options Overview
 
 | Platform | Description | Auth | Billing | Best For |
-|----------|-------------|------|---------|----------|
+| ---------- | ------------- | ------ | --------- | ---------- |
 | **Claude API (Direct)** | Anthropic-hosted, direct access | Anthropic API keys | Anthropic invoices | Startups, developers, prototyping |
 | **Claude Platform on AWS** | Anthropic-managed infrastructure on AWS; AWS billing and IAM auth | AWS IAM | AWS bill | Enterprises already on AWS, unified billing |
 | **Amazon Bedrock** | AWS-managed service; Claude models alongside other foundation models | AWS IAM | AWS bill | AWS-native workloads, Bedrock Agents, Knowledge Bases |
@@ -41,7 +41,7 @@ Announced in 2026, Claude Platform on AWS places Anthropic-managed infrastructur
 Claude Platform on AWS exposes the complete Anthropic API:
 
 | API | Description |
-|-----|-------------|
+| ----- | ------------- |
 | Messages API | Core conversational and reasoning API |
 | Files API | Upload once, reference by `file_id` across requests |
 | Batch API | Async batch processing at 50% discount |
@@ -97,7 +97,7 @@ response = client.messages.create(
 Use the following model IDs for 2025-vintage Claude models on Bedrock:
 
 | Model | Single-Region ID | Cross-Region Inference ID |
-|-------|-----------------|--------------------------|
+| ------- | ----------------- | -------------------------- |
 | Claude Sonnet 4.6 | `anthropic.claude-sonnet-4-6-20250514-v1:0` | `us.anthropic.claude-sonnet-4-6-20250514-v1:0` |
 | Claude Haiku 4.5 | `anthropic.claude-haiku-4-5-20250714-v1:0` | `us.anthropic.claude-haiku-4-5-20250714-v1:0` |
 | Claude Opus 4.8 | `anthropic.claude-opus-4-8-20251101-v1:0` | `us.anthropic.claude-opus-4-8-20251101-v1:0` |
@@ -340,7 +340,7 @@ def retrieve_and_generate(query: str, knowledge_base_id: str) -> str:
 ### 3.9 Bedrock Agents vs Claude Agent SDK
 
 | Dimension | Bedrock Agents | Claude Agent SDK |
-|-----------|---------------|-----------------|
+| ----------- | --------------- | ----------------- |
 | Infrastructure | AWS-managed | Your infrastructure |
 | Orchestration code | Visual / YAML configuration | Python/TypeScript code |
 | Tool integration | Lambda functions, OpenAPI schemas | Any callable Python/TypeScript |
@@ -357,7 +357,7 @@ def retrieve_and_generate(query: str, knowledge_base_id: str) -> str:
 ### 4.1 Model IDs
 
 | Model | Vertex AI Model ID |
-|-------|--------------------|
+| ------- | -------------------- |
 | Claude Sonnet 4.6 | `claude-sonnet-4-6@20250514` |
 | Claude Haiku 4.5 | `claude-haiku-4-5@20250714` |
 | Claude Opus 4.8 | `claude-opus-4-8@20251101` |
@@ -441,7 +441,7 @@ aiplatform.init(
 ### 4.6 Vertex AI Enterprise Features
 
 | Feature | Description |
-|---------|-------------|
+| --------- | ------------- |
 | Cloud DLP integration | Automatically scan inputs/outputs for PII, PHI, financial data |
 | Cloud Audit Logs | All Vertex AI API calls logged to Cloud Logging with principal identity |
 | Model Garden | Browse and evaluate Claude alongside Gemini, Llama, and other models |
@@ -456,6 +456,7 @@ aiplatform.init(
 ### 5.1 Claude via Azure Marketplace
 
 Claude models are available in Azure AI Foundry via the Azure Marketplace. Access requires:
+
 1. An Azure AI Foundry project
 2. A Claude model deployment in the project
 3. Azure role assignment (`Cognitive Services User` or `Azure AI Developer`)
@@ -549,7 +550,7 @@ def safe_invoke(user_message: str) -> str:
 ### 5.5 Azure Enterprise Features
 
 | Feature | Description |
-|---------|-------------|
+| --------- | ------------- |
 | Azure AD SSO | Users authenticate with Microsoft 365 credentials |
 | Conditional Access | Enforce MFA, device compliance, location-based access per app |
 | Microsoft Purview | Data governance, sensitivity labels, compliance reporting |
@@ -566,7 +567,7 @@ def safe_invoke(user_message: str) -> str:
 The Claude Enterprise admin console (`console.anthropic.com`) provides:
 
 | Feature | Description |
-|---------|-------------|
+| --------- | ------------- |
 | Usage analytics | Request volume, token consumption, cost by model and team |
 | Model-level entitlements | Grant or restrict specific models per user group |
 | Spend alerts | Configurable alerts at percentage thresholds (50%, 80%, 100%) |
@@ -708,7 +709,7 @@ spec:
 ### 7.3 Governance for Managed Agents
 
 | Control | Description |
-|---------|-------------|
+| --------- | ------------- |
 | Action whitelists | Define which tool calls agents are permitted to make |
 | Pre-approval gates | Certain action types require human approval before execution |
 | Budget limits | Per-agent token and cost limits with automatic shutdown |
@@ -742,7 +743,7 @@ Model Training Pipeline  ← Customer API data is NOT used for training
 ### 8.2 Encryption
 
 | Layer | Mechanism |
-|-------|-----------|
+| ------- | ----------- |
 | In transit | TLS 1.3 minimum; ECDHE key exchange |
 | At rest (API logs) | AES-256; Anthropic-managed keys by default |
 | At rest (Bedrock) | AWS KMS; customer-managed keys (CMK) available |
@@ -770,6 +771,7 @@ def get_client() -> anthropic.Anthropic:
 ```
 
 Key rotation policy:
+
 - Rotate API keys every 90 days
 - Use Secrets Manager rotation Lambda for automated rotation
 - Immediately revoke compromised keys via `console.anthropic.com` → API Keys
@@ -777,6 +779,7 @@ Key rotation policy:
 ### 8.4 No Training on Customer API Data
 
 Anthropic does not use data sent through the API to train models. This applies to:
+
 - All plans (Free, Pro, Team, Enterprise)
 - All cloud platforms (direct API, Bedrock, Vertex AI, Azure)
 - Both prompt/completion data
@@ -792,6 +795,7 @@ Confirm this in writing: request the current Data Processing Agreement (DPA) fro
 Anthropic holds SOC 2 Type II certification covering security, availability, and confidentiality.
 
 **Enterprise obligations:**
+
 - Request the Anthropic SOC 2 report via your account team (sign NDA required)
 - Include Claude API endpoints in your own SOC 2 audit scope
 - Document data flows: what user data enters the API, what categories of data
@@ -833,7 +837,7 @@ response = client.messages.create(
 GDPR operational requirements:
 
 | Requirement | Implementation |
-|-------------|---------------|
+| ------------- | --------------- |
 | Data processing agreement | Request DPA from Anthropic account team |
 | Data subject rights | Log which prompts contain personal data; implement deletion workflows |
 | Purpose limitation | System prompt should state the processing purpose |
@@ -1302,7 +1306,7 @@ class AuditableDecisionEngine:
 ### 13.1 HITL Tiers
 
 | Tier | Mode | Automation | Appropriate For |
-|------|------|------------|-----------------|
+| ------ | ------ | ------------ | ----------------- |
 | Full HITL | Human approves every action | None | Irreversible high-impact actions, early pilots |
 | HOTL | Human monitors, can intervene | High | Most production agentic workflows |
 | HOOL | Automated; human reviews logs | Full | Well-tested, reversible, low-stakes tasks only |
@@ -1446,7 +1450,7 @@ class BiasMonitor:
 Run periodic fairness evaluations:
 
 | Metric | Definition | Target |
-|--------|-----------|--------|
+| -------- | ----------- | -------- |
 | Demographic parity | Refusal rate equal across groups | < 5% disparity |
 | Equal error rate | False positive/negative equal across groups | < 10% disparity |
 | Calibration | Confidence scores accurate across groups | < 5% ECE |
@@ -1472,6 +1476,7 @@ Complete an AI impact assessment before deploying in these categories:
 - Content moderation at scale
 
 Template assessment questions:
+
 1. What decisions does this system influence, and are they reversible?
 2. Who are the affected populations, and are they represented in evaluation data?
 3. What oversight mechanisms exist for incorrect outputs?
@@ -1570,7 +1575,7 @@ response = client.messages.create(
 ### 16.1 Prompt Caching Strategy
 
 | Content Type | Cache? | Rationale |
-|-------------|--------|-----------|
+| ------------- | -------- | ----------- |
 | System prompt (stable) | Yes | Identical across all requests — large savings |
 | Documentation / policies (shared) | Yes | Reference docs change infrequently |
 | Few-shot examples (stable) | Yes | Examples rarely change |
@@ -1676,6 +1681,7 @@ class TokenEfficiencyTracker:
 ## 19. Deployment Checklist
 
 ### Cloud Procurement
+
 - [ ] Select cloud platform based on data residency, existing cloud commitment, and compliance requirements
 - [ ] Configure VPC isolation (PrivateLink / VPC-SC / Private Endpoint) — no public internet for API calls
 - [ ] Enable API audit logging (CloudTrail / Stackdriver / Azure Monitor)
@@ -1683,6 +1689,7 @@ class TokenEfficiencyTracker:
 - [ ] Sign BAA if any PHI will flow through the system (Enterprise plan required)
 
 ### Security
+
 - [ ] API keys stored in Secrets Manager — never in source code
 - [ ] 90-day key rotation schedule configured
 - [ ] Platform-level Guardrails enabled (Bedrock Guardrails / Vertex DLP / Azure Content Safety)
@@ -1690,6 +1697,7 @@ class TokenEfficiencyTracker:
 - [ ] Output validation pipeline in place
 
 ### Cost Control
+
 - [ ] Per-team budget caps with 80% and 100% alerts
 - [ ] Model routing implemented (Haiku → Sonnet → Opus)
 - [ ] Prompt caching enabled on all system prompts >= 1,024 tokens
@@ -1697,6 +1705,7 @@ class TokenEfficiencyTracker:
 - [ ] API call metadata tagging for cost attribution
 
 ### Compliance
+
 - [ ] GDPR data processing agreement signed
 - [ ] AI impact assessment completed for high-risk use cases
 - [ ] Bias evaluation run and documented before launch
@@ -1704,6 +1713,7 @@ class TokenEfficiencyTracker:
 - [ ] Incident response plan documented and tested
 
 ### Observability
+
 - [ ] Request/response structured logging in place
 - [ ] Token efficiency metrics tracked per task type
 - [ ] Refusal rate monitoring configured

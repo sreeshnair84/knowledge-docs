@@ -9,34 +9,35 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT 
-# **Current-State Assessment & AI Maturity** 
+AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-Where the enterprise stands, and what actually blocks it 
+# **Current-State Assessment & AI Maturity**
 
-### **Contents of this deliverable** 
+Where the enterprise stands, and what actually blocks it
 
-- Assessment approach and evidence base 
+### **Contents of this deliverable**
 
-- Enterprise assessment across 13 dimensions 
+- Assessment approach and evidence base
 
-- AI maturity assessment (5-level model) 
+- Enterprise assessment across 13 dimensions
 
-- Business capability heat map 
+- AI maturity assessment (5-level model)
 
-- Hidden bottlenecks, organizational debt, and systemic constraints 
+- Business capability heat map
 
-Deliverable 01  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout. 
+- Hidden bottlenecks, organizational debt, and systemic constraints
 
-Current-State Assessment   & AI Maturity 
+Deliverable 01  |  July 2026  |  Draft for discussion Illustrative engagement package. Assumptions stated in Deliverable 00 apply throughout.
 
-AI-First Enterprise Transformation 
+Current-State Assessment   & AI Maturity
 
-## **1. Assessment Approach** 
+AI-First Enterprise Transformation
 
-In a live engagement this assessment draws on 40-60 stakeholder interviews, architecture and data-estate reviews, spend analysis, a skills inventory, and a scan of in-flight AI initiatives. The reference findings below reflect the modal pattern we observe in enterprises of this profile; each cell should be validated in a 4-6 week discovery sprint, which is the first roadmap activity. 
+## **1. Assessment Approach**
 
-## **2. Thirteen-Dimension Enterprise Assessment** 
+In a live engagement this assessment draws on 40-60 stakeholder interviews, architecture and data-estate reviews, spend analysis, a skills inventory, and a scan of in-flight AI initiatives. The reference findings below reflect the modal pattern we observe in enterprises of this profile; each cell should be validated in a 4-6 week discovery sprint, which is the first roadmap activity.
+
+## **2. Thirteen-Dimension Enterprise Assessment**
 
 |**Dimension**|**Current-state finding (reference)**|**Rating**|
 |---|---|---|
@@ -54,17 +55,17 @@ In a live engagement this assessment draws on 40-60 stakeholder interviews, arch
 |Vendor ecosystem|Multiple overlapping AI vendor pilots; no evaluation framework; contract terms<br>silent on data use for training and IP indemnity|Red|
 |Culture & change<br>readiness|High curiosity, high anxiety; middle management unequipped to redesign work;<br>prior transformation fatigue|Amber|
 
-Rating scale: Green = strength to build on; Amber = gap that constrains scale; Red = blocking issue requiring Horizon 1 remediation. 
+Rating scale: Green = strength to build on; Amber = gap that constrains scale; Red = blocking issue requiring Horizon 1 remediation.
 
-## **3. AI Maturity Assessment** 
+## **3. AI Maturity Assessment**
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
-Deliverable 01  |  Page 1 
+Deliverable 01  |  Page 1
 
-Current-State Assessment   & AI Maturity 
+Current-State Assessment   & AI Maturity
 
-AI-First Enterprise Transformation 
+AI-First Enterprise Transformation
 
 |**Level**|**Description**|**Markers**|
 |---|---|---|
@@ -74,11 +75,11 @@ AI-First Enterprise Transformation
 |4. Scaling**(target month**<br>**24)**|Portfolio managed as products; agentic<br>workflows in bounded domains; data flywheel<br>turning|Double-digit production use cases; agent<br>registry; benefits in P&L;|
 |5. AI-Native**(target**<br>**month 36)**|AI-first process design is default; autonomous<br>operations in selected domains; AI embedded<br>in products|Human-plus-agent workforce norm; continuous<br>evaluation culture|
 
-The distance from Level 2 to Level 4 is primarily organizational, not technical: the same 18-month journey fails in enterprises that treat it as an IT program and succeeds where a business-accountable leader owns it. 
+The distance from Level 2 to Level 4 is primarily organizational, not technical: the same 18-month journey fails in enterprises that treat it as an IT program and succeeds where a business-accountable leader owns it.
 
-## **4. Business Capability Heat Map** 
+## **4. Business Capability Heat Map**
 
-Capabilities are scored on two axes: **AI leverage potential** (how much AI could improve the capability) and **current readiness** (data, process stability, and talent to absorb it). The gap between the two defines the transformation agenda. 
+Capabilities are scored on two axes: **AI leverage potential** (how much AI could improve the capability) and **current readiness** (data, process stability, and talent to absorb it). The gap between the two defines the transformation agenda.
 
 |**Business capability**|**AI leverage potential**|**Current readiness**|**Heat**|
 |---|---|---|---|
@@ -95,35 +96,35 @@ Capabilities are scored on two axes: **AI leverage potential** (how much AI coul
 |IT operations & cybersecurity|High|Medium-high (rich telemetry)|HOT|
 |Risk & compliance monitoring|High|Medium|WARM|
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
-Deliverable 01  |  Page 2 
+Deliverable 01  |  Page 2
 
-Current-State Assessment   & AI Maturity 
+Current-State Assessment   & AI Maturity
 
-AI-First Enterprise Transformation 
+AI-First Enterprise Transformation
 
 |**Business capability**|**AI leverage potential**|**Current readiness**|**Heat**|
 |---|---|---|---|
 |Executive decision support|High|Low (no semantic layer; metric|COOL until data layer|
 |||definitions inconsistent)|exists|
 
-## **5. Hidden Bottlenecks and Organizational Debt** 
+## **5. Hidden Bottlenecks and Organizational Debt**
 
-### **Systemic constraints that will silently cap the program** 
+### **Systemic constraints that will silently cap the program**
 
-- **Metric anarchy.** Core business terms (customer, churn, margin) defined differently across units. Any AI system built on inconsistent semantics automates the inconsistency. Remediation: semantic layer as a Horizon 1 deliverable. 
+- **Metric anarchy.** Core business terms (customer, churn, margin) defined differently across units. Any AI system built on inconsistent semantics automates the inconsistency. Remediation: semantic layer as a Horizon 1 deliverable.
 
-- **Project-based funding.** Annual capex cycles kill iterative AI products, which need continuous funding against outcome metrics. Remediation: product-based funding for the AI portfolio (Deliverable 05). 
+- **Project-based funding.** Annual capex cycles kill iterative AI products, which need continuous funding against outcome metrics. Remediation: product-based funding for the AI portfolio (Deliverable 05).
 
-- **Middle-management incentive gap.** Managers are measured on throughput of current processes, not on redesigning them. AI adoption stalls exactly at this layer. Remediation: redesign incentives and give managers first access to tools. 
+- **Middle-management incentive gap.** Managers are measured on throughput of current processes, not on redesigning them. AI adoption stalls exactly at this layer. Remediation: redesign incentives and give managers first access to tools.
 
-- **Risk processes built for deterministic software.** Change advisory boards and testing regimes assume reproducible outputs. Probabilistic systems need evaluation-based assurance instead. Remediation: risk-tiered AI assurance (Deliverable 04). 
+- **Risk processes built for deterministic software.** Change advisory boards and testing regimes assume reproducible outputs. Probabilistic systems need evaluation-based assurance instead. Remediation: risk-tiered AI assurance (Deliverable 04).
 
-- **Expertise walking out the door.** Institutional knowledge lives in the heads of a retiring cohort and in unsearchable documents. Every year of delay in knowledge capture is unrecoverable. Remediation: knowledge engineering program (Deliverable 03). 
+- **Expertise walking out the door.** Institutional knowledge lives in the heads of a retiring cohort and in unsearchable documents. Every year of delay in knowledge capture is unrecoverable. Remediation: knowledge engineering program (Deliverable 03).
 
-- **Vendor lock-in by inattention.** Pilots are quietly hard-coding single-vendor dependencies without exit provisions. Remediation: model-agnostic gateway and contract standards (Deliverables 03 and 04). 
+- **Vendor lock-in by inattention.** Pilots are quietly hard-coding single-vendor dependencies without exit provisions. Remediation: model-agnostic gateway and contract standards (Deliverables 03 and 04).
 
-Draft for discussion - illustrative 
+Draft for discussion - illustrative
 
 Deliverable 01  |  Page 3

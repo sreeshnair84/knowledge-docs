@@ -36,7 +36,7 @@ Enterprise AI agents connect to dozens of data sources and action surfaces. Each
 GitHub offers three primary authentication mechanisms for AI connectors: OAuth Apps, GitHub Apps, and Personal Access Tokens. For enterprise AI agents, **GitHub Apps are strongly preferred** because they provide fine-grained, repository-scoped installation tokens that expire after one hour, eliminating long-lived credential risks.
 
 | Method | Scope Granularity | Token Lifetime | Best For | Audit Visibility |
-|--------|------------------|----------------|---------|-----------------|
+| -------- | ------------------ | ---------------- | --------- | ----------------- |
 | OAuth App | User-level scopes (coarse) | Token until revoked | User-delegated access | GitHub Audit Log |
 | **GitHub App** | **Fine-grained per-installation** | **Installation token: 1 h** | **AI agent integrations** | **Full org audit log** |
 | PAT (classic) | User-level, broad | Until expiry (max 1 yr) | Developer automation | Partial — no per-call log |
@@ -66,7 +66,7 @@ GitHub offers three primary authentication mechanisms for AI connectors: OAuth A
 ### GitLab
 
 | Method | Scope | Lifetime | Notes |
-|--------|-------|---------|-------|
+| -------- | ------- | --------- | ------- |
 | OAuth 2.0 (auth code) | Delegated user scopes | 2 h access / refresh | Recommended for user-delegated AI access |
 | Personal Access Token | `api`, `read_user`, etc. | Until revoked or expiry | Admin-managed; consider rotating |
 | Project Access Token | Project-scoped | Until expiry | Best for single-project AI integrations |
@@ -76,7 +76,7 @@ GitHub offers three primary authentication mechanisms for AI connectors: OAuth A
 ### Bitbucket
 
 | Method | Scope | Notes |
-|--------|-------|-------|
+| -------- | ------- | ------- |
 | OAuth 2.0 (Bitbucket Cloud) | Delegated user/account scopes | Access token (1 h) + refresh token |
 | App Password | User-level granular permissions | Not tied to OAuth; no expiry; use with caution |
 | Repository Access Token (DC/Server) | Repository-scoped | Available in Data Center; recommended |
@@ -91,7 +91,7 @@ GitHub offers three primary authentication mechanisms for AI connectors: OAuth A
 Confluence uses Atlassian's OAuth 2.0 3LO (Three-Legged OAuth) for delegated access and OAuth 2.0 (auth code grant) for service-to-service. AI connectors should use 3LO to act as the authenticated user, ensuring space and page permissions are respected. Service accounts should be used only for background indexing, not interactive retrieval.
 
 | Method | Use Case | Scopes | Limitation |
-|--------|---------|--------|-----------|
+| -------- | --------- | -------- | ----------- |
 | **OAuth 2.0 (3LO)** | **User-delegated read/write** | `read:page:confluence`, `write:confluence-content` | **Requires user consent per tenant** |
 | OAuth 2.0 (service) | Background crawling/indexing | `read:confluence-space.summary`, etc. | Acts as service account — no user context |
 | Basic Auth (deprecated) | Legacy on-prem only | N/A | Not recommended; no token rotation |
@@ -102,7 +102,7 @@ Confluence uses Atlassian's OAuth 2.0 3LO (Three-Legged OAuth) for delegated acc
 SharePoint authentication flows through Microsoft Entra ID. AI agents should use **delegated (user) permissions via OAuth 2.0 OBO**, never application permissions with site-wide access. The Microsoft Graph SharePoint API enforces site, list, and item-level permissions consistent with what the acting user can access in the SharePoint UI.
 
 | Permission Type | Token Type | Access Level | AI Agent Recommendation |
-|----------------|-----------|-------------|------------------------|
+| ---------------- | ----------- | ------------- | ------------------------ |
 | **Delegated (user)** | User access token via OBO | User's actual permissions | **STRONGLY PREFERRED** |
 | Application (client credentials) | App access token | Tenant-wide or site collection | **AVOID for interactive AI — over-privileged** |
 | SharePoint Add-in (legacy) | ACS token | App-only or user-combined | Deprecated — do not use for new integrations |
@@ -110,7 +110,7 @@ SharePoint authentication flows through Microsoft Entra ID. AI agents should use
 ### Google Drive
 
 | Method | Scope Examples | Use Case |
-|--------|---------------|---------|
+| -------- | --------------- | --------- |
 | OAuth 2.0 (auth code) | `drive.readonly`, `drive.file` | User-delegated AI access to Drive |
 | Service Account + DWD | `drive` (impersonation) | Admin-level indexing (Domain-Wide Delegation) |
 | Service Account (standard) | `drive.readonly` | Access only to files shared with service account |
@@ -135,7 +135,7 @@ SharePoint authentication flows through Microsoft Entra ID. AI agents should use
 For AI agent integrations, **OAuth 2.0 with the Authorization Code grant** is recommended for user-delegated actions. The client credentials grant is available for background service accounts. ServiceNow also supports mutual TLS for MID Server communications.
 
 | Method | Grant Type | User Context | Recommended |
-|--------|-----------|-------------|------------|
+| -------- | ----------- | ------------- | ------------ |
 | **OAuth 2.0 Auth Code** | Authorization Code | Yes (acting user) | **Yes — for interactive AI actions** |
 | OAuth 2.0 Client Creds | Client Credentials | No (service account) | Background tasks only |
 | Basic Auth | N/A | Yes (configured user) | No — insecure, no token rotation |
@@ -145,7 +145,7 @@ For AI agent integrations, **OAuth 2.0 with the Authorization Code grant** is re
 ### Jira (Atlassian)
 
 | Method | Scope | Context | Notes |
-|--------|-------|---------|-------|
+| -------- | ------- | --------- | ------- |
 | **OAuth 2.0 (3LO)** | `read:issue:jira`, `write:issue:jira` | Acting user | **Preferred for AI agents** |
 | PAT (Data Center) | User-scoped | Acting user | Supported in DC 8.14+ |
 | API Token (Cloud) | User-scoped (basic auth) | User account | Acceptable; no OAuth flow |
@@ -160,7 +160,7 @@ For AI agent integrations, **OAuth 2.0 with the Authorization Code grant** is re
 Slack uses OAuth 2.0 for app authorisation. AI connectors should be implemented as Slack Apps using the `auth.v2` flow. Slack distinguishes between bot tokens (app identity) and user tokens (acting-user identity). For AI agents posting on behalf of users, **user tokens with explicit consent** are required to maintain identity transparency.
 
 | Token Type | Identity | Scopes | Use Case |
-|-----------|---------|--------|---------|
+| ----------- | --------- | -------- | --------- |
 | Bot token (`xoxb-`) | App/Bot identity | `chat:write`, `channels:read` | Background notifications, app-driven posts |
 | **User token (`xoxp-`)** | Specific Slack user | `chat:write`, `users:read` | **Post as user — AI agent user delegation** |
 | App-level token (`xapp-`) | App identity (Socket Mode) | `connections:write` | WebSocket-based event handling |
@@ -168,7 +168,7 @@ Slack uses OAuth 2.0 for app authorisation. AI connectors should be implemented 
 ### Microsoft Teams
 
 | Method | Identity | Scopes | Notes |
-|--------|---------|--------|-------|
+| -------- | --------- | -------- | ------- |
 | **Graph API (delegated)** | Acting user via OBO | `Chat.ReadWrite`, `ChannelMessage.Send` | **Preferred for AI agent messages** |
 | Graph API (application) | App identity | `Chat.ReadWrite.All` (admin consent) | Background bots; avoid for user delegation |
 | Bot Framework | Bot identity | Bot-specific permissions | Conversational bots; not full API access |
@@ -181,7 +181,7 @@ Slack uses OAuth 2.0 for app authorisation. AI connectors should be implemented 
 Salesforce uses OAuth 2.0 as its primary API authentication mechanism. For AI agents, the **Web Server Flow (auth code + PKCE)** is recommended for user-delegated access.
 
 | Flow | User Context | When to Use | Security Notes |
-|------|-------------|-------------|---------------|
+| ------ | ------------- | ------------- | --------------- |
 | **Web Server (Auth Code + PKCE)** | Yes | Interactive user-delegated AI access | **Recommended; PKCE prevents code interception** |
 | JWT Bearer (OAuth 2.0) | Asserted (pre-approved) | Background service agent | Requires admin pre-authorisation per user |
 | User-Agent Flow | Yes | Browser-based only | Deprecated; implicit flow security risks |
@@ -193,7 +193,7 @@ Salesforce uses OAuth 2.0 as its primary API authentication mechanism. For AI ag
 ## Developer Platforms — Azure DevOps
 
 | Method | Identity | Scope | Notes |
-|--------|---------|-------|-------|
+| -------- | --------- | ------- | ------- |
 | **OAuth 2.0 (Entra ID)** | User delegated | `vso.code`, `vso.work` | **Preferred; integrates with Entra SSO** |
 | PAT | User identity | Granular per-feature | Easy to use; ensure rotation policy |
 | Service Principal | App identity (Entra) | Service connection scopes | For CI/CD pipelines, not interactive AI |
@@ -260,7 +260,7 @@ Salesforce uses OAuth 2.0 as its primary API authentication mechanism. For AI ag
 ## Connector Authentication Summary
 
 | Connector | Recommended Method | User Context | Token Lifetime | Rotation |
-|-----------|-------------------|-------------|---------------|---------|
+| ----------- | ------------------- | ------------- | --------------- | --------- |
 | GitHub | GitHub App + user-to-server token | Yes | 1 hour | Automatic |
 | GitLab | OAuth 2.0 (auth code) | Yes | 2 hours + refresh | Refresh token |
 | Bitbucket | OAuth 2.0 or HTTP Access Token | Yes / Workspace | 1 hour + refresh | Refresh token |

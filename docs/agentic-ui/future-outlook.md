@@ -16,6 +16,7 @@ covers_version: \"as of 2026-07-10\"
 A research-based forward view of how agentic user interfaces, agent communication standards, and enterprise AI platforms will evolve over the next four years — with maturity signals and strategic recommendations for enterprise architects.
 
 **Maturity labels used throughout this guide:**
+
 - 🟢 **Production-ready now** — widely deployed, stable APIs, enterprise support available
 - 🟡 **Near-term (2026–2027)** — early production deployments, APIs stabilizing, major vendors committed
 - 🔵 **Medium-term (2028–2029)** — emerging, active standardization, proof-of-concepts maturing
@@ -30,7 +31,7 @@ The current landscape has four major open protocols addressing different layers 
 ### Current Protocol Roles (2026)
 
 | Protocol | Layer | Primary Use | Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **AG-UI** | Agent ↔ Frontend | Bidirectional streaming, HITL, generative UI | 🟢 Production (v1.0) |
 | **A2UI** (Google) | UI surface definition | Declarative component spec, agent emits → host renders | 🟡 Early production (v0.9) |
 | **MCP** (Anthropic/Microsoft) | Agent ↔ Tools | Tool invocation, resource access | 🟢 Production (2025 Auth spec) |
@@ -48,7 +49,7 @@ The current landscape has four major open protocols addressing different layers 
 ### Standards Convergence Timeline
 
 | Capability | 2026 | 2027 | 2028 | 2030 | Key Blockers |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | AG-UI protocol stable | ✅ v1.0 | ✅ Widespread | ✅ Industry standard | ✅ Foundational | Versioning governance |
 | A2UI declarative UI | 🟡 v0.9 pilots | 🟡 v1.0 stable | 🔵 Cross-platform | 🔵 Optional layer | Host renderer fragmentation |
 | MCP 2025 auth spec | ✅ Available | ✅ Adopted | ✅ Universal | ✅ Foundational | — |
@@ -92,6 +93,7 @@ The AGUI surface is expanding beyond the browser tab.
 ## 4. Agent-Native Operating Systems
 
 🟡 **Deep OS integration (2026–2027).** Major operating systems are shipping or planning native agent integration that goes beyond browser extensions:
+
 - **Apple Intelligence (macOS/iOS):** System-level agent APIs, cross-app context, on-device model inference for privacy-sensitive tasks
 - **Windows Copilot+ / Recall:** Screen context awareness, semantic indexing of user activity, agent surface in taskbar
 - **Android AI Core:** On-device model inference, system-level agent APIs for Android
@@ -99,6 +101,7 @@ The AGUI surface is expanding beyond the browser tab.
 Enterprise architecture implication: agent surfaces are no longer just web apps — they are OS-native experiences with access to system state, file system, and cross-application context.
 
 🔵 **OS-level permission models for agents (2028–2029).** Operating systems develop formal permission models for agent capabilities — analogous to mobile app permission dialogs:
+
 - "This agent wants access to: your documents, your calendar, your contacts" — explicit per-capability consent
 - Granular controls: read-only vs. read-write, time-limited access, per-app scope
 - Transparency dashboard showing what each agent has accessed
@@ -116,12 +119,14 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 🟡 **Persistent long-lived agents with business roles (2026–2027).** Already emerging: agents registered as "Research Assistant," "Code Reviewer," "Meeting Summarizer" that persist across sessions, accumulate organizational context over time, and are managed like team members rather than tools. Microsoft 365 agents, Salesforce Agentforce, and ServiceNow agents are early examples.
 
 🔵 **Digital worker identity and governance (2028–2029).** As agents take on roles previously held by humans, organizations develop:
+
 - **Digital worker registration:** Formal onboarding process analogous to employee onboarding
 - **Capability governance:** Quarterly access reviews (what tools/data does this agent still need?)
 - **Performance management:** Evaluation scorecards for digital workers, analogous to employee reviews
 - **Organizational hierarchy:** Digital workers report to human managers who are accountable for their behavior
 
 🔵 **Human ↔ digital coworker ↔ human handoff protocols (2028–2029).** Defined workflows for transferring tasks between humans and digital coworkers:
+
 - Warm handoff: digital coworker summarizes progress when transferring to human (and vice versa)
 - Context package: standardized format for transferring task context across agent/human boundary
 - Accountability chain: clear record of who did what in any human-agent collaboration
@@ -139,6 +144,7 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 🔵 **Browser-native agent surfaces (2028–2029).** Browser vendors (Chrome, Firefox, Safari) ship native agent APIs that don't require extensions — with built-in privacy controls, user consent flows, and capability permissions. Agents can navigate, interact with forms, and read structured page content through official browser APIs with proper security model.
 
 🔵 **Browser security model for agent actions (2028–2029).** Current browser security model (same-origin policy, CSP) was designed for scripts, not agents. New primitives needed:
+
 - Agent capability declarations (analogous to manifest permissions in mobile apps)
 - Per-domain agent action permissions
 - Audit log of agent-executed browser actions
@@ -154,6 +160,7 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 🔵 **Agent marketplaces (2028–2029).** Curated registries of enterprise-ready agents and MCP tools, analogous to app stores but for agentic capabilities. Enterprise IT procurement teams evaluate and approve agents for use within their organization. Vendors publish Agent Cards with capability declarations, data handling policies, and compliance certifications.
 
 🔵 **Trust frameworks for external agents (2028–2029).** Organizations interacting with external agents need formal trust frameworks:
+
 - Agent reputation systems (audit history, incident record, compliance certifications)
 - Capability attestations (what an agent claims to be able to do, cryptographically signed)
 - Liability frameworks (who is responsible when a cross-org agent interaction causes harm)
@@ -182,7 +189,7 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 ### New EA Roles
 
 | Role | Description | Skills Needed | When Critical |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Agent Architect** | Designs multi-agent systems, capability scoping, communication topology | Multi-agent patterns, AG-UI/MCP/A2A, security | When deploying > 3 production agents |
 | **Context Engineer** | Manages context assembly pipelines, compression, retrieval quality, provenance | RAG, vector DBs, tokenization, prompt engineering | When context quality becomes the quality bottleneck |
 | **PromptOps Lead** | Manages prompt lifecycle, CI/CD for prompts, evaluation automation | LLMOps, eval frameworks, CI/CD | When > 10 production prompts require governance |
@@ -194,7 +201,7 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 ### New Architecture Domains (2028–2030)
 
 | Domain | Description | Current Closest Analogy |
-|---|---|---|
+| --- | --- | --- |
 | Agent lifecycle management platform | Registry, onboarding, versioning, retirement for all enterprise agents | Application portfolio management |
 | Context engineering service | Enterprise-wide context assembly, compression, retrieval pipeline | CDN / content delivery |
 | Cross-org agent federation layer | Secure, trusted agent-to-agent communication across organizational boundaries | EDI / B2B integration |
@@ -203,7 +210,7 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 ### Platform Consolidation Predictions
 
 | Layer | Likely Leaders (2030) | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Enterprise LLM access | Microsoft (Azure OpenAI + Claude), Google (Vertex AI), Anthropic | Enterprise contracts, compliance, integration |
 | Agent runtime platform | Microsoft Agent Framework, LangGraph, Google ADK | IDE integration, existing enterprise relationships |
 | Frontend SDK | CopilotKit (React), Microsoft Copilot Studio | Enterprise React dominance |
@@ -217,7 +224,7 @@ The evolution from per-task copilot to persistent digital coworker with defined 
 ### Key Risk Scenarios
 
 | Risk | Likelihood | Impact | Mitigation |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Over-automation** | High | High | User autonomy controls; HITL defaults; organizational change management |
 | **Regulatory fragmentation** | High | Medium | Platform-level compliance adapters; flexible policy-as-code |
 | **Security arms race (prompt injection)** | High | High | Defense-in-depth; content safety layers; context isolation |

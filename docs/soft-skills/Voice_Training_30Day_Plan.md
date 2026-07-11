@@ -11,12 +11,15 @@ doc_type: guide
 **30-Day Expert Public Speaking Plan**
 *Your personal roadmap from some experience to confident expert*
 **Your Profile**
+
 | Goal | Expert Public Speaker |
 | --- | --- |
 | Current Level | Some Experience |
 | Daily Practice Time | 20-30 Minutes |
 | Duration | 28 Days (+ ongoing) |
+
 # **Your Daily Routine (25 min)**
+
 Complete this every day before moving into your weekly focus. This is non-negotiable — consistency beats intensity.
 
 | Activity | Duration | Description |
@@ -28,14 +31,15 @@ Complete this every day before moving into your weekly focus. This is non-negoti
 
 # **The 3 Phases**
 
-**Phase 1  ****Foundation**   Weeks 1-2
+**Phase 1****Foundation**   Weeks 1-2
 *Build the core mechanics: breathing, warm-up, and articulation. Identify your bad habits through daily recordings.*
-**Phase 2  ****Delivery**   Weeks 3-4
+**Phase 2****Delivery**   Weeks 3-4
 *Shape how you sound. Master pace control, strategic pausing, pitch variation, and volume dynamics.*
-**Phase 3  ****Performance**   Weeks 5-12
+**Phase 3****Performance**   Weeks 5-12
 *Apply everything under pressure. Impromptu speaking, live audiences, and TED Talk shadowing.*
 
 # **Week 1 — Build the Foundation**
+
 Focus: Establish your daily routine and identify your current habits. Record every single day.
 
 | Day | Focus | Exercise | Resource | Goal |
@@ -49,6 +53,7 @@ Focus: Establish your daily routine and identify your current habits. Record eve
 | Day 7 | Rest & Reflect | Journal your week's observations | — | Write 3 wins + 1 focus |
 
 # **Week 2 — Strengthen the Base**
+
 Focus: Deepen your breath control, speed up articulation, and start studying great speakers.
 
 | Day | Focus | Exercise | Resource | Goal |
@@ -62,6 +67,7 @@ Focus: Deepen your breath control, speed up articulation, and start studying gre
 | Day 14 | Week Review | Compare Day 1 vs Day 14 recordings | Yoodli | Hear clear improvement |
 
 # **Week 3 — Shape Your Delivery**
+
 Focus: Pace, pausing, pitch variation, and volume dynamics. This is where your voice becomes expressive.
 
 | Day | Focus | Exercise | Resource | Goal |
@@ -75,6 +81,7 @@ Focus: Pace, pausing, pitch variation, and volume dynamics. This is where your v
 | Day 21 | Week Review | Record a 2-min self-introduction | Yoodli analytics | Confident, clear intro |
 
 # **Week 4 — Perform Under Pressure**
+
 Focus: Apply everything to real-world situations. Impromptu speaking, live audience reps, and peer feedback.
 
 | Day | Focus | Exercise | Resource | Goal |
@@ -88,6 +95,7 @@ Focus: Apply everything to real-world situations. Impromptu speaking, live audie
 | Day 28 | Final Recording | Record your best 3-min speech | Yoodli | Celebrate improvement! |
 
 # **Progress Milestones**
+
 Use these checkpoints to measure your growth. Be honest with yourself — improvement takes time.
 
 | Milestone | Target Week | How to Measure |
@@ -102,6 +110,7 @@ Use these checkpoints to measure your growth. Be honest with yourself — improv
 # **Breathing Techniques Reference**
 
 ## **Diaphragmatic Breathing**
+
 Used for: Daily warm-up and building vocal power.
 Place one hand on your chest, one hand on your belly
 Inhale through your nose for 4 counts — only the belly hand should rise
@@ -109,17 +118,20 @@ Exhale slowly for 8 counts — belly falls back in
 Repeat 5-10 times before any speaking practice
 
 ## **Box Breathing**
+
 Used for: Calming nerves right before a presentation.
 Inhale for 4 counts
 Exhale for 4 counts
 Repeat 4 cycles — you will feel noticeably calmer
 
 ## **Speaking Breath (Modified)**
+
 Used for: In-session control during your practice.
 Inhale for 4 counts
 Exhale for 8 counts — the extended exhale activates your calm response
 
 # **Free Resources**
+
 All resources below are 100% free. Use them alongside your daily practice.
 
 | Resource | Type | Best Used For |
@@ -132,6 +144,7 @@ All resources below are 100% free. Use them alongside your daily practice.
 | Toastmasters Meetings | Free Community | Live audience reps and real-time feedback |
 
 # **Golden Rules**
+
 Record yourself EVERY DAY — you cannot improve what you cannot hear
 Slow down — most speakers go 20% faster than ideal under pressure
 Embrace silence — a 2-second pause is a power move, not a mistake

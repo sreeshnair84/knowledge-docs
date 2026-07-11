@@ -20,6 +20,7 @@ This matrix helps you choose the right orchestration platform(s) for your enterp
 ## Quick Reference: Platform Characteristics
 
 ### Temporal
+
 ```
 Best for: Distributed transactions, SLA-critical workflows, microservices
 Cost: Self-hosted or cloud SaaS
@@ -31,6 +32,7 @@ AI integration: Via activities (agents as black boxes)
 ```
 
 ### Camunda
+
 ```
 Best for: Business process governance, visual modeling, compliance
 Cost: Community (free) or enterprise license
@@ -42,6 +44,7 @@ AI integration: Via external services or DMN replacement
 ```
 
 ### LangGraph
+
 ```
 Best for: Agentic workflows, reasoning, dynamic tool invocation
 Cost: Framework (free) + LLM API costs
@@ -53,6 +56,7 @@ AI integration: Native (agents all the way down)
 ```
 
 ### CrewAI
+
 ```
 Best for: Multi-agent coordination, role-based teams
 Cost: Framework (free) + LLM API costs
@@ -64,6 +68,7 @@ AI integration: Native (agents + roles)
 ```
 
 ### Claude Code
+
 ```
 Best for: Development tasks, meta-orchestration, complex reasoning
 Cost: Per-session (Anthropic Claude API)
@@ -75,6 +80,7 @@ AI integration: Native (extended thinking, tools)
 ```
 
 ### AWS Step Functions
+
 ```
 Best for: AWS-centric workflows, Lambda coordination
 Cost: Pay-per-execution
@@ -86,6 +92,7 @@ AI integration: Via BedrockAgent or Lambda
 ```
 
 ### Azure Durable Functions
+
 ```
 Best for: Azure-centric workflows, .NET-first shops
 Cost: Azure compute pricing
@@ -105,7 +112,7 @@ AI integration: Via Azure OpenAI or external
 **Are you coordinating...?**
 
 | Use Case | Temporal | Camunda | LangGraph | CrewAI | Claude Code | Step Func |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
 | Microservice transactions | ✅✅✅ | ❌ | ❌ | ❌ | ❌ | ✅✅ |
 | Business processes (compliance) | ✅ | ✅✅✅ | ❌ | ❌ | ❌ | ✅ |
 | Agentic reasoning | ❌ | ❌ | ✅✅✅ | ✅✅✅ | ✅✅✅ | ❌ |
@@ -122,7 +129,7 @@ AI integration: Via Azure OpenAI or external
 **Your team and constraints...**
 
 | Factor | Temporal | Camunda | LangGraph | CrewAI | Claude Code | Step Func |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
 | Business users need visibility | ❌ | ✅✅✅ | ❌ | ❌ | ❌ | ❌ |
 | Developers prefer code | ✅✅✅ | ❌ | ✅✅✅ | ✅✅ | ✅✅✅ | ✅✅ |
 | Compliance/audit is critical | ✅✅✅ | ✅✅✅ | ❌ | ❌ | ⚠️ | ✅✅ |
@@ -140,7 +147,7 @@ AI integration: Via Azure OpenAI or external
 **Critical capabilities...**
 
 | Requirement | Temporal | Camunda | LangGraph | CrewAI | Claude Code | Step Func |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
 | Guaranteed determinism | ✅✅✅ | ✅✅ | ❌ | ❌ | ❌ | ✅✅✅ |
 | Adaptive decision-making | ❌ | ⚠️ | ✅✅✅ | ✅✅✅ | ✅✅✅ | ❌ |
 | Long-running workflows (days) | ✅✅✅ | ✅✅✅ | ❌ | ❌ | ❌ | ✅✅ |
@@ -159,7 +166,7 @@ AI integration: Via Azure OpenAI or external
 **TCO and DevOps...**
 
 | Factor | Temporal | Camunda | LangGraph | CrewAI | Claude Code | Step Func |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
 | Initial licensing cost | $ | $$$ | Free | Free | $/API | Free tier |
 | Self-hosted option | ✅ | ✅ | ✅ | ✅ | N/A | ❌ |
 | SaaS option | ✅ | ✅ | N/A | N/A | ✅ | ✅ |
@@ -180,13 +187,13 @@ AI integration: Via Azure OpenAI or external
 ```
 Primary: Temporal
   → For: Payment settlement, SLA-critical flows
-  
+
 Secondary: Camunda
   → For: Approval workflows, compliance dashboards
-  
+
 Tertiary: LangGraph (optional)
   → For: Risk scoring, fraud detection
-  
+
 Reasoning: Start with Temporal (reliability).
 Use Camunda for processes that need audit + visual.
 Add AI agents only for specific decisions.
@@ -202,13 +209,13 @@ Add AI agents only for specific decisions.
 ```
 Primary: LangGraph
   → For: Order routing, personalization, recommendations
-  
+
 Secondary: Temporal (for critical path only)
   → For: Payment settlement, inventory sync
-  
+
 Tertiary: Claude Code
   → For: Cross-cutting concerns (logging, monitoring)
-  
+
 Reasoning: Start with LangGraph for flexible workflows.
 Use Temporal only where reliability is non-negotiable.
 Use Claude Code for coordination logic.
@@ -224,13 +231,13 @@ Use Claude Code for coordination logic.
 ```
 Primary: Camunda
   → For: Claims workflows, human tasks, business rules
-  
+
 Secondary: LangGraph
   → For: Claims assessment, fraud detection
-  
+
 Tertiary: Temporal (optional)
   → For: Back-end coordination if needed
-  
+
 Reasoning: Camunda shines with human tasks.
 LangGraph adds AI assessment.
 Temporal only if back-end resilience matters.
@@ -246,13 +253,13 @@ Temporal only if back-end resilience matters.
 ```
 Primary: LangGraph (via Airflow integration)
   → For: Adaptive data pipelines
-  
+
 Secondary: Temporal
   → For: Long-running ETL with retries
-  
+
 Tertiary: Claude Code
   → For: Data exploration, schema optimization
-  
+
 Reasoning: LangGraph + Airflow for ML pipelines.
 Temporal for batch jobs needing reliability.
 Claude Code for ad-hoc data work.
@@ -268,16 +275,16 @@ Claude Code for ad-hoc data work.
 ```
 Tier 1: Temporal
   → For: Core infrastructure (payments, subscriptions)
-  
+
 Tier 2: Camunda
   → For: Customer-visible workflows (onboarding, billing)
-  
+
 Tier 3: LangGraph
   → For: AI features (recommendations, support)
-  
+
 Tier 4: Claude Code
   → For: Internal automation, deployments
-  
+
 Reasoning: Specialized tier for each concern.
 Claude Code is meta-orchestrator for internal work.
 ```
@@ -318,22 +325,26 @@ START: "What are we building?"
 
 ## Red Flags: When NOT to Use
 
-### ❌ Don't use Temporal for:
+### ❌ Don't use Temporal for
+
 - Processes requiring frequent reasoning
 - Workflows that frequently change
 - Situations where non-determinism is OK
 
-### ❌ Don't use Camunda for:
+### ❌ Don't use Camunda for
+
 - Back-end microservice coordination
 - Real-time, low-latency workflows
 - Processes driven by AI reasoning
 
-### ❌ Don't use LangGraph for:
+### ❌ Don't use LangGraph for
+
 - Compliance-critical workflows (audit trail gaps)
 - Sub-100ms latency requirements
 - Workflows requiring guaranteed determinism
 
-### ❌ Don't use Claude Code for:
+### ❌ Don't use Claude Code for
+
 - Continuous, always-on processes
 - Multi-month long-running work
 - Compliance-heavy operations
@@ -343,18 +354,21 @@ START: "What are we building?"
 ## Migration Path (If Starting Fresh)
 
 ### Year 1: Foundation
+
 ```
 Deploy Temporal for critical paths (payments, SLAs)
 Add Camunda for business processes (governance)
 ```
 
 ### Year 2: Expansion
+
 ```
 Introduce LangGraph for new features (recommendations, personalization)
 Integrate Temporal + LangGraph (Temporal coordinates, agents decide)
 ```
 
 ### Year 3: Maturity
+
 ```
 Add Claude Code for cross-platform orchestration
 Establish governance layer (versioning, audit)
@@ -368,7 +382,7 @@ Potentially add CrewAI for multi-agent systems
 Assume: 100,000 workflow executions/month, 10M events/month
 
 | Platform | Infrastructure | Licensing | LLM API | Total/Month |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Temporal** | $5,000 (self-hosted) | $0 | $0 | $5,000 |
 | **Camunda** | $2,000 (self-hosted) | $10,000 (license) | $0 | $12,000 |
 | **LangGraph** | $1,000 (serverless) | $0 | $5,000 (Claude API) | $6,000 |
@@ -390,6 +404,7 @@ Coordinate with Claude Code (or internal dispatcher)
 ```
 
 **Why?**
+
 - Temporal handles "boring but critical" work
 - LangGraph handles "complex decision" work
 - Camunda handles "compliance and visibility" work

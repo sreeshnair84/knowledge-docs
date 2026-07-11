@@ -26,7 +26,7 @@ core_tension: "Network complexity growth outpacing human operational capacity"
 TelecomCo is a tier-1 telecommunications operator serving 45 million customers across consumer, small business, and enterprise segments. Annual revenue is $18B, with approximately 72% from recurring subscription services (mobile, broadband, TV bundles) and the remainder from equipment, enterprise contracts, and wholesale.
 
 | Dimension | Detail |
-|---|---|
+| --- | --- |
 | Total Customers | 45M |
 | Annual Revenue | $18B |
 | Customer Segments | Consumer (68%), SMB (19%), Enterprise (13%) |
@@ -176,7 +176,7 @@ The EA team identified four compounding AI opportunities:
 ### Financial Model
 
 | Category | Amount | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Total Investment | $11.3M | Over 24 months |
 | CDP Build (including identity resolution) | $4.2M | Dominant cost — underestimated at scoping |
 | AI Model Development | $2.8M | Churn model + NBA engine |
@@ -187,7 +187,7 @@ The EA team identified four compounding AI opportunities:
 ### Benefit Case
 
 | Metric | Value | Basis |
-|---|---|---|
+| --- | --- | --- |
 | Target Churn Reduction | 2.8% → 1.9% monthly | Industry benchmark parity |
 | Customers Retained Annually | ~405,000 | Δ churn × 45M base |
 | Revenue Retained (ARPU × 12) | $219M/yr at steady state | |
@@ -217,7 +217,7 @@ The EA team structured the executive proposal around three arguments:
 ## 8. Implementation Roadmap
 
 | Phase | Duration | Key Activities | Investment | Exit Criteria |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 0 — Discovery | Months 1–2 | CRM schema mapping, GDPR consent audit, data quality baseline, AI ethics risk assessment | $0.4M | Consent gap report; identity resolution feasibility confirmed |
 | 1A — CDP Foundation | Months 3–10 | Identity resolution layer build, golden record pipeline, 4 priority CRM integrations | $3.1M | Single customer view available for 80% of base |
 | 1B — Churn Model | Months 6–12 | Model training on CDP data, SHAP explainability, fairness review, agent desktop integration | $1.5M | Churn model live; AUC > 0.82 on holdout |
@@ -237,7 +237,7 @@ The EA team structured the executive proposal around three arguments:
 An AI Ethics Committee was established prior to model deployment, with membership spanning Legal, Compliance, Customer Experience, and the EA team. This was not a post-hoc review body — it was integrated into the development gate process.
 
 | Gate | Trigger | Ethics Committee Role |
-|---|---|---|
+| --- | --- | --- |
 | Model staging approval | Before any model deployed to staging environment | Review fairness metrics, explainability report, consent compliance |
 | Model production approval | Before live customer interactions | Final sign-off; any dissenting vote escalates to CTO |
 | Quarterly model review | Every 90 days post-deployment | Drift, fairness metric monitoring, incident review |
@@ -246,7 +246,7 @@ An AI Ethics Committee was established prior to model deployment, with membershi
 ### GDPR Governance
 
 | Control | Mechanism |
-|---|---|
+| --- | --- |
 | Consent check | Real-time query of consent store before any proactive outreach trigger |
 | Consent withdrawal | 24-hour propagation to suppress outreach; logged with timestamp |
 | Data minimisation | Churn model trained on behavioural signals only — no sensitive attributes as direct features |
@@ -256,7 +256,7 @@ An AI Ethics Committee was established prior to model deployment, with membershi
 ### Decision Rights
 
 | Decision | Owner | Escalation |
-|---|---|---|
+| --- | --- | --- |
 | Retention offer catalogue | VP Customer Experience | CMO for offers >15% revenue impact |
 | NBA action eligibility for a segment | NBA Product Owner + Legal | Ethics Committee if demographic concern raised |
 | Proactive outreach campaign launch | Retention Ops Lead | GDPR Compliance if EU customers included |
@@ -273,7 +273,7 @@ An AI Ethics Committee was established prior to model deployment, with membershi
     The churn rate of 2.1% missed the 1.9% target but represents a 25% improvement from 2.8% — a material and commercially significant outcome.
 
 | Metric | Target | Realized | Gap / Surplus | Primary Cause |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Monthly Churn Rate | 2.8% → 1.9% | 2.8% → 2.1% | −0.2pp shortfall | CDP took 18 months not 12; proactive outreach delayed |
 | Revenue Retained | $219M/yr | $312M/yr | +$93M surplus | NBA model upsell exceeded original estimate |
 | 5-Year NPV | $245M | $318M | +$73M surplus | Upsell contribution from NBA model |
@@ -308,7 +308,7 @@ An AI Ethics Committee was established prior to model deployment, with membershi
 ## 12. Key Takeaways
 
 | # | Takeaway |
-|---|---|
+| --- | --- |
 | 1 | A unified customer data platform is the prerequisite for all downstream AI use cases — and its build complexity scales non-linearly with the number of legacy systems being consolidated. |
 | 2 | Churn prediction is a powerful entry point, but the NBA engine is the long-term value driver; proposals should model the full action catalogue from the start. |
 | 3 | AI ethics review, when integrated into the development gate process rather than added at the end, improves model quality and creates reputational and regulatory assets. |

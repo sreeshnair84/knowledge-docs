@@ -29,7 +29,7 @@ Technology spend is not a cost of doing IT. It is a lever on strategy, competiti
 Every strategic objective translates into a capability requirement, and almost every modern capability requirement has a technology component.
 
 | Strategic Objective | Capability Required | Technology Investment |
-|---|---|---|
+| --- | --- | --- |
 | Enter new markets in 18 months | Digital commerce platform | E-commerce platform + API layer |
 | Reduce unit cost by 20% | Process automation | RPA + AI-assisted workflows |
 | Improve customer retention | Personalisation at scale | Customer data platform + ML |
@@ -94,7 +94,7 @@ Understanding the capital classification of technology spend is a core competenc
 ### 2.2 Technology Examples
 
 | Spend Category | CapEx or OpEx | Why |
-|---|---|---|
+| --- | --- | --- |
 | On-premises server purchase | CapEx | Physical asset with multi-year life |
 | Data centre construction | CapEx | Long-lived infrastructure |
 | Custom software developed in-house | CapEx (partially) | Software asset under IAS 38/ASC 350 |
@@ -129,7 +129,7 @@ The move to cloud is fundamentally a reclassification of technology spend from C
 How you classify and present a proposal affects its approval pathway.
 
 | Situation | Positioning Approach |
-|---|---|
+| --- | --- |
 | Organisation is under CapEx freeze | Position cloud/SaaS as OpEx to access a different budget pool |
 | Organisation is protecting EBITDA | Emphasise CapEx (amortised over years, less P&L impact in year 1) |
 | Organisation wants quick approval | Keep under capitalisation threshold; position as OpEx expense |
@@ -170,7 +170,7 @@ Cloud Pricing Spectrum
 Unit economics reframes cloud cost from a total bill to a cost-per-outcome metric. This is the language of business, not IT.
 
 | Unit Metric | How to Calculate | Example |
-|---|---|---|
+| --- | --- | --- |
 | Cost per transaction | Monthly cloud cost / transactions processed | $0.0008 per payment |
 | Cost per active user | Monthly cloud cost / monthly active users | $1.20 per MAU |
 | Cost per API call | Monthly API infrastructure cost / API calls | $0.000015 per call |
@@ -205,7 +205,7 @@ Inform → Optimise → Operate
 ### 3.4 Showback vs. Chargeback
 
 | Model | Description | When to Use |
-|---|---|---|
+| --- | --- | --- |
 | **Showback** | Cloud costs are reported to teams but not invoiced internally | Early FinOps maturity; builds awareness without resistance |
 | **Chargeback** | Cloud costs are allocated and invoiced to internal cost centres | Mature FinOps; creates accountability and consumption discipline |
 | **Hybrid** | Showback for shared platform costs; chargeback for direct application costs | Most common in practice |
@@ -231,7 +231,7 @@ AI investments do not follow the same economic patterns as conventional software
 ### 4.1 Why AI Investments Are Different
 
 | Dimension | Conventional Software | AI Investment |
-|---|---|---|
+| --- | --- | --- |
 | Upfront cost | Moderate | Very high (data, compute, talent) |
 | Time to value | Months | 12–36 months typical |
 | ROI certainty | Medium-high | Medium-low (R&D characteristics) |
@@ -269,7 +269,7 @@ Accelerator Cost Reference (approximate, varies by cloud/region/vintage)
 AI economics extend beyond compute:
 
 | Cost Category | Description | Typical Range |
-|---|---|---|
+| --- | --- | --- |
 | Data acquisition & labelling | Human-in-the-loop annotation | $0.01–$0.50 per data point |
 | Data pipeline & storage | ETL, feature stores, vector DBs | $10K–$500K/year |
 | Model training compute | GPU/TPU hours for training runs | $5K–$5M per training run |
@@ -340,7 +340,7 @@ Transform████  5%                        ██████████�
 ### 5.3 Classifying Proposals
 
 | Proposal Type | Run | Grow | Transform |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Upgrading ERP to latest version (same vendor) | Yes | | |
 | Adding a new module to ERP (new capability) | | Yes | |
 | Replacing ERP with cloud-native platform | | | Yes |
@@ -396,7 +396,7 @@ Technology portfolio management applies investment portfolio principles to appli
 ### 6.1 Portfolio Categories
 
 | Category | Description | Action |
-|---|---|---|
+| --- | --- | --- |
 | **Strategic** | Critical to competitive differentiation; high investment return | Invest, protect, evolve |
 | **Factory** | Operationally critical but not differentiating | Maintain, automate, consider SaaS |
 | **Turnaround** | High potential but currently under-performing | Fix or replace |
@@ -458,7 +458,7 @@ Technical debt is the implied cost of rework caused by choosing an expedient sol
 **Debt Categories:**
 
 | Category | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | Code debt | Poor code quality, no tests, duplicated logic | Monolith with 300K lines and no unit tests |
 | Architecture debt | Wrong structural decisions | Tightly coupled services, data duplication |
 | Infrastructure debt | Outdated platforms, unsupported versions | Running on EOL OS, unsupported database |
@@ -471,6 +471,7 @@ Technical debt is the implied cost of rework caused by choosing an expedient sol
 Executives do not respond to "the code is messy." They respond to numbers. Quantification approaches:
 
 **Cost-of-Carry Method:**
+
 ```
 Annual Debt Interest = (Developer Hours Lost to Debt) × (Fully-Loaded Developer Rate)
 
@@ -478,11 +479,12 @@ Example:
   Team of 20 developers
   Estimated 30% of time navigating/working around debt
   Fully-loaded developer cost: $150,000/year
-  
+
   Annual Interest = 20 × 0.30 × $150,000 = $900,000/year
 ```
 
 **Incident Cost Attribution:**
+
 ```
 Debt-Related Incident Cost = (P1/P2 Incidents attributed to legacy systems)
                            × (Average incident cost: response + revenue impact)
@@ -511,7 +513,7 @@ Benchmark feature delivery velocity on debt-heavy systems vs. modern systems. Th
 Connecting technical debt to operational risk frameworks gives it standing in risk committee conversations:
 
 | Debt Type | Risk Category | Risk Register Language |
-|---|---|---|
+| --- | --- | --- |
 | Unsupported OS/DB | Security / Operational | "Vendor end-of-support creates unmitigable CVE exposure" |
 | No automated testing | Delivery / Quality | "Manual testing creates release bottleneck; defect escape rate elevated" |
 | Monolith architecture | Availability / Scalability | "Single point of failure; cannot scale horizontally for peak demand" |
@@ -527,7 +529,7 @@ How organisations fund innovation is distinct from how they fund operations and 
 ### 8.1 Structural Innovation Funding Models
 
 | Model | Description | Pros | Cons |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Central Innovation Fund** | Dedicated budget pool managed by CTO/CDO office | Clear ownership, protected from operational pressures | Can become disconnected from business |
 | **Business Unit Allocation** | Each BU allocates a % of technology budget to innovation | Business-aligned, accountable | Inconsistent across BUs, short-term bias |
 | **Venture-Style Funding** | Staged funding released on milestone achievement | Reduces risk, focuses effort | Administrative overhead, stage-gate risk aversion |
@@ -579,7 +581,7 @@ Stage 4: Industrialise
 AI is simultaneously the most compelling and most contested category in innovation budgets. Architects making the case for AI investment should expect these objections:
 
 | Objection | Response Strategy |
-|---|---|
+| --- | --- |
 | "ROI is unproven" | Stage-gate the investment; define measurable outcomes for each stage |
 | "We don't have the data" | Start with data strategy; data investment is a prerequisite |
 | "We can't hire AI talent" | Partner with AI vendors/consultancies for initial phases; build internally as capability matures |
@@ -672,7 +674,7 @@ Software licence sprawl is endemic in large organisations. Common patterns:
 Right-sizing is the practice of matching cloud resource specifications to actual workload requirements.
 
 | Right-Sizing Opportunity | Typical Saving |
-|---|---|
+| --- | --- |
 | Oversized compute instances | 20–40% of compute cost |
 | Development environments running 24/7 | 60–70% of dev environment cost |
 | Unattached storage volumes | 5–15% of storage cost |
@@ -706,7 +708,7 @@ With shared enterprise data platform:
   Operations:                   $200K/year
   BU-specific extensions:       $150K/year
   Total:                        $650K/year  (55% saving)
-  
+
   Plus: better data quality, unified governance, shared talent pool
 ```
 
@@ -736,7 +738,7 @@ The benefit gap is the difference between benefits promised in the business case
 **Benefits Realisation Plan Structure:**
 
 | Benefit | Baseline Measure | Target Measure | Measurement Method | Owner | Review Date |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Reduced processing time | 4.2 hours avg per order | 1.5 hours avg | Time-motion study in OMS | Ops Director | 6 months post-launch |
 | Reduced error rate | 3.2% defect rate | 0.8% defect rate | Quality system reports | QA Lead | 3 months post-launch |
 | Cost saving | $1.2M headcount cost | $800K headcount cost | Finance GL | CFO | 12 months post-launch |
@@ -744,7 +746,7 @@ The benefit gap is the difference between benefits promised in the business case
 ### 11.3 Lagging vs. Leading Indicators
 
 | Type | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Leading** | Predicts future benefit realisation; measurable early | User adoption rate, training completion, data quality score |
 | **Lagging** | Confirms benefit was realised; measurable after the fact | Revenue growth, cost reduction, customer satisfaction score |
 
@@ -871,7 +873,7 @@ A mid-sized discrete manufacturer with $800M revenue, 3,200 employees across 6 p
 ### The $50M Portfolio
 
 | Initiative | RGT | CapEx/OpEx | Year 1 | Year 2 | Year 3 | Total | Benefit |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | ERP cloud migration | Transform | Mixed 60/40 | $6M | $5M | $3M | $14M | $2.5M/yr run saving |
 | IoT sensors + MES integration | Transform | CapEx/OpEx | $3M | $4M | $2M | $9M | $1.8M quality saving |
 | Security uplift (Zero Trust) | Run | OpEx | $1.5M | $1M | $0.8M | $3.3M | Risk mitigation |
@@ -888,7 +890,7 @@ A mid-sized discrete manufacturer with $800M revenue, 3,200 employees across 6 p
 ### RGT Split
 
 | Category | Amount | % |
-|---|---|---|
+| --- | --- | --- |
 | Run | $7.8M | 15% |
 | Grow | $15.4M | 31% |
 | Transform | $30.5M | 60% |
@@ -974,7 +976,7 @@ When advising clients on technology investment strategy, your value is in the fr
 Rate yourself: 0 = not yet / 1 = developing / 2 = confident / 3 = can teach
 
 | # | Skill / Knowledge Area | Rating |
-|---|---|---|
+| --- | --- | --- |
 | 1 | I can explain the strategic rationale for technology investment to a non-technical executive | |
 | 2 | I can define CapEx and OpEx and give 5 examples of each in a technology context | |
 | 3 | I can explain why cloud shifts spend from CapEx to OpEx and why CFOs generally prefer this | |
@@ -997,6 +999,7 @@ Rate yourself: 0 = not yet / 1 = developing / 2 = confident / 3 = can teach
 | 20 | I can present a 3-year technology investment portfolio at the RGT level with strategic narrative for a CFO audience | |
 
 **Scoring Guide:**
+
 - 0–20: Developing foundation — work through sections 1–5 again with practice examples
 - 21–40: Practitioner — apply these frameworks in your next investment or planning cycle
 - 41–50: Advanced — seek opportunities to lead portfolio or investment governance processes

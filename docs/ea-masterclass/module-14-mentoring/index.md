@@ -46,7 +46,7 @@ None of these models are taught in technical certification programmes. They are 
 ### The Mental Model Shift
 
 | Dimension | Technical Architect Mindset | Enterprise Architect Mindset |
-|-----------|----------------------------|------------------------------|
+| ----------- | ---------------------------- | ------------------------------ |
 | Primary question | What is the best solution? | What is the best outcome? |
 | Success metric | Technical correctness | Business value delivered |
 | Time horizon | This sprint, this release | 3–5 years |
@@ -80,7 +80,7 @@ What is the recommended action? Not a menu of options (though options have their
 This glossary covers the complete set of acronyms used across all 14 modules. Use it as a reference throughout your practice.
 
 | Acronym | Full Form | Context |
-|---------|-----------|---------|
+| --------- | ----------- | --------- |
 | ADR | Architecture Decision Record | Governance — formal record of a significant architecture decision, its rationale, and consequences |
 | AI | Artificial Intelligence | Technology — broad field covering machine learning, NLP, computer vision, and related techniques |
 | AMF | Architecture Maturity Framework | Assessment — model for evaluating architectural capability across dimensions |
@@ -178,7 +178,7 @@ This glossary covers the complete set of acronyms used across all 14 modules. Us
 The enterprise architecture career ladder has four primary levels. Each level represents not just an increase in seniority but a qualitative change in how the architect thinks, what they focus on, and how they create value.
 
 | Dimension | Junior EA | Senior EA | Principal EA | Chief EA |
-|-----------|-----------|-----------|--------------|----------|
+| ----------- | ----------- | ----------- | -------------- | ---------- |
 | Scope of influence | Team / project | Product / capability | Domain (e.g., data, security) | Enterprise-wide |
 | Time horizon | Current quarter | 1–2 years | 2–3 years | 3–5 years |
 | Executive engagement | Rarely, via manager | Occasionally, with preparation | Regularly, independently | Continuously, at C-suite level |
@@ -195,6 +195,7 @@ The enterprise architecture career ladder has four primary levels. Each level re
 **Scope of Influence**: Team and project level. The Junior EA supports existing architecture initiatives rather than leading them.
 
 **Typical Activities and Deliverables**:
+
 - Creating and maintaining architecture diagrams (current state, component, sequence)
 - Conducting technology assessments and vendor research
 - Writing sections of architecture documents under supervision
@@ -222,6 +223,7 @@ The enterprise architecture career ladder has four primary levels. Each level re
 **Scope of Influence**: Product and capability level. The Senior EA owns a technology domain or product area and drives its architecture strategy.
 
 **Typical Activities and Deliverables**:
+
 - Owning technology strategy for a product, platform, or capability
 - Writing full architecture assessments and recommendations
 - Presenting to programme boards and product leadership
@@ -250,6 +252,7 @@ The enterprise architecture career ladder has four primary levels. Each level re
 **Scope of Influence**: Domain or programme level. The Principal EA shapes the architecture of a major domain (data, security, integration, AI) or leads a cross-cutting architecture programme.
 
 **Typical Activities and Deliverables**:
+
 - Owning domain architecture strategy (3-year roadmap)
 - Leading investment business cases end-to-end
 - Driving cross-domain architecture decisions
@@ -278,6 +281,7 @@ The enterprise architecture career ladder has four primary levels. Each level re
 **Scope of Influence**: Enterprise-wide. The Chief EA shapes the technology and architecture strategy of the entire organisation.
 
 **Typical Activities and Deliverables**:
+
 - Owning the Enterprise Architecture strategy, framework, and roadmap
 - Advising the board and C-suite on technology investment, risk, and capability
 - Setting architecture principles and governance standards
@@ -420,7 +424,7 @@ The following matrix defines observable behaviours across 20 competency areas an
 - **Thought Leader (5)**: Advances the discipline; recognised externally; shapes organisational practice
 
 | Competency | Awareness | Foundation | Proficiency | Expert | Thought Leader |
-|------------|-----------|------------|-------------|--------|----------------|
+| ------------ | ----------- | ------------ | ------------- | -------- | ---------------- |
 | **Business Architecture** | Can define business capabilities and value streams | Maps capabilities to strategy; participates in TOM design | Independently designs business capability models | Leads enterprise-wide capability mapping; advises on TOM | Authors frameworks; speaks at industry events |
 | **Financial Literacy** | Understands NPV, ROI, CapEx/OpEx | Can read a business case; understands basic financial ratios | Builds TCO models and business cases independently | Leads investment committee presentations; builds scenario models | Advises CFO; designs financial governance frameworks |
 | **Technical Architecture** | Understands core patterns (SOA, microservices, event-driven) | Designs solutions within established patterns | Independently selects and justifies patterns for complex systems | Defines architectural patterns and standards for the enterprise | Contributes to industry standards; recognised technical authority |
@@ -453,7 +457,7 @@ This plan is designed for a technical architect making the transition to enterpr
 **Goal**: Understand the organisation, its portfolio, and the EA function.
 
 | Activity | Output |
-|----------|--------|
+| ---------- | -------- |
 | Read the current Enterprise Architecture strategy document | Summary of current-state architecture and roadmap |
 | Read the last three ARB decision records | Understanding of governance patterns and current issues |
 | Review the organisation's strategy document and annual report | Summary of top 3 strategic priorities |
@@ -471,7 +475,7 @@ This plan is designed for a technical architect making the transition to enterpr
 **Goal**: Understand how decisions are actually made in this organisation.
 
 | Activity | Output |
-|----------|--------|
+| ---------- | -------- |
 | Attend one full ARB meeting as an observer | Notes on decision-making patterns, key participants, common objections |
 | Attend one Investment Committee or equivalent | Notes on how business cases are evaluated |
 | Attend one programme steering committee | Notes on how programmes report progress and manage risk |
@@ -488,7 +492,7 @@ This plan is designed for a technical architect making the transition to enterpr
 **Goal**: Begin creating value through collaborative contribution.
 
 | Activity | Output |
-|----------|--------|
+| ---------- | -------- |
 | Co-author one section of a current business case or architecture document | Completed section, reviewed and accepted by a senior EA |
 | Produce a technology landscape summary for one domain | One-page landscape document |
 | Conduct one vendor evaluation using the AI Technology Investment Guide | Completed vendor scoring matrix |
@@ -501,7 +505,7 @@ This plan is designed for a technical architect making the transition to enterpr
 **Goal**: Own an architecture assessment independently.
 
 | Activity | Output |
-|----------|--------|
+| ---------- | -------- |
 | Independently produce an architecture assessment for one system or capability | Architecture assessment document (reviewed by senior EA) |
 | Lead one stakeholder discovery session | Discovery notes and insight summary |
 | Produce one ADR for a decision in your area | Completed and approved ADR |
@@ -514,7 +518,7 @@ This plan is designed for a technical architect making the transition to enterpr
 **Goal**: Draft a small proposal with mentoring support.
 
 | Activity | Output |
-|----------|--------|
+| ---------- | -------- |
 | Identify one architecture opportunity (improvement, risk, or new capability) | Opportunity brief (one page) |
 | Draft a short proposal (3–5 pages) using the Executive Business Case Template | Draft proposal reviewed by mentor |
 | Prepare a 5-minute verbal pitch for the proposal | Verbal pitch rehearsed with mentor |
@@ -526,7 +530,7 @@ This plan is designed for a technical architect making the transition to enterpr
 **Goal**: Deliver your first EA-level presentation to an executive audience.
 
 | Activity | Output |
-|----------|--------|
+| ---------- | -------- |
 | Finalise the proposal based on mentor feedback | Final proposal document |
 | Present to at least one Director or VP-level audience | Presentation delivered |
 | Request structured feedback from your mentor and the audience | Written feedback notes |
@@ -676,41 +680,53 @@ Prepare and deliver the investment approval pitch.
 ## Reflection Questions Across All Modules
 
 ### Module 1 — EA Foundations
+
 - In what ways does your current role already involve enterprise architecture thinking?
 - What is the biggest gap between how your organisation currently uses EA and how it could?
 
 ### Module 2 — AI Strategy
+
 - What would an AI strategy document for your current organisation look like at a high level?
 - What is the single most important AI capability your organisation is missing?
 
 ### Module 5 — AI Maturity
+
 - How would you rate your current organisation's AI maturity, and what is the most critical constraint?
 
 ### Module 6 — Business Cases
+
 - Think of a proposal that failed in your organisation. Which of the 11 business case sections was weakest?
 
 ### Module 7 — Proposals
+
 - What is your natural writing style, and how does it need to adapt for executive audiences?
 
 ### Module 8 — Financial Models
+
 - What financial concepts have you found most difficult to apply in practice, and why?
 
 ### Module 9 — Architecture Design
+
 - Describe a design decision you made that you would make differently with EA thinking.
 
 ### Module 10 — Governance
+
 - What governance dysfunction have you observed, and what was its root cause?
 
 ### Module 11 — Executive Presentations
+
 - What is the most common piece of feedback you receive on your presentations?
 
 ### Module 12 — AI Use Cases
+
 - What is one AI use case in your industry that you believe is underestimated?
 
 ### Module 13 — Case Studies
+
 - Which of the case study engagement phases would have been most challenging for you personally?
 
 ### Module 14 — Mentoring & Mastery
+
 - Who in your career has most influenced your professional development, and what specifically did they do?
 - What kind of mentor do you want to be, and what would you need to develop to become that person?
 

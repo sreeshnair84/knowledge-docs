@@ -24,7 +24,7 @@ covers_version: \"as of 2026-07-10\"
 ### Current Models
 
 | Model | API Alias | Tier | GA Date | Context | Max Output | Input $/1M | Output $/1M | Best For |
-|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Claude Fable 5 | `claude-fable-5` | Frontier | Jun 9, 2026 | 1M tokens | 128K tokens | $10.00 | $50.00 | Long-horizon agents, frontier reasoning, multi-domain synthesis |
 | Claude Mythos 5 | `claude-mythos-5` | Frontier (Glasswing) | Jun 9, 2026 | 1M tokens | 128K tokens | $10.00 | $50.00 | Same as Fable 5; Project Glasswing access only |
 | Claude Opus 4.8 | `claude-opus-4-8` | High-Capability | 2025 | 1M tokens | 128K tokens | $5.00 | $25.00 | Complex agentic coding, enterprise work, deep reasoning |
@@ -36,7 +36,7 @@ covers_version: \"as of 2026-07-10\"
 ### Legacy Models (Still Available)
 
 | Model | API Alias | Context | Max Output | Input $/1M | Thinking |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Claude Opus 4.7 | `claude-opus-4-7` | 1M tokens | 128K tokens | $5.00/$25.00 | Adaptive |
 | Claude Opus 4.6 | `claude-opus-4-6` | 1M tokens | 128K tokens | $5.00/$25.00 | Both (adaptive + extended) |
 | Claude Sonnet 4.6 | `claude-sonnet-4-6` | 1M tokens | 128K tokens | $3.00/$15.00 | Both (adaptive + extended) |
@@ -172,7 +172,7 @@ print(response.content[0].text)
 ### Validated Agentic Capabilities
 
 | Task Type | Capability |
-|---|---|
+| --- | --- |
 | Browser automation | Navigate, click, fill forms, extract structured page data |
 | Terminal operations | Run shell commands, parse output, iterate on results |
 | Multi-step code generation | Plan → implement → test → fix loop autonomously |
@@ -201,7 +201,7 @@ Claude Opus 4.8 (`claude-opus-4-8`) is Anthropic's recommended model for **compl
 ### Key Use Cases
 
 | Domain | Example Task |
-|---|---|
+| --- | --- |
 | Complex coding | Refactoring large codebases, architecture analysis, multi-file generation |
 | Agentic engineering | Orchestrating sub-agents, long-horizon code tasks |
 | Deep reasoning | Multi-hop inference over long technical documents |
@@ -237,12 +237,12 @@ for block in response.content:
 ### When to Use Opus 4.8 vs. Fable 5
 
 | Factor | Use Opus 4.8 | Use Fable 5 |
-|---|---|---|
+| --- | --- | --- |
 | Cost sensitivity | Moderate ($5/$25/M) | Higher cost justified by quality ($10/$50/M) |
 | Refusal risk | Standard stop reasons | Add fallback logic for `refusal` stop reason |
 | Retention policy | Standard or zero-retention | 30-day retention required |
 | Task complexity | Complex coding, enterprise work | Frontier reasoning, multi-domain synthesis |
-| Both support | 1M context, 128K output, adaptive thinking |  |
+| Both support | 1M context, 128K output, adaptive thinking | |
 
 ### Legacy Opus Models
 
@@ -313,7 +313,7 @@ Claude Haiku 4.5 (`claude-haiku-4-5`) is the **speed-optimized tier** — the fa
 ### Haiku 4.5 Best Use Cases
 
 | Use Case | Why Haiku Fits |
-|---|---|
+| --- | --- |
 | Text classification | Binary or multi-class decisions at scale |
 | Entity extraction | Named entity recognition from structured text |
 | Intent detection | User query routing in chatbots |
@@ -351,7 +351,7 @@ for block in response.content:
 At 10M daily classifications (500 input + 100 output tokens per request):
 
 | Model | Cost/Request | Daily Cost | Monthly Cost |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `claude-haiku-4-5` | ~$0.0010 | ~$10,000 | ~$300,000 |
 | `claude-sonnet-4-6` | ~$0.0030 | ~$30,000 | ~$900,000 |
 | `claude-sonnet-5` (intro) | ~$0.0020 | ~$20,000 | ~$600,000 |
@@ -401,7 +401,7 @@ START: What does your task require?
 ### Quick Reference Card
 
 | Task | Primary Choice | Fallback |
-|---|---|---|
+| --- | --- | --- |
 | Novel research synthesis | `claude-fable-5` | `claude-opus-4-8` |
 | Complex agentic coding | `claude-opus-4-8` | `claude-sonnet-5` |
 | Agentic automation (production) | `claude-sonnet-5` | `claude-opus-4-8` |
@@ -422,7 +422,7 @@ START: What does your task require?
 ### Standard API Pricing
 
 | Model | Input $/1M | Output $/1M | Cache Write $/1M | Cache Read $/1M |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `claude-fable-5` | $10.00 | $50.00 | $12.50 | $1.00 |
 | `claude-mythos-5` | $10.00 | $50.00 | $12.50 | $1.00 |
 | `claude-opus-4-8` | $5.00 | $25.00 | $6.25 | $0.50 |
@@ -436,7 +436,7 @@ START: What does your task require?
 ### Batch API Pricing (50% Discount)
 
 | Model | Batch Input $/1M | Batch Output $/1M |
-|---|---|---|
+| --- | --- | --- |
 | `claude-fable-5` | $5.00 | $25.00 |
 | `claude-mythos-5` | $5.00 | $25.00 |
 | `claude-opus-4-8` | $2.50 | $12.50 |
@@ -466,7 +466,7 @@ START: What does your task require?
 ### Context and Output Limits by Model
 
 | Model | Context Window | Max Output | Tokenizer |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `claude-fable-5` | 1M tokens (~555K words) | 128K tokens | New (Opus 4.7+) |
 | `claude-mythos-5` | 1M tokens | 128K tokens | New (Opus 4.7+) |
 | `claude-opus-4-8` | 1M tokens | 128K tokens | New (Opus 4.7+) |
@@ -482,7 +482,7 @@ START: What does your task require?
 ### What Fits in 1 Million Tokens
 
 | Content Type | Approximate Token Count |
-|---|---|
+| --- | --- |
 | Novel (400 pages) | ~100K tokens |
 | Medium Python codebase (50 files) | ~150K–300K tokens |
 | Legal contract bundle (50 contracts) | ~100K–200K tokens |
@@ -494,7 +494,7 @@ START: What does your task require?
 ### When to Chunk vs. Send Full Document
 
 | Context Size | Approach |
-|---|---|
+| --- | --- |
 | < 10K tokens | Send full document in a single request to any model |
 | 10K–200K tokens | Single request; Haiku 4.5 sufficient for simple tasks |
 | 200K–1M tokens | Single request; use Opus 4.8, Sonnet 5, Fable 5, or Mythos 5 |
@@ -586,7 +586,7 @@ START: What does your task require?
 ## 10. Platform Availability Matrix
 
 | Model | Anthropic API | Claude Platform on AWS | Amazon Bedrock | Google Cloud Vertex AI | Microsoft Azure AI Foundry |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | `claude-fable-5` | Yes | Yes | Yes | Yes | Yes |
 | `claude-mythos-5` | Glasswing only | Glasswing only | Glasswing only | Glasswing only | Glasswing only |
 | `claude-opus-4-8` | Yes | Yes | Yes | Yes | Yes |
@@ -637,7 +637,7 @@ START: What does your task require?
 ### Claude 3.x → Claude 4.x
 
 | Change | Impact | Required Action |
-|---|---|---|
+| --- | --- | --- |
 | New model IDs | API calls fail with old IDs | Update all hardcoded model strings |
 | System prompt behavior | 4.x follows instructions more precisely | Review permissive system prompts |
 | Refusal behavior | 4.x more task-focused; fewer spurious refusals | Regression test edge cases |
@@ -647,7 +647,7 @@ START: What does your task require?
 ### Opus 4.6 / Sonnet 4.6 → Opus 4.7 / Opus 4.8 / Sonnet 5
 
 | Change | Impact | Required Action |
-|---|---|---|
+| --- | --- | --- |
 | **New tokenizer** | ~30% more tokens for same text | Re-count all token budgets with `count_tokens` |
 | **`budget_tokens` removed** | Passing extended thinking params returns 400 on Opus 4.7/4.8 | Replace `\{"type": "enabled", "budget_tokens": N}` with `output_config=\{"effort": "..."}` |
 | **`xhigh` effort** (Opus 4.7+) | New thinking depth level available | Optionally adopt for maximum thinking depth |
@@ -656,7 +656,7 @@ START: What does your task require?
 ### Any Model → Claude Fable 5 / Mythos 5
 
 | Change | Impact | Required Action |
-|---|---|---|
+| --- | --- | --- |
 | **Thinking always on** | Cannot disable; `budget_tokens` rejected with HTTP 400 | Remove `\{"type": "disabled"}` or `budget_tokens`; use `output_config.effort` |
 | **`refusal` stop reason** | HTTP 200 with empty content; not billed | Add `stop_reason == "refusal"` check; add server-side fallback |
 | **30-day retention required** | Zero-retention orgs receive HTTP 400 | Verify org retention configuration |
@@ -708,7 +708,7 @@ for prompt in PRODUCTION_PROMPTS:
     This table reflects officially announced status as of July 2026. Always check [Anthropic model deprecations](https://docs.anthropic.com/en/about-claude/model-deprecations) for the authoritative schedule.
 
 | Model | Status | Migrate To |
-|---|---|---|
+| --- | --- | --- |
 | Claude 3 Haiku | **Retired** (Apr 19, 2026) | `claude-haiku-4-5` |
 | Claude 3.7 Sonnet | **Retired** (Feb 19, 2026) | `claude-sonnet-5` |
 | Claude 3.5 Haiku | **Retired** (Feb 19, 2026) | `claude-haiku-4-5` |
@@ -958,7 +958,7 @@ As of 2026, **Sonnet and Haiku rate limits match Opus at every usage tier**. Rat
 ### Usage Tier Structure
 
 | Tier | RPM (all models) | Input TPM | How to Advance |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Free | 5 RPM | 25K TPM | Default new account |
 | Tier 1 | 50 RPM | 50K TPM | $5 cumulative spend |
 | Tier 2 | 1,000 RPM | 160K TPM | $500 cumulative spend |

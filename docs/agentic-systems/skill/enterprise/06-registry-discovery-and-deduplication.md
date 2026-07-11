@@ -59,7 +59,7 @@ This three-registry pattern (capability catalog on top, skill/tool/agent registr
 ## 6.3 Discovery mechanisms, layered
 
 | Mechanism | What it's good at | Weakness | When to use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Keyword/metadata search** | Fast, cheap, exact-name lookups | Misses semantically-equivalent-but-differently-worded capabilities | First pass, IDE/CLI tooling |
 | **Semantic/embedding search** | Finds "stop a shipment" ≈ "cancel an order" | Requires embedding infra + periodic reindexing; can surface false positives | Registry search UI, agent-time discovery (Google ADK's `search_skills(query)` performs semantic or keyword query against the registry) |
 | **Taxonomy / capability graph** | Human-navigable, supports governance rollups ("all payment-related tools") | Requires upfront taxonomy design and maintenance discipline | Compliance reviews, capability catalogs |

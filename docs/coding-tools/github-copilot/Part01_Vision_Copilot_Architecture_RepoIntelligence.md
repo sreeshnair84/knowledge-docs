@@ -13,11 +13,14 @@ covers_version: \"as of 2026-07-10\"
 # AI Vision, Copilot Architecture &
 
 ## Part 01–03  Ai Platform Foundations
+
 AI Vision, Copilot Architecture &
 Repository Intelligence
 How GitHub is becoming an AI-native engineering platform — architecture and
 verified mechanics
+
 ## Topics Covered
+
 › GitHub/Microsoft/OpenAI AI Strategy
 › Copilot → Platform Evolution
 › Human-in-the-Loop Philosophy
@@ -48,7 +51,9 @@ them.
 ■ CONTESTED / RECENT — Recent or disputed policy areas — verify directly with GitHub before relying on this
 
 PART 1 — GitHub's AI Vision
+
 ### 1.1 From Autocomplete to Platform
+
 GitHub Copilot launched in 2021 as an inline code-completion tool. Five years later, the same lineage of product
 writes code from issue descriptions, reviews pull requests with repository-wide context, runs terminal commands to
 fix its own build errors, and pushes draft PRs without a human present. This is a genuine architectural transition,
@@ -79,7 +84,9 @@ Asynchronous, cloud-resident
 Issue → PR without IDE open
 ✓ VERIFIED — Capability generation dates per GitHub Blog / VS Code Blog changelog entries (Agent Mode GA April
 2025; Coding Agent GA September 2025, announced at Microsoft Build May 2025)
+
 ### 1.2 Why GitHub Is Investing Heavily in AI
+
 Several structural factors explain the scale of investment. First, distribution: GitHub already hosts the artifact AI
 coding tools need most — source code, issues, PRs, and CI history — at a scale (hundreds of millions of
 repositories) no competitor can replicate. Second, the Microsoft/Azure/OpenAI relationship gives GitHub privileged
@@ -89,12 +96,17 @@ Codex CLI all compete directly for developer mindshare, and GitHub's response ha
 itself — not just one IDE extension — the unit of competition.
 ■ INFERRED — The strategic rationale (distribution moat, Azure capacity advantage, competitive response to
 Cursor/Claude Code) is reasoned from public market structure and is not a verbatim GitHub strategy statement.
+
 ### 1.3 Relationship Between GitHub, Microsoft, Azure AI, and OpenAI
+
 GitHub is a wholly owned Microsoft subsidiary. Model serving for Copilot runs through Microsoft Azure
 infrastructure, including a dedicated Azure-hosted proxy layer that sits between the editor/CLI client and the
 underlying model providers.
+
 # Verified architecture — request path (per Microsoft Community Hub
-# technical breakdown of Copilot security controls):
+
+# technical breakdown of Copilot security controls)
+
 IDE / CLI / Web client
 
 ■
@@ -112,6 +124,7 @@ Model provider backend
 ■
 ▼
 Response → post-inference filters
+
 - Public-code duplicate-detection filter
 - Vulnerability/insecure-pattern filter (hardcoded creds, SQLi)
 ■
@@ -125,7 +138,9 @@ Claude Sonnet 4.6, Claude Opus 4.6, Gemini 3 Pro, and Grok Code Fast 1, with an 
 generally available across all plans, that dynamically picks the best model for each task and offers a discount on
 premium request multipliers. This multi-model posture is a deliberate differentiator from single-vendor competitors
 and reduces GitHub's dependence on any one upstream lab.
+
 ### 1.4 How AI Changes the Software Development Lifecycle
+
 SDLC stage
 Pre-AI
 AI-augmented (current)
@@ -151,7 +166,9 @@ Modern engineering work rarely lives in a single file: a single feature request 
 models, repositories, migrations, tests, documentation, and deployment strategy, and GitHub's own guidance
 frames agent mode as a partner in system design, refactoring, and multi-file coordination rather than a
 replacement for engineering judgment.
+
 ### 1.5 Human-in-the-Loop Philosophy
+
 GitHub's public documentation and product design consistently frame AI as augmentation, not replacement, with
 explicit checkpoints for human review.
  Generated code is not guaranteed to be secure even when syntactically correct; users are directed to apply
@@ -165,7 +182,9 @@ a comment, and comments from users without write access are never presented to t
 actual mitigations against prompt-injection-driven misuse (see Part 11).
 
 PART 2 — Copilot Architecture
+
 ### 2.1 Surface Inventory
+
 Surface
 Mode
 Where it runs
@@ -196,25 +215,40 @@ GitHub.com backend
 Repo-context-aware PR review
 ✓ VERIFIED — Surface list and modes per GitHub Blog, VS Code Blog, and GitHub Docs changelog entries through
 early-mid 2026
+
 ### 2.2 Agent Mode — The Orchestration Loop
+
 Agent mode operates in a more autonomous and dynamic manner than chat: to process a request, Copilot loops
 over determining relevant context and files, offering both code changes and terminal commands, and monitoring
 the correctness of edits and terminal/test output, iterating to remediate issues.
+
 # Verified agent-mode loop (per GitHub Blog "Agent mode 101"
-# and VS Code Blog "Introducing Copilot agent mode"):
+
+# and VS Code Blog "Introducing Copilot agent mode")
+
 LOOP:
+
 ## 1. Receive natural-language prompt
-## 2. Backend system prompt augments the request with:
+
+## 2. Backend system prompt augments the request with
+
 - the user's query
 - a summarized structure of the workspace
 - machine/environment context
 - tool descriptions (file ops, terminal, test runner, etc.)
+
 ## 3. Model proposes next action: file edit(s) and/or terminal command(s)
+
 ## 4. Runtime executes the proposed action
+
 ## 5. Runtime monitors for: syntax errors, terminal output, test
+
 results, build errors
+
 ## 6. If errors found → feed back into model → GOTO 3
+
 ## 7. If task satisfied or iteration budget exhausted → present diff
+
 for human review (every tool call is shown in UI; terminal
 commands require approval; rich undo is supported)
 ✓ VERIFIED — Loop structure, system-prompt augmentation, and the determine→edit→monitor→iterate cycle, per
@@ -225,6 +259,7 @@ prompt/description updates and observed real-world model behavior, and that diff
 Claude Sonnet) exhibit different tool-use behavior under a similar system prompt. Notably, the VS Code team has
 stated they prefer Claude Sonnet over GPT-4o for their own internal Copilot agent-mode use, citing significant
 functional improvements when testing Claude 3.7 Sonnet specifically.
+
 ### 2.3 Coding Agent (Cloud) Lifecycle
 
 The coding agent starts work when a user assigns a GitHub issue to Copilot or asks it to begin from Copilot Chat in
@@ -232,20 +267,35 @@ VS Code; as it works, it pushes commits to a draft pull request, and progress ca
 logs. It operates by spinning up a secure, fully customizable development environment powered by GitHub Actions
 — the same CI/CD compute platform that already executes more than 40 million jobs daily across GitHub-hosted
 and self-hosted runners.
-# Verified coding-agent lifecycle:
+
+# Verified coding-agent lifecycle
+
 ## 1. TRIGGER: issue assigned to Copilot, or PR comment/Chat message
+
 ## 2. ENVIRONMENT: ephemeral dev environment provisioned via
+
 GitHub Actions (customizable: install steps, secrets, MCP servers)
+
 ## 3. CONTEXT GATHERING: agent reads the issue + linked issues, explores
+
 past PRs in the SAME repository via built-in GitHub MCP server
+
 ## 4. PLANNING: agent produces an implementation plan
+
 ## 5. EXECUTION: explores code, edits files, runs tests/linters, iterates
+
 ## 6. SELF-REVIEW (added 2026): agent runs Copilot code review against
+
 its own diff before opening the PR, iterates on findings
+
 ## 7. SECURITY SWEEP: CodeQL, secret scanning, and dependency analysis
+
 run automatically against newly generated code
+
 ## 8. PR OPENED: exactly one PR per assigned issue; requests human review
+
 ## 9. ITERATION: human leaves PR review comments → agent iterates
+
 (agent cannot be assigned to an existing PR created by a human)
 ✓ VERIFIED — Full lifecycle including self-review and automated security sweep per GitHub Docs 'Responsible use
 of GitHub Copilot cloud agent' and GitHub Blog 'What's new with GitHub Copilot coding agent' (Feb 2026)
@@ -256,7 +306,9 @@ pull request created by a human, it always starts from the repository's default 
 making it unlikely to succeed at fixing purely visual bugs.
 ■ These constraints are security and reliability boundaries, not just product limitations. The single-repository scope in
 particular limits blast radius if the agent is compromised via prompt injection (see Part 11).
+
 ### 2.4 Latency, Streaming, and Token Budgeting
+
 Completions use a separate, lightweight, speed-optimized model from the frontier models available in chat and
 agent mode — this is a deliberate latency/quality tradeoff: inline ghost-text must render in well under a second to
 feel responsive, while chat and agent responses tolerate multi-second latency in exchange for stronger reasoning.
@@ -276,11 +328,15 @@ each task and includes roughly a 10% discount on premium request multipliers as 
 manual model pinning.
 
 PART 3 — Repository Intelligence
+
 ### 3.1 The Context Problem
+
 A frontier model's context window — even at the 1M-token scale now offered by some providers — cannot hold an
 enterprise monorepo with millions of lines of code. Repository intelligence is the layer that decides, for any given
 prompt, which small slice of the repository is actually relevant, and assembles it into the model's context.
+
 ### 3.2 GitHub Copilot's Documented Multi-Strategy Retrieval
+
 Reverse-engineering of the open-source VS Code Copilot Chat repository reveals a layered, cascading retrieval
 architecture combining multiple distinct strategies, each with different trade-offs between semantic understanding,
 speed, and offline capability, so that no matter the size of the project or the state of the network connection, the
@@ -303,25 +359,38 @@ Workspace size gated (see below)
 Fallback heuristics
 Open tabs, recently edited files, file structure
 Always available, least precise
+
 # Local Embeddings Search — documented constraints (inferred from
-# VS Code Copilot Chat source, per independent reverse-engineering):
+
+# VS Code Copilot Chat source, per independent reverse-engineering)
+
 Eligibility gates:
+
 - Fails outright above 750 files (default Copilot token)
 - Extends to 50,000 files with an upgraded Copilot token
 (after a one-time user prompt)
 - Requires a valid Copilot token to call the /embeddings/chunks API
 Indexing process:
-## 1. Check local SQLite cache for existing embeddings,
+
+## 1. Check local SQLite cache for existing embeddings
+
 keyed by file URI + content version
+
 ## 2. On cache miss: send file content to a chunking endpoint
+
 ## 3. Endpoint returns semantic chunks (~100–250 tokens each)
+
 with 512-dimensional embedding vectors
+
 ## 4. Store chunks + vectors in SQLite with aggressive
+
 performance pragmas for fast local similarity search
 ■ INFERRED — Chunk size (~100-250 tokens), vector dimensionality (512-d), and exact file-count gating thresholds
 are derived from independent source-code analysis of the VS Code Copilot Chat extension, not from GitHub's own
 published documentation.
+
 ### 3.3 GitHub's Verified Investment in Embedding Quality
+
 GitHub has explicitly and publicly documented investment in improving the embedding model that underlies
 retrieval. A new Copilot embedding model rolled out in 2025 made code search in VS Code faster, lighter on
 memory, and more accurate — delivering a 37.6% lift in retrieval quality, roughly 2x higher throughput, and an 8x
@@ -331,7 +400,9 @@ the right context — snippets, functions, tests, docs, and bugs that match deve
 the vector representations that retrieve semantically relevant content even when exact words do not match.
 ✓ VERIFIED — 37.6% retrieval-quality lift, ~2x throughput, 8x smaller index — figures published directly by GitHub's
 engineering blog (September 2025)
+
 ### 3.4 Historical Foundation — GitHub's Original Semantic Code
+
 Search Research
 GitHub's research into natural-language semantic code search predates Copilot: early work needed a
 representation not just for code but for short natural-language phrases such as docstring sentences, and after
@@ -342,7 +413,9 @@ restarts). This 2018-era research establishes that GitHub's investment in code-s
 embeddings is a long-running technical thread, not a Copilot-era invention.
 ✓ VERIFIED — GitHub Engineering Blog, 'Towards Natural Language Semantic Code Search' (2018) — describes
 GitHub's own historical semantic search R&D;
+
 ### 3.5 Symbol Indexing, AST, and Tree-sitter — Industry Context
+
 Tree-sitter (an incremental parsing library originally developed for GitHub's own code-navigation features)
 generates concrete syntax trees for source files across dozens of languages, and is the de facto industry-standard
 parser for building AST-based code intelligence — used by GitHub's own code navigation, and independently by
@@ -351,7 +424,9 @@ Neovim, many code-search tools, and most modern AI coding assistants for symbol-
 open-source project itself, the specific role tree-sitter plays inside current Copilot retrieval pipelines (vs. other
 parsing approaches) is not confirmed in GitHub's own Copilot architecture documentation and is inferred from
 tree-sitter's broader ecosystem role and GitHub's historical investment in it.
+
 ### 3.6 Cross-Reference, Dependency, and Ownership Graphs
+
 GitHub's product surface exposes several graph structures that plausibly feed AI context assembly, though the
 internal plumbing connecting them to Copilot's retrieval layer is not publicly specified in detail.
 Graph
@@ -369,7 +444,9 @@ Used for PR review routing (verified); use as AI context signal not publicly doc
 PR/Issue/Commit graph
 GraphQL API, timeline events
 Confirmed as Coding Agent context source within a single repo (verified, per Part 2.3)
+
 ### 3.7 Comparison: How Competitors Approach Repository
+
 Intelligence
 
 Tool

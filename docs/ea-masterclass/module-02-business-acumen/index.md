@@ -30,7 +30,7 @@ Before you can advise a business, you need to understand its financial logic. Ev
 A revenue model answers one question: *how does value exchanged with customers become money in the bank?*
 
 | Revenue Model | Description | Architecture Implication |
-|---|---|---|
+| --- | --- | --- |
 | **Product Sales** | Customer pays once for a unit. | System must handle transactions, returns, inventory. |
 | **Subscription (SaaS)** | Recurring fee for ongoing access. | Tenant isolation, billing cycles, churn analytics matter. |
 | **Usage-Based** | Pay per transaction, API call, or GB. | Metering infrastructure is revenue-critical, not a nice-to-have. |
@@ -75,7 +75,7 @@ Net Income (Net Profit)                       $1,500,000
 ### 1.4 Margin Types You Must Know
 
 | Margin | Formula | What It Tells You |
-|---|---|---|
+| --- | --- | --- |
 | **Gross Margin** | (Revenue - COGS) / Revenue | Efficiency of core product delivery |
 | **Operating Margin** | Operating Income / Revenue | Business efficiency including overhead |
 | **Net Margin** | Net Income / Revenue | Bottom-line profitability after all costs |
@@ -121,7 +121,7 @@ OKRs are the mechanism most modern organizations use to translate strategy into 
 Michael Porter's framework helps assess the competitive intensity of an industry and therefore the strategic priorities a business must pursue.
 
 | Force | Question | Architecture Implication |
-|---|---|---|
+| --- | --- | --- |
 | **Threat of New Entrants** | How easy is it for a startup to compete? | Speed of innovation and time-to-market become critical. API-first, modular architectures win. |
 | **Bargaining Power of Suppliers** | Can vendors dictate terms? | Avoid vendor lock-in; multi-cloud and open standards matter strategically. |
 | **Bargaining Power of Buyers** | Can customers switch easily? | Switching costs, data portability, and user experience become competitive weapons. |
@@ -133,7 +133,7 @@ Michael Porter's framework helps assess the competitive intensity of an industry
 The Business Model Canvas (Osterwalder & Pigneur) is a one-page visual that describes how a company creates, delivers, and captures value. All 9 blocks:
 
 | Block | Question It Answers | EA Relevance |
-|---|---|---|
+| --- | --- | --- |
 | **Customer Segments** | Who are we serving? | Data models and access patterns differ per segment. |
 | **Value Propositions** | What value do we deliver? | Core systems must directly enable or protect this. |
 | **Channels** | How do we reach customers? | Web, mobile, API, partner — architecture must support all active channels. |
@@ -152,6 +152,7 @@ The Business Model Canvas (Osterwalder & Pigneur) is a one-page visual that desc
 Porter's Value Chain decomposes a company into the discrete activities that create value. Understanding this is essential for identifying where technology creates competitive advantage versus where it simply enables baseline operations.
 
 **Primary Activities** (direct value creation):
+
 1. Inbound Logistics — receiving and storing inputs
 2. Operations — transforming inputs into products/services
 3. Outbound Logistics — delivering to customers
@@ -159,6 +160,7 @@ Porter's Value Chain decomposes a company into the discrete activities that crea
 5. Service — post-sale support and retention
 
 **Support Activities** (enable primary activities):
+
 - Firm Infrastructure (finance, legal, management)
 - Human Resource Management
 - Technology Development
@@ -171,7 +173,7 @@ Porter's Value Chain decomposes a company into the discrete activities that crea
 SWOT is often dismissed as superficial. Applied specifically to enterprise architecture, it becomes a practical tool:
 
 | | Helpful | Harmful |
-|---|---|---|
+| --- | --- | --- |
 | **Internal** | **Strengths**: Mature API platform, strong DevOps culture, unified data lake | **Weaknesses**: Legacy monolith, siloed data, low engineering velocity |
 | **External** | **Opportunities**: Cloud-native services that reduce build cost, AI tools that augment development | **Threats**: Vendor end-of-life for core platform, new regulation requiring data residency |
 
@@ -211,7 +213,7 @@ Q4: Cycle restarts
 A **business capability** is what an organization can do — not how it does it, not who does it, and not which system supports it. It is a stable, business-relevant ability.
 
 | Concept | Definition | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Capability** | *What* the business can do | Customer Credit Assessment |
 | **Process** | *How* it does it step by step | Credit check workflow: submit → verify → score → decide → notify |
 | **Function / Department** | *Who* does it | Risk Management team |
@@ -270,7 +272,7 @@ Once you have a map, you assess each capability on two dimensions:
 This produces a heat map with four quadrants:
 
 | | High Strategic Importance | Low Strategic Importance |
-|---|---|---|
+| --- | --- | --- |
 | **High Performance** | Protect & Maintain (green) | Rationalize or Outsource (yellow) |
 | **Low Performance** | Invest & Transform (red — urgent) | Accept or Defer (grey) |
 
@@ -309,7 +311,7 @@ These choices — not technology preferences — should determine your architect
 ### 4.2 The Four Operating Models
 
 | Model | Standardization | Integration | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Diversification** | Low | Low | Business units are largely independent. Each can choose its own processes and systems. |
 | **Coordination** | Low | High | Business units share data and customer information but keep their own processes. |
 | **Replication** | High | Low | Business units do the same things the same way but operate independently. |
@@ -349,7 +351,7 @@ Unification Model:
 ### 5.1 Structure Types and Their Technology Implications
 
 | Structure | Description | Technology Approval Pattern |
-|---|---|---|
+| --- | --- | --- |
 | **Functional** | Organized by discipline (Finance, Marketing, IT, Operations). | Central IT budget. Architecture approved through CIO. Clear authority. |
 | **Divisional** | Organized by product, geography, or customer segment. | Divisions have own IT budgets. Negotiation required for shared platforms. |
 | **Matrix** | Functional departments plus project/product overlays. | Dual reporting creates conflicting priorities. Architecture must satisfy multiple stakeholders. |
@@ -407,7 +409,7 @@ Level 3 — Digital Transformation: Create new value propositions and business m
 Every major technology wave — ERP, internet, mobile, cloud — was primarily about *efficiency* and *reach*. AI is different in three critical ways:
 
 | Dimension | Previous Tech | AI |
-|---|---|---|
+| --- | --- | --- |
 | **What it automates** | Routine, rule-based tasks | Judgment-based, pattern-recognition tasks |
 | **Who it affects** | Primarily operational staff | Knowledge workers, managers, professionals |
 | **Value driver** | Cost reduction, speed | Decision quality, personalization, discovery |
@@ -432,7 +434,7 @@ Every major technology wave — ERP, internet, mobile, cloud — was primarily a
 The single most powerful technique for connecting technology proposals to business value is the capability linkage map.
 
 | Business Capability | Strategic Importance | Current Performance | Supporting Systems | Investment Priority |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Customer Credit Assessment | High | Low | Legacy scoring engine (2008) | Critical — Invest |
 | Payment Processing | High | High | Modern payment gateway (2022) | Protect — Maintain |
 | Product Catalog Management | Medium | Low | Three disconnected systems | High — Consolidate |
@@ -448,7 +450,7 @@ This table immediately communicates to any business leader which technology inve
 **Translation table:**
 
 | Technical Statement | Business Translation |
-|---|---|
+| --- | --- |
 | "Reduce technical debt" | "Reduce the cost and time required to release new features" |
 | "Improve system resilience" | "Reduce revenue lost to outages (currently $X per hour)" |
 | "Implement API gateway" | "Enable integration with new partners in weeks, not months" |
@@ -478,7 +480,7 @@ Technical risks must be expressed in terms a business leader cares about. There 
 ### 8.1 Key Business KPIs and Their Technology Connections
 
 | KPI | Definition | Technology Lever |
-|---|---|---|
+| --- | --- | --- |
 | **Revenue Growth Rate** | % increase in revenue YoY | Platform reliability, new feature velocity, channel availability |
 | **Customer Acquisition Cost (CAC)** | Total sales & marketing spend / new customers | Marketing automation, attribution analytics, self-service onboarding |
 | **Customer Lifetime Value (CLV)** | Total revenue from a customer over their lifetime | Personalization, churn prediction, account management tooling |
@@ -494,7 +496,7 @@ Technical risks must be expressed in terms a business leader cares about. There 
 Use this table format to connect architecture decisions to business outcomes:
 
 | Architecture Decision | Affected KPI | Direction | Estimated Impact | Confidence |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Migrate to event-driven order processing | Cost per Transaction | Down | -15% | Medium |
 | Implement real-time inventory sync | Customer NPS | Up | +8 points | Low |
 | Consolidate customer data platform | CAC | Down | -12% | Medium |
@@ -513,7 +515,7 @@ Use this table format to connect architecture decisions to business outcomes:
 Use this to document and prioritize capabilities for architecture investment:
 
 | Capability | Level 1 Group | Strategic Importance (1–5) | Current Performance (1–5) | Gap Score | Enabling Systems | Owner | Recommended Action |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | Customer Credit Assessment | Risk Mgmt | 5 | 2 | 3 | Legacy Scorer v4.2 | Chief Risk Officer | Transform — replace system |
 | Payment Processing | Financial Ops | 5 | 5 | 0 | PaymentGW (2022) | CFO | Protect — no change |
 | Fraud Detection | Risk Mgmt | 5 | 3 | 2 | Rules engine + manual | Chief Risk Officer | Invest — add ML layer |
@@ -525,7 +527,7 @@ Use this to document and prioritize capabilities for architecture investment:
 ### 9.2 KPI-to-Architecture Mapping Table (Expanded)
 
 | Business Objective | KPI | Current Baseline | Target | Architecture Initiative | Investment | Timeline | Owner |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | Grow online revenue | Revenue Growth Rate | 8% YoY | 18% YoY | E-commerce platform modernization | $2.4M | 18 months | CTO + CMO |
 | Reduce cost of service | Cost per Transaction | $0.43 | $0.32 | Automate reconciliation pipeline | $600K | 6 months | CFO + CTO |
 | Improve customer loyalty | CLV | $1,200 | $1,550 | Unified customer data platform | $1.1M | 12 months | CDO + CMO |
@@ -626,7 +628,7 @@ As a consultant, business acumen is your competitive advantage over junior techn
 The EA team maps the e-commerce investment to the Business Model Canvas and Value Chain, identifying three capabilities with high strategic importance and low current performance:
 
 | Capability | Why Strategic | Current Performance | Gap |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Unified Inventory Visibility | Enables "buy online, ship from store" — a key differentiator | Low — 3 separate inventory systems with 4-hour lag | Critical |
 | Personalized Customer Experience | Drives repeat purchase and CLV improvement | Low — no personalization, one-size catalog | Critical |
 | Omnichannel Order Management | Allows returns across channels — top customer complaint | Low — online and store orders are separate systems | High |
@@ -634,7 +636,7 @@ The EA team maps the e-commerce investment to the Business Model Canvas and Valu
 ### Step 2: Map Capabilities to KPIs
 
 | Capability | KPI | Current Baseline | Projected Improvement |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Unified Inventory Visibility | Online order fulfillment rate | 78% | 93% |
 | Personalized Customer Experience | Customer Lifetime Value | $340 avg | $430 avg (+26%) |
 | Omnichannel Order Management | NPS score | 31 | 48 |

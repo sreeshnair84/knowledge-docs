@@ -42,7 +42,7 @@ series_index: "agentic-systems/skill/enterprise/index"
 ### 7.2 When should a Skill invoke another Skill vs. invoke Tools directly?
 
 | Situation | Choice |
-|---|---|
+| --- | --- |
 | The sub-procedure is itself reused by ≥2 parent skills | Invoke the shared sub-skill |
 | The sub-procedure is only ever used in this one context | Inline it as a step in this skill's own instructions; don't over-decompose |
 | The sub-procedure has its own distinct owner/compliance surface (e.g., a KYC check owned by Legal) | Invoke as a separate skill — this gives Legal independent versioning/audit control over just that piece |
@@ -83,7 +83,7 @@ Recommended structure (expands on file `02`'s anatomy section with authoring gui
 ### 7.5 Anti-patterns in instruction design
 
 | Anti-pattern | Why it hurts | Fix |
-|---|---|---|
+| --- | --- | --- |
 | **Very long prompts** | Degrades instruction-following, increases cost/latency, buries the important rules among the trivial | Use progressive disclosure — move edge cases to `references/*.md`, keep the core SKILL.md lean |
 | **Hidden business logic** | A rule embedded three paragraphs deep in prose is invisible to auditors and easy to silently violate | Extract compliance-critical logic into a deterministic workflow/tool with an explicit contract, referenced (not restated) by the skill |
 | **Conflicting instructions** | Two skills (or two sections of one skill) state contradictory rules; the model resolves the conflict unpredictably | Registry-level lint check for overlapping scope + contradictory keywords; require a single owner per policy domain |

@@ -14,17 +14,22 @@ Types: guide, certification, interview-questions, engagement-case-study,
 Exits non-zero if any check fails, printing every issue found (not just the
 first) so they can all be fixed in one pass.
 """
+
+import argparse
 import re
 import sys
-import argparse
 
 try:
     import yaml
 except ImportError:
-    yaml = None
+    yaml = None  # type: ignore[assignment]
 
 UNIVERSAL_FRONTMATTER = [
-    "title", "date_created", "last_reviewed", "status", "source_type",
+    "title",
+    "date_created",
+    "last_reviewed",
+    "status",
+    "source_type",
 ]
 
 # heading text is matched case-insensitively as a substring, so minor
@@ -47,11 +52,20 @@ TYPE_REQUIREMENTS = {
     },
     "engagement-case-study": {
         "required_headings": [
-            "executive summary", "client background", "business problem",
-            "constraints", "discovery transcript", "architecture workshops",
-            "technical debates", "executive reviews", "final architecture",
-            "delivery roadmap", "risks", "governance model",
-            "production rollout", "production incident",
+            "executive summary",
+            "client background",
+            "business problem",
+            "constraints",
+            "discovery transcript",
+            "architecture workshops",
+            "technical debates",
+            "executive reviews",
+            "final architecture",
+            "delivery roadmap",
+            "risks",
+            "governance model",
+            "production rollout",
+            "production incident",
         ],
         "extra_frontmatter": ["industry", "client_type", "engagement_period"],
         "word_range": (2500, 6000),
@@ -89,7 +103,7 @@ def parse_frontmatter(text):
     if not m:
         return None, text
     fm_text = m.group(1)
-    body = text[m.end():]
+    body = text[m.end() :]
     if yaml:
         try:
             fm = yaml.safe_load(fm_text) or {}
@@ -107,10 +121,13 @@ def parse_frontmatter(text):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("path")
-    ap.add_argument("--type", required=False, default=None,
-                     choices=list(TYPE_REQUIREMENTS.keys()),
-                     help="Override the type instead of reading it from the "
-                          "page's 'doc_type' frontmatter field.")
+    ap.add_argument(
+        "--type",
+        required=False,
+        default=None,
+        choices=list(TYPE_REQUIREMENTS.keys()),
+        help="Override the type instead of reading it from the page's 'doc_type' frontmatter field.",
+    )
     args = ap.parse_args()
 
     with open(args.path, encoding="utf-8") as f:
@@ -136,8 +153,7 @@ def main():
         )
     elif doc_type not in TYPE_REQUIREMENTS:
         issues.append(
-            f"'doc_type: {doc_type}' is not a recognized type. Must be one "
-            f"of: {', '.join(TYPE_REQUIREMENTS.keys())}."
+            f"'doc_type: {doc_type}' is not a recognized type. Must be one of: {', '.join(TYPE_REQUIREMENTS.keys())}."
         )
         doc_type = None
 

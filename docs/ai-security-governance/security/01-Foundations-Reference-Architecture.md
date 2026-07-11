@@ -8,57 +8,57 @@ source_type: converted-pdf
 source_file: "01-Foundations-Reference-Architecture.pdf"
 tags: ["ai-security", "governance", "enterprise-architecture", "agentic-ai"]
 ---
-# **Foundations & Reference Architecture** 
+# **Foundations & Reference Architecture**
 
-Security Frameworks, Agent Lifecycle Security, Runtime Isolation, and the AI Security Mesh 
+Security Frameworks, Agent Lifecycle Security, Runtime Isolation, and the AI Security Mesh
 
-**Document Code:** EASA-01 **Version:** 1.0 **Date:** June 2026 **Scope:** Domains 1, 4, 7 & 20 
+**Document Code:** EASA-01 **Version:** 1.0 **Date:** June 2026 **Scope:** Domains 1, 4, 7 & 20
 
-_Enterprise Agentic AI Security Architect (2026–2030) Master Research Program_ 
+*Enterprise Agentic AI Security Architect (2026–2030) Master Research Program*
 
-## **Table of Contents** 
+## **Table of Contents**
 
-## **Executive Summary** 
+## **Executive Summary**
 
-This volume establishes the architectural foundation for everything that follows in the program. Its purpose is to answer a question that most enterprises have not yet asked formally: what does it mean to apply security architecture discipline — the kind historically reserved for networks, applications, and identity systems — to a population of autonomous software agents that plan, reason, call tools, remember, and act with delegated authority? 
+This volume establishes the architectural foundation for everything that follows in the program. Its purpose is to answer a question that most enterprises have not yet asked formally: what does it mean to apply security architecture discipline — the kind historically reserved for networks, applications, and identity systems — to a population of autonomous software agents that plan, reason, call tools, remember, and act with delegated authority?
 
-The honest starting position is that the agentic AI ecosystem in 2026 looks like distributed computing did in roughly 2010 and like API security did in roughly 2015: powerful, proliferating faster than governance can track it, built on protocols still hardening in production, and increasingly the subject of real, disclosed incidents rather than theoretical risk. The OWASP Top 10 for Agentic Applications, published December 2025 and already in its first major revision cycle, documents real-world incidents — prompt-injection-driven data exfiltration in enterprise copilots, tool misuse in cloud coding assistants, remote code execution in autonomous frameworks, and memory poisoning in production assistants — that mirror, almost exactly, the early years of web application security. 
+The honest starting position is that the agentic AI ecosystem in 2026 looks like distributed computing did in roughly 2010 and like API security did in roughly 2015: powerful, proliferating faster than governance can track it, built on protocols still hardening in production, and increasingly the subject of real, disclosed incidents rather than theoretical risk. The OWASP Top 10 for Agentic Applications, published December 2025 and already in its first major revision cycle, documents real-world incidents — prompt-injection-driven data exfiltration in enterprise copilots, tool misuse in cloud coding assistants, remote code execution in autonomous frameworks, and memory poisoning in production assistants — that mirror, almost exactly, the early years of web application security.
 
-###### **Architectural premise of this program** 
+###### **Architectural premise of this program**
 
-An AI agent is not a feature of an application. It is a new class of execution principal — with its own identity, its own blast radius, its own lifecycle, and its own failure modes — that must be designed, governed, and operated with the same rigor as a privileged service account, and arguably more, because it can reason about how to circumvent the controls placed around it. 
+An AI agent is not a feature of an application. It is a new class of execution principal — with its own identity, its own blast radius, its own lifecycle, and its own failure modes — that must be designed, governed, and operated with the same rigor as a privileged service account, and arguably more, because it can reason about how to circumvent the controls placed around it.
 
-This volume covers four domains that together form the architectural spine of the program: established enterprise security architecture frameworks adapted for agents (Domain 1), the security model for the agent lifecycle itself (Domain 4), the runtime and isolation layer agents execute within (Domain 7), and the security mesh pattern that ties identity, policy, memory, and observability together at scale (Domain 20). Later volumes go deep on identity, MCP, A2A, governance, and operations; this volume gives the reader the scaffolding those deep dives hang on. 
+This volume covers four domains that together form the architectural spine of the program: established enterprise security architecture frameworks adapted for agents (Domain 1), the security model for the agent lifecycle itself (Domain 4), the runtime and isolation layer agents execute within (Domain 7), and the security mesh pattern that ties identity, policy, memory, and observability together at scale (Domain 20). Later volumes go deep on identity, MCP, A2A, governance, and operations; this volume gives the reader the scaffolding those deep dives hang on.
 
-## **Domain 1 — Security Architecture Frameworks for Agentic AI** 
+## **Domain 1 — Security Architecture Frameworks for Agentic AI**
 
-Enterprise security architecture did not get rebuilt from scratch for cloud, and it should not be rebuilt from scratch for agents. The discipline's existing frameworks — SABSA, TOGAF, and Zachman — remain the right starting vocabulary. What changes is the population of things being modeled: a SABSA business attribute now has to account for autonomous decision-making; a TOGAF ADM cycle now has to govern a fleet of agents that can be spun up by developers outside formal change control; a Zachman cell for "Who" now has to represent non-human principals that vastly outnumber human ones. 
+Enterprise security architecture did not get rebuilt from scratch for cloud, and it should not be rebuilt from scratch for agents. The discipline's existing frameworks — SABSA, TOGAF, and Zachman — remain the right starting vocabulary. What changes is the population of things being modeled: a SABSA business attribute now has to account for autonomous decision-making; a TOGAF ADM cycle now has to govern a fleet of agents that can be spun up by developers outside formal change control; a Zachman cell for "Who" now has to represent non-human principals that vastly outnumber human ones.
 
-### **1.1 SABSA for Agentic Systems** 
+### **1.1 SABSA for Agentic Systems**
 
-SABSA's core discipline — deriving security architecture from business attributes rather than from technology controls — translates directly to agents, but the attribute set needs extension. Traditional SABSA attributes (confidentiality, integrity, availability, accountability) remain necessary but not sufficient. Agentic systems require additional first-class attributes: 
+SABSA's core discipline — deriving security architecture from business attributes rather than from technology controls — translates directly to agents, but the attribute set needs extension. Traditional SABSA attributes (confidentiality, integrity, availability, accountability) remain necessary but not sufficient. Agentic systems require additional first-class attributes:
 
-- **Agency boundedness —** the degree to which an agent's autonomy is constrained to a defined, auditable action space, sometimes called "Least Agency" in current OWASP guidance: autonomy should be a feature an agent earns through demonstrated reliability, not a default it starts with. 
+- **Agency boundedness —** the degree to which an agent's autonomy is constrained to a defined, auditable action space, sometimes called "Least Agency" in current OWASP guidance: autonomy should be a feature an agent earns through demonstrated reliability, not a default it starts with.
 
-- **Reversibility —** whether an agent's actions can be undone, compensated, or contained before they propagate downstream (a database write versus a wire transfer versus a public API call each carry very different reversibility profiles). 
+- **Reversibility —** whether an agent's actions can be undone, compensated, or contained before they propagate downstream (a database write versus a wire transfer versus a public API call each carry very different reversibility profiles).
 
-- **Explainability under audit —** whether the chain of reasoning, tool calls, and memory reads that produced an action can be reconstructed after the fact for a regulator, auditor, or incident responder. 
+- **Explainability under audit —** whether the chain of reasoning, tool calls, and memory reads that produced an action can be reconstructed after the fact for a regulator, auditor, or incident responder.
 
-- **Trust derivability —** whether the agent's current trust level can be computed from verifiable signals (identity attestation, behavioral history, content provenance) rather than asserted once at deployment and never revisited. 
+- **Trust derivability —** whether the agent's current trust level can be computed from verifiable signals (identity attestation, behavioral history, content provenance) rather than asserted once at deployment and never revisited.
 
-The practical deliverable is an Agent Trust Level Derivation model: a scoring function that combines workload identity assurance, the sensitivity of the data and tools the agent can reach, its autonomy level (see Domain 14's autonomy-level taxonomy), and its historical behavioral conformance, and maps the result onto the organization's existing SABSA risk-attribute taxonomy so that agent risk can be reported in the same business language as every other risk in the enterprise risk register. 
+The practical deliverable is an Agent Trust Level Derivation model: a scoring function that combines workload identity assurance, the sensitivity of the data and tools the agent can reach, its autonomy level (see Domain 14's autonomy-level taxonomy), and its historical behavioral conformance, and maps the result onto the organization's existing SABSA risk-attribute taxonomy so that agent risk can be reported in the same business language as every other risk in the enterprise risk register.
 
-### **1.2 TOGAF Security Architecture and the Agent Fabric** 
+### **1.2 TOGAF Security Architecture and the Agent Fabric**
 
-TOGAF's Architecture Development Method (ADM) needs two structural adaptations for agentic platforms. First, Phase B (Business Architecture) and Phase D (Technology Architecture) need an explicit "Agent Fabric" viewpoint — a horizontal layer that cuts across business capabilities the way a service mesh or an integration layer does today, because agents are rarely scoped to a single business capability; they are increasingly shared infrastructure that many business processes draw on. 
+TOGAF's Architecture Development Method (ADM) needs two structural adaptations for agentic platforms. First, Phase B (Business Architecture) and Phase D (Technology Architecture) need an explicit "Agent Fabric" viewpoint — a horizontal layer that cuts across business capabilities the way a service mesh or an integration layer does today, because agents are rarely scoped to a single business capability; they are increasingly shared infrastructure that many business processes draw on.
 
-Second, and more consequentially, Phase G (Implementation Governance) needs a fast-path review track for agents. The standard TOGAF architecture review cadence — periodic, document-heavy, aligned to project milestones — cannot keep pace with an organization where a developer can stand up a new agent, register a new MCP tool, or grant a new scope in minutes. Most enterprises that have gotten this right have built a lightweight, automatable "Agent Architecture Compliance" gate: a machine-checkable policy (expressed in 
+Second, and more consequentially, Phase G (Implementation Governance) needs a fast-path review track for agents. The standard TOGAF architecture review cadence — periodic, document-heavy, aligned to project milestones — cannot keep pace with an organization where a developer can stand up a new agent, register a new MCP tool, or grant a new scope in minutes. Most enterprises that have gotten this right have built a lightweight, automatable "Agent Architecture Compliance" gate: a machine-checkable policy (expressed in
 
-something like Cedar or OPA — see Domain 5) that runs at registration time and blocks non-compliant agents from being provisioned, backed by a periodic human-led architecture review for anything above a defined risk threshold. 
+something like Cedar or OPA — see Domain 5) that runs at registration time and blocks non-compliant agents from being provisioned, backed by a periodic human-led architecture review for anything above a defined risk threshold.
 
-### **1.3 Zachman Framework Mapping** 
+### **1.3 Zachman Framework Mapping**
 
-The Zachman Framework's six interrogatives map cleanly onto the agentic stack and are useful precisely because they force completeness — it is easy to design an agent platform that answers "How" (the orchestration logic) in exhaustive detail while leaving "Why" (the business justification for the agent's existence and scope) almost entirely implicit. 
+The Zachman Framework's six interrogatives map cleanly onto the agentic stack and are useful precisely because they force completeness — it is easy to design an agent platform that answers "How" (the orchestration logic) in exhaustive detail while leaving "Why" (the business justification for the agent's existence and scope) almost entirely implicit.
 
 |**Interrogatve**|**Traditonal Enterprise Mapping**|**Agentc AI Mapping**|
 |---|---|---|
@@ -69,15 +69,15 @@ The Zachman Framework's six interrogatives map cleanly onto the agentic stack an
 |When|Business events, processing cycles|Agent lifecycle states: provisioned, actve,<br>suspended, retred; session and task lifecycles|
 |Why|Business goals, strategy, motvaton|Agent purpose statement, authorized objectve,<br>governance approval, autonomy-level<br>justfcaton|
 
-The deliverable from this exercise is an Agent Security Architecture Repository — a single structured inventory, ideally machine-readable, where every registered agent has a populated cell for each of the six interrogatives. In practice this becomes the backbone of the Agent Registry described in Domain 14: an agent with an undefined "Why" or an unbounded "Where" is, definitionally, ungoverned. 
+The deliverable from this exercise is an Agent Security Architecture Repository — a single structured inventory, ideally machine-readable, where every registered agent has a populated cell for each of the six interrogatives. In practice this becomes the backbone of the Agent Registry described in Domain 14: an agent with an undefined "Why" or an unbounded "Where" is, definitionally, ungoverned.
 
-###### **Comparative note: how the framework vendors are positioning this** 
+###### **Comparative note: how the framework vendors are positioning this**
 
-Microsoft's Azure AI Foundry and Entra Agent ID materials describe agent governance largely through an identity-first lens (extending Entra ID's existing RBAC/PIM model to agents). Google's Agentspace and Vertex AI Agent Builder lean on Google Cloud's existing IAM and BeyondCorp zero-trust patterns. AWS's Bedrock Agents and the emerging AgentCore runtime lean on IAM roles and Verified Permissions (Cedar-based). None of the three hyperscalers has published a SABSA- or TOGAF-native reference architecture; each is extending its own cloud-native identity and policy stack outward to cover agents. This is a meaningful gap an enterprise architecture function can fill: translating each hyperscaler's agent-security primitives into the enterprise's existing SABSA/TOGAF vocabulary, rather than adopting three incompatible mental models for a multi-cloud agent estate. 
+Microsoft's Azure AI Foundry and Entra Agent ID materials describe agent governance largely through an identity-first lens (extending Entra ID's existing RBAC/PIM model to agents). Google's Agentspace and Vertex AI Agent Builder lean on Google Cloud's existing IAM and BeyondCorp zero-trust patterns. AWS's Bedrock Agents and the emerging AgentCore runtime lean on IAM roles and Verified Permissions (Cedar-based). None of the three hyperscalers has published a SABSA- or TOGAF-native reference architecture; each is extending its own cloud-native identity and policy stack outward to cover agents. This is a meaningful gap an enterprise architecture function can fill: translating each hyperscaler's agent-security primitives into the enterprise's existing SABSA/TOGAF vocabulary, rather than adopting three incompatible mental models for a multi-cloud agent estate.
 
-### **1.4 Security Engineering Principles Applied to Agents** 
+### **1.4 Security Engineering Principles Applied to Agents**
 
-The classical security engineering principles do not need replacing; they need a precise mapping onto agentspecific mechanisms, because "defense in depth for agents" is meaningless until it specifies which layers. 
+The classical security engineering principles do not need replacing; they need a precise mapping onto agentspecific mechanisms, because "defense in depth for agents" is meaningless until it specifies which layers.
 
 |**Principle**|**Applicaton to Agents / MCP / A2A / Memory / Runtme**|
 |---|---|
@@ -90,21 +90,21 @@ The classical security engineering principles do not need replacing; they need a
 |Safety by Design|Irreversible or high-consequence actons (fnancial transactons, infrastructure changes,<br>external communicatons) require human-in-the-loop approval gates regardless of the<br>agent's measured trust score.|
 |Privacy by Design|Memory and context layers classify and minimize personal data at write tme; retenton<br>and right-to-erasure are lifecycle propertes of agent memory, not an aferthought bolted<br>onto a data warehouse.|
 
-## **1.5 Threat Modeling for Agentic Systems** 
+## **1.5 Threat Modeling for Agentic Systems**
 
-Threat modeling agentic systems requires layering frameworks rather than picking one. STRIDE and PASTA remain useful for the conventional application and infrastructure surface an agent sits on top of, but neither was designed to reason about a system that forms its own intent at runtime. Three newer frameworks fill that gap, and a mature program uses all three together rather than treating them as competitors. 
+Threat modeling agentic systems requires layering frameworks rather than picking one. STRIDE and PASTA remain useful for the conventional application and infrastructure surface an agent sits on top of, but neither was designed to reason about a system that forms its own intent at runtime. Three newer frameworks fill that gap, and a mature program uses all three together rather than treating them as competitors.
 
-#### **STRIDE and PASTA — what still applies, and where they stop** 
+#### **STRIDE and PASTA — what still applies, and where they stop**
 
-STRIDE's six categories (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) map cleanly onto agent identity spoofing, memory tampering, insufficient audit logging, context leakage, resource-exhaustion attacks on agent budgets, and privilege escalation through delegation chains. It is a sound checklist for the infrastructure an agent runs on. Its blind spot is cognitive: STRIDE has no native category for an agent being talked into doing something harmful through legitimate-looking input, because that is not a spoofing or tampering attack against the system — it is a successful, well-formed instruction that happens to be malicious. PASTA's seven-stage, risk-centric process (defining business objectives, technical scope, decomposing the application, analyzing threats, identifying vulnerabilities, modeling attacks, and quantifying risk) is valuable for tying agent risk back to business impact, but suffers the same blind spot at the decomposition stage unless explicitly extended. 
+STRIDE's six categories (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) map cleanly onto agent identity spoofing, memory tampering, insufficient audit logging, context leakage, resource-exhaustion attacks on agent budgets, and privilege escalation through delegation chains. It is a sound checklist for the infrastructure an agent runs on. Its blind spot is cognitive: STRIDE has no native category for an agent being talked into doing something harmful through legitimate-looking input, because that is not a spoofing or tampering attack against the system — it is a successful, well-formed instruction that happens to be malicious. PASTA's seven-stage, risk-centric process (defining business objectives, technical scope, decomposing the application, analyzing threats, identifying vulnerabilities, modeling attacks, and quantifying risk) is valuable for tying agent risk back to business impact, but suffers the same blind spot at the decomposition stage unless explicitly extended.
 
-#### **MITRE ATT&CK and MITRE ATLAS** 
+#### **MITRE ATT&CK and MITRE ATLAS**
 
-ATT&CK remains the right taxonomy for everything that happens once an agent (or the infrastructure underneath it) is compromised and an adversary is operating within the environment — lateral movement, credential access, persistence. ATLAS extends this specifically to the ML/AI attack surface: adversarial inputs, model extraction, training-data poisoning, and (in its more recent additions) agent-specific tactics. A mature threat model cross-references ATLAS techniques against the agent's specific architecture: which ATLAS techniques are even reachable given this agent's tool access, memory configuration, and autonomy level. 
+ATT&CK remains the right taxonomy for everything that happens once an agent (or the infrastructure underneath it) is compromised and an adversary is operating within the environment — lateral movement, credential access, persistence. ATLAS extends this specifically to the ML/AI attack surface: adversarial inputs, model extraction, training-data poisoning, and (in its more recent additions) agent-specific tactics. A mature threat model cross-references ATLAS techniques against the agent's specific architecture: which ATLAS techniques are even reachable given this agent's tool access, memory configuration, and autonomy level.
 
-#### **CSA MAESTRO — the agent-native framework** 
+#### **CSA MAESTRO — the agent-native framework**
 
-MAESTRO (Multi-Agent Environment, Security, Threat, Risk, and Outcome), published by the Cloud Security Alliance, is purpose-built for agentic systems and has become the closest thing to a standard agent threatmodeling methodology in 2026. It decomposes an agentic system into seven layers and requires the threat modeler to work through both traditional and agentic threats at each layer, then explicitly analyze cross-layer threats — because the most damaging agent failures rarely stay contained to one layer. 
+MAESTRO (Multi-Agent Environment, Security, Threat, Risk, and Outcome), published by the Cloud Security Alliance, is purpose-built for agentic systems and has become the closest thing to a standard agent threatmodeling methodology in 2026. It decomposes an agentic system into seven layers and requires the threat modeler to work through both traditional and agentic threats at each layer, then explicitly analyze cross-layer threats — because the most damaging agent failures rarely stay contained to one layer.
 
 |**Layer**|**What It Covers**|**Representatve Threats**|
 |---|---|---|
@@ -121,27 +121,27 @@ MAESTRO (Multi-Agent Environment, Security, Threat, Risk, and Outcome), publishe
 |L6 — Security &<br>Compliance<br>(vertcal)|Cross-cutng controls applied at every layer|Inconsistent policy enforcement across layers,<br>compliance drif|
 |L7 — Agent<br>Ecosystem|Mult-agent interacton, marketplaces,<br>A2A/MCP discovery|Agent impersonaton, marketplace manipulaton,<br>collusion, supply-chain compromise via third-<br>party agents|
 
-MAESTRO's real value is forcing analysis of cross-layer cascades: a poisoned embedding at L2 reaches an agent's planning logic at L3, which selects a tool at L4 that has broader permissions than the original task required, and the resulting action is never flagged because the observability layer (L5) was only watching for anomalies in single-agent behavior, not for an L7-level pattern of one compromised agent influencing a peer through A2A messaging. No single-layer review catches this; only an explicit cross-layer pass does. 
+MAESTRO's real value is forcing analysis of cross-layer cascades: a poisoned embedding at L2 reaches an agent's planning logic at L3, which selects a tool at L4 that has broader permissions than the original task required, and the resulting action is never flagged because the observability layer (L5) was only watching for anomalies in single-agent behavior, not for an L7-level pattern of one compromised agent influencing a peer through A2A messaging. No single-layer review catches this; only an explicit cross-layer pass does.
 
-#### **Producing the four required threat models** 
+#### **Producing the four required threat models**
 
-This program calls for fully worked threat models, using MAESTRO as primary structure cross-referenced against ATLAS and STRIDE, for four representative system types. Each should be built as a standalone artifact (data flow diagram, trust boundaries, layer-by-layer threat enumeration, and a prioritized control list) and reviewed at least annually or on material architecture change: 
+This program calls for fully worked threat models, using MAESTRO as primary structure cross-referenced against ATLAS and STRIDE, for four representative system types. Each should be built as a standalone artifact (data flow diagram, trust boundaries, layer-by-layer threat enumeration, and a prioritized control list) and reviewed at least annually or on material architecture change:
 
-1. Single Agent — a bounded, single-purpose agent (e.g., a customer support agent with read access to a CRM and a knowledge base). Establishes the baseline pattern and the minimum control set every agent should carry regardless of complexity. 
+1. Single Agent — a bounded, single-purpose agent (e.g., a customer support agent with read access to a CRM and a knowledge base). Establishes the baseline pattern and the minimum control set every agent should carry regardless of complexity.
 
-2. Multi-Agent System — a planner/orchestrator coordinating two or more specialist sub-agents (e.g., a research agent delegating to a web-search agent and a code-execution agent). Surfaces delegation-abuse, state-poisoning, and goal-hijack-propagation risks absent in the single-agent case. 
+2. Multi-Agent System — a planner/orchestrator coordinating two or more specialist sub-agents (e.g., a research agent delegating to a web-search agent and a code-execution agent). Surfaces delegation-abuse, state-poisoning, and goal-hijack-propagation risks absent in the single-agent case.
 
-3. MCP Ecosystem — an enterprise with a central MCP gateway fronting dozens of internal and third-party MCP servers. Surfaces tool poisoning, schema manipulation, and tenant-isolation risks (full detail in Volume 2). 
+3. MCP Ecosystem — an enterprise with a central MCP gateway fronting dozens of internal and third-party MCP servers. Surfaces tool poisoning, schema manipulation, and tenant-isolation risks (full detail in Volume 2).
 
-4. Banking AI Platform — a regulated, high-consequence composite: agents with access to payment rails, customer PII, and external A2A counterparties (correspondent-bank agents, payment-network agents). This is the reference model used throughout the program's banking-grade reference architecture (Volume 6) and should incorporate every control surfaced by the prior three models plus regulatory-specific constraints (DORA, PCI DSS, SOC 2 — see Volume 3). 
+4. Banking AI Platform — a regulated, high-consequence composite: agents with access to payment rails, customer PII, and external A2A counterparties (correspondent-bank agents, payment-network agents). This is the reference model used throughout the program's banking-grade reference architecture (Volume 6) and should incorporate every control surfaced by the prior three models plus regulatory-specific constraints (DORA, PCI DSS, SOC 2 — see Volume 3).
 
-## **Domain 4 — Agentic AI Architecture Security** 
+## **Domain 4 — Agentic AI Architecture Security**
 
-Domain 4 takes the threat-modeling output from Domain 1 and turns it into a concrete control architecture, organized around the canonical agent lifecycle and the realities of multi-agent orchestration frameworks now in production use. 
+Domain 4 takes the threat-modeling output from Domain 1 and turns it into a concrete control architecture, organized around the canonical agent lifecycle and the realities of multi-agent orchestration frameworks now in production use.
 
-### **4.1 Agent Lifecycle Security** 
+### **4.1 Agent Lifecycle Security**
 
-Every agentic interaction, regardless of framework, decomposes into the same five-stage lifecycle: a user or trigger initiates a request, a planner interprets intent and forms a plan, an agent (or agents) executes steps of that plan, tools are invoked to take action or retrieve information, memory is read and written throughout, and actions land in the world. Each stage has a distinct threat profile, a distinct control set, and a distinct audit requirement. 
+Every agentic interaction, regardless of framework, decomposes into the same five-stage lifecycle: a user or trigger initiates a request, a planner interprets intent and forms a plan, an agent (or agents) executes steps of that plan, tools are invoked to take action or retrieve information, memory is read and written throughout, and actions land in the world. Each stage has a distinct threat profile, a distinct control set, and a distinct audit requirement.
 
 |**Stage**|**Primary Threats**|**Primary Controls**|**Audit Requirement**|
 |---|---|---|---|
@@ -151,27 +151,27 @@ Every agentic interaction, regardless of framework, decomposes into the same fiv
 |Tool → Memory|Memory/context poisoning,<br>cross-tenant memory<br>leakage, unauthorized<br>persistence|Write-tme classifcaton,<br>provenance tagging, tenant<br>isolaton, retenton policy<br>enforcement|Memory mutaton log with<br>source atributon|
 |Memory/Tool →<br>Acton|Irreversible or high-<br>consequence actons taken<br>without sufcient review|Reversibility classifcaton,<br>human-in-the-loop gates for<br>irreversible actons, rate<br>limitng, circuit breakers|Immutable acton log,<br>tamper-evident, ted to<br>originatng session|
 
-### **4.2 Multi-Agent Orchestration Frameworks and Their Threat Surface** 
+### **4.2 Multi-Agent Orchestration Frameworks and Their Threat Surface**
 
-The production orchestration landscape has consolidated around a handful of frameworks, each with a distinct trust model that materially changes the threat surface: 
+The production orchestration landscape has consolidated around a handful of frameworks, each with a distinct trust model that materially changes the threat surface:
 
-- **LangGraph —** graph-based orchestration with explicit state; the principal risk is state poisoning, since shared graph state is often trusted implicitly by downstream nodes. 
+- **LangGraph —** graph-based orchestration with explicit state; the principal risk is state poisoning, since shared graph state is often trusted implicitly by downstream nodes.
 
-- **CrewAI —** role-based crews with delegation between agents; delegation abuse is the dominant risk, where a low-privilege agent convinces a higher-privilege peer to act on its behalf. 
+- **CrewAI —** role-based crews with delegation between agents; delegation abuse is the dominant risk, where a low-privilege agent convinces a higher-privilege peer to act on its behalf.
 
-- **Microsoft Agent Framework (the successor combining Semantic Kernel and AutoGen patterns) —** enterprise-oriented orchestration with native Entra Agent ID integration; the main architectural advantage is identity-aware delegation, but it also means identity misconfiguration has an outsized blast radius. 
+- **Microsoft Agent Framework (the successor combining Semantic Kernel and AutoGen patterns) —** enterprise-oriented orchestration with native Entra Agent ID integration; the main architectural advantage is identity-aware delegation, but it also means identity misconfiguration has an outsized blast radius.
 
-- **AutoGen —** conversational multi-agent patterns; infinite-loop and goal-drift risk is highest here because agent-to-agent conversations can continue without a hard termination condition unless explicitly bounded. 
+- **AutoGen —** conversational multi-agent patterns; infinite-loop and goal-drift risk is highest here because agent-to-agent conversations can continue without a hard termination condition unless explicitly bounded.
 
-- **Semantic Kernel Agents —** plugin-centric orchestration; tool/plugin supply-chain risk dominates, since the framework's extensibility model is built around third-party plugin ecosystems. 
+- **Semantic Kernel Agents —** plugin-centric orchestration; tool/plugin supply-chain risk dominates, since the framework's extensibility model is built around third-party plugin ecosystems.
 
-The five threats common across all five frameworks — agent collusion, goal hijacking, delegation abuse, state poisoning, and infinite loops — are precisely the threats ASI07 (Insecure Inter-Agent Communication), ASI08 (Cascading Failures), and ASI10 (Rogue Agents) in the OWASP Top 10 for Agentic Applications are designed to catch. Volume 4 covers detection and response for these in depth; the architectural control here is structural: bound every multi-agent conversation with a maximum turn count, a maximum cost budget, and a maximum wall-clock duration, enforced outside the orchestration framework itself (so a compromised or malfunctioning orchestrator cannot disable its own circuit breaker). 
+The five threats common across all five frameworks — agent collusion, goal hijacking, delegation abuse, state poisoning, and infinite loops — are precisely the threats ASI07 (Insecure Inter-Agent Communication), ASI08 (Cascading Failures), and ASI10 (Rogue Agents) in the OWASP Top 10 for Agentic Applications are designed to catch. Volume 4 covers detection and response for these in depth; the architectural control here is structural: bound every multi-agent conversation with a maximum turn count, a maximum cost budget, and a maximum wall-clock duration, enforced outside the orchestration framework itself (so a compromised or malfunctioning orchestrator cannot disable its own circuit breaker).
 
-## **Domain 7 — Agent Runtime Security** 
+## **Domain 7 — Agent Runtime Security**
 
-If identity answers "who is acting" and policy answers "what are they allowed to do," the runtime layer answers the question that actually contains the blast radius when the first two fail: what can this process physically reach? Runtime isolation is the last line of defense, and for agents that execute generated code or shell commands, it is not optional. 
+If identity answers "who is acting" and policy answers "what are they allowed to do," the runtime layer answers the question that actually contains the blast radius when the first two fail: what can this process physically reach? Runtime isolation is the last line of defense, and for agents that execute generated code or shell commands, it is not optional.
 
-### **7.1 Runtime Isolation Technology Comparison** 
+### **7.1 Runtime Isolation Technology Comparison**
 
 |**Technology**|**Isolaton Model**|**Best Fit for Agent Workloads**|**Tradeof**|
 |---|---|---|---|
@@ -181,37 +181,37 @@ If identity answers "who is acting" and policy answers "what are they allowed to
 |WASM / WASI|Capability-based,<br>sandboxed bytecode<br>executon|Tool executon and untrusted<br>plugin code where startup<br>latency must be near-zero;<br>increasingly used for MCP tool<br>sandboxing|Language/runtme<br>ecosystem stll maturing<br>for general-purpose agent<br>code|
 |Sandboxed Containers<br>(gVisor/Kata aside, i.e.<br>seccomp + AppArmor<br>hardened standard<br>containers)|Namespace and cgroup<br>isolaton with restricted<br>syscall/capability surface|Lowest-overhead opton for<br>lower-trust-boundary agents;<br>acceptable when paired with<br>strict network egress controls|Weakest isolaton<br>guarantee of the optons<br>listed; shared kernel risk|
 
-The architectural pattern this program recommends is tiered: classify agents by the trust boundary they cross (does this agent execute model-generated code? does it process untrusted external content? does it have network egress to sensitive internal systems?) and assign isolation strength accordingly, rather than applying one isolation technology uniformly. A read-only reporting agent with no code execution does not need Firecracker-grade isolation; a coding agent executing arbitrary generated Python against production-adjacent infrastructure does. 
+The architectural pattern this program recommends is tiered: classify agents by the trust boundary they cross (does this agent execute model-generated code? does it process untrusted external content? does it have network egress to sensitive internal systems?) and assign isolation strength accordingly, rather than applying one isolation technology uniformly. A read-only reporting agent with no code execution does not need Firecracker-grade isolation; a coding agent executing arbitrary generated Python against production-adjacent infrastructure does.
 
-### **7.2 Runtime Controls** 
+### **7.2 Runtime Controls**
 
-- **Capability-based security —** agents hold unforgeable capability tokens scoped to specific resources and operations rather than ambient authority; possessing the capability is both necessary and sufficient, which makes scope review tractable in a way that role-based ambient permissions are not. 
+- **Capability-based security —** agents hold unforgeable capability tokens scoped to specific resources and operations rather than ambient authority; possessing the capability is both necessary and sufficient, which makes scope review tractable in a way that role-based ambient permissions are not.
 
-- **Dynamic permissions —** permissions are granted just-in-time for the duration of a specific task and revoked on completion, rather than provisioned as standing access — directly addressing the overpermissioning pattern that current NHI research identifies as the most operationally urgent gap in enterprise agent deployments. 
+- **Dynamic permissions —** permissions are granted just-in-time for the duration of a specific task and revoked on completion, rather than provisioned as standing access — directly addressing the overpermissioning pattern that current NHI research identifies as the most operationally urgent gap in enterprise agent deployments.
 
-- **Runtime authorization —** every tool call and action is re-evaluated against policy at the moment of execution (not only at session start), so a token issued for a benign initial task cannot be silently reused for an unrelated, higher-risk action later in the same session. 
+- **Runtime authorization —** every tool call and action is re-evaluated against policy at the moment of execution (not only at session start), so a token issued for a benign initial task cannot be silently reused for an unrelated, higher-risk action later in the same session.
 
-- **Action approval workflows —** irreversible or high-consequence actions route through a human approval gate or a secondary automated control (a policy engine, a separate verification agent) before execution, with the approval itself captured in the immutable audit log. 
+- **Action approval workflows —** irreversible or high-consequence actions route through a human approval gate or a secondary automated control (a policy engine, a separate verification agent) before execution, with the approval itself captured in the immutable audit log.
 
-### **7.3 Secure Agent Operating System Pattern** 
+### **7.3 Secure Agent Operating System Pattern**
 
-Across vendors and frameworks, the architecture that is converging as best practice resembles a minimal operating system built specifically for agent execution, with four layers stacked between the agent's reasoning loop and the outside world: 
+Across vendors and frameworks, the architecture that is converging as best practice resembles a minimal operating system built specifically for agent execution, with four layers stacked between the agent's reasoning loop and the outside world:
 
-1. Agent — the reasoning/planning loop itself, treated as untrusted input to everything below it. 
+1. Agent — the reasoning/planning loop itself, treated as untrusted input to everything below it.
 
-2. Sandbox — the isolation boundary (Firecracker/Kata/gVisor/WASM per the tiering above) that contains what the agent can directly touch. 
+2. Sandbox — the isolation boundary (Firecracker/Kata/gVisor/WASM per the tiering above) that contains what the agent can directly touch.
 
-3. Policy Engine — the authorization decision point (commonly OPA or Cedar — see Volume 2) that every action must clear before reaching a tool. 
+3. Policy Engine — the authorization decision point (commonly OPA or Cedar — see Volume 2) that every action must clear before reaching a tool.
 
-4. Tool Broker / Runtime Controller — the only component with actual credentials to downstream systems; it receives a policy-approved request and a scoped, ephemeral credential, executes the call, and returns only the result, never the credential, to the agent. 
+4. Tool Broker / Runtime Controller — the only component with actual credentials to downstream systems; it receives a policy-approved request and a scoped, ephemeral credential, executes the call, and returns only the result, never the credential, to the agent.
 
-The structural property worth emphasizing: the agent itself never holds standing credentials to anything. It holds, at most, a short-lived capability token whose actual exchange for a usable credential happens inside the tool broker, after a policy check. This single design decision — credential custody lives outside the agent process — eliminates an entire category of incidents where a compromised or manipulated agent simply exfiltrates whatever secrets it was holding. 
+The structural property worth emphasizing: the agent itself never holds standing credentials to anything. It holds, at most, a short-lived capability token whose actual exchange for a usable credential happens inside the tool broker, after a policy check. This single design decision — credential custody lives outside the agent process — eliminates an entire category of incidents where a compromised or manipulated agent simply exfiltrates whatever secrets it was holding.
 
-## **Domain 20 — AI Security Mesh Architecture** 
+## **Domain 20 — AI Security Mesh Architecture**
 
-As agent populations scale past a few dozen into the hundreds or thousands, point-to-point security controls between every agent, tool, and data source stop being tractable — the same inflection point that drove the industry from point-to-point service integration toward service mesh architecture a decade ago. The AI Security Mesh pattern applies that same architectural move to agentic systems. 
+As agent populations scale past a few dozen into the hundreds or thousands, point-to-point security controls between every agent, tool, and data source stop being tractable — the same inflection point that drove the industry from point-to-point service integration toward service mesh architecture a decade ago. The AI Security Mesh pattern applies that same architectural move to agentic systems.
 
-### **20.1 The Five Mesh Planes** 
+### **20.1 The Five Mesh Planes**
 
 |**Mesh Plane**|**Functon**|**Representatve Technology Patern**|
 |---|---|---|
@@ -221,9 +221,9 @@ As agent populations scale past a few dozen into the hundreds or thousands, poin
 |Memory Mesh|Governs how memory is shared, isolated, and<br>classifed across agents and sessions|Tenant-isolated vector stores and graph<br>memory with provenance tagging (full detail<br>in Volume 4)|
 |Observability Mesh|Aggregates traces, logs, and behavioral<br>signals across every plane into a unifed view|OpenTelemetry-based tracing (OpenLLMetry<br>conventons) feeding a central AI SOC (full<br>detail in Volume 4)|
 
-### **20.2 Comparison with Service Mesh and Zero Trust** 
+### **20.2 Comparison with Service Mesh and Zero Trust**
 
-The AI Security Mesh is best understood as a service mesh's conceptual sibling, not its replacement — most enterprises will run both, with the AI Security Mesh as an agent-aware layer on top of (or alongside) an existing Istio/Linkerd-class service mesh. 
+The AI Security Mesh is best understood as a service mesh's conceptual sibling, not its replacement — most enterprises will run both, with the AI Security Mesh as an agent-aware layer on top of (or alongside) an existing Istio/Linkerd-class service mesh.
 
 |**Property**|**Traditonal Service Mesh**|**AI Security Mesh**|
 |---|---|---|
@@ -236,13 +236,13 @@ The AI Security Mesh is best understood as a service mesh's conceptual sibling, 
 |Failure mode of concern|Service unavailability, latency, network<br>partton|Goal hijacking, cascading mult-agent failure,<br>autonomous over-reach|
 |Relatonship to<br>SPIFFE/Zero Trust|SPIFFE commonly used as the identty<br>substrate; zero trust is the governing<br>principle|Same substrate (SPIFFE/SPIRE), extended with<br>agent-specifc atestaton and behavioral trust<br>scoring layered on top|
 
-###### **Design recommendation** 
+###### **Design recommendation**
 
-Do not build a parallel identity system for agents. Extend the organization's existing SPIFFE/SPIRE (or equivalent workload identity) trust domain to cover agent workloads, and layer agent-specific policy and behavioral-trust evaluation on top of that shared identity substrate. This is the path the most mature implementations (Block's production SPIFFE+WIMSE+OAuth deployment is the most frequently cited public reference) have taken, and it avoids the fragmentation that has plagued early agent-identity tooling. 
+Do not build a parallel identity system for agents. Extend the organization's existing SPIFFE/SPIRE (or equivalent workload identity) trust domain to cover agent workloads, and layer agent-specific policy and behavioral-trust evaluation on top of that shared identity substrate. This is the path the most mature implementations (Block's production SPIFFE+WIMSE+OAuth deployment is the most frequently cited public reference) have taken, and it avoids the fragmentation that has plagued early agent-identity tooling.
 
-## **Summary: How the Frameworks in This Volume Relate** 
+## **Summary: How the Frameworks in This Volume Relate**
 
-Readers new to this space frequently ask which single framework to adopt. The honest answer is that no single framework covers the full problem, and the frameworks are not competitors — they operate at different altitudes and answer different questions. 
+Readers new to this space frequently ask which single framework to adopt. The honest answer is that no single framework covers the full problem, and the frameworks are not competitors — they operate at different altitudes and answer different questions.
 
 |**Framework**|**Alttude**|**Primary Queston It Answers**|
 |---|---|---|
@@ -253,5 +253,4 @@ Readers new to this space frequently ask which single framework to adopt. The ho
 |OWASP ASI Top 10|Risk taxonomy /<br>prioritzaton|Which of the highest-prevalence, highest-impact agentc<br>risks are present here?|
 |AI Security Mesh|Operatng architecture|How do we enforce identty, policy, memory, and<br>observability consistently at scale?|
 
-Volume 1 has established this scaffolding. Volume 2 goes deep on the identity, MCP, and A2A layers that this volume references but does not fully specify. Volume 3 covers the governance frameworks (OWASP, NIST, ISO 42001, regulatory) that determine which controls are mandatory versus discretionary. Volumes 4 through 6 cover operations, economics, and the roadmap for building this capability over 24 months. 
-
+Volume 1 has established this scaffolding. Volume 2 goes deep on the identity, MCP, and A2A layers that this volume references but does not fully specify. Volume 3 covers the governance frameworks (OWASP, NIST, ISO 42001, regulatory) that determine which controls are mandatory versus discretionary. Volumes 4 through 6 cover operations, economics, and the roadmap for building this capability over 24 months.

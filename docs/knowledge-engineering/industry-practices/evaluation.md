@@ -22,7 +22,7 @@ How enterprises measure whether knowledge systems are accurate, grounded, and sa
 Mature teams run evaluation at three layers, each catching what the previous can't:
 
 | Layer | When | Catches |
-|---|---|---|
+| --- | --- | --- |
 | **Offline evals** (golden datasets) | Per change, pre-merge | Regressions in retrieval and generation quality |
 | **CI quality gates** | Every deploy | Threshold violations before users see them |
 | **Production monitoring** (tracing + online evals) | Continuously | Drift, novel query patterns, source-data decay |
@@ -43,7 +43,7 @@ The first two evaluate *generation*; the last two evaluate *retrieval* — which
 The three dominant open-source frameworks all use LLM-as-judge but occupy different slots:
 
 | | **RAGAS** | **DeepEval** | **TruLens** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Sweet spot | Fast experimentation | CI/CD regression gates | Production monitoring |
 | Metrics | 4 core RAG metrics, ground-truth-free | 50+ metrics | Feedback functions |
 | Integration | Lightweight Python | **Pytest-native** | **OpenTelemetry tracing** |

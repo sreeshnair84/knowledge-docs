@@ -31,6 +31,7 @@ series_index: index.md
 ## 1. Financial Services
 
 ### Security Priorities
+
 - Fraud detection and prevention
 - Regulatory compliance (PCI DSS, DORA, MiFID II, GDPR, local banking regulations)
 - Third-party and supply chain risk
@@ -38,12 +39,14 @@ series_index: index.md
 - Operational resilience (24/7 availability)
 
 ### Regulatory Drivers
+
 - **DORA (Digital Operational Resilience Act)**: Mandatory for EU financial entities since Jan 2025. Requires ICT risk management, incident reporting, and digital resilience testing. AI systems in critical/important functions subject to DORA oversight.
 - **PCI DSS v4.0**: Any AI system processing payment card data is in PCI scope.
 - **ECB/EBA guidance**: AI in credit decisioning subject to explainability requirements.
 - **GDPR**: Customer data in AI training and inference requires legal basis and data subject rights fulfilment.
 
 ### AI Adoption Patterns
+
 - AI-powered fraud detection (real-time transaction scoring)
 - AI customer service agents (loan queries, account support)
 - AI-assisted compliance monitoring (AML, sanctions screening)
@@ -51,8 +54,9 @@ series_index: index.md
 - AI-powered risk modelling and credit scoring
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | Deepfake CEO fraud | Synthetic voice/video impersonation | Wire transfer fraud; executive reputation |
 | AI-assisted phishing | LLM-generated personalised phishing at scale | Credential theft; account takeover |
 | Fraud model poisoning | Corrupt training data to reduce fraud detection accuracy | Increased fraud losses |
@@ -60,6 +64,7 @@ series_index: index.md
 | Ransomware on AI infrastructure | Encrypt AI model and data stores | Operational disruption; recovery costs |
 
 ### Recommended Architecture Patterns
+
 - Private AI deployment (sensitive customer data; regulatory data residency)
 - AI gateway with PII masking (before any data reaches LLM)
 - AI-generated content disclosure (EU AI Act Article 50 — AI-generated content must be labelled)
@@ -67,6 +72,7 @@ series_index: index.md
 - DORA-compliant AI resilience testing (quarterly AI system failure simulation)
 
 ### KPIs
+
 - Fraud detection rate maintained or improved post-AI adoption
 - AI model explainability score for credit decisions (auditor requirement)
 - Time to detect AI-assisted fraud attack: < 15 minutes
@@ -77,6 +83,7 @@ series_index: index.md
 ## 2. Healthcare
 
 ### Security Priorities
+
 - Patient data protection (PHI/PII)
 - Medical device security
 - Ransomware resilience (hospitals are top ransomware targets)
@@ -84,12 +91,14 @@ series_index: index.md
 - Third-party medical software risk
 
 ### Regulatory Drivers
+
 - **HIPAA (US)**: PHI in AI training/inference requires BAA with AI vendors; patient rights for AI-generated decisions
 - **EU MDR (Medical Device Regulation)**: AI in medical decision support classified as medical device; CE marking required
 - **FDA AI/ML Action Plan**: Clinical AI subject to FDA oversight and continuous monitoring requirements
 - **NIS2**: Healthcare as essential service; cybersecurity requirements and incident reporting
 
 ### AI Adoption Patterns
+
 - AI-assisted clinical decision support (diagnosis, treatment recommendation)
 - AI radiology (imaging analysis)
 - AI patient communication (appointment scheduling, symptom triage)
@@ -97,8 +106,9 @@ series_index: index.md
 - AI drug discovery and clinical trial optimisation
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | Ransomware on EHR | Encrypt patient records | Clinical operations disruption; patient safety risk |
 | AI diagnostic poisoning | Corrupt training data → misdiagnosis | Patient harm; regulatory sanctions |
 | PHI exfiltration via AI | Patient data submitted to public AI → breach | HIPAA violation; regulatory fines |
@@ -106,6 +116,7 @@ series_index: index.md
 | Third-party AI compromise | Clinical AI vendor breached | Supply chain exposure of patient data |
 
 ### Recommended Architecture Patterns
+
 - HIPAA-compliant private AI deployment (PHI never leaves organisation's environment)
 - Clinical AI governance board (physician and ethics review before AI clinical deployment)
 - AI model validation framework (clinical validation alongside security testing)
@@ -113,6 +124,7 @@ series_index: index.md
 - Ransomware-resilient architecture (isolated backups; immutable storage; rapid recovery)
 
 ### KPIs
+
 - PHI exposure incidents via AI: target zero
 - Clinical AI model accuracy maintained within approved thresholds
 - Ransomware recovery time objective: < 4 hours for critical clinical systems
@@ -123,6 +135,7 @@ series_index: index.md
 ## 3. Government
 
 ### Security Priorities
+
 - National security data protection
 - Citizen data privacy
 - Supply chain security for AI and technology
@@ -130,6 +143,7 @@ series_index: index.md
 - Critical infrastructure protection
 
 ### Regulatory Drivers
+
 - **US Executive Orders on AI**: Mandatory risk assessments and human oversight for high-impact AI in federal use
 - **EU AI Act**: Government AI in law enforcement, public services, and benefits systems classified high-risk
 - **FedRAMP (US)**: Cloud services for federal use require FedRAMP authorization; AI services included
@@ -137,6 +151,7 @@ series_index: index.md
 - **UK Government AI Framework**: Transparency, accountability, and fairness requirements for public sector AI
 
 ### AI Adoption Patterns
+
 - AI-powered citizen service chatbots (benefits, permits, queries)
 - AI-assisted regulatory review and document processing
 - AI fraud detection for government benefit programmes
@@ -144,8 +159,9 @@ series_index: index.md
 - AI-powered predictive maintenance for public infrastructure
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | Nation-state AI model poisoning | Corrupt government AI training data | Policy manipulation; misinformation |
 | AI-generated disinformation | Synthetic content to undermine public trust | Democratic process manipulation |
 | Adversarial attack on benefit AI | Manipulate benefit eligibility decisions | Financial harm to citizens; legal liability |
@@ -153,6 +169,7 @@ series_index: index.md
 | Classified data in AI training | Sensitive government data in AI training inadvertently exposed | National security breach |
 
 ### Recommended Architecture Patterns
+
 - Classified/unclassified separation: AI systems strictly segregated by classification level
 - Explainable AI for citizen-facing decisions (audit trail; right to explanation)
 - Bias and fairness testing before deployment for any citizen-affecting AI
@@ -160,6 +177,7 @@ series_index: index.md
 - Air-gapped AI for classified workloads
 
 ### KPIs
+
 - Bias testing pass rate: 100% before deployment
 - Explainability documentation: 100% of citizen-impact AI decisions
 - Supply chain verification: 100% of AI models with AIBOM
@@ -170,6 +188,7 @@ series_index: index.md
 ## 4. Defence
 
 ### Security Priorities
+
 - Classified information protection at all clearance levels
 - AI in weapons systems governance (lethal autonomous weapons)
 - Adversarial AI robustness (AI systems resistant to nation-state adversaries)
@@ -177,6 +196,7 @@ series_index: index.md
 - Allied information sharing with appropriate access controls
 
 ### Regulatory Drivers
+
 - **DoD AI Ethics Principles (US)**: Responsible, equitable, traceable, reliable, governable
 - **NATO AI Principles**: Human control; responsible use; accountability
 - **UK MoD AI Ethics Framework**: Human oversight for AI in lethal applications
@@ -184,6 +204,7 @@ series_index: index.md
 - **CMMC (Cybersecurity Maturity Model Certification)**: Required for US defence contractors; AI systems in scope
 
 ### AI Adoption Patterns
+
 - AI-assisted intelligence analysis (ISR)
 - AI-assisted cyber operations (automated threat hunting, faster attribution)
 - AI in logistics and supply chain optimisation
@@ -191,8 +212,9 @@ series_index: index.md
 - AI training and simulation for personnel
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | AI model inversion | Reconstruct classified training data from AI model | Intelligence breach |
 | Adversarial inputs to AI vision | Fool AI object recognition to misidentify targets | Mission failure; civilian casualties |
 | AI C2 disruption | Attack AI decision-support systems during operations | Operational paralysis |
@@ -200,6 +222,7 @@ series_index: index.md
 | Supply chain AI backdoor | Defence contractor AI tools with nation-state backdoors | Persistent compromise |
 
 ### Recommended Architecture Patterns
+
 - Air-gapped AI: no internet connectivity for classified AI workloads
 - Hardware-verified model integrity: TPM attestation for model weights on classified systems
 - Human control for autonomous weapons systems: AI as decision support only; human pulls trigger
@@ -207,6 +230,7 @@ series_index: index.md
 - Red team at classification level: AI red team with appropriate clearance
 
 ### KPIs
+
 - Adversarial robustness score: AI systems tested against ATLAS TTPs
 - Human oversight coverage: 100% for lethal or irreversible decisions
 - Classification boundary violations: zero tolerance
@@ -217,6 +241,7 @@ series_index: index.md
 ## 5. Retail & E-Commerce
 
 ### Security Priorities
+
 - Payment card data protection (PCI DSS)
 - Customer data privacy (GDPR, CCPA)
 - Fraud prevention (account takeover, payment fraud)
@@ -224,11 +249,13 @@ series_index: index.md
 - Supply chain security for retail AI platforms
 
 ### Regulatory Drivers
+
 - **PCI DSS v4.0**: All AI systems in payment processing scope
 - **GDPR/CCPA**: Customer data used for AI personalisation requires appropriate legal basis
 - **EU AI Act**: AI product recommendation and pricing systems may require transparency obligations
 
 ### AI Adoption Patterns
+
 - AI personalisation and recommendation engines
 - AI-powered customer service (chatbots, returns, queries)
 - AI pricing and inventory optimisation
@@ -236,8 +263,9 @@ series_index: index.md
 - AI-powered marketing (content generation, audience targeting)
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | AI-assisted account takeover | LLM generates personalised credential stuffing attacks | Customer account compromise; fraud |
 | Bot abuse of AI chat | Bots abuse AI customer service for fraud or competitive intelligence | Revenue loss; competitive harm |
 | Personalisation model poisoning | Corrupt recommendation model to promote specific products | Revenue manipulation |
@@ -245,6 +273,7 @@ series_index: index.md
 | PCI scope expansion via AI | AI system inadvertently processes cardholder data → expanded PCI scope | Compliance cost; audit finding |
 
 ### Recommended Architecture Patterns
+
 - AI gateway with PCI scope isolation (AI systems outside PCI scope by design)
 - Bot detection at AI interaction layer
 - AI content authenticity (labelling AI-generated reviews, product descriptions)
@@ -255,18 +284,21 @@ series_index: index.md
 ## 6. Manufacturing
 
 ### Security Priorities
+
 - Operational Technology (OT) / ICS security
 - AI in industrial control systems safety
 - Intellectual property protection (design files, process data)
 - Supply chain security
 
 ### Regulatory Drivers
+
 - **IEC 62443**: OT security standard for industrial automation
 - **NIS2**: Manufacturers classified as important entities in EU
 - **NIST CSF**: Framework applied to manufacturing OT environments
 - **EU Cyber Resilience Act**: Connected product security requirements
 
 ### AI Adoption Patterns
+
 - AI predictive maintenance (equipment failure prediction)
 - AI quality inspection (vision-based defect detection)
 - AI production optimisation
@@ -274,14 +306,16 @@ series_index: index.md
 - Autonomous robotics with AI decision-making
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | OT ransomware | Encrypt industrial control systems | Production shutdown; safety incident |
 | AI quality inspection poisoning | Defeat vision inspection → defective products ship | Product recall; safety liability |
 | IP theft via AI | Use AI tools to exfiltrate design files | Competitive harm; trade secret loss |
 | Robot hijacking | AI-controlled robot reprogrammed for harm | Worker safety incident |
 
 ### Recommended Architecture Patterns
+
 - IT/OT network separation (AI systems for OT must not bridge to IT network without controls)
 - Secure AI for quality inspection (model integrity verification; anomaly detection on vision model outputs)
 - IP data governance for AI tools (CAD/design files classified as restricted; DLP controls)
@@ -291,6 +325,7 @@ series_index: index.md
 ## 7. Telecommunications
 
 ### Security Priorities
+
 - Network infrastructure protection
 - Subscriber data privacy
 - 5G network security (including AI in 5G RAN and core)
@@ -298,12 +333,14 @@ series_index: index.md
 - DDoS resilience
 
 ### Regulatory Drivers
+
 - **NIS2**: Telcos are essential entities; stringent requirements
 - **GDPR**: Subscriber CDR (call detail records) and location data are personal data
 - **ETSI/3GPP 5G Security**: AI in 5G networks must meet 3GPP security standards
 - **Lawful interception**: AI-powered communications analysis subject to lawful intercept compliance
 
 ### AI Adoption Patterns
+
 - AI network optimisation (traffic routing, capacity planning)
 - AI in 5G RAN (AI-driven beam management, interference mitigation)
 - AI fraud detection (toll fraud, SIM swap, subscription fraud)
@@ -311,8 +348,9 @@ series_index: index.md
 - AI-powered NOC (network operations centre) automation
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | AI network management compromise | Compromise AI that manages core network | Service disruption at scale |
 | SS7/Diameter attacks enhanced by AI | AI-assisted protocol exploitation for subscriber tracking | Privacy breach; national security |
 | AI-assisted telecom fraud | LLM-powered scam calls and SMS fraud at scale | Subscriber harm; brand damage |
@@ -323,18 +361,21 @@ series_index: index.md
 ## 8. Energy & Utilities
 
 ### Security Priorities
+
 - Critical national infrastructure (CNI) protection
 - OT/SCADA security for power grid, pipelines, water
 - AI safety in automated control systems
 - Insider threat prevention
 
 ### Regulatory Drivers
+
 - **NERC CIP**: North American power grid cybersecurity standards
 - **NIS2**: Energy sector as essential entity
 - **EU Cybersecurity Act**: Critical infrastructure requirements
 - **IEC 62351**: Security for power system communications
 
 ### AI Adoption Patterns
+
 - AI grid optimisation and load balancing
 - AI predictive maintenance for turbines, transformers, pipelines
 - AI-powered smart meter analytics
@@ -342,8 +383,9 @@ series_index: index.md
 - AI in autonomous substations
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | AI grid management attack | Compromise AI controlling power distribution | Regional power outage |
 | AI sensor spoofing | Feed false readings to AI monitoring pipeline health | Undetected infrastructure failure |
 | Ransomware on AI control systems | Encrypt OT AI platforms | Grid instability; operational shutdown |
@@ -354,18 +396,21 @@ series_index: index.md
 ## 9. Pharmaceuticals
 
 ### Security Priorities
+
 - Clinical trial data integrity
 - Drug development IP protection
 - Regulatory submission security (FDA, EMA)
 - Manufacturing quality system integrity
 
 ### Regulatory Drivers
+
 - **FDA 21 CFR Part 11**: Electronic records and signatures in regulated environments
 - **ICH E9 (R1)**: Statistical principles for clinical trials (AI in analysis must meet)
 - **EMA AI in Clinical Trials guidance** (2025): Requirements for AI-assisted clinical analysis
 - **GDPR/HIPAA**: Patient data in clinical trials
 
 ### AI Adoption Patterns
+
 - AI drug discovery (molecular generation, protein structure prediction)
 - AI clinical trial design and patient selection
 - AI-assisted clinical data analysis
@@ -377,18 +422,21 @@ series_index: index.md
 ## 10. Aviation
 
 ### Security Priorities
+
 - Safety-critical systems integrity (DO-178C, DO-254)
 - ATC (Air Traffic Control) system protection
 - Passenger data protection
 - Supply chain integrity (avionics software)
 
 ### Regulatory Drivers
+
 - **EASA AI Roadmap 2.0**: Framework for AI in aviation; safety assurance requirements
 - **FAA AI Certification**: Emerging guidance for AI in type-certified aircraft systems
 - **ICAO Cybersecurity**: Global aviation cybersecurity framework
 - **GDPR**: Passenger PII in airline AI systems
 
 ### AI Adoption Patterns
+
 - AI in flight operations (fuel optimisation, route planning, weather routing)
 - AI-assisted ATC (traffic flow management, conflict detection)
 - AI predictive maintenance (aircraft health monitoring)
@@ -396,14 +444,16 @@ series_index: index.md
 - AI safety analysis (hazard identification in safety assessments)
 
 ### Common Attack Scenarios
+
 | Scenario | Threat | Impact |
-|---|---|---|
+| --- | --- | --- |
 | AI ATC manipulation | Compromise AI supporting ATC decisions | Aviation safety incident |
 | AI maintenance system poisoning | False maintenance predictions → undetected fault | Safety incident; operational disruption |
 | Passenger data AI breach | AI reservation system exposes PII at scale | GDPR breach; passenger harm |
 | AI in avionics supply chain compromise | Malicious AI component in aircraft software | Safety-critical system compromise |
 
 ### Recommended Architecture Patterns
+
 - DO-178C/DO-254 safety assurance extended to AI components in airborne systems
 - Air-gapped AI for ATC and safety-critical systems
 - AI model determinism requirements for certified applications (some AI approaches incompatible with airworthiness standards)

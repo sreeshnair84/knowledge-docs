@@ -44,7 +44,7 @@ AI SOLUTION LIFECYCLE
 ## 2. Roles and Audiences
 
 | Role | Primary function | Key audience |
-|---|---|---|
+| --- | --- | --- |
 | **Enterprise Architect (EA)** | Strategic alignment, cross-domain architecture, ARB | C-suite, Board, Programme Steering |
 | **Security Architect (SA)** | Threat model, security architecture, guardrails | CISO, Risk Committee, Compliance |
 | **RAI / Governance Lead** | AI constitution, fairness, ethics, RAI compliance | RAIO, Board, Regulators, Audit |
@@ -58,7 +58,7 @@ AI SOLUTION LIFECYCLE
 ## 3. Master Deliverables Matrix
 
 | Deliverable | Owner | Stage 1 | Stage 2 | Stage 3 | Stage 4 | Stage 5 |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | AI Strategy Brief | EA | ✅ Create | — | — | 📋 Review | — |
 | AI Opportunity Assessment | EA | ✅ Create | — | — | 📋 Review | — |
 | AI Safety Level Classification | EA + RAI | ✅ Create | 📋 Update | 📋 Confirm | 📋 Monitor | 📋 Final |
@@ -500,6 +500,7 @@ AI SOLUTION LIFECYCLE
 **Context:** EU Tier-1 bank deploying an autonomous loan underwriting agent. High-Risk under EU AI Act (Annex III §5b). Subject to SR 11-7, DORA, MiFID II suitability. Sterling case study reference.
 
 **Key regulatory constraints:**
+
 - EU AI Act Art. 13: Transparency (must disclose AI involvement)
 - EU AI Act Art. 14: Human oversight (adverse decisions require human review)
 - GDPR Art. 22: No fully automated adverse credit decisions without opt-out
@@ -509,7 +510,7 @@ AI SOLUTION LIFECYCLE
 **Stage swimlane (selected roles):**
 
 | Stage | EA | SA | RAI Lead | Data Architect | MLOps |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | **Incubation** | AI Strategy Brief; AI Safety Level: SL3 | Preliminary threat model | AI Impact Assessment v0: HIGH-RISK | Data landscape assessment | Platform readiness |
 | **RFP** | Vendor arch criteria (sovereign infra mandatory) | Security RFP (DORA resilience; BYOK) | RAI RFP criteria (SHAP mandatory; AIF360) | Data residency: EU-only | MLOps RFP (drift detection; model registry) |
 | **Design & Build** | Reference arch (sovereign EU cloud); ARB | Threat model; Cedar agent capabilities | Banking AI Constitution; model card; fairness spec | Data contract (7yr retention; SHAP fields) | Eval gates (demographic parity gate; SR 11-7 docs) |
@@ -561,6 +562,7 @@ Next review: 12 months or on significant model update
 **Context:** Large hospital network deploying an AI prior authorization agent. FDA SaMD considerations; HIPAA mandatory; HITL required for all clinical decisions. Cascadia case study reference.
 
 **Key regulatory constraints:**
+
 - HIPAA: Patient data protection; minimum necessary standard
 - FDA SaMD: If making/assisting clinical decisions, may require clearance
 - EU MDR: If used in EU hospitals
@@ -569,7 +571,7 @@ Next review: 12 months or on significant model update
 **Stage swimlane:**
 
 | Stage | EA | RAI Lead | Data Architect | Solution Architect |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Incubation** | AI Strategy Brief; SL3 (clinical) | AI Impact Assessment: HIGH + FDA SaMD check | PHI landscape assessment | Clinical workflow feasibility |
 | **RFP** | Architecture criteria (HIPAA BAA mandatory) | RAI criteria (clinical evidence base; bias by demographic) | PHI data contract requirements | Clinical integration requirements (EHR APIs) |
 | **Design & Build** | Healthcare AI reference arch | Healthcare AI Constitution; clinician override design; bias spec by demographic | PHI data contract (de-identification; IRB) | Clinical workflow SDD; HITL design |
@@ -608,6 +610,7 @@ escalation_rules:
 **Context:** National government deploying an AI agent to guide citizens through benefits eligibility. Sovereign infrastructure mandatory. StateDHS case study reference.
 
 **Key regulatory constraints:**
+
 - EU AI Act Art. 14: Human oversight mandatory (benefits determination is High-Risk Annex III §1)
 - GDPR: Citizen data protected; right to human review of automated decisions
 - Data sovereignty: Citizen data must remain on sovereign national infrastructure
@@ -616,7 +619,7 @@ escalation_rules:
 **Stage swimlane:**
 
 | Stage | EA | SA | RAI Lead | Data Architect |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Incubation** | AI Strategy Brief; sovereign infra mandatory; SL3 | Threat model (citizen targeting attack surface) | AI Impact Assessment: HIGH-RISK (Annex III §1); democratic governance assessment | Data sovereignty assessment (citizen data classification) |
 | **RFP** | Sovereign infra requirements (air-gappable); on-prem preferred | Security requirements (sovereign data center; government security standards) | Democratic governance criteria; AI Bill of Rights compliance | Sovereign residency mandatory; citizen data never leaves national infra |
 | **Design & Build** | Government sovereign AI reference arch; ARB submission to government architecture board | Government security architecture (national security standards) | Government AI Constitution; Algorithmic Impact Assessment (public) | Citizen data contract (sovereign; GDPR; right to deletion) |

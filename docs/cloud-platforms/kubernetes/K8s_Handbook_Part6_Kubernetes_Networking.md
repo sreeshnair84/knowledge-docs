@@ -9,69 +9,69 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY** 
+# **ENTERPRISE KUBERNETES MASTERY**
 
-AI Platform Engineering Handbook 
+AI Platform Engineering Handbook
 
-PART VI KUBERNETES NETWORKING 
+PART VI KUBERNETES NETWORKING
 
-CNI, eBPF, Service Mesh, Gateway API, Multi-Cluster 
+CNI, eBPF, Service Mesh, Gateway API, Multi-Cluster
 
-Volume 6 of 16 Core Series Prerequisites: Parts I through V Edition 2025-2026 
+Volume 6 of 16 Core Series Prerequisites: Parts I through V Edition 2025-2026
 
-## **TABLE OF CONTENTS** 
+## **TABLE OF CONTENTS**
 
-1. Kubernetes Networking Model ..................... 3 
+1. Kubernetes Networking Model ..................... 3
 
-2. Pod Networking Deep Dive ........................ 6 
+2. Pod Networking Deep Dive ........................ 6
 
-3. CNI Architecture and Plugin Selection ........... 11 
+3. CNI Architecture and Plugin Selection ........... 11
 
-4. Calico -- Policy-First Networking ............... 16 
+4. Calico -- Policy-First Networking ............... 16
 
-5. Cilium -- eBPF-Native Networking ................ 20 
+5. Cilium -- eBPF-Native Networking ................ 20
 
-6. Flannel and Other CNIs .......................... 26 
+6. Flannel and Other CNIs .......................... 26
 
-7. Service Networking Internals .................... 29 
+7. Service Networking Internals .................... 29
 
-8. CoreDNS Advanced Patterns ....................... 33 
+8. CoreDNS Advanced Patterns ....................... 33
 
-9. Ingress Controllers in Production ............... 36 
+9. Ingress Controllers in Production ............... 36
 
-10. Gateway API -- Advanced Patterns ............... 40 
+10. Gateway API -- Advanced Patterns ............... 40
 
-11. Service Mesh: Istio Deep Dive .................. 44 
+11. Service Mesh: Istio Deep Dive .................. 44
 
-12. Linkerd and Ambient Mesh ....................... 51 
+12. Linkerd and Ambient Mesh ....................... 51
 
-13. East-West and North-South Traffic Patterns ..... 55 
+13. East-West and North-South Traffic Patterns ..... 55
 
-14. Multi-Cluster Networking ....................... 59 
+14. Multi-Cluster Networking ....................... 59
 
-15. Network Observability .......................... 64 
+15. Network Observability .......................... 64
 
-16. Network Troubleshooting Playbook ............... 67 
+16. Network Troubleshooting Playbook ............... 67
 
-17. Hands-On Exercises ............................. 71 
+17. Hands-On Exercises ............................. 71
 
-#### **CHAPTER 1** 
+#### **CHAPTER 1**
 
-## **Kubernetes Networking Model** 
+## **Kubernetes Networking Model**
 
-Kubernetes networking is built on a flat, unified IP model. Unlike Docker's default NAT-based networking, Kubernetes requires that every Pod gets a unique, routable IP address and that Pods can communicate with each other without NAT. This model simplifies application networking dramatically but requires careful infrastructure design. 
+Kubernetes networking is built on a flat, unified IP model. Unlike Docker's default NAT-based networking, Kubernetes requires that every Pod gets a unique, routable IP address and that Pods can communicate with each other without NAT. This model simplifies application networking dramatically but requires careful infrastructure design.
 
-### **The Four Networking Requirements** 
+### **The Four Networking Requirements**
 
-- **1. Pod-to-Pod (same node)** : Pods on the same node must be able to communicate directly using their Pod IPs without NAT. Implemented via a Linux bridge or eBPF on the node. 
+- **1. Pod-to-Pod (same node)** : Pods on the same node must be able to communicate directly using their Pod IPs without NAT. Implemented via a Linux bridge or eBPF on the node.
 
-- **2. Pod-to-Pod (cross-node)** : Pods on different nodes must communicate using their Pod IPs without NAT. Implemented via overlay networks (VXLAN), BGP routing, or eBPF. 
+- **2. Pod-to-Pod (cross-node)** : Pods on different nodes must communicate using their Pod IPs without NAT. Implemented via overlay networks (VXLAN), BGP routing, or eBPF.
 
-- **3. Pod-to-Service** : Pods must be able to reach Services by their ClusterIP or DNS name. Implemented via iptables DNAT (kube-proxy) or eBPF (Cilium). 
+- **3. Pod-to-Service** : Pods must be able to reach Services by their ClusterIP or DNS name. Implemented via iptables DNAT (kube-proxy) or eBPF (Cilium).
 
-- **4. External-to-Service** : External clients must reach Services via NodePort, LoadBalancer, Ingress, or Gateway. Implemented via cloud load balancers and node routing. 
+- **4. External-to-Service** : External clients must reach Services via NodePort, LoadBalancer, Ingress, or Gateway. Implemented via cloud load balancers and node routing.
 
-### **The Pod IP Model** 
+### **The Pod IP Model**
 
 ```
 Node IP space and Pod IP space are different and must not overlap: Example cluster network
@@ -84,7 +84,7 @@ common enterprise problem) - On-premises RFC 1918 ranges in use # Specify at clu
 These cannot be changed after cluster creation without rebuild
 ```
 
-### **Network Plugin Requirements (CNI Contract)** 
+### **Network Plugin Requirements (CNI Contract)**
 
 ```
 Every CNI plugin must satisfy the Kubernetes network contract: 1. Each Pod gets a unique IP
@@ -96,13 +96,13 @@ NetworkPolicy support - Encryption capabilities (WireGuard, IPsec) - Multi-clust
 Observability depth
 ```
 
-#### **CHAPTER 2** 
+#### **CHAPTER 2**
 
-## **Pod Networking Deep Dive** 
+## **Pod Networking Deep Dive**
 
-Understanding exactly what happens at the Linux level when a Pod is created and starts communicating is essential for network troubleshooting, CNI selection, and performance optimisation. 
+Understanding exactly what happens at the Linux level when a Pod is created and starts communicating is essential for network troubleshooting, CNI selection, and performance optimisation.
 
-### **Pod Network Namespace Setup Sequence** 
+### **Pod Network Namespace Setup Sequence**
 
 ```
 When kubelet creates a Pod, the networking is set up in this sequence: 1. containerd creates
@@ -125,7 +125,7 @@ print(json.load(sys.stdin)['status']['pid'])" # Inspect from host: nsenter -t PO
 addr show nsenter -t POD_PID -n ip route show ip link show | grep veth
 ```
 
-### **Packet Flow: Pod-to-Pod Same Node (Bridge CNI)** 
+### **Packet Flow: Pod-to-Pod Same Node (Bridge CNI)**
 
 ```
 Pod-A (10.244.1.5) -> Pod-B (10.244.1.6), SAME NODE with Linux bridge: 1. Pod-A sends:
@@ -137,7 +137,7 @@ Pod-B receives packet Total path: 2 veth crossings + bridge L2 lookup Latency: s
 on same host
 ```
 
-### **Packet Flow: Pod-to-Pod Cross-Node (VXLAN)** 
+### **Packet Flow: Pod-to-Pod Cross-Node (VXLAN)**
 
 ```
 Pod-A (node-01: 10.244.0.5) -> Pod-B (node-02: 10.244.1.7): VXLAN OVERLAY PATH (Flannel/Calico
@@ -154,13 +154,13 @@ across physical network 4. node-02 receives, routes to Pod-B via local veth No e
 overhead; requires L2 adjacency or BGP peer
 ```
 
-#### **CHAPTER 3** 
+#### **CHAPTER 3**
 
-## **CNI Architecture and Plugin Selection** 
+## **CNI Architecture and Plugin Selection**
 
-The Container Network Interface (CNI) is a specification and set of libraries for writing plugins to configure network interfaces in Linux containers. When a Pod is created or deleted, kubelet calls the CNI plugin to set up or tear down networking. 
+The Container Network Interface (CNI) is a specification and set of libraries for writing plugins to configure network interfaces in Linux containers. When a Pod is created or deleted, kubelet calls the CNI plugin to set up or tear down networking.
 
-### **CNI Plugin Architecture** 
+### **CNI Plugin Architecture**
 
 ```
 CNI plugin execution flow: kubelet | | executes CNI plugin binary with: | -
@@ -171,7 +171,7 @@ IPs # CNI config location: ls /etc/cni/net.d/ cat /etc/cni/net.d/10-calico.confl
 binaries: ls /opt/cni/bin/
 ```
 
-### **CNI Plugin Comparison Matrix** 
+### **CNI Plugin Comparison Matrix**
 
 |**Feature**|**Calico**|**Cilium**|**Flannel**|**Antrea**|**WeaveNe**<br>**t**|
 |---|---|---|---|---|---|
@@ -190,25 +190,25 @@ binaries: ls /opt/cni/bin/
 |---|---|---|---|---|---|
 |Best for|BGP environ<br>ments,<br>on-prem|Large scale,<br>eBPF, AI|Simple<br>clusters|VMware/OV<br>S|Dev/test|
 
-### **CNI Selection Guide for Enterprise** 
+### **CNI Selection Guide for Enterprise**
 
-- **Greenfield cloud-native cluster at scale** : Cilium with eBPF kube-proxy replacement. Best performance, richest observability via Hubble, native L7 policy, WireGuard encryption. 
+- **Greenfield cloud-native cluster at scale** : Cilium with eBPF kube-proxy replacement. Best performance, richest observability via Hubble, native L7 policy, WireGuard encryption.
 
-- **On-premises with BGP infrastructure** : Calico with BGP mode. Native routing without overlay, integrates with existing network fabric, mature enterprise support. 
+- **On-premises with BGP infrastructure** : Calico with BGP mode. Native routing without overlay, integrates with existing network fabric, mature enterprise support.
 
-- **Simple cluster (dev, edge, small production)** : Flannel for simplicity, or Calico for NetworkPolicy support without complexity. 
+- **Simple cluster (dev, edge, small production)** : Flannel for simplicity, or Calico for NetworkPolicy support without complexity.
 
-- **OpenShift / Red Hat environment** : OVN-Kubernetes (default in OpenShift 4.x), or Calico. 
+- **OpenShift / Red Hat environment** : OVN-Kubernetes (default in OpenShift 4.x), or Calico.
 
-- **AI/ML cluster with high network throughput** : Cilium with native routing + RDMA-capable NICs for GPU-to-GPU communication; consider SR-IOV for network-intensive workloads. 
+- **AI/ML cluster with high network throughput** : Cilium with native routing + RDMA-capable NICs for GPU-to-GPU communication; consider SR-IOV for network-intensive workloads.
 
-#### **CHAPTER 4** 
+#### **CHAPTER 4**
 
-## **Calico -- Policy-First Networking** 
+## **Calico -- Policy-First Networking**
 
-Calico (Tigera) is the most widely deployed Kubernetes CNI, particularly in enterprise on-premises environments. It supports multiple data planes (iptables, eBPF, VPP) and offers rich NetworkPolicy with BGP-based routing for zero-overhead direct pod networking. 
+Calico (Tigera) is the most widely deployed Kubernetes CNI, particularly in enterprise on-premises environments. It supports multiple data planes (iptables, eBPF, VPP) and offers rich NetworkPolicy with BGP-based routing for zero-overhead direct pod networking.
 
-### **Calico Architecture** 
+### **Calico Architecture**
 
 ```
 Calico components: calico-node DaemonSet (on every node): +-- Felix: programs iptables/eBPF
@@ -221,7 +221,7 @@ iptables (default, most compatible) eBPF: Replaces iptables with eBPF maps (bett
 DPDK-based (ultra-high performance, specialist)
 ```
 
-##### **Calico BGP Configuration** 
+##### **Calico BGP Configuration**
 
 ```
 # Default BGP configuration (full mesh between nodes): apiVersion: projectcalico.org/v3 kind:
@@ -234,9 +234,9 @@ metadata: name: bgppeer-tor spec: peerIP: 192.168.1.1 asNumber: 64500 nodeSelect
 All nodes peer with ToR switch
 ```
 
-##### **Calico GlobalNetworkPolicy** 
+##### **Calico GlobalNetworkPolicy**
 
-Calico extends Kubernetes NetworkPolicy with GlobalNetworkPolicy (cluster-scoped) and richer selector syntax: 
+Calico extends Kubernetes NetworkPolicy with GlobalNetworkPolicy (cluster-scoped) and richer selector syntax:
 
 ```
 # Calico GlobalNetworkPolicy -- applies across all namespaces: apiVersion:
@@ -248,13 +248,13 @@ allow-api-egress namespace: production spec: selector: app == 'myapp' types: [Eg
 - action: Allow destination: domains: ['api.openai.com', '*.anthropic.com']
 ```
 
-#### **CHAPTER 5** 
+#### **CHAPTER 5**
 
-## **Cilium -- eBPF-Native Networking** 
+## **Cilium -- eBPF-Native Networking**
 
-Cilium uses eBPF as its primary data plane, replacing iptables for service routing, network policy enforcement, and load balancing. This enables significantly better performance, richer observability (Hubble), and L7-aware policies at scale. Cilium is the recommended CNI for large-scale enterprise and AI workloads. 
+Cilium uses eBPF as its primary data plane, replacing iptables for service routing, network policy enforcement, and load balancing. This enables significantly better performance, richer observability (Hubble), and L7-aware policies at scale. Cilium is the recommended CNI for large-scale enterprise and AI workloads.
 
-### **Cilium Architecture** 
+### **Cilium Architecture**
 
 ```
 Cilium components: cilium DaemonSet (on every node): +-- Cilium Agent: manages eBPF programs,
@@ -268,9 +268,9 @@ protection TC (Traffic Control): Endpoint-to-endpoint routing Policy enforcement
 tracking Socket hooks: Service routing without packet looping Transparent proxy insertion
 ```
 
-### **Cilium kube-proxy Replacement** 
+### **Cilium kube-proxy Replacement**
 
-Cilium's most significant capability is replacing kube-proxy entirely with eBPF, eliminating iptables from the Service routing path: 
+Cilium's most significant capability is replacing kube-proxy entirely with eBPF, eliminating iptables from the Service routing path:
 
 ```
 # Install Cilium with full kube-proxy replacement: helm repo add cilium
@@ -284,9 +284,9 @@ services: iptables ~10ms overhead vs eBPF ~1us # Conntrack: kernel conntrack vs 
 conntrack # CPU overhead: 30-40% less CPU for network processing at scale
 ```
 
-### **Hubble Network Observability** 
+### **Hubble Network Observability**
 
-Hubble provides real-time, L3-L7 network flow visibility across the entire cluster without any application instrumentation: 
+Hubble provides real-time, L3-L7 network flow visibility across the entire cluster without any application instrumentation:
 
 ```
 # Hubble CLI (installed separately): # Observe all network flows in real time: hubble observe
@@ -299,9 +299,9 @@ Hubble metrics in Prometheus: # hubble_flows_processed_total # hubble_drop_total
 namespace, direction) # hubble_tcp_flags_total # hubble_http_requests_total (L7 visibility)
 ```
 
-##### **Cilium L7 Network Policy** 
+##### **Cilium L7 Network Policy**
 
-Cilium can enforce HTTP/gRPC policy at L7 using its embedded Envoy proxy or eBPF-native HTTP inspection: 
+Cilium can enforce HTTP/gRPC policy at L7 using its embedded Envoy proxy or eBPF-native HTTP inspection:
 
 ```
 apiVersion: cilium.io/v2 kind: CiliumNetworkPolicy metadata: name: api-l7-policy namespace:
@@ -310,13 +310,13 @@ production spec: endpointSelector: matchLabels: { app: api-server } ingress: - f
 method: GET path: /api/v1/.* - method: POST path: /api/v1/inference headers: - X-API-Key: .*
 ```
 
-#### **CHAPTER 6** 
+#### **CHAPTER 6**
 
-## **Flannel and Other CNIs** 
+## **Flannel and Other CNIs**
 
-Flannel is the simplest widely-used CNI. It provides basic overlay networking without NetworkPolicy support. Suitable for development clusters, edge deployments, and simple production environments where Calico or Cilium capabilities are not needed. 
+Flannel is the simplest widely-used CNI. It provides basic overlay networking without NetworkPolicy support. Suitable for development clusters, edge deployments, and simple production environments where Calico or Cilium capabilities are not needed.
 
-### **Flannel Backends** 
+### **Flannel Backends**
 
 |**Backend**|**Mechanism**|**Performance**|**Requirements**|
 |---|---|---|---|
@@ -325,27 +325,27 @@ Flannel is the simplest widely-used CNI. It provides basic overlay networking wi
 |WireGuard|Encrypted VXLAN|Good; encryption<br>overhead|WireGuard kernel module|
 |UDP<br>(deprecated)|Userspace UDP|Poor; avoid|Legacy only|
 
-### **Other Notable CNIs** 
+### **Other Notable CNIs**
 
-- **Antrea** : VMware-originated; OVS-based; integrates with NSX; Octant UI. 
+- **Antrea** : VMware-originated; OVS-based; integrates with NSX; Octant UI.
 
-- **OVN-Kubernetes** : OpenVSwitch + OVN; default in OpenShift; good for VMware environments. 
+- **OVN-Kubernetes** : OpenVSwitch + OVN; default in OpenShift; good for VMware environments.
 
-- **Multus** : Meta-CNI enabling multiple CNI plugins per Pod; used for SR-IOV + primary CNI. 
+- **Multus** : Meta-CNI enabling multiple CNI plugins per Pod; used for SR-IOV + primary CNI.
 
-- **Whereabouts** : IPAM plugin for static IP management across clusters. 
+- **Whereabouts** : IPAM plugin for static IP management across clusters.
 
-- **SR-IOV CNI** : Hardware NIC virtualisation; near wire-speed networking for AI/HPC workloads. 
+- **SR-IOV CNI** : Hardware NIC virtualisation; near wire-speed networking for AI/HPC workloads.
 
-- **DPDK/VPP** : Kernel-bypass networking for extreme throughput (100Gbps+); specialist use. 
+- **DPDK/VPP** : Kernel-bypass networking for extreme throughput (100Gbps+); specialist use.
 
-#### **CHAPTER 7** 
+#### **CHAPTER 7**
 
-## **Service Networking Internals** 
+## **Service Networking Internals**
 
-Understanding exactly how Service ClusterIPs work at the Linux level is essential for troubleshooting connectivity issues and understanding performance characteristics. The implementation differs significantly between iptables, IPVS, and eBPF modes. 
+Understanding exactly how Service ClusterIPs work at the Linux level is essential for troubleshooting connectivity issues and understanding performance characteristics. The implementation differs significantly between iptables, IPVS, and eBPF modes.
 
-### **iptables Service Implementation** 
+### **iptables Service Implementation**
 
 ```
 iptables chains created by kube-proxy for a Service with 3 endpoints: Service: my-svc
@@ -360,7 +360,7 @@ rule evaluation: ~1-2 microseconds # At 10K services: 200-400ms added latency ->
 high-rate traffic
 ```
 
-### **IPVS Service Implementation** 
+### **IPVS Service Implementation**
 
 ```
 IPVS (IP Virtual Server) uses kernel hash tables for O(1) Service lookup: kube-proxy creates
@@ -372,7 +372,7 @@ hash (client IP affinity) sed: Shortest expected delay nq: Never queue # Enable 
 Inspect IPVS tables: ipvsadm -Ln | grep -A5 10.96.50.100
 ```
 
-### **Cilium eBPF Service Implementation** 
+### **Cilium eBPF Service Implementation**
 
 ```
 Cilium replaces IPVS and iptables with eBPF maps at the socket level: BPF map: SERVICE_MAP
@@ -387,13 +387,13 @@ SNAT for same-node backends) # Inspect Cilium BPF service map: cilium service li
 lb list
 ```
 
-#### **CHAPTER 8** 
+#### **CHAPTER 8**
 
-## **CoreDNS Advanced Patterns** 
+## **CoreDNS Advanced Patterns**
 
-CoreDNS is the DNS backbone of every Kubernetes cluster. Advanced configurations include forwarding to internal DNS, stub zones for external services, response caching tuning, and external DNS for automatic DNS record management. 
+CoreDNS is the DNS backbone of every Kubernetes cluster. Advanced configurations include forwarding to internal DNS, stub zones for external services, response caching tuning, and external DNS for automatic DNS record management.
 
-##### **Topology-Aware DNS** 
+##### **Topology-Aware DNS**
 
 ```
 # External DNS -- automatically create DNS records for Services/Ingress: # When you create:
@@ -406,7 +406,7 @@ external-dns.alpha.kubernetes.io/hostname: api.example.com
 external-dns.alpha.kubernetes.io/ttl: '60'
 ```
 
-### **CoreDNS Performance Tuning** 
+### **CoreDNS Performance Tuning**
 
 ```
 # CoreDNS ConfigMap tuning for large clusters: .:53 { errors health { lameduck 5s } ready
@@ -422,13 +422,13 @@ cache on each node kubectl apply -f https://raw.githubusercontent.com/kubernetes
 ster/cluster/addons/dns/nodelocaldns/nodelocaldns.yaml
 ```
 
-#### **CHAPTER 9** 
+#### **CHAPTER 9**
 
-## **Ingress Controllers in Production** 
+## **Ingress Controllers in Production**
 
-An Ingress controller implements the Ingress resource, providing HTTP routing, TLS termination, and load balancing for external traffic entering the cluster. The Ingress resource is controller-agnostic; the controller implements the behaviour. 
+An Ingress controller implements the Ingress resource, providing HTTP routing, TLS termination, and load balancing for external traffic entering the cluster. The Ingress resource is controller-agnostic; the controller implements the behaviour.
 
-### **Ingress Controller Comparison** 
+### **Ingress Controller Comparison**
 
 |**Controller**|**Proxy**|**Strengths**|**Scale**|**Use Case**|
 |---|---|---|---|---|
@@ -440,7 +440,7 @@ An Ingress controller implements the Ingress resource, providing HTTP routing, T
 |Cilium Gateway|eBPF+Envoy|eBPF performance,<br>Gateway API native|Very large|Cilium clusters|
 |Kong|Nginx+Kong|API gateway features (auth,<br>rate limit, plugins)|Large|API management|
 
-##### **ingress-nginx Production Configuration** 
+##### **ingress-nginx Production Configuration**
 
 ```
 # Install ingress-nginx with production settings: helm repo add ingress-nginx
@@ -471,13 +471,13 @@ log-format-escape-json: 'true' log-format-upstream:
 '{"time":"$time_iso8601","status":"$status",...}'
 ```
 
-#### **CHAPTER 10** 
+#### **CHAPTER 10**
 
-## **Gateway API -- Advanced Patterns** 
+## **Gateway API -- Advanced Patterns**
 
-Gateway API is the next generation Kubernetes networking API, graduating to stable (v1) in Kubernetes 1.28. It addresses the limitations of Ingress: role-based management, richer routing semantics, protocol support beyond HTTP, and extensibility. 
+Gateway API is the next generation Kubernetes networking API, graduating to stable (v1) in Kubernetes 1.28. It addresses the limitations of Ingress: role-based management, richer routing semantics, protocol support beyond HTTP, and extensibility.
 
-### **Gateway API Resource Hierarchy** 
+### **Gateway API Resource Hierarchy**
 
 ```
 ROLE: Infrastructure Provider (cloud team) GatewayClass: Defines the type of Gateway (which
@@ -494,9 +494,9 @@ namespace: production } spec: parentRefs: [{name: prod-gateway, namespace: infra
 name: api-service port: 80 weight: 90 - name: api-canary port: 80 weight: 10
 ```
 
-##### **Gateway API for AI Serving** 
+##### **Gateway API for AI Serving**
 
-Gateway API with traffic splitting is ideal for LLM inference canary deployments: 
+Gateway API with traffic splitting is ideal for LLM inference canary deployments:
 
 ```
 # Canary deployment: route 5% of requests to new LLM version apiVersion:
@@ -508,13 +508,13 @@ llm-v1 port: 80 weight: 95 - name: llm-v2 port: 80 weight: 5 filters: - type:
 ResponseHeaderModifier responseHeaderModifier: add: - name: X-Served-By value: llm-gateway
 ```
 
-#### **CHAPTER 11** 
+#### **CHAPTER 11**
 
-## **Service Mesh: Istio Deep Dive** 
+## **Service Mesh: Istio Deep Dive**
 
-A service mesh adds a transparent infrastructure layer for service-to-service communication, providing: mutual TLS (mTLS) for encryption and authentication, observability (traces, metrics, logs), traffic management (retries, timeouts, circuit breaking, canary deployments), and policy enforcement -- all without changing application code. 
+A service mesh adds a transparent infrastructure layer for service-to-service communication, providing: mutual TLS (mTLS) for encryption and authentication, observability (traces, metrics, logs), traffic management (retries, timeouts, circuit breaking, canary deployments), and policy enforcement -- all without changing application code.
 
-### **Istio Architecture** 
+### **Istio Architecture**
 
 ```
 Istio components: CONTROL PLANE: istiod Pilot: Service discovery; push xDS config to proxies
@@ -529,7 +529,7 @@ istiod pushes configuration to all Envoy proxies via gRPC streaming LDS (Listene
 (Routes), CDS (Clusters), EDS (Endpoints)
 ```
 
-### **Istio Traffic Management** 
+### **Istio Traffic Management**
 
 ```
 # VirtualService -- traffic routing rules: apiVersion: networking.istio.io/v1 kind:
@@ -547,13 +547,13 @@ interval: 10s baseEjectionTime: 30s subsets: - name: v1 labels: { version: v1 } 
 labels: { version: v2 }
 ```
 
-#### **CHAPTER 12** 
+#### **CHAPTER 12**
 
-## **Linkerd and Ambient Mesh** 
+## **Linkerd and Ambient Mesh**
 
-### **Linkerd -- Lightweight Service Mesh** 
+### **Linkerd -- Lightweight Service Mesh**
 
-Linkerd focuses on simplicity, performance, and security. Unlike Istio's Envoy-based heavy sidecar, Linkerd uses a micro-proxy written in Rust (linkerd2-proxy) that is much smaller and faster: 
+Linkerd focuses on simplicity, performance, and security. Unlike Istio's Envoy-based heavy sidecar, Linkerd uses a micro-proxy written in Rust (linkerd2-proxy) that is much smaller and faster:
 
 |**Dimension**|**Istio**|**Linkerd**|
 |---|---|---|
@@ -567,9 +567,9 @@ Linkerd focuses on simplicity, performance, and security. Unlike Istio's Envoy-b
 |mTLS|Yes (cert-manager or Citadel)|Yes (automatic, cert-manager)|
 |Best for|Complex traffic management, full<br>control|Simplicity, low overhead, Rust-safe|
 
-### **Istio Ambient Mesh -- Sidecar-Free Architecture** 
+### **Istio Ambient Mesh -- Sidecar-Free Architecture**
 
-Ambient Mesh (Istio 1.21+, stable 2025) eliminates the sidecar model entirely, moving mesh functionality to the node level and a dedicated waypoint proxy layer. This reduces resource overhead dramatically and removes the Pod restart requirement for mesh adoption: 
+Ambient Mesh (Istio 1.21+, stable 2025) eliminates the sidecar model entirely, moving mesh functionality to the node level and a dedicated waypoint proxy layer. This reduces resource overhead dramatically and removes the Pod restart requirement for mesh adoption:
 
 ```
 Ambient Mesh architecture: LAYER 1: ztunnel (per-node DaemonSet) Lightweight Rust proxy on
@@ -585,11 +585,11 @@ namespace into ambient mesh: kubectl label namespace production
 istio.io/dataplane-mode=ambient
 ```
 
-#### **CHAPTER 13** 
+#### **CHAPTER 13**
 
-## **East-West and North-South Traffic Patterns** 
+## **East-West and North-South Traffic Patterns**
 
-### **Traffic Flow Classification** 
+### **Traffic Flow Classification**
 
 |**Pattern**|**Direction**|**Examples**|**Primary Controls**|
 |---|---|---|---|
@@ -598,27 +598,27 @@ istio.io/dataplane-mode=ambient
 |East-West (in-cluster)|Pod <-> Pod|Service-to-service, DB calls|Service, NetworkPolicy, mTLS|
 |East-West<br>(cross-cluster)|Cluster <-> Cluster|Multi-region failover|Cluster Mesh, Federation|
 
-### **Egress Control Patterns** 
+### **Egress Control Patterns**
 
-Controlling outbound traffic from Pods prevents data exfiltration and enforces compliance. Multiple layers provide defence in depth: 
+Controlling outbound traffic from Pods prevents data exfiltration and enforces compliance. Multiple layers provide defence in depth:
 
-- **NetworkPolicy egress rules** : Block all egress by default; allow only specific destinations. Kubernetes-native but limited to IP/port (no FQDN). 
+- **NetworkPolicy egress rules** : Block all egress by default; allow only specific destinations. Kubernetes-native but limited to IP/port (no FQDN).
 
-- **Calico FQDN-based egress** : Allow egress to api.openai.com without knowing IPs. Calico Enterprise resolves FQDN to IPs dynamically and enforces accordingly. 
+- **Calico FQDN-based egress** : Allow egress to api.openai.com without knowing IPs. Calico Enterprise resolves FQDN to IPs dynamically and enforces accordingly.
 
-- **Cilium FQDN policy** : Same as Calico; native in open-source Cilium. 
+- **Cilium FQDN policy** : Same as Calico; native in open-source Cilium.
 
-- **Istio Egress Gateway** : Route all external traffic through a dedicated Egress Gateway Pod. Enables centralised logging, access control, and TLS origination for external calls. 
+- **Istio Egress Gateway** : Route all external traffic through a dedicated Egress Gateway Pod. Enables centralised logging, access control, and TLS origination for external calls.
 
-- **HTTP proxy (Squid/Envoy)** : Traditional HTTP CONNECT proxy. Some enterprises require all outbound HTTP to traverse a proxy for DLP scanning. 
+- **HTTP proxy (Squid/Envoy)** : Traditional HTTP CONNECT proxy. Some enterprises require all outbound HTTP to traverse a proxy for DLP scanning.
 
-#### **CHAPTER 14** 
+#### **CHAPTER 14**
 
-## **Multi-Cluster Networking** 
+## **Multi-Cluster Networking**
 
-Multi-cluster networking extends Kubernetes Services and networking across multiple clusters. This is essential for global deployments, disaster recovery, regulatory data locality, and AI platform architectures requiring model serving in multiple regions. 
+Multi-cluster networking extends Kubernetes Services and networking across multiple clusters. This is essential for global deployments, disaster recovery, regulatory data locality, and AI platform architectures requiring model serving in multiple regions.
 
-### **Multi-Cluster Approaches** 
+### **Multi-Cluster Approaches**
 
 |**Approach**|**Mechanism**|**Latency**|**Complexity**|**Best For**|
 |---|---|---|---|---|
@@ -629,9 +629,9 @@ Multi-cluster networking extends Kubernetes Services and networking across multi
 |DNS-based<br>(external-dns)|DNS round-robin/failover|High (DNS<br>TTL)|Low|Simple failover, CDN|
 |Service API<br>(Multi-Cluster SIGs)|Standard API (emerging)|Varies|Low|Future standard|
 
-### **Cilium Cluster Mesh** 
+### **Cilium Cluster Mesh**
 
-Cilium Cluster Mesh enables transparent cross-cluster service discovery and direct Pod-to-Pod communication between clusters sharing the same Cilium installation: 
+Cilium Cluster Mesh enables transparent cross-cluster service discovery and direct Pod-to-Pod communication between clusters sharing the same Cilium installation:
 
 ```
 # Connect two clusters with Cilium Cluster Mesh: # On cluster-1: cilium clustermesh enable
@@ -648,13 +648,13 @@ Prefer local cluster (failover to remote if local unavailable): kubectl annotate
 my-api \ service.cilium.io/shared=false service.cilium.io/global=true
 ```
 
-#### **CHAPTER 15** 
+#### **CHAPTER 15**
 
-## **Network Observability** 
+## **Network Observability**
 
-Network observability in Kubernetes spans from basic connectivity metrics to full L7 flow visibility. The right observability stack depends on your CNI choice and observability requirements. 
+Network observability in Kubernetes spans from basic connectivity metrics to full L7 flow visibility. The right observability stack depends on your CNI choice and observability requirements.
 
-### **Observability Stack by CNI** 
+### **Observability Stack by CNI**
 
 |**CNI**|**L3/L4 Flows**|**L7 Visibility**|**Tool**|
 |---|---|---|---|
@@ -663,27 +663,27 @@ Network observability in Kubernetes spans from basic connectivity metrics to ful
 |Any CNI|Network metrics|Via service mesh|Prometheus + Grafana|
 |Any CNI|eBPF tracing|Syscall-level|Pixie, BPFTrace|
 
-### **Key Network Metrics to Monitor** 
+### **Key Network Metrics to Monitor**
 
-- **Pod network throughput** : `container_network_transmit_bytes_total,` 
+- **Pod network throughput** : `container_network_transmit_bytes_total,`
 
-   - `container_network_receive_bytes_total` 
+  - `container_network_receive_bytes_total`
 
-- **DNS latency and errors** : `coredns_dns_request_duration_seconds, coredns_dns_responses_total` 
+- **DNS latency and errors** : `coredns_dns_request_duration_seconds, coredns_dns_responses_total`
 
-- **Service latency** : `istio_request_duration_milliseconds (Istio), hubble_http_request_duration (Cilium)` 
+- **Service latency** : `istio_request_duration_milliseconds (Istio), hubble_http_request_duration (Cilium)`
 
-- **Connection errors** : `container_network_transmit_errors_total, net_conntrack_entries (conntrack table)` 
+- **Connection errors** : `container_network_transmit_errors_total, net_conntrack_entries (conntrack table)`
 
-- **iptables/eBPF drops** : `node_netstat_IpExt_InOctets, cilium_drop_count_total` 
+- **iptables/eBPF drops** : `node_netstat_IpExt_InOctets, cilium_drop_count_total`
 
-- **DNS lookup failures** : `coredns_dns_responses_total where rcode=SERVFAIL,NXDOMAIN` 
+- **DNS lookup failures** : `coredns_dns_responses_total where rcode=SERVFAIL,NXDOMAIN`
 
-#### **CHAPTER 16** 
+#### **CHAPTER 16**
 
-## **Network Troubleshooting Playbook** 
+## **Network Troubleshooting Playbook**
 
-##### **Issue: Pod cannot reach another Pod** 
+##### **Issue: Pod cannot reach another Pod**
 
 ```
 Step 1: Verify Pod IPs and routing kubectl get pod -o wide # Check Pod IPs nsenter -t POD_PID
@@ -694,7 +694,7 @@ CNI-specific Cilium: cilium monitor --from-pod source-pod Calico: kubectl logs -
 -l k8s-app=calico-node
 ```
 
-##### **Issue: Service not resolving** 
+##### **Issue: Service not resolving**
 
 ```
 Step 1: Verify DNS configuration kubectl exec -it test-pod -- cat /etc/resolv.conf kubectl
@@ -704,7 +704,7 @@ Verify Service and Endpoints kubectl get svc my-service kubectl get endpoints my
 Empty endpoints = selector does not match any Ready Pods
 ```
 
-##### **Issue: High network latency** 
+##### **Issue: High network latency**
 
 ```
 Step 1: Baseline with iperf3 kubectl run iperf-server --image=networkstatic/iperf3 -- iperf3
@@ -718,13 +718,13 @@ net.netfilter.nf_conntrack_count sysctl net.netfilter.nf_conntrack_max # If coun
 max: connection tracking exhaustion
 ```
 
-#### **CHAPTER 17** 
+#### **CHAPTER 17**
 
-## **Hands-On Exercises** 
+## **Hands-On Exercises**
 
-### **Exercise 6.1 -- Trace End-to-End Packet Flow** 
+### **Exercise 6.1 -- Trace End-to-End Packet Flow**
 
-Trace every hop of a cross-node request: 
+Trace every hop of a cross-node request:
 
 ```
 # Deploy two pods on different nodes: kubectl run pod-a --image=nicolaka/netshoot -- sleep
@@ -736,9 +736,9 @@ direct # Capture VXLAN traffic (if overlay): tcpdump -i flannel.1 -n host $POD_B
 /tmp/capture.pcap # Then replay request and inspect encapsulation
 ```
 
-### **Exercise 6.2 -- NetworkPolicy Enforcement** 
+### **Exercise 6.2 -- NetworkPolicy Enforcement**
 
-Apply default-deny and verify enforcement: 
+Apply default-deny and verify enforcement:
 
 ```
 # Create isolated namespace: kubectl create namespace netpol-test # Deploy frontend and
@@ -749,6 +749,6 @@ frontend -- curl -s http://backend # Apply default-deny: kubectl apply -n netpol
 <backend: # (apply allow policy; verify connectivity restored)
 ```
 
-##### **End of Part VI -- Continue to Part VII: Storage** 
+##### **End of Part VI -- Continue to Part VII: Storage**
 
 Part VII covers the complete Kubernetes storage stack: CSI architecture and driver development, dynamic provisioning, volume snapshots and cloning, distributed storage systems (Ceph, Longhorn, OpenEBS), cloud storage integrations (EBS, GCS, Azure Disk), backup and disaster recovery strategies, storage performance optimisation, and storage patterns for AI artifacts: model repositories, vector databases, training datasets, and checkpoint management.

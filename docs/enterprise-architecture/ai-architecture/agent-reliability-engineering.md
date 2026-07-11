@@ -30,6 +30,7 @@ covers_version: "as of 2026-07-10"
 Traditional SRE was designed for deterministic software systems: the same input produces the same output; failures are binary (up or down); root cause is traceable through code.
 
 AI agent systems break every SRE assumption:
+
 - Non-deterministic: the same input may produce different outputs across runs
 - Multi-dimensional failure: agents can be "up" (responding) while producing wrong or harmful outputs
 - Emergent failure: agent behaviour in production differs from evaluation (the 37% lab-to-production gap)
@@ -40,7 +41,7 @@ ARE extends SRE to handle these characteristics.
 ### 1.2 ARE vs SRE vs AIOps
 
 | Discipline | Focus | Primary Output |
-|---|---|---|
+| --- | --- | --- |
 | **SRE** | Infrastructure and service reliability (availability, latency) | Runbooks, SLOs, incident response for traditional software |
 | **ARE** | AI agent reliability (task completion, quality, safety) | Agent SLOs, production readiness standards, agent failure response |
 | **AIOps** | AI applied to IT operations (noise reduction, RCA automation) | AI-augmented operations for any IT system |
@@ -50,6 +51,7 @@ ARE teams own: agent SLO design, production readiness reviews, agent chaos testi
 ### 1.3 The ARE Promise
 
 When ARE is applied:
+
 - Agent failures are detected and classified within 60 seconds
 - Critical safety failures (guardrail trips) are never retried
 - Quality regressions are caught by evaluation harness before they reach production
@@ -65,7 +67,7 @@ When ARE is applied:
 A traditional SLO measures: "Is the service responding within acceptable latency?" This misses the key agent failure modes:
 
 | SLO Question | Traditional SRE | ARE Extension Needed |
-|---|---|---|
+| --- | --- | --- |
 | Is it up? | Uptime / availability | Task completion rate |
 | Is it fast? | Latency P99 | Time to task completion (not TTFT) |
 | Is it correct? | Not measured | Quality score; faithfulness; format compliance |
@@ -78,6 +80,7 @@ A traditional SLO measures: "Is the service responding within acceptable latency
 Define SLOs across five dimensions:
 
 **Dimension 1: Task Completion Rate (TCR)**
+
 ```
 TCR = (Tasks completed successfully) / (Tasks attempted) × 100
 
@@ -92,6 +95,7 @@ Alert threshold: burn rate > 3× over 1-hour window
 ```
 
 **Dimension 2: Semantic Quality Rate (SQR)**
+
 ```
 SQR = (Tasks rated acceptable by judge) / (Tasks evaluated) × 100
 
@@ -102,6 +106,7 @@ Alert threshold: SQR drops > 10% vs. 7-day baseline
 ```
 
 **Dimension 3: Safety Compliance Rate (SCR)**
+
 ```
 SCR = 1 - (Guardrail trips / Tasks attempted)
 
@@ -112,6 +117,7 @@ Note: A guardrail trip is not a system failure — the guardrail worked.
 ```
 
 **Dimension 4: Latency SLO**
+
 ```
 For interactive agents:
   P50 time-to-complete: < 10 seconds
@@ -124,6 +130,7 @@ For batch agents:
 ```
 
 **Dimension 5: Cost per Task (CPT)**
+
 ```
 CPT = Total inference cost / Tasks completed
 
@@ -152,6 +159,7 @@ If October used:
 ```
 
 The error budget policy creates the right incentive structure:
+
 - Product teams move fast only while reliability is good
 - When reliability degrades, the error budget stops feature development until fixed
 
@@ -214,7 +222,7 @@ error_budget:
 SRE defines toil as manual, repetitive, automatable work that grows with scale and produces no lasting value. Agent systems generate a distinctive toil profile:
 
 | Toil Category | Example | Elimination Strategy |
-|---|---|---|
+| --- | --- | --- |
 | **Manual output review** | Reviewing flagged agent outputs one-by-one | LLM-as-judge automation; sampling-based review |
 | **Model version testing** | Manually testing each agent use case when model updates | Automated evaluation harness in CI/CD |
 | **Context bloat management** | Manually trimming context when agents hit token limits | Automatic context compression; budget enforcer |
@@ -237,6 +245,7 @@ Track toil by logging time spent on each toil category weekly. Use the data to p
 ### 4.1 Why Agents Need a PRR
 
 AI agents can be technically deployed (Kubernetes pods running, APIs responding) while being operationally not ready:
+
 - No SLOs defined
 - No evaluation harness
 - No guardrails configured
@@ -249,6 +258,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 ### 4.2 ARE Production Readiness Checklist
 
 **SLO Readiness**
+
 - [ ] Task Completion Rate SLO defined and baselined
 - [ ] Semantic Quality Rate SLO defined with LLM-as-judge configured
 - [ ] Safety Compliance Rate SLO defined with guardrail logging
@@ -257,6 +267,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 - [ ] Error budget policy documented and enforcement configured
 
 **Evaluation Coverage**
+
 - [ ] Golden evaluation dataset exists (minimum 100 representative examples)
 - [ ] Evaluation harness runs in CI/CD on every model update
 - [ ] Quality regression threshold configured (deploy blocked if quality drops > 5%)
@@ -264,6 +275,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 - [ ] Performance benchmark established at 2× expected production load
 
 **Reliability Architecture**
+
 - [ ] Retry policy configured: exponential backoff with jitter, 3-strike limit
 - [ ] Circuit breaker configured for each provider and each tool
 - [ ] Graceful degradation ladder defined (all 5 rungs)
@@ -273,6 +285,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 - [ ] Rollback mechanism tested for model version changes
 
 **Observability**
+
 - [ ] OpenTelemetry GenAI spans emitted for all model calls
 - [ ] Structured trace per task (task-level, not just call-level)
 - [ ] Cost attribution tags on every model call
@@ -280,6 +293,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 - [ ] SLO burn rate alerts configured in PagerDuty
 
 **Safety and Governance**
+
 - [ ] Guardrails configured and tested (input and output)
 - [ ] HITL gates defined for all Level 3+ actions
 - [ ] Audit trail writing to append-only store
@@ -288,6 +302,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 - [ ] Security review completed (prompt injection tested)
 
 **Operational Readiness**
+
 - [ ] On-call runbook documented and reviewed by on-call team
 - [ ] Incident classification guide for agent-specific failure types
 - [ ] Cost budget and alerting configured
@@ -296,6 +311,7 @@ The PRR gate ensures agents meet operational standards before reaching productio
 - [ ] Postmortem process defined for agent incidents
 
 **Business Readiness**
+
 - [ ] User-facing error messages designed (not raw AI error traces)
 - [ ] Graceful degradation experience designed (what users see at each rung)
 - [ ] Feature flag configured (allows kill-switch without deployment)
@@ -351,6 +367,7 @@ Traditional chaos testing (kill a pod, inject latency) doesn't cover agent-speci
 ### 5.2 Agent Chaos Experiments
 
 **Experiment 1: Provider outage**
+
 ```
 Fault injection: Return HTTP 503 from model provider (100% error rate)
 Expected behaviour:
@@ -367,6 +384,7 @@ Validation:
 ```
 
 **Experiment 2: Model quality degradation**
+
 ```
 Fault injection: Replace model with a model known to produce poor outputs for this task
 Expected behaviour:
@@ -382,6 +400,7 @@ Validation:
 ```
 
 **Experiment 3: Tool failure cascade**
+
 ```
 Fault injection: Return random errors from web-search tool (50% error rate)
 Expected behaviour:
@@ -397,6 +416,7 @@ Validation:
 ```
 
 **Experiment 4: Context overflow**
+
 ```
 Fault injection: Provide a task with documents that fill 95% of context window before task instructions
 Expected behaviour:
@@ -412,6 +432,7 @@ Validation:
 ```
 
 **Experiment 5: Safety failure handling**
+
 ```
 Fault injection: Submit input designed to trigger guardrail
 Expected behaviour:
@@ -430,7 +451,7 @@ Validation:
 ### 5.3 Chaos Schedule
 
 | Experiment | Frequency | Environment |
-|---|---|---|
+| --- | --- | --- |
 | Provider outage | Monthly | Staging |
 | Model quality degradation | Quarterly | Staging |
 | Tool failure cascade | Monthly | Staging |
@@ -448,7 +469,7 @@ Validation:
 Standard SRE incident severity doesn't map cleanly to agent failures. Use this agent-specific classification:
 
 | Severity | Agent Condition | Response |
-|---|---|---|
+| --- | --- | --- |
 | **P0 — Critical Safety** | Guardrail bypassed; harmful output reached user; agent took destructive action | Immediate shutdown; security team notified; human review before re-enable |
 | **P1 — Service Down** | TCR < 50%; all tasks failing; agent runtime crash | Page on-call immediately; agent killed switch if needed |
 | **P2 — Quality Degraded** | SQR drops > 15%; users receiving poor outputs | Page on-call within 15 minutes; quality investigation |
@@ -526,7 +547,7 @@ Based on root cause:
 ARE teams should target on-call loads that are sustainable:
 
 | Metric | Target | Alert Threshold |
-|---|---|---|
+| --- | --- | --- |
 | Pages per engineer per week | < 3 during business hours; < 1 at night | > 5/week |
 | Mean time from page to resolution (P1) | < 30 minutes | > 60 minutes |
 | % incidents handled by automation | > 60% | < 40% |
@@ -543,7 +564,7 @@ If on-call load exceeds targets, activate error budget enforcement: freeze featu
 Agent capacity planning differs from traditional capacity planning because agents consume multiple resource types simultaneously:
 
 | Resource | Planning Horizon | Scaling Approach |
-|---|---|---|
+| --- | --- | --- |
 | **Model tokens per second** | 30-day rolling forecast | Provider rate limit increase; model routing; caching |
 | **Agent runtime (CPU/RAM)** | 7-day rolling | Kubernetes HPA; KEDA on queue depth |
 | **Vector store capacity** | 90-day forecast | Index sharding; tiered storage |
@@ -602,6 +623,7 @@ Max replicas: set to provider rate limit / tokens_per_task
 ### 8.1 The Model Update Problem
 
 When a model provider releases a new version, it may:
+
 - Improve performance on most tasks
 - Regress on your specific task due to RLHF changes
 - Change structured output format slightly
@@ -642,7 +664,7 @@ PROVIDER ANNOUNCES NEW MODEL VERSION
 ### 8.3 Model Version Pinning Policy
 
 | Situation | Action | Maximum Pin Duration |
-|---|---|---|
+| --- | --- | --- |
 | Quality regression detected | Pin to previous version | 90 days (vendor may deprecate) |
 | Breaking change in tool calling schema | Pin; submit issue to vendor | 60 days |
 | Active incident investigation | Pin for stability | 14 days |
@@ -655,7 +677,7 @@ When approaching pin expiration: re-evaluate on updated version or escalate to v
 ## 9. ARE Maturity Model
 
 | Level | Name | Characteristics | Target Metrics |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **L0** | No ARE | No SLOs; incidents discovered by user complaints | MTTR > 2 hours; no quality metrics |
 | **L1** | Basic monitoring | Availability monitoring; basic alerting; manual postmortems | MTTR < 60 min; no quality SLOs |
 | **L2** | ARE Foundations | SLOs defined; evaluation harness; structured incident response | TCR > 95%; SQR measured; PRR process exists |
@@ -666,24 +688,28 @@ When approaching pin expiration: re-evaluate on updated version or escalate to v
 ### 9.1 ARE Adoption Roadmap
 
 **Month 1–2 (L0 → L1):**
+
 - Define TCR and latency SLOs for each agent in production
 - Deploy OTel GenAI spans for all model calls
 - Establish on-call rotation for agent incidents
 - First agent PRR completed for highest-traffic agent
 
 **Month 3–4 (L1 → L2):**
+
 - Evaluation harness running in CI/CD for all agents
 - SQR monitoring with LLM-as-judge live for top 3 agents
 - Error budget policy defined and communicated
 - Agent on-call runbooks for top 10 incident types
 
 **Month 5–8 (L2 → L3):**
+
 - Chaos engineering started: provider outage and tool failure experiments
 - Error budget enforcement gates in place
 - Model update protocol automated
 - CPT monitoring live for all agents
 
 **Month 9–18 (L3 → L4):**
+
 - Full chaos suite running quarterly
 - Capacity forecasting automated
 - Toil tracking and elimination programme active
@@ -694,7 +720,7 @@ When approaching pin expiration: re-evaluate on updated version or escalate to v
 ## 10. ARE Reference Glossary
 
 | Term | Definition |
-|---|---|
+| --- | --- |
 | **ARE** | Agent Reliability Engineering — applying SRE discipline to AI agent production systems |
 | **TCR** | Task Completion Rate — % of attempted tasks that complete successfully |
 | **SQR** | Semantic Quality Rate — % of tasks producing acceptable quality outputs |
@@ -716,6 +742,7 @@ When approaching pin expiration: re-evaluate on updated version or escalate to v
 ## Further Reading
 
 **Internal Cross-References**
+
 - [Agentic AI Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md) — Reliability patterns: retry, circuit breakers, checkpointing, graceful degradation
 - [Enterprise AIOps Guide](enterprise-aiops-guide.md) — AI applied to IT operations; AIOps platform design
 - [Agentic AI Security & Guardrails](agentic-ai-security-guardrails.md) — Guardrail architecture; safety controls
@@ -723,6 +750,7 @@ When approaching pin expiration: re-evaluate on updated version or escalate to v
 - [Enterprise AI Governance & Compliance](enterprise-ai-governance-compliance.md) — Governance framework; compliance controls
 
 **External References**
+
 - [Google SRE Books](https://sre.google) — SRE foundations: SLOs, error budgets, toil, on-call
 - [Chaos Engineering Principles](https://principlesofchaos.org) — Chaos engineering methodology
 - [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — Telemetry standards for AI systems

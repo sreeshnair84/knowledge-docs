@@ -9,138 +9,139 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-EXECUTIVE  ·  ARCHITECTURE  ·  LEADERSHIP  SERIES 
-# **COMMUNICATION FRAMEWORKS  MASTER GUIDE** 
+EXECUTIVE  ·  ARCHITECTURE  ·  LEADERSHIP  SERIES
 
-For Enterprise Architects  ·  Principal Architects  ·  CTO Candidates From Technical Fluency to Board-Level Strategic Communication 
+# **COMMUNICATION FRAMEWORKS  MASTER GUIDE**
 
-Minto Pyramid 
+For Enterprise Architects  ·  Principal Architects  ·  CTO Candidates From Technical Fluency to Board-Level Strategic Communication
 
-Pyramid Principle 
+Minto Pyramid
 
-SBI Feedback 
+Pyramid Principle
 
-BLUF STAR 
+SBI Feedback
 
-SBAR SCR 5 Whys PREP 
+BLUF STAR
 
-The Burning Platform 
+SBAR SCR 5 Whys PREP
 
-Risk-Adjusted Narrative 
+The Burning Platform
 
-**AUDIENCE LEVELS COVERED** 
+Risk-Adjusted Narrative
 
-Board  ·  C-Suite  ·  Executive Committee  ·  Engineering  ·  Operations  ·  Regulators 
+**AUDIENCE LEVELS COVERED**
 
-#### **TABLE OF CONTENTS** 
+Board  ·  C-Suite  ·  Executive Committee  ·  Engineering  ·  Operations  ·  Regulators
 
-###### **SECTION 01 — The Communication Pyramid** 
+#### **TABLE OF CONTENTS**
 
-Why your audience determines everything 
+###### **SECTION 01 — The Communication Pyramid**
 
-###### **SECTION 02 — Pyramid Principle / Minto** 
+Why your audience determines everything
 
-Lead with the answer — structure downward 
+###### **SECTION 02 — Pyramid Principle / Minto**
 
-###### **SECTION 03 — BLUF — Bottom Line Up Front** 
+Lead with the answer — structure downward
 
-Military precision for executive communication 
+###### **SECTION 03 — BLUF — Bottom Line Up Front**
 
-###### **SECTION 04 — SBAR — Situation · Background · Assessment · Recommendation** 
+Military precision for executive communication
 
-Clinical clarity for high-stakes briefings 
+###### **SECTION 04 — SBAR — Situation · Background · Assessment · Recommendation**
 
-**SECTION 05 — SCR — Situation · Complication · Resolution** Narrative arc for strategic communication 
+Clinical clarity for high-stakes briefings
 
-###### **SECTION 06 — PREP — Point · Reason · Example · Point** 
+**SECTION 05 — SCR — Situation · Complication · Resolution** Narrative arc for strategic communication
 
-Structured verbal communication under pressure 
+###### **SECTION 06 — PREP — Point · Reason · Example · Point**
 
-###### **SECTION 07 — SBI — Situation · Behaviour · Impact** 
+Structured verbal communication under pressure
 
-Precision feedback for senior leaders 
+###### **SECTION 07 — SBI — Situation · Behaviour · Impact**
 
-###### **SECTION 08 — The Burning Platform** 
+Precision feedback for senior leaders
 
-Creating urgency without manufacturing crisis 
+###### **SECTION 08 — The Burning Platform**
 
-###### **SECTION 09 — Risk-Adjusted Narrative** 
+Creating urgency without manufacturing crisis
 
-Communicating uncertainty with credibility 
+###### **SECTION 09 — Risk-Adjusted Narrative**
 
-###### **SECTION 10 — The Stakeholder Register Framework** 
+Communicating uncertainty with credibility
 
-Tailoring every message to its audience 
+###### **SECTION 10 — The Stakeholder Register Framework**
 
-###### **SECTION 11 — The 3-Lens Model** 
+Tailoring every message to its audience
 
-Business · Risk · Investment framing 
+###### **SECTION 11 — The 3-Lens Model**
 
-###### **SECTION 12 — Objection Pre-emption Framework** 
+Business · Risk · Investment framing
 
-Answering questions before they are asked 
+###### **SECTION 12 — Objection Pre-emption Framework**
 
-###### **SECTION 13 — Difficult Conversation Framework** 
+Answering questions before they are asked
 
-Navigating conflict and delivering hard news 
+###### **SECTION 13 — Difficult Conversation Framework**
 
-###### **SECTION 14 — Written Communication Standards** 
+Navigating conflict and delivering hard news
 
-Executive memos, board papers, decision notes 
+###### **SECTION 14 — Written Communication Standards**
 
-###### **SECTION 15 — Communication Anti-Patterns** 
+Executive memos, board papers, decision notes
 
-What kills credibility — and how to fix it 
+###### **SECTION 15 — Communication Anti-Patterns**
 
-This guide covers every communication framework an Enterprise Architect or CTO-level leader needs to master. Each framework includes its structure, when to use it, worked examples at executive level, common mistakes, and a contrast between strong and weak application. 
+What kills credibility — and how to fix it
 
-SECTION 01 
+This guide covers every communication framework an Enterprise Architect or CTO-level leader needs to master. Each framework includes its structure, when to use it, worked examples at executive level, common mistakes, and a contrast between strong and weak application.
 
-### **THE COMMUNICATION PYRAMID** 
+SECTION 01
 
-Every communication framework rests on one foundational insight: the audience determines the structure, the register, the length, and the level of abstraction. Architects who communicate the same way to a board member and a software engineer will fail with both. Mastering communication means developing fluency across the full spectrum — and switching registers instantly and invisibly. 
+### **THE COMMUNICATION PYRAMID**
 
-###### **THE FIVE REGISTERS** 
+Every communication framework rests on one foundational insight: the audience determines the structure, the register, the length, and the level of abstraction. Architects who communicate the same way to a board member and a software engineer will fail with both. Mastering communication means developing fluency across the full spectrum — and switching registers instantly and invisibly.
 
-**Paragraph( 'caseSensitive': 1 'encoding':** 
+###### **THE FIVE REGISTERS**
 
-**Paragraph( Paragraph( Paragraph( 'caseSensitive': 1 'encoding': Paragraph( 'c Paragraph( 'caseSensitive': 1 'caseSensitive': 1 'utf8' 'text': 'WHAT THEY NEED' 'frags': aseSensitive': 'caseSensitive': 1 'encoding': 'utf8' 'encoding': 'utf8' [ParaFrag(__tag__='para', bold=1, 1 'encoding': 'encoding': 'utf8' 'text': 'text': 'LEVEL' 'text': 'AUDIENCE' fontName='Helvetica-Bold', fontSize=7, 'utf8' 'text': 'A 'MAX LENGTH' 'frags': [P 'frags': [ParaFrag(_ 'frags': [ParaFrag(_ greek=0, italic=0, link=[], rise=0, BSTRACTION' araFrag(__tag__='para', _tag__='para', _tag__='para', text='WHAT THEY NEED', 'frags': [ParaF bold=1, fontName='Helve bold=1, fontName=' bold=1, fontName=' textColor=Color(.356863,.784314,.721569,1), rag(__tag__=' tica-Bold', fontSize=7, Helvetica-Bold', Helvetica-Bold', us_lines=[])] 'style': 'bulletText': None para', bold=1, greek=0, italic=0, link=[], fontSize=7, fontSize=7, 'debug': 0 ) #Paragraph fontName='He rise=0, text='MAX greek=0, italic=0, greek=0, italic=0, lvetica-Bold', LENGTH', textColor=Col link=[], rise=0, link=[], rise=0, fontSize=7, or(.356863,.784314,.7215 text='LEVEL', textC text='AUDIENCE', t greek=0, 69,1), us_lines=[])] olor=Color(.356863, extColor=Color(.35 italic=0, 'style': 'bulletText': None .784314,.721569,1), 6863,.784314,.72156 link=[], rise=0, 'debug': 0 ) #Paragraph us_lines=[])] 'style': 9,1), us_lines=[])] text='ABSTRA 'bulletText': None 'style': 'bulletText': CTION', textC 'debug': 0 ) None 'debug': 0 ) olor=Color(.35 #Paragraph #Paragraph 6863,.784314,. 721569,1), us_lines=[])] 'style': 'bulletText': None 'debug': 0 ) #Paragraph** Board / Investors Strategic direction Why this matters to the enterprise Maximum 3 minutes / 1 page C-Suite (CEO, Decision support What to decide and the risk of each High 5 minutes / 2 pages CFO) option VP / Director Alignment What we're doing and what they need to Medium 10 minutes / 4 pages do Engineering Coordination How we're doing it and the constraints Low 30 minutes / detailed Leaders Regulators / Audit Assurance Evidence of control and compliance Formal As required / documented 
+**Paragraph( 'caseSensitive': 1 'encoding':**
 
-###### **THE CARDINAL RULE** 
+**Paragraph( Paragraph( Paragraph( 'caseSensitive': 1 'encoding': Paragraph( 'c Paragraph( 'caseSensitive': 1 'caseSensitive': 1 'utf8' 'text': 'WHAT THEY NEED' 'frags': aseSensitive': 'caseSensitive': 1 'encoding': 'utf8' 'encoding': 'utf8' [ParaFrag(**tag**='para', bold=1, 1 'encoding': 'encoding': 'utf8' 'text': 'text': 'LEVEL' 'text': 'AUDIENCE' fontName='Helvetica-Bold', fontSize=7, 'utf8' 'text': 'A 'MAX LENGTH' 'frags': [P 'frags': [ParaFrag(_ 'frags': [ParaFrag(_ greek=0, italic=0, link=[], rise=0, BSTRACTION' araFrag(**tag**='para', *tag*\_='para', *tag*\_='para', text='WHAT THEY NEED', 'frags': [ParaF bold=1, fontName='Helve bold=1, fontName=' bold=1, fontName=' textColor=Color(.356863,.784314,.721569,1), rag(**tag**=' tica-Bold', fontSize=7, Helvetica-Bold', Helvetica-Bold', us_lines=[])] 'style': 'bulletText': None para', bold=1, greek=0, italic=0, link=[], fontSize=7, fontSize=7, 'debug': 0 ) #Paragraph fontName='He rise=0, text='MAX greek=0, italic=0, greek=0, italic=0, lvetica-Bold', LENGTH', textColor=Col link=[], rise=0, link=[], rise=0, fontSize=7, or(.356863,.784314,.7215 text='LEVEL', textC text='AUDIENCE', t greek=0, 69,1), us_lines=[])] olor=Color(.356863, extColor=Color(.35 italic=0, 'style': 'bulletText': None .784314,.721569,1), 6863,.784314,.72156 link=[], rise=0, 'debug': 0 ) #Paragraph us_lines=[])] 'style': 9,1), us_lines=[])] text='ABSTRA 'bulletText': None 'style': 'bulletText': CTION', textC 'debug': 0 ) None 'debug': 0 ) olor=Color(.35 #Paragraph #Paragraph 6863,.784314,. 721569,1), us_lines=[])] 'style': 'bulletText': None 'debug': 0 ) #Paragraph** Board / Investors Strategic direction Why this matters to the enterprise Maximum 3 minutes / 1 page C-Suite (CEO, Decision support What to decide and the risk of each High 5 minutes / 2 pages CFO) option VP / Director Alignment What we're doing and what they need to Medium 10 minutes / 4 pages do Engineering Coordination How we're doing it and the constraints Low 30 minutes / detailed Leaders Regulators / Audit Assurance Evidence of control and compliance Formal As required / documented
 
-Never communicate at the level of your thinking. Communicate at the level of your audience's decision. Your job is not to show how hard the problem is — it is to make the decision or action obvious. 
+###### **THE CARDINAL RULE**
 
-###### **REGISTER MATCH** 
+Never communicate at the level of your thinking. Communicate at the level of your audience's decision. Your job is not to show how hard the problem is — it is to make the decision or action obvious.
 
-Opens with the outcome or decision needed. 
+###### **REGISTER MATCH**
 
-Uses the audience's vocabulary, not yours. 
+Opens with the outcome or decision needed.
 
-Length calibrated to the audience's time. 
+Uses the audience's vocabulary, not yours.
 
-Complexity hidden, clarity front-loaded. 
+Length calibrated to the audience's time.
 
-###### **REGISTER MISMATCH** 
+Complexity hidden, clarity front-loaded.
 
-Opens with context, history, or technical detail. 
+###### **REGISTER MISMATCH**
 
-Uses architecture or engineering vocabulary with executives. 
+Opens with context, history, or technical detail.
 
-Overlong for the audience's patience. 
+Uses architecture or engineering vocabulary with executives.
 
-Makes the audience work to find the point. 
+Overlong for the audience's patience.
 
-SECTION 02 
+Makes the audience work to find the point.
 
-##### **Pyramid Principle / Minto Pyramid** 
+SECTION 02
 
-Origin: Barbara Minto, McKinsey & Company, 1970s 
+##### **Pyramid Principle / Minto Pyramid**
 
-## **PP** 
+Origin: Barbara Minto, McKinsey & Company, 1970s
 
-_Use when: Any written or verbal communication where the audience needs a clear recommendation, especially executives who read horizontally before vertically._ 
+## **PP**
 
-###### **THE STRUCTURE** 
+*Use when: Any written or verbal communication where the audience needs a clear recommendation, especially executives who read horizontally before vertically.*
+
+###### **THE STRUCTURE**
 
 |x<br>**Governing**|The single most important thing you want the audience to take away. One sentence. Answerable in|
 |---|---|
@@ -149,23 +150,23 @@ _Use when: Any written or verbal communication where the audience needs a clear 
 ||governing thought.|
 |z<br>**Supporting Detail**|The evidence, data, and analysis that support each key line. This is the bottom of the pyramid — it<br>exists to justify the key lines, not to be read in full by executives.|
 
-###### **WORKED EXAMPLE — ARCHITECTURE MODERNISATION CASE** 
+###### **WORKED EXAMPLE — ARCHITECTURE MODERNISATION CASE**
 
-###### **PYRAMID APPLIED** 
+###### **PYRAMID APPLIED**
 
-→ GOVERNING THOUGHT: We must modernise our core banking platform in 24 months or risk regulatory action and a 40% increase in the cost of product delivery. 
+→ GOVERNING THOUGHT: We must modernise our core banking platform in 24 months or risk regulatory action and a 40% increase in the cost of product delivery.
 
-→ KEY LINE 1: The current platform is materially non-compliant with three incoming regulatory requirements. 
+→ KEY LINE 1: The current platform is materially non-compliant with three incoming regulatory requirements.
 
-→ KEY LINE 2: Our delivery cost per feature has grown 38% in two years due to technical debt on the current platform. 
+→ KEY LINE 2: Our delivery cost per feature has grown 38% in two years due to technical debt on the current platform.
 
-→ KEY LINE 3: Competitor platforms built on modern architecture are delivering equivalent features in one-third of our time-to-market. 
+→ KEY LINE 3: Competitor platforms built on modern architecture are delivering equivalent features in one-third of our time-to-market.
 
-→ SUPPORTING DETAIL: [Regulatory citations, cost analysis, competitive benchmarks — available in appendix] 
+→ SUPPORTING DETAIL: [Regulatory citations, cost analysis, competitive benchmarks — available in appendix]
 
-###### **THE SCQA VARIANT — SITUATION · COMPLICATION · QUESTION · ANSWER** 
+###### **THE SCQA VARIANT — SITUATION · COMPLICATION · QUESTION · ANSWER**
 
-For strategic communications that require a narrative setup before the recommendation, use SCQA as the entry point into the pyramid. 
+For strategic communications that require a narrative setup before the recommendation, use SCQA as the entry point into the pyramid.
 
 |**S**|**Situation**|Establish common ground — what both you and the audience already know to be true.|
 |---|---|---|
@@ -173,37 +174,37 @@ For strategic communications that require a narrative setup before the recommend
 |**Q**|**Question**|Surface the question the complication naturally raises in the audience's mind.|
 |**A**|**Answer**|Deliver your governing thought as the direct answer to that question.|
 
-###### **STRONG APPLICATION** 
+###### **STRONG APPLICATION**
 
-Recommendation in the first sentence. 
+Recommendation in the first sentence.
 
-- Key lines are genuinely MECE. 
+- Key lines are genuinely MECE.
 
-Detail in appendix — not in the main narrative. 
+Detail in appendix — not in the main narrative.
 
-Board reads the governing thought and key lines only. 
+Board reads the governing thought and key lines only.
 
-###### **WEAK APPLICATION** 
+###### **WEAK APPLICATION**
 
-Builds to the recommendation over multiple pages. 
+Builds to the recommendation over multiple pages.
 
-- Key lines overlap or leave gaps. 
+- Key lines overlap or leave gaps.
 
-Evidence embedded in the narrative — buries the point. 
+Evidence embedded in the narrative — buries the point.
 
-Audience must read everything to find the recommendation. 
+Audience must read everything to find the recommendation.
 
-SECTION 03 
+SECTION 03
 
-##### **Bottom Line Up Front** 
+##### **Bottom Line Up Front**
 
-## **BL UF** 
+## **BL UF**
 
-Origin: US Military, adapted for executive communication 
+Origin: US Military, adapted for executive communication
 
-_Use when: Any situation where you have 60 seconds or less — verbal briefings, email subject lines, Slack messages to executives, and opening statements._ 
+*Use when: Any situation where you have 60 seconds or less — verbal briefings, email subject lines, Slack messages to executives, and opening statements.*
 
-###### **THE STRUCTURE** 
+###### **THE STRUCTURE**
 
 |**B**<br>**Bottom Line**|State the conclusion, decision, or action required — in the very first sentence. No preamble. No<br>context-setting. The answer first.|
 |---|---|
@@ -211,45 +212,45 @@ _Use when: Any situation where you have 60 seconds or less — verbal briefings,
 |**U**<br>**Urgency**|State the timeline or decision deadline explicitly. When does this need a response? What happens if<br>it doesn't get one?|
 |**F**<br>**Follow-up**|State the specific action you need from the recipient. Not 'let me know your thoughts' — a specific,<br>time-bound request.|
 
-###### **WORKED EXAMPLES** 
+###### **WORKED EXAMPLES**
 
-###### **BEFORE BLUF** 
+###### **BEFORE BLUF**
 
-WEAK: 'Hi Sarah, I wanted to follow up on our discussion last week about the cloud migration programme. As you know, we've been working through several options and the team has done a thorough analysis. I thought it would be helpful to share some of the findings...' 
+WEAK: 'Hi Sarah, I wanted to follow up on our discussion last week about the cloud migration programme. As you know, we've been working through several options and the team has done a thorough analysis. I thought it would be helpful to share some of the findings...'
 
-###### **AFTER BLUF** 
+###### **AFTER BLUF**
 
-STRONG: 'Sarah — we need a go/no-go decision on cloud provider by Friday 5pm. AWS is our recommended option based on cost, compliance posture, and migration risk. Delay beyond Friday pushes our Q2 launch by six weeks. Can you confirm approval or schedule 20 minutes to discuss blockers?' 
+STRONG: 'Sarah — we need a go/no-go decision on cloud provider by Friday 5pm. AWS is our recommended option based on cost, compliance posture, and migration risk. Delay beyond Friday pushes our Q2 launch by six weeks. Can you confirm approval or schedule 20 minutes to discuss blockers?'
 
-###### **BLUF FOR EMAIL SUBJECT LINES** 
+###### **BLUF FOR EMAIL SUBJECT LINES**
 
-Executive email is scanned, not read. The subject line must contain the bottom line. 
+Executive email is scanned, not read. The subject line must contain the bottom line.
 
-###### **SUBJECT LINE TRANSFORMATION** 
+###### **SUBJECT LINE TRANSFORMATION**
 
-- → WEAK SUBJECT: 'Cloud Migration Update' 
+- → WEAK SUBJECT: 'Cloud Migration Update'
 
-→ STRONG SUBJECT: 'DECISION NEEDED by Fri: Cloud Provider — AWS Recommended' 
+→ STRONG SUBJECT: 'DECISION NEEDED by Fri: Cloud Provider — AWS Recommended'
 
-- → WEAK SUBJECT: 'Re: Architecture Review Board Meeting' 
+- → WEAK SUBJECT: 'Re: Architecture Review Board Meeting'
 
-- → STRONG SUBJECT: 'ARB APPROVED: Payment Platform Modernisation — Phase 1 Green' 
+- → STRONG SUBJECT: 'ARB APPROVED: Payment Platform Modernisation — Phase 1 Green'
 
-- → WEAK SUBJECT: 'Technical Debt Analysis' 
+- → WEAK SUBJECT: 'Technical Debt Analysis'
 
-- → STRONG SUBJECT: 'ACTION: £4M Technical Debt Risk Requires CFO Sign-off by EOW' 
+- → STRONG SUBJECT: 'ACTION: £4M Technical Debt Risk Requires CFO Sign-off by EOW'
 
-SECTION 04 
+SECTION 04
 
-##### **Situation · Background · Assessment · Recommendation** 
+##### **Situation · Background · Assessment · Recommendation**
 
-## **SB AR** 
+## **SB AR**
 
-Origin: US Navy / Healthcare, adapted for technology leadership 
+Origin: US Navy / Healthcare, adapted for technology leadership
 
-_Use when: High-stakes briefings, incident communication, regulatory updates, and any situation where the audience needs to take action quickly._ 
+*Use when: High-stakes briefings, incident communication, regulatory updates, and any situation where the audience needs to take action quickly.*
 
-###### **THE STRUCTURE** 
+###### **THE STRUCTURE**
 
 |**S**|**Situation**|What is happening right now? One to two sentences. State the current state clearly and factually.|
 |---|---|---|
@@ -260,42 +261,42 @@ _Use when: High-stakes briefings, incident communication, regulatory updates, an
 |**B**<br>**A**|**Background**<br>**Assessment**|The access was via a compromised service account created during last month's infrastructure<br>migration. The account had broader permissions than required. We identified this through routine<br>anomaly detection.<br>This is a high-severity incident with regulatory notification obligations under GDPR Article 33. The<br>72-hour notification window begins now. The access has been contained. Customer impact is under<br>assessment but may require direct notification.|
 |**R**|**Recommendation**|I recommend: (1) legal and compliance engaged immediately, (2) ICO notification drafted by 17:00<br>today, (3) CEO informed before end of business. I need your authorisation to proceed. Decision<br>needed in the next 30 minutes.|
 
-###### **SBAR STRENGTHS** 
+###### **SBAR STRENGTHS**
 
-###### **SBAR LIMITATIONS** 
+###### **SBAR LIMITATIONS**
 
-- Forces completeness — situation, context, and action. Too structured for relationship communication. 
+- Forces completeness — situation, context, and action. Too structured for relationship communication.
 
-   - Can feel clinical in emotionally sensitive situations. 
+  - Can feel clinical in emotionally sensitive situations.
 
-- Works under extreme time pressure. 
+- Works under extreme time pressure.
 
-- Used by the audience receiving the briefing — they know the 
+- Used by the audience receiving the briefing — they know the
 
-- structure. 
+- structure.
 
-   - Not suitable for exploratory or ambiguous conversations. Requires that you have a recommendation — don't use it if 
+  - Not suitable for exploratory or ambiguous conversations. Requires that you have a recommendation — don't use it if
 
-   - you don't. 
+  - you don't.
 
-- Prevents the common failure of reporting without 
+- Prevents the common failure of reporting without
 
-recommending. 
+recommending.
 
-SECTION 05 
+SECTION 05
 
 |**SC**<br>**Situation · Complication · Resolution**<br>Origin: Narrative storytelling tradition, adapted for business communication|
 |---|
-|**R**<br>_Use when: Strategic presentations, investment cases, transformation narratives, and any communication that needs to_<br>_generate urgency before the recommendation._|
+|**R**<br>*Use when: Strategic presentations, investment cases, transformation narratives, and any communication that needs to*<br>*generate urgency before the recommendation.*|
 |**THE STRUCTURE**<br>**S**<br>**Situation**<br>Establish the stable world that the audience recognises. This is common ground — what everyone<br>already knows and agrees on.|
 |**C**<br>**Complication**<br>Introduce the disruption: the change, the threat, the gap, or the risk that means the current situation<br>cannot continue. This is where you create urgency.|
 |**R**<br>**Resolution**<br>Present your recommendation as the answer to the complication. The resolution should feel<br>inevitable given the complication.|
 
-###### **WHY SCR WORKS NEUROLOGICALLY** 
+###### **WHY SCR WORKS NEUROLOGICALLY**
 
-The human brain is a narrative processing machine. We understand the world through story structure — stable state, disruption, resolution. When you structure a business communication as SCR, you work with the brain's natural processing rather than against it. The complication creates a cognitive gap that the brain is compelled to close — making your resolution feel earned rather than imposed. 
+The human brain is a narrative processing machine. We understand the world through story structure — stable state, disruption, resolution. When you structure a business communication as SCR, you work with the brain's natural processing rather than against it. The complication creates a cognitive gap that the brain is compelled to close — making your resolution feel earned rather than imposed.
 
-###### **WORKED EXAMPLE — PLATFORM INVESTMENT CASE** 
+###### **WORKED EXAMPLE — PLATFORM INVESTMENT CASE**
 
 |**S**|**Situation**|For the past five years, our technology platform has supported strong growth. We have delivered 40<br>new products and grown revenue by 180%. Our engineering teams are experienced and our|
 |---|---|---|
@@ -305,27 +306,27 @@ The human brain is a narrative processing machine. We understand the world throu
 |**R**|**Resolution**|A two-year platform modernisation programme, funded at £18M, will restore our delivery velocity,<br>eliminate the regulatory risk, and position us to deliver the next five years of growth. The cost of|
 |||inaction — continued velocity degradation, regulatory exposure, and competitive disadvantage —<br>exceeds £40M over the same period.|
 
-###### **CRAFT PRINCIPLES** 
+###### **CRAFT PRINCIPLES**
 
-→ The Situation must be genuinely stable — if you introduce tension in the Situation, the Complication loses its impact. 
+→ The Situation must be genuinely stable — if you introduce tension in the Situation, the Complication loses its impact.
 
-→ The Complication must be specific and credible — vague threats do not create urgency. 
+→ The Complication must be specific and credible — vague threats do not create urgency.
 
-→ The Resolution must flow directly from the Complication — it should be the obvious answer, not a surprise. 
+→ The Resolution must flow directly from the Complication — it should be the obvious answer, not a surprise.
 
-- → Use data in the Complication — numbers make threats concrete and memorable. 
+- → Use data in the Complication — numbers make threats concrete and memorable.
 
-SECTION 06 
+SECTION 06
 
-##### **Point · Reason · Example · Point** 
+##### **Point · Reason · Example · Point**
 
-## **PR EP** 
+## **PR EP**
 
-Origin: Debate and advocacy training 
+Origin: Debate and advocacy training
 
-_Use when: Verbal communication under pressure — Q&A; sessions, board challenges, panel discussions, and any situation requiring a structured oral response in 60–90 seconds._ 
+*Use when: Verbal communication under pressure — Q&A; sessions, board challenges, panel discussions, and any situation requiring a structured oral response in 60–90 seconds.*
 
-###### **THE STRUCTURE** 
+###### **THE STRUCTURE**
 
 |**P**|**Point**|State your position in one clear sentence. No preamble. No 'that's a great question.' Straight to the<br>point.|
 |---|---|---|
@@ -334,47 +335,47 @@ _Use when: Verbal communication under pressure — Q&A; sessions, board challeng
 |||evidence is not persuasive at executive level.|
 |**P**|**Point**|Restate your position — now reinforced by the reason and example. This closes the loop and drives<br>the point home.|
 
-###### **WORKED EXAMPLE — BOARD CHALLENGE** 
+###### **WORKED EXAMPLE — BOARD CHALLENGE**
 
-###### **PREP IN ACTION** 
+###### **PREP IN ACTION**
 
-BOARD MEMBER: 'Why should we trust your team to deliver this when the last platform programme was two years late?' 
+BOARD MEMBER: 'Why should we trust your team to deliver this when the last platform programme was two years late?'
 
-P — POINT: 'The programme design is fundamentally different from the one that ran over.' 
+P — POINT: 'The programme design is fundamentally different from the one that ran over.'
 
-R — REASON: 'The previous programme tried to do everything at once — 47 workstreams, no staged gating, and a fixed scope. This programme is staged: each phase must prove value before funding is released for the next.' 
+R — REASON: 'The previous programme tried to do everything at once — 47 workstreams, no staged gating, and a fixed scope. This programme is staged: each phase must prove value before funding is released for the next.'
 
-E — EXAMPLE: 'Phase 1 is three months and £2M. It delivers one measurable outcome: payment processing latency below 200ms. If we miss that, the programme stops. That gate structure did not exist before.' 
+E — EXAMPLE: 'Phase 1 is three months and £2M. It delivers one measurable outcome: payment processing latency below 200ms. If we miss that, the programme stops. That gate structure did not exist before.'
 
-P — POINT: 'The architecture of this programme prevents the failure mode of the last one. I am accountable for that design, and I am confident it holds.' 
+P — POINT: 'The architecture of this programme prevents the failure mode of the last one. I am accountable for that design, and I am confident it holds.'
 
-###### **PREP UNDER TIME PRESSURE** 
+###### **PREP UNDER TIME PRESSURE**
 
-PREP is designed for the 60-second executive response. When challenged, the instinct is to add more context. PREP prevents this — it forces you to select the single strongest argument and deploy it with precision. Practice PREP until it is automatic. You should be able to structure any oral response in PREP within five seconds of hearing the question. 
+PREP is designed for the 60-second executive response. When challenged, the instinct is to add more context. PREP prevents this — it forces you to select the single strongest argument and deploy it with precision. Practice PREP until it is automatic. You should be able to structure any oral response in PREP within five seconds of hearing the question.
 
-###### **PREP DISCIPLINE RULES** 
+###### **PREP DISCIPLINE RULES**
 
-- → Time: 60–90 seconds maximum per PREP response. 
+- → Time: 60–90 seconds maximum per PREP response.
 
-- → Reason: choose one — the strongest. Adding three reasons dilutes all three. 
+- → Reason: choose one — the strongest. Adding three reasons dilutes all three.
 
-- → Example: must be specific. 'We've seen this before' is not an example. 
+- → Example: must be specific. 'We've seen this before' is not an example.
 
-- → Second Point: do not introduce new information — close, don't continue. 
+- → Second Point: do not introduce new information — close, don't continue.
 
-- → Recovery: if challenged after your PREP response, deploy a second PREP rather than extending the first. 
+- → Recovery: if challenged after your PREP response, deploy a second PREP rather than extending the first.
 
-SECTION 07 
+SECTION 07
 
-##### **Situation · Behaviour · Impact** 
+##### **Situation · Behaviour · Impact**
 
-Origin: Center for Creative Leadership 
+Origin: Center for Creative Leadership
 
-## **SBI** 
+## **SBI**
 
-_Use when: Delivering feedback to peers, senior engineers, and leaders — especially in situations where the behaviour has had a visible negative impact._ 
+*Use when: Delivering feedback to peers, senior engineers, and leaders — especially in situations where the behaviour has had a visible negative impact.*
 
-###### **THE STRUCTURE** 
+###### **THE STRUCTURE**
 
 |**S**<br>**Situation**|Anchor the feedback to a specific, observable situation. When and where did it happen? Be precise<br>— avoid 'you always' or 'you never.'|
 |---|---|
@@ -382,94 +383,94 @@ _Use when: Delivering feedback to peers, senior engineers, and leaders — espec
 ||intention. Only what happened.|
 |**I**<br>**Impact**|Describe the impact of that behaviour — on the team, the decision, the outcome, or on you. This is<br>where you connect the behaviour to why it matters.|
 
-###### **WORKED EXAMPLES — SENIOR ARCHITECT FEEDBACK** 
+###### **WORKED EXAMPLES — SENIOR ARCHITECT FEEDBACK**
 
-###### **SBI EXAMPLE — PSYCHOLOGICAL SAFETY** 
+###### **SBI EXAMPLE — PSYCHOLOGICAL SAFETY**
 
-SITUATION: 'In yesterday's design review, when the junior engineer presented the API proposal...' 
+SITUATION: 'In yesterday's design review, when the junior engineer presented the API proposal...'
 
-BEHAVIOUR: '...you interrupted them three times before they completed their first slide, and you characterised their approach as naive without asking any questions.' 
+BEHAVIOUR: '...you interrupted them three times before they completed their first slide, and you characterised their approach as naive without asking any questions.'
 
-IMPACT: 'The engineer stopped contributing for the rest of the session. Two other junior engineers in the room told me afterwards they are now reluctant to present in reviews. We lose the perspectives we most need to hear.' 
+IMPACT: 'The engineer stopped contributing for the rest of the session. Two other junior engineers in the room told me afterwards they are now reluctant to present in reviews. We lose the perspectives we most need to hear.'
 
-###### **WHY SBI WORKS** 
+###### **WHY SBI WORKS**
 
-SBI works because it is irrefutable at the Situation and Behaviour levels — you are reporting observation, not interpretation. The recipient cannot argue with what happened. They can only engage with the Impact, which opens the conversation. It removes the most common feedback failure: character judgements ('you're dismissive') that trigger defensiveness and close the conversation. 
+SBI works because it is irrefutable at the Situation and Behaviour levels — you are reporting observation, not interpretation. The recipient cannot argue with what happened. They can only engage with the Impact, which opens the conversation. It removes the most common feedback failure: character judgements ('you're dismissive') that trigger defensiveness and close the conversation.
 
-###### **SBI DONE WELL** 
+###### **SBI DONE WELL**
 
-###### **SBI DONE POORLY** 
+###### **SBI DONE POORLY**
 
-- Situation is specific — date, meeting, event. 
+- Situation is specific — date, meeting, event.
 
-   - Situation is vague — 'you often do this.' 
+  - Situation is vague — 'you often do this.'
 
-- Behaviour is observable — seen or heard, not inferred. 
+- Behaviour is observable — seen or heard, not inferred.
 
-   - Behaviour is interpreted — 'you were trying to undermine me.' 
+  - Behaviour is interpreted — 'you were trying to undermine me.'
 
-   - Impact is about your feelings only — no organisational 
+  - Impact is about your feelings only — no organisational
 
-   - consequence. 
+  - consequence.
 
-- Impact is real — on people, decisions, or outcomes. 
+- Impact is real — on people, decisions, or outcomes.
 
-- Delivered promptly — within 24–48 hours of the event. 
+- Delivered promptly — within 24–48 hours of the event.
 
-- Delivered weeks later, attached to a performance review. 
+- Delivered weeks later, attached to a performance review.
 
-SECTION 08 
+SECTION 08
 
-##### **The Burning Platform Framework** 
+##### **The Burning Platform Framework**
 
-Origin: Daryl Conner, Managing at the Speed of Change, 1993 
+Origin: Daryl Conner, Managing at the Speed of Change, 1993
 
-**BP** 
+**BP**
 
-_Use when: Creating urgency for transformation and change — when the status quo is genuinely dangerous but the organisation has not yet recognised it._ 
+*Use when: Creating urgency for transformation and change — when the status quo is genuinely dangerous but the organisation has not yet recognised it.*
 
-The Burning Platform metaphor describes a North Sea oil worker who jumped from a burning platform into freezing water — choosing certain discomfort over certain death. Conner used it to explain why people change: not because the new state is attractive, but because the current state is intolerable. This framework is for creating that recognition in an organisation or executive audience. 
+The Burning Platform metaphor describes a North Sea oil worker who jumped from a burning platform into freezing water — choosing certain discomfort over certain death. Conner used it to explain why people change: not because the new state is attractive, but because the current state is intolerable. This framework is for creating that recognition in an organisation or executive audience.
 
-###### **THE THREE ELEMENTS** 
+###### **THE THREE ELEMENTS**
 
-Make the cost of inaction visible, specific, and time-bound. Vague threats do not create urgency. Quantified, dated consequences do. 'We risk regulatory action by Q3 if we do not act' is a burning platform. 'We have technical debt' is not. 
+Make the cost of inaction visible, specific, and time-bound. Vague threats do not create urgency. Quantified, dated consequences do. 'We risk regulatory action by Q3 if we do not act' is a burning platform. 'We have technical debt' is not.
 
-- **1 The Platform is Burning** 
+- **1 The Platform is Burning**
 
-Define the transformation as achievable, not just necessary. If the audience believes the jump will kill them, they stay on the platform. Your case must include evidence that the change is deliverable — comparable examples, staged milestones, and risk mitigation. 
+Define the transformation as achievable, not just necessary. If the audience believes the jump will kill them, they stay on the platform. Your case must include evidence that the change is deliverable — comparable examples, staged milestones, and risk mitigation.
 
-- **2 The Jump is Survivable** 
+- **2 The Jump is Survivable**
 
-Remove the third alternative — doing nothing. Present the cost of inaction at least as prominently as the cost of change. The audience must believe that the current trajectory leads to a worse outcome than the disruption of transformation. 
+Remove the third alternative — doing nothing. Present the cost of inaction at least as prominently as the cost of change. The audience must believe that the current trajectory leads to a worse outcome than the disruption of transformation.
 
-- **3 Staying is Not an Option** 
+- **3 Staying is Not an Option**
 
-###### **ETHICAL GUARDRAILS** 
+###### **ETHICAL GUARDRAILS**
 
-The Burning Platform is a powerful framework that can be misused. Use it only when the urgency is genuine — manufactured urgency erodes trust permanently when it is discovered. If you have to exaggerate the threat to create urgency, the problem is not the communication; it is the strategy. Revisit whether the initiative is genuinely necessary. 
+The Burning Platform is a powerful framework that can be misused. Use it only when the urgency is genuine — manufactured urgency erodes trust permanently when it is discovered. If you have to exaggerate the threat to create urgency, the problem is not the communication; it is the strategy. Revisit whether the initiative is genuinely necessary.
 
-###### **BURNING vs NOT BURNING** 
+###### **BURNING vs NOT BURNING**
 
-The platform IS burning: 'Our three largest competitors have launched AI-native products in the past six months. Our largest customer has issued an RFP that our current platform cannot respond to. If we do not have a credible AI capability by Q4, we are not on the shortlist.' 
+The platform IS burning: 'Our three largest competitors have launched AI-native products in the past six months. Our largest customer has issued an RFP that our current platform cannot respond to. If we do not have a credible AI capability by Q4, we are not on the shortlist.'
 
-The platform IS NOT burning: 'AI is transforming every industry and we need to move fast or we will be left behind.' [Too vague — no specific threat, no timeline, no evidence] 
+The platform IS NOT burning: 'AI is transforming every industry and we need to move fast or we will be left behind.' [Too vague — no specific threat, no timeline, no evidence]
 
-SECTION 09 
+SECTION 09
 
 |**RA**<br>**Risk-Ad**<br>Origin: Executiv|**justed Narrative**<br>e communication practice, uncertainty management|
 |---|---|
-|**N**<br>_Use when: An_<br>_— boards, inv_|_y situation where you must communicate genuinely uncertain outcomes to an audience that desires certainty_<br>_estment committees, regulatory bodies._|
+|**N**<br>*Use when: An*<br>*— boards, inv*|*y situation where you must communicate genuinely uncertain outcomes to an audience that desires certainty*<br>*estment committees, regulatory bodies.*|
 |**THE STRUCTURE**<br>**1**<br>**Anchor**|State your current best estimate clearly and directly. Do not bury it in caveats. Give the number, the<br>outcome, or the recommendation first.|
 |**2**<br>**Range**|Provide a confidence-weighted range — not a single point estimate. Name the upper and lower<br>bounds and what drives the variance.|
 |**3**<br>**Assumptions**|State the two or three key assumptions the estimate rests on. Explicit assumptions are more credible<br>than hidden ones.|
 |**4**<br>**Uncertainty Type**|Distinguish aleatory uncertainty (irreducible variability) from epistemic uncertainty (knowable with<br>more analysis). Show what actions will reduce the uncertainty.|
 |**5**<br>**Decision Gate**|Propose a specific checkpoint where the uncertainty will be materially reduced and the estimate<br>revised. This converts open-ended uncertainty into managed risk.|
 
-###### **WORKED EXAMPLE — INVESTMENT CASE WITH UNCERTAINTY** 
+###### **WORKED EXAMPLE — INVESTMENT CASE WITH UNCERTAINTY**
 
-###### **RISK-ADJUSTED NARRATIVE APPLIED** 
+###### **RISK-ADJUSTED NARRATIVE APPLIED**
 
-→ ANCHOR: Our current estimate for the modernisation programme is £14M over 24 months. 
+→ ANCHOR: Our current estimate for the modernisation programme is £14M over 24 months.
 
 |→RANGE: The range is £11M–£18M, depending primarily on the complexity of the legacy data migration.|
 |---|
@@ -478,21 +479,21 @@ SECTION 09
 |→UNCERTAINTY TYPE: The data migration complexity is epistemic — we will know more after a 6-week discovery spike. The|
 |regulatory environment is aleatory — we cannot eliminate it but have built a 15% contingency.|
 
-→ DECISION GATE: We will return to the board at week 8 with a revised estimate after the discovery spike. At that point the range narrows to approximately ±10%. 
+→ DECISION GATE: We will return to the board at week 8 with a revised estimate after the discovery spike. At that point the range narrows to approximately ±10%.
 
-Executives who communicate false precision get short-term approval and long-term credibility damage when reality diverges from the forecast. The Risk-Adjusted Narrative builds credibility by being accurately uncertain rather than precisely wrong. 
+Executives who communicate false precision get short-term approval and long-term credibility damage when reality diverges from the forecast. The Risk-Adjusted Narrative builds credibility by being accurately uncertain rather than precisely wrong.
 
-SECTION 10 
+SECTION 10
 
-##### **Stakeholder Register Framework** 
+##### **Stakeholder Register Framework**
 
-## **SR F** 
+## **SR F**
 
-Origin: Programme management and executive communication practice 
+Origin: Programme management and executive communication practice
 
-_Use when: Before any major communication — board paper, investment case, transformation narrative, or difficult conversation — to ensure the message is tailored to each audience._ 
+*Use when: Before any major communication — board paper, investment case, transformation narrative, or difficult conversation — to ensure the message is tailored to each audience.*
 
-###### **THE AUDIENCE MATRIX** 
+###### **THE AUDIENCE MATRIX**
 
 |**AUDIENCE**|**REGISTER**|**FOCUS**|**LENGTH**|**TONE**|
 |---|---|---|---|---|
@@ -503,64 +504,64 @@ _Use when: Before any major communication — board paper, investment case, tran
 |CISO|Risk|What are the security and<br>compliance implications|20 min|Risk-tiered, compliance-linked|
 |Eng. Leaders<br>Regulators|Operational<br>Formal|What are we doing, in what<br>sequence, and what do we<br>need<br>Evidence of control,<br>compliance, and governance|Detailed<br>Formal|Specific, actionable, technically grounded<br>Precise, evidenced, no ambiguity|
 
-###### **STAKEHOLDER INFLUENCE MAP** 
+###### **STAKEHOLDER INFLUENCE MAP**
 
-Before any major initiative, map your stakeholders across two axes: decision power (high/low) and disposition (supportive/resistant). This produces four segments that require different communication strategies. 
+Before any major initiative, map your stakeholders across two axes: decision power (high/low) and disposition (supportive/resistant). This produces four segments that require different communication strategies.
 
-Engage deeply. Keep informed. Use as sponsors and validators. Equip them to carry your message to others. 
+Engage deeply. Keep informed. Use as sponsors and validators. Equip them to carry your message to others.
 
-- **A High Power / Supportive** 
+- **A High Power / Supportive**
 
-- **B High Power / Resistant** 
+- **B High Power / Resistant**
 
-- **C Low Power / Supportive** 
+- **C Low Power / Supportive**
 
-- **D Low Power / Resistant** 
+- **D Low Power / Resistant**
 
-Invest most heavily here. Understand the source of resistance. Tailor the narrative to their specific concerns. One-on-one meetings before any group session. 
+Invest most heavily here. Understand the source of resistance. Tailor the narrative to their specific concerns. One-on-one meetings before any group session.
 
-- Build the coalition. These are your credibility validators and ground-level advocates. Keep them engaged and visible. 
+- Build the coalition. These are your credibility validators and ground-level advocates. Keep them engaged and visible.
 
-Monitor but do not over-invest. Address their concerns through the high-power stakeholders they align with. 
+Monitor but do not over-invest. Address their concerns through the high-power stakeholders they align with.
 
-SECTION 11 
+SECTION 11
 
-##### **The Three-Lens Communication Model** 
+##### **The Three-Lens Communication Model**
 
-## **3L M** 
+## **3L M**
 
-Origin: Executive communication and strategic framing practice 
+Origin: Executive communication and strategic framing practice
 
-_Use when: Framing any technology initiative for an executive or board audience — ensuring the business, risk, and investment dimensions are all covered._ 
+*Use when: Framing any technology initiative for an executive or board audience — ensuring the business, risk, and investment dimensions are all covered.*
 
-###### **THE THREE LENSES** 
+###### **THE THREE LENSES**
 
 |**B**<br>**Business Lens**|Why does this matter to the business? What customer, revenue, market, or competitive outcome<br>does this enable or protect? This lens is for the CEO and CPO.|
 |---|---|
 |**R**<br>**Risk Lens**|What risk does this address or create? Regulatory, security, operational, reputational? What is the<br>cost of inaction? This lens is for the CFO, CRO, CISO, and Board.|
 |**I**<br>**Investment Lens**|What does this cost? What is the return and over what period? What are the staged commitment<br>options? This lens is for the CFO and Audit Committee.|
 
-Most architects communicate only through the Business Lens — they explain what the technology does and why it is valuable. Executives who approve investment are equally concerned with the Risk and Investment lenses. A communication that does not address all three leaves questions unanswered — and unanswered questions become objections. 
+Most architects communicate only through the Business Lens — they explain what the technology does and why it is valuable. Executives who approve investment are equally concerned with the Risk and Investment lenses. A communication that does not address all three leaves questions unanswered — and unanswered questions become objections.
 
-###### **ALL THREE LENSES APPLIED** 
+###### **ALL THREE LENSES APPLIED**
 
-→ BUSINESS: This modernisation restores our product delivery velocity to competitive parity — we can ship features 3x faster and respond to customer needs without 9-month lead times. 
+→ BUSINESS: This modernisation restores our product delivery velocity to competitive parity — we can ship features 3x faster and respond to customer needs without 9-month lead times.
 
-→ RISK: Without this investment, we face three material risks: regulatory non-compliance (£5M+ fine exposure), inability to respond to the incoming PSD3 requirement, and an 18-month window where a competitor with modern architecture can outpace us in every product category. 
+→ RISK: Without this investment, we face three material risks: regulatory non-compliance (£5M+ fine exposure), inability to respond to the incoming PSD3 requirement, and an 18-month window where a competitor with modern architecture can outpace us in every product category.
 
-→ INVESTMENT: £14M over 24 months, with a £6M value realisation in year 3 through reduced delivery cost and platform licensing consolidation. Staged gating at months 6, 12, and 18 limits committed exposure to £4M at each gate. 
+→ INVESTMENT: £14M over 24 months, with a £6M value realisation in year 3 through reduced delivery cost and platform licensing consolidation. Staged gating at months 6, 12, and 18 limits committed exposure to £4M at each gate.
 
-SECTION 12 
+SECTION 12
 
-##### **Objection Pre-emption Framework** 
+##### **Objection Pre-emption Framework**
 
-## **OP F** 
+## **OP F**
 
-Origin: Courtroom advocacy and executive communication 
+Origin: Courtroom advocacy and executive communication
 
-_Use when: Major investment cases, board presentations, executive steering committees — any high-stakes communication where objections are predictable._ 
+*Use when: Major investment cases, board presentations, executive steering committees — any high-stakes communication where objections are predictable.*
 
-###### **THE FRAMEWORK** 
+###### **THE FRAMEWORK**
 
 |**1**|**Map Objections**|Before any major communication, list every objection the audience is likely to raise. Be genuinely<br>adversarial — make the strongest version of each objection.|
 |---|---|---|
@@ -570,27 +571,27 @@ _Use when: Major investment cases, board presentations, executive steering commi
 |**4**|**Prepare**<br>**Responses**|For Category B objections, have a prepared PREP response ready. Rehearse it until it is fluent and<br>natural.|
 |**5**|**Revise or**<br>**Disclose**|For Category C objections — genuine gaps — either revise the proposal to address them, or<br>disclose the gap with a plan to resolve it. Never hope the audience doesn't notice.|
 
-###### **COMMON ARCHITECTURE OBJECTIONS AND PRE-EMPTIONS** 
+###### **COMMON ARCHITECTURE OBJECTIONS AND PRE-EMPTIONS**
 
-###### **OBJECTION HANDLING EXAMPLES** 
+###### **OBJECTION HANDLING EXAMPLES**
 
-OBJECTION: 'Why didn't you consider [alternative]?' → PRE-EMPTION: Include an explicit options analysis with your recommendation. Show that you considered it, evaluated it, and explain why your recommendation is superior. 
+OBJECTION: 'Why didn't you consider [alternative]?' → PRE-EMPTION: Include an explicit options analysis with your recommendation. Show that you considered it, evaluated it, and explain why your recommendation is superior.
 
-OBJECTION: 'This is too expensive.' → PRE-EMPTION: Lead with the cost of inaction. 'At £14M, this programme costs less than the regulatory exposure we face if we do not act, and less than the accumulated delivery cost over three years.' 
+OBJECTION: 'This is too expensive.' → PRE-EMPTION: Lead with the cost of inaction. 'At £14M, this programme costs less than the regulatory exposure we face if we do not act, and less than the accumulated delivery cost over three years.'
 
-OBJECTION: 'The last programme ran over — why should we trust this one?' → PRE-EMPTION: Include a specific section on how the governance model of this programme is designed to prevent the failure modes of the previous one. Be explicit about what is different. 
+OBJECTION: 'The last programme ran over — why should we trust this one?' → PRE-EMPTION: Include a specific section on how the governance model of this programme is designed to prevent the failure modes of the previous one. Be explicit about what is different.
 
-SECTION 13 
+SECTION 13
 
-##### **Difficult Conversation Framework** 
+##### **Difficult Conversation Framework**
 
-## **DC F** 
+## **DC F**
 
-Origin: Harvard Negotiation Project — Difficult Conversations (Stone, Patton, Heen) 
+Origin: Harvard Negotiation Project — Difficult Conversations (Stone, Patton, Heen)
 
-_Use when: Delivering hard news, managing conflict, giving critical feedback, and any conversation where the stakes are high and emotions are involved._ 
+*Use when: Delivering hard news, managing conflict, giving critical feedback, and any conversation where the stakes are high and emotions are involved.*
 
-###### **THE THREE CONVERSATIONS** 
+###### **THE THREE CONVERSATIONS**
 
 |**1**<br>**What Happened**|Separate the facts from the story you are telling about the facts. In any difficult conversation, both|
 |---|---|
@@ -600,31 +601,31 @@ _Use when: Delivering hard news, managing conflict, giving critical feedback, an
 ||conversation matters to me.'|
 |**3**<br>**Identity**|Understand that difficult conversations threaten identity — for both parties. The other person's<br>resistance is often about protecting their sense of competence, integrity, or belonging. Address this<br>directly.|
 
-###### **THE OPENING MOVE** 
+###### **THE OPENING MOVE**
 
-The first 60 seconds of a difficult conversation determine whether it becomes productive or defensive. The opening must signal that you are entering a conversation, not delivering a verdict. 
+The first 60 seconds of a difficult conversation determine whether it becomes productive or defensive. The opening must signal that you are entering a conversation, not delivering a verdict.
 
-###### **OPENING MOVE CONTRAST** 
+###### **OPENING MOVE CONTRAST**
 
-VERDICT OPENING (avoid): 'I wanted to talk to you because your behaviour in the design review yesterday was unacceptable.' 
+VERDICT OPENING (avoid): 'I wanted to talk to you because your behaviour in the design review yesterday was unacceptable.'
 
-CONVERSATION OPENING (use): 'I wanted to talk about yesterday's design review because I think something happened there that affected the team, and I want to understand it from your perspective before sharing mine.' 
+CONVERSATION OPENING (use): 'I wanted to talk about yesterday's design review because I think something happened there that affected the team, and I want to understand it from your perspective before sharing mine.'
 
-###### **PRINCIPLES FOR DIFFICULT CONVERSATIONS** 
+###### **PRINCIPLES FOR DIFFICULT CONVERSATIONS**
 
-→ Prepare the conversation, not your arguments. Know what you want the outcome to be — not just what you want to say. 
+→ Prepare the conversation, not your arguments. Know what you want the outcome to be — not just what you want to say.
 
-→ Listen for the version of the story you haven't heard. Ask before advocating. 
+→ Listen for the version of the story you haven't heard. Ask before advocating.
 
-→ Name what is difficult: 'This is a hard conversation for me to have, and I want to have it well.' 
+→ Name what is difficult: 'This is a hard conversation for me to have, and I want to have it well.'
 
-→ End with a shared understanding, not a verdict: 'What would you like to happen from here?' 
+→ End with a shared understanding, not a verdict: 'What would you like to happen from here?'
 
-###### SECTION 14 
+###### SECTION 14
 
 |**W**|**C**<br>**Executiv**<br>Origin: C-suite a|**e Written Communication Standards**<br>nd board communication practice|
 |---|---|---|
-|**S**|_Use when: Boa_<br>_to a senior aud_|_rd papers, executive memos, decision notes, architecture decision records, and any written communication_<br>_ience._|
+|**S**|*Use when: Boa*<br>*to a senior aud*|*rd papers, executive memos, decision notes, architecture decision records, and any written communication*<br>*ience.*|
 |**THE E**<br>**1**|**XECUTIVE MEMO STAND**<br>**Subject Line**|**ARD**<br>State the decision needed or the outcome of reading: 'DECISION: Cloud Provider Selection — AWS<br>Recommended' not 'Cloud Update'.|
 |**2**|**Executive**<br>**Summary**|Three sentences maximum. Recommendation, rationale, and action required. The entire document<br>should be readable from the executive summary alone.|
 |**3**|**Recommendation**|State the recommendation before the analysis. Executives read to validate or challenge — they need<br>the recommendation first.|
@@ -632,9 +633,9 @@ CONVERSATION OPENING (use): 'I wanted to talk about yesterday's design review be
 |**5**|**Risk & Mitigation**|Name the top three risks and the mitigation for each. Do not bury risk in footnotes.|
 |**6**|**Decision Required**|State exactly what decision you need, from whom, and by when. Never end a document without a<br>clear next action.|
 
-###### **ARCHITECTURE DECISION RECORD (ADR) STANDARD** 
+###### **ARCHITECTURE DECISION RECORD (ADR) STANDARD**
 
-An ADR is the written artefact of an architectural decision. At executive level, ADRs serve as governance documentation and audit trail. They must be comprehensible to a non-technical executive. 
+An ADR is the written artefact of an architectural decision. At executive level, ADRs serve as governance documentation and audit trail. They must be comprehensible to a non-technical executive.
 
 |**1**|**Context**|What is the situation and the force that requires a decision?|
 |---|---|---|
@@ -644,67 +645,67 @@ An ADR is the written artefact of an architectural decision. At executive level,
 |**5**|**Consequences**|What are the positive and negative consequences of this decision?|
 |**6**|**Review Date**|When will this decision be reconsidered in light of new evidence?|
 
-###### **WRITING THAT WORKS** 
+###### **WRITING THAT WORKS**
 
-Subject line contains the decision or outcome. 
+Subject line contains the decision or outcome.
 
-- Recommendation before analysis — always. 
+- Recommendation before analysis — always.
 
-- Plain English — no architecture jargon. 
+- Plain English — no architecture jargon.
 
-Active voice: 'We recommend' not 'It is recommended.' 
+Active voice: 'We recommend' not 'It is recommended.'
 
-One idea per sentence. 
+One idea per sentence.
 
-Decision and owner clearly named. 
+Decision and owner clearly named.
 
-###### **WRITING THAT FAILS** 
+###### **WRITING THAT FAILS**
 
-- Subject line is a topic, not an action. 
+- Subject line is a topic, not an action.
 
-Analysis builds to the recommendation — buried at the end. 
+Analysis builds to the recommendation — buried at the end.
 
-Technical vocabulary without translation. 
+Technical vocabulary without translation.
 
-Passive voice throughout — removes accountability. 
+Passive voice throughout — removes accountability.
 
-Dense paragraphs with multiple ideas. 
+Dense paragraphs with multiple ideas.
 
-Document ends without a clear next action. 
+Document ends without a clear next action.
 
-SECTION 15 
+SECTION 15
 
-### **COMMUNICATION ANTI-PATTERNS** 
+### **COMMUNICATION ANTI-PATTERNS**
 
-These are the most common communication failures that destroy credibility at the executive and board level. Each one is observable, diagnosable, and correctable. Review this section before every major communication. 
+These are the most common communication failures that destroy credibility at the executive and board level. Each one is observable, diagnosable, and correctable. Review this section before every major communication.
 
-**AP1 The Architecture Lecture** Problem: Explaining the technical architecture in detail to an audience that needs the business outcome. Triggered by the belief that if the audience understood the technical complexity, they would approve the investment. 
+**AP1 The Architecture Lecture** Problem: Explaining the technical architecture in detail to an audience that needs the business outcome. Triggered by the belief that if the audience understood the technical complexity, they would approve the investment.
 
-_Fix: Reframe: 'What does this enable the business to do that it cannot do today?' Start there. The architecture is the appendix, not the presentation._ 
+*Fix: Reframe: 'What does this enable the business to do that it cannot do today?' Start there. The architecture is the appendix, not the presentation.*
 
-###### **AP2 The Certainty Performance** 
+###### **AP2 The Certainty Performance**
 
-Problem: Projecting false confidence about uncertain outcomes because the audience signals a preference for certainty. Builds short-term approval and long-term credibility damage. 
+Problem: Projecting false confidence about uncertain outcomes because the audience signals a preference for certainty. Builds short-term approval and long-term credibility damage.
 
-_Fix: Use the Risk-Adjusted Narrative. Accurate uncertainty is more credible than false precision._ 
+*Fix: Use the Risk-Adjusted Narrative. Accurate uncertainty is more credible than false precision.*
 
-**AP3 The Endless Context** Problem: Spending 80% of the communication on background and context before reaching the recommendation. By the time the recommendation arrives, the audience has stopped listening. 
+**AP3 The Endless Context** Problem: Spending 80% of the communication on background and context before reaching the recommendation. By the time the recommendation arrives, the audience has stopped listening.
 
-_Fix: Use BLUF or Pyramid Principle. Recommendation first. Context is the appendix._ 
+*Fix: Use BLUF or Pyramid Principle. Recommendation first. Context is the appendix.*
 
-|**AP4**|**The Passive Hedge**<br>Problem: Using passive voice and hedged language to avoid accountability: 'It might be considered that...' 'There could be a<br>case for...' This reads as low confidence, regardless of the content.<br>_Fix: Use active voice with accountability: 'I recommend...' 'We will...' 'The risk is...'_|
+|**AP4**|**The Passive Hedge**<br>Problem: Using passive voice and hedged language to avoid accountability: 'It might be considered that...' 'There could be a<br>case for...' This reads as low confidence, regardless of the content.<br>*Fix: Use active voice with accountability: 'I recommend...' 'We will...' 'The risk is...'*|
 |---|---|
-|**AP5**|**The Jargon Shield**<br>Problem: Using technical vocabulary as a signal of expertise rather than as a communication tool. Forces the audience to<br>translate rather than engage.<br>_Fix: For every technical term, ask: 'What is the plain English equivalent?' If a CFO would need to Google it, replace it._|
+|**AP5**|**The Jargon Shield**<br>Problem: Using technical vocabulary as a signal of expertise rather than as a communication tool. Forces the audience to<br>translate rather than engage.<br>*Fix: For every technical term, ask: 'What is the plain English equivalent?' If a CFO would need to Google it, replace it.*|
 |**AP6**|**The Disagreement Avoidance**|
-||Problem: Softening a recommendation to avoid conflict, until the recommendation no longer exists. Presenting 'options' when<br>you have a clear view is a failure of leadership, not sensitivity.<br>_Fix: State your recommendation. Then acknowledge the strongest counterargument. Then explain why your recommendation is_<br>_still correct. Avoiding conflict in communication is not diplomacy._|
+||Problem: Softening a recommendation to avoid conflict, until the recommendation no longer exists. Presenting 'options' when<br>you have a clear view is a failure of leadership, not sensitivity.<br>*Fix: State your recommendation. Then acknowledge the strongest counterargument. Then explain why your recommendation is*<br>*still correct. Avoiding conflict in communication is not diplomacy.*|
 
-**AP7 The No-Ask Close** Problem: Ending a presentation or document without a clear call to action. 'I hope this was useful' is not a close. 'I need a decision by Friday' is. 
+**AP7 The No-Ask Close** Problem: Ending a presentation or document without a clear call to action. 'I hope this was useful' is not a close. 'I need a decision by Friday' is.
 
-_Fix: Every communication must end with: a specific action, a named owner, and a deadline._ 
+*Fix: Every communication must end with: a specific action, a named owner, and a deadline.*
 
-##### **THE MASTER CHECKLIST** 
+##### **THE MASTER CHECKLIST**
 
-Before every significant communication, run through this checklist: 
+Before every significant communication, run through this checklist:
 
 |**CHECKPOINT**|**QUESTION**|
 |---|---|

@@ -112,6 +112,7 @@ Real production traffic is rarely single-skill/single-tool. The full flow must a
 The planner should prefer the *more specific* skill (narrower description match) and, where confidence is low, either (a) ask a clarifying question, or (b) load both skills' metadata-only summaries and let the model disambiguate before committing to a full load — this is exactly why skill descriptions must be precise and mutually distinguishing (file `01`, §1.5).
 
 **B. Tool failure / retry**
+
 ```
 [5] Tool Invocation → error
         │
@@ -128,6 +129,7 @@ The planner should prefer the *more specific* skill (narrower description match)
 ```
 
 **C. Skill-to-skill delegation (composite skill)**
+
 ```
 [2] Skill Selection: "process-refund" skill loaded
         │
@@ -140,9 +142,11 @@ The planner should prefer the *more specific* skill (narrower description match)
         ▼
    returns eligibility=true/false → resumes parent skill's procedure
 ```
+
 (Full treatment of nested/hierarchical/planner/supervisor skill patterns in file `07`.)
 
 **D. Cross-agent delegation (A2A)**
+
 ```
 [3] Tool Selection step determines the needed capability is owned by
     a peer agent, not a local tool

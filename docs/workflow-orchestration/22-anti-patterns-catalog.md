@@ -69,6 +69,7 @@ except ActivityError:
 **Why it seems right**: Prompts are easy to update. No code deployment needed. The LLM can "understand" complex rules in natural language.
 
 **Why it fails**:
+
 1. **Auditability**: You cannot prove which version of a rule was active at decision time
 2. **Testing**: You cannot unit-test rules in a prompt — only E2E test the whole agent
 3. **Consistency**: The LLM interprets rules probabilistically — edge cases produce inconsistent results
@@ -90,10 +91,10 @@ You are a refund agent. Rules:
 async def process_refund(request: RefundRequest) -> RefundDecision:
     # Deterministic rules first (fast, cheap, auditable)
     rule_result = await dmn_engine.evaluate("refund-policy", request)
-    
+
     if rule_result.decision in ("approve", "reject"):
         return RefundDecision(decision=rule_result.decision, basis="policy_rule")
-    
+
     # LLM only for genuine ambiguity
     if rule_result.decision == "escalate":
         agent_decision = await run_refund_agent(request, context=rule_result.context)
@@ -109,6 +110,7 @@ async def process_refund(request: RefundRequest) -> RefundDecision:
 **Why it seems right**: "It's just a text file" — seems like overkill to version it like software.
 
 **Why it fails**:
+
 - A production incident occurred. You changed the prompt two hours ago. You have no way to prove what changed.
 - You need to roll back. You don't have the previous version.
 - A regulator asks "what instruction did the AI receive when it rejected this loan application in March?" You have no answer.
@@ -148,10 +150,12 @@ class AgentDecisionRecord:
 **Why it seems right**: "More retries = more resilience."
 
 **Why it fails**:
+
 - A transient API error retries correctly. An LLM producing a wrong answer retries and may produce a different wrong answer — still wrong, but now you've run 3x the LLM cost.
 - A cascading failure: workflow retries → multiple simultaneous agent runs → LLM rate limit hit → all retries fail → exponential backoff → system thrashes for 30 minutes.
 
 **The correct pattern**: Distinguish retry categories:
+
 ```
 Infrastructure failures (retry aggressively):
   - Network timeouts
@@ -178,6 +182,7 @@ Business failures (escalate, don't retry):
 **Why it seems right**: "The LLM knows everything — just ask it."
 
 **Why it fails**:
+
 1. **Stale**: The LLM's training data has a cutoff. It does not know your current policy.
 2. **Unreliable**: LLMs hallucinate facts they are uncertain about.
 3. **Expensive**: A database lookup costs microseconds and fractions of a cent. An LLM call costs 10-1000x more.
@@ -194,6 +199,7 @@ Business failures (escalate, don't retry):
 **Why it seems right**: "Simpler architecture — one agent handles everything."
 
 **Why it fails**:
+
 1. **Context window pressure**: 40 tool definitions + long prompt + conversation history bloats the context, degrading quality.
 2. **Debugging**: When something goes wrong, which part of the system is responsible?
 3. **Permissions**: A mega-agent has access to every tool — a security risk. Compromise of one workflow gives access to all capabilities.
@@ -284,7 +290,7 @@ class MyWorkflow:
 ## Quick Reference
 
 | Anti-Pattern | Root Cause | Fix |
-|---|---|---|
+| --- | --- | --- |
 | AP-01: Agents = deterministic | Mental model from Temporal activities | Single attempt, escalate on failure |
 | AP-02: Logic in prompts | Ease of iteration | Rules in DMN/code, LLM for judgment only |
 | AP-03: No prompt versioning | "It's just text" | Prompt registry with full history |

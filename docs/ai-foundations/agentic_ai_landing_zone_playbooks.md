@@ -26,6 +26,7 @@ covers_version: \"as of 2026-07-10\"
 ### Week 1: Discovery & Planning
 
 #### Monday
+
 ```
 TASK: Define the agent mission
 ├─ MEETING: Stakeholder alignment (30 min)
@@ -46,6 +47,7 @@ TASK: Define the agent mission
 ```
 
 #### Tuesday-Wednesday
+
 ```
 TASK: Risk classification (EU AI Act)
 ├─ ACTION: Classify agent against EU AI Act
@@ -59,6 +61,7 @@ TASK: Risk classification (EU AI Act)
 ```
 
 #### Thursday-Friday
+
 ```
 TASK: Build golden dataset v1
 ├─ ACTION: Collect 50 test cases
@@ -74,6 +77,7 @@ TASK: Build golden dataset v1
 ```
 
 **Week 1 Checklist:**
+
 - [ ] Agent mission & brief written
 - [ ] Risk classification completed
 - [ ] 50 test cases collected & annotated
@@ -141,6 +145,7 @@ FRIDAY: Compliance review (with legal/compliance)
 ```
 
 **Weeks 2-3 Checklist:**
+
 - [ ] Architecture diagram completed
 - [ ] Data sources identified
 - [ ] Model selection completed
@@ -184,6 +189,7 @@ THURSDAY-FRIDAY: Test against golden dataset
 ```
 
 **Week 4 Checklist:**
+
 - [ ] Agent code written
 - [ ] Integration with context sources working
 - [ ] Logging & audit trail implemented
@@ -239,6 +245,7 @@ FRIDAY: ARB review & approval to canary
 ```
 
 **Week 5 Checklist:**
+
 - [ ] Agent deployed to staging
 - [ ] Smoke tests passing
 - [ ] Shadow mode evaluation completed
@@ -283,6 +290,7 @@ TUESDAY: Execute canary
 ```
 
 **Week 6 Checklist:**
+
 - [ ] Canary deployment plan finalized
 - [ ] Monitoring alerts configured
 - [ ] Rollback procedure tested
@@ -323,6 +331,7 @@ TUESDAY-FRIDAY: Operational stability
 ```
 
 **Week 7 Checklist:**
+
 - [ ] Blue environment ready
 - [ ] Green environment deployed
 - [ ] Smoke tests passing on green
@@ -353,6 +362,7 @@ TUESDAY-FRIDAY: Optimization & feedback
 ```
 
 **Week 8 Checklist:**
+
 - [ ] Operational handoff completed
 - [ ] On-call rotation active
 - [ ] Runbooks documented
@@ -864,6 +874,7 @@ PLAYBOOK 5: Implement Multi-Agent System (6 weeks)
 ---
 
 **Recommended Sequence:**
+
 1. **Playbook 1** (Deploy First Agent): Weeks 1-8
 2. **Playbook 3** (Golden Dataset): Weeks 4-6 (parallel with Playbook 1)
 3. **Playbook 2** (Registry): Weeks 9-10 (after first agent is stable)
@@ -875,4 +886,3 @@ PLAYBOOK 5: Implement Multi-Agent System (6 weeks)
 **Document Status:** READY FOR EXECUTION  
 **Owner:** Platform Engineering Lead  
 **Audience:** Engineering teams, product owners
-

@@ -84,17 +84,20 @@ Five end-to-end architecture patterns for different enterprise contexts in 2026.
 ```
 
 ### Strengths
+
 - ✅ Non-technical stakeholders understand process
 - ✅ Visual audit trail
 - ✅ Business rules easily changed
 - ✅ Full compliance trail
 
 ### Weaknesses
+
 - ❌ Difficult to add AI reasoning
 - ❌ Can't discover new process paths at runtime
 - ❌ Human approval becomes bottleneck at scale
 
 ### Governance
+
 - Process versions in Camunda (version control)
 - DMN versions (decision table history)
 - Manual approvals logged with user ID/timestamp
@@ -162,7 +165,7 @@ Five end-to-end architecture patterns for different enterprise contexts in 2026.
 ```typescript
 workflow ProcessOrder(orderId) {
   const order = await getOrder(orderId)
-  
+
   try {
     await validateOrder(order)           // Can fail/retry
     await chargePayment(order)            // Can fail/retry
@@ -173,10 +176,10 @@ workflow ProcessOrder(orderId) {
     await refundPayment(order)
     throw error
   }
-  
+
   // Wait for signal from customer
   const cancellation = await waitForSignal('cancel')
-  
+
   if (cancellation) {
     await cancelOrder(order)
   }
@@ -184,17 +187,20 @@ workflow ProcessOrder(orderId) {
 ```
 
 ### Strengths
+
 - ✅ Reliable across service failures
 - ✅ Full replay and recovery
 - ✅ Deterministic (audit-friendly)
 - ✅ Scales to 100M+ workflows
 
 ### Weaknesses
+
 - ❌ Determinism prevents AI reasoning
 - ❌ Code-first means developers design processes
 - ❌ Harder to adapt to changing business rules
 
 ### Governance
+
 - Workflow code in Git (version control)
 - Semantic versioning for workflows
 - Test coverage for new workflow versions
@@ -267,7 +273,7 @@ while not done:
   # 1. Reason about what to do
   reasoning = llm.think(agent_state)
   tool = reasoning.select_tool()
-  
+
   # 2. Invoke tool
   if tool == "customer_profile":
     profile = get_customer_profile(user_id)
@@ -284,23 +290,26 @@ while not done:
   elif tool == "finish":
     agent_state.recommendation = reasoning.output
     done = True
-  
+
   agent_state.reasoning.append(reasoning)
 ```
 
 ### Strengths
+
 - ✅ Adaptive (agent chooses best path)
 - ✅ Learning (models improve over time)
 - ✅ Flexible (easy to add new tools)
 - ✅ Reasoning is transparent
 
 ### Weaknesses
+
 - ❌ Non-deterministic (audit harder)
 - ❌ LLM latency (not sub-second)
 - ❌ Can hallucinate/fail in unexpected ways
 - ❌ Compliance team anxious
 
 ### Governance
+
 - Prompt versioning (semantic versioning)
 - Model version tracking (Claude 3.5 vs 4.0)
 - Tool registry (approved tools only)
@@ -362,11 +371,11 @@ while not done:
 if (useCase.sla_critical && useCase.predictable) {
   // Payment settlement, order fulfillment
   → Route to Temporal
-  
+
 } else if (useCase.reasoning_heavy && useCase.adaptive) {
   // Recommendations, support classification
   → Route to LangGraph
-  
+
 } else if (useCase.human_approval && useCase.visible) {
   // Loan approval, contract review
   → Route to Camunda
@@ -402,12 +411,14 @@ Temporal Workflow: ProcessOrder
 ```
 
 ### Strengths
+
 - ✅ Each platform used for its strength
 - ✅ Handles diverse use cases
 - ✅ Mature (Temporal/Camunda proven)
 - ✅ AI-ready (LangGraph integrated)
 
 ### Weaknesses
+
 - ❌ Complex to operate (3 platforms)
 - ❌ Latency: cross-platform calls add overhead
 - ❌ Governance: need policy across platforms
@@ -510,12 +521,14 @@ Meta-Orchestrator
 - **Autonomy**: Can execute changes (with human approval gate)
 
 ### Strengths
+
 - ✅ Handles complexity (many specialized agents)
 - ✅ Learns over time
 - ✅ Highly adaptive
 - ✅ Can discover new solutions
 
 ### Weaknesses
+
 - ❌ Governance nightmare (who decided what?)
 - ❌ Debugging is hard (complex agent interactions)
 - ❌ Compliance teams very nervous

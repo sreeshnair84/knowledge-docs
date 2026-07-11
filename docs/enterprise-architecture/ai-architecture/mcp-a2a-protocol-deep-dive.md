@@ -20,7 +20,7 @@ covers_version: \"as of 2026-07-10\"
 ## 1. Protocol State (July 2026)
 
 | | MCP | A2A |
-|---|-----|-----|
+| --- | ----- | ----- |
 | **Current version** | 2025-11-25 (finalized) | v1.x (v1.0 early 2026) |
 | **Incoming** | 2026-07-28 (RC locked 2026-05-21; finalizes this month) — largest revision since launch | Point releases on the v1 line |
 | **Governance** | Linux Foundation — Agentic AI Foundation | Linux Foundation — Agentic AI Foundation (Google-donated, June 2025; IBM's ACP merged in Aug 2025) |
@@ -53,7 +53,7 @@ Reverse-DNS-identified, independently versioned extensions negotiated via capabi
 ### 2.4 Deprecations (annotation-only, ≥12-month window)
 
 | Deprecated | Migrate to |
-|-----------|-----------|
+| ----------- | ----------- |
 | **Sampling** (server borrows client's LLM) | Direct provider calls via your AI gateway |
 | **Roots** | Explicit tool params / resource URIs |
 | **Logging** | OpenTelemetry |
@@ -101,7 +101,7 @@ Anything not in the registry is unsanctioned by definition. This mirrors the con
 **Tool trust tiers:**
 
 | Tier | Definition | Allowed use |
-|------|-----------|-------------|
+| ------ | ----------- | ------------- |
 | **T0** | Internal first-party | Full access per policy |
 | **T1** | Vetted vendor | Approved data classes, contract-backed |
 | **T2** | Community | Sandboxed, read-only, no sensitive data |
@@ -130,7 +130,7 @@ For the full threat catalog and treatment stages, see [Security Architecture & G
 ### Deployment Topologies
 
 | Topology | Trust profile | Guidance |
-|----------|--------------|----------|
+| ---------- | -------------- | ---------- |
 | **Local (stdio)** | = host-level code execution | Dev/desktop only; signed packages; deny in server-side prod |
 | **Remote (HTTP)** | Network boundary; OAuth | Default for production |
 | **Enterprise/private** | Behind gateway; workforce IdP; private registry | Standard for internal systems of record |
@@ -173,7 +173,7 @@ Identity here is *organizational* trust, distinct from intra-platform workload i
 ## 7. MCP vs. A2A: Decision Table
 
 | Question | MCP | A2A |
-|----------|-----|-----|
+| ---------- | ----- | ----- |
 | **Unit of interaction** | Tool call / resource read | Task with lifecycle |
 | **Counterparty** | Deterministic capability | Autonomous (opaque) agent |
 | **Typical latency** | ms–s (Tasks ext. for longer) | s–days |
@@ -187,7 +187,7 @@ Identity here is *organizational* trust, distinct from intra-platform workload i
 The end-to-end lifecycle for bringing MCP/A2A into a regulated enterprise:
 
 | Stage | MCP actions | A2A actions | Exit criteria |
-|-------|------------|-------------|---------------|
+| ------- | ------------ | ------------- | --------------- |
 | **1. Evaluate** | Inventory candidate servers; classify by trust tier (T0–T3); threat-model against §5 | Identify internal/external agent counterparties; review card schemas | Protocol fit confirmed vs. decision table |
 | **2. Pilot** | 1–2 T0/T1 servers behind a gateway in a sandboxed domain; stdio denied server-side | Internal-only A2A between two owned agents; unsigned cards acceptable inside one trust domain | Telemetry + policy enforcement demonstrated end-to-end |
 | **3. Private registry** | Stand up registry-of-record; manifest hash pinning; allowlist mirroring; CI re-review on manifest change | Governed agent catalog; card signing required for anything crossing a domain | Nothing resolvable outside the registry |

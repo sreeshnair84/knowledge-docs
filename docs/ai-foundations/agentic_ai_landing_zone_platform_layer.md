@@ -20,6 +20,7 @@ covers_version: \"as of 2026-07-10\"
 ## The Agent Platform Problem
 
 **Today's Reality (2026):**
+
 - 82% of enterprises have undiscovered agents (no central visibility)
 - Each team rebuilds common capabilities (customer service, compliance, reporting)
 - No standard way to discover, version, or deprecate agents
@@ -28,6 +29,7 @@ covers_version: \"as of 2026-07-10\"
 
 **Platform Solution:**
 Build a **managed agent ecosystem** where agents are:
+
 - **Discovered** — Central registry, searchable by capability
 - **Versioned** — Clear upgrade paths, backward compatibility
 - **Owned** — Clear RACI, SLAs, support contact
@@ -104,7 +106,7 @@ metadata:
   namespace: "customer-operations"
   created: "2025-06-15"
   last_updated: "2026-07-09"
-  
+
 spec:
   # ─── OWNERSHIP & ORGANIZATION ─────────────
   ownership:
@@ -112,7 +114,7 @@ spec:
     owner_email: "cust-ops-lead@company.com"
     oncall_slack: "#ai-cust-ops-oncall"
     cto_approval_required: false  # only true for high-risk
-    
+
   # ─── BUSINESS DEFINITION ──────────────────
   business:
     description: "Orchestrates multi-agent workflow for customer inquiries"
@@ -120,7 +122,7 @@ spec:
     estimated_annual_impact: "$2.5M cost savings"
     business_unit: "Customer Operations"
     enabled_by: ["customer-support-agent", "order-lookup-agent", "refund-policy-agent"]
-    
+
   # ─── TECHNICAL SPECIFICATION ──────────────
   technical:
     framework: "langgraph-0.4.8"
@@ -135,7 +137,7 @@ spec:
       availability: "99.5%"
       p95_latency_ms: 2000
       throughput_rps: 100
-    
+
   # ─── DATA ACCESS & PERMISSIONS ────────────
   data_access:
     databases:
@@ -144,43 +146,43 @@ spec:
         tables: ["customers", "orders", "support_tickets"]
         row_level_security: true
         sensitive_columns: ["ssn", "credit_card"]  # masked automatically
-    
+
     knowledge_sources:
       - type: "vector_store"
         name: "company_kb"
         collection: "refund_policies_v3"
         read_only: true
-    
+
     mcp_tools:
       - "email_service"
       - "ticketing_system"
       - "analytics_api"
-    
+
     blocked_access:
       - "employee_records"
       - "financial_data"
       - "source_code_repos"
-  
+
   # ─── GOVERNANCE & COMPLIANCE ──────────────
   governance:
     autonomy_level: 2  # 0=advisory, 1=supervised, 2=constrained, 3=broad, 4=full
     decision_scope: "customer_interactions"
-    
+
     risk_classification:
       eu_ai_act: "limited-risk"  # unacceptable | high | limited | minimal
       annex_iii: false
       high_risk_assessment: false
-    
+
     policy_cards:
       - "cust-service-policy-v2.1"
       - "data-access-policy-v1.0"
       - "gdpr-compliance-policy-v2.0"
-    
+
     audit_requirements:
       log_all_actions: true
       audit_retention_days: 2555  # 7 years
       human_review_on_escalation: true
-  
+
   # ─── QUALITY & EVALUATION ─────────────────
   quality:
     evaluation_enabled: true
@@ -195,12 +197,12 @@ spec:
         target: "< 15%"
       - name: "hallucination_rate"
         target: "< 2%"
-    
+
     regression_testing:
       enabled: true
       run_on_deployment: true
       baseline_version: "v2.3"
-  
+
   # ─── COST GOVERNANCE ──────────────────────
   cost:
     monthly_budget_usd: 15000
@@ -208,7 +210,7 @@ spec:
     chargeback_model: "per_interaction"
     estimated_cost_per_interaction: "$0.08"
     alert_threshold_daily_usd: 500
-    
+
   # ─── OBSERVABILITY ────────────────────────
   observability:
     traces_exported_to: ["datadog", "new_relic"]
@@ -216,7 +218,7 @@ spec:
     metrics_dashboard: "datadog://cust-service-prod"
     anomaly_detection: true
     sla_tracking: true
-  
+
   # ─── DEPLOYMENT & VERSIONING ──────────────
   deployment:
     version: "2.4.1"
@@ -243,10 +245,10 @@ status:
   phase: "running"  # deploying | running | paused | failed
   last_deployment: "2026-07-09T14:30:00Z"
   last_successful_health_check: "2026-07-09T16:45:00Z"
-  
+
   deployments_active: 5
   pods_running: 8
-  
+
   # ─── METRICS (updated continuously) ────────
   metrics:
     uptime_last_7_days_percent: 99.7
@@ -254,7 +256,7 @@ status:
     requests_per_second: 42.3
     error_rate_percent: 0.3
     cost_mtd_usd: 8234.50
-    
+
   # ─── RECENT ISSUES ────────────────────────
   recent_incidents:
     - id: "INC-2026-0847"
@@ -267,6 +269,7 @@ status:
 ### Registry Governance Rules
 
 **Who can register an agent?**
+
 - Tier 0 (Shadow agents): Anyone (discovery phase, unmanaged)
 - Tier 1 (Managed): Team lead approval + security review
 - Tier 2 (Production): Architecture Review Board approval
@@ -276,7 +279,7 @@ status:
 
 ```sql
 -- "Show me all agents handling customer data"
-SELECT * FROM agents 
+SELECT * FROM agents
 WHERE data_access.databases[*].name = 'customer_db'
 ORDER BY autonomy_level DESC, risk_score DESC;
 
@@ -393,7 +396,7 @@ ORDER BY governance.risk_score DESC;
 ### Lifecycle Gates & Approvals
 
 | Gate | Triggered | Decision | SLA |
-|------|-----------|----------|-----|
+| ------ | ----------- | ---------- | ----- |
 | **Security Review** | At registration | CISO team reviews data access + policy | 3 business days |
 | **Architecture Review** | Before staging | ARB validates design patterns | 5 business days |
 | **Compliance Assessment** | Before production | Risk level classification, EU AI Act check | 7 business days |
@@ -433,6 +436,7 @@ TIER 3: SHARED COMPONENTS & SKILLS
 ### Marketplace Discovery Interface
 
 **Search Query Examples:**
+
 ```
 # Find agents that work with customer data
 agents search --data-source customer_db --risk-level limited
@@ -504,7 +508,7 @@ Cost per interaction:       $0.25 (including platform overhead)
 ### Cost Optimization Strategies
 
 | Strategy | Potential Savings | Effort | Approval Required |
-|----------|------------------|--------|-------------------|
+| ---------- | ------------------ | -------- | ------------------- |
 | **Batch processing instead of real-time** | 30-40% | Medium | Business owner |
 | **Smaller model fallback** | 15-25% | Low | Architecture team |
 | **Cache common queries** | 20-35% | Low | Engineering |
@@ -520,7 +524,7 @@ Cost per interaction:       $0.25 (including platform overhead)
 Agents must meet baseline standards before production:
 
 | Certification Level | Requirements | Who Can Use | SLA |
-|-------------------|--------------|------------|-----|
+| ------------------- | -------------- | ------------ | ----- |
 | **Bronze** | Registered, security review passed | Internal stakeholders only | Best effort |
 | **Silver** | Bronze + quality metrics validated | Business unit + shared org | 95% availability |
 | **Gold** | Silver + 6 months production, zero incidents | Enterprise-wide | 99.5% availability |
@@ -529,12 +533,14 @@ Agents must meet baseline standards before production:
 ### Certification Metrics
 
 **All Agents Must Maintain:**
+
 - Availability ≥ SLA target
 - Latency (p95) ≤ 2000ms
 - Error rate < 1%
 - Quality score ≥ baseline
 
 **High-Risk Agents Must Additionally:**
+
 - Monthly compliance audit
 - Quarterly risk reassessment
 - Human-in-the-loop on all high-impact decisions
@@ -598,7 +604,7 @@ Compliance (Last Audit):
 T+0 (Deprecation Announcement)
 └─ Email all stakeholders
    "Agent X will retire 2026-12-31. Successor: Agent X-v2"
-   
+
 T+30 days
 ├─ Successor agent released in production
 ├─ Migration guide published
@@ -631,33 +637,33 @@ Engineer: "I built a refund automation agent. How do I get it to production?"
 WORKFLOW:
 1. Agent Registry entry created (DRAFT status)
    └─ Metadata: name, business value, data access, model, owner
-   
+
 2. Security review initiated (3-day SLA)
    └─ CISO checks: data access, policy cards, risk classification
    └─ Result: APPROVED or REQUEST_CHANGES
-   
+
 3. Architecture review (5-day SLA)
    └─ ARB validates: design patterns, scalability, cost estimates
    └─ Result: APPROVED or REJECTED
-   
+
 4. Deploy to staging (1 day)
    └─ Automated deployment pipeline
    └─ Runs quality evaluation against golden dataset
-   
+
 5. User acceptance testing (3 days)
    └─ Business team validates behavior
    └─ Result: APPROVED_FOR_PRODUCTION
-   
+
 6. Canary deployment (4 hours)
    └─ 5% production traffic
    └─ Monitor error rates, latency
    └─ Result: PROCEED_TO_100% or ROLLBACK
-   
+
 7. Production deployment (1 day)
    └─ Blue-green deployment to 100%
    └─ SLA monitoring active
    └─ Status: RUNNING
-   
+
 TOTAL TIME: ~2 weeks
 ```
 
@@ -670,23 +676,23 @@ WORKFLOW:
 1. New version registered
    └─ Automatically uses existing policy cards + data access
    └─ Skip security review (unchanged scope)
-   
+
 2. Regression testing (automated, 1 hour)
    └─ Compare v2.5 against v2.4 on golden dataset
    └─ Quality metrics must match or improve
-   
+
 3. Staging validation (4 hours)
    └─ Run in parallel with v2.4
    └─ Compare real-world performance
-   
+
 4. Canary deployment (4 hours)
    └─ 5% traffic to v2.5
    └─ 95% still on v2.4
-   
+
 5. Rollout to 100% (automated if healthy)
    └─ Monitor for 24 hours
    └─ v2.4 deprecated, but not deleted (rollback available)
-   
+
 TOTAL TIME: ~1 day (much faster than new agent)
 ```
 
@@ -731,6 +737,7 @@ Before rolling out the Agent Platform layer, your organization should decide:
 ---
 
 **Related Documents:**
+
 - [Business Layer: Agent Portfolio & Strategy](agentic_ai_landing_zone_business_layer.md)
 - [AI Governance Operating Model](../sovereign-constitutional-ai/ai-governance-operating-model.md)
 - [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures.md)
@@ -740,4 +747,3 @@ Before rolling out the Agent Platform layer, your organization should decide:
 **Document Status:** DRAFT (July 2026)  
 **Next Update:** After first agents enter Registry (production experience)  
 **Owner:** Platform Engineering + AI Governance Board
-

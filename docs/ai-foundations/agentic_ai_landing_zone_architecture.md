@@ -12,8 +12,11 @@ covers_version: \"as of 2026-07-10\"
 ---
 
 # AGENTIC AI LANDING ZONE
+
 ## TOGAF Architecture Deliverable
+
 ### Enterprise Architecture Office
+
 **Version:** 1.0  
 **Date:** February 6, 2026  
 **Classification:** Internal - Strategic
@@ -23,9 +26,11 @@ covers_version: \"as of 2026-07-10\"
 ## EXECUTIVE SUMMARY
 
 ### Objective
+
 Establish a governed, secure, and scalable enterprise platform enabling development and operation of Agentic AI workloads across hybrid and multi-cloud environments.
 
 ### Strategic Alignment
+
 - **Digital Transformation:** Accelerate AI-driven innovation
 - **Automation Strategy:** Enable autonomous business processes
 - **Data-Driven Enterprise:** Maximize value from enterprise data assets
@@ -34,7 +39,7 @@ Establish a governed, secure, and scalable enterprise platform enabling developm
 ### Expected Outcomes
 
 | Outcome | Target | Measurement |
-|---------|--------|-------------|
+| --------- | -------- | ------------- |
 | **Deployment Velocity** | 60% reduction in time-to-production | Cycle time from idea to production deployment |
 | **Risk Mitigation** | 80% reduction in security incidents | Security events related to AI workloads |
 | **Governance Compliance** | 100% policy adherence | Automated policy validation pass rate |
@@ -44,6 +49,7 @@ Establish a governed, secure, and scalable enterprise platform enabling developm
 ### Business Problem
 
 #### Emerging Challenges
+
 The organization faces critical challenges in scaling agentic AI systems:
 
 1. **Autonomous Decision-Making Risk**: AI agents making decisions without appropriate governance frameworks
@@ -53,7 +59,9 @@ The organization faces critical challenges in scaling agentic AI systems:
 5. **Fragmented Integration**: Each agent implementation requiring custom integrations
 
 #### Current State Gaps
+
 Traditional cloud landing zones are insufficient because they assume:
+
 - Deterministic workloads with predictable behavior
 - Static authorization models
 - Human-in-loop for all decisions
@@ -66,12 +74,13 @@ Traditional cloud landing zones are insufficient because they assume:
 ## ARCHITECTURE VISION
 
 ### Vision Statement
+
 *Create a standardized enterprise landing zone that enables **trusted autonomous AI systems** through governed infrastructure, runtime guardrails, behavioral observability, and lifecycle management while supporting hybrid/multi-cloud deployment.*
 
 ### Guiding Principles
 
 | # | Principle | Description | Implication |
-|---|-----------|-------------|-------------|
+| --- | ----------- | ------------- | ------------- |
 | 1 | **Agent Autonomy Must Be Governed** | All autonomous actions require policy-based approval | Runtime policy enforcement mechanisms required |
 | 2 | **Identity-First Trust Model** | Agent identity propagates through all interactions | Federated identity infrastructure mandatory |
 | 3 | **Least Privilege Data Access** | Agents access only required data, context-aware | Row-level security and dynamic authorization |
@@ -88,7 +97,7 @@ Traditional cloud landing zones are insufficient because they assume:
 ### Stakeholder Concerns
 
 | Stakeholder | Primary Concerns | Success Criteria |
-|-------------|------------------|------------------|
+| ------------- | ------------------ | ------------------ |
 | **Chief Information Officer** | - Strategic value realization<br>- Total cost of ownership<br>- Time to market | - ROI > 200% within 24 months<br>- 60% faster deployment cycles |
 | **Chief Information Security Officer** | - Security posture<br>- Compliance adherence<br>- Trust boundaries | - Zero security breaches<br>- 100% audit compliance<br>- Runtime policy enforcement |
 | **Chief Data Officer** | - Data governance<br>- Privacy protection<br>- Data quality | - 100% data lineage tracking<br>- Automated privacy controls<br>- GDPR/CCPA compliance |
@@ -104,30 +113,35 @@ Traditional cloud landing zones are insufficient because they assume:
 ### In Scope
 
 #### 1. Platform Architecture
+
 - Hybrid/multi-cloud foundation (Azure, AWS, GCP, on-premises)
 - Agent runtime environments (serverless, containers, GPU clusters)
 - Model serving infrastructure (API gateways, routing, versioning)
 - Data and knowledge platform (vector stores, knowledge graphs, structured data)
 
 #### 2. Governance Framework
+
 - Policy definition and enforcement
 - Agent identity and access management
 - Risk assessment and scoring
 - Compliance monitoring and reporting
 
 #### 3. Operational Excellence
+
 - CI/CD pipelines for agent deployment
 - Observability and monitoring
 - Incident response and escalation
 - Performance optimization
 
 #### 4. Standards Alignment
+
 - NIST AI Risk Management Framework (AI RMF)
 - ISO/IEC 42001 AI Management System
 - Model Context Protocol (MCP) integration
 - EU AI Act readiness assessment
 
 ### Out of Scope
+
 - Individual agent application logic and business rules
 - Specific use case implementations
 - User interface and experience design
@@ -180,14 +194,16 @@ Traditional cloud landing zones are insufficient because they assume:
 ### Detailed Component Architecture
 
 #### Layer 0: Strategy & Governance Foundation
+
 **Purpose:** Establish organizational alignment and governance framework
 
 **Components:**
+
 - AI Operating Model
   - Roles and responsibilities (RACI matrix)
   - Decision-making authority levels
   - Escalation procedures
-  
+
 - Responsible AI Principles
   - Fairness and non-discrimination
   - Transparency and explainability
@@ -201,8 +217,9 @@ Traditional cloud landing zones are insufficient because they assume:
   - Escalation triggers
 
 - Agent Autonomy Classification
+
   | Level | Description | Human Oversight | Examples |
-  |-------|-------------|-----------------|----------|
+  | ------- | ------------- | ----------------- | ---------- |
   | 0 | No autonomy (recommendation only) | Continuous | Advisory assistants |
   | 1 | Supervised execution | Per-transaction approval | Data analysis agents |
   | 2 | Constrained autonomy | Exception-based review | Workflow automation |
@@ -210,6 +227,7 @@ Traditional cloud landing zones are insufficient because they assume:
   | 4 | Full autonomy | Post-facto review | Self-optimizing systems |
 
 #### Layer 1: Cloud Platform Landing Zone
+
 **Purpose:** Provide secure, resilient infrastructure foundation
 
 **Components:**
@@ -219,14 +237,14 @@ Traditional cloud landing zones are insufficient because they assume:
    - Workload identity (service principals, managed identities)
    - Agent identity model (federated identity for autonomous agents)
    - Cross-cloud trust relationships
-   
+
 2. **Network Architecture**
    - Hub-spoke topology
    - Private endpoints for sensitive services
    - Network segmentation (DMZ, internal, restricted)
    - DNS automation and resolution
    - Hybrid connectivity (VPN, ExpressRoute, Direct Connect)
-   
+
 3. **Security Baseline**
    - Policy-based governance (Azure Policy, AWS SCPs, GCP Org Policies)
    - Encryption at rest and in transit
@@ -242,27 +260,29 @@ Traditional cloud landing zones are insufficient because they assume:
    - Cost allocation and chargeback
 
 #### Layer 2: AI/Agent Platform Foundation
+
 **Purpose:** Enable AI-specific compute, model access, and orchestration
 
 **Components:**
 
 1. **Compute Fabric**
+
    ```
    GPU Clusters
    ├── Training workloads
    ├── Real-time inference
    └── Batch processing
-   
+
    Serverless Compute
    ├── Function execution (Lambda, Functions, Cloud Functions)
    ├── Container instances
    └── Event-driven agents
-   
+
    Container Orchestration
    ├── Kubernetes clusters
    ├── Agent deployment manifests
    └── Auto-scaling policies
-   
+
    Edge Deployment
    ├── IoT edge devices
    ├── Branch office agents
@@ -274,12 +294,12 @@ Traditional cloud landing zones are insufficient because they assume:
      - OpenAI, Anthropic, Google, Meta, Azure OpenAI
      - Model routing based on capabilities, cost, latency
      - Rate limiting and quota management
-   
+
    - **Model Registry**: Version control and cataloging
      - Model metadata and lineage
      - Performance benchmarks
      - Approval workflow
-   
+
    - **Model Evaluation**: Continuous assessment
      - Accuracy, bias, toxicity testing
      - A/B testing framework
@@ -290,12 +310,12 @@ Traditional cloud landing zones are insufficient because they assume:
      - Apache Airflow for complex DAGs
      - AWS Step Functions / Azure Durable Functions
      - Temporal for long-running workflows
-   
+
    - **Agent Frameworks**: Development platforms
      - LangChain, LlamaIndex, CrewAI
      - Custom orchestration logic
      - Multi-agent communication (MCP, A2A protocols)
-   
+
    - **Tool Integration Fabric**
      - API connectors library
      - Event bus (Kafka, Event Hubs, Pub/Sub)
@@ -303,6 +323,7 @@ Traditional cloud landing zones are insufficient because they assume:
      - External service integrations
 
 #### Layer 3: Agent Trust & Governance Plane
+
 **Purpose:** Enable governed autonomy with runtime controls
 
 **CRITICAL INNOVATION:** This layer extends traditional landing zones to handle autonomous, non-deterministic systems.
@@ -310,13 +331,14 @@ Traditional cloud landing zones are insufficient because they assume:
 **Components:**
 
 1. **Agent Identity & Registry**
+
    ```
    Agent Identity Service
    ├── Unique agent identifiers (DIDs - Decentralized Identifiers)
    ├── Capability declarations
    ├── Trust relationships
    └── Delegation tokens
-   
+
    Agent Registry
    ├── Active agent catalog
    ├── Capability discovery
@@ -326,6 +348,7 @@ Traditional cloud landing zones are insufficient because they assume:
 
 2. **Runtime Guardrails**
    - **Policy Cards** (Machine-readable governance)
+
      ```yaml
      policy_card:
        agent_id: "customer-support-agent-v2"
@@ -347,12 +370,12 @@ Traditional cloud landing zones are insufficient because they assume:
          - "confidence_score < 0.7"
          - "sensitive_data_detected"
      ```
-   
+
    - **Constraint Engines**: Real-time policy enforcement
      - Input validation and sanitization
      - Output filtering and moderation
      - Action authorization checks
-   
+
    - **Safety Filters**: Content and behavior controls
      - Toxicity detection
      - PII detection and redaction
@@ -361,24 +384,25 @@ Traditional cloud landing zones are insufficient because they assume:
 
 3. **Risk Monitoring & Scoring**
    - **Autonomy Risk Assessment** (AURA framework)
+
      ```
      Risk Score Calculation:
      ────────────────────────
-     R = f(autonomy_level, decision_impact, confidence_score, 
+     R = f(autonomy_level, decision_impact, confidence_score,
            data_sensitivity, user_context, historical_behavior)
-     
+
      Risk Levels:
      • Low (0-30):     Standard operation
      • Medium (31-60): Enhanced monitoring
      • High (61-80):   Human review required
      • Critical (81-100): Operation blocked
      ```
-   
+
    - **Behavioral Analytics**: Anomaly detection
      - Baseline behavior modeling
      - Drift detection
      - Unusual pattern identification
-   
+
    - **Escalation Management**: Human-in-the-loop
      - Configurable escalation rules
      - Priority-based routing
@@ -386,6 +410,7 @@ Traditional cloud landing zones are insufficient because they assume:
 
 4. **Observability & Traceability**
    - **Semantic Telemetry**: Intent and action logging
+
      ```json
      {
        "timestamp": "2026-02-06T15:30:45Z",
@@ -412,13 +437,13 @@ Traditional cloud landing zones are insufficient because they assume:
        }
      }
      ```
-   
+
    - **Provenance Tracking**: Decision lineage
      - Input data sources
      - Model versions used
      - Reasoning steps
      - Human interventions
-   
+
    - **Audit Logging**: Compliance records
      - Immutable audit trail
      - Cryptographic signing
@@ -426,22 +451,24 @@ Traditional cloud landing zones are insufficient because they assume:
      - Query and reporting APIs
 
 #### Layer 4: Data / Knowledge Plane
+
 **Purpose:** Provide governed access to enterprise data and knowledge
 
 **Components:**
 
 1. **Data Domains**
+
    ```
    Structured Data
    ├── Relational databases (SQL Server, PostgreSQL, MySQL)
    ├── Data warehouses (Synapse, Redshift, BigQuery)
    └── OLAP cubes and semantic layers
-   
+
    Semi-Structured Data
    ├── Document stores (Cosmos DB, DynamoDB, Firestore)
    ├── JSON/XML data lakes
    └── Log aggregation platforms
-   
+
    Unstructured Data
    ├── Object storage (Blob Storage, S3, Cloud Storage)
    ├── Content management systems
@@ -453,12 +480,12 @@ Traditional cloud landing zones are insufficient because they assume:
      - Pinecone, Weaviate, Qdrant, Azure AI Search
      - Embedding models and versioning
      - Hybrid search (vector + keyword + metadata)
-   
+
    - **Knowledge Graphs**: Entity relationships
      - Neo4j, Amazon Neptune, Azure Cosmos DB Gremlin
      - Ontology management
      - Reasoning and inference
-   
+
    - **Document Processing**: RAG pipelines
      - Document chunking strategies
      - Metadata extraction
@@ -470,13 +497,13 @@ Traditional cloud landing zones are insufficient because they assume:
      - Attribute-based access (ABAC)
      - Row-level and column-level security
      - Dynamic data masking
-   
+
    - **Data Lineage**: End-to-end tracking
      - Source system identification
      - Transformation history
      - Consumption tracking
      - Impact analysis
-   
+
    - **Privacy Controls**: Automated protection
      - PII detection and classification
      - Consent management
@@ -484,25 +511,26 @@ Traditional cloud landing zones are insufficient because they assume:
      - Right to erasure automation
 
 4. **Data Pipelines**
+
    ```
    Ingestion → Processing → Storage → Serving
-   
+
    Ingestion:
    • Batch ETL (Azure Data Factory, AWS Glue, Cloud Data Fusion)
    • Streaming (Event Hubs, Kinesis, Pub/Sub)
    • Change Data Capture (Debezium, AWS DMS)
-   
+
    Processing:
    • Embedding generation
    • Chunking and segmentation
    • Quality validation
    • Enrichment and linking
-   
+
    Storage:
    • Primary storage (operational databases)
    • Archive storage (long-term retention)
    • Cache layers (Redis, Memcached)
-   
+
    Serving:
    • Query APIs
    • GraphQL endpoints
@@ -511,6 +539,7 @@ Traditional cloud landing zones are insufficient because they assume:
    ```
 
 #### Layer 5: Application / Agent Experience
+
 **Purpose:** Deliver business value through agent-powered applications
 
 **Components:**
@@ -535,29 +564,31 @@ Traditional cloud landing zones are insufficient because they assume:
    - Mobile and web applications
 
 #### Layer 6: Operations & Lifecycle
+
 **Purpose:** Enable continuous delivery and improvement
 
 **Components:**
 
 1. **DevOps / CI/CD**
+
    ```
    Code → Build → Test → Deploy → Monitor
-   
+
    Source Control:
    • Git repositories (GitHub, GitLab, Azure Repos)
    • Infrastructure as Code (Terraform, Bicep, CloudFormation)
    • Configuration management
-   
+
    Build Pipeline:
    • Container image building
    • Dependency management
    • Security scanning
-   
+
    Test Automation:
    • Unit tests for agent logic
    • Integration tests with mock services
    • Performance benchmarks
-   
+
    Deployment:
    • Blue-green deployments
    • Canary releases
@@ -576,12 +607,12 @@ Traditional cloud landing zones are insufficient because they assume:
      - Scenario banks (edge cases, adversarial inputs)
      - Load testing with realistic workloads
      - Chaos engineering for agent systems
-   
+
    - **Autonomy Testing**: Behavioral validation
      - Policy compliance verification
      - Safety constraint testing
      - Escalation threshold validation
-   
+
    - **Continuous Evaluation**: Production monitoring
      - Task success rates
      - Response quality scores
@@ -601,7 +632,7 @@ Traditional cloud landing zones are insufficient because they assume:
 ### Core Capabilities Enabled
 
 | Capability | Description | Business Value |
-|------------|-------------|----------------|
+| ------------ | ------------- | ---------------- |
 | **Agent Lifecycle Management** | Design, develop, test, deploy, monitor, and retire agents | Reduce deployment time by 60%, ensure quality |
 | **Model Governance** | Centralized model selection, evaluation, approval, and monitoring | Minimize model risk, ensure compliance |
 | **Knowledge Integration** | Connect agents to enterprise data with governance controls | Improve decision quality, maintain security |
@@ -614,6 +645,7 @@ Traditional cloud landing zones are insufficient because they assume:
 ### Value Streams
 
 #### Value Stream 1: Agent Deployment
+
 ```
 Design Agent → Validate Governance → Deploy Runtime → Monitor Behavior → Optimize Performance
 
@@ -625,6 +657,7 @@ Key Metrics:
 ```
 
 #### Value Stream 2: Governance Enforcement
+
 ```
 Define Policy → Encode Rules → Enforce Runtime → Audit Compliance → Improve Controls
 
@@ -636,6 +669,7 @@ Key Metrics:
 ```
 
 #### Value Stream 3: Knowledge Management
+
 ```
 Ingest Data → Process & Enrich → Index & Store → Serve to Agents → Monitor Usage
 
@@ -655,6 +689,7 @@ Key Metrics:
 #### Multi-Cloud Foundation
 
 **Azure Components**:
+
 - Azure AI Landing Zone (reference architecture)
 - Azure OpenAI Service
 - Azure AI Search (vector search)
@@ -664,6 +699,7 @@ Key Metrics:
 - Microsoft Entra ID (identity)
 
 **AWS Components**:
+
 - AWS Bedrock (multi-model access)
 - Amazon Kendra (intelligent search)
 - Amazon EKS (Kubernetes)
@@ -672,6 +708,7 @@ Key Metrics:
 - AWS IAM & Cognito
 
 **GCP Components**:
+
 - Vertex AI (model serving)
 - Google Cloud Search
 - Google Kubernetes Engine (GKE)
@@ -680,12 +717,14 @@ Key Metrics:
 - Cloud Identity
 
 **On-Premises**:
+
 - VMware for private cloud
 - NVIDIA DGX for GPU workloads
 - Self-hosted Kubernetes
 - Traditional databases and storage
 
 #### Agent Frameworks & Runtimes
+
 - LangChain / LangGraph (Python)
 - LlamaIndex (data ingestion and retrieval)
 - CrewAI (multi-agent orchestration)
@@ -694,6 +733,7 @@ Key Metrics:
 - Haystack (modular NLP)
 
 #### Data & Knowledge Platforms
+
 - **Vector Databases**: Pinecone, Weaviate, Qdrant, Milvus
 - **Graph Databases**: Neo4j, Amazon Neptune
 - **Document Stores**: MongoDB, Cosmos DB
@@ -701,6 +741,7 @@ Key Metrics:
 - **Data Lakes**: Azure Data Lake, S3, Cloud Storage
 
 #### Observability Stack
+
 - **Metrics**: Prometheus, Grafana, Azure Monitor
 - **Logging**: ELK Stack, Splunk, Azure Log Analytics
 - **Tracing**: OpenTelemetry, Jaeger, Zipkin
@@ -708,6 +749,7 @@ Key Metrics:
 - **Custom**: Agent-specific telemetry (semantic logging)
 
 #### Development & Operations
+
 - **IaC**: Terraform (primary), Bicep, CloudFormation
 - **CI/CD**: GitHub Actions, Azure DevOps, GitLab CI
 - **Container Registry**: ACR, ECR, Artifact Registry
@@ -716,6 +758,7 @@ Key Metrics:
 ### Integration Patterns
 
 #### Model Context Protocol (MCP) Integration
+
 ```
 ┌──────────────┐         ┌──────────────┐         ┌──────────────┐
 │   MCP Host   │◄───────►│  MCP Client  │◄───────►│  MCP Server  │
@@ -725,7 +768,7 @@ Key Metrics:
        │                        │                        │
        ▼                        ▼                        ▼
   Agent Logic           Protocol Layer            External Systems
-  
+
   • JSON-RPC 2.0 messaging
   • Capability discovery
   • Standardized tool invocation
@@ -733,18 +776,21 @@ Key Metrics:
 ```
 
 **MCP Benefits**:
+
 - Eliminates N×M integration problem
 - Vendor-neutral tool ecosystem
 - Pluggable architecture
 - Open-source community support
 
 **MCP Security Considerations**:
+
 - Authentication and authorization per connection
 - Rate limiting and quota enforcement
 - Input validation and sanitization
 - Audit logging of all MCP interactions
 
 #### Agent-to-Agent Protocol (A2A)
+
 ```
 Agent A ◄──── Capability Request ────► Agent B
     │                                      │
@@ -807,6 +853,7 @@ Key Features:
 ```
 
 **Security Zones**:
+
 - **DMZ**: Public-facing endpoints
 - **Application Tier**: Agent runtimes, orchestration
 - **Data Tier**: Databases, storage, AI services
@@ -822,13 +869,14 @@ Key Features:
 **Framework Structure**: Four core functions
 
 | Function | Description | Implementation in Landing Zone |
-|----------|-------------|--------------------------------|
+| ---------- | ------------- | -------------------------------- |
 | **GOVERN** | Establish policies, accountability, and oversight | • AI Governance Board<br>• Policy Cards<br>• RACI matrices<br>• Risk appetite statements |
 | **MAP** | Identify and frame AI risks across lifecycle | • Risk taxonomy<br>• Threat modeling<br>• Impact assessments<br>• Stakeholder analysis |
 | **MEASURE** | Analyze and monitor AI risks | • Risk scoring engine<br>• Behavioral analytics<br>• Performance metrics<br>• Audit dashboards |
 | **MANAGE** | Mitigate identified risks | • Runtime guardrails<br>• Escalation workflows<br>• Incident response<br>• Continuous improvement |
 
 **Key Characteristics**:
+
 - Voluntary, adaptable framework
 - Risk-based approach
 - Emphasis on trustworthy AI (fairness, transparency, accountability)
@@ -839,7 +887,7 @@ Key Features:
 **Standard Structure**: 10 clauses + 4 annexes (38 controls)
 
 | Clause | Title | Key Requirements |
-|--------|-------|------------------|
+| -------- | ------- | ------------------ |
 | **4** | Context of the organization | Understand stakeholders, define AIMS scope |
 | **5** | Leadership | Top management commitment, AI policy, roles |
 | **6** | Planning | Address risks/opportunities, set AI objectives |
@@ -849,6 +897,7 @@ Key Features:
 | **10** | Improvement | Nonconformity, corrective action, continual improvement |
 
 **Annex A Controls** (examples relevant to landing zone):
+
 - **A.2**: AI policy and objectives
 - **A.4**: Resource allocation and competence
 - **A.5**: Data governance and quality
@@ -858,6 +907,7 @@ Key Features:
 - **A.9**: Monitoring, measurement, and analysis
 
 **Key Characteristics**:
+
 - Certifiable international standard
 - Management system approach
 - Broad organizational scope (not just technical)
@@ -868,7 +918,7 @@ Key Features:
 Our landing zone implements both frameworks in an integrated manner:
 
 | NIST AI RMF | ISO/IEC 42001 | Landing Zone Implementation |
-|-------------|---------------|----------------------------|
+| ------------- | --------------- | ---------------------------- |
 | GOVERN 1.1: Policies and procedures | Clause 5.2: AI policy | Policy Cards, governance documentation |
 | GOVERN 1.2: Roles and responsibilities | Clause 5.3: Organizational roles | RACI matrix, team structures |
 | MAP 1.1: Context establishment | Clause 4.1: Understanding the organization | Stakeholder analysis, risk taxonomy |
@@ -881,12 +931,14 @@ Our landing zone implements both frameworks in an integrated manner:
 ### Model Context Protocol (MCP) Integration
 
 **MCP Adoption Benefits**:
+
 - **Interoperability**: Agents can use any MCP-compliant tool
 - **Scalability**: Add new data sources without custom code
 - **Security**: Centralized authentication and authorization
 - **Observability**: Standardized telemetry for all tool interactions
 
 **MCP Servers to Deploy**:
+
 1. **Enterprise Data**:
    - SQL databases (PostgreSQL, SQL Server, MySQL)
    - Document repositories (SharePoint, Google Drive)
@@ -903,6 +955,7 @@ Our landing zone implements both frameworks in an integrated manner:
    - Monitoring platforms
 
 **Security Controls**:
+
 - OAuth 2.0 / OIDC for authentication
 - Scoped access tokens
 - Rate limiting per client
@@ -912,8 +965,9 @@ Our landing zone implements both frameworks in an integrated manner:
 ### EU AI Act Readiness
 
 **Risk Classification**:
+
 | Risk Level | Agent Types | Requirements |
-|------------|-------------|--------------|
+| ------------ | ------------- | -------------- |
 | **Unacceptable** | Social scoring, manipulation | **Prohibited** |
 | **High-Risk** | Critical infrastructure, employment, law enforcement | Conformity assessment, risk management, human oversight, documentation |
 | **Limited-Risk** | Chatbots, content generation | Transparency obligations (disclose AI use) |
@@ -922,6 +976,7 @@ Our landing zone implements both frameworks in an integrated manner:
 > **Timeline note (July 2026):** The Digital Omnibus on AI (Council final approval June 29, 2026) deferred Annex III high-risk obligations to December 2, 2027 and Annex I embedded systems to August 2, 2028; Article 50 transparency obligations still apply from August 2, 2026.
 
 **Landing Zone Capabilities for High-Risk AI**:
+
 - Risk management system (integrated with NIST AI RMF)
 - Data governance protocols (ISO 42001 Annex A.5)
 - Technical documentation (architecture docs, ADRs)
@@ -937,7 +992,7 @@ Our landing zone implements both frameworks in an integrated manner:
 ### Work Packages
 
 | WP# | Work Package | Description | Duration | Dependencies |
-|-----|--------------|-------------|----------|--------------|
+| ----- | -------------- | ------------- | ---------- | -------------- |
 | **WP-1** | Identity Federation Design | Design and implement agent identity model with cross-cloud federation | 8 weeks | None |
 | **WP-2** | Policy Framework Implementation | Develop Policy Card schema, enforcement engine, and governance tooling | 10 weeks | WP-1 |
 | **WP-3** | Agent Runtime Platform | Deploy orchestration engines, model gateways, and compute infrastructure | 12 weeks | WP-1 |
@@ -951,9 +1006,11 @@ Our landing zone implements both frameworks in an integrated manner:
 ### Transition Architecture Roadmap
 
 #### Phase 0: Foundation (Weeks 1-4)
+
 **Objective**: Establish governance and design foundations
 
 **Deliverables**:
+
 - AI governance framework document
 - Risk appetite statement
 - Agent autonomy classification model
@@ -961,14 +1018,17 @@ Our landing zone implements both frameworks in an integrated manner:
 - Stakeholder alignment
 
 **Success Criteria**:
+
 - Governance board established
 - Architecture principles approved
 - Funding secured
 
 #### Phase 1: Platform Enablement (Weeks 5-20)
+
 **Objective**: Deploy core platform capabilities in pilot environment
 
 **Deliverables**:
+
 - Single-cloud landing zone (Azure or AWS)
 - Basic agent runtime (serverless + containers)
 - Model gateway with 2-3 providers
@@ -976,15 +1036,18 @@ Our landing zone implements both frameworks in an integrated manner:
 - Foundational observability
 
 **Success Criteria**:
+
 - 1-2 pilot agents deployed
 - Policy enforcement validated
 - Developer documentation complete
 - < 5 second policy evaluation latency
 
 #### Phase 2: Governance Embed (Weeks 21-32)
+
 **Objective**: Enhance governance, expand platform, prepare for multi-cloud
 
 **Deliverables**:
+
 - Policy Card full implementation
 - Risk scoring engine
 - Advanced observability (semantic telemetry)
@@ -992,15 +1055,18 @@ Our landing zone implements both frameworks in an integrated manner:
 - Second cloud provider integration
 
 **Success Criteria**:
+
 - 5+ production agents
 - 100% policy compliance
 - Real-time risk scoring operational
 - ISO 42001 gap assessment complete
 
 #### Phase 3: Enterprise Rollout (Weeks 33-48)
+
 **Objective**: Scale to enterprise-wide adoption
 
 **Deliverables**:
+
 - Multi-cloud orchestration
 - Self-service developer portal
 - Full observability suite
@@ -1008,15 +1074,18 @@ Our landing zone implements both frameworks in an integrated manner:
 - Advanced agent capabilities (multi-agent workflows)
 
 **Success Criteria**:
+
 - 20+ production agents
 - 100+ developers onboarded
 - 99.9% platform uptime
 - < 1 week onboarding time for new agents
 
 #### Phase 4: Optimization (Weeks 49-52+)
+
 **Objective**: Continuous improvement and advanced features
 
 **Deliverables**:
+
 - ISO 42001 certification
 - Cost optimization initiatives
 - Advanced autonomy capabilities
@@ -1024,6 +1093,7 @@ Our landing zone implements both frameworks in an integrated manner:
 - Continuous innovation pipeline
 
 **Success Criteria**:
+
 - ROI > 200%
 - Certification achieved
 - User satisfaction > 4.5/5
@@ -1038,6 +1108,7 @@ Our landing zone implements both frameworks in an integrated manner:
 **Purpose**: Ensure architectural integrity and alignment with enterprise standards
 
 **Membership**:
+
 - Enterprise Architect (Chair)
 - Security Architect
 - Data Architect
@@ -1047,6 +1118,7 @@ Our landing zone implements both frameworks in an integrated manner:
 - Representative from AI Governance Board
 
 **Responsibilities**:
+
 - Review and approve Architecture Decision Records (ADRs)
 - Validate adherence to architecture principles
 - Resolve architectural conflicts
@@ -1060,6 +1132,7 @@ Our landing zone implements both frameworks in an integrated manner:
 **Purpose**: Oversee ethical and responsible AI deployment
 
 **Membership**:
+
 - Chief AI Officer (Chair)
 - Chief Ethics Officer
 - Chief Data Officer
@@ -1069,6 +1142,7 @@ Our landing zone implements both frameworks in an integrated manner:
 - External Ethics Advisor (optional)
 
 **Responsibilities**:
+
 - Define and update AI policies
 - Review high-risk agent deployments
 - Investigate incidents and complaints
@@ -1080,14 +1154,16 @@ Our landing zone implements both frameworks in an integrated manner:
 ### Change Management
 
 **Change Categories**:
+
 | Category | Description | Approval Required |
-|----------|-------------|-------------------|
+| ---------- | ------------- | ------------------- |
 | **Standard** | Pre-approved changes (e.g., agent version updates using templates) | Automated |
 | **Normal** | Planned changes with risk assessment | ARB review |
 | **Emergency** | Urgent fixes for critical issues | Post-implementation review |
 | **Major** | Architectural changes, new capabilities | ARB + Governance Board |
 
 **Change Process**:
+
 1. Submit ADR or change request
 2. Technical review and impact assessment
 3. ARB approval (if required)
@@ -1139,12 +1215,14 @@ Assessment Questions:
 ### Version Control
 
 **Architecture Artifacts**:
+
 - Maintained in Git repository
 - Semantic versioning (MAJOR.MINOR.PATCH)
 - Changelog documentation
 - Approval signatures (digital)
 
 **ADR Management**:
+
 - Each ADR has unique identifier (ADR-XXX)
 - Status tracking (Proposed → Approved → Superseded → Deprecated)
 - Linked to implementation code/config
@@ -1157,7 +1235,7 @@ Assessment Questions:
 ### Platform Performance
 
 | Metric | Target | Measurement Method |
-|--------|--------|-------------------|
+| -------- | -------- | ------------------- |
 | **Platform Availability** | 99.9% | Uptime monitoring (monthly) |
 | **Policy Evaluation Latency** | < 50ms (p95) | APM tracing |
 | **Agent Deployment Time** | < 1 hour (end-to-end) | CI/CD pipeline metrics |
@@ -1167,7 +1245,7 @@ Assessment Questions:
 ### Governance & Compliance
 
 | Metric | Target | Measurement Method |
-|--------|--------|-------------------|
+| -------- | -------- | ------------------- |
 | **Policy Compliance Rate** | 100% | Automated policy checks |
 | **Audit Trail Completeness** | 100% | Audit log validation |
 | **Risk Score Accuracy** | > 90% | Human review validation |
@@ -1177,7 +1255,7 @@ Assessment Questions:
 ### Business Value
 
 | Metric | Target | Measurement Method |
-|--------|--------|-------------------|
+| -------- | -------- | ------------------- |
 | **Time to Production** | 60% reduction | Project tracking (baseline vs. current) |
 | **Development Cost per Agent** | 40% reduction | Cost accounting |
 | **Agent Reuse Rate** | > 75% | Component usage analytics |
@@ -1187,7 +1265,7 @@ Assessment Questions:
 ### Quality & Safety
 
 | Metric | Target | Measurement Method |
-|--------|--------|-------------------|
+| -------- | -------- | ------------------- |
 | **Agent Accuracy** | > 95% | Task success evaluation |
 | **Hallucination Rate** | < 2% | Automated + human review |
 | **Safety Incident Rate** | 0 critical incidents | Incident tracking |
@@ -1205,27 +1283,31 @@ Assessment Questions:
 **Deciders**: Enterprise Architecture, Cloud Architecture, CIO
 
 ### Context
+
 The organization operates across multiple cloud providers (Azure, AWS, GCP) and maintains on-premises infrastructure. Business units have existing cloud investments and regulatory requirements vary by region.
 
 **Constraints**:
+
 - Cannot mandate single-cloud due to existing investments
 - Regulatory compliance requires data sovereignty
 - Business continuity requires disaster recovery across regions/clouds
 - Talent pool familiar with multiple platforms
 
 ### Decision
+
 Implement a hybrid multi-cloud landing zone architecture with standardized abstractions.
 
 **Approach**:
+
 1. Define common abstractions for:
    - Identity (federated across providers)
    - Networking (consistent segmentation model)
    - Policy (provider-agnostic definitions)
-   
+
 2. Use Infrastructure as Code (Terraform) as primary tool
    - Cloud-specific modules where necessary
    - Standardized module interfaces
-   
+
 3. Implement agent runtime abstraction
    - Deploy to Kubernetes (portable across clouds)
    - Use provider-managed services when advantageous
@@ -1234,18 +1316,21 @@ Implement a hybrid multi-cloud landing zone architecture with standardized abstr
 ### Consequences
 
 **Positive**:
+
 - ✅ Flexibility to leverage best-of-breed services per cloud
 - ✅ Avoid vendor lock-in
 - ✅ Compliance with data residency requirements
 - ✅ Business continuity and disaster recovery
 
 **Negative**:
+
 - ❌ Increased architectural complexity
 - ❌ Higher operational overhead (multiple tools and processes)
 - ❌ Potential for configuration drift
 - ❌ Training requirements for multi-cloud skills
 
 **Mitigation**:
+
 - Strong IaC practices and automation
 - Centralized policy management
 - Comprehensive documentation and training
@@ -1254,10 +1339,12 @@ Implement a hybrid multi-cloud landing zone architecture with standardized abstr
 ### Alternatives Considered
 
 **Alternative 1**: Single-cloud standardization (Azure)
+
 - Rejected: Cannot abandon existing AWS/GCP investments
 - Risk: Creates organizational conflict and waste
 
 **Alternative 2**: Cloud-agnostic abstraction layer (e.g., Crossplane)
+
 - Deferred: Too immature for enterprise scale
 - May revisit in Phase 4
 
@@ -1270,22 +1357,27 @@ Implement a hybrid multi-cloud landing zone architecture with standardized abstr
 **Deciders**: Enterprise Architecture, Security Architecture, Identity Team
 
 ### Context
+
 Agentic systems require identity for:
+
 - Authentication to services
 - Authorization for data access
 - Audit trail attribution
 - Cross-agent trust relationships
 
 Traditional identity systems assume human users or static service principals. Agents are:
+
 - Dynamically created
 - Short-lived (sometimes)
 - Capable of assuming multiple roles
 - Require delegation capabilities
 
 ### Decision
+
 Implement a federated agent identity model based on Decentralized Identifiers (DIDs) and Verifiable Credentials.
 
 **Architecture**:
+
 ```
 Agent Identity Registry (Centralized)
 ├── DID Generation
@@ -1307,6 +1399,7 @@ Integration with Enterprise IdP
 ```
 
 **Implementation**:
+
 1. Each agent receives a unique DID
 2. Capabilities encoded in Verifiable Credentials
 3. Runtime requests short-lived access tokens
@@ -1316,6 +1409,7 @@ Integration with Enterprise IdP
 ### Consequences
 
 **Positive**:
+
 - ✅ Strong identity for all agents
 - ✅ Fine-grained authorization
 - ✅ Support for delegation and cross-agent trust
@@ -1323,11 +1417,13 @@ Integration with Enterprise IdP
 - ✅ Standards-based (W3C DID, VC)
 
 **Negative**:
+
 - ❌ Complexity in implementation
 - ❌ Performance overhead for token validation
 - ❌ New technology with limited enterprise tooling
 
 **Mitigation**:
+
 - Pilot with small agent population
 - Implement token caching
 - Build internal tooling and libraries
@@ -1336,10 +1432,12 @@ Integration with Enterprise IdP
 ### Alternatives Considered
 
 **Alternative 1**: Service principals per agent
+
 - Rejected: Poor scalability (management overhead)
 - Issue: No delegation or cross-agent trust
 
 **Alternative 2**: Shared service identity for all agents
+
 - Rejected: No attribution or fine-grained control
 - Risk: Blast radius of compromised credentials
 
@@ -1352,7 +1450,9 @@ Integration with Enterprise IdP
 **Deciders**: Enterprise Architecture, AI/ML Architecture
 
 ### Context
+
 The AI model landscape is rapidly evolving with multiple providers:
+
 - OpenAI (GPT-5 family)
 - Anthropic (Claude)
 - Google (Gemini)
@@ -1362,19 +1462,23 @@ The AI model landscape is rapidly evolving with multiple providers:
 - Specialized models (Mistral, Cohere, etc.)
 
 Challenges:
+
 - Different APIs, authentication, rate limits
 - Varying cost structures
 - Inconsistent capabilities
 - Risk of vendor dependency
 
 Agents need to:
+
 - Use best model for each task
 - Switch providers easily
 - Manage costs dynamically
 - Handle failures gracefully
 
 ### Decision
+
 Implement a Model Gateway abstraction layer that provides:
+
 1. Unified API for model access
 2. Intelligent routing based on capabilities and cost
 3. Rate limiting and quota management
@@ -1382,6 +1486,7 @@ Implement a Model Gateway abstraction layer that provides:
 5. Observability and cost tracking
 
 **Architecture**:
+
 ```
 Agent Code
     ↓
@@ -1396,6 +1501,7 @@ Model Gateway API (Unified Interface)
 ```
 
 **Routing Logic**:
+
 ```python
 request = {
     "task": "code_generation",
@@ -1417,6 +1523,7 @@ request = {
 ### Consequences
 
 **Positive**:
+
 - ✅ Vendor portability (no lock-in)
 - ✅ Cost optimization through routing
 - ✅ Simplified agent code
@@ -1424,11 +1531,13 @@ request = {
 - ✅ Easy to add new model providers
 
 **Negative**:
+
 - ❌ Added latency (routing overhead)
 - ❌ Abstraction may limit provider-specific features
 - ❌ Gateway becomes critical dependency (SPOF risk)
 
 **Mitigation**:
+
 - Optimize routing logic (< 10ms overhead target)
 - Allow pass-through mode for advanced use cases
 - Deploy gateway as highly available service
@@ -1437,10 +1546,12 @@ request = {
 ### Alternatives Considered
 
 **Alternative 1**: Direct model provider integration in each agent
+
 - Rejected: High coupling, code duplication
 - Issue: Difficult to switch providers or optimize costs
 
 **Alternative 2**: LangChain/LlamaIndex abstraction only
+
 - Deferred: Insufficient for enterprise governance needs
 - Gap: No cost control, quota management, or centralized observability
 
@@ -1453,12 +1564,15 @@ request = {
 **Deciders**: Enterprise Architecture, Security Architecture, AI Governance Board
 
 ### Context
+
 Traditional governance relies on:
+
 - Pre-deployment reviews
 - Static configuration
 - Human oversight at execution time
 
 Agentic systems require:
+
 - Real-time decision making
 - Dynamic behavior adaptation
 - Autonomous action authorization
@@ -1467,9 +1581,11 @@ Agentic systems require:
 **Problem**: How to enforce governance policies without blocking innovation or requiring human approval for every action?
 
 ### Decision
+
 Implement runtime policy enforcement using **Policy Cards** - machine-readable governance specifications executed at agent runtime.
 
 **Policy Card Schema**:
+
 ```yaml
 policy_card:
   metadata:
@@ -1477,67 +1593,68 @@ policy_card:
     version: "2.1.0"
     created: "2026-02-01"
     owner: "AI Governance Board"
-    
+
   agent_scope:
     agent_ids: ["customer-service-*"]
     agent_types: ["chatbot", "email_assistant"]
-    
+
   allowed_actions:
     - "query_customer_database"
     - "send_email_notification"
     - "create_support_ticket"
-    
+
   prohibited_actions:
     - "modify_pricing"
     - "delete_customer_records"
     - "access_payment_methods"
-    
+
   data_access:
     allowed_datasets:
       - name: "customer_profile"
         operations: ["read"]
       - name: "support_tickets"
         operations: ["read", "create", "update"]
-    
+
     prohibited_datasets:
       - "employee_records"
       - "financial_transactions"
-      
+
     data_filtering:
       - rule: "pii_redaction"
         scope: "customer_ssn"
         action: "mask"
-        
+
   autonomy_constraints:
     max_level: 2  # Constrained autonomy
-    
+
     human_approval_required:
       - condition: "refund_amount > $500"
         approver_role: "customer_service_manager"
         sla_minutes: 30
-        
+
       - condition: "account_deletion_request"
         approver_role: "data_protection_officer"
         sla_minutes: 60
-        
+
   risk_management:
     escalation_triggers:
       - metric: "confidence_score < 0.7"
         action: "request_human_review"
-        
+
       - metric: "sensitive_data_detected"
         action: "block_and_alert"
-        
+
     monitoring:
       - "log_all_actions"
       - "track_decision_reasoning"
-      
+
   compliance:
     frameworks: ["GDPR", "CCPA", "ISO27001"]
     audit_retention_days: 2555  # 7 years
 ```
 
 **Runtime Enforcement**:
+
 1. Agent requests action (e.g., "send email to customer")
 2. Policy engine loads applicable Policy Card(s)
 3. Engine evaluates:
@@ -1554,6 +1671,7 @@ policy_card:
 ### Consequences
 
 **Positive**:
+
 - ✅ Real-time enforcement without deployment delays
 - ✅ Machine-readable (can be automatically validated)
 - ✅ Version controlled and auditable
@@ -1561,12 +1679,14 @@ policy_card:
 - ✅ Supports iterative policy refinement
 
 **Negative**:
+
 - ❌ Runtime performance overhead
 - ❌ Policy authoring requires new skills
 - ❌ Potential for policy conflicts
 - ❌ Complexity in policy testing
 
 **Mitigation**:
+
 - Optimize policy evaluation (target < 50ms)
 - Provide policy authoring tools and templates
 - Implement policy conflict detection
@@ -1576,14 +1696,17 @@ policy_card:
 ### Alternatives Considered
 
 **Alternative 1**: Static configuration files
+
 - Rejected: Requires redeployment for policy changes
 - Issue: Too slow for iterative governance
 
 **Alternative 2**: Code-based policies (e.g., Python decorators)
+
 - Rejected: Difficult for non-developers to understand/modify
 - Risk: Policy logic embedded in application code
 
 **Alternative 3**: External policy service (e.g., Open Policy Agent)
+
 - Considered: OPA is good, but not AI-specific
 - Decision: Use OPA as enforcement engine, Policy Cards as schema
 
@@ -1596,18 +1719,22 @@ policy_card:
 **Deciders**: Enterprise Architecture, Platform Engineering
 
 ### Context
+
 Traditional observability focuses on:
+
 - System metrics (CPU, memory, network)
 - Application logs (errors, warnings)
 - Request tracing (latency, throughput)
 
 This is insufficient for agentic systems because:
+
 - **Intent matters**: Why did agent take action?
 - **Reasoning is opaque**: How did it decide?
 - **Context is critical**: What data influenced the decision?
 - **Compliance requires proof**: Can we explain the outcome?
 
 **Example Problem**:
+
 ```
 Traditional Log:
 2026-02-06 15:30:45 INFO AgentExecutor: Action completed successfully
@@ -1621,15 +1748,17 @@ Questions We Can't Answer:
 ```
 
 ### Decision
+
 Implement **Semantic Observability** - structured logging that captures agent intent, reasoning, context, and outcomes.
 
 **Semantic Log Schema**:
+
 ```json
 {
   "log_version": "1.0",
   "timestamp": "2026-02-06T15:30:45.123Z",
   "log_type": "agent_action",
-  
+
   "agent_context": {
     "agent_id": "customer-service-bot-prod-001",
     "agent_version": "2.3.1",
@@ -1638,13 +1767,13 @@ Implement **Semantic Observability** - structured logging that captures agent in
     "user_role": "customer",
     "business_context": "product_return_request"
   },
-  
+
   "intent": {
     "goal": "process_return_request",
     "user_request": "I want to return my order #12345",
     "inferred_intent": "initiate_return_workflow"
   },
-  
+
   "action": {
     "type": "tool_invocation",
     "tool": "returns_management_api",
@@ -1660,7 +1789,7 @@ Implement **Semantic Observability** - structured logging that captures agent in
       "access_token_id": "tok-xyz789"
     }
   },
-  
+
   "reasoning": {
     "model_used": "claude-sonnet-4-6",
     "prompt_version": "return-workflow-v3",
@@ -1672,7 +1801,7 @@ Implement **Semantic Observability** - structured logging that captures agent in
       "customer_history_good"
     ]
   },
-  
+
   "data_accessed": [
     {
       "source": "orders_database",
@@ -1686,7 +1815,7 @@ Implement **Semantic Observability** - structured logging that captures agent in
       "classification": "public"
     }
   ],
-  
+
   "result": {
     "status": "success",
     "outcome": "return_created",
@@ -1694,19 +1823,19 @@ Implement **Semantic Observability** - structured logging that captures agent in
     "customer_communication": "sent_email_confirmation",
     "processing_time_ms": 342
   },
-  
+
   "risk_assessment": {
     "risk_score": 15,
     "risk_level": "low",
     "flags": []
   },
-  
+
   "compliance": {
     "frameworks_applicable": ["GDPR", "CCPA"],
     "data_retention_required": true,
     "audit_category": "customer_transaction"
   },
-  
+
   "provenance": {
     "data_sources_fingerprint": "sha256:abc...",
     "model_checkpoint": "claude-sonnet-4-6",
@@ -1717,6 +1846,7 @@ Implement **Semantic Observability** - structured logging that captures agent in
 ```
 
 **Telemetry Pipeline**:
+
 ```
 Agent Runtime
     ↓
@@ -1736,6 +1866,7 @@ Dashboard  Compliance  ML Training
 ### Consequences
 
 **Positive**:
+
 - ✅ Full explainability of agent decisions
 - ✅ Compliance audit trail
 - ✅ Debugging and troubleshooting
@@ -1743,11 +1874,13 @@ Dashboard  Compliance  ML Training
 - ✅ Incident investigation
 
 **Negative**:
+
 - ❌ High storage costs (rich logs are large)
 - ❌ Performance overhead (structured serialization)
 - ❌ PII in logs (must be handled carefully)
 
 **Mitigation**:
+
 - Implement log sampling for high-volume agents
 - Use efficient serialization (Protobuf, Avro)
 - Automatic PII detection and redaction
@@ -1757,10 +1890,12 @@ Dashboard  Compliance  ML Training
 ### Alternatives Considered
 
 **Alternative 1**: Traditional logging (text-based)
+
 - Rejected: Impossible to query or analyze at scale
 - Issue: No structure for compliance or debugging
 
 **Alternative 2**: OpenTelemetry traces only
+
 - Insufficient: Traces capture "how" but not "why"
 - Decision: Use OTel for infrastructure + semantic logs for agents
 
@@ -1773,7 +1908,9 @@ Dashboard  Compliance  ML Training
 **Deciders**: Enterprise Architecture, Platform Engineering
 
 ### Context
+
 Agents need to interact with dozens or hundreds of tools and data sources:
+
 - Databases (SQL, NoSQL)
 - APIs (REST, GraphQL, SOAP)
 - File systems (local, cloud storage)
@@ -1781,6 +1918,7 @@ Agents need to interact with dozens or hundreds of tools and data sources:
 - Internal microservices
 
 **Traditional Approach**: Custom integration per tool
+
 ```
 Agent A → Custom Connector → Tool 1
 Agent A → Custom Connector → Tool 2
@@ -1790,15 +1928,18 @@ Agent B → Custom Connector → Tool 3
 Result: N agents × M tools = N×M integrations
 ```
 
-**Problem**: 
+**Problem**:
+
 - Massive duplication of effort
 - Inconsistent security and observability
 - Difficult to maintain and upgrade
 
 ### Decision
+
 Adopt **Model Context Protocol (MCP)** as the standard integration interface between agents and tools.
 
 **Architecture**:
+
 ```
 ┌─────────────────────────────────────────┐
 │ MCP Host (Agent Runtime)                │
@@ -1830,22 +1971,26 @@ Adopt **Model Context Protocol (MCP)** as the standard integration interface bet
 **MCP Server Deployment Plan**:
 
 Phase 1 - Internal Data:
+
 - SQL databases (PostgreSQL, SQL Server, MySQL)
 - Document stores (MongoDB, Cosmos DB)
 - File systems (SharePoint, Google Drive, S3)
 
 Phase 2 - Business Applications:
+
 - CRM (Salesforce, Dynamics)
 - Collaboration (Slack, Teams, Email)
 - Productivity (Jira, Confluence, Notion)
 
 Phase 3 - External Services:
+
 - Web search
 - Maps and geolocation
 - Weather data
 - Public datasets (Census, Financial, etc.)
 
 **Security Model**:
+
 - Each MCP Server requires authentication (OAuth 2.0 / API Keys)
 - Agents receive scoped tokens (can't access all data)
 - MCP Client enforces Policy Card restrictions
@@ -1854,6 +1999,7 @@ Phase 3 - External Services:
 ### Consequences
 
 **Positive**:
+
 - ✅ Eliminates N×M integration problem
 - ✅ Standardized security and observability
 - ✅ Plug-and-play tool ecosystem
@@ -1861,11 +2007,13 @@ Phase 3 - External Services:
 - ✅ Vendor-neutral (Anthropic donated to Linux Foundation)
 
 **Negative**:
+
 - ❌ Not all tools have MCP servers (yet)
 - ❌ Requires building custom MCP servers for legacy systems
 - ❌ Added layer of abstraction (minor latency)
 
 **Mitigation**:
+
 - Build MCP servers incrementally (prioritize high-value tools)
 - Contribute servers to open-source community
 - Maintain escape hatch for direct API access when needed
@@ -1874,14 +2022,17 @@ Phase 3 - External Services:
 ### Alternatives Considered
 
 **Alternative 1**: LangChain tools only
+
 - Issue: Not a formal standard, vendor-specific
 - Gap: No standardized auth, observability, or discovery
 
 **Alternative 2**: Custom API gateway
+
 - Rejected: Reinventing the wheel
 - Better: Leverage MCP as emerging standard
 
 **Alternative 3**: Direct API calls from agents
+
 - Rejected: Back to N×M problem
 - Risk: No central control or governance
 
@@ -1894,13 +2045,16 @@ Phase 3 - External Services:
 **Deciders**: Enterprise Architecture, Platform Engineering
 
 ### Context
+
 Agents need to run somewhere. Options include:
+
 - Serverless functions (Lambda, Azure Functions, Cloud Functions)
 - Container orchestration (Kubernetes, ECS, Cloud Run)
 - Virtual machines (EC2, Azure VMs, Compute Engine)
 - Platform-as-a-Service (App Service, Elastic Beanstalk)
 
 **Requirements**:
+
 1. Support both short-lived and long-running agents
 2. Multi-cloud portability
 3. Auto-scaling based on demand
@@ -1910,9 +2064,11 @@ Agents need to run somewhere. Options include:
 7. CI/CD compatibility
 
 ### Decision
+
 Use **Kubernetes** as the primary agent runtime platform across all clouds.
 
 **Deployment Model**:
+
 ```
 ┌────────────────────────────────────────┐
 │ Kubernetes Cluster (per environment)   │
@@ -1936,6 +2092,7 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 ```
 
 **Why Kubernetes**:
+
 1. **Portability**: Same manifests work on AKS, EKS, GKE, on-prem
 2. **Ecosystem**: Rich tooling (Helm, Argo CD, Prometheus, etc.)
 3. **Scalability**: HPA, VPA, cluster autoscaler built-in
@@ -1944,12 +2101,14 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 6. **GPU Support**: Native scheduling and resource management
 
 **Multi-Cloud Approach**:
+
 - Azure: Azure Kubernetes Service (AKS)
 - AWS: Elastic Kubernetes Service (EKS)
 - GCP: Google Kubernetes Engine (GKE)
 - On-Prem: Self-managed Kubernetes (kubeadm, Rancher, OpenShift)
 
 **Serverless Complement**:
+
 - Use serverless for:
   - Event-driven, single-function agents
   - Ultra-low latency requirements
@@ -1959,6 +2118,7 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 ### Consequences
 
 **Positive**:
+
 - ✅ Cloud portability (avoid lock-in)
 - ✅ Consistent deployment model across environments
 - ✅ Strong ecosystem and community
@@ -1966,11 +2126,13 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 - ✅ Extensive team knowledge
 
 **Negative**:
+
 - ❌ Operational complexity (need Kubernetes expertise)
 - ❌ Higher baseline cost than serverless
 - ❌ Longer cold start times than Functions
 
 **Mitigation**:
+
 - Invest in Kubernetes training and certifications
 - Use managed services (AKS, EKS, GKE) to reduce operational burden
 - Implement cluster autoscaling to optimize costs
@@ -1979,10 +2141,12 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 ### Alternatives Considered
 
 **Alternative 1**: Serverless-first (Functions/Lambda)
+
 - Rejected: Limited for long-running agents, GPU workloads
 - Issue: Vendor lock-in, complexity in multi-cloud
 
 **Alternative 2**: Virtual machines
+
 - Rejected: Poor resource utilization, slow scaling
 - Outdated: Not cloud-native
 
@@ -1993,7 +2157,7 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 ## Appendix A: Glossary
 
 | Term | Definition |
-|------|------------|
+| ------ | ------------ |
 | **Agent** | An autonomous AI system capable of perceiving its environment, making decisions, and taking actions to achieve goals |
 | **Agentic AI** | AI systems exhibiting goal-directed autonomy, often involving multi-step reasoning and tool use |
 | **Autonomy Level** | Classification of how much independent decision-making authority an agent possesses (0-4 scale) |
@@ -2009,45 +2173,55 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 ## Appendix B: Reference Architectures
 
 ### B.1: Single-Cloud Deployment (Azure)
+
 [Diagram would show detailed Azure-specific implementation]
 
 ### B.2: Multi-Cloud Deployment (Azure + AWS)
+
 [Diagram would show cross-cloud integration, shared control plane]
 
 ### B.3: Hybrid Deployment (Cloud + On-Premises)
+
 [Diagram would show secure connectivity, data synchronization]
 
 ## Appendix C: Compliance Mapping
 
 ### C.1: NIST AI RMF Compliance Matrix
+
 [Table mapping each NIST control to Landing Zone implementation]
 
 ### C.2: ISO 42001 Control Implementation
+
 [Table mapping ISO 42001 Annex A controls to platform components]
 
 ### C.3: EU AI Act Risk Assessment
+
 [Template for classifying AI systems under EU AI Act]
 
 ## Appendix D: Tool Catalog
 
 ### D.1: Approved Agent Frameworks
+
 - LangChain v0.3.x
 - LlamaIndex v0.11.x
 - CrewAI v0.80.x
 - AutoGen v0.4.x
 
 ### D.2: Approved Model Providers
+
 - Azure OpenAI Service
 - AWS Bedrock
 - Anthropic API
 - Google Vertex AI
 
 ### D.3: MCP Server Registry
+
 [Table of available MCP servers, authentication requirements, SLAs]
 
 ## Appendix E: Training and Enablement
 
 ### E.1: Developer Onboarding Path
+
 1. Complete "Introduction to Agentic AI" (4 hours)
 2. Review Landing Zone documentation (2 hours)
 3. Complete "Building Your First Agent" hands-on lab (4 hours)
@@ -2058,9 +2232,11 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 **Total Time**: 2 days
 
 ### E.2: Architecture Review Checklist
+
 [Template for ARB reviews of agent designs]
 
 ### E.3: Runbook Library
+
 [Links to operational runbooks for common scenarios]
 
 ---

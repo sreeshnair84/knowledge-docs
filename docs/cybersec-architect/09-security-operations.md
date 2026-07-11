@@ -33,7 +33,7 @@ series_index: index.md
 ### 1.1 Generation Timeline
 
 | Generation | Era | Model | Capabilities | Limitation |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **SOC 1.0** | Pre-2010 | Reactive, perimeter-focused | Log monitoring; manual alert triage | Overwhelmed by volume; reactive only |
 | **SOC 2.0** | 2010–2018 | SIEM-centric | Correlation rules; basic playbooks; ticket-driven | Alert fatigue; slow MTTR; skill shortage |
 | **SOC 3.0** | 2018–2023 | Threat intelligence + SOAR | Automation; threat hunting; TI-enriched alerts | Complex integrations; limited ML use |
@@ -43,7 +43,7 @@ series_index: index.md
 ### 1.2 AI-Assisted SOC Capabilities (Available Now)
 
 | Capability | AI Function | Tool Examples |
-|---|---|---|
+| --- | --- | --- |
 | **Alert triage** | LLM summarises and prioritises alerts; reduces analyst reading time | Microsoft Copilot for Security, Sentinel AI |
 | **Natural language threat hunting** | Analyst asks questions in plain English; AI generates KQL/SPL queries | Microsoft Copilot, Splunk AI, Chronicle YARA-L |
 | **Incident summarisation** | LLM generates executive incident summary from raw telemetry | Palo Alto Cortex Copilot, CrowdStrike Charlotte AI |
@@ -103,7 +103,7 @@ tags:
 Detection coverage should be mapped to ATT&CK tactics. Target coverage by priority:
 
 | ATT&CK Tactic | Target Coverage | Current Average (2026) |
-|---|---|---|
+| --- | --- | --- |
 | Initial Access | >90% | ~65% |
 | Execution | >85% | ~70% |
 | Persistence | >80% | ~55% |
@@ -133,6 +133,7 @@ Threat hunting is proactive, analyst-driven search for threats that evade automa
 > *"Hypothesis: An insider threat actor is using a corporate AI assistant to exfiltrate sensitive documents by asking it to summarize and send content to an external email address."*
 
 **Hunt query approach:**
+
 1. Identify all sessions where AI assistant was invoked with unusual output length
 2. Correlate with email send events within 5 minutes of AI session
 3. Filter for sessions where email recipient domain is personal (gmail, outlook.com)
@@ -141,6 +142,7 @@ Threat hunting is proactive, analyst-driven search for threats that evade automa
 ### 3.2 AI-Assisted Threat Hunting
 
 LLMs accelerate threat hunting by:
+
 - Translating analyst hypotheses into SIEM queries (NL → KQL/SPL)
 - Explaining query results in plain English
 - Suggesting additional search pivots based on initial findings
@@ -156,6 +158,7 @@ LLMs accelerate threat hunting by:
 Red team simulates an advanced persistent threat (APT) to test the enterprise's detection and response capabilities.
 
 **Red team scope:**
+
 - External perimeter (phishing, external vulnerability exploitation)
 - Internal network (lateral movement, privilege escalation)
 - Physical security (badge cloning, tailgating)
@@ -168,7 +171,7 @@ Red team simulates an advanced persistent threat (APT) to test the enterprise's 
 AI red teaming applies adversarial testing specifically to AI systems:
 
 | Test Category | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Jailbreak testing** | Bypass safety training | Systematic testing of 200+ known jailbreak prompts |
 | **Injection testing** | Embed instructions in all input channels | Malicious instructions in uploaded PDFs, emails, URLs |
 | **Extraction testing** | Extract training data or system prompts | Membership inference; direct system prompt requests |
@@ -181,6 +184,7 @@ AI red teaming applies adversarial testing specifically to AI systems:
 ### 4.3 Blue Team
 
 The Blue Team defends and detects:
+
 - Operates SIEM/SOAR; responds to alerts
 - Implements detection rules
 - Hunts for threats proactively
@@ -234,7 +238,7 @@ Cyber ranges are isolated environments for training, red team exercises, and too
 AI-specific continuous validation:
 
 | Validation Type | Frequency | Tool / Method |
-|---|---|---|
+| --- | --- | --- |
 | Prompt injection test battery | Daily | Automated; Garak, PromptBench |
 | Jailbreak regression testing | Per model update | Red team automation |
 | RAG retrieval validation | Weekly | Adversarial documents inserted and monitored |
@@ -249,7 +253,7 @@ AI-specific continuous validation:
 ### 6.1 AI Incident Categories
 
 | Category | Example | Response Complexity |
-|---|---|---|
+| --- | --- | --- |
 | **AI abuse** | User exploiting AI for prohibited purposes | Low — standard policy enforcement |
 | **Prompt injection** | Attacker manipulates AI via injected instructions | Medium — trace injection source; update filters |
 | **Data exfiltration via AI** | Sensitive data leaked through AI output | High — forensics on context window; data breach assessment |
@@ -293,7 +297,7 @@ AI-specific continuous validation:
 ## 7. Security Operations KPIs
 
 | KPI | Definition | Target (Mature SOC) |
-|---|---|---|
+| --- | --- | --- |
 | **MTTD** | Mean Time to Detect | < 1 hour for critical; < 24 hours for high |
 | **MTTR** | Mean Time to Respond (contain) | < 4 hours critical; < 24 hours high |
 | **False Positive Rate** | Alerts investigated that are not real incidents | < 10% |

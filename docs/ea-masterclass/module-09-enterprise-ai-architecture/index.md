@@ -28,7 +28,7 @@ Most teams encounter AI architecture the same way they first encounter cloud arc
 Enterprise AI Architecture encompasses:
 
 | Concern | What it means in practice |
-|---|---|
+| --- | --- |
 | **Platform** | Shared infrastructure for model access, prompt management, evaluation, and guardrails |
 | **Data pipelines** | Ingestion, transformation, embedding, and freshness for AI consumption |
 | **Model lifecycle** | Selection, fine-tuning, evaluation, versioning, deprecation |
@@ -133,7 +133,7 @@ The following diagram shows the canonical layering of an enterprise AI architect
 The first platform decision is where models run and how you access them.
 
 | Option | Examples | Best for | Trade-offs |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Managed API** | Azure OpenAI, Anthropic API, AWS Bedrock | Most enterprises | No GPU ops; data leaves your perimeter; cost scales with tokens |
 | **Cloud ML Platform** | Google Vertex AI, Azure ML, AWS SageMaker | Teams needing fine-tuning + serving | More control; more operational overhead |
 | **Self-hosted (cloud)** | vLLM on EC2/AKS, TGI on GKE | Cost-sensitive at high volume | GPU expertise required; no managed updates |
@@ -167,7 +167,7 @@ Key capabilities to look for:
 ### Orchestration Frameworks
 
 | Framework | Language | Best for |
-|---|---|---|
+| --- | --- | --- |
 | **LangChain** | Python, JS | General-purpose chains and agents; large ecosystem |
 | **LlamaIndex** | Python | RAG-heavy applications; strong data connectors |
 | **Semantic Kernel** | Python, C#, Java | Microsoft ecosystem; enterprise .NET shops |
@@ -199,7 +199,7 @@ Guardrails enforce safety and quality constraints at the platform layer so appli
 ### Managed vs. Self-Hosted Trade-offs
 
 | Dimension | Managed API | Self-hosted |
-|---|---|---|
+| --- | --- | --- |
 | **Time to value** | Hours | Weeks to months |
 | **Operational overhead** | Low | High (GPU, autoscaling, updates) |
 | **Data control** | Data sent to third party | Data stays in your environment |
@@ -252,6 +252,7 @@ Agents are the highest-leverage and highest-risk pattern in enterprise AI. An en
 The **Model Context Protocol (MCP)** is an open standard (Anthropic, 2024) for connecting AI agents to external tools and data sources. It provides a standardised interface so agents can call tools without custom integration code per tool.
 
 Enterprise implications:
+
 - MCP servers can wrap internal APIs, databases, and services
 - Access control is enforced at the MCP server level
 - Tool call logs are the primary audit surface for agentic AI
@@ -286,7 +287,7 @@ You must trace:
 ### Vector Database Comparison
 
 | Database | Hosting | Scale | Key strengths | Weaknesses |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Pinecone** | Managed SaaS | Up to billions | Easiest ops; fast filtered search | Vendor lock-in; cost at scale |
 | **Weaviate** | Self-hosted / Cloud | Up to hundreds of millions | Hybrid search; GraphQL API; open source | More ops complexity |
 | **pgvector** | Self-hosted (Postgres) | Up to tens of millions | Already in Postgres stack; no new infra | Performance limits at large scale |
@@ -299,6 +300,7 @@ You must trace:
 **Naive RAG**: Query → embed → vector search → top-k chunks → LLM. Works for simple cases; fails on complex queries and low-quality documents.
 
 **Advanced RAG**:
+
 - Query transformation (HyDE, query expansion, step-back prompting)
 - Hybrid retrieval (vector + BM25 keyword)
 - Re-ranking (cross-encoder models)
@@ -349,6 +351,7 @@ You must trace:
     A RAG system that retrieves outdated policy documents, superseded product specifications, or revoked regulatory guidance will confidently produce wrong answers. Freshness is a first-class architectural concern.
 
 Strategies:
+
 - **Event-driven re-indexing**: trigger re-embedding when source documents change (webhooks, file watchers, change data capture)
 - **TTL-based refresh**: force re-ingestion of documents older than N days
 - **Metadata filtering**: expose document date metadata to retrieval so the LLM can reason about currency
@@ -363,7 +366,7 @@ Strategies:
 Feature stores solve the training-serving skew problem: the features used during model training are exactly the same features served at inference time.
 
 | Component | Purpose |
-|---|---|
+| --- | --- |
 | **Offline store** | Historical feature values for training (data warehouse, Delta Lake) |
 | **Online store** | Low-latency feature serving at inference (Redis, DynamoDB, Bigtable) |
 | **Feature registry** | Catalogue of defined features with owners and lineage |
@@ -380,6 +383,7 @@ Tools: Apache Atlas, OpenLineage (standard), Alation, DataHub (LinkedIn, open so
 ### Data Contracts
 
 A data contract is a formal agreement between a data producer and data consumer that specifies:
+
 - Schema and data types
 - Freshness SLAs
 - Null rates and value distributions
@@ -415,7 +419,7 @@ Synthetic data is increasingly used to augment training sets, generate evaluatio
 ### Cloud Provider Comparison
 
 | Dimension | Azure OpenAI / Azure AI | AWS Bedrock | Google Vertex AI |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Foundation models** | GPT-4o, o-series, DALL-E, Phi | Claude, Titan, Llama, Mistral, Stability | Gemini family, Imagen, open models |
 | **Enterprise integrations** | Active Directory, Teams, Power Platform | IAM, S3, Lambda, existing AWS estate | BigQuery, Workspace, Apigee |
 | **Compliance certifications** | HIPAA, SOC 2, ISO 27001, FedRAMP | HIPAA, SOC 2, ISO 27001, FedRAMP | HIPAA, SOC 2, ISO 27001, FedRAMP |
@@ -444,6 +448,7 @@ Financial services, healthcare, defence, and government often cannot send data t
 - Classification levels (OFFICIAL-SENSITIVE and above)
 
 On-premises AI architecture requires:
+
 - GPU infrastructure procurement and lifecycle management
 - Open-weight model selection (Llama, Mistral, Qwen, Phi)
 - vLLM, TGI, or TensorRT-LLM for serving
@@ -462,7 +467,7 @@ On-premises AI architecture requires:
 Traditional security threats still apply. AI introduces a new threat surface on top:
 
 | Threat | Description | Enterprise impact |
-|---|---|---|
+| --- | --- | --- |
 | **Prompt injection** | Attacker embeds instructions in data that the model obeys | Agent performs unintended actions; data exfiltration |
 | **Indirect prompt injection** | Malicious instructions hidden in documents, emails, or web pages the agent retrieves | Particularly dangerous for agentic AI with tool access |
 | **Model extraction** | Repeated querying to reconstruct model weights or training data | IP theft; privacy breach |
@@ -508,7 +513,7 @@ Required controls for enterprise agents:
 ### Explainability Requirements by Use Case
 
 | Use case | Explainability requirement | Architecture implication |
-|---|---|---|
+| --- | --- | --- |
 | **Customer-facing recommendation** | Low — "why did I see this?" UX | Log top retrieval context; surface to UI |
 | **Credit/loan decision** | High — regulatory (adverse action notice) | Avoid opaque LLM decisions; use interpretable models; LLM only for summarisation |
 | **Medical diagnosis support** | Very high — clinician accountability | LLM as evidence summariser only; human decision required; full citation |
@@ -545,6 +550,7 @@ An AI audit trail must capture:
 ```
 
 Audit logs must be:
+
 - **Immutable** — written to append-only storage (S3 Object Lock, Azure Immutable Blob)
 - **Retained** — per regulatory schedule (often 7+ years for financial services)
 - **Searchable** — indexed by user, application, time range, and model
@@ -553,7 +559,7 @@ Audit logs must be:
 ### Human-in-the-Loop Patterns
 
 | Pattern | Trigger | Use case |
-|---|---|---|
+| --- | --- | --- |
 | **Always-on review** | Every output reviewed before use | High-risk decisions; early deployment phase |
 | **Confidence-gated** | Review triggered when model confidence below threshold | Classification tasks with confidence scores |
 | **Exception-based** | Review triggered when output flagged by guardrails | Scale-efficient; guardrails must be reliable |
@@ -595,6 +601,7 @@ Token costs are the primary variable cost driver for managed API usage. The unit
 ### Cost-Per-Use-Case Allocation
 
 Tag every AI API call at the gateway level with:
+
 - **Team** (cost centre)
 - **Application** (system of record)
 - **Use case** (specific capability or feature)
@@ -603,7 +610,7 @@ Tag every AI API call at the gateway level with:
 This enables reporting such as:
 
 | Use case | Monthly token cost | Cost per transaction | Volume | Trend |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Customer support chatbot | $12,400 | $0.04 | 310,000 conversations | +8% MoM |
 | Contract analysis | $8,200 | $1.64 | 5,000 documents | -2% MoM |
 | Code review assistant | $3,100 | $0.02 | 155,000 reviews | +22% MoM |
@@ -611,7 +618,7 @@ This enables reporting such as:
 ### Optimisation Levers
 
 | Lever | Typical saving | Complexity |
-|---|---|---|
+| --- | --- | --- |
 | **Prompt caching** | 50–90% on cached tokens | Low |
 | **Model downsizing** (use smaller model where quality permits) | 60–90% cost reduction | Medium — requires eval to validate |
 | **Response length control** | 20–40% | Low |
@@ -639,7 +646,7 @@ Business stakeholders do not think in tokens. Translate costs into business term
 A complete AI observability strategy covers five dimensions:
 
 | Dimension | Metrics | Alerting threshold example |
-|---|---|---|
+| --- | --- | --- |
 | **Latency** | P50, P95, P99 end-to-end; time to first token; LLM latency vs. app latency | P95 > 8s |
 | **Accuracy / quality** | LLM-as-judge scores; human eval sampling; task-specific metrics | Mean quality score < 3.8/5 |
 | **Cost** | Token spend per hour; cost per transaction; spend vs. budget | Daily spend > 110% of forecast |
@@ -663,6 +670,7 @@ Approaches:
     A model provider quietly changing behaviour, a retrieval index becoming stale, or a prompt that worked for one use case breaking another — none of these trigger infrastructure alerts. Quality alerts are your last line of defence.
 
 Alert on:
+
 - LLM-as-judge mean score dropping below threshold
 - Guardrail block rate spiking (suggests input distribution shift or adversarial activity)
 - Human escalation rate increasing
@@ -755,12 +763,14 @@ The following reference architecture shows a complete enterprise AI architecture
 **Decision**: Use managed model APIs (Azure OpenAI as primary, Anthropic API as secondary) for all use cases except those involving OFFICIAL-SENSITIVE data, which will use a self-hosted Llama deployment on dedicated Azure VMs.
 
 **Rationale**:
+
 - Managed APIs reach production in days vs. months for self-hosted GPU infrastructure
 - Azure OpenAI provides data processing agreements compatible with our regulatory requirements for CONFIDENTIAL-minus data
 - Self-hosted is reserved for the <15% of use cases with the highest data classification
 - A model gateway abstracts the difference so application teams are unaffected if the decision changes
 
 **Consequences**:
+
 - Token costs are variable and must be forecast and monitored carefully
 - Model updates are controlled by the provider; we accept this risk in exchange for ops simplicity
 - Self-hosted path will require GPU procurement (6–12 week lead time)
@@ -777,12 +787,14 @@ The following reference architecture shows a complete enterprise AI architecture
 **Decision**: Use **Azure AI Search** as the primary vector store for production use cases. Use **pgvector** for teams with existing PostgreSQL infrastructure and low-scale requirements. Use **Chroma** for local development only.
 
 **Rationale**:
+
 - Azure AI Search integrates with our existing Azure estate, Entra ID RBAC, and Purview data governance
 - Hybrid search (vector + BM25) is a first-class feature, avoiding the need for a separate keyword search system
 - pgvector meets requirements for teams at <10M document scale without new infrastructure
 - Pinecone was ruled out on data residency grounds (US-hosted by default)
 
 **Consequences**:
+
 - Teams cannot self-select a vector database without architecture review approval
 - Migration from pgvector to Azure AI Search is a defined upgrade path as teams scale
 - Index schema changes require re-embedding, which has cost implications
@@ -798,12 +810,14 @@ The following reference architecture shows a complete enterprise AI architecture
 **Decision**: Standardise on **LangGraph** for complex stateful agent workflows. Teams may use lightweight custom implementations for simple chains. Semantic Kernel is permitted for .NET teams.
 
 **Rationale**:
+
 - LangGraph's graph-based state machine model maps naturally to our compliance requirements (explicit state, auditable transitions)
 - First-class support for human-in-the-loop interrupts is essential for our financial services context
 - LangGraph integrates with LangSmith for observability without additional tooling
 - Semantic Kernel carve-out avoids forcing .NET teams to adopt Python infrastructure
 
 **Consequences**:
+
 - Teams using plain LangChain must migrate to LangGraph; 8-week migration window
 - LangGraph adds abstraction complexity; simpler use cases may be over-engineered
 - Framework lock-in risk; mitigated by keeping business logic in plain Python, using LangGraph only for orchestration
@@ -819,11 +833,13 @@ The following reference architecture shows a complete enterprise AI architecture
 **Decision**: All AI features must pass an automated evaluation gate before deployment. Evaluation uses **DeepEval** for unit tests and **Ragas** for RAG quality. An LLM-as-judge (GPT-4o) provides continuous production quality scoring on 5% of live traffic. Human evaluation required for high-risk use cases.
 
 **Rationale**:
+
 - Automated eval gates catch regressions before production; LLM-as-judge catches drift in production
 - Separating pre-deployment (DeepEval/Ragas) from continuous (LLM-as-judge) gives defence in depth
 - Standardising tooling reduces the overhead of maintaining multiple eval frameworks
 
 **Consequences**:
+
 - Teams must invest in eval dataset creation; AI Platform team will provide tooling and templates
 - LLM-as-judge adds ~£800/month in API costs at current volume; this is budgeted centrally
 - Human eval panel requires resourcing; scoped to 5 high-risk use cases initially
@@ -839,12 +855,14 @@ The following reference architecture shows a complete enterprise AI architecture
 **Decision**: Implement **Microsoft Purview** for data lineage and classification, **Langfuse** for AI observability and audit logging, and a custom **Model Registry** (Azure ML Model Registry + internal metadata) for model cards and approval workflows. Human review queue built on Azure Logic Apps.
 
 **Rationale**:
+
 - Purview is already licensed and integrates with Azure estate; avoiding new vendor for data governance
 - Langfuse provides self-hosted option meeting our data classification requirements for audit logs
 - Azure ML Model Registry provides the storage and versioning substrate; we layer metadata and approval workflow on top
 - Logic Apps for review queue leverages existing workflow capability; avoids new tooling
 
 **Consequences**:
+
 - Langfuse self-hosted instance requires operations resourcing (2 sprints to set up, ongoing maintenance)
 - Custom model registry metadata layer adds development work; estimated 6 weeks
 - All teams must register models before production deployment; enforced via deployment pipeline gate

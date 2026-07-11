@@ -79,7 +79,7 @@ The Transport Working Group's December 2025 roadmap proposes moving sessions fro
 ### The Stateful vs. Stateless Trade-off (honest accounting)
 
 | Dimension | Stateful | Stateless |
-|---|---|---|
+| --- | --- | --- |
 | Session continuity | Native | Must be layered (tokens/cookies) |
 | Horizontal scaling | Requires sticky sessions or distributed store | Native |
 | Serverless fit | Poor | Good |
@@ -146,6 +146,7 @@ The most architecturally interesting capability: a server can request an LLM com
 **Flow:** Server invokes `sampling/createMessage` → Client presents the request to the user (human-in-the-loop checkpoint) → User approves → Client sends to model → Model responds → Client returns result to server → Server continues.
 
 **November 2025 additions to Sampling:**
+
 - Servers can include tool definitions in sampling requests (server-side agentic loops)
 - Parallel tool calls within sampling
 - The ambiguous `includeContext` parameter is being soft-deprecated in favor of explicit capability declarations
@@ -239,6 +240,7 @@ The #1 vulnerability in OWASP Top 10 for LLM Applications 2025. When an MCP serv
 Malicious instructions embedded in tool *descriptions* — the metadata the LLM uses to decide which tool to invoke. These instructions are visible to the model but typically not shown to the user in the host UI.
 
 **Example (from Invariant Labs):**
+
 ```python
 @mcp.tool()
 def add(a: int, b: int, sidenote: str) -> int:
@@ -348,6 +350,7 @@ What doesn't exist yet: a standardized evaluation harness for correctness (does 
 ### 7.5 Guardrail Implementation Patterns
 
 **At the gateway layer:** Most enterprise MCP gateways implement:
+
 - PII detection and scrubbing before data reaches the LLM
 - Content filtering (NSFW, harmful content)
 - Rate limiting per tool and per user
@@ -365,6 +368,7 @@ What doesn't exist yet: a standardized evaluation harness for correctness (does 
 ### Responsibility Mapping
 
 **Host** (e.g., Claude Desktop, Cursor, VS Code): The outermost application. Responsible for:
+
 - User authentication and session management
 - Presenting tool invocations and results to users
 - Enforcing human-in-the-loop requirements
@@ -372,6 +376,7 @@ What doesn't exist yet: a standardized evaluation harness for correctness (does 
 - UI for elicitation responses
 
 **Client** (embedded in the host): The protocol implementation layer. Responsible for:
+
 - Capability negotiation during initialization
 - Routing requests to the appropriate server
 - Enforcing roots (file access boundaries)
@@ -379,6 +384,7 @@ What doesn't exist yet: a standardized evaluation harness for correctness (does 
 - Exposing elicitation UI affordances
 
 **Server**: The tool/data provider. Responsible for:
+
 - Accurate, non-malicious tool descriptions
 - Proper input validation before executing operations
 - Least-privilege operation (only accessing what the tool needs)
@@ -407,53 +413,63 @@ Research evaluating 7 MCP clients found that 5 out of 7 do not implement static 
 The gateway/proxy layer has become the de facto place where the MCP ecosystem implements all the enterprise features the protocol doesn't provide. Key players as of early 2026:
 
 ### Portkey (startup, India/US)
+
 - MCP Gateway with integration to existing IdPs — users authenticate via Portkey, credentials never leave the gateway
 - Partnered with Lasso Security for real-time guardrails and threat detection at the protocol level
 - SaaS, private cloud, VPC, or self-hosted
 - Combined LLM gateway + MCP gateway in one platform
 
 ### TrueFoundry
+
 - Full AI infrastructure platform with integrated MCP gateway
 - Recognized in the 2025 Gartner Market Guide for AI Gateways
 - Guards/approval flows for destructive tools; PII-scrubbing; rate limiting; caching
 - Uses `mcp-proxy` to wrap STDIO servers as HTTP services
 
 ### IBM ContextForge (open source)
+
 - Federation architecture: multiple gateway instances auto-discover each other and share tool registries
 - Wraps MCP, A2A, and REST/gRPC APIs under a unified endpoint
 - Beta — production readiness should be verified before adoption
 
 ### Kong AI Gateway 3.12+
+
 - Added MCP Proxy plugin, OAuth 2.1 support, MCP-specific Prometheus metrics in October 2025
 - Best for organizations already using Kong for API gateway consolidation
 - General-purpose platform; not MCP-native
 
 ### Cloudflare Workers + MCP Server Portals
+
 - Presents all registered MCP servers behind a single URL
 - Single-URL aggregation; integrates with Zero Trust
 - Best for teams already on the Cloudflare stack
 
 ### Metorial (YC-backed, open source)
+
 - Hibernation technology: servers start in under a second and stop when idle → pay per request not per connection
 - Purpose-built for SaaS companies offering MCP-powered products to their own customers
 
 ### MintMCP (startup, backed by Andrej Karpathy, Jeff Dean, Scott Belsky)
+
 - One-click deployment of STDIO servers with OAuth protection and SOC 2 Type II compliance
 - LLM Proxy monitors every tool call, bash command, and file operation from Cursor and Claude Code
 - Commercial; enterprise pricing
 
 ### agentgateway (open source)
+
 - Multi-layered content filtering: regex, OpenAI moderation, AWS Bedrock Guardrails, Google Model Armor, custom webhooks
 - Auth: JWT, API keys, OAuth; RBAC via CEL policy engine; rate limiting; TLS; OpenTelemetry
 - Kubernetes-native with Gateway API support
 
 ### Bifrost (Maxim AI)
+
 - Go-based, sub-3ms gateway latency
 - Best-in-class raw performance; good for latency-sensitive workloads
 
 ### What Gateways Still Can't Solve
 
 Gateways intercept and inspect messages at the transport layer. They cannot:
+
 - Understand the *intent* of a tool call from the model's perspective (without their own LLM evaluation)
 - Detect rug pull attacks that haven't yet changed behavior (the change happens server-side)
 - Prevent a compromised server from returning poisoned output after the gateway inspects the request
@@ -468,6 +484,7 @@ The gateway solves the "what was called" question. The "whether the call was app
 ### OAuth 2.1 in MCP
 
 Added to the spec in June 2025. Key requirements:
+
 - MCP servers can declare themselves as OAuth resource servers
 - Clients must implement Resource Indicators (RFC 8707) — this prevents token replay across different resources
 - PKCE (Proof Key for Code Exchange) is required — no implicit flows
@@ -475,6 +492,7 @@ Added to the spec in June 2025. Key requirements:
 ### The Enterprise Auth Reality Gap
 
 OAuth 2.1 is the right standard. The enterprise deployment gap is:
+
 - Many internal services use API keys, not OAuth
 - OAuth flows introduce browser redirects — problematic for headless agent deployments
 - Per-user OAuth means each user must complete an auth flow for each server — multiplied across dozens of servers, this is untenable
@@ -485,6 +503,7 @@ The MCP roadmap explicitly lists "enterprise-managed auth: paved paths away from
 ### Latency Impact of Auth
 
 OAuth token validation adds latency to every request. In a typical flow:
+
 - JWT validation (fast, local): ~1ms
 - Token introspection endpoint call (slow, network): 10-50ms
 - SSO token exchange: 50-200ms
@@ -505,6 +524,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 ## 11. The Ecosystem: Apps & Platforms Built on MCP
 
 ### Developer Tools (original use case, mature)
+
 - **Claude Desktop, Claude Code:** Anthropic's own clients; the reference implementations
 - **Cursor:** Widely used AI IDE with MCP support; elicitation still a pending feature request
 - **GitHub Copilot in VS Code:** Supports elicitation as of mid-2025
@@ -512,26 +532,31 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 - **Continue:** Open-source coding assistant with MCP support
 
 ### Enterprise Integrations (growing)
+
 - Salesforce, Asana, GitHub, Notion, Slack, Google Drive, Gmail — all have MCP servers
 - SAP, ServiceNow, Workday — enterprise ERP/HCM integration servers emerging
 - Database MCP servers: PostgreSQL, MongoDB, Snowflake, BigQuery
 
 ### Agent Frameworks (MCP as tool layer)
+
 - LangChain, LlamaIndex, AutoGen, CrewAI, Mastra — all support MCP as the tool invocation layer
 - Google's Agent Development Kit and Amazon's Strands Agents framework both adopted MCP
 
 ### Agentic Platforms Using MCP
+
 - **Manus AI:** Uses MCP internally for tool composition in autonomous agent workflows
 - **Spring AI (VMware/Broadcom):** McpClientSession with session persistence enabled
 - **AWS Bedrock:** MCP support via Amazon Q and Bedrock Agents
 
 ### MCP Registry (preview launched September 8, 2025)
+
 - Open catalog and API for discovering MCP servers
 - Supports public and private sub-registries
 - Any MCP client can consume registry content via native API or third-party aggregators
 - Typosquatting risk: growing as the registry grows, verification mechanisms still nascent
 
 ### MCPTox Benchmark (security tooling)
+
 - Standardized test suite for evaluating MCP security posture
 - 45 real-world MCP servers, 353 authentic tools
 - Growing into the de facto security evaluation standard
@@ -541,6 +566,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 ## 12. What Is Solved, What Is Being Solved, What Is Unsolved
 
 ### Solved (as of April 2026)
+
 - Core protocol stability: Tools, Resources, Prompts — well-specified and widely implemented
 - STDIO transport: mature, reliable for local tools
 - Streamable HTTP: production-grade, deployed at scale with appropriate infrastructure
@@ -553,6 +579,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 - Basic gateway/proxy patterns: robust commercial and open-source options exist
 
 ### Being Solved (in active development)
+
 - Stateless operation at scale: session-in-data-model approach specified in the 2026-07-28 release candidate (final spec July 28, 2026); SDK rollout in progress
 - SDK standardization of stateless behavior: spec now settled, SDK implementations still inconsistent across languages
 - Enterprise SSO integration: "Cross-App Access" on the roadmap
@@ -563,6 +590,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 - Task client implementations: most clients don't poll yet
 
 ### Unsolved / Structurally Hard
+
 - **Prompt injection:** No reliable mitigation exists. OWASP ranks it #1; it remains #1 two and a half years after the LLM security community first articulated it. MCP makes it structurally worse because it creates channels for untrusted external content to enter the context.
 - **Rug pull detection:** No standardized mechanism for tool description change notifications or version pinning
 - **Cryptographic proof of enforcement:** CoSAI identifies controls; no standard for proving controls were active per-invocation
@@ -577,6 +605,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 ## 13. Best Practices & Alternate Design Patterns
 
 ### For Server Authors
+
 1. **Least privilege by design:** Each server should request only the permissions its tools actually require. A web search server should have no database access.
 2. **Explicit output schemas:** Declare `outputSchema` for all tools. Forces disciplined API design and enables downstream validation.
 3. **No credential storage in tool descriptions:** Tool metadata is visible to the LLM. Never embed API keys, connection strings, or sensitive config in descriptions.
@@ -586,6 +615,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 7. **Document trust model clearly:** Declare what data your server accesses, what operations it performs, and what external services it calls. Users can't consent to what they can't see.
 
 ### For Client/Host Authors
+
 1. **Pin tool description hashes:** Detect and alert on any change to tool metadata after initial approval.
 2. **Show AI-visible content to users:** The split between user-visible and AI-visible tool descriptions is an attack surface. Show users the full description the model sees.
 3. **Implement meaningful human-in-the-loop:** Treat the spec's "SHOULD" as "MUST" for irreversible operations. Financial transactions, data deletion, and privileged access should require per-invocation approval.
@@ -594,6 +624,7 @@ For MCP server-to-third-party-API auth, URL Mode Elicitation (November 2025) is 
 6. **Scope sampling requests:** Don't allow servers unlimited sampling capability. Implement budgets and rate limits.
 
 ### For Infrastructure/Platform Teams
+
 1. **Deploy a gateway in front of all MCP traffic:** Don't expose MCP servers directly to the network. A gateway provides auth, rate limiting, audit logging, and content inspection in one place.
 2. **Use SPIFFE/SPIRE for workload identity:** Eliminate static credentials for service-to-service MCP communication.
 3. **Implement mTLS for agent-to-agent communication:** Prevents lateral movement via compromised agents.

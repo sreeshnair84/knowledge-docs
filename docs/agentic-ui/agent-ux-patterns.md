@@ -31,7 +31,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 ### 1.1 Summary Table
 
 | # | Pattern | Autonomy Level | UX Surface | Primary Audience | Integration Point |
-|---|---------|---------------|------------|-----------------|-------------------|
+| --- | --------- | --------------- | ------------ | ----------------- | ------------------- |
 | 1 | Chat Copilot | Low | Full-page chat | End users, knowledge workers | Standalone app or tab |
 | 2 | Embedded Copilot | Low–Medium | Inline within host app | Power users, developers | Host app sidebar/toolbar |
 | 3 | Floating Copilot | Low–Medium | Overlay on any page | All users | Browser extension / iframe |
@@ -56,6 +56,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Dedicated app, enterprise portal tab, or public-facing chatbot.
 
 **UX Characteristics:**
+
 - Linear conversation history
 - Turn-by-turn interaction model
 - Persistent message list with timestamps
@@ -71,6 +72,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Claude.ai, ChatGPT, Microsoft Copilot standalone.
 
 **When to use:**
+
 - Users need an open-ended conversational interface
 - No ambient host application context is available
 - First deployment of AI — minimizes integration complexity
@@ -85,6 +87,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** IDE plugins, document editors, CRM panels, ticketing systems.
 
 **UX Characteristics:**
+
 - Triggered by hotkey, selection, or ambient context change
 - Inline suggestion acceptance (Tab / ESC)
 - Contextual actions: "Explain this", "Fix this", "Summarize"
@@ -100,6 +103,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** GitHub Copilot, JetBrains AI Assistant, Salesforce Einstein, Notion AI.
 
 **When to use:**
+
 - Users work primarily within one host application
 - Ambient context (current document, code, record) makes suggestions immediately relevant
 - Disruption to existing workflows must be minimized
@@ -114,6 +118,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Browser extensions, desktop overlay apps, enterprise intranet widgets.
 
 **UX Characteristics:**
+
 - Draggable / collapsible floating panel
 - "What can I help with on this page?" entry point
 - Page content summarization, form filling, extraction
@@ -127,6 +132,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Copilot in Edge, Arc AI, Siri on iOS Safari.
 
 **When to use:**
+
 - Users work across many different web applications
 - No host-app extension API exists
 - The primary use case is read, summarize, extract — not write
@@ -141,6 +147,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** M365 Copilot, Google Workspace Duet, enterprise digital assistant.
 
 **UX Characteristics:**
+
 - Unified "Ask about my work" entry point
 - Cross-app context stitching (email → calendar → document)
 - "Catch me up" and "Prepare me for my meeting" entry points
@@ -154,6 +161,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Microsoft 365 Copilot, Google Duet AI, Salesforce Agentforce.
 
 **When to use:**
+
 - Users need synthesis across multiple systems of record
 - Meeting prep, status updates, and drafting cover 80%+ of use cases
 - Enterprise SSO and permissions infrastructure already exists
@@ -168,6 +176,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Loan origination, insurance underwriting, HR onboarding, procurement approval.
 
 **UX Characteristics:**
+
 - Step-driven wizard with agent assistance at each step
 - "What should I fill in here?" contextual help
 - Data validation with natural language explanations
@@ -182,6 +191,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** ServiceNow AI Agents, Pega GenAI, Camunda Copilot.
 
 **When to use:**
+
 - The business process is well-defined and compliance-regulated
 - Errors in data entry carry financial or legal risk
 - Users vary widely in expertise — novices need guidance
@@ -196,6 +206,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Credit scoring review, medical triage support, security alert triage, investment recommendation.
 
 **UX Characteristics:**
+
 - Recommendation card: primary recommendation + confidence %
 - Ranked alternative list with trade-off summary
 - Evidence citations (documents, data, precedents)
@@ -210,6 +221,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Salesforce Einstein Decision, IBM Watson Assistant for financial services, custom underwriting platforms.
 
 **When to use:**
+
 - Consequential decisions with regulatory or financial accountability
 - The decision-maker is accountable but needs AI synthesis of evidence
 - Auditability of the decision process is a compliance requirement
@@ -224,6 +236,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** VS Code, JetBrains IDEs, Neovim, GitHub web editor.
 
 **UX Characteristics:**
+
 - Ghost text completions (gray inline suggestions)
 - Chat panel for multi-line generation
 - Right-click → "Ask AI" context menu
@@ -238,6 +251,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** GitHub Copilot, Cursor, Windsurf, JetBrains AI, Claude Code.
 
 **When to use:**
+
 - Development team productivity is the primary ROI driver
 - Codebase has enough context (docs, tests, comments) for grounding
 - Security review process exists for AI-generated code
@@ -252,6 +266,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Enterprise knowledge base, intranet, documentation portal, e-commerce, customer support.
 
 **UX Characteristics:**
+
 - Answer at the top of search results (not just links)
 - Cited sources beneath the answer
 - Conversational follow-up ("Tell me more about X")
@@ -266,6 +281,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Perplexity, Bing Copilot search, Glean, Notion AI search, Elastic ESRE.
 
 **When to use:**
+
 - Existing search returns too many results without synthesis
 - Users need cross-document summarization, not just retrieval
 - Content corpus changes frequently (RAG preferred over fine-tuning)
@@ -280,6 +296,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Contact center IVR, hands-free field worker tools, automotive assistants, smart speaker skills.
 
 **UX Characteristics:**
+
 - Wake word or push-to-talk activation
 - Spoken confirmation of actions ("I've created that ticket. Should I assign it to you?")
 - Conversational repair ("Sorry, could you repeat that?")
@@ -294,6 +311,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Amazon Alexa for Business, Google CCAI, Twilio Voice AI, Bland.ai, Vapi.
 
 **When to use:**
+
 - Users' hands are occupied (warehouse, field service, driving)
 - Screen real estate is absent or minimal
 - Response latency below 1.5 seconds is critical for natural conversation
@@ -308,6 +326,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Design review, architecture diagram analysis, medical imaging support, quality control inspection.
 
 **UX Characteristics:**
+
 - Image upload / screenshot paste into chat
 - Agent-generated image annotations (bounding boxes, labels)
 - Side-by-side view (original image | agent analysis)
@@ -321,6 +340,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** GPT-4o Canvas, Claude with vision, AWS Rekognition + LLM overlay, custom quality-control platforms.
 
 **When to use:**
+
 - The source data is inherently visual (images, diagrams, charts, scans)
 - Textual description alone is insufficient for the decision
 - Existing vision ML models lack the reasoning capability for the task
@@ -335,6 +355,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** AI ops platforms, enterprise automation centers, research orchestration, automated DevOps pipelines.
 
 **UX Characteristics:**
+
 - Agent status grid: name, current task, progress, last action
 - Message bus visualization: inter-agent messages in real time
 - Supervisor agent panel: current plan, sub-task delegation
@@ -349,6 +370,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** LangGraph Studio, Microsoft Autogen Studio, CopilotKit multi-agent dashboard.
 
 **When to use:**
+
 - Multiple specialized agents must collaborate on a single user goal
 - Human oversight of the overall system is required without micromanaging each agent
 - Debugging and observability of agent behavior are primary concerns
@@ -363,6 +385,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Deployment Context:** Automated report generation, background data enrichment, scheduled compliance checks, autonomous PR review, email triage.
 
 **UX Characteristics:**
+
 - Task submission: describe task + parameters + schedule
 - Progress notification (email, Slack, push)
 - Exception queue: items requiring human judgment
@@ -377,6 +400,7 @@ Twelve canonical deployment archetypes. Every enterprise agentic application map
 **Example Products:** Devin (software engineering agent), Harvey AI (legal document review), custom autonomous workflows.
 
 **When to use:**
+
 - The task is well-defined, repetitive, and time-consuming
 - Human review of the final output (not each step) is sufficient
 - Risk of individual step error is low and recoverable
@@ -391,7 +415,7 @@ Streaming is the default output mode for LLM-backed agents. Poor streaming UX is
 ### 2.1 Progressive Text Rendering
 
 | Rendering Mode | Behavior | When to Use | Risk |
-|----------------|----------|-------------|------|
+| ---------------- | ---------- | ------------- | ------ |
 | **Character stream** | Render every token as it arrives | Chat, conversational UX | Jitter on short tokens |
 | **Word-buffered** | Buffer until word boundary, then render | Voice transcription overlay | 50–80ms added latency |
 | **Sentence-buffered** | Hold until sentence end, flush | TTS pipelines, spoken output | Longer perceived latency |
@@ -422,7 +446,7 @@ Streaming is the default output mode for LLM-backed agents. Poor streaming UX is
 ```
 
 | Indicator Type | Best For | Avoid When |
-|----------------|----------|------------|
+| ---------------- | ---------- | ------------ |
 | Animated ellipsis ("Thinking...") | Short waits < 3 seconds | Long multi-step tasks |
 | Step progress list | Multi-tool tasks | Simple single-turn responses |
 | Percentage progress bar | Tasks with known step count | Open-ended reasoning |
@@ -437,7 +461,7 @@ Streaming is the default output mode for LLM-backed agents. Poor streaming UX is
 The central streaming tension: **show work in progress** vs. **hold until complete**.
 
 | Approach | UX Benefit | UX Risk | Recommended For |
-|----------|-----------|---------|-----------------|
+| ---------- | ----------- | --------- | ----------------- |
 | **Show all partial output** | Fastest perceived completion | Confusing rewrites mid-stream | Chat, prose generation |
 | **Show structured skeleton first** | Sets expectations for long output | Jarring if structure changes | Reports, documents |
 | **Show partial sections as completed** | Best for long structured content | Requires section-boundary detection | Multi-section analysis |
@@ -471,7 +495,7 @@ When an agent executes tools during streaming, users need visibility without bei
 **Tool call visualization levels:**
 
 | Visibility Level | Shown | Audience |
-|-----------------|-------|----------|
+| ----------------- | ------- | ---------- |
 | **Invisible** | Nothing — seamless integration | End-user consumer apps |
 | **Minimal** | "Checking data..." generic indicator | Business user apps |
 | **Name only** | Tool name: `search_contracts` | Power users |
@@ -498,7 +522,7 @@ When an agent executes tools during streaming, users need visibility without bei
 ```
 
 | Cancellation Scenario | Recommended Behavior |
-|-----------------------|---------------------|
+| ----------------------- | --------------------- |
 | User clicks Stop | Halt stream immediately. Show partial content. Offer Keep/Retry/Discard. |
 | User navigates away | Halt stream server-side. Do not persist partial output without user confirmation. |
 | Mid-tool-call cancel | Complete tool call if < 1 second remaining. Abort if long-running. |
@@ -510,7 +534,7 @@ When an agent executes tools during streaming, users need visibility without bei
 ### 2.6 Error Recovery During Streaming
 
 | Error Type | Detection Signal | UX Response |
-|------------|-----------------|-------------|
+| ------------ | ----------------- | ------------- |
 | LLM API timeout | No tokens for > 30s | "The response timed out. [Retry] [Save what I have]" |
 | Rate limit hit | 429 from LLM API | "Busy right now — retrying automatically... 1/3" |
 | Tool call failure | `TOOL_CALL_END` with error | Inline tool error card with retry option |
@@ -523,7 +547,7 @@ When an agent executes tools during streaming, users need visibility without bei
 ### 2.7 Streaming in Different Form Factors
 
 | Form Factor | Streaming Approach | Special Considerations |
-|------------|-------------------|----------------------|
+| ------------ | ------------------- | ---------------------- |
 | **Full-page chat** | Character-level streaming, left-aligned | Scroll lock: auto-scroll while streaming, release on manual scroll |
 | **Document editor** | Paragraph-buffered inline insertion | Preserve cursor position; undo stack integration required |
 | **Dashboard widget** | Hold-until-complete for KPI cards | Stream narrative summary; hold structured data |
@@ -553,16 +577,19 @@ IDENCE    ├──────────────┼───────�
 ```
 
 **Show full reasoning when:**
+
 - Stakes are high AND confidence is uncertain (cell: HIGH stakes, LOW confidence)
 - The user needs to validate the reasoning (regulated decision support)
 - The output will be challenged by a downstream reviewer
 - The user has explicitly requested an explanation
 
 **Show collapsible summary when:**
+
 - Stakes are high but confidence is high (senior expert validation scenario)
 - The use case is developer / analyst tooling
 
 **Hide reasoning when:**
+
 - Simple fact retrieval (clutter > benefit)
 - End-user consumer app with low technical literacy
 - High-confidence, low-stakes generation (email autocomplete)
@@ -573,7 +600,7 @@ IDENCE    ├──────────────┼───────�
 ### 3.2 Reasoning Visualization Formats
 
 | Format | Description | Best For | Implementation |
-|--------|-------------|----------|---------------|
+| -------- | ------------- | ---------- | --------------- |
 | **Chain-of-thought text** | Narrative reasoning shown in expandable block | General explanation | `<details><summary>View reasoning</summary>` |
 | **Execution step log** | Numbered steps with timestamps and tool calls | Audit, debugging | Structured log panel |
 | **Planning tree** | Visual tree: goal → sub-goals → tasks | Complex multi-step plans | D3.js / Mermaid tree diagram |
@@ -619,7 +646,7 @@ IDENCE    ├──────────────┼───────�
 ### 4.1 Visual Encodings for Confidence
 
 | Encoding | How It Works | Accessible | Over-used Risk |
-|----------|-------------|------------|----------------|
+| ---------- | ------------- | ------------ | ---------------- |
 | Color gradient (green → red) | Hue shifts with confidence | Fails for color blindness | High — use sparingly |
 | Fill level (bar/circle) | Area proportional to confidence | Good | Medium |
 | Text label ("High/Medium/Low") | Categorical language | Excellent | Low |
@@ -638,7 +665,7 @@ IDENCE    ├──────────────┼───────�
     LLM confidence scores are frequently miscalibrated — a model that says 85% confidence may be right only 60% of the time in your domain. Always validate calibration on your golden dataset before displaying numeric confidence to users. Miscalibrated confidence erodes trust faster than no confidence display.
 
 | Domain | Calibration Risk | Recommendation |
-|--------|-----------------|----------------|
+| -------- | ----------------- | ---------------- |
 | Open-domain Q&A | High | Use categorical labels; no numeric |
 | RAG over enterprise knowledge | Medium | Show after calibration on domain eval set |
 | Structured extraction (form filling) | Low | Numeric % acceptable with validation |
@@ -677,7 +704,7 @@ For decisions with genuine uncertainty, show multiple hypotheses rather than a s
 The most trust-building thing an agent can do is accurately communicate the limits of its knowledge.
 
 | Scenario | Poor Response | Better Response |
-|----------|--------------|-----------------|
+| ---------- | -------------- | ----------------- |
 | Out-of-training-data question | Hallucinated answer | "I don't have information about this. [Search live sources]" |
 | Ambiguous query | Best-guess answer | "I'm not sure what you mean. Did you mean A or B?" |
 | Document not retrieved | Answer from training data | "I couldn't find relevant documents. I'm answering from general knowledge — verify before acting." |
@@ -693,6 +720,7 @@ Approval UX is the most consequential pattern in agentic applications. Poor appr
 ### 5.1 Approval Request Design Principles
 
 Every approval request must answer four questions immediately visible without scrolling:
+
 1. **What** is the agent asking to do?
 2. **Why** is it asking to do this?
 3. **What happens if I approve?** (Consequence)
@@ -722,7 +750,7 @@ Every approval request must answer four questions immediately visible without sc
 ### 5.2 Approval Flow Types
 
 | Flow Type | Description | When to Use | Risk |
-|-----------|-------------|-------------|------|
+| ----------- | ------------- | ------------- | ------ |
 | **Single-click approve** | One button approves and executes | Low-risk, well-understood actions | Rubber-stamping |
 | **Review-and-approve** | User must view detail before approve button activates | Medium-risk actions | Slower, more friction |
 | **Dual confirmation** | Two separate "Approve" clicks required | High-risk irreversible actions | Friction may block legitimate use |
@@ -735,7 +763,7 @@ Every approval request must answer four questions immediately visible without sc
 ### 5.3 Approval for High-Risk Tool Categories
 
 | Tool Category | Risk Level | Required Approval Model | Audit Requirement |
-|---------------|-----------|------------------------|-------------------|
+| --------------- | ----------- | ------------------------ | ------------------- |
 | Read data | None | No approval | Log only |
 | Create (new record, new file) | Low | HOTL or HITL | Log |
 | Update existing record | Medium | HITL | Log + before/after diff |
@@ -770,6 +798,7 @@ For autonomous workflows generating multiple pending approvals:
 ```
 
 **Batch approval rules:**
+
 - "Approve All" must exclude HIGH RISK items — these always require individual review
 - Group items by risk level for visual triage
 - Show aggregate consequence ("this will send 23 emails")
@@ -780,7 +809,7 @@ For autonomous workflows generating multiple pending approvals:
 ### 5.5 Approval Timeout and Escalation
 
 | Timeout State | Duration | Behavior |
-|--------------|----------|----------|
+| -------------- | ---------- | ---------- |
 | First warning | 80% of timeout | "This approval will expire in 5 minutes" |
 | Second warning | 95% of timeout | Visual urgency indicator (amber) |
 | Timeout | 100% | Task pauses. Escalation notification sent. |
@@ -797,7 +826,7 @@ For autonomous workflows generating multiple pending approvals:
 Every approval decision must be persisted with:
 
 | Field | Content |
-|-------|---------|
+| ------- | --------- |
 | `approval_id` | UUID |
 | `task_id` | Parent task or agent run ID |
 | `tool_call_id` | Specific tool call being approved |
@@ -837,7 +866,7 @@ Every approval decision must be persisted with:
 ```
 
 | Progress Element | Required | Recommended When |
-|-----------------|----------|-----------------|
+| ----------------- | ---------- | ----------------- |
 | Overall % bar | Always | Any task > 10 seconds |
 | Milestone list | Yes | Tasks with 3+ distinct phases |
 | Current item name | Yes | Batch processing tasks |
@@ -859,7 +888,7 @@ Minimized Task Bar:
 **Background task lifecycle:**
 
 | State | Visual | Action Available |
-|-------|--------|-----------------|
+| ------- | -------- | ----------------- |
 | Running | Animated progress indicator | Pause, View, Cancel |
 | Paused | Static progress bar (amber) | Resume, Cancel |
 | Awaiting approval | Bell icon (red badge) | Review + Approve |
@@ -874,7 +903,7 @@ Minimized Task Bar:
 When the user is not active in the application, task completion must reach them through ambient channels.
 
 | Delivery Channel | Trigger | Content |
-|----------------|---------|---------|
+| ---------------- | --------- | --------- |
 | In-app toast | User active, task completes | "Contract analysis complete — 12 high-risk clauses found" |
 | Browser push notification | User has tab open, focus elsewhere | Title + one-line summary |
 | Email digest | User offline > 15 minutes | Subject, summary, link to results |
@@ -912,7 +941,7 @@ When the user is not active in the application, task completion must reach them 
 ### 7.2 Multi-agent Status Dashboard
 
 | Dashboard Element | Content | Refresh |
-|------------------|---------|---------|
+| ------------------ | --------- | --------- |
 | Agent status grid | Name, state, current task, last action | Real-time |
 | Inter-agent message feed | Timestamped messages between agents | Real-time |
 | Shared workspace panel | Files/data being worked on | Real-time |
@@ -927,7 +956,7 @@ When the user is not active in the application, task completion must reach them 
 ### 8.1 What Can and Cannot Be Undone
 
 | Action Type | Undoable? | Recovery Path |
-|-------------|-----------|---------------|
+| ------------- | ----------- | --------------- |
 | Text generation in chat | Yes | Delete message; regenerate |
 | File created by agent | Yes | Agent-initiated delete |
 | File modified by agent | Yes | Restore from agent checkpoint |
@@ -952,6 +981,7 @@ Conversation Timeline:
 ```
 
 **Branch controls:**
+
 - Every message in history shows a "Fork from here" icon on hover
 - Branching creates a new conversation tab with the shared prefix
 - Side-by-side comparison mode shows branch A vs. branch B responses
@@ -962,7 +992,7 @@ Conversation Timeline:
 ### 8.3 Checkpoint UX
 
 | Checkpoint Feature | Description |
-|-------------------|-------------|
+| ------------------- | ------------- |
 | **Auto-checkpoint** | System creates checkpoint at every tool call and major milestone |
 | **Named checkpoint** | User clicks "Save checkpoint" and names it ("Before risk analysis") |
 | **Checkpoint list** | Timeline showing all checkpoints with metadata |
@@ -1012,7 +1042,7 @@ Status: Completed                Risk Score: 2/10 (Low)
 ### 9.2 Compliance Evidence Export
 
 | Export Format | Content | Use For |
-|--------------|---------|---------|
+| -------------- | --------- | --------- |
 | CSV | Structured log of all tool calls and approvals | SIEM integration, bulk analysis |
 | PDF report | Human-readable audit report with signatures | Regulatory submission, legal proceedings |
 | JSON trace | Full structured event stream | Technical audit, LLM training |
@@ -1025,7 +1055,7 @@ Status: Completed                Risk Score: 2/10 (Low)
 ### 10.1 Error Classification by User Impact
 
 | Error Class | Example | User Impact | UX Response |
-|-------------|---------|------------|-------------|
+| ------------- | --------- | ------------ | ------------- |
 | **Transient** | API timeout | Minor delay | Auto-retry silently; show spinner |
 | **Recoverable** | Rate limit | Short delay | "Retrying (1/3)..." |
 | **Content error** | LLM refused request | Task fails | "I can't help with this. [Why?] [Try differently]" |
@@ -1040,7 +1070,7 @@ Status: Completed                Risk Score: 2/10 (Low)
 **Good error messages** answer: what happened, why it happened, and what the user can do.
 
 | Anti-pattern | Example | Better |
-|-------------|---------|--------|
+| ------------- | --------- | -------- |
 | Technical jargon | "500 Internal Server Error" | "Something went wrong on our end. Please try again." |
 | Vague failure | "An error occurred" | "The document search failed because the knowledge base is temporarily unavailable." |
 | No action offered | "This failed." | "The search failed. [Retry] [Search differently] [Ask for help]" |
@@ -1054,7 +1084,7 @@ Status: Completed                Risk Score: 2/10 (Low)
 ### 11.1 WCAG 2.1 AA Requirements Specific to Agentic UX
 
 | Agentic UX Element | WCAG Criterion | Implementation |
-|--------------------|---------------|----------------|
+| -------------------- | --------------- | ---------------- |
 | Streaming text | 4.1.3 Status Messages | Use ARIA live region: `aria-live="polite"` for streaming, `"assertive"` for errors |
 | Approval dialogs | 2.1.1 Keyboard, 2.4.3 Focus Order | Trap focus in modal; approve/reject on Enter/Escape |
 | Confidence indicators | 1.4.1 Use of Color | Never use color alone; include text label or icon + text |
@@ -1093,7 +1123,7 @@ RECOMMENDED ARIA PATTERN FOR STREAMING:
 ### 11.3 Color-blind Accessible Confidence Indicators
 
 | Confidence Level | Color (WCAG AA) | Icon | Text Label |
-|-----------------|----------------|------|------------|
+| ----------------- | ---------------- | ------ | ------------ |
 | Very High (90-100%) | #2E7D32 (green, 4.5:1) | ✓ shield | "Very High" |
 | High (70-89%) | #1565C0 (blue, 5.1:1) | ↑ trend | "High" |
 | Medium (40-69%) | #E65100 (orange, 3.1:1 on white) | ≈ wavy | "Medium" |
@@ -1109,7 +1139,7 @@ Use fill level (progress bar) as the primary encoding. Color is secondary. Text 
 ### 12.1 Complete Anti-pattern Catalog
 
 | # | Anti-pattern | Severity | Description | Mitigation |
-|---|-------------|----------|-------------|------------|
+| --- | ------------- | ---------- | ------------- | ------------ |
 | 1 | **Ghost approvals** | Critical | Approval dialogs auto-close or appear and disappear before user can read them | Set minimum display time (3s); no auto-close |
 | 2 | **Confirmation fatigue** | High | Every trivial action requires approval, training users to click through without reading | Calibrate approval thresholds; use HOTL for low-risk |
 | 3 | **Silent tool execution** | High | Agent calls external APIs or mutates data without any user visibility | Always surface tool calls to users |

@@ -89,27 +89,27 @@ def find_plan(
 ) -> Optional[list[str]]:
     """BFS search for a plan."""
     from collections import deque
-    
+
     queue = deque([(initial_state, [])])
     visited = set()
-    
+
     while queue:
         state, plan = queue.popleft()
         state_key = frozenset(state)
-        
+
         if goal.issubset(state):
             return plan
-        
+
         if state_key in visited or len(plan) >= max_depth:
             continue
-        
+
         visited.add(state_key)
-        
+
         for action in actions:
             if action.preconditions.issubset(state):
                 new_state = (state | action.add_effects) - action.delete_effects
                 queue.append((new_state, plan + [action.name]))
-    
+
     return None  # No plan found
 
 # Define loan approval actions
@@ -179,10 +179,10 @@ class LoanWorkflow:
         credit = await workflow.execute_activity(check_credit, application_id)
         docs = await workflow.execute_activity(verify_documents, application_id)
         decision = await workflow.execute_activity(underwrite, credit, docs)
-        
+
         if decision.approved:
             await workflow.execute_activity(disburse_loan, application_id)
-        
+
         return decision.status
 ```
 
@@ -193,7 +193,7 @@ The plan is **fixed at development time**. The workflow engine handles reliabili
 ## Head-to-Head Comparison
 
 | Dimension | AI Planner | Workflow Engine |
-|---|---|---|
+| --- | --- | --- |
 | **Plan origin** | Generated at runtime from goal | Written by developer |
 | **Adaptability** | High — finds new paths for new goals | Low — only handles coded paths |
 | **Predictability** | Low — plan varies by context | High — same code = same steps |
@@ -230,7 +230,7 @@ def llm_planner(goal: str, available_tools: list[dict], current_state: dict) -> 
             Goal: {goal}
             Current state: {current_state}
             Available tools: {available_tools}
-            
+
             Generate a minimal plan to achieve the goal.
             """,
         }],

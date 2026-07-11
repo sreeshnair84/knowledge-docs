@@ -12,11 +12,14 @@ covers_version: "N/A"
 | 100+ Questions  |  9 Categories  |  3 Difficulty Levels Python  •  LLM  •  RAG  •  MLOps  •  System Design  •  Live Coding |
 | --- |
 *Confidential — Internal Use Only*
-# **  SECTION 1 — Python & Core Engineering**
+
+# **SECTION 1 — Python & Core Engineering**
+
 | Tests foundational Python depth: OOP, data structures, error handling, and writing clean, production-grade code. |
 | --- |
 
 **1.1  Object-Oriented Programming**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -29,10 +32,11 @@ covers_version: "N/A"
 | Q3 | What are Python dataclasses and when would you use them over a regular class in a config-driven AI app? OOP  |  Clean Code | Easy | [ ] |
 | --- | --- | --- | --- |
 
-| Q4 | How do __slots__ reduce memory usage? Would you use it in an LLM inference wrapper? OOP  |  Performance | Medium | [ ] |
+| Q4 | How do **slots** reduce memory usage? Would you use it in an LLM inference wrapper? OOP  |  Performance | Medium | [ ] |
 | --- | --- | --- | --- |
 
 **1.2  Python Performance & Internals**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -49,6 +53,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **1.3  Async & Concurrency**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -62,6 +67,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **1.4  Error Handling & Testing**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -74,11 +80,13 @@ covers_version: "N/A"
 | Q14 | What is property-based testing (Hypothesis)? Give an example relevant to a text processing pipeline. Testing  |  Advanced | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 2 — LLM & GenAI Concepts**
+# **SECTION 2 — LLM & GenAI Concepts**
+
 | Probes understanding of how LLMs work internally, not just how to call APIs. |
 | --- |
 
 **2.1  Transformer Internals**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -95,6 +103,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **2.2  Inference & Optimization**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -111,6 +120,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **2.3  Context & Token Management**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -126,11 +136,13 @@ covers_version: "N/A"
 | Q26 | You're passing 10 documents to an LLM. What strategies reduce hallucination risk from irrelevant context? Prompting  |  RAG | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 3 — RAG & Retrieval Systems**
+# **SECTION 3 — RAG & Retrieval Systems**
+
 | Deep dive into production RAG — chunking, retrieval quality, evaluation, and failure modes. |
 | --- |
 
 **3.1  RAG Architecture**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -147,6 +159,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **3.2  Embedding & Vector Search**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -163,6 +176,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **3.3  Hybrid Retrieval & Reranking**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -176,6 +190,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **3.4  RAG Evaluation**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -188,7 +203,8 @@ covers_version: "N/A"
 | Q40 | Explain the RAGAS framework. Which metric do you trust most and why? RAGAS  |  Evaluation | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 4 — Prompt Engineering**
+# **SECTION 4 — Prompt Engineering**
+
 | Tests the candidate's ability to design reliable, production-grade prompts — not just clever one-liners. |
 | --- |
 
@@ -225,11 +241,13 @@ covers_version: "N/A"
 | Q50 | How do you version control prompts in production? What's your strategy for A/B testing two prompt variants? MLOps  |  Prompts | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 5 — MLOps & Deployment**
+# **SECTION 5 — MLOps & Deployment**
+
 | Tests production maturity: CI/CD, monitoring, drift detection, model lifecycle management. |
 | --- |
 
 **5.1  Model Lifecycle**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -246,6 +264,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **5.2  Monitoring & Observability**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -262,6 +281,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **5.3  CI/CD for ML**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -274,7 +294,8 @@ covers_version: "N/A"
 | Q61 | Describe your Kubernetes deployment for LLM serving. How do you handle autoscaling for bursty traffic? Kubernetes  |  Scaling | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 6 — System Design for AI**
+# **SECTION 6 — System Design for AI**
+
 | Open-ended design questions. Look for trade-off awareness, scalability thinking, and failure mode coverage. |
 | --- |
 
@@ -305,11 +326,13 @@ covers_version: "N/A"
 | Q69 | Design a content moderation system for user prompts before they hit the LLM. What layers of defense? Safety  |  Pipeline | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 7 — Data Engineering & Business Use Cases**
+# **SECTION 7 — Data Engineering & Business Use Cases**
+
 | Tests practical data thinking — pipelines, sampling, large datasets, and business problem framing. |
 | --- |
 
 **7.1  Data Pipelines**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -326,6 +349,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **7.2  Business Use Case Problems**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -347,11 +371,13 @@ covers_version: "N/A"
 | Q79 | Your model accuracy is 92% in testing but drops to 78% in production after 30 days. What are 5 possible reasons? Drift  |  Debugging | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 8 — Frameworks & Integrations**
+# **SECTION 8 — Frameworks & Integrations**
+
 | LangChain, LangGraph, FastAPI, HuggingFace — depth of real production usage, not just familiarity. |
 | --- |
 
 **8.1  LangChain / LangGraph**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -368,6 +394,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **8.2  FastAPI & API Design**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -381,6 +408,7 @@ covers_version: "N/A"
 | --- | --- | --- | --- |
 
 **8.3  HuggingFace & Open Source Models**
+
 | # | Question | Difficulty | ✓ |
 | --- | --- | --- | --- |
 
@@ -396,31 +424,37 @@ covers_version: "N/A"
 | Q90 | How do you evaluate an open-source model vs GPT-4 for a specific business task before committing? Evaluation  |  Model Selection | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **  SECTION 9 — Live Coding Questions**
+# **SECTION 9 — Live Coding Questions**
+
 | 10–15 min coding questions. Test Python fundamentals + AI domain knowledge. Pick ONE per interview. |
 | --- |
 
 **QUESTION LC-1  |  Token Budget Manager (Context Window Trimming)**
+
 | Problem: Write trim_history(messages, max_tokens) that preserves the system message and last user message, drops oldest messages first, and fits within token budget (approx = len(content) // 4). Follow-up: Add keep_last_n_turns param to always preserve the N most recent turns. Look for: Edge cases (no system msg, budget too small), clean list slicing, understanding WHY this problem exists. |
 | --- |
 
 **QUESTION LC-2  |  Retry Decorator with Exponential Backoff**
+
 | Problem: Write a @retry(max_attempts=3, backoff_factor=2) decorator that retries a function on exception with exponential backoff. Should log each retry attempt. Follow-up: Add retry_on parameter to only retry on specific exception types (e.g. RateLimitError). Look for: functools.wraps usage, correct backoff math (2^attempt * factor), async support awareness. |
 | --- |
 
 **QUESTION LC-3  |  LRU Cache for Embedding Results**
+
 | Problem: Implement a class EmbeddingCache(max_size) that caches text-to-vector results. Evicts the least recently used entry when full. Must support get(text), set(text, vector), and cache_stats(). Follow-up: Make it thread-safe using a Lock. What changes for async code? Look for: OrderedDict usage, correct LRU eviction logic, hit/miss rate tracking. |
 | --- |
 
 **QUESTION LC-4  |  Hash-Based Dataset Splitter**
+
 | Problem: Write split_dataset(data, id_field, test_ratio) that assigns each row to train or test using a hash of its ID — so splits are stable even when rows are added. No row that was ever in train should appear in test. Follow-up: Add a validation split. Explain how the threshold formula (hash % 256 <= threshold) works. Look for: hashlib usage, correct threshold math, awareness of crc32 vs md5 for speed vs collision. |
 | --- |
 
 **QUESTION LC-5  |  Rate-Limited Async Batch Embedder**
+
 | Problem: Write async_batch_embed(texts, batch_size, max_concurrent) that batches a list of texts, calls an async embed(batch) function, and limits concurrency using a semaphore. Returns all embeddings in original order. Follow-up: Add a progress callback that fires after each batch completes. Look for: asyncio.Semaphore, asyncio.gather, correct order preservation with enumerate/zip. |
 | --- |
 
-# **  EVALUATION RUBRIC**
+# **EVALUATION RUBRIC**
 
 | Competency | Strong (4-5) | Adequate (2-3) | Weak (0-1) |
 | --- | --- | --- | --- |
