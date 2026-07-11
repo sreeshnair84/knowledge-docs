@@ -1,6 +1,6 @@
 ---
 name: pdf-to-markdown
-description: Convert a PDF into Markdown while preserving reading order, rendering tables as real Markdown tables, properly fencing code blocks, and extracting embedded images/diagrams as separate PNG files referenced in place — never a flat text dump and never an <iframe> embed. Uses pymupdf4llm with ML-based layout detection for best-in-class extraction. Use this whenever the user wants to convert, migrate, or "properly" turn a PDF into a markdown page for this knowledge-docs repo, including as part of the knowledge-repo-cleanup skill's Phase 2. Strips repeated running headers/footers automatically. Always followed by a manual QA pass (see references/conversion-checklist.md) and by the knowledge-page-authoring skill's linter — this produces a strong first draft, not a finished page.
+description: Convert a PDF or DOCX file into Markdown while preserving reading order, rendering tables as real Markdown tables, properly fencing code blocks, and extracting embedded images/diagrams as separate PNG files referenced in place — never a flat text dump and never an <iframe> embed. PDF uses pymupdf4llm with ML-based layout detection; DOCX uses python-docx. Use this whenever the user wants to convert, migrate, or "properly" turn a PDF or DOCX into a markdown page for this knowledge-docs repo, including as part of the knowledge-repo-cleanup skill's Phase 2. Strips repeated running headers/footers automatically. Always followed by a manual QA pass (see references/conversion-checklist.md) and by the knowledge-page-authoring skill's linter — this produces a strong first draft, not a finished page.
 model: sonnet
 date_created: 2026-07-10
 last_reviewed: 2026-07-11
@@ -48,6 +48,34 @@ python ${CLAUDE_SKILL_DIR}/scripts/pdf_to_markdown.py input.pdf out.md --table-s
 **Requires:** `pymupdf4llm` (pip install pymupdf4llm)
 **Note on python3 vs python:** On Windows the `python3` alias may point to the Microsoft Store stub.
 Use `python` to invoke the real installation: `python pdf_to_markdown.py ...`
+
+### DOCX conversion
+
+```bash
+python ${CLAUDE_SKILL_DIR}/scripts/docx_to_md.py <input.docx> <output.md>
+```
+
+**Requires:** `python-docx` (pip install python-docx)
+
+### Batch PDF conversion
+
+```bash
+# Convert every PDF under docs/ that lacks an .md counterpart
+python ${CLAUDE_SKILL_DIR}/scripts/pdf_batch_to_md.py --docs-dir docs --img-dir static/img
+```
+
+### Post-conversion QA
+
+```bash
+# Verify converted MD content coverage against original source file
+python ${CLAUDE_SKILL_DIR}/scripts/verify_md_against_source.py <output.md> <source.pdf>
+
+# Fix quality issues in bulk (running headers, excessive blank lines, page numbers)
+python ${CLAUDE_SKILL_DIR}/scripts/fix_pdf_md_quality.py <output.md>
+
+# Patch frontmatter on already-converted MDs missing required fields
+python ${CLAUDE_SKILL_DIR}/scripts/patch_converted_frontmatter.py docs/<section>/
+```
 
 ## What this does automatically
 
