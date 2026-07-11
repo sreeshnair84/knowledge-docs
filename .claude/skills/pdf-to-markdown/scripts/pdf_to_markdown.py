@@ -1,271 +1,276 @@
 #!/usr/bin/env python3
 """
-Convert a PDF to Markdown, preserving reading order, with tables rendered as
-real Markdown tables and images extracted as separate PNG files referenced
-in place — not a flat text dump, and never an <iframe> embed.
+Convert a PDF to Markdown using pymupdf4llm (ML-based layout detection).
+
+Advantages over the old pdfplumber approach:
+  - Code blocks detected via monospace font → properly fenced as ``` blocks
+  - Multi-column layouts handled by ML layout model (pymupdf_layout)
+  - Headings inferred from font weight/size hierarchy, not just size ratio
+  - Vector graphics rendered as PNG via page rendering (not pixel bounding box)
+  - Tables extracted with borderless-table support via configurable strategy
+  - Running headers/footers suppressed via margins parameter
 
 Usage:
-    python3 pdf_to_markdown.py <input.pdf> <output.md> \\
-        [--img-dir static/img/<topic>] [--img-prefix mydoc] \\
-        [--resolution 200]
+    python pdf_to_markdown.py <input.pdf> <output.md> \\
+        [--img-dir static/img/<topic-folder>] \\
+        [--img-prefix <short-name>] \\
+        [--resolution 200] \\
+        [--max-pages N]
 
-This is a first-pass automated conversion — heading levels are inferred
-from font size, which is a heuristic, not a guarantee. Always read
-references/conversion-checklist.md and do the manual QA pass it describes
-before treating the output as final.
-
-Requires: pdfplumber, Pillow (pip install --break-system-packages pdfplumber pillow)
+Requires: pymupdf4llm (pip install pymupdf4llm)
 """
 import os
+import re
 import sys
 import argparse
-import statistics
-from collections import Counter
+import shutil
 
-import pdfplumber
-
-
-def group_words_into_lines(words, y_tolerance=3):
-    """Group word dicts (with 'top','x0','text','size') into lines by
-    vertical position."""
-    lines = []
-    current = []
-    current_top = None
-    for w in sorted(words, key=lambda w: (round(w["top"] / y_tolerance), w["x0"])):
-        if current_top is None or abs(w["top"] - current_top) <= y_tolerance:
-            current.append(w)
-            current_top = w["top"] if current_top is None else current_top
-        else:
-            lines.append(current)
-            current = [w]
-            current_top = w["top"]
-    if current:
-        lines.append(current)
-    return lines
+try:
+    import pymupdf4llm
+except ImportError:
+    print("ERROR: pymupdf4llm not installed. Run: pip install pymupdf4llm", file=sys.stderr)
+    sys.exit(1)
 
 
-def word_in_any_bbox(word, bboxes):
-    cx = (word["x0"] + word["x1"]) / 2
-    cy = (word["top"] + word["bottom"]) / 2
-    for (x0, top, x1, bottom) in bboxes:
-        if x0 <= cx <= x1 and top <= cy <= bottom:
-            return True
-    return False
+def fix_image_references(md_text, img_dir, img_prefix, base_name):
+    """
+    pymupdf4llm saves images as <basename>-pNNN-NNN.png and references them
+    with the path passed as image_path.  Rename files to use img_prefix and
+    update the markdown references so they're Docusaurus-compatible
+    (/img/… absolute paths).
+    """
+    if not img_prefix:
+        return md_text
+
+    # Find all image references that use the pdf basename pattern
+    auto_pattern = re.compile(
+        r'!\[([^\]]*)\]\((' + re.escape(img_dir) + r'[/\\]' + re.escape(base_name) + r'(-p\d+-\d+\.png))\)'
+    )
+
+    renamed = {}
+    counter = [0]
+
+    def rename_match(m):
+        alt, old_path, suffix = m.group(1), m.group(2), m.group(3)
+        if old_path not in renamed:
+            counter[0] += 1
+            page_part = re.search(r'-p(\d+)-', suffix)
+            pg = page_part.group(1) if page_part else str(counter[0])
+            new_name = f"{img_prefix}-p{pg}-{counter[0]}.png"
+            new_path = os.path.join(img_dir, new_name)
+            try:
+                if os.path.exists(old_path):
+                    shutil.move(old_path, new_path)
+                    renamed[old_path] = new_path
+            except Exception:
+                renamed[old_path] = old_path  # keep original if rename fails
+        final = renamed.get(old_path, old_path)
+        # Convert to Docusaurus /img/... absolute path
+        # static/img/foo/bar.png → /img/foo/bar.png
+        rel = final
+        if 'static' + os.sep in rel or 'static/' in rel:
+            rel = re.sub(r'^.*static[/\\]', '/', rel).replace('\\', '/')
+        elif os.sep in rel or '/' in rel:
+            rel = '/' + rel.replace('\\', '/').lstrip('/')
+        label = alt or os.path.splitext(os.path.basename(final))[0]
+        return f'![{label}]({rel})'
+
+    return auto_pattern.sub(rename_match, md_text)
 
 
-def table_to_markdown(rows):
-    rows = [[(c or "").replace("\n", " ").strip() for c in row] for row in rows]
-    rows = [r for r in rows if any(c for c in r)]
-    if not rows:
-        return ""
-    header, *body = rows
-    ncols = len(header)
-    out = ["| " + " | ".join(header) + " |"]
-    out.append("| " + " | ".join(["---"] * ncols) + " |")
-    for r in body:
-        r = (r + [""] * ncols)[:ncols]
-        out.append("| " + " | ".join(r) + " |")
-    return "\n".join(out)
+def _normalize_for_repeat(line):
+    """Strip digits and whitespace so 'Page 3' and 'Page 4' compare equal."""
+    import re
+    return re.sub(r'\d+', '', line).strip().lower()
 
 
-def classify_heading_level(size, body_size):
-    if body_size <= 0:
-        return None
-    ratio = size / body_size
-    if ratio >= 1.8:
-        return 1
-    if ratio >= 1.45:
-        return 2
-    if ratio >= 1.2:
-        return 3
-    return None
+def strip_running_headers_footers(md_text, min_pages=3):
+    """
+    Remove lines that appear (near-verbatim, ignoring digits) on 3+ separate
+    'pages'.  We approximate page boundaries by splitting on Markdown
+    horizontal rules (---) or the literal text 'Page N'.
 
+    This mirrors the pdfplumber approach but works on the markdown output.
+    """
+    import re
+    from collections import Counter
 
-def convert_page(page, page_num, img_dir, img_prefix, resolution, image_counter):
-    """Returns a list of (top, kind, payload) blocks for this page — NOT yet
-    joined to a string, so the caller can strip running headers/footers
-    across the whole document first."""
-    words = page.extract_words(extra_attrs=["size"])
-    tables = page.find_tables()
-    table_bboxes = [t.bbox for t in tables]
-    images = page.images
+    # Split into segments (approximate page chunks)
+    segments = re.split(r'^(?:---|Page\s+\d+\s*)$', md_text, flags=re.MULTILINE)
+    if len(segments) < min_pages:
+        # Too short to do meaningful repeat detection; just remove "Page N" lines
+        md_text = re.sub(r'^Page\s+\d+\s*$', '', md_text, flags=re.MULTILINE)
+        return md_text
 
-    blocks = []  # (top, kind, payload)
-
-    for t in tables:
-        rows = t.extract()
-        md = table_to_markdown(rows)
-        if md:
-            blocks.append((t.bbox[1], "table", md))
-
-    for img in images:
-        bbox = (img["x0"], img["top"], img["x1"], img["bottom"])
-        w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
-        if w < 20 or h < 20:
-            continue  # skip icons/bullets/decorative dots
-        image_counter[0] += 1
-        fname = f"{img_prefix}_p{page_num}_{image_counter[0]}.png"
-        fpath = os.path.join(img_dir, fname)
-        try:
-            cropped = page.crop(bbox)
-            im = cropped.to_image(resolution=resolution)
-            os.makedirs(img_dir, exist_ok=True)
-            im.save(fpath)
-            rel_path = os.path.join(os.path.basename(img_dir.rstrip("/")), fname)
-            blocks.append((bbox[1], "image", f"![Extracted from page {page_num}]({rel_path})"))
-        except Exception as e:
-            blocks.append((bbox[1], "note", f"<!-- image extraction failed on page {page_num}: {e} -->"))
-
-    non_table_words = [w for w in words if not word_in_any_bbox(w, table_bboxes)]
-    lines = group_words_into_lines(non_table_words)
-
-    all_sizes = [w["size"] for w in words if "size" in w]
-    body_size = statistics.mode(round(s) for s in all_sizes) if all_sizes else 10
-
-    page_height = page.height
-    paragraph_buf = []
-    paragraph_top = None
-
-    def flush_paragraph():
-        if paragraph_buf:
-            text = " ".join(paragraph_buf).strip()
-            if text:
-                blocks.append((paragraph_top, "text", text))
-            paragraph_buf.clear()
-
-    for line in lines:
-        line_text = " ".join(w["text"] for w in line).strip()
-        if not line_text:
-            continue
-        line_size = statistics.mean(w["size"] for w in line)
-        level = classify_heading_level(line_size, body_size)
-        top = line[0]["top"]
-        in_header_footer_zone = top <= HEADER_FOOTER_ZONE or top >= page_height - HEADER_FOOTER_ZONE
-        if in_header_footer_zone and not level:
-            # Never merge header/footer-zone lines into a body paragraph —
-            # keep them as standalone blocks so repeat-detection across
-            # pages can isolate and strip them.
-            flush_paragraph()
-            blocks.append((top, "text", line_text))
-        elif level:
-            flush_paragraph()
-            blocks.append((top, "heading", (level, line_text)))
-        else:
-            if not paragraph_buf:
-                paragraph_top = top
-            paragraph_buf.append(line_text)
-    flush_paragraph()
-
-    blocks.sort(key=lambda b: b[0])
-    return blocks, page.height
-
-
-HEADER_FOOTER_ZONE = 40  # points from top/bottom of page considered header/footer territory
-HEADER_FOOTER_MIN_PAGES = 3  # a line must repeat on at least this many pages to be stripped
-
-
-def normalize_for_repeat_detection(text):
-    # Strip digits so "Page 1" / "Page 2" / "...May 2026" still match as the same running element
-    return "".join(c for c in text if not c.isdigit()).strip().lower()
-
-
-def strip_running_headers_footers(pages_blocks):
-    """pages_blocks: list of (blocks, page_height) per page. Detects text
-    blocks that repeat (near-verbatim, ignoring digits) in the header/footer
-    zone across several pages, and removes them from every page."""
-    candidate_counts = Counter()
-    for blocks, page_height in pages_blocks:
-        for top, kind, payload in blocks:
-            if kind != "text":
+    # Count how many page-segments each normalized line appears in
+    line_page_count: Counter = Counter()
+    for seg in segments:
+        seen_in_seg = set()
+        for raw_line in seg.splitlines():
+            stripped = raw_line.strip()
+            if not stripped:
                 continue
-            in_header_zone = top <= HEADER_FOOTER_ZONE
-            in_footer_zone = top >= page_height - HEADER_FOOTER_ZONE
-            if in_header_zone or in_footer_zone:
-                norm = normalize_for_repeat_detection(payload)
-                if norm:
-                    candidate_counts[norm] += 1
+            # Strip markdown bold/italic markers for comparison
+            clean = re.sub(r'\*+', '', stripped).strip()
+            norm = _normalize_for_repeat(clean)
+            if norm and len(norm) > 3:  # skip very short tokens
+                seen_in_seg.add(norm)
+        for norm in seen_in_seg:
+            line_page_count[norm] += 1
 
-    to_strip = {norm for norm, count in candidate_counts.items() if count >= HEADER_FOOTER_MIN_PAGES}
+    to_strip = {norm for norm, count in line_page_count.items()
+                if count >= min_pages}
+
     if not to_strip:
-        return pages_blocks
+        # Still remove bare "Page N" lines
+        md_text = re.sub(r'^Page\s+\d+\s*$', '', md_text, flags=re.MULTILINE)
+        return md_text
 
-    cleaned = []
-    for blocks, page_height in pages_blocks:
-        new_blocks = []
-        for top, kind, payload in blocks:
-            if kind == "text":
-                in_zone = top <= HEADER_FOOTER_ZONE or top >= page_height - HEADER_FOOTER_ZONE
-                if in_zone and normalize_for_repeat_detection(payload) in to_strip:
-                    continue  # drop the running header/footer
-            new_blocks.append((top, kind, payload))
-        cleaned.append((new_blocks, page_height))
-    return cleaned
+    result_lines = []
+    for raw_line in md_text.splitlines():
+        stripped = raw_line.strip()
+        # Always drop bare "Page N" lines
+        if re.fullmatch(r'Page\s+\d+', stripped):
+            continue
+        clean = re.sub(r'\*+', '', stripped).strip()
+        norm = _normalize_for_repeat(clean)
+        if norm and norm in to_strip:
+            continue  # drop running header/footer
+        result_lines.append(raw_line)
+
+    return '\n'.join(result_lines)
 
 
-def render_blocks(blocks):
-    out_lines = []
-    for _top, kind, payload in blocks:
-        if kind == "heading":
-            level, text = payload
-            out_lines.append(f"\n{'#' * (level + 1)} {text}\n")
-        elif kind in ("table", "image", "note"):
-            out_lines.append(f"\n{payload}\n")
-        else:
-            out_lines.append(payload + "\n")
-    return "\n".join(out_lines)
+def clean_cover_code_blocks(md_text):
+    """
+    Remove spurious ``` fenced blocks on the cover page that are actually
+    sidebar labels / decorative elements detected as monospace by pymupdf4llm.
+    Heuristic: short (< 5 words) fenced blocks before the first ## heading.
+    """
+    import re
+    # Find position of first real ## heading
+    first_heading = re.search(r'^#{1,4}\s+\S', md_text, re.MULTILINE)
+    if not first_heading:
+        return md_text
+
+    preamble = md_text[:first_heading.start()]
+    rest = md_text[first_heading.start():]
+
+    # Remove short fenced code blocks from preamble
+    preamble = re.sub(
+        r'```[^\n]*\n([^\n`]{0,100})\n```',
+        lambda m: m.group(1).strip() if len(m.group(1).split()) > 4 else '',
+        preamble
+    )
+    return preamble + rest
+
+
+def build_frontmatter(base_name, source_pdf_name):
+    return (
+        "---\n"
+        f'title: "{base_name}"\n'
+        "date_created: \n"
+        "last_reviewed: \n"
+        "status: current\n"
+        'supersedes: ""\n'
+        "source_type: converted-pdf\n"
+        f'source_file: "{source_pdf_name}"\n'
+        "tags: []\n"
+        "---\n\n"
+        f"<!-- converted from {source_pdf_name} -->\n\n"
+    )
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("input_pdf")
-    ap.add_argument("output_md")
-    ap.add_argument("--img-dir", default=None,
-                     help="Directory to save extracted images. Defaults to "
-                          "static/img/<pdf-basename>/ next to a Docusaurus-style repo.")
-    ap.add_argument("--img-prefix", default=None)
-    ap.add_argument("--resolution", type=int, default=200)
-    ap.add_argument("--max-pages", type=int, default=None)
+    ap = argparse.ArgumentParser(
+        description="Convert PDF to Markdown using pymupdf4llm (ML layout detection)."
+    )
+    ap.add_argument("input_pdf", help="Path to source PDF")
+    ap.add_argument("output_md", help="Path to write output Markdown")
+    ap.add_argument(
+        "--img-dir", default=None,
+        help="Directory for extracted images. Default: static/img/<pdf-basename>/",
+    )
+    ap.add_argument(
+        "--img-prefix", default=None,
+        help="Filename prefix for extracted images. Default: pdf basename.",
+    )
+    ap.add_argument(
+        "--resolution", type=int, default=200,
+        help="DPI for image/graphics extraction (default: 200)",
+    )
+    ap.add_argument(
+        "--max-pages", type=int, default=None,
+        help="Convert only the first N pages (preview mode)",
+    )
+    ap.add_argument(
+        "--table-strategy", default="lines",
+        choices=["lines_strict", "lines", "explicit"],
+        help="Table detection strategy. 'lines' catches borderless tables too (default).",
+    )
+    ap.add_argument(
+        "--margins", type=int, default=40,
+        help="Points from page top/bottom to suppress (strips running headers/footers). Default: 40.",
+    )
     args = ap.parse_args()
 
     base = os.path.splitext(os.path.basename(args.input_pdf))[0]
     img_dir = args.img_dir or os.path.join("static", "img", base)
     img_prefix = args.img_prefix or base
 
-    image_counter = [0]
-    pages_blocks = []
+    # Build 0-based page list if --max-pages given
+    pages = list(range(args.max_pages)) if args.max_pages else None
 
-    with pdfplumber.open(args.input_pdf) as pdf:
-        pages = pdf.pages[: args.max_pages] if args.max_pages else pdf.pages
-        for i, page in enumerate(pages, start=1):
-            blocks, page_height = convert_page(page, i, img_dir, img_prefix, args.resolution, image_counter)
-            pages_blocks.append((blocks, page_height))
+    # Ensure image output directory exists
+    os.makedirs(img_dir, exist_ok=True)
 
-    pages_blocks = strip_running_headers_footers(pages_blocks)
-    page_texts = [render_blocks(blocks) for blocks, _h in pages_blocks]
+    # Count images already in img_dir so we can diff
+    existing_imgs = set(os.listdir(img_dir))
 
-    body = "\n\n---\n\n".join(page_texts)
+    print(f"Converting: {args.input_pdf}")
+    print(f"  Output:     {args.output_md}")
+    print(f"  Image dir:  {img_dir}")
+    print(f"  DPI:        {args.resolution}")
 
-    frontmatter = (
-        "---\n"
-        f'title: "{base}"\n'
-        "date_created: \n"
-        "last_reviewed: \n"
-        "status: current\n"
-        "supersedes: \"\"\n"
-        "source_type: converted-pdf\n"
-        f'source_file: "{os.path.basename(args.input_pdf)}"\n'
-        "tags: []\n"
-        "---\n\n"
+    md = pymupdf4llm.to_markdown(
+        args.input_pdf,
+        pages=pages,
+        write_images=True,
+        image_path=img_dir,
+        image_format="png",
+        dpi=args.resolution,
+        margins=(args.margins, 0, args.margins, 0),  # top, left, bottom, right
+        table_strategy=args.table_strategy,
+        page_separators=False,   # no ---- page breaks in output
+        force_text=True,
+        show_progress=False,
     )
 
-    with open(args.output_md, "w", encoding="utf-8") as f:
-        f.write(frontmatter + body)
+    # Rename images to use img_prefix and fix markdown references
+    md = fix_image_references(md, img_dir, img_prefix, base)
 
-    print(f"Converted {args.input_pdf} -> {args.output_md}")
-    print(f"  {len(page_texts)} pages, {image_counter[0]} images extracted to {img_dir}/")
-    print("  NOTE: heading levels are font-size heuristics — review before publishing.")
-    print("  Run the knowledge-page-authoring skill's lint_page.py next to check "
-          "structure against the target document type.")
+    # Post-process: strip running headers/footers and cover-page code artifacts
+    md = strip_running_headers_footers(md, min_pages=3)
+    md = clean_cover_code_blocks(md)
+
+    # Count newly extracted images
+    new_imgs = set(os.listdir(img_dir)) - existing_imgs
+    img_count = len(new_imgs)
+
+    # Write output
+    os.makedirs(os.path.dirname(args.output_md) or ".", exist_ok=True)
+    frontmatter = build_frontmatter(base, os.path.basename(args.input_pdf))
+
+    with open(args.output_md, "w", encoding="utf-8") as f:
+        f.write(frontmatter + str(md))
+
+    print(f"\nConverted: {args.input_pdf}")
+    print(f"Output:    {args.output_md}")
+    print(f"  {img_count} image(s) extracted to {img_dir}/")
+    if img_count == 0:
+        print("  NOTE: No raster images found. Vector diagrams require manual screenshots.")
+    print("  NOTE: Review section headings, tables, and code blocks before publishing.")
+    print("  Run knowledge-page-authoring lint_page.py for structural QA.")
 
 
 if __name__ == "__main__":

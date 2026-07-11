@@ -1,14 +1,15 @@
 ---
-title: "Harness"
-date_created: 2026-07-10
+title: "Harness_BestPractices_AntiPatterns_Roadmap"
+date_created: 
+last_reviewed: 
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Harness_BestPractices_AntiPatterns_Roadmap.pdf"
-doc_type: guide
-tags: ["agentic-ai", "agents"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: []
 ---
+
+<!-- converted from Harness_BestPractices_AntiPatterns_Roadmap.pdf -->
 
 **PA R T 4 O F 4** 
 
@@ -87,14 +88,19 @@ Synthesized from the architecture, governance, and best-practice/anti-pattern ma
 |**Days 1–30**<br>Foundation|Trust boundaries &<br>identity|Decide Delegate topology (centralized pool vs. BU-owned vs. network-<br>isolated per compliance zone) before onboarding any team — this is the<br>expensive-to-reverse decision.<br>Wire external secrets manager (Vault/cloud-native) and disable the built-<br>in one.<br>Stand up Account → Org → Project RBAC structure matching actual org<br>boundaries, not aspirational ones.<br>Pilot with 1–2 low-risk services to validate Delegate connectivity, OIDC<br>auth to cloud providers, and basic pipeline execution end to end.|
 |**Days 31–60**<br>Governance<br>layer|Policy as code, not<br>tribal knowledge|Write the first OPA Policy Set at account scope for the one rule that<br>matters most (e.g., "production stage requires an approval step") — start<br>with Warn-and-Continue, graduate to Error-and-Exit once teams have<br>adjusted.<br>Build 2–3 seam-governed templates (per the "govern the seams" best<br>practice) rather than one rigid golden pipeline.<br>Enable SCS module in shadow mode (generate SBOM/SLSA<br>provenance without blocking) to baseline current supply-chain posture<br>before enforcing anything.|
 
+
+
 Harness — Best Practices, Anti-Patterns & Rollout Plan — 5 
 
 |**Days 61–90**<br>Scale & verify|Expand cohort, turn<br>on verification|Onboard the next wave of teams (target: enough to stress-test Delegate<br>capacity planning under real concurrency).<br>Turn on deployment verification + automated rollback for canary/blue-<br>green stages — don't ship progressive delivery without the verification<br>half.<br>Move SCS from shadow mode to enforcing mode for new builds;<br>grandfather existing artifacts with a remediation deadline rather than a<br>hard cutover.<br>Stand up the CD-level DORA dashboard for pipeline-level visibility.|
 |---|---|---|
 |**Days 91–180**<br>Org-wide +<br>intelligence layer|Correlate, extend, and<br>(optionally) introduce<br>agents|Wire Software Engineering Insights across the full toolchain (Jira,<br>GitHub/GitLab, incident management) to move from "deployment<br>frequency is X" to "deployment frequency is low because of Y" via the<br>correlation engine.<br>Introduce IDP self-service workflows for the highest-volume request<br>types first (new service scaffolding, environment provisioning) — these<br>inherit pipeline RBAC/audit for free.<br>If piloting AI Worker Agents: start with a single, narrow, low-blast-radius<br>use case (e.g., an Autofix agent on non-production branches) with its<br>own scoped credentials, before considering any production-facing agent<br>action.<br>Review the full rollout against the anti-patterns catalog above — this is<br>the point at which pipeline sprawl and golden-cage symptoms typically<br>first become visible.|
 
+
+
 **Sequencing rationale:** Delegate topology and secrets-backend choice are placed first specifically because they are the two decisions hardest to unwind after teams have onboarded against them — everything else in this roadmap (templates, policies, dashboards) can be iterated without a migration. 
 
 This is a synthesized, general-purpose sequencing based on documented Harness capabilities and general enterprise platformengineering practice — not a Harness-published rollout plan. Adjust phase lengths for organizations with heavier compliance review cycles (banking, healthcare) or air-gapped constraints, both covered in the earlier security report. 
 
-Harness — Best Practices, Anti-Patterns & Rollout Plan — 6
+Harness — Best Practices, Anti-Patterns & Rollout Plan — 6 
+

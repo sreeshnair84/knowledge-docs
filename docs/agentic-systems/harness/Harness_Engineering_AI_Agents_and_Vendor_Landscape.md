@@ -1,14 +1,15 @@
 ---
-title: "Harness Engineering"
-date_created: 2026-07-10
+title: "Harness_Engineering_AI_Agents_and_Vendor_Landscape"
+date_created: 
+last_reviewed: 
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf"
-doc_type: guide
-tags: ["agentic-ai", "agents"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: []
 ---
+
+<!-- converted from Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf -->
 
 **C O N C E P T P R I M E R + V E N D O R L A N D S C A P E** 
 
@@ -148,6 +149,8 @@ Tekton provides the underlying custom-resource pipeline engine that other projec
 |**Agent-curious,**<br>**architecturally**<br>**unresolved**|Backstage, Azure<br>DevOps|Real primitives shipped (MCP actions, custom agent selection) but<br>either explicitly "experimental" (Backstage) or explicitly secondary<br>to a sibling product getting the real investment (Azure DevOps vs.<br>GitHub)|
 |**No native harness;**<br>**agents operate above/**<br>**around it**|Jenkins, ArgoCD,<br>Spinnaker, Tekton,<br>Humanitec|Mature, often CNCF-grade infrastructure that agentic tooling treats<br>as a target to generate config for or reconcile against, rather than a<br>platform that runs agents itself|
 
+
+
 **The throughline back to Part 1:** the vendors in the top tier all converged, independently, on the same governance pattern that Part 1 identifies as the hard part of harness engineering — scoped per-agent identity, 
 
 Harness Engineering (AI Agents) — 7 
@@ -156,4 +159,5 @@ policy gates shared with human workflows, and audit trails — rather than on mo
 
 Company profiles are necessarily compressed for comparability; treat "no evidence found" for Jenkins/ArgoCD/Spinnaker/Tekton as a statement about current public research, not a certainty that no such capability exists anywhere in those ecosystems' plugin/ vendor long tail. 
 
-Harness Engineering (AI Agents) — 8
+Harness Engineering (AI Agents) — 8 
+

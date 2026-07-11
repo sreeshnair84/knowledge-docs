@@ -146,3 +146,9 @@ Microsoft Entra now supports **Agent ID** — agents as first-class identity obj
 </details>
 
 - [Part 3 — Identity, OBO &amp; Sessions](/knowledge-docs/ai-protocols/auth/Part3_Identity_OBO_Sessions)
+
+- [Enterprise AI Platform Authentication Survey](/knowledge-docs/ai-protocols/auth/enterprise-ai-platform-auth-survey) — how 10 leading AI platforms (Gemini, Claude, M365 Copilot, Amazon Q, etc.) implement auth
+
+- [Marketplace Connector Auth Patterns](/knowledge-docs/ai-protocols/auth/marketplace-connector-auth-patterns) — GitHub Marketplace, AppSource, Forge, AWS Marketplace consent flows and enterprise architecture patterns
+
+- [Auth Standards Reference](/knowledge-docs/ai-protocols/auth/auth-standards-reference) — OAuth 2.1, OIDC, RFC 8693, decision frameworks, and implementation checklists
