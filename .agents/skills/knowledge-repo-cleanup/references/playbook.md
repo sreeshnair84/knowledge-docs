@@ -177,7 +177,7 @@ replaced, and `status: archived` frontmatter on the archived copies.
 
 2. **knowledge-page-authoring lint** — Run the linter on the merged keeper:
    ```bash
-   python3 .claude/skills/knowledge-page-authoring/scripts/lint_page.py <keeper-path>
+   python3 .agents/skills/knowledge-page-authoring/scripts/lint_page.py <keeper-path> --universal
    ```
    Fix any failures before marking the cluster done. The linter checks
    frontmatter completeness, heading hierarchy, and structural conventions

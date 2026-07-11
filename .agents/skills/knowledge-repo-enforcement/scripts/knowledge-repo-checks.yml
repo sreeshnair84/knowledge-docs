@@ -43,7 +43,7 @@ jobs:
             [ -z "$file" ] && continue
             [ -f "$file" ] || continue
             echo "--- $file ---"
-            if ! python3 .claude/skills/knowledge-page-authoring/scripts/lint_page.py "$file"; then
+            if ! python3 .agents/skills/knowledge-page-authoring/scripts/lint_page.py "$file" --universal; then
               FAIL=1
             fi
           done <<< "${{ steps.changed.outputs.files }}"
@@ -60,7 +60,7 @@ jobs:
             [ -z "$file" ] && continue
             [ -f "$file" ] || continue
             echo "--- $file ---"
-            OUT=$(python3 .claude/skills/knowledge-page-authoring/scripts/check_against_corpus.py "$file" --threshold 0.85 2>&1)
+            OUT=$(python3 .agents/skills/knowledge-page-authoring/scripts/check_against_corpus.py "$file" --threshold 0.85 2>&1)
             echo "$OUT"
             if echo "$OUT" | grep -q "NEAR-DUPLICATE"; then
               FAIL=1

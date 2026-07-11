@@ -2,13 +2,13 @@
 # Pre-commit hook for knowledge-docs style repos.
 # Installed by knowledge-repo-enforcement's install.sh to .githooks/pre-commit.
 # Requires the knowledge-page-authoring skill to be installed at
-# .claude/skills/knowledge-page-authoring/ in the same repo.
+# .agents/skills/knowledge-page-authoring/ in the same repo.
 set -uo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT" || exit 1
 
-AUTHORING_SKILL=".claude/skills/knowledge-page-authoring"
+AUTHORING_SKILL=".agents/skills/knowledge-page-authoring"
 LINT="$AUTHORING_SKILL/scripts/lint_page.py"
 DUPCHECK="$AUTHORING_SKILL/scripts/check_against_corpus.py"
 
@@ -35,7 +35,7 @@ while IFS= read -r file; do
 
   echo "--- $file ---"
 
-  if ! python3 "$LINT" "$file"; then
+  if ! python3 "$LINT" "$file" --universal; then
     FAIL=1
   fi
 

@@ -15,7 +15,7 @@ or not the person committing used any of those skills.
 ## Prerequisite
 
 The `knowledge-page-authoring` skill must be installed at
-`.Codex/skills/knowledge-page-authoring/` in the target repo — both the
+`.agents/skills/knowledge-page-authoring/` in the target repo — both the
 hook and the CI workflow call its `lint_page.py` and
 `check_against_corpus.py` directly. If it isn't installed yet, install it
 first.
