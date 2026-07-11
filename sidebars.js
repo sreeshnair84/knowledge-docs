@@ -54,8 +54,6 @@ const sidebars = {
             'agentic-systems/platform/enterprise-agentic-ai-asset-management-2026',
             'agentic-systems/platform/genaiaf-prompt-lifecycle-hotswap-research-2026',
             'agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026',
-            'agentic-systems/Enterprise_Agentic_AI_Asset_Management_2026',
-            'agentic-systems/GENAIAF_559_PromptLifecycle_HotSwap_Research_2026',
           ],
         },
         {
@@ -271,7 +269,6 @@ const sidebars = {
             'ai-protocols/mcp/index',
             'ai-protocols/mcp/MCP_Deep_Research_2026',
             'ai-protocols/mcp/MCP_Harness_AIDLC',
-            'ai-protocols/mcp/MCP_Harness_AIDLC_Research',
           ],
         },
       ],
