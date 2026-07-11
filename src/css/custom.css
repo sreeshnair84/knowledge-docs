@@ -133,6 +133,20 @@ html[data-theme='dark'] {
   transition: background 0.15s, color 0.15s;
 }
 
+/* Keep every generated sidebar label visually uniform. */
+.theme-doc-sidebar-container .menu__link,
+.theme-doc-sidebar-container .menu__list-item-collapsible {
+  font-family: var(--ifm-font-family-base);
+  font-style: normal;
+  font-variant: normal;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.theme-doc-sidebar-container .menu__list-item-collapsible .menu__link {
+  font-weight: 600;
+}
+
 .menu__link:hover {
   background: var(--ifm-color-primary-lightest);
   color: var(--ifm-color-primary-darkest);

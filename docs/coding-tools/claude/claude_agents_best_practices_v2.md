@@ -1,5 +1,5 @@
 ---
-title: "Table of Contents"
+title: "Claude & GitHub Agents: Best Practices Guide (v2)"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,15 +9,15 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-**Claude & GitHub Agents** Best Practices Guide — v2 Enriched Edition
-Skills · Hooks · Plugins · MCP · Routing Design · Agent Teams · Anti-Patterns · Token Optimization
-April 2026 · Based on Anthropic Official Docs, Community Research & Production Data
-This v2 edition incorporates the **April 2026 Claude Code changelog** , the newly published **Dive-into-Claude-Code architectural analysis** (arXiv 2604.14228), official Anthropic best-practices documentation, production patterns from the awesome-claude-code community (35.9K I), and a comprehensive anti-pattern catalog drawn from real-world failure modes. New sections cover **Routing Design** , **Agent Teams** , and the **Explore-Plan-Execute pipeline** .
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 1
+**Claude & GitHub Agents** Best Practices Guide — v2 Enriched Edition.
+
+*Skills · Hooks · Plugins · MCP · Routing Design · Agent Teams · Anti-Patterns · Token Optimization*
+
+**April 2026** · Based on Anthropic Official Docs, Community Research & Production Data.
+
+This v2 edition incorporates the **April 2026 Claude Code changelog**, the newly published **Dive-into-Claude-Code architectural analysis** (arXiv 2604.14228), official Anthropic best-practices documentation, production patterns from the awesome-claude-code community (35.9K I), and a comprehensive anti-pattern catalog drawn from real-world failure modes. New sections cover **Routing Design**, **Agent Teams**, and the **Explore-Plan-Execute pipeline**.
 
 # **Table of Contents**
-
-### **00**
 
 |**01**|**Architecture Deep Dive**|
 |---|---|
@@ -89,8 +89,6 @@ CLAUDE_AUTOCOMPACT_PCT_OVERRIDE=60 to trigger compaction before degradation. The
 
 ## **The 9 Context Sources (Ordered)**
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 3
-
 Claude Code builds the context window from 9 ordered sources. Understanding this order is critical for debugging unexpected behavior:
 
 - I **1.** System prompt (deterministic — always obeyed)
@@ -125,13 +123,11 @@ CLAUDE.md instructions are delivered as user context, giving probabilistic compl
 |Orchestrator-Workers|Master delegates to workers|Main agent + subagents (primary pattern)|
 |Evaluator-Optimizer|Output critiqued and improved|Stop hook→evaluate→re-invoke loop|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 4
-
 ### **02**
 
 # **Agent Skills — v2 Best Practices**
 
-Skills are the primary mechanism for giving Claude domain expertise. The open standard (Dec 2025) means the same SKILL.md works across Claude Code, Claude.ai, the API, Cursor, Gemini CLI, Codex CLI, and Antigravity IDE. The SkillKit marketplace (Apr 2026) now offers 400,000+ skills.
+Skills are the primary mechanism for giving Claude domain expertise. The open standard (Dec 2025) means the same `SKILL.md` works across Claude Code, `claude.ai`, the API, Cursor, Gemini CLI, Codex CLI, and Antigravity IDE. The SkillKit marketplace (Apr 2026) now offers 400,000+ skills.
 
 ## **SKILL.md — Full Frontmatter Reference**
 
@@ -221,13 +217,11 @@ Not all skill invocations are equal. The context field determines which mechanis
 |claude-api|Up-to-date API reference, SDK docs|Bundled|–|
 |frontend-desig<br>n|Distinctive UI avoiding 'AI slop' aesthetics|Bundled|277K+|
 
-Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 6
-
 ### **03**
 
 # **Routing Design & Subagents**
 
-Routing is the highest-leverage design decision in any multi-agent system. Claude Code routes via subagent descriptions, model selection per agent, and the Explore-Plan-Execute pipeline. Getting this right prevents the two most common failures: context bloat and wrong model for the task.
+Routing is the highest-leverage design decision in any multi-agent system. Claude Code routes via subagent descriptions, model selection per agent, and the `Explore-Plan-Execute` pipeline. Getting this right prevents the two most common failures: context bloat and wrong model for the task.
 
 ## **The Explore-Plan-Execute Pipeline (Official Pattern)**
 

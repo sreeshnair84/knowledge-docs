@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 /** Portable, universal pre-commit validation for staged Markdown pages. */
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 
 const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
+const changed = git('diff', '--cached', '--name-only');
+if (!changed) process.exit(0);
 const staged = git('diff', '--cached', '--name-only', '--diff-filter=ACM', '--', 'docs/*.md', 'docs/**/*.md')
   .split(/\r?\n/).filter(Boolean);
-if (!staged.length) process.exit(0);
 
 const required = ['title', 'date_created', 'last_reviewed', 'status', 'source_type', 'source_file', 'tags'];
 let failed = false, titleMismatches = 0;
@@ -27,3 +30,12 @@ for (const file of staged) {
 }
 if (failed) { console.error('\nPre-commit checks failed. Fix the listed universal publishing issues.'); process.exit(1); }
 console.log(`knowledge-repo pre-commit: ${staged.length} Markdown file(s) pass universal validation.${titleMismatches ? ` ${titleMismatches} title/H1 mismatches remain in the quality-review queue.` : ''}`);
+const docusaurus = path.join('node_modules', '@docusaurus', 'core', 'bin', 'docusaurus.mjs');
+if (!existsSync(docusaurus)) {
+  console.error(`Pre-commit build check cannot run: ${docusaurus} is missing. Install dependencies first.`);
+  process.exit(1);
+}
+console.log('knowledge-repo pre-commit: running production build...');
+const build = spawnSync(process.execPath, [docusaurus, 'build'], { stdio: 'inherit' });
+if (build.status !== 0) process.exit(build.status ?? 1);
+console.log('knowledge-repo pre-commit: production build passed.');

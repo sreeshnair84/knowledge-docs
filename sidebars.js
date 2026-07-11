@@ -1,8 +1,41 @@
 // @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+const ACRONYMS = new Set(['AI', 'AIDLC', 'AGUI', 'API', 'ARB', 'AWS', 'CTO', 'DPDP', 'EA', 'EU', 'IBM', 'MCP', 'OKR', 'RAG', 'SOC', 'TOGAF', 'UX']);
+
+function sidebarLabel(id) {
+  const basename = id.split('/').at(-1)
+    .replace(/^(\d+)[_-]/, '$1 ')
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/[_-]+/g, ' ');
+  return basename.split(/\s+/).map((word) => {
+    const upper = word.toUpperCase();
+    if (ACRONYMS.has(upper) || /^\d/.test(word)) return upper;
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(' ');
+}
+
+function normalizeItems(items, topLevel = false) {
+  const normalized = items.map((item) => {
+    if (typeof item === 'string') {
+      return {type: 'doc', id: item, label: item.endsWith('/index') ? 'Overview' : sidebarLabel(item)};
+    }
+    if (item.type === 'category') return {...item, items: normalizeItems(item.items)};
+    return item;
+  });
+  return normalized.sort((left, right) => {
+    if (topLevel && left.label === 'Home') return -1;
+    if (topLevel && right.label === 'Home') return 1;
+    if (topLevel && left.label === 'About') return 1;
+    if (topLevel && right.label === 'About') return -1;
+    if (left.label === 'Overview') return -1;
+    if (right.label === 'Overview') return 1;
+    return (left.label ?? '').localeCompare(right.label ?? '', undefined, {numeric: true, sensitivity: 'base'});
+  });
+}
+
 const sidebars = {
-  tutorialSidebar: [
+  tutorialSidebar: normalizeItems([
     {type: 'doc', id: 'index', label: 'Home'},
     {
       type: 'category',
@@ -889,7 +922,7 @@ const sidebars = {
       ],
     },
     {type: 'doc', id: 'about', label: 'About'},
-  ],
+  ], true),
 };
 
 module.exports = sidebars;
