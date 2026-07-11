@@ -1,12 +1,12 @@
 ---
-title: "Harness_BestPractices_AntiPatterns_Roadmap"
-date_created: 
-last_reviewed: 
+title: "Harness: Best Practices, Anti-Patterns & Roadmap"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Harness_BestPractices_AntiPatterns_Roadmap.pdf"
-tags: []
+tags: ["harness", "ci-cd", "best-practices", "anti-patterns", "devops"]
 ---
 
 <!-- converted from Harness_BestPractices_AntiPatterns_Roadmap.pdf -->

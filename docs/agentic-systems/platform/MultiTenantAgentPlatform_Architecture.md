@@ -1,28 +1,35 @@
 ---
-title: "Multi-Tenant Agent Platform"
-date_created: 2026-07-10
+title: "Multi-Tenant Agent Platform Architecture"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "MultiTenantAgentPlatform_Architecture.pdf"
-doc_type: guide
-tags: ["agentic-ai", "agents"]
-last_reviewed: 2026-07-10
-framework_name: ""
-covers_version: "N/A"
+tags: ["agentic-ai", "multi-tenant", "platform-architecture", "aws"]
 ---
+
+<!-- converted from MultiTenantAgentPlatform_Architecture.pdf -->
+
+
 
 # **Multi-Tenant Agent Platform** 
 
 AWS Architecture Design Document 
 
 |**Document type**|Architecture Design + Implementation Guide|
-|---|---|
 |**Version**|2.0  (Research-validated, May 2026)|
 |**Frameworks**|AWS AgentCore · Strands Agents 1.0 · CopilotKit / AG-UI · IBM ContextForge|
 |**Auth stack**|Microsoft Entra ID · Custom JWT Service · Lambda Authorizer · AWS IAM|
 |**Status**|Approved for Implementation|
 
+
+
 This document provides the complete end-to-end design of a production-grade, multi-tenant AI agent platform built on AWS. It covers the full vertical stack from the React user interface (CopilotKit + AG-UI protocol) through the BFF and API Gateway authentication tiers, into the AgentCore Runtime hosting Strands-based skill agents, through MCP tool integration (IBM ContextForge + AgentCore Gateway), to cross-tenant A2A agent invocation — with authentication and fine-grained tenancy (FT) rights enforced at every layer. 
+
+
+
+
 
 ## **Table of Contents** 
 
@@ -110,6 +117,10 @@ This document provides the complete end-to-end design of a production-grade, mul
 
 #### **11. Implementation Roadmap** 
 
+
+
+
+
 ## **1  Architecture Overview** 
 
 Multi-tenant agent platform — AWS 
@@ -119,7 +130,6 @@ Multi-tenant agent platform — AWS
 The following components have been selected based on production capabilities as of May 2026. All referenced services are Generally Available (GA) unless noted. 
 
 |**Component**|**Technology**|**Role**|**Status**|
-|---|---|---|---|
 |Agent Runtime|Amazon Bedrock AgentCore<br>Runtime|Serverless microVM execution, 8hr sessions,<br>A2A support|GA Oct<br>2025|
 |Agent Framework|AWS Strands Agents 1.0|Model-driven agents, skills-as-tools,<br>SessionManager, async|GA Sep<br>2025|
 |Tool Hub|AgentCore Gateway|MCP server, Lambda/REST→MCP, semantic<br>tool search, IAM auth|GA Oct<br>2025|
@@ -135,16 +145,32 @@ The following components have been selected based on production capabilities as 
 |Rights Cache|Amazon ElastiCache (Redis)|Sub-millisecond FT rights hydration, 15-min<br>TTL|GA|
 |API Gateway|AWS API Gateway + Lambda<br>Authorizer|JWT validation, rights hydration, IAM policy<br>emission|GA|
 
+
+
 ## **1.2 Layered Architecture Model** 
 
 The platform is structured as seven distinct layers, each with its own auth boundary, isolation scope, and responsibility. Traffic flows top-down; auth tokens flow with every hop and are independently verified at layers 2, 4, 5, and 6. 
+
+
+
+
+
+
+![](/img/agentic-systems/platform/MultiTenantAgentPlatform_Architecture.pdf-0004-02.png)
+
+
+<!-- Start of picture text -->
+Layer 1 — Browser<br>React UI AG-UI Client Entra PKCE Session Cookie<br>CopilotKit SSE events id_token HttpOnly<br>Layer 2 — CopilotRuntime<br>HttpAgent MCPMiddleware Auth Middleware onBeforeRequest<br>Option A Option B JWT verify JWT inject<br>Layer 3 — Human BFF<br>Token Exchange WebSocket VPC Internal MCP Bridge<br>Entra→JWT SSE bridge PrivateLink JWT forward<br>Layer 4 — API Gateway<br>Lambda Auth ElastiCache IAM Policy MCP Proxy<br>RS256 verify Rights hydrate Tenant scope AgentCore GW<br>Layer 5 — AgentCore Runtime<br>Orchestrator Skill agents AgentCore ID MicroVM<br>Strands agent agents-as-tools OAuth inbound Session isolated<br>Layer 6 — Tool / MCP Layer<br>AgentCore GW IBM ContextForge Lambda tools IBM API Connect<br>Tool catalog MCP federation Business logic External APIs<br>Layer 7 — Data / State<br>AgentCore Memory ElastiCache DynamoDB SSM Param Store<br>Sessions Rights cache FT rights store Secrets + keys<br><!-- End of picture text -->
+
+
+
+
 
 ## **1.3 Multi-Tenant Isolation Strategy** 
 
 Tenant isolation is enforced at the infrastructure, identity, data, and code levels. The following table summarises the isolation boundary at each layer: 
 
 |**Layer**|**Isolation mechanism**|**Scope**|
-|---|---|---|
 |AgentCore Runtime|One deployment per BU tenant; recommended separate AWS account|Hard|
 |AgentCore MicroVM|Isolated CPU/memory/filesystem per user session; no shared memory|Hard|
 |JWT / Rights|tenant_id claim in every token; rights scoped to that tenant only|Cryptographic|
@@ -154,6 +180,12 @@ Tenant isolation is enforced at the infrastructure, identity, data, and code lev
 |AgentCore Memory|AgentCoreMemorySessionManager scoped to tenant_id + session_id|SDK|
 |ElastiCache|Key prefix rights:{tenant_id}:{fp} — no cross-tenant key access|Key design|
 |Skill agents|@requires_right validates from JWT context (not payload); tenant from<br>JWT claims|Code|
+
+
+
+
+
+
 
 ## **2  UI Layer — CopilotKit + AG-UI Protocol** 
 
@@ -166,7 +198,6 @@ AG-UI is an open, event-based protocol (created by CopilotKit, adopted by AWS, G
 ### **AG-UI 16 event types:** 
 
 |**Category**|**Events**|**Purpose**|
-|---|---|---|
 |Lifecycle|RUN_STARTED · RUN_FINISHED ·<br>RUN_ERROR|Marks start/end/failure of an agent execution<br>run|
 |Text streaming|TEXT_MESSAGE_START ·<br>TEXT_MESSAGE_CONTENT ·<br>TEXT_MESSAGE_END|Streams agent text tokens to UI in real time|
 |Tool calls|TOOL_CALL_START · TOOL_CALL_ARGS ·<br>TOOL_CALL_END|Shows tool invocations to user with parameters<br>and results|
@@ -174,6 +205,8 @@ AG-UI is an open, event-based protocol (created by CopilotKit, adopted by AWS, G
 |Steps|STEP_STARTED · STEP_FINISHED|Tracks multi-step agent reasoning (each ReAct<br>iteration)|
 |Human loop|HUMAN_TURN_START|Agent pauses and asks user for input, approval,<br>or confirmation|
 |Generative UI|RENDER_UI|Agent pushes a React component spec to<br>render inline in chat|
+
+
 
 ## **2.2 Option A — HttpAgent to AgentCore Runtime (Full AG-UI)** 
 
@@ -200,8 +233,11 @@ copilotRuntimeNextJSAppRouterEndpoint } from "@copilotkit/runtime";
 import { HttpAgent } from "@ag-ui/client";
 ```
 
+
+
+
+
 |`export const POST = async (req: NextRequest) => {`|
-|---|
 |`const internalJWT = await extractAndValidateJWT(req); // BFF token exchange`|
 |`const tenantId = extractTenantId(internalJWT);`|
 |`const runtime = new CopilotRuntime({`|
@@ -232,6 +268,8 @@ import { HttpAgent } from "@ag-ui/client";
 |`return handleRequest(req);`|
 |`};`|
 
+
+
 ## **2.3 Option B — MCPAppsMiddleware to AgentCore Gateway** 
 
 MCPAppsMiddleware lets CopilotKit's built-in BuiltInAgent (which runs the LLM loop inside the CopilotRuntime process, not on AgentCore) discover and call tools exposed by AgentCore Gateway's MCP endpoint. This is ideal for lightweight inline assistants, form helpers, or C/D automation callers that only need tool access without full state sync. 
@@ -243,6 +281,10 @@ import { MCPAppsMiddleware } from "@ag-ui/mcp-apps-middleware";
 const agent = new BuiltInAgent({
 model: "anthropic/claude-sonnet-4-5",
 ```
+
+
+
+
 
 ```
 prompt: `You are an assistant for tenant ${tenantId}.`,
@@ -272,7 +314,6 @@ return !req || userRights.includes(req);
 ## **2.4 Option Comparison** 
 
 |**Dimension**|**Option A — HttpAgent**|**Option B — MCPAppsMiddleware**|
-|---|---|---|
 |LLM loop location|AgentCore Runtime (Strands)|CopilotRuntime BuiltInAgent|
 |State sync|Full bi-directional (STATE_SNAPSHOT/DELTA)|Tool results only|
 |Human-in-the-loop|Native (HUMAN_TURN_START event)|Custom tool approval flow|
@@ -282,6 +323,12 @@ return !req || userRights.includes(req);
 |Ideal for|Rich dashboard, complex workflows, B users|Inline helpers, form assistants, C/D<br>callers|
 |Recommendation|Primary channel for human users|Secondary / embedded use cases|
 
+
+
+
+
+
+
 ## **3  BFF Layer — Human and Machine Channels** 
 
 ECS Fargate (human) · Lambda (machine) · VPC internal 
@@ -289,13 +336,18 @@ ECS Fargate (human) · Lambda (machine) · VPC internal
 Two distinct Backend-for-Frontend services handle the different channel types. Mixing them is an anti-pattern: human BFF needs WebSocket/SSE streaming and session management; machine BFF needs stateless, high-throughput async invocation. Both funnel through the same API Gateway and Lambda Authorizer. 
 
 |**Concern**|**Human BFF (ECS Fargate)**|**Machine BFF (Lambda)**|
-|---|---|---|
 |Auth flow|PKCE→Entra id_token→internal JWT|Client credentials→Entra<br>access_token→internal JWT|
 |Session|HttpOnly session cookie, server-side session store|Stateless — no session;<br>correlationId per call|
 |Response mode|SSE / WebSocket streaming (real-time tokens)|POST→202 jobId; GET<br>/results/{jobId} (async polling /<br>callback)|
 |Token cache|In-memory LRU keyed by session; TTL = JWT exp - 60s|Lambda memory cache; cold start<br>re-exchanges token|
 |VPC routing|SG: only outbound to APIGW; no inbound from internet|Lambda in VPC; same SG rules|
 |Scale|ECS auto-scaling on CPU/memory; Fargate Spot for cost|Lambda concurrency reservation per<br>tenant|
+
+
+
+
+
+
 
 ## **4  Auth & Rights — Full Design** 
 
@@ -308,7 +360,6 @@ The Lambda Authorizer returns a context object with an 8 KB hard limit. A typica
 ## **4.2 Rights Fingerprint Flow** 
 
 |**Step**|**Component**|**Action**|**Latency**|
-|---|---|---|---|
 |1|Browser→BFF|Send Entra id_token in POST body|0 ms|
 |2|BFF→JWT Token Svc|Validate Entra token (JWKS cache); look up FT rights from DynamoDB|10–20<br>ms|
 |3|JWT Token Svc|Compute fingerprint = SHA256(sort(rights[]) + tenant_id + user_id)|0 ms|
@@ -318,6 +369,8 @@ The Lambda Authorizer returns a context object with an 8 KB hard limit. A typica
 |7|λAuthorizer→<br>ElastiCache|GET rights:{tenant_id}:{fp}→hydrate full rights|1–2 ms|
 |8|λAuthorizer→APIGW|Return IAM Allow policy + context {tenant_id, user_id, rights_json<br>(route-scoped)}|0 ms|
 |9|APIGW→AgentCore|Forward request with context headers; AgentCore Identity validates<br>OAuth Bearer|0 ms|
+
+
 
 ## **4.3 JWT Token Service — Key Implementation Details** 
 
@@ -334,6 +387,17 @@ rights = RIGHTS_TABLE.get_item(
 Key={"pk": f"rights#{tenant_id}", "sk": f"user#{user_id}"}
 ```
 
+
+
+
+
+
+![](/img/agentic-systems/platform/MultiTenantAgentPlatform_Architecture.pdf-0011-02.png)
+
+
+<!-- Start of picture text -->
+).get("Item", {}).get("rights", [])<br>rights_sorted = sorted(rights, key=lambda r: r["resource"])<br>fingerprint = hashlib.sha256(<br>f"{tenant_id}:{user_id}:{json.dumps(rights_sorted, sort_keys=True)}".encode()<br>).hexdigest()<br>redis_client.setex(f"rights:{tenant_id}:{fingerprint}", 900,<br>json.dumps(rights))<br>signing_key = get_signing_key_from_ssm() # cached in Lambda memory<br>payload = { "sub": user_id, "tenant_id": tenant_id, "rights_fp": fingerprint,<br>"channel": event.get("channel","human"), "iat": int(time.time()),<br>"exp": int(time.time()) + 900, "iss": "platform-jwt-svc",<br>"aud": "agentcore-platform" }<br>return {"token": jwt.encode(payload, signing_key, algorithm="RS256")}<br><!-- End of picture text -->
+
 ### **4.4 Rights Change Invalidation** 
 
 When FT rights change in DynamoDB, a Stream triggers a Lambda that invalidates all ElastiCache keys for the affected user using Redis SCAN + DEL. The next request will cause a cache miss, falling back to DynamoDB (10–15 ms one-time penalty), which refreshes the cache with the updated rights. 
@@ -341,13 +405,18 @@ When FT rights change in DynamoDB, a Stream triggers a Lambda that invalidates a
 ## **4.5 Auth Matrix Across All Six Layers** 
 
 |**Layer**|**Authn Mechanism**|**Authz Enforcement**|**Token Type**|
-|---|---|---|---|
 |xBrowser|Entra PKCE; HttpOnly cookie|None (pure UI)|Entra id_token|
 |yCopilotRunt<br>ime|Verify Entra token (JWKS cache); no<br>net call in hot path|Block on invalid/expired; inject JWT to all<br>agent calls|Entra id_token<br>→internal JWT|
 |zHuman<br>BFF|Token exchange→JWT Token Svc<br>(VPC PrivateLink)|No rights in token — fingerprint only; VPC<br>SG enforced|Internal RS256<br>JWT|
 |{API<br>Gateway|RS256 JWT signature; aud/iss/exp<br>validated|ElastiCache rights hydrate; route-scoped<br>subset <5 KB|IAM policy +<br>context|
 ||AgentCore<br>Identity|OAuth 2.0 Bearer (Option A) or SigV4<br>(Option B MCP)|OIDC discovery URL config; allowed<br>audiences + clients|Same internal<br>JWT|
 |}Skill agents|Re-validate same JWT independently<br>(defense-in-depth)|@requires_right per tool; tenant from JWT<br>claims only|Same internal<br>JWT|
+
+
+
+
+
+
 
 ## **5  AgentCore Runtime + Strands Skills** 
 
@@ -358,13 +427,14 @@ GA Oct 2025 · Strands Agents 1.0 · ARM64 containers · 8-hr sessions
 Amazon Bedrock AgentCore is now generally available in nine AWS Regions. The GA release adds A2A protocol support, identity-aware authorization, self-managed memory strategy, IAM authorization for MCP (in addition to OAuth), and OTEL-compatible observability with integration to Datadog, Dynatrace, Arize Phoenix, LangSmith, and Langfuse. 
 
 |**Component**|**GA Capabilities**|
-|---|---|
 |AgentCore Runtime|Serverless microVM; 8-hr execution; complete session isolation; A2A server support; arm64<br>ECR containers; VPC-only network config; OAuth 2.0 + Entra ID integration|
 |AgentCore Gateway|MCP server (tools/list, tools/call); Lambda/REST→MCP transformation; IAM + OAuth<br>authorization; semantic tool search; connects to external MCP servers|
 |AgentCore Memory|Session + long-term memory; AgentCoreMemorySessionManager for Strands; self-managed<br>extraction strategy; CloudWatch metrics by default|
 |AgentCore Identity|GetWorkloadAccessToken() for M2M; identity-aware authorization; refresh token vault;<br>Entra/Okta/Cognito integration; OAuth scopes|
 |AgentCore Observability|OTEL compatible; CloudWatch dashboards (latency, errors, token counts); spans and logs;<br>trace visualisation; external provider integration|
 |Built-in Tools|Code Interpreter (sandbox code execution); Browser Tool (managed web browser)|
+
+
 
 ## **5.2 Strands Agents 1.0 — Skill Architecture** 
 
@@ -373,7 +443,6 @@ Strands Agents 1.0 (September 2025) provides four multi-agent primitives: agents
 #### **Skill invocation pattern:** 
 
 |`# orchestrator/agent.py (deployed to AgentCore Runtime)`|
-|---|
 |`from strands import Agent, tool`|
 |`from strands.models import BedrockModel`|
 |`from bedrock_agentcore import BedrockAgentCoreApp`|
@@ -385,6 +454,12 @@ Strands Agents 1.0 (September 2025) provides four multi-agent primitives: agents
 |`results = bedrock_kb.retrieve(`|
 |`knowledgeBaseId=SKILL_KB_ID,`|
 |`retrievalQuery={"text": query},`|
+
+
+
+
+
+
 
 ```
 retrievalConfiguration={"vectorSearchConfiguration": {
@@ -438,8 +513,11 @@ return {"response": str(agent(payload["message"]))}
 from functools import wraps
 ```
 
+
+
+
+
 |`def requires_right(resource: str, action: str):`|
-|---|
 |`"""Decorator: validates FT rights BEFORE executing a tool. Defense-in-depth."""`|
 |`def decorator(fn):`|
 |`@wraps(fn)`|
@@ -460,6 +538,12 @@ from functools import wraps
 |`@tool`|
 |`@requires_right("finance:calculations", "execute")`|
 |`def run_valuation_calc(portfolio_id: str, model: str = "dcf") -> dict: ...`|
+
+
+
+
+
+
 
 ## **6  MCP + Tool Layer** 
 
@@ -509,7 +593,6 @@ MCPGATEWAY_UI_ENABLED: "false" # Disable UI in prod
 ```
 
 |`httpx.post(f"{CONTEXTFORGE_URL}/gateways", json={`|
-|---|
 |`"name": "ibm-api-connect-prod",`|
 |`"url": "https://apic.internal.company.com/api/v2",`|
 |`"auth_type": "bearer",`|
@@ -518,6 +601,12 @@ MCPGATEWAY_UI_ENABLED: "false" # Disable UI in prod
 |`"tenant_id": "platform",`|
 |`"rate_limit_per_minute": 500,`|
 |`"tags": ["ibm", "enterprise", "external"]`|
+
+
+
+
+
+
 
 ```
 })
@@ -539,6 +628,10 @@ A design invariant is that zero calls transit the public internet during normal 
 
 - Cross-tenant AgentCore calls via PrivateLink — not over internet 
 
+
+
+
+
 ## **7  Cross-Tenant A2A Design** 
 
 A2A protocol · MCP Proxy for AWS · PrivateLink · Token propagation 
@@ -546,7 +639,6 @@ A2A protocol · MCP Proxy for AWS · PrivateLink · Token propagation
 ## **7.1 Cross-Tenant Token Propagation** 
 
 |**Step**|**What happens**|**Token used**|
-|---|---|---|
 |1|Orchestrator A decides to call a skill in Tenant B|User JWT (A)|
 |2|AgentCore Identity: GetWorkloadAccessToken(scope=tenantB:read,<br>audience=tenantB-agentcore)|Workload token (scoped)|
 |3|MCP Proxy for AWS signs request with SigV4; sends via PrivateLink to Tenant B<br>AgentCore|SigV4 + scoped JWT|
@@ -554,10 +646,11 @@ A2A protocol · MCP Proxy for AWS · PrivateLink · Token propagation
 |5|MCP server B processes tool call with propagated context headers|Context headers|
 |6|Result streamed back via SSE; OTEL span recorded in both tenant A and B<br>CloudWatch|None (response)|
 
+
+
 ## **7.2 Cross-Tenant Policy Table (DynamoDB)** 
 
 |`# Cross-tenant access policy record`<br>|
-|---|
 |`{`<br>`"pk": "caller_tenant=BU1",`|
 |`"sk": "target_tenant=BU2",`|
 |`"allowed_scopes": ["read", "invoke:search"],`|
@@ -567,7 +660,13 @@ A2A protocol · MCP Proxy for AWS · PrivateLink · Token propagation
 |`"audit_trail": true`|
 |`}`|
 
+
+
 The policy table is managed by the platform team and acts as a whitelist. AgentCore Identity checks this table before issuing cross-tenant workload tokens. Expired or absent policies result in 403 — no escalation path. 
+
+
+
+
 
 ## **8  Observability + Operations** 
 
@@ -578,15 +677,19 @@ AgentCore Observability · CloudWatch · OTEL · Audit trail
 AgentCore Observability is OTEL-compatible and integrates natively with CloudWatch, Datadog, Dynatrace, Arize Phoenix, LangSmith, and Langfuse. It provides end-to-end trace visualisation across Runtime, Gateway, Memory, Identity, and Built-in Tools. 
 
 |**Signal type**|**What is captured**|**Destination**|
-|---|---|---|
 |Metrics|Invocations, latency (p50/p99), token counts, error rates, throttling,<br>session counts|CloudWatch (default,<br>always on)|
 |Spans / Traces|End-to-end agent execution; tool call durations; cross-tenant A2A hops;<br>memory access|CloudWatch X-Ray /<br>OTEL collector|
 |Logs|Application logs from agent containers; auth failures; rights violations|CloudWatch Logs (S3 /<br>Firehose optional)|
 |Audit trail|Every tool call: user_id, tenant_id, tool_name, arguments hash, outcome,<br>latency|DynamoDB audit table<br>(immutable, 7yr retention)|
 |Evaluation|13 built-in evaluators + custom evaluators; trajectory inspection; quality<br>scoring|CloudWatch Observability<br>dashboard|
 
+
+
+
+
+
+
 |**9  CDK Infrastructure Patterns**<br>TypeScript CDK · Per-tenant stacks · VPC endpoints · ECR<br>`// lib/agentcore-tenant-stack.ts (key excerpts)`|
-|---|
 |`export class AgentCoreTenantStack extends cdk.Stack {`|
 |`constructor(scope, id, props: TenantProps) {`|
 |`const { tenantId } = props;`|
@@ -623,6 +726,12 @@ AgentCore Observability is OTEL-compatible and integrates natively with CloudWat
 |`});`|
 |`// VPC endpoints — ALL AWS calls stay within AWS backbone (zero internet)`|
 
+
+
+
+
+
+
 ```
 ['bedrock-runtime','bedrock-agent-runtime','bedrock-agentcore',
 'ssm','secretsmanager','dynamodb','s3','elasticache'].forEach(svc =>
@@ -635,12 +744,15 @@ service: new ec2.InterfaceVpcEndpointService(
 }
 ```
 
+
+
+
+
 ## **10  Anti-Patterns & Best Practices** 
 
 Design decisions that matter in production 
 
 |**Anti-pattern**|**Why it fails**|**Correct pattern**|
-|---|---|---|
 |Full FT rights set in<br>JWT|Lambda Authorizer 8 KB context limit. 200 rights<br>tuples≈12 KB. Silent truncation or 502.|SHA-256 fingerprint in token. Hydrate from<br>ElastiCache in authorizer. <2 ms overhead.|
 |Shared AgentCore<br>Runtime across tenants|AWS docs state the MCP server deployment is<br>NOT multi-tenant safe. Session isolation only.|One Runtime deployment per BU tenant.<br>Ideally separate AWS accounts. Tag all<br>resources.|
 |All skill descriptions to<br>every LLM call|200 skills × 200 tokens = 40K tokens in system<br>prompt. Context exhaustion + cost explosion.|Strands retrieve-tool: semantic search<br>Bedrock KB, inject top-5 per query only.|
@@ -653,12 +765,17 @@ Design decisions that matter in production
 |Storing Entra token in<br>React<br>state/localStorage|XSS attack steals token. No rotation. No<br>server-side invalidation possible.|HttpOnly session cookie set by BFF during<br>PKCE callback. Never in JS-accessible<br>storage.|
 |No toolFilter in<br>MCPAppsMiddleware<br>(Option B)|UI shows all tools including ones the user can't<br>use — UX confusion + info leakage.|toolFilter: check required_right annotation<br>against user rights before exposing.|
 
+
+
+
+
+
+
 ## **11  Implementation Roadmap** 
 
 Phased delivery · Critical path · Risk-ordered 
 
 |**Phase**|**What to build**|**Key risks**|**Est. d**<br>**uratio**<br>**n**|
-|---|---|---|---|
 |P0 —|Entra PKCE + Client Creds flows. Custom JWT Token Service|Rights size budget; test with|2|
 |Foundation|(Lambda + SSM). ElastiCache cluster. Lambda Authorizer with<br>rights fingerprint. DynamoDB FT rights table.|200-tuple rights set before<br>commit|weeks|
 |P1 — First<br>Agent|CDK stack for Tenant A. Strands orchestrator on AgentCore<br>Runtime. One skill agent. AgentCore Memory<br>(AgentCoreMemorySessionManager).|AgentCore CDK L1<br>constructs are new; validate<br>VPC-only routing|2<br>weeks|
@@ -671,6 +788,8 @@ Phased delivery · Critical path · Risk-ordered
 |P7 —<br>Observability|OTEL traces end-to-end. AgentCore Observability dashboards.<br>CloudWatch alarms for error rate + latency. Audit DynamoDB<br>table with 7yr TTL. Datadog / Dynatrace integration (optional).|Trace correlation across<br>tenant boundaries; PII in log<br>scrubbing|1<br>week|
 |P8 —<br>Hardening|Penetration test on JWT service. Rights invalidation load test.<br>Chaos testing for session recovery. Lambda Authorizer<br>cache-miss p99 baseline. Runbook for rights cache flush.|Cache miss spike under<br>rights churn; cold-start<br>Lambda Authorizer latency|1<br>week|
 
+
+
 ### **Critical path note:** 
 
 P0 (auth foundation) is the single most important phase to get right before any other work. Every downstream layer depends on the rights fingerprint pattern working correctly at scale. Before committing P0 to production, test with your largest expected rights set (simulate 200 resource tuples) and validate that the Lambda Authorizer context stays under 5 KB on the worst-case route. The 8 KB hard limit must never be approached — route-scoped subsetting in the authorizer is not optional. 
@@ -679,7 +798,14 @@ P0 (auth foundation) is the single most important phase to get right before any 
 
 **Prepared by** Platform Architecture Team 
 
+
+
+
+
 |**Research sources**|AWS docs (AgentCore GA Oct 2025), Strands 1.0 (Sep 2025), CopilotKit 1.51 (Jan 2026), IBM C|
-|---|---|
 |**Next review**|Q3 2026|
 |**Confidentiality**|Internal use only — do not distribute externally|
+
+
+
+

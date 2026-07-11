@@ -1,12 +1,12 @@
 ---
-title: "Harness_Engineering_AI_Agents_and_Vendor_Landscape"
-date_created: 
-last_reviewed: 
+title: "Harness: Engineering AI Agents & Vendor Landscape"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf"
-tags: []
+tags: ["harness", "ai-agents", "vendor-landscape", "agentic-ai"]
 ---
 
 <!-- converted from Harness_Engineering_AI_Agents_and_Vendor_Landscape.pdf -->

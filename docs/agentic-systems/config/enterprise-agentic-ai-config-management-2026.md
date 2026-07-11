@@ -1,12 +1,12 @@
 ---
-title: "enterprise-agentic-ai-config-management-2026"
-date_created: 
-last_reviewed: 
+title: "Enterprise Configuration & Parameter Management for Agentic AI Platforms on AWS"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "enterprise-agentic-ai-config-management-2026.pdf"
-tags: []
+tags: ["agentic-ai", "configuration", "aws", "parameter-store", "feature-flags", "secrets-management"]
 ---
 
 <!-- converted from enterprise-agentic-ai-config-management-2026.pdf -->

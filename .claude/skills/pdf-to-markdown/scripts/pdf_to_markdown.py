@@ -34,45 +34,51 @@ except ImportError:
 
 def fix_image_references(md_text, img_dir, img_prefix, base_name):
     """
-    pymupdf4llm saves images as <basename>-pNNN-NNN.png and references them
-    with the path passed as image_path.  Rename files to use img_prefix and
-    update the markdown references so they're Docusaurus-compatible
-    (/img/… absolute paths).
-    """
-    if not img_prefix:
-        return md_text
+    pymupdf4llm saves images as <pdf_full_name>-NNNN-NN.png (note: includes .pdf
+    in stem, e.g. 'my-doc.pdf-0008-02.png') and references them with the
+    image_path prefix.
 
-    # Find all image references that use the pdf basename pattern
+    This function:
+      1. Matches all image references using the img_dir prefix
+      2. Renames files to use img_prefix (e.g. 'my-doc-img-p8-1.png')
+      3. Converts paths from 'static/img/...' to '/img/...' (Docusaurus absolute)
+    """
+    # Match any image reference starting with img_dir
+    img_dir_esc = re.escape(img_dir.replace('\\', '/'))
     auto_pattern = re.compile(
-        r'!\[([^\]]*)\]\((' + re.escape(img_dir) + r'[/\\]' + re.escape(base_name) + r'(-p\d+-\d+\.png))\)'
+        r'!\[([^\]]*)\]\((' + img_dir_esc + r'[/\\]([^)]+\.png))\)'
     )
 
     renamed = {}
     counter = [0]
 
     def rename_match(m):
-        alt, old_path, suffix = m.group(1), m.group(2), m.group(3)
-        if old_path not in renamed:
+        alt, old_path, fname = m.group(1), m.group(2), m.group(3)
+        # Normalize path separators
+        old_path_norm = old_path.replace('\\', '/')
+        img_dir_norm = img_dir.replace('\\', '/')
+        old_abs = os.path.join(img_dir, fname).replace('\\', '/')
+
+        if old_abs not in renamed:
             counter[0] += 1
-            page_part = re.search(r'-p(\d+)-', suffix)
-            pg = page_part.group(1) if page_part else str(counter[0])
+            # Extract page number from pymupdf4llm naming: name.pdf-0008-02.png
+            page_match = re.search(r'-(\d+)-\d+\.png$', fname)
+            pg = page_match.group(1).lstrip('0') or '0' if page_match else str(counter[0])
             new_name = f"{img_prefix}-p{pg}-{counter[0]}.png"
-            new_path = os.path.join(img_dir, new_name)
+            new_abs = os.path.join(img_dir, new_name).replace('\\', '/')
             try:
-                if os.path.exists(old_path):
-                    shutil.move(old_path, new_path)
-                    renamed[old_path] = new_path
+                if os.path.exists(old_abs):
+                    shutil.move(old_abs, new_abs)
+                    renamed[old_abs] = new_abs
+                else:
+                    renamed[old_abs] = old_abs
             except Exception:
-                renamed[old_path] = old_path  # keep original if rename fails
-        final = renamed.get(old_path, old_path)
-        # Convert to Docusaurus /img/... absolute path
-        # static/img/foo/bar.png → /img/foo/bar.png
-        rel = final
-        if 'static' + os.sep in rel or 'static/' in rel:
-            rel = re.sub(r'^.*static[/\\]', '/', rel).replace('\\', '/')
-        elif os.sep in rel or '/' in rel:
-            rel = '/' + rel.replace('\\', '/').lstrip('/')
-        label = alt or os.path.splitext(os.path.basename(final))[0]
+                renamed[old_abs] = old_abs
+
+        final = renamed.get(old_abs, old_abs)
+        # Convert to Docusaurus /img/... absolute path (strip 'static' prefix)
+        rel = re.sub(r'^.*[/\\]static[/\\]', '/', final).replace('\\', '/')
+        label = alt or f"Figure {counter[0]}"
         return f'![{label}]({rel})'
 
     return auto_pattern.sub(rename_match, md_text)
@@ -90,11 +96,37 @@ def strip_running_headers_footers(md_text, min_pages=3):
     'pages'.  We approximate page boundaries by splitting on Markdown
     horizontal rules (---) or the literal text 'Page N'.
 
-    This mirrors the pdfplumber approach but works on the markdown output.
+    Also strips single-line fenced code blocks (``` ... ```) whose content
+    repeats 3+ times — these are typically page-footer date stamps or document
+    title banners that pymupdf4llm detected as monospace text.
     """
     import re
     from collections import Counter
 
+    # --- Pass 1: strip repeating single-line code blocks ----------------------
+    # Pattern: ``` followed by content on next line, then ``` — all repeating
+    code_block_re = re.compile(
+        r'^```[^\n]*\n([^\n`]{1,120})\n```\s*$',
+        re.MULTILINE
+    )
+    code_content_counts: Counter = Counter()
+    for m in code_block_re.finditer(md_text):
+        norm = _normalize_for_repeat(m.group(1))
+        if norm and len(norm) > 2:
+            code_content_counts[norm] += 1
+
+    repeated_code = {norm for norm, cnt in code_content_counts.items()
+                     if cnt >= min_pages}
+
+    def maybe_strip_code_block(m):
+        norm = _normalize_for_repeat(m.group(1))
+        if norm in repeated_code:
+            return ''
+        return m.group(0)
+
+    md_text = code_block_re.sub(maybe_strip_code_block, md_text)
+
+    # --- Pass 2: strip repeating plain-text lines ----------------------------
     # Split into segments (approximate page chunks)
     segments = re.split(r'^(?:---|Page\s+\d+\s*)$', md_text, flags=re.MULTILINE)
     if len(segments) < min_pages:
@@ -109,6 +141,13 @@ def strip_running_headers_footers(md_text, min_pages=3):
         for raw_line in seg.splitlines():
             stripped = raw_line.strip()
             if not stripped:
+                continue
+            # Skip image references — they all normalize the same (page nums removed)
+            # and should never be treated as running headers.
+            if stripped.startswith('!['):
+                continue
+            # Skip table rows — they're content, not headers.
+            if stripped.startswith('|'):
                 continue
             # Strip markdown bold/italic markers for comparison
             clean = re.sub(r'\*+', '', stripped).strip()

@@ -1,14 +1,12 @@
 ---
-title: "Enterprise Agentic AI Asset Management 2026"
-date_created: 2026-06-01
-last_reviewed: 2026-07-11
+title: "Enterprise_Agentic_AI_Asset_Management_2026"
+date_created: 
+last_reviewed: 
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Enterprise_Agentic_AI_Asset_Management_2026.pdf"
-tags: ["agentic-systems", "platform", "asset-management", "governance", "enterprise"]
-doc_type: research-report
-covers_version: "June 2026"
+tags: []
 ---
 
 <!-- converted from Enterprise_Agentic_AI_Asset_Management_2026.pdf -->
@@ -36,6 +34,7 @@ June 2026
 ##### **Executive Summary** 
 
 |**Part 1**|Complete Enterprise Agent Asset Taxonomy|
+|---|---|
 |**Part 2**|Enterprise Asset Lifecycle|
 |**Part 3**|Enterprise Repositories|
 |**Part 4**|Enterprise Registries|
@@ -101,6 +100,7 @@ An **Agentic AI Asset** is any versioned, governable artifact that contributes t
 #### **Asset Category Overview** 
 
 |**Category**|**Nature / Primary Type / Governance Weight**|
+|---|---|
 |Prompt Assets|Configuration/Knowledge · Text templates, YAML · High|
 |Agent Assets|Configuration/Code · JSON/YAML manifests · Critical|
 |Tool Assets|Code/Configuration · OpenAPI/MCP specs · High|
@@ -278,6 +278,7 @@ Runtime assets are ephemeral or semi-persistent artifacts generated during agent
 
 
 
+![Figure 1](static/img/agentic-systems/platform/enterprise-asset-mgmt-p8-1.png)
 
 
 PART 2<br>Enterprise Asset Lifecycle<br><!-- End of picture text -->
@@ -287,6 +288,7 @@ How assets move from conception to retirement through a governed, multi-stage pr
 Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tooling, and governance requirements change at each stage. Skipping stages — especially validation, simulation, and approval — is the root cause of most production AI incidents. 
 
 |**Ideation**|Business need identified. Initial capability assessment. Asset request<br>created by Product Owner.|M|
+|---|---|---|
 |**Design**|Architecture defined. Prompt strategy, tool selection, memory design,<br>evaluation criteria specified. Design review.|M|
 |**Authoring**|Asset created by specialist engineer. v0.1.0-alpha. Stored in feature<br>branch. Iterative refinement.|M|
 |**Peer Review**|Second engineer review for quality, safety, standards compliance — the<br>code review equivalent for AI assets.|M|
@@ -308,6 +310,7 @@ Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tool
 
 
 |**Deprecation**|Marked deprecated. Migration path communicated. Traffic gradually<br>migrated to successor.|M|
+|---|---|---|
 |**Retirement**|Removed from production. Archived with immutable record. Successor<br>asset documented.||
 
 
@@ -315,6 +318,7 @@ Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tool
 #### **Ownership by Lifecycle Stage** 
 
 |**Stage**|**Primary Owner / Approver / Tooling**|
+|---|---|
 |Ideation–Design|AI Product Owner / AI Architect / Jira + ADR|
 |Authoring|Prompt/Agent Engineer / Tech Lead / IDE + Git|
 |Peer Review|Senior Engineer / Team Lead / GitHub PR|
@@ -334,6 +338,7 @@ Every agentic AI asset traverses a canonical 17-stage lifecycle. Ownership, tool
 
 
 
+![Figure 2](static/img/agentic-systems/platform/enterprise-asset-mgmt-p10-2.png)
 
 
 PART 3<br>Enterprise Repositories<br><!-- End of picture text -->
@@ -345,6 +350,7 @@ Repository strategy is a foundational architectural decision affecting discovera
 #### **Strategy Comparison** 
 
 |**Strategy**|**Best For / Advantages / Disadvantages**|
+|---|---|
 |Monorepo (All assets)|Small-medium orgs · Unified CI, atomic refactoring · Access control<br>complexity, CI performance|
 |Domain Monorepos (Per BU)|Large orgs with distinct domains · Team autonomy + consistency ·<br>Cross-domain reuse requires explicit publishing|
 |Polyrepo (Per asset type)|Mature platform teams · Clean ownership, independent versioning ·<br>Discovery overhead, dependency complexity|
@@ -396,6 +402,7 @@ III `schemas/         # Metadata schema definitions` III `catalog/         # Ass
 #### **Repository Governance Requirements** 
 
 |**Requirement**|**Implementation**|
+|---|---|
 |CODEOWNERS|Named owners for every directory. Changes require owner approval via PR<br>review.|
 |Branch Protection|Main requires 2 approvals + passing status checks. No direct pushes.<br>Signed commits enforced.|
 |Automated Scanning|Pre-merge: secrets detection, PII scanning, prompt injection patterns,<br>schema violations.|
@@ -409,6 +416,7 @@ III `schemas/         # Metadata schema definitions` III `catalog/         # Ass
 
 
 
+![Figure 3](static/img/agentic-systems/platform/enterprise-asset-mgmt-p12-3.png)
 
 
 PART 4<br>Enterprise Registries<br><!-- End of picture text -->
@@ -420,6 +428,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 #### **Registry Types** 
 
 |**Registry**|**Purpose and Key Capabilities**|
+|---|---|
 |Prompt Registry|Versioned approved prompts with semantic search, lineage tracking, A/B<br>variant management, model-compatibility metadata.|
 |Agent Registry|Deployable agent packages: manifests, configs, capability declarations,<br>dependency graphs, certification records.|
 |Tool Registry|Available tools: function schemas, MCP addresses, permission templates,<br>health status, compatibility matrices.|
@@ -435,6 +444,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 #### **Universal Registry Capability Requirements** 
 
 |**Capability**|**Notes**|
+|---|---|
 |Semantic Search|Vector-based search over asset names, descriptions, capabilities. Enables<br>discovery without knowing exact names.|
 |Dependency Management|Transitive resolution, conflict detection, lock file generation, dependency<br>graph visualization.|
 |RBAC|Role-based access for publish/read/approve/deprecate. Namespace-level<br>isolation per business unit.|
@@ -445,6 +455,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 
 
 |Approval Workflows|Configurable multi-stage gates before publication. Automated reviewer<br>assignment by asset type and risk.|
+|---|---|
 |Lineage Tracking|Full provenance graph: derived-from, authoring tool, model used, evaluation<br>run IDs.|
 |Certification|Security, RAI, and compatibility certification records attached to asset<br>versions.|
 |Marketplace UI|Browse, rate, and discover assets. Consumption analytics. Starred/featured<br>collections.|
@@ -456,6 +467,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 #### **Registry Environment Strategy** 
 
 |**Development Registry**|Team-scoped. Unrestricted publish. No approval gates. Experimentation<br>environment.|M|
+|---|---|---|
 |**Integration Registry**|Cross-team scope. Peer review required. Automated evaluation gates.|M|
 |**Staging Registry**|Production-equivalent. Full approval workflow. Security + RAI sign-off<br>required.|M|
 |**Production Registry**|Immutable signed releases only. Full audit trail. Break-glass for emergency<br>rollback only.|M|
@@ -467,6 +479,7 @@ A registry is the runtime-facing complement to a repository. While repositories 
 
 
 
+![Figure 4](static/img/agentic-systems/platform/enterprise-asset-mgmt-p14-4.png)
 
 
 PART 5<br>Universal Metadata Model<br><!-- End of picture text -->
@@ -534,6 +547,7 @@ change_history:
 #### **Field Governance Rules** 
 
 |**Field Group**|**Governance Rule**|
+|---|---|
 |id, type, name, version|System-generated or required at creation. Immutable once set.|
 |owner, business_unit|Required. Validated against enterprise directory. Drives approval routing.|
 |security.classification|Required. Determines access control, storage, and data handling policies.|
@@ -562,6 +576,7 @@ Versioning is the cornerstone of reproducibility, rollback capability, and chang
 #### **Semantic Versioning for AI Assets** 
 
 |**Version Component**|**Increment When / Examples**|
+|---|---|
 |MAJOR (X.0.0)|Breaking behavioral change: fundamental purpose shift, incompatible<br>output format, removed capability, model family change. e.g. 1.0.0→2.0.0|
 |MINOR (0.X.0)|Backward-compatible capability addition: new optional parameter, extended<br>output format, new tool binding, improved accuracy. e.g. 1.0.0→1.1.0|
 |PATCH (0.0.X)|Backward-compatible fix: typo correction, minor wording improvement,<br>metadata or documentation update. e.g. 1.0.0→1.0.1|
@@ -572,6 +587,7 @@ Versioning is the cornerstone of reproducibility, rollback capability, and chang
 #### **Asset-Specific Rules** 
 
 |**Asset Type**|**Key Versioning Rules**|
+|---|---|
 |Prompt Assets|Minor wording→PATCH. Output format change→MINOR. Persona/safety<br>change→MAJOR. All changes require evaluation delta report.|
 |Agent Assets|Tool binding/model family/planning strategy→MAJOR. New capability→<br>MINOR. Metadata/docs→PATCH.|
 |Tool Assets|Schema incompatibility/removed params→MAJOR. New optional params<br>→MINOR. Docs/bug fixes→PATCH.|
@@ -600,6 +616,7 @@ Versioning is the cornerstone of reproducibility, rollback capability, and chang
 
 
 
+![Figure 5](static/img/agentic-systems/platform/enterprise-asset-mgmt-p18-5.png)
 
 
 PART 7<br>Governance Frameworks<br><!-- End of picture text -->
@@ -630,6 +647,7 @@ _R = Responsible A = Accountable C = Consulted I = Informed_
 #### **Approval Workflow Tiers** 
 
 |**Tier 1 — Automated**|Low-risk patches (metadata, docs, minor wording). CI validates and<br>auto-approves. No human required. SLA: 5 minutes.|M|
+|---|---|---|
 |**Tier 2 — Peer Review**|Standard changes (minor/patch for non-safety assets). Single senior<br>engineer approval. SLA: 24 hours.|M|
 |**Tier 3 — Team Lead + RAI**|Capability additions, new tool bindings, knowledge changes. Team lead +<br>RAI review. SLA: 48 hours.|M|
 |**Tier 4 — Governance Board**|Major versions, safety-critical prompts, high-risk agents, external tool<br>integrations. Formal sign-off. SLA: 5 days.|M|
@@ -643,6 +661,7 @@ _R = Responsible A = Accountable C = Consulted I = Informed_
 
 
 |**Policy Engine**|**Function**|
+|---|---|
 |OPA (Open Policy Agent)|Rego-based policies evaluating manifests, schemas, and deployment<br>configs against enterprise rules in CI/CD.|
 |Prompt Safety Classifiers|ML classifiers scanning prompts for safety violations, harmful content, PII<br>exposure, and policy breaches.|
 |Schema Validators|JSON Schema validation enforcing structural requirements for manifests,<br>tool definitions, and metadata.|
@@ -667,6 +686,7 @@ Emerging technical and regulatory standards governing enterprise agentic AI syst
 #### **Standards Reference** 
 
 |**Standard / Org / Type**|**Purpose and Enterprise Relevance**|
+|---|---|
 |**Model Context Protocol (MCP)**<br>Anthropic (2024) · Protocol|Standardizes tool/resource exposure to LLMs. Defines tool, resource, and<br>prompt primitives. Vendor-neutral. Rapidly adopted as de facto tool<br>integration standard across major platforms.|
 |**Agent-to-Agent Protocol (A2A)**<br>Google (2025) · Protocol|Enables cross-platform agent interoperability. Defines skill discovery, task<br>delegation, and result return between heterogeneous agents. Complements<br>MCP at the agent-to-agent layer.|
 |**OpenAPI 3.x**OpenAPI Initiative · API<br>Standard|Machine-readable API specifications. Foundation for HTTP-based tool<br>definitions. Universal support across AI platforms, API gateways, and code<br>generators.|
@@ -685,6 +705,7 @@ Emerging technical and regulatory standards governing enterprise agentic AI syst
 
 
 |**ISO/IEC 42001**ISO/IEC · Management<br>System|AI Management System standard providing certification framework for<br>organizational AI governance. Growing regulatory reference in procurement<br>requirements.|
+|---|---|
 |**Model & System Cards**|Standardized documentation covering intended use, performance|
 |Google/Hugging Face · Documentation|characteristics, limitations, ethical considerations, and evaluation results for<br>models and AI systems.|
 
@@ -693,6 +714,7 @@ Emerging technical and regulatory standards governing enterprise agentic AI syst
 #### **Implementation Priority** 
 
 |**Priority**|**Standard / Action**|
+|---|---|
 |Immediate (2026)|MCP — Adopt as default tool protocol. Migrate existing tool wrappers to<br>MCP server model.|
 |Immediate (2026)|OpenTelemetry GenAI — Instrument all agents. Configure dashboards for<br>LLM metrics and cost.|
 |Immediate (2026)|OWASP Agentic AI Top 10 — Integrate into security review checklist. Red<br>team against top 10.|
@@ -714,6 +736,7 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 #### **Architecture Layers** 
 
 |**L6: Developer Experience**|Developer Portal · IDE Plugins · CLI · Asset Marketplace · Documentation<br>Hub · Onboarding Wizard|M|
+|---|---|---|
 |**L5: Discovery &**<br>**Collaboration**|Semantic Search · Asset Catalog · Lineage Explorer · Dependency<br>Visualizer · Impact Analyzer|M|
 |**L4: Governance &**<br>**Compliance**|Policy Engine (OPA) · Approval Workflow · Audit Service · Risk Dashboard ·<br>RAI Assessment · Compliance Reporter|M|
 |**L3: Quality & Evaluation**|Evaluation Platform · CI/CD Integration · Regression Testing · Safety<br>Scanner · Benchmark Runner · Quality Gates|M|
@@ -727,6 +750,7 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 #### **Core Platform Components** 
 
 |**Component**|**Function**|
+|---|---|
 |Asset Registry Service|Central CRUD API for all asset types. Enforces metadata schema,<br>versioning rules, lifecycle state machine.|
 |Metadata Catalog|Search-optimized index with vector embeddings for semantic discovery.<br>Maintains dependency graphs and lineage.|
 |Policy Engine|OPA-based rule evaluation invoked by CI/CD, registry APIs, and runtime<br>agent calls.|
@@ -738,6 +762,7 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 
 
 |Evaluation Platform|Automated evaluation orchestrator running all test suites and publishing<br>quality scores to asset metadata.|
+|---|---|
 |CI/CD Integration Layer|Git webhooks, pipeline templates, and quality gates integrating AAMP<br>governance into existing CI/CD platforms.|
 |Discovery Service|Semantic search API combining keyword, vector, and faceted search.<br>Powers portal and CLI.|
 |Observability Platform|OTel-native collection of traces, costs, quality signals, and safety incidents.<br>Closes feedback loop.|
@@ -763,6 +788,7 @@ The Agent Asset Management Platform (AAMP) is a multi-layered platform providing
 
 
 
+![Figure 6](static/img/agentic-systems/platform/enterprise-asset-mgmt-p24-6.png)
 
 
 PART 10<br>AI-Native SDLC<br><!-- End of picture text -->
@@ -772,6 +798,7 @@ The complete software development lifecycle adapted for agentic AI systems.
 The AI-native SDLC extends traditional software engineering with AI-specific disciplines: prompt design, knowledge preparation, evaluation, and responsible AI review. Every stage produces governed assets flowing into the AAMP platform. 
 
 |**Requirements & Design**|Capabilities, constraints, and success metrics defined before any asset<br>authoring. Evaluation criteria specified upfront.|M|
+|---|---|---|
 |**Prompt Design**|Prompt Engineers author system/task/chain prompts. Iterative playground<br>testing. Peer review. Initial prompt tests written in parallel.|M|
 |**Agent Design**|Agent manifest designed: tool bindings, memory strategy, reasoning<br>strategy, delegation rules. Blueprint selected or created.|M|
 |**Tool Design & Integration**|Function schemas, OpenAPI specs, or MCP manifests defined. Tool<br>certification initiated. Security review of permissions.|M|
@@ -789,6 +816,7 @@ The AI-native SDLC extends traditional software engineering with AI-specific dis
 #### **AI SDLC vs Traditional SDLC** 
 
 |**SDLC Dimension**|**Traditional / AI-Native**|
+|---|---|
 |Primary artifact|Source code / Prompts + agents + tools + knowledge|
 
 
@@ -797,6 +825,7 @@ The AI-native SDLC extends traditional software engineering with AI-specific dis
 
 
 |Testing paradigm|Deterministic unit/E2E tests / Probabilistic eval suites + golden datasets +<br>red teaming|
+|---|---|
 |Version control|Git line diff / Git diff + semantic prompt diff + behavioral diff|
 |Compliance artifact|SBOM / AIBOM + Model Card + System Card + Audit Trail|
 |Review requirement|Code review / Code + RAI + Security + Eval gate|
@@ -814,6 +843,7 @@ Organizational roles, team structures, and responsibilities for agentic AI asset
 The enterprise AI operating model requires new specialist roles combining AI expertise with software engineering discipline. These augment existing engineers with AI-specific skills and governance responsibilities. 
 
 |**Role**|**Responsibilities / Key Skills**|
+|---|---|
 |Prompt Engineer|Design, author, test, optimize prompts. Own prompt library. Conduct prompt<br>peer reviews. NLP, LLM APIs, evaluation design, Python|
 |Agent Engineer|Design agent manifests, reasoning strategies, memory configs, multi-agent<br>topologies. Software architecture, LLM APIs, agent frameworks|
 |Tool Engineer|Define schemas, implement wrappers, manage OpenAPI specs, run tool<br>certification. API design, security, OpenAPI/JSON Schema, MCP/A2A|
@@ -830,6 +860,7 @@ The enterprise AI operating model requires new specialist roles combining AI exp
 #### **Recommended Team Topology (500+ person org)** 
 
 |**Team**|**Size / Scope / Key Responsibilities**|
+|---|---|
 |AI Platform Team (Central)|10–20 engineers. Owns AAMP platform, registries, CI/CD integrations,<br>developer portal. Platform-as-product mindset.|
 |AI Center of Excellence (Central)|5–10 specialists. AI architecture standards, RAI framework, evaluation best<br>practices. Consulting function.|
 
@@ -839,6 +870,7 @@ The enterprise AI operating model requires new specialist roles combining AI exp
 
 
 |Domain AI Teams (Federated)|2–5 AI engineers per product domain. Own domain agents, prompts, tools.<br>Consume platform services.|
+|---|---|
 |Governance Board (Virtual)|Part-time committee. CISO, Legal, RAI Officer, CTO rep. Bi-weekly<br>high-risk approvals and policy updates.|
 
 
@@ -907,6 +939,7 @@ Token costs compound rapidly at scale. Implement per-agent, per-team, and per-us
 
 
 
+![Figure 7](static/img/agentic-systems/platform/enterprise-asset-mgmt-p30-7.png)
 
 
 PART 13<br>Anti-Patterns<br><!-- End of picture text -->
@@ -998,6 +1031,7 @@ Common failure modes in enterprise agentic AI asset management and how to avoid 
 
 
 
+![Figure 8](static/img/agentic-systems/platform/enterprise-asset-mgmt-p32-8.png)
 
 
 PART 14<br>Case Studies<br><!-- End of picture text -->

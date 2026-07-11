@@ -1,14 +1,12 @@
 ---
-title: "GENAIAF-559: Prompt Lifecycle, Versioning & Hot-Swap Research 2026"
-date_created: 2026-06-01
-last_reviewed: 2026-07-11
+title: "GENAIAF_559_PromptLifecycle_HotSwap_Research_2026"
+date_created: 
+last_reviewed: 
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "GENAIAF_559_PromptLifecycle_HotSwap_Research_2026.pdf"
-tags: ["agentic-systems", "platform", "prompt-management", "aws-agentcore", "observability"]
-doc_type: research-report
-covers_version: "June 2026"
+tags: []
 ---
 
 <!-- converted from GENAIAF_559_PromptLifecycle_HotSwap_Research_2026.pdf -->
@@ -65,6 +63,7 @@ GENAIAF-559 requests the minimum viable SDK capability for: (1) prompt versionin
 #### **Option Summary** 
 
 |**Option**<br>**A**|**RECOMMENDED**<br>**MVP**|**AgentCore Config Bundles (Native)**<br>Zero external dependency. Hot-swap without redeploy. Version history. A/B via<br>Gateway. Trace correlation via bundle ID in OTel spans. GA path imminent.|
+|---|---|---|
 |**Option**<br>**B**|**RECOMMENDED —**<br>**Harness path**|**AgentCore Harness Versioning (Native)**<br>GA June 18 2026. UpdateHarness = new immutable version. Named endpoints =<br>environment pinning. Per-invocation prompt override = instant hot-swap. No redeploy.|
 |**Option**<br>**C**|**RECOMMENDED —**<br>**Full lifecycle**|**Langfuse Prompt Registry + AppConfig**<br>SDK prompt fetch + version label (production). Trace linkage via Langfuse prompt<br>object. AppConfig delivers hot payload. Best external platform for this use case.|
 |**Option**<br>**D**|**OBSERVABILITY**<br>**layer only**|**Arize AX / Phoenix + AppConfig**<br>Phoenix/AX does NOT provide hot prompt delivery. Use for trace correlation and online<br>eval ONLY. Must pair with AppConfig or Langfuse for delivery.|
@@ -94,6 +93,7 @@ What it does NOT mean: Git alone is the runtime delivery mechanism. Git is the a
 This is the technically hardest requirement. 'Without redeploy' means: a running AgentCore Runtime container should pick up a new prompt version **without the container being rebuilt, re-pushed to ECR, or re-deployed via CDK/CloudFormation** . The agent process must continue serving requests throughout the update. 
 
 |**What counts as hot-swap?**|**Verdict**|
+|---|---|
 |AppConfig sidecar poll (45s interval) — new config served to same container|ITRUE hot-swap|
 |AgentCore Config Bundle active bundle switch via SDK at invocation time|ITRUE hot-swap (per-invocation)|
 |AgentCore Harness UpdateHarness + named endpoint update|ITRUE hot-swap for Harness path|
@@ -140,6 +140,7 @@ This is the native AWS answer to the hot-swap requirement. It decouples configur
 #### **How Configuration Bundles Work** 
 
 |**Step 1: Design prompt in Git**|Author writes/updates system prompt in Git repo. PR review, peer approval, CI<br>linting all run against the Git version.|M|
+|---|---|---|
 |**Step 2: Create bundle**|agentcore bundle create --name 'v2-improved-prompt' --system-prompt<br>'prompts/cx-v2.txt' --model-id claude-sonnet-4-6. Bundle is immutable and<br>versioned after creation.|M|
 |**Step 3: Agent reads bundle**<br>**at invocation**|AgentCore SDK reads active bundle configuration at invocation time. Agent calls<br>get_active_config() — returns current model, system prompt, tool descriptions.|M|
 ||Update the active bundle reference via AgentCore control API or CLI — no||
@@ -203,6 +204,7 @@ agentcore gateway ab-test create \
 #### **What Config Bundles Do and Don't Provide** 
 
 |**Capability**|**Config Bundles Status**|**Notes**|
+|---|---|---|
 |Hot-swap without redeploy|IYES — core purpose|Active bundle switch takes effect on next invocation|
 |Versioning|IYES — immutable versions|Each bundle is immutable after creation|
 |Model + prompt + tool desc|IYES|All three in single bundle snapshot|
@@ -216,6 +218,7 @@ agentcore gateway ab-test create \
 
 
 |Approval workflow|INO|No built-in human approval gate|
+|---|---|---|
 |Lineage / dependency graph|INO|No cross-bundle dependency tracking|
 |Phoenix/AX integration|IIVia OTel span attributes|Bundle ID visible in Phoenix/AX if emitted as span<br>attr|
 |GA status|Preview May 2026|GA timeline: watch AWS announcements. API<br>subject to change.|
@@ -226,6 +229,7 @@ agentcore gateway ab-test create \
 
 
 
+![Figure 1](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p8-1.png)
 
 
 Option B: AgentCore Harness<br>§3<br>Versioning<br><!-- End of picture text -->
@@ -313,6 +317,7 @@ aws bedrock-agentcore-control update-harness-endpoint \
 #### **Harness vs Runtime — Which Path to Take?** 
 
 |**Factor**|**Use Harness**|**Use Runtime (code-based)**|
+|---|---|---|
 |Agent architecture|Simple single-agent loop (model→tools→<br>response)|Complex LangGraph DAG, multi-agent, custom<br>orchestration|
 |Prompt update<br>mechanism|UpdateHarness (no code change, no container<br>rebuild)|Config Bundles or AppConfig (config change, no<br>rebuild)|
 |Hot-swap speed|Endpoint switch — seconds|Bundle activate or AppConfig — seconds to next<br>poll|
@@ -334,6 +339,7 @@ aws bedrock-agentcore-control update-harness-endpoint \
 
 
 
+![Figure 2](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p11-2.png)
 
 
 Option C: Langfuse Prompt<br>§4<br>Registry + AppConfig Delivery<br><!-- End of picture text -->
@@ -347,6 +353,7 @@ Langfuse has a documented, official integration with Amazon Bedrock AgentCore (p
 #### **Architecture: Two Layers** 
 
 |**Layer**|**Tool**|**Responsibility**|
+|---|---|---|
 |Governance & Registry|Langfuse|Versioning, labels (production/staging), Jinja2 template compilation, trace<br>linkage, eval history|
 |Hot Delivery|AWS AppConfig|Sub-5ms cached delivery to agents, canary deployment strategies, automatic<br>rollback, local sidecar|
 |Cache & Invalidation|ElastiCache Redis|Sub-ms cache hit, pub/sub invalidation when AppConfig updates|
@@ -485,6 +492,7 @@ def invoke(session_id: str, user_input: str, context: dict) -> str:
 
 
 
+![Figure 3](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p15-3.png)
 
 
 §5<br>Option D: Phoenix / Arize AX Role<br><!-- End of picture text -->
@@ -496,6 +504,7 @@ What Phoenix and AX actually provide for this epic — and what they don't.
 Phoenix and Arize AX are **observability and evaluation platforms** . They do NOT provide hot prompt delivery to running agents. The Jira ticket scopes the TP dashboard/editing as Orange (out of scope). That means Phoenix/AX contribute to this epic only at the **trace correlation** layer — not the versioning or delivery layer. 
 
 |**What Phoenix/AX Provides for GENAIAF-559**|**What Phoenix/AX Does NOT Provide**|
+|---|---|
 |Ingests OTel traces with prompt version span attributes|Hot-swap prompt delivery to agents|
 |Filters traces by prompt.version — compare quality across<br>versions|Prompt registry with semver or approval workflow|
 |LLM-as-judge evaluations on production traffic (AX online eval)|Session version pinning logic|
@@ -556,6 +565,7 @@ response = litellm.completion(
 
 
 
+![Figure 4](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p17-4.png)
 
 
 Option E: AppConfig Alone |<br>§6<br>Option F: CDK Hotswap<br><!-- End of picture text -->
@@ -653,6 +663,7 @@ cdk deploy --hotswap   # Skips CloudFormation, directly updates AgentCore Runtim
 ```
 
 |**Factor**|**AppConfig (Option E)**|**CDK Hotswap (Option F)**|
+|---|---|---|
 |Zero-downtime?|ITrue zero-downtime|I30s window, not zero-downtime|
 |Session pinning?|IWith custom implementation|INo — new container|
 |Rollback time?|< 5s (AppConfig switch)|~30s (another hotswap deploy)|
@@ -667,6 +678,7 @@ cdk deploy --hotswap   # Skips CloudFormation, directly updates AgentCore Runtim
 
 
 
+![Figure 5](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p19-5.png)
 
 
 Per-Prompt Trace Correlation —<br>§7<br>Complete Implementation<br><!-- End of picture text -->
@@ -764,6 +776,7 @@ def invoke(session_id,user_input,ctx):
 #### **What This Looks Like in Phoenix and Arize AX** 
 
 |**Platform**|**Where Prompt Version Appears**|**What You Can Do With It**|
+|---|---|---|
 |Arize Phoenix|Span attribute pane on each trace span. Visible as<br>'gen_ai.prompt.version'|Filter traces by version, group spans, compare offline<br>eval datasets by version|
 |Arize AX|Span attributes + dimension in online eval dashboard.<br>Prompt version filterable column|Alert when quality drops below threshold for a specific<br>version. Compare V2 vs V3 quality online.|
 |Langfuse|Prompt version linked in trace UI (when using Langfuse<br>SDK fetch). 'Prompt' tab on generation span|Version diff view, compare quality metrics per version,<br>click from trace to prompt definition|
@@ -823,6 +836,7 @@ def get_prompt_for_session(session_id: str, prompt_id: str) -> PromptResult:
 #### **Session Pinning Strategies** 
 
 |**Strategy**|**Behavior**|**Use Case**|
+|---|---|---|
 |Pin at session creation<br>(RECOMMENDED)|Version written to AgentCore Memory at first turn.<br>All subsequent turns use pinned version.|Regulated context, long-running tasks,<br>financial/healthcare|
 |No pinning (rolling)|Every turn fetches current production prompt.<br>Behavioral change can occur mid-conversation.|Simple FAQ bots, single-turn agents,<br>non-regulated|
 |Checkpoint migration|At natural pause points (e.g. topic change), session<br>migrates to new version.|Conversational agents with clear topic<br>boundaries|
@@ -846,6 +860,7 @@ Scored against the three Jira requirements plus enterprise readiness dimensions.
 Each option scored 1–5 on the six most relevant dimensions for this specific epic. Weight reflects Jira minimal delivery requirements. 
 
 |**Dimension**|**Weight**|**Why This Matters for GENAIAF-559**|
+|---|---|---|
 |Git-based versioning (R1)|20%|Prompts must be source-controlled in Git. Version history, diff, PR review.|
 |True hot-swap without redeploy (R2)|25%|Core requirement. Running agent must pick up new prompt without<br>restart.|
 |Prompt version in traces (R3)|20%|Phoenix/AX must be able to filter traces by prompt version.|
@@ -875,6 +890,7 @@ Each option scored 1–5 on the six most relevant dimensions for this specific e
 
 
 
+![Figure 6](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p25-6.png)
 
 
 §10<br>Recommended Implementation<br><!-- End of picture text -->
@@ -886,6 +902,7 @@ Two-phase delivery aligned with the Jira epic's SDK-only scope and minimal deliv
 Implement Option B (Harness) or Option A (Config Bundles) depending on whether the GENAI Agent Foundry agents use the Harness abstraction or code-based Runtime. Add PromptClient wrapper with OTel span emission. This satisfies all three minimal delivery requirements with zero external platform dependency. 
 
 |**Week 1: Prompt extraction**|Extract all hardcoded system prompts from agent code into prompts/ directory in<br>Git. Create harness.json or Config Bundle definition for each agent. CI schema<br>validation added.|M|
+|---|---|---|
 |**Week 1: SDK wrapper**|Write PromptClient class (Section 7) with AppConfig or bundle source. Wire into<br>agent invocation. Test locally with agentcore dev (hot reload available locally).|M|
 |**Week 2: OTel**<br>**instrumentation**|Add gen_ai.prompt.version to every LLM invocation span.<br>DISABLE_ADOT_OBSERVABILITY=true. Configure OTEL_EXPORTER to<br>Phoenix (dev) and Arize AX (prod). Verify spans visible in Phoenix trace UI with<br>prompt version filter.|M|
 |**Week 2: Session pinning**|Implement version pinning at session creation via AgentCore Memory. Write<br>session-scoped prompt fetch helper. Test: deploy V16 mid-conversation, verify<br>running sessions stay on V15.|M|
@@ -898,6 +915,7 @@ Implement Option B (Harness) or Option A (Config Bundles) depending on whether t
 Add Langfuse for registry, lineage, approval workflow light, and native trace linkage. This upgrades from Option A/B to Option C without replacing Phase 1 infrastructure — AppConfig continues as the delivery layer. 
 
 |**Week 1: Langfuse setup**|Deploy Langfuse OSS (self-hosted, Docker Compose or Kubernetes). Import<br>existing prompts. Create production labels. Configure RBAC for team roles.|M|
+|---|---|---|
 |**Week 2: Sync pipeline**|Lambda triggered by Langfuse webhook on label change. Syncs<br>production-labeled prompt to AppConfig. Canary deployment strategy configured.|M|
 |**Week 3: CI integration**|GitHub Action: on PR to prompts/→run Phoenix offline eval against golden<br>dataset. Eval score posted as PR comment. Approval gate configured for RAI<br>Officer.|M|
 |**Week 4: Trace linkage**|Switch PromptClient from AppConfig source to Langfuse source. Langfuse trace<br>linkage active. Prompt version visible in Langfuse trace UI with native linkage.|M|
@@ -908,6 +926,7 @@ Add Langfuse for registry, lineage, approval workflow light, and native trace li
 #### **Files to Create for MVP** 
 
 |**File**|**Description**|
+|---|---|
 |prompts/customer-support-system/v2.3.1.jinja2|System prompt template with Jinja2 variables|
 
 
@@ -916,6 +935,7 @@ Add Langfuse for registry, lineage, approval workflow light, and native trace li
 
 
 |prompts/customer-support-system/metadata.yaml|id, version, owner, model_compatibility, created_at|
+|---|---|
 |sdk/prompt_client.py|PromptClient wrapper class (Section 7)|
 |sdk/otel_setup.py|OTel provider config with ADOT disabled, exporter to Phoenix/AX|
 |agentcore.json|Harness definition OR Config Bundle reference|
@@ -989,6 +1009,7 @@ No API keys, credentials, or PII appear in any prompt template in Git. CI fails 
 #### **Dependencies (Must Be Resolved Before Sprint Planning)** 
 
 |**Dependency**|**Owner**|**Blocker for**|
+|---|---|---|
 |AgentCore Memory provisioned in target environment|Platform team|AC-3 (session version pinning)|
 |AgentCore Config Bundles API access (Preview May<br>2026)|AWS / Platform team|Option A implementation|
 |Harness GA confirmed available in target AWS region|Platform team|Option B implementation|
@@ -1003,6 +1024,7 @@ No API keys, credentials, or PII appear in any prompt template in Git. CI fails 
 
 
 
+![Figure 7](static/img/agentic-systems/platform/genaiaf-prompt-lifecycle-p29-7.png)
 
 
 Addressing the Original Ticket —<br>§12<br>Line by Line<br><!-- End of picture text -->
@@ -1018,6 +1040,7 @@ _'As an Observer, I want to iterate on prompts without redeploying the agent'_
 #### **Minimal Delivery Items — Status** 
 
 |**Ticket Item**|**Research Finding**|**Recommended Solution**|
+|---|---|---|
 |Prompt versioning<br>(git-based, tied to agent<br>config)|Git is correct as authoring source. BUT agent config<br>must reference version label/ID, not inline string.<br>Two native AgentCore mechanisms now exist.|harness.json or bundle definition in Git. Version<br>reference (not content) in agent config. Content<br>served dynamically at runtime.|
 |Hot-swap: runtime prompt<br>switching without redeploy|Three native AgentCore mechanisms: (1) Config<br>Bundle activate, (2) Harness endpoint promotion,<br>(3) AppConfig TTL-based poll. All achieve < 90s<br>without container rebuild.|Option A (bundles) or Option B (harness) for<br>AWS-native MVP. Option C (Langfuse +<br>AppConfig) for full lifecycle.|
 |Prompt version ID emitted<br>in traces|AgentCore's built-in ADOT does NOT emit this<br>automatically. Must be added explicitly as OTel<br>span attributes in agent SDK code. ADOT must be<br>disabled first.|PromptClient.instrument_span() sets<br>gen_ai.prompt.version on every LLM span.<br>DISABLE_ADOT_OBSERVABILITY=true +<br>OTEL_EXPORTER to Phoenix/AX.|
@@ -1033,6 +1056,7 @@ Config Bundles (Option A), Harness versioning (Option B), and AppConfig (Option 
 #### **Challenges and Roadblocks — Complete List** 
 
 |**Challenge**|**Detail**|**Mitigation**|
+|---|---|---|
 |AgentCore Config<br>Bundles in Preview|May change API before GA. Limited documentation.<br>No Terraform/CloudFormation support yet.|Pin to CLI version. Plan for API changes. Use<br>Harness (GA) as fallback.|
 |ADOT conflict with<br>Phoenix/AX|AgentCore injects ADOT at runtime, conflicting with<br>Langfuse/Phoenix SDK HTTP calls. Standard<br>callbacks produce no traces on AgentCore.|DISABLE_ADOT_OBSERVABILITY=true.<br>Configure own OTel exporter. Verified solution<br>from both AWS blog and Langfuse docs.|
 |AgentCore Memory<br>required for session<br>pinning|Session version pinning requires AgentCore Memory<br>to be provisioned. If Memory is not in the environment,<br>pinning uses DynamoDB fallback (more complex).|Confirm Memory availability early. Budget for<br>Memory provisioning in sprint.|
@@ -1043,6 +1067,7 @@ Config Bundles (Option A), Harness versioning (Option B), and AppConfig (Option 
 
 
 |No approval workflow in<br>MVP|Config Bundles and AppConfig have no built-in human<br>approval gate. Anyone with IAM permission can<br>activate a bundle.|CI required fields: peer review PR + eval passing<br>before bundle create. Phase 2 adds formal<br>workflow.|
+|---|---|---|
 |Jinja2 injection risk|Dynamic template rendering with user-supplied<br>variables is a prompt injection vector if variables are<br>not sanitized.|Sanitize all user-supplied variables before Jinja2<br>render. Restrict which variables come from user<br>input vs internal context.|
 |Bundle/version fan-out<br>at scale|If 50 agent types each have 5 prompt types, you<br>manage 250 bundles/versions. Without a registry,<br>discovery is difficult.|Phase 1: naming convention + DynamoDB<br>catalog table. Phase 2: Langfuse registry for<br>discovery and search.|
 

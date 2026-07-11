@@ -1,16 +1,15 @@
 ---
-title: "Harness"
-date_created: 2026-07-10
+title: "Harness Interview Question Bank"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Harness_Interview_Question_Bank.pdf"
-doc_type: interview-questions
-tags: ["agentic-ai", "agents"]
-last_reviewed: 2026-07-10
-target_role: "AI/ML Architect"
+tags: ["harness", "interview-prep", "ci-cd", "devops"]
 ---
 
-## How to Use This Guide
+<!-- converted from Harness_Interview_Question_Bank.pdf -->
 
 **PA R T 5 O F 5** 
 
@@ -146,4 +145,5 @@ Harness — Interview Question Bank — 6
 
 This closes the scoped treatment of the original research prompt. Remaining unaddressed sections — per-industry reference architecture diagrams, the 15 hands-on labs, and formal sequence diagrams — are documentation-generation exercises rather than research findings; say the word if you'd like any of those specifically rather than the full set. 
 
-Harness — Interview Question Bank — 7
+Harness — Interview Question Bank — 7 
+

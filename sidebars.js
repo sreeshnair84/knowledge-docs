@@ -49,6 +49,7 @@ const sidebars = {
             'agentic-systems/platform/ai-msf-requirements-runbook',
             'agentic-systems/platform/enterprise-agentic-ai-asset-management-2026',
             'agentic-systems/platform/genaiaf-prompt-lifecycle-hotswap-research-2026',
+            'agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026',
           ],
         },
         {

@@ -1,14 +1,15 @@
 ---
-title: "Harness"
-date_created: 2026-07-10
+title: "Harness: Security, Supply Chain & Observability"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Harness_Security_SupplyChain_Observability.pdf"
-doc_type: guide
-tags: ["agentic-ai", "agents"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: ["harness", "security", "supply-chain", "observability", "devops"]
 ---
+
+<!-- converted from Harness_Security_SupplyChain_Observability.pdf -->
 
 #### **PA R T 3 O F 3** 
 
@@ -46,6 +47,8 @@ The keyless path is the operationally important one: it eliminates long-lived pr
 |Level|Adds: isolated, ephemeral build infrastructure (new infra|**SaaS-hosted builds only**— not achievable in|
 |3|per run, destroyed after) + non-privileged, no-volume-<br>mount build steps so provenance-signing keys are<br>unreachable even by the build script itself|Self-Managed Enterprise Edition, because it<br>requires Harness-hosted, per-run ephemeral<br>build infrastructure|
 
+
+
 Source: Harness SCS documentation. **<mark>DOCUMENTED</mark>** — this is a genuinely useful diligence item: an organization requiring SLSA Level 3 as a compliance bar cannot get there on a fully self-managed/air-gapped Harness deployment. 
 
 ### **Air-gapped caveats worth flagging to security reviewers** 
@@ -81,6 +84,8 @@ Harness tracks the four (now sometimes five, adding Reliability/MTBF) DORA metri
 |**Engineering**|data sources (Jira, GitHub, GitLab, Jenkins,|surfacing that delays trace to code-review|
 |**Insights (SEI)**|PagerDuty, etc.) against a configurable**DORA**<br>**Profile**and**correlation engine**|bottlenecks in GitHub rather than anything<br>in the CD pipeline itself|
 
+
+
 Harness Security, Supply Chain & Observability — 3 
 
 The correlation engine is the differentiated piece: rather than just reporting four numbers, SEI is explicitly built to trace a metric back to its upstream cause across tools Harness doesn't own — flaky Jenkins tests driving change failure rate, GitHub review latency driving lead time, and so on. **<mark>DOCUMENTED</mark>** — note this SEI capability originates from Harness's 2022 acquisition of Propelo (visible in the product's internal URL namespace, <mark>`propelo-sei` )</mark> , a useful data point if evaluating maturity/integration depth of this specific module versus newer-built ones. 
@@ -95,4 +100,5 @@ The correlation engine is the differentiated piece: rather than just reporting f
 
 This closes out the three-part scoped treatment (Architecture → AI Agents & Vendor Landscape → Security/Supply Chain/ Observability) of the original 23-section research prompt. Remaining untouched sections — per-industry reference architectures, the 15 hands-on labs, sequence diagrams, and interview question banks — are lower-leverage for an architect's decision-making and are better suited to the Research feature if still wanted. 
 
-Harness Security, Supply Chain & Observability — 4
+Harness Security, Supply Chain & Observability — 4 
+

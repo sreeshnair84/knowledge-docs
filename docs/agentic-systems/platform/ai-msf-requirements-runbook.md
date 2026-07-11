@@ -1,23 +1,42 @@
 ---
-title: "AI-MSF PoC — Shared Requirements & Agent Runbook"
-date_created: 2026-06-23
-last_reviewed: 2026-07-11
+title: "ai-msf-requirements-runbook"
+date_created: 
+last_reviewed: 
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "ai-msf-requirements-runbook.pdf"
-tags: ["agentic-systems", "platform", "microservice", "runbook", "requirements"]
-doc_type: guide
-covers_version: "v1.0 June 2026"
+tags: []
 ---
 
 <!-- converted from ai-msf-requirements-runbook.pdf -->
 
-# AI-Assisted Microservice Development Framework — Shared Requirements & Agent Runbook
 
-**Generated:** 23 Jun 2026 | **Version:** v1.0 | **Compatible with:** GitHub Copilot Agent, Claude Code, Gemini CLI, AWS Kiro, Cursor, Windsurf
 
-## What This Document Is 
+
+// AI-MICROSERVICE FACTORY — SHARED REQUIREMENTS DOCUMENT v1.0
+
+# **AI-Assisted Microservice** 
+
+# **Development Framework** 
+
+# **— Shared Requirements & Agent Runbook** 
+
+Shared Requirements Document  |  Agent Runbook  |  Prompt Reference  |  June 2026 
+
+```
+GitHub Spec KitAzure AI Foundry
+```
+
+```
+AWS KiroBedrock AgentsCopilot Coding Agent
+```
+
+```
+Your PoC
+```
+
+#### **`WHAT THIS DOCUMENT IS`** 
 
 This PDF serves as the shared requirements document for an AI-assisted microservice development PoC. It can be attached directly to a GitHub Copilot Chat prompt, loaded into a Copilot Workspace, added to a Copilot Space as a reference file, or placed at requirements/00-overview.md in your repo. Every section doubles as agent-readable instruction and human-readable specification. 
 
@@ -63,18 +82,9 @@ This PDF serves as the shared requirements document for an AI-assisted microserv
 
 4. Use the CLAUDE.md / .github/copilot-instructions.md file to point the agent to the requirements/ folder 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 ```
 01
@@ -126,18 +136,9 @@ I `Agent resumes from current repository state without user restating context`
 
 Do NOT hardcode a language or framework. The agent must inspect requirements/ and determine the appropriate stack. If requirements/03-stack.md is present, use it. If not, detect from existing src/ files. If still ambiguous, decide and document the choice in an ADR. 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 |**Dimension**|**Agent Must Determine**|**Detection Source**|
 |---|---|---|
@@ -160,18 +161,9 @@ Do NOT hardcode a language or framework. The agent must inspect requirements/ an
 
 The repository is the agent's persistent memory. Every folder has a defined role. If a required folder is missing, the agent creates it. 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 ### `my-service/` 
 
@@ -297,18 +289,9 @@ The repository is the agent's persistent memory. Every folder has a defined role
 
 `README.md                    # [AGENT MAINTAINS]` Updated at the end of every session. Contains: last completed step, files changed, pending tasks, open questions, and decisions made. The agent reads this FIRST — before requirements/ — so it can resume without you re-explaining context. Never delete or edit this file manually. 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 ```
 04
@@ -358,18 +341,9 @@ After every session the agent must produce a structured report with exactly thes
 
 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 ```
 06
@@ -479,15 +453,8 @@ the requirements PDF). Every section must be present.
 For use with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor, or any spec-driven AI coding agent.### HARD RULES
 ```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 ```
 ## Resume — AI Microservice Agent
@@ -572,18 +539,9 @@ Load when: step 12 (update docs). Contents: README format spec, OpenAPI sync pro
 
 - I `CI workflow (.github/workflows/ci.yml) runs successfully` 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 #### **`STEP 11 IS BLOCKING`** 
 
@@ -602,7 +560,7 @@ When src/ is empty (or contains only a .gitkeep), the agent runs step 08 and gen
 ### **TypeScript / Node.js** 
 
 
-![](static/img/agentic-systems/platform/ai-msf-requirements-runbook.pdf-0008-09.png)
+![Figure 1](/img/agentic-systems/platform/ai-msf-runbook-p8-1.png)
 
 
 <!-- Start of picture text -->
@@ -610,18 +568,9 @@ When src/ is empty (or contains only a .gitkeep), the agent runs step 08 and gen
 
 ### **Python / FastAPI** 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 ```
 # Python / FastAPI scaffold
@@ -679,18 +628,9 @@ Neutral:  [Other effects]
 
 Commit this file to your repository. GitHub Copilot reads it automatically at the start of every Chat session when you are working inside this repository. It makes Copilot requirements-aware without you needing to attach the PDF every time. 
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 - `# GitHub Copilot Instructions` 
 
@@ -768,18 +708,9 @@ Hosted agents with memory, toolboxes, tracing, governance. Semantic Kernel + Aut
 12
 ```
 
-```
-```
 
-```
-```
 
-```
-```
 
-```
-23 Jun 2026
-```
 
 #### **`THE SHIFT (2026 DATA)`** 
 
@@ -787,8 +718,4 @@ Hosted agents with memory, toolboxes, tracing, governance. Semantic Kernel + Aut
 
 AI-Assisted Microservice Factory PoC | Requirements & Agent Runbook | v1.0 | June 2026 | Compatible with: GitHub Copilot Agent, Claude Code, Gemini CLI, AWS Kiro, Cursor, Windsurf 
 
-```
-```
 
-```
-```
