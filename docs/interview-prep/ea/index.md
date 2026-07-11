@@ -13,7 +13,6 @@ target_role: EA Interview Preparation
 ## How to Use This Guide
 
 
-
 # EA Interview Preparation
 
 Master guides, handbooks, and scenario-based prep for Enterprise Architect interviews — covering technical depth, AI strategy, leadership communication, and CTO-level questions.

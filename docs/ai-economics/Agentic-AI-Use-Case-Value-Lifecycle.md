@@ -288,7 +288,6 @@ The value is not one number — it is a bridge of three distinct, separately-ver
 |Property (water, wind, fire)|20%|Medium|Agent-augmented|
 |Liability / bodily injury|15%|High|Agent-assisted (human-led)|
 
-Page 1 of 10 
 
 ## **3. End-to-End Value Lifecycle** 
 
@@ -326,7 +325,6 @@ Extend to property claims and additional regions (Month 6–15), then national a
 
 Gate: unit economics (Section 10) hold or improve at each wave; no adverse regulatory or fair-claims-handling findings. 
 
-Page 2 of 10 
 
 #### **Stage 5 — Sustain & Optimize · Month 24+** 
 
@@ -344,7 +342,6 @@ Actual realized value (not projected) is measured against the baseline using the
 
 Gate: realized value within 15% of plan to maintain funding pace; below that triggers a re-baseline. 
 
-Page 3 of 10 
 
 ## **4. Architecture Snapshot** 
 
@@ -370,7 +367,6 @@ _Figure 1. Core value-lever metrics, today vs. steady-state target (Year 3)._
 |Claims CSAT|71%|79%|+8 pts|
 |Adjuster FTE (attrition-managed)|1,100|830|-25%, no layoffs|
 
-Page 4 of 10 
 
 ## **6. Value Calculation Methodology** 
 
@@ -402,11 +398,9 @@ This is the softest line in the model. It assumes faster, more transparent claim
 
 ### **6.4 Value Bridge** 
 
-Page 5 of 10 
 
 _Figure 2. Steady-state annual value by driver._ 
 
-Page 6 of 10 
 
 ## **7. Pilot Success Thresholds (Gate to Scale)** 
 
@@ -430,7 +424,6 @@ _Figure 3. Value realized vs. cost, by year, with cumulative net value._
 
 ### **8.1 Cost Basis** 
 
-Page 7 of 10 
 
 |**Cost item**|**Type**|**Amount**|
 |---|---|---|
@@ -447,7 +440,6 @@ Page 7 of 10
 
 Payback is calculated on the pilot cohort specifically (auto glass + small physical-damage claims, the fastest-automating slice), not the whole portfolio: $10.3M in Year-1 one-time investment is offset by roughly $1.99M/month of net operating value once the pilot is live, for a payback of about 5 months from go-live — materially faster than the 12-month mark often assumed for enterprise AI initiatives, because the pilot deliberately targets the highest-feasibility, highest-volume slice first (see the Opportunity Matrix, Deliverables Pack Section 5). 
 
-Page 8 of 10 
 
 ## **9. Sensitivity: Bear / Base / Bull** 
 
@@ -474,7 +466,6 @@ Even at 60% of planned value capture, the ROI stays strongly positive because mo
 
 Marginal cost of one additional agent-handled claim: **~$4.10** (inference + orchestration compute only, at scale). Marginal cost of one additional human-handled claim: **~$580** (loaded adjuster time). This ~140x marginal-cost gap is why STP-eligibility expansion is the highest-leverage lever in the entire model — it is worth more effort to safely move one more claim type into the STP tier than to marginally improve any individual agent's accuracy on claims it already handles. 
 
-Page 9 of 10 
 
 ## **11. Key Assumptions & Caveats** 
 
@@ -496,4 +487,3 @@ Page 9 of 10
 
 Treat Sections 6, 8, and 10 as a spreadsheet template, not a forecast: swap in your organization's actual baseline cost/claim, volume, indemnity, and leakage figures, keep the same formulas, and you will get a defensible business case built the same way this one was — auditable line by line, with the soft-value assumptions clearly separated from the hard, actuarially-verifiable ones. 
 
-Page 10 of 10

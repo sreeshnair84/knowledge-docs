@@ -14,8 +14,6 @@ covers_version: "v1.0 June 2026"
 <!-- converted from ai-msf-requirements-runbook.pdf -->
 
 
-
-
 // AI-MICROSERVICE FACTORY — SHARED REQUIREMENTS DOCUMENT v1.0
 
 # **AI-Assisted Microservice** 
@@ -28,13 +26,9 @@ Shared Requirements Document  |  Agent Runbook  |  Prompt Reference  |  June 202
 
 ```
 GitHub Spec KitAzure AI Foundry
-```
 
-```
 AWS KiroBedrock AgentsCopilot Coding Agent
-```
 
-```
 Your PoC
 ```
 
@@ -44,9 +38,8 @@ This PDF serves as the shared requirements document for an AI-assisted microserv
 
 ## **HOW TO USE THIS DOCUMENT WITH GITHUB COPILOT** 
 
-```
 00
-```
+
 
 ## **Three ways to serve this to GitHub Copilot:** 
 
@@ -85,12 +78,8 @@ This PDF serves as the shared requirements document for an AI-assisted microserv
 4. Use the CLAUDE.md / .github/copilot-instructions.md file to point the agent to the requirements/ folder 
 
 
-
-
-
-```
 01
-```
+
 
 ### **Method D — Paste prompt directly into agent** 
 
@@ -130,16 +119,12 @@ I `Agent resumes from current repository state without user restating context`
 
 ## **TECHNOLOGY STACK — AGENT DETECTS FROM REQUIREMENTS** 
 
-```
 02
-```
+
 
 #### **`KEY RULE`** 
 
 Do NOT hardcode a language or framework. The agent must inspect requirements/ and determine the appropriate stack. If requirements/03-stack.md is present, use it. If not, detect from existing src/ files. If still ambiguous, decide and document the choice in an ADR. 
-
-
-
 
 
 |**Dimension**|**Agent Must Determine**|**Detection Source**|
@@ -155,149 +140,82 @@ Do NOT hardcode a language or framework. The agent must inspect requirements/ an
 |Build tool|npm / Maven / uv / Make|Inferred from language choice|
 
 
-
 |**REPOSITORY STRUCTURE**|`03`|
 |---|---|
 
 
-
 The repository is the agent's persistent memory. Every folder has a defined role. If a required folder is missing, the agent creates it. 
-
-
-
 
 
 ### `my-service/` 
 
 ```
   requirements/                # AGENT READS FIRST — authoritative source of truth
-```
 
-```
     00-overview.md             # What we're building & why (this document)
-```
 
-```
     01-functional.md           # Feature requirements + acceptance criteria
-```
 
-```
     02-non-functional.md       # Performance, security, reliability SLAs
-```
 
-```
     03-stack.md                # Preferred stack (or leave blank for agent to decide)
-```
 
-```
     04-constraints.md          # Org rules, API contracts, compliance requirements
-```
 
-```
   docs/
-```
 
-```
     architecture/
-```
 
-```
       overview.md              # [AGENT MAINTAINS] Updated after each session
-```
 
-```
     adr/
-```
 
-```
       ADR-001-*.md             # [AGENT GENERATES] One file per decision
-```
 
-```
       README.md                # ADR index
-```
 
-```
     api/
-```
 
-```
       openapi.yaml             # [AGENT GENERATES + SYNCS] after each endpoint
-```
 
-```
     design/
-```
 
-```
       implementation-plan.md   # [AGENT MAINTAINS] Tasks + status markers
-```
 
-```
   skills/                      # Reusable agent instructions (markdown)
-```
 
-```
     architecture.md  backend.md  api-design.md
-```
 
-```
     testing.md  code-review.md  security.md  documentation.md
-```
 
-```
   templates/                   # Blank templates the agent fills in
-```
 
-```
     ARCHITECTURE.md.tpl  ADR.md.tpl  README.md.tpl
-```
 
-```
     FEATURE-DESIGN.md.tpl  PR-SUMMARY.md.tpl
-```
 
-```
   prompts/
-```
 
-```
     agent-bootstrap.md         # Master invocation prompt (see Section 06)
-```
 
-```
     increment.md               # Shorter resume prompt for session 2+
-```
 
-```
     review.md                  # Self-review gate
-```
 
-```
   src/                         # [AGENT WRITES] Application source
-```
 
-```
   tests/                       # [AGENT WRITES] Tests
-```
 
-```
   .ai-state.md                 # [AGENT UPDATES] Session state — agent memory
-```
 
-```
   .github/copilot-instructions.md  # Points Copilot to requirements/.AI-STATE.MD — THE AGENT'S MEMORY
 ```
 
 `README.md                    # [AGENT MAINTAINS]` Updated at the end of every session. Contains: last completed step, files changed, pending tasks, open questions, and decisions made. The agent reads this FIRST — before requirements/ — so it can resume without you re-explaining context. Never delete or edit this file manually. 
 
 
-
-
-
-```
 04
-```
+
 
 ## **AI AGENT WORKFLOW — 13 IDEMPOTENT STEPS** 
 
@@ -320,12 +238,10 @@ Every agent invocation runs these steps in order. Steps are idempotent — re-ru
 |**`13`**|**PRODUCE report**|Output the 10-section structured report (see Section 05).<br>Session summary|
 
 
-
 ## **EXPECTED OUTPUT — 10-SECTION REPORT PER SESSION** 
 
-```
 05
-```
+
 
 After every session the agent must produce a structured report with exactly these 10 sections. This report becomes the handoff artifact between sessions. 
 
@@ -342,14 +258,8 @@ After every session the agent must produce a structured report with exactly thes
 |**`10. Risks and`**<br>**`Recommendations`**|Blockers, security concerns, open questions, suggested next actions|
 
 
-
-
-
-
-
-```
 06
-```
+
 
 ## **MASTER BOOTSTRAP PROMPT — COPY AND PASTE TO START A SESSION** 
 
@@ -359,27 +269,17 @@ Copy the entire block below. Paste into GitHub Copilot Chat (with this PDF attac
 
 ```
 ## AI Microservice Development Agent — Bootstrap
-```
 
-```
 ## Service: [YOUR SERVICE NAME]
-```
 
-```
 You are an experienced Software Architect and AI Coding Agent.
 Your mission: autonomously develop this microservice using the
 repository as your only knowledge base. Never ask the user to
-```
 
-```
 explain context that already exists in a file. Read it.
-```
 
-```
 ### STEP 1 — ORIENT (read in this exact order)
-```
 
-```
 1. .ai-state.md            — your memory from the last session
 ```
 
@@ -393,9 +293,7 @@ explain context that already exists in a file. Read it.
 
 ```
 If any file is missing, note it and continue.
-```
 
-```
 ### STEP 2 — ASSESS (answer these internally before acting)
 ```
 
@@ -409,14 +307,10 @@ If any file is missing, note it and continue.
 
 ```
 ### STEP 3 — EXECUTE (one increment only per session)
-```
 
-```
 Load only the skills relevant to this increment from skills/*.md.
 Execute workflow steps 4 through 12:
-```
 
-```
   diff artifacts -> update architecture -> write ADRs
 ```
 
@@ -441,37 +335,20 @@ and skills/security.md. Do not proceed past step 11 if:
 
 ```
 ### STEP 4 — REPORT
-```
 
-```
 Produce the mandatory 10-section report (see Section 05 of
-```
 
-```
 the requirements PDF). Every section must be present.
-```
 
-```
 For use with GitHub Copilot Agent, Claude Code, Gemini CLI, Cursor, or any spec-driven AI coding agent.### HARD RULES
-```
 
-
-
-
-```
 ## Resume — AI Microservice Agent
-```
 
-```
 ## Service: [YOUR SERVICE NAME]
-```
 
-```
 Read .ai-state.md first. Then read requirements/. Then inspect src/ and tests/.
 Understand current state without me explaining it.
-```
 
-```
 Identify the next incomplete [ ] item in docs/design/implementation-plan.md.
 Implement it. Test it. Self-review it. Update all docs. Update .ai-state.md.
 Produce the 10-section report.
@@ -479,9 +356,8 @@ Produce the 10-section report.
 
 ## **SKILLS — REUSABLE AGENT INSTRUCTIONS** 
 
-```
 07
-```
+
 
 Skills are plain markdown files. The agent loads only the skills relevant to the current increment. Paste these into the corresponding files in your skills/ folder. 
 
@@ -513,9 +389,8 @@ Load when: step 12 (update docs). Contents: README format spec, OpenAPI sync pro
 
 ## **QUALITY GATES — AGENT MUST VERIFY BEFORE MARKING DONE** 
 
-```
 08
-```
+
 
 ### **Core quality gates** 
 
@@ -542,9 +417,6 @@ Load when: step 12 (update docs). Contents: README format spec, OpenAPI sync pro
 - I `CI workflow (.github/workflows/ci.yml) runs successfully` 
 
 
-
-
-
 #### **`STEP 11 IS BLOCKING`** 
 
 If ANY core quality gate fails, the agent MUST NOT produce the session report marked as complete. Instead it must fix the issue, re-run the verification, and only then finalise the report. 
@@ -553,9 +425,8 @@ This is the most important difference from vibe coding — the agent is responsi
 
 ## **SCAFFOLDING REFERENCE — WHAT THE AGENT GENERATES ON FIRST RUN** 
 
-```
 09
-```
+
 
 When src/ is empty (or contains only a .gitkeep), the agent runs step 08 and generates this minimum viable scaffold. Stack-specific files are shown for the three most common choices. 
 
@@ -565,24 +436,14 @@ When src/ is empty (or contains only a .gitkeep), the agent runs step 08 and gen
 ![Figure 1](/img/agentic-systems/platform/ai-msf-runbook-p8-1.png)
 
 
-<!-- Start of picture text -->
-# Node.js / TypeScript scaffold<br>src/<br>  index.ts              # Entry point, graceful shutdown on SIGTERM<br>  app.ts                # Express/Fastify app factory<br>  routes/health.ts      # GET /health -> { status, version, uptime }<br>  middleware/<br>    auth.ts             # JWT or API-key middleware<br>    logger.ts           # Pino structured JSON — includes trace-id<br>    errorHandler.ts     # Global error -> RFC 7807 Problem Details<br>  config/env.ts         # zod-validated env vars, fail fast on missing<br>  types/index.ts        # Shared domain types<br>tests/health.test.ts    # Supertest smoke test<br>package.json            # Exact version pins (no ^ or ~)<br>tsconfig.json           # strict: true<br>.eslintrc.json  .prettierrc  Dockerfile  docker-compose.yml<br>.github/workflows/ci.yml   # lint -> build -> test -> docker build<br><!-- End of picture text -->
-
 ### **Python / FastAPI** 
-
-
-
 
 
 ```
 # Python / FastAPI scaffold
-```
 
-```
 src/
-```
 
-```
   main.py               # FastAPI app, lifespan context manager
   routers/health.py     # GET /health -> { status, version }
   middleware/logging.py # structlog middleware with trace-id
@@ -597,9 +458,8 @@ Dockerfile  docker-compose.yml  .github/workflows/ci.yml
 
 ## **TEMPLATE REFERENCE — ADR FORMAT** 
 
-```
 10
-```
+
 
 Place this template at templates/ADR.md.tpl. The agent fills it in for every new decision. 
 
@@ -624,14 +484,10 @@ Neutral:  [Other effects]
 
 ## **COPILOT INSTRUCTIONS FILE — .github/copilot-instructions.md** 
 
-```
 11
-```
+
 
 Commit this file to your repository. GitHub Copilot reads it automatically at the start of every Chat session when you are working inside this repository. It makes Copilot requirements-aware without you needing to attach the PDF every time. 
-
-
-
 
 
 - `# GitHub Copilot Instructions` 
@@ -642,9 +498,7 @@ Commit this file to your repository. GitHub Copilot reads it automatically at th
 
 ```
 This is an AI-assisted microservice development project.
-```
 
-```
 The repository follows the AI-MSF PoC framework.
 ```
 
@@ -682,9 +536,7 @@ ALWAYS read the following files before writing or modifying code:
 
 ```
 Load skills/*.md files relevant to the current task.
-```
 
-```
 Do not load all skills — only those matching the work being done.
 ```
 
@@ -706,12 +558,7 @@ The repo IS the agent's memory. Plain markdown, zero vendor lock-in. Unique: sta
 
 Hosted agents with memory, toolboxes, tracing, governance. Semantic Kernel + AutoGen merged. Work IQ APIs give agents email, calendar, org context. Rayfin SDK for backend scaffolding. Gap: Azure-native; high vendor lock-in; separate concern from doc synchronisation. 
 
-```
 12
-```
-
-
-
 
 
 #### **`THE SHIFT (2026 DATA)`** 

@@ -23,17 +23,11 @@ A comprehensive cross-platform comparison: emerging techniques, unsolved researc
 ![](/img/agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report.pdf-0001-04.png)
 
 
-<!-- Start of picture text -->
-RESEARCH GAPS<br><!-- End of picture text -->
-
 **ANTI-PATTERN CATALOG** 
 
 
 ![](/img/agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report.pdf-0001-06.png)
 
-
-<!-- Start of picture text -->
-10+ PLATFORMS<br><!-- End of picture text -->
 
 ###### **PLATFORMS COMPARED:** 
 
@@ -110,10 +104,8 @@ Innovations & Research Report
 |**Closing: Decision Framework**|**18**|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 2 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -133,12 +125,10 @@ This report extends prior architectural analysis with a forward-looking innovati
 |**Cost-per-context-token is now**<br>**a competitive axis**|Context caching (Gemini), prompt caching (Claude/OpenAI), and hierarchical retrieval<br>are converging on the same goal: decouple conversation length from per-message cost.|
 
 
-
 **INFO:** How to use this report: Part A identifies what to adopt or pilot now. Part B frames what remains genuinely unsolved—useful for setting realistic expectations with stakeholders. Part C provides side-by-side platform data for build-vs-buy decisions. Part D is a checklist-style reference for architecture reviews. 
 
 Confidential — Research Report  |  June 2026 
 
-Page 3 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -163,7 +153,6 @@ The MemGPT pattern—treating the context window as 'RAM' and external storage a
 |Anthropic Memory Tool<br>(API)|Beta/Preview|Developer-controlled memory file system the model can<br>read/write via tool calls|Claude API/Agent SDK<br>builders|
 
 
-
 ### **A.2 Context Caching & Prompt Reuse** 
 
 When large portions of a prompt (system instructions, project documents, conversation history) remain identical across requests, providers can cache the model's internal key-value representation of that content and skip recomputation. This converts a linear-cost problem into a near-constant one for the cached portion. 
@@ -175,14 +164,12 @@ When large portions of a prompt (system instructions, project documents, convers
 |OpenAI|Prompt Caching|Automatic for prompts >1024<br>tokens|Up to 50% reduction on<br>cached prefix|Automatic, no explicit<br>cache management<br>needed|
 
 
-
 ### **A.3 Hybrid Vector + Knowledge Graph Retrieval (Graph RAG)** 
 
 Pure vector similarity search struggles with multi-hop questions ('what did the client say about the budget in relation to their Q3 hiring plan?'). Graph RAG extracts entities and relationships into a knowledge graph, then combines graph traversal with vector search. Microsoft's GraphRAG research (2024) catalyzed broad adoption; by 2025-2026 
 
 Confidential — Research Report  |  June 2026 
 
-Page 4 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -244,7 +231,6 @@ As multi-agent systems mature, a clear pattern has emerged: spin up sub-agents w
 
 Confidential — Research Report  |  June 2026 
 
-Page 5 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -266,10 +252,8 @@ Maturity ratings: Production (widely deployed) / Beta (available, limited rollou
 |Letta|Production (core<br>focus)|N/A|Beta|Beta|Production|Production|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 6 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -301,7 +285,6 @@ Durable execution engines solve step-level recovery well: if an agent fails betw
 
 Confidential — Research Report  |  June 2026 
 
-Page 7 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -333,7 +316,6 @@ Long-term memory creates a growing, detailed dossier on each user—exactly the 
 
 Confidential — Research Report  |  June 2026 
 
-Page 8 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -353,7 +335,6 @@ Users and enterprises increasingly want visibility into agent reasoning for trus
 
 Confidential — Research Report  |  June 2026 
 
-Page 9 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -383,7 +364,6 @@ _Granular, implementation-level comparison across twelve platforms and libraries
 |LangGraph (lib)|Checkpoint-based state|Postgres/SQLite/Redis/Me<br>mory|N/A (library)|Full (it's your<br>DB)|Per-thread|
 
 
-
 ### **C.2 Session & Context Management** 
 
 |**Platform**|**Context Window**|**Caching**|**Summarization**|**Resume Quality**|
@@ -394,10 +374,8 @@ _Granular, implementation-level comparison across twelve platforms and libraries
 |Copilot|128K (model-dependent)|Partial|Graph-augmented context|Medium|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 10 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -410,7 +388,6 @@ Innovations & Research Report
 |Devin|Provider-dependent|Provider-dependent|Session-level summaries|High|
 |Replit Agent|Provider-dependent|Provider-dependent|Checkpoint-based|Medium-High|
 |OpenHands|Provider-dependent|Provider-dependent|Configurable|Medium<br>(self-managed)|
-
 
 
 ### **C.3 Agent Recovery & Durability** 
@@ -428,7 +405,6 @@ Innovations & Research Report
 |Temporal|Activity-level (native)|Native (idempotency keys)|Native (signals)|Full event history, native|
 
 
-
 ### **C.4 Trace & Observability** 
 
 |**Platform**|**Reasoning Visibility**|**Tool Call Visibility**|**Export/API Access**|**OTel Compatible**|
@@ -442,10 +418,8 @@ Innovations & Research Report
 |OpenHands|Full verbose (open source)|Full|Full JSON export|Yes (self-instrumented)|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 11 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -455,7 +429,6 @@ Innovations & Research Report
 |---|---|---|---|---|
 |LangSmith|N/A (observability tool)|Full capture|Full API|Yes (native)|
 |Arize Phoenix|N/A (observability tool)|Full capture|Full API|Yes (native)|
-
 
 
 ### **C.5 Governance & Enterprise Readiness** 
@@ -472,7 +445,6 @@ Innovations & Research Report
 |mem0 / Letta|Developer-impleme<br>nted|Developer-impl<br>emented|Any (you choose<br>backend)|Depends on backend<br>chosen|Full (your<br>infrastructure)|
 
 
-
 ### **C.6 Cost & Performance Profile (Qualitative)** 
 
 Exact pricing changes frequently and is not reproduced here; the table below reflects relative cost-efficiency patterns for long-running, memory-heavy usage as of 2025-2026. 
@@ -486,10 +458,8 @@ Exact pricing changes frequently and is not reproduced here; the table below ref
 |Self-hosted<br>(OpenHands, mem0)|Depends entirely on<br>architecture|Your infrastructure + model choice|Most control, most operational<br>responsibility|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 12 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -579,7 +549,6 @@ _A consolidated, checklist-ready reference. Best practices are organized by arch
 
 Confidential — Research Report  |  June 2026 
 
-Page 13 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -611,7 +580,6 @@ Innovations & Research Report
 
 Confidential — Research Report  |  June 2026 
 
-Page 14 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -683,7 +651,6 @@ Regenerating an artifact repeatedly creates dozens of near-identical versions wi
 
 Confidential — Research Report  |  June 2026 
 
-Page 15 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -749,10 +716,8 @@ Prevalence reflects how frequently each anti-pattern was observed across the pla
 |AP-10|Project Fragmentation|Medium|High|Org adoption review|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 16 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -767,10 +732,8 @@ Innovations & Research Report
 |AP-15|Cross-Tenant Query Scoping|Critical|Low|Security review / pentest|
 
 
-
 Confidential — Research Report  |  June 2026 
 
-Page 17 of 18 
 
 **AI MEMORY & AGENT ARCHITECTURE — INNOVATIONS & RESEARCH** 
 
@@ -808,11 +771,9 @@ _A condensed framework for translating this report into architectural decisions.
 
 - scratch—both encode many of the D.1 best practices by default. 
 
-• **Budget research time for the Part B open problems that affect your use case** —particularly B.1 (provenance) and B.7 (privacy) if handling sensitive personal data, and B.3 (fine-grained recovery) if your agents perform irreversible actions. 
+- **Budget research time for the Part B open problems that affect your use case** —particularly B.1 (provenance) and B.7 (privacy) if handling sensitive personal data, and B.3 (fine-grained recovery) if your agents perform irreversible actions. 
 
 **INFO:** Final note: the field is moving quickly enough that specific product features (Part A, Part C) should be re-verified against current documentation before final decisions. The structural findings—provenance gaps, anti-pattern recurrence, and the shift toward portable memory via MCP—are more durable than any individual platform's current feature set and are the recommended basis for long-term architectural bets. 
 
 Confidential — Research Report  |  June 2026 
-
-Page 18 of 18 
 

@@ -48,7 +48,6 @@ The keyless path is the operationally important one: it eliminates long-lived pr
 |3|per run, destroyed after) + non-privileged, no-volume-<br>mount build steps so provenance-signing keys are<br>unreachable even by the build script itself|Self-Managed Enterprise Edition, because it<br>requires Harness-hosted, per-run ephemeral<br>build infrastructure|
 
 
-
 Source: Harness SCS documentation. **<mark>DOCUMENTED</mark>** — this is a genuinely useful diligence item: an organization requiring SLSA Level 3 as a compliance bar cannot get there on a fully self-managed/air-gapped Harness deployment. 
 
 ### **Air-gapped caveats worth flagging to security reviewers** 
@@ -83,7 +82,6 @@ Harness tracks the four (now sometimes five, adding Reliability/MTBF) DORA metri
 |**Software**|Organization-wide, correlates 40+ integrated|Root-causing_why_lead time is long — e.g.,|
 |**Engineering**|data sources (Jira, GitHub, GitLab, Jenkins,|surfacing that delays trace to code-review|
 |**Insights (SEI)**|PagerDuty, etc.) against a configurable**DORA**<br>**Profile**and**correlation engine**|bottlenecks in GitHub rather than anything<br>in the CD pipeline itself|
-
 
 
 Harness Security, Supply Chain & Observability — 3 

@@ -1,14 +1,17 @@
 ---
-title: "Operating Model, Maturity Model & 24Month Roadmap"
-date_created: 2026-07-10
+title: "Operating Model & Security Maturity Roadmap"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "06-Operating-Model-Maturity-Roadmap.pdf"
-doc_type: guide
-tags: ["ai-security", "governance"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: ["ai-security", "operating-model", "maturity", "roadmap"]
 ---
+
+<!-- converted from 06-Operating-Model-Maturity-Roadmap.pdf -->
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ##### **VOLUME 6 OF 6 — CAPSTONE** 
 
@@ -22,17 +25,26 @@ Enterprise Agent Operating Model, Maturity Levels, Security Review Checklists, P
 
 _Enterprise Agentic AI Security Architect (2026–2030) Master Research Program_ 
 
-Page 1 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Table of Contents** 
 
-Page 2 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Executive Summary** 
 
 The first five volumes of this program answered "what does a secure, governed agentic AI ecosystem look like." This volume answers the harder organizational question: who builds it, who runs it, how is success measured, and in what order should an enterprise actually do this work given finite budget and finite people. It closes the program with the operating model (Domain 22), a five-level maturity model the enterprise can use to self-assess and to set a realistic multi-year target, a consolidated set of review checklists, an interview guide for hiring into this role, and a curated learning path — because the most sophisticated reference architecture in the world is only as good as the organization's ability to staff, govern, and continuously operate it. 
 
-Page 3 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Domain 22 — Enterprise Agent Operating Model** 
 
@@ -49,6 +61,7 @@ No single team owns agentic AI security end to end, and attempting to build one 
 |AI SOC|Contnuous monitoring, detecton, and incident<br>response (Volume 4, Domain 10), including<br>operatng the kill-switch framework|Reports to the AI CISO, typically<br>integrated into or co-located with the<br>existng enterprise SOC|
 |Red Team|Adversarial testng (Volume 4, Domain 12),<br>feeding purple-team fndings back into the AI<br>SOC's detecton logic|Reports to the AI CISO, organizatonally<br>independent from the AI Security Ofce<br>to preserve adversarial objectvity|
 
+
 ### **22.2 RACI — Core Program Activities** 
 
 |**Actvity**|**AI Gov.**<br>**Board**|**AI Security**<br>**Ofce**|**Agent Ops**|**Platorm**<br>**Eng.**|**AI SOC**|**Red Team**|
@@ -56,7 +69,11 @@ No single team owns agentic AI security end to end, and attempting to build one 
 |Approve new agent<br>autonomy level ≥ L3|A|C|R|I|I|I|
 |Defne identty & MCP/A2A<br>policy|C|A/R|I|C|I|I|
 
-Page 4 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 |**Actvity**|**AI Gov.**<br>**Board**|**AI Security**<br>**Ofce**|**Agent Ops**|**Platorm**<br>**Eng.**|**AI SOC**|**Red Team**|
 |---|---|---|---|---|---|---|
@@ -67,6 +84,7 @@ Page 4 of 15
 |Conduct red/purple team<br>exercises|I|C|I|C|C|A/R|
 |Regulatory fling / incident<br>reportng|A|C|I|I|R|I|
 |Quarterly risk reportng to<br>board|A/R|C|I|I|C|I|
+
 
 R = Responsible, A = Accountable, C = Consulted, I = Informed. 
 
@@ -83,7 +101,11 @@ R = Responsible, A = Accountable, C = Consulted, I = Informed.
 |% of MCP servers / A2A peers passing gateway<br>validaton on frst registraton atempt|Track trend, not a<br>target directon in<br>isolaton|MCP/A2A gateway logs (Volume 2)|
 |Framework crosswalk coverage (regulatons with<br>current, evidenced control mapping)|↑ toward 100%|AI Governance Board (Volume 3, Domain<br>11)|
 
-Page 5 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Enterprise Agent Maturity Model (Levels 1–5)** 
 
@@ -97,13 +119,21 @@ Use this model for honest self-assessment, not for marketing the program interna
 |4|Measured|Agent Reliability Engineering<br>SLIs/SLOs are operatng; AI<br>SOC correlates across all<br>seven monitored surfaces<br>(Volume 4, Domain 10.2); kill-<br>switch and FinOps circuit<br>breakers are unifed and<br>tested|Trust-score-informed<br>dynamic authorizaton<br>(Volume 3, Domain 13)<br>layered on identty|Purple-team loop closed; KPIs<br>reported quarterly to the board<br>with trend data, not point-in-<br>tme snapshots|
 |5|Optmizing|Post-quantum-ready identty<br>and payment infrastructure;<br>agent trust extends to<br>verifed external<br>counterpartes via<br>decentralized identty /<br>verifable credentals; the<br>program contributes back to<br>industry standards bodies|Hybrid classical/PQC<br>credentals; verifable-<br>credental-based<br>external trust|Governance model antcipates<br>regulatory change rather than<br>reactng to it; the enterprise is a<br>reference case other<br>organizatons benchmark against|
 
-Page 6 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 |**Lev**<br>**el**|**Designaton**|**Characteristc State**|**Identty Patern**|**Governance Patern**|
 |---|---|---|---|---|
 |||rather than only consuming<br>them|||
 
-Page 7 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Security Review Checklists** 
 
@@ -143,7 +173,10 @@ These are intentionally condensed to the highest-leverage items from each volume
 
 - **☐ Scanning —** Tool definitions and descriptions scanned for hidden-instruction / poisoning patterns prior to registration (Volume 2, Domain 5.3). 
 
-Page 8 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 - **☐ Schema validation —** Discovery-time and invocation-time schema validation both configured at the gateway, not discovery-time only (Volume 2, Domain 5.4). 
 
@@ -161,7 +194,10 @@ Page 8 of 15
 
 - **☐ Supply chain —** Component recorded in the AI BOM with applicable provenance documentation (Model Card / Agent Card) (Volume 3, Domain 17). 
 
-Page 9 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Principal Architect Interview Guide** 
 
@@ -199,7 +235,10 @@ These questions are designed to distinguish candidates who have absorbed current
 
 3. Describe an incident where a reliability problem and a security problem were actually the same underlying issue, and how your operating model would surface that connection rather than splitting it across two teams. 
 
-Page 10 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **24-Month Learning & Implementation Roadmap** 
 
@@ -239,13 +278,19 @@ This roadmap is sequenced for an enterprise architect or security architect buil
 
 - Pilot delegated agent spending under AP2 or an equivalent payment-mandate protocol for a bounded, low-risk use case, with full FinOps and cognitive-security controls in place first (Volume 5, Domain 16). 
 
-Page 11 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 - Begin architecting crypto-agility into every new identity, MCP, A2A, and payment-mandate component (Volume 5, Domain 21) — not a full PQC migration, but ensuring nothing built in this window becomes a forklift-upgrade liability later. 
 
 - Conduct a full maturity-model self-assessment against the five-level model in this volume and set the explicit, board-approved target maturity level for the following 24 months. 
 
-Page 12 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Certifications, Standards, and Communities to Track** 
 
@@ -258,6 +303,7 @@ Page 12 of 15
 |OSAI (OfSec)|Ofensive AI techniques with an<br>extended, exam-style endurance<br>assessment|Practtoners who already hold<br>OfSec credentals and want AI-<br>specifc depth|
 |||GRC professionals, privacy<br>|
 |AIGP (AI Governance Professional,<br>IAPP)|Policy, compliance, and risk management<br>rather than technical security|ofcers, and AI Governance<br>Board members rather than<br>hands-on architects|
+
 
 AI security roles are commanding meaningfully elevated compensation as of 2026, reported in the roughly $150,000–$290,000 range depending on seniority and specialization, reflecting both the acute skills shortage and the speed at which the field is professionalizing. 
 
@@ -277,7 +323,10 @@ AI security roles are commanding meaningfully elevated compensation as of 2026, 
 
 - MITRE ATLAS — atlas.mitre.org — continuously updated adversary-tactics knowledge base for AI-specific techniques. 
 
-Page 13 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ### **Open-Source Tooling and Repositories Worth Evaluating** 
 
@@ -293,7 +342,10 @@ Page 13 of 15
 
 - Open Policy Agent (OPA) and Cedar — the two leading policy-engine choices for the centralized authorization layer specified throughout this program. 
 
-Page 14 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+
+
+_Operating Model, Maturity Model & Roadmap_ 
 
 ## **Closing Note: How to Use This Program** 
 
@@ -301,4 +353,5 @@ Six volumes, twenty-two domains, and a stack of checklists are only useful if th
 
 _This program reflects the state of a genuinely fast-moving field as of June 2026. Treat the architectural patterns — identity-first design, centralized gateways, layered threat modeling, autonomy earned rather than granted by default — as durable. Treat the specific vendor names, protocol version numbers, and standards-body timelines as a snapshot to be re-verified against current sources before any major investment decision._ 
 
-Page 15 of 15
+Enterprise Agentic AI Security Architect Program  |  EASA-06 
+

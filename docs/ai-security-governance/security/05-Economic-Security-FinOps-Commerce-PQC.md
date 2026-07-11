@@ -1,14 +1,17 @@
 ---
-title: "Economic Security: FinOps, Autonomous Commerce & Post-Quantum"
-date_created: 2026-07-10
+title: "Economic Security, FinOps, Commerce & Post-Quantum Cryptography"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "05-Economic-Security-FinOps-Commerce-PQC.pdf"
-doc_type: guide
-tags: ["ai-security", "governance"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: ["ai-security", "finops", "economic-security", "pqc"]
 ---
+
+<!-- converted from 05-Economic-Security-FinOps-Commerce-PQC.pdf -->
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 #### **VOLUME 5 OF 6** 
 
@@ -20,11 +23,17 @@ Agent Cost Governance, Delegated Spending and Payment Mandates, and Quantum-Read
 
 _Enterprise Agentic AI Security Architect (2026–2030) Master Research Program_ 
 
-Page 1 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 ## **Table of Contents** 
 
-Page 2 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 ## **Executive Summary** 
 
@@ -32,7 +41,10 @@ This volume covers a category of risk that does not fit neatly into either tradi
 
 The third domain in this volume, post-quantum readiness, sits alongside FinOps and commerce for a specific reason: the cryptographic identity and payment-mandate infrastructure this entire program is built on (SPIFFE certificates, signed Agent Cards, payment mandates) is exactly the kind of long-lived, high-value cryptographic material that harvest-now-decrypt-later attacks target, and agent infrastructure being built today will still be in service well past the timelines NIST and the NSA have set for deprecating classical algorithms. 
 
-Page 3 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 ## **Domain 15 — Agent FinOps & Economic Security** 
 
@@ -58,18 +70,26 @@ The architecture this program specifies treats cost governance as a first-class 
 |Anomaly detecton on<br>spend velocity|rate anomalies (a 10x normal burn rate in fve<br>minutes is a signal regardless of whether any<br>individual acton looks malicious)|— a spend anomaly should trigger the<br>same investgaton workfow as a<br>security anomaly|
 |Automatc circuit<br>breakers|Budget envelope breach triggers automatc task<br>suspension, not just an alert; ted to the kill-<br>switch framework (Domain 14, Volume 3)|Same revocaton mechanism as a<br>security-triggered kill switch —<br>credental/SVID revocaton, not a sof|
 
-Page 4 of 9 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 |**Component**|**Functon**|**Integraton Point**|
 |---|---|---|
 |||"please stop" signal to the agent|
 |Cost-per-outcome<br>reportng|Cost normalized against the ARE reliability metric<br>"cost-per-successful-task" (Volume 4, Domain<br>19.1), not raw spend alone|Feeds both FinOps reportng and the<br>reliability error-budget calculaton —<br>connectng cost directly to whether<br>the spend produced value|
 
+
 ##### **Design principle: one circuit breaker, two trigger sources** 
 
 Build a single kill-switch and circuit-breaker mechanism that can be triggered either by security policy violation or by budget-envelope breach, rather than building two separate emergency-stop systems owned by two different teams. In practice the two trigger sources are correlated more often than not — runaway cost is frequently the first observable symptom of a cascading failure or a compromised agent, well before a security-specific signal fires. 
 
-Page 5 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 ## **Domain 16 — Autonomous Commerce Security** 
 
@@ -86,9 +106,13 @@ AP2 addresses a structural problem traditional payment APIs were never designed 
 |Verifable setlement<br>receipts|Deterministc, auditable proof that a<br>transacton setled as authorized|Supports dispute resoluton and regulatory<br>audit without relying on trust in any single<br>party's transacton log|
 |Per-task spend caps|Hard limits scoped to the specifc<br>delegated task, independent of the agent's<br>broader FinOps budget envelope (Domain<br>15)|A second, transacton-specifc control layer on<br>top of the general budget-governance layer —<br>defense in depth for spending authority<br>specifcally|
 
+
 Independent security analysis of AP2 reports a meaningful fraud-rate improvement over API-centric agent payment integrations — base fraud rates around 2.1% for conventional API-based agent payment flows versus approximately 1.15% under AP2's verifiable-intent model, with the largest improvement specifically in tampering-related fraud, attributed to the mandate-signing mechanism making transaction tampering cryptographically detectable rather than merely procedurally discouraged. 
 
-Page 6 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 ### **16.2 Demonstrated Attack Surface: Prompt Injection Against Payment Agents** 
 
@@ -106,7 +130,10 @@ Published red-team research targeting AP2 specifically via prompt injection conf
 
 5. Spend caps under Domain 15's FinOps envelope and AP2's per-task mandate caps are treated as independent, redundant controls — a misconfiguration in one should not silently remove the protection of the other. 
 
-Page 7 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 ## **Domain 21 — Quantum-Ready Agent Security** 
 
@@ -123,13 +150,17 @@ NIST finalized its first three post-quantum cryptographic standards in August 20
 |FIPS 205|SLH-DSA (formerly<br>SPHINCS+)|Hash-based digital signatures<br>(stateless, conservatve fallback)|Finalized; relies solely on hash-functon<br>security rather than latce<br>assumptons — recommended as a<br>crypto-agility fallback alongside ML-<br>DSA rather than a primary scheme,<br>given its substantally larger signature<br>sizes|
 |HQC|Hamming Quasi-<br>Cyclic|Alternatve, non-latce key<br>encapsulaton mechanism|Selected March 2025 as a structurally<br>independent backup to ML-KEM; draf<br>publicaton expected 2026, full<br>standardizaton expected 2027|
 
+
 NIST's draft guidance (IR 8547) calls for deprecating quantum-vulnerable algorithms — RSA, ECDSA, EdDSA, DH, and ECDH — by 2030, with full retirement by 2035; the NSA has separately mandated post-quantum capability for national security systems by 2025, moving to exclusive PQC use by 2035. These are not distant timelines relative to the operational life of identity and payment infrastructure being architected now. 
 
 ### **21.2 Practical Constraints** 
 
 Post-quantum migration is not a drop-in algorithm swap, and agent infrastructure has specific exposure to the practical constraints involved. ML-KEM operations on resource-constrained edge or embedded inference hardware run roughly two orders of magnitude slower than on server-class CPUs, and memory requirements 
 
-Page 8 of 9 
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+
+
+_Economic Security: FinOps, Commerce & Post-Quantum_ 
 
 increase two-to-fivefold compared to classical algorithms — directly relevant for any agent runtime architecture (Volume 1, Domain 7) deployed to edge inference or constrained sandboxed environments rather than full server-class compute. Signature sizes also grow substantially: ML-DSA signatures run roughly 2,400–4,600 bytes and SLH-DSA signatures 7,800–49,900 bytes, versus a few hundred bytes for classical ECDSA — a material consideration for any high-frequency signing operation, such as per-task mandate signing under AP2 (Domain 16) or per-request SPIFFE SVID issuance at agent-population scale (Volume 2, Domain 2). 
 
@@ -151,4 +182,5 @@ Crypto-agility — the capability to rotate cryptographic algorithms quickly wit
 
 Post-quantum readiness is a multi-year migration, not a 2026 deliverable, and should not compete for budget against the identity, MCP, A2A, and governance priorities in Volumes 2 and 3 that address active, currently-exploited risk. The correct near-term action is architectural: ensure every new identity, MCP, A2A, and payment-mandate component procured or built from this point forward supports crypto-agility and hybrid algorithms, so the eventual PQC migration is a configuration change rather than a forklift replacement of infrastructure being built today. 
 
-Page 9 of 9
+Enterprise Agentic AI Security Architect Program  |  EASA-05 
+

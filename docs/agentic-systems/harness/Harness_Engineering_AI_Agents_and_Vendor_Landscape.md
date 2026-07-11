@@ -150,7 +150,6 @@ Tekton provides the underlying custom-resource pipeline engine that other projec
 |**No native harness;**<br>**agents operate above/**<br>**around it**|Jenkins, ArgoCD,<br>Spinnaker, Tekton,<br>Humanitec|Mature, often CNCF-grade infrastructure that agentic tooling treats<br>as a target to generate config for or reconcile against, rather than a<br>platform that runs agents itself|
 
 
-
 **The throughline back to Part 1:** the vendors in the top tier all converged, independently, on the same governance pattern that Part 1 identifies as the hard part of harness engineering — scoped per-agent identity, 
 
 Harness Engineering (AI Agents) — 7 

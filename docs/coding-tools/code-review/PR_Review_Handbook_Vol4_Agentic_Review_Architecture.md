@@ -18,8 +18,7 @@ Designing the Autonomous Review Pipeline — Specialist Reviewer Agents, MCP/A2A
 
 A reference architecture for enterprise agentic review, grounded in the current state of the MCP and A2A protocol ecosystem, LangGraph-style multi-agent orchestration patterns, and established governance-board practice adapted for autonomous review pipelines. 
 
-Series: 5 Volumes · Volume 4 of 5 
-
+Series: 5 Volumes · Volume
 July 2026 
 
 ## **Contents** 

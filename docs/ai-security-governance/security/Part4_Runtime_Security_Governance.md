@@ -1,17 +1,17 @@
 ---
-title: "Part 4"
-date_created: 2026-07-10
+title: "Agent Runtime, MCP Security & Governance"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "Part4_Runtime_Security_Governance.pdf"
-doc_type: guide
-tags: ["ai-security", "governance"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: ["ai-security", "runtime", "mcp", "governance", "rbac"]
 ---
 
-Enterprise AI Authentication Research • Part 4 of 7 
+<!-- converted from Part4_Runtime_Security_Governance.pdf -->
 
+Enterprise AI Authentication Research - Part
 # **Part 4** 
 
 ## **Agent Runtime, MCP Security & Governance** 
@@ -19,6 +19,7 @@ Enterprise AI Authentication Research • Part 4 of 7
 Agent runtimes, MCP/A2A protocols, Zero Trust security, RBAC/ABAC/PBAC governance, and complete audit chains 
 
 Enterprise Authentication & Identity Propagation for AI Agents 
+
 
 ### **Agent Runtime — Authentication Context** 
 
@@ -38,6 +39,7 @@ Agent runtimes are the execution environments in which AI agents invoke tools, m
 |Google ADK|Service account +<br>user delegation|OIDC sub claim|Vertex Extensions|Google Cloud agents|
 |OpenAI Responses<br>API|API key + user param|user string (opaque)|Via tools|ChatGPT, custom<br>GPTs|
 
+
 #### **What Context Should Every Tool Receive?** 
 
 A well-designed agent runtime passes rich context with every tool invocation — not just an OAuth token. The following context enables authorization, audit, and governance at the tool layer. 
@@ -50,6 +52,7 @@ A well-designed agent runtime passes rich context with every tool invocation —
 |Tenant / Org ID|Multi-tenant isolation|Token claim / header|YES — for SaaS systems|
 |Roles / Groups|RBAC authorization at tool|Token claims|Recommended|
 
+
 |**Context Field**|**Purpose**|**Passed By**|**Required?**|
 |---|---|---|---|
 |Custom Claims (ABAC<br>attrs)|Fine-grained<br>attribute-based authz|Token claims / header|For sensitive tools|
@@ -59,6 +62,7 @@ A well-designed agent runtime passes rich context with every tool invocation —
 |Agent ID|Identify which agent is<br>calling|Header / JWT actor claim|YES — for agent audit|
 |Request Timestamp|Replay prevention|Header or JWT iat claim|Recommended|
 |Scope List|Explicit scope boundary|OAuth scope claim|YES — prevent scope<br>creep|
+
 
 #### **MCP — Model Context Protocol Security** 
 
@@ -94,6 +98,7 @@ MCP is Anthropic's open standard for AI tool integration. An MCP server exposes 
 
 ↓ 
 
+
 |**4**<br> ↓|MCP server validates: (a) JWT signature, (b) user identity, (c) tool permission<br>|
 |---|---|
 |**5**|MCP server calls GitHub API using user's token: GET /repos/.../pulls/142|
@@ -106,11 +111,13 @@ MCP is Anthropic's open standard for AI tool integration. An MCP server exposes 
 |Audit|Each A2A message includes trace_id for end-to-end<br>correlation|
 |Replay|Prevention<br>JWT iat + exp claims; nonce in message body|
 
+
 #### **A2A — Agent-to-Agent Protocol (Google)** 
 
 Google's A2A protocol defines how AI agents communicate with each other in a standardised way. Agent identity is established through an AgentCard — a well-known JSON document describing the agent's capabilities and authentication requirements. A2A security relies on JWT bearer tokens with the acting user's identity preserved in the 'sub' claim. 
 
 ##### **A2A Protocol Security Properties** 
+
 
 ### **Security — Zero Trust for AI Agents** 
 
@@ -129,6 +136,7 @@ Zero Trust architecture treats every request — even from inside the corporate 
 |Device Health|Validate agent runtime integrity|Agent image signing; attestation; no<br>unapproved plugins|
 |Data Classification|Respect sensitivity labels|AI output filtered by data classification<br>of sources used|
 
+
 #### **Security Threat Taxonomy for AI Agents** 
 
 ##### **AI Agent Security Threats and Mitigations** 
@@ -140,6 +148,7 @@ Zero Trust architecture treats every request — even from inside the corporate 
 |Identity Spoofing|Attacker claims to be a different user<br>in the AI context|Validate identity from trusted IdP<br>token only; reject self-asserted<br>identity|
 |Session Hijacking|Attacker steals session cookie or<br>access token|HttpOnly cookies; token binding;<br>anomaly detection; CAE revocation|
 
+
 |**Threat**|**Description**|**Mitigation**|
 |---|---|---|
 |Replay Attack|Old token reused after expiry|Short token lifetimes; nonce<br>validation; token binding; CAE|
@@ -148,6 +157,7 @@ Zero Trust architecture treats every request — even from inside the corporate 
 |Privilege Escalation|Agent uses capabilities beyond what<br>user authorised|Scope validation at tool layer; deny by<br>default; explicit capability grants|
 |Cross-Agent Attacks|Malicious agent poisons shared<br>memory or context|Agent isolation; signed A2A<br>messages; no shared mutable state|
 |Data Leakage via LLM|LLM includes sensitive data from one<br>user in another user's response|Per-conversation context isolation;<br>DLP on outputs; no cross-user context|
+
 
 #### **MCP Security — Known Attack Vectors** 
 
@@ -162,6 +172,7 @@ Zero Trust architecture treats every request — even from inside the corporate 
 - Scope creep: MCP server requests broader OAuth scopes than tool requires 
 
 - Unauthorised tool registration: MCP server list manipulation if not cryptographically signed 
+
 
 ### **Governance — Authorization Models** 
 
@@ -179,6 +190,7 @@ Enterprise AI governance requires authorization checks at multiple layers. The c
 |Cedar|Cedar Policy<br>Language (AWS)|Fine-grained<br>entity-based|AWS, Verified<br>Permissions|Policy as code with<br>entity graphs|
 |OPA/Rego|Open Policy Agent|Arbitrary rule<br>complexity|Kubernetes, API<br>gateways|Rego rules evaluated<br>per request|
 
+
 #### **Where Authorization Occurs in the AI Stack** 
 
 ##### **Authorization Enforcement Points** 
@@ -191,10 +203,12 @@ Enterprise AI governance requires authorization checks at multiple layers. The c
 |Inside tool (at API)|Does user's OAuth token<br>have required scopes?|Target API (GitHub,<br>ServiceNow, etc.)|API returns 401/403; agent<br>handles gracefully|
 |After tool response|Does response contain<br>data user shouldn't see?|DLP / data classification<br>layer|Response redacted; audit<br>event raised|
 
+
 |**Authorization Point**|**What is Checked**|**Who Enforces**|**Failure Mode**|
 |---|---|---|---|
 |After LLM response|Does final answer contain|Output DLP / Purview|Response filtered before|
 ||sensitive data?||delivery to user|
+
 
 #### **Microsoft Entra Conditional Access for AI** 
 
@@ -211,15 +225,21 @@ Conditional Access (CA) policies in Microsoft Entra ID can enforce authenticatio
 |Session Controls|Limit AI session to 8 hours|Forces re-authentication after<br>absolute timeout|
 |App Restriction|Block AI apps in guest/B2B tenants|External users cannot use AI on<br>corporate data|
 
+
 ### **Complete Audit Chain** 
 
 A complete enterprise AI audit chain connects every user action to every downstream API call through a set of correlated identifiers. This is essential for compliance, incident investigation, and demonstrating to auditors that AI actions are traceable to human actors. 
 
 ##### **Complete AI Audit Chain (10 Steps)** 
 
+
+![Figure 1](/img/ai-security-governance/security/part4-runtime-security-go-p9-1.png)
+
+
 #### **Correlation ID Architecture** 
 
 ##### **Correlation ID Taxonomy** 
+
 
 |**Identifier**|**Scope**|**Generated By**|**Used In**|
 |---|---|---|---|
@@ -232,6 +252,7 @@ A complete enterprise AI audit chain connects every user action to every downstr
 |token_jti|JWT token instance|IdP (jti claim)|Identifies specific token<br>used for each API call|
 |oauth_client_id|OAuth client (AI app)|OAuth registration|Identifies which AI app<br>performed token exchange|
 |agent_id|AI agent instance|Agent runtime|For multi-agent systems —<br>identifies which agent acted|
+
 
 ###### **Audit Log Requirements for Regulated Industries** 
 
@@ -256,6 +277,7 @@ A complete enterprise AI audit chain connects every user action to every downstr
 |Microsoft Purview|Copilot Activity|CEF / JSON|UserId, ConversationId,<br>ActionType, PolicyResult|
 |Entra ID|Sign-in + Audit|JSON / Log Analytics|UserId, AppId, TokenType,<br>CondAccessStatus|
 
+
 |**Log Source**|**Log Type**|**SIEM Format**|**Key Fields**|
 |---|---|---|---|
 |GitHub|Org Audit Log|JSON / SIEM streaming|actor, repo, action,<br>programmatic|
@@ -263,3 +285,5 @@ A complete enterprise AI audit chain connects every user action to every downstr
 |MCP Server|Tool invocation log|JSON / structured|tool_name, user_id,<br>conversation_id, trace_id|
 |Slack|Audit Logs API|JSON|actor, action, entity, context<br>(ip, ua)|
 |Salesforce|Event Monitoring|CSV / JSON|UserId, EventType,<br>ObjectType,<br>QueriedEntities|
+
+

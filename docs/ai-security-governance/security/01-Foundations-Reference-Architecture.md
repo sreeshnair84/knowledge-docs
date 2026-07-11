@@ -1,15 +1,17 @@
 ---
 title: "Foundations & Reference Architecture"
-date_created: 2026-07-10
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "01-Foundations-Reference-Architecture.pdf"
-doc_type: guide
-tags: ["ai-security", "governance"]
-last_reviewed: 2026-07-10
-framework_name: ""
-covers_version: "N/A"
+tags: ["ai-security", "governance", "enterprise-architecture", "agentic-ai"]
 ---
+
+<!-- converted from 01-Foundations-Reference-Architecture.pdf -->
+
+_Foundations & Reference Architecture_ 
 
 ##### **VOLUME 1 OF 6** 
 
@@ -21,11 +23,17 @@ Security Frameworks, Agent Lifecycle Security, Runtime Isolation, and the AI Sec
 
 _Enterprise Agentic AI Security Architect (2026–2030) Master Research Program_ 
 
-Page 1 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Table of Contents** 
 
-Page 2 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Executive Summary** 
 
@@ -39,7 +47,10 @@ An AI agent is not a feature of an application. It is a new class of execution p
 
 This volume covers four domains that together form the architectural spine of the program: established enterprise security architecture frameworks adapted for agents (Domain 1), the security model for the agent lifecycle itself (Domain 4), the runtime and isolation layer agents execute within (Domain 7), and the security mesh pattern that ties identity, policy, memory, and observability together at scale (Domain 20). Later volumes go deep on identity, MCP, A2A, governance, and operations; this volume gives the reader the scaffolding those deep dives hang on. 
 
-Page 3 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Domain 1 — Security Architecture Frameworks for Agentic AI** 
 
@@ -65,7 +76,10 @@ TOGAF's Architecture Development Method (ADM) needs two structural adaptations f
 
 Second, and more consequentially, Phase G (Implementation Governance) needs a fast-path review track for agents. The standard TOGAF architecture review cadence — periodic, document-heavy, aligned to project milestones — cannot keep pace with an organization where a developer can stand up a new agent, register a new MCP tool, or grant a new scope in minutes. Most enterprises that have gotten this right have built a lightweight, automatable "Agent Architecture Compliance" gate: a machine-checkable policy (expressed in 
 
-Page 4 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 something like Cedar or OPA — see Domain 5) that runs at registration time and blocks non-compliant agents from being provisioned, backed by a periodic human-led architecture review for anything above a defined risk threshold. 
 
@@ -82,13 +96,17 @@ The Zachman Framework's six interrogatives map cleanly onto the agentic stack an
 |When|Business events, processing cycles|Agent lifecycle states: provisioned, actve,<br>suspended, retred; session and task lifecycles|
 |Why|Business goals, strategy, motvaton|Agent purpose statement, authorized objectve,<br>governance approval, autonomy-level<br>justfcaton|
 
+
 The deliverable from this exercise is an Agent Security Architecture Repository — a single structured inventory, ideally machine-readable, where every registered agent has a populated cell for each of the six interrogatives. In practice this becomes the backbone of the Agent Registry described in Domain 14: an agent with an undefined "Why" or an unbounded "Where" is, definitionally, ungoverned. 
 
 ###### **Comparative note: how the framework vendors are positioning this** 
 
 Microsoft's Azure AI Foundry and Entra Agent ID materials describe agent governance largely through an identity-first lens (extending Entra ID's existing RBAC/PIM model to agents). Google's Agentspace and Vertex AI Agent Builder lean on Google Cloud's existing IAM and BeyondCorp zero-trust patterns. AWS's Bedrock Agents and the emerging AgentCore runtime lean on IAM roles and Verified Permissions (Cedar-based). None of the three hyperscalers has published a SABSA- or TOGAF-native reference architecture; each is extending its own cloud-native identity and policy stack outward to cover agents. This is a meaningful gap an enterprise architecture function can fill: translating each hyperscaler's agent-security primitives into the enterprise's existing SABSA/TOGAF vocabulary, rather than adopting three incompatible mental models for a multi-cloud agent estate. 
 
-Page 5 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ### **1.4 Security Engineering Principles Applied to Agents** 
 
@@ -105,7 +123,11 @@ The classical security engineering principles do not need replacing; they need a
 |Safety by Design|Irreversible or high-consequence actons (fnancial transactons, infrastructure changes,<br>external communicatons) require human-in-the-loop approval gates regardless of the<br>agent's measured trust score.|
 |Privacy by Design|Memory and context layers classify and minimize personal data at write tme; retenton<br>and right-to-erasure are lifecycle propertes of agent memory, not an aferthought bolted<br>onto a data warehouse.|
 
-Page 6 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **1.5 Threat Modeling for Agentic Systems** 
 
@@ -131,7 +153,11 @@ MAESTRO (Multi-Agent Environment, Security, Threat, Risk, and Outcome), publishe
 |Frameworks|making (LangGraph, AutoGen, etc.)|injecton propagaton|
 |L4 — Deployment|Containers, cloud hostng, network|Misconfguraton, container escape, insecure|
 
-Page 7 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 |**Layer**|**What It Covers**|**Representatve Threats**|
 |---|---|---|
@@ -139,6 +165,7 @@ Page 7 of 15
 |L5 — Evaluaton &<br>Observability|Testng, monitoring, logging, audit trails|Blind spots in monitoring, evaluaton gaming, log<br>tampering|
 |L6 — Security &<br>Compliance<br>(vertcal)|Cross-cutng controls applied at every layer|Inconsistent policy enforcement across layers,<br>compliance drif|
 |L7 — Agent<br>Ecosystem|Mult-agent interacton, marketplaces,<br>A2A/MCP discovery|Agent impersonaton, marketplace manipulaton,<br>collusion, supply-chain compromise via third-<br>party agents|
+
 
 MAESTRO's real value is forcing analysis of cross-layer cascades: a poisoned embedding at L2 reaches an agent's planning logic at L3, which selects a tool at L4 that has broader permissions than the original task required, and the resulting action is never flagged because the observability layer (L5) was only watching for anomalies in single-agent behavior, not for an L7-level pattern of one compromised agent influencing a peer through A2A messaging. No single-layer review catches this; only an explicit cross-layer pass does. 
 
@@ -154,7 +181,10 @@ This program calls for fully worked threat models, using MAESTRO as primary stru
 
 4. Banking AI Platform — a regulated, high-consequence composite: agents with access to payment rails, customer PII, and external A2A counterparties (correspondent-bank agents, payment-network agents). This is the reference model used throughout the program's banking-grade reference architecture (Volume 6) and should incorporate every control surfaced by the prior three models plus regulatory-specific constraints (DORA, PCI DSS, SOC 2 — see Volume 3). 
 
-Page 8 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Domain 4 — Agentic AI Architecture Security** 
 
@@ -172,13 +202,17 @@ Every agentic interaction, regardless of framework, decomposes into the same fiv
 |Tool → Memory|Memory/context poisoning,<br>cross-tenant memory<br>leakage, unauthorized<br>persistence|Write-tme classifcaton,<br>provenance tagging, tenant<br>isolaton, retenton policy<br>enforcement|Memory mutaton log with<br>source atributon|
 |Memory/Tool →<br>Acton|Irreversible or high-<br>consequence actons taken<br>without sufcient review|Reversibility classifcaton,<br>human-in-the-loop gates for<br>irreversible actons, rate<br>limitng, circuit breakers|Immutable acton log,<br>tamper-evident, ted to<br>originatng session|
 
+
 ### **4.2 Multi-Agent Orchestration Frameworks and Their Threat Surface** 
 
 The production orchestration landscape has consolidated around a handful of frameworks, each with a distinct trust model that materially changes the threat surface: 
 
 - **LangGraph —** graph-based orchestration with explicit state; the principal risk is state poisoning, since shared graph state is often trusted implicitly by downstream nodes. 
 
-Page 9 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 - **CrewAI —** role-based crews with delegation between agents; delegation abuse is the dominant risk, where a low-privilege agent convinces a higher-privilege peer to act on its behalf. 
 
@@ -190,7 +224,10 @@ Page 9 of 15
 
 The five threats common across all five frameworks — agent collusion, goal hijacking, delegation abuse, state poisoning, and infinite loops — are precisely the threats ASI07 (Insecure Inter-Agent Communication), ASI08 (Cascading Failures), and ASI10 (Rogue Agents) in the OWASP Top 10 for Agentic Applications are designed to catch. Volume 4 covers detection and response for these in depth; the architectural control here is structural: bound every multi-agent conversation with a maximum turn count, a maximum cost budget, and a maximum wall-clock duration, enforced outside the orchestration framework itself (so a compromised or malfunctioning orchestrator cannot disable its own circuit breaker). 
 
-Page 10 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Domain 7 — Agent Runtime Security** 
 
@@ -206,9 +243,13 @@ If identity answers "who is acting" and policy answers "what are they allowed to
 |WASM / WASI|Capability-based,<br>sandboxed bytecode<br>executon|Tool executon and untrusted<br>plugin code where startup<br>latency must be near-zero;<br>increasingly used for MCP tool<br>sandboxing|Language/runtme<br>ecosystem stll maturing<br>for general-purpose agent<br>code|
 |Sandboxed Containers<br>(gVisor/Kata aside, i.e.<br>seccomp + AppArmor<br>hardened standard<br>containers)|Namespace and cgroup<br>isolaton with restricted<br>syscall/capability surface|Lowest-overhead opton for<br>lower-trust-boundary agents;<br>acceptable when paired with<br>strict network egress controls|Weakest isolaton<br>guarantee of the optons<br>listed; shared kernel risk|
 
+
 The architectural pattern this program recommends is tiered: classify agents by the trust boundary they cross (does this agent execute model-generated code? does it process untrusted external content? does it have network egress to sensitive internal systems?) and assign isolation strength accordingly, rather than applying one isolation technology uniformly. A read-only reporting agent with no code execution does not need Firecracker-grade isolation; a coding agent executing arbitrary generated Python against production-adjacent infrastructure does. 
 
-Page 11 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ### **7.2 Runtime Controls** 
 
@@ -234,7 +275,10 @@ Across vendors and frameworks, the architecture that is converging as best pract
 
 The structural property worth emphasizing: the agent itself never holds standing credentials to anything. It holds, at most, a short-lived capability token whose actual exchange for a usable credential happens inside the tool broker, after a policy check. This single design decision — credential custody lives outside the agent process — eliminates an entire category of incidents where a compromised or manipulated agent simply exfiltrates whatever secrets it was holding. 
 
-Page 12 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Domain 20 — AI Security Mesh Architecture** 
 
@@ -250,6 +294,7 @@ As agent populations scale past a few dozen into the hundreds or thousands, poin
 |Memory Mesh|Governs how memory is shared, isolated, and<br>classifed across agents and sessions|Tenant-isolated vector stores and graph<br>memory with provenance tagging (full detail<br>in Volume 4)|
 |Observability Mesh|Aggregates traces, logs, and behavioral<br>signals across every plane into a unifed view|OpenTelemetry-based tracing (OpenLLMetry<br>conventons) feeding a central AI SOC (full<br>detail in Volume 4)|
 
+
 ### **20.2 Comparison with Service Mesh and Zero Trust** 
 
 The AI Security Mesh is best understood as a service mesh's conceptual sibling, not its replacement — most enterprises will run both, with the AI Security Mesh as an agent-aware layer on top of (or alongside) an existing Istio/Linkerd-class service mesh. 
@@ -260,18 +305,26 @@ The AI Security Mesh is best understood as a service mesh's conceptual sibling, 
 |Primary trust queston|Is this service authorized to call that<br>service?|Is this agent authorized to take this acton,<br>with this data, on behalf of this principal, right<br>now?|
 |Policy granularity|Network-level (which services can talk<br>to which)|Acton-level (which specifc tool calls, with<br>which parameters, are permited)|
 
-Page 13 of 15 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 |**Property**|**Traditonal Service Mesh**|**AI Security Mesh**|
 |---|---|---|
 |Failure mode of concern|Service unavailability, latency, network<br>partton|Goal hijacking, cascading mult-agent failure,<br>autonomous over-reach|
 |Relatonship to<br>SPIFFE/Zero Trust|SPIFFE commonly used as the identty<br>substrate; zero trust is the governing<br>principle|Same substrate (SPIFFE/SPIRE), extended with<br>agent-specifc atestaton and behavioral trust<br>scoring layered on top|
 
+
 ###### **Design recommendation** 
 
 Do not build a parallel identity system for agents. Extend the organization's existing SPIFFE/SPIRE (or equivalent workload identity) trust domain to cover agent workloads, and layer agent-specific policy and behavioral-trust evaluation on top of that shared identity substrate. This is the path the most mature implementations (Block's production SPIFFE+WIMSE+OAuth deployment is the most frequently cited public reference) have taken, and it avoids the fragmentation that has plagued early agent-identity tooling. 
 
-Page 14 of 15 
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+
+
+_Foundations & Reference Architecture_ 
 
 ## **Summary: How the Frameworks in This Volume Relate** 
 
@@ -286,6 +339,8 @@ Readers new to this space frequently ask which single framework to adopt. The ho
 |OWASP ASI Top 10|Risk taxonomy /<br>prioritzaton|Which of the highest-prevalence, highest-impact agentc<br>risks are present here?|
 |AI Security Mesh|Operatng architecture|How do we enforce identty, policy, memory, and<br>observability consistently at scale?|
 
+
 Volume 1 has established this scaffolding. Volume 2 goes deep on the identity, MCP, and A2A layers that this volume references but does not fully specify. Volume 3 covers the governance frameworks (OWASP, NIST, ISO 42001, regulatory) that determine which controls are mandatory versus discretionary. Volumes 4 through 6 cover operations, economics, and the roadmap for building this capability over 24 months. 
 
-Page 15 of 15
+Enterprise Agentic AI Security Architect Program  |  EASA-01 
+

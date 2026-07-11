@@ -1,14 +1,17 @@
 ---
-title: "The Architect's Field Guide: A Real-World Walkthrough"
-date_created: 2026-07-10
+title: "AI Security Architect's Field Guide"
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
 status: current
+supersedes: ""
 source_type: converted-pdf
 source_file: "08-Architects-Field-Guide.pdf"
-doc_type: guide
-tags: ["ai-security", "governance"]
-last_reviewed: 2026-07-10
-covers_version: "N/A"
+tags: ["ai-security", "architecture", "field-guide"]
 ---
+
+<!-- converted from 08-Architects-Field-Guide.pdf -->
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 #### **PRACTICAL FIELD GUIDE** 
 
@@ -20,11 +23,17 @@ One Bank, One Architect, Six Months — Greenfield Build Through Live Incident, 
 
 _Enterprise Agentic AI Security Architect (2026–2030) Master Research Program_ 
 
-Page 1 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ## **Table of Contents** 
 
-Page 2 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ## **How This Guide Works** 
 
@@ -41,6 +50,7 @@ This guide does the opposite. It follows one fictional but realistic organizatio
 |Exhibit (charcoal)|An actual artfact — a policy fle, a token structure, a confguraton snippet —<br>illustratng what the decision produced in concrete, inspectable form|
 |Field Note (gold)|A lesson that generalizes beyond Meridian specifcally — the transferable<br>takeaway, fagged explicitly so it doesn't get lost in the narratve detail|
 
+
 ### **Meridian Trust Bank — Quick Reference** 
 
 Fictional, composited from realistic patterns observed across the kinds of organizations this program is written for. Keep this orientation in mind as the chapters unfold; later chapters assume you remember these basics rather than re-introducing them. 
@@ -51,7 +61,10 @@ Fictional, composited from realistic patterns observed across the kinds of organ
 
 - **Your role:** First Enterprise Agentic AI Security Architect, reporting to the CTO, with a CISO-adjacent mandate until a dedicated AI CISO is hired. 
 
-Page 3 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 - **The arc:** Chapter 1 (discovery) → Chapter 2 (identity) → Chapter 3 (MCP/A2A under deadline) → Chapter 4 (governance/compliance crunch) → Chapter 5 (operations stand-up) → Chapter 6 (the incident) → Chapter 7 (the fix and what it teaches). 
 
@@ -59,7 +72,10 @@ Page 3 of 28
 
 Meridian is fictional, but every technical mechanism, every control, every tradeoff described is grounded in the same current 2026 material underlying the rest of this program — SPIFFE/SPIRE, MCP gateway patterns, A2A trust brokering, the OWASP Agentic Top 10, ISO 42001 and EU AI Act crosswalks, AI SOC correlation logic. Nothing here is invented technology; what's constructed is the realistic sequence of pressures, half-information, and competing priorities a real architect operates under — because that experience, not just the technical content, is what this guide exists to convey. 
 
-Page 4 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ##### **CHAPTER 1** 
 
@@ -86,7 +102,11 @@ Your first two days are spent in meetings and log access requests, not design wo
 |Governance|No AI Governance Board exists. The bank's existng model-risk-management (MRM) functon, built<br>for traditonal statstcal and ML credit models under SR 11-7-style governance, has never<br>reviewed an agentc system and does not have a framework for one|
 |Regulatory<br>exposure|Meridian has EU-domiciled commercial clients or otherwise meaningful EU nexus for a subset of<br>services serving roughly the EU AI Act's high-risk Annex III triggers — fagged but unconfrmed by|
 
-Page 5 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 **Finding Detail** Legal — eight weeks before the Act's August 2026 high-risk enforcement date A near-miss four months ago: a marketing-content agent with an overly broad CRM scope drafted Prior incident and nearly auto-sent a customer email containing another customer's account details, caught only because a human reviewer happened to notice — the agent's scope was never revisited afterward 
 
@@ -108,7 +128,11 @@ The CTO wants a plan by Friday. The commercial lending group wants their A2A lau
 |Full regulatory gap<br>analysis frst|Satsfes Legal's urgency and the Act's<br>deadline pressure, but produces a<br>compliance document describing controls<br>that don't exist yet, which is close to<br>worthless as an audit artfact.|
 |**Agent discovery and**<br>**✓**<br>**identty foundaton frst**|Slower to produce a visible deliverable in<br>week one, correctly sequences the rest of<br>the work, but requires telling three<br>impatent stakeholders to wait.|
 
-Page 6 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ##### **Rationale:** 
 
@@ -118,7 +142,10 @@ This is the same conclusion the reference program reaches by a different route: 
 
 _In a real engagement, the hardest part of identity-first sequencing is rarely the technical argument — it's the political one. Stakeholders with a deadline do not want to hear "first we need to fix something invisible." The inventory gap (47 vs. 31 agents) is the tool that wins this argument every time, because it's concrete, it's numeric, and it's not abstract architecture talk — it's "we don't actually know what we're running," which is a sentence that lands with any executive regardless of technical background._ 
 
-Page 7 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ##### **CHAPTER 2** 
 
@@ -140,9 +167,8 @@ The technical design follows the pattern from EASA-02, Domain 2 directly: a SPIR
 
 ###### **EXHIBIT — SPIRE Registration Entry — Customer Support Agent (Kubernetes-hosted)** 
 
-```
 spire-server entry create \
-```
+
 
 - `-spiffeID spiffe://meridian-agents.internal/agent/support/ticket-responder \` 
 
@@ -158,7 +184,10 @@ spire-server entry create \
 
 The TTL of 3,600 seconds (one hour) on SVIDs was a deliberate, debated choice — short enough to make a stolen SVID close to worthless quickly, long enough to avoid creating excessive re-attestation load across roughly 50 agents and growing. SPIRE handles automatic rotation transparently to the agent workload, so this number 
 
-Page 8 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 can be revisited downward later without an application-level change; the team agreed to start at one hour and tighten it once the rotation infrastructure had proven itself under real load for a month. 
 
@@ -176,6 +205,7 @@ Three options were seriously evaluated by the platform team, with input from the
 |Build a separate, parallel<br>agent-identty claims<br>system|Maximum fexibility for agent-specifc<br>needs; creates exactly the 'two<br>incompatble identty systems'<br>fragmentaton risk the reference<br>architecture warns against, and the existng<br>identty team would reasonably resist<br>owning a system they didn't build.|
 |**RFC 8693 token**<br>**✓**<br>**exchange with an actor**<br>**claim, integrated into the**<br>**existng Entra ID tenant**|More upfront integraton work; keeps one<br>identty system of record, satsfes the audit<br>requirement, and gives the existng identty<br>team a clear ownership boundary.|
 
+
 ##### **Rationale:** 
 
 The agent's SPIFFE SVID authenticates the workload to an internal token-exchange service, which mints a short-lived JWT carrying both the agent's own identity and an actor claim identifying the human or business process the action is performed for. For ticket-triggered autonomous actions with no specific human in the loop, the actor claim names a registered 'autonomous action' service identity rather than a real person — which sounds like a small detail but turned out to matter enormously during the Chapter 6 incident, because it meant the audit trail could immediately distinguish a genuinely autonomous action from one falsely claiming human sponsorship. 
@@ -188,7 +218,10 @@ The agent's SPIFFE SVID authenticates the workload to an internal token-exchange
   "sub": "spiffe://meridian-agents.internal/agent/support/ticket-responder",
 ```
 
-Page 9 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ```
   "act": {
@@ -215,13 +248,17 @@ _The 'authorization_basis' field above isn't in any textbook diagram of an actor
 |Wave 2 (Weeks<br>4–5)|28 agents with limited write access (tcket<br>systems, internal wikis, non-fnancial CRM<br>felds)|The bulk of the feet; surfaces most integraton<br>fricton (selector misconfguratons, scope-mapping<br>gaps) while consequences of a mistake remain<br>contained|
 |Wave 3 (Week 6)|13 highest-risk agents, including the<br>customer support agent and anything<br>touching fnancial or PII-sensitve systems|Migrated last and individually reviewed, once the<br>patern has been proven twice over on lower-stakes<br>populatons|
 
+
 Each wave ran both identity systems in parallel for 48 hours — the agent's calls authorized under the old shared service account while simultaneously being shadow-validated against the new SPIFFE-based policy, with mismatches logged but not yet enforced — before cutting over enforcement. This shadow-mode pattern caught eleven scope mismatches across the three waves that would otherwise have caused either an outage (a legitimate call newly denied) or a silent over-grant (a call the old shared account allowed that the new scoped identity should not have). 
 
 ##### **THE ARCHITECT'S REASONING** 
 
 Eleven scope mismatches out of 47 agents is worth sitting with. That's roughly a quarter of the fleet where nobody — not the original developer, not the platform team, not you — actually knew what access the agent needed until the shadow-mode comparison made the gap visible. This is the single strongest empirical argument for the migration 
 
-Page 10 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 approach described above, and it's worth keeping as a story to tell the next stakeholder who suggests a faster cutover: a 'fast' migration that skips shadow-mode validation isn't actually faster, it's just deferring the discovery of these mismatches to the first production incident they cause. 
 
@@ -246,10 +283,15 @@ Before any A2A work, the four unmanaged MCP servers from the Chapter 1 inventory
 |Legacy HR-policy lookup server<br>(HR team)|Migrated to gateway|Tool defnitons were clean; scope was already<br>appropriately narrow, which made this the easiest of<br>the four|
 |Vendor-provided MCP server<br>for a third-party document OCR<br>tool|Migrated to gateway with<br>additonal vendor-specifc<br>controls|Third-party origin triggered the heightened checklist<br>(Chapter 3, MCP gateway secton) — vendor would<br>not initally provide a signed tool manifest, which<br>became a real negotatng point with their account<br>team|
 
-Page 11 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**Unmanaged Server**|**Dispositon**<br>**Why**|
 |---|---|
+
 
 ##### **THE ARCHITECT'S REASONING** 
 
@@ -269,7 +311,11 @@ The vendor's Agent Card signing is inconsistent — their production endpoint is
 |Delay launch untl vendor<br>signs all endpoints|Cleanest security posture; gives away<br>leverage and a frm tmeline to a vendor<br>who has already shown no urgency, with<br>real business cost to the lending team.|
 |**Launch on schedule**<br>**✓**<br>**with a Meridian-side**<br>**compensatng control:**<br>**reject any Agent Card**<br>**without a valid signature**<br>**regardless of which**<br>**vendor environment it**<br>**claims to be, with hard-**<br>**coded producton-**<br>**endpoint pinning**|Meets the deadline, keeps the gap closed<br>on Meridian's side regardless of vendor<br>follow-through, but adds gateway<br>confguraton complexity and a manual<br>step if the vendor later wants to test<br>against staging again.|
 
-Page 12 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ##### **Rationale:** 
 
@@ -283,19 +329,13 @@ rule: lending-agent-outbound-a2a
   allow_endpoints:
     - https://api.loanvendor.example/a2a/v1   # production, signed only
   require:
-```
 
-```
     - agent_card.signature.valid == true
-```
 
-```
     - agent_card.signature.domain == "loanvendor.example"
     - tls_version >= 1.3
   deny_endpoints:
-```
 
-```
     - https://staging-api.loanvendor.example/a2a/v1  # explicit deny, not just omission
   per_task_spend_cap_usd: 0   # this integration exchanges documents, never payments
   audit: full_payload_capture
@@ -314,7 +354,11 @@ The lending vendor's agent is Meridian's first production external A2A counterpa
 |Content provenance|All exchanged documents are vendor-asserted, no<br>independent verifcaton available|Moderate-low — fagged<br>as the weakest signal|
 |Operator standing|Vendor is an established player with existng banking-sector<br>clients and a named security contact|Moderate-high|
 
-Page 13 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 The resulting composite score permitted document exchange (the actual launch requirement) but was explicitly configured to deny any future request to expand scope toward, say, direct system-to-system financial data exchange without a fresh, manual trust review — meaning a future engineer cannot accidentally widen this relationship's blast radius just by changing a config flag; widening requires a deliberate, logged policy change. 
 
@@ -322,7 +366,10 @@ The resulting composite score permitted document exchange (the actual launch req
 
 _A brand-new external counterparty should never inherit a 'fresh start' high trust score just because nothing bad has happened yet — neutral behavioral conformance is not the same as good behavioral conformance, and conflating the two is how trust-score systems get gamed over time. Score what you can actually verify today, and make the score's ceiling, not just its floor, an explicit design choice._ 
 
-Page 14 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ##### **CHAPTER 4** 
 
@@ -347,11 +394,16 @@ This is where having already done the identity and MCP/A2A foundational work in 
 |Accuracy, robustness,<br>cybersecurity (Art. 15)|Substantally in place|SPIFFE identty substrate, MCP/A2A gateway controls,<br>and the red-team plan (not yet executed — see Chapter<br>7) directly support this artcle|
 |Conformity assessment &<br>registraton|New work, not a control<br>gap but a process gap|No internal control maps onto this — it required<br>engaging Legal and an external conformity assessment|
 
-Page 15 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**EU AI Act Requirement**<br>**(Annex III high-risk)**|**Status at Week 7**|**Evidence Source**|
 |---|---|---|
 |||body directly, on a tmeline the technical team could not<br>accelerate|
+
 
 ##### **THE ARCHITECT'S REASONING** 
 
@@ -369,11 +421,15 @@ The board that should have existed from day one (per the operating model in EASA
 |Model Risk Management|Head of MRM|Critcal seat — MRM's existng SR 11-7<br>governance experience translated more directly<br>to agentc governance than anyone expected<br>going in|
 |Business representaton<br>(rotatng)|VP from whichever business unit has<br>an agent under actve review|Lending VP from Chapter 3 was the frst rotatng<br>seat-holder, which incidentally repaired some of<br>the relatonship fricton from the A2A delay|
 
+
 ###### **FIELD NOTE — TRANSFERABLE LESSON** 
 
 _Putting the previously frustrated Lending VP on the Governance Board as its first rotating business seat was not originally planned — it emerged as a relationship-repair move once the A2A launch succeeded. It turned out to be one of the better decisions of the engagement: a stakeholder who has been through the review process from the inside becomes one of the most credible internal advocates for it with peer business units, in a way no amount of architecture documentation can replicate._ 
 
-Page 16 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ### **Autonomy Classification for the Whole Fleet** 
 
@@ -386,6 +442,7 @@ With the board chartered, the full 47-agent (now 49, two more were found during 
 |L2 — Bounded autonomy|19|Customer support tcket triage and reply drafing, HR policy Q&A|
 |L3 — Delegated<br>autonomy|6|Document-exchange lending agent (Chapter 3), internal IT-helpdesk<br>automaton|
 |L4 — Full autonomy|1|A low-stakes internal meetng-room booking agent — deliberately the<br>only L4 agent in the bank at this stage|
+
 
 The single L4 agent is worth noting specifically: the board's first real policy decision was that L4 (full autonomy, minimal human checkpoints) would be granted sparingly and only to genuinely low-consequence use cases until the AI SOC (Chapter 5) had a full operating quarter of track record — a conservative starting posture that the board explicitly revisits at the 90-day mark rather than leaving as an unstated default forever. 
 
@@ -405,7 +462,10 @@ By week ten, Meridian has an identity substrate, a consolidated MCP gateway, a w
 
 Meridian's existing engineering organization already runs Datadog for conventional infrastructure observability, with significant existing investment and institutional knowledge. None of the agent-specific platforms (LangSmith, Langfuse, Arize Phoenix) are yet in use anywhere in the bank. 
 
-Page 17 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**Opton**|**Tradeof**|
 |---|---|
@@ -413,6 +473,7 @@ Page 17 of 28
 |Self-host Langfuse as a<br>fully independent stack|Full data sovereignty, no vendor lock-in,<br>zero usage-based cost growth; highest<br>inital build efort and ongoing operatonal<br>ownership for a team already stretched<br>thin.|
 |**Instrument every**<br>**✓**<br>**agent with**<br>**OpenTelemetry/OpenLL**<br>**Metry conventons and**|Leverages the infrastructure SOC team's<br>existng tooling and skills immediately;<br>requires building the agent-specifc<br>dashboards and detecton logic on top of<br>|
 |**feed traces into the**<br>**existng Datadog pipeline**|Datadog rather than getng them out of<br>the box from a purpose-built platorm.|
+
 
 ##### **Rationale:** 
 
@@ -429,7 +490,11 @@ Per the AI SOC architecture from the reference program, Meridian's detection log
 |Memory|3rd (Weeks 12–<br>13)|Required new instrumentaton at every memory write path across the feet —<br>the most labor-intensive surface to build|
 |A2A|4th (Week 13)|Only one producton external counterparty existed at this point, so detecton<br>logic for this surface was deliberately built thin and well-tested rather than|
 
-Page 18 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**Surface**|**Build Priority**|**Why This Priority**|
 |---|---|---|
@@ -437,6 +502,7 @@ Page 18 of 28
 |Runtme|5th (Weeks 14–<br>15)|Sandbox telemetry from Firecracker/gVisor environments required platorm<br>engineering coordinaton outside the security team's direct control|
 |Agents<br>(behavioral/goa<br>l conformance)|6th (Week 15)|Required the ARE SLI work to mature frst (see below) before behavioral<br>baselines were meaningful|
 |Guardrails|7th (Week 16)|Lowest priority — Meridian had not yet deployed a dedicated guardrail<br>platorm; this surface was the least mature at the tme of the Chapter 6<br>incident, a fact that becomes directly relevant|
+
 
 ##### **THE ARCHITECT'S REASONING** 
 
@@ -454,9 +520,7 @@ name: "Unusual tool-call burst followed by unfamiliar memory write"
 surfaces: [mcp, memory]
 condition:
   - mcp.tool_calls.count(window=2m, agent=$AGENT) > baseline_p99 * 3
-```
 
-```
   - AND memory.write.entity_novelty(window=5m, agent=$AGENT) == "high"
   - AND identity.actor_claim.acting_for NOT IN recent_task_context($AGENT)
 severity: HIGH
@@ -465,7 +529,10 @@ action: page_on_call, do_not_auto_kill  # human triage required before kill swit
 
 The do_not_auto_kill flag on this particular rule was a deliberate, debated decision: this specific pattern can also occur during entirely legitimate bulk operations (a mass ticket reassignment during a team reorganization, for instance), so the team chose human triage over automatic containment for this rule specifically, while other, higher-confidence rules elsewhere in the ruleset were configured to auto-kill. Knowing which rules deserve automatic response and which deserve a human in the loop before action is itself an architectural judgment call, not a default to apply uniformly. 
 
-Page 19 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ### **Making the Kill Switch Real, Not Theoretical** 
 
@@ -476,6 +543,7 @@ The kill-switch framework existed on paper since the Chapter 2 identity work (re
 |Time from trigger to SVID revocaton<br>propagatng to SPIRE agents|41 seconds|Under 30 seconds|
 |Time for in-fight tool calls to be rejected post-<br>revocaton|Immediate (next call atempt<br>failed correctly)|No change needed|
 |Time for the agent's queued-but-not-yet-<br>executed tasks to be confrmed halted|4 minutes 12 seconds — the<br>worst result of the drill|Under 1 minute — became the<br>top acton item from the drill|
+
 
 ###### **FIELD NOTE — TRANSFERABLE LESSON** 
 
@@ -493,7 +561,10 @@ Five months after you joined, with the identity substrate, MCP/A2A gateways, gov
 
 The attack begins with a support ticket — entirely ordinary on its face, submitted through the bank's normal customer-facing channel by what is later confirmed to be a compromised but legitimate customer account. The ticket text is a routine-looking billing question. Embedded in it, in a way invisible in the rendered ticket view but fully present in the raw text the agent processes, is an injected instruction. 
 
-Page 20 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ##### **THE ARCHITECT'S REASONING** 
 
@@ -513,7 +584,11 @@ Notice what this is and isn't. It is not a sophisticated zero-day exploit agains
 |T+0:14|Because the agent operates at L2 (bounded autonomy, not L3+), the email is held in a draf state<br>pending the human-approval gate Chapter 4's autonomy classifcaton required for this exact acton<br>type — it does not send automatcally.|
 |T+0:15|A second alert fres — not from the (stll under-tuned) behavioral/Agents-surface monitoring, which<br>does not yet have a mature baseline for 'this agent drafed an email to a never-before-seen recipient,'<br>but from a much blunter rule: the memory-surface monitoring built in week 12-13 of Chapter 5,<br>fagging that the draf email's content referenced customer enttes with no prior co-occurrence in this<br>agent's session history — exactly the entty-novelty signal CORR-014 already used, now fring<br>independently on the memory surface with a diferent, higher-confdence rule.|
 
-Page 21 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**T+**|**Event**|
 |---|---|
@@ -521,11 +596,15 @@ Page 21 of 28
 |T+0:19|Kill switch invoked manually. SVID revocaton propagates in approximately 35 seconds, consistent with<br>the Chapter 5 drill. The draf email — never sent — is quarantned, not deleted, preserving it as<br>forensic evidence.|
 |T+0:24|You are paged as the escalaton point for any kill-switch invocaton outside business hours, per the<br>operatng model from Chapter 4.|
 
+
 ##### **THE ARCHITECT'S REASONING  Why the first analyst's stand-down wasn't a simple mistake to blame** 
 
 It is tempting, reading this timeline, to focus on the four minutes between the first analyst's stand-down (T+0:11) and the second alert (T+0:15) as the story — but that framing misses the actual lesson. The first analyst applied the triage guidance correctly, as written. The guidance was written based on the legitimate bulk-reassignment pattern the team had genuinely observed during the rollout, and it had not yet been refined with enough real incident history to distinguish that pattern from this one. This is precisely the cost of the Chapter 5 sequencing decision to build behavioral/Agents-surface monitoring last: with only about a week of behavioral baseline maturity at the time of this incident, the system did not yet have a confident, well-calibrated signal for 'this specific agent does not normally email never-before-seen external recipients' — which is exactly the signal that would have made the first alert unambiguous rather than borderline. The memory-surface rule caught it anyway, four minutes later, precisely because memory was built third instead of sixth. The sequencing tradeoff named explicitly back in Chapter 5 is the same tradeoff that determined how this incident actually unfolded. 
 
-Page 22 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ### **Containment and the First 24 Hours** 
 
@@ -549,9 +628,17 @@ By hour six, you have high confidence no data left the bank and a credible (not 
 |Full public/regulatory<br>disclosure immediately,<br>before confrming blast<br>radius|Maximally cautous from a disclosure-<br>tming standpoint; risks disclosing<br>inaccurate or incomplete informaton that<br>has to be corrected later, which is its own<br>credibility cost.|
 |**Immediate internal**<br>**✓**<br>**escalaton to the Risk**<br>**Commitee and Legal**<br>**with a clearly labeled**<br>**preliminary assessment,**<br>**explicit confdence**|Requires comfort presentng an honestly<br>incomplete picture to a senior, anxious<br>audience; correctly separates the technical<br>team's job (fnd out what happened) from<br>Legal's job (decide what must be disclosed<br>externally and when).|
 
-Page 23 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 **levels, and a committed follow-up timeline — with external/regulatory disclosure decisions deferred to Legal once blast-radius confirmation completes** 
+
+
+![Figure 1](/img/ai-security-governance/security/08-architects-field-guide-p24-1.png)
+
 
 ##### **Rationale:** 
 
@@ -567,11 +654,15 @@ Forty-eight hours of investigation produce a root cause with three contributing 
 |Detecton tuning|Behavioral/Agents-surface monitoring (the last<br>of seven surfaces built, per Chapter 5) did not<br>yet have a mature enough baseline to make the<br>frst alert unambiguous|A sequencing tradeof made consciously<br>in Chapter 5, which worked as intended<br>on the memory surface and would have<br>worked faster with more weeks of<br>behavioral baseline maturity|
 |Triage guidance|The do_not_auto_kill / human-triage path for<br>CORR-014 used guidance that hadn't yet been<br>refned against enough real alert history to<br>distnguish this patern from the legitmate<br>bulk-reassignment case it was writen to<br>tolerate|An acceptable, even correct, inital design<br>choice given the informaton available at<br>the tme it was writen — exposed as<br>insufciently refned only once a real<br>incident tested it|
 
+
 ###### **FIELD NOTE — TRANSFERABLE LESSON** 
 
 _None of the three contributing layers in that table is 'someone made an obvious mistake.' Every one of them was a_ 
 
-Page 24 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 **Layer What Went Wrong** 
 
@@ -595,14 +686,19 @@ Each of the three contributing-cause layers from Chapter 6 gets its own fix, on 
 |Detecton tuning|Behavioral/Agents-surface monitoring baseline-building<br>accelerated, with the incident itself (now a confrmed true<br>positve with full ground truth) used as labeled training data for<br>the baseline model — turning the worst day of the engagement<br>into the single best calibraton data point available.|6 weeks to materially<br>improved baseline<br>confdence|
 |Triage guidance|CORR-014's human-triage guidance rewriten with an explicit<br>decision tree distnguishing legitmate bulk operatons (which<br>carry a corresponding HR/ops-system change-tcket reference)<br>from unexplained bursts (which do not) — closing the exact<br>ambiguity that caused the frst stand-down.|Immediate — guidance<br>update, no engineering<br>dependency|
 
+
 ##### **THE ARCHITECT'S REASONING** 
 
 The triage-guidance fix shipped same-day, while the behavioral-baseline fix took six weeks — and that gap is the correct outcome, not a sign that one team moved faster than another. A documentation and decision-tree fix has no infrastructure dependency; a statistically meaningful behavioral baseline requires real operating data over real time, and no amount of urgency manufactures that data faster. Recognizing which fixes are blocked by genuine technical constraints versus which are blocked only by not having been prioritized yet is part of running a credible postmortem 
 
-Page 25 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**Layer**<br>**Fix**<br>**Timeline**|
 |---|
+
 
 — conflating the two either creates unrealistic pressure on the slow fix or unjustified slack on the fast one. 
 
@@ -629,7 +725,11 @@ Using the five-level maturity model from the reference program, Meridian's hones
 |Identty|Level 3 (Managed)|Level 3 (Managed) —<br>unchanged|Performed exactly as designed<br>throughout; no fx needed here, which<br>the postmortem explicitly credited|
 |Detecton / AI SOC|Self-assessed as Level 3<br>going in|Re-assessed as Level 2<br>going in, Level 3 by week<br>26|The incident revealed the behavioral-<br>surface gap was larger than the team's<br>own internal assessment had|
 
-Page 26 of 28 
+
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 |**Dimension**|**Assessed Level Before**<br>**Incident (Week 18)**|**Assessed Level Afer**<br>**Fixes (Week 26)**|**What Changed**|
 |---|---|---|---|
@@ -637,11 +737,15 @@ Page 26 of 28
 |Governance|Level 2 (Aware) — board<br>only 13 weeks old|Level 3 (Managed)|The postmortem process itself, run<br>through the board rather than<br>informally, was the maturing event|
 |Operatons / kill-<br>switch readiness|Level 3, based on one<br>successful drill|Level 3, now based on<br>one drill plus one real<br>incident|Confdence increased without a formal<br>level change — the model doesn't<br>always need a new number to refect a<br>real change in confdence|
 
+
 ###### **FIELD NOTE — TRANSFERABLE LESSON** 
 
 _The willingness to self-downgrade the AI SOC's detection maturity from a previously claimed Level 3 to an honestly assessed Level 2, in a report going to the Risk Committee, was a harder internal conversation than fixing any of the actual technical gaps. It is also, consistently, the single best predictor of whether a security program's maturity claims can be trusted by anyone outside the team making them. A maturity model used only to produce flattering numbers for a board slide is worse than no maturity model at all._ 
 
-Page 27 of 28 
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+
+
+_The Architect's Field Guide: A Real-World Walkthrough_ 
 
 ## **Closing: What This Engagement Actually Teaches** 
 
@@ -659,4 +763,5 @@ Six months, one fictional but realistic bank, seven chapters. Strip away the spe
 
 _None of the seven chapters in this guide depended on Meridian using technology meaningfully different from what's described in the six-volume reference program or practiced in the Zero to Mastery curriculum. The difference between reading about identity-first sequencing and living through the week it actually mattered — twice, once in a compliance deadline and once in a 2 a.m. page — is the entire distance between knowing the material and being able to act on it under real pressure. That distance is what this guide exists to close._ 
 
-Page 28 of 28
+Enterprise Agentic AI Security Architect Program  |  EASA-FIELD 
+

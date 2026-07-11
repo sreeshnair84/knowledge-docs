@@ -89,7 +89,6 @@ Principal Architecture Group
 |**Appendix: Service & Standards Reference Tables**|**23**|
 |**Appendix: Infrastructure-as-Code Skeleton**|**25**|
 
-Page 2 of 26 
 
 ## **Executive Summary** 
 
@@ -114,7 +113,6 @@ The thesis is straightforward: AWS services should sit _behind_ standard protoco
 
 **INFO:** Reading guide: Part 1 establishes principles and the standards-to-service mapping that everything else derives from. Part 2 walks the architecture layer by layer with concrete AWS service choices. Part 3 details memory, session persistence, and multi-agent design—the hardest problems identified in prior research. Part 4 covers security, governance, and the specific mechanisms that prevent lock-in from becoming a liability. 
 
-Page 3 of 26 
 
 ##### **PART 1** 
 
@@ -156,7 +154,6 @@ Any agent workflow involving more than one tool call or external side effect run
 
 The fifteen anti-patterns catalogued in prior research (context window dependence, unlimited memory growth, missing checkpointing, cross-tenant query leakage, etc.) map directly to specific mitigations in this architecture (Section 4.3). Each is a named constraint with an owner, not a general caution. 
 
-Page 4 of 26 
 
 ### **1.2 Standards-to-AWS-Service Mapping** 
 
@@ -172,7 +169,6 @@ This is the master cross-reference: for each open standard, which AWS service im
 |AsyncAPI 3.0|EventBridge, SQS, and AppSync<br>Events (for streaming) document<br>event contracts via AsyncAPI|Event-driven and streaming contracts<br>(agent status updates, async task<br>completion) are documented<br>independent of the broker|Re-implement the event contract on<br>Kafka, NATS, or another broker<br>using the same AsyncAPI spec|
 |MCP Memory<br>Extensions /<br>Provider-agnostic<br>memory API|AgentCore Memory (short-term<br>session + long-term<br>semantic/episodic stores)|Internal memory abstraction layer<br>presents a consistent read/write/search<br>interface to agents regardless of<br>backing store|Re-point the abstraction layer at<br>mem0, Letta, or a custom<br>Postgres+pgvector store; agent code<br>unchanged|
 
-Page 5 of 26 
 
 ### **1.3 The Anti-Lock-In Contract** 
 
@@ -190,7 +186,6 @@ Lock-in is not binary—it is a spectrum of switching cost. This architecture do
 
 **DECISION:** Net assessment: the highest lock-in points (AgentCore Runtime's managed checkpointing, AgentCore Memory's storage format) are also the components delivering the most operational value—this is an acceptable, deliberate trade rather than an oversight. The architecture ensures these are the *only* two components with non-trivial switching cost, isolated behind the abstraction layers described in Sections 2.4 and 3.2. 
 
-Page 6 of 26 
 
 ##### **PART 2** 
 
@@ -261,7 +256,6 @@ _Nine layers, each with a standards-defined interface and a primary AWS implemen
 
 Layers 4, 5, and 6 are peers, not a stack—the agent runtime calls each independently via its respective protocol. This is the key structural decision: tools (MCP), other agents (A2A), and memory are three distinct integration surfaces, each governed by a different standard, each independently swappable. 
 
-Page 7 of 26 
 
 ### **2.2 Layer 1: Client & Experience (AG-UI)** 
 
@@ -297,7 +291,6 @@ All synchronous request/response contracts (auth, conversation CRUD, artifact re
 
 - OpenAPI/AsyncAPI specs—identical to specs a non-AWS implementation would publish. 
 
-Page 8 of 26 
 
 ### **2.4 Layer 3: Agent Runtime (AgentCore + Strands)** 
 
@@ -365,7 +358,6 @@ agent-orchestrator/
 
 - `+-- agentcore_shim.py          # <- ONLY AgentCore-specific file` 
 
-Page 9 of 26 
 
 ### **2.5 Layer 4: Tool & Integration (MCP)** 
 
@@ -429,7 +421,6 @@ Every capability an agent can invoke—AWS service calls, internal microservices
 
 - `//            -> Ticketing system API (OpenAPI-described)` 
 
-Page 10 of 26 
 
 ### **2.6 Layer 5: Multi-Agent Coordination (A2A)** 
 
@@ -483,7 +474,6 @@ Strands 1.0's native A2A support means every agent—orchestrator or specialist�
 
 - `-> specialist's internal tool-call spans (full trace, Section 2.9)` 
 
-Page 11 of 26 
 
 ### **2.7 Layer 6: Memory & Knowledge** 
 
@@ -551,7 +541,6 @@ provider: MemoryProvider = AgentCoreMemoryAdapter(memory_id=...)
 
 **DECISION:** This abstraction is the single most important anti-lock-in mechanism for memory (Section 1.3). It costs one interface definition and a thin adapter; it buys the ability to migrate memory infrastructure—driven by cost, capability, or compliance—without touching agent logic. 
 
-Page 12 of 26 
 
 ### **2.8 Layer 7: Data & Storage** 
 
@@ -569,7 +558,6 @@ Storage selections follow the storage taxonomy established in prior research (Pa
 
 **PRINCIPLE:** Every storage choice in this layer uses either an open-source engine (Postgres, OpenSearch, Redis) run as a managed AWS service, or an open data format (CloudEvents, Gremlin/openCypher) on a proprietary engine (Neptune). This is the practical version of 'standards-first': pay AWS for operational convenience, but never for a proprietary data format you cannot extract. 
 
-Page 13 of 26 
 
 ### **2.9 Layer 8: Observability (OpenTelemetry)** 
 
@@ -617,7 +605,6 @@ a2a.task.id = "<task_id>"
 traceparent = "00-<trace_id>-<span_id>-01"   # propagated to specialist
 ```
 
-Page 14 of 26 
 
 ### **2.10 Layer 9: Security & Governance** 
 
@@ -643,7 +630,6 @@ deletion across Aurora, S3, OpenSearch, AgentCore Memory, and Neptune—triggere
 
 *outcomes* (what gets filtered, what gets redacted) should be specified in a portable policy format (e.g., a YAML policy document) so the same governance intent could be re-implemented against another provider's moderation layer if needed. 
 
-Page 15 of 26 
 
 ##### **PART 3** 
 
@@ -667,7 +653,6 @@ On session resume, the platform does not attempt to 'reopen' the original AgentC
 
 **DECISION:** This split is itself an anti-lock-in decision: if AgentCore Runtime's session model changes, or the platform migrates to another A2A-compliant runtime, the durable conversation store (Aurora) and context assembly pipeline (a portable Lambda) are unaffected. Only the 'start a new session with this context' call changes. 
 
-Page 16 of 26 
 
 ### **3.2 Memory Architecture with AgentCore Memory** 
 
@@ -725,7 +710,6 @@ On every semantic-memory write, the memory adapter calls check_conflicts() (Sect
 
 **DECISION:** This does not fully solve Open Problem B.2 (no system reviewed achieves complete temporal-validity modeling)—but it converts an unbounded research problem into a bounded engineering one: conflict detection runs on every write (doubling retrieval cost on write, as prior research noted), and the trust-tier ordering gives a deterministic resolution rule for the common cases, with human review as the fallback for ambiguous ones. 
 
-Page 17 of 26 
 
 ### **Memory scope & namespace isolation** 
 
@@ -798,7 +782,6 @@ Each agent:
 
 - `Returns compacted A2A results to caller (Section 2.6, context compaction)` 
 
-Page 18 of 26 
 
 ### **Shared state vs. private state (per prior research Section 11.2)** 
 
@@ -823,7 +806,6 @@ For tool calls expected to run longer than ~30 seconds (e.g., multi-file code ge
 
 **DECISION:** This does not fully solve Open Problem B.3—sub-step resumption is only possible for tools explicitly designed to support it, and most third-party MCP tools will not. The honest position: idempotency keys make retries _safe_ (no duplicate side effects); progress events make restarts _cheaper_ (less wasted work) where tools support it. Neither achieves true sub-step checkpointing for arbitrary tool operations—consistent with the assessment that this remains a genuinely open problem industry-wide. 
 
-Page 19 of 26 
 
 ##### **PART 4** 
 
@@ -855,7 +837,6 @@ Mapping the compliance matrix from prior research (Part 13.2) to concrete AWS me
 |HIPAA (if applicable)|PHI handling, BAA-covered services|Use only HIPAA-eligible AWS services (Bedrock, Aurora, S3,<br>Lambda, AgentCore are HIPAA-eligible under BAA); Bedrock<br>Guardrails for PHI redaction in agent outputs|
 |EU AI Act (high-risk<br>AI)|Explainability, human oversight for automated<br>decisions|Full OTel trace export (Section 2.9) provides decision audit trail;<br>AG-UI human-in-the-loop interrupts (Section 2.2) for decisions<br>requiring approval|
 
-Page 20 of 26 
 
 ### **4.3 Anti-Pattern Cross-Reference** 
 
@@ -879,7 +860,6 @@ Direct mapping from the 15-pattern anti-pattern catalog (prior research Part D.5
 |AP-14|Deletion Without Cascade|Step Functions deletion-cascade workflow (Section 2.10/4.2)|
 |AP-15|Cross-Tenant Query Without<br>Scoping|tenant_id-prefixed namespaces (Section 3.2) + query-level scoping (Section 2.10) as<br>defense-in-depth|
 
-Page 21 of 26 
 
 ### **4.4 Portability & Exit-Strategy Design** 
 
@@ -907,7 +887,6 @@ A practical exit strategy is not a document you write once—it's a set of artif
 
 **DECISION:** The single highest-value exit-strategy practice: maintain a working (even if lower-performance) alternative implementation of the MemoryProvider interface and exercise it in CI. Prior research identified memory infrastructure as carrying the highest combination of lock-in risk and migration cost (Section 1.3)—a tested alternative is the difference between 'a multi-quarter migration project' and 'a configuration change plus a data migration job'. 
 
-Page 22 of 26 
 
 ## **Appendix: Service & Standards Reference** 
 
@@ -945,7 +924,6 @@ Page 22 of 26
 |---|---|---|---|
 |MCP (Model Context<br>Protocol)|Anthropic (open-sourced)|Production, broad ecosystem<br>adoption|Tool/data access contract (Layer<br>4)|
 
-Page 23 of 26 
 
 |**Standard**|**Governing Body / Origin**|**Maturity (as of mid-2026)**|**Role in This Architecture**|
 |---|---|---|---|
@@ -957,7 +935,6 @@ Page 23 of 26
 |CloudEvents|CNCF|Production, industry standard|Audit/event format (Layer 7/9)|
 |OIDC / OAuth 2.0|OpenID Foundation / IETF|Production, ubiquitous|Identity (Layer 2/9)|
 
-Page 24 of 26 
 
 ## **Appendix: Infrastructure-as-Code Skeleton** 
 
@@ -1164,7 +1141,6 @@ infrastructure/
 |   +-- dev/
 ```
 
-Page 25 of 26 
 
 ```
 |   +-- staging/
@@ -1180,4 +1156,3 @@ Page 25 of 26
 
 This architecture deliberately chooses AWS AgentCore and Strands as the path of least resistance for an AWS-native deployment—both are well-supported, actively developed (Strands 1.0 shipped May 2026 with multi-agent and A2A support), and genuinely reduce operational burden. The standards-first framing is not a rejection of that choice; it is the discipline that ensures the choice remains a choice. Every interface that matters—what a client sees, what a tool looks like, how agents talk to each other, how telemetry is structured, how memory is accessed—is defined by an open standard first, with AWS providing one (very good) implementation of each. Twelve months from now, if a component needs to change—for cost, capability, regulatory, or strategic reasons—the change should be localized to one layer, validated against an interface that was true from day one. 
 
-Page 26 of 26

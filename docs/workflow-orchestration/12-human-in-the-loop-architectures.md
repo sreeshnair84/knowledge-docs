@@ -279,7 +279,7 @@ APPROVAL_ROUTING = {
     RiskLevel.CRITICAL: {
         "approvers": ["team_lead", "risk_officer", "vp"],
         "sla_hours": 4,  # tight SLA because it's critical
-        "quorum": 2,  # any 2 of 3
+        "quorum": 2,  # any
         "notify_all": True,
     },
 }

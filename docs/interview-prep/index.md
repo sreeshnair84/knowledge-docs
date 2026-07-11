@@ -13,7 +13,6 @@ target_role: Interviews
 ## How to Use This Guide
 
 
-
 # Interview Preparation
 
 Question banks, scenario prep, and behavioral guides for Enterprise Architect and AI roles.

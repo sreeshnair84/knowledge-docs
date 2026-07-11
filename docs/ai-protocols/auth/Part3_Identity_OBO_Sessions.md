@@ -15,7 +15,7 @@ covers_version: \"as of 2026-07-10\"
 
 # Enterprise Authentication & Identity Propagation for AI Agents — Confidential Research
 
-Enterprise AI Authentication Research  Part 3 of 7
+Enterprise AI Authentication Research  Part
 Part 3
 Identity Propagation, OBO & Session
 Management

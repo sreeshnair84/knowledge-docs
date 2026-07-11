@@ -334,7 +334,6 @@ The original research prompt calls for 20 consulting-grade artifacts. Rather tha
 |9. AI Opportunity Matrix|19. AI Strategy Playbook|
 |10. AI Value Heatmap|20. Enterprise Architect & Chief AI Officer Playbooks|
 
-Page 1 of 21 
 
 #### **DELIVERABLE 1 · AI Value Creation Reference Model** 
 
@@ -352,7 +351,6 @@ _The layered model connecting raw data to enterprise outcome — used to explain
 
 Value compounds top-down: better context data raises agent accuracy, which raises the safe STP rate, which is what actually moves cost, cycle time, and leakage — the enterprise outcome layer only moves because the layers below it do. 
 
-Page 2 of 21 
 
 #### **DELIVERABLE 2 · Enterprise AI Value Map** 
 
@@ -369,7 +367,6 @@ _Maps the value stream stage-by-stage against the value levers AI touches and th
 |Post-close (subrogation, audit)|Leakage (recovery)|upside not yet modeled — Phase 2|
 |Customer relationship|Retention|$3.2M|
 
-Page 3 of 21 
 
 #### **DELIVERABLE 3 · AI Business Capability Map** 
 
@@ -389,7 +386,6 @@ _Rates each business capability in the claims function on current AI maturity an
 |Litigation support|Not started|Medium|**LOW**|
 |Customer communication|Scaling|Medium|**MED**|
 
-Page 4 of 21 
 
 #### **DELIVERABLE 4 · AI Operating Model Blueprint** 
 
@@ -409,7 +405,6 @@ _Defines who owns what across the federated model of central Claims AI CoE + emb
 
 The CoE builds and governs the agents; Claims Ops owns adoption and outcomes. Splitting "build" from "run" ownership is what prevents the common failure mode of a central team optimizing for agent accuracy while nobody owns whether adjusters actually trust and use the system. 
 
-Page 5 of 21 
 
 #### **DELIVERABLE 5 · Agentic Enterprise Reference Architecture** 
 
@@ -417,7 +412,6 @@ _Shows how claims flow through the orchestrator, specialist agents, tool calls, 
 
 Every specialist agent is stateless with respect to authority — it drafts, scores, or recommends, but only the orchestrator's confidence router (calibrated against the thresholds in Deliverable 13) decides whether a claim proceeds straight-through, goes to a human co-signer, or escalates fully to an adjuster. 
 
-Page 6 of 21 
 
 #### **DELIVERABLE 6 · AI Platform Reference Architecture** 
 
@@ -425,7 +419,6 @@ _The technical stack underneath the agent architecture — what an EA or platfor
 
 Most carriers buy the model layer and orchestration framework, and build the integration and governance layers themselves — the data layer is almost always the long pole, since claims data lakes and telematics feeds are rarely clean or unified at program start. 
 
-Page 7 of 21 
 
 #### **DELIVERABLE 7 · Enterprise Cognitive Architecture** 
 
@@ -439,7 +432,6 @@ _How the organization's institutional claims knowledge is captured, structured, 
 |Regulatory rule base|State-by-state unfair claims practices rules, coverage<br>interpretation precedent|Risk & Compliance Officer|
 |Litigation outcome feed|Settled vs. litigated bodily-injury outcomes, used to<br>calibrate reserve accuracy|Claims AI Risk Officer|
 
-Page 8 of 21 
 
 #### **DELIVERABLE 8 · AI Investment Framework** 
 
@@ -452,7 +444,6 @@ _Stage-gated funding — money is released in tranches tied to evidence, not com
 |Pilot→Scale|$2.1M scale-out build|Pilot thresholds met (Use Case doc, Section 7)|
 |Scale→Sustain (run-rate)|$7.6M / yr recurring|Unit economics hold; no adverse regulatory<br>findings|
 
-Page 9 of 21 
 
 #### **DELIVERABLE 9 · AI Opportunity Matrix** 
 
@@ -460,7 +451,6 @@ _Plots every claims sub-process by value potential vs. feasibility — the direc
 
 _Sequencing rule used: prioritize the top-right quadrant first regardless of theoretical value elsewhere — feasibility gaps compound, so a smaller sure win beats a larger uncertain one._ 
 
-Page 10 of 21 
 
 #### **DELIVERABLE 10 · AI Value Heatmap** 
 
@@ -468,7 +458,6 @@ _Cross-tabs claim type against value lever to show where the dollars concentrate
 
 Bodily injury scores lowest on cost/claim and cycle-time capture (agents assist but don't settle), but highest on leakage — which is why the fraud/SIU agent is deployed across all claim types from day one, even though full automation of BI claims themselves is out of scope. 
 
-Page 11 of 21 
 
 #### **DELIVERABLE 11 · AI Capability Maturity Model** 
 
@@ -490,7 +479,6 @@ _Five maturity levels used consistently across every capability so progress can 
 |Bodily injury negotiation support|Level 1 — Ad hoc|
 |Subrogation identification|Level 1 — Ad hoc|
 
-Page 12 of 21 
 
 #### **DELIVERABLE 12 · AI Transformation Roadmap** 
 
@@ -504,7 +492,6 @@ _The 36-month phased rollout, tied to the funding gates in Deliverable 8._
 |Liability augmentation live; full national scale|M24|Claims AI Product Owner|
 |Continuous optimization loop fully operational|M36|Claims AI CoE|
 
-Page 13 of 21 
 
 #### **DELIVERABLE 13 · Executive Decision Framework** 
 
@@ -518,7 +505,6 @@ _The actual routing rules the orchestrator applies — this is what "agent confi
 |Bodily injury or litigation flag present|Human-led; agents provide research & drafting support<br>only|
 |Agent confidence below threshold for its tier, any claim|Escalate to next tier up (never auto-approve on low<br>confidence)|
 
-Page 14 of 21 
 
 #### **DELIVERABLE 14 · AI Organization Design Blueprint** 
 
@@ -536,7 +522,6 @@ _How the claims workforce actually changes shape — headcount, new roles, and t
 
 The FTE reduction is managed entirely through attrition over 24 months (typical adjuster attrition runs 12-15%/year). Adjusters freed from simple, high-volume claims are the pipeline for the new QA auditor and complex-claims specialist roles — the reskilling path is built into the roadmap, not left to chance. 
 
-Page 15 of 21 
 
 #### **DELIVERABLE 15 · AI Portfolio Framework** 
 
@@ -551,7 +536,6 @@ _All active AI initiatives in the claims division, ranked and risk-rated the sam
 |Subrogation identification agent|Not started|~$6M (Phase 2 estimate)|Medium|
 |Customer status chat agent|Scaling|CSAT contribution, not separately<br>valued|Low|
 
-Page 16 of 21 
 
 #### **DELIVERABLE 16 · AI Governance Model** 
 
@@ -565,7 +549,6 @@ _Who reviews what, how often — the answer to "who would catch it if this went 
 |Human-in-loop escalation policy|Continuous|Regional Ops Directors|Real-time override and escalation<br>handling|
 |Decision audit sampling|Weekly|Claims AI QA Auditors|Statistical sample of STP &<br>augmented-tier decisions|
 
-Page 17 of 21 
 
 #### **DELIVERABLE 17 · AI Economics Model** 
 
@@ -582,7 +565,6 @@ _The unit economics that make the LAE savings line in the Value Lifecycle docume
 
 One additional agent-handled claim: ~$4.10. One additional human-handled claim: ~$580. This ~140x gap is the single number that most influences the business case. 
 
-Page 18 of 21 
 
 #### **DELIVERABLE 18 · AI Value Scorecard** 
 
@@ -598,7 +580,6 @@ _A mockup of the actual quarterly scorecard the CoE reviews — illustrative Q3 
 |Human override rate (augmented tier)|<12%|10.4%|**AHEAD**of plan|
 |Value realized vs. plan (cumulative)|$82.6M|$79.1M|**TRACKING**— 96% of plan|
 
-Page 19 of 21 
 
 #### **DELIVERABLE 19 · AI Strategy Playbook** 
 
@@ -620,7 +601,6 @@ _The operating principles the claims AI program is actually run against — shor
 
 - starts, not after volume drops. 
 
-Page 20 of 21 
 
 #### **DELIVERABLE 20 · Enterprise Architect & Chief AI Officer Playbooks** 
 
@@ -650,4 +630,3 @@ _Two short, role-specific checklists for the two executives who most need to act
 
 Every deliverable in this pack traces back to the same underlying numbers in the companion Value Lifecycle document. That traceability — not the templates themselves — is what makes a deliverables pack useful in front of Finance, Risk, and the Board. 
 
-Page 21 of 21
