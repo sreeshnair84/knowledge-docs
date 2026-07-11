@@ -259,6 +259,7 @@ const sidebars = {
           label: 'Protocol Standards',
           items: [
             'ai-protocols/standards/index',
+            'ai-protocols/standards/_section_executive_analysis',
             'ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026',
           ],
         },
@@ -268,6 +269,7 @@ const sidebars = {
           items: [
             'ai-protocols/mcp/index',
             'ai-protocols/mcp/MCP_Deep_Research_2026',
+            'ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026',
             'ai-protocols/mcp/MCP_Harness_AIDLC',
           ],
         },
