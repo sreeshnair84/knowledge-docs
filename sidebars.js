@@ -147,16 +147,8 @@ const sidebars = {
             'ai-security-governance/security/08-Architects-Field-Guide',
           ],
         },
-        {
-          type: 'category',
-          label: 'DeepMind Control',
-          items: ['ai-security-governance/deep-mind/index'],
-        },
-        {
-          type: 'category',
-          label: 'Policy & Authorization',
-          items: ['ai-security-governance/policy/index'],
-        },
+        'ai-security-governance/deep-mind/index',
+        'ai-security-governance/policy/index',
       ],
     },
     {
@@ -295,11 +287,7 @@ const sidebars = {
             'cloud-platforms/aws/AgentCore_Memory_Operations_DeepDive',
           ],
         },
-        {
-          type: 'category',
-          label: 'Azure',
-          items: ['cloud-platforms/azure/index'],
-        },
+        'cloud-platforms/azure/index',
         {
           type: 'category',
           label: 'AI Gateway',
