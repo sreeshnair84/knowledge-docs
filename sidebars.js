@@ -618,6 +618,7 @@ const sidebars = {
             'enterprise-architecture/ai-architecture/agent-reliability-engineering',
             'enterprise-architecture/ai-architecture/enterprise-aiops-guide',
             'enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration',
+            'enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide',
             'enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive',
             'enterprise-architecture/ai-architecture/agent-memory-planning-architecture',
             'enterprise-architecture/ai-architecture/agent-communication-identity-gateway',
