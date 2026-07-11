@@ -6,6 +6,8 @@ status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: "Enterprise Agentic Platform v1.0 - Best Practices & Antipatterns"
+tags: ["agentic-systems", "platform", "best-practices", "agents-sdk", "agentcore", "mcp", "multitenancy", "observability"]
 ---
 **ENTERPRISE AGENTIC PLATFORM — Best Practices, Antipatterns & Implementation Guide**
 *Strands Agents · AgentCore · MCP · ADFS/FT Rights · Multitenancy · Langfuse*
@@ -541,7 +543,7 @@ Configure Langfuse's field masking to redact specific fields before trace storag
 | --- | --- |
 | Data Type | Langfuse Masking Approach |
 | Account numbers (IBAN/BBAN) | Regex: [A-Z]{2}[0-9]{2}[A-Z0-9]{4,30} → IBAN-REDACTED |
-| Customer UPN / email | Pseudonymise: SHA256[upn](:8) → shown as user_abc12345 |
+| Customer UPN / email | Pseudonymise: `SHA256[upn](:8)` → shown as user_abc12345 |
 | Customer full name | Partial: 'John D.' format or full redaction |
 | Social Security / National ID | Full redaction |
 | Trade amounts > EUR 100k | Redact in trace, preserve in separate audit log |

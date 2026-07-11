@@ -259,8 +259,21 @@ const sidebars = {
           label: 'Protocol Standards',
           items: [
             'ai-protocols/standards/index',
-            'ai-protocols/standards/_section_executive_analysis',
             'ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026',
+            'ai-protocols/standards/existing-protocol-evolution-agentic-ai',
+            'ai-protocols/standards/agent-protocol-metadata-headers',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Emerging Protocols: Beyond MCP & A2A',
+          items: [
+            'ai-protocols/standards/emerging-protocols-beyond-mcp-a2a',
+            'ai-protocols/standards/emerging-protocols-overview',
+            'ai-protocols/standards/emerging-protocols-acp-anp',
+            'ai-protocols/standards/emerging-protocols-agui-utcp',
+            'ai-protocols/standards/emerging-protocols-ucp-ap2-nlip-lmos',
+            'ai-protocols/standards/emerging-protocols-crosscutting',
           ],
         },
         {
@@ -280,6 +293,7 @@ const sidebars = {
       label: 'Cloud Platforms',
       items: [
         'cloud-platforms/index',
+        'cloud-platforms/enterprise-agent-runtime-internals-2026',
         {
           type: 'category',
           label: 'AWS AgentCore',

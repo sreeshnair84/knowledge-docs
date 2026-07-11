@@ -131,7 +131,7 @@ Tag every LLM call with team_id, feature_id, use_case, model, and environment. E
 |Cost by Team (7d)|sum by(team_id)(increase(llm_cost_usd_total[7d]))/1000000|Chargeback view per team|
 |Cache Hit Rate|rate(llm_cache_hits_total[5m]) / rate(llm_tokens_total[5m]) * 100|Semantic cache effectiveness|
 |Model Tier Dist.|sum by(tier)(increase(llm_tokens_total[24h]))|Nano/Mid/Frontier split|
-|Cost Anomaly|rate(llm_cost_usd_total[5m]) ><br>avg_over_time(rate[llm_cost_usd_total[5m]](7d:5m)) * 2|2x rolling average breach alert|
+|Cost Anomaly|`rate(llm_cost_usd_total[5m]) > avg_over_time(rate(llm_cost_usd_total[5m])[7d:5m]) * 2`|2x rolling average breach alert|
 |P95 Latency by Model|histogram_quantile(0.95, sum<br>by(model,le)(rate(llm_request_latency_ms_bucket[5m])))|Latency per model tier|
 
 ## **ROI MEASUREMENT**
