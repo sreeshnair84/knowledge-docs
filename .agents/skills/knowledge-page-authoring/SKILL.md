@@ -12,6 +12,13 @@ last_reviewed: 2026-07-10
 
 # Knowledge Page Authoring
 
+> **Current policy (2026-07-11):** Do not use a standard page template by
+> document type. The legacy type-specific material below is retained only as
+> historical examples until it is removed. Use the universal contract and
+> adapt each page's structure to its reader task. `doc_type`, if present, is
+> descriptive metadata for search and indexing only; it must not select
+> headings, word counts, diagrams, callouts, or other required sections.
+
 This repo has nine distinct content types, each with its own real structural
 pattern already established somewhere in the repo — the goal is to make new
 and edited pages match the *best* existing example of their type, not
@@ -86,7 +93,7 @@ file — add those on top of the universal block, don't replace it.
 Always run both before telling the user a page is done:
 
 ```bash
-python3 ${CLAUDE_SKILL_DIR}/scripts/lint_page.py <path-to-page.md> --type <type>
+python3 ${CLAUDE_SKILL_DIR}/scripts/lint_page.py <path-to-page.md> --universal
 python3 ${CLAUDE_SKILL_DIR}/scripts/check_against_corpus.py <path-to-page.md>
 ```
 

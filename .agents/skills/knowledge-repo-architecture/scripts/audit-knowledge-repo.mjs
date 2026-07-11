@@ -8,7 +8,7 @@ const outputIndex = process.argv.indexOf('--output');
 const output = outputIndex >= 0 ? process.argv[outputIndex + 1] : null;
 const docs = path.join(root, 'docs');
 const sidebar = fs.readFileSync(path.join(root, 'sidebars.js'), 'utf8');
-const required = new Set(['title', 'date_created', 'last_reviewed', 'status', 'source_type', 'source_file', 'doc_type', 'tags']);
+const required = new Set(['title', 'date_created', 'last_reviewed', 'status', 'source_type', 'source_file', 'tags']);
 const findings = new Map();
 const titles = new Map();
 const types = new Map();
@@ -29,6 +29,17 @@ function frontmatter(text) {
     const i = line.indexOf(':');
     return i > 0 && !line.trimStart().startsWith('#') ? [[line.slice(0, i).trim(), line.slice(i + 1).trim().replace(/^['"]|['"]$/g, '')]] : [];
   }));
+}
+function normalizedId(id) {
+  return id.split('/').map((part) => part.replace(/^\d+[-_]/, '')).join('/');
+}
+function localTargetExists(page, target) {
+  const direct = path.resolve(path.dirname(page), target);
+  if (fs.existsSync(direct) || fs.existsSync(`${direct}.md`) || fs.existsSync(path.join(direct, 'index.md'))) return true;
+  const directory = path.dirname(direct);
+  if (!fs.existsSync(directory)) return false;
+  const wanted = path.basename(direct).toLowerCase();
+  return fs.readdirSync(directory).some((name) => normalizedId(path.parse(name).name).toLowerCase() === wanted && name.endsWith('.md'));
 }
 
 const pages = collect(docs);
@@ -52,10 +63,11 @@ for (const page of pages) {
   if ((text.match(/```/g) ?? []).length % 2) add('unclosed_fence', { file: relative });
   if (/\n{5,}/.test(text)) add('excessive_blank_lines', { file: relative });
   if (/<iframe/i.test(text)) add('iframe_embed', { file: relative });
-  if (!sidebar.includes(`'${docId}'`) && !sidebar.includes(`\"${docId}\"`)) add('sidebar_orphan_candidate', { file: relative, doc_id: docId });
-  for (const match of text.matchAll(/(?<!!)\[[^\]]*\]\(([^)]+)\)/g)) {
+  if (!sidebar.includes(`'${docId}'`) && !sidebar.includes(`\"${docId}\"`) && !sidebar.includes(`'${normalizedId(docId)}'`) && !sidebar.includes(`\"${normalizedId(docId)}\"`)) add('sidebar_orphan_candidate', { file: relative, doc_id: docId });
+  const prose = text.replace(/```[\s\S]*?```/g, '');
+  for (const match of prose.matchAll(/(?<!!)\[[^\]]*\]\(([^)]+)\)/g)) {
     const target = match[1].split('#')[0].trim();
-    if (target && !/^(https?:|mailto:|#|\/)/.test(target) && !target.includes('://') && !fs.existsSync(path.resolve(path.dirname(page), target))) add('broken_relative_link', { file: relative, target });
+    if (target && !/^(https?:|mailto:|#|\/)/.test(target) && !target.includes('://') && !localTargetExists(page, target)) add('broken_relative_link', { file: relative, target });
   }
 }
 for (const [title, files] of titles) if (files.length > 1) add('duplicate_title', { title, files });

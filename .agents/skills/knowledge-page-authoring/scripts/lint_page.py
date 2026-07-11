@@ -111,6 +111,8 @@ def main():
                      choices=list(TYPE_REQUIREMENTS.keys()),
                      help="Override the type instead of reading it from the "
                           "page's 'doc_type' frontmatter field.")
+    ap.add_argument("--universal", action="store_true",
+                    help="Validate only universal publishing rules; do not apply a page-type template.")
     args = ap.parse_args()
 
     with open(args.path, encoding="utf-8") as f:
@@ -127,8 +129,8 @@ def main():
         if not fm.get(key):
             issues.append(f"Missing/empty universal frontmatter field: '{key}'")
 
-    doc_type = args.type or fm.get("doc_type")
-    if not doc_type:
+    doc_type = None if args.universal else (args.type or fm.get("doc_type"))
+    if not doc_type and not args.universal:
         issues.append(
             "No --type given and no 'doc_type' frontmatter field found — "
             "cannot check type-specific structure. Add 'doc_type: <type>' "
@@ -177,7 +179,8 @@ def main():
             )
 
     if not issues:
-        print(f"OK — {args.path} passes all checks for type '{doc_type}' ({word_count} words).")
+        scope = "universal rules" if args.universal else f"type '{doc_type}'"
+        print(f"OK — {args.path} passes all checks for {scope} ({word_count} words).")
         return 0
     else:
         print(f"{len(issues)} issue(s) found in {args.path}:\n")
