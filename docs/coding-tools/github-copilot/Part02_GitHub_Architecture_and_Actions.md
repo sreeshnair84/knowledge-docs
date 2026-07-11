@@ -109,12 +109,12 @@ GitHub's permission model is hierarchical: Enterprise → Organization → Repos
 
 |**Role**|**Read**|**Triage**|**Write**|**Maintain**|**Admin**|
 |---|---|---|---|---|---|
-|View code||||||
-|Open issues/PRs||||||
-|Manage issues/PRs||||||
-|Push to non-protected branches||||||
-|Manage branch protection||||||
-|Manage repo settings||||||
+|View code||||||
+|Open issues/PRs||||||
+|Manage issues/PRs||||||
+|Push to non-protected branches||||||
+|Manage branch protection||||||
+|Manage repo settings||||||
 
 ## **2.4 GitHub Advanced Security (GHAS)** 
 

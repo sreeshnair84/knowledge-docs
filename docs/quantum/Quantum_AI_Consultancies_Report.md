@@ -144,11 +144,11 @@ McKinsey's QuantHub technical assessment process ensures QuantumBlack staff have
 
 ###### **ANTI-PATTERNS TO AVOID** 
 
-|Hiring McKinsey QuantumBlack expecting deep production-build capability comparable to BCG X — per Nexus's 2026<br>comparison, McKinsey's edge is strategic breadth, not necessarily build depth.|
+|Hiring McKinsey QuantumBlack expecting deep production-build capability comparable to BCG X — per Nexus's 2026<br>comparison, McKinsey's edge is strategic breadth, not necessarily build depth.|
 |---|
-|Treating the Quantum Technology Monitor's industry-wide figures as predictive of YOUR specific ROI — it's an<br>aggregate market signal, not a company-specific business case.|
-|Engaging QuantumBlack for narrow technical quantum circuit work when a quantum-native vendor (IonQ, Quantinuum,<br>IBM Quantum Network) would be both cheaper and more technically current.|
-|Assuming the 9-24 month consulting-model timeline (shared across McKinsey, BCG X, and peers per Nexus) can be<br>compressed significantly without a corresponding increase in client-side resourcing and decision-making speed.|
+|Treating the Quantum Technology Monitor's industry-wide figures as predictive of YOUR specific ROI — it's an<br>aggregate market signal, not a company-specific business case.|
+|Engaging QuantumBlack for narrow technical quantum circuit work when a quantum-native vendor (IonQ, Quantinuum,<br>IBM Quantum Network) would be both cheaper and more technically current.|
+|Assuming the 9-24 month consulting-model timeline (shared across McKinsey, BCG X, and peers per Nexus) can be<br>compressed significantly without a corresponding increase in client-side resourcing and decision-making speed.|
 
 _Sources: Nexus 'McKinsey vs BCG X: AI Consulting Compared 2026'; McKinsey Quantum Technology Monitor 2026; Virtasant 'Big Five Consulting' (QuantumBlack headcount and Iguazio acquisition); Glassdoor QuantumBlack interview data (QuantHub)._ 
 
@@ -342,15 +342,15 @@ The roster of Quantum Summit 2025 client speakers (United, T-Mobile, Prudential,
 |---|
 |measurable, large-scale ('Client Zero') transformation results — a credibility signal that extends to their quantum<br>engagement claims.|
 |**BEST PRACTICES**|
-|If your organisation is already an IBM hybrid cloud, Z systems, or Qiskit ecosystem client, IBM Consulting's<br>vertically-integrated model likely offers the fastest path to quantum pilot mobilisation — no new vendor relationship<br>required.|
-|Request access to IBM's Quantum Summit client community (United, T-Mobile, Prudential, etc.) for peer benchmarking<br>— IBM Consulting can often facilitate these introductions given the existing relationships.|
-|Evaluate the Project Bob methodology as a TEMPLATE for your own AI-augmented SDLC transformation, even if your<br>quantum timeline is longer-term — the productivity framework is independently valuable.|
-|Because IBM Consulting's quantum hardware access defaults to IBM Quantum Network, explicitly request<br>multi-vendor benchmarking (AWS Braket, Azure Quantum) as part of the SOW if you want genuine hardware-agnostic<br>evaluation.|
+|If your organisation is already an IBM hybrid cloud, Z systems, or Qiskit ecosystem client, IBM Consulting's<br>vertically-integrated model likely offers the fastest path to quantum pilot mobilisation — no new vendor relationship<br>required.|
+|Request access to IBM's Quantum Summit client community (United, T-Mobile, Prudential, etc.) for peer benchmarking<br>— IBM Consulting can often facilitate these introductions given the existing relationships.|
+|Evaluate the Project Bob methodology as a TEMPLATE for your own AI-augmented SDLC transformation, even if your<br>quantum timeline is longer-term — the productivity framework is independently valuable.|
+|Because IBM Consulting's quantum hardware access defaults to IBM Quantum Network, explicitly request<br>multi-vendor benchmarking (AWS Braket, Azure Quantum) as part of the SOW if you want genuine hardware-agnostic<br>evaluation.|
 |**ANTI-PATTERNS TO AVOID**|
-|Assuming IBM Consulting is hardware-agnostic — their structural advantage IS the IBM Quantum integration; expect a<br>natural bias toward IBM hardware/software unless explicitly counterbalanced in scoping.|
-|Choosing IBM Consulting specifically for ALTERNATIVE hardware modalities (neutral atom, trapped ion, annealing)<br>where their direct integration advantage doesn't apply — BCG X (QuEra) or Accenture (IonQ) may have deeper expertise<br>there.|
-|Treating the Quantum Summit client list as evidence of YOUR industry's specific readiness — most cited examples<br>(United, T-Mobile, Morgan Stanley) are large enterprises with quantum-specific budgets far exceeding typical mid-market<br>allocations.|
-|Importing Project Bob's 45% productivity figure as a direct quantum ROI proxy — it's an AI-coding-assistant metric, not<br>a quantum computing outcome metric, though it demonstrates IBM Consulting's delivery credibility.|
+|Assuming IBM Consulting is hardware-agnostic — their structural advantage IS the IBM Quantum integration; expect a<br>natural bias toward IBM hardware/software unless explicitly counterbalanced in scoping.|
+|Choosing IBM Consulting specifically for ALTERNATIVE hardware modalities (neutral atom, trapped ion, annealing)<br>where their direct integration advantage doesn't apply — BCG X (QuEra) or Accenture (IonQ) may have deeper expertise<br>there.|
+|Treating the Quantum Summit client list as evidence of YOUR industry's specific readiness — most cited examples<br>(United, T-Mobile, Morgan Stanley) are large enterprises with quantum-specific budgets far exceeding typical mid-market<br>allocations.|
+|Importing Project Bob's 45% productivity figure as a direct quantum ROI proxy — it's an AI-coding-assistant metric, not<br>a quantum computing outcome metric, though it demonstrates IBM Consulting's delivery credibility.|
 
 _Sources: IBM 3Q25 Earnings Prepared Remarks (SEC 8-K); IBM Think 'Trends Shaping AI and Tech in 2026'; Articsledge 'AI Consulting Business 2025' ($6B IBM AI book); Constellation Research 2025 Year in Review (Quantum Summit client roster)._ 
 

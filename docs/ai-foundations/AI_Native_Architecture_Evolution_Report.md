@@ -8,9 +8,9 @@ source_type: converted-pdf
 source_file: "AI_Native_Architecture_Evolution_Report.pdf"
 tags: ["ai-foundations", "data-architecture", "enterprise-architecture", "research"]
 ---
-**ENTERPRISE ARCHITECTURE EVOLUTION RESEARCH REPORT** 
-2026 – 2031 Edition 
-# **From Data Warehouse to Agent-Native Architecture** 
+# **From Data Warehouse to Agent-Native Architecture**
+
+*Enterprise Architecture Evolution Research Report — 2026–2031 Edition*
 
 A decade-spanning evolution study of enterprise data architecture paradigms — why each emerged, what it solved, what it broke, and how organizations migrate toward AI-native design. 
 

@@ -10,12 +10,6 @@ source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]
 ---
-
-supersedes: "docs/ai-protocols/auth/AgentIdentity_Research_2026.pdf"
-title: "Agent Identity — Microsoft Entra Agent ID vs AWS AgentCore Identity"
-tags: [auth, identity, oauth, entra, aws, agent-identity, multi-cloud]
----
-
 # Agent Identity for AI Systems
 
 **Microsoft Entra Agent ID vs AWS AgentCore Identity — Complete Technical Comparison**

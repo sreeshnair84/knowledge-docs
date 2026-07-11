@@ -617,16 +617,16 @@ The transformation of software engineering is neither a sudden displacement nor 
 
 ## **16 — Anti-Patterns Catalog** 
 
-|**Autopilot Without Approval**<br>**Gates**|Enabling Autonomous Agent Mode without human-approval requirements on all<br>PRs. Consequence: agents merge code without review, bypassing quality and<br>security controls.|
+|**Autopilot Without Approval**<br>**Gates**|Enabling Autonomous Agent Mode without human-approval requirements on all<br>PRs. Consequence: agents merge code without review, bypassing quality and<br>security controls.|
 |---|---|
-|**Ambiguous Issue**<br>**Assignment**|Assigning poorly-scoped GitHub Issues ("fix the bugs") to Coding Agent.<br>Consequence: agent produces broad, unpredictable changes that require<br>extensive rework.|
-|**Context Debt Accumulation**|Allowing copilot-instructions.md files to grow stale without review cycles.<br>Consequence: agent behavior drifts from team standards; conflicting rules<br>cause unpredictable output.|
-|**Frontier Model for Routine**<br>**Tasks**|Using Claude/GPT-4.1 for linting, docstring generation, or formatting.<br>Consequence: 10-30x unnecessary token cost with identical output quality.|
-|**Unbounded Agent Sessions**<br>**Unvetted MCP Server**<br>**Integration**|Running agent sessions on large monorepos without context limits, time limits,<br>or spending caps. Consequence: unexpected invoices; June 2026 billing<br>change makes this immediately expensive.<br>Connecting arbitrary MCP servers from the marketplace without security<br>review. Consequence: IDEsaster-class attack surface; malicious MCP server<br>can compromise agent context.|
-|**Treating AI Review as**<br>**Human Review**|Relying exclusively on Copilot's AI code review without human security review<br>for sensitive code paths. Consequence: security vulnerabilities in<br>authentication, authorization, and data access code.|
-|**Vendor Lock-in Without**<br>**Abstraction**|Building internal tooling directly against Copilot SDK APIs without abstraction<br>layers. Consequence: Polaris migration (August 2026) and future API changes<br>require full rewrites.|
-|**Skipping Secrets Scanning**|Allowing AI-assisted commits without pre-commit secrets detection.<br>Consequence: 3.2% exposure rate (2x human baseline); hardcoded credentials<br>in public repositories.|
-|**No AI FinOps Governance**|Deploying Copilot Enterprise without spending controls, dashboards, or credit<br>budgets. Consequence: departments exceed budgets in first month of<br>autonomous agent adoption.|
+|**Ambiguous Issue**<br>**Assignment**|Assigning poorly-scoped GitHub Issues ("fix the bugs") to Coding Agent.<br>Consequence: agent produces broad, unpredictable changes that require<br>extensive rework.|
+|**Context Debt Accumulation**|Allowing copilot-instructions.md files to grow stale without review cycles.<br>Consequence: agent behavior drifts from team standards; conflicting rules<br>cause unpredictable output.|
+|**Frontier Model for Routine**<br>**Tasks**|Using Claude/GPT-4.1 for linting, docstring generation, or formatting.<br>Consequence: 10-30x unnecessary token cost with identical output quality.|
+|**Unbounded Agent Sessions**<br>**Unvetted MCP Server**<br>**Integration**|Running agent sessions on large monorepos without context limits, time limits,<br>or spending caps. Consequence: unexpected invoices; June 2026 billing<br>change makes this immediately expensive.<br>Connecting arbitrary MCP servers from the marketplace without security<br>review. Consequence: IDEsaster-class attack surface; malicious MCP server<br>can compromise agent context.|
+|**Treating AI Review as**<br>**Human Review**|Relying exclusively on Copilot's AI code review without human security review<br>for sensitive code paths. Consequence: security vulnerabilities in<br>authentication, authorization, and data access code.|
+|**Vendor Lock-in Without**<br>**Abstraction**|Building internal tooling directly against Copilot SDK APIs without abstraction<br>layers. Consequence: Polaris migration (August 2026) and future API changes<br>require full rewrites.|
+|**Skipping Secrets Scanning**|Allowing AI-assisted commits without pre-commit secrets detection.<br>Consequence: 3.2% exposure rate (2x human baseline); hardcoded credentials<br>in public repositories.|
+|**No AI FinOps Governance**|Deploying Copilot Enterprise without spending controls, dashboards, or credit<br>budgets. Consequence: departments exceed budgets in first month of<br>autonomous agent adoption.|
 
 **** 
 

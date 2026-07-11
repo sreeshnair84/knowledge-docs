@@ -1,0 +1,58 @@
+{
+  // Base: enable all rules, then selectively disable for PDF-converted content
+  "default": true,
+
+  // MD013: Line length — off; PDF conversions produce long prose lines
+  "MD013": false,
+
+  // MD024: No duplicate headings — off; section names repeat across paradigm docs
+  "MD024": false,
+
+  // MD033: No inline HTML — off; some docs use <br> in table cells
+  "MD033": false,
+
+  // MD036: No emphasis-only headings — off; bold headers appear in PDF conversions
+  "MD036": false,
+
+  // MD041: First line must be H1 — off; frontmatter docs start with --- not #
+  "MD041": false,
+
+  // MD004: Unordered list style — enforce dash
+  "MD004": { "style": "dash" },
+
+  // MD007: Unordered list indentation
+  "MD007": { "indent": 2 },
+
+  // MD010: No hard tabs
+  "MD010": true,
+
+  // MD012: No multiple blank lines
+  "MD012": { "maximum": 2 },
+
+  // MD022: Headings surrounded by blank lines
+  "MD022": true,
+
+  // MD025: Single H1 per document
+  "MD025": true,
+
+  // MD031: Fenced code blocks surrounded by blank lines
+  "MD031": true,
+
+  // MD032: Lists surrounded by blank lines
+  "MD032": true,
+
+  // MD034: No bare URLs
+  "MD034": true,
+
+  // MD045: Images should have alt text
+  "MD045": true,
+
+  // MD046: Code block style — fenced
+  "MD046": { "style": "fenced" },
+
+  // MD049: Emphasis style — asterisks
+  "MD049": { "style": "asterisk" },
+
+  // MD050: Strong style — asterisks
+  "MD050": { "style": "asterisk" }
+}

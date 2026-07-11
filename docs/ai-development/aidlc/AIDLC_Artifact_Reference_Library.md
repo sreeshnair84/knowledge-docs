@@ -411,7 +411,7 @@ Owner: Lead Data Scientist   |   Phase: Phase 5: Development
 |EXP-0<br>08|XGB-AltData-v0<br>.3|+ Utility + Rental data<br>added|0.83|0.66|0.44|18.2pp<br>age gap|Significant<br>improvement. Bias<br>still present.|
 |EXP-0<br>14|XGB-FairConstr<br>-v0.6|+ Fairness constraint<br>(exponentiated gradient)|0.82|0.64|0.43|3.1pp<br>age gap|Bias reduced. Minor<br>perf sacrifice<br>acceptable.|
 |EXP-0<br>19|XGB-SMOTE-v<br>0.8|+ SMOTE oversampling<br>for young applicants|0.83|0.65|0.43|1.8pp<br>age gap|Target threshold<br>achieved. Calibration<br>check needed.|
-|EXP-0<br>23|XGB-Final-v1.0|+ Calibrated thresholds<br>per segment|0.83|0.65|0.43|1.8pp<br>age gap|SELECTED. All<br>targets met.<br>Proceeding to Phase<br>6.|
+|EXP-0<br>23|XGB-Final-v1.0|+ Calibrated thresholds<br>per segment|0.83|0.65|0.43|1.8pp<br>age gap|SELECTED. All<br>targets met.<br>Proceeding to Phase<br>6.|
 |**Experiment Tra**|**cking Platform**|_MLflow — Azure ML_<br>_Azure Blob. Reprodu_|_workspa_<br>_cibility: r_|_ce. All e_<br>_andom s_|_xperiment_<br>_eeds fixe_|_s versioned_<br>_d; data vers_|_. Run artifacts stored in_<br>_ion pinned via DVC tag v1.0._|
 |**Selected Model**|**Run**|_EXP-023 — XGB-Fi_<br>_CreditRisk-XGB-v1.0_|_nal-v1.0._<br>_stage: S_|_Register_<br>_taging._|_ed in MLf_|_low Model R_|_egistry as_|
 
@@ -496,13 +496,13 @@ Owner: Security Architect + Ethics Lead   |   Phase: Phase 6: Evaluation
 
 ||**Metric**|**Protected**<br>**Groups**|**Baseline**<br>**Value**|**AI Model**<br>**Value**|**Thresh**<br>**old**|**Result**|
 |---|---|---|---|---|---|---|
-||Demographic<br>Parity —<br>Approval Rate|Age: 18–25 vs<br>35–45|+18.2pp<br>(baseline)|+1.6pp (AI<br>model)|2.0pp|PASS|
-||Demographic<br>Parity —<br>Approval Rate|Postcode<br>Quintile 1 vs 5|+24.1pp<br>(baseline)|+1.9pp (AI<br>model)|2.0pp|PASS|
-||Equalized Odds<br>— FNR|Age: 18–25|+2.3×<br>(baseline)|+1.15× (AI<br>model)|1.2×|PASS|
-||Equalized Odds<br>— FNR|Postcode Q1|+1.8×<br>(baseline)|+1.18× (AI<br>model)|1.2×|PASS|
-||Individual<br>Fairness|Counterfactual<br>gender swap|N/A (not<br>tested in<br>legacy)|0.4% decision<br>change rate<br>on gender|<1%|PASS|
-||Calibration|Age 18–25<br>(worst group)|Brier 0.19<br>(baseline)|Brier 0.14 (AI<br>model)|<0.15|PASS|
-||Adverse Action<br>Parity|Protected vs<br>non-protected|N/A|Reason code<br>distribution<br>parity: p=0.31<br>(not<br>significant)|p>0.05|PASS|
+||Demographic<br>Parity —<br>Approval Rate|Age: 18–25 vs<br>35–45|+18.2pp<br>(baseline)|+1.6pp (AI<br>model)|2.0pp|PASS|
+||Demographic<br>Parity —<br>Approval Rate|Postcode<br>Quintile 1 vs 5|+24.1pp<br>(baseline)|+1.9pp (AI<br>model)|2.0pp|PASS|
+||Equalized Odds<br>— FNR|Age: 18–25|+2.3×<br>(baseline)|+1.15× (AI<br>model)|1.2×|PASS|
+||Equalized Odds<br>— FNR|Postcode Q1|+1.8×<br>(baseline)|+1.18× (AI<br>model)|1.2×|PASS|
+||Individual<br>Fairness|Counterfactual<br>gender swap|N/A (not<br>tested in<br>legacy)|0.4% decision<br>change rate<br>on gender|<1%|PASS|
+||Calibration|Age 18–25<br>(worst group)|Brier 0.19<br>(baseline)|Brier 0.14 (AI<br>model)|<0.15|PASS|
+||Adverse Action<br>Parity|Protected vs<br>non-protected|N/A|Reason code<br>distribution<br>parity: p=0.31<br>(not<br>significant)|p>0.05|PASS|
 |**External Auditor**||_Algorithmic Jus_|_tice Institute (A_|_JI) — Independe_|_nt External_|_Fairness Audit_|
 |**Audit Conclusion**||_AI Model PASS_<br>_legacy scoreca_<br>_recommended._|_ES all fairness_<br>_rd. Ongoing m_|_thresholds. Repr_<br>_onitoring mandato_|_esents sub_<br>_ry. Annual i_|_stantial improvement over_<br>_ndependent audit_|
 

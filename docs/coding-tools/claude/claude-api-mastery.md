@@ -10,11 +10,6 @@ source_type: native-md
 source_file: ""
 tags: ["coding-tools", "claude"]
 ---
-
-supersedes: "docs/coding-tools/claude/Module_2_Claude_API_SDK.pdf"
-title: Claude API Mastery
----
-
 # Claude API Mastery
 
 Complete guide to the Anthropic Claude API as of June 2026 — Messages API, Extended Thinking, Tool Use, Vision, Batch API, Files API, Streaming, and Prompt Caching.

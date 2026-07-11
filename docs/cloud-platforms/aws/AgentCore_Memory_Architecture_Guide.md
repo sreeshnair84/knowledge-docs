@@ -423,9 +423,9 @@ Each agent owns a dedicated Memory Resource. No sharing. actor_id maps to specif
 
 |**ADVANTAGES**|**DISADVANTAGES**|
 |---|---|
-|Strongest isolation — no cross-agent contamination|Knowledge siloed — Agent B cannot benefit from Agent A|
-|Simplest IAM — one role, one resource|Duplicate storage across agents|
-|Easiest Art. 17 erasure — delete one resource<br>Lowest operational complexity|No collaborative intelligence|
+|Strongest isolation — no cross-agent contamination|Knowledge siloed — Agent B cannot benefit from Agent A|
+|Simplest IAM — one role, one resource|Duplicate storage across agents|
+|Easiest Art. 17 erasure — delete one resource<br>Lowest operational complexity|No collaborative intelligence|
 
 I **Recommendation:** Default starting point. Use for support bots, simple chatbots, single-function agents. 
 
@@ -435,10 +435,10 @@ Dedicated writer (KYC Collector) persists facts. Downstream readers (Credit, Ris
 
 |**ADVANTAGES**|**DISADVANTAGES**|
 |---|---|
-|Single source of truth — KYC written once, consumed by|Writer is single point of failure for data quality|
-|many|Readers may act on stale data if consolidation delayed|
-|Read agents decoupled from write logic|Namespace design requires upfront information architecture|
-|Fine-grained IAM namespace conditions<br>Namespace-level audit trail|Cross-agent trust model must be maintained in IAM|
+|Single source of truth — KYC written once, consumed by|Writer is single point of failure for data quality|
+|many|Readers may act on stale data if consolidation delayed|
+|Read agents decoupled from write logic|Namespace design requires upfront information architecture|
+|Fine-grained IAM namespace conditions<br>Namespace-level audit trail|Cross-agent trust model must be maintained in IAM|
 
 I **Recommendation:** KYC-driven workflows. Writer = KYC/onboarding agent. Readers = all downstream decision agents. 
 
@@ -448,10 +448,10 @@ Sub-agents write to own namespaces in parallel. Orchestrator consolidates into f
 
 |**ADVANTAGES**|**DISADVANTAGES**|
 |---|---|
-|Concurrency-safe — no race conditions|Higher orchestration complexity — must track all|
-|Modular — each sub-agent owns its namespace|completions|
-|Orchestrator provides quality gate before promotion|Consolidation latency — shared not updated until all finish|
-|Supports complex parallel workflows|More IAM roles to manage<br>Saga pattern needed for partial failure handling|
+|Concurrency-safe — no race conditions|Higher orchestration complexity — must track all|
+|Modular — each sub-agent owns its namespace|completions|
+|Orchestrator provides quality gate before promotion|Consolidation latency — shared not updated until all finish|
+|Supports complex parallel workflows|More IAM roles to manage<br>Saga pattern needed for partial failure handling|
 
 I **Recommendation:** Complex loan origination, KYC review, compliance workflows with 3+ specialist sub-agents. 
 
@@ -461,10 +461,10 @@ Append-only, immutable event ledger. Every decision timestamped and signed. Requ
 
 |**ADVANTAGES**|**DISADVANTAGES**|
 |---|---|
-|Full auditability — every decision traceable|Storage grows unbounded — must tier to S3 WORM|
-|Tamper-evident — HMAC signatures|Query complexity for ledger replay|
-|Regulatory ready for MiFID II and AML|HMAC computation adds write latency|
-|Replay capability for past sessions|No correction — errors compensated not overwritten|
+|Full auditability — every decision traceable|Storage grows unbounded — must tier to S3 WORM|
+|Tamper-evident — HMAC signatures|Query complexity for ledger replay|
+|Regulatory ready for MiFID II and AML|HMAC computation adds write latency|
+|Replay capability for past sessions|No correction — errors compensated not overwritten|
 
 I **Recommendation:** Mandatory for EU banking agents making or influencing financial decisions. Pair with S3 Object Lock WORM. 
 

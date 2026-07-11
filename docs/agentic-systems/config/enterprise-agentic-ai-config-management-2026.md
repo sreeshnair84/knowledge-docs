@@ -524,7 +524,7 @@ Ease of Use # 4/5<br>Scalability # 3/5<br>Hot Reload # 2/5<br>Security # 4/5<br>
 **Latency:** 5–15ms (Standard), 15–30ms (SecureString/KMS) **Availability:** 99.9% SLA **Throughput:** 40–1000 TPS depending on tier **Value size:** 4KB (Standard) / 8KB (Advanced) **Versions:** Up to 100 per parameter **Cost:** Free (Standard) / $0.05 per Advanced parameter/month **Hot Reload:** Not native — requires polling or EventBridge **Rollback:** Manual version retrieval (GetParameter with version label) 
 
 |• Native AWS integration — works seamlessly with<br>IAM, Lambda, ECS, EKS, CloudFormation<br>•<br>Hierarchical<br>namespacing<br>with<br>path-based<br>organization (/platform/env/service/key)<br>• CloudFormation and Terraform native support<br>(SSM Parameter references)<br>• Free tier for Standard parameters (up to 10,000<br>parameters)<br>• GetParametersByPath API enables bulk retrieval<br>by prefix<br>• Event-driven updates via EventBridge when<br>parameters change<br>• CloudTrail audit logging for all parameter access<br>and modifications<br>• AWS Lambda Extensions support for local<br>parameter caching<br>• Parameter versioning (up to 100 versions per<br>parameter)|• No native dynamic refresh/push notification to<br>running applications<br>• API throughput limits: 40 TPS (Standard) / 1000<br>TPS (Advanced) — can bottleneck at scale<br>• No feature flag semantics — purely key-value, no<br>targeting or rollout logic<br>• Maximum value size: 4KB (Standard) / 8KB<br>(Advanced)<br>•<br>Cross-region<br>replication<br>requires<br>custom<br>implementation<br>• No built-in schema validation or type safety<br>• SecureString requires KMS calls which add latency<br>• Hierarchical path limit: 15 levels deep<br>• No native configuration grouping or atomic<br>multi-parameter updates|
-|→Static non-sensitive configuration (endpoints,<br>ARNs, region names)<br>→CloudFormation/Terraform variable injection<br>→Environment-specific baseline configuration<br>→Infrastructure parameter sharing across accounts<br>(cross-account SSM)<br>→<br>Application<br>startup<br>configuration<br>(not<br>runtime-hot-reloaded)|Secrets and credentials (use Secrets Manager<br>instead)<br>Feature flags with targeting rules (use AppConfig)<br>High-frequency runtime configuration reads (>100<br>TPS per parameter)<br>Large configuration documents (>8KB)<br>Configuration requiring atomic updates across<br>multiple parameters|
+|→Static non-sensitive configuration (endpoints,<br>ARNs, region names)<br>→CloudFormation/Terraform variable injection<br>→Environment-specific baseline configuration<br>→Infrastructure parameter sharing across accounts<br>(cross-account SSM)<br>→<br>Application<br>startup<br>configuration<br>(not<br>runtime-hot-reloaded)|Secrets and credentials (use Secrets Manager<br>instead)<br>Feature flags with targeting rules (use AppConfig)<br>High-frequency runtime configuration reads (>100<br>TPS per parameter)<br>Large configuration documents (>8KB)<br>Configuration requiring atomic updates across<br>multiple parameters|
 
 ##### **AWS AppConfig** 
 
@@ -540,8 +540,8 @@ Managed configuration deployment service with built-in progressive rollout, auto
 
 • Built-in deployment strategies: Linear, Exponential, • Maximum configuration document size: 1MB — AllAtOnce with configurable bake times insufficient for very large agent schemas • Automated rollback on CloudWatch alarm triggers • No native multi-level hierarchy (must implement via • Configuration validation via Lambda validators or conventions) JSON Schema • Targeting rules (per-user/per-tenant flags) require • AppConfig Agent (Lambda Extension / sidecar) AWS Evidently or LaunchDarkly provides local caching with sub-millisecond reads • Pricing adds up at scale: $0.0008 per configuration • Supports multiple configuration types: Feature deployment + client calls Flags, Freeform (JSON/YAML/text) • Learning curve for deployment strategy • Native integration with Bedrock, Lambda, ECS, configuration EKS • No built-in A/B testing or experiment framework • Configuration environments and applications • Configuration retrieval requires knowledge of provide logical grouping application/environment/profile structure • Long-poll API enables efficient change detection • Limited querying capabilities (no configuration without excessive API calls search) • Canary and blue/green deployment support • AWS IAM and resource-based policies for fine-grained access control 
 
-|→Feature flags and kill switches for agents and<br>tools<br>→Dynamic runtime configuration (prompt versions,<br>model parameters)<br>→Progressive rollout of configuration changes<br>(canary, linear)|Secrets and credentials (use Secrets Manager)<br>Infrastructure-level configuration (CloudFormation<br>parameters)<br>Very large configuration documents (>1MB)<br><br>Fine-grained<br>user/tenant<br>targeting<br>without<br>Evidently|
-|→Any configuration that must update without agent<br>redeployment<br>→Freeform JSON configuration documents for<br>complex agent schemas|High-frequency writes (AppConfig is primarily<br>read-optimized)|
+|→Feature flags and kill switches for agents and<br>tools<br>→Dynamic runtime configuration (prompt versions,<br>model parameters)<br>→Progressive rollout of configuration changes<br>(canary, linear)|Secrets and credentials (use Secrets Manager)<br>Infrastructure-level configuration (CloudFormation<br>parameters)<br>Very large configuration documents (>1MB)<br><br>Fine-grained<br>user/tenant<br>targeting<br>without<br>Evidently|
+|→Any configuration that must update without agent<br>redeployment<br>→Freeform JSON configuration documents for<br>complex agent schemas|High-frequency writes (AppConfig is primarily<br>read-optimized)|
 
 ##### **AWS Secrets Manager** 
 
@@ -549,17 +549,17 @@ Managed secrets storage with automatic rotation, cross-account access, multi-reg
 
 **Latency:** 20–50ms (API), 1–5ms (SDK cache hit) **Availability:** 99.99% SLA **Max Size:** 65KB per secret **Rotation:** Built-in for RDS/Redshift, Lambda for custom **Replication:** Multi-region (eventual consistency) **Cost:** $0.40/secret/month + $0.05/10K API calls **Hot Reload:** Via SDK caching client (configurable TTL) **Audit:** Full CloudTrail logging 
 
-|**STRENGTHS**|**WEAKNESSES**|
+|**STRENGTHS**|**WEAKNESSES**|
 |• Automatic secret rotation for supported databases<br>(RDS, Redshift, Elasticsearch)<br>• Custom Lambda rotation functions for any secret<br>type (OAuth tokens, API keys)<br>• Cross-account access via resource-based policies<br>without credential sharing|• Cost: $0.40 per secret/month + $0.05 per 10,000<br>API calls — expensive at scale<br>• No native dynamic injection (applications must call<br>API or use SDK caching client)<br>• Rotation requires careful implementation to avoid<br>race conditions|
 |•<br>Multi-region<br>secret<br>replication<br>for<br>global<br>applications<br>• AWS SDK caching client reduces API calls and<br>latency|• No secret templating or secret schema validation<br>• Cross-region replication is eventually consistent<br>(not real-time)<br>• Maximum secret size: 65KB|
 |• Fine-grained IAM policies at secret level (including<br>VPC conditions)<br>• Complete CloudTrail audit log for all secret access<br> <br> <br> <br> <br>|• Not designed for non-secret configuration (use<br>Parameter Store)<br>• Rotation windows can cause brief downtime if not<br>|
 |•<br>Secret<br>versioning<br>with<br>staging<br>labels<br>(AWSCURRENT, AWSPENDING, AWSPREVIOUS)<br>• Integration with Parameter Store (for referencing<br>secrets from CloudFormation)<br>• Tag-based access control enables ABAC patterns|implemented correctly|
 
-|→Database passwords (RDS, Aurora, DynamoDB|Non-sensitive configuration values (use Parameter|
+|→Database passwords (RDS, Aurora, DynamoDB|Non-sensitive configuration values (use Parameter|
 |DAX)|Store — 10x cheaper)|
-|→OAuth client secrets and tokens<br>→API keys for external services (OpenAI,|High-frequency reads without caching (expensive<br>at scale)|
-|Anthropic, third-party tools)|Feature flags or dynamic runtime configuration|
-|→TLS certificate private keys|Configuration requiring sub-millisecond access|
+|→OAuth client secrets and tokens<br>→API keys for external services (OpenAI,|High-frequency reads without caching (expensive<br>at scale)|
+|Anthropic, third-party tools)|Feature flags or dynamic runtime configuration|
+|→TLS certificate private keys|Configuration requiring sub-millisecond access|
 |→Encryption keys that need rotation<br>→Service-to-service credentials|without caching|
 
 ##### **AWS AppConfig with Evidently** 
@@ -572,9 +572,9 @@ AWS CloudWatch Evidently provides enterprise feature flagging, A/B testing, and 
 
 • Percentage-based feature rollout with targeting • Less mature than LaunchDarkly for complex rules targeting scenarios • Built-in A/B testing with statistical significance • SDK ecosystem smaller than commercial calculation alternatives • Integration with AppConfig for configuration • No built-in code reference management delivery • Experiment analysis requires CloudWatch • Real-time experiment metric collection via expertise CloudWatch • No native integration with third-party analytics • Segment-based targeting (by user attributes, platforms tenant tier, region) • Pricing model can be complex for large-scale • Overrides for specific users/tenants experiments (whitelist/blacklist) • Launch events for progressive feature enablement • No SDK dependency for basic flag evaluation (REST API) 
 
-|→A/B testing prompt variants<br>→Progressive rollout of new model versions|<br>Complex<br>multi-dimensional<br>targeting<br>(use<br>LaunchDarkly)|
-|→Tenant-tier based feature enablement|Non-AWS environments|
-|→Experiment-driven agent capability rollout|Require rich SDK ecosystem across many<br>languages|
+|→A/B testing prompt variants<br>→Progressive rollout of new model versions|<br>Complex<br>multi-dimensional<br>targeting<br>(use<br>LaunchDarkly)|
+|→Tenant-tier based feature enablement|Non-AWS environments|
+|→Experiment-driven agent capability rollout|Require rich SDK ecosystem across many<br>languages|
 
 ##### **DynamoDB-backed Configuration Service** 
 
@@ -590,8 +590,8 @@ Ease of Use # 2/5<br>Scalability # 5/5<br>Hot Reload # 5/5<br>Security # 4/5<br>
 |• Single-digit millisecond latency with DAX caching<br>•<br>Hierarchical<br>configuration<br>via<br>DynamoDB<br>partition/sort key design<br>•<br>Native<br>support<br>for<br>complex<br>configuration<br>documents (JSON up to 400KB per item)<br>• Global Tables provide multi-region active-active<br>replication<br>•<br>DynamoDB<br>Streams<br>+<br>Lambda<br>enable<br>event-driven configuration propagation<br>• No vendor lock-in to specific configuration<br>semantics|• DynamoDB table design is critical — mistakes are<br>costly to fix<br>• Must implement own SDK, API, and developer<br>tooling<br>• Operational overhead of managing the service<br>itself<br>• Requires careful capacity planning (on-demand vs<br>provisioned throughput)<br>• Hot partition risk if many agents read the same<br>configuration key simultaneously|
 |• Can implement custom inheritance, conflict<br>resolution, and versioning logic<br>• Point-in-time recovery for configuration history||
 
-|→Complex configuration schemas not supported by|Simple key-value configuration (use Parameter|
-|AppConfig (>1MB, complex hierarchies)<br>→Configuration requiring complex query patterns<br>(search by agent type, tenant, capability)<br>→<br>Multi-tenant<br>configuration<br>with<br>complex<br>inheritance rules|Store — lower operational overhead)<br>Secrets (use Secrets Manager)<br>Teams without DynamoDB expertise<br>MVP/PoC phase — too much engineering<br>investment up-front|
+|→Complex configuration schemas not supported by|Simple key-value configuration (use Parameter|
+|AppConfig (>1MB, complex hierarchies)<br>→Configuration requiring complex query patterns<br>(search by agent type, tenant, capability)<br>→<br>Multi-tenant<br>configuration<br>with<br>complex<br>inheritance rules|Store — lower operational overhead)<br>Secrets (use Secrets Manager)<br>Teams without DynamoDB expertise<br>MVP/PoC phase — too much engineering<br>investment up-front|
 |→Configuration marketplace — searchable, tagged,<br>reusable components<br>→Audit history and configuration lineage tracking||
 
 ##### **Bedrock AgentCore Runtime** 
@@ -605,7 +605,7 @@ AWS Bedrock AgentCore Runtime provides managed infrastructure for deploying AI a
 |server integration)<br>• Auto-scaling for concurrent agent execution<br>• Native observability integration with CloudWatch<br>and X-Ray|• Less flexibility for custom agent frameworks<br>(LangChain, custom Python)<br>• Vendor lock-in risk for core agent orchestration<br>• Pricing model still evolving|
 |• IAM-native access control for agent permissions<br>• Integration with Parameter Store and Secrets<br>Manager for agent configuration<br>• Multi-agent orchestration support<br>• Built-in retry and timeout handling<br>• Bedrock Guardrails integration for real-time safety<br>enforcement|• Limited support for complex multi-step workflow<br>orchestration|
 
-|→AWS-native agent deployments using Bedrock<br>models<br>→<br>Rapid<br>agent<br>deployment<br>without<br>custom<br>infrastructure<br>→Agents requiring built-in memory and tool<br>management<br>→Enterprises wanting fully managed agent runtime|Multi-cloud or model-agnostic agent frameworks<br>Complex custom agent orchestration patterns<br>Organizations with strict vendor lock-in policies|
+|→AWS-native agent deployments using Bedrock<br>models<br>→<br>Rapid<br>agent<br>deployment<br>without<br>custom<br>infrastructure<br>→Agents requiring built-in memory and tool<br>management<br>→Enterprises wanting fully managed agent runtime|Multi-cloud or model-agnostic agent frameworks<br>Complex custom agent orchestration patterns<br>Organizations with strict vendor lock-in policies|
 
 ## **Runtime Configuration** 
 
@@ -818,17 +818,17 @@ Agentic AI platforms handle a large volume of secrets: LLM API keys, OAuth crede
 
 |**Capability**|**AWS Secrets**<br>**Manager**|**HashiCorp Vault**|**Azure Key Vault**|**Google Secret**<br>**Manager**|
 |---|---|---|---|---|
-|Auto Rotation|Native (RDS/Lambd|a)Dynamic secrets|Native (Azure resou|rces)<br>Limited|
-|Dynamic Secrets|Static only|Core feature|Static only|Static only|
+|Auto Rotation|Native (RDS/Lambd|a)Dynamic secrets|Native (Azure resou|rces)<br>Limited|
+|Dynamic Secrets|Static only|Core feature|Static only|Static only|
 |Cross-Cloud|AWS only|Multi-cloud|Azure focus|GCP focus|
-|PKI / Certs|ACM integration|Full PKI engine|Certificate mgmt|CA Service|
-|Multi-Region|Replication|Enterprise|Geo-redundancy|Native|
-|Audit Logging|CloudTrail|Audit log|Activity log|Cloud Audit|
-|Short-Lived Creds|Limited (rotation)|Core design|Limited|Limited|
-|K8s Integration|External Secrets Op.|Native (Agent)|CSI driver|Workload Identity|
+|PKI / Certs|ACM integration|Full PKI engine|Certificate mgmt|CA Service|
+|Multi-Region|Replication|Enterprise|Geo-redundancy|Native|
+|Audit Logging|CloudTrail|Audit log|Activity log|Cloud Audit|
+|Short-Lived Creds|Limited (rotation)|Core design|Limited|Limited|
+|K8s Integration|External Secrets Op.|Native (Agent)|CSI driver|Workload Identity|
 |Cost (est)|$0.40/secret/mo|Enterprise pricing|Azure pricing|$0.06/version/mo|
 |Complexity|Low|High|Medium|Medium|
-|AWS IAM Integ|Native|Via auth method|Limited|Limited|
+|AWS IAM Integ|Native|Via auth method|Limited|Limited|
 
 ##### **AWS Secrets Manager — Enterprise Implementation** 
 

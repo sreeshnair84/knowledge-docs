@@ -677,68 +677,68 @@ Five RFI responses arrive by the deadline. Marcus logs each one the moment it ar
 |I**Microsoft Azure AI (Az**<br>**OpenAI + Microsoft Fabr**|**ure ML + Azure**<br>**ic)**<br>_The integrated Microsoft_|_stack_|
 |---|---|---|
 |**Module coverage**|A (MLOps), B (LLM via Azure OpenAI), C (Data via Fabric), D (partial), E<br>(VS Code integration)|**~**|
-|**Integration with AWS**|Migration required. Azure Data Factory for AWS S3 integration. Not native.||
-|**Business outcome**<br>**monitoring (Q4)**|Custom build on Azure Monitor + Power BI. No native business KPI<br>correlation.||
+|**Integration with AWS**|Migration required. Azure Data Factory for AWS S3 integration. Not native.||
+|**Business outcome**<br>**monitoring (Q4)**|Custom build on Azure Monitor + Power BI. No native business KPI<br>correlation.||
 |**GDPR erasure in training data**|Semi-automated — Delta process with manual model flagging. Provided in<br>writing.|**~**|
-|**LLM PII data sovereignty**|Processed within Azure tenancy. Data Processing Agreement provided.||
-|**LLM bias auditing**|Azure AI Content Safety. Fine-grained demographic bias: roadmap Q3<br>2027.||
+|**LLM PII data sovereignty**|Processed within Azure tenancy. Data Processing Agreement provided.||
+|**LLM bias auditing**|Azure AI Content Safety. Fine-grained demographic bias: roadmap Q3<br>2027.||
 |**Year-1 TCO estimate (our**<br>**scale)**|£420K–£540K including migration professional services (£80K–£120K).|**~**|
-|**Retail reference (UK)**|1 UK grocery retailer (name under NDA). Case study provided.||
-|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. Full compliance pack provided.||
+|**Retail reference (UK)**|1 UK grocery retailer (name under NDA). Case study provided.||
+|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. Full compliance pack provided.||
 |I**Databricks (Mosaic AI**<br>**Delta Lake)**|**/ Unity Catalog /**<br>_The data-first AI pla_|_tform_|
-|**Module coverage**|A (MLOps — MLflow native), B (LLM via Mosaic + AI Gateway), C (Delta<br>Lake + Unity Catalog), D (partial), E (Databricks Notebooks)||
-|**Integration with AWS**|Native — Databricks runs on AWS. Your existing S3 data is directly<br>accessible. No migration required for data.||
+|**Module coverage**|A (MLOps — MLflow native), B (LLM via Mosaic + AI Gateway), C (Delta<br>Lake + Unity Catalog), D (partial), E (Databricks Notebooks)||
+|**Integration with AWS**|Native — Databricks runs on AWS. Your existing S3 data is directly<br>accessible. No migration required for data.||
 |**Business outcome**<br>**monitoring (Q4)**|Custom build on Databricks SQL + dashboards. Not native business KPI<br>correlation. Honest position stated.|**~**|
 |**GDPR erasure in training data**|Delta Lake native delete. Semi-automated model flagging process —<br>documented in detail.|**~**|
-|**LLM PII data sovereignty**|Open-source model hosting: data stays in your AWS environment. External<br>API models: data transits via AI Gateway with audit log.||
+|**LLM PII data sovereignty**|Open-source model hosting: data stays in your AWS environment. External<br>API models: data transits via AI Gateway with audit log.||
 |**LLM bias auditing**|MLflow evaluation framework supports custom bias metrics. No native<br>demographic bias detection for LLMs.|**~**|
-|**Year-1 TCO estimate (our**<br>**scale)**|£280K–£360K. Migration from SageMaker MLflow: 2 weeks estimated<br>(MLflow metadata compatible).||
+|**Year-1 TCO estimate (our**<br>**scale)**|£280K–£360K. Migration from SageMaker MLflow: 2 weeks estimated<br>(MLflow metadata compatible).||
 
 **Page 15** 
 
-|**Retail reference (UK)**|2 UK retailers provided — 1 grocery, 1 fashion. Named references with<br>contact details.||
+|**Retail reference (UK)**|2 UK retailers provided — 1 grocery, 1 fashion. Named references with<br>contact details.||
 |---|---|---|
-|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. UK data residency confirmed.||
+|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. UK data residency confirmed.||
 
 |I**DataRobot (AI Platform**<br>**Tracking)**<br>|**+ Business Value**<br>_The governance-first AI pla_<br>|_tform_<br>|
 |---|---|---|
-|**Module coverage**|A (MLOps), B (LLM via integrations), D (native business outcome<br>monitoring — strongest response), E (DataRobot UI)||
-|**Integration with AWS**|Native connector to SageMaker. Can run alongside or replace SageMaker<br>gradually.||
-|**Business outcome**<br>**monitoring (Q4)**|NATIVE. Business value tracking module maps model predictions to<br>business KPIs. Overstock rate demo provided in response.||
+|**Module coverage**|A (MLOps), B (LLM via integrations), D (native business outcome<br>monitoring — strongest response), E (DataRobot UI)||
+|**Integration with AWS**|Native connector to SageMaker. Can run alongside or replace SageMaker<br>gradually.||
+|**Business outcome**<br>**monitoring (Q4)**|NATIVE. Business value tracking module maps model predictions to<br>business KPIs. Overstock rate demo provided in response.||
 |**GDPR erasure in training data**|Semi-automated with documented workflow. DataRobot Data Registry<br>tracks lineage.|**~**|
 |**LLM PII data sovereignty**|LLM integrations via API to Azure/AWS/Google. DataRobot does not host<br>foundation models. PII transits chosen provider.|**~**|
-|**LLM bias auditing**|Native LLM bias evaluation module. Supports demographic parity audit for<br>LLM outputs.||
+|**LLM bias auditing**|Native LLM bias evaluation module. Supports demographic parity audit for<br>LLM outputs.||
 |**Year-1 TCO estimate (our**<br>**scale)**|£380K–£460K. No migration cost to existing SageMaker — coexistence<br>model.|**~**|
-|**Retail reference (UK)**|3 UK retailers provided — demand forecasting case study matches our use<br>case exactly.||
-|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. Penetration test results provided.||
+|**Retail reference (UK)**|3 UK retailers provided — demand forecasting case study matches our use<br>case exactly.||
+|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. Penetration test results provided.||
 
 |I**Google Cloud Vertex A**<br>**Gemini + Agent Builder)**<br>|**I (Vertex AI +**<br>_The full-stack Google AI pla_<br>|_tform_|
 |---|---|---|
 |**Module coverage**|A (MLOps), B (LLM — Gemini native + Model Garden), C (BigQuery ML), D<br>(Explainable AI — partial), E (Colab + Workbench)|**~**|
-|**Integration with AWS**|Cross-cloud integration possible. BigQuery Omni for AWS S3. Migration of<br>SageMaker workloads: 3–4 month estimate provided.||
-|**Business outcome**<br>**monitoring (Q4)**|Custom build on Vertex AI Monitoring + BigQuery + Looker. Not native<br>business KPI correlation.||
-|**GDPR erasure in training data**|Data Processing Agreement provided. Detailed erasure workflow: customer<br>data deletion does not automatically flag training datasets — manual<br>process.||
-|**LLM PII data sovereignty**|Processed within customer GCP project. Google Access Transparency logs<br>all Google engineer access.||
-|**LLM bias auditing**|Native safety filters. Demographic bias auditing for LLMs: Q1 2027<br>roadmap. NOT available now.||
-|**Year-1 TCO estimate (our**<br>**scale)**|£460K–£600K including migration professional services.||
+|**Integration with AWS**|Cross-cloud integration possible. BigQuery Omni for AWS S3. Migration of<br>SageMaker workloads: 3–4 month estimate provided.||
+|**Business outcome**<br>**monitoring (Q4)**|Custom build on Vertex AI Monitoring + BigQuery + Looker. Not native<br>business KPI correlation.||
+|**GDPR erasure in training data**|Data Processing Agreement provided. Detailed erasure workflow: customer<br>data deletion does not automatically flag training datasets — manual<br>process.||
+|**LLM PII data sovereignty**|Processed within customer GCP project. Google Access Transparency logs<br>all Google engineer access.||
+|**LLM bias auditing**|Native safety filters. Demographic bias auditing for LLMs: Q1 2027<br>roadmap. NOT available now.||
+|**Year-1 TCO estimate (our**<br>**scale)**|£460K–£600K including migration professional services.||
 
 **Page 16** 
 
-|**Retail reference (UK)**|1 reference — large UK grocery retailer. Named reference provided.||
+|**Retail reference (UK)**|1 reference — large UK grocery retailer. Named reference provided.||
 |---|---|---|
-|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. Google Cloud compliance<br>documentation extensive.||
+|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. Google Cloud compliance<br>documentation extensive.||
 
 |I**AWS (SageMaker + Be**<br>|**drock + Amazon Q)**<br>_The incumbent pla_<br>|_tform_<br>|
 |---|---|---|
-|**Module coverage**|A (SageMaker — current platform), B (Bedrock — LLM), C (S3 +<br>SageMaker Feature Store — current), D (SageMaker Model Monitor —<br>partial), E (SageMaker Studio)||
-|**Integration with existing**<br>**setup**|Zero migration cost for existing SageMaker workloads — we are already on<br>this platform.||
+|**Module coverage**|A (SageMaker — current platform), B (Bedrock — LLM), C (S3 +<br>SageMaker Feature Store — current), D (SageMaker Model Monitor —<br>partial), E (SageMaker Studio)||
+|**Integration with existing**<br>**setup**|Zero migration cost for existing SageMaker workloads — we are already on<br>this platform.||
 |**Business outcome**<br>**monitoring (Q4)**|Custom build — CloudWatch + SageMaker Model Monitor + custom<br>Lambda. Documented reference architecture provided.|**~**|
 |**GDPR erasure in training data**|Custom workflow — S3 deletion + manual training dataset versioning. Step<br>Functions automation template provided.|**~**|
-|**LLM PII data sovereignty**|Bedrock processes within AWS tenancy. Customer data not used for model<br>training. Data processing agreement provided.||
-|**LLM bias auditing**|Bedrock Guardrails (content filtering). Fine-grained demographic LLM bias<br>auditing: on roadmap, no firm date.||
-|**Year-1 TCO estimate (our**<br>**scale)**|£180K–£240K. Lowest TCO — no migration. Incremental cost on existing<br>contract.||
-|**Retail reference (UK)**|Multiple UK retailers on SageMaker — 3 references provided with contact<br>details.||
-|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. PCI-DSS Level 1 — relevant for<br>payments integration.||
+|**LLM PII data sovereignty**|Bedrock processes within AWS tenancy. Customer data not used for model<br>training. Data processing agreement provided.||
+|**LLM bias auditing**|Bedrock Guardrails (content filtering). Fine-grained demographic LLM bias<br>auditing: on roadmap, no firm date.||
+|**Year-1 TCO estimate (our**<br>**scale)**|£180K–£240K. Lowest TCO — no migration. Incremental cost on existing<br>contract.||
+|**Retail reference (UK)**|Multiple UK retailers on SageMaker — 3 references provided with contact<br>details.||
+|**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. PCI-DSS Level 1 — relevant for<br>payments integration.||
 
 ##### **Phase Outcomes** 
 

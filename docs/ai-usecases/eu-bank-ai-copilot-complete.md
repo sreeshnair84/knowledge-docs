@@ -34,8 +34,6 @@ endpoints and SigV4-signed requests only. No direct browser-to-AgentCore communi
 circumstance.
 ## Table of Contents
 
-
-
 1. EU Regulatory Compliance
 2. Infrastructure & Deployment
 

@@ -641,16 +641,16 @@ Enterprise architects face the question of which infrastructure abstraction laye
 
 |**Workload Type**|**Physica**<br>**l**|**VM**|**Container/K8s**|**Serverless**|**Recommendation**|
 |---|---|---|---|---|---|
-|Legacy monolith, no refactor|||~||VMs (lift-and-shift)|
-|Microservices (new)||~||~|Kubernetes|
-|Batch processing (large)|~|~||~|Kubernetes + Jobs|
-|Event-driven functions|||||Serverless or KEDA on K8s|
-|GPU ML training|~|~|||Kubernetes + GPU Operator|
-|LLM inference (high<br>volume)|~|~||~|Kubernetes + vLLM|
-|Stateful database (OLTP)|~||||Managed DB or K8s<br>StatefulSet|
-|Edge AI workloads|~|~||~|K3s / MicroK8s at edge|
-|Air-gapped / sovereign|~||||Kubernetes (self-managed)|
-|High-security (FinServ/Gov)|~||+ Kata|~|K8s + Confidential Containers|
+|Legacy monolith, no refactor|||~||VMs (lift-and-shift)|
+|Microservices (new)||~||~|Kubernetes|
+|Batch processing (large)|~|~||~|Kubernetes + Jobs|
+|Event-driven functions|||||Serverless or KEDA on K8s|
+|GPU ML training|~|~|||Kubernetes + GPU Operator|
+|LLM inference (high<br>volume)|~|~||~|Kubernetes + vLLM|
+|Stateful database (OLTP)|~||||Managed DB or K8s<br>StatefulSet|
+|Edge AI workloads|~|~||~|K3s / MicroK8s at edge|
+|Air-gapped / sovereign|~||||Kubernetes (self-managed)|
+|High-security (FinServ/Gov)|~||+ Kata|~|K8s + Confidential Containers|
 
 Legend: = Preferred | = Suitable | **~** = Possible with caveats | = Not recommended 
 

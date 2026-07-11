@@ -92,15 +92,15 @@ IonQ executed a 'land-and-expand' platform strategy: sell quantum COMPUTING as t
 |Sold the first 6th-generation, chip-based 256-qubit system bundled with a secure quantum network — demonstrates<br>the land-and-expand platform thesis converting into actual multi-product sales, not just roadmap promises.|
 |Becoming critical INFRASTRUCTURE for other quantum startups (Multiverse's Singularity runs on IonQ Cloud) — a<br>'picks and shovels' position that generates revenue regardless of which application-layer startup wins.|
 |**BEST PRACTICES**|
-|If evaluating IonQ, ask specifically about the multi-product bundle (computing+networking+sensing+security) — the<br>~35% multi-product revenue mix suggests bundled deals may have better economics than computing-only contracts.|
-|For pharma/chemistry use cases, investigate the AstraZeneca precedent as a reference engagement model —<br>trapped-ion's high fidelity is particularly suited to chemistry simulation accuracy requirements.|
-|Consider IonQ Cloud (via AWS Braket or direct) as an infrastructure layer even if your primary vendor relationship is<br>with an application-layer startup (like Multiverse) — many startups build ON TOP of IonQ hardware.|
-|Track CliNR (Clifford Noise Reduction) developments closely — this proprietary error-reduction technique directly<br>affects how soon IonQ hardware becomes viable for your specific algorithm's qubit/depth requirements.|
+|If evaluating IonQ, ask specifically about the multi-product bundle (computing+networking+sensing+security) — the<br>~35% multi-product revenue mix suggests bundled deals may have better economics than computing-only contracts.|
+|For pharma/chemistry use cases, investigate the AstraZeneca precedent as a reference engagement model —<br>trapped-ion's high fidelity is particularly suited to chemistry simulation accuracy requirements.|
+|Consider IonQ Cloud (via AWS Braket or direct) as an infrastructure layer even if your primary vendor relationship is<br>with an application-layer startup (like Multiverse) — many startups build ON TOP of IonQ hardware.|
+|Track CliNR (Clifford Noise Reduction) developments closely — this proprietary error-reduction technique directly<br>affects how soon IonQ hardware becomes viable for your specific algorithm's qubit/depth requirements.|
 |**ANTI-PATTERNS TO AVOID**|
-|Evaluating IonQ purely as a 'quantum computing' vendor when their strategic differentiation is increasingly the<br>PLATFORM (networking, sensing, security) — a computing-only evaluation misses where the growth and likely future<br>product bundling is heading.|
-|Assuming 755% revenue growth is sustainable at that rate long-term — early-stage platform companies typically see<br>growth rates moderate as the base grows; use the $260-270M full-year guidance as the more stable planning figure.|
-|Choosing trapped-ion (IonQ) for problems requiring very high qubit counts with lower per-qubit fidelity requirements —<br>IonQ's strength is fidelity/AQ (algorithmic qubits), not raw qubit count compared to superconducting systems.|
-|Overlooking that IonQ increasingly operates as critical infrastructure for OTHER startups (Multiverse's Singularity) — a<br>disruption to IonQ affects your application-layer vendor too, creating hidden dependency risk.|
+|Evaluating IonQ purely as a 'quantum computing' vendor when their strategic differentiation is increasingly the<br>PLATFORM (networking, sensing, security) — a computing-only evaluation misses where the growth and likely future<br>product bundling is heading.|
+|Assuming 755% revenue growth is sustainable at that rate long-term — early-stage platform companies typically see<br>growth rates moderate as the base grows; use the $260-270M full-year guidance as the more stable planning figure.|
+|Choosing trapped-ion (IonQ) for problems requiring very high qubit counts with lower per-qubit fidelity requirements —<br>IonQ's strength is fidelity/AQ (algorithmic qubits), not raw qubit count compared to superconducting systems.|
+|Overlooking that IonQ increasingly operates as critical infrastructure for OTHER startups (Multiverse's Singularity) — a<br>disruption to IonQ affects your application-layer vendor too, creating hidden dependency risk.|
 |_Sources: IonQ Q1 2026 Earnings (SEC Form 8-K); Owler IonQ Competitors data; The Quantum Insider 'Top Quantum Computing Companies'_|
 |_2026; Constellation Research 2025 Year in Review; Entangled Future 'Multiverse Computing' profile (IonQ Cloud dependency)._|
 

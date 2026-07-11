@@ -235,15 +235,15 @@ The average executive attention span in a meeting is 4 minutes before their mind
 
 #### **Vague** → **Precise Language Rewrites** 
 
-|_"We need to modernise our architecture."_|"Our current architecture is costing us 6 weeks of<br>integration time per new capability. I recommend a 12-month<br>modernisation programme that reduces this to 2 weeks, at a<br>cost of £1.4M and a payback of 18 months."|
+|_"We need to modernise our architecture."_|"Our current architecture is costing us 6 weeks of<br>integration time per new capability. I recommend a 12-month<br>modernisation programme that reduces this to 2 weeks, at a<br>cost of £1.4M and a payback of 18 months."|
 |---|---|
-|_"The technical debt is a problem."_|"We have identified £2.3M of annual cost attributable to<br>technical debt — through incident rate, productivity loss, and<br>integration complexity. Unresolved, this grows by 30%<br>annually as the estate expands."|
+|_"The technical debt is a problem."_|"We have identified £2.3M of annual cost attributable to<br>technical debt — through incident rate, productivity loss, and<br>integration complexity. Unresolved, this grows by 30%<br>annually as the estate expands."|
 
 **BUSINESS · COMMUNICATION · EXECUTIVE SKILLS MASTERY  |  EA LEADERSHIP GUIDE Page 7** 
 
-|_"We should probably look at a cloud migration."_|"I recommend we commission a cloud readiness<br>assessment in Q3, targeting a phased migration of 12 Tier-2<br>applications by end Q2 next year. Projected: 22% reduction<br>in infrastructure cost."|
+|_"We should probably look at a cloud migration."_|"I recommend we commission a cloud readiness<br>assessment in Q3, targeting a phased migration of 12 Tier-2<br>applications by end Q2 next year. Projected: 22% reduction<br>in infrastructure cost."|
 |---|---|
-|_"There are some concerns about the vendor's roadmap."_|"The vendor confirmed that LLM bias auditing — a<br>mandatory requirement in our AI governance framework —<br>is not available until Q1 2027. This creates a 9-month gap in<br>our customer service AI launch plan. I recommend we<br>disqualify this vendor from the shortlist."|
+|_"There are some concerns about the vendor's roadmap."_|"The vendor confirmed that LLM bias auditing — a<br>mandatory requirement in our AI governance framework —<br>is not available until Q1 2027. This creates a 9-month gap in<br>our customer service AI launch plan. I recommend we<br>disqualify this vendor from the shortlist."|
 
 **Page 8** 
 

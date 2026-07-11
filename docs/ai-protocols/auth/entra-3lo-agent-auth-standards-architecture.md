@@ -11,12 +11,6 @@ source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]
 ---
-
-supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Research.pdf"
-title: "EntraID 3LO Agent Auth — Standards, Architecture & Gateway Design (Vol. 1)"
-tags: [auth, identity, oauth, entra, 3lo, obo, gateway, mcp]
----
-
 # EntraID 3LO: AC Gateway + AC Identity — Volume 1
 
 **User-Delegated Auth for AI Agents · Standards, Architecture & Industry Analysis**

@@ -56,16 +56,16 @@ Deep-Research Edition · 2025–2026
 
 |**Framework**|**Orchestratio**<br>**n**|**State Mgmt**|**Human-in-**<br>**Loop**|**Multi-Agen**<br>**t**|**Enterprise**<br>**Ready**|**No-Code**<br>**Option**|**Open**<br>**Source**|
 |---|---|---|---|---|---|---|---|
-|LangGraph|Graph / DAG|**Yes**|**Yes**|**Yes**|**~ Partial**|**No**|**Yes**|
-|CrewAI|Role-based<br>Crew|**~ Partial**|**~ Partial**|**Yes**|**~ Partial**|**~ Partial**|**Yes**|
-|AutoGen / AG2|Conversation<br>al|**Yes**|**Yes**|**Yes**|**~ Partial**|**~ Partial**|**Yes**|
-|Google ADK|Hierarchical<br>Tree|**Yes**|**Yes**|**Yes**|**Yes**|**No**|**~ Partial**|
+|LangGraph|Graph / DAG|**Yes**|**Yes**|**Yes**|**~ Partial**|**No**|**Yes**|
+|CrewAI|Role-based<br>Crew|**~ Partial**|**~ Partial**|**Yes**|**~ Partial**|**~ Partial**|**Yes**|
+|AutoGen / AG2|Conversation<br>al|**Yes**|**Yes**|**Yes**|**~ Partial**|**~ Partial**|**Yes**|
+|Google ADK|Hierarchical<br>Tree|**Yes**|**Yes**|**Yes**|**Yes**|**No**|**~ Partial**|
 
 |**Framework**|**Orchestratio**<br>**n**|**State Mgmt**|**Human-in-**<br>**Loop**|**Multi-Agen**<br>**t**|**Enterprise**<br>**Ready**|**No-Code**<br>**Option**|**Open**<br>**Source**|
 |---|---|---|---|---|---|---|---|
-|OpenAI Agents SDK|Explicit<br>Handoff|**~ Partial**|**~ Partial**|**Yes**|**~ Partial**|**No**|**No**|
-|Semantic Kernel|.NET /<br>Enterprise|**Yes**|**Yes**|**~ Partial**|**Yes**|**No**|**Yes**|
-|n8n|Visual Flow|**~ Partial**|**~ Partial**|**~ Partial**|**~ Partial**|**Yes**|**Yes**|
+|OpenAI Agents SDK|Explicit<br>Handoff|**~ Partial**|**~ Partial**|**Yes**|**~ Partial**|**No**|**No**|
+|Semantic Kernel|.NET /<br>Enterprise|**Yes**|**Yes**|**~ Partial**|**Yes**|**No**|**Yes**|
+|n8n|Visual Flow|**~ Partial**|**~ Partial**|**~ Partial**|**~ Partial**|**Yes**|**Yes**|
 
 Note: 'Enterprise Ready' = production-grade state management, security features, and commercial support options available. 
 

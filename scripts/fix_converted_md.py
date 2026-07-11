@@ -41,27 +41,32 @@ def inside_code_fence(lines: list[str], idx: int) -> bool:
 
 # ── operations ───────────────────────────────────────────────────────────────
 
+def strip_ctrl(s: str) -> str:
+    """Strip leading/trailing ASCII control characters (PDF OCR artifacts like \x01)."""
+    return re.sub(r'^[\x00-\x1f]+|[\x00-\x1f]+$', '', s)
+
+
 def fix_frontmatter_spill(body: str) -> tuple[str, int]:
     """
     Remove a second 'orphan' frontmatter block at the very start of the body.
     Pattern: one or more   key: "value"  lines  followed by a standalone ---.
+    Also strips leading control-character artifacts (\x01 etc.) from lines.
     Returns (fixed_body, lines_removed).
     """
     lines = body.split("\n")
     yaml_key = re.compile(r'^[a-z_]+:\s*')
     i = 0
-    # Skip leading blank lines
+    # Skip leading blank/whitespace-only lines
     while i < len(lines) and not lines[i].strip():
         i += 1
 
     if i >= len(lines):
         return body, 0
 
-    # Collect a run of yaml-looking lines
-    spill_start = i
+    # Collect a run of yaml-looking lines (allow leading ctrl chars on each)
     spill_lines = []
-    while i < len(lines) and lines[i].strip() != "---":
-        s = lines[i].strip()
+    while i < len(lines) and strip_ctrl(lines[i].strip()) != "---":
+        s = strip_ctrl(lines[i].strip())
         if s == "" or yaml_key.match(s):
             spill_lines.append(i)
             i += 1
@@ -69,7 +74,7 @@ def fix_frontmatter_spill(body: str) -> tuple[str, int]:
             break  # non-yaml content → not a spill
 
     # Must end with ---
-    if i < len(lines) and lines[i].strip() == "---" and len(spill_lines) >= 1:
+    if i < len(lines) and strip_ctrl(lines[i].strip()) == "---" and len(spill_lines) >= 1:
         removed = spill_lines + [i]
         keep = set(range(len(lines))) - set(removed)
         return "\n".join(lines[j] for j in sorted(keep)), len(removed)
@@ -179,6 +184,12 @@ def fix_file(filepath: Path, dry_run: bool = False) -> dict:
     content = filepath.read_text(encoding="utf-8", errors="replace")
     fm, body = parse_frontmatter(content)
 
+    # Strip ASCII control chars (PDF OCR artifacts: \x01, \x02, etc.) from every line
+    body = "\n".join(
+        re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", line)
+        for line in body.split("\n")
+    )
+
     body, spill_removed = fix_frontmatter_spill(body)
     body, running_headers = remove_running_headers(body)
     body, pre_h1_removed = remove_pre_h1_artifacts(body)
@@ -221,7 +232,7 @@ def main():
             or "source_type: converted-docx" in text
         )
         has_spill = bool(
-            re.search(r"\n---\n\n*[a-z_]+:\s", text)  # orphan YAML block in body
+            re.search(r"\n---\n[\n\x00-\x1f]*[a-z_]+:\s", text)  # orphan YAML block (allows ctrl chars)
         )
         if is_converted or has_spill:
             targets.append(f)

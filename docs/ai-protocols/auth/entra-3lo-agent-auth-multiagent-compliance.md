@@ -11,12 +11,6 @@ source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]
 ---
-
-supersedes: "docs/ai-protocols/auth/EntraID_3LO_Agent_Auth_Volume3.pdf"
-title: "EntraID 3LO Agent Auth — Multi-Agent Chains, Compliance & Maturity Model (Vol. 3)"
-tags: [auth, identity, oauth, entra, 3lo, multi-agent, dora, mcp, a2a, compliance]
----
-
 # EntraID 3LO: AC Gateway + AC Identity — Volume 3
 
 **Multi-Agent Chains, Regulatory Compliance (DORA/NIS2), Protocol Landscape & Maturity Model**

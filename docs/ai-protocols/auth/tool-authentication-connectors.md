@@ -10,12 +10,6 @@ source_type: native-md
 source_file: ""
 tags: ["ai-protocols", "auth"]
 ---
-
-supersedes: "docs/ai-protocols/auth/Part2_Tool_Authentication.pdf"
-title: Tool Authentication & Connector Models for AI Agents
-tags: [auth, oauth, connectors, github, confluence, sharepoint, jira, slack, salesforce]
----
-
 # Tool Authentication & Connector Models
 
 **OAuth Flows, SAML, OIDC, API Keys, PATs, GitHub Apps, and Marketplace Connectors**
