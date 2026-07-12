@@ -1,5 +1,5 @@
 ---
-title: "AIDLC Input & Output Artifact s** **<u>Templates & Example</u>"
+title: "AIDLC Artifact Reference Library — Templates & Examples"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -10,7 +10,7 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-# **AIDLC Input & Output Artifact s** **<u>Templates & Example</u>**
+# AIDLC Artifact Reference Library — Templates & Examples
 
 #### All 8 AIDLC Phases · EA Artifacts · Phase Gates
 

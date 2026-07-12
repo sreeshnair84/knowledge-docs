@@ -13,31 +13,29 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 1 OF 5**
 
-# **~~Executive Architecture &~~** **~~<u>Authorization Fundamentals</u>~~**
+# Executive Architecture &** **<u>Authorization Fundamentals</u>
 
 <u>Enterprise Policy Interceptor Architecture for Agentic AI</u>
 
-##### **VOLUME COVERAGE**
+##### VOLUME COVERAGE
 
-Covers enterprise authorization landscape, externalized authorization theory, PEP/PDP/PAP/PIP ~~architecture, separation of authentication from authorization, Zero Trust principles, and the rationale for~~ policy-as-code in Agentic AI deployments.
+Covers enterprise authorization landscape, externalized authorization theory, PEP/PDP/PAP/PIP architecture, separation of authentication from authorization, Zero Trust principles, and the rationale for policy-as-code in Agentic AI deployments.
 
-~~Classification: CONFIDENTIAL — INTERNAL USE ONLY Published: June 2026  ·  AWS Well-Architected Series~~
+Classification: CONFIDENTIAL — INTERNAL USE ONLY Published: June 2026  ·  AWS Well-Architected Series
 
 **ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
-
-
-## **Executive Summary**
+## Executive Summary
 
 This document series presents a comprehensive, implementation-oriented architecture guide for building an enterprise-grade authorization and request interception framework for Agentic AI systems deployed on AWS. The framework externalizes authorization decisions from application code and enforces them through policy-as-code using AWS Cedar (Amazon Verified Permissions) and Open Policy Agent (OPA/Rego).
 
 Modern enterprises — particularly those in regulated industries such as banking, healthcare, and government — face an unprecedented challenge: AI agents now act autonomously on behalf of users, invoking tools, querying knowledge stores, accessing databases, and calling enterprise APIs. Each of these actions must be subject to the same rigorous authorization controls as any human user interaction, yet traditional authorization models were never designed for non-human actors operating at machine speed.
 
-#### **BEST PRACTICE**
+#### BEST PRACTICE
 
 Every request made by an agent, tool, workflow, API, MCP server, RAG system, memory system, and downstream application must be policy-evaluated before execution. This is not optional in regulated environments — it is a compliance requirement under PCI DSS, SOC 2, NIST 800-53, and the EU AI Act.
 
-### **Target Environment**
+### Target Environment
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -52,9 +50,7 @@ Every request made by an agent, tool, workflow, API, MCP server, RAG system, mem
 |Deployment Model|Multi-tenant, multi-agent workflows|
 |Regulatory Context|Banking: PCI DSS, SOC 2, NIST 800-53, DORA, EU AI Act|
 
-
-
-### **Document Series Overview**
+### Document Series Overview
 
 This implementation guide is organized into five volumes, each addressing a distinct layer of the enterprise authorization stack:
 
@@ -63,23 +59,15 @@ This implementation guide is organized into five volumes, each addressing a dist
 |1|Executive Architecture & Fundamentals|Authorization theory, PEP/PDP/PAP/PIP, Zero Trust,<br>landscape|
 |2|Identity, Claims & Policy Design|ADFS/Entra federation, claims normalization, Cedar &<br>Rego design|
 
-
-
-
-
-
-
 |**Volume**|**Title**|**Covers**|
 |---|---|---|
 |3|Agent & Tool Authorization|Agent lifecycle, tool permissions, MCP security,<br>context-aware authz|
 |4|RAG, Memory & Data Authorization|Document-level authz, vector filtering, memory protection,<br>tenant isolation|
 |5|AWS Implementation & Governance|Reference architecture, CI/CD, compliance mapping,<br>production checklist|
 
+## 1. Why Externalized Authorization?
 
-
-## **1. Why Externalized Authorization?**
-
-### **1.1 The Problem with Embedded Authorization**
+### 1.1 The Problem with Embedded Authorization
 
 The dominant pattern in enterprise software for decades has been embedding authorization logic directly within application code — checking roles in service methods, validating permissions in controllers, or hardcoding group membership checks. This approach creates a series of structural problems that compound as systems grow in complexity:
 
@@ -107,10 +95,9 @@ The dominant pattern in enterprise software for decades has been embedding autho
 
 - Code-embedded authorization cannot satisfy auditors without exhaustive code reviews.
 
-
 Anti-Pattern: if (user.groups.contains('Finance_Approvers')) { approvePayment(); } — This pattern embeds identity store details, business rules, and authorization logic in a single statement. It cannot be audited, versioned, tested, or changed without a code deployment.
 
-### **1.2 The Externalized Authorization Model**
+### 1.2 The Externalized Authorization Model
 
 Externalized authorization separates the authorization decision from the application code. The application delegates the authorization question to a dedicated policy engine and acts on the result. This is the foundation of all modern enterprise authorization frameworks.
 
@@ -118,11 +105,7 @@ The flow transforms from a tightly coupled embedded check to a structured policy
 
 `BEFORE (Embedded): Request` → `Application Code` → `IF (role check) THEN execute ELSE reject AFTER (Externalized): Request` → `PEP (Intercept)` → `PDP (Evaluate)` → `Decision` → `PEP (Enforce)` → `Service`
 
-
-
-
-
-### **1.3 The Three Pillars of Modern Enterprise Authorization**
+### 1.3 The Three Pillars of Modern Enterprise Authorization
 
 Modern architectures enforce a strict separation between three distinct concerns:
 
@@ -138,9 +121,9 @@ Determines whether the authenticated principal may perform a specific action on 
 
 The actual execution of the business operation after authorization is confirmed. Business services never make authorization decisions — they trust the PEP enforcement layer.
 
-## **2. Authorization Architecture: PEP, PDP, PAP,**
+## 2. Authorization Architecture: PEP, PDP, PAP,
 
-## **PIP**
+## PIP
 
 The XACML-originated model of Policy Enforcement Point, Policy Decision Point, Policy Administration Point, and Policy Information Point remains the definitive reference architecture for externalized authorization. All modern systems — Cedar, OPA, OpenFGA, Permit.io — are implementations of this model.
 
@@ -151,21 +134,13 @@ The XACML-originated model of Policy Enforcement Point, Policy Decision Point, P
 |PAP (Admini<br>stration)|Where policies are authored,<br>reviewed, tested, versioned, and<br>deployed.|AVP Policy Store, OPA Bundle<br>Server (S3), Git repository, Styra<br>DAS console, CI/CD pipeline|GitOps-driven.<br>Policy-as-code. Version<br>controlled. PR-based review.<br>Automated testing.|
 |PIP<br>(Information)|Provides additional attributes about<br>the subject, resource, or<br>environment required for policy<br>evaluation.|DynamoDB attribute store,<br>ElastiCache, Directory Lookup<br>Lambda, SCIM endpoint, STS,<br>Secrets Manager|Enriches the authorization<br>context. Cached<br>aggressively. Authoritative<br>source of truth for attributes.|
 
-
-
-### **2.1 PEP Implementation Patterns**
+### 2.1 PEP Implementation Patterns
 
 The PEP is the most architecturally sensitive component. It must be in the critical path of every request, yet it must add minimal latency. Enterprises implement PEPs at multiple layers:
 
 |**Pattern**|**Technology**|**Latency**|**Best For**|
 |---|---|---|---|
 |API Gateway Authorizer|AWS Lambda Authorizer|10–50ms|REST APIs, external-facing services|
-
-
-
-
-
-
 
 |**Pattern**|**Technology**|**Latency**|**Best For**|
 |---|---|---|---|
@@ -176,9 +151,7 @@ The PEP is the most architecturally sensitive component. It must be in the criti
 |Reverse Proxy|NGINX + OPA, Kong Gateway|2–10ms|Legacy application fronting|
 |Event Stream Filter|EventBridge Rule + Lambda|Async|Event-driven agent workflows|
 
-
-
-## **3. Authorization Engine Landscape**
+## 3. Authorization Engine Landscape
 
 Enterprises have multiple policy engine options. The choice depends on the authorization model required, the existing technology stack, the scale of policy management, and the specific use case (infrastructure vs. application vs. agent authorization).
 
@@ -192,24 +165,16 @@ Enterprises have multiple policy engine options. The choice depends on the autho
 |Permit.io|Policy-as-<br>code + UI|RBAC+AB<br>AC+ReBA<br>C|Developer-friendly,<br>multi-model, managed|SaaS dependency, cost<br>at scale|Teams needing<br>rapid policy<br>iteration|
 |Styra DAS|Rego + UI|OPA mana<br>gement|Enterprise OPA<br>management, GitOps,<br>audit logs|OPA dependency, cost|Enterprise<br>OPA fleet<br>management|
 
-
-
-
-
-
-
 |**Engine**|**Languag**<br>**e**|**Model**|**Strength**|**Weakness**|**Best For**|
 |---|---|---|---|---|---|
 |Oso|Polar<br>language|RBAC+Re<br>BAC|Embedded in app, simple<br>syntax, developer-first|Less ecosystem, limited<br>at enterprise scale|Developer-emb<br>edded<br>authorization|
 |AuthZed /<br>SpiceDB|Zed<br>language|ReBAC|Zanzibar-compatible,<br>strongly consistent|Relationship model<br>complexity|Zanzibar-style<br>fine-grained<br>permissions|
 
-
-
-#### **BEST PRACTICE**
+#### BEST PRACTICE
 
 Enterprise Recommendation: For AWS-hosted Agentic AI with Entra ID, the optimal architecture combines AWS Cedar (Amazon Verified Permissions) for application and agent authorization with OPA/Rego for infrastructure and Kubernetes policy. These are complementary, not competing engines. Volume 2 details the hybrid architecture.
 
-## **4. Zero Trust Architecture for Agentic AI**
+## 4. Zero Trust Architecture for Agentic AI
 
 Zero Trust mandates that no request — regardless of its origin, network position, or prior authentication — is trusted by default. Every request must be explicitly verified, authorized, and continuously validated. For Agentic AI, this principle is not merely desirable; it is essential.
 
@@ -222,19 +187,13 @@ Zero Trust mandates that no request — regardless of its origin, network positi
 |Micro-segmentation|Agent-to-agent communication, agent-to-tool calls, and agent-to-data access<br>are separately authorized. No transitive trust.|
 |Continuous Validation|Authorization is re-evaluated at each action boundary. A session-level token<br>is insufficient for tool-level authorization.|
 
-
-
-## **5. The Request Interceptor Pattern**
+## 5. The Request Interceptor Pattern
 
 The request interceptor is the architectural foundation that transforms embedded authorization into externalized policy evaluation. It is the PEP in practice.
 
-### **5.1 Complete Request Pipeline**
+### 5.1 Complete Request Pipeline
 
 The following pipeline represents the authoritative request flow for an Agentic AI system. Every layer is mandatory for regulated enterprise deployments:
-
-
-
-
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `USER / AGENT REQUEST` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIII I `API GATEWAY` I I `(WAF · Rate Limiting · TLS)` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIII I `JWT VALIDATION` I I `(Signature · Expiry · Issuer)` I
 
@@ -256,11 +215,7 @@ IIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIII I `TOOL AUTHORIZATION` IIII `Re-evaluate pol
 
 Critical Design Principle: Authorization is evaluated at EVERY boundary crossing — not just at the API gateway. An agent invoking a tool, a tool querying a database, and the agent reading from memory are all separate authorization events requiring independent policy evaluation.
 
-
-
-
-
-## **6. Threat Model: STRIDE for Agentic AI Authorization**
+## 6. Threat Model: STRIDE for Agentic AI Authorization
 
 Applying the STRIDE threat model to the authorization layer identifies the key threats that the policy interceptor architecture must mitigate:
 
@@ -273,51 +228,31 @@ Applying the STRIDE threat model to the authorization layer identifies the key t
 |Denial of Service|Excessive tool calls overwhelm PDP<br>evaluation capacity|PDP caching, rate limiting at PEP, circuit breakers,<br>auto-scaling PDP fleet|
 |Elevation of<br>Privilege|Agent accumulates permissions across<br>workflow steps (confused deputy)|Per-step authorization, no permission<br>accumulation, explicit obligation enforcement|
 
-
-
-## **7. Critical Anti-Patterns to Avoid**
+## 7. Critical Anti-Patterns to Avoid
 
 The following anti-patterns represent the most common authorization failures observed in enterprise AI deployments. Each is a compliance risk and a security vulnerability:
 
-
 **Authorization Logic in Business Code** : Security policy cannot be audited, versioned, or changed without code deployment. Violates separation of concerns.
-
 
 **Policies Referencing Entra Groups Directly** : Cedar policies that check if principal belongs to 'Payments_Admins' AD group create tight coupling. Group membership changes break authorization without policy changes.
 
-
 **Tool Execution Without Authorization** : Agent tools that execute SQL, call APIs, or write to storage without per-invocation authorization create uncontrolled blast radius.
-
 
 **Overly Large JWTs** : Attempting to encode all authorization attributes in the JWT token creates tokens that exceed HTTP header limits and are impossible to revoke mid-session.
 
-
-
-
-
-
 **Missing Default-Deny Semantics** : Any authorization model that allows actions not explicitly denied (instead of denying all not explicitly allowed) is fundamentally insecure.
-
 
 **No Policy Versioning** : Policies that cannot be rolled back when they cause authorization failures are operational liabilities in production.
 
-
 **Policy Evaluation After Execution** : Checking authorization after the fact violates Zero Trust and cannot prevent harm.
-
 
 **No Decision Logging** : Without a record of every authorization decision, breach investigation is impossible and regulatory compliance cannot be demonstrated.
 
-
 **Lack of Audit Trails** : Fine-grained audit records (who accessed what, when, authorized by which policy) are mandatory for banking regulation compliance.
-
 
 **Hard-Coded Claims** : Embedding specific group names or role strings in policy code rather than using canonical claim mappings creates a maintenance nightmare.
 
-
-
-
-
-## **8. Regulatory Compliance Mapping**
+## 8. Regulatory Compliance Mapping
 
 The authorization architecture described in this series maps directly to controls required by major regulatory frameworks applicable to banking and financial services:
 
@@ -331,8 +266,6 @@ The authorization architecture described in this series maps directly to control
 |DORA|Art. 9, Art. 10|ICT risk management (Art. 9), ICT-related incident management (Art.<br>10) — policy audit trails are mandatory evidence|
 |EU AI Act|Art. 9, Art. 13, Art. 17|Risk management system (Art. 9), transparency & logging (Art. 13),<br>quality management for high-risk AI (Art. 17)|
 
-
-
-### **Next Steps**
+### Next Steps
 
 Volume 2 of this series covers **Identity, Claims & Policy Design** — including Entra ID and ADFS federation patterns, JWT claims normalization, canonical enterprise claim models, Cedar policy design patterns, and Rego policy architecture.

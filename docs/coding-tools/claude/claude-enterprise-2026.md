@@ -924,7 +924,6 @@ class BudgetedClient:
         await record_spend(self.config.team_id, cost)
         return response
 
-
 def estimate_cost(usage: anthropic.types.Usage, model: str) -> float:
     """Approximate cost from token counts. Verify against current pricing."""
     # Example rates — update from console.anthropic.com

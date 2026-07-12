@@ -14,11 +14,11 @@ related_pages: ["—"]
 
 **Page 1**
 
-##### **ENTERPRISE ARCHITECTURE | PROCUREMENT**
+##### ENTERPRISE ARCHITECTURE | PROCUREMENT
 
-# **REQUEST FOR INFORMATION**
+# REQUEST FOR INFORMATION
 
-## **AI & ML Platform Selection**
+## AI & ML Platform Selection
 
 **A Verbatim Transcript — From Decision to Shortlist**
 
@@ -40,7 +40,7 @@ Following the RetailCo AI Transformation Programme, Marcus Webb (Enterprise Arch
 
 **Page 2**
 
-## **PHASE 1 — DECISION**
+## PHASE 1 — DECISION
 
 #### Why an RFI? Why Now? Week 1 | Monday 7
 
@@ -54,49 +54,49 @@ I **09:00 | Monday 7 July 2026** I Architecture Studio, Floor 8
 
 Attendees: Marcus (EA), Sarah (CAIO), James (Eng), Dr. Amara (DS), Wei (MLOps), Priya (Data)
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 Eighteen months ago we made a deliberate decision to build on SageMaker because it was fast, familiar to James's team, and got us to production quickly. That was the right decision then. Let me tell you why it's the wrong decision now. Wei — walk them through what happened last Tuesday.
 
-##### **Wei Zhang — MLOps Engineer**
+##### Wei Zhang — MLOps Engineer
 
 Last Tuesday we tried to onboard the GenAI customer service workstream onto the existing platform. The vector database for the RAG architecture doesn't have a native home in SageMaker. The experiment tracking — MLflow — doesn't have a native integration with the LLM evaluation tooling we need. The feature store works beautifully for structured tabular data but has no concept of unstructured embeddings. We can bolt things together with custom code. But every bolt is technical debt and a future maintenance burden.
 
-##### **Dr. Amara Osei — Head of Data Science**
+##### Dr. Amara Osei — Head of Data Science
 
 There's also a team productivity issue. Every time I want to run a new model type I'm fighting the platform instead of working on the model. At DeepMind, the platform was invisible — you focused on the science and the infrastructure just worked. Here I spend 30% of my time doing infrastructure work that shouldn't be my job.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Before we decide anything, I want to be clear about what we are and are not deciding today. We are deciding whether to run a formal market assessment of enterprise AI platforms. We are NOT deciding to migrate off SageMaker. Those are different decisions and I will not conflate them. The first decision is a process question. The second is an architectural commitment that needs governance and a business case.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 Agreed. So — do we run an RFI?
 
-##### **James Owusu — Head of Engineering**
+##### James Owusu — Head of Engineering
 
 We should. But I want to be honest about the risk. We run an RFI, we shortlist vendors, we write an RFP, we do a proof of concept, we select a platform, we migrate. That is twelve to eighteen months of work on top of what we're already doing. Is there a faster path?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 There's always a faster path. The faster path is what gave us the 2018 middleware layer we spent £8 million replacing. James, if we make an 'AI platform' decision without a structured evaluation, we will be locked into a vendor choice that constrains us for five to seven years. That choice needs to be made with full market visibility. That's what an RFI is for.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 **Page 3**
 
 Karen needs a business case framing. Marcus — what's the cost of staying on the current platform?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Wei, how many hours per sprint is the team spending on platform workarounds?
 
-##### **Wei Zhang — MLOps Engineer**
+##### Wei Zhang — MLOps Engineer
 
 About 12 hours per sprint, per data scientist. That's 24 hours across Amara's team. Over a year, that's 52 weeks times 24 hours — 1,248 hours of senior data science time spent on platform maintenance instead of model development. At fully-loaded cost, that's approximately £187,000 per year in productivity lost. And it gets worse as the team grows.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 £187,000 per year in opportunity cost, growing. That's the cost-of-inaction number for Karen's business case. Alright — I'm recommending we run a formal RFI. Procurement and Legal need to be in the room for the governance conversation.
 
@@ -106,39 +106,39 @@ Marcus calls Procurement — Nadia Ferris — and Legal — Howard Pang — the 
 
 I **15:30 | Monday 7 July 2026** I Procurement Office, Floor 4
 
-##### **Nadia Ferris — Head of Procurement**
+##### Nadia Ferris — Head of Procurement
 
 Marcus, before you brief the vendors — the standard process. Any technology purchase over £500,000 must go through formal competitive tender. An RFI is fine at this stage but you need to register this with me before you make any market contact. I also need to be in every vendor conversation to ensure we don't create any commercial obligations through informal discussions.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Nadia, understood. I'm formally registering the RFI process with you today. I also want your input on the vendor list — I don't want to exclude any credible player because we have a pre-existing relationship with one of them.
 
-##### **Howard Pang — Legal**
+##### Howard Pang — Legal
 
 Marcus — two things from Legal. One: the RFI document must include a clear statement that responses do not create any contractual commitment from either party. Two: any vendor who responds will be sharing commercially sensitive roadmap information with us. We need an NDA in place with each vendor before they receive the RFI. Standard form — I'll provide the template.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 NDA before RFI dispatch. Good catch, Howard. What's the turnaround on NDAs?
 
-##### **Howard Pang — Legal**
+##### Howard Pang — Legal
 
 Five working days typically. If vendors take issue with our standard terms, add another week. Don't let a vendor pressure you into waiving the NDA — their roadmap data is genuinely confidential and we need the protection both ways.
 
-##### **Nadia Ferris — Head of Procurement**
+##### Nadia Ferris — Head of Procurement
 
 One more thing, Marcus. I've seen EA teams run RFIs that are so technically specific that only one vendor can actually meet the requirements. That creates a challenge to the process validity. Make sure your evaluation criteria are outcome-focused, not product-feature-focused. You're buying a capability, not a specific product.
 
 **Page 4**
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 That's exactly the right instinct, Nadia. The RFI will ask vendors how they would meet our outcomes, not whether they have a specific feature checkbox.
 
 I *EA PRINCIPLE: RFI requirements must be outcome-focused, not feature-focused. A feature-specific RFI is a vendor selection dressed up as a market assessment. The moment you ask 'do you support Kubernetes?' instead of 'how do you support containerised model deployment?', you have written a vendor brief, not an RFI.*
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I Decision to run formal RFI approved — registered with Procurement (Nadia Ferris)
 
@@ -152,7 +152,7 @@ I Evaluation criteria to be finalised before first vendor contact
 
 **Page 5**
 
-## **PHASE 2 — DRAFTING**
+## PHASE 2 — DRAFTING
 
 Writing the RFI That Vendors Will Actually Answer Weeks 1–2 | 7–18 July 2026
 
@@ -168,23 +168,23 @@ Attendees: Marcus (EA), Sarah (CAIO), Wei (MLOps), Dr.
 
 Amara (DS)
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 First debate: scope. Do we run one RFI for the full AI platform — MLOps, data, LLM, governance — or do we run separate RFIs for each layer?
 
-##### **Wei Zhang — MLOps Engineer**
+##### Wei Zhang — MLOps Engineer
 
 Separate RFIs. Each layer has different vendors. The best MLOps platform may not be the best LLM platform. We don't want to be forced to buy a bundle from one vendor because they happened to answer all sections.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Counter-argument. If we run four separate RFIs, we might select four vendors that don't integrate with each other. That's the 2018 middleware problem in a new form. I'd rather evaluate vendors on their ability to compose into an integrated stack, not on whether each individual layer wins a category competition.
 
-##### **Dr. Amara Osei — Head of Data Science**
+##### Dr. Amara Osei — Head of Data Science
 
 There's a third option. One RFI, but with a modular structure — vendors can respond to all sections or only the sections where they have capability. We then assess which vendor covers which layers and what the integration story looks like between them. Best of breed versus integrated platform is a choice we make in the evaluation, not in the RFI design.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 That's the right answer. One RFI, five modules, vendors declare which they address. Evaluation scores both module capability and cross-module integration. Agreed?
 
@@ -194,33 +194,33 @@ I **14:00 | Friday 11 July 2026** I Architecture Studio, Floor 8
 
 Attendees: Marcus (EA), Sarah (CAIO), Alan (CISO), Nadia (Procurement)
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Evaluation criteria. I'm proposing six dimensions, weighted. Functional capability — 25%. Technical architecture and integration — 20%. Security and compliance — 20%. Vendor stability and roadmap — 15%. Total cost of ownership — 15%. References and proven outcomes — 5%.
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 Marcus, I'd push security and compliance higher. We have models processing customer PII, GDPR obligations, PCI-DSS from the payments integration. A platform that fails security isn't just a cost — it's a regulatory exposure that could stop the programme entirely. I want security at 25%.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 **Page 6**
 
 Alan, I understand the concern. But if we weight security at 25% and a vendor scores perfectly on security but their ML platform is unusable by data scientists, we'd select a compliant box that nobody can work with. Can we make security a threshold rather than a weighted score? Any vendor that falls below a security minimum is disqualified regardless of their scores elsewhere.
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 A security floor. I can accept that. What's the floor?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 I'll define it in the evaluation rubric — vendors must achieve a minimum of 80% on the security section or they are automatically disqualified from the shortlist. The remaining criteria are then scored and weighted for shortlisted vendors only.
 
-##### **Nadia Ferris — Head of Procurement**
+##### Nadia Ferris — Head of Procurement
 
 The evaluation criteria must be published in the RFI so vendors know how they'll be assessed. That's process fairness — they need to know what winning looks like before they write a response.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Agreed. Full evaluation framework published in Appendix A of the RFI document.
 
@@ -434,13 +434,13 @@ CONTACT: Marcus Webb (EA) and Sarah Chen (CAIO) — rfi-2026-ai@retailco.com
 LEGAL: Responses subject to NDA-2026-AI-001. No contractual obligation created.
 ```
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I RFI-2026-AI-001 drafted, Legal-approved, and issued to 6 vendors on 18 July 2026 I NDA signed by all 6 vendors before RFI dispatch — Howard Pang confirmed I Evaluation framework published in RFI — vendors know criteria before responding I Security floor established: < 80% = automatic disqualification I Single RFI with 5 modular sections — vendors address relevant modules only
 
 **Page 9**
 
-## **PHASE 3 — MARKET ENGAGEMENT**
+## PHASE 3 — MARKET ENGAGEMENT
 
 Vendor Briefings — What They Say When They Think They're Winning Weeks 2–3 | 21–25 July 2026
 
@@ -452,35 +452,35 @@ I Video Call — Microsoft Azure AI
 
 I **Vendor Briefing — Microsoft Azure AI (Azure ML** Attendees: Marcus (EA), Sarah (CAIO), Nadia **+ OpenAI Service)** (Procurement) | Microsoft: Enterprise AI Sales Team
 
-##### **Microsoft Rep — Azure AI Enterprise Sales**
+##### Microsoft Rep — Azure AI Enterprise Sales
 
 RetailCo is exactly the profile we've designed Azure AI Foundry for. You get Azure ML for your MLOps workloads, Azure OpenAI Service for your GenAI needs, and it's all unified in one platform with Microsoft Fabric for the data layer. If you're already in AWS, we have migration accelerators.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Walk me through how Azure AI Foundry handles model outcome monitoring against business KPIs — specifically, not technical metrics, but actual business outcomes like overstock rate or churn rate.
 
-##### **Microsoft Rep — Azure AI Enterprise Sales**
+##### Microsoft Rep — Azure AI Enterprise Sales
 
 You can build custom dashboards in Azure Monitor and connect them to Power BI. The model monitoring in Azure ML tracks data drift and prediction drift natively.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 That's technical monitoring. I'm asking about business outcome monitoring — the model's predictions correlated with the actual business metric they're trying to move. Is that native or do we build it?
 
-##### **Microsoft Rep — Azure AI Enterprise Sales**
+##### Microsoft Rep — Azure AI Enterprise Sales
 
 That would be a custom implementation on top of our monitoring layer. But we have professional services that can—
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 That's a build, not a buy. Noted. Question on GDPR right-to-erasure: when a customer exercises their right to erasure, how does the platform propagate that deletion to historical training datasets?
 
-##### **Microsoft Rep — Azure AI Enterprise Sales**
+##### Microsoft Rep — Azure AI Enterprise Sales
 
 That's a great question — I'll take that on notice and come back to you in writing.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Please include it in your RFI response. Thank you.
 
@@ -498,31 +498,31 @@ I **Vendor Briefing — Databricks (Mosaic AI /** Attendees: Marcus (EA), Sarah 
 
 Marcus, Sarah — Databricks' philosophy is that the data layer and the AI layer should be the same layer. MLflow started as an open-source project inside Databricks. Mosaic AI gives you experiment tracking, model registry, feature engineering, LLM fine-tuning, and serving — all on the lakehouse. Your 4.2 million customer service transcripts living in Delta Lake is a native first-class asset.
 
-##### **Wei Zhang — MLOps Engineer**
+##### Wei Zhang — MLOps Engineer
 
 We're currently on MLflow already — it's our experiment tracker. If we moved to Databricks, what's the migration path for 47 existing experiments?
 
-##### **Databricks Rep — Databricks — Enterprise Sales**
+##### Databricks Rep — Databricks — Enterprise Sales
 
 MLflow is Databricks-native — you'd effectively be moving your tracking server into the managed service. The migration is an export-import of your MLflow metadata. Most of our customers do it in a weekend.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 LLM capability — native models or API integration?
 
-##### **Databricks Rep — Databricks — Enterprise Sales**
+##### Databricks Rep — Databricks — Enterprise Sales
 
 Both. Mosaic AI Model Serving supports open-source models like Llama and Mistral natively — you host them in your own environment. We also have API integration to external providers via AI Gateway. The advantage of native hosting is data sovereignty — your prompts and responses never leave your infrastructure. Given you're processing customer PII in your GenAI use case, that matters.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 GDPR right-to-erasure in training data. How do you handle it?
 
-##### **Databricks Rep — Databricks — Enterprise Sales**
+##### Databricks Rep — Databricks — Enterprise Sales
 
 Good question and we anticipated it. Delta Lake has native GDPR delete capabilities — when a customer exercises right to erasure, the deletion propagates through Delta Lake's transaction log. For model training datasets derived from that data, we provide a data versioning mechanism so you can identify which training runs used data from a specific customer and flag those models for retraining. It's not fully automated yet — it's semi-automated with a documented process.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Semi-automated. Honest answer. Thank you.
 
@@ -532,33 +532,33 @@ I Video Call — DataRobot
 
 Attendees: Marcus (EA), Sarah (CAIO), Nadia I **Vendor Briefing — DataRobot (AI Platform)** (Procurement)
 
-##### **DataRobot Rep — DataRobot — Enterprise Sales**
+##### DataRobot Rep — DataRobot — Enterprise Sales
 
 DataRobot is the only platform in this RFI that was purpose-built for enterprise AI governance from day one. Our business value tracking module directly correlates model predictions with business KPIs — out of the box. You told us in your RFI that you track overstock rate as your business outcome for the demand forecasting model. We can do that natively.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 Show me what 'natively' means. In your briefing materials, specifically.
 
-##### **DataRobot Rep — DataRobot — Enterprise Sales**
+##### DataRobot Rep — DataRobot — Enterprise Sales
 
 In the platform — you define a business metric, map it to model outputs, and the dashboard tracks correlation over time. If model predictions and business outcomes diverge beyond a threshold you set, an alert fires. No custom code.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 **Page 11**
 
 That's the closest we've heard to our exact requirement. How does your LLM capability compare to a native cloud provider like Azure OpenAI or Databricks Mosaic?
 
-##### **DataRobot Rep — DataRobot — Enterprise Sales**
+##### DataRobot Rep — DataRobot — Enterprise Sales
 
 Honest answer — we integrate with foundation model providers rather than hosting our own. We have deep integrations with Azure OpenAI, AWS Bedrock, and Google Vertex AI. Our value-add is the governance layer on top: hallucination detection, prompt management, LLM bias auditing, and the business outcome monitoring we just described. We're not a foundation model company.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 That's a meaningful distinction. You're the governance and orchestration layer, not the model layer.
 
-##### **DataRobot Rep — DataRobot — Enterprise Sales**
+##### DataRobot Rep — DataRobot — Enterprise Sales
 
 Exactly. And that means you can swap the underlying LLM provider without rebuilding your governance stack. That's our architectural advantage.
 
@@ -570,49 +570,49 @@ I **10:00 | Thursday 24 July 2026**
 
 I Video Call — Google Cloud (Vertex AI) Attendees: Marcus (EA), Sarah (CAIO), Dr. Amara (DS), Nadia (Procurement)
 
-##### **Google Rep — Google Cloud — AI & ML Sales**
+##### Google Rep — Google Cloud — AI & ML Sales
 
 Vertex AI is Google's unified ML platform — it's the same platform Google uses internally for production AI. Gemini integration is native. We have the Model Garden — 130+ foundation models available. For your customer service GenAI use case, Vertex AI Agent Builder is specifically designed for RAG architecture with grounding on your own data.
 
-##### **Dr. Amara Osei — Head of Data Science**
+##### Dr. Amara Osei — Head of Data Science
 
 Model Garden — are those models hosted in Google's infrastructure or can I self-host any of them?
 
-##### **Google Rep — Google Cloud — AI & ML Sales**
+##### Google Rep — Google Cloud — AI & ML Sales
 
 Garden models run on Google's infrastructure. Self-hosting of open-source variants is possible via Vertex AI Model Registry but the commercial models are API-only.
 
-##### **Dr. Amara Osei — Head of Data Science**
+##### Dr. Amara Osei — Head of Data Science
 
 So for our customer service GenAI, customer prompts — which may contain PII — would transit Google's infrastructure?
 
-##### **Google Rep — Google Cloud — AI & ML Sales**
+##### Google Rep — Google Cloud — AI & ML Sales
 
 Yes, though it's processed within your Google Cloud VPC. Data does not leave your tenancy.
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 Does 'within your VPC' mean Google engineers cannot access it?
 
-##### **Google Rep — Google Cloud — AI & ML Sales**
+##### Google Rep — Google Cloud — AI & ML Sales
 
 I'll provide the detailed data processing agreement in writing — that's a Legal question that deserves a precise answer, not a sales answer.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Good answer. Please include it in the RFI response.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 **Page 12**
 
 Your bias auditing capability. Specifically for LLMs — how do you detect and report demographic bias in Gemini outputs in a retail context?
 
-##### **Google Rep — Google Cloud — AI & ML Sales**
+##### Google Rep — Google Cloud — AI & ML Sales
 
 Vertex AI Explainable AI covers traditional ML. For LLM bias, we have safety filters and content moderation. Fine-grained demographic bias auditing for LLMs is on the roadmap for Q1 2027.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 Q1 2027 is a gap. That's a capability we need before we go live. Please reflect that in your response.
 
@@ -620,39 +620,39 @@ The fifth vendor — AWS — is briefed on Friday. The Snowflake briefing is can
 
 I **14:00 | Friday 25 July 2026** I Video Call — AWS (SageMaker + Bedrock)
 
-##### **AWS Rep — AWS — Enterprise AI Sales**
+##### AWS Rep — AWS — Enterprise AI Sales
 
 You're already on SageMaker, so you know what we can do for traditional ML. The RFI is really about whether you extend with SageMaker or move to a different platform. Let me be direct about why customers who've invested in SageMaker tend to stay: the migration cost is real. You have 47 experiments, a feature store, and 3 production models. Moving those is not a weekend project.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 You're talking us out of switching before you've made the case for extending.
 
-##### **AWS Rep — AWS — Enterprise AI Sales**
+##### AWS Rep — AWS — Enterprise AI Sales
 
 I'm giving you the honest commercial picture. SageMaker has gaps for GenAI — we bridge them with Amazon Bedrock. Native LLM hosting, Titan models, third-party models via Bedrock, and Bedrock Guardrails for hallucination and safety. The integration between SageMaker and Bedrock is native — no glue code.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 Business outcome monitoring — native or build?
 
-##### **AWS Rep — AWS — Enterprise AI Sales**
+##### AWS Rep — AWS — Enterprise AI Sales
 
 Build on top of CloudWatch and SageMaker Model Monitor. We don't have native business KPI correlation. I'd be misleading you if I said we did.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 GDPR right-to-erasure in training data?
 
-##### **AWS Rep — AWS — Enterprise AI Sales**
+##### AWS Rep — AWS — Enterprise AI Sales
 
 S3 supports object deletion which handles source data. For training datasets derived from that data, you manage it through dataset versioning in S3. The model retraining trigger on data deletion is a custom workflow you'd build with Lambda and Step Functions.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Same answer as Azure — it's a build. Noted. Thank you for the directness on the migration cost. That's an important factor we'll model in the TCO.
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I 5 vendor briefings completed: Azure, Databricks, DataRobot, Google Cloud, AWS
 
@@ -668,7 +668,7 @@ I No commercial commitments made — Nadia Ferris confirmed process integrity
 
 **Page 14**
 
-## **PHASE 4 — RESPONSES**
+## PHASE 4 — RESPONSES
 
 What They Actually Sent Week 4 | 5 August 2026
 
@@ -740,7 +740,7 @@ Five RFI responses arrive by the deadline. Marcus logs each one the moment it ar
 |**Retail reference (UK)**|Multiple UK retailers on SageMaker — 3 references provided with contact<br>details.||
 |**Security certifications**|SOC 2 Type II, ISO 27001, GDPR DPA. PCI-DSS Level 1 — relevant for<br>payments integration.||
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I 5 RFI responses received by 5 August deadline — all responses distributed simultaneously to evaluation panel
 
@@ -750,7 +750,7 @@ I Key gap identified: GDPR erasure in training data — ALL vendors semi-automat
 
 **Page 17**
 
-## **PHASE 5 — EVALUATION**
+## PHASE 5 — EVALUATION
 
 Scoring the Responses — Where the Arguments Happen Weeks 5–6 | 6–15 August 2026
 
@@ -760,27 +760,27 @@ I **09:00 | Wednesday 6 August 2026** I Architecture Studio, Floor 8
 
 I **Evaluation Panel Session — Security Floor Check** Attendees: Marcus (EA), Alan (CISO), Sarah (CAIO)
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 Security floor check first — any vendor below 80% is out before we touch the weighted scores. I've reviewed all five on the security dimension. Four pass easily — Azure, Databricks, DataRobot, AWS all have SOC 2 Type II, GDPR DPA, and answered the technical security questions competently.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Google Cloud?
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 Google passes the certification requirements — SOC 2, ISO 27001, their compliance documentation is actually the most extensive. But two concerns. First: their GDPR erasure process for training data is the weakest in the field — effectively manual with no automation path. Second: the Access Transparency logging — Google engineers can access customer data with logging, but can access it. That's not a disqualifier at 80% threshold but it's a risk flag.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Google's security score?
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 84%. Passes the floor. All five proceed to full evaluation.
 
-#### **Evaluation Scoring Matrix — All Vendors**
+#### Evaluation Scoring Matrix — All Vendors
 
 |**Dimension (Weight)**|**Azure**|**Databricks**|**DataRobot**|**Google**|**AWS**|
 |---|---|---|---|---|---|
@@ -801,31 +801,31 @@ I **14:00 | Wednesday 6 August 2026**
 
 I Architecture Studio — Evaluation Debate
 
-##### **Wei Zhang — MLOps Engineer**
+##### Wei Zhang — MLOps Engineer
 
 The numbers say Databricks first, AWS second, DataRobot third. But I want to challenge the TCO scores. AWS at 95 on TCO assumes we stay on the platform we have. It doesn't include the 1,248 hours a year of productivity loss that was the original motivation for this RFI. Should that be in the TCO?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Wei, that's an excellent point. The AWS TCO figure represents the direct platform cost. The opportunity cost of the productivity gap is a different line item. Let me add an 'adjusted TCO' row — direct platform cost plus the productivity cost — and rescore.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 There's also a risk I want to surface on Databricks. Their business outcome monitoring is a custom build. DataRobot's is native. That custom build is Wei's time. Wei has two hands and multiple production models to maintain. Every custom component is future maintenance.
 
-##### **Dr. Amara Osei — Head of Data Science**
+##### Dr. Amara Osei — Head of Data Science
 
 I've been using Databricks notebooks this week to evaluate their platform. The data science experience is genuinely the best I've seen. MLflow is native, the notebook environment is excellent, and the feature store is exactly what we need for embeddings. For my productivity as a scientist — Databricks wins by a significant margin.
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 DataRobot's security response was the most detailed and most honest. They provided penetration test results. They explained their architecture with no hand-waving. For a CISO, that level of transparency is worth something beyond the numeric score.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 We have a multi-stakeholder scoring conflict. Amara values developer experience — Databricks. Wei values avoiding maintenance build — DataRobot or AWS. Alan values security transparency — DataRobot. Sarah values business outcome monitoring — DataRobot. I value architectural integrity and avoiding vendor lock-in. Let me propose the adjusted TCO and then we run the decision through the weighted criteria again.
 
-#### **Adjusted Evaluation — Productivity-Adjusted TCO**
+#### Adjusted Evaluation — Productivity-Adjusted TCO
 
 |**Cost Component**|**Azure**|**Databricks**|**DataRobot**|**Google**|**AWS**|
 |---|---|---|---|---|---|
@@ -842,31 +842,31 @@ I **PROCUREMENT FLAG: Nadia Ferris reviewed the adjusted TCO methodology and con
 
 The revised scores produce the same order: Databricks (84.8), AWS (83.4), DataRobot (80.3). But Sarah pushes back on a simple rank-based shortlist.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 Marcus — the scores are close. Databricks wins on developer experience and TCO. AWS wins on zero migration risk and incumbent advantage. DataRobot wins on governance — specifically business outcome monitoring and LLM bias auditing. Those are the two things our AI Governance Framework says we require. Can we shortlist all three?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Nadia — process question. Can we shortlist three to RFP rather than two?
 
-##### **Nadia Ferris — Head of Procurement**
+##### Nadia Ferris — Head of Procurement
 
 Yes. Three is defensible given the close scoring and the different architectural profiles. I'd document the rationale clearly: Databricks for developer experience and data platform capability, AWS for migration efficiency and incumbent advantage, DataRobot for governance capability. Three vendors with distinct value propositions — that's a sound shortlist.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Google Cloud — do they need a debrief explanation?
 
-##### **Nadia Ferris — Head of Procurement**
+##### Nadia Ferris — Head of Procurement
 
 Best practice is to offer a debrief to every vendor who responds, whether shortlisted or not. It's fair, it protects our reputation in the market, and vendors who receive honest feedback become better partners in future engagements.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Then every vendor gets a debrief. Shortlisted or not. I'll run those calls.
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I Evaluation scoring completed — adjusted TCO methodology documented and signed off by Nadia Ferris
 
@@ -880,7 +880,7 @@ I Debrief offered to all 5 vendors — procurement best practice confirmed
 
 **Page 20**
 
-## **PHASE 6 — SHORTLIST NOTIFICATION**
+## PHASE 6 — SHORTLIST NOTIFICATION
 
 Telling Vendors the Decision — Shortlisted and Not Week 7 | 12 August 2026
 
@@ -888,45 +888,45 @@ Marcus sends the shortlist notifications. The calls with Azure and Google are pr
 
 I **10:00 | Wednesday 12 August 2026** I Phone Call — Google Cloud
 
-##### **Google Rep — Google Cloud — Enterprise AI Sales**
+##### Google Rep — Google Cloud — Enterprise AI Sales
 
 Marcus, thank you for the call. Can you tell us where we fell short?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Of course — this is your formal debrief. Three areas. First: TCO. Your year-one cost including migration was the highest in the field at £755K adjusted. Second: roadmap gaps — LLM bias auditing is Q1 2027. We need that capability before we go live with our customer service AI, which is targeted for this year. Third: GDPR erasure in training data. Your process was the most manual of all vendors, with no automation roadmap provided. Those three factors together put you fourth out of five on the adjusted scores.
 
-##### **Google Rep — Google Cloud**
+##### Google Rep — Google Cloud
 
 The LLM bias auditing — that's a real gap. I want to be honest: the Q1 2027 date is an internal roadmap commitment, not a public announcement. I appreciate you flagging it. It tells us something about what the market needs.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Thank you for the transparency. For the record — Google's technical architecture is strong and your LLM capability is class-leading. The gaps are specific and addressable. If your roadmap accelerates, I'd encourage you to approach us in six months.
 
 I **14:00 | Wednesday 12 August 2026** I Phone Call — Databricks
 
-##### **Databricks Rep — Databricks — Enterprise Sales**
+##### Databricks Rep — Databricks — Enterprise Sales
 
 Congratulations — you're telling us we're shortlisted. I want to ask one honest question before we proceed. What's the real competition here? Who are the other two vendors?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 I won't share the names of other shortlisted vendors — that's process integrity. What I can tell you is that you're competing against a vendor with stronger business outcome monitoring capability and a vendor with zero migration cost. Those are your two strongest competitive threats.
 
-##### **Databricks Rep — Databricks — Enterprise Sales**
+##### Databricks Rep — Databricks — Enterprise Sales
 
 Business outcome monitoring — that's DataRobot. And zero migration — that's AWS. You're not going to confirm that.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 I'm not confirming anything. What I am telling you is that your RFP response needs to address both of those gaps directly. Not with a slide saying 'our roadmap includes business outcome monitoring.' With a proof of concept that shows it, built on your platform, with our data.
 
-##### **Databricks Rep — Databricks — Enterprise Sales**
+##### Databricks Rep — Databricks — Enterprise Sales
 
 Can we bring an engineer to the proof-of-concept stage who can actually build that for you?
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 That's exactly what the RFP stage is for. Yes.
 
@@ -938,11 +938,11 @@ That's exactly what the RFP stage is for. Yes.
 
 **To: All RFI Participants — <rfi-2026-ai@retailco.com> (BCC)**
 
-##### **Subject: RFI-2026-AI-001 — Shortlist Decision & Next Steps**
+##### Subject: RFI-2026-AI-001 — Shortlist Decision & Next Steps
 
 Dear RFI Participants, Thank you for your responses to RFI-2026-AI-001 — AI & ML Platform Selection. We have completed our evaluation panel review using the criteria published in Appendix A of the RFI document. We are pleased to confirm that 3 vendors have been shortlisted to the Request for Proposal (RFP) stage. Shortlisted vendors have been contacted individually. For vendors not progressing to RFP: we are grateful for the time invested in your response. Debriefs have been offered and will be conducted individually by Marcus Webb. We encourage you to continue developing your platform roadmap and would welcome future engagement as your capabilities evolve. RFP process: RFP Issued: 19 August 2026 RFP Responses Due: 16 September 2026 Proof of Concept: September – October 2026 Final Selection: November 2026 Contract Target: December 2026 The RFP will require each shortlisted vendor to demonstrate their platform on RetailCo synthetic data, with specific proof-of-concept scenarios provided in the RFP document. Regards, Marcus Webb — Enterprise Architect | Sarah Chen — CAIO | Nadia Ferris — Procurement
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I Shortlist formally communicated: Databricks, AWS, DataRobot — proceed to RFP
 
@@ -956,7 +956,7 @@ I Process integrity maintained — vendor names not disclosed across shortlist
 
 **Page 22**
 
-## **PHASE 7 — DEBRIEF & EA RETROSPECTIVE**
+## PHASE 7 — DEBRIEF & EA RETROSPECTIVE
 
 What the RFI Process Taught Us About Ourselves Week 7 | 15 August 2026
 
@@ -966,27 +966,27 @@ I **10:00 | Friday 15 August 2026** I Architecture Studio — RFI Retrospective
 
 I **RFI Retrospective — Evaluation Panel** Attendees: Marcus, Sarah, Wei, Amara, Alan, Nadia
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 Three questions. What did the RFI teach us about our requirements that we didn't know before we started? What would we do differently next time? And what gaps in our own architecture did the vendor responses expose?
 
-##### **Wei Zhang — MLOps Engineer**
+##### Wei Zhang — MLOps Engineer
 
 We discovered that GDPR right-to-erasure in training data is an industry-wide unsolved problem. Every vendor — every single one — has a semi-automated or manual process. We went into this RFI assuming one of them would have a native automated solution. None do. That means it's not a vendor selection problem — it's an architecture problem we need to solve ourselves, regardless of which platform we choose.
 
-##### **Dr. Amara Osei — Head of Data Science**
+##### Dr. Amara Osei — Head of Data Science
 
 I learned that our requirements around unstructured data and embeddings were underspecified in the RFI. We asked vendors how they handle structured features. We said 'and embeddings' in passing. Several vendors gave us structured-only answers and we only discovered the gap when we tried their platforms in the evaluation. The RFP needs much more specific requirements on vector storage and retrieval.
 
-##### **Alan Brooks — CISO**
+##### Alan Brooks — CISO
 
 The CISO observation: we had a security floor but no security architecture question. We asked vendors if they were SOC 2 certified. We didn't ask them to describe their model training data isolation architecture. We didn't ask about their shared tenancy model. We found these gaps during debriefs, not during the RFI. The RFP security section needs to be more architectural, less certification-checklist.
 
-##### **Sarah Chen — CAIO**
+##### Sarah Chen — CAIO
 
 The most important thing the RFI taught me: our business outcome monitoring requirement was the single strongest differentiator in the entire evaluation — and it came from our own production experience, not from any framework or consultant. We knew we needed it because Wei built it for us and we saw it catch a silent failure. That operational experience gave us a requirement that most organisations issuing AI platform RFIs would not think to ask. That's a competitive advantage in procurement.
 
-##### **Marcus Webb — EA**
+##### Marcus Webb — EA
 
 And the thing the RFI taught me about us. When AWS came back as the lowest TCO by direct cost, there was real pressure — from Karen's CFO office — to just extend the existing contract. 'We're already on AWS, why are we spending money on an RFI?' The RFI justified its own cost by quantifying the productivity opportunity cost that wasn't in the direct TCO. £187,000 a year in data science time. The adjusted TCO changed the conversation from 'AWS is cheapest' to 'Databricks and AWS are equivalent on adjusted cost, and Databricks offers better capability.' Without the RFI, we would have defaulted to incumbent inertia.
 
@@ -1055,7 +1055,7 @@ Contract execution: December 2026
 Platform migration begin: January 2027
 ```
 
-##### **Phase Outcomes**
+##### Phase Outcomes
 
 I RFI retrospective completed — 10 lessons captured for RFP improvement
 
@@ -1069,7 +1069,7 @@ I Productivity-adjusted TCO established as standard RetailCo procurement methodo
 
 **Page 24**
 
-### **RFI SUMMARY — WHAT THE PROCESS PRODUCED**
+### RFI SUMMARY — WHAT THE PROCESS PRODUCED
 
 |**Week**|**Phase**|**Key Outcome**|
 |---|---|---|
@@ -1081,7 +1081,7 @@ I Productivity-adjusted TCO established as standard RetailCo procurement methodo
 |Week 7|Shortlist|Decisions communicated. Debriefs to all vendors. RFP timeline confirmed.|
 |Week 7|Retrospective|10 lessons captured. 3 own architectural gaps identified. Procurement methodology improved.|
 
-#### **10 EA Principles for Running an AI Platform RFI**
+#### 10 EA Principles for Running an AI Platform RFI
 
 |**1. Quantify inaction first**|The cost of staying on the current platform must be calculated before any<br>vendor is contacted. Without it, incumbent inertia always wins.|
 |---|---|

@@ -13,7 +13,7 @@ tags: []
 
 RESEARCH BRIEFING · MAY 2026
 
-# **Agent Skills & Skill Registries**
+# Agent Skills & Skill Registries
 
 _The Complete Playbook_
 
@@ -25,7 +25,7 @@ AGENT SKILLS: THE COMPLETE PLAYBOOK
 
 RESEARCH BRIEFING · MAY 2026 · CONFIDENTIAL
 
-###### **TABLE OF CONTENTS**
+###### TABLE OF CONTENTS
 
 |**01**|Fundamentals — What Are Agent Skills?|
 |---|---|
@@ -44,29 +44,29 @@ RESEARCH BRIEFING · MAY 2026 · CONFIDENTIAL
 
 **01 FUNDAMENTALS — WHAT ARE AGENT SKILLS?**
 
-## **What Are Agent Skills?**
+## What Are Agent Skills?
 
 An **Agent Skill** is a modular, portable package of domain-specific expertise that an AI agent can discover and load on demand. Introduced by Anthropic in October 2025 and donated to the open **Agentic AI Foundation (AAIF)** under the Linux Foundation in December 2025, the standard centers on a SKILL.md file combining YAML metadata with Markdown procedural instructions. By early 2026, the standard had been adopted by Claude Code, GitHub Copilot (April 2026), Cursor, Codex, Windsurf, Gemini CLI, and over 20 other agents.
 
-### **The Three-Layer Architecture**
+### The Three-Layer Architecture
 
 Skills use **Progressive Disclosure** — a design philosophy that solves context window bloat. Rather than loading everything upfront, an agent traverses three layers:
 
-#### **Layer 1 — Metadata Scan**
+#### Layer 1 — Metadata Scan
 
 Agent reads YAML frontmatter (name, triggers, domain tags, negative_examples) to determine relevance without loading full content. Fast and cheap — runs on every task.
 
-#### **Layer 2 — Instruction Load**
+#### Layer 2 — Instruction Load
 
 If relevant, the Markdown procedural body loads. Step-by-step workflow, constraints, gotchas, examples. Kept under 500 lines / 5,000 tokens per the AAIF spec.
 
-#### **Layer 3 — Resource Execution**
+#### Layer 3 — Resource Execution
 
-#### **Skill vs MCP vs AGENTS.md**
+#### Skill vs MCP vs AGENTS.md
 
 Optional scripts, templates, reference data in Skills = portable domain expertise loaded on /references/ subdirectory. Loaded on demand ('read demand. MCP = external service calls. AGENTS.md references/api-errors.md if API returns non-200') — = always-on project context. If it should happen not upfront. almost every time, use AGENTS.md. If only sometimes, make it a skill.
 
-### **Canonical SKILL.md Structure**
+### Canonical SKILL.md Structure
 
 ```
 ---
@@ -125,11 +125,11 @@ Agents supporting SKILL.md standard
 
 **02 BEST PRACTICES FOR SKILL AUTHORSHIP**
 
-## **Best Practices**
+## Best Practices
 
 Perplexity published its internal skill development manual in May 2026, revealing that _'many useful patterns for writing code become anti-patterns in skill creation.'_ The agentskills.io specification and Google ADK teams have contributed additional guidance. Below is the consolidated practitioner consensus.
 
-### **The Zen of Skills vs The Zen of Python**
+### The Zen of Skills vs The Zen of Python
 
 |**Zen of Python**|**Zen of Skills**|**Implication**|
 |---|---|---|
@@ -139,51 +139,51 @@ Perplexity published its internal skill development manual in May 2026, revealin
 |Explicit is better than implicit|Trust the model's training|Don't explain what a PDF is. Jump straight<br>to project-specific conventions.|
 |Flat is better than nested|A skill is a folder, not a file|Use /references/ subdirectory for heavy<br>content. SKILL.md is the router.|
 
-### **Top 10 Best Practices**
+### Top 10 Best Practices
 
-#### **1. Keep SKILL.md under 5,000 tokens**
+#### 1. Keep SKILL.md under 5,000 tokens
 
-#### **2. Write negative_examples in YAML**
+#### 2. Write negative_examples in YAML
 
 The spec recommends ≤500 lines. Every token competes with conversation history, other active skills, and system context. Focus only on what the agent wouldn't know without your skill.
 
 Adding negative trigger examples improved routing accuracy from 73% to 85% in published benchmarks. Explicitly list what the skill should NOT activate for — as important as the positive triggers.
 
-#### **3. Match specificity to task fragility**
+#### 3. Match specificity to task fragility
 
 Prescribe tightly for fragile steps (exact API parameters, security checks). Give the agent freedom for steps where creativity improves outcomes. Over-constraining flexible tasks degrades quality.
 
-#### **5. Test with SkillsBench or custom harness**
+#### 5. Test with SkillsBench or custom harness
 
 Google ADK and agentskills.io both recommend evaluating every skill against a test harness before publishing. Routing accuracy and task success rate are minimum gates.
 
-#### **7. One workflow per skill**
+#### 7. One workflow per skill
 
 A skill that tries to handle five different workflows becomes a monolith no agent can route to reliably. Write narrow, named skills. Compose them at the harness layer.
 
-#### **9. Version semantically**
+#### 9. Version semantically
 
 Use semver (1.0.0 → 1.1.0 for backwards-compatible instruction improvements, → 2.0.0 for trigger/scope changes). Pin versions in apm.yml lockfiles so team setups are reproducible byte-for-byte across machines.
 
-#### **4. Use progressive reference loading**
+#### 4. Use progressive reference loading
 
 'Read references/error-codes.md if the API returns non-200' beats a generic 'see references/ for details.' The agent loads context on demand, not upfront.
 
-#### **6. Human review for generated skills**
+#### 6. Human review for generated skills
 
 Auto-generated skills provide 'no benefit on average' per Perplexity's research — models cannot reliably author the procedural knowledge they benefit from consuming. Human authorship of SKILL.md content is currently non-negotiable.
 
-#### **8. Encode anti-rationalization**
+#### 8. Encode anti-rationalization
 
 Addy Osmani's production skill set includes explicit rebuttals to common engineering excuses: 'We'll fix tests after launch' paired with the counter-argument. Write down the lies your team tells itself and pair each with the rebuttal in the skill.
 
-#### **10. Vet OSS skills before installing**
+#### 10. Vet OSS skills before installing
 
 Snyk's ToxicSkills research found 13.4% of public ClawHub skills had critical issues. Even a 30-second skim of SKILL.md catches obvious attacks. Look for environment variable references and unexplained URL fetches.
 
 **03 ANTI-PATTERNS — WHAT GOES WRONG**
 
-## **Anti-Patterns in Skill Design**
+## Anti-Patterns in Skill Design
 
 These are patterns that seem correct from a software engineering background but actively harm skill quality. Drawn from Perplexity's production experience, Sysdig's deployment guide, and the agentskills.io creator documentation.
 
@@ -202,11 +202,11 @@ These are patterns that seem correct from a software engineering background but 
 
 **04 SKILL REGISTRIES & PACKAGE MANAGERS**
 
-## **Skill Registries**
+## Skill Registries
 
 A skill registry is a centralized (or federated) catalog where skills are published, discovered, versioned, and governed. As of early 2026, the ecosystem spans public community registries, private enterprise registries, and cloud-native managed registries. The landscape evolved rapidly from simple GitHub repos to governed platforms with automated security scanning, version tracking, and IDE-native discovery.
 
-### **Registry Taxonomy**
+### Registry Taxonomy
 
 |**Type**|**Examples**|**Audience**|**Key Features**|
 |---|---|---|---|
@@ -216,13 +216,13 @@ A skill registry is a centralized (or federated) catalog where skills are publis
 |Marketplace /<br>Curated|dotnet/skills, Cowork, Azure<br>SRE Agent Plugins,<br>awesome-copilot|Business users|Verified, quality-scored, cross-model reuse via<br>AAIF standard|
 |IDE-Native|VS Code Extensions, GitHub<br>Copilot Plugin Marketplace|Individual<br>developers|Browse/install from IDE; slash-command<br>activation; side-by-side diff on update|
 
-### **What a Registry Stores per Skill Entry**
+### What a Registry Stores per Skill Entry
 
 ![Figure 1](/img/agentic-systems/agentic-systems-p8-1.png)
 
 **05 MICROSOFT APM & PLUGIN MARKETPLACES**
 
-## **Microsoft APM — Agent Package Manager**
+## Microsoft APM — Agent Package Manager
 
 Microsoft's **Agent Package Manager (APM)** , open-sourced under the Microsoft GitHub org (MIT license), is the npm equivalent for AI agent dependencies. One **apm.yml** manifest declares every primitive — skills, prompts, instructions, plugins, MCP servers — and apm install reproduces the exact same agent setup across GitHub Copilot, Claude Code, Cursor, OpenCode, Codex, Gemini, and Windsurf. The lockfile (apm.lock.yaml) pins the resolved tree the way package-lock.json does for npm.
 
@@ -247,25 +247,25 @@ trust: explicit
 policy: .github/apm-policy.yml # org-level policy enforced at install time
 ```
 
-### **Key APM Features**
+### Key APM Features
 
-#### **One Manifest, Every Harness**
+#### One Manifest, Every Harness
 
-#### **Transitive Dependency Resolution**
+#### Transitive Dependency Resolution
 
 Copilot, Claude, Cursor, OpenCode, Codex, Gemini, Windsurf — all configured in one command. No manual per-agent setup. A fresh clone reproduces the same setup byte-for-byte.
 
 Packages can depend on packages. APM resolves the full dependency tree, pins content hashes, and gates transitive MCP servers behind explicit trust prompts. Tighten-only inheritance: enterprise → org → repo.
 
-#### **Marketplace Integration**
+#### Marketplace Integration
 
-#### **Security at Install Time**
+#### Security at Install Time
 
 Register any GitHub repo as a marketplace. Browse with /plugin marketplace browse . Install with /plugin install @marketplace. Name collision prevention via @MARKETPLACE scoping.
 
 Every install scans for hidden Unicode, pins content hashes, and gates transitive MCP servers. apm-policy.yml enforced at install including transitives. No opt-in required — security is the default.
 
-### **The Plugin Marketplace Ecosystem**
+### The Plugin Marketplace Ecosystem
 
 Multiple curated marketplaces now exist alongside APM, each targeting a different audience and use case:
 
@@ -281,7 +281,7 @@ Multiple curated marketplaces now exist alongside APM, each targeting a differen
 
 **06 SKILL LIFECYCLE — END-TO-END**
 
-## **The Complete Skill Lifecycle**
+## The Complete Skill Lifecycle
 
 A skill is not a static artifact — it is a product with a full lifecycle from need identification through retirement. Organizations that treat skills like software assets (versioning, testing, deprecation) consistently outperform those that treat them as static prompt files. Uber's two-tier governance model (200 curated core + 300 experimental) is the reference implementation.
 
@@ -301,37 +301,37 @@ A skill is not a static artifact — it is a product with a full lifecycle from 
 
 **07 EVALUATION FRAMEWORKS & BENCHMARKS**
 
-## **Evaluating Agent Skills**
+## Evaluating Agent Skills
 
 Skill evaluation requires a fundamentally different approach from traditional software testing. Outputs are often non-deterministic, tasks are long-horizon, and success signals can be sparse. The 2026 consensus combines deterministic verifiers, LLM-as-judge scoring, and human evaluation panels in a layered approach.
 
-### **Core Evaluation Dimensions**
+### Core Evaluation Dimensions
 
-#### **Task Success Rate (TSR)**
+#### Task Success Rate (TSR)
 
 Did the skill complete the assigned task end-to-end? Measured with deterministic verifiers (pass/fail tests) or LLM-as-judge for open-ended outputs. Primary metric for all skills. Target: ≥85% for curated skills.
 
-#### **Routing Precision & Recall**
+#### Routing Precision & Recall
 
 Was the correct skill selected? Precision = correct selections / total selections. Recall = correct selections / tasks where skill was appropriate. Target: ≥85% precision with negative_examples in YAML.
 
-#### **Token Cost Efficiency**
+#### Token Cost Efficiency
 
 Tokens consumed per successful task completion. At Uber, AI-related costs rose 6× since 2024 — making token cost optimization its own engineering discipline. Track QoQ and set per-task budgets.
 
-#### **Long-Horizon Persistence**
+#### Long-Horizon Persistence
 
 Can the agent maintain goal focus across many steps without drifting or looping? Terminal-Bench caps at 100 episodes. Persistence failure before that cap is the failure mode measured.
 
-#### **Plan Quality**
+#### Plan Quality
 
 Does the agent decompose the task into logical steps? Does it adapt when obstacles appear? Measured via step-trace analysis and plan deviation metrics in tools like Langfuse and Langsmith.
 
-#### **Output Quality (Human)**
+#### Output Quality (Human)
 
 For creative or judgment-intensive skills, human panels rate output on correctness, completeness, tone, and usefulness (1–5 scale). Run on a 10% sample. Blind review prevents evaluator bias.
 
-### **Benchmark Reference**
+### Benchmark Reference
 
 |**Benchmark**|**Measures**|**Method**|**Key Result 2026**|
 |---|---|---|---|
@@ -345,11 +345,11 @@ For creative or judgment-intensive skills, human panels rate output on correctne
 |MLE-Bench|ML engineering end-to-end<br>autonomy|Offline Kaggle competitions;<br>graded against human-level<br>submissions|Best setup (o1-preview + AIDE)<br>achieved bronze medal in<br>16.9% of competitions|
 |BrowseComp|Web-based information<br>retrieval and navigation|Multi-turn browser interaction;<br>structured query validation|Tests persistence and tool-use<br>in open-web environments|
 
-### **SkillsBench Task Success Rate by Condition**
+### SkillsBench Task Success Rate by Condition
 
 No Skills (Baseline) **48%** Self-Generated Skills **67%** Expert-Curated Skills **81%**
 
-### **Evaluation Stack**
+### Evaluation Stack
 
 |**Tool**|**Category**|**Primary Use**|
 |---|---|---|
@@ -363,7 +363,7 @@ No Skills (Baseline) **48%** Self-Generated Skills **67%** Expert-Curated Skills
 
 **08 A/B TESTING AGENT SKILLS**
 
-## **A/B Testing Agent Skills**
+## A/B Testing Agent Skills
 
 Skill A/B testing is more complex than web A/B testing because agent tasks are long-horizon, non-deterministic, and hard to assign a single numeric outcome. Best-practice frameworks treat it as controlled experiment + shadow deployment + human evaluation panels in combination.
 
@@ -385,33 +385,33 @@ human_panel: 10% sample, blind review
 shadow_first: true # run challenger silently before live split
 ```
 
-### **A/B Testing Design Principles**
+### A/B Testing Design Principles
 
-#### **Isolate One Variable**
+#### Isolate One Variable
 
 Test the skill body change alone. Don't simultaneously change the model, harness, or tool set. You'll be unable to attribute the performance signal to any single cause.
 
-#### **Stratified Sampling**
+#### Stratified Sampling
 
 Ensure both variants see the same distribution of task complexity, user types, and domain contexts. Simple random routing can create imbalanced groups for rare edge cases.
 
-#### **Shadow Mode First**
+#### Shadow Mode First
 
-#### **Guardrail Metrics**
+#### Guardrail Metrics
 
 Run the challenger in shadow mode (execute but don't serve output to users) before splitting live traffic. Identify obvious failures before real-world exposure.
 
 Define hard-stop conditions: error_rate > 5%, any security violation, latency > 2× baseline. Auto-rollback the challenger regardless of primary metric performance.
 
-#### **Long-Horizon Checkpointing**
+#### Long-Horizon Checkpointing
 
-#### **Multi-Armed Bandits**
+#### Multi-Armed Bandits
 
 For multi-step tasks, measure success at each checkpoint (plan → execute → validate → output). A skill that excels at step 1 but degrades at step 4 needs a different fix than one that fails at step 1.
 
 For high-traffic skill slots, MAB algorithms dynamically shift traffic toward the better-performing variant mid-experiment — reducing regret while maintaining statistical signal.
 
-### **What to A/B Test**
+### What to A/B Test
 
 |**Test Dimension**|**Variant Examples**|**Primary Metric**|
 |---|---|---|
@@ -425,11 +425,11 @@ For high-traffic skill slots, MAB algorithms dynamically shift traffic toward th
 
 **09 ENTERPRISE SYSTEM INTEGRATION**
 
-## **Integrating Skills with Enterprise Systems**
+## Integrating Skills with Enterprise Systems
 
 As of 2026, AI agents with skills have achieved 40% integration rate in enterprise applications. SAP Joule, Salesforce Agentforce, Microsoft Dynamics 365 Copilot, IBM watsonx Orchestrate, and ServiceNow AI Agents all support skill-like capability packages with varying governance models. The integration pattern differs significantly depending on your existing technology stack.
 
-### **Platform Integration Matrix**
+### Platform Integration Matrix
 
 |**Platform**|**Skill Mechanism**|**Best For**|**Integration Friction**|
 |---|---|---|---|
@@ -440,7 +440,7 @@ As of 2026, AI agents with skills have achieved 40% integration rate in enterpri
 |Google Vertex AI /<br>ADK|Agent Development Kit (ADK) with<br>SkillToolset; Google Cloud Agent<br>Registry|GCP-native teams;<br>multi-modal agent<br>requirements|Low for GCP; usage-based<br>pricing complexity at scale|
 |NVIDIA Agent<br>Toolkit|OpenShell runtime; cuOpt<br>optimization skill library; Nemotron<br>reasoning|17+ enterprise ISVs<br>(Adobe, SAP, Siemens,<br>Palantir);<br>GPU-accelerated<br>reasoning|High initial setup; powerful<br>for specialized inference<br>workloads|
 
-### **CI/CD Integration Pattern — Post-CI Skill Execution**
+### CI/CD Integration Pattern — Post-CI Skill Execution
 
 Skills can trigger post-CI to generate documentation, run security audits, update wikis, or notify downstream systems. The pattern works across GitHub Actions, GitLab CI, Jenkins, and Azure
 
@@ -492,17 +492,17 @@ git diff --staged --quiet || \
 git commit -m 'ci: auto-update [skip ci]' && git push
 ```
 
-### **APM Integration with GitHub Actions Security**
+### APM Integration with GitHub Actions Security
 
 When Copilot Cloud Agent triggers workflows, it operates without access to organization secrets by default (as of May 2026). Secrets must be explicitly scoped to the Copilot environment. Use fine-grained PATs with minimal permissions rather than broad org secrets — this aligns with the least-privilege principle from the OWASP AST10 governance framework.
 
 **10 OKRs & KPI REFERENCE LIBRARY**
 
-## **OKRs & KPIs for Agent Skills Programs**
+## OKRs & KPIs for Agent Skills Programs
 
 The failure mode in most agent programs is measuring the wrong thing — tracking invocation counts or token consumption instead of business outcomes. Every skill should tie to an OKR that a business leader owns, with KPIs that an engineer can instrument from day one.
 
-### **Executive OKR Framework**
+### Executive OKR Framework
 
 |**OBJECTIVE**|**KEY RESULTS**|**OWNER**|
 |---|---|---|
@@ -512,7 +512,7 @@ The failure mode in most agent programs is measuring the wrong thing — trackin
 |**O4: Achieve measurable skill quality**|•≥95% task success rate on curated set<br>• Zero P0 security incidents from skills<br>• Every skill A/B tested within 90 days of launch|Head of AI Platform|
 |**O5: Positive ROI on agent investment**|• Cost per automated task≤30% of manual<br>• Token cost per task decreasing QoQ<br>• Productivity value quantified in board report|CFO / AI Sponsor|
 
-### **KPI Reference Library**
+### KPI Reference Library
 
 |**SKILL QUALITY**|||
 |---|---|---|
@@ -545,7 +545,7 @@ The failure mode in most agent programs is measuring the wrong thing — trackin
 
 **11 PERSONAS & ROLES**
 
-## **Who's Who: Personas in the Agent Skills Ecosystem**
+## Who's Who: Personas in the Agent Skills Ecosystem
 
 A healthy skill program involves multiple personas with distinct needs, incentives, and friction points. Design your registry UX and governance model around all of them — not just the engineers who build skills.
 
@@ -629,11 +629,11 @@ Data Science / Evals
 
 **12 GOVERNANCE, SECURITY & OWASP AST10**
 
-## **Security, Governance & OWASP AST10**
+## Security, Governance & OWASP AST10
 
 The rapid growth of public skill registries has created serious security risks. Snyk's ToxicSkills audit (Feb 2026) of 3,984 skills found 534 (13.4%) with critical issues. Mobb.ai's audit of 22,511 skills across four registries found 140,963 total issues. The ClawHavoc campaign in Feb 2026 saw 341 malicious skills in ClawHub. Traditional SAST tools miss nearly all of these because the attack vector is natural language, not code.
 
-### **Why Classic SAST Fails — and the Dual-Layer Solution**
+### Why Classic SAST Fails — and the Dual-Layer Solution
 
 Skills are hybrid artifacts. You need traditional code analysis for executable components (bundled scripts, YAML parsers) AND language understanding to catch prompt injection and natural language malware. Snyk's agent-scan engine combines multiple LLM-based judges with deterministic rules. 91% of verified malware combined language jailbreaks with executable payloads — single-layer scanners miss most real attacks.
 
@@ -645,7 +645,7 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 |Review|L1/L2; 10% sample for curated registries|ambiguous instructions|
 |Runtime Sandbox|Containerized execution: seccomp,<br>AppArmor, Firecracker VMs|Blast radius limitation even if static scan misses a<br>malicious skill|
 
-### **Five-Layer Governance Framework**
+### Five-Layer Governance Framework
 
 |**Control Layer**|**Mechanism**|**Tooling**|
 |---|---|---|
@@ -657,7 +657,7 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 |Audit|Immutable audit logs per invocation; full trajectory<br>capture; compliance reporting to SOC2 / GDPR<br>standards|Langfuse, AWS CloudTrail, Splunk|
 |Access Control|RBAC by namespace; per-skill permission matrix;<br>human approval gates for sensitive/irreversible actions|SkillHub RBAC, APM apm-policy.yml,<br>Azure SRE Agent Plugins|
 
-### **OWASP AST10 — Top 10 Agentic Skill Risks**
+### OWASP AST10 — Top 10 Agentic Skill Risks
 
 |**#**|**Risk**|**Example Attack**|
 |---|---|---|
@@ -674,33 +674,33 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 
 **13 THE ROAD AHEAD**
 
-## **What's Next for Agent Skills**
+## What's Next for Agent Skills
 
-#### **Cross-Model Skill Portability**
+#### Cross-Model Skill Portability
 
 The AAIF standard means a skill designed for Claude runs on Copilot, Codex, or Gemini without modification. The 'Agentic Web' is the next inflection — value lives in portable skills, not locked-in models.
 
-#### **Self-Adapting Skills**
+#### Self-Adapting Skills
 
 Skills that update their own instruction bodies based on aggregated feedback signals, closing the loop between evaluation telemetry and skill content — without human authorship at every iteration. Currently experimental.
 
-#### **Federated Skill Networks**
+#### Federated Skill Networks
 
 Cross-company skill sharing (with IP controls) for industry-standard workflows: healthcare EDI, financial reporting, legal discovery. Common enough to share; specific enough to need skills.
 
-#### **Skill Marketplace Economics**
+#### Skill Marketplace Economics
 
 Skill authors earning revenue per successful invocation — the 'Agentic App Store.' Micro-payments per task completion for third-party skill publishers. Early models emerging in 2026.
 
-#### **Agent Engineers**
+#### Agent Engineers
 
 Uber's CTO envisions AI systems that handle coding, testing, and deployment supervised by other AI. Human skill authors shift to defining intent, constraints, and evaluation criteria — not writing SKILL.md content line by line.
 
-#### **Enterprise Skill Compliance**
+#### Enterprise Skill Compliance
 
 GDPR, SOX, and sector-specific regulations will require skills to carry compliance metadata. Audit trails per invocation will become regulatory baseline, not best practice. Skills will need jurisdiction-aware routing.
 
-###### **STRATEGIC IMPERATIVE**
+###### STRATEGIC IMPERATIVE
 
 The competitive advantage in 2026 comes from **infrastructure, not intelligence** . The model is increasingly a commodity. The skill registry, harness, evaluation pipeline, and governance framework — built and iterated over months — create structural moats that a model upgrade alone cannot overcome. The organizations investing in skill infrastructure today will be the ones setting the benchmark numbers that others cite next year.
 

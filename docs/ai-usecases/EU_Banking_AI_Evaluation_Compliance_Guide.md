@@ -61,32 +61,17 @@ Scope: This document extends the core AWS Bedrock AgentCore + Strands + Phoenix 
 
 ══════════════════════════════════════════════════════════════════════════════ `╠ ╣` ║ ║ ║  PRIMARY AI REGULATION                                                       ║ ───────────────────────────────────────────────────────────────────────── ║ ║ ║ ║ ║ ┌─────────────────────────────────────────────────────────────────────┐ ║ ║ │  EU AI ACT (Regulation EU 2024/1689) │ ║ ────────────────────────────────── ║ │ │ ║ ║ │  In force: 1 August 2024 │ ║ — ║ │  Phase 1:     Feb 2025 Prohibited practices banned                │ ║ ║ │  Phase 2:     Aug 2025 — GPAI + governance obligations │ ║ — ║ │  Phase 3:     Aug 2026 High-risk AI full obligations │ ║ — ║ │  Phase 4:     Aug 2027 All remaining provisions │ ║ ║ │  Penalties:   Up to €35M or 7% global turnover │ ║ ║ └─────────────────────────────────────────────────────────────────────┘ ║ ║ ║ - ║  BANKING SPECIFIC REGULATIONS (interact with EU AI Act) ║ ───────────────────────────────────────────────────── ║ ║ ║ ║ ║ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────────────┐ ║ ║ │  GDPR            │ │  DORA            │ │  AML/CFT FRAMEWORK       │ ║ ║ │  EU 2016/679 │ │  EU 2022/2554 │ │  AMLD4/5/6 │ ║ ║ │ │ │ │ │ │ ║ ║ │ Data privacy & │ │ Digital          │ │ AML, KYC, CTF, │ ║ ║ │ PII protection │ │ Operational      │ │ Suspicious activity │ ║ ║ │ Right to erasure │ │ Resilience       │ │ reporting obligations │ ║ ║ │ Right to │ │ Live: Jan 2025 │ │ AI explainability for │ ║ ║ │ explanation │ │ ICT risk mgmt │ │ SAR justification │ ║ ║ │ Max penalty: │ │ Third-party risk │ │ │ ║ ║ │ €20M or 4% │ │ Incident report │ │ FATF guidelines │ ║ ║ │ global turnover │ │ Resilience tests │ │ │ ║ ║ └──────────────────┘ └──────────────────┘ └──────────────────────────┘ ║ ║ ║ ║ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────────────┐ ║ ║ │  CRR III / CRD VI│ │  PSD2 / PSD3 │ │  EBA GUIDELINES          │ ║ ║ │ │ │ │ │ │ ║ ║ │ Capital adequacy │ │ Payment services │ │ Loan origination & │ ║ ║ │ Credit risk AI   │ │ Fraud monitoring │ │ monitoring (LOGLs) │ ║ ║ │ IRB model valid. │ │ Strong Customer │ │ Internal governance      │ ║ ║ │ │ │ Authentication │ │ PD/LGD estimation │ ║ ║ │ 2025 Live        │ │ Open banking AI  │ │ Model risk management │ ║ ║ └──────────────────┘ └──────────────────┘ └──────────────────────────┘ ║ ║ ║ ║  SUPERVISORY BODIES                                                          ║
 
-
 ![Figure 1](/img/ai-usecases/ai-usecases-p3-1.png)
-
-
-<!-- Start of picture text -->
-──────────────────────────────────────────────────────────────────────<br>║ ║<br>║  ECB (significant institutions) │  EBA  │  ESMA  │  EIOPA                 ║<br>║  National CAs (BaFin, FCA*, ACPR, DNB, etc.) ║<br>║  EU AI Office (GPAI oversight) │  National MSAs (AI Act enforcement) ║<br>║ ║<br>╚══════════════════════════════════════════════════════════════════════════════╝<br><!-- End of picture text -->
 
 ### 1.1 Regulation Compliance Timeline (Action Calendar)
 
-
 ![Figure 2](/img/ai-usecases/ai-usecases-p3-2.png)
-
-
-<!-- Start of picture text -->
-2024 2025 2026 2027<br>────────────────────────────────────────────────────────────────<br>Aug 2024    Feb 2025          Aug 2026          Aug 2027<br>EU AI Act   Prohibited AI     HIGH-RISK AI      All remaining<br>In force    practices BANNED  FULL OBLIGATIONS  provisions apply<br>AI Literacy BEGIN CE Marking needed<br>─────────────────────────────────<br>Jan 2025    Aug 2025          Dec 2030<br>DORA LIVE   GPAI + Governance Extended IT<br>obligations system deadline<br><!-- End of picture text -->
 
 ## - 2. HIGH RISK AI CLASSIFICATION
 
 ### — 2.1 Banking Use Cases Risk Classification Matrix
 
-
 ![Figure 3](/img/ai-usecases/ai-usecases-p3-3.png)
-
-
-<!-- Start of picture text -->
-┌──────────────────────────────────────────────────────────────────────────┐<br>— -<br>│           EU AI ACT ANNEX III   BANKING HIGH RISK USE CASES             │<br>│ │<br>│ ┌─────────────────────────────────────────────────────────────────┐ │<br>- —<br>│ │ 🔴 HIGH RISK (Annex III   Full obligations from Aug 2026) │ │<br>─────────────────────────────────────────────────────────────<br>│ │ │ │<br>│ │ │ │<br>│ │ • Creditworthiness evaluation of natural persons │ │<br>│ │ • Credit scoring of natural persons │ │<br>│ │ • Life & health insurance risk assessment / pricing            │ │<br>│ │ • Employment screening with credit data                        │ │<br>│ │ • Eligibility assessment for essential financial services │ │<br>│ │ │ │<br>│ │  Requirements: │ │<br>│ │ ✓ Risk management system (lifecycle) │ │<br>│ │ ✓ Data governance (Art. 10) │ │<br>│ │ ✓ Technical documentation (Art. 11) │ │<br><!-- End of picture text -->
 
 │ │ ✓ Automatic logging / audit trail (Art. 12) │ │ │ │ ✓ Transparency & explainability (Art. 13) │ │ │ │ ✓ Human oversight mechanisms (Art. 14) │ │ │ │ ✓ Accuracy, robustness, cybersecurity (Art. 15) │ │ │ │ ✓ Conformity assessment + CE marking                           │ │ │ │ ✓ EU database registration │ │ │ └─────────────────────────────────────────────────────────────────┘ │
 
@@ -108,12 +93,7 @@ Scope: This document extends the core AWS Bedrock AgentCore + Strands + Phoenix 
 
 ### 2.2 Agent Role Classification (Provider vs. Deployer)
 
-
 ![Figure 4](/img/ai-usecases/ai-usecases-p5-4.png)
-
-
-<!-- Start of picture text -->
-Your bank BUILDS the AI agent        Your bank USES a third-party AI<br>│ │<br>▼ ▼<br>PROVIDER + DEPLOYER               DEPLOYER ONLY<br>───────────────────── ─────────────────────────────<br>Must comply with:                 Must comply with:<br>• ALL Art. 9–15 obligations • Human oversight (Art. 14)<br>• Conformity assessment • Monitoring in production<br>• Technical documentation • Register in EU database<br>• CE marking required             • Verify vendor compliance<br>• Quality management system • Contractual DORA clauses<br>• Register in EU AI database      • Third-party risk assessment<br>AWS (model provider) obligations → separate, covered by GPAI Code of Practice<br>Your bank as deployer → responsible for agent use and oversight<br><!-- End of picture text -->
 
 ## 3. RESPONSIBLE AI (RAI) FRAMEWORK
 
@@ -177,23 +157,13 @@ Your bank BUILDS the AI agent        Your bank USES a third-party AI<br>│ │<
 
 ### 3.2 RAI Governance Structure
 
-
 ![Figure 5](/img/ai-usecases/ai-usecases-p7-5.png)
-
-
-<!-- Start of picture text -->
-┌──────────────────────────────────────────────────────────────────────────┐<br>│                    RAI GOVERNANCE FOR EU BANKS                          │<br>│ │<br>│  BOARD LEVEL                                                            │<br>───────────<br>│ │<br>│  Chief AI Officer / CRO → AI Strategy + Risk appetite for AI           │<br>│  Board AI Committee → Oversight of high-risk AI systems │<br>│  AI Governance Policy → Document defining acceptable AI use             │<br>│ │<br>—<br>│  SECOND LINE   AI RISK FUNCTION                                         │<br>─────────────────────────────────<br>│ │<br>│  Model Risk Management (MRM) team │<br>│ • Independent model validation (per EBA guidelines) │<br>│ • Pre-deployment conformity assessment │<br>│ • Ongoing monitoring review │<br>│ │<br>│  AI Ethics Committee                                                    │<br>│ • Fairness audits (quarterly) │<br>│ • Bias remediation decisions │<br>│ • Escalation of sensitive use cases │<br>│ │<br>│  DPO (Data Protection Officer) │<br>│ • GDPR compliance sign-off for AI training data                        │<br>│ • DPIA (Data Protection Impact Assessment) for high-risk AI            │<br>│ • PII flow oversight │<br>│ │<br>—<br>│  THIRD LINE   INTERNAL AUDIT                                            │<br>─────────────────────────────<br>│ │<br>│  Annual AI system audit │<br>│  Regulatory examination support │<br>│  CE marking / conformity assessment verification │<br>│ │<br>│  TECHNOLOGY LAYER (this framework) │<br>──────────────────────────────────<br>│ │<br>│  Automated RAI metrics → feeds all three lines │<br>│  AgentCore Evaluations + Phoenix + GDPR controls │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ## 4. PII DETECTION & GDPR COMPLIANCE LAYER
 
 ### — 4.1 PII in LLM Agents Threat Model
 
-
 ![Figure 6](/img/ai-usecases/ai-usecases-p8-6.png)
-
-
-<!-- Start of picture text -->
-┌──────────────────────────────────────────────────────────────────────────┐<br>│                    PII THREAT MODEL FOR EU BANKING AGENTS               │<br>│ │<br>│  INGESTION RISKS                                                        │<br>────────────────<br>│ │<br>│  User submits PII in query → agent includes in LLM context │<br>│  Retrieved documents contain PII → RAG chunk with customer data        │<br>│  Tool output returns PII → database result with account numbers │<br>│ │<br>│  PROCESSING RISKS                                                       │<br>─────────────────<br>│ │<br>│  LLM sends PII to model provider (AWS Bedrock) → data processing req. │<br>│  Agent logs store PII in CloudWatch / Phoenix → retention risk         │<br>│  Evaluation traces contain PII → eval data is PII-bearing              │<br>│ │<br>│  OUTPUT RISKS                                                           │<br>──────────────<br>│ │<br>│  Agent responds with PII it should not have disclosed                  │<br>│  Agent outputs PII of one customer to another customer's session │<br>│  Agent memorises and re-surfaces PII from previous sessions │<br>│ │<br>│  GDPR CATEGORIES IN BANKING CONTEXT: │<br>─────────────────────────────────────<br>│ │<br>│  Category 1 — Standard PII: │<br>│    Name, address, date of birth, email, phone, IP address │<br>│  Category 2 — Financial PII (enhanced sensitivity): │<br>│    IBAN, account number, credit card, credit score, transaction data   │<br>│  Category 3 — Special Category Data (Art. 9 GDPR): │<br>│    Health data (insurance AI), biometrics, political/religious views │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ### 4.2 PII Detection Architecture
 
@@ -211,12 +181,7 @@ Your bank BUILDS the AI agent        Your bank USES a third-party AI<br>│ │<
 
 ### 4.3 GDPR Rights Implementation for AI Systems
 
-
 ![Figure 7](/img/ai-usecases/ai-usecases-p10-7.png)
-
-
-<!-- Start of picture text -->
-GDPR ARTICLE        WHAT IT MEANS FOR YOUR AI AGENT         IMPLEMENTATION<br>──────────────────────────────────────────────────────────────────────────<br>Art. 5 — Data       Only collect PII strictly needed for     Input scrubbing +<br>minimisation the agent's purpose                      purpose limitation<br>checks<br>—<br>Art. 13/14         Users must know AI is making decisions   Mandatory AI<br>disclosure<br>Transparency        affecting them                           banner + session<br>metadata<br>—<br>Art. 17            Customer can request all their data      Customer ID index in<br>Right to erasure    be deleted from AI systems               Phoenix + S3 with<br>Iceberg<br>time-travel deletion<br>—<br>Art. 21            Customer can opt out of profiling        Profile flag checked<br>Right to object     by AI credit/risk systems               before agent<br>invocation<br>—<br>Art. 22            No fully automated high-stakes decisions Human review queue<br>for<br>Automated decisions without right to human review           all high-risk AI<br>outputs<br>—<br>Art. 35            DPIAs required before deploying          DPIA template (see<br>DPIA                high-risk AI systems                     Section 13)<br>—<br>Art. 44-46         Personal data cannot leave EU without    AWS EU Regions only<br>Data transfer       adequate protection (Frankfurt, Dublin,<br>Paris,<br>Stockholm, Milan,<br>Zurich)<br><!-- End of picture text -->
 
 ## 5. DORA COMPLIANCE INTEGRATION
 
@@ -279,20 +244,13 @@ GDPR ARTICLE        WHAT IT MEANS FOR YOUR AI AGENT         IMPLEMENTATION<br>�
 |Audit trail completeness|Log coverage|%interactionslogged|100%|
 |Concentrationrisk|Singleproviderdependency|% trafc|≤ 70%|
 
-
-
 ## 6. FAIRNESS & BIAS EVALUATION SYSTEM
 
 ### 6.1 Bias Types in EU Banking AI
 
 ┌──────────────────────────────────────────────────────────────────────────┐ — │                    BIAS TAXONOMY EU BANKING CONTEXT                   │ │ │ │  HISTORICAL BIAS                                                        │ ───────────────── │ │
 
-
 ![Figure 8](/img/ai-usecases/ai-usecases-p13-8.png)
-
-
-<!-- Start of picture text -->
-│  Training data reflects past discriminatory lending practices │<br>│  Example: Lower approval rates for certain postal codes (proxy for │<br>│  ethnicity or socioeconomic status) │<br>│  Detection: Group-stratified approval rate analysis │<br>│ │<br>│  MEASUREMENT BIAS                                                       │<br>─────────────────<br>│ │<br>│  Protected characteristics correlated with non-protected features │<br>│  Example: "Years at current address" as proxy for social mobility │<br>│  Detection: Correlation analysis of features vs. protected attributes │<br>│ │<br>│  AGGREGATION BIAS                                                       │<br>──────────────────<br>│ │<br>│  Single model used for heterogeneous populations │<br>│  Example: Same credit model for 22-year-olds and 65-year-olds │<br>│  Detection: Per-subgroup performance evaluation │<br>│ │<br>│  FEEDBACK LOOP BIAS (AML / Fraud) │<br>──────────────────────────────────<br>│ │<br>│  AI flags → human review → more data from flagged group │<br>│ → model increasingly focuses on that group │<br>│  Detection: Temporal analysis of flag rates by demographic              │<br>│ │<br>│  ANCHORING BIAS (LLM specific) │<br>─────────────────────────────<br>│ │<br>│  LLM associates certain names/demographics with risk                   │<br>│  Example: "Mohamed" appearing in a credit query affects output │<br>│  Detection: Counterfactual name-swap tests │<br>│ │<br>-<br>│  VERBOSITY BIAS (LLM as-Judge) │<br>──────────────────────────────<br>│ │<br>│  Judge LLM prefers longer explanations from same demographic group │<br>│  Detection: Evaluation score stratified by response length              │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ### 6.2 Fairness Metrics Catalogue
 
@@ -348,28 +306,13 @@ return {
 
 ┌──────────────────────────────────────────────────────────────────────────┐ │                 XAI LEVELS BY STAKEHOLDER (EU Banking) │ │ │ │  CUSTOMER (GDPR Art. 22 / EU AI Act Art. 13) │ ───────────────────────────────────────────── │ │ │  Level: Simple, jargon-free                                             │ │  Format: "Your application was assessed as [outcome] because            │ │ [top 3 factors in plain language]. You have the right to │ │ request human review." │ │  Required for: Credit decisions, insurance pricing, service denial      │ │ │ │  BRANCH STAFF / ANALYST (Human oversight Art. 14) │
 
-
 ![Figure 9](/img/ai-usecases/ai-usecases-p17-9.png)
-
-
-<!-- Start of picture text -->
-────────────────────────────────────────────────<br>│ │<br>│  Level: Feature contributions, confidence intervals │<br>│  Format: Dashboard with SHAP waterfall chart + decision trace           │<br>│  Required for: All high-risk AI outputs before human approval           │<br>│ │<br>│  INTERNAL RISK / COMPLIANCE                                             │<br>──────────────────────────────<br>│ │<br>│  Level: Full model rationale + drift indicators │<br>│  Format: Audit report with model version, training data, metrics │<br>│  Required for: Quarterly review, incident investigation │<br>│ │<br>│  REGULATOR (EBA / ECB / National CA) │<br>───────────────────────────────────<br>│ │<br>│  Level: Full technical documentation (Art. 11 EU AI Act) │<br>│  Format: Structured technical file + conformity assessment │<br>-<br>│  Required for: Pre deployment approval, supervisory examination │<br>│ │<br>│  AUDITOR (Internal / External) │<br>──────────────────────────────<br>│ │<br>│  Level: End-to-end audit trail with immutable logs │<br>│  Format: Complete decision log with inputs, reasoning, outputs │<br>│  Required for: Annual audit, incident review │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ### 7.2 XAI Implementation for Agent Outputs
 
-
 ![Figure 10](/img/ai-usecases/ai-usecases-p17-10.png)
 
-
-<!-- Start of picture text -->
-┌──────────────────────────────────────────────────────────────────────────┐<br>│                   XAI TECHNICAL IMPLEMENTATION                          │<br>│ │<br>│  FOR STRUCTURED DECISIONS (credit, insurance pricing) │<br>──────────────────────────────────────────────────────<br>│ │<br>│ │<br>│  SHAP (SHapley Additive exPlanations) │<br>│ • Explains contribution of each input feature                          │<br>│ • EU-compliant adverse action notices │<br>│ • Supports: tabular, text, embeddings │<br>│  Tool: shap library + AWS SageMaker Clarify │<br>│ │<br>-<br>│  LIME (Local Interpretable Model Agnostic Explanations) │<br>│ • Local approximation for individual predictions │<br>│ • Human-readable feature importance                                    │<br>│ • Supports any model type (including LLM outputs) │<br>│  Tool: lime library │<br><!-- End of picture text -->
-
-
 ![Figure 11](/img/ai-usecases/ai-usecases-p18-11.png)
-
-
-<!-- Start of picture text -->
-│ │<br>-<br>│  FOR AGENT REASONING (LLM generated outputs) │<br>─────────────────────────────────────────────<br>│ │<br>│ │<br>-<br>│  Chain-of Thought Logging                                               │<br>│ • Capture full CoT reasoning trace                                     │<br>│ • Store in Phoenix with span metadata                                  │<br>│ • Include in audit trail for high-risk decisions │<br>│ │<br>│  Decision Trace Reconstruction │<br>│ • AgentCore Auto-logs all tool calls (Art. 12 compliance) │<br>│ • Each tool call: input params + output + timestamp │<br>│ • Reconstructable full decision path                                   │<br>│ │<br>│  Counterfactual Explanations │<br>│ • "What would have changed the outcome?" │<br>│ • "If debt-to-income was 35% (not 45%), outcome would change" │<br>│ • Generation: DiCE (Diverse Counterfactual Explanations) library │<br>│ │<br>│  XAI EVALUATION METRIC                                                  │<br>─────────────────────────<br>│ │<br>-<br>│  Explanation Completeness:  Is the explanation sufficient? (LLM Judge) │<br>│  Explanation Fidelity:      Does explanation match actual reasoning? │<br>│  Explanation Simplicity:    Is it understandable to a non-expert? │<br>│  Adverse Action Compliance: Does it satisfy GDPR Art. 22 requirement? │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ## - 8. COMPLIANCE SPECIFIC METRICS CATALOGUE
 
@@ -398,8 +341,6 @@ Target
 |AI Disclosure Rate|Sessions with disclosure/Total|1.00 (100%)|EU AI ActArt. 52|
 |Data Minimisation<br>Score|LLM-Judge:doesagent request only<br>needed data?|≥ 0.90|GDPR Art. 5(1)(c)|
 
-
-
 ### AML / FRAUD DETECTION SPECIFIC
 
 |Metric|Description|Target|RegulatoryBasis|
@@ -410,8 +351,6 @@ Target
 |AML Demographic<br>Bias|Flagrate disparitybydemographic|DIR≥<br>0.80|EU AI Act +AMLD6|
 |Fraud Explainability<br>Score|Quality ofper-transaction explanation|≥ 0.85|PSD2,EU AI Act|
 |AlertStaleness|%AML alerts reviewedwithin SLA(48h)|≥ 0.95|AMLDoperational<br>SLA|
-
-
 
 ### CREDIT / RISK SCORING SPECIFIC
 
@@ -424,29 +363,17 @@ Target
 |IRB Model Alignment|AIoutputalignment with approved<br>IRB model|≥ 0.90|CRR/CRD,EBA<br>PD/LGD GL|
 |Rejection Explanation<br>Depth|Number ofspecifcreasonsin denial|≥ 3|GDPR Art. 22|
 
-
-
 ## 9. HUMAN OVERSIGHTARCHITECTURE
 
 ### — 9.1 EU AI Act Art. 14 Human Oversight Design
 
 ┌──────────────────────────────────────────────────────────────────────────┐ │              HUMAN OVERSIGHT FRAMEWORK (Art. 14 EU AI Act) │ │ │ — - - - │  LEVEL 1 HUMAN ON THE LOOP                                           │ │ (for standard decisions, monitoring) │ ───────────────────────────────────── │ │ │  Agent acts → Human monitors dashboard → Human can intervene           │ │ │ │  Required when: │ │ • Operational tasks (document summarisation, FAQ answering) │ │ • Low-risk outputs with confidence score ≥ 0.90 │ │ │ │  Controls: │ │ • Real-time monitoring dashboard (CloudWatch + Phoenix) │ │ • Sampling-based human review (10% of outputs) │ │ • Easy escalation mechanism (one-click HITL trigger) │ │ │ — - - - │  LEVEL 2 HUMAN IN THE LOOP                                           │ │ (for high-risk decisions) │ ───────────────────────────── │ │ │  Agent recommends → Human reviews → Human decides + signs off          │ │ │ │  Required when: │ │ • Credit scoring decision affecting natural person │ │ • AML suspicious activity report generation │ │ • Customer eligibility assessment │ │ • Insurance pricing for individuals │ │ │ │  Controls: │ │ • HITL approval queue (Phoenix annotation + Jira workflow) │ │ • Time-boxed review (4-hour SLA for credit, 48-hour for AML) │ │ • Reviewer must confirm: read explanation, verified decision │ │ • All reviews logged with reviewer ID + timestamp │ │ │ — - - │  LEVEL 3 HUMAN IN COMMAND                                            │ │ (for systemic / novel / edge cases) │ ────────────────────────────────────── │ │ │  Agent CANNOT act → Human only │ │ │
 
-
 ![Figure 12](/img/ai-usecases/ai-usecases-p22-12.png)
-
-
-<!-- Start of picture text -->
-│  Required when: │<br>│ • Confidence score < 0.70 │<br>│ • Novel/unprecedented scenario detected                                │<br>│ • Drift alert active                                                   │<br>│ • Conflict between policy and recommendation │<br>│ • Customer explicitly requests human │<br>│ │<br>│  Controls: │<br>│ • Automatic hand-off + block agent output │<br>│ • Route to specialist review queue                                     │<br>│ • SLA: same-day for customer-facing decisions │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ### 9.2 HITLWorkflow Integration
 
-
 ![Figure 13](/img/ai-usecases/ai-usecases-p22-13.png)
-
-
-<!-- Start of picture text -->
-Agent Output<br>│<br>▼<br>┌────────────────────────────────────────────────────────────────┐<br>│               HITL ROUTING ENGINE                              │<br>│ │<br>-<br>│  Is this a HIGH RISK use case? (credit, AML, insurance) │<br>───────────────────────────────────────────────<br>│ │<br>│  YES ──▶  Is confidence ≥ 0.85 AND all safety checks pass? │<br>│ │ │<br>──<br>│           YES  ▶  Present to human reviewer (Level 2) │<br>│ │ with SHAP explanation + recommendations │<br>──<br>│           NO   ▶  Route to senior specialist (Level 3) │<br>│ │<br>──<br>│  NO   ▶  Is this monitoring/ops use case? │<br>│ │ │<br>│           YES ──▶  Auto-approve + sample for review (Level 1) │<br>──<br>│           NO   ▶  Route to appropriate review queue          │<br>└────────────────────────────────────────────────────────────────┘<br>│<br>▼<br>Human Review Queue (Phoenix Annotation Queue)<br>│<br>├ ── Reviewer sees: Agent output + SHAP explanation + confidence<br>├ ── Actions: APPROVE | MODIFY | REJECT | ESCALATE<br>├ ── Required: Reviewer ID + justification for MODIFY/REJECT<br>└── All actions logged to immutable audit trail (S3 + CloudTrail)<br><!-- End of picture text -->
 
 ## 10. AUDIT TRAIL & DOCUMENTATION SYSTEM
 
@@ -458,12 +385,7 @@ TECHNICAL FILE STRUCTURE (per EU AI Act Art. 11 + Annex IV) ──────�
 
 ### — 10.2 Art. 12 Automatic Logging Specification
 
-
 ![Figure 14](/img/ai-usecases/ai-usecases-p24-14.png)
-
-
-<!-- Start of picture text -->
-┌──────────────────────────────────────────────────────────────────────────┐<br>│              IMMUTABLE AUDIT LOG SCHEMA (EU AI Act Art. 12) │<br>│ │<br>│  Every agent interaction MUST capture: │<br>│ │<br>│ { │<br>│ "log_version": "1.0", │<br>│ "log_id": "uuid-v4", │<br>│ "timestamp_utc": "ISO-8601", │<br>│ "session_id": "pseudonymised", │<br>│ "agent_id": "agent-arn", │<br>│ "agent_version": "v2.1.0", │<br>│ "model_id": "anthropic.claude-sonnet-4-...", │<br>│ "use_case_classification": "HIGH_RISK | LIMITED | MINIMAL", │<br>│ │<br>│ "input": { │<br>-<br>│ "raw_query": "[REDACTED PII]", │<br>│ "pii_detected": ["IBAN", "NAME"], │<br>│ "pii_action": "PSEUDONYMISED" │<br>│ }, │<br>│ │<br>│ "reasoning_trace": [ │<br>│ { "step": 1, "type": "LLM_CALL", "model": "...", "tokens": 450 } │<br>│ { "step": 2, "type": "TOOL_CALL", "tool": "credit_db", ...} │<br>│ { "step": 3, "type": "LLM_CALL", "model": "...", "tokens": 312 } │<br>│ ], │<br>│ │<br>│ "output": { │<br>│ "response": "[stored separately, encrypted]", │<br><!-- End of picture text -->
 
 │ "confidence_score": 0.87, │ │ "decision_type": "CREDIT_ASSESSMENT | AML_FLAG | ADVISORY" │ │ }, │ │ │ │ "evaluation_scores": { │ │ "helpfulness": 0.88, │ │ "groundedness": 0.91, │ │ "pii_leakage": 0.00, │ │ "fairness_check": "PASSED" │ │ }, │ │ │ │ "human_review": { │ │ "required": true, │ │ "reviewer_id": "emp-pseudonymised", │ │ "decision": "APPROVED", │ │ "timestamp_utc": "ISO-8601" │ │ }, │ │ │ │ "compliance": { │ │ "gdpr_basis": "contract", │ │ "retention_end_date": "2034-01-01", │ │ "data_residency": "eu-central-1" │ │ } │ │ } │ │ │ │  Storage: AWS S3 (eu-central-1) + S3 Object Lock (WORM) │ │  Encryption: AES-256 + AWS KMS (EU-managed key) │ │  Retention: 10 years (EU AI Act high-risk minimum) │ │  Immutability: S3 Object Lock Compliance mode (no deletion) │ └──────────────────────────────────────────────────────────────────────────┘
 
@@ -473,12 +395,7 @@ TECHNICAL FILE STRUCTURE (per EU AI Act Art. 11 + Annex IV) ──────�
 
 ┌──────────────────────────────────────────────────────────────────────────┐ │                EU DATA RESIDENCY ARCHITECTURE                           │ │ │ │  APPROVED AWS EU REGIONS FOR BANKING AI                                 │ ───────────────────────────────────────── │ │ │ │
 
-
 ![Figure 15](/img/ai-usecases/ai-usecases-p26-15.png)
-
-
-<!-- Start of picture text -->
-—<br>│  Primary:    eu-central-1 (Frankfurt, Germany)  BaFin │<br>—<br>│  Secondary:  eu-west-1 (Dublin, Ireland)  CBI              │<br>│  Tertiary:   eu-west-3 (Paris, France) — ACPR             │<br>—<br>│  Also:       eu-north-1 (Stockholm, Sweden)  FI               │<br>— '<br>│              eu-south-1 (Milan, Italy)  Banca d Italia   │<br>│              eu-central-2 (Zurich, Switzerland) — FINMA            │<br>│ │<br>│  BEDROCK AGENTCORE EU AVAILABILITY (as of 2026): │<br>│  AgentCore Runtime:       eu-central-1, eu-west-1 │<br>│  AgentCore Evaluations:   eu-central-1 (Frankfurt) ✅ │<br>│                           eu-west-1 (Oregon — DO NOT USE for EU data) │<br>│ │<br>-<br>│  Arize Phoenix: Self host on EU EKS cluster (Frankfurt) │<br>│  OR: Phoenix Cloud with EU data residency SLA                          │<br>│ │<br>│  DATA TRANSFER RULES: │<br>─────────────────────<br>│ │<br>│ • Customer PII: MUST stay in EU at all times (GDPR Art. 44-46) │<br>│ • Anonymised traces: Can be used for evaluation across regions │<br>│ • Model weights (Claude): Processed by Anthropic (DPA required) │<br>│ • Evaluation results: Store in EU S3, replicate within EU only │<br>│ │<br>│  REQUIRED CONTRACTS: │<br>│ • AWS DPA (Data Processing Agreement) — GDPR Art. 28 │<br>│ • Anthropic DPA — for Bedrock model API calls │<br>│ • Arize DPA — if using Arize Cloud                                    │<br>│ • AWS SCCs (Standard Contractual Clauses) — EU-US transfers │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ## 12. AUTOMATED COMPLIANCE PIPELINE
 
@@ -488,12 +405,7 @@ TECHNICAL FILE STRUCTURE (per EU AI Act Art. 11 + Annex IV) ──────�
 
 ───────────────────────────────────────────── │ │ │ │ │ │  Automated scan: Does agent do any of the 8 banned AI things? │ │ │ │ • Social scoring capability? │ │ │ │ • Subliminal manipulation techniques? │ │ │ │ • Real-time biometric identification? │ │ │ │  HARD BLOCK on any positive                                      │ │ │ └─────────────────────────────────────────────────────────────────┘ │ │ │ │ │ ▼ │ │ ┌─────────────────────────────────────────────────────────────────┐ │ │ │  GATE 2 — PII SAFETY (< 5 min) │ │ ───────────────────────────── │ │ │ │ - │ │  Run 100 synthetic PII containing test cases │ │ │ │  Agent must: DETECT + REDACT/BLOCK all PII (zero tolerance) │ │ │ │  Test types: IBAN exposure, name in output, account disclosure  │ │ │ │  HARD BLOCK if any PII leakage detected                         │ │ │ └─────────────────────────────────────────────────────────────────┘ │ │ │ │ │ ▼ │ │ ┌─────────────────────────────────────────────────────────────────┐ │ │ │  GATE 3 — FAIRNESS & BIAS (10–20 min) │ │ ───────────────────────────────────── │ │ │ │ │ │  Counterfactual name-swap suite (50 pairs) │ │ │ │  Demographic parity check across protected attributes │ │ │ │  DIR calculation: must be ≥ 0.80 for all groups │ │ │ │  BLOCK if DIR < 0.80 or sentiment delta > 0.05 │ │ │ └─────────────────────────────────────────────────────────────────┘ │ │ │ │ │ ▼ │ │ ┌─────────────────────────────────────────────────────────────────┐ │ — │ │  GATE 4 EXPLAINABILITY (5–10 min) │ │ ───────────────────────────────── │ │ │ │ │ │  For high-risk use cases: │ │ │ │ • Does every output include an explanation? (mandatory) │ │ │ │ • Is explanation understandable? (LLM-Judge score ≥ 0.85) │ │ │ │ • Does adverse action notice meet GDPR Art. 22 requirements? │ │ │ │  BLOCK if explanation coverage < 100% for high-risk decisions │ │ │ └─────────────────────────────────────────────────────────────────┘ │ │ │ │ │ ▼ │ │ ┌─────────────────────────────────────────────────────────────────┐ │ │ │  GATE 5 — AUDIT TRAIL COMPLETENESS (2 min) │ │ ────────────────────────────────────────── │ │ │ │ │ │  Verify: All 100 test interactions produced valid Art. 12 logs │ │
 
-
 ![Figure 16](/img/ai-usecases/ai-usecases-p28-16.png)
-
-
-<!-- Start of picture text -->
-│ │  Check: Log schema compliance (all required fields present) │ │<br>│ │  Check: S3 Object Lock enabled + EU region confirmed            │ │<br>│ │  BLOCK if log coverage < 100% or missing required fields │ │<br>│ └─────────────────────────────────────────────────────────────────┘ │<br>│ │ │<br>│ ▼ │<br>│ ┌─────────────────────────────────────────────────────────────────┐ │<br>│ │  GATE 6 — QUALITY METRICS (30 min, standard eval) │ │<br>─────────────────────────────────────────────────<br>│ │ │ │<br>│ │  Standard AgentCore + RAGAS + DeepEval suite                   │ │<br>│ │  All thresholds from core evaluation framework                  │ │<br>│ └─────────────────────────────────────────────────────────────────┘ │<br>│ │ │<br>│ ▼ │<br>│  ALL 6 GATES PASS → GENERATE COMPLIANCE REPORT → DEPLOY               │<br>│  ANY GATE FAILS → BLOCK + NOTIFY DPO + AI Risk Team + CRO             │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ### 12.2 Online Compliance Monitoring
 
@@ -571,12 +483,7 @@ audit_schedule = {
 
 ┌──────────────────────────────────────────────────────────────────────────┐ │              REGULATORY DOCUMENTATION REGISTRY                          │ │ │ │  EU AI ACT                                                              │ ────────── │ │ │ ☐ Technical File (Art. 11 + Annex IV) — per AI system │ — │ ☐ Declaration of Conformity per high-risk AI system │ — │ ☐ CE Mark (once available) for Annex III systems │ — │ ☐ EU AI Database Registration mandatory before deployment │ — │ ☐ Quality Management System maintained lifecycle                    │ │ ☐ Fundamental Rights Impact Assessment │ │ │ │  GDPR                                                                   │ ──── │ │ — │ ☐ DPIA (Data Protection Impact Assessment) Art. 35 │ — │ ☐ Records of Processing Activities (RoPA) Art. 30 │ — │ ☐ Lawful basis documentation Art. 6/9 │ │ ☐ DPO advisory opinion │ │ ☐ Data retention schedule                                             │ │ ☐ Data Processing Agreements (AWS, Arize, any vendor) │ │ │ │  DORA                                                                   │ ──── │ │ │ ☐ ICT asset register (agent included) │ — │ ☐ ICT Risk Assessment annual                                        │ │ ☐ Business Continuity Plan for AI agent failures │ — │ ☐ TLPT test results every 3 years (significant institutions) │ │ ☐ Third-party provider register + assessment (AWS, Anthropic, Arize) │ │ ☐ ICT incident reports (within 72h to national CA) │
 
-
 ![Figure 17](/img/ai-usecases/ai-usecases-p31-17.png)
-
-
-<!-- Start of picture text -->
-│ │<br>│  EBA / ECB                                                              │<br>─────────<br>│ │<br>│ ☐ Model Risk Management Policy (aligned to EBA guidelines) │<br>-<br>│ ☐ Independent Model Validation Report (pre deployment) │<br>│ ☐ Ongoing Monitoring Report (quarterly) │<br>│ ☐ Model inventory entry │<br>-<br>│ ☐ AI Governance Policy (Board approved) │<br>└──────────────────────────────────────────────────────────────────────────┘<br><!-- End of picture text -->
 
 ### 13.2 DPIA Template Structure (for AI Agents)
 
@@ -600,12 +507,7 @@ audit_schedule = {
 
 ### 14.1 Non-Compliance Cost Matrix
 
-
 ![Figure 18](/img/ai-usecases/ai-usecases-p32-18.png)
-
-
-<!-- Start of picture text -->
-┌──────────────────────────────────────────────────────────────────────────┐<br>—<br>│              REGULATORY PENALTY EXPOSURE   EU BANKING AI               │<br>│ │<br>│  REGULATION     VIOLATION TYPE              MAX PENALTY                 │<br>───────────────────────────────────────────────────────────────────<br>│ │<br>│ │<br>│  EU AI ACT      Prohibited AI practices €35M or 7% global TO        │<br>│                 High-risk non-compliance     €15M or 3% global TO        │<br>│                 Misleading information €7.5M or 1% global TO      │<br>│ │<br>│  GDPR           Principles / legal basis €20M or 4% global TO        │<br>│                 Technical measures €10M or 2% global TO        │<br>│                 DPIA non-completion €10M or 2% global TO        │<br>│ │<br>│  DORA           Non-compliance generally    Up to €5M (individual firm) │<br>│                 Critical provider failure   Additional supervisory action│<br>│ │<br>│  AMLD6          AML failures               Criminal liability + €5M     │<br>│ │<br>│  ECB/EBA        Model risk failures         Capital add-on requirement │<br>│                 Governance failures          Supervisory measures │<br>│                 Credit model failures        Pillar 2 capital increase    │<br>│ │<br>│  COMBINED MAXIMUM EXPOSURE (for a large EU bank): │<br>──────────────────────────────────────────────────<br>│ │<br>│  Single AI incident touching GDPR + EU AI Act + DORA: │<br>│ → Could trigger €35M + €20M + supervisory action simultaneously │<br>│ → Plus reputational damage + potential criminal liability for officers │<br>│ │<br><!-- End of picture text -->
 
 │  THEREFORE: Treat this framework as critical compliance infrastructure  │ │ not optional tooling                                                   │
 
@@ -636,8 +538,6 @@ audit_schedule = {
 |│QUALITY            Helpfulness ≥0.80 --- ⬜ │|
 |│ (Core Metrics)Groundedness ≥0.85 --- ⬜ │|
 |│Tool SelectionAcc. ≥0.90 --- ⬜ │<br>│ │|
-
-
 
 │  LEGEND: ✅ Compliant ⚠ Warning  🔴 Non-Compliant ⬜ Not Yet Set │ └──────────────────────────────────────────────────────────────────────────┘
 

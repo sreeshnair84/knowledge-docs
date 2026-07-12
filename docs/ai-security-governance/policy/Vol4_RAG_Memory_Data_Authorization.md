@@ -13,33 +13,33 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 4 OF 5**
 
-## **~~1. RAG Authorization Architecture~~**
+## 1. RAG Authorization Architecture
 
-# Retrieval-Augmented Generation (RAG) systems retrieve documents from a knowledge store and inject them ~~into the LLM context. Without authorization controls at the retrieval layer, an agent can be manipulated into~~ **~~RAG, Memory & Data Authorization~~** <u>retrieving and exposing documents that the invoking user is not permitted to see. This is one of the most critical</u> data security risks in enterprise AI.
+# Retrieval-Augmented Generation (RAG) systems retrieve documents from a knowledge store and inject them into the LLM context. Without authorization controls at the retrieval layer, an agent can be manipulated into **RAG, Memory & Data Authorization** <u>retrieving and exposing documents that the invoking user is not permitted to see. This is one of the most critical</u> data security risks in enterprise AI.
 
-~~Enterprise Policy Interceptor Architecture for Agentic AI~~ **<u>ANTI-PATTERN</u>**
+Enterprise Policy Interceptor Architecture for Agentic AI **<u>ANTI-PATTERN</u>**
 
-~~Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A;~~ <u>documents from the knowledge base simply by phrasing their query to match those documents. The vector</u> similarity search has no concept of permissions — authorization must be added as a filter layer on top.
+Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A; <u>documents from the knowledge base simply by phrasing their query to match those documents. The vector</u> similarity search has no concept of permissions — authorization must be added as a filter layer on top.
 
-### **~~1.1 RAG Authorization Pipeline~~**
+### 1.1 RAG Authorization Pipeline
 
 `USER QUERY (with canonical claims + context)` I
 
-~~IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`P1: Retrieval Authorization` IIII~~ `Cedar: Can user query this knowledge base?`
+IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `P1: Retrieval Authorization` IIII `Cedar: Can user query this knowledge base?`
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`ALLOW`~~
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `ALLOW`
 
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `Claims` → `Permission Set Mapping` I I `{ clearance_level, allowed_categories,` I I `tenant_id, department, geography }` I ~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~
+IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `Claims` → `Permission Set Mapping` I I `{ clearance_level, allowed_categories,` I I `tenant_id, department, geography }` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `PRE-RETRIEVAL FILTER` I I `(Metadata` ~~`filter applied to vector query)` I I~~ ~~`WHERE tenant_id = :tenant` I I~~ ~~`AND classification IN`~~ `(:allowed_classes)` I I `AND geography IN (:allowed_geos)` I
+IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `PRE-RETRIEVAL FILTER` I I `(Metadata` `filter applied to vector query)` I I `WHERE tenant_id = :tenant` I I `AND classification IN` `(:allowed_classes)` I I `AND geography IN (:allowed_geos)` I
 
 ##### IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I **VOLUME COVERAGE**
 
-~~IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`VECTOR SIMILARITY SEARCH` I I~~ Document-level and chunk-level authorization, vector database filtering, multi-tenant RAG isolation, `(OpenSearch / pgvector / Bedrock KB)` I I `Filtered result set — only permitted docs` I ~~working/long-term/shared memory protection, knowledge access policies, pre- and post-retrieval filtering,IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ output data classification, and attribute-based retrieval control.IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `POST-RETRIEVAL AUTHORIZATION` IIII `Cedar: Verify each retrieved chunk` I `(Per-document Cedar evaluation)` I `against user clearance` ~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`(filtered, authorized chunks only)`~~ IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `CONTEXT INJECTION` → `LLM` I I `(Only` ~~`authorized content in context)` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `OUTPUT CLASSIFICATION FILTER` IIII `Cedar: Is output within user's clearance?` I `(Scan response for leaked PII/classified)` I ~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`AUTHORIZED RESPONSE (with source`~~ `citations)`
+IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `VECTOR SIMILARITY SEARCH` I I Document-level and chunk-level authorization, vector database filtering, multi-tenant RAG isolation, `(OpenSearch / pgvector / Bedrock KB)` I I `Filtered result set — only permitted docs` I working/long-term/shared memory protection, knowledge access policies, pre- and post-retrieval filtering,IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I output data classification, and attribute-based retrieval control.IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `POST-RETRIEVAL AUTHORIZATION` IIII `Cedar: Verify each retrieved chunk` I `(Per-document Cedar evaluation)` I `against user clearance` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `(filtered, authorized chunks only)` IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `CONTEXT INJECTION` → `LLM` I I `(Only` `authorized content in context)` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `OUTPUT CLASSIFICATION FILTER` IIII `Cedar: Is output within user's clearance?` I `(Scan response for leaked PII/classified)` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTHORIZED RESPONSE (with source` `citations)`
 
-### **~~1.2 Document-Level Authorization Schema~~**
+### 1.2 Document-Level Authorization Schema
 
-~~Every document and chunk in the knowledge store must carry authorization metadata. This metadata is the~~ - - <u>basis for both pre retrieval filtering and post retrieval Cedar policy evaluation:</u>
+Every document and chunk in the knowledge store must carry authorization metadata. This metadata is the - - <u>basis for both pre retrieval filtering and post retrieval Cedar policy evaluation:</u>
 
 ```
 { "doc_id": "doc-m-and-a-briefing-2025-001", "title": "Project Phoenix M&A; Briefing",
@@ -59,13 +59,11 @@ IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `PRE-RETRIEVAL FILTER` I I `(Met
 "TOP_SECRET", // Chunk may differ from doc "content_hash": "sha256:abc123..." } ] }
 ```
 
-### **~~1.3 Cedar Policies for RAG Authorization~~**
+### 1.3 Cedar Policies for RAG Authorization
 
-~~Classification: CONFIDENTIAL — INTERNAL USE ONLY Published: June 2026  ·  AWS Well-Architected Series~~
+Classification: CONFIDENTIAL — INTERNAL USE ONLY Published: June 2026  ·  AWS Well-Architected Series
 
 **ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
-
-
 
 ```
 // Pre-retrieval: can agent query this knowledge base? permit( principal is BankAI::Agent,
@@ -87,7 +85,7 @@ resource has embargoUntil && context.currentTime < resource.embargoUntil }; // T
 when { resource.tenantId != principal.tenantId };
 ```
 
-### **1.4 Vector Database Filtering Implementation**
+### 1.4 Vector Database Filtering Implementation
 
 Modern vector databases support metadata filtering at query time. The pre-retrieval filter must be constructed from the canonical claims BEFORE the similarity search is executed:
 
@@ -110,15 +108,11 @@ owner match OR need-to-know list {"terms": {"department_owners": [org['departmen
 Embargo filter {"range": {"embargo_until": {"gte": "now"}}} ] } } return filter_query
 ```
 
-
-
-
-
-## **2. Memory Authorization Architecture**
+## 2. Memory Authorization Architecture
 
 AI agents use multiple types of memory. Each type has different authorization requirements. An agent must never access another user's memory without explicit authorization.
 
-### **2.1 Memory Type Taxonomy and Authorization Model**
+### 2.1 Memory Type Taxonomy and Authorization Model
 
 |**Memory Type**|**Scope**|**Authorization Model**|**Cedar Policy**|
 |---|---|---|---|
@@ -128,9 +122,7 @@ AI agents use multiple types of memory. Each type has different authorization re
 |Shared Memory<br>(Team/Project)|Project context<br>shared across<br>users|Shared within a defined group. Group<br>membership checked via Cedar. No<br>cross-group access.|principal.projectMemberships<br>contains memory.projectId|
 |Organizational<br>Memory<br>(Enterprise KB)|Company-wide<br>knowledge base|Full RAG authorization applies.<br>Classification + capability-based.|Full RAG policy stack|
 
-
-
-### **2.2 Cedar Policies for Memory Protection**
+### 2.2 Cedar Policies for Memory Protection
 
 ```
 // Agents can only read memory they own (or are delegated to read) permit( principal is
@@ -157,18 +149,12 @@ principal, action, resource is BankAI::MemoryRecord ) when { resource.tenantId !
 principal.tenantId };
 ```
 
-### **2.3 Memory Protection Implementation**
+### 2.3 Memory Protection Implementation
 
 |**Memory Storage**|**Authorization Control**|**Implementation**|
 |---|---|---|
 |DynamoDB|Partition key = userId#tenantId; IAM policy|DynamoDB condition expressions +|
 |(working/episodic)|restricts agent role to own partition|Cedar post-read verify|
-
-
-
-
-
-
 
 |**Memory Storage**|**Authorization Control**|**Implementation**|
 |---|---|---|
@@ -177,17 +163,11 @@ principal.tenantId };
 |S3 (long-term memory<br>snapshots)|S3 object key = tenant/user-id/memory/; IAM<br>boundary restricts agent|S3 resource policy + Cedar evaluation on<br>read|
 |RDS PostgreSQL<br>(shared memory)|Row-level security policies (Postgres RLS) +<br>Cedar post-read filter|Postgres RLS + Cedar authorization|
 
-
-
-
-
-
-
-## **3. Multi-Tenant Data Isolation**
+## 3. Multi-Tenant Data Isolation
 
 Multi-tenant AI deployments must guarantee that one tenant's agents, tools, knowledge, and memory can never interact with another tenant's data. This requires defense-in-depth: tenant isolation at the IAM layer, the data layer, and the Cedar policy layer.
 
-### **3.1 Tenant Isolation Defense Layers**
+### 3.1 Tenant Isolation Defense Layers
 
 |**Layer**|**Isolation Mechanism**|**Enforced By**|
 |---|---|---|
@@ -201,9 +181,7 @@ Multi-tenant AI deployments must guarantee that one tenant's agents, tools, know
 |Audit Logs|CloudTrail + per-tenant log group isolation|CloudWatch Log Groups|
 |Encryption|Per-tenant KMS keys for data at rest|AWS KMS, CMK per tenant|
 
-
-
-### **3.2 Tenant Isolation Cedar Pattern**
+### 3.2 Tenant Isolation Cedar Pattern
 
 ```
 // TENANT ISOLATION: This policy MUST be the first evaluated. // It uses Cedar's forbid-unless
@@ -218,15 +196,11 @@ principal.delegatedFrom has tenantId && resource.tenantId != principal.delegated
 forbid overrides ALL permits. // These tenant isolation forbids will always win.
 ```
 
-
-
-
-
-## **4. Output Classification and Filtering**
+## 4. Output Classification and Filtering
 
 Authorization does not end when a tool executes or a document is retrieved. The output must be classified and filtered before being returned to the user or injected into the next agent step. This prevents data leakage through the LLM generation layer.
 
-### **4.1 Output Classification Pipeline**
+### 4.1 Output Classification Pipeline
 
 `AGENT OUTPUT (raw LLM response)` I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTOMATED CLASSIFICATION` I I `• AWS Macie patterns (PII detection)` I I `• Bedrock Guardrails (content policy)` I I `• Custom classifier (CONFIDENTIAL/SECRET)` I
 
@@ -244,7 +218,7 @@ IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUDIT LOG (output classificatio
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `FILTERED, CLASSIFIED RESPONSE` → `USER`
 
-### **4.2 Data Sensitivity Classification Model**
+### 4.2 Data Sensitivity Classification Model
 
 |**Level**|**Label**|**Examples**|**Agent Policy**|
 |---|---|---|---|
@@ -254,8 +228,6 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `FILTERED, CLASSIFIED RESPONSE` 
 |L3|SECRET|M&A; details, legal strategy, key<br>material|Need-to-know list, MFA, approval, DLP active|
 |L4|TOP_SECRET|Board-level strategy, regulator<br>confidential|Explicit person list only, dual approval, offline audit|
 
-
-
-#### **BEST PRACTICE**
+#### BEST PRACTICE
 
 Bedrock Guardrails Integration: Amazon Bedrock Guardrails provide a native output filtering layer that can be configured with Cedar policy decisions as context. When Cedar returns an obligation to redact PII, Bedrock Guardrails can apply the redaction pattern to the LLM output in a single integrated call. This eliminates the need to post-process raw LLM output in application code.

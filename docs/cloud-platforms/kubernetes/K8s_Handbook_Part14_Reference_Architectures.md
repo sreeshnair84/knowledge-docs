@@ -9,7 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY**
+# ENTERPRISE KUBERNETES MASTERY
 
 AI Platform Engineering Handbook
 
@@ -23,9 +23,9 @@ Volume 14 of 16 Architecture Series | Edition 2025-2026
 
 PART XIV  REFERENCE ARCHITECTURES
 
-#### **CHAPTER 1**
+#### CHAPTER 1
 
-## **Enterprise Kubernetes Platform -- Full Stack Architecture**
+## Enterprise Kubernetes Platform -- Full Stack Architecture
 
 The following reference architecture represents a production-grade enterprise Kubernetes platform meeting security, compliance, observability, and operational requirements for regulated industries. Each layer is independently selectable and all components are CNCF-graduated or widely adopted in production.
 
@@ -53,7 +53,7 @@ pools + GPU node pools (A100/H100) Private VPC, no public node IPs Cloud IAM + H
 management
 ```
 
-### **Financial Services Reference Architecture**
+### Financial Services Reference Architecture
 
 |**Requirement**|**Control**|**Implementation**|
 |---|---|---|
@@ -62,8 +62,6 @@ management
 |Encryption in transit|All comms encrypted|Cilium WireGuard (L3) + Istio Ambient mTLS (L7) + cert-manager|
 |Privileged access|MFA + break-glass<br>audit|OIDC + Okta MFA; Vault lease-based admin; every action audited|
 |Vulnerability SLA|CRITICAL: 24h; HIGH:<br>7d|Trivy CI gate + Harbor daily scan + Kyverno image age policy|
-
-Confidential
 
 Enterprise Kubernetes Mastery Handbook
 
@@ -78,7 +76,7 @@ PART XIV  REFERENCE ARCHITECTURES
 |AI model audit (EU AI<br>Act)|Article 12: complete<br>audit trail|OTel GenAI traces -> Tempo; MLflow lineage; immutable S3 audit<br>log|
 |PCI DSS v4|Cardholder data<br>isolation|Dedicated namespace + cluster; NetworkPolicy + Vault for card data|
 
-### **Healthcare Reference Architecture**
+### Healthcare Reference Architecture
 
 Healthcare Kubernetes deployments must satisfy HIPAA, HITRUST, and increasingly FDA 21 CFR Part 11 for AI/ML medical devices. Key additions to the base platform:
 
@@ -90,7 +88,7 @@ Healthcare Kubernetes deployments must satisfy HIPAA, HITRUST, and increasingly 
 
 - **Medical AI governance** : FDA 21 CFR Part 11: electronic records and signatures for AI model validation, versioning, and deployment approval. MLflow + custom approval workflow CRD for pre-market submission artifacts.
 
-### **Enterprise Agentic AI Platform Reference Architecture**
+### Enterprise Agentic AI Platform Reference Architecture
 
 Full-stack enterprise agentic AI platform (derived from Part XII):
 
@@ -111,7 +109,5 @@ LLM serving, PagedAttention) NVIDIA GPU Operator + MIG (GPU resource management)
 tool call, agent step TTFT, TPS, queue depth, cost/session in Prometheus Agent decision log in
 Loki (compliance retention 1 year) Grafana AI platform dashboard
 ```
-
-Confidential
 
 Enterprise Kubernetes Mastery Handbook

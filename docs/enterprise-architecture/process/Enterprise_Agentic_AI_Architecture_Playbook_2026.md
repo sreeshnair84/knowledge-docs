@@ -11,7 +11,7 @@ covers_version: "N/A"
 ---
 PRINCIPAL AI ARCHITECT PLAYBOOK · 2026–2030
 
-# **Enterprise Agentic AI Architecture Research Initiative**
+# Enterprise Agentic AI Architecture Research Initiative
 
 How enterprises will build secure, governable, scalable, multi-cloud AI Agent platforms between 2026 and 2030.
 
@@ -21,7 +21,7 @@ How enterprises will build secure, governable, scalable, multi-cloud AI Agent pl
 
 Principal AI Architect  ·  v1.0  ·  June 05, 2026  ·  Confidential — Internal Use Only
 
-## **EXECUTIVE SUMMARY**
+## EXECUTIVE SUMMARY
 
 Enterprise Agentic AI · Key Findings & Context
 
@@ -46,11 +46,11 @@ The enterprise AI landscape is undergoing its most consequential architectural t
 
 **Page 2**
 
-## **PART I: AI EVOLUTION MATURITY MODEL**
+## PART I: AI EVOLUTION MATURITY MODEL
 
 From ML Systems to Agent Operating Systems
 
-### **Theme 1 — Evolution of Enterprise AI Architecture**
+### Theme 1 — Evolution of Enterprise AI Architecture
 
 Enterprise AI has evolved through six distinct generations. Understanding where an organisation sits on this maturity ladder determines which architectural investments are most urgent. The critical insight from 2026 production deployments: Gartner projects 40% of enterprise applications will integrate task-specific agents by end-2026, up from less than 5% in 2025.
 
@@ -78,7 +78,7 @@ Replacing Prompt Engineering
 
 Context Engineering is the discipline of designing dynamic systems that provide the right information, tools, permissions, and state to an LLM — at the right time — to enable accurate and reliable agentic behaviour. It treats the model's input not as a static prompt string, but as a multi-layered, dynamically assembled environment. Gartner's 2026 framing: context engineering gives AI systems 'the situational awareness needed to act with relevance and precision.' DataHub's 2026 State of Context Management: 82% of IT leaders agree prompt engineering alone is no longer sufficient; 95% plan context engineering investment in 2026.
 
-#### **Context Engineering vs Prompt Engineering**
+#### Context Engineering vs Prompt Engineering
 
 |**Prompt Engineering**|Static instruction design at message level (2022–2024). Optimises what you ask the model. Democratises AI but<br>fails at scale — hallucinations from no grounding.|
 |---|---|
@@ -88,9 +88,9 @@ Context Engineering is the discipline of designing dynamic systems that provide 
 |**Knowledge Graph Grounding**|Semantic layer: entities, relationships, provenance. GraphRAG: documents→knowledge graph. Every claim<br>traceable to source node. 62–91% accuracy improvement on multi-hop queries. Audit trails built into graph<br>structure.|
 |**Harness Engineering**|2026+ system-level design: tools, memory, constraints, feedback loops. Nested disciplines: Prompt→Context→<br>Harness. Enterprise harness = governed context pipeline.|
 
-#### **Memory Architecture for Enterprise Agents**
+#### Memory Architecture for Enterprise Agents
 
-##### **Store Governance**
+##### Store Governance
 
 - Working Memory: active session context; current task state; tool call • What NEVER to store: credentials, PII beyond session, raw tool history within turn outputs (distil first)
 
@@ -104,7 +104,7 @@ Context Engineering is the discipline of designing dynamic systems that provide 
 
 **Page 4**
 
-### **THEME AGENT ARCHITECTURE PATTERNS 03**
+### THEME AGENT ARCHITECTURE PATTERNS 03
 
 Orchestration · Coordination · Execution
 
@@ -122,7 +122,7 @@ Six production-proven orchestration patterns have emerged for multi-agent system
 
 **Page 5**
 
-### **THEME IDENTITY & AUTHORIZATION 04**
+### THEME IDENTITY & AUTHORIZATION 04
 
 OAuth 2.1 · OBO · JIT · SPIFFE
 
@@ -159,7 +159,7 @@ The 2026 governance imperative: governance must be embedded in the architecture,
 |**Audit Requirements**|Every agent action: user identity, agent identity, tool invoked, parameters/intent, outcome, trace context, token<br>cost. Exported via OpenTelemetry to SIEM. EU AI Act (Regulation 2024/1689): high-risk AI systems require full<br>explainability and audit trail.|
 |**Governance Agents**|Specialised monitor agents continuously inspect other agents for: policy violations, output bias, context drift,<br>anomalous tool call patterns, cost spikes. Alert + auto-quarantine on threshold breach.|
 
-#### **Governance Layer Responsibility Matrix**
+#### Governance Layer Responsibility Matrix
 
 |**Layer**|**Responsibility**|**Mechanism**|**Tool**|
 |---|---|---|---|
@@ -172,7 +172,7 @@ The 2026 governance imperative: governance must be embedded in the architecture,
 
 **Page 7**
 
-### **THEME AGENT SECURITY 06**
+### THEME AGENT SECURITY 06
 
 Threat Model Library · Defence-in-Depth
 
@@ -190,7 +190,7 @@ Prompt injection is to agentic AI what SQL injection was to early web applicatio
 
 **Page 8**
 
-### **THEME MULTI-CLOUD AGENT PLATFORM 07**
+### THEME MULTI-CLOUD AGENT PLATFORM 07
 
 Azure · AWS · GCP · SaaS Federation
 
@@ -251,7 +251,7 @@ The shift from traditional monitoring to agent observability is fundamental. It 
 
 IDC's FutureScape 2026 warns G1000 organisations face a 30% rise in underestimated AI infrastructure costs by 2027. The State of FinOps 2026 report: 98% of FinOps practices now manage AI spend, up from 63% a year ago. The challenge: token-based inference, fragmented vendor bills, and hidden costs of data, guardrails, and human review outpace traditional IT budgeting.
 
-##### **Cost Optimization**
+##### Cost Optimization
 
 - Attribution at call level: every LLM API call carries metadata (feature, team, business process)
 
@@ -263,7 +263,7 @@ IDC's FutureScape 2026 warns G1000 organisations face a 30% rise in underestimat
 
 - Semantic caching: identical/near-identical prompts served from cache; 60–80% cost reduction on repeat queries
 
-##### **Governance**
+##### Governance
 
 - LLMLingua compression: 20x reduction on verbose prompts; 95% input cost reduction in customer service
 
@@ -294,7 +294,7 @@ Enterprise agent reliability engineering addresses five dimensions: correctness 
 
 **Page 12**
 
-### **THEME FUTURE ARCHITECTURE 2026–2030 12**
+### THEME FUTURE ARCHITECTURE 2026–2030 12
 
 Agent Operating System · EAOS
 
@@ -320,11 +320,11 @@ The logical endpoint of enterprise AI maturity is the Enterprise Agent Operating
 
 **Page 13**
 
-## **OPEN SOURCE ECOSYSTEM REFERENCE**
+## OPEN SOURCE ECOSYSTEM REFERENCE
 
 Frameworks · Protocols · Observability · Security · FinOps
 
-#### **Agent Frameworks**
+#### Agent Frameworks
 
 |**LangGraph 1.0**|Production state machines; 90M monthly downloads; JP Morgan, BlackRock, Uber in production; HITL as interrupt<br>primitive; LangGraph Studio visual debugger|
 |---|---|
@@ -359,7 +359,7 @@ Frameworks · Protocols · Observability · Security · FinOps
 |---|---|
 |**Vantage**|Dedicated FinOps with MCP server; agents can query their own cost data and surface anomalies; multi-cloud + AI<br>spend unification|
 
-#### **Security**
+#### Security
 
 |**OPA (Open Policy Agent)**|Policy-as-code (Rego); sidecar enforcement at every tool boundary; multi-cloud policy unification; CNCF graduated|
 |---|---|
@@ -391,7 +391,7 @@ Frameworks · Protocols · Observability · Security · FinOps
 
 **Page 16**
 
-## **ARCHITECT'S CLOSING SYNTHESIS**
+## ARCHITECT'S CLOSING SYNTHESIS
 
 What Every Principal AI Architect Must Do Now
 

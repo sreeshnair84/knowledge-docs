@@ -25,6 +25,6 @@ Strategic guides and blueprints for AI-first enterprise transformation — cover
 
 - [EA Strategy Playbook](/knowledge-docs/enterprise-architecture/strategy/EA_Strategy_Playbook)
 
-- [AI Cost Implementation Guide 2026](/knowledge-docs/enterprise-architecture/strategy/AI_Cost_Implementation_Guide_2026)
+- [AI Cost Implementation Guide 2026](/knowledge-docs/ai-economics/AI_Cost_Implementation_Guide_2026) *(lives in AI Economics)*
 
 - [EA AI-First Transformation Transcript](/knowledge-docs/enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript)

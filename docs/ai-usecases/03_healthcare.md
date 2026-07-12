@@ -9,11 +9,9 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Case Study**
+# Case Study
 
 Northfield Health System — Clinical Documentation & Prior Authorization AI Assistant
-
-Confidential Internal Engagement Documentation
 
 Engagement Period: April 2025 – March 2026
 
@@ -55,7 +53,7 @@ Engagement Period: April 2025 – March 2026
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# **1. Executive Summary**
+# 1. Executive Summary
 
 Northfield Health System, a nine-hospital regional network with 140 affiliated outpatient clinics, engaged an Enterprise AI Architecture team to address two connected sources of clinician burnout and revenue leakage: excessive time spent on clinical documentation, and a prior-authorization process that was delaying care and burying utilization-management staff in paperwork.
 
@@ -65,13 +63,13 @@ Five months into production, a serious incident occurred: a prompt-injection vul
 
 Key outcomes: - Physician documentation time reduced by an average of 87 minutes per clinical day across pilot service lines - Prior-authorization turnaround time reduced from an average of 6.2 days to 2.1 days for in-scope specialty referrals - One Class 1 security incident (near-miss, no confirmed external exposure) triggering ingestion-layer redesign and expanded breach-risk governance - Zero instances of the ambient documentation assistant’s output being used as the sole basis for a treatment decision — physician attestation required on every note
 
-# **2. Client Background**
+# 2. Client Background
 
 Northfield Health System was formed via a merger eighteen months prior to engagement start, combining two previously independent regional systems — one operating primarily in a state with stringent supplemental healthdata privacy law beyond HIPAA baseline, the other in a more permissive regulatory environment. The merger left Northfield with two Epic instances mid-consolidation, a fragmented identity system, and clinical staff across the combined system reporting significant EHR-driven burnout, a top-three retention risk per Northfield’s own workforce survey.
 
 Northfield’s Chief Medical Information Officer, Dr. Renata Ibhawoh, sponsored the engagement alongside the VP of Revenue Cycle, Tom Alcaraz, whose department was absorbing the operational pain of prior-authorization delays — Northfield’s payer mix included several plans with notoriously slow and document-heavy prior-auth requirements for specialty imaging and infusion therapies.
 
-# **3. Business Problem**
+# 3. Business Problem
 
 Discovery identified two interlocking problems that Northfield’s leadership had previously treated as separate initiatives:
 
@@ -79,7 +77,7 @@ Discovery identified two interlocking problems that Northfield’s leadership ha
 
 **Prior authorization delays.** Northfield’s utilization-management staff manually assembled clinical evidence packages to justify prior-authorization requests, cross-referencing payer-specific medical necessity criteria (which varied by payer and changed frequently) against the patient’s clinical history scattered across notes, labs, and imaging reports. A specialty infusion referral could take over a week to authorize, during which patients sometimes discontinued care-seeking altogether — a genuine clinical-quality concern, not just an administrative one.
 
-# **4. Constraints**
+# 4. Constraints
 
 1. **HIPAA and supplemental state privacy law.** The post-merger entity had to satisfy the more stringent of its two states’ requirements system-wide rather than maintaining two different privacy postures, per Legal’s determination — a decision that materially shaped the data architecture (Section 6.1).
 
@@ -93,9 +91,9 @@ Discovery identified two interlocking problems that Northfield’s leadership ha
 
 6. **No PHI to external, non-BAA-covered services.** Any AI vendor or model provider required a signed Business Associate Agreement (BAA) under HIPAA before any PHI could flow to it, ruling out several otherwise-attractive tools during procurement.
 
-# **5. Discovery Transcript**
+# 5. Discovery Transcript
 
-## **5.1 Kickoff — Week 1**
+## 5.1 Kickoff — Week 1
 
 *Present: Dr. Renata Ibhawoh (CMIO), Tom Alcaraz (VP Revenue Cycle), Chief Compliance Officer (Denise Okafor), the Enterprise AI Architect (EAA).*
 
@@ -109,7 +107,7 @@ Discovery identified two interlocking problems that Northfield’s leadership ha
 
 **Alcaraz:** And I need this to actually move the turnaround-time needle, or Revenue Cycle leadership isn’t going to keep funding it past a pilot.
 
-## **5.2 Clinician Shadowing — Week 2**
+## 5.2 Clinician Shadowing — Week 2
 
 **Physician (Dr. Marcus Webb, internal medicine, no relation to prior engagement’s CFO):** Watch what happens after this patient leaves. [opens EHR] I’ve got fifteen more minutes of documentation for a twenty-minute visit. And half of what I’m typing is stuff I already said out loud during the visit — the review of systems, the assessment, the plan. If something could just listen and structure that, I’d get my evenings back.
 
@@ -119,7 +117,7 @@ Discovery identified two interlocking problems that Northfield’s leadership ha
 
 This shadowing session shaped the decision to prioritize **structured, template-aware ambient documentation** — not just transcription, but real-time organization into the clinical note structures physicians already used — over a generic dictation-to-text tool, differentiating the solution from Northfield’s prior unsuccessful tooling.
 
-## **5.3 Utilization Management Shadowing — Week 3**
+## 5.3 Utilization Management Shadowing — Week 3
 
 **UM Nurse (Patricia Nguyen):** For this infusion referral, I need to prove medical necessity against [Payer X]’s criteria — which, by the way, changed two months ago and nobody told us until three of our requests got denied. I have to manually find the relevant lab values, prior treatment failures, and diagnosis codes across probably six different chart sections, then write a justification letter citing all of it.
 
@@ -131,7 +129,7 @@ This directly shaped the decision to build a **payer policy monitoring capabilit
 
 authorizations, described further in Section 6.1.
 
-## **5.4 Capability Mapping and ROI — Week 4**
+## 5.4 Capability Mapping and ROI — Week 4
 
 |**Capability**|**Current State**|**AI Opportunity**|**Impact**|**Feasibility**|
 |---|---|---|---|---|
@@ -145,11 +143,11 @@ authorizations, described further in Section 6.1.
 
 **Ibhawoh:** Agreed, and frankly relieved to hear you say that rather than sell it to us.
 
-# **6. Architecture Workshops**
+# 6. Architecture Workshops
 
-## **6.1 Data & Information Architecture**
+## 6.1 Data & Information Architecture
 
-### **Enterprise Data Architect (Grace Lin, engaged across two of this consultancy’s healthcare accounts):**
+### Enterprise Data Architect (Grace Lin, engaged across two of this consultancy’s healthcare accounts):
 
 **Lin:** Given the merger, how do we handle the fact that we effectively have two Epic instances with different patient identifiers for what might be the same patient in edge cases?
 
@@ -159,7 +157,7 @@ authorizations, described further in Section 6.1.
 
 The knowledge architecture combined: - A **Clinical Guidelines & Payer Policy Knowledge Graph** , encoding both established clinical guidelines (for documentation-quality checks) and payer-specific medical necessity criteria (for prior-auth evidence assembly), with the payer-policy portion actively monitored for changes per the Week 3 finding - **Hybrid search** over structured EHR data (labs, medications, diagnoses — queried directly, not via LLM interpretation) and unstructured clinical notes (vector-indexed for semantic retrieval), with the retrieval layer enforcing strict patient-identity scoping as described above
 
-## **6.2 AI/Platform Architecture — Whiteboard Session, Week 9**
+## 6.2 AI/Platform Architecture — Whiteboard Session, Week 9
 
 **EAA:** [at whiteboard] Ambient documentation flow: audio captured during the encounter (with patient consent per Northfield’s existing consent workflow, unchanged by this project) is processed by a real-time transcription and structuring pipeline, organizing content into the physician’s preferred note template as it’s spoken. Nothing is written to the legal medical record until the physician reviews and explicitly attests to the note — that attestation step is a hard gate in the EHR write-back integration, not a UI suggestion that could be skipped.
 
@@ -171,7 +169,7 @@ The knowledge architecture combined: - A **Clinical Guidelines & Payer Policy Kn
 
 **EAA:** Same grounding discipline as the ambient documentation, applied differently: the Prior-Auth Agent retrieves candidate supporting evidence via the hybrid search layer, but every claim in the drafted justification letter must resolve to a direct citation — specific note, date, author, or specific lab result — surfaced to the UM nurse as a hyperlinked reference, not asserted as fact by the agent’s own authority. The nurse reviews and can reject or edit any cited evidence before the package is submitted to the payer; the agent drafts, the nurse is accountable, mirroring the same non-decisioning principle used in the banking engagement’s credit memo drafting, applied to clinical evidence instead of financial figures.
 
-## **6.3 Security & Identity Architecture**
+## 6.3 Security & Identity Architecture
 
 BAA in place with the LLM provider before any PHI processing; all inference within Northfield’s cloud tenant boundary (Azure, consistent with existing Epic hosting relationship)
 
@@ -181,15 +179,15 @@ Identity federation via Northfield’s Epic-integrated SSO (SMART on FHIR-based 
 
 Audit logging of every AI-assisted note’s generation and every prior-auth evidence citation, retained per Northfield’s existing medical-record retention policy (extended, not replaced, by this project)
 
-## **6.4 Integration & API Strategy**
+## 6.4 Integration & API Strategy
 
 - FHIR-based integration with both Epic instances for structured data access (labs, medications, diagnoses, encounters)
 
 - MCP server exposing the Clinical Guidelines & Payer Policy Knowledge Graph and the hybrid-search retrieval capability as tools consumed by both the ambient documentation and prior-auth agents — a shared tool layer chosen specifically to avoid building two separate retrieval stacks for what was fundamentally the same underlying data Document-ingestion pipeline (OCR plus document-understanding) for fax and scanned-PDF referrals from non-integrated community physician offices — this pipeline is the one implicated in the Month 5 incident (Section 14)
 
-# **7. Technical Debates**
+# 7. Technical Debates
 
-## **7.1 Real-Time Transcription Architecture — Streaming vs. Batch**
+## 7.1 Real-Time Transcription Architecture — Streaming vs. Batch
 
 **ML Engineer (Devon Park, engaged across multiple accounts):** Do we process audio in real time during the encounter, or batch-process after the visit ends? Real time gives physicians a live-updating draft they can review immediately after the patient leaves; batch is architecturally simpler and cheaper.
 
@@ -199,7 +197,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 **EAA:** Agreed, and I don’t want to understate that. We’ll need diarization (distinguishing physician, patient, and any other speakers) and a tolerance for revision as the encounter continues — the structured note should be treated as a continuously-updating draft, not a series of final commits, until the physician’s end-of-visit review.
 
-## **7.2 Should the Payer-Policy-Monitoring Agent Auto-Update the Knowledge Graph?**
+## 7.2 Should the Payer-Policy-Monitoring Agent Auto-Update the Knowledge Graph?
 
 **Nguyen (UM team, Week 15):** Once the policy-monitoring agent detects a payer criteria change, can it just update the knowledge graph automatically so evidence packages reflect the new criteria immediately?
 
@@ -207,7 +205,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 **Okafor:** That’s the right level of caution for something feeding claims-adjacent documentation. Approved.
 
-## **7.3 Evaluation Strategy Debate**
+## 7.3 Evaluation Strategy Debate
 
 **EAA:** For ambient documentation, I don’t think a single “note quality” score is meaningful. We need at minimum: faithfulness (does the note contain only what was actually said/observed — measured via structured comparison against the encounter audio, not just physician satisfaction survey), completeness (are required note elements present for coding/billing/clinical-quality purposes), and physician edit-burden (how much post-generation editing is actually required, our real proxy for the burnout-reduction goal).
 
@@ -215,9 +213,9 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 **EAA:** Agreed, and that’s consistent with how I’d want to design this regardless — an automated faithfulness screen as a fast first-pass filter, with a defined sampling rate of clinical informatics review as the actual quality bar, especially during the pilot period before we have confidence in the automated screen’s own reliability.
 
-# **8. Executive Reviews**
+# 8. Executive Reviews
 
-## **8.1 Clinical Governance Committee Review — Week 18**
+## 8.1 Clinical Governance Committee Review — Week 18
 
 **Ibhawoh (chairing):** I’m prepared to approve pilot deployment for ambient documentation in three service lines — internal medicine, cardiology, and orthopedics — conditional on the mandatory physician attestation gate being demonstrated as non-bypassable, and on clinical informatics sign-off on note templates for each service line individually, not a single generic template.
 
@@ -225,7 +223,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 **Committee:** Approved with conditions as stated.
 
-## **8.2 Revenue Cycle Executive Review — Week 24**
+## 8.2 Revenue Cycle Executive Review — Week 24
 
 **Alcaraz:** Pilot data on prior-auth turnaround time?
 
@@ -233,7 +231,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 **Alcaraz:** Put a number on that for the board — avoided restart cycles matter more to my team than the average turnaround number, honestly.
 
-## **8.3 Post-Incident Security Review — Week 40 (see Section 14)**
+## 8.3 Post-Incident Security Review — Week 40 (see Section 14)
 
 **Okafor:** I need the straight assessment — did this expose us to a reportable HIPAA breach?
 
@@ -241,7 +239,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 **Okafor:** I’m going to want that distinction — “the vulnerability was real, the specific harm was prevented by a separate control” — documented very precisely for our breach-risk-assessment file, because it’s the difference between a reportable incident and a near-miss, and I don’t want any ambiguity in how we characterized it after the fact.
 
-# **9. Final Architecture**
+# 9. Final Architecture
 
 - **Ambient Documentation Pipeline** : real-time streaming transcription with speaker diarization, structuring into physician-specific note templates (clinical informatics-reviewed per service line), hard-gated by mandatory physician attestation before EHR write-back
 
@@ -251,7 +249,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 - All LLM inference within Northfield’s Azure tenant under signed BAA; no PHI to non-covered external services
 
-# **10. Delivery Roadmap**
+# 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -262,7 +260,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 |Incident & Remediation|Month 5 (during pilot)|Prompt-injection near-miss, ingestion-<br>layer redesign|
 |Broader Rollout|Months 9–12|System-wide expansion contingent on<br>post-incident re-validation|
 
-# **11. Risks**
+# 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -272,7 +270,7 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 |Payer policy<br>misinterpretation|Low (post human-<br>review gate)|High|Human UM specialist<br>approval required for<br>all knowledge graph<br>updates|Utilization<br>Management|
 |Incomplete Epic<br>consolidation extending<br>dual-instance<br>complexity|Medium (realized —<br>see Lessons Learned)|Medium|Architecture designed<br>to function against both<br>instances<br>independently|Platform Architecture|
 
-# **12. Governance Model**
+# 12. Governance Model
 
 - **Clinical Governance Committee** retains standing authority over any note-template or clinical-contentadjacent change, chaired by the CMIO
 
@@ -280,17 +278,17 @@ Audit logging of every AI-assisted note’s generation and every prior-auth evid
 
 - **UM Policy Review Board** : human sign-off required for every payer-policy knowledge graph update **Post-incident Security Governance addition** : mandatory adversarial-input testing for any new documentingestion source, added to the standard change-control checklist following Section 14
 
-# **13. Production Rollout**
+# 13. Production Rollout
 
 Pilot began in three service lines (Month 3) with heavy on-site clinical informatics support during the first six weeks — a deliberate choice given the prior unsuccessful dictation-tool rollout had suffered from inadequate clinician onboarding. The Month 5 incident occurred during this pilot window and triggered a temporary pause of the document-ingestion pipeline specifically (not the ambient documentation or core prior-auth drafting capability, which used different, unaffected ingestion paths) while remediation proceeded.
 
-# **14. Production Incident — Month 5**
+# 14. Production Incident — Month 5
 
-## **14.1 Incident Summary**
+## 14.1 Incident Summary
 
 A scanned specialist referral document, faxed from a non-integrated community physician’s office and processed through the document-ingestion pipeline described in Section 6.4, contained adversarial text embedded in what appeared to be a routine clinical notes section — text apparently inserted (the forensic investigation could not conclusively determine intent versus accidental artifact from the sending office’s own systems) that was structured to resemble system instructions rather than clinical content. This text was passed into the downstream summarization agent’s context without the isolation treatment applied to structured EHR data, and the manipulated summarization briefly attempted to retrieve and include content associated with a different patient sharing a similar name — an action that was blocked by the patient-identity hard-fail scoping control (Section 6.1) before any cross-patient content was displayed to any user.
 
-## **14.2 Incident Response Transcript**
+## 14.2 Incident Response Transcript
 
 **Security Architect (Raj Mehta, engaged across accounts):** Walk me through exactly what the hard-fail control did and didn’t prevent.
 
@@ -304,11 +302,11 @@ A scanned specialist referral document, faxed from a non-integrated community ph
 
 **Okafor:** Agreed — we’re not going to let “it didn’t work this time” become an excuse for treating this as minor.
 
-## **14.3 Remediation**
+## 14.3 Remediation
 
 The document-ingestion pipeline was redesigned to treat all content extracted from non-integrated external sources (fax, scanned PDF, any document not originating from Northfield’s own Epic instances) as untrusted input, isolated from any system-prompt-adjacent context in the same manner as the free-text dispatcher fields pattern referenced above — clearly delimited, never concatenated with elevated trust, and passed through an additional adversarial-content screening step before reaching any downstream agent. A full audit of all other ingestion pathways confirmed no other pathway had the same gap, though two were hardened proactively as a precaution.
 
-# **15. Lessons Learned**
+# 15. Lessons Learned
 
 1. **Every external data ingestion pathway needs to be explicitly modeled as an untrusted input surface, not implicitly assumed safe because it passes through a preprocessing step like OCR.** The team’s own prior work (referenced by the EAA in the incident response) had already established the pattern for handling untrusted free text; the gap was failing to recognize that OCR-extracted document content was the same category of risk, just arriving through a different technical pathway. Future architecture reviews should explicitly enumerate every content-ingestion pathway and classify each as trusted or untrusted, rather than assuming classification is obvious from the pathway’s technical mechanism.
 
@@ -316,7 +314,7 @@ The document-ingestion pipeline was redesigned to treat all content extracted fr
 
 3. **Incomplete post-merger system consolidation (Epic instances remaining separate longer than planned) added ongoing architectural complexity the team had designed for but that increased both engineering overhead and the surface area for the kind of identity-matching edge cases implicated in this incident.** This reinforced the Week 1 architectural choice to hard-fail on ambiguous patient matching rather than probabilistically resolve it — a choice that looked conservative at the time and proved directly protective five months later.
 
-# **16. Enterprise Architecture Artifacts**
+# 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : clinical documentation and prior-authorization value chains with AI-opportunity overlay (Section 5.4)
 
@@ -324,7 +322,7 @@ The document-ingestion pipeline was redesigned to treat all content extracted fr
 
 - **Data Flow Diagram with Trust Boundary Annotations** (post-incident addition): every ingestion pathway explicitly labeled trusted/untrusted, maintained as a living document reviewed at each architecture change **Patient-Identity Resolution Policy specification** , documenting the hard-fail-on-ambiguity design principle referenced throughout this case study
 
-# **17. Architecture Decision Records (ADRs)**
+# 17. Architecture Decision Records (ADRs)
 
 **ADR-001: Ambient documentation structures and organizes only what was said/observed during the encounter; never generates new clinical content or recommendations.** Status: Accepted, foundational per CMIO mandate.
 
@@ -338,7 +336,7 @@ The document-ingestion pipeline was redesigned to treat all content extracted fr
 
 **ADR-006 (post-incident): All content from non-integrated external ingestion sources (fax, scanned PDF) treated as untrusted input, isolated from elevated-trust context, and passed through adversarialcontent screening.** Status: Accepted, emergency-scoped remediation, audited across all ingestion pathways.
 
-# **18. AI Evaluation Strategy**
+# 18. AI Evaluation Strategy
 
 - **Faithfulness** : automated first-pass screen comparing generated notes against encounter audio/transcript, backed by sampled clinical informatics review as the trusted quality bar (Section 7.3) **Completeness** : automated check for required note elements per service-line template and coding/billing requirements
 
@@ -348,7 +346,7 @@ The document-ingestion pipeline was redesigned to treat all content extracted fr
 
 - **Post-incident adversarial ingestion testing** : mandatory for any new document-ingestion source added to the platform, modeled on the CISO-mandated suite from the aviation-sector engagement pattern referenced in Section 14.2
 
-# **19. Operational Runbook**
+# 19. Operational Runbook
 
 - **Attestation gate monitoring** : dashboard tracking any anomaly in attestation-to-write-back timing that might indicate an attempted bypass, reviewed weekly by Clinical Informatics
 
@@ -356,7 +354,7 @@ The document-ingestion pipeline was redesigned to treat all content extracted fr
 
 - **Payer policy monitoring alert handling** : defined SLA for UM Policy Review Board response to flagged policy changes, given the direct link to avoided-denial-cycle value identified in Section 8.2 **Cross-Epic-instance consistency check** : given incomplete consolidation, a scheduled reconciliation process verifying the knowledge graph and retrieval layer behave consistently against both instances, re-run after any Epic configuration change to either instance
 
-# **20. Future Roadmap**
+# 20. Future Roadmap
 
 1. **Full rollout pending Epic consolidation completion** , now expected roughly nine months later than originally planned per the merger integration team’s revised timeline — the AI platform’s dual-instancetolerant design means this delay affects operational simplicity but not functional capability, a deliberate architectural hedge that proved its value.
 

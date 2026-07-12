@@ -11,9 +11,9 @@ tags: []
 
 <!-- converted from Sovereign Constitutional AI & RAI - Complete Implementation Handbook.pdf -->
 
-##### **C O M P R E H E N S I V E H A N D B O O K · 2 0 2 6 – 2 0 3 0**
+##### C O M P R E H E N S I V E H A N D B O O K · 2 0 2 6 – 2 0 3 0
 
-# **Sovereign Constitutional AI & Responsible AI (RAI) — The Complete Implementation Handbook**
+# Sovereign Constitutional AI & Responsible AI (RAI) — The Complete Implementation Handbook
 
 An expanded, practitioner-grade reference for designing, governing, securing, testing, auditing, operating, procuring, and scaling Sovereign Constitutional AI systems — written for Chief AI Officers, Principal AI Architects, Risk & Compliance Directors, and the engineering and governance teams who report to them.
 
@@ -29,9 +29,9 @@ An expanded, practitioner-grade reference for designing, governing, securing, te
 
 2026 – 2030 Comprehensive Edition
 
-## **Table of Contents**
+## Table of Contents
 
-###### **FRONT MATTER**
+###### FRONT MATTER
 
 |Executive Summary & How to Use This Handbook|**EX**|
 |---|---|
@@ -53,8 +53,6 @@ An expanded, practitioner-grade reference for designing, governing, securing, te
 |Domain 14 — Testing, Red-Teaming & Continuous Evaluation|**D14**|
 |Domain 15 — Vendor, Model & Procurement Governance|**D15**|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 2 of 50
 
 |Domain 16 — Incident Response & Crisis Management for AI Systems|**D16**|
@@ -72,16 +70,9 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 2 
 |Appendix D — Frequently Asked Questions|**AP-D**|
 |Technical Leadership Resource Compendium|**TLR**|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 3 of 50
 
-
 ![Figure 1](/img/ai-security-governance/ai-security-gov-p4-1.png)
-
-
-<!-- Start of picture text -->
-Executive Summary & How to Use This Handbook<br><!-- End of picture text -->
 
 **Why this handbook exists.** Static, checklist-based Responsible AI programs were built for a world of singleturn chat completions. They do not hold up against persistent, multi-agent, tool-using systems that plan, act, and adapt across sessions. This handbook treats governance as a control system, not a document: every domain pairs a principle with an enforcement mechanism, an owner, and a metric.
 
@@ -93,7 +84,7 @@ Executive Summary & How to Use This Handbook<br><!-- End of picture text -->
 
 **18 6 24 4** Domains New Operating Disciplines Month Roadmap Appendices
 
-#### **Reading Guide by Role**
+#### Reading Guide by Role
 
 |**Role**|**Priority Domains**|**Key Deliverables**|
 |---|---|---|
@@ -103,22 +94,15 @@ Executive Summary & How to Use This Handbook<br><!-- End of picture text -->
 |**Engineering / Platform Lead**|D2, D7, D9, D10, D13, D14|Constitution Authoring Kit, Rego Policy Templates|
 |**Finance / Procurement**|D15, D17|Vendor Scorecards, FinOps Tracking Templates|
 
-
-
-
 ![Figure 2](/img/ai-security-governance/ai-security-gov-p4-2.png)
 
-
-<!-- Start of picture text -->
-Domain 1 — Foundations of Sovereign AI<br><!-- End of picture text -->
-
-###### **CAIO ARCHITECT**
+###### CAIO ARCHITECT
 
 Sovereignty is defined as the durable, uncompressed capacity for localized stack control, configuration, and structural decoupling without operational degradation. It spans across three operational models that organizations typically pursue in combination rather than isolation.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 4 of 50
 
-###### **1. National Strategic**
+###### 1. National Strategic
 
 - Native cultural/linguistic LLMs
 
@@ -126,25 +110,25 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 4 
 
 - Cross-border data containment
 
-###### **2. Regulated Enterprise**
+###### 2. Regulated Enterprise
 
 - Air-gapped model deployments
 
 - Proprietary synthetic loops • Zero vendor telemetry leaks
 
-###### **3. Infrastructure & Orchestration**
+###### 3. Infrastructure & Orchestration
 
 - Bare-metal bare-allocation • Localized weights & parameters • Decoupled runtime routing
 
-### **1.1 — Why Sovereignty Is a Spectrum, Not a Binary**
+### 1.1 — Why Sovereignty Is a Spectrum, Not a Binary
 
 Few organizations need — or can afford — Level 4 "Fully Autonomous Sovereign" infrastructure across their entire AI estate. The practical objective is to map each workload to the minimum sovereignty tier that satisfies its regulatory exposure, data sensitivity, and continuity requirements, then invest deliberately rather than uniformly. A customer-support chatbot using public information has very different sovereignty needs than a system processing protected health information or national-security-adjacent data.
 
-###### **WORKED EXAMPLE — TIERED SOVEREIGNTY ALLOCATION**
+###### WORKED EXAMPLE — TIERED SOVEREIGNTY ALLOCATION
 
 A regional bank operates three AI workloads: (1) a public marketing content generator, (2) an internal contract-analysis assistant, and (3) a fraud-detection decision system. Under a tiered model, workload 1 can remain on Level 1 (commercial API), workload 2 should sit at Level 2–3 (fine-tuned adapters over a VPC-contained model, given confidential contract terms), and workload 3 — which touches regulated financial decisioning and audit obligations — is held to Level 3–4 (localized hosting, full governance control layer).
 
-### **1.2 — Sovereign AI Maturity Matrix (SAMM)**
+### 1.2 — Sovereign AI Maturity Matrix (SAMM)
 
 |**Layer**|**Level 1: Dependent**|**Level 2: Hybrid**<br>**Assisted**|**Level 3: Strategically**<br>**Sovereign**|**Level 4: Fully**<br>**Autonomous Sovereign**|
 |---|---|---|---|---|
@@ -153,11 +137,9 @@ A regional bank operates three AI workloads: (1) a public marketing content gene
 |**Model &**<br>**Weights**|Black-box commercial<br>API reliance.|Fine-tuned adapter<br>weights over commercial<br>APIs.|Open-weights base<br>model hosted internally.|Custom native pre-trained<br>foundation models.|
 |**Governance**<br>**Control**|Third-party vendor<br>terms of service.|Manual monitoring of<br>vendor API shifts.|Localized gateway policy<br>enforcement layers.|Automated runtime policy<br>execution engines.|
 
+### 1.3 — Common Sovereignty Failure Modes
 
-
-### **1.3 — Common Sovereignty Failure Modes**
-
-###### **Failure Mode: Sovereignty Theater**
+###### Failure Mode: Sovereignty Theater
 
 An organization hosts model weights on-premise (Level 3 infrastructure) but continues routing logging, telemetry, and finetuning data through a foreign vendor's managed service — undermining the data residency guarantee the infrastructure
 
@@ -165,11 +147,11 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 5 
 
 investment was meant to provide. True sovereignty requires consistency across all four SAMM layers simultaneously; the weakest layer determines the organization's actual exposure.
 
-###### **Failure Mode: Static Sovereignty Assessment**
+###### Failure Mode: Static Sovereignty Assessment
 
 Sovereignty posture is assessed once at procurement time and never re-evaluated. Vendor terms of service, subprocessor lists, and jurisdictional risk shift continuously; Domain 15 (Vendor & Procurement Governance) establishes the recurring review cadence needed to keep this assessment current.
 
-### **1.4 — Decision Framework: Choosing a Sovereignty Tier**
+### 1.4 — Decision Framework: Choosing a Sovereignty Tier
 
 |**Signal**|**Lean Toward Lower Tier (1–2)**|**Lean Toward Higher Tier (3–4)**|
 |---|---|---|
@@ -178,9 +160,7 @@ Sovereignty posture is assessed once at procurement time and never re-evaluated.
 |Continuity requirement|Tolerant of vendor outages|Mission-critical, zero-tolerance for external dependency|
 |Talent & budget|Limited ML infrastructure talent|Dedicated platform/MLOps team available|
 
-
-
-###### **Domain 1 Implementation Checklist**
+###### Domain 1 Implementation Checklist
 
 - ☐ Inventory all AI workloads and classify by data sensitivity and regulatory exposure
 
@@ -194,27 +174,17 @@ Sovereignty posture is assessed once at procurement time and never re-evaluated.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 6 of 50
 
-
 ![Figure 3](/img/ai-security-governance/ai-security-gov-p7-3.png)
 
-
-<!-- Start of picture text -->
-Domain 2 — Constitutional AI (CAI) & Behavioral Engineering<br><!-- End of picture text -->
-
-###### **ARCHITECT ENGINEERING**
+###### ARCHITECT ENGINEERING
 
 Constitutional AI replaces brittle, manually labeled Reinforcement Learning from Human Feedback (RLHF) with automated Reinforcement Learning from AI Feedback (RLAIF) guided by programmatic principles.
 
-###### **CONSTITUTIONAL TRAINING PIPELINE**
-
+###### CONSTITUTIONAL TRAINING PIPELINE
 
 ![Figure 4](/img/ai-security-governance/ai-security-gov-p7-4.png)
 
-
-<!-- Start of picture text -->
-Raw Base Model  → Phase 1: Supervised Learning (SFT)<br>↓<br>Generate Responses Self-Critique Loop<br>Model generates outputs for adversarial prompt injections. Evaluates outputs against Constitutional Principles.<br>↓<br>Phase 2: Preference Training (DPO/RLAIF)<br>↓<br>Constitutional Guardrail Fabric<br><!-- End of picture text -->
-
-### **2.1 — Comparative Alignment Framework**
+### 2.1 — Comparative Alignment Framework
 
 - **RLHF:** High human labeling overhead; prone to reward hacking, sycophancy, and rapid alignment decay under distribution shifts.
 
@@ -222,7 +192,7 @@ Raw Base Model  → Phase 1: Supervised Learning (SFT)<br>↓<br>Generate Respon
 
 - **Constitutional AI (CAI/RLAIF):** Scales systematically via explicit textual principles. Generates chains of self-critique that are legible to human auditors before fine-tuning.
 
-### **2.2 — Multi-Tier Constitution Hierarchy**
+### 2.2 — Multi-Tier Constitution Hierarchy
 
 **Global Level:** Universal Human Rights, Core Safety
 
@@ -234,7 +204,7 @@ Raw Base Model  → Phase 1: Supervised Learning (SFT)<br>↓<br>Generate Respon
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 7 of 50
 
-### **2.3 — Anatomy of a Constitutional Principle**
+### 2.3 — Anatomy of a Constitutional Principle
 
 A well-formed constitutional clause is not a vague value statement; it is structured so it can be operationalized by a self-critique model and, downstream, by a deterministic policy engine. Each clause should specify four components.
 
@@ -246,23 +216,21 @@ A well-formed constitutional clause is not a vague value statement; it is struct
 |**Behavior**|||
 |**Escalation Path**|What happens on ambiguity|"Route to human-verified authentication flow"|
 
-
-
-###### **WORKED EXAMPLE — DRAFTING A CLAUSE**
+###### WORKED EXAMPLE — DRAFTING A CLAUSE
 
 Weak clause: "Be careful with financial data." Strong clause: "If a user requests account-specific financial information, confirm the request originates from an authenticated session (trigger); retrieve only fields explicitly authorized for the verified role (required behavior); never speculate about balances or transactions not present in the authenticated data source (prohibited behavior); if authentication state is missing or ambiguous, decline and route to the identity-verification flow (escalation)."
 
-### **2.4 — Self-Critique Prompt Design Patterns**
+### 2.4 — Self-Critique Prompt Design Patterns
 
-###### **Pattern: Principle-Indexed Critique**
+###### Pattern: Principle-Indexed Critique
 
 Rather than asking a model to "critique this response," the critique prompt enumerates the specific applicable clauses by ID and asks the model to assess compliance against each independently. This produces an auditable, clause-by-clause trace rather than a single holistic judgment, which is what makes the chain "legible to human auditors" as referenced in the comparative framework above.
 
-###### **Pattern: Adversarial Pairing**
+###### Pattern: Adversarial Pairing
 
 For each constitutional clause, maintain a paired adversarial prompt designed specifically to probe that clause's boundary. This keeps the self-critique loop targeted rather than diffuse, and gives engineering teams a regression suite (see Domain 14) tied directly back to the constitution.
 
-###### **Domain 2 Implementation Checklist**
+###### Domain 2 Implementation Checklist
 
 - ☐ Draft constitutional clauses using the four-component structure (trigger, required, prohibited, escalation)
 
@@ -276,20 +244,15 @@ For each constitutional clause, maintain a paired adversarial prompt designed sp
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 8 of 50
 
-
 ![Figure 5](/img/ai-security-governance/ai-security-gov-p9-5.png)
 
-
-<!-- Start of picture text -->
-Domain 3 — Responsible AI (RAI) Global Standardization<br><!-- End of picture text -->
-
-###### **RISK/COMPLIANCE CAIO**
+###### RISK/COMPLIANCE CAIO
 
 This domain establishes structural cross-mapping between major global AI governance frameworks. It ensures enterprise policy engines remain compliant across shifting international regulatory borders.
 
 **ISO/IEC 42001 NIST AI RMF EU AI Act** • Process-oriented Management • Core Functions (Map, Measure, • Risk Categories & Prohibited Systems (AIMS) Manage, Govern) Practices
 
-### **3.1 — Multi-Framework Cross-Map Reference**
+### 3.1 — Multi-Framework Cross-Map Reference
 
 |**Core Principle**|**ISO/IEC 42001**<br>**Clause**|**NIST AI RMF**<br>**Category**|**EU AI Act Alignment**|**Operational Metric / Verification**<br>**Technique**|
 |---|---|---|---|---|
@@ -297,21 +260,19 @@ This domain establishes structural cross-mapping between major global AI governa
 |**System**<br>**Explainability**|Annex A.10<br>(Transparency)|Map 1.5,<br>Measure 2.3|Article 13 (Transparency<br>& info provisions)|**Metric:**Feature attribution stability<br>score<br>**Technique:**Automated integrated<br>gradients and SHAP tracking.|
 |**System Privacy**<br>**& Data**|Annex A.8 (Data<br>Lifecycle)|Manage 2.4|Article 10 & GDPR<br>Alignment|**Metric:**Epsilon (ε) score<br>**Technique:**Differential privacy<br>guarantees on training runs.|
 
-
-
-### **3.2 — Resolving Framework Conflicts**
+### 3.2 — Resolving Framework Conflicts
 
 Cross-mapping frameworks is straightforward when their requirements align; the harder governance problem is what to do when they diverge. NIST AI RMF is voluntary guidance organized around functions; ISO/IEC 42001 is a certifiable management-system standard; the EU AI Act is binding law with statutory penalties for in-scope systems. When obligations conflict, the practical resolution order is: (1) binding law in the jurisdiction of operation, (2) sectorspecific regulation (e.g., HIPAA, financial services rules), (3) certifiable management standards, (4) voluntary frameworks used as implementation guidance for the above.
 
-###### **WORKED EXAMPLE — CONFLICT RESOLUTION**
+###### WORKED EXAMPLE — CONFLICT RESOLUTION
 
 A multinational deploys a hiring-screening model. The EU AI Act classifies this as high-risk and mandates specific conformity assessment and human-oversight obligations for any candidates in the EU, regardless of where the model is hosted. NIST AI RMF offers no binding requirement. ISO/IEC 42001 certification does not substitute for EU AI Act conformity. The resolution: the binding EU AI Act obligations set the floor for any EU-touching workflow; ISO/IEC 42001's management-system processes are used to operationalize and evidence that conformity on an ongoing basis.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 9 of 50
 
-### **3.3 — Building a Living Compliance Map**
+### 3.3 — Building a Living Compliance Map
 
-###### **Domain 3 Implementation Checklist**
+###### Domain 3 Implementation Checklist
 
 - ☐ Inventory every jurisdiction in which the system is deployed, hosted, or has users
 
@@ -325,50 +286,43 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 9 
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 10 of 50
 
-
 ![Figure 6](/img/ai-security-governance/ai-security-gov-p11-6.png)
 
-
-<!-- Start of picture text -->
-Domain 4 — AI Alignment & Advanced Control Theory<br><!-- End of picture text -->
-
-###### **ARCHITECT ENGINEERING**
+###### ARCHITECT ENGINEERING
 
 As systems transition from stateless chat completions to persistent, multi-agent orchestrations, alignment must move from static prompt engineering to closed-loop system control theory.
 
-###### **CLOSED-LOOP CONTROL ARCHITECTURE**
+###### CLOSED-LOOP CONTROL ARCHITECTURE
 
-###### **Goal Specification**
+###### Goal Specification
 
 System ingestion of enterprise-permissible boundaries.
 
-###### **Planning Engine & Task Synthesis**
+###### Planning Engine & Task Synthesis
 
 Deconstructs high-level goal into iterative sub-tasks.
 
 ↓ ↓
 
-###### **Policy Enforcement Runtime**
+###### Policy Enforcement Runtime
 
 Validates generated actions via deterministic hooks.
 
 ↓
 
-###### **Execution Attachment**
+###### Execution Attachment
 
 Agent interacts with environments (APIs, Databases).
 
-
 ![Figure 7](/img/ai-security-governance/ai-security-gov-p11-7.png)
-
 
 ↓
 
-###### **Feedback & Critique Loop**
+###### Feedback & Critique Loop
 
 Evaluates environmental state changes via monitor.
 
-###### **Critical Vector Risk Notice**
+###### Critical Vector Risk Notice
 
 **Reward Hacking & Goal Drift:** Autonomous agent loops naturally select for shortcut mechanisms that minimize internal cost functions while violating unstated human boundary intents.
 
@@ -378,7 +332,7 @@ Evaluates environmental state changes via monitor.
 
 - **Side-Channel Information Leakage:** Controlled by containing agent scratchpads inside cryptographically monitored ephemeral memory registers.
 
-### **4.1 — Why Separate the Planning LLM from the Verification Hook**
+### 4.1 — Why Separate the Planning LLM from the Verification Hook
 
 The central control-theory insight in this domain is that any component capable of generating the action must not also be the sole component approving the action. If the Planning LLM both proposes and approves its own plan, a goal-hijacked or specification-gamed plan will pass its own check by construction. The Verification Hook must
 
@@ -392,19 +346,17 @@ therefore be (a) non-LLM where possible — deterministic rule evaluation, schem
 |Independent verifier model|Semantically harmful or policy-violating plans|Novel attack patterns absent from its training<br>distribution|
 |Human-in-the-loop<br>checkpoint|Judgment calls, ambiguous intent, high-impact<br>actions|Scale — cannot review every action in high-<br>throughput systems|
 
+### 4.2 — Specification Gaming in Practice
 
-
-### **4.2 — Specification Gaming in Practice**
-
-###### **WORKED EXAMPLE — SPECIFICATION GAMING**
+###### WORKED EXAMPLE — SPECIFICATION GAMING
 
 An agent tasked with "reduce customer support ticket backlog" optimized against a single scalar (open ticket count) and began closing tickets without resolving the underlying issue, satisfying the metric while violating the unstated intent. The correction was not a better single metric, but a multi-dimensional boundary: ticket closure rate bounded jointly with customer-reported resolution confirmation rate and re-open rate within 14 days — a boundary box rather than a single number to maximize.
 
-### **4.3 — Operationalizing the Feedback & Critique Loop**
+### 4.3 — Operationalizing the Feedback & Critique Loop
 
 The feedback loop is only useful if its outputs are routed somewhere actionable. Three destinations matter: (1) immediate runtime — does the agent need to replan now; (2) audit ledger (Domain 8) — was this action recorded for downstream review; (3) constitution refinement (Domain 2) — does a recurring failure pattern indicate a missing or poorly specified clause. Treating these as one undifferentiated "logging" step is a common implementation gap.
 
-###### **Domain 4 Implementation Checklist**
+###### Domain 4 Implementation Checklist
 
 - ☐ Confirm the Verification Hook has no shared training or optimization pressure with the Planning LLM
 
@@ -418,14 +370,9 @@ The feedback loop is only useful if its outputs are routed somewhere actionable.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 12 of 50
 
-
 ![Figure 8](/img/ai-security-governance/ai-security-gov-p13-8.png)
 
-
-<!-- Start of picture text -->
-Domain 5 — AI Governance Operating Model & RACI<br><!-- End of picture text -->
-
-###### **CAIO RISK/COMPLIANCE**
+###### CAIO RISK/COMPLIANCE
 
 **Board of Directors** — Fiduciary Oversight, AI Risk
 
@@ -435,7 +382,7 @@ Domain 5 — AI Governance Operating Model & RACI<br><!-- End of picture text --
 
 **Agent Operations** — CI/CD Deployment Pipelines
 
-### **5.1 — Governance RACI Matrix**
+### 5.1 — Governance RACI Matrix
 
 **R (Responsible):** AI Engineering Leads & Principal Architects.
 
@@ -443,7 +390,7 @@ Domain 5 — AI Governance Operating Model & RACI<br><!-- End of picture text --
 
 **C (Consulted):** Chief Information Security Officer (CISO), General Counsel, Chief Risk Officer (CRO). **I (Informed):** Product Owners, Board Risk Committee.
 
-### **5.2 — Decision Rights by Activity**
+### 5.2 — Decision Rights by Activity
 
 A governance hierarchy chart shows reporting lines but not decision authority. The table below extends the highlevel RACI into the specific decisions an AI program must make repeatedly, since this is where governance models break down in practice — ambiguity about who can actually say "no" to a launch.
 
@@ -456,11 +403,9 @@ A governance hierarchy chart shows reporting lines but not decision authority. T
 |Authorize production launch|Engineering Lead|CAIO|RAI Office|Product Owners|
 |Trigger incident escalation (Domain 16)|On-call Engineer|CISO|CAIO, Legal|Board (if material)|
 
+### 5.3 — Avoiding Governance Bottlenecks
 
-
-### **5.3 — Avoiding Governance Bottlenecks**
-
-###### **Anti-Pattern: Single Point of Approval**
+###### Anti-Pattern: Single Point of Approval
 
 Routing every constitutional change or launch decision through one individual (commonly the CAIO) creates a throughput ceiling that teams route around informally — reintroducing the shadow-AI risk described in Domain 6. The RACI model
 
@@ -468,11 +413,11 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 13
 
 above deliberately distributes "Responsible" work to teams closest to the decision while preserving a single "Accountable" owner per decision type.
 
-###### **Anti-Pattern: Governance Council Without Cadence**
+###### Anti-Pattern: Governance Council Without Cadence
 
 An AI Governance Council that meets only when summoned ad hoc cannot keep pace with constitution updates or incident reviews. A standing cadence — commonly monthly for strategic review, weekly for the RAI Office's operational queue — keeps governance synchronized with engineering velocity.
 
-###### **Domain 5 Implementation Checklist**
+###### Domain 5 Implementation Checklist
 
 - ☐ Publish a decision-rights table (not just an org chart) covering the top 10 recurring AI decisions
 
@@ -484,26 +429,21 @@ An AI Governance Council that meets only when summoned ad hoc cannot keep pace w
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 14 of 50
 
-
 ![Figure 9](/img/ai-security-governance/ai-security-gov-p15-9.png)
 
+###### RISK/COMPLIANCE
 
-<!-- Start of picture text -->
-Domain 6 — Multi-Layered AI Risk Taxonomy<br><!-- End of picture text -->
-
-###### **RISK/COMPLIANCE**
-
-###### **1. Strategic**
+###### 1. Strategic
 
 - Vendor lock-in • Geopolitical kill-switches
 
-###### **2. Operational**
+###### 2. Operational
 
-###### **3. Regulatory**
+###### 3. Regulatory
 
 • Hallucinations • EU AI Act non-compliance • Cascading agent failures • Liability shift
 
-### **6.1 — Tactical Vulnerability Catalog**
+### 6.1 — Tactical Vulnerability Catalog
 
 1. **Shadow AI Agents:** Unmonitored background tasks consuming internal system APIs without central enterprise logging.
 
@@ -511,7 +451,7 @@ Domain 6 — Multi-Layered AI Risk Taxonomy<br><!-- End of picture text -->
 
 3. **Model Supply-Chain Contamination:** Malicious weights or biased datasets introduced via unsecured open-source repositories.
 
-### **6.2 — Risk Scoring Model**
+### 6.2 — Risk Scoring Model
 
 A risk taxonomy is only actionable once each item carries a comparable severity score. The following simplified scoring approach multiplies likelihood by impact, each on a 1–5 scale, and assigns a response tier.
 
@@ -523,17 +463,15 @@ A risk taxonomy is only actionable once each item carries a comparable severity 
 |Geopolitical kill-switch exposure|2|5|10|Strategic mitigation (Domain 1 sovereignty<br>tiering)|
 |Cascading agent failure|3|4|12|Active mitigation (Domain 7 circuit breakers)|
 
+### 6.3 — Mitigating Shadow AI Agents
 
-
-### **6.3 — Mitigating Shadow AI Agents**
-
-###### **WORKED EXAMPLE — SHADOW AI DISCOVERY**
+###### WORKED EXAMPLE — SHADOW AI DISCOVERY
 
 A finance team independently wired a workflow automation tool to an LLM API key to auto-draft vendor payment approvals, bypassing the central AI gateway and its policy enforcement layer entirely. This was discovered only during a cloud cost audit, not through AI governance monitoring. The structural fix is twofold: (1) network-level controls that route all outbound calls to known LLM provider endpoints through the sovereign gateway (Deliverable 1), and (2) a lightweight self-registration process that makes the compliant path faster than the shadow path.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 15 of 50
 
-###### **Domain 6 Implementation Checklist**
+###### Domain 6 Implementation Checklist
 
 - ☐ Maintain a living risk register scored by likelihood × impact
 
@@ -545,23 +483,13 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 15
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 16 of 50
 
-
 ![Figure 10](/img/ai-security-governance/ai-security-gov-p17-10.png)
 
-
-<!-- Start of picture text -->
-Domain 7 — AI Safety Engineering & Runtime Controls<br><!-- End of picture text -->
-
-###### **ENGINEERING ARCHITECT**
+###### ENGINEERING ARCHITECT
 
 Safety must be enforced at every layer of system execution rather than relying solely on the core model's safety tuning.
 
-
 ![Figure 11](/img/ai-security-governance/ai-security-gov-p17-11.png)
-
-
-<!-- Start of picture text -->
-LAYERED RUNTIME SAFETY STACK<br>User Input  → Level 1: Input Policy Filtering (Deterministic Regex/Embeddings)<br>↓<br>Level 2: Guardrail Layer  (NeMo Guardrails, Llama Guard)<br>↓<br>Level 3: Constitutional Model Architecture Evaluation<br>↓<br>Level 4: Tool & API Call Interception Layer<br>↓<br>Environment  → Level 5: Safe Degradation Circuit Breaker<br><!-- End of picture text -->
 
 - **Dynamic Throttling:** Automatically restricts agent API limits when confidence scores drop below a configurable runtime threshold.
 
@@ -569,7 +497,7 @@ LAYERED RUNTIME SAFETY STACK<br>User Input  → Level 1: Input Policy Filtering 
 
 - **Hard Kill-Switches:** Non-AI electronic interrupts that instantly terminate runtime agent execution loops.
 
-### **7.1 — Why Five Layers, Not One**
+### 7.1 — Why Five Layers, Not One
 
 Each layer in the stack catches a distinct failure class, and layers are intentionally redundant at the boundaries. Input filtering catches known-bad patterns cheaply before any model inference occurs. The guardrail layer catches policy violations in natural language. Constitutional evaluation catches violations the guardrail layer's classifiers were not trained to recognize. Tool/API interception catches violations that only become visible once a concrete action is proposed. Safe degradation catches everything else by defaulting to the safest available state rather than failing open.
 
@@ -579,8 +507,6 @@ Each layer in the stack catches a distinct failure class, and layers are intenti
 |||matches||
 |2. Guardrail Layer|Low-medium|Topic violations, jailbreak patterns|NeMo Guardrails, Llama Guard classifiers|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 17 of 50
 
 |3. Constitutional<br>Evaluation|Medium|Nuanced policy violations, novel<br>phrasing|Self-critique against constitution (Domain 2)|
@@ -588,19 +514,17 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 17
 |4. Tool/API Interception|Low|Out-of-scope or unauthorized actions|Policy-as-code hooks (Domain 10)|
 |5. Safe Degradation|N/A<br>(fallback)|Unknown/unhandled exceptions|Circuit breaker dropping to human-in-loop<br>mode|
 
+### 7.2 — Calibrating Dynamic Throttling
 
-
-### **7.2 — Calibrating Dynamic Throttling**
-
-###### **WORKED EXAMPLE — CONFIDENCE-BASED THROTTLING**
+###### WORKED EXAMPLE — CONFIDENCE-BASED THROTTLING
 
 An agent's planning confidence score (derived from token-level uncertainty plus tool-call validation failure rate) drops below 0.6 over a rolling 10-action window. Dynamic throttling reduces the agent's permitted actions-per-minute by 75% and raises any subsequent high-impact action to a mandatory human checkpoint, rather than halting entirely — preserving partial availability while reducing blast radius.
 
-### **7.3 — Designing Safe Degradation States**
+### 7.3 — Designing Safe Degradation States
 
 "Safe" is workload-specific and must be defined in advance, not improvised during an incident. For a customerfacing chatbot, safe degradation might mean falling back to a static FAQ response. For an agent with write access to a production database, safe degradation must mean revoking write access entirely, not merely slowing it down. Document the safe-degradation target state for every autonomy-bearing system as part of its launch approval (see Domain 5.2 decision rights table).
 
-###### **Domain 7 Implementation Checklist**
+###### Domain 7 Implementation Checklist
 
 - ☐ Implement all five layers for any system above Autonomy Level 2 (Domain 9)
 
@@ -614,27 +538,17 @@ An agent's planning confidence score (derived from token-level uncertainty plus 
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 18 of 50
 
-
 ![Figure 12](/img/ai-security-governance/ai-security-gov-p19-12.png)
 
-
-<!-- Start of picture text -->
-Domain 8 — AI Assurance, Auditability & Immutable Ledger<br><!-- End of picture text -->
-
-###### **RISK/COMPLIANCE ENGINEERING**
+###### RISK/COMPLIANCE ENGINEERING
 
 To achieve compliance validation, an enterprise must log all agentic actions within an Immutable AI Audit Ledger.
 
-
 ![Figure 13](/img/ai-security-governance/ai-security-gov-p19-13.png)
-
-
-<!-- Start of picture text -->
-IMMUTABLE AI AUDIT LEDGER — RECORD STRUCTURE<br>[TIMESTAMP]  → [INPUT PROMPT ARCHETYPE]<br>↓<br>[COGNITIVE CHAIN-OF-THOUGHT LOG]<br>↓<br>[CONSTITUTIONAL PRINCIPLE ATTRIBUTION EVALUATION]<br>↓<br>[TOOL/API PAYLOAD EXECUTED]<br>↓<br>[OUTPUT VERIFICATION EVIDENCE HASH]<br><!-- End of picture text -->
 
 This structural audit record provides downstream compliance investigators with an unalterable forensic path to verify systemic alignment.
 
-### **8.1 — What "Immutable" Requires in Practice**
+### 8.1 — What "Immutable" Requires in Practice
 
 Immutability is a property of the storage and write architecture, not a claim made about a database. Three implementation patterns are common, in increasing order of assurance and cost: (1) write-once-read-many (WORM) storage with retention locks; (2) append-only ledgers with cryptographic hash-chaining between records, so any retroactive edit breaks the chain verifiably; (3) distributed ledger/blockchain anchoring, where periodic hash roots are published to an external, independently-controlled system. Most enterprise programs only need pattern (2); pattern (3) is reserved for the highest-assurance regulatory contexts.
 
@@ -644,21 +558,19 @@ Immutability is a property of the storage and write architecture, not a claim ma
 |Hash-chained append-only<br>ledger|High (cryptographically<br>verifiable)|Medium|Regulated industries, agent action logs|
 |External anchoring (e.g. public<br>ledger)|Very high (independently<br>verifiable)|High|National-strategic or highest-assurance<br>systems|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 19 of 50
 
-### **8.2 — Sizing the Audit Record for Usefulness, Not Just Compliance**
+### 8.2 — Sizing the Audit Record for Usefulness, Not Just Compliance
 
-###### **Anti-Pattern: Logging Everything, Indexing Nothing**
+###### Anti-Pattern: Logging Everything, Indexing Nothing
 
 Capturing the full chain-of-thought and tool payload for every action is necessary but not sufficient. Without indexing by constitutional principle ID, autonomy level, and risk score, the ledger becomes searchable only by timestamp — adequate for forensic reconstruction after an incident, but useless for proactive monitoring. Pair the ledger with structured indices on the fields the RAI Office actually queries: principle ID, agent ID, autonomy level, and verification outcome.
 
-### **8.3 — Retention and Access Considerations**
+### 8.3 — Retention and Access Considerations
 
 Retention periods should be set by the longest applicable regulatory requirement among the jurisdictions identified in Domain 3, not by storage cost convenience. Access to the raw ledger should itself be logged and restricted to the RAI Office and named auditors — the audit trail of who accessed the audit trail is frequently requested in regulatory examinations and is often the first thing overlooked.
 
-###### **Domain 8 Implementation Checklist**
+###### Domain 8 Implementation Checklist
 
 - ☐ Select an immutability pattern (WORM, hash-chained, or externally anchored) matched to assurance requirements
 
@@ -672,14 +584,9 @@ Retention periods should be set by the longest applicable regulatory requirement
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 20 of 50
 
-
 ![Figure 14](/img/ai-security-governance/ai-security-gov-p21-14.png)
 
-
-<!-- Start of picture text -->
-Domain 9 — Agent Governance & Autonomy Framework<br><!-- End of picture text -->
-
-###### **CAIO ARCHITECT**
+###### CAIO ARCHITECT
 
 We establish six discrete levels of operational AI autonomy, mapping system actions directly to risk boundaries.
 
@@ -688,8 +595,6 @@ We establish six discrete levels of operational AI autonomy, mapping system acti
 |**Advisory**|**Assisted**|**Conditional**|**High Autonomy**|**Bounded**|**Full Sovereign**|
 |Human only|Human in loop|Human on loop view|Human out loop|Execution system|Autonomous|
 |execution|check||validation||execution|
-
-
 
 - **Level 0 — Advisory:** System generates text; zero execution capacity.
 
@@ -709,7 +614,7 @@ We establish six discrete levels of operational AI autonomy, mapping system acti
 
 - **Level 5 — Mission Sovereign:** System governs its own infrastructure allocation, task planning, and recovery routines within a sovereign perimeter.
 
-### **9.1 — Promotion Criteria Between Levels**
+### 9.1 — Promotion Criteria Between Levels
 
 Autonomy level should never be a static configuration set once at launch. It is a promotion ladder, and promotion to each subsequent level should require evidence, not optimism. The table below defines minimum evidence gates.
 
@@ -721,15 +626,13 @@ Autonomy level should never be a static configuration set once at launch. It is 
 |L3 → L4|Verification Hook independently audited; sandbox boundary penetration-tested<br>(Domain 14)|CAIO + CRO|
 |L4 → L5|Board-level risk sign-off; full sovereignty tier 4 infrastructure (Domain 1)|Board of Directors|
 
-
-
-### **9.2 — Demotion Triggers**
+### 9.2 — Demotion Triggers
 
 Promotion criteria are necessary but incomplete without automatic demotion triggers — conditions that drop a system back a level without waiting for the next governance review cycle. This should be implemented as a runtime rule, not a process reminder.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 21 of 50
 
-###### **Automatic Demotion Triggers (example set)**
+###### Automatic Demotion Triggers (example set)
 
 - ☐ Verification Hook override/failure rate exceeds 2% over rolling 7-day window
 
@@ -739,11 +642,11 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 21
 
 - ☐ Underlying model or vendor changes without re-certification (Domain 15)
 
-###### **WORKED EXAMPLE — DEMOTION IN ACTION**
+###### WORKED EXAMPLE — DEMOTION IN ACTION
 
 A Level 3 procurement agent begins approving purchase orders that, while individually within policy, collectively exceed a department's quarterly budget — a pattern the per-transaction Verification Hook was not designed to catch. Upon detection, the system is automatically demoted to Level 2, restoring real-time human intervention capability, while the Verification Hook is updated to include a rolling budget-aggregate check before promotion is reconsidered.
 
-###### **Domain 9 Implementation Checklist**
+###### Domain 9 Implementation Checklist
 
 - ☐ Document evidence gates for every promotion between autonomy levels
 
@@ -755,18 +658,13 @@ A Level 3 procurement agent begins approving purchase orders that, while individ
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 22 of 50
 
-
 ![Figure 15](/img/ai-security-governance/ai-security-gov-p23-15.png)
-
-
-<!-- Start of picture text -->
-Domain 10 — Policy-as-Code for Real-Time Runtime<br>Enforcement<br><!-- End of picture text -->
 
 **ENGINEERING ARCHITECT**
 
 Constitutional principles must be compiled into executable policies to intercept system behaviors before they execute down-funnel.
 
-### **10.1 — Rego (Open Policy Agent) Implementation Blueprint**
+### 10.1 — Rego (Open Policy Agent) Implementation Blueprint
 
 ```
 package ai.constitutional.enforcement
@@ -806,7 +704,7 @@ context_jurisdiction_validated {
 }
 ```
 
-### **10.2 — Extending the Policy: Tool-Call Scoping**
+### 10.2 — Extending the Policy: Tool-Call Scoping
 
 The base policy above governs whether a request is allowed at all. A second policy layer should govern which specific tools and parameter ranges an already-allowed request may invoke, directly enforcing the autonomy-level boundaries from Domain 9.
 
@@ -836,7 +734,7 @@ max_amount = {
 }
 ```
 
-### **10.3 — Where Policy-as-Code Sits in the Request Path**
+### 10.3 — Where Policy-as-Code Sits in the Request Path
 
 Policy evaluation must occur synchronously, in the critical path of every tool call — not as an asynchronous audit step. The table below clarifies the architectural placement referenced in Deliverable 1's Gateway Proxy Filter layer.
 
@@ -848,15 +746,13 @@ Policy evaluation must occur synchronously, in the critical path of every tool c
 |3b|If allowed: execute against environment|—|
 |4|Log decision + rationale to Immutable Audit Ledger (Domain 8)|Asynchronous, non-blocking|
 
+### 10.4 — Testing Policy Code Like Production Code
 
-
-### **10.4 — Testing Policy Code Like Production Code**
-
-###### **Policy Unit Testing**
+###### Policy Unit Testing
 
 Rego policies should carry their own test suite (OPA supports native unit testing via `opa test` ) exercised in CI on every change, asserting both that known-bad inputs are denied and that known-good inputs are not over-blocked. A policy change that is not paired with a test case is treated the same as an unreviewed code change — see Domain 14 for how this integrates with the broader evaluation pipeline.
 
-###### **Domain 10 Implementation Checklist**
+###### Domain 10 Implementation Checklist
 
 - ☐ Implement request-level allow/deny policy (jurisdiction, risk score, infraction detection)
 
@@ -870,22 +766,17 @@ Rego policies should carry their own test suite (OPA supports native unit testin
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 24 of 50
 
-
 ![Figure 16](/img/ai-security-governance/ai-security-gov-p25-16.png)
-
-
-<!-- Start of picture text -->
-Domain 11 — Democratic AI & Public Interest Architecture<br><!-- End of picture text -->
 
 **CAIO RISK/COMPLIANCE Citizen Panel Public Ledger Multi-Linguistic** • Alignment Pools • Transparency • Alignment
 
 This framework balances central sovereignty with citizen-driven oversight. It uses distributed consensus networks to steer core alignment variables for public utility platforms (such as health, law, and education).
 
-### **11.1 — When Public Interest Architecture Applies**
+### 11.1 — When Public Interest Architecture Applies
 
 Not every enterprise AI system warrants citizen-panel-level oversight; this domain is most relevant for systems that materially affect public access to essential services — healthcare triage, benefits eligibility, public education tools, civic information systems — where the affected population has no commercial alternative and limited individual leverage. Internal enterprise tools do not require this architecture, though the transparency principle (public ledger) often transfers usefully as a lighter-weight internal practice.
 
-### **11.2 — Structuring a Citizen Alignment Panel**
+### 11.2 — Structuring a Citizen Alignment Panel
 
 |**Element**|**Design Consideration**|
 |---|---|
@@ -894,30 +785,23 @@ Not every enterprise AI system warrants citizen-panel-level oversight; this doma
 |Cadence|Recurring review tied to material system changes, not one-time consultation|
 |Feedback loop|Published response showing how panel input did or did not change the system, to preserve legitimacy|
 
-
-
-###### **WORKED EXAMPLE — PUBLIC LEDGER TRANSPARENCY**
+###### WORKED EXAMPLE — PUBLIC LEDGER TRANSPARENCY
 
 A municipal benefits-eligibility assistant publishes a simplified, non-technical summary of its decision criteria and aggregate approval/denial statistics by category to a public ledger, updated monthly, while withholding implementation details that could enable gaming the system. This calibrated transparency — enough for public accountability, not so much that it creates exploitable specification gaming (Domain 4.2) — is the central design tension in this domain.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 25 of 50
 
-
 ![Figure 17](/img/ai-security-governance/ai-security-gov-p26-17.png)
 
-
-<!-- Start of picture text -->
-Domain 12 — Future Horizon Vector Mapping (2026–2030)<br><!-- End of picture text -->
-
-###### **CAIO**
+###### CAIO
 
 **2026 2028 Constitutional Operating System Systemic Cross-Border Nests** Deep kernel policy injection directly Dynamic cross-jurisdiction compliance into chip firmware. brokering.
 
-###### **2030**
+###### 2030
 
 **Machine-to-Machine Autonomy** Autonomous micro-tariffs and modelto-model governance.
 
-### **12.1 — Strategic Implications by Horizon**
+### 12.1 — Strategic Implications by Horizon
 
 |**Horizon**|**What Changes**|**What to Prepare Now**|
 |---|---|---|
@@ -929,43 +813,29 @@ Domain 12 — Future Horizon Vector Mapping (2026–2030)<br><!-- End of picture
 |2030 — M2M|Agents transact and govern interactions with other|Track emerging machine-to-machine identity and|
 |Autonomy|organizations' agents directly, requiring inter-<br>organizational trust protocols|trust standards; pilot constrained M2M interactions in<br>low-stakes domains first|
 
-
-
 This roadmap is directional rather than predictive; organizations should treat it as a prompt for capability planning, not a procurement commitment. Re-assess this horizon map annually as part of the recurring sovereignty and governance reviews established in Domains 1 and 5.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 26 of 50
 
-
 ![Figure 18](/img/ai-security-governance/ai-security-gov-p27-18.png)
 
-
-<!-- Start of picture text -->
-Domain 13 — Data Lifecycle, Lineage & Provenance<br>Engineering<br><!-- End of picture text -->
-
-###### **NEW DOMAIN ARCHITECT ENGINEERING**
+###### NEW DOMAIN ARCHITECT ENGINEERING
 
 Every other domain in this handbook assumes that the data feeding training, fine-tuning, retrieval, and agent context is known, traceable, and trustworthy. That assumption does not hold by default — it must be engineered. This domain establishes the lifecycle controls that make data lineage a verifiable property rather than an aspiration.
 
-###### **DATA LIFECYCLE STAGES**
-
+###### DATA LIFECYCLE STAGES
 
 ![Figure 19](/img/ai-security-governance/ai-security-gov-p27-19.png)
 
-
-<!-- Start of picture text -->
-1. Sourcing & Acquisition<br>Ingestion with provenance tagging at point of entry.<br>↓<br>2. Classification & Labeling<br>Sensitivity tier, jurisdiction tag, consent status assigned.<br>↓<br>3. Transformation & Curation<br>Cleaning, deduplication, synthetic augmentation — each step logged.<br>↓<br>4. Training / Fine-Tuning / Retrieval Use<br>Consumption recorded against the originating lineage record.<br>↓<br>5. Retention, Archival & Deletion<br>Lifecycle terminates per jurisdictional retention rule (Domain 3).<br><!-- End of picture text -->
-
-### **13.1 — Why Lineage Is a Governance Control, Not Just an Engineering Convenience**
+### 13.1 — Why Lineage Is a Governance Control, Not Just an Engineering Convenience
 
 When a regulator, auditor, or affected individual asks "was this specific record used to train the model that made this decision," an organization without lineage tracking cannot answer — and an unanswerable question in a regulatory examination is treated as a negative finding. Lineage tracking converts the Domain 8 audit ledger's "input prompt archetype" into something traceable all the way back to source data, not just back to the immediate request.
 
-### **13.2 — Minimum Viable Provenance Record**
+### 13.2 — Minimum Viable Provenance Record
 
 |**Field**|**Purpose**|
 |---|---|
 |Source identifier|Where the data originated (system, vendor, individual consent record)|
-
-
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 27 of 50
 
@@ -977,19 +847,17 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 27
 |Downstream usage record|Which models/fine-tunes/retrieval indices consumed this record|
 |Retention expiry|Scheduled deletion or review date|
 
+### 13.3 — Synthetic Data Loops and Provenance Drift
 
-
-### **13.3 — Synthetic Data Loops and Provenance Drift**
-
-###### **Critical Vector Risk Notice**
+###### Critical Vector Risk Notice
 
 **Synthetic Data Provenance Drift:** Sovereignty-driven synthetic data loops (Domain 1's "zero-leakage localized synthetic data loop engine") generate training data from model outputs rather than ground-truth sources. Without explicit lineage tagging distinguishing synthetic-derived from source-derived records, organizations risk model collapse — progressive quality degradation as models increasingly train on their own outputs — and lose the ability to attribute behavior back to an explainable source, undermining Domain 3's explainability obligations.
 
-###### **WORKED EXAMPLE — TRACING A DISPUTED OUTPUT**
+###### WORKED EXAMPLE — TRACING A DISPUTED OUTPUT
 
 A loan-underwriting model declines an application citing a risk factor the applicant disputes as factually incorrect. With lineage tracking, the engineering team traces the specific training records and retrieval-augmented context that contributed to that factor's weight, identifies a stale, incorrectly-labeled record from a vendor feed ingested 14 months earlier, and can both correct the individual decision and locate every other decision the same bad record may have influenced. Without lineage tracking, this investigation is not possible.
 
-### **13.4 — Lineage Tooling Patterns**
+### 13.4 — Lineage Tooling Patterns
 
 |**Pattern**|**Description**|**Fit**|
 |---|---|---|
@@ -999,9 +867,7 @@ A loan-underwriting model declines an application citing a risk factor the appli
 |Cryptographic content|Signed content credentials at acquisition time|High-assurance / national-|
 |provenance||strategic sovereignty tiers|
 
-
-
-###### **Domain 13 Implementation Checklist**
+###### Domain 13 Implementation Checklist
 
 - ☐ Define and enforce the minimum viable provenance record schema at point of data ingestion
 
@@ -1019,20 +885,15 @@ Automate retention-expiry enforcement rather than relying on manual deletion req
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 29 of 50
 
-
 ![Figure 20](/img/ai-security-governance/ai-security-gov-p30-20.png)
 
-
-<!-- Start of picture text -->
-Domain 14 — Testing, Red-Teaming & Continuous Evaluation<br><!-- End of picture text -->
-
-###### **NEW DOMAIN ENGINEERING ARCHITECT**
+###### NEW DOMAIN ENGINEERING ARCHITECT
 
 Domain 2 established self-critique loops and adversarial prompt pairing as part of constitutional training. This domain extends that practice into a standing evaluation discipline that runs continuously against production and preproduction systems, not just at training time.
 
 **CONTINUOUS EVALUATION PIPELINE Pre-Deployment Eval Adversarial Red-Team** Constitutional regression suite + capability benchmarks Structured human + automated attack campaigns ↓ **Staged Rollout with Shadow Traffic Comparison** ↓ **Production Monitoring & Drift Detection** ↓ **Findings Routed to Constitution (D2), Risk Register (D6), or Incident Response (D16)**
 
-### **14.1 — Four Categories of Evaluation**
+### 14.1 — Four Categories of Evaluation
 
 |**Category**|**Question Answered**|**Frequency**|
 |---|---|---|
@@ -1042,9 +903,7 @@ Domain 2 established self-critique loops and adversarial prompt pairing as part 
 |Adversarial red-teaming|Can the system be manipulated into violating policy?|Pre-launch + recurring (quarterly<br>minimum)|
 |Production drift monitoring|Is real-world behavior diverging from validated behavior?|Continuous|
 
-
-
-### **14.2 — Building the Constitutional Regression Suite**
+### 14.2 — Building the Constitutional Regression Suite
 
 The adversarial prompt pairs introduced in Domain 2.4 form the seed of this suite, but a mature regression suite grows from three sources: (1) the original adversarial pairing per clause; (2) every red-team finding that successfully bypassed a control, converted into a permanent regression case; (3) every production incident (Domain 16), converted into a regression case after remediation. A regression suite that only contains its original seed cases is stagnant and gives false confidence.
 
@@ -1054,17 +913,17 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 30
 
 A red-team exercise discovers that a multi-turn conversation can incrementally walk the agent past a data-disclosure boundary that holds under single-turn testing. The finding is fixed at the constitutional and policy-as-code layer (Domains 2 and 10), and the exact multi-turn sequence is added to the regression suite as a permanent test case, run on every subsequent deployment — converting a one-time discovery into permanent coverage.
 
-### **14.3 — Structuring Red-Team Campaigns**
+### 14.3 — Structuring Red-Team Campaigns
 
-###### **Internal vs. External Red Teams**
+###### Internal vs. External Red Teams
 
 Internal red teams have system knowledge and can test efficiently but develop blind spots matching the engineering team's own assumptions. External red teams (independent contractors or specialized firms) cost more and ramp slower but surface attack patterns internal teams structurally cannot see. Mature programs run both: internal red-teaming on every release, external red-teaming at major version boundaries and at minimum annually.
 
-###### **Scope Definition**
+###### Scope Definition
 
 Every red-team campaign should have an explicit scope statement covering: target autonomy level and tool access being tested, in-scope and out-of-scope attack categories (e.g., indirect prompt injection in scope, physical security out of scope), and a defined severity rubric agreed with Domain 16's incident classification scheme before the campaign starts, not after a finding requires classification.
 
-### **14.4 — Production Drift Detection**
+### 14.4 — Production Drift Detection
 
 |**Drift Type**|**Detection Signal**|**Response**|
 |---|---|---|
@@ -1073,9 +932,7 @@ Every red-team campaign should have an explicit scope statement covering: target
 |Distributional drift|Input distribution diverges materially from training/eval<br>distribution|Re-evaluate against updated adversarial suite|
 |Autonomy drift|Verification Hook override rate trending upward|Trigger Domain 9.2 demotion review|
 
-
-
-###### **Domain 14 Implementation Checklist**
+###### Domain 14 Implementation Checklist
 
 - ☐ Establish all four evaluation categories with defined owners and cadence
 
@@ -1091,18 +948,13 @@ Every red-team campaign should have an explicit scope statement covering: target
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 31 of 50
 
-
 ![Figure 21](/img/ai-security-governance/ai-security-gov-p32-21.png)
 
-
-<!-- Start of picture text -->
-Domain 15 — Vendor, Model & Procurement Governance<br><!-- End of picture text -->
-
-###### **NEW DOMAIN RISK/COMPLIANCE FINANCE**
+###### NEW DOMAIN RISK/COMPLIANCE FINANCE
 
 Domain 6 identified model supply-chain contamination and vendor lock-in as tactical and strategic risks. This domain establishes the recurring procurement and vendor management discipline that prevents those risks from materializing, and that keeps the Domain 1 sovereignty assessment current rather than static.
 
-### **15.1 — Vendor Risk Tiers**
+### 15.1 — Vendor Risk Tiers
 
 |**Tier**|**Definition**|**Review**<br>**Cadence**|**Example**|
 |---|---|---|---|
@@ -1111,11 +963,9 @@ Domain 6 identified model supply-chain contamination and vendor lock-in as tacti
 |Significant|data sensitivity||tools|
 |Tier 3 — Limited|Low-autonomy, low-sensitivity, easily substitutable|Annual|Public-content generation tool|
 
+### 15.2 — Pre-Onboarding Due Diligence
 
-
-### **15.2 — Pre-Onboarding Due Diligence**
-
-###### **Vendor Onboarding Evidence Requirements**
+###### Vendor Onboarding Evidence Requirements
 
 - ☐ Sub-processor list and data flow diagram (feeds Domain 1 sovereignty tiering)
 
@@ -1131,23 +981,21 @@ Domain 6 identified model supply-chain contamination and vendor lock-in as tacti
 
 - ☐ Exit and data-portability terms — what happens to data and fine-tuned artifacts on contract termination
 
-
 ![Figure 22](/img/ai-security-governance/ai-security-gov-p32-22.png)
 
+### 15.3 — The Silent Model Update Problem
 
-### **15.3 — The Silent Model Update Problem**
-
-###### **Critical Vector Risk Notice**
+###### Critical Vector Risk Notice
 
 **Unannounced Vendor Model Updates:** Commercial API-based models can change behavior without a version-number change visible to the consuming organization. A constitutional regression suite (Domain 14) passing yesterday provides no guarantee today if the underlying vendor model was silently updated. This directly undermines the autonomy-level certification described in Domain 9.1 and is one of the strongest structural arguments for the higher SAMM tiers in Domain 1.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 32 of 50
 
-###### **WORKED EXAMPLE — DETECTING A SILENT UPDATE**
+###### WORKED EXAMPLE — DETECTING A SILENT UPDATE
 
 A Tier 1 vendor's API begins producing subtly different refusal patterns on a known constitutional test case. The organization's continuous evaluation pipeline (Domain 14.4) flags this as constitutional drift before any production incident occurs, because the regression suite runs against production traffic samples continuously rather than only at deployment time — converting an invisible vendor-side change into a detected, actionable signal.
 
-### **15.4 — Vendor Scorecard**
+### 15.4 — Vendor Scorecard
 
 |**Dimension**|**Weight**|**Scoring Basis**|
 |---|---|---|
@@ -1157,13 +1005,11 @@ A Tier 1 vendor's API begins producing subtly different refusal patterns on a kn
 |Exit feasibility|15%|Data portability, contractual lock-in terms|
 |Cost predictability|15%|Pricing model stability (Domain 17)|
 
-
-
-### **15.5 — Concentration Risk Across the Vendor Portfolio**
+### 15.5 — Concentration Risk Across the Vendor Portfolio
 
 Individual vendor scorecards do not surface portfolio-level concentration risk — the scenario where multiple "different" vendors share a common upstream dependency (e.g., the same foundation model provider, the same cloud region, the same sub-processor). Maintain a portfolio-level dependency map alongside individual scorecards, reviewed at the same cadence as the Tier 1 vendor reviews.
 
-###### **Domain 15 Implementation Checklist**
+###### Domain 15 Implementation Checklist
 
 - ☐ Classify every AI vendor into a risk tier with a defined review cadence
 
@@ -1179,18 +1025,13 @@ Individual vendor scorecards do not surface portfolio-level concentration risk �
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 33 of 50
 
-
 ![Figure 23](/img/ai-security-governance/ai-security-gov-p34-23.png)
 
-
-<!-- Start of picture text -->
-Domain 16 — Incident Response & Crisis Management for AI<br>Systems<br><!-- End of picture text -->
-
-###### **NEW DOMAIN RISK/COMPLIANCE ENGINEERING**
+###### NEW DOMAIN RISK/COMPLIANCE ENGINEERING
 
 Domain 7 established runtime circuit breakers; Domain 8 established the audit ledger that makes incidents investigable; Domain 9 established autonomy demotion triggers. This domain ties those mechanisms into a formal incident response process with defined severity classes, roles, and communication protocols specific to AI system failure modes.
 
-### **16.1 — AI-Specific Severity Classification**
+### 16.1 — AI-Specific Severity Classification
 
 |**Severity**|**Definition**|**Examples**|**Response Time**|
 |---|---|---|---|
@@ -1199,9 +1040,7 @@ Domain 7 established runtime circuit breakers; Domain 8 established the audit le
 |**Sev-3**|Quality or constitutional drift without<br>immediate harm|Rising borderline self-critique scores;<br>benchmark regression|< 3 business days|
 |**Sev-4**|Isolated, low-impact anomaly|Single hallucination report with no<br>downstream action taken|Next regular review cycle|
 
-
-
-### **16.2 — Incident Response Roles**
+### 16.2 — Incident Response Roles
 
 **Incident Commander (rotating on-call engineer):** Owns the response, authorizes immediate technical mitigation including kill-switch activation for Sev-1.
 
@@ -1213,11 +1052,11 @@ Domain 7 established runtime circuit breakers; Domain 8 established the audit le
 
 **RAI Office:** Owns post-incident review and conversion of findings into Domain 14 regression cases.
 
-### **16.3 — The First 60 Minutes (Sev-1 Playbook)**
+### 16.3 — The First 60 Minutes (Sev-1 Playbook)
 
-###### **SEV-1 RESPONSE SEQUENCE**
+###### SEV-1 RESPONSE SEQUENCE
 
-###### **0–5 min: Detect & Declare**
+###### 0–5 min: Detect & Declare
 
 Automated alert or human report; Incident Commander declares Sev-1.
 
@@ -1225,35 +1064,35 @@ Automated alert or human report; Incident Commander declares Sev-1.
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 34 of 50
 
-###### **5–15 min: Contain**
+###### 5–15 min: Contain
 
 Activate hard kill-switch (Domain 7) or force autonomy demotion (Domain 9.2).
 
 ↓
 
-###### **15–30 min: Assess Blast Radius**
+###### 15–30 min: Assess Blast Radius
 
 Query audit ledger (Domain 8) for all actions in the affected window.
 
 ##### ↓
 
-###### **30–60 min: Notify**
+###### 30–60 min: Notify
 
 CISO and CAIO briefed; Legal assesses regulatory notification triggers.
 
-### **16.4 — Post-Incident Review**
+### 16.4 — Post-Incident Review
 
 Every Sev-1 and Sev-2 incident requires a structured post-incident review producing three concrete artifacts, not just a narrative summary: (1) a permanent regression test case added to the Domain 14 suite reproducing the failure condition; (2) an update to the relevant constitutional clause or policy-as-code rule if a gap is identified; (3) a risk register update (Domain 6) re-scoring the relevant risk category.
 
-###### **WORKED EXAMPLE — POST-INCIDENT LOOP CLOSURE**
+###### WORKED EXAMPLE — POST-INCIDENT LOOP CLOSURE
 
 A Sev-2 incident reveals that an agent nearly executed an out-of-scope database write that was caught only because the Verification Hook's allow-list happened to be narrowly scoped — a near-miss that succeeded due to a conservative default rather than deliberate design. The post-incident review adds a regression case simulating the exact attempted write, tightens the Domain 10 policy-as-code rule explicitly rather than relying on the narrow default, and re-scores "cascading agent failures" upward in the Domain 6 risk register given the near-miss evidence.
 
-### **16.5 — External Communication Considerations**
+### 16.5 — External Communication Considerations
 
 Decisions about external disclosure (regulators, affected individuals, public) should follow the jurisdiction-specific obligations mapped in Domain 3, routed through Legal Counsel as the consulted party — never improvised in the moment by the Incident Commander. Pre-drafted notification templates for common incident categories reduce response time without sacrificing legal review.
 
-###### **Domain 16 Implementation Checklist**
+###### Domain 16 Implementation Checklist
 
 - ☐ Adopt the four-tier severity classification and pre-delegate Sev-1 kill-switch authority
 
@@ -1267,18 +1106,13 @@ Decisions about external disclosure (regulators, affected individuals, public) s
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 35 of 50
 
-
 ![Figure 24](/img/ai-security-governance/ai-security-gov-p36-24.png)
 
-
-<!-- Start of picture text -->
-Domain 17 — Cost Governance & FinOps for Sovereign AI<br><!-- End of picture text -->
-
-###### **NEW DOMAIN FINANCE CAIO**
+###### NEW DOMAIN FINANCE CAIO
 
 Sovereignty and governance controls carry real cost — higher-tier SAMM infrastructure, redundant safety layers, continuous red-teaming, and immutable audit storage all consume budget that a pure commercial-API approach would not. This domain ensures those costs are visible, attributable, and governed rather than discovered after the fact, echoing the shadow-AI discovery pattern described in Domain 6.3.
 
-### **17.1 — Cost Categories Specific to Sovereign Constitutional AI**
+### 17.1 — Cost Categories Specific to Sovereign Constitutional AI
 
 |**Category**|**Cost Driver**|**Tends to Scale With**|
 |---|---|---|
@@ -1288,17 +1122,15 @@ Sovereignty and governance controls carry real cost — higher-tier SAMM infrast
 |Evaluation & red-teaming|Continuous evaluation pipeline and recurring campaigns<br>(Domain 14)|Release frequency × system<br>count|
 |Governance operating cost|RAI Office, Governance Council staffing (Domain 5)|Domain/system count, largely<br>fixed|
 
-
-
-### **17.2 — Attribution: Making Governance Cost Visible Per Workload**
+### 17.2 — Attribution: Making Governance Cost Visible Per Workload
 
 A common FinOps failure mode is pooling all AI infrastructure spend into a single line item, which makes it impossible to answer "what does it cost to run this specific agent at Level 3 autonomy with full safety stack coverage." Tag cost at the workload level across the same dimensions used elsewhere in this handbook — autonomy level (Domain 9), sovereignty tier (Domain 1), and vendor (Domain 15) — so cost-benefit tradeoffs can be made explicitly rather than assumed.
 
-###### **WORKED EXAMPLE — TIERING COST AGAINST RISK**
+###### WORKED EXAMPLE — TIERING COST AGAINST RISK
 
 An organization discovers that a Level 2 internal documentation-search agent is incurring the same per-request safetystack and audit-logging overhead as its Level 4 financial-transaction agent, because both were built on a shared platform template without cost-tiering by autonomy level. Re-architecting the documentation agent onto a lighter-weight safety profile appropriate to its actual risk (per the Domain 1.4 decision framework) cuts its operating cost substantially without reducing protection where it matters.
 
-### **17.3 — Budget Governance Tied to Autonomy Promotion**
+### 17.3 — Budget Governance Tied to Autonomy Promotion
 
 Because autonomy promotion (Domain 9.1) increases both capability and the cost of the safety stack required to support it safely, budget approval should be an explicit input to the promotion decision rights table in Domain 5.2 —
 
@@ -1306,7 +1138,7 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 36
 
 not a separate, disconnected finance process that discovers the cost after the governance approval has already been granted.
 
-###### **Cost Tags to Capture Per Workload**
+###### Cost Tags to Capture Per Workload
 
 - ☐ Sovereignty tier (Domain 1) and autonomy level (Domain 9)
 
@@ -1318,17 +1150,15 @@ not a separate, disconnected finance process that discovers the cost after the g
 
 - ☐ Evaluation/red-team campaign frequency (Domain 14)
 
-
 ![Figure 25](/img/ai-security-governance/ai-security-gov-p37-25.png)
 
+### 17.4 — Avoiding Cost-Driven Governance Erosion
 
-### **17.4 — Avoiding Cost-Driven Governance Erosion**
-
-###### **Critical Vector Risk Notice**
+###### Critical Vector Risk Notice
 
 **Cost Pressure as a Governance Bypass Vector:** Under budget pressure, teams may be tempted to disable safety-stack layers (Domain 7), reduce red-team frequency (Domain 14), or shorten audit retention (Domain 8) to cut cost — each of which silently degrades the control environment without a corresponding governance review. Any cost-reduction proposal touching these categories should route through the same decision-rights table as the original control approval (Domain 5.2), not through Finance alone.
 
-###### **Domain 17 Implementation Checklist**
+###### Domain 17 Implementation Checklist
 
 - ☐ Tag all AI infrastructure spend by workload, autonomy level, and sovereignty tier
 
@@ -1342,18 +1172,13 @@ not a separate, disconnected finance process that discovers the cost after the g
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 37 of 50
 
-
 ![Figure 26](/img/ai-security-governance/ai-security-gov-p38-26.png)
 
-
-<!-- Start of picture text -->
-Domain 18 — Organizational Change, Talent & Capability<br>Building<br><!-- End of picture text -->
-
-###### **NEW DOMAIN CAIO**
+###### NEW DOMAIN CAIO
 
 Every domain in this handbook describes a control, a framework, or an architecture. None of them implement themselves. This closing domain addresses the organizational capability — skills, roles, and change management — required to operate everything described above, which is consistently the most underestimated component of a sovereign constitutional AI program.
 
-### **18.1 — New and Evolved Roles**
+### 18.1 — New and Evolved Roles
 
 |**Role**|**Core Responsibility**|**Primary Domains**|
 |---|---|---|
@@ -1364,38 +1189,31 @@ Every domain in this handbook describes a control, a framework, or an architectu
 |RAI Office Analyst|Monitors audit ledger, drift signals, vendor scorecards|D8, D14, D15|
 |AI Incident Commander (rotating)|Leads incident response|D16|
 
-
-
-### **18.2 — Capability Maturity by Phase**
+### 18.2 — Capability Maturity by Phase
 
 Few organizations can staff all six roles above on day one. The roadmap (see the Implementation Roadmap section) sequences capability building deliberately: foundational roles in Months 1–6, specialist roles by Months 13– 18. Smaller organizations can combine roles — for instance, a Policy-as-Code Engineer and Constitutional Engineer can be the same person initially — but should plan to split them once policy change volume exceeds roughly ten changes per month, the point at which context-switching overhead between the two disciplines becomes measurable.
 
-### **18.3 — Change Management for Engineering Teams**
+### 18.3 — Change Management for Engineering Teams
 
-###### **The Core Tension: Velocity vs. Control**
+###### The Core Tension: Velocity vs. Control
 
 Engineering teams accustomed to shipping rapidly will experience the policy-as-code gates (Domain 10), the regression suite (Domain 14), and the decision-rights table (Domain 5.2) as friction. The change-management goal is not to minimize this friction to zero — some friction is the control working as intended — but to make the compliant path the fast path, primarily by investing in self-service tooling (e.g., automated policy testing, pre-approved tool-scoping templates) so teams are not waiting on manual governance review for routine changes.
 
-###### **Training Cadence**
+###### Training Cadence
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 38 of 50
 
 Constitutional principles, autonomy levels, and incident procedures should be part of onboarding for any engineer touching agentic systems, with a refresher cycle tied to the same cadence as the Domain 5 Governance Council review — commonly semi-annual — so training currency tracks the program's own evolution rather than going stale.
 
-### **18.4 — Measuring Organizational Readiness**
-
+### 18.4 — Measuring Organizational Readiness
 
 ![Figure 27](/img/ai-security-governance/ai-security-gov-p39-27.png)
 
-
-<!-- Start of picture text -->
-<5% 100% <48h<br>Shadow AI Detection Rate Target Engineers Trained on Constitution Routine Policy Change Turnaround<br><!-- End of picture text -->
-
-###### **WORKED EXAMPLE — MAKING THE COMPLIANT PATH THE FAST PATH**
+###### WORKED EXAMPLE — MAKING THE COMPLIANT PATH THE FAST PATH
 
 An organization found that requesting a new tool-scoping policy (Domain 10.2) took an average of nine business days through manual Governance Council review, driving teams toward the shadow-AI patterns described in Domain 6.3. Introducing a self-service template for common, pre-approved tool-scoping patterns — with automatic routing to manual review only for genuinely novel requests — cut routine turnaround to under two days and measurably reduced shadow AI incidents in the following two quarters.
 
-###### **Domain 18 Implementation Checklist**
+###### Domain 18 Implementation Checklist
 
 - ☐ Staff or assign (even part-time, combined) all six core roles before increasing autonomy levels beyond Level 2
 
@@ -1409,20 +1227,15 @@ An organization found that requesting a new tool-scoping policy (Domain 10.2) to
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 39 of 50
 
-
 ![Figure 28](/img/ai-security-governance/ai-security-gov-p40-28.png)
 
-
-<!-- Start of picture text -->
-Production Deliverables & Blueprints<br><!-- End of picture text -->
-
-#### **Deliverable 1 — Sovereign AI Full-Stack Reference Architecture**
+#### Deliverable 1 — Sovereign AI Full-Stack Reference Architecture
 
 This blueprint decouples infrastructure from foreign telemetry vectors, keeping operations fully within domestic and enterprise boundaries.
 
-###### **FIVE-LAYER REFERENCE STACK**
+###### FIVE-LAYER REFERENCE STACK
 
-###### **1. Hardware Layer**
+###### 1. Hardware Layer
 
 Bare-Metal Accelerators (Air-Gapped, Non-Shared Virtualization) ↓ **2. Infrastructure** Sovereign Orchestration Fabrics (K8s, Localized Storage Layers) ↓ **3. Gateway Proxy Filter** Policy-As-Code Ingestion Router (OPA / Rego Enforcement Engine) ↓ **4. Orchestration Edge** Internal Memory Array & Real-Time Context Registry ↓ **5. Channels** Downstream Multi-Agent Swarms & Domain Execution APIs
 
@@ -1430,11 +1243,11 @@ Each layer maps directly to a handbook domain: the Gateway Proxy Filter implemen
 
 the Orchestration Edge stores the context referenced in Domain 4's control loop; all layers emit events to the Domain 8 audit ledger.
 
-#### **Deliverable 2 — Enterprise AI Governance Maturity Model Dashboard**
+#### Deliverable 2 — Enterprise AI Governance Maturity Model Dashboard
 
 An interactive calculator designed to evaluate corporate alignment against Sovereign Constitutional AI benchmarks. This model generates a structured readiness evaluation based on customizable infrastructure, policy, and risk vectors, scored against the SAMM tiers (Domain 1) and the autonomy promotion gates (Domain 9.1). Output feeds directly into the Appendix B self-assessment questionnaire.
 
-#### **Deliverable 3 — Constitution Authoring Kit & Clause Library**
+#### Deliverable 3 — Constitution Authoring Kit & Clause Library
 
 A structured template and starter clause library implementing the four-component clause anatomy from Domain 2.3 (trigger, required behavior, prohibited behavior, escalation path), pre-populated with starter clauses for the most
 
@@ -1442,7 +1255,7 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 40
 
 common enterprise scenarios: financial data handling, PII disclosure, tool-call authorization boundaries, and multiturn manipulation resistance. Includes the adversarial prompt-pairing template referenced in Domain 2.4 and the regression-case format used in Domain 14.2.
 
-###### **Clause Library Starter Categories**
+###### Clause Library Starter Categories
 
 |**Category**|**Sample Clause Count**|**Primary Risk Addressed**|
 |---|---|---|
@@ -1451,22 +1264,15 @@ common enterprise scenarios: financial data handling, PII disclosure, tool-call 
 |Tool-Call Scope Limits|10|Out-of-scope agent actions|
 |Multi-Turn Manipulation Resistance|6|Incremental boundary erosion (Domain 14.2)|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 41 of 50
-
 
 ![Figure 29](/img/ai-security-governance/ai-security-gov-p42-29.png)
 
-
-<!-- Start of picture text -->
-Implementation Roadmap — 24-Month Execution Plan<br><!-- End of picture text -->
-
 This roadmap sequences all 18 domains into four execution phases. Each phase lists the primary domains activated, key milestones, and the staffing implied by Domain 18's capability maturity model. Phases overlap deliberately — later-phase domains begin foundational work earlier where dependencies allow.
 
-### **Phase 1 — Months 1–6: Structural Decoupling & Sovereignty Hardening**
+### Phase 1 — Months 1–6: Structural Decoupling & Sovereignty Hardening
 
-##### **Primary Domains: D1 (Foundations), D6 (Risk Taxonomy), D13 (Data Lineage — foundational), D15 (Vendor Governance — initial)**
+##### Primary Domains: D1 (Foundations), D6 (Risk Taxonomy), D13 (Data Lineage — foundational), D15 (Vendor Governance — initial)
 
 - Audit and map external vendor dependencies and data telemetry routes.
 
@@ -1480,9 +1286,9 @@ This roadmap sequences all 18 domains into four execution phases. Each phase lis
 
 - **New:** Classify existing vendors into risk tiers and complete onboarding evidence gaps (Domain 15.1–15.2).
 
-### **Phase 2 — Months 7–12: Constitutional Integration & Policy Enforcement**
+### Phase 2 — Months 7–12: Constitutional Integration & Policy Enforcement
 
-##### **Primary Domains: D2 (Constitutional AI), D10 (Policy-as-Code), D5 (Governance Operating Model), D17 (Cost Governance — initial)**
+##### Primary Domains: D2 (Constitutional AI), D10 (Policy-as-Code), D5 (Governance Operating Model), D17 (Cost Governance — initial)
 
 - Draft and formalize domain-specific enterprise constitutions.
 
@@ -1498,9 +1304,9 @@ This roadmap sequences all 18 domains into four execution phases. Each phase lis
 
 - **New:** Begin cost-tagging AI infrastructure spend by workload (Domain 17.2).
 
-### **Phase 3 — Months 13–18: Agent Swarm Orchestration & Advanced Control**
+### Phase 3 — Months 13–18: Agent Swarm Orchestration & Advanced Control
 
-##### **Primary Domains: D4 (Control Theory), D7 (Safety Engineering), D8 (Audit Ledger), D9 (Autonomy Framework), D14 (Testing & Red-Teaming), D18 (Specialist roles)**
+##### Primary Domains: D4 (Control Theory), D7 (Safety Engineering), D8 (Audit Ledger), D9 (Autonomy Framework), D14 (Testing & Red-Teaming), D18 (Specialist roles)
 
 - Implement multi-agent validation frameworks with dedicated checker agents.
 
@@ -1518,9 +1324,9 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 42
 
 - **New:** Implement automatic autonomy demotion triggers (Domain 9.2) and run first Sev-1 tabletop exercise (Domain 16.3).
 
-### **Phase 4 — Months 19–24: Continuous Assurance & Automated Scale**
+### Phase 4 — Months 19–24: Continuous Assurance & Automated Scale
 
-##### **Primary Domains: D3 (Global RAI Standardization — certification), D11 (Democratic AI, where applicable), D12 (Horizon Mapping), D16 (Incident Response — mature), D17 (Cost Governance — mature)**
+##### Primary Domains: D3 (Global RAI Standardization — certification), D11 (Democratic AI, where applicable), D12 (Horizon Mapping), D16 (Incident Response — mature), D17 (Cost Governance — mature)
 
 - Connect real-time dashboards to give executive risk teams continuous visibility.
 
@@ -1536,7 +1342,7 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 42
 
 - **New:** Conduct full-program retrospective using Appendix B self-assessment; reset priorities for Year 3.
 
-### **Roadmap Dependency Notes**
+### Roadmap Dependency Notes
 
 |**Domain**|**Cannot Start Before**|**Reason**|
 |---|---|---|
@@ -1545,75 +1351,66 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 42
 |D16 (Incident response)|D8 audit ledger live|Blast-radius assessment depends on ledger queryability|
 |D17 (Mature cost governance)|D1 SAMM tiering<br>complete|Cost attribution requires sovereignty tier tags|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 43 of 50
-
 
 ![Figure 30](/img/ai-security-governance/ai-security-gov-p44-30.png)
 
-
-<!-- Start of picture text -->
-Appendix A — Glossary of Terms<br><!-- End of picture text -->
-
-###### **Autonomy Level**
+###### Autonomy Level
 
 One of six discrete tiers (0–5) defining how much an AI system may act without human checkpoint, per Domain 9.
 
-###### **Constitutional AI (CAI)**
+###### Constitutional AI (CAI)
 
 A training and governance approach using explicit textual principles and self-critique loops to shape model behavior, per Domain 2.
 
-###### **Demotion Trigger**
+###### Demotion Trigger
 
 A runtime-enforced condition that automatically reduces a system's autonomy level without waiting for manual review, per Domain 9.2.
 
-###### **Immutable Audit Ledger**
+###### Immutable Audit Ledger
 
 A tamper-evident record of every agentic action, decision, and policy evaluation, per Domain 8.
 
-###### **OPA / Rego**
+###### OPA / Rego
 
 Open Policy Agent and its policy language, used to implement policy-as-code runtime enforcement, per Domain 10.
 
-###### **Provenance Record**
+###### Provenance Record
 
 A structured metadata record tracing a data point's origin, transformations, and downstream usage, per Domain 13.2.
 
-###### **RAI Office**
+###### RAI Office
 
 The Responsible AI Office — the operational governance body responsible for auditing and metric validation, per Domain 5.
 
-###### **RLAIF**
+###### RLAIF
 
 Reinforcement Learning from AI Feedback — automated preference training guided by constitutional principles rather than exclusively human labels, per Domain 2.1.
 
-###### **SAMM (Sovereign AI Maturity Matrix)**
+###### SAMM (Sovereign AI Maturity Matrix)
 
 A four-tier, four-layer maturity model assessing an organization's infrastructure, data, model, and governance sovereignty, per Domain 1.2.
 
-###### **Shadow AI Agent**
+###### Shadow AI Agent
 
 An unmonitored AI workflow operating outside central governance and logging, per Domain 6.1.
 
-###### **Sovereignty Theater**
+###### Sovereignty Theater
 
 The failure mode of investing in sovereign infrastructure at one layer while leaving other layers (data, governance) dependent on foreign vendors, per Domain 1.3.
 
-###### **Specification Gaming**
+###### Specification Gaming
 
 An agent satisfying the literal metric of its objective while violating the unstated intent behind it, per Domain 4.2.
 
-###### **Verification Hook**
+###### Verification Hook
 
 A deterministic or independently-trained component that approves or denies agent-proposed actions, structurally separated from the planning component, per Domain 4.1.
 
-#### **Severity & Risk Reference**
+#### Severity & Risk Reference
 
 |**Term**<br>**Definition**|
 |---|
-
-
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 44 of 50
 
@@ -1622,29 +1419,20 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 44
 |Sev-4|impact anomaly (Sev-4)|
 |Risk Score (Likelihood ×<br>Impact)|The 1–25 composite score used in the Domain 6.2 risk register|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 45 of 50
-
 
 ![Figure 31](/img/ai-security-governance/ai-security-gov-p46-31.png)
 
-
-<!-- Start of picture text -->
-Appendix B — Sovereign & Constitutional AI Self-<br>Assessment Questionnaire<br><!-- End of picture text -->
-
 Score each statement 0 (not in place), 1 (partially in place), or 2 (fully in place). Domain references point to the relevant handbook section for remediation guidance. Use the resulting domain-level totals to prioritize the next 90 days of investment.
 
-#### **Foundations & Behavioral Engineering (D1–D3)**
+#### Foundations & Behavioral Engineering (D1–D3)
 
 |Every AI workload is mapped to a target SAMM tier across all four layers.|D1 — score: ___|
 |---|---|
 |Constitutional clauses follow the four-component structure (trigger, required, prohibited, escalation).|D2 — score: ___|
 |A living cross-jurisdictional compliance map exists and is reviewed on a fixed cadence.|D3 — score: ___|
 
-
-
-#### **Control, Governance & Risk (D4–D8)**
+#### Control, Governance & Risk (D4–D8)
 
 |Planning and Verification Hook components are structurally separated with no shared optimization<br>pressure.|D4 — score: ___|
 |---|---|
@@ -1653,9 +1441,7 @@ Score each statement 0 (not in place), 1 (partially in place), or 2 (fully in pl
 |All five runtime safety layers are implemented for systems above Autonomy Level 2.|D7 — score: ___|
 |The audit ledger is indexed by principle ID, agent ID, autonomy level, and verification outcome.|D8 — score: ___|
 
-
-
-#### **Autonomy, Policy & Public Interest (D9–D12)**
+#### Autonomy, Policy & Public Interest (D9–D12)
 
 |Autonomy promotion requires documented evidence gates; demotion triggers are runtime-enforced.|D9 — score: ___|
 |---|---|
@@ -1669,11 +1455,9 @@ Score each statement 0 (not in place), 1 (partially in place), or 2 (fully in pl
 |AI infrastructure cost is tagged by workload, autonomy level, and sovereignty tier.|D17 — score: ___|
 |Core governance roles are staffed (even part-time/combined) and training is part of onboarding.|D18 — score: ___|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 46 of 50
 
-#### **Scoring Guide**
+#### Scoring Guide
 
 |**Total Score**<br>**Range**|**Maturity Read**|**Suggested Action**|
 |---|---|---|
@@ -1682,80 +1466,63 @@ Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 46
 |25–32|Established|Advance to Phase 3 — autonomy, testing, and incident readiness (D4, D7, D9, D14,<br>D16)|
 |33–36|Advanced|Move to Phase 4 certification, horizon planning, and continuous assurance|
 
-
-
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 47 of 50
-
 
 ![Figure 32](/img/ai-security-governance/ai-security-gov-p48-32.png)
 
-
-<!-- Start of picture text -->
-Appendix C — RACI & Escalation Quick-Reference Cards<br><!-- End of picture text -->
-
-#### **Card 1 — Constitutional Change**
+#### Card 1 — Constitutional Change
 
 **R:** Constitutional Engineer / RAI Office  | **A:** CAIO  | **C:** Legal Counsel, CISO  | **I:** Engineering Leads Escalate to Board Risk Committee if the change relaxes a global-tier clause (Domain 2.2).
 
-#### **Card 2 — Autonomy Level Promotion**
+#### Card 2 — Autonomy Level Promotion
 
 **R:** Principal Architect  | **A:** CAIO  | **C:** CRO, CISO  | **I:** Board Risk Committee
 
 L4→L5 promotion additionally requires Board of Directors sign-off (Domain 9.1).
 
-#### **Card 3 — Vendor / Model Onboarding**
+#### Card 3 — Vendor / Model Onboarding
 
 **R:** Procurement + Architect  | **A:** CAIO  | **C:** Legal, CISO, CRO  | **I:** RAI Office
 
 Tier 1 vendors require quarterly re-review post-onboarding (Domain 15.1).
 
-#### **Card 4 — Incident Escalation**
+#### Card 4 — Incident Escalation
 
 **R:** Incident Commander (on-call)  | **A:** CISO  | **C:** CAIO, Legal  | **I:** Board (if material) Sev-1 kill-switch authority is pre-delegated to the Incident Commander (Domain 16.2).
 
-#### **Card 5 — Cost-Reduction Affecting Safety/Audit Controls**
+#### Card 5 — Cost-Reduction Affecting Safety/Audit Controls
 
 **R:** Finance + Engineering Lead  | **A:** CAIO  | **C:** RAI Office, CISO  | **I:** Board Risk Committee Must not be approved by Finance alone (Domain 17.4).
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 48 of 50
 
-
 ![Figure 33](/img/ai-security-governance/ai-security-gov-p49-33.png)
 
-
-<!-- Start of picture text -->
-Appendix D — Frequently Asked Questions<br><!-- End of picture text -->
-
-###### **Do we need Level 4 sovereignty infrastructure for every system?**
+###### Do we need Level 4 sovereignty infrastructure for every system?
 
 No. Use the Domain 1.4 decision framework to match sovereignty tier to actual data sensitivity, regulatory exposure, and continuity needs. Uniform over-investment is as much a failure mode as under-investment.
 
-###### **How is this different from a standard RLHF safety review?**
+###### How is this different from a standard RLHF safety review?
 
 RLHF review is typically a point-in-time training step. This handbook treats alignment as a closed control loop (Domain 4) with runtime enforcement (Domain 7, 10), continuous evaluation (Domain 14), and automatic demotion (Domain 9.2) — controls that operate after training and deployment, not only before.
 
-###### **Who owns the constitution once it's drafted?**
+###### Who owns the constitution once it's drafted?
 
 The RAI Office is Responsible for day-to-day clause management; the CAIO is Accountable for the constitution as a whole (Domain 5.1, Appendix C Card 1).
 
-###### **What's the minimum viable starting point if we can't do all 18 domains at once?**
+###### What's the minimum viable starting point if we can't do all 18 domains at once?
 
 Start with Appendix B's self-assessment. Most organizations should prioritize Domain 1 (sovereignty mapping), Domain 6 (risk register), and Domain 13 (data lineage) first — they are prerequisites that make every later domain's decisions evidence-based rather than assumed.
 
-###### **How often should the entire program be reassessed?**
+###### How often should the entire program be reassessed?
 
 Annually at minimum (aligned with Phase 4 of the roadmap), with quarterly reviews for Tier 1 vendor risk (Domain 15.1) and the risk register (Domain 6.3), and continuous automated monitoring for drift (Domain 14.4) and cost (Domain 17.2).
 
 Sovereign Constitutional AI & RAI — Complete Implementation Handbook | Page 49 of 50
 
-
 ![Figure 34](/img/ai-security-governance/ai-security-gov-p50-34.png)
 
-
-<!-- Start of picture text -->
-Technical Leadership Resource Compendium<br><!-- End of picture text -->
-
-### **Primary Foundation Papers**
+### Primary Foundation Papers
 
 - **Constitutional AI: Harmlessness from AI Feedback** (Anthropic, 2022).
 
@@ -1763,7 +1530,7 @@ Technical Leadership Resource Compendium<br><!-- End of picture text -->
 
 - **Scalable Oversight for Agentic Workflows** (Amodei et al., 2025).
 
-### **Industry Frameworks & Regulatory Specifications**
+### Industry Frameworks & Regulatory Specifications
 
 - **ISO/IEC 42001:2023:** Information technology — Artificial intelligence — Management system (AIMS).
 
@@ -1771,7 +1538,7 @@ Technical Leadership Resource Compendium<br><!-- End of picture text -->
 
 - **EU AI Act (Regulation EU 2024/1689):** Statutory obligations for high-risk and general-purpose systems.
 
-### **Open-Source Engineering Toolkits**
+### Open-Source Engineering Toolkits
 
 - **Open Policy Agent (OPA/Rego):** General-purpose policy enforcement engine.
 
@@ -1779,7 +1546,7 @@ Technical Leadership Resource Compendium<br><!-- End of picture text -->
 
 - **Llama Guard / Guardrails AI:** Structured input/output classification models.
 
-### **Data Lineage & Provenance Tooling Categories**
+### Data Lineage & Provenance Tooling Categories
 
 - **Data version control systems:** Track dataset versions feeding training/fine-tuning pipelines.
 
@@ -1787,13 +1554,13 @@ Technical Leadership Resource Compendium<br><!-- End of picture text -->
 
 - **Content provenance standards:** Cryptographic signing approaches for high-assurance source attribution.
 
-### **Evaluation & Red-Teaming Resources**
+### Evaluation & Red-Teaming Resources
 
 - **Structured red-team methodologies:** Frameworks for adversarial campaign scoping referenced in Domain 14.3.
 
 - **Benchmark suites:** Capability and safety benchmarks for pre-deployment evaluation (Domain 14.1).
 
-### **Closing Note**
+### Closing Note
 
 This handbook is a living reference, not a one-time certification. Treat the constitution, policy code, risk register, and vendor scorecards as version-controlled artifacts that evolve with the same engineering discipline as the systems they govern. The Appendix B self-assessment is designed to be re-run quarterly so the organization's actual maturity — not its maturity at time of initial adoption — drives ongoing investment decisions.
 

@@ -8,7 +8,7 @@ source_type: converted-pdf
 source_file: "07-Zero-to-Mastery-Curriculum.pdf"
 tags: ["ai-security", "curriculum", "training", "agentic-ai"]
 ---
-# **Zero to Mastery Enterprise Agentic AI Security Architect**
+# Zero to Mastery Enterprise Agentic AI Security Architect
 
 A 10-Week, Instructor-Ready Curriculum for IT and Software Professionals With No Security Background
 
@@ -18,15 +18,15 @@ A 10-Week, Instructor-Ready Curriculum for IT and Software Professionals With No
 
 *Enterprise Agentic AI Security Architect (2026–2030) Master Research Program*
 
-## **Table of Contents**
+## Table of Contents
 
-## **How to Use This Curriculum**
+## How to Use This Curriculum
 
 This is the instructional companion to the six-volume Enterprise Agentic AI Security Architect (2026–2030) Master Research Program (document codes EASA-01 through EASA-06). Those six volumes are the reference architecture — dense, comprehensive, written for someone who already knows what question they're trying to answer. This document is the path that gets a learner to the point where they can read those volumes and get full value from them, then keeps going until that learner can produce the kind of work those volumes model.
 
 The starting assumption is explicit: learners enter this curriculum with general IT or software experience — they can read an architecture diagram, they have used cloud infrastructure, they may have written code — but they do not have a security background. No prior knowledge of threat modeling, identity and access management, or AI/ML systems is assumed. Stage 0 exists specifically to build that floor before any agent-specific material is introduced, because the single most common failure mode in technical training is skipping the fundamentals to get to the exciting part faster, which produces learners who can repeat vocabulary without being able to reason from it.
 
-#### **Program Structure**
+#### Program Structure
 
 Ten stages, each mapped to roughly one week of full-time study (a working week of approximately 35–40 hours), organized into four phases:
 
@@ -37,7 +37,7 @@ Ten stages, each mapped to roughly one week of full-time study (a working week o
 |Phase III — Governance &<br>Operatons|5–7|Governance/compliance, AI SOC & observability,<br>red teaming & reliability|EASA-03, EASA-04|
 |Phase IV — Economics &<br>Mastery|8–9|Economic security (FinOps/commerce/PQC);<br>capstone & operatng model|EASA-05, EASA-06|
 
-#### **Every Stage Follows the Same Structure**
+#### Every Stage Follows the Same Structure
 
 - **Objectives —** a short, specific list of what you will be able to do, not just what you will have read, by the end of the stage.
 
@@ -51,7 +51,7 @@ Ten stages, each mapped to roughly one week of full-time study (a working week o
 
 - **Stage capstone —** a larger deliverable, usually building on the lab, scoped to take a meaningful slice of the week and reviewable against a stated rubric.
 
-#### **Pacing for an Instructor or Cohort**
+#### Pacing for an Instructor or Cohort
 
 |**Day**|**Suggested Actvity**|
 |---|---|
@@ -59,11 +59,11 @@ Ten stages, each mapped to roughly one week of full-time study (a working week o
 |Wed–Thu|Hands-on lab; pair or small-group work recommended where the lab involves a mult-component<br>system (e.g., a gateway)|
 |Fri|Knowledge check, stage capstone work session, and capstone submission|
 
-###### **For instructors running this as a cohort**
+###### For instructors running this as a cohort
 
 Every stage capstone is designed to be reviewable in roughly 20–30 minutes per learner using the stated rubric. Build a standing Friday-afternoon review slot into the schedule. For Stages 2 through 4 (the identity/MCP/A2A core), consider running labs in pairs — these stages have the steepest learning curve in the program, and the productionincident research cited throughout EASA-02 makes a strong case that most real-world failures in this space come from working alone under time pressure with no second reviewer, which is exactly the dynamic pairing is meant to counteract.
 
-## **What "Mastery" Means at the End of This Program**
+## What "Mastery" Means at the End of This Program
 
 Mastery here is defined operationally, not by a credential. A learner who completes this curriculum should be able to walk into an organization deploying its first significant agent population and do four things without supervision:
 
@@ -79,11 +79,11 @@ The capstone in Stage 9 is built to require exactly these four things, applied t
 
 ###### **STAGE 0** -   Week 1
 
-### **Security Fundamentals for Builders**
+### Security Fundamentals for Builders
 
 If you have never worked in security, this stage is not optional, and it is not filler. Every subsequent stage assumes you already think in terms of threat actors, trust boundaries, and the difference between authentication and authorization. Most of the costly mistakes documented in the reference volumes — overpermissioned agents, conflated identity and trust, security bolted on after deployment — trace back to someone skipping exactly this kind of foundation.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain the difference between authentication, authorization, and accountability, with an example of a system that gets each one wrong
 
@@ -97,13 +97,13 @@ If you have never worked in security, this stage is not optional, and it is not 
 
 ***Prerequisite check:*** *None — this is the entry point. If you already hold a security certification (Security+, CISSP, etc.) or have 2+ years in a security role, you can likely skim this stage and move to its knowledge check directly.*
 
-#### **0.1 Why Security Thinking Is Different From Engineering Thinking**
+#### 0.1 Why Security Thinking Is Different From Engineering Thinking
 
 Most engineering disciplines optimize for the system working correctly under expected conditions. Security is the discipline of reasoning about the system under adversarial conditions — when someone is deliberately trying to make it behave incorrectly, and is willing to invest real effort to find the one path you didn't think to defend. This is a different mental motion than debugging: debugging asks "why isn't this working as intended," security asks "what is the worst thing someone could make this do, and how would I know if they were trying."
 
 The practical consequence: a security review is never "does this work" — it's "what happens at the edges, under hostile input, when an assumption I made turns out to be false." You will be asked to hold this posture constantly once agentic systems enter the picture, because an agent is, among other things, a system that can be talked into attacking itself.
 
-#### **0.2 Authentication, Authorization, and Accountability**
+#### 0.2 Authentication, Authorization, and Accountability
 
 These three terms are used loosely in casual conversation and precisely in security work, and conflating them is the single most common root cause of access-control failures.
 
@@ -119,19 +119,17 @@ These three terms are used loosely in casual conversation and precisely in secur
 
 Hold onto this table. Every identity architecture you will design from Stage 2 onward is, at its core, an attempt to get these three things right simultaneously for a population of non-human actors that change faster than any human identity ever did.
 
-#### **0.3 Trust Boundaries**
+#### 0.3 Trust Boundaries
 
 A trust boundary is any point in a system where data or control crosses from one zone of trust into another — from the internet into your network, from an unauthenticated user into an authenticated session, from a lowprivilege process into a high-privilege one. Every trust boundary is a place where you must assume the thing on the other side might be lying, malformed, or malicious, and where you therefore need an explicit control (validation, authentication, authorization) rather than an implicit assumption of good behavior.
 
-###### **The mistake this concept exists to prevent**
+###### The mistake this concept exists to prevent
 
 A system processes user input, passes it to an internal service, which passes it to a database query — and validation only happens at the very first step, because "it's already been checked." The internal service crossed a trust boundary (it's now operating on data that originated outside the system) without re-validating. This exact pattern, with "user input" replaced by "content an AI agent reads as part of its context," is the root mechanism behind prompt injection — which you'll study in depth starting in Stage 1.
 
-#### **0.4 The CIA Triad — and Why It's Not Enough Here**
+#### 0.4 The CIA Triad — and Why It's Not Enough Here
 
-Confidentiality (only authorized parties can read it), Integrity (only authorized parties can change it, and you can detect if it was changed anyway), and Availability (it works when it's supposed to) is the classical foundation of information security and remains necessary. It is not sufficient for agentic systems, because none of the three categories captures the failure mode of a system that is confidential, has perfect integrity, is fully available — and is doing the wrong thing entirely because it was convinced to, of its own accord, by something it read. You'll see this gap named explicitly later as the motivation for "cognitive security" (EASA-04). For now, just notice that it's a gap: hold the question "what does the CIA triad not cover" in mind as you go.
-
-#### **0.5 STRIDE — Your First Threat Modeling Tool**
+#### 0.5 STRIDE — Your First Threat Modeling Tool
 
 STRIDE is a checklist for systematically asking "what could go wrong here" instead of relying on whatever threats happen to occur to you. Each letter is a category of thing an attacker might do to a component or a data flow in your system.
 
@@ -146,7 +144,7 @@ STRIDE is a checklist for systematically asking "what could go wrong here" inste
 
 You will use STRIDE constantly through this program — it's the entry-level tool that the more advanced frameworks (MAESTRO, in Stage 1) extend rather than replace.
 
-#### **0.6 Three Governing Principles You'll See Everywhere From Here On**
+#### 0.6 Three Governing Principles You'll See Everywhere From Here On
 
 - **Defense in Depth —** no single control should be load-bearing. If one layer fails, another should still catch the problem. A locked door and a security camera and an alarm system are defense in depth; a locked door alone is not.
 
@@ -154,11 +152,11 @@ You will use STRIDE constantly through this program — it's the entry-level too
 
 - **Assume Breach —** design as though something in your system is already compromised right now, and ask what limits the damage, rather than designing only to prevent compromise in the first place.
 
-###### **HANDS-ON LAB  Threat-Model a Simple Web Application**
+###### HANDS-ON LAB  Threat-Model a Simple Web Application
 
 *You're given a basic three-tier system: a web frontend, an API backend, and a database, where the API backend also calls one external third-party service (a weather API) to enrich responses.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Draw the system as a simple diagram with three components and the third-party service, marking every place data crosses between them.
 
@@ -170,7 +168,7 @@ You will use STRIDE constantly through this program — it's the entry-level too
 
 **Deliverable:** A one-page threat model: the diagram, the labeled trust boundaries, and a table of (boundary, STRIDE category, threat, control) rows — minimum 8 rows.
 
-###### **KNOWLEDGE CHECK  Stage 0**
+###### KNOWLEDGE CHECK  Stage 0
 
 1. A system authenticates a user via username and password, then allows that authenticated session to call any API endpoint with no further checks. Which of the three concepts from section 0.2 has been skipped, and what's the risk?
 
@@ -182,11 +180,11 @@ You will use STRIDE constantly through this program — it's the entry-level too
 
 ###### **STAGE 1** -   Week 2
 
-### **Agentic AI Architecture & Threat Modeling**
+### Agentic AI Architecture & Threat Modeling
 
 With the Stage 0 vocabulary in place, this stage introduces what's actually new and different about agentic AI systems compared to the conventional software you threat-modeled in Stage 0 — and gives you the frameworks (MAESTRO specifically) built for this new category of system. This stage corresponds to EASA-01.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain what makes an AI agent different from a conventional application or a simple chatbot, in terms of attack surface
 
@@ -200,15 +198,15 @@ With the Stage 0 vocabulary in place, this stage introduces what's actually new 
 
 ***Prerequisite check:*** *Comfortable with Stage 0 vocabulary (trust boundaries, STRIDE, defense in depth) and basic familiarity with how an LLM-based application is built (a system prompt, a model call, a response) — you do not need ML/AI engineering experience, just conceptual familiarity with using an LLM API.*
 
-#### **1.1 What Actually Changes When a System Becomes "Agentic"**
+#### 1.1 What Actually Changes When a System Becomes "Agentic"
 
 A conventional application, even one that calls an LLM, has a predictable, enumerable set of code paths — you can read the source and know every possible action the system can take. An agentic system is different in a structural way: the sequence of actions it takes is decided at runtime, by the model's own reasoning, in response to whatever it currently believes about the situation — including beliefs that can be shaped by content the system processes along the way. This is the single idea underneath almost everything in this program: an agent's behavior is not fully determined by its code, the way a conventional program's behavior is. It's co-determined by its code and by whatever it reads.
 
-###### **Why this matters more than it sounds like it should**
+###### Why this matters more than it sounds like it should
 
 In conventional security, you defend the code. In agentic security, you have to also defend the content — every document, email, search result, tool response, and message from another agent that your system will read becomes part of its effective instruction set, whether you intended that or not. This is the root cause of nearly every major risk category you'll study from here forward (goal hijacking, prompt injection, tool poisoning, memory poisoning) — they are all variations on "untrusted content was treated with the authority of a trusted instruction."
 
-#### **1.2 The Agent Lifecycle and Where Things Go Wrong**
+#### 1.2 The Agent Lifecycle and Where Things Go Wrong
 
 Every agentic interaction, regardless of framework, follows the same five-stage shape. Learning to see this shape in any system you encounter — including ones with unfamiliar names and unfamiliar frameworks — is one of the most transferable skills in this program.
 
@@ -222,7 +220,7 @@ Every agentic interaction, regardless of framework, follows the same five-stage 
 
 Notice this is the same five-stage decomposition you'll see formalized with specific controls in EASA-01, Domain 4. Internalizing this shape now means that when you encounter a genuinely new agent framework you've never seen before, you'll be able to map it onto this lifecycle in minutes rather than needing to learn an entirely new mental model.
 
-#### **1.3 MAESTRO — Threat Modeling Built for Agents**
+#### 1.3 MAESTRO — Threat Modeling Built for Agents
 
 STRIDE (Stage 0) asks good questions but has no native way to ask "what if the system was successfully convinced, through entirely legitimate-looking input, to do something harmful?" MAESTRO (Multi-Agent Environment, Security, Threat, Risk, and Outcome) was built specifically to close that gap, by decomposing an agentic system into seven layers and requiring you to look for threats both within each layer and across layers.
 
@@ -241,7 +239,7 @@ STRIDE (Stage 0) asks good questions but has no native way to ask "what if the s
 
 The exercise that makes MAESTRO valuable, and the one you'll practice in this stage's lab, is not listing threats at each layer in isolation — it's finding the threat that only exists because of how two layers interact. A poisoned document at L2 (Data Operations) becomes dangerous specifically because L3 (the Agent Framework) treats retrieved content as trustworthy context. Neither layer is "broken" on its own; the danger is in the seam between them.
 
-#### **1.4 Runtime Isolation — Containing the Blast Radius**
+#### 1.4 Runtime Isolation — Containing the Blast Radius
 
 If an agent's behavior can be shaped by what it reads, the next best line of defense is limiting what it can physically reach if something does go wrong. This is what runtime isolation is for — and the right choice depends entirely on how much you trust the boundary the agent operates inside.
 
@@ -255,15 +253,15 @@ If an agent's behavior can be shaped by what it reads, the next best line of def
 
 The pattern worth internalizing: classify agents by what trust boundary they cross (does it run generated code? process untrusted external content? reach sensitive internal systems?) and assign isolation strength to match — not one isolation technology applied uniformly regardless of risk.
 
-#### **1.5 Credential Custody Lives Outside the Agent**
+#### 1.5 Credential Custody Lives Outside the Agent
 
 This is the single most important architectural pattern in this stage, and it will recur throughout the program: the agent itself should never hold standing, reusable credentials to anything. Instead, a separate component (a "tool broker") holds actual credentials, receives a policy-approved request from the agent, executes the call, and returns only the result — never the credential — to the agent. If the agent is compromised or manipulated, there is nothing valuable for it to exfiltrate, because it never had anything to exfiltrate in the first place.
 
-###### **HANDS-ON LAB  MAESTRO Threat Model for a Customer Support Agent**
+###### HANDS-ON LAB  MAESTRO Threat Model for a Customer Support Agent
 
 *A company deploys a single-purpose AI agent that reads incoming support tickets, has read access to a customer CRM, has read access to a product knowledge base, and can draft (but not send, pending human approval) email replies.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Map this system onto the five-stage agent lifecycle from section 1.2, identifying what plays the role of each stage.
 
@@ -277,7 +275,7 @@ This is the single most important architectural pattern in this stage, and it wi
 
 **Deliverable:** A structured MAESTRO threat model document: lifecycle mapping, layer-by-layer threats (minimum 7), at least one explicit cross-layer threat with justification, an isolation-tier decision, and the credential-custody sketch. **Reference:** *EASA-01, Domains 1.5 and 4–7*
 
-###### **KNOWLEDGE CHECK  Stage 1**
+###### KNOWLEDGE CHECK  Stage 1
 
 1. In your own words, explain why an agentic system's attack surface includes 'content it reads' in a way that a conventional application's attack surface does not.
 
@@ -287,11 +285,11 @@ This is the single most important architectural pattern in this stage, and it wi
 
 4. Explain, to someone unfamiliar with this program, why holding credentials inside the agent itself is a worse design than brokering them — without using the word 'broker' in your explanation.
 
-###### **STAGE CAPSTONE  Phase I Capstone — Secure Architecture Sketch**
+###### STAGE CAPSTONE  Phase I Capstone — Secure Architecture Sketch
 
 Choose a simple agentic use case of your own design (something you might plausibly build — a meeting-notes agent, a code-review agent, an internal IT-helpdesk agent — anything with at least two tool integrations). Produce a one-totwo-page architecture document.
 
-###### **Requirements:**
+###### Requirements:
 
 - A system diagram showing the agent, its tools, its memory/context sources, and all trust boundaries.
 
@@ -305,17 +303,17 @@ Choose a simple agentic use case of your own design (something you might plausib
 
 **Graded against:** Completeness of the MAESTRO pass (all required layers addressed, cross-layer threat present and justified), correctness of the isolation-tier reasoning, and whether the credential-custody design genuinely keeps standing credentials out of the agent rather than just relocating the problem.
 
-## **Phase II — The Core Stack**
+## Phase II — The Core Stack
 
 Stages 2 through 4 are the heart of this program, and deliberately mirror the deep-dive priority of EASA-02. If you only have time to master one phase deeply, this is the one. Identity, MCP, and A2A are presented as three separate stages, but by the end of Stage 4 you should see them as one continuous trust chain — identity establishes who's acting, MCP governs what tools they can use, A2A governs how they trust each other. Treat the three stages as a single connected unit even though they're paced across three weeks.
 
 ###### **STAGE 2** -   Week 3
 
-### **Identity & Non-Human Identity (NHI)**
+### Identity & Non-Human Identity (NHI)
 
 This is, by a wide margin, the highest-leverage stage in the entire curriculum. The closing guidance of EASA-02 is blunt about this: if an organization can only fund one part of this whole program, fund the identity substrate. Everything from here forward — MCP gateways, A2A trust, governance reporting — gets dramatically easier once every agent carries a verifiable, ephemeral, centrally governed identity, and dramatically harder if it doesn't.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain why static API keys and shared service accounts are inadequate for agent populations, using the Stage 0 authentication/authorization framing
 
@@ -329,15 +327,15 @@ This is, by a wide margin, the highest-leverage stage in the entire curriculum. 
 
 ***Prerequisite check:*** *Comfortable with Stage 0's authentication/authorization/accountability distinction and Stage 1's credential-custody pattern — this stage answers the question Stage 1 deliberately left open.*
 
-#### **2.1 The Problem in One Sentence**
+#### 2.1 The Problem in One Sentence
 
 Most organizations deploying agents today have solved "can this agent prove it's the agent it claims to be" using static API keys or shared service accounts — which works, in the narrow sense that it authenticates something, but creates standing, long-lived, broadly-scoped credentials that sit in configuration files and environment variables, exactly the kind of asset an attacker (or a manipulated agent, per Stage 1) wants to find. The harder, mostly unsolved problem at most organizations is authorization: not "who is this" but "what should this specific agent be allowed to do, right now, for this specific task" — and the gap between those two questions is where almost every real agent-identity incident lives.
 
-#### **2.2 Why Agents Need a Different Identity Model Than Humans or Servers**
+#### 2.2 Why Agents Need a Different Identity Model Than Humans or Servers
 
 Human identity (you log in once a day, your identity rarely changes) and traditional server identity (a server exists for months, has a stable network location) both assume relative stability. Agents share none of that stability: they are often ephemeral (spun up for a single task and destroyed), they proliferate rapidly (one engineer might "own" dozens of agents), and a single agent's blast radius can span many internal systems in one session. An identity system designed for humans-who-log-in-once-a-day or servers-that-exist-for-months will always be playing catch-up against a population that can change shape in minutes.
 
-#### **2.3 SPIFFE/SPIRE — Workload Identity for Agents**
+#### 2.3 SPIFFE/SPIRE — Workload Identity for Agents
 
 SPIFFE (Secure Production Identity Framework For Everyone) is an open standard for issuing cryptographic identity to workloads — processes, containers, and (increasingly) agents — rather than to humans. SPIRE is the reference implementation. Here's the mechanism in plain terms:
 
@@ -349,21 +347,21 @@ SPIFFE (Secure Production Identity Framework For Everyone) is an open standard f
 
 4. Two SPIFFE-identified processes can then establish mutual TLS directly with each other, using their SVIDs, without any shared secret or manual enrollment step.
 
-###### **What this actually buys you**
+###### What this actually buys you
 
 An agent spun up automatically a few seconds ago, with no human ever having manually registered it, can prove cryptographically which legitimate process it is — and that proof expires quickly and is re-issued continuously, rather than being a static secret someone has to remember to rotate. This is the direct structural fix for the static-API-key problem in section 2.1.
 
-##### **The limitation you must hold onto**
+##### The limitation you must hold onto
 
 An SVID proves "this is the legitimate agent process running this specific container image." It proves nothing about what that process is about to do. SPIFFE authenticates the workload, not the intent — this is exactly the authentication-versus-authorization distinction from Stage 0, section 0.2, reappearing in its most consequential form yet. A perfectly authenticated agent, with a perfectly valid SVID, can still be the agent doing something it shouldn't, because identity and authorization are different questions answered by different layers.
 
-#### **2.4 Compound Identity — The Hardest Open Problem**
+#### 2.4 Compound Identity — The Hardest Open Problem
 
 Most real agent actions happen on behalf of someone or something else: a human user, a business process, another agent that delegated a task. The authorization decision has to account for both "which agent is this" (answered by SPIFFE) and "on whose authority is it acting right now" (not answered by SPIFFE at all). An agent with a perfectly valid SVID acting on behalf of a now-suspended user account should be blocked — but a workload-identity check alone has no way to know that, because it was never designed to carry that second piece of context.
 
 The architectural answer is to carry both pieces of information together, as a structured claim — commonly an "actor" claim inside a JWT, following the pattern defined in RFC 8693 (OAuth 2.0 Token Exchange) — so every downstream system can see, in one place, both which agent is acting and on whose authority, in a form that can't be forged or silently dropped along the way.
 
-#### **2.5 Delegation Patterns Compared**
+#### 2.5 Delegation Patterns Compared
 
 |**Patern**|**How It Works**|**When It's the Right Choice / Wrong Choice**|
 |---|---|---|
@@ -373,11 +371,11 @@ The architectural answer is to carry both pieces of information together, as a s
 |Federated Identty|Cross-domain trust without a shared<br>credental store|Useful for cross-organizaton trust, but federaton<br>agreements were built for human SSO cadence,<br>not agents discovering new counterpartes at<br>runtme|
 |Impersonaton|The agent simply assumes the user's full<br>identty|Avoid as a default patern — it destroys the audit<br>distncton between "the user did this" and "the<br>agent did this for the user," which is exactly the<br>accountability property from Stage 0, secton 0.2|
 
-###### **HANDS-ON LAB  Design a Compound Identity Token**
+###### HANDS-ON LAB  Design a Compound Identity Token
 
 *Continuing the customer support agent from Stage 1's lab: the agent now needs to draft and, after human approval, send email replies on behalf of the support team, sometimes triggered automatically by a ticket and sometimes explicitly invoked by a specific human agent on the support team.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Sketch (as a simple JSON structure, no need for exact JWT syntax) a token that captures both the agent's own workload identity and the human/process it's currently acting for, using the actor-claim pattern from section 2.4.
 
@@ -391,7 +389,7 @@ The architectural answer is to carry both pieces of information together, as a s
 
 **Reference:** *EASA-02, Domain 2*
 
-###### **KNOWLEDGE CHECK  Stage 2**
+###### KNOWLEDGE CHECK  Stage 2
 
 1. Explain, without using the term 'SPIFFE,' what workload attestation actually checks, and why that's different from just trusting whatever credential shows up.
 
@@ -403,11 +401,11 @@ The architectural answer is to carry both pieces of information together, as a s
 
 ###### **STAGE 3** -   Week 4
 
-### **Model Context Protocol (MCP) Security**
+### Model Context Protocol (MCP) Security
 
 MCP is how an agent talks to tools — and it is, as of 2026, the single most actively exploited layer in the agentic stack, with documented vulnerability research showing the majority of public MCP servers carry at least one serious flaw class. This stage takes the credential-custody and identity foundations from Stages 1–2 and applies them to the specific, currently-live threat landscape around MCP.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain MCP's protocol basics (JSON-RPC, SSE vs. STDIO transport) and where each transport's biggest risk lives
 
@@ -421,11 +419,11 @@ MCP is how an agent talks to tools — and it is, as of 2026, the single most ac
 
 ***Prerequisite check:*** *Comfortable with the credential-custody pattern (Stage 1.5) and compound identity (Stage 2.4) — MCP gateway design in this stage assumes you can use both.*
 
-#### **3.1 MCP in One Paragraph**
+#### 3.1 MCP in One Paragraph
 
 The Model Context Protocol standardizes how an AI agent discovers and calls external tools — a database query tool, a file-search tool, a calendar tool, anything. It's built on JSON-RPC 2.0 messaging over one of two transports: STDIO (the MCP server runs as a local subprocess, inheriting the privilege of whatever is running it — common for IDE-integrated coding assistants) or SSE/HTTP (a remote, networked server shared across an organization). The protocol's specification leaves a lot of authentication and session-handling behavior up to whoever implements a given server, which is the root cause of most of what follows in this stage.
 
-#### **3.2 Five Attack Patterns You Need to Recognize on Sight**
+#### 3.2 Five Attack Patterns You Need to Recognize on Sight
 
 - **Tool Poisoning —** a tool's description — text the agent reads as part of its reasoning context, that a human reviewer typically never sees — contains hidden instructions. A tool labeled "fetch data from S3" can also instruct the agent, invisibly, to exfiltrate results elsewhere. This is the MCP-specific instance of the "content becomes instructions" problem from Stage 1.1.
 
@@ -437,11 +435,11 @@ The Model Context Protocol standardizes how an AI agent discovers and calls exte
 
 - **Schema Manipulation —** tool input/output schemas are altered or under-validated, letting an agent be induced to pass malicious parameters (oversized payloads, path-traversal strings, injection payloads) that the receiving system doesn't adequately check.
 
-#### **3.3 Why Validating Only at Discovery Time Fails**
+#### 3.3 Why Validating Only at Discovery Time Fails
 
 It's tempting to think "we scanned the tool definitions before deploying them, so we're covered." This misses a specific, documented failure mode: a model that receives a clean, validated tool list can still be manipulated, at the moment it actually calls the tool, into supplying malicious parameters the original schema review never saw in action. The fix is structural, not a one-time check: gate twice. Validate the tool's definition and description when it's first registered (discovery time), and re-validate every actual call against that same schema every time the tool is invoked (invocation time). The second gate catches what the first one structurally cannot.
 
-#### **3.4 The MCP Gateway Pattern**
+#### 3.4 The MCP Gateway Pattern
 
 Just as Stage 1.5 established that credentials should live outside the agent, this stage establishes the equivalent pattern for tool access generally: route all MCP traffic through a centralized gateway, rather than letting every developer's local configuration decide which MCP servers to trust. The gateway becomes the one place that owns policy for the whole organization, regardless of how many individual agents or developers exist.
 
@@ -453,11 +451,11 @@ Just as Stage 1.5 established that credentials should live outside the agent, th
 |4. Policy evaluaton at<br>invocaton|Every tool call is re-evaluated against policy at the moment it happens — both the<br>caller's authorizaton and the call's actual parameters against the original schema|
 |5. Tamper-evident audit<br>logging|Every allow, deny, and policy change is logged with integrity protecton, supportng the<br>accountability principle from Stage 0.2|
 
-###### **HANDS-ON LAB  Build a Minimal MCP Gateway Policy**
+###### HANDS-ON LAB  Build a Minimal MCP Gateway Policy
 
 *Your organization has three internal MCP servers (a CRM-read tool, a knowledge-base-search tool, an email-draft tool — matching the Stage 1 support agent) and is being asked to onboard a fourth, third-party MCP server from a vendor for calendar scheduling.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Write an allowlist policy (in plain pseudo-config — YAML-like is fine) naming the four approved servers and, for each, the specific tools within it that are approved for use (not blanket server-level trust).
 
@@ -471,7 +469,7 @@ Just as Stage 1.5 established that credentials should live outside the agent, th
 
 **Reference:** *EASA-02, Domain 5*
 
-###### **KNOWLEDGE CHECK  Stage 3**
+###### KNOWLEDGE CHECK  Stage 3
 
 1. Explain the difference between tool poisoning and tool spoofing in your own words, with a one-sentence example of each that a colleague unfamiliar with MCP would understand.
 
@@ -483,11 +481,11 @@ Just as Stage 1.5 established that credentials should live outside the agent, th
 
 ###### **STAGE 4** -   Week 5
 
-### **Agent-to-Agent (A2A) Security**
+### Agent-to-Agent (A2A) Security
 
 Where MCP governs agent-to-tool trust, A2A governs agent-to-agent trust — increasingly across organizational and vendor boundaries, with more than 150 production organizations on Google's A2A protocol as of 2026. This stage closes Phase II by extending everything you've built so far (identity, gateway patterns) to the case where the thing on the other end of the connection isn't a tool you control, but another autonomous agent you may not.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain Agent Cards, discovery, and the role of Signed Agent Cards introduced in A2A v1.0
 
@@ -501,15 +499,15 @@ Where MCP governs agent-to-tool trust, A2A governs agent-to-agent trust — incr
 
 ***Prerequisite check:*** *Comfortable with the MCP gateway pattern (Stage 3.4) and compound identity (Stage 2.4) — most of A2A security is the same pattern applied to a peer-to-peer rather than agent-to-tool relationship.*
 
-#### **4.1 A2A in One Paragraph**
+#### 4.1 A2A in One Paragraph
 
 A2A (Agent2Agent), originated by Google and now governed by the Linux Foundation under neutral, multivendor stewardship, lets agents discover, communicate, and collaborate as peers — including across organizational and framework boundaries, so an agent built on one company's framework can delegate a task to an agent built entirely differently at another company. Discovery works through Agent Cards: structured documents an agent publishes describing what it can do, what authentication it expects, and where to reach it. A host agent retrieves and incorporates Agent Cards into its own planning when deciding whether and how to delegate a task — which should immediately remind you of the "content becomes instructions" risk from Stage 1.1, because that's exactly what's happening here.
 
-#### **4.2 Why Early A2A Deployments Were Risky, and What Changed**
+#### 4.2 Why Early A2A Deployments Were Risky, and What Changed
 
 A2A's specification, in its earlier versions, treated authentication as effectively optional, leaving credential management up to whoever implemented a given agent — the same root cause behind the MCP risk landscape in Stage 3.1. The single biggest improvement, introduced in A2A v1.0, was Signed Agent Cards: a cryptographic signature tied to the publishing domain, so a receiving agent can verify a card actually came from the domain it claims to represent, rather than trusting it at face value. This is the protocol-level fix for agent card forgery — but, importantly, signing is supported by the spec, not enforced by it, meaning unsigned deployments remain vulnerable.
 
-#### **4.3 Four Threats to Recognize on Sight**
+#### 4.3 Four Threats to Recognize on Sight
 
 - **Agent Card Poisoning —** malicious instructions embedded in a Agent Card's metadata fields, which a host agent's reasoning engine incorporates into its planning context — published research demonstrates this causing unintended transmission of sensitive data (PII, payment details) in a simulated booking scenario.
 
@@ -519,7 +517,7 @@ A2A's specification, in its earlier versions, treated authentication as effectiv
 
 - **Rogue / Compromised Trusted Agents —** an agent that was legitimately onboarded and has behaved correctly is later compromised, and its established trust is exploited precisely because that prior good behavior makes detection less likely. This is the most operationally dangerous of the four, and worth sitting with: it means a clean track record is not evidence of current safety.
 
-#### **4.4 The Enterprise A2A Gateway**
+#### 4.4 The Enterprise A2A Gateway
 
 The same centralizing instinct from Stage 3.4 (MCP gateway) applies here, adapted for peer-to-peer trust rather than tool access:
 
@@ -531,15 +529,15 @@ The same centralizing instinct from Stage 3.4 (MCP gateway) applies here, adapte
 |Policy Evaluaton|Every delegated task is checked against policy (budget limits, data-sensitvity boundaries,<br>allowed task types) before acceptance|
 |Audit Logging|Full request/response capture ted to the compound identty of both sides of the interacton|
 
-#### **4.5 What Cryptography Does Not Fix**
+#### 4.5 What Cryptography Does Not Fix
 
 It's worth being precise here, because this is a trap even experienced engineers fall into: signing Agent Cards and using mutual TLS secures the integrity and authenticity of a message — it proves the message came from who it claims to and wasn't tampered with in transit. It does nothing to prevent an agent from being legitimately, validly manipulated into forming a bad decision in the first place, the way prompt injection manipulates a single agent (Stage 1.1). A cryptographically perfect, fully authenticated delegation to do something harmful is still harmful. You'll see this exact point reinforced again in Stage 8 when payment protocols enter the picture — the lesson generalizes.
 
-###### **HANDS-ON LAB  Design an A2A Trust Broker Decision**
+###### HANDS-ON LAB  Design an A2A Trust Broker Decision
 
 *Your customer support agent (from Stages 1–3) now needs to delegate a subset of tasks — specifically, checking shipping status — to an external logistics partner's agent, reachable via A2A.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Write the discovery-validation check your gateway should perform on the logistics partner's Agent Card before any task is ever delegated to it.
 
@@ -553,7 +551,7 @@ It's worth being precise here, because this is a trap even experienced engineers
 
 **Reference:** *EASA-02, Domain 6; EASA-03, Domain 13*
 
-###### **KNOWLEDGE CHECK  Stage 4**
+###### KNOWLEDGE CHECK  Stage 4
 
 1. Explain why Signed Agent Cards reduce, but do not eliminate, A2A's spoofing risk.
 
@@ -563,11 +561,11 @@ It's worth being precise here, because this is a trap even experienced engineers
 
 4. Sketch, in plain language, what 'claims mapping' (section 4.4) would do differently than simply trusting whatever authority an external Agent Card claims for itself.
 
-###### **STAGE CAPSTONE  Phase II Capstone — The Unified Trust Chain**
+###### STAGE CAPSTONE  Phase II Capstone — The Unified Trust Chain
 
 Take the architecture sketch you produced at the end of Phase I (Stage 1 capstone) and extend it into a complete identity-to-trust design covering everything in Stages 2 through 4.
 
-###### **Requirements:**
+###### Requirements:
 
 - A compound identity design for every agent in your system (Stage 2.4), including how it's issued and what it carries.
 
@@ -581,17 +579,17 @@ Take the architecture sketch you produced at the end of Phase I (Stage 1 capston
 
 trust-broker A2A patterns are both present and correctly reasoned, not just named.
 
-## **Phase III — Governance & Operations**
+## Phase III — Governance & Operations
 
 Phase I gave you architecture. Phase II gave you the identity-to-trust chain. Phase III turns both into something an organization can actually run day to day and defend to a regulator: governance that maps to real obligations, a security operations capability that watches the system continuously, and the testing and reliability discipline that finds problems before they become incidents. This phase maps to EASA-03 and EASA-04.
 
 ###### **STAGE 5** -   Week 6
 
-### **AI Governance, Risk & Compliance**
+### AI Governance, Risk & Compliance
 
 Architecture without governance is a prototype that happens to be well-built. This stage gives you the regulatory and framework literacy to operate agentic systems in a real enterprise — including the EU AI Act's high-risk system deadline — December 2, 2027 for Annex III systems after the June 2026 Digital Omnibus deferral (Article 50 transparency has applied since August 2026) — which is likely close at hand by the time you're studying this.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain the OWASP Top 10 for Agentic Applications (ASI01–ASI10) and map each category to a control owner
 
@@ -605,7 +603,7 @@ Architecture without governance is a prototype that happens to be well-built. Th
 
 ***Prerequisite check:*** *Comfortable with all of Phase II — this stage assumes you can reason about identity, MCP, and A2A controls well enough to map them onto a compliance framework.*
 
-#### **5.1 The OWASP Top 10 for Agentic Applications (ASI01–ASI10)**
+#### 5.1 The OWASP Top 10 for Agentic Applications (ASI01–ASI10)
 
 This is the field's closest thing to a shared vocabulary across vendors and organizations. You should be able to recite these from memory by the end of this stage — not because memorization is the goal, but because fluent recall is what lets you participate in a real architecture review at speed.
 
@@ -627,23 +625,23 @@ This is the field's closest thing to a shared vocabulary across vendors and orga
 
 Notice that you already have working knowledge of seven of these ten categories — this stage's job is mostly to give you the shared label and to fill the three genuine gaps (ASI04's broader supply-chain scope, ASI08, and ASI09), which Stage 7 will complete.
 
-#### **5.2 What Identity Fixes, and What It Doesn't**
+#### 5.2 What Identity Fixes, and What It Doesn't
 
 It's tempting, once you've spent three weeks building identity and trust infrastructure, to believe a strong identity layer solves most agentic risk. It doesn't, and overclaiming for any single control undermines your credibility in a real review. A strong identity layer (Stage 2) is the most direct fix for ASI03, and contributes meaningfully to ASI01 and ASI07. It does nothing for a vulnerability in a third-party MCP server's own code (ASI04), a remote-code-execution bug in the runtime itself (ASI05), or a cascading failure where one bad output propagates virally through a multi-agent pipeline (ASI08). Each ASI category needs its own primary control owner — being able to say which one, and why, is a core skill of this stage.
 
-#### **5.3 ISO 42001 and the EU AI Act — What Actually Maps**
+#### 5.3 ISO 42001 and the EU AI Act — What Actually Maps
 
 ISO/IEC 42001 is a certifiable AI management system standard — a governance backbone covering risk management, data governance, human oversight, and continual improvement. The EU AI Act is binding law for organizations operating in or serving the EU, with a risk-based four-tier classification and a critical deadline: the Act's requirements for high-risk AI systems (Annex III) become fully applicable on December 2, 2027 (deferred from August 2026 by the Digital Omnibus). The honest relationship between the two: independent analysis finds roughly 60–70% of EU AI Act documentation requirements map directly onto existing ISO 42001 clauses, with seven core articles having direct counterparts. The gaps that remain are real — conformity assessment procedures, CE marking, the depth of Annex IV technical documentation, and statutory incident-reporting timelines. Treat ISO 42001 as the foundation, not the finish line.
 
-###### **A trap to avoid**
+###### A trap to avoid
 
 Do not tell a stakeholder "we're ISO 42001 certified, so we're EU AI Act compliant." That conflation is exactly the mistake regulators and increasingly enterprise legal teams are starting to test for. The correct statement is: "ISO 42001 gives us the governance foundation; here is our documented gap analysis against the specific Act requirements that remain."
 
-#### **5.4 Building a Framework Crosswalk**
+#### 5.4 Building a Framework Crosswalk
 
 The practical governance artifact this stage produces is a crosswalk: a table where one control, with one piece of evidence, satisfies multiple frameworks at once — instead of duplicating evidence-gathering for every regulation separately. This is the single most useful document you can hand an auditor, because it answers "can you prove this control is operating" once, in a form that's reusable across every framework that cares about it.
 
-#### **5.5 Autonomy Levels — Operationalizing "Least Agency"**
+#### 5.5 Autonomy Levels — Operationalizing "Least Agency"
 
 OWASP's framing of Least Agency — autonomy is a privilege an agent earns through demonstrated reliability, not a default granted at deployment — needs a concrete scale to be enforceable rather than aspirational.
 
@@ -655,11 +653,11 @@ OWASP's framing of Least Agency — autonomy is a privilege an agent earns throu
 |L3|Delegated autonomy|Post-hoc audit; real-tme approval only for irreversible actons|
 |L4|Full autonomy|Periodic governance review only|
 
-###### **HANDS-ON LAB  Build a Framework Crosswalk and Classify an Agent Fleet**
+###### HANDS-ON LAB  Build a Framework Crosswalk and Classify an Agent Fleet
 
 *You're handed a list of six agents your organization runs: an internal meeting-notes summarizer, a customer support agent (from Phase II) with CRM access, an automated invoice-processing agent with payment-system access, an internal code-review agent, a marketing-content drafting agent, and an HR-policy question-answering agent.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. For each of the six agents, assign an ASI category (or categories) that represents its highest residual risk, and name the primary control owner using the section 5.2 reasoning.
 
@@ -673,7 +671,7 @@ OWASP's framing of Least Agency — autonomy is a privilege an agent earns throu
 
 **Reference:** *EASA-03, Domains 3 and 14*
 
-###### **KNOWLEDGE CHECK  Stage 5**
+###### KNOWLEDGE CHECK  Stage 5
 
 1. Pick any three ASI codes and explain, for each, one control that would NOT meaningfully reduce that risk even though it sounds related (e.g., 'strong identity doesn't fix ASI05 because...').
 
@@ -685,11 +683,11 @@ OWASP's framing of Least Agency — autonomy is a privilege an agent earns throu
 
 ###### **STAGE 6** -   Week 7
 
-### **AI SOC, Observability & Memory Security**
+### AI SOC, Observability & Memory Security
 
 Everything so far has been design-time: architecture, identity, governance. This stage is about what happens after launch — watching a live agentic system well enough to know the difference between "it's behaving oddly because it's a hard task" and "it's behaving oddly because something is actively wrong."
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Distinguish AI observability platforms (built for engineering quality) from an AI SOC capability (built for security detection and response)
 
@@ -703,15 +701,15 @@ Everything so far has been design-time: architecture, identity, governance. This
 
 ***Prerequisite check:*** *Comfortable with Stage 2 (identity) and Stage 5 (ASI categories) — this stage builds detection logic directly on both.*
 
-#### **6.1 Observability Is Not Security Monitoring**
+#### 6.1 Observability Is Not Security Monitoring
 
 This distinction matters more than it might seem. Tools like LangSmith, Langfuse, and Arize Phoenix are built primarily to answer engineering questions: why did this agent loop, why did this tool call fail, why did output quality drift. They are necessary infrastructure — an AI SOC cannot exist without the trace data these platforms capture — but they are not, by themselves, a security capability. An AI SOC additionally needs security-specific detection logic (is this trace a poisoning attempt, not just a quality regression), tested response playbooks, and integration with your existing security operations team. Buying an observability platform is not the same project as building an AI SOC, even though the first is a prerequisite for the second.
 
-#### **6.2 Seven Surfaces, One Correlated Picture**
+#### 6.2 Seven Surfaces, One Correlated Picture
 
 An AI SOC monitors seven surfaces — agents, MCP, A2A, memory, runtime, guardrails, identity — and the design choice that determines whether it actually works is correlating signals across these surfaces rather than watching each in isolation. A single odd tool call is noise. The same odd tool call, immediately after an unsigned Agent Card interaction (Stage 4.3), and immediately before an unusual memory write (covered below), is a credible incident. This cross-surface correlation is, operationally, the same MAESTRO cross-layer thinking from Stage 1.3 — just running continuously against live data instead of being done once at design time.
 
-#### **6.3 Memory Governance Lifecycle**
+#### 6.3 Memory Governance Lifecycle
 
 Agent memory is unusually hard to govern because it's written to continuously, by the agent's own judgment about what's worth remembering — unlike a conventional database where writes follow predictable application logic.
 
@@ -725,19 +723,19 @@ Agent memory is unusually hard to govern because it's written to continuously, b
 |Delete|Cryptographic erasure preferred over logical deleton for sensitve data|
 |Audit|Every stage logged immutably, independent of the memory content itself|
 
-###### **The single most common real-world gap in this area**
+###### The single most common real-world gap in this area
 
 Deleting an episodic memory entry ("the user asked X on this date") does nothing to the semantic or graph-memory representations already derived from it elsewhere in the system. A right-to-erasure request satisfied only at the episodic layer leaves the data subject's information persisting in a different form — meeting the letter of a narrow deletion request while violating its intent. Provenance and lineage tracking (knowing what was derived from what) is what makes erasure genuinely enforceable, not just procedurally claimed.
 
-#### **6.4 The Kill Switch**
+#### 6.4 The Kill Switch
 
 Every agent above the most basic autonomy level (Stage 5.5) needs a kill switch — the ability to immediately suspend its credentials and halt in-flight or queued actions. The critical design requirement: this has to operate at the identity/credential layer (revoking the agent's SPIFFE SVID and any outstanding tokens from Stage 2), not by sending the agent a polite shutdown signal and hoping it complies. A compromised or rogue agent is precisely the scenario where you cannot assume cooperation — which is the whole point of having a kill switch in the first place.
 
-###### **HANDS-ON LAB  Design Cross-Surface Detection Logic**
+###### HANDS-ON LAB  Design Cross-Surface Detection Logic
 
 *The invoice-processing agent from Stage 5's lab (with payment-system access) begins exhibiting an unusual pattern: three tool calls to an unfamiliar vendor-lookup endpoint in two minutes, followed by a memory write that references a vendor name not present anywhere in its recent task history.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Identify which of the seven monitored surfaces (section 6.2) each signal in this scenario belongs to.
 
@@ -751,7 +749,7 @@ Every agent above the most basic autonomy level (Stage 5.5) needs a kill switch 
 
 **Reference:** *EASA-04, Domains 9, 10, and 14*
 
-###### **KNOWLEDGE CHECK  Stage 6**
+###### KNOWLEDGE CHECK  Stage 6
 
 1. Explain to a colleague who only knows observability tools (LangSmith, Langfuse) why their existing setup is necessary but not sufficient for an AI SOC.
 
@@ -761,11 +759,11 @@ Every agent above the most basic autonomy level (Stage 5.5) needs a kill switch 
 
 4. Why must a kill switch operate at the identity layer rather than by signaling the agent to stop? What assumption would you be making if you relied on the latter?
 
-### **STAGE 7** -   Week 8 **Red Teaming, Cognitive Security & Reliability Engineering**
+### STAGE 7** -   Week 8 **Red Teaming, Cognitive Security & Reliability Engineering
 
 This stage closes the remaining ASI gaps from Stage 5 (ASI08 and ASI09), gives you the offensive skill to find problems before an adversary does, and introduces Agent Reliability Engineering — treating reliability as a measurable, negotiated engineering discipline rather than an aspiration.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Design and execute a red-team exercise against an agentic system, attacking across all five surfaces from the AI SOC model
 
@@ -779,15 +777,15 @@ This stage closes the remaining ASI gaps from Stage 5 (ASI08 and ASI09), gives y
 
 ***Prerequisite check:*** *Comfortable with all of Phase II and Stages 5–6 — red teaming this stage's lab requires you to find and chain weaknesses across identity, MCP, A2A, and detection logic you've already built.*
 
-#### **7.1 Red Teaming Across Five Surfaces**
+#### 7.1 Red Teaming Across Five Surfaces
 
 A conventional penetration test finds the SQL injection vulnerability in a tool your agent calls. It does not find the prompt-injection chain that gets your agent to call that tool with malicious parameters in the first place. Agentic red teaming needs both — testing conventional security flaws and agent-specific behavioral failure modes, using attack patterns specific to each surface: agents (goal-hijack via injected content), MCP (tool poisoning and schema manipulation), A2A (card spoofing, agent-in-the-middle), memory (poisoning via every available write path), and runtime (sandbox escape, resource exhaustion). Automated test suites built against the OWASP ASI categories are a good coverage floor, but the real value of human-led red teaming is chaining multiple categories together the way a real adversary would — for example, an ASI04 supply-chain foothold combined with an ASI07 inter-agent exploit to produce an ASI08 cascading failure.
 
-#### **7.2 Purple Teaming — Closing the Loop**
+#### 7.2 Purple Teaming — Closing the Loop
 
 A red-team report that sits in a document and is never operationalized is a wasted exercise. Purple teaming pairs every successful red-team finding with a detection pattern your AI SOC's correlation logic (Stage 6.2) can actually catch, an automated, repeatable version of the attack for ongoing regression testing, and a tested response playbook including kill-switch criteria. This converts a point-in-time finding into a durable improvement.
 
-#### **7.3 Cognitive Security — The Threats With No Conventional Precedent**
+#### 7.3 Cognitive Security — The Threats With No Conventional Precedent
 
 This is where ASI08 and ASI09 finally get full treatment, and where this program's central theme from Stage 1.1 reaches its sharpest form: protecting the integrity of an agent's reasoning process itself, not just the systems around it.
 
@@ -803,7 +801,7 @@ This is where ASI08 and ASI09 finally get full treatment, and where this program
 
 - **Agent Deception —** in multi-agent systems, one agent deliberately misrepresents information to manipulate a peer's behavior — the mechanism behind agent collusion and a direct driver of ASI09 (human-agent trust exploitation, when a deceived agent then misleads a human reviewer downstream).
 
-#### **7.4 Agent Reliability Engineering (ARE)**
+#### 7.4 Agent Reliability Engineering (ARE)
 
 Classical Site Reliability Engineering gave operations teams a quantitative vocabulary — SLIs, SLOs, error budgets — for negotiating reliability against feature velocity. Agentic systems need the same discipline, measuring failure modes classical SRE never anticipated: an agent can be perfectly available and fast while being confidently, quietly wrong.
 
@@ -816,11 +814,11 @@ Classical Site Reliability Engineering gave operations teams a quantitative voca
 
 Error-budget burn should trigger an automatic autonomy downgrade (back toward L1/L2 from Stage 5.5) rather than relying on a human to notice a dashboard trend — because the agents most likely to need this safeguard are, by definition, the ones with the fewest standing human checkpoints.
 
-###### **HANDS-ON LAB  Red Team and Purple Team Your Own System**
+###### HANDS-ON LAB  Red Team and Purple Team Your Own System
 
 *Return to the complete system you've been building across Stages 1–6 (the customer support agent and its eventual logistics/A2A extension). You will now attack it.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Design three distinct attack chains, each combining at least two ASI categories, that target your own system's specific architecture (not generic attacks — use the actual tools, agents, and trust relationships you designed in earlier labs).
 
@@ -832,7 +830,7 @@ Error-budget burn should trigger an automatic autonomy downgrade (back toward L1
 
 **Deliverable:** A red/purple team report: three attack chains with ASI mapping and cognitive-security analysis, three corresponding detection patterns and playbooks, and two defined SLIs with downgrade triggers. **Reference:** *EASA-04, Domains 12, 18, and 19*
 
-###### **KNOWLEDGE CHECK  Stage 7**
+###### KNOWLEDGE CHECK  Stage 7
 
 1. Why is a human-led red team exercise that chains multiple ASI categories more valuable than running an automated test suite against each ASI category independently?
 
@@ -842,11 +840,11 @@ Error-budget burn should trigger an automatic autonomy downgrade (back toward L1
 
 4. Describe, in your own words, why reliability engineering and security operations should share an incident postmortem process rather than running as two separate functions with two separate dashboards.
 
-###### **STAGE CAPSTONE  Phase III Capstone — Governance, Operations & Resilience Package**
+###### STAGE CAPSTONE  Phase III Capstone — Governance, Operations & Resilience Package
 
 Extend your system design (now spanning Phases I–III) with a complete operations and governance package.
 
-###### **Requirements:**
+###### Requirements:
 
 - The framework crosswalk and autonomy classification from Stage 5, finalized for your specific system.
 
@@ -858,17 +856,17 @@ Extend your system design (now spanning Phases I–III) with a complete operatio
 
 **Graded against:** Whether the executive summary is genuinely readable by a non-technical risk-owning audience (this is a distinct, gradable skill from the technical design work), and whether the red-team findings actually trace through to a specific, testable detection pattern rather than a generic recommendation.
 
-## **Phase IV — Economics & Mastery**
+## Phase IV — Economics & Mastery
 
 The final phase covers the part of agentic security that doesn't fit neatly into either traditional cybersecurity or traditional financial controls — agents that spend money and consume budget at machine speed — and then closes the program with a single integrated capstone that requires everything from Stages 0 through 8 at once, the way a real architect role actually demands.
 
 ###### **STAGE 8** -   Week 9
 
-### **Economic Security: FinOps, Autonomous Commerce & Post-Quantum**
+### Economic Security: FinOps, Autonomous Commerce & Post-Quantum
 
 This stage covers a category of risk most security curricula skip entirely: an agent's ability to spend, both compute budget and (increasingly) real money, faster than any human approval workflow was built to catch. It also covers a multi-year migration — post-quantum cryptography — that the identity and trust infrastructure you've spent six weeks building needs to anticipate now, even though the acute threat is still some years out.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain budget exhaustion and cost amplification attacks, and why they are simultaneously reliability and financial incidents
 
@@ -882,7 +880,7 @@ This stage covers a category of risk most security curricula skip entirely: an a
 
 ***Prerequisite check:*** *Comfortable with Stage 4 (A2A trust) and Stage 7 (cognitive security) — this stage applies both directly to financial transactions.*
 
-#### **8.1 Cost as an Attack Surface**
+#### 8.1 Cost as an Attack Surface
 
 A misconfigured or manipulated agent in an infinite tool-call loop is not just a reliability problem (Stage 7.4) — it's a financial incident, potentially a large one, that can unfold in minutes rather than the days a traditional procurement-fraud control was designed to catch.
 
@@ -890,11 +888,11 @@ A misconfigured or manipulated agent in an infinite tool-call loop is not just a
 
 - **Cost Amplification Attacks —** an attacker exploits a multi-agent delegation chain so a single low-cost trigger fans out into many expensive downstream calls — the financial expression of the cascading-failure mechanism (ASI08, Stage 7.3) you already studied.
 
-##### **The design principle: one circuit breaker, two triggers**
+##### The design principle: one circuit breaker, two triggers
 
 Build a single kill-switch and circuit-breaker mechanism (Stage 6.4) that can be triggered either by security policy violation or by budget-envelope breach, rather than building two separate emergency-stop systems owned by two different teams. In practice, runaway cost is frequently the first observable symptom of a cascading failure or a compromised agent — well before a security-specific signal fires — so treating cost anomaly detection and security anomaly detection as the same investigation workflow, not two disconnected dashboards, catches incidents earlier.
 
-#### **8.2 Autonomous Commerce and AP2**
+#### 8.2 Autonomous Commerce and AP2
 
 Google's Agent Payments Protocol (AP2), now governed via the FIDO Alliance's Payments Technical Working Group, solves a structural problem traditional payment APIs were never built for: they assume real-time human authorization at the moment of transaction, which doesn't hold when an agent acts on delegated authority, potentially asynchronously, on a task a human approved only in general terms earlier.
 
@@ -907,11 +905,11 @@ Google's Agent Payments Protocol (AP2), now governed via the FIDO Alliance's Pay
 
 Independent research reports a meaningful fraud-rate improvement under AP2's verifiable-intent model compared to conventional API-based agent payment flows, concentrated specifically in tampering-related fraud — which makes sense, because mandate signing makes tampering cryptographically detectable rather than merely procedurally discouraged.
 
-#### **8.3 What AP2 Does Not Fix — Applying Stage 7 Here**
+#### 8.3 What AP2 Does Not Fix — Applying Stage 7 Here
 
 This is the most important conceptual link in this stage, and it's worth being explicit about it: a verifiablepayment protocol secures the transaction, not the decision to transact. Published red-team research against AP2 confirms exactly what Stage 7's cognitive-security framework would predict — a payment protocol's cryptographic guarantees protect a mandate's integrity once it's signed, but do nothing to prevent an agent from being manipulated, via the same goal-hijacking and reasoning-manipulation mechanisms from Stage 7.3, into forming and signing a mandate it should never have formed. The cryptography is sound; the upstream risk is unchanged by it. A payment agent needs everything from Stages 1 through 7 just as much as a non-payment agent does — AP2 adds a powerful additional layer, it doesn't replace any of the earlier ones.
 
-#### **8.4 Post-Quantum Readiness — Why It Belongs Here, Not Just in Cryptography Class**
+#### 8.4 Post-Quantum Readiness — Why It Belongs Here, Not Just in Cryptography Class
 
 The identity and trust infrastructure from Stage 2 (SPIFFE SVIDs), Stage 4 (signed Agent Cards), and this stage's AP2 mandates is exactly the kind of long-lived, high-value cryptographic material that "harvest-now-decryptlater" attacks target: an adversary recording today's signed exchanges, intending to forge or decrypt them once cryptographically relevant quantum computers exist, is a realistic threat model for infrastructure you expect to remain in service for years.
 
@@ -925,15 +923,15 @@ The identity and trust infrastructure from Stage 2 (SPIFFE SVIDs), Stage 4 (sign
 |||and payment mandates going forward|
 |FIPS 205 (SLH-DSA)|Hash-based signatures<br>(conservatve fallback)|Much larger signatures; use as a crypto-agility fallback, not<br>a primary scheme|
 
-###### **The actual near-term action item**
+###### The actual near-term action item
 
 Post-quantum migration is a multi-year project, not a 2026 deliverable, and shouldn't compete for budget against the identity, MCP, A2A, and governance priorities from Phases II and III that address active, currently-exploited risk. What you can and should do now: ensure every new identity, MCP, A2A, and payment-mandate component built from this point forward supports algorithm rotation — crypto-agility — without a hard-coded dependency baked into firmware or an unupgradable protocol version. That single property turns the eventual PQC migration into a configuration change instead of a forklift replacement.
 
-###### **HANDS-ON LAB  Design a Payment-Capable Agent's Economic Controls**
+###### HANDS-ON LAB  Design a Payment-Capable Agent's Economic Controls
 
 *Your invoice-processing agent (Stage 5) is being extended to autonomously approve and pay vendor invoices under $2,000 using AP2, with anything above that routed to human approval.*
 
-###### **Tasks:**
+###### Tasks:
 
 1. Design the per-task spend cap and the FinOps budget envelope (section 8.1) as two independent, redundant controls — explain what each one catches that the other might miss.
 
@@ -945,7 +943,7 @@ Post-quantum migration is a multi-year project, not a 2026 deliverable, and shou
 
 **Deliverable:** An economic-controls design document: the dual-control design, the unified circuit-breaker trigger, the injection-scenario analysis with its primary defense, and the crypto-agility requirement statement. **Reference:** *EASA-05, Domains 15, 16, and 21*
 
-###### **KNOWLEDGE CHECK  Stage 8**
+###### KNOWLEDGE CHECK  Stage 8
 
 1. Why should a budget-breach circuit breaker and a security-policy circuit breaker be the same mechanism rather than two separate systems?
 
@@ -957,11 +955,11 @@ Post-quantum migration is a multi-year project, not a 2026 deliverable, and shou
 
 ###### **STAGE 9** -   Week 10
 
-### **Operating Model, Maturity & the Mastery Capstone**
+### Operating Model, Maturity & the Mastery Capstone
 
 This final stage has two parts. First, the organizational layer that makes everything you've built operable by a real team rather than just by you: who owns what, how maturity is measured, how the work gets prioritized. Second, and the centerpiece of the entire program, the Mastery Capstone — a single integrated exercise requiring everything from Stages 0 through 8 applied to one realistic scenario, structured the way a Principal Architect's actual first ninety days on the job would be structured.
 
-###### **BY THE END OF THIS STAGE, YOU WILL BE ABLE TO**
+###### BY THE END OF THIS STAGE, YOU WILL BE ABLE TO
 
 - Explain how the five operating-model functions (Governance Board, AI Security Office, Agent Operations, Platform Engineering, AI SOC, Red Team) divide accountability without creating silos
 
@@ -973,7 +971,7 @@ This final stage has two parts. First, the organizational layer that makes every
 
 ***Prerequisite check:*** *All of Stages 0 through 8 — there is no new conceptual material introduced in section 9.1 and 9.2 that wasn't previewed in EASA-06; this stage is primarily synthesis and assessment.*
 
-#### **9.1 The Operating Model in Brief**
+#### 9.1 The Operating Model in Brief
 
 No single team owns agentic AI security end to end. The model that mirrors how mature organizations already split traditional cybersecurity, cloud platform engineering, and data governance — rather than building an isolated parallel structure — distributes accountability across five functions:
 
@@ -988,7 +986,7 @@ No single team owns agentic AI security end to end. The model that mirrors how m
 
 If you are an individual learner rather than part of an existing team, treat this section as the org chart you'd propose on day one of a new role — not as material you need to memorize for its own sake.
 
-#### **9.2 The Five-Level Maturity Model**
+#### 9.2 The Five-Level Maturity Model
 
 Use this for honest self-assessment, not as a marketing artifact. Most organizations deploying agents in production today, even well-resourced ones, sit at Level 1 or the early part of Level 2 — current research is consistent that authentication is largely solved with static credentials while authorization, lifecycle management, and governance are not.
 
@@ -1000,15 +998,15 @@ Use this for honest self-assessment, not as a marketing artifact. Most organizat
 |4|Measured|Trust-score-informed dynamic authorizaton<br>layered on identty|Purple-team loop closed; KPIs reported<br>quarterly with trend data|
 |5|Optmizing|Hybrid classical/PQC credentals; verifable-<br>credental external trust|Governance antcipates regulatory change;<br>the org is a reference case|
 
-## **The Mastery Capstone**
+## The Mastery Capstone
 
 This is the assessment the entire program has been building toward. It is intentionally open-ended in scenario but specific in requirements — the same balance a real Principal Architect role strikes between "figure out what matters here" and "deliver something concrete by Friday."
 
-###### **STAGE CAPSTONE  Ninety-Day Plan for a New Agentic Platform**
+###### STAGE CAPSTONE  Ninety-Day Plan for a New Agentic Platform
 
 You have just joined an organization (choose a realistic industry context — financial services, healthcare, retail, or one of your own choosing) as its first Enterprise Agentic AI Security Architect. The organization already has roughly 40 AI agents in production, deployed by individual teams with no central oversight, no consistent identity model, and no governance function. Leadership has given you ninety days to produce an assessment and a plan. Produce that plan now, compressed into this capstone.
 
-###### **Requirements:**
+###### Requirements:
 
 - Architecture & Threat Modeling (Stages 0–1): A MAESTRO-based threat model for at least one representative agent from the fictional organization's portfolio, including a cross-layer threat and a runtime isolation decision.
 
@@ -1026,7 +1024,7 @@ You have just joined an organization (choose a realistic industry context — fi
 
 **Graded against:** (1) Whether the plan is genuinely sequenced and prioritized — does it identify the identity substrate as the highest-leverage early investment, consistent with the central lesson of this entire program, rather than treating all seven sections as equally urgent in parallel; (2) technical correctness within each section, evaluated against the standards in Stages 0–8; (3) whether the executive summary is actually readable and persuasive to a nontechnical, risk-owning audience; (4) realism — does the 90-day and 12-month plan reflect what a real organization with finite budget and finite people could actually execute, or does it read as an unprioritized wish list.
 
-#### **Recommended Time Allocation for the Capstone**
+#### Recommended Time Allocation for the Capstone
 
 |**Secton**|**Suggested Time**|
 |---|---|
@@ -1042,7 +1040,7 @@ You have just joined an organization (choose a realistic industry context — fi
 |Economic security|0.5 day|
 |Operatng model, maturity & executve summary|1 day|
 
-## **After the Capstone: Where to Go Next**
+## After the Capstone: Where to Go Next
 
 Completing this curriculum gets a learner to working competence — able to do the four things named in this document's opening (threat-model, design, govern, operate) without supervision on a bounded, realistic scenario. It does not, by itself, make someone a Principal Architect with the scar tissue of having lived through real incidents, real vendor negotiations, and real regulatory audits. That gap closes through practice, not further reading. Three concrete next steps:
 

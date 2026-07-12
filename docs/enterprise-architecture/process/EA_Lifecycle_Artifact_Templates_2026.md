@@ -1,15 +1,15 @@
 ---
-title: "Enterprise Architecture** **<u>Lifecycle Artifacts</u>"
+title: "EA Lifecycle Artifact Templates"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
 source_file: "EA_Lifecycle_Artifact_Templates_2026.pdf"
 doc_type: guide
-tags: ["enterprise-architecture"]
+tags: ["enterprise-architecture", "ai-development"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise Architecture** **<u>Lifecycle Artifacts</u>**
+# EA Lifecycle Artifact Templates
 
 #### TOGAF 10 ADM · All Phases · AI-First Extensions
 

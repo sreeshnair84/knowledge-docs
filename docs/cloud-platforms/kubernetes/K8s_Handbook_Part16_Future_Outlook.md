@@ -9,7 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE KUBERNETES MASTERY**
+# ENTERPRISE KUBERNETES MASTERY
 
 AI Platform Engineering Handbook
 
@@ -19,9 +19,9 @@ AI-Native Kubernetes, Agent Meshes, Autonomous Operations, Green AI
 
 Volume 16 of 16 Final Volume | Edition 2025-2026
 
-### **CHAPTER 1**
+### CHAPTER 1
 
-## **Technology Trends Shaping Kubernetes 2025-2030**
+## Technology Trends Shaping Kubernetes 2025-2030
 
 |**Trend**|**2025 Status**|**Enterprise**<br>**Horizon**|**Primary Impact on Kubernetes**|
 |---|---|---|---|
@@ -39,9 +39,9 @@ Volume 16 of 16 Final Volume | Edition 2025-2026
 |Green AI / Carbon<br>Scheduling|Emerging<br>standard|2026-2027|Carbon-aware batch job scheduling; energy<br>observability per workload|
 |Federated Learning on<br>K8s|Early<br>production|2027|Privacy-preserving distributed training; no raw data<br>centralisation|
 
-### **CHAPTER 2**
+### CHAPTER 2
 
-## **AI-Native Kubernetes: The Architecture of 2027+**
+## AI-Native Kubernetes: The Architecture of 2027+
 
 The Kubernetes of 2027 will treat AI workloads as first-class citizens at every layer of the stack, from the API server to the scheduler to the data plane. Current workarounds (device plugins, custom schedulers, manual topology configuration) will be replaced by native AI-aware primitives.
 
@@ -55,9 +55,9 @@ The Kubernetes of 2027 will treat AI workloads as first-class citizens at every 
 
 - **Prefill-decode disaggregation** : Inference scheduler routes prefill (prompt processing) to CPU/memory-bandwidth-optimised nodes and decode (token generation) to compute-optimised GPU nodes. KV cache shared via fast network (InfiniBand, RoCE).
 
-### **CHAPTER 3**
+### CHAPTER 3
 
-## **Green AI: Carbon-Aware Kubernetes**
+## Green AI: Carbon-Aware Kubernetes
 
 A 1,000-GPU training run consumes the electricity of 50 homes for a month. Regulatory pressure (EU Energy Efficiency Directive, US EPA clean power rules) and enterprise net-zero commitments are driving demand for energy-aware Kubernetes scheduling in AI infrastructure.
 
@@ -71,9 +71,9 @@ A 1,000-GPU training run consumes the electricity of 50 homes for a month. Regul
 
 - **Workload time-shifting** : Temporal workflow feature: defer non-urgent training steps to renewable energy windows. Intelligent scheduling across time zones to follow the sun (solar power) or wind patterns.
 
-### **CHAPTER 4**
+### CHAPTER 4
 
-## **Recommended Adoption Timeline**
+## Recommended Adoption Timeline
 
 |**Timeline**|**Priority Actions**|
 |---|---|
@@ -83,9 +83,9 @@ A 1,000-GPU training run consumes the electricity of 50 homes for a month. Regul
 |H2 2026|Inference disaggregation (prefill/decode split); AI FinOps per-workflow; WASM runtime evaluation for<br>lightweight agent tasks; LLM-assisted platform operations pilot (AIOps)|
 |2027+|Autonomous platform operations; edge AI with K3s + GPU; federated learning on Kubernetes;<br>quantum-safe cryptography migration; agent mesh standardisation (CNCF Agent Working Group)|
 
-### **CHAPTER 5**
+### CHAPTER 5
 
-## **Curated Resource Bibliography**
+## Curated Resource Bibliography
 
 - **Official Kubernetes Documentation** : kubernetes.io/docs -- the authoritative reference for all Kubernetes concepts, API reference, and tutorials. Read the Concepts section in full before relying on tutorials alone.
 
@@ -99,7 +99,7 @@ A 1,000-GPU training run consumes the electricity of 50 homes for a month. Regul
 
 - **Community Blogs** : Cilium blog (cilium.io/blog), Grafana Labs blog, NVIDIA developer blog (developer.nvidia.com/blog), Anthropic engineering blog, Temporal blog (temporal.io/blog), Kubernetes blog (kubernetes.io/blog).
 
-## **ENTERPRISE KUBERNETES MASTERY -- HANDBOOK COMPLETE**
+## ENTERPRISE KUBERNETES MASTERY -- HANDBOOK COMPLETE
 
 Sixteen volumes. Foundational Linux to autonomous agentic AI. Physical servers to sovereign confidential computing. The complete arc of modern infrastructure, from the kernel primitives that make containers possible to the durable workflow engines that make multi-agent AI reliable at enterprise scale.
 

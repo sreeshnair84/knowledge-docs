@@ -108,7 +108,6 @@ Price shock         disadvantage         limitations
     │                   │                    │
 Outage risk       Regulatory risk       Lock-in cost
 
-
 MULTI-MODEL RISK DISTRIBUTION
 
   Task A          Task B              Task C
@@ -701,7 +700,7 @@ class TaskClassifier:
         # Fast heuristic pass (no LLM call)
         if len(request) < 200 and "classify" in request.lower():
             return "classification"
-        if "```" in request or "def " in request or "function " in request:
+        if request.startswith("```") or "\n```" in request or "def " in request or "function " in request:
             return "code_generation"
         if context.get("images"):
             return "vision"

@@ -15,7 +15,7 @@ PRODUCTION-GRADE · EU BANKING · AI AGENT EVALUATION
 
 Status: Draft — 1 open decision (D-002 PII pseudonymisation)
 
-# **EU Banking AI Agent Evaluation Framework**
+# EU Banking AI Agent Evaluation Framework
 
 A comprehensive, regulation-mapped evaluation framework for AI agents deployed in EU banking contexts on AWS Bedrock AgentCore + Strands + Arize Phoenix. Covers all seven evaluation dimensions from response quality through PII safety, with full EU AI Act, GDPR, DORA, and EBA compliance mapping.
 
@@ -34,13 +34,11 @@ Regions: eu-central-1 (primary) · eu-west-1 (DR)
 |**EBA ICT Guidelines**<br>**Active**|Credit model explainability · Customer best interest · IRB model validation|**D1**<br>**D5**|
 |**EU AMLD6**<br>**Active**|AML false negative rate ≤ 0.001|**D6**|
 
-
-
-## **2 System Architecture**
+## 2 System Architecture
 
 AWS Bedrock AgentCore + Strands SDK + Arize Phoenix (self-hosted EKS eu-central-1)
 
-### **Two Evaluation Configurations (One SDK)**
+### Two Evaluation Configurations (One SDK)
 
 Strands Evals SDK applies evaluators uniformly via task functions. D3 and D4 are configuration distinctions — not separate SDK primitives.
 
@@ -50,8 +48,6 @@ Strands Evals SDK applies evaluators uniformly via task functions. D3 and D4 are
 ||emergent tool loop|Document review assistant|7|decision)||
 |**D4 — Bounded Task**|Goal-defined · single-shot ·|**Credit scoring**<br>**KYC**<br>**AML screening**· DORA|Binary pass/fail|**Yes**— HITL|Task|
 |**Executions**|structured output|resilience check · Report generation|(GoalSuccessRateEvaluator ≥ 0.95)|required|execution|
-
-
 
 |**Strands Evals SDK**<br>**Category**|**— Full Evaluator Taxonomy (verified 2**<br>**Evaluator Class**|**026-03-27)**<br>**Scale**|**Maps to Dimension**|
 |---|---|---|---|
@@ -67,8 +63,6 @@ Strands Evals SDK applies evaluators uniformly via task functions. D3 and D4 are
 |Turn-Level|**`ResponseRelevanceEvaluator`**|0–1|**D1**relevance|
 |Turn-Level|**`HarmfulnessEvaluator`**|Binary|**D7**safety gate (fail → composite = 0.0)|
 |Turn-Level|**`GoalSuccessRateEvaluator`**|0–1|**D4**task completion anchor metric|
-
-
 
 **Infrastructure — ADR Decisions**
 
@@ -100,13 +94,11 @@ Strands Evals SDK applies evaluators uniformly via task functions. D3 and D4 are
 
 ▸ Bedrock: Nova Pro EU confirmed
 
-## **3 Dimension 1 — Response Quality**
+## 3 Dimension 1 — Response Quality
 
 Applies to agent sessions (conversational turns)
 
-
 ![Figure 1](/img/ai-usecases/ai-usecases-p2-1.png)
-
 
 |D1<br>**Response Quality**<br><br>Strands Evals: HelpfulnessEvalu|ator · CoherenceEvaluator · FaithfulnessEvaluator · ResponseRelevan|<br>ceEvaluator · AgentCore built-ins||CI/CD Quality Gate<br>|
 |---|---|---|---|---|
@@ -119,26 +111,17 @@ Applies to agent sessions (conversational turns)
 |**Relevance**|On-topic; no spurious content|**`ResponseRelevanceEvaluator`**(0–1)|**≥ 0.85**|—|
 |**Instruction Following Fidelity**|Adherence to system prompt constraints|`instructions_followed / total_instructions`|**≥ 0.95**|**EU AI Act Art.9**|
 
-
-
-### **Human Eval Overlay — Anthropic Method**
+### Human Eval Overlay — Anthropic Method
 
 Blind human evaluation on 10% sample of production traces · Min 200 traces/quarter · Cohen's Kappa ≥ 0.70 required. `HelpfulnessEvaluator` 7-point scale maps natively to Anthropic's human eval range — no normalisation required for composite scoring.
 
-## **4 Dimension 2 — RAG Quality**
+## 4 Dimension 2 — RAG Quality
 
 Applies to agent sessions and bounded task executions with retrieval steps
 
-
 ![Figure 2](/img/ai-usecases/ai-usecases-p2-2.png)
 
-
-
 ![Figure 3](/img/ai-usecases/ai-usecases-p2-3.png)
-
-
-<!-- Start of picture text -->
-RAG Quality<br>D2 CI/CD + Model Promotion Gate<br>RAGAS v0.2+ · FaithfulnessEvaluator · AgentCore Groundedness<br><!-- End of picture text -->
 
 |D2<br>**RAG Quality**<br>RAGAS v0.2+ · Faithfulne|ssEvaluator · AgentCore Groundedness||||CI/CD + Model Promotion Gate|
 |---|---|---|---|---|---|
@@ -151,20 +134,11 @@ RAG Quality<br>D2 CI/CD + Model Promotion Gate<br>RAGAS v0.2+ · FaithfulnessEva
 |**Noise Sensitivity**|`correct_rejections / total_irrelevant_chunks`|**≥ 0.85**|RAGAS Noise Sensitivity|—||
 |**Context Entity Recall**|`correct_entities / total_answer_entities`|**≥ 0.88**|RAGAS Context Entity Recall|**DORA**||
 
-
-
-## **5 Dimension 3 — Agentic Behaviour (Agent Sessions)**
+## 5 Dimension 3 — Agentic Behaviour (Agent Sessions)
 
 Multi-turn conversational sessions with tool use
 
-
-
-
 ![Figure 4](/img/ai-usecases/ai-usecases-p2-4.png)
-
-
-<!-- Start of picture text -->
-Agentic Behaviour — Agent Sessions<br>D3 CI/CD + Pre-release E2E Gate<br>TrajectoryEvaluator · InteractionsEvaluator · ToolSelectionAccuracyEvaluator · ToolParameterAccuracyEvaluator<br><!-- End of picture text -->
 
 |D3<br>**Agentic Behaviour — A**<br>TrajectoryEvaluator · InteractionsEva|**gent Sessions**<br>luator · ToolSelectionAccuracyEvaluator · ToolParameterAccuracyEvaluator||CI/CD + Pre-release E2E Gate|
 |---|---|---|---|
@@ -177,9 +151,7 @@ Agentic Behaviour — Agent Sessions<br>D3 CI/CD + Pre-release E2E Gate<br>Traje
 |**Error Recovery Rate**|`recovered_sessions / sessions_with_tool_failure`|**≥ 0.85**|**DORA**|
 |**Runaway Loop Detection**|AgentCore session limit hard enforcer|**0 violations**|**DORA ICT risk**|
 
-
-
-## **Dimension 4 — Task Execution (Bounded Tasks)**
+## Dimension 4 — Task Execution (Bounded Tasks)
 
 Goal-defined, structured-output task executions — the Annex III audit unit
 
@@ -215,9 +187,7 @@ False negative ≤ 0.001 · Latency ≤ 2s · No GDPR Art. 22 but AMLD6 applies
 |**Human Escalation Rate**|Tasks escalated to human review (GDPR Art.<br>22 trigger)|`escalated_tasks / total_tasks`|**Target range: 2–10%**<br>**(too low = underescalating**|**)**<br>**GDPR Art.22**<br>**EU AI Act Art.14**|
 |**Audit Trail Completeness**|Every task produces complete, tamper-<br>evident audit record|Required fields check + hash chain validator|**1.00 — hard gate**|**EU AI Act Art.12**<br>**DORA Art.17**|
 
-
-
-## **7 Dimension 5 — Responsible AI: Fairness and Explainability**
+## 7 Dimension 5 — Responsible AI: Fairness and Explainability
 
 Applies to all Annex III task executions and credit advisory agent sessions
 
@@ -231,24 +201,17 @@ Applies to all Annex III task executions and credit advisory agent sessions
 |**Explainability Coverage**|Fraction of Annex III task outputs with human-readable<br>explanation|`tasks_with_explanation / annex_iii_tasks`|**1.00 — hard**<br>**gate**|**EU AI Act Art.13**<br>**GDPR Art.22(3)**|
 |**Explanation Faithfulness**|SHAP/LIME explanation aligns with actual model reasoning|LLM-as-Judge (explanation vs. trace)|**≥ 0.85**|**EU AI Act Art.14**|
 
-
-
-### **Counterfactual Test Suite — Protected Attributes**
+### Counterfactual Test Suite — Protected Attributes
 
 Required for all Annex III task types. Minimum **200 counterfactual pairs per attribute per task type** . Must run before every model promotion.
 
 **Gender Nationality / Country of origin Age group Marital status Disability status**
 
-## **8 Dimension 6 — Regulatory Compliance Metrics**
+## 8 Dimension 6 — Regulatory Compliance Metrics
 
 Applies to all evaluation surfaces — the deployment gate that blocks EU production
 
-
 ![Figure 5](/img/ai-usecases/ai-usecases-p3-5.png)
-
-
-<!-- Start of picture text -->
-Regulatory Compliance<br>D6 Regulatory Deployment Gate<br>GDPR · DORA · EU AI Act · EU AMLD6 · EBA<br><!-- End of picture text -->
 
 |D6<br>**Regulatory Compliance**<br>GDPR · DORA · EU AI Act · EU AMLD6 · EBA|||Regulatory Deployment Gate|
 |---|---|---|---|
@@ -262,8 +225,6 @@ Regulatory Compliance<br>D6 Regulatory Deployment Gate<br>GDPR · DORA · EU AI 
 |**Hallucination Rate (Regulatory Content)**|`incorrect_regulatory_claims / total_regulatory_claims`|**≤ 0.01 (10× stricter)**|**EU AI Act Art.13**<br>**MiFID II**|
 |**Data Residency Compliance**|No cross-region data transfer outside EU/EEA|**1.00 — hard gate**|**GDPR Art.44–49**<br>**DORA Art.28**|
 |**Audit Log Retention Compliance**|Logs retained ≥ 5 years (DORA) and managed appropriately (GDPR)|**Min 5 years — hard gate**|**DORA Art.12**<br>**GDPR Art.5(1)(e)**|
-
-
 
 **Dimension 7 — Safety and PII Protection**
 
@@ -279,8 +240,6 @@ Safety gate — blocks ANY deployment. HarmfulnessEvaluator = 0.0 on composite.
 |**Sensitive Attribute Exposure**|Protected attributes in model inputs/outputs (race, religion, health)|**0.00 — hard gate**|**GDPR Art.9 (special category)**<br>**EU AI Act Art.10(5)**|
 |**Confidential Data Leakage**|Bank-confidential data returned to unauthorised users|**0.00 — hard gate**|**DORA Art.28**|
 
-
-
 |**EU-Specific PII Entity Coverage**<br>⚠**VERIFY — Bedrock**<br>**PII Entity**|**Guardrails coverage pending**<br>**EU-Specific**|**Bedrock Guardrails**|**Fallback**|
 |---|---|---|---|
 |IBAN|Yes|**VERIFY**|Amazon Comprehend custom entity|
@@ -290,9 +249,7 @@ Safety gate — blocks ANY deployment. HarmfulnessEvaluator = 0.0 on composite.
 |Credit Card PAN|No (global)|Yes✓|—|
 |Email · Phone · Name|No (global)|Yes✓|—|
 
-
-
-## **10 Composite Scoring — Anthropic Multi-Axis Method**
+## 10 Composite Scoring — Anthropic Multi-Axis Method
 
 Every task or agent session receives one composite score backed by three independent signal types
 
@@ -313,11 +270,11 @@ regulatory_gate = FAIL if any D6/D7 hard gate violated
 
 _-- Statistical requirements: bootstrap CI, p < 0.05, min 200 samples per axis_
 
-### **D3 Weight Profile — Agent Sessions**
+### D3 Weight Profile — Agent Sessions
 
 D1 Response Quality **35%** D2 RAG Quality **25%** D3 Agentic Behaviour **30%** D4 Task Execution 0% D5 Fairness / XAI **10%**
 
-### **D4 Weight Profile — Bounded Task Executions (High-Risk)**
+### D4 Weight Profile — Bounded Task Executions (High-Risk)
 
 |D1 Response Quality|**15%**|
 |---|---|
@@ -326,15 +283,13 @@ D1 Response Quality **35%** D2 RAG Quality **25%** D3 Agentic Behaviour **30%** 
 |**D4 Task Execution**|35%|
 |**D5 Fairness / XAI**|25%|
 
-
-
-## **11 CI/CD Evaluation Pipeline**
+## 11 CI/CD Evaluation Pipeline
 
 4-stage eval gate — block on Tier 1 failure; alert on Tier 2; nightly Tier 3
 
 **Code Commit GATE 1: Unit Evals GATE 2: Integration Build → Staging GATE 3: E2E GATE 4: Red-Team Canary 5% GATE 5: Live Metrics** PR merge trigger ▶ Tier 1 only · ~2 min · ▶ Tier 1+2 · ~15 min · ▶ Artifact + deploy ▶ Core tasks · ~60 min · ▶ Safety subset · ~30 min · ▶ 1h live window ▶ Rollback trigger active ▶ DeepEval Strands Evals AgentCore on-demand Promptfoo  
 
-### **Regression Thresholds — What Constitutes a Regression**
+### Regression Thresholds — What Constitutes a Regression
 
 **Quality:**
 
@@ -356,8 +311,6 @@ Five gates, four owning functions — engineering cannot override safety, fairne
 |**Regulatory Gate**|Any D6 hard gate: PII leak · Art.22 HITL gap · AML FN > 0.001 · Data residency violation|
 |**Annex III Gate**|Audit trail incomplete · Explanation coverage < 1.00 · Schema compliance < 1.00|
 
-
-
 |**Blocks**|**Owner**|
 |---|---|
 |Code merge to main / deploy to staging|Engineering|
@@ -366,9 +319,7 @@ Five gates, four owning functions — engineering cannot override safety, fairne
 |Deployment to EU production|Legal / Compliance / DPO|
 |Regulatory submission / Conformity assessment sign-off<br>`Coherence, Groundedness, Relevance`<br>`TrajectoryEvaluator, InteractionsEvaluator`<br>`ddings, latency`<br>`condary scoring`<br>`Evaluator proxy`<br>D6 Regulatory<br>D7 PII Safety<br>Scoring<br>CI/CD|Compliance + DPO<br>Gates<br>Instrumentation<br>Decisions|
 
-
-
-## **13 Instrumentation Map**
+## 13 Instrumentation Map
 
 How every metric flows from execution to measurement to gate
 
@@ -388,7 +339,7 @@ D7 PII Safety Scoring CI/CD Gates Instrumentation
 
 `──` ▶ `CUSUM (k=0.5σ, h=5σ) -- step-change drift → trigger sampling rate 10%→50% ──` ▶ `CloudWatch alarm → SNS → oncall CRITICAL: Trace ID must propagate from Task span through ALL tool call child spans. Losing a trace ID mid-task = DORA audit chain failure = compliance violation.`
 
-### **AgentCore Evaluation Quotas (verified 2026-03-27 · expires 2026-06-27)**
+### AgentCore Evaluation Quotas (verified 2026-03-27 · expires 2026-06-27)
 
 **Configs per region/account: Active simultaneously: Throughput:** 1,000 maximum 100 concurrent 1M tokens/min (large regions)
 
@@ -406,9 +357,7 @@ All 5 framework decisions — 4 closed, 1 open
 |**D-004**|LLM-as-Judge model selection|**Nova Pro EU (safety/PII/tools) + Claude Sonnet 4.6 (domain quality) · ensemble at ±0.05**|ADR-001 (core topic)|
 |**D-005**|Arize Phoenix deployment model|**Self-hosted EKS eu-central-1 · Phoenix Cloud disqualified (GDPR Art.44)**|ADR-002|
 
-
-
-### **Open Verification Items**
+### Open Verification Items
 
 **VERIFY Bedrock Guardrails EU PII coverage** — IBAN, EU national IDs, VAT numbers. Fallback: Amazon Comprehend custom entities.
 

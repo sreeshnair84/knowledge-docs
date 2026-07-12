@@ -4,15 +4,17 @@ date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
+source_file: ""
 doc_type: guide
 covers_version: "N/A"
+tags: ["interview-prep", "enterprise-architecture", "agentic-ai", "scenarios"]
 ---
-**ADVANCED SCENARIO INTERVIEW PREP**
-**Hard & Extreme Complexity Scenarios**
-*Enterprise Architect — Generative & Agentic AI  |  AD / Director Level*
 
-| 10 complex, real-world scenarios across: Agentic System Failures · Multi-Cloud Architecture · AI Governance & Regulation · Cost Optimization · Security & Adversarial AI · Org Transformation · Data Architecture · LLMOps at Scale · Ethical AI Crisis · Enterprise Agent Mesh Design. Each includes the scenario setup, what the interviewer is really testing, a model answer with architecture, and the trade-offs a senior architect must own. |
-| --- |
+# Advanced Scenario Interview Prep
+
+*Enterprise Architect — Generative & Agentic AI | AD / Director Level*
+
+10 complex, real-world scenarios across: Agentic System Failures, Multi-Cloud Architecture, AI Governance & Regulation, Cost Optimization, Security & Adversarial AI, Org Transformation, Data Architecture, LLMOps at Scale, Ethical AI Crisis, and Enterprise Agent Mesh Design. Each includes the scenario setup, what the interviewer is really testing, a model answer with architecture, and the trade-offs a senior architect must own.
 | S1 | Production Agentic System Causing Real Financial Damage | EXTREME | Agentic AI |
 | --- | --- | --- | --- |
 | Your company deployed an autonomous procurement agent 6 weeks ago. It negotiates and places purchase orders with suppliers up to $50K without human approval. On Friday evening, a prompt injection attack via a malicious invoice PDF caused the agent to place 47 duplicate orders totaling $2.1M across 12 suppliers. The CFO calls you at 7pm. Contracts are legally binding. Some orders have already shipped. You are the Enterprise Architect who designed this system. What do you do — right now and over the next 30 days? |

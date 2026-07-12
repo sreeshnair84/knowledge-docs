@@ -1,5 +1,5 @@
 ---
-title: "Principal Architect **DSA Deep-Reference"
+title: "Principal Architect DSA Deep-Reference"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -10,7 +10,7 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-# Principal Architect **DSA Deep-Reference**
+# Principal Architect DSA Deep-Reference
 
 Hard & Medium Concepts · Snippets · Examples · Tradeoffs
 

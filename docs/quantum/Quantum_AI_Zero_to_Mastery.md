@@ -11,13 +11,13 @@ tags: []
 
 <!-- converted from Quantum_AI_Zero_to_Mastery.pdf -->
 
-# **~~QUANTUM COMPUTING~~ & AI IN QUANTUM**
+# **QUANTUM COMPUTING & AI IN QUANTUM**
 
 ZERO TO MASTERY
 
 A 3-Month Principal Architect Program
 
-Master qubits, quantum gates, variational algorithms, ~~quantum machine learning, and enterprise quantum architecture~~ in 12 focused weeks.
+Master qubits, quantum gates, variational algorithms, quantum machine learning, and enterprise quantum architecture in 12 focused weeks.
 
 2026 Edition • Principal Architect Track
 

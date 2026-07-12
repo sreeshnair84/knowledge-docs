@@ -12,7 +12,7 @@ covers_version: "N/A"
 **Implementation Accelerator Kit** Ready-to-adapt templates: ARB charter, Terms of Reference, RACI matrices, review forms, executive dashboards, Policy-as-Code starters, and a phased enterprise rollout roadmap.
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition
 
-# **Part A — Foundational Templates**
+# Part A — Foundational Templates
 
 This final volume converts everything in Volumes 1-7 into directly usable starting templates. None of these should be adopted verbatim without adapting to your specific institution's regulatory environment, scale, and existing governance landscape (Volume 1) — but each is structured to need editing, not building from a blank page.
 
@@ -24,7 +24,7 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |Conflict of Interest Policy|How ARB members recuse themselves from reviewing initiatives they're directly delivering|
 |Appeals Process|How a rejected proposal can be reconsidered (Volume 1, Section 1.3)|
 
-## **15.3 RACI Matrix Template — ARB Operating Roles**
+## 15.3 RACI Matrix Template — ARB Operating Roles
 
 |**Activity**|**Accountable**|**Responsible**|**Consulted**|**Informed**|
 |---|---|---|---|---|
@@ -36,7 +36,7 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |Maintain pattern catalog /<br>reference architectures|Chief Architect|Architecture CoP|ARB members|All architects|
 |Report risk register to Risk<br>Committee|ARB Chair|ARB Secretariat|Risk function|Risk Committee|
 
-## **15.4 Risk Register Template**
+## 15.4 Risk Register Template
 
 |**Field**|**Description**|
 |---|---|
@@ -49,13 +49,13 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |Review Date|Next scheduled reassessment|
 |Escalation Status|Whether this has been escalated to Risk Committee per Volume 1, Section 1.3|
 
-## **15.5 Architecture Review Submission Form (Condensed)**
+## 15.5 Architecture Review Submission Form (Condensed)
 
 **SECTION 1: BUSINESS CONTEXT - Business capability(ies) affected (Vol 3, Part B reference) - Business sponsor and engagement confirmation - Cost of delay if not approved this cycle (Vol 2, Section 3.3) SECTION 2: ARCHITECTURE SUMMARY - Context + container diagrams (Vol 4, Section 7.2) - Pattern(s) used and rationale (Vol 3, Section 5.5) - Quality attributes explicitly prioritized / deprioritized (Vol 4, Part B) SECTION 3: RISK & COMPLIANCE - Completed Compliance Matrix (Vol 4, Section 7.3) - Threat model summary (security-critical items only) - Data classification and lineage summary SECTION 4: AI-SPECIFIC (if applicable) - Agent Specification / Memory Policy / MCP Tool Contracts (Vol 4, Section 7.5) - AI Governance Board / Model Risk / Responsible AI Council review status (Vol 1, Section 1.2) SECTION 5: ECONOMICS - Cost projection at current and 3x scale (Vol 2, Part A) - Build vs. buy rationale if applicable SECTION 6: OPERATIONAL READINESS - Support Model status (Vol 4, Section 7.6) - Runbook coverage for critical failure scenarios**
 
-# **Part B — Dashboards, Automation Starters & Rollout Roadmap**
+# Part B — Dashboards, Automation Starters & Rollout Roadmap
 
-## **15.6 Executive Dashboard — Recommended Metrics**
+## 15.6 Executive Dashboard — Recommended Metrics
 
 |**Metric**|**Audience**|**Refresh Cadence**|
 |---|---|---|
@@ -67,9 +67,9 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |AI governance gate completion rate|AI Governance Board, Risk Committee|Monthly|
 |Architecture conformance drift (fitness<br>function pass rate)|ARB Chair, Platform Engineering Council|Continuous/weekly rollup|
 
-## **15.7 KPI & OKR Starter Set for an Architecture Function**
+## 15.7 KPI & OKR Starter Set for an Architecture Function
 
-### **SAMPLE OKR — ILLUSTRATIVE, NOT PRESCRIPTIVE**
+### SAMPLE OKR — ILLUSTRATIVE, NOT PRESCRIPTIVE
 
 **Objective:** Reduce architecture governance latency without compromising risk coverage
 
@@ -79,7 +79,7 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 
 **KR3:** Maintain zero unmitigated critical findings escalated from Internal Audit related to architecture governance gaps **KR4:** Achieve 100% Retirement Checklist completion for decommissioned systems (closing the most commonly skipped artifact, Vol 4 Section 7.6)
 
-## **15.8 Maturity Assessment Questionnaire (Condensed)**
+## 15.8 Maturity Assessment Questionnaire (Condensed)
 
 |**Level**|**Characteristics**|
 |---|---|
@@ -89,7 +89,7 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |**4**|Architecture economics and decision science formally applied, fitness functions automate routine governance, AI Governance Board<br>integration mature|
 |**5**|AI-native governance patterns (Volume 7) in production for appropriate decision classes, continuous architecture validation, self-<br>sustaining knowledge graph, demonstrable regulatory examination readiness on demand|
 
-## **15.9 Policy-as-Code Starter Library — Pattern Index**
+## 15.9 Policy-as-Code Starter Library — Pattern Index
 
 |**Policy Category**|**Representative Rule**|
 |---|---|
@@ -100,7 +100,7 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |AI tool permission scoping|No AI agent tool grants write access to financial ledger systems without an explicit, separately-<br>reviewed Agent Specification|
 |Cost governance|Alert when any single resource's cost trend exceeds defined month-over-month growth threshold|
 
-## **15.10 Enterprise Rollout Roadmap (Phased)**
+## 15.10 Enterprise Rollout Roadmap (Phased)
 
 |**Phase**|**Duration (typical)**|**Focus**|
 |---|---|---|
@@ -110,11 +110,11 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 |Phase 4 —<br>Automation|18-30 months|Fitness functions and policy-as-code deployed for routine governance; AI-assisted review<br>(Volume 7, early patterns) introduced|
 |Phase 5 — AI-<br>Native Maturity|30+ months|Continuous validation, knowledge-graph-backed reasoning, and selectively-scoped autonomous<br>review agents in production, with audit trails mature enough for regulatory examination on<br>demand|
 
-### **A CLOSING CAUTION ON THE ROADMAP**
+### A CLOSING CAUTION ON THE ROADMAP
 
 This phasing is illustrative and should be compressed or extended based on your institution's starting maturity and risk appetite — a bank already running a mature Federated model with strong tooling might reasonably compress Phases 1-3 significantly. Resist the temptation to skip Phase 2's operating-rhythm discipline in pursuit of Phase 4's automation; automating an undisciplined governance process just produces undisciplined governance faster.
 
-## **15.11 Change Management & Communication Strategy — Core Principles**
+## 15.11 Change Management & Communication Strategy — Core Principles
 
 - **Lead with the relief, not the rules.** Architects and delivery teams adopt new governance faster when it's framed as reducing their own risk exposure and rework (clearer expectations, fewer late-stage surprises) rather than as new compliance burden.
 
@@ -122,7 +122,7 @@ This phasing is illustrative and should be compressed or extended based on your 
 
 - **Make the artifact catalog self-service before mandating it.** Templates, examples, and a clear "why this artifact matters" rationale (Volume 4) reduce resistance far more than a mandate alone.
 
-## **15.12 Training Curriculum & Certification Path — Suggested Structure**
+## 15.12 Training Curriculum & Certification Path — Suggested Structure
 
 |**Track**|**Content**|
 |---|---|
@@ -131,11 +131,11 @@ This phasing is illustrative and should be compressed or extended based on your 
 |Principal track|Architecture economics (Volume 2, Part A), industry/regulatory deep dive (Volume 6), case study analysis (Volume 7,<br>Part B)|
 |ARB leadership|Escalation and conflict resolution (Volume 1), scorecard design discipline (Volume 5), AI-native governance roadmap<br>ownership (Volume 7, Part A)|
 
-## **15.13 Continuous Improvement Framework**
+## 15.13 Continuous Improvement Framework
 
 Close the loop the same way Volume 2's benefits realization discipline demands of the initiatives the ARB reviews: the ARB itself should be subject to its own version of benefits realization tracking. A quarterly retrospective against the executive dashboard metrics (15.6), explicitly asking what governance friction was avoidable versus genuinely necessary, is the mechanism that prevents this entire handbook's recommendations from calcifying into the same kind of unexamined, stale process this handbook was written to help you avoid inheriting.
 
-## **Closing Note — Using This Handbook in Your Career**
+## Closing Note — Using This Handbook in Your Career
 
 This eight-volume set is deliberately broad rather than narrow, because Principal-level architecture judgment is, in large part, the ability to recognize which volume's lens applies to the situation in front of you — when a problem is fundamentally a governance-mesh ownership question (Volume 1), an unstated economic trade-off (Volume 2), a knowledge-management failure dressed up as something else (Volume 3), or a missing artifact that would have made an entire dispute unnecessary (Volume 4). The questions and scorecards in Volume 5 give you a starting vocabulary; the banking deep-dive in Volume 6 gives you the regulatory fluency that distinguishes a Principal Architect from a strong solution architect; the AI-native material in Volume 7 gives you the forward edge increasingly expected of senior architecture leadership; and the accelerator kit in this volume gives
 

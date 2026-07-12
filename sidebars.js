@@ -1,7 +1,7 @@
 // @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-const ACRONYMS = new Set(['AI', 'AIDLC', 'AGUI', 'API', 'ARB', 'AWS', 'CTO', 'DPDP', 'EA', 'EU', 'IBM', 'MCP', 'OKR', 'RAG', 'SOC', 'TOGAF', 'UX']);
+const ACRONYMS = new Set(['AI', 'AIDLC', 'AGUI', 'API', 'ARB', 'AWS', 'CTO', 'DPDP', 'EA', 'EU', 'IAC', 'IBM', 'MCP', 'OKR', 'RAG', 'SOC', 'TOGAF', 'UI', 'UX']);
 
 function sidebarLabel(id) {
   const basename = id.split('/').at(-1)
@@ -15,10 +15,21 @@ function sidebarLabel(id) {
   }).join(' ');
 }
 
+// Index pages get a section-specific label ("AI Economics Overview" rather than a
+// bare "Overview") so they stay distinguishable in search results and long sidebars.
+function overviewLabel(id) {
+  const section = id.split('/').at(-2);
+  return section ? `${sidebarLabel(section)} Overview` : 'Overview';
+}
+
+function isIndexDoc(item) {
+  return item.type === 'doc' && typeof item.id === 'string' && item.id.endsWith('/index');
+}
+
 function normalizeItems(items, topLevel = false) {
   const normalized = items.map((item) => {
     if (typeof item === 'string') {
-      return {type: 'doc', id: item, label: item.endsWith('/index') ? 'Overview' : sidebarLabel(item)};
+      return {type: 'doc', id: item, label: item.endsWith('/index') ? overviewLabel(item) : sidebarLabel(item)};
     }
     if (item.type === 'category') return {...item, items: normalizeItems(item.items)};
     return item;
@@ -28,8 +39,8 @@ function normalizeItems(items, topLevel = false) {
     if (topLevel && right.label === 'Home') return 1;
     if (topLevel && left.label === 'About') return 1;
     if (topLevel && right.label === 'About') return -1;
-    if (left.label === 'Overview') return -1;
-    if (right.label === 'Overview') return 1;
+    if (isIndexDoc(left) && !isIndexDoc(right)) return -1;
+    if (isIndexDoc(right) && !isIndexDoc(left)) return 1;
     return (left.label ?? '').localeCompare(right.label ?? '', undefined, {numeric: true, sensitivity: 'base'});
   });
 }
@@ -174,7 +185,6 @@ const sidebars = {
             'ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026',
             'ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026',
             'ai-development/aidlc/AIDLC_Artifact_Reference_Library',
-            'ai-development/aidlc/EA_Lifecycle_Artifact_Templates_2026',
           ],
         },
         {
@@ -538,7 +548,6 @@ const sidebars = {
             'enterprise-architecture/strategy/EA_Strategy_Playbook',
             'enterprise-architecture/strategy/Enterprise_AI_Strategic_Brief_2026',
             'enterprise-architecture/strategy/Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026',
-            'enterprise-architecture/strategy/AI_Cost_Implementation_Guide_2026',
             'enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript',
           ],
         },

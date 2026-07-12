@@ -1,5 +1,5 @@
 ---
-title: "~~Enterprise Architecture~~** **~~<u>Impact of AIDLC</u>~~** <u>& The AI Tooling Revolution in Enterprise Systems</u> How AIDLC, Agentic AI & Platform Shifts Are Redesigning the EA Stack"
+title: "Impact of AIDLC on Enterprise Architecture — The AI Tooling Revolution"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -13,7 +13,7 @@ research_date: 2026-07-10
 **ENTERPRISE ARCHITECTURE IMPACT OF AIDLC & AI TOOLS** DEEP RESEARCH — STRATEGIC DOCUMENT 2026
 **DEEP RESEARCH REPORT**
 
-# **~~Enterprise Architecture~~** **~~<u>Impact of AIDLC</u>~~** <u>& The AI Tooling Revolution in Enterprise Systems</u> How AIDLC, Agentic AI & Platform Shifts Are Redesigning the EA Stack
+# Impact of AIDLC on Enterprise Architecture — The AI Tooling Revolution
 
 **EDITION FOCUS SCOPE FRAMEWORKS** <u>2026 Enterprise Architecture Global Enterprise TOGAF·NIST·EA4.0</u>
 

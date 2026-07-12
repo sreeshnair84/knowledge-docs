@@ -9,11 +9,9 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Case Study**
+# Case Study
 
 Solstice Media Group — Content Generation, Localization & IP Rights Compliance Platform
-
-Confidential Internal Engagement Documentation
 
 Engagement Period: July 2025 – June 2026
 
@@ -56,7 +54,7 @@ Engagement Period: July 2025 – June 2026
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# **1. Executive Summary**
+# 1. Executive Summary
 
 Solstice Media Group, a global media and entertainment company producing television, streaming, and marketing content across 30-plus territories, engaged an Enterprise AI Architecture team to build a content-generation and localization assistance platform for its marketing and secondary-content production teams, paired with an IP rights-compliance guardrail system designed to prevent AI-assisted content from inadvertently incorporating copyrighted or trademarked material Solstice did not have clear rights to use.
 
@@ -66,19 +64,19 @@ The engagement’s defining incident occurred in Month 10: a marketing content-g
 
 Key outcomes: - Marketing asset production cycle time reduced by approximately 60% for in-scope asset types (social promotional graphics, trailer copy variants, territory-localized marketing copy) - Multi-territory localization turnaround reduced from an average of 9 days to 2.5 days per territory batch - One material pre-publication IP risk finding (Month 10) caught by mandatory legal review before external release, triggering visual-style guardrail redesign - Zero instances of AI-generated content reaching external publication with an unresolved rights or IPrisk flag — the mandatory legal review gate held throughout the engagement
 
-# **2. Client Background**
+# 2. Client Background
 
 Solstice Media Group operates across television production, a direct-to-consumer streaming service, and a marketing/brand organization responsible for promotional content across all territories where Solstice content is distributed. The company’s content library includes both wholly-owned intellectual property and content produced under complex co-production, licensing, and distribution arrangements with other studios and rights holders — meaning Solstice’s own rights position on any given piece of content or character could be genuinely complicated, varying by territory, by use case (marketing versus the content itself), and by time-limited contractual windows.
 
 Solstice’s Chief Marketing Officer, Isabelle Fontaine, and General Counsel, David Okonkwo-Reyes, co-sponsored the engagement, reflecting its dual creative-production and legal-risk nature. Solstice’s marketing organization had faced increasing pressure to produce more territory-localized, more frequently-refreshed promotional content to compete with streaming rivals’ content marketing velocity, while Legal had grown increasingly concerned about the IP risk surface as generative AI tools proliferated informally across creative teams before this engagement’s formal governance was established.
 
-# **3. Business Problem**
+# 3. Business Problem
 
 **Content velocity gap.** Solstice’s marketing teams needed to produce a large and growing volume of promotional assets — social media graphics, trailer copy variants, territory-localized campaigns — but existing production processes, involving external creative agencies and manual localization review, couldn’t keep pace with the streaming industry’s content-marketing cadence, where competitors were refreshing campaigns and producing territory-specific variants far faster than Solstice’s traditional agency-dependent workflow allowed.
 
 **Ungoverned AI proliferation and rights risk.** Discovery found that several marketing sub-teams had already begun informally using consumer generative AI tools for draft content, without any systematic check against Solstice’s actual rights position for the characters, brand elements, or creative styles being generated — a practice Okonkwo-Reyes’s office had already flagged internally as a governance gap before this engagement began, making this partly a “formalize and govern an existing practice” engagement rather than a purely greenfield build.
 
-# **4. Constraints**
+# 4. Constraints
 
 1. **Fragmented, territory- and use-case-specific rights data.** Solstice’s actual rights position for any given character, music cue, or brand element was not systematically codified anywhere — it existed across legal contract documents, distribution agreements, and institutional knowledge within the legal and business affairs teams, requiring substantial data-architecture work before any reliable automated rights-checking was possible.
 
@@ -92,9 +90,9 @@ Solstice’s Chief Marketing Officer, Isabelle Fontaine, and General Counsel, Da
 
 6. **Creative team autonomy and trust.** Marketing leadership was explicit that an overly restrictive or slow guardrail system would simply drive creative teams back to informal, ungoverned tool use (the exact preengagement problem) — the compliance architecture needed to be fast and usable enough that creative teams would actually adopt it rather than route around it.
 
-# **5. Discovery Transcript**
+# 5. Discovery Transcript
 
-## **5.1 Kickoff — Week 1**
+## 5.1 Kickoff — Week 1
 
 *Present: Isabelle Fontaine (CMO), David Okonkwo-Reyes (General Counsel), VP of Business Affairs (Miriam Chen), the Enterprise AI Architect (EAA).*
 
@@ -112,7 +110,7 @@ Solstice’s Chief Marketing Officer, Isabelle Fontaine, and General Counsel, Da
 
 **EAA:** Fair, and I’d propose a phased approach rather than requiring full comprehensiveness before any value is delivered — prioritize the rights graph’s initial coverage around the content and territories generating the highest current marketing volume and, not coincidentally, the highest current informal-AI-use risk exposure, expanding coverage over time rather than attempting full library coverage before launch.
 
-## **5.2 Marketing Creative Team Shadowing — Week 3**
+## 5.2 Marketing Creative Team Shadowing — Week 3
 
 **Marketing Creative Director (Elena Vasquez, no relation to other engagements’ similarly-named**
 
@@ -124,7 +122,7 @@ Solstice’s Chief Marketing Officer, Isabelle Fontaine, and General Counsel, Da
 
 This exchange directly foreshadowed the Month 10 incident and shaped an explicit discovery-phase flag — **“inspired by” and stylistic-reference creative-direction language was identified as a known risk area requiring specific guardrail design** , not an edge case discovered only after the incident, a point returned to directly in the postmortem (Section 15).
 
-## **5.3 Legal/Business Affairs Shadowing — Week 4**
+## 5.3 Legal/Business Affairs Shadowing — Week 4
 
 **Business Affairs Rights Specialist (Thomas Reid):** [reviewing a sample contract] This co-production agreement gives us marketing rights to this character, but only for “advertising materials directly promoting the co-produced series” — not for general brand marketing that happens to feature the character. That’s a real, meaningful distinction that requires understanding the specific contractual use-case scope, not just “do we have rights to this character, yes or no.”
 
@@ -134,7 +132,7 @@ This exchange directly foreshadowed the Month 10 incident and shaped an explicit
 
 This directly shaped the Rights & Clearances Knowledge Graph’s design to represent **use-case-scoped rights** , not just binary ownership/no-ownership, described further in Section 6.1.
 
-## **5.4 Capability Mapping and ROI — Week 5**
+## 5.4 Capability Mapping and ROI — Week 5
 
 |**Capability**|**Current State**|**AI Opportunity**|**Impact**|**Feasibility**|
 |---|---|---|---|---|
@@ -148,9 +146,9 @@ This directly shaped the Rights & Clearances Knowledge Graph’s design to repre
 
 **Fontaine:** Agreed, and frankly that’s a decision above my pay grade anyway given guild agreement implications — keep this scoped to marketing and secondary content.
 
-# **6. Architecture Workshops**
+# 6. Architecture Workshops
 
-## **6.1 Data & Information Architecture — Rights & Clearances Knowledge Graph**
+## 6.1 Data & Information Architecture — Rights & Clearances Knowledge Graph
 
 **Enterprise Data Architect (Wei Zhang):** Walk through how the use-case-scoped rights model from the Reid shadowing session actually gets represented.
 
@@ -160,7 +158,7 @@ This directly shaped the Rights & Clearances Knowledge Graph’s design to repre
 
 **EAA:** I want to be honest that there’s no way around this requiring substantial Business Affairs involvement, given the source data lives in contract language and institutional knowledge, not any existing structured system — but I’d propose prioritizing population by current marketing volume and risk exposure, per the phased approach we discussed in Week 1, rather than attempting comprehensive population before any value is delivered. I’d also propose an AI-assisted contract-extraction capability to help Reid’s team accelerate the initial population — extracting candidate structured rights data from contract text for Business Affairs review and confirmation, rather than requiring fully manual structured data entry — though I want to be clear that capability itself needs human verification given the legal stakes of getting the underlying rights data wrong.
 
-## **6.2 AI/Platform Architecture — Whiteboard Session, Week 10**
+## 6.2 AI/Platform Architecture — Whiteboard Session, Week 10
 
 **Platform Architect (Sam Ito):** Walk through the content-generation workflow end to end, including how rightschecking integrates.
 
@@ -176,19 +174,19 @@ This directly shaped the Rights & Clearances Knowledge Graph’s design to repre
 
 This exchange — an accurate, honest assessment of a real architectural gap, made explicitly at design time rather than only discovered after an incident — is directly relevant to the Month 10 incident and its response (Section 14), and is referenced directly in the postmortem as evidence the risk was known, not novel.
 
-## **6.3 Security & Identity Architecture**
+## 6.3 Security & Identity Architecture
 
 - All generative content processing within Solstice’s cloud tenant boundary under contractual no-training/noretention terms with the model provider, given the commercial sensitivity of unreleased marketing campaigns and content strategy Access control aligned to Solstice’s existing content-security classification (unreleased series marketing carries higher sensitivity/access-restriction than content for already-released series), inherited rather than creating a parallel classification scheme
 
 Full audit logging of every generation request, rights-check result, and legal-review outcome — providing both the operational trail for the mandatory legal review gate and a discoverable record given entertainment-industry IP disputes are a real, recurring litigation category
 
-## **6.4 Integration & API Strategy**
+## 6.4 Integration & API Strategy
 
 - MCP server exposing the Rights & Clearances Knowledge Graph as a queryable tool consumed by the Rights-Checking Agent, with a defined escalation pathway to Business Affairs for any query returning ambiguous or graph-uncertain results, consistent with the non-decisioning, human-escalation-on-ambiguity pattern used across several of the team’s other regulated engagements AI-assisted contract-extraction pipeline (Section 6.1) as a distinct, Business-Affairs-reviewed capability supporting Knowledge Graph population, not a production content-generation-facing capability Integration with Solstice’s existing digital asset management (DAM) system for final approved-asset storage and distribution, preserving existing brand-asset governance rather than creating a parallel asset repository
 
-# **7. Technical Debates**
+# 7. Technical Debates
 
-## **7.1 Should the Content-Generation Agent Have Access to Actual Competitor/Third-Party Creative Assets for “Inspired By” Grounding?**
+## 7.1 Should the Content-Generation Agent Have Access to Actual Competitor/Third-Party Creative Assets for “Inspired By” Grounding?
 
 **ML Engineer (Devon Park):** If creative direction language like “make it feel like [comparable campaign]” is normal industry practice per Vasquez’s discovery interview, would giving the Content-Generation Agent actual reference access to the named comparable campaign’s assets produce better, more precisely-targeted creative output than relying on the model’s general training-data familiarity with it?
 
@@ -200,7 +198,7 @@ Full audit logging of every generation request, rights-check result, and legal-r
 
 This decision — attribute-abstraction rather than direct reference-asset access — was implemented as designed and was not itself the direct cause of the Month 10 incident, which occurred through a different mechanism (Section 14) — but the underlying soft-guardrail limitation acknowledged in Week 10 remained relevant regardless.
 
-## **7.2 Multi-Territory Legal Variance in the Guardrail Architecture**
+## 7.2 Multi-Territory Legal Variance in the Guardrail Architecture
 
 **Fontaine (Week 16):** For territories with stricter advertising content regulations, does the Rights-Checking Agent need territory-specific compliance logic beyond just IP rights checking?
 
@@ -208,7 +206,7 @@ This decision — attribute-abstraction rather than direct reference-asset acces
 
 **Okonkwo-Reyes:** That separation makes sense from a legal-team-organization perspective too — different specialists on my team own IP/rights versus advertising-content-regulation compliance.
 
-## **7.3 Evaluation Strategy Debate**
+## 7.3 Evaluation Strategy Debate
 
 **Vasquez (Creative Director):** I want evaluation to cover creative quality, not just legal safety — a legally-safe asset that’s creatively mediocre doesn’t actually solve my team’s problem.
 
@@ -220,9 +218,9 @@ not folded into a general rights-check pass rate.
 
 **EAA:** That’s a good instinct given the acknowledged architectural gap, and I’d build that stratified tracking from the start rather than adding it reactively — this became directly relevant when the Month 10 incident occurred within exactly this flagged risk category.
 
-# **8. Executive Reviews**
+# 8. Executive Reviews
 
-## **8.1 Legal/Business Affairs Governance Review — Week 20**
+## 8.1 Legal/Business Affairs Governance Review — Week 20
 
 **Okonkwo-Reyes (chairing):** I’m prepared to approve pilot deployment for the explicit-reference-checking pathway, which I’m confident in given the Knowledge Graph architecture. For the “inspired by” pathway, I want to approve pilot deployment too, but I want it explicitly conditioned on mandatory legal review for every asset in that category before external publication, with no exceptions and no fast-track — given the team’s own honest assessment in Week 10 that the guardrail there is softer.
 
@@ -232,7 +230,7 @@ not folded into a general rights-check pass rate.
 
 **Okonkwo-Reyes:** Agreed, and I want that volume tracked and reported to me monthly.
 
-## **8.2 CMO Speed/Adoption Review — Week 28**
+## 8.2 CMO Speed/Adoption Review — Week 28
 
 **Fontaine:** Give me the honest adoption picture. Are creative teams actually using this instead of routing back to informal tool use?
 
@@ -242,7 +240,7 @@ not folded into a general rights-check pass rate.
 
 **EAA:** I’d agree that’s a real, live risk, not fully resolved by this platform as currently designed. I’d recommend this be an explicit, named risk in the risk register rather than something we consider solved because the formal platform has a governance gate — the gate only works if it’s where the actual risk-bearing creative decisions happen, and informal early-exploration tool use potentially routes around that.
 
-## **8.3 Post-Incident Executive Review — Week 42 (see Section 14)**
+## 8.3 Post-Incident Executive Review — Week 42 (see Section 14)
 
 **Okonkwo-Reyes:** I want to understand precisely how this asset got as far as legal review before being caught, and whether that’s the system working as designed or a near-failure.
 
@@ -252,7 +250,7 @@ not folded into a general rights-check pass rate.
 
 **EAA:** That’s exactly how I’d characterize it, and I think it validates both the original Week 10 honesty about the gap and the Week 20 decision to require mandatory review for that category rather than treating the softer guardrail as adequate on its own.
 
-# **9. Final Architecture**
+# 9. Final Architecture
 
 - **Rights & Clearances Knowledge Graph** : territory-, use-case-, and time-window-scoped structured representation of Solstice’s actual rights position for characters, brand elements, music cues, and talent likeness, populated via AI-assisted contract extraction with mandatory Business Affairs verification, phased by content volume/risk priority
 
@@ -264,7 +262,7 @@ not folded into a general rights-check pass rate.
 
 - Stratified evaluation tracking distinguishing explicit-reference and “inspired by” risk categories, with the latter’s flag rate and volume reported directly to General Counsel
 
-# **10. Delivery Roadmap**
+# 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -277,7 +275,7 @@ not folded into a general rights-check pass rate.
 |Incident & Remediation|Month 10|Stylistic-similarity pre-publication<br>finding, guardrail redesign|
 |Post-Remediation Stabilization|Months 10–12|Hardened visual-style guardrail deployed,<br>continued Rights Graph expansion|
 
-# **11. Risks**
+# 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -287,23 +285,23 @@ not folded into a general rights-check pass rate.
 |Talent<br>likeness/contract-term<br>compliance gap|Low-Medium|High|Integrated into Rights<br>Graph as distinct rights<br>category, Business<br>Affairs verification|Business Affairs|
 |Territory-specific<br>advertising regulation<br>non-compliance|Low|Medium|Structurally separate<br>Territory Compliance<br>Agent, independently<br>maintained|Legal / Territory<br>Compliance|
 
-# **12. Governance Model**
+# 12. Governance Model
 
 - **Mandatory legal review for all “inspired by”-category content** prior to external publication, held as a non-negotiable gate throughout the engagement, validated as the control that caught the Month 10 finding **Monthly reporting to General Counsel** of “inspired by” pathway volume and flag rate, per the Week 20 stratified-tracking requirement, used to prioritize the eventual guardrail-hardening investment **Explicit informal-tool-use risk tracking** : adoption and potential-workaround patterns tracked as an ongoing risk-register item, not considered resolved by the governed platform’s existence alone **AI Change Advisory process** : any change to the Rights & Clearances Knowledge Graph schema, the Rights-Checking Agent’s logic, or the visual-style guardrail requires joint Legal and Platform Architecture sign-off
 
-# **13. Production Rollout**
+# 13. Production Rollout
 
 Pilot deployment began Month 7 with a limited set of creative teams working on upcoming series launches, chosen to align with the Rights Graph’s initial phased-population priority (Section 6.1). Broader rollout to additional creative teams occurred Months 9–10, with the Month 10 incident occurring shortly after this broader rollout — during a period of both increased platform usage volume and, per the postmortem, less individualized on-boarding attention than the original pilot group had received, a factor noted in the incident review though not identified as a primary causal factor.
 
-# **14. Production Incident — Month 10**
+# 14. Production Incident — Month 10
 
-## **14.1 Incident Summary**
+## 14.1 Incident Summary
 
 A marketing creative team, producing social media promotional assets for an upcoming series launch, submitted an “inspired by” creative brief referencing a comparable successful marketing campaign’s general tone and visual energy (per the attribute-abstraction design from Section 7.1 — no direct reference-asset access was provided to the Content-Generation Agent). The generated output, per the Week 20 governance requirement, was routed to mandatory legal review before any external publication. Solstice’s legal team, reviewing the generated image assets, flagged one variant as bearing a strong stylistic resemblance — in color palette, character silhouette treatment, and overall visual composition — to a distinctive, legally protected visual design element from an unrelated third-party entertainment franchise, despite no direct reference to that franchise appearing anywhere in the creative brief or, as far as could be determined, in the attribute-abstracted prompt actually sent to the generation model.
 
 Legal’s assessment was that while not a direct reproduction, the resemblance was close enough to carry real infringement risk if published externally. The asset was pulled before any external use; no publication occurred.
 
-## **14.2 Incident Response Transcript**
+## 14.2 Incident Response Transcript
 
 **Okonkwo-Reyes (review session, within 48 hours, given no external publication occurred, allowing for a less compressed emergency timeline than some other engagements’ incidents):** I want to understand the actual generation mechanism — how did an attribute-abstracted brief, with no direct reference to the third-party franchise, produce something similar enough to trigger this concern?
 
@@ -319,13 +317,13 @@ Legal’s assessment was that while not a direct reproduction, the resemblance w
 
 **Okonkwo-Reyes:** I want that automated pre-screening built, and I want the mandatory human legal review preserved regardless of how good the automated screening becomes — I’m not willing to remove the human backstop just because we’ve added an earlier automated check, given how directly this incident validates the value of that backstop.
 
-## **14.3 Remediation**
+## 14.3 Remediation
 
 An automated visual-similarity screening capability was added to the Content-Generation pipeline for the “inspired by” pathway specifically: generated visual assets are compared against a curated reference library of
 
 known, distinctive protected third-party visual styles (built and maintained with Legal’s involvement, given the legal judgment required to determine what counts as sufficiently distinctive to warrant inclusion) before reaching the human legal review stage, with any flagged similarity surfaced explicitly to the legal reviewer rather than silently blocking generation — preserving human judgment for the final call while reducing the volume of clearcut cases requiring full manual visual comparison from scratch.
 
-# **15. Lessons Learned**
+# 15. Lessons Learned
 
 1. **An honestly acknowledged architectural gap, documented at design time (Week 10) rather than discovered only after an incident, enabled a faster and more confident incident response.** Because the team had already characterized the “inspired by” pathway’s guardrail as soft and specifically recommended mandatory human review as a necessary backstop for that reason, the Month 10 incident was immediately recognizable as validation of a known, named risk rather than requiring the team to first diagnose whether this was a novel failure mode — accelerating the path to an appropriate, proportionate remediation.
 
@@ -333,7 +331,7 @@ known, distinctive protected third-party visual styles (built and maintained wit
 
 3. **Mandatory human review, even when it creates real friction against a business goal (creative velocity) that leadership genuinely cares about, proved its value directly and concretely in this incident — reinforcing the Week 20 governance decision against relaxing it, even as the underlying automated guardrail improves.** The postmortem was explicit that automated pre-screening should reduce the *volume* of cases requiring full manual scrutiny, not eliminate the human review step itself — a pattern consistent with how mandatory human verification processes functioned as the actual safeguard across several of this team’s other regulated-industry engagements, here applied to creative/IP risk rather than safety, financial, or clinical risk.
 
-# **16. Enterprise Architecture Artifacts**
+# 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : marketing content generation, localization, and rights-compliance value chains with AIopportunity overlay (Section 5.4)
 
@@ -343,7 +341,7 @@ known, distinctive protected third-party visual styles (built and maintained wit
 
 - **“Inspired By” Risk Category Documentation** : the Week 10 original risk assessment, preserved and referenced directly in the Month 10 postmortem as an example of a well-characterized, proactively-flagged architectural gap
 
-# **17. Architecture Decision Records (ADRs)**
+# 17. Architecture Decision Records (ADRs)
 
 **ADR-001: Rights & Clearances Knowledge Graph represents territory-, use-case-, and time-windowscoped rights, not a simplified binary ownership model.** Status: Accepted. See Section 6.1, directly responsive to the Reid shadowing finding.
 
@@ -359,7 +357,7 @@ known, distinctive protected third-party visual styles (built and maintained wit
 
 **ADR-007 (post-incident): Automated visual-similarity screening added as an earlier-stage check for the “inspired by” pathway, comparing generated visual output against a Legal-curated reference library of distinctive protected third-party styles, surfacing flags to human legal reviewers rather than silently blocking — mandatory human review preserved regardless of automated screening performance.** Status: Accepted, built and deployed following the Month 10 incident.
 
-# **18. AI Evaluation Strategy**
+# 18. AI Evaluation Strategy
 
 - **Rights-check accuracy (explicit-reference pathway)** : measured against Business-Affairs-verified ground truth, tracked as a hard-gate metric given the direct IP-risk consequences of a missed check **“Inspired by” pathway flag rate and volume** : tracked separately and reported monthly to General Counsel per the Week 20 governance requirement, used to prioritize the guardrail-hardening investment that followed the Month 10 incident
 
@@ -369,13 +367,13 @@ known, distinctive protected third-party visual styles (built and maintained wit
 
 - **Platform adoption vs. informal-tool-use risk** : ongoing qualitative and, where possible, quantitative tracking of the Week 28 concern about creative teams routing around the governed platform for early-stage exploration, treated as a standing risk-register item rather than resolved
 
-# **19. Operational Runbook**
+# 19. Operational Runbook
 
 - **Rights Graph update procedure** : triggered by new contract execution, license expiration, or Business Affairs-identified correction, with mandatory Business Affairs sign-off for any change, consistent with the human-verification pattern used across other engagements’ policy/knowledge-graph update procedures **“Inspired by” mandatory review procedure** : defined workflow and SLA for legal review turnaround, balancing Okonkwo-Reyes’s non-negotiable review requirement against Fontaine’s creative-velocity needs, monitored for bottleneck patterns
 
 - **Visual-similarity reference library maintenance** : standing process for Legal to add newly-identified distinctive protected third-party styles to the screening reference library as new risk patterns are identified, not a one-time-built, static library **Territory Compliance regulatory-update monitoring** : process for tracking changes to territory-specific advertising content regulations, feeding updates to the Territory Compliance Agent independently from the Rights Graph’s own update cadence
 
-# **20. Future Roadmap**
+# 20. Future Roadmap
 
 1. **Continued Rights & Clearances Knowledge Graph expansion** beyond the initial phased, highest-volume content coverage, toward fuller library coverage over time, informed by ongoing content-volume and riskexposure prioritization rather than a fixed calendar target.
 

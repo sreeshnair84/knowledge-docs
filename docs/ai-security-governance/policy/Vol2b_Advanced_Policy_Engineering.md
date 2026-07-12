@@ -13,17 +13,17 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 2b OF Extended**
 
-## **~~1. SCIM 2.0 Integration for Claim Enrichment~~**
+## 1. SCIM 2.0 Integration for Claim Enrichment
 
-# System for Cross-domain Identity Management (SCIM 2.0) is the standard protocol for synchronizing user ~~identity data from Entra ID (or ADFS) to application attribute stores. Rather than embedding all attributes in JWT~~ **~~Advanced Policy Engineering~~** <u>tokens (which hits size limits), SCIM pushes attributes to a local DynamoDB store that the PIP queries at</u> authorization time.
+# System for Cross-domain Identity Management (SCIM 2.0) is the standard protocol for synchronizing user identity data from Entra ID (or ADFS) to application attribute stores. Rather than embedding all attributes in JWT **Advanced Policy Engineering** <u>tokens (which hits size limits), SCIM pushes attributes to a local DynamoDB store that the PIP queries at</u> authorization time.
 
-### **~~1.1 SCIM Architecture for Enterprise AI~~**
+### 1.1 SCIM Architecture for Enterprise AI
 
-~~`Microsoft Entra ID` I I~~ ~~`SCIM 2.0 Provisioning (push on change)` I~~ ~~`Endpoint:`~~ `https://api.bank.com/scim/v2` M `SCIM Receiver Lambda` I `Validates SCIM bearer token` I `Transforms SCIM schema` → `Enterprise schema` M `DynamoDB User Attribute Store` I `Partition: userId` I <u>`Contains: department, costCenter, clearanceLevel,` I</u> <u>`geography, legalEntity, manager,` I</u> `projectMemberships, tradingDeskId,` I `regulatoryCaptures, dataAccessScopes` I I `TTL: Not set` ~~`(SCIM manages lifecycle)` I~~ ~~`GSI: by-department, by-geography` M~~ ~~`PIP Lookup Lambda (at`~~ `authorization time)` I `Cache: ElastiCache Redis 300s TTL` I `Enriches canonical claims with SCIM attributes` M `Cedar Authorization Context (enriched)`
+`Microsoft Entra ID` I I `SCIM 2.0 Provisioning (push on change)` I `Endpoint:` `https://api.bank.com/scim/v2` M `SCIM Receiver Lambda` I `Validates SCIM bearer token` I `Transforms SCIM schema` → `Enterprise schema` M `DynamoDB User Attribute Store` I `Partition: userId` I <u>`Contains: department, costCenter, clearanceLevel,` I</u> <u>`geography, legalEntity, manager,` I</u> `projectMemberships, tradingDeskId,` I `regulatoryCaptures, dataAccessScopes` I I `TTL: Not set` `(SCIM manages lifecycle)` I `GSI: by-department, by-geography` M `PIP Lookup Lambda (at` `authorization time)` I `Cache: ElastiCache Redis 300s TTL` I `Enriches canonical claims with SCIM attributes` M `Cedar Authorization Context (enriched)`
 
-### **<u>1.2 SCIM Receiver Implementation</u>**
+### <u>1.2 SCIM Receiver Implementation</u>
 
-`# SCIM 2.0 Receiver — Lambda function import json import boto3 import hashlib dynamodb = boto3.resource('dynamodb') table = dynamodb.Table('user-attributes') def handler(event,` ~~`context): path = event['path'] method = event['httpMethod'] body = json.loads(event.get('body',`~~ `'{}')) # SCIM 2.0 endpoint routing if '/Users' in path and method == 'POST': return` ~~`provision_user(body) elif '/Users/' in path and method == 'PUT': return update_user(path, body)`~~ `elif '/Users/' in path and method == 'DELETE': return deprovision_user(path) elif '/Users' in path and method == 'GET': return list_users(event.get('queryStringParameters', {})) def` **VOLUME COVERAGE** ~~`provision_user(scim_user: dict) -> dict: # Transform SCIM schema to enterprise schema`~~ SCIM 2.0 integration for claim enrichment, nested group resolution algorithms, role explosion mitigation, `enterprise_user = { 'userId': scim_user['id'], # Entra ID object ID 'upn':` ~~Cedar policy templates and delegated administration, OPA bundle distribution and GitOps, WASM~~ ~~`scim_user['userName'], 'displayName': scim_user['displayName'], # SCIM Enterprise Extension`~~ compilation for edge enforcement, partial evaluation for database-level authorization, and policy simulation `'department': scim_user.get( 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('department', 'UNKNOWN'), 'costCenter': scim_user.get(`
+`# SCIM 2.0 Receiver — Lambda function import json import boto3 import hashlib dynamodb = boto3.resource('dynamodb') table = dynamodb.Table('user-attributes') def handler(event,` `context): path = event['path'] method = event['httpMethod'] body = json.loads(event.get('body',` `'{}')) # SCIM 2.0 endpoint routing if '/Users' in path and method == 'POST': return` `provision_user(body) elif '/Users/' in path and method == 'PUT': return update_user(path, body)` `elif '/Users/' in path and method == 'DELETE': return deprovision_user(path) elif '/Users' in path and method == 'GET': return list_users(event.get('queryStringParameters', {})) def` **VOLUME COVERAGE** `provision_user(scim_user: dict) -> dict: # Transform SCIM schema to enterprise schema` SCIM 2.0 integration for claim enrichment, nested group resolution algorithms, role explosion mitigation, `enterprise_user = { 'userId': scim_user['id'], # Entra ID object ID 'upn':` Cedar policy templates and delegated administration, OPA bundle distribution and GitOps, WASM `scim_user['userName'], 'displayName': scim_user['displayName'], # SCIM Enterprise Extension` compilation for edge enforcement, partial evaluation for database-level authorization, and policy simulation `'department': scim_user.get( 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('department', 'UNKNOWN'), 'costCenter': scim_user.get(`
 
 ```
 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('costCenter', ''),
@@ -45,19 +45,17 @@ deactivatedAt = :ts', ExpressionAttributeValues={':false': False, ':ts': get_iso
 invalidate_pip_cache(user_id) return {'statusCode': 204}
 ```
 
-~~Classification: CONFIDENTIAL — INTERNAL USE ONLY~~
+Classification: CONFIDENTIAL — INTERNAL USE ONLY
 
-~~Published: June 2026  ·  AWS Well-Architected Series~~
+Published: June 2026  ·  AWS Well-Architected Series
 
 **ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
-
-
-## **2. Nested Group Resolution Algorithm**
+## 2. Nested Group Resolution Algorithm
 
 Microsoft Entra ID supports deeply nested security groups. A user's effective role set is the transitive closure of all direct and indirect group memberships. This computation must be done efficiently at authorization time.
 
-### **2.1 The Transitive Closure Problem**
+### 2.1 The Transitive Closure Problem
 
 `ENTRA ID GROUP HIERARCHY (example): GlobalAdmins` III `EMEA_Admins` III `UK_Admins` III `London_Payments_Admins` III `john.smith` ← `User JWT contains ONLY direct memberships: { "groups": ["London_Payments_Admins_GUID"] } BUT effective capabilities should include: •`
 
@@ -67,11 +65,11 @@ can_access_global_reports (from GlobalAdmins) WITHOUT nested resolution, John is
 inherited capabilities. WITH resolution, we flatten the hierarchy into the capability set.
 ```
 
-### **2.2 Efficient Resolution with Caching**
+### 2.2 Efficient Resolution with Caching
 
 `# Nested group resolver with DFS and caching import redis import json import boto3 from typing import Set r = redis.Redis(host='elasticache-endpoint', port=6379, db=0) graph_client = None # Microsoft Graph API client def resolve_transitive_groups(user_id: str, direct_groups: list) -> Set[str]: cache_key = f"groups:{user_id}" # Check cache first (TTL = 300 seconds) cached = r.get(cache_key) if cached: return set(json.loads(cached)) # BFS/DFS traversal of group hierarchy visited = set() queue = list(direct_groups) while queue: group_guid = queue.pop(0) if group_guid in visited: continue visited.add(group_guid) # Get parent groups (transitive membership) parent_groups = get_parent_groups(group_guid) for parent in parent_groups: if parent not in visited: queue.append(parent) # Cache the resolved set r.setex(cache_key, 300, json.dumps(list(visited))) return visited def resolve_capabilities(group_guids: Set[str]) -> list: # Map group GUIDs to business capabilities. cache_key = f"caps:{hash_set(group_guids)}" cached = r.get(cache_key) if cached: return json.loads(cached) capabilities = set() for guid in group_guids: group_name = resolve_group_name(guid) # GUID` → `human name caps = GROUP_TO_CAPABILITY_MAP.get(group_name, []) capabilities.update(caps) result = list(capabilities) r.setex(cache_key, 300, json.dumps(result)) return result # The mapping table: loaded from DynamoDB (managed by IAM team) GROUP_TO_CAPABILITY_MAP = { "London_Payments_Admins": ["can_approve_payment", "can_view_payments"], "EMEA_Payments_Admins": ["can_approve_payment", "can_view_emea_data"], "GlobalAdmins": ["can_access_global_reports", "can_view_all_data"], "Finance_Readonly": ["can_view_financial_data"], "DBA_Production": ["can_query_production_db"], "Compliance_Auditors": ["can_export_audit_log", "can_view_all_data"], # ... hundreds more mappings managed in DynamoDB }`
 
-### **2.3 Role Explosion Mitigation**
+### 2.3 Role Explosion Mitigation
 
 Large enterprises often have thousands of AD groups. Without mitigation, the JWT groups claim and the capability set both explode in size, causing performance and token size problems.
 
@@ -81,29 +79,17 @@ Large enterprises often have thousands of AD groups. Without mitigation, the JWT
 |Group GUID<br>explosion|Thousands of GUIDs<br>with no semantic<br>meaning|GUID→name cache in<br>ElastiCache|Pre-loaded at normalization service<br>startup; refresh every 5 min|
 |Capability set<br>explosion|1000 groups→3000<br>capabilities|Scope scoping: only<br>capabilities relevant to the<br>requested resource|Lazy capability resolution: only resolve<br>groups relevant to the action being<br>authorized|
 
-
-
-
-
-
-
 |**Problem**|**Scale**|**Mitigation Strategy**|**Implementation**|
 |---|---|---|---|
 |Transitive<br>resolution latency|10+ levels deep→50+<br>MS Graph API calls|Pre-computed transitive<br>closure in DynamoDB<br>(SCIM-updated)|SCIM sync writes full transitive group<br>list; no real-time traversal needed|
 |Policy evaluation<br>with huge|Cedar policy with<br>contains on|Segment capabilities by<br>domain: finance_caps,|Cedar context uses typed sets per<br>domain, not one flat list|
 |capability sets|3000-element set|hr_caps, etc.||
 
-
-
-
-
-
-
-## **3. Cedar Policy Templates & Delegated Administration**
+## 3. Cedar Policy Templates & Delegated Administration
 
 Cedar Policy Templates allow parameterized policies to be instantiated for many entities without writing individual policies for each. This is critical for multi-tenant SaaS deployments and delegated administration models.
 
-### **3.1 Cedar Policy Templates**
+### 3.1 Cedar Policy Templates
 
 ```
 // Cedar Policy Template — parameterized by ?principal and ?resource // Template:
@@ -125,7 +111,7 @@ avp_client.create_policy( policyStoreId=POLICY_STORE_ID, definition={ 'templateL
 'doc-ma-2025-001' } } } )
 ```
 
-### **3.2 Delegated Administration with Cedar**
+### 3.2 Delegated Administration with Cedar
 
 Delegated administration allows department heads or project leads to manage authorization within their scope without touching the central policy store. Cedar's entity hierarchy and template system enable this safely:
 
@@ -146,18 +132,12 @@ own clearance resource.classification > principal.clearanceLevel } unless {
 principal.capabilities.contains("can_admin_global_scope") };
 ```
 
-### **3.3 Cedar Policy Versioning Strategy**
+### 3.3 Cedar Policy Versioning Strategy
 
 |**Version Type**|**Approach**|**Rollback Mechanism**|**Use Case**|
 |---|---|---|---|
 |Major version|New policy store; traffic migration|Switch canary back to 0%|Fundamental model change|
 |(breaking)|via canary||(e.g. new entity type)|
-
-
-
-
-
-
 
 |**Version Type**|**Approach**|**Rollback Mechanism**|**Use Case**|
 |---|---|---|---|
@@ -165,15 +145,9 @@ principal.capabilities.contains("can_admin_global_scope") };
 |Patch (fix)|Replace existing policy; validate<br>with test suite|Git revert + pipeline<br>redeploy|Bug fix in existing policy logic|
 |Emergency<br>(hotfix)|Direct AVP update with dual<br>approver (break-glass)|Immediate AVP delete or<br>disable|Active security incident requiring<br>immediate policy change|
 
+## 4. OPA Advanced Patterns
 
-
-
-
-
-
-## **4. OPA Advanced Patterns**
-
-### **4.1 OPA Bundle Distribution via S3 + GitOps**
+### 4.1 OPA Bundle Distribution via S3 + GitOps
 
 ```
 # OPA Bundle Server on S3 — GitOps workflow # Directory structure: # /policies/ # bundle.tar.gz
@@ -192,7 +166,7 @@ pipeline): # opa build -b policies/ data/ --signing-key bundle-signing.pem # aws
 bundle.tar.gz s3://enterprise-opa-bundles/enterprise/bundle.tar.gz
 ```
 
-### **4.2 OPA Partial Evaluation for Database-Level Authorization**
+### 4.2 OPA Partial Evaluation for Database-Level Authorization
 
 OPA's partial evaluation feature compiles a Rego policy against known inputs to produce a residual policy — typically a set of conditions that can be directly applied as a SQL WHERE clause or OpenSearch filter. This is the most powerful OPA pattern for data-level authorization:
 
@@ -220,13 +194,9 @@ canonical_claims['organization']['tenant_id'] return { "bool": { "must": [ {"ran
 {"embargo_active": False}}, ] } }
 ```
 
-### **4.3 OPA WASM for Edge Authorization**
+### 4.3 OPA WASM for Edge Authorization
 
 Rego policies can be compiled to WebAssembly (WASM), enabling policy enforcement at the CDN/edge layer — before requests reach the origin — with sub-millisecond evaluation and zero network I/O for the authorization
-
-
-
-
 
 #### check:
 
@@ -245,13 +215,9 @@ CloudFront Functions) # • Use cases: rate limiting, geo-blocking, basic capabi
 Limitation: no external data lookup (self-contained policy only)
 ```
 
+## 5. Policy Simulation, Shadow Evaluation & Testing
 
-
-
-
-## **5. Policy Simulation, Shadow Evaluation & Testing**
-
-### **5.1 Shadow Evaluation Architecture**
+### 5.1 Shadow Evaluation Architecture
 
 Shadow evaluation runs the new policy alongside the existing authorization system without changing production behavior. Mismatches are logged for investigation.
 
@@ -259,7 +225,7 @@ Shadow evaluation runs the new policy alongside the existing authorization syste
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `Compare Decisions` I IIIIIIIIIIIIIIIII I I `MATCH MISMATCH` I I `Log: INFO Log: WARN Investigate: • New policy too restrictive? • Old code had a bug? • Edge case in normalization? • Missing entity in schema? Target: 99.9% decision parity before Phase 3 enforcement`
 
-### **5.2 Policy Test Vector Framework**
+### 5.2 Policy Test Vector Framework
 
 ```
 # Comprehensive test vector generator # Generates test cases covering: happy paths, denial
@@ -291,13 +257,9 @@ results['passed'] / (results['passed'] + results['failed']) print(f"Coverage: {c
 ({results['passed']}/{len(vectors)})") return results
 ```
 
+## 6. Policy Governance Framework
 
-
-
-
-## **6. Policy Governance Framework**
-
-### **6.1 Policy Review Board Structure**
+### 6.1 Policy Review Board Structure
 
 |**Role**|**Responsibility**|**Approval Required For**|
 |---|---|---|
@@ -308,9 +270,7 @@ results['passed'] / (results['passed'] + results['failed']) print(f"Coverage: {c
 |Compliance Officer|Reviews policies for regulatory alignment<br>(PCI, DORA, NIST)|Must approve: audit log policies, payment<br>authorization policies|
 |CISO (escalation)|Approves emergency policy changes,<br>break-glass procedures|Required: production emergency hotfix, policy<br>rollback of >100 policies|
 
-
-
-### **6.2 Policy Drift Detection**
+### 6.2 Policy Drift Detection
 
 ```
 # AWS Config Rule: detect unauthorized AVP policy changes # config-rule.py — Lambda for custom

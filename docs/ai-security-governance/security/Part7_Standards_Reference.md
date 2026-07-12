@@ -13,23 +13,21 @@ tags: []
 
 Enterprise AI Authentication Research • Part 7 of 7
 
-# **Part 7**
+# Part 7
 
-## **Standards Reference & Quick Reference Guide**
+## Standards Reference & Quick Reference Guide
 
 OAuth 2.1, OIDC, RFC 8693, RFC 7523, implementation checklists, vendor documentation references, and decision frameworks
 
 Enterprise Authentication & Identity Propagation for AI Agents
 
-
-
-### **Key Standards Reference**
+### Key Standards Reference
 
 This section summarises the authoritative standards that underpin enterprise AI authentication and identity propagation. Architects and engineers should read primary sources alongside this research.
 
-#### **OAuth 2.0 and OAuth 2.1**
+#### OAuth 2.0 and OAuth 2.1
 
-##### **OAuth Standards**
+##### OAuth Standards
 
 |**Standard**|**RFC / Spec**|**Key Requirements**|**AI Agent Relevance**|
 |---|---|---|---|
@@ -41,11 +39,9 @@ This section summarises the authoritative standards that underpin enterprise AI 
 |Token Revocation|RFC 7009|POST /revoke to invalidate<br>tokens|Used on user offboarding,<br>session termination|
 |Dynamic Client Registration|RFC 7591|Programmatic OAuth client<br>registration|Agent-to-agent trust<br>establishment|
 
+#### OpenID Connect (OIDC)
 
-
-#### **OpenID Connect (OIDC)**
-
-##### **OIDC Specifications**
+##### OIDC Specifications
 
 |**Specification**|**Purpose**|**Key Claims**|**AI Agent Use**|
 |---|---|---|---|
@@ -53,22 +49,16 @@ This section summarises the authoritative standards that underpin enterprise AI 
 |OIDC Discovery|/.well-known/openid-configu<br>ration|Authorization, token, JWKS<br>endpoints|AI platform discovers IdP<br>endpoints automatically|
 |OIDC Dynamic Registration|Client registration at IdP|Client metadata, redirect<br>URIs|AI agent self-registers with<br>enterprise IdP|
 
-
-
-
-
 |**Specification**|**Purpose**|**Key Claims**|**AI Agent Use**|
 |---|---|---|---|
 |OIDC Session<br>Management|Front-channel and<br>back-channel logout|Session state, logout<br>endpoints|AI platform terminates<br>session on IdP logout|
 |OIDC FAPI 2.0|Financial-grade API profile|Strengthened OIDC for<br>banking|Banking AI must comply<br>with FAPI 2.0|
 
-
-
-#### **RFC 8693 — OAuth 2.0 Token Exchange**
+#### RFC 8693 — OAuth 2.0 Token Exchange
 
 RFC 8693 defines the 'token exchange' grant type, enabling a service to obtain a new token on behalf of another entity. This is the foundation for all On-Behalf-Of patterns in enterprise AI.
 
-##### **RFC 8693 Token Exchange Request Parameters**
+##### RFC 8693 Token Exchange Request Parameters
 
 |**Parameter**|**Value / Description**|
 |---|---|
@@ -81,13 +71,11 @@ RFC 8693 defines the 'token exchange' grant type, enabling a service to obtain a
 |actor_token|Optional: token representing the acting service (AI<br>platform)|
 |actor_token_type|Optional: type of actor token|
 
-
-
-#### **RFC 7523 — JWT Bearer Token for OAuth 2.0**
+#### RFC 7523 — JWT Bearer Token for OAuth 2.0
 
 RFC 7523 defines how a JWT can be used as an OAuth 2.0 grant type ('JWT Bearer') or client authentication mechanism. This enables service-to-service authentication without client secrets, using signed JWTs with short expiry instead.
 
-##### **RFC 7523 JWT Bearer Use Cases**
+##### RFC 7523 JWT Bearer Use Cases
 
 |**Use Case**|**JWT Bearer Application**|
 |---|---|
@@ -95,21 +83,15 @@ RFC 7523 defines how a JWT can be used as an OAuth 2.0 grant type ('JWT Bearer')
 |Salesforce JWT Bearer flow|App presents user-asserting JWT; Salesforce issues user<br>access token|
 |Service account assertion|AI service signs JWT claiming service identity; IdP issues<br>access token|
 
-
-
-
-
 |**Use Case**|**JWT Bearer Application**|
 |---|---|
 |OBO pre-authorization|Admin pre-authorizes users; app presents JWT asserting<br>user identity|
 
-
-
-#### **Downscoping and Scope Reduction**
+#### Downscoping and Scope Reduction
 
 Downscoping is the practice of obtaining a token with reduced scopes from a broader token. This enables least-privilege tool execution: the AI platform holds a broad user token but requests narrow-scope tokens for each individual tool call.
 
-##### **Downscoping Patterns**
+##### Downscoping Patterns
 
 |**Pattern**|**Mechanism**|**Example**|
 |---|---|---|
@@ -118,13 +100,9 @@ Downscoping is the practice of obtaining a token with reduced scopes from a broa
 |AWS STS AssumeRole with policy|inline session policy in AssumeRole|Admin role→read-only S3 session<br>for specific prefix|
 |Kafka / OAuth scope reduction|Scope parameter in token exchange|Broad Kafka admin→specific topic<br>read scope|
 
+### Decision Frameworks
 
-
-
-
-### **Decision Frameworks**
-
-#### **Choosing an Authentication Method for a New Connector**
+#### Choosing an Authentication Method for a New Connector
 
 Use this decision framework when adding a new tool connector to an enterprise AI platform:
 
@@ -140,11 +118,9 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 |Is this a high-privilege API<br>(write/delete)?|Require human approval gate before<br>execution|Proceed with standard OAuth flow|
 |Is this API in a regulated scope (PCI,<br>SOX)?|Add OPA policy; require additional<br>approvals; extra audit logging|Standard governance controls apply|
 
+#### Choosing Between Service Account and Delegated Access
 
-
-#### **Choosing Between Service Account and Delegated Access**
-
-##### **Delegated vs Service Account Decision**
+##### Delegated vs Service Account Decision
 
 |**Factor**|**Use Delegated (User Token)**|**Use Service Account**|
 |---|---|---|
@@ -154,23 +130,15 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 |Data access scope|User can only see what they can<br>access|Must be explicitly restricted; risk of<br>over-access|
 |Compliance|Required for PCI, SOX user attribution|Acceptable for non-user-attributed<br>background work|
 
-
-
-
-
 ||**Factor**|**Use Delegated (User Token)**|**Use Service Account**|
 |---|---|---|---|
 |Revocation||Token revoked when user leaves|Service account managed<br>independently|
 
+### Implementation Checklists
 
+#### OAuth 2.1 Implementation Checklist
 
-
-
-### **Implementation Checklists**
-
-#### **OAuth 2.1 Implementation Checklist**
-
-##### **Authorization Server**
+##### Authorization Server
 
 - I Enforce PKCE (S256 method) for all clients
 
@@ -188,7 +156,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 - I Rotate signing keys; publish JWKS at /.well-known/jwks.json
 
-##### **Client (AI Platform)**
+##### Client (AI Platform)
 
 - I Generate unique code_verifier (min 43 chars, base64url encoded)
 
@@ -206,7 +174,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 - I Implement silent refresh before token expiry (at 75% lifetime)
 
-##### **Resource Server (MCP Server / API)**
+##### Resource Server (MCP Server / API)
 
 - I Validate token: signature, iss, aud, exp, scope
 
@@ -220,7 +188,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 - I Never reflect token back in error responses or logs
 
-#### **MCP Server Security Checklist**
+#### MCP Server Security Checklist
 
 - I Register MCP server in approved server registry; sign manifest
 
@@ -232,8 +200,6 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 - I Log every tool invocation with: tool_name, user_id, args_hash, trace_id
 
-
-
 - I Implement rate limiting per user per tool (e.g. 100 calls/min)
 
 - I Reject tool calls with unexpected or malformed parameter schemas
@@ -244,7 +210,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 - I Implement health checks; alert on anomalous tool call patterns
 
-#### **Audit & Compliance Checklist**
+#### Audit & Compliance Checklist
 
 - I Define and document the 10-step audit chain (login → API call → response)
 
@@ -266,11 +232,9 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 - I Test end-to-end audit trail annually (trace a sample interaction from user to API)
 
+### Vendor Documentation References
 
-
-### **Vendor Documentation References**
-
-##### **Vendor & Standards Documentation References**
+##### Vendor & Standards Documentation References
 
 |**Topic**|**Source**|**URL / Reference**|
 |---|---|---|
@@ -290,10 +254,6 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 |Salesforce OAuth Flows|Salesforce Docs|help.salesforce.com/s/articleView?id=<br>sf.remoteaccess_oauth_flows.htm|
 |RFC 6749 OAuth 2.0|IETF|datatracker.ietf.org/doc/html/rfc6749|
 
-
-
-
-
 |**Topic**|**Source**|**URL / Reference**|
 |---|---|---|
 |RFC 7636 PKCE|IETF|datatracker.ietf.org/doc/html/rfc7636|
@@ -307,13 +267,9 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 |AWS Cedar Policy Language|AWS|docs.cedarpolicy.com|
 |Zero Trust Architecture|NIST SP 800-207|csrc.nist.gov/publications/detail/sp/80<br>0-207/final|
 
+### Glossary
 
-
-
-
-### **Glossary**
-
-##### **Glossary of Terms**
+##### Glossary of Terms
 
 ||**Term**|**Definition**|
 |---|---|---|
@@ -333,10 +289,6 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 |RBAC||Role-Based Access Control; access determined by user's<br>assigned roles|
 |ABAC||Attribute-Based Access Control; access determined by<br>attributes of user, resource, environment|
 |PBAC||Policy-Based Access Control; access determined by<br>complex policies combining multiple factors|
-
-
-
-
 
 ||**Term**|**Definition**|
 |---|---|---|

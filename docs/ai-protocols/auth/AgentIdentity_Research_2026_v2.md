@@ -11,7 +11,7 @@ tags: []
 
 <!-- converted from AgentIdentity_Research_2026 (1).pdf -->
 
-# **AGENT IDENTITY FOR AI SYSTEMS**
+# AGENT IDENTITY FOR AI SYSTEMS
 
 Microsoft Entra Agent ID vs AWS AgentCore Identity A Complete Technical Research with Code & Comparison
 
@@ -21,11 +21,7 @@ Microsoft Entra Agent ID vs AWS AgentCore Identity A Complete Technical Research
 
 Enterprise Cloud Architecture Research • June 2026 • v1.0
 
-Confidential Research Document  |  Generated June 19, 2026  |  Cloud Architecture Research
-
-
-
-## **Executive Summary**
+## Executive Summary
 
 As AI agents move from prototypes to enterprise production, they expose a fundamental gap: existing identity systems designed for humans or traditional applications are insufficient for the dynamic, autonomous, and often ephemeral nature of AI workloads. In 2025–2026, both Microsoft and Amazon Web Services released dedicated agent identity platforms — **Microsoft Entra Agent ID** (GA: May 2026) and **AWS AgentCore Identity** (GA: October 2025) — both reaching enterprise maturity within months of each other.
 
@@ -33,11 +29,7 @@ This research provides a deep technical comparison: architecture, authentication
 
 Key Finding: The two platforms are designed for interoperability. AWS AgentCore Identity and Microsoft Entra Agent ID can be federated via OIDC/WIF, enabling AWS-native agents to carry Entra-governed identities — the recommended pattern for multi-cloud enterprise deployments.
 
-
-
-
-
-## **1. What is Agent Identity?**
+## 1. What is Agent Identity?
 
 Traditional identity systems recognize two principal types: **human users** (with interactive login, MFA, and session-based tokens) and **service accounts / app registrations** (with client secrets or certificates). AI agents fit neither model cleanly:
 
@@ -53,91 +45,71 @@ Traditional identity systems recognize two principal types: **human users** (wit
 
 Agent Identity systems solve this by introducing purpose-built identity constructs that support dynamic lifecycle management, delegated user authority (OBO), credential-less authentication via federation, and enterprise governance — all applied to non-human principals.
 
-## **2. Microsoft Entra Agent ID — Deep Dive**
+## 2. Microsoft Entra Agent ID — Deep Dive
 
 Microsoft Entra Agent ID reached general availability on May 1, 2026 as part of the broader Microsoft Entra suite. It extends Entra's existing identity infrastructure — the same system that authenticates over 1.2 billion sign-ins daily — to AI agents, introducing three new identity constructs and specialized OAuth flows.
 
-### **2.1 Core Constructs**
+### 2.1 Core Constructs
 
 Entra Agent ID introduces a three-tier identity hierarchy:
 
-#### **Agent Identity Blueprint:**
+#### Agent Identity Blueprint:
 
 A reusable template defining the security envelope for a class of agents. Sets allowed scopes, lifecycle policies (max lifetime), owner/sponsor assignments, and Conditional Access requirements. Think of it as an IAM policy template for agents.
 
-#### **Agent Identity:**
+#### Agent Identity:
 
 The actual identity instance created from a Blueprint. A special service principal in Entra ID with no credentials of its own — tokens are acquired via the Blueprint. Can exist for minutes or months depending on the lifecycle policy.
 
-
-
-
-
-#### **Agent User Account:**
+#### Agent User Account:
 
 A backing user identity for on-behalf-of (OBO) scenarios. Enables an agent to acquire user-scoped tokens that carry the user's identity claims to downstream services.
 
 ##### I _Creating an Agent Identity Blueprint via Microsoft Graph API (Python)_
 
-
 ![Figure 1](/img/ai-protocols/ai-protocols-p4-1.png)
 
-
 import requests<br># Step 1: Authenticate with Microsoft Entra (client credentials)<br>TOKEN_URL = "https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"<br>creds = {<br>"client_id": "<client_id>",<br>"client_secret": "<client_secret>",<br>"scope": "https://graph.microsoft.com/.default",<br>"grant_type": "client_credentials"<br>}<br>token_resp = requests.post(TOKEN_URL, data=creds)<br>access_token = token_resp.json()["access_token"]<br>headers = {<br>"Authorization": f"Bearer {access_token}",<br>"Content-Type": "application/json"<br>}<br># Step 2: Create Agent Identity Blueprint<br>blueprint_payload = {<br>"displayName": "FinanceAnalystAgent",<br>"description": "Blueprint for financial analysis agents",<br>"accessEnvelope": {<br>"allowedScopes": ["User.Read", "Files.Read", "Mail.Read"]<br>},<br>"lifecyclePolicy": {<br>"maxLifetimeDays": 90<br>}<br>}<br>resp = requests.post(<br>"https://graph.microsoft.com/v1.0/agentIdentityBlueprints",<br>headers=headers,<br>json=blueprint_payload<br>)<br>blueprint_id = resp.json()["id"]<br>print(f"Blueprint created: {blueprint_id}")<br># Step 3: Instantiate an Agent Identity from the Blueprint<br>agent_payload = {"blueprintId": blueprint_id, "displayName": "FinAgent-001"}<br>agent_resp = requests.post(<br>"https://graph.microsoft.com/v1.0/agentIdentities",<br>headers=headers,<br>json=agent_payload<br>)<br><!-- End of picture text -->
-
-
-
-
 
 ```
 print(f"Agent Identity ID: {agent_resp.json()['id']}")
 ```
 
-### **2.2 Workload Identity Federation with AWS**
+### 2.2 Workload Identity Federation with AWS
 
 For AWS-hosted agents that need Microsoft resource access, Entra Agent ID supports **Workload Identity Federation (WIF)** — allowing an agent to exchange an AWS STS OIDC token directly for an Entra access token, with no secrets stored anywhere.
 
 ##### I _AWS Agent exchanging STS OIDC token for Microsoft Entra token (WIF pattern)_
 
-
 ![Figure 2](/img/ai-protocols/ai-protocols-p5-2.png)
-
 
 import boto3<br>import requests<br># Step 1: AWS agent acquires its own STS OIDC token<br>sts_client = boto3.client("sts", region_name="us-east-1")<br># Note: assumes execution role with sts:GetFederationToken permission<br>assumed = sts_client.assume_role_with_web_identity(<br>RoleArn="arn:aws:iam::123456789012:role/AgentEntraFederationRole",<br>RoleSessionName="agent-session",<br>WebIdentityToken=open("/var/run/secrets/eks.amazonaws.com/serviceaccount/token").r<br>ead(<br>)<br>)<br>aws_oidc_token = assumed["Credentials"]["SessionToken"]<br># Step 2: Exchange AWS OIDC token for Microsoft Entra token via WIF<br>TENANT_ID = "your-tenant-id"<br>ENTRA_APP_ID = "your-entra-app-id"<br>entra_resp = requests.post(<br>f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token",<br>data={<br>"client_id": ENTRA_APP_ID,<br>"grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",<br>"client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",<br>"client_assertion": aws_oidc_token, # AWS token as the credential<br>"scope": "https://graph.microsoft.com/.default",<br>"requested_token_use": "on_behalf_of"<br>}<br>)<br>entra_token = entra_resp.json()["access_token"]<br>print("Entra token acquired — no secrets stored anywhere")<br># Step 3: Call Microsoft Graph as the agent<br>graph_resp = requests.get(<br>"https://graph.microsoft.com/v1.0/me/messages?$top=5",<br>headers={"Authorization": f"Bearer {entra_token}"}<br>)<br>emails = graph_resp.json()["value"]<br>print(f"Retrieved {len(emails)} emails as agent identity")<br><!-- End of picture text -->
 
-
-
-
-
-### **2.3 Conditional Access & Governance**
+### 2.3 Conditional Access & Governance
 
 A key differentiator of Entra Agent ID is that agents receive the same Conditional Access policies as human users — real-time risk signals, location controls, and device compliance requirements can all be applied to agent token issuance. Lifecycle Workflows automate sponsor notifications and access expiry. All agent authentication events appear in Entra Sign-in Logs and Microsoft Sentinel.
 
-
-
-
-
-## **3. AWS AgentCore Identity — Deep Dive**
+## 3. AWS AgentCore Identity — Deep Dive
 
 AWS AgentCore Identity reached general availability in October 2025, several months ahead of Microsoft's offering. It is a standalone service within Amazon Bedrock AgentCore that provides identity and credential management for agents running anywhere — on AWS compute (ECS, Lambda, EKS), on-premises, or on other clouds.
 
-### **3.1 Core Constructs**
+### 3.1 Core Constructs
 
 AgentCore Identity is built around **Workload Identities** — a stable identity anchor that abstracts multiple credential types (IAM, OAuth2, API keys) behind a unified interface. Key components:
 
-#### **Workload Identity:**
+#### Workload Identity:
 
 The primary identity object for an agent. Created automatically when deploying via AgentCore Runtime/Gateway, or manually. Identified by a Workload Identity ARN.
 
-#### **Token Vault:**
+#### Token Vault:
 
 Secure storage for OAuth refresh tokens, enabling agents to maintain long-lived access to third-party services without re-authorization.
 
-#### **Credential Providers:**
+#### Credential Providers:
 
 Configured connections to external OAuth services (Microsoft Graph, Salesforce, etc.). Agents call GetResourceOauth2Token to receive a scoped token for each downstream service.
 
-#### **Secrets Manager Integration:**
+#### Secrets Manager Integration:
 
 As of June 2026, customers can reference existing Secrets Manager ARNs in Credential Providers with CMK encryption and automatic rotation.
 
@@ -156,31 +128,19 @@ tags={"Environment": "production", "Team": "finance", "CostCenter": "AI-Ops"}
 )
 ```
 
-
-
-
-
-
 ![Figure 3](/img/ai-protocols/ai-protocols-p8-3.png)
-
 
 workload_identity_arn = response["workloadIdentityArn"]<br>print(f"Created: {workload_identity_arn}")<br># Get a workload access token (M2M — agent acting as itself)<br>token_resp = agentcore.get_workload_access_token(<br>workloadIdentityArn=workload_identity_arn<br>)<br>access_token = token_resp["accessToken"]<br>print(f"Token expires at: {token_resp['expiresAt']}")<br># Configure a credential provider for Microsoft Graph access<br>cred_provider = agentcore.create_credential_provider(<br>name="msgraph-provider",<br>credentialProviderType="OAUTH2",<br>oauth2Config={<br>"authorizationEndpoint": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/a<br>uthorize",<br>"tokenEndpoint": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",<br>"clientId": "<entra_app_client_id>",<br>"secretArn": "arn:aws:secretsmanager:us-east-1:123:secret:entra-client-secret",<br>"scopes": ["https://graph.microsoft.com/Mail.Read", "https://graph.microsoft.com/F<br>iles.Read"]<br>}<br>)<br>print(f"Credential provider ARN: {cred_provider['credentialProviderArn']}")<br><!-- End of picture text -->
 
-### **3.2 On-Behalf-Of (OBO) Token Exchange**
+### 3.2 On-Behalf-Of (OBO) Token Exchange
 
 Released in April 2026, OBO Token Exchange is the most powerful AgentCore Identity feature: an agent can accept a user's JWT and exchange it for a downstream-scoped token that carries _both_ the user's identity and the agent's identity — with no browser redirect and no additional consent prompt.
 
 I _AWS AgentCore OBO Token Exchange — agent acting as the authenticated user_
 
-
 ![Figure 4](/img/ai-protocols/ai-protocols-p8-4.png)
 
-
 import boto3, requests<br>agentcore = boto3.client("bedrock-agentcore", region_name="us-east-1")<br>WORKLOAD_ARN =<br>"arn:aws:bedrock-agentcore:us-east-1:123456789:workloadIdentity/agent-001"<br># Inbound: user JWT from your app's auth layer (Cognito, Entra, Okta, etc.)<br>user_jwt = "<inbound_user_access_token>"<br># Step 1: Exchange user JWT for an AgentCore workload access token (OBO)<br>obo_resp = agentcore.get_workload_access_token_for_jwt(<br>workloadIdentityArn=WORKLOAD_ARN,<br>jwt=user_jwt<br>)<br>agent_token = obo_resp["accessToken"]<br><!-- End of picture text -->
-
-
-
-
 
 ```
 # Step 2: Use AgentCore to get a downstream OAuth token preserving user identity
@@ -203,21 +163,15 @@ print(f"Listed {len(files)} files from user's OneDrive")
 # SharePoint/Graph sees the USER's identity, not just the bot's
 ```
 
-### **3.3 Bring Your Own Secrets (June 2026)**
+### 3.3 Bring Your Own Secrets (June 2026)
 
 AgentCore Identity now supports referencing existing Secrets Manager ARNs directly, enabling customers to apply organization-specific governance: custom CMKs, tagging strategies, automatic rotation policies, and resource-level IAM — without changing how AgentCore uses them at runtime.
 
 I _Configuring a Credential Provider with customer-managed secret (BYO Secrets)_
 
-
 ![Figure 5](/img/ai-protocols/ai-protocols-p9-5.png)
 
-
 import boto3<br>secrets_mgr = boto3.client("secretsmanager", region_name="us-east-1")<br>agentcore = boto3.client("bedrock-agentcore", region_name="us-east-1")<br># Step 1: Create your own secret with CMK and rotation policy<br>secret = secrets_mgr.create_secret(<br>Name="agentcore/prod/entra-client-secret",<br>SecretString='{"client_secret": "your-secret-value"}',<br>KmsKeyId="arn:aws:kms:us-east-1:123:key/cmk-key-id", # Customer-managed key<br>Tags=[<br>{"Key": "Environment", "Value": "production"},<br>{"Key": "ManagedBy", "Value": "AgentCore"},<br>{"Key": "CostCenter", "Value": "AI-Ops"}<br>]<br>)<br># Enable automatic rotation<br>secrets_mgr.rotate_secret(<br>SecretId=secret["ARN"],<br>RotationRules={"AutomaticallyAfterDays": 30}<br>)<br><!-- End of picture text -->
-
-
-
-
 
 ```
 # Step 2: Reference the existing secret ARN in AgentCore (BYO pattern)
@@ -243,15 +197,11 @@ oauth2Config={
 print("Credential provider configured with BYO CMK-encrypted secret")
 ```
 
-
-
-
-
-## **4. Cross-Cloud Integration Architecture**
+## 4. Cross-Cloud Integration Architecture
 
 The most powerful enterprise pattern combines both platforms: agents built and deployed on AWS Bedrock (using Claude models) with a Microsoft Entra Agent ID as their governed identity for accessing Microsoft 365 resources. Both vendors officially support and document this federation.
 
-### **4.1 Architecture Flow**
+### 4.1 Architecture Flow
 
 **1. User authenticates:** User signs in via your app using Entra ID (or Cognito/Okta). App receives a user JWT.
 
@@ -284,10 +234,6 @@ self.bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
 def get_entra_token(self, user_jwt=None):
 """Get Microsoft Entra token via WIF — no stored secrets."""
 ```
-
-
-
-
 
 ```
 # Get AgentCore workload access token
@@ -407,21 +353,11 @@ body=json.dumps({
 "anthropic_version": "bedrock-2023-05-31",
 ```
 
-
-
-
-
-
 ![Figure 6](/img/ai-protocols/ai-protocols-p13-6.png)
-
 
 "max_tokens": 1024,<br>"system": "You are an enterprise assistant with access to the user's M365<br>context.",<br>"messages": [{<br>"role": "user",<br>"content": f"User M365 context:\n{json.dumps(context, indent=2)}\n\nQu<br>ery: {user_query}"<br>}]<br>})<br>)<br>result = json.loads(response["body"].read())<br>return result["content"][0]["text"]<br># Usage<br>agent = CrossCloudAgent(<br>tenant_id="your-azure-tenant-id",<br>entra_app_id="your-entra-app-registration-id",<br>workload_identity_arn="arn:aws:bedrock-agentcore:us-east-1:123:workloadIdentity/my<br>-age<br>nt"<br>)<br>answer = agent.run("Summarize my recent emails about Q2 budget",<br>user_jwt="<user_entra_jwt<br>>")<br>print(answer)<br><!-- End of picture text -->
 
-
-
-
-
-## **5. Feature Comparison**
+## 5. Feature Comparison
 
 Side-by-side comparison across 12 enterprise dimensions:
 
@@ -440,11 +376,9 @@ Side-by-side comparison across 12 enterprise dimensions:
 |**OSS Frameworks**|Copilot Studio, via SDK/WIF|CrewAI, LangGraph, LlamaIndex, OpenAI<br>SDK|
 |**Zero Trust**|Conditional Access + real-time risk signals|Per-request verification, least-privilege OBO|
 
+## 6. Decision Framework
 
-
-## **6. Decision Framework**
-
-### **Choose Microsoft Entra Agent ID when...**
+### Choose Microsoft Entra Agent ID when...
 
 - Your agents primarily call Microsoft 365, Azure, Teams, or SharePoint APIs
 
@@ -456,15 +390,11 @@ Side-by-side comparison across 12 enterprise dimensions:
 
 - consistently
 
-
-
-
-
 - Your identity team manages everything in Entra/Active Directory already
 
 - You require fine-grained lifecycle workflows with human sponsors for each agent
 
-### **Choose AWS AgentCore Identity when...**
+### Choose AWS AgentCore Identity when...
 
 - Your agents run on AWS compute (ECS, Lambda, EKS) and primarily access AWS
 
@@ -478,7 +408,7 @@ Side-by-side comparison across 12 enterprise dimensions:
 
 - You want a bring-your-own-secrets model with CMK and automatic rotation
 
-### **Use Both (Cross-Cloud Federation) when...**
+### Use Both (Cross-Cloud Federation) when...
 
 - Agents live on AWS but need access to Microsoft Graph, SharePoint, or Teams
 
@@ -494,11 +424,7 @@ Side-by-side comparison across 12 enterprise dimensions:
 
 - You need OBO flows: agent acting as the user across both cloud ecosystems
 
-
-
-
-
-## **7. Security Considerations**
+## 7. Security Considerations
 
 #### I **Token Scope Creep**
 
@@ -520,15 +446,11 @@ Entra logs appear in Microsoft Sentinel and can trigger alerts on anomalous agen
 
 Both platforms support shadow AI detection — agents operating outside defined blueprints (Entra) or without registered workload identities (AgentCore) can be detected and blocked. Enforce agent identity registration before any production deployment.
 
-## **8. Conclusion & Recommendations**
+## 8. Conclusion & Recommendations
 
 Both Microsoft Entra Agent ID and AWS AgentCore Identity have reached enterprise maturity in 2026. They solve the same core problem — giving AI agents first-class, governed, auditable identities — but with different approaches reflecting each vendor's ecosystem strengths.
 
 Critically, they are designed for **interoperability, not competition** . Microsoft explicitly lists AWS Bedrock as a supported third-party platform, and AWS lists Microsoft Entra ID as a
-
-
-
-
 
 supported identity provider. The recommended enterprise pattern for multi-cloud AI is to use AgentCore Identity as the AWS-side anchor, federated into Entra Agent ID for Microsoft resource access — achieving zero stored secrets, full audit coverage across both clouds, and user-identity preservation via OBO token exchange.
 

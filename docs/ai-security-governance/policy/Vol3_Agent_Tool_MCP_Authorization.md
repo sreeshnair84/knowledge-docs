@@ -13,64 +13,60 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 3 OF 5**
 
-## **~~1. Agent Authorization Lifecycle~~**
+## 1. Agent Authorization Lifecycle
 
-# Authorization for AI agents is fundamentally different from user authorization. Agents operate autonomously, ~~may run for extended periods, invoke multiple tools in sequence, and can spawn sub-agents. Each of these~~ **~~Agent, Tool & MCP Authorization~~** <u>behaviors requires dedicated authorization controls.</u>
+# Authorization for AI agents is fundamentally different from user authorization. Agents operate autonomously, may run for extended periods, invoke multiple tools in sequence, and can spawn sub-agents. Each of these **Agent, Tool & MCP Authorization** <u>behaviors requires dedicated authorization controls.</u>
 
-### ~~Enterprise Policy Interceptor Architecture for Agentic AI~~ **~~1.1 Authorization Decision Points in an Agent Workflow~~**
+### Enterprise Policy Interceptor Architecture for Agentic AI **1.1 Authorization Decision Points in an Agent Workflow**
 
-`USER REQUEST (with JWT + canonical claims)` I ~~IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`P1: Agent Invocation`~~ `Authorization` I II `Cedar: Can this user invoke this agent type?`
+`USER REQUEST (with JWT + canonical claims)` I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `P1: Agent Invocation` `Authorization` I II `Cedar: Can this user invoke this agent type?`
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ ~~`ALLOW`~~
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `ALLOW`
 
 IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AGENT RUNTIME (Bedrock`
 
-`AgentCore / ECS)` I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Planner —` ~~`generates action sequence` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I~~ IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P2: Tool Selection Authorization` I ~~IIIIII~~ ~~`Cedar: Is this tool in the agent's allowed set?` I~~
+`AgentCore / ECS)` I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Planner —` `generates action sequence` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P2: Tool Selection Authorization` I IIIIII `Cedar: Is this tool in the agent's allowed set?` I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `ALLOW` I I
 
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P3: Tool Invocation Authorization` I ~~IIIIII~~ ~~`Cedar: Can principal invoke this specific call?` I~~
+IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P3: Tool Invocation Authorization` I IIIIII `Cedar: Can principal invoke this specific call?` I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `ALLOW` I I
 
-~~IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I~~ ~~`TOOL EXECUTION` I I I~~ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
+IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `TOOL EXECUTION` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
 
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P4: Memory Read Authorization` I ~~IIIIII~~ ~~`Cedar: Can agent read this memory scope?` I~~
+IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P4: Memory Read Authorization` I IIIIII `Cedar: Can agent read this memory scope?` I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
 
-~~IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I~~ ~~`P5: Knowledge/RAG Authorization` I~~ **VOLUME COVERAGE** IIIIII `Cedar: Can agent retrieve this document?` I Agent authorization lifecycle, per-step policy evaluation, tool invocation control, MCP server security,IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I ~~context-aware authorization, contextual signals (time/risk/device/geo/MFA), multi-agent workflowIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I~~ ~~`P6: Output Classification Check` I~~ authorization, and human-in-the-loop approval patterns.IIIIII `Cedar: Can agent return this data class?` I
+IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P5: Knowledge/RAG Authorization` I **VOLUME COVERAGE** IIIIII `Cedar: Can agent retrieve this document?` I Agent authorization lifecycle, per-step policy evaluation, tool invocation control, MCP server security,IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I context-aware authorization, contextual signals (time/risk/device/geo/MFA), multi-agent workflowIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P6: Output Classification Check` I authorization, and human-in-the-loop approval patterns.IIIIII `Cedar: Can agent return this data class?` I
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I~~
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
 
 IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P7: Human Approval Gate (if req'd)` I
 
 IIIIII `Cedar: Does this action require approval?` I
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
-IIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIII I `RESPONSE (authorized, classified,` ~~`audited)`~~
+IIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIII I `RESPONSE (authorized, classified,` `audited)`
 
 ##### I **NOTE**
 
-~~Every numbered decision point (P1–P7) is an independent Cedar policy evaluation. A positive decision at P1~~ does NOT <u>grant permission at P3. Authorization is re-evaluated at every action boundary. This is the</u> fundamental principle of Zero Trust for agents.
+Every numbered decision point (P1–P7) is an independent Cedar policy evaluation. A positive decision at P1 does NOT <u>grant permission at P3. Authorization is re-evaluated at every action boundary. This is the</u> fundamental principle of Zero Trust for agents.
 
-### **~~1.2 Authorization Decision Matrix by Agent Step~~**
+### 1.2 Authorization Decision Matrix by Agent Step
 
-|**Step**|**Authorization Question**|**Principal**|**Policy**<br>**~~Engine~~**|**Context Required**|
+|**Step**|**Authorization Question**|**Principal**|**Policy**<br>**Engine**|**Context Required**|
 |---|---|---|---|---|
-|~~Agent~~<br>Invocation|~~Can this user invoke agent~~<br>type X?|~~User~~|~~Cedar AVP~~|~~capabilities, mfa, risk_score~~|
+|Agent<br>Invocation|Can this user invoke agent<br>type X?|User|Cedar AVP|capabilities, mfa, risk_score|
 |Tool Selection|Is tool T in this agent's<br>permitted toolset?|Agent|Cedar AVP|agent_type, user_capabilities|
 
+Classification: CONFIDENTIAL — INTERNAL USE ONLY
 
-
-~~Classification: CONFIDENTIAL — INTERNAL USE ONLY~~
-
-~~Published: June 2026  ·  AWS Well-Architected Series~~
+Published: June 2026  ·  AWS Well-Architected Series
 
 **ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
-
-
 
 |**Step**|**Authorization Question**|**Principal**|**Policy**<br>**Engine**|**Context Required**|
 |---|---|---|---|---|
@@ -82,19 +78,13 @@ IIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIII I `RESPONSE (authorized, classifi
 |Human<br>Approval|Does this action require<br>human approval?|Action|Cedar AVP|amount, risk_score, action_type|
 |Sub-Agent<br>Spawn|Can this agent create a<br>sub-agent?|Agent|Cedar AVP|agent_tier, scope_constraints|
 
-
-
-
-
-
-
-### **2. Tool Authorization Architecture**
+### 2. Tool Authorization Architecture
 
 Tools are the action surface of an AI agent. Each tool invocation must be independently authorized. Tool authorization must consider the tool's data classification, the invoking principal's capabilities, and the runtime context.
 
-### **2.1 Tool Authorization Policy Examples**
+### 2.1 Tool Authorization Policy Examples
 
-#### **SQL Query Tool — DBA Only, No Off-Hours**
+#### SQL Query Tool — DBA Only, No Off-Hours
 
 ```
 // SQL Query Tool: restricted to DBA-capable principals // during business hours with
@@ -110,7 +100,7 @@ resource == BankAI::Tool::"SQLQueryTool" ) when { context.queryType == "BULK_EXP
 !principal.capabilities.contains("can_export_bulk_data") };
 ```
 
-#### **SAP ERP Tool — Finance Department Only**
+#### SAP ERP Tool — Finance Department Only
 
 ```
 // SAP tool access: Finance department, own geography permit( principal, action ==
@@ -120,7 +110,7 @@ resource.allowedGeographies.contains(principal.geography) && context.sessionAge 
 session must be fresh (< 1 hour) };
 ```
 
-#### **Delete Tool — Strict Business Hours + Approval**
+#### Delete Tool — Strict Business Hours + Approval
 
 ```
 // Destructive operations require approval AND business hours forbid( principal, action ==
@@ -129,7 +119,7 @@ context.humanApprovalStatus == "APPROVED" && context.businessHours == true && co
 < 30 && principal.capabilities.contains("can_delete_records") };
 ```
 
-#### **External SaaS API Tool — Tenant Isolation**
+#### External SaaS API Tool — Tenant Isolation
 
 ```
 // Agents can only call SaaS tools for their own tenant permit( principal is BankAI::Agent,
@@ -138,7 +128,7 @@ action == BankAI::Action::"InvokeTool", resource is BankAI::Tool ) when { resour
 resource.requiredCapability ) };
 ```
 
-### **2.2 Tool Capability Taxonomy**
+### 2.2 Tool Capability Taxonomy
 
 |**Tool Category**|**Example Tools**|**Required Capability**|**Additional Controls**|
 |---|---|---|---|
@@ -146,12 +136,6 @@ resource.requiredCapability ) };
 |Financial<br>Operations|Payment Tool, Transfer<br>Tool, FX Tool|can_approve_payment|Dual approval for > $10K, MFA, low risk|
 |ERP/CRM<br>Access|SAP Tool, Salesforce Tool|can_access_erp|Department match, geography, session<br>age|
 |Document<br>Operations|SharePoint Tool, S3 Tool|can_access_documents|Classification-based, DLP active|
-
-
-
-
-
-
 
 |**Tool Category**|**Example Tools**|**Required Capability**|**Additional Controls**|
 |---|---|---|---|
@@ -161,17 +145,11 @@ resource.requiredCapability ) };
 |External APIs|Vendor API Tool, Partner<br>Tool|can_call_external_api|Tenant isolation, rate limit|
 |HR Systems|Workday Tool, HR Portal<br>Tool|can_view_hr_records|Own geography only, MFA|
 
-
-
-
-
-
-
-## **3. Context-Aware Authorization**
+## 3. Context-Aware Authorization
 
 Static role-based authorization is insufficient for Agentic AI. Authorization decisions must be context-aware — incorporating runtime signals that affect the risk and appropriateness of an action at the moment it is requested.
 
-### **3.1 Contextual Signals Catalog**
+### 3.1 Contextual Signals Catalog
 
 |**Signal**|**Source**|**Used For**|**Example Policy Impact**|
 |---|---|---|---|
@@ -189,9 +167,7 @@ Static role-based authorization is insufficient for Agentic AI. Authorization de
 |Approval Status|Workflow engine (Step<br>Functions)|Gate on explicit prior<br>approval|Payment > $50K: APPROVED status<br>required|
 |Threat Score|AWS GuardDuty,<br>SIEM|Emergency circuit breaker|Active threat: deny all non-essential<br>access|
 
-
-
-### **3.2 Context Object Structure for Cedar Evaluation**
+### 3.2 Context Object Structure for Cedar Evaluation
 
 ```
 { "requestId": "req-7f3a9b2e", "timestamp": "2025-06-26T09:47:00Z", "businessHours": true,
@@ -203,15 +179,11 @@ true, "tenantId": "bank-prod", "agentId": "agent-bedrock-payments-01", "workflow
 "wf-payment-4421" }
 ```
 
-
-
-
-
-## **4. MCP Server Security Architecture**
+## 4. MCP Server Security Architecture
 
 The Model Context Protocol (MCP) is the emerging standard for connecting AI agents to tools, APIs, and data sources. Every enterprise MCP deployment must treat the MCP boundary as a security perimeter requiring full policy enforcement.
 
-### **4.1 MCP Authorization Architecture**
+### 4.1 MCP Authorization Architecture
 
 `AGENT RUNTIME` I I `MCP Client (agent-side)` I `[carries delegation token]` I M
 
@@ -223,7 +195,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Parameter Validation` IIIIIII `Sc
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MCP SERVER` I I `(Business Logic — never authorizes)` I I I I `Tool Handler 1` I `Tool Handler 2` I I `Tool Handler 3` I `Tool Handler N` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-### **4.2 MCP Security Requirements**
+### 4.2 MCP Security Requirements
 
 |**Security Requirement**|**Implementation**|**Policy Engine**|
 |---|---|---|
@@ -238,13 +210,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MCP SERVER` I I `(Business Lo
 |Tool Rate Limiting|Per-agent, per-tool rate limits enforced at MCP<br>PEP|PEP middleware|
 |Audit Logging|Every MCP tool invocation logged with principal,<br>tool, parameters hash, outcome|CloudTrail|
 
-
-
-
-
-
-
-### **4.3 MCP Tool Cedar Policies**
+### 4.3 MCP Tool Cedar Policies
 
 ```
 // MCP Tool Discovery — restrict by agent type permit( principal is BankAI::Agent, action ==
@@ -260,19 +226,15 @@ action == BankAI::Action::"InvokeMCPTool", resource ) when { context.promptClass
 "INJECTION" };
 ```
 
-
-
-
-
-## **5. Multi-Agent Workflow Authorization**
+## 5. Multi-Agent Workflow Authorization
 
 Multi-agent architectures introduce the confused deputy problem: a downstream agent may be granted permissions by an orchestrating agent that the orchestrator does not itself possess. Cedar policies must explicitly address agent-to-agent delegation boundaries.
 
-### **5.1 Multi-Agent Trust Architecture**
+### 5.1 Multi-Agent Trust Architecture
 
 `USER (with JWT)` I M `ORCHESTRATOR AGENT (Level 0) • Has delegated scope from user • Scope is constrained by user capabilities • Cannot grant sub-agents MORE than its own scope` I IIII `SPECIALIST AGENT A (Level 1 — Payment Processing)` I `• Scope = INTERSECT(Orchestrator scope, Agent A permitted tools)` I `• Cedar evaluates BOTH the delegation AND the tool permission` I IIII `SPECIALIST AGENT B (Level 1 — Data Retrieval)` I `• Scope = INTERSECT(Orchestrator scope, Agent B permitted tools)` I `• No cross-contamination between Agent A and Agent B scopes` I IIII `HUMAN APPROVAL GATE • Triggered by Cedar obligation on high-risk actions • AWS Step Functions Human Task • Approval stored in context, verified by Cedar at next step AUTHORIZATION PRINCIPLE: Sub-agent scope` ⊆ `Orchestrator scope` ⊆ `User delegated scope` ⊆ `User capabilities`
 
-### **5.2 Human-in-the-Loop Authorization Pattern**
+### 5.2 Human-in-the-Loop Authorization Pattern
 
 Cedar can return obligations alongside Allow/Deny decisions. An obligation instructs the PEP to take a specific action before execution proceeds — the most important being to require human approval:
 
@@ -296,17 +258,13 @@ principal.delegatedFrom.capabilities.contains("can_approve_payment") && context.
 
 Cedar Obligation Pattern: When Cedar returns ALLOW with an obligation 'REQUIRE_HUMAN_APPROVAL', the PEP must NOT execute the action immediately. Instead it must trigger the approval workflow (AWS Step Functions Human Task), await the approval, and re-evaluate the Cedar policy with humanApprovalStatus='APPROVED' in the context. The PEP is responsible for enforcing obligations.
 
+## 6. End-to-End Sequence Diagrams
 
-
-
-
-## **6. End-to-End Sequence Diagrams**
-
-### **6.1 REST API Agent Authorization Flow**
+### 6.1 REST API Agent Authorization Flow
 
 `User API GW Lambda Auth Claims Svc Cedar AVP Agent Runtime Tool` I I I I I I I II `POST /` IIIIII I I I I I I `(JWT)` I I I I I I I II `authorizer` II I I I I I I II `validate` II I I I I I I `JWT sig` I I I I I I III `claims` IIII I I I I I II `normalize` II I I I I I III `canonical` II I I I I I II `IsAuthorized` IIIIIIIIIIII I I I I I I `ALLOW` IIII I I I III `200 policy` II I I I I I II `route` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I I II `tool auth` III I I I I I IIII `ALLOW` IIIII I I I I I I II `invoke` III I I I I I III `result` II I I I I I II `log` IIIIII III `response` II I I I I I
 
-### **6.2 Multi-Agent Workflow Authorization Sequence**
+### 6.2 Multi-Agent Workflow Authorization Sequence
 
 `User Orchestrator Cedar AVP Specialist A Cedar AVP Tool Human` I I I I I I I II `invoke` II I I I I I I II `P1: auth` IIII I I I I I III `ALLOW` IIIIIII I I I I I II `plan step 1` II I I I I I III `ALLOW` IIIIIII I I I I I II `delegate` IIIII I I I I I I I II `P3: tool` IIIII I I I I I I `auth` I I I I I I III `ALLOW+OBL` III I I I I I I `(if > $10K: human approval req'd)` I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIII `APPROVED`
 

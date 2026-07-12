@@ -410,7 +410,6 @@ async def get_db() -> asyncpg.Pool:
         db_pool = await asyncpg.create_pool(dsn=os.environ["DATABASE_URL"], min_size=2, max_size=10)
     return db_pool
 
-
 # ─── Tools ───────────────────────────────────────────────────────────────────
 
 @mcp.tool()
@@ -435,7 +434,6 @@ async def get_employee_info(employee_id: str) -> dict:
         response.raise_for_status()
         return response.json()
 
-
 @mcp.tool()
 async def query_analytics(
     sql: str,
@@ -458,7 +456,6 @@ async def query_analytics(
         rows = await conn.fetch(sql + " LIMIT 1000")
         return [dict(r) for r in rows]
 
-
 @mcp.tool()
 async def search_knowledge_base(
     query: str,
@@ -480,7 +477,6 @@ async def search_knowledge_base(
         response.raise_for_status()
         return response.json()["results"]
 
-
 # ─── Resources ───────────────────────────────────────────────────────────────
 
 @mcp.resource("hr://org-chart")
@@ -497,7 +493,6 @@ async def org_chart() -> str:
         resp.raise_for_status()
         return resp.text  # Returns JSON string
 
-
 @mcp.resource("analytics://dashboards/{dashboard_id}")
 async def get_dashboard(dashboard_id: str) -> str:
     """
@@ -513,7 +508,6 @@ async def get_dashboard(dashboard_id: str) -> str:
         if row is None:
             return json.dumps({"error": f"Dashboard {dashboard_id} not found"})
         return json.dumps(dict(row), default=str)
-
 
 # ─── Prompts ─────────────────────────────────────────────────────────────────
 
@@ -535,7 +529,6 @@ async def onboarding_checklist(role: str, start_date: str) -> str:
         "4. **Month 3 (Days 61-90)** — Full contribution, OKR alignment, 90-day review\n\n"
         "For each section include: concrete tasks, success criteria, and who to talk to."
     )
-
 
 @mcp.prompt()
 async def incident_runbook(service_name: str, severity: str = "medium") -> str:
@@ -571,7 +564,6 @@ async def incident_runbook(service_name: str, severity: str = "medium") -> str:
         "- Document root cause in the incident ticket\n"
         "- Write a post-mortem within 48 hours if severity high/critical\n"
     )
-
 
 # ─── Server entry point ───────────────────────────────────────────────────────
 
@@ -729,7 +721,6 @@ async def audit_middleware(message, call_next):
             error_type=type(exc).__name__,
         )
         raise
-
 
 @mcp.middleware
 async def rate_limit_middleware(message, call_next):
@@ -1186,7 +1177,6 @@ async def read_file(path: str) -> str:
         return {"error": "File too large (max 1 MB)"}
 
     return target.read_text(encoding="utf-8")
-
 
 @mcp.tool()
 async def run_code(code: str, language: str) -> dict:
@@ -1813,7 +1803,6 @@ async def test_tool_selection():
     assert len(tool_uses) >= 1
     assert tool_uses[0].name == "query_analytics"
     assert "SELECT" in tool_uses[0].input.get("sql", "").upper()
-
 
 async def test_tool_result_is_usable():
     """Verify Claude can reason over the tool's return value."""

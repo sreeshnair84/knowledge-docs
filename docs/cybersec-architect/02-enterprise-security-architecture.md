@@ -351,8 +351,6 @@ Kubernetes is the dominant container orchestration platform. Security controls a
 
 ### 5.3 Confidential Computing
 
-Confidential computing protects data **while in use** (in memory during computation) — extending encryption beyond storage and transit.
-
 **Technology stack:**
 
 | Technology | Provider | Use Case |

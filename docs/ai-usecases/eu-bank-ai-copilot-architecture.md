@@ -9,7 +9,6 @@ doc_type: guide
 covers_version: "N/A"
 tags: ["ai-usecases", "banking", "copilotkit", "strands", "mcp", "aws-agentcore"]
 ---
-CONFIDENTIAL — INTERNAL
 EU Bank AI Copilot Platform
 End-to-End Architecture & Code Reference
 Table of Contents
@@ -251,7 +250,6 @@ bffClient.interceptors.response.use(
     return Promise.reject(err);
   }
 );
-
 
 ```
 
@@ -504,7 +502,6 @@ export const rateLimiter = {
   }
 };
 
-
 ```
 
 ## 4. AgentCore Runtime — Strands Agent
@@ -589,7 +586,6 @@ async def build_agent() -> Agent:
         callback_handler=AuditCallbackHandler(),
         max_parallel_tool_calls=1,  # Sequential for auditability
     )
-
 
 async def collect_mcp_tools(endpoints: list[str]) -> list:
     """Connect to each MCP server and collect its tool list."""
@@ -725,7 +721,6 @@ agentcore invoke '{
 # AgentCore handles: OAuth 2.0 auth, session isolation,
 #                    auto-scaling, observability
 
-
 ```
 
 ## 5. MCP Servers
@@ -750,7 +745,6 @@ class AccountBalanceInput(BaseModel):
     account_id: str
     customer_ref: str  # Opaque ref — never raw customer ID from agent
 
-
 async def get_account_balance(input: AccountBalanceInput) -> dict:
     """
     Retrieve the current balance for a bank account.
@@ -773,7 +767,6 @@ async def get_account_balance(input: AccountBalanceInput) -> dict:
         "account_type": data["account_type"],
     }
 
-
 async def get_transactions(account_id: str, limit: int = 10) -> list:
     """Retrieve recent transactions. Max 10 items per call."""
     if limit > 10: limit = 10  # Hard cap
@@ -790,7 +783,6 @@ async def get_transactions(account_id: str, limit: int = 10) -> list:
         if "counterparty_iban" in t:
             t["counterparty_iban"] = t["counterparty_iban"][:-4] + "****"
     return txns
-
 
 if __name__ == "__main__":
     mcp.run(transport="streamable-http", host="0.0.0.0", port=8081)
@@ -812,7 +804,6 @@ mcp = FastMCP("payment-rail-mcp")
 PAYMENT_API    = "https://payments.internal.bank.eu"
 UI_BUNDLE_URL  = "https://assets.bank.eu/tools/payment-v2/PaymentForm.js"
 UI_BUNDLE_SRI  = "sha384-abc123def456..."  # Updated by CI/CD pipeline
-
 
 async def payment_initiate(amount: float, currency: str, beneficiary_name: str) -> list:
     """
@@ -841,7 +832,6 @@ async def payment_initiate(amount: float, currency: str, beneficiary_name: str) 
         )
     ]
 
-
 async def payment_execute(approval_token: str, payment_ref: str) -> dict:
     """
     Execute an approved payment. Requires a valid approval_token.
@@ -862,7 +852,6 @@ async def payment_execute(approval_token: str, payment_ref: str) -> dict:
         )
         resp.raise_for_status()
     return {"status": "SUBMITTED", "payment_id": resp.json()["payment_id"]}
-
 
 if __name__ == "__main__":
     mcp.run(transport="streamable-http", host="0.0.0.0", port=8082)
@@ -891,7 +880,6 @@ async def get_risk_score(customer_ref: str, product_type: str) -> dict:
         "model_version": resp["model"],
     }
 
-
 async def check_exposure_limit(customer_ref: str, proposed_amount: float) -> dict:
     """Check if proposed exposure is within regulatory limits."""
     resp = await call_internal_exposure_api(customer_ref, proposed_amount)
@@ -900,7 +888,6 @@ async def check_exposure_limit(customer_ref: str, proposed_amount: float) -> dic
         "limit": resp["limit"],
         "breach_amount": max(0, proposed_amount - resp["headroom"]),
     }
-
 
 if __name__ == "__main__":
     mcp.run(transport="streamable-http", host="0.0.0.0", port=8083)
@@ -945,7 +932,6 @@ File: tool-manifest.json
   }
 }
 
-
 ```
 
 ## 6. Tool Registry API
@@ -973,7 +959,6 @@ class ToolManifest(BaseModel):
     requires_approval: bool
     certificate_thumbprint: str
 
-
 @app.post("/tools/register")
 async def register_tool(manifest: ToolManifest, caller=Depends(verify_team_cert)):
     """Register or update a tool. Called by CI/CD after deploy."""
@@ -988,7 +973,6 @@ async def register_tool(manifest: ToolManifest, caller=Depends(verify_team_cert)
     )
     return {"status": "registered", "tool_id": manifest.tool_id}
 
-
 @app.get("/tools")
 async def list_tools(team_id: str, caller=Depends(verify_agent_token)):
     """Called by Strands agent on session start to discover tools."""
@@ -1000,13 +984,11 @@ async def list_tools(team_id: str, caller=Depends(verify_agent_token)):
         "gated_tools": [t["tool_id"] for t in tools if t["requires_approval"]],
     }
 
-
 @app.delete("/tools/{tool_id}")
 async def deregister_tool(tool_id: str, caller=Depends(verify_team_cert)):
     """Deregister a deprecated tool. Auto-deregistered after 90 days inactive."""
     await db.execute("UPDATE tools SET status='inactive' WHERE tool_id=$1", tool_id)
     return {"status": "deregistered"}
-
 
 ```
 
@@ -1159,7 +1141,6 @@ resource "aws_bedrock_guardrail" "eu_bank" {
   blocked_outputs_messaging = "I cannot provide that information."
 }
 
-
 ```
 
 ## 8. Security Controls
@@ -1254,7 +1235,6 @@ jobs:
       - name: Sign tool manifest
         run: cosign sign-blob tool-manifest.json --bundle bundle.json
 
-
 ```
 
 ## 9. Human-in-the-Loop — Approval Flow
@@ -1281,7 +1261,6 @@ class ApprovalRequest(BaseModel):
     tool_input: dict
     maker_upn: str
     trace_id: str
-
 
 @app.post("/approvals")
 async def create_approval(req: ApprovalRequest, caller=Depends(verify_agent)):
@@ -1310,7 +1289,6 @@ async def create_approval(req: ApprovalRequest, caller=Depends(verify_agent)):
     )
     return {"approval_id": approval_id}
 
-
 @app.post("/approvals/{approval_id}/decide")
 async def decide_approval(approval_id: str, decision: str,
                           checker=Depends(verify_checker_role)):
@@ -1333,7 +1311,6 @@ async def decide_approval(approval_id: str, decision: str,
         ExpressionAttributeValues={":s": decision, ":c": checker["upn"], ":d": int(time.time())},
     )
     return {"token": token, "decision": decision}
-
 
 ```
 

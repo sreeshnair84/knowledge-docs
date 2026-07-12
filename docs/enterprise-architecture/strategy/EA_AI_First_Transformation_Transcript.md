@@ -1,5 +1,5 @@
 ---
-title: "ENTERPRISE ARCHITECTURE** **~~<u>AI-FIRST TRANSFORMATION</u> A Real-Life Transcript~~"
+title: "EA AI-First Transformation — A Real-Life Transcript"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -18,29 +18,29 @@ related_pages: ["—"]
 
 **Page 1**
 
-# **ENTERPRISE ARCHITECTURE** **~~<u>AI-FIRST TRANSFORMATION</u> A Real-Life Transcript~~**
+# EA AI-First Transformation — A Real-Life Transcript
 
 **From Zero AI to AI-First — An 18-Month Journey**
 
 — — <u>Following Marcus Webb Enterprise Architect at RetailCo as he guides a traditional retail company that has never built a single AI model through an 18-month transformation into an AI-first organisation. Every stakeholder</u> — <u>battle, every failed pilot, every hard data truth, every governance crisis, and every breakthrough moment grounded in lessons from McKinsey, BCG, Accenture, and the journeys of Netflix, Google, Amazon, and Spotify.</u>
 
-**~~Marcus Webb Diana Cole~~**
+**Marcus Webb Diana Cole**
 
-**~~Dr. Amara Osei Sarah Chen James Owusu~~ Priya Nair**
+**Dr. Amara Osei Sarah Chen James Owusu Priya Nair**
 
 **Alan Brooks Karen Mills Raj Patel Viktor Hale**
 
 **Zara Okonkwo Lisa Park**
 
-**~~Cast of Characters~~** ~~Enterprise Architect — our protagonist Chief Digital Officer — executive sponsor Head of Data Science — newly hired from DeepMind Chief AI Officer (CAIO) — hired Month 3~~ Head of Engineering Head of Data Architecture CISO CFO
+**Cast of Characters** Enterprise Architect — our protagonist Chief Digital Officer — executive sponsor Head of Data Science — newly hired from DeepMind Chief AI Officer (CAIO) — hired Month 3 Head of Engineering Head of Data Architecture CISO CFO
 
 Head of Retail Operations — the sceptic McKinsey QuantumBlack — AI Strategy Lead BCG X — AI Transformation Partner <u>Ex-Google AI PM, now fractional CAIO advisor</u>
 
-**~~<mark>AWAKENING ASSESSMENT</mark>~~**
+**<mark>AWAKENING ASSESSMENT</mark>**
 
-**~~<mark>FOUNDATION</mark>~~**
+**<mark>FOUNDATION</mark>**
 
-**~~<mark>PILOT SCALE GOVERN CULTURE MEASURE</mark>~~**
+**<mark>PILOT SCALE GOVERN CULTURE MEASURE</mark>**
 
 **Page 2**
 

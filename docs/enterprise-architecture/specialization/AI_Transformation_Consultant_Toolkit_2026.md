@@ -11,7 +11,7 @@ covers_version: "N/A"
 ---
 ENTERPRISE AI ARCHITECT · CONSULTANT TOOLKIT · 2026 EDITION
 
-# **AI Transformation**
+# AI Transformation
 
 ### Client Engagement Bible
 
@@ -29,7 +29,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 ###### TABLE OF CONTENTS
 
-###### **Part 1 — Client Maturity Journey & Archetypes**
+###### Part 1 — Client Maturity Journey & Archetypes
 
 - The 5 Client Archetypes
 
@@ -39,7 +39,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Red Flags & Buying Signals per Stage
 
-###### **Part 2 — AI Readiness Assessment (Scored)**
+###### Part 2 — AI Readiness Assessment (Scored)
 
 - Data Readiness Scorecard
 
@@ -51,7 +51,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Composite Readiness Score Interpretation
 
-###### **Part 3 — Discovery Questionnaire Bank (150+ Q)**
+###### Part 3 — Discovery Questionnaire Bank (150+ Q)
 
 - Executive / C-Suite Discovery (25 Q)
 
@@ -67,7 +67,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Customer Experience Discovery (15 Q)
 
-###### **Part 4 — Stakeholder Interview Templates**
+###### Part 4 — Stakeholder Interview Templates
 
 - CEO / CAIO Interview Guide
 
@@ -79,7 +79,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Frontline Worker Focus Group Guide
 
-###### **Part 5 — Use Case Prioritisation Framework**
+###### Part 5 — Use Case Prioritisation Framework
 
 - Value vs Effort Matrix Template
 
@@ -89,7 +89,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Portfolio Prioritisation Workshop Agenda
 
-###### **Part 6 — FAQ Bank — All Client Scenarios**
+###### Part 6 — FAQ Bank — All Client Scenarios
 
 - Executive FAQs (Sceptical)
 
@@ -101,7 +101,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Customer-Facing AI FAQs
 
-###### **Part 7 — Phase-Gated Checklists**
+###### Part 7 — Phase-Gated Checklists
 
 - Pre-Engagement Checklist
 
@@ -115,7 +115,7 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 - Post-Deployment Monitoring Checklist
 
-###### **Part 8 — Templates & Deliverable Frameworks**
+###### Part 8 — Templates & Deliverable Frameworks
 
 - AI Business Case Template
 
@@ -135,21 +135,21 @@ The complete consultant toolkit: client journey maps, discovery questionnaires, 
 
 ###### PART 1
 
-## **Client Maturity Journey & Archetypes**
+## Client Maturity Journey & Archetypes
 
 Before any engagement, you must understand which archetype your client is. Each archetype has different fears, different success metrics, and a completely different transformation path. Misreading the archetype is the #1 cause of failed consulting engagements.
 
-#### **1.1 The 5 Client Archetypes**
+#### 1.1 The 5 Client Archetypes
 
 Every enterprise client falls into one of five archetypes based on their AI maturity, organisational readiness, and strategic intent. Identifying the archetype in the first client conversation shapes everything: your language, your proposal, your timeline, and your risk management approach.
 
-###### **ARCHETYPE 1**
+###### ARCHETYPE 1
 
-##### **The Anxious Laggard**
+##### The Anxious Laggard
 
 Has not started AI. Feels pressure from board, competitors, or media. Leadership is excited but fearful. IT is overwhelmed. Data is messy.
 
-###### **What they say in the first meeting:**
+###### What they say in the first meeting:
 
 I *"'Our competitors are all doing this — we're behind'"*
 
@@ -157,7 +157,7 @@ I *"'Our competitors are all doing this — we're behind'"*
 
 I *"'We don't have clean data but everyone says we need AI'"*
 
-###### **Your engagement plays:**
+###### Your engagement plays:
 
 - I Start with a 2-week discovery + quick win
 
@@ -167,13 +167,13 @@ I Build data foundation before AI
 
 - I Set realistic 18-month expectations
 
-###### **ARCHETYPE 2**
+###### ARCHETYPE 2
 
-##### **The Eager Experimenter**
+##### The Eager Experimenter
 
 Running 5–15 pilots. Lots of enthusiasm but no coordination. Each team doing their own thing. No shared platform, no governance. Spending money but struggling to show ROI.
 
-###### **What they say in the first meeting:**
+###### What they say in the first meeting:
 
 - I *"'We have 12 AI projects running but none have reached production'"*
 
@@ -181,7 +181,7 @@ Running 5–15 pilots. Lots of enthusiasm but no coordination. Each team doing t
 
 - I *"'We can't measure the value we're getting'"*
 
-###### **Your engagement plays:**
+###### Your engagement plays:
 
 I Platform consolidation is the intervention
 
@@ -193,15 +193,15 @@ I Shared LLMOps pipeline
 
 **ARCHETYPE 3 The Methodical Scaler** Has 2–5 AI systems in production. Proven ROI in at least one area. Now wants to scale but hitting organisational resistance. Technical depth is good; change management is the gap.
 
-###### **What they say in the first meeting:**
+###### What they say in the first meeting:
 
 I *"'Our RAG system works but only 20% of employees use it'"* I *"'We want to expand to 10 use cases but can't hire fast enough'"* I *"'Middle management is blocking AI adoption in their teams'"*
 
-###### **Your engagement plays:**
+###### Your engagement plays:
 
 I Change management programme is primary deliverable I Citizen developer platform I AI Champion network per BU I Adoption metrics dashboard **ARCHETYPE 4 The AI-Native Transformer** AI is core to the business model. May be a tech company or digital-native firm. Sophisticated teams. Problems are at the frontier: agentic systems, governance at scale, proprietary model strategy.
 
-###### **What they say in the first meeting:**
+###### What they say in the first meeting:
 
 I *"'We want to build our own foundation model on proprietary data'"* I *"'Our agentic system is causing audit trail compliance issues'"* I *"'How do we govern 200 AI agents running autonomously?'"* **Your engagement plays:**
 
@@ -209,7 +209,7 @@ I Principal-level architecture engagement
 
 I Agentic governance framework I Fine-tuning and model ownership strategy I AI CoE maturity review **ARCHETYPE 5 The Regulated Reluctant** Healthcare, financial services, legal, government. Deep compliance constraints. Enormous potential value but genuine regulatory risk. Legal team often has veto power. Leadership wants AI but is risk-averse. **What they say in the first meeting:** I *"'Our legal team won't approve any external API calls with patient data'"* I *"'We need explainability for every AI decision that affects a customer'"* I *"'What happens if the AI makes a wrong decision and someone gets hurt?'"* **Your engagement plays:** I Lead with governance and compliance architecture I On-prem or HIPAA-compliant cloud only I Shadow-mode deployment first I Legal team in architecture reviews from day 1
 
-#### **1.2 Client Journey Map — Across All Archetypes**
+#### 1.2 Client Journey Map — Across All Archetypes
 
 This is the universal journey a client traverses from first conversation to AI-native transformation. The speed and difficulty of each stage varies by archetype, but the sequence is invariant. Understand where your client is today to prescribe the right intervention.
 
@@ -234,7 +234,7 @@ This is the universal journey a client traverses from first conversation to AI-n
 |||Talent competition is fierce. Board|strategy, ecosystem AI,|development. External AI|
 |||is an AI board.|governance board membership|capabilities monetised.|
 
-#### **1.3 Red Flags & Buying Signals per Stage**
+#### 1.3 Red Flags & Buying Signals per Stage
 
 These signals tell you whether the engagement is progressing or at risk.
 
@@ -262,15 +262,15 @@ These signals tell you whether the engagement is progressing or at risk.
 
 ###### PART 2
 
-## **AI Readiness Assessment (Scored)**
+## AI Readiness Assessment (Scored)
 
 Run this assessment in the first 2 weeks of every engagement. Score each dimension honestly — clients will push back on low scores, but honesty now prevents failure later. The composite score determines the recommended starting point and timeline.
 
-#### **2.1 Data Readiness Scorecard**
+#### 2.1 Data Readiness Scorecard
 
 Rate each item 1–5. 1 = Not in place. 3 = Partially in place. 5 = Fully in place.
 
-###### **Data Availability**
+###### Data Availability
 
 |**Criterion**|**Description**|**Score (1–5)**|**Notes**|
 |---|---|---|---|
@@ -281,7 +281,7 @@ Rate each item 1–5. 1 = Not in place. 3 = Partially in place. 5 = Fully in pla
 ||time-series|||
 |Data freshness|Data is updated frequently enough for the target use case|___||
 
-###### **Data Quality**
+###### Data Quality
 
 |**Criterion**|**Description**<br>**Score (1–5)**<br>**Notes**|
 |---|---|
@@ -291,7 +291,7 @@ Rate each item 1–5. 1 = Not in place. 3 = Partially in place. 5 = Fully in pla
 ||duplicates)|
 |Lineage|Data provenance is documented — where it came from, how it<br>was transformed<br>___|
 
-###### **Data Architecture**
+###### Data Architecture
 
 |**Criterion**|**Description**|**Score (1–5)**|**Notes**|
 |---|---|---|---|
@@ -300,7 +300,7 @@ Rate each item 1–5. 1 = Not in place. 3 = Partially in place. 5 = Fully in pla
 |Pipelines|Reliable ETL/ELT pipelines with monitoring and alerting|___||
 |Storage|Cloud data warehouse or lakehouse in place (Snowflake,<br>Databricks, BigQuery)|___||
 
-###### **AI Data Readiness**
+###### AI Data Readiness
 
 |**Criterion**|**Description**<br>**Score (1–5)**|**Notes**|
 |---|---|---|
@@ -310,7 +310,7 @@ Rate each item 1–5. 1 = Not in place. 3 = Partially in place. 5 = Fully in pla
 |infrastructure|||
 |Embedding<br>storage|Vector database or embedding-capable storage exists or is<br>budgeted<br>___||
 
-###### **Data Readiness Score Interpretation**
+###### Data Readiness Score Interpretation
 
 |**Score Range**|**Readiness Level**|**Recommended Action**|
 |---|---|---|
@@ -319,7 +319,7 @@ Rate each item 1–5. 1 = Not in place. 3 = Partially in place. 5 = Fully in pla
 |24–39|Pre-AI|3-month data foundation programme required. AI pilot after Month 3.|
 |<24|Not Ready|12-month data transformation first. AI is 18+ months away. Be honest with client.|
 
-#### **2.2 Technical Infrastructure Assessment**
+#### 2.2 Technical Infrastructure Assessment
 
 Assess current technical capabilities against AI deployment requirements.
 
@@ -334,7 +334,7 @@ Assess current technical capabilities against AI deployment requirements.
 |Network & Latency|Is network latency between systems measured? Is there a CDN? Edge<br>computing capability for low-latency AI?|___/5|
 |GPU / AI Compute|Is GPU infrastructure available (cloud or on-prem)? Is there a budget for AI<br>compute? GPU scheduling system?|___/5|
 
-#### **2.3 Talent & Culture Readiness**
+#### 2.3 Talent & Culture Readiness
 
 |**Dimension**|**Indicator**|**Low (1)**|**High (5)**|
 |---|---|---|---|
@@ -346,7 +346,7 @@ Assess current technical capabilities against AI deployment requirements.
 |Experimentation<br>Culture|Teams empowered to run AI<br>experiments independently|All AI requires IT approval|Self-service AI<br>experimentation|
 |Change Readiness|Employees embrace workflow<br>redesign around AI|Active resistance|Eager adoption and proposals|
 
-#### **2.4 Composite Readiness Score — Summary Sheet**
+#### 2.4 Composite Readiness Score — Summary Sheet
 
 Complete this after all four assessments. Present to client leadership.
 
@@ -359,7 +359,7 @@ Complete this after all four assessments. Present to client leadership.
 |Security Posture|25|___|***<br>***|
 |TOTAL|210|___|___|
 
-###### **Overall Readiness Interpretation**
+###### Overall Readiness Interpretation
 
 |**Total Score**|**Maturity Level**|**Starting Point**|**Realistic Timeline to Production**|
 |---|---|---|---|
@@ -371,17 +371,17 @@ Complete this after all four assessments. Present to client leadership.
 
 ###### PART 3
 
-## **Discovery Questionnaire Bank**
+## Discovery Questionnaire Bank
 
 150+ questions across 7 stakeholder groups. Use selectively — never ask all questions in one session. Select 8–12 questions per interview based on role and archetype. Adapt wording to the client's industry and vocabulary.
 
-#### **3.1 Executive / C-Suite Discovery (25 Questions)**
+#### 3.1 Executive / C-Suite Discovery (25 Questions)
 
 Use for: CEO, CAIO, COO, CFO. Duration: 45–60 minutes. Goal: Understand strategic intent, budget reality, board pressure, and appetite for risk. These are the questions that shape the entire engagement direction.
 
-###### **Strategic Intent**
+###### Strategic Intent
 
-###### **Q1**
+###### Q1
 
 **What does AI transformation mean for your company specifically, in 3 years? What would have to be true for you to call this a success?**
 
@@ -393,7 +393,7 @@ _
 
 _
 
-###### **Q2**
+###### Q2
 
 **Which competitor or disruptor is making you most nervous on AI, and why?**
 
@@ -403,7 +403,7 @@ _
 
 _
 
-###### **Q3**
+###### Q3
 
 **If you could automate one workflow that consumes the most senior talent time, which would it be?**
 
@@ -415,7 +415,7 @@ _
 
 _
 
-###### **Q4**
+###### Q4
 
 **What AI investments have you already made in the last 12 months, and what was the return?**
 
@@ -425,7 +425,7 @@ _
 
 _
 
-###### **Q5**
+###### Q5
 
 **How much of your annual budget are you prepared to allocate to AI in year 1, 2, 3?**
 
@@ -435,7 +435,7 @@ _
 
 _
 
-###### **Q6**
+###### Q6
 
 **What would have to happen for the board to lose confidence in this AI transformation?**
 
@@ -447,7 +447,7 @@ _
 
 _
 
-###### **Q7**
+###### Q7
 
 **If AI works exactly as planned, what does your business model look like in 5 years that would not be possible today?**
 
@@ -459,9 +459,9 @@ _
 
 _
 
-###### **Governance & Culture**
+###### Governance & Culture
 
-###### **Q8**
+###### Q8
 
 **Who has ultimate accountability when an AI system makes a mistake that affects a customer?**
 
@@ -471,7 +471,7 @@ _
 
 _
 
-###### **Q9**
+###### Q9
 
 **Has your board received any formal briefing on AI risk and governance?**
 
@@ -483,7 +483,7 @@ _
 
 **Q10**
 
-###### **Are there use cases where you would draw a hard line and never deploy AI, regardless of ROI potential?**
+###### Are there use cases where you would draw a hard line and never deploy AI, regardless of ROI potential?
 
 *Reveals values and risk appetite. Essential input to the governance charter.*
 
@@ -493,7 +493,7 @@ _
 
 _
 
-###### **Q11**
+###### Q11
 
 **How do you plan to communicate AI changes to employees who are worried about their roles?**
 
@@ -503,9 +503,9 @@ _
 
 _
 
-###### **Q12**
+###### Q12
 
-###### **What is your current relationship with AI regulation in your industry, and what are you most uncertain about?**
+###### What is your current relationship with AI regulation in your industry, and what are you most uncertain about?
 
 *Compliance awareness. Unknown = assign legal consultation as first deliverable.*
 
@@ -513,9 +513,9 @@ _
 
 _
 
-###### **Organisational Readiness**
+###### Organisational Readiness
 
-###### **Q13**
+###### Q13
 
 **Who currently owns the AI agenda inside your organisation? Is that person empowered to spend money and make cross-functional decisions?**
 
@@ -525,7 +525,7 @@ _
 
 _
 
-###### **Q14**
+###### Q14
 
 **What has surprised you most about your organisation's reaction to AI so far?**
 
@@ -537,7 +537,7 @@ _
 
 _
 
-###### **Q15**
+###### Q15
 
 **What data about your business do you believe is most underutilised today?**
 
@@ -549,7 +549,7 @@ _
 
 _
 
-###### **Q16**
+###### Q16
 
 **If we could only deliver one thing in the first 90 days that would make this engagement a success in your eyes, what would it be?**
 
@@ -561,13 +561,13 @@ _
 
 _
 
-#### **3.2 IT & Architecture Discovery (30 Questions)**
+#### 3.2 IT & Architecture Discovery (30 Questions)
 
 Use for: CTO, CIO, Head of Engineering, Principal Architect. Duration: 60–90 minutes. Goal: Map the technical landscape — what exists, what's broken, what will constrain AI.
 
-###### **Infrastructure & Cloud**
+###### Infrastructure & Cloud
 
-###### **Q1**
+###### Q1
 
 **Describe your current cloud architecture. Which providers? What percentage of workloads are cloud-native vs lifted-and-shifted vs on-premises?**
 
@@ -579,7 +579,7 @@ _
 
 _
 
-###### **Q2**
+###### Q2
 
 **What is your current container orchestration strategy? Are you running Kubernetes in production?**
 
@@ -587,15 +587,15 @@ _
 
 _
 
-###### **Q3**
+###### Q3
 
-###### **Describe your current API landscape. Do you have an API gateway? Are enterprise systems accessible via API?**
+###### Describe your current API landscape. Do you have an API gateway? Are enterprise systems accessible via API?
 
 *Agent architecture requires API-accessible enterprise systems. No APIs = MCP server build required.*
 
 _
 
-###### **Q4**
+###### Q4
 
 **What is your average time from code commit to production deployment?**
 
@@ -603,7 +603,7 @@ _
 
 _
 
-###### **Q5**
+###### Q5
 
 **What GPU or AI-specific compute do you have available today? What is the process to provision more?**
 
@@ -613,11 +613,11 @@ _
 
 _
 
-###### **Integration & Connectivity**
+###### Integration & Connectivity
 
-###### **Q6**
+###### Q6
 
-###### **List your top 10 enterprise systems by business criticality. For each: is there an API? Is the data clean? Who owns it?**
+###### List your top 10 enterprise systems by business criticality. For each: is there an API? Is the data clean? Who owns it?
 
 *Maps the MCP server build list. Systems without APIs require integration work before AI.*
 
@@ -629,7 +629,7 @@ _
 
 _
 
-###### **Q7**
+###### Q7
 
 **How do you currently handle real-time vs batch data processing?**
 
@@ -639,7 +639,7 @@ _
 
 _
 
-###### **Q8**
+###### Q8
 
 **What is your current state of master data management? Is there a single source of truth for key entities (customer, product, employee)?**
 
@@ -649,11 +649,11 @@ _
 
 _
 
-###### **Q9**
+###### Q9
 
 **Describe your current authentication and authorisation architecture. Is SSO in place? How are**
 
-###### **service-to-service credentials managed?**
+###### service-to-service credentials managed?
 
 *Agent identity management requires mature IAM. Missing = security architecture design required.*
 
@@ -663,7 +663,7 @@ _
 
 _
 
-###### **Q10**
+###### Q10
 
 **What are the top 3 technical debts that you believe will most constrain an AI deployment in the next 12 months?**
 
@@ -675,9 +675,9 @@ _
 
 _
 
-###### **Security & Compliance**
+###### Security & Compliance
 
-###### **Q11**
+###### Q11
 
 **What is your data classification policy? How is PII identified, tagged, and controlled across systems?**
 
@@ -689,7 +689,7 @@ _
 
 _
 
-###### **Q12**
+###### Q12
 
 **What would prevent you from sending business data to an external LLM API? Is there a whitelist process?**
 
@@ -699,7 +699,7 @@ _
 
 _
 
-###### **Q13**
+###### Q13
 
 **Describe your current security incident response process. Have you run an AI-specific red-team exercise?**
 
@@ -709,13 +709,13 @@ _
 
 _
 
-#### **3.3 Data & Analytics Discovery (25 Questions)**
+#### 3.3 Data & Analytics Discovery (25 Questions)
 
 Use for: CDO, Head of Data, Data Engineering Lead, Analytics Manager. Duration: 60 minutes. Goal: Understand true data quality, accessibility, and readiness for AI workloads. Data teams know the truth. Create psychological safety for candour.
 
-###### **Data Quality Reality Check**
+###### Data Quality Reality Check
 
-###### **Q1**
+###### Q1
 
 **If I asked you for 12 months of clean, labelled training data for a customer churn prediction model, what would you give me and in what timeframe?**
 
@@ -727,7 +727,7 @@ _
 
 _
 
-###### **Q2**
+###### Q2
 
 **What percentage of your data pipelines failed last month? What was the mean time to detect and resolve?**
 
@@ -737,7 +737,7 @@ _
 
 _
 
-###### **Q3**
+###### Q3
 
 **Describe the worst data quality issue currently affecting business decisions. Why hasn't it been fixed?**
 
@@ -749,7 +749,7 @@ _
 
 _
 
-###### **Q4**
+###### Q4
 
 **If you had to bet your job on the accuracy of your customer data, which fields would you stake it on and which wouldn't you touch?**
 
@@ -761,7 +761,7 @@ _
 
 _
 
-###### **Q5**
+###### Q5
 
 **What data does your company collect but never use? Why?**
 
@@ -773,9 +773,9 @@ _
 
 _
 
-###### **Data Architecture & Access**
+###### Data Architecture & Access
 
-###### **Q6**
+###### Q6
 
 **Walk me through how a business analyst accesses data today. From question to answer, how long does it take?**
 
@@ -785,9 +785,9 @@ _
 
 _
 
-###### **Q7**
+###### Q7
 
-###### **Do you have a data catalogue? Who uses it and how often?**
+###### Do you have a data catalogue? Who uses it and how often?
 
 *Unused catalogues are as bad as no catalogue — signals cultural disconnect between DE and users.*
 
@@ -795,9 +795,9 @@ _
 
 _
 
-###### **Q8**
+###### Q8
 
-###### **How many data platforms are you running in parallel? (Snowflake, Databricks, Redshift, BigQuery, legacy DW, etc.)**
+###### How many data platforms are you running in parallel? (Snowflake, Databricks, Redshift, BigQuery, legacy DW, etc.)
 
 *Platform sprawl = integration complexity. More than 3 = consolidation conversation.*
 
@@ -805,9 +805,9 @@ _
 
 _
 
-###### **Q9**
+###### Q9
 
-###### **What is your policy on using production data for AI model training?**
+###### What is your policy on using production data for AI model training?
 
 *No policy = risk. Too restrictive = data access bottleneck for fine-tuning.*
 
@@ -815,7 +815,7 @@ _
 
 _
 
-###### **Q10**
+###### Q10
 
 **How do you currently handle schema changes in upstream systems breaking downstream pipelines?**
 
@@ -825,13 +825,13 @@ _
 
 _
 
-#### **3.4 Business Unit Leader Discovery (20 Questions)**
+#### 3.4 Business Unit Leader Discovery (20 Questions)
 
 Use for: VP Sales, Head of Operations, CMO, Head of Customer Service, CFO. Duration: 30–45 minutes. Goal: Find the real pain, identify the champion, and understand workflow dynamics. Business leaders describe symptoms; your job is to diagnose the underlying cause and map it to an AI solution.
 
-###### **Pain Discovery**
+###### Pain Discovery
 
-###### **Q1**
+###### Q1
 
 **Walk me through your team's most time-consuming weekly task that requires the most senior/expensive people. What makes it hard to delegate or automate?**
 
@@ -843,7 +843,7 @@ _
 
 _
 
-###### **Q2**
+###### Q2
 
 **If your team had 20% more capacity starting tomorrow, what would you do with it?**
 
@@ -851,7 +851,7 @@ _
 
 _
 
-###### **Q3**
+###### Q3
 
 **What decisions does your team make repeatedly that are driven by similar data patterns each time?**
 
@@ -861,7 +861,7 @@ _
 
 _
 
-###### **Q4**
+###### Q4
 
 **Where do errors or rework happen most frequently in your team's workflows?**
 
@@ -869,7 +869,7 @@ _
 
 _
 
-###### **Q5**
+###### Q5
 
 **What information do you wish you had that you currently can't get, or can't get fast enough?**
 
@@ -881,9 +881,9 @@ _
 
 _
 
-###### **Adoption Readiness**
+###### Adoption Readiness
 
-###### **Q6**
+###### Q6
 
 **How has your team reacted to new technology changes in the past? What made adoptions succeed or fail?**
 
@@ -895,7 +895,7 @@ _
 
 _
 
-###### **Q7**
+###### Q7
 
 **What would make your team trust an AI recommendation enough to act on it without double-checking?**
 
@@ -907,7 +907,7 @@ _
 
 _
 
-###### **Q8**
+###### Q8
 
 **Which members of your team do you think would be the most enthusiastic early adopters of AI tools?**
 
@@ -917,7 +917,7 @@ _
 
 _
 
-###### **Q9**
+###### Q9
 
 **What would a failure look like in the first 90 days of an AI system in your team? What would the impact be?**
 
@@ -927,7 +927,7 @@ _
 
 _
 
-###### **Q10**
+###### Q10
 
 **If the AI tool worked exactly as you hope, what would your team's work look like differently in 12 months?**
 
@@ -939,11 +939,11 @@ _
 
 _
 
-#### **3.5 Security & Compliance Discovery (20 Questions)**
+#### 3.5 Security & Compliance Discovery (20 Questions)
 
 Use for: CISO, General Counsel, Chief Compliance Officer, DPO. Duration: 45–60 minutes. Goal: Identify hard constraints before architecture is designed. These are veto-holders. Their concerns shape the architecture — never fight them, design for them.
 
-###### **Q1**
+###### Q1
 
 **What are your data residency requirements? Can business data leave your jurisdiction for processing?**
 
@@ -953,11 +953,11 @@ _
 
 _
 
-###### **Q2**
+###### Q2
 
 **What regulatory frameworks govern your AI deployments? (EU AI Act, HIPAA, SOX, GDPR, FCA, FFIEC,**
 
-###### **etc.)**
+###### etc.)
 
 *Compliance landscape determines governance architecture.*
 
@@ -967,7 +967,7 @@ _
 
 _
 
-###### **Q3**
+###### Q3
 
 **Have you conducted a Data Protection Impact Assessment (DPIA) for any AI system?**
 
@@ -977,7 +977,7 @@ _
 
 _
 
-###### **Q4**
+###### Q4
 
 **What is your current process for approving new SaaS vendors with access to company data? How long does it take?**
 
@@ -987,7 +987,7 @@ _
 
 _
 
-###### **Q5**
+###### Q5
 
 **Have you run any AI-specific threat modelling exercises? Are you aware of prompt injection and model inversion attacks?**
 
@@ -999,7 +999,7 @@ _
 
 _
 
-###### **Q6**
+###### Q6
 
 **What would be your response if an AI system produced a discriminatory output that affected a customer and was covered by media?**
 
@@ -1011,9 +1011,9 @@ _
 
 _
 
-###### **Q7**
+###### Q7
 
-###### **What contractual guarantees would you require from an AI vendor regarding data handling, model training, and breach notification?**
+###### What contractual guarantees would you require from an AI vendor regarding data handling, model training, and breach notification?
 
 *Vendor requirements that need to be addressed in solution design (BAA, DPA, etc.)*
 
@@ -1023,9 +1023,9 @@ _
 
 _
 
-###### **Q8**
+###### Q8
 
-###### **Are there any pending regulatory examinations or audits in the next 12 months that would affect our timeline?**
+###### Are there any pending regulatory examinations or audits in the next 12 months that would affect our timeline?
 
 *Hidden timeline constraints. Regulatory exams often halt AI deployments.*
 
@@ -1033,11 +1033,11 @@ _
 
 _
 
-#### **3.6 Change Management Discovery (15 Questions)**
+#### 3.6 Change Management Discovery (15 Questions)
 
 Use for: CHRO, Head of L&D;, Change Management Lead, Union Representatives. Duration: 30–45 minutes. Goal: Understand human dynamics. Technical failure rate: 20%. Organisational failure rate: 60%. This interview shapes your entire workforce enablement strategy.
 
-###### **Q1**
+###### Q1
 
 **How have employees typically heard about this AI transformation programme so far? What is the informal narrative?**
 
@@ -1049,7 +1049,7 @@ _
 
 _
 
-###### **Q2**
+###### Q2
 
 **Which employee groups are most concerned about AI, and what specifically are they afraid of?**
 
@@ -1061,7 +1061,7 @@ _
 
 _
 
-###### **Q3**
+###### Q3
 
 **What has been your most successful large-scale change programme in the last 5 years? What made it work?**
 
@@ -1073,7 +1073,7 @@ _
 
 _
 
-###### **Q4**
+###### Q4
 
 **What change programmes have failed, and what was the cause?**
 
@@ -1085,7 +1085,7 @@ _
 
 _
 
-###### **Q5**
+###### Q5
 
 **Is there a formal AI reskilling budget? Who approves it?**
 
@@ -1095,7 +1095,7 @@ _
 
 _
 
-###### **Q6**
+###### Q6
 
 **How do you measure employee adoption of new technology? What metrics do you track?**
 
@@ -1105,9 +1105,9 @@ _
 
 _
 
-###### **Q7**
+###### Q7
 
-###### **Are there any union agreements or works council requirements that affect how we implement AI that changes job roles?**
+###### Are there any union agreements or works council requirements that affect how we implement AI that changes job roles?
 
 *Employment law constraints vary significantly. Must know before programme design.*
 
@@ -1115,7 +1115,7 @@ _
 
 _
 
-###### **Q8**
+###### Q8
 
 **Who are the informal influencers in the organisation — the people others look to when deciding whether to trust a new initiative?**
 
@@ -1129,19 +1129,19 @@ _
 
 ###### PART 4
 
-## **Stakeholder Interview Templates**
+## Stakeholder Interview Templates
 
 Structured interview guides for 5 key stakeholder groups. Each template includes opening framing, core questions, probing techniques, and what to listen for. Use verbatim or adapt — the structure is more important than the exact wording.
 
-#### **4.1 CEO / CAIO Interview Guide**
+#### 4.1 CEO / CAIO Interview Guide
 
 Duration: 45 minutes. Setting: Private. Tone: Peer-to-peer, strategic.
 
-###### **Opening Frame (2 minutes)**
+###### Opening Frame (2 minutes)
 
 "Thank you for your time. I want to use this conversation to understand your vision for what AI transformation means for [Company Name] specifically — not AI in general, but what it means here, in your context, with your constraints. I'm going to ask some questions that might feel direct — they're designed to help me give you an honest assessment rather than tell you what you want to hear. Is that OK?"
 
-###### **Agenda**
+###### Agenda
 
 **a.** Strategic vision for AI (10 min)
 
@@ -1153,7 +1153,7 @@ Duration: 45 minutes. Setting: Private. Tone: Peer-to-peer, strategic.
 
 **a.** Open questions and next steps (5 min)
 
-###### **Key Questions (select 6–8)**
+###### Key Questions (select 6–8)
 
 I What does winning on AI look like for you in 3 years — not for the industry, for this company specifically?
 
@@ -1171,7 +1171,7 @@ I If I could only improve one metric in your business using AI in the next 6 mon
 
 I What are you not telling me about AI at [Company] that I should know?
 
-###### **What to Listen For**
+###### What to Listen For
 
 I Specificity vs vagueness — vague vision = needs vision workshop before strategy
 
@@ -1183,15 +1183,15 @@ I Willingness to say 'I don't know' — intellectual honesty predicts programme 
 
 I Whether they mention employees with empathy or only numbers — reveals culture
 
-#### **4.2 CTO / CIO Interview Guide**
+#### 4.2 CTO / CIO Interview Guide
 
 Duration: 60–90 minutes. Setting: Technical. Tone: Architect-to-architect.
 
-###### **Opening Frame**
+###### Opening Frame
 
 "I want to understand your technical landscape in enough depth to give you an honest architecture recommendation. I'm not here to sell you a particular technology — I'm here to understand your constraints and design something that will actually work in your environment. Some of my questions will be uncomfortable — they're designed to surface risks before they become failures."
 
-###### **Key Questions**
+###### Key Questions
 
 I Walk me through your most recent major platform decision. Who made it, how was it made, and what would you do differently?
 
@@ -1205,7 +1205,7 @@ I What is your relationship with your security team like? Do they block AI or he
 
 I Describe your dream architecture for AI in 3 years. Now, what prevents you from building it today?
 
-###### **Technical Red Flags to Listen For**
+###### Technical Red Flags to Listen For
 
 I No CI/CD: every deployment is manual and slow — LLMOps will be painful
 
@@ -1217,11 +1217,11 @@ I Shadow IT: 'teams use tools without telling us' — platform sprawl and securi
 
 I No data catalogue: 'we know where the data is' but it's not documented — AI integration will be slow
 
-#### **4.3 Frontline Worker Focus Group Guide**
+#### 4.3 Frontline Worker Focus Group Guide
 
 Duration: 60 minutes. Group size: 6–8 people. Setting: Informal, no managers present. Goal: Understand the human reality of AI adoption. Frontline workers know what's broken and what they're afraid of. Their trust determines adoption success.
 
-###### **Facilitation Rules**
+###### Facilitation Rules
 
 I No recording without explicit consent. Take notes by hand — recording creates anxiety.
 
@@ -1233,43 +1233,43 @@ I Start with rapport — ask about their current work before mentioning AI.
 
 I Never argue with fear or dismiss concerns — listen, validate, probe.
 
-###### **Discussion Questions**
+###### Discussion Questions
 
-###### **Warm-up (5 min)**
+###### Warm-up (5 min)
 
 Tell me about a typical day in your role. What takes up most of your time?
 
-###### **Current pain (10 min)**
+###### Current pain (10 min)
 
 What is the most frustrating part of your job that you wish could be easier? What tools do you use today that you love or hate?
 
-###### **AI awareness (5 min)**
+###### AI awareness (5 min)
 
 Have you heard about the AI programme at [Company]? What have you heard — from any source?
 
-###### **Concerns (15 min)**
+###### Concerns (15 min)
 
 What concerns do you have about AI in your workplace? What would worry you most? What would help you feel more confident?
 
-###### **Aspirations (10 min)**
+###### Aspirations (10 min)
 
 If AI could take over one part of your job that you dislike, what would you want it to handle? What parts of your job do you think only a human can do?
 
-###### **Trust (10 min)**
+###### Trust (10 min)
 
 What would an AI tool need to do for you to trust its output? What would make you distrust it?
 
-###### **Wishes (5 min)**
+###### Wishes (5 min)
 
 If you could send one message to the people designing the AI programme, what would it be?
 
 PART 5
 
-## **Use Case Prioritisation Framework**
+## Use Case Prioritisation Framework
 
 Translating discovery findings into a prioritised AI roadmap. Use this framework to facilitate a leadership workshop that produces an agreed, owned, funded use case portfolio — not a consultant's wish list.
 
-#### **5.1 Use Case Scoring Rubric**
+#### 5.1 Use Case Scoring Rubric
 
 Score each identified use case across 6 dimensions. Total score out of 60. Top scores go into the 90-day plan; remainder into the 6-month and 12-month roadmap.
 
@@ -1283,19 +1283,19 @@ Score each identified use case across 6 dimensions. Total score out of 60. Top s
 |Organisational<br>Readiness|Strong resistance; no<br>sponsor|Mixed reception;<br>sponsor identified|Enthusiastic team;<br>clear owner|×1|
 |Risk Level|High: regulatory,<br>safety, or reputational<br>risk|Medium: limited<br>downside;<br>manageable|Low: internal tool;<br>reversible|×1|
 
-#### **5.2 Use Case Intake Form**
+#### 5.2 Use Case Intake Form
 
 Complete one form per candidate use case before the prioritisation workshop.
 
-###### **Q1**
+###### Q1
 
-###### **Use Case Name**
+###### Use Case Name
 
 _
 
-###### **Q2**
+###### Q2
 
-###### **Business Problem Statement (what pain does this solve?)**
+###### Business Problem Statement (what pain does this solve?)
 
 _
 
@@ -1303,71 +1303,71 @@ _
 
 **Q3**
 
-###### **Primary Beneficiary (team/department/customer)**
+###### Primary Beneficiary (team/department/customer)
 
 _
 
-###### **Q4**
+###### Q4
 
-###### **Business Sponsor Name & Title**
-
-_
-
-###### **Q5**
-
-###### **Success Metric (how will we know it worked?)**
+###### Business Sponsor Name & Title
 
 _
 
-###### **Q6**
+###### Q5
 
-###### **Target Metric Value (what number constitutes success?)**
-
-_
-
-###### **Q7**
-
-###### **Estimated Annual Value if Successful ($)**
+###### Success Metric (how will we know it worked?)
 
 _
 
-###### **Q8**
+###### Q6
 
-###### **Key Data Sources Required**
-
-_
+###### Target Metric Value (what number constitutes success?)
 
 _
 
-###### **Q9**
+###### Q7
 
-###### **Estimated Build Timeline (weeks)**
+###### Estimated Annual Value if Successful ($)
 
 _
 
-###### **Q10**
+###### Q8
 
-###### **Known Risks or Constraints**
+###### Key Data Sources Required
 
 _
 
 _
 
-###### **Q11**
+###### Q9
 
-###### **Dependencies on Other Teams or Systems**
+###### Estimated Build Timeline (weeks)
+
+_
+
+###### Q10
+
+###### Known Risks or Constraints
 
 _
 
 _
 
-###### **Q12 Has This Been Attempted Before? If so, what happened?**
+###### Q11
+
+###### Dependencies on Other Teams or Systems
 
 _
 
 _
 
-#### **5.3 Portfolio Prioritisation Workshop Agenda**
+###### Q12 Has This Been Attempted Before? If so, what happened?
+
+_
+
+_
+
+#### 5.3 Portfolio Prioritisation Workshop Agenda
 
 2-hour facilitated session with business sponsors and technical leads.
 
@@ -1383,13 +1383,13 @@ _
 
 ###### PART 6
 
-## **FAQ Bank — All Client Scenarios**
+## FAQ Bank — All Client Scenarios
 
 70+ frequently asked questions with consultant-grade answers. Memorise the structure: validate the concern, give the honest answer, redirect to constructive action. Never dismiss a question — every question is a window into a concern that will block the programme if unaddressed.
 
-#### **6.1 Executive FAQs — The Sceptical CEO**
+#### 6.1 Executive FAQs — The Sceptical CEO
 
-###### **Q: How do I know this isn't just hype? My team has told me AI will transform everything before.**
+###### Q: How do I know this isn't just hype? My team has told me AI will transform everything before.
 
 A: You're right to be sceptical — most AI transformations fail not because of bad technology but because of poor execution: wrong use cases, dirty data, or no change management. The honest answer is: AI is real and is delivering measurable results in specific use cases. The question is which use cases and in what sequence. Our job is to find the ones that work in your specific context, not the ones that look good in a slide.
 
@@ -1399,101 +1399,101 @@ A: You're right to be sceptical — most AI transformations fail not because of 
 
 ***[Action]*** *Commission competitive AI intelligence: which use cases are competitors actually running? This often clarifies the urgency better than any analyst report.*
 
-###### **Q: How much is this going to cost and what is the realistic ROI?**
+###### Q: How much is this going to cost and what is the realistic ROI?
 
 A: Honest answer: Discovery phase costs $150K–$300K for an enterprise. First production AI system: $300K–$1M depending on complexity. Ongoing platform and operations: $200K–$500K/year. ROI depends entirely on the use case — we have seen 3x in 6 months and 5-year paybacks on others. The only way to give you an accurate ROI is to complete the discovery and model it against your specific workflows.
 
 ***[Action]*** *Commit to discovery phase only. ROI modelling is a discovery output, not an input.*
 
-###### **Q: What happens to my employees? How many jobs will AI eliminate?**
+###### Q: What happens to my employees? How many jobs will AI eliminate?
 
 A: This question deserves a serious answer, not reassurance. AI will change more jobs than it eliminates. The honest breakdown: roughly 20% of current tasks will be fully automated, 60% will be augmented (humans + AI working together), and 20% remain unchanged. Net employment impact in most enterprises we work with is flat or positive in year 1 because efficiency gains fund growth, not headcount reduction. But specific roles will change significantly, and managing that transition requires intentional workforce investment.
 
 ***[Action]*** *Commission workforce impact assessment as part of discovery. Communicate findings to employees before the rumour mill does.*
 
-###### **Q: Who is accountable when the AI makes a mistake?**
+###### Q: Who is accountable when the AI makes a mistake?
 
 A: The organisation is. Always. AI is a tool — like any tool, the organisation that deploys it is responsible for its outcomes. This means: governance must be designed before deployment, not retrofitted after an incident. The AI Architect's job includes designing accountability frameworks, audit trails, and incident response before the first agent goes live.
 
 ***[Action]*** *Include accountability matrix in the AI Governance Charter. Legal must sign before any production deployment.*
 
-#### **6.2 Technical FAQs**
+#### 6.2 Technical FAQs
 
-###### **Q: Should we build our own LLM or use an API?**
+###### Q: Should we build our own LLM or use an API?
 
 |A: For 95% of enterprises: use an API. Building a foundation model requires $50M–$500M+ in compute,<br>world-class ML research teams, and terabytes of curated training data. What you should consider building:<br>fine-tuned variants of open-source models on your proprietary data. This creates a competitive moat without the<br>cost of building from scratch. The ROI decision: fine-tuning costs $50K–$200K and creates proprietary capability.<br>Building from scratch costs $50M+ and is rarely justified outside Big Tech.|
 |---|
 
 ***[Action]*** *Color(.062745,.72549,.505882,1)*
 
-###### **Q: How do we choose between RAG and fine-tuning?**
+###### Q: How do we choose between RAG and fine-tuning?
 
 |A: Short answer: start with RAG, add fine-tuning for style and domain dialect later. RAG is better when data<br>changes frequently, you need source citations, or you lack training data. Fine-tuning wins when you have stable<br>knowledge, need specific tone/format, or have very high inference volume that makes per-query retrieval cost<br>prohibitive. Most production systems in 2026 use both: RAG for knowledge retrieval, fine-tuning for response style<br>alignment.|
 |---|
 
 ***[Action]*** *Color(0,.831373,1,1)*
 
-###### **Q: What vector database should we use?**
+###### Q: What vector database should we use?
 
 A: It depends on your scale and existing stack. Pinecone for fastest time-to-production with no infra ops. pgvector if you're already on PostgreSQL and scale is <10M vectors. Weaviate for complex multi-tenant schemas. Qdrant for highest throughput production workloads. Chroma only for prototyping — not production-ready at scale.
 
 ***[Action]*** *Color(.658824,.333333,.968627,1)*
 
-###### **Q: How do we prevent AI hallucinations in production?**
+###### Q: How do we prevent AI hallucinations in production?
 
 |A: Three layers: architectural, operational, and human. Architecture: RAG with mandatory source citation<br>constrains the model to retrieved facts. Operational: faithfulness evaluation (RAGAS) on sampled outputs catches<br>drift. Human: review gates on all customer-facing outputs until trust is established. No system eliminates<br>hallucination — the goal is to detect, contain, and correct them faster than they cause harm.|
 |---|
 
 ***[Action]*** *Design a hallucination monitoring dashboard as a production requirement, not an afterthought.*
 
-###### **Q: Our data is in 15 different systems. Where do we start?**
+###### Q: Our data is in 15 different systems. Where do we start?
 
 |A: Start with the system that contains data for your highest-priority use case, and build one MCP server for it.<br>Resist the temptation to build a unified data layer first — that is a 12-month programme that delays value. Build<br>one integration, prove the value, then invest in the platform. Priority order: highest business value use case data<br>first, regardless of technical elegance.|
 |---|
 
 ***[Action]*** *Color(.062745,.72549,.505882,1)*
 
-#### **6.3 Legal & Compliance FAQs**
+#### 6.3 Legal & Compliance FAQs
 
-###### **Q: What does the EU AI Act mean for us?**
+###### Q: What does the EU AI Act mean for us?
 
 A: If you operate in Europe or sell to European customers, you need to know your AI risk tier. High-risk AI (HR, credit, healthcare decisions) requires conformity assessments, bias testing, and human oversight. Prohibited AI (social scoring, real-time biometric surveillance) cannot be deployed. GPAI models above 10^25 FLOPs face systemic risk obligations — this affects which models you build on. Penalties: up to 3% of global revenue. This is not theoretical — enforcement began in 2024.
 
 ***[Action]*** *Commission an EU AI Act impact assessment as the first governance deliverable.*
 
-###### **Q: Can we send customer data to ChatGPT or Claude?**
+###### Q: Can we send customer data to ChatGPT or Claude?
 
 A: Depends on your regulatory environment and data classification. Standard API use: data may be used for model training by some providers — read the terms carefully and opt out. For HIPAA: must have a Business Associate Agreement in place with the provider. For GDPR: data processing must have legal basis, provider must be GDPR compliant. For confidential business data: review your data classification policy — many enterprises prohibit sending classified data to external APIs. The safest path: use enterprise-tier APIs (Azure OpenAI, AWS Bedrock, Anthropic Enterprise) with contractual data protection terms.
 
 ***[Action]*** *Color(.937255,.266667,.266667,1)*
 
-###### **Q: How do we explain AI decisions to customers who are affected by them?**
+###### Q: How do we explain AI decisions to customers who are affected by them?
 
 A: The EU AI Act requires explainability for high-risk AI decisions affecting individuals. In practice, this means: model cards for each AI system, logging of decision factors, human review process for contested decisions, and a customer-facing explanation on request. Design explainability into the architecture, not the UI — if the model cannot tell you why it made a decision, you cannot explain it to a customer.
 
 ***[Action]*** *Include explainability requirements in all use case designs from day 1. Treat 'black box decisions affecting customers' as a deployment blocker.*
 
-###### **Q: What AI use cases are simply off the table legally?**
+###### Q: What AI use cases are simply off the table legally?
 
 A: Prohibited under EU AI Act: real-time biometric surveillance in public spaces, social scoring systems, manipulation of human behaviour subconsciously. Very high risk requiring specific legal basis: automated hiring decisions, credit scoring, insurance risk, benefits eligibility. Practically off-limits without expert counsel: medical diagnosis, legal advice, decisions affecting criminal justice. The rule of thumb: if an AI decision significantly affects a person's life without human review, you need legal sign-off before proceeding.
 
 ***[Action]*** *Color(.937255,.266667,.266667,1)*
 
-#### **6.4 HR & Workforce FAQs**
+#### 6.4 HR & Workforce FAQs
 
-###### **Q: How do we communicate AI to employees who are scared of losing their jobs?**
+###### Q: How do we communicate AI to employees who are scared of losing their jobs?
 
 A: Be honest and specific, not reassuring and vague. Tell employees exactly which tasks AI will take over, which tasks will change, and what support you're providing for the transition. Vague reassurance ('AI will create new jobs') is worse than honest specifics. The most effective communication: 'Here are the 5 tasks in your role that AI will handle by Q3. Here is the training programme we're running to help you focus on the 15 tasks only humans can do. Here is who to talk to if you have concerns.'
 
 ***[Action]*** *Communication plan must be ready before any AI pilot is announced externally.*
 
-###### **Q: What skills should we be hiring for in AI teams?**
+###### Q: What skills should we be hiring for in AI teams?
 
 A: Priority hire in 2026: AI Architects (rarest, most expensive — $250-400K total comp). ML Engineers with production MLOps experience (not research). Data Engineers who understand vector stores and streaming. Prompt Engineers (emerging — can be grown internally from existing staff). AI Product Managers who understand probabilistic system design. What you don't need to hire: data scientists for every use case. Many use cases are architecture + prompt engineering, not model training.
 
 ***[Action]*** *Color(0,.831373,1,1)*
 
-###### **Q: How do we build an AI culture when most of our employees aren't technical?**
+###### Q: How do we build an AI culture when most of our employees aren't technical?
 
 A: AI culture is not about making everyone a developer. It is about: psychological safety to experiment (safe-to-fail environment), access to tools that let non-technical employees use AI (Copilot, Claude, Gemini Workspace), visible leadership usage (CEO showing their AI workflow publicly), and a recognition system that celebrates AI-powered work, not just volume of work. The citizen developer programme — low-code/no-code AI tools — is your cultural entry point.
 
@@ -1501,15 +1501,15 @@ A: AI culture is not about making everyone a developer. It is about: psychologic
 
 PART 7
 
-## **Phase-Gated Checklists**
+## Phase-Gated Checklists
 
 Production deployments gate on these checklists. Nothing ships without sign-off. Each checklist has an owner (Architect, Client, Legal) and a gate criterion. Print and complete in client meetings — visible progress builds trust.
 
-#### **7.1 Pre-Engagement Checklist**
+#### 7.1 Pre-Engagement Checklist
 
 Complete before the first client meeting. Missing items delay engagement start.
 
-###### **Consultant Preparation**
+###### Consultant Preparation
 
 I Industry research: top 5 AI use cases in client's vertical with ROI data
 
@@ -1521,7 +1521,7 @@ I Data landscape: what is known about client's current data infrastructure?
 
 I Stakeholder research: LinkedIn profiles + press quotes from key leaders
 
-###### **Engagement Setup**
+###### Engagement Setup
 
 I Non-Disclosure Agreement signed before any sensitive data is shared
 
@@ -1533,7 +1533,7 @@ I Client point-of-contact identified who can make decisions
 
 I Access requests submitted for relevant systems and documentation
 
-###### **Internal Consultant Alignment**
+###### Internal Consultant Alignment
 
 I AI Readiness Assessment template customised for client industry
 
@@ -1545,11 +1545,11 @@ I Resource plan confirmed: architect, data engineer, change manager allocated
 
 - I Success metrics defined and agreed with engagement partner
 
-#### **7.2 Architecture Review Checklist**
+#### 7.2 Architecture Review Checklist
 
 Gate criterion: Architecture must pass all CRITICAL items before build phase begins.
 
-###### **Data Architecture [CRITICAL]**
+###### Data Architecture [CRITICAL]
 
 I Data source inventory completed with API status for each source
 
@@ -1565,7 +1565,7 @@ I Embedding model selection documented with evaluation results
 
 I Data retention and deletion policy defined for AI-generated data
 
-###### **AI System Architecture [CRITICAL]**
+###### AI System Architecture [CRITICAL]
 
 I LLM selection documented with eval scores on domain-specific test set
 
@@ -1581,7 +1581,7 @@ I Evaluation framework designed: metrics, golden dataset, automated gates
 
 I Canary deployment strategy defined for model updates
 
-###### **Agentic Architecture (if applicable) [CRITICAL]**
+###### Agentic Architecture (if applicable) [CRITICAL]
 
 I Agent permission scope defined — minimum viable permissions only
 
@@ -1597,7 +1597,7 @@ I Tool authentication and MCP server security reviewed
 
 I Agent failure modes documented with response procedures
 
-###### **Security Architecture [CRITICAL]**
+###### Security Architecture [CRITICAL]
 
 I Threat model completed with AI-specific attack vectors (prompt injection, data exfiltration)
 
@@ -1613,7 +1613,7 @@ I Incident response plan for AI-specific failures documented
 
 I Third-party AI vendor security assessment completed
 
-###### **Governance Architecture [ADVISORY]**
+###### Governance Architecture [ADVISORY]
 
 I AI Governance Charter v1 drafted and sent for legal review
 
@@ -1629,11 +1629,11 @@ I Communication plan for AI deployment drafted
 
 I Training plan for users of the AI system drafted
 
-#### **7.3 Production Deployment Checklist**
+#### 7.3 Production Deployment Checklist
 
 Gate criterion: ALL items must be complete. No partial deployment to production.
 
-###### **Quality Gates**
+###### Quality Gates
 
 I Evaluation suite passing on all automated metrics (faithfulness >0.80, relevance >0.80)
 
@@ -1649,7 +1649,7 @@ I Regression test: new version does not degrade metrics from previous version
 
 I Red-team safety test: adversarial inputs tested and failure modes documented
 
-###### **Operational Readiness**
+###### Operational Readiness
 
 I Monitoring dashboard live: latency, cost, quality, safety metrics
 
@@ -1665,7 +1665,7 @@ I LangSmith/Arize/Phoenix observability traces verified in production
 
 I Cost dashboard live with budget alerts configured
 
-###### **Governance Sign-Off**
+###### Governance Sign-Off
 
 I AI Governance Charter signed by CAIO or designated authority
 
@@ -1679,7 +1679,7 @@ I Privacy Impact Assessment completed (if PII involved)
 
 I Training completed for all users of the AI system (completion rate >80%) I User communication sent: what AI does, what it doesn't do, how to report issues
 
-###### **Business Readiness**
+###### Business Readiness
 
 I Business owner signed off: they accept accountability for AI outputs in their domain
 
@@ -1693,11 +1693,11 @@ I First-90-days review scheduled with stakeholders
 
 I Support process defined: who users call when AI behaves unexpectedly
 
-#### **7.4 Post-Deployment Monitoring Checklist**
+#### 7.4 Post-Deployment Monitoring Checklist
 
 Run weekly for first 3 months, then monthly.
 
-###### **Week 1–4: Intensive Monitoring (Daily)**
+###### Week 1–4: Intensive Monitoring (Daily)
 
 I Quality metrics reviewed: faithfulness, relevance, cost, latency
 
@@ -1713,7 +1713,7 @@ I Usage adoption: are target users actually using the system?
 
 I Any incidents? If yes, incident report filed and root cause documented.
 
-###### **Month 2–3: Stability Monitoring (Weekly)**
+###### Month 2–3: Stability Monitoring (Weekly)
 
 I Quality drift check: 7-day rolling average vs baseline
 
@@ -1729,7 +1729,7 @@ I Bias audit: any demographic disparities in output quality emerging?
 
 I Next use case evaluation: is the team ready to expand?
 
-###### **Ongoing: Quarterly AI Health Review**
+###### Ongoing: Quarterly AI Health Review
 
 I Full evaluation suite re-run on latest production data
 
@@ -1747,45 +1747,45 @@ I Roadmap review: what is the next AI investment priority?
 
 ###### PART 8
 
-## **Templates & Deliverable Frameworks**
+## Templates & Deliverable Frameworks
 
 Ready-to-use templates for every major engagement deliverable. Adapt to client branding and context. Never deliver a template without populating all client-specific fields — a blank template is worse than no template.
 
-#### **8.1 AI Business Case Template**
+#### 8.1 AI Business Case Template
 
 Target: CFO + CEO sign-off. Length: 2–3 pages. Tone: Financial, precise.
 
-###### **Structure**
+###### Structure
 
-###### **Executive Summary (1 paragraph)**
+###### Executive Summary (1 paragraph)
 
 One sentence problem. One sentence proposed solution. Three numbers: investment, projected return, payback period.
 
-###### **Problem Statement**
+###### Problem Statement
 
 Quantified description of current pain: hours lost/week, error rate, cost per transaction, customer satisfaction score, competitive gap. Every claim must have a number attached.
 
-###### **Proposed AI Solution**
+###### Proposed AI Solution
 
 What AI does (in plain English). What it does not do. How humans and AI collaborate. Which team deploys it and who owns it ongoing.
 
-###### **Financial Model**
+###### Financial Model
 
 Investment: Year 1 build ($___), Year 2 operations ($***), Year 3 operations ($***). Returns: Labour hours saved × fully-loaded cost rate. Error reduction × cost per error. Revenue impact (if applicable). Total 3-year NPV. Payback period.
 
-###### **Risk Assessment**
+###### Risk Assessment
 
 Technical risks and mitigations. Organisational risks and mitigations. Regulatory risks and mitigations. What happens if we don't do this (opportunity cost).
 
-###### **Success Metrics & Milestones**
+###### Success Metrics & Milestones
 
 90-day: [specific metric, target value]. 180-day: [metric, target]. 12-month: [metric, target]. Who owns each metric. Review cadence.
 
-###### **Decision Required**
+###### Decision Required
 
 Single, specific ask: 'Approval for $[amount] to commence [specific phase] by [date].' No ambiguous asks. One decision per document.
 
-#### **8.2 AI Governance Charter Template**
+#### 8.2 AI Governance Charter Template
 
 Required document. Must be signed before any production AI deployment. Legal must review. This is the constitution for all AI activity at the organisation.
 
@@ -1818,7 +1818,7 @@ Required document. Must be signed before any production AI deployment. Legal mus
 |Governance|Safety Incidents in Period|0|___|0|↑↓→|
 |Governance|Bias Audit Status|N/A|___|Passed|↑↓→|
 
-#### **8.4 AI Vendor Evaluation Scorecard**
+#### 8.4 AI Vendor Evaluation Scorecard
 
 Use when evaluating LLM providers, vector DB vendors, observability platforms. Score 1–5. Weight reflects enterprise AI priorities.
 

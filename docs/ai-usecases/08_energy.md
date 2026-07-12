@@ -9,11 +9,9 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Case Study**
+# Case Study
 
 Cascadia Power & Light — Substation Predictive Maintenance & Grid Operations Advisory Platform
-
-Confidential Internal Engagement Documentation
 
 Engagement Period: April 2025 – February 2026
 
@@ -58,7 +56,7 @@ Engagement Period: April 2025 – February 2026
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# **1. Executive Summary**
+# 1. Executive Summary
 
 Cascadia Power & Light (CPL), a regional electric utility serving 1.1 million customers across a mixed urban-rural territory, engaged an Enterprise AI Architecture team to build a predictive maintenance and grid operations advisory platform for its transmission and distribution substation fleet. The mandate: reduce unplanned substation equipment failures, which had contributed to two significant customer-facing outages in the prior eighteen months, without introducing any AI-driven authority over the operational technology (OT) systems — SCADA (Supervisory Control and Data Acquisition) and protective relay systems — that directly control grid equipment.
 
@@ -68,19 +66,19 @@ A significant near-miss occurred in Month 7: the operations-advisory copilot, du
 
 Key outcomes: - Unplanned substation equipment failures reduced by 27% on monitored assets over eight months of production operation - Grid operator situational-awareness copilot reduced abnormal-condition assessment time by an average of 35% during non-routine events - One material near-miss (Month 7) involving a recommendation that conflicted with protective relay logic, caught by existing human verification process before any equipment operation, triggering advisory-output redesign - Zero instances of the AI platform issuing any command, directly or indirectly, into the OT/SCADA environment — the air-gap architecture held throughout the engagement
 
-# **2. Client Background**
+# 2. Client Background
 
 Cascadia Power & Light operates 44 transmission and distribution substations across a service territory spanning dense urban load centers and sparser rural distribution networks, with aging infrastructure at a meaningful share of substations — several transformers and switchgear assets were approaching or past their originally rated service life, a known risk CPL’s asset management team had been managing conservatively but reactively.
 
 CPL’s VP of Grid Operations, Marcus Delgado, and Chief Information Security Officer, Dr. Patricia Nwosu (whose role included oversight of NERC CIP compliance, a regulatory framework with real enforcement teeth including significant financial penalties for violations), co-sponsored the engagement. CPL’s Grid Operations Center (GOC) is staffed 24/7 by NERC-certified system operators whose authority over switching operations is itself tightly regulated and auditable, independent of any AI system.
 
-# **3. Business Problem**
+# 3. Business Problem
 
 **Reactive maintenance.** CPL’s substation maintenance program was primarily time-based (scheduled intervals) and reactive (responding to alarms or failures) rather than condition-based. Discovery found CPL had sensor data — dissolved gas analysis for transformers, partial discharge monitoring for switchgear — being collected but not systematically analyzed for early-warning patterns, similar in spirit to the aviation engagement’s fragmentedtelemetry problem but with materially different regulatory and OT-boundary constraints given the electric grid’s critical-infrastructure status.
 
 **Operator situational awareness during abnormal conditions.** When a fault or abnormal condition occurred, grid operators in the GOC needed to rapidly assess the situation — which protective devices had operated, what the likely fault location and cause were, what switching sequence would safely restore service — under time pressure and, during major events, high cognitive load managing multiple simultaneous abnormal conditions. This assessment currently relied entirely on operator training and experience plus static, printed switching procedures, without any dynamic decision-support tooling.
 
-# **4. Constraints**
+# 4. Constraints
 
 1. **NERC CIP compliance and IT/OT separation.** This was the most consequential constraint of the engagement. NERC CIP standards, with real regulatory enforcement and financial penalty exposure, require strict security controls around Bulk Electric System cyber assets. CISO Nwosu’s non-negotiable position, established in Week 1 and never relaxed: the AI platform would have **read-only** access to OT data via a unidirectional data diode, with **zero** capability, direct or indirect, to write any command, configuration, or signal back into the OT/SCADA environment.
 
@@ -94,9 +92,9 @@ CPL’s VP of Grid Operations, Marcus Delgado, and Chief Information Security Of
 
 6. **Budget and asset-criticality prioritization.** CPL’s board approved a budget sufficient for full sensor and monitoring coverage at roughly 60% of the substation fleet in year one, requiring an explicit, risk-based prioritization of which substations received full instrumentation first.
 
-# **5. Discovery Transcript**
+# 5. Discovery Transcript
 
-## **5.1 Kickoff — Week 1**
+## 5.1 Kickoff — Week 1
 
 *Present: Marcus Delgado (VP Grid Operations), Dr. Patricia Nwosu (CISO/NERC CIP oversight), GOC Operations Manager (Janet Okonkwo), the Enterprise AI Architect (EAA).*
 
@@ -112,7 +110,7 @@ CPL’s VP of Grid Operations, Marcus Delgado, and Chief Information Security Of
 
 **EAA:** That’s a critical framing, and it’s a different shape of risk than the boundary Dr. Nwosu just established — that’s about output *quality and trustworthiness* under time pressure, not about system *authority* . I want to hold both as first-class design constraints: absolute IT/OT separation on the authority question, and a design discipline around cognitive load and trustworthy presentation on the advisory-quality question. I’ll say directly, because I think it matters given what we’ll discuss later in this engagement: getting the second one right is genuinely harder and more subtle than the first, precisely because there’s no simple hardware-enforced boundary that guarantees it.
 
-## **5.2 Substation Engineering Shadowing — Week 3**
+## 5.2 Substation Engineering Shadowing — Week 3
 
 **Senior Substation Engineer (Robert Nguyen):** [reviewing historical failure data] This transformer failure eighteen months ago — in hindsight, the dissolved gas analysis showed a slowly rising acetylene trend for months before failure. Classic sign of arcing. Nobody was systematically looking at the trend, because it lived in a vendor portal separate from our maintenance scheduling system, and periodic manual review didn’t catch the slow trend against normal sample-to-sample noise.
 
@@ -122,7 +120,7 @@ CPL’s VP of Grid Operations, Marcus Delgado, and Chief Information Security Of
 
 This session directly shaped the predictive-maintenance model’s emphasis on **trend-based, not thresholdbased, anomaly detection** (Section 6.2) — a design choice distinct from a simpler alerting system, motivated by this specific historical failure’s root-cause pattern.
 
-## **5.3 GOC Operator Shadowing — Week 4**
+## 5.3 GOC Operator Shadowing — Week 4
 
 **System Operator (Diane Fischer), during a training simulation of a transformer fault scenario:** When something like this happens for real, I need to quickly understand: what protective devices operated, is the fault cleared, what’s still energized, what’s de-energized, and what’s the safe sequence to restore service to unaffected customers while maintenance addresses the fault. Right now that’s me and a paper switching procedure book, cross-referencing a one-line diagram, under real time pressure if it’s an actual event affecting customers.
 
@@ -132,7 +130,7 @@ This session directly shaped the predictive-maintenance model’s emphasis on **
 
 This existing verification discipline — checking any proposed switching sequence against the protective device coordination study before execution — is the control that proved decisive in the Month 7 incident, described in Section 14.
 
-## **5.4 Capability Mapping and ROI — Week 5**
+## 5.4 Capability Mapping and ROI — Week 5
 
 |**Capability**|**Current State**|**AI Opportunity**|**Impact**|**Feasibility**|
 |---|---|---|---|---|
@@ -142,9 +140,9 @@ This existing verification discipline — checking any proposed switching sequen
 |Load forecasting|Existing separate<br>function|Out of scope — mature<br>function, different team|Low|N/A|
 |Vegetation<br>management / physical<br>asset inspection|Manual/drone-assisted,<br>separate program|Deferred — different<br>data modality, separate<br>scoping needed|Medium|Low (this engagement)|
 
-# **6. Architecture Workshops**
+# 6. Architecture Workshops
 
-## **6.1 IT/OT Boundary Architecture**
+## 6.1 IT/OT Boundary Architecture
 
 This is the section that received the most sustained architectural attention of the entire engagement, reflecting its centrality to CPL’s risk tolerance.
 
@@ -160,7 +158,7 @@ This is the section that received the most sustained architectural attention of 
 
 **EAA:** Agreed, and I’d recommend building that external assessment into the delivery roadmap as a hard gate, not a parallel-track nice-to-have.
 
-## **6.2 AI/Platform Architecture — Whiteboard Session, Week 9**
+## 6.2 AI/Platform Architecture — Whiteboard Session, Week 9
 
 **Platform Architect (Sam Ito):** Walk through the predictive-maintenance model’s design, given the Nguyen shadowing finding about trend detection.
 
@@ -176,7 +174,7 @@ This is the section that received the most sustained architectural attention of 
 
 electrically de-energized given known breaker states — combined with an LLM-based reasoning layer that drafts the natural-language situational summary and candidate restoration narrative. The deterministic topology computation should be the ground truth for “what’s energized,” with the LLM layer only responsible for presentation and candidate-sequencing suggestions, not for the underlying electrical-state determination itself.
 
-## **6.3 Edge & Data Architecture**
+## 6.3 Edge & Data Architecture
 
 - IT-side time-series data platform, ingesting sensor and protective-relay-event data via the unidirectional data diode from each substation’s OT-resident historian
 
@@ -186,7 +184,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 - LLM-based Operations-Advisory Agent, consuming the topology engine’s deterministic output plus historical fault-pattern data, producing situational summaries and candidate restoration sequences for operator review — never positioned as validated or execution-ready
 
-## **6.4 Integration & API Strategy**
+## 6.4 Integration & API Strategy
 
 - MCP server exposing the topology engine and historical fault-pattern database as tools consumed by the Operations-Advisory Agent, with the topology engine’s electrical-state output treated as authoritative and never overridden or second-guessed by the LLM layer’s own reasoning
 
@@ -194,9 +192,9 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 - No integration pathway, direct or transitive, into SCADA or protective relay configuration systems — a constraint verified through the external NERC CIP assessment (Section 6.1)
 
-# **7. Technical Debates**
+# 7. Technical Debates
 
-## **7.1 Prioritization Under Budget Constraint — Which Substations Get Full Instrumentation First?**
+## 7.1 Prioritization Under Budget Constraint — Which Substations Get Full Instrumentation First?
 
 **Delgado (Week 12):** Given the 60%-of-fleet budget constraint from discovery, how do we decide which substations get full sensor coverage in year one?
 
@@ -206,7 +204,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 **EAA:** Agreed, and I’d recommend that regardless of how good our proposed framework is — the actual riskweighting judgments should be owned by the people with deep institutional knowledge of this specific fleet, with our role being to help structure and operationalize that judgment into a repeatable process, not to substitute our own external judgment for theirs.
 
-## **7.2 Should the Advisory Copilot Ever Auto-Notify Field Crews?**
+## 7.2 Should the Advisory Copilot Ever Auto-Notify Field Crews?
 
 **Okonkwo (Week 16):** Once the copilot identifies a likely fault location, could it directly notify the relevant field crew dispatch system, saving the operator a manual step?
 
@@ -214,7 +212,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 **Okonkwo:** That’s consistent with how I’d want it to work regardless of the AI question — dispatch decisions during an active event are exactly the kind of judgment call that shouldn’t be delegated to any automated trigger.
 
-## **7.3 Evaluation Strategy Debate**
+## 7.3 Evaluation Strategy Debate
 
 **Nguyen:** For the predictive-maintenance model, how do we validate it’s actually catching the kind of slow-trend pattern that caused our historical failure, not just performing well on easy, obvious cases?
 
@@ -224,9 +222,9 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 **EAA:** That’s exactly the right level of engagement for this validation, and I’d build the retrospective analysis to support that case-by-case review, not just aggregate metrics.
 
-# **8. Executive Reviews**
+# 8. Executive Reviews
 
-## **8.1 External NERC CIP Compliance Assessment — Week 22**
+## 8.1 External NERC CIP Compliance Assessment — Week 22
 
 **External Assessor (independent firm engaged by Nwosu’s office):** I’ve reviewed the data diode architecture and the platform’s integration boundary. My finding: the unidirectional hardware boundary is sound and meets NERC CIP separation requirements as designed. I have one recommendation, not a finding of deficiency: I’d want documented, auditable evidence of the diode’s continued unidirectional operation over time, not just a point-intime architectural review, given how much regulatory weight rests on this boundary holding.
 
@@ -234,7 +232,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 **Nwosu:** Approved, and I want that written into the operational runbook as a standing compliance requirement, not left to institutional memory.
 
-## **8.2 VP Grid Operations Review — Week 28**
+## 8.2 VP Grid Operations Review — Week 28
 
 **Delgado:** Retrospective validation results on the predictive-maintenance model — would it have caught Nguyen’s historical failure case?
 
@@ -242,7 +240,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 **Delgado:** That calibration is appreciated — I’ve seen vendors oversell a single good demo case before.
 
-## **8.3 Post-Incident Executive Review — Week 33 (see Section 14)**
+## 8.3 Post-Incident Executive Review — Week 33 (see Section 14)
 
 **Nwosu:** I want to confirm first, unambiguously: did the IT/OT boundary hold? Was there any pathway by which the flawed recommendation could have resulted in an actual OT-side action?
 
@@ -252,7 +250,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 **EAA:** Correct, and I’d say this incident is a fairly direct validation of your instinct in Week 1 that the second risk category would prove genuinely harder to get right than the first — the hardware-enforced boundary worked exactly as designed; the harder, softer problem of ensuring an operator can quickly and correctly understand a recommendation’s relationship to protective-system constraints is where the actual gap was.
 
-# **9. Final Architecture**
+# 9. Final Architecture
 
 - **Unidirectional Data Diode** : hardware-enforced, physically one-way OT-to-IT data flow, externally NERC CIP-assessed, with standing quarterly re-verification requirement
 
@@ -266,7 +264,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 
 - No integration pathway, direct or transitive, into SCADA, protective relay configuration, or any OT command surface
 
-# **10. Delivery Roadmap**
+# 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -278,7 +276,7 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 |Incident & Remediation|Month 7|Protective-relay-conflict near-miss,<br>advisory redesign|
 |Phase 2 Rollout|Months 8–10|Remaining Phase 1 budget-scoped<br>substations|
 
-# **11. Risks**
+# 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -288,23 +286,23 @@ electrically de-energized given known breaker states — combined with an LLM-ba
 |Instrumentation-<br>coverage gap (40% of<br>fleet unmonitored in<br>year one)|Medium|Medium|Risk-based prioritization<br>framework, explicit<br>board-level<br>acknowledgment of<br>coverage gap|VP Grid Operations|
 |Operator over-reliance<br>on advisory copilot<br>under time pressure|Medium|High|Output design explicitly<br>framed as<br>candidate/informational;<br>training emphasizing<br>mandatory independent<br>verification|GOC Operations<br>Manager|
 
-# **12. Governance Model**
+# 12. Governance Model
 
 - **Absolute IT/OT authority separation** : non-negotiable, externally assessed, quarterly re-verified — the single most consequential and consistently maintained governance principle of the engagement **NERC-certified operator authority preserved** : no AI output may bypass or be positioned as a substitute for certified-operator switching-execution authority **Standing external compliance assessment cadence** : annual external NERC CIP re-assessment of the platform’s boundary architecture, in addition to the quarterly technical diode re-verification **Post-incident advisory-output governance addition** : mandatory explicit surfacing of protective-devicecoordination constraints in any candidate restoration-sequence output, reviewed and approved by Substation Engineering before the redesigned output format’s production deployment
 
-# **13. Production Rollout**
+# 13. Production Rollout
 
 Phase 1 rollout (Month 6) covered approximately 25 substations selected via the risk-based prioritization framework (Section 7.1), with the predictive-maintenance model operating in a monitored, human-reviewed mode from the start — no maintenance work order was ever automatically generated without engineering review, consistent with the architecture’s design. The Month 7 incident occurred during this Phase 1 period, during a genuine (not simulated) transformer fault event.
 
-# **14. Production Incident — Month 7**
+# 14. Production Incident — Month 7
 
-## **14.1 Incident Summary**
+## 14.1 Incident Summary
 
 During a real transformer fault at one of the Phase 1 substations, the on-shift system operator used the Operations-Advisory Agent to help assess the situation and requested a candidate restoration sequence. The agent’s topology-engine-grounded assessment of “what’s de-energized” was correct. However, the LLM-based candidate-restoration-sequence narrative proposed a switching order that, while it would have correctly restored service to unaffected customers from a pure electrical-topology standpoint, did not account for a specific protective-device-coordination requirement at that substation — a timing/sequencing constraint arising from how that substation’s specific protective relay settings were configured, information that existed in CPL’s protective device coordination study but was not represented in the topology engine’s data model (which tracked breaker states and electrical connectivity, not protective-relay timing/coordination logic).
 
 Per the discipline Fischer described in discovery (Section 5.3), the on-shift operator checked the candidate sequence against the substation’s protective device coordination study before taking any action, as standard practice independent of this AI platform — and identified the conflict before any switching operation was executed. No equipment was operated based on the flawed recommendation.
 
-## **14.2 Incident Response Transcript**
+## 14.2 Incident Response Transcript
 
 **Delgado (emergency session, within 6 hours):** Walk me through exactly what the topology engine knew and didn’t know.
 
@@ -320,13 +318,13 @@ Per the discipline Fischer described in discovery (Section 5.3), the on-shift op
 
 **Delgado:** I’m pausing the advisory copilot’s restoration-sequence-suggestion capability — the situationalawareness summary capability can continue, that wasn’t implicated — until the protective-device-coordination data gap is closed and independently reviewed by Substation Engineering.
 
-## **14.3 Remediation**
+## 14.3 Remediation
 
 The topology engine’s data model was extended to incorporate protective device coordination study data as structured, queryable ground truth, alongside the existing electrical-connectivity and breaker-state data — meaning any future candidate restoration sequence is checked against both electrical topology and protectivecoordination constraints before being presented, with any sequence that would violate a coordination constraint
 
 flagged explicitly and prominently, not silently omitted or buried in prose. Substation Engineering (Nguyen’s team) reviewed and approved the redesigned data model and output format before the restoration-sequencesuggestion capability resumed, and the review explicitly checked the new design against the same historical faultevent data used in the Section 8.2 retrospective validation, extended to specifically test for protectivecoordination-conflict scenarios.
 
-# **15. Lessons Learned**
+# 15. Lessons Learned
 
 1. **A deterministic “ground truth” data model is only as trustworthy as its completeness — modeling electrical topology accurately while omitting a related but distinct engineering domain (protective device coordination) created a gap that looked, from the system’s own internal logic, like a fully grounded recommendation.** This reinforced a principle from other regulated engagements — deterministic backstops are valuable precisely because they’re verifiable and complete, but “deterministic” doesn’t automatically mean “complete,” and the completeness of what’s modeled needs the same rigorous scrutiny as the correctness of what is modeled.
 
@@ -334,7 +332,7 @@ flagged explicitly and prominently, not silently omitted or buried in prose. Sub
 
 3. **A well-trained, disciplined human operator following an existing verification practice — one that predated and was independent of this AI platform — was the actual safeguard that prevented harm, consistent with a pattern seen across multiple engagements in different regulated domains.** The postmortem was explicit and unambiguous in crediting Fischer’s discovery-session-described discipline and Okonkwo’s insistence on preserving it, rather than any property of the AI system itself, as the reason this remained a near-miss. This reinforced CPL’s decision, made in Week 1 and never revisited, to treat operator verification as a permanent, non-negotiable feature of the system’s use, not a training-wheel measure to be relaxed as trust in the AI system grew.
 
-# **16. Enterprise Architecture Artifacts**
+# 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : predictive maintenance and operations-advisory value chains with AI-opportunity overlay (Section 5.4)
 
@@ -344,7 +342,7 @@ flagged explicitly and prominently, not silently omitted or buried in prose. Sub
 
 - **Topology Engine Data Model Specification** , including the post-incident extension incorporating protective device coordination data as a documented example of deliberate ground-truth-completeness review
 
-# **17. Architecture Decision Records (ADRs)**
+# 17. Architecture Decision Records (ADRs)
 
 **ADR-001: Absolute unidirectional IT/OT data-flow boundary via hardware data diode; zero pathway, direct or transitive, for AI-platform output to reach OT/SCADA/protective-relay systems.** Status: Accepted, foundational, non-negotiable per CISO mandate. Externally validated by independent NERC CIP assessment.
 
@@ -360,13 +358,13 @@ flagged explicitly and prominently, not silently omitted or buried in prose. Sub
 
 **ADR-007 (compliance governance): Quarterly technical re-verification of data diode unidirectional operation, retained as standing NERC CIP compliance evidence.** Status: Accepted, per external assessor recommendation (Section 8.1).
 
-# **18. AI Evaluation Strategy**
+# 18. AI Evaluation Strategy
 
 - **Predictive maintenance retrospective validation** : model run against full historical sensor data preceding every documented past equipment failure, checked case-by-case (not just aggregate accuracy) for lead-timeto-flag, with Substation Engineering directly reviewing results per Nguyen’s Week 20 requirement **Trend-detection sensitivity** : specifically validated against slow-developing-trend patterns (the historical failure-mode class identified in discovery), distinct from and in addition to sudden-anomaly detection performance
 
 - **Topology engine completeness review** (post-incident addition): standing requirement to review the ground-truth data model’s completeness against relevant engineering domains (electrical topology, protective coordination, and any future domain added) whenever the advisory agent’s capability scope expands, not just its accuracy within the currently modeled domains **Advisory output clarity testing** : post-incident addition — structured review, involving GOC operators, of whether candidate-sequence output clearly and prominently surfaces any flagged constraint conflicts, not just whether the underlying data model correctly detects them
 
-# **19. Operational Runbook**
+# 19. Operational Runbook
 
 - **Quarterly data diode re-verification procedure** : standing NERC CIP compliance requirement, documented and evidence-retained per ADR-007
 
@@ -374,7 +372,7 @@ flagged explicitly and prominently, not silently omitted or buried in prose. Sub
 
 - **Annual external NERC CIP re-assessment** : standing requirement, building on the Week 22 initial assessment, for the full boundary architecture
 
-# **20. Future Roadmap**
+# 20. Future Roadmap
 
 1. **Phase 2/3 sensor-coverage expansion** toward the remaining substation fleet, contingent on continued budget approval and informed by Phase 1’s actual observed failure-prevention value as it accumulates evidence for the board.
 

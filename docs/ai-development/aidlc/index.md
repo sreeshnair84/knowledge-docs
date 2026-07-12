@@ -27,7 +27,7 @@ Frameworks and artifacts for integrating AI into enterprise development lifecycl
 
 - [EA AIDLC Deep Research 2026](/knowledge-docs/ai-development/aidlc/EA_AIDLC_Deep_Research_2026)
 
-- [EA Lifecycle Artifact Templates 2026](/knowledge-docs/ai-development/aidlc/EA_Lifecycle_Artifact_Templates_2026)
+- [EA Lifecycle Artifact Templates](/knowledge-docs/enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) *(lives in Enterprise Architecture → Process)*
 
 ---
 

@@ -9,11 +9,9 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Case Study**
+# Case Study
 
 Ironhaven Industrial — Agentic Quality Control & Supply Disruption Response Platform
-
-Confidential Internal Engagement Documentation
 
 Engagement Period: February 2025 – December 2025
 
@@ -67,7 +65,7 @@ Engagement Period: February 2025 – December 2025
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# **1. Executive Summary**
+# 1. Executive Summary
 
 Ironhaven Industrial, a heavy-equipment manufacturer operating six factories across three countries, engaged an Enterprise AI Architecture team to build an agentic platform spanning two shop-floor problems: real-time qualitycontrol triage on production lines, and rapid response to supply-chain disruptions affecting just-in-time component delivery.
 
@@ -77,19 +75,19 @@ A significant production incident occurred in Month 6: the quality-control agent
 
 Key outcomes: - Defect escape rate (defects reaching the next production stage undetected) reduced by 34% on lines with full deployment - Mean time to production-schedule-adjustment recommendation after a supply disruption event reduced from approximately 1.5 days (manual planning cycle) to under 2 hours - One Class B production incident (unplanned 3-hour line stoppage, no safety impact, no shipped-product impact) triggering a mandatory per-line shadow-deployment and calibration governance process - Avoided cost from the false-positive incident’s root-cause fix estimated to prevent a recurring class of miscalibration issues worth an estimated $600K annually across all six factories once fully rolled out
 
-# **2. Client Background**
+# 2. Client Background
 
 Ironhaven Industrial manufactures hydraulic and material-handling equipment for construction and agriculture, operating six factories: two in the U.S. Midwest, one in Mexico, two in Germany, and one in Poland. The company runs lean, just-in-time manufacturing with a deep supplier network — a single-tier supplier disruption could halt a production line within 36 to 48 hours given minimal buffer inventory, a deliberate cost-efficiency choice that also created fragility Ironhaven’s leadership had grown increasingly uncomfortable with after two supplier disruptions in the preceding year.
 
 Ironhaven’s VP of Manufacturing Operations, Klaus Reiner, and Chief Digital Officer, Aisha Bello (hired 18 months prior specifically to modernize the company’s largely on-premises, plant-siloed technology estate), co-sponsored the engagement. Each factory ran its own MES instance with meaningful configuration variance between plants — a legacy of decentralized IT decisions predating Bello’s arrival — which became a persistent architectural constraint throughout the engagement.
 
-# **3. Business Problem**
+# 3. Business Problem
 
 **Quality control.** Existing machine-vision inspection systems on Ironhaven’s lines used older rules-based image processing that generated a high false-positive rate, leading line supervisors to habitually override alerts — which meant genuine defects were sometimes also being waved through by workers desensitized to false alarms. Discovery found this “alarm fatigue” pattern was a bigger driver of the defect-escape problem than the underlying detection technology’s raw accuracy.
 
 **Supply disruption response.** When a supplier shipment was delayed or a received batch failed incoming quality inspection, production planners manually reworked the affected line’s schedule — determining which work orders could proceed with substitute components, which needed to be pushed back, and how the change cascaded through downstream assembly stages. This process took, on average, a day and a half, during which the line often ran at reduced efficiency or sat idle waiting for a plan.
 
-# **4. Constraints**
+# 4. Constraints
 
 1. **Edge/latency requirements.** Quality-control decisions had to happen within the production line’s cycle time — for the fastest lines, under 800 milliseconds per inspection point — ruling out any architecture dependent on round-trip cloud inference for the core defect-detection decision.
 
@@ -103,9 +101,9 @@ Ironhaven’s VP of Manufacturing Operations, Klaus Reiner, and Chief Digital Of
 
 6. **Multi-currency, multi-supplier ERP complexity.** The corporate ERP (SAP) held supplier and inventory data with plant-specific customizations that had accumulated over years, requiring careful, plant-by-plant integration rather than a single uniform connector.
 
-# **5. Discovery Transcript**
+# 5. Discovery Transcript
 
-## **5.1 Kickoff — Week 1**
+## 5.1 Kickoff — Week 1
 
 *Present: Klaus Reiner (VP Manufacturing Ops), Aisha Bello (CDO), Plant Manager from the pilot facility (Ohio), the Enterprise AI Architect (EAA).*
 
@@ -121,7 +119,7 @@ Ironhaven’s VP of Manufacturing Operations, Klaus Reiner, and Chief Digital Of
 
 **EAA:** That’s exactly the kind of constraint I want on the table now rather than discovered during rollout to plant four. I’d propose per-line calibration as a mandatory step before any line goes live, not an optional tuning phase — we’ll come back to this in the architecture discussion, but I want to flag it here because it directly shapes the rollout roadmap and, frankly, the timeline expectations I’d set with your board.
 
-## **5.2 Shop Floor Shadowing — Week 2, Ohio Plant**
+## 5.2 Shop Floor Shadowing — Week 2, Ohio Plant
 
 **Line Supervisor (Danny Okafor):** [gesturing at a hydraulic cylinder housing] See this surface mark? Current system flags this every time, calls it a defect. It’s cosmetic, doesn’t affect function, customer spec allows it. But it looks visually similar to an actual crack defect to the old rules-based system.
 
@@ -131,7 +129,7 @@ Ironhaven’s VP of Manufacturing Operations, Klaus Reiner, and Chief Digital Of
 
 This session was pivotal — it clarified that the false-positive problem wasn’t primarily a raw detection-accuracy issue but a **discrimination problem between visually similar defect classes** , which shaped the decision (Section 6.2) to build a fine-grained, part-family-specific classification model rather than a generic defect/nodefect binary classifier, and to incorporate supervisor override feedback as active training signal.
 
-## **5.3 Supply Chain Planning Shadowing — Week 3**
+## 5.3 Supply Chain Planning Shadowing — Week 3
 
 **Production Planner (Elena Fischer, German facility):** When we get a supplier quality hold notice, I have to figure out: which work orders on this week’s schedule need this specific component lot, do we have substituteeligible inventory from a different supplier, and if not, what’s the least-bad way to resequence the line. I’m doing this in a spreadsheet, cross-referencing SAP data I export manually because our MES and SAP don’t talk to each other in real time.
 
@@ -141,7 +139,7 @@ This session was pivotal — it clarified that the false-positive problem wasn�
 
 This added a previously unscoped integration requirement — checking substitute-component engineeringapproval status — directly into the supply-disruption agent’s design (Section 6.4), an example of discovery surfacing a dependency the original RFP hadn’t captured.
 
-## **5.4 Capability Mapping and ROI — Week 4**
+## 5.4 Capability Mapping and ROI — Week 4
 
 |**Capability**|**Current State**|**AI Opportunity**|**Impact**|**Feasibility**|
 |---|---|---|---|---|
@@ -154,9 +152,9 @@ This added a previously unscoped integration requirement — checking substitute
 
 **Bello:** Agreed — and that’s useful ammunition for the supplier-relationship conversations we need to have anyway.
 
-# **6. Architecture Workshops**
+# 6. Architecture Workshops
 
-## **6.1 Business & Information Architecture**
+## 6.1 Business & Information Architecture
 
 The engagement organized around two domains, deliberately kept loosely coupled given their different latency and criticality profiles:
 
@@ -164,7 +162,7 @@ The engagement organized around two domains, deliberately kept loosely coupled g
 
 - **Supply Chain Recovery Domain** : cloud-based reasoning, less latency-sensitive, cross-plant and ERPintegrated
 
-## **6.2 AI/Platform Architecture — Whiteboard Session, Week 8**
+## 6.2 AI/Platform Architecture — Whiteboard Session, Week 8
 
 **Platform Architect (Sam Ito):** Walk through the quality-control decision path end to end.
 
@@ -178,7 +176,7 @@ The engagement organized around two domains, deliberately kept loosely coupled g
 
 **EAA:** Correct, deliberately — that would add latency and cost with no accuracy benefit for what’s fundamentally a well-suited traditional computer-vision problem. Using the right tool for each part of this platform matters more than a uniform architecture story.
 
-## **6.3 Edge & Cloud Architecture**
+## 6.3 Edge & Cloud Architecture
 
 - Edge inference appliances (co-located with existing camera hardware) at each production line, running the fine-grained classification model with per-line calibration profiles (Section 7.2)
 
@@ -188,7 +186,7 @@ The engagement organized around two domains, deliberately kept loosely coupled g
 
 - Given the Poland facility’s less reliable connectivity (Section 4), the edge quality-control path was designed to function fully offline for the core inspection decision, with calibration-profile updates and overridefeedback sync happening asynchronously whenever connectivity was available — a resilience requirement that shaped the whole edge architecture, not an afterthought
 
-## **6.4 Integration & API Strategy**
+## 6.4 Integration & API Strategy
 
 - MCP server exposing MES query tools (work order lookup, disposition-rule lookup) and ERP query tools (inventory, supplier data, engineering-approval status per the Week 3 finding) consumed by both the postinspection orchestration agent and the Supply Chain Recovery agent
 
@@ -198,9 +196,9 @@ The engagement organized around two domains, deliberately kept loosely coupled g
 
 Event-driven architecture (Kafka) for supply-disruption event detection — supplier quality hold notices, shipment delay alerts — triggering the Recovery agent’s planning workflow
 
-# **7. Technical Debates**
+# 7. Technical Debates
 
-## **7.1 Build vs. Buy for the Vision Model**
+## 7.1 Build vs. Buy for the Vision Model
 
 **ML Engineer (Devon Park):** There are commercial defect-detection platforms we could license instead of building a custom model. Why build?
 
@@ -210,7 +208,7 @@ Event-driven architecture (Kafka) for supply-disruption event detection — supp
 
 **EAA:** It is, and it’s the right tradeoff here specifically because calibration and explainability are the actual value driver, not a nice-to-have — a platform we can’t finely control on those dimensions would reproduce the exact trust failure that killed the two prior vendor tools.
 
-## **7.2 Per-Line Calibration — How Much Is Enough?**
+## 7.2 Per-Line Calibration — How Much Is Enough?
 
 **Reiner (Week 10):** Every additional per-line calibration step adds time before a new line can go live. What’s the minimum viable calibration process?
 
@@ -222,7 +220,7 @@ Event-driven architecture (Kafka) for supply-disruption event detection — supp
 
 This exact debate became directly relevant five months later — see Section 14.
 
-## **7.3 Supply Chain Recovery Agent — How Much Autonomy?**
+## 7.3 Supply Chain Recovery Agent — How Much Autonomy?
 
 **Fischer (production planner, Week 16):** Could the Recovery agent just auto-approve schedule changes below some impact threshold, similar to what I’ve heard other industries do with low-risk automated approvals?
 
@@ -234,9 +232,9 @@ This became ADR-008, a deliberate, risk-tiered autonomy design distinct from the
 
 decision.
 
-# **8. Executive Reviews**
+# 8. Executive Reviews
 
-## **8.1 Works Council Consultation — Week 12 (Germany facilities)**
+## 8.1 Works Council Consultation — Week 12 (Germany facilities)
 
 Per the constraint noted in Section 4, formal works council consultation was required before deployment planning could proceed at the German plants.
 
@@ -250,7 +248,7 @@ Per the constraint noted in Section 4, formal works council consultation was req
 
 This consultation added roughly five weeks to the German-facility rollout timeline relative to the U.S. and Mexico plants, planned for explicitly rather than treated as a delay to route around.
 
-## **8.2 CDO/Board Technology Review — Week 20**
+## 8.2 CDO/Board Technology Review — Week 20
 
 **Bello:** The board’s question is going to be about ROI timeline versus the two prior failed vendor attempts. What’s different this time?
 
@@ -260,13 +258,13 @@ This consultation added roughly five weeks to the German-facility rollout timeli
 
 **EAA:** Then that line doesn’t go live until it is, even if that’s later than the target date. I’d rather tell you that honestly now than have a plant manager quietly stop using an unreliable system the way happened with the prior vendors.
 
-# **9. Final Architecture**
+# 9. Final Architecture
 
 **Shop Floor Quality Domain** - Edge inference appliances at each production line running a fine-grained, partfamily-specific defect classification model with per-line calibration profiles - Calibrated confidence scoring and visual explanation (highlighted region, nearest-exemplar match) surfaced directly to line supervisors - Postinspection orchestration agent querying MES for work-order context and known disposition rules, pre-populating supervisor decisions - Supervisor-override feedback pipeline (worker-identity-excluded by schema design per ADR007) feeding continuous model recalibration - Kubernetes/GitOps-managed edge fleet deployment, offline-tolerant for the core inspection decision (Poland facility resilience requirement)
 
 **Supply Chain Recovery Domain** - Kafka-based disruption-event detection (supplier quality holds, shipment delays) - Cloud-based (Azure) LLM orchestrator reasoning over substitution eligibility (engineering-approvalaware), schedule cascade impact, and multi-constraint tradeoffs - Risk-tiered autonomy (ADR-008): low-risk, single-line sequencing changes may auto-apply with notification and audit logging; any change involving engineering-approval-required substitutions or customer-commitment impact requires human planner approval
 
-# **10. Delivery Roadmap**
+# 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -279,7 +277,7 @@ This consultation added roughly five weeks to the German-facility rollout timeli
 |Germany Facilities Rollout|Months 9–11|Post works-council sign-off|
 |Poland Facility Rollout|Month 11–12|Offline-tolerant edge deployment<br>validation|
 
-# **11. Risks**
+# 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -289,23 +287,23 @@ This consultation added roughly five weeks to the German-facility rollout timeli
 |Recovery agent over-<br>application of low-risk<br>auto-approval|Low|Medium|Full audit logging,<br>monthly review, easy<br>rollback per ADR-008|Manufacturing<br>Operations|
 |Heterogeneous plant IT<br>integration cost<br>overrun|Medium|Medium|Plant-by-plant adapter<br>budget planned<br>explicitly from<br>discovery, not assumed<br>uniform|Platform Architecture|
 
-# **12. Governance Model**
+# 12. Governance Model
 
 - **Per-line go-live gate** : mandatory shadow deployment and line-supervisor sign-off, formalized after the Month 6 incident as a non-negotiable governance step rather than a recommended best practice **Data schema governance** : worker-identity exclusion from override-feedback data enforced at the schema level, subject to works council review rights on any schema change **Risk-tiered change approval** for the Recovery agent’s autonomous-action scope (ADR-008), reviewed monthly, with Manufacturing Operations holding rollback authority **Cross-plant model governance** : any change to the core classification model architecture (not per-line calibration, which is routine) requires sign-off from Manufacturing Operations leadership across all affected plants, not just the originating plant
 
-# **13. Production Rollout**
+# 13. Production Rollout
 
 The Ohio pilot line reached general availability in Month 5 following successful shadow deployment. The second Ohio line began its shadow-deployment period in Month 6 — this is the line where the Month 6 incident occurred, during what was intended to be the validation phase specifically designed to catch exactly this class of problem before go-live.
 
-# **14. Production Incident — Month 6**
+# 14. Production Incident — Month 6
 
-## **14.1 Incident Summary**
+## 14.1 Incident Summary
 
 The second Ohio production line, in week two of its planned shadow-deployment period (per the Section 7.2 governance requirement), was inadvertently switched from shadow mode to live/actionable mode a day earlier than planned due to a deployment configuration error — a GitOps manifest intended for a staging update was mistakenly applied with the production-actionable flag already set, rather than the shadow-only flag that should have applied during the remaining validation week.
 
 The line’s lighting conditions differed meaningfully from Line 1 (a different section of the factory with different overhead lighting and a partially reflective floor surface not present on Line 1), which the model’s calibration profile had not yet been tuned for — this was precisely the gap the remaining week of shadow deployment was intended to surface and correct before go-live. The model began flagging a high rate of false-positive defects driven by lighting-induced visual artifacts it misclassified as surface defects. The line halted automatically per the post-inspection orchestration agent’s disposition logic (a high-confidence “critical defect” classification triggered an automatic hold pending supervisor review — itself a deliberate design choice, not a malfunction) for approximately three hours until the floor supervisor identified the pattern as environmental miscalibration rather than genuine defects and manually overrode the model’s holds while calibration was corrected.
 
-## **14.2 Incident Response Transcript**
+## 14.2 Incident Response Transcript
 
 **Reiner (emergency session, within 4 hours):** How did this line go live a week before its shadow-deployment period was supposed to end?
 
@@ -321,11 +319,11 @@ The line’s lighting conditions differed meaningfully from Line 1 (a different 
 
 **Reiner:** I want that fix before any other line’s shadow-to-live transition happens, and I want an audit of whether this configuration gap could have affected any other line’s status.
 
-## **14.3 Remediation**
+## 14.3 Remediation
 
 The GitOps deployment pipeline was redesigned so that a line’s shadow/actionable status became an explicitly protected configuration value requiring a distinct, audited approval action to change — architecturally separated from the routine model and calibration-profile deployment pipeline that had inadvertently overwritten it. An audit of all other lines’ deployment history confirmed no other line had been affected by the same configurationoverwrite pattern.
 
-# **15. Lessons Learned**
+# 15. Lessons Learned
 
 1. **A governance process (mandatory shadow deployment) is only as strong as the technical enforcement mechanism behind it.** The Week 10 policy decision was sound; the gap was that “shadowonly” was implemented as a default configuration value that a routine, unrelated deployment could silently overwrite, rather than a protected, explicitly-gated state. Any future safety- or quality-critical staged-rollout mechanism in this platform must make the staging boundary itself tamper-resistant against routine operational changes, not just correctly configured at initial setup.
 
@@ -333,7 +331,7 @@ The GitOps deployment pipeline was redesigned so that a line’s shadow/actionab
 
 3. **Separating “was the underlying architecture wrong” from “did an operational process fail to properly execute the architecture” mattered enormously for both the technical fix and the trust conversation with Reiner’s team.** Given the prior history with two failed vendor tools, this distinction — a real, humbly-acknowledged gap that was operational and fixable, not a signal the whole approach was flawed — was central to Ironhaven’s leadership continuing to trust the rollout plan rather than scaling back ambitions after the incident.
 
-# **16. Enterprise Architecture Artifacts**
+# 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : shop floor quality and supply chain recovery domains with AI-opportunity overlay (Section 5.4)
 
@@ -343,7 +341,7 @@ The GitOps deployment pipeline was redesigned so that a line’s shadow/actionab
 
 - **Shadow-to-Actionable Transition Protocol** (post-incident artifact): the redesigned, tamper-resistant deployment-gating specification
 
-# **17. Architecture Decision Records (ADRs)**
+# 17. Architecture Decision Records (ADRs)
 
 **ADR-001: Core defect classification is a traditional fine-tuned computer-vision model, not an LLM; agentic/LLM components are reserved for post-inspection orchestration and the Supply Chain Recovery domain.** Status: Accepted. See Section 6.2.
 
@@ -363,11 +361,11 @@ The GitOps deployment pipeline was redesigned so that a line’s shadow/actionab
 
 **ADR-009 (post-incident): Line shadow/actionable status made a protected, explicitly-gated configuration value, architecturally separated from routine model/calibration deployment pipelines.** Status: Accepted, emergency-scoped remediation.
 
-# **18. AI Evaluation Strategy**
+# 18. AI Evaluation Strategy
 
 - **Defect classification accuracy** : measured per part family and per line, not blended, given the discovery finding that discrimination between visually similar defect classes was the actual challenge **False-positive rate and supervisor override rate** : tracked as the primary trust-health metric, given the alarm-fatigue root cause identified in discovery; a rising override rate is treated as an early-warning signal requiring investigation, not just noise **Shadow-deployment gate criteria** : defined accuracy and false-positive thresholds, plus explicit linesupervisor qualitative sign-off, required before any line’s transition to actionable mode **Supply Chain Recovery plan quality** : evaluated against historical disruption scenarios, cross-checked by production planners for substitution-eligibility correctness (particularly engineering-approval-required cases) given the real-world cost of an incorrect substitution recommendation
 
-# **19. Operational Runbook**
+# 19. Operational Runbook
 
 - **Shadow-to-actionable transition procedure** : explicit, audited sign-off action required per ADR-009, documented step by step following the Month 6 incident
 
@@ -375,7 +373,7 @@ The GitOps deployment pipeline was redesigned so that a line’s shadow/actionab
 
 - **Edge appliance connectivity-loss procedure** : defined behavior and alerting for the offline-tolerant inspection path, particularly relevant to the Poland facility
 
-# **20. Future Roadmap**
+# 20. Future Roadmap
 
 1. **Predictive supplier risk scoring** (deferred in discovery, Section 5.4), contingent on supplier data-sharing agreements the CDO’s team is pursuing as a parallel workstream — explicitly not to be attempted on Ironhaven-only historical data given the confidence-calibration concern raised in discovery.
 

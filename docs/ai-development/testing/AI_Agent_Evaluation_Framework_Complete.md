@@ -10,9 +10,9 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-# **Complete AI Agent Evaluation Framework**
+# Complete AI Agent Evaluation Framework
 
-### **AWS Bedrock AgentCore  ·  Strands Evals  ·  Arize Phoenix**
+### AWS Bedrock AgentCore  ·  Strands Evals  ·  Arize Phoenix
 
 EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to Retirement: The Definitive Production Guide Version 2.0  |  April 2026  |  Confidential
 
@@ -21,9 +21,9 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 |**10 Strands**<br>**Evals**<br>**Evaluators**|**13**<br>**AgentCore**<br>**Evaluators**|**4 Eval Levels**|**9 Lifecycle**<br>**Phases**|**3 Regulatory**<br>**Regimes**|**EUR 35M**<br>**Max AI Act**<br>**Penalty**|
 |---|---|---|---|---|---|
 
-## **Table of Contents**
+## Table of Contents
 
-#### **1. Framework Architecture & Overview**
+#### 1. Framework Architecture & Overview
 
 1.1 The Evaluation Problem in AI Agents
 
@@ -31,7 +31,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 - 1.3 Which Tool for Which Job
 
-#### **2. Strands Evals — Native SDK Reference**
+#### 2. Strands Evals — Native SDK Reference
 
 2.1 Core Concepts: Case, Experiment, Evaluator, Task Function
 
@@ -45,7 +45,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 - 2.6 Evaluation Hierarchy: Session / Trace / Tool
 
-#### **3. AgentCore Evaluations — Managed Service**
+#### 3. AgentCore Evaluations — Managed Service
 
 3.1 Online Evaluation — Continuous Production Monitoring
 
@@ -59,7 +59,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 - 3.6 Sampling Strategies
 
-#### **4. Arize Phoenix — Observability Layer**
+#### 4. Arize Phoenix — Observability Layer
 
 4.1 OpenTelemetry / OpenInference Instrumentation
 
@@ -73,7 +73,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 4.6 Human Annotation Queue
 
-#### **5. Complete Metric Catalogue**
+#### 5. Complete Metric Catalogue
 
 5.1 Plane 1 — Response Quality Metrics
 
@@ -85,7 +85,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 5.5 EU Banking Compliance Metrics
 
-#### **6. Benchmark Creation Standards**
+#### 6. Benchmark Creation Standards
 
 6.1 Three-Tier Architecture (Public / Domain / Golden)
 
@@ -95,7 +95,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 - 6.4 Adversarial & Red-Team Sets
 
-#### **7. Drift Detection & Automated Response**
+#### 7. Drift Detection & Automated Response
 
 7.1 Five Types of Drift
 
@@ -105,7 +105,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 - 7.4 Automated Remediation Pipeline
 
-#### **8. EU Banking Compliance Framework**
+#### 8. EU Banking Compliance Framework
 
 8.1 Regulatory Landscape: AI Act, GDPR, DORA, EBA
 
@@ -125,7 +125,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 8.9 Data Residency & EU Sovereignty
 
-#### **9. Complete Lifecycle (Ideation to Retirement)**
+#### 9. Complete Lifecycle (Ideation to Retirement)
 
 9.1 Phase 1: Ideation & Requirements
 
@@ -145,7 +145,7 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 9.9 Phase 9: Retirement & Archival
 
-#### **10. Integration Stack & Quick Reference**
+#### 10. Integration Stack & Quick Reference
 
 10.1 Tool Comparison Matrix
 
@@ -155,13 +155,13 @@ EU Banking Edition  —  RAI · PII · GDPR · DORA · EBA · AMLD6 Ideation to 
 
 10.4 Escalation Playbooks
 
-#### **CHAPTER 1  —  FRAMEWORK ARCHITECTURE & OVERVIEW**
+#### CHAPTER 1  —  FRAMEWORK ARCHITECTURE & OVERVIEW
 
-### **1.1 The Evaluation Problem in AI Agents**
+### 1.1 The Evaluation Problem in AI Agents
 
 Traditional software testing assumes deterministic outputs: same input, same expected output. AI agents break this completely — they generate natural language, make context-dependent decisions, call tools in adaptive sequences, and produce varied outputs from identical inputs. Evaluation therefore requires **judgment** rather than keyword comparison and **multi-dimensional scoring** rather than binary pass/fail.
 
-##### **WHY AGENTS ARE HARD TO EVALUATE**
+##### WHY AGENTS ARE HARD TO EVALUATE
 
 - Natural language has many valid forms — no single correct answer exists
 
@@ -173,7 +173,7 @@ Traditional software testing assumes deterministic outputs: same input, same exp
 
 - Non-determinism means the same test case can produce different results each run
 
-### **1.2 Component Map — Three Primary Layers**
+### 1.2 Component Map — Three Primary Layers
 
 The framework integrates components across three layers: native SDK evaluation (Strands Evals), managed AWS evaluation service (AgentCore Evaluations), and open-source observability (Arize Phoenix), plus supporting specialist libraries.
 
@@ -186,7 +186,7 @@ The framework integrates components across three layers: native SDK evaluation (
 |Unit Testing|DeepEval|Pytest-style LLM tests, DAG metric for agentic<br>planning|CI/CD quality gates, regression suite|
 |Trace &<br>Cost|Langfuse|Strands-native traces, cost per session, prompt<br>management|Development observability, cost optimisation|
 
-### **1.3 Decision: Which Tool for Which Job**
+### 1.3 Decision: Which Tool for Which Job
 
 |**Scenario**|**Primary Tool**|**Supporting Tool**|
 |---|---|---|
@@ -206,9 +206,9 @@ The framework integrates components across three layers: native SDK evaluation (
 |PII leakage detection|AgentCore Builtin.PIILeakage|Presidio + AWS Comprehend (pre-filter)|
 |Fairness / bias audit|Custom Counterfactual Cases|DeepEval Bias Metric|
 
-#### **CHAPTER 2  —  STRANDS EVALS: NATIVE SDK REFERENCE**
+#### CHAPTER 2  —  STRANDS EVALS: NATIVE SDK REFERENCE
 
-### **2.1 Core Abstractions**
+### 2.1 Core Abstractions
 
 Strands Evals (github.com/strands-agents/evals) is the first-party evaluation framework built specifically for the Strands Agents SDK. It introduces three foundational abstractions plus the Task Function bridge pattern (AWS ML Blog, March 18 2026).
 
@@ -222,7 +222,7 @@ Strands Evals (github.com/strands-agents/evals) is the first-party evaluation fr
 |ExperimentGenerat<br>or|LLM that generates diverse Cases and rubrics from a high-level<br>context description|Automated test case generator|
 |EvaluationReport|Per-case and per-experiment score breakdowns, pass/fail<br>status, evaluator reasoning|JUnit XML / pytest report|
 
-### **2.2 All 10 Built-in Evaluators**
+### 2.2 All 10 Built-in Evaluators
 
 |**Evaluator**|**Family**|**Level**|**Scale**|**Description**|**EU Banking Use**|
 |---|---|---|---|---|---|
@@ -241,7 +241,7 @@ Strands Evals (github.com/strands-agents/evals) is the first-party evaluation fr
 |Custom (via|Domain|Any|Define|Any domain-specific rubric via|GDPR Art.22, AMLD6 SAR,|
 |OutputEvaluator)|||own|OutputEvaluator or TrajectoryEvaluator|fairness/DIR, PII leakage, AI<br>disclosure|
 
-### **2.3 Online vs Offline Task Patterns**
+### 2.3 Online vs Offline Task Patterns
 
 |**Pattern**|**How It Works**|**Best For**|**EU Banking Note**|
 |---|---|---|---|
@@ -249,11 +249,11 @@ Strands Evals (github.com/strands-agents/evals) is the first-party evaluation fr
 |Offline (historical<br>traces)|Task function retrieves recorded traces<br>from Phoenix / Langfuse / DB; parses<br>into evaluator format|Production traffic analysis; A/B<br>model comparison on real<br>interactions|DORA audit: evaluate 6-month<br>trace archive for historical<br>compliance|
 |Async parallel|experiment.run_evaluations_async(task_<br>fn, max_workers=N) enables concurrent<br>evaluation at scale|Large benchmark suites (200-1000<br>cases) in time-boxed CI/CD pipeline|Run 500-case EU compliance<br>suite in under 10 minutes with<br>max_workers=20|
 
-### **2.4 ActorSimulator — Multi-Turn Testing**
+### 2.4 ActorSimulator — Multi-Turn Testing
 
 Real users do not follow scripts. ActorSimulator generates a realistic user profile — personality, expertise level, communication style, and a goal — then drives the conversation automatically. It emits a stop token when the goal is achieved, or stops at max_turns. The transcript is passed to GoalSuccessRateEvaluator to assess end-to-end success.
 
-##### **ACTORSIMULATOR — EU BANKING APPLICATIONS**
+##### ACTORSIMULATOR — EU BANKING APPLICATIONS
 
 - Simulate confused retail customer attempting loan application across 8 turns
 
@@ -267,7 +267,7 @@ Real users do not follow scripts. ActorSimulator generates a realistic user prof
 
 - Simulate non-native speaker with language difficulty (tests accessibility and fairness)
 
-### **2.5 TrajectoryEvaluator — Three Scoring Modes**
+### 2.5 TrajectoryEvaluator — Three Scoring Modes
 
 The TrajectoryEvaluator provides an LLM judge with three built-in scoring functions. The judge selects the most appropriate mode based on the rubric provided. This is critical for EU banking where regulatory compliance requires specific tool ordering.
 
@@ -277,11 +277,11 @@ The TrajectoryEvaluator provides an LLM judge with three built-in scoring functi
 |In-order match|Expected tools appear in order but other<br>tools may be interspersed between them|When required steps must happen in<br>sequence but other calls are<br>acceptable|Credit: credit_check must<br>precede decision, but<br>explanation calls may occur<br>anywhere|
 |Any-order<br>match|All expected tools appear somewhere in<br>the trajectory — order is flexible|When all required checks must occur<br>but sequence is not legally prescribed|Eligibility check: income_check,<br>employment_check, id_verify —<br>any order fine|
 
-#### **CHAPTER 3  —  AGENTCORE EVALUATIONS: MANAGED SERVICE REFERENCE**
+#### CHAPTER 3  —  AGENTCORE EVALUATIONS: MANAGED SERVICE REFERENCE
 
 Amazon Bedrock AgentCore Evaluations is a **fully managed, continuous assessment service** . It operates via two modes — online (live traffic) and on-demand (targeted) — and integrates with any agent framework via OpenTelemetry. Results publish to Amazon CloudWatch in real time, enabling alarms, automations, and dashboards.
 
-### **3.1 Online Evaluation — Continuous Production Monitoring**
+### 3.1 Online Evaluation — Continuous Production Monitoring
 
 Online evaluation samples live production traffic and scores interactions using LLM-as-a-Judge. It provides persistent monitoring across multiple quality dimensions simultaneously.
 
@@ -293,7 +293,7 @@ Online evaluation samples live production traffic and scores interactions using 
 |Output destination|Amazon CloudWatch metrics (default); S3 for<br>raw score archive|AgentCore Observability Dashboard + CloudWatch<br>Alarms + Lambda auto-remediation|
 |IAM role|Create new AWS IAM role or pass existing<br>one with least-privilege policy|Separate IAM role per agent for auditability; log all role<br>assumption events in CloudTrail|
 
-### **3.2 On-Demand Evaluation — Targeted Assessment**
+### 3.2 On-Demand Evaluation — Targeted Assessment
 
 On-demand evaluation assesses specific interactions by analysing a chosen set of span or trace IDs. Unlike online evaluation, it is triggered explicitly and processes only the interactions you specify.
 
@@ -312,7 +312,7 @@ On-demand evaluation assesses specific interactions by analysing a chosen set of
 
 - Historical compliance: evaluate archived traces against new EU AI Act requirements
 
-### **3.3 All 13 Built-in AgentCore Evaluators**
+### 3.3 All 13 Built-in AgentCore Evaluators
 
 |**Evaluator ARN Suffix**|**Dimensio**<br>**n**|**Scale**|**Description**|
 |---|---|---|---|
@@ -333,7 +333,7 @@ On-demand evaluation assesses specific interactions by analysing a chosen set of
 |Builtin.RefusalQuality|Safety|0-1|When agent declines, does it help user find an appropriate alternative?|
 |Builtin.PIILeakage|Safety|0-1|No personally identifiable information exposed in the output. Zero<br>tolerance.|
 
-### **3.4 Custom Evaluators**
+### 3.4 Custom Evaluators
 
 Custom evaluators extend AgentCore's evaluation capability with domain-specific quality metrics. Each has a unique ARN and can be referenced in both online and on-demand evaluation configurations.
 
@@ -344,7 +344,7 @@ Custom evaluators extend AgentCore's evaluation capability with domain-specific 
 |scoring_schema|Type (numeric/binary/categorical), pass_threshold,<br>composite weight map|{score: 0-1, critical_issues: [], reasoning: ''} with<br>pass_threshold: 0.75|
 |critical_fail_on|Conditions that hard-fail the evaluation regardless<br>of overall score|compliance_score < 0.5 OR pii_detected = true — either<br>triggers BLOCK and DPO notification|
 
-### **3.5 CloudWatch Dashboard Specification**
+### 3.5 CloudWatch Dashboard Specification
 
 |**Dashboard Row**|**Widgets**|**Alert Condition**|
 |---|---|---|
@@ -356,11 +356,11 @@ Custom evaluators extend AgentCore's evaluation capability with domain-specific 
 |Cost Tracking|Cost per session (estimated from token usage) — area<br>chart|Cost exceeds 1.5x rolling 7-day average|
 |Drift Indicators|Sampling rate (auto-adjusted), eval coverage %,<br>embedding drift score|Coverage drop below 5% or embedding<br>drift score exceeds 0.15|
 
-#### **CHAPTER 4  —  ARIZE PHOENIX: OBSERVABILITY & EVALUATION LAYER**
+#### CHAPTER 4  —  ARIZE PHOENIX: OBSERVABILITY & EVALUATION LAYER
 
 Arize Phoenix is an open-source, vendor-agnostic AI observability platform built on OpenTelemetry. For EU banking it is self-hostable on AWS EKS in Frankfurt (eu-central-1) to satisfy GDPR data residency. It provides end-to-end traces, embedding drift detection, LLM-as-a-Judge evaluations, human annotation queues, and experiment management.
 
-### **4.1 OpenTelemetry Span Types**
+### 4.1 OpenTelemetry Span Types
 
 |**Span Type**|**What It Captures**|**Evaluation Dimension**|
 |---|---|---|
@@ -371,7 +371,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Agent|Full session, all sub-spans, final response, goal<br>metadata, user feedback|GoalSuccessRate, Conversation quality|
 |Embedding|Input text, embedding vector, model ID, vector<br>dimensions|Embedding drift detection — semantic shift monitoring|
 
-### **4.2 Drift Detection System**
+### 4.2 Drift Detection System
 
 |**Drift Type**|**What Shifts**|**Detection Method**|**Phoenix Tool**|**Alert Threshold**|
 |---|---|---|---|---|
@@ -384,7 +384,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 
 **CHAPTER 5  —  COMPLETE METRIC CATALOGUE**
 
-### **5.1 Response Quality Metrics**
+### 5.1 Response Quality Metrics
 
 |**Metric**|**Primary Tool**|**Scale**|**Target**|**Alert**|
 |---|---|---|---|---|
@@ -399,7 +399,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Bias Score|DeepEval / Custom|0-1|<= 0.05|> 0.10|
 |Conciseness|DeepEval GEval|0-1|>= 0.75|< 0.60|
 
-### **5.2 RAG Quality Metrics (RAGAS)**
+### 5.2 RAG Quality Metrics (RAGAS)
 
 |**Metric**|**Method**|**Target**|**Alert**|**What It Catches**|
 |---|---|---|---|---|
@@ -413,7 +413,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Agent Goal Accuracy|LLM-Judge: goal vs achieved<br>outcome|>= 0.80|< 0.65|Agent fails to meet stated user goal|
 |Topic Adherence|LLM-Judge: on-scope responses<br>ratio|>= 0.90|< 0.80|Agent answers out-of-scope questions|
 
-### **5.3 Agentic Behaviour Metrics**
+### 5.3 Agentic Behaviour Metrics
 
 |**Metric**|**Primary Tool**|**Target**|**Alert**|**Description**|
 |---|---|---|---|---|
@@ -429,7 +429,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Goal Success Rate|AgentCore / Strands Evals|>= 0.75|< 0.60|Session-level user goal achievement|
 |Conversation Quality|RAGAS|>= 0.80|< 0.68|Multi-turn coherence and memory use|
 
-### **5.4 Operational & Infrastructure Metrics**
+### 5.4 Operational & Infrastructure Metrics
 
 |**Metric**|**Source**|**Target**|**Alert**|**DORA Requirement**|
 |---|---|---|---|---|
@@ -443,9 +443,9 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Tool failure rate (%)|Phoenix|<= 2%|> 5%|Downstream API reliability (DORA Art.28)|
 |Eval coverage (%)|AgentCore|>= 10%|< 5%|Monitoring adequacy for ongoing oversight|
 
-#### **CHAPTER 6  —  BENCHMARK CREATION STANDARDS**
+#### CHAPTER 6  —  BENCHMARK CREATION STANDARDS
 
-### **6.1 Three-Tier Benchmark Architecture**
+### 6.1 Three-Tier Benchmark Architecture
 
 |**Tier**|**Type**|**Examples**|**Purpose**|**Update**<br>**Frequency**|
 |---|---|---|---|---|
@@ -453,7 +453,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Tier 2|Domain<br>benchmarks|FinanceBench, MedQA, LegalBench,<br>custom BankingBench built from EU<br>regulatory scenarios|Vertical-specific calibration for<br>banking use cases|Quarterly|
 |Tier 3|Custom /<br>golden dataset|Curated from real production traffic<br>(anonymised) + SME-annotated +<br>adversarial red-team cases|Production truth — the definitive<br>gate that blocks deployment|Monthly + on<br>every incident|
 
-### **6.2 Golden Dataset Construction**
+### 6.2 Golden Dataset Construction
 
 |**Step**|**Actions**|**Quality Gate**|
 |---|---|---|
@@ -462,7 +462,7 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |C: Stratified<br>Split|Train Eval 70% (prompt optimisation); Dev Eval 15% (model<br>selection, never shown to evaluators); Test/Golden 15% (final<br>gate only, never used during development)|Stratify by domain, difficulty, query type; maintain<br>proportional representation|
 |D: Version<br>Control &<br>Storage|S3 (eu-central-1) with Object Lock; Phoenix Datasets for<br>experiment management; DVC for version lineage; JSONL<br>schema with full validation|Test/Golden split locked immediately in S3 Object<br>Lock Compliance mode — no post-hoc<br>modification|
 
-### **6.3 Anthropic/Claude Benchmarking Pattern — Replicated**
+### 6.3 Anthropic/Claude Benchmarking Pattern — Replicated
 
 |**Axis**|**Method**|**Implementation**|
 |---|---|---|
@@ -473,9 +473,9 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Regression suite|Every fixed failure becomes a permanent test — zero<br>regression policy strictly enforced for all future<br>deployments|Strands Evals CI/CD gate with report.assert_pass()<br>blocking merge on any regression|
 |Statistical<br>validation|Bootstrap confidence intervals; p < 0.05 threshold for<br>any claimed improvement; minimum 200 samples per<br>capability axis|Python scipy for significance tests; DeepEval statistical<br>utilities|
 
-#### **CHAPTER 7  —  DRIFT DETECTION & AUTOMATED RESPONSE**
+#### CHAPTER 7  —  DRIFT DETECTION & AUTOMATED RESPONSE
 
-### **7.1 Alert Thresholds & Escalation Matrix**
+### 7.1 Alert Thresholds & Escalation Matrix
 
 |**Metric**|**Warning**|**Critical**|**Auto-Action**|**Human Escalation**|
 |---|---|---|---|---|
@@ -490,13 +490,13 @@ Arize Phoenix is an open-source, vendor-agnostic AI observability platform built
 |Error rate (%)|> 1%|> 5%|Traffic rerouting; prepare rollback|On-call SRE + CTO|
 |AML False Positive rate|> 0.35|> 0.50|Pause AML auto-flagging; switch to manual<br>review|MLRO + Compliance officer|
 
-### **7.2 Automated Remediation Pipeline**
+### 7.2 Automated Remediation Pipeline
 
 Drift detection triggers a Lambda-based auto-remediation chain: CloudWatch Alarm -> SNS topic -> Lambda function. The Lambda performs: (1) increase sampling rate; (2) trigger on-demand evaluation on recent failing traces; (3) create incident ticket in Jira; (4) notify on-call via PagerDuty; (5) post summary to Slack. If the incident meets the DORA 'significant' threshold, a separate Lambda notifies the regulator within the required 4-hour window.
 
-#### **CHAPTER 8  —  EU BANKING COMPLIANCE FRAMEWORK**
+#### CHAPTER 8  —  EU BANKING COMPLIANCE FRAMEWORK
 
-### **8.1 Regulatory Landscape**
+### 8.1 Regulatory Landscape
 
 |**Regulation**|**In Force**|**Key AI Obligations**|**Max Penalty**|
 |---|---|---|---|
@@ -507,7 +507,7 @@ Drift detection triggers a Lambda-based auto-remediation chain: CloudWatch Alarm
 |CRR III / CRD VI|2025|Credit model validation; IRB model alignment for AI<br>credit scoring; capital requirements for AI-related risk<br>exposures|Capital add-on<br>requirements|
 |EBA Guidelines|Ongoing|Loan origination and monitoring; model risk<br>management; internal governance; PD/LGD estimation<br>guidelines for AI models|Supervisory action; removal<br>of model approval|
 
-### **8.2 High-Risk AI Classification — Banking Use Cases**
+### 8.2 High-Risk AI Classification — Banking Use Cases
 
 |**Risk Level**|**Use Case**|**Full Obligations Aug**<br>**2026?**|**Key Evaluation Gate**|
 |---|---|---|---|
@@ -520,7 +520,7 @@ Drift detection triggers a Lambda-based auto-remediation chain: CloudWatch Alarm
 |MINIMAL-RISK|Internal operations automation,<br>document processing, reporting|Voluntary codes of<br>conduct only|Standard quality and safety metrics from Chapter<br>5|
 |PROHIBITED (since<br>Feb 2025)|Social scoring of EU citizens; subliminal<br>manipulation of financial decisions|BANNED — do not build<br>these systems|Block at system design; never deploy; audit any<br>legacy systems|
 
-### **8.3 PII Detection — Three-Layer Architecture**
+### 8.3 PII Detection — Three-Layer Architecture
 
 |**Layer**|**Tools**|**Applied When**|**Action on Detection**|**EU Requirement**|
 |---|---|---|---|---|
@@ -531,7 +531,7 @@ Drift detection triggers a Lambda-based auto-remediation chain: CloudWatch Alarm
 |Layer 2: Output guard|AgentCore Builtin.PIILeakage<br>evaluator + Phoenix custom<br>LLM-Judge evaluator|After every agent<br>response — 100%<br>sampling, never<br>reduce|BLOCK output; log incident with<br>PII category and session ID; notify<br>DPO immediately; create GDPR<br>breach assessment|GDPR Art.5<br>security; EU AI Act<br>Art.10 data<br>governance for<br>high-risk systems|
 |Layer 3: Storage<br>anonymisation|AWS Macie (S3 PII scanning) +<br>CloudWatch Logs Insights PII<br>pattern detection|Before storing any<br>traces, logs, or<br>evaluation data<br>anywhere|Pseudonymise all customer IDs;<br>use synthetic PII in golden<br>datasets (never real customer<br>data); enforce S3 bucket policies|GDPR Art.6 lawful<br>basis<br>documentation;<br>Art.44-46 data<br>transfer restrictions<br>to non-EU|
 
-### **8.4 Fairness & Bias Evaluation**
+### 8.4 Fairness & Bias Evaluation
 
 |**Metric**|**Formula**|**Target**|**Tool**|**Regulatory Basis**|
 |---|---|---|---|---|
@@ -541,7 +541,7 @@ Drift detection triggers a Lambda-based auto-remediation chain: CloudWatch Alarm
 |Counterfactual Fairness|Cosine distance between outputs for<br>same query with only protected<br>attribute changed (name, gender,<br>nationality)|<= 0.15|50 name-swap Cases — identical<br>query, swapped protected attribute|EU AI Act Art.10;<br>GDPR Art.22<br>individual decision<br>fairness|
 |Calibration across groups|P(y=1|score=p, GroupA)<br>approximately equals P(y=1|score=p,<br>GroupB)|Calibration<br>error <= 0.05|Reliability diagram per<br>demographic group on test set|EBA credit model<br>governance; CRR III<br>model validation|
 
-### **8.5 Art. 12 Audit Log Schema — Mandatory Fields**
+### 8.5 Art. 12 Audit Log Schema — Mandatory Fields
 
 Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: S3 Object Lock (Compliance mode), eu-central-1 region, AES-256 encryption, 10-year retention minimum.
 
@@ -565,9 +565,9 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |retention_end_date|ISO date|Creation date plus 10 years for HIGH_RISK<br>systems|EU AI Act Art.12 minimum retention period|
 |data_residency|AWS Region ID|Must be EU region (eu-central-1, eu-west-1,<br>etc.)|GDPR Art.44-46 data transfer restrictions|
 
-#### **CHAPTER 9  —  COMPLETE LIFECYCLE JOURNEY (IDEATION TO RETIREMENT)**
+#### CHAPTER 9  —  COMPLETE LIFECYCLE JOURNEY (IDEATION TO RETIREMENT)
 
-#### **PHASE 1 IDEATION & REQUIREMENT CAPTURE**
+#### PHASE 1 IDEATION & REQUIREMENT CAPTURE
 
 - I  Define agent purpose, user personas, scope, and measurable success criteria
 
@@ -585,7 +585,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Register planned AI system with DPO and AI Risk function — begin technical documentation draft
 
-#### **PHASE 2 BENCHMARK & DATASET CONSTRUCTION**
+#### PHASE 2 BENCHMARK & DATASET CONSTRUCTION
 
 - I  Run ExperimentGenerator with agent context + task description — generate 50-100 seed cases
 
@@ -603,9 +603,9 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Version-control in S3 (eu-central-1) + Phoenix Datasets + DVC — lock golden split immediately
 
-##### **PHASE 3**
+##### PHASE 3
 
-#### **BUILD & INSTRUMENT**
+#### BUILD & INSTRUMENT
 
 - I  Implement Strands Agent with tools, system prompt, and OTEL instrumentation via OpenInference
 
@@ -623,7 +623,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Configure Langfuse for development trace collection and per-session cost tracking
 
-#### **PHASE 4 PRE-DEPLOYMENT EVALUATION GATE (CI/CD)**
+#### PHASE 4 PRE-DEPLOYMENT EVALUATION GATE (CI/CD)
 
 - I  Gate 1 — Prohibited practices: automated scan, HARD BLOCK on any positive finding
 
@@ -645,7 +645,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Require: MRM independent validation sign-off + DPO review before any production deployment
 
-#### **PHASE 5 DEPLOY WITH ONLINE MONITORING**
+#### PHASE 5 DEPLOY WITH ONLINE MONITORING
 
 - I  Enable AgentCore Online Evaluation: start 10% sampling across all configured evaluators
 
@@ -661,9 +661,9 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Notify regulators if required: EU AI database registration + any required pre-notifications
 
-##### **PHASE 6**
+##### PHASE 6
 
-#### **CONTINUOUS IMPROVEMENT LOOP**
+#### CONTINUOUS IMPROVEMENT LOOP
 
 - I  Weekly: pull failing traces from Phoenix; run cluster heatmap; identify top-5 failure patterns
 
@@ -681,7 +681,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Re-run full gate suite before merging any improvement; track trend across Phoenix Experiments
 
-#### **PHASE 7 DRIFT DETECTION & INCIDENT RESPONSE**
+#### PHASE 7 DRIFT DETECTION & INCIDENT RESPONSE
 
 - I  Drift detected by Phoenix monitor or CloudWatch alarm -> SNS -> Lambda auto-response
 
@@ -699,9 +699,9 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Post-mortem: document root cause; update runbook; add failure case to regression suite
 
-##### **PHASE 8**
+##### PHASE 8
 
-#### **MODEL UPGRADE EVALUATION**
+#### MODEL UPGRADE EVALUATION
 
 - I  Run full benchmark on new model version using offline task function on same golden dataset
 
@@ -719,7 +719,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Update benchmark baseline to new model scores; update Art.11 technical documentation
 
-#### **PHASE 9 RETIREMENT & ARCHIVAL**
+#### PHASE 9 RETIREMENT & ARCHIVAL
 
 - I  Sunset criteria: metric floor breached persistently (3 consecutive monthly reviews) OR successor validated
 
@@ -739,9 +739,9 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 
 - I  Knowledge transfer: share lessons learned with teams building and operating successor systems
 
-#### **CHAPTER 10  —  INTEGRATION STACK & QUICK REFERENCE**
+#### CHAPTER 10  —  INTEGRATION STACK & QUICK REFERENCE
 
-### **10.1 Tool Comparison Matrix**
+### 10.1 Tool Comparison Matrix
 
 |**Capability**|**Strands Evals**|**AgentCore**<br>**Evals**|**Arize Phoenix**|**RAGAS**|**DeepEval**|
 |---|---|---|---|---|---|
@@ -756,7 +756,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |Strands native integration|Yes|Yes — via OTEL|Yes — via OTEL|Yes — via<br>Langfuse|Yes — via API|
 |Open source|Yes|No — AWS<br>managed|Yes (7800+ stars)|Yes|Yes (400k+ downloads)|
 
-### **10.2 Complete Metric Threshold Reference Card**
+### 10.2 Complete Metric Threshold Reference Card
 
 |**Metric**|**Target**|**Warning**|**Critical**|**Zero Tolerance**|**Regulation**|
 |---|---|---|---|---|---|
@@ -784,7 +784,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |Latency P95 (ms)|<= 2500|> 3000|> 5000|No|DORA resilience|
 |Error Rate (%)|<= 0.5%|> 1.0%|> 5.0%|No|DORA incident classification|
 
-### **10.3 Regulatory Compliance Calendar**
+### 10.3 Regulatory Compliance Calendar
 
 |**Deadline**|**Regulation**|**Action Required**|**Status**|
 |---|---|---|---|
@@ -801,7 +801,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |Quarterly (recurring)|EBA|Independent model validation report; ongoing monitoring review<br>by MRM team|Recurring — schedule in<br>AI Governance Calendar|
 |Annually (recurring)|DORA|Full ICT risk assessment review; resilience testing (TLPT every 3<br>years for significant)|Recurring — coordinate<br>with CISO and<br>Operations|
 
-### **10.4 Escalation Playbooks**
+### 10.4 Escalation Playbooks
 
 |**Alert Scenario**|**Immediate Action (0-15 min)**|**Investigation (15-60 min)**|**Escalation Path**|
 |---|---|---|---|
@@ -812,7 +812,7 @@ Every HIGH-RISK agent interaction must produce an immutable audit log. Storage: 
 |DORA significant ICT<br>incident|Incident ticket created; war-room<br>assembled; begin impact assessment for<br>'significant' classification|Containment actions executed; RCA<br>commenced; business continuity plan<br>activated if needed|CIO + CISO; if 'significant':<br>mandatory regulator<br>notification within 4h of<br>classification decision|
 |Embedding drift score<br>>0.20|Auto-increase sampling; trigger<br>on-demand eval batch on traces from<br>past 6 hours|Determine if input query distribution or<br>model output has semantically shifted;<br>compare topic distributions|ML Engineering; prompt or<br>model update cycle; MRM<br>review if change is<br>significant for HIGH_RISK<br>models|
 
-#### **DOCUMENT INFORMATION & GOVERNANCE**
+#### DOCUMENT INFORMATION & GOVERNANCE
 
 |**Attribute**|Value|
 |---|---|

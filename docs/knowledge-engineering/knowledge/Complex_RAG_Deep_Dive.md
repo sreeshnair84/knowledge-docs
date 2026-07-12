@@ -1,18 +1,20 @@
 ---
-title: "Complex Rag Deep Dive"
+title: "Complex RAG Systems: Deep Technical Guide"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
+source_file: ""
 covers_version: "N/A"
 doc_type: guide
+tags: ["knowledge-engineering", "rag", "vector-search", "document-processing"]
 ---
-**DEEP TECHNICAL GUIDE**
-**Complex RAG Systems**
+
+# Complex RAG Systems: Deep Technical Guide
+
 *Delta Indexing · Document Versioning · Multi-Modal · Complex Tables · Temporal QnA · Knowledge Links*
 
-| This guide covers every major complexity in production-grade RAG systems: how to index only what changed, how to handle documents with images and slides, how tables with grouped headers break naive chunking, how temporal/historical knowledge must be modeled, and how knowledge links span across filenames, sections, and document hierarchies — with concrete strategies for each. |
-| --- |
+This guide covers every major complexity in production-grade RAG systems: how to index only what changed, how to handle documents with images and slides, how tables with grouped headers break naive chunking, how temporal/historical knowledge must be modeled, and how knowledge links span across filenames, sections, and document hierarchies — with concrete strategies for each.
 **1. Delta Indexing — Only Re-Index What Changed**
 | Naive RAG re-indexes the entire corpus on every document update. At enterprise scale (millions of documents), this is computationally catastrophic. Delta indexing is the architecture that makes RAG systems production-feasible. |
 | --- |

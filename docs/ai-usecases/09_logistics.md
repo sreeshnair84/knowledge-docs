@@ -9,11 +9,9 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Case Study**
+# Case Study
 
 Meridian Freight & Logistics — Dynamic Routing & Warehouse Robotics Multi-Agent Coordination Platform
-
-Confidential Internal Engagement Documentation
 
 Engagement Period: May 2025 – March 2026
 
@@ -56,7 +54,7 @@ Engagement Period: May 2025 – March 2026
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# **1. Executive Summary**
+# 1. Executive Summary
 
 Meridian Freight & Logistics (MFL), a third-party logistics (3PL) provider operating a network of 18 regional distribution centers and a contracted carrier fleet of over 4,000 vehicles, engaged an Enterprise AI Architecture team to build a multi-agent coordination platform spanning dynamic freight routing and warehouse robotics orchestration — two domains MFL’s leadership had come to see as artificially siloed despite being deeply operationally interdependent.
 
@@ -66,19 +64,19 @@ The engagement’s defining incident occurred during peak holiday shipping seaso
 
 Key outcomes: - Average freight cost per shipment reduced by 14% through improved routing and carrier-capacity utilization - Warehouse pick-to-ship cycle time reduced by 22% through improved robotics-routing coordination - One material SLA-breach incident (Month 8, peak season) affecting eleven enterprise accounts, triggering mandatory aggregate-capacity-visibility architecture across all agents - Post-remediation, zero recurrence of capacity overcommitment through two subsequent peak-season periods, validated by the new aggregate-capacityguard architecture
 
-# **2. Client Background**
+# 2. Client Background
 
 Meridian Freight & Logistics operates as an intermediary between shippers (its customers, ranging from large national retailers to mid-size regional manufacturers) and a fragmented carrier ecosystem — some carriers operating MFL’s own private fleet, many others independent trucking companies under contract, each with varying degrees of system integration sophistication, from full API integration to some smaller carriers still coordinating primarily by phone and email.
 
 MFL’s Chief Operating Officer, Diane Castellano, and VP of Technology, Raj Patel, co-sponsored the engagement, motivated by a specific competitive pressure: MFL’s larger 3PL competitors had begun offering more dynamic, real-time capacity commitments to shippers, while MFL’s existing planning process — largely batch-oriented, run on a nightly optimization cycle — couldn’t match that responsiveness, risking the loss of several major accounts during upcoming contract renewal cycles.
 
-# **3. Business Problem**
+# 3. Business Problem
 
 **Routing and capacity fragmentation.** MFL’s freight routing decisions, warehouse operations planning, and carrier capacity commitments were made by three organizationally and technically separate teams using three different systems, with capacity commitments to shippers sometimes made without full visibility into whether the warehouse and carrier sides could actually deliver on that commitment — discovery found this had caused recurring, if previously smaller-scale, service issues that MFL’s operations team had been managing through informal cross-team communication and expediting rather than a systematic fix.
 
 **Batch-cycle responsiveness gap.** MFL’s existing nightly-batch optimization cycle meant capacity commitments and routing decisions couldn’t respond to same-day changes — a carrier cancellation, a warehouse equipment outage, a large customer’s last-minute volume change — without manual intervention, a competitive disadvantage against 3PL competitors offering more real-time responsiveness.
 
-# **4. Constraints**
+# 4. Constraints
 
 1. **Fragmented carrier ecosystem.** MFL did not have unilateral authority or full system integration across its entire contracted carrier network — some carriers were fully API-integrated, others operated through less sophisticated interfaces, and the architecture had to accommodate this heterogeneity rather than assume uniform real-time integration across every party in the network.
 
@@ -92,9 +90,9 @@ MFL’s Chief Operating Officer, Diane Castellano, and VP of Technology, Raj Pat
 
 6. **Data-sharing limits with independent carriers.** Independent contracted carriers were separate legal entities with their own data-privacy and competitive-sensitivity concerns about sharing their own capacity and cost data with MFL’s systems in real time — shaping the Carrier Agent design toward a negotiationprotocol model (each carrier’s own agent representing their interests and controlling their own data disclosure) rather than a model assuming MFL could see and centrally optimize across full carrier-side data.
 
-# **5. Discovery Transcript**
+# 5. Discovery Transcript
 
-## **5.1 Kickoff — Week 1**
+## 5.1 Kickoff — Week 1
 
 *Present: Diane Castellano (COO), Raj Patel (VP Technology), Head of Warehouse Operations (Marcus Webb, no relation to other engagements’ namesakes), the Enterprise AI Architect (EAA).*
 
@@ -112,7 +110,7 @@ MFL’s Chief Operating Officer, Diane Castellano, and VP of Technology, Raj Pat
 
 **EAA:** That’s a fair and important concern, and I don’t want to undersell it. A negotiation-based, distributed architecture trades some predictability and some theoretical optimality — a perfectly-informed centralized planner can, in principle, find a better global solution than independent negotiating agents — for something the centralized model can’t actually deliver given your real-world constraint: it can’t assume full, real-time visibility into every carrier’s state, because that visibility doesn’t exist and can’t be mandated into existence on this engagement’s timeline. I’d frame this as choosing the architecture that matches the reality of your data and authority constraints, not the theoretically cleanest model that assumes constraints away.
 
-## **5.2 Warehouse Operations Shadowing — Week 2**
+## 5.2 Warehouse Operations Shadowing — Week 2
 
 **Warehouse Shift Supervisor (Chicago DC, Angela Torres):** During peak season, my floor is running at or above rated capacity most days. If sales commits more volume than we can actually process in a shift, I find out when the trucks show up, not before — there’s no system today that tells sales “hey, Chicago is already at capacity for that date” before the commitment is made.
 
@@ -122,7 +120,7 @@ MFL’s Chief Operating Officer, Diane Castellano, and VP of Technology, Raj Pat
 
 This session directly foreshadowed the Month 8 incident and shaped an early design requirement — **real-time, not just nominal, capacity representation** for the Warehouse Operations Agent — that, in retrospect, was not implemented with sufficient rigor before the incident, a point returned to directly in Section 15.
 
-## **5.3 Carrier Relationship Shadowing — Week 3**
+## 5.3 Carrier Relationship Shadowing — Week 3
 
 **Carrier Relations Manager (David Nakamura):** Our largest integrated carrier partner has full API visibility into their available capacity. Our smallest contracted carriers — some of these are five-truck regional operators — we’re coordinating with by phone, and honestly by the time we’ve confirmed capacity with them, sometimes the routing decision that needed that information has already been made without it.
 
@@ -132,7 +130,7 @@ This session directly foreshadowed the Month 8 incident and shaped an early desi
 
 This shaped the design of a **confidence-weighted Carrier Agent proxy** for less-integrated carriers — using historical-pattern-based capacity estimates with an explicit, lower confidence weighting, rather than either assuming full real-time accuracy or excluding these carriers from the automated negotiation process entirely (Section 6.2).
 
-## **5.4 Capability Mapping and ROI — Week 4**
+## 5.4 Capability Mapping and ROI — Week 4
 
 |**Capability**|**Current State**|**AI Opportunity**|**Impact**|**Feasibility**|
 |---|---|---|---|---|
@@ -144,9 +142,9 @@ This shaped the design of a **confidence-weighted Carrier Agent proxy** for less
 
 **EAA (reflecting on the record of this session, later, post-incident):** I want to flag directly, for the honesty of this case study, that cross-account aggregate capacity visibility was identified in discovery as a real gap — but it was not prioritized with the same architectural weight as the negotiation-protocol design in the initial build, a prioritization choice that proved to be a real miss given what happened in Month 8.
 
-# **6. Architecture Workshops**
+# 6. Architecture Workshops
 
-## **6.1 Business & Information Architecture — A2A Negotiation Protocol Design**
+## 6.1 Business & Information Architecture — A2A Negotiation Protocol Design
 
 **Platform Architect (Sam Ito):** Walk through how the negotiation protocol actually works, given the “independent agents, not centralized planner” principle from Week 1.
 
@@ -156,7 +154,7 @@ This shaped the design of a **confidence-weighted Carrier Agent proxy** for less
 
 **EAA:** This is exactly the crux of what went wrong in Month 8, so it’s worth being precise here. Each individual negotiation, in isolation, correctly checks and reserves capacity against the Warehouse Operations Agent’s currently-known available capacity at the time of that specific negotiation — so no single negotiation is “wrong” given what it can see. The gap is that a rapid sequence of many simultaneous or near-simultaneous negotiations, each individually valid against the capacity state at its own moment, can collectively draw down capacity faster than the Warehouse Operations Agent’s own capacity-tracking state was being updated and propagated — a racecondition-like dynamic under high concurrency, compounded by the tacit-versus-nominal capacity gap Torres described in discovery.
 
-## **6.2 AI/Platform Architecture — Carrier Agent Heterogeneity**
+## 6.2 AI/Platform Architecture — Carrier Agent Heterogeneity
 
 **ML Engineer (Devon Park):** For the confidence-weighted proxy agents representing less-integrated carriers — how does the Routing Agent’s negotiation logic actually use that confidence weighting?
 
@@ -166,7 +164,7 @@ This shaped the design of a **confidence-weighted Carrier Agent proxy** for less
 
 **EAA:** It does, for that specific segment of volume, and I think that’s the right tradeoff rather than a compromise to be optimized away — the alternative is presenting a shipper with a capacity commitment backed by a carrier capacity estimate that might be meaningfully wrong, which is a worse outcome than slightly slower confirmation for that segment specifically.
 
-## **6.3 Security & Identity Architecture**
+## 6.3 Security & Identity Architecture
 
 - Each Carrier Agent (whether representing a fully-integrated or less-integrated carrier) operates under a distinct service identity with access scoped only to negotiation-relevant data — no Carrier Agent has visibility into another carrier’s bids or capacity, preserving the competitive-sensitivity concern raised in discovery
 
@@ -174,13 +172,13 @@ This shaped the design of a **confidence-weighted Carrier Agent proxy** for less
 
 - Full audit logging of every negotiation — bids received, selection logic applied, final committed plan — providing the auditability needed both for internal operations review and for resolving any carrier-facing dispute about a specific commitment
 
-## **6.4 Integration & API Strategy**
+## 6.4 Integration & API Strategy
 
 - MCP server exposing negotiation-protocol tools (bid request, bid response, commitment confirmation) consumed uniformly by the Routing Agent, Warehouse Operations Agents (one per distribution center), and Carrier Agents — chosen specifically to keep the protocol vendor-neutral and avoid the deep proprietaryframework lock-in the board flagged as a concern in Week 1 Event-driven architecture (Kafka) for real-time capacity-state updates from warehouse operations systems and integrated carrier systems, feeding each relevant agent’s negotiation-time state Existing demand-forecasting system integration (read-only) informing the Routing Agent’s proactive reassessment triggers, without rebuilding forecasting capability that already existed and worked reasonably well
 
-# **7. Technical Debates**
+# 7. Technical Debates
 
-## **7.1 Centralized vs. Distributed Optimality — Revisited Mid-Build**
+## 7.1 Centralized vs. Distributed Optimality — Revisited Mid-Build
 
 **Patel (Week 14):** I want to revisit the Week 1 architecture choice. Our operations research team has pointed out that a distributed negotiation approach is provably suboptimal compared to a centralized linear-programmingstyle optimizer, given full information. Are we leaving meaningful value on the table?
 
@@ -190,7 +188,7 @@ This shaped the design of a **confidence-weighted Carrier Agent proxy** for less
 
 **EAA:** That’s a genuinely interesting middle path, and I want to take it seriously rather than dismiss it in favor of architectural purity. I’d flag one real risk: a hybrid model means two different decision-making paradigms interacting, which could itself introduce a new class of coordination gap between the centralized and negotiated segments — not unlike the aggregate-visibility gap we’ll discuss having caused problems in Month 8, just in a different form. Given our timeline, I’d recommend we ship the uniform negotiation-protocol architecture for this release, but I think the hybrid idea is worth a dedicated, separate design exercise for a future release once we have real production data on where the negotiation model’s suboptimality actually matters most.
 
-## **7.2 Should the Routing Agent See Aggregate Cross-Account Capacity Demand?**
+## 7.2 Should the Routing Agent See Aggregate Cross-Account Capacity Demand?
 
 This debate, occurring in Week 16, is presented in full because of its direct relevance to the Month 8 incident.
 
@@ -214,7 +212,7 @@ This debate, occurring in Week 16, is presented in full because of its direct re
 
 This decision — a real, identified gap, with an interim mitigation proposed and approved — is directly relevant to the Month 8 incident, examined in Section 14.
 
-## **7.3 Evaluation Strategy Debate**
+## 7.3 Evaluation Strategy Debate
 
 **EAA:** For the negotiation protocol, I don’t think a single “routing efficiency” metric captures what matters. I’d propose: cost/utilization efficiency (the primary business driver from Castellano’s Week 1 framing), SLAcommitment accuracy (did a committed plan actually get delivered as committed — directly relevant given the contractual penalty exposure), and Carrier Agent bid-confidence calibration (are the confidence-weighted proxy estimates for less-integrated carriers actually predictive of real outcomes, checked against realized capacity over time).
 
@@ -222,9 +220,9 @@ This decision — a real, identified gap, with an interim mitigation proposed an
 
 **EAA:** Agreed, and that’s a fair ask given the concentration-risk gap we just identified — I’d propose SLAcommitment accuracy stratified by facility and by time window, not blended, specifically so a pattern like an overcommitment concentrated in one facility during one period would be visible rather than averaged away.
 
-# **8. Executive Reviews**
+# 8. Executive Reviews
 
-## **8.1 Board Technology Review — Week 20**
+## 8.1 Board Technology Review — Week 20
 
 **Board member (raised by Patel as a proxy question from the full board):** How do we know this distributed, negotiation-based architecture won’t create exactly the kind of hard-to-predict emergent failure that centralized systems are specifically designed to avoid?
 
@@ -232,7 +230,7 @@ This decision — a real, identified gap, with an interim mitigation proposed an
 
 **Castellano:** I want that framed accurately to the board — this isn’t risk-free, it’s risk-managed, with specific named mitigations for the specific known risk category.
 
-## **8.2 Pre-Peak-Season Readiness Review — Week 26**
+## 8.2 Pre-Peak-Season Readiness Review — Week 26
 
 **Webb:** Interim aggregate-capacity dashboard is live and being reviewed daily by warehouse operations leadership at all 18 facilities. I want to flag — the daily review is manual and depends on someone actually looking at it and acting on what they see, which is a real limitation compared to the automated version planned for next release.
 
@@ -240,7 +238,7 @@ This decision — a real, identified gap, with an interim mitigation proposed an
 
 **Castellano:** Agreed — I want facility managers to have this as an explicit daily responsibility during peak season, communicated directly from my office, not just an available tool.
 
-## **8.3 Post-Incident Executive Review — Week 36 (see Section 14)**
+## 8.3 Post-Incident Executive Review — Week 36 (see Section 14)
 
 **Castellano:** I need to understand directly: was the interim dashboard actually reviewed at Chicago during the days leading up to the incident?
 
@@ -250,7 +248,7 @@ This decision — a real, identified gap, with an interim mitigation proposed an
 
 **EAA:** Based on our post-incident modeling against the actual sequence of negotiations that occurred, yes — a realtime aggregate-capacity guard, checking cumulative committed capacity against actual achievable capacity on every new negotiation rather than a daily human-reviewed snapshot, would have flagged the concentration pattern with enough lead time to intervene before the overcommitment became severe. That’s a big part of why the remediation prioritized building that capability immediately rather than waiting for the originally planned next-release timeline.
 
-# **9. Final Architecture**
+# 9. Final Architecture
 
 - **A2A Negotiation Protocol** : structured bid-request/bid-response/commitment-confirmation protocol, vendor-neutral by design, uniformly used by the Routing Agent, per-facility Warehouse Operations Agents, and Carrier Agents (both fully-integrated and confidence-weighted proxy representations for less-integrated carriers)
 
@@ -262,7 +260,7 @@ This decision — a real, identified gap, with an interim mitigation proposed an
 
 Full negotiation audit logging for operational review and carrier-dispute resolution
 
-# **10. Delivery Roadmap**
+# 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -275,7 +273,7 @@ Full negotiation audit logging for operational review and carrier-dispute resolu
 |SLA Incident & Emergency Remediation|Month 8|Overcommitment incident, aggregate<br>capacity guard emergency build|
 |Post-Remediation Stabilization|Months 8–11|Automated guard deployed platform-<br>wide, two subsequent peak periods<br>validated|
 
-# **11. Risks**
+# 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -285,7 +283,7 @@ Full negotiation audit logging for operational review and carrier-dispute resolu
 |Manual interim-<br>mitigation process gap<br>(staffing/coverage)|Medium (realized —<br>contributed to Section<br>14)|Medium|Explicit named<br>accountability, backup<br>coverage requirements;<br>superseded by<br>automated guard|Warehouse Operations|
 |Vendor/framework<br>lock-in|Low (post vendor-<br>neutral protocol<br>design)|Medium|Open, vendor-neutral<br>A2A negotiation<br>protocol, not a single<br>vendor’s proprietary<br>framework|VP Technology|
 
-# **12. Governance Model**
+# 12. Governance Model
 
 - **Real-time aggregate-capacity guard** : mandatory, non-optional component at every distribution center following the Month 8 incident, replacing any reliance on manual/periodic human review as a primary safeguard
 
@@ -295,19 +293,19 @@ Full negotiation audit logging for operational review and carrier-dispute resolu
 
 - **Risk-acceptance documentation** : any future decision to defer a known architectural gap (as occurred with the Week 16 decision) requires an explicit interim-mitigation plan with named accountability, not an openended deferral — a governance addition directly modeled on lessons from this and comparable engagements in other industries
 
-# **13. Production Rollout**
+# 13. Production Rollout
 
 Pilot deployment covered 5 of MFL’s 18 distribution centers beginning Month 6, expanding to full 18-center rollout by Month 7–8, timed to be operational ahead of peak season per the competitive-responsiveness driver from Week 1. The Month 8 incident occurred at the Chicago distribution center during the heart of peak season, the exact high-volume, high-variability condition flagged as a risk factor throughout discovery and the Week 16 debate.
 
-# **14. Production Incident — Month 8**
+# 14. Production Incident — Month 8
 
-## **14.1 Incident Summary**
+## 14.1 Incident Summary
 
 During a three-day window at the peak of holiday shipping season, the Chicago distribution center’s Warehouse Operations Agent participated in a large number of individually-valid negotiations across multiple enterprise customer accounts, each correctly checking and reserving capacity against the agent’s currently-known available capacity at the moment of that specific negotiation. However, the rapid pace and volume of near-simultaneous negotiations during this unusually high-demand window — compounded by the gap between Chicago’s nominal rated capacity and its actual achievable capacity under the specific staffing and SKU-mix conditions of those three days (the exact distinction Torres flagged in discovery, Section 5.2) — resulted in cumulative committed capacity across all the individually-valid negotiations exceeding the facility’s actual achievable throughput by approximately 18%.
 
 The interim daily-reviewed capacity dashboard (Section 7.2) should have provided a mitigating signal, but its human-review process had a coverage gap during the relevant days (Section 8.3), and even where reviewed, its daily-refresh cadence meant it could not catch a pattern developing within a single day’s rapid negotiation activity. The overcommitment was not identified until physical shipment volume began arriving at the facility in excess of what could be processed, at which point eleven enterprise customer accounts experienced shipment delays, triggering contractual SLA penalty clauses and significant account-relationship strain during MFL’s most commercially important season.
 
-## **14.2 Incident Response Transcript**
+## 14.2 Incident Response Transcript
 
 **Castellano (emergency session, within 8 hours):** I need the full mechanism, and I need to understand if this was foreseeable.
 
@@ -323,13 +321,13 @@ The interim daily-reviewed capacity dashboard (Section 7.2) should have provided
 
 **Castellano:** Build it on an emergency timeline. I also want direct outreach today to all eleven affected accounts — I’m not going to let the technical remediation be the only thing happening here while customer relationships are actively damaged.
 
-## **14.3 Remediation**
+## 14.3 Remediation
 
 The Aggregate Capacity Guard was built and deployed within five weeks — a compressed but not fully “emergency-overnight” timeline, given the genuine engineering complexity of correctly integrating real-time cumulative-capacity tracking across the negotiation protocol without introducing new race conditions of its own, a risk the team explicitly tested for given the ironic possibility of the fix itself introducing a related class of bug. The
 
 guard checks cumulative committed capacity against actual achievable capacity (incorporating Torres’s nominalversus-actual distinction, now represented as a dynamically-updated value informed by current staffing and SKUmix data, not a static nominal figure) on every new negotiation, throttling or escalating to human review when a facility approaches its capacity limit within a given time window. It was deployed to all 18 distribution centers, validated against two subsequent peak-demand periods (a smaller mid-year peak and the following holiday season) with no recurrence of the overcommitment pattern.
 
-# **15. Lessons Learned**
+# 15. Lessons Learned
 
 1. **An architectural gap that is correctly identified, discussed, and given an interim mitigation is not the same as an architectural gap that has been adequately closed — and the gap between “identified and interim-mitigated” and “actually closed” is exactly where risk concentrates.** The Week 16 discussion correctly diagnosed the aggregate-visibility gap and proposed a reasonable interim measure given schedule constraints; the postmortem’s key finding was that the interim measure’s limitations (daily cadence, dependency on consistent manual review) needed to be treated as an active, monitored risk in their own right during the interim period, not treated as “handled” once the interim dashboard shipped.
 
@@ -337,7 +335,7 @@ guard checks cumulative committed capacity against actual achievable capacity (i
 
 3. **The distinction between nominal and actual achievable capacity, identified in Week 2 of discovery, was directly implicated in the incident nine months later — reinforcing that early discovery findings about the gap between how a system is nominally documented and how it actually behaves in practice deserve sustained architectural attention throughout a build, not just acknowledgment at the time they’re raised.** The remediation’s dynamic, staffing-and-SKU-mix-informed capacity representation directly addresses this, but the postmortem noted this could have been prioritized earlier given how clearly Torres had flagged it in Week 2.
 
-# **16. Enterprise Architecture Artifacts**
+# 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : routing, warehouse operations, and carrier coordination value chains with AI-opportunity overlay (Section 5.4)
 
@@ -347,7 +345,7 @@ guard checks cumulative committed capacity against actual achievable capacity (i
 
 - **Peak-Season Readiness Governance Checklist** (post-incident artifact): formalized annual review process directly informed by the Month 8 postmortem
 
-# **17. Architecture Decision Records (ADRs)**
+# 17. Architecture Decision Records (ADRs)
 
 **ADR-001: A2A negotiation-based distributed architecture chosen over a centralized optimizer, given the carrier-integration-heterogeneity constraint makes full real-time centralized visibility unachievable.** Status: Accepted, revisited and reaffirmed at Week 14 despite operations-research-identified theoretical suboptimality relative to an unachievable full-information ideal.
 
@@ -363,7 +361,7 @@ guard checks cumulative committed capacity against actual achievable capacity (i
 
 **ADR-007 (post-incident, governance): Any future decision to defer a known architectural gap requires an explicit interim-mitigation plan with named, backup-covered accountability, not an open-ended deferral.** Status: Accepted. See Section 12.
 
-# **18. AI Evaluation Strategy**
+# 18. AI Evaluation Strategy
 
 - **Cost/utilization efficiency** : primary business-value metric, tracked against the pre-engagement baseline **SLA-commitment accuracy** : stratified by facility and time window per ADR-005, reviewed at standing operations leadership meetings, specifically designed to surface a concentrated-failure pattern rather than allow it to be averaged away in a blended metric
 
@@ -371,7 +369,7 @@ guard checks cumulative committed capacity against actual achievable capacity (i
 
 - **Aggregate Capacity Guard efficacy** (post-incident addition): specific validation against historical negotiation-sequence data from the Month 8 incident and subsequent peak periods, confirming the guard would flag/have flagged the known overcommitment pattern with adequate lead time
 
-# **19. Operational Runbook**
+# 19. Operational Runbook
 
 - **Aggregate Capacity Guard threshold/escalation procedure** : defined thresholds for throttling versus human-escalation as cumulative committed capacity approaches a facility’s actual achievable capacity, with clear escalation ownership at each facility
 
@@ -381,7 +379,7 @@ guard checks cumulative committed capacity against actual achievable capacity (i
 
 - **SLA-breach customer-communication protocol** : coordinated procedure between operations and account management for any facility approaching or exceeding a capacity-guard threshold, ensuring proactive customer communication rather than reactive response only after a breach has occurred, directly informed by Castellano’s Month 8 response emphasis on parallel customer outreach
 
-# **20. Future Roadmap**
+# 20. Future Roadmap
 
 1. **Hybrid centralized/distributed exploration** (raised but deferred at Week 14): a dedicated design exercise evaluating whether a centralized-optimization approach for the subset of fully-integrated carriers and warehouses, combined with the negotiation protocol for the less-integrated segment, could improve overall efficiency — explicitly framed as requiring its own careful risk analysis given the coordination-gap risk flagged at the time, not a straightforward enhancement.
 

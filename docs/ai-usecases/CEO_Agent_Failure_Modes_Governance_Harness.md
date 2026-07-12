@@ -11,51 +11,51 @@ covers_version: "N/A"
 ---
 S O L U T I O N B L U E P R I N T · P A R T 2 · R E L I A B I L I T Y & G O V E R N A N C E
 
-# **Failure Modes, Governance Harness & the Path to Production-Grade Reliability**
+# Failure Modes, Governance Harness & the Path to Production-Grade Reliability
 
 A companion deep-dive for the CEO Agent & Meeting Prep Agent program: how these systems actually fail in production, the real 2026 incidents that show the pattern, and the harness and governance controls that get a firm as close to "flawless" as an autonomous system can responsibly get.
 
 Prepared July 2026  ·  Technical Design & Implementation Reference Companion to: *CEO Agent Pitch* and *CEO Agent & Meeting Prep Agent — Solution Blueprint* Synthesized from 2026 agentic-AI failure research, red-team taxonomies, and named enterprise incidents
 
-## **1. Why "Flawless" Is the Wrong Target — and What to Aim For Instead**
+## 1. Why "Flawless" Is the Wrong Target — and What to Aim For Instead
 
 No autonomous system that reads confidential firm data and writes to an executive's calendar can be made provably flawless — the honest goal is a system that fails safely, fails visibly, and fails rarely, with every failure mode enumerated in advance rather than discovered in production. Security researchers who ran a 2026 multi-institution study of autonomous agents (the *Agents of Chaos* project, from teams at MIT, Harvard, Stanford, and CMU) identified three structural deficits that no amount of prompting fixes: agents have no reliable model of who they're serving versus who might be manipulating them, no model of their own competence boundaries, and no reliable way to track which information is visible to whom. All three map directly onto the CEO Agent's core promise — confidentiality-aware briefings — which is exactly why this system needs a harness, not just a good prompt.
 
 **The reframe that matters for this program:** the Part 1 blueprint's Layer 3 (governance) is necessary but not sufficient on its own. Access control decides what the agent is *allowed* to touch. The harness described in this document decides what happens when the agent is allowed to touch something and still gets it wrong, gets tricked, or takes a step nobody asked for.
 
-## **2. Failure Mode Taxonomy — Top Down**
+## 2. Failure Mode Taxonomy — Top Down
 
 Current research organizes agent failures around the functional modules present in most agentic architectures: reasoning and planning, tool use and action execution, memory and context management, and multi-agent orchestration — with a fifth, cross-cutting category for security-originated failures that are unique to or significantly worse in agentic systems than in single-turn chat.
 
-### **2.1 Reasoning & planning failures**
+### 2.1 Reasoning & planning failures
 
 - **Goal drift.** No single step fails visibly, but small reasoning deviations accumulate into an output that no longer serves the original intent — a meeting brief that technically answers the prompt but misses what actually mattered.
 
 - **Plan adherence failure.** The agent under-executes (skips a required check, like the ethical-wall lookup) or over-executes (makes extra tool calls or takes unplanned actions) relative to the orchestrator's plan.
 
-### **2.2 Tool use & action failures**
+### 2.2 Tool use & action failures
 
 - **Tool misuse / invalid invocation.** The most common agent-specific failure in production: a malformed argument, wrong tool selected, or an error response the agent doesn't notice and continues past as if the call had succeeded — silently corrupting every downstream step.
 
 - **Excessive agency.** The agent is granted more capability to act than the task requires, and uses it — e.g., a briefing agent that can also send a calendar invite or reply to an email when it was only supposed to read and summarize.
 
-### **2.3 Memory & context failures**
+### 2.3 Memory & context failures
 
 - **Context degradation across turns.** Relevant facts fall out of the working context in long-running sessions, especially in a persistent CEO Agent that maintains state across a full day.
 
 - **Memory poisoning.** Malicious or simply wrong information gets written into the agent's persistent memory (e.g., a fabricated "commitment" or a mislabeled sentiment signal) and is then treated as ground truth in every future briefing that touches that client or partner.
 
-### **2.4 Multi-agent orchestration failures**
+### 2.4 Multi-agent orchestration failures
 
 Once the CEO Agent and Meeting Prep Agent are split into sub-agents (classifier, retriever, composer), failures can originate in one agent and propagate silently through the others — an empirically documented pattern across published multi-agent failure taxonomies. A wrong classification at step one ("this is a routine check-in") can cause every downstream retrieval and drafting step to under-prepare for what's actually a relationship-repair conversation.
 
-### **2.5 Information integrity failures**
+### 2.5 Information integrity failures
 
 - **Invention of new information (hallucination).** The agent introduces, alters, or omits information not grounded in any retrieved input — the single most damaging failure mode for a briefing an executive is about to rely on in the room.
 
 - **Fabricated attribution.** A documented pattern even among expert reviewers: confidently formatted, plausible-looking claims that correspond to nothing real. If it can slip past specialist peer reviewers, it can slip into a five-minute pre-meeting read.
 
-### **2.6 Security-originated failures (cross-cutting, and the most severe in this system)**
+### 2.6 Security-originated failures (cross-cutting, and the most severe in this system)
 
 - **Prompt injection — direct, indirect, and recursive.** Hidden instructions embedded in a document, email thread, or CRM note that the agent retrieves as "context" can override its actual instructions. Indirect injection is the higher risk for this product specifically, since the entire value proposition is ingesting exactly the kind of unstructured content (emails, notes, threads) injection hides in.
 
@@ -63,15 +63,15 @@ Once the CEO Agent and Meeting Prep Agent are split into sub-agents (classifier,
 
 - **Cross-boundary information exposure** — the agent's broad visibility (appropriate for the CEO role) leaks into a context where a lower-privileged reader sees the output — structurally the same failure that caused the most consequential AI-agent incident of 2026 (Section 3.1).
 
-## **3. What This Actually Looks Like: 2026 Incidents**
+## 3. What This Actually Looks Like: 2026 Incidents
 
 These aren't hypothetical categories — each maps to a named, reported 2026 incident with direct relevance to a system that has broad executive-level visibility into confidential firm and client data.
 
 **47% 5%** of CISOs surveyed have observed AI agents are confident they could contain a behaving in unintended or unauthorized compromised agent
 
-## **60%**
+## 60%
 
-## **92%**
+## 92%
 
 of organizations cannot terminate a report lacking full visibility into which AI misbehaving agent once it's running identities/agents are even active
 
@@ -79,55 +79,55 @@ ways
 
 ######
 
-###### **Direct analogue**
+###### Direct analogue
 
 An internal AI agent gave an engineer confidently stated, plausible, and wrong technical guidance; implementing it exposed sensitive company and user data to employees who were never authorized to see it, for roughly two hours before containment. No external attacker was involved — the failure was misplaced trust in AI-generated guidance crossing an access boundary that existed for a reason. This is structurally the exact risk the CEO Agent's confidentiality/ethical-wall model exists to prevent: broad, wellintentioned visibility becoming an accidental backdoor.
 
-#### **Vercel / Context.ai — OAuth over-permissioning as supply-chain risk**
+#### Vercel / Context.ai — OAuth over-permissioning as supply-chain risk
 
 An employee granted an AI productivity tool "Allow All" OAuth access to their corporate Google Workspace; when the AI vendor was separately compromised via credential-stealing malware, attackers used those over-broad tokens to move laterally into the customer's systems. The lesson for a CEO Agent connector layer: every connector scope is a standing liability the moment it's broader than the task requires, regardless of how trustworthy the vendor is today.
 
-#### **McKinsey internal AI platform — the action layer, not the model, was the exposure**
+#### McKinsey internal AI platform — the action layer, not the model, was the exposure
 
 Public reporting described an internal AI platform with a large, partly unauthenticated API footprint reachable well beyond the model itself. The broader lesson: AI security attention tends to concentrate on prompts and model behavior, while the actual enterprise risk sits in the APIs, connectors, and internal services the agent can reach — precisely the Layer 1 connector surface in the Part 1 architecture.
 
-#### **EchoLeak — zero-click indirect prompt injection via ordinary content**
+#### EchoLeak — zero-click indirect prompt injection via ordinary content
 
 A disclosed vulnerability in a major enterprise copilot allowed an attacker to exfiltrate confidential data simply by sending a crafted email; the assistant later executed hidden instructions embedded in that email when the user asked an unrelated routine question — no click or user error required. For a Meeting Prep Agent that ingests exactly this kind of unstructured email and thread content by design, this is the single most relevant vulnerability class to defend against before launch.
 
-## **4. The Governance Harness**
+## 4. The Governance Harness
 
 "Harness" has a specific meaning in 2026 agent-engineering practice: an automated framework that evaluates, monitors, and constrains an agent both before and during production — distinct from the model provider's own built-in safety layer (the "inner harness"). The firm is responsible for building the "outer harness": the custom sandboxing, evaluation gates, and runtime controls that map a generalpurpose model onto this specific, confidentiality-sensitive workflow.
 
-##### **Pre-production — Sandbox & simulation**
+##### Pre-production — Sandbox & simulation
 
 Every connector mocked; the agent never touches production CRM or email data during evaluation. Chaos engineering deliberately injects malformed tool responses, timeouts, and errors to test recovery behavior, not just the happy path.
 
-##### **Pre-production — Trajectory evaluation, not just final output**
+##### Pre-production — Trajectory evaluation, not just final output
 
 Full-trajectory evaluation (did it call the right tools, in the right order, respecting the plan) catches materially more failures than judging only the final briefing text — research puts the gap at 20–40% additional failures surfaced.
 
-##### **CI/CD — Eval gating**
+##### CI/CD — Eval gating
 
 Every change to a prompt template, connector, or data-source definition runs the full eval suite before merge; releases are gated on thresholds (e.g., task success rate at or above baseline, tool-selection accuracy ≥0.9, faithfulness ≥0.8). Regressions block the release, they don't just get logged.
 
-##### **Runtime — Bounded execution**
+##### Runtime — Bounded execution
 
 Hard ceilings on reasoning steps and tool calls per task prevent runaway loops; deterministic, schema-validated tool arguments prevent the single-malformed-call failure from silently propagating.
 
-##### **Runtime — Human checkpoints before sensitive actions**
+##### Runtime — Human checkpoints before sensitive actions
 
 Any action beyond "read and summarize" — sending anything, writing to a shared system, widening its own data scope — requires an explicit human approval step. This is the direct fix for the "excessive agency" and "no self-model" failure classes.
 
-##### **Production — Continuous observability**
+##### Production — Continuous observability
 
 Every trace logged and monitored in real time, not just audited after the fact; behavioral anomalies (unusual retrieval patterns, unexpected data reached) trigger automatic review, per the Part 1 governance layer's audit design.
 
-##### **Production — Containment & kill switch**
+##### Production — Containment & kill switch
 
 The capability to immediately suspend a specific agent, a specific connector, or the whole system — tested in advance, not designed for the first time during an actual incident. Most organizations currently cannot do this at all.
 
-### **4.1 Where this maps onto the Part 1 architecture**
+### 4.1 Where this maps onto the Part 1 architecture
 
 |**Part 1 layer**|**Harness addition**|
 |---|---|
@@ -139,7 +139,7 @@ The capability to immediately suspend a specific agent, a specific connector, or
 
 **5. Harness Reference Snippets**
 
-### **5.1 Trajectory-level eval gate (CI/CD)**
+### 5.1 Trajectory-level eval gate (CI/CD)
 
 *Runs on every change to a prompt, connector, or retrieval config — blocks merge on regression*
 
@@ -147,7 +147,7 @@ def run_eval_gate(candidate_build, golden_dataset): results = harness.evaluate( 
 
 gates = { "task_success_rate": (results.task_success, 0.90), "tool_selection_accuracy": (results.tool_accuracy, 0.90), "faithfulness": (results.faithfulness, 0.80), "ethical_wall_violations": (results.wall_violations, 0.0),  # zero tolerance } failures = [name for name, (score, threshold) in gates.items() if (score < threshold if name != "ethical_wall_violations" else score > threshold)] if failures: raise EvalGateFailure(f"Blocked release — failed gates: {failures}") return results
 
-### **5.2 Untrusted-content firewall (indirect prompt injection defense)**
+### 5.2 Untrusted-content firewall (indirect prompt injection defense)
 
 *Every retrieved document/email/thread passes through this before reaching the orchestrator's context*
 
@@ -155,19 +155,19 @@ def sanitize_retrieved_content(raw_content, source): """ Treats all retrieved co
 
 # Content is wrapped so the model treats it as data, never as directives return RetrievedContent( text=f"<untrusted_source id='{source.id}'>{raw_content}</untrusted_source>", blocked=False )
 
-### **5.3 Pre-delivery boundary check (cross-boundary exposure firewall)**
+### 5.3 Pre-delivery boundary check (cross-boundary exposure firewall)
 
 *The check that would have caught a Meta-style exposure before an unauthorized reader saw it*
 
 def check_delivery_boundary(briefing, recipient, source_scope): """ Confirms every fact in the briefing traces back to an entity the *recipient* — not just the requesting executive — is cleared to see. Runs even though the requesting executive was already authorized: delivery channel and recipient identity are checked independently. """ cited_entities = entity_extractor.extract(briefing) for entity in cited_entities: if entity not in source_scope.approved: raise DeliveryBlocked(f"Entity {entity.id} not in approved scope — halting delivery") if not recipient_policy.can_receive(recipient, entity): raise DeliveryBlocked(f"Recipient {recipient.id} not cleared for {entity.id}") return ApprovedForDelivery(briefing)
 
-### **5.4 Kill switch / containment interface**
+### 5.4 Kill switch / containment interface
 
 *Tested quarterly against a live drill, not written once and left unverified*
 
 POST /admin/agents/{agent_id}/suspend { "scope": "connector" | "agent" | "executive_instance" | "system_wide", "reason": "suspected_scope_violation", "initiated_by": "security_oncall", "effective_immediately": true } // Suspension revokes all active scoped tokens for the target immediately — // it does not wait for the agent's current step to complete.
 
-## **6. Best Practices for Approaching "Flawless"**
+## 6. Best Practices for Approaching "Flawless"
 
 - **Evaluate trajectories, not answers.** A correct briefing reached via a policy violation is a harness failure even if the text looks right.
 
@@ -185,7 +185,7 @@ POST /admin/agents/{agent_id}/suspend { "scope": "connector" | "agent" | "execut
 
 - **Maintain a live inventory of every agent and connector in production.** The most consistent gap across 2026 incident postmortems is that organizations didn't know what was running.
 
-## **7. Anti-Patterns That Caused Real 2026 Incidents**
+## 7. Anti-Patterns That Caused Real 2026 Incidents
 
 |**✗ "Allow All" connector scopes**<br>Granting a connector broad, standing OAuth access because it's convenient<br>during setup — this exact pattern let attackers move laterally into a<br>customer's systems after the AI vendor itself was compromised.|**✓ Minimum, short-lived, task-bound scopes**<br>Every connector grant expires and is reissued per task, so a compromised<br>credential has a small, time-boxed blast radius.|
 |---|---|

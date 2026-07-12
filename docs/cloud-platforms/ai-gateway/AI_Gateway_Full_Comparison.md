@@ -9,7 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **AI GATEWAY COMPARISON**
+# AI GATEWAY COMPARISON
 
 Capabilities · Pros & Cons · Best Practices · Anti-Patterns
 
@@ -17,7 +17,7 @@ An Enterprise Architect's Reference covering Kong AI · LiteLLM · AWS Bedrock �
 
 Enterprise AI Architecture Practice · April 2026 · Addendum 03 10 Tools · Version 1.0 · CONFIDENTIAL
 
-#### **MASTER CAPABILITY COMPARISON MATRIX**
+#### MASTER CAPABILITY COMPARISON MATRIX
 
 The matrix below scores each gateway across 10 capability dimensions on a scale of 1–10. Scores reflect the out-of-box capability without significant customisation. Green = strong (8–10), Yellow = moderate (5–7), Red = weak (1–4).
 
@@ -36,19 +36,19 @@ The matrix below scores each gateway across 10 capability dimensions on a scale 
 
 *Legend:* I *8–10 Strong* I *5–7 Moderate* I *1–4 Weak Scores reflect out-of-box capability without significant customisation.*
 
-## **01 Kong AI Gateway**
+## 01 Kong AI Gateway
 
 Kong Inc. (2024) · Apache 2 The enterprise plugin-powered AI (OSS) / Enterprise · Enterprise / traffic controller Cloud-native
 
 Kong AI Gateway extends the battle-tested Kong Gateway with a dedicated AI plugin suite. It sits in front of any LLM provider, enforcing rate limits, semantic caching, PII redaction, and prompt guards through a declarative plugin chain. The plugin ecosystem (Lua, WASM, Go) makes it the most extensible option for platform teams already running Kong for API management, enabling a single pane of glass across REST, GraphQL, gRPC, and AI traffic.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Multi-provide**<br>**r Routing**|**Semantic**<br>**Cache**|**Rate Limiting**<br>**Prompt**<br>**Guard**|**PII Redaction**|**Plugin**<br>**Ecosystem**|**mTLS**|**OpenTelemet**<br>**ry**|
 |---|---|---|---|---|---|---|
 |**RBAC /**<br>**Workspaces**|**Kuberne**|**tes CRDs**<br>**AI Cost Tracking**|**Fallback Chain**|**s**<br>**Streamin**|**g SSE**|**Declarative Config**<br>**(decK)**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**9/10**|
 |---|---|
@@ -62,11 +62,11 @@ Kong AI Gateway extends the battle-tested Kong Gateway with a dedicated AI plugi
 |OSS maturity|**9/10**|
 |FinOps|**8/10**|
 
-##### **Pros / Cons / Best Practices / Anti-Patterns**
+##### Pros / Cons / Best Practices / Anti-Patterns
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Best-in-class plugin ecosystem — Lua, WASM, Go plugins for unlimited extensibility
 
@@ -132,7 +132,7 @@ Kong AI Gateway extends the battle-tested Kong Gateway with a dedicated AI plugi
 
 → Monitor gateway_ai_llm_usage_tokens metric to drive FinOps chargeback
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`Kong AI Gateway — Full AI route with guard + cache (snippet)`**
 
@@ -163,24 +163,24 @@ limit: [{ minute: 200, day: 20000 }]
 identifier: consumer
 ```
 
-###### **VERDICT**
+###### VERDICT
 
 Best choice for platform teams who already operate Kong or need maximum extensibility. The plugin model is unmatched. Requires investment in Kong expertise and enterprise license for full multi-tenancy.
 
-## **02 LiteLLM Proxy**
+## 02 LiteLLM Proxy
 
 BerriAI (2023) · MIT (OSS) / The open-source 100+ provider Enterprise · Dev teams / unification layer Platform engineering
 
 LiteLLM Proxy is the most popular open-source AI gateway, providing a unified OpenAI-compatible endpoint in front of 100+ LLM providers. Written in Python, it is the natural choice for Python-native ML/AI teams. It ships with built-in semantic caching, budget limits, virtual keys, load balancing, and a management UI. The proxy is lightweight enough to run as a sidecar and powerful enough to serve as a production gateway for mid-scale deployments.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**100+ Provider**<br>**Support**|**Virtual API**<br>**Keys**|**Budget**<br>**Limits**|**Semantic**<br>**Cache**<br>**(Redis)**|**Load**<br>**Balancing**|**Fallback**<br>**Chains**|**Retry Logic**|**Spend**<br>**Tracking**|
 |---|---|---|---|---|---|---|---|
 |**Prometheus**||**Op**|**enAI-compatible**|**Team Managem**|**ent**||**Async Batch**|
 |**Metrics**|**Callback**|**Hooks**|**API**|**UI**|**Model**|**Aliases**|**Processing**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**10/10**|
 |---|---|
@@ -194,11 +194,11 @@ LiteLLM Proxy is the most popular open-source AI gateway, providing a unified Op
 |OSS maturity|**8/10**|
 |FinOps|**9/10**|
 
-##### **Pros / Cons / Best Practices / Anti-Patterns**
+##### Pros / Cons / Best Practices / Anti-Patterns
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Supports 100+ providers out of the box — largest provider coverage in any gateway
 
@@ -264,7 +264,7 @@ LiteLLM Proxy is the most popular open-source AI gateway, providing a unified Op
 
 → Use model_group_alias to abstract provider details from application teams
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`LiteLLM Proxy — config.yaml with fallback + budget + cache (snippet)`**
 
@@ -298,19 +298,19 @@ litellm_params:
 
 **03**
 
-### **AWS Bedrock Gateway**
+### AWS Bedrock Gateway
 
 Amazon Web Services (2023) · Native AWS multi-model gateway Proprietary (AWS managed) · with Guardrails AWS-centric enterprise
 
 AWS Bedrock is Amazon's fully managed foundation model service that also functions as an AI gateway when combined with Bedrock Guardrails, IAM policies, VPC endpoints, and AWS API Gateway. It provides access to models from Anthropic, Meta, Mistral, Cohere, Amazon Titan, and Stability AI through a single AWS SDK call. Guardrails add content filtering, PII detection, grounding checks, and topic-based blocking. The integration with AWS IAM, CloudWatch, and PrivateLink makes it the natural fit for organisations deeply invested in the AWS ecosystem.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Multi-model**<br>**Catalog (Anth**<br>**ropic/Meta/Mi**<br>**stral/Amazon)**|**Bedrock**<br>**Guardrails**|**IAM-based**<br>**AuthN/AuthZ**|**VPC**<br>**PrivateLink**|**CloudWatch**<br>**Metrics**|**CloudTrail**<br>**Audit**|**Knowledge**<br>**Bases (RAG)**|<br>**Agents for**<br>**Bedrock**|
 |---|---|---|---|---|---|---|---|
 |**Model Evaluatio**|**n**<br>**Provi**<br>**Throu**|**sioned**<br>**ghput**|**Cross-region**<br>**Inference**|**PrivateLink**<br>**Endpoints**|**Data En**<br>**(K**|**cryption**<br>**MS)**|**Batch Inference**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing<br>**5/10**|
 |---|
@@ -324,7 +324,7 @@ AWS Bedrock is Amazon's fully managed foundation model service that also functio
 |OSS maturity<br>**1/10**|
 |FinOps<br>**7/10**|
 
-##### **Pros / Cons / Best Practices / Anti-Patterns**
+##### Pros / Cons / Best Practices / Anti-Patterns
 
 ###### I **PROS**
 
@@ -360,7 +360,7 @@ AWS Bedrock is Amazon's fully managed foundation model service that also functio
 
 → Store KMS keys in AWS Secrets Manager, not in application config, for model-level encryption
 
-###### **CONS**
+###### CONS
 
 • Hard AWS lock-in — no cross-cloud portability of guardrails or routing logic
 
@@ -396,7 +396,7 @@ AWS Bedrock is Amazon's fully managed foundation model service that also functio
 
 → Enable CloudTrail data events for Bedrock — default trail only captures management events
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`AWS Bedrock — Guardrails + IAM policy (snippet)`**
 
@@ -419,7 +419,7 @@ aws bedrock create-guardrail \
 }
 ```
 
-###### **VERDICT**
+###### VERDICT
 
 Best choice for AWS-native organisations with compliance requirements where data must stay within AWS. Not suitable as a multi-cloud or multi-provider gateway. Pair with a provider-agnostic proxy for OpenAI/Azure traffic.
 
@@ -427,13 +427,13 @@ Best choice for AWS-native organisations with compliance requirements where data
 
 Azure API Management (APIM) gains AI Gateway capabilities through the GenAI Gateway Accelerator and native Azure OpenAI integration. APIM's policy engine (XML-based) can enforce token limits, retry logic, semantic caching (via Azure Cache for Redis), and backend load balancing across multiple Azure OpenAI deployments. The integration with Azure AD, Managed Identity, and Microsoft Entra ID makes it the default choice for Microsoft-centric enterprises running Copilot, M365, and Azure OpenAI workloads.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Azure OpenAI**<br>**Load**<br>**Balancing**|**Token Rate**<br>**Limiting**|**Semantic**<br>**Cache**<br>**(Redis)**<br>**Policy Engine**<br>**(XML)**|**Managed**<br>**Identity**<br>**AuthN**|**Azure AD /**<br>**Entra ID**<br>**RBAC**|**Developer**<br>**Portal**|**Mock**<br>**Responses**|
 |---|---|---|---|---|---|---|
 |**Retry + Circuit**<br>**Breaker**|**Cost Tr**<br>**(Azure M**|**acking**<br>**onitor)**<br>**Private Endpoints**|**Subscription K**|**eys**<br>**Produc**<br>**Ten**|**t-based**<br>**ancy**|**OTel Export**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**5/10**|
 |---|---|
@@ -449,7 +449,7 @@ Azure API Management (APIM) gains AI Gateway capabilities through the GenAI Gate
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Native Azure OpenAI integration with deployment-level load balancing and PTU management
 
@@ -517,7 +517,7 @@ Azure API Management (APIM) gains AI Gateway capabilities through the GenAI Gate
 
 → Use the GenAI Gateway accelerator Bicep templates as baseline — do not start from scratch
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`Azure APIM — Token rate limiting + multi-backend LB policy (snippet)`**
 
@@ -550,19 +550,19 @@ I **`Azure APIM — Token rate limiting + multi-backend LB policy (snippet)`**
 |`</policies>`|
 |**VERDICT**<br>Best choice for Azure-native enterprises standardised on Azure OpenAI and Microsoft identity. The Managed<br>Identity + Entra ID integration is unmatched in the Microsoft ecosystem. Not recommended for multi-cloud or<br>OpenAI-direct workloads.|
 
-## **05 Portkey.ai**
+## 05 Portkey.ai
 
 Portkey (2023) · SaaS / OSS Developer-first AI gateway with (portkey-gateway on GitHub) · prompt versioning Dev teams / Scale-ups
 
 Portkey is a developer-first AI gateway and observability platform. Its OSS core (portkey-gateway) provides multi-provider routing, fallbacks, retries, and caching. The SaaS platform adds prompt management, version control, A/B testing, analytics, and feedback loops. Portkey's prompt vault enables versioned, templated prompts managed centrally — a capability absent from infrastructure-focused gateways. It is the leading choice for product teams who treat prompts as first-class engineering artifacts.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Multi-provide**<br>**r Routing**|**Provider**<br>**Fallback**|**Semantic**<br>**Cache**|**Retry Logic**|**Prompt Vault**|**Prompt**<br>**Versioning &**<br>**A/B Test**|**Request**<br>**Tracing**|**Cost**<br>**Analytics**|
 |---|---|---|---|---|---|---|---|
 |**Virtual Keys**|**Guardrai**|**ls (SaaS)**|**Feedback Loops**|**SDKs**<br>**(Python/JS/Go)**|**Metadata**|**Tagging**|**Webhook**<br>**Integrations**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**9/10**|
 |---|---|
@@ -576,11 +576,11 @@ Portkey is a developer-first AI gateway and observability platform. Its OSS core
 |OSS maturity|**6/10**|
 |FinOps|**8/10**|
 
-##### **Pros / Cons / Best Practices / Anti-Patterns**
+##### Pros / Cons / Best Practices / Anti-Patterns
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Prompt Vault with versioning, A/B testing, and rollback — unique among gateways
 
@@ -646,7 +646,7 @@ Portkey is a developer-first AI gateway and observability platform. Its OSS core
 
 → Use Portkey feedback API to collect thumbs-up/down signals — feed into prompt optimisation loop
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`Portkey — Multi-provider config with fallback + prompt vault (snippet)`**
 
@@ -674,13 +674,13 @@ portkey = Portkey(
 
 Cloudflare AI Gateway runs at the edge of Cloudflare's global network (300+ PoPs), providing the lowest-latency first-hop for AI requests from globally distributed users. It combines AI-specific features (request logging, caching, rate limiting) with Cloudflare's existing WAF, DDoS protection, and Zero Trust (WARP/Access) capabilities. The zero-infrastructure model (workers-based, no servers to manage) makes it uniquely easy to deploy for teams already running on Cloudflare.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Global Edge**<br>**Cache**<br>**Rate Limiting**|**Request**<br>**Logging**|**WAF**<br>**Integration**|**DDoS**<br>**Protection**|**Zero Trust**<br>**(Access)**|**Workers AI**<br>**(on-device**<br>**inference)**|**Provider**<br>**Routing**|
 |---|---|---|---|---|---|---|
 |**Cost Analytics**<br>**Real-**<br>**Dashb**|**time**<br>**oard**|**Caching TTL**<br>**Control**|**Retry Logic**|**Custom**<br>**Middl**|**Workers**<br>**eware**|**AI Binding**<br>**(Workers AI)**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing<br>**6/10**|
 |---|
@@ -696,7 +696,7 @@ Cloudflare AI Gateway runs at the edge of Cloudflare's global network (300+ PoPs
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 - Fastest setup of any gateway — operational in minutes via Cloudflare dashboard
 
@@ -758,7 +758,7 @@ Cloudflare AI Gateway runs at the edge of Cloudflare's global network (300+ PoPs
 
 → Use Cloudflare AI Gateway with Workers AI for edge inference to reduce round-trip to cloud providers
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`Cloudflare AI Gateway — Workers middleware with tenant tagging (snippet)`**
 
@@ -775,13 +775,13 @@ const identity = await env.ACCESS.getIdentity(request)
 
 <mark>`const tenantId = identity?.custom?.tenant_id ?? 'unknown' // Forward to Cloudflare AI Gateway with metadata const gwUrl = 'https://gateway.ai.cloudflare.com/v1/{account}/{gateway}' const response = await fetch(`${gwUrl}/openai/chat/completions`, { method: 'POST', headers: { ...request.headers, 'cf-aig-metadata': JSON.stringify({ tenant: tenantId }), 'Authorization': `Bearer ${env.OPENAI_KEY}`, }, body: request.body, }) return response } }`</mark> Best choice for teams already on Cloudflare who need rapid deployment and global edge presence. Not suitable **VERDICT** as the sole enterprise AI gateway — lacks RBAC depth and multi-tenant isolation. Excellent as a front-edge layer composited with a deeper gateway.
 
-## **Google Apigee AI 07 Gateway**
+## Google Apigee AI 07 Gateway
 
 Google Cloud / Apigee (2024) · Enterprise API management Proprietary (GCP managed) · extended for Vertex AI and Gemini GCP enterprise
 
 Apigee AI Gateway extends Google's enterprise API management platform with AI-specific capabilities: Vertex AI model routing, Gemini integration, token-aware rate limiting, semantic caching via Vertex AI Embeddings, and AI safety via Vertex AI content filtering. Apigee's proven policy engine (XML/JavaScript), developer portal, and analytics platform bring enterprise API governance to AI traffic. The deep GCP integration — Vertex AI, Gemini, Cloud Armor, Duet AI — makes it the natural fit for GCP-first organisations.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Vertex AI**<br>**Model**<br>**Routing**<br>**Gemini**<br>**Native**<br>**Integration**<br>**Token Rate**<br>**Limiting**|**Semantic**<br>**Cache**<br>**(Vertex**<br>**Embeddings)**|**Content**<br>**Safety**<br>**(Vertex AI)**|**Cloud Armor**<br>**WAF**<br>**Identity**<br>**Platform**<br>**AuthN**|**API Products**<br>**&**<br>**Monetisation**|
 |---|---|---|---|---|
@@ -799,7 +799,7 @@ Apigee AI Gateway extends Google's enterprise API management platform with AI-sp
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Native Vertex AI and Gemini integration — zero adapter code for GCP model catalog
 
@@ -859,7 +859,7 @@ Apigee AI Gateway extends Google's enterprise API management platform with AI-sp
 
 → Instrument all AI proxy flows with custom analytics variables (token counts, model, cost) for chargeback
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`Apigee AI Gateway — Vertex AI proxy with token rate limit + cache (snippet)`**
 
@@ -920,13 +920,13 @@ WSO2 (2024 AI extensions) · Open-source enterprise API gateway Apache 2 (OSS) /
 
 WSO2 API Manager and its cloud-native evolution (Choreo) extend the mature open-source API management platform with AI-specific capabilities: LLM rate limiting, semantic caching, AI traffic analytics, and integration with OpenAI, Azure OpenAI, and Anthropic. WSO2's strength is its fully open-source, vendor-neutral positioning — no proprietary lock-in. Choreo adds a developer platform layer with built-in CI/CD, observability, and a component marketplace. Ideal for regulated industries that require source-code-visible infrastructure.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Multi-provide**<br>**r LLM**<br>**Routing**|**Token Rate**<br>**Limiting**|**AI Traffic**<br>**Analytics**|**Semantic**<br>**Cache**|**AI**<br>**Subscription**<br>**Management**|**Ballerina**<br>**Integration**|**GraphQL AI**<br>**APIs**|**Developer**<br>**Portal**|
 |---|---|---|---|---|---|---|---|
 |**API Monetisati**|**on**<br>**Open-sou**|**rce Core**|**On-prem**<br>**Deployment**|**Kubernetes**<br>**Microgateway**|**Policy-**|**as-Code**|**OIDC / OAuth2**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**7/10**|
 |---|---|
@@ -942,7 +942,7 @@ WSO2 API Manager and its cloud-native evolution (Choreo) extend the mature open-
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 - Fully open-source under Apache 2 — source-auditable for regulated industries
 
@@ -1002,7 +1002,7 @@ WSO2 API Manager and its cloud-native evolution (Choreo) extend the mature open-
 
 → Use Ballerina AI library for type-safe multi-provider orchestration in integration flows
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`WSO2 Choreo Connect — AI API rate limiting policy (snippet)`**
 
@@ -1034,19 +1034,19 @@ security:
 
 Best choice for regulated industries (banking, healthcare, government) requiring fully open-source, **VERDICT** source-auditable AI gateway infrastructure. Expect higher operational effort than managed alternatives. Not yet AI-feature-complete compared to Kong or LiteLLM.
 
-## **09 Traefik AI Plugin**
+## 09 Traefik AI Plugin
 
 Traefik Labs (2024) · Apache 2 Kubernetes-native lightweight AI (Traefik OSS) / Enterprise plugin proxy via plugin · Cloud-native / DevOps teams
 
 Traefik Proxy's plugin ecosystem enables AI gateway capabilities through middleware plugins. The Traefik AI plugin suite provides LLM request routing, rate limiting, and observability as Traefik middlewares, making it a natural fit for Kubernetes-native teams already using Traefik as their ingress controller. The sidecar-compatible model allows AI middleware to sit directly in the request path without introducing a separate gateway process. Traefik Hub (enterprise) adds API management capabilities including rate limiting, analytics, and RBAC.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**Middleware**<br>**Plugin**<br>**Architecture**|**K8s**<br>**IngressRoute**<br>**CRDs**|**LLM Request**<br>**Routing**|**Rate Limiting**|**Circuit**<br>**Breaker**|**Retry**<br>**Middleware**|**OpenTele**<br>**ry**|**met**<br>**Prometheus**<br>**Metrics**|
 |---|---|---|---|---|---|---|---|
 |**mTLS**|**Let's Enc**|**rypt TLS**|**Header**<br>**Manipulation**|**Load Balanc**|**ing**<br>**Traefik H**|**ub RBAC**|**Sidecar**<br>**Deployment Model**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**6/10**|
 |---|---|
@@ -1060,11 +1060,11 @@ Traefik Proxy's plugin ecosystem enables AI gateway capabilities through middlew
 |OSS maturity|**8/10**|
 |FinOps|**4/10**|
 
-##### **Pros / Cons / Best Practices / Anti-Patterns**
+##### Pros / Cons / Best Practices / Anti-Patterns
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Native Kubernetes CRD-first design — IngressRoute, Middleware as K8s objects
 
@@ -1122,7 +1122,7 @@ Traefik Proxy's plugin ecosystem enables AI gateway capabilities through middlew
 
 → Pair Traefik with a dedicated LiteLLM sidecar for provider abstraction — Traefik handles ingress, LiteLLM handles LLM routing
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`Traefik — AI route with rate limit + circuit breaker middleware (snippet)`**
 
@@ -1162,7 +1162,7 @@ average: 100
 
 Best choice for Kubernetes-native teams running Traefik who want AI middleware without introducing a new **VERDICT** gateway process. Pair with LiteLLM for provider abstraction. Not a standalone enterprise AI gateway — purpose-built AI gateways (Kong, LiteLLM) should be preferred for complex AI governance needs.
 
-## **10**
+## 10
 
 **IBM watsonx Gateway**
 
@@ -1170,14 +1170,14 @@ IBM (2024) · Proprietary (IBM Enterprise AI governance gateway Cloud / on-prem)
 
 IBM watsonx.ai and the associated API Connect AI Gateway provide enterprise AI governance capabilities targeting heavily regulated industries. The platform combines IBM's API Connect gateway engine with watsonx model catalog access, AI Factsheets (model governance records), OpenScale bias detection, and Watson Trust capabilities. IBM's on-premises deployment model and air-gapped operation support make it the default for financial institutions and government agencies that cannot use public cloud AI services.
 
-##### **Core Capabilities**
+##### Core Capabilities
 
 |**watsonx**<br>**Model**<br>**Catalog**|**AI Factsheets**<br>**(Model**<br>**Cards)**|**Bias & Drift**<br>**Detection**|**API Connect**<br>**Gateway**|**On-prem /**<br>**Air-gapped**<br>**Deployment**|**IBM Security**<br>**Verify AuthN**|**Z/OS**<br>**Integration**|**FIPS 140-2**<br>**Encryption**|
 |---|---|---|---|---|---|---|---|
 |**DataStage**|**Watso**|**n NLU**||**Audit Trail**|||**Private Model**|
 |**Integration**|**Guar**|**drails**|**IBM Cloud IAM**|**(Immutable)**|**SLA Man**|**agement**|**Hosting**|
 
-##### **Capability Scores**
+##### Capability Scores
 
 |Multi-provider routing|**4/10**|
 |---|---|
@@ -1193,7 +1193,7 @@ IBM watsonx.ai and the associated API Connect AI Gateway provide enterprise AI g
 
 ###### I **PROS**
 
-###### **CONS**
+###### CONS
 
 • Industry-leading AI governance — AI Factsheets document every model's lineage, bias metrics, and drift
 
@@ -1255,7 +1255,7 @@ IBM watsonx.ai and the associated API Connect AI Gateway provide enterprise AI g
 
 → Run air-gapped deployments on IBM Z for maximum data sovereignty in financial institutions
 
-##### **Reference Snippet**
+##### Reference Snippet
 
 I **`IBM watsonx — AI Factsheet metadata registration (concept snippet)`**
 
@@ -1283,7 +1283,7 @@ metadata={
 
 Only justified for heavily regulated industries (Tier-1 banking, defence, government) with on-prem mandates and **VERDICT** existing IBM infrastructure. The AI governance capabilities are unmatched for these use cases. For all other scenarios, modern cloud-native alternatives deliver better ROI.
 
-#### **HOW TO CHOOSE: Decision Guide**
+#### HOW TO CHOOSE: Decision Guide
 
 Match your primary driver to the recommended gateway. Most enterprises will layer 2–3 solutions.
 

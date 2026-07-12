@@ -1,6 +1,9 @@
 ---
 title: "Enterprise-Scale A2A Ecosystem: Security, Governance & Architecture Guide"
-date: 2026-07-11
+date_created: 2026-07-11
+last_reviewed: 2026-07-11
+source_type: native-md
+source_file: ""
 status: current
 doc_type: architecture-guide
 tags: ["a2a", "enterprise-architecture", "security", "governance", "identity", "multi-agent"]

@@ -1,5 +1,5 @@
 ---
-title: "BUSINESS · COMMUNICATION & EXECUTIVE SKILLS"
+title: "Business Communication & Executive Skills"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -11,7 +11,7 @@ covers_version: "N/A"
 ---
 **Page 1**
 
-# **BUSINESS · COMMUNICATION & EXECUTIVE SKILLS**
+# Business Communication & Executive Skills
 
 ### **MASTERY GUIDE**
 

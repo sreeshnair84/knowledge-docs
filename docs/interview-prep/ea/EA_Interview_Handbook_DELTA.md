@@ -1,5 +1,5 @@
 ---
-title: "ENTERPRISE ARCHITECTURE** Interview Handbook"
+title: "EA Interview Handbook — 2026 Delta Update"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -11,7 +11,7 @@ target_role: "AI/ML Architect"
 ---
 ## How to Use This Guide
 
-# **ENTERPRISE ARCHITECTURE** Interview Handbook
+# EA Interview Handbook — 2026 Delta Update
 
 ### ∆ **DELTA EDITION**
 

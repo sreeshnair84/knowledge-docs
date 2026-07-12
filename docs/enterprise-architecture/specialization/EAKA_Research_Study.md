@@ -11,21 +11,21 @@ tags: []
 
 <!-- converted from EAKA_Research_Study.pdf -->
 
-## **EAKA**
+## EAKA
 
 Research Initiative
 
-###### **ENTERPRISE  AI  ARCHITECTURE  ·  PRINCIPAL RESEARCH**
+###### ENTERPRISE  AI  ARCHITECTURE  ·  PRINCIPAL RESEARCH
 
-# **Enterprise Agent Knowledge Architecture** **<u>EAKA</u>**
+# Enterprise Agent Knowledge Architecture** **<u>EAKA</u>
 
 Autonomous Knowledge Discovery, Skill Composition, Governance & Continuous Evolution for Enterprise AI Agents
 
-###### **RESEARCH TYPE**
+###### RESEARCH TYPE
 
-##### **Comprehensive Study**
+##### Comprehensive Study
 
-###### **PERSONAS**
+###### PERSONAS
 
 **TARGET SECTORS DATE Banking · Insurance 2026**
 
@@ -37,9 +37,7 @@ Designed for large enterprises where thousands of documents, SDKs, APIs, and sta
 
 © 2026  EAKA Research Initiative  ·  All rights reserved  ·  Confidential
 
-
-
-### **Table of Contents**
+### Table of Contents
 
 **Executive Summary**
 
@@ -71,22 +69,17 @@ Designed for large enterprises where thousands of documents, SDKs, APIs, and sta
 
 **14. Maturity Model & Roadmap Decision Matrix — Platform Comparison**
 
-
-
-
-
-
-### **Executive Summary**
+### Executive Summary
 
 Modern enterprises operate across heterogeneous landscapes of knowledge: thousands of SDK documents, vendor APIs, internal wikis, architecture decision records, security policies, and continuously evolving engineering assets. Current AI platforms — whether document-centric RAG pipelines or connector-centric MCP frameworks — provide agents with data access but not with the organisational intelligence required to _reason over, compose, govern, and evolve_ that knowledge at scale.
 
 This research presents the **Enterprise Agent Knowledge Architecture (EAKA)** — a unified framework that enables autonomous AI agents to discover what knowledge is required, identify which sources are authoritative, invoke the correct enterprise skills, select and govern MCP tools, validate results, and continuously improve as organisational knowledge changes.
 
-#### **Core Research Hypothesis**
+#### Core Research Hypothesis
 
 I Current enterprise AI platforms excel at connecting agents to data and tools, but lack a unified architecture for representing, governing, composing, and evolving organisational knowledge and reusable expertise. EAKA — built around knowledge planning, dynamic skill composition, knowledge graphs, governed skill registries, and context-aware orchestration — can significantly improve the accuracy, maintainability, and scalability of enterprise AI systems compared with today's document-centric RAG and connector-centric MCP approaches.
 
-#### **Key Findings at a Glance**
+#### Key Findings at a Glance
 
 - Knowledge Planning outperforms vanilla RAG by constructing goal-decomposed execution plans before any retrieval occurs.
 
@@ -102,12 +95,7 @@ I Current enterprise AI platforms excel at connecting agents to data and tools, 
 
 - Microsoft Agent Ecosystem integration enables enterprise-grade identity, governance, and agent interoperability at organisational scale.
 
-#### **Scope and Target Sectors**
-
-
-
-
-
+#### Scope and Target Sectors
 
 |**Sector**|**Scale Challenge**|**Priority Knowledge Domains**|
 |---|---|---|
@@ -117,18 +105,11 @@ I Current enterprise AI platforms excel at connecting agents to data and tools, 
 |Manufacturing|Engineering BOM complexity; ISO standards|Product, Process, Quality, Supply Chain|
 |Government|Procurement rules; multi-agency knowledge sil|osPolicy, Procurement, Legal, Citizen Services|
 
-
-
-
-
-
-
-
-### **1. Enterprise Knowledge Discovery**
+### 1. Enterprise Knowledge Discovery
 
 The foundational challenge of enterprise AI is that knowledge is distributed across dozens of heterogeneous systems — each with its own schema, access model, freshness characteristics, and authority level. Agents must be able to discover information _without_ users knowing where it resides.
 
-#### **1.1 Source Taxonomy**
+#### 1.1 Source Taxonomy
 
 Enterprise knowledge sources are classified into five tiers based on authority and change velocity:
 
@@ -140,9 +121,7 @@ Enterprise knowledge sources are classified into five tiers based on authority a
 |T4|Collaborative|Teams, Slack, Meeting recordings|Low-medium|Real-time|
 |T5|Training & reference|Conference recordings, Training material, E-le|arning<br>Contextual|Periodic|
 
-
-
-#### **1.2 Federated Discovery Engine**
+#### 1.2 Federated Discovery Engine
 
 A Federated Discovery Engine (FDE) maintains live connectors to each source tier. Rather than batch-indexing entire corpora, the FDE operates a three-layer architecture:
 
@@ -154,7 +133,7 @@ A Federated Discovery Engine (FDE) maintains live connectors to each source tier
 
 - freshness decay.
 
-#### **1.3 Crawl and Ingestion Pipelines**
+#### 1.3 Crawl and Ingestion Pipelines
 
 - SDK & Vendor Docs: webhook or polling on new releases; AST-aware chunking preserving code examples.
 
@@ -168,27 +147,17 @@ A Federated Discovery Engine (FDE) maintains live connectors to each source tier
 
 - Recordings: speech-to-text transcription → topic segmentation → time-stamped chunk indexing.
 
-
-
-
-
-
-#### **1.4 Transparent Source Attribution**
+#### 1.4 Transparent Source Attribution
 
 I Every retrieved knowledge chunk carries a provenance envelope: source system, document ID, version, author, last-modified date, trust tier, and a retrieval confidence score. Agents surface this envelope in responses, enabling human reviewers to verify lineage.
 
-
-
-
-
-
-### **2. Knowledge Classification**
+### 2. Knowledge Classification
 
 Effective agent reasoning requires knowledge to be classified not merely by topic but by _type, scope, and relationship_ . A hierarchical taxonomy combined with a semantic relationship model enables agents to navigate from abstract goals to concrete implementation artefacts.
 
-#### **2.1 Hierarchical Taxonomy**
+#### 2.1 Hierarchical Taxonomy
 
-###### **Knowledge Taxonomy Hierarchy**
+###### Knowledge Taxonomy Hierarchy
 
 |**Business Capability**<br>M|
 |---|
@@ -202,17 +171,9 @@ Effective agent reasoning requires knowledge to be classified not merely by topi
 |M|
 |**Implementation**|
 
+###### Code / Test / Runbook
 
-
-
-
-
-
-
-
-###### **Code / Test / Runbook**
-
-#### **2.2 Semantic Relationship Types**
+#### 2.2 Semantic Relationship Types
 
 |**Relationship**|**Direction**|**Example**|**Use in Planning**|
 |---|---|---|---|
@@ -225,9 +186,7 @@ Effective agent reasoning requires knowledge to be classified not merely by topi
 |related_to|Concept↔Conce|ptRBAC related_to Zero-Trust|Discovery expansion|
 |version_of|Skill v2→Skill v1|IdentitySkill-2.0 version_of v1|Version compatibility checks|
 
-
-
-#### **2.3 Classification Pipeline**
+#### 2.3 Classification Pipeline
 
 - **Extraction** — NLP entity recognition identifies concepts, technologies, and patterns in raw
 
@@ -241,34 +200,21 @@ Effective agent reasoning requires knowledge to be classified not merely by topi
 
 - **Graph Commit** — approved nodes and edges are written to the Enterprise Knowledge Graph.
 
-
-
-
-
-
-### **3. Agent Knowledge Planning**
+### 3. Agent Knowledge Planning
 
 Traditional RAG approaches retrieve documents in response to a query and pass them to a model. Knowledge Planning inverts this: the agent first constructs a structured **Knowledge Execution Plan (KEP)** that specifies what is needed, from where, and how it will be validated — before any retrieval occurs.
 
-#### **3.1 Knowledge Execution Plan (KEP)**
+#### 3.1 Knowledge Execution Plan (KEP)
 
 **Knowledge Execution Plan — Planning Pipeline**
 
-
 ![Figure 1](/img/enterprise-architecture/ea-p9-1.png)
-
 
 User Goal<br>M<br>Goal Decomposition (sub-goals)<br>M<br>Required Capabilities<br>M<br>Required Concepts<br>M<br>Required Enterprise Skills<br>M<br>Required Knowledge Sources (ranked)<br>M<br>Required MCP Servers & Tools<br>M<br>Validation Strategy<br>M<br>Execution<br><!-- End of picture text -->
 
+###### Evaluation & Feedback
 
-
-
-
-
-
-###### **Evaluation & Feedback**
-
-#### **3.2 KEP vs. Traditional RAG**
+#### 3.2 KEP vs. Traditional RAG
 
 |**Dimension**|**Traditional RAG**|**Knowledge Execution Plan**|
 |---|---|---|
@@ -281,9 +227,7 @@ User Goal<br>M<br>Goal Decomposition (sub-goals)<br>M<br>Required Capabilities<b
 |Freshness|Index-time cutoff|Live freshness signals per source|
 |Conflict handling|Implicit (highest similarity wins)|Explicit trust hierarchy + conflict resolution|
 
-
-
-#### **3.3 Planning Algorithm**
+#### 3.3 Planning Algorithm
 
 - **Goal Parser** — extracts intent, entities, constraints, and implicit requirements.
 
@@ -301,16 +245,11 @@ User Goal<br>M<br>Goal Decomposition (sub-goals)<br>M<br>Required Capabilities<b
 
 - **Plan Optimizer** — prunes redundant steps, parallelises independent branches.
 
-
-
-
-
-
-### **4. Enterprise Skills Architecture**
+### 4. Enterprise Skills Architecture
 
 An Enterprise Skill is a governed, versioned, reusable capability package that encapsulates the knowledge, tools, prompts, retrieval strategies, and validation rules needed to perform a specific class of task. Skills are the primary unit of reuse in EAKA.
 
-#### **4.1 Skill Package Specification**
+#### 4.1 Skill Package Specification
 
 |**Field**|**Type**|**Description**|
 |---|---|---|
@@ -334,14 +273,7 @@ An Enterprise Skill is a governed, versioned, reusable capability package that e
 |created_at|DateTime|ISO-8601 creation timestamp|
 |approved_by|PersonRef|Governance approval record|
 
-
-
-#### **4.2 Skill Versioning Strategy**
-
-
-
-
-
+#### 4.2 Skill Versioning Strategy
 
 - **Major version** (breaking) — output schema changes, required tools change, purpose changes.
 
@@ -351,30 +283,23 @@ An Enterprise Skill is a governed, versioned, reusable capability package that e
 
 I Skills must maintain backward compatibility for at least one major version. Deprecation notices are published 90 days before retirement. Agents automatically resolve to the latest compatible version unless pinned.
 
-#### **4.3 Skill Governance Workflow**
+#### 4.3 Skill Governance Workflow
 
-###### **Skill Lifecycle — Governance Workflow**
-
+###### Skill Lifecycle — Governance Workflow
 
 ![Figure 2](/img/enterprise-architecture/ea-p12-2.png)
 
-
 Skill Author Creates Draft<br>M<br>Automated Evaluation Suite Runs<br>M<br>Peer Review (SME Gate)<br>M<br>Security & Compliance Review<br>M<br>Governance Board Approval<br>M<br>Publish to Skill Registry<br>M<br>Continuous Monitoring & Feedback<br>M<br>Version Update or Deprecation<br><!-- End of picture text -->
 
-
-
-
-
-
-### **5. Dynamic Skill Composition**
+### 5. Dynamic Skill Composition
 
 Dynamic Skill Composition is the ability for agents to automatically assemble specialist capabilities in response to a user goal — without manual configuration. The Skill Composer analyses goal requirements and constructs an optimal composition of Enterprise Skills.
 
-#### **5.1 Composition Example**
+#### 5.1 Composition Example
 
 I User Goal: "Implement secure authentication for an AWS service." Automatically composed skills: • Identity Skill → IAM patterns, OAuth2/OIDC, SAML • AWS Skill → AWS IAM, Cognito, STS, SDK docs • Security Skill → Threat modelling, OWASP Top 10, pen-test patterns • Architecture Skill → Zero-trust patterns, ADR retrieval • Documentation Skill → Runbook generation, OpenAPI annotation • Testing Skill → Security test cases, integration test scaffolding
 
-#### **5.2 Composition Algorithm**
+#### 5.2 Composition Algorithm
 
 - **Step 1 — Goal Embedding** : encode goal into semantic vector.
 
@@ -392,7 +317,7 @@ I User Goal: "Implement secure authentication for an AWS service." Automatically
 
 - **Step 8 — Result Fusion** : merge outputs with cross-skill consistency checking.
 
-#### **5.3 Composition Planning Algorithms**
+#### 5.3 Composition Planning Algorithms
 
 |**Algorithm**|**Approach**|**Best For**|**Complexity**|
 |---|---|---|---|
@@ -402,14 +327,7 @@ I User Goal: "Implement secure authentication for an AWS service." Automatically
 |Learned Policy|RL-trained composition policy network|High-frequency goal patterns|O(1) inference|
 |Hybrid Planner|Graph search seeded by learned policy|Production enterprise deployments|Best of both|
 
-
-
-#### **5.4 Composition Governance**
-
-
-
-
-
+#### 5.4 Composition Governance
 
 - Maximum composition depth: configurable per deployment (default: 6 skill levels).
 
@@ -419,16 +337,11 @@ I User Goal: "Implement secure authentication for an AWS service." Automatically
 
 - Audit log records every composition decision for post-hoc review.
 
-
-
-
-
-
-### **6. Agent Knowledge Governance**
+### 6. Agent Knowledge Governance
 
 Enterprise AI systems must operate under rigorous governance — not only for compliance but for trust. EAKA's Governance Engine enforces policies across knowledge quality, source authority, skill approvals, access control, and audit trails.
 
-#### **6.1 Trust Score Model**
+#### 6.1 Trust Score Model
 
 Every knowledge artefact and skill carries a computed Trust Score (0–100) derived from:
 
@@ -442,24 +355,17 @@ Every knowledge artefact and skill carries a computed Trust Score (0–100) deri
 
 - **Usage Feedback** (10 pts) — positive agent-use outcomes weighted over time.
 
-#### **6.2 Conflict Resolution Protocol**
+#### 6.2 Conflict Resolution Protocol
 
 **Conflict Resolution Protocol**
 
-
 ![Figure 3](/img/enterprise-architecture/ea-p15-3.png)
-
 
 Conflicting knowledge detected<br>M<br>Compare Trust Scores<br>M<br>Higher score  ≥  15pt margin  →  prefer higher<br>M<br>Score within 15pts  →  escalate to SME<br>M<br>SME resolves  →  record decision + rationale<br>M<br>Update graph edge: supersedes / conflicts_with<br>M<br><!-- End of picture text -->
 
+###### Notify downstream skills of resolution
 
-
-
-
-
-###### **Notify downstream skills of resolution**
-
-#### **6.3 Compliance and Auditability**
+#### 6.3 Compliance and Auditability
 
 |**Requirement**|**EAKA Mechanism**|**Audit Evidence**|
 |---|---|---|
@@ -470,9 +376,7 @@ Conflicting knowledge detected<br>M<br>Compare Trust Scores<br>M<br>Higher score
 |Incident response|Full KEP replay for any prior execution|KEP archive with inputs/outputs|
 |Model governance|Eval suite pass/fail per skill version|Evaluation report per release|
 
-
-
-#### **6.4 Deprecation Workflow**
+#### 6.4 Deprecation Workflow
 
 - Deprecation notice published 90 days before retirement (T-90).
 
@@ -482,16 +386,11 @@ Conflicting knowledge detected<br>M<br>Compare Trust Scores<br>M<br>Higher score
 
 - Retired skills remain in read-only archive for audit and rollback purposes.
 
-
-
-
-
-
-### **7. Enterprise Knowledge Graph**
+### 7. Enterprise Knowledge Graph
 
 The Enterprise Knowledge Graph (EKG) is the semantic backbone of EAKA. Rather than indexing flat documents, the EKG represents organisational knowledge as a richly connected graph of concepts, technologies, people, policies, and capabilities — enabling agents to reason over relationships, not just retrieve text.
 
-#### **7.1 EKG Node Types**
+#### 7.1 EKG Node Types
 
 |**Node Type**|**Key Properties**|**Example**|
 |---|---|---|
@@ -508,9 +407,7 @@ The Enterprise Knowledge Graph (EKG) is the semantic backbone of EAKA. Rather th
 |MCPServer|url, capabilities[], auth_model, health_status|github-mcp.acme.com|
 |Tool|name, mcp_server, schema, rate_limit|search_code, create_issue|
 
-
-
-#### **7.2 Key Edge Types**
+#### 7.2 Key Edge Types
 
 - Concept **implements** Pattern — links abstract patterns to concrete implementations.
 
@@ -526,12 +423,7 @@ The Enterprise Knowledge Graph (EKG) is the semantic backbone of EAKA. Rather th
 
 - Concept **supersedes** Concept — knowledge evolution over time.
 
-
-
-
-
-
-#### **7.3 Graph Evolution Strategy**
+#### 7.3 Graph Evolution Strategy
 
 - **Event-driven updates** — graph mutated by change events from source connectors.
 
@@ -545,7 +437,7 @@ The Enterprise Knowledge Graph (EKG) is the semantic backbone of EAKA. Rather th
 
 - **Conflict reconciliation** — contradictory edges trigger the Governance Engine conflict protocol.
 
-#### **7.4 Query Patterns**
+#### 7.4 Query Patterns
 
 - **Concept path query** — traverse from Business Capability to concrete implementation artefacts.
 
@@ -555,16 +447,11 @@ The Enterprise Knowledge Graph (EKG) is the semantic backbone of EAKA. Rather th
 
 - **Freshness scan** — retrieve all nodes with trust_score < threshold for curation review.
 
-
-
-
-
-
-### **8. MCP Integration**
+### 8. MCP Integration
 
 Model Context Protocol (MCP) is treated in EAKA not as a simple connector but as an **intelligent capability provider** . The MCP Integration Layer provides dynamic discovery, semantic tool selection, multi-server orchestration, and governance — transforming MCP into a first-class architectural component.
 
-#### **8.1 MCP Capability Registry**
+#### 8.1 MCP Capability Registry
 
 Each registered MCP Server carries a structured capability manifest:
 
@@ -584,28 +471,19 @@ Each registered MCP Server carries a structured capability manifest:
 
 - **sla** — p95 latency, availability SLA, and support contact.
 
-#### **8.2 Dynamic MCP Discovery**
+#### 8.2 Dynamic MCP Discovery
 
 **Dynamic MCP Discovery and Tool Selection**
 
-
 ![Figure 4](/img/enterprise-architecture/ea-p19-4.png)
-
 
 Skill requests capability (e.g., 'search code repositories')<br>M<br>MCP Registry semantic search over capability embeddings<br>M<br>Candidate servers ranked by: trust × freshness × latency × data-class match<br>M<br>Top-k servers selected for consideration<br>M<br>Context Planner allocates tool budget<br>M<br><!-- End of picture text -->
 
-
-
-
-
-
-
 ![Figure 5](/img/enterprise-architecture/ea-p20-5.png)
-
 
 Selected server invoked with structured tool call<br>M<br>Result validated against output schema<br>M<br>Outcome fed back to registry for ranking update<br><!-- End of picture text -->
 
-#### **8.3 Multi-MCP Orchestration**
+#### 8.3 Multi-MCP Orchestration
 
 - **Parallel invocation** — independent tool calls across servers executed concurrently.
 
@@ -617,11 +495,11 @@ Selected server invoked with structured tool call<br>M<br>Result validated again
 
 - **Budget enforcement** — total tool-call budget capped per KEP stage.
 
-#### **8.4 MCP Security Boundaries**
+#### 8.4 MCP Security Boundaries
 
 I MCP server invocations are bound by the data classification of the invoking Skill. A Skill operating on Confidential data may not invoke an MCP server classified below Confidential. All cross-boundary attempts are blocked by the Governance Engine and logged for security review.
 
-#### **8.5 Tool Governance**
+#### 8.5 Tool Governance
 
 |**Control**|**Mechanism**|**Enforcement Point**|
 |---|---|---|
@@ -632,18 +510,11 @@ I MCP server invocations are bound by the data classification of the invoking Sk
 |Audit logging|Every tool call logged with KEP reference|Observability Layer|
 |Deprecation|Tool version pinning; migration alerts|MCP Registry subscription|
 
-
-
-
-
-
-
-
-### **9. Microsoft Agent Ecosystem Integration**
+### 9. Microsoft Agent Ecosystem Integration
 
 Microsoft's agent ecosystem — spanning Azure AI Foundry, Microsoft 365 Copilot, Azure AI Agent Service, and Microsoft Fabric — provides enterprise-grade orchestration, identity, and governance infrastructure. EAKA integrates natively with this ecosystem while remaining vendor-neutral through open standards.
 
-#### **9.1 Integration Architecture**
+#### 9.1 Integration Architecture
 
 |**Layer**|**Microsoft Component**|**EAKA Integration Point**|
 |---|---|---|
@@ -656,9 +527,7 @@ Microsoft's agent ecosystem — spanning Azure AI Foundry, Microsoft 365 Copilot
 |Monitoring|Azure Monitor, Application Insights|EAKA observability telemetry pipeline|
 |DevOps|Azure DevOps, GitHub Actions|Skill CI/CD pipeline integration|
 
-
-
-#### **9.2 Skill Discovery via Microsoft Ecosystem**
+#### 9.2 Skill Discovery via Microsoft Ecosystem
 
 - Skills registered in EAKA Skill Registry are exposed as **Microsoft Copilot Plugins** via OpenAPI manifest.
 
@@ -668,20 +537,13 @@ Microsoft's agent ecosystem — spanning Azure AI Foundry, Microsoft 365 Copilot
 
 - Entra ID group membership drives skill-level access control automatically.
 
-#### **9.3 Ecosystem Comparison**
+#### 9.3 Ecosystem Comparison
 
 |**Dimension**|**Microsoft (AI Foundry)**|**AWS (Bedrock Agents)**|**Google (Vertex AI)**|**Open Source (LangGraph)**|
 |---|---|---|---|---|
 |Orchestration|Agent Service + Semantic Kern|el Bedrock Agent DAGs|Agent Builder|LangGraph / CrewAI|
 |Skill/Tool model|Copilot Plugins + A2A|Action Groups|Extensions|Tools / Custom nodes|
 |Knowledge store|Azure AI Search + Graph|Knowledge Bases (S3)|Vertex Search|Any (pluggable)|
-
-
-
-
-
-
-
 
 |**Dimension**|**Microsoft (AI Foundry)**|**AWS (Bedrock Agents)**|**Google (Vertex AI)**|**Open Source (LangGraph)**|
 |---|---|---|---|---|
@@ -691,18 +553,11 @@ Microsoft's agent ecosystem — spanning Azure AI Foundry, Microsoft 365 Copilot
 |Openness|Proprietary + open standards|Proprietary|Proprietary|Fully open|
 |EAKA fit|Best for enterprises on M365|Best for AWS-native|Best for GCP-native|Best for custom/hybrid|
 
-
-
-
-
-
-
-
-### **10. Knowledge Context Engineering**
+### 10. Knowledge Context Engineering
 
 Context Engineering is the discipline of optimally managing what knowledge an agent loads, compresses, summarises, retrieves, forgets, and refreshes within a bounded context window. Poor context management is the primary driver of hallucination and stale-knowledge errors in enterprise AI systems.
 
-#### **10.1 Context Budget Framework**
+#### 10.1 Context Budget Framework
 
 |**Context Zone**|**Budget Allocation**|**Content**|**Eviction Policy**|
 |---|---|---|---|
@@ -713,9 +568,7 @@ Context Engineering is the discipline of optimally managing what knowledge an ag
 |Tool Results|10–15%|MCP tool outputs, structured data|Summarised after use|
 |Working Memory|5–10%|Intermediate reasoning steps, entity state|Checkpoint + compress|
 
-
-
-#### **10.2 Context Lifecycle Operations**
+#### 10.2 Context Lifecycle Operations
 
 - **Load** — inject knowledge chunk into context, tagged with source, trust score, and TTL.
 
@@ -729,35 +582,25 @@ Context Engineering is the discipline of optimally managing what knowledge an ag
 
 - **Summarise** — distil multi-turn reasoning into compact facts for handoff to next agent.
 
-#### **10.3 When to Retrieve vs. Use Cached Knowledge**
+#### 10.3 When to Retrieve vs. Use Cached Knowledge
 
 I Retrieve freshly when: (a) source freshness TTL has expired, (b) task is safety-critical or compliance-driven, (c) knowledge was flagged as recently updated in the EKG. Use cached knowledge when: (a) TTL is valid, (b) task is low-risk exploratory, (c) retrieval latency would exceed SLA budget.
 
-#### **10.4 Hallucination Reduction Through Context Engineering**
+#### 10.4 Hallucination Reduction Through Context Engineering
 
 - Ground every factual claim to a retrieved chunk with provenance (not model parametric memory).
 
 - Enforce a 'no-claim-without-citation' rule in skill output schemas.
 
-
-
-
-
-
 - Use trust-score thresholds: only chunks with trust ≥ 65 are used for safety-critical claims.
 
 - Cross-validate critical facts across ≥ 2 independent sources before including in response.
 
-
-
-
-
-
-### **11. Agent Reliability**
+### 11. Agent Reliability
 
 Reliability in enterprise AI is not simply about model accuracy — it encompasses knowledge currency, retrieval fidelity, tool robustness, and architectural consistency. EAKA defines a multi-dimensional reliability framework.
 
-#### **11.1 Failure Taxonomy**
+#### 11.1 Failure Taxonomy
 
 |**Failure Type**|**Root Cause**<br>**EAKA Mitigation**|
 |---|---|
@@ -770,9 +613,7 @@ Reliability in enterprise AI is not simply about model accuracy — it encompass
 |Tool failure|MCP server timeout or schema mismatchFallback server cascading; retry with exponential backoff|
 |Composition error|Skill dependency cycle or budget exhaustion<br>DAG cycle detection; budget enforcement in Skill Composer|
 
-
-
-#### **11.2 Reliability Metrics**
+#### 11.2 Reliability Metrics
 
 - **Knowledge Grounding Rate (KGR)** — % of factual claims traceable to a retrieved chunk.
 
@@ -786,7 +627,7 @@ Reliability in enterprise AI is not simply about model accuracy — it encompass
 
 - **Hallucination Detection Rate (HDR)** — % of hallucinations caught by the Evaluation Engine.
 
-#### **11.3 Reliability Measurement Architecture**
+#### 11.3 Reliability Measurement Architecture
 
 - **Online evaluation** — real-time fact-checking via Evaluation Engine on every KEP execution.
 
@@ -798,16 +639,11 @@ Reliability in enterprise AI is not simply about model accuracy — it encompass
 
 - **A/B skill versioning** — canary deployments of new skill versions with statistical comparison.
 
-
-
-
-
-
-### **12. Enterprise Reference Architecture**
+### 12. Enterprise Reference Architecture
 
 The EAKA Reference Architecture defines a layered, loosely coupled platform with clear separation between knowledge representation, skill execution, governance, and observability. All components communicate through well-defined APIs, enabling vendor-neutral deployment.
 
-#### **12.1 Platform Component Inventory**
+#### 12.1 Platform Component Inventory
 
 |**Component**|**Responsibility**<br>**Key Interfaces**|
 |---|---|
@@ -826,29 +662,18 @@ The EAKA Reference Architecture defines a layered, loosely coupled platform with
 |Observability|Centralised telemetry, tracing, and alerting<br>OpenTelemetry collector, Dashboard API, Alert API|
 |Feedback Loop|Collects user and agent signals to improve knowledge quality<br>Feedback Ingest API, Signal Processing, Trust Update|
 
-
-
-#### **12.2 Layered Architecture**
+#### 12.2 Layered Architecture
 
 **EAKA Layered Reference Architecture**
 
 |**User / Agent Interface Layer (Natural language, API, Copilot plugins)**<br>M<br>**Orchestration Layer (Knowledge Planner · Skill Composer · Context Planner)**|
 |---|
 
-
-
-
-
-
-
-
-
 ![Figure 6](/img/enterprise-architecture/ea-p27-6.png)
-
 
 M<br>Capability Layer (Skill Registry · Agent Registry · MCP Registry)<br>M<br>Knowledge Layer (Knowledge Registry · Knowledge Graph · Retrieval Broker)<br>M<br>Governance Layer (Trust Engine · Governance Engine · Evaluation Engine)<br>M<br>Infrastructure Layer (Vector DB · Graph DB · Object Store · Message Bus)<br>M<br>Source Layer (SDK Docs · Wikis · GitHub · Jira · SharePoint · Slack · ...)<br><!-- End of picture text -->
 
-#### **12.3 Technology Stack Recommendations**
+#### 12.3 Technology Stack Recommendations
 
 |**Layer**|**Open-Source Options**|**Cloud-Managed Options**|
 |---|---|---|
@@ -860,36 +685,21 @@ M<br>Capability Layer (Skill Registry · Agent Registry · MCP Registry)<br>M<br
 |Workflow Engine|Temporal.io, Apache Airflow|AWS Step Functions, Azure Durable Functions|
 |API Gateway|Kong, Envoy, Traefik|Azure APIM, AWS API Gateway, GCP API Gateway|
 
-
-
-
-
-
-
-
-### **13. AI-Assisted Knowledge Lifecycle**
+### 13. AI-Assisted Knowledge Lifecycle
 
 Enterprise knowledge must not merely be indexed but continuously curated, validated, and evolved. EAKA's Knowledge Lifecycle Engine uses AI to automate the pipeline from raw document creation to governed skill generation — with human oversight at key gates.
 
-#### **13.1 Lifecycle Pipeline**
+#### 13.1 Lifecycle Pipeline
 
-###### **AI-Assisted Knowledge Lifecycle Pipeline**
-
+###### AI-Assisted Knowledge Lifecycle Pipeline
 
 ![Figure 7](/img/enterprise-architecture/ea-p28-7.png)
 
-
 Document Created / Updated<br>M<br>Knowledge Extraction (NER, Relation Extraction, Claim Detection)<br>M<br>Classification (Taxonomy Placement + Confidence Scoring)<br>M<br>Relationship Discovery (Graph Edge Inference)<br>M<br>Human Curation Gate (SME Review for low-confidence nodes)<br>M<br>Skill Generation (Auto-draft skills from knowledge gaps)<br>M<br>Agent Validation (Automated skill evaluation against test suite)<br>M<br>Governance Approval (Board review for new or major-version skills)<br>M<br>Continuous Evaluation (Drift detection, freshness decay, usage signals)<br><!-- End of picture text -->
 
+#### Deprecation Trigger (Conflict detected or TTL expired)** M **Archival (Immutable archive with lineage preserved)
 
-
-
-
-
-
-#### **Deprecation Trigger (Conflict detected or TTL expired)** M **Archival (Immutable archive with lineage preserved)**
-
-#### **13.2 AI-Generated Skill Drafts**
+#### 13.2 AI-Generated Skill Drafts
 
 When new documentation is ingested, the Lifecycle Engine analyses knowledge gaps in the Skill Registry and automatically drafts new skills:
 
@@ -903,7 +713,7 @@ When new documentation is ingested, the Lifecycle Engine analyses knowledge gaps
 
 - Submit draft to Skill Registry with status 'Draft — Pending SME Review'.
 
-#### **13.3 Drift Detection**
+#### 13.3 Drift Detection
 
 - **Semantic drift** — embedding distance between current skill prompts and updated source docs
 
@@ -917,16 +727,11 @@ When new documentation is ingested, the Lifecycle Engine analyses knowledge gaps
 
 I Detected drift triggers an automated notification to the skill owner with a diff between current skill specification and the updated source material. Owners have 30 days to publish an update before the skill is flagged as 'At Risk'.
 
-
-
-
-
-
-### **14. Maturity Model & Roadmap**
+### 14. Maturity Model & Roadmap
 
 Enterprises should not attempt to implement the full EAKA platform in a single programme. The EAKA Maturity Model defines five progressive levels, each delivering measurable value while building towards the complete architecture.
 
-#### **14.1 Enterprise AI Knowledge Maturity Model**
+#### 14.1 Enterprise AI Knowledge Maturity Model
 
 |**Level**|**Name**|**Capabilities**<br>**Key Deliverable**|
 |---|---|---|
@@ -936,9 +741,7 @@ Enterprises should not attempt to implement the full EAKA platform in a single p
 |L4|Knowledge-Planned|KEP engine; EKG; dynamic MCP; context engineering<br>Knowledge Planner + EKG live|
 |L5|Autonomous Evolution|AI-assisted lifecycle; drift detection; self-improving skills<br>Full EAKA Platform — continuous improvement|
 
-
-
-#### **14.2 Implementation Roadmap**
+#### 14.2 Implementation Roadmap
 
 |**Phase**|**Duration**|**Milestones**<br>**Success Metrics**|
 |---|---|---|
@@ -949,14 +752,7 @@ Enterprises should not attempt to implement the full EAKA platform in a single p
 |Phase 4<br>Lifecycle|14–20 months|AI-assisted lifecycle; drift detection; auto skill drafting; full audit<br>Skill currency≥90% across registry|
 |Phase 5<br>Scale|20–28 months|Enterprise-wide rollout; open platform publication; community governance<br>≥1,000 skills;≥50 MCP servers governed|
 
-
-
-#### **14.3 Gap Analysis — Unsolved Research Problems**
-
-
-
-
-
+#### 14.3 Gap Analysis — Unsolved Research Problems
 
 - **Cross-agent knowledge negotiation** — no standard protocol for agents to agree on conflicting
 
@@ -986,12 +782,7 @@ Enterprises should not attempt to implement the full EAKA platform in a single p
 
 - sacrificing rigour.
 
-
-
-
-
-
-### **Decision Matrix — Platform Comparison**
+### Decision Matrix — Platform Comparison
 
 The following matrix compares leading enterprise AI platforms against the fourteen EAKA capability dimensions. Scores are based on publicly available documentation and analyst assessments as of the publication date.
 
@@ -1009,7 +800,5 @@ The following matrix compares leading enterprise AI platforms against the fourte
 |AI Knowledge Lifecycle|#####|###II|##III|###II|##III|####I|
 |Reliability Framework|#####|####I|####I|###II|##III|###II|
 |Vendor Neutrality|#####|##III|##III|##III|#####|##III|
-
-
 
 ##### = Full support ####I = Strong ###II = Partial ##III = Limited #IIII = None

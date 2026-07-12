@@ -9,7 +9,7 @@ tags: ["interview-prep"]
 last_reviewed: 2026-07-10
 target_role: "AI/ML Architect"
 ---
-# **ENTERPRISE GenAI / AI ARCHITECT**
+# ENTERPRISE GenAI / AI ARCHITECT
 
 ## INTERVIEW PREPARATION GUIDE
 
@@ -24,7 +24,7 @@ Hard-Level · Scenario-Based · Strategy-Based · 12 Questions with Full Answers
 |**03**|Governance, Risk & Responsible AI|Q7 – Q9|
 |**04**|Strategy, Leadership & Stakeholder Mgmt|Q10 – Q12|
 
-#### **HOW TO USE THIS GUIDE**
+#### HOW TO USE THIS GUIDE
 
 - Read the question and formulate your own answer BEFORE reading the provided answer.
 
@@ -34,7 +34,7 @@ Hard-Level · Scenario-Based · Strategy-Based · 12 Questions with Full Answers
 
 - Tailor answers to your specific industry context and experience during actual interviews.
 
-### **SECTION 1 — ENTERPRISE LLM ARCHITECTURE & DESIGN**
+### SECTION 1 — ENTERPRISE LLM ARCHITECTURE & DESIGN
 
 **Q1 Architecture**
 
@@ -108,9 +108,9 @@ Business case: A typical enterprise routes ~60% of queries to Tier 1, 30% to Tie
 
 Using frontier models for every task is the equivalent of routing all network traffic through a satellite link — expensive, slow, and wasteful for simple payloads. The insight that impresses interviewers is framing this as portfolio optimization with explicit risk stratification, not just 'use a cheaper model for easy stuff.' The dynamic router is critical: hard-coding routing logic becomes brittle as use cases evolve. LLM-as-judge automated evaluation enables continuous quality monitoring without human labeling at scale.
 
-### **SECTION 2 — RAG, KNOWLEDGE SYSTEMS & AGENTS**
+### SECTION 2 — RAG, KNOWLEDGE SYSTEMS & AGENTS
 
-#### **Q4 RAG Architecture**
+#### Q4 RAG Architecture
 
 **Design an enterprise RAG system for a global law firm with 2 million legal documents in 12 languages, strict privilege constraints, and a requirement for citation-level accuracy. What are the key architectural decisions?**
 
@@ -134,9 +134,9 @@ Using frontier models for every task is the equivalent of routing all network tr
 
 Legal RAG has two hard constraints that generic RAG ignores: privilege and citation accuracy. A hallucinated case citation in a legal memo is a professional liability issue. Privilege-aware retrieval must be enforced at the data layer, not the application layer — otherwise privilege can be circumvented by prompt injection. The hybrid search choice is specific to the domain: legal text relies on exact terminology (statutes, case numbers, defined terms) that dense retrieval underperforms on. Interviewers look for domain-specific reasoning, not generic RAG boilerplate.
 
-#### **Q5**
+#### Q5
 
-###### **Agentic Systems**
+###### Agentic Systems
 
 **You are architecting an autonomous AI agent that will interact with enterprise ERP, CRM, and ITSM systems on behalf of employees. What are the critical safety, reliability, and governance design patterns?**
 
@@ -166,7 +166,7 @@ Agentic AI in enterprise contexts is where the stakes of failure are highest —
 
 **Evaluation**
 
-### **How do you build a rigorous, scalable evaluation framework for a production RAG system when ground-truth labels are expensive to obtain and the use case evolves rapidly?**
+### How do you build a rigorous, scalable evaluation framework for a production RAG system when ground-truth labels are expensive to obtain and the use case evolves rapidly?
 
 ##### ! **ANSWER**
 
@@ -186,11 +186,11 @@ Rapid evolution strategy: Use LLM-as-judge with a critiquing prompt rather than 
 
 The naive answer is 'use human evaluation.' The sophisticated answer recognizes that human evaluation does not scale to thousands of daily queries and does not provide the fast feedback loop that production systems need. The four-tier framework balances speed (automated metrics), reliability (golden dataset), human signal (preference sampling), and business impact (business metrics). LLM-as-judge is now standard but must be calibrated — an uncalibrated judge is just expensive noise. The key insight for rapidly evolving use cases is building the evaluation infrastructure as a product, not a one-time exercise.
 
-### **SECTION 3 — GOVERNANCE, RISK & RESPONSIBLE AI**
+### SECTION 3 — GOVERNANCE, RISK & RESPONSIBLE AI
 
-#### **Q7 AI Governance**
+#### Q7 AI Governance
 
-### **The EU AI Act classifies certain enterprise AI applications as 'high-risk.' How do you operationalize AI Act compliance for a global enterprise with 80+ AI/ML systems, without creating a compliance bottleneck?**
+### The EU AI Act classifies certain enterprise AI applications as 'high-risk.' How do you operationalize AI Act compliance for a global enterprise with 80+ AI/ML systems, without creating a compliance bottleneck?
 
 ##### ! **ANSWER**
 
@@ -210,9 +210,9 @@ Operationalizing EU AI Act compliance at scale requires a risk-tiered governance
 
 The failure mode of compliance programs is creating heavyweight processes that all 80 teams must navigate for every system — this produces either paralysis or shadow AI (teams hide systems to avoid compliance). The hub-and-spoke model and risk tiering solve this: 70% of systems are Minimal-Risk and need only basic documentation; 10% are High-Risk and receive intensive scrutiny. Compliance-as-code is critical for scale — manual checklists do not survive contact with a 6-week sprint cadence. Interviewers probe whether candidates understand that EU AI Act compliance is an engineering problem as much as a legal one.
 
-#### **Q8**
+#### Q8
 
-###### **Security / Adversarial AI**
+###### Security / Adversarial AI
 
 **Your enterprise LLM application has been identified as a target for prompt injection attacks, jailbreaks, and data exfiltration via the model. Design a layered defense strategy.**
 
@@ -240,7 +240,7 @@ Prompt injection is the SQL injection of the LLM era — it exploits the fundame
 
 **Responsible AI**
 
-### **An AI hiring screening tool your team built is showing disparate impact against candidates from certain demographic groups, discovered 6 months after deployment. Walk through your incident response and long-term remediation.**
+### An AI hiring screening tool your team built is showing disparate impact against candidates from certain demographic groups, discovered 6 months after deployment. Walk through your incident response and long-term remediation.
 
 ##### ! **ANSWER**
 
@@ -272,7 +272,7 @@ I **REASONING**
 
 The suspension decision is non-negotiable and must come first — before root cause, before communications. Continuing to make automated decisions with a known-biased system creates compounding legal and reputational liability. The historical data insight is critical: models trained on past hiring decisions inherit the biases of past hiring managers. Interviewers probe depth of understanding on fairness metrics — equalized odds (equal true positive and false positive rates across groups) is often the right constraint for hiring; demographic parity (equal selection rates) is appropriate when base rates should be equalized. Candidates must demonstrate they understand the difference.
 
-### **SECTION 4 — STRATEGY, LEADERSHIP & STAKEHOLDER MANAGEMENT**
+### SECTION 4 — STRATEGY, LEADERSHIP & STAKEHOLDER MANAGEMENT
 
 **Q10 Executive Strategy**
 
@@ -322,7 +322,7 @@ Recommendation: Buy (API/managed) for the base model. Fine-tune and RAG for doma
 
 This question tests whether the architect can manage ego-driven technical decisions (building because it is impressive) versus value-driven ones. The data point on training costs is critical — most CTOs do not have accurate mental models for what frontier model training actually costs. The middle path (buy + fine-tune + RAG) is the correct answer for almost every enterprise and demonstrates nuance. The supply-chain risk point and the abstraction layer mitigation show systems thinking beyond the immediate decision.
 
-#### **Q12 Change Management**
+#### Q12 Change Management
 
 **Six months into a GenAI transformation program, employee adoption is at 12% despite mandatory training. Three senior managers are actively discouraging their teams from using the AI tools. How do you diagnose and recover the program?**
 

@@ -13,9 +13,9 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 5 OF 5**
 
-## **~~1. AWS Reference Architecture~~**
+## 1. AWS Reference Architecture
 
-# This section defines the production AWS architecture for an enterprise Agentic AI authorization platform. Every ~~component is justified by its specific role in the authorization chain.~~ **~~AWS Implementation, Governance &~~** **~~<u>Production Readiness</u>~~ 1.1 Architecture** **<u>Overview</u>**
+# This section defines the production AWS architecture for an enterprise Agentic AI authorization platform. Every component is justified by its specific role in the authorization chain. **AWS Implementation, Governance &** **<u>Production Readiness</u> 1.1 Architecture** **<u>Overview</u>**
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MICROSOFT ENTRA ID` I I
 
@@ -23,23 +23,23 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MICROSOFT ENTRA ID` I
 
 <u>Enterprise Policy Interceptor Architecture for Agentic AIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u> <u>`JWT (OIDC)`</u>
 
-IIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AWS PERIMETER` I I ~~IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I~~ ~~`AWS WAF` I I~~ ~~`CloudFront`~~ `(Optional)` I I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
+IIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AWS PERIMETER` I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `AWS WAF` I I `CloudFront` `(Optional)` I I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
 
 IIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `API GATEWAY (REST/HTTP)` I I
 
 <u>I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I</u> <u>`Lambda Authorizer` I I I</u>
 
-I I I `• JWT validation (JWKS from Entra)` I I I I I I `• Claims extraction` I I I I I I `• AVP` ~~`IsAuthorized call` I I I I I I~~ ~~`• Decision caching (IAM policy cache)` I I I I I~~ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I
+I I I `• JWT validation (JWKS from Entra)` I I I I I I `• Claims extraction` I I I I I I `• AVP` `IsAuthorized call` I I I I I I `• Decision caching (IAM policy cache)` I I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
 <u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u> <u>`(Authorized requests`</u> `only)`
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ `AUTHORIZATION CORE (VPC)` I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
+IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTHORIZATION CORE (VPC)` I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Claims Normalization` I I `Amazon Verified` <u>`Permissions` I I I I</u> <u>`Service (ECS Fargate)` I I</u> <u>`(Cedar Policy Store)` I I I I</u> `• Group GUID resolution` I I `• Business authorization` I I I I `• Role` → `capability map` I I `• Agent` ~~`permissions` I I I I~~ ~~`• PIP attribute lookup` I I~~ ~~`• Tool policies` I I I I~~ ~~`• ElastiCache (Redis)`~~ **VOLUME COVERAGE** I I `• IsAuthorized API` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Claims Normalization` I I `Amazon Verified` <u>`Permissions` I I I I</u> <u>`Service (ECS Fargate)` I I</u> <u>`(Cedar Policy Store)` I I I I</u> `• Group GUID resolution` I I `• Business authorization` I I I I `• Role` → `capability map` I I `• Agent` `permissions` I I I I `• PIP attribute lookup` I I `• Tool policies` I I I I `• ElastiCache (Redis)` **VOLUME COVERAGE** I I `• IsAuthorized API` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-AWS reference architecture (AVP, Bedrock, ECS/EKS, API GW, Entra ID integration), policy-as-codeIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII ~~CI/CD, performance benchmarks & caching, decision logging, enterprise case studies, migration roadmap~~ <u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I</u> <u>`OPA Sidecar Cluster` I I</u> <u>`Risk Engine` I I I</u> from embedded to externalized authorization, and production readiness checklist.I `(ECS / K8s DaemonSet)` I I `• AWS Fraud Detector` I I I I `• Infrastructure policy` I I `•` ~~`GuardDuty signals` I I I I~~ ~~`• K8s admission (EKS)` I I~~ ~~`• Risk score` →~~ ~~`context` I I I~~
+AWS reference architecture (AVP, Bedrock, ECS/EKS, API GW, Entra ID integration), policy-as-codeIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII CI/CD, performance benchmarks & caching, decision logging, enterprise case studies, migration roadmap <u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I</u> <u>`OPA Sidecar Cluster` I I</u> <u>`Risk Engine` I I I</u> from embedded to externalized authorization, and production readiness checklist.I `(ECS / K8s DaemonSet)` I I `• AWS Fraud Detector` I I I I `• Infrastructure policy` I I `•` `GuardDuty signals` I I I I `• K8s admission (EKS)` I I `• Risk score` → `context` I I I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
@@ -47,7 +47,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I <u>II
 
 `AGENT RUNTIME LAYER (ECS / EKS / Lambda)` I I I I
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I~~ ~~`Amazon`~~ `Bedrock AgentCore` I I I I IIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIII
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Amazon` `Bedrock AgentCore` I I I I IIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIII
 
 IIIIIIIIIIIIIII I I I I I `Orchestrator` I I `Payment Agent` I I `Data Agent` I I I I I I
 
@@ -55,31 +55,29 @@ IIIIIIIIIIIIIII I I I I I `Orchestrator` I I `Payment Agent` I I `Data Agent` I 
 
 IIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIII I I I I I I I I I I I
 
-~~IIIIIIIIIMIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIMIIIIIII I I I I I~~ ~~`MCP PEP`~~ `Gateway (ECS Fargate)` I I I I I I `(Per-tool Cedar authorization)` I I I I I
+IIIIIIIIIMIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIMIIIIIII I I I I I `MCP PEP` `Gateway (ECS Fargate)` I I I I I I `(Per-tool Cedar authorization)` I I I I I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I <u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u>
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I ~~IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ `DATA & KNOWLEDGE LAYER` I I I I IIIIIIIIIIIIII IIIIIIIIIIIII IIIIIIIIIIIIIIII
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `DATA & KNOWLEDGE LAYER` I I I I IIIIIIIIIIIIII IIIIIIIIIIIII IIIIIIIIIIIIIIII
 
 IIIIIIIIIIIIIIIIII I I I `OpenSearch` I I `DynamoDB` I I `RDS/Aurora` I I `S3 (RAG docs)` I I I <u>I</u> <u>`(RAG/Memory)` I I</u> <u>`(Metadata)` I I</u> <u>`(Business)` I I</u> <u>`KMS encrypted` I I I IIIIIIIIIIIIII</u>
 
 IIIIIIIIIIIII IIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIII I
 
-~~IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I~~ IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
-`OBSERVABILITY & COMPLIANCE LAYER` I I I I `CloudTrail (all API calls)` I `CloudWatch` <u>`(metrics/alarms)` I I</u> <u>`X-Ray (distributed tracing)` I</u> <u>`Security Hub (compliance)` I I</u> <u>`GuardDuty`</u> `(threat detection)` I `Config (resource compliance)` I I `Decision Audit Store (DDB)` I `Macie (PII` ~~`detection in S3)` I~~
+`OBSERVABILITY & COMPLIANCE LAYER` I I I I `CloudTrail (all API calls)` I `CloudWatch` <u>`(metrics/alarms)` I I</u> <u>`X-Ray (distributed tracing)` I</u> <u>`Security Hub (compliance)` I I</u> <u>`GuardDuty`</u> `(threat detection)` I `Config (resource compliance)` I I `Decision Audit Store (DDB)` I `Macie (PII` `detection in S3)` I
 
-~~Classification: CONFIDENTIAL — INTERNAL USE ONLY~~
+Classification: CONFIDENTIAL — INTERNAL USE ONLY
 
-~~Published: June 2026  ·  AWS Well-Architected Series~~
+Published: June 2026  ·  AWS Well-Architected Series
 
 **ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
-
-
 <mark>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</mark>
 
-### **1.2 AWS Component Justification Matrix**
+### 1.2 AWS Component Justification Matrix
 
 |**AWS Service**|**Role in Architecture**|**Why This Service**|
 |---|---|---|
@@ -101,17 +99,11 @@ IIIIIIIIIIIII IIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIII I
 |EventBridge|Async event-driven agent<br>workflows, policy change events|Schema registry, rule-based routing, dead-letter<br>queues|
 |AWS Config|Detect policy configuration drift,<br>compliance rules|Custom Config rules for AVP policy store changes|
 
-
-
-
-
-
-
-## **2. Performance Benchmarks & Caching Strategy**
+## 2. Performance Benchmarks & Caching Strategy
 
 Authorization must not become a performance bottleneck. The goal is to add <5ms P99 latency to any request. This requires aggressive caching at multiple layers.
 
-### **2.1 Performance Targets**
+### 2.1 Performance Targets
 
 |**Component**|**P50**<br>**Target**|**P99**<br>**Target**|**Caching Strategy**|
 |---|---|---|---|
@@ -124,31 +116,25 @@ Authorization must not become a performance bottleneck. The goal is to add <5ms 
 |RAG Pre-filter Construction|<0.5ms|<1ms|Derived from cached canonical claims|
 |Post-retrieval Cedar Evaluation|<2ms/chu<br>nk|<5ms/chu<br>nk|Batch IsAuthorized for multiple chunks|
 
-
-
-### **2.2 Multi-Layer Cache Architecture**
+### 2.2 Multi-Layer Cache Architecture
 
 `REQUEST` I M `Layer 1: Lambda Authorizer IAM Policy Cache` I `• TTL: 300 seconds (max API Gateway cache)` I `• Key: token hash + resource + action` I `• Hit rate: ~70% (repeat API calls)` I `• Latency saved: ~15ms avg per cache hit` I M `Layer 2: Claims Normalization Cache (ElastiCache Redis)` I `• TTL: aligned with JWT expiry (typically 3600s)` I `• Key: SHA256(raw_jwt)` I `• Hit rate: ~95% (token reuse within session)` I `• Latency saved: ~25ms avg per cache hit` I M `Layer 3: PIP Attribute Cache (ElastiCache Redis)` I `• TTL: 300 seconds (short — attributes can change)` I `• Key: userId + attribute_type` I `• Hit rate: ~85% (stable attributes within session)` I `• Latency saved: ~10ms avg per cache hit` I M `Layer 4: OPA Policy Bundle (In-Memory)` I `• TTL: bundle refresh every 30 seconds` I `• Full bundle in OPA memory — no I/O on evaluation` I `• Evaluation latency: <1ms` I `POLICY EVALUATION (all cache layers active) Total overhead: <5ms P99 (warm)`
 
-### **2.3 Cache Invalidation on Policy Change**
+### 2.3 Cache Invalidation on Policy Change
 
 When policies change, caches must be invalidated to prevent stale authorization decisions. The event-driven invalidation pipeline is:
 
 `Policy Change (AVP Console / CI/CD)` I M `CloudTrail` → `EventBridge Rule (PutPolicy event detected)` I M `Cache Invalidation Lambda • Flush affected Redis keys (by policy scope tag) • Issue API Gateway cache invalidation • Notify OPA bundle server to force refresh` I M `Decision log entry: "POLICY_CHANGED — cache invalidated" Alert: PagerDuty / CloudWatch alarm (if prod change)`
 
-
-
-
-
-## **3. Policy-as-Code CI/CD Pipeline**
+## 3. Policy-as-Code CI/CD Pipeline
 
 Policies are code. They must be version-controlled, peer-reviewed, automatically tested, staged, deployed, and monitored for drift. This is non-negotiable for regulated environments.
 
-### **3.1 Policy CI/CD Pipeline**
+### 3.1 Policy CI/CD Pipeline
 
 `Developer writes/modifies Cedar or Rego policy` I M `Git commit to feature branch [GitHub / CodeCommit Repository]` I M `Pull Request opened [Automated PR Checks — GitHub Actions / CodeBuild] • cedar validate (schema check) • cedar test (unit test suite YAML) • OPA conftest (Rego unit tests) • Policy lint (naming conventions, required comments) • Security review flag (policies touching financials auto-flag) • Regression test (shadow evaluation vs production decisions)` I M `PR approved by security team + tech lead [Merge to main]` I M `CI/CD Pipeline triggers [AWS CodePipeline / GitHub Actions]` I III `Stage 1: Staging Environment` I `• Deploy to staging AVP policy store` I `• Deploy Rego bundle to staging S3` I `• Run integration tests (100+ scenarios)` I `• Shadow evaluation: compare vs prod (1hr traffic replay)` I `• Approval gate: automated + human sign-off` I III `Stage 2: Canary Deployment (5% traffic)` I `• Canary AVP policy store` I `• Monitor decision metrics (allow rate, deny rate, errors)` I `• CloudWatch alarm: >2% delta vs baseline` → `auto-rollback` I `• Duration: 30 minutes minimum` I III `Stage 3: Production Deployment • Full deployment to production AVP policy store • OPA bundle S3 upload` → `force refresh all sidecars • CloudTrail event logged: POLICY_DEPLOYED • Rollback trigger: CloudWatch alarm within 15 minutes • Post-deploy: 1-hour monitoring window`
 
-### **3.2 Policy Testing Framework**
+### 3.2 Policy Testing Framework
 
 ```
 # Cedar Policy Test Suite (YAML format) # File: tests/payment_tool_tests.yaml tests: - name:
@@ -164,47 +150,39 @@ denied" scenario: principal: attributes: { tenantId: "tenant-a" } resource: attr
 tenantId: "tenant-b" } expected: DENY
 ```
 
-
-
-
-
-## **4. Enterprise Case Studies**
+## 4. Enterprise Case Studies
 
 The following case studies document how industry leaders have implemented externalized authorization, PEP/PDP patterns, and policy-as-code across their organizations:
 
-#### **Capital One — Cedar/AVP for Banking Authorization**
+#### Capital One — Cedar/AVP for Banking Authorization
 
 Capital One was an early adopter of Amazon Verified Permissions and contributed to Cedar's development. Their architecture uses AVP as the central PDP for all customer-facing banking applications. Key design decisions: capability-based policies abstracted from AD groups, per-microservice PEP enforcement using Lambda Authorizers, and CloudTrail as the authoritative audit record for all authorization decisions. They report <3ms P99 authorization latency at production scale.
 
-#### **Netflix — OPA for Multi-Platform Authorization**
+#### Netflix — OPA for Multi-Platform Authorization
 
 Netflix deployed OPA as their primary policy engine across a heterogeneous stack (Java, Python, Node.js). They run OPA as a sidecar in every service pod (Kubernetes), with policy bundles distributed via S3 every 30 seconds. Netflix's key innovation: partial evaluation (OPA's partial eval compiles policies to queries, enabling database-level filtering for authorization). They use this for content authorization and internal service-to-service access control.
 
-#### **Uber — Zanzibar-Inspired ReBAC**
+#### Uber — Zanzibar-Inspired ReBAC
 
 Uber built a Zanzibar-inspired authorization system for fine-grained relationship-based access control across their global platform. Key characteristics: relationship tuples stored in globally-consistent storage, authorization decisions computed from relationship graphs, sub-10ms global latency. Uber uses OPA for infrastructure policy and their custom ReBAC system for user-facing authorization.
 
-#### **Goldman Sachs / JPMorgan — FGAC for Financial Data**
+#### Goldman Sachs / JPMorgan — FGAC for Financial Data
 
 Major investment banks implement Fine-Grained Access Control (FGAC) using attribute-based models. Their authorization stack includes: ADFS/Entra integration for identity, claims normalization to canonical banking roles (trader, approver, risk manager), Cedar/XACML-style policies for per-instrument data access, and immutable audit trails meeting MiFID II and DORA requirements. Trade-level authorization considers instrument type, trading book, region, and counterparty in a single policy evaluation.
 
-#### **AWS — Cedar Formal Verification**
+#### AWS — Cedar Formal Verification
 
 AWS uses Cedar internally for S3 bucket policies, IAM, and Verified Permissions. AWS's contribution to Cedar includes formal verification using the Lean theorem prover — Cedar policies can be mathematically proven to be non-contradictory. This is particularly relevant for banking regulation: authorization policies can be submitted to regulators as formally verified artifacts, not just code.
 
-#### **Intuit — Styra DAS + OPA for Enterprise Scale**
+#### Intuit — Styra DAS + OPA for Enterprise Scale
 
 Intuit manages OPA across hundreds of services using Styra DAS (Declarative Authorization Service). Their architecture: OPA sidecar per service, policies distributed from Styra DAS central server, decision logs to Elasticsearch, GitOps policy workflow with automated PR reviews. They report 99.99% authorization availability with <2ms P99 sidecar evaluation.
 
-
-
-
-
-## **5. Migration Roadmap: Embedded to Centralized Authorization**
+## 5. Migration Roadmap: Embedded to Centralized Authorization
 
 Migrating from embedded authorization code to a centralized policy engine is a multi-phase program. The following roadmap is sequenced to minimize risk while delivering early value:
 
-#### **Phase 1: Foundation (Weeks 1–6)**
+#### Phase 1: Foundation (Weeks 1–6)
 
 Establish the authorization platform foundation: provision AVP policy store, deploy OPA sidecar cluster, implement claims normalization service, establish GitOps policy workflow, configure CloudTrail decision logging. No application changes yet — this phase builds the infrastructure.
 
@@ -222,7 +200,7 @@ Establish the authorization platform foundation: provision AVP policy store, dep
 
 - I Define Cedar entity schema for the domain
 
-#### **Phase 2: Shadow Mode (Weeks 7–12)**
+#### Phase 2: Shadow Mode (Weeks 7–12)
 
 Deploy Cedar/OPA in shadow mode alongside existing embedded authorization. Every request is evaluated by BOTH the existing code AND the new policy engine. Compare decisions to identify gaps, mismatches, and edge cases — without changing production behavior.
 
@@ -236,7 +214,7 @@ Deploy Cedar/OPA in shadow mode alongside existing embedded authorization. Every
 
 - I Achieve >99.9% decision parity before proceeding to Phase 3
 
-#### **Phase 3: Canary Enforcement (Weeks 13–18)**
+#### Phase 3: Canary Enforcement (Weeks 13–18)
 
 Enable policy enforcement for 5–20% of traffic. Monitor closely. Expand gradually as confidence grows. Roll back immediately if mismatch rate exceeds threshold.
 
@@ -250,17 +228,13 @@ Enable policy enforcement for 5–20% of traffic. Monitor closely. Expand gradua
 
 - I Complete application code removal of embedded auth checks
 
-#### **Phase 4: Full Production (Weeks 19–24)**
+#### Phase 4: Full Production (Weeks 19–24)
 
 Complete migration: 100% policy-engine authorization, all embedded code removed, full audit trail, compliance documentation generated.
 
 - I 100% traffic through centralized policy engine
 
 - I Remove embedded authorization code from all services
-
-
-
-
 
 I Complete compliance documentation (NIST, PCI DSS evidence package)
 
@@ -270,15 +244,11 @@ I Policy drift detection active (Config rules)
 
 I Performance optimization complete (cache hit rate >90%)
 
-
-
-
-
-## **6. Production Readiness Checklist**
+## 6. Production Readiness Checklist
 
 The following checklist must be completed before a policy-enforced authorization system is deemed production-ready for regulated enterprise deployment:
 
-#### **Identity & Claims**
+#### Identity & Claims
 
 - I JWT signature validation against live JWKS endpoint
 
@@ -294,7 +264,7 @@ The following checklist must be completed before a policy-enforced authorization
 
 - I Token exchange (RFC 8693) tested for agent delegation
 
-#### **Cedar Policy Design**
+#### Cedar Policy Design
 
 - I Entity schema validated with cedar validate
 
@@ -310,7 +280,7 @@ The following checklist must be completed before a policy-enforced authorization
 
 - I Policy versioning and rollback procedure documented and tested
 
-#### **Performance**
+#### Performance
 
 - I P99 authorization latency < 15ms (including all cache layers)
 
@@ -322,7 +292,7 @@ The following checklist must be completed before a policy-enforced authorization
 
 - I Cache invalidation tested: stale decisions < 5 minutes after policy change
 
-#### **Security**
+#### Security
 
 - I All PEPs enforce default-deny: unreachable PDP = deny
 
@@ -338,7 +308,7 @@ The following checklist must be completed before a policy-enforced authorization
 
 - I STRIDE threat model documented and reviewed
 
-#### **Audit & Compliance**
+#### Audit & Compliance
 
 - I CloudTrail enabled and capturing all AVP policy decisions
 
@@ -346,17 +316,13 @@ The following checklist must be completed before a policy-enforced authorization
 
 - I Audit log retention meets regulatory requirement (PCI DSS: 1 year online, 1 year archive)
 
-
-
-
-
 - I NIST 800-53 control mapping documented
 
 I PCI DSS Requirement 7, 8, 10 evidence package generated
 
 I SOC 2 CC6 control evidence available
 
-#### **Operations**
+#### Operations
 
 I Policy CI/CD pipeline operational with <15 minute deploy time
 
@@ -370,7 +336,7 @@ I Policy CI/CD pipeline operational with <15 minute deploy time
 
 - I Quarterly access review process using Cedar entity audit
 
-#### **Agent-Specific**
+#### Agent-Specific
 
 I Per-step authorization at all 7 agent decision points
 
@@ -386,11 +352,7 @@ I Per-step authorization at all 7 agent decision points
 
 - I Output classification filter deployed and tested for PII leakage
 
-
-
-
-
-## **7. Final Decision Framework**
+## 7. Final Decision Framework
 
 The decision framework summarizes when to use Cedar, when to use OPA/Rego, and when to use both. This is the definitive guidance for enterprise architects:
 
@@ -412,8 +374,6 @@ The decision framework summarizes when to use Cedar, when to use OPA/Rego, and w
 |Edge/WASM deployment||WASM compilation||
 |Regulatory banking compliance|CloudTrail native audit||OPA for infra<br>compliance|
 
-
-
-##### **BEST PRACTICE**
+##### BEST PRACTICE
 
 Final Recommendation: For the described environment (AWS, Entra ID, Agentic AI, banking regulation), deploy Amazon Verified Permissions (Cedar) as the primary authorization engine for all application, agent, tool, RAG, and memory authorization decisions. Deploy OPA/Rego for Kubernetes admission control (EKS), Terraform policy gates, and infrastructure compliance. Use a shared claims normalization service to provide canonical claims to both engines. This hybrid architecture is the most mature, auditable, and operationally sound choice for regulated financial services.

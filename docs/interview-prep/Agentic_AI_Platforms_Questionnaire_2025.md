@@ -11,7 +11,7 @@ target_role: "AI/ML Architect"
 ---
 ## How to Use This Guide
 
-# **AGENTIC AI & PLATFORMS ENTERPRISE QUESTIONNAIRE**
+# AGENTIC AI & PLATFORMS ENTERPRISE QUESTIONNAIRE
 
 Deep-Research Edition · 2025–2026
 
@@ -32,7 +32,7 @@ Deep-Research Edition · 2025–2026
 
 **0 8** Strategy & Enterprise Adoption Q37–Q40
 
-## **MASTER CONCERN MATRIX — 16 CONCERNS, SEVERITY, STATUS & MITIGATION**
+## MASTER CONCERN MATRIX — 16 CONCERNS, SEVERITY, STATUS & MITIGATION
 
 |**Concern**|**Domain**|**Severity**|**Status**|**Primary Mitigation**|
 |---|---|---|---|---|
@@ -52,7 +52,7 @@ Deep-Research Edition · 2025–2026
 |Compounding Error<br>Propagation|Reliability|**High**|**Active**|Confidence scoring between agents|
 |Memory Poisoning|Security|**High**|**Active**|Memory sandboxing + TTL expiry|
 
-## **PLATFORM & FRAMEWORK COMPARISON — 7 LEADING TOOLS**
+## PLATFORM & FRAMEWORK COMPARISON — 7 LEADING TOOLS
 
 |**Framework**|**Orchestratio**<br>**n**|**State Mgmt**|**Human-in-**<br>**Loop**|**Multi-Agen**<br>**t**|**Enterprise**<br>**Ready**|**No-Code**<br>**Option**|**Open**<br>**Source**|
 |---|---|---|---|---|---|---|---|
@@ -69,13 +69,13 @@ Deep-Research Edition · 2025–2026
 
 Note: 'Enterprise Ready' = production-grade state management, security features, and commercial support options available.
 
-## **SECTION 1 — FOUNDATIONS & CORE CONCEPTS**
+## SECTION 1 — FOUNDATIONS & CORE CONCEPTS
 
 **Q1 Core Concepts**
 
-##### **Medium**
+##### Medium
 
-## **What distinguishes an agentic AI system from a traditional LLM chatbot, and why does this distinction matter for enterprise architects?**
+## What distinguishes an agentic AI system from a traditional LLM chatbot, and why does this distinction matter for enterprise architects?
 
 #### I **ANSWER**
 
@@ -93,7 +93,7 @@ For architects, this distinction means shifting from managing text generation ri
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Chatbot governance frameworks applied Action-aware security posture (AI-SPM) naively to agents fail — agents take distinct from LLM safety real-world actions Plan-before-execute pattern with human Autonomy without guardrails causes confirmation for irreversible actions runaway execution at machine speed Stateful orchestration frameworks Enterprise teams underestimate state (LangGraph, AG2) with checkpointing management and fault tolerance requirements
 
@@ -103,7 +103,7 @@ Gartner named agentic AI the top technology trend of 2025, predicting 33% of ent
 
 **Q2 Architecture**
 
-## **Explain the four levels of agentic autonomy and how each level changes the governance requirements for an enterprise deployment.**
+## Explain the four levels of agentic autonomy and how each level changes the governance requirements for an enterprise deployment.
 
 #### I **ANSWER**
 
@@ -127,7 +127,7 @@ Governance frameworks are designed for Level 1 and fail at Levels 3–4
 
 Irreversible actions (send email, submit order) executed autonomously create legal liability
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Explicit autonomy-level declaration in agent design documents
 
@@ -141,7 +141,7 @@ PwC's AI Agent Survey found trust drops sharply for high-stakes autonomy: only 2
 
 **Q3 Memory Systems**
 
-## **An enterprise agent serving 10,000 users needs to maintain context across sessions without cross-user memory leakage. Design the memory architecture.**
+## An enterprise agent serving 10,000 users needs to maintain context across sessions without cross-user memory leakage. Design the memory architecture.
 
 ### A four-tier memory architecture for enterprise agents
 
@@ -163,7 +163,7 @@ The Slack AI incident (2024) demonstrated that indirect prompt injection via ret
 
 **Q4 Tool Use**
 
-## **What is the Model Context Protocol (MCP), and what security and interoperability implications does it introduce for enterprise agentic platforms?**
+## What is the Model Context Protocol (MCP), and what security and interoperability implications does it introduce for enterprise agentic platforms?
 
 #### I **ANSWER**
 
@@ -187,7 +187,7 @@ MCP plugins become a supply-chain attack vector — 40% of servers analyzed were
 
 Agents auto-grant excessive permissions to plugins without human review
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Enterprise MCP allowlist with security review gate before plugin registration
 
@@ -201,7 +201,7 @@ Bain noted that 'MCP isn't USB' — it lacks the standardization maturity of phy
 
 **Q5 Agent Networks**
 
-## **Distinguish between single-agent, multi-agent, and agent swarm architectures. When should an enterprise choose each pattern?**
+## Distinguish between single-agent, multi-agent, and agent swarm architectures. When should an enterprise choose each pattern?
 
 #### I **ANSWER**
 
@@ -221,7 +221,7 @@ Swarm architectures produce non-deterministic outputs incompatible with audit re
 
 Cascading failures in multi-agent systems propagate at machine speed
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Agent complexity escalation framework: single → multi → swarm with explicit justification required at each step
 
@@ -237,7 +237,7 @@ Only 17% of enterprises currently monitor agent-to-agent interactions (State of 
 
 **Q6 Prompt Injection**
 
-## **Explain indirect prompt injection in agentic systems and design a multi-layer defense architecture for an agent that processes external documents.**
+## Explain indirect prompt injection in agentic systems and design a multi-layer defense architecture for an agent that processes external documents.
 
 #### I **ANSWER**
 
@@ -265,7 +265,7 @@ Agent executes injected instructions without awareness — no way for the agent 
 
 Retrieved document content is treated with the same trust level as system instructions
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Source trust classification + content classifier on all retrieved data before context insertion
 
@@ -279,7 +279,7 @@ The Slack AI incident (August 2024) proved indirect injection is production-read
 
 **Q7 Identity & Access**
 
-## **Non-Human Identity (NHI) sprawl is identified as the fastest-growing attack vector in agentic AI deployments. How do you architect NHI governance for a 50-agent enterprise deployment?**
+## Non-Human Identity (NHI) sprawl is identified as the fastest-growing attack vector in agentic AI deployments. How do you architect NHI governance for a 50-agent enterprise deployment?
 
 #### I **ANSWER**
 
@@ -305,7 +305,7 @@ Developers hardcode API keys in git repositories — single leaked credential = 
 
 One compromised orchestrator in a multi-agent system exposes all downstream agents
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Mandatory NHI registry as a deployment prerequisite — no agent deployed without registered identity
 
@@ -319,7 +319,7 @@ The Huntress 2026 breach report identified NHI compromise as the fastest-growing
 
 **Q8 Privilege & Access**
 
-## **A junior employee exploits your HR AI agent to retrieve the full salary table by asking it naturally. How does this privilege escalation occur and how do you prevent it architecturally?**
+## A junior employee exploits your HR AI agent to retrieve the full salary table by asking it naturally. How does this privilege escalation occur and how do you prevent it architecturally?
 
 #### I **ANSWER**
 
@@ -345,7 +345,7 @@ Natural language queries obscure intent — 'what's the typical salary' reads as
 
 Response classifiers are bypassed if the agent reformats data (e.g., summarizes the salary table as ranges)
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Row-level security enforced in the database layer — agent credentials alone insufficient to bypass RLS
 
@@ -359,7 +359,7 @@ Access control in agentic systems must be enforced at the data layer, not the ap
 
 **Q9 Supply Chain Hard**
 
-## **Your agentic platform integrates 12 third-party MCP plugins. One plugin is compromised in a supply chain attack. Design a blast radius containment architecture.**
+## Your agentic platform integrates 12 third-party MCP plugins. One plugin is compromised in a supply chain attack. Design a blast radius containment architecture.
 
 #### I **ANSWER**
 
@@ -385,7 +385,7 @@ Plugin updates bypass security review if automated deployment is used without SC
 
 Cross-plugin trust (plugin A calling plugin B) creates transitive compromise pathways
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Plugin execution sandboxing — OS-level isolation, no inter-plugin networking
 
@@ -397,7 +397,7 @@ Check Point's 2026 Cyber Security Report found 40% of MCP servers analyzed were 
 
 **Q10 Data Security**
 
-## **How do you architect canary token detection for an enterprise agentic RAG system, and what incident response actions should be triggered on detection?**
+## How do you architect canary token detection for an enterprise agentic RAG system, and what incident response actions should be triggered on detection?
 
 #### I **ANSWER**
 
@@ -423,7 +423,7 @@ Incident response on detection:
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Without canary tokens, data exfiltration may not be detected until a breach notification from an external party
 
@@ -443,7 +443,7 @@ Canary tokens convert a detection problem (did exfiltration occur?) into a near-
 
 **Q11 Runtime Security**
 
-## **What is 'agentic looping' and how do you architect both detection and prevention for a production multi-agent system?**
+## What is 'agentic looping' and how do you architect both detection and prevention for a production multi-agent system?
 
 #### I **ANSWER**
 
@@ -471,7 +471,7 @@ Circular multi-agent delegation is invisible without explicit delegation graph t
 
 Progress hallucination: the agent believes it is completing the task while actually spinning
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Hard step budget enforced at the orchestration layer — not a soft guideline in the prompt
 
@@ -487,7 +487,7 @@ Agentic looping is the distributed systems 'thundering herd' problem adapted for
 
 **Q12 Cascading Failures Expert**
 
-## **In a 6-agent procurement workflow, your data retrieval agent begins hallucinating vendor data. By the time the error is detected, three downstream agents have already processed the corrupted data. How do you architect fault isolation?**
+## In a 6-agent procurement workflow, your data retrieval agent begins hallucinating vendor data. By the time the error is detected, three downstream agents have already processed the corrupted data. How do you architect fault isolation?
 
 #### I **ANSWER**
 
@@ -513,7 +513,7 @@ No standardized inter-agent data validation — agents trust upstream outputs im
 
 Rollback in multi-agent systems is undefined — 'compensating transaction' design is not standard in agent frameworks
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Mandatory output schema validation and confidence scoring at every agent boundary Saga pattern with compensating transactions defined at pipeline design time, not post-incident
 
@@ -525,7 +525,7 @@ Traditional software pipelines have well-defined error contracts. Agent pipeline
 
 **Q13 State Management Hard**
 
-## **An agentic workflow that takes 2 hours to complete is interrupted at the 90-minute mark due to a cloud provider outage. How do you design for durable execution?**
+## An agentic workflow that takes 2 hours to complete is interrupted at the 90-minute mark due to a cloud provider outage. How do you design for durable execution?
 
 #### I **ANSWER**
 
@@ -545,7 +545,7 @@ Durable execution design for long-running agentic workflows:
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 2-hour workflows re-run from scratch on any failure — compute waste and delayed outcomes
 
@@ -567,7 +567,7 @@ Durable execution is a solved problem in workflow engines (Apache Airflow, Tempo
 
 **Q14 EU AI Act**
 
-## **Your enterprise deploys an agentic AI in HR screening, credit decisioning, and IT helpdesk. Classify each under the EU AI Act and specify the compliance obligations for each.**
+## Your enterprise deploys an agentic AI in HR screening, credit decisioning, and IT helpdesk. Classify each under the EU AI Act and specify the compliance obligations for each.
 
 #### I **ANSWER**
 
@@ -591,7 +591,7 @@ FRIA and Annex IV documentation is burdensome without automation — 80+ agent p
 
 HR and credit agents are often the first deployed — highest risk, highest compliance burden, deployed with least maturity
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 AI system registry with automated risk classification based on use-case tags — human review only for edge cases
 
@@ -605,7 +605,7 @@ EU AI Act enforcement began in February 2025 for prohibited AI and August 2026 f
 
 **Q15 Audit & Accountability**
 
-## **An agentic AI made an autonomous decision to deny a customer's insurance claim. The customer challenges the decision legally. What audit architecture do you need to reconstruct the agent's reasoning and defend the decision?**
+## An agentic AI made an autonomous decision to deny a customer's insurance claim. The customer challenges the decision legally. What audit architecture do you need to reconstruct the agent's reasoning and defend the decision?
 
 #### I **ANSWER**
 
@@ -625,7 +625,7 @@ Audit architecture for legally defensible agentic decisions:
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Agent reasoning is non-deterministic — re-running the agent on the same inputs may not reproduce the same output, making post-hoc explanation unreliable
 
@@ -645,7 +645,7 @@ The legal standard for AI decision accountability is still evolving, but the pri
 
 **Q16 Data Privacy Hard**
 
-## **A GDPR data subject access request (DSAR) requires you to provide all data your agentic AI has stored about a specific individual. How do you design for GDPR-compliant data subject rights in an agentic system?**
+## A GDPR data subject access request (DSAR) requires you to provide all data your agentic AI has stored about a specific individual. How do you design for GDPR-compliant data subject rights in an agentic system?
 
 #### I **ANSWER**
 
@@ -671,7 +671,7 @@ Vector embedding deletion is technically complex — embeddings cannot be 'unlea
 
 Multi-agent systems may store redundant copies of personal data across multiple agents' memory stores
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Centralized data map updated automatically whenever a new agent is deployed — mandatory architecture review step
 
@@ -687,7 +687,7 @@ GDPR fines for inadequate DSARs can reach 4% of global annual turnover. Agentic 
 
 **Q17 Framework Strategy**
 
-## **An enterprise team is choosing between LangGraph, CrewAI, and AutoGen for a production agentic workflow with strict auditability requirements and 18-month longevity. Walk through the selection framework.**
+## An enterprise team is choosing between LangGraph, CrewAI, and AutoGen for a production agentic workflow with strict auditability requirements and 18-month longevity. Walk through the selection framework.
 
 #### I **ANSWER**
 
@@ -707,7 +707,7 @@ Recommendation for strict auditability + longevity: LangGraph with LangSmith for
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Teams choose frameworks based on tutorial familiarity rather than production-grade requirements
 
@@ -727,7 +727,7 @@ LangGraph leads in monthly developer searches (27,100 vs. CrewAI's 14,800 per La
 
 **Q18 Platform Economics Hard**
 
-## **What are the real total-cost-of-ownership (TCO) components for an enterprise agentic AI platform, and what are the common hidden costs that derail budgets?**
+## What are the real total-cost-of-ownership (TCO) components for an enterprise agentic AI platform, and what are the common hidden costs that derail budgets?
 
 #### I **ANSWER**
 
@@ -755,7 +755,7 @@ Model Upgrade Costs: When the underlying LLM is upgraded, regression testing and
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Multi-agent token costs are 5-20× single-agent costs — teams are shocked by the first production invoice
 
@@ -777,7 +777,7 @@ Intuz/Towards AI benchmarks for production agent frameworks show monthly infrast
 
 **Q19 Orchestration**
 
-## **Design the orchestration architecture for a multi-agent financial analysis system that must process 500 company reports daily, extract KPIs, identify anomalies, and generate investment memos — with full traceability.**
+## Design the orchestration architecture for a multi-agent financial analysis system that must process 500 company reports daily, extract KPIs, identify anomalies, and generate investment memos — with full traceability.
 
 #### I **ANSWER**
 
@@ -797,7 +797,7 @@ Intuz/Towards AI benchmarks for production agent frameworks show monthly infrast
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Fan-out to 5 parallel agents multiplies inference cost and failure surface proportionally
 
@@ -817,7 +817,7 @@ The pattern of fan-out (parallel extraction) → fan-in (normalization) → sequ
 
 **Q20 Agent Communication**
 
-## **Compare the Agent-to-Agent (A2A) protocol and MCP. When would you use each in an enterprise multi-agent architecture?**
+## Compare the Agent-to-Agent (A2A) protocol and MCP. When would you use each in an enterprise multi-agent architecture?
 
 #### I **ANSWER**
 
@@ -843,7 +843,7 @@ A2A is nascent (2025) — limited enterprise tooling for governance and monitori
 
 Cross-framework A2A communication creates new audit gaps — agent interactions may not be logged in either framework's native observability
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Clear protocol assignment: MCP = tool access, A2A = agent communication — enforced in architecture standards
 
@@ -859,7 +859,7 @@ Google ADK's native A2A support is strategically significant — it enables Goog
 
 **Q21 Human-in-the-Loop**
 
-## **Design a human-in-the-loop (HITL) architecture that provides meaningful oversight without creating a bottleneck that negates the productivity value of agentic AI.**
+## Design a human-in-the-loop (HITL) architecture that provides meaningful oversight without creating a bottleneck that negates the productivity value of agentic AI.
 
 #### I **ANSWER**
 
@@ -879,7 +879,7 @@ Google ADK's native A2A support is strategically significant — it enables Goog
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Synchronous HITL on every action eliminates productivity gains — agents become expensive click-through interfaces
 
@@ -919,7 +919,7 @@ Goal misalignment detection and correction:
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Goal misalignment is often invisible until a second-order outcome (hard cases never resolved) reveals it
 
@@ -941,7 +941,7 @@ Goodhart's Law ('When a measure becomes a target, it ceases to be a good measure
 
 **Q23 Enterprise Strategy Expert**
 
-## **WEF identifies three obstacles to agentic AI adoption: infrastructure constraints, trust deficit, and data gap. Design a 12-month enterprise program to overcome all three.**
+## WEF identifies three obstacles to agentic AI adoption: infrastructure constraints, trust deficit, and data gap. Design a 12-month enterprise program to overcome all three.
 
 #### I **ANSWER**
 
@@ -973,7 +973,7 @@ Success metrics at Month 12: Infrastructure: 5 agents in production. Trust: HITL
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 Three-track programs lose coherence without strong PMO — infrastructure delays block trust and data tracks
 
@@ -993,7 +993,7 @@ Bain's 2025 analysis of tech-forward enterprises found the biggest insight from 
 
 **Q24 ROI & Measurement Hard**
 
-## **How do you build a rigorous ROI model for an agentic AI investment when many benefits are qualitative (employee satisfaction, error reduction) and costs are uncertain (model pricing, maintenance)?**
+## How do you build a rigorous ROI model for an agentic AI investment when many benefits are qualitative (employee satisfaction, error reduction) and costs are uncertain (model pricing, maintenance)?
 
 #### I **ANSWER**
 
@@ -1019,7 +1019,7 @@ Inference costs (model-dependent, scenario ranges: low/base/high), infrastructur
 
 #### I **CONCERN**
 
-#### **SOLVED BY**
+#### SOLVED BY
 
 ROI models present a single optimistic number — variance analysis is absent, making the model unfalsifiable
 

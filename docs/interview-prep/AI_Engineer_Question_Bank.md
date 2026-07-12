@@ -1,11 +1,13 @@
 ---
-title: "SECTION 1 — Python & Core Engineering"
+title: "AI Engineer Interview Question Bank"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
+source_file: ""
 doc_type: guide
 covers_version: "N/A"
+tags: ["interview-prep", "ai-engineer", "python", "llm", "rag", "mlops"]
 ---
 **AI ENGINEER**
 **Interview Question Bank**
@@ -13,7 +15,7 @@ covers_version: "N/A"
 | --- |
 *Confidential — Internal Use Only*
 
-# **SECTION 1 — Python & Core Engineering**
+# SECTION 1 — Python & Core Engineering
 
 | Tests foundational Python depth: OOP, data structures, error handling, and writing clean, production-grade code. |
 | --- |
@@ -80,7 +82,7 @@ covers_version: "N/A"
 | Q14 | What is property-based testing (Hypothesis)? Give an example relevant to a text processing pipeline. Testing  |  Advanced | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 2 — LLM & GenAI Concepts**
+# SECTION 2 — LLM & GenAI Concepts
 
 | Probes understanding of how LLMs work internally, not just how to call APIs. |
 | --- |
@@ -136,7 +138,7 @@ covers_version: "N/A"
 | Q26 | You're passing 10 documents to an LLM. What strategies reduce hallucination risk from irrelevant context? Prompting  |  RAG | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 3 — RAG & Retrieval Systems**
+# SECTION 3 — RAG & Retrieval Systems
 
 | Deep dive into production RAG — chunking, retrieval quality, evaluation, and failure modes. |
 | --- |
@@ -203,7 +205,7 @@ covers_version: "N/A"
 | Q40 | Explain the RAGAS framework. Which metric do you trust most and why? RAGAS  |  Evaluation | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 4 — Prompt Engineering**
+# SECTION 4 — Prompt Engineering
 
 | Tests the candidate's ability to design reliable, production-grade prompts — not just clever one-liners. |
 | --- |
@@ -241,7 +243,7 @@ covers_version: "N/A"
 | Q50 | How do you version control prompts in production? What's your strategy for A/B testing two prompt variants? MLOps  |  Prompts | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 5 — MLOps & Deployment**
+# SECTION 5 — MLOps & Deployment
 
 | Tests production maturity: CI/CD, monitoring, drift detection, model lifecycle management. |
 | --- |
@@ -294,7 +296,7 @@ covers_version: "N/A"
 | Q61 | Describe your Kubernetes deployment for LLM serving. How do you handle autoscaling for bursty traffic? Kubernetes  |  Scaling | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 6 — System Design for AI**
+# SECTION 6 — System Design for AI
 
 | Open-ended design questions. Look for trade-off awareness, scalability thinking, and failure mode coverage. |
 | --- |
@@ -326,7 +328,7 @@ covers_version: "N/A"
 | Q69 | Design a content moderation system for user prompts before they hit the LLM. What layers of defense? Safety  |  Pipeline | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 7 — Data Engineering & Business Use Cases**
+# SECTION 7 — Data Engineering & Business Use Cases
 
 | Tests practical data thinking — pipelines, sampling, large datasets, and business problem framing. |
 | --- |
@@ -371,7 +373,7 @@ covers_version: "N/A"
 | Q79 | Your model accuracy is 92% in testing but drops to 78% in production after 30 days. What are 5 possible reasons? Drift  |  Debugging | Hard | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 8 — Frameworks & Integrations**
+# SECTION 8 — Frameworks & Integrations
 
 | LangChain, LangGraph, FastAPI, HuggingFace — depth of real production usage, not just familiarity. |
 | --- |
@@ -424,7 +426,7 @@ covers_version: "N/A"
 | Q90 | How do you evaluate an open-source model vs GPT-4 for a specific business task before committing? Evaluation  |  Model Selection | Medium | [ ] |
 | --- | --- | --- | --- |
 
-# **SECTION 9 — Live Coding Questions**
+# SECTION 9 — Live Coding Questions
 
 | 10–15 min coding questions. Test Python fundamentals + AI domain knowledge. Pick ONE per interview. |
 | --- |
@@ -454,7 +456,7 @@ covers_version: "N/A"
 | Problem: Write async_batch_embed(texts, batch_size, max_concurrent) that batches a list of texts, calls an async embed(batch) function, and limits concurrency using a semaphore. Returns all embeddings in original order. Follow-up: Add a progress callback that fires after each batch completes. Look for: asyncio.Semaphore, asyncio.gather, correct order preservation with enumerate/zip. |
 | --- |
 
-# **EVALUATION RUBRIC**
+# EVALUATION RUBRIC
 
 | Competency | Strong (4-5) | Adequate (2-3) | Weak (0-1) |
 | --- | --- | --- | --- |

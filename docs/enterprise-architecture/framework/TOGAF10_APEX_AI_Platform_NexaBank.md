@@ -13,47 +13,37 @@ tags: []
 
 **CONFIDENTIAL  |  TOGAF 10 ADM  |  AI-DLC INTEGRATED**
 
-# **~~APEX: AI Platform of~~ Platforms**
+# APEX: AI Platform of Platforms
 
-## **Enterprise Architecture on AWS Agent Core**
+## Enterprise Architecture on AWS Agent Core
 
 A comprehensive TOGAF 10 Architecture Development Method (ADM) guide for designing, governing, and delivering an AI Platform of Platforms at NexaBank Global.
 
 Incorporates AWS AI-Driven Development Lifecycle (AI-DLC) impact analysis across all nine TOGAF phases, with enterprise architecture implications, operating model changes, and governance adaptations required for the AI-native enterprise.
 
-ORGANISATION **NexaBank Global** FRAMEWORK **TOGAF 10 ADM** DOCUMENT REF **~~EA-APEX-MASTER-001~~** CLASSIFICATION **CONFIDENTIAL**
+ORGANISATION **NexaBank Global** FRAMEWORK **TOGAF 10 ADM** DOCUMENT REF **EA-APEX-MASTER-001** CLASSIFICATION **CONFIDENTIAL**
 
-PROGRAMME **APEX — AI Platform of Platforms** CLOUD PLATFORM **AWS Agent Core** VERSION **~~v3.0 | April 2026~~** STATUS **APPROVED**
+PROGRAMME **APEX — AI Platform of Platforms** CLOUD PLATFORM **AWS Agent Core** VERSION **v3.0 | April 2026** STATUS **APPROVED**
 
 **APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 1](/img/enterprise-architecture/ea-p2-1.png)
 
-
-<!-- Start of picture text -->
-OVERVIEW<br><!-- End of picture text -->
-
-## **Executive Summary**
+## Executive Summary
 
 Context, scope, and key facts
 
-### **About This Document**
+### About This Document
 
 This document is the authoritative Enterprise Architecture (EA) reference for the APEX programme at NexaBank Global. It applies the TOGAF 10 Architecture Development Method (ADM) across all phases to architect, govern, and deliver a unified AI Platform of Platforms on AWS Agent Core. It has been extended to incorporate the impact of the **AWS AI-Driven Development Lifecycle (AI-DLC)** , a methodology introduced by AWS in July 2025 that fundamentally reimagines how enterprises develop software using AI as a central collaborator — not merely an assistant.
 
 AI-DLC has direct and material consequences for enterprise architecture practice. Where traditional TOGAF ADM cycles operate over months, AI-DLC 'bolts' (the AI-DLC equivalent of sprints) operate over hours to days. This document analyses these impacts systematically across every ADM phase and recommends specific adaptations for the NexaBank enterprise architecture operating model.
 
-
 ![Figure 2](/img/enterprise-architecture/ea-p2-2.png)
 
-
-<!-- Start of picture text -->
-10 25+ 5 7 30+ 9<br>TOGAF Phases Covered Architecture Documents Pioneer Domains Regulatory Frameworks AWS Services Specified AI-DLC Impact Areas<br><!-- End of picture text -->
-
-### **Business Context — NexaBank Global Pain Chain**
+### Business Context — NexaBank Global Pain Chain
 
 |**Problem**|**Current State**|**APEX Target**|**AI-DLC Multiplier**|
 |---|---|---|---|
@@ -63,8 +53,6 @@ AI-DLC has direct and material consequences for enterprise architecture practice
 |Developer NPS|-12|+55|AI-DLC mob construction|
 |Agents in production|23 (siloed)|120 (platform)|Self-service + AI-DLC|
 |MTTR for AI incidents|6.3 hours|<30 minutes|AI-DLC ops phase automation|
-
-
 
 **Page 2**
 
@@ -76,20 +64,15 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 3](/img/enterprise-architecture/ea-p3-3.png)
 
-
-<!-- Start of picture text -->
-TOC<br><!-- End of picture text -->
-
-## **Table of Contents**
+## Table of Contents
 
 Structure of this document
 
-#### **00 Executive Summary**
+#### 00 Executive Summary
 
-#### **01 AI-DLC: Research Findings & Enterprise Architecture Impacts**
+#### 01 AI-DLC: Research Findings & Enterprise Architecture Impacts
 
 I What is AI-DLC?
 
@@ -113,7 +96,7 @@ I Architecture Repository Setup (REPO-001)
 
 **03**
 
-#### **Phase A — Architecture Vision**
+#### Phase A — Architecture Vision
 
 I Statement of Architecture Work (SAW-APEX-001) I Stakeholder Map & Register (STK-APEX-001)
 
@@ -135,7 +118,7 @@ I Application Architecture Document (AAD-APEX-001)
 
 **06**
 
-#### **Phase D — Technology Architecture**
+#### Phase D — Technology Architecture
 
 I Technology Architecture Document (TAD-APEX-001)
 
@@ -147,19 +130,19 @@ I Solution Building Blocks Catalogue (SBB-APEX-001)
 
 **08**
 
-#### **Phase F — Migration Planning**
+#### Phase F — Migration Planning
 
 I Implementation & Migration Plan (IMP-APEX-001)
 
 **09**
 
-#### **Phase G — Implementation Governance**
+#### Phase G — Implementation Governance
 
 I Architecture Contract — Platform Foundation (AC-APEX-001) I Compliance Assessment Framework (CAF-APEX-001)
 
 **10**
 
-#### **Phase H — Architecture Change Management**
+#### Phase H — Architecture Change Management
 
 I Architecture Change Management Process (ACHG-APEX-001)
 
@@ -167,7 +150,7 @@ I Architecture Change Management Process (ACHG-APEX-001)
 
 I Architecture Requirements Specification (ARS-APEX-001)
 
-#### **12 Appendices & Reference Material**
+#### 12 Appendices & Reference Material
 
 I Regulatory Cross-Reference Matrix
 
@@ -195,22 +178,17 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 4](/img/enterprise-architecture/ea-p5-4.png)
-
-
-<!-- Start of picture text -->
-SECTION 01<br><!-- End of picture text -->
 
 **AI-DLC: Research Findings & Enterprise Architecture Impacts** AWS AI-Driven Development Lifecycle — Implications for TOGAF 10 Practice
 
-### **What is AI-DLC?**
+### What is AI-DLC?
 
 The **AI-Driven Development Lifecycle (AI-DLC)** was introduced by AWS in July 2025 and presented as a keynote methodology at AWS re:Invent 2025 (session DVT214). It is the result of over 100 enterprise customer experiments by AWS Solutions Architecture and was built on observations that the two existing approaches to AI in software development — 'AI-assisted' (AI helps narrow tasks) and 'AI-autonomous' (AI builds everything) — both produced suboptimal results in velocity and quality. AI-DLC positions AI as a **central collaborator and teammate** , not merely a tool.
 
 Early adopters including Wipro and Dun & Bradstreet reported **10–15x productivity gains** . A team at Wipro that had months of work planned completed all of it in just 20 working hours using AI-DLC methodology. The Atlassian RovoDev 2026 study found that AI agents in code review led to additional fixes in 38.7% of cases, while the Qodo 2025 AI Code Quality Report showed quality improvements rising to 81% from 55% with AI-assisted reviews.
 
-### **The Three Phases of AI-DLC**
+### The Three Phases of AI-DLC
 
 |**Pha**|**seName**|**AI Role**<br>**Human Role**<br>**EA Impact**|
 |---|---|---|
@@ -218,9 +196,7 @@ Early adopters including Wipro and Dun & Bradstreet reported **10–15x producti
 |2|CONSTRUCTION|Proposes architecture, domain models, code, and tests via 'Mob Construc**t**ion'<br>Clarifies technical decisions and archi ectural choices in real-time<br>Phase B/C/D architecture artefacts p|
 |3|OPERATIONS|Applies accumulated context to manage IaC and deployments with oversig**h**t<br>Reviews and approves infrastructure c anges; monitors outcomes<br>Phase F/G/H collapse into continuou|
 
-
-
-### **AI-DLC vs Traditional Agile: Terminology Changes**
+### AI-DLC vs Traditional Agile: Terminology Changes
 
 AI-DLC introduces new terminology to reflect its AI-driven, high-intensity collaborative approach. Understanding these changes is important for NexaBank's programme management and architecture governance:
 
@@ -234,17 +210,13 @@ AI-DLC introduces new terminology to reflect its AI-driven, high-intensity colla
 |Documentation|Persistent Semantic Conte|xtPost-sprint→continuous|Architecture repository auto-updated|
 |Retrospective|Continuous Learning Loop|End of sprint→continuous|Architecture debt auto-detected|
 
-
-
-### **AI-DLC Impact Matrix: All 10 TOGAF ADM Phases**
+### AI-DLC Impact Matrix: All 10 TOGAF ADM Phases
 
 The following matrix maps AI-DLC's structural implications to each TOGAF ADM phase, identifying what changes, what risks emerge, and what adaptations NexaBank must make:
 
 |**TOGAF Phase**|**AI-DLC Impact**<br>**Risk**<br>**NexaBank Adaptation**|
 |---|---|
 |Preliminary|AI generates architecture principles drafts; governance rules codified as 's**t**eering files' fed to AI agents<br>Principle quality depends on AI promp quality<br>Human architects validate all AI-generated pr|
-
-
 
 **Page 5**
 
@@ -268,29 +240,27 @@ NexaBank Global | CONFIDENTIAL
 |Phase H —|Change|AI monitors technology landscape (new Bedrock models,**r**egulatory ch**a**nges) and flags architecture impac<br>Continuous change p oposals risk rchitecture instability<br>Change request filtering: AI flags, humans pr|
 |Req. Mana|gement|AI generates and maintains requirements trac**e**ability from busine**s**s**in**tent to deployed co**d**e; semantic cont<br>Requirem nt drift if AI context w dow is not manage<br>Per istent context stored in GitHub repo (AI-D|
 
-
-
-### **Operating Model Transformations Required**
+### Operating Model Transformations Required
 
 AI-DLC is not just a development methodology — it requires structural changes to the enterprise architecture operating model. Research from Intelance, Staun & Stender, and CIO.com (2025) identifies five critical transformation areas that NexaBank must address:
 
-#### **1. Governance Tempo: From Quarterly to Near Real-Time**
+#### 1. Governance Tempo: From Quarterly to Near Real-Time
 
 Traditional EA governance operates on quarterly review cycles. AI-DLC's 'bolt' cadence means architecture decisions are needed in hours. NexaBank must establish a tiered governance model: automated checks run continuously (Cat A/B compliance), architect-in-the-loop reviews occur daily, full ARB convenes weekly rather than bi-weekly. Research from Staun & Stender (2025) confirms that 'these are not quarterly review topics; they are near real-time decisions.'
 
-#### **2. EA Artefacts: From Static Documents to Living Digital Twins**
+#### 2. EA Artefacts: From Static Documents to Living Digital Twins
 
 Gartner (2025) notes that Forrester identified AI agents in EA suites are now automating data validation, capability mapping, and artefact creation. NexaBank's architecture repository (LeanIX) must transition from a periodic-update model to a continuously auto-updated environment where AI-DLC tools write back architecture artefacts as they are generated. The EA team shifts from artefact authors to artefact reviewers.
 
-#### **3. New Roles: Enterprise AI Architect & Chief AI Ethics Officer**
+#### 3. New Roles: Enterprise AI Architect & Chief AI Ethics Officer
 
 BCG research found that 89% of C-level executives ranked AI/GenAI in their top three strategic priorities for 2024. In response, organisations are introducing dedicated roles such as the Enterprise AI Architect. NexaBank must create this role (filled internally from the APEX Architecture team) and formalise the Chief AI Ethics Officer position proposed in the APEX Business Architecture.
 
-#### **4. Data Architecture Extension: AI-Native Entities**
+#### 4. Data Architecture Extension: AI-Native Entities
 
 TOGAF's traditional data architecture covers conceptual, logical, and physical models. AI-DLC introduces new first-class data entities that must be governed: **embeddings** (versioned vector representations), **prompt catalogs** (regulated as code + data), **feedback logs** (agent decision outcomes), and **model lineage records** (EU AI Act traceability). MLflow's Prompt Registry exemplifies this shift in tooling, as identified in the TOGAF BDAT stress-test research (Medium, Sept 2025).
 
-#### **5. Business Architecture: Dynamic Capabilities Replace Static Models**
+#### 5. Business Architecture: Dynamic Capabilities Replace Static Models
 
 Traditional Business Architecture documents stable capabilities. AI-DLC and agentic AI create capabilities that 'learn and adapt in motion.' Examples: Walmart and Carrefour already use AI to shift pricing and promotions dynamically — what was a quarterly campaign is now an hourly decision. NexaBank's Business Capability Map (BCM-APEX-001) must be updated to flag 'adaptive capabilities' and their governance implications separately from static capabilities.
 
@@ -304,7 +274,7 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-### **NexaBank AI-DLC Adoption Roadmap**
+### NexaBank AI-DLC Adoption Roadmap
 
 NexaBank will adopt AI-DLC in a phased approach aligned to APEX delivery horizons, to avoid disrupting in-flight architecture governance while capturing productivity gains:
 
@@ -314,8 +284,6 @@ NexaBank will adopt AI-DLC in a phased approach aligned to APEX delivery horizon
 |H1: Adopt for BuildQ2–Q3 2025|AI-DLC Construction phase for Pioneer Domain 1 & 2 delivery<br>Phase C/D artefacts AI-assisted; peer review mandatory<br>ARB approves AI-assisted a|
 |H2: Extend to Inception<br>Q4 2025|Mob Elaboration for Pioneer 3–5 requirements and architecture vision<br>Phase A/B artefacts AI-generated; ARB review process upd<br>Steering Committee endors|
 |H3: Full AI-DLC Q1–Q2 2026|End-to-end AI-DLC across all APEX workstreams; real-time governance<br>Full operating model transformation; LeanIX AI integration<br>Architecture Board annual r|
-
-
 
 **Page 7**
 
@@ -327,20 +295,15 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 5](/img/enterprise-architecture/ea-p8-5.png)
 
-
-<!-- Start of picture text -->
-PRELIMINARY<br><!-- End of picture text -->
-
-## **Preliminary Phase — Foundation**
+## Preliminary Phase — Foundation
 
 Establish architecture capability, principles, and governance
 
 The Preliminary Phase establishes NexaBank Global's architecture capability for the APEX programme. Before any AI platform design begins, we codify governance structures, tailor the ADM for financial services regulatory constraints, and ratify the architecture principles that govern every subsequent decision.
 
-### **Key Activities**
+### Key Activities
 
 - Define Architecture Capability & Maturity Target (CMMI Level 3 target)
 
@@ -356,11 +319,11 @@ The Preliminary Phase establishes NexaBank Global's architecture capability for 
 
 - AI-DLC Impact: Load NexaBank architecture standards as AI-DLC 'steering files' in Amazon Q Developer
 
-#### **Document: Architecture Principles (APD-001)**
+#### Document: Architecture Principles (APD-001)
 
-##### **`DOC REF: APD-001 | v2.1 | APPROVED`**
+##### `DOC REF: APD-001 | v2.1 | APPROVED`
 
-#### **Business Principles**
+#### Business Principles
 
 |**ID**|**Principle**<br>**Statement**<br>**Key Implication**|
 |---|---|
@@ -373,11 +336,9 @@ The Preliminary Phase establishes NexaBank Global's architecture capability for 
 |DP-03|Explainability Before Deplo**y**ment<br>An ML model embedded in an APEX agent must have a documented explainability m**e**thod<br>SageMaker Clarify pipeline is a mandatory gat in APEX|
 |DP-04 (|AI-DLC)<br>Prompt Catalogs as Governed Data<br>Prompt templates, embeddings, and feedback logs are first-class data ass**e**t**s**governed by the**D**a<br>MLflow Prompt Registry; prompt v r ioning in GitHub;<br>P|
 
+#### Data Principles
 
-
-#### **Data Principles**
-
-#### **Technology Principles**
+#### Technology Principles
 
 |**ID**|**Principle**|**Statement**<br>**Key Implication**|
 |---|---|---|
@@ -386,8 +347,6 @@ The Preliminary Phase establishes NexaBank Global's architecture capability for 
 |TP-03|Observability as First-|Class<br>Every APEX agent must emit structured traces, metrics, a**n**d logs from day one<br>CloudWatch + Ope Telemetry mandatory; Datadog APM f|
 |TP-04|Cost Transparency|Each AI agent must have a tagged cost centre and mon**t**hly token-cost budget with alerts<br>AWS Cost Alloca ion Tags mandatory; FinOps review gate|
 |TP-05 (|AI-DLC)<br>Every Dev Understan|ds Every Li**ne**<br>All AI-ge<br>rated IaC and code must be reviewed and understood by a human engineer before me<br>Mandatory peer review for all AI-generated Terraform; no b|
-
-
 
 **Page 8**
 
@@ -399,30 +358,25 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 6](/img/enterprise-architecture/ea-p9-6.png)
 
-
-<!-- Start of picture text -->
-PHASE A<br><!-- End of picture text -->
-
-## **Architecture Vision**
+## Architecture Vision
 
 Define the why, what, and who — secure executive mandate
 
 Phase A creates the Architecture Vision for APEX: the compelling case for change, stakeholder landscape, architecture scope, high-level target state, and the Statement of Architecture Work (SAW) that gives the programme formal mandate. AI-DLC Mob Elaboration sessions accelerate this phase significantly.
 
-#### **Document: Statement of Architecture Work (SAW-APEX-001)**
+#### Document: Statement of Architecture Work (SAW-APEX-001)
 
 ```
 DOC REF: SAW-APEX-001 | v1.4 | APPROVED — Group CTO sign-off: 2025-02-14
 ```
 
-#### **Architecture Vision Statement**
+#### Architecture Vision Statement
 
 **"By Q4 2026, NexaBank Global will operate a unified AI Agent Platform (APEX) on AWS Agent Core that reduces time-to-market for AI use cases from 9.2 to 2.5 months, achieves full EU AI Act and DORA compliance, and generates £38M NPV over 5 years through platform economics."**
 
-#### **Architecture Constraints**
+#### Architecture Constraints
 
 |**Constraint**|**Source**|**Architecture Impact**|
 |---|---|---|
@@ -433,9 +387,7 @@ DOC REF: SAW-APEX-001 | v1.4 | APPROVED — Group CTO sign-off: 2025-02-14
 |99.95% availability target|Enterprise SLA|Multi-AZ + DR across 2 regions minimum|
 |EU AI Act enforcement from Aug 2026|European Commission|High-Risk AI classification and controls pre-built|
 
-
-
-#### **Stakeholder Power/Interest Grid**
+#### Stakeholder Power/Interest Grid
 
 Key Players (High Power, High Interest) — Core governance engagement:
 
@@ -448,9 +400,7 @@ Key Players (High Power, High Interest) — Core governance engagement:
 |Dr. Lin Wei|Chief Data Officer|Data mesh integration, lineag**e**, sovereignty<br>Nativ Glue/Atlas integration|Bi-weekly|
 |PRA / ECB|Regulator|Systemic AI risk, model governance<br>DORA evidence pack, EU AI Act|Art.13<br>Quarterly briefing|
 
-
-
-#### **Five Pioneer Domains (Proof-of-Value)**
+#### Five Pioneer Domains (Proof-of-Value)
 
 |**#**|**Domain**|**Agent Name**|**Use Case**<br>**Key Regulation**|**AI-DLC Bolt Estimate**|
 |---|---|---|---|---|
@@ -459,8 +409,6 @@ Key Players (High Power, High Interest) — Core governance engagement:
 |3|Wealth Manageme|ntPortfolioRebalAgent|Rule-based rebalancing recommendations<br>MiFID II Art.27|2 bolts|
 |4|IT Operations|IncidentAgent|L1/L2 ticket triage and remediation automation<br>DORA Art.11|2 bolts|
 |5|Risk|ModelMonitorAgent|Drift detection, backtesting, regulator report generation<br>SR 11-7, BCBS 239|3 bolts|
-
-
 
 **Page 9**
 
@@ -472,20 +420,15 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 7](/img/enterprise-architecture/ea-p10-7.png)
 
-
-<!-- Start of picture text -->
-PHASE B<br><!-- End of picture text -->
-
-## **Business Architecture**
+## Business Architecture
 
 Map capabilities, value streams, and organisational model
 
 Phase B produces the Business Architecture for APEX — the capability model, value streams, organisation design, and business processes that the platform must support. AI-DLC fundamentally changes how business capabilities are modelled: capabilities that use AI are no longer static — they 'learn and adapt in motion.'
 
-#### **Business Capability Map — Gap Summary (BCM-APEX-001)**
+#### Business Capability Map — Gap Summary (BCM-APEX-001)
 
 ```
 DOC REF: BCM-APEX-001 | v1.5
@@ -501,9 +444,7 @@ DOC REF: BCM-APEX-001 | v1.5
 |6. Data Integration|4|2 critical|3/4|PARTIALLY — Data Mesh remains dom|
 |7. Platform Enablement|4|4 critical|4/4|YES — self-service portal auto-generate|
 
-
-
-#### **Value Stream: AI Agent Delivery (Baseline vs APEX vs AI-DLC)**
+#### Value Stream: AI Agent Delivery (Baseline vs APEX vs AI-DLC)
 
 ```
 DOC REF: VSA-APEX-001 | v1.1
@@ -524,9 +465,7 @@ DOC REF: VSA-APEX-001 | v1.1
 |Defects (untested agents|in prod)$2.0M|-75% via CI/CD gat|e<br>-20% via AI-g|enerated test suites<br>$0.1M|
 |TOTAL|$14.0M/yr|$7.6M reduction|$1.5M additio|nal reduction<br>$1.1M residual|
 
-
-
-#### **Value Waste Elimination**
+#### Value Waste Elimination
 
 **Page 10**
 
@@ -538,22 +477,17 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 8](/img/enterprise-architecture/ea-p11-8.png)
 
-
-<!-- Start of picture text -->
-PHASE C<br><!-- End of picture text -->
-
-## **Information Systems Architecture**
+## Information Systems Architecture
 
 Data architecture and application component design
 
 Phase C covers both Data and Application Architecture. For APEX, this is the most technically complex phase: it introduces AI-native data entities (embeddings, vector stores, prompt catalogs, feedback logs) that do not exist in traditional TOGAF data models, and agent-oriented application design patterns that require new architectural conventions.
 
-#### **Data Classification Framework (APEX-Specific)**
+#### Data Classification Framework (APEX-Specific)
 
-##### **`DOC REF: DAD-APEX-001 | v1.3`**
+##### `DOC REF: DAD-APEX-001 | v1.3`
 
 |**Class**|**Description**|**Examples**|**Bedrock Guardrails Actio**|**nRetention**|
 |---|---|---|---|---|
@@ -563,9 +497,7 @@ Phase C covers both Data and Application Architecture. For APEX, this is the mos
 |C1 — Public|Regulatory/market data|FCA rules, market rates, B|asel III guides<br>None required|Indefinite|
 |C-AI — AI Assets (N|EW)<br>AI-DLC: Prompt catalog|s, e**m**beddings, feedback l<br>Pro<br>pt templates, vector|ogs<br>embeddi**n**gs, RLHF data<br>Versio -controlled; DPO si|gn-off if C4-a**d**jacent<br>Per source ata clas|
 
-
-
-#### **AI-Native Data Entities (AI-DLC Extension to TOGAF Data Architecture)**
+#### AI-Native Data Entities (AI-DLC Extension to TOGAF Data Architecture)
 
 Traditional TOGAF data architecture does not include AI-specific artefacts. AI-DLC and agentic platforms introduce a new category of governed data entities that must be treated as first-class architectural concerns:
 
@@ -583,11 +515,9 @@ Traditional TOGAF data architecture does not include AI-specific artefacts. AI-D
 |KB-003|Product|& Suitabili|ty KB<br>NexaBank product catalogue, MiFID II suitability rules, risk factor definitions<br>Recursive 512 tokens<br>Titan Embeddings v2Real-time (product chang**e**s)<br>AOSS u-west-|
 |KB-004|IT Runb|ook KB|ServiceNow runbooks, DORA incident resp**o**nse playbooks, on-call guides<br>Semantic 768 t kens<br>Titan Embeddings v2On-change (runbook update trigge<br>AOSS eu-west-|
 
+#### Knowledge Base Architecture (RAG Design)
 
-
-#### **Knowledge Base Architecture (RAG Design)**
-
-#### **Application Architecture — AWS Agent Core Component Model**
+#### Application Architecture — AWS Agent Core Component Model
 
 ```
 DOC REF: AAD-APEX-001 | v1.4
@@ -597,8 +527,6 @@ DOC REF: AAD-APEX-001 | v1.4
 |---|---|---|---|
 |APEX Developer Porta|l React SPA + API Gateway|BFF (Backend-for-Frontend<br>99.9%|)<br>/ p99 <500msUI scaffolded by Amazon Q Developer|
 |APEX Control Plane|Python FastAPI on ECS Fa|rgate<br>Microservice (5 services)<br>99.9%|/ p99 <500msFastAPI skeleton + unit tests AI-genera|
-
-
 
 **Page 11**
 
@@ -612,7 +540,7 @@ NexaBank Global | CONFIDENTIAL
 
 Bedrock Supervisor AgentAWS Bedrock Agents + Claude 3.5Orchestrator-Worker99.95% / p99 <3s Agent YAML + prompt templates gene Tool Lambda Library AWS Lambda Python 3.12 Sidecar + Action Groups99.95% / p99 <1s Each tool function AI-generated; mand Human Loop (A2I) AWS Augmented AI + React UIHuman-in-the-Loop 99.5% / SLA by task typeA2I workflow config generated; custom Observability Stack CloudWatch + X-Ray + DatadogCentralised OTEL collector99.5% Dashboard-as-code generated by AI-D Compliance Reporter Python + AWS QuickSight Batch report generation99.5% / daily run EU AI Act and DORA report templates
 
-#### **API Catalogue**
+#### API Catalogue
 
 |**API**|**Version**|**Pattern**|**Auth Method**|**Availability SLA**|**Owner**|
 |---|---|---|---|---|---|
@@ -622,8 +550,6 @@ Bedrock Supervisor AgentAWS Bedrock Agents + Claude 3.5Orchestrator-Worker99.95%
 |Onboarding API|v1|REST/JSON|OAuth2|99.5% / p99 <1s|Platform Eng|
 |Chargeback API|v1|REST/JSON|mTLS|99.9% monthly|FinOps|
 |Compliance Report AP|I v1|REST/JSON|OAuth2 + MFA|99.5% daily|Compliance|
-
-
 
 **Page 12**
 
@@ -635,22 +561,17 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 9](/img/enterprise-architecture/ea-p13-9.png)
 
-
-<!-- Start of picture text -->
-PHASE D<br><!-- End of picture text -->
-
-## **Technology Architecture**
+## Technology Architecture
 
 Multi-region AWS infrastructure, security, CI/CD, and observability
 
 Phase D specifies the complete technology architecture for APEX on AWS. This covers multi-region infrastructure, AWS Agent Core configuration, network design, security architecture, the CI/CD pipeline enhanced with AI-DLC tooling, and the operational observability model.
 
-#### **Multi-Region Deployment Model**
+#### Multi-Region Deployment Model
 
-##### **`DOC REF: TAD-APEX-001 | v2.0`**
+##### `DOC REF: TAD-APEX-001 | v2.0`
 
 |**AWS Region**|**Role**|**Data Types**<br>**Key Services**<br>**Regulatory Basis**|
 |---|---|---|
@@ -659,9 +580,7 @@ Phase D specifies the complete technology architecture for APEX on AWS. This cov
 |us-east-1 (N. Virginia)|US INSTITUTI|ONAL<br>US institutional counterparty data<br>Bedrock, AOSS, Aurora replica CCPA, FinCEN, SEC, FINRA|
 |ap-southeast-1 (Singap|ore)<br>APAC|Singapore, HK customer dataBedrock, OpenSearch Service, S3<br>PDPA, MAS TRM Guidelines|
 
-
-
-#### **AWS Bedrock Agent Core Configuration**
+#### AWS Bedrock Agent Core Configuration
 
 The APEX Supervisor Agent is configured as an orchestrator that routes to specialist sub-agents per Pioneer Domain. Key configuration parameters:
 
@@ -676,9 +595,7 @@ The APEX Supervisor Agent is configured as an orchestrator that routes to specia
 |Invocation Endpoint|VPC PrivateLink only|No public internet path; DORA and security architectur|
 |Bedrock Tracing|Enabled→CloudWatch|DORA Art.11 audit trail; EU AI Act traceability requirem|
 
-
-
-#### **Security Architecture Summary**
+#### Security Architecture Summary
 
 |**Security Domain**|**Control**|**Implementation**<br>**Compliance Basis**|
 |---|---|---|
@@ -691,9 +608,7 @@ The APEX Supervisor Agent is configured as an orchestrator that routes to specia
 |Prompt Injection Defen|ceInput sanitisation Lambda|wrapper<br>All agent inputs pass through sanitisation layer before Bedrock<br>OWASP LLM Top 10|
 |Secrets Management|AWS Secrets Manager|90-day auto-rotation; no hardcoded secrets (Checkov enforced)<br>CIS AWS L2|
 
-
-
-#### **CI/CD Pipeline — AI-DLC Enhanced**
+#### CI/CD Pipeline — AI-DLC Enhanced
 
 **Page 13**
 
@@ -718,8 +633,6 @@ The APEX CI/CD pipeline has been redesigned to incorporate AI-DLC Construction a
 |7. Canary Deploy|AWS CodeDeploy (10%→50%→100%)<br>AI monitors canary metrics; auto-rollback on p99 breach<br>Automated with human override|
 |8. Post-Deploy|CloudWatch + FinOps checker<br>AI generates stakeholder summary; cost tags verified; DORA evid**e**nce created<br>Automated complianc record|
 
-
-
 **Page 14**
 
 TOGAF® is a registered trademark of The Open Group
@@ -730,20 +643,15 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 10](/img/enterprise-architecture/ea-p15-10.png)
 
-
-<!-- Start of picture text -->
-PHASES E–H<br><!-- End of picture text -->
-
-## **Opportunities, Migration, Governance & Change**
+## Opportunities, Migration, Governance & Change
 
 Roadmap, delivery plan, compliance, and ongoing architecture management
 
-### **Phase E — Architecture Roadmap (ROAD-APEX-001)**
+### Phase E — Architecture Roadmap (ROAD-APEX-001)
 
-##### **`DOC REF: ROAD-APEX-001 | v2.1`**
+##### `DOC REF: ROAD-APEX-001 | v2.1`
 
 AI-DLC compresses the architecture roadmap significantly. Traditional work packages measured in months are replaced by 'bolts' (hours to days). The following roadmap shows both APEX work packages and their AI-DLC bolt estimates:
 
@@ -762,9 +670,7 @@ AI-DLC compresses the architecture roadmap significantly. Traditional work packa
 |Self-Service Onboarding Portal|WP-012|3 bolts|8 weeks|H2|
 |EU AI Act Compliance Pack (automation)|WP-015|2 bolts|5 weeks|H2|
 
-
-
-### **Solution Building Blocks — Build/Buy/Reuse Summary (SBB-APEX-001)**
+### Solution Building Blocks — Build/Buy/Reuse Summary (SBB-APEX-001)
 
 ```
 DOC REF: SBB-APEX-001 | v1.2
@@ -782,15 +688,13 @@ DOC REF: SBB-APEX-001 | v1.2
 |Tool Lambda Library|BUILD|AWS Lambda Python 3.12|AI-DLC generates each tool function; mandatory huma|
 |Compliance Reporter|BUILD|Python + QuickSight|AI-DLC generates EU AI Act and DORA report templat|
 
-
-
-### **Phase F — Implementation & Migration (IMP-APEX-001)**
+### Phase F — Implementation & Migration (IMP-APEX-001)
 
 ```
 DOC REF: IMP-APEX-001 | v1.5
 ```
 
-#### **Migration Strategy: 23 Existing AI Tools**
+#### Migration Strategy: 23 Existing AI Tools
 
 **Page 15**
 
@@ -804,7 +708,7 @@ NexaBank Global | CONFIDENTIAL
 
 **Category Count Action AI-DLC Migration Path Target Date** ADOPT — Already AWS; add APEX governance8 tools Wrap in APEX tool framework; add guardrailsAI-DLC Operations: IaC wrapping in 1 bolt per toolQ3 2025 ADAPT — Works well; needs APEX integration layer6 tools Expose as APEX tool; APEX orchestrateAI-DLC build adapter Lambda in Mob Construction **s** Q4 2025 REPLACE — Duplicates APEX capability7 tools Pioneer agent replaces; decommission legacyParallel-run then canary cutover; AI monitors metricsQ1 2026 RETIRE — Unused/low value 2 tools Immediate decommission; archive audit logsAI-DLC Operations: IaC teardown + evidence generationQ2 2025
 
-### **Phase G — Architecture Governance (CAF-APEX-001 + AC-APEX-001)**
+### Phase G — Architecture Governance (CAF-APEX-001 + AC-APEX-001)
 
 ```
 DOC REF: CAF-APEX-001 | v1.1 — AI-DLC Impact: Real-Time Automated Conformance
@@ -819,11 +723,9 @@ AI-DLC fundamentally changes the governance model: where traditional conformance
 |Tier 3: ARB ReviewSignificant deviations, new SBBs, r|egulatory gap findings, architecture debt accumul**a**tion<br>Formal ARB session (now weekly with AI-DLC)<br>Weekly (was bi-weekly; ccelerated for AI-DLC)<br>Full ARB; human decision auth|
 |Tier 4: Steering Committee<br>Strategic deviations, budget impac|ts >£50K, r**e**gulatory findings<br>Formal st ering pack (AI-generated draft, human reviewed)<br>Monthly<br>Steering committee; executive|
 
+### Phase H — Architecture Change Management (ACHG-APEX-001)
 
-
-### **Phase H — Architecture Change Management (ACHG-APEX-001)**
-
-##### **`DOC REF: ACHG-APEX-001 | v1.2 — AI-DLC Impact: Continuous Change Intelligence`**
+##### `DOC REF: ACHG-APEX-001 | v1.2 — AI-DLC Impact: Continuous Change Intelligence`
 
 With AI-DLC and AWS Bedrock model releases occurring frequently (Claude versions, new Bedrock features), Phase H must operate as a continuous intelligence function — not a periodic review. NexaBank implements an AI-powered change monitoring system that watches technology and regulatory landscapes:
 
@@ -833,8 +735,6 @@ With AI-DLC and AWS Bedrock model releases occurring frequently (Claude versions
 |Type 2: Regulator|y-driven<br>EU AI Act enforcement calendar monitored; regulatory feed parsed daily by agent<br>Compliance impact assessment within 48 hours<br>EU AI Act Art.6 enforcement date: APEX comp|
 |Type 3: Business-|driven<br>Domain team agent onboarding request triggers standard intake workflow<br>Standard: 5 business days to intake deci**s**i**on**<br>New BU request<br>boarding to APEX marketp|
 |Type 4: Simplificat|ion/Retirement<br>APEX usage analytics identifies underutilised agents quarterly<br>Decommission plan within 30 days of flag<br>Pioneer 1 agent v1.2 superseded by v2.0; v1.2|
-
-
 
 **Page 16**
 
@@ -846,20 +746,15 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-
 ![Figure 11](/img/enterprise-architecture/ea-p17-11.png)
 
-
-<!-- Start of picture text -->
-REQ MGMT<br><!-- End of picture text -->
-
-## **Requirements Management (Continuous)**
+## Requirements Management (Continuous)
 
 Living requirements — the heartbeat of the APEX ADM
 
 Requirements Management is the continuous, central process of the TOGAF ADM wheel. AI-DLC's 'Semantic Context Building' and persistent context storage transform this from a periodic document into a living, AI-maintained traceability system. NexaBank maintains 147 architecture requirements in the ARS; a representative sample is shown below.
 
-#### **Architecture Requirements Specification — Sample (ARS-APEX-001)**
+#### Architecture Requirements Specification — Sample (ARS-APEX-001)
 
 ```
 DOC REF: ARS-APEX-001 | v2.3 | Living Document — 147 total requirements
@@ -882,8 +777,6 @@ DOC REF: ARS-APEX-001 | v2.3 | Living Document — 147 total requirements
 |CR-003|Compliance|DORA 72-hour ICT incident notification process automated<br>Must|<br>DORA Art.17|In Review|
 |CR-NEW-01|Compliance (AI-|DLC)<br>AI-generated architecture artefacts marked with AI-DLC m<br>Should|etadata for audit<br>EA Governance|Backlog|
 
-
-
 **Page 17**
 
 TOGAF® is a registered trademark of The Open Group
@@ -894,9 +787,9 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-##### **APPENDIX A**
+##### APPENDIX A
 
-## **Regulatory Cross-Reference Matrix**
+## Regulatory Cross-Reference Matrix
 
 APEX compliance posture across all applicable regulatory frameworks
 
@@ -912,8 +805,6 @@ APEX operates in a highly regulated environment. The following matrix maps each 
 |MiFID II|Art.27 (best execution), Suitability assessme**n**t for investment advice<br>Human-i -Loop mandatory for all wealth advice; MiFID II suitability rules in<br>A2I human review logs; Suitability|
 |MAS TRM (Singap|ore)<br>Technology Risk Management — AI/ML model governance, cloud risk<br>APAC region isolation (ap-southeast-1); MAS-aligned model gov**e**rnance; l<br>MAS TRM self-assessm nt; Regio|
 
-
-
 **Page 18**
 
 TOGAF® is a registered trademark of The Open Group
@@ -924,9 +815,9 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-##### **APPENDIX B**
+##### APPENDIX B
 
-## **Glossary**
+## Glossary
 
 Key terms — TOGAF 10, AI-DLC, AWS Agent Core, and regulatory
 
@@ -950,8 +841,6 @@ Key terms — TOGAF 10, AI-DLC, AWS Agent Core, and regulatory
 |**RAG**|Retrieval-Augmented Generation — technique where AI retrieves relevant context<br>from a knowledge base before generating a response|
 |**RAGAS**|Retrieval-Augmented Generation Assessment — evaluation framework for measuring<br>RAG pipeline quality (faithfulness, relevance, context recall)|
 
-
-
 **Page 19**
 
 TOGAF® is a registered trademark of The Open Group
@@ -969,8 +858,6 @@ NexaBank Global | CONFIDENTIAL
 |**TLPT**|Threat-Led Penetration Testing — DORA Art.26 obligation for major financial entities<br>to conduct adversarial testing of critical ICT systems|
 |**Unit of Work**|AI-DLC equivalent of an Agile Epic; a significant deliverable decomposed into bolts;<br>typically days to weeks in duration|
 
-
-
 **Page 20**
 
 TOGAF® is a registered trademark of The Open Group
@@ -981,15 +868,13 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-### **Document Control**
+### Document Control
 
 |**Version**|**Date**|**Author**|**Change Summary**|**Approver**|
 |---|---|---|---|---|
 |1.0|2025-01-15|Enterprise Architect|Initial draft — Phases A–D|ARB|
 |2.0|2025-03-01|Enterprise Architect|Full ADM coverage; Architecture Contracts added|Group CTO|
 |3.0|2026-04-01|Enterprise Architect|AI-DLC impact analysis integrated across all phases; new|requirements ad<br>Group CTO|
-
-
 
 TOGAF® is a registered trademark of The Open Group. AWS, Amazon Bedrock, Amazon Q Developer, and related marks are trademarks of Amazon Web Services Inc. EU AI Act, DORA, and GDPR are legislative instruments of the European Union. SR 11-7 is a supervisory letter of the US Federal Reserve. BCBS 239 is a principle of the Basel Committee on Banking Supervision. All product names, trademarks, and registered trademarks are property of their respective owners. This document is classified CONFIDENTIAL and is the property of NexaBank Global Enterprise Architecture. © 2026 NexaBank Global. All rights reserved.
 

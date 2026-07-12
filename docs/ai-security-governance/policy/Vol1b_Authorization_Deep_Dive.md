@@ -13,33 +13,31 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 1b OF Extended**
 
-## **~~1. XACML — The Standard That Defined~~**
+## 1. XACML — The Standard That Defined
 
-# **~~Enter rise Authorization~~** **~~<u>p</u> Authorization Deep Dive~~**
+# Enter rise Authorization** **<u>p</u> Authorization Deep Dive
 
-eXtensible Access Control Markup Language <u>(XACML) is the OASIS standard that first formalized the</u> PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is ~~Engines · Interceptor Patterns · XACML · OpenFGA · Zanzibar · gRPC · Envoy · Event-Drivenessential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.~~
+eXtensible Access Control Markup Language <u>(XACML) is the OASIS standard that first formalized the</u> PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is Engines · Interceptor Patterns · XACML · OpenFGA · Zanzibar · gRPC · Envoy · Event-Drivenessential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.
 
-### **1.1 XACML Request/Response Model**
+### 1.1 XACML Request/Response Model
 
-|**. eq**<br>`john.smith@bank.com`<br>**~~1.2 XACML vs C~~**<br>**Dimension**|**uesesponse oe**<br>`FINANCE true invoke-tool payment-appro`<br>**~~edar — Structural Comparis~~**<br>**XACML 3.0**|`val-tool Permit HIGH`<br>**~~on~~**<br>**AWS Cedar**|
+|**. eq**<br>`john.smith@bank.com`<br>**1.2 XACML vs C**<br>**Dimension**|**uesesponse oe**<br>`FINANCE true invoke-tool payment-appro`<br>**edar — Structural Comparis**<br>**XACML 3.0**|`val-tool Permit HIGH`<br>**on**<br>**AWS Cedar**|
 |---|---|---|
 |Policy Format|Verbose XML — 50+ lines per rule|Concise DSL — 5-10 lines per policy|
-|Combining Algorithms|14 combining algorithms (deny-overrides,<br>~~permit-overrides, etc.)~~|Implicit: forbid overrides permit always|
-|~~Obligations~~|~~Full obligation model in standard~~|~~Obligations via context and PEP~~<br>conventions|
+|Combining Algorithms|14 combining algorithms (deny-overrides,<br>permit-overrides, etc.)|Implicit: forbid overrides permit always|
+|Obligations|Full obligation model in standard|Obligations via context and PEP<br>conventions|
 |Schema Validation|XML Schema (XSD)|Cedar schema — strongly typed|
 |Performance|XMLparsingoverhead — typically20-100ms|Sub-millisecond evaluation|
 |**VOLUME COVERAGE**<br>Extended coverage of e<br> <br>Standards|very authorization engine, all PEP interceptor<br> <br>OASIS standard—government/healthcare<br>mandate|patterns, gRPC interceptors,<br> <br>AWS proprietary (but open-source)|
-|~~event-driven authorizati~~<br>complete STRIDE threa<br>Formal Verification|~~on, XACML deep dive, OpenFGA relationship~~<br>t model with mitigations,andperformance ben<br>No|~~model, Zanzibar global scale,~~<br>chmark data.<br>Yes — Lean theorem prover|
+|event-driven authorizati<br>complete STRIDE threa<br>Formal Verification|on, XACML deep dive, OpenFGA relationship<br>t model with mitigations,andperformance ben<br>No|model, Zanzibar global scale,<br>chmark data.<br>Yes — Lean theorem prover|
 |Ecosystem|IBM, Axiomatics, Forgerock implementations|AWS AVP only (growing ecosystem)|
 |Use Today<br>|Legacy enterprises, government mandates<br>|New AWS-native projects<br>|
 
+## 2. OpenFGA & Zanzibar — Relationship-Based Authorization
 
+Google Zanzibar (2019 paper) described the authorization system that powers Google Drive, YouTube, Calendar, and Maps — serving trillions of authorization checks per day. OpenFGA (Open Fine-Grained Authorization) is Auth0/Okta's open-source implementation of the Zanzibar model. Both solve a problem RBAC and ABAC cannot: authorization based on entity relationships.
 
-## **~~2. OpenFGA & Zanzibar — Relationship-Based Authorization~~**
-
-Google Zanzibar (2019 paper) described the authorization system that powers Google Drive, YouTube, Calendar, and Maps — serving trillions of authorization checks per day. OpenFGA (Open Fine-Grained ~~Authorization) is Auth0/Okta's open-source implementation of the Zanzibar model. Both solve a problem RBAC~~ and ABAC cannot: authorization based on entity relationships.
-
-### **~~2.1 The Relationship Model~~**
+### 2.1 The Relationship Model
 
 ```
 // OpenFGA Authorization Model (Zanzibar-style) // Defines types and their allowed relations
@@ -51,17 +49,15 @@ facts): // user:john#owner@document:m-and-a-brief // user:jane#viewer@document:m
 user:john#member@tenant:bank-prod // agent:payments-agent#delegated_from@user:john //
 ```
 
-~~Classification: CONFIDENTIAL — INTERNAL USE ONLY~~
+Classification: CONFIDENTIAL — INTERNAL USE ONLY
 
-~~Published: June 2026  ·  AWS Well-Architected Series~~
+Published: June 2026  ·  AWS Well-Architected Series
 
 **ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
-
-
 `Authorization Check: // can agent:payments-agent view document:m-and-a-brief? //` → `agent is delegated_from user:john //` → `user:john is owner of document //` → `owner` ⊇ `viewer //` → `ALLOW`
 
-### **2.2 When ReBAC Beats RBAC and ABAC**
+### 2.2 When ReBAC Beats RBAC and ABAC
 
 ReBAC (Relationship-Based Access Control) is the superior model when authorization depends on the relationship between the principal and the resource, not just attributes:
 
@@ -73,11 +69,9 @@ ReBAC (Relationship-Based Access Control) is the superior model when authorizati
 |Google Drive share with<br>specific people|Create group for every share —<br>explosion|Tuple per share:<br>user:guest#viewer@doc:shared|
 |I**NOTE**|||
 
-
-
 For Agentic AI: The most powerful ReBAC use case is agent-to-user-data relationships. Instead of 'agent has calendar-access capability' (too broad), use relationship tuples: 'agent:X is delegated_reader of user:john calendar'. This means the agent can ONLY access John's calendar for this session, not all calendars with that capability.
 
-### **2.3 Hybrid: Cedar + OpenFGA**
+### 2.3 Hybrid: Cedar + OpenFGA
 
 For enterprise Agentic AI, a pragmatic hybrid uses Cedar for business authorization policy and OpenFGA (or Cedar's own entity hierarchy) for relationship facts:
 
@@ -87,15 +81,11 @@ Architecture: OpenFGA (Relationship Store) Cedar (Policy Engine)
 
 IIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIII `Stores FACTS: Evaluates POLICY: • user#owner@document • permit(principal, read, resource) • agent#delegated_from@user • when principal is owner of resource • team#member@project • and resource.classification <= user.clearance` ↓ `PIP Bridge` ↓ `OpenFGA check result flows into Cedar authorization context as a boolean attribute: context.isOwner = true/false context.isDelegatedFrom = true/false`
 
-
-
-
-
-## **3. PEP Interceptor Patterns — Complete Reference**
+## 3. PEP Interceptor Patterns — Complete Reference
 
 The Policy Enforcement Point must be positioned at every boundary where authorization is required. This section provides implementation-level detail for each interceptor pattern.
 
-### **3.1 API Gateway Lambda Authorizer (AWS Native)**
+### 3.1 API Gateway Lambda Authorizer (AWS Native)
 
 ```
 # Lambda Authorizer — complete implementation pattern import json import boto3 import hashlib
@@ -134,7 +124,7 @@ claims['principal']['id'], 'capabilities': json.dumps(claims['capabilities']) },
 'usageIdentifierKey': claims['principal']['id'] }
 ```
 
-### **3.2 Envoy / Istio External Authorization (Service Mesh)**
+### 3.2 Envoy / Istio External Authorization (Service Mesh)
 
 For East-West (service-to-service) traffic in EKS/ECS, Envoy's external authorization filter calls an authorization service before forwarding requests. This is ideal for microservice-to-microservice agent calls:
 
@@ -145,11 +135,7 @@ envoy.filters.http.ext_authz typed_config: "@type":
 
 `type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz grpc_service: envoy_grpc: cluster_name: authz_cluster timeout: 5s # Circuit breaker: timeout = deny include_peer_certificate: true failure_mode_allow: false # CRITICAL: false = default deny with_request_body: max_request_bytes: 8192 allow_partial_message: false # The authorization service receives: # - All request headers (including JWT) # - Request path and method # - Source principal (from mTLS certificate) # - Request body (if configured) # Authorization service returns: # - 200 OK` → `forward request # - 403 Forbidden` → `block (with optional custom headers) # OPA ext_authz implementation: # deploy as sidecar alongside Envoy # Policy bundle loaded from S3 # Evaluation: <1ms (in-memory bundle)`
 
-
-
-
-
-### **3.3 FastAPI Middleware PEP**
+### 3.3 FastAPI Middleware PEP
 
 ```
 # FastAPI Middleware — PEP for Python agent services from fastapi import FastAPI, Request,
@@ -182,7 +168,7 @@ request.headers.get('X-Canonical-Claims') if claims_header: return json.loads(cl
 return None
 ```
 
-### **3.4 gRPC Interceptor PEP**
+### 3.4 gRPC Interceptor PEP
 
 ```
 # gRPC Unary Interceptor — for agent-to-agent gRPC calls import grpc import boto3 import json
@@ -217,19 +203,15 @@ auth_wrapper, request_deserializer=actual_handler.request_deserializer,
 response_serializer=actual_handler.response_serializer, )
 ```
 
-
-
-
-
-## **4. Event-Driven Authorization Architecture**
+## 4. Event-Driven Authorization Architecture
 
 Multi-agent workflows often operate asynchronously via EventBridge or SQS. Authorization in event-driven systems requires a different pattern — the PEP cannot block in the traditional synchronous sense, but must validate events before they reach consumers.
 
-### **4.1 Event Authorization Pipeline**
+### 4.1 Event Authorization Pipeline
 
 `Event Producer (Agent)` I I `Publishes event to EventBridge` I `Event includes: principal claims, action, resource, context` M IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `EVENTBRIDGE AUTHORIZATION BUS` I I I I `EventBridge Rule` → `Authorization Lambda` I I `(Pre-consumer authorization check)` I I I I `Authorization Lambda:` I I `1. Extract principal claims from event` I I `2. Call Cedar AVP IsAuthorized` I I `3. IF DENY` → `route to Dead Letter Queue (DLQ)` I I `+ publish AUTHORIZATION_DENIED event` I I `4. IF ALLOW` → `forward to target consumer` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `(authorized events only)` M `Consumer (Specialist Agent / Service)` I I `Re-validates on receipt (defense in depth)` I `A compromised EventBridge rule cannot bypass` I `consumer-side authorization` M `Business Logic Execution`
 
-### **4.2 Event Authorization Lambda**
+### 4.2 Event Authorization Lambda
 
 ```
 # EventBridge Authorization Lambda import boto3 import json import logging avp =
@@ -264,15 +246,11 @@ Publish AUTHORIZATION_DENIED event for SIEM eb.put_events(Entries=[{ 'Source':
 event_detail, 'reason': str(response_or_reason) }), 'EventBusName': AUDIT_BUS }])
 ```
 
-
-
-
-
-## **5. Complete STRIDE Threat Model for Enterprise Agentic AI**
+## 5. Complete STRIDE Threat Model for Enterprise Agentic AI
 
 The following is a comprehensive STRIDE threat model for the entire authorization stack. Each threat includes its attack scenario, affected components, likelihood, impact, and specific mitigations implemented in this architecture.
 
-### **5.1 Spoofing Threats**
+### 5.1 Spoofing Threats
 
 |**Threat**|**Attack Scenario**|**Affected**<br>**Components**|**Mitigation**|
 |---|---|---|---|
@@ -282,9 +260,7 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 |S4: Tenant<br>Claim<br>Forgery|Attacker modifies JWT<br>tenant_id claim to access<br>another tenant's data|Claims<br>Normalization|Tenant ID is cryptographically bound in the JWT<br>signature. Only the IdP can set it. Normalization<br>re-validates against IdP.|
 |S5: JWKS<br>Poisoning|Attacker substitutes a<br>malicious JWKS endpoint to<br>validate forged tokens|Lambda Authorizer|JWKS endpoint URL is hardcoded in authorizer<br>config (not token-derived). Certificate pinning in<br>production.|
 
-
-
-### **5.2 Tampering Threats**
+### 5.2 Tampering Threats
 
 |**Threat**|**Attack Scenario**|**Affected**<br>**Components**|**Mitigation**|
 |---|---|---|---|
@@ -299,13 +275,7 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 |Memory|to shared memory store that|DynamoDB|Content classification before write. Shared|
 |Injection|influences other agents||memory requires explicit project membership.|
 
-
-
-### **5.3 Repudiation Threats**
-
-
-
-
+### 5.3 Repudiation Threats
 
 |**Threat**|**Attack Scenario**|**Mitigation**|
 |---|---|---|
@@ -313,9 +283,7 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 |R2: Policy<br>Change Denial|Administrator denies having<br>changed a Cedar policy|AVP policy changes logged to CloudTrail with the IAM principal who<br>made the change. Git commit history with signed commits provides<br>additional non-repudiation.|
 |R3: Data<br>Access Denial|Agent denies having accessed<br>a classified document via RAG|Post-retrieval Cedar evaluation logs every document access<br>decision. Document chunk IDs and content hashes are in the audit<br>record.|
 
-
-
-### **5.4 Information Disclosure Threats**
+### 5.4 Information Disclosure Threats
 
 |**Threat**|**Attack Scenario**|**Mitigation**|
 |---|---|---|
@@ -325,9 +293,7 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 |I4: Memory<br>Cross-User<br>Leakage|Agent reads another user's<br>episodic memory by<br>manipulating session context|Memory records keyed by userId#tenantId in DynamoDB. Cedar<br>forbid on memory.ownerId != principal.userId.|
 |I5: PII in Agent<br>Output|LLM generates response<br>containing PII extracted from<br>retrieved documents|Bedrock Guardrails + Amazon Macie scan agent outputs. Cedar<br>output classification policy. DLP-failed outputs are blocked and<br>flagged.|
 
-
-
-### **5.5 Denial of Service Threats**
+### 5.5 Denial of Service Threats
 
 |**Threat**|**Attack Scenario**|**Mitigation**|
 |---|---|---|
@@ -338,13 +304,7 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 |Invocation|in a tight loop, exhausting|Step Functions workflow has max concurrency. Dead man's switch:|
 |Storms|downstream API quotas|agent execution time limit.|
 
-
-
-### **5.6 Elevation of Privilege Threats**
-
-
-
-
+### 5.6 Elevation of Privilege Threats
 
 |**Threat**|**Attack Scenario**|**Mitigation**|
 |---|---|---|
@@ -353,17 +313,11 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 |E3:<br>Agent-to-Agent<br>Privilege<br>Escalation|Sub-agent claims broader<br>scope than the orchestrator<br>delegated|Cedar verifies that sub-agent's delegated scope is⊆orchestrator's<br>scope. Token exchange service enforces scope intersection at<br>delegation time.|
 |E4: Expired<br>Session<br>Privilege<br>Retention|Agent continues executing<br>after the user's session<br>expires, using cached<br>authorization decisions|JWT expiry is enforced at normalization. Cached decisions have<br>TTL≤JWT expiry. Re-authorization required for sessions > 60<br>minutes.|
 
-
-
-
-
-
-
-## **6. Authorization Performance Benchmarks**
+## 6. Authorization Performance Benchmarks
 
 The following benchmarks are based on production measurements from AWS documentation, Styra DAS benchmarks, and published enterprise implementations. All figures assume warm cache unless stated otherwise.
 
-### **6.1 Latency Benchmarks by Component**
+### 6.1 Latency Benchmarks by Component
 
 |**Component**|**P50**|**P95**|**P99**|**P99.9**|**Notes**|
 |---|---|---|---|---|---|
@@ -378,9 +332,7 @@ The following benchmarks are based on production measurements from AWS documenta
 |RAG pre-filter construction|0.2m<br>s|0.5m<br>s|1ms|2ms|Derived from cached claims|
 |Cedar chunk post-auth (per<br>chunk)|1ms|2ms|4ms|8ms|Batch mode for multiple chunks|
 
-
-
-### **6.2 Cache Hit Rate Targets**
+### 6.2 Cache Hit Rate Targets
 
 |**Cache Layer**|**Target Hit**<br>**Rate**|**If Miss**|**Impact of Miss**|
 |---|---|---|---|
@@ -391,15 +343,9 @@ The following benchmarks are based on production measurements from AWS documenta
 |Cedar AVP (no client-side cache)|N/A (managed)|Always calls AVP API|AVP manages internally|
 |I**NOTE**||||
 
-
-
-
-
-
-
 Performance Engineering Principle: The critical path for 95% of requests must be <5ms additional latency. This is achievable with warm caches. The 5% cold-path cost (25-60ms) is acceptable because it occurs only on first request in a new session. Never sacrifice security for performance — instead optimize the cache warm path.
 
-### **6.3 Throughput & Scaling Characteristics**
+### 6.3 Throughput & Scaling Characteristics
 
 |**Component**|**Single Instance TPS**|**Horizontal Scaling**|**AWS Managed?**|
 |---|---|---|---|

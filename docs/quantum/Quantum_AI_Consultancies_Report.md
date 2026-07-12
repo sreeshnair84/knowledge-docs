@@ -1,5 +1,5 @@
 ---
-title: "QUANTUM AI CONSULTING LANDSCAPE** INDUSTRY RESEARCH REPORT <u>Segment 2 of 3: Consultancies</u>"
+title: "Quantum AI Consulting Landscape — Consultancies (Segment 2 of 3)"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -10,9 +10,9 @@ last_reviewed: 2026-07-10
 covers_through: 2026-07-10
 research_date: 2026-07-10
 ---
-# **QUANTUM AI CONSULTING LANDSCAPE** INDUSTRY RESEARCH REPORT <u>Segment 2 of 3: Consultancies</u>
+# Quantum AI Consulting Landscape — Consultancies (Segment 2 of 3)
 
-Problem • Solution • Practice Assets • Big Wins • Best Practices • Anti-Patterns **MCKINSEY IBM** **~~ACCENTURE QuantumBlack BCG X DELOITTE Consulting~~**
+Problem • Solution • Practice Assets • Big Wins • Best Practices • Anti-Patterns **MCKINSEY IBM** **ACCENTURE QuantumBlack BCG X DELOITTE Consulting**
 
 Researched June 2026 • Principal Architect Edition
 

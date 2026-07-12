@@ -9,11 +9,9 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Case Study**
+# Case Study
 
 Continental Union Bank — Commercial Lending Underwriting Copilot & Model Risk Governance
-
-Confidential Internal Engagement Documentation
 
 Engagement Period: January 2025 – November 2025
 
@@ -60,7 +58,7 @@ Engagement Period: January 2025 – November 2025
 
 8.1 Model Risk Committee Review — Week 16 8.2 CRO / Board Risk Committee Briefing — Week 20 8.3 Post-Incident Executive Review — Week 34 (see Section 14 for incident detail) 9. Final Architecture 10. Delivery Roadmap 11. Risks 12. Governance Model 13. Production Rollout 14. Production Incident — Month 8 14.1 Incident Summary 14.2 Incident Response Transcript 14.3 Remediation 15. Lessons Learned 16. Enterprise Architecture Artifacts 17. Architecture Decision Records (ADRs) 18. AI Evaluation Strategy 19. Operational Runbook 20. Future Roadmap
 
-# **1. Executive Summary**
+# 1. Executive Summary
 
 Continental Union Bank (CUB), a top-25 U.S. bank holding company with a $140B commercial lending book, engaged an Enterprise AI Architecture team to design an AI-assisted underwriting copilot for its Commercial & Industrial (C&I) lending division. The mandate: reduce the 11-day average time-to-credit-memo for mid-market loans ($2M–$50M) without weakening the bank’s model risk posture under SR 11-7 (the Federal Reserve’s supervisory guidance on model risk management) or its internal three-lines-of-defense governance model.
 
@@ -70,7 +68,7 @@ The engagement’s defining moment was a near-miss four months into production: 
 
 Key outcomes: - Average time-to-credit-memo reduced from 11 days to 6.5 days for in-scope loan segment - Zero credit decisions made autonomously by AI — 100% human decision authority retained, by design and by regulatory necessity - One material near-miss (Month 4 of pilot) triggering a full evaluation-strategy redesign before any further loan-segment expansion - Formal Fed/OCC model risk validation completed and passed prior to full production rollout
 
-# **2. Client Background**
+# 2. Client Background
 
 Continental Union Bank operates a Commercial & Industrial lending division with roughly 340 relationship managers and 210 credit underwriters across twelve regional offices. Underwriters at CUB were spending a disproportionate share of their time on document assembly and financial-statement analysis — pulling data from borrower financials, tax returns, and industry comparables into a structured credit memo — rather than on judgment-intensive credit analysis.
 
@@ -78,7 +76,7 @@ CUB’s technology landscape included a core banking platform (a customized Fina
 
 The bank’s Chief Risk Officer, Angela Osei, and Head of Model Risk Management, Dr. Farrukh Malik, were both explicit from the outset that this was as much a governance engagement as a technology engagement — CUB had been through a prior regulatory exam finding related to inadequate model documentation on an unrelated frauddetection model, and neither wanted a repeat.
 
-# **3. Business Problem**
+# 3. Business Problem
 
 C&I underwriting at CUB followed a well-defined but labor-intensive process: a relationship manager originates a loan opportunity, an underwriter spreads the borrower’s financials (normalizing them into the bank’s standard analytical format), assesses covenant structure and collateral, drafts a credit memo synthesizing the analysis, and routes it to a credit committee for approval above certain thresholds.
 
@@ -86,7 +84,7 @@ Discovery identified that roughly 60% of underwriter time on a typical mid-marke
 
 A secondary problem: policy consistency. Underwriters across twelve regions interpreted CUB’s credit policy manual somewhat differently, and a Q2 internal audit had flagged seven instances in the prior eighteen months where credit memos cited policy provisions that had since been superseded by policy committee updates the underwriter hadn’t been aware of.
 
-# **4. Constraints**
+# 4. Constraints
 
 1. **SR 11-7 model risk management.** Any model influencing credit decisions, even indirectly, required a formal model risk classification, independent validation by Model Risk Management (a group organizationally separate from the build team), and ongoing performance monitoring — regardless of whether the model was “AI” in the generative sense or a traditional statistical model.
 
@@ -100,9 +98,9 @@ A secondary problem: policy consistency. Underwriters across twelve regions inte
 
 6. **Legacy core banking constraints.** The Finastra core system’s data export was batch-only (nightly), meaning real-time loan portfolio data was not achievable without a separate real-time data service — a genuine limitation the team designed around rather than over-promised against.
 
-# **5. Discovery Transcript**
+# 5. Discovery Transcript
 
-## **5.1 Kickoff — Week 1**
+## 5.1 Kickoff — Week 1
 
 *Present: Angela Osei (CRO), Dr. Farrukh Malik (Head of Model Risk Management), Head of C&I Lending (Robert Chen), General Counsel delegate (Priya Sharma), the Enterprise AI Architect (EAA).*
 
@@ -118,7 +116,7 @@ A secondary problem: policy consistency. Underwriters across twelve regions inte
 
 **EAA:** That tension — rigor versus speed — is going to run through this whole engagement, and I don’t think we should pretend it resolves easily. My view: the fastest path to genuine time savings without cutting corners on rigor is to focus the system on the mechanical 60% Robert’s team described in the RFP — financial spreading, comparable retrieval, first-draft narrative assembly — and make the numeric grounding so rigorous that verification is fast, not slow. If every number in the draft is directly traceable and hyperlinked to its source document and page, verification becomes a quick visual check rather than a re-derivation.
 
-## **5.2 Underwriter Shadowing — Week 2**
+## 5.2 Underwriter Shadowing — Week 2
 
 **Underwriter (Marissa Tolliver), during a live deal walkthrough:** Watch this — this is the part that kills me. [pulls up borrower’s tax return PDF] I have to manually find EBITDA add-backs buried in a schedule, crossreference them against three years of financials, and re-key every number into our spreading template. Takes me half a day for one borrower, and if I mistype one cell the whole ratio analysis downstream is wrong.
 
@@ -128,7 +126,7 @@ A secondary problem: policy consistency. Underwriters across twelve regions inte
 
 This session directly shaped the decision to prioritize a **numeric extraction and cross-validation** capability — pulling figures from source documents with page-level citation and automatically flagging internal inconsistencies (e.g., a balance sheet that doesn’t balance, an EBITDA figure that doesn’t reconcile against its stated add-backs) — as a distinct, high-value capability separate from narrative drafting.
 
-## **5.3 Business Capability Mapping — Week 3**
+## 5.3 Business Capability Mapping — Week 3
 
 |**Capability**|**Current State**|**AI Opportunity**|**Impact**|**Feasibility**|
 |---|---|---|---|---|
@@ -142,7 +140,7 @@ This session directly shaped the decision to prioritize a **numeric extraction a
 |Credit decisioning|Human judgment,<br>committee|Explicitly out of scope<br>— remains fully human|N/A|N/A|
 |Covenant monitoring<br>(post-close)|Manual quarterly<br>review|Deferred to phase 2|Medium|Medium|
 
-## **5.4 ROI and Risk Discussion — Week 4**
+## 5.4 ROI and Risk Discussion — Week 4
 
 **EAA:** Robert’s team spends roughly 60% of underwriter time on mechanical work across a book that processes about 1,800 mid-market deals a year. If we recover even half of that mechanical time through extraction and drafting assistance, that’s a meaningful underwriter capacity increase — either faster cycle time or capacity to handle more deal volume without headcount growth, whichever the business prioritizes.
 
@@ -152,13 +150,13 @@ This session directly shaped the decision to prioritize a **numeric extraction a
 
 **Risk identification** , formalized in the risk register (Section 12): - Model risk: hallucinated or misextracted financial figures propagating into credit memos - Fair lending risk: any perception that AI-generated language influenced a declination without adequate human review - Second-line complacency risk: reviewers trusting AIassisted memos less rigorously than fully human-drafted ones - Data leakage risk: borrower-confidential data reaching an external LLM provider without appropriate contractual protection - Policy drift risk: knowledge graph falling out of sync with policy committee updates
 
-# **6. Architecture Workshops**
+# 6. Architecture Workshops
 
-## **6.1 Data & Information Architecture**
+## 6.1 Data & Information Architecture
 
 The team built a **Credit Policy Knowledge Graph** encoding CUB’s 400-page policy manual as structured, versioned entities — industry verticals, risk appetite thresholds, required covenant structures, delegated authority limits — replacing the “underwriters memorize the PDF” model that had produced the Q2 audit findings.
 
-### **Enterprise Data Architect (Wei Zhang), Week 6:**
+### Enterprise Data Architect (Wei Zhang), Week 6:
 
 **Zhang:** Why encode the policy manual as a graph instead of just chunking it for retrieval like a normal RAG system?
 
@@ -168,7 +166,7 @@ The team built a **Credit Policy Knowledge Graph** encoding CUB’s 400-page pol
 
 **EAA:** Right — hybrid architecture. Structured graph lookup for anything that’s a rule with defined inputs and outputs; vector retrieval over the historical credit-file corpus in iManage and the CapIQ industry data for anything that’s genuinely about finding relevant unstructured context — prior similar deals, industry commentary, comparable company profiles.
 
-## **6.2 AI/Platform Architecture — Whiteboard Session, Week 8**
+## 6.2 AI/Platform Architecture — Whiteboard Session, Week 8
 
 **EAA:** [at whiteboard] Walk through a deal end to end. Underwriter uploads or links the borrower’s financial package — tax returns, financial statements, business plan. The Extraction Agent pulls structured figures with page-level source citation, running against a validation layer that checks internal consistency — balance sheet balances, ratio calculations reconcile — and flags anything that doesn’t. That validation layer is deterministic arithmetic, not an LLM judgment call, deliberately: arithmetic correctness isn’t something you want probabilistic.
 
@@ -180,7 +178,7 @@ The team built a **Credit Policy Knowledge Graph** encoding CUB’s 400-page pol
 
 **EAA:** It will, and I’d rather over-invest in catching that than claim it can’t happen. That’s exactly why the numeric grounding check is a hard gate before any memo section is shown to the underwriter, not a best-effort mitigation — and it’s why, as we’ll get to in Section 14, when a version of this did slip through in production, it was because of a boundary case in how the grounding check handled a *derived* ratio rather than a directly extracted figure, not a failure of the core architectural principle.
 
-## **6.3 Security & Identity Architecture**
+## 6.3 Security & Identity Architecture
 
 All financial document processing occurs within CUB’s Azure VPC boundary using Azure OpenAI Service with a signed enterprise data processing agreement guaranteeing no data retention or model training on CUB data — a hard procurement requirement from Legal (Section 4)
 
@@ -188,13 +186,13 @@ All financial document processing occurs within CUB’s Azure VPC boundary using
 
 - Row-level and document-level access control mirroring CUB’s existing deal-team confidentiality walls (relationship managers and underwriters only see deals they’re assigned to) — enforced at the retrieval layer, not just the UI, so the vector search itself is scoped per user’s authorized deal set OPA-based policy enforcement ensuring the policy-verification agent’s knowledge graph queries are always scoped to the current, in-force policy version — critical given that policy versions change and old credit memos referencing superseded policy must remain intact as historical records while new memos reference current policy
 
-## **6.4 Integration & API Strategy**
+## 6.4 Integration & API Strategy
 
 - MCP server exposing the Credit Policy Knowledge Graph, the Extraction/Validation service, and the CapIQ comparable-search capability as discrete tools consumed by the Drafting Agent — chosen so tool definitions were independently reviewable by Model Risk Management as part of model validation, each tool documented with its own input/output contract and error-handling behavior Nightly batch integration with the Finastra core for portfolio-level context (existing relationship exposure, prior loan performance) — the team explicitly did not attempt to force real-time integration against a batchonly legacy system, instead designing the workflow to make clear to underwriters when portfolio context was as-of-last-night versus real-time iManage integration via its native API for historical credit-file retrieval, with access control inheritance from iManage’s existing permission model rather than a parallel access system
 
-# **7. Technical Debates**
+# 7. Technical Debates
 
-## **7.1 Foundation Model Selection and On-Prem vs. Cloud**
+## 7.1 Foundation Model Selection and On-Prem vs. Cloud
 
 **Platform Architect (David Osei-Bonsu, no relation to the CRO):** Legal’s data processing agreement requirement effectively rules out several vendors we evaluated. Are we boxed into a single provider?
 
@@ -204,7 +202,7 @@ All financial document processing occurs within CUB’s Azure VPC boundary using
 
 **EAA:** We evaluated it seriously, including a self-hosted open-weight deployment. The extraction and validation quality gap on financial-document-specific tasks was material enough in our bake-off testing that I couldn’t recommend it for a first release given the accuracy bar this domain demands — but I’d revisit it in eighteen months. Model quality in this space is moving fast, and if a self-hosted option closes that gap, it removes the vendor dependency, which is a real long-term benefit. I don’t want to present this as settled forever, just settled for this release.
 
-## **7.2 Should the System Ever Suggest a Recommendation?**
+## 7.2 Should the System Ever Suggest a Recommendation?
 
 This debate recurred multiple times across the engagement — Osei’s team kept probing whether the “never prescriptive” boundary from Week 1 could be relaxed for efficiency.
 
@@ -220,7 +218,7 @@ This debate recurred multiple times across the engagement — Osei’s team kept
 
 This became ADR-006 and directly shaped the Evaluation Strategy’s “recommendation independence” monitoring metric (Section 18).
 
-## **7.3 Evaluation Strategy Debate**
+## 7.3 Evaluation Strategy Debate
 
 **Malik:** For SR 11-7 validation, I need more than “the model performs well on a test set.” I need ongoing monitoring that would satisfy an examiner asking “how do you know this is still working correctly six months from now, on deal types you didn’t originally test against?”
 
@@ -232,9 +230,9 @@ This became ADR-006 and directly shaped the Evaluation Strategy’s “recommend
 
 **EAA:** Fair, and that’s a cheap ask relative to the value — we’ll stratify every metric by document type and industry vertical from day one of the monitoring dashboard, not add it later when someone asks.
 
-# **8. Executive Reviews**
+# 8. Executive Reviews
 
-## **8.1 Model Risk Committee Review — Week 16**
+## 8.1 Model Risk Committee Review — Week 16
 
 **Malik (presenting to full Model Risk Committee):** I’m recommending conditional approval for pilot deployment, classified as a Tier 2 model under our internal framework — not Tier 1, because it doesn’t independently generate a credit decision or score, but not Tier 3 either, because its outputs materially inform a Tier 1 human decision process. Conditions: independent validation of the numeric grounding architecture by my team before any production data flows through it, and a defined kill-switch procedure if the extraction accuracy monitoring drops below the agreed threshold in any stratified segment.
 
@@ -244,7 +242,7 @@ This became ADR-006 and directly shaped the Evaluation Strategy’s “recommend
 
 **Committee:** Approved for pilot, conditions as stated.
 
-## **8.2 CRO / Board Risk Committee Briefing — Week 20**
+## 8.2 CRO / Board Risk Committee Briefing — Week 20
 
 **Osei:** The board’s question is going to be simple: does this create new risk the bank didn’t have before, or does it reduce existing risk?
 
@@ -252,7 +250,7 @@ This became ADR-006 and directly shaped the Evaluation Strategy’s “recommend
 
 **Osei:** I’ll use that framing. The board doesn’t want to hear “no new risk” — they’ve been burned by vendors saying that before.
 
-## **8.3 Post-Incident Executive Review — Week 34 (see Section 14 for incident detail)**
+## 8.3 Post-Incident Executive Review — Week 34 (see Section 14 for incident detail)
 
 **Osei:** I want a straight answer: does this incident change your confidence in the architecture, or was this within the range of expected imperfection we accepted at Week 16?
 
@@ -260,7 +258,7 @@ This became ADR-006 and directly shaped the Evaluation Strategy’s “recommend
 
 **Malik:** I’ll co-sign that characterization for the regulatory narrative, with the condition that the remediation (Section 14.3) is complete and independently re-validated before we lift the pause on expansion to new loan segments.
 
-# **9. Final Architecture**
+# 9. Final Architecture
 
 - **Extraction & Validation Service** : document-ingestion pipeline (OCR/structure extraction, custom financialstatement parsing) producing extracted figures with page-level source citations; deterministic arithmetic validation layer checking internal consistency of every extracted figure and every *derived* figure (postincident scope expansion, Section 14.3)
 
@@ -276,7 +274,7 @@ This became ADR-006 and directly shaped the Evaluation Strategy’s “recommend
 
 All LLM inference via Azure OpenAI Service within CUB’s VPC boundary under signed enterprise DPA; no borrower data leaves the tenant boundary
 
-# **10. Delivery Roadmap**
+# 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -288,7 +286,7 @@ All LLM inference via Azure OpenAI Service within CUB’s VPC boundary under sig
 |Incident & Remediation|Month 8 (during pilot)|Derived-ratio grounding gap incident,<br>evaluation redesign|
 |Full Rollout (12 regions)|Months 9–11|Expansion post-remediation and re-<br>validation|
 
-# **11. Risks**
+# 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -298,7 +296,7 @@ All LLM inference via Azure OpenAI Service within CUB’s VPC boundary under sig
 |Policy knowledge graph<br>drift from live policy<br>manual|Low|High|Automated sync<br>process tied to policy<br>committee change-<br>control workflow|Credit Policy Office|
 |Vendor/model<br>dependency (single LLM<br>provider)|Medium|Medium|LLM gateway<br>abstraction for future<br>portability; 18-month<br>self-hosted re-<br>evaluation planned|Platform Architecture|
 
-# **12. Governance Model**
+# 12. Governance Model
 
 - **Tier 2 Model Risk classification** under CUB’s internal framework, with defined ongoing monitoring obligations distinct from a one-time validation
 
@@ -306,21 +304,21 @@ All LLM inference via Azure OpenAI Service within CUB’s VPC boundary under sig
 
 - **Kill-switch authority** : jointly held by CRO and Head of Model Risk Management, with defined automaticescalation thresholds (Section 8.1) that trigger mandatory investigation, not necessarily automatic shutdown
 
-# **13. Production Rollout**
+# 13. Production Rollout
 
 Pilot began in three regions (Month 7) with the underwriting teams that had participated in discovery shadowing, deliberately chosen because they had context on the tool’s design intent rather than encountering it cold. Extraction accuracy monitoring ran from day one of the pilot, stratified by document type and industry vertical per Malik’s Week 12 requirement.
 
 The Month 8 incident (Section 14) occurred during this pilot phase and paused expansion to additional regions until remediation and re-validation were complete — full 12-region rollout did not occur until Month 9, roughly six weeks later than originally planned, a delay the team and CUB leadership both characterized afterward as the governance model working correctly rather than a failure.
 
-# **14. Production Incident — Month 8**
+# 14. Production Incident — Month 8
 
-## **14.1 Incident Summary**
+## 14.1 Incident Summary
 
 During pilot deployment, the Drafting Agent produced a credit memo for a $14M mid-market manufacturing loan that included a debt-service coverage ratio (DSCR) of 1.62x. The figure was a *derived* value — calculated by combining an extracted EBITDA figure and an extracted debt-service figure through a ratio calculation — rather than a figure directly present in any source document. The derived-ratio calculation contained an error: it used the borrower’s prior-year debt service figure instead of the current projected figure, producing a DSCR that overstated the borrower’s coverage by a material margin (actual DSCR using correct figures was 1.31x, below the 1.5x policy threshold for the manufacturing vertical).
 
 The error was not caught by the numeric grounding check because that check, as originally scoped, validated that *directly extracted* figures matched their source documents — it did not independently re-verify the arithmetic of *derived* figures computed by combining multiple extracted values. A second-line credit reviewer, cross-checking the memo against the underlying financials as part of standard review, noticed the mismatch and flagged it before the memo reached credit committee. No incorrect credit decision was made; the loan was correctly re-evaluated and ultimately approved at a smaller amount with additional covenant protections given the true 1.31x DSCR.
 
-## **14.2 Incident Response Transcript**
+## 14.2 Incident Response Transcript
 
 **Malik (emergency Model Risk review, within 24 hours):** I want to understand the precise boundary of what failed. Walk me through it.
 
@@ -336,11 +334,11 @@ The error was not caught by the numeric grounding check because that check, as o
 
 **Malik:** Agreed, and I’m formally pausing pilot expansion pending that audit and a remediated grounding architecture, not just a patch.
 
-## **14.3 Remediation**
+## 14.3 Remediation
 
 The retrospective audit covered all 47 pilot-phase memos; it found two additional instances of derived-figure calculation errors (neither had reached committee — both were still in underwriter draft review), and confirmed no incorrect credit decisions had resulted from any instance. The remediation extended the deterministic grounding check to **recursively validate every step of any derived calculation** , not just the leaf-level extracted inputs — architecturally, this meant the calculation graph itself became a first-class, auditable artifact rather than an internal implementation detail of the drafting prompt.
 
-# **15. Lessons Learned**
+# 15. Lessons Learned
 
 1. **“Grounded” needs a precise, recursive definition, not an intuitive one.** The team believed the numeric grounding architecture was complete because every *leaf* figure was validated against source documents. The gap was in derived, multi-step calculations, where grounding at the leaves doesn’t guarantee correctness of the combination. Any future numeric-integrity architecture in this domain should define grounding recursively across the full calculation graph from the outset, not extend to it after an incident.
 
@@ -350,7 +348,7 @@ The retrospective audit covered all 47 pilot-phase memos; it found two additiona
 
 4. **A retrospective audit is worth the delay it causes.** Pausing expansion for six weeks to audit all prior pilot output, rather than patching forward only, surfaced two additional latent instances that would otherwise have remained undetected risk sitting in draft memos. The team’s assessment: the delay was the correct tradeoff, and the postmortem recommended this become standard incident-response procedure for any future model-risk-relevant finding, not a one-off decision.
 
-# **16. Enterprise Architecture Artifacts**
+# 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : C&I lending value chain with AI-opportunity overlay (Section 5.3) **Credit Policy Knowledge Graph schema documentation** , versioned alongside the policy manual’s own revision history
 
@@ -358,7 +356,7 @@ The retrospective audit covered all 47 pilot-phase memos; it found two additiona
 
 - **Data Flow Diagram** showing VPC boundary, DPA-governed LLM inference path, and all borrower-data touchpoints, maintained jointly with Legal and Model Risk Management **RACI matrix** for the three-lines-of-defense model as applied to this specific system
 
-# **17. Architecture Decision Records (ADRs)**
+# 17. Architecture Decision Records (ADRs)
 
 **ADR-001: System is strictly non-decisioning; all credit decisions remain human authority.** Status: Accepted, foundational, non-negotiable per CRO and Model Risk mandate.
 
@@ -374,7 +372,7 @@ The retrospective audit covered all 47 pilot-phase memos; it found two additiona
 
 **ADR-007 (post-incident): Numeric grounding validation extended recursively to all derived-calculation steps, with the calculation graph treated as a first-class auditable artifact.** Status: Accepted, emergencyscoped and re-validated by Model Risk Management before pilot resumption.
 
-# **18. AI Evaluation Strategy**
+# 18. AI Evaluation Strategy
 
 - **Extraction accuracy** : monthly measurement against a golden dataset of underwriter-verified extractions, stratified by document type and industry vertical (Malik’s Week 12 requirement), with automatic escalation below defined thresholds (Section 8.1)
 
@@ -386,7 +384,7 @@ The retrospective audit covered all 47 pilot-phase memos; it found two additiona
 
 - **Post-incident retrospective audit protocol** : formalized as standard procedure (Section 15, lesson 4) for any future material finding
 
-# **19. Operational Runbook**
+# 19. Operational Runbook
 
 - **Extraction failure handling** : documents that fail OCR/structure parsing or fail the internal-consistency check are routed to a manual-review queue with a clear underwriter-facing explanation of what failed, rather than silently degrading to ungrounded generation
 
@@ -394,7 +392,7 @@ The retrospective audit covered all 47 pilot-phase memos; it found two additiona
 
 - **Monthly monitoring review** : stratified accuracy dashboards reviewed jointly by Model Risk Management and Credit Risk; any threshold breach triggers the defined escalation procedure (Section 8.1) **Policy knowledge graph update procedure** : synchronized to the Credit Policy Office’s existing changecontrol calendar, with a defined verification step confirming graph updates before the new policy’s effective date, and historical memo references preserved against the policy version in force at drafting time
 
-# **20. Future Roadmap**
+# 20. Future Roadmap
 
 1. **Covenant monitoring agent (deferred phase 2)** : extending the extraction/validation architecture to quarterly covenant compliance monitoring on the existing loan book, reusing the numeric grounding pattern validated in this engagement.
 

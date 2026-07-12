@@ -9,10 +9,10 @@ tags: ["quantum-computing"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-**~~IBM CERTIFIED~~ ASSOCIATE DEVELOPER** **<u>QUANTUM COMPUTATION</u>** Deep-Dive Study Guide • Exam C1000-112
+**IBM CERTIFIED ASSOCIATE DEVELOPER** **<u>QUANTUM COMPUTATION</u>** Deep-Dive Study Guide • Exam C1000-112
 Heavy Code Edition • Qiskit v1.x • 2026
 **ASSOCIATE DEVELOPER QUANTUM**
-~~60 questions • 90 minutes • Score 43/60 to pass (72%)~~ Covers: Qiskit circuits, gates, algorithms, simulators, transpilation & real hardware
+60 questions • 90 minutes • Score 43/60 to pass (72%) Covers: Qiskit circuits, gates, algorithms, simulators, transpilation & real hardware
 **Page 2**
 
 # **TABLE OF CONTENTS**

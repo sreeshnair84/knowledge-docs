@@ -1,5 +1,5 @@
 ---
-title: "ENTERPRISE ARCHITECTURE** Interview Handbook"
+title: "Enterprise Architecture Interview Handbook"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -11,17 +11,17 @@ target_role: "AI/ML Architect"
 ---
 ## How to Use This Guide
 
-# **ENTERPRISE ARCHITECTURE** Interview Handbook
+# Enterprise Architecture Interview Handbook
 
 ### Enterprise AI · Cloud Strategy · Security Architecture · Identity Design Platform Engineering · Data Architecture · Agentic Systems · CTO-Level Strategy
 
-#### **Distinguished Architect Edition**
+#### Distinguished Architect Edition
 
 Targeting: Microsoft · Google · Amazon · JPMorgan Chase · Goldman Sachs · Morgan Stanley Capital One · Barclays · HSBC · Visa · Mastercard · ServiceNow · Salesforce · SAP
 
 Roles: Enterprise Architect · Principal Architect · Chief Architect · Distinguished Architect Head of Architecture · CTO · Chief AI Architect
 
-## **TABLE OF CONTENTS**
+## TABLE OF CONTENTS
 
 ##### 01 Enterprise Architecture Foundations
 
@@ -149,7 +149,7 @@ Roles: Enterprise Architect · Principal Architect · Chief Architect · Disting
 
 - Architecture Philosophy
 
-## **HOW TO USE THIS HANDBOOK**
+## HOW TO USE THIS HANDBOOK
 
 This handbook prepares architects at the Principal, Chief Architect, and Distinguished Architect levels for interviews at the world's leading technology companies and global financial institutions. Questions are designed to probe both technical depth and executive decision-making capability.
 
@@ -171,15 +171,15 @@ For all questions, your answer should address these dimensions: business drivers
 
 **SECTION 01**
 
-## **ENTERPRISE ARCHITECTURE FOUNDATIONS**
+## ENTERPRISE ARCHITECTURE FOUNDATIONS
 
 [ TOGAF Deep-Dive ] [ Zachman Framework ] [ Gartner Continuous Architecture ]
 
-###### **Q1   DISTINGUISHED   [TOGAF] [Governance] [Cloud-Native]**
+###### Q1   DISTINGUISHED   [TOGAF] [Governance] [Cloud-Native]
 
-#### ***Explain how TOGAF should be adapted for a cloud-native enterprise. Why do architecture governance programs fail?***
+#### *Explain how TOGAF should be adapted for a cloud-native enterprise. Why do architecture governance programs fail?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *ADM vs. agile delivery*
 
@@ -187,7 +187,7 @@ I *ADM vs. agile delivery*
 
 - I *Outcome-driven architecture*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 TOGAF's ADM was designed for a world of 3-year programmes and waterfall delivery. In a cloud-native enterprise, you must radically streamline it. Keep the Architecture Repository, Governance Framework, and Enterprise Continuum — discard the heavy phase-gate process in favour of continuous architecture practices.
 
@@ -205,11 +205,11 @@ TOGAF's ADM was designed for a world of 3-year programmes and waterfall delivery
 
 Governance programs fail because: they become compliance theatre, focus on artefact production over outcomes, arrive too late in delivery cycles, and lack enforcement beyond 'approved with conditions'.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *How would you establish an Architecture Review Board at scale for 500 product teams?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -225,11 +225,11 @@ Governance programs fail because: they become compliance theatre, focus on artef
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   CHIEF ARCHITECT   [ARB] [Scale] [Governance]**
+###### Q2   CHIEF ARCHITECT   [ARB] [Scale] [Governance]
 
-#### ***How would you establish an Architecture Review Board at scale?***
+#### *How would you establish an Architecture Review Board at scale?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Tiered governance*
 
@@ -239,7 +239,7 @@ I *Async reviews*
 
 - I *Fitness functions*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 At scale, a synchronous ARB reviewing every decision is a bottleneck, not an enabler.
 
@@ -255,11 +255,11 @@ Make fitness functions do the heavy lifting: automated checks in CI/CD enforce c
 
 Maintain a public Technology Radar (Adopt/Trial/Assess/Hold). Projects using 'Hold' technologies are automatically flagged without manual screening.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *You join a company where the ARB has a 3-month backlog. What are your first 90 days?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -275,11 +275,11 @@ Maintain a public Technology Radar (Adopt/Trial/Assess/Hold). Projects using 'Ho
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   PRINCIPAL   [Zachman] [Taxonomy] [Framework Selection]**
+###### Q3   PRINCIPAL   [Zachman] [Taxonomy] [Framework Selection]
 
-#### ***When would you choose Zachman over TOGAF? Where does Zachman commonly get misused?***
+#### *When would you choose Zachman over TOGAF? Where does Zachman commonly get misused?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Classification vs. methodology*
 
@@ -287,7 +287,7 @@ I *Enterprise taxonomy use case*
 
 I *Documentation-heavy cultures*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Zachman is a classification framework — it defines what to document. TOGAF is a methodology — it defines how to develop architecture. They answer fundamentally different questions.
 
@@ -297,19 +297,19 @@ Common misuse: treating it as a delivery process, requiring all 36 cells before 
 
 Best practice: use Zachman to define what good architecture artefacts look like, TOGAF governance constructs to manage how architecture gets done.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Design an enterprise taxonomy for a global bank with 400 business capabilities.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 I Architecture principles and tradeoffs
 
-###### **Q4   PRINCIPAL   [Gartner] [Continuous Architecture] [Maturity]**
+###### Q4   PRINCIPAL   [Gartner] [Continuous Architecture] [Maturity]
 
 ***How would you measure architecture maturity in an organisation that has never had a formal EA function?***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Outcome vs. process compliance*
 
@@ -317,7 +317,7 @@ I *Outcome vs. process compliance*
 
 - I *Quick wins*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Use a capability-outcome model rather than process-compliance checklist.
 
@@ -335,11 +335,11 @@ Five dimensions:
 
 Quick diagnostic: run a dependency mapping exercise across the top-20 systems. If no one can draw it accurately in a room, maturity is Level 1 regardless of what any framework assessment says.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *How do you communicate maturity gaps to a CFO who sees architecture investment as overhead?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -355,17 +355,17 @@ Quick diagnostic: run a dependency mapping exercise across the top-20 systems. I
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 02**
+###### SECTION 02
 
-## **BUSINESS ARCHITECTURE**
+## BUSINESS ARCHITECTURE
 
 [ Strategy Alignment ] [ Capability Mapping ] [ Org Design ] [ M&A; Scenarios ]
 
-###### **Q1   CHIEF ARCHITECT   [Capability Map] [Banking] [Business Architecture]**
+###### Q1   CHIEF ARCHITECT   [Capability Map] [Banking] [Business Architecture]
 
 ***Create a capability map for a global bank. How do business capabilities influence platform boundaries?***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Level 1/2/3 capabilities*
 
@@ -373,7 +373,7 @@ I *Platform boundaries follow capability ownership*
 
 - I *Conway's Law*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 A global bank capability map at Level 1:
 
@@ -393,11 +393,11 @@ A global bank capability map at Level 1:
 
 Capability boundaries should define platform boundaries (Conway's Law applied intentionally). Each Level-1 capability domain becomes a stream-aligned team boundary. Shared capabilities (Identity, Data, Payments Rail) become platform teams. This prevents the accidental coupling that emerges when teams share code without shared ownership.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *The Payments platform team wants to own fraud detection. The Risk team also claims it. How do you resolve the capability ownership conflict?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -413,11 +413,11 @@ Capability boundaries should define platform boundaries (Conway's Law applied in
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   DISTINGUISHED   [Conway's Law] [Team Topologies] [M&A;]**
+###### Q2   DISTINGUISHED   [Conway's Law] [Team Topologies] [M&A;]
 
 ***Explain value streams versus organisational structures. How does Conway's Law apply to a post-merger integration?***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Value stream cuts across org silos*
 
@@ -425,7 +425,7 @@ Capability boundaries should define platform boundaries (Conway's Law applied in
 
 - I *Team cognitive load*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Value streams describe end-to-end flows of value to the customer, cutting across organisational silos. Org structures describe reporting lines. The mismatch between them is the primary source of handoff waste and coordination overhead.
 
@@ -443,11 +443,11 @@ Inverse Conway Maneuver for M&A;:
 
 The architecture will converge to the team structure within 18-24 months. Design the teams deliberately.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *The acquired fintech's engineers threaten to resign if you impose the bank's governance model. How do you handle it?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -463,11 +463,11 @@ The architecture will converge to the team structure within 18-24 months. Design
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   CHIEF ARCHITECT   [Strategy] [Roadmap] [Transformation]**
+###### Q3   CHIEF ARCHITECT   [Strategy] [Roadmap] [Transformation]
 
-#### ***Design a 5-year modernisation roadmap for an estate of 4,000 applications.***
+#### *Design a 5-year modernisation roadmap for an estate of 4,000 applications.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Application portfolio rationalisation*
 
@@ -477,7 +477,7 @@ I *Funding model*
 
 I *Dependency mapping*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Phase 0 (months 1-3) — Portfolio Assessment:
 
@@ -507,11 +507,11 @@ Phase 3 (Years 4-5) — Innovation:
 
 Funding model: fund from data centre savings (Year 1 savings fund Year 2 investment). Create a Transformation Office with P&L; visibility.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *How would you prioritise modernisation candidates when business units disagree on priorities?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -527,17 +527,17 @@ Funding model: fund from data centre savings (Year 1 savings fund Year 2 investm
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 03**
+###### SECTION 03
 
-## **EXECUTIVE COMMUNICATION**
+## EXECUTIVE COMMUNICATION
 
 [ Board Scenarios ] [ CFO Conversations ] [ CEO Briefings ] [ Influence Without Authority ]
 
-###### **Q1   CHIEF ARCHITECT   [AI Investment] [CFO] [Business Case]**
+###### Q1   CHIEF ARCHITECT   [AI Investment] [CFO] [Business Case]
 
-#### ***Present a $100M AI investment proposal to a CFO.***
+#### *Present a $100M AI investment proposal to a CFO.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *ROI framing*
 
@@ -547,7 +547,7 @@ I *Phased commitment*
 
 - I *Competitive necessity*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 CFO framing — lead with numbers, not technology:
 
@@ -563,11 +563,11 @@ Total 3-year return: $540M against $100M investment. NPV positive by Month 18.
 
 Risk: not investing. Three competitors have already announced AI programmes. The cost of catching up in Year 4 is estimated at $300M+ and 2 years of lost market position.'
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *The CFO wants to fund $30M but not the full $100M. How do you re-sequence?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -579,11 +579,11 @@ Risk: not investing. Three competitors have already announced AI programmes. The
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   CHIEF ARCHITECT   [Technical Debt] [CFO] [Financial Metaphor]**
+###### Q2   CHIEF ARCHITECT   [Technical Debt] [CFO] [Financial Metaphor]
 
-#### ***How do you communicate technical debt to executives?***
+#### *How do you communicate technical debt to executives?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Financial debt analogy*
 
@@ -591,7 +591,7 @@ I *Carrying cost*
 
 I *Opportunity cost* I *Debt ledger*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Technical debt is exactly like financial debt — it has principal and an interest rate.
 
@@ -603,11 +603,11 @@ For a CFO: 'We currently spend approximately 25% of engineering capacity on inte
 
 Bring a debt ledger: a one-page visual showing debt concentration by system, associated incident rates, and team velocity impact. CFOs make decisions when they can see the financial exposure clearly.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *The CFO says 'we funded this 3 years ago and still have the same problems.' How do you respond honestly?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -615,11 +615,11 @@ Bring a debt ledger: a one-page visual showing debt concentration by system, ass
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   DISTINGUISHED   [Influence] [Leadership] [Stakeholder Management]**
+###### Q3   DISTINGUISHED   [Influence] [Leadership] [Stakeholder Management]
 
-#### ***How do you influence without authority as a Chief Architect?***
+#### *How do you influence without authority as a Chief Architect?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Credibility*
 
@@ -629,7 +629,7 @@ I *Making the safe choice the easy choice*
 
 - I *Architecture as product*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Authority is a poor substitute for credibility. Chief Architects who rely on authority get compliance; those who build credibility get commitment.
 
@@ -645,11 +645,11 @@ Five levers:
 
 5. Build coalitions: Find the influential principal engineers in each domain and invest in them. Architecture scales through the community, not through mandates.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A senior VP is sponsoring an architecture decision you believe is technically wrong. How do you handle it?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -665,11 +665,11 @@ Five levers:
 
 - I Alternative approaches and decision rationale
 
-###### **Q4   DISTINGUISHED   [Zero Trust] [Board] [Executive Communication]**
+###### Q4   DISTINGUISHED   [Zero Trust] [Board] [Executive Communication]
 
-#### ***Present Zero Trust Architecture to a Board of Directors in 5 minutes.***
+#### *Present Zero Trust Architecture to a Board of Directors in 5 minutes.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *No jargon*
 
@@ -679,7 +679,7 @@ Five levers:
 
 - I *Concrete outcomes*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 'Our traditional security model assumed that once inside our network, you were trusted. It is the equivalent of a building with a strong front door but no locks on internal rooms.
 
@@ -691,11 +691,11 @@ What we are building: continuous verification of every user, device, and system;
 
 Investment: $X over 3 years. Risk reduction: 70% reduction in lateral movement attack surface. Regulatory outcome: clean examination posture on security architecture.'
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A board member asks: 'We have invested in firewalls for 20 years. Why didn't that work?'*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -711,23 +711,23 @@ Investment: $X over 3 years. Risk reduction: 70% reduction in lateral movement a
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 04**
+###### SECTION 04
 
-## **SECURITY ARCHITECTURE**
+## SECURITY ARCHITECTURE
 
 [ Zero Trust Design ] [ Machine Identity ] [ Secrets Management ] [ Compliance Frameworks ]
 
-###### **Q1   DISTINGUISHED   [Zero Trust] [Multi-Cloud] [Design]**
+###### Q1   DISTINGUISHED   [Zero Trust] [Multi-Cloud] [Design]
 
 ***Design Zero Trust Architecture for a multi-cloud enterprise with 100,000 employees and 2,000 applications.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Identity as control plane*
 
 I *Microsegmentation* I *Device posture* I *mTLS service mesh*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Five control planes:
 
@@ -743,11 +743,11 @@ Five control planes:
 
 Unified policy engine (OPA/Cedar) manages authorisation policy consistently across all planes.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A vendor needs access to 500 internal applications for a 2-year engagement. Design the access model.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -763,11 +763,11 @@ Unified policy engine (OPA/Cedar) manages authorisation policy consistently acro
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   PRINCIPAL   [Machine Identity] [SPIFFE] [Workload Identity]**
+###### Q2   PRINCIPAL   [Machine Identity] [SPIFFE] [Workload Identity]
 
-#### ***How should machine identities be governed at enterprise scale?***
+#### *How should machine identities be governed at enterprise scale?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *SPIFFE/SPIRE*
 
@@ -777,7 +777,7 @@ I *SPIFFE/SPIRE*
 
 I *Zero static keys*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Machine identity is the fastest-growing attack surface in enterprise environments. Static service account keys and long-lived certificates are the primary vulnerability.
 
@@ -797,11 +797,11 @@ Governance model:
 
 Governance controls: quarterly rotation audits, automated secret scanning in repos, SIEM alerts on anomalous machine identity usage.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A developer hard-codes an AWS access key in a GitHub repository. Walk through your incident response.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -817,11 +817,11 @@ Governance controls: quarterly rotation audits, automated secret scanning in rep
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   PRINCIPAL   [Secrets Management] [Vault] [Multi-Cloud]**
+###### Q3   PRINCIPAL   [Secrets Management] [Vault] [Multi-Cloud]
 
-#### ***Describe an enterprise secrets management architecture for a multi-cloud bank.***
+#### *Describe an enterprise secrets management architecture for a multi-cloud bank.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *HashiCorp Vault as federation layer*
 
@@ -831,7 +831,7 @@ Governance controls: quarterly rotation audits, automated secret scanning in rep
 
 - I *Audit trail*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Architecture decision: HashiCorp Vault Enterprise as federation layer over cloud-native KMS.
 
@@ -857,11 +857,11 @@ Rationale: cloud-native secrets managers (AWS Secrets Manager, Azure Key Vault, 
 
 - Vault Agent sidecars in Kubernetes inject secrets at runtime — no secrets in environment variables
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Your PKI intermediate CA certificate is 2 weeks from expiry and was not in the rotation schedule. What do you do?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -879,15 +879,15 @@ Rationale: cloud-native secrets managers (AWS Secrets Manager, Azure Key Vault, 
 
 **SECTION 05**
 
-## **IDENTITY ARCHITECTURE**
+## IDENTITY ARCHITECTURE
 
 [ Workforce Identity ] [ CIAM ] [ Machine Identity ] [ Agent Identity ] [ Authorization Models ]
 
-###### **Q1   DISTINGUISHED   [Identity] [Scale] [Multi-Cloud]**
+###### Q1   DISTINGUISHED   [Identity] [Scale] [Multi-Cloud]
 
 ***Design identity architecture for 500,000 employees, 50 million customers, and 20,000 applications.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Separation of workforce vs. CIAM*
 
@@ -897,7 +897,7 @@ I *Token strategy*
 
 - I *Performance at scale*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Three identity planes — never co-mingle them:
 
@@ -931,11 +931,11 @@ Federation topology: Entra as hub, SaaS as spokes (OIDC preferred, SAML for lega
 
 OIDC/SAML federation with trust verification. Central token validation service inline with API Gateway for revocation propagation.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *One of your top SaaS vendors requires SAML only but your strategy is OIDC-first. How do you handle the exception?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -949,17 +949,17 @@ OIDC/SAML federation with trust verification. Central token validation service i
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   PRINCIPAL   [OAuth2] [OBO Flow] [Delegation]**
+###### Q2   PRINCIPAL   [OAuth2] [OBO Flow] [Delegation]
 
-#### ***Explain the OAuth2 On-Behalf-Of (OBO) flow. How would ServiceNow user delegation work using it?***
+#### *Explain the OAuth2 On-Behalf-Of (OBO) flow. How would ServiceNow user delegation work using it?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *RFC 7523 JWT Bearer Grant*
 
 - I *Downstream API calls* I *Token exchange* I *ServiceNow MID server*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 OBO Flow (On-Behalf-Of / RFC 7523):
 
@@ -989,11 +989,11 @@ Flow:
 
 Critical: the downstream token scope must be a subset of the original token — OBO cannot escalate privileges.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Design the authorisation model for an AI agent that acts on behalf of a user and orchestrates sub-agents across 50 enterprise APIs.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1009,11 +1009,11 @@ Critical: the downstream token scope must be a subset of the original token — 
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   PRINCIPAL   [ABAC] [RBAC] [Authorization] [Scale]**
+###### Q3   PRINCIPAL   [ABAC] [RBAC] [Authorization] [Scale]
 
 ***When do you choose ABAC over RBAC? How do you implement ABAC at enterprise scale without policy explosion?***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Context-sensitivity*
 
@@ -1023,7 +1023,7 @@ I *OPA/Cedar*
 
 ###### I *Attribute taxonomy*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 ###### Decision framework
 
@@ -1055,11 +1055,11 @@ Taming ABAC at scale:
 
 6. Attribute taxonomy governance: standardised attribute names prevent policy proliferation
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *An AI agent acts on behalf of a user — can the agent be granted MORE permissions than the delegating user? Justify your answer architecturally.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1077,15 +1077,15 @@ Taming ABAC at scale:
 
 **SECTION 06**
 
-## **DATA ARCHITECTURE**
+## DATA ARCHITECTURE
 
 [ Data Mesh vs Data Fabric ] [ 100 PB Modernisation ] [ Metadata Governance ] [ MDM ]
 
-###### **Q1   DISTINGUISHED   [Data Mesh] [Data Fabric] [Architecture Choice]**
+###### Q1   DISTINGUISHED   [Data Mesh] [Data Fabric] [Architecture Choice]
 
-#### ***Data Mesh versus Data Fabric — how do you choose, and where does each fail?***
+#### *Data Mesh versus Data Fabric — how do you choose, and where does each fail?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Organisational maturity*
 
@@ -1093,7 +1093,7 @@ I *Decentralised ownership vs. unified management*
 
 - I *Governance model*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 These are not competing technologies — they are different organisational paradigms.
 
@@ -1109,25 +1109,25 @@ Choose Data Fabric when: heterogeneous legacy estate, need for unified governanc
 
 Pragmatic approach for most enterprises: implement Data Fabric as the governance and integration layer, incrementally apply Data Mesh principles to domains as they mature.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *How do you implement Data Mesh governance without creating a central bottleneck?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 I Architecture principles and tradeoffs
 
 **Q2   CHIEF ARCHITECT   [Data Modernisation] [100 PB] [Strategy]**
 
-#### ***How would you modernise a 100 PB enterprise data estate?***
+#### *How would you modernise a 100 PB enterprise data estate?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Hot/warm/cold tiering*
 
 I *Open table formats* I *Data classification first* I *Incremental migration*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 A 100 PB estate cannot be migrated — it must be evolved in place with selective migration.
 
@@ -1159,11 +1159,11 @@ Phase 4 — AI-Ready Data Platform (Years 3-5):
 
 Governance throughout: unified metadata catalog (Apache Atlas/DataHub), automated lineage, data quality SLAs.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Regulators require you to demonstrate complete data lineage for all PII within 48 hours of a subject access request. How does your architecture support this?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1179,11 +1179,11 @@ Governance throughout: unified metadata catalog (Apache Atlas/DataHub), automate
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   PRINCIPAL   [Metadata] [Data Governance] [Lineage]**
+###### Q3   PRINCIPAL   [Metadata] [Data Governance] [Lineage]
 
-#### ***Design an enterprise metadata governance strategy.***
+#### *Design an enterprise metadata governance strategy.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Active vs. passive metadata*
 
@@ -1193,7 +1193,7 @@ Governance throughout: unified metadata catalog (Apache Atlas/DataHub), automate
 
 - I *Data stewardship model*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Metadata governance is the foundation of every data quality, compliance, and AI programme. Without it, you are building on sand.
 
@@ -1219,11 +1219,11 @@ Lineage strategy:
 
 Stewardship model: federated — domain data stewards own business metadata, central data governance team sets standards and resolves conflicts.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A data scientist deploys a model trained on data with incorrect lineage metadata. How does your governance architecture detect and respond?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1239,17 +1239,17 @@ Stewardship model: federated — domain data stewards own business metadata, cen
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 07**
+###### SECTION 07
 
-## **PLATFORM ENGINEERING**
+## PLATFORM ENGINEERING
 
 [ IDP Design ] [ Developer Experience ] [ Platform Team Model ] [ Build vs Buy ]
 
-###### **Q1   CHIEF ARCHITECT   [Platform Team] [When to Create] [Team Topologies]**
+###### Q1   CHIEF ARCHITECT   [Platform Team] [When to Create] [Team Topologies]
 
-#### ***When should a platform team exist? How do you measure platform adoption?***
+#### *When should a platform team exist? How do you measure platform adoption?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Cognitive load threshold*
 
@@ -1259,7 +1259,7 @@ I *Platform as product*
 
 - I *NPS for platforms*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 A platform team is justified when: the cognitive load of infrastructure, tooling, and compliance would otherwise consume >30% of stream-aligned team capacity, AND when the problem is common across 3+ teams.
 
@@ -1281,11 +1281,11 @@ Measuring platform adoption:
 
 If adoption is low, do not mandate — investigate why the platform is not the path of least resistance.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *40% of your engineers are bypassing the IDP and using cloud consoles directly. What do you do?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1301,11 +1301,11 @@ If adoption is low, do not mandate — investigate why the platform is not the p
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   DISTINGUISHED   [Build vs Buy] [Strategy] [Platform Economics]**
+###### Q2   DISTINGUISHED   [Build vs Buy] [Strategy] [Platform Economics]
 
-#### ***Build versus Buy tradeoff analysis for a core banking platform. How do you decide?***
+#### *Build versus Buy tradeoff analysis for a core banking platform. How do you decide?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Differentiation vs. commodity*
 
@@ -1315,7 +1315,7 @@ I *Vendor lock-in*
 
 I *Strategic capability*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 The decision framework: build what differentiates, buy what commoditises.
 
@@ -1345,11 +1345,11 @@ For most banks: buy commodity cores (ledger, settlement, regulatory reporting), 
 
 TCO model must include: licence, implementation, integration, talent, upgrade cycles, migration optionality cost (exit cost from vendor).
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Your chosen core banking vendor is acquired by a competitor. What is your architectural response?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1365,17 +1365,17 @@ TCO model must include: licence, implementation, integration, talent, upgrade cy
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 08**
+###### SECTION 08
 
-## **CLOUD STRATEGY**
+## CLOUD STRATEGY
 
 [ Multi-Cloud vs Hybrid ] [ Cloud Sovereignty ] [ Landing Zone Design ] [ FinOps ]
 
-###### **Q1   DISTINGUISHED   [Multi-Cloud] [Hybrid] [Strategy]**
+###### Q1   DISTINGUISHED   [Multi-Cloud] [Hybrid] [Strategy]
 
 ***Multi-cloud versus hybrid cloud — how do you choose, and what does intentional multi-cloud look like?***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Accidental vs. intentional*
 
@@ -1385,7 +1385,7 @@ TCO model must include: licence, implementation, integration, talent, upgrade cy
 
 - I *Complexity cost*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Most enterprises are already multi-cloud accidentally — different teams chose different providers. This is the worst outcome: all the complexity with none of the strategic benefit.
 
@@ -1413,11 +1413,11 @@ Architecture principles for intentional multi-cloud:
 
 - Container portability: Kubernetes workloads runnable on AKS/EKS/GKE
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Your CISO argues that multi-cloud increases attack surface. How do you respond?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1433,11 +1433,11 @@ Architecture principles for intentional multi-cloud:
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   PRINCIPAL   [Cloud Sovereignty] [Regulatory] [Data Residency]**
+###### Q2   PRINCIPAL   [Cloud Sovereignty] [Regulatory] [Data Residency]
 
 ***Design a cloud sovereignty architecture for a bank operating in the EU, India, and Singapore.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *DORA*
 
@@ -1445,7 +1445,7 @@ I *DORA*
 
 - I *MAS TRM* I *Data localisation* I *Sovereign cloud options*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Cloud sovereignty requires that data, operations, and the ability to audit all remain within jurisdictional control.
 
@@ -1475,11 +1475,11 @@ India (RBI guidelines + PDPA):
 
 Architecture pattern: regional landing zones with sovereign controls, unified management plane, cross-region replication prohibited for regulated data classes.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A single cloud provider suffers a regional outage affecting your EU operations. How does your sovereign architecture ensure continuity?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1495,11 +1495,11 @@ Architecture pattern: regional landing zones with sovereign controls, unified ma
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   CHIEF ARCHITECT   [Landing Zone] [Global] [Governance]**
+###### Q3   CHIEF ARCHITECT   [Landing Zone] [Global] [Governance]
 
-#### ***Design a global landing zone architecture for a Fortune 100 bank.***
+#### *Design a global landing zone architecture for a Fortune 100 bank.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Management hierarchy*
 
@@ -1509,7 +1509,7 @@ Architecture pattern: regional landing zones with sovereign controls, unified ma
 
 - I *Policy-as-code*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Landing zone design principles: consistent, governed, and automatable foundation for every workload.
 
@@ -1543,11 +1543,11 @@ Security baseline (enforced via Azure Policy / AWS SCP / GCP Org Policy):
 
 FinOps: cost allocation by subscription maps to product P&L.; Budget alerts at 80%/100% thresholds.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A business unit deploys directly to cloud bypassing the landing zone. How does your architecture detect and remediate this?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1565,15 +1565,15 @@ FinOps: cost allocation by subscription maps to product P&L.; Budget alerts at 8
 
 **SECTION 09**
 
-## **ENTERPRISE AI ARCHITECTURE**
+## ENTERPRISE AI ARCHITECTURE
 
 [ AI Operating Model ] [ Model Governance ] [ LLM Gateway ] [ AI Platform Design ]
 
-###### **Q1   DISTINGUISHED   [AI Operating Model] [Governance] [SR 11-7]**
+###### Q1   DISTINGUISHED   [AI Operating Model] [Governance] [SR 11-7]
 
-#### ***Design an AI operating model and model governance lifecycle for a global bank.***
+#### *Design an AI operating model and model governance lifecycle for a global bank.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *SR 11-7 compliance*
 
@@ -1583,7 +1583,7 @@ I *Validation framework*
 
 - I *Human-in-the-loop*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 AI Operating Model — three pillars: Platform, Process, People.
 
@@ -1621,11 +1621,11 @@ People:
 
 - AI Ethics council: fairness and responsible AI oversight
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A regulator asks you to demonstrate that your AI credit decisioning model is free from discriminatory bias. Walk them through your governance architecture.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1635,15 +1635,15 @@ People:
 
 - I Financial impact and platform economics
 
-###### **Q2   CHIEF ARCHITECT   [AI Gateway] [LLM] [Architecture]**
+###### Q2   CHIEF ARCHITECT   [AI Gateway] [LLM] [Architecture]
 
-#### ***Design an enterprise AI gateway architecture for a bank with 10,000 AI developers.***
+#### *Design an enterprise AI gateway architecture for a bank with 10,000 AI developers.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *PII scrubbing* I *Model routing* I *Cost attribution* I *Rate limiting* I *Audit trail*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 The AI Gateway is the control plane for all LLM traffic — internal and external.
 
@@ -1669,11 +1669,11 @@ Model support: OpenAI, Azure OpenAI, Anthropic, AWS Bedrock, Vertex AI — unifi
 
 Deployment: active-active multi-region, <10ms gateway overhead P99, circuit breaker per model provider, automatic failover to secondary provider.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A developer inadvertently sends a prompt containing 10,000 customer records to an external model provider. What happens in your architecture?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1691,15 +1691,15 @@ Deployment: active-active multi-region, <10ms gateway overhead P99, circuit brea
 
 **SECTION 10**
 
-## **AGENTIC SYSTEMS ARCHITECTURE**
+## AGENTIC SYSTEMS ARCHITECTURE
 
 [ Agent Identity ] [ Agent Memory ] [ Human-in-the-Loop ] [ Agent Governance ]
 
-###### **Q1   DISTINGUISHED   [Agent Identity] [Authorization] [RFC 8693]**
+###### Q1   DISTINGUISHED   [Agent Identity] [Authorization] [RFC 8693]
 
 ***Design agent identity and authorisation for autonomous AI agents acting on behalf of users in a regulated bank.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *SPIFFE for agent identity*
 
@@ -1709,7 +1709,7 @@ I *Scope downscoping*
 
 - I *Blast radius limits*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Core principle: least-privilege delegation, not impersonation. An agent should never have MORE access than the delegating user.
 
@@ -1743,11 +1743,11 @@ Sub-agent orchestration: parent agent delegates to sub-agents via same Token Exc
 
 - Kill switch: disable all agents by risk tier within 60 seconds globally
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *An agent gets prompt-injected via a malicious document and attempts to initiate a wire transfer. Walk through your containment architecture.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1759,11 +1759,11 @@ Sub-agent orchestration: parent agent delegates to sub-agents via same Token Exc
 
 - I Financial impact and platform economics
 
-###### **Q2   PRINCIPAL   [Agent Memory] [Architecture] [Privacy]**
+###### Q2   PRINCIPAL   [Agent Memory] [Architecture] [Privacy]
 
 ***Design an agent memory architecture for enterprise AI agents that handles both short-term and long-term memory with privacy controls.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Working memory vs. episodic vs. semantic*
 
@@ -1773,7 +1773,7 @@ I *Data retention*
 
 - I *User consent*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Four memory types for enterprise agents:
 
@@ -1819,11 +1819,11 @@ Four memory types for enterprise agents:
 
 - Encryption at rest with user-specific key derivation
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *An agent's episodic memory is poisoned via prompt injection — a bad actor has inserted false memories about a customer's credit profile. How do you detect and remediate?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1839,11 +1839,11 @@ Four memory types for enterprise agents:
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   CHIEF ARCHITECT   [Human-in-the-Loop] [Governance] [Risk Tiering]**
+###### Q3   CHIEF ARCHITECT   [Human-in-the-Loop] [Governance] [Risk Tiering]
 
 ***Design a human-in-the-loop governance model for AI agents in a regulated financial institution.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Risk-tiered oversight*
 
@@ -1853,7 +1853,7 @@ Four memory types for enterprise agents:
 
 - I *Override audit trail*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Human-in-the-loop is not a binary choice — it is a risk-tiered spectrum.
 
@@ -1891,11 +1891,11 @@ Tier 4 — Human-Initiated Only (Critical Risk, Irreversible):
 
 Governance infrastructure: workflow engine (ServiceNow/Jira), approval SLA tracking, escalation on breach, full audit trail of every approval and rejection.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Regulators require you to demonstrate that a specific AI credit decision was made by a human, not an AI. How does your architecture provide this evidence?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1911,17 +1911,17 @@ Governance infrastructure: workflow engine (ServiceNow/Jira), approval SLA track
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 11**
+###### SECTION 11
 
-## **RELIABILITY ENGINEERING**
+## RELIABILITY ENGINEERING
 
 [ AI-Specific SLOs ] [ Global Outage Recovery ] [ Cross-Region Resiliency ]
 
-###### **Q1   PRINCIPAL   [SLOs] [AI Systems] [Observability]**
+###### Q1   PRINCIPAL   [SLOs] [AI Systems] [Observability]
 
 ***How do you define AI-specific SLOs? What is different about measuring reliability for AI systems vs. traditional software?***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Non-determinism*
 
@@ -1931,7 +1931,7 @@ I *Latency distribution*
 
 - I *Token throughput*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Traditional SLOs measure availability and latency. AI systems require additional dimensions:
 
@@ -1957,11 +1957,11 @@ AI-specific SLOs:
 
 Observability stack for AI: traces (LangSmith/Langfuse), metrics (Prometheus), evaluation platform (Ragas/Phoenix), cost dashboard (per model, per team).
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Your LLM quality SLO shows a sudden 20% drop in groundedness. Walk through your diagnosis.*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -1977,11 +1977,11 @@ Observability stack for AI: traces (LangSmith/Langfuse), metrics (Prometheus), e
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   DISTINGUISHED   [Outage] [Recovery] [BCP]**
+###### Q2   DISTINGUISHED   [Outage] [Recovery] [BCP]
 
-#### ***Design a global outage recovery strategy for enterprise AI systems during a major cloud provider failure.***
+#### *Design a global outage recovery strategy for enterprise AI systems during a major cloud provider failure.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Multi-provider failover*
 
@@ -1991,7 +1991,7 @@ I *Multi-provider failover*
 
 - I *Business continuity*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 AI systems have unique BCP challenges: model weights, vector stores, conversation history, and ongoing agent sessions.
 
@@ -2025,11 +2025,11 @@ During outage:
 
 Chaos engineering: quarterly provider failover drills, annual full BCP simulation.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *After recovery, you discover that 4 hours of agent session state was lost. How do you communicate this to customers and what architectural change prevents recurrence?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -2047,15 +2047,15 @@ Chaos engineering: quarterly provider failover drills, annual full BCP simulatio
 
 **SECTION 12**
 
-## **BANKING SCENARIOS & REGULATED INDUSTRIES**
+## BANKING SCENARIOS & REGULATED INDUSTRIES
 
 [ Global Banking AI Platform ] [ Multi-Jurisdictional Compliance ] [ Identity Convergence ]
 
-###### **Q1   DISTINGUISHED   [Banking AI] [Global Platform] [Design]**
+###### Q1   DISTINGUISHED   [Banking AI] [Global Platform] [Design]
 
 ***Design a global banking AI platform that must support RBI, PCI-DSS, GDPR, and MAS TRM requirements simultaneously.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Regulatory requirement matrix*
 
@@ -2065,7 +2065,7 @@ I *Unified audit*
 
 - I *Sovereign AI*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Multi-jurisdictional AI architecture requires a layered compliance model.
 
@@ -2103,19 +2103,19 @@ Unified Governance Plane (metadata only — no regulated data):
 
 - CDE AI workloads in dedicated, network-isolated AI cluster with PCI-DSS scoped infrastructure
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Your global model shows measurably different fraud detection accuracy for Indian customers vs. UK customers. How do you identify the cause and remediate?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 I Architecture principles and tradeoffs
 
-###### **Q2   CHIEF ARCHITECT   [Identity Convergence] [Customer] [Employee]**
+###### Q2   CHIEF ARCHITECT   [Identity Convergence] [Customer] [Employee]
 
-#### ***How would you architect customer and employee identity convergence for a global bank?***
+#### *How would you architect customer and employee identity convergence for a global bank?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Progressive trust elevation*
 
@@ -2125,7 +2125,7 @@ I Architecture principles and tradeoffs
 
 - I *Staff customer accounts*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Identity convergence does not mean merging the systems — it means enabling controlled, audited transitions between identity domains.
 
@@ -2157,11 +2157,11 @@ Controls:
 
 The golden rule: a customer identity must never automatically inherit employee privileges, and an employee accessing customer systems does so under their employee identity with appropriate authorisation.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *A bank employee attempts to access their own loan file through the internal banking system rather than the customer portal. How does your architecture detect and respond?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Architecture principles and tradeoffs
 
@@ -2169,15 +2169,15 @@ I Operational and reliability considerations I Financial impact and platform eco
 
 **SECTION 13**
 
-## **PRINCIPAL ARCHITECT CHALLENGE ROUND**
+## PRINCIPAL ARCHITECT CHALLENGE ROUND
 
 [ Multi-Cloud Defence ] [ Autonomous Operations ] [ Core Banking Modernisation ]
 
-###### **Q1   DISTINGUISHED   [Multi-Cloud] [CTO Defence] [Tradeoffs]**
+###### Q1   DISTINGUISHED   [Multi-Cloud] [CTO Defence] [Tradeoffs]
 
 ***Defend a multi-cloud strategy to a CTO who argues it adds complexity without proportionate benefit.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *When multi-cloud is worth it*
 
@@ -2187,7 +2187,7 @@ I *Strategic optionality*
 
 - I *Complexity cost honest assessment*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 The honest answer: the CTO is right in many cases. Multi-cloud IS more complex, and complexity has a real cost.
 
@@ -2215,11 +2215,11 @@ Start with a primary cloud for 80% of workloads. Add secondary cloud only where 
 
 The best multi-cloud strategy is intentional, not ideological.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *The CTO asks: 'If we needed to exit Azure in 12 months, how long would it actually take and what would it cost?'*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -2235,17 +2235,17 @@ The best multi-cloud strategy is intentional, not ideological.
 
 - I Alternative approaches and decision rationale
 
-###### **Q2   DISTINGUISHED   [Core Banking] [Modernisation] [Legacy]**
+###### Q2   DISTINGUISHED   [Core Banking] [Modernisation] [Legacy]
 
-#### ***Modernise a legacy mainframe core banking system serving 20M customers with zero downtime tolerance.***
+#### *Modernise a legacy mainframe core banking system serving 20M customers with zero downtime tolerance.*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Strangler fig at scale*
 
 - I *Event sourcing migration* I *Dual-write pattern* I *Rollback strategy*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 This is one of the hardest problems in enterprise architecture. The mainframe is reliable — the danger is not replacing it, it is doing so incorrectly.
 
@@ -2285,11 +2285,11 @@ Phase 4 — Cutover by Cohort (months 30-48):
 
 Risk management: designate a Chief Migration Risk Officer. Every phase has a published go/no-go criterion.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *During Phase 3 dual-write, you detect a 0.003% data inconsistency between mainframe and new platform. What do you do?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -2305,23 +2305,23 @@ Risk management: designate a Chief Migration Risk Officer. Every phase has a pub
 
 - I Alternative approaches and decision rationale
 
-###### **SECTION 14**
+###### SECTION 14
 
-## **DISTINGUISHED ARCHITECT ROUND**
+## DISTINGUISHED ARCHITECT ROUND
 
 [ First Principles ] [ Why Things Fail ] [ Architecture Philosophy ]
 
-###### **Q1   DISTINGUISHED   [Transformation] [Failure Patterns] [First Principles]**
+###### Q1   DISTINGUISHED   [Transformation] [Failure Patterns] [First Principles]
 
 ***Why do enterprise transformations fail? Answer from first principles, not from a framework.***
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Systems thinking* I *Incentive structures*
 
 - I *Complexity accumulation* I *Org change vs. tech change*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Enterprise transformations fail because they are fundamentally change management problems misdiagnosed as technology problems.
 
@@ -2341,11 +2341,11 @@ During migration, you run two systems simultaneously. Complexity doubles. The or
 
 The fix: smaller scope, faster value realisation, explicit incentive alignment, team topology changes before system changes, and relentless complexity reduction before addition.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *You are hired to rescue a 3-year transformation programme that is 2 years in and has delivered 15% of its scope. What do you do in the first 30 days?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -2355,11 +2355,11 @@ The fix: smaller scope, faster value realisation, explicit incentive alignment, 
 
 - I Governance, risk and regulatory controls
 
-###### **Q2   DISTINGUISHED   [Governance] [Bureaucracy] [First Principles]**
+###### Q2   DISTINGUISHED   [Governance] [Bureaucracy] [First Principles]
 
-#### ***Why does governance become bureaucracy, and how do you prevent it?***
+#### *Why does governance become bureaucracy, and how do you prevent it?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 I *Parkinson's Law*
 
@@ -2369,7 +2369,7 @@ I *Parkinson's Law*
 
 - I *Automation*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Governance becomes bureaucracy when the cost of the governance mechanism exceeds the cost of the risk it was designed to prevent.
 
@@ -2395,11 +2395,11 @@ The mechanism:
 
 - Invert accountability: governance bodies should be measured on the velocity they enable, not just the risks they catch
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *You have inherited a governance model with 47 separate approval committees. What is your 90-day consolidation plan?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -2415,11 +2415,11 @@ The mechanism:
 
 - I Alternative approaches and decision rationale
 
-###### **Q3   DISTINGUISHED   [Platform Teams] [Bottleneck] [First Principles]**
+###### Q3   DISTINGUISHED   [Platform Teams] [Bottleneck] [First Principles]
 
-#### ***Why do platform teams become bottlenecks, and how do you architect a platform that cannot become one?***
+#### *Why do platform teams become bottlenecks, and how do you architect a platform that cannot become one?*
 
-###### **DISCUSSION HINTS**
+###### DISCUSSION HINTS
 
 - I *Product thinking* I *API-first*
 
@@ -2427,7 +2427,7 @@ The mechanism:
 
 - I *Cognitive load caps*
 
-###### **MODEL ANSWER**
+###### MODEL ANSWER
 
 Platform teams become bottlenecks through a predictable pattern: they start as enablers and become gatekeepers.
 
@@ -2451,11 +2451,11 @@ Architecture for a self-service platform that cannot become a bottleneck:
 
 4. Thinnest viable platform: resist the temptation to centralise everything. Only centralise what is genuinely cheaper and better centralised. Centralising mediocre capabilities is worse than not centralising at all.
 
-###### **FOLLOW-UP CHALLENGE**
+###### FOLLOW-UP CHALLENGE
 
 *Your platform team has a 6-month backlog. Two senior engineers just quit. What do you do this week?*
 
-###### **EXPECTED DISCUSSION AREAS**
+###### EXPECTED DISCUSSION AREAS
 
 - I Business drivers and outcomes
 
@@ -2471,7 +2471,7 @@ Architecture for a self-service platform that cannot become a bottleneck:
 
 - I Alternative approaches and decision rationale
 
-## **QUICK REFERENCE — FRAMEWORK DECISION GUIDE**
+## QUICK REFERENCE — FRAMEWORK DECISION GUIDE
 
 |**Decision**|**Choose**|**When**|
 |---|---|---|
@@ -2491,7 +2491,7 @@ Architecture for a self-service platform that cannot become a bottleneck:
 |Agent Oversight|Autonomous (T1)|Low risk, reversible, read-only actions|
 |Agent Oversight|Human-in-Loop (T3)|Consequential decisions, financial impact, regulated|
 
-## **QUICK REFERENCE — BANKING REGULATIONS**
+## QUICK REFERENCE — BANKING REGULATIONS
 
 |**Regulation**|**Jurisdiction**|**Key Architecture Requirements**|
 |---|---|---|
@@ -2505,7 +2505,7 @@ Architecture for a self-service platform that cannot become a bottleneck:
 |SOC 2 Type II|USA|Security, availability, processing integrity, confidentiality, privacy|
 |ISO 27001|Global|ISMS, risk assessment, controls framework, continuous improvement|
 
-## **ENTERPRISE ARCHITECTURE INTERVIEW HANDBOOK**
+## ENTERPRISE ARCHITECTURE INTERVIEW HANDBOOK
 
 Distinguished Architect Edition
 

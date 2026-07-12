@@ -11,11 +11,11 @@ covers_version: "N/A"
 ---
 AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-# **Current-State Assessment & AI Maturity**
+# Current-State Assessment & AI Maturity
 
 Where the enterprise stands, and what actually blocks it
 
-### **Contents of this deliverable**
+### Contents of this deliverable
 
 - Assessment approach and evidence base
 
@@ -33,11 +33,11 @@ Current-State Assessment   & AI Maturity
 
 AI-First Enterprise Transformation
 
-## **1. Assessment Approach**
+## 1. Assessment Approach
 
 In a live engagement this assessment draws on 40-60 stakeholder interviews, architecture and data-estate reviews, spend analysis, a skills inventory, and a scan of in-flight AI initiatives. The reference findings below reflect the modal pattern we observe in enterprises of this profile; each cell should be validated in a 4-6 week discovery sprint, which is the first roadmap activity.
 
-## **2. Thirteen-Dimension Enterprise Assessment**
+## 2. Thirteen-Dimension Enterprise Assessment
 
 |**Dimension**|**Current-state finding (reference)**|**Rating**|
 |---|---|---|
@@ -57,7 +57,7 @@ In a live engagement this assessment draws on 40-60 stakeholder interviews, arch
 
 Rating scale: Green = strength to build on; Amber = gap that constrains scale; Red = blocking issue requiring Horizon 1 remediation.
 
-## **3. AI Maturity Assessment**
+## 3. AI Maturity Assessment
 
 Draft for discussion - illustrative
 
@@ -77,7 +77,7 @@ AI-First Enterprise Transformation
 
 The distance from Level 2 to Level 4 is primarily organizational, not technical: the same 18-month journey fails in enterprises that treat it as an IT program and succeeds where a business-accountable leader owns it.
 
-## **4. Business Capability Heat Map**
+## 4. Business Capability Heat Map
 
 Capabilities are scored on two axes: **AI leverage potential** (how much AI could improve the capability) and **current readiness** (data, process stability, and talent to absorb it). The gap between the two defines the transformation agenda.
 
@@ -109,9 +109,9 @@ AI-First Enterprise Transformation
 |Executive decision support|High|Low (no semantic layer; metric|COOL until data layer|
 |||definitions inconsistent)|exists|
 
-## **5. Hidden Bottlenecks and Organizational Debt**
+## 5. Hidden Bottlenecks and Organizational Debt
 
-### **Systemic constraints that will silently cap the program**
+### Systemic constraints that will silently cap the program
 
 - **Metric anarchy.** Core business terms (customer, churn, margin) defined differently across units. Any AI system built on inconsistent semantics automates the inconsistency. Remediation: semantic layer as a Horizon 1 deliverable.
 
