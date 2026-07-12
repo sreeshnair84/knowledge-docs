@@ -42,10 +42,6 @@ RESEARCH BRIEFING · MAY 2026 · CONFIDENTIAL
 |**12**|Governance, Security & OWASP AST10|
 |**13**|The Road Ahead|
 
-
-
-
-
 **01 FUNDAMENTALS — WHAT ARE AGENT SKILLS?**
 
 ## **What Are Agent Skills?**
@@ -84,8 +80,6 @@ triggers: [audit, pipeline, dbt, lineage, quality-check]
 negative_examples: [frontend, UI, CSS, design, React]
 author: platform-eng@acme.com
 ```
-
-
 
 ```
 compatible_with: [claude-code, copilot, cursor, codex, windsurf]
@@ -129,8 +123,6 @@ When auditing a data pipeline, follow this sequence:
 
 Agents supporting SKILL.md standard
 
-
-
 **02 BEST PRACTICES FOR SKILL AUTHORSHIP**
 
 ## **Best Practices**
@@ -147,8 +139,6 @@ Perplexity published its internal skill development manual in May 2026, revealin
 |Explicit is better than implicit|Trust the model's training|Don't explain what a PDF is. Jump straight<br>to project-specific conventions.|
 |Flat is better than nested|A skill is a folder, not a file|Use /references/ subdirectory for heavy<br>content. SKILL.md is the router.|
 
-
-
 ### **Top 10 Best Practices**
 
 #### **1. Keep SKILL.md under 5,000 tokens**
@@ -158,8 +148,6 @@ Perplexity published its internal skill development manual in May 2026, revealin
 The spec recommends ≤500 lines. Every token competes with conversation history, other active skills, and system context. Focus only on what the agent wouldn't know without your skill.
 
 Adding negative trigger examples improved routing accuracy from 73% to 85% in published benchmarks. Explicitly list what the skill should NOT activate for — as important as the positive triggers.
-
-
 
 #### **3. Match specificity to task fragility**
 
@@ -193,8 +181,6 @@ Addy Osmani's production skill set includes explicit rebuttals to common enginee
 
 Snyk's ToxicSkills research found 13.4% of public ClawHub skills had critical issues. Even a 30-second skim of SKILL.md catches obvious attacks. Look for environment variable references and unexplained URL fetches.
 
-
-
 **03 ANTI-PATTERNS — WHAT GOES WRONG**
 
 ## **Anti-Patterns in Skill Design**
@@ -214,10 +200,6 @@ These are patterns that seem correct from a software engineering background but 
 |Hardcoded Secrets<br>in Resources|Convenience during<br>development|Snyk found 280+ skills leaking<br>API keys; instant credential theft<br>vector|Use env var references; run<br>secret scanning in CI before<br>publish|
 |No Exit Criteria|Natural language is<br>self-explanatory|Agent doesn't know when it has<br>completed the task; loops or<br>halts early|Add explicit completion<br>signals: 'output findings to<br>findings/report.json and stop'|
 
-
-
-
-
 **04 SKILL REGISTRIES & PACKAGE MANAGERS**
 
 ## **Skill Registries**
@@ -234,18 +216,9 @@ A skill registry is a centralized (or federated) catalog where skills are publis
 |Marketplace /<br>Curated|dotnet/skills, Cowork, Azure<br>SRE Agent Plugins,<br>awesome-copilot|Business users|Verified, quality-scored, cross-model reuse via<br>AAIF standard|
 |IDE-Native|VS Code Extensions, GitHub<br>Copilot Plugin Marketplace|Individual<br>developers|Browse/install from IDE; slash-command<br>activation; side-by-side diff on update|
 
-
-
 ### **What a Registry Stores per Skill Entry**
 
-
 ![Figure 1](/img/agentic-systems/agentic-systems-p8-1.png)
-
-
-<!-- Start of picture text -->
-semantic version domain / category tags trigger keywords<br>negative examples compatible agents RBAC permissions<br>owner / namespace download count rating / review score<br>SHA-256 content hash security scan status license<br>dependency graph source repo + branch<br><!-- End of picture text -->
-
-
 
 **05 MICROSOFT APM & PLUGIN MARKETPLACES**
 
@@ -284,8 +257,6 @@ Copilot, Claude, Cursor, OpenCode, Codex, Gemini, Windsurf — all configured in
 
 Packages can depend on packages. APM resolves the full dependency tree, pins content hashes, and gates transitive MCP servers behind explicit trust prompts. Tighten-only inheritance: enterprise → org → repo.
 
-
-
 #### **Marketplace Integration**
 
 #### **Security at Install Time**
@@ -308,10 +279,6 @@ Multiple curated marketplaces now exist alongside APM, each targeting a differen
 |LobeHub Skills<br>Market|LobeHub|General / community|npx install CLI; agent-powered discovery<br>('find a skill for X')|
 |ClawHub|OpenClaw<br>community|OSS community (large)|49,592+ packages; no mandatory review —<br>highest risk, highest volume|
 
-
-
-
-
 **06 SKILL LIFECYCLE — END-TO-END**
 
 ## **The Complete Skill Lifecycle**
@@ -328,17 +295,9 @@ A skill is not a static artifact — it is a product with a full lifecycle from 
 |6. Monitor|Track: task success rate, latency P95, token<br>cost per invocation, error patterns, routing<br>precision. Alert thresholds: error_rate > 5%,<br>TSR drop > 10%.|Platform eng, Product|Weekly telemetry report,<br>alerting dashboard|
 |7. A/B Test &<br>Iterate|Challenger version built. 70/30 traffic split<br>(champion/challenger). Minimum 200<br>samples at 95% confidence. Shadow mode<br>first. Winner promoted, loser archived.|Skill author, Data<br>science|A/B test report, v1.x update,<br>rollout record|
 
-
-
-
-
 |8. Deprecate &|Usage drops below threshold for 30 days.|Platform eng, Skill|Deprecation notice, archived|
 |---|---|---|---|
 |Retire|Flag as deprecated with migration guide.<br>Notify all dependents (identified via registry<br>dependency graph). Archive after 60 days.|owner|version, migration guide|
-
-
-
-
 
 **07 EVALUATION FRAMEWORKS & BENCHMARKS**
 
@@ -379,18 +338,12 @@ For creative or judgment-intensive skills, human panels rate output on correctne
 |SkillsBench|Skill efficacy: vanilla vs<br>self-generated vs curated|84 tasks × 11 domains × 3<br>conditions; deterministic verifiers +|Curated skills ~81% TSR vs<br>~48% baseline — the definitive|
 |||trajectory logs|skills benchmark|
 
-
-
-
-
 |SWE-bench<br>Verified|Software engineering:<br>resolving real GitHub issues|Pass@1 on test suites from<br>popular OSS repos|Claude 3.5 Sonnet ~49%; best<br>agents now approaching 60%|
 |---|---|---|---|
 |Terminal-Bench|Raw agentic capability on<br>terminal/shell tasks|Hard-subset: 44 tasks;<br>100-episode cap; 24hr timeout;<br>3-repeat average|Primary harness comparison<br>benchmark for code agents in<br>2026|
 |AgentBench|Multi-environment LLM agent<br>performance|8 distinct interactive environments;<br>collaborative and solo tasks|Multi-dimensional; identifies<br>cross-domain capability gaps|
 |MLE-Bench|ML engineering end-to-end<br>autonomy|Offline Kaggle competitions;<br>graded against human-level<br>submissions|Best setup (o1-preview + AIDE)<br>achieved bronze medal in<br>16.9% of competitions|
 |BrowseComp|Web-based information<br>retrieval and navigation|Multi-turn browser interaction;<br>structured query validation|Tests persistence and tool-use<br>in open-web environments|
-
-
 
 ### **SkillsBench Task Success Rate by Condition**
 
@@ -407,10 +360,6 @@ No Skills (Baseline) **48%** Self-Generated Skills **67%** Expert-Curated Skills
 |Harbor Framework|Containerized Envs|Isolated deterministic execution environments for benchmark runs|
 |Helicone|Cost Tracking|Token cost per skill; cost-per-outcome dashboards; budget alerting|
 |SkillAttack|Red Teaming|Automated adversarial testing of skill security via attack path<br>refinement|
-
-
-
-
 
 **08 A/B TESTING AGENT SKILLS**
 
@@ -454,8 +403,6 @@ Run the challenger in shadow mode (execute but don't serve output to users) befo
 
 Define hard-stop conditions: error_rate > 5%, any security violation, latency > 2× baseline. Auto-rollback the challenger regardless of primary metric performance.
 
-
-
 #### **Long-Horizon Checkpointing**
 
 #### **Multi-Armed Bandits**
@@ -476,10 +423,6 @@ For high-traffic skill slots, MAB algorithms dynamically shift traffic toward th
 |Trigger metadata|Broad domain tags vs narrow specific keywords|Routing precision & recall|
 |Instruction length|Minimal (100 lines) vs comprehensive (400 lines)|TSR vs token cost tradeoff|
 
-
-
-
-
 **09 ENTERPRISE SYSTEM INTEGRATION**
 
 ## **Integrating Skills with Enterprise Systems**
@@ -497,13 +440,9 @@ As of 2026, AI agents with skills have achieved 40% integration rate in enterpri
 |Google Vertex AI /<br>ADK|Agent Development Kit (ADK) with<br>SkillToolset; Google Cloud Agent<br>Registry|GCP-native teams;<br>multi-modal agent<br>requirements|Low for GCP; usage-based<br>pricing complexity at scale|
 |NVIDIA Agent<br>Toolkit|OpenShell runtime; cuOpt<br>optimization skill library; Nemotron<br>reasoning|17+ enterprise ISVs<br>(Adobe, SAP, Siemens,<br>Palantir);<br>GPU-accelerated<br>reasoning|High initial setup; powerful<br>for specialized inference<br>workloads|
 
-
-
 ### **CI/CD Integration Pattern — Post-CI Skill Execution**
 
 Skills can trigger post-CI to generate documentation, run security audits, update wikis, or notify downstream systems. The pattern works across GitHub Actions, GitLab CI, Jenkins, and Azure
-
-
 
 ##### Pipelines.
 
@@ -557,8 +496,6 @@ git commit -m 'ci: auto-update [skip ci]' && git push
 
 When Copilot Cloud Agent triggers workflows, it operates without access to organization secrets by default (as of May 2026). Secrets must be explicitly scoped to the Copilot environment. Use fine-grained PATs with minimal permissions rather than broad org secrets — this aligns with the least-privilege principle from the OWASP AST10 governance framework.
 
-
-
 **10 OKRs & KPI REFERENCE LIBRARY**
 
 ## **OKRs & KPIs for Agent Skills Programs**
@@ -575,8 +512,6 @@ The failure mode in most agent programs is measuring the wrong thing — trackin
 |**O4: Achieve measurable skill quality**|•≥95% task success rate on curated set<br>• Zero P0 security incidents from skills<br>• Every skill A/B tested within 90 days of launch|Head of AI Platform|
 |**O5: Positive ROI on agent investment**|• Cost per automated task≤30% of manual<br>• Token cost per task decreasing QoQ<br>• Productivity value quantified in board report|CFO / AI Sponsor|
 
-
-
 ### **KPI Reference Library**
 
 |**SKILL QUALITY**|||
@@ -585,10 +520,6 @@ The failure mode in most agent programs is measuring the wrong thing — trackin
 |**Routing Precision**|Correct skill selected / Total routing decisions|≥85%|
 |**Skill Regression Rate**|% updates that reduce TSR vs prior version|≤5% of releases|
 |**JSON Parse Success**|Structured output parsed without retry|≥98%|
-
-
-
-
 
 |**OPERATIONAL**|||
 |---|---|---|
@@ -611,10 +542,6 @@ The failure mode in most agent programs is measuring the wrong thing — trackin
 |**Audit Coverage**|% of invocations with full trace logs|100% (compliance<br>requirement)|
 |**Scan Pass Rate**|% of skills passing all OWASP AST10 checks at publish|100%|
 |**Staleness Rate**|% of registry skills with no activity > 90 days|≤10% core registry|
-
-
-
-
 
 **11 PERSONAS & ROLES**
 
@@ -660,8 +587,6 @@ Ops Lead / Department Head
 
 **Needs:** Skill discovery by outcome, ROI calculator, human-in-the-loop approval gates.
 
-
-
 ###### III **End User / Consumer**
 
 Knowledge Worker
@@ -702,8 +627,6 @@ Data Science / Evals
 
 **Needs:** Deterministic verifiers, LLM-as-judge pipelines, stratified sampling tooling.
 
-
-
 **12 GOVERNANCE, SECURITY & OWASP AST10**
 
 ## **Security, Governance & OWASP AST10**
@@ -722,8 +645,6 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 |Review|L1/L2; 10% sample for curated registries|ambiguous instructions|
 |Runtime Sandbox|Containerized execution: seccomp,<br>AppArmor, Firecracker VMs|Blast radius limitation even if static scan misses a<br>malicious skill|
 
-
-
 ### **Five-Layer Governance Framework**
 
 |**Control Layer**|**Mechanism**|**Tooling**|
@@ -731,16 +652,10 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 |Identity|Every agent has a signed identity; Agent Personas<br>scope privilege sets; IAM binding to skill invocation<br>rights|Cequence Agent Personas, AWS IAM,<br>Google Cloud IAM|
 |Supply Chain|Automated SAST on all SKILL.md files before registry<br>publish; VirusTotal integration; content-addressable<br>SHA-256 hashing|Snyk, Cisco skill-scanner, OWASP<br>AST10 scanner|
 
-
-
-
-
 |Runtime Isolation|Containerized skill execution; sandboxed script runners;<br>network egress controls per skill namespace|Harbor Framework, Docker<br>sandboxes, Firecracker VMs|
 |---|---|---|
 |Audit|Immutable audit logs per invocation; full trajectory<br>capture; compliance reporting to SOC2 / GDPR<br>standards|Langfuse, AWS CloudTrail, Splunk|
 |Access Control|RBAC by namespace; per-skill permission matrix;<br>human approval gates for sensitive/irreversible actions|SkillHub RBAC, APM apm-policy.yml,<br>Azure SRE Agent Plugins|
-
-
 
 ### **OWASP AST10 — Top 10 Agentic Skill Risks**
 
@@ -756,10 +671,6 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 |AS<br>T8|Data exfiltration via skill|Skill reads SSH keys / env vars and POST to attacker URL|
 |AS<br>T9|Skill staleness exploitation|Outdated skill with known vuln kept active due to no deprecation process|
 |AS<br>T10|Social engineering via skill|Skill manipulates agent self-perception to disable safety measures|
-
-
-
-
 
 **13 THE ROAD AHEAD**
 

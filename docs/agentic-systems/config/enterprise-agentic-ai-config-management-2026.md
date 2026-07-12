@@ -8,7 +8,6 @@ source_type: converted-pdf
 source_file: "enterprise-agentic-ai-config-management-2026.pdf"
 tags: ["agentic-ai", "configuration", "aws", "parameter-store", "feature-flags", "secrets-management"]
 ---
-**ENTERPRISE ARCHITECTURE SERIES**
 
 # Enterprise Configuration & Parameter Management
 
