@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The CISO Who Wanted Autonomy and the Identity Lead Who Said Absolutely Not**
-
+# The CISO Who Wanted Autonomy and the Identity Lead Who Said Absolutely Not
 Building an Agentic SOC Threat Response Copilot Through an Identity Standoff, an SRE Rejection, and a Near-Miss Production Incident
 
 A transcript-style account following Rosalind Achterberg, Enterprise AI Architect at Falkirk Financial Group, through a rejected fully-autonomous vision, a red-teamed log-injection vulnerability, an eleven-minute production incident caused by a hallucinated tool call hitting real infrastructure, and the discovery that a human-approval control isn't real unless what gets approved is provably what executes.

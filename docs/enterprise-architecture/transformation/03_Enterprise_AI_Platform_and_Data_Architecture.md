@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-# **Enterprise AI Platform, Data & Agentic Architecture**
-
+# Enterprise AI Platform, Data & Agentic Architecture
 One paved road for every AI workload
 
 ### **Contents of this deliverable**

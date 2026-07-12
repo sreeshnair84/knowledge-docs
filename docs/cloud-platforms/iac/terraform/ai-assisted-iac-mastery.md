@@ -11,6 +11,7 @@ series_part: 1
 series_total: 1
 series_index: "cloud-platforms/iac/terraform/index"
 tags: [terraform, iac, ai, llm, infrastructure-as-code, agentic-ai]
+source_file: ""
 ---
 
 # AI-Assisted Infrastructure as Code Mastery

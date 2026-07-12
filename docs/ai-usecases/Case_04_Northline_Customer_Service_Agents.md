@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **One Conversation, Five Specialist Brains**
-
+# One Conversation, Five Specialist Brains
 Building a Multi-Agent Customer Service Orchestrator Inside a Telecom Carrier
 
 A transcript-style account following Yara Haddad, Enterprise AI Architect at Northline Telecom, as she replaces a nine-percent-resolution chatbot with a five-domain specialist agent system — while keeping a documented social-engineering risk category permanently out of autonomous scope.

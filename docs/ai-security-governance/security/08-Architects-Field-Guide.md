@@ -10,8 +10,7 @@ tags: ["ai-security", "architecture", "field-guide"]
 ---
 #### **PRACTICAL FIELD GUIDE**
 
-# **The Architect's Field Guide: A Real-World Walkthrough**
-
+# The Architect's Field Guide: A Real-World Walkthrough
 One Bank, One Architect, Six Months — Greenfield Build Through Live Incident, With the Reasoning Made Visible
 
 **Document Code:** EASA-FIELD **Version:** 1.0 **Date:** June 2026 **Scope:** Companion to EASA-01 through EASA-06 and EASA-ZTM

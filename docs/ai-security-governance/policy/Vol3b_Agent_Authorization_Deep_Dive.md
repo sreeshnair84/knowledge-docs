@@ -15,8 +15,7 @@ tags: []
 
 ## 1. Prompt Injection Defense in Authorization
 
-# Prompt injection is one of the most significant attack vectors for agentic AI systems. An attacker embeds instructions in user input or retrieved documents that attempt to override the agent's behavior — including **Agent Authorization Deep Dive** <u>circumventing authorization controls. The authorization layer is a critical defense layer.</u>
-
+# Agent Authorization Deep Dive: Prompt Safety, Contextual Risk & Workflow Patterns (Vol 3b)
 ### Prompt Safety · Contextual Risk Signals · Workflow Patterns · Sub-Agent Trust **1.1 Prompt Injection Attack Patterns**
 
 |**Attack Type**|**Example Payload**|**Risk**<br>**Level**|**Authorization Defense**|

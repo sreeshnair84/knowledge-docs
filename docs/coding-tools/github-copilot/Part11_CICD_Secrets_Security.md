@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **CI/CD Architecture, Secrets & Supply Chain Security**
-
+# CI/CD Architecture, Secrets & Supply Chain Security
 ##### **TOPICS COVERED**
 
 - **›  CI / CD / CDeploy Distinctions**

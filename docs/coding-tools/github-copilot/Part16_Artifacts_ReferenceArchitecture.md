@@ -10,8 +10,7 @@ last_reviewed: 2026-07-10
 framework_name: ""
 covers_version: "N/A"
 ---
-# **Engineering Artifacts & Enterprise Reference Architecture**
-
+# Engineering Artifacts & Enterprise Reference Architecture
 Compiled sources and a reference architecture for enterprise agentic AI platforms inspired by GitHub's design
 
 #### **TOPICS COVERED**

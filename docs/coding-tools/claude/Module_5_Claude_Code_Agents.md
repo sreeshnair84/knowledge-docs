@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 #### **MODULE 5**
 
-# **Claude Code, Hooks, Skills & Subagents**
-
+# Claude Code, Hooks, Skills & Subagents
 Agentic architecture, deterministic hooks, SKILL.md, subagent delegation, Agent SDK, and GitHub CI/CD integration
 
 **Domain 4 — 22% of CCA-F Exam**

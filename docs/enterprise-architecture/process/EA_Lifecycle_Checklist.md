@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 **Page 1**
 
-# **LIFECYCLE CHECKLIST**
-
+# LIFECYCLE CHECKLIST
 Pitch → Approve → Design → Build → Operate → Review → Retire
 
 A comprehensive gate-by-gate checklist for Enterprise Architects managing initiatives from idea inception through to full decommission. Use this document alongside your Architecture Review Board process and governance framework.

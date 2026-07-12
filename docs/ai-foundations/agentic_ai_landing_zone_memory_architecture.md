@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# MEMORY ARCHITECTURE: Building Agent Intelligence Over Time
-
+# Agentic AI Landing Zone: Memory Architecture (Tier 3)
 *Agents without memory are stuck in the present. Agents with well-designed memory become intelligent, adaptive, and trustworthy.*
 
 ---

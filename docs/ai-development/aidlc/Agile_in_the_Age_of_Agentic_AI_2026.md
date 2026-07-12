@@ -6,14 +6,15 @@ status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["ai-development", "aidlc"]
 ---
 **DEEP RESEARCH REPORT**
 **Agile in the Age of Agentic AI**
 *Are 2-Week Sprints Still Relevant? How KPIs, ROI, Strategy & the Entire Delivery Landscape Are Shifting*
 May 2026  |  Sources: McKinsey, BCG, Accenture, Forrester, AWS, Gartner, InfoQ, SAFe, DORA & more
 
-# **Executive Summary**
-
+# Executive Summary
 The software delivery landscape is undergoing its most significant structural disruption since the Agile Manifesto was published in 2001. The rapid emergence of agentic AI — autonomous systems that reason, plan, and execute multi-step tasks without constant human instruction — is rendering core assumptions of traditional Agile fundamentally outdated.
 
 Two-week and four-week sprint cadences were designed for human execution speed. When AI agents can draft, test, and open pull requests for entire features in hours, the sprint boundary becomes an artificial constraint rather than a useful rhythm. The question is no longer "should we use sprints?" but "what should our cadence actually govern?"

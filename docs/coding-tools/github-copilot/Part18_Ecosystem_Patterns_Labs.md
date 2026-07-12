@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Ecosystem, Enterprise Patterns & Hands-On Labs**
-
+# Ecosystem, Enterprise Patterns & Hands-On Labs
 ##### **TOPICS COVERED**
 
 - **›  Copilot & Copilot Workspace**

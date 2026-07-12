@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 #### **MODULE 3**
 
-# **Prompt Engineering & Optimization — Complete Reference**
-
+# Prompt Engineering & Optimization — Complete Reference
 System prompts, few-shot, chain-of-thought, XML structured output, RAG pipelines, hybrid search, extended thinking, and evaluation frameworks
 
 **Domain 2 — 20% of CCA-F Exam Claude Certified Architect (CCA-F) | Professional Enterprise Architect | May 2026**

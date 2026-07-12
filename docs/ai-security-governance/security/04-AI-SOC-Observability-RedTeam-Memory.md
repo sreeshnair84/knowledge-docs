@@ -10,8 +10,7 @@ tags: ["ai-security", "soc", "observability", "red-team", "memory"]
 ---
 #### **VOLUME 4 OF 6**
 
-# **AI SOC, Observability, Red/Purple Teaming & Memory Security**
-
+# AI SOC, Observability, Red/Purple Teaming & Memory Security
 Memory Governance, Agent Observability, AI Security Operations, Cognitive Security, Red Teaming, and Agent Reliability Engineering
 
 **Document Code:** EASA-04 **Version:** 1.0 **Date:** June 2026 **Scope:** Domains 9, 10, 12, 18 & 19

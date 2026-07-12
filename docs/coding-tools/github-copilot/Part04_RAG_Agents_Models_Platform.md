@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **RAG Architecture, Agent Comparisons & GitHub Models**
-
+# RAG Architecture, Agent Comparisons & GitHub Models
 How GitHub avoids sending whole repos to the model, the agentic landscape, and the model catalog
 
 #### **TOPICS COVERED**

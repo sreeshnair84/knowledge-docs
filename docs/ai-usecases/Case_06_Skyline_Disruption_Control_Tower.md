@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Options, Not Recommendations**
-
+# Options, Not Recommendations
 Building an Agentic Disruption Control Tower Inside a Global Airline
 
 A transcript-style account following Sofia Marchetti, Enterprise AI Architect at Skyline Continental Airlines, as she builds a cross-domain agentic orchestration layer over an existing crew-legality solver — and designs against automation-following bias in the exact moment a controller has the least time to notice it.

@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Agent That Proposes, Never Disposes**
-
+# The Agent That Proposes, Never Disposes
 Building an Autonomous Fraud Investigation Copilot Inside a Global Bank
 
 A transcript-style account following Elena Cross, Enterprise AI Architect at Meridian Financial Group, as she leads the design of a multi-agent fraud investigation system — and holds the line on human decision authority, prompt injection defence, and numeric hallucination control through a 12-month build under Model Risk governance.

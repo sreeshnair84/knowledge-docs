@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# AGENT PLATFORM LAYER: LIFECYCLE, REGISTRY & MARKETPLACE
-
+# Agentic AI Landing Zone: Agent Platform Layer
 *Moving agents from ad-hoc projects to governed, reusable platform products.*
 
 ---

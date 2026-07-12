@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **GitHub Architecture & Actions Deep Dive**
-
+# GitHub Architecture & Actions Deep Dive
 **Repository model, Enterprise topology, and the complete Actions execution engine**
 
 ##### **TOPICS COVERED**

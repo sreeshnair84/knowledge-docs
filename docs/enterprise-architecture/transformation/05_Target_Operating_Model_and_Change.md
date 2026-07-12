@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 AI-FIRST ENTERPRISE TRANSFORMATION  |  CONSULTING ENGAGEMENT
 
-# **Target Operating Model, Organization & Change**
-
+# Target Operating Model, Organization & Change
 The human system that makes the technology pay
 
 ### **Contents of this deliverable**

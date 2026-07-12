@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Graduated Autonomy on the Factory Floor**
-
+# Graduated Autonomy on the Factory Floor
 Building a Multi-Tier Agentic Maintenance & Procurement Orchestrator Across 14 Plants
 
 A transcript-style account following Kofi Mensah, Enterprise AI Architect at Ironclad Industrial Group, as he designs a maintenance-to-procurement agentic system with three distinct autonomy tiers — keeping a permanent human gate on safety-critical production scheduling while letting low-risk procurement run autonomously.

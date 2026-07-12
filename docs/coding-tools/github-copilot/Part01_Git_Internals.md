@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Git Internals**
-
+# Git Internals
 From first principles to production-grade large-repo optimization
 
 ##### **TOPICS COVERED**

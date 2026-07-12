@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Logistics Case Study: Meridian Freight — Routing & Warehouse Robotics"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Logistics Case Study: Meridian Freight — Routing & Warehouse Robotics
 Meridian Freight & Logistics — Dynamic Routing & Warehouse Robotics Multi-Agent Coordination Platform
 
 Engagement Period: May 2025 – March 2026

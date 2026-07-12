@@ -9,8 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise Governance Ecosystem & Operating Models**
-
+# Enterprise Governance Ecosystem & Operating Models
 How the Architecture Review Board fits into the wider enterprise governance landscape — overlaps, escalation paths, decision rights, and the operating models that make federated architecture governance actually work, with a banking/financial-services lens throughout.
 
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition Companion volumes: Economics & Decision Science · Knowledge & Capability Mapping · Artifact Catalog & Quality Attributes · Review Questions & Scorecards · Banking Industry Deep-Dive · AI-Native ARB & Case Studies · Implementation Accelerator Kit

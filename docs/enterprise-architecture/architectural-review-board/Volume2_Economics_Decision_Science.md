@@ -9,8 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Architecture Economics & Decision Science**
-
+# Architecture Economics & Decision Science
 Putting numbers behind architecture decisions: technical debt valuation, architecture ROI, cost of delay, FinOps, GreenOps, and the formal decision frameworks (ATAM, CBAM, real options, Wardley evolution) that separate principal-level judgment from opinion.
 
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition

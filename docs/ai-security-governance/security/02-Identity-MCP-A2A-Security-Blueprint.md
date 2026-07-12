@@ -8,8 +8,7 @@ source_type: converted-pdf
 source_file: "02-Identity-MCP-A2A-Security-Blueprint.pdf"
 tags: ["ai-security", "identity", "mcp", "a2a", "agentic-ai"]
 ---
-# **Identity, MCP & A2A Security Blueprint**
-
+# Identity, MCP & A2A Security Blueprint
 Human and Non-Human Identity, Model Context Protocol Security, and Agent-to-Agent Trust Infrastructure
 
 **Document Code:** EASA-02 **Version:** 1.0 **Date:** June 2026 **Scope:** Domains 2, 5 & 6 — Deep Dive

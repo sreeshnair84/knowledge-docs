@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 **Page 1**
 
-# **STRATEGY PLAYBOOK**
-
+# STRATEGY PLAYBOOK
 #### **How EA Creates Strategy from Pitch to Retire**
 
 A step-by-step operational playbook defining the plays, RACI responsibilities, decision criteria, common pitfalls, and success patterns for each stage of the Enterprise Architecture lifecycle. Designed for EA practitioners, Solution Architects, and Architecture Review Boards.

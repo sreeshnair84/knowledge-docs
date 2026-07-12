@@ -15,8 +15,7 @@ tags: []
 
 ## 1. SCIM 2.0 Integration for Claim Enrichment
 
-# System for Cross-domain Identity Management (SCIM 2.0) is the standard protocol for synchronizing user identity data from Entra ID (or ADFS) to application attribute stores. Rather than embedding all attributes in JWT **Advanced Policy Engineering** <u>tokens (which hits size limits), SCIM pushes attributes to a local DynamoDB store that the PIP queries at</u> authorization time.
-
+# Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)
 ### 1.1 SCIM Architecture for Enterprise AI
 
 `Microsoft Entra ID` I I `SCIM 2.0 Provisioning (push on change)` I `Endpoint:` `https://api.bank.com/scim/v2` M `SCIM Receiver Lambda` I `Validates SCIM bearer token` I `Transforms SCIM schema` → `Enterprise schema` M `DynamoDB User Attribute Store` I `Partition: userId` I <u>`Contains: department, costCenter, clearanceLevel,` I</u> <u>`geography, legalEntity, manager,` I</u> `projectMemberships, tradingDeskId,` I `regulatoryCaptures, dataAccessScopes` I I `TTL: Not set` `(SCIM manages lifecycle)` I `GSI: by-department, by-geography` M `PIP Lookup Lambda (at` `authorization time)` I `Cache: ElastiCache Redis 300s TTL` I `Enriches canonical claims with SCIM attributes` M `Cedar Authorization Context (enriched)`

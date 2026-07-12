@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Evidence Verifiability, Not Convenience**
-
+# Evidence Verifiability, Not Convenience
 Building an Agentic Autonomous Claims Settlement System Inside a Mutual Insurer
 
 A transcript-style account following Deshawn Carter, Enterprise AI Architect at Harborstone Mutual Insurance, as he builds an autonomous claims settlement system gated on evidence verifiability rather than claim size — and discovers that a fraud-resistance fix and a fairness gap can come from the very same design decision.

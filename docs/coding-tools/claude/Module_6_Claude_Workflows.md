@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 #### **MODULE 6**
 
-# **Claude Dynamic Workflows — Complete Guide**
-
+# Claude Dynamic Workflows — Complete Guide
 JavaScript-orchestrated parallel subagent execution, plan-as-code, Ultracode, /deep-research, cost management (released May 28 2026)
 
 **NEW — Released May 28, 2026 | Max · Team · Enterprise plans**

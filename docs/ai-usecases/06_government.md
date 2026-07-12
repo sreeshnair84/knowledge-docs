@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Government Case Study: Meridian DHS — Benefits Screening & Caseworker Copilot"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Government Case Study: Meridian DHS — Benefits Screening & Caseworker Copilot
 State of Meridian Department of Human Services — Citizen Benefits Eligibility Assistant
 
 Engagement Period: May 2025 – April 2026

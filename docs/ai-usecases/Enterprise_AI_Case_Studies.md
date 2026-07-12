@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise AI Architecture Case Studies**
-
+# Enterprise AI Architecture Case Studies
 Seven Complex, Cross-Industry AI Transformations — Banking, Healthcare, Government, Manufacturing, Retail, Defense & SaaS
 
 1 sections  •  7 frameworks  •  full-depth reference

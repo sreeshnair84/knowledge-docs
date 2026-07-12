@@ -13,8 +13,7 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 5b OF Extended**
 
-# **1. NIST SP 800-53 Rev 5 — Complete Control Ma in** **<u>pp g</u> Compliance, Governance & Final** NIST SP 800-53 is the US federal standard for security controls and is widely adopted as the foundational control framework for financial services. The authorization architecture directly implements the Access Control **<u>Decision Framework</u>** (AC) and Audit and Accountability (AU) control families.
-
+# Compliance, Governance & Final Decision Framework (Vol 5b)
 |**Dec**<br>NIST·P<br> <br>control fr<br>(AC) and<br>**1.1 Ac**<br>**Contr**<br>**ol ID**|**ision Fr**<br>CI DSS·SOC 2· <br> <br>amework for financial<br>Audit and Accountabil<br>**cess Control **<br>**Control Name**|**amework**<br>DORA·EU AI Act·ISO 27001·Cas<br>  <br>services. The authorization architecture directly<br>ity (AU) control families.<br>**Family (AC)**<br>**Architecture Implementation**|e Studies·Migration<br>   <br>implements the Access Control<br>**Evidence Artifact**|
 |---|---|---|---|
 |AC-2|Account<br>Management|Cedar entity store tracks all principals (users and<br>agents). SCIM provisioning creates and removes<br>principals automatically.|SCIM sync logs, Cedar entity<br>audit, deprovisioning CloudTrail<br>events|

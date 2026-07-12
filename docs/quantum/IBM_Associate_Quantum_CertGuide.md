@@ -15,8 +15,7 @@ Heavy Code Edition • Qiskit v1.x • 2026
 60 questions • 90 minutes • Score 43/60 to pass (72%) Covers: Qiskit circuits, gates, algorithms, simulators, transpilation & real hardware
 **Page 2**
 
-# **TABLE OF CONTENTS**
-
+# TABLE OF CONTENTS
 **SECTION 1** — Exam Blueprint & Domain Weights
 
 **SECTION 2** — Qiskit Installation & Environment Setup

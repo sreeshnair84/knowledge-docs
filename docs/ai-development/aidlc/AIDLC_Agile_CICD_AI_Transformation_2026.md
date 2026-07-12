@@ -1,5 +1,5 @@
 ---
-title: "Contents"
+title: "AIDLC, Agile & CI/CD — AI Transformation 2026"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -100,8 +100,7 @@ The most important mental model shift for every software professional is this: *
 
 ### **THE AI DEVELOPMENT LIFECYCLE (AIDLC)**
 
-# **02**
-
+# AIDLC, Agile & CI/CD — AI Transformation 2026
 From MLOps to LLMOps to AgentOps — The Three Generations of AI Operations
 
 The AI development lifecycle has gone through three distinct generations in five years. Each generation introduced new complexities that the previous generation's tooling could not handle. Understanding where each generation ends and the next begins is critical for engineering leaders making tooling, hiring, and process investments.

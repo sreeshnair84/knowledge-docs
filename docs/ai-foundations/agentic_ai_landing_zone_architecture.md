@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# AGENTIC AI LANDING ZONE
-
+# Agentic AI Landing Zone Architecture
 ## TOGAF Architecture Deliverable
 
 ### Enterprise Architecture Office

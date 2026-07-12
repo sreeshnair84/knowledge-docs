@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 Enterprise AI Authentication Research • Part
 
-# **Part 6**
-
+# Part 6
 ## **Banking Case Study**
 
 Production architecture for a highly regulated bank: Zero Trust AI agents with AWS, Entra ID, MCP, GitHub Enterprise, ServiceNow, Confluence, Jira, M365, SharePoint, and Slack

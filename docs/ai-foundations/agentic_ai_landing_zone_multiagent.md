@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# MULTI-AGENT REFERENCE ARCHITECTURES: Patterns for Production
-
+# Agentic AI Landing Zone: Multi-Agent Reference Architectures
 *Single agents solve narrow problems. Multi-agent systems solve complex, real-world business processes.*
 
 ---

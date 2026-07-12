@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# IMPLEMENTATION PLAYBOOKS: Step-by-Step Runbooks
-
+# Agentic AI Landing Zone: Implementation Playbooks
 *Concrete, executable guides for your team to operationalize agentic AI platform.*
 
 ---

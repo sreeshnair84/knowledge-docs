@@ -15,8 +15,7 @@ tags: []
 
 ## 1. Identity Federation: ADFS & Microsoft Entra ID
 
-# Enterprise identity environments are rarely clean. Most large organizations operate with a combination of Microsoft Entra ID (formerly Azure AD) as the modern cloud IdP and legacy ADFS for on-premises federation. **Identity, Claims & Policy Design** <u>Both systems produce identity tokens that must be normalized before they can be used for policy evaluation.</u>
-
+# Identity, Claims & Policy Design (Vol 2)
 ### Enterprise Policy Interceptor Architecture for Agentic AI **1.1 Federation Architecture**
 
 `On-Premises User Cloud-Native User` I I `ADFS Entra ID` I `SAML Assertion` I `OIDC/JWT` I I IIIIIIIIIIIIIIIIIIIIIIIIIIII I `Entra ID Tenant (Federation Trust)` I `Token Issuance (JWT` `with Claims)` I `Claims Normalization Layer (Lambda/ECS)` I `Canonical Claims Store` I `Policy Engine` `(Cedar/OPA)`

@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Pharma Case Study: Vireon Therapeutics — Literature Intelligence & Regulatory Drafting"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Pharma Case Study: Vireon Therapeutics — Literature Intelligence & Regulatory Drafting
 Vireon Therapeutics — R&D Literature Intelligence & Regulatory Submission Copilot
 
 Engagement Period: June 2025 – May 2026

@@ -10,8 +10,7 @@ tags: ["harness", "ai-agents", "vendor-landscape", "agentic-ai"]
 ---
 **C O N C E P T P R I M E R + V E N D O R L A N D S C A P E**
 
-# Harness Engineering
-
+# Harness: Engineering AI Agents & Vendor Landscape
 The AI-Agent Sense: Scaffolding, Control Planes, and How the DevOps/Platform Vendor Landscape Is Adopting It
 
 Scope: What "harness engineering" means for LLM agents · Short profiles of 10 CI/CD, GitOps, and platformengineering vendors Research date: July 2026

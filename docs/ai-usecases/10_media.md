@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Media Case Study: Solstice Media — Content Localization & IP Compliance"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Media Case Study: Solstice Media — Content Localization & IP Compliance
 Solstice Media Group — Content Generation, Localization & IP Rights Compliance Platform
 
 Engagement Period: July 2025 – June 2026

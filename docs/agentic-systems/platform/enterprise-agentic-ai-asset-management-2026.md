@@ -10,8 +10,7 @@ tags: ["agentic-systems", "platform", "asset-management", "governance", "enterpr
 doc_type: research-report
 covers_version: "June 2026"
 ---
-# ENTERPRISE AGENTIC AI ASSET MANAGEMENT
-
+# Enterprise Agentic AI Asset Management 2026
 A Comprehensive Reference for the AI-Era Enterprise
 
 **2026 Edition**

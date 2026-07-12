@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Strategic Thinking Handbook**
-
+# The Strategic Thinking Handbook
 A Full-Depth Reference for Strategic Analysis & Counterfactual Thinking
 
 2 sections  •  32 frameworks  •  full-depth reference

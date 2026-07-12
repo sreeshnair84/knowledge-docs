@@ -10,8 +10,7 @@ tags: ["ai-security", "runtime", "mcp", "governance", "rbac"]
 ---
 Enterprise AI Authentication Research - Part
 
-# **Part 4**
-
+# Part 4
 ## **Agent Runtime, MCP Security & Governance**
 
 Agent runtimes, MCP/A2A protocols, Zero Trust security, RBAC/ABAC/PBAC governance, and complete audit chains

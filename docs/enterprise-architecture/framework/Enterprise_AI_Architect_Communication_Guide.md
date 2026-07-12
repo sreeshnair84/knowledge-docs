@@ -1,5 +1,5 @@
 ---
-title: "ENTERPRISE AI / PRINCIPAL ARCHITECT"
+title: "Enterprise AI Architect Communication Guide"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -29,8 +29,7 @@ Action Plan
 
 Practice Cadence
 
-# **Table of Contents**
-
+# Enterprise AI Architect Communication Guide
 |**01**|**Why Communication Systems Beat Soft Skills**|Foundation|
 |---|---|---|
 |**02**|**The Four-Arena Framework**|Overview|

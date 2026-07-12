@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# EU AI ACT COMPLIANCE: YOUR ACTION PLAN
-
+# Agentic AI Landing Zone: EU AI Act Compliance (Digital Omnibus Update — July 2026)
 *This guide de-risks compliance and avoids €35M penalties.*
 
 > **⚖️ Digital Omnibus update (final Council approval 29 June 2026).** The AI Act simplification package changed the deadlines this guide was originally written against:

@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 #### **MODULE 4**
 
-# **Model Context Protocol (MCP) — Complete Reference**
-
+# Model Context Protocol (MCP) — Complete Reference
 Architecture, three primitives, Python SDK, transport layers, security patterns, sampling, roots, and real-world integrations
 
 **Domain 3 — 18% of CCA-F Exam**

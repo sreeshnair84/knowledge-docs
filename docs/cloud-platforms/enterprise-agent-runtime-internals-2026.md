@@ -11,8 +11,7 @@ audience: ["Cloud Architects", "Platform Engineers", "AI Enterprise Architects",
 covers_version: "as of 2026-07-11 — AWS Bedrock AgentCore GA, Azure AI Foundry Agent Service, Google Vertex AI Agent Engine"
 ---
 
-# Enterprise AI Agent Runtime Internals: AWS Bedrock AgentCore, Azure AI Foundry Agent Service & Google Cloud Vertex AI Agent Engine (2026)
-
+# Enterprise AI Agent Runtime Internals: AWS, Azure & GCP (2026)
 > **Classification of claims used throughout this document:**
 > - **[DOCUMENTED]** — Stated explicitly in official vendor documentation, GA product pages, or SDK references
 > - **[EVIDENCE]** — Supported by engineering blog posts, conference talks (re:Invent, Build, Google I/O), patents, open-source repositories, or SDK source code analysis

@@ -1,18 +1,19 @@
 ---
-title: "How to Use This Workbook"
+title: "Storytelling Exercise Workbook"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["soft-skills"]
 ---
 **Storytelling**
 **Exercise Workbook for Work Presentations**
 *Structure your stories. Hook your audience. Drive action.*
 
-# **How to Use This Workbook**
-
+# How to Use This Workbook
 This workbook has five sections. Work through them in order — each one builds on the last. Use a pen to fill in the worksheets directly, or type into the fields digitally.
 
 | 01 | Section 1 — The Frameworks: The STAR method and 3-Act structure explained with examples. |

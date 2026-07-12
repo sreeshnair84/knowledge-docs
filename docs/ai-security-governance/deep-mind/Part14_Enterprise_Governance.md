@@ -15,8 +15,7 @@ tags: []
 
 ##### **PART 14 OF 18**
 
-# **Enterprise AI Governance**
-
+# Enterprise AI Governance
 Operating Model, RACI Matrices, AI Platform Teams, PromptOps, AgentOps, Risk Committees, Responsible AI Boards, and Policy Lifecycle Management
 
 ###### **ENTERPRISE AI CONTROL ARCHITECTURE**

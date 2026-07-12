@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 #### **MODULE 1**
 
-# **Claude Foundations & Ecosystem Overview**
-
+# Claude Foundations & Ecosystem Overview
 Complete guide to the Claude model family, product suite, plans, pricing, token economics, safety philosophy, and certification pathway
 
 **Claude Certified Architect (CCA-F) | Professional Enterprise Architect Learning Guide | May 2026**

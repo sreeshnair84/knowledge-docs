@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **THE ENTERPRISE PR REVIEW PLAYBOOK**
-
+# THE ENTERPRISE PR REVIEW PLAYBOOK
 Volume III — AI-Assisted Review Today
 
 GitHub Copilot, Claude Code, CodeRabbit, Greptile, Cursor BugBot, Amazon Q,

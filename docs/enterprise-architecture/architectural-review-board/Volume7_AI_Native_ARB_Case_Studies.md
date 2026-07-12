@@ -9,8 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **AI-Native ARB & Enterprise Case Studies**
-
+# AI-Native ARB & Enterprise Case Studies
 From AI-assisted review to autonomous governance agents, continuous architecture validation, and self-healing governance — plus structured case studies from global banks, hyperscalers, and AI-first organizations.
 
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition

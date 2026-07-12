@@ -10,8 +10,7 @@ tags: ["agentic-systems", "platform", "prompt-management", "aws-agentcore", "obs
 doc_type: research-report
 covers_version: "June 2026"
 ---
-# PROMPT LIFECYCLE: VERSIONING · HOT-SWAP PER-PROMPT TRACE CORRELATION
-
+# GENAIAF-559: Prompt Lifecycle, Versioning & Hot-Swap Research 2026
 Deep Research — All Options for AWS AgentCore Runtime Phoenix / Arize AX · Langfuse · Braintrust · AppConfig · Config Bundles · Harness · CDK Hotswap
 
 **GENAI Agent Foundry · GENAIAF-559 | June 2026**

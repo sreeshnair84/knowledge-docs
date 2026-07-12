@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **A Demo That Should Never Have Left the Room**
-
+# A Demo That Should Never Have Left the Room
 Building an Agentic Clinical Trial Patient-Matching and Adverse Event Triage System Through Public Failure and Recovery
 
 A transcript-style account following Dr. Yusuf Kamara, Enterprise AI Architect at Vaxion Therapeutics, through a programme that fails publicly in its first demo, survives two architectural rejections, a sponsor departure, a cost-runaway incident, and a second safety-relevant failure eight months into operation — and comes out the other side with a human-in-the-loop design its own failure history ends up defending.

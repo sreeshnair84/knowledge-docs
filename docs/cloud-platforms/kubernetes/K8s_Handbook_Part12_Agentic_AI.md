@@ -1,5 +1,5 @@
 ---
-title: "ENTERPRISE KUBERNETES MASTERY"
+title: "K8s Handbook Part 12: Agentic AI"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["cloud-platforms"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# ENTERPRISE KUBERNETES MASTERY
-
+# K8s Handbook Part 12: Agentic AI
 AI Platform Engineering Handbook
 
 PART XII KUBERNETES FOR ENTERPRISE AGENTIC AI

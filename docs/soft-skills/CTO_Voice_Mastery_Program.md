@@ -1,11 +1,13 @@
 ---
-title: "THE THREE MASTERS — YOUR FACULTY"
+title: "CTO Voice Mastery Program"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["soft-skills"]
 ---
 🎙
 **THE WORLD'S BEST**
@@ -18,8 +20,7 @@ Designed for a 20-Year Senior Architect at the organization
 "You are only as good as you can communicate."
 — Vinh Giang
 
-# **THE THREE MASTERS — YOUR FACULTY**
-
+# THE THREE MASTERS — YOUR FACULTY
 This program synthesizes the world's most practical communication frameworks from three masters, each bringing a distinct and complementary discipline.
 
 | Master | Domain | Signature Framework | Your Primary Application |

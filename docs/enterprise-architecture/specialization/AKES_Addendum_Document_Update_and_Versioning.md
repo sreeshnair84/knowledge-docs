@@ -1,5 +1,5 @@
 ---
-title: "AKES_Addendum_Document_Update_and_Versioning"
+title: "AKES Addendum: Document Update & Versioning"
 date_created:
 last_reviewed:
 status: current
@@ -11,8 +11,7 @@ tags: []
 
 <!-- converted from AKES_Addendum_Document_Update_and_Versioning.pdf -->
 
-# **Document Update & Versioning**
-
+# AKES Addendum: Document Update & Versioning
 Addendum to the Autonomous Knowledge Engineering System Brief
 
 Extends: _AKES Architecture & Design Brief, June 2026_

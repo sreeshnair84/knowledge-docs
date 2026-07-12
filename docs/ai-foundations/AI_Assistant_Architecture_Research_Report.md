@@ -1,5 +1,5 @@
 ---
-title: "AI_Assistant_Architecture_Research_Report"
+title: "AI Assistant Architecture Research Report"
 date_created:
 last_reviewed:
 status: current
@@ -11,8 +11,7 @@ tags: []
 
 <!-- converted from AI_Assistant_Architecture_Research_Report.pdf -->
 
-# AI ASSISTANT ARCHITECTURE
-
+# AI Assistant Architecture Research Report
 ## RESEARCH REPORT
 
 Conversational Session Persistence . Project Context

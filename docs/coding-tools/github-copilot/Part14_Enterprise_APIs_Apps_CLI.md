@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise GitHub, APIs, Apps & CLI**
-
+# Enterprise GitHub, APIs, Apps & CLI
 **Identity federation, REST/GraphQL APIs, GitHub Apps architecture, and CLI automation**
 
 ##### **TOPICS COVERED**

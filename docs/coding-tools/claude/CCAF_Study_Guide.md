@@ -1,11 +1,13 @@
 ---
-title: "Exam At-a-Glance"
+title: "CCAF Study Guide"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 **ANTHROPIC**
 **Claude Certified Architect**
@@ -30,8 +32,7 @@ Complete Exam Preparation Guide
 | 🔴  HIGH-PRIORITY EXAM TOPIC Domains 1, 3 & 4 together account for 67% of exam content. Master these three first. There is NO penalty for guessing, so always answer every question. |
 | --- |
 
-# **HOW TO USE THIS GUIDE**
-
+# CCAF Study Guide
 This guide is structured in five domain modules matching the exam blueprint. Each module contains:
 Concept explanation (plain English, then technical deep-dive)
 Architecture diagrams

@@ -15,8 +15,7 @@ tags: []
 
 ## 1. Agent Authorization Lifecycle
 
-# Authorization for AI agents is fundamentally different from user authorization. Agents operate autonomously, may run for extended periods, invoke multiple tools in sequence, and can spawn sub-agents. Each of these **Agent, Tool & MCP Authorization** <u>behaviors requires dedicated authorization controls.</u>
-
+# Agent, Tool & MCP Authorization (Vol 3)
 ### Enterprise Policy Interceptor Architecture for Agentic AI **1.1 Authorization Decision Points in an Agent Workflow**
 
 `USER REQUEST (with JWT + canonical claims)` I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `P1: Agent Invocation` `Authorization` I II `Cedar: Can this user invoke this agent type?`

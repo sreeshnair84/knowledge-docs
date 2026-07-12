@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Energy Case Study: Cascadia Power & Light — Predictive Maintenance & Grid Advisory"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Energy Case Study: Cascadia Power & Light — Predictive Maintenance & Grid Advisory
 Cascadia Power & Light — Substation Predictive Maintenance & Grid Operations Advisory Platform
 
 Engagement Period: April 2025 – February 2026

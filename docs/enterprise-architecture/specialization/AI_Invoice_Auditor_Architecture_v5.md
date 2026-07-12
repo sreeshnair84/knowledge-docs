@@ -7,6 +7,8 @@ source_type: converted-pdf
 framework_name: ""
 doc_type: guide
 covers_version: "N/A"
+source_file: ""
+tags: ["enterprise-architecture", "specialization"]
 ---
 **AGENTIC AI · CAPSTONE PROJECT**
 **AI Invoice Auditor**
@@ -21,8 +23,7 @@ Enterprise Architecture & Complete Requirements Specification
 | Observability | SQLite MetricsDB only — replaces LangFuse/Docker |
 | 🆕 New in v5.0 | HumanInTheLoopMiddleware (approve/edit/reject) · SQLite checkpointer · Short+Long-term memory (SQLite store) · Multi-agent Handoffs · Skills as prompt tools · Runtime context injection |
 
-# **1. What Changed in v5.0 — Executive Summary**
-
+# 1. What Changed in v5.0 — Executive Summary
 v5.0 is a targeted ground-up rewrite of the runtime-layer choices made in v3/v4, driven by the constraint of running entirely on a single Windows machine with no Docker or cloud services. Simultaneously, all agent patterns have been upgraded to match the current LangChain 0.3+ official documentation for HITL middleware, multi-agent handoffs, skill loading, runtime injection, and long-term memory.
 
 | Area | Was (v4) | Now (v5) |

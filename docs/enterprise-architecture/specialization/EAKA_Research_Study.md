@@ -1,5 +1,5 @@
 ---
-title: "EAKA_Research_Study"
+title: "Enterprise Agent Knowledge Architecture (EAKA) Research Study"
 date_created:
 last_reviewed:
 status: current
@@ -17,8 +17,7 @@ Research Initiative
 
 ###### ENTERPRISE  AI  ARCHITECTURE  ·  PRINCIPAL RESEARCH
 
-# Enterprise Agent Knowledge Architecture** **<u>EAKA</u>
-
+# Enterprise Agent Knowledge Architecture (EAKA) Research Study
 Autonomous Knowledge Discovery, Skill Composition, Governance & Continuous Evolution for Enterprise AI Agents
 
 ###### RESEARCH TYPE

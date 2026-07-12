@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# Reference Architectures
-
+# Reference Architectures - From BPM-First to AI-Native
 Five end-to-end architecture patterns for different enterprise contexts in 2026.
 
 ---

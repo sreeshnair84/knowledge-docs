@@ -1,5 +1,5 @@
 ---
-title: "AgentIdentity_Research_2026 (1)"
+title: "Agent Identity for AI Systems — Research 2026"
 date_created:
 last_reviewed:
 status: current
@@ -11,8 +11,7 @@ tags: []
 
 <!-- converted from AgentIdentity_Research_2026 (1).pdf -->
 
-# AGENT IDENTITY FOR AI SYSTEMS
-
+# Agent Identity for AI Systems — Research 2026
 Microsoft Entra Agent ID vs AWS AgentCore Identity A Complete Technical Research with Code & Comparison
 
 **Microsoft Entra Agent ID**

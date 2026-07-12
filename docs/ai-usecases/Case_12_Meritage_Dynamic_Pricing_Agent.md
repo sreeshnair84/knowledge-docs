@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Two VPs, One Agent, No Agreement on Who Owns It**
-
+# Two VPs, One Agent, No Agreement on Who Owns It
 Building an Agentic Dynamic Pricing and Inventory Rebalancing System Through Turf Conflict, a Merger, and a $20,000 Mistake
 
 A transcript-style account following Teodor Rusu, Enterprise AI Architect at Meritage Retail Group, through a cross-functional ownership fight, a genuine vendor-native-versus-portable architecture debate, a mid-design acquisition, and a production incident where dozens of individually-bounded pricing decisions compounded into one very expensive mistake.

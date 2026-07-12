@@ -15,8 +15,7 @@ tags: []
 
 ## 1. AWS Reference Architecture
 
-# This section defines the production AWS architecture for an enterprise Agentic AI authorization platform. Every component is justified by its specific role in the authorization chain. **AWS Implementation, Governance &** **<u>Production Readiness</u> 1.1 Architecture** **<u>Overview</u>**
-
+# AWS Implementation, Governance & Production Readiness (Vol 5)
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MICROSOFT ENTRA ID` I I
 
 `(Primary IdP — OIDC/SAML Federation)` I I `ADFS (Legacy Federation)` I

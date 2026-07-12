@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Necessary But Not Sufficient**
-
+# Necessary But Not Sufficient
 Building an Agentic Scientific Research Assistant Inside a Drug Discovery Organisation
 
 A transcript-style account following Dr. Naledi Khumalo, Enterprise AI Architect at Aurelia Biosciences, as she designs a research agent for literature review, internal data cross-reference, and patent prior-art surfacing — discovering that citation presence, aggregate accuracy, and clean results can all mask silent, systematic gaps.

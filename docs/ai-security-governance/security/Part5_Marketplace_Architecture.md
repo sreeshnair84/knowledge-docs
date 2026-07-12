@@ -1,5 +1,5 @@
 ---
-title: "Part5_Marketplace_Architecture"
+title: "Part 5: Marketplace Architecture"
 date_created:
 last_reviewed:
 status: current
@@ -13,8 +13,7 @@ tags: []
 
 Enterprise AI Authentication Research • Part 5 of 7
 
-# **Part 5**
-
+# Part 5: Marketplace Architecture
 ## **Marketplace Connectors & Enterprise Architecture Patterns**
 
 Marketplace OAuth models, consent flows, token lifecycle, and reference architectures from Microsoft, Google, AWS, Atlassian

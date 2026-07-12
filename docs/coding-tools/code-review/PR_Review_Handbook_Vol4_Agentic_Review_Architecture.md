@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **THE ENTERPRISE PR REVIEW PLAYBOOK**
-
+# THE ENTERPRISE PR REVIEW PLAYBOOK
 Volume IV — Agentic AI Review Architecture
 
 Designing the Autonomous Review Pipeline — Specialist Reviewer Agents, MCP/A2A Orchestration, Policy Engines, and Governance Boards

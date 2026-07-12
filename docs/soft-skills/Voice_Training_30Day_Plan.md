@@ -1,11 +1,13 @@
 ---
-title: "Your Daily Routine (25 min)"
+title: "Voice Training 30-Day Plan"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["soft-skills"]
 ---
 **Voice Training**
 **30-Day Expert Public Speaking Plan**
@@ -18,8 +20,7 @@ doc_type: guide
 | Daily Practice Time | 20-30 Minutes |
 | Duration | 28 Days (+ ongoing) |
 
-# **Your Daily Routine (25 min)**
-
+# Your Daily Routine (25 min)
 Complete this every day before moving into your weekly focus. This is non-negotiable — consistency beats intensity.
 
 | Activity | Duration | Description |

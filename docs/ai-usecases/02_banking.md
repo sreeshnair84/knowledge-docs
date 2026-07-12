@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Banking Case Study: Continental Union Bank — AI Underwriting Copilot"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Banking Case Study: Continental Union Bank — AI Underwriting Copilot
 Continental Union Bank — Commercial Lending Underwriting Copilot & Model Risk Governance
 
 Engagement Period: January 2025 – November 2025

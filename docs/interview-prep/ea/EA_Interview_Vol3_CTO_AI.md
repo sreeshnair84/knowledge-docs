@@ -11,8 +11,7 @@ target_role: "AI/ML Architect"
 ---
 ## How to Use This Guide
 
-# **ENTERPRISE ARCHITECTURE**
-
+# ENTERPRISE ARCHITECTURE
 ### Interview Handbook — Volume 3
 
 **CTO Round · AI Security · AI Identity · AI Governance** Architecture Review Simulations · Whiteboard Exercises · Mock Interview Scorecards · Reference Architectures · Tradeoff Matrices

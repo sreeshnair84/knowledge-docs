@@ -1,5 +1,5 @@
 ---
-title: "TOGAF10_APEX_AI_Platform_NexaBank"
+title: "APEX: AI Platform of Platforms — TOGAF 10 at NexaBank"
 date_created:
 last_reviewed:
 status: current
@@ -13,8 +13,7 @@ tags: []
 
 **CONFIDENTIAL  |  TOGAF 10 ADM  |  AI-DLC INTEGRATED**
 
-# APEX: AI Platform of Platforms
-
+# APEX: AI Platform of Platforms — TOGAF 10 at NexaBank
 ## Enterprise Architecture on AWS Agent Core
 
 A comprehensive TOGAF 10 Architecture Development Method (ADM) guide for designing, governing, and delivering an AI Platform of Platforms at NexaBank Global.

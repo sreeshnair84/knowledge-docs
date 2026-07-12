@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Spot-Rate Market Nobody Could Watch Fast Enough**
-
+# The Spot-Rate Market Nobody Could Watch Fast Enough
 Building an Agentic Procurement Negotiation Platform Inside a Global Logistics Carrier
 
 A transcript-style account following Adaeze Nwachukwu, Enterprise AI Architect at Vantara Global Logistics, as she builds an agentic negotiation platform bounded to price and volume only — and catches, one clause at a time, exactly how a permanent boundary can almost be breached by accident before it is ever breached on purpose.

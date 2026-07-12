@@ -1,5 +1,5 @@
 ---
-title: "AI_Agent_Evaluation_Framework_Guide.md"
+title: "Complete AI Agent Evaluation Framework Guide"
 date_created:
 last_reviewed:
 status: current
@@ -9,8 +9,7 @@ source_file: "AI_Agent_Evaluation_Framework_Guide.md.pdf"
 tags: []
 ---
 
-# 🧠 Complete AI Agent Evaluation Framework
-
+# Complete AI Agent Evaluation Framework Guide
 ## · · AWS Bedrock AgentCore Strands Arize Phoenix
 
 ### From Ideation → Build → Evaluate → Monitor → Retire

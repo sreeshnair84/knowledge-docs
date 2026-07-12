@@ -22,8 +22,7 @@ related_pages: ["—"]
 
 #### **A DAY IN THE LIFE OF AN**
 
-# **ENTERPRISE ARCHITECT**
-
+# ENTERPRISE ARCHITECT
 ## **From Incubation to Retire**
 
 A verbatim transcript-style account following Marcus Webb, Enterprise Architect at RetailCo, as he navigates a 14-month journey with the Unified Commerce Platform initiative. From the first whisper of an idea in the C-suite to the final decommission of a legacy system — every stakeholder conversation, every artefact, every governance decision, and every sleepless moment in between.

@@ -8,8 +8,7 @@ source_type: converted-pdf
 source_file: "06-Operating-Model-Maturity-Roadmap.pdf"
 tags: ["ai-security", "operating-model", "maturity", "roadmap"]
 ---
-# **Operating Model, Maturity Model & 24Month Roadmap**
-
+# Operating Model, Maturity Model & 24Month Roadmap
 Enterprise Agent Operating Model, Maturity Levels, Security Review Checklists, Principal Architect Interview Guide, and the Learning Path
 
 **Document Code:** EASA-06 **Version:** 1.0 **Date:** June 2026

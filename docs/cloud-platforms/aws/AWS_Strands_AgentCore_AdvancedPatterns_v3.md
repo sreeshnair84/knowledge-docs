@@ -1,5 +1,5 @@
 ---
-title: "AWS STRANDS & BEDROCK AGENTCORE"
+title: "AWS Strands & Bedrock AgentCore — Advanced Patterns v3.0"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 ### AWS STRANDS & BEDROCK AGENTCORE
 
-# ADVANCED PATTERNS v3.0
-
+# AWS Strands & Bedrock AgentCore — Advanced Patterns v3.0
 **Hooks · HITL · Checkpointer · Code Interpreter · Browser Agent · Meta Tool · Expert Patterns**
 
 |**Vol 3 of 3**|**Expert Patterns**<br>**Production Grade**|**March 2026**|

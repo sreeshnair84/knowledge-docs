@@ -9,8 +9,7 @@ tags: ["ai-economics", "enterprise-ai"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **A Worked Use Case: End-to-End Value Realization**
-
+# A Worked Use Case: End-to-End Value Realization
 Property & Casualty Claims — From Opportunity Identification to Realized, Measured Value
 
 ##### **Companion document to: "AI Value Creators for Agentic AI and Beyond"**

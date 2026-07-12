@@ -1,5 +1,5 @@
 ---
-title: "TABLE OF CONTENTS"
+title: "EA Soft Skills Interview Master Guide"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -101,8 +101,7 @@ This guide covers 17 competency domains assessed by a 12-member executive panel.
 
 SECTION 01
 
-# EXECUTIVE PRESENCE
-
+# EA Soft Skills Interview Master Guide
 Panel: CEO · Board Member · CTO
 
 Confidence, composure, credibility, and executive maturity under pressure.

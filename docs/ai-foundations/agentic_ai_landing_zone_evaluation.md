@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# EVALUATION FRAMEWORK: From Lab to Production
-
+# Agentic AI Landing Zone: Evaluation Framework
 *Production agentic AI requires systematic evaluation at every stage: design, staging, deployment, operations.*
 
 ---

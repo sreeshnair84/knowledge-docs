@@ -1,5 +1,5 @@
 ---
-title: "EU_Banking_AI_Evaluation_Compliance_Guide.md"
+title: "EU Banking AI Evaluation & Compliance Guide"
 date_created:
 last_reviewed:
 status: current
@@ -11,8 +11,7 @@ tags: []
 
 <!-- converted from EU_Banking_AI_Evaluation_Compliance_Guide.md.pdf -->
 
-# 🏦 EU Banking AI Agent Evaluation Framework
-
+# EU Banking AI Evaluation & Compliance Guide
 ## Responsible AI · PII · GDPR · DORA · EU AI Act · EBA · RAI
 
 ### — Extension to the Core Evaluation Framework EU Banking Edition

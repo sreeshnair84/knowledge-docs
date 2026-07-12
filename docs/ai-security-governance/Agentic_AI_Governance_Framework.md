@@ -1,5 +1,5 @@
 ---
-title: "Agentic_AI_Governance_Framework"
+title: "Agentic AI Governance Framework"
 date_created:
 last_reviewed:
 status: current
@@ -79,8 +79,7 @@ Phase 2 — Control (3–9 Months) Phase 3 — Scale (9–18 Months)
 
 - **14 Appendices**
 
-# 01 Executive Summary
-
+# Agentic AI Governance Framework
 Strategic context for enterprise leadership
 
 Agentic AI represents the most significant inflection point in enterprise technology since cloud computing. Unlike generative AI tools that respond to prompts, agentic systems plan, reason, execute multi-step workflows, delegate to sub-agents, and act autonomously across enterprise systems — often without continuous human supervision. This shift from assistive to autonomous AI is redefining what governance means for organisations.

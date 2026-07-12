@@ -15,8 +15,7 @@ tags: []
 
 ##### **PART 2 OF 18**
 
-# **Evolution of Enterprise AI Security**
-
+# Evolution of Enterprise AI Security
 From Traditional Security to AI Control: Architectural Inflection Points, Paradigm Shifts, and Why Legacy Models Fail for Autonomous Agents
 
 ###### **ENTERPRISE AI CONTROL ARCHITECTURE**

@@ -6,6 +6,8 @@ status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 **CLAUDE ARCHITECT FOUNDATIONS**
 **Best Practices &**
@@ -14,8 +16,7 @@ doc_type: guide
 Covering all 5 domains · 25+ task statements · 6 exam scenarios
 March 2026
 
-# **How to Use This Guide**
-
+# How to Use This Guide
 This document synthesizes Anthropic's official documentation, the Claude Certified Architect exam guide, and current production patterns into a single reference. Each section follows the same structure: a conceptual overview, a best practices vs. antipatterns comparison table, and detailed guidance with real-world context.
 
 | Domain | Key Best Practices |

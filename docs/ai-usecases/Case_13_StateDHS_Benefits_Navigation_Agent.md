@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Mainframe Owner Who Said No**
-
+# The Mainframe Owner Who Said No
 Building an Agentic Benefits Navigation Assistant Through Legacy Constraints, a Critical Security Finding, and a Change in Political Leadership
 
 A transcript-style account following Imani Bledsoe, Enterprise AI Architect at the State Department of Human Services, through a legacy-system standoff, a legal data-use restriction, a critical prompt-injection vulnerability caught before launch, an election that nearly ended the programme, and a language-equity trade-off with no clean answer that gets escalated, resolved, and revisited a year later with real evidence.

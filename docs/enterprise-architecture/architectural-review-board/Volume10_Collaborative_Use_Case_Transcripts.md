@@ -18,8 +18,7 @@ P R I N C I P A L E N T E R P R I S E A R C H I T E C T R E F E R E N C E S E R 
 
 VOLUME 10 OF 10
 
-# **Collaborative Use Case Transcripts**
-
+# Collaborative Use Case Transcripts
 Three full-lifecycle transcripts showing how architects, business sponsors, risk officers, regulators, and governance bodies actually collaborate — conversations, decisions, conflicts, and resolutions recorded in the voice of real actors doing real work.
 
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition · Continuation Volume

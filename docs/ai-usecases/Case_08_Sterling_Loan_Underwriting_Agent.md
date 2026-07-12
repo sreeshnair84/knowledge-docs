@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Denial Letter Problem**
-
+# The Denial Letter Problem
 Building an Agentic Loan Underwriting Copilot Inside a Fair-Lending-Bound Bank
 
 A transcript-style account following Priya Ramanathan, Enterprise AI Architect at Sterling National Bank, as she builds an agentic underwriting copilot deliberately restricted to approval-side recommendations — and discovers that proxy discrimination can hide inside a feature that is, on paper, entirely legal.

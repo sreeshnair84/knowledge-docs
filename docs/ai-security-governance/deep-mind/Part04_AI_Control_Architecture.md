@@ -15,8 +15,7 @@ tags: []
 
 **PART 4 OF 18**
 
-# **Enterprise AI Control Architecture**
-
+# Enterprise AI Control Architecture
 Layered Security Architecture, Policy Enforcement, Trust Zones, Governance Planes, and Production-Grade Reference Design
 
 #### **ENTERPRISE AI CONTROL ARCHITECTURE**

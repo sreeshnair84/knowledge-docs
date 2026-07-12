@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **THE ENTERPRISE PR REVIEW PLAYBOOK**
-
+# THE ENTERPRISE PR REVIEW PLAYBOOK
 Volume I — Traditional Review Discipline
 
 How Pull Requests Actually Flow Through Elite Engineering Organizations — Workflow, Ownership, Role-Based Review Playbooks, Anti-Patterns, and Metrics

@@ -1,5 +1,5 @@
 ---
-title: "AWS STRANDS & BEDROCK AGENTCORE"
+title: "AWS Strands & Bedrock AgentCore — Delta Supplement v2.0"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 ### **AWS STRANDS & BEDROCK AGENTCORE**
 
-# **DELTA SUPPLEMENT v2.0**
-
+# AWS Strands & Bedrock AgentCore — Delta Supplement v2.0
 AgentSkills · AgentOps · Strands Labs · Steering · BidiAgent · TypeScript SDK AgentCore Policy GA · Evaluations · Episodic Memory · Memory Streaming · What's New
 
 |**Continuation**|**of v1.0**<br>**Dec 2025 – Mar 2026**|**14M+ Downloads**<br>**Policy GA · 13 Regions**|

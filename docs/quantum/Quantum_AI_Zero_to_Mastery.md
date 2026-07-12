@@ -1,5 +1,5 @@
 ---
-title: "Quantum_AI_Zero_to_Mastery"
+title: "Quantum Computing & AI in Quantum — Zero to Mastery"
 date_created:
 last_reviewed:
 status: current
@@ -11,8 +11,7 @@ tags: []
 
 <!-- converted from Quantum_AI_Zero_to_Mastery.pdf -->
 
-# **QUANTUM COMPUTING & AI IN QUANTUM**
-
+# Quantum Computing & AI in Quantum — Zero to Mastery
 ZERO TO MASTERY
 
 A 3-Month Principal Architect Program

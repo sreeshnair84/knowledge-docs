@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Decision Support, Never Decision**
-
+# Decision Support, Never Decision
 Building an Agentic Prior Authorization Assistant Inside a Health Payer
 
 A transcript-style account following Dr. Amara Osei, Enterprise AI Architect at Cascadia Health Partners, as she draws a hard line between AI-assisted clinical review and autonomous denial — and defends a narrow, clinically-governed fast-track approval pathway against pressure to expand it faster than the evidence allows.

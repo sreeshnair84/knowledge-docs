@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Storm That Took Ninety Minutes to Diagnose**
-
+# The Storm That Took Ninety Minutes to Diagnose
 Building an Agentic Grid Operations Assistant Inside a Safety-Critical Utility
 
 A transcript-style account following Marcus Odutayo, Enterprise AI Architect at Palisade Electric & Gas, as he builds an agentic assistant for real-time fault correlation and switching proposals — permanently excluding autonomous execution, and discovering that even a read-only security boundary can leak.

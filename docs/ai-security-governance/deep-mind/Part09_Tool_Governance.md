@@ -15,8 +15,7 @@ tags: []
 
 **PART 9 OF 18**
 
-# **Tool Governance for Enterprise AI**
-
+# Tool Governance for Enterprise AI
 Tool Registry, Supply Chain Security, Runtime Validation, Secrets Management, MCP Governance, Tool Trust Scoring, and Lifecycle Management
 
 ##### **ENTERPRISE AI CONTROL ARCHITECTURE**

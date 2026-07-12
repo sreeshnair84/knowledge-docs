@@ -1,5 +1,5 @@
 ---
-title: "1. Metadata Options — Events, Records & Retrieval Filters"
+title: "AgentCore Memory Operations Deep Dive"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -25,8 +25,7 @@ Metadata Options · Streaming & Batch · Issues/Fixes by Phase Unit Testing · E
 
 ## 1. Metadata Options — Events, Records & Retrieval Filters
 
-# 1.1 CreateEvent Metadata — Key-Value Pairs on Short-Term Events
-
+# AgentCore Memory Operations Deep Dive
 Every **CreateEvent** call accepts a metadata map of string key-value pairs that travel with the event but are not part of the conversation payload. Metadata is indexed and filterable via **ListEvents** — enabling efficient event retrieval without semantic search overhead.
 
 |**Parameter**|**Constraint**|**Notes**|

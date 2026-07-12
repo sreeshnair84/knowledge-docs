@@ -8,8 +8,7 @@ source_type: converted-pdf
 source_file: "Harness_Interview_Question_Bank.pdf"
 tags: ["harness", "interview-prep", "ci-cd", "devops"]
 ---
-# Harness
-
+# Harness Interview Question Bank
 Interview Question Bank Enterprise Architect · Platform Engineer · DevSecOps Lead
 
 Synthesized from the architecture, AI-agent, security, and best-practices reports Research date: July 2026

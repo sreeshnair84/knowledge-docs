@@ -15,8 +15,7 @@ tags: []
 
 ## 1. XACML — The Standard That Defined
 
-# Enter rise Authorization** **<u>p</u> Authorization Deep Dive
-
+# Enter rise Authorization p Authorization Deep Dive
 eXtensible Access Control Markup Language <u>(XACML) is the OASIS standard that first formalized the</u> PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is Engines · Interceptor Patterns · XACML · OpenFGA · Zanzibar · gRPC · Envoy · Event-Drivenessential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.
 
 ### 1.1 XACML Request/Response Model

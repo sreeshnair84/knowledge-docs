@@ -9,8 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Artifact Catalog & Quality Attributes**
-
+# Artifact Catalog & Quality Attributes
 Every artifact an Architecture Review Board should expect to see — purpose, owner, consumers, lifecycle, and automation — paired with a modern quality attribute taxonomy that goes beyond generic NFRs to cover AI explainability, agent reliability, and memory consistency.
 
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition

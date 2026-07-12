@@ -15,8 +15,7 @@ tags: ["interview-prep", "ai-engineer", "python", "llm", "rag", "mlops"]
 | --- |
 *Confidential — Internal Use Only*
 
-# SECTION 1 — Python & Core Engineering
-
+# AI Engineer Interview Question Bank
 | Tests foundational Python depth: OOP, data structures, error handling, and writing clean, production-grade code. |
 | --- |
 

@@ -15,8 +15,7 @@ tags: []
 
 **PART 3 OF 18**
 
-# **Enterprise Threat Modeling for AI Agents**
-
+# Enterprise Threat Modeling for AI Agents
 Comprehensive Threat Taxonomy, Attack Trees, STRIDE Analysis, MITRE ATLAS Mapping, and Mitigation Strategies
 
 ##### **ENTERPRISE AI CONTROL ARCHITECTURE**

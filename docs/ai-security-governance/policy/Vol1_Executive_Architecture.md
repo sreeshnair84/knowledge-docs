@@ -13,8 +13,7 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 1 OF 5**
 
-# Executive Architecture &** **<u>Authorization Fundamentals</u>
-
+# Executive Architecture & Authorization Fundamentals
 <u>Enterprise Policy Interceptor Architecture for Agentic AI</u>
 
 ##### VOLUME COVERAGE

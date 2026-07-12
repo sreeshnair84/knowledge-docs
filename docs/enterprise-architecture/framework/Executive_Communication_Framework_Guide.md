@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 EXECUTIVE  ·  ARCHITECTURE  ·  LEADERSHIP  SERIES
 
-# **COMMUNICATION FRAMEWORKS  MASTER GUIDE**
-
+# COMMUNICATION FRAMEWORKS  MASTER GUIDE
 For Enterprise Architects  ·  Principal Architects  ·  CTO Candidates From Technical Fluency to Board-Level Strategic Communication
 
 Minto Pyramid

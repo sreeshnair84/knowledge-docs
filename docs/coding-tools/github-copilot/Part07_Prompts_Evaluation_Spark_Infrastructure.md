@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Prompt Engineering, Evaluation, Spark & AI Infrastructure**
-
+# Prompt Engineering, Evaluation, Spark & AI Infrastructure
 Prompt-as-code, evaluation pipelines, GitHub Spark's app-builder architecture, and platform scale
 
 #### **TOPICS COVERED**

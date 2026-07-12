@@ -9,8 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **ENTERPRISE ARCHITECTURE Glossary & Cheat Sheet**
-
+# ENTERPRISE ARCHITECTURE Glossary & Cheat Sheet
 Distinguished Architect / CTO / Chief AI Architect Edition
 
 300+ Terms · Regulation Quick Reference · PQC Migration Guide AI Security Threat Map · Identity Patterns · Interview Frameworks DORA Compliance Checklist · EU AI Act Tier Guide · Distinguished vs. Principal Signals

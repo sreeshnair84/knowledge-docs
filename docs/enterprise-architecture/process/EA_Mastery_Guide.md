@@ -13,8 +13,7 @@ covers_version: "N/A"
 
 #### **ENTERPRISE ARCHITECT**
 
-# **MASTERY GUIDE**
-
+# MASTERY GUIDE
 ## **Deep Research Edition**
 
 **Everything You Need to Read, Learn, Do and Become**

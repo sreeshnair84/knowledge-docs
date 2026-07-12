@@ -15,8 +15,7 @@ tags: []
 
 ##### **PART 15 OF 18**
 
-# **Cloud Implementation Comparison**
-
+# Cloud Implementation Comparison
 AWS Bedrock AgentCore, Azure AI Foundry, Google Vertex AI, Framework Comparison (LangGraph, CrewAI, AutoGen), Open-Source Stack
 
 ###### **ENTERPRISE AI CONTROL ARCHITECTURE**

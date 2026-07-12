@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# VISUAL GUIDE & QUICK REFERENCE
-
+# Agentic AI Landing Zone: Visual Guide & Quick Reference
 *Diagrams, decision trees, code examples, and glossary for the complete landing zone.*
 
 ---

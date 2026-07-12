@@ -205,6 +205,7 @@ const sidebars = {
       items: [
         'ai-economics/index',
         'ai-economics/ai-value-creators-synthesis',
+        'ai-economics/enterprise-ai-commercial-analysis-2026',
         'ai-economics/ai-coding-agents-2026',
         'ai-economics/AI-Value-Creator-Deliverables-Pack',
         'ai-economics/Agentic-AI-Use-Case-Value-Lifecycle',
@@ -219,6 +220,7 @@ const sidebars = {
         'ai-foundations/AI_Native_Architecture_Evolution_Report',
         'ai-foundations/AI_Assistant_Architecture_Research_Report',
         'ai-foundations/AI_Deep_Future_Outlook_2026_2035',
+        'ai-foundations/enterprise-agentic-ai-outlook-2026-2030',
         'ai-foundations/AI_Lab_Research_Report_June2026',
         'ai-foundations/The_Agentic_Loop_Enterprise_AI_Architect_Guide',
         {
@@ -632,6 +634,7 @@ const sidebars = {
             'enterprise-architecture/ai-architecture/index',
             'enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations',
             'enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy',
+            'enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026',
             'enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns',
             'enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance',
             'enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment',

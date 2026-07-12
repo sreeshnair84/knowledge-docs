@@ -1,5 +1,5 @@
 ---
-title: "AI_Deep_Future_Outlook_2026_2035"
+title: "AI Deep Future Outlook (2026–2035)"
 date_created:
 last_reviewed:
 status: current

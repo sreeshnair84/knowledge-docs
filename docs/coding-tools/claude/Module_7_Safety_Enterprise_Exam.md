@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 #### **MODULE 7**
 
-# **Safety, Enterprise Deployment & CCA-F Exam Prep**
-
+# Safety, Enterprise Deployment & CCA-F Exam Prep
 Permission hierarchy, data privacy, system hardening, compliance, governance, 4-week study plan, and 20 practice questions across all 5 domains
 
 **Domain 5 — 18% of CCA-F Exam**

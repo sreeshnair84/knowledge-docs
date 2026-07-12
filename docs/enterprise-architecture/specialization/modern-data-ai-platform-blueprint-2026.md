@@ -1,5 +1,5 @@
 ---
-title: "modern-data-ai-platform-blueprint-2026"
+title: "Modern Data & AI Platform Blueprint 2026"
 date_created:
 last_reviewed:
 status: current
@@ -25,8 +25,7 @@ GDPR · CCPA · SOX · HIPAA · PCI
 
 **Document type:** Comparative Reference Architecture & Investment Blueprint
 
-# Table of Contents
-
+# Modern Data & AI Platform Blueprint 2026
 |**Front Matter**||
 |---|---|
 |Executive Summary|1|

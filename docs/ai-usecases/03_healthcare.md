@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Healthcare Case Study: Northfield Health — Clinical Documentation & Prior Auth"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Healthcare Case Study: Northfield Health — Clinical Documentation & Prior Auth
 Northfield Health System — Clinical Documentation & Prior Authorization AI Assistant
 
 Engagement Period: April 2025 – March 2026

@@ -9,8 +9,7 @@ tags: ["enterprise-architecture"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Enterprise Review Questions & Scorecards**
-
+# Enterprise Review Questions & Scorecards
 A structured question bank across seventeen review domains, plus the scorecards that turn review answers into consistent, auditable approval decisions.
 
 Enterprise Architecture Review Board Handbook · Banking & Financial Services Edition

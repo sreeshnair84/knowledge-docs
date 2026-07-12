@@ -15,8 +15,7 @@ tags: []
 
 ## About This Series
 
-# This five-volume series is a comprehensive, implementation-oriented architecture guide for building **Series Index & Architecture** enterprise-grade authorization and request interception frameworks for Agentic AI systems deployed on AWS. It <u>addresses the complete spectrum of authorization challenges: from identity federation and claims normalization,</u> through policy engine selection and hybrid architectures, to per-step agent authorization, MCP security, RAG **<u>Overview</u>** data protection, and production governance.
-
+# Enterprise AI Authorization Series: Series Index & Architecture Overview (Vol 0)
 |**Ov**<br>Enterp<br> <br>throug<br>data p<br>The se<br>at org<br>health<br>**Seri**<br>**Vol**|**erview**<br>rise Policy Interceptor<br>p pu<br>h policy engine selection an<br>rotection, and production gov<br>ries is designed for enterpris<br>anizations deploying AI age<br>care, and government.<br>**es Volume Map**<br>**Title**|Architecture for Agentic AI<br>u g  y<br>d hybrid architectures, to per-step agen<br>ernance.<br>e architects, security engineers, platform<br>nts in regulated environments — part<br>**Primary Topics**|,<br>t authorization, MCP security, RAG<br>engineers, and compliance officers<br>icularly banking, financial services,<br>**Key Deliverables**|
 |---|---|---|---|
 |1|Executive Architecture &<br>Authorization Fundamentals|Authorization landscape;<br>PEP/PDP/PAP/PIP; Zero Trust;<br>embedded vs externalized; STRIDE<br>threat model; compliance mapping|Authorization engine comparison;<br>PEP pattern matrix; STRIDE<br>analysis; compliance control map;<br>anti-pattern catalogue|

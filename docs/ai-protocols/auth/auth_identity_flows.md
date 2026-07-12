@@ -9,8 +9,7 @@ tags: ["ai-protocols", "mcp", "a2a"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Authentication & Identity Flows**
-
+# Authentication & Identity Flows
 Complete Auth Architecture with Supporting Diagrams
 
 A comprehensive technical reference documenting every authentication and authorisation flow in the Azure AI Agent Architecture — from end-user OAuth2/OIDC through APIM JWT validation, Managed Identity service-to-service flows, AKS Workload Identity OIDC federation, Key Vault secret injection, and Zero Trust defence-in-depth. Includes eight annotated architecture diagrams.

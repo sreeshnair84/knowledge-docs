@@ -1,5 +1,5 @@
 ---
-title: "DPDP_Act_2023_Comprehensive_Guide"
+title: "DPDP Act 2023 & DPDP Rules 2025 — Comprehensive Guide"
 date_created:
 last_reviewed:
 status: current
@@ -13,8 +13,7 @@ tags: []
 
 ![Figure 1](/img/enterprise-architecture/ea-p1-1.png)
 
-# & DPDP Rules 2025
-
+# DPDP Act 2023 & DPDP Rules 2025 — Comprehensive Guide
 Comprehensive Compliance Guide Standards · Best Practices · Anti-Patterns · Implementation Roadmap
 
 |**Jurisdiction**|India (extraterritorial reach for non-Indian entities serving Indian Data<br>Principals)|

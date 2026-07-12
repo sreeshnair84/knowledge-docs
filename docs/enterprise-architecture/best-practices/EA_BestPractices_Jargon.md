@@ -11,8 +11,7 @@ covers_version: "N/A"
 ---
 **Page 1**
 
-# **BEST PRACTICES & JARGON GUIDE**
-
+# BEST PRACTICES & JARGON GUIDE
 **Pitch to Retire — Terminology, Standards & Golden Rules**
 
 The definitive reference guide for EA practitioners, business stakeholders, and delivery teams. Part 1 covers the 20 EA Golden Rules. Part 2 is an A–Z jargon buster of 60+ enterprise architecture terms, acronyms, and frameworks used across the full capability lifecycle.

@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# BUSINESS FIRST: STRATEGY → CAPABILITY → AGENT → PLATFORM
-
+# Agentic AI Landing Zone: Business & Enterprise Architecture Layer
 *This companion guide restructures the Agentic AI Landing Zone from business drivers through technical implementation.*
 
 ---

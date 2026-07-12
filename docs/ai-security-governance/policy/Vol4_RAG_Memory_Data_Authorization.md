@@ -15,8 +15,7 @@ tags: []
 
 ## 1. RAG Authorization Architecture
 
-# Retrieval-Augmented Generation (RAG) systems retrieve documents from a knowledge store and inject them into the LLM context. Without authorization controls at the retrieval layer, an agent can be manipulated into **RAG, Memory & Data Authorization** <u>retrieving and exposing documents that the invoking user is not permitted to see. This is one of the most critical</u> data security risks in enterprise AI.
-
+# RAG, Memory & Data Authorization (Vol 4)
 Enterprise Policy Interceptor Architecture for Agentic AI **<u>ANTI-PATTERN</u>**
 
 Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A; <u>documents from the knowledge base simply by phrasing their query to match those documents. The vector</u> similarity search has no concept of permissions — authorization must be added as a filter layer on top.

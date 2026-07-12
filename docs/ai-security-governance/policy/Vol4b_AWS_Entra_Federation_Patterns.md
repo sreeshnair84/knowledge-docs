@@ -13,8 +13,7 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 4b OF Extended**
 
-# **1. Microsoft Entra ID — Complete AWS Inte ration** **<u>g</u> AWS & Entra ID Federation —** Integrating Microsoft Entra ID with AWS authorization requires configuring OIDC federation, token validation, and claim mapping. This section provides production-ready configuration for the full identity-to-authorization **<u>Complete Integration Patterns</u>** pipeline.
-
+# AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)
 ### <u>Entra ID</u> **1.1 Ent** · ADFS **ra ID A** · OIDC **<u>pplicat</u>** · SAML **ion R** · OAuth **<u>egistrat</u>** · Managed Identity **ion** · PrivateLink · VPC Endpoints
 
 `# Step 1: Entra ID Application Registration # (Configured in Azure Portal or via Microsoft Graph API) Application Registration: Name: "Enterprise AI Authorization Platform" App Type: Web` <u>`Application Sign-in URL: https://api.bank.com/auth/callback API Permissions (Application`</u> `permissions): • Microsoft Graph: User.Read.All • Microsoft Graph: Group.Read.All • Microsoft` `Graph: Directory.Read.All (Required for group GUID resolution in PIP Lambda) Expose an API:` `Scope: api://bank-ai-platform/agent.invoke Scope: api://bank-ai-platform/tool.execute Scope: api://bank-ai-platform/data.read Token Configuration` → `Optional Claims: Access Token: • groups` <u>`(Security groups as GUIDs, or names if < 200 groups) • upn • department • employee_id • country`</u> `• onprem_sid (for hybrid environments with ADFS) ID Token: • email • preferred_username App` `Roles (for coarse-grained application roles): • Finance.Approver • Data.Reader • Agent.User •` `Agent.Admin Conditional Access Policy: Target: This application Conditions: Require MFA for all`

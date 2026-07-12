@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Manufacturing Case Study: Ironhaven Industrial — QC Triage & Supply Chain"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Manufacturing Case Study: Ironhaven Industrial — QC Triage & Supply Chain
 Ironhaven Industrial — Agentic Quality Control & Supply Disruption Response Platform
 
 Engagement Period: February 2025 – December 2025

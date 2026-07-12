@@ -8,6 +8,7 @@ doc_type: research-report
 covers_through: "2026-07-10"
 research_date: "2026-07-07"
 tags: [terraform, iac, infrastructure-as-code]
+source_file: ""
 ---
 
 # Terraform from Zero to Mastery

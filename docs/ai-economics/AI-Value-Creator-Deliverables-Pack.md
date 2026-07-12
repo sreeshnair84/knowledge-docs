@@ -9,8 +9,7 @@ tags: ["ai-economics", "enterprise-ai"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Worked Example: 20 Deliverables, One Use Case**
-
+# Worked Example: 20 Deliverables, One Use Case
 How Each Reference Deliverable Actually Looks — Property & Casualty Claims
 
 #### **Companion document to: "AI Value Creators for Agentic AI and Beyond" and the Use Case Value Lifecycle report**

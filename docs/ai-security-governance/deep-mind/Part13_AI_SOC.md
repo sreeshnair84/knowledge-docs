@@ -15,8 +15,7 @@ tags: []
 
 **PART 13 OF 18**
 
-# **AI Security Operations Center (AI SOC)**
-
+# AI Security Operations Center (AI SOC)
 Agent Detection and Response, AI-Specific SIEM, Threat Hunting, Forensics, Incident Response, and SOC Workflow Integration
 
 ##### **ENTERPRISE AI CONTROL ARCHITECTURE**

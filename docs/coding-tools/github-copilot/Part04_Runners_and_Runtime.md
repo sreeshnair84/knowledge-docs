@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **GitHub Actions Runners & Runtime**
-
+# GitHub Actions Runners & Runtime
 **How jobs flow from YAML to execution — runner lifecycle, ARC, scaling, and internals**
 
 ##### **TOPICS COVERED**

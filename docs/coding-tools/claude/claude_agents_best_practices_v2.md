@@ -17,8 +17,7 @@ covers_version: "N/A"
 
 This v2 edition incorporates the **April 2026 Claude Code changelog**, the newly published **Dive-into-Claude-Code architectural analysis** (arXiv 2604.14228), official Anthropic best-practices documentation, production patterns from the awesome-claude-code community (35.9K I), and a comprehensive anti-pattern catalog drawn from real-world failure modes. New sections cover **Routing Design**, **Agent Teams**, and the **Explore-Plan-Execute pipeline**.
 
-# **Table of Contents**
-
+# Claude & GitHub Agents: Best Practices Guide (v2)
 |**01**|**Architecture Deep Dive**|
 |---|---|
 |**02**|**Agent Skills — v2 Best Practices**|

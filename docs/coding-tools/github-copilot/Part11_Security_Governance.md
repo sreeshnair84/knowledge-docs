@@ -9,8 +9,7 @@ tags: ["coding-tools"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **Security Architecture & Enterprise AI Governance**
-
+# Security Architecture & Enterprise AI Governance
 Tenant isolation, prompt injection defenses, real CVEs, audit logs, and the April 2026 data policy shift
 
 #### **TOPICS COVERED**

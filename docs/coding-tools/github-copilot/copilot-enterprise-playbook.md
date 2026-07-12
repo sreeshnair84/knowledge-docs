@@ -61,8 +61,7 @@ Root cause, impact, and mitigation for 100 patterns across 10 categories
 
 ### **The AI Credits Cost Model**
 
-# **<mark>`⚡`</mark> TRANSITION — JUNE 1, 2026**
-
+# GitHub Copilot AI Credits Enterprise Mastery Guide
 GitHub retired Premium Request Units (PRUs) and replaced them with GitHub AI Credits — a direct token-consumption billing model. One AI Credit = $0.01 USD. Code completions and Next Edit Suggestions remain unlimited on all paid plans. Everything else is metered.
 
 ##### **Plan Inclusions (Post June 1, 2026)**

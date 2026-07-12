@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# **The Architecture That Got Rejected Before It Was Even a Proposal**
-
+# The Architecture That Got Rejected Before It Was Even a Proposal
 Building an Agentic Recruiting and Candidate Screening Copilot Through a Works Council Standoff, a Hidden Gender Proxy, and an Acquisition
 
 A transcript-style account following Ana Beatriz Souza, Enterprise AI Architect at Correlate Global, through an autonomous-rejection vision killed before it was ever proposed, a German works council co-determination negotiation, a gender signal hiding in resume hobbies, a mid-programme acquisition that tests whether the team's own bias-review standards survive contact with a CEO's timeline, and a year-later validation that deferring a hard question properly was worth the wait.

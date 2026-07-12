@@ -1,5 +1,5 @@
 ---
-title: "Case Study"
+title: "Telecom Case Study: Vantar Communications — NOC Triage & Customer Care"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
@@ -9,8 +9,7 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-# Case Study
-
+# Telecom Case Study: Vantar Communications — NOC Triage & Customer Care
 Vantar Communications — Network Operations Copilot & Multi-Agent Customer Care Orchestration
 
 Engagement Period: March 2025 – January 2026

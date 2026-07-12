@@ -19,8 +19,7 @@ tags: ["agentic-systems", "platform", "best-practices", "agents-sdk", "agentcore
 | Classification | INTERNAL — RESTRICTED |
 | Coverage | Strands Agents SDK, AgentCore GA, MCP, ADFS, Multitenancy, Langfuse |
 
-# Table of Contents
-
+# Enterprise Agentic Platform Best Practices
 # 1. Executive Summary & Research Findings
 
 This document consolidates research-backed best practices and antipatterns for implementing the Enterprise Agentic Platform. It covers five major capability layers: Strands Agents SDK (open-sourced by AWS in May 2025, 14M+ downloads), Amazon Bedrock AgentCore (GA October 2025), MCP tool integration, ADFS/FT Rights authentication propagation, and Langfuse observability. It also introduces the multitenancy model specific to a financial-services use case where multiple business divisions or external clients share platform infrastructure.

@@ -10,8 +10,7 @@ tags: ["ai-security", "finops", "economic-security", "pqc"]
 ---
 #### **VOLUME 5 OF 6**
 
-# **Economic Security: FinOps, Autonomous Commerce & Post-Quantum**
-
+# Economic Security: FinOps, Autonomous Commerce & Post-Quantum
 Agent Cost Governance, Delegated Spending and Payment Mandates, and Quantum-Ready Cryptographic Architecture
 
 **Document Code:** EASA-05 **Version:** 1.0 **Date:** June 2026 **Scope:** Domains 15, 16 & 21

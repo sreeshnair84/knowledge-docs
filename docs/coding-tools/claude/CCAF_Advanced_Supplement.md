@@ -1,11 +1,13 @@
 ---
-title: "What This Supplement Covers"
+title: "CCAF Advanced Supplement"
 date_created: 2026-07-10
 last_reviewed: 2026-07-10
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
 doc_type: guide
+source_file: ""
+tags: ["coding-tools", "claude"]
 ---
 **CCAF EXAM PREP — ADVANCED SUPPLEMENT**
 **Memory, Token Optimization, Agent Communication**
@@ -30,8 +32,7 @@ doc_type: guide
 
 **MODULE 1: Memory Architecture & Types**
 
-# **MODULE 1: Memory Architecture & Types**
-
+# CCAF Advanced Supplement
 | 🆕  NOT IN ORIGINAL GUIDE This topic is NOT covered in the core exam guide but is fundamental to understanding context management, session design, and multi-agent systems. |
 | --- |
 

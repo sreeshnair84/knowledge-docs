@@ -11,8 +11,7 @@ doc_type: guide
 covers_version: \"as of 2026-07-10\"
 ---
 
-# CONTEXT ENGINEERING: The Overlooked Dimension
-
+# Agentic AI Landing Zone: Context Engineering Layer
 *Context is not a afterthought — it's the primary design constraint for production agentic AI.*
 
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Agent_Skills_Complete_Playbook_2026"
+title: "Agent Skills & Skill Registries — Complete Playbook 2026"
 date_created:
 last_reviewed:
 status: current
@@ -13,8 +13,7 @@ tags: []
 
 RESEARCH BRIEFING · MAY 2026
 
-# Agent Skills & Skill Registries
-
+# Agent Skills & Skill Registries — Complete Playbook 2026
 _The Complete Playbook_
 
 Lifecycle · Best Practices · Anti-Patterns · Evaluation · A/B Testing Registries · Microsoft APM · Plugin Marketplaces · Enterprise Integration OKRs & KPIs · Security · Governance · Personas · The Road Ahead

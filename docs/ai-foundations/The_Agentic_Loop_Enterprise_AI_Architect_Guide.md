@@ -11,7 +11,7 @@ tags: ["AI Architecture", "Enterprise AI", "AI Governance", "Agentic Workflows"]
 
 **ENTERPRISE AI ARCHITECTURE SERIES**
 
-# **The Agentic Loop**
+# The Agentic Loop
 ### *A practitioner's guide to designing, governing, and scaling closed-loop AI agent systems in production — from single-agent workflows to orchestrated enterprise fleets.*
 
 **For:** Enterprise architects, platform engineering & AI governance leads  
