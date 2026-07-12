@@ -30,7 +30,7 @@ The harness treats MCP configs, tool descriptions, prompt templates, and server 
 ## The AIDLC Stages
 
 |[1.DESIGN] → [2.DEVELOPMENT] → [3.PRE-DEPLOYMENT] → [4.CI/CD] →<br>[5.PRODUCTION] → [6.CONTINUOUS IMPROVEMENT]<br>ThreatUnit +Contract +Gate<br>Runtime              Redteam +<br>modelingschematestsintegration testsalltests<br>observability regression|
-|---|
+|:---|
 
 ## — Stage 1: Design Threat Modeling & Harness Scaffolding
 
@@ -73,7 +73,7 @@ def test_search_returns_schema_valid_output(client): result = client.call_tool("
 ### What to cover in unit tests
 
 |Testcategory|What toassert|
-|---|---|
+|:---|:---|
 |Schema conformance|Every toolresultmatchesitsdeclared<br>outputSchema|
 |Input validation|Malformed, oversized,and injection-attemptinputsarerejected|
 |Description cleanliness|Nocredentialorinjection language in descriptions|
@@ -212,7 +212,7 @@ Even if the gateway is the primary harness point, servers should emit their own 
 ### 5.2 The four metrics every MCP deployment must track
 
 |Metric|Whatitdetects|Alert threshold|
-|---|---|---|
+|:---|:---|:---|
 |tool_calls_per_session|Unusuallyhightool<br>invocations (parasitic<br>toolchain attack, runaway<br>agent)|> 3 std devsfrom<br>baseline|
 |high_risk_tool_rate|Spike inwrites/deletes relative<br>to reads|> 20% ofsession<br>callsare HIGH+ risk|
 |new_tool_description_hash|Any tool description mutation<br>(rugpull)|Anychangewithout<br>PR-merged<br>annotation|
@@ -243,7 +243,7 @@ This is the production implementation of the spec's "SHOULD always be a human in
 ### Tooling options
 
 |Tool|Strength|MCPsupport|
-|---|---|---|
+|:---|:---|:---|
 |Promptfoo|BestMCP integration;agent tracing;<br>OWASP/NIST/MITRE mapping|Native MCPprovider + red-<br>teamplugin|
 |PyRIT<br>(Microsoft)|Multi-turn attackorchestration;Azure Content<br>Safety scoring|Via MCP client wrapper|
 |Garak<br>(NVIDIA)|100+attack modules;broadest vulnerability<br>coverage|Tool boundaryinjection|
@@ -278,7 +278,7 @@ Every security fix produces a regression test. If a prompt injection through CRM
 Use this to assess where your deployment sits and what to build next:
 
 |Level|Capability|Tests passing|Whobenefts|
-|---|---|---|---|
+|:---|:---|:---|:---|
 |0 —None|Noharness.Fingerscrossed.|—|Nobody|
 |1 —Basic|Unit tests +description hash<br>pinning|Unit,contract|Dev teams|
 |2 —Gated|CI gates onsecurity scan+injection<br>tests|+Integration, +static<br>scan|DevSecOps|

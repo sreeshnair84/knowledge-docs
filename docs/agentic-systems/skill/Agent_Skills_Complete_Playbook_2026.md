@@ -17,7 +17,7 @@ RESEARCH BRIEFING · MAY 2026
 
 _The Complete Playbook_
 
-Lifecycle · Best Practices · Anti-Patterns · Evaluation · A/B Testing Registries · Microsoft APM · Plugin Marketplaces · Enterprise Integration <mark>OKRs & KPIs · Security · Governance · Personas · The Road Ahead</mark>
+Lifecycle · Best Practices · Anti-Patterns · Evaluation · A/B Testing Registries · Microsoft APM · Plugin Marketplaces · Enterprise Integration OKRs & KPIs · Security · Governance · Personas · The Road Ahead
 
 Covering: Claude Code · GitHub Copilot · Cursor · Codex · Windsurf · Gemini CLI · Microsoft APM
 
