@@ -23,6 +23,20 @@ Architecture guides and deep-research for AWS, Azure, GCP, and cloud-native infr
 
 ---
 
+## Hyperscaler Deep Dive Series
+
+Analyst-grade strategic + architectural synthesis for each major hyperscaler — covering strategic posture, platform components, inferred runtime internals, security architecture, cost levers, SWOT, and roadmap outlook.
+
+| Hyperscaler | Strategy | Key Differentiator |
+|---|---|---|
+| [AWS](./aws/hyperscaler-deep-dive-aws.md) | Neutral arms dealer + primitives | Firecracker microVM isolation; AgentCore workload capture; Anthropic hedge |
+| [Microsoft Azure](./azure/hyperscaler-deep-dive-azure.md) | Distribution-led verticalization | M365/Entra/Graph data moat; Entra Agent ID; triple monetization |
+| [Google Cloud](./gcp/hyperscaler-deep-dive-gcp.md) | Vertical integration + standards leadership | TPU economics; A2A (Linux Foundation); BigQuery data gravity |
+
+> For side-by-side runtime internals (isolation units, session state, MCP integration, auth, observability), see the [Enterprise AI Agent Runtime Internals whitepaper](./enterprise-agent-runtime-internals-2026.md).
+
+---
+
 ## Platform Guides
 
 - **AWS AgentCore** — Runtime, Gateway, Policy, Memory, Identity, Code Interpreter deep dives

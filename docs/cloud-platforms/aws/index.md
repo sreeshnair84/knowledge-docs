@@ -17,6 +17,12 @@ Deep-dive guides for AWS Bedrock AgentCore and Strands Agents — memory archite
 
 ---
 
+## Hyperscaler Deep Dive
+
+- [Hyperscaler Deep Dive: AWS (2026)](./hyperscaler-deep-dive-aws.md) — Strategic posture, platform components, AgentCore runtime internals (session-scoped microVM, Memory, Identity), security architecture, cost levers, SWOT, and roadmap outlook
+
+---
+
 ## Markdown Guides
 
 - [Bedrock AgentCore Code Interpreter Architecture](bedrock-agentcore-code-interpreter-architecture.md)

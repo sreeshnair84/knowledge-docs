@@ -9,11 +9,12 @@ doc_type: guide
 source_file: ""
 tags: ["soft-skills"]
 ---
-**Mental Models**
-**for the Expert Public Speaker**
-*Think better. Practise smarter. Grow faster.*
 
-# What Are Mental Models?
+# Mental Models for Voice Training
+
+*Think better. Practise smarter. Grow faster.* — mental models for the expert public speaker, mapped to the 30-day voice training journey.
+
+## What Are Mental Models?
 A mental model is a framework for thinking — a lens that helps you understand a situation, make better decisions, and solve problems faster. The best speakers in the world don't just practise harder; they think differently about how they learn and grow.
 
 This document maps 8 powerful mental models directly to your 30-day voice training journey, so every hour of practice compounds intelligently.
@@ -76,7 +77,7 @@ This document maps 8 powerful mental models directly to your 30-day voice traini
 | 08 | What it means: Imagine yourself at 80 years old looking back. Ask: which decision would I regret more — acting or not acting? This cuts through fear and short-term thinking powerfully. Applied to your voice training: At 80, will you regret: practising your voice for 25 minutes a day for 30 days? Almost certainly not. Will you regret never developing your communication skills and letting opportunities pass because you were not confident speaking? Very likely. This is your long game. |
 | 08 | Use this in: Week 4 — performance phase. Use when fear of live speaking holds you back. |
 
-# **Quick Reference — All 8 Models**
+## **Quick Reference — All 8 Models**
 
 Use this as a daily cheat sheet. When you hit a wall in training, match your challenge to the right mental model.
 
@@ -91,7 +92,7 @@ Use this as a daily cheat sheet. When you hit a wall in training, match your cha
 | 07 | 10/10/10 Rule | Tempted to skip practice or avoid live speaking | Ongoing |
 | 08 | Regret Minimisation | Fear stops you from stepping on stage | Week 4+ |
 
-# **How to Use These Models Daily**
+## **How to Use These Models Daily**
 
 ## **Morning (Before Practice)**
 

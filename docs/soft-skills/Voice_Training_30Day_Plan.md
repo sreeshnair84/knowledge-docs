@@ -9,9 +9,11 @@ doc_type: guide
 source_file: ""
 tags: ["soft-skills"]
 ---
-**Voice Training**
-**30-Day Expert Public Speaking Plan**
-*Your personal roadmap from some experience to confident expert*
+
+# Voice Training 30-Day Plan
+
+*Your personal roadmap from some experience to confident expert.*
+
 **Your Profile**
 
 | Goal | Expert Public Speaker |
@@ -20,7 +22,7 @@ tags: ["soft-skills"]
 | Daily Practice Time | 20-30 Minutes |
 | Duration | 28 Days (+ ongoing) |
 
-# Your Daily Routine (25 min)
+## Your Daily Routine (25 min)
 Complete this every day before moving into your weekly focus. This is non-negotiable — consistency beats intensity.
 
 | Activity | Duration | Description |
@@ -30,7 +32,7 @@ Complete this every day before moving into your weekly focus. This is non-negoti
 | Articulation Drills | 10 min | Tongue twisters — slow first, then at speed. Focus on crisp consonants. |
 | Record & Playback | 5 min | Read a paragraph. Play it back. Log filler words and bad habits. |
 
-# **The 3 Phases**
+## **The 3 Phases**
 
 **Phase 1****Foundation**   Weeks 1-2
 *Build the core mechanics: breathing, warm-up, and articulation. Identify your bad habits through daily recordings.*
@@ -39,7 +41,7 @@ Complete this every day before moving into your weekly focus. This is non-negoti
 **Phase 3****Performance**   Weeks 5-12
 *Apply everything under pressure. Impromptu speaking, live audiences, and TED Talk shadowing.*
 
-# **Week 1 — Build the Foundation**
+## **Week 1 — Build the Foundation**
 
 Focus: Establish your daily routine and identify your current habits. Record every single day.
 
@@ -53,7 +55,7 @@ Focus: Establish your daily routine and identify your current habits. Record eve
 | Day 6 | Articulation Speed | Tongue twisters at medium speed | Mirror practice | Speed up 20% |
 | Day 7 | Rest & Reflect | Journal your week's observations | — | Write 3 wins + 1 focus |
 
-# **Week 2 — Strengthen the Base**
+## **Week 2 — Strengthen the Base**
 
 Focus: Deepen your breath control, speed up articulation, and start studying great speakers.
 
@@ -67,7 +69,7 @@ Focus: Deepen your breath control, speed up articulation, and start studying gre
 | Day 13 | Full Routine | 25-min complete daily routine | All tools | Hit all 4 blocks |
 | Day 14 | Week Review | Compare Day 1 vs Day 14 recordings | Yoodli | Hear clear improvement |
 
-# **Week 3 — Shape Your Delivery**
+## **Week 3 — Shape Your Delivery**
 
 Focus: Pace, pausing, pitch variation, and volume dynamics. This is where your voice becomes expressive.
 
@@ -81,7 +83,7 @@ Focus: Pace, pausing, pitch variation, and volume dynamics. This is where your v
 | Day 20 | Impromptu Talk | Speak 1 min on random topic, no prep | Yoodli | Don't stop speaking |
 | Day 21 | Week Review | Record a 2-min self-introduction | Yoodli analytics | Confident, clear intro |
 
-# **Week 4 — Perform Under Pressure**
+## **Week 4 — Perform Under Pressure**
 
 Focus: Apply everything to real-world situations. Impromptu speaking, live audience reps, and peer feedback.
 
@@ -95,7 +97,7 @@ Focus: Apply everything to real-world situations. Impromptu speaking, live audie
 | Day 27 | Peer Feedback | Share a recording with a trusted friend | Yoodli share link | Get 3 pieces of feedback |
 | Day 28 | Final Recording | Record your best 3-min speech | Yoodli | Celebrate improvement! |
 
-# **Progress Milestones**
+## **Progress Milestones**
 
 Use these checkpoints to measure your growth. Be honest with yourself — improvement takes time.
 
@@ -108,7 +110,7 @@ Use these checkpoints to measure your growth. Be honest with yourself — improv
 | Control pace under pressure | Week 9 | Present to a small group confidently |
 | Feel in control on stage | Week 12 | Deliver 5-min talk with no prep notes |
 
-# **Breathing Techniques Reference**
+## **Breathing Techniques Reference**
 
 ## **Diaphragmatic Breathing**
 
@@ -131,7 +133,7 @@ Used for: In-session control during your practice.
 Inhale for 4 counts
 Exhale for 8 counts — the extended exhale activates your calm response
 
-# **Free Resources**
+## **Free Resources**
 
 All resources below are 100% free. Use them alongside your daily practice.
 
@@ -144,7 +146,7 @@ All resources below are 100% free. Use them alongside your daily practice.
 | Coursera — Intro to Public Speaking | Free Course (audit) | Structured 5-week program, conquering anxiety |
 | Toastmasters Meetings | Free Community | Live audience reps and real-time feedback |
 
-# **Golden Rules**
+## **Golden Rules**
 
 Record yourself EVERY DAY — you cannot improve what you cannot hear
 Slow down — most speakers go 20% faster than ideal under pressure

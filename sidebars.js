@@ -306,11 +306,13 @@ const sidebars = {
       items: [
         'cloud-platforms/index',
         'cloud-platforms/enterprise-agent-runtime-internals-2026',
+        'cloud-platforms/ai-infrastructure-silicon-landscape-2026',
         {
           type: 'category',
           label: 'AWS AgentCore',
           items: [
             'cloud-platforms/aws/index',
+            'cloud-platforms/aws/hyperscaler-deep-dive-aws',
             'cloud-platforms/aws/bedrock-agentcore-code-interpreter-architecture',
             'cloud-platforms/aws/agentcore_strands_deep_research_report',
             'cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture',
@@ -322,7 +324,22 @@ const sidebars = {
             'cloud-platforms/aws/AgentCore_Memory_Operations_DeepDive',
           ],
         },
-        'cloud-platforms/azure/index',
+        {
+          type: 'category',
+          label: 'Microsoft Azure',
+          items: [
+            'cloud-platforms/azure/index',
+            'cloud-platforms/azure/hyperscaler-deep-dive-azure',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Google Cloud',
+          items: [
+            'cloud-platforms/gcp/index',
+            'cloud-platforms/gcp/hyperscaler-deep-dive-gcp',
+          ],
+        },
         {
           type: 'category',
           label: 'AI Gateway',

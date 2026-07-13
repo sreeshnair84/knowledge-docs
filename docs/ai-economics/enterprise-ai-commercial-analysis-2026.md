@@ -19,7 +19,7 @@ covers_version: "directional figures, early 2026"
 
 > **Price disclaimer:** All prices and figures are directional as of early 2026 and move frequently. Verify against vendor pricing pages before modeling. Model-specific token prices are not hard-coded — pull current rates (Anthropic, OpenAI, Google Cloud pricing calculators) at analysis time.
 
-**Related:** [Token Management & AI Cost Architecture](AI_Cost_Implementation_Guide_2026.md) | [Comparative Matrices & Decision Tools](../enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026.md) | [AI Value Creators Synthesis](ai-value-creators-synthesis.md) | [Agentic AI Outlook 2026–2030](../ai-foundations/enterprise-agentic-ai-outlook-2026-2030.md)
+**Related:** [Token Management & AI Cost Architecture](AI_Cost_Implementation_Guide_2026.md) | [Comparative Matrices & Decision Tools](../enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026.md) | [AI Value Creators Synthesis](ai-value-creators-synthesis.md) | [Agentic AI Outlook 2026–2030](../ai-foundations/enterprise-agentic-ai-outlook-2026-2030.md) | [Infrastructure & Silicon Landscape](../cloud-platforms/ai-infrastructure-silicon-landscape-2026.md)
 
 ---
 

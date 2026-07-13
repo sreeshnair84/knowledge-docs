@@ -9,9 +9,10 @@ doc_type: guide
 covers_version: "N/A"
 tags: ["ai-usecases", "banking", "copilotkit", "strands", "mcp", "aws-agentcore"]
 ---
-EU Bank AI Copilot Platform
-End-to-End Architecture & Code Reference
-Table of Contents
+
+# EU Bank AI Copilot — Architecture & Code Reference
+
+Companion code reference to the [EU Bank AI Copilot Platform guide](./eu-bank-ai-copilot-complete.md) — every server, package, and code snippet with its security controls.
 
 ## 1. Platform Overview
 
@@ -19,12 +20,14 @@ This document provides the complete end-to-end reference for the EU Bank AI Copi
 
 ### 1.1 Architecture Zones
 
-The platform spans four security zones. Traffic between zones is strictly controlled and logged.
+The platform spans four security zones. Traffic between zones is strictly controlled and logged. See the [zone matrix in the platform guide](./eu-bank-ai-copilot-complete.md#1-platform-overview--architecture-zones) for the full breakdown.
 
-  Design Constraint
-  AgentCore Gateway is NOT an approved service. All routing to AgentCore Runtime is performed exclusively through the BFF. No direct browser-to-AgentCore calls are permitted.
+> **Design Constraint**
+> AgentCore Gateway is NOT an approved service. All routing to AgentCore Runtime is performed exclusively through the BFF. No direct browser-to-AgentCore calls are permitted.
 
 ### 1.2 Technology Stack
+
+The full package/version/role matrix is maintained in the [platform guide, section 2](./eu-bank-ai-copilot-complete.md#2-technology-stack--component-map).
 
 ## 2. Frontend — React + CopilotKit
 
@@ -34,7 +37,7 @@ The frontend is a React application running entirely in the browser. It communic
 
 File: src/ tree
 
-```
+```text
 src/
   app/
     layout.tsx           # CopilotKit Provider wraps entire app
@@ -61,7 +64,7 @@ src/
 The CopilotKit provider wraps the entire application. It points to the BFF endpoint and never receives tokens directly.
 File: src/app/layout.tsx
 
-```
+```tsx
 // src/app/layout.tsx
 "use client";
 import { CopilotKit } from "@copilotkit/react-core";
@@ -92,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 File: src/app/page.tsx
 
-```
+```tsx
 // src/app/page.tsx
 "use client";
 import { CopilotChat } from "@copilotkit/react-ui";
@@ -124,7 +127,7 @@ export default function CopilotPage() {
 Domain teams register new tools via the Tool Registry. DynamicToolLoader fetches the manifest and registers useCopilotAction handlers at runtime, without a core platform re-deploy.
 File: src/components/DynamicToolLoader.tsx
 
-```
+```tsx
 // src/components/DynamicToolLoader.tsx
 "use client";
 import { Suspense } from "react";
@@ -185,7 +188,7 @@ function ToolActionRegistrar({ tool }) {
 
 File: src/lib/auth.ts
 
-```
+```ts
 // src/lib/auth.ts
 import { PublicClientApplication, Configuration } from "@azure/msal-browser";
 
@@ -221,7 +224,7 @@ export const loginRequest = {
 
 File: src/lib/bffClient.ts
 
-```
+```ts
 // src/lib/bffClient.ts
 import axios from "axios";
 
@@ -262,7 +265,7 @@ The BFF is the single authoritative entry point for all client calls. It runs on
 This is the core Next.js API route that CopilotKit's frontend talks to. It instantiates CopilotRuntime, wires it to the AgentCore AG-UI endpoint via HttpAgent, and attaches MCPAppsMiddleware for MCP Apps support.
 File: src/app/api/copilotkit/route.ts
 
-```
+```ts
 // src/app/api/copilotkit/route.ts
 import {
   CopilotRuntime,
@@ -337,7 +340,7 @@ export const POST = async (req: NextRequest) => {
 
 File: src/lib/session.ts
 
-```
+```ts
 // src/lib/session.ts
 import { NextRequest } from "next/server";
 import { createRemoteJWKSet, jwtVerify } from "jose";
@@ -389,7 +392,7 @@ export async function validateSession(req: NextRequest): Promise<SessionContext 
 
 File: src/app/api/auth/callback/route.ts
 
-```
+```ts
 // src/app/api/auth/callback/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { ConfidentialClientApplication } from "@azure/msal-node";
@@ -443,7 +446,7 @@ export const POST = async (req: NextRequest) => {
 
 File: src/lib/audit.ts
 
-```
+```ts
 // src/lib/audit.ts
 import { KinesisClient, PutRecordCommand } from "@aws-sdk/client-kinesis";
 
@@ -479,7 +482,7 @@ export async function auditLog(event: AuditEvent): Promise<void> {
 
 File: src/lib/rateLimit.ts
 
-```
+```ts
 // src/lib/rateLimit.ts
 import { redisClient } from "./redis";
 
@@ -512,7 +515,7 @@ The Strands agent runs inside an AgentCore container. It is exposed via the AG-U
 
 File: agent/main.py
 
-```
+```python
 # agent/main.py
 import asyncio
 from contextlib import asynccontextmanager
@@ -547,7 +550,7 @@ app.include_router(agui_agent.router)  # mounts /invocations, /ws, /ping
 
 File: agent/agent.py
 
-```
+```python
 # agent/agent.py
 from strands import Agent
 from strands.models import BedrockModel
@@ -604,7 +607,7 @@ async def collect_mcp_tools(endpoints: list[str]) -> list:
 
 File: agent/prompts.py
 
-```
+```python
 # agent/prompts.py
 def build_system_prompt() -> str:
     return """
@@ -640,7 +643,7 @@ COMPLIANCE
 
 File: agent/audit.py
 
-```
+```python
 # agent/audit.py
 import boto3, json, hashlib
 from strands import AgentEventHandler
@@ -688,7 +691,7 @@ class AuditCallbackHandler(AgentEventHandler):
 
 Shell: AgentCore deployment
 
-```
+```text
 # Deploy Strands agent to AgentCore with AG-UI protocol (March 2026)
 # Using Direct Code Deploy (no Docker required)
 
@@ -731,7 +734,7 @@ Each domain team owns one or more MCP server containers deployed on AgentCore Ru
 
 File: mcp_servers/core_banking/server.py
 
-```
+```python
 # mcp_servers/core_banking/server.py
 import httpx
 from mcp.server.fastmcp import FastMCP
@@ -794,7 +797,7 @@ if __name__ == "__main__":
 The Payment MCP server returns a ui:// resource reference alongside tool metadata. CopilotKit's MCPAppsMiddleware intercepts this and renders the Payment team's sandboxed iframe UI.
 File: mcp_servers/payment_rail/server.py
 
-```
+```python
 # mcp_servers/payment_rail/server.py
 from mcp.server.fastmcp import FastMCP
 from mcp.types import TextContent, EmbeddedResource
@@ -862,7 +865,7 @@ if __name__ == "__main__":
 
 File: mcp_servers/risk_engine/server.py
 
-```
+```python
 # mcp_servers/risk_engine/server.py
 from mcp.server.fastmcp import FastMCP
 
@@ -898,7 +901,7 @@ if __name__ == "__main__":
 
 File: tool-manifest.json
 
-```
+```ts
 // tool-manifest.json — committed by domain team, consumed by Tool Registry
 {
   "tool_id": "core-banking-v1",
@@ -939,7 +942,7 @@ File: tool-manifest.json
 The Tool Registry is a FastAPI service backed by Aurora PostgreSQL. Strands queries it on each agent session to discover active tools and their endpoints. Domain teams register tools via CI/CD.
 File: tool_registry/main.py
 
-```
+```python
 # tool_registry/main.py
 from fastapi import FastAPI, Depends, HTTPException
 from pydantic import BaseModel
@@ -998,7 +1001,7 @@ async def deregister_tool(tool_id: str, caller=Depends(verify_team_cert)):
 
 File: infra/vpc.tf
 
-```
+```hcl
 # infra/vpc.tf
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
@@ -1040,7 +1043,7 @@ resource "aws_security_group" "agentcore" {
 
 File: infra/iam.tf
 
-```
+```hcl
 # infra/iam.tf
 
 # BFF IRSA role — only what it needs
@@ -1097,7 +1100,7 @@ resource "aws_iam_role_policy" "agentcore_policy" {
 
 File: infra/guardrails.tf
 
-```
+```hcl
 # infra/guardrails.tf
 resource "aws_bedrock_guardrail" "eu_bank" {
   name        = "eu-bank-guardrail"
@@ -1149,7 +1152,7 @@ resource "aws_bedrock_guardrail" "eu_bank" {
 
 File: src/middleware.ts
 
-```
+```ts
 // src/middleware.ts (Next.js middleware — applied to all responses)
 import { NextResponse } from "next/server";
 
@@ -1190,7 +1193,7 @@ export function middleware(req) {
 
 File: .github/workflows/security.yml
 
-```
+```yaml
 # .github/workflows/security.yml
 name: Security Gates
 on: [push, pull_request]
@@ -1245,7 +1248,7 @@ All write-side operations (payments, limit overrides, KYC decisions) require exp
 
 File: approval_service/main.py
 
-```
+```python
 # approval_service/main.py
 from fastapi import FastAPI, Depends, HTTPException
 from pydantic import BaseModel
