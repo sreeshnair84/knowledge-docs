@@ -749,6 +749,7 @@ const sidebars = {
           items: [
             'knowledge-engineering/industry-practices/index',
             'knowledge-engineering/industry-practices/tech-companies',
+            'knowledge-engineering/industry-practices/consulting-firms-genai-strategy',
             'knowledge-engineering/industry-practices/consulting-firms',
             'knowledge-engineering/industry-practices/governance-rai',
             'knowledge-engineering/industry-practices/grounding',
