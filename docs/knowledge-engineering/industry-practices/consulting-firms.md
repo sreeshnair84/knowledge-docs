@@ -15,6 +15,8 @@ covers_version: \"as of 2026-07-10\"
 
 The major consultancies are unusually valuable case studies: their product *is* knowledge, they deployed firm-wide generative AI earlier than most enterprises, and — uniquely — they published their lessons. Collectively the Big Four and top strategy houses have invested **$10B+ in AI initiatives since 2023**. Research current as of July 2026.
 
+> **Scope**: This guide focuses on internal knowledge management platforms (Lilli, GENE, PairD, EYQ, KymChat). For the broader GenAI business strategy — delivery model transformation, outcome pricing, agentic platforms (Zora AI, Agent OS, KPMG Workbench), and SI firm comparisons — see [Consulting & Services Firms: GenAI Strategy Landscape](./consulting-firms-genai-strategy.md).
+
 ---
 
 ## McKinsey — Lilli

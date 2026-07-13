@@ -205,6 +205,7 @@ const sidebars = {
       items: [
         'ai-economics/index',
         'ai-economics/ai-value-creators-synthesis',
+        'ai-economics/foundation-model-companies-2026',
         'ai-economics/enterprise-ai-commercial-analysis-2026',
         'ai-economics/ai-coding-agents-2026',
         'ai-economics/AI-Value-Creator-Deliverables-Pack',
@@ -701,6 +702,16 @@ const sidebars = {
             'interview-prep/ea/EA_Interview_Handbook_DELTA',
             'interview-prep/ea/EA_Interview_Master_Guide',
             'interview-prep/ea/EA_Interview_Vol3_CTO_AI',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Forward Deployed Engineer (FDE)',
+          items: [
+            'interview-prep/fde/index',
+            'interview-prep/fde/fde-role-skills-map',
+            'interview-prep/fde/fde-life-transcript',
+            'interview-prep/fde/architect-in-fde-context',
           ],
         },
         'interview-prep/Enterprise_Architect_in_the_Age_of_AI',

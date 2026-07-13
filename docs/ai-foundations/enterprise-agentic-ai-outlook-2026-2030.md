@@ -1,7 +1,7 @@
 ---
 title: "Enterprise Agentic AI Outlook 2026–2030"
 date_created: 2026-07-12
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-13
 status: current
 supersedes: ""
 source_type: native-md
@@ -222,7 +222,7 @@ The organisations that win in 2030 will not be the ones that picked the "right" 
 4. **Evals as decoration.** An eval suite that doesn't gate deployment is a compliance checkbox, not a quality instrument. Treat eval failure as a build failure.
 5. **Deferring governance until scale.** Retrofitting identity, policy, and audit onto a scaled agent fleet costs 3–5× what building it in costs. The trough period (2026–27) is the right time to complete this infrastructure.
 
-> *The 2026 architect's job is not to predict which vendor wins. It is to build the infrastructure that lets the organisation upgrade its AI capabilities on a 12–18 month cadence without a re-platforming project each time.*
+> *The 2026 architect's job is not to predict which vendor wins. It is to build the infrastructure — registry, identity, evals, audit, and FinOps — that lets the organisation upgrade its AI capabilities on a 12–18 month cadence without a re-platforming project each time.*
 
 ---
 
