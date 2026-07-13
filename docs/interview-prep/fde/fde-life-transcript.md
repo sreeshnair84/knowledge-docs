@@ -4,6 +4,7 @@ date_created: 2026-07-13
 last_reviewed: 2026-07-13
 status: current
 source_type: native-md
+source_file: ""
 tags: ["interview-prep", "fde", "transcript", "transformation", "applied-ai"]
 doc_type: workshop-transcript
 session_type: "engagement-lifecycle"
@@ -720,7 +721,7 @@ REUSABLE ARTIFACTS (added to TechAxis FDE library):
 | Assessment | MCP architecture with PII masking | [MCP Deep Research 2026](../../ai-protocols/mcp/MCP_Deep_Research_2026) |
 | Assessment | Tool auth design (Key Vault, Salesforce OAuth) | [Tool Authentication & Connectors](../../ai-protocols/auth/tool-authentication-connectors) |
 | Prototype | System prompt engineering for compliance-safe output | [Prompt Engineering for Claude 4](../../coding-tools/claude/prompt-engineering-claude-4) |
-| Prototype | HITL pattern — model flags, human decides | [Human-in-the-Loop Architectures](../../workflow-orchestration/12-human-in-the-loop-architectures) |
+| Prototype | HITL pattern — model flags, human decides | [Human-in-the-Loop Architectures](../../workflow-orchestration/human-in-the-loop-architectures) |
 | Evaluation | Evaluation harness before stakeholder demo | [AI Agent Evaluation Framework](../../ai-development/testing/AI_Agent_Evaluation_Framework_Guide) |
 | Evaluation | LLM-as-judge for borderline cases | [AI Agent Evaluation Framework — Complete](../../ai-development/testing/AI_Agent_Evaluation_Framework_Complete) |
 | Production | Audit logging, prompt injection mitigation | [Agentic AI Security Guardrails](../../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails) |

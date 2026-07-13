@@ -4,6 +4,7 @@ date_created: 2026-07-13
 last_reviewed: 2026-07-13
 status: current
 source_type: native-md
+source_file: ""
 tags: ["interview-prep", "fde", "skills", "study-guide"]
 doc_type: study-guide
 target_role: "Forward Deployed Engineer"
@@ -54,9 +55,9 @@ FDEs at Anthropic build MCP servers, sub-agents, and agent skills as deliverable
 |-------|-------|------------|
 | Agentic workflow design: orchestrator + subagent patterns | ★★★★★ | [Agent Skills — Enterprise Platform Research](../../agentic-systems/skill/enterprise/foundations-what-is-an-agent-skill) |
 | Tool definition and tool-calling best practices | ★★★★★ | [Tool Definition Best Practices](../../agentic-systems/skill/enterprise/tool-definition-best-practices) |
-| Multi-agent orchestration (A2A patterns) | ★★★★☆ | [A2A Orchestration Patterns](../../workflow-orchestration/11-a2a-orchestration-patterns) |
+| Multi-agent orchestration (A2A patterns) | ★★★★☆ | [A2A Orchestration Patterns](../../workflow-orchestration/a2a-orchestration-patterns) |
 | Agent memory: in-context, external, episodic | ★★★★☆ | [Agent Memory & Planning Architecture](../../enterprise-architecture/ai-architecture/agent-memory-planning-architecture) |
-| Human-in-the-loop (HITL / HOTL) patterns | ★★★★☆ | [Human-in-the-Loop Architectures](../../workflow-orchestration/12-human-in-the-loop-architectures) |
+| Human-in-the-loop (HITL / HOTL) patterns | ★★★★☆ | [Human-in-the-Loop Architectures](../../workflow-orchestration/human-in-the-loop-architectures) |
 | Agent failure modes: infinite loops, tool abuse, scope drift | ★★★★★ | [Architecture Patterns, Anti-Patterns & Case Studies](../../agentic-systems/skill/enterprise/architecture-patterns-antipatterns-and-case-studies) |
 | Claude Agent SDK — production patterns | ★★★★★ | [Claude Agent SDK — Production](../../coding-tools/claude/claude-agent-sdk-production) |
 | Skill composition and instructions engineering | ★★★★☆ | [Composition & Instructions Engineering](../../agentic-systems/skill/enterprise/composition-and-instructions-engineering) |
@@ -149,8 +150,8 @@ FDEs are not just engineers — they run discovery, translate between business a
 | Structured discovery: process mapping, pain point elicitation | ★★★★★ | [Enterprise AI Architect Deep Dive Guide](../../enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide) |
 | AI use case prioritisation: impact vs. feasibility vs. risk | ★★★★★ | [Enterprise AI Transformation Blueprint](../../enterprise-architecture/strategy/Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026) |
 | Executive communication: translating technical results to business outcomes | ★★★★★ | [Executive Communication Framework](../../enterprise-architecture/framework/Executive_Communication_Framework_Guide) |
-| AI maturity assessment | ★★★★☆ | [Current State Assessment & AI Maturity](../../enterprise-architecture/transformation/01_Current_State_Assessment_and_AI_Maturity) |
-| Change management and adoption | ★★★★☆ | [Target Operating Model & Change](../../enterprise-architecture/transformation/05_Target_Operating_Model_and_Change) |
+| AI maturity assessment | ★★★★☆ | [Current State Assessment & AI Maturity](../../enterprise-architecture/transformation/Current_State_Assessment_and_AI_Maturity) |
+| Change management and adoption | ★★★★☆ | [Target Operating Model & Change](../../enterprise-architecture/transformation/Target_Operating_Model_and_Change) |
 | Security and compliance in regulated industries | ★★★★★ | [Agentic AI Security Guardrails](../../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails) |
 | Enterprise governance and AI lifecycle | ★★★★☆ | [Governance & Lifecycle](../../agentic-systems/skill/enterprise/governance-and-lifecycle) |
 | ROI framing and business case construction | ★★★★☆ | [AI Economics — Cost & Implementation](../../ai-economics/AI_Cost_Implementation_Guide_2026) |

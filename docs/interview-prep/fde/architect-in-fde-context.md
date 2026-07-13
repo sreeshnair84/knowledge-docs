@@ -4,6 +4,7 @@ date_created: 2026-07-13
 last_reviewed: 2026-07-13
 status: current
 source_type: native-md
+source_file: ""
 tags: ["interview-prep", "fde", "enterprise-architect", "solution-architect", "transformation"]
 doc_type: study-guide
 target_role: "Enterprise Architect / Solution Architect (FDE-deployed)"
@@ -50,8 +51,8 @@ Standard EA discovery produces a current-state architecture diagram. FDE-context
 
 | Expectation | What "good" looks like | Study Guide |
 |------------|------------------------|-------------|
-| AI maturity assessment in < 5 business days | Scored assessment across data, governance, culture, tech; presented to sponsor with a readout by end of Week 1 | [AI Maturity Assessment](../../enterprise-architecture/transformation/01_Current_State_Assessment_and_AI_Maturity) |
-| Use case prioritisation across stated + unstated needs | Map of all stated use cases against impact / feasibility / risk; one recommended start with explicit reasoning | [Enterprise AI Opportunity Portfolio](../../enterprise-architecture/transformation/02_AI_Opportunity_Portfolio) |
+| AI maturity assessment in < 5 business days | Scored assessment across data, governance, culture, tech; presented to sponsor with a readout by end of Week 1 | [AI Maturity Assessment](../../enterprise-architecture/transformation/Current_State_Assessment_and_AI_Maturity) |
+| Use case prioritisation across stated + unstated needs | Map of all stated use cases against impact / feasibility / risk; one recommended start with explicit reasoning | [Enterprise AI Opportunity Portfolio](../../enterprise-architecture/transformation/AI_Opportunity_Portfolio) |
 | Stakeholder risk map | Identify champion, skeptic, regulator, budget authority within first 3 days; know their primary concern | [EA Soft Skills Interview Master Guide](../../enterprise-architecture/framework/EA_Soft_Skills_Interview_Master_Guide) |
 | Data landscape audit | Inventory of every system that the target use case touches; ownership, API availability, freshness cadence | [Enterprise Data Systems & AI Governance](../../knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report) |
 | Security posture read | Initial CISO/security conversation within first week; understand what needs sign-off | [Agentic AI Security & Identity](../../enterprise-architecture/ai-architecture/agentic-ai-security-identity) |
@@ -71,7 +72,7 @@ In a standard EA role, architecture design produces TOGAF-aligned artefacts revi
 |------------|------------------------|-------------|
 | Reference architecture selection | Choose from established agentic patterns (RAG, MCP + agent, multi-agent orchestration) with written rationale — not invented from scratch | [Enterprise AI Architecture Patterns](../../enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns) |
 | MCP server design | Specify which data sources need MCP servers, what tools each exposes, auth model, PII handling | [MCP Deep Research 2026](../../ai-protocols/mcp/MCP_Deep_Research_2026) |
-| HITL boundary definition | Write down exactly which decisions the model makes and which require human review — documented, not assumed | [Human-in-the-Loop Architectures](../../workflow-orchestration/12-human-in-the-loop-architectures) |
+| HITL boundary definition | Write down exactly which decisions the model makes and which require human review — documented, not assumed | [Human-in-the-Loop Architectures](../../workflow-orchestration/human-in-the-loop-architectures) |
 | Integration architecture | Document every API call: system, endpoint, credentials source, error handling | [Agent Communication & Identity Gateway](../../enterprise-architecture/ai-architecture/agent-communication-identity-gateway) |
 | Security architecture | Prompt injection mitigation, credential storage, audit trail, data residency controls | [Agentic AI Security Guardrails](../../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails) |
 | One-page architecture for non-technical stakeholders | The Priya Sharma version — no acronyms, outcomes not components | [Executive Communication Framework](../../enterprise-architecture/framework/Executive_Communication_Framework_Guide) |
@@ -144,8 +145,8 @@ This is the exit ramp the architect owns entirely. A good FDE-context architect 
 | Expectation | What "good" looks like | Study Guide |
 |------------|------------------------|-------------|
 | Architecture decision record (ADR) | Every non-obvious decision documented with context, alternatives considered, rationale | [EA Lifecycle Artefact Templates](../../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) |
-| Expansion roadmap | Prioritised list of the next 3 use cases with effort estimates, sequenced against the existing infrastructure | [Enterprise AI Opportunity Portfolio](../../enterprise-architecture/transformation/02_AI_Opportunity_Portfolio) |
-| Operating model design | Who owns AI in the client org after the FDE leaves; how is the system governed; what skills does the client team need | [Target Operating Model & Change](../../enterprise-architecture/transformation/05_Target_Operating_Model_and_Change) |
+| Expansion roadmap | Prioritised list of the next 3 use cases with effort estimates, sequenced against the existing infrastructure | [Enterprise AI Opportunity Portfolio](../../enterprise-architecture/transformation/AI_Opportunity_Portfolio) |
+| Operating model design | Who owns AI in the client org after the FDE leaves; how is the system governed; what skills does the client team need | [Target Operating Model & Change](../../enterprise-architecture/transformation/Target_Operating_Model_and_Change) |
 | Executive summary for leadership | One-page ROI summary: what was built, what it cost, what it saved, what's next | [Executive Communication Framework](../../enterprise-architecture/framework/Executive_Communication_Framework_Guide) |
 | Technical handoff package | Architecture docs, runbooks, evaluation harness, prompt tuning playbook, escalation matrix | [EA Lifecycle Checklist](../../enterprise-architecture/process/EA_Lifecycle_Checklist) |
 
