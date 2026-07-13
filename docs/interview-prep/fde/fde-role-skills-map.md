@@ -219,4 +219,196 @@ If you are an Enterprise Architect moving to FDE, these are your existing streng
 
 ---
 
+---
+
+## Complex Interview Scenarios — FDE & Architect Level
+
+Senior FDE and Principal Architect interviews use open-ended system design + judgment scenarios. There is no single correct answer — you are evaluated on reasoning, trade-off awareness, and production instinct.
+
+---
+
+### Scenario Set 1 — System Design Under Constraints
+
+**Scenario 1A: The Compliance Minefield**
+
+> A $30B insurer wants Claude to auto-generate first drafts of claims adjusters' decision letters. The letters cite specific policy clauses, are legally binding, and in some jurisdictions are subject to IFRS 17 disclosure requirements. The CIO wants a demo in 3 weeks. How do you structure the engagement?
+
+Strong answer elements:
+- Push back on 3-week demo: discovery must come first; shadow adjusters for at least 1 week before proposing architecture
+- HITL is non-negotiable for legally binding documents: the model drafts, the adjuster approves, the letter comes from the adjuster — model is never the author
+- Evaluate before demo: semantic faithfulness to policy text, citation accuracy, regulatory clause check
+- IFRS 17 requires the *adjuster* to be the accountable party — name this explicitly
+- Prompt injection risk: claimant-submitted free-text enters the context and must be sanitised
+
+Weak answer: jumping to architecture before regulatory framing; proposing a fully automated workflow; accepting the 3-week timeline as fixed.
+
+---
+
+**Scenario 1B: The Scale Problem**
+
+> Your production agent processes 200 requests/hour. The customer wants to scale to 2,000/hour. Your MCP server wraps a third-party API rate-limited to 100 req/min. What breaks and how do you fix it?
+
+Strong answer elements:
+- 100 req/min = 6,000/hr. At 2,000 concurrent requests each triggering multiple tool calls, the real cap is much lower
+- Fixes: request queuing + backpressure in MCP server; result caching for repeated queries; batching where the API supports it; async processing with webhook response
+- Cost analysis: at 10× volume, API cost and token cost both scale — recalculate unit economics before committing
+- Advantage of MCP architecture: the underlying API connector is swappable without touching agent code
+- Load test with the customer's actual request distribution before committing to a timeline
+
+Weak answer: "just add more servers" without addressing the rate limit; ignoring cost; no load testing plan.
+
+---
+
+**Scenario 1C: The Inherited POC**
+
+> You inherit a customer's existing Claude deployment — 8 months of work. It has: no evaluation harness, no audit logs, prompt in a .py file with "DO NOT CHANGE THIS EVER", Salesforce credentials hardcoded as strings, "about 80% accurate but we're not sure how we measure that." Customer wants production in 6 weeks. What do you do in Week 1?
+
+Strong answer — Week 1 is entirely diagnosis:
+- Do not touch the prompt. Do not touch the architecture. Diagnose only.
+- Immediate security fix: rotate hardcoded credentials to Key Vault. This is non-negotiable and doesn't affect functionality.
+- Build the evaluation dataset first: what does "80% accurate" actually mean? Get ground truth labels from end users.
+- Read the prompt in full: map every line to a known behaviour, or document that its purpose is unknown.
+- Talk to the users: what does the 20% failure look like? Minor formatting or wrong decisions?
+- Be honest with the customer: 6 weeks to production is possible only if diagnosis is clean. If the foundation is broken, 6 weeks to *safe* production is not achievable.
+
+Weak answer: starting to "improve the prompt" before diagnosing; accepting the 6-week timeline without investigation.
+
+---
+
+### Scenario Set 2 — Stakeholder Conflict
+
+**Scenario 2A: The CISO vs. The Champion (Friday 17:00 Email)**
+
+> Two weeks from production. CISO sends email at 17:00 Friday: "I'm not comfortable with the model receiving any data from our ERP. Production is blocked." Champion calls you at 17:30, furious. What do you do in the next 2 hours? What do you do Monday?
+
+Next 2 hours:
+- Do not take either side. Acknowledge both parties. Do not over-promise to either.
+- Contact the CISO directly — not via email. Ask for the specific concern: data residency? PII? A specific field? "Not comfortable" is not an actionable finding.
+- Assess: is this concern addressable in 2 days or 2 weeks?
+
+Monday:
+- One meeting with both CISO and champion — not separate calls. Present the specific concern and the specific remediation.
+- If the concern is legitimate and unresolvable in the current timeline: parallel path. Go live with non-ERP components; prove value; reintroduce ERP post-remediation.
+
+Weak answer: promising the champion you'll "sort it out"; sending a long technical email to the CISO at 17:30; treating a technical risk as a political dispute.
+
+---
+
+**Scenario 2B: The Scope Creep Bomb**
+
+> Three weeks into a 14-week engagement, your champion presents six new requirements from a weekend board presentation: real-time processing (you designed batch), multi-language support, mobile UI, three new data source integrations, GDPR delete-on-request for AI outputs, and a board demo in 10 days. How do you respond?
+
+Strong answer:
+- Do not say yes to anything in this conversation. Take notes. Ask which of the six are contract requirements vs. requests.
+- Real-time vs. batch is an architectural change — not a configuration. Requires formal impact assessment.
+- Each language needs its own evaluation dataset. That work does not exist yet. This is a multi-week item per language.
+- GDPR delete-on-request for AI outputs requires logging what was generated, by whom, and a deletion mechanism. Name the engineering effort.
+- Board demo in 10 days: achievable with current scope only. Scope changes go after the demo.
+- Write a scope change request for each new requirement. Each either adds time or removes something else.
+
+Weak answer: agreeing to all six requirements; "we'll figure it out as we go."
+
+---
+
+### Scenario Set 3 — Architecture Trade-offs (Architect Level)
+
+**Scenario 3A: Multi-Agent vs. Single-Agent for Invoice Processing**
+
+> A logistics company wants an AI system that: (1) reads incoming carrier invoices (PDF), (2) matches to POs in ERP, (3) flags discrepancies, (4) drafts approval/dispute letters, (5) routes to correct approver by invoice value. Single orchestrator or multi-agent?
+
+Strong answer — multi-agent:
+- Each sub-task has different latency, failure modes, and retry requirements. Bundling all five creates an all-or-nothing failure mode.
+- **Invoice Parser Agent**: vision model for PDFs → structured data
+- **Matching Agent**: ERP via MCP server; deterministic, not model-heavy
+- **Discrepancy Analyzer**: LLM reasoning on structured mismatch
+- **Letter Drafter**: structured input → formatted output
+- **Routing Agent**: rule-based (not LLM) — invoice value → approver lookup table
+- Each agent gets its own evaluation harness; failures are isolated
+- HITL at two points: discrepancy review before draft; letter approval before send
+- Counter-argument for single agent: when all tasks share expensive-to-reconstruct context; when the team can't maintain multiple agents; when the workflow is short. This case doesn't meet that bar.
+
+---
+
+**Scenario 3B: RAG vs. Fine-tuning for a 40,000-Document Pharma Corpus**
+
+> A pharmaceutical company has 40,000 SOPs and regulatory submissions. They want an AI assistant that answers researcher questions with citations. The Chief Scientist wants fine-tuning. The legal team flags IP concerns. You are the architect. What is your recommendation?
+
+Strong answer — RAG:
+- RAG provides citations; fine-tuning cannot cite source documents — and citation is the core requirement here
+- RAG corpus is updatable without retraining; SOPs change frequently in pharma
+- Fine-tuning embeds knowledge into model weights — the IP concern is legitimate and non-trivial
+- Fine-tuning improves *style*, not *knowledge recall*; RAG is the right tool when factual accuracy with attribution is the goal
+- Evaluation: RAGAS framework — faithfulness, answer relevance, context recall
+- What would change the recommendation: primary need is tone/style adherence (fine-tuning helps); corpus is small and fully static; latency requirements can't accommodate retrieval
+
+Hybrid path: RAG with a fine-tuned domain-specific reranker on pharma terminology.
+
+---
+
+**Scenario 3C: The 90-Day Contract vs. Right Delivery**
+
+> Four weeks in, you determine the correct architecture needs 16 weeks. The contract says 90-day delivery. The AE says "just show something working." What do you do?
+
+Strong answer:
+- "Something working" and "production-ready" are not the same thing. Conflating them is how POCs die in production and accounts churn.
+- Present the trade-off to the champion: 10-week narrow-scope MVP in production with eval framework vs. 16-week full-scope solution. Both are valid; the client chooses with clear expectations.
+- Write down the scope of each phase. Get confirmation in email.
+- What you do NOT do: ship an unevaluated system that breaks in production.
+- If the AE is actively pressuring you to bypass the evaluation: escalate to your FDE manager. This is not a situation to resolve alone.
+
+---
+
+### Scenario Set 4 — Production Incidents
+
+**Scenario 4A: Accuracy Drops from 94% to 76% with No Code Changes**
+
+Diagnostic protocol — name these in order:
+1. **Data pipeline first**: has the settlement feed format changed? New column in Salesforce? Mandate schema update?
+2. **Freshness check**: has the mandate vector index been refreshed since the last mandate update?
+3. **Audit log analysis**: pull the failing cases — patterns by account? instrument class? rule type?
+4. **Reproduce in harness**: is this reproducible (systematic) or stochastic (non-deterministic)?
+5. **Prompt injection audit**: any new content types in the input?
+6. **Model version check**: has the API model been silently updated?
+7. **Only after steps 1–6**: consider whether the prompt needs revision.
+
+Weak answer: "let's update the prompt" as step 1.
+
+---
+
+**Scenario 4B: LLM-as-Judge vs. Human Reviewer Disagree on 15% of Cases**
+
+Strong answer:
+- Neither is ground truth. A 15% disagreement zone indicates specification ambiguity, not a wrong party.
+- Diagnose the 15%: is it systematically the same rule type, account, or instrument class? If yes, the ambiguity is localised and can be resolved with a precise rule update.
+- If evenly spread: the mandate language itself may be genuinely ambiguous — long-term fix is mandate clause precision, not model tuning.
+- For now: flag the disagreement cases as requiring *senior human review* — not resolved by either the judge or the standard reviewer.
+- The judge was calibrated on the original dataset; if the business has changed (new instruments, mandate amendments), the judge's calibration is stale and must be updated.
+
+---
+
+### Architect-Level Scenarios
+
+**Scenario 5A: Central Platform vs. 12 Separate Deployments (50,000-Person Institution)**
+
+Strong answer — shared platform with BU-specific layers:
+- **Shared platform layer** (don't rebuild ×12): model routing, authentication, audit logging, cost governance, rate limiting, credential management, security review templates
+- **BU-specific layer**: MCP servers (each BU has different source systems), system prompts (different workflows), evaluation harnesses (different ground truth)
+- **Governance layer**: central registry of agent skills; data classification to enforce cross-BU data access rules
+- What fails if you build 12 separate deployments: security reviews ×12; a prompt injection fix goes into 11 of 12 deployments; cost governance is invisible; credential rotation is unmanaged
+- What fails if you centralise too aggressively: different BUs have different regulatory requirements; a platform outage affects all 12 simultaneously; BU teams can't move at their own pace
+
+---
+
+**Scenario 5B: Build vs. Buy vs. Managed Service — Give an Honest Answer**
+
+Strong answer with explicit conflict-of-interest disclosure:
+- **Build**: correct when AI capability is core competitive differentiation and they have 10+ engineers dedicated. Timeline: 12–18 months to stability. Most teams underestimate evaluation, observability, and security engineering.
+- **Buy**: correct when they want speed and accept vendor's opinionated stack. Risk: vendor lock-in; pricing scales poorly with usage; patterns may not fit their workflows.
+- **Managed service (TechAxis)**: correct when they want outcomes without platform engineering overhead. Risk: TechAxis dependency; harder to in-source later.
+- Disclosure: as TechAxis FDE, you have a conflict of interest recommending Option C. Name it. Then give your actual recommendation based on what you've observed about their engineering capability.
+
+A strong FDE names the conflict. A weak one ignores it.
+
+---
+
 *Last reviewed: 2026-07-13 | Sources: Anthropic job listings, Palantir FDE specs, fde.academy, tryexponent.com*

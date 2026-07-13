@@ -1,5 +1,5 @@
 ---
-title: "FDE Life Transcript — FinClear AI Deployment"
+title: "FDE Life Transcript — FinClear AI Deployment (Complete)"
 date_created: 2026-07-13
 last_reviewed: 2026-07-13
 status: current
@@ -49,6 +49,27 @@ DISCOVERY  →  ASSESS  →  PROTOTYPE  →  EVALUATE  →  PRODUCTION  →  SCA
 ---
 
 ## STAGE 1 — DISCOVERY
+
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Sales handoff brief | Slack DM | "$1.2M ACV, 90-day delivery milestone, 4 weeks to show something working, 6 use cases named by champion" |
+> | Stakeholder list | CRM export | 8 names and titles; no concerns documented — must be elicited |
+> | Signed SOW | PDF | "Production-ready AI capability in operations" — intentionally vague |
+> | Previous POC post-mortems | None provided | Two known failures; details must be drawn out in discovery call |
+>
+> **Stage Outputs — end of Week 2**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Observation log | Markdown | 3-page time-task-data-decision analysis; Olu's 120-min morning routine mapped end to end |
+> | Discovery brief | 1-page doc | Recommended use case, I/O spec, data owners, constraints, blast radius if it fails |
+> | Stakeholder risk map | Table | Champion=Priya, Skeptic=Marcus, Regulator=Aisha, Budget=Ruth; primary concern per person |
+> | Data landscape inventory | Table | 3 systems: Settlement SFTP (daily), Salesforce API v57 (real-time, PII), SharePoint Excel (quarterly, compliance-owned) |
+> | Use case prioritisation matrix | Table | 7 use cases (6 stated + 1 discovered) scored: impact × feasibility ÷ risk |
+
+---
 
 ### The First Call No One Prepared You For
 
@@ -203,6 +224,27 @@ The MCP server holds a lookup table: account ID → pseudonymous token. The mode
 
 ## STAGE 2 — TECHNICAL ASSESSMENT & COMPLIANCE GATE
 
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Discovery brief | Markdown | Use case 1 selected; stakeholder map; 3 data systems named |
+> | Data landscape inventory | Table | Settlement SFTP, Salesforce, SharePoint Excel; ownership + API status per system |
+> | Compliance posture (verbal) | Meeting notes | FCA-regulated; no external data transmission without Data Protection Impact Assessment |
+> | Security requirements (verbal) | Meeting notes | SOC 2 Type II vendor required; credentials must be in approved secrets management |
+>
+> **Stage Outputs — end of Week 3**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Architecture diagram | Markdown ASCII + prose | Components, data flows, HITL boundary explicitly marked |
+> | MCP server specifications | 2 JSON schemas | `finclear-trades` (no PII) + `finclear-mandates` (PII-masked); tool list, params, auth model |
+> | PII masking design | Python class (45 lines) | SHA-256 pseudonymisation, in-process vault, reverse lookup only in post-processor |
+> | Security risk register (initial) | Table | 5 risks identified at Week 3; owner + initial mitigation per risk |
+> | Human-oversight statement | 1-page signed document | "Model surfaces potential exceptions; human analyst approves; email sends from analyst" — signed by Dr. Okafor |
+
+---
+
 **Week 3 | Monday 20 January 2026**
 
 Alex presents her architecture to the full FinClear stakeholder group, including Dr. Aisha Okafor (Compliance) and Marcus Webb (CISO) for the first time.
@@ -257,57 +299,220 @@ That's acceptable.
 
 ## STAGE 3 — PROTOTYPE
 
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Architecture diagram + MCP specs | Doc + JSON | Approved by Daniel Cho; awaiting security review from Marcus |
+> | Synthetic trade data (Alex-generated) | CSV | 47 trades, 30 accounts, 6 asset classes, including Vietnam ETF edge case |
+> | Synthetic mandate rules (Alex-generated) | Excel | 30 accounts × 3–5 rules each; footnotes and IC memos included |
+> | Ground truth labels (Alex-labelled) | CSV | 47 rows: `exception` T/F, `severity` H/M/L, `rule_ref` |
+> | System prompt v0.1 | Markdown | Initial 6-line draft |
+>
+> **Stage Outputs — end of Week 5**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Working agent v0.4 | Python codebase | MCP servers, orchestration, PII post-processor, human review UI |
+> | System prompt evolution log | Markdown | 4 versions, each annotated: what failed → what changed → what improved |
+> | Prototype run results (4 runs) | Table | Precision/Recall/Latency/Cost per version; v0.4 at 100%/100% on synthetic |
+> | Tool call trace samples | JSONL | 3 representative traces including full footnote reasoning chain |
+> | Known failure modes log | Table | 4 failure types identified; each with root cause and proposed fix |
+
+---
+
 **Weeks 4–5 | 27 January – 07 February 2026**
 
 Alex builds the system. She works from FinClear's office three days a week and remote two days. She codes in the mornings and tests with Jordan in the afternoons.
 
 ### What She Builds
 
-**Architecture: Morning Ops Agent — v0.1**
+**Architecture: Morning Ops Agent — v0.1 Design**
 
 ```
-┌─────────────────────────────────────────────────────┐
-│  CLAUDE (claude-sonnet-4-6)                         │
-│  System prompt: Operations exception analyst        │
-│  Tools: [get_trades, get_mandates, flag_exception]  │
-└──────────────┬──────────────────────────────────────┘
-               │ tool calls
-    ┌──────────┴──────────┐
-    ▼                     ▼
-┌─────────────┐    ┌──────────────┐
-│ MCP Server  │    │ MCP Server   │
-│ (Trades)    │    │ (Mandates)   │
-│             │    │              │
-│ SFTP feed   │    │ Salesforce   │
-│ → normalise │    │ + Excel      │
-│ → mask PII  │    │ → mask PII   │
-└─────────────┘    └──────────────┘
-               │
-    ┌──────────▼──────────┐
-    │ Post-processor       │
-    │ - PII re-injection  │
-    │ - Email formatter   │
-    │ - Human review UI   │
-    └─────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│  CLAUDE SONNET 4-6 (via TechAxis Enterprise Agreement)           │
+│  Role: "Operations exception analyst"                            │
+│  Tools: get_trades | get_mandate | get_mandate_rules             │
+└─────────────────────┬────────────────────────────────────────────┘
+                      │ MCP tool calls (structured JSON)
+          ┌───────────┼───────────────┐
+          ▼           ▼               ▼
+┌───────────────┐ ┌──────────────┐ ┌────────────────────────┐
+│ MCP Server    │ │ MCP Server   │ │ Mandate Rules Engine   │
+│ (Trades)      │ │ (Mandates)   │ │ (Vector DB / pgvector) │
+│               │ │              │ │                        │
+│ SFTP → parse  │ │ Salesforce   │ │ SharePoint Excel →     │
+│ normalise     │ │ API v57 +    │ │ chunk → embed →        │
+│ No PII        │ │ PII masking  │ │ Refresh nightly 02:00  │
+└───────────────┘ └──────────────┘ └────────────────────────┘
+                      │
+          ┌───────────▼──────────────┐
+          │ Post-Processor            │
+          │ • PII re-injection        │
+          │ • Exception structuring   │
+          │ • Human review UI         │  ← HITL BOUNDARY
+          │   Olu approves/dismisses  │
+          └───────────┬──────────────┘
+                      │ Human approval required
+          ┌───────────▼──────────────┐
+          │ Audit Log → Splunk        │
+          │ run_id | input_hash       │
+          │ output_hash | decisions   │
+          └──────────────────────────┘
 ```
 
-**System Prompt (v0.1) — excerpt:**
+---
+
+### System Prompt Evolution — v0.1 to v0.4
+
+The prompt goes through 4 iterations over 2 weeks. Alex keeps every version with failure analysis and test results:
 
 ```
+SYSTEM PROMPT EVOLUTION LOG — Morning Ops Agent
+================================================
+
+v0.1 — 27 Jan | 6 lines | Initial attempt
+──────────────────────────────────────────
 You are an operations exception analyst for an asset management firm.
-You have access to two tools:
-- get_trades(date): returns normalised trade confirmations for a given date
-- get_mandates(account_id): returns the investment mandate rules for an account
+Retrieve today's trades, compare against client mandates, flag any violations.
+Return a JSON list of exceptions with trade_id, account, rule violated, reason.
 
-Your task:
-1. Retrieve all trades from today's settlement feed
-2. For each trade, retrieve the mandate for that account
-3. Compare the trade against the mandate rules
-4. If a trade potentially violates a rule, add it to the exceptions list
-5. Return a structured JSON object with: confirmed_trades (count), potential_exceptions (list with rule_reference, trade_id, reason)
+FAILURES IDENTIFIED (synthetic data, 47 trades):
+  ① "Violations" produced definitive statements: "This IS a violation of Rule 4.2"
+     Compliance team rejected: model cannot make compliance determinations
+  ② Tool loop: get_trades called ×3 on same date (model retried when no exception found)
+  ③ Footnotes entirely ignored: only structured mandate fields consulted
 
-IMPORTANT: You are surfacing candidates for human review. You are NOT making compliance decisions.
-Never state that a trade IS a violation — only that it POTENTIALLY breaches rule [X].
+RESULTS v0.1: Recall 71% (5/7) | Precision 83% | Latency 38s | Cost $0.22
+
+─────────────────────────────────────────────────────────────────────
+
+v0.2 — 29 Jan | Added: language fix + loop guard
+──────────────────────────────────────────────────
+You are an operations exception analyst. You surface POTENTIAL exceptions for
+human review — you do NOT make compliance determinations.
+
+IMPORTANT: Call get_trades ONLY ONCE per run. The settlement feed is immutable.
+
+For each potential exception, return:
+  {"trade_id": "...", "account_token": "...", "potential_breach": "...",
+   "confidence": "HIGH|MEDIUM|LOW", "reasoning": "..."}
+
+FAILURES IDENTIFIED:
+  ④ 47 get_mandate calls for 47 trades — same account appears in multiple trades.
+     Mandate is identical for all of an account's trades. Redundant API calls.
+     Result: 38s latency, $0.18/run (latency unchanged despite loop fix — new bottleneck)
+
+RESULTS v0.2: Recall 86% (6/7) | Precision 86% | Latency 38s | Cost $0.18
+
+─────────────────────────────────────────────────────────────────────
+
+v0.3 — 02 Feb | Added: mandate caching + structured output
+────────────────────────────────────────────────────────────
+[v0.2 retained, additions:]
+
+EFFICIENCY RULE: An account's mandate does not change within a trading day.
+After calling get_mandate for an account once, store the result in your context
+and do NOT call it again for the same account in this session.
+
+Include rule_reference in all exception outputs:
+  "rule_reference": "Section X.Y or Footnote Z"
+
+FAILURES IDENTIFIED:
+  ⑤ Footnote-only constraints still missed: get_mandate_rules never called.
+     Model only checked structured asset_class_limits.
+     Two exceptions involving conditional clause footnotes were missed.
+
+RESULTS v0.3: Recall 86% (6/7) | Precision 100% | Latency 14s | Cost $0.09
+  (caching cut API calls from 47 → 22; major latency improvement)
+
+─────────────────────────────────────────────────────────────────────
+
+v0.4 — 05 Feb | Added: step-by-step process + explicit footnote handling
+──────────────────────────────────────────────────────────────────────────
+You are an operations exception analyst at an asset management firm. Your job is
+to identify POTENTIAL mandate breaches for human review. You are NOT making
+compliance determinations — a qualified analyst reviews everything you flag.
+When uncertain, flag it. A false positive is recoverable; a missed exception is not.
+
+STEP-BY-STEP PROCESS:
+  1. Call get_trades(date=today) exactly once.
+  2. For each unique account in the trade list, call get_mandate(account_token).
+     Do not repeat this call for the same account in the same session.
+  3. For each trade, compare against the account mandate.
+  4. If mandate contains conditional language ("subject to", "permitted with conditions",
+     "at Committee discretion", "as per footnote", "see IC memo"), call
+     get_mandate_rules with a specific query about that condition.
+  5. Flag any trade that POTENTIALLY breaches a rule.
+
+OUTPUT FORMAT (strict JSON):
+{
+  "run_date": "YYYY-MM-DD",
+  "total_trades_reviewed": N,
+  "unique_accounts": N,
+  "exceptions": [
+    {
+      "trade_id": "...",
+      "account_token": "...",
+      "instrument": "...",
+      "potential_breach": "one-sentence description",
+      "rule_reference": "Section X.Y or Footnote Z or IC Memo ID",
+      "confidence": "HIGH|MEDIUM|LOW",
+      "reasoning": "one sentence why this was flagged",
+      "recommended_action": "Human review required before close of business"
+    }
+  ],
+  "reviewed_at": "ISO-8601 timestamp"
+}
+
+You NEVER send communications, approve trades, or make compliance rulings.
+
+RESULTS v0.4 (chunk size increased 512→1024 chars for vector DB):
+  Recall 100% (7/7) | Precision 100% | Latency 14s | Cost $0.11
+  Note: 100% on 47 synthetic cases ≠ production readiness. Need 200 real labelled cases.
+```
+
+---
+
+### Tool Call Trace — Sample (Footnote Reasoning Chain)
+
+```jsonl
+// TRACE: TRD-20260203-0447 — Vietnam ETF, classification ambiguity in footnote
+
+{"type":"tool_use","tool":"get_trades","input":{"date":"2026-02-03"},
+ "output":[{"trade_id":"TRD-20260203-0447","account_token":"ACCT-3F9A1C2B",
+   "instrument":"VN30 ETF","asset_class":"Equity-EmergingMarkets",
+   "quantity":125000,"currency":"USD","value_usd":2850000},
+   "...46 more trades"]}
+
+{"type":"tool_use","tool":"get_mandate","input":{"account_token":"ACCT-3F9A1C2B"},
+ "output":{"account_token":"ACCT-3F9A1C2B","risk_profile":"Moderate",
+   "asset_class_limits":{"Equity-EmergingMarkets":{"max_pct":15,"current_pct":12.3}},
+   "footnotes":"4.2(b): Vietnam ETFs classified as EM only if FTSE reclassification
+    has occurred. See IC-2025-11."}}
+
+// MODEL RECOGNISES CONDITIONAL LANGUAGE → calls get_mandate_rules
+{"type":"tool_use","tool":"get_mandate_rules",
+ "input":{"query":"Vietnam FTSE reclassification Investment Committee effective date",
+          "account_token":"ACCT-3F9A1C2B"},
+ "output":{"results":[{"chunk":"IC-2025-11 (Nov 2025): Vietnam reclassification by FTSE
+   Russell effective 01 Mar 2026. Until that date, Vietnam ETFs remain classified as
+   Frontier Markets. Frontier Markets limit for Moderate risk profile: 5% of AUM.",
+   "source":"mandate_footnotes_ACCT-3F9A1C2B","relevance":0.94}]}}
+
+// MODEL FLAGS WITH MEDIUM CONFIDENCE — acknowledges uncertainty
+{"type":"exception_flagged","exception":{
+  "trade_id":"TRD-20260203-0447","account_token":"ACCT-3F9A1C2B",
+  "instrument":"VN30 ETF",
+  "potential_breach":"Trade is within EM limit (14.4% vs 15% cap). However Footnote 4.2(b)
+   + IC-2025-11 classify Vietnam ETFs as Frontier Markets until 01 Mar 2026. Frontier limit
+   is 5% of AUM — current Frontier exposure not available in mandate data.",
+  "rule_reference":"Section 4.2 + Footnote 4.2(b) + IC-2025-11",
+  "confidence":"MEDIUM",
+  "reasoning":"Appears within EM limit but footnote may apply stricter Frontier limit;
+   cannot confirm current Frontier exposure from available tool data.",
+  "recommended_action":"Human review required before close of business"}}
 ```
 
 **Week 5 | Thursday 05 February 2026 — First Real Test**
@@ -334,6 +539,27 @@ Prototype works. 86/86 on synthetic data. Not good enough for production yet —
 ---
 
 ## STAGE 4 — EVALUATION HARNESS
+
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Agent v0.4 on synthetic data | Python codebase | 100% Precision/Recall on 47 synthetic cases |
+> | Historical trade-mandate pairs | Jordan's archive pull | 6 months of FinClear real records |
+> | Compliance exception logs | Excel | Manual exception log: flagged trades, reviewer name, date, rule cited |
+> | Evaluation targets | Alex's design doc | Recall ≥ 95%, Precision ≥ 80%, critical_miss = 0, p99 latency < 30s, cost < $0.50 |
+>
+> **Stage Outputs — end of Week 7**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Labelled evaluation dataset | CSV (200 rows) | `trade_id`, `exception` T/F, `severity` H/M/L, `rule_reference`, `notes` |
+> | Evaluation harness | Python script `harness.py` | Automated runner + metrics computation + LLM-as-judge for MEDIUM-severity disputes |
+> | Holdout evaluation results (v0.4) | Markdown report | Recall 96%, Precision 88%; failure analysis table (4 categories) |
+> | Failure mode analysis | Table | Root cause per failure; data pipeline vs model reasoning diagnosis |
+> | Go/no-go recommendation | 1-page memo | "Recommend pilot — both recall misses are data freshness, not model failures" |
+
+---
 
 **Weeks 6–7 | 10–21 February 2026**
 
@@ -438,6 +664,26 @@ So the model at 96% is meaningfully better than the current state, even before t
 
 ## STAGE 5 — SECURITY REVIEW & PRODUCTION GATE
 
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Agent v0.4 codebase | Git repo | Passes evaluation; running on synthetic credentials |
+> | Vendor security agreements | PDF | TechAxis–Anthropic Enterprise: SOC 2 Type II, 30-day log retention, no training on customer data |
+> | Architecture docs (security view) | Markdown | PII masking design, credential storage, data flow diagram |
+> | Initial security risk register | Table | 5 risks from Week 3; all unresolved |
+>
+> **Stage Outputs — end of Week 9**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Security review findings | Table | 4 findings: SF-001 HIGH (credential storage), SF-002 MEDIUM (prompt injection), SF-003 MEDIUM (audit log), SF-004 LOW (data retention) |
+> | Remediation evidence | Code diffs + email | Key Vault integration diff; sanitise_mandate_text() code; Splunk log sample; contract clause excerpt |
+> | Security sign-off email | Email | Marcus Webb: "Four findings raised, all remediated. Cleared for production data." |
+> | Production credential rotation plan | Doc | 90-day rotation schedule, Key Vault config, owner: Jordan Lee |
+
+---
+
 **Weeks 8–9 | 24 February – 07 March 2026**
 
 Marcus Webb's security review runs in parallel with the evaluation. Alex has four interactions with his team.
@@ -474,6 +720,27 @@ Thank you, Marcus. I'll send you the production deployment plan for a final eyes
 ---
 
 ## STAGE 6 — PRODUCTION DEPLOYMENT
+
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Agent v0.4 + all 4 security remediations | Codebase | Key Vault integration, injection mitigation, audit log, retention confirmed |
+> | Security sign-off | Email (Marcus Webb) | Written clearance for production data |
+> | Human-oversight statement (signed) | PDF (Aisha Okafor) | Signed before go-live |
+> | Production credentials (Key Vault) | Azure Key Vault | Salesforce + SFTP rotated; 90-day schedule active |
+> | Go-live checklist | 18-item doc | All items checked by Alex + Jordan on Friday 07 Mar |
+>
+> **Stage Outputs — end of Week 10**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Production system (live) | Running service | Daily 06:00 run; 51 real FinClear trades processed on Day 0 |
+> | Week 1 production metrics report | Markdown | Recall 94%, Precision 91%, analyst time 18 min (vs 120 min baseline) |
+> | Splunk audit log (Week 1) | Structured events | 5 runs; all human decisions captured with analyst ID + timestamp |
+> | Week 1 incident log | Table | 1 incident (SFTP delay, resolved same day); monitoring worked as designed |
+
+---
 
 **Week 10 | 10–14 March 2026**
 
@@ -518,6 +785,25 @@ Alex — I have to say, yesterday I had forty-five minutes of thinking time befo
 ---
 
 ## STAGE 7 — SCALE & EXPANSION
+
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Week 1 production metrics | Report | Recall 94%, 102 min saved/analyst/day, 0 critical misses |
+> | Use case prioritisation matrix | From Week 2 | 6 remaining use cases ranked; #4 (commentary) is next candidate |
+> | Section 7.4(c) finding | Compliance memo | Olu found mandate misinterpretation using his recovered 45 minutes on Day 1 |
+> | Olu Adeyemi quote | Direct quote | "Three years since I had 45 free minutes before the 09:00 call" |
+>
+> **Stage Outputs — end of Week 12**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | CFO-ready ROI presentation | 4-slide brief | Conservative 34x ROI; three scenarios (3/12 analysts; with/without 7.4c value) |
+> | Phase 2 recommendation brief | 1-page doc | Portfolio commentary: architecture, 8-week plan, reuse vs new-build analysis |
+> | Expansion roadmap | Table | 5 remaining use cases sequenced; infrastructure reuse mapped per component |
+
+---
 
 **Weeks 11–12 | 17–28 March 2026**
 
@@ -571,6 +857,28 @@ Portfolio commentary generation. It's the one that excited you on Day 1, and now
 ---
 
 ## STAGE 8 — KNOWLEDGE TRANSFER & HANDOFF
+
+> **Stage Inputs**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Full codebase v1.0 | Git repo | Production-tested, security-reviewed, 4 weeks of prod metrics |
+> | All evaluation results | CSV + Markdown reports | Weeks 6–7 holdout + Week 10–14 production; failure mode analysis |
+> | Jordan + Sam skills assessment | Alex's notes | Jordan: strong backend, learning LLMs. Sam: junior Python, needs prompt tuning scaffold |
+>
+> **Stage Outputs — delivered Week 14**
+>
+> | Artifact | Format | Sample Content |
+> |----------|--------|----------------|
+> | Architecture runbook | Markdown | Deployment steps, rollback procedure, env config, Key Vault secret names |
+> | Prompt tuning playbook | Markdown | Current prompt + rationale per line + 4 failure mode protocols + eval-gate rule |
+> | Evaluation harness guide | Markdown | How to add test cases, interpret metrics, set thresholds, run LLM judge |
+> | Incident runbooks (3) | Markdown | SFTP failure, Salesforce downtime, model latency spike — each with resolution steps |
+> | Escalation matrix | Table | Sam → Jordan → Daniel → Alex (30-day window) → Anthropic Support |
+> | Phase 2 kickoff brief | Doc | Portfolio commentary: new components, 8-week plan, reuse analysis |
+> | Engagement retrospective | Markdown | Contribution to TechAxis FDE knowledge base |
+
+---
 
 **Weeks 13–14 | 31 March – 11 April 2026**
 
