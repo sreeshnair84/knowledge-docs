@@ -16,7 +16,7 @@ covers_version: "as of 2026-07-14"
 
 **Purpose:** Canonical taxonomy of 16 multi-agent topology patterns. For each pattern: what problem it solves, architecture diagram, lifecycle, state management, communication model, governance requirements, failure modes, enterprise suitability score, and anti-patterns to avoid.
 
-**Scope:** Topology — how agents are arranged and how they coordinate. For protocol specifics, see [MCP Deep Research](../../ai-protocols/mcp/MCP_Deep_Research_2026.md) and [A2A Security & Governance](a2a-enterprise-security-governance-guide.md). For runtime reliability (retries, circuit breakers, checkpointing), see [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md). For agent selection (when to use which), see [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix.md).
+**Scope:** Topology — how agents are arranged and how they coordinate. For protocol specifics, see [MCP Deep Research](../../ai-protocols/mcp/MCP_Deep_Research_2026.md) and [A2A Security & Governance](a2a-enterprise-security-governance-guide.md). For runtime reliability (retries, circuit breakers, checkpointing), see [Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md). For agent selection (when to use which), see [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix).
 
 ---
 
@@ -758,7 +758,7 @@ Real systems combine patterns. Most common compositions:
 ## Further Reading
 
 - [Agentic AI Reliability, Observability & Governance](agentic-ai-reliability-observability-governance.md) — retry/circuit breaker/checkpoint patterns for any topology
-- [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix.md) — when to use agent vs. workflow vs. tool
+- [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix) — when to use agent vs. workflow vs. tool
 - [Agent-as-Tool Composition Patterns](agent-as-tool-composition.md) — how to wrap topologies as tools
 - [Governance Propagation Chain](governance-propagation-chain.md) — policy propagation through multi-agent hierarchies
 - [MCP Deep Research](../../ai-protocols/mcp/MCP_Deep_Research_2026.md) — tool protocol used across most patterns

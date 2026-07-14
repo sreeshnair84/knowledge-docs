@@ -16,7 +16,7 @@ covers_version: "as of 2026-07-14"
 
 **Purpose:** Defines how agents and tools combine in layered compositions. Covers: agent wrapped as MCP tool, tool invoking agent, agent exposing A2A, MCP composing MCP, tool chaining, and nested orchestration — with when to use each, architecture diagrams, and anti-patterns.
 
-**Scope:** Composition patterns. For topology (how agents are arranged), see [Multi-Agent Topology Patterns](multi-agent-topology-patterns.md). For protocol mechanics, see [MCP Deep Research](../../ai-protocols/mcp/MCP_Deep_Research_2026.md) and [A2A Security & Governance](a2a-enterprise-security-governance-guide.md). For decision criteria (agent vs. tool vs. workflow), see [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix.md).
+**Scope:** Composition patterns. For topology (how agents are arranged), see [Multi-Agent Topology Patterns](multi-agent-topology-patterns.md). For protocol mechanics, see [MCP Deep Research](../../ai-protocols/mcp/MCP_Deep_Research_2026.md) and [A2A Security & Governance](a2a-enterprise-security-governance-guide.md). For decision criteria (agent vs. tool vs. workflow), see [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix).
 
 ---
 
@@ -381,5 +381,5 @@ Does the task decompose into natural domain boundaries?
 - [A2A Enterprise Security & Governance](a2a-enterprise-security-governance-guide.md) — A2A protocol, agent cards, cross-org trust
 - [Governance Propagation Chain](governance-propagation-chain.md) — authorization across composition boundaries
 - [End-to-End Traceability Guide](end-to-end-traceability-guide.md) — trace propagation through composition layers
-- [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix.md) — agent vs. tool vs. workflow selection
-- [Agent Skills: Tools, MCP, A2A Relationship](../../agentic-systems/skill/enterprise/skills-tools-mcp-a2a-relationship.md)
+- [Workflow Orchestration Decision Matrix](../../workflow-orchestration/decision-matrix) — agent vs. tool vs. workflow selection
+- [Agent Skills: Tools, MCP, A2A Relationship](../../agentic-systems/skill/enterprise/skills-tools-mcp-a2a-relationship)

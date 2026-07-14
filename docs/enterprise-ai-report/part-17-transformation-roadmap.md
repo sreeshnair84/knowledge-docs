@@ -4,6 +4,7 @@ date_created: 2026-07-14
 last_reviewed: 2026-07-14
 status: current
 source_type: native-md
+source_file: ""
 tags: ["transformation-roadmap", "maturity-model", "ai-first", "ai-native", "implementation-roadmap", "30-60-90-day"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"

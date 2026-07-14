@@ -4,6 +4,7 @@ date_created: 2026-07-14
 last_reviewed: 2026-07-14
 status: current
 source_type: native-md
+source_file: ""
 tags: ["case-studies", "aws", "microsoft", "google", "openai", "anthropic", "mckinsey", "deloitte", "gartner", "industry-verticals"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"

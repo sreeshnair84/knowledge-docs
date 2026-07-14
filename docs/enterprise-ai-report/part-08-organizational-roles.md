@@ -4,6 +4,7 @@ date_created: 2026-07-14
 last_reviewed: 2026-07-14
 status: current
 source_type: native-md
+source_file: ""
 tags: ["organizational-roles", "raci", "chief-ai-officer", "ai-engineer", "mlops", "agentops", "career-path"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"

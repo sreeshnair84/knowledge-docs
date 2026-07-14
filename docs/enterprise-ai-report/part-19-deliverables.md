@@ -4,6 +4,7 @@ date_created: 2026-07-14
 last_reviewed: 2026-07-14
 status: current
 source_type: native-md
+source_file: ""
 tags: ["deliverables", "templates", "artifacts", "checklists", "raci", "architecture-diagrams", "consulting-playbook"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"
@@ -40,6 +41,9 @@ covers_version: "as of 2026-07-14"
 | AI CoE Charter Template | [Part 2 — Model 1: Centralised CoE](./part-02-operating-models#model-1--centralised-ai-centre-of-excellence-coe) | Charter template |
 | Hub & Spoke Design Pattern | [Part 2 — Model 2: Hub and Spoke](./part-02-operating-models#model-2--hub-and-spoke) | Org chart + RACI |
 | Agent Factory Design | [Part 2 — Model 8: AI Factory](./part-02-operating-models#model-8--ai-factory) | Factory pipeline diagram |
+| Agentic Process Blueprint Template | [Part 21 — Process Blueprint Template](./part-21-agentic-process-blueprint#process-blueprint-template) | Reusable process redesign template |
+| Agent-Infused Team Design Pattern | [Part 21 — Agent-Infused Teams](./part-21-agentic-process-blueprint#agent-infused-teams-organisational-pattern) | Org chart + job descriptions + metrics |
+| Greenfield vs Brownfield Decision Framework | [Part 20](./part-20-greenfield-vs-brownfield#decision-framework-greenfield-vs-brownfield-approach) | Decision table |
 | Governance Templates | [EA Masterclass Governance Templates](../ea-masterclass/deliverables/governance-templates) | Template library |
 
 ---
@@ -173,6 +177,8 @@ covers_version: "as of 2026-07-14"
 | GenAI vs Traditional ML Delivery | [Part 4](./part-04-genai-delivery#how-genai-delivery-differs-from-traditional-ml) |
 | AI DevSecOps vs Traditional | [Part 11](./part-11-devsecops#comparison-ai-devsecops-vs-traditional-devsecops) |
 | Greenfield vs Brownfield AI | [Part 20](./part-20-greenfield-vs-brownfield) |
+| Agentic Process Patterns (5 patterns) | [Part 21](./part-21-agentic-process-blueprint#agentic-process-patterns) |
+| Agent-Infused Team Metrics | [Part 21](./part-21-agentic-process-blueprint#metrics-for-agent-infused-teams) |
 | Cloud Provider Comparison | [Part 18](./part-18-case-studies) |
 
 ---

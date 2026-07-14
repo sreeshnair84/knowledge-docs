@@ -4,6 +4,7 @@ date_created: 2026-07-14
 last_reviewed: 2026-07-14
 status: current
 source_type: native-md
+source_file: ""
 tags: ["enterprise-ai", "operating-model", "transformation", "strategy", "governance", "agentic-ai"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"
@@ -19,7 +20,7 @@ covers_version: "as of 2026-07-14"
 
 ## About This Report
 
-This report is a synthesis hub: it structures the 19-part research framework and routes each topic to the **authoritative existing guide** in this repository, or — where no guide exists — to a new focused document written specifically to fill that gap.
+This report is a synthesis hub: it structures the 21-part research framework and routes each topic to the **authoritative existing guide** in this repository, or — where no guide exists — to a new focused document written specifically to fill that gap.
 
 It synthesises guidance from ISO, NIST, AWS, Azure, Google Cloud, OpenAI, Anthropic, NVIDIA, Gartner, McKinsey, BCG, Bain, Deloitte, Accenture, EY, PwC, and KPMG.
 
@@ -47,7 +48,9 @@ It synthesises guidance from ISO, NIST, AWS, Azure, Google Cloud, OpenAI, Anthro
 | [Part 16](#part-16) | AI Financial Operating Model | **Existing** → AI FinOps guide |
 | [Part 17](#part-17) | AI Transformation Roadmap | **Existing** → Transformation series |
 | [Part 18](#part-18) | Industry Case Studies | **Existing** → Use Cases section |
-| [Part 19](#part-19) | Deliverables, Templates & Artifacts | **Existing** → EA Lifecycle Artifacts + Deliverables |
+| [Part 19](./part-19-deliverables) | Deliverables, Templates & Artifacts | **New** — master index of all templates, RACIs, checklists |
+| [Part 20](./part-20-greenfield-vs-brownfield) | Greenfield vs Brownfield AI Transformation | **New** — strategy, integration patterns, decision framework |
+| [Part 21](./part-21-agentic-process-blueprint) | Agentic Process Blueprint | **New** — process redesign methodology, agent-infused teams |
 
 ---
 
