@@ -658,6 +658,9 @@ const sidebars = {
           items: [
             'enterprise-architecture/ai-architecture/index',
             'enterprise-architecture/ai-architecture/ART-Framework-Agentic-AI-Execution',
+            'enterprise-architecture/ai-architecture/AgentOps-Production-Guide',
+            'enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide',
+            'enterprise-architecture/ai-architecture/AI-Value-Stream-Mapping',
             'enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations',
             'enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy',
             'enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026',
@@ -801,7 +804,12 @@ const sidebars = {
           label: 'AI Security',
           items: [
             'ai-security-governance/security/index',
+            'ai-security-governance/security/AI-TRiSM-Complete-Guide',
             'ai-security-governance/security/AIDR-AI-Detection-Response-Complete-Guide',
+            'ai-security-governance/security/AISPM-AI-Security-Posture-Management',
+            'ai-security-governance/security/AI-Red-Teaming-Guide',
+            'ai-security-governance/security/AI-Bill-of-Materials-Guide',
+            'ai-security-governance/security/Model-Cards-System-Cards-Guide',
             'ai-security-governance/security/Foundations-Reference-Architecture',
             'ai-security-governance/security/Identity-MCP-A2A-Security-Blueprint',
             'ai-security-governance/security/Part4_Runtime_Security_Governance',
