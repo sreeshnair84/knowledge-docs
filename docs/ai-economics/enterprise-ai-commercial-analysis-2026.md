@@ -209,4 +209,114 @@ Level 3 — Value (Month 4+):
 
 ---
 
-*Companion reading: [Comparative Matrices & Decision Tools](../enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026.md) · [Future Outlook 2026–2030](../ai-foundations/enterprise-agentic-ai-outlook-2026-2030.md)*
+## 8. Provider Cost Comparison Matrix
+
+> **Note:** All pricing is directional as of mid-2026. Verify against official pricing pages before budgeting. Prices fall ~50% per capability tier every 12–18 months.
+
+### Inference Pricing by Provider (representative mid-2026)
+
+| Provider | Model Tier | Input (per 1M tokens) | Output (per 1M tokens) | Context Window | Batch Discount | Prompt Caching |
+|---|---|---|---|---|---|---|
+| **Anthropic** | claude-opus-4-8 (Frontier) | $15 | $75 | 200K | 50% (batches) | ~10% cached rate |
+| **Anthropic** | claude-sonnet-4-6 (Mid) | $3 | $15 | 200K | 50% | ~10% cached rate |
+| **Anthropic** | claude-haiku-4-5 (Budget) | $0.80 | $4 | 200K | 50% | ~10% cached rate |
+| **OpenAI** | o3 (Frontier reasoning) | $10 | $40 | 200K | 50% | 50% cached rate |
+| **OpenAI** | GPT-4o (Mid) | $2.50 | $10 | 128K | 50% | 50% cached rate |
+| **OpenAI** | GPT-4o-mini (Budget) | $0.15 | $0.60 | 128K | 50% | 50% cached rate |
+| **Google Gemini** | Gemini 2.5 Pro (Frontier) | $1.25–$2.50 | $10–$15 | 1M | Storage cost only | Storage cost |
+| **Google Gemini** | Gemini 2.0 Flash (Mid) | $0.10 | $0.40 | 1M | 50% | Storage cost |
+| **AWS Bedrock** | Nova Pro (Mid, Amazon) | $0.80 | $3.20 | 300K | Batch pricing | Via Bedrock cache |
+| **AWS Bedrock** | Nova Micro (Budget) | $0.035 | $0.14 | 128K | Batch pricing | Via Bedrock cache |
+| **Meta Llama 3 70B** | Self-hosted on H100 | ~$0.10–0.40 infra | (same) | 128K | N/A (batch native) | KV cache native |
+| **Meta Llama 3 8B** | Self-hosted on T4 | ~$0.02–0.08 infra | (same) | 128K | N/A | KV cache native |
+| **Mistral Large** | Mistral API (Mid) | $2 | $6 | 128K | Available | No |
+| **Cohere Command R+** | Cohere API | $2.50 | $10 | 128K | Available | No |
+| **DeepSeek V3** | API / self-hosted | $0.27 | $1.10 | 128K | Available | Partial |
+
+### Enterprise Feature Comparison
+
+| Provider | SOC 2 Type II | HIPAA BAA | GDPR DPA | Private Deployment | SLA | Enterprise Support |
+|---|---|---|---|---|---|---|
+| **Anthropic** | Yes | Yes (Claude for Enterprise) | Yes | Claude on AWS/GCP | 99.9% | Dedicated CSM |
+| **OpenAI** | Yes | Yes (Enterprise plan) | Yes | Azure OpenAI | 99.9% | Enterprise tier |
+| **Google Cloud** | Yes | Yes (Vertex AI) | Yes | Vertex AI (private) | 99.9% | Premium support |
+| **AWS Bedrock** | Yes | Yes | Yes | VPC endpoints; no internet | 99.9% | Enterprise support |
+| **Azure OpenAI** | Yes | Yes | Yes | Private endpoints | 99.9% | Enterprise |
+| **Mistral / Cohere** | Yes | Case-by-case | Yes | On-prem option | 99.5% | Business support |
+
+### Provisioned Throughput vs Pay-as-You-Go
+
+For workloads exceeding ~10M tokens/day consistently, provisioned throughput (reserved capacity) is cheaper:
+
+| Provider | Product | Pricing Model | When Cheaper Than PAYG | Latency Advantage |
+|---|---|---|---|---|
+| AWS Bedrock | Provisioned Throughput (PT) | Per-model unit / hour | At ~70%+ consistent utilization | Yes — priority queue |
+| Azure OpenAI | Provisioned Throughput Units (PTU) | Per PTU / hour | At ~60%+ consistent utilization | Yes — dedicated capacity |
+| Google Vertex | Committed use discount | % off on-demand | 1-year: 30% off; 3-year: 57% off | No priority guarantee |
+| Anthropic | Volume pricing tiers | Negotiated per-token | At $100K+/month | No (shared infra) |
+
+### FinOps Tooling by Provider
+
+| Provider | Native Cost Tools | AI Cost Attribution | Token Analytics | Budget Controls |
+|---|---|---|---|---|
+| **AWS** | Cost Explorer, Budgets, CE Anomaly | By AWS account / tag | Limited (Bedrock-specific) | AWS Budgets + alerting |
+| **Azure** | Cost Management + Billing | By resource group / tag | Azure AI Foundry usage metrics | Azure Budgets + alerts |
+| **Google Cloud** | Cloud Billing, Cost Table | By project / label | Vertex AI usage reports | Budget alerts + quotas |
+| **Anthropic** | Usage dashboard (basic) | By API key (workaround) | Token usage by model | Soft limits on request |
+| **OpenAI** | Usage dashboard | By API key | Token usage by model | Hard spend limits |
+| **Finout** | Dedicated AI FinOps platform | Full tagging taxonomy | TokenOps-native | Policy rules engine |
+| **CloudZero** | Unit economics focus | Team / product cost | AI cost per unit | Budget notification |
+| **Helicone** | LLM-native proxy | Per-key, per-user | Full token analytics | Rate limits, budgets |
+| **LangFuse** | AgentOps + cost | Per-session, per-agent | Token + latency + quality | Budget guards |
+
+### Self-Hosted Open-Weight Cost Model
+
+Self-hosted inference eliminates per-token API charges but introduces infrastructure and operational costs:
+
+```
+Self-Hosted Monthly Cost = 
+    GPU infrastructure (reserved or on-demand)
+    + Inference serving software (vLLM / TGI / TensorRT-LLM — mostly open-source)
+    + GPU monitoring and management
+    + Engineering overhead (platform team time pro-rated)
+    + Network egress (if serving from cloud)
+    + Storage (model weights: 70B model ≈ 140GB fp16)
+
+Self-Hosted Break-Even vs API (Anthropic claude-sonnet-4-6 at $3/$15 per 1M):
+  Hosted H100 on AWS ($7/hr): 24 × 30 = $5,040/month
+  Throughput: ~800M output tokens/month at continuous use
+  Self-hosted output cost: $5,040 / 800 = $6.30 / 1M tokens
+
+  API output cost (sonnet): $15/1M tokens
+  Break-even: ~250M output tokens/month
+  → Self-hosted wins above ~250M output tokens/month (consistent workload)
+  → API wins below ~150M output tokens/month (or highly variable demand)
+```
+
+---
+
+## 9. AI FinOps Procurement Framework
+
+### Contract Negotiation Priorities
+
+1. **MFN reprice clause** — require automatic repricing when provider announces lower prices (prices fall ~50% per capability tier per 18 months; lock-in at today's price is costly)
+2. **Audit rights** — right to audit token usage data and billing methodology; critical for multi-million-dollar deployments
+3. **Data processing agreement (DPA)** — required for GDPR; ensure AI provider cannot train on your data
+4. **SLA for provisioned capacity** — for PT/PTU arrangements, require financial penalties for SLA breaches (not just credits)
+5. **Volume commitment with quarterly true-up** — commit to volume for discounts but true-up quarterly, not annually
+6. **Exit clause** — data portability and model checkpoint export rights (for fine-tuned models); avoid lock-in on proprietary fine-tuned weights
+
+### Procurement Red Flags
+
+| Red Flag | Risk | Response |
+|---|---|---|
+| "Credit" pricing with opaque conversion | CFO cannot verify ROI | Require credit-to-outcome conversion tables in contract |
+| Per-seat pricing for agentic workflows | Seat model doesn't fit agent economics | Negotiate consumption-based addendum |
+| No audit rights on token billing | Hidden overcharging risk | Walk away or require independent audit |
+| Training on customer data by default | IP and confidentiality risk | Opt-out (or choose provider that doesn't train on customer data) |
+| Auto-renewing annual contract without reprice clause | Price lock while market falls | Always include MFN clause |
+| Sole-source commitment >12 months | Vendor lock-in | Multi-provider architecture; maximum 18-month primary commitment |
+
+---
+
+*Companion reading: [AI FinOps Guide Series](../enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide.md) · [AI Tokenomics](ai-tokenomics-guide.md) · [Comparative Matrices](../enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026.md) · [Future Outlook 2026–2030](../ai-foundations/enterprise-agentic-ai-outlook-2026-2030.md)*

@@ -195,9 +195,96 @@ def route_to_model(task_type: str, complexity_score: float) -> str:
 
 ---
 
+## Cost-Aware Agent Planning
+
+Cost governance must extend inside the agent's planning loop, not just around it. A budget-aware planner reasons about remaining budget when selecting tools, sub-agents, and strategies:
+
+```python
+class BudgetAwarePlanner:
+    def __init__(self, total_budget_usd: float, model_costs: dict):
+        self.budget = total_budget_usd
+        self.spent = 0.0
+        self.costs = model_costs  # {"frontier": 0.075, "mid": 0.015, "nano": 0.0006}
+
+    def select_strategy(
+        self,
+        task_complexity: float,   # 0.0–1.0
+        remaining_budget: float,
+        sla_tier: str,            # "critical" | "standard" | "batch"
+    ) -> dict:
+        """Choose model tier and tool set based on budget and SLA."""
+        budget_ratio = remaining_budget / self.budget
+
+        # Degrade gracefully as budget depletes
+        if sla_tier == "critical":
+            model = "frontier"   # never downgrade critical tasks
+        elif budget_ratio < 0.15:
+            model = "nano"       # <15% budget left: conserve aggressively
+            return {"model": model, "tools": ["essential_only"], "max_steps": 3}
+        elif budget_ratio < 0.35 or task_complexity < 0.4:
+            model = "mid"
+            return {"model": model, "tools": ["standard"], "max_steps": 5}
+        else:
+            model = "frontier" if task_complexity > 0.7 else "mid"
+            return {"model": model, "tools": ["full"], "max_steps": 10}
+```
+
+**Planning decisions should incorporate:** remaining session budget, business criticality of the task, expected quality impact of model downgrade, and cost of retrying with a better model vs. accepting current-model output.
+
+---
+
+## AI Cost vs. Traditional Cloud FinOps
+
+Understanding the structural differences helps frame why AI-specific disciplines are needed:
+
+| FinOps Dimension | Traditional Cloud | AI / Agentic Workloads |
+|---|---|---|
+| **Unit of cost** | VM-hour, GB-month, request | Token (input + output + cached + reasoning) |
+| **Cost predictability** | High for reserved capacity | Low: content-driven, agent-loop-driven, non-deterministic |
+| **Spike risk** | Gradual auto-scale events | Instantaneous: runaway agent can spend $1,000 in 4 minutes |
+| **Optimization lever** | Rightsizing, reservations, spot | Routing, caching, compression, batching, distillation |
+| **Attribution granularity** | Resource tags on infrastructure | Metadata tags on every ephemeral API call |
+| **Cost visibility lag** | Near real-time (cloud billing APIs) | Sub-minute required (pre-call budget checks) |
+| **Unit economics metric** | Cost per GB-month, cost per request | Cost per business outcome, value per token |
+| **Governance model** | Tag policies, resource policies | Per-call tagging + gateway enforcement + circuit breakers |
+
+FinOps Foundation guidance applies to both domains; AI FinOps extends the Crawl/Walk/Run framework with token-specific disciplines under the **TokenOps** sub-discipline.
+
+---
+
+## Industry Considerations
+
+### Financial Services (Banking, Insurance)
+
+- **Regulatory cost floor:** Explainability and audit requirements mandate human-in-the-loop review for regulated decisions — HITL cost cannot be optimized away for credit, claims, or AML decisions.
+- **Data residency:** Cross-region inference is restricted; self-hosted or region-locked API endpoints required, often at a cost premium (10–30% above standard API pricing).
+- **Model risk management (MRM):** Each model version change requires MRM review — model routing changes are subject to governance overhead.
+- **High-value optimization lever:** Document processing (claims, contracts, regulatory filings) at $0.10–$0.50/document vs. $5–$50 manual processing.
+
+### Healthcare / Life Sciences
+
+- **PHI constraints:** HIPAA BAAs required with AI providers; BAA-eligible providers (Azure OpenAI, AWS Bedrock) carry a price premium but are mandatory.
+- **Audit trail costs:** Every AI decision for clinical or billing use must have immutable audit trail storage — adds 5–10% to observability costs.
+- **High-value optimization lever:** Clinical documentation (notes, prior auth) where AI automation at $0.25–$1.00/note vs $15–$40 manual transcription.
+
+### Retail / E-Commerce
+
+- **Seasonal demand:** 5–10× token volume spikes during peak (Black Friday, holiday); reserve capacity or use serverless for burst tolerance.
+- **Real-time constraint:** Product recommendation and personalization require <100ms latency — semantic caching is critical to avoid inference latency penalty.
+- **High-value optimization lever:** Product catalog processing, customer intent classification at very high volume with budget-tier models.
+
+### Public Sector / Government
+
+- **Sovereign cloud requirement:** Often requires GovCloud deployments with restricted model availability and higher pricing.
+- **Budget cycle rigidity:** Annual budget cycles cannot absorb mid-year AI spend surprises — conservative P90 forecasting required.
+- **High-value optimization lever:** Document summarization (policy, legal) and citizen service routing.
+
+---
+
 ## References
 
 - [Finout: TokenOps — The Definitive Guide to FinOps for Tokens](https://www.finout.io/blog/token-economics-and-tokenops-the-definitive-guide-to-finops-for-tokens)
+- [FinOps Foundation: AI and FinOps](https://www.finops.org/projects/ai-finops/)
 - [Zylos Research: AI Agent Cost Optimization — Token Economics and FinOps](https://zylos.ai/research/2026-02-19-ai-agent-cost-optimization-token-economics/)
 - [The Deployment Layer: The Token Economy — LLM Cost Architecture](https://www.thedeploymentlayer.com/p/the-token-economy-why-llm-cost-architecture-will-define-enterprise-ai-winners)
 - [AI FinOps Function 2026: Org Chart, Tools, Budgets](https://www.buildmvpfast.com/blog/ai-finops-function-token-budget-org-chart-2026)
@@ -207,8 +294,26 @@ def route_to_model(task_type: str, complexity_score: float) -> str:
 
 ## See Also
 
-| Guide | Link |
-|-------|------|
-| AgentOps (observability layer) | [AgentOps Guide](./AgentOps-Production-Guide.md) |
-| A.R.T. Framework (Tenacity pillar) | [A.R.T. Guide](./ART-Framework-Agentic-AI-Execution.md) |
-| Enterprise AIops | [Enterprise AIops Guide](./enterprise-aiops-guide.md) |
+### AI FinOps Guide Series
+
+| Guide | Coverage |
+|---|---|
+| [Multi-Agent Cost Propagation](./ai-finops-multi-agent-cost-propagation.md) | How costs amplify through Planner→Supervisor→Worker chains |
+| [Cost Attribution & Chargeback](./ai-finops-chargeback-attribution.md) | Tagging taxonomy, showback/chargeback workflows |
+| [Budget Governance & Guardrails](./ai-finops-budget-governance.md) | Per-agent/tenant quotas, circuit breakers, approval workflows |
+| [Unit Economics & KPI Dashboard](./ai-finops-unit-economics-kpis.md) | Cost-per-outcome, ROI, executive dashboards |
+| [RAG, MCP & A2A Economics](./ai-finops-rag-mcp-a2a-economics.md) | Retrieval and interoperability layer costs |
+| [Capacity Planning & Forecasting](./ai-finops-capacity-forecasting.md) | Token demand forecasting, GPU sizing, TCO/NPV |
+| [Infrastructure Optimization](./ai-finops-infrastructure-optimization.md) | GPU right-sizing, MIG, quantization, distillation |
+| [FinOps Maturity Model](./ai-finops-maturity-model.md) | Crawl/Walk/Run/Fly maturity stages and 30/60/90-day roadmap |
+
+### Related Platform Guides
+
+| Guide | Coverage |
+|---|---|
+| [AgentOps (observability layer)](./AgentOps-Production-Guide.md) | Production monitoring, tracing, quality |
+| [AI Tokenomics](../../ai-economics/ai-tokenomics-guide.md) | Token mechanics, context window economics, batch API |
+| [Enterprise AI Commercial Analysis](../../ai-economics/enterprise-ai-commercial-analysis-2026.md) | Pricing taxonomy, vendor contracts, GPU economics |
+| [Token Management Implementation](../../ai-economics/AI_Cost_Implementation_Guide_2026.md) | Gateway, routing, caching implementation code |
+| [Economic Security & FinOps](../../ai-security-governance/security/05-Economic-Security-FinOps-Commerce-PQC.md) | Budget as security surface; autonomous commerce |
+| [A.R.T. Framework (Tenacity pillar)](./ART-Framework-Agentic-AI-Execution.md) | Cost-reliability trade-offs in agent execution |
