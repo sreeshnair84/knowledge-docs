@@ -856,4 +856,4 @@ loaded_cost = salary * 1.50  # 50% overhead multiplier (adjust to your org)
 
 ---
 
-*Module 8 complete. Proceed to Module 9 — Risk Management and Architecture Decision Records.*
+*Module 8 complete. Proceed to Module 9 — Enterprise AI Architecture.*

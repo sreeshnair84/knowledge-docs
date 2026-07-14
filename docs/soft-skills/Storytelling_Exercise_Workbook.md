@@ -1,7 +1,7 @@
 ---
 title: "Storytelling Exercise Workbook"
 date_created: 2026-07-10
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-14
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
@@ -22,7 +22,7 @@ This workbook has five sections. Work through them in order — each one builds 
 | 02 | Section 2 — STAR Story Worksheets: Build 3 of your own work stories from scratch. |
 | 03 | Section 3 — Emotion Mapping: Diagnose whether your story balances logic and feeling. |
 | 04 | Section 4 — Self-Scoring: Rate your delivery across 10 key storytelling criteria. |
-| 05 | Section 5 — Story Bank + Weekly Tracker: Build your personal library and track daily practice. |
+| 05 | Section 5 — Personal Story Library + Weekly Tracker: Build your personal library and track daily practice. |
 
 **01  The Frameworks**   STAR Method + 3-Act Structure
 
@@ -210,13 +210,15 @@ After delivering any story — recorded or live — use this scorecard. Circle y
 |  |
 |  |
 
-**05  Story Bank + Weekly Tracker**   Build your library. Track your reps.
+**05  Personal Story Library + Weekly Tracker**   Build your library. Track your reps.
 
-## **Your Story Bank**
+> **Going deeper on CTO-level storytelling?** The [CTO Voice Mastery Program](CTO_Voice_Mastery_Program) builds on these STAR / 3-Act foundations with Vinh Giang's **Hormone Framework** (Dopamine / Oxytocin / Endorphin / Cortisol), his **7 Storytelling Secrets** (dialogue, dopamine hooks, peak lesson, playfulness), and a full 12-week **Story Bank** system targeting boardroom and executive communication. Start there after completing this Workbook if you are a senior technical leader.
 
-Expert speakers don't improvise stories — they maintain a personal library of 5-10 stories they can deploy in any situation. Build yours here.
+## **Your Personal Story Library**
 
-**Tip:**For each story, identify 2-3 different contexts where you could use it — the same story about a difficult client can work in a job interview, a team meeting, or a sales pitch.
+Expert speakers don't improvise stories — they maintain a personal library of 5–10 stories they can deploy in any situation. Build yours here.
+
+**Tip:**For each story, identify 2–3 different contexts where you could use it — the same story about a difficult client can work in a job interview, a team meeting, or a sales pitch.
 
 | Story Topic / Title | Core Message | Best Used When | Delivery Time |
 | --- | --- | --- | --- |

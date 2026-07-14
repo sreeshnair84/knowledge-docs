@@ -1,7 +1,8 @@
 ---
 title: "Module 4 — Technology Investment Fundamentals"
 date_created: 2026-07-09
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-14
+next_review_due: 2027-01-14
 status: current
 supersedes: ""
 source_type: native-md
@@ -245,7 +246,8 @@ AI investments do not follow the same economic patterns as conventional software
 AI workloads are compute-intensive in a way that commodity servers cannot support. Specialist accelerators are required:
 
 ```
-Accelerator Cost Reference (approximate, varies by cloud/region/vintage)
+Accelerator Cost Reference (illustrative order-of-magnitude — verify current pricing before
+use in a business case; GPU/TPU rates change frequently with new hardware generations)
 │
 ├── Training Workloads
 │   ├── NVIDIA A100 (80GB)    ~$3.00–4.00/hr (cloud, on-demand)

@@ -77,7 +77,7 @@ What is the recommended action? Not a menu of options (though options have their
 
 ## Acronym Glossary: Enterprise Architecture & AI Strategy
 
-This glossary covers the complete set of acronyms used across all 14 modules. Use it as a reference throughout your practice.
+This glossary covers the complete set of acronyms used across all 15 modules. Use it as a reference throughout your practice.
 
 | Acronym | Full Form | Context |
 | --------- | ----------- | --------- |
@@ -127,6 +127,7 @@ This glossary covers the complete set of acronyms used across all 14 modules. Us
 | KPI | Key Performance Indicator | Management — measurable value demonstrating how effectively objectives are achieved |
 | KRI | Key Risk Indicator | Risk — metric providing early warning of increasing risk exposure |
 | LLM | Large Language Model | AI — deep learning model trained on vast text corpora (e.g., GPT, Claude) |
+| LLMOps | Large Language Model Operations | AI — operational practices for deploying, monitoring, and maintaining LLMs in production (extends MLOps for generative AI) |
 | MCP | Model Context Protocol | AI — open protocol enabling AI models to interact with external tools and data sources |
 | MDM | Master Data Management | Data — practice ensuring consistency of critical business data across systems |
 | MoSCoW | Must / Should / Could / Won't | Prioritisation — technique for classifying requirements by importance |
@@ -136,6 +137,7 @@ This glossary covers the complete set of acronyms used across all 14 modules. Us
 | OKR | Objective and Key Result | Management — goal-setting framework linking objectives to measurable outcomes |
 | OpEx | Operational Expenditure | Finance — ongoing costs for running operations |
 | OSS | Operations Support System | Technology — systems supporting network operations (telecoms context) |
+| OWASP | Open Web Application Security Project | Security — non-profit producing security guidance including the OWASP Top 10 for LLMs threat taxonomy |
 | PBAC | Policy-Based Access Control | Security — access control governed by policies rather than roles |
 | PCI-DSS | Payment Card Industry Data Security Standard | Regulatory — security standard for organisations handling payment cards |
 | PMO | Programme Management Office | Organisation — body overseeing standards and delivery of programmes |
@@ -155,6 +157,7 @@ This glossary covers the complete set of acronyms used across all 14 modules. Us
 | SaaS | Software as a Service | Technology — software delivered via the cloud on a subscription basis |
 | SAFe | Scaled Agile Framework | Methodology — framework for scaling agile across the enterprise |
 | SDLC | Software Development Life Cycle | Engineering — process for planning, creating, testing, and deploying software |
+| SHAP | SHapley Additive exPlanations | AI — mathematical framework for explaining ML model predictions by attributing each feature's contribution to the output |
 | SIEM | Security Information and Event Management | Security — platform for real-time monitoring and analysis of security events |
 | SLA | Service Level Agreement | Operations — contract defining expected service performance levels |
 | SoW | Statement of Work | Commercial — document defining scope, deliverables, and terms for an engagement |
@@ -684,12 +687,12 @@ Prepare and deliver the investment approval pitch.
 - In what ways does your current role already involve enterprise architecture thinking?
 - What is the biggest gap between how your organisation currently uses EA and how it could?
 
-### Module 2 — AI Strategy
+### Module 2 — Business Acumen for Enterprise Architects
 
 - What would an AI strategy document for your current organisation look like at a high level?
 - What is the single most important AI capability your organisation is missing?
 
-### Module 5 — AI Maturity
+### Module 5 — AI Investment Strategy
 
 - How would you rate your current organisation's AI maturity, and what is the most critical constraint?
 
@@ -717,7 +720,7 @@ Prepare and deliver the investment approval pitch.
 
 - What is the most common piece of feedback you receive on your presentations?
 
-### Module 12 — AI Use Cases
+### Module 12 — AI Consulting Engagement Delivery
 
 - What is one AI use case in your industry that you believe is underestimated?
 

@@ -516,30 +516,37 @@ const sidebars = {
             'ea-masterclass/module-13-case-studies/healthcare',
             'ea-masterclass/module-13-case-studies/manufacturing',
             'ea-masterclass/module-13-case-studies/retail',
-            'ea-masterclass/module-13-case-studies/government',
             'ea-masterclass/module-13-case-studies/telecom',
+            'ea-masterclass/module-13-case-studies/government',
+            'ea-masterclass/module-13-case-studies/energy-utilities',
           ],
         },
-        'ea-masterclass/module-14-mentoring/index',
+        {
+          type: 'category',
+          label: 'Module 14: Mentoring & Mastery',
+          items: [
+            'ea-masterclass/module-14-mentoring/index',
+          ],
+        },
         {
           type: 'category',
           label: 'Module 15: Distinguished Architect',
           items: [
             'ea-masterclass/module-15-distinguished-architect/index',
-            'ea-masterclass/module-15-distinguished-architect/architecture-leadership',
             'ea-masterclass/module-15-distinguished-architect/executive-presence',
             'ea-masterclass/module-15-distinguished-architect/strategic-thinking',
+            'ea-masterclass/module-15-distinguished-architect/architecture-leadership',
             'ea-masterclass/module-15-distinguished-architect/fortune100-modernisation',
           ],
         },
         {
           type: 'category',
-          label: 'Deliverables',
+          label: 'Templates & Deliverables',
           items: [
             'ea-masterclass/deliverables/index',
             'ea-masterclass/deliverables/business-case-templates',
-            'ea-masterclass/deliverables/consulting-templates',
             'ea-masterclass/deliverables/governance-templates',
+            'ea-masterclass/deliverables/consulting-templates',
           ],
         },
         {

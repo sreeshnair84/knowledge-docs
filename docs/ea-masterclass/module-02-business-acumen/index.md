@@ -720,4 +720,4 @@ The gap between a technical architect and a *trusted strategic advisor* is almos
 ---
 
 !!! note "Next Module"
-    **Module 3 — Enterprise Architecture Frameworks** covers TOGAF, Zachman, and SAFe from an architectural practitioner's perspective: what each framework actually gives you, where each one fails in practice, and how to apply them pragmatically without becoming a framework bureaucrat.
+    **Module 3 — Proposal Lifecycle and Enterprise Procurement** covers how enterprises buy technology (RFI, RFP, RFQ, sole source), the full proposal lifecycle from qualification to award, how to map decision-makers, and the most common reasons proposals fail — and how to avoid each one.

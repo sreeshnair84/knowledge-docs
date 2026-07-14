@@ -1,7 +1,8 @@
 ---
 title: "Module 9 — Enterprise AI Architecture"
 date_created: 2026-07-09
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-14
+next_review_due: 2027-01-14
 status: current
 supersedes: ""
 source_type: native-md
@@ -991,7 +992,7 @@ Use this checklist to assess readiness for enterprise AI architecture responsibi
 ---
 
 !!! note "Next Module"
-    Module 10 covers **AI Operating Models and the AI Centre of Excellence** — how to structure the team, governance, and ways of working that bring enterprise AI architecture to life inside an organisation.
+    Module 10 covers **Enterprise Governance for AI Programs** — program governance structures, RACI matrices, architecture governance boards and decision rights, responsible AI governance, and regulatory compliance (EU AI Act, NIST AI RMF).
 
 ---
 

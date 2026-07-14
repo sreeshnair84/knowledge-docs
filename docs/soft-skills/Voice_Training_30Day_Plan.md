@@ -1,7 +1,8 @@
 ---
 title: "Voice Training 30-Day Plan"
+sidebar_label: "Voice Training 30-Day Plan"
 date_created: 2026-07-10
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-14
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
@@ -34,12 +35,12 @@ Complete this every day before moving into your weekly focus. This is non-negoti
 
 ## **The 3 Phases**
 
-**Phase 1****Foundation**   Weeks 1-2
-*Build the core mechanics: breathing, warm-up, and articulation. Identify your bad habits through daily recordings.*
-**Phase 2****Delivery**   Weeks 3-4
-*Shape how you sound. Master pace control, strategic pausing, pitch variation, and volume dynamics.*
-**Phase 3****Performance**   Weeks 5-12
-*Apply everything under pressure. Impromptu speaking, live audiences, and TED Talk shadowing.*
+**Phase 1****Foundation**   Week 1
+*Establish your daily routine and identify your current habits. Record every single day and start spotting the patterns.*
+**Phase 2****Delivery**   Weeks 2–3
+*Deepen breath control, speed up articulation, and shape how you sound — pace, pausing, pitch, and volume dynamics.*
+**Phase 3****Performance**   Week 4
+*Apply everything under real pressure: impromptu speaking, live audience reps, peer feedback, and a final recorded speech.*
 
 ## **Week 1 — Build the Foundation**
 
@@ -101,14 +102,14 @@ Focus: Apply everything to real-world situations. Impromptu speaking, live audie
 
 Use these checkpoints to measure your growth. Be honest with yourself — improvement takes time.
 
-| Milestone | Target Week | How to Measure |
+| Milestone | Target | How to Measure |
 | --- | --- | --- |
 | Filler words drop by 50% | Week 3 | Count ums/uhs in daily recordings |
 | Breath supports full sentences | Week 4 | No running out of air mid-sentence |
-| Comfortable with pausing | Week 5 | Hold a 2-sec pause without panic |
-| Others notice improvement | Week 7 | Ask for feedback from someone close |
-| Control pace under pressure | Week 9 | Present to a small group confidently |
-| Feel in control on stage | Week 12 | Deliver 5-min talk with no prep notes |
+| Comfortable with pausing | Week 4 | Hold a 2-sec pause without panic |
+| Others notice improvement | Ongoing (post-plan) | Ask for feedback from someone close after completing the plan |
+| Control pace under pressure | Ongoing (post-plan) | Present to a small group confidently — 1–2 months of continued practice |
+| Feel in control on stage | Ongoing (post-plan) | Deliver a 5-min talk with no prep notes — target after consistent practice beyond Day 28 |
 
 ## **Breathing Techniques Reference**
 
@@ -133,17 +134,26 @@ Used for: In-session control during your practice.
 Inhale for 4 counts
 Exhale for 8 counts — the extended exhale activates your calm response
 
+## **Beyond 28 Days**
+
+Completing this plan builds your foundation — but Stage 4 mastery (where good habits are automatic, not effortful) takes sustained practice beyond four weeks. Two options for continuing:
+
+- **General continuation:** Keep running the Week 4 daily routine and take on live speaking opportunities — Toastmasters meetings, conference lightning talks, or team all-hands presentations.
+- **Deep track for senior technical leaders:** The [CTO Voice Mastery Program](CTO_Voice_Mastery_Program) is a full 12-week, day-by-day program that builds directly on these foundations — adding storytelling frameworks, executive presence, influence tools (Chris Voss), and a structured Story Bank. If you are a senior architect or technical leader targeting CTO-level communication, continue your journey there.
+
 ## **Free Resources**
 
 All resources below are 100% free. Use them alongside your daily practice.
 
+*Last verified: 2026-07-14. Free-tier availability and course access can change — confirm current status before relying on a specific tool.*
+
 | Resource | Type | Best Used For |
 | --- | --- | --- |
-| Yoodli (yoodli.ai) | Free AI Tool | Daily recording feedback on pace, fillers, conciseness |
+| Yoodli (yoodli.ai) | AI Tool (free tier available) | Daily recording feedback on pace, fillers, conciseness |
 | Toastmasters International (YouTube) | Free Channel | Studying real speeches and evaluation techniques |
 | TED-Ed (YouTube) | Free Channel | Modeling world-class delivery and storytelling |
 | Presentation Guru (YouTube) | Free Channel | Practical delivery tips and presentation hacks |
-| Coursera — Intro to Public Speaking | Free Course (audit) | Structured 5-week program, conquering anxiety |
+| Coursera — Intro to Public Speaking | Free Course (audit available) | Structured 5-week program, conquering anxiety |
 | Toastmasters Meetings | Free Community | Live audience reps and real-time feedback |
 
 ## **Golden Rules**
@@ -153,6 +163,6 @@ Slow down — most speakers go 20% faster than ideal under pressure
 Embrace silence — a 2-second pause is a power move, not a mistake
 Consistency over intensity — 25 minutes daily beats 3 hours once a week
 Seek live audiences — no app can replicate real-world pressure
-Be patient — noticeable improvement comes around Week 5-7
+Be patient — noticeable improvement typically arrives by the end of Week 4, with continued growth through ongoing practice
 
 *Your voice is already inside you. This plan helps you unlock it.*

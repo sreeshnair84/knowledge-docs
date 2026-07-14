@@ -1,7 +1,7 @@
 ---
 title: "CTO Voice Mastery Program"
 date_created: 2026-07-10
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-14
 status: current
 source_type: converted-pdf
 covers_version: "N/A"
@@ -15,6 +15,8 @@ tags: ["soft-skills"]
 **The World's Best CTO Voice & Communication Mastery Program** — an 84-day, day-by-day training transcript designed for a 20-year senior architect.
 
 **Masters synthesized:** Vinh Giang · Julian Treasure · Chris Voss
+
+> **Editorial note:** The day-by-day narration in this program is an original synthesis and dramatization for self-directed learning. It is **not** written, endorsed, or reviewed by Vinh Giang, Julian Treasure, or Chris Voss. Only the specifically footnoted quotations attributed to each author represent their actual words from verified public sources. All other coaching-voice content is the program author's synthesis of their publicly available work.
 
 > "You are only as good as you can communicate." — Vinh Giang
 
@@ -260,7 +262,7 @@ The Stakes Statement: For your most important topic this week, write a 30-second
 
 Did you feel the shift when you switched into Motivator mode? How did the room respond? Was it uncomfortable to show that level of conviction and energy? Good — that discomfort is growth.
 
-📚 Source: Keefe Chee, Stage Academy Review (keefechee.com) and Vinh Giang Stage Academy Module 3 (coursesdwn.com): 'The Motivator inspires — higher volume, faster rate, expansive gestures. Dynamic and charismatic communicators master vocal archetypes and switch between them with ease.'
+📚 Source: Keefe Chee, Stage Academy Review (keefechee.com) and Vinh Giang, Stage Academy (vinhgiang.com): The Motivator inspires — higher volume, faster rate, expansive gestures. Dynamic and charismatic communicators master vocal archetypes and switch between them with ease.
 
 ### Day 4 — The Coach — Authority Without Aggression  *[VINH FRAMEWORK]*
 
@@ -376,7 +378,7 @@ The Hormone Audit: Take a recent presentation you delivered. Mark each section: 
 
 How much of your current communication is cortisol only? (Fear and urgency without connection.) How much has no hormonal impact at all? Which hormone are you most uncomfortable deploying?
 
-📚 Source: Vinh Giang, Stage Academy Module 4 (coursesdwn.com): 'Storytelling triggers four key hormones: Dopamine creates curiosity and anticipation. Oxytocin creates trust and connection. Endorphins create openness through humor and lightness. Cortisol creates urgency and drives action. A powerful story activates all four.'
+📚 Source: Vinh Giang, Stage Academy (vinhgiang.com): Storytelling triggers four key hormones — Dopamine creates curiosity and anticipation; Oxytocin creates trust and connection; Endorphins create openness through humor and lightness; Cortisol creates urgency and drives action. A powerful story activates all four.
 
 ### Day 2 — Reliving vs Reporting — The Storyteller's Greatest Secret  *[VINH FRAMEWORK]*
 
@@ -394,6 +396,8 @@ Which of your 20 years of experience has the strongest reliving potential? Which
 
 ### Day 3 — The Story Bank — Your 20-Year Arsenal  *[VINH FRAMEWORK]*
 
+> **Companion resource:** The [Storytelling Exercise Workbook](Storytelling_Exercise_Workbook) contains a fillable STAR story worksheet and a **Personal Story Library** template — a lightweight complement to this program's Story Bank. If you want a structured drill format for building individual stories before archiving them here, use the Workbook's worksheets and self-scoring checklist alongside today's Story Bank entries.
+
 Twenty years, my friend. Twenty years of architecture decisions, production disasters, team battles, technical breakthroughs, client saves, late nights, and hard lessons. Every single one of those experiences is a story waiting to serve you. But right now they are locked inside your head, unorganized and unreachable under pressure. Today we build your Story Bank — a library of 10 to 20 key stories that you know so well you could tell any of them, fluently, in 90 seconds, from any starting point. This is your most competitive advantage as a communicator.
 
 Today you begin documenting your story bank. Identify 5 stories from your career that have shaped how you work and what you believe. Give each one a one-word label.
@@ -404,7 +408,7 @@ Story Bank Template — document each story using this format: (1) The Setup: Wh
 
 As you documented your stories, which ones surprised you with their power? Which felt too vulnerable to tell? Those vulnerable ones are often your most powerful leadership stories.
 
-📚 Source: Vinh Giang, Stage Academy Module 4 (coursesdwn.com): 'Learn to build a library of stories that you can pull from at any time. Learn how to document stories and use stories to drive outcomes. Your story bank is one of your greatest professional assets as a leader.'
+📚 Source: Vinh Giang, Stage Academy (vinhgiang.com): Vinh Giang's publicly taught Story Bank concept — building a library of documented stories you can deploy at any time. Your story bank is one of your greatest professional assets as a leader.
 
 ### Day 4 — Tactical Empathy — Chris Voss Meets the Boardroom  *[VOSS FRAMEWORK]*
 
@@ -510,6 +514,8 @@ Watch your full recording. Compare it to your Week 1 Day 1 baseline. What is dra
 
 ### Day 1 — The 7 Storytelling Secrets — Part 1  *[VINH FRAMEWORK]*
 
+> **Companion resource:** The [Storytelling Exercise Workbook](Storytelling_Exercise_Workbook) teaches the **STAR method and 3-Act structure** — a complementary framework to Vinh's 7 Secrets. Where this week focuses on narrative craft (dialogue, dopamine hooks, symbolism), the Workbook gives you a structured drill format for crafting individual stories and an Emotion Mapping exercise for balancing logic and feeling. The two systems are compatible: STAR / 3-Act frames the skeleton; Vinh's Secrets animate it.
+
 Good morning. Week 7. Pure storytelling mastery. Over the next 5 days, I am going to give you Vinh's complete storytelling system — all 7 secrets. These are not techniques for motivational speakers. They are precision tools for the boardroom, the executive briefing, the all-hands. A well-crafted 90-second story can move a room more than 30 minutes of slides. I have seen it happen hundreds of times. This week, you learn to craft it.
 
 Today: focus on Secrets 1 and 2 — personal stories with dialogue. Find one story from your career that has a conversation inside it. Rewrite it using actual dialogue, not summary.
@@ -548,7 +554,7 @@ The Open Loop Opener: Take 3 stories from your bank. Write a new first sentence 
 
 Which open loop generated the most curiosity in the room or on the call today when you tested it? Which fell flat?
 
-📚 Source: Vinh Giang, Stage Academy Module 4 (coursesdwn.com) and Storytelling Course (vinhgiang.com): 'Discover how to keep your audience hooked by structuring stories that trigger curiosity and anticipation. Learn to foster trust and empathy so your listeners feel genuinely connected to you.'
+📚 Source: Vinh Giang, Storytelling Course (vinhgiang.com): Vinh Giang's open-loop storytelling technique — structuring stories to trigger curiosity and anticipation and keep audiences hooked through to the resolution.
 
 ### Day 4 — The Labeling Technique — Naming the Room's Emotion  *[VOSS FRAMEWORK]*
 
@@ -990,7 +996,7 @@ QUARTERLY: 3-minute self-assessment video. Compare to previous quarter. One goal
 
 ### Citation Reference
 
-Vinh Giang: vinhgiang.com, Stage Academy (coursesdwn.com), Jay Shetty On Purpose Podcast (iheart.com), UNSTOPPABLE Podcast Transcript (ytscribe.com), Key Communication Lessons (oratoryclub.com), Vocal Archetypes (linkedin.com/in/vinhgiang), Stage Academy Review by Keefe Chee (keefechee.com), 7 Tips to Become More Confident (cmispeakers.com).
+Vinh Giang: vinhgiang.com (official platform — Stage Academy, Storytelling Course, 7 Powerful Storytelling Secrets, Top 10 Communication Tips), Jay Shetty On Purpose Podcast (iheart.com), UNSTOPPABLE Podcast Transcript (ytscribe.com), Key Communication Lessons (oratoryclub.com), Vocal Archetypes (linkedin.com/in/vinhgiang), Stage Academy Review by Keefe Chee (keefechee.com — status unverified as of 2026-07-14), 7 Tips to Become More Confident (cmispeakers.com).
 
 Julian Treasure: TED Global 2013 'How to Speak So That People Want to Listen' (ted.com), Full Transcript (singjupost.com), TED Podcast with Chris Duffy (ted.com), How to Speak Summary (speeko.co), Podwise Summary (podwise.org), Book Butter Club Summary (bookbutterclub.com).
 

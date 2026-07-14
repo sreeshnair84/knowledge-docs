@@ -161,7 +161,7 @@ Synthesizes the most transferable insights from each case — the principles tha
 | [Global Retailer — Demand Forecasting](retail.md) | Retail | Federated ML + real-time POS integration | Medium-High |
 | [National Telco — Network Anomaly Detection](telecom.md) | Telecommunications | Streaming ML + event processing | High |
 | [Tax Authority — Audit Risk Scoring](government.md) | Public Sector | Explainable ML + algorithmic accountability | Very High |
-| Energy Utility — Predictive Maintenance | Energy and Utilities | IoT + edge ML + EAM integration | Medium-High |
+| [Energy Utility — Predictive Maintenance](energy-utilities.md) | Energy and Utilities | IoT + edge ML + EAM integration | Medium-High |
 
 ---
 
@@ -169,4 +169,4 @@ Synthesizes the most transferable insights from each case — the principles tha
     If this is your first pass through Module 13, read the **Global Bank** case first — it is the most structurally complete and introduces investment justification mechanics in the most detail. Follow with **Healthcare**, which provides the deepest treatment of AI governance in a regulated environment. The remaining four cases can be read in any order, though reading **Government Tax** last is recommended as it contains the module's most advanced governance content and benefits from the foundation established by the earlier cases.
 
 !!! note "Cross-Module Connections"
-    The architecture patterns in these cases draw on concepts introduced in earlier modules. Document AI pipelines (Global Bank) connect to Module 7's treatment of unstructured data integration. The federated ML architecture (Global Retailer) connects to Module 9's edge and distributed compute patterns. The explainability controls (Banking, Government) connect to Module 11's responsible AI governance framework.
+    The architecture patterns in these cases draw on concepts introduced in earlier modules. Document AI pipelines (Global Bank) connect to Module 7's treatment of unstructured data integration. The federated ML architecture (Global Retailer) connects to Module 9's edge and distributed compute patterns. The explainability controls (Banking, Government, Energy Utility) connect to Module 10's responsible AI governance framework.

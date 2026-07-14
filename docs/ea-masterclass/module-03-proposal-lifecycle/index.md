@@ -855,7 +855,7 @@ d
 The business case is the formal document that combines the cost estimate, risk assessment, benefit projection, and option analysis into a single investment request.
 
 !!! note "See Module 6"
-    Business case development is covered in depth in **Module 6 — Business Case and Benefits Realisation**. This module focuses on the proposal lifecycle; Module 6 goes deep on financial modelling, NPV, payback period, and writing a compelling investment narrative.
+    Business case development is covered in depth in **Module 6 — Business Case Development**. This module focuses on the proposal lifecycle; Module 6 goes deep on financial modelling, NPV, payback period, and writing a compelling investment narrative.
 
 At this stage in the lifecycle, the EA's job is to ensure that the architecture work feeds the business case correctly:
 
@@ -871,7 +871,7 @@ At this stage in the lifecycle, the EA's job is to ensure that the architecture 
 Proposal writing is the skill of translating everything produced in Stages 1–11 into a coherent, persuasive document that a non-technical executive can read in 15 minutes and a technical evaluator can scrutinise over several hours.
 
 !!! note "See Module 7"
-    Proposal writing is covered in depth in **Module 7 — Writing Winning Proposals**. That module covers document structure, executive summary technique, narrative arc, and how to handle objections in writing.
+    Proposal writing is covered in depth in **Module 7 — Proposal Writing for Enterprise AI Programs**. That module covers document structure, executive summary technique, narrative arc, and how to handle objections in writing.
 
 Key principles from the EA's perspective:
 
@@ -1560,4 +1560,4 @@ You will have taken an uncertain business problem and turned it into a working s
 
 ---
 
-*Module 3 of the EA Masterclass series. Continues in Module 4 — Architecture Patterns for Modern Enterprise Systems.*
+*Module 3 of the EA Masterclass series. Continues in Module 4 — Technology Investment Fundamentals.*

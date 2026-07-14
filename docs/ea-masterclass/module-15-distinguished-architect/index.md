@@ -1,7 +1,8 @@
 ---
 title: "Module 15 — Distinguished Architect: Leadership, Influence & CTO Readiness"
 date_created: 2026-07-09
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-14
+next_review_due: 2027-01-14
 status: current
 supersedes: ""
 source_type: native-md
@@ -161,8 +162,8 @@ The **Common Mistakes** and **Mastery Checklist** sections at the end of each to
 Completing Module 15 is most valuable when combined with real organisational exposure. The frameworks here are not substitutes for experience — they are scaffolding that makes experience compound faster. If you are not currently operating at or near Distinguished level, identify a sponsor who is, and use these materials to structure the conversations you have with them.
 
 !!! tip "Recommended Pre-Reading"
-    - Module 10: Enterprise Architecture Governance
-    - Module 12: AI Programme Architecture
-    - Module 14: Chief Architect Operating Model
+    - Module 10: Enterprise Governance for AI Programs
+    - Module 11: Executive Communication
+    - Module 12: AI Consulting Engagement Delivery
 
 Proceed to [Executive Presence & Influence](executive-presence.md) to begin.

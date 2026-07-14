@@ -162,12 +162,12 @@ EA Masterclass
 │
 ├── MASTERY (Modules 13–14)
 │   ├── Module 13 — Case Studies (6 industries)
-│   │   ├── Global Bank: AI-driven fraud detection investment
-│   │   ├── Healthcare Provider: clinical AI governance program
-│   │   ├── Manufacturing Enterprise: industrial AI transformation
-│   │   ├── Retail Organization: personalization and supply chain AI
-│   │   ├── Telecom Operator: network AI and automation
-│   │   └── Government Agency: responsible AI deployment
+│   │   ├── Global Bank: AI-driven loan origination investment
+│   │   ├── Healthcare Network: ambient AI clinical documentation
+│   │   ├── Global Retailer: demand forecasting and inventory optimization
+│   │   ├── Telecom Operator: network anomaly detection
+│   │   ├── Government Tax Authority: AI-assisted audit selection
+│   │   └── Energy Utility: predictive maintenance for grid infrastructure
 │   │
 │   └── Module 14 — Mentoring, Mastery, and Career Transition
 │       ├── Building your EA and AI architect brand
@@ -175,10 +175,17 @@ EA Masterclass
 │       ├── Navigating the job market as a senior EA
 │       └── Building a consulting practice
 │
+├── CAPSTONE EXTENSION (Module 15)
+│   └── Module 15 — Distinguished Architect: Leadership, Influence & CTO Readiness
+│       ├── Executive Presence & Influence
+│       ├── Strategic Thinking & Technology Bets
+│       ├── Architecture Leadership & CTO Readiness
+│       └── Fortune 100 Modernisation Playbook
+│
 ├── DELIVERABLE TEMPLATES (20 templates)
 │   ├── Business Case Templates (6 templates)
-│   ├── Governance Templates (7 templates)
-│   └── Consulting Templates (7 templates)
+│   ├── Governance Templates (4 templates)
+│   └── Consulting Templates (10 templates)
 │
 └── REAL-LIFE TRANSCRIPTS (4 annotated sessions)
     ├── Bank Discovery Workshop (annotated)
@@ -195,11 +202,12 @@ Different readers will prioritize different modules depending on their immediate
 
 | Role | Immediate Goal | Priority Modules | Optional Depth |
 | --- | --- | --- | --- |
-| **Chief Architect** transitioning to investment leadership | Lead a $50M+ AI program investment decision | 1 → 2 → 5 → 6 → 9 → 10 → 11 | 3, 4, 8, 13 |
-| **CIO Advisor** / Technology strategist | Advise CIO on AI portfolio investment | 2 → 4 → 5 → 6 → 8 → 10 → 11 | 1, 9, 12 |
+| **Chief Architect** transitioning to investment leadership | Lead a $50M+ AI program investment decision | 1 → 2 → 5 → 6 → 9 → 10 → 11 | 3, 4, 8, 13, **15** |
+| **CIO Advisor** / Technology strategist | Advise CIO on AI portfolio investment | 2 → 4 → 5 → 6 → 8 → 10 → 11 | 1, 9, 12, **15** |
 | **AI Strategist** building an enterprise AI roadmap | Define and sequence an enterprise AI strategy | 2 → 5 → 6 → 9 → 10 → 13 | 1, 4, 11, 12 |
 | **Proposal Director** winning enterprise AI work | Write and win competitive AI program proposals | 2 → 3 → 6 → 7 → 11 → 12 | 4, 5, 8, 13 |
 | **Complete learner** (new to all areas) | Full mastery of the EA investment architect role | 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14 | All deliverables + transcripts |
+| **Distinguished Architect** / CTO candidate | Board-level influence and 10-year technology bets | 1–14 (all required) → **15** | All transcripts; Module 15 sub-pages in order |
 
 ---
 
@@ -344,6 +352,18 @@ Every module applies these six lenses. When you internalize all six, you stop be
 - Position yourself as a senior EA and AI investment architect in the job market
 - Build and price a consulting practice around enterprise AI investment advisory
 
+### Capstone Extension (Module 15)
+
+**After Module 15 — Distinguished Architect**, you will be able to:
+
+- Operate with executive presence and political acumen at Board and C-suite level, influencing decisions without formal authority
+- Apply structured frameworks (S-curve analysis, platform economics, reversibility analysis) to evaluate and commit to multi-year technology bets
+- Lead an EA practice, drive enterprise architecture transformation using Kotter's change model, and assess your readiness for CTO-equivalent roles
+- Navigate the specific challenges of Fortune 100 modernisation: legacy debt quantification, strangler-fig patterns at scale, AI integration sequencing, and programme leadership across CIO tenure changes
+
+!!! note "Module 15 Prerequisites"
+    Module 15 is a capstone extension that targets architects at — or approaching — Distinguished Architect level. All of Modules 1–14 are required before beginning Module 15. The content assumes fluency with EA patterns, cloud platforms, and enterprise programme delivery at scale.
+
 ---
 
 ## Module Dependency Chain
@@ -379,51 +399,54 @@ Module 01 (EA Foundations)
              └──► Module 13 (Case Studies)
                       │
                       └──► Module 14 (Mentoring and Mastery)
+                               │
+                               └──► Module 15 (Distinguished Architect)
+                                    [Prerequisite: Modules 1–14 complete]
 ```
 
 !!! note "Parallel Learning"
-    Modules 7 and 8 can be studied in parallel. Modules 11 and 12 can be studied in parallel. The case studies in Module 13 can be read in any order after Module 10.
+    Modules 7 and 8 can be studied in parallel. Modules 11 and 12 can be studied in parallel. The case studies in Module 13 can be read in any order after Module 10. Module 15 is a capstone extension and requires Modules 1–14 as prerequisites.
 
 ---
 
 ## The 20 Deliverable Templates
 
-Every enterprise AI program produces a standard set of deliverables. This course includes 20 production-quality templates that you can adapt for client engagements.
+Every enterprise AI program produces a standard set of deliverables. This course includes 20 production-quality templates that you can adapt for client engagements, organised into three groups.
 
-### Business Case Templates (6 templates)
+### Business Case Templates (Templates 1–6)
 
-| # | Template | Typical Length | Primary Audience |
-| --- | --- | --- | --- |
-| BC-01 | Executive Business Case (full document) | 15–25 pages | Investment committee |
-| BC-02 | One-Page Business Case Summary | 1 page | C-suite and board |
-| BC-03 | ROI and Financial Model (spreadsheet) | 5–10 tabs | CFO and finance |
-| BC-04 | Benefit Realization Plan | 8–12 pages | Program sponsor |
-| BC-05 | Cost Model and TCO Analysis | 3–5 tabs | CFO and procurement |
-| BC-06 | Risk-Adjusted Investment Scenario Model | 3 scenarios | Investment committee |
+| # | Template | Primary Use |
+| --- | --- | --- |
+| 1 | Enterprise Architecture Handbook (Structure) | Establishing or refreshing the EA function |
+| 2 | Enterprise Proposal Playbook | Managing proposal development as a structured process |
+| 3 | AI Technology Investment Guide | Evaluating AI options; vendor scoring; build-vs-buy framework |
+| 4 | Executive Business Case Template | The complete 11-section investment case document |
+| 5 | Proposal Writing Handbook | Full lifecycle proposal craft guide with 25-point quality checklist |
+| 6 | Enterprise AI Strategy Playbook | Six-stage framework for developing an enterprise AI strategy |
 
-### Governance Templates (7 templates)
+### Governance Templates (Templates 7–10)
 
-| # | Template | Typical Length | Primary Audience |
-| --- | --- | --- | --- |
-| GV-01 | Program Governance Charter | 10–15 pages | Steering committee |
-| GV-02 | RACI Matrix (AI Program) | 2–4 pages | Program team |
-| GV-03 | Architecture Decision Record (ADR) | 1–2 pages per decision | ARB |
-| GV-04 | ARB Proposal Deck | 10–15 slides | Architecture Review Board |
-| GV-05 | AI Governance Policy Framework | 20–30 pages | Governance committee |
-| GV-06 | Responsible AI Assessment | 10–15 pages | Ethics/risk committee |
-| GV-07 | Stage-Gate Review Checklist | 2–3 pages per gate | Program management |
+| # | Template | Primary Use |
+| --- | --- | --- |
+| 7 | Technology Investment Decision Framework | Scoring model for prioritising competing investments |
+| 8 | Architecture Review Board Guide | Charter, operations, submission requirements, and decision records |
+| 9 | AI Governance Playbook | Responsible AI principles, model risk management, data ethics review |
+| 10 | Financial Modeling Guide for Architects | TCO model, NPV/IRR calculations, sensitivity and scenario analysis |
 
-### Consulting Templates (7 templates)
+### Consulting Templates (Templates 11–20)
 
-| # | Template | Typical Length | Primary Audience |
-| --- | --- | --- | --- |
-| CT-01 | Discovery Workshop Agenda and Guide | 8–12 pages | Engagement team |
-| CT-02 | Stakeholder Interview Guide | 4–6 pages | Engagement team |
-| CT-03 | Executive Findings Presentation | 15–25 slides | Client executives |
-| CT-04 | Statement of Work (SOW) Template | 8–15 pages | Client legal/procurement |
-| CT-05 | Proposal Response Template | 30–50 pages | Proposal team |
-| CT-06 | Target Operating Model (TOM) Document | 20–30 pages | Transformation team |
-| CT-07 | AI Transformation Roadmap | 8–12 pages + roadmap | Program sponsor |
+| # | Template | Primary Use |
+| --- | --- | --- |
+| 11 | Consulting Workshop Toolkit | Workshop design, facilitation techniques, virtual considerations |
+| 12 | Discovery Questionnaire Library | 50 structured questions across five discovery categories |
+| 13 | Executive Presentation Templates | Three outlines: investment pitch, board update, ARB presentation |
+| 14 | Proposal Review Checklists | Self-review (25 items), peer review (15 items), pre-submission (10 items) |
+| 15 | AI Transformation Roadmap Template | 3-year roadmap format with workstreams, milestones, and dependencies |
+| 16 | Enterprise Architecture Deliverable Templates | Current-state, target-state, ADR, and architecture principle standard docs |
+| 17 | Enterprise AI Case Study Workbook | Blank 12-phase workbook for use alongside Module 13 case studies |
+| 18 | Enterprise Architect Competency Matrix (Self-Assessment) | Rating scales, evidence prompts, and mentor commentary format |
+| 19 | 90-Day Enterprise Architect Practice Plan (Workbook) | Live workbook for the Module 14 onboarding plan |
+| 20 | Capstone Project Brief | Full specification for all eight Capstone Challenge parts |
 
 ---
 
@@ -482,6 +505,12 @@ For example, the concept of "API-first architecture" means different things to d
 - To a risk officer: a documented, auditable boundary between internal systems and external parties, reducing the blast radius of security incidents
 
 All four descriptions are correct. Your job is to deliver the right one to the right person at the right moment.
+
+---
+
+## A Note on Sidebar Navigation
+
+In the site navigation, Modules 1–12 appear as individual pages while Modules 13, 14, and 15 appear as expandable sections (because they contain sub-pages or case study files). Modules 1–15 follow numeric sequence within the EA Masterclass section; the "Templates & Deliverables" and "Workshop Transcripts" groups appear after Module 15 as supplementary reference material.
 
 ---
 
