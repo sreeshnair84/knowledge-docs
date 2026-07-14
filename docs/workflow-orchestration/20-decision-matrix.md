@@ -422,4 +422,126 @@ Document it here so we can build [reference architectures](./reference-architect
 
 ---
 
+## Agent Selection Framework: When to Use What
+
+This framework answers the primary enterprise question: **for a given task, should you use a prompt, a tool, a workflow, or an agent?** The answer determines the architecture, the governance overhead, and the operational complexity.
+
+### Level 1: Does the Task Need Intelligence at All?
+
+```
+Is the task deterministic with known rules?
+    YES → Use a rule engine, formula, or deterministic function
+          (No AI needed; deterministic beats probabilistic for deterministic problems)
+    NO  → Continue to Level 2
+```
+
+### Level 2: Does the Task Need Language Understanding?
+
+```
+Does the task require natural language understanding OR generation?
+    NO  → Use a traditional service / API / microservice
+    YES → Continue to Level 3
+```
+
+### Level 3: Single Inference or Multi-Step?
+
+```
+Can the task be completed in a single LLM inference (one prompt → one response)?
+    YES → Use a Prompt (direct LLM call; no agent overhead)
+          Examples: classification, extraction, translation, summarisation of a single document
+    NO  → Continue to Level 4
+```
+
+### Level 4: Is the Multi-Step Sequence Fixed?
+
+```
+Is the sequence of steps known at design time (no branching, no tool selection)?
+    YES → Use a Workflow / Pipeline
+          (LangChain chain, Step Functions, Temporal workflow with fixed activities)
+          Examples: document processing pipeline, fixed extraction → classify → format
+    NO  → Continue to Level 5
+```
+
+### Level 5: Does the Task Need Tools?
+
+```
+Does the task need to call external APIs, read databases, or execute code?
+    YES → Use an Agent (agent loop with tool use)
+    NO  → If multi-step LLM-only: use a Chain / Pipeline with LLM at each step
+```
+
+### Level 6: Local or Remote Tool?
+
+```
+Is the tool on the same platform/organization?
+    YES → Use an MCP Tool (MCP protocol; same trust boundary)
+    NO  → Use A2A (cross-organization; independent identity)
+```
+
+### Level 7: Single Agent or Multi-Agent?
+
+```
+Can a single agent with tools complete the task within context limits?
+    YES → Single Agent with Tools (simplest; lowest governance overhead)
+    NO  → Multi-Agent System (see Multi-Agent Topology Patterns)
+          Does the task have well-defined subtasks for specialists?
+              YES → Supervisor-Worker or Planner-Executor
+          Does the task need parallel execution?
+              YES → Parallel Fan-Out
+          Does the task need routing to specialist agents?
+              YES → Router pattern
+```
+
+### Level 8: Durable Execution Required?
+
+```
+Is the task long-running (> 5 minutes) OR must it survive process restarts?
+    YES → Wrap in a Durable Workflow Engine (Temporal / AWS Step Functions / LangGraph + checkpointer)
+          Even if it's an agent internally, the envelope must be durable
+    NO  → Standard agent invocation is sufficient
+```
+
+### Level 9: Does the Task Need External Orchestration?
+
+```
+Does the task span business process domains with human task steps AND SLA governance?
+    YES → BPM Platform (Camunda / Flowable) with AI agents as service tasks
+          (BPM provides the human task UI, SLA escalation, and compliance audit)
+    NO  → Pure agent orchestration is sufficient
+```
+
+### Measurable Decision Criteria
+
+| Criterion | Prompt | Tool | Chain/Pipeline | Single Agent | Multi-Agent | Durable Workflow | BPM |
+|----------|--------|------|----------------|-------------|-------------|-----------------|-----|
+| **Latency budget** | < 5s | < 10s | < 60s | < 5 min | < 30 min | Hours–days | Days–weeks |
+| **Steps** | 1 | 1 | 2–10 (fixed) | 1–20 (dynamic) | Any | Any | Any |
+| **External calls** | None | 1 type | Fixed set | Dynamic | Multiple agents | Any | Any |
+| **Human approval** | Not needed | Not needed | Not needed | Optional | Optional | Optional | Native |
+| **Failure recovery** | Caller retries | Caller retries | Partial restart | Agent retries | Per-agent retries | Durable resume | Native |
+| **Governance overhead** | Minimal | Low | Low | Medium | High | High | Highest |
+| **Cost** | Lowest | Low | Low | Medium | High | High | Highest |
+| **Auditability** | Limited | Moderate | Good | Good | Complex | Excellent | Excellent |
+
+### Quick Reference: Common Enterprise Scenarios
+
+| Scenario | Recommended Approach |
+|---------|---------------------|
+| Extract entities from a document | Prompt (single inference) |
+| Classify customer support ticket + route | Router Agent |
+| Process invoice: extract → validate → post to ERP | Tool Chain (MCP tools) or Pipeline |
+| Research a topic across 10 sources | Planner-Executor + Parallel Fan-Out |
+| Generate a contract with legal review approval | Single Agent + HITL gate + Durable Workflow |
+| Reconcile accounts across 5 systems | Multi-Agent (one agent per system) + Supervisor |
+| Handle a customer refund with policy check | Single Agent + MCP tools + HITL for exceptions |
+| Generate a board presentation from multiple data sources | Planner-Executor → Parallel Fan-Out → Synthesiser |
+| Monitor network and auto-remediate low-risk issues | Event-driven Agent Loop + Kill switch + Human escalation |
+| Process 100,000 documents per day | Manager-Worker Pool + Durable Workflow |
+| Loan underwriting decision | BPM (Camunda) + AI Agent as decision service + HITL |
+| On-call incident response triage | Router → Specialist Agents + Supervisor + Human escalation |
+
+---
+
+**Related:** [Multi-Agent Topology Patterns](../enterprise-architecture/ai-architecture/multi-agent-topology-patterns) | [Agent-as-Tool Composition](../enterprise-architecture/ai-architecture/agent-as-tool-composition) | [Reference Architectures](./reference-architectures)
+
 **Next**: Study [Reference Architectures](./reference-architectures) for your scenario, or explore [Future Predictions](./future-predictions).

@@ -50,6 +50,18 @@ const sidebars = {
     {type: 'doc', id: 'index', label: 'Home'},
     {
       type: 'category',
+      label: 'Enterprise AI Research Report',
+      items: [
+        'enterprise-ai-report/index',
+        'enterprise-ai-report/part-01-evolution',
+        'enterprise-ai-report/part-02-operating-models',
+        'enterprise-ai-report/part-08-organizational-roles',
+        'enterprise-ai-report/part-09-operating-processes',
+        'enterprise-ai-report/part-10-service-catalog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Agentic AI',
       items: [
         'agentic-systems/index',
@@ -680,6 +692,18 @@ const sidebars = {
             'enterprise-architecture/ai-architecture/agent-memory-planning-architecture',
             'enterprise-architecture/ai-architecture/agent-communication-identity-gateway',
             'enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures',
+            {
+              type: 'category',
+              label: 'Advanced Multi-Agent Architecture',
+              items: [
+                'enterprise-architecture/ai-architecture/multi-agent-topology-patterns',
+                'enterprise-architecture/ai-architecture/agent-as-tool-composition',
+                'enterprise-architecture/ai-architecture/governance-propagation-chain',
+                'enterprise-architecture/ai-architecture/end-to-end-traceability-guide',
+                'enterprise-architecture/ai-architecture/drift-detection-guide',
+                'enterprise-architecture/ai-architecture/kill-switch-architecture',
+              ],
+            },
           ],
         },
         {
