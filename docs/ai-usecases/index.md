@@ -133,10 +133,8 @@ Real-world AI architecture case studies spanning industry sectors, enterprise ag
 
 ---
 
-## Strategic Frameworks &amp; Reference
+## Reference
 
-- [Mental Model Encyclopedia](/knowledge-docs/ai-usecases/Mental_Model_Encyclopedia)
+- [Banking Case Study: Enterprise AI Authentication](/knowledge-docs/ai-usecases/Part6_Banking_Case_Study)
 
-- [Strategic Thinking Handbook](/knowledge-docs/ai-usecases/Strategic_Thinking_Handbook)
-
-- [Part 6 — Banking Case Study](/knowledge-docs/ai-usecases/Part6_Banking_Case_Study)
+> **Soft Skills & Frameworks** — The Mental Model Encyclopedia and Strategic Thinking Handbook have moved to the [Soft Skills](/knowledge-docs/soft-skills) section.
