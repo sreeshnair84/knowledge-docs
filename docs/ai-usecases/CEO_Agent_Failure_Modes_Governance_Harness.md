@@ -9,8 +9,6 @@ tags: ["ai-usecases"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-S O L U T I O N B L U E P R I N T · P A R T 2 · R E L I A B I L I T Y & G O V E R N A N C E
-
 # Failure Modes, Governance Harness & the Path to Production-Grade Reliability
 
 A companion deep-dive for the CEO Agent & Meeting Prep Agent program: how these systems actually fail in production, the real 2026 incidents that show the pattern, and the harness and governance controls that get a firm as close to "flawless" as an autonomous system can responsibly get.
@@ -67,19 +65,13 @@ Once the CEO Agent and Meeting Prep Agent are split into sub-agents (classifier,
 
 These aren't hypothetical categories — each maps to a named, reported 2026 incident with direct relevance to a system that has broad executive-level visibility into confidential firm and client data.
 
-**47% 5%** of CISOs surveyed have observed AI agents are confident they could contain a behaving in unintended or unauthorized compromised agent
+> **2026 Industry Survey Data**
+> - **47%** of CISOs have observed AI agents behaving in unintended or unauthorized ways
+> - **5%** are confident they could contain a compromised agent
+> - **60%** of organizations cannot terminate a misbehaving agent once it's running
+> - **92%** lack full visibility into which AI identities and agents are even active in their environment
 
-## 60%
-
-## 92%
-
-of organizations cannot terminate a report lacking full visibility into which AI misbehaving agent once it's running identities/agents are even active
-
-ways
-
-######
-
-###### Direct analogue
+#### Direct analogue
 
 An internal AI agent gave an engineer confidently stated, plausible, and wrong technical guidance; implementing it exposed sensitive company and user data to employees who were never authorized to see it, for roughly two hours before containment. No external attacker was involved — the failure was misplaced trust in AI-generated guidance crossing an access boundary that existed for a reason. This is structurally the exact risk the CEO Agent's confidentiality/ethical-wall model exists to prevent: broad, wellintentioned visibility becoming an accidental backdoor.
 
@@ -143,29 +135,93 @@ The capability to immediately suspend a specific agent, a specific connector, or
 
 *Runs on every change to a prompt, connector, or retrieval config — blocks merge on regression*
 
-def run_eval_gate(candidate_build, golden_dataset): results = harness.evaluate( build=candidate_build, dataset=golden_dataset, judge_trajectory=True,   # not just final-answer scoring temperature=0,           # deterministic baseline for comparable runs )
+```python
+def run_eval_gate(candidate_build, golden_dataset):
+    results = harness.evaluate(
+        build=candidate_build,
+        dataset=golden_dataset,
+        judge_trajectory=True,   # not just final-answer scoring
+        temperature=0,           # deterministic baseline for comparable runs
+    )
 
-gates = { "task_success_rate": (results.task_success, 0.90), "tool_selection_accuracy": (results.tool_accuracy, 0.90), "faithfulness": (results.faithfulness, 0.80), "ethical_wall_violations": (results.wall_violations, 0.0),  # zero tolerance } failures = [name for name, (score, threshold) in gates.items() if (score < threshold if name != "ethical_wall_violations" else score > threshold)] if failures: raise EvalGateFailure(f"Blocked release — failed gates: {failures}") return results
+    gates = {
+        "task_success_rate":       (results.task_success,     0.90),
+        "tool_selection_accuracy": (results.tool_accuracy,    0.90),
+        "faithfulness":            (results.faithfulness,     0.80),
+        "ethical_wall_violations": (results.wall_violations,  0.0),  # zero tolerance
+    }
+
+    failures = [
+        name for name, (score, threshold) in gates.items()
+        if (score < threshold if name != "ethical_wall_violations" else score > threshold)
+    ]
+
+    if failures:
+        raise EvalGateFailure(f"Blocked release — failed gates: {failures}")
+    return results
+```
 
 ### 5.2 Untrusted-content firewall (indirect prompt injection defense)
 
 *Every retrieved document/email/thread passes through this before reaching the orchestrator's context*
 
-def sanitize_retrieved_content(raw_content, source): """ Treats all retrieved content as untrusted data, never as instructions — the direct mitigation for indirect/EchoLeak-style prompt injection. """ findings = injection_scanner.scan(raw_content)  # pattern + classifier based if findings.high_confidence_injection: audit_log.flag(source=source, type="suspected_prompt_injection", detail=findings) return RetrievedContent(text="", blocked=True, reason=findings.summary)
+```python
+def sanitize_retrieved_content(raw_content, source):
+    """
+    Treats all retrieved content as untrusted data, never as instructions —
+    the direct mitigation for indirect/EchoLeak-style prompt injection.
+    """
+    findings = injection_scanner.scan(raw_content)  # pattern + classifier based
 
-# Content is wrapped so the model treats it as data, never as directives return RetrievedContent( text=f"<untrusted_source id='{source.id}'>{raw_content}</untrusted_source>", blocked=False )
+    if findings.high_confidence_injection:
+        audit_log.flag(source=source, type="suspected_prompt_injection", detail=findings)
+        return RetrievedContent(text="", blocked=True, reason=findings.summary)
+
+    # Content is wrapped so the model treats it as data, never as directives
+    return RetrievedContent(
+        text=f"<untrusted_source id='{source.id}'>{raw_content}</untrusted_source>",
+        blocked=False
+    )
+```
 
 ### 5.3 Pre-delivery boundary check (cross-boundary exposure firewall)
 
 *The check that would have caught a Meta-style exposure before an unauthorized reader saw it*
 
-def check_delivery_boundary(briefing, recipient, source_scope): """ Confirms every fact in the briefing traces back to an entity the *recipient* — not just the requesting executive — is cleared to see. Runs even though the requesting executive was already authorized: delivery channel and recipient identity are checked independently. """ cited_entities = entity_extractor.extract(briefing) for entity in cited_entities: if entity not in source_scope.approved: raise DeliveryBlocked(f"Entity {entity.id} not in approved scope — halting delivery") if not recipient_policy.can_receive(recipient, entity): raise DeliveryBlocked(f"Recipient {recipient.id} not cleared for {entity.id}") return ApprovedForDelivery(briefing)
+```python
+def check_delivery_boundary(briefing, recipient, source_scope):
+    """
+    Confirms every fact in the briefing traces back to an entity the *recipient* —
+    not just the requesting executive — is cleared to see. Runs even though the
+    requesting executive was already authorized: delivery channel and recipient
+    identity are checked independently.
+    """
+    cited_entities = entity_extractor.extract(briefing)
+
+    for entity in cited_entities:
+        if entity not in source_scope.approved:
+            raise DeliveryBlocked(f"Entity {entity.id} not in approved scope — halting delivery")
+        if not recipient_policy.can_receive(recipient, entity):
+            raise DeliveryBlocked(f"Recipient {recipient.id} not cleared for {entity.id}")
+
+    return ApprovedForDelivery(briefing)
+```
 
 ### 5.4 Kill switch / containment interface
 
 *Tested quarterly against a live drill, not written once and left unverified*
 
-POST /admin/agents/{agent_id}/suspend { "scope": "connector" | "agent" | "executive_instance" | "system_wide", "reason": "suspected_scope_violation", "initiated_by": "security_oncall", "effective_immediately": true } // Suspension revokes all active scoped tokens for the target immediately — // it does not wait for the agent's current step to complete.
+```http
+POST /admin/agents/{agent_id}/suspend
+{
+  "scope": "connector" | "agent" | "executive_instance" | "system_wide",
+  "reason": "suspected_scope_violation",
+  "initiated_by": "security_oncall",
+  "effective_immediately": true
+}
+// Suspension revokes all active scoped tokens for the target immediately —
+// it does not wait for the agent's current step to complete.
+```
 
 ## 6. Best Practices for Approaching "Flawless"
 

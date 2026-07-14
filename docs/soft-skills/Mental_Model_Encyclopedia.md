@@ -6,9 +6,9 @@ status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Mental_Model_Encyclopedia.pdf"
-tags: ["ai-usecases"]
+tags: ["soft-skills", "mental-models", "executive-cognition", "systems-thinking"]
 doc_type: guide
-covers_version: \"as of 2026-07-10\"
+covers_version: "as of 2026-07-10"
 ---
 # The Mental Model Encyclopedia
 

@@ -881,6 +881,8 @@ const sidebars = {
         'soft-skills/Mental_Models_for_Voice_Training',
         'soft-skills/Storytelling_Exercise_Workbook',
         'soft-skills/Voice_Training_30Day_Plan',
+        'soft-skills/Mental_Model_Encyclopedia',
+        'soft-skills/Strategic_Thinking_Handbook',
       ],
     },
     {
@@ -922,8 +924,6 @@ const sidebars = {
         'ai-usecases/CEO_Agent_Solution_Blueprint',
         'ai-usecases/CEO_Agent_Failure_Modes_Governance_Harness',
         'ai-usecases/ceo_agent_pitch',
-        'ai-usecases/Mental_Model_Encyclopedia',
-        'ai-usecases/Strategic_Thinking_Handbook',
         'ai-usecases/Enterprise_AI_Case_Studies',
         'ai-usecases/Part6_Banking_Case_Study',
         {

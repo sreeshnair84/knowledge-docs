@@ -80,137 +80,160 @@ Executive edits, dismissals, or "this wasn't useful" signals feed back into what
 
 ### 4.1 Orchestrator: meeting classification & briefing generation
 
-Node.js — calls the Anthropic API with MCP tool access already scoped by Layer 3 import Anthropic from
+Node.js — calls the Anthropic API with MCP tool access already scoped by Layer 3.
 
-"@anthropic-ai/sdk" ; const client = new Anthropic(); // meetingContext is pre-authoriz ed by the governance layer — // the orchestrator never receives a raw "give me everything" scope.
-async function generateBriefing(meeting, authoriz edScope) {
+```javascript
+import Anthropic from "@anthropic-ai/sdk";
 
-const response = await client.messages.create({ model:
-"claude-opus-4-8" , max_tokens:
-, system: MEETING_PREP_SYSTEM_PROMPT, messages: [{ role:
-"user" , content:
-`Meeting: ${meeting.title} Attendees: ${meeting.attendees.join(", ")} Authoriz ed data scope: ${JSON.stringify(authoriz edScope)} Prepare the pre-meeting briefing.` }],
+const client = new Anthropic();
 
-// Each MCP server here is already scoped to this exec + this meeting
+// meetingContext is pre-authorized by the governance layer —
+// the orchestrator never receives a raw "give me everything" scope.
+async function generateBriefing(meeting, authorizedScope) {
+  const response = await client.messages.create({
+    model:      "claude-opus-4-8",
+    max_tokens: 2048,
+    system:     MEETING_PREP_SYSTEM_PROMPT,
+    messages: [{
+      role:    "user",
+      content: `Meeting: ${meeting.title}
+Attendees: ${meeting.attendees.join(", ")}
+Authorized data scope: ${JSON.stringify(authorizedScope)}
+Prepare the pre-meeting briefing.`
+    }],
+    // Each MCP server here is already scoped to this exec + this meeting
+    // by Layer 3 — the agent cannot widen its own access mid-task.
+    mcp_servers: authorizedScope.connectors
+  });
 
-// by Layer 3 — the agent cannot widen its own access mid-task.
-mcp_servers: authoriz edScope.connectors });
+  const briefing = response.content
+    .filter(b => b.type === "text")
+    .map(b => b.text)
+    .join("\n");
 
-const briefing = response.content .filter(b => b.type === "text" ) .map(b => b.text) .join( "\n" );
+  await auditLog.record({
+    executiveId: meeting.executiveId,
+    meetingId:   meeting.id,
+    scopeUsed:   authorizedScope.id,
+    toolCalls:   response.content.filter(b => b.type === "mcp_tool_use"),
+    generatedAt: new Date().toISOString()
+  });
 
-await auditLog.record({ executiveId: meeting.executiveId, meetingId: meeting.id, scopeUsed: authoriz edScope.id, toolCalls: response.content.filter(b => b.type === "mcp_tool_use" ), generatedAt:
-new Date().toISOString() });
-
-return briefing; }
+  return briefing;
+}
+```
 
 ### 4.2 System prompt: Meeting Prep Agent
 
-Kept deliberately explicit about what the agent must NOT do You are the Meeting Prep Agent for a professional services firm executive.
+Kept deliberately explicit about what the agent must NOT do:
+
+```
+You are the Meeting Prep Agent for a professional services firm executive.
 Produce a one-page pre-meeting briefing, readable in five minutes, covering:
 
-1. Who's in the room — role, relationship history, last interactions, sensitivities 2. What's actually at stake — infer the real nature of the meeting from context, not just the calendar title
+1. Who's in the room — role, relationship history, last interactions, sensitivities
+2. What's actually at stake — infer the real nature of the meeting from context,
+   not just the calendar title
+3. Relevant recent developments from the authorized data provided
+4. Open commitments from prior meetings with this person or group
+5. Suggested talking points — framed explicitly as a starting point for the
+   executive's own judgment, never as a recommended decision or a script
 
-## 3. Relevant recent developments from the authoriz ed data provided
-
-## 4. Open commitments from prior meetings with this person or group
-
-## 5. Suggested talking points — framed explicitly as a starting point for the
-
-executive's own judgment, never as a recommended decision or a script Hard constraints:
-
-- Only use information present in the authoriz ed data scope provided to you.
-Never infer or assume facts about people or clients that are not grounded in the retrieved context.
-- Never surface information that would cross an ethical wall, even if it
-would make the briefing more complete. If the authoriz ed scope is incomplete, say so explicitly rather than filling the gap.
-- Do not make recommendations on personnel, compensation, or client
-decisions. Provide context; the executive decides.
+Hard constraints:
+- Only use information present in the authorized data scope provided to you.
+  Never infer or assume facts about people or clients that are not grounded
+  in the retrieved context.
+- Never surface information that would cross an ethical wall, even if it would
+  make the briefing more complete. If the authorized scope is incomplete, say
+  so explicitly rather than filling the gap.
+- Do not make recommendations on personnel, compensation, or client decisions.
+  Provide context; the executive decides.
 - If evidence for a section is insufficient, write "no reliable signal"
-rather than guessing.
+  rather than guessing.
+```
 
 ### 4.3 Access control: policy-as-code for ethical walls & conflict scoping
 
-Evaluated at request time — every retrieval call passes through this before it reaches the model def authoriz e_scope(executive, meeting, requested_entities):
+Evaluated at request time — every retrieval call passes through this before it reaches the model:
 
-""" Returns the subset of requested_entities the executive is entitled to see for this specific meeting. Runs on every request — never cached as a standing grant, and never overridden by agent output.
-""" approved = [] denial_log = []
+```python
+def authorize_scope(executive, meeting, requested_entities):
+    """
+    Returns the subset of requested_entities the executive is entitled to see
+    for this specific meeting. Runs on every request — never cached as a
+    standing grant, and never overridden by agent output.
+    """
+    approved   = []
+    denial_log = []
 
-for entity in requested_entities:
+    for entity in requested_entities:
+        if ethical_wall.blocks(executive, entity):
+            denial_log.append({"entity_id": entity.id, "reason": "ethical_wall"})
+            continue
 
-if ethical_wall.blocks(executive, entity):
-denial_log.append({ : entity.id, :
-"ethical_wall" })
+        if conflict_registry.has_active_conflict(executive.firm_role, entity):
+            denial_log.append({"entity_id": entity.id, "reason": "conflict_of_interest"})
+            continue
 
-continue
+        if not role_policy.permits(executive.role, entity.sensitivity_level):
+            denial_log.append({"entity_id": entity.id, "reason": "insufficient_role"})
+            continue
 
-if conflict_registry.has_active_conflict(executive.firm_role, entity):
-denial_log.append({ : entity.id, :
-"conflict_of_interest" })
+        approved.append(entity)
 
-continue
-
-if
-
-not role_policy.permits(executive.role, entity.sensitivity_level):
-denial_log.append({ : entity.id, :
-"insufficient_role" })
-
-continue approved.append(entity) audit_log.write(executive.id, meeting.id, approved, denial_log)
-
-return ScopeGrant(approved, ttl_minutes= )
-
-# short-lived, task-bound
+    audit_log.write(executive.id, meeting.id, approved, denial_log)
+    return ScopeGrant(approved, ttl_minutes=90)  # short-lived, task-bound
+```
 
 ### 4.4 Audit log record schema
 
+```json
 {
+  "event_id":        "evt_9f21a",
+  "executive_id":    "exec_014",
+  "meeting_id":      "mtg_2201",
 
-"event_id" :
-"evt_9f21a" ,
+  "scope_granted":   ["crm:client_842", "pm:engagement_1190"],
+  "scope_denied":    [{"entity_id": "crm:client_855", "reason": "ethical_wall"}],
 
-"executive_id" :
-"exec_014" ,
+  "tool_calls":      ["crm.get_engagement_history", "email.search_thread"],
+  "briefing_generated": true,
 
-"meeting_id" :
-"mtg_2201" ,
+  "policy_decision_source": "policy_engine_v3",
+  "behavioral_flags": [],
 
-"scope_granted" : [ "crm:client_842" , "pm:engagement_1190" ],
+  "timestamp": "2026-07-01T08:32:11Z"
+}
+```
 
-"scope_denied" : [ { :
-"crm:client_855" , :
-"ethical_wall" } ],
-
-"tool_calls" : [ "crm.get_engagement_history" , "email.search_thread" ],
-
-"briefing_generated" :
-true ,
-
-"policy_decision_source" :
-"policy_engine_v3" ,
-
-"behavioral_flags" : [],
-
-"timestamp" :
-
-## "2026-07-01T08:32:11Z"
-
-} Why the log separates policy_decision_source from behavioral_flags :
+Why the log separates `policy_decision_source` from `behavioral_flags`:
 current governance guidance is explicit that authorization decisions and anomaly/behavioral signals must be logged as distinct fields. If the agent's behavior later looks unusual, that's a trigger for review — it is never treated as evidence that the earlier access was authorized.
-**5.** Best Practices Policy decides, behavior alerts.
+## 5. Best Practices
+
+**Policy decides, behavior alerts.**
 The access-control engine's decision always wins over what the agent "wants" to do; anomalous agent behavior is a signal for human review, never a justification to relax access.
-Least privilege, issued just-in-time.
-Scope grants are short-lived and task-bound (see the 90-minute TTL above), not standing access — this limits the blast radius if a credential or session is ever compromised.
-Document every agent's authorization scope.
+
+**Least privilege, issued just-in-time.**
+Scope grants are short-lived and task-bound (90-minute TTL), not standing access — this limits the blast radius if a credential or session is ever compromised.
+
+**Document every agent's authorization scope.**
 Business purpose, accountable human owner, permitted tools, permitted data domains, and a review cadence — written down per agent, not implied.
-Modular over monolithic.
+
+**Modular over monolithic.**
 Keep indexing, retrieval, governance, and generation as swappable components so the underlying model or CRM can change without a full re-architecture.
-Evaluation-first deployment.
+
+**Evaluation-first deployment.**
 Define accuracy and hallucination thresholds for briefing content before go-live, not after complaints start.
-Ground in existing systems.
+
+**Ground in existing systems.**
 Value comes from assembling what the firm already has in its CRM and practice-management data — not from asking anyone to do new data entry to feed the agent.
-Preserve human judgment explicitly in the UI.
+
+**Preserve human judgment explicitly in the UI.**
 Every suggested talking point is visually and textually framed as a starting point, never a recommendation, especially in comp and personnel contexts.
-Design the confidentiality model with General Counsel before any pilot data flows — not as a post-pilot retrofit.
-Start narrow, expand deliberately.
+
+**Design the confidentiality model with General Counsel before any pilot data flows** — not as a post-pilot retrofit.
+
+**Start narrow, expand deliberately.**
 One executive, one meeting type, 8–10 weeks — validate trust and value before widening scope.
 **6.** Anti-Patterns to Avoid ✗ Standing broad access Granting the CEO Agent persistent, always-on access to everything "because the CEO role needs broad visibility" — this is exactly the shadow- widening risk the original pitch itself calls out, and it turns the agent into a backdoor for anyone who can reach its outputs.
 ✓ Scoped, short-lived grants Broad visibility is reconstructed per request from narrow, auditable grants — the executive's experience feels continuous, but nothing is standing.

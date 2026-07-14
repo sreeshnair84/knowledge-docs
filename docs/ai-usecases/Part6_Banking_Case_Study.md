@@ -1,20 +1,20 @@
 ---
-title: "Part 6"
+title: "Banking Case Study: Enterprise AI Authentication"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf
 source_file: "Part6_Banking_Case_Study.pdf"
 doc_type: guide
-tags: ["ai-usecases"]
+tags: ["ai-usecases", "banking", "authentication", "zero-trust", "enterprise-ai"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
-Enterprise AI Authentication Research • Part
 
-# Part 6
-## **Banking Case Study**
+# Banking Case Study: Enterprise AI Authentication
 
-Production architecture for a highly regulated bank: Zero Trust AI agents with AWS, Entra ID, MCP, GitHub Enterprise, ServiceNow, Confluence, Jira, M365, SharePoint, and Slack
+Production architecture for a highly regulated bank implementing Zero Trust AI agents with AWS, Entra ID, MCP, GitHub Enterprise, ServiceNow, Confluence, Jira, M365, SharePoint, and Slack.
+
+> **Series context:** This is the banking case study from the *Enterprise AI Authentication & Identity Propagation* reference series. It is self-contained and can be read independently.
 
 Enterprise Authentication & Identity Propagation for AI Agents
 

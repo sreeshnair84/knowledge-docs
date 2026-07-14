@@ -5,7 +5,7 @@ status: current
 source_type: converted-pdf
 source_file: "Strategic_Thinking_Handbook.pdf"
 doc_type: guide
-tags: ["ai-usecases"]
+tags: ["soft-skills", "strategic-thinking", "frameworks", "counterfactual-thinking"]
 last_reviewed: 2026-07-10
 covers_version: "N/A"
 ---
