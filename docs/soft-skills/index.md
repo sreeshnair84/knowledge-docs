@@ -15,7 +15,18 @@ covers_version: "as of 2026-07-14"
 
 Voice mastery, storytelling, and communication training for technical leaders.
 
-This section contains **two distinct communication-training programs** — a general-purpose 28-day starter track and a full 12-week deep track for senior technical leaders. Read the overview below before choosing where to start.
+This section contains **four skill areas**: two thinking-skill guides (problem-solving and creative thinking) and two communication-training programs (a 28-day starter track and a full 12-week deep track for senior technical leaders). Read the overview below before choosing where to start.
+
+---
+
+## Thinking Skills
+
+| Document | What it covers |
+| --- | --- |
+| [Problem-Solving Skills](Problem_Solving_Skills) | Structured problem decomposition (MECE / issue trees), root-cause analysis (5 Whys + Fishbone / Ishikawa), hypothesis-driven investigation, and a decision framework for moving from diagnosis to action. Includes a self-assessment to identify your weakest problem-solving phase. |
+| [Creative Thinking Skills](Creative_Thinking_Skills) | Five frameworks for divergent thinking: Lateral Thinking (de Bono), Six Thinking Hats, Reframing techniques (including the Pre-Mortem), SCAMPER, and "How Might We" possibility thinking. Includes a quick-reference framework selector by situation. |
+
+**Relationship:** Problem-solving is **convergent** — it narrows hypotheses and diagnoses root causes. Creative thinking is **divergent** — it expands options and reframes problems before you converge. Use them in sequence: reframe first, decompose second.
 
 ---
 
@@ -43,12 +54,14 @@ Three documents work together as one program:
 
 ---
 
-## Which Program Should I Start With?
+## Navigate by Goal
 
-| Your situation | Start here |
+| Your goal | Start here |
 | --- | --- |
-| New to structured voice practice, or want results in under a month | Track 1 — 28-Day Plan |
-| Senior architect / technical lead targeting CTO-level communication | Track 2 — CTO Voice Mastery Program |
+| Solve complex technical or org problems more systematically | [Problem-Solving Skills](Problem_Solving_Skills) |
+| Generate better options before deciding; break stuck thinking | [Creative Thinking Skills](Creative_Thinking_Skills) |
+| New to structured voice practice, or want results in under a month | Track 1 — [Voice Training 30-Day Plan](Voice_Training_30Day_Plan) |
+| Senior architect / technical lead targeting CTO-level communication | Track 2 — [CTO Voice Mastery Program](CTO_Voice_Mastery_Program) |
 | Completed the 28-day plan and want to go deeper | Track 2 — CTO Voice Mastery Program (it picks up where Track 1 leaves off) |
 | Want storytelling frameworks only, not full vocal training | [Storytelling Exercise Workbook](Storytelling_Exercise_Workbook) as a standalone resource |
 | Want mental frameworks for any learning program | [Mental Models for Voice Training](Mental_Models_for_Voice_Training) as a standalone reference |

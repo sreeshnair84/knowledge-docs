@@ -865,6 +865,8 @@ const sidebars = {
       label: 'Soft Skills',
       items: [
         'soft-skills/index',
+        'soft-skills/Problem_Solving_Skills',
+        'soft-skills/Creative_Thinking_Skills',
         'soft-skills/CTO_Voice_Mastery_Program',
         'soft-skills/Mental_Models_for_Voice_Training',
         'soft-skills/Storytelling_Exercise_Workbook',
