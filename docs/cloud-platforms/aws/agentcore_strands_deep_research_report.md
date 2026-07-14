@@ -1,5 +1,5 @@
 ---
-title: "Contents"
+title: "Amazon Bedrock AgentCore & Strands SDK — Deep Technical Research Report"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf

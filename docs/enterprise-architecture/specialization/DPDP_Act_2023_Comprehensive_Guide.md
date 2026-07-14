@@ -1,6 +1,6 @@
 ---
 title: "DPDP Act 2023 & DPDP Rules 2025 — Comprehensive Guide"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

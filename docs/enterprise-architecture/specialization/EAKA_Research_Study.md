@@ -1,6 +1,6 @@
 ---
 title: "Enterprise Agent Knowledge Architecture (EAKA) Research Study"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

@@ -1,6 +1,6 @@
 ---
 title: "Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

@@ -19,6 +19,8 @@ Guides and tools for understanding, optimising, and governing the cost of AI sys
 
 ## Markdown Guides
 
+- [AI Tokenomics Guide](ai-tokenomics-guide.md) — How tokenization works, context window economics, prompt cost patterns, capability-price frontier, fine-tuning vs RAG, batch APIs, and full TCO
+- [Enterprise AI Commercial Analysis 2026](enterprise-ai-commercial-analysis-2026.md) — Pricing taxonomy, token economics for agentic workloads, GPU compute, enterprise contracts, vendor lock-in, FinOps disciplines
 - [AI Coding Agents 2026](ai-coding-agents-2026.md) — Cost and capability comparison of coding agents
 - [AI Value Creators Synthesis](ai-value-creators-synthesis.md) — McKinsey, BCG, Gartner & Stanford HAI synthesis on enterprise AI value creation and agentic AI ROI
 

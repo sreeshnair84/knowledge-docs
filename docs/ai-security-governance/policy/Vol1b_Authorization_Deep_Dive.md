@@ -1,6 +1,6 @@
 ---
 title: "Enterprise Authorization Deep Dive: Engines, Interceptor Patterns & XACML (Vol 1b)"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

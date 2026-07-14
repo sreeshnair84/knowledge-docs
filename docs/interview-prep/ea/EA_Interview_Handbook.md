@@ -21,6 +21,8 @@ Targeting: Microsoft · Google · Amazon · JPMorgan Chase · Goldman Sachs · M
 
 Roles: Enterprise Architect · Principal Architect · Chief Architect · Distinguished Architect Head of Architecture · CTO · Chief AI Architect
 
+> **Companion guide:** [EA Interview Handbook — 2026 Delta Update](./EA_Interview_Handbook_DELTA.md) covers 12 new topics not in this volume: Post-Quantum Cryptography, EU AI Act Compliance, AI FinOps, Composable Architecture, Supply Chain Security, Sustainable Architecture, DORA, AIOps, Responsible AI, Edge Computing, Integration Modernisation, and Architecture Leadership 2026.
+
 ## TABLE OF CONTENTS
 
 ##### 01 Enterprise Architecture Foundations

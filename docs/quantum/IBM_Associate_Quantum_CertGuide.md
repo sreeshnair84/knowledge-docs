@@ -1,5 +1,5 @@
 ---
-title: "TABLE OF CONTENTS"
+title: "IBM Certified Associate Developer — Quantum Computation Study Guide"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf

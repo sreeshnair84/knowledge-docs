@@ -1,6 +1,6 @@
 ---
 title: "Part 3: Enterprise Threat Modeling for AI Agents"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

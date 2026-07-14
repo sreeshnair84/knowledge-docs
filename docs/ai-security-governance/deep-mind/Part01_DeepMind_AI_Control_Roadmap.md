@@ -1,6 +1,6 @@
 ---
 title: "Part 1: DeepMind AI Control Roadmap Analysis"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

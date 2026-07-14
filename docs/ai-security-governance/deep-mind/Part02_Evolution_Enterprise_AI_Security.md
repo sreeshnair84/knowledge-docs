@@ -1,6 +1,6 @@
 ---
 title: "Part 2: Evolution of Enterprise AI Security"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""

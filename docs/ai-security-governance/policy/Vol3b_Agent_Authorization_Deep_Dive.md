@@ -1,6 +1,6 @@
 ---
 title: "Agent Authorization Deep Dive: Prompt Safety, Contextual Risk & Workflow Patterns (Vol 3b)"
-date_created:
+date_created: 2026-07-11
 last_reviewed:
 status: current
 supersedes: ""
