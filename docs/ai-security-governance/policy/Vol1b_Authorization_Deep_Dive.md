@@ -16,23 +16,23 @@ tags: []
 ## 1. XACML — The Standard That Defined
 
 # Enter rise Authorization p Authorization Deep Dive
-eXtensible Access Control Markup Language <u>(XACML) is the OASIS standard that first formalized the</u> PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is Engines · Interceptor Patterns · XACML · OpenFGA · Zanzibar · gRPC · Envoy · Event-Drivenessential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.
+eXtensible Access Control Markup Language (XACML) is the OASIS standard that first formalized the PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is Engines · Interceptor Patterns · XACML · OpenFGA · Zanzibar · gRPC · Envoy · Event-Drivenessential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.
 
 ### 1.1 XACML Request/Response Model
 
-|**. eq**<br>`john.smith@bank.com`<br>**1.2 XACML vs C**<br>**Dimension**|**uesesponse oe**<br>`FINANCE true invoke-tool payment-appro`<br>**edar — Structural Comparis**<br>**XACML 3.0**|`val-tool Permit HIGH`<br>**on**<br>**AWS Cedar**|
+|**. eq** `john.smith@bank.com` **1.2 XACML vs C** **Dimension**|**uesesponse oe** `FINANCE true invoke-tool payment-appro` **edar — Structural Comparis** **XACML 3.0**|`val-tool Permit HIGH` **on** **AWS Cedar**|
 |---|---|---|
 |Policy Format|Verbose XML — 50+ lines per rule|Concise DSL — 5-10 lines per policy|
-|Combining Algorithms|14 combining algorithms (deny-overrides,<br>permit-overrides, etc.)|Implicit: forbid overrides permit always|
-|Obligations|Full obligation model in standard|Obligations via context and PEP<br>conventions|
+|Combining Algorithms|14 combining algorithms (deny-overrides, permit-overrides, etc.)|Implicit: forbid overrides permit always|
+|Obligations|Full obligation model in standard|Obligations via context and PEP conventions|
 |Schema Validation|XML Schema (XSD)|Cedar schema — strongly typed|
 |Performance|XMLparsingoverhead — typically20-100ms|Sub-millisecond evaluation|
-|**VOLUME COVERAGE**<br>Extended coverage of e<br> <br>Standards|very authorization engine, all PEP interceptor<br> <br>OASIS standard—government/healthcare<br>mandate|patterns, gRPC interceptors,<br> <br>AWS proprietary (but open-source)|
-|event-driven authorizati<br>complete STRIDE threa<br>Formal Verification|on, XACML deep dive, OpenFGA relationship<br>t model with mitigations,andperformance ben<br>No|model, Zanzibar global scale,<br>chmark data.<br>Yes — Lean theorem prover|
+|**VOLUME COVERAGE** Extended coverage of e   Standards|very authorization engine, all PEP interceptor   OASIS standard—government/healthcare mandate|patterns, gRPC interceptors,   AWS proprietary (but open-source)|
+|event-driven authorizati complete STRIDE threa Formal Verification|on, XACML deep dive, OpenFGA relationship t model with mitigations,andperformance ben No|model, Zanzibar global scale, chmark data. Yes — Lean theorem prover|
 |Ecosystem|IBM, Axiomatics, Forgerock implementations|AWS AVP only (growing ecosystem)|
-|Use Today<br>|Legacy enterprises, government mandates<br>|New AWS-native projects<br>|
+|Use Today |Legacy enterprises, government mandates |New AWS-native projects |
 
-## 2. OpenFGA & Zanzibar — Relationship-Based Authorization
+## 2. OpenFGA & Zanzibar — relationship-based Authorization
 
 Google Zanzibar (2019 paper) described the authorization system that powers Google Drive, YouTube, Calendar, and Maps — serving trillions of authorization checks per day. OpenFGA (Open Fine-Grained Authorization) is Auth0/Okta's open-source implementation of the Zanzibar model. Both solve a problem RBAC and ABAC cannot: authorization based on entity relationships.
 
@@ -48,24 +48,19 @@ facts): // user:john#owner@document:m-and-a-brief // user:jane#viewer@document:m
 user:john#member@tenant:bank-prod // agent:payments-agent#delegated_from@user:john //
 ```
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 `Authorization Check: // can agent:payments-agent view document:m-and-a-brief? //` → `agent is delegated_from user:john //` → `user:john is owner of document //` → `owner` ⊇ `viewer //` → `ALLOW`
 
 ### 2.2 When ReBAC Beats RBAC and ABAC
 
-ReBAC (Relationship-Based Access Control) is the superior model when authorization depends on the relationship between the principal and the resource, not just attributes:
+ReBAC (relationship-based Access Control) is the superior model when authorization depends on the relationship between the principal and the resource, not just attributes:
 
 |**Scenario**|**RBAC/ABAC Approach**|**ReBAC Approach**|
 |---|---|---|
-|Can John edit his own<br>documents?|Add 'document-editor' role globally —<br>too broad|Tuple: john#editor@document:john-doc —<br>precise|
-|Can a manager see their<br>team's reports?|Check department attribute match —<br>brittle|Tuple:<br>manager:jane#viewer@report-group:team-3|
-|Can this agent access the<br>user's calendar?|Add 'calendar-reader' capability —<br>grants all calendars|Tuple: agent:X#delegated_reader@calendar:j<br>ohn-cal|
-|Google Drive share with<br>specific people|Create group for every share —<br>explosion|Tuple per share:<br>user:guest#viewer@doc:shared|
+|Can John edit his own documents?|Add 'document-editor' role globally — too broad|Tuple: john#editor@document:john-doc — precise|
+|Can a manager see their team's reports?|Check department attribute match — brittle|Tuple: manager:jane#viewer@report-group:team-3|
+|Can this agent access the user's calendar?|Add 'calendar-reader' capability — grants all calendars|Tuple: agent:X#delegated_reader@calendar:j ohn-cal|
+|Google Drive share with specific people|Create group for every share — explosion|Tuple per share: user:guest#viewer@doc:shared|
 |I**NOTE**|||
 
 For Agentic AI: The most powerful ReBAC use case is agent-to-user-data relationships. Instead of 'agent has calendar-access capability' (too broad), use relationship tuples: 'agent:X is delegated_reader of user:john calendar'. This means the agent can ONLY access John's calendar for this session, not all calendars with that capability.
@@ -251,21 +246,18 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 
 ### 5.1 Spoofing Threats
 
-|**Threat**|**Attack Scenario**|**Affected**<br>**Components**|**Mitigation**|
+|**Threat**|**Attack Scenario**|**Affected** **Components**|**Mitigation**|
 |---|---|---|---|
-|S1: Agent<br>Identity<br>Spoofing|Malicious code claims to be a<br>trusted agent (e.g.,<br>'payments-agent') by forging<br>its entity ID in a Cedar request|Cedar PDP, MCP<br>Gateway|Agent identity MUST be derived from mTLS<br>certificate or signed IAM role credential — never<br>from a self-reported header|
-|S2: User I<br>mpersonati<br>on by<br>Agent|Agent uses a stored user<br>token to act beyond its<br>delegation scope|Token Exchange<br>Service|RFC 8693 delegation tokens are<br>scope-constrained and carry act claim. Cedar<br>verifies act.sub matches delegated scope.|
-|S3: JWT<br>Replay<br>Attack|Attacker replays a captured<br>user JWT to gain unauthorized<br>access|Lambda Authorizer|JWT jti (JWT ID) tracked in ElastiCache for<br>token lifetime. Duplicate jti = deny + alert.|
-|S4: Tenant<br>Claim<br>Forgery|Attacker modifies JWT<br>tenant_id claim to access<br>another tenant's data|Claims<br>Normalization|Tenant ID is cryptographically bound in the JWT<br>signature. Only the IdP can set it. Normalization<br>re-validates against IdP.|
-|S5: JWKS<br>Poisoning|Attacker substitutes a<br>malicious JWKS endpoint to<br>validate forged tokens|Lambda Authorizer|JWKS endpoint URL is hardcoded in authorizer<br>config (not token-derived). Certificate pinning in<br>production.|
+|S1: Agent Identity Spoofing|Malicious code claims to be a trusted agent (e.g., 'payments-agent') by forging its entity ID in a Cedar request|Cedar PDP, MCP Gateway|Agent identity MUST be derived from mTLS certificate or signed IAM role credential — never from a self-reported header|
+|S2: User I mpersonati on by Agent|Agent uses a stored user token to act beyond its delegation scope|Token Exchange Service|RFC 8693 delegation tokens are scope-constrained and carry act claim. Cedar verifies act.sub matches delegated scope.|
+|S3: JWT Replay Attack|Attacker replays a captured user JWT to gain unauthorized access|Lambda Authorizer|JWT jti (JWT ID) tracked in ElastiCache for token lifetime. Duplicate jti = deny + alert.|
+|S4: Tenant Claim Forgery|Attacker modifies JWT tenant_id claim to access another tenant's data|Claims Normalization|Tenant ID is cryptographically bound in the JWT signature. Only the IdP can set it. Normalization re-validates against IdP.|
+|S5: JWKS Poisoning|Attacker substitutes a malicious JWKS endpoint to validate forged tokens|Lambda Authorizer|JWKS endpoint URL is hardcoded in authorizer config (not token-derived). Certificate pinning in production.|
 
 ### 5.2 Tampering Threats
-
-|**Threat**|**Attack Scenario**|**Affected**<br>**Components**|**Mitigation**|
-|---|---|---|---|
 |T1: Context|Agent modifies risk_score or|Claims|Context is constructed server-side from signed|
-|Manipulatio<br>n|businessHours in the context<br>object before Cedar evaluation|Normalization, PDP|claims and server-clock. Client-supplied context<br>values are rejected. Context hash is audited.|
-|T2: Policy<br>Store|Attacker modifies Cedar<br>policies directly in AVP|AVP Policy Store,<br>PAP|AVP policy changes trigger CloudTrail alerts.<br>Config rule detects drift. All changes require|
+|Manipulatio n|businessHours in the context object before Cedar evaluation|Normalization, PDP|claims and server-clock. Client-supplied context values are rejected. Context hash is audited.|
+|T2: Policy Store|Attacker modifies Cedar policies directly in AVP|AVP Policy Store, PAP|AVP policy changes trigger CloudTrail alerts. Config rule detects drift. All changes require|
 |Tampering|Console bypassing CI/CD||PRs. MFA for AVP console access.|
 |T3: Audit|Attacker modifies or deletes|CloudTrail, S3|S3 Object Lock (WORM) on audit bucket.|
 |Log|CloudTrail logs to hide||CloudTrail log file validation (SHA-256 chain).|
@@ -278,39 +270,30 @@ The following is a comprehensive STRIDE threat model for the entire authorizatio
 
 |**Threat**|**Attack Scenario**|**Mitigation**|
 |---|---|---|
-|R1: Tool<br>Invocation<br>Denial|Agent or user denies having<br>invoked a destructive tool|CloudTrail records every AVP IsAuthorized call with principal, action,<br>resource, decision, and policy matched. KMS-signed records are<br>non-repudiable.|
-|R2: Policy<br>Change Denial|Administrator denies having<br>changed a Cedar policy|AVP policy changes logged to CloudTrail with the IAM principal who<br>made the change. Git commit history with signed commits provides<br>additional non-repudiation.|
-|R3: Data<br>Access Denial|Agent denies having accessed<br>a classified document via RAG|Post-retrieval Cedar evaluation logs every document access<br>decision. Document chunk IDs and content hashes are in the audit<br>record.|
+|R1: Tool Invocation Denial|Agent or user denies having invoked a destructive tool|CloudTrail records every AVP IsAuthorized call with principal, action, resource, decision, and policy matched. KMS-signed records are non-repudiable.|
+|R2: Policy Change Denial|Administrator denies having changed a Cedar policy|AVP policy changes logged to CloudTrail with the IAM principal who made the change. Git commit history with signed commits provides additional non-repudiation.|
+|R3: Data Access Denial|Agent denies having accessed a classified document via RAG|Post-retrieval Cedar evaluation logs every document access decision. Document chunk IDs and content hashes are in the audit record.|
 
 ### 5.4 Information Disclosure Threats
-
-|**Threat**|**Attack Scenario**|**Mitigation**|
-|---|---|---|
-|I1:<br>Cross-Tenant<br>Data Leakage|Agent retrieves documents<br>belonging to another tenant<br>via RAG|Mandatory Cedar forbid on tenant mismatch. Pre-retrieval vector<br>filter by tenant_id. Defense-in-depth: storage partition isolation.|
-|I2:<br>Over-Privileged<br>LLM Context|Retrieved documents exceed<br>the user's clearance level and<br>are injected into LLM context|Post-retrieval Cedar per-chunk authorization removes<br>over-classified chunks before context injection.|
-|I3:<br>Authorization<br>Decision<br>Leakage|Error messages reveal policy<br>structure (e.g., 'You lack<br>Finance_Approvers group<br>membership')|All denial responses return generic 403. Detailed denial reasons<br>logged to CloudTrail only. No policy internals in API responses.|
-|I4: Memory<br>Cross-User<br>Leakage|Agent reads another user's<br>episodic memory by<br>manipulating session context|Memory records keyed by userId#tenantId in DynamoDB. Cedar<br>forbid on memory.ownerId != principal.userId.|
-|I5: PII in Agent<br>Output|LLM generates response<br>containing PII extracted from<br>retrieved documents|Bedrock Guardrails + Amazon Macie scan agent outputs. Cedar<br>output classification policy. DLP-failed outputs are blocked and<br>flagged.|
+|I1: Cross-Tenant Data Leakage|Agent retrieves documents belonging to another tenant via RAG|Mandatory Cedar forbid on tenant mismatch. Pre-retrieval vector filter by tenant_id. Defense-in-depth: storage partition isolation.|
+|I2: Over-Privileged LLM Context|Retrieved documents exceed the user's clearance level and are injected into LLM context|Post-retrieval Cedar per-chunk authorization removes over-classified chunks before context injection.|
+|I3: Authorization Decision Leakage|Error messages reveal policy structure (e.g., 'You lack Finance_Approvers group membership')|All denial responses return generic 403. Detailed denial reasons logged to CloudTrail only. No policy internals in API responses.|
+|I4: Memory Cross-User Leakage|Agent reads another user's episodic memory by manipulating session context|Memory records keyed by userId#tenantId in DynamoDB. Cedar forbid on memory.ownerId != principal.userId.|
+|I5: PII in Agent Output|LLM generates response containing PII extracted from retrieved documents|Bedrock Guardrails + Amazon Macie scan agent outputs. Cedar output classification policy. DLP-failed outputs are blocked and flagged.|
 
 ### 5.5 Denial of Service Threats
-
-|**Threat**|**Attack Scenario**|**Mitigation**|
-|---|---|---|
 |D1: PDP|Attacker floods AVP with|AVP is managed and auto-scales. Lambda Authorizer caches|
-|Exhaustion|IsAuthorized calls to exhaust<br>capacity and cause deny-all|decisions (300s TTL). Rate limiting at WAF and API Gateway.<br>Circuit breaker: if AVP unavailable→default deny (not open).|
-|D2: Cache<br>Poisoning DoS|Attacker triggers massive<br>cache invalidation by causing<br>repeated policy changes|Policy changes require CI/CD pipeline (multi-step, multi-approver).<br>Emergency cache flush requires separate IAM permission. Rate limit<br>on policy change events.|
+|Exhaustion|IsAuthorized calls to exhaust capacity and cause deny-all|decisions (300s TTL). Rate limiting at WAF and API Gateway. Circuit breaker: if AVP unavailable→default deny (not open).|
+|D2: Cache Poisoning DoS|Attacker triggers massive cache invalidation by causing repeated policy changes|Policy changes require CI/CD pipeline (multi-step, multi-approver). Emergency cache flush requires separate IAM permission. Rate limit on policy change events.|
 |D3: Tool|Runaway agent invokes tools|Per-agent, per-tool rate limiting enforced at MCP PEP Gateway.|
 |Invocation|in a tight loop, exhausting|Step Functions workflow has max concurrency. Dead man's switch:|
 |Storms|downstream API quotas|agent execution time limit.|
 
 ### 5.6 Elevation of Privilege Threats
-
-|**Threat**|**Attack Scenario**|**Mitigation**|
-|---|---|---|
-|E1: Confused<br>Deputy Attack|Orchestrator agent<br>accumulates permissions from<br>multiple workflow steps,<br>gaining more access than any<br>single step should allow|Cedar evaluates the delegated scope at EVERY step independently.<br>No permission accumulation between steps. Delegation tokens are<br>scoped and time-limited.|
-|E2: Prompt<br>Injection<br>Privilege<br>Escalation|Adversarial content in<br>retrieved documents instructs<br>agent to invoke tools it is not<br>authorized for|Bedrock Guardrails detect injection patterns. Cedar tool<br>authorization is independent of LLM reasoning — a prompt cannot<br>grant Cedar permissions.|
-|E3:<br>Agent-to-Agent<br>Privilege<br>Escalation|Sub-agent claims broader<br>scope than the orchestrator<br>delegated|Cedar verifies that sub-agent's delegated scope is⊆orchestrator's<br>scope. Token exchange service enforces scope intersection at<br>delegation time.|
-|E4: Expired<br>Session<br>Privilege<br>Retention|Agent continues executing<br>after the user's session<br>expires, using cached<br>authorization decisions|JWT expiry is enforced at normalization. Cached decisions have<br>TTL≤JWT expiry. Re-authorization required for sessions > 60<br>minutes.|
+|E1: Confused Deputy Attack|Orchestrator agent accumulates permissions from multiple workflow steps, gaining more access than any single step should allow|Cedar evaluates the delegated scope at EVERY step independently. No permission accumulation between steps. Delegation tokens are scoped and time-limited.|
+|E2: Prompt Injection Privilege Escalation|Adversarial content in retrieved documents instructs agent to invoke tools it is not authorized for|Bedrock Guardrails detect injection patterns. Cedar tool authorization is independent of LLM reasoning — a prompt cannot grant Cedar permissions.|
+|E3: Agent-to-Agent Privilege Escalation|Sub-agent claims broader scope than the orchestrator delegated|Cedar verifies that sub-agent's delegated scope is⊆orchestrator's scope. Token exchange service enforces scope intersection at delegation time.|
+|E4: Expired Session Privilege Retention|Agent continues executing after the user's session expires, using cached authorization decisions|JWT expiry is enforced at normalization. Cached decisions have TTL≤JWT expiry. Re-authorization required for sessions > 60 minutes.|
 
 ## 6. Authorization Performance Benchmarks
 
@@ -320,24 +303,24 @@ The following benchmarks are based on production measurements from AWS documenta
 
 |**Component**|**P50**|**P95**|**P99**|**P99.9**|**Notes**|
 |---|---|---|---|---|---|
-|AWS AVP IsAuthorized<br>(managed)|2ms|5ms|8ms|15ms|Measured from Lambda in same region|
-|OPA sidecar (policy bundle<br>in-memory)|0.3m<br>s|0.8m<br>s|1.5m<br>s|3ms|Rego evaluation, no network I/O|
-|OPA central server (network)|1.5m<br>s|3ms|5ms|12ms|Same-AZ, HTTP/2|
-|Claims normalization (Redis hit)|0.5m<br>s|1ms|2ms|4ms|ElastiCache same-AZ|
-|Claims normalization (cold —<br>LDAP)|15ms|25ms|40ms|80ms|Group GUID resolution from Entra|
-|JWT signature validation (cached<br>JWKS)|0.3m<br>s|0.5m<br>s|1ms|2ms|RSA-256 in Lambda memory|
-|Lambda Authorizer total (cache<br>hit)|1ms|2ms|4ms|8ms|API GW serves from IAM cache|
-|Lambda Authorizer total (cache<br>miss)|25ms|40ms|60ms|100ms|Cold path including AVP call|
-|RAG pre-filter construction|0.2m<br>s|0.5m<br>s|1ms|2ms|Derived from cached claims|
-|Cedar chunk post-auth (per<br>chunk)|1ms|2ms|4ms|8ms|Batch mode for multiple chunks|
+|AWS AVP IsAuthorized (managed)|2ms|5ms|8ms|15ms|Measured from Lambda in same region|
+|OPA sidecar (policy bundle in-memory)|0.3m s|0.8m s|1.5m s|3ms|Rego evaluation, no network I/O|
+|OPA central server (network)|1.5m s|3ms|5ms|12ms|Same-AZ, HTTP/2|
+|Claims normalization (Redis hit)|0.5m s|1ms|2ms|4ms|ElastiCache same-AZ|
+|Claims normalization (cold — LDAP)|15ms|25ms|40ms|80ms|Group GUID resolution from Entra|
+|JWT signature validation (cached JWKS)|0.3m s|0.5m s|1ms|2ms|RSA-256 in Lambda memory|
+|Lambda Authorizer total (cache hit)|1ms|2ms|4ms|8ms|API GW serves from IAM cache|
+|Lambda Authorizer total (cache miss)|25ms|40ms|60ms|100ms|Cold path including AVP call|
+|RAG pre-filter construction|0.2m s|0.5m s|1ms|2ms|Derived from cached claims|
+|Cedar chunk post-auth (per chunk)|1ms|2ms|4ms|8ms|Batch mode for multiple chunks|
 
 ### 6.2 Cache Hit Rate Targets
 
-|**Cache Layer**|**Target Hit**<br>**Rate**|**If Miss**|**Impact of Miss**|
+|**Cache Layer**|**Target Hit** **Rate**|**If Miss**|**Impact of Miss**|
 |---|---|---|---|
 |API GW IAM Policy Cache (300s)|>70%|Lambda Authorizer executes|+40ms avg|
-|Claims Normalization (Redis, 3600s<br>TTL)|>95%|Full LDAP + mapping pipeline|+30ms avg|
-|PIP Attribute Cache (Redis, 300s<br>TTL)|>85%|DynamoDB attribute lookup|+5ms avg|
+|Claims Normalization (Redis, 3600s TTL)|>95%|Full LDAP + mapping pipeline|+30ms avg|
+|PIP Attribute Cache (Redis, 300s TTL)|>85%|DynamoDB attribute lookup|+5ms avg|
 |OPA Bundle (in-memory, 30s refresh)|100%|N/A (async refresh)|No impact on request path|
 |Cedar AVP (no client-side cache)|N/A (managed)|Always calls AVP API|AVP manages internally|
 |I**NOTE**||||
@@ -348,8 +331,8 @@ Performance Engineering Principle: The critical path for 95% of requests must be
 
 |**Component**|**Single Instance TPS**|**Horizontal Scaling**|**AWS Managed?**|
 |---|---|---|---|
-|AVP IsAuthorized|~5,000 TPS per region|AWS manages — effectively unlimited|Yes — fully<br>managed|
-|Lambda Authorizer|1,000 concurrent (default)|Auto-scale — request AWS limit<br>increase|Yes — serverless|
-|OPA Sidecar (ECS)|~10,000 TPS per core|Scale with service instances (1:1)|No —<br>self-managed|
+|AVP IsAuthorized|~5,000 TPS per region|AWS manages — effectively unlimited|Yes — fully managed|
+|Lambda Authorizer|1,000 concurrent (default)|Auto-scale — request AWS limit increase|Yes — serverless|
+|OPA Sidecar (ECS)|~10,000 TPS per core|Scale with service instances (1:1)|No — self-managed|
 |ElastiCache Redis (claims)|100,000+ ops/sec per node|Cluster mode — horizontal sharding|Yes — managed|
-|Claims Normalization<br>(ECS)|500 TPS per Fargate task<br>(2vCPU)|Auto-scaling on CPU/request metrics|Yes — Fargate<br>managed|
+|Claims Normalization (ECS)|500 TPS per Fargate task (2vCPU)|Auto-scaling on CPU/request metrics|Yes — Fargate managed|

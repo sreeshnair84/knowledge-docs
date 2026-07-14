@@ -21,7 +21,6 @@ Marketplace OAuth models, consent flows, token lifecycle, and reference architec
 Enterprise Authentication & Identity Propagation for AI Agents
 
 
-
 ### **Marketplace Connectors**
 
 Enterprise AI platforms extend their capabilities through marketplace connectors — pre-built integrations distributed through GitHub Marketplace, Atlassian Marketplace, ServiceNow Store, Microsoft AppSource, Google Workspace Marketplace, and AWS Marketplace. Each marketplace has a distinct OAuth consent, permissions, and token management model.
@@ -34,15 +33,14 @@ GitHub Marketplace distributes GitHub Apps and OAuth Apps. GitHub Apps are the p
 
 |**Lifecycle Stage**|**GitHub App Model**|**OAuth App Model**|
 |---|---|---|
-|Initial consent|Org admin installs via Marketplace;<br>selects repos + permissions|User OAuth consent per user; no org<br>admin requirement|
+|Initial consent|Org admin installs via Marketplace; selects repos + permissions|User OAuth consent per user; no org admin requirement|
 |Admin consent|Required for org-level installation|Optional (owner can pre-approve)|
-|OAuth authorization|Installation token via JWT exchange<br>(no user OAuth required)|User-level OAuth consent per user<br>per app|
-|Refresh token|No refresh token — JWT→<br>installation token every 1 hour|Refresh token stored per user;<br>long-lived|
-|Long-lived credentials|Private key for JWT signing (rotate<br>regularly)|OAuth token until revoked|
-|Permissions update|Admin must re-approve if app<br>requests new permissions|User must re-consent if scopes<br>expand|
-|Revocation|Admin uninstalls app; all installation<br>tokens immediately invalid|User or admin revokes; OAuth token<br>invalidated|
-|Token rotation|Automatic — 1-hour installation<br>tokens|Manual rotation or revocation only|
-
+|OAuth authorization|Installation token via JWT exchange (no user OAuth required)|User-level OAuth consent per user per app|
+|Refresh token|No refresh token — JWT→ installation token every 1 hour|Refresh token stored per user; long-lived|
+|Long-lived credentials|Private key for JWT signing (rotate regularly)|OAuth token until revoked|
+|Permissions update|Admin must re-approve if app requests new permissions|User must re-consent if scopes expand|
+|Revocation|Admin uninstalls app; all installation tokens immediately invalid|User or admin revokes; OAuth token invalidated|
+|Token rotation|Automatic — 1-hour installation tokens|Manual rotation or revocation only|
 
 
 #### **Atlassian Marketplace**
@@ -52,17 +50,15 @@ Atlassian Marketplace apps are distributed as Connect apps (cloud), Forge apps (
 ##### **Atlassian Marketplace — Consent & Token Models**
 
 
-
 |**Consent Type**|**Forge App**|**Connect App**|**DC/Server App**|
 |---|---|---|---|
-|User consent|OAuth 2.0 consent per user<br>(3LO)|OAuth 2.0 consent per user|Admin-configured, user<br>trust implied|
-|Admin consent|Site admin approves app<br>installation|Site admin approves +<br>configures|Admin installs; org-level<br>consent|
-|OAuth flow|3LO (auth code + PKCE)|3LO (auth code)|Not OAuth — uses JWT<br>lifecycle|
-|Refresh token|Managed by Atlassian<br>platform|App must manage refresh<br>token|App manages session|
-|Permissions update|Manifest change→admin<br>re-approves|App descriptor update→<br>re-consent|Admin re-installs|
-|Revocation|Site admin uninstalls;<br>tokens revoked|Admin revokes; tokens<br>revoked|Admin removes app|
-|Token rotation|Platform-managed|App-managed via OAuth<br>refresh|Session-based rotation|
-
+|User consent|OAuth 2.0 consent per user (3LO)|OAuth 2.0 consent per user|Admin-configured, user trust implied|
+|Admin consent|Site admin approves app installation|Site admin approves + configures|Admin installs; org-level consent|
+|OAuth flow|3LO (auth code + PKCE)|3LO (auth code)|Not OAuth — uses JWT lifecycle|
+|Refresh token|Managed by Atlassian platform|App must manage refresh token|App manages session|
+|Permissions update|Manifest change→admin re-approves|App descriptor update→ re-consent|Admin re-installs|
+|Revocation|Site admin uninstalls; tokens revoked|Admin revokes; tokens revoked|Admin removes app|
+|Token rotation|Platform-managed|App-managed via OAuth refresh|Session-based rotation|
 
 
 #### **Microsoft AppSource**
@@ -73,11 +69,10 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 
 |**Consent Type**|**Description**|**Required For**|
 |---|---|---|
-|User consent|Individual user grants delegated<br>permissions|Files.ReadWrite (user's own files only)|
-|Admin consent (tenant-wide)|Global Admin grants application-wide<br>permissions|Mail.Read (all mailboxes), Audit logs|
-|Owner consent|Resource owner grants access to<br>specific resources|SharePoint site-level permissions|
-|Publisher verification|Microsoft verifies app publisher<br>identity|Required for all AppSource apps<br>since 2021|
-
+|User consent|Individual user grants delegated permissions|Files.ReadWrite (user's own files only)|
+|Admin consent (tenant-wide)|Global Admin grants application-wide permissions|Mail.Read (all mailboxes), Audit logs|
+|Owner consent|Resource owner grants access to specific resources|SharePoint site-level permissions|
+|Publisher verification|Microsoft verifies app publisher identity|Required for all AppSource apps since 2021|
 
 
 ##### **Microsoft AppSource OAuth Consent Flow**
@@ -89,10 +84,9 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 **2** IT Admin evaluates app: reviews requested permissions in Entra ID
 
 
-
 |↓||
 |---|---|
-|**3**<br> ↓|Admin grants tenant-wide admin consent for application permissions|
+|**3**  ↓|Admin grants tenant-wide admin consent for application permissions|
 |**4**|Individual users grant delegated (user-level) consent on first use|
 |↓||
 |**5**|App receives access token via OAuth 2.0 (auth code + PKCE)|
@@ -104,20 +98,18 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 |**8**|Conditional Access policies apply to app access; MFA enforcement possible|
 
 
-
 #### **ServiceNow Store**
 
 ##### **ServiceNow Store — App Lifecycle**
 
 |**Stage**|**Implementation**|
 |---|---|
-|App distribution|ServiceNow Store (HI portal); customer downloads to their<br>instance|
-|User consent|ServiceNow admin activates plugin; no per-user OAuth<br>consent needed|
-|OAuth authorization|IntegrationHub Spokes use OAuth entity profiles per<br>external system|
+|App distribution|ServiceNow Store (HI portal); customer downloads to their instance|
+|User consent|ServiceNow admin activates plugin; no per-user OAuth consent needed|
+|OAuth authorization|IntegrationHub Spokes use OAuth entity profiles per external system|
 |Credential storage|ServiceNow Credential Store (encrypted, vault-like)|
-|Token rotation|OAuth entity profile manages refresh; admin can trigger<br>rotation|
-|Revocation|Admin deactivates plugin or revokes OAuth credentials in<br>Credential Store|
-
+|Token rotation|OAuth entity profile manages refresh; admin can trigger rotation|
+|Revocation|Admin deactivates plugin or revokes OAuth credentials in Credential Store|
 
 
 #### **Google Workspace Marketplace**
@@ -125,34 +117,26 @@ Microsoft AppSource distributes Teams apps, Power Platform connectors, Copilot e
 **Google Workspace Marketplace — App Lifecycle**
 
 
-
 ||**Stage**|**Implementation**|
 |---|---|---|
-|App distribution||Google Workspace Marketplace; admin installs<br>domain-wide or users self-install|
+|App distribution||Google Workspace Marketplace; admin installs domain-wide or users self-install|
 |User consent||OAuth 2.0 consent screen; scopes listed explicitly|
-|Admin consent||Domain-wide installation grants access without per-user<br>consent|
-|OAuth flow||Auth code + PKCE for user-level; service account + DWD<br>for domain-wide|
+|Admin consent||Domain-wide installation grants access without per-user consent|
+|OAuth flow||Auth code + PKCE for user-level; service account + DWD for domain-wide|
 |Refresh token||Stored by app; Google issues long-lived refresh tokens|
 |Token rotation||Google rotates refresh tokens on sensitive scope use|
-|Revocation||Admin removes app from domain; individual users revoke<br>at myaccount.google.com|
-
+|Revocation||Admin removes app from domain; individual users revoke at myaccount.google.com|
 
 
 #### **AWS Marketplace**
 
 **AWS Marketplace — Auth Model**
-
-||**Stage**|**Implementation**|
-|---|---|---|
-|App distribution||AWS Marketplace SaaS listings; customer subscribes via<br>AWS account|
-|Authentication||AWS IAM STS for API access; OIDC for Workload Identity<br>Federation|
-|Authorization||IAM roles with trust policies; resource-based policies per<br>service|
-|Credential model||No long-lived keys — IAM roles, STS AssumeRole, or<br>OIDC provider|
-|Token rotation||STS tokens expire 15 min to 12 hours; auto-refreshed by<br>SDK|
-|Revocation||IAM role revocation; permission boundary removal; SCP at<br>org level|
-
-
-
+|App distribution||AWS Marketplace SaaS listings; customer subscribes via AWS account|
+|Authentication||AWS IAM STS for API access; OIDC for Workload Identity Federation|
+|Authorization||IAM roles with trust policies; resource-based policies per service|
+|Credential model||No long-lived keys — IAM roles, STS AssumeRole, or OIDC provider|
+|Token rotation||STS tokens expire 15 min to 12 hours; auto-refreshed by SDK|
+|Revocation||IAM role revocation; permission boundary removal; SCP at org level|
 
 
 ### **Enterprise Architecture Patterns**
@@ -182,7 +166,6 @@ Production enterprise AI deployments follow established architecture patterns th
 [Data Layer] Google Workspace APIs: Drive, Docs, Gmail, Calendar — enforces user **4** permissions
 
 
-
 ↓
 
 **5** [Security Layer] VPC Service Controls: restricts API access to authorized networks ↓ **6** [Governance Layer] Context-Aware Access, BeyondCorp: device and context validation ↓ **7** [Audit Layer] Cloud Audit Logs + Workspace Audit: all API calls and AI interactions logged
@@ -204,18 +187,14 @@ Production enterprise AI deployments follow established architecture patterns th
 **1** [Identity Layer] Atlassian Access: SAML SSO; Google/Microsoft federation ↓ **2** [AI Layer] Atlassian Rovo: Forge serverless runtime; user identity from Forge context
 
 
-
 |↓||
 |---|---|
-|**3**<br> ↓|[Connector Layer] Forge functions: call Jira/Confluence APIs using user's 3LO OAuth token|
+|**3**  ↓|[Connector Layer] Forge functions: call Jira/Confluence APIs using user's 3LO OAuth token|
 |**4**|[External Layer] Third-party connectors: OAuth 2.0 per external service|
 |↓||
 |**5**|[Security Layer] Atlassian Guard: DLP, shadow IT, audit; IP allowlisting|
 |↓||
 |**6**|[Audit Layer] Atlassian Audit Log: all Rovo agent actions with user context|
-
-
-
 
 
 ### **Token & Consent Lifecycle Patterns**
@@ -226,17 +205,16 @@ Production enterprise AI deployments follow established architecture patterns th
 
 ||**Stage**|**Actor**|**Action**|**Output**|
 |---|---|---|---|---|
-|Discov|ery|User|Finds AI tool in marketplace|App identified; scopes<br>reviewed|
-|Admin|evaluation|IT Admin|Reviews requested<br>permissions in IdP|Risk assessment<br>completed|
-|Admin|pre-consent|Global/Tenant Admin|Grants admin consent for<br>app permissions|Admin consent recorded in<br>IdP|
-|User fir|st use|End User|Opens AI tool; sees<br>consent screen|User consent for delegated<br>scopes|
-|OAuth|flow|AI Platform|Completes auth code +<br>PKCE exchange|Access token + refresh<br>token issued|
-|Token|storage|AI Platform Backend|Encrypts and stores tokens|Tokens in encrypted<br>database|
+|Discov|ery|User|Finds AI tool in marketplace|App identified; scopes reviewed|
+|Admin|evaluation|IT Admin|Reviews requested permissions in IdP|Risk assessment completed|
+|Admin|pre-consent|Global/Tenant Admin|Grants admin consent for app permissions|Admin consent recorded in IdP|
+|User fir|st use|End User|Opens AI tool; sees consent screen|User consent for delegated scopes|
+|OAuth|flow|AI Platform|Completes auth code + PKCE exchange|Access token + refresh token issued|
+|Token|storage|AI Platform Backend|Encrypts and stores tokens|Tokens in encrypted database|
 |Sessio|n establishment|AI Platform|Creates user session linked|User can interact with AI|
 ||||to tokens||
-|**Refre**<br>**Refres**<br>**1**<br> ↓<br>**2**<br> ↓<br>**3**<br> ↓<br>**4**<br> ↓|**sh Token R**<br>**h Token Rotat**<br>Access token e<br>AI platform det<br>AI platform sen<br>IdP validates r|**otation Lifecycle**<br>**ion Flow**<br>xpires (e.g. after 60 minutes)<br>ects expiry (checks exp claim<br>ds refresh request: POST /to<br>efresh token; issues new acce|<br>before API call)<br>ken with refresh_token<br>ss_token + new refresh_t|oken|
+|**Refre** **Refres** **1**  ↓ **2**  ↓ **3**  ↓ **4**  ↓|**sh Token R** **h Token Rotat** Access token e AI platform det AI platform sen IdP validates r|**otation Lifecycle** **ion Flow** xpires (e.g. after 60 minutes) ects expiry (checks exp claim ds refresh request: POST /to efresh token; issues new acce| before API call) ken with refresh_token ss_token + new refresh_t|oken|
 |**5**|AI platform sto|res new refresh_token; old re|fresh_token is now invalid||
-
 
 
 #### **Refresh Token Rotation Lifecycle**
@@ -244,12 +222,10 @@ Production enterprise AI deployments follow established architecture patterns th
 ##### **Refresh Token Rotation Flow**
 
 
-
 ↓
 
-|**6**<br> ↓|API call retried with new access_token|
+|**6**  ↓|API call retried with new access_token|
 |---|---|
-
 
 
 **7** If refresh fails (token revoked): user re-authentication prompt triggered
@@ -260,13 +236,12 @@ Production enterprise AI deployments follow established architecture patterns th
 
 |**Revocation Trigger**|**What Is Revoked**|**Effect**|**Latency**|
 |---|---|---|---|
-|User offboarding (HR)|All refresh tokens for user|All AI sessions terminated;<br>CAE invalidates active<br>tokens|Near-real-time (CAE) or<br>next refresh|
-|Password reset|All refresh tokens|User must re-authenticate<br>everywhere|Immediate (CAE for<br>CAE-capable apps)|
-|Admin policy change|Conditional Access<br>re-evaluation|Active tokens fail CAE<br>check|< 30 seconds (CAE)|
-|Admin removes<br>marketplace app|App's OAuth registration|All tokens for app<br>invalidated|Immediate|
-|User revokes app<br>(self-service)|User's token for specific<br>app|App loses access; user<br>sees confirmation|Immediate|
-|Security incident (admin)|Explicit token revocation via<br>IdP|All sessions for user<br>terminated|Immediate|
-
+|User offboarding (HR)|All refresh tokens for user|All AI sessions terminated; CAE invalidates active tokens|Near-real-time (CAE) or next refresh|
+|Password reset|All refresh tokens|User must re-authenticate everywhere|Immediate (CAE for CAE-capable apps)|
+|Admin policy change|Conditional Access re-evaluation|Active tokens fail CAE check|< 30 seconds (CAE)|
+|Admin removes marketplace app|App's OAuth registration|All tokens for app invalidated|Immediate|
+|User revokes app (self-service)|User's token for specific app|App loses access; user sees confirmation|Immediate|
+|Security incident (admin)|Explicit token revocation via IdP|All sessions for user terminated|Immediate|
 
 
 ###### **Token Lifecycle Best Practices Summary**

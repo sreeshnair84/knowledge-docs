@@ -52,30 +52,22 @@ IIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIII I `RESPONSE (authorized, classifi
 
 ##### I **NOTE**
 
-Every numbered decision point (P1–P7) is an independent Cedar policy evaluation. A positive decision at P1 does NOT <u>grant permission at P3. Authorization is re-evaluated at every action boundary. This is the</u> fundamental principle of Zero Trust for agents.
+Every numbered decision point (P1–P7) is an independent Cedar policy evaluation. A positive decision at P1 does NOT grant permission at P3. Authorization is re-evaluated at every action boundary. This is the fundamental principle of Zero Trust for agents.
 
 ### 1.2 Authorization Decision Matrix by Agent Step
 
-|**Step**|**Authorization Question**|**Principal**|**Policy**<br>**Engine**|**Context Required**|
+|**Step**|**Authorization Question**|**Principal**|**Policy** **Engine**|**Context Required**|
 |---|---|---|---|---|
-|Agent<br>Invocation|Can this user invoke agent<br>type X?|User|Cedar AVP|capabilities, mfa, risk_score|
-|Tool Selection|Is tool T in this agent's<br>permitted toolset?|Agent|Cedar AVP|agent_type, user_capabilities|
+|Agent Invocation|Can this user invoke agent type X?|User|Cedar AVP|capabilities, mfa, risk_score|
+|Tool Selection|Is tool T in this agent's permitted toolset?|Agent|Cedar AVP|agent_type, user_capabilities|
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
-
-|**Step**|**Authorization Question**|**Principal**|**Policy**<br>**Engine**|**Context Required**|
-|---|---|---|---|---|
-|Tool Invocation|Can agent (on behalf of user)<br>call this tool now?|Agent + User|Cedar AVP|time, risk, geo, mfa, data_class|
-|Memory Read|Can agent read memory<br>scope for this user session?|Agent|Cedar AVP|session_id, memory_scope,<br>tenant|
-|Knowledge<br>Access|Can agent retrieve this<br>document?|Agent|Cedar AVP|doc_classification, user_clearance|
-|API Call|Can agent call this<br>downstream API endpoint?|Agent|Cedar AVP|api_scope, rate_limit, tenant|
-|Output Return|Is the output data<br>classification permitted?|Agent|Cedar AVP|output_class, user_clearance|
-|Human<br>Approval|Does this action require<br>human approval?|Action|Cedar AVP|amount, risk_score, action_type|
-|Sub-Agent<br>Spawn|Can this agent create a<br>sub-agent?|Agent|Cedar AVP|agent_tier, scope_constraints|
+|Tool Invocation|Can agent (on behalf of user) call this tool now?|Agent + User|Cedar AVP|time, risk, geo, mfa, data_class|
+|Memory Read|Can agent read memory scope for this user session?|Agent|Cedar AVP|session_id, memory_scope, tenant|
+|Knowledge Access|Can agent retrieve this document?|Agent|Cedar AVP|doc_classification, user_clearance|
+|API Call|Can agent call this downstream API endpoint?|Agent|Cedar AVP|api_scope, rate_limit, tenant|
+|Output Return|Is the output data classification permitted?|Agent|Cedar AVP|output_class, user_clearance|
+|Human Approval|Does this action require human approval?|Action|Cedar AVP|amount, risk_score, action_type|
+|Sub-Agent Spawn|Can this agent create a sub-agent?|Agent|Cedar AVP|agent_tier, scope_constraints|
 
 ### 2. Tool Authorization Architecture
 
@@ -131,18 +123,15 @@ resource.requiredCapability ) };
 
 |**Tool Category**|**Example Tools**|**Required Capability**|**Additional Controls**|
 |---|---|---|---|
-|Data Query|SQL Tool, DynamoDB<br>Tool, Athena Tool|can_query_database|Business hours, MFA, risk < 50|
-|Financial<br>Operations|Payment Tool, Transfer<br>Tool, FX Tool|can_approve_payment|Dual approval for > $10K, MFA, low risk|
-|ERP/CRM<br>Access|SAP Tool, Salesforce Tool|can_access_erp|Department match, geography, session<br>age|
-|Document<br>Operations|SharePoint Tool, S3 Tool|can_access_documents|Classification-based, DLP active|
-
-|**Tool Category**|**Example Tools**|**Required Capability**|**Additional Controls**|
-|---|---|---|---|
-|Communication|Email Tool, Teams Tool,<br>Slack Tool|can_send_communicatio<br>n|Recipient validation, DLP scan|
-|Code Execution|Lambda Tool, CodeBuild<br>Tool|can_execute_code|Sandbox only, output size limit|
-|Destructive<br>Operations|Delete Tool, Purge Tool|can_delete_records|Business hours, approval, risk < 30|
-|External APIs|Vendor API Tool, Partner<br>Tool|can_call_external_api|Tenant isolation, rate limit|
-|HR Systems|Workday Tool, HR Portal<br>Tool|can_view_hr_records|Own geography only, MFA|
+|Data Query|SQL Tool, DynamoDB Tool, Athena Tool|can_query_database|Business hours, MFA, risk < 50|
+|Financial Operations|Payment Tool, Transfer Tool, FX Tool|can_approve_payment|Dual approval for > $10K, MFA, low risk|
+|ERP/CRM Access|SAP Tool, Salesforce Tool|can_access_erp|Department match, geography, session age|
+|Document Operations|SharePoint Tool, S3 Tool|can_access_documents|Classification-based, DLP active|
+|Communication|Email Tool, Teams Tool, Slack Tool|can_send_communicatio n|Recipient validation, DLP scan|
+|Code Execution|Lambda Tool, CodeBuild Tool|can_execute_code|Sandbox only, output size limit|
+|Destructive Operations|Delete Tool, Purge Tool|can_delete_records|Business hours, approval, risk < 30|
+|External APIs|Vendor API Tool, Partner Tool|can_call_external_api|Tenant isolation, rate limit|
+|HR Systems|Workday Tool, HR Portal Tool|can_view_hr_records|Own geography only, MFA|
 
 ## 3. Context-Aware Authorization
 
@@ -152,19 +141,19 @@ Static role-based authorization is insufficient for Agentic AI. Authorization de
 
 |**Signal**|**Source**|**Used For**|**Example Policy Impact**|
 |---|---|---|---|
-|Timestamp / Business<br>Hours|System clock|Restrict destructive actions<br>to office hours|Delete operations forbidden<br>18:00–08:00|
-|Risk Score (0–100)|Risk Engine (AWS<br>Fraud Detector)|Elevate controls for<br>high-risk sessions|Risk > 70: require additional MFA step|
-|Device Compliance|Microsoft Endpoint<br>Manager / Intune|Require managed device<br>for sensitive data|PII access denied on unmanaged<br>device|
-|Geographic Location|IP geolocation / VPN<br>context|Enforce data residency,<br>geo-restrictions|EU data cannot be accessed from US|
-|MFA Method & Age|Entra ID AMR claim|Require strong auth for<br>high-value actions|Payments: phishing-resistant MFA<br>only|
-|Session Age (minutes)|Token issuance time|Require re-authentication<br>for aged sessions|Sessions > 60 min: step-up auth for<br>admin|
-|Network Zone|VPC subnet tags, Zero<br>Trust NAC|Differentiate corporate vs<br>remote access|CORPORATE allows all; REMOTE<br>restricted|
-|Agent Confidence<br>Score|LLM reasoning chain|Limit tool access if agent is<br>uncertain|Confidence < 80%: require human<br>review|
-|Prompt Classification|Content classifier<br>(Bedrock Guardrails)|Block prompt injection,<br>jailbreak attempts|Injected prompt: deny and alert|
-|Data Sensitivity|AWS Macie, data<br>catalog|Enforce proportional<br>access controls|TOP_SECRET: additional approval<br>required|
-|Purpose / Task Type|Agent task metadata|Restrict tools to<br>task-appropriate subset|Tax task: only tax tools accessible|
-|Approval Status|Workflow engine (Step<br>Functions)|Gate on explicit prior<br>approval|Payment > $50K: APPROVED status<br>required|
-|Threat Score|AWS GuardDuty,<br>SIEM|Emergency circuit breaker|Active threat: deny all non-essential<br>access|
+|Timestamp / Business Hours|System clock|Restrict destructive actions to office hours|Delete operations forbidden 18:00–08:00|
+|Risk Score (0–100)|Risk Engine (AWS Fraud Detector)|Elevate controls for high-risk sessions|Risk > 70: require additional MFA step|
+|Device Compliance|Microsoft Endpoint Manager / Intune|Require managed device for sensitive data|PII access denied on unmanaged device|
+|Geographic Location|IP geolocation / VPN context|Enforce data residency, geo-restrictions|EU data cannot be accessed from US|
+|MFA Method & Age|Entra ID AMR claim|Require strong auth for high-value actions|Payments: phishing-resistant MFA only|
+|Session Age (minutes)|Token issuance time|Require re-authentication for aged sessions|Sessions > 60 min: step-up auth for admin|
+|Network Zone|VPC subnet tags, Zero Trust NAC|Differentiate corporate vs remote access|CORPORATE allows all; REMOTE restricted|
+|Agent Confidence Score|LLM reasoning chain|Limit tool access if agent is uncertain|Confidence < 80%: require human review|
+|Prompt Classification|Content classifier (Bedrock Guardrails)|Block prompt injection, jailbreak attempts|Injected prompt: deny and alert|
+|Data Sensitivity|AWS Macie, data catalog|Enforce proportional access controls|TOP_SECRET: additional approval required|
+|Purpose / Task Type|Agent task metadata|Restrict tools to task-appropriate subset|Tax task: only tax tools accessible|
+|Approval Status|Workflow engine (Step Functions)|Gate on explicit prior approval|Payment > $50K: APPROVED status required|
+|Threat Score|AWS GuardDuty, SIEM|Emergency circuit breaker|Active threat: deny all non-essential access|
 
 ### 3.2 Context Object Structure for Cedar Evaluation
 
@@ -198,16 +187,16 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MCP SERVER` I I `(Business Lo
 
 |**Security Requirement**|**Implementation**|**Policy Engine**|
 |---|---|---|
-|Tool Discovery Authorization|Cedar policy: agent type X may only discover<br>tools in permitted tool group G|Cedar AVP|
-|Tool Invocation Authorization|Every tool call passes through PEP; Cedar<br>evaluates per-tool policies|Cedar AVP|
-|Dynamic Tool Registration|New tools cannot be registered without policy<br>store update and CI/CD approval|Cedar PAP|
-|MCP Authentication|MCP client must present valid delegation token<br>(RFC 8693)|JWT validation<br>layer|
-|Parameter Input Validation|Tool parameters validated against JSON Schema<br>AND policy constraints|Cedar + schema|
-|Output Classification|MCP server tags outputs with data classification;<br>PEP filters based on agent clearance|Cedar AVP|
-|Remote MCP TLS|Remote MCP connections require mutual TLS;<br>certificate pinning for production|AWS Certificate<br>Manager|
-|Local MCP Sandbox|Local MCP processes run in isolated containers<br>with restricted IAM roles|OPA + IAM|
-|Tool Rate Limiting|Per-agent, per-tool rate limits enforced at MCP<br>PEP|PEP middleware|
-|Audit Logging|Every MCP tool invocation logged with principal,<br>tool, parameters hash, outcome|CloudTrail|
+|Tool Discovery Authorization|Cedar policy: agent type X may only discover tools in permitted tool group G|Cedar AVP|
+|Tool Invocation Authorization|Every tool call passes through PEP; Cedar evaluates per-tool policies|Cedar AVP|
+|Dynamic Tool Registration|New tools cannot be registered without policy store update and CI/CD approval|Cedar PAP|
+|MCP Authentication|MCP client must present valid delegation token (RFC 8693)|JWT validation layer|
+|Parameter Input Validation|Tool parameters validated against JSON Schema AND policy constraints|Cedar + schema|
+|Output Classification|MCP server tags outputs with data classification; PEP filters based on agent clearance|Cedar AVP|
+|Remote MCP TLS|Remote MCP connections require mutual TLS; certificate pinning for production|AWS Certificate Manager|
+|Local MCP Sandbox|Local MCP processes run in isolated containers with restricted IAM roles|OPA + IAM|
+|Tool Rate Limiting|Per-agent, per-tool rate limits enforced at MCP PEP|PEP middleware|
+|Audit Logging|Every MCP tool invocation logged with principal, tool, parameters hash, outcome|CloudTrail|
 
 ### 4.3 MCP Tool Cedar Policies
 

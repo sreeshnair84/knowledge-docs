@@ -16,9 +16,9 @@ tags: []
 ## 1. RAG Authorization Architecture
 
 # RAG, Memory & Data Authorization (Vol 4)
-Enterprise Policy Interceptor Architecture for Agentic AI **<u>ANTI-PATTERN</u>**
+Enterprise Policy Interceptor Architecture for Agentic AI **ANTI-PATTERN**
 
-Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A; <u>documents from the knowledge base simply by phrasing their query to match those documents. The vector</u> similarity search has no concept of permissions — authorization must be added as a filter layer on top.
+Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A; documents from the knowledge base simply by phrasing their query to match those documents. The vector similarity search has no concept of permissions — authorization must be added as a filter layer on top.
 
 ### 1.1 RAG Authorization Pipeline
 
@@ -38,7 +38,7 @@ IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `VECTOR SIMILARITY SEARCH` I I D
 
 ### 1.2 Document-Level Authorization Schema
 
-Every document and chunk in the knowledge store must carry authorization metadata. This metadata is the - - <u>basis for both pre retrieval filtering and post retrieval Cedar policy evaluation:</u>
+Every document and chunk in the knowledge store must carry authorization metadata. This metadata is the - - basis for both pre retrieval filtering and post retrieval Cedar policy evaluation:
 
 ```
 { "doc_id": "doc-m-and-a-briefing-2025-001", "title": "Project Phoenix M&A; Briefing",
@@ -60,9 +60,6 @@ Every document and chunk in the knowledge store must carry authorization metadat
 
 ### 1.3 Cedar Policies for RAG Authorization
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 ```
 // Pre-retrieval: can agent query this knowledge base? permit( principal is BankAI::Agent,
@@ -115,11 +112,11 @@ AI agents use multiple types of memory. Each type has different authorization re
 
 |**Memory Type**|**Scope**|**Authorization Model**|**Cedar Policy**|
 |---|---|---|---|
-|Working Memory<br>(In-context)|Current<br>conversation<br>window|Owned by session — no cross-session<br>access. Agent may only hold context from<br>its own authorized sources.|Implicit — scope is<br>session-bound|
-|Episodic Memory<br>(Short-term)|Recent interactions<br>for this user-agent<br>pair|Private to user. Agent can read own<br>episodic memory only. Manager MAY<br>have read access with explicit capability.|principal.userId ==<br>memory.ownerId|
-|Long-term<br>Memory<br>(Semantic)|Learned patterns,<br>user preferences|User-scoped. Cannot be shared without<br>explicit consent. Tenant-isolated.|memory.tenantId ==<br>principal.tenantId AND<br>memory.ownerId ==<br>principal.userId|
-|Shared Memory<br>(Team/Project)|Project context<br>shared across<br>users|Shared within a defined group. Group<br>membership checked via Cedar. No<br>cross-group access.|principal.projectMemberships<br>contains memory.projectId|
-|Organizational<br>Memory<br>(Enterprise KB)|Company-wide<br>knowledge base|Full RAG authorization applies.<br>Classification + capability-based.|Full RAG policy stack|
+|Working Memory (In-context)|Current conversation window|Owned by session — no cross-session access. Agent may only hold context from its own authorized sources.|Implicit — scope is session-bound|
+|Episodic Memory (Short-term)|Recent interactions for this user-agent pair|Private to user. Agent can read own episodic memory only. Manager MAY have read access with explicit capability.|principal.userId == memory.ownerId|
+|Long-term Memory (Semantic)|Learned patterns, user preferences|User-scoped. Cannot be shared without explicit consent. Tenant-isolated.|memory.tenantId == principal.tenantId AND memory.ownerId == principal.userId|
+|Shared Memory (Team/Project)|Project context shared across users|Shared within a defined group. Group membership checked via Cedar. No cross-group access.|principal.projectMemberships contains memory.projectId|
+|Organizational Memory (Enterprise KB)|Company-wide knowledge base|Full RAG authorization applies. Classification + capability-based.|Full RAG policy stack|
 
 ### 2.2 Cedar Policies for Memory Protection
 
@@ -154,13 +151,10 @@ principal.tenantId };
 |---|---|---|
 |DynamoDB|Partition key = userId#tenantId; IAM policy|DynamoDB condition expressions +|
 |(working/episodic)|restricts agent role to own partition|Cedar post-read verify|
-
-|**Memory Storage**|**Authorization Control**|**Implementation**|
-|---|---|---|
-|OpenSearch (semantic<br>memory)|Index-per-tenant pattern; OpenSearch security<br>plugin (row-level security)|Pre-query filter + Cedar chunk<br>authorization|
-|Redis ElastiCache<br>(working context)|Key prefix = tenant:user:session; no cross-key<br>access in agent role|Redis AUTH + namespace isolation|
-|S3 (long-term memory<br>snapshots)|S3 object key = tenant/user-id/memory/; IAM<br>boundary restricts agent|S3 resource policy + Cedar evaluation on<br>read|
-|RDS PostgreSQL<br>(shared memory)|Row-level security policies (Postgres RLS) +<br>Cedar post-read filter|Postgres RLS + Cedar authorization|
+|OpenSearch (semantic memory)|Index-per-tenant pattern; OpenSearch security plugin (row-level security)|Pre-query filter + Cedar chunk authorization|
+|Redis ElastiCache (working context)|Key prefix = tenant:user:session; no cross-key access in agent role|Redis AUTH + namespace isolation|
+|S3 (long-term memory snapshots)|S3 object key = tenant/user-id/memory/; IAM boundary restricts agent|S3 resource policy + Cedar evaluation on read|
+|RDS PostgreSQL (shared memory)|Row-level security policies (Postgres RLS) + Cedar post-read filter|Postgres RLS + Cedar authorization|
 
 ## 3. Multi-Tenant Data Isolation
 
@@ -170,12 +164,12 @@ Multi-tenant AI deployments must guarantee that one tenant's agents, tools, know
 
 |**Layer**|**Isolation Mechanism**|**Enforced By**|
 |---|---|---|
-|IAM / AWS<br>Identity|ECS task roles scoped to tenant-specific resources|IAM policies, resource tags|
+|IAM / AWS Identity|ECS task roles scoped to tenant-specific resources|IAM policies, resource tags|
 |Network|VPC per tenant or subnet isolation with NACLs|VPC, Security Groups, NACLs|
-|Data Storage|Partition-per-tenant (DynamoDB, OpenSearch index, S3<br>prefix)|Storage configuration + IAM|
+|Data Storage|Partition-per-tenant (DynamoDB, OpenSearch index, S3 prefix)|Storage configuration + IAM|
 |Cedar Policy|Mandatory forbid: resource.tenantId != principal.tenantId|Cedar AVP (always evaluated)|
 |Vector Search|Pre-query metadata filter: tenant_id = :tenant|RAG retrieval layer|
-|Memory|Key namespace: tenant:userId — no cross-namespace<br>access|Storage key design + IAM|
+|Memory|Key namespace: tenant:userId — no cross-namespace access|Storage key design + IAM|
 |API Gateway|Custom domain per tenant with tenant claim validation|API GW + Lambda Authorizer|
 |Audit Logs|CloudTrail + per-tenant log group isolation|CloudWatch Log Groups|
 |Encryption|Per-tenant KMS keys for data at rest|AWS KMS, CMK per tenant|
@@ -223,9 +217,9 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `FILTERED, CLASSIFIED RESPONSE` 
 |---|---|---|---|
 |L0|PUBLIC|Marketing docs, public web content|All agents may retrieve and return|
 |L1|INTERNAL|Internal memos, process docs|Authenticated users only, no external channels|
-|L2|CONFIDENTIA<br>L|Customer data, contracts, budgets|Capability required, MFA, logged|
-|L3|SECRET|M&A; details, legal strategy, key<br>material|Need-to-know list, MFA, approval, DLP active|
-|L4|TOP_SECRET|Board-level strategy, regulator<br>confidential|Explicit person list only, dual approval, offline audit|
+|L2|CONFIDENTIA L|Customer data, contracts, budgets|Capability required, MFA, logged|
+|L3|SECRET|M&A; details, legal strategy, key material|Need-to-know list, MFA, approval, DLP active|
+|L4|TOP_SECRET|Board-level strategy, regulator confidential|Explicit person list only, dual approval, offline audit|
 
 #### BEST PRACTICE
 

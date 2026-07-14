@@ -18,9 +18,9 @@ tags: []
 # Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)
 ### 1.1 SCIM Architecture for Enterprise AI
 
-`Microsoft Entra ID` I I `SCIM 2.0 Provisioning (push on change)` I `Endpoint:` `https://api.bank.com/scim/v2` M `SCIM Receiver Lambda` I `Validates SCIM bearer token` I `Transforms SCIM schema` → `Enterprise schema` M `DynamoDB User Attribute Store` I `Partition: userId` I <u>`Contains: department, costCenter, clearanceLevel,` I</u> <u>`geography, legalEntity, manager,` I</u> `projectMemberships, tradingDeskId,` I `regulatoryCaptures, dataAccessScopes` I I `TTL: Not set` `(SCIM manages lifecycle)` I `GSI: by-department, by-geography` M `PIP Lookup Lambda (at` `authorization time)` I `Cache: ElastiCache Redis 300s TTL` I `Enriches canonical claims with SCIM attributes` M `Cedar Authorization Context (enriched)`
+`Microsoft Entra ID` I I `SCIM 2.0 Provisioning (push on change)` I `Endpoint:` `https://api.bank.com/scim/v2` M `SCIM Receiver Lambda` I `Validates SCIM bearer token` I `Transforms SCIM schema` → `Enterprise schema` M `DynamoDB User Attribute Store` I `Partition: userId` I `Contains: department, costCenter, clearanceLevel,` I `geography, legalEntity, manager,` I `projectMemberships, tradingDeskId,` I `regulatoryCaptures, dataAccessScopes` I I `TTL: Not set` `(SCIM manages lifecycle)` I `GSI: by-department, by-geography` M `PIP Lookup Lambda (at` `authorization time)` I `Cache: ElastiCache Redis 300s TTL` I `Enriches canonical claims with SCIM attributes` M `Cedar Authorization Context (enriched)`
 
-### <u>1.2 SCIM Receiver Implementation</u>
+### 1.2 SCIM Receiver Implementation
 
 `# SCIM 2.0 Receiver — Lambda function import json import boto3 import hashlib dynamodb = boto3.resource('dynamodb') table = dynamodb.Table('user-attributes') def handler(event,` `context): path = event['path'] method = event['httpMethod'] body = json.loads(event.get('body',` `'{}')) # SCIM 2.0 endpoint routing if '/Users' in path and method == 'POST': return` `provision_user(body) elif '/Users/' in path and method == 'PUT': return update_user(path, body)` `elif '/Users/' in path and method == 'DELETE': return deprovision_user(path) elif '/Users' in path and method == 'GET': return list_users(event.get('queryStringParameters', {})) def` **VOLUME COVERAGE** `provision_user(scim_user: dict) -> dict: # Transform SCIM schema to enterprise schema` SCIM 2.0 integration for claim enrichment, nested group resolution algorithms, role explosion mitigation, `enterprise_user = { 'userId': scim_user['id'], # Entra ID object ID 'upn':` Cedar policy templates and delegated administration, OPA bundle distribution and GitOps, WASM `scim_user['userName'], 'displayName': scim_user['displayName'], # SCIM Enterprise Extension` compilation for edge enforcement, partial evaluation for database-level authorization, and policy simulation `'department': scim_user.get( 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('department', 'UNKNOWN'), 'costCenter': scim_user.get(`
 
@@ -44,11 +44,6 @@ deactivatedAt = :ts', ExpressionAttributeValues={':false': False, ':ts': get_iso
 invalidate_pip_cache(user_id) return {'statusCode': 204}
 ```
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 ## 2. Nested Group Resolution Algorithm
 
@@ -74,14 +69,11 @@ Large enterprises often have thousands of AD groups. Without mitigation, the JWT
 
 |**Problem**|**Scale**|**Mitigation Strategy**|**Implementation**|
 |---|---|---|---|
-|Too many groups<br>in JWT|>200 groups→JWT ><br>4KB, HTTP header<br>overflow|Reference token + PIP<br>lookup|JWT contains jti only; full groups loaded<br>from DynamoDB on demand|
-|Group GUID<br>explosion|Thousands of GUIDs<br>with no semantic<br>meaning|GUID→name cache in<br>ElastiCache|Pre-loaded at normalization service<br>startup; refresh every 5 min|
-|Capability set<br>explosion|1000 groups→3000<br>capabilities|Scope scoping: only<br>capabilities relevant to the<br>requested resource|Lazy capability resolution: only resolve<br>groups relevant to the action being<br>authorized|
-
-|**Problem**|**Scale**|**Mitigation Strategy**|**Implementation**|
-|---|---|---|---|
-|Transitive<br>resolution latency|10+ levels deep→50+<br>MS Graph API calls|Pre-computed transitive<br>closure in DynamoDB<br>(SCIM-updated)|SCIM sync writes full transitive group<br>list; no real-time traversal needed|
-|Policy evaluation<br>with huge|Cedar policy with<br>contains on|Segment capabilities by<br>domain: finance_caps,|Cedar context uses typed sets per<br>domain, not one flat list|
+|Too many groups in JWT|>200 groups→JWT > 4KB, HTTP header overflow|Reference token + PIP lookup|JWT contains jti only; full groups loaded from DynamoDB on demand|
+|Group GUID explosion|Thousands of GUIDs with no semantic meaning|GUID→name cache in ElastiCache|Pre-loaded at normalization service startup; refresh every 5 min|
+|Capability set explosion|1000 groups→3000 capabilities|Scope scoping: only capabilities relevant to the requested resource|Lazy capability resolution: only resolve groups relevant to the action being authorized|
+|Transitive resolution latency|10+ levels deep→50+ MS Graph API calls|Pre-computed transitive closure in DynamoDB (SCIM-updated)|SCIM sync writes full transitive group list; no real-time traversal needed|
+|Policy evaluation with huge|Cedar policy with contains on|Segment capabilities by domain: finance_caps,|Cedar context uses typed sets per domain, not one flat list|
 |capability sets|3000-element set|hr_caps, etc.||
 
 ## 3. Cedar Policy Templates & Delegated Administration
@@ -137,12 +129,9 @@ principal.capabilities.contains("can_admin_global_scope") };
 |---|---|---|---|
 |Major version|New policy store; traffic migration|Switch canary back to 0%|Fundamental model change|
 |(breaking)|via canary||(e.g. new entity type)|
-
-|**Version Type**|**Approach**|**Rollback Mechanism**|**Use Case**|
-|---|---|---|---|
-|Minor version<br>(additive)|Add new permit policies; shadow<br>evaluate first|Delete new policies|New capability or resource type|
-|Patch (fix)|Replace existing policy; validate<br>with test suite|Git revert + pipeline<br>redeploy|Bug fix in existing policy logic|
-|Emergency<br>(hotfix)|Direct AVP update with dual<br>approver (break-glass)|Immediate AVP delete or<br>disable|Active security incident requiring<br>immediate policy change|
+|Minor version (additive)|Add new permit policies; shadow evaluate first|Delete new policies|New capability or resource type|
+|Patch (fix)|Replace existing policy; validate with test suite|Git revert + pipeline redeploy|Bug fix in existing policy logic|
+|Emergency (hotfix)|Direct AVP update with dual approver (break-glass)|Immediate AVP delete or disable|Active security incident requiring immediate policy change|
 
 ## 4. OPA Advanced Patterns
 
@@ -262,12 +251,12 @@ results['passed'] / (results['passed'] + results['failed']) print(f"Coverage: {c
 
 |**Role**|**Responsibility**|**Approval Required For**|
 |---|---|---|
-|Policy Author<br>(Developer)|Writes Cedar/Rego policies for new<br>features or bug fixes|None — can open PR|
-|Security Engineer|Reviews policies for security correctness,<br>over-permissiveness, missing denies|Must approve all policy PRs|
-|Data Privacy Officer|Reviews policies touching PII,<br>classification, cross-border data|Must approve: PII-related, data export,<br>classification change policies|
-|IAM/Identity Team|Reviews claims normalization,<br>role-capability mappings|Must approve: capability map changes, new role<br>additions|
-|Compliance Officer|Reviews policies for regulatory alignment<br>(PCI, DORA, NIST)|Must approve: audit log policies, payment<br>authorization policies|
-|CISO (escalation)|Approves emergency policy changes,<br>break-glass procedures|Required: production emergency hotfix, policy<br>rollback of >100 policies|
+|Policy Author (Developer)|Writes Cedar/Rego policies for new features or bug fixes|None — can open PR|
+|Security Engineer|Reviews policies for security correctness, over-permissiveness, missing denies|Must approve all policy PRs|
+|Data Privacy Officer|Reviews policies touching PII, classification, cross-border data|Must approve: PII-related, data export, classification change policies|
+|IAM/Identity Team|Reviews claims normalization, role-capability mappings|Must approve: capability map changes, new role additions|
+|Compliance Officer|Reviews policies for regulatory alignment (PCI, DORA, NIST)|Must approve: audit log policies, payment authorization policies|
+|CISO (escalation)|Approves emergency policy changes, break-glass procedures|Required: production emergency hotfix, policy rollback of >100 policies|
 
 ### 6.2 Policy Drift Detection
 

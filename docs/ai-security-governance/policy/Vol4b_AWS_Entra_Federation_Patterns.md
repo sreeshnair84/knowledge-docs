@@ -14,15 +14,15 @@ tags: []
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 4b OF Extended**
 
 # AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)
-### <u>Entra ID</u> **1.1 Ent** · ADFS **ra ID A** · OIDC **<u>pplicat</u>** · SAML **ion R** · OAuth **<u>egistrat</u>** · Managed Identity **ion** · PrivateLink · VPC Endpoints
+### Entra ID **1.1 Ent** · ADFS **ra ID A** · OIDC **pplicat** · SAML **ion R** · OAuth **egistrat** · Managed Identity **ion** · PrivateLink · VPC Endpoints
 
-`# Step 1: Entra ID Application Registration # (Configured in Azure Portal or via Microsoft Graph API) Application Registration: Name: "Enterprise AI Authorization Platform" App Type: Web` <u>`Application Sign-in URL: https://api.bank.com/auth/callback API Permissions (Application`</u> `permissions): • Microsoft Graph: User.Read.All • Microsoft Graph: Group.Read.All • Microsoft` `Graph: Directory.Read.All (Required for group GUID resolution in PIP Lambda) Expose an API:` `Scope: api://bank-ai-platform/agent.invoke Scope: api://bank-ai-platform/tool.execute Scope: api://bank-ai-platform/data.read Token Configuration` → `Optional Claims: Access Token: • groups` <u>`(Security groups as GUIDs, or names if < 200 groups) • upn • department • employee_id • country`</u> `• onprem_sid (for hybrid environments with ADFS) ID Token: • email • preferred_username App` `Roles (for coarse-grained application roles): • Finance.Approver • Data.Reader • Agent.User •` `Agent.Admin Conditional Access Policy: Target: This application Conditions: Require MFA for all`
+`# Step 1: Entra ID Application Registration # (Configured in Azure Portal or via Microsoft Graph API) Application Registration: Name: "Enterprise AI Authorization Platform" App Type: Web` `Application Sign-in URL: https://api.bank.com/auth/callback API Permissions (Application` `permissions): • Microsoft Graph: User.Read.All • Microsoft Graph: Group.Read.All • Microsoft` `Graph: Directory.Read.All (Required for group GUID resolution in PIP Lambda) Expose an API:` `Scope: api://bank-ai-platform/agent.invoke Scope: api://bank-ai-platform/tool.execute Scope: api://bank-ai-platform/data.read Token Configuration` → `Optional Claims: Access Token: • groups` `(Security groups as GUIDs, or names if < 200 groups) • upn • department • employee_id • country` `• onprem_sid (for hybrid environments with ADFS) ID Token: • email • preferred_username App` `Roles (for coarse-grained application roles): • Finance.Approver • Data.Reader • Agent.User •` `Agent.Admin Conditional Access Policy: Target: This application Conditions: Require MFA for all`
 
 ```
 users Controls: Require compliant device OR hybrid Azure AD join
 ```
 
-### <u>1.2 OIDC Federation Configuration</u>
+### 1.2 OIDC Federation Configuration
 
 `# Lambda Authorizer OIDC/JWT validation configuration # Uses AWS Lambda PowerTools for JWT validation from aws_lambda_powertools.utilities.data_classes import APIGatewayProxyEvent from` **VOLUME COVERAGE** `aws_lambda_powertools.utilities.validation import validator import jwt import requests from` Complete Entra ID to AVP integration, ADFS federation deep dive, OAuth 2.0 On-Behalf-Of for `functools import lru_cache import json, time ENTRA_TENANT_ID = "YOUR-TENANT-ID" ENTRA_APP_ID =` service-to-service, AWS managed identity patterns, PrivateLink and VPC endpoint configuration for `"YOUR-APP-CLIENT-ID" # OIDC Discovery DISCOVERY_URL =` authorization services, IAM Identity Center integration, cross-account authorization, and complete `f"https://login.microsoftonline.com/{ENTRA_TENANT_ID}/v2.0/.well-known/openid-configuration" # ADFS OIDC Discovery (for legacy federation) ADFS_DISCOVERY_URL =`
 
@@ -45,11 +45,6 @@ f'https://login.microsoftonline.com/{ENTRA_TENANT_ID}/v2.0',
 
 `f'https://sts.windows.net/{ENTRA_TENANT_ID}/' ] elif 'adfs.bank.com' in issuer: jwks =` `get_jwks('adfs') valid_audiences = ['https://api.bank.com'] valid_issuers =` `['https://adfs.bank.com/adfs'] else: raise ValueError(f"Unknown issuer: {issuer}") # Get signing key from JWKS public_key = get_public_key_from_jwks(jwks, header['kid']) # Verify` `signature, expiry, audience, issuer claims = jwt.decode( token, public_key,` `algorithms=['RS256', 'ES256'], audience=valid_audiences, issuer=valid_issuers, options={` `'verify_exp': True, 'verify_nbf': True, 'verify_iat': True, 'require': ['exp', 'iat', 'sub',` `'iss', 'aud'] } ) # Validate jti (JWT ID) for replay prevention validate_jti_not_replayed(claims.get('jti', ''), claims['exp']) return claims def` `validate_jti_not_replayed(jti: str, exp: int): # Store jti in ElastiCache for token lifetime #` `If already exists` → `replay attack detected import redis r =` `redis.Redis(host='elasticache-endpoint') ttl = exp - int(time.time()) result =` `r.set(f'jti:{jti}', '1', ex=ttl, nx=True) if not result: raise ValueError(f"JWT replay`
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 ```
 detected: {jti}")
@@ -62,13 +57,13 @@ Legacy ADFS environments require additional configuration because ADFS tokens us
 |**Configuration Item**|**Entra ID**|**ADFS 4.0/5.0**|**Normalization Action**|
 |---|---|---|---|
 |User identifier|sub (GUID), upn|upn, samaccountname|Normalize to upn as primary key|
-|Groups|groups (GUID array)|group (DN strings or<br>SAM names)|Parse DN or resolve SAM to<br>capability|
-|Token lifetime|Default: 1 hour<br>(configurable)|Default: 8 hours<br>(configurable)|Enforce max 1 hour at normalization<br>layer|
-|Audience|App client ID GUID|Relying Party URI|Map both to BANK_AI_PLATFORM<br>constant|
+|Groups|groups (GUID array)|group (DN strings or SAM names)|Parse DN or resolve SAM to capability|
+|Token lifetime|Default: 1 hour (configurable)|Default: 8 hours (configurable)|Enforce max 1 hour at normalization layer|
+|Audience|App client ID GUID|Relying Party URI|Map both to BANK_AI_PLATFORM constant|
 |MFA claim|amr: ['mfa', 'pwd', 'rsa']|authmethodsreferences|Normalize to mfa_verified boolean|
-|Department|department (direct claim)|department (AD attribute<br>— may not be in token)|SCIM lookup if not in token|
-|Custom attributes|extension_* prefix|Custom claim rules in<br>ADFS|Both normalized to canonical<br>snake_case|
-|Token signing|RS256, ES256 (tenant<br>JWKS)|RS256 (ADFS federation<br>metadata)|Both validated via JWKS; separate<br>endpoints|
+|Department|department (direct claim)|department (AD attribute — may not be in token)|SCIM lookup if not in token|
+|Custom attributes|extension_* prefix|Custom claim rules in ADFS|Both normalized to canonical snake_case|
+|Token signing|RS256, ES256 (tenant JWKS)|RS256 (ADFS federation metadata)|Both validated via JWKS; separate endpoints|
 
 ## 2. OAuth 2.0 On-Behalf-Of and Token Exchange
 
@@ -120,16 +115,16 @@ All authorization traffic must traverse AWS's private network, never the public 
 
 ### 3.1 Required VPC Endpoints for Authorization Architecture
 
-|**Service**|**Endpoint**<br>**Type**|**Purpose**|**DNS Resolution**|
+|**Service**|**Endpoint** **Type**|**Purpose**|**DNS Resolution**|
 |---|---|---|---|
-|Amazon Verified<br>Permissions|Interface<br>endpoint<br>(PrivateLink)|Cedar AVP IsAuthorized API calls —<br>no internet egress|verifiedpermissions.us-east-1.amazon<br>aws.com→private IP|
-|DynamoDB|Gateway<br>endpoint|PIP attribute lookups, audit log writes|dynamodb.us-east-1.amazonaws.com<br>→private|
-|S3|Gateway<br>endpoint|OPA bundle downloads, audit log<br>archive|s3.amazonaws.com→private|
-|Secrets Manager|Interface<br>endpoint|Agent credential retrieval|secretsmanager.us-east-1.amazonaws<br>.com→private|
-|AWS STS|Interface<br>endpoint|Token exchange, assume role for<br>OBO|sts.amazonaws.com→private|
-|ElastiCache|Not<br>applicable<br>(VPC-native)|Claims cache (Redis) — already in<br>VPC|Private IP within VPC subnet|
-|CloudWatch Logs|Interface<br>endpoint|Audit log delivery without NAT|logs.us-east-1.amazonaws.com→<br>private|
-|EventBridge|Interface<br>endpoint|Authorization event publishing|events.us-east-1.amazonaws.com→<br>private|
+|Amazon Verified Permissions|Interface endpoint (PrivateLink)|Cedar AVP IsAuthorized API calls — no internet egress|verifiedpermissions.us-east-1.amazon aws.com→private IP|
+|DynamoDB|Gateway endpoint|PIP attribute lookups, audit log writes|dynamodb.us-east-1.amazonaws.com →private|
+|S3|Gateway endpoint|OPA bundle downloads, audit log archive|s3.amazonaws.com→private|
+|Secrets Manager|Interface endpoint|Agent credential retrieval|secretsmanager.us-east-1.amazonaws .com→private|
+|AWS STS|Interface endpoint|Token exchange, assume role for OBO|sts.amazonaws.com→private|
+|ElastiCache|Not applicable (VPC-native)|Claims cache (Redis) — already in VPC|Private IP within VPC subnet|
+|CloudWatch Logs|Interface endpoint|Audit log delivery without NAT|logs.us-east-1.amazonaws.com→ private|
+|EventBridge|Interface endpoint|Authorization event publishing|events.us-east-1.amazonaws.com→ private|
 
 ### 3.2 Security Group Configuration
 
@@ -200,12 +195,12 @@ The authorization layer is critical infrastructure. A failure in the PDP must no
 
 |**Failure Scenario**|**Impact**|**Response**|**Recovery Time Target**|
 |---|---|---|---|
-|AVP regional outage|Cedar evaluation<br>unavailable|Fail-closed: deny all non-cached<br>requests. Cached decisions (300s<br>TTL) continue serving cached traffic.|Automatic — no manual<br>intervention. RTO: 0 (cached) to 5<br>min (cache expiry)|
-|ElastiCache failure|Claims<br>normalization<br>falls to cold path<br>(~30ms)|Auto-failover to replica. If both fail:<br>Lambda Authorizer calls LDAP<br>directly.|Automatic ElastiCache failover:<br>~30s|
-|Claims<br>Normalization ECS<br>down|Cannot normalize<br>new JWT tokens|Lambda Authorizer retries 3x, then<br>fail-closed. Existing cached claims still<br>work.|ECS service auto-recovery: ~2<br>min. Full RTO with cache: 0|
-|Entra ID JWKS<br>unavailable|Cannot validate<br>new JWT<br>signatures|JWKS cached in Lambda memory (1<br>hour). Serve from cache. Alert at 45<br>min.|Cache serves for 1 hour. MTTR<br>target: 30 min|
-|DynamoDB PIP<br>table failure|Cannot enrich<br>claims with SCIM<br>attributes|Fail to cached attributes. If no cache:<br>use minimal claims from JWT only<br>(limited policies apply).|DynamoDB multi-AZ: automatic.<br>Single-AZ: 1-5 min failover|
-|Policy store<br>corruption|Policies return<br>unexpected<br>decisions|Automated drift detection triggers.<br>Rollback to last known-good Git SHA<br>via pipeline.|Pipeline rollback RTO: 10-15 min|
+|AVP regional outage|Cedar evaluation unavailable|Fail-closed: deny all non-cached requests. Cached decisions (300s TTL) continue serving cached traffic.|Automatic — no manual intervention. RTO: 0 (cached) to 5 min (cache expiry)|
+|ElastiCache failure|Claims normalization falls to cold path (~30ms)|Auto-failover to replica. If both fail: Lambda Authorizer calls LDAP directly.|Automatic ElastiCache failover: ~30s|
+|Claims Normalization ECS down|Cannot normalize new JWT tokens|Lambda Authorizer retries 3x, then fail-closed. Existing cached claims still work.|ECS service auto-recovery: ~2 min. Full RTO with cache: 0|
+|Entra ID JWKS unavailable|Cannot validate new JWT signatures|JWKS cached in Lambda memory (1 hour). Serve from cache. Alert at 45 min.|Cache serves for 1 hour. MTTR target: 30 min|
+|DynamoDB PIP table failure|Cannot enrich claims with SCIM attributes|Fail to cached attributes. If no cache: use minimal claims from JWT only (limited policies apply).|DynamoDB multi-AZ: automatic. Single-AZ: 1-5 min failover|
+|Policy store corruption|Policies return unexpected decisions|Automated drift detection triggers. Rollback to last known-good Git SHA via pipeline.|Pipeline rollback RTO: 10-15 min|
 
 ### 6.2 Multi-Region Authorization
 

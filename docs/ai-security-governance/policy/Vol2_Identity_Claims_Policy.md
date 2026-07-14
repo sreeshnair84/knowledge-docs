@@ -20,33 +20,28 @@ tags: []
 
 `On-Premises User Cloud-Native User` I I `ADFS Entra ID` I `SAML Assertion` I `OIDC/JWT` I I IIIIIIIIIIIIIIIIIIIIIIIIIIII I `Entra ID Tenant (Federation Trust)` I `Token Issuance (JWT` `with Claims)` I `Claims Normalization Layer (Lambda/ECS)` I `Canonical Claims Store` I `Policy Engine` `(Cedar/OPA)`
 
-|IIIIIIIIII<br>`with Claims)`<br>`(Cedar/OPA)`<br>**1.2 Token T**<br>Both ADFS and E<br>variations and pro<br>**Claim Type**|IIIIIIIIIIIIIIIIII<br>I`Claims Normalization`<br> **ypes and Claim**<br>ntra ID issue tokens with<br>duce a consistent canoni<br>**ADFS Example**|I`Entra ID Tenant (Fed`<br>`Layer (Lambda/ECS)`I`Ca`<br>**s**<br>different claim sets. The c<br>cal representation:<br>**Entra ID Example**|`eration Trust)`I`Token Issuance (JWT`<br>`nonical Claims Store`I`Policy Engine`<br>laims normalization layer must handle all<br>**Canonical Form**|
+|IIIIIIIIII `with Claims)` `(Cedar/OPA)` **1.2 Token T** Both ADFS and E variations and pro **Claim Type**|IIIIIIIIIIIIIIIIII I`Claims Normalization`  **ypes and Claim** ntra ID issue tokens with duce a consistent canoni **ADFS Example**|I`Entra ID Tenant (Fed` `Layer (Lambda/ECS)`I`Ca` **s** different claim sets. The c cal representation: **Entra ID Example**|`eration Trust)`I`Token Issuance (JWT` `nonical Claims Store`I`Policy Engine` laims normalization layer must handle all **Canonical Form**|
 |---|---|---|---|
-|User Principal|upn:<br>john.smith@bank.com|upn: j.smith@bank.onmic<br>rosoft.com|principal_id: john.smith|
-|Department|department: Finance|extension_department:<br>FINANCE|business_unit: FINANCE|
-|**VOLUME COVER**<br>Security Groups|**AGE**<br>groups: [GUID-1,<br>GUID-2]|groups: [GUID-A,<br>GUID-B]|roles: [payments_approver, trade_viewer]|
-|ADFS & Entra I<br>i RBA<br>Country/Region|D federation, JWT claims n<br>BARBA R li<br>l: United Kingdom|ormalization, canonical enter<br>hi   R<br>country: GB|prise claim taxonomy, Cedar policy<br>i i  hi<br>geography: GB|
-|desgn (C/<br>policy engine ar<br>Manager|C/eC), ego poc<br>chitecture.<br>manager:<br>cn=mgr,dc=bank|arctecture, Cedar vs eg<br>manager:<br>GUID-of-manager|comparson matrx, and ybrd<br>manager_id: emp-42891|
-|App Roles|roles: [FinanceAdmin]|roles:<br>[Payments.Approve]|capabilities: [can_approve_payment]|
+|User Principal|upn: john.smith@bank.com|upn: j.smith@bank.onmic rosoft.com|principal_id: john.smith|
+|Department|department: Finance|extension_department: FINANCE|business_unit: FINANCE|
+|**VOLUME COVER** Security Groups|**AGE** groups: [GUID-1, GUID-2]|groups: [GUID-A, GUID-B]|roles: [payments_approver, trade_viewer]|
+|ADFS & Entra I i RBA Country/Region|D federation, JWT claims n BARBA R li l: United Kingdom|ormalization, canonical enter hi   R country: GB|prise claim taxonomy, Cedar policy i i  hi geography: GB|
+|desgn (C/ policy engine ar Manager|C/eC), ego poc chitecture. manager: cn=mgr,dc=bank|arctecture, Cedar vs eg manager: GUID-of-manager|comparson matrx, and ybrd manager_id: emp-42891|
+|App Roles|roles: [FinanceAdmin]|roles: [Payments.Approve]|capabilities: [can_approve_payment]|
 |Tenant|Not present|tid: TENANT-GUID|tenant_id: bank-prod|
 |MFA|Not standard|amr:[mfa, pwd]|mfa_verified: true|
-|Cost Center|costCenter: CC-4421|extension_costCenter:<br>4421|cost_center: CC-4421|
+|Cost Center|costCenter: CC-4421|extension_costCenter: 4421|cost_center: CC-4421|
 
 ## 2. Claims Normalization Architecture
 
-Claims normalization is the most critical and most frequently under-engineered component of enterprise <u>authorization. Without it, every policy is tightly coupled to the identity store implementation.</u>
+Claims normalization is the most critical and most frequently under-engineered component of enterprise authorization. Without it, every policy is tightly coupled to the identity store implementation.
 
 ### 2.1 The Normalization Pipeline
 
 `Raw JWT (from Entra/ADFS)` I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Token Signature` I `Verify` `RS256/ES256 signature` I `Validation` I `against JWKS endpoint` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Claim Extraction` I `Extract known claims` I I `Handle`
 
-`missing/null claims` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII <u>I</u> <u>`Group GUID Resolution` I</u> <u>`GUID` →</u> <u>`Human-readable group name` I I</u> <u>`via Directory Lookup (cached)`</u>
+`missing/null claims` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Group GUID Resolution` I `GUID` → `Human-readable group name` I I `via Directory Lookup (cached)`
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Nested Group` I `Resolve transitive group membership` I `Flattening` I `Payments_Admins` ⊇ `Finance_Team` ⊇ `...` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Role` → `Capability` I `AD Role` → `Business Capability` I `Mapping` I `Finance_Approver` → `can_approve_payment` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `PIP Enrichment` I `Load additional attributes:` I I `risk_score, data_classification,` I I `business_hours, approval_status` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Canonical Claims` I `Structured, versioned, typed` I `Object` I `{ principal, roles, context }` IIIIIIIIIIIIIIIIIIIIIIIIIII
 
@@ -77,15 +72,12 @@ Best Practice: Map Entra groups to business capabilities in the normalization la
 
 |**Entra Group / Role**|**Maps To Capability**|**Policy Uses**|
 |---|---|---|
-|Payments_Admins_APAC|can_approve_payment|principal.capabilities contains<br>'can_approve_payment'|
-|Payments_Admins_EMEA|can_approve_payment|Same policy — geography context handles<br>region|
-|Finance_Readonly|can_view_financial_data|principal.capabilities contains<br>'can_view_financial_data'|
-|DBA_Production|can_query_production_db|principal.capabilities contains<br>'can_query_production_db'|
-
-|**Entra Group / Role**|**Maps To Capability**|**Policy Uses**|
-|---|---|---|
-|HR_Global_Admin|can_view_all_hr_records|principal.capabilities contains<br>'can_view_all_hr_records'|
-|Compliance_Auditor|can_export_audit_log|principal.capabilities contains<br>'can_export_audit_log'|
+|Payments_Admins_APAC|can_approve_payment|principal.capabilities contains 'can_approve_payment'|
+|Payments_Admins_EMEA|can_approve_payment|Same policy — geography context handles region|
+|Finance_Readonly|can_view_financial_data|principal.capabilities contains 'can_view_financial_data'|
+|DBA_Production|can_query_production_db|principal.capabilities contains 'can_query_production_db'|
+|HR_Global_Admin|can_view_all_hr_records|principal.capabilities contains 'can_view_all_hr_records'|
+|Compliance_Auditor|can_export_audit_log|principal.capabilities contains 'can_export_audit_log'|
 
 ### 2.4 Large JWT Mitigation Strategies
 
@@ -93,21 +85,13 @@ Best Practice: Map Entra groups to business capabilities in the normalization la
 
 - Never pass megabyte JWTs to downstream services.
 
-- **Capability Token Exchange** : Exchange the raw Entra JWT for a smaller, application-scoped capability
+- **Capability Token Exchange** : Exchange the raw Entra JWT for a smaller, application-scoped capability token via the normalization service. RFC 8693 Token Exchange.
 
-- token via the normalization service. RFC 8693 Token Exchange.
+- **Reference Token Pattern** : Issue an opaque reference token to the client; the PEP introspects it at the normalization service to get the full claim set.
 
-- **Reference Token Pattern** : Issue an opaque reference token to the client; the PEP introspects it at the
+- **Claim Caching** : Cache normalized claim objects in ElastiCache (Redis) keyed by token hash. TTL aligned with token expiry. Reduces PIP lookups by >95%.
 
-- normalization service to get the full claim set.
-
-- **Claim Caching** : Cache normalized claim objects in ElastiCache (Redis) keyed by token hash. TTL aligned
-
-- with token expiry. Reduces PIP lookups by >95%.
-
-- **SCIM Attribute Push** : Use SCIM 2.0 to pre-populate a user attribute store (DynamoDB) rather than
-
-- embedding all attributes in the JWT.
+- **SCIM Attribute Push** : Use SCIM 2.0 to pre-populate a user attribute store (DynamoDB) rather than embedding all attributes in the JWT.
 
 ## 3. Cedar Policy Design
 
@@ -193,14 +177,14 @@ action, resource ) when { resource has tenantId && principal has tenantId && res
 |**Phase**|**Activity**|**Tooling**|
 |---|---|---|
 |Authoring|Policy authored in Cedar DSL|IDE plugins, cedar CLI, AVP console|
-|Schema<br>Validation|Type-check against entity schema|cedar validate --schema cedar-schema.json|
+|Schema Validation|Type-check against entity schema|cedar validate --schema cedar-schema.json|
 |Unit Testing|Test individual policies with test vectors|cedar test (test suite YAML)|
-|Shadow<br>Evaluation|Run new policy alongside existing —<br>compare decisions|AVP Shadow Mode, decision log comparison|
-|PR Review|Security team reviews policy changes as<br>code|GitHub PR, automated cedar lint|
-|Staging Deploy|Deploy to non-production AVP policy<br>store|CI/CD pipeline (GitHub Actions/CodePipeline)|
-|Production<br>Deploy|Phased rollout with monitoring|CodeDeploy blue/green, CloudWatch alarms|
+|Shadow Evaluation|Run new policy alongside existing — compare decisions|AVP Shadow Mode, decision log comparison|
+|PR Review|Security team reviews policy changes as code|GitHub PR, automated cedar lint|
+|Staging Deploy|Deploy to non-production AVP policy store|CI/CD pipeline (GitHub Actions/CodePipeline)|
+|Production Deploy|Phased rollout with monitoring|CodeDeploy blue/green, CloudWatch alarms|
 |Drift Detection|Alert on unauthorized policy changes|CloudTrail events on AVP, automated diff|
-|Emergency<br>Rollback|Revert to previous policy version|Git revert + pipeline trigger, < 5 min target|
+|Emergency Rollback|Revert to previous policy version|Git revert + pipeline trigger, < 5 min target|
 
 ## 4. Rego / OPA Policy Design
 
@@ -210,11 +194,11 @@ Open Policy Agent (OPA) with the Rego policy language is the de facto standard f
 
 |**Pattern**|**Topology**|**Latency**|**Use Case**|
 |---|---|---|---|
-|Embedded OPA|OPA Go library compiled into<br>service|<0.5ms|Ultra-low-latency, single-service|
-|OPA Sidecar|OPA container in same<br>pod/task|0.5–2ms|Kubernetes/ECS per-service isolation|
-|Central OPA<br>Server|Shared OPA cluster (HA)|2–10ms<br>network|Centralized policy, policy federation|
-|OPA + Styra DAS|Managed OPA fleet + central<br>management|2–10ms|Enterprise OPA at scale|
-|OPA + WASM|Rego compiled to WASM, run<br>in browser/edge|<1ms|Edge authorization, CDN enforcement|
+|Embedded OPA|OPA Go library compiled into service|<0.5ms|Ultra-low-latency, single-service|
+|OPA Sidecar|OPA container in same pod/task|0.5–2ms|Kubernetes/ECS per-service isolation|
+|Central OPA Server|Shared OPA cluster (HA)|2–10ms network|Centralized policy, policy federation|
+|OPA + Styra DAS|Managed OPA fleet + central management|2–10ms|Enterprise OPA at scale|
+|OPA + WASM|Rego compiled to WASM, run in browser/edge|<1ms|Edge authorization, CDN enforcement|
 
 ### 4.2 Rego Policy Examples
 
@@ -266,21 +250,21 @@ Cedar and Rego are complementary tools serving different domains. The choice bet
 
 |**Dimension**|**AWS Cedar**|**OPA / Rego**|**Recommendation**|
 |---|---|---|---|
-|Primary Domain|Application & user<br>authorization|Infrastructure, K8s,<br>cross-platform|Use both in appropriate domain|
-|Policy Language|Cedar DSL — SQL-like,<br>readable|Rego — Datalog-inspired,<br>powerful|Cedar for business, Rego for infra|
-|Type Safety|Strongly typed,<br>schema-validated|Dynamically typed|Cedar for type-critical policies|
-|Formal Verification|Yes — provably correct<br>policies|No — runtime evaluation<br>only|Cedar where correctness is critical|
-|AWS Integration|Native (Amazon Verified<br>Permissions)|Requires self-management<br>or DAS|Cedar wins for AWS-native|
-|Kubernetes|Not applicable|First-class<br>(Gatekeeper/Konstraint)|OPA for K8s admission|
+|Primary Domain|Application & user authorization|Infrastructure, K8s, cross-platform|Use both in appropriate domain|
+|Policy Language|Cedar DSL — SQL-like, readable|Rego — Datalog-inspired, powerful|Cedar for business, Rego for infra|
+|Type Safety|Strongly typed, schema-validated|Dynamically typed|Cedar for type-critical policies|
+|Formal Verification|Yes — provably correct policies|No — runtime evaluation only|Cedar where correctness is critical|
+|AWS Integration|Native (Amazon Verified Permissions)|Requires self-management or DAS|Cedar wins for AWS-native|
+|Kubernetes|Not applicable|First-class (Gatekeeper/Konstraint)|OPA for K8s admission|
 |Terraform/IaC|Not applicable|Excellent (OPA Conftest)|OPA for infrastructure policy|
-|Ecosystem|AWS-specific, growing|Massive open-source<br>ecosystem|OPA for cross-platform|
-|Performance|Sub-millisecond (AVP<br>managed)|1–5ms sidecar, <0.5ms<br>embedded|Comparable for low-latency|
-|Policy Management|AVP Console + CLI|Bundle server (S3) + Styra<br>DAS|Styra DAS for enterprise OPA|
-|Decision Logging|Native to AVP|Requires configuration|Cedar easier for compliance<br>logging|
-|Multi-tenant|Native entity hierarchy|Custom implementation in<br>Rego|Cedar simpler for multi-tenancy|
+|Ecosystem|AWS-specific, growing|Massive open-source ecosystem|OPA for cross-platform|
+|Performance|Sub-millisecond (AVP managed)|1–5ms sidecar, <0.5ms embedded|Comparable for low-latency|
+|Policy Management|AVP Console + CLI|Bundle server (S3) + Styra DAS|Styra DAS for enterprise OPA|
+|Decision Logging|Native to AVP|Requires configuration|Cedar easier for compliance logging|
+|Multi-tenant|Native entity hierarchy|Custom implementation in Rego|Cedar simpler for multi-tenancy|
 |WASM Support|No|Yes — compile to WASM|OPA for edge/CDN enforcement|
-|Audit Trail|CloudTrail native<br>integration|OPA decision logs→<br>Elasticsearch|Cedar easier on AWS|
-|Learning Curve|Low — business-readable|Medium — Datalog<br>concepts|Cedar for business teams|
+|Audit Trail|CloudTrail native integration|OPA decision logs→ Elasticsearch|Cedar easier on AWS|
+|Learning Curve|Low — business-readable|Medium — Datalog concepts|Cedar for business teams|
 
 ## 6. Hybrid Cedar + Rego Architecture
 

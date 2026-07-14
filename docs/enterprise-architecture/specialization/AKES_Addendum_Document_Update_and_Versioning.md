@@ -68,20 +68,18 @@ Figure A1 — Version state machine. Every artifact version begins as a Draft an
 
 ### **State definitions**
 
-|**State**|**Meaning**|**Visible to**<br>**consumers?**|
+|**State**|**Meaning**|**Visible to** **consumers?**|
 |---|---|---|
 |Draft|Agent has produced a proposed diff. Not yet approved. Stored in the version store but not published.|No — internal only|
-|PendingReview|Routed to human reviewer because confidence is below threshold or severity is high. The previous<br>Current version remains active but is flagged with an "update pending" banner.|Partially — current<br>version flagged|
+|PendingReview|Routed to human reviewer because confidence is below threshold or severity is high. The previous Current version remains active but is flagged with an "update pending" banner.|Partially — current version flagged|
 
 
-
-|Verified|Passed governance gate (auto or human). Transitional — becomes Current immediately on approval.|No — instant<br>transition|
+|Verified|Passed governance gate (auto or human). Transitional — becomes Current immediately on approval.|No — instant transition|
 |---|---|---|
-|Current|The live, published version. Only one version per artifact can be Current at a time.|Yes — the default<br>version readers see|
-|Disputed|Drift Detection Agent found a high-severity contradiction in a Current version. The version is still<br>readable but displayed with a visible warning. Requires owning team resolution.|Yes — with warning<br>banner|
-|Superseded|A newer version has become Current. This version is retained in the version store, queryable by date or<br>version number, but not served by default.|Only on explicit<br>historical query|
-|Rejected|Human reviewer rejected the draft, or the draft was discarded due to a conflict with a concurrent human<br>edit (Path C). Feedback is returned to the Documentation Agent for revision.|No — internal only|
-
+|Current|The live, published version. Only one version per artifact can be Current at a time.|Yes — the default version readers see|
+|Disputed|Drift Detection Agent found a high-severity contradiction in a Current version. The version is still readable but displayed with a visible warning. Requires owning team resolution.|Yes — with warning banner|
+|Superseded|A newer version has become Current. This version is retained in the version store, queryable by date or version number, but not served by default.|Only on explicit historical query|
+|Rejected|Human reviewer rejected the draft, or the draft was discarded due to a conflict with a concurrent human edit (Path C). Feedback is returned to the Documentation Agent for revision.|No — internal only|
 
 
 ### **Critical invariants enforced by the Governance Agent**
@@ -102,16 +100,15 @@ Updates to any document artifact are driven entirely by events, not by schedule.
 
 |**Event type**|**Example**|**Typical artifacts affected**|
 |---|---|---|
-|Code commit / PR<br>merge|New database connection added to<br>service A|Architecture Pack (dependency graph, data flows), Developer Pack (setup, build)|
+|Code commit / PR merge|New database connection added to service A|Architecture Pack (dependency graph, data flows), Developer Pack (setup, build)|
 |CI/CD pipeline change|New deployment target added|Developer Pack (deployment process), Architecture Pack (environment topology)|
-|IaC change|Security group rule modified|Architecture Pack (security boundaries) — auto-routed to PendingReview by<br>default given the sensitivity|
-|Incident opened /<br>closed|INC-4471 closed with postmortem|Operations Pack (common failures, runbooks), Architecture Pack (if root cause<br>reveals undocumented dependency)|
-|ADR / RFC merged|ADR-022: deprecate legacy endpoint|Architecture Pack (affected service entries), Developer Pack (coding standards /<br>API guidelines)|
-|Slack / conversation<br>distilled|SME Interview Agent produces FAQ<br>from thread|Developer Pack (FAQ section), Operations Pack (troubleshooting), Architecture<br>Pack (rationale section)|
-|Human edit on<br>published surface|On-call engineer corrects runbook<br>step during incident|Operations Pack (affected runbook) — always a high-trust, high-priority update|
-|Scheduled drift scan|Weekly full-graph comparison pass|Any artifact where a claim can no longer be corroborated — triggers Disputed<br>status, not a new version|
-|API spec change|New endpoint added to OpenAPI spec|Architecture Pack (API surface in service catalog), AI Agent Pack (available tools<br>if this is an MCP-exposed API)|
-
+|IaC change|Security group rule modified|Architecture Pack (security boundaries) — auto-routed to PendingReview by default given the sensitivity|
+|Incident opened / closed|INC-4471 closed with postmortem|Operations Pack (common failures, runbooks), Architecture Pack (if root cause reveals undocumented dependency)|
+|ADR / RFC merged|ADR-022: deprecate legacy endpoint|Architecture Pack (affected service entries), Developer Pack (coding standards / API guidelines)|
+|Slack / conversation distilled|SME Interview Agent produces FAQ from thread|Developer Pack (FAQ section), Operations Pack (troubleshooting), Architecture Pack (rationale section)|
+|Human edit on published surface|On-call engineer corrects runbook step during incident|Operations Pack (affected runbook) — always a high-trust, high-priority update|
+|Scheduled drift scan|Weekly full-graph comparison pass|Any artifact where a claim can no longer be corroborated — triggers Disputed status, not a new version|
+|API spec change|New endpoint added to OpenAPI spec|Architecture Pack (API surface in service catalog), AI Agent Pack (available tools if this is an MCP-exposed API)|
 
 
 ### **What does NOT trigger an update**
@@ -178,25 +175,23 @@ Figure A3 — Version store structure for a single artifact, showing four versio
 |---|---|---|
 |**version_id**|UUID|Globally unique; not a sequential integer, to avoid distributed coordination on ID generation|
 |**artifact_id**|UUID|Foreign key to the artifact entity in the knowledge graph|
-|**version_number**|Integer<br>(monotonic per<br>artifact)|Human-readable sequence for display ("v4 of payments-runbook")|
-|**status**|Enum|Current state in the lifecycle (Draft / PendingReview / Verified / Current / Superseded / Rejected /<br>Disputed)|
+|**version_number**|Integer (monotonic per artifact)|Human-readable sequence for display ("v4 of payments-runbook")|
+|**status**|Enum|Current state in the lifecycle (Draft / PendingReview / Verified / Current / Superseded / Rejected / Disputed)|
 |**content_hash**|SHA-256|Hash of the full document content at this version — enables tamper detection and deduplication|
-|**diff_from_prev**|Structured diff<br>(section-level)|What changed from the previous version, stored as a structured diff rather than raw text — enables<br>section-level queries ("what changed in the runbook's recovery procedure section?")|
-|**trigger_event_ref**|String|Reference to the originating change event (commit SHA, incident ID, PR number, "human:wiki-<br>edit:user@org")|
-|**producing_agent**|String|Agent role + model version that produced this version (e.g.,<br>**DocAgent/claude-sonnet-4-6** ).<br>**human**for<br>Path B edits.|
-|**confidence_score**|Float [0.0–1.0]|Confidence at time of production.<br>**1.0**for human-origin versions.|
-|**source_citations**|Array of refs|Source artifact references used to produce/validate this version (commit, Slack thread, ADR,<br>postmortem)|
+|**diff_from_prev**|Structured diff (section-level)|What changed from the previous version, stored as a structured diff rather than raw text — enables section-level queries ("what changed in the runbook's recovery procedure section?")|
+|**trigger_event_ref**|String|Reference to the originating change event (commit SHA, incident ID, PR number, "human:wiki- edit:user@org")|
+|**producing_agent**|String|Agent role + model version that produced this version (e.g., **DocAgent/claude-sonnet-4-6** ). **human**for Path B edits.|
+|**confidence_score**|Float [0.0–1.0]|Confidence at time of production. **1.0**for human-origin versions.|
+|**source_citations**|Array of refs|Source artifact references used to produce/validate this version (commit, Slack thread, ADR, postmortem)|
 |**human_reviewed**|Boolean|True if a human reviewer explicitly approved (PendingReview → Verified path) or authored (Path B)|
 |**reviewer_id**|String (optional)|Identity of the human reviewer or editor, from auth context|
 |**governance_policy_id**|String|Which auto-approve policy rule was applied (if auto-approved), for audit calibration|
-|**created_at**|Timestamp<br>(UTC)|When this version was written to the store|
+|**created_at**|Timestamp (UTC)|When this version was written to the store|
 
 
-
-|**published_at**|Timestamp<br>(UTC, nullable)|When this version became Current — null for Rejected/Draft versions|
+|**published_at**|Timestamp (UTC, nullable)|When this version became Current — null for Rejected/Draft versions|
 |---|---|---|
-|**superseded_at**|Timestamp<br>(UTC, nullable)|When a newer version replaced this one as Current|
-
+|**superseded_at**|Timestamp (UTC, nullable)|When a newer version replaced this one as Current|
 
 
 ### **Why content_hash matters**
@@ -219,12 +214,11 @@ Published surfaces (developer portal, wiki, on-call dashboards) should surface t
 
 |**Indicator**|**What it shows**|**Why it matters**|
 |---|---|---|
-|Version<br>badge|"v14 — last updated 3 days ago"|Immediately signals whether a document is recent or potentially stale<br>relative to the reader's context|
-|Trust level<br>badge|Verified<br>/<br>Disputed<br>/<br>Pending Review|The core governance signal — readers know whether to act on the<br>document with full confidence or treat it as provisional|
-|Trigger<br>summary|"Updated after: PR #882 (payments-api)"|Allows readers to immediately understand why the document changed<br>without opening the version history|
-|Change<br>history link|Link to full version list with diffs|Supports incident investigation — "what did this runbook say before the<br>outage?"|
-|Pending<br>update<br>banner|"An update is pending human review — this<br>document may not reflect recent changes."|Prevents consumers from acting on a document that the system already<br>knows is outdated but cannot yet auto-approve|
-
+|Version badge|"v14 — last updated 3 days ago"|Immediately signals whether a document is recent or potentially stale relative to the reader's context|
+|Trust level badge|Verified / Disputed / Pending Review|The core governance signal — readers know whether to act on the document with full confidence or treat it as provisional|
+|Trigger summary|"Updated after: PR #882 (payments-api)"|Allows readers to immediately understand why the document changed without opening the version history|
+|Change history link|Link to full version list with diffs|Supports incident investigation — "what did this runbook say before the outage?"|
+|Pending update banner|"An update is pending human review — this document may not reflect recent changes."|Prevents consumers from acting on a document that the system already knows is outdated but cannot yet auto-approve|
 
 
 ## **A7. Partial Updates — Section-Level Granularity**
@@ -253,10 +247,9 @@ The version store is append-only and versions are never deleted — but at scale
 
 |**Tier**|**Versions retained**|**What is kept**|
 |---|---|---|
-|**Full fidelity**<br>**(permanent)**|All<br>**Current**versions<br>All<br>**Disputed**resolutions<br>Any version referenced by an<br>incident or postmortem<br>Any human-reviewed version<br>First version of any artifact<br>(genesis)|Full content + all metadata + diff from previous|
-|**Metadata-**<br>**only**<br>**(permanent)**|All<br>**Rejected**versions<br>All<br>**Superseded**versions older than<br>90 days not referenced by an<br>incident|All metadata fields (see Section A5 schema), content hash, diff summary — but NOT full<br>content body. Content can be reconstructed from the genesis version + the ordered chain<br>of diffs.|
-|**Purged**|Draft versions older than 30 days<br>that never left Draft status|Only<br>**version_id** ,<br>**artifact_id** ,<br>**created_at** , and<br>**status: Draft (purged)**retained as a<br>tombstone|
-
+|**Full fidelity** **(permanent)**|All **Current**versions All **Disputed**resolutions Any version referenced by an incident or postmortem Any human-reviewed version First version of any artifact (genesis)|Full content + all metadata + diff from previous|
+|**Metadata-** **only** **(permanent)**|All **Rejected**versions All **Superseded**versions older than 90 days not referenced by an incident|All metadata fields (see Section A5 schema), content hash, diff summary — but NOT full content body. Content can be reconstructed from the genesis version + the ordered chain of diffs.|
+|**Purged**|Draft versions older than 30 days that never left Draft status|Only **version_id** , **artifact_id** , **created_at** , and **status: Draft (purged)**retained as a tombstone|
 
 
 ### **Incident reference lock**

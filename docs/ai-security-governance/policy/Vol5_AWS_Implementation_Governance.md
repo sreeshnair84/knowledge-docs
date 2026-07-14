@@ -20,29 +20,29 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MICROSOFT ENTRA ID` I
 
 `(Primary IdP — OIDC/SAML Federation)` I I `ADFS (Legacy Federation)` I
 
-<u>Enterprise Policy Interceptor Architecture for Agentic AIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u> <u>`JWT (OIDC)`</u>
+Enterprise Policy Interceptor Architecture for Agentic AIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `JWT (OIDC)`
 
 IIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AWS PERIMETER` I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `AWS WAF` I I `CloudFront` `(Optional)` I I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
 
 IIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `API GATEWAY (REST/HTTP)` I I
 
-<u>I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I</u> <u>`Lambda Authorizer` I I I</u>
+I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I `Lambda Authorizer` I I I
 
 I I I `• JWT validation (JWKS from Entra)` I I I I I I `• Claims extraction` I I I I I I `• AVP` `IsAuthorized call` I I I I I I `• Decision caching (IAM policy cache)` I I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
-<u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u> <u>`(Authorized requests`</u> `only)`
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `(Authorized requests` `only)`
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTHORIZATION CORE (VPC)` I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Claims Normalization` I I `Amazon Verified` <u>`Permissions` I I I I</u> <u>`Service (ECS Fargate)` I I</u> <u>`(Cedar Policy Store)` I I I I</u> `• Group GUID resolution` I I `• Business authorization` I I I I `• Role` → `capability map` I I `• Agent` `permissions` I I I I `• PIP attribute lookup` I I `• Tool policies` I I I I `• ElastiCache (Redis)` **VOLUME COVERAGE** I I `• IsAuthorized API` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Claims Normalization` I I `Amazon Verified` `Permissions` I I I I `Service (ECS Fargate)` I I `(Cedar Policy Store)` I I I I `• Group GUID resolution` I I `• Business authorization` I I I I `• Role` → `capability map` I I `• Agent` `permissions` I I I I `• PIP attribute lookup` I I `• Tool policies` I I I I `• ElastiCache (Redis)` **VOLUME COVERAGE** I I `• IsAuthorized API` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-AWS reference architecture (AVP, Bedrock, ECS/EKS, API GW, Entra ID integration), policy-as-codeIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII CI/CD, performance benchmarks & caching, decision logging, enterprise case studies, migration roadmap <u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I</u> <u>`OPA Sidecar Cluster` I I</u> <u>`Risk Engine` I I I</u> from embedded to externalized authorization, and production readiness checklist.I `(ECS / K8s DaemonSet)` I I `• AWS Fraud Detector` I I I I `• Infrastructure policy` I I `•` `GuardDuty signals` I I I I `• K8s admission (EKS)` I I `• Risk score` → `context` I I I
+AWS reference architecture (AVP, Bedrock, ECS/EKS, API GW, Entra ID integration), policy-as-codeIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII CI/CD, performance benchmarks & caching, decision logging, enterprise case studies, migration roadmap IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `OPA Sidecar Cluster` I I `Risk Engine` I I I from embedded to externalized authorization, and production readiness checklist.I `(ECS / K8s DaemonSet)` I I `• AWS Fraud Detector` I I I I `• Infrastructure policy` I I `•` `GuardDuty signals` I I I I `• K8s admission (EKS)` I I `• Risk score` → `context` I I I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I <u>IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u>
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
 `AGENT RUNTIME LAYER (ECS / EKS / Lambda)` I I I I
 
@@ -50,29 +50,24 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Amazon` 
 
 IIIIIIIIIIIIIII I I I I I `Orchestrator` I I `Payment Agent` I I `Data Agent` I I I I I I
 
-<u>`Agent` I I</u> <u>`(Specialist)` I I</u> <u>`(Specialist` I I I I I IIIIIIIIIIIIIIIIIII</u>
+`Agent` I I `(Specialist)` I I `(Specialist` I I I I I IIIIIIIIIIIIIIIIIII
 
 IIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIII I I I I I I I I I I I
 
 IIIIIIIIIMIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIMIIIIIII I I I I I `MCP PEP` `Gateway (ECS Fargate)` I I I I I I `(Per-tool Cedar authorization)` I I I I I
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I <u>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I</u>
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `DATA & KNOWLEDGE LAYER` I I I I IIIIIIIIIIIIII IIIIIIIIIIIII IIIIIIIIIIIIIIII
 
-IIIIIIIIIIIIIIIIII I I I `OpenSearch` I I `DynamoDB` I I `RDS/Aurora` I I `S3 (RAG docs)` I I I <u>I</u> <u>`(RAG/Memory)` I I</u> <u>`(Metadata)` I I</u> <u>`(Business)` I I</u> <u>`KMS encrypted` I I I IIIIIIIIIIIIII</u>
+IIIIIIIIIIIIIIIIII I I I `OpenSearch` I I `DynamoDB` I I `RDS/Aurora` I I `S3 (RAG docs)` I I I I `(RAG/Memory)` I I `(Metadata)` I I `(Business)` I I `KMS encrypted` I I I IIIIIIIIIIIIII
 
 IIIIIIIIIIIII IIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIII I
 
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
 
-`OBSERVABILITY & COMPLIANCE LAYER` I I I I `CloudTrail (all API calls)` I `CloudWatch` <u>`(metrics/alarms)` I I</u> <u>`X-Ray (distributed tracing)` I</u> <u>`Security Hub (compliance)` I I</u> <u>`GuardDuty`</u> `(threat detection)` I `Config (resource compliance)` I I `Decision Audit Store (DDB)` I `Macie (PII` `detection in S3)` I
+`OBSERVABILITY & COMPLIANCE LAYER` I I I I `CloudTrail (all API calls)` I `CloudWatch` `(metrics/alarms)` I I `X-Ray (distributed tracing)` I `Security Hub (compliance)` I I `GuardDuty` `(threat detection)` I `Config (resource compliance)` I I `Decision Audit Store (DDB)` I `Macie (PII` `detection in S3)` I
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 <mark>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</mark>
 
@@ -80,23 +75,23 @@ Published: June 2026  ·  AWS Well-Architected Series
 
 |**AWS Service**|**Role in Architecture**|**Why This Service**|
 |---|---|---|
-|Amazon Verified<br>Permissions (AVP)|Cedar PDP — business and agent<br>authorization|Managed Cedar, no operational burden, native<br>AWS IAM integration, CloudTrail audit|
-|API Gateway (REST/HTTP)|Entry PEP — intercept all external<br>requests|Lambda Authorizer integration, WAF attachment,<br>throttling, caching of auth decisions|
-|Lambda Authorizer|JWT validation + AVP<br>IsAuthorized call + claims<br>normalization trigger|Serverless, per-request, 300-second TTL caching,<br>IAM policy generation|
-|Amazon ECS Fargate|Claims normalization service,<br>MCP PEP gateway, agent runtime|Serverless containers, IAM task roles, VPC<br>networking, no EC2 management|
-|Amazon EKS|OPA sidecar deployment,<br>Kubernetes workloads|OPA Gatekeeper for admission control, IRSA for<br>pod-level IAM|
-|Amazon Bedrock /<br>AgentCore|LLM inference, agent<br>orchestration, tool invocation|Native AWS, Guardrails integration, Bedrock KB for<br>RAG|
-|ElastiCache (Redis)|Claims normalization cache, PDP<br>decision cache|Sub-millisecond cache for normalized claims,<br>reduces PIP lookups >95%|
-|DynamoDB|PIP attribute store, audit decision<br>log, memory metadata|Serverless, single-digit ms, TTL for expiry,<br>per-tenant partition|
-|Amazon OpenSearch|RAG vector search, semantic<br>memory|Vector search with metadata filtering, per-tenant<br>index, fine-grained access control|
-|AWS STS|Token exchange for agent<br>delegation (RFC 8693)|AssumeRoleWithWebIdentity for Entra token<br>exchange, temporary credentials|
-|AWS KMS|Encryption for all data at rest,<br>per-tenant CMK|Envelope encryption, key policy, CloudTrail key<br>usage audit|
-|AWS Secrets Manager|API keys, credentials for<br>downstream systems|Automatic rotation, VPC endpoint, fine-grained IAM<br>access|
-|CloudTrail|Authoritative audit log of all API<br>calls including AVP decisions|Immutable, S3-backed, SNS alerts on policy<br>violations|
-|AWS WAF|L7 protection: rate limiting, IP<br>blocking, OWASP rules|Block known bad actors before reaching auth layer|
-|Step Functions|Human-in-the-loop approval<br>workflow|Wait-for-task-token pattern, Cedar obligation<br>handler|
-|EventBridge|Async event-driven agent<br>workflows, policy change events|Schema registry, rule-based routing, dead-letter<br>queues|
-|AWS Config|Detect policy configuration drift,<br>compliance rules|Custom Config rules for AVP policy store changes|
+|Amazon Verified Permissions (AVP)|Cedar PDP — business and agent authorization|Managed Cedar, no operational burden, native AWS IAM integration, CloudTrail audit|
+|API Gateway (REST/HTTP)|Entry PEP — intercept all external requests|Lambda Authorizer integration, WAF attachment, throttling, caching of auth decisions|
+|Lambda Authorizer|JWT validation + AVP IsAuthorized call + claims normalization trigger|Serverless, per-request, 300-second TTL caching, IAM policy generation|
+|Amazon ECS Fargate|Claims normalization service, MCP PEP gateway, agent runtime|Serverless containers, IAM task roles, VPC networking, no EC2 management|
+|Amazon EKS|OPA sidecar deployment, Kubernetes workloads|OPA Gatekeeper for admission control, IRSA for pod-level IAM|
+|Amazon Bedrock / AgentCore|LLM inference, agent orchestration, tool invocation|Native AWS, Guardrails integration, Bedrock KB for RAG|
+|ElastiCache (Redis)|Claims normalization cache, PDP decision cache|Sub-millisecond cache for normalized claims, reduces PIP lookups >95%|
+|DynamoDB|PIP attribute store, audit decision log, memory metadata|Serverless, single-digit ms, TTL for expiry, per-tenant partition|
+|Amazon OpenSearch|RAG vector search, semantic memory|Vector search with metadata filtering, per-tenant index, fine-grained access control|
+|AWS STS|Token exchange for agent delegation (RFC 8693)|AssumeRoleWithWebIdentity for Entra token exchange, temporary credentials|
+|AWS KMS|Encryption for all data at rest, per-tenant CMK|Envelope encryption, key policy, CloudTrail key usage audit|
+|AWS Secrets Manager|API keys, credentials for downstream systems|Automatic rotation, VPC endpoint, fine-grained IAM access|
+|CloudTrail|Authoritative audit log of all API calls including AVP decisions|Immutable, S3-backed, SNS alerts on policy violations|
+|AWS WAF|L7 protection: rate limiting, IP blocking, OWASP rules|Block known bad actors before reaching auth layer|
+|Step Functions|Human-in-the-loop approval workflow|Wait-for-task-token pattern, Cedar obligation handler|
+|EventBridge|Async event-driven agent workflows, policy change events|Schema registry, rule-based routing, dead-letter queues|
+|AWS Config|Detect policy configuration drift, compliance rules|Custom Config rules for AVP policy store changes|
 
 ## 2. Performance Benchmarks & Caching Strategy
 
@@ -104,16 +99,16 @@ Authorization must not become a performance bottleneck. The goal is to add <5ms 
 
 ### 2.1 Performance Targets
 
-|**Component**|**P50**<br>**Target**|**P99**<br>**Target**|**Caching Strategy**|
+|**Component**|**P50** **Target**|**P99** **Target**|**Caching Strategy**|
 |---|---|---|---|
 |JWT Signature Validation|<0.5ms|<1ms|JWKS cached in Lambda memory (15 min TTL)|
 |Claims Normalization (cache hit)|<1ms|<3ms|ElastiCache Redis — keyed by token hash|
-|Claims Normalization (cache<br>miss)|<15ms|<30ms|Directory lookup + role mapping + cache write|
+|Claims Normalization (cache miss)|<15ms|<30ms|Directory lookup + role mapping + cache write|
 |Cedar AVP IsAuthorized (API)|<3ms|<10ms|Lambda Authorizer IAM policy cache (300s TTL)|
 |OPA Sidecar Evaluation|<1ms|<3ms|Policy bundle in-memory, partial evaluation|
 |Total Authorization Overhead|<5ms|<15ms|All layers combined, warm cache|
 |RAG Pre-filter Construction|<0.5ms|<1ms|Derived from cached canonical claims|
-|Post-retrieval Cedar Evaluation|<2ms/chu<br>nk|<5ms/chu<br>nk|Batch IsAuthorized for multiple chunks|
+|Post-retrieval Cedar Evaluation|<2ms/chu nk|<5ms/chu nk|Batch IsAuthorized for multiple chunks|
 
 ### 2.2 Multi-Layer Cache Architecture
 
@@ -355,10 +350,10 @@ I Per-step authorization at all 7 agent decision points
 
 The decision framework summarizes when to use Cedar, when to use OPA/Rego, and when to use both. This is the definitive guidance for enterprise architects:
 
-|**Use Case**|**Use Cedar (AVP)**|**Use OPA/Rego**|**Use Both**<br>**(Hybrid)**|
+|**Use Case**|**Use Cedar (AVP)**|**Use OPA/Rego**|**Use Both** **(Hybrid)**|
 |---|---|---|---|
-|Application authorization|Primary choice||If cross-cloud<br>needed|
-|Agent permissions|Best fit — typed,<br>auditable|||
+|Application authorization|Primary choice||If cross-cloud needed|
+|Agent permissions|Best fit — typed, auditable|||
 |Tool invocation control|Per-tool entity model|||
 |Kubernetes admission||First-class support||
 |Terraform/IaC policy||Conftest standard||
@@ -366,12 +361,12 @@ The decision framework summarizes when to use Cedar, when to use OPA/Rego, and w
 |AWS-native deployment|No operational burden||OPA for K8s layer|
 |Multi-cloud deployment||Cloud-agnostic||
 |Formal verification needed|Provably correct|||
-|Large enterprise (>100 services)|||Cedar for<br>business, OPA for<br>infra|
+|Large enterprise (>100 services)|||Cedar for business, OPA for infra|
 |RAG authorization|Document entity model|||
 |Memory protection|User scope model|||
 |Service mesh policy||Envoy/Istio native||
 |Edge/WASM deployment||WASM compilation||
-|Regulatory banking compliance|CloudTrail native audit||OPA for infra<br>compliance|
+|Regulatory banking compliance|CloudTrail native audit||OPA for infra compliance|
 
 ##### BEST PRACTICE
 

@@ -14,15 +14,9 @@ tags: []
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 1 OF 5**
 
 # Executive Architecture & Authorization Fundamentals
-<u>Enterprise Policy Interceptor Architecture for Agentic AI</u>
-
-##### VOLUME COVERAGE
 
 Covers enterprise authorization landscape, externalized authorization theory, PEP/PDP/PAP/PIP architecture, separation of authentication from authorization, Zero Trust principles, and the rationale for policy-as-code in Agentic AI deployments.
 
-Classification: CONFIDENTIAL — INTERNAL USE ONLY Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
 
 ## Executive Summary
 
@@ -55,14 +49,11 @@ This implementation guide is organized into five volumes, each addressing a dist
 
 |**Volume**|**Title**|**Covers**|
 |---|---|---|
-|1|Executive Architecture & Fundamentals|Authorization theory, PEP/PDP/PAP/PIP, Zero Trust,<br>landscape|
-|2|Identity, Claims & Policy Design|ADFS/Entra federation, claims normalization, Cedar &<br>Rego design|
-
-|**Volume**|**Title**|**Covers**|
-|---|---|---|
-|3|Agent & Tool Authorization|Agent lifecycle, tool permissions, MCP security,<br>context-aware authz|
-|4|RAG, Memory & Data Authorization|Document-level authz, vector filtering, memory protection,<br>tenant isolation|
-|5|AWS Implementation & Governance|Reference architecture, CI/CD, compliance mapping,<br>production checklist|
+|1|Executive Architecture & Fundamentals|Authorization theory, PEP/PDP/PAP/PIP, Zero Trust, landscape|
+|2|Identity, Claims & Policy Design|ADFS/Entra federation, claims normalization, Cedar & Rego design|
+|3|Agent & Tool Authorization|Agent lifecycle, tool permissions, MCP security, context-aware authz|
+|4|RAG, Memory & Data Authorization|Document-level authz, vector filtering, memory protection, tenant isolation|
+|5|AWS Implementation & Governance|Reference architecture, CI/CD, compliance mapping, production checklist|
 
 ## 1. Why Externalized Authorization?
 
@@ -70,25 +61,15 @@ This implementation guide is organized into five volumes, each addressing a dist
 
 The dominant pattern in enterprise software for decades has been embedding authorization logic directly within application code — checking roles in service methods, validating permissions in controllers, or hardcoding group membership checks. This approach creates a series of structural problems that compound as systems grow in complexity:
 
-- **Authorization Logic Drift** : Each service re-implements authorization logic independently, leading to
+- **Authorization Logic Drift** : Each service re-implements authorization logic independently, leading to inconsistency, duplication, and divergence over time.
 
-- inconsistency, duplication, and divergence over time.
+- **Policy Invisibility** : Authorization rules are buried in code. Security teams cannot audit, review, or modify them without developer involvement and a full deployment cycle.
 
-- **Policy Invisibility** : Authorization rules are buried in code. Security teams cannot audit, review, or modify
+- **No Separation of Concerns** : Business logic and security policy are entangled. A change to either requires touching the same codebase.
 
-- them without developer involvement and a full deployment cycle.
+- **Inability to Audit** : When a security incident occurs, there is no central record of what decisions were made, when, and why.
 
-- **No Separation of Concerns** : Business logic and security policy are entangled. A change to either requires
-
-- touching the same codebase.
-
-- **Inability to Audit** : When a security incident occurs, there is no central record of what decisions were
-
-- made, when, and why.
-
-- **Agent Incompatibility** : AI agents operate as non-human principals, often at machine speed with
-
-- parallelism. Embedded authorization cannot scale or reason about agent context.
+- **Agent Incompatibility** : AI agents operate as non-human principals, often at machine speed with parallelism. Embedded authorization cannot scale or reason about agent context.
 
 - **Compliance Failure** : Regulatory frameworks require demonstrable, auditable access controls.
 
@@ -120,18 +101,16 @@ Determines whether the authenticated principal may perform a specific action on 
 
 The actual execution of the business operation after authorization is confirmed. Business services never make authorization decisions — they trust the PEP enforcement layer.
 
-## 2. Authorization Architecture: PEP, PDP, PAP,
-
-## PIP
+## 2. Authorization Architecture: PEP, PDP, PAP, PIP
 
 The XACML-originated model of Policy Enforcement Point, Policy Decision Point, Policy Administration Point, and Policy Information Point remains the definitive reference architecture for externalized authorization. All modern systems — Cedar, OPA, OpenFGA, Permit.io — are implementations of this model.
 
 |**Component**|**Role**|**AWS Implementation**|**Key Characteristics**|
 |---|---|---|---|
-|PEP (Enforc<br>ement)|Intercepts every request; enforces<br>the decision returned by the PDP.<br>Never executes without a positive<br>decision.|API Gateway Lambda Authorizer,<br>Envoy sidecar, App Mesh, ALB<br>Listener Rules, application<br>middleware|Must be in the critical path.<br>Zero-trust: default deny if<br>PDP is unreachable. Logs<br>every decision.|
-|PDP<br>(Decision)|Evaluates the request against<br>applicable policies and returns<br>Allow/Deny with optional<br>obligations.|Amazon Verified Permissions<br>(Cedar), OPA sidecar/central<br>server, Styra DAS|Stateless evaluation.<br>Deterministic. Must be<br>low-latency (<5ms P99).<br>Horizontally scalable.|
-|PAP (Admini<br>stration)|Where policies are authored,<br>reviewed, tested, versioned, and<br>deployed.|AVP Policy Store, OPA Bundle<br>Server (S3), Git repository, Styra<br>DAS console, CI/CD pipeline|GitOps-driven.<br>Policy-as-code. Version<br>controlled. PR-based review.<br>Automated testing.|
-|PIP<br>(Information)|Provides additional attributes about<br>the subject, resource, or<br>environment required for policy<br>evaluation.|DynamoDB attribute store,<br>ElastiCache, Directory Lookup<br>Lambda, SCIM endpoint, STS,<br>Secrets Manager|Enriches the authorization<br>context. Cached<br>aggressively. Authoritative<br>source of truth for attributes.|
+|PEP (Enforcement)|Intercepts every request; enforces the decision returned by the PDP. Never executes without a positive decision.|API Gateway Lambda Authorizer, Envoy sidecar, App Mesh, ALB Listener Rules, application middleware|Must be in the critical path. Zero-trust: default deny if PDP is unreachable. Logs every decision.|
+|PDP (Decision)|Evaluates the request against applicable policies and returns Allow/Deny with optional obligations.|Amazon Verified Permissions (Cedar), OPA sidecar/central server, Styra DAS|Stateless evaluation. Deterministic. Must be low-latency (<5ms P99). Horizontally scalable.|
+|PAP (Administration)|Where policies are authored, reviewed, tested, versioned, and deployed.|AVP Policy Store, OPA Bundle Server (S3), Git repository, Styra DAS console, CI/CD pipeline|GitOps-driven. Policy-as-code. Version controlled. PR-based review. Automated testing.|
+|PIP (Information)|Provides additional attributes about the subject, resource, or environment required for policy evaluation.|DynamoDB attribute store, ElastiCache, Directory Lookup Lambda, SCIM endpoint, STS, Secrets Manager|Enriches the authorization context. Cached aggressively. Authoritative source of truth for attributes.|
 
 ### 2.1 PEP Implementation Patterns
 
@@ -140,13 +119,10 @@ The PEP is the most architecturally sensitive component. It must be in the criti
 |**Pattern**|**Technology**|**Latency**|**Best For**|
 |---|---|---|---|
 |API Gateway Authorizer|AWS Lambda Authorizer|10–50ms|REST APIs, external-facing services|
-
-|**Pattern**|**Technology**|**Latency**|**Best For**|
-|---|---|---|---|
-|Envoy/Service Mesh Filter|Istio + OPA, AWS App Mesh|1–5ms|Internal microservices, East-West<br>traffic|
-|Application Middleware|FastAPI middleware, Express<br>middleware, Spring Filter|0.5–2ms|Fine-grained business-context<br>authorization|
-|gRPC Interceptor|gRPC UnaryInterceptor /<br>StreamInterceptor|0.5–2ms|gRPC service-to-service calls|
-|Sidecar Container|OPA sidecar on ECS/EKS pod|1–3ms|Language-agnostic, containerized<br>services|
+|Envoy/Service Mesh Filter|Istio + OPA, AWS App Mesh|1–5ms|Internal microservices, East-West traffic|
+|Application Middleware|FastAPI middleware, Express middleware, Spring Filter|0.5–2ms|Fine-grained business-context authorization|
+|gRPC Interceptor|gRPC UnaryInterceptor / StreamInterceptor|0.5–2ms|gRPC service-to-service calls|
+|Sidecar Container|OPA sidecar on ECS/EKS pod|1–3ms|Language-agnostic, containerized services|
 |Reverse Proxy|NGINX + OPA, Kong Gateway|2–10ms|Legacy application fronting|
 |Event Stream Filter|EventBridge Rule + Lambda|Async|Event-driven agent workflows|
 
@@ -154,20 +130,17 @@ The PEP is the most architecturally sensitive component. It must be in the criti
 
 Enterprises have multiple policy engine options. The choice depends on the authorization model required, the existing technology stack, the scale of policy management, and the specific use case (infrastructure vs. application vs. agent authorization).
 
-|**Engine**|**Languag**<br>**e**|**Model**|**Strength**|**Weakness**|**Best For**|
+|**Engine**|**Language**|**Model**|**Strength**|**Weakness**|**Best For**|
 |---|---|---|---|---|---|
-|AWS Cedar<br>(Verified<br>Permissions)|Cedar|RBAC+AB<br>AC+ReBA<br>C|Type-safe, provably<br>correct, AWS-native,<br>formal verification|AWS-only, no<br>infrastructure policy|Application &<br>agent<br>authorization<br>on AWS|
-|OPA / Rego|Rego (Dat<br>alog-like)|General<br>purpose|Universal,<br>Kubernetes-native,<br>WASM, rich ecosystem|Rego learning curve, no<br>built-in schema<br>validation|Infrastructure,<br>K8s admission,<br>cross-platform|
-|XACML|XML<br>Policy|ABAC|Standards-based,<br>mature, rich attribute<br>model|Verbose XML, complex,<br>slow adoption|Legacy<br>enterprise,<br>government<br>standards<br>compliance|
-|OpenFGA|OpenFGA<br>DSL|ReBAC<br>(Zanzibar)|Relationship-first, Google<br>Zanzibar-inspired,<br>Google-maintained|Relatively new, limited<br>ABAC|Fine-grained re<br>lationship-base<br>d permissions|
-|Zanzibar /<br>SpiceDB|Zed<br>language|ReBAC|Proven at Google scale,<br>consistent global<br>authorization|Operational complexity,<br>self-managed|Global-scale<br>relationship<br>authorization|
-|Permit.io|Policy-as-<br>code + UI|RBAC+AB<br>AC+ReBA<br>C|Developer-friendly,<br>multi-model, managed|SaaS dependency, cost<br>at scale|Teams needing<br>rapid policy<br>iteration|
-|Styra DAS|Rego + UI|OPA mana<br>gement|Enterprise OPA<br>management, GitOps,<br>audit logs|OPA dependency, cost|Enterprise<br>OPA fleet<br>management|
-
-|**Engine**|**Languag**<br>**e**|**Model**|**Strength**|**Weakness**|**Best For**|
-|---|---|---|---|---|---|
-|Oso|Polar<br>language|RBAC+Re<br>BAC|Embedded in app, simple<br>syntax, developer-first|Less ecosystem, limited<br>at enterprise scale|Developer-emb<br>edded<br>authorization|
-|AuthZed /<br>SpiceDB|Zed<br>language|ReBAC|Zanzibar-compatible,<br>strongly consistent|Relationship model<br>complexity|Zanzibar-style<br>fine-grained<br>permissions|
+|AWS Cedar (Verified Permissions)|Cedar|RBAC+ABAC+ReBAC|Type-safe, provably correct, AWS-native, formal verification|AWS-only, no infrastructure policy|Application & agent authorization on AWS|
+|OPA / Rego|Rego (Datalog-like)|General purpose|Universal, Kubernetes-native, WASM, rich ecosystem|Rego learning curve, no built-in schema validation|Infrastructure, K8s admission, cross-platform|
+|XACML|XML Policy|ABAC|Standards-based, mature, rich attribute model|Verbose XML, complex, slow adoption|Legacy enterprise, government standards compliance|
+|OpenFGA|OpenFGA DSL|ReBAC (Zanzibar)|Relationship-first, Google Zanzibar-inspired, Google-maintained|Relatively new, limited ABAC|fine-grained relationship-based permissions|
+|Zanzibar / SpiceDB|Zed language|ReBAC|Proven at Google scale, consistent global authorization|Operational complexity, self-managed|Global-scale relationship authorization|
+|Permit.io|Policy-as-code + UI|RBAC+ABAC+ReBAC|Developer-friendly, multi-model, managed|SaaS dependency, cost at scale|Teams needing rapid policy iteration|
+|Styra DAS|Rego + UI|OPA management|Enterprise OPA management, GitOps, audit logs|OPA dependency, cost|Enterprise OPA fleet management|
+|Oso|Polar language|RBAC+ReBAC|Embedded in app, simple syntax, developer-first|Less ecosystem, limited at enterprise scale|Developer-embedded authorization|
+|AuthZed / SpiceDB|Zed language|ReBAC|Zanzibar-compatible, strongly consistent|Relationship model complexity|Zanzibar-style fine-grained permissions|
 
 #### BEST PRACTICE
 
@@ -179,12 +152,12 @@ Zero Trust mandates that no request — regardless of its origin, network positi
 
 |**Zero Trust Principle**|**Implementation for Agentic AI**|
 |---|---|
-|Never Trust, Always Verify|Every tool call, API request, and memory access by an agent is<br>independently authorized — even within a single agent workflow.|
-|Least Privilege Access|Agents receive the minimum permissions required for their specific task.<br>Permissions are not inherited from the invoking user wholesale.|
-|Assume Breach|Authorization decisions are logged, monitored, and anomaly-detected.<br>Agents cannot escalate privileges even if a component is compromised.|
-|Explicit Verification|Every authorization decision includes the principal identity, resource, action,<br>context, and policy reason.|
-|Micro-segmentation|Agent-to-agent communication, agent-to-tool calls, and agent-to-data access<br>are separately authorized. No transitive trust.|
-|Continuous Validation|Authorization is re-evaluated at each action boundary. A session-level token<br>is insufficient for tool-level authorization.|
+|Never Trust, Always Verify|Every tool call, API request, and memory access by an agent is independently authorized — even within a single agent workflow.|
+|Least Privilege Access|Agents receive the minimum permissions required for their specific task. Permissions are not inherited from the invoking user wholesale.|
+|Assume Breach|Authorization decisions are logged, monitored, and anomaly-detected. Agents cannot escalate privileges even if a component is compromised.|
+|Explicit Verification|Every authorization decision includes the principal identity, resource, action, context, and policy reason.|
+|Micro-segmentation|Agent-to-agent communication, agent-to-tool calls, and agent-to-data access are separately authorized. No transitive trust.|
+|Continuous Validation|Authorization is re-evaluated at each action boundary. A session-level token is insufficient for tool-level authorization.|
 
 ## 5. The Request Interceptor Pattern
 
@@ -220,12 +193,12 @@ Applying the STRIDE threat model to the authorization layer identifies the key t
 
 |**Threat**|**Example in Agentic AI**|**Mitigation**|
 |---|---|---|
-|Spoofing|Agent impersonates another user or agent to<br>gain elevated permissions|JWT signature validation, agent identity claims,<br>mutual TLS between agents|
-|Tampering|Agent modifies request context to claim false<br>attributes (e.g., elevated role)|Signed context tokens, immutable audit logs,<br>context validation at PDP|
-|Repudiation|Agent denies having invoked a tool or<br>accessed data|Comprehensive decision logging to CloudTrail,<br>signed audit records, non-repudiation via KMS|
-|Info Disclosure|Agent retrieves documents or memory<br>belonging to another tenant|Tenant isolation in Cedar policies, document-level<br>authorization, output filtering|
-|Denial of Service|Excessive tool calls overwhelm PDP<br>evaluation capacity|PDP caching, rate limiting at PEP, circuit breakers,<br>auto-scaling PDP fleet|
-|Elevation of<br>Privilege|Agent accumulates permissions across<br>workflow steps (confused deputy)|Per-step authorization, no permission<br>accumulation, explicit obligation enforcement|
+|Spoofing|Agent impersonates another user or agent to gain elevated permissions|JWT signature validation, agent identity claims, mutual TLS between agents|
+|Tampering|Agent modifies request context to claim false attributes (e.g., elevated role)|Signed context tokens, immutable audit logs, context validation at PDP|
+|Repudiation|Agent denies having invoked a tool or accessed data|Comprehensive decision logging to CloudTrail, signed audit records, non-repudiation via KMS|
+|Info Disclosure|Agent retrieves documents or memory belonging to another tenant|Tenant isolation in Cedar policies, document-level authorization, output filtering|
+|Denial of Service|Excessive tool calls overwhelm PDP evaluation capacity|PDP caching, rate limiting at PEP, circuit breakers, auto-scaling PDP fleet|
+|Elevation of Privilege|Agent accumulates permissions across workflow steps (confused deputy)|Per-step authorization, no permission accumulation, explicit obligation enforcement|
 
 ## 7. Critical Anti-Patterns to Avoid
 
@@ -257,13 +230,13 @@ The authorization architecture described in this series maps directly to control
 
 |**Framework**|**Relevant Controls**|**How This Architecture Satisfies Them**|
 |---|---|---|
-|NIST 800-53|AC-2, AC-3, AC-6, AU-2,<br>AU-9, CM-3|Externalized authorization (AC-3), least privilege (AC-6), comprehensive<br>audit logging (AU-2/AU-9), policy-as-code change management (CM-3)|
-|NIST AI RMF|GOVERN 1.1, MAP 2.3,<br>MEASURE 2.6, MANAGE<br>1.3|Policy-governed AI actions (GOVERN), risk-contextualized authorization<br>(MAP), measurable policy compliance (MEASURE), incident response<br>via policy rollback (MANAGE)|
-|PCI DSS v4.0|Req 7, Req 8, Req 10|Need-to-know access control (Req 7), unique identity for agents (Req<br>8), audit logs for all access to cardholder data (Req 10)|
-|SOC 2 Type II|CC6.1, CC6.2, CC6.3,<br>CC7.2|Logical access controls (CC6.1), authentication management (CC6.2),<br>authorization reviews (CC6.3), monitoring of access controls (CC7.2)|
-|ISO<br>27001:2022|A.5.15, A.5.18, A.8.2,<br>A.8.3|Access control policy (A.5.15), access rights management (A.5.18),<br>privileged access (A.8.2), information access restriction (A.8.3)|
-|DORA|Art. 9, Art. 10|ICT risk management (Art. 9), ICT-related incident management (Art.<br>10) — policy audit trails are mandatory evidence|
-|EU AI Act|Art. 9, Art. 13, Art. 17|Risk management system (Art. 9), transparency & logging (Art. 13),<br>quality management for high-risk AI (Art. 17)|
+|NIST 800-53|AC-2, AC-3, AC-6, AU-2, AU-9, CM-3|Externalized authorization (AC-3), least privilege (AC-6), comprehensive audit logging (AU-2/AU-9), policy-as-code change management (CM-3)|
+|NIST AI RMF|GOVERN 1.1, MAP 2.3, MEASURE 2.6, MANAGE 1.3|Policy-governed AI actions (GOVERN), risk-contextualized authorization (MAP), measurable policy compliance (MEASURE), incident response via policy rollback (MANAGE)|
+|PCI DSS v4.0|Req 7, Req 8, Req 10|Need-to-know access control (Req 7), unique identity for agents (Req 8), audit logs for all access to cardholder data (Req 10)|
+|SOC 2 Type II|CC6.1, CC6.2, CC6.3, CC7.2|Logical access controls (CC6.1), authentication management (CC6.2), authorization reviews (CC6.3), monitoring of access controls (CC7.2)|
+|ISO 27001:2022|A.5.15, A.5.18, A.8.2, A.8.3|Access control policy (A.5.15), access rights management (A.5.18), privileged access (A.8.2), information access restriction (A.8.3)|
+|DORA|Art. 9, Art. 10|ICT risk management (Art. 9), ICT-related incident management (Art. 10) — policy audit trails are mandatory evidence|
+|EU AI Act|Art. 9, Art. 13, Art. 17|Risk management system (Art. 9), transparency & logging (Art. 13), quality management for high-risk AI (Art. 17)|
 
 ### Next Steps
 

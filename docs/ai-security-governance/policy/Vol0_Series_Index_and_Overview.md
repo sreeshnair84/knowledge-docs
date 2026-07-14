@@ -11,89 +11,55 @@ tags: []
 
 <!-- converted from Vol0_Series_Index_and_Overview.pdf -->
 
-**ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 0 OF 5**
+# Enterprise AI Authorization Series: Series Index & Architecture Overview (Vol 0)
 
 ## About This Series
 
-# Enterprise AI Authorization Series: Series Index & Architecture Overview (Vol 0)
-|**Ov**<br>Enterp<br> <br>throug<br>data p<br>The se<br>at org<br>health<br>**Seri**<br>**Vol**|**erview**<br>rise Policy Interceptor<br>p pu<br>h policy engine selection an<br>rotection, and production gov<br>ries is designed for enterpris<br>anizations deploying AI age<br>care, and government.<br>**es Volume Map**<br>**Title**|Architecture for Agentic AI<br>u g  y<br>d hybrid architectures, to per-step agen<br>ernance.<br>e architects, security engineers, platform<br>nts in regulated environments — part<br>**Primary Topics**|,<br>t authorization, MCP security, RAG<br>engineers, and compliance officers<br>icularly banking, financial services,<br>**Key Deliverables**|
-|---|---|---|---|
-|1|Executive Architecture &<br>Authorization Fundamentals|Authorization landscape;<br>PEP/PDP/PAP/PIP; Zero Trust;<br>embedded vs externalized; STRIDE<br>threat model; compliance mapping|Authorization engine comparison;<br>PEP pattern matrix; STRIDE<br>analysis; compliance control map;<br>anti-pattern catalogue|
-|**VOL**<br>2|**UME COVERAGE**<br>Identity, Claims & Policy<br>Design|ADFS & Entra ID federation; JWT claims<br>normalization; canonical enterprise claim<br>model; Cedar policy design; Rego policy<br>design; Cedar vs Rego matrix; hybrid<br>architecture|Canonical claims schema;<br>role→capability mapping framework;<br>Cedar entity schema; Cedar policy<br>patterns; Rego policy examples;<br>Cedar vs Rego comparison matrix|
-|<br>Com<br>deci<br>3|<br>plete series index, architectur<br>sion matrix for the full 5-volum<br>Agent, Tool & MCP<br>Authorization|e summary, component catalogue, reading<br>e Enterprise AI Authorization implementati<br>Agent authorization lifecycle; per-step<br>policyevaluation;tool capability<br>taxonomy; contextual signals; MCP<br>server security; multi-agent workflows;<br>human-in-the-loop|guide, and quick-reference<br>on guide.<br>Agent authorization decision matrix;<br>tool capabilitycatalogue;context<br>signal catalogue; MCP authorization<br>architecture; sequence diagrams;<br>HITL Cedar patterns|
-|4|RAG, Memory & Data<br>Authorization|Document-level authorization; chunk-level<br>filtering; vector database pre/post filtering;<br>memory type taxonomy; multi-tenant<br>isolation; output classification; DLP<br>integration|RAG authorization pipeline;<br>document metadata schema; Cedar<br>RAG policies; memory authorization<br>patterns; tenant isolation framework;<br>output classification model|
-|5|AWS Implementation &<br>Governance|AWS reference architecture; component<br>justification; performance benchmarks;<br>caching strategy; policy CI/CD; enterprise<br>case studies; migration roadmap;<br>production checklist|AWS architecture diagram;<br>component matrix; performance<br>targets; CI/CD pipeline; test<br>framework; migration phases;<br>production readiness checklist;<br>decision framework|
+The Enterprise Policy Interceptor Architecture for Agentic AI covers the full authorization stack: policy engine selection and hybrid architectures, per-step agent authorization, MCP security, RAG data protection, and production governance. The series is designed for enterprise architects, security engineers, platform engineers, and compliance officers at organizations deploying AI agents in regulated environments — particularly banking, financial services, healthcare, and government.
 
-### <u>Reading Guide by Role</u>
+### Series Volume Map
+
+|**Vol**|**Title**|**Primary Topics**|**Key Deliverables**|
+|---|---|---|---|
+|1|Executive Architecture & Authorization Fundamentals|Authorization landscape; PEP/PDP/PAP/PIP; Zero Trust; embedded vs externalized; STRIDE threat model; compliance mapping|Authorization engine comparison; PEP pattern matrix; STRIDE analysis; compliance control map; anti-pattern catalogue|
+|2|Identity, Claims & Policy Design|ADFS & Entra ID federation; JWT claims normalization; canonical enterprise claim model; Cedar policy design; Rego policy design; Cedar vs Rego matrix; hybrid architecture|Canonical claims schema; role→capability mapping framework; Cedar entity schema; Cedar policy patterns; Rego policy examples; Cedar vs Rego comparison matrix|
+|3|Agent, Tool & MCP Authorization|Agent authorization lifecycle; per-step policy evaluation; tool capability taxonomy; contextual signals; MCP server security; multi-agent workflows; human-in-the-loop|Agent authorization decision matrix; tool capability catalogue; context signal catalogue; MCP authorization architecture; sequence diagrams; HITL Cedar patterns|
+|4|RAG, Memory & Data Authorization|Document-level authorization; chunk-level filtering; vector database pre/post filtering; memory type taxonomy; multi-tenant isolation; output classification; DLP integration|RAG authorization pipeline; document metadata schema; Cedar RAG policies; memory authorization patterns; tenant isolation framework; output classification model|
+|5|AWS Implementation & Governance|AWS reference architecture; component justification; performance benchmarks; caching strategy; policy CI/CD; enterprise case studies; migration roadmap; production checklist|AWS architecture diagram; component matrix; performance targets; CI/CD pipeline; test framework; migration phases; production readiness checklist; decision framework|
+
+### Reading Guide by Role
 
 |**Role**|**Must Read**|**Recommended**|
 |---|---|---|
-|Enterprise Architect|All volumes|Focus on Vol 1 frameworks and Vol 5 AWS<br>architecture|
+|Enterprise Architect|All volumes|Focus on Vol 1 frameworks and Vol 5 AWS architecture|
 |Security Engineer|Vol 1, 2, 3|Vol 4 for data security; Vol 5 for threat model|
 |Platform/DevOps Engineer|Vol 5, Vol 2 (policy CI/CD)|Vol 3 for MCP/tool deployment patterns|
-
-Classification: CONFIDENTIAL — INTERNAL USE ONLY
-
-Published: June 2026  ·  AWS Well-Architected Series
-
-**ENTERPRISE POLICY INTERCEPTOR ARCHITECTURE FOR AGENTIC AI**
-
-**ENTERPRISE AI AUTHORIZATION**
-
-Series Index & Architecture Overview
-
-|**Role**|**Must Read**|**Recommended**|
-|---|---|---|
-|Compliance Officer|Vol 1 (compliance section), Vol 5<br>(checklist)|Vol 4 for data residency and DLP|
-|AI/ML Engineer|Vol 3 (agent auth), Vol 4<br>(RAG/memory)|Vol 2 for Cedar policy context|
+|Compliance Officer|Vol 1 (compliance section), Vol 5 (checklist)|Vol 4 for data residency and DLP|
+|AI/ML Engineer|Vol 3 (agent auth), Vol 4 (RAG/memory)|Vol 2 for Cedar policy context|
 |Identity/IAM Engineer|Vol 2 (claims normalization)|Vol 1 for authorization landscape|
-|CTO / CISO|Vol 1 (executive summary), Vol 5<br>(case studies)|Series index (this document)|
+|CTO / CISO|Vol 1 (executive summary), Vol 5 (case studies)|Series index (this document)|
 
 ### Key Architectural Decisions at a Glance
 
-- **Authorization Engine** : Amazon Verified Permissions (Cedar) for application/agent authorization;
+- **Authorization Engine** : Amazon Verified Permissions (Cedar) for application/agent authorization; OPA/Rego for infrastructure and Kubernetes. Hybrid architecture with shared claims normalization.
 
-- OPA/Rego for infrastructure and Kubernetes. Hybrid architecture with shared claims normalization.
+- **PEP Location** : API Gateway Lambda Authorizer (external requests) + Application middleware (internal fine-grained) + MCP PEP Gateway (tool invocation).
 
-- **PEP Location** : API Gateway Lambda Authorizer (external requests) + Application middleware (internal
+- **Identity Integration** : Entra ID (primary OIDC) + ADFS (legacy SAML federation) → Claims Normalization Service → Canonical Claims → Cedar entity context.
 
-- fine-grained) + MCP PEP Gateway (tool invocation).
+- **Claims Abstraction** : Entra groups and roles are NEVER referenced in Cedar policies. Always mapped to business capabilities in the normalization layer.
 
-- **Identity Integration** : Entra ID (primary OIDC) + ADFS (legacy SAML federation) → Claims Normalization
+- **Default Posture** : Default deny everywhere. Unreachable PDP = deny. Missing context = deny. Explicit permit required for every authorized action.
 
-- Service → Canonical Claims → Cedar entity context.
+- **Agent Trust Model** : Agents receive intersection of their permitted scope and the delegating user's capabilities. Never union. Scope is constrained at delegation time.
 
-- **Claims Abstraction** : Entra groups and roles are NEVER referenced in Cedar policies. Always mapped to
+- **Tenant Isolation** : Mandatory Cedar forbid policies enforce tenant isolation at policy layer. Defense-in-depth: also enforced at storage partition, IAM, and network layers.
 
-- business capabilities in the normalization layer.
+- **Caching Strategy** : 4-layer cache: Lambda IAM policy cache → ElastiCache claims cache → ElastiCache PIP cache → OPA in-memory bundle. Target: >90% cache hit rate.
 
-- **Default Posture** : Default deny everywhere. Unreachable PDP = deny. Missing context = deny. Explicit
+- **Audit Trail** : CloudTrail captures every AVP IsAuthorized call. Decision logs: principal, action, resource, context hash, policy matched, decision reason.
 
-- permit required for every authorized action.
-
-- **Agent Trust Model** : Agents receive intersection of their permitted scope and the delegating user's
-
-- capabilities. Never union. Scope is constrained at delegation time.
-
-- **Tenant Isolation** : Mandatory Cedar forbid policies enforce tenant isolation at policy layer.
-
-- Defense-in-depth: also enforced at storage partition, IAM, and network layers.
-
-- **Caching Strategy** : 4-layer cache: Lambda IAM policy cache → ElastiCache claims cache → ElastiCache
-
-- PIP cache → OPA in-memory bundle. Target: >90% cache hit rate.
-
-- **Audit Trail** : CloudTrail captures every AVP IsAuthorized call. Decision logs: principal, action, resource,
-
-- context hash, policy matched, decision reason.
-
-- **Policy Lifecycle** : GitOps: policies in Git → PR review → automated tests → shadow eval → canary deploy
-
-- → production → drift detection. <15 min deploy, <5 min rollback.
-
-**ENTERPRISE AI AUTHORIZATION**
-
-Series Index & Architecture Overview
+- **Policy Lifecycle** : GitOps: policies in Git → PR review → automated tests → shadow eval → canary deploy → production → drift detection. <15 min deploy, <5 min rollback.
 
 ## Authorization Component Quick Reference
 

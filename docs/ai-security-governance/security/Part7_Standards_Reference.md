@@ -31,13 +31,13 @@ This section summarises the authoritative standards that underpin enterprise AI 
 
 |**Standard**|**RFC / Spec**|**Key Requirements**|**AI Agent Relevance**|
 |---|---|---|---|
-|OAuth 2.0 Core|RFC 6749|Authorization Code, Client<br>Credentials, Implicit, ROPC<br>grants|Foundation for all AI tool<br>authentication|
-|OAuth 2.0 Bearer Tokens|RFC 6750|Bearer token usage in<br>Authorization header|Every AI API call uses<br>bearer tokens|
-|OAuth 2.1 (draft)|draft-ietf-oauth-v2-1|PKCE mandatory; Implicit +<br>ROPC prohibited; exact<br>redirect URI|New AI integrations should<br>target 2.1|
-|PKCE|RFC 7636|code_verifier,<br>code_challenge, S256<br>method|Required for all public<br>clients (AI IDEs, CLIs)|
-|Token Introspection|RFC 7662|POST /introspect to<br>validate opaque token|MCP servers validate user<br>tokens at runtime|
-|Token Revocation|RFC 7009|POST /revoke to invalidate<br>tokens|Used on user offboarding,<br>session termination|
-|Dynamic Client Registration|RFC 7591|Programmatic OAuth client<br>registration|Agent-to-agent trust<br>establishment|
+|OAuth 2.0 Core|RFC 6749|Authorization Code, Client Credentials, Implicit, ROPC grants|Foundation for all AI tool authentication|
+|OAuth 2.0 Bearer Tokens|RFC 6750|Bearer token usage in Authorization header|Every AI API call uses bearer tokens|
+|OAuth 2.1 (draft)|draft-ietf-oauth-v2-1|PKCE mandatory; Implicit + ROPC prohibited; exact redirect URI|New AI integrations should target 2.1|
+|PKCE|RFC 7636|code_verifier, code_challenge, S256 method|Required for all public clients (AI IDEs, CLIs)|
+|Token Introspection|RFC 7662|POST /introspect to validate opaque token|MCP servers validate user tokens at runtime|
+|Token Revocation|RFC 7009|POST /revoke to invalidate tokens|Used on user offboarding, session termination|
+|Dynamic Client Registration|RFC 7591|Programmatic OAuth client registration|Agent-to-agent trust establishment|
 
 #### OpenID Connect (OIDC)
 
@@ -45,14 +45,11 @@ This section summarises the authoritative standards that underpin enterprise AI 
 
 |**Specification**|**Purpose**|**Key Claims**|**AI Agent Use**|
 |---|---|---|---|
-|OIDC Core 1.0|ID token format and<br>validation|sub, iss, aud, exp, iat,<br>nonce|User identity in ID token;<br>passed to MCP servers|
-|OIDC Discovery|/.well-known/openid-configu<br>ration|Authorization, token, JWKS<br>endpoints|AI platform discovers IdP<br>endpoints automatically|
-|OIDC Dynamic Registration|Client registration at IdP|Client metadata, redirect<br>URIs|AI agent self-registers with<br>enterprise IdP|
-
-|**Specification**|**Purpose**|**Key Claims**|**AI Agent Use**|
-|---|---|---|---|
-|OIDC Session<br>Management|Front-channel and<br>back-channel logout|Session state, logout<br>endpoints|AI platform terminates<br>session on IdP logout|
-|OIDC FAPI 2.0|Financial-grade API profile|Strengthened OIDC for<br>banking|Banking AI must comply<br>with FAPI 2.0|
+|OIDC Core 1.0|ID token format and validation|sub, iss, aud, exp, iat, nonce|User identity in ID token; passed to MCP servers|
+|OIDC Discovery|/.well-known/openid-configu ration|Authorization, token, JWKS endpoints|AI platform discovers IdP endpoints automatically|
+|OIDC Dynamic Registration|Client registration at IdP|Client metadata, redirect URIs|AI agent self-registers with enterprise IdP|
+|OIDC Session Management|Front-channel and back-channel logout|Session state, logout endpoints|AI platform terminates session on IdP logout|
+|OIDC FAPI 2.0|Financial-grade API profile|Strengthened OIDC for banking|Banking AI must comply with FAPI 2.0|
 
 #### RFC 8693 — OAuth 2.0 Token Exchange
 
@@ -68,7 +65,7 @@ RFC 8693 defines the 'token exchange' grant type, enabling a service to obtain a
 |requested_token_type|urn:ietf:params:oauth:token-type:access_token (or jwt)|
 |audience|Target service identifier (e.g. https://graph.microsoft.com)|
 |scope|Requested scopes for the new token|
-|actor_token|Optional: token representing the acting service (AI<br>platform)|
+|actor_token|Optional: token representing the acting service (AI platform)|
 |actor_token_type|Optional: type of actor token|
 
 #### RFC 7523 — JWT Bearer Token for OAuth 2.0
@@ -79,13 +76,10 @@ RFC 7523 defines how a JWT can be used as an OAuth 2.0 grant type ('JWT Bearer')
 
 |**Use Case**|**JWT Bearer Application**|
 |---|---|
-|GitHub App authentication|GitHub App signs JWT with private key; exchanges for<br>installation token|
-|Salesforce JWT Bearer flow|App presents user-asserting JWT; Salesforce issues user<br>access token|
-|Service account assertion|AI service signs JWT claiming service identity; IdP issues<br>access token|
-
-|**Use Case**|**JWT Bearer Application**|
-|---|---|
-|OBO pre-authorization|Admin pre-authorizes users; app presents JWT asserting<br>user identity|
+|GitHub App authentication|GitHub App signs JWT with private key; exchanges for installation token|
+|Salesforce JWT Bearer flow|App presents user-asserting JWT; Salesforce issues user access token|
+|Service account assertion|AI service signs JWT claiming service identity; IdP issues access token|
+|OBO pre-authorization|Admin pre-authorizes users; app presents JWT asserting user identity|
 
 #### Downscoping and Scope Reduction
 
@@ -95,10 +89,10 @@ Downscoping is the practice of obtaining a token with reduced scopes from a broa
 
 |**Pattern**|**Mechanism**|**Example**|
 |---|---|---|
-|Google Credential Downscoping|google-auth DownscopedCredentials<br>class|Broad storage token→read-only<br>token for specific GCS bucket|
-|Entra OBO with limited scope|scope parameter in OBO request|Full Graph token→Files.Read.All<br>only for SharePoint calls|
-|AWS STS AssumeRole with policy|inline session policy in AssumeRole|Admin role→read-only S3 session<br>for specific prefix|
-|Kafka / OAuth scope reduction|Scope parameter in token exchange|Broad Kafka admin→specific topic<br>read scope|
+|Google Credential Downscoping|google-auth DownscopedCredentials class|Broad storage token→read-only token for specific GCS bucket|
+|Entra OBO with limited scope|scope parameter in OBO request|Full Graph token→Files.Read.All only for SharePoint calls|
+|AWS STS AssumeRole with policy|inline session policy in AssumeRole|Admin role→read-only S3 session for specific prefix|
+|Kafka / OAuth scope reduction|Scope parameter in token exchange|Broad Kafka admin→specific topic read scope|
 
 ### Decision Frameworks
 
@@ -110,13 +104,13 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 |**Question**|**If YES**→|**If NO**→|
 |---|---|---|
-|Does the target API support OAuth<br>2.0?|Use OAuth 2.0 (proceed to next<br>question)|Consider SAML Bearer, API key, or<br>PAT (with strict rotation)|
-|Do you need user identity in the API<br>call?|Use OAuth 2.0 Authorization Code +<br>PKCE (user-delegated)|Use Client Credentials (service<br>account); document that user identity<br>is lost|
-|Is this a public client (CLI, browser,<br>IDE)?|PKCE is MANDATORY; do not use<br>client secret|Confidential client: use client secret +<br>PKCE|
-|Does the target support OBO / token<br>exchange?|Use RFC 8693 token exchange for<br>multi-hop identity|Each hop needs separate OAuth<br>consent; educate users|
-|Is the token lifetime > 2 hours?|Request offline_access for refresh<br>token; implement silent refresh|Implement re-auth prompt before<br>token expiry|
-|Is this a high-privilege API<br>(write/delete)?|Require human approval gate before<br>execution|Proceed with standard OAuth flow|
-|Is this API in a regulated scope (PCI,<br>SOX)?|Add OPA policy; require additional<br>approvals; extra audit logging|Standard governance controls apply|
+|Does the target API support OAuth 2.0?|Use OAuth 2.0 (proceed to next question)|Consider SAML Bearer, API key, or PAT (with strict rotation)|
+|Do you need user identity in the API call?|Use OAuth 2.0 Authorization Code + PKCE (user-delegated)|Use Client Credentials (service account); document that user identity is lost|
+|Is this a public client (CLI, browser, IDE)?|PKCE is MANDATORY; do not use client secret|Confidential client: use client secret + PKCE|
+|Does the target support OBO / token exchange?|Use RFC 8693 token exchange for multi-hop identity|Each hop needs separate OAuth consent; educate users|
+|Is the token lifetime > 2 hours?|Request offline_access for refresh token; implement silent refresh|Implement re-auth prompt before token expiry|
+|Is this a high-privilege API (write/delete)?|Require human approval gate before execution|Proceed with standard OAuth flow|
+|Is this API in a regulated scope (PCI, SOX)?|Add OPA policy; require additional approvals; extra audit logging|Standard governance controls apply|
 
 #### Choosing Between Service Account and Delegated Access
 
@@ -124,15 +118,15 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 |**Factor**|**Use Delegated (User Token)**|**Use Service Account**|
 |---|---|---|
-|Trigger|User actively requests the action|Background task, scheduled job,<br>indexing|
-|Audit requirement|Must know which user did the action|System action; no specific user<br>context needed|
-|Permission level|User's own permissions (least<br>privilege)|Admin-granted narrow permissions|
-|Data access scope|User can only see what they can<br>access|Must be explicitly restricted; risk of<br>over-access|
-|Compliance|Required for PCI, SOX user attribution|Acceptable for non-user-attributed<br>background work|
+|Trigger|User actively requests the action|Background task, scheduled job, indexing|
+|Audit requirement|Must know which user did the action|System action; no specific user context needed|
+|Permission level|User's own permissions (least privilege)|Admin-granted narrow permissions|
+|Data access scope|User can only see what they can access|Must be explicitly restricted; risk of over-access|
+|Compliance|Required for PCI, SOX user attribution|Acceptable for non-user-attributed background work|
 
 ||**Factor**|**Use Delegated (User Token)**|**Use Service Account**|
 |---|---|---|---|
-|Revocation||Token revoked when user leaves|Service account managed<br>independently|
+|Revocation||Token revoked when user leaves|Service account managed independently|
 
 ### Implementation Checklists
 
@@ -238,34 +232,31 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 |**Topic**|**Source**|**URL / Reference**|
 |---|---|---|
-|Microsoft Entra OBO|Microsoft Docs|learn.microsoft.com/en-us/entra/identi<br>ty-platform/v2-oauth2-on-behalf-of-flo<br>w|
-|M365 Copilot Architecture|Microsoft|learn.microsoft.com/en-us/copilot/micr<br>osoft-365/microsoft-365-copilot-archit<br>ecture|
-|M365 Copilot Audit|Microsoft Purview|learn.microsoft.com/en-us/purview/au<br>dit-copilot-interaction|
-|CAE (Continuous Access Evaluation)|Microsoft|learn.microsoft.com/en-us/entra/identi<br>ty/conditional-access/concept-continu<br>ous-access-evaluation|
-|GitHub Apps Auth|GitHub Docs|docs.github.com/en/apps/creating-gith<br>ub-apps/authenticating-with-a-github-<br>app|
-|GitHub Audit Log|GitHub Docs|docs.github.com/en/organizations/kee<br>ping-your-organization-secure/reviewi<br>ng-the-audit-log|
-|Atlassian OAuth 2.0 3LO|Atlassian Docs|developer.atlassian.com/cloud/jira/pla<br>tform/oauth-2-3lo-apps|
-|Forge Security|Atlassian|developer.atlassian.com/platform/forg<br>e/security-overview|
-|ServiceNow OAuth|ServiceNow Docs|docs.servicenow.com/bundle/latest/pa<br>ge/administer/security/concept/c_OAu<br>thApplications.html|
-|Amazon Q Business Auth|AWS Docs|docs.aws.amazon.com/amazonq/late<br>st/qbusiness-ug/security.html|
+|Microsoft Entra OBO|Microsoft Docs|learn.microsoft.com/en-us/entra/identi ty-platform/v2-oauth2-on-behalf-of-flo w|
+|M365 Copilot Architecture|Microsoft|learn.microsoft.com/en-us/copilot/micr osoft-365/microsoft-365-copilot-archit ecture|
+|M365 Copilot Audit|Microsoft Purview|learn.microsoft.com/en-us/purview/au dit-copilot-interaction|
+|CAE (Continuous Access Evaluation)|Microsoft|learn.microsoft.com/en-us/entra/identi ty/conditional-access/concept-continu ous-access-evaluation|
+|GitHub Apps Auth|GitHub Docs|docs.github.com/en/apps/creating-gith ub-apps/authenticating-with-a-github- app|
+|GitHub Audit Log|GitHub Docs|docs.github.com/en/organizations/kee ping-your-organization-secure/reviewi ng-the-audit-log|
+|Atlassian OAuth 2.0 3LO|Atlassian Docs|developer.atlassian.com/cloud/jira/pla tform/oauth-2-3lo-apps|
+|Forge Security|Atlassian|developer.atlassian.com/platform/forg e/security-overview|
+|ServiceNow OAuth|ServiceNow Docs|docs.servicenow.com/bundle/latest/pa ge/administer/security/concept/c_OAu thApplications.html|
+|Amazon Q Business Auth|AWS Docs|docs.aws.amazon.com/amazonq/late st/qbusiness-ug/security.html|
 |Anthropic MCP Spec|Anthropic|modelcontextprotocol.io|
-|MCP Security|MCP Spec|modelcontextprotocol.io/docs/concept<br>s/security|
-|Google A2A Protocol|Google|developers.googleblog.com/2025/04/<br>a2a-protocol.html|
-|Salesforce OAuth Flows|Salesforce Docs|help.salesforce.com/s/articleView?id=<br>sf.remoteaccess_oauth_flows.htm|
+|MCP Security|MCP Spec|modelcontextprotocol.io/docs/concept s/security|
+|Google A2A Protocol|Google|developers.googleblog.com/2025/04/ a2a-protocol.html|
+|Salesforce OAuth Flows|Salesforce Docs|help.salesforce.com/s/articleView?id= sf.remoteaccess_oauth_flows.htm|
 |RFC 6749 OAuth 2.0|IETF|datatracker.ietf.org/doc/html/rfc6749|
-
-|**Topic**|**Source**|**URL / Reference**|
-|---|---|---|
 |RFC 7636 PKCE|IETF|datatracker.ietf.org/doc/html/rfc7636|
 |RFC 8693 Token Exchange|IETF|datatracker.ietf.org/doc/html/rfc8693|
 |RFC 7523 JWT Bearer|IETF|datatracker.ietf.org/doc/html/rfc7523|
-|OAuth 2.1 Draft|IETF|datatracker.ietf.org/doc/draft-ietf-oaut<br>h-v2-1|
-|OIDC Core 1.0|OpenID Foundation|openid.net/specs/openid-connect-cor<br>e-1_0.html|
-|OIDC FAPI 2.0 (Banking)|OpenID Foundation|openid.net/specs/fapi-2_0-security-pr<br>ofile.html|
-|NIST SP 800-63B|NIST|pages.nist.gov/800-63-4/sp800-63b.ht<br>ml|
+|OAuth 2.1 Draft|IETF|datatracker.ietf.org/doc/draft-ietf-oaut h-v2-1|
+|OIDC Core 1.0|OpenID Foundation|openid.net/specs/openid-connect-cor e-1_0.html|
+|OIDC FAPI 2.0 (Banking)|OpenID Foundation|openid.net/specs/fapi-2_0-security-pr ofile.html|
+|NIST SP 800-63B|NIST|pages.nist.gov/800-63-4/sp800-63b.ht ml|
 |OPA (Open Policy Agent)|OPA|www.openpolicyagent.org/docs/latest|
 |AWS Cedar Policy Language|AWS|docs.cedarpolicy.com|
-|Zero Trust Architecture|NIST SP 800-207|csrc.nist.gov/publications/detail/sp/80<br>0-207/final|
+|Zero Trust Architecture|NIST SP 800-207|csrc.nist.gov/publications/detail/sp/80 0-207/final|
 
 ### Glossary
 
@@ -273,31 +264,28 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 
 ||**Term**|**Definition**|
 |---|---|---|
-|OAuth 2.0||Industry-standard protocol for delegated authorization;<br>enables apps to access resources on behalf of users|
-|OAuth 2.1||Consolidated update to OAuth 2.0; mandates PKCE,<br>prohibits implicit flow and ROPC|
-|PKCE||Proof Key for Code Exchange (RFC 7636); prevents<br>authorization code interception attacks|
-|OIDC||OpenID Connect; identity layer on top of OAuth 2.0;<br>provides ID tokens with user claims|
-|OBO||On-Behalf-Of; OAuth pattern where a service exchanges a<br>user token for a new token for a downstream service|
-|RFC 8693||OAuth 2.0 Token Exchange standard; formal specification<br>for token-exchange grant type|
-|RFC 7523||JWT Profile for OAuth 2.0 Client Authentication and<br>Authorization Grants|
-|MCP||Model Context Protocol; Anthropic's open standard for AI<br>tool integration via typed tool schemas|
-|A2A||Agent-to-Agent; Google's protocol for AI agents<br>communicating with each other|
-|CAE||Continuous Access Evaluation; real-time token revocation<br>based on policy events (sub-30 second)|
-|JTI||JWT ID claim; unique identifier for a JWT token; used for<br>replay prevention and revocation|
-|SAML||Security Assertion Markup Language; XML-based SSO<br>federation standard|
-|STS||Security Token Service; issues, validates, renews, and<br>cancels security tokens|
-|RBAC||Role-Based Access Control; access determined by user's<br>assigned roles|
-|ABAC||Attribute-Based Access Control; access determined by<br>attributes of user, resource, environment|
-|PBAC||Policy-Based Access Control; access determined by<br>complex policies combining multiple factors|
-
-||**Term**|**Definition**|
-|---|---|---|
-|OPA||Open Policy Agent; general-purpose policy engine with<br>Rego policy language|
-|Cedar||AWS Cedar policy language; purpose-built for fine-grained<br>authorization|
-|DWD||Domain-Wide Delegation; Google service account<br>capability to impersonate any user in a Workspace domain|
-|FAPI||Financial-grade API; strengthened OAuth/OIDC profile for<br>banking and financial services|
-|EMU||Enterprise Managed Users; GitHub feature where org<br>controls all user accounts|
-|CAB||Change Advisory Board; committee that approves IT<br>change requests in ITSM frameworks|
-|SCIM||System for Cross-domain Identity Management; protocol<br>for automated user provisioning|
-|PAT||Personal Access Token; long-lived credential used in place<br>of passwords for API access|
-|Zero Trust||Security model: never trust, always verify; authenticate and<br>authorize every request|
+|OAuth 2.0||Industry-standard protocol for delegated authorization; enables apps to access resources on behalf of users|
+|OAuth 2.1||Consolidated update to OAuth 2.0; mandates PKCE, prohibits implicit flow and ROPC|
+|PKCE||Proof Key for Code Exchange (RFC 7636); prevents authorization code interception attacks|
+|OIDC||OpenID Connect; identity layer on top of OAuth 2.0; provides ID tokens with user claims|
+|OBO||On-Behalf-Of; OAuth pattern where a service exchanges a user token for a new token for a downstream service|
+|RFC 8693||OAuth 2.0 Token Exchange standard; formal specification for token-exchange grant type|
+|RFC 7523||JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants|
+|MCP||Model Context Protocol; Anthropic's open standard for AI tool integration via typed tool schemas|
+|A2A||Agent-to-Agent; Google's protocol for AI agents communicating with each other|
+|CAE||Continuous Access Evaluation; real-time token revocation based on policy events (sub-30 second)|
+|JTI||JWT ID claim; unique identifier for a JWT token; used for replay prevention and revocation|
+|SAML||Security Assertion Markup Language; XML-based SSO federation standard|
+|STS||Security Token Service; issues, validates, renews, and cancels security tokens|
+|RBAC||Role-Based Access Control; access determined by user's assigned roles|
+|ABAC||Attribute-Based Access Control; access determined by attributes of user, resource, environment|
+|PBAC||Policy-Based Access Control; access determined by complex policies combining multiple factors|
+|OPA||Open Policy Agent; general-purpose policy engine with Rego policy language|
+|Cedar||AWS Cedar policy language; purpose-built for fine-grained authorization|
+|DWD||Domain-Wide Delegation; Google service account capability to impersonate any user in a Workspace domain|
+|FAPI||Financial-grade API; strengthened OAuth/OIDC profile for banking and financial services|
+|EMU||Enterprise Managed Users; GitHub feature where org controls all user accounts|
+|CAB||Change Advisory Board; committee that approves IT change requests in ITSM frameworks|
+|SCIM||System for Cross-domain Identity Management; protocol for automated user provisioning|
+|PAT||Personal Access Token; long-lived credential used in place of passwords for API access|
+|Zero Trust||Security model: never trust, always verify; authenticate and authorize every request|

@@ -19,7 +19,6 @@ How leading AI platforms implement secure enterprise integrations
 Enterprise Authentication & Identity Propagation for AI Agents
 
 
-
 ## **Overview**
 
 This section surveys ten leading enterprise AI platforms and examines how each implements authentication, authorization, connector models, identity propagation, session handling, token management, governance, audit logging, and multi-tenant isolation. Understanding these patterns is foundational before designing any production-grade AI integration.
@@ -54,24 +53,17 @@ Google Gemini for Workspace integrates natively with Google's identity stack. Au
 
 |**Dimension**|**Detail**|
 |---|---|
-|Architecture|SaaS, multi-tenant; dedicated VPC for Enterprise; data<br>processed in Google infrastructure|
-|Authentication|Google Account SSO→OAuth 2.0 with PKCE; supports<br>SAML federation via Cloud Identity|
-|Authorization|Google Workspace Admin policies; scoped OAuth consent;<br>DLP enforced at API layer|
-|Connector Model|Native Google Workspace connectors + Vertex AI<br>extensions for third-party tools|
-|Identity Propagation|Google-issued access token carries user sub claim;<br>passed as bearer token to Google APIs|
-|Session Handling|Google session cookies (SAPISID, SSID); refresh tokens<br>stored server-side in Google Accounts|
+|Architecture|SaaS, multi-tenant; dedicated VPC for Enterprise; data processed in Google infrastructure|
+|Authentication|Google Account SSO→OAuth 2.0 with PKCE; supports SAML federation via Cloud Identity|
+|Authorization|Google Workspace Admin policies; scoped OAuth consent; DLP enforced at API layer|
+|Connector Model|Native Google Workspace connectors + Vertex AI extensions for third-party tools|
+|Identity Propagation|Google-issued access token carries user sub claim; passed as bearer token to Google APIs|
+|Session Handling|Google session cookies (SAPISID, SSID); refresh tokens stored server-side in Google Accounts|
 
-
-
-
-
-|**Dimension**|**Detail**|
-|---|---|
-|Token Management|Short-lived access tokens (1 h); offline refresh tokens with<br>rotation; CAE supported|
-|Governance|Admin Console policies; Context-Aware Access;<br>BeyondCorp enforcement|
-|Audit Logging|Google Workspace Audit & Investigation tool; logs<br>streamed to Cloud Logging / Chronicle|
-|Multi-Tenant Isolation|Organisation-level data isolation; Workspace Customer ID<br>scoping; VPC Service Controls|
-
+|Token Management|Short-lived access tokens (1 h); offline refresh tokens with rotation; CAE supported|
+|Governance|Admin Console policies; Context-Aware Access; BeyondCorp enforcement|
+|Audit Logging|Google Workspace Audit & Investigation tool; logs streamed to Cloud Logging / Chronicle|
+|Multi-Tenant Isolation|Organisation-level data isolation; Workspace Customer ID scoping; VPC Service Controls|
 
 
 ### **Gemini Authentication Flow**
@@ -92,24 +84,20 @@ Claude is available via claude.ai (consumer / Teams), the Claude API, and Claude
 
 ||**Dimension**|**Detail**|
 |---|---|---|
-|Architecture||Hosted SaaS; API-first; MCP servers deployed in customer<br>infrastructure or Anthropic-hosted|
-
-
-
+|Architecture||Hosted SaaS; API-first; MCP servers deployed in customer infrastructure or Anthropic-hosted|
 
 
 |**Dimension**|**Detail**|
 |---|---|
-|Authentication|SAML 2.0 SSO (Okta, Entra ID, Ping); SCIM provisioning;<br>API key for programmatic access|
-|Authorization|Admin-configurable tool permissions; MCP server enforces<br>its own authz; no elevation by design|
-|Connector Model|MCP (Model Context Protocol) — open standard;<br>connectors are MCP servers exposing tool schemas|
-|Identity Propagation|MCP server receives user context via HTTP headers or<br>JWT; each MCP call can carry user identity|
-|Session Handling|Web session via browser cookie; API sessions stateless<br>per request; conversation context in prompt|
-|Token Management|API keys long-lived; OAuth tokens managed by MCP<br>server; Anthropic does not store third-party tokens|
-|Governance|Enterprise policy controls (tool allow-list, data retention);<br>Admin API for user management|
-|Audit Logging|Admin audit log for user/admin actions; MCP server<br>responsible for tool-level audit|
-|Multi-Tenant Isolation|Organisation-scoped API keys; workspace isolation;<br>SCIM-managed user directories|
-
+|Authentication|SAML 2.0 SSO (Okta, Entra ID, Ping); SCIM provisioning; API key for programmatic access|
+|Authorization|Admin-configurable tool permissions; MCP server enforces its own authz; no elevation by design|
+|Connector Model|MCP (Model Context Protocol) — open standard; connectors are MCP servers exposing tool schemas|
+|Identity Propagation|MCP server receives user context via HTTP headers or JWT; each MCP call can carry user identity|
+|Session Handling|Web session via browser cookie; API sessions stateless per request; conversation context in prompt|
+|Token Management|API keys long-lived; OAuth tokens managed by MCP server; Anthropic does not store third-party tokens|
+|Governance|Enterprise policy controls (tool allow-list, data retention); Admin API for user management|
+|Audit Logging|Admin audit log for user/admin actions; MCP server responsible for tool-level audit|
+|Multi-Tenant Isolation|Organisation-scoped API keys; workspace isolation; SCIM-managed user directories|
 
 
 ### **MCP Identity Flow**
@@ -133,22 +121,20 @@ When Claude invokes an MCP tool, the MCP server is responsible for authenticatin
 ChatGPT Enterprise provides SSO, data encryption, audit logs, and a no-training commitment. GPT Actions extend the model with OAuth-protected API integrations. The Responses API and Assistants API add stateful session management for production agent deployments.
 
 
-
 ### **ChatGPT Enterprise — Architecture Matrix**
 
 |**Dimension**|**Detail**|
 |---|---|
-|Architecture|Hosted SaaS; Enterprise dedicated deployment option;<br>data processed in OpenAI infrastructure|
-|Authentication|SAML 2.0 SSO; SCIM provisioning; Service Accounts for<br>automation|
-|Authorization|Workspace admin controls; GPT Action-level OAuth scope<br>configuration; no RAG data sharing cross-org|
-|Connector Model|GPT Actions (OpenAPI schema + OAuth); Assistants API<br>function calling; Responses API tools|
-|Identity Propagation|GPT Action OAuth: user consent issues user's own token<br>to Action; OpenAI passes it to API|
-|Session Handling|Browser session (HttpOnly cookies); Assistants API thread<br>IDs for stateful conversations|
-|Token Management|OAuth tokens for Actions stored encrypted by OpenAI;<br>short-lived access tokens with refresh|
-|Governance|Admin dashboard; workspace-level GPT publishing<br>controls; data residency options|
-|Audit Logging|Admin audit log (user logins, GPT usage); exportable;<br>retention configurable|
-|Multi-Tenant Isolation|Workspace-scoped data; enterprise storage separate from<br>consumer; no cross-workspace data|
-
+|Architecture|Hosted SaaS; Enterprise dedicated deployment option; data processed in OpenAI infrastructure|
+|Authentication|SAML 2.0 SSO; SCIM provisioning; Service Accounts for automation|
+|Authorization|Workspace admin controls; GPT Action-level OAuth scope configuration; no RAG data sharing cross-org|
+|Connector Model|GPT Actions (OpenAPI schema + OAuth); Assistants API function calling; Responses API tools|
+|Identity Propagation|GPT Action OAuth: user consent issues user's own token to Action; OpenAI passes it to API|
+|Session Handling|Browser session (HttpOnly cookies); Assistants API thread IDs for stateful conversations|
+|Token Management|OAuth tokens for Actions stored encrypted by OpenAI; short-lived access tokens with refresh|
+|Governance|Admin dashboard; workspace-level GPT publishing controls; data residency options|
+|Audit Logging|Admin audit log (user logins, GPT usage); exportable; retention configurable|
+|Multi-Tenant Isolation|Workspace-scoped data; enterprise storage separate from consumer; no cross-workspace data|
 
 
 ## **4. Microsoft 365 Copilot**
@@ -159,24 +145,20 @@ Microsoft 365 Copilot is the most deeply integrated enterprise AI platform from 
 
 ||**Dimension**|**Detail**|
 |---|---|---|
-|Architecture||Integrated into M365 SaaS; Azure-hosted; Entra ID as<br>authoritative IdP; Graph as API layer|
-|Authentication||Microsoft Entra ID; SAML / OIDC / Kerberos for hybrid;<br>MFA enforced via Conditional Access|
-|Authorization||Microsoft Graph permissions (delegated); Entra<br>Conditional Access policies; Sensitivity Labels|
-
-
-
+|Architecture||Integrated into M365 SaaS; Azure-hosted; Entra ID as authoritative IdP; Graph as API layer|
+|Authentication||Microsoft Entra ID; SAML / OIDC / Kerberos for hybrid; MFA enforced via Conditional Access|
+|Authorization||Microsoft Graph permissions (delegated); Entra Conditional Access policies; Sensitivity Labels|
 
 
 |**Dimension**|**Detail**|
 |---|---|
-|Connector Model|Microsoft Graph Connectors; Teams Message Extensions;<br>Power Platform connectors; Plugins|
-|Identity Propagation|Entra ID issues delegated access token; Copilot passes<br>user's token to Graph — never service acct|
-|Session Handling|MSAL session tokens cached client-side (MSAL.js) and<br>server-side; CAE for real-time revocation|
-|Token Management|Short-lived access tokens (60-90 min); refresh tokens up to<br>90 days; CAE extends to event-based|
-|Governance|Microsoft Purview (DLP, sensitivity labels, retention);<br>Compliance Manager; eDiscovery|
-|Audit Logging|Microsoft Purview Audit (Standard / Premium); Copilot<br>activity logs in Unified Audit Log (UAL)|
-|Multi-Tenant Isolation|Entra tenant isolation; no cross-tenant data without explicit<br>External Identities config|
-
+|Connector Model|Microsoft Graph Connectors; Teams Message Extensions; Power Platform connectors; Plugins|
+|Identity Propagation|Entra ID issues delegated access token; Copilot passes user's token to Graph — never service acct|
+|Session Handling|MSAL session tokens cached client-side (MSAL.js) and server-side; CAE for real-time revocation|
+|Token Management|Short-lived access tokens (60-90 min); refresh tokens up to 90 days; CAE extends to event-based|
+|Governance|Microsoft Purview (DLP, sensitivity labels, retention); Compliance Manager; eDiscovery|
+|Audit Logging|Microsoft Purview Audit (Standard / Premium); Copilot activity logs in Unified Audit Log (UAL)|
+|Multi-Tenant Isolation|Entra tenant isolation; no cross-tenant data without explicit External Identities config|
 
 
 ### **M365 Copilot OBO Flow**
@@ -195,9 +177,6 @@ Microsoft 365 Copilot is the most deeply integrated enterprise AI platform from 
 |**6**|Graph API enforces user's permissions (SharePoint, Teams, Exchange, etc.)|
 |↓||
 |**7**|All Copilot actions logged to Unified Audit Log under the signed-in user's UPN|
-
-
-
 
 
 #### **Why Microsoft's OBO Implementation Matters**
@@ -220,19 +199,16 @@ GitHub Copilot operates within the GitHub ecosystem, meaning identity flows thro
 
 |**Dimension**|**Detail**|
 |---|---|
-|Architecture|IDE extension + GitHub.com backend; GHES for<br>self-hosted; GitHub App model for org-level access|
-|Authentication|GitHub OAuth Device Flow for IDE; SAML SSO for<br>Enterprise; GitHub App installation tokens|
-|Authorization|Repository-level permissions; org policy controls (enabled<br>repos, seat assignment); GHEC enforcement|
-|Connector Model|GitHub Copilot Extensions (GitHub Apps with Copilot<br>capability); MCP experimental support|
-|Identity Propagation|GitHub user identity propagated via access token;<br>Extensions receive user token via X-GitHub-Token|
-|Session Handling|Long-lived OAuth token stored in IDE credential store;<br>refreshed on expiry or SAML re-auth|
-|Token Management|Fine-grained PATs or classic tokens; GitHub App<br>installation tokens (1 h); org-level token policies|
-|Governance|Copilot Business / Enterprise policy: content filter, code<br>suggestions, IP indemnification|
-|Audit Logging|GitHub Audit Log (org/enterprise level); Copilot usage<br>metrics; streamed to SIEM via log streaming|
-|Multi-Tenant Isolation|Org-scoped tokens; GHES network isolation; EMU<br>(Enterprise Managed Users) for strict control|
-
-
-
+|Architecture|IDE extension + GitHub.com backend; GHES for self-hosted; GitHub App model for org-level access|
+|Authentication|GitHub OAuth Device Flow for IDE; SAML SSO for Enterprise; GitHub App installation tokens|
+|Authorization|Repository-level permissions; org policy controls (enabled repos, seat assignment); GHEC enforcement|
+|Connector Model|GitHub Copilot Extensions (GitHub Apps with Copilot capability); MCP experimental support|
+|Identity Propagation|GitHub user identity propagated via access token; Extensions receive user token via X-GitHub-Token|
+|Session Handling|Long-lived OAuth token stored in IDE credential store; refreshed on expiry or SAML re-auth|
+|Token Management|Fine-grained PATs or classic tokens; GitHub App installation tokens (1 h); org-level token policies|
+|Governance|Copilot Business / Enterprise policy: content filter, code suggestions, IP indemnification|
+|Audit Logging|GitHub Audit Log (org/enterprise level); Copilot usage metrics; streamed to SIEM via log streaming|
+|Multi-Tenant Isolation|Org-scoped tokens; GHES network isolation; EMU (Enterprise Managed Users) for strict control|
 
 
 ## **6. Amazon Q Business**
@@ -240,20 +216,16 @@ GitHub Copilot operates within the GitHub ecosystem, meaning identity flows thro
 Amazon Q Business is AWS's enterprise AI assistant. It integrates with AWS IAM Identity Center (successor to SSO) as the IdP and uses data source connectors that crawl enterprise content with ACL-aware indexing, ensuring users only see results they are permitted to access.
 
 ### **Amazon Q Business — Architecture Matrix**
-
-|**Dimension**|**Detail**|
-|---|---|
-|Architecture|AWS-hosted SaaS; IAM Identity Center for SSO; Amazon<br>Kendra / Q index for retrieval|
-|Authentication|SAML / OIDC via IAM Identity Center; MFA; federated from<br>Okta, Entra ID, Ping|
-|Authorization|ACL-aware document indexing; user context passed to<br>index for permission-filtered results|
-|Connector Model|Built-in data source connectors (S3, SharePoint,<br>Salesforce, Jira, etc.); Lambda for custom|
-|Identity Propagation|IAM Identity Center user identity mapped to data source<br>ACL; Q filters results by user|
-|Session Handling|IAM Identity Center session tokens; web experience<br>sessions via Cognito or custom OIDC|
-|Token Management|AWS STS short-term credentials; OIDC tokens from<br>Identity Center; no long-lived AWS keys|
-|Governance|AWS IAM policies; S3 bucket policies; VPC-deployed<br>connectors for data locality|
-|Audit Logging|AWS CloudTrail for all API calls; Q Business conversation<br>logs to CloudWatch; S3 export|
-|Multi-Tenant Isolation|Application-level isolation in Q; per-application IAM roles;<br>VPC isolation for connectors|
-
+|Architecture|AWS-hosted SaaS; IAM Identity Center for SSO; Amazon Kendra / Q index for retrieval|
+|Authentication|SAML / OIDC via IAM Identity Center; MFA; federated from Okta, Entra ID, Ping|
+|Authorization|ACL-aware document indexing; user context passed to index for permission-filtered results|
+|Connector Model|Built-in data source connectors (S3, SharePoint, Salesforce, Jira, etc.); Lambda for custom|
+|Identity Propagation|IAM Identity Center user identity mapped to data source ACL; Q filters results by user|
+|Session Handling|IAM Identity Center session tokens; web experience sessions via Cognito or custom OIDC|
+|Token Management|AWS STS short-term credentials; OIDC tokens from Identity Center; no long-lived AWS keys|
+|Governance|AWS IAM policies; S3 bucket policies; VPC-deployed connectors for data locality|
+|Audit Logging|AWS CloudTrail for all API calls; Q Business conversation logs to CloudWatch; S3 export|
+|Multi-Tenant Isolation|Application-level isolation in Q; per-application IAM roles; VPC isolation for connectors|
 
 
 ## **7. Atlassian Rovo**
@@ -264,24 +236,20 @@ Atlassian Rovo is built on Atlassian's identity platform (Atlassian Access / Atl
 
 ||**Dimension**|**Detail**|
 |---|---|---|
-|Architecture||Atlassian cloud; Forge serverless runtime; Rovo agents as<br>Forge apps with scoped permissions|
-
-
-
+|Architecture||Atlassian cloud; Forge serverless runtime; Rovo agents as Forge apps with scoped permissions|
 
 
 |**Dimension**|**Detail**|
 |---|---|
-|Authentication|Atlassian Account (SAML 2.0 SSO via Atlassian Access);<br>Google/Microsoft identity federation|
-|Authorization|Forge OAuth 2.0 3LO scopes; site-level admin controls;<br>Rovo agent permission manifests|
-|Connector Model|Forge-native connectors; Atlassian Marketplace apps;<br>REST API integrations with OAuth 2.0|
-|Identity Propagation|Forge context provides authenticated user's Atlassian<br>Account ID; passed to Jira/Confluence APIs|
-|Session Handling|Atlassian session cookies (cloud.session.token); Forge<br>functions are stateless per invocation|
-|Token Management|Short-lived Forge access tokens; OAuth 2.0 refresh tokens<br>managed by Atlassian platform|
-|Governance|Atlassian Guard (DLP, shadow IT, audit); admin console<br>policy; IP allowlisting|
-|Audit Logging|Atlassian Audit Log; organisation-level events; streamed to<br>SIEM via Atlassian Access APIs|
-|Multi-Tenant Isolation|Site-scoped Atlassian tenancy; Forge app sandbox<br>isolation; no cross-site data access|
-
+|Authentication|Atlassian Account (SAML 2.0 SSO via Atlassian Access); Google/Microsoft identity federation|
+|Authorization|Forge OAuth 2.0 3LO scopes; site-level admin controls; Rovo agent permission manifests|
+|Connector Model|Forge-native connectors; Atlassian Marketplace apps; REST API integrations with OAuth 2.0|
+|Identity Propagation|Forge context provides authenticated user's Atlassian Account ID; passed to Jira/Confluence APIs|
+|Session Handling|Atlassian session cookies (cloud.session.token); Forge functions are stateless per invocation|
+|Token Management|Short-lived Forge access tokens; OAuth 2.0 refresh tokens managed by Atlassian platform|
+|Governance|Atlassian Guard (DLP, shadow IT, audit); admin console policy; IP allowlisting|
+|Audit Logging|Atlassian Audit Log; organisation-level events; streamed to SIEM via Atlassian Access APIs|
+|Multi-Tenant Isolation|Site-scoped Atlassian tenancy; Forge app sandbox isolation; no cross-site data access|
 
 
 ## **8. ServiceNow AI Agents**
@@ -289,27 +257,17 @@ Atlassian Rovo is built on Atlassian's identity platform (Atlassian Access / Atl
 ServiceNow AI Agents operate within the ServiceNow platform, using the built-in identity and access management (IAM) capabilities. ServiceNow supports SAML, OIDC, and OAuth 2.0 for SSO and API access. Agents can execute actions as the delegating user or as a configured service account, with explicit admin configuration required.
 
 ### **ServiceNow AI Agents — Architecture Matrix**
+|Architecture|ServiceNow SaaS (Now Platform); AI agents as Flows / Subflows; integration via IntegrationHub|
+|Authentication|SAML 2.0 / OIDC SSO; Multi-Factor Auth; OAuth 2.0 for API; local auth for legacy|
+|Authorization|RBAC with ACLs; user criteria; domain separation for multi-tenant; scripted access controls|
+|Connector Model|IntegrationHub spokes (GitHub, Jira, Slack, etc.); MID Server for on-prem; REST API steps|
 
-|**Dimension**|**Detail**|
-|---|---|
-|Architecture|ServiceNow SaaS (Now Platform); AI agents as Flows /<br>Subflows; integration via IntegrationHub|
-|Authentication|SAML 2.0 / OIDC SSO; Multi-Factor Auth; OAuth 2.0 for<br>API; local auth for legacy|
-|Authorization|RBAC with ACLs; user criteria; domain separation for<br>multi-tenant; scripted access controls|
-|Connector Model|IntegrationHub spokes (GitHub, Jira, Slack, etc.); MID<br>Server for on-prem; REST API steps|
-
-
-
-
-
-|**Dimension**|**Detail**|
-|---|---|
-|Identity Propagation|Flow context carries sys_user; delegated execution uses<br>impersonation or OAuth OBO|
-|Session Handling|ServiceNow session (glide_session); token-based API<br>sessions; SAML session lifetime policies|
-|Token Management|OAuth 2.0 client credentials or auth code; token refresh<br>handled by OAuth entity profile|
-|Governance|GRC (Governance, Risk, Compliance) module; security<br>incident response; audit trail built-in|
-|Audit Logging|sys_audit table; transaction log; integration activity log;<br>exportable to SIEM|
-|Multi-Tenant Isolation|Domain separation; company isolation model; scoped apps<br>in private scope; data classification|
-
+|Identity Propagation|Flow context carries sys_user; delegated execution uses impersonation or OAuth OBO|
+|Session Handling|ServiceNow session (glide_session); token-based API sessions; SAML session lifetime policies|
+|Token Management|OAuth 2.0 client credentials or auth code; token refresh handled by OAuth entity profile|
+|Governance|GRC (Governance, Risk, Compliance) module; security incident response; audit trail built-in|
+|Audit Logging|sys_audit table; transaction log; integration activity log; exportable to SIEM|
+|Multi-Tenant Isolation|Domain separation; company isolation model; scoped apps in private scope; data classification|
 
 
 ## **9. Glean**
@@ -320,24 +278,17 @@ Glean is an enterprise search and AI platform focused on permission-aware retrie
 
 |**Dimension**|**Detail**|
 |---|---|
-|Architecture|Hosted SaaS or customer-cloud deployment (GCP/AWS);<br>dedicated tenant environment per customer|
-|Authentication|SSO via SAML 2.0 / OIDC (Okta, Entra ID, Google);<br>service account for indexing crawlers|
-|Authorization|Permission-trimmed search results; per-document ACL<br>stored at index time; no elevation possible|
-|Connector Model|Pre-built connectors (100+) per data source; admin<br>configures OAuth service account per connector|
-|Identity Propagation|User's IdP identity mapped to data source identity; ACL<br>checked against this mapping|
-|Session Handling|SSO session; Glean web session (JWT); token refresh via<br>SSO provider|
-|Token Management|Service account OAuth tokens per connector (long-lived,<br>admin-managed); user tokens via SSO|
-|Governance|Admin controls (data source visibility, user permissions);<br>DLP integration; retention policies|
+|Architecture|Hosted SaaS or customer-cloud deployment (GCP/AWS); dedicated tenant environment per customer|
+|Authentication|SSO via SAML 2.0 / OIDC (Okta, Entra ID, Google); service account for indexing crawlers|
+|Authorization|Permission-trimmed search results; per-document ACL stored at index time; no elevation possible|
+|Connector Model|Pre-built connectors (100+) per data source; admin configures OAuth service account per connector|
+|Identity Propagation|User's IdP identity mapped to data source identity; ACL checked against this mapping|
+|Session Handling|SSO session; Glean web session (JWT); token refresh via SSO provider|
+|Token Management|Service account OAuth tokens per connector (long-lived, admin-managed); user tokens via SSO|
+|Governance|Admin controls (data source visibility, user permissions); DLP integration; retention policies|
 
-
-
-
-
-|**Dimension**|**Detail**|
-|---|---|
-|Audit Logging|Search audit log; document access events; admin activity<br>log; SIEM export|
-|Multi-Tenant Isolation|Separate tenant infrastructure; dedicated index; no<br>cross-tenant data; VPC peering option|
-
+|Audit Logging|Search audit log; document access events; admin activity log; SIEM export|
+|Multi-Tenant Isolation|Separate tenant infrastructure; dedicated index; no cross-tenant data; VPC peering option|
 
 
 ## **10. Moveworks**
@@ -345,22 +296,16 @@ Glean is an enterprise search and AI platform focused on permission-aware retrie
 Moveworks is an AI platform focused on employee IT and HR automation. It connects to enterprise systems via a creator studio and plugin framework. Identity is established at employee login (SSO) and Moveworks maintains per-employee OAuth tokens to act on their behalf across connected systems.
 
 ### **Moveworks — Architecture Matrix**
-
-|**Dimension**|**Detail**|
-|---|---|
-|Architecture|Hosted SaaS; deployed via enterprise chat channels<br>(Slack, Teams); event-driven action execution|
-|Authentication|SAML 2.0 SSO; employee identity from HRIS (Workday,<br>SAP); OAuth 2.0 per connected system|
-|Authorization|Employee's own permissions in each connected system;<br>Moveworks does not elevate privileges|
-|Connector Model|Creator Studio plugins (REST API + OAuth); pre-built<br>integrations (ServiceNow, Jira, etc.)|
-|Identity Propagation|Employee's OAuth token used for each system API call;<br>token stored encrypted per employee|
-|Session Handling|Chat session via Teams/Slack; Moveworks backend<br>session tied to employee identity|
-|Token Management|Per-employee OAuth tokens stored encrypted; automatic<br>refresh; revocation on offboarding|
-|Governance|Creator Studio guardrails; action approval workflows;<br>admin-configured allowed operations|
-|Audit Logging|Action audit log per employee; conversation log; integrated<br>with SIEM via webhook|
-|Multi-Tenant Isolation|Customer-scoped deployment; dedicated data store; no<br>cross-customer data|
-
-
-
+|Architecture|Hosted SaaS; deployed via enterprise chat channels (Slack, Teams); event-driven action execution|
+|Authentication|SAML 2.0 SSO; employee identity from HRIS (Workday, SAP); OAuth 2.0 per connected system|
+|Authorization|Employee's own permissions in each connected system; Moveworks does not elevate privileges|
+|Connector Model|Creator Studio plugins (REST API + OAuth); pre-built integrations (ServiceNow, Jira, etc.)|
+|Identity Propagation|Employee's OAuth token used for each system API call; token stored encrypted per employee|
+|Session Handling|Chat session via Teams/Slack; Moveworks backend session tied to employee identity|
+|Token Management|Per-employee OAuth tokens stored encrypted; automatic refresh; revocation on offboarding|
+|Governance|Creator Studio guardrails; action approval workflows; admin-configured allowed operations|
+|Audit Logging|Action audit log per employee; conversation log; integrated with SIEM via webhook|
+|Multi-Tenant Isolation|Customer-scoped deployment; dedicated data store; no cross-customer data|
 
 
 ## **Cross-Platform Comparison**
@@ -369,17 +314,16 @@ Moveworks is an AI platform focused on employee IT and HR automation. It connect
 
 |**Platform**|**IdP Integration**|**OBO / Delegated**|**MCP Support**|**Audit Log**|
 |---|---|---|---|---|
-|Google Gemini|Google Identity /<br>SAML|Google OBO (service<br>acct)|Via Extensions|Workspace Audit|
-|Claude|SAML 2.0 / SCIM|MCP server OBO<br>pattern|Native MCP|Admin Audit Log|
-|ChatGPT Enterprise|SAML 2.0 / SCIM|GPT Action OAuth<br>(user)|Via Actions|OpenAI Audit Log|
-|M365 Copilot|Entra ID / OIDC|OAuth OBO<br>(delegated)|Via Graph<br>Connectors|Purview UAL|
-|GitHub Copilot|GitHub / SAML EMU|User token / App<br>token|Experimental|GitHub Audit Log|
+|Google Gemini|Google Identity / SAML|Google OBO (service acct)|Via Extensions|Workspace Audit|
+|Claude|SAML 2.0 / SCIM|MCP server OBO pattern|Native MCP|Admin Audit Log|
+|ChatGPT Enterprise|SAML 2.0 / SCIM|GPT Action OAuth (user)|Via Actions|OpenAI Audit Log|
+|M365 Copilot|Entra ID / OIDC|OAuth OBO (delegated)|Via Graph Connectors|Purview UAL|
+|GitHub Copilot|GitHub / SAML EMU|User token / App token|Experimental|GitHub Audit Log|
 |Amazon Q|IAM Identity Center|ACL-filtered retrieval|Via Lambda|CloudTrail|
 |Atlassian Rovo|Atlassian Access|Forge 3LO OAuth|No (Forge native)|Atlassian Audit|
 |ServiceNow|SAML / OIDC|Impersonation / OBO|Via IntegrationHub|sys_audit|
 |Glean|SAML / OIDC|ACL-filtered results|No|Search Audit Log|
-|Moveworks|SAML 2.0|Per-employee OAuth<br>token|No|Action Audit Log|
-
+|Moveworks|SAML 2.0|Per-employee OAuth token|No|Action Audit Log|
 
 
 #### **Key Takeaways from Industry Survey**

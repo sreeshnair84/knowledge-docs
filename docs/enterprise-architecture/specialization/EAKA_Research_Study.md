@@ -98,8 +98,8 @@ I Current enterprise AI platforms excel at connecting agents to data and tools, 
 
 |**Sector**|**Scale Challenge**|**Priority Knowledge Domains**|
 |---|---|---|
-|Banking|Regulatory change velocity; thousands of polic|y docs<br>Risk, Compliance, Core Banking, AML|
-|Insurance|Claims complexity; multi-jurisdiction policy lang|uage<br>Underwriting, Claims, Actuarial, Compliance|
+|Banking|Regulatory change velocity; thousands of polic|y docs Risk, Compliance, Core Banking, AML|
+|Insurance|Claims complexity; multi-jurisdiction policy lang|uage Underwriting, Claims, Actuarial, Compliance|
 |Healthcare|Clinical safety-criticality; HL7/FHIR standards|Clinical, Regulatory, EHR Integration, Privacy|
 |Manufacturing|Engineering BOM complexity; ISO standards|Product, Process, Quality, Supply Chain|
 |Government|Procurement rules; multi-agency knowledge sil|osPolicy, Procurement, Legal, Citizen Services|
@@ -115,10 +115,10 @@ Enterprise knowledge sources are classified into five tiers based on authority a
 |**Tier**|**Source Type**|**Examples**|**Authority**|**Refresh Rate**|
 |---|---|---|---|---|
 |T1|Official specifications|SDK docs, OpenAPI specs, RFC standards|Canonical|Release-driven|
-|T2|Internal authoritative|Architecture Decision Records, Security Polici|es, Internal Standards<br>High|Governance-driven|
+|T2|Internal authoritative|Architecture Decision Records, Security Polici|es, Internal Standards High|Governance-driven|
 |T3|Project knowledge|Confluence, Jira, GitHub, SharePoint|Medium|Sprint-driven|
 |T4|Collaborative|Teams, Slack, Meeting recordings|Low-medium|Real-time|
-|T5|Training & reference|Conference recordings, Training material, E-le|arning<br>Contextual|Periodic|
+|T5|Training & reference|Conference recordings, Training material, E-le|arning Contextual|Periodic|
 
 #### 1.2 Federated Discovery Engine
 
@@ -128,9 +128,7 @@ A Federated Discovery Engine (FDE) maintains live connectors to each source tier
 
 - **Router Layer** — semantic query expansion followed by parallel fanout to relevant source tiers.
 
-- **Fusion Layer** — cross-source result merging with deduplication, trust-score weighting, and
-
-- freshness decay.
+- **Fusion Layer** — cross-source result merging with deduplication, trust-score weighting, and freshness decay.
 
 #### 1.3 Crawl and Ingestion Pipelines
 
@@ -158,13 +156,13 @@ Effective agent reasoning requires knowledge to be classified not merely by topi
 
 ###### Knowledge Taxonomy Hierarchy
 
-|**Business Capability**<br>M|
+|**Business Capability** M|
 |---|
-|**Domain**<br>M|
-|**Technology**<br>M<br>**Concept**<br>M|
-|**Pattern**<br>M|
+|**Domain** M|
+|**Technology** M **Concept** M|
+|**Pattern** M|
 |**Skill**|
-|M<br>**API / SDK**|
+|M **API / SDK**|
 |M|
 |**Tool**|
 |M|
@@ -187,9 +185,7 @@ Effective agent reasoning requires knowledge to be classified not merely by topi
 
 #### 2.3 Classification Pipeline
 
-- **Extraction** — NLP entity recognition identifies concepts, technologies, and patterns in raw
-
-- documents.
+- **Extraction** — NLP entity recognition identifies concepts, technologies, and patterns in raw documents.
 
 - **Taxonomy Placement** — a fine-tuned classifier assigns nodes to the hierarchy.
 
@@ -209,7 +205,6 @@ Traditional RAG approaches retrieve documents in response to a query and pass th
 
 ![Figure 1](/img/enterprise-architecture/ea-p9-1.png)
 
-User Goal<br>M<br>Goal Decomposition (sub-goals)<br>M<br>Required Capabilities<br>M<br>Required Concepts<br>M<br>Required Enterprise Skills<br>M<br>Required Knowledge Sources (ranked)<br>M<br>Required MCP Servers & Tools<br>M<br>Validation Strategy<br>M<br>Execution<br><!-- End of picture text -->
 
 ###### Evaluation & Feedback
 
@@ -288,7 +283,6 @@ I Skills must maintain backward compatibility for at least one major version. De
 
 ![Figure 2](/img/enterprise-architecture/ea-p12-2.png)
 
-Skill Author Creates Draft<br>M<br>Automated Evaluation Suite Runs<br>M<br>Peer Review (SME Gate)<br>M<br>Security & Compliance Review<br>M<br>Governance Board Approval<br>M<br>Publish to Skill Registry<br>M<br>Continuous Monitoring & Feedback<br>M<br>Version Update or Deprecation<br><!-- End of picture text -->
 
 ### 5. Dynamic Skill Composition
 
@@ -360,7 +354,6 @@ Every knowledge artefact and skill carries a computed Trust Score (0–100) deri
 
 ![Figure 3](/img/enterprise-architecture/ea-p15-3.png)
 
-Conflicting knowledge detected<br>M<br>Compare Trust Scores<br>M<br>Higher score  ≥  15pt margin  →  prefer higher<br>M<br>Score within 15pts  →  escalate to SME<br>M<br>SME resolves  →  record decision + rationale<br>M<br>Update graph edge: supersedes / conflicts_with<br>M<br><!-- End of picture text -->
 
 ###### Notify downstream skills of resolution
 
@@ -370,7 +363,7 @@ Conflicting knowledge detected<br>M<br>Compare Trust Scores<br>M<br>Higher score
 |---|---|---|
 |GDPR / Data Privacy|PII classification tags + access control per skill|Access log per query + data-class attribution|
 |Regulatory compliance|Policy injection into KEP at plan time|KEP export with policy references|
-|IP / Confidentiality|Source-tier access controls; DLP checks on out|put<br>Redaction log; DLP event stream|
+|IP / Confidentiality|Source-tier access controls; DLP checks on out|put Redaction log; DLP event stream|
 |Change management|Approval workflow with version history|Git-like immutable skill history|
 |Incident response|Full KEP replay for any prior execution|KEP archive with inputs/outputs|
 |Model governance|Eval suite pass/fail per skill version|Evaluation report per release|
@@ -430,9 +423,7 @@ The Enterprise Knowledge Graph (EKG) is the semantic backbone of EAKA. Rather th
 
 - **Temporal versioning** — all edges carry a validity window [valid_from, valid_to].
 
-- **Confidence-weighted edges** — inferred edges carry a confidence score; only high-confidence
-
-- edges used by planner.
+- **Confidence-weighted edges** — inferred edges carry a confidence score; only high-confidence edges used by planner.
 
 - **Conflict reconciliation** — contradictory edges trigger the Governance Engine conflict protocol.
 
@@ -476,11 +467,9 @@ Each registered MCP Server carries a structured capability manifest:
 
 ![Figure 4](/img/enterprise-architecture/ea-p19-4.png)
 
-Skill requests capability (e.g., 'search code repositories')<br>M<br>MCP Registry semantic search over capability embeddings<br>M<br>Candidate servers ranked by: trust × freshness × latency × data-class match<br>M<br>Top-k servers selected for consideration<br>M<br>Context Planner allocates tool budget<br>M<br><!-- End of picture text -->
 
 ![Figure 5](/img/enterprise-architecture/ea-p20-5.png)
 
-Selected server invoked with structured tool call<br>M<br>Result validated against output schema<br>M<br>Outcome fed back to registry for ranking update<br><!-- End of picture text -->
 
 #### 8.3 Multi-MCP Orchestration
 
@@ -543,9 +532,6 @@ Microsoft's agent ecosystem — spanning Azure AI Foundry, Microsoft 365 Copilot
 |Orchestration|Agent Service + Semantic Kern|el Bedrock Agent DAGs|Agent Builder|LangGraph / CrewAI|
 |Skill/Tool model|Copilot Plugins + A2A|Action Groups|Extensions|Tools / Custom nodes|
 |Knowledge store|Azure AI Search + Graph|Knowledge Bases (S3)|Vertex Search|Any (pluggable)|
-
-|**Dimension**|**Microsoft (AI Foundry)**|**AWS (Bedrock Agents)**|**Google (Vertex AI)**|**Open Source (LangGraph)**|
-|---|---|---|---|---|
 |Identity|Entra ID (enterprise-grade)|IAM Roles|Workspace Identity|None (bring-your-own)|
 |Governance|Purview + AI Foundry guardrails|Bedrock Guardrails|Model Armor|None native|
 |MCP support|Preview (mid-2025+)|Partial (custom)|Partial (via SDK)|Full (open-source)|
@@ -561,7 +547,7 @@ Context Engineering is the discipline of optimally managing what knowledge an ag
 |**Context Zone**|**Budget Allocation**|**Content**|**Eviction Policy**|
 |---|---|---|---|
 |System Context|5–10%|Agent identity, active skill specs, governance rules|Pinned — never evicted|
-|Goal & KEP|10–15%|User goal, Knowledge Execution Plan, validation ru|les<br>Pinned until task complete|
+|Goal & KEP|10–15%|User goal, Knowledge Execution Plan, validation ru|les Pinned until task complete|
 |Active Skills|20–30%|Executing skill prompts, retrieval strategies|LRU within skill budget|
 |Retrieved Knowledge|30–40%|Chunked knowledge artefacts with provenance|Relevance + trust decay|
 |Tool Results|10–15%|MCP tool outputs, structured data|Summarised after use|
@@ -601,16 +587,16 @@ Reliability in enterprise AI is not simply about model accuracy — it encompass
 
 #### 11.1 Failure Taxonomy
 
-|**Failure Type**|**Root Cause**<br>**EAKA Mitigation**|
+|**Failure Type**|**Root Cause** **EAKA Mitigation**|
 |---|---|
-|Knowledge hallucination|Model parametric memory overriding retrieved facts<br>Citation-mandatory output schema; grounding checks|
+|Knowledge hallucination|Model parametric memory overriding retrieved facts Citation-mandatory output schema; grounding checks|
 |Stale documentation|Index not updated after source change Change-event-driven re-indexing; TTL freshness gates|
-|Incorrect SDK version|Version-agnostic retrieval; no version pinning<br>SDK version nodes in EKG; version-aware retrieval|
-|Wrong implementation pattern|Low-trust source ranked above authoritative sourc**e**<br>Trust scor hierarchy enforced in retrieval fusion|
-|Conflicting ADRs|Multiple ADRs without supersedes relationship<br>EKG conflict detection; governance resolution protocol|
-|Retrieval failure|Source system downtime; index corruption<br>Multi-source redundancy; degraded-mode fallback policy|
+|Incorrect SDK version|Version-agnostic retrieval; no version pinning SDK version nodes in EKG; version-aware retrieval|
+|Wrong implementation pattern|Low-trust source ranked above authoritative sourc**e** Trust scor hierarchy enforced in retrieval fusion|
+|Conflicting ADRs|Multiple ADRs without supersedes relationship EKG conflict detection; governance resolution protocol|
+|Retrieval failure|Source system downtime; index corruption Multi-source redundancy; degraded-mode fallback policy|
 |Tool failure|MCP server timeout or schema mismatchFallback server cascading; retry with exponential backoff|
-|Composition error|Skill dependency cycle or budget exhaustion<br>DAG cycle detection; budget enforcement in Skill Composer|
+|Composition error|Skill dependency cycle or budget exhaustion DAG cycle detection; budget enforcement in Skill Composer|
 
 #### 11.2 Reliability Metrics
 
@@ -644,33 +630,32 @@ The EAKA Reference Architecture defines a layered, loosely coupled platform with
 
 #### 12.1 Platform Component Inventory
 
-|**Component**|**Responsibility**<br>**Key Interfaces**|
+|**Component**|**Responsibility** **Key Interfaces**|
 |---|---|
-|Knowledge Registry|Stores and indexes all knowledge artefacts with provenance<br>Ingest API, Search API, Change Event Stream|
-|Skill Registry|Governs skill lifecycle: publish, version, discover, retire<br>Skill CRUD API, Discovery API, Subscription Events|
-|Agent Registry|Tracks agent identities, capabilities, and active tasks<br>Agent Register API, Health API, Task Lifecycle API|
-|MCP Registry|Manages MCP server catalogue, capability index, and health<br>Server Register API, Tool Discovery API, Health Stream|
-|Context Planner|Allocates context budgets and manages window lifecycle<br>Budget Allocation API, Eviction Policy Engine|
-|Knowledge Planner|Constructs Knowledge Execution Plans from user goals<br>Goal Parse API, KEP Generate API, KEP Archive|
-|Skill Composer|Assembles skill DAGs and manages execution orchestration<br>Compose API, Execute API, DAG Visualisation API|
-|Retrieval Broker|Routes retrieval queries to correct sources with fusion<br>Query API, Source Selector, Fusion Engine|
-|Trust Engine|Computes and maintains trust scores for all artefacts<br>Score API, Decay Jobs, Feedback Ingestion API|
-|Governance Engine|Enforces policies, approvals, conflicts, and compliance<br>Policy API, Approval Workflow, Audit Log API|
-|Evaluation Engine|Runs evaluation suites and hallucination detection<br>Eval Run API, Metric Store, Alert Dispatch|
-|Knowledge Graph|Persists and queries the Enterprise Knowledge Graph<br>Graph Query API (SPARQL/Cypher), Change Stream|
-|Observability|Centralised telemetry, tracing, and alerting<br>OpenTelemetry collector, Dashboard API, Alert API|
-|Feedback Loop|Collects user and agent signals to improve knowledge quality<br>Feedback Ingest API, Signal Processing, Trust Update|
+|Knowledge Registry|Stores and indexes all knowledge artefacts with provenance Ingest API, Search API, Change Event Stream|
+|Skill Registry|Governs skill lifecycle: publish, version, discover, retire Skill CRUD API, Discovery API, Subscription Events|
+|Agent Registry|Tracks agent identities, capabilities, and active tasks Agent Register API, Health API, Task Lifecycle API|
+|MCP Registry|Manages MCP server catalogue, capability index, and health Server Register API, Tool Discovery API, Health Stream|
+|Context Planner|Allocates context budgets and manages window lifecycle Budget Allocation API, Eviction Policy Engine|
+|Knowledge Planner|Constructs Knowledge Execution Plans from user goals Goal Parse API, KEP Generate API, KEP Archive|
+|Skill Composer|Assembles skill DAGs and manages execution orchestration Compose API, Execute API, DAG Visualisation API|
+|Retrieval Broker|Routes retrieval queries to correct sources with fusion Query API, Source Selector, Fusion Engine|
+|Trust Engine|Computes and maintains trust scores for all artefacts Score API, Decay Jobs, Feedback Ingestion API|
+|Governance Engine|Enforces policies, approvals, conflicts, and compliance Policy API, Approval Workflow, Audit Log API|
+|Evaluation Engine|Runs evaluation suites and hallucination detection Eval Run API, Metric Store, Alert Dispatch|
+|Knowledge Graph|Persists and queries the Enterprise Knowledge Graph Graph Query API (SPARQL/Cypher), Change Stream|
+|Observability|Centralised telemetry, tracing, and alerting OpenTelemetry collector, Dashboard API, Alert API|
+|Feedback Loop|Collects user and agent signals to improve knowledge quality Feedback Ingest API, Signal Processing, Trust Update|
 
 #### 12.2 Layered Architecture
 
 **EAKA Layered Reference Architecture**
 
-|**User / Agent Interface Layer (Natural language, API, Copilot plugins)**<br>M<br>**Orchestration Layer (Knowledge Planner · Skill Composer · Context Planner)**|
+|**User / Agent Interface Layer (Natural language, API, Copilot plugins)** M **Orchestration Layer (Knowledge Planner · Skill Composer · Context Planner)**|
 |---|
 
 ![Figure 6](/img/enterprise-architecture/ea-p27-6.png)
 
-M<br>Capability Layer (Skill Registry · Agent Registry · MCP Registry)<br>M<br>Knowledge Layer (Knowledge Registry · Knowledge Graph · Retrieval Broker)<br>M<br>Governance Layer (Trust Engine · Governance Engine · Evaluation Engine)<br>M<br>Infrastructure Layer (Vector DB · Graph DB · Object Store · Message Bus)<br>M<br>Source Layer (SDK Docs · Wikis · GitHub · Jira · SharePoint · Slack · ...)<br><!-- End of picture text -->
 
 #### 12.3 Technology Stack Recommendations
 
@@ -694,7 +679,6 @@ Enterprise knowledge must not merely be indexed but continuously curated, valida
 
 ![Figure 7](/img/enterprise-architecture/ea-p28-7.png)
 
-Document Created / Updated<br>M<br>Knowledge Extraction (NER, Relation Extraction, Claim Detection)<br>M<br>Classification (Taxonomy Placement + Confidence Scoring)<br>M<br>Relationship Discovery (Graph Edge Inference)<br>M<br>Human Curation Gate (SME Review for low-confidence nodes)<br>M<br>Skill Generation (Auto-draft skills from knowledge gaps)<br>M<br>Agent Validation (Automated skill evaluation against test suite)<br>M<br>Governance Approval (Board review for new or major-version skills)<br>M<br>Continuous Evaluation (Drift detection, freshness decay, usage signals)<br><!-- End of picture text -->
 
 #### Deprecation Trigger (Conflict detected or TTL expired)** M **Archival (Immutable archive with lineage preserved)
 
@@ -714,9 +698,7 @@ When new documentation is ingested, the Lifecycle Engine analyses knowledge gaps
 
 #### 13.3 Drift Detection
 
-- **Semantic drift** — embedding distance between current skill prompts and updated source docs
-
-- exceeds threshold.
+- **Semantic drift** — embedding distance between current skill prompts and updated source docs exceeds threshold.
 
 - **Version drift** — SDK or API version referenced in skill no longer matches latest released version.
 
@@ -732,60 +714,46 @@ Enterprises should not attempt to implement the full EAKA platform in a single p
 
 #### 14.1 Enterprise AI Knowledge Maturity Model
 
-|**Level**|**Name**|**Capabilities**<br>**Key Deliverable**|
+|**Level**|**Name**|**Capabilities** **Key Deliverable**|
 |---|---|---|
-|L1|Ad-hoc RAG|Single vector index; no governance; manual tool config<br>Working AI assistant with document search|
-|L2|Governed Retrieval|Multi-source connectors; provenance tracking; trust scoring<br>Knowledge Registry + Source Tiers|
+|L1|Ad-hoc RAG|Single vector index; no governance; manual tool config Working AI assistant with document search|
+|L2|Governed Retrieval|Multi-source connectors; provenance tracking; trust scoring Knowledge Registry + Source Tiers|
 |L3|Skill-Enabled|Skill Registry; basic skill composition; versioned skillsEnterprise Skills Platform v1|
-|L4|Knowledge-Planned|KEP engine; EKG; dynamic MCP; context engineering<br>Knowledge Planner + EKG live|
-|L5|Autonomous Evolution|AI-assisted lifecycle; drift detection; self-improving skills<br>Full EAKA Platform — continuous improvement|
+|L4|Knowledge-Planned|KEP engine; EKG; dynamic MCP; context engineering Knowledge Planner + EKG live|
+|L5|Autonomous Evolution|AI-assisted lifecycle; drift detection; self-improving skills Full EAKA Platform — continuous improvement|
 
 #### 14.2 Implementation Roadmap
 
-|**Phase**|**Duration**|**Milestones**<br>**Success Metrics**|
+|**Phase**|**Duration**|**Milestones** **Success Metrics**|
 |---|---|---|
-|Phase 0<br>Foundation|0–3 months|Source connector pilot (3 systems); vector index; basic trust scoring<br>≥3 sources indexed; trust scores live|
-|Phase 1<br>Skill MVP|3–6 months|Skill Registry; 10 pilot skills; governance workflow; eval suite<br>≥80% skill eval pass rate|
-|Phase 2<br>KEP Engine|6–9 months|Knowledge Planner; EKG beta; dynamic MCP discovery; context budgeting<br>KEP reduces hallucination≥30%|
-|Phase 3<br>Composition|9–14 months|Dynamic Skill Composer; multi-MCP orchestration; Microsoft ecosys**t**em join<br>≥5-skill composi ions working|
-|Phase 4<br>Lifecycle|14–20 months|AI-assisted lifecycle; drift detection; auto skill drafting; full audit<br>Skill currency≥90% across registry|
-|Phase 5<br>Scale|20–28 months|Enterprise-wide rollout; open platform publication; community governance<br>≥1,000 skills;≥50 MCP servers governed|
+|Phase 0 Foundation|0–3 months|Source connector pilot (3 systems); vector index; basic trust scoring ≥3 sources indexed; trust scores live|
+|Phase 1 Skill MVP|3–6 months|Skill Registry; 10 pilot skills; governance workflow; eval suite ≥80% skill eval pass rate|
+|Phase 2 KEP Engine|6–9 months|Knowledge Planner; EKG beta; dynamic MCP discovery; context budgeting KEP reduces hallucination≥30%|
+|Phase 3 Composition|9–14 months|Dynamic Skill Composer; multi-MCP orchestration; Microsoft ecosys**t**em join ≥5-skill composi ions working|
+|Phase 4 Lifecycle|14–20 months|AI-assisted lifecycle; drift detection; auto skill drafting; full audit Skill currency≥90% across registry|
+|Phase 5 Scale|20–28 months|Enterprise-wide rollout; open platform publication; community governance ≥1,000 skills;≥50 MCP servers governed|
 
 #### 14.3 Gap Analysis — Unsolved Research Problems
 
-- **Cross-agent knowledge negotiation** — no standard protocol for agents to agree on conflicting
+- **Cross-agent knowledge negotiation** — no standard protocol for agents to agree on conflicting knowledge in multi-agent systems.
 
-- knowledge in multi-agent systems.
+- **Real-time graph consistency** — maintaining EKG consistency under concurrent high-frequency updates without locking.
 
-- **Real-time graph consistency** — maintaining EKG consistency under concurrent high-frequency
+- **Skill transfer learning** — automatically adapting skills from one enterprise domain to another with minimal re-curation.
 
-- updates without locking.
+- **Context compression quality** — lossless compression of complex technical knowledge within tight token budgets.
 
-- **Skill transfer learning** — automatically adapting skills from one enterprise domain to another with
+- **Trust score calibration** — ground-truth labelling of trust scores at enterprise scale remains labour-intensive.
 
-- minimal re-curation.
+- **Adversarial knowledge injection** — detecting and mitigating attempts to poison enterprise knowledge sources.
 
-- **Context compression quality** — lossless compression of complex technical knowledge within tight
-
-- token budgets.
-
-- **Trust score calibration** — ground-truth labelling of trust scores at enterprise scale remains
-
-- labour-intensive.
-
-- **Adversarial knowledge injection** — detecting and mitigating attempts to poison enterprise
-
-- knowledge sources.
-
-- **Cognitive load of governance** — SME review bottlenecks at scale; automation of approval without
-
-- sacrificing rigour.
+- **Cognitive load of governance** — SME review bottlenecks at scale; automation of approval without sacrificing rigour.
 
 ### Decision Matrix — Platform Comparison
 
 The following matrix compares leading enterprise AI platforms against the fourteen EAKA capability dimensions. Scores are based on publicly available documentation and analyst assessments as of the publication date.
 
-|**Capability**|**EAKA**<br>**(this work)**|**Azure AI**<br>**Foundry**|**AWS Bedrock**<br>**Agents**|**Google**<br>**Vertex AI**|**LangChain/**<br>**LangGraph**|**Cohere**<br>**Compass**|
+|**Capability**|**EAKA** **(this work)**|**Azure AI** **Foundry**|**AWS Bedrock** **Agents**|**Google** **Vertex AI**|**LangChain/** **LangGraph**|**Cohere** **Compass**|
 |---|---|---|---|---|---|---|
 |Knowledge Discovery|#####|####I|###II|####I|###II|####I|
 |Knowledge Classification|#####|###II|##III|###II|##III|####I|
