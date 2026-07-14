@@ -16,43 +16,22 @@ tags: []
 ## 1. Agent Authorization Lifecycle
 
 # Agent, Tool & MCP Authorization (Vol 3)
-### Enterprise Policy Interceptor Architecture for Agentic AI **1.1 Authorization Decision Points in an Agent Workflow**
+### 1.1 Authorization Decision Points in an Agent Workflow
 
-`USER REQUEST (with JWT + canonical claims)` I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `P1: Agent Invocation` `Authorization` I II `Cedar: Can this user invoke this agent type?`
+Every agent request passes through up to seven independent Cedar policy evaluation points. A positive decision at any earlier point does **not** grant permission at later points — authorization is re-evaluated at every action boundary (Zero Trust for agents).
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `ALLOW`
+**Flow:** `USER REQUEST (JWT + canonical claims)` → Agent Runtime (Bedrock AgentCore / ECS) → Planner → action sequence:
 
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AGENT RUNTIME (Bedrock`
+1. **P1 — Agent Invocation Authorization**: Cedar: *Can this user invoke this agent type?*
+2. **P2 — Tool Selection Authorization**: Cedar: *Is this tool in the agent's allowed capability set?*
+3. **P3 — Tool Invocation Authorization**: Cedar: *Can this principal invoke this specific tool call with these parameters?*
+4. **Tool Execution** _(only after P1–P3 all return ALLOW)_
+5. **P4 — Memory Read Authorization**: Cedar: *Can this agent read this memory scope?*
+6. **P5 — Knowledge/RAG Authorization**: Cedar: *Can this agent retrieve this document?*
+7. **P6 — Output Classification Check**: Cedar: *Can this agent return data at this classification level?*
+8. **P7 — Human Approval Gate** _(if required)_: Cedar: *Does this action require human approval before execution?*
 
-`AgentCore / ECS)` I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Planner —` `generates action sequence` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P2: Tool Selection Authorization` I IIIIII `Cedar: Is this tool in the agent's allowed set?` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `ALLOW` I I
-
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P3: Tool Invocation Authorization` I IIIIII `Cedar: Can principal invoke this specific call?` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `ALLOW` I I
-
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `TOOL EXECUTION` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
-
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P4: Memory Read Authorization` I IIIIII `Cedar: Can agent read this memory scope?` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
-
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P5: Knowledge/RAG Authorization` I **VOLUME COVERAGE** IIIIII `Cedar: Can agent retrieve this document?` I Agent authorization lifecycle, per-step policy evaluation, tool invocation control, MCP server security,IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I context-aware authorization, contextual signals (time/risk/device/geo/MFA), multi-agent workflowIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P6: Output Classification Check` I authorization, and human-in-the-loop approval patterns.IIIIII `Cedar: Can agent return this data class?` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
-
-IIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIII I I I `P7: Human Approval Gate (if req'd)` I
-
-IIIIII `Cedar: Does this action require approval?` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-IIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIII I `RESPONSE (authorized, classified,` `audited)`
-
-##### I **NOTE**
-
-Every numbered decision point (P1–P7) is an independent Cedar policy evaluation. A positive decision at P1 does NOT grant permission at P3. Authorization is re-evaluated at every action boundary. This is the fundamental principle of Zero Trust for agents.
+**→ RESPONSE** (authorized, classified, audited)
 
 ### 1.2 Authorization Decision Matrix by Agent Step
 

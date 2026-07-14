@@ -13,20 +13,27 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 2 OF 5**
 
+# Identity, Claims & Policy Design (Vol 2)
+
 ## 1. Identity Federation: ADFS & Microsoft Entra ID
 
-# Identity, Claims & Policy Design (Vol 2)
-### Enterprise Policy Interceptor Architecture for Agentic AI **1.1 Federation Architecture**
+### 1.1 Federation Architecture
 
-`On-Premises User Cloud-Native User` I I `ADFS Entra ID` I `SAML Assertion` I `OIDC/JWT` I I IIIIIIIIIIIIIIIIIIIIIIIIIIII I `Entra ID Tenant (Federation Trust)` I `Token Issuance (JWT` `with Claims)` I `Claims Normalization Layer (Lambda/ECS)` I `Canonical Claims Store` I `Policy Engine` `(Cedar/OPA)`
+**Federation flow:** On-Premises User → ADFS (SAML Assertion) → Entra ID Tenant (Federation Trust) → Token Issuance (JWT with Claims) → Claims Normalization Layer (Lambda/ECS) → Canonical Claims Store → Policy Engine (Cedar/OPA)
 
-|IIIIIIIIII `with Claims)` `(Cedar/OPA)` **1.2 Token T** Both ADFS and E variations and pro **Claim Type**|IIIIIIIIIIIIIIIIII I`Claims Normalization`  **ypes and Claim** ntra ID issue tokens with duce a consistent canoni **ADFS Example**|I`Entra ID Tenant (Fed` `Layer (Lambda/ECS)`I`Ca` **s** different claim sets. The c cal representation: **Entra ID Example**|`eration Trust)`I`Token Issuance (JWT` `nonical Claims Store`I`Policy Engine` laims normalization layer must handle all **Canonical Form**|
+**Cloud-Native User** → Entra ID (OIDC/JWT) → same pipeline from Claims Normalization onwards.
+
+### 1.2 Token Types and Claims
+
+Both ADFS and Entra ID issue tokens with different claim sets. The claims normalization layer must handle all variations and produce a consistent canonical representation:
+
+|**Claim Type**|**ADFS Example**|**Entra ID Example**|**Canonical Form**|
 |---|---|---|---|
-|User Principal|upn: john.smith@bank.com|upn: j.smith@bank.onmic rosoft.com|principal_id: john.smith|
+|User Principal|upn: john.smith@bank.com|upn: j.smith@bank.onmicrosoft.com|principal_id: john.smith|
 |Department|department: Finance|extension_department: FINANCE|business_unit: FINANCE|
-|**VOLUME COVER** Security Groups|**AGE** groups: [GUID-1, GUID-2]|groups: [GUID-A, GUID-B]|roles: [payments_approver, trade_viewer]|
-|ADFS & Entra I i RBA Country/Region|D federation, JWT claims n BARBA R li l: United Kingdom|ormalization, canonical enter hi   R country: GB|prise claim taxonomy, Cedar policy i i  hi geography: GB|
-|desgn (C/ policy engine ar Manager|C/eC), ego poc chitecture. manager: cn=mgr,dc=bank|arctecture, Cedar vs eg manager: GUID-of-manager|comparson matrx, and ybrd manager_id: emp-42891|
+|Security Groups|groups: [GUID-1, GUID-2]|groups: [GUID-A, GUID-B]|roles: [payments_approver, trade_viewer]|
+|Country/Region|l: United Kingdom|country: GB|geography: GB|
+|Manager|manager: cn=mgr,dc=bank|manager: GUID-of-manager|manager_id: emp-42891|
 |App Roles|roles: [FinanceAdmin]|roles: [Payments.Approve]|capabilities: [can_approve_payment]|
 |Tenant|Not present|tid: TENANT-GUID|tenant_id: bank-prod|
 |MFA|Not standard|amr:[mfa, pwd]|mfa_verified: true|
@@ -38,12 +45,14 @@ Claims normalization is the most critical and most frequently under-engineered c
 
 ### 2.1 The Normalization Pipeline
 
-`Raw JWT (from Entra/ADFS)` I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Token Signature` I `Verify` `RS256/ES256 signature` I `Validation` I `against JWKS endpoint` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Claim Extraction` I `Extract known claims` I I `Handle`
-
-`missing/null claims` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Group GUID Resolution` I `GUID` → `Human-readable group name` I I `via Directory Lookup (cached)`
-
-
-IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Nested Group` I `Resolve transitive group membership` I `Flattening` I `Payments_Admins` ⊇ `Finance_Team` ⊇ `...` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Role` → `Capability` I `AD Role` → `Business Capability` I `Mapping` I `Finance_Approver` → `can_approve_payment` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `PIP Enrichment` I `Load additional attributes:` I I `risk_score, data_classification,` I I `business_hours, approval_status` IIIIIIIIIIIIIIIIIIIIIIIIIII I M IIIIIIIIIIIIIIIIIIIIIIIIIII I `Canonical Claims` I `Structured, versioned, typed` I `Object` I `{ principal, roles, context }` IIIIIIIIIIIIIIIIIIIIIIIIIII
+1. **Raw JWT** (from Entra/ADFS)
+2. **Token Signature Validation** — Verify RS256/ES256 signature against JWKS endpoint
+3. **Claim Extraction** — Extract known claims; handle missing/null claims
+4. **Group GUID Resolution** — GUID → human-readable group name via Directory Lookup (cached)
+5. **Nested Group Flattening** — Resolve transitive membership: `Payments_Admins ⊇ Finance_Team ⊇ ...`
+6. **Role → Capability Mapping** — AD Role → Business Capability (e.g., `Finance_Approver` → `can_approve_payment`)
+7. **PIP Enrichment** — Load additional attributes: `risk_score`, `data_classification`, `business_hours`, `approval_status`
+8. **Canonical Claims Object** — Structured, versioned, typed `{ principal, roles, context }`
 
 ### 2.2 Canonical Enterprise Claims Model
 

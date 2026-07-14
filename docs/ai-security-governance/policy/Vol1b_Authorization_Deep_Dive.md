@@ -13,21 +13,24 @@ tags: []
 
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 1b OF Extended**
 
-## 1. XACML — The Standard That Defined
+## 1. XACML — The Standard That Defined Enterprise Authorization
 
-# Enter rise Authorization p Authorization Deep Dive
-eXtensible Access Control Markup Language (XACML) is the OASIS standard that first formalized the PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is Engines · Interceptor Patterns · XACML · OpenFGA · Zanzibar · gRPC · Envoy · Event-Drivenessential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.
+eXtensible Access Control Markup Language (XACML) is the OASIS standard that first formalized the PEP/PDP/PAP/PIP model. While XACML's XML verbosity has limited its modern adoption, understanding it is essential because all modern engines (Cedar, OPA, OpenFGA) implement XACML's conceptual model.
 
 ### 1.1 XACML Request/Response Model
 
-|**. eq** `john.smith@bank.com` **1.2 XACML vs C** **Dimension**|**uesesponse oe** `FINANCE true invoke-tool payment-appro` **edar — Structural Comparis** **XACML 3.0**|`val-tool Permit HIGH` **on** **AWS Cedar**|
+An XACML authorization request packages subject (`john.smith@bank.com`), environment (`FINANCE`, `invoke-tool`), and resource attributes into an XML envelope. The PDP returns `Permit`/`Deny` with optional obligations.
+
+### 1.2 XACML vs Cedar — Structural Comparison
+
+|**Dimension**|**XACML 3.0**|**AWS Cedar**|
 |---|---|---|
 |Policy Format|Verbose XML — 50+ lines per rule|Concise DSL — 5-10 lines per policy|
 |Combining Algorithms|14 combining algorithms (deny-overrides, permit-overrides, etc.)|Implicit: forbid overrides permit always|
 |Obligations|Full obligation model in standard|Obligations via context and PEP conventions|
 |Schema Validation|XML Schema (XSD)|Cedar schema — strongly typed|
-|Performance|XMLparsingoverhead — typically20-100ms|Sub-millisecond evaluation|
-|**VOLUME COVERAGE** Extended coverage of e   Standards|very authorization engine, all PEP interceptor   OASIS standard—government/healthcare mandate|patterns, gRPC interceptors,   AWS proprietary (but open-source)|
+|Performance|XML parsing overhead — typically 20–100ms|Sub-millisecond evaluation|
+|Ecosystem|OASIS standard — government/healthcare mandate|AWS proprietary (but open-source)|
 |event-driven authorizati complete STRIDE threa Formal Verification|on, XACML deep dive, OpenFGA relationship t model with mitigations,andperformance ben No|model, Zanzibar global scale, chmark data. Yes — Lean theorem prover|
 |Ecosystem|IBM, Axiomatics, Forgerock implementations|AWS AVP only (growing ecosystem)|
 |Use Today |Legacy enterprises, government mandates |New AWS-native projects |
