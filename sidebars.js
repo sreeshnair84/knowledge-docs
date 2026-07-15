@@ -50,6 +50,18 @@ const sidebars = {
     {type: 'doc', id: 'index', label: 'Home'},
     {
       type: 'category',
+      label: 'Enterprise Strategy & Business Architecture',
+      items: [
+        'enterprise-strategy/index',
+        {type: 'doc', id: 'enterprise-strategy/vol1-corporate-strategy', label: 'Vol 1 — Corporate Strategy'},
+        {type: 'doc', id: 'enterprise-strategy/vol2-business-architecture-operating-model', label: 'Vol 2 — Business Architecture & Operating Models'},
+        {type: 'doc', id: 'enterprise-strategy/vol3-portfolio-governance', label: 'Vol 3 — Portfolio Management & Governance'},
+        {type: 'doc', id: 'enterprise-strategy/vol4-consulting-frameworks-industry', label: 'Vol 4 — Consulting Frameworks & Industry Strategy'},
+        {type: 'doc', id: 'enterprise-strategy/vol5-ai-strategy-transformation-glossary', label: 'Vol 5 — AI Strategy, Transformation & Glossary'},
+      ],
+    },
+    {
+      type: 'category',
       label: 'Enterprise AI Research Report',
       items: [
         'enterprise-ai-report/index',
