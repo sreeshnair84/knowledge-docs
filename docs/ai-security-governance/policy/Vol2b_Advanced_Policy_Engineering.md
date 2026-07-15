@@ -22,7 +22,7 @@ tags: []
 
 ### 1.2 SCIM Receiver Implementation
 
-`# SCIM 2.0 Receiver — Lambda function import json import boto3 import hashlib dynamodb = boto3.resource('dynamodb') table = dynamodb.Table('user-attributes') def handler(event,` `context): path = event['path'] method = event['httpMethod'] body = json.loads(event.get('body',` `'{}')) # SCIM 2.0 endpoint routing if '/Users' in path and method == 'POST': return` `provision_user(body) elif '/Users/' in path and method == 'PUT': return update_user(path, body)` `elif '/Users/' in path and method == 'DELETE': return deprovision_user(path) elif '/Users' in path and method == 'GET': return list_users(event.get('queryStringParameters', {})) def` **VOLUME COVERAGE** `provision_user(scim_user: dict) -> dict: # Transform SCIM schema to enterprise schema` SCIM 2.0 integration for claim enrichment, nested group resolution algorithms, role explosion mitigation, `enterprise_user = { 'userId': scim_user['id'], # Entra ID object ID 'upn':` Cedar policy templates and delegated administration, OPA bundle distribution and GitOps, WASM `scim_user['userName'], 'displayName': scim_user['displayName'], # SCIM Enterprise Extension` compilation for edge enforcement, partial evaluation for database-level authorization, and policy simulation `'department': scim_user.get( 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('department', 'UNKNOWN'), 'costCenter': scim_user.get(`
+`# SCIM 2.0 Receiver — Lambda function import json import boto3 import hashlib dynamodb = boto3.resource('dynamodb') table = dynamodb.Table('user-attributes') def handler(event,` `context): path = event['path'] method = event['httpMethod'] body = json.loads(event.get('body',` `'{}')) # SCIM 2.0 endpoint routing if '/Users' in path and method == 'POST': return` `provision_user(body) elif '/Users/' in path and method == 'PUT': return update_user(path, body)` `elif '/Users/' in path and method == 'DELETE': return deprovision_user(path) elif '/Users' in path and method == 'GET': return list_users(event.get('queryStringParameters', {})) def` **VOLUME COVERAGE** `provision_user(scim_user: dict) -> dict: # Transform SCIM schema to enterprise schema` `enterprise_user = { 'userId': scim_user['id'], # Entra ID object ID 'upn':` `scim_user['userName'], 'displayName': scim_user['displayName'], # SCIM Enterprise Extension` `'department': scim_user.get( 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('department', 'UNKNOWN'), 'costCenter': scim_user.get(`
 
 ```
 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', {} ).get('costCenter', ''),
@@ -209,9 +209,15 @@ Limitation: no external data lookup (self-contained policy only)
 
 Shadow evaluation runs the new policy alongside the existing authorization system without changing production behavior. Mismatches are logged for investigation.
 
-`Production Request` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I M `(Primary Path)` M `(Shadow Path — async) Existing Authorization New Cedar Policy (embedded code or old engine) (AVP IsAuthorized)` I I I `Decision: ALLOW/DENY` I `Decision: ALLOW/DENY` I I
+**Shadow Evaluation Flow:**
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `Compare Decisions` I IIIIIIIIIIIIIIIII I I `MATCH MISMATCH` I I `Log: INFO Log: WARN Investigate: • New policy too restrictive? • Old code had a bug? • Edge case in normalization? • Missing entity in schema? Target: 99.9% decision parity before Phase 3 enforcement`
+- **Production Request** split into two parallel paths:
+  - **Primary Path**: Existing Authorization (embedded code or old engine) → Decision: ALLOW/DENY
+  - **Shadow Path** (async): New Cedar Policy (AVP IsAuthorized) → Decision: ALLOW/DENY
+- **Compare Decisions**:
+  - **MATCH** → Log: INFO
+  - **MISMATCH** → Log: WARN — investigate: new policy too restrictive? old code had a bug? edge case in normalization? missing entity in schema?
+- **Target:** 99.9% decision parity before Phase 3 enforcement
 
 ### 5.2 Policy Test Vector Framework
 

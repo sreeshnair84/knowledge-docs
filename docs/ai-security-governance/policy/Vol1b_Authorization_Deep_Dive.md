@@ -76,7 +76,17 @@ For enterprise Agentic AI, a pragmatic hybrid uses Cedar for business authorizat
 Architecture: OpenFGA (Relationship Store) Cedar (Policy Engine)
 ```
 
-IIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIII `Stores FACTS: Evaluates POLICY: • user#owner@document • permit(principal, read, resource) • agent#delegated_from@user • when principal is owner of resource • team#member@project • and resource.classification <= user.clearance` ↓ `PIP Bridge` ↓ `OpenFGA check result flows into Cedar authorization context as a boolean attribute: context.isOwner = true/false context.isDelegatedFrom = true/false`
+**OpenFGA (Relationship Store)** stores FACTS:
+- `user#owner@document`
+- `agent#delegated_from@user`
+- `team#member@project`
+
+**Cedar (Policy Engine)** evaluates POLICY:
+- `permit(principal, read, resource)`
+- `when principal is owner of resource`
+- `and resource.classification <= user.clearance`
+
+**PIP Bridge:** OpenFGA check results flow into Cedar authorization context as boolean attributes: `context.isOwner = true/false`, `context.isDelegatedFrom = true/false`
 
 ## 3. PEP Interceptor Patterns — Complete Reference
 
@@ -206,7 +216,16 @@ Multi-agent workflows often operate asynchronously via EventBridge or SQS. Autho
 
 ### 4.1 Event Authorization Pipeline
 
-`Event Producer (Agent)` I I `Publishes event to EventBridge` I `Event includes: principal claims, action, resource, context` M IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `EVENTBRIDGE AUTHORIZATION BUS` I I I I `EventBridge Rule` → `Authorization Lambda` I I `(Pre-consumer authorization check)` I I I I `Authorization Lambda:` I I `1. Extract principal claims from event` I I `2. Call Cedar AVP IsAuthorized` I I `3. IF DENY` → `route to Dead Letter Queue (DLQ)` I I `+ publish AUTHORIZATION_DENIED event` I I `4. IF ALLOW` → `forward to target consumer` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `(authorized events only)` M `Consumer (Specialist Agent / Service)` I I `Re-validates on receipt (defense in depth)` I `A compromised EventBridge rule cannot bypass` I `consumer-side authorization` M `Business Logic Execution`
+**Authorization Flow:**
+
+1. **Event Producer** (Agent) publishes event to EventBridge including principal claims, action, resource, and context
+2. **EventBridge Rule** routes to Authorization Lambda (pre-consumer check):
+   - Extract principal claims from event
+   - Call Cedar AVP `IsAuthorized`
+   - IF DENY → route to Dead Letter Queue (DLQ) + publish `AUTHORIZATION_DENIED` event
+   - IF ALLOW → forward to target consumer (authorized events only)
+3. **Consumer** (Specialist Agent / Service) re-validates on receipt (defense in depth) — a compromised EventBridge rule cannot bypass consumer-side authorization
+4. **Business Logic Execution**
 
 ### 4.2 Event Authorization Lambda
 

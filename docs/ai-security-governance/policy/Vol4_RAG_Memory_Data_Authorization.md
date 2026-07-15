@@ -16,29 +16,27 @@ tags: []
 ## 1. RAG Authorization Architecture
 
 # RAG, Memory & Data Authorization (Vol 4)
-Enterprise Policy Interceptor Architecture for Agentic AI **ANTI-PATTERN**
+#### ANTI-PATTERN
 
 Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A; documents from the knowledge base simply by phrasing their query to match those documents. The vector similarity search has no concept of permissions — authorization must be added as a filter layer on top.
 
 ### 1.1 RAG Authorization Pipeline
 
-`USER QUERY (with canonical claims + context)` I
+**RAG Authorization Pipeline:**
 
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `P1: Retrieval Authorization` IIII `Cedar: Can user query this knowledge base?`
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `ALLOW`
-
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `Claims` → `Permission Set Mapping` I I `{ clearance_level, allowed_categories,` I I `tenant_id, department, geography }` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `PRE-RETRIEVAL FILTER` I I `(Metadata` `filter applied to vector query)` I I `WHERE tenant_id = :tenant` I I `AND classification IN` `(:allowed_classes)` I I `AND geography IN (:allowed_geos)` I
-
-##### IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I **VOLUME COVERAGE**
-
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `VECTOR SIMILARITY SEARCH` I I Document-level and chunk-level authorization, vector database filtering, multi-tenant RAG isolation, `(OpenSearch / pgvector / Bedrock KB)` I I `Filtered result set — only permitted docs` I working/long-term/shared memory protection, knowledge access policies, pre- and post-retrieval filtering,IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I output data classification, and attribute-based retrieval control.IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `POST-RETRIEVAL AUTHORIZATION` IIII `Cedar: Verify each retrieved chunk` I `(Per-document Cedar evaluation)` I `against user clearance` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `(filtered, authorized chunks only)` IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `CONTEXT INJECTION` → `LLM` I I `(Only` `authorized content in context)` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `OUTPUT CLASSIFICATION FILTER` IIII `Cedar: Is output within user's clearance?` I `(Scan response for leaked PII/classified)` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTHORIZED RESPONSE (with source` `citations)`
+1. **USER QUERY** (with canonical claims + context)
+2. **P1: Retrieval Authorization** — Cedar: *Can user query this knowledge base?* → ALLOW
+3. **Claims → Permission Set Mapping**: `{ clearance_level, allowed_categories, tenant_id, department, geography }`
+4. **PRE-RETRIEVAL FILTER** — metadata filter applied before vector similarity search: `WHERE tenant_id = :tenant AND classification IN (:allowed_classes) AND geography IN (:allowed_geos)`
+5. **VECTOR SIMILARITY SEARCH** (OpenSearch / pgvector / Bedrock KB) — filtered result set, only permitted docs
+6. **POST-RETRIEVAL AUTHORIZATION** — Cedar: *Verify each retrieved chunk against user clearance* → filtered, authorized chunks only
+7. **CONTEXT INJECTION** → LLM (only authorized content in context)
+8. **OUTPUT CLASSIFICATION FILTER** — Cedar: *Is output within user's clearance?* (scan response for leaked PII/classified)
+9. **AUTHORIZED RESPONSE** (with source citations) → USER
 
 ### 1.2 Document-Level Authorization Schema
 
-Every document and chunk in the knowledge store must carry authorization metadata. This metadata is the - - basis for both pre retrieval filtering and post retrieval Cedar policy evaluation:
+Every document and chunk in the knowledge store must carry authorization metadata. This metadata is the basis for both pre-retrieval filtering and post-retrieval Cedar policy evaluation:
 
 ```
 { "doc_id": "doc-m-and-a-briefing-2025-001", "title": "Project Phoenix M&A; Briefing",
@@ -195,21 +193,15 @@ Authorization does not end when a tool executes or a document is retrieved. The 
 
 ### 4.1 Output Classification Pipeline
 
-`AGENT OUTPUT (raw LLM response)` I IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTOMATED CLASSIFICATION` I I `• AWS Macie patterns (PII detection)` I I `• Bedrock Guardrails (content policy)` I I `• Custom classifier (CONFIDENTIAL/SECRET)` I
+**Output Classification Pipeline:**
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `classification = {PII: false, class: INTERNAL}` IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `CEDAR POLICY EVALUATION` I I `Can this user receive output of this` I I `classification from this agent?` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `ALLOW / DENY with redaction`
-
-`obligations` IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `REDACTION / FILTERING (if obligated)` I I `• PII: replace with [REDACTED]` I I `• Over-clearance: strip classified refs` I I `• Tenant data: remove cross-tenant refs` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `DLP SCAN (final gate)` I I `Amazon Macie / custom patterns` I I `Block if DLP detects sensitive patterns` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-IIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUDIT LOG (output classification + hash)` I I `CloudTrail + DynamoDB audit record` I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `FILTERED, CLASSIFIED RESPONSE` → `USER`
+1. **AGENT OUTPUT** (raw LLM response)
+2. **AUTOMATED CLASSIFICATION**: AWS Macie patterns (PII detection) · Bedrock Guardrails (content policy) · Custom classifier (CONFIDENTIAL/SECRET) → `classification = {PII: false, class: INTERNAL}`
+3. **CEDAR POLICY EVALUATION** — *Can this user receive output of this classification from this agent?* → ALLOW / DENY with redaction obligations
+4. **REDACTION / FILTERING** (if obligated): PII → replace with `[REDACTED]` · Over-clearance → strip classified refs · Tenant data → remove cross-tenant refs
+5. **DLP SCAN** (final gate): Amazon Macie / custom patterns — block if DLP detects sensitive patterns
+6. **AUDIT LOG** (output classification + hash): CloudTrail + DynamoDB audit record
+7. **FILTERED, CLASSIFIED RESPONSE** → USER
 
 ### 4.2 Data Sensitivity Classification Model
 
@@ -217,7 +209,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `FILTERED, CLASSIFIED RESPONSE` 
 |---|---|---|---|
 |L0|PUBLIC|Marketing docs, public web content|All agents may retrieve and return|
 |L1|INTERNAL|Internal memos, process docs|Authenticated users only, no external channels|
-|L2|CONFIDENTIA L|Customer data, contracts, budgets|Capability required, MFA, logged|
+|L2|CONFIDENTIAL|Customer data, contracts, budgets|Capability required, MFA, logged|
 |L3|SECRET|M&A; details, legal strategy, key material|Need-to-know list, MFA, approval, DLP active|
 |L4|TOP_SECRET|Board-level strategy, regulator confidential|Explicit person list only, dual approval, offline audit|
 

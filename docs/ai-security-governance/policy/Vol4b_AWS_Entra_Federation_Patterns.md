@@ -14,7 +14,7 @@ tags: []
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 4b OF Extended**
 
 # AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)
-### Entra ID **1.1 Ent** · ADFS **ra ID A** · OIDC **pplicat** · SAML **ion R** · OAuth **egistrat** · Managed Identity **ion** · PrivateLink · VPC Endpoints
+### 1.1 Entra ID Application Registration
 
 `# Step 1: Entra ID Application Registration # (Configured in Azure Portal or via Microsoft Graph API) Application Registration: Name: "Enterprise AI Authorization Platform" App Type: Web` `Application Sign-in URL: https://api.bank.com/auth/callback API Permissions (Application` `permissions): • Microsoft Graph: User.Read.All • Microsoft Graph: Group.Read.All • Microsoft` `Graph: Directory.Read.All (Required for group GUID resolution in PIP Lambda) Expose an API:` `Scope: api://bank-ai-platform/agent.invoke Scope: api://bank-ai-platform/tool.execute Scope: api://bank-ai-platform/data.read Token Configuration` → `Optional Claims: Access Token: • groups` `(Security groups as GUIDs, or names if < 200 groups) • upn • department • employee_id • country` `• onprem_sid (for hybrid environments with ADFS) ID Token: • email • preferred_username App` `Roles (for coarse-grained application roles): • Finance.Approver • Data.Reader • Agent.User •` `Agent.Admin Conditional Access Policy: Target: This application Conditions: Require MFA for all`
 
@@ -24,7 +24,7 @@ users Controls: Require compliant device OR hybrid Azure AD join
 
 ### 1.2 OIDC Federation Configuration
 
-`# Lambda Authorizer OIDC/JWT validation configuration # Uses AWS Lambda PowerTools for JWT validation from aws_lambda_powertools.utilities.data_classes import APIGatewayProxyEvent from` **VOLUME COVERAGE** `aws_lambda_powertools.utilities.validation import validator import jwt import requests from` Complete Entra ID to AVP integration, ADFS federation deep dive, OAuth 2.0 On-Behalf-Of for `functools import lru_cache import json, time ENTRA_TENANT_ID = "YOUR-TENANT-ID" ENTRA_APP_ID =` service-to-service, AWS managed identity patterns, PrivateLink and VPC endpoint configuration for `"YOUR-APP-CLIENT-ID" # OIDC Discovery DISCOVERY_URL =` authorization services, IAM Identity Center integration, cross-account authorization, and complete `f"https://login.microsoftonline.com/{ENTRA_TENANT_ID}/v2.0/.well-known/openid-configuration" # ADFS OIDC Discovery (for legacy federation) ADFS_DISCOVERY_URL =`
+`# Lambda Authorizer OIDC/JWT validation configuration # Uses AWS Lambda PowerTools for JWT validation from aws_lambda_powertools.utilities.data_classes import APIGatewayProxyEvent from` **VOLUME COVERAGE** `aws_lambda_powertools.utilities.validation import validator import jwt import requests from` `functools import lru_cache import json, time ENTRA_TENANT_ID = "YOUR-TENANT-ID" ENTRA_APP_ID =` `"YOUR-APP-CLIENT-ID" # OIDC Discovery DISCOVERY_URL =` `f"https://login.microsoftonline.com/{ENTRA_TENANT_ID}/v2.0/.well-known/openid-configuration" # ADFS OIDC Discovery (for legacy federation) ADFS_DISCOVERY_URL =`
 
 ```
 "https://adfs.bank.com/adfs/.well-known/openid-configuration" @lru_cache(maxsize=1) def
@@ -117,10 +117,10 @@ All authorization traffic must traverse AWS's private network, never the public 
 
 |**Service**|**Endpoint** **Type**|**Purpose**|**DNS Resolution**|
 |---|---|---|---|
-|Amazon Verified Permissions|Interface endpoint (PrivateLink)|Cedar AVP IsAuthorized API calls — no internet egress|verifiedpermissions.us-east-1.amazon aws.com→private IP|
+|Amazon Verified Permissions|Interface endpoint (PrivateLink)|Cedar AVP IsAuthorized API calls — no internet egress|verifiedpermissions.us-east-1.amazonaws.com→private IP|
 |DynamoDB|Gateway endpoint|PIP attribute lookups, audit log writes|dynamodb.us-east-1.amazonaws.com →private|
 |S3|Gateway endpoint|OPA bundle downloads, audit log archive|s3.amazonaws.com→private|
-|Secrets Manager|Interface endpoint|Agent credential retrieval|secretsmanager.us-east-1.amazonaws .com→private|
+|Secrets Manager|Interface endpoint|Agent credential retrieval|secretsmanager.us-east-1.amazonaws.com→private|
 |AWS STS|Interface endpoint|Token exchange, assume role for OBO|sts.amazonaws.com→private|
 |ElastiCache|Not applicable (VPC-native)|Claims cache (Redis) — already in VPC|Private IP within VPC subnet|
 |CloudWatch Logs|Interface endpoint|Audit log delivery without NAT|logs.us-east-1.amazonaws.com→ private|
@@ -151,9 +151,23 @@ AWS IAM Identity Center (formerly AWS SSO) bridges Entra ID to AWS IAM permissio
 
 ### 4.1 Dual Identity Plane Architecture
 
-`MICROSOFT ENTRA ID AWS IAM IDENTITY CENTER (Business Identity Plane) (AWS Resource Identity Plane)` IIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIII `User:`
+**Dual Identity Plane Architecture:**
 
-`john.smith@bank.com Permission Set: AgentRuntimeUser JWT: { capabilities, dept, mfa } IAM Role: AgentRuntimeRole-FINANCE` ↓ ↓ `Claims Normalization ECS Task Role (Canonical claims object) (AWS service permissions)` ↓ ↓ `CEDAR AUTHORIZATION IAM AUTHORIZATION (Business decisions) (AWS service access) "Can john invoke PaymentTool?" "Can task role call Bedrock?" RELATIONSHIP: • A single ECS task has BOTH an IAM task role AND carries john's claims • Cedar uses canonical claims for business authorization • IAM task role controls which AWS APIs the task can call • They are INDEPENDENT — Cedar cannot see IAM roles, IAM cannot see Cedar claims • BOTH must be correct for an action to succeed EXAMPLE: Task wants to call Bedrock + invoke PaymentTool: 1. IAM checks: does AgentRuntimeRole have bedrock:InvokeModel?` → `Yes (IAM) 2. Cedar checks: does john.smith have can_approve_payment?` → `Yes (Cedar) 3. BOTH must allow` → `action proceeds`
+| Plane | System | Purpose |
+|---|---|---|
+| Business Identity | Microsoft Entra ID | User JWT with capabilities, dept, MFA claims |
+| AWS Resource Identity | AWS IAM Identity Center | ECS task role / IAM Role: AgentRuntimeRole-FINANCE |
+
+These two identity planes flow into:
+- **Claims Normalization** (canonical claims object) — feeds Cedar authorization
+- **ECS Task Role** (AWS service permissions) — feeds IAM authorization
+
+**Relationship:** Cedar and IAM are independent — Cedar cannot see IAM roles; IAM cannot see Cedar claims. BOTH must allow for an action to succeed.
+
+**Example:** Task calls Bedrock + invokes PaymentTool:
+1. IAM checks: does `AgentRuntimeRole` have `bedrock:InvokeModel`? → Yes (IAM)
+2. Cedar checks: does `john.smith` have `can_approve_payment`? → Yes (Cedar)
+3. BOTH must allow → action proceeds
 
 ### 4.2 IAM Identity Center SCIM Sync
 
@@ -165,23 +179,30 @@ Enterprise AWS environments commonly span multiple accounts: a shared services a
 
 ### 5.1 Multi-Account Authorization Architecture
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
+**Multi-Account Architecture:**
 
-`SECURITY ACCOUNT (111111111111)` I I `• CloudTrail organization trail` → `S3 (WORM)` I I `• Security Hub (aggregator)` I I `• GuardDuty (master)` I I `• Config Aggregator` I I `• KMS CMKs for cross-account encryption` I
+**Security Account (111111111111):**
+- CloudTrail organization trail → S3 (WORM) · Security Hub (aggregator) · GuardDuty (master) · Config Aggregator · KMS CMKs for cross-account encryption
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `SHARED SERVICES ACCOUNT (222222222222)` I I `• Amazon Verified Permissions (AVP) Policy Store` I I `• ElastiCache Redis (claims normalization cache)` I I `• DynamoDB (user attributes PIP store)` I I `• Secrets Manager (agent credentials)` I I `• OPA Bundle S3 bucket` I I `• SCIM Receiver Lambda` I I I I `Cross-account AVP access:` I I `avp_client = boto3.client(` I I `'verifiedpermissions',` I I `region_name='eu-west-1'` I I `)` I I `# Lambda in workload account assumes SharedServicesRole` I I `# which has verifiedpermissions:IsAuthorized permission` I
+**Shared Services Account (222222222222):**
+- Amazon Verified Permissions (AVP) Policy Store · ElastiCache Redis (claims normalization cache) · DynamoDB (user attributes PIP store) · Secrets Manager (agent credentials) · OPA Bundle S3 bucket · SCIM Receiver Lambda
+- Cross-account AVP access: Lambda in workload account assumes `SharedServicesRole` (which has `verifiedpermissions:IsAuthorized` permission)
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+**Workload Account — PROD (333333333333):**
+- Agent Runtime (ECS Fargate / EKS) · API Gateway + Lambda Authorizer · MCP PEP Gateway (ECS) · Bedrock AgentCore · OpenSearch (RAG vector search)
+- Cross-account role: `AgentTaskRole` → assumes `SharedServicesRole` in acct 222222222222 for AVP IsAuthorized and DynamoDB PIP lookup
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
+**Workload Account — NON-PROD (444444444444):**
+- Staging/Dev agent environments · Separate AVP policy store (non-prod) · Shadow evaluation against prod policy store
 
-`WORKLOAD ACCOUNT — PROD (333333333333)` I I `• Agent Runtime (ECS Fargate / EKS)` I I `• API Gateway + Lambda Authorizer` I I `• MCP PEP Gateway (ECS)` I I `• Bedrock AgentCore` I I `• OpenSearch (RAG vector search)` I I I I `Cross-account role assumption:` I I `AgentTaskRole` → `assumes SharedServicesRole in acct 222222222222` I I `for AVP IsAuthorized and DynamoDB PIP lookup` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
+**Workload Account — PROD (333333333333):**
+- Agent Runtime (ECS Fargate / EKS) · API Gateway + Lambda Authorizer · MCP PEP Gateway (ECS) · Bedrock AgentCore · OpenSearch (RAG vector search)
+- Cross-account role: `AgentTaskRole` assumes `SharedServicesRole` in acct 222222222222 for AVP IsAuthorized and DynamoDB PIP lookup
+
 
 `WORKLOAD ACCOUNT — NON-PROD (444444444444)` I I `• Staging/Dev agent environments` I I `• Separate AVP policy store (non-prod)` I I `• Shadow evaluation against prod policy store` I
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 #### BEST PRACTICE
 

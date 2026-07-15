@@ -16,60 +16,35 @@ tags: []
 ## 1. AWS Reference Architecture
 
 # AWS Implementation, Governance & Production Readiness (Vol 5)
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MICROSOFT ENTRA ID` I I
+**Architecture Layers:**
 
-`(Primary IdP — OIDC/SAML Federation)` I I `ADFS (Legacy Federation)` I
+**Identity Layer (External):**
+- **Microsoft Entra ID** (Primary IdP — OIDC/SAML Federation) + **ADFS** (Legacy Federation) → JWT (OIDC) → AWS Perimeter
 
-Enterprise Policy Interceptor Architecture for Agentic AIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `JWT (OIDC)`
+**AWS Perimeter:**
+- AWS WAF + CloudFront (optional CDN layer)
 
-IIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AWS PERIMETER` I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `AWS WAF` I I `CloudFront` `(Optional)` I I I IIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I
+**API Gateway (REST/HTTP) with Lambda Authorizer:**
+- JWT validation (JWKS from Entra) · Claims extraction · AVP `IsAuthorized` call · Decision caching (IAM policy cache)
 
-IIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `API GATEWAY (REST/HTTP)` I I
+**Authorization Core (VPC)** — authorized requests only:
 
-I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I `Lambda Authorizer` I I I
+| Component | Service | Responsibilities |
+|---|---|---|
+| Claims Normalization | ECS Fargate | Group GUID resolution, Role → capability map, PIP attribute lookup, ElastiCache (Redis) |
+| Policy Decision Point | Amazon Verified Permissions (Cedar Policy Store) | Business authorization, agent permissions, tool policies, `IsAuthorized` API |
+| Infrastructure Policy | OPA Sidecar Cluster (ECS / K8s DaemonSet) | Infrastructure policy, K8s admission (EKS) |
+| Risk Engine | AWS Fraud Detector + GuardDuty | Risk score computation → authorization context |
 
-I I I `• JWT validation (JWKS from Entra)` I I I I I I `• Claims extraction` I I I I I I `• AVP` `IsAuthorized call` I I I I I I `• Decision caching (IAM policy cache)` I I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I
+**Agent Runtime Layer (ECS / EKS / Lambda):**
+- Amazon Bedrock AgentCore: Orchestrator Agent + Payment Agent (Specialist) + Data Agent (Specialist)
+- MCP PEP Gateway (ECS Fargate): per-tool Cedar authorization
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
+**Data & Knowledge Layer:**
+- OpenSearch (RAG/Memory) · DynamoDB (Metadata) · RDS/Aurora (Business) · S3 (RAG docs) — all KMS encrypted
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `(Authorized requests` `only)`
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `AUTHORIZATION CORE (VPC)` I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Claims Normalization` I I `Amazon Verified` `Permissions` I I I I `Service (ECS Fargate)` I I `(Cedar Policy Store)` I I I I `• Group GUID resolution` I I `• Business authorization` I I I I `• Role` → `capability map` I I `• Agent` `permissions` I I I I `• PIP attribute lookup` I I `• Tool policies` I I I I `• ElastiCache (Redis)` **VOLUME COVERAGE** I I `• IsAuthorized API` I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII
-
-AWS reference architecture (AVP, Bedrock, ECS/EKS, API GW, Entra ID integration), policy-as-codeIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIII CI/CD, performance benchmarks & caching, decision logging, enterprise case studies, migration roadmap IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `OPA Sidecar Cluster` I I `Risk Engine` I I I from embedded to externalized authorization, and production readiness checklist.I `(ECS / K8s DaemonSet)` I I `• AWS Fraud Detector` I I I I `• Infrastructure policy` I I `•` `GuardDuty signals` I I I I `• K8s admission (EKS)` I I `• Risk score` → `context` I I I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-`AGENT RUNTIME LAYER (ECS / EKS / Lambda)` I I I I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Amazon` `Bedrock AgentCore` I I I I IIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIII
-
-IIIIIIIIIIIIIII I I I I I `Orchestrator` I I `Payment Agent` I I `Data Agent` I I I I I I
-
-`Agent` I I `(Specialist)` I I `(Specialist` I I I I I IIIIIIIIIIIIIIIIIII
-
-IIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIII I I I I I I I I I I I
-
-IIIIIIIIIMIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIMIIIIIII I I I I I `MCP PEP` `Gateway (ECS Fargate)` I I I I I I `(Per-tool Cedar authorization)` I I I I I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `DATA & KNOWLEDGE LAYER` I I I I IIIIIIIIIIIIII IIIIIIIIIIIII IIIIIIIIIIIIIIII
-
-IIIIIIIIIIIIIIIIII I I I `OpenSearch` I I `DynamoDB` I I `RDS/Aurora` I I `S3 (RAG docs)` I I I I `(RAG/Memory)` I I `(Metadata)` I I `(Business)` I I `KMS encrypted` I I I IIIIIIIIIIIIII
-
-IIIIIIIIIIIII IIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIII I
-
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I
-
-`OBSERVABILITY & COMPLIANCE LAYER` I I I I `CloudTrail (all API calls)` I `CloudWatch` `(metrics/alarms)` I I `X-Ray (distributed tracing)` I `Security Hub (compliance)` I I `GuardDuty` `(threat detection)` I `Config (resource compliance)` I I `Decision Audit Store (DDB)` I `Macie (PII` `detection in S3)` I
-
-
-<mark>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</mark>
+**Observability & Compliance Layer:**
+- CloudTrail (all API calls) · CloudWatch (metrics/alarms) · X-Ray (distributed tracing) · Security Hub (compliance) · GuardDuty (threat detection) · Config (resource compliance) · Decision Audit Store (DDB) · Macie (PII detection in S3)
 
 ### 1.2 AWS Component Justification Matrix
 
@@ -108,7 +83,7 @@ Authorization must not become a performance bottleneck. The goal is to add <5ms 
 |OPA Sidecar Evaluation|<1ms|<3ms|Policy bundle in-memory, partial evaluation|
 |Total Authorization Overhead|<5ms|<15ms|All layers combined, warm cache|
 |RAG Pre-filter Construction|<0.5ms|<1ms|Derived from cached canonical claims|
-|Post-retrieval Cedar Evaluation|<2ms/chu nk|<5ms/chu nk|Batch IsAuthorized for multiple chunks|
+|Post-retrieval Cedar Evaluation|<2ms/chunk|<5ms/chunk|Batch IsAuthorized for multiple chunks|
 
 ### 2.2 Multi-Layer Cache Architecture
 
@@ -180,63 +155,63 @@ Migrating from embedded authorization code to a centralized policy engine is a m
 
 Establish the authorization platform foundation: provision AVP policy store, deploy OPA sidecar cluster, implement claims normalization service, establish GitOps policy workflow, configure CloudTrail decision logging. No application changes yet — this phase builds the infrastructure.
 
-- I Provision Amazon Verified Permissions (AVP) policy store
+- Provision Amazon Verified Permissions (AVP) policy store
 
-- I Deploy OPA sidecar cluster on ECS/EKS
+- Deploy OPA sidecar cluster on ECS/EKS
 
-- I Implement Entra ID / ADFS claims normalization service
+- Implement Entra ID / ADFS claims normalization service
 
-- I Build canonical claims model and role→capability mapping
+- Build canonical claims model and role→capability mapping
 
-- I Establish Git repository for policy-as-code
+- Establish Git repository for policy-as-code
 
-- I Configure CloudTrail for AVP decision logging
+- Configure CloudTrail for AVP decision logging
 
-- I Define Cedar entity schema for the domain
+- Define Cedar entity schema for the domain
 
 #### Phase 2: Shadow Mode (Weeks 7–12)
 
 Deploy Cedar/OPA in shadow mode alongside existing embedded authorization. Every request is evaluated by BOTH the existing code AND the new policy engine. Compare decisions to identify gaps, mismatches, and edge cases — without changing production behavior.
 
-- I Deploy Lambda Authorizer with shadow evaluation mode
+- Deploy Lambda Authorizer with shadow evaluation mode
 
-- I Route all requests through new PEP (pass-through mode initially)
+- Route all requests through new PEP (pass-through mode initially)
 
-- I Compare Cedar decisions vs embedded code decisions
+- Compare Cedar decisions vs embedded code decisions
 
-- I Log mismatches — resolve each one in policy or canonical claims
+- Log mismatches — resolve each one in policy or canonical claims
 
-- I Achieve >99.9% decision parity before proceeding to Phase 3
+- Achieve >99.9% decision parity before proceeding to Phase 3
 
 #### Phase 3: Canary Enforcement (Weeks 13–18)
 
 Enable policy enforcement for 5–20% of traffic. Monitor closely. Expand gradually as confidence grows. Roll back immediately if mismatch rate exceeds threshold.
 
-- I Enable Cedar enforcement for 5% of traffic (canary deployment)
+- Enable Cedar enforcement for 5% of traffic (canary deployment)
 
-- I Monitor authorization metrics in CloudWatch (allow rate, deny rate, latency)
+- Monitor authorization metrics in CloudWatch (allow rate, deny rate, latency)
 
-- I Expand to 20%, 50%, 80%, 100% over 2-week increments
+- Expand to 20%, 50%, 80%, 100% over 2-week increments
 
-- I Maintain automated rollback trigger: >1% unexpected deny rate
+- Maintain automated rollback trigger: >1% unexpected deny rate
 
-- I Complete application code removal of embedded auth checks
+- Complete application code removal of embedded auth checks
 
 #### Phase 4: Full Production (Weeks 19–24)
 
 Complete migration: 100% policy-engine authorization, all embedded code removed, full audit trail, compliance documentation generated.
 
-- I 100% traffic through centralized policy engine
+- 100% traffic through centralized policy engine
 
-- I Remove embedded authorization code from all services
+- Remove embedded authorization code from all services
 
-I Complete compliance documentation (NIST, PCI DSS evidence package)
+- Complete compliance documentation (NIST, PCI DSS evidence package)
 
-I Policy simulation capability deployed (test before production)
+- Policy simulation capability deployed (test before production)
 
-I Policy drift detection active (Config rules)
+- Policy drift detection active (Config rules)
 
-I Performance optimization complete (cache hit rate >90%)
+- Performance optimization complete (cache hit rate >90%)
 
 ## 6. Production Readiness Checklist
 
@@ -244,107 +219,107 @@ The following checklist must be completed before a policy-enforced authorization
 
 #### Identity & Claims
 
-- I JWT signature validation against live JWKS endpoint
+- JWT signature validation against live JWKS endpoint
 
-- I Claims normalization handles both ADFS and Entra ID tokens
+- Claims normalization handles both ADFS and Entra ID tokens
 
-- I Group GUID resolution with caching (max 5 min TTL)
+- Group GUID resolution with caching (max 5 min TTL)
 
-- I Role → capability mapping complete for all business domains
+- Role → capability mapping complete for all business domains
 
-- I Nested group flattening tested with 5+ levels
+- Nested group flattening tested with 5+ levels
 
-- I Large JWT handling: tokens > 4KB use reference token pattern
+- Large JWT handling: tokens > 4KB use reference token pattern
 
-- I Token exchange (RFC 8693) tested for agent delegation
+- Token exchange (RFC 8693) tested for agent delegation
 
 #### Cedar Policy Design
 
-- I Entity schema validated with cedar validate
+- Entity schema validated with cedar validate
 
-- I Default deny policy is the first policy in every policy set
+- Default deny policy is the first policy in every policy set
 
-- I Tenant isolation forbid policies present and tested
+- Tenant isolation forbid policies present and tested
 
-- I All policies reference canonical capabilities (not Entra groups)
+- All policies reference canonical capabilities (not Entra groups)
 
-- I Policy unit tests achieve >95% decision coverage
+- Policy unit tests achieve >95% decision coverage
 
-- I Shadow evaluation achieves >99.9% parity with existing system
+- Shadow evaluation achieves >99.9% parity with existing system
 
-- I Policy versioning and rollback procedure documented and tested
+- Policy versioning and rollback procedure documented and tested
 
 #### Performance
 
-- I P99 authorization latency < 15ms (including all cache layers)
+- P99 authorization latency < 15ms (including all cache layers)
 
-- I Claims normalization cache hit rate > 90%
+- Claims normalization cache hit rate > 90%
 
-- I AVP IsAuthorized P99 < 10ms
+- AVP IsAuthorized P99 < 10ms
 
-- I PDP horizontal auto-scaling tested to 10x baseline load
+- PDP horizontal auto-scaling tested to 10x baseline load
 
-- I Cache invalidation tested: stale decisions < 5 minutes after policy change
+- Cache invalidation tested: stale decisions < 5 minutes after policy change
 
 #### Security
 
-- I All PEPs enforce default-deny: unreachable PDP = deny
+- All PEPs enforce default-deny: unreachable PDP = deny
 
-- I mTLS between all internal authorization components
+- mTLS between all internal authorization components
 
-- I Secrets in Secrets Manager (no credentials in environment variables)
+- Secrets in Secrets Manager (no credentials in environment variables)
 
-- I KMS encryption for all data at rest (per-tenant CMK for multi-tenant)
+- KMS encryption for all data at rest (per-tenant CMK for multi-tenant)
 
-- I VPC endpoints for AVP, DynamoDB, S3 (no internet egress for auth traffic)
+- VPC endpoints for AVP, DynamoDB, S3 (no internet egress for auth traffic)
 
-- I GuardDuty enabled and alerting on authorization anomalies
+- GuardDuty enabled and alerting on authorization anomalies
 
-- I STRIDE threat model documented and reviewed
+- STRIDE threat model documented and reviewed
 
 #### Audit & Compliance
 
-- I CloudTrail enabled and capturing all AVP policy decisions
+- CloudTrail enabled and capturing all AVP policy decisions
 
-- I Decision logs include: principal, action, resource, context hash, decision, policy matched
+- Decision logs include: principal, action, resource, context hash, decision, policy matched
 
-- I Audit log retention meets regulatory requirement (PCI DSS: 1 year online, 1 year archive)
+- Audit log retention meets regulatory requirement (PCI DSS: 1 year online, 1 year archive)
 
-- I NIST 800-53 control mapping documented
+- NIST 800-53 control mapping documented
 
-I PCI DSS Requirement 7, 8, 10 evidence package generated
+- PCI DSS Requirement 7, 8, 10 evidence package generated
 
-I SOC 2 CC6 control evidence available
+- SOC 2 CC6 control evidence available
 
 #### Operations
 
-I Policy CI/CD pipeline operational with <15 minute deploy time
+- Policy CI/CD pipeline operational with <15 minute deploy time
 
-- I Policy drift detection alert configured (Config rule)
+- Policy drift detection alert configured (Config rule)
 
-- I Emergency policy rollback tested: < 5 minute end-to-end
+- Emergency policy rollback tested: < 5 minute end-to-end
 
-- I On-call runbook for authorization-related incidents
+- On-call runbook for authorization-related incidents
 
-- I Monthly policy review meeting scheduled
+- Monthly policy review meeting scheduled
 
-- I Quarterly access review process using Cedar entity audit
+- Quarterly access review process using Cedar entity audit
 
 #### Agent-Specific
 
-I Per-step authorization at all 7 agent decision points
+- Per-step authorization at all 7 agent decision points
 
-- I Agent delegation token constrained to minimum required scope
+- Agent delegation token constrained to minimum required scope
 
-- I MCP PEP gateway deployed and tested for all tools
+- MCP PEP gateway deployed and tested for all tools
 
-- I Human-in-the-loop obligation handler tested for high-risk actions
+- Human-in-the-loop obligation handler tested for high-risk actions
 
-- I RAG pre-retrieval filter tested for tenant isolation
+- RAG pre-retrieval filter tested for tenant isolation
 
-- I Memory authorization policies tested for cross-user access prevention
+- Memory authorization policies tested for cross-user access prevention
 
-- I Output classification filter deployed and tested for PII leakage
+- Output classification filter deployed and tested for PII leakage
 
 ## 7. Final Decision Framework
 

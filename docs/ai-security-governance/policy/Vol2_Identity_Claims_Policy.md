@@ -279,9 +279,19 @@ Cedar and Rego are complementary tools serving different domains. The choice bet
 
 The most effective enterprise architecture uses Cedar and OPA together, with clear domain ownership. This is not a compromise — it is an intentional design that leverages the strengths of each engine:
 
-`ENTERPRISE POLICY ARCHITECTURE ================================ INFRASTRUCTURE DOMAIN APPLICATION/AGENT DOMAIN` IIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIII `OPA / Rego AWS Cedar (Verified Permissions)` IIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIII `• Kubernetes admission • User authorization • Terraform validation • Agent permissions • Network`
+**Enterprise Policy Architecture — Two-Domain Model:**
 
-`policy • Tool invocation control • Secret access policy • Resource access control • Docker image policy • Memory/knowledge access • Service mesh mTLS • Payment/trade approval • Compliance scanning • Data classification access • CI/CD pipeline gates • Multi-tenant isolation • Audit trail (CloudTrail) Policy Store: S3 Bundle Policy Store: AVP Policy Store Management: Styra DAS Management: AVP Console + IaC Deployment: GitOps Deployment: CI/CD + CodePipeline SHARED LAYER` IIIIIIIIIIII `Claims Normalization Service (Canonical Claims` → `Both Engines) Policy Decision Aggregator (Combine Cedar + OPA decisions)`
+| **Domain** | **Infrastructure** | **Application / Agent** |
+|---|---|---|
+| **Engine** | OPA / Rego | AWS Cedar (Verified Permissions) |
+| **Responsibilities** | Kubernetes admission, Terraform validation, Network policy, Secret access policy, Docker image policy, Service mesh mTLS, Compliance scanning, CI/CD pipeline gates | User authorization, Agent permissions, Tool invocation control, Resource access control, Memory/knowledge access, Payment/trade approval, Data classification access, Multi-tenant isolation, Audit trail (CloudTrail) |
+| **Policy Store** | S3 Bundle | AVP Policy Store |
+| **Management** | Styra DAS | AVP Console + IaC |
+| **Deployment** | GitOps | CI/CD + CodePipeline |
+
+**Shared Layer:**
+- **Claims Normalization Service** — canonical claims flow to both engines
+- **Policy Decision Aggregator** — combines Cedar + OPA decisions
 
 Industry Evidence: Netflix uses OPA for infrastructure (Kubernetes, Spinnaker pipelines) and application-layer policy engines for content authorization. Capital One uses Cedar with AWS Verified Permissions for fine-grained banking application authorization. Uber uses OPA for microservice authorization across their heterogeneous stack. The hybrid model is the enterprise standard.
 
@@ -308,7 +318,13 @@ Agentic AI introduces a new authorization challenge: an agent acts on behalf of 
 
 ### 7.1 Token Exchange Flow for Agent Delegation
 
-`User Authenticates Agent is Invoked` I `(Entra ID JWT)` I IIIIIIIIIIIIIIIIIIIIIIIIII I M `Token Exchange Service (RFC 8693 / AWS STS)` I `Inputs: • subject_token: User JWT • actor_token: Agent service JWT • scope: agent_tool_invocation • resource: specific tool URN` I M `Composite Delegation Token { "sub": "agent-runtime-01", "act": { "sub": "john.smith@bank.com" }, "scope": "tool:payment_approval", "delegated_capabilities": [ "can_approve_payment" ], "delegation_constraints": { "max_amount": 50000, "currency": "GBP", "expiry": "2025-06-26T10:30:00Z" } }` I M `Cedar Policy Evaluation (Agent + Delegated User context)`
+**Token Exchange Flow (RFC 8693 / AWS STS):**
+
+1. **User authenticates** → receives Entra ID JWT (scoped to AI Platform)
+2. **Agent invoked** with user's JWT as subject token
+3. **Token Exchange Service** inputs: `subject_token` (User JWT) · `actor_token` (Agent service JWT) · `scope: agent_tool_invocation` · `resource: specific tool URN`
+4. **Composite Delegation Token** issued — `sub`: agent-runtime-01, `act.sub`: john.smith@bank.com, `scope`: tool:payment_approval, `delegated_capabilities`: [can_approve_payment], `delegation_constraints`: { max_amount: 50000, currency: GBP, expiry: 2025-06-26T10:30:00Z }
+5. **Cedar Policy Evaluation** using both agent identity and delegated user context
 
 Security Principle: The delegation token must enforce the MINIMUM of the user's permissions and the agent's permitted scope. An agent cannot grant itself capabilities that the user does not have, nor can the user's token grant the agent capabilities beyond its authorized scope. Intersection of permission sets, never union.
 

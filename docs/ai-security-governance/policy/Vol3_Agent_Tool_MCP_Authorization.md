@@ -106,7 +106,7 @@ resource.requiredCapability ) };
 |Financial Operations|Payment Tool, Transfer Tool, FX Tool|can_approve_payment|Dual approval for > $10K, MFA, low risk|
 |ERP/CRM Access|SAP Tool, Salesforce Tool|can_access_erp|Department match, geography, session age|
 |Document Operations|SharePoint Tool, S3 Tool|can_access_documents|Classification-based, DLP active|
-|Communication|Email Tool, Teams Tool, Slack Tool|can_send_communicatio n|Recipient validation, DLP scan|
+|Communication|Email Tool, Teams Tool, Slack Tool|can_send_communication|Recipient validation, DLP scan|
 |Code Execution|Lambda Tool, CodeBuild Tool|can_execute_code|Sandbox only, output size limit|
 |Destructive Operations|Delete Tool, Purge Tool|can_delete_records|Business hours, approval, risk < 30|
 |External APIs|Vendor API Tool, Partner Tool|can_call_external_api|Tenant isolation, rate limit|
@@ -152,15 +152,19 @@ The Model Context Protocol (MCP) is the emerging standard for connecting AI agen
 
 ### 4.1 MCP Authorization Architecture
 
-`AGENT RUNTIME` I I `MCP Client (agent-side)` I `[carries delegation token]` I M
+**MCP Authorization Architecture:**
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MCP PEP (Gateway Layer)` I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Tool Discovery Authorization` IIIIIII `Cedar: Can this agent discover these tools?` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Tool Invocation Authorization` IIIIIII `Cedar: Can agent invoke this specific tool?` I
+`AGENT RUNTIME` → MCP Client (agent-side, carries delegation token)
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I
+**MCP PEP (Gateway Layer)** — four sequential authorization checks:
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Parameter Validation` IIIIIII `Schema + policy: are inputs within bounds?` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I `Output Classification Filter` IIIIIII `Cedar: Can agent receive this output class?` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I M
+1. **Tool Discovery Authorization** — Cedar: *Can this agent discover these tools?*
+2. **Tool Invocation Authorization** — Cedar: *Can this agent invoke this specific tool?*
+3. **Parameter Validation** — Schema + policy: *are inputs within bounds?*
+4. **Output Classification Filter** — Cedar: *Can this agent receive output at this classification level?*
 
-IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I `MCP SERVER` I I `(Business Logic — never authorizes)` I I I I `Tool Handler 1` I `Tool Handler 2` I I `Tool Handler 3` I `Tool Handler N` I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+**MCP SERVER** (Business Logic — never authorizes itself):
+- Tool Handler 1 · Tool Handler 2 · Tool Handler 3 · Tool Handler N
 
 ### 4.2 MCP Security Requirements
 
@@ -229,10 +233,25 @@ Cedar Obligation Pattern: When Cedar returns ALLOW with an obligation 'REQUIRE_H
 
 ### 6.1 REST API Agent Authorization Flow
 
-`User API GW Lambda Auth Claims Svc Cedar AVP Agent Runtime Tool` I I I I I I I II `POST /` IIIIII I I I I I I `(JWT)` I I I I I I I II `authorizer` II I I I I I I II `validate` II I I I I I I `JWT sig` I I I I I I III `claims` IIII I I I I I II `normalize` II I I I I I III `canonical` II I I I I I II `IsAuthorized` IIIIIIIIIIII I I I I I I `ALLOW` IIII I I I III `200 policy` II I I I I I II `route` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I I I II `tool auth` III I I I I I IIII `ALLOW` IIIII I I I I I I II `invoke` III I I I I I III `result` II I I I I I II `log` IIIIII III `response` II I I I I I
+**REST API Agent Authorization Flow:**
 
+1. Client sends `POST /` with JWT to API Gateway
+2. Lambda Authorizer validates JWT signature
+3. Claims Service normalizes claims to canonical form
+4. Cedar AVP `IsAuthorized` called → ALLOW
+5. Lambda Authorizer returns `200` IAM policy; API Gateway routes request to Agent Runtime
+6. Agent Runtime calls per-tool Cedar authorization → ALLOW
+7. Agent invokes Tool → receives result
+8. Result logged; response returned to client
 ### 6.2 Multi-Agent Workflow Authorization Sequence
 
-`User Orchestrator Cedar AVP Specialist A Cedar AVP Tool Human` I I I I I I I II `invoke` II I I I I I I II `P1: auth` IIII I I I I I III `ALLOW` IIIIIII I I I I I II `plan step 1` II I I I I I III `ALLOW` IIIIIII I I I I I II `delegate` IIIII I I I I I I I II `P3: tool` IIIII I I I I I I `auth` I I I I I I III `ALLOW+OBL` III I I I I I I `(if > $10K: human approval req'd)` I I I I IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII I I I I IIIIIIIIIIIIIIIII `APPROVED`
+**Multi-Agent Workflow Authorization Sequence:**
 
-IIIIIIIIIII I I I II `P3b: re-auth` II I I I I I III `ALLOW` IIIIII I I I I I I II `invoke` IIIIIIIIIIIIIIIIII I I I I III `result` IIIIIIIIIIIIIIII I III `result` II I I I I I
+1. User invokes Orchestrator → P1: agent invocation auth → ALLOW
+2. Orchestrator plans step → delegation check → ALLOW
+3. Orchestrator delegates to Specialist Agent A
+4. Specialist A: P3 tool authorization → Cedar returns ALLOW + OBLIGATION (if payment > $10K: human approval required)
+5. Human Approval Gate triggered; approver reviews and approves
+6. P3b: re-authorization with `humanApprovalStatus=APPROVED` → Cedar ALLOW
+7. Specialist A invokes Tool → result returned
+8. Result flows back: Specialist A → Orchestrator → User
