@@ -241,11 +241,11 @@ const sidebars = {
           label: 'AIDLC',
           items: [
             'ai-development/aidlc/index',
-            'ai-development/aidlc/AIDLC_Enterprise_Framework_2025',
-            'ai-development/aidlc/EA_AIDLC_Deep_Research_2026',
-            'ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026',
-            'ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026',
-            'ai-development/aidlc/AIDLC_Artifact_Reference_Library',
+            {type: 'doc', id: 'ai-development/aidlc/AIDLC_Enterprise_Framework_2025', label: 'Enterprise Framework (8-Phase Model)'},
+            {type: 'doc', id: 'ai-development/aidlc/EA_AIDLC_Deep_Research_2026', label: 'EA Impact & AI Tooling Revolution'},
+            {type: 'doc', id: 'ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026', label: 'Agile & CI/CD Transformation'},
+            {type: 'doc', id: 'ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026', label: 'Agile in the Age of Agentic AI'},
+            {type: 'doc', id: 'ai-development/aidlc/AIDLC_Artifact_Reference_Library', label: 'Artifact Reference Library'},
           ],
         },
         {

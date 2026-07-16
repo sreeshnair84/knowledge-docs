@@ -1,25 +1,22 @@
 ---
 title: "Impact of AIDLC on Enterprise Architecture — The AI Tooling Revolution"
 date_created: 2026-07-10
-status: current
-source_type: converted-pdf
-source_file: "EA_AIDLC_Deep_Research_2026.pdf"
-doc_type: research-report
-tags: ["ai-development", "software-engineering"]
 last_reviewed: 2026-07-10
-covers_through: 2026-07-10
-research_date: 2026-07-10
+status: current
+source_type: pdf-converted
+source_file: "EA_AIDLC_Deep_Research_2026.pdf"
+tags: ["ai-development", "software-engineering", "aidlc", "enterprise-architecture"]
 ---
-**ENTERPRISE ARCHITECTURE IMPACT OF AIDLC & AI TOOLS** DEEP RESEARCH — STRATEGIC DOCUMENT 2026
-**DEEP RESEARCH REPORT**
 
 # Impact of AIDLC on Enterprise Architecture — The AI Tooling Revolution
 
-**EDITION FOCUS SCOPE FRAMEWORKS** <u>2026 Enterprise Architecture Global Enterprise TOGAF·NIST·EA4.0</u>
+How AIDLC and the 2026 AI tooling stack are dismantling legacy EA assumptions and forcing a ground-up redesign of enterprise technology foundations.
 
-Research synthesis: McKinsey · Deloitte · Gartner · AWS · Microsoft · Google · IBM · O'Reilly · CSA · NIST
+> **Audience:** Principal Enterprise Architects, CTO Organizations, EA Practice Leads
+> **Coverage:** Four EA Layers · TOGAF ADM · AI Tooling Stack · AgentOps · Transformation Roadmap
+> **As of:** 2026 (McKinsey · Deloitte · Gartner · AWS · Microsoft · Google · IBM · NIST)
 
-## **00  EXECUTIVE SUMMARY**
+## 00  EXECUTIVE SUMMARY
 
 Enterprise Architecture (EA) is undergoing its most profound transformation since cloud adoption. The AI Development Lifecycle (AIDLC), combined with a new generation of AI tools — agentic platforms, RAG systems, LLMOps, vector databases, and intelligent orchestration layers — is systematically dismantling legacy EA assumptions and forcing a ground-up redesign of how enterprises structure their technology foundations.
 
@@ -27,7 +24,7 @@ This report examines every dimension of that impact: from how AIDLC reshapes the
 
 The core finding is stark: architecture — not model capability — is the primary determinant of AI success at scale. MIT research shows 95% of enterprise AI pilots fail to scale. The constraint is operational fit: the ability to integrate AI into fragmented enterprise workflows shaped by legacy systems, siloed data, and approval layers. AIDLC provides the lifecycle discipline; EA provides the structural foundation.
 
-## **TABLE OF CONTENTS**
+## TABLE OF CONTENTS
 
 **1. EA Fundamentals Redefined by AI & AIDLC** The shift from static to intelligent EA
 
@@ -57,9 +54,9 @@ The core finding is stark: architecture — not model capability — is the prim
 
 **12. Strategic Recommendations** C-suite and EA team action items
 
-## **1  EA FUNDAMENTALS REDEFINED BY AI & AIDLC**
+## 1  EA FUNDAMENTALS REDEFINED BY AI & AIDLC
 
-## **1.1 The Static-to-Intelligent Shift**
+## 1.1 The Static-to-Intelligent Shift
 
 Traditional Enterprise Architecture was a planning discipline — producing blueprints, roadmaps, and governance artifacts that aged slowly. AIDLC changes this fundamentally. AI systems are dynamic: they drift, they learn, they surface emergent behaviors, and they create new integration dependencies continuously. EA must become a living operational system, not a static documentation practice. By 2028, 55% of enterprise architecture teams are expected to transition from traditional business-outcome-driven approaches (BODEA) to AI-based autonomous governance.
 
@@ -75,7 +72,7 @@ Traditional Enterprise Architecture was a planning discipline — producing blue
 |**Human Role**|Architect as designer and<br>decision-maker|Architect as validator, AI orchestrator, and<br>governance director|
 |**Tooling**|ARIS, Sparx EA, LeanIX|AI-native EA tools + agentic capabilities in<br>repository analysis|
 
-## **1.2 Why the Add-On Approach Fails at Scale**
+## 1.2 Why the Add-On Approach Fails at Scale
 
 - **API Timeout Cascades:** Legacy API gateways designed for human-rate requests collapse under agentic AI's burst
 
@@ -99,7 +96,7 @@ Traditional Enterprise Architecture was a planning discipline — producing blue
 
 • **Vendor Lock-in Compounding:** Each proprietary AI orchestration layer adds another lock-in dimension. Enterprises without a defined agentic AI architecture strategy are already making a default choice — driven by vendor marketing rather than governance posture.
 
-## **2  AIDLC IMPACT ON THE FOUR EA LAYERS**
+## 2  AIDLC IMPACT ON THE FOUR EA LAYERS
 
 |**BUSINESS**<br>**ARCHITECTURE**|AI-Driven Operating Model · Workforce Redesign · AI Governance Org Structure<br>· Value Stream Mapping for AI|
 |---|---|
@@ -109,7 +106,7 @@ Traditional Enterprise Architecture was a planning discipline — producing blue
 
 *Figure 1: The Four EA Layers Redefined by AIDLC (bottom = infrastructure, top = business)*
 
-## **2.1 Business Architecture — AI-Driven Operating Model**
+## 2.1 Business Architecture — AI-Driven Operating Model
 
 AIDLC fundamentally changes how business capabilities are mapped and owned. The emergence of Human-Agentic Workforce models (Deloitte 2026) means that traditional business process maps become outdated within months. EA's Business Architecture layer must continuously model which tasks are human-led, which are AI-augmented, and which are fully autonomous — and govern transitions between these states. McKinsey's Superagency framework shows that redesigning workflows has the single biggest effect on EBIT impact from AI deployment.
 
@@ -123,7 +120,7 @@ AIDLC fundamentally changes how business capabilities are mapped and owned. The 
 
 • **Workforce Impact Modeling:** Business Architecture must explicitly model workforce displacement and augmentation. MIT research shows AI task redesign is already selectively reducing clerical and customer support roles. EA must include workforce transition planning as a first-class architecture concern.
 
-## **2.2 Data Architecture — The Foundation That Determines AI Success**
+## 2.2 Data Architecture — The Foundation That Determines AI Success
 
 The enterprise data management market reached $124.9 billion in 2025, yet spending has not translated cleanly into capability. Data architecture is the single most critical enabler of AI success — and the most common failure point. AI cannot be better than the data it consumes. Harvard Business Review and MIT Sloan both identify data architecture as the foundation of AI success. AIDLC forces five major evolutions in Data Architecture:
 
@@ -137,7 +134,7 @@ The enterprise data management market reached $124.9 billion in 2025, yet spendi
 |**Real-Time Data**<br>**Pipelines**|AI agents require real-time data. Apache Kafka, AWS Kinesis, and Azure Event<br>Hubs replace batch ETL as the primary data transport for AI systems. EA must<br>architect event-driven pipelines that deliver millisecond-fresh data with<br>exactly-once semantics and full lineage capture.|
 |**Data Lineage &**<br>**Provenance**|EU AI Act Article 10 mandates data governance for high-risk AI systems. EA must<br>implement automated lineage tracking (Apache Atlas, OpenLineage) that traces<br>every data element from source through transformation to model training and<br>inference — creating the audit-ready evidence regulators now require.|
 
-## **2.3 Application Architecture — From Microservices to Agent Meshes**
+## 2.3 Application Architecture — From Microservices to Agent Meshes
 
 The O'Reilly 2026 Signals report identifies agentic AI as having a microservices-to-monolith level of impact on application architecture: "Agentic AI is to GenAI what microservices were to monoliths." Application architecture must evolve to accommodate AI models, orchestration frameworks, safety layers, and human oversight interfaces as first-class architectural components.
 
@@ -153,7 +150,7 @@ The O'Reilly 2026 Signals report identifies agentic AI as having a microservices
 
 **Event-Driven AI Architecture:** AI agents subscribe to enterprise event streams (Kafka/Kinesis) to receive triggers and publish results. This decouples AI processing from synchronous request cycles, enabling autonomous AI to operate at enterprise event scale without blocking application threads. Circuit breakers and dead-letter queues manage failure modes.
 
-## **2.4 Technology Architecture — Infrastructure for AI at Enterprise Scale**
+## 2.4 Technology Architecture — Infrastructure for AI at Enterprise Scale
 
 The technology layer faces the most immediate and tangible restructuring. GPU infrastructure, vector compute, real-time inference serving, and the MLOps/LLMOps operational layer all represent net-new technology architecture requirements with no legacy analog. Teams running mature MLOps typically report 10× faster release cycles and 40–60% infrastructure cost reductions through compute optimization and pipeline automation.
 
@@ -168,19 +165,19 @@ The technology layer faces the most immediate and tangible restructuring. GPU in
 |**AI Gateway / LLM**<br>**Proxy**|API management,<br>rate limiting, audit for<br>LLM calls|Kong AI Gateway,<br>Apigee, LiteLLM,<br>Portkey|New perimeter for LLM traffic;<br>cost control mechanism|
 |**Edge AI Runtime**|On-device inference<br>for low-latency,<br>privacy-sensitive use|ONNX Runtime,<br>TensorRT, Apple<br>CoreML|Extends EA to device layer;<br>OTA model updates|
 
-## **3  REFERENCE ARCHITECTURE: THE AI-FIRST EA STACK**
+## 3  REFERENCE ARCHITECTURE: THE AI-FIRST EA STACK
 
 The 2026 production-grade enterprise AI architecture comprises seven horizontal layers, each with specific components, governance controls, and AIDLC touchpoints. This reference architecture synthesizes patterns from AWS, Azure, Google Cloud, and leading enterprise deployments.
 
 *Figure 2: 7-Layer AI-First Enterprise Architecture Reference Stack (L1=Foundation, L7=Governance)*
 
-#### **CROSS-CUTTING ARCHITECTURE CONCERNS**
+#### CROSS-CUTTING ARCHITECTURE CONCERNS
 
 ***Cross-cutting concerns that span all 7 layers: Security & Zero Trust (identity verification at every layer), Observability (metrics, logs, traces from L1 through L7), Governance & AIDLC Controls (phase gates, compliance evidence, audit logs), and FinOps for AI (compute cost tracking from GPU through to business value attribution).***
 
-## **4  ARCHITECTURE PATTERNS FOR AI SYSTEMS**
+## 4  ARCHITECTURE PATTERNS FOR AI SYSTEMS
 
-## **4.1 RAG Architecture Pattern (Retrieval-Augmented Generation)**
+## 4.1 RAG Architecture Pattern (Retrieval-Augmented Generation)
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -192,7 +189,7 @@ The 2026 production-grade enterprise AI architecture comprises seven horizontal 
 |**Common Failure**<br>**Modes**|Stale knowledge base (>24hr lag), embedding model/query model mismatch,<br>chunking strategy mismatch, over-retrieval noise overwhelming context window|
 |**Production Metrics**|Recall@K >85%, Precision >70%, End-to-end p99 latency <500ms, Knowledge<br>freshness <4 hours|
 
-## **4.2 Agentic Architecture Pattern (Multi-Agent Systems)**
+## 4.2 Agentic Architecture Pattern (Multi-Agent Systems)
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -204,7 +201,7 @@ The 2026 production-grade enterprise AI architecture comprises seven horizontal 
 |**IAPP 3-Tier Guardrails**|Tier 1: Standard safety; Tier 2: Action boundaries + memory governance + tiered<br>HITL; Tier 3: Context-specific constraints by deployment domain|
 |**Zero Trust**<br>**Requirement**|Agents must not inherit user permissions by default. Principle of least privilege<br>applies per tool, per API endpoint, per data namespace accessed.|
 
-## **4.3 Data Mesh + AI Pattern**
+## 4.3 Data Mesh + AI Pattern
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -215,7 +212,7 @@ The 2026 production-grade enterprise AI architecture comprises seven horizontal 
 |**AIDLC Integration**|Phase 3: Data Strategy maps AI use case to owning domain(s); Phase 5: Training<br>data sourced from certified domain data products only; Phase 8: Domain teams<br>own ongoing data quality monitoring|
 |**Architecture**<br>**Requirements**|Data Catalog (Databricks Unity Catalog, Collibra, Atlan), Domain data product<br>APIs, Federated governance policy engine, Cross-domain lineage tracking|
 
-## **4.4 Event-Driven AI Architecture Pattern**
+## 4.4 Event-Driven AI Architecture Pattern
 
 |**Dimension**|**Detail**|
 |---|---|
@@ -225,7 +222,7 @@ The 2026 production-grade enterprise AI architecture comprises seven horizontal 
 |**EA Governance**<br>**Controls**|Event schema registry (Confluent Schema Registry) with AI metadata standards,<br>consumer isolation by AI risk tier, audit log for all AI-produced events, replay<br>capability for regulatory investigation|
 |**Production Patterns**|Exactly-once semantics for financial AI events, saga pattern for multi-agent<br>workflows spanning multiple services, CQRS for separating AI write and read<br>models|
 
-## **5  MLOps & LLMOps: THE OPERATIONAL ARCHITECTURE**
+## 5  MLOps & LLMOps: THE OPERATIONAL ARCHITECTURE
 
 MLOps (for traditional ML models) and LLMOps (for generative AI) are converging in 2026 into unified operational platforms. Teams running mature MLOps report 10× faster releases and 40–60% infrastructure cost reductions. The operational architecture is the connective tissue between AIDLC phases and production AI systems — it is where governance becomes executable.
 
@@ -240,7 +237,7 @@ MLOps (for traditional ML models) and LLMOps (for generative AI) are converging 
 |**Retraining**|Scheduled or<br>drift-triggered retraining|RAG knowledge base refresh,<br>fine-tuning on new data, prompt<br>updates|Phase 8|
 |**Governance**|Model cards, bias<br>reports|Constitutional compliance audits, EU<br>AI Act documentation, FRIA|All Phases|
 
-## **5.1 The LLMOps Monitoring Stack**
+## 5.1 The LLMOps Monitoring Stack
 
 • **Hallucination Detection:** Factual consistency scoring using models like RAGAS, TruEra, or custom NLI classifiers. Alert when hallucination rate exceeds threshold. For RAG systems, measure faithfulness (does response align with retrieved context?)
 
@@ -264,15 +261,15 @@ MLOps (for traditional ML models) and LLMOps (for generative AI) are converging 
 
 - model version, timestamp, user context, retrieved documents.
 
-## **5.2 Autonomous Retraining Architecture**
+## 5.2 Autonomous Retraining Architecture
 
 Closed-loop autonomous retraining represents the frontier of MLOps maturity: drift detection → automated evaluation of whether retraining is cost-justified → retraining pipeline execution → automated validation → staged deployment. Humans review policies and exceptions rather than individual retraining decisions. This architecture requires: drift threshold policy (AIDLC Phase 8 artifact), cost-benefit model for retraining ROI, automated test suites for regression detection, and rollback automation for failed retraining cycles.
 
-## **6  SECURITY ARCHITECTURE: ZERO TRUST FOR AI**
+## 6  SECURITY ARCHITECTURE: ZERO TRUST FOR AI
 
 Traditional Zero Trust Architecture (ZTA) assumes a human identity initiates every session. Agentic AI shatters this assumption: autonomous agents execute chains of tool calls, spawn sub-agents, and interact with external systems in ways that bypass traditional user-identity boundaries. A new security architecture — Zero Trust for AI — must be designed from first principles.
 
-## **6.1 The MAESTRO AI Threat Model**
+## 6.1 The MAESTRO AI Threat Model
 
 The MAESTRO framework (Machine learning, Agent, Embedding, System, Topology, Runtime, Orchestration) provides a systematic threat model for AI systems. Combined with the STRIDE framework, it maps threats across the full AI architecture:
 
@@ -287,7 +284,7 @@ The MAESTRO framework (Machine learning, Agent, Embedding, System, Topology, Run
 |**Data Exfiltration via**<br>**LLM**|Info<br>Disclosure|Sensitive data retrieved by<br>RAG and included in<br>responses to unauthorized<br>users|RAG namespace access control,<br>output filtering, DLP on LLM<br>responses|
 |**Hallucination-Based**<br>**Fraud**|Repudiation|AI generates false<br>information used in financial<br>or legal decisions|Hallucination detection, HITL for<br>high-stakes outputs, citation<br>enforcement|
 
-## **6.2 Zero Trust AI Architecture Principles**
+## 6.2 Zero Trust AI Architecture Principles
 
 • **Never Trust Agent Identity by Default:** Agents receive time-limited, scope-limited credentials. No agent inherits human user permissions. All agent identities are registered in an Agent Identity Registry separate from IAM.
 
@@ -309,7 +306,7 @@ The MAESTRO framework (Machine learning, Agent, Embedding, System, Topology, Run
 
 - 1=recommend → 2=act with HITL → 3=act with notification → 4=fully autonomous) based on demonstrated accuracy, security audit, operational history, and stakeholder approval.
 
-## **6.3 Security Architecture Layers for AI Systems**
+## 6.3 Security Architecture Layers for AI Systems
 
 |**Layer**|**Controls**|**Tooling**|
 |---|---|---|
@@ -321,7 +318,7 @@ The MAESTRO framework (Machine learning, Agent, Embedding, System, Topology, Run
 |**Runtime**|Circuit breakers (halt runaway agents), action<br>replay logs, anomaly detection on agent<br>behavior patterns|Kubernetes Network Policy, Istio<br>mTLS, OPA|
 |**Observability**|Security event correlation across agent actions,<br>SIEM integration for AI incidents, audit log<br>immutability|Splunk, Datadog, Elastic, AWS<br>CloudTrail|
 
-## **7  TOGAF 10 & AI-FIRST ARCHITECTURE**
+## 7  TOGAF 10 & AI-FIRST ARCHITECTURE
 
 TOGAF 10 (2022) is used by over 80% of Global 50 companies. Its Architecture Development Method (ADM) provides the iterative structure for enterprise architecture governance. For AI-first enterprises, TOGAF 10's ADM must be extended at every phase to incorporate AIDLC requirements, agentic AI governance, and the new EA artifacts the AI era demands.
 
@@ -337,7 +334,7 @@ TOGAF 10 (2022) is used by over 80% of Global 50 companies. Its Architecture Dev
 |**G: Implementation**<br>**Governance**|Architecture contracts,<br>compliance reviews|AIDLC Phase Gates as Architecture Compliance<br>checkpoints. AI system registration in EA repository.<br>Model Card and Data Sheet review.|
 |**H: Change**<br>**Management**|Architecture change<br>requests, lessons<br>learned|AI-triggered architecture change requests (model<br>capability expansion, new regulation). Quarterly AI<br>Portfolio Review. Architecture debt from AI legacy.|
 
-## **7.1 New EA Artifacts Required by AIDLC**
+## 7.1 New EA Artifacts Required by AIDLC
 
 - **AI System Inventory:** A living registry of every AI system (including embedded SaaS AI) with model purpose, data
 
@@ -359,7 +356,7 @@ fine-tuning decision, vector database selection, MLOps platform choice, agentic 
 
 - mandatory artifact for EU AI Act Article 10 compliance.
 
-## **8  AI TOOLING LANDSCAPE & PLATFORM ARCHITECTURE**
+## 8  AI TOOLING LANDSCAPE & PLATFORM ARCHITECTURE
 
 The enterprise AI tool landscape has consolidated dramatically in 2025–2026 into recognizable platform patterns. The global AI system integration and consulting market reached $11 billion in 2025. Enterprises must make architecture-level tooling decisions that balance capability, governance posture, vendor lock-in risk, and total cost of ownership.
 
@@ -375,7 +372,7 @@ The enterprise AI tool landscape has consolidated dramatically in 2025–2026 in
 |**AI Gateway**|API Gateway +<br>Bedrock Guardrails|APIM + Azure<br>Content Filters|Apigee + Vertex<br>Guardrails|Kong AI Gateway,<br>LiteLLM, Portkey|
 |**EA/AI Governance**|AWS Config +<br>CloudTrail|Microsoft Purview<br>+ Compliance<br>Center|Dataplex + Data<br>Catalog|Collibra, Atlan,<br>OneTrust, IBM<br>OpenPages|
 
-## **8.1 Vendor Lock-In Risk Assessment**
+## 8.1 Vendor Lock-In Risk Assessment
 
 • **Orchestration Layer Lock-in:** If agents run on a vendor's proprietary orchestration layer (AWS Strands, Azure AI Agent Service), lock-in compounds at every layer of the stack. The MCP standard provides a lock-in mitigation strategy for tool integration.
 
@@ -387,7 +384,7 @@ The enterprise AI tool landscape has consolidated dramatically in 2025–2026 in
 
 • **Mitigation Strategy:** Open standards first (MLflow, MCP, OpenLineage, OpenTelemetry), proprietary services for undifferentiated compute (GPU, storage), portability tests included in AIDLC Phase 7 deployment requirements.
 
-## **9  EA ROLE TRANSFORMATION IN THE AI ERA**
+## 9  EA ROLE TRANSFORMATION IN THE AI ERA
 
 Every role in the enterprise architecture function is being redefined. New roles are emerging; existing roles are gaining new responsibilities; and some traditional EA activities are being automated by AI itself. The EA market surpassed $1 billion in tooling in 2025, with AI-native capabilities becoming a vendor differentiator.
 
@@ -405,7 +402,7 @@ Every role in the enterprise architecture function is being redefined. New roles
 
 ***By 2028, 55% of enterprise architecture teams will transition to AI-based autonomous governance (Gartner). The most consequential structural development in EA tooling is agentic capabilities — AI components that proactively monitor repository patterns, identify inconsistencies, and suggest corrective actions rather than merely responding to user prompts.***
 
-## **10  ANTI-PATTERNS & FAILURE MODES**
+## 10  ANTI-PATTERNS & FAILURE MODES
 
 MIT research shows 95% of enterprise AI pilots fail to scale. The following anti-patterns are the documented root causes — observed across hundreds of enterprise deployments. Each AIDLC phase has specific anti-patterns that the governance framework is designed to prevent.
 
@@ -422,11 +419,11 @@ MIT research shows 95% of enterprise AI pilots fail to scale. The following anti
 |**Explainability Debt**|Deploying black-box<br>models to high-risk use<br>cases without<br>explainability<br>mechanisms|EU AI Act<br>non-compliance; inability<br>to appeal AI decisions;<br>loss of user trust|Phase 4: Explainability<br>approach selected at<br>architecture phase, not as<br>afterthought|
 |**FinOps Blindness**|No cost attribution for AI<br>compute; GPU spend<br>unlinked to business<br>value|Budget overruns;<br>inability to justify AI<br>investments;<br>ungoverned compute<br>sprawl|Phase 7: FinOps dashboard<br>linking per-query cost to<br>business value attribution|
 
-## **11  12-MONTH EA TRANSFORMATION ROADMAP**
+## 11  12-MONTH EA TRANSFORMATION ROADMAP
 
 This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Accenture, and PwC into a phased enterprise architecture transformation plan. It is structured around four 90-day horizons, each with specific deliverables, governance milestones, and success metrics.
 
-## **Q1 (Days 1–90): FOUNDATION**
+## Q1 (Days 1–90): FOUNDATION
 
 |**Timeline**|**Activity & Deliverable**|
 |---|---|
@@ -437,7 +434,7 @@ This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Acc
 |**Week 6–10**|Select first 2–3 T4 (minimal risk) AIDLC pilot use cases. Run full AIDLC cycle as<br>learning exercise.|
 |**Week 8–12**|Define AI Architecture Standards: model selection criteria, LLM Gateway requirements,<br>vector database standards, MLOps platform selection.|
 
-## **Q2 (Days 91–180): BUILD CAPABILITY**
+## Q2 (Days 91–180): BUILD CAPABILITY
 
 |**Timeline**|**Activity & Deliverable**|
 |---|---|
@@ -448,7 +445,7 @@ This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Acc
 |**Month 5–6**|Integrate AIDLC Phase Gates into delivery process: Phase 1–4 gates operational. Train<br>all product teams on AIDLC.|
 |**Month 6**|First Quarterly AI Portfolio Review: governance metrics baseline established. Gaps<br>documented and remediation planned.|
 
-## **Q3 (Days 181–270): SCALE & GOVERN**
+## Q3 (Days 181–270): SCALE & GOVERN
 
 |**Timeline**|**Activity & Deliverable**|
 |---|---|
@@ -461,7 +458,7 @@ This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Acc
 |**Month 9**|Begin ISO/IEC 42001 gap assessment and remediation. Target certification within 6<br>months.|
 |**Month 9**|AIDLC Phase 5–8 gates fully operational. All active AI projects tracked through lifecycle<br>dashboard.|
 
-## **Q4 (Days 271–365): OPTIMIZE & LEAD**
+## Q4 (Days 271–365): OPTIMIZE & LEAD
 
 |**Timeline**|**Activity & Deliverable**|
 |---|---|
@@ -472,9 +469,9 @@ This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Acc
 |**Month 12**|Annual AI Governance Review: RAI KPI performance vs targets, regulatory posture<br>assessment, vendor landscape review, roadmap for Year 2.|
 |**Month 12**|ISO/IEC 42001 certification audit. EU AI Act high-risk system documentation submitted<br>for review. Target: full compliance posture.|
 
-## **12  STRATEGIC RECOMMENDATIONS**
+## 12  STRATEGIC RECOMMENDATIONS
 
-### **FOR THE CIO / CTO**
+### FOR THE CIO / CTO
 
 - Mandate AIDLC as the required lifecycle for all AI initiatives in 2026. No AI system reaches production without completing Phases 1–7. Non-compliance is a risk event.
 
@@ -486,7 +483,7 @@ This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Acc
 
 - Lead the AI Governance Council personally, or appoint a direct report to chair it. Delegating AI governance to IT alone is the single strongest predictor of governance failure (Deloitte 2026).
 
-### **FOR THE ENTERPRISE ARCHITECT**
+### FOR THE ENTERPRISE ARCHITECT
 
 - Update your TOGAF ADM immediately to include AI-specific artifacts: AI System Inventory, Constitutional AI Policy, Agent Action Boundary Register, AI Capability Map, and Data Lineage Map.
 
@@ -498,7 +495,7 @@ This roadmap synthesizes the collective guidance of AWS, McKinsey, Deloitte, Acc
 
 - Learn Zero Trust for AI as a core competency. Agentic AI security architecture is not optional — it is the security perimeter of the AI era.
 
-### **FOR AI & DATA ARCHITECTS**
+### FOR AI & DATA ARCHITECTS
 
 - Design RAG pipelines with enterprise-grade SLAs: knowledge freshness <4 hours, retrieval latency p99 <200ms, namespace-level access control, and GDPR-compliant deletion capability.
 

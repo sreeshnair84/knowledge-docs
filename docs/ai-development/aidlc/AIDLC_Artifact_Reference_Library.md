@@ -2,23 +2,21 @@
 title: "AIDLC Artifact Reference Library — Templates & Examples"
 date_created: 2026-07-10
 status: current
-source_type: converted-pdf
+source_type: pdf-converted
 source_file: "AIDLC_Artifact_Reference_Library.pdf"
-doc_type: guide
-tags: ["ai-development", "software-engineering"]
+tags: ["ai-development", "software-engineering", "aidlc"]
 last_reviewed: 2026-07-10
-framework_name: ""
-covers_version: "N/A"
 ---
+
 # AIDLC Artifact Reference Library — Templates & Examples
 
-#### All 8 AIDLC Phases · EA Artifacts · Phase Gates
+Live templates for all 8 AIDLC phases, with field definitions and example content for every artifact.
 
-Every artifact shown as a live template with field definitions and example content
+> **Audience:** Enterprise Architects, AI Delivery Leads, Program Managers, Governance Teams
+> **Coverage:** All 8 AIDLC Phases · EA Artifacts · Phase Gates · Template Field Definitions
+> **As of:** 2026
 
-Companion to: AIDLC Enterprise Framework 2025 & Enterprise Architecture Impact of AIDLC & AI Tools 2026
-
-## **HOW TO READ THIS DOCUMENT**
+## HOW TO READ THIS DOCUMENT
 
 |**Element**|**Description**|
 |---|---|
@@ -31,17 +29,17 @@ Companion to: AIDLC Enterprise Framework 2025 & Enterprise Architecture Impact o
 
 ***EXAMPLE CONTENT: All field values shown in blue italic are illustrative examples for a hypothetical "Credit Risk AI Scoring Model" use case at a financial services enterprise. Replace all blue italic values with your actual project data.***
 
-###### **PHASE**
+###### PHASE
 
 **1**
 
-## **Discovery & Ideation**
+## Discovery & Ideation
 
 **AI Governance Council Registration**
 
 Define the AI use case, business value hypothesis, and initial feasibility signal
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
 → Strategic Business Goals
 
@@ -51,7 +49,7 @@ Define the AI use case, business value hypothesis, and initial feasibility signa
 
 → Regulatory Landscape Brief
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → AI Use Case Charter (AUC-001)
 
@@ -61,13 +59,13 @@ Define the AI use case, business value hypothesis, and initial feasibility signa
 
 - → Executive Sponsor Sign-off (ESO-001)
 
-###### **AUC-001**
+###### AUC-001
 
-### **AI Use Case Charter**
+### AI Use Case Charter
 
 Owner: Business Owner / Product Manager   |   Phase: Phase 1: Discovery
 
-###### **CHARTER IDENTIFICATION**
+###### CHARTER IDENTIFICATION
 
 |**Use Case ID**|*AUC-2026-FIN-047*|
 |---|---|
@@ -90,7 +88,7 @@ Owner: Business Owner / Product Manager   |   Phase: Phase 1: Discovery
 |**AI vs Non-AI Decision**|*AI preferred: decision volume (50,000/month), pattern complexity, regulatory*<br>*explainability requirement, real-time speed requirement. Non-AI alternatives (rule*<br>*engine, scorecard) evaluated and rejected.*|
 |**Build vs Buy vs Fine-Tune**|*Buy: Foundation credit risk models (FICO, Equifax). Fine-tune: LLM for adverse action*<br>*explanation. Build: Alternative data pipeline and ensemble orchestration.*|
 
-###### **ROI & VALUE HYPOTHESIS**
+###### ROI & VALUE HYPOTHESIS
 
 |**Metric**|**Baseline**|**AI Target**<br>**Annual Value Impact**|
 |---|---|---|
@@ -114,7 +112,7 @@ Owner: Business Owner / Product Manager   |   Phase: Phase 1: Discovery
 
 **BVC-001**
 
-### **Business Value Canvas**
+### Business Value Canvas
 
 Owner: Product Manager   |   Phase: Phase 1: Discovery
 
@@ -131,12 +129,12 @@ Owner: Product Manager   |   Phase: Phase 1: Discovery
 |Success Metrics|Decision time <60s (80% of apps); false rejection <5%; bias delta <2%;<br>Explainability coverage 100%|
 |Failure Risks|Regulatory rejection (FRIA outcome); bias discovery post-deployment; data<br>quality failure; model drift|
 
-###### **OUTPUT**
+###### OUTPUT
 
 |**RCS-001**|
 |---|
 
-### **Initial Risk Classification Sheet**
+### Initial Risk Classification Sheet
 
 Owner: AI Governance Council   |   Phase: Phase 1: Discovery
 
@@ -152,7 +150,7 @@ Owner: AI Governance Council   |   Phase: Phase 1: Discovery
 
 **PHASE 2**
 
-## **Feasibility & Risk Assessment**
+## Feasibility & Risk Assessment
 
 Validate technical feasibility, assess full risk exposure, obtain governance approval to proceed
 
@@ -160,7 +158,7 @@ Validate technical feasibility, assess full risk exposure, obtain governance app
 
 **OUTPUT FR-001 Technical Feasibility Report** Owner: AI Architect + Data Architect   |   Phase: Phase 2: Feasibility
 
-###### **TECHNICAL FEASIBILITY ASSESSMENT**
+###### TECHNICAL FEASIBILITY ASSESSMENT
 
 |**Data Availability**|*Bureau data: HIGH availability (Equifax, Experian APIs). Alternative data (utility):*<br>*MEDIUM (3 providers identified, contract negotiation required). Thin-file historical:*<br>*LIMITED — synthetic augmentation required.*|
 |---|---|
@@ -173,7 +171,7 @@ Validate technical feasibility, assess full risk exposure, obtain governance app
 
 **RR-001**
 
-### **AI Risk Register**
+### AI Risk Register
 
 Owner: AI Compliance Lead + Model Risk Manager   |   Phase: Phase 2: Feasibility
 
@@ -192,7 +190,7 @@ Owner: AI Compliance Lead + Model Risk Manager   |   Phase: Phase 2: Feasibility
 
 **FRIA-001**
 
-### **Fundamental Rights Impact Assessment**
+### Fundamental Rights Impact Assessment
 
 Owner: Ethics & Fairness Lead + Legal   |   Phase: Phase 2: Feasibility
 
@@ -235,19 +233,19 @@ Owner: Ethics & Fairness Lead + Legal   |   Phase: Phase 2: Feasibility
 |FCA SYSC 23<br>(Operational Resilience)|AI system resilience and<br>recovery capabilities|Phase 7 — IRP-001,<br>Deployment Runbook|HIGH|
 |ECOA Adverse Action<br>(equivalent)|Reason codes for credit<br>denial (regulatory adverse<br>action notice)|Phases 4–7 —<br>Explainability design +<br>UDD-001|CRITICA<br>L|
 
-## **3**
+## 3
 
-## **Data Strategy & Governance**
+## Data Strategy & Governance
 
 **GATE Data Governance Board Approval**
 
 Establish data foundation — provenance, quality, privacy, lineage — for trustworthy AI
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
 → Risk Register (RR-001)
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → Data Sheet / Data Card (DS-001)
 
@@ -263,7 +261,7 @@ Establish data foundation — provenance, quality, privacy, lineage — for trus
 
 **DS-001**
 
-### **Data Sheet (Data Card)**
+### Data Sheet (Data Card)
 
 Owner: Data Architect + Data Engineer   |   Phase: Phase 3: Data Strategy
 
@@ -302,15 +300,15 @@ Owner: Data Architect + Data Engineer   |   Phase: Phase 3: Data Strategy
 
 **PHASE 4**
 
-## **Model Design & Architecture**
+## Model Design & Architecture
 
 Design AI system architecture aligned with governance constraints and compliance requirements
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
 → Data Sheet (DS-001)
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → Architecture Decision Record (ADR-001)
 
@@ -322,7 +320,7 @@ Design AI system architecture aligned with governance constraints and compliance
 
 **ADR-001**
 
-### **Architecture Decision Record**
+### Architecture Decision Record
 
 Owner: AI Architect   |   Phase: Phase 4: Architecture
 
@@ -334,7 +332,7 @@ Owner: AI Architect   |   Phase: Phase 4: Architecture
 |**Decision**|*XGBoost gradient boosting ensemble for primary credit scoring. SHAP for feature*<br>*attribution and reason code generation. GPT-4o fine-tuned on FCA adverse action*<br>*templates for human-readable rejection notices. Redis feature cache for sub-100ms*<br>*inference.*|
 |**Context**|*Need: real-time scoring (<200ms p99), regulatory explainability (reason codes), thin-file*<br>*capability (alternative data), demographic fairness constraints*|
 
-###### **OPTIONS CONSIDERED**
+###### OPTIONS CONSIDERED
 
 |**Option**|**Architecture**|**Performa**<br>**nce**|**Complexit**<br>**y**|**Explainabili**<br>**ty**|**Regulatory Fit**|
 |---|---|---|---|---|---|
@@ -377,13 +375,13 @@ Owner: AI Architect   |   Phase: Phase 4: Architecture
 |**Performance Metrics (Draft — TBC in**<br>**Phase 6)**|*AUC-ROC target >0.82; Gini >0.64; KS statistic >0.42; Demographic parity delta <2pp*|
 |**Model Card Status**|*DRAFT — To be finalized in Phase 6 post evaluation*|
 
-## **Development & Training**
+## Development & Training
 
 Build, fine-tune, and train the AI system with full traceability and developer accountability
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → Architecture Decision Records (ADR-001) → Experiment Tracking Record (ETR-001)
 
@@ -401,7 +399,7 @@ Build, fine-tune, and train the AI system with full traceability and developer a
 
 → Model Registry Entry (MRE-001)
 
-### **Experiment Tracking Record**
+### Experiment Tracking Record
 
 Owner: Lead Data Scientist   |   Phase: Phase 5: Development
 
@@ -417,7 +415,7 @@ Owner: Lead Data Scientist   |   Phase: Phase 5: Development
 
 **CAL-001**
 
-### **AI-Generated Code Audit Log**
+### AI-Generated Code Audit Log
 
 Owner: Tech Lead + All Engineers   |   Phase: Phase 5: Development
 
@@ -429,17 +427,17 @@ Owner: Tech Lead + All Engineers   |   Phase: Phase 5: Development
 |2026-04-<br>17|fairness_monito<br>r.py (lines 1–98)|Amazon<br>Q Develo<br>per|SHAP-based<br>demographic<br>parity<br>monitoring<br>pipeline|David Lee<br>(ML Eng)|APPROVE<br>D|Logic verified against BB-001<br>bias baseline methodology.<br>Protected attribute handling<br>confirmed correct.|
 |**AWS AI-DLC M**|**andate Compliance**|*All eng*<br>*AI-gen*<br>*LLM pr*|*ineers have review*<br>*erated code commi*<br>*ompt templates req*|*ed and under*<br>*tted without u*<br>*uire legal rev*|*stood every li*<br>*nderstanding*<br>*iew — not jus*|*ne of AI-generated code. No*<br>*verification sign-off. Critical finding:*<br>*t technical review.*|
 
-###### **PHASE**
+###### PHASE
 
 **6**
 
-## **Evaluation & Red-Teaming**
+## Evaluation & Red-Teaming
 
 **AI Governance Council Deployment Authorisation**
 
 Rigorously validate against safety, fairness, performance, and Constitutional AI requirements
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
 - → Model Registry Entry (MRE-001)
 
@@ -449,7 +447,7 @@ Rigorously validate against safety, fairness, performance, and Constitutional AI
 
 - → Bias Baseline Report (BB-001)
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 - → Red Team Report (RTR-001)
 
@@ -463,11 +461,11 @@ Rigorously validate against safety, fairness, performance, and Constitutional AI
 
 - → Security Penetration Test (SPT-001)
 
-###### **OUTPUT**
+###### OUTPUT
 
 **RTR-001**
 
-### **Red Team Report**
+### Red Team Report
 
 Owner: Security Architect + Ethics Lead   |   Phase: Phase 6: Evaluation
 
@@ -506,11 +504,11 @@ Owner: Security Architect + Ethics Lead   |   Phase: Phase 6: Evaluation
 |**External Auditor**||*Algorithmic Jus*|*tice Institute (A*|*JI) — Independe*|*nt External*|*Fairness Audit*|
 |**Audit Conclusion**||*AI Model PASS*<br>*legacy scoreca*<br>*recommended.*|*ES all fairness*<br>*rd. Ongoing m*|*thresholds. Repr*<br>*onitoring mandato*|*esents sub*<br>*ry. Annual i*|*stantial improvement over*<br>*ndependent audit*|
 
-###### **Auditor Sign-off**
+###### Auditor Sign-off
 
 *Dr. Yetunde Adeyemi (AJI), 22 April 2026*
 
-###### **OUTPUT**
+###### OUTPUT
 
 **CCA-001**
 
@@ -529,17 +527,17 @@ Owner: Security Architect + Ethics Lead   |   Phase: Phase 6: Evaluation
 |**Constitutional Compliance Rate**|*100% (8/8 princi*|*ples PASS)*||
 |**Overall Audit Conclusion**|*APPROVED FO*<br>*Phase 8 artifacts*|*R DEPLOYMENT — Subject to production m*<br>|*onitoring as specified in*|
 
-###### **PHASE**
+###### PHASE
 
 **7**
 
-## **Deployment & MLOps**
+## Deployment & MLOps
 
 **AI Governance Council Final Deployment Approval**
 
 Deploy with full operational governance, safety controls and human oversight mechanisms active
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
 → Final Model Card (MCF-001)
 
@@ -549,7 +547,7 @@ Deploy with full operational governance, safety controls and human oversight mec
 
 - → Governance Approval (from Phase 6)
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → Deployment Runbook (DRB-001)
 
@@ -561,11 +559,11 @@ Deploy with full operational governance, safety controls and human oversight mec
 
 - → Runtime Monitoring Dashboard Spec (RMD-001)
 
-###### **OUTPUT**
+###### OUTPUT
 
 **DRB-001**
 
-### **Deployment Runbook**
+### Deployment Runbook
 
 Owner: MLOps Engineer + DevOps   |   Phase: Phase 7: Deployment
 
@@ -584,11 +582,11 @@ Owner: MLOps Engineer + DevOps   |   Phase: Phase 7: Deployment
 ||POST<br>-02|Post-deplo<br>y|Activate Phase 8 monitoring: drift<br>alerts, bias alerts, cost dashboard|MLOps<br>Engineer|AUTOMA<br>TED|<5 min|
 ||ROLL<br>-01|Rollback<br>(if needed)|Revert to previous model version.<br>Route 100% traffic to stable version.<br>Alert AI Governance Council.|MLOps<br>Engineer|SEMI-AUT<br>O|<3 min|
 
-###### **OUTPUT**
+###### OUTPUT
 
-###### **IRP-001**
+###### IRP-001
 
-### **AI Incident Response Plan**
+### AI Incident Response Plan
 
 Owner: AI Compliance Lead + Security Architect   |   Phase: Phase 7: Deployment
 
@@ -605,7 +603,7 @@ Owner: AI Compliance Lead + Security Architect   |   Phase: Phase 7: Deployment
 |**UDD-001**|
 |---|
 
-### **User Disclosure Documentation**
+### User Disclosure Documentation
 
 Owner: Legal + Product Manager   |   Phase: Phase 7: Deployment
 
@@ -617,13 +615,13 @@ Owner: Legal + Product Manager   |   Phase: Phase 7: Deployment
 
 > **AI Act Article 13 Compliance** *Instructions for deployers provided. System purpose, accuracy, limitations, human oversight requirements, and data sources documented. Legal review: COMPLIANT (Patel & Morrison, 2 May 2026).*
 
-## **Monitor, Audit & Retire**
+## Monitor, Audit & Retire
 
 **Quarterly Governance Review + Annual Compliance Certification** Maintain ongoing trustworthiness through continuous monitoring, audits, and disciplined retirement
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → Runtime monitoring data → Monthly Monitoring Report (MMR-001) → Deployment Runbook (DRB-001) → Drift Alert Log (DAL-001)
 
@@ -635,9 +633,9 @@ Owner: Legal + Product Manager   |   Phase: Phase 7: Deployment
 
 → Model Sunset Plan (MSP-001)
 
-###### **OUTPUT**
+###### OUTPUT
 
-### **Monthly Monitoring Report**
+### Monthly Monitoring Report
 
 Owner: MLOps Engineer + Ethics Lead   |   Phase: Phase 8: Monitor
 
@@ -675,13 +673,13 @@ Owner: MLOps Engineer + Ethics Lead   |   Phase: Phase 8: Monitor
 |**Customer Impact Management**|*All in-flight applications processed before sunset. No customer disruption. Transition to*<br>*successor model tested in shadow mode for 30 days minimum.*|
 |**Regulatory Notification**|*FCA notified of system retirement 60 days in advance. EU AI Act post-market*<br>*surveillance report filed at retirement.*|
 
-## **Enterprise Architecture Artifacts**
+## Enterprise Architecture Artifacts
 
 **Continuous — AI Governance Council**
 
 Cross-lifecycle artifacts maintained by the EA team and AI Governance Council
 
-###### **INPUTS TO THIS PHASE**
+###### INPUTS TO THIS PHASE
 
 → All AIDLC Phase Artifacts
 
@@ -689,7 +687,7 @@ Cross-lifecycle artifacts maintained by the EA team and AI Governance Council
 
 → Regulatory Frameworks (NIST AI RMF, EU AI Act, ISO 42001)
 
-###### **OUTPUTS FROM THIS PHASE**
+###### OUTPUTS FROM THIS PHASE
 
 → AI System Inventory (ASI-001)
 
@@ -701,11 +699,11 @@ Cross-lifecycle artifacts maintained by the EA team and AI Governance Council
 
 → Data Lineage Map (DLM-001)
 
-###### **EA ARTIFACT**
+###### EA ARTIFACT
 
 **ASI-001**
 
-### **AI System Inventory**
+### AI System Inventory
 
 Owner: AI Compliance Lead   |   Phase: Cross-Phase
 
@@ -727,7 +725,7 @@ Owner: AI Compliance Lead   |   Phase: Cross-Phase
 
 **AABR-001**
 
-### **Agent Action Boundary Register**
+### Agent Action Boundary Register
 
 Owner: AI Architect + Security Architect   |   Phase: Cross-Phase
 
@@ -735,7 +733,7 @@ Owner: AI Architect + Security Architect   |   Phase: Cross-Phase
 
 *Defines the permitted tools, API endpoints, data namespaces, and action types for each deployed AI agent. Source of truth for runtime Zero Trust access control.*
 
-###### **Enforcement**
+###### Enforcement
 
 *HashiCorp Vault + OPA (Open Policy Agent) — agent presents signed manifest; Vault validates permissions; OPA enforces at every tool call*
 
@@ -768,7 +766,7 @@ Owner: AI Architect + Security Architect   |   Phase: Cross-Phase
 |---|---|---|---|---|
 |**EU AI Act Compliance**|*Full lineage f*<br>*and machine*<br>*Authority on*|*rom Article 10 (data*<br>*-readable via Open*<br>*request.*|*governance) through*<br>*Lineage API. Accessi*|*Article 12 (logging) documented*<br>*ble to National Competent*|
 
-## **ARTIFACT CROSS-REFERENCE SUMMARY**
+## ARTIFACT CROSS-REFERENCE SUMMARY
 
 |**AIDLC Phase**|**Key Inputs**|**Key Output Artifacts**|
 |---|---|---|
