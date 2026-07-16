@@ -859,6 +859,7 @@ const sidebars = {
         'interview-prep/EY_AI_Architect_Interview_Guide_1',
         'interview-prep/Enterprise_GenAI_Architect_Interview_Guide',
         'interview-prep/Hard_Scenarios_Interview_Prep',
+        {type: 'doc', id: 'interview-prep/Multimodal_AI_EA_Scenarios', label: 'Multimodal AI — EA Complex Scenarios'},
         'interview-prep/ML_AI_Interview_Mastery_Guide',
       ],
     },

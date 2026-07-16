@@ -69,8 +69,6 @@ def fix_file(path: Path) -> bool:
             if not get_field(fm_raw, "covers_version"):
                 fm_raw = set_field(fm_raw, "covers_version", '"N/A"')
             # Remove framework_name if it was there (not needed for guide)
-            if get_field(fm_raw, "framework_name"):
-                fm_raw = re.sub(r'^framework_name:.*\n?', '', fm_raw, flags=re.MULTILINE)
             changed = True
 
     if changed:

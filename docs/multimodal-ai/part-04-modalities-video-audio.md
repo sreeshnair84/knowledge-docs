@@ -345,7 +345,7 @@ A: Step 1 — scene segmentation: detect scene boundaries using PySceneDetect (h
 
 ## Related
 
-- [Part 01 — Foundations & Vision Language Models](./part-01-foundations-vlms.md) — foundational VLM architectures
-- [Part 03 — Document AI & OCR](./part-03-document-ai-ocr.md) — document processing modalities
+- [Part 01 — Foundations](./part-01-foundations.md) — foundational VLM architectures
+- [Part 03 — Image & Document Intelligence](./part-03-modalities-image-document.md) — document processing modalities
 - [Part 05 — Multimodal RAG](./part-05-multimodal-rag.md) — retrieval over video and audio indexes
 - [Part 06 — Agentic Workflows](./part-06-agentic-workflows.md) — orchestrating audio/video agents

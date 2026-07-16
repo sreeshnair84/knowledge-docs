@@ -32,7 +32,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 TAXONOMY_SEARCH_PATHS = [
-    # sibling skill install layout: .agents/skills/{this-skill}/../knowledge-page-authoring/...
+    # sibling skill install layout: .claude/skills/{this-skill}/../knowledge-page-authoring/...
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..",
                   "knowledge-page-authoring", "references", "taxonomy.json"),
     os.path.join("references", "taxonomy.json"),  # if run from within knowledge-page-authoring itself

@@ -12,13 +12,6 @@ last_reviewed: 2026-07-10
 
 # Knowledge Page Authoring
 
-> **Current policy (2026-07-11):** Do not use a standard page template by
-> document type. The legacy type-specific material below is retained only as
-> historical examples until it is removed. Use the universal contract and
-> adapt each page's structure to its reader task. `doc_type`, if present, is
-> descriptive metadata for search and indexing only; it must not select
-> headings, word counts, diagrams, callouts, or other required sections.
-
 This repo has nine distinct content types, each with its own real structural
 pattern already established somewhere in the repo — the goal is to make new
 and edited pages match the *best* existing example of their type, not
@@ -33,8 +26,8 @@ which reference file governs each:
 
 | Type | Real example in this repo | Reference |
 |---|---|---|
-| Guide | `coding-tools/Codex/Codex-api-mastery.md` | [references/guide.md](references/guide.md) |
-| Certification / exam prep | `coding-tools/Codex/ccaf-exam-prep-complete.md` | [references/certification.md](references/certification.md) |
+| Guide | `coding-tools/claude/claude-api-mastery.md` | [references/guide.md](references/guide.md) |
+| Certification / exam prep | `coding-tools/claude/ccaf-exam-prep-complete.md` | [references/certification.md](references/certification.md) |
 | Interview question bank | `interview-prep/EA_Senior_Interview_Questions.md` | [references/interview-questions.md](references/interview-questions.md) |
 | Engagement case study (industry-vertical deep dive) | `ai-usecases/01_aviation.pdf` | [references/engagement-case-study.md](references/engagement-case-study.md) |
 | Narrative case study (dramatized, named protagonist) | `ai-usecases/Case_01_Meridian_Fraud_Investigation_Agents.pdf` | [references/narrative-case-study.md](references/narrative-case-study.md) |
@@ -93,7 +86,7 @@ file — add those on top of the universal block, don't replace it.
 Always run both before telling the user a page is done:
 
 ```bash
-python3 ${CLAUDE_SKILL_DIR}/scripts/lint_page.py <path-to-page.md> --universal
+python3 ${CLAUDE_SKILL_DIR}/scripts/lint_page.py <path-to-page.md> --type <type>
 python3 ${CLAUDE_SKILL_DIR}/scripts/check_against_corpus.py <path-to-page.md>
 ```
 

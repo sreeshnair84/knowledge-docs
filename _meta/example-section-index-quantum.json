@@ -1,0 +1,173 @@
+{
+ "section": "quantum",
+ "page_count": 7,
+ "pages": [
+  {
+   "id": "quantum/IBM_Associate_Quantum_CertGuide",
+   "title": "TABLE OF CONTENTS",
+   "doc_type": "guide",
+   "tags": [
+    "quantum-computing"
+   ],
+   "word_count": 4380,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/IBM_Developer_Quantum_CertGuide",
+     "score": 0.57
+    }
+   ]
+  },
+  {
+   "id": "quantum/IBM_Developer_Quantum_CertGuide",
+   "title": "Deep-Dive Study Guide Exam C1000-171",
+   "doc_type": "certification",
+   "tags": [
+    "quantum"
+   ],
+   "word_count": 4899,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/IBM_Associate_Quantum_CertGuide",
+     "score": 0.57
+    },
+    {
+     "id": "quantum/zero-to-mastery",
+     "score": 0.41
+    },
+    {
+     "id": "quantum/Quantum_AI_TechGiants_Report",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "quantum/Quantum_AI_Consultancies_Report",
+   "title": "QUANTUM AI CONSULTING LANDSCAPE** INDUSTRY RESEARCH REPORT <u>Segment 2 of 3: Consultancies</u>",
+   "doc_type": "research-report",
+   "tags": [
+    "quantum-computing"
+   ],
+   "word_count": 4518,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/Quantum_AI_TechGiants_Report",
+     "score": 0.73
+    },
+    {
+     "id": "quantum/zero-to-mastery",
+     "score": 0.68
+    },
+    {
+     "id": "quantum/Quantum_AI_Startups_Report",
+     "score": 0.67
+    }
+   ]
+  },
+  {
+   "id": "quantum/Quantum_AI_Startups_Report",
+   "title": "QUANTUM AI STARTUP LANDSCAPE",
+   "doc_type": "research-report",
+   "tags": [
+    "quantum-computing"
+   ],
+   "word_count": 5659,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/Quantum_AI_TechGiants_Report",
+     "score": 0.72
+    },
+    {
+     "id": "quantum/Quantum_AI_Consultancies_Report",
+     "score": 0.67
+    },
+    {
+     "id": "quantum/zero-to-mastery",
+     "score": 0.66
+    }
+   ]
+  },
+  {
+   "id": "quantum/Quantum_AI_TechGiants_Report",
+   "title": "QUANTUM COMPUTING & AI IN QUANTUM",
+   "doc_type": "research-report",
+   "tags": [
+    "quantum-computing"
+   ],
+   "word_count": 3861,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/zero-to-mastery",
+     "score": 0.82
+    },
+    {
+     "id": "quantum/Quantum_AI_Consultancies_Report",
+     "score": 0.73
+    },
+    {
+     "id": "quantum/Quantum_AI_Startups_Report",
+     "score": 0.72
+    }
+   ]
+  },
+  {
+   "id": "quantum/index",
+   "title": "Quantum AI",
+   "doc_type": "guide",
+   "tags": [
+    "quantum"
+   ],
+   "word_count": 149,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/zero-to-mastery",
+     "score": 0.68
+    },
+    {
+     "id": "quantum/Quantum_AI_TechGiants_Report",
+     "score": 0.63
+    },
+    {
+     "id": "quantum/Quantum_AI_Consultancies_Report",
+     "score": 0.63
+    }
+   ]
+  },
+  {
+   "id": "quantum/zero-to-mastery",
+   "title": "Quantum AI \u2014 Zero to Mastery",
+   "doc_type": "guide",
+   "tags": [
+    "quantum"
+   ],
+   "word_count": 5139,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "quantum/Quantum_AI_TechGiants_Report",
+     "score": 0.82
+    },
+    {
+     "id": "quantum/Quantum_AI_Consultancies_Report",
+     "score": 0.68
+    },
+    {
+     "id": "quantum/index",
+     "score": 0.68
+    }
+   ]
+  }
+ ]
+}

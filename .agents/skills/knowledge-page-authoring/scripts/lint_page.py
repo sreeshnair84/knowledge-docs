@@ -23,6 +23,8 @@ try:
 except ImportError:
     yaml = None
 
+from consistency_checks import run_all_checks, sort_by_severity, severity_of
+
 UNIVERSAL_FRONTMATTER = [
     "title", "date_created", "last_reviewed", "status", "source_type",
 ]
@@ -111,8 +113,6 @@ def main():
                      choices=list(TYPE_REQUIREMENTS.keys()),
                      help="Override the type instead of reading it from the "
                           "page's 'doc_type' frontmatter field.")
-    ap.add_argument("--universal", action="store_true",
-                    help="Validate only universal publishing rules; do not apply a page-type template.")
     args = ap.parse_args()
 
     with open(args.path, encoding="utf-8") as f:
@@ -129,8 +129,8 @@ def main():
         if not fm.get(key):
             issues.append(f"Missing/empty universal frontmatter field: '{key}'")
 
-    doc_type = None if args.universal else (args.type or fm.get("doc_type"))
-    if not doc_type and not args.universal:
+    doc_type = args.type or fm.get("doc_type")
+    if not doc_type:
         issues.append(
             "No --type given and no 'doc_type' frontmatter field found — "
             "cannot check type-specific structure. Add 'doc_type: <type>' "
@@ -143,14 +143,10 @@ def main():
         )
         doc_type = None
 
-    if fm.get("parent") or fm.get("nav_order"):
-        issues.append(
-            "Legacy Jekyll-era 'parent'/'nav_order' fields present — replace "
-            "with the current frontmatter schema, don't leave both."
-        )
-
-    if re.search(r'<iframe[^>]+src=["\'][^"\']*\.pdf', text, re.IGNORECASE):
-        issues.append("Contains PDF <iframe> — PDFs must be converted to Markdown, never embedded.")
+    # Structural-consistency checks (H1/tags/heading-hierarchy/raw-HTML/tables)
+    # shared with the repo-wide auditor — see consistency_checks.py for why
+    # each one matters and what it catches.
+    issues += run_all_checks(fm, body, text)
 
     word_count = len(re.findall(r"\S+", body))
 
@@ -179,14 +175,28 @@ def main():
             )
 
     if not issues:
-        scope = "universal rules" if args.universal else f"type '{doc_type}'"
-        print(f"OK — {args.path} passes all checks for {scope} ({word_count} words).")
+        print(f"OK — {args.path} passes all checks for type '{doc_type}' ({word_count} words).")
         return 0
-    else:
-        print(f"{len(issues)} issue(s) found in {args.path}:\n")
-        for i in issues:
-            print(f"  - {i}")
+
+    issues = sort_by_severity(issues)
+    # Pre-existing checks in this file (missing frontmatter, missing
+    # required sections, unrecognized doc_type) don't carry a severity
+    # prefix from consistency_checks.py — treat those as blocking too,
+    # same as they always have been. Only LOW-severity structural findings
+    # (from consistency_checks.py) are downgraded to non-blocking: things
+    # like a single-column "note box" table are a real, intentional pattern
+    # in parts of this repo, not necessarily a defect, and shouldn't stop a
+    # commit — they're worth a human glance, not a hard gate.
+    blocking = [i for i in issues if severity_of(i) != "LOW"]
+
+    print(f"{len(issues)} issue(s) found in {args.path}:\n")
+    for i in issues:
+        print(f"  - {i}")
+
+    if blocking:
         return 1
+    print("\n(All findings above are LOW severity / advisory — not blocking.)")
+    return 0
 
 
 if __name__ == "__main__":

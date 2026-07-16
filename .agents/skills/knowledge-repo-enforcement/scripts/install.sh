@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Installs the pre-commit hook and GitHub Actions workflow into the current
 # repo. Run this once from the repo root after the knowledge-page-authoring
-# skill is already installed at .agents/skills/knowledge-page-authoring/.
+# skill is already installed at .claude/skills/knowledge-page-authoring/.
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
 
-if [[ ! -d ".agents/skills/knowledge-page-authoring" ]]; then
-  echo "Warning: .agents/skills/knowledge-page-authoring not found."
+if [[ ! -d ".claude/skills/knowledge-page-authoring" ]]; then
+  echo "Warning: .claude/skills/knowledge-page-authoring not found."
   echo "The hook will no-op (not block commits) until that skill is installed."
   echo "Continuing with installation anyway — install the skill when ready."
   echo ""

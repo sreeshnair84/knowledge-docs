@@ -1,5 +1,26 @@
 #!/usr/bin/env python3
 """
+SUPERSEDED for day-to-day use by knowledge-repo-graph's build_graph.py,
+which reads docs/**/*.md directly and can't go stale independently of the
+content the way this script can — it did, in fact, go stale: a run of this
+exact script before the 2026-07-10 cleanup produced _meta/duplicate-
+pairs.csv, and 381 of that file's 543 rows still reference .pdf files
+deleted during that same cleanup. Nothing re-ran this script afterward, so
+anything trusting duplicate-pairs.csv today gets mostly wrong answers.
+
+Kept in this skill for the one case it's still right for: a repo that
+still has non-Markdown source files (PDF/DOCX/PPTX) in its content tree,
+where extract_corpus.py's text extraction is doing real work this script's
+sibling (knowledge-repo-graph, Markdown-only) can't do. If docs/ is
+already all-Markdown (check with `find docs -type f -not -name "*.md"`),
+use knowledge-repo-graph instead and don't run this.
+
+If you do run this, re-run extract_corpus.py fully first — a partial or
+old corpus.json is worse than no corpus.json, because its output looks
+just as confident either way.
+
+---
+
 Compute pairwise content similarity across every file in _meta/corpus.json
 (produced by extract_corpus.py) and write _meta/duplicate-pairs.csv.
 
@@ -12,6 +33,8 @@ Usage:
 
 Requires: scikit-learn (pip install --break-system-packages scikit-learn)
 """
+import os
+import sys
 import json
 import re
 import csv
@@ -49,6 +72,27 @@ def main():
 
     with open(args.corpus, encoding="utf-8") as f:
         corpus = json.load(f)
+
+    def _exists(p):
+        # extract_corpus.py has stored backslash-separated paths in some
+        # runs (a portability bug in that script, not in the data itself)
+        # — normalize before checking, or every path looks stale on Linux
+        # regardless of whether the file genuinely exists.
+        return os.path.exists(p) or os.path.exists(p.replace("\\", "/"))
+
+    missing = [p for p in corpus if not _exists(p)]
+    if missing:
+        pct = 100 * len(missing) / len(corpus)
+        print(f"WARNING: {len(missing)}/{len(corpus)} ({pct:.0f}%) of the paths in "
+              f"{args.corpus} no longer exist on disk (path-separator differences already "
+              f"normalized out). This corpus snapshot is stale — its output will confidently "
+              f"report duplicates involving files that have been deleted, renamed, or "
+              f"converted since it was extracted.")
+        print("Re-run extract_corpus.py before trusting this output, or use "
+              "knowledge-repo-graph's build_graph.py instead if docs/ is now all-Markdown.")
+        if pct > 20:
+            sys.exit("Refusing to proceed: more than 20% of the corpus is stale. "
+                     "Pass --force-stale to override.") if "--force-stale" not in sys.argv else None
 
     paths, texts = [], []
     for p, t in corpus.items():

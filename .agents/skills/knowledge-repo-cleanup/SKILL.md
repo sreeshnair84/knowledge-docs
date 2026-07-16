@@ -95,7 +95,7 @@ work session as a batch, not an attempt to finish everything:
 4. Commit after every batch (`git add -A && git commit`), not just at the
    end of a phase. The commit and the tracker file are what makes this
    survivable across a session ending unexpectedly — don't rely on
-   `Codex --resume` alone to preserve state, since that restores
+   `claude --resume` alone to preserve state, since that restores
    conversation, not a guarantee that in-progress file edits were finished
    or committed.
 5. At the start of a new session, this skill's Phase-0-first instruction

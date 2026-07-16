@@ -368,4 +368,4 @@ A: A healthcare multimodal red team exercise targets the unique attack surface i
 - [Part 05 — Multimodal RAG](./part-05-multimodal-rag.md) — RAG poisoning and embedding attacks
 - [Part 06 — Agentic Workflows](./part-06-agentic-workflows.md) — securing agentic multimodal systems
 - [Part 04 — Video & Audio Intelligence](./part-04-modalities-video-audio.md) — audio attack surface in surveillance
-- [Part 01 — Foundations & Vision Language Models](./part-01-foundations-vlms.md) — VLM architecture understanding for attack surface analysis
+- [Part 01 — Foundations](./part-01-foundations.md) — VLM architecture understanding for attack surface analysis

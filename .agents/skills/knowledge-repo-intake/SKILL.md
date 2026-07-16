@@ -74,7 +74,7 @@ scaling, sourcing, and copyright rules. In short: search proportionally to
 the topic's breadth (a narrow factual gap might need 3-5 searches; "research
 the current state of X" needs closer to 15-20), read primary/official
 sources over aggregators, and never copy source text verbatim into the
-repo — paraphrase, same as any other Codex output.
+repo — paraphrase, same as any other Claude output.
 
 ## Step 3b — Extract content (source-document path)
 

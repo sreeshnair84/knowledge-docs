@@ -381,7 +381,7 @@ A: Evaluation is the hardest part of multimodal RAG because cross-modal relevanc
 
 ## Related
 
-- [Part 02 — Vision Language Models in Production](./part-02-vlm-production.md) — VLM generation from retrieved context
+- [Part 02 — Enterprise Architecture](./part-02-enterprise-architecture.md) — VLM generation from retrieved context
 - [Part 04 — Video & Audio Intelligence](./part-04-modalities-video-audio.md) — audio and video indexing for RAG
 - [Part 06 — Agentic Workflows](./part-06-agentic-workflows.md) — RAG as a tool within multimodal agents
 - [Part 07 — Security & Threat Taxonomy](./part-07-security-threats.md) — RAG poisoning and embedding attacks
