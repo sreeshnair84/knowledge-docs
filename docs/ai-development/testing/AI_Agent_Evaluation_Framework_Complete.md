@@ -20,83 +20,19 @@ Cloud-Agnostic Edition v2.1 — the production reference for evaluating AI agent
 
 ## Table of Contents
 
-#### 1. Framework Architecture & Overview
-1.1 The Evaluation Problem in AI Agents  
-1.2 Component Map — Four Layers  
-1.3 Which Tool for Which Job  
-
-#### 2. Evaluation Framework SDKs — Multi-Framework Reference
-2.1 Universal Abstractions: Case, Experiment, Evaluator, Task Function  
-2.2 Framework Comparison Matrix  
-2.3 Core Evaluator Families — 10 Universal Evaluator Types  
-2.4 Online vs Offline Task Patterns  
-2.5 Multi-Turn Simulation — ActorSimulator Pattern  
-2.6 Automated Test Generation  
-2.7 Evaluation Hierarchy: Session / Trace / Tool  
-
-#### 3. Cloud Provider Managed Evaluation Services
-3.1 AWS Bedrock AgentCore Evaluations  
-3.2 Azure AI Evaluation SDK  
-3.3 Google Vertex AI Evaluation Service  
-3.4 Self-Hosted Option: Confident AI / DeepEval  
-3.5 Service Comparison & Selection Guide  
-
-#### 4. Observability & Tracing Layer
-4.1 OpenTelemetry / OpenInference Instrumentation  
-4.2 Span Types & Trace Explorer  
-4.3 Platform Comparison: Phoenix · LangFuse · MLflow · W&B  
-4.4 Drift Detection System  
-4.5 Dataset & Experiment Management  
-4.6 Human Annotation Queue  
-
-#### 5. Complete Metric Catalogue
-5.1 Plane 1 — Response Quality Metrics  
-5.2 Plane 2 — RAG Quality Metrics (RAGAS)  
-5.3 Plane 3 — Agentic Behaviour Metrics  
-5.4 Plane 4 — Operational / Infrastructure Metrics  
-5.5 Composite Metrics: G-Eval, MT-Bench, ELO Methods  
-5.6 Regulatory Compliance Metrics  
-
-#### 6. Benchmark Creation Standards
-6.1 Three-Tier Architecture  
-6.2 Golden Dataset Construction Process  
-6.3 Benchmarking Methodology  
-6.4 Adversarial & Red-Team Sets (OWASP LLM Top 10)  
-
-#### 7. Drift Detection & Automated Response
-7.1 Five Types of Drift  
-7.2 Detection Methods (EWMA, CUSUM, Embedding)  
-7.3 Alert Thresholds & Escalation Matrix  
-7.4 Automated Remediation Pipeline  
-
-#### 8. LLM-as-Judge Design Patterns & Pitfalls
-8.1 Why LLM-as-Judge Works and When It Fails  
-8.2 Seven Known Biases and Mitigations  
-8.3 Judge Calibration Against Human Labels  
-8.4 Ensemble and Panel Judging  
-8.5 Rubric Engineering for Consistent Scoring  
-
-#### 9. Regulatory Compliance Framework
-9.1 Global Regulatory Landscape  
-9.2 High-Risk AI Classification  
-9.3 PII Detection — 3-Layer Architecture  
-9.4 Fairness & Bias Evaluation  
-9.5 Audit Log Schema — Mandatory Fields  
-9.6 Human Oversight Architecture  
-
-#### 10. Complete Lifecycle (Ideation to Retirement)
-All 9 phases from ideation through retirement  
-
-#### 11. Multi-Cloud Deployment Patterns
-11.1 Cloud-Provider Tool Mapping  
-11.2 Self-Hosted Reference Architecture  
-11.3 Hybrid Cloud Evaluation Topology  
-
-#### 12. Integration Stack & Quick Reference
-12.1 Full Tool Comparison Matrix  
-12.2 Complete Metric Threshold Card  
-12.3 Framework Selection Decision Tree  
-12.4 Escalation Playbooks  
+- **Chapter 1** — Framework Architecture & Overview: The Evaluation Problem · Component Map · Which Tool for Which Job
+- **Chapter 2** — Evaluation Framework SDKs: Universal Abstractions · Framework Comparison · Evaluator Families · Online vs Offline · ActorSimulator · Test Generation · Hierarchy · Multi-Agent Orchestrator
+- **Chapter 3** — Cloud Provider Managed Evaluation Services: AWS AgentCore · Azure AI Eval · Vertex AI Eval · Self-Hosted · Selection Guide
+- **Chapter 4** — Observability & Tracing Layer: OpenTelemetry · Span Types · Platform Comparison · Drift Detection · Dataset Management · Human Annotation
+- **Chapter 5** — Complete Metric Catalogue: Response Quality · RAG Quality (RAGAS) · Agentic Behaviour · Operational · Composite Metrics · Compliance
+- **Chapter 6** — Benchmark Creation Standards: Three-Tier Architecture · Golden Dataset · Methodology · Adversarial / Red-Team (OWASP LLM Top 10 v2)
+- **Chapter 7** — Drift Detection & Automated Response: Alert Thresholds · Escalation Matrix · Automated Remediation Pipeline
+- **Chapter 8** — LLM-as-Judge Design Patterns & Pitfalls: When It Fails · Seven Biases · Calibration · Ensemble Judging · Rubric Engineering
+- **Chapter 9** — Regulatory Compliance Framework: Regulatory Landscape · High-Risk Classification · PII Detection · Fairness & Bias · Audit Log Schema · Human Oversight
+- **Chapter 10** — Complete Lifecycle (Ideation to Retirement): All 9 phases
+- **Chapter 11** — Multi-Cloud Deployment Patterns: Cloud Tool Mapping · Self-Hosted Reference · Hybrid Topology
+- **Chapter 12** — Integration Stack & Quick Reference: Tool Comparison · Metric Thresholds · Decision Tree · Escalation Playbooks
+- **Chapter 13** — Computer-Use & Multi-Modal Agent Evaluation: CUA Frameworks · Metrics · Evaluation Infrastructure · Drift Detection
 
 ---
 
@@ -107,6 +43,7 @@ All 9 phases from ideation through retirement
 Traditional software testing assumes deterministic outputs: same input, same expected output. AI agents break this completely — they generate natural language, make context-dependent decisions, call tools in adaptive sequences, and produce varied outputs from identical inputs. Evaluation therefore requires **judgment** rather than keyword comparison and **multi-dimensional scoring** rather than binary pass/fail.
 
 **Why agents are hard to evaluate:**
+
 - Natural language has many valid forms — no single correct answer exists
 - Agents take multi-step actions; final response alone misses intermediate failures
 - Multi-turn conversations need session-level context awareness
@@ -205,11 +142,13 @@ These evaluator types are present in every major framework under different names
 Real users do not follow scripts. The ActorSimulator pattern generates a realistic user profile — personality, expertise level, communication style, and a goal — then drives the conversation automatically to a defined stopping condition.
 
 **Framework implementations:**
+
 - **Strands Evals:** `ActorSimulator` class with `goal`, `persona`, `max_turns` parameters
 - **DeepEval:** `ConversationalTestCase` with `messages` list and `LLMTestCase` per turn
 - **Custom:** Any LLM + loop structure that feeds prior assistant response back as next user input
 
 **Universal simulation scenarios:**
+
 - Confused user attempting a multi-step task (tests guidance quality)
 - Sophisticated user probing explanation depth (tests transparency)
 - Adversarial user attempting prompt injection (tests robustness — OWASP LLM01)
@@ -301,6 +240,7 @@ Amazon Bedrock AgentCore Evaluations is a fully managed, continuous assessment s
 **Custom evaluators:** Each takes a `model_id`, `evaluation_prompt`, and `scoring_schema` with optional `critical_fail_on` conditions.
 
 **Minimum viable config:**
+
 ```python
 import boto3
 client = boto3.client("bedrock-agent-runtime")
@@ -321,6 +261,7 @@ client.create_evaluation_job(
 The `azure-ai-evaluation` Python SDK provides built-in evaluators callable locally or on Azure AI Foundry cloud compute.
 
 **Deployment options:**
+
 - **Local:** Runs evaluators on your machine using Azure OpenAI models as judges
 - **Cloud:** Submit evaluation jobs to Azure AI Foundry for scalable parallel execution
 
@@ -500,6 +441,7 @@ class EvalDataset:
 ### 4.6 Human Annotation Queue
 
 Human annotation is essential for:
+
 1. Calibrating LLM judges against human preference (see Chapter 8)
 2. Reviewing edge cases flagged by automated evals
 3. Building ground truth for domain-specific rubrics
@@ -595,6 +537,7 @@ helpfulness_metric = GEval(
 **ELO / Bradley-Terry ranking:** Side-by-side blind evaluation between model versions. Human or LLM rater picks winner per pair. ELO score updates after each comparison: `E_a = 1 / (1 + 10^((R_b - R_a)/400))`. Minimum 200 comparisons per model pair for statistical reliability. Randomize response order to eliminate position bias.
 
 **Cascading confidence thresholds:**
+
 ```python
 def should_escalate_to_human(eval_scores: dict, risk_level: str) -> bool:
     thresholds = {
@@ -726,12 +669,14 @@ async def handle_drift_alert(alert: DriftAlert, config: RemediationConfig) -> No
 LLM-as-Judge has become the dominant evaluation paradigm for generative AI because it correlates well with human judgments (Spearman ρ 0.80+ on most benchmarks) and scales infinitely. But it introduces systematic biases that, if unmitigated, corrupt your evaluation signal.
 
 **When LLM-as-Judge works well:**
+
 - Scoring coherence, helpfulness, tone, and structure
 - Rubric-based quality assessment where criteria are well-defined
 - Detecting obvious safety violations
 - Comparative pairwise ranking (which of two responses is better)
 
 **When LLM-as-Judge fails:**
+
 - Precise factual accuracy (judge may hallucinate ground truth)
 - Code correctness (requires execution, not natural language judgment)
 - Mathematical calculations (LLMs are unreliable calculators)
@@ -778,6 +723,7 @@ def calibrate_llm_judge(
 ```
 
 **Minimum calibration requirements:**
+
 - Spearman correlation >= 0.75 vs human labels on 100+ calibration examples
 - Mean absolute error < 0.15 on the 0–1 scale
 - Re-calibrate whenever judge model is upgraded or rubric changes significantly
@@ -844,6 +790,7 @@ Agent Response: {response}
 ```
 
 **Rubric best practices:**
+
 - Define exact numeric anchors (what does a 0.7 look like vs a 0.8?)
 - Include 2–3 worked examples per score tier inside the rubric
 - Specify critical failure conditions separately from graded criteria
@@ -1075,6 +1022,7 @@ For organizations with strict data residency, air-gapped environments, or multi-
 ```
 
 **Minimal Docker Compose deployment:**
+
 ```yaml
 services:
   phoenix:
@@ -1210,20 +1158,100 @@ Start: What is your primary evaluation need?
 
 ---
 
-## Document Information
+## CHAPTER 13 — COMPUTER-USE & MULTI-MODAL AGENT EVALUATION
 
-|**Attribute**|**Value**|
-|---|---|
-|**Document Title**|Complete AI Agent Evaluation Framework — Cloud-Agnostic Edition v2.1|
-|**Framework Stack**|DeepEval + RAGAS + Arize Phoenix + LangFuse (open-source); AWS AgentCore / Azure AI Eval / GCP Vertex AI Eval (managed options)|
-|**Regulatory Coverage**|EU AI Act (2024/1689) + GDPR (2016/679) + DORA (2022/2554) + AMLD6 + NIST AI RMF 1.0 + CCPA|
-|**Source Material**|AWS ML Blog: Strands Evals (Mar 2026); Azure AI Evaluation SDK docs; Vertex AI Evaluation docs; EDPB LLM Privacy Risk report (Apr 2025); NIST AI RMF 1.0; OWASP LLM Top 10 v2|
-|**Chapters**|12 chapters: architecture, SDK reference, managed services, observability, metrics, benchmarks, drift, LLM-as-Judge, compliance, lifecycle, multi-cloud, quick reference|
-|**Metrics Defined**|45+ metrics across 5 planes: response quality, RAG quality, agentic behaviour, operational, compliance|
-|**Lifecycle Phases**|9 phases: Ideation, Benchmark, Build, Pre-Deploy Gate, Deploy, Improve, Drift Response, Model Upgrade, Retirement|
-|**Cloud Providers Covered**|AWS, Azure, Google Cloud — with self-hosted alternatives at every layer|
-|**Owner**|AI Platform Engineering Team|
-|**Review Cycle**|Quarterly — or immediately upon any regulatory update or significant incident|
-|**Last Updated**|July 2026|
+Computer-use agents (CUAs) control browsers, desktops, or GUI interfaces via vision and action sequences. Their evaluation requires a fundamentally different approach: success is measured by task completion in a live environment, not by text quality. There is no "correct output string" — there is only a correct environment state after execution.
 
-*Sources: DeepEval documentation; RAGAS framework documentation; Arize Phoenix documentation; LangFuse documentation; AWS Bedrock AgentCore documentation; Azure AI Evaluation SDK documentation; Vertex AI Evaluation Service documentation; NIST AI RMF 1.0 (January 2023); OWASP LLM Top 10 v2; EU AI Act text (Regulation 2024/1689); GDPR (Regulation 2016/679); DORA (Regulation 2022/2554); EDPB LLM Privacy Risk report (April 2025); Zheng et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" (NeurIPS 2023); Wang et al. "Large Language Models are not Fair Evaluators" (ACL 2024); Shankar et al. "Who Validates the Validators?" (arXiv 2024).*
+### 13.1 Public Evaluation Frameworks for Computer-Use Agents
+
+| **Framework** | **Vendor** | **Environment** | **Agent Type** | **Task Count** | **License** |
+|---|---|---|---|---|---|
+| **OSWorld** | Univ. of Hong Kong | Ubuntu VM (real screenshot) | GUI computer-use | 369 real-world tasks across 9 app categories | Apache 2.0 |
+| **WebArena** | Carnegie Mellon | Live web environments (5 sites) | Browser agent | 812 long-horizon tasks | MIT |
+| **WorkArena** | ServiceNow Research | ServiceNow enterprise instance | Enterprise GUI agent | 33 task types across IT workflows | Apache 2.0 |
+| **τ-bench** | Sierra Research | Simulated retail + airline domain | Tool-use + policy adherence | 1,024 tasks with ground-truth policy database | MIT |
+| **AgentBench** | Tsinghua University | 8 diverse environments (web, OS, DB) | General tool-use agent | Multi-environment evaluation suite | Apache 2.0 |
+| **ScreenSpot** | Various | Screenshot-only (no action) | GUI element grounding | Localization accuracy on diverse UIs | MIT |
+
+### 13.2 Computer-Use Specific Metrics
+
+Standard LLM quality metrics (helpfulness, faithfulness) do not apply to CUAs because there is no text response to score against a rubric. Use environment-state and trajectory metrics instead.
+
+| **Metric** | **Definition** | **Target** | **Measurement Method** |
+|---|---|---|---|
+| Task Completion Rate | Fraction of tasks completed correctly end-to-end | >= 0.70 | Scripted environment state checker post-execution |
+| UI Grounding Accuracy | Correct element targeted / total click+type actions | >= 0.85 | Coordinate overlay against ground-truth bounding boxes |
+| Action Efficiency | Minimum actions (oracle) / actual actions taken | >= 0.75 | Step count from recorded trajectory vs annotated minimum |
+| Error Recovery Rate | Tasks self-corrected after first failed action | >= 0.50 | Second-attempt success rate in replayed trajectory |
+| Screenshot Faithfulness | Did agent act on visible UI state, not hallucinated state? | >= 0.90 | Vision model judge: action vs screenshot content at that step |
+| Policy Adherence (τ-bench) | Actions comply with domain-specific policy rules | = 1.00 (zero tolerance) | Policy rule checker against ground-truth policy database |
+| Cross-App Handoff Success | Task requiring context transfer across applications | >= 0.60 | End-state checker after multi-app workflow |
+
+### 13.3 Evaluation Infrastructure for Computer-Use Agents
+
+Text-based evaluation tools cannot evaluate CUAs — there is no output string to score. The infrastructure requirements are fundamentally different:
+
+- **Environment-in-the-loop:** Isolated VM, Docker container, or browser instance per test case. Reset to known state before each run. Record screen and all actions at full resolution.
+- **State-based success assertions:** Define success as a measurable environment state (file exists at path, form was submitted, URL matches pattern, database row created) — not a text string.
+- **Vision model evaluation:** Use a multimodal LLM as judge — feed it before/after screenshots plus the action sequence and ask whether the task was completed correctly.
+- **Deterministic environments:** Use controlled web environments (WebArena-style) or reproducible VMs (OSWorld-style) to ensure consistent test conditions across evaluation runs.
+
+```python
+# Computer-use task evaluation pattern (provider-agnostic)
+async def evaluate_cua_task(
+    task: CUATask,
+    agent_actions: list,
+    env: EnvironmentSnapshot,
+    vision_judge       # any multimodal LLM client
+) -> dict:
+    # 1. Deterministic state check
+    state_success = env.check_success_condition(task.success_criteria)
+
+    # 2. Action efficiency
+    efficiency = task.minimum_action_count / max(len(agent_actions), 1)
+
+    # 3. Vision model judge for screenshot faithfulness
+    faithfulness_result = await vision_judge.evaluate(
+        screenshots=env.action_screenshots,
+        actions=agent_actions,
+        rubric=(
+            "For each action, verify the agent targeted a visible UI element "
+            "present in the screenshot at that moment. Score 0 if any action "
+            "targets a hallucinated or invisible element."
+        )
+    )
+
+    return {
+        "task_id": task.id,
+        "completed": state_success,
+        "efficiency": efficiency,
+        "screenshot_faithfulness": faithfulness_result.score,
+        "requires_human_review": not state_success or faithfulness_result.score < 0.80
+    }
+```
+
+### 13.4 Drift Detection for Computer-Use Agents
+
+Web UIs and application interfaces change independently of the agent — a UI redesign silently breaks a previously working agent without any change to the agent code. Add UI-specific drift monitoring alongside the standard metric drift monitors in Chapter 7.
+
+| **Signal** | **What It Detects** | **Detection Method** | **Threshold** |
+|---|---|---|---|
+| Element click success rate | UI elements moved or renamed | Per-element-type success rate EWMA | Drop > 10% over 7 days |
+| Screenshot embedding drift | Major UI visual redesign | Cosine distance from baseline screenshot embeddings | > 0.25 drift score |
+| Action retry rate | Agent adapting to changed layout | Retry count per session vs 30-day baseline | > 2x baseline retry rate |
+| Task completion rate (overall) | Cumulative UI degradation | EWMA on weekly task success rate | UCL/LCL breach |
+
+When UI drift is detected, the remediation pipeline (Chapter 7) should create a specialist incident type: **"UI Environment Change"** — this is not a model quality issue and should not trigger prompt iteration. The correct response is to re-baseline screenshots, re-run the golden UI grounding test set, and update any hard-coded element selectors.
+
+---
+
+## Related
+
+- [Agent Testing, Monitoring & Evaluation](./Agent_Testing_Monitoring_Evaluation.md) — test pyramid, CI/CD gate patterns, and production monitoring architecture
+- [AI Agent Evaluation Framework Guide](./AI_Agent_Evaluation_Framework_Guide.md) — original condensed reference (superseded by this document)
+- [EU Banking AI Evaluation Compliance Guide](../../ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md) — compliance mapping for EU Banking sector, including EBA model risk governance
+- [Agentic UI Evaluation Framework](../../agentic-ui/evaluation-framework.md) — evaluation for agentic front-end and computer-use applications
+
+---
+
+*Sources: DeepEval documentation; RAGAS framework documentation; Arize Phoenix documentation; LangFuse documentation; AWS Bedrock AgentCore documentation; Azure AI Evaluation SDK documentation; Vertex AI Evaluation Service documentation; UK AISI Inspect AI documentation; NIST AI RMF 1.0 (January 2023); NIST AI RMF AI 600-1 — Generative AI Profile (July 2024); OWASP LLM Top 10 v2 (2025 revision); EU AI Act text (Regulation 2024/1689); GDPR (Regulation 2016/679); DORA (Regulation 2022/2554); EDPB LLM Privacy Risk report (April 2025); Zheng et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" (NeurIPS 2023); Wang et al. "Large Language Models are not Fair Evaluators" (ACL 2024); Shankar et al. "Who Validates the Validators?" (arXiv 2024); Xie et al. "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments" (NeurIPS 2024); Yao et al. "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains" (2024); Koh et al. "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks" (ACL 2024).*

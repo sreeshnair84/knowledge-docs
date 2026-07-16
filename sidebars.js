@@ -50,6 +50,20 @@ const sidebars = {
     {type: 'doc', id: 'index', label: 'Home'},
     {
       type: 'category',
+      label: 'Multimodal AI',
+      items: [
+        'multimodal-ai/index',
+        {type: 'doc', id: 'multimodal-ai/part-01-foundations', label: 'Part 1 — Foundations: VLMs, ALMs, Tokenization & Models'},
+        {type: 'doc', id: 'multimodal-ai/part-02-enterprise-architecture', label: 'Part 2 — Enterprise Architecture & Agent Taxonomy'},
+        {type: 'doc', id: 'multimodal-ai/part-03-modalities-image-document', label: 'Part 3 — Image & Document Intelligence'},
+        {type: 'doc', id: 'multimodal-ai/part-04-modalities-video-audio', label: 'Part 4 — Video & Audio Intelligence'},
+        {type: 'doc', id: 'multimodal-ai/part-05-multimodal-rag', label: 'Part 5 — Multimodal RAG'},
+        {type: 'doc', id: 'multimodal-ai/part-06-agentic-workflows', label: 'Part 6 — Agentic Workflows'},
+        {type: 'doc', id: 'multimodal-ai/part-07-security-threats', label: 'Part 7 — Security & Threat Taxonomy'},
+      ],
+    },
+    {
+      type: 'category',
       label: 'Databricks Agentic AI',
       items: [
         'databricks-agentic-ai/index',
