@@ -244,7 +244,7 @@ flowchart TD
 
 ## Interview Use Cases
 
-### Q1: A bank wants to deploy a real-time voice biometric authentication system for their call center. Walk through all regulatory requirements across GDPR, PCI DSS, and the EU AI Act.
+### Q1: A bank wants to deploy a real-time voice biometric authentication system for their call center. Walk through all regulatory requirements across GDPR, PCI DSS, and the EU AI Act
 
 **GDPR:** Voice biometric authentication processes biometric data for the purpose of uniquely identifying a person — squarely within Article 9 special categories. The lawful basis must be explicit consent (Article 9(2)(a)) because the banking relationship is not the type of vital interest or employment obligation that provides an alternative basis. The bank must: obtain explicit, granular, opt-in consent before any voice enrollment; provide a non-biometric authentication alternative for customers who decline consent (failure to provide an alternative makes consent involuntary and therefore invalid); maintain a consent audit trail; implement the GDPR consent workflow described above including erasure capabilities; conduct a DPIA (Data Protection Impact Assessment) before deployment of any large-scale biometric system (Article 35(3)(b) mandates DPIA for biometric processing at scale); notify the relevant DPA if the DPIA shows high residual risk.
 

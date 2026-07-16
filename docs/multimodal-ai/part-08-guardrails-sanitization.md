@@ -270,7 +270,7 @@ Architecture: a Kafka queue receives completed call recordings from the telephon
 
 For the HIPAA Safe Harbor de-identification standard, 18 PHI identifiers must be removed including names, dates (other than year), geographic data below state level, and phone numbers. The Expert Determination standard requires a statistician to certify that re-identification risk is acceptably low — appropriate when some date precision must be preserved for clinical quality metrics.
 
-### Q4: Design a document sanitization pipeline for a bank that receives 1 million PDFs per day from customers and must prevent all macro/script attacks.
+### Q4: Design a document sanitization pipeline for a bank that receives 1 million PDFs per day from customers and must prevent all macro/script attacks
 
 One million PDFs per day is ~11.6 PDFs per second peak (assuming uniform distribution) or ~30–50 PDFs/second at peak business hours. The pipeline must be horizontally scalable and stateless.
 

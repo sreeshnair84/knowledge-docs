@@ -42,11 +42,11 @@ The handbook deliberately leads with enterprise reality over research novelty. M
 | [Part 8 — Guardrails & Sanitization](./part-08-guardrails-sanitization) | Content moderation, PII detection, deepfake detection | Sanitization pipelines, content classifiers |
 | [Part 9 — Compliance & Responsible AI](./part-09-compliance-responsible-ai) | EU AI Act, GDPR, HIPAA, biometrics, fairness | Explainability, fairness metrics, regulatory mapping |
 | [Part 10 — Evaluation & Benchmarks](./part-10-evaluation-benchmarks) | MMMU, DocVQA, VideoMME, LibriSpeech, LLM-as-Judge | Golden datasets, benchmark comparison, custom evals |
-| [Part 11 — Evaluation Harnesses & CI/CD](./part-11-evaluation-harnesses) | Regression pipelines, framework comparison, automated eval | Continuous evaluation, harness architecture |
+| [Part 11 — Evaluation Harnesses & CI/CD](./part-11-evaluation-harnesses-cicd) | Regression pipelines, framework comparison, automated eval | Continuous evaluation, harness architecture |
 | [Part 12 — Observability & FinOps](./part-12-observability-finops) | Traces, GPU cost, adaptive sampling, caching, routing | Cost-aware routing, token budgets, multimodal traces |
 | [Part 13 — Governance & Production Engineering](./part-13-governance-production) | Approval workflows, OPA, audit logs, streaming inference | Autoscaling, policy-as-code, production hardening |
-| [Part 14 — Cloud Platform Comparison](./part-14-cloud-platforms) | OpenAI, Azure, AWS, GCP, Databricks, NVIDIA matrix | Platform capability matrix, pricing, enterprise fit |
-| [Part 15 — Emerging Trends & Bibliography](./part-15-emerging-trends) | Omni-modal, VLA, world models, C2PA, edge AI | Research papers, standards, future roadmap |
+| [Part 14 — Cloud Platform Comparison](./part-14-cloud-platform-comparison) | OpenAI, Azure, AWS, GCP, Databricks, NVIDIA matrix | Platform capability matrix, pricing, enterprise fit |
+| [Part 15 — Emerging Trends & Bibliography](./part-15-emerging-trends-bibliography) | Omni-modal, VLA, world models, C2PA, edge AI | Research papers, standards, future roadmap |
 
 ---
 
@@ -74,8 +74,23 @@ The table below maps each modality to representative enterprise use cases and cu
 
 ---
 
+## Cross-Cutting Framework: A.R.T. (Agility · Risk · Tenacity)
+
+The [A.R.T. Framework](../enterprise-architecture/ai-architecture/ART-Framework-Agentic-AI-Execution.md) is the recommended execution methodology for delivering the systems described in this handbook. Its three pillars address the three documented failure modes of enterprise AI programs:
+
+| A.R.T. Pillar | Multimodal AI Application | Key Parts |
+|---------------|--------------------------|-----------|
+| **Agility** | Rapid iteration on modality pipelines; CI/CD evaluation gates for VLM/OCR/ASR; product thinking for multimodal systems | Parts 6, 11 |
+| **Risk** | Adversarial input governance; biometric compliance; multimodal threat modeling; OPA policy enforcement | Parts 7, 8, 9, 13 |
+| **Tenacity** | AgentOps for GPU cost; continuous evaluation; SRE practices for multi-modal pipelines; HITL calibration loops | Parts 10, 11, 12, 13 |
+
+Each of Parts 6 and 13 includes a dedicated A.R.T. application section showing KPI targets and implementation patterns.
+
+---
+
 ## Related Sections
 
+- [A.R.T. Framework](../enterprise-architecture/ai-architecture/ART-Framework-Agentic-AI-Execution.md) — execution methodology for delivering multimodal agentic AI
 - [AI Foundations](../ai-foundations/index.md) — foundational concepts for enterprise AI architecture
 - [Enterprise Architecture — AI Architecture](../enterprise-architecture/ai-architecture/index.md) — reference architectures, patterns, and governance
 - [AI Security Governance](../ai-security-governance/index.md) — security controls and threat modeling
