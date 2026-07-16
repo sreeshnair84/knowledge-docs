@@ -58,6 +58,11 @@ const sidebars = {
         {type: 'doc', id: 'enterprise-strategy/vol3-portfolio-governance', label: 'Vol 3 — Portfolio Management & Governance'},
         {type: 'doc', id: 'enterprise-strategy/vol4-consulting-frameworks-industry', label: 'Vol 4 — Consulting Frameworks & Industry Strategy'},
         {type: 'doc', id: 'enterprise-strategy/vol5-ai-strategy-transformation-glossary', label: 'Vol 5 — AI Strategy, Transformation & Glossary'},
+        {type: 'doc', id: 'enterprise-strategy/vol6-organization-structure-operating-model', label: 'Vol 6 — Organization Structure & Operating Model'},
+        {type: 'doc', id: 'enterprise-strategy/vol7-enterprise-building-blocks', label: 'Vol 7 — Enterprise Building Blocks'},
+        {type: 'doc', id: 'enterprise-strategy/vol8-portfolio-consulting-frameworks', label: 'Vol 8 — Portfolio & Consulting Frameworks'},
+        {type: 'doc', id: 'enterprise-strategy/vol9-industry-deep-dives', label: 'Vol 9 — Industry Strategy Deep Dives'},
+        {type: 'doc', id: 'enterprise-strategy/vol10-relationship-maps-glossary', label: 'Vol 10 — Relationship Maps & Glossary'},
       ],
     },
     {
