@@ -1,27 +1,20 @@
 ---
 title: "Complete AI Agent Evaluation Framework"
 date_created: 2026-07-10
-date_updated: 2026-07-14
+last_reviewed: 2026-07-16
 status: current
-source_type: converted-pdf
+source_type: pdf-converted
 source_file: "AI_Agent_Evaluation_Framework_Complete.pdf"
-doc_type: guide
-tags: ["ai-development", "evaluation", "testing", "llm-as-judge", "drift-detection", "rag-evaluation", "cloud-agnostic", "observability", "benchmark", "compliance"]
-last_reviewed: 2026-07-14
-framework_name: ""
-covers_version: "2.1 — Cloud-Agnostic Edition"
+tags: ["ai-development", "evaluation", "testing", "llm-as-judge", "drift-detection", "rag-evaluation", "cloud-agnostic", "observability", "benchmark", "compliance", "computer-use"]
 ---
 
 # Complete AI Agent Evaluation Framework
 
-### Cloud-Agnostic Edition · LLM-as-Judge · RAG · Agentic · Drift Detection
+Cloud-Agnostic Edition v2.1 — the production reference for evaluating AI agents from ideation to retirement across AWS, Azure, GCP, and self-hosted infrastructure. Covers 45+ metrics spanning response quality, RAG, agentic behaviour, operational, and compliance planes, with automated drift detection, LLM-as-Judge calibration, computer-use agent evaluation, and EU AI Act / GDPR / DORA compliance gates.
 
-From ideation to retirement: the definitive production guide for evaluating AI agents across any cloud provider or self-hosted infrastructure. Covers quality, safety, responsible AI, PII, fairness, explainability, drift detection, and automated pipelines.
-
-|**Multi-Framework**<br>**SDK Support**|**45+**<br>**Metrics Defined**|**4 Eval Levels**|**9 Lifecycle**<br>**Phases**|**3 Cloud**<br>**Providers**|**LLM-as-Judge**<br>**Anti-Patterns**|
-|---|---|---|---|---|---|
-
-> **Related:** [Agent Testing, Monitoring & Evaluation](./Agent_Testing_Monitoring_Evaluation.md) — test pyramid and CI/CD patterns
+> **Audience:** AI Platform Engineers, MLOps Teams, Enterprise Architects, AI Risk & Compliance Officers
+> **Coverage:** LLM-as-Judge · RAG Evaluation · Agentic Metrics · Drift Detection · Multi-Cloud · Computer-Use Agents · EU AI Act / GDPR / DORA · NIST AI 600-1
+> **As of:** July 2026 (post EU AI Act enforcement commencement; OWASP LLM Top 10 v2; NIST AI 600-1)
 
 ---
 
@@ -177,6 +170,8 @@ All major AI evaluation frameworks share a common conceptual model, regardless o
 |**W&B Prompts**|Weights & Biases|SaaS|Experiment tracking, A/B prompt comparison|Partial|Traces|Partial|SDK|Managed only|
 |**MLflow LLM**|Databricks|Apache 2.0|Model registry integration; batch eval|Metrics|Partial|No|Native|Docker/K8s|
 |**Promptfoo**|Promptfoo Inc|MIT|Red-teaming, prompt testing, provider comparison|No|Partial|Partial|CLI-native|Full|
+|**Inspect AI**|UK AI Safety Institute|MIT|Policy-focused evals; red-teaming; CBRN/safety categories; structured solver/scorer architecture|No|Partial|No|CLI-native|Full|
+|**AgentEval (AutoGen)**|Microsoft|MIT|Multi-agent coordination eval; AutoGen-native task verification|No|Multi-agent|Partial|Via SDK|Full|
 
 ### 2.3 Core Evaluator Families — 10 Universal Types
 
@@ -193,6 +188,7 @@ These evaluator types are present in every major framework under different names
 |**Tool Parameters**|Parameters passed to tool correct and complete|0.0–1.0|ToolParameterAccuracyEvaluator|Critical for agentic systems; wrong params = silent failure|
 |**Goal Success**|Session-level: did user achieve their stated goal?|0.0–1.0|GoalSuccessRateEvaluator, task_success|End-to-end evaluation; multi-turn sessions|
 |**Interactions**|Multi-agent handoff quality; session-level coherence|0.0–1.0|InteractionsEvaluator|Multi-agent pipelines; supervisor–worker patterns|
+|**Judge Model**|LLM-as-Judge output quality; calibrated against human labels|0.0–1.0|G-Eval, PanelJudge, custom calibrated judge|Any high-stakes evaluation; replaces or supplements human review|
 |**Custom Domain**|Any domain-specific rubric via LLM judge|Define own|OutputEvaluator with custom prompt|Compliance checks, industry-specific quality criteria|
 
 ### 2.4 Online vs Offline Task Patterns
@@ -260,6 +256,21 @@ SESSION LEVEL (GoalSuccessRate, Conversation Quality)
 ```
 
 Run all three levels simultaneously. Session-level metrics alone miss tool-level failures that still lead to a technically successful end state via compensating actions.
+
+### 2.8 Multi-Agent Orchestrator Evaluation
+
+Orchestrated multi-agent systems (supervisor → worker patterns) require an additional evaluation layer beyond single-agent metrics. The key failure mode: a worker agent produces a malformed or incomplete output that the supervisor passes downstream without detecting — partial failure propagates silently to the final response.
+
+| **Dimension** | **Metric** | **Method** | **Tool** |
+|---|---|---|---|
+| Delegation accuracy | Was the task routed to the correct worker agent? | Trajectory eval: expected\_worker vs actual\_worker | DeepEval DAG / Custom |
+| Handoff fidelity | Did the supervisor relay context correctly to the worker? | LLM-Judge: worker context vs original user intent | Custom OutputEvaluator |
+| Aggregation quality | Did the orchestrator synthesise worker outputs correctly? | Faithfulness: final output vs all worker outputs combined | RAGAS faithfulness |
+| Redundancy detection | Did multiple workers produce duplicate steps? | Step deduplication ratio across trajectory | Custom metric |
+| Failure isolation | When a worker fails, does the system recover or propagate? | Fault-injection: simulate worker timeout/error | Custom chaos eval |
+| End-to-end latency | Total wall-clock time including parallel worker execution | P50/P95 from nested span fan-out | Arize Phoenix / LangFuse |
+
+**Recommended tooling per provider:** AWS Bedrock Multi-Agent Collaboration + AgentCore Evaluations for AWS-native stacks; Microsoft AutoGen + Azure AI Evaluation for Azure stacks; LangGraph + Arize Phoenix trace fan-out for open-source multi-agent pipelines.
 
 ---
 
@@ -615,7 +626,8 @@ def should_escalate_to_human(eval_scores: dict, risk_level: str) -> bool:
 
 |**Tier**|**Type**|**Examples**|**Purpose**|**Update Frequency**|
 |---|---|---|---|---|
-|Tier 1|Public benchmarks|MMLU, HumanEval, SWE-bench, GAIA, TruthfulQA, HellaSwag, FinanceBench, BrowserBench|Calibrate against industry baselines; compare model versions objectively|At every model upgrade|
+|Tier 1|General LLM benchmarks|MMLU, HumanEval, TruthfulQA, HellaSwag, BrowserBench|Calibrate base model capability against industry baselines; compare model versions objectively|At every model upgrade|
+|Tier 1|Agentic / computer-use benchmarks|GAIA, SWE-bench Verified, τ-bench (tool-use + policy), AgentBench (8 environments), WebArena (browser), WorkArena (enterprise GUI), OSWorld (desktop computer-use)|Calibrate system-level planning, tool use, and computer-use capabilities on public leaderboards|At every major model upgrade|
 |Tier 2|Domain benchmarks|FinanceBench, MedQA, LegalBench, custom domain bench from regulatory scenarios|Vertical-specific calibration; sector-appropriate quality standards|Quarterly|
 |Tier 3|Custom / golden dataset|Curated from real production traffic (anonymised) + SME-annotated + adversarial red-team cases|Production truth — the definitive gate that blocks deployment|Monthly + on every incident|
 
@@ -641,20 +653,20 @@ def should_escalate_to_human(eval_scores: dict, risk_level: str) -> bool:
 
 ### 6.4 Adversarial & Red-Team Sets (OWASP LLM Top 10)
 
-Following NIST AI RMF and OWASP LLM Top 10 v2, adversarial test sets should cover:
+Following NIST AI RMF AI 600-1 and OWASP LLM Top 10 v2 (2025 revision), adversarial test sets should cover:
 
-|**Attack Category**|**Test Cases to Include**|**OWASP LLM ID**|
+| **Attack Category** | **Test Cases to Include** | **OWASP LLM ID** |
 |---|---|---|
-|Prompt injection|Direct and indirect injection attempts; system prompt leakage probes|LLM01|
-|Insecure output handling|Unvalidated structured output; code execution via output|LLM02|
-|Training data poisoning|Questions testing for memorized sensitive training data|LLM03|
-|Model denial of service|Extremely long inputs; recursive tool calls; resource exhaustion|LLM04|
-|Supply chain attacks|Tool/plugin dependency tampering simulation|LLM05|
-|Sensitive data exposure|PII extraction attempts; indirect PII inference|LLM06|
-|Insecure plugin design|Malformed tool call injection; parameter tampering|LLM07|
-|Excessive agency|Unauthorized action escalation; scope creep tests|LLM08|
-|Overreliance|Outdated fact tests; confidence calibration probes|LLM09|
-|Misinformation|Hallucination on verifiable facts; citation fabrication|LLM10|
+| Prompt injection | Direct and indirect injection attempts; indirect injection via tool outputs | LLM01 |
+| Sensitive information disclosure | PII extraction attempts; indirect PII inference; system prompt leakage | LLM02 |
+| Supply chain | Tool/plugin dependency tampering simulation; poisoned third-party data | LLM03 |
+| Data and model poisoning | Questions testing for memorized sensitive training data; backdoor trigger probes | LLM04 |
+| Insecure output handling | Unvalidated structured output; code execution via output; XSS in rendered responses | LLM05 |
+| Excessive agency | Unauthorized action escalation; scope creep tests; autonomous action without consent | LLM06 |
+| System prompt leakage | Extraction of system prompt content via adversarial queries | LLM07 |
+| Vector and embedding weaknesses | Semantic similarity attacks; embedding inversion; retrieval poisoning | LLM08 |
+| Misinformation | Hallucination on verifiable facts; citation fabrication; overconfidence in outdated data | LLM09 |
+| Unbounded consumption | Extremely long inputs; recursive tool calls; resource exhaustion; token flooding | LLM10 |
 
 ---
 
@@ -844,15 +856,16 @@ Agent Response: {response}
 
 ### 9.1 Global Regulatory Landscape
 
-|**Regulation**|**Jurisdiction**|**Key AI Obligations**|**Max Penalty**|**In Force**|
+| **Regulation** | **Jurisdiction** | **Key AI Obligations** | **Max Penalty** | **In Force** |
 |---|---|---|---|---|
-|EU AI Act (2024/1689)|European Union|High-risk conformity Art.10-15; human oversight; audit trail; EU AI database registration|EUR 35M or 7% global turnover|Aug 2024 (phased to 2027)|
-|GDPR (2016/679)|EU / EEA|PII minimisation; right to explanation (Art.22); right to erasure; DPIA for high-risk AI|EUR 20M or 4% global turnover|May 2018|
-|DORA (2022/2554)|EU Financial Sector|ICT risk management; incident reporting within 4h; annual resilience testing|EUR 5M per entity|January 2025|
-|CCPA / CPRA|California, USA|Consumer rights to know, delete, opt-out of automated decisions|USD 7,500 per intentional violation|Active|
-|NIST AI RMF 1.0|USA (voluntary)|Govern, Map, Measure, Manage lifecycle; red-teaming; documentation|Non-regulatory best practice|Active|
-|AMLD6 (2018/1673)|EU|AML/CTF controls; KYC; SAR justification; demographic non-discrimination|Criminal liability + fines|Active|
-|EBA Guidelines|EU Financial|Loan origination; model risk management; internal governance; PD/LGD for AI models|Supervisory action|Ongoing|
+| EU AI Act (2024/1689) | European Union | Prohibited practices: Feb 2025; GPAI obligations: Aug 2025; High-risk (Annex III) conformity Art.10-15, human oversight, audit trail, EU AI database registration: Aug 2026 | EUR 35M or 7% global turnover | Phased: Feb 2025 → Aug 2026 |
+| GDPR (2016/679) | EU / EEA | PII minimisation; right to explanation (Art.22); right to erasure; DPIA for high-risk AI | EUR 20M or 4% global turnover | May 2018 |
+| DORA (2022/2554) | EU Financial Sector | ICT risk management; incident reporting within 4h for 'significant' incidents; annual resilience testing | EUR 5M per entity | January 2025 |
+| CCPA / CPRA | California, USA | Consumer rights to know, delete, opt-out of automated decisions | USD 7,500 per intentional violation | Active |
+| NIST AI RMF 1.0 | USA (voluntary) | Govern, Map, Measure, Manage lifecycle; red-teaming; documentation | Non-regulatory best practice | January 2023 |
+| NIST AI RMF AI 600-1 | USA (voluntary) | GenAI-specific risk taxonomy: confabulation, data privacy, homogenization, human-AI configuration, information security, intellectual property, CBRN uplift, value chain integration | Non-regulatory best practice | July 2024 |
+| AMLD6 (2018/1673) | EU | AML/CTF controls; KYC; SAR justification; demographic non-discrimination | Criminal liability + fines | Active |
+| EBA Guidelines | EU Financial | Loan origination; model risk management; internal governance; PD/LGD for AI models | Supervisory action | Ongoing |
 
 ### 9.2 High-Risk AI Classification
 
