@@ -1,0 +1,571 @@
+---
+title: "NIST AI 100-4 — Synthetic Content Detection & Provenance"
+date: 2026-07-16
+tags: ["nist-ai-100-4", "synthetic-content", "deepfake", "c2pa", "provenance", "watermarking", "detection"]
+date_created: 2026-07-16
+last_reviewed: 2026-07-16
+status: current
+source_type: pdf-converted
+source_file: ""
+---
+
+# NIST AI 100-4 — Synthetic Content: Detection, Attribution & Provenance
+
+**Standard:** NIST AI 100-4 (May 2024 Draft, Final 2024)
+**Full Title:** Reducing Risks Posed by Synthetic Content
+**Audience:** CISO, Digital Forensics, Communications Security, Content Security
+
+---
+
+## 1. Introduction
+
+NIST AI 100-4 addresses AI-generated synthetic content — text, images, audio, and video — with focus on:
+
+- **Detection:** How to identify AI-generated content
+- **Provenance:** How to attribute content to its source
+- **Authentication:** How to verify content has not been tampered with
+- **Watermarking:** Technical standards for embedding origin signals
+
+### Why Synthetic Content is a Security Problem
+
+```
+SYNTHETIC CONTENT ATTACK SURFACE:
+
+Social Engineering:
+  Deepfake audio: CEO voice clone authorizes wire transfer
+  Deepfake video: Executive appearing to announce market-moving news
+  Synthetic email: AI-generated spear-phishing at scale
+  Fake documents: AI-generated ID, contracts, compliance reports
+
+Disinformation:
+  Fake news with realistic images
+  AI-generated threat intelligence reports
+  Synthetic security researcher identities
+  Fake vulnerability advisories
+
+Enterprise Security:
+  Deepfake in video call (identity verification failure)
+  AI-generated malicious code hidden in seemingly-benign output
+  Synthetic incident reports to mislead IR teams
+  Fake compliance evidence
+
+Scale Amplification:
+  Traditional: 1 attacker = 1 phishing email
+  With AI: 1 attacker = 10,000 personalized phishing emails
+  Barrier to entry: Nearly zero (ChatGPT, MidJourney, ElevenLabs)
+```
+
+---
+
+## 2. Taxonomy of Synthetic Content (AI 100-4)
+
+### Content Types
+
+| Type | Generation Method | Primary Attack Use |
+|------|-----------------|-------------------|
+| **Synthetic text** | LLM generation | Phishing, disinformation, fake reports |
+| **Synthetic images** | Diffusion models (DALL-E, Midjourney, SD) | Fake IDs, visual social engineering |
+| **Synthetic audio** | Voice cloning (ElevenLabs, etc.) | Vishing, BEC via voice call |
+| **Synthetic video (deepfake)** | Face-swap, full generation | High-value fraud, executive impersonation |
+| **Synthetic biometrics** | Generative models | Identity verification bypass |
+| **Hybrid** | Real base + AI modification | Video/audio manipulation |
+
+### Manipulation vs. Generation
+
+AI 100-4 distinguishes two categories:
+
+```
+SYNTHESIS: Entirely AI-generated content
+  Example: AI-generated phishing email text
+  Detection approach: Classifier-based (AI detectors)
+
+MANIPULATION: Real content with AI modifications
+  Example: Real CEO video with AI-altered voice
+  Example: Real document with AI-altered numbers
+  Detection approach: Forensic artifact detection, provenance verification
+  
+KEY INSIGHT: Manipulation is often harder to detect than pure synthesis
+  because statistical distributions are close to authentic content.
+```
+
+---
+
+## 3. Detection Approaches
+
+### 3.1 AI Text Detection
+
+```python
+class AITextDetector:
+    """
+    Multi-method AI text detection per NIST AI 100-4.
+    No single detector is reliable — use ensemble approach.
+    """
+    
+    def detect(self, text: str) -> dict:
+        results = {}
+        
+        # Method 1: Statistical (perplexity-based)
+        # LLMs produce text with characteristically low perplexity
+        results["perplexity"] = self._perplexity_analysis(text)
+        
+        # Method 2: Trained classifier
+        results["classifier"] = self._classifier_predict(text)
+        
+        # Method 3: Burstiness / distribution analysis
+        # Human text has more variance in sentence complexity
+        results["burstiness"] = self._burstiness_analysis(text)
+        
+        # Method 4: Watermark detection (if content provider uses watermarking)
+        results["watermark"] = self._check_for_watermark(text)
+        
+        # Ensemble decision
+        confidence_scores = [r.get("ai_probability", 0) for r in results.values() 
+                           if isinstance(r, dict)]
+        ensemble_score = sum(confidence_scores) / len(confidence_scores)
+        
+        return {
+            "ai_probability": ensemble_score,
+            "verdict": "AI_GENERATED" if ensemble_score > 0.7 else "LIKELY_HUMAN",
+            "confidence": abs(ensemble_score - 0.5) * 2,  # 0-1 confidence
+            "method_results": results,
+            "caveat": "AI detection is imperfect. False positive rate is non-trivial."
+        }
+    
+    def _perplexity_analysis(self, text: str) -> dict:
+        """Measure how 'surprised' a language model is by the text."""
+        # Low perplexity = text is likely generated by an LLM similar to reference model
+        # Reference: GPT-2 or similar as perplexity oracle
+        import torch
+        from transformers import GPT2LMHeadModel, GPT2Tokenizer
+        
+        model = GPT2LMHeadModel.from_pretrained('gpt2')
+        tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+        
+        encodings = tokenizer(text, return_tensors='pt')
+        with torch.no_grad():
+            outputs = model(**encodings, labels=encodings['input_ids'])
+            perplexity = torch.exp(outputs.loss).item()
+        
+        # Low perplexity (<30) suggests AI generation
+        return {
+            "perplexity": perplexity,
+            "ai_probability": max(0, 1 - (perplexity / 100))
+        }
+```
+
+### 3.2 Deepfake Detection
+
+```python
+class DeepfakeDetector:
+    """
+    Video/image deepfake detection using artifact analysis.
+    NIST AI 100-4 recommends multi-modal analysis.
+    """
+    
+    def analyze_video(self, video_path: str) -> dict:
+        """Comprehensive deepfake analysis for video."""
+        
+        results = {}
+        
+        # Spatial artifacts (per-frame analysis)
+        results["spatial"] = self._detect_spatial_artifacts(video_path)
+        
+        # Temporal consistency
+        results["temporal"] = self._detect_temporal_inconsistencies(video_path)
+        
+        # Physiological signals
+        results["physiological"] = self._detect_rppg_inconsistencies(video_path)
+        
+        # Audio-visual synchronization
+        results["av_sync"] = self._detect_av_sync_issues(video_path)
+        
+        # Compression artifacts (deepfakes often re-compressed)
+        results["compression"] = self._analyze_compression_artifacts(video_path)
+        
+        return self._ensemble_decision(results)
+    
+    def _detect_spatial_artifacts(self, video_path: str) -> dict:
+        """
+        Common deepfake spatial artifacts:
+        - Blurring at face boundaries
+        - Inconsistent lighting between face and background
+        - Eye blinking frequency anomalies
+        - Hair/ear rendering issues
+        - Symmetry anomalies
+        """
+        # CNN-based artifact detection
+        artifacts = []
+        for frame in self._extract_frames(video_path, fps=5):
+            frame_artifacts = self.spatial_model.predict(frame)
+            artifacts.append(frame_artifacts)
+        
+        return {
+            "artifact_rate": sum(1 for a in artifacts if a.score > 0.5) / len(artifacts),
+            "max_artifact_score": max(a.score for a in artifacts),
+            "artifact_frames": [i for i, a in enumerate(artifacts) if a.score > 0.7]
+        }
+    
+    def _detect_rppg_inconsistencies(self, video_path: str) -> dict:
+        """
+        Remote Photoplethysmography (rPPG):
+        Real faces have subtle color changes from heartbeat.
+        Deepfakes often lack consistent rPPG signal.
+        """
+        # Measure subtle RGB variations in face region
+        rppg_signal = self._extract_rppg_signal(video_path)
+        
+        # Real faces: clear periodic signal ~60-100 BPM
+        # Deepfakes: noisy or absent signal
+        signal_quality = self._analyze_signal_periodicity(rppg_signal)
+        
+        return {
+            "rppg_quality": signal_quality,
+            "deepfake_indicator": signal_quality < 0.3  # Low quality = suspicious
+        }
+```
+
+### 3.3 Detection Limitations (Critical for Enterprise)
+
+```
+NIST AI 100-4 KEY FINDING: Detection alone is insufficient.
+
+Detection Accuracy Caveats:
+  Text Detectors:
+    - False positive rates: 5-15% on human-written text
+    - False negative rates: 20-40% on AI text with minor edits
+    - Performance degrades rapidly on models not in training set
+    - Paraphrasing tools defeat most detectors
+    - NOT suitable as sole decision-making tool
+    
+  Image Deepfake Detectors:
+    - Accuracy against current generation: 85-95%
+    - Adversarially attacked deepfakes: 40-60% detection
+    - New model releases frequently defeat existing detectors
+    - Cross-database generalization is poor
+    
+  Video Deepfake Detectors:
+    - Best performance: 90-97% on benchmark datasets
+    - Real-world performance: 70-80% (compression, format changes)
+    - "Adversarial deepfakes" designed to evade: ~50%
+    
+  Audio Clones:
+    - Modern voice cloning: extremely difficult to detect
+    - ElevenLabs, OpenVoice outputs often pass detector
+    - Recommended: Out-of-band verification, not technical detection
+```
+
+---
+
+## 4. Provenance and Authentication (C2PA)
+
+### 4.1 Coalition for Content Provenance and Authenticity (C2PA)
+
+C2PA is the technical standard endorsed by NIST AI 100-4 for content provenance. Adopted by Adobe, Microsoft, Google, Sony, Canon, BBC, and others.
+
+```
+C2PA ARCHITECTURE:
+  
+  Creator → Signs content with C2PA manifest → Distributes content
+              │
+              │ Manifest contains:
+              │  - Creator identity (cryptographic certificate)
+              │  - Creation timestamp
+              │  - Creation tool and settings
+              │  - Edit history with each editor's signature
+              │  - AI generation provenance (if AI-assisted)
+              ▼
+  Consumer → Verifies manifest against trusted certificate chain
+              │
+              │ Verification result:
+              │  - "Created by [Identity] on [Date]"
+              │  - "Modified by [Entity] on [Date] using [Tool]"
+              │  - "Generated by AI [Model] on [Date]"
+              │  - "No provenance data available"
+              ▼
+  Trust Decision → Accept / Reject / Verify further
+
+C2PA WORKFLOW COMPONENTS:
+  Claim: Assertions about the content's origin and history
+  Manifest: Collection of claims + digital signatures
+  Hard Binding: Cryptographic hash links manifest to content
+  Soft Binding: Watermark survives content transformations
+```
+
+### 4.2 C2PA Implementation
+
+```python
+import c2pa  # pip install c2pa-python (official SDK)
+import json
+from pathlib import Path
+
+class C2PAContentProvenanceService:
+    """
+    Enterprise C2PA implementation for AI-generated content provenance.
+    """
+    
+    def sign_ai_generated_content(
+        self,
+        content_path: str,
+        ai_model: str,
+        ai_provider: str,
+        human_approved: bool,
+        approver_identity: str = None
+    ) -> str:
+        """Sign AI-generated content with C2PA provenance."""
+        
+        # Build C2PA manifest
+        manifest_def = {
+            "claim_generator": "Enterprise-AI-Content-Service/1.0",
+            "assertions": [
+                {
+                    "label": "c2pa.ai.training",
+                    "data": {
+                        "entries": {
+                            f"com.{ai_provider}.{ai_model}": {
+                                "use": "notUsed"  # Content is AI-generated, not used for training
+                            }
+                        }
+                    }
+                },
+                {
+                    "label": "c2pa.ai.generative",
+                    "data": {
+                        "prompt": "NOT_DISCLOSED",  # Privacy — don't expose prompts
+                        "model": ai_model,
+                        "provider": ai_provider,
+                        "generation_date": datetime.utcnow().isoformat()
+                    }
+                }
+            ]
+        }
+        
+        if human_approved and approver_identity:
+            manifest_def["assertions"].append({
+                "label": "c2pa.editorial.review",
+                "data": {
+                    "reviewer": approver_identity,
+                    "review_date": datetime.utcnow().isoformat(),
+                    "approved": human_approved
+                }
+            })
+        
+        # Sign with enterprise certificate
+        reader = c2pa.Reader.from_file(content_path)
+        
+        # TODO: Replace with actual enterprise certificate
+        # See: https://opensource.contentauthenticity.org/docs/getting-started
+        signed_path = content_path.replace(".", "_signed.")
+        
+        return signed_path
+    
+    def verify_content_provenance(self, content_path: str) -> dict:
+        """Verify C2PA provenance of content before trusting it."""
+        
+        try:
+            reader = c2pa.Reader.from_file(content_path)
+            manifest_store = reader.get_active_manifest()
+            
+            if not manifest_store:
+                return {
+                    "has_provenance": False,
+                    "verdict": "NO_PROVENANCE",
+                    "recommendation": "Treat as unverified — could be AI-generated"
+                }
+            
+            # Parse assertions
+            assertions = manifest_store.get("assertions", [])
+            ai_assertions = [a for a in assertions if "ai" in a.get("label", "")]
+            
+            return {
+                "has_provenance": True,
+                "ai_generated": len(ai_assertions) > 0,
+                "assertions": assertions,
+                "trust_level": "VERIFIED" if manifest_store.get("validation_status") == "valid" else "UNVERIFIED",
+                "recommendation": "AI-generated content — verify claims with human" if ai_assertions else "Content appears authentic"
+            }
+        
+        except c2pa.Error as e:
+            return {
+                "has_provenance": False,
+                "error": str(e),
+                "verdict": "VERIFICATION_FAILED"
+            }
+```
+
+### 4.3 Watermarking
+
+```
+WATERMARKING APPROACHES (NIST AI 100-4):
+
+Visible Watermarks:
+  Simple: Add "AI-GENERATED" overlay to images/video
+  Limitation: Easily cropped or removed
+  Use: Internal content, where removal is detectable
+
+Invisible Watermarks (Robust):
+  Statistical: Encode signal in noise-like patterns
+  Example: Google SynthID (Gemini images/audio)
+  Limitation: May not survive heavy compression or editing
+  Use: Detection by the generating organization only
+
+Cryptographic Watermarks:
+  Embed: Hash of generation parameters in content
+  Verify: Recompute hash from suspected original
+  Strength: Tamper-evident, not just origin-marking
+  Use: Legal evidence, compliance documentation
+
+Text Watermarks:
+  Green-Red list: Force certain token selections during generation
+  Detection: Statistical analysis of token frequencies
+  Limitation: Paraphrasing defeats most text watermarks
+  Research: Active area — no production-ready standard yet
+
+ENTERPRISE RECOMMENDATION (AI 100-4):
+  1. Implement C2PA manifest signing for all AI-generated enterprise content
+  2. Use SynthID/equivalent for AI image generation (where available)
+  3. Never rely on watermarking alone for adversarial contexts
+  4. Combine with out-of-band verification for high-stakes content
+```
+
+---
+
+## 5. Security Operations: Synthetic Content Threats
+
+### Playbook: Synthetic Content in Security Operations
+
+```python
+SYNTHETIC_CONTENT_SOC_PLAYBOOK = {
+    "trigger": "Suspicion of synthetic content in security context",
+    
+    "scenarios": {
+        "PB-SC-01": {
+            "name": "Deepfake Executive Voice/Video",
+            "indicators": [
+                "Wire transfer or sensitive action request via video call",
+                "Voice call requesting unusual financial or security action",
+                "Physical security badge request based on video verification"
+            ],
+            "immediate_actions": [
+                "Pause the request — do not take action under time pressure",
+                "Verify via out-of-band channel (call known good phone number)",
+                "Escalate to CISO for >$X threshold requests"
+            ],
+            "technical_analysis": [
+                "Run deepfake detector on video recording if available",
+                "Analyze audio for synthetic voice artifacts",
+                "Check C2PA provenance if content was digital"
+            ],
+            "never_do": [
+                "Trust real-time video as sole authentication for high-risk actions",
+                "Allow AI-detected content verdict to be final without human judgment"
+            ]
+        },
+        
+        "PB-SC-02": {
+            "name": "AI-Generated Phishing at Scale",
+            "indicators": [
+                "Sudden spike in phishing reports with unusual personalization",
+                "Phishing emails that pass standard grammar/spelling checks",
+                "Phishing content referencing specific internal projects/personnel"
+            ],
+            "immediate_actions": [
+                "Quarantine all emails from suspicious campaign",
+                "Run AI text detection on sample set",
+                "Alert users about targeted campaign"
+            ],
+            "investigation": [
+                "Identify how attacker obtained personalization data (OSINT, breach)",
+                "Track if internal data was used (possible insider or prior breach)",
+                "Share IOCs with email security vendors"
+            ]
+        },
+        
+        "PB-SC-03": {
+            "name": "AI-Generated Threat Intelligence Reports",
+            "risk": "Attacker creates fake TI reports to mislead SOC",
+            "indicators": [
+                "TI report from unusual source with no verification chain",
+                "TI report alleging attack by unusual/implausible threat actor",
+                "C2PA provenance check fails or is absent"
+            ],
+            "actions": [
+                "Verify source against known-good TI feeds",
+                "Cross-reference claims with multiple independent sources",
+                "Check author identity and publication history",
+                "Never act on single-source unverified TI for major decisions"
+            ]
+        }
+    }
+}
+```
+
+---
+
+## 6. Regulated Industry Applications
+
+### Banking / Financial Services
+
+```
+FINANCIAL SECTOR SYNTHETIC CONTENT RISKS:
+  1. Deepfake CFO authorizes fraudulent transaction
+  2. AI-generated contract disputes
+  3. Synthetic voice for phone banking authentication bypass
+  4. AI-generated fake compliance evidence
+  5. Deepfake KYC/AML identity verification bypass
+
+CONTROLS:
+  - Liveness detection with anti-spoofing for video KYC
+  - Multi-factor authentication not relying on biometric alone
+  - Transaction authorization via out-of-band channel (SMS/hardware token)
+  - C2PA provenance for all contract/document execution
+  - Behavioral biometrics as supplement to deepfake-vulnerable biometrics
+```
+
+### Healthcare
+
+```
+HEALTHCARE SYNTHETIC CONTENT RISKS:
+  1. AI-generated medical images (fake X-rays, MRIs)
+  2. Synthetic patient records for insurance fraud
+  3. Deepfake physician authorization for prescription fraud
+  4. AI-generated research data (scientific fraud)
+
+CONTROLS:
+  - C2PA provenance for all clinical imaging
+  - AI-generated image detection in radiology workflow
+  - Out-of-band verification for high-risk prescription authorizations
+  - Digital signature requirements for research data
+```
+
+### Government
+
+```
+GOVERNMENT / ELECTION INTEGRITY:
+  1. Deepfake political videos
+  2. AI-generated disinformation at scale
+  3. Synthetic evidence in legal proceedings
+  4. AI-generated official communications impersonation
+
+CONTROLS:
+  - CISA synthetic media guidance for election security
+  - Official communication cryptographic signing (DKIM++ for official comms)
+  - Public C2PA-signed original content for official media
+  - Voter education on synthetic content risks
+```
+
+---
+
+## 7. Enterprise Implementation Roadmap
+
+| Phase | Timeline | Key Actions |
+|-------|----------|-------------|
+| **Assess** | Month 1 | Inventory AI content generation uses; identify highest-risk synthetic content scenarios |
+| **Policy** | Month 2 | Acceptable use policy for AI-generated content; disclosure requirements |
+| **Detect** | Month 3 | Deploy AI text detector in email gateway; train phishing team on synthetic indicators |
+| **Provenance** | Month 4-6 | Implement C2PA signing for enterprise-published AI content |
+| **Response** | Month 6 | Activate synthetic content playbooks (PB-SC-01, 02, 03) |
+| **Training** | Ongoing | Annual synthetic content awareness training for executives (BEC/deepfake risk) |
+
+---
+
+*Next: [Part 03 → CAISI Agentic AI Security →](part-03-caisi-agentic-ai)*
