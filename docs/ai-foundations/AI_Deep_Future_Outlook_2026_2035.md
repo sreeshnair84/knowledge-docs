@@ -488,7 +488,7 @@ Humanity is approaching the technological singularity—the point at which artif
 
 ```
                   [THE SINGULARITY TRAJECTORY]
-                                                       
+
                                                 / (ASI)
                                                /  Superintelligence
                                               /   (Post-2030)
@@ -498,7 +498,7 @@ Humanity is approaching the technological singularity—the point at which artif
                                  / (2027 Modal)
                        _________/
                       / (Current Context)
-___________/ 
+___________/
 
 ```
 

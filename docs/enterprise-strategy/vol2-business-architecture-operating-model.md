@@ -494,17 +494,17 @@ VALUE PROPOSITION CANVAS
 
 LEFT SIDE: CUSTOMER PROFILE        RIGHT SIDE: VALUE MAP
 ────────────────────────────────   ────────────────────────────────
-                                   
+
 JOBS (What they're trying to do)   PRODUCTS & SERVICES (What you offer)
 • Close month-end books            • AI-powered financial closing tool
 • Ensure compliance                • Real-time anomaly detection
 • Report to CFO                    • Automated reconciliation
-                                   
+
 PAINS (Frustrations, obstacles)    PAIN RELIEVERS (How you reduce pain)
 • Takes 10 days each month         • Reduces closing to 2 days
 • Manual reconciliation errors     • AI catches 97% of errors before review
 • No visibility into status        • Real-time dashboard for CFO
-                                   
+
 GAINS (Desired outcomes)           GAIN CREATORS (How you create gains)
 • Faster close cycle               • Frees FP&A team for strategic work
 • Confident numbers                • Audit trail for compliance

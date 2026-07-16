@@ -121,17 +121,17 @@ rules:
       path_prefix: "/prod/financials/"
     effect: "require_approval"
     approvers: ["finance-lead@company.com"]
-  
+
   - condition:
       action: "external_api_call"
       domain: "*.external-vendor.com"
     effect: "deny"
-    
+
   - condition:
       model: "openai-gpt-4o"
       user_group: "exec-team"
     effect: "allow"
-    
+
   - condition:
       detected_pii: true
     effect: "mask"
@@ -186,13 +186,13 @@ ABAC is now GA in Unity Catalog, enabling dynamic, tag-driven access control at 
 ```
 Governed Tag (account-level vocabulary)
     "pii_class = confidential"
-    
+
 ABAC Policy (attached at catalog or schema level)
     IF table.tag.pii_class == "confidential"
     AND user.department != "compliance"
     THEN apply_row_filter: "region = user.region"
     AND apply_column_mask: "ssn → XXXX-XX-####"
-    
+
 Result: every table tagged "pii_class=confidential" in this schema
         automatically enforces the row filter and column mask
         without per-table configuration

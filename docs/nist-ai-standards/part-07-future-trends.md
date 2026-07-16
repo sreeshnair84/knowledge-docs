@@ -55,7 +55,7 @@ Universal Adversarial Suffixes:
   Research (Zou et al., 2023): Append suffix to any prompt → bypass alignment
   Current Status: Mostly patched in major commercial models
   Future Risk: New suffixes discovered periodically; open-source models vulnerable
-  
+
   Example Pattern: "[Question] + [Universal Suffix]"
   Mitigation: Alignment training, suffix detection
 
@@ -63,13 +63,13 @@ Many-shot Jailbreaking:
   Research (Anthropic, 2024): In-context examples used to bypass safety
   Current Status: Major models patch this; smaller models remain vulnerable
   Future Risk: As context windows grow (1M+ tokens), harder to monitor
-  
+
 Indirect Injection at Scale:
   Current: Targeted injection in specific documents/emails
   Future: Poisoned data in widely-used datasets (Wikipedia, arXiv, GitHub)
            AI trained on / using these datasets becomes systematically vulnerable
   Impact: Affects millions of AI deployments simultaneously
-  
+
 Model Architecture Attacks:
   Gradient-based attacks on attention mechanisms
   Token embedding space manipulation
@@ -86,16 +86,16 @@ Image + Text Combined Attacks:
   Current: Separate image or text attacks
   Emerging: Image embedding that triggers attack when combined with specific text
   Impact: Image that looks benign but causes AI text analysis to be hijacked
-  
+
 Audio-Visual Sync Attacks:
   Deepfake audio/video with adversarial perturbations
   Defeats both human inspection AND deepfake detectors
   Current state: Proof-of-concept in research; production use in 2027+
-  
+
 Cross-Modal Transfer:
   Adversarial perturbation in image causes text response manipulation
   Impact: Attacker sends image to customer service AI; AI responds with injected text
-  
+
 Physical World Adversarial Attacks:
   Adversarial patches on physical objects (QR codes, stickers)
   Physical object that causes AI vision system to misclassify
@@ -256,7 +256,7 @@ NIST SP 800-220: AI in Enterprise Security (Expected 2026)
   - SP 800-53 extensions for AI-specific controls
   - FedRAMP implications for AI systems
   - Guidance for federal AI deployments
-  
+
 AI Safety Evaluations Standard (Planned):
   - Standard evaluation methodology for frontier AI safety
   - Alignment with UK AISI evaluation framework
@@ -332,7 +332,7 @@ ORGANIZATIONAL POSTURE:
   - NIST AI RMF (US government agencies — already adopted)
   - ISO 42001 (global enterprise standard)
   - Sector-specific regulations (financial, healthcare, energy — pending)
-  
+
   Early movers gain:
   - Institutional knowledge before compliance pressure
   - Ability to influence standard development

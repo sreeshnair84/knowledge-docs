@@ -137,18 +137,18 @@ For tool and agent contract drift, automated contract tests run continuously:
 def test_mcp_schema_stability(tool_name: str, expected_schema: dict):
     """Compares live MCP tool schema against expected (pinned) schema."""
     actual_schema = mcp_client.describe_tool(tool_name)
-    
+
     # Schema hash comparison
     assert hash(actual_schema) == hash(expected_schema), \
         f"MCP tool '{tool_name}' schema changed: {diff(expected_schema, actual_schema)}"
-    
+
     # Behavioral contract test
     test_input = CONTRACT_TEST_INPUTS[tool_name]
     actual_output = mcp_client.call_tool(tool_name, test_input)
-    
+
     assert validate_output(actual_output, expected_schema.output_type), \
         f"MCP tool '{tool_name}' output format changed"
-    
+
     assert actual_output.keys() == CONTRACT_OUTPUTS[tool_name].keys(), \
         f"MCP tool '{tool_name}' output fields changed"
 ```

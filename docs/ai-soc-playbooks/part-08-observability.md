@@ -96,7 +96,7 @@ langfuse = Langfuse(
 @observe(name="alert_triage", capture_input=True, capture_output=True)
 async def triage_alert(alert: dict, incident_id: str) -> dict:
     """AI alert triage with full Langfuse observability."""
-    
+
     # Add incident correlation to trace
     langfuse_context.update_current_trace(
         metadata={
@@ -107,25 +107,25 @@ async def triage_alert(alert: dict, incident_id: str) -> dict:
         },
         tags=["triage", "production"]
     )
-    
+
     client = anthropic.Anthropic()
-    
+
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
         system="You are a SOC triage analyst...",
         messages=[{"role": "user", "content": f"Triage: {json.dumps(alert)}"}]
     )
-    
+
     result = json.loads(response.content[0].text)
-    
+
     # Score the trace for quality monitoring
     langfuse_context.score_current_trace(
         name="analyst_agreement",
         value=None,  # Set later when analyst reviews
         comment="Pending analyst review"
     )
-    
+
     return result
 ```
 
@@ -143,7 +143,7 @@ tracer = trace.get_tracer("soc-agents")
 
 async def investigate_with_tracing(incident: Incident) -> InvestigationResult:
     """Multi-agent investigation with distributed tracing."""
-    
+
     with tracer.start_as_current_span(
         "soc.investigation",
         attributes={
@@ -152,19 +152,19 @@ async def investigate_with_tracing(incident: Incident) -> InvestigationResult:
             "incident.type": incident.type
         }
     ) as root_span:
-        
+
         # Triage agent span
         with tracer.start_as_current_span("soc.triage") as triage_span:
             triage_span.set_attribute(SpanAttributes.LLM_REQUEST_MODEL, "claude-sonnet-4-6")
             triage_span.set_attribute(SpanAttributes.LLM_REQUEST_MAX_TOKENS, 1024)
-            
+
             triage_result = await triage_agent.analyze(incident)
-            
-            triage_span.set_attribute(SpanAttributes.LLM_USAGE_TOTAL_TOKENS, 
+
+            triage_span.set_attribute(SpanAttributes.LLM_USAGE_TOTAL_TOKENS,
                                        triage_result.token_usage.total)
             triage_span.set_attribute("soc.triage.verdict", triage_result.verdict)
             triage_span.set_attribute("soc.triage.confidence", triage_result.confidence)
-        
+
         # Investigation agent span (child of root)
         if triage_result.verdict == "TRUE_POSITIVE":
             with tracer.start_as_current_span("soc.investigation") as inv_span:
@@ -173,7 +173,7 @@ async def investigate_with_tracing(incident: Incident) -> InvestigationResult:
                 )
                 inv_span.set_attribute("soc.investigation.techniques_found",
                                        len(investigation.mitre_techniques))
-        
+
         return InvestigationResult(triage=triage_result, investigation=investigation)
 ```
 
@@ -182,7 +182,7 @@ async def investigate_with_tracing(incident: Incident) -> InvestigationResult:
 ```python
 class InvestigationTracer:
     """Propagates correlation IDs across agent boundaries."""
-    
+
     def create_context(self, incident_id: str) -> TraceContext:
         return TraceContext(
             trace_id=generate_trace_id(),
@@ -190,7 +190,7 @@ class InvestigationTracer:
             created_at=datetime.utcnow(),
             parent_span_id=None
         )
-    
+
     def get_agent_headers(self, context: TraceContext, agent_id: str) -> dict:
         """Get HTTP headers for agent-to-agent calls with trace propagation."""
         return {
@@ -212,16 +212,16 @@ class InvestigationTracer:
 ```python
 class SOCEvaluationPipeline:
     """Continuously evaluate AI SOC quality."""
-    
+
     async def run_evaluation_cycle(self) -> EvaluationReport:
         """Run weekly evaluation against ground truth."""
-        
+
         # Get past week's AI decisions with analyst ground truth
         decisions = await self.db.get_decisions_with_ground_truth(
-            days=7, 
+            days=7,
             status="analyst_reviewed"
         )
-        
+
         metrics = {
             # Classification accuracy
             "precision": self._precision(decisions),
@@ -229,32 +229,32 @@ class SOCEvaluationPipeline:
             "f1": self._f1(decisions),
             "false_positive_rate": self._fpr(decisions),
             "false_negative_rate": self._fnr(decisions),  # Critical — missed threats
-            
+
             # Confidence calibration (Expected Calibration Error)
             "calibration_ece": self._expected_calibration_error(decisions),
-            
+
             # Investigation quality (requires human scoring)
             "investigation_completeness": await self._score_investigation_completeness(decisions),
             "mitre_mapping_accuracy": await self._validate_mitre_mappings(decisions),
-            
+
             # Speed
             "avg_triage_latency_ms": self._avg_latency(decisions),
             "p95_triage_latency_ms": self._p95_latency(decisions),
-            
+
             # Cost efficiency
             "avg_tokens_per_alert": self._avg_tokens(decisions),
             "cost_per_alert_usd": self._avg_cost(decisions),
-            
+
             # Human-AI interaction
             "analyst_override_rate": self._override_rate(decisions),
             "analyst_agreement_rate": 1 - self._override_rate(decisions)
         }
-        
+
         # Alert if metrics degrade beyond threshold
         await self._check_degradation_alerts(metrics)
-        
+
         return EvaluationReport(metrics=metrics, period="last_7_days")
-    
+
     def _expected_calibration_error(self, decisions: list) -> float:
         """
         Measure confidence calibration.
@@ -263,22 +263,22 @@ class SOCEvaluationPipeline:
         """
         n_bins = 10
         total_ece = 0
-        
+
         for bin_idx in range(n_bins):
             bin_min = bin_idx / n_bins
             bin_max = (bin_idx + 1) / n_bins
-            
-            bin_decisions = [d for d in decisions 
+
+            bin_decisions = [d for d in decisions
                            if bin_min <= d.confidence/100 < bin_max]
-            
+
             if not bin_decisions:
                 continue
-            
+
             bin_accuracy = sum(1 for d in bin_decisions if d.correct) / len(bin_decisions)
             bin_confidence = sum(d.confidence/100 for d in bin_decisions) / len(bin_decisions)
-            
+
             total_ece += (len(bin_decisions) / len(decisions)) * abs(bin_accuracy - bin_confidence)
-        
+
         return total_ece
 ```
 
@@ -290,27 +290,27 @@ async def evaluate_investigation_quality(
     ground_truth: GroundTruth
 ) -> QualityScore:
     """Use LLM to evaluate investigation quality against ground truth."""
-    
+
     evaluation_prompt = f"""
     You are evaluating the quality of an AI security investigation report.
-    
+
     AI INVESTIGATION REPORT:
     {investigation.to_text()}
-    
+
     GROUND TRUTH (verified by expert):
     {ground_truth.to_text()}
-    
+
     Evaluate on these dimensions (score 0-10 each):
-    
+
     1. COMPLETENESS: Did the AI identify all key events and findings?
     2. ACCURACY: Were the identified techniques and timeline correct?
     3. MITRE MAPPING: Were ATT&CK techniques correctly identified?
     4. SEVERITY ASSESSMENT: Was the business impact correctly assessed?
     5. RECOMMENDATIONS: Were the recommended actions appropriate?
-    
+
     Return JSON: {{"completeness": X, "accuracy": X, "mitre": X, "severity": X, "recommendations": X, "overall": X, "explanation": "..."}}
     """
-    
+
     response = await evaluator_llm.generate(evaluation_prompt)
     return QualityScore.model_validate_json(response)
 ```
@@ -335,16 +335,16 @@ class DriftMonitor:
     def __init__(self, baseline_window_days: int = 30, alert_threshold: float = 0.05):
         self.baseline_window = baseline_window_days
         self.threshold = alert_threshold
-    
+
     async def check_data_drift(self) -> DriftReport:
         """Kolmogorov-Smirnov test on alert feature distributions."""
         from scipy.stats import ks_2samp
-        
+
         # Baseline: last 30 days
         baseline = await self.db.get_alert_features(days=self.baseline_window)
         # Current: last 7 days
         current = await self.db.get_alert_features(days=7)
-        
+
         drift_signals = {}
         for feature in ["alert_severity", "ioc_score", "asset_criticality"]:
             statistic, p_value = ks_2samp(baseline[feature], current[feature])
@@ -353,26 +353,26 @@ class DriftMonitor:
                 "p_value": p_value,
                 "drift_detected": p_value < self.threshold
             }
-        
+
         if any(s["drift_detected"] for s in drift_signals.values()):
             await self.alert("DATA_DRIFT", drift_signals)
-        
+
         return DriftReport(signals=drift_signals)
-    
+
     async def check_accuracy_drift(self, window_days: int = 7) -> AccuracyDrift:
         """Detect degradation in AI accuracy over time."""
-        
+
         weekly_accuracy = []
         for week in range(12):  # Last 12 weeks
             week_decisions = await self.db.get_week_decisions(weeks_ago=week)
             if week_decisions:
                 accuracy = sum(1 for d in week_decisions if d.correct) / len(week_decisions)
                 weekly_accuracy.append(accuracy)
-        
+
         # Alert if current week accuracy drops >5% from 12-week average
         baseline_accuracy = sum(weekly_accuracy[1:]) / len(weekly_accuracy[1:])
         current_accuracy = weekly_accuracy[0]
-        
+
         if baseline_accuracy - current_accuracy > 0.05:
             await self.alert("ACCURACY_DRIFT", {
                 "baseline": baseline_accuracy,
@@ -432,7 +432,7 @@ dashboards:
             color: yellow
           - value: 80
             color: red
-      
+
       - title: "AI False Negative Rate"
         type: gauge
         query: |
@@ -446,7 +446,7 @@ dashboards:
           - value: 5
             color: red
         note: "False negatives = missed threats — keep <1%"
-      
+
       - title: "Token Cost per Alert (daily avg)"
         type: timeseries
         query: |
@@ -462,7 +462,7 @@ dashboards:
 ```python
 class AIProductionReadinessGate:
     """Quality gates that must pass before deploying new model version."""
-    
+
     MINIMUM_THRESHOLDS = {
         "precision": 0.88,           # TP / (TP + FP)
         "recall": 0.95,              # TP / (TP + FN) — high bar for security
@@ -471,15 +471,15 @@ class AIProductionReadinessGate:
         "p95_latency_ms": 30000,     # 30 seconds max for p95
         "prompt_injection_resistance": 0.99,  # 99% injection detection
     }
-    
+
     async def evaluate_before_deployment(
-        self, 
+        self,
         new_model: str,
         eval_dataset: EvaluationDataset
     ) -> DeploymentDecision:
-        
+
         results = await self.run_full_evaluation(new_model, eval_dataset)
-        
+
         failures = []
         for metric, minimum in self.MINIMUM_THRESHOLDS.items():
             actual = results.metrics.get(metric, 0)
@@ -489,14 +489,14 @@ class AIProductionReadinessGate:
             else:
                 if actual < minimum:
                     failures.append(f"{metric}: {actual:.2f} < {minimum}")
-        
+
         if failures:
             return DeploymentDecision(
                 approved=False,
                 reason=f"Quality gate failures: {failures}",
                 recommendation="Investigate failures before deployment"
             )
-        
+
         return DeploymentDecision(
             approved=True,
             metrics=results.metrics

@@ -656,8 +656,8 @@ Training          Inference
 
 **Pipeline Stages:**
 ```
-Data Validation → Feature Engineering → Model Training → 
-Model Evaluation → Bias Assessment → Model Registration → 
+Data Validation → Feature Engineering → Model Training →
+Model Evaluation → Bias Assessment → Model Registration →
 Deployment Approval → Production Deployment → Monitoring
 ```
 
@@ -707,8 +707,8 @@ Deployment Approval → Production Deployment → Monitoring
 
 **Pipeline Stages:**
 ```
-Commit → Build → Unit Test → Static Analysis → 
-Container Build → Integration Test → Security Scan → 
+Commit → Build → Unit Test → Static Analysis →
+Container Build → Integration Test → Security Scan →
 Staging Deploy → Acceptance Test → Production Deploy → Monitor
 ```
 

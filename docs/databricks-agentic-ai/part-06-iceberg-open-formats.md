@@ -323,13 +323,13 @@ def refresh_agent_knowledge(last_checkpoint_sequence: int):
         SELECT * FROM corp.products.catalog
         WHERE _last_updated_sequence_number > {last_checkpoint_sequence}
     """)
-    
+
     # Upsert to Vector Search index
     vector_search_client.upsert(
         index_name="catalog.ai.product_knowledge_index",
         data=generate_embeddings(new_data)
     )
-    
+
     # Update checkpoint
     return new_data.agg(max("_last_updated_sequence_number")).first()[0]
 ```

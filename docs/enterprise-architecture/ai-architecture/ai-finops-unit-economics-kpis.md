@@ -60,12 +60,12 @@ Layer 3 — Business Outcome Cost (value-level)
 ### The Unit Economics Formula
 
 ```
-Cost per Successful Outcome = 
+Cost per Successful Outcome =
     (Total AI Spend for Workflow Type / Period)
     ÷ (Successful Outcomes Produced / Period)
 
 Where:
-  Successful Outcome = business-defined (resolved ticket, reviewed PR, 
+  Successful Outcome = business-defined (resolved ticket, reviewed PR,
                        processed claim, generated report, etc.)
   Success threshold  = quality gate (accuracy ≥ X%, no human correction needed)
 ```

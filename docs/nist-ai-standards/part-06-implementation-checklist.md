@@ -233,7 +233,7 @@ IMPLEMENTATION_TRACKER = {
     "assessment_date": "2026-07-16",
     "sector": "banking",
     "applicable_frameworks": ["nist_ai_100_2", "nist_ai_100_4", "caisi", "eu_ai_act", "dora"],
-    
+
     "controls": {
         "AI-C-001": {
             "status": "implemented",
@@ -255,7 +255,7 @@ IMPLEMENTATION_TRACKER = {
             "target_date": "2026-09-30"
         }
     },
-    
+
     "summary": {
         "total_controls": 10,
         "implemented": 4,
@@ -268,9 +268,9 @@ IMPLEMENTATION_TRACKER = {
 
 def generate_implementation_report(tracker: dict) -> str:
     """Generate executive implementation status report."""
-    
+
     summary = tracker["summary"]
-    
+
     return f"""
 AI STANDARDS IMPLEMENTATION STATUS REPORT
 Organization: {tracker['organization']}
@@ -288,7 +288,7 @@ CRITICAL GAPS:
 REGULATORY RISK:
   EU AI Act enforcement: August 2026 — {30 - (datetime.now() - datetime(2026,8,1)).days} days
   DORA assessment: Due 2026-09-15
-  
+
 RECOMMENDED IMMEDIATE ACTIONS:
   1. Prioritize Agent Least Privilege (OPA deployment) — blocks CAISI compliance
   2. Activate Inter-Agent Authentication — required for CAISI and ISO 42001

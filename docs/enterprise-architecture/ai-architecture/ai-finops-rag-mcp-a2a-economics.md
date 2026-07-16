@@ -183,7 +183,7 @@ Hybrid search (dense vector + sparse keyword BM25) improves recall but adds cost
 **Re-ranking cost model:**
 
 ```
-Re-ranking cost per query = 
+Re-ranking cost per query =
     N_candidates × avg_candidate_tokens × reranker_input_price
     + reranker_output_tokens × reranker_output_price
 
@@ -372,7 +372,7 @@ Different enterprise A2A deployments handle billing differently:
 When agents communicate across cloud providers, network egress adds a non-obvious cost:
 
 ```
-Cross-Cloud A2A Cost = 
+Cross-Cloud A2A Cost =
     Local processing cost
     + Network egress cost (outbound from source cloud)
     + Remote agent inference cost (billed by remote cloud)
@@ -383,7 +383,7 @@ Example: AWS-based orchestrator calling Azure-hosted remote agent
   Network egress AWS → Azure (500KB payload): 500KB × $0.09/GB = $0.000045
   Remote agent inference (Azure): $0.012
   Total: $0.015 per A2A call
-  
+
   At 100,000 calls/day: $1,500/day
   Network egress share: $4.50/day (negligible at this scale)
   → Network cost is marginal; remote inference dominates

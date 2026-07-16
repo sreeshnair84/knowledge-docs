@@ -84,7 +84,7 @@ Route each request to the cheapest model that can handle it adequately:
 ```
 Complexity Assessment
     ↓
-Simple task? → Haiku ($0.25/1M) 
+Simple task? → Haiku ($0.25/1M)
 Medium task? → Sonnet ($3/1M)
 Complex task? → Opus ($15/1M)
 ```

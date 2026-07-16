@@ -43,7 +43,7 @@ Most enterprises underestimate AI costs by 3–10× in their first year. The roo
 Token demand has three compounding components:
 
 ```
-Monthly Token Volume = 
+Monthly Token Volume =
     User_Volume × Avg_Tokens_per_Session
   + Agent_Volume × Avg_Tokens_per_Workflow × Amplification_Factor
   + Background_Volume (eval + monitoring + batch enrichment)
@@ -158,7 +158,7 @@ Cost Curve:
 For organizations running their own inference infrastructure (on-prem or dedicated cloud GPU):
 
 ```
-GPU Capacity Required (H100 equivalents) = 
+GPU Capacity Required (H100 equivalents) =
     Peak_Requests_per_Second
     × Avg_Latency_Target_seconds
     × Tokens_per_Request
@@ -305,7 +305,7 @@ Starting point: 3 production AI workflows, $15K/month Month 1 spend.
 TCO extends beyond inference tokens to the complete platform cost:
 
 ```
-Annual AI TCO = 
+Annual AI TCO =
   INFERENCE COSTS
     + (token_volume × blended_rate × (1 - cache_hit_rate × cache_discount))
     + reserved_capacity_commitment (if self-hosted)

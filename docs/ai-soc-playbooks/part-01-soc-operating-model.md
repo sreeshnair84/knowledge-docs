@@ -268,7 +268,7 @@ The AI-First SOC is designed from scratch for autonomous operation. It is NOT a 
 Alert volume scales with environment size and complexity. Use this model:
 
 ```
-Daily Alert Volume = 
+Daily Alert Volume =
   (Endpoints × 15–40 alerts/day)
   + (Cloud Workloads × 5–20 alerts/day)
   + (Network Devices × 10–30 alerts/day)

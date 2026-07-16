@@ -291,7 +291,7 @@ BCG GROWTH-SHARE MATRIX
 HIGH GROWTH
      │
      │  QUESTION MARKS         STARS
-     │  (Problem Children)     
+     │  (Problem Children)  
      │  Low share,             High share,
      │  high growth            high growth
      │  → Invest or divest     → Invest to maintain
@@ -602,7 +602,7 @@ ZACHMAN FRAMEWORK (Simplified)
 
            WHAT         HOW           WHERE        WHO          WHEN         WHY
            (Data)       (Function)    (Network)    (People)     (Time)       (Motivation)
-           
+
 PLANNER:   Semantic     Business      Business     Work         Master       Business
 (Scope)    Model        Process Mdl   Geography    Breakdown    Plan         Strategy
 

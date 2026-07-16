@@ -399,7 +399,7 @@ def domain_accuracy_judge(inputs, outputs, expectations):
     Question: {inputs['query']}
     Agent Answer: {outputs['response']}
     Expected Key Facts: {expectations['key_facts']}
-    
+
     Rate the factual accuracy of the answer 1-5 and explain.
     Return JSON: {{"score": int, "reasoning": str}}
     """

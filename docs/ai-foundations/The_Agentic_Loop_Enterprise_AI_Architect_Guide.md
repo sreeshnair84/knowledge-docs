@@ -109,7 +109,7 @@ Strip away the framework branding and nearly every working agent runs the same l
 *   **04 Verification:** Output is checked against the goal and a quality standard — tests, linters, rules, or a second model acting as an evaluator.
 *   **05 Iteration (Back to 01):** Gaps are fixed and the loop runs again until the work clears the bar, a budget is exhausted, or a human is pulled in. *Note: A successful run still updates memory and context, so the next loop — on this task or the next one — starts smarter.*
 
-This pattern holds at every scale: a coding agent fixing a failing test, a research agent gathering and synthesizing sources, and a finance agent reconciling a ledger are all running the same five phases, just with different tools and different definitions of "done." 
+This pattern holds at every scale: a coding agent fixing a failing test, a research agent gathering and synthesizing sources, and a finance agent reconciling a ledger are all running the same five phases, just with different tools and different definitions of "done."
 
 A useful way to confirm an architecture is sound: the agent reasons about what it needs, calls a tool, gets a result, decides whether to continue or stop. Across every model provider, tool integration follows that same shape. Tools are defined with a name, a description, and a parameter schema; the model decides whether to call one; the system executes it and returns a result; the model decides whether to loop again or return a final answer.
 
@@ -170,7 +170,7 @@ Classifies an input and directs it to a specialized downstream task, separating 
 *   **Use when:** Inputs fall into distinct categories that are better handled separately and can be classified reliably — e.g., routing support tickets to billing vs. technical paths, or routing easy queries to a smaller, cheaper model and hard ones to a more capable one.
 
 ### **3. Parallelization**
-Runs independent LLM calls simultaneously. 
+Runs independent LLM calls simultaneously.
 *   *Sectioning* splits a task into independent subtasks run in parallel.
 *   *Voting* runs the same task multiple times to combine outputs and raise confidence.
 *   **Use when:** Speed matters and subtasks are genuinely independent, or when diverse perspectives on the same input improve reliability — e.g., parallel content moderation checks, or multiple independent code reviews of the same diff.
@@ -364,7 +364,7 @@ The deployment of autonomous agents introduces failure modes that don't map clea
 4.  **Egress Filtering:** Implement strict networking firewalls and content proxies on agent environments to prevent unauthorized data exfiltration or webhook exploitation.
 ## **SECTION 12: Observability & the Audit Plane**
 
-Enterprise loops fail dynamically. Traditional system monitoring catches service outages, but it cannot detect semantic drift, tool-loop deadlocks, or reasoning degradation. 
+Enterprise loops fail dynamically. Traditional system monitoring catches service outages, but it cannot detect semantic drift, tool-loop deadlocks, or reasoning degradation.
 
 To govern an agent fleet safely, platform teams must shift from basic telemetry to a structured **Audit Plane** that treats an agent's internal monologue, tool invocations, and environment responses as a single, immutable transaction ledger.
 
@@ -372,7 +372,7 @@ To govern an agent fleet safely, platform teams must shift from basic telemetry 
 
 *   **The System Layer (Infrastructure):** Standard microservice metrics—API latency, token throughput, cache-hit ratios, HTTP error codes, and memory utilization of the execution engine.
 *   **The Tool Layer (Integration):** MCP execution tracking, tool response payload sizing, invocation latency, schema validation failures, and tool-driven exceptions.
-*   **The Semantic Layer (Reasoning):** The agent’s structural trace—its raw thoughts, planning steps, critic evaluations, and intermediate trajectory state. 
+*   **The Semantic Layer (Reasoning):** The agent’s structural trace—its raw thoughts, planning steps, critic evaluations, and intermediate trajectory state.
 
 ### **The Anatomy of a Trajectory Log**
 
@@ -508,6 +508,6 @@ When an operating loop encounters an exception in production, the platform engin
 
 ## **FINAL DISCLOSURE & END OF DOCUMENT**
 
-This document concludes ***The Agentic Loop — Enterprise AI Architect's Guide (Edition: June 2026)***. 
+This document concludes ***The Agentic Loop — Enterprise AI Architect's Guide (Edition: June 2026)***.
 
 The engineering patterns, taxonomy structures, and governance guardrails detailed throughout this guide are meant to be treated as baseline system prerequisites. As models scale in raw reasoning capability, the human-designed boundaries, deterministic quality gates, and immutable audit logs established by the enterprise architect will remain the sole mechanism ensuring deterministic software reliability.

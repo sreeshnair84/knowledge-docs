@@ -166,7 +166,7 @@ Distillation cost (one-time):
   - Engineering time: 2–4 weeks
 
 Break-even calculation:
-  break_even_queries = distillation_total_cost / 
+  break_even_queries = distillation_total_cost /
                        (teacher_cost_per_query - student_cost_per_query)
 
 Example:

@@ -731,7 +731,7 @@ User Input
 async def query_large_dataset(arguments: dict) -> list[TextContent]:
     page = arguments.get("page", 0)
     page_size = min(arguments.get("page_size", 100), 500)  # hard cap
-    
+
     results, total = await db.query_paginated(
         arguments["query"],
         offset=page * page_size,

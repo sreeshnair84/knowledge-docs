@@ -80,7 +80,7 @@ client = anthropic.Anthropic()
 SYSTEM_PROMPT_BLOCKS = [
     {
         "type": "text",
-        "text": """You are a senior SOC analyst. 
+        "text": """You are a senior SOC analyst.
 [... 1,600 tokens of instructions, policies, and few-shot examples ...]""",
         "cache_control": {"type": "ephemeral"}  # Cache this expensive block
     }
@@ -88,7 +88,7 @@ SYSTEM_PROMPT_BLOCKS = [
 
 def analyze_alert_with_caching(alert: dict) -> dict:
     """Triage alert with cached system prompt — significant cost savings."""
-    
+
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
@@ -98,11 +98,11 @@ def analyze_alert_with_caching(alert: dict) -> dict:
             "content": f"Triage this alert:\n{json.dumps(alert, indent=2)}"
         }]
     )
-    
+
     # Cache stats in response headers
     cache_creation = response.usage.cache_creation_input_tokens
     cache_read = response.usage.cache_read_input_tokens
-    
+
     return {
         "result": response.content[0].text,
         "cost_metadata": {
@@ -184,7 +184,7 @@ COMPARISON: 1 L1 Analyst FTE cost = $80,000–120,000/year
 ```python
 class SOCModelRouter:
     """Route alerts to optimal model by cost, speed, and capability."""
-    
+
     MODEL_CATALOG = {
         "haiku": {
             "model_id": "claude-haiku-4-5-20251001",
@@ -211,28 +211,28 @@ class SOCModelRouter:
             "best_for": ["critical_incidents", "complex_reasoning", "executive_reports"]
         }
     }
-    
+
     def route(self, alert: dict, investigation_depth: str = "standard") -> str:
         """Select model based on alert properties and required depth."""
-        
+
         severity = alert.get("severity", "LOW")
         alert_type = alert.get("type", "generic")
-        
+
         # Critical alerts always use Opus for highest accuracy
         if severity == "CRITICAL":
             return "opus"
-        
+
         # High-severity alerts or deep investigation use Sonnet
         if severity == "HIGH" or investigation_depth == "deep":
             return "sonnet"
-        
+
         # Known-pattern low/medium alerts use Haiku
         if self._is_known_pattern(alert):
             return "haiku"
-        
+
         # Default to Sonnet for standard analysis
         return "sonnet"
-    
+
     def _is_known_pattern(self, alert: dict) -> bool:
         """Check if alert matches a well-understood pattern suitable for Haiku."""
         SIMPLE_PATTERNS = [
@@ -243,8 +243,8 @@ class SOCModelRouter:
             "dns_dga_blocked_at_firewall"
         ]
         return alert.get("pattern_type") in SIMPLE_PATTERNS
-    
-    def estimate_cost(self, alert: dict, model: str, 
+
+    def estimate_cost(self, alert: dict, model: str,
                       input_tokens: int, output_tokens: int) -> float:
         """Estimate cost for a specific model and token count."""
         config = self.MODEL_CATALOG[model]
@@ -319,7 +319,7 @@ COST PER ALERT REDUCTION: 86% ($10.41 → $1.44)
 ```python
 class SOCROICalculator:
     """Calculate ROI for AI SOC transformation."""
-    
+
     def calculate_roi(
         self,
         alert_volume_daily: int,
@@ -330,34 +330,34 @@ class SOCROICalculator:
         ai_automation_rate: float = 0.75,   # 75% of L1 work automated
         implementation_cost: float = 500000  # One-time
     ) -> dict:
-        
+
         # Current state
         current_hr_cost = (
             (current_l1_count * avg_l1_loaded_cost) +
             (current_l2_count * avg_l2_loaded_cost)
         )
-        
+
         # AI state (headcount reduction from automation)
         new_l1_count = max(2, int(current_l1_count * (1 - ai_automation_rate)))
         new_l2_count = max(2, int(current_l2_count * 0.7))  # L2 reduced less
         new_l1_count_new_roles = 3   # AI/Detection engineers (new roles)
-        
+
         new_hr_cost = (
             (new_l1_count * avg_l1_loaded_cost) +
             (new_l2_count * avg_l2_loaded_cost) +
             (new_l1_count_new_roles * 130000)
         )
-        
+
         # AI platform costs
         ai_platform_annual = self._estimate_ai_platform_cost(alert_volume_daily)
-        
+
         # Annual savings
         annual_savings = (current_hr_cost - new_hr_cost) - ai_platform_annual
-        
+
         # ROI over 3 years
         three_year_savings = (annual_savings * 3) - implementation_cost
         roi_3yr_pct = (three_year_savings / implementation_cost) * 100
-        
+
         return {
             "current_annual_cost": current_hr_cost,
             "new_annual_cost": new_hr_cost + ai_platform_annual,
@@ -368,22 +368,22 @@ class SOCROICalculator:
             "headcount_reduction": (current_l1_count + current_l2_count) - (new_l1_count + new_l2_count),
             "ai_platform_annual_cost": ai_platform_annual
         }
-    
+
     def _estimate_ai_platform_cost(self, daily_alerts: int) -> float:
         """Estimate annual AI platform cost based on alert volume."""
         monthly_alerts = daily_alerts * 30
-        
+
         # Assume 60% haiku, 30% sonnet, 8% sonnet-deep, 2% opus
         haiku_cost = (monthly_alerts * 0.6) * 0.00155  # avg per alert
         sonnet_cost = (monthly_alerts * 0.3) * 0.01923
         sonnet_deep_cost = (monthly_alerts * 0.08) * 0.0465
         opus_cost = (monthly_alerts * 0.02) * 0.525
-        
+
         monthly_llm = haiku_cost + sonnet_cost + sonnet_deep_cost + opus_cost
         annual_llm = monthly_llm * 12
-        
+
         infrastructure = 66000  # Vector DB + observability + compute
-        
+
         return annual_llm + infrastructure
 ```
 
@@ -400,13 +400,13 @@ client = Anthropic()
 
 class BatchAlertProcessor:
     """Process low-urgency alerts in batches using Anthropic batch API."""
-    
+
     async def process_daily_low_priority_batch(
-        self, 
+        self,
         alerts: list[dict]
     ) -> dict:
         """Process LOW severity alerts via batch API — 50% cost reduction."""
-        
+
         batch_requests = [
             {
                 "custom_id": alert["id"],
@@ -421,22 +421,22 @@ class BatchAlertProcessor:
             }
             for alert in alerts
         ]
-        
+
         batch = client.messages.batches.create(requests=batch_requests)
-        
+
         # Poll until complete
         while batch.processing_status == "in_progress":
             await asyncio.sleep(60)
             batch = client.messages.batches.retrieve(batch.id)
-        
+
         # Collect results
         results = {}
         async for result in client.messages.batches.results(batch.id):
             if result.result.type == "succeeded":
                 results[result.custom_id] = result.result.message.content[0].text
-        
+
         return results
-    
+
     # Cost comparison:
     # Real-time: $0.0008/1k input, $0.0025/1k output (Haiku standard)
     # Batch API: $0.0004/1k input, $0.00125/1k output (50% discount)
@@ -451,10 +451,10 @@ class BatchAlertProcessor:
 ```python
 def build_lean_alert_prompt(alert: dict, enrichment: dict) -> str:
     """Build token-efficient prompt — removes redundancy."""
-    
+
     # Instead of: JSON.dumps(alert) = ~500 tokens of verbose JSON
     # Use: Structured template = ~200 tokens
-    
+
     return f"""ALERT: {alert['type']} | {alert['severity']} | {alert['source']}
 HOST: {alert['target']} | USER: {alert.get('user', 'N/A')}
 IOCS: {','.join(alert.get('indicators', []))}
@@ -479,11 +479,11 @@ import json
 
 class AlertResponseCache:
     """Cache AI responses for duplicate/similar alerts."""
-    
+
     def __init__(self, redis_client, ttl_seconds: int = 3600):
         self.redis = redis_client
         self.ttl = ttl_seconds
-    
+
     def _cache_key(self, alert: dict) -> str:
         """Generate cache key from alert's deterministic features."""
         # Exclude timestamp and IDs — focus on the signature
@@ -494,14 +494,14 @@ class AlertResponseCache:
             "technique": alert.get("technique")
         }
         return f"alert_response:{hashlib.md5(json.dumps(signature, sort_keys=True).encode()).hexdigest()}"
-    
+
     def get_cached_response(self, alert: dict) -> dict | None:
         key = self._cache_key(alert)
         cached = self.redis.get(key)
         if cached:
             return json.loads(cached)
         return None
-    
+
     def cache_response(self, alert: dict, response: dict):
         key = self._cache_key(alert)
         # Only cache high-confidence responses
@@ -544,14 +544,14 @@ Alert budget = $5,000 / (8,000 × 30) = $0.0208/alert
 ```python
 class CostGovernanceAgent:
     """Automatically manage AI spending against budget."""
-    
+
     DAILY_BUDGET = 167.00  # Based on $5,000/month / 30 days
     SOFT_LIMIT_PCT = 0.80  # Alert at 80% of budget
     HARD_LIMIT_PCT = 0.95  # Throttle at 95% of budget
-    
+
     async def check_and_enforce_budget(self):
         today_spend = await self.cost_tracker.get_today_spend()
-        
+
         if today_spend >= self.DAILY_BUDGET * self.HARD_LIMIT_PCT:
             # Hard limit: switch to cheapest model only
             await self.model_router.set_override("haiku")

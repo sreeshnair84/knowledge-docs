@@ -324,7 +324,7 @@ def run_agent_with_user_context(user_token: str, query: str):
         agent_id="finance-agent-prod",
         scope="read:finance"
     )
-    
+
     # Agent uses delegated token; UC enforces user's permissions
     return agent.run(query, auth_token=delegated_token)
 ```

@@ -269,7 +269,7 @@ AI_RMF_MEASURE_METRICS = {
 RISK TREATMENT PLAN (AI RMF MANAGE)
 
 Risk: Hallucination — False Benign Verdict
-Treatment: 
+Treatment:
   1. Structured output validation against fact databases
   2. Human review mandatory for all CRITICAL alert AI verdicts
   3. Evidence citation requirement in system prompt
@@ -389,17 +389,17 @@ ATLAS_DETECTION_QUERIES = {
     | project TimeGenerated, Computer, Account, CommandLine
     | where strlen(CommandLine) > 200  // Unusually long commands with injection patterns
     """,
-    
+
     "AML.T0057_prompt_injection_detection": """
     // Detect prompt injection patterns in alert-related data
     CommonSecurityLog
-    | where Message contains "ignore previous" 
-       or Message contains "you are now" 
+    | where Message contains "ignore previous"
+       or Message contains "you are now"
        or Message contains "SYSTEM OVERRIDE"
        or Message contains "maintenance mode"
     | project TimeGenerated, DeviceVendor, DeviceProduct, Message, SourceIP
     """,
-    
+
     "AML.T0040_model_probing": """
     // Detect systematic API queries that suggest model probing
     AuditLogs
@@ -432,7 +432,7 @@ ATLAS_DETECTION_QUERIES = {
 # OWASP LLM Top 10 control implementations
 
 class OWASPLLMControlFramework:
-    
+
     def llm01_prompt_injection_control(self, user_input: str, system_data: dict) -> dict:
         """LLM01: Prevent prompt injection"""
         # 1. Sanitize input
@@ -441,35 +441,35 @@ class OWASPLLMControlFramework:
         prompt = self.build_boundary_enforced_prompt(sanitized, system_data)
         # 3. Monitor output for anomalies
         return {"prompt": prompt, "injection_risk_score": self.score_injection_risk(user_input)}
-    
+
     def llm06_excessive_agency_control(self, requested_tool: str, params: dict) -> dict:
         """LLM06: Prevent excessive agency"""
         tool_config = TOOL_RISK_LEVELS.get(requested_tool, {"risk": "unknown"})
-        
+
         if tool_config['risk'] == 'high' or tool_config.get('requires_approval'):
             return {
                 "authorized": False,
                 "reason": "Human approval required",
                 "approval_request": self.create_approval_request(requested_tool, params)
             }
-        
+
         if not self.check_rate_limit(requested_tool):
             return {"authorized": False, "reason": "Rate limit exceeded"}
-        
+
         return {"authorized": True}
-    
+
     def llm10_token_budget_control(self, agent_id: str, estimated_tokens: int) -> dict:
         """LLM10: Prevent unbounded consumption"""
         daily_budget = AGENT_TOKEN_BUDGETS.get(agent_id, 100000)
         daily_used = self.get_daily_token_usage(agent_id)
-        
+
         if daily_used + estimated_tokens > daily_budget:
             return {
                 "allowed": False,
                 "reason": f"Daily token budget exceeded. Used: {daily_used}, Budget: {daily_budget}",
                 "action": "queue_for_human_analyst"
             }
-        
+
         return {"allowed": True, "remaining_budget": daily_budget - daily_used}
 ```
 
@@ -561,11 +561,11 @@ EU_AI_ACT_HIGH_RISK_REQUIREMENTS = {
 
 def generate_eu_ai_act_conformity_assessment(soc_ai_system: dict) -> dict:
     """Generate conformity assessment checklist for EU AI Act high-risk systems"""
-    
+
     checklist = {}
     for article, requirements in EU_AI_ACT_HIGH_RISK_REQUIREMENTS.items():
         evidence_complete = all(
-            os.path.exists(f"compliance/{ev}") 
+            os.path.exists(f"compliance/{ev}")
             for ev in requirements.get('evidence', [])
         )
         checklist[article] = {
@@ -575,9 +575,9 @@ def generate_eu_ai_act_conformity_assessment(soc_ai_system: dict) -> dict:
             "compliant": evidence_complete,
             "gap": None if evidence_complete else f"Missing evidence: {requirements['evidence']}"
         }
-    
+
     compliant_count = sum(1 for v in checklist.values() if v['compliant'])
-    
+
     return {
         "system_name": soc_ai_system['name'],
         "assessment_date": datetime.utcnow().date().isoformat(),
@@ -640,7 +640,7 @@ def map_soc_controls_to_iso42001(soc_controls: list) -> dict:
     for clause, description in ISO_42001_CONTROLS.items():
         matched_controls = [
             c for c in soc_controls
-            if any(keyword in c['description'].lower() 
+            if any(keyword in c['description'].lower()
                    for keyword in description.lower().split())
         ]
         mapping[clause] = {

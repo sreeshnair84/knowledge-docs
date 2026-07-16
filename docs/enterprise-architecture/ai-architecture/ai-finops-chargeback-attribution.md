@@ -174,7 +174,7 @@ TOTAL                               66.7M tokens     $90.75
 Budget allocation: $100.00
 Budget variance:   -$9.25 (under budget by 9.3%)
 
-Top optimization opportunity: 
+Top optimization opportunity:
   architecture-advisor uses 1.3% of volume but 19.8% of cost
   → consider adding a mid-tier routing step for simpler queries
 ```
@@ -199,7 +199,7 @@ Costs flow from a central AI platform budget to team budgets based on actual con
 Shared infrastructure that can't be directly tagged must be allocated using a formula:
 
 ```
-Team's share of shared cost = 
+Team's share of shared cost =
     Team token volume / Total org token volume × Shared infra cost
 
 Shared costs include:

@@ -125,14 +125,14 @@ mlflow.genai.deploy_evaluation_job(
 def hallucination_detector(inputs, outputs, retrieved_context):
     """Detect claims in outputs not supported by retrieved context."""
     claims = extract_claims(outputs["response"])
-    
+
     grounded_count = 0
     for claim in claims:
         # Check if claim is supported by any retrieved chunk
         support_score = check_claim_in_context(claim, retrieved_context)
         if support_score > 0.7:
             grounded_count += 1
-    
+
     return Score(
         value=grounded_count / max(len(claims), 1),
         reason=f"{grounded_count}/{len(claims)} claims grounded in context"
@@ -246,11 +246,11 @@ routing_policy:
     - task_type: "simple_classification"
       model: "databricks-llama-3-8b"     # cheap, fast
       max_complexity_score: 0.3
-    
+
     - task_type: "complex_reasoning"
       model: "databricks-llama-3-70b"    # capable
       complexity_range: [0.3, 0.7]
-    
+
     - task_type: "critical_decision"
       model: "openai-gpt-4o"             # premium, accurate
       complexity_range: [0.7, 1.0]
@@ -500,7 +500,7 @@ resource "databricks_sql_table" "customer_data" {
   name         = "customer_profile"
   table_type   = "MANAGED"
   data_source_format = "DELTA"
-  
+
   column {
     name = "customer_id"
     type = "BIGINT"
@@ -509,7 +509,7 @@ resource "databricks_sql_table" "customer_data" {
     name = "email"
     type = "STRING"
   }
-  
+
   properties = {
     "delta.enableDeletionVectors" = "true"
     "delta.universalFormat.enabledFormats" = "iceberg"

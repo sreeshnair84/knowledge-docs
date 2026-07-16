@@ -68,7 +68,7 @@ E. GOVERNANCE PREREQUISITES
 ```python
 def assess_soc_ai_maturity(assessment: dict) -> dict:
     """Score SOC AI readiness across 5 dimensions"""
-    
+
     dimensions = {
         "data_quality": score_data_quality(assessment),
         "tool_api_coverage": score_api_coverage(assessment),
@@ -76,30 +76,30 @@ def assess_soc_ai_maturity(assessment: dict) -> dict:
         "team_capability": score_team_capability(assessment),
         "governance_readiness": score_governance_readiness(assessment)
     }
-    
+
     overall = sum(dimensions.values()) / len(dimensions)
-    
+
     recommendations = {
         "data_quality": [
             "Normalize log formats to OCSF or ECS schema",
             "Ensure SIEM covers endpoint, network, identity, cloud",
             "Reduce alert suppression that hides signal"
         ] if dimensions['data_quality'] < 0.7 else [],
-        
+
         "tool_api_coverage": [
             "Expose EDR, SIEM, IAM, firewall APIs",
             "Create service accounts with appropriate API scopes",
             "Test API reliability and rate limits"
         ] if dimensions['tool_api_coverage'] < 0.7 else [],
     }
-    
+
     if overall >= 0.8:
         phase = "Ready for Phase 2 (Automation)"
     elif overall >= 0.6:
         phase = "Start with Phase 1 (Foundation)"
     else:
         phase = "Complete prerequisite work before starting"
-    
+
     return {
         "dimensions": dimensions,
         "overall_score": overall,
@@ -129,24 +129,24 @@ class SOCCopilotV1:
     Phase 1 copilot: assists analysts, no automated actions.
     All outputs are recommendations — analyst decides and executes.
     """
-    
+
     def __init__(self, model: str = "claude-3-5-sonnet-20241022"):
         self.model = model
         self.client = anthropic.Anthropic()
         self.siem = SIEMClient()
-    
+
     def analyze_alert_for_analyst(self, alert: dict) -> dict:
         """
         Provides analysis to help analyst decide.
         Does NOT take any actions.
         """
-        
+
         # Gather context (read-only operations only)
         siem_context = self.siem.search(
             f"device_ip:{alert.get('source_ip')} OR user:{alert.get('user')}",
             time_range="last_24h"
         )
-        
+
         prompt = f"""Analyze this alert and help the analyst determine severity and next steps.
 
 Alert: {json.dumps(alert, indent=2)}
@@ -159,26 +159,26 @@ Provide:
 4. What actions the analyst should consider
 
 Note: This is a recommendation only. The analyst will decide and execute."""
-        
+
         response = self.client.messages.create(
             model=self.model,
             max_tokens=1024,
             messages=[{"role": "user", "content": prompt}]
         )
-        
+
         return {
             "ai_recommendation": response.content[0].text,
             "disclaimer": "AI-assisted analysis. Analyst decision required.",
             "auto_actions_taken": [],  # None in Phase 1
             "analyst_action_required": True
         }
-    
+
     def summarize_incident(self, incident_id: str) -> dict:
         """Generate incident summary for analyst handoff"""
-        
+
         incident = self.siem.get_incident(incident_id)
         alerts = self.siem.get_incident_alerts(incident_id)
-        
+
         prompt = f"""Summarize this security incident for handoff to a senior analyst.
 
 Incident: {json.dumps(incident, indent=2)}
@@ -190,13 +190,13 @@ Provide:
 3. Key indicators and evidence
 4. Current containment status
 5. Recommended next investigation steps"""
-        
+
         response = self.client.messages.create(
             model=self.model,
             max_tokens=2048,
             messages=[{"role": "user", "content": prompt}]
         )
-        
+
         return {
             "incident_id": incident_id,
             "ai_summary": response.content[0].text,
@@ -213,7 +213,7 @@ class IOCEnrichmentPipeline:
     Phase 1 automation: enriches IOCs automatically.
     No containment actions — enrichment only.
     """
-    
+
     ENRICHMENT_SOURCES = {
         "ip": ["virustotal", "shodan", "abuseipdb", "maxmind_geo"],
         "domain": ["virustotal", "whois", "dns_history", "malwaredomains"],
@@ -221,12 +221,12 @@ class IOCEnrichmentPipeline:
         "url": ["virustotal", "urlscan", "google_safebrowsing"],
         "email": ["haveibeenpwned", "emailrep", "domain_check"]
     }
-    
+
     async def enrich_alert_iocs(self, alert: dict) -> dict:
         """Enrich all IOCs in an alert concurrently"""
-        
+
         iocs = self._extract_iocs(alert)
-        
+
         # Enrich all IOCs concurrently
         enrichment_tasks = []
         for ioc in iocs:
@@ -235,12 +235,12 @@ class IOCEnrichmentPipeline:
                 enrichment_tasks.append(
                     self._enrich_single_ioc(ioc['type'], ioc['value'], source)
                 )
-        
+
         results = await asyncio.gather(*enrichment_tasks, return_exceptions=True)
-        
+
         # Use LLM to synthesize enrichment results
         synthesis = await self._synthesize_with_llm(iocs, results)
-        
+
         return {
             "alert_id": alert['id'],
             "iocs_enriched": len(iocs),
@@ -249,10 +249,10 @@ class IOCEnrichmentPipeline:
             "enriched_severity": synthesis.get('suggested_severity'),
             "time_to_enrich_seconds": synthesis.get('processing_time')
         }
-    
+
     async def _synthesize_with_llm(self, iocs: list, results: list) -> dict:
         """Use LLM to interpret enrichment data"""
-        
+
         prompt = f"""Analyze these threat intelligence enrichment results and assess overall threat level.
 
 IOCs Analyzed: {json.dumps(iocs)}
@@ -265,7 +265,7 @@ Determine:
 4. Recommended priority for analyst queue
 
 Output as JSON."""
-        
+
         response = await self.llm.async_complete(prompt)
         return json.loads(response.text)
 ```
@@ -310,7 +310,7 @@ class GraduatedAutomationEngine:
     Implements graduated autonomy based on confidence and risk level.
     Starts conservative; expands as track record is established.
     """
-    
+
     AUTONOMY_LEVELS = {
         "HUMAN_IN_THE_LOOP": {
             "description": "AI recommends, human executes",
@@ -330,7 +330,7 @@ class GraduatedAutomationEngine:
             "available_after": "90 days of tracked performance"
         }
     }
-    
+
     def determine_autonomy_level(
         self,
         severity: str,
@@ -339,14 +339,14 @@ class GraduatedAutomationEngine:
         pattern_known: bool,
         days_in_production: int
     ) -> dict:
-        
+
         # CRITICAL alerts always require human
         if severity == "CRITICAL":
             return {
                 "level": "HUMAN_IN_THE_LOOP",
                 "reason": "CRITICAL severity always requires human decision"
             }
-        
+
         # High-risk actions always require approval
         HIGH_RISK_ACTIONS = ["isolate_host", "disable_account", "block_network_segment"]
         if action_type in HIGH_RISK_ACTIONS:
@@ -354,14 +354,14 @@ class GraduatedAutomationEngine:
                 "level": "HUMAN_IN_THE_LOOP",
                 "reason": f"Action type {action_type} always requires human approval"
             }
-        
+
         # Need track record before HOTL
         if days_in_production < 90 and confidence < 0.95:
             return {
                 "level": "HUMAN_IN_THE_LOOP",
                 "reason": "Insufficient track record for autonomous action"
             }
-        
+
         # Graduated based on confidence and severity
         if confidence >= 0.92 and pattern_known and severity == "LOW":
             return {
@@ -379,7 +379,7 @@ class GraduatedAutomationEngine:
                 "level": "HUMAN_IN_THE_LOOP",
                 "reason": f"Confidence {confidence:.0%} insufficient for autonomy"
             }
-    
+
     def execute_with_appropriate_autonomy(
         self,
         action: str,
@@ -387,7 +387,7 @@ class GraduatedAutomationEngine:
         alert: dict,
         ai_assessment: dict
     ) -> dict:
-        
+
         autonomy = self.determine_autonomy_level(
             severity=alert['severity'],
             confidence=ai_assessment['confidence'],
@@ -395,7 +395,7 @@ class GraduatedAutomationEngine:
             pattern_known=ai_assessment.get('known_pattern', False),
             days_in_production=self.get_days_in_production()
         )
-        
+
         if autonomy['level'] == "HUMAN_IN_THE_LOOP":
             # Create approval request
             return self.approval_queue.submit(
@@ -404,7 +404,7 @@ class GraduatedAutomationEngine:
                 ai_assessment=ai_assessment,
                 autonomy_reason=autonomy['reason']
             )
-        
+
         elif autonomy['level'] == "HUMAN_ON_THE_LOOP":
             # Execute immediately, notify analyst, allow override
             result = self.execute_tool(action, params)
@@ -414,7 +414,7 @@ class GraduatedAutomationEngine:
                 override_link=self.create_override_link(result['action_id'])
             )
             return result
-        
+
         else:  # HUMAN_OUT_OF_THE_LOOP
             result = self.execute_tool(action, params)
             self.audit_log.record(action=action, params=params, autonomy_level="HOOTL")
@@ -427,7 +427,7 @@ class GraduatedAutomationEngine:
 # AI-assisted detection rule generation from threat intel
 class AIDetectionRuleGenerator:
     """Generate detection rules from threat intelligence reports"""
-    
+
     def generate_from_threat_report(self, threat_report: str) -> dict:
         """
         Given a threat report, generate:
@@ -436,7 +436,7 @@ class AIDetectionRuleGenerator:
         3. KQL rules (for Sentinel)
         4. MITRE ATT&CK mapping
         """
-        
+
         prompt = f"""You are a detection engineering expert. Analyze this threat intelligence report
 and generate detection rules.
 
@@ -457,15 +457,15 @@ For each rule include:
 - Tuning recommendations
 
 Output as structured JSON with each rule type as a key."""
-        
+
         response = self.client.messages.create(
             model="claude-3-5-sonnet-20241022",
             max_tokens=8192,
             messages=[{"role": "user", "content": prompt}]
         )
-        
+
         rules = json.loads(response.content[0].text)
-        
+
         # Validate SIGMA syntax before returning
         validated_sigma = []
         for rule in rules.get('sigma_rules', []):
@@ -474,9 +474,9 @@ Output as structured JSON with each rule type as a key."""
                 validated_sigma.append({"rule": rule, "valid": True})
             except Exception as e:
                 validated_sigma.append({"rule": rule, "valid": False, "error": str(e)})
-        
+
         rules['sigma_rules_validated'] = validated_sigma
-        
+
         return rules
 ```
 
@@ -517,9 +517,9 @@ class PhishingInvestigationState(TypedDict):
 
 def create_phishing_investigation_graph() -> StateGraph:
     """Create LangGraph for phishing investigation"""
-    
+
     workflow = StateGraph(PhishingInvestigationState)
-    
+
     # Add nodes
     workflow.add_node("parse_email", parse_email_headers_and_body)
     workflow.add_node("check_sender", check_sender_reputation)
@@ -530,7 +530,7 @@ def create_phishing_investigation_graph() -> StateGraph:
     workflow.add_node("ai_verdict", get_ai_verdict)
     workflow.add_node("auto_containment", execute_auto_containment)
     workflow.add_node("escalate_to_human", escalate_to_human_analyst)
-    
+
     # Define flow
     workflow.set_entry_point("parse_email")
     workflow.add_edge("parse_email", "check_sender")
@@ -539,7 +539,7 @@ def create_phishing_investigation_graph() -> StateGraph:
     workflow.add_edge("analyze_attachments", "check_delivery")
     workflow.add_edge("check_delivery", "check_user_action")
     workflow.add_edge("check_user_action", "ai_verdict")
-    
+
     # Conditional routing based on AI verdict
     workflow.add_conditional_edges(
         "ai_verdict",
@@ -550,17 +550,17 @@ def create_phishing_investigation_graph() -> StateGraph:
             "close_fp": END
         }
     )
-    
+
     workflow.add_edge("auto_containment", END)
     workflow.add_edge("escalate_to_human", END)
-    
+
     return workflow.compile()
 
 def route_based_on_verdict(state: PhishingInvestigationState) -> str:
     """Route to appropriate action based on AI verdict"""
-    
+
     verdict = state.get('final_verdict', 'UNKNOWN')
-    
+
     if state.get('requires_human_escalation'):
         return "escalate"
     elif verdict == "TRUE_POSITIVE" and not state.get('user_clicked'):
@@ -582,7 +582,7 @@ class IncidentResponseOrchestrator:
     Coordinates multiple specialized agents for complex incidents.
     Each agent is an expert in its domain.
     """
-    
+
     AGENT_REGISTRY = {
         "endpoint": EndpointForensicsAgent,
         "network": NetworkAnalysisAgent,
@@ -591,57 +591,57 @@ class IncidentResponseOrchestrator:
         "threat_intel": ThreatIntelAgent,
         "malware": MalwareAnalysisAgent
     }
-    
+
     async def orchestrate_incident_response(self, incident: dict) -> dict:
         """
         Assess incident scope and deploy appropriate specialized agents.
         """
-        
+
         # Initial assessment determines which agents to deploy
         scope = await self._assess_scope(incident)
-        
+
         # Deploy agents in parallel based on scope
         agent_tasks = []
         deployed_agents = []
-        
+
         if scope['has_endpoint_indicators']:
             agent_tasks.append(
                 self.AGENT_REGISTRY["endpoint"](incident).investigate()
             )
             deployed_agents.append("endpoint")
-        
+
         if scope['has_network_indicators']:
             agent_tasks.append(
                 self.AGENT_REGISTRY["network"](incident).investigate()
             )
             deployed_agents.append("network")
-        
+
         if scope['has_identity_indicators']:
             agent_tasks.append(
                 self.AGENT_REGISTRY["identity"](incident).investigate()
             )
             deployed_agents.append("identity")
-        
+
         if scope['has_cloud_indicators']:
             agent_tasks.append(
                 self.AGENT_REGISTRY["cloud"](incident).investigate()
             )
             deployed_agents.append("cloud")
-        
+
         # Always run TI enrichment
         agent_tasks.append(self.AGENT_REGISTRY["threat_intel"](incident).investigate())
         deployed_agents.append("threat_intel")
-        
+
         # Run all agents concurrently
         agent_results = await asyncio.gather(*agent_tasks, return_exceptions=True)
-        
+
         # Synthesize results from all agents
         synthesis = await self._synthesize_multi_agent_results(
             incident, deployed_agents, agent_results
         )
-        
+
         return synthesis
-    
+
     async def _synthesize_multi_agent_results(
         self,
         incident: dict,
@@ -649,14 +649,14 @@ class IncidentResponseOrchestrator:
         results: list
     ) -> dict:
         """Use LLM to synthesize findings from multiple specialist agents"""
-        
+
         agent_findings = {
-            agent: result 
+            agent: result
             for agent, result in zip(agents, results)
             if not isinstance(result, Exception)
         }
-        
-        prompt = f"""You are the lead incident commander. Multiple specialist agents have 
+
+        prompt = f"""You are the lead incident commander. Multiple specialist agents have
 investigated this security incident from their domains. Synthesize their findings.
 
 INCIDENT SUMMARY: {json.dumps(incident.get('summary', {}), indent=2)}
@@ -672,9 +672,9 @@ Provide:
 5. Root cause hypothesis
 6. Blast radius: all affected systems and data
 7. Executive summary (3 sentences maximum)"""
-        
+
         response = await self.llm.async_complete(prompt, max_tokens=4096)
-        
+
         return {
             "investigation_complete": True,
             "deployed_agents": agents,
@@ -696,7 +696,7 @@ class ContinuousLearningPipeline:
     Phase 4: AI SOC continuously learns from analyst feedback.
     Closed-loop learning without retraining the base model.
     """
-    
+
     def capture_analyst_feedback(
         self,
         investigation_id: str,
@@ -706,7 +706,7 @@ class ContinuousLearningPipeline:
         analyst_actions: list
     ):
         """Capture analyst feedback for learning"""
-        
+
         feedback = {
             "investigation_id": investigation_id,
             "ai_verdict": ai_verdict,
@@ -716,23 +716,23 @@ class ContinuousLearningPipeline:
             "analyst_actions": analyst_actions,
             "timestamp": datetime.utcnow().isoformat()
         }
-        
+
         self.feedback_store.append(feedback)
-        
+
         # If AI was wrong, add to few-shot examples for improvement
         if not feedback['correct']:
             self._update_few_shot_examples(feedback)
-        
+
         # Update performance metrics
         self.performance_tracker.record(feedback)
-        
+
         # Check if enough feedback to warrant model improvement
         if self.performance_tracker.should_update_prompts():
             self._schedule_prompt_optimization()
-    
+
     def _update_few_shot_examples(self, incorrect_case: dict):
         """Add analyst correction as few-shot example"""
-        
+
         # Analyze why AI was wrong
         analysis_prompt = f"""An AI SOC analyst made an incorrect triage decision.
 Analyze the error and create a few-shot example to prevent recurrence.
@@ -745,7 +745,7 @@ Create a NEGATIVE EXAMPLE for the AI training set showing:
 1. What the alert looked like
 2. What the AI wrongly concluded and why that was wrong
 3. What the correct analysis should have been"""
-        
+
         few_shot_example = self.llm.complete(analysis_prompt)
         self.few_shot_library.add(few_shot_example, category="correction")
 ```
@@ -817,7 +817,7 @@ AI SOC COMPLETE REFERENCE ARCHITECTURE (2026)
   │  IAM: Disable account, revoke tokens  DNS: Sinkhole domain                │
   │  Cloud: Quarantine resource, revoke  Email: Quarantine mail               │
   └─────────────────────────────────────────────────────────────────────────── ┘
-  
+
   ┌─────────────────────────────────────────────────────────────────────────┐
   │              CROSS-CUTTING: GOVERNANCE AND OBSERVABILITY                 │
   │  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌───────────────┐  │
@@ -830,7 +830,7 @@ AI SOC COMPLETE REFERENCE ARCHITECTURE (2026)
   │  │ OPA / Cedar  │ │  Guardrails  │                                       │
   │  └──────────────┘ └──────────────┘                                       │
   └─────────────────────────────────────────────────────────────────────────┘
-  
+
   ┌─────────────────────────────────────────────────────────────────────────┐
   │                    HUMAN INTERFACE LAYER                                  │
   │  SOC Portal (Cases, Queues)  │  Copilot Chat  │  Mobile App             │
@@ -849,7 +849,7 @@ For air-gapped and data-sovereignty environments:
 # On-premises AI SOC stack
 version: '3.8'
 services:
-  
+
   # Open-source SIEM
   opensearch:
     image: opensearchproject/opensearch:2.13.0
@@ -864,7 +864,7 @@ services:
       resources:
         limits:
           memory: 16G
-  
+
   # Open-source SOAR
   shuffle:
     image: ghcr.io/shuffle/shuffle:latest
@@ -874,7 +874,7 @@ services:
       - SHUFFLE_OPENSEARCH_URL=http://opensearch:9200
       - SHUFFLE_DEFAULT_USERNAME=admin
       - SHUFFLE_DEFAULT_PASSWORD=${SHUFFLE_ADMIN_PASS}
-  
+
   # On-premises LLM inference
   vllm:
     image: vllm/vllm-openai:latest
@@ -895,7 +895,7 @@ services:
             - driver: nvidia
               count: 4
               capabilities: [gpu]
-  
+
   # LLM gateway for model routing
   litellm:
     image: ghcr.io/berriai/litellm:main-latest
@@ -904,7 +904,7 @@ services:
     volumes:
       - ./litellm_config.yaml:/app/config.yaml
     command: --config /app/config.yaml
-  
+
   # Vector database for RAG
   qdrant:
     image: qdrant/qdrant:latest
@@ -912,7 +912,7 @@ services:
       - "6333:6333"
     volumes:
       - qdrant_data:/qdrant/storage
-  
+
   # AI observability
   langfuse:
     image: ghcr.io/langfuse/langfuse:latest
@@ -921,7 +921,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://langfuse:${DB_PASS}@postgres:5432/langfuse
       - NEXTAUTH_SECRET=${LANGFUSE_SECRET}
-  
+
   # Secrets management
   vault:
     image: hashicorp/vault:latest

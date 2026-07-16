@@ -135,16 +135,16 @@ Copilot Agents (2025):
 
 **KQL Assistant Example:**
 ```
-Analyst: "Find all PowerShell executions that download content from the internet 
+Analyst: "Find all PowerShell executions that download content from the internet
 in the last 24 hours"
 
 Copilot generates:
 DeviceProcessEvents
 | where Timestamp > ago(24h)
 | where FileName =~ "powershell.exe" or FileName =~ "pwsh.exe"
-| where ProcessCommandLine has_any ("DownloadString", "WebClient", 
+| where ProcessCommandLine has_any ("DownloadString", "WebClient",
          "Invoke-WebRequest", "iwr", "curl", "wget", "Net.WebClient")
-| project Timestamp, DeviceName, AccountName, ProcessCommandLine, 
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine,
           InitiatingProcessFileName
 | order by Timestamp desc
 ```

@@ -176,13 +176,13 @@ GOVERNANCE AND COMPLIANCE CAPABILITY
 ```python
 class ZeroTrustAgentIdentity:
     """Each agent has its own managed identity with scoped permissions."""
-    
+
     AGENT_PERMISSIONS = {
         "triage_agent":       ["logs.read", "threat_intel.read"],
         "investigation_agent": ["logs.read", "edr.read", "tickets.write"],
         "ir_agent":           ["logs.read", "edr.read", "edr.isolate", "firewall.block"]
     }
-    
+
     def __init__(self, agent_type: str):
         self.agent_type = agent_type
         self.allowed_actions = self.AGENT_PERMISSIONS.get(agent_type, [])
@@ -190,10 +190,10 @@ class ZeroTrustAgentIdentity:
         self.credential = ManagedIdentityCredential(
             client_id=os.environ[f"AGENT_CLIENT_ID_{agent_type.upper()}"]
         )
-    
+
     def can_perform(self, action: str) -> bool:
         return action in self.allowed_actions
-    
+
     def get_token(self, resource: str) -> str:
         """Short-lived tokens (15-min TTL) — re-authenticated every call."""
         return self.credential.get_token(resource).token
@@ -222,7 +222,7 @@ resource "azurerm_role_definition" "soc_ir_agent" {
   name        = "SOC IR Agent"
   scope       = "/subscriptions/${var.subscription_id}"
   description = "SOC IR agent containment actions — no delete/modify permissions"
-  
+
   permissions {
     actions = [
       "Microsoft.Security/assessments/read",
@@ -310,7 +310,7 @@ resource "azurerm_sentinel_automation_rule" "ai_triage" {
   log_analytics_workspace_id = azurerm_log_analytics_workspace.sentinel.id
   display_name               = "Route HIGH+ alerts to AI triage"
   order                      = 1
-  
+
   condition_json = jsonencode([{
     conditionType = "PropertyCondition"
     conditionProperties = {
@@ -319,7 +319,7 @@ resource "azurerm_sentinel_automation_rule" "ai_triage" {
       propertyValues = ["High", "Critical"]
     }
   }])
-  
+
   action_playbook {
     logic_app_id = azurerm_logic_app_workflow.ai_triage.id
     tenant_id    = var.tenant_id
@@ -335,19 +335,19 @@ resource "azurerm_sentinel_automation_rule" "ai_triage" {
 ```python
 class SOCAlertStreamProcessor:
     """Kafka-based alert routing to AI agents."""
-    
+
     KAFKA_CONFIG = {
         'bootstrap.servers': 'kafka.soc.internal:9092',
         'security.protocol': 'SASL_SSL',
         'group.id': 'soc-ai-processor',
         'enable.auto.commit': False
     }
-    
+
     TOPICS = ['soc.alerts.critical', 'soc.alerts.high', 'soc.alerts.medium']
-    
+
     async def process(self, alert: dict) -> None:
         severity = alert['severity']
-        
+
         if severity in ['CRITICAL', 'HIGH']:
             await self.triage_agent.analyze(alert)
         elif alert['type'] in ['MALWARE', 'RANSOMWARE']:
@@ -361,7 +361,7 @@ class SOCAlertStreamProcessor:
 ```python
 class SOCEventStore:
     """Immutable event store — complete investigation reconstructable from events."""
-    
+
     def append_event(self, investigation_id: str, event_type: str,
                      event_data: dict, actor: str) -> dict:
         event = {
@@ -377,7 +377,7 @@ class SOCEventStore:
         event['signature'] = hmac.new(
             self.signing_key, event_bytes, hashlib.sha256
         ).hexdigest()
-        
+
         self.table.put_item(Item=event)
         return event
 ```

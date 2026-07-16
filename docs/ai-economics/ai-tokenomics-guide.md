@@ -276,12 +276,12 @@ Most enterprise system prompts sit right of the optimal range — they contain r
 
 ```
 Expensive (487 tokens):
-"You are a highly skilled, experienced enterprise software architect with deep expertise in 
-cloud-native systems, distributed architecture, and modern DevOps practices. You have worked 
-at major technology companies and consulting firms. Your role is to help teams design systems 
-that are scalable, reliable, maintainable, and cost-effective. When providing recommendations, 
-always consider security, performance, scalability, reliability, and maintainability. Use 
-structured responses with clear sections and actionable guidance. Avoid vague suggestions 
+"You are a highly skilled, experienced enterprise software architect with deep expertise in
+cloud-native systems, distributed architecture, and modern DevOps practices. You have worked
+at major technology companies and consulting firms. Your role is to help teams design systems
+that are scalable, reliable, maintainable, and cost-effective. When providing recommendations,
+always consider security, performance, scalability, reliability, and maintainability. Use
+structured responses with clear sections and actionable guidance. Avoid vague suggestions
 and always provide specific, concrete recommendations..."
 
 Efficient (94 tokens):

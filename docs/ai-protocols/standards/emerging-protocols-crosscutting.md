@@ -715,9 +715,9 @@ data: {"type": "text_message_end", "message_id": "msg-001"}
 **LMOS gRPC Streaming (proposed):**
 ```protobuf
 service AgentService {
-  rpc ExecuteCapability(CapabilityRequest) 
+  rpc ExecuteCapability(CapabilityRequest)
     returns (stream CapabilityResponse);
-  
+
   rpc StreamingCapability(stream CapabilityRequest)
     returns (stream CapabilityResponse);
 }
@@ -1132,21 +1132,21 @@ PROTOCOL GOVERNANCE MAP — JULY 2026
   LINUX FOUNDATION (AAIF — Agentic AI Foundation)
   ├── A2A (incl. merged ACP) — GA, stable, 150+ orgs
   └── MCP — RC (stable July 28 2026)
-  
+
   GOOGLE-LED (ecosystem governance)
   ├── ANP — open source, community governed
   ├── AG-UI — community / Agno maintainer
   ├── A2UI — Google ADK Team internal governance
   ├── UCP — NRF coalition (Google + Shopify + retailers)
   └── AP2 — Google (internal → proposed coalition)
-  
+
   STANDARDS BODIES
   ├── NLIP — Ecma International TC (formal standards process)
   └── (ISO, NIST, W3C: provide underlying standards referenced by all)
-  
+
   ECLIPSE FOUNDATION
   └── LMOS — Eclipse project governance
-  
+
   COMMUNITY (informal governance)
   └── UTCP — community maintainers; no formal governance body
 ```

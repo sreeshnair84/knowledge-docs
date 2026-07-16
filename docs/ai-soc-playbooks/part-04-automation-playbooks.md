@@ -168,7 +168,7 @@ Total confidence score ≥ 85?
 ```
 Risk Score = Base_Threat_Score × Recipient_Multiplier × Business_Context
 
-Base Threat Score: 
+Base Threat Score:
   Definite phishing: 80 | Probable: 60 | Suspicious: 30
 
 Recipient Multiplier:
@@ -365,16 +365,16 @@ Contact executive through VERIFIED OUT-OF-BAND CHANNEL
 MANDATORY for any BEC:
   AI generates pre-drafted phone script for analyst to use
   when calling executive to verify request legitimacy.
-  
+
   "Hi [Name], this is [Analyst] from the Security team.
    We received an email from your account requesting [X].
    Can you confirm you sent this? [Wait for response]"
-  
+
   DO NOT:
   × Reply to the suspicious email
   × Use phone number provided in the suspicious email
   × Chat via Teams/Slack thread created by the suspicious party
-  
+
   DO:
   ✓ Use phone number from company directory
   ✓ Call personal mobile on file with HR
@@ -653,7 +653,7 @@ Attack Flow:
   4. Victim unknowingly grants app: Mail.Read, Files.ReadWrite, User.Read.All
   5. Attacker receives OAuth access token (valid credentials!)
   6. Attacker accesses mailbox, files, contacts — indefinitely
-  
+
   The attacker never steals the password.
   MFA does not prevent this if victim consents.
   The access token persists until revoked.
@@ -666,13 +666,13 @@ For each OAuth consent event, AI evaluates:
    - Is app registered in known-good app catalog?
    - Publisher verified by Microsoft/Google?
    - App registered recently (high risk)?
-   
+
 2. Permission scope risk:
    - Mail.Read/Send → HIGH (email access)
    - Files.ReadWrite.All → HIGH (all file access)
    - User.Read.All → HIGH (all user data)
    - User.Read → LOW (just this user's profile)
-   
+
 3. Consent context:
    - Did a phishing email precede this consent?
    - Time between email receipt and consent?
@@ -710,7 +710,7 @@ Impossible travel calculation:
   Time difference: 47 minutes
   Required travel speed: 9,574 km/h
   Conclusion: IMPOSSIBLE (fastest commercial flight: 900 km/h)
-  
+
 AI considers:
   - VPN usage (could explain geography gap)
   - IPv6 geolocation inaccuracy (known issue)
@@ -725,17 +725,17 @@ AI considers:
    - Get both login IPs and geolocate
    - Calculate minimum travel time
    - Check if either IP is VPN/proxy
-   
+
 2. Context enrichment:
    - Is user known to use VPN? (check profile)
    - Did user recently travel? (check if they're on travel approval)
    - Are both IPs corporate VPN endpoints?
-   
+
 3. Determine confidence:
    - Both IPs are residential → HIGH confidence compromise
    - One IP is VPN server → LOWER confidence → investigate user VPN usage
    - Second IP from cloud service → False positive investigation
-   
+
 4. Response:
    - High confidence: Revoke sessions + Force MFA re-auth
    - Medium confidence: Notify user + Force MFA
@@ -766,21 +766,21 @@ This is Lapsus$ Group's primary initial access technique (2022-2026).
 Step 1: IMMEDIATE SESSION LOCK (HOOL)
   - Revoke current authentication attempt in progress
   - Rate-limit authentication to 1 attempt per 10 minutes
-  
+
 Step 2: USER NOTIFICATION (simultaneous)
-  - SMS to user's registered phone: 
-    "SECURITY ALERT: Someone is trying to access your account. 
+  - SMS to user's registered phone:
+    "SECURITY ALERT: Someone is trying to access your account.
      DO NOT approve any authentication requests. Call IT Security: [number]"
-  
+
 Step 3: CREDENTIAL ASSESSMENT
   - The fact that MFA push is firing = password is compromised
   - Begin credential reset process (HITL for execution)
-  
+
 Step 4: INVESTIGATION
   - Where did the login attempts originate?
   - What service was being targeted?
   - Is this user's password in breach databases?
-  
+
 Step 5: RESPONSE (after HITL approval)
   - Force password reset
   - Re-enroll MFA (using phishing-resistant FIDO2 if available)
@@ -811,12 +811,12 @@ Insider threat requires careful handling:
    - How much data? (size × sensitivity × destination)
    - What data? (IP, customer PII, financial, strategic)
    - Where did it go? (personal email, USB, cloud, competitor domain?)
-   
+
 2. INTENT DETERMINATION (harder):
    - Legitimate business reason? (working from home, authorized remote access)
    - Recent HR changes? (termination notice, promotion denied)
    - Behavioral anomalies? (unusual hours, after-hours access)
-   
+
 3. CONTEXT:
    - Does HR have any flags on this employee?
    - Has the employee accessed data relevant to competitors?
@@ -866,16 +866,16 @@ Severity determination:
   1. WHAT IS IN THE BUCKET?
      - AI samples bucket content (first 100 objects)
      - Classifies: customer PII, credentials, code, backups, public-safe content
-     
+
   2. HOW LONG WAS IT PUBLIC?
      - Check audit logs for when exposure started
      - Check access logs: was it accessed from external IPs?
-     
+
   3. WAS DATA ACCESSED?
      - S3 Server Access Logs: external IP access to objects
      - Azure Audit Logs: anonymous blob reads
      - Risk: even brief exposure can be indexed by breach intelligence firms
-     
+
   4. IS THIS INTENTIONAL?
      - Check if bucket was intentionally public (website hosting, public assets)
      - Who made the change? Was it approved?
@@ -957,12 +957,12 @@ AI evaluates:
    - Unquoted service paths
    - DLL hijacking
    - UAC bypass techniques
-   
+
 2. Severity assessment:
    - Achieved privilege level (SYSTEM vs. local admin vs. network admin)
    - Process tree: what ran after escalation?
    - Network activity post-escalation
-   
+
 3. Next step prediction:
    - Privilege escalation is rarely the end goal
    - What comes next: lateral movement? Persistence? Data access?
@@ -1020,12 +1020,12 @@ SUSPICIOUS_PATTERNS = [
 
 async def analyze_powershell_command(command: str) -> PSAnalysis:
     """AI analysis of PowerShell command for maliciousness."""
-    
+
     # First: regex pre-filter
     for pattern in SUSPICIOUS_PATTERNS:
         if re.search(pattern, command):
             return await ai_deep_analysis(command)
-    
+
     # Otherwise: heuristic scoring
     return await ai_heuristic_analysis(command)
 ```
@@ -1054,14 +1054,14 @@ AI analyzes network flows for:
    - Exact regular (1200 seconds exactly): Low sophistication C2
    - Jittered (1200 ± random 120s): More advanced (Cobalt Strike default)
    - Irregular with pattern: Custom C2 or beacon randomization
-   
+
 2. DESTINATION CHARACTERISTICS:
    - Domain age (new domain = suspicious)
    - Domain entropy (high entropy = possible DGA)
    - IP geolocation (unexpected country)
    - IP reputation
    - Hosting provider (bulletproof hoster?)
-   
+
 3. TRAFFIC CHARACTERISTICS:
    - Small packet size (C2 check-in) with occasional large response (tasking)
    - TLS certificate characteristics (self-signed, unusual cert)
@@ -1134,9 +1134,9 @@ DNS Tunneling Characteristics:
   - High entropy in subdomain: base64/hex encoded data
   - NXDOMAIN ratio: tunneling tools query many unique nonexistent names
   - TXT record abuse: TXT records used to exfiltrate data
-  
+
 AI Detection Query (Splunk SPL):
-index=dns 
+index=dns
 | eval domain_label_length=len(query)
 | eval subdomain_entropy=entropy(mvindex(split(query,"."),0))
 | where domain_label_length > 60 AND subdomain_entropy > 3.5
@@ -1171,12 +1171,12 @@ SolarWinds Pattern (2020, still relevant):
   Update contained backdoor (SUNBURST)
   Backdoor activated 14 days after install (to evade sandbox)
   C2 communications mimicked legitimate SolarWinds traffic
-  
+
 3CX Pattern (2023):
   Legitimate VoIP software trojanized
   Malicious DLL loaded via DLL side-loading
   Payload phoned home to C2
-  
+
 PyPI/NPM Package Typosquatting:
   requests → requestss (typo package)
   Contains credential stealer
@@ -1190,13 +1190,13 @@ PyPI/NPM Package Typosquatting:
    - SBOM generation and comparison to trusted baseline
    - Package signature verification
    - Build provenance (SLSA framework compliance)
-   
+
 2. Runtime Controls:
    - Behavioral baselines for software behavior
    - Network connections from software processes (allowed destinations)
    - File system access patterns (software shouldn't touch /etc/passwd)
    - Child process creation (npm shouldn't spawn PowerShell)
-   
+
 3. Update Controls:
    - Update source verification (certificate pinning)
    - Update timing anomaly (update at 3 AM outside maintenance window)

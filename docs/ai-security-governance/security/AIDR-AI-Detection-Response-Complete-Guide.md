@@ -619,16 +619,16 @@ async function securedMCPCall(
   context: { agentId: string; sessionId: string }
 ): Promise<unknown> {
   const traceId = await sensor.beginTrace(context.agentId, context.sessionId);
-  
+
   // Pre-execution: verify tool manifest, check policy
   await sensor.assertToolPolicy(toolName, args, context.agentId);
-  
+
   const result = await client.callTool({ name: toolName, arguments: args });
-  
+
   // Post-execution: scan output for credential exposure and data leakage
   const scanResult = await sensor.scanOutput(result, { traceId, toolName });
   if (scanResult.blocked) throw new AIDRViolationError(scanResult.reason);
-  
+
   await sensor.endTrace(traceId, { success: true });
   return result;
 }

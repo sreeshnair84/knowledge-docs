@@ -457,7 +457,7 @@ Governance answers: *"How do we make decisions, who is accountable, and how do w
 GOVERNANCE PYRAMID
 
 BOARD LEVEL
-"Are we doing the right things?" 
+"Are we doing the right things?"
 (Fiduciary, strategic, compliance)
 
 C-SUITE LEVEL

@@ -123,7 +123,7 @@ Block, Ensemble, Superhuman, Zillow — reported as production customers at DAIS
 ### Lakebase vs Traditional Postgres
 
 | Dimension | Traditional Postgres | Lakebase |
-|-----------|--------------------|---------| 
+|-----------|--------------------|---------|
 | Storage | Local disk / EBS | Object storage (S3/ADLS/GCS) |
 | Analytical access | ETL required (hours delay) | Immediate (same tables) |
 | Scaling | Manual provisioning | Serverless (automatic) |
@@ -289,35 +289,35 @@ Lakeflow unifies all data movement and transformation under a single product fam
 
 ```
 DATA SOURCES                    LAKEFLOW PLATFORM              DESTINATIONS
-                                                               
+
 Databases          ┌──────────────────────────────┐           Delta Lake
 (Postgres, MySQL,  │  LAKEFLOW CONNECT             │  ──────►  Iceberg Tables
  Oracle, SAP, etc) │  (100+ connectors, CDC, batch)│           Lakebase
-         │         └──────────────────────────────┘           
-Events   │                        │                            
-(Kafka,  │         ┌──────────────▼───────────────┐           
- Kinesis,│         │  ZEROBUS INGEST               │           
- PubSub) │         │  (event streaming, 5ms E2E)   │           
-         │         └──────────────┬───────────────┘           
-         │                        │                            
-APIs     │         ┌──────────────▼───────────────┐           
-         └────────►│  SPARK DECLARATIVE PIPELINES  │           
-                   │  (SQL/Python, batch+streaming) │           
-                   │  Real-Time Mode (5ms latency) │           
-                   └──────────────┬───────────────┘           
-                                  │                            
-                   ┌──────────────▼───────────────┐           
-                   │  LAKEFLOW JOBS                │           
-                   │  (orchestration, scheduling,  │           
-                   │   dependencies, retry)        │           
-                   └──────────────┬───────────────┘           
-                                  │                            
-                   ┌──────────────▼───────────────┐           
-                   │  GENIE ZEROOPS               │           
-                   │  (autonomous monitoring,      │           
-                   │   failure detection,          │           
-                   │   self-healing)              │           
-                   └──────────────────────────────┘           
+         │         └──────────────────────────────┘  
+Events   │                        │  
+(Kafka,  │         ┌──────────────▼───────────────┐  
+ Kinesis,│         │  ZEROBUS INGEST               │  
+ PubSub) │         │  (event streaming, 5ms E2E)   │  
+         │         └──────────────┬───────────────┘  
+         │                        │  
+APIs     │         ┌──────────────▼───────────────┐  
+         └────────►│  SPARK DECLARATIVE PIPELINES  │  
+                   │  (SQL/Python, batch+streaming) │  
+                   │  Real-Time Mode (5ms latency) │  
+                   └──────────────┬───────────────┘  
+                                  │  
+                   ┌──────────────▼───────────────┐  
+                   │  LAKEFLOW JOBS                │  
+                   │  (orchestration, scheduling,  │  
+                   │   dependencies, retry)        │  
+                   └──────────────┬───────────────┘  
+                                  │  
+                   ┌──────────────▼───────────────┐  
+                   │  GENIE ZEROOPS               │  
+                   │  (autonomous monitoring,      │  
+                   │   failure detection,          │  
+                   │   self-healing)              │  
+                   └──────────────────────────────┘  
 ```
 
 ### Lakeflow Designer (GA)

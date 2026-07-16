@@ -121,10 +121,10 @@ def deduplicate_alerts(alerts, threshold=0.92, time_window_minutes=60):
     """
     embeddings = model.encode([alert.description for alert in alerts])
     similarity_matrix = cosine_similarity(embeddings)
-    
+
     clusters = []
     visited = set()
-    
+
     for i, alert in enumerate(alerts):
         if i in visited:
             continue
@@ -137,7 +137,7 @@ def deduplicate_alerts(alerts, threshold=0.92, time_window_minutes=60):
                     cluster.append(alerts[j])
                     visited.add(j)
         clusters.append(cluster)
-    
+
     return clusters
 ```
 
@@ -220,10 +220,10 @@ async def extract_threat_intel(report_text: str, llm_client) -> ThreatReport:
     response = await llm_client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=4096,
-        system="""You are a threat intelligence analyst. Extract all structured 
+        system="""You are a threat intelligence analyst. Extract all structured
         intelligence from this report. Return valid JSON matching the schema provided.""",
         messages=[{
-            "role": "user", 
+            "role": "user",
             "content": f"Extract intelligence from:\n\n{report_text}\n\nSchema: {THREAT_SCHEMA}"
         }]
     )
@@ -298,11 +298,11 @@ def generate_coverage_map(detections: list[Detection]) -> CoverageMap:
             if technique not in technique_coverage:
                 technique_coverage[technique] = {"status": "covered", "detections": []}
             technique_coverage[technique]["detections"].append(detection.id)
-    
+
     # Identify gaps
     all_techniques = load_mitre_attack_techniques()
     gaps = [t for t in all_techniques if t.id not in technique_coverage]
-    
+
     return CoverageMap(covered=technique_coverage, gaps=gaps)
 ```
 
@@ -354,7 +354,7 @@ Date: [Date] | Incident ID: [ID] | Status: [ACTIVE/CONTAINED/CLOSED]
 
 WHAT HAPPENED (2 sentences, no technical jargon):
 A sophisticated attacker gained access to our corporate email system through a
-targeted phishing email sent to 3 executives. The attacker accessed email 
+targeted phishing email sent to 3 executives. The attacker accessed email
 for approximately 4 hours before being detected and blocked.
 
 BUSINESS IMPACT:
@@ -393,7 +393,7 @@ Step 2: CONTROL FAILURE ANALYSIS
   - Why did that control fail? (misconfiguration / missing / bypassed / evaded)
 
 Step 3: ROOT CAUSE IDENTIFICATION
-  Categories: 
+  Categories:
     VULNERABILITY: unpatched software, misconfiguration
     PROCESS: inadequate detection rule, missing playbook
     HUMAN: phishing victim, policy violation
@@ -424,7 +424,7 @@ Step 4: CAUSAL CHAIN DIAGRAM
 
 **Anomaly Scoring Model:**
 ```python
-def compute_anomaly_score(entity: Entity, event: Event, 
+def compute_anomaly_score(entity: Entity, event: Event,
                            baseline: Baseline) -> float:
     """
     Combines multiple anomaly signals into a single risk score.
@@ -437,7 +437,7 @@ def compute_anomaly_score(entity: Entity, event: Event,
         "access_anomaly": access_pattern_deviation(event.resource, baseline.known_resources),
         "velocity_anomaly": velocity_score(event, baseline.historical_events)
     }
-    
+
     # Weighted combination
     weights = {"time": 0.15, "location": 0.30, "volume": 0.20, "access": 0.25, "velocity": 0.10}
     return sum(scores[k] * weights[k.split("_")[0]] for k in scores)
@@ -498,7 +498,7 @@ Detect:
 
 **Multi-Signal Fusion:**
 ```
-Insider Risk Score = 
+Insider Risk Score =
   Data_Exfiltration_Score (0-40 pts)
   + Communication_Anomaly_Score (0-25 pts)
   + Behavioral_Deviation_Score (0-20 pts)
@@ -571,17 +571,17 @@ Container escape indicators:
 ```python
 async def analyze_k8s_audit_event(event: K8sAuditEvent) -> SecurityAssessment:
     """Analyze a Kubernetes audit event for security significance."""
-    
+
     # High-risk verbs and resources
     if event.verb in ["exec", "create", "patch"] and \
        event.resource in ["pods/exec", "clusterrolebindings", "secrets"]:
-        
+
         context = await gather_k8s_context(
             namespace=event.namespace,
             user=event.user,
             resource=event.resource
         )
-        
+
         return await llm.assess_security(
             event=event,
             context=context,
@@ -700,12 +700,12 @@ from anthropic import Anthropic
 
 async def ai_memory_analysis(memory_image_path: str) -> MemoryAnalysisReport:
     client = Anthropic()
-    
+
     # Run Volatility plugins
     pslist = run_volatility_plugin("windows.pslist", memory_image_path)
     netscan = run_volatility_plugin("windows.netscan", memory_image_path)
     malfind = run_volatility_plugin("windows.malfind", memory_image_path)
-    
+
     # AI analysis of results
     analysis = await client.messages.create(
         model="claude-sonnet-4-6",
@@ -713,16 +713,16 @@ async def ai_memory_analysis(memory_image_path: str) -> MemoryAnalysisReport:
         messages=[{
             "role": "user",
             "content": f"""Analyze these memory forensics results for signs of compromise:
-            
+
             Process List: {pslist}
             Network Connections: {netscan}
             Suspicious Memory Regions: {malfind}
-            
+
             Identify: injected processes, suspicious network activity, shellcode regions,
             potential credential access, and persistence mechanisms."""
         }]
     )
-    
+
     return MemoryAnalysisReport.from_ai_response(analysis.content[0].text)
 ```
 

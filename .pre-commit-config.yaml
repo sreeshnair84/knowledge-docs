@@ -35,6 +35,24 @@ repos:
           - types-PyYAML
           - types-requests
 
+  # ── Docs: front matter enforcement ──────────────────────────────────────────
+  # Defined in scripts/validate_frontmatter.py; standard in .claude/skills/knowledge-doc-standard/SKILL.md
+  - repo: local
+    hooks:
+      - id: fix-frontmatter
+        name: Fix docs front matter (remove deprecated fields)
+        entry: python scripts/validate_frontmatter.py --fix
+        language: python
+        files: ^docs/.*\.md$
+        additional_dependencies: [PyYAML]
+
+      - id: validate-frontmatter
+        name: Validate docs front matter (required fields)
+        entry: python scripts/validate_frontmatter.py
+        language: python
+        files: ^docs/.*\.md$
+        additional_dependencies: [PyYAML]
+
   # ── Markdown: markdownlint ───────────────────────────────────────────────────
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.18.1

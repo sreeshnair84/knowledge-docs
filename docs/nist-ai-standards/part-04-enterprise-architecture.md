@@ -82,7 +82,7 @@ terraform {
 # IAM role for AI agents (least privilege per CAISI)
 resource "aws_iam_role" "ai_agent" {
   for_each = var.agent_types  # "triage", "investigation", "ir"
-  
+
   name = "ai-agent-${each.key}-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -98,7 +98,7 @@ resource "aws_iam_role" "ai_agent" {
 resource "aws_iam_role_policy" "triage_read_only" {
   name = "triage-agent-read-only"
   role = aws_iam_role.ai_agent["triage"].id
-  
+
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -130,12 +130,12 @@ resource "aws_bedrock_model_invocation_logging_configuration" "ai_security_loggi
     embedding_data_delivery_enabled = true
     image_data_delivery_enabled     = true
     text_data_delivery_enabled      = true
-    
+
     s3_config {
       bucket_name = aws_s3_bucket.ai_audit_logs.id
       key_prefix  = "bedrock-invocations/"
     }
-    
+
     cloudwatch_config {
       log_group_name = aws_cloudwatch_log_group.ai_invocations.name
       role_arn       = aws_iam_role.bedrock_logging.arn
@@ -147,10 +147,10 @@ resource "aws_bedrock_model_invocation_logging_configuration" "ai_security_loggi
 resource "aws_bedrock_guardrail" "ai_security_guardrail" {
   name        = "ai-security-guardrail-prod"
   description = "Security guardrails for SOC AI agents"
-  
+
   blocked_input_messaging  = "Your input has been flagged as potentially malicious."
   blocked_outputs_messaging = "The AI's response has been filtered for safety."
-  
+
   # Detect and block prompt injection patterns
   sensitive_information_policy_config {
     regexes_config {
@@ -160,7 +160,7 @@ resource "aws_bedrock_guardrail" "ai_security_guardrail" {
       action      = "BLOCK"
     }
   }
-  
+
   # PII protection (NIST AI 100-4 control)
   sensitive_information_policy_config {
     pii_entities_config {
@@ -189,14 +189,14 @@ resource "aws_lambda_function" "c2pa_verifier" {
   filename      = data.archive_file.c2pa_verifier.output_path
   timeout       = 30
   memory_size   = 512
-  
+
   environment {
     variables = {
       TRUST_STORE_BUCKET = aws_s3_bucket.c2pa_trust_store.id
       ALERT_TOPIC_ARN    = aws_sns_topic.security_alerts.arn
     }
   }
-  
+
   vpc_config {
     subnet_ids         = var.private_subnet_ids
     security_group_ids = [aws_security_group.lambda_ai.id]
@@ -242,7 +242,7 @@ resource "aws_s3_bucket_object_lock_configuration" "training_data" {
 resource "aws_cloudwatch_event_rule" "adversarial_input_detected" {
   name        = "ai-adversarial-input-detected"
   description = "Alert when Bedrock guardrails detect adversarial input"
-  
+
   event_pattern = jsonencode({
     source      = ["aws.bedrock"]
     detail-type = ["Guardrail Intervention"]
@@ -267,7 +267,7 @@ resource "aws_cloudwatch_metric_alarm" "model_behavior_drift" {
   period              = 3600  # 1 hour
   statistic           = "Average"
   threshold           = 0.15  # 15% anomaly rate triggers alert
-  
+
   alarm_actions = [aws_sns_topic.security_alerts.arn]
 }
 ```
@@ -289,9 +289,9 @@ resource "azurerm_ai_foundry_hub" "enterprise" {
   location            = var.location
   resource_group_name = var.resource_group_name
   sku                 = "Basic"
-  
+
   identity { type = "SystemAssigned" }
-  
+
   # Private network only — no public AI endpoint
   public_network_access_enabled = false
 }
@@ -301,13 +301,13 @@ resource "azurerm_ai_foundry_hub" "enterprise" {
 resource "azurerm_cognitive_deployment" "gpt4o_with_filter" {
   name                 = "gpt-4o-prod"
   cognitive_account_id = azurerm_cognitive_account.openai.id
-  
+
   model {
     format  = "OpenAI"
     name    = "gpt-4o"
     version = "2024-08-06"
   }
-  
+
   content_filter {
     hate {
       input_action     = "Block"
@@ -329,7 +329,7 @@ resource "azurerm_cognitive_deployment" "gpt4o_with_filter" {
       output_action = "Block"
     }
   }
-  
+
   sku { name = "Standard" }
 }
 
@@ -363,7 +363,7 @@ resource "azurerm_private_endpoint" "openai" {
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = var.private_subnet_id
-  
+
   private_service_connection {
     name                           = "openai-connection"
     private_connection_resource_id = azurerm_cognitive_account.openai.id
@@ -377,16 +377,16 @@ resource "azurerm_private_endpoint" "openai" {
 resource "azurerm_monitor_diagnostic_setting" "openai_audit" {
   name               = "openai-audit-logs"
   target_resource_id = azurerm_cognitive_account.openai.id
-  
+
   log_analytics_workspace_id = azurerm_log_analytics_workspace.ai_audit.id
-  
+
   enabled_log {
     category = "RequestResponse"  # Log all AI requests and responses
   }
   enabled_log {
     category = "Audit"
   }
-  
+
   metric {
     category = "AllMetrics"
     enabled  = true
@@ -401,14 +401,14 @@ resource "azurerm_storage_account" "ai_training_data" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "GRS"  # Geo-redundant
-  
+
   # Immutability for training data integrity
   immutability_policy {
     state                         = "Locked"
     period_since_creation_in_days = 365
     allow_protected_append_writes = false  # True WORM
   }
-  
+
   # Customer-managed key for GDPR compliance
   customer_managed_key {
     key_vault_key_id          = azurerm_key_vault_key.ai_training_cmk.id
@@ -436,7 +436,7 @@ import google.cloud.logging
 
 def configure_vertex_ai_with_safety():
     """Configure Vertex AI Gemini with safety filters."""
-    
+
     # Safety settings aligned with NIST AI 100-4
     safety_settings = [
         SafetySetting(
@@ -448,7 +448,7 @@ def configure_vertex_ai_with_safety():
             threshold=HarmBlockThreshold.BLOCK_LOW_AND_ABOVE
         ),
     ]
-    
+
     return safety_settings
 
 # ─── VPC SERVICE CONTROLS (Data Isolation) ─────────────────────
@@ -486,7 +486,7 @@ CLOUD_ARMOR_WAF_RULES = """
 # Cloud Armor security policy for AI API endpoints
 resource "google_compute_security_policy" "ai_api_protection" {
   name = "ai-api-waf-policy"
-  
+
   # Rate limiting (NIST AI 100-2: model extraction defense)
   rule {
     action   = "rate_based_ban"
@@ -504,7 +504,7 @@ resource "google_compute_security_policy" "ai_api_protection" {
       ban_duration_sec = 3600
     }
   }
-  
+
   # Block known injection patterns
   rule {
     action   = "deny(403)"
@@ -516,7 +516,7 @@ resource "google_compute_security_policy" "ai_api_protection" {
     }
     description = "Block prompt injection patterns"
   }
-  
+
   # Default: allow
   rule {
     action   = "allow"
@@ -594,13 +594,13 @@ spec:
   template:
     spec:
       serviceAccountName: vllm-sa  # Least-privilege SA
-      
+
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
         seccompProfile:
           type: RuntimeDefault
-      
+
       containers:
         - name: vllm
           image: vllm/vllm-openai:latest
@@ -615,13 +615,13 @@ spec:
             - "--max-model-len"
             - "32768"
             - "--enforce-eager"  # Disable CUDA graphs for audit
-          
+
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             capabilities:
               drop: ["ALL"]
-          
+
           resources:
             requests:
               nvidia.com/gpu: "4"
@@ -629,14 +629,14 @@ spec:
             limits:
               nvidia.com/gpu: "4"
               memory: "160Gi"
-          
+
           volumeMounts:
             - name: models
               mountPath: /models
               readOnly: true  # Models are read-only
             - name: tmp
               mountPath: /tmp
-      
+
       volumes:
         - name: models
           persistentVolumeClaim:

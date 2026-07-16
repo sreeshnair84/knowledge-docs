@@ -425,7 +425,7 @@ EXECUTE PHASE (sequentially or in parallel where safe):
 
 Used in Agent Bricks' self-improvement loop:
 ```
-Generate response → Self-evaluate against criteria → 
+Generate response → Self-evaluate against criteria →
   Score < threshold? → Reflect on failure → Regenerate
   Score ≥ threshold? → Return response
 ```

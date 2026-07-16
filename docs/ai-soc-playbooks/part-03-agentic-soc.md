@@ -140,22 +140,22 @@ async def generate_hunt_hypotheses(
     detection_gaps: list[MitreGap],
     recent_incidents: list[Incident]
 ) -> list[HuntHypothesis]:
-    
+
     prompt = f"""You are a threat hunter. Generate 5 hunting hypotheses based on:
-    
+
     Recent threat intel: {threat_intel}
     Detection gaps in our MITRE coverage: {detection_gaps}
     Recent incidents pattern: {recent_incidents}
-    
+
     For each hypothesis:
     - HYPOTHESIS: What attacker behavior are we looking for?
     - RATIONALE: Why might an attacker be doing this in our environment?
     - QUERY APPROACH: What data source and query approach would detect this?
     - MITRE TECHNIQUES: Which ATT&CK techniques does this address?
     - PRIORITY: HIGH/MEDIUM/LOW
-    
+
     Focus on techniques we DON'T currently have detections for."""
-    
+
     response = await llm.generate(prompt)
     return parse_hypotheses(response)
 ```
@@ -330,7 +330,7 @@ async def create_incident(
     # Validate inputs before API call
     if severity not in ["Critical", "High", "Medium", "Low"]:
         raise ValueError(f"Invalid severity: {severity}")
-    
+
     return await siem_client.create_incident(
         title=title,
         severity=severity,
@@ -347,21 +347,21 @@ security:
     type: oauth2_client_credentials
     token_endpoint: https://auth.company.com/token
     scopes: ["soc:read", "soc:write"]
-  
+
   authorization:
     policy_engine: opa  # Open Policy Agent
     policy_file: /etc/soc/mcp-policy.rego
-    
+
   audit_logging:
     enabled: true
     destination: security-audit-log
     include_tool_inputs: true
     include_tool_outputs: true  # PII redaction applied
-    
+
   rate_limiting:
     per_agent: 100 calls/minute
     per_tool: 20 calls/minute
-    
+
   sandboxing:
     agent_isolation: kubernetes_namespace
     network_policy: restricted
@@ -414,29 +414,29 @@ class InvestigationContext(BaseModel):
     incident_id: str
     created_at: datetime
     alert_source: AlertSource
-    
+
     # Evidence accumulated across all agents
     evidence: list[Evidence]
-    
+
     # MITRE ATT&CK techniques identified so far
     confirmed_techniques: list[str]
     suspected_techniques: list[str]
-    
+
     # Attack chain timeline
     timeline: list[TimelineEvent]
-    
+
     # Previous agent findings (summary, not full output)
     agent_findings: list[AgentFinding]
-    
+
     # Current investigation state
     status: InvestigationStatus
-    
+
     # What we still need to determine
     open_questions: list[str]
-    
+
     # Human decisions made so far
     human_approvals: list[HumanApproval]
-    
+
     def to_agent_context(self, max_tokens: int = 3000) -> str:
         """Serialize to text for LLM context injection."""
         # Summarize evidence if too long
@@ -463,12 +463,12 @@ class InvestigationContext(BaseModel):
 ```python
 class EpisodicMemory:
     """Stores the history of actions and findings in an active investigation."""
-    
+
     def __init__(self, incident_id: str, redis_client):
         self.incident_id = incident_id
         self.redis = redis_client
         self.key = f"investigation:{incident_id}:memory"
-    
+
     async def add_finding(self, agent: str, finding: Finding):
         entry = {
             "timestamp": datetime.utcnow().isoformat(),
@@ -480,7 +480,7 @@ class EpisodicMemory:
         }
         await self.redis.rpush(self.key, json.dumps(entry))
         await self.redis.expire(self.key, 86400 * 30)  # 30-day retention
-    
+
     async def get_summary(self, max_entries: int = 20) -> str:
         """Get recent investigation history for LLM context."""
         entries = await self.redis.lrange(self.key, -max_entries, -1)
@@ -501,18 +501,18 @@ class ThreatKnowledgeBase:
     def __init__(self, pinecone_client, anthropic_client):
         self.index = pinecone_client.Index("threat-intelligence")
         self.llm = anthropic_client
-    
+
     async def semantic_search(
-        self, 
-        query: str, 
+        self,
+        query: str,
         top_k: int = 5,
         filters: dict = None
     ) -> list[ThreatIntelEntry]:
         """Find relevant threat intelligence using semantic search."""
-        
+
         # Generate query embedding
         embedding = await self._embed(query)
-        
+
         # Search vector database
         results = self.index.query(
             vector=embedding,
@@ -520,7 +520,7 @@ class ThreatKnowledgeBase:
             filter=filters or {},
             include_metadata=True
         )
-        
+
         return [
             ThreatIntelEntry(
                 id=match.id,
@@ -531,7 +531,7 @@ class ThreatKnowledgeBase:
             )
             for match in results.matches
         ]
-    
+
     async def find_similar_incidents(self, current_incident: str) -> list[PastIncident]:
         """Find past incidents similar to the current one."""
         results = await self.semantic_search(
@@ -552,10 +552,10 @@ Investigations can last hours or days. Agent state must be persisted to survive 
 ```python
 class InvestigationCheckpoint:
     """Persists investigation state for resumability."""
-    
+
     async def save_checkpoint(
-        self, 
-        investigation_id: str, 
+        self,
+        investigation_id: str,
         agent_state: dict,
         storage_client  # Azure Blob / S3 / GCS
     ) -> str:
@@ -569,18 +569,18 @@ class InvestigationCheckpoint:
             "human_approvals": self.approvals,
             "next_steps": self.planned_steps
         }
-        
+
         checkpoint_id = f"chk-{investigation_id}-{int(time.time())}"
         await storage_client.upload(
             key=f"investigations/{investigation_id}/checkpoints/{checkpoint_id}.json",
             data=json.dumps(checkpoint),
             encryption=True  # Server-side encryption required
         )
-        
+
         return checkpoint_id
-    
+
     async def resume_from_checkpoint(
-        self, 
+        self,
         investigation_id: str
     ) -> InvestigationState:
         latest_checkpoint = await self._get_latest_checkpoint(investigation_id)
@@ -592,7 +592,7 @@ class InvestigationCheckpoint:
 ```python
 class HumanApprovalGate:
     """Blocks agent execution pending human approval."""
-    
+
     async def request_approval(
         self,
         agent_id: str,
@@ -601,7 +601,7 @@ class HumanApprovalGate:
         evidence: list[Evidence],
         timeout_minutes: int = 10
     ) -> ApprovalResult:
-        
+
         # Create approval request
         request_id = await self.approval_queue.create({
             "agent": agent_id,
@@ -611,10 +611,10 @@ class HumanApprovalGate:
             "expires_at": (datetime.utcnow() + timedelta(minutes=timeout_minutes)).isoformat(),
             "notification_channels": ["soc-console", "slack", "pagerduty"]
         })
-        
+
         # Notify analysts
         await self.notify_analysts(request_id, action.severity)
-        
+
         # Wait for decision (blocking with timeout)
         try:
             result = await asyncio.wait_for(
@@ -625,7 +625,7 @@ class HumanApprovalGate:
             # Escalate on timeout
             await self.escalate_to_manager(request_id)
             return ApprovalResult(status="TIMED_OUT", escalated=True)
-        
+
         return result
 ```
 
@@ -643,10 +643,10 @@ Every agent must have a verifiable identity and operate with least-privilege cre
 agent_identity:
   name: "triage-agent"
   version: "2.3.1"
-  
+
   # Cryptographic identity (SPIFFE/SPIRE)
   spiffe_id: "spiffe://company.com/soc/agents/triage"
-  
+
   # OAuth client for API access
   oauth_client_id: "soc-triage-agent-prod"
   oauth_scopes:
@@ -654,13 +654,13 @@ agent_identity:
     - "threat-intel:ioc:read"
     - "cmdb:assets:read"
     - "tickets:create"
-  
+
   # Explicitly DENIED permissions
   oauth_denied_scopes:
     - "edr:isolate:write"
     - "iam:modify:write"
     - "firewall:rules:write"
-  
+
   # Secret rotation
   credential_rotation_days: 7
   secret_store: "vault://soc/agents/triage/credentials"
@@ -687,7 +687,7 @@ Kill Switch Activation:
   4. Agent state saved to checkpoint
   5. Human notification: PagerDuty P1 + Slack #soc-emergency
   6. Audit log: who, when, why (required for compliance)
-  
+
 Recovery from Kill Switch:
   1. Investigation of trigger cause (required before restart)
   2. Manual approval from SOC Director required to restart
@@ -699,8 +699,8 @@ Recovery from Kill Switch:
 ```python
 class AgentKillSwitch:
     async def emergency_stop(
-        self, 
-        triggered_by: str, 
+        self,
+        triggered_by: str,
         reason: str,
         scope: str = "all"  # "all" | agent_id
     ):
@@ -715,14 +715,14 @@ class AgentKillSwitch:
                 "severity": "EMERGENCY"
             }
         )
-        
+
         # Wait for agent acknowledgment (timeout: 15 seconds)
         stopped_agents = await self._wait_for_agent_stops(timeout=15)
-        
+
         # Alert if agents didn't stop
         if len(stopped_agents) < self.expected_agents:
             await self._force_kill_remaining()
-        
+
         # Audit trail
         await self.audit_log.record(
             event_type="KILL_SWITCH_ACTIVATED",
@@ -731,7 +731,7 @@ class AgentKillSwitch:
             agents_stopped=stopped_agents,
             timestamp=datetime.utcnow()
         )
-        
+
         # Notify CISO and SOC Director
         await self.notify_leadership(triggered_by, reason, stopped_agents)
 ```
@@ -743,7 +743,7 @@ Every agent decision and action must be recorded for non-repudiation and complia
 ```python
 class AgentAuditTrail:
     """Immutable audit log for agent actions."""
-    
+
     async def record_action(self, audit_event: AgentAuditEvent):
         event = {
             "event_id": str(uuid4()),
@@ -761,14 +761,14 @@ class AgentAuditTrail:
             "approver_id": audit_event.approver_id,
             "outcome": audit_event.outcome
         }
-        
+
         # Write to append-only storage (S3 Object Lock / Azure WORM)
         await self.immutable_store.append(
             key=f"audit/{audit_event.incident_id}/{event['event_id']}.json",
             data=json.dumps(event),
             object_lock_days=365  # 1-year retention minimum
         )
-        
+
         # Hash chain for tamper evidence
         await self._update_hash_chain(event)
 ```
@@ -797,24 +797,24 @@ spec:
   template:
     spec:
       serviceAccountName: triage-agent-sa
-      
+
       securityContext:
         runAsNonRoot: true
         runAsUser: 10001
         fsGroup: 10001
         seccompProfile:
           type: RuntimeDefault
-      
+
       containers:
       - name: triage-agent
         image: soc-registry.company.com/triage-agent:2.3.1
-        
+
         securityContext:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
           capabilities:
             drop: [ALL]
-        
+
         env:
         - name: ANTHROPIC_API_KEY
           valueFrom:
@@ -825,7 +825,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-        
+
         resources:
           requests:
             memory: "512Mi"
@@ -833,7 +833,7 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "500m"
-        
+
         livenessProbe:
           httpGet:
             path: /health

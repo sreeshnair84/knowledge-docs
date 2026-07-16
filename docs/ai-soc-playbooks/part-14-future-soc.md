@@ -86,10 +86,10 @@ client = anthropic.Anthropic()
 
 def analyze_phishing_screenshot(screenshot_path: str, alert: dict) -> dict:
     """Use multimodal AI to analyze phishing page screenshot."""
-    
+
     with open(screenshot_path, "rb") as f:
         screenshot_b64 = base64.standard_b64encode(f.read()).decode("utf-8")
-    
+
     response = client.messages.create(
         model="claude-opus-4-8",
         max_tokens=1024,
@@ -107,7 +107,7 @@ def analyze_phishing_screenshot(screenshot_path: str, alert: dict) -> dict:
                 {
                     "type": "text",
                     "text": f"""Analyze this screenshot for phishing indicators.
-                    
+
 Alert context: User {alert.get('user')} visited URL {alert.get('url')}
 
 Analyze:
@@ -122,7 +122,7 @@ Return as JSON."""
             ]
         }]
     )
-    
+
     return {
         "url": alert.get("url"),
         "screenshot_analysis": response.content[0].text,
@@ -138,11 +138,11 @@ Return as JSON."""
 
 async def streaming_soc_analyst(log_stream: AsyncIterator[str]) -> AsyncIterator[Alert]:
     """AI processes raw log stream in real-time — no pre-aggregation needed."""
-    
+
     async with anthropic.Anthropic().messages.stream(
         model="claude-sonnet-4-6",
         max_tokens=256,
-        system="""You monitor a real-time security log stream. 
+        system="""You monitor a real-time security log stream.
 For each log entry, either:
 - Return IGNORE (low-risk normal activity)  
 - Return ALERT:<severity>:<reason> for suspicious patterns
@@ -167,14 +167,14 @@ Future AI models will reason directly over knowledge graphs, not just text:
 
 class GraphNativeSOCAnalyst:
     """AI analyst that reasons over attack graphs, not just text logs."""
-    
+
     def __init__(self, neo4j_driver, llm_client):
         self.graph = neo4j_driver
         self.llm = llm_client
-    
+
     async def find_blast_radius(self, compromised_host: str) -> dict:
         """Use graph traversal + AI to determine attack blast radius."""
-        
+
         # Graph query: what can the attacker reach from this host?
         reachable = self.graph.run_query("""
             MATCH (start:Host {name: $host})-[r:CONNECTS_TO|HAS_CREDENTIAL|TRUSTS*1..5]->(target)
@@ -183,14 +183,14 @@ class GraphNativeSOCAnalyst:
             ORDER BY length(path)
             LIMIT 100
         """, host=compromised_host)
-        
+
         # AI interprets the graph traversal results in business context
         analysis = await self.llm.analyze(
             f"Attack blast radius from compromised host {compromised_host}:\n"
             f"Reachable systems: {reachable.to_json()}\n"
             "Assess: business impact, priority containment, estimated breach scope."
         )
-        
+
         return {
             "compromised_host": compromised_host,
             "reachable_systems": len(reachable),
@@ -243,25 +243,25 @@ class AutoDetectionEngineer:
     AI agent that continuously improves SOC detection capabilities.
     Human approval required for production deployment.
     """
-    
+
     async def run_detection_improvement_cycle(self):
         """24/7 detection engineering loop."""
-        
+
         while True:
             # Phase 1: Gather intelligence
             new_tti = await self.ti_agent.get_new_ttps_last_24h()
             coverage_gaps = await self.coverage_analyzer.identify_gaps()
-            
+
             # Phase 2: Generate detection hypothesis
             for ttp in new_tti:
                 hypothesis = await self.llm.generate(
                     f"Generate detection hypothesis for TTP: {ttp}\n"
                     "Consider: log sources, behavioral indicators, false positive risk"
                 )
-                
+
                 # Phase 3: Hunt for evidence in production
                 hunt_results = await self.hunt_agent.hunt(hypothesis)
-                
+
                 if hunt_results.found_evidence:
                     # Phase 4: Generate detection rule
                     rule = await self.rule_generator.generate(
@@ -269,10 +269,10 @@ class AutoDetectionEngineer:
                         hypothesis=hypothesis,
                         evidence=hunt_results
                     )
-                    
+
                     # Phase 5: Test in staging
                     test_results = await self.rule_tester.test_staging(rule)
-                    
+
                     if test_results.false_positive_rate < 0.05:
                         # Phase 6: Request human approval
                         await self.approval_queue.submit(
@@ -281,7 +281,7 @@ class AutoDetectionEngineer:
                             test_results=test_results,
                             priority="HIGH" if ttp.severity == "CRITICAL" else "MEDIUM"
                         )
-            
+
             await asyncio.sleep(3600)  # Next cycle in 1 hour
 ```
 
@@ -300,8 +300,8 @@ Data Inputs:
   - Vulnerability exploitation timing (patches → attacks in 72 hours)
 
 AI Predictions:
-  "High probability (73%) of credential stuffing attack targeting 
-   Azure AD within next 48 hours. Indicators: BreachForums post 
+  "High probability (73%) of credential stuffing attack targeting
+   Azure AD within next 48 hours. Indicators: BreachForums post
    references your domain, your VPN vendor released patch 3 days ago,
    APT41 campaign targeting similar-sized tech companies observed."
 
@@ -317,29 +317,29 @@ Recommended Preemptive Actions:
 ```python
 class AutonomousRedTeamAgent:
     """AI agent that continuously probes SOC defenses."""
-    
+
     async def run_continuous_red_team(self):
         """
         Runs adversarial simulations against detection infrastructure.
         Results feed back into detection improvement cycle.
         """
-        
+
         attack_scenarios = await self.llm.generate_attack_scenarios(
             ttps=MITRE_ATTACK_TECHNIQUES,
             target_env=self.environment_profile,
             n=10
         )
-        
+
         for scenario in attack_scenarios:
             # Simulate attack in isolated test environment
             simulation = await self.attack_simulator.run(scenario)
-            
+
             # Check if SOC detected the attack
             detection_result = await self.detection_evaluator.check(
                 simulation.artifacts,
                 time_window_minutes=15
             )
-            
+
             if not detection_result.detected:
                 # Gap found — feed to detection engineering agent
                 await self.detection_engineer.create_detection_for_gap(
@@ -454,7 +454,7 @@ Defenders GAIN from AI:
 Current Balance (2026): SLIGHT DEFENDER ADVANTAGE for known threats
 Future Risk: AI-generated novel attacks may temporarily tip balance
 
-Mitigation: 
+Mitigation:
   - Foundation models trained on security data (specialized)
   - Behavioral detection (TTPs not signatures — harder to evade)
   - Zero trust removes attacker value from initial foothold

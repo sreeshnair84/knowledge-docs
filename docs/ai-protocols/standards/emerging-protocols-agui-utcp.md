@@ -387,16 +387,16 @@ AG-UI SCALABILITY PROFILE
 HORIZONTAL SCALE CEILING (without externalised state):
   Single AG-UI server process: ~200-500 concurrent SSE connections
   (limited by file descriptor limits, SSE buffer memory, and I/O multiplexing)
-  
+
 WITH EXTERNALISED STATE (Redis + stateless nodes):
   Horizontal scale: linear with node count
   Tested in production: 10,000+ concurrent runs (AWS Bedrock AgentCore, internal data)
-  
+
 LATENCY PROFILE:
   Token streaming: P50 <5ms event-to-browser latency (SSE overhead)
   HITL round-trip: P50 <100ms (server-to-browser + user decision + action POST)
   State delta application: P50 <10ms (Redis write + SSE emit)
-  
+
 NETWORK EFFICIENCY:
   SSE overhead vs WebSocket: +5-15% for standard request-response patterns
   SSE overhead vs long polling: -60 to -80% (fewer round-trips)
@@ -444,7 +444,7 @@ CROSS-CLOUD STATE CONSISTENCY:
   Run state is cloud-local (do not share Redis across cloud boundaries)
   Frontend routes runs deterministically to one cloud per session
   No live state migration between clouds (re-run from scratch on failover)
-  
+
 GLOBAL DEPLOYMENT CONSIDERATIONS:
   SSE connections are long-lived HTTP/2 streams
   Not compatible with aggressive connection resets by some CDN PoPs
@@ -649,12 +649,12 @@ Tool Manifest (discovery)
   - Tool name, description, parameters (JSON Schema)
   - HTTP endpoint for invocation
   - Authentication type (none, bearer, api_key, oauth2)
-  
+
 Tool Invocation (calling)
   HTTP POST to the tool's endpoint
   Request body: { "tool": "tool_name", "arguments": { ...typed args... } }
   Response body: { "result": <any>, "error": <optional> }
-  
+
 Tool Result (response)
   Synchronous JSON response
   No streaming support in base spec (streaming is protocol extension)
@@ -840,7 +840,7 @@ UTCP ADOPTION PREREQUISITES (in approximate priority order)
 
 P1: Foundation Donation
     UTCP donated to AAIF, CNCF, or Eclipse Foundation.
-    Provides IP clarity, long-term governance, and enterprise procurement 
+    Provides IP clarity, long-term governance, and enterprise procurement
     signal equivalent to MCP's AAIF membership.
     Estimated timeline if pursued: 12-18 months to foundation acceptance.
 
@@ -861,7 +861,7 @@ P4: Security Audit and CVE Tracking
     Formal security response process defined.
 
 P5: Cloud Native Integration
-    At least one major cloud provider (AWS, Azure, or GCP) ships native 
+    At least one major cloud provider (AWS, Azure, or GCP) ships native
     UTCP manifest support in their managed agent runtime
     (analogous to Bedrock AgentCore's MCP support).
 
@@ -874,7 +874,7 @@ REALISTIC ASSESSMENT:
   Even if all six prerequisites were met simultaneously (unlikely),
   MCP's installed base advantage (10,000+ servers, 97M monthly downloads,
   universal framework support) would take 2-4 years to overcome.
-  
+
   The most likely outcome is that UTCP occupies a permanent niche as the
   preferred tool-calling mechanism for:
   - OpenAPI bridge scenarios (existing REST API → agent)

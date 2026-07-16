@@ -93,7 +93,7 @@ AI SOC VENDOR ECOSYSTEM (2026)
 Microsoft Security Copilot Architecture:
   Foundation: Azure OpenAI Service (GPT-4 turbo variant)
   Context: Integrates with 65+ Microsoft + 3rd-party plugins
-  
+
   Security Skills (plugins):
   ┌───────────────────────────────────────────────────────────┐
   │ First-Party Plugins:                                      │
@@ -106,12 +106,12 @@ Microsoft Security Copilot Architecture:
   │  Jamf (Apple MDM)         CrowdStrike                    │
   │  Other MSFT partners                                      │
   └───────────────────────────────────────────────────────────┘
-  
+
   Pricing: Security Compute Units (SCU)
     $4/hour per SCU (minimum 1 SCU)
     Typical enterprise: 3-8 SCUs running 8h/day
     Monthly: 3 SCU × $4/h × 8h/day × 30d = $2,880/month
-    
+
   Key Differentiator:
     - Native integration depth with M365/Azure stack
     - Promptbooks: shareable, versioned AI workflows
@@ -125,21 +125,21 @@ Microsoft Security Copilot Architecture:
 Charlotte AI Architecture:
   Foundation: CrowdStrike proprietary + external LLM integration
   Data: Native access to Falcon Data Replicator (petabytes of sensor data)
-  
+
   Core Capabilities:
     NL Threat Hunting: "Show me all processes that accessed LSASS in last 7 days"
     AI Detection: Auto-generates detections from threat hunting findings
     Incident Summary: AI summarizes incident for handoff (analyst → CISO)
     Guided Remediation: Step-by-step AI remediation plans
     Preventive Controls: AI recommends policy changes to prevent recurrence
-  
+
   Availability: Charlotte AI requires Falcon Insight XDR subscription
-  
+
   Strengths:
   + Unmatched endpoint data depth
   + Native access to Falcon Intelligence threat data
   + "Conversational XDR" — NL queries across full data lake
-  
+
   Limitations:
   - Requires CrowdStrike as primary EDR
   - Limited SIEM integration outside Falcon SIEM
@@ -153,24 +153,24 @@ Google Security Operations Architecture:
   SIEM: Chronicle (SOAR + SIEM unified)
   AI: Gemini 1.5 Pro for Security Operations
   Detection: YARA-L rules + ML detections
-  
+
   Gemini AI Capabilities for Security:
     Duet AI (now Gemini) code assistance: KQL/YARA-L generation
     AI-powered detection tuning
     Natural language incident investigation
     Playbook automation via Gemini
     AI threat briefings from TI data
-  
+
   Chronicle Pricing (2026):
     Fixed per-employee pricing (not per-GB ingestion)
     ~$20-30/employee/year (all data included)
     Significant advantage over Splunk's per-GB model for high-volume orgs
-    
+
   Strengths:
   + Fixed pricing advantage over per-GB competitors
   + Google Threat Intelligence included
   + Excellent for high-volume log environments
-  
+
   Limitations:
   - Requires GCP comfort
   - SOAR capabilities less mature than Splunk SOAR
@@ -273,9 +273,9 @@ def investigation_node(state: SOCState) -> SOCState:
     if state["investigation_depth"] > 3:
         # Safety: prevent infinite loops
         return {**state, "requires_more_investigation": False}
-    
+
     new_finding = investigation_agent.dig_deeper(
-        state["alert"], 
+        state["alert"],
         state["findings"]
     )
     return {
@@ -323,12 +323,12 @@ app = workflow.compile(checkpointer=MemorySaver())
 ```python
 class ThreatIntelIntegrator:
     """Multi-source TI integration with AI synthesis."""
-    
+
     async def enrich_incident(self, incident: dict) -> dict:
         """Enrich from multiple TI sources concurrently."""
-        
+
         iocs = self._extract_iocs(incident)
-        
+
         # Query all sources concurrently
         results = await asyncio.gather(
             self.recorded_future.lookup_iocs(iocs),
@@ -336,10 +336,10 @@ class ThreatIntelIntegrator:
             self.misp.lookup_iocs(iocs),
             return_exceptions=True
         )
-        
+
         # AI synthesizes conflicting or complementary intelligence
         synthesis = await self.synthesize_ti_with_ai(iocs, results)
-        
+
         return {
             "iocs": iocs,
             "raw_ti": results,

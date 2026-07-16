@@ -114,7 +114,7 @@ async def execute_agent_task(task: AgentTask) -> AgentResult:
             code="AGENT_SUSPENDED",
             message="Agent temporarily disabled by platform governance"
         )
-    
+
     # Kill switch check DURING long-running tasks (at every step boundary)
     for step in plan.steps:
         if not await feature_flags.is_enabled(f"ai.agent.{agent_id}.enabled"):
@@ -244,7 +244,7 @@ Progressive shutdown reduces blast radius by stopping in a controlled sequence:
 Step 1: Feature flag → disable new task acceptance
         (agent finishes current tasks; accepts no new ones)
         Wait: 30 seconds
-        
+
 Step 2: Gateway kill → reject new requests
         (belt-and-suspenders; catches requests that bypassed flag check)
         Wait: 30 seconds for drain

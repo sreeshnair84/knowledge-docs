@@ -215,10 +215,10 @@ def perform_ai_controls_gap_analysis(
     applicable_standards: list[str]
 ) -> dict:
     """Identify gaps between current controls and required controls."""
-    
+
     # Determine required controls based on applicable standards
     required_controls = set()
-    
+
     standard_control_map = {
         "nist_csf_2_0": ["AI-C-001", "AI-C-002", "AI-C-005", "AI-C-009", "AI-C-010"],
         "eu_ai_act_high_risk": list(NIST_AI_CONTROL_LIBRARY.keys()),  # All controls
@@ -226,14 +226,14 @@ def perform_ai_controls_gap_analysis(
         "owasp_llm_top10": ["AI-C-003", "AI-C-006", "AI-C-007"],
         "caisi_agentic": ["AI-C-003", "AI-C-006", "AI-C-008", "AI-C-009", "AI-C-010"]
     }
-    
+
     for standard in applicable_standards:
         required_controls.update(standard_control_map.get(standard, []))
-    
+
     # Identify gaps
     implemented = set(current_controls)
     gaps = required_controls - implemented
-    
+
     # Prioritize gaps by risk
     gap_details = []
     for control_id in gaps:
@@ -241,12 +241,12 @@ def perform_ai_controls_gap_analysis(
         gap_details.append({
             "control_id": control_id,
             "name": control.get("name"),
-            "standards_requiring": [s for s in applicable_standards 
+            "standards_requiring": [s for s in applicable_standards
                                    if control_id in standard_control_map.get(s, [])],
             "owner": control.get("owner"),
             "implementation": control.get("implementation")
         })
-    
+
     return {
         "organization": organization,
         "applicable_standards": applicable_standards,

@@ -326,10 +326,10 @@ Every A2A agent publishes its capability manifest at `/.well-known/agent-card.js
 **Task state machine:**
 ```
 submitted ──────────► working ──────────► completed
-                         │                   
-                         ▼                   
+                         │  
+                         ▼  
                    input-required ──────► working
-                         
+
 submitted / working / input-required ──► cancelled
 working ────────────────────────────────► failed
 ```

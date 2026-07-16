@@ -226,7 +226,7 @@ The observability layer itself has a token-like cost structure:
 ### The Propagation Formula
 
 ```
-Workflow Total Cost = 
+Workflow Total Cost =
     Planning_cost
   + Σ(Supervisor_calls × Supervisor_call_cost)
   + Σ(Worker_i × Worker_i_cost)

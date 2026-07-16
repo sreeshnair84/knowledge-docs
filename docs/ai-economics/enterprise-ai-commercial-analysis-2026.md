@@ -274,7 +274,7 @@ For workloads exceeding ~10M tokens/day consistently, provisioned throughput (re
 Self-hosted inference eliminates per-token API charges but introduces infrastructure and operational costs:
 
 ```
-Self-Hosted Monthly Cost = 
+Self-Hosted Monthly Cost =
     GPU infrastructure (reserved or on-demand)
     + Inference serving software (vLLM / TGI / TensorRT-LLM — mostly open-source)
     + GPU monitoring and management
