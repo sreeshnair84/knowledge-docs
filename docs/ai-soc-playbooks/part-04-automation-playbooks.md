@@ -12,7 +12,7 @@ tags: ["playbooks", "soar", "incident-response", "automation", "mitre-attack", "
 # Part 04 — AI Automation Playbooks
 
 **Audience:** SOAR Engineers, Incident Responders, Detection Engineers, SOC Managers
-**Related:** [Part 03 — Agentic SOC](part-03-agentic-soc.md) | [Part 05 — SOAR Platforms](part-05-soar-platforms.md)
+**Related:** [Part 03 — Agentic SOC](./part-03-agentic-soc.md) | [Part 05 — SOAR Platforms](./part-05-soar-platforms.md)
 
 > Every playbook in this section follows the complete AI Playbook Standard: Trigger → Inputs → AI Reasoning → Tools → Workflow → Decision Tree → Confidence Scoring → MITRE Mapping → Automation → Approval Gates → Rollback → Evidence → Reporting → KPIs → Failure Scenarios.
 
@@ -1235,4 +1235,4 @@ PyPI/NPM Package Typosquatting:
 
 ---
 
-*Next: [Part 05 — SOAR Platform Comparison →](part-05-soar-platforms)*
+*Next: [Part 05 — SOAR Platform Comparison →](./part-05-soar-platforms.md)*

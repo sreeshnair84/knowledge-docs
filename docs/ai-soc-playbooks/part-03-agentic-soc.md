@@ -12,7 +12,7 @@ tags: ["agentic-soc", "multi-agent", "mcp", "a2a", "agent-orchestration", "agent
 # Part 03 — Agentic SOC Architecture
 
 **Audience:** Security Architect, AI Architect, Platform Engineering, SOAR Engineer
-**Related:** [Part 02 — AI Use Cases](part-02-ai-use-cases.md) | [Part 04 — Playbooks](part-04-automation-playbooks.md) | [Part 07 — AI Safety](part-07-ai-safety.md)
+**Related:** [Part 02 — AI Use Cases](./part-02-ai-use-cases.md) | [Part 04 — Playbooks](./part-04-automation-playbooks.md) | [Part 07 — AI Safety](./part-07-ai-safety.md)
 
 > The Agentic SOC is not a SOAR platform with an LLM bolted on. It is a fundamentally different architecture — a network of specialized AI agents with tools, memory, and the ability to delegate, collaborate, and reason across time. Designing it correctly requires decisions about agent identity, trust, autonomy boundaries, and governance that cannot be retrofitted later.
 
@@ -869,4 +869,4 @@ spec:
 
 ---
 
-*Next: [Part 04 — AI Automation Playbooks →](part-04-automation-playbooks)*
+*Next: [Part 04 — AI Automation Playbooks →](./part-04-automation-playbooks.md)*

@@ -12,7 +12,7 @@ tags: ["ai-safety", "prompt-injection", "hallucination", "model-poisoning", "gua
 # Part 07 — AI Safety & Adversarial Risks in SOC
 
 **Audience:** Security Architect, AI Architect, Red Team, SOC Governance
-**Related:** [Part 06 — AI Models](part-06-ai-models.md) | [Part 10 — Standards Compliance](part-10-standards-compliance.md)
+**Related:** [Part 06 — AI Models](./part-06-ai-models.md) | [Part 10 — Standards Compliance](./part-10-standards-compliance.md)
 
 > The AI SOC introduces a fundamentally new attack surface. Adversaries now target the AI reasoning chain, not just the endpoints and networks being defended. Every capability added to a SOC AI system is also a new vulnerability that must be analyzed and mitigated.
 
@@ -376,4 +376,4 @@ deny {
 
 ---
 
-*Next: [Part 08 — SOC Observability & Evaluation →](part-08-observability)*
+*Next: [Part 08 — SOC Observability & Evaluation →](./part-08-observability.md)*

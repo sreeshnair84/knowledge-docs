@@ -40,20 +40,20 @@ Autonomous Security Operations (2027→)
 
 | Part | Title | Audience |
 |------|-------|----------|
-| [Part 01](part-01-soc-operating-model) | SOC Operating Model & Maturity | SOC Manager, CISO |
-| [Part 02](part-02-ai-use-cases) | AI Use Cases in Security Operations | Detection Engineer, Analyst |
-| [Part 03](part-03-agentic-soc) | Agentic SOC Architecture | Security Architect, AI Architect |
-| [Part 04](part-04-automation-playbooks) | AI Automation Playbooks (25+) | SOAR Engineer, IR Team |
-| [Part 05](part-05-soar-platforms) | SOAR Platform Comparison | Platform Engineer, SOAR Engineer |
-| [Part 06](part-06-ai-models) | AI Models for SOC | AI Architect, Detection Engineer |
-| [Part 07](part-07-ai-safety) | AI Safety & Adversarial Risks | Security Architect, Red Team |
-| [Part 08](part-08-observability) | SOC Observability & Evaluation | Platform Engineer, SRE |
-| [Part 09](part-09-enterprise-architecture) | Enterprise Architecture Integration | EA, TOGAF Architect |
-| [Part 10](part-10-standards-compliance) | Standards & Compliance Mapping | CISO, GRC, Compliance |
-| [Part 11](part-11-implementation-roadmap) | Implementation Roadmap & Reference Architecture | All |
-| [Part 12](part-12-finops) | AI SOC FinOps & ROI | CISO, Finance, Platform |
-| [Part 13](part-13-vendor-landscape) | Vendor Landscape & Decision Matrix | CISO, Procurement |
-| [Part 14](part-14-future-soc) | Future of AI SOC (2026–2030) | CISO, Strategy |
+| [Part 01](./part-01-soc-operating-model.md) | SOC Operating Model & Maturity | SOC Manager, CISO |
+| [Part 02](./part-02-ai-use-cases.md) | AI Use Cases in Security Operations | Detection Engineer, Analyst |
+| [Part 03](./part-03-agentic-soc.md) | Agentic SOC Architecture | Security Architect, AI Architect |
+| [Part 04](./part-04-automation-playbooks.md) | AI Automation Playbooks (25+) | SOAR Engineer, IR Team |
+| [Part 05](./part-05-soar-platforms.md) | SOAR Platform Comparison | Platform Engineer, SOAR Engineer |
+| [Part 06](./part-06-ai-models.md) | AI Models for SOC | AI Architect, Detection Engineer |
+| [Part 07](./part-07-ai-safety.md) | AI Safety & Adversarial Risks | Security Architect, Red Team |
+| [Part 08](./part-08-observability.md) | SOC Observability & Evaluation | Platform Engineer, SRE |
+| [Part 09](./part-09-enterprise-architecture.md) | Enterprise Architecture Integration | EA, TOGAF Architect |
+| [Part 10](./part-10-standards-compliance.md) | Standards & Compliance Mapping | CISO, GRC, Compliance |
+| [Part 11](./part-11-implementation-roadmap.md) | Implementation Roadmap & Reference Architecture | All |
+| [Part 12](./part-12-finops.md) | AI SOC FinOps & ROI | CISO, Finance, Platform |
+| [Part 13](./part-13-vendor-landscape.md) | Vendor Landscape & Decision Matrix | CISO, Procurement |
+| [Part 14](./part-14-future-soc.md) | Future of AI SOC (2026–2030) | CISO, Strategy |
 
 ---
 
@@ -129,4 +129,4 @@ Source: Gartner SOC Survey 2026, Forrester Wave Security Analytics 2026.
 
 ---
 
-*Next: [Part 01 — SOC Operating Model & Maturity →](part-01-soc-operating-model)*
+*Next: [Part 01 — SOC Operating Model & Maturity →](./part-01-soc-operating-model.md)*

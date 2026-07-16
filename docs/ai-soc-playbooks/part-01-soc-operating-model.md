@@ -12,7 +12,7 @@ tags: ["soc", "operating-model", "maturity", "mttd", "mttr", "kpis", "hitl"]
 # Part 01 — SOC Operating Model & Maturity
 
 **Audience:** SOC Manager, CISO, Security Operations Leadership
-**Related:** [Index](index.md) | [Part 02 — AI Use Cases](part-02-ai-use-cases.md) | [Part 11 — Implementation Roadmap](part-11-implementation-roadmap.md)
+**Related:** [Index](./index.md) | [Part 02 — AI Use Cases](./part-02-ai-use-cases.md) | [Part 11 — Implementation Roadmap](./part-11-implementation-roadmap.md)
 
 > The SOC is no longer primarily a monitoring function — it is an intelligence-driven, increasingly autonomous response platform. Designing the operating model correctly before deploying AI is the single most important success factor.
 
@@ -545,4 +545,4 @@ Alert fatigue occurs when analyst alert volume exceeds processing capacity, caus
 
 ---
 
-*Next: [Part 02 — AI Use Cases in Security Operations →](part-02-ai-use-cases)*
+*Next: [Part 02 — AI Use Cases in Security Operations →](./part-02-ai-use-cases.md)*

@@ -12,7 +12,7 @@ tags: ["soar", "microsoft-sentinel", "splunk", "cortex-xsoar", "google-secops", 
 # Part 05 — SOAR Platform Comparison
 
 **Audience:** Platform Engineers, SOAR Engineers, SOC Architects
-**Related:** [Part 04 — Playbooks](part-04-automation-playbooks.md) | [Part 13 — Vendor Landscape](part-13-vendor-landscape.md)
+**Related:** [Part 04 — Playbooks](./part-04-automation-playbooks.md) | [Part 13 — Vendor Landscape](./part-13-vendor-landscape.md)
 
 ---
 
@@ -523,4 +523,4 @@ SELECTION CRITERIA PRIORITY ORDER:
 
 ---
 
-*Next: [Part 06 — AI Models for SOC →](part-06-ai-models)*
+*Next: [Part 06 — AI Models for SOC →](./part-06-ai-models.md)*

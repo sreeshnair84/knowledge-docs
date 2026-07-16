@@ -11,6 +11,7 @@ doc_type: handbook-volume
 series_name: Enterprise Strategy & Business Architecture Handbook
 series_part: 10
 series_total: 10
+series_index: ./index.md
 ---
 
 # Vol 10 — Relationship Maps, Comparisons & Enterprise Glossary

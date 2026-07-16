@@ -12,7 +12,7 @@ tags: ["llm", "gpt", "claude", "gemini", "security-llm", "prompt-engineering", "
 # Part 06 — AI Models for SOC
 
 **Audience:** AI Architects, Detection Engineers, SOAR Engineers
-**Related:** [Part 07 — AI Safety](part-07-ai-safety.md) | [Part 08 — Observability](part-08-observability.md)
+**Related:** [Part 07 — AI Safety](./part-07-ai-safety.md) | [Part 08 — Observability](./part-08-observability.md)
 
 ---
 
@@ -504,4 +504,4 @@ models:
 
 ---
 
-*Next: [Part 07 — AI Safety & Adversarial Risks →](part-07-ai-safety)*
+*Next: [Part 07 — AI Safety & Adversarial Risks →](./part-07-ai-safety.md)*

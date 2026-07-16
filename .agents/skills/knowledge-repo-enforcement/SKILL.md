@@ -39,9 +39,9 @@ anyone's local git config.
 ## What the hook checks (on every commit touching `docs/**/*.md`)
 
 1. **Structure/frontmatter lint** (`lint_page.py`) — every staged markdown
-   file must have complete universal frontmatter and a valid `doc_type`,
-   and must match its declared type's required sections. Blocks the commit
-   if not.
+   file must have complete universal frontmatter and a valid `doc_type`.
+   If fields are missing, it now **automatically adds them with default values**
+   (e.g., `status: current`, `last_reviewed: <today>`) before allowing the commit.
 2. **Near-duplicate check** (`check_against_corpus.py`, ≥85% threshold) —
    only on newly *added* files, not edits to existing ones. Blocks the
    commit if a new page is a near-duplicate of something already in the

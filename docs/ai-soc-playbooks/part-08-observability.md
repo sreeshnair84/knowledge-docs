@@ -12,7 +12,7 @@ tags: ["observability", "opentelemetry", "langfuse", "arize", "evaluation", "dri
 # Part 08 — AI SOC Observability & Evaluation
 
 **Audience:** Platform Engineers, SREs, SOC Data Scientists
-**Related:** [Part 06 — AI Models](part-06-ai-models.md) | [Part 12 — FinOps](part-12-finops.md)
+**Related:** [Part 06 — AI Models](./part-06-ai-models.md) | [Part 12 — FinOps](./part-12-finops.md)
 
 ---
 
@@ -505,4 +505,4 @@ class AIProductionReadinessGate:
 
 ---
 
-*Next: [Part 09 — Enterprise Architecture Integration →](part-09-enterprise-architecture)*
+*Next: [Part 09 — Enterprise Architecture Integration →](./part-09-enterprise-architecture.md)*

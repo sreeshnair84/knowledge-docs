@@ -12,7 +12,7 @@ tags: ["ai-triage", "ueba", "threat-intel", "dfir", "detection-engineering", "ma
 # Part 02 — AI Use Cases in Security Operations
 
 **Audience:** Detection Engineers, SOC Analysts (L2/L3), Threat Hunters, Incident Responders
-**Related:** [Part 01 — Operating Model](part-01-soc-operating-model.md) | [Part 03 — Agentic SOC](part-03-agentic-soc.md) | [Part 04 — Playbooks](part-04-automation-playbooks.md)
+**Related:** [Part 01 — Operating Model](./part-01-soc-operating-model.md) | [Part 03 — Agentic SOC](./part-03-agentic-soc.md) | [Part 04 — Playbooks](./part-04-automation-playbooks.md)
 
 > This part catalogs every meaningful AI use case in a modern SOC with implementation depth. For each use case: the AI technique, the data requirements, the tool integrations, and the measurable business impact.
 
@@ -794,4 +794,4 @@ level: high
 
 ---
 
-*Next: [Part 03 — Agentic SOC Architecture →](part-03-agentic-soc)*
+*Next: [Part 03 — Agentic SOC Architecture →](./part-03-agentic-soc.md)*
