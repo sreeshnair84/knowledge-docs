@@ -3,10 +3,8 @@ title: "Agent Testing, Monitoring & Evaluation"
 date_created: 2026-07-10
 last_reviewed: 2026-07-13
 status: current
-source_type: converted-pdf
+source_type: pdf-converted
 source_file: "Agent_Testing_Monitoring_Evaluation.pdf"
-covers_version: "N/A"
-doc_type: guide
 tags: ["agent-testing", "monitoring", "evaluation", "ci-cd"]
 ---
 

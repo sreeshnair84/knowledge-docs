@@ -1,43 +1,35 @@
 ---
 title: "Agent Testing & Evaluation"
 date_created: 2026-07-09
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-16
 status: current
-supersedes: ""
 source_type: native-md
 source_file: ""
-tags: ["ai-development", "testing"]
-doc_type: guide
-covers_version: \"as of 2026-07-10\"
+tags: ["ai-development", "testing", "evaluation", "benchmark", "llm-as-judge"]
 ---
 
 # Agent Testing & Evaluation
 
-Frameworks, guides, and tools for evaluating AI agent systems — covering evaluation methodology, benchmarking, monitoring, and quality assurance for production agentic AI.
+Frameworks, guides, and tools for evaluating AI agent systems — covering evaluation methodology, benchmarking, monitoring, drift detection, and quality assurance for production agentic AI across all cloud providers.
 
-> **See also:** For regulatory compliance and evaluation in EU banking context, see [EU Banking AI Evaluation Compliance Guide](../../ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md). For knowledge system evaluation and quality gates, see [Evaluation & Quality Gates](../../knowledge-engineering/industry-practices/evaluation.md). For agentic application evaluation, see [Agentic UI Evaluation Framework](../../agentic-ui/evaluation-framework.md).
-
----
-
-## Markdown Guides
-
-- [AI Agent Evaluation Framework](AI_Agent_Evaluation_Framework_Guide.md) — AWS Bedrock AgentCore, Strands, Arize Phoenix
+> **Audience:** AI Platform Engineers, MLOps Teams, Enterprise Architects, AI Risk & Compliance Officers
+> **Coverage:** Evaluation Frameworks · LLM-as-Judge · RAG Metrics · Agentic Benchmarks · Computer-Use Evaluation · Compliance Gates
+> **As of:** July 2026
 
 ---
 
-## PDFs
+## Contents
 
-- [AI Agent Evaluation Framework — Complete](/knowledge-docs/ai-development/testing/AI_Agent_Evaluation_Framework_Complete)
-
-<details>
-<summary>AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix</summary>
-
-→ **[Read the full guide](./AI_Agent_Evaluation_Framework_Guide)**
-
-</details>
+| Document | What It Covers |
+|----------|----------------|
+| [Complete AI Agent Evaluation Framework](./AI_Agent_Evaluation_Framework_Complete.md) | Cloud-agnostic production reference: 45+ metrics, 13 chapters, 9 lifecycle phases, multi-cloud tool mapping, LLM-as-Judge calibration, computer-use evaluation, EU AI Act / GDPR / DORA / NIST AI 600-1 compliance. |
+| [Agent Testing, Monitoring & Evaluation](./Agent_Testing_Monitoring_Evaluation.md) | Test pyramid, CI/CD gate patterns, and production monitoring architecture. |
+| [AI Agent Evaluation Framework Guide](./AI_Agent_Evaluation_Framework_Guide.md) | Original condensed reference — superseded by the Complete Framework above. |
 
 ---
 
-## DOCX Documents
+## Related Sections
 
-- [Agent Testing, Monitoring &amp; Evaluation](/knowledge-docs/ai-development/testing/Agent_Testing_Monitoring_Evaluation)
+- [EU Banking AI Evaluation Compliance Guide](../../ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide.md) — compliance mapping for EU Banking sector and EBA model risk governance
+- [Evaluation & Quality Gates](../../knowledge-engineering/industry-practices/evaluation.md) — knowledge system evaluation and quality gates
+- [Agentic UI Evaluation Framework](../../agentic-ui/evaluation-framework.md) — evaluation for agentic front-end and computer-use applications

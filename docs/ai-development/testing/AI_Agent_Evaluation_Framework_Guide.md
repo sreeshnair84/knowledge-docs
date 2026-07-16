@@ -2,9 +2,8 @@
 title: "AI Agent Evaluation Framework Guide (Original PDF — superseded)"
 date_created: 2026-07-10
 last_reviewed: 2026-07-14
-status: superseded
-supersedes: ""
-source_type: converted-pdf
+status: archived
+source_type: pdf-converted
 source_file: "AI_Agent_Evaluation_Framework_Guide.md.pdf"
 tags: ["ai-development", "software-engineering"]
 ---
