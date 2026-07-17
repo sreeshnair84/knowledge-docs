@@ -58,6 +58,41 @@ function copyDocsAssetsPlugin() {
   };
 }
 
+function buildRelatedMap(graph) {
+  const pageTitle = {};
+  for (const node of graph.nodes) {
+    if (node.type === 'page') pageTitle[node.id] = node.title;
+  }
+  const related = {};
+  for (const { source, target, type, weight } of graph.edges) {
+    if (type !== 'similar_to') continue;
+    if (!pageTitle[source] || !pageTitle[target]) continue;
+    (related[source] = related[source] || []).push({ id: target, title: pageTitle[target], weight });
+    (related[target] = related[target] || []).push({ id: source, title: pageTitle[source], weight });
+  }
+  for (const id of Object.keys(related)) {
+    related[id] = related[id].sort((a, b) => b.weight - a.weight).slice(0, 5);
+  }
+  return related;
+}
+
+function graphRelatedPlugin() {
+  return {
+    name: 'graph-related',
+    async loadContent() {
+      const graphPath = path.join(__dirname, '_meta', 'graph.json');
+      if (!fs.existsSync(graphPath)) return;
+      const graph = JSON.parse(fs.readFileSync(graphPath, 'utf8'));
+      const related = buildRelatedMap(graph);
+      fs.mkdirSync(path.join(__dirname, 'static'), { recursive: true });
+      fs.writeFileSync(
+        path.join(__dirname, 'static', 'graph-related.json'),
+        JSON.stringify(related),
+      );
+    },
+  };
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Knowledge Docs',
@@ -83,6 +118,7 @@ const config = {
 
   plugins: [
     copyDocsAssetsPlugin,
+    graphRelatedPlugin,
     // PWA plugin disabled due to es-abstract/string.prototype.matchall incompatibility
     // TODO: Re-enable when dependencies resolve the issue
     // [

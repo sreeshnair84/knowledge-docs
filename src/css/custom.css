@@ -504,7 +504,75 @@ details > *:not(summary) {
   border-radius: var(--ifm-global-radius) !important;
 }
 
-/* ── 18. Responsive ────────────────────────────────────────── */
+/* ── 18. Related Pages (graph-powered) ────────────────────── */
+.related-pages {
+  margin: 2.5rem 0 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-table-head-background);
+}
+
+.related-pages__heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.75rem;
+}
+
+.related-pages__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.related-pages__list li {
+  margin: 0;
+}
+
+.related-pages__list a {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest) !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--ifm-color-primary-lighter);
+  border-bottom: 1px solid var(--ifm-color-primary-lighter) !important;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.related-pages__list a:hover {
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  border-color: var(--ifm-color-primary) !important;
+}
+
+html[data-theme='dark'] .related-pages {
+  background: var(--ifm-background-surface-color);
+  border-color: #334155;
+}
+
+html[data-theme='dark'] .related-pages__list a {
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--ifm-color-primary-light) !important;
+  border-color: rgba(14, 165, 233, 0.3) !important;
+}
+
+html[data-theme='dark'] .related-pages__list a:hover {
+  background: var(--ifm-color-primary);
+  color: #0f172a !important;
+  border-color: var(--ifm-color-primary) !important;
+}
+
+/* ── 19. Responsive ────────────────────────────────────────── */
 @media (max-width: 996px) {
   :root {
     --ifm-spacing-horizontal: 1rem;
