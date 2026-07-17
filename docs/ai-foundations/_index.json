@@ -5,10 +5,15 @@
   {
    "id": "ai-foundations/AI_Assistant_Architecture_Research_Report",
    "title": "AI Assistant Architecture Research Report",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations",
+    "architecture",
+    "assistant",
+    "research-report"
+   ],
    "word_count": 6555,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -24,10 +29,15 @@
   {
    "id": "ai-foundations/AI_Deep_Future_Outlook_2026_2035",
    "title": "AI Deep Future Outlook (2026\u20132035)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations",
+    "future-outlook",
+    "research-report",
+    "strategy"
+   ],
    "word_count": 7293,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {

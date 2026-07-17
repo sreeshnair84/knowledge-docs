@@ -1351,10 +1351,15 @@
   {
    "id": "enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank",
    "title": "APEX: AI Platform of Platforms \u2014 TOGAF 10 at NexaBank",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "togaf",
+    "enterprise-architecture",
+    "framework",
+    "ai-platform"
+   ],
    "word_count": 6385,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -1697,10 +1702,15 @@
   {
    "id": "enterprise-architecture/specialization/AKES_Addendum_Document_Update_and_Versioning",
    "title": "AKES Addendum: Document Update & Versioning",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "knowledge-systems",
+    "versioning",
+    "standards"
+   ],
    "word_count": 3690,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -1741,10 +1751,15 @@
   {
    "id": "enterprise-architecture/specialization/DPDP_Act_2023_Comprehensive_Guide",
    "title": "DPDP Act 2023 & DPDP Rules 2025 \u2014 Comprehensive Guide",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "compliance",
+    "data-privacy",
+    "india",
+    "governance"
+   ],
    "word_count": 5061,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": []
   },
@@ -1763,10 +1778,15 @@
   {
    "id": "enterprise-architecture/specialization/EAKA_Research_Study",
    "title": "Enterprise Agent Knowledge Architecture (EAKA) Research Study",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "research",
+    "knowledge-architecture",
+    "study"
+   ],
    "word_count": 4682,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -1954,10 +1974,15 @@
   {
    "id": "enterprise-architecture/specialization/modern-data-ai-platform-blueprint-2026",
    "title": "Modern Data & AI Platform Blueprint 2026",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "data-platform",
+    "ai-platform",
+    "architecture",
+    "enterprise"
+   ],
    "word_count": 4785,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {

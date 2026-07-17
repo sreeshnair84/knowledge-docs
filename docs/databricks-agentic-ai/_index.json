@@ -274,8 +274,13 @@
   {
    "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
    "title": "Part 9 \u2014 Competitive Comparison & Industry Reference Architectures",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "databricks",
+    "agentic-ai",
+    "competitive",
+    "reference-architecture"
+   ],
    "word_count": 3553,
    "last_reviewed": "2026-07-16",
    "status": "current",

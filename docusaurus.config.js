@@ -131,6 +131,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
+          numberPrefixParser: false,
           exclude: [
             '**/_meta/**',
             '**/archive/**',

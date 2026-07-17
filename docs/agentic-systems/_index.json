@@ -484,10 +484,15 @@
   {
    "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
    "title": "Agent Skills & Skill Registries \u2014 Complete Playbook 2026",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ai",
+    "agent-skills",
+    "playbook",
+    "coding-tools"
+   ],
    "word_count": 4783,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {

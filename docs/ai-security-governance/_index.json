@@ -5,10 +5,15 @@
   {
    "id": "ai-security-governance/Agentic_AI_Governance_Framework",
    "title": "Agentic AI Governance Framework",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-governance",
+    "agentic-ai",
+    "ai-security",
+    "framework"
+   ],
    "word_count": 4338,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -28,10 +33,15 @@
   {
    "id": "ai-security-governance/Sovereign_Constitutional_AI_RAI_Implementation_Handbook",
    "title": "Sovereign Constitutional AI & RAI - Complete Implementation Handbook",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "sovereign-ai",
+    "constitutional-ai",
+    "rai",
+    "governance"
+   ],
    "word_count": 11811,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -51,10 +61,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part01_DeepMind_AI_Control_Roadmap",
    "title": "Part 1: DeepMind AI Control Roadmap Analysis",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "ai-control",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 2779,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -74,10 +89,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part02_Evolution_Enterprise_AI_Security",
    "title": "Part 2: Evolution of Enterprise AI Security",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "ai-control",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 2159,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -97,10 +117,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling",
    "title": "Part 3: Enterprise Threat Modeling for AI Agents",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "threat-modeling",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 2492,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -120,10 +145,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part04_AI_Control_Architecture",
    "title": "Part 4: AI Control Architecture",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "ai-control",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 1025,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -143,10 +173,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part05_Runtime_AI_Security",
    "title": "Part 5: Runtime AI Security",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "runtime-security",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 926,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -158,10 +193,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part06_Identity_for_AI_Agents",
    "title": "Part 6: Identity for AI Agents",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "identity",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 1027,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -181,10 +221,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part07_AI_Authorization",
    "title": "Part 7: AI Authorization Architecture",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "authorization",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 749,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -204,10 +249,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part08_Memory_Governance",
    "title": "Part 8: Memory Governance",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "memory-governance",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 937,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -227,10 +277,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part09_Tool_Governance",
    "title": "Part 9: Tool Governance",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "tool-governance",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 1139,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -250,20 +305,30 @@
   {
    "id": "ai-security-governance/deep-mind/Part10_Reasoning_Governance",
    "title": "Part 10: Reasoning Governance",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "reasoning-governance",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 739,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": []
   },
   {
    "id": "ai-security-governance/deep-mind/Part11_Multi_Agent_Security",
    "title": "Part 11: Multi-Agent Security",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "multi-agent",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 900,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -283,20 +348,30 @@
   {
    "id": "ai-security-governance/deep-mind/Part12_AI_Observability",
    "title": "Part 12: AI Observability",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "observability",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 793,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": []
   },
   {
    "id": "ai-security-governance/deep-mind/Part13_AI_SOC",
    "title": "Part 13: AI Security Operations Center",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "ai-soc",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 842,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -316,10 +391,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part14_Enterprise_Governance",
    "title": "Part 14: Enterprise Governance",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "governance",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 912,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -339,10 +419,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part15_Cloud_Implementation_Comparison",
    "title": "Part 15: Cloud Implementation Comparison",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "cloud",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 884,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -358,20 +443,30 @@
   {
    "id": "ai-security-governance/deep-mind/Part16_Reference_Architecture",
    "title": "Part 16: Reference Architecture",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "reference-architecture",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 947,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": []
   },
   {
    "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
    "title": "Part 17: Best Practices & Anti-Patterns",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "best-practices",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 4478,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -391,10 +486,15 @@
   {
    "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
    "title": "Part 18: Future Outlook 2026-2035",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "future-outlook",
+    "deepmind",
+    "multi-part-series"
+   ],
    "word_count": 4175,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -457,10 +557,15 @@
   {
    "id": "ai-security-governance/policy/Vol0_Series_Index_and_Overview",
    "title": "Enterprise AI Authorization Series: Series Index & Architecture Overview (Vol 0)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "ai-security",
+    "policy",
+    "multi-part-series"
+   ],
    "word_count": 823,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -480,10 +585,15 @@
   {
    "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
    "title": "Executive Architecture & Authorization Fundamentals (Vol 1)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "ai-security",
+    "policy",
+    "multi-part-series"
+   ],
    "word_count": 2337,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -531,10 +641,15 @@
   {
    "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
    "title": "Identity, Claims & Policy Design (Vol 2)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "identity",
+    "policy",
+    "multi-part-series"
+   ],
    "word_count": 2308,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -554,10 +669,15 @@
   {
    "id": "ai-security-governance/policy/Vol2b_Advanced_Policy_Engineering",
    "title": "Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "policy-engineering",
+    "policy",
+    "multi-part-series"
+   ],
    "word_count": 2563,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -577,10 +697,15 @@
   {
    "id": "ai-security-governance/policy/Vol3_Agent_Tool_MCP_Authorization",
    "title": "Agent, Tool & MCP Authorization (Vol 3)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "mcp",
+    "agent-tools",
+    "multi-part-series"
+   ],
    "word_count": 1879,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -600,10 +725,15 @@
   {
    "id": "ai-security-governance/policy/Vol3b_Agent_Authorization_Deep_Dive",
    "title": "Agent Authorization Deep Dive: Prompt Safety, Contextual Risk & Workflow Patterns (Vol 3b)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "agent-authorization",
+    "policy",
+    "multi-part-series"
+   ],
    "word_count": 1959,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -619,10 +749,15 @@
   {
    "id": "ai-security-governance/policy/Vol4_RAG_Memory_Data_Authorization",
    "title": "RAG, Memory & Data Authorization (Vol 4)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "rag",
+    "data-governance",
+    "multi-part-series"
+   ],
    "word_count": 1575,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -642,10 +777,15 @@
   {
    "id": "ai-security-governance/policy/Vol4b_AWS_Entra_Federation_Patterns",
    "title": "AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "aws",
+    "entra",
+    "multi-part-series"
+   ],
    "word_count": 2403,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -665,10 +805,15 @@
   {
    "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
    "title": "AWS Implementation, Governance & Production Readiness (Vol 5)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "aws",
+    "governance",
+    "multi-part-series"
+   ],
    "word_count": 2697,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
@@ -688,10 +833,15 @@
   {
    "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
    "title": "Compliance, Governance & Final Decision Framework (Vol 5b)",
-   "doc_type": "unknown",
-   "tags": [],
+   "doc_type": "guide",
+   "tags": [
+    "authorization",
+    "compliance",
+    "governance",
+    "multi-part-series"
+   ],
    "word_count": 3214,
-   "last_reviewed": "None",
+   "last_reviewed": "2026-07-17",
    "status": "current",
    "top_similar": [
     {
