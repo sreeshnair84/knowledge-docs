@@ -1,12 +1,14 @@
 ---
 title: "Part 15: Cloud Implementation Comparison"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part15_Cloud_Implementation_Comparison.pdf"
-tags: []
+tags: [ai-security, cloud, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part15_Cloud_Implementation_Comparison.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # Cloud Implementation Comparison
 AWS Bedrock AgentCore, Azure AI Foundry, Google Vertex AI, Framework Comparison (LangGraph, CrewAI, AutoGen), Open-Source Stack
 
-###### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

@@ -1,12 +1,14 @@
 ---
 title: "Part 13: AI Security Operations Center"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part13_AI_SOC.pdf"
-tags: []
+tags: [ai-security, ai-soc, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part13_AI_SOC.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # AI Security Operations Center (AI SOC)
 Agent Detection and Response, AI-Specific SIEM, Threat Hunting, Forensics, Incident Response, and SOC Workflow Integration
 
-##### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

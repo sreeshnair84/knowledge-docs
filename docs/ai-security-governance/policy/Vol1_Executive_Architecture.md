@@ -1,12 +1,14 @@
 ---
 title: "Executive Architecture & Authorization Fundamentals (Vol 1)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol1_Executive_Architecture.pdf"
-tags: []
+tags: [authorization, ai-security, policy, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol1_Executive_Architecture.pdf -->
@@ -24,7 +26,7 @@ This document series presents a comprehensive, implementation-oriented architect
 
 Modern enterprises — particularly those in regulated industries such as banking, healthcare, and government — face an unprecedented challenge: AI agents now act autonomously on behalf of users, invoking tools, querying knowledge stores, accessing databases, and calling enterprise APIs. Each of these actions must be subject to the same rigorous authorization controls as any human user interaction, yet traditional authorization models were never designed for non-human actors operating at machine speed.
 
-#### BEST PRACTICE
+### BEST PRACTICE
 
 Every request made by an agent, tool, workflow, API, MCP server, RAG system, memory system, and downstream application must be policy-evaluated before execution. This is not optional in regulated environments — it is a compliance requirement under PCI DSS, SOC 2, NIST 800-53, and the EU AI Act.
 
@@ -142,7 +144,7 @@ Enterprises have multiple policy engine options. The choice depends on the autho
 |Oso|Polar language|RBAC+ReBAC|Embedded in app, simple syntax, developer-first|Less ecosystem, limited at enterprise scale|Developer-embedded authorization|
 |AuthZed / SpiceDB|Zed language|ReBAC|Zanzibar-compatible, strongly consistent|Relationship model complexity|Zanzibar-style fine-grained permissions|
 
-#### BEST PRACTICE
+### BEST PRACTICE
 
 Enterprise Recommendation: For AWS-hosted Agentic AI with Entra ID, the optimal architecture combines AWS Cedar (Amazon Verified Permissions) for application and agent authorization with OPA/Rego for infrastructure and Kubernetes policy. These are complementary, not competing engines. Volume 2 details the hybrid architecture.
 

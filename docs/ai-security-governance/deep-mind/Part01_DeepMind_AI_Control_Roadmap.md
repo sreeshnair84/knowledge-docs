@@ -1,12 +1,14 @@
 ---
 title: "Part 1: DeepMind AI Control Roadmap Analysis"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part01_DeepMind_AI_Control_Roadmap.pdf"
-tags: []
+tags: [ai-security, ai-control, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part01_DeepMind_AI_Control_Roadmap.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # DeepMind AI Control Roadmap
 Chapter-by-Chapter Analysis: Problem Framing, Threat Models, Enterprise Implications, and Production Readiness Assessment
 
-###### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 
@@ -327,7 +329,7 @@ Not all DeepMind AI Control recommendations are equally mature or immediately de
 
 ## **1.9 Open Research Gaps and Unresolved Challenges**
 
-#### **Gap: Automated corrigibility testing**
+### **Gap: Automated corrigibility testing**
 
 No standardized test suite exists for verifying that shutdown mechanisms work correctly across all model states and operational contexts.
 

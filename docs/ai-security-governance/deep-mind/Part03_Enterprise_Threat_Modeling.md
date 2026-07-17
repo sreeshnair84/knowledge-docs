@@ -1,12 +1,14 @@
 ---
 title: "Part 3: Enterprise Threat Modeling for AI Agents"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part03_Enterprise_Threat_Modeling.pdf"
-tags: []
+tags: [ai-security, threat-modeling, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part03_Enterprise_Threat_Modeling.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # Enterprise Threat Modeling for AI Agents
 Comprehensive Threat Taxonomy, Attack Trees, STRIDE Analysis, MITRE ATLAS Mapping, and Mitigation Strategies
 
-##### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

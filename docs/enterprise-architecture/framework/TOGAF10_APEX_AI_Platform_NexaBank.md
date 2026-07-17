@@ -1,12 +1,14 @@
 ---
 title: "APEX: AI Platform of Platforms — TOGAF 10 at NexaBank"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "TOGAF10_APEX_AI_Platform_NexaBank.pdf"
-tags: []
+tags: [togaf, enterprise-architecture, framework, ai-platform]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from TOGAF10_APEX_AI_Platform_NexaBank.pdf -->
@@ -69,7 +71,7 @@ NexaBank Global | CONFIDENTIAL
 
 Structure of this document
 
-#### 00 Executive Summary
+### 00 Executive Summary
 
 #### 01 AI-DLC: Research Findings & Enterprise Architecture Impacts
 
@@ -365,7 +367,7 @@ Define the why, what, and who — secure executive mandate
 
 Phase A creates the Architecture Vision for APEX: the compelling case for change, stakeholder landscape, architecture scope, high-level target state, and the Statement of Architecture Work (SAW) that gives the programme formal mandate. AI-DLC Mob Elaboration sessions accelerate this phase significantly.
 
-#### Document: Statement of Architecture Work (SAW-APEX-001)
+### Document: Statement of Architecture Work (SAW-APEX-001)
 
 ```
 DOC REF: SAW-APEX-001 | v1.4 | APPROVED — Group CTO sign-off: 2025-02-14
@@ -427,7 +429,7 @@ Map capabilities, value streams, and organisational model
 
 Phase B produces the Business Architecture for APEX — the capability model, value streams, organisation design, and business processes that the platform must support. AI-DLC fundamentally changes how business capabilities are modelled: capabilities that use AI are no longer static — they 'learn and adapt in motion.'
 
-#### Business Capability Map — Gap Summary (BCM-APEX-001)
+### Business Capability Map — Gap Summary (BCM-APEX-001)
 
 ```
 DOC REF: BCM-APEX-001 | v1.5
@@ -484,9 +486,9 @@ Data architecture and application component design
 
 Phase C covers both Data and Application Architecture. For APEX, this is the most technically complex phase: it introduces AI-native data entities (embeddings, vector stores, prompt catalogs, feedback logs) that do not exist in traditional TOGAF data models, and agent-oriented application design patterns that require new architectural conventions.
 
-#### Data Classification Framework (APEX-Specific)
+### Data Classification Framework (APEX-Specific)
 
-##### `DOC REF: DAD-APEX-001 | v1.3`
+#### `DOC REF: DAD-APEX-001 | v1.3`
 
 |**Class**|**Description**|**Examples**|**Bedrock Guardrails Actio**|**nRetention**|
 |---|---|---|---|---|
@@ -568,9 +570,9 @@ Multi-region AWS infrastructure, security, CI/CD, and observability
 
 Phase D specifies the complete technology architecture for APEX on AWS. This covers multi-region infrastructure, AWS Agent Core configuration, network design, security architecture, the CI/CD pipeline enhanced with AI-DLC tooling, and the operational observability model.
 
-#### Multi-Region Deployment Model
+### Multi-Region Deployment Model
 
-##### `DOC REF: TAD-APEX-001 | v2.0`
+#### `DOC REF: TAD-APEX-001 | v2.0`
 
 |**AWS Region**|**Role**|**Data Types**<br>**Key Services**<br>**Regulatory Basis**|
 |---|---|---|
@@ -650,7 +652,7 @@ Roadmap, delivery plan, compliance, and ongoing architecture management
 
 ### Phase E — Architecture Roadmap (ROAD-APEX-001)
 
-##### `DOC REF: ROAD-APEX-001 | v2.1`
+#### `DOC REF: ROAD-APEX-001 | v2.1`
 
 AI-DLC compresses the architecture roadmap significantly. Traditional work packages measured in months are replaced by 'bolts' (hours to days). The following roadmap shows both APEX work packages and their AI-DLC bolt estimates:
 
@@ -724,7 +726,7 @@ AI-DLC fundamentally changes the governance model: where traditional conformance
 
 ### Phase H — Architecture Change Management (ACHG-APEX-001)
 
-##### `DOC REF: ACHG-APEX-001 | v1.2 — AI-DLC Impact: Continuous Change Intelligence`
+#### `DOC REF: ACHG-APEX-001 | v1.2 — AI-DLC Impact: Continuous Change Intelligence`
 
 With AI-DLC and AWS Bedrock model releases occurring frequently (Claude versions, new Bedrock features), Phase H must operate as a continuous intelligence function — not a periodic review. NexaBank implements an AI-powered change monitoring system that watches technology and regulatory landscapes:
 
@@ -753,7 +755,7 @@ Living requirements — the heartbeat of the APEX ADM
 
 Requirements Management is the continuous, central process of the TOGAF ADM wheel. AI-DLC's 'Semantic Context Building' and persistent context storage transform this from a periodic document into a living, AI-maintained traceability system. NexaBank maintains 147 architecture requirements in the ARS; a representative sample is shown below.
 
-#### Architecture Requirements Specification — Sample (ARS-APEX-001)
+### Architecture Requirements Specification — Sample (ARS-APEX-001)
 
 ```
 DOC REF: ARS-APEX-001 | v2.3 | Living Document — 147 total requirements
@@ -786,7 +788,7 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-##### APPENDIX A
+#### APPENDIX A
 
 ## Regulatory Cross-Reference Matrix
 
@@ -814,7 +816,7 @@ EA-APEX-MASTER-001 | v3.0 | April 2026
 
 NexaBank Global | CONFIDENTIAL
 
-##### APPENDIX B
+### APPENDIX B
 
 ## Glossary
 

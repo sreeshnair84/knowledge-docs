@@ -1,12 +1,14 @@
 ---
 title: "Agent, Tool & MCP Authorization (Vol 3)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol3_Agent_Tool_MCP_Authorization.pdf"
-tags: []
+tags: [authorization, mcp, agent-tools, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol3_Agent_Tool_MCP_Authorization.pdf -->
@@ -16,7 +18,7 @@ tags: []
 ## 1. Agent Authorization Lifecycle
 
 # Agent, Tool & MCP Authorization (Vol 3)
-### 1.1 Authorization Decision Points in an Agent Workflow
+## 1.1 Authorization Decision Points in an Agent Workflow
 
 Every agent request passes through up to seven independent Cedar policy evaluation points. A positive decision at any earlier point does **not** grant permission at later points — authorization is re-evaluated at every action boundary (Zero Trust for agents).
 
@@ -225,7 +227,7 @@ principal.delegatedFrom.capabilities.contains("can_approve_payment") && context.
 (context.currentTime - 300) // within 5 minutes };
 ```
 
-##### I **NOTE**
+#### I **NOTE**
 
 Cedar Obligation Pattern: When Cedar returns ALLOW with an obligation 'REQUIRE_HUMAN_APPROVAL', the PEP must NOT execute the action immediately. Instead it must trigger the approval workflow (AWS Step Functions Human Task), await the approval, and re-evaluate the Cedar policy with humanApprovalStatus='APPROVED' in the context. The PEP is responsible for enforcing obligations.
 

@@ -1,12 +1,14 @@
 ---
 title: "Agent Authorization Deep Dive: Prompt Safety, Contextual Risk & Workflow Patterns (Vol 3b)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol3b_Agent_Authorization_Deep_Dive.pdf"
-tags: []
+tags: [authorization, agent-authorization, policy, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol3b_Agent_Authorization_Deep_Dive.pdf -->
@@ -16,7 +18,7 @@ tags: []
 ## 1. Prompt Injection Defense in Authorization
 
 # Agent Authorization Deep Dive: Prompt Safety, Contextual Risk & Workflow Patterns (Vol 3b)
-### Prompt Safety · Contextual Risk Signals · Workflow Patterns · Sub-Agent Trust **1.1 Prompt Injection Attack Patterns**
+## Prompt Safety · Contextual Risk Signals · Workflow Patterns · Sub-Agent Trust **1.1 Prompt Injection Attack Patterns**
 
 |**Attack Type**|**Example Payload**|**Risk** **Level**|**Authorization Defense**|
 |---|---|---|---|

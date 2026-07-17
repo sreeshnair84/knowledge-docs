@@ -1,12 +1,14 @@
 ---
 title: "Part 6: Identity for AI Agents"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part06_Identity_for_AI_Agents.pdf"
-tags: []
+tags: [ai-security, identity, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part06_Identity_for_AI_Agents.pdf -->
@@ -17,7 +19,7 @@ tags: []
 
 Workload Identity, SPIFFE/SPIRE, Ephemeral Credentials, Delegation Chains, Cloud-Native IAM Patterns, and Zero Trust Identity for Autonomous Systems
 
-##### ENTERPRISE AI CONTROL ARCHITECTURE
+## ENTERPRISE AI CONTROL ARCHITECTURE
 
 Implementation Guide for Production AI Systems • 2026
 

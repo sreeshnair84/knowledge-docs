@@ -1,12 +1,14 @@
 ---
 title: "AI Deep Future Outlook (2026–2035)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "AI_Deep_Future_Outlook_2026_2035.pdf"
-tags: []
+tags: [ai-foundations, future-outlook, research-report, strategy]
+doc_type: guide
+covers_version: "2026"
 ---
 # AI Deep Future Outlook (2026–2035)
 

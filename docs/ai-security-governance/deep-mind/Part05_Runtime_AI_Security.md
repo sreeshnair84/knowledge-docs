@@ -1,12 +1,14 @@
 ---
 title: "Part 5: Runtime AI Security"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part05_Runtime_AI_Security.pdf"
-tags: []
+tags: [ai-security, runtime-security, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part05_Runtime_AI_Security.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # Runtime AI Security
 Execution Interception, Behavioral Monitoring, Approval Gates, Circuit Breakers, Incident Recovery, and Kubernetes-Analogous Patterns
 
-##### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

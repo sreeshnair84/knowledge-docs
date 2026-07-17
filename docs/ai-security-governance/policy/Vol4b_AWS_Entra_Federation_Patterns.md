@@ -1,12 +1,14 @@
 ---
 title: "AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol4b_AWS_Entra_Federation_Patterns.pdf"
-tags: []
+tags: [authorization, aws, entra, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol4b_AWS_Entra_Federation_Patterns.pdf -->
@@ -14,7 +16,7 @@ tags: []
 **ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 4b OF Extended**
 
 # AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)
-### 1.1 Entra ID Application Registration
+## 1.1 Entra ID Application Registration
 
 `# Step 1: Entra ID Application Registration # (Configured in Azure Portal or via Microsoft Graph API) Application Registration: Name: "Enterprise AI Authorization Platform" App Type: Web` `Application Sign-in URL: https://api.bank.com/auth/callback API Permissions (Application` `permissions): • Microsoft Graph: User.Read.All • Microsoft Graph: Group.Read.All • Microsoft` `Graph: Directory.Read.All (Required for group GUID resolution in PIP Lambda) Expose an API:` `Scope: api://bank-ai-platform/agent.invoke Scope: api://bank-ai-platform/tool.execute Scope: api://bank-ai-platform/data.read Token Configuration` → `Optional Claims: Access Token: • groups` `(Security groups as GUIDs, or names if < 200 groups) • upn • department • employee_id • country` `• onprem_sid (for hybrid environments with ADFS) ID Token: • email • preferred_username App` `Roles (for coarse-grained application roles): • Finance.Approver • Data.Reader • Agent.User •` `Agent.Admin Conditional Access Policy: Target: This application Conditions: Require MFA for all`
 

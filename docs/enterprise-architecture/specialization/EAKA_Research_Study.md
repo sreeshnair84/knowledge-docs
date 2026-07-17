@@ -1,12 +1,14 @@
 ---
 title: "Enterprise Agent Knowledge Architecture (EAKA) Research Study"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "EAKA_Research_Study.pdf"
-tags: []
+tags: [enterprise-architecture, research, knowledge-architecture, study]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from EAKA_Research_Study.pdf -->
@@ -15,16 +17,16 @@ tags: []
 
 Research Initiative
 
-###### ENTERPRISE  AI  ARCHITECTURE  ·  PRINCIPAL RESEARCH
+### ENTERPRISE  AI  ARCHITECTURE  ·  PRINCIPAL RESEARCH
 
 # Enterprise Agent Knowledge Architecture (EAKA) Research Study
 Autonomous Knowledge Discovery, Skill Composition, Governance & Continuous Evolution for Enterprise AI Agents
 
-###### RESEARCH TYPE
+## RESEARCH TYPE
 
-##### Comprehensive Study
+### Comprehensive Study
 
-###### PERSONAS
+#### PERSONAS
 
 **TARGET SECTORS DATE Banking · Insurance 2026**
 
@@ -154,7 +156,7 @@ Effective agent reasoning requires knowledge to be classified not merely by topi
 
 #### 2.1 Hierarchical Taxonomy
 
-###### Knowledge Taxonomy Hierarchy
+##### Knowledge Taxonomy Hierarchy
 
 |**Business Capability** M|
 |---|
@@ -206,7 +208,7 @@ Traditional RAG approaches retrieve documents in response to a query and pass th
 ![Figure 1](/img/enterprise-architecture/ea-p9-1.png)
 
 
-###### Evaluation & Feedback
+##### Evaluation & Feedback
 
 #### 3.2 KEP vs. Traditional RAG
 
@@ -279,7 +281,7 @@ I Skills must maintain backward compatibility for at least one major version. De
 
 #### 4.3 Skill Governance Workflow
 
-###### Skill Lifecycle — Governance Workflow
+##### Skill Lifecycle — Governance Workflow
 
 ![Figure 2](/img/enterprise-architecture/ea-p12-2.png)
 
@@ -355,7 +357,7 @@ Every knowledge artefact and skill carries a computed Trust Score (0–100) deri
 ![Figure 3](/img/enterprise-architecture/ea-p15-3.png)
 
 
-###### Notify downstream skills of resolution
+##### Notify downstream skills of resolution
 
 #### 6.3 Compliance and Auditability
 
@@ -675,7 +677,7 @@ Enterprise knowledge must not merely be indexed but continuously curated, valida
 
 #### 13.1 Lifecycle Pipeline
 
-###### AI-Assisted Knowledge Lifecycle Pipeline
+##### AI-Assisted Knowledge Lifecycle Pipeline
 
 ![Figure 7](/img/enterprise-architecture/ea-p28-7.png)
 
@@ -768,4 +770,4 @@ The following matrix compares leading enterprise AI platforms against the fourte
 |Reliability Framework|#####|####I|####I|###II|##III|###II|
 |Vendor Neutrality|#####|##III|##III|##III|#####|##III|
 
-##### = Full support ####I = Strong ###II = Partial ##III = Limited #IIII = None
+#### = Full support ####I = Strong ###II = Partial ##III = Limited #IIII = None

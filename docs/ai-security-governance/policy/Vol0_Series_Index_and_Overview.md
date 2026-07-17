@@ -1,12 +1,14 @@
 ---
 title: "Enterprise AI Authorization Series: Series Index & Architecture Overview (Vol 0)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol0_Series_Index_and_Overview.pdf"
-tags: []
+tags: [authorization, ai-security, policy, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol0_Series_Index_and_Overview.pdf -->
@@ -85,6 +87,6 @@ The Enterprise Policy Interceptor Architecture for Agentic AI covers the full au
 |Secrets Management|AWS Secrets Manager|Vol 5|
 |Threat Detection|GuardDuty + Security Hub|Vol 5|
 
-#### BEST PRACTICE
+### BEST PRACTICE
 
 This series represents the state-of-the-art in enterprise Agentic AI authorization as of 2025. The frameworks, patterns, and AWS services described are production-validated by enterprises including Capital One, Netflix, Intuit, and major financial institutions. The hybrid Cedar + OPA architecture with canonical claims normalization is the reference architecture recommended for all regulated AWS-hosted Agentic AI deployments.

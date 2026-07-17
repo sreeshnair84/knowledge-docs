@@ -1,12 +1,14 @@
 ---
 title: "AWS Implementation, Governance & Production Readiness (Vol 5)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol5_AWS_Implementation_Governance.pdf"
-tags: []
+tags: [authorization, aws, governance, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol5_AWS_Implementation_Governance.pdf -->
@@ -46,7 +48,7 @@ tags: []
 **Observability & Compliance Layer:**
 - CloudTrail (all API calls) · CloudWatch (metrics/alarms) · X-Ray (distributed tracing) · Security Hub (compliance) · GuardDuty (threat detection) · Config (resource compliance) · Decision Audit Store (DDB) · Macie (PII detection in S3)
 
-### 1.2 AWS Component Justification Matrix
+## 1.2 AWS Component Justification Matrix
 
 |**AWS Service**|**Role in Architecture**|**Why This Service**|
 |---|---|---|
@@ -123,7 +125,7 @@ tenantId: "tenant-b" } expected: DENY
 
 The following case studies document how industry leaders have implemented externalized authorization, PEP/PDP patterns, and policy-as-code across their organizations:
 
-#### Capital One — Cedar/AVP for Banking Authorization
+### Capital One — Cedar/AVP for Banking Authorization
 
 Capital One was an early adopter of Amazon Verified Permissions and contributed to Cedar's development. Their architecture uses AVP as the central PDP for all customer-facing banking applications. Key design decisions: capability-based policies abstracted from AD groups, per-microservice PEP enforcement using Lambda Authorizers, and CloudTrail as the authoritative audit record for all authorization decisions. They report <3ms P99 authorization latency at production scale.
 
@@ -151,7 +153,7 @@ Intuit manages OPA across hundreds of services using Styra DAS (Declarative Auth
 
 Migrating from embedded authorization code to a centralized policy engine is a multi-phase program. The following roadmap is sequenced to minimize risk while delivering early value:
 
-#### Phase 1: Foundation (Weeks 1–6)
+### Phase 1: Foundation (Weeks 1–6)
 
 Establish the authorization platform foundation: provision AVP policy store, deploy OPA sidecar cluster, implement claims normalization service, establish GitOps policy workflow, configure CloudTrail decision logging. No application changes yet — this phase builds the infrastructure.
 
@@ -217,7 +219,7 @@ Complete migration: 100% policy-engine authorization, all embedded code removed,
 
 The following checklist must be completed before a policy-enforced authorization system is deemed production-ready for regulated enterprise deployment:
 
-#### Identity & Claims
+### Identity & Claims
 
 - JWT signature validation against live JWKS endpoint
 
@@ -343,6 +345,6 @@ The decision framework summarizes when to use Cedar, when to use OPA/Rego, and w
 |Edge/WASM deployment||WASM compilation||
 |Regulatory banking compliance|CloudTrail native audit||OPA for infra compliance|
 
-##### BEST PRACTICE
+### BEST PRACTICE
 
 Final Recommendation: For the described environment (AWS, Entra ID, Agentic AI, banking regulation), deploy Amazon Verified Permissions (Cedar) as the primary authorization engine for all application, agent, tool, RAG, and memory authorization decisions. Deploy OPA/Rego for Kubernetes admission control (EKS), Terraform policy gates, and infrastructure compliance. Use a shared claims normalization service to provide canonical claims to both engines. This hybrid architecture is the most mature, auditable, and operationally sound choice for regulated financial services.

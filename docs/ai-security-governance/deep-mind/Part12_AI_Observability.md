@@ -1,12 +1,14 @@
 ---
 title: "Part 12: AI Observability"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part12_AI_Observability.pdf"
-tags: []
+tags: [ai-security, observability, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part12_AI_Observability.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # AI Observability Architecture
 Reasoning Telemetry, Decision Audit Trails, Context Lineage, Behavioral Analytics, OpenTelemetry for AI, Arize Phoenix, Langfuse, and Trust Scoring
 
-###### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

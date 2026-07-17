@@ -1,12 +1,14 @@
 ---
 title: "Compliance, Governance & Final Decision Framework (Vol 5b)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol5b_Compliance_Governance_Decision_Framework.pdf"
-tags: []
+tags: [authorization, compliance, governance, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol5b_Compliance_Governance_Decision_Framework.pdf -->
@@ -25,7 +27,7 @@ tags: []
 |AC-17|Remote Access|VPN zone check in Cedar context. Restricted tool access from non-corporate networks. MFA re-authentication for remote sessions.|Network zone claim in canonical claims, Cedar network zone policies|
 |AC-23|Data Mining Protection|RAG pre-retrieval filter limits bulk document access. Cedar policy restricts query volume. Bulk export requires explicit capability.|OpenSearch filter logs, Cedar bulk export policies, export audit records|
 
-### 1.2 Audit and Accountability Family (AU)
+## 1.2 Audit and Accountability Family (AU)
 
 |**Contr** **ol ID**|**Control Name**|**Architecture Implementation**|**Evidence Artifact**|
 |---|---|---|---|
@@ -107,7 +109,7 @@ The EU AI Act (effective December 2027 for Annex III high-risk AI systems — de
 
 The following is an exhaustive catalogue of authorization anti-patterns observed in enterprise AI deployments, with specific remediation guidance for each:
 
-#### [CRITICAL] AP-01: Authorization Logic in Business Code
+### [CRITICAL] AP-01: Authorization Logic in Business Code
 
 **Anti-Pattern:** if user.role == 'admin' or user.group in ['Finance_Approvers', 'Payments_Admins']: execute_payment()
 
@@ -249,13 +251,13 @@ The hybrid architecture — Cedar for application/agent authorization, OPA for i
 
 - Development teams have Rego expertise that would be lost by migrating entirely to Cedar
 
-##### BEST PRACTICE
+#### BEST PRACTICE
 
 Final Verdict for the Described Environment: The enterprise described in this research (AWS, Entra ID, EKS+ECS, Bedrock AgentCore, banking regulation, multi-tenant, Agentic AI) should implement the HYBRID architecture: Amazon Verified Permissions (Cedar) for all user, agent, tool, RAG, and memory authorization decisions — paired with OPA/Gatekeeper on EKS for Kubernetes admission control, Conftest for Terraform policy gates, and OPA+Envoy for service mesh L7 policy. The shared claims normalization service provides canonical identity context to both engines. This is not a compromise — it is intentional specialization that delivers the strongest security posture, the clearest compliance evidence, and the most maintainable long-term authorization architecture.
 
 ## 7. Industry Implementation Evidence
 
-#### Capital One + AWS Cedar
+### Capital One + AWS Cedar
 
 Capital One's public re:Invent presentations (2022-2024) describe their use of Amazon Verified Permissions as the authorization backbone for their cloud-native banking platform. They specifically cite the benefit of separating Cedar's formal verification from application code. Their Lambda Authorizer pattern is now documented as an AWS reference architecture. Key metric: <3ms P99 authorization latency across all banking APIs serving millions of customer transactions daily.
 

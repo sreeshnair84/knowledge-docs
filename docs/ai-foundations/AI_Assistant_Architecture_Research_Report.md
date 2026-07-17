@@ -1,12 +1,14 @@
 ---
 title: "AI Assistant Architecture Research Report"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "AI_Assistant_Architecture_Research_Report.pdf"
-tags: []
+tags: [ai-foundations, architecture, assistant, research-report]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from AI_Assistant_Architecture_Research_Report.pdf -->
@@ -26,7 +28,7 @@ Artifact Management . Agent Traceability . Long-Term Memory
 
 **2025-2030**
 
-###### PLATFORMS COVERED:
+### PLATFORMS COVERED:
 
 Claude  ChatGPT  Gemini  Copilot  Perplexity  Cursor  Devin  Manus  Replit  OpenHands
 
@@ -159,7 +161,7 @@ This exhaustive research report provides a production-grade, implementation-leve
 
 Conversational AI Architecture Research
 
-###### PART 1
+##### PART 1
 
 ### Conversation Persistence Architecture
 
@@ -259,7 +261,7 @@ CREATE INDEX idx_messages_content ON messages USING gin(content);
 
 Conversational AI Architecture Research
 
-###### PART 2
+##### PART 2
 
 ### Session Resum tion Architecture** **<u>p</u>
 
@@ -388,7 +390,7 @@ Conversational AI Architecture Research
 
 Conversational AI Architecture Research
 
-###### PART 4
+##### PART 4
 
 ### Partial Conversation Recovery
 
@@ -431,7 +433,7 @@ Conversational AI Architecture Research
 
 Conversational AI Architecture Research
 
-###### PART 5
+##### PART 5
 
 ### Agent Reasoning Trace Visibility
 
@@ -449,7 +451,7 @@ _Determining what users should see—and what should remain hidden—is a first-
 
 #### 5.2 What To Show vs. Hide
 
-###### Yes Show
+##### Yes Show
 
 - Tool names invoked (e.g., 'Searched the web', 'Read file')
 
@@ -516,7 +518,7 @@ Conversational AI Architecture Research
 
 Conversational AI Architecture Research
 
-###### PART 6
+##### PART 6
 
 ### Tool Trace Persistence
 
@@ -567,7 +569,7 @@ CREATE INDEX idx_tool_traces_run  ON tool_traces(agent_run_id);
 |Honeycomb|OTLP|Partial|High-cardinality event analysis, BubbleUp<br>anomaly detection|Complex query debugging|
 |Grafana + Loki|OTLP/Prometheus|Partial|Open source, flexible dashboards, log<br>correlation|Self-hosted infra|
 
-###### PART 7
+##### PART 7
 
 **AI ASSISTANT ARCHITECTURE RESEARCH**
 
@@ -619,7 +621,7 @@ Each memory type has distinct storage requirements. The production architecture 
 
 Conversational AI Architecture Research
 
-###### PART 8
+##### PART 8
 
 ### TTL and Retention Models
 
@@ -659,7 +661,7 @@ Conversational AI Architecture Research
 
 **CRITICAL:** GDPR Right to Erasure: Deleting a user's data requires cascading deletion across all stores: messages, memories, embeddings, artifacts, traces, and any backups within 30 days. Design your schema with this from day one—retrofitting deletion across a denormalized data warehouse is an expensive 6–18 month project.
 
-###### PART 9
+##### PART 9
 
 ### Context Retrieval Systems
 
@@ -707,7 +709,7 @@ Conversational AI Architecture Research
 
 Conversational AI Architecture Research
 
-###### PART 10
+##### PART 10
 
 ### Project-Based AI Systems
 
@@ -759,7 +761,7 @@ _Projects are the most impactful feature for power users—enabling shared conte
 
 Conversational AI Architecture Research
 
-###### PART 11
+##### PART 11
 
 ### Multi-Agent State Persistence
 
@@ -795,7 +797,7 @@ Production multi-agent systems typically implement a manager-worker hierarchy. S
 
 Conversational AI Architecture Research
 
-###### PART 12
+##### PART 12
 
 ### Security & Privacy Architecture
 
@@ -832,7 +834,7 @@ Conversational AI Architecture Research
 
 • **Data residency:** Route storage to region matching user's data residency requirements. EU users -> EU region. Configurable per workspace.
 
-###### PART 13
+##### PART 13
 
 ### Responsible AI & Governance
 
@@ -870,7 +872,7 @@ Conversational AI Architecture Research
 
 Conversational AI Architecture Research
 
-###### PART 14
+##### PART 14
 
 ### Scalability & Production Engineering
 
@@ -925,7 +927,7 @@ Assembling context for a resuming conversation must complete in <200ms to avoid 
 
 Conversational AI Architecture Research
 
-###### PART 15
+##### PART 15
 
 ### Product Comparison Matrix
 
@@ -984,15 +986,15 @@ Conversational AI Architecture Research
 
 Conversational AI Architecture Research
 
-###### PART 16
+##### PART 16
 
 ### Anti-Patterns & Failure Modes
 
 _Real-world production incidents and architectural mistakes, with root causes and remediation patterns._
 
-###### Context Window Dependence
+#### Context Window Dependence
 
-###### Critical
+##### Critical
 
 **Problem:** Building the entire memory system around the context window. When conversation exceeds limit, oldest context silently dropped. Users notice the AI 'forgot' important information from 20 messages ago.
 
@@ -1086,7 +1088,7 @@ _The architectures of 2026–2030 will be memory-native, state-aware, and agent-
 
 **2026**
 
-##### Memory-Native Models
+#### Memory-Native Models
 
 Foundation models trained with explicit memory read/write operations. Memory is a first-class input/output modality—not a bolt-on. Model can write to its own long-term store mid-inference. Early examples: MemGPT architecture productionized. Impact: eliminates need for external memory injection; dramatically simplifies retrieval pipeline.
 

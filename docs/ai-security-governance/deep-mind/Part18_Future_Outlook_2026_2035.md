@@ -1,12 +1,14 @@
 ---
 title: "Part 18: Future Outlook 2026-2035"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part18_Future_Outlook_2026_2035.pdf"
-tags: []
+tags: [ai-security, future-outlook, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part18_Future_Outlook_2026_2035.pdf -->
@@ -17,7 +19,7 @@ tags: []
 
 AI Control Planes · Agent Operating Systems · AI Identity Providers · Autonomous SOCs Cryptographic Agent Identity · Confidential AI · Formal Verification · Agent Economies
 
-###### ENTERPRISE AI CONTROL ARCHITECTURE
+## ENTERPRISE AI CONTROL ARCHITECTURE
 
 Implementation Guide for Production AI Systems • 2026
 

@@ -1,12 +1,14 @@
 ---
 title: "Part 7: AI Authorization Architecture"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part07_AI_Authorization.pdf"
-tags: []
+tags: [ai-security, authorization, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part07_AI_Authorization.pdf -->
@@ -17,7 +19,7 @@ tags: []
 
 RBAC vs ABAC vs PBAC, Policy-as-Code, Dynamic Authorization, Cedar, OPA/Rego, OpenFGA, Risk-Adaptive Access Control for Autonomous Agents
 
-##### ENTERPRISE AI CONTROL ARCHITECTURE
+## ENTERPRISE AI CONTROL ARCHITECTURE
 
 Implementation Guide for Production AI Systems • 2026
 

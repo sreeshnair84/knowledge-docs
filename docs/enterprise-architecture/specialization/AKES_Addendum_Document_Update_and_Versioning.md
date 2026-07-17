@@ -1,12 +1,14 @@
 ---
 title: "AKES Addendum: Document Update & Versioning"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "AKES_Addendum_Document_Update_and_Versioning.pdf"
-tags: []
+tags: [enterprise-architecture, knowledge-systems, versioning, standards]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from AKES_Addendum_Document_Update_and_Versioning.pdf -->

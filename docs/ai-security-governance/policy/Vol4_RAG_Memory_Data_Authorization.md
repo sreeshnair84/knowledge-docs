@@ -1,12 +1,14 @@
 ---
 title: "RAG, Memory & Data Authorization (Vol 4)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol4_RAG_Memory_Data_Authorization.pdf"
-tags: []
+tags: [authorization, rag, data-governance, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol4_RAG_Memory_Data_Authorization.pdf -->
@@ -16,7 +18,7 @@ tags: []
 ## 1. RAG Authorization Architecture
 
 # RAG, Memory & Data Authorization (Vol 4)
-#### ANTI-PATTERN
+## ANTI-PATTERN
 
 Critical Risk: Without RAG authorization, a user in Sales can prompt an agent to retrieve confidential M&A; documents from the knowledge base simply by phrasing their query to match those documents. The vector similarity search has no concept of permissions — authorization must be added as a filter layer on top.
 

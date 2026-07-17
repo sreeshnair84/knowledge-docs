@@ -1,12 +1,14 @@
 ---
 title: "Part 10: Reasoning Governance"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part10_Reasoning_Governance.pdf"
-tags: []
+tags: [ai-security, reasoning-governance, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part10_Reasoning_Governance.pdf -->
@@ -17,7 +19,7 @@ tags: []
 
 Intent Verification, Plan Validation, Goal Consistency, Constitutional Constraints, Reasoning Anomaly Detection, and Privacy-Preserving Oversight
 
-##### ENTERPRISE AI CONTROL ARCHITECTURE
+## ENTERPRISE AI CONTROL ARCHITECTURE
 
 Implementation Guide for Production AI Systems • 2026
 

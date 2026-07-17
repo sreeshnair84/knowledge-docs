@@ -6,7 +6,9 @@ last_reviewed: 2026-07-16
 status: current
 source_type: pdf-converted
 source_file: ""
-tags: []
+tags: [databricks, agentic-ai, competitive, reference-architecture]
+doc_type: guide
+covers_version: "2026"
 ---
 
 # Part 9 — Competitive Comparison & Industry Reference Architectures

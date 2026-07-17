@@ -1,12 +1,14 @@
 ---
 title: "Part 9: Tool Governance"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part09_Tool_Governance.pdf"
-tags: []
+tags: [ai-security, tool-governance, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part09_Tool_Governance.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # Tool Governance for Enterprise AI
 Tool Registry, Supply Chain Security, Runtime Validation, Secrets Management, MCP Governance, Tool Trust Scoring, and Lifecycle Management
 
-##### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

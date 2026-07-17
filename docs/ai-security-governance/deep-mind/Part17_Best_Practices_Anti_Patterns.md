@@ -1,12 +1,14 @@
 ---
 title: "Part 17: Best Practices & Anti-Patterns"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part17_Best_Practices_Anti_Patterns.pdf"
-tags: []
+tags: [ai-security, best-practices, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part17_Best_Practices_Anti_Patterns.pdf -->
@@ -17,7 +19,7 @@ tags: []
 
 Reference Architectures · Design Principles · Implementation Patterns · Operational Playbooks Common Mistakes · Security Anti-Patterns · Scaling Pitfalls · Lessons Learned
 
-###### ENTERPRISE AI CONTROL ARCHITECTURE
+## ENTERPRISE AI CONTROL ARCHITECTURE
 
 Implementation Guide for Production AI Systems • 2026
 
@@ -387,7 +389,7 @@ Managing thousands of agent identities using traditional IAM approaches creates 
 
 Human approval gates are essential for high-risk actions, but poorly calibrated gates create approval fatigue. Approvers faced with hundreds of daily approvals begin rubber-stamping without review, defeating the purpose of human oversight entirely.
 
-##### Calibration guidelines:
+#### Calibration guidelines:
 
 - Target: high-risk human approvals must not exceed 10–15 per approver per day
 

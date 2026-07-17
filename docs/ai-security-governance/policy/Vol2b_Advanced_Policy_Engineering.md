@@ -1,12 +1,14 @@
 ---
 title: "Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol2b_Advanced_Policy_Engineering.pdf"
-tags: []
+tags: [authorization, policy-engineering, policy, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol2b_Advanced_Policy_Engineering.pdf -->
@@ -16,7 +18,7 @@ tags: []
 ## 1. SCIM 2.0 Integration for Claim Enrichment
 
 # Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)
-### 1.1 SCIM Architecture for Enterprise AI
+## 1.1 SCIM Architecture for Enterprise AI
 
 `Microsoft Entra ID` I I `SCIM 2.0 Provisioning (push on change)` I `Endpoint:` `https://api.bank.com/scim/v2` M `SCIM Receiver Lambda` I `Validates SCIM bearer token` I `Transforms SCIM schema` → `Enterprise schema` M `DynamoDB User Attribute Store` I `Partition: userId` I `Contains: department, costCenter, clearanceLevel,` I `geography, legalEntity, manager,` I `projectMemberships, tradingDeskId,` I `regulatoryCaptures, dataAccessScopes` I I `TTL: Not set` `(SCIM manages lifecycle)` I `GSI: by-department, by-geography` M `PIP Lookup Lambda (at` `authorization time)` I `Cache: ElastiCache Redis 300s TTL` I `Enriches canonical claims with SCIM attributes` M `Cedar Authorization Context (enriched)`
 

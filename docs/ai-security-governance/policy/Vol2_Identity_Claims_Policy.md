@@ -1,12 +1,14 @@
 ---
 title: "Identity, Claims & Policy Design (Vol 2)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol2_Identity_Claims_Policy.pdf"
-tags: []
+tags: [authorization, identity, policy, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Vol2_Identity_Claims_Policy.pdf -->
@@ -73,7 +75,7 @@ true, "network_zone": "CORPORATE", "risk_score": 12, "business_hours": true }, "
 
 The most important design decision in claims normalization is to never write Cedar or Rego policies that reference Entra group names or GUIDs directly. Instead, map identity-layer constructs to domain-level capabilities:
 
-##### ANTI-PATTERN
+#### ANTI-PATTERN
 
 Anti-Pattern: permit(principal, action, resource) when principal.groups contains 'Payments_Admins_APAC_GBP'; — This policy breaks whenever the AD group is renamed, restructured, or the user moves region. The policy now encodes identity store implementation details.
 

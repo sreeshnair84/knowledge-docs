@@ -1,12 +1,14 @@
 ---
 title: "Part 4: AI Control Architecture"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part04_AI_Control_Architecture.pdf"
-tags: []
+tags: [ai-security, ai-control, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part04_AI_Control_Architecture.pdf -->
@@ -18,7 +20,7 @@ tags: []
 # Enterprise AI Control Architecture
 Layered Security Architecture, Policy Enforcement, Trust Zones, Governance Planes, and Production-Grade Reference Design
 
-#### **ENTERPRISE AI CONTROL ARCHITECTURE**
+## **ENTERPRISE AI CONTROL ARCHITECTURE**
 
 Implementation Guide for Production AI Systems • 2026
 

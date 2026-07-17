@@ -1,12 +1,14 @@
 ---
 title: "Modern Data & AI Platform Blueprint 2026"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "modern-data-ai-platform-blueprint-2026.pdf"
-tags: []
+tags: [data-platform, ai-platform, architecture, enterprise]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from modern-data-ai-platform-blueprint-2026.pdf -->
@@ -57,17 +59,17 @@ GDPR · CCPA · SOX · HIPAA · PCI
 
 Modern Data & AI Platform Blueprint — 2026 | Page 2 of 21
 
-#### S E C T I O N 1
+## S E C T I O N 1
 
 A greenfield Fortune 500 platform launching in mid-2026 should be built on an **open table format lakehouse** (Apache Iceberg as the primary standard) with clear separation between storage, compute, catalog, and governance layers, layered with AI-native infrastructure — vector search, knowledge graphs, and agent memory — and standardized agent interoperability via the **Model Context Protocol (MCP)** for tool access and the emerging **Agent-to-Agent (A2A)** protocol for multiagent collaboration.
 
 This document compares two architectures end-to-end across ingestion, streaming, storage/lakehouse, catalog, governance, security, lineage, observability, knowledge graph, vector infrastructure, agent memory, MCP, A2A, AI gateway, agent runtime, evaluation, FinOps, and compliance:
 
-###### Architecture 1 — Best-of-Breed (Managed)
+### Architecture 1 — Best-of-Breed (Managed)
 
 A curated mix of leading managed/SaaS platforms (Databricks/Snowflake-class lakehouse, Confluent streaming, Pinecone/Neo4j AI infrastructure, Collibra/Immuta governance) optimized for time-to-value, reduced operational burden, and out-of-box AI/agent capability.
 
-###### Architecture 2 — Open-Source / Self-Managed
+#### Architecture 2 — Open-Source / Self-Managed
 
 A fully open stack (Kafka, Flink, Iceberg, Trino, MinIO/Ceph, Milvus, OpenMetadata, Ranger) optimized for maximum control, lowest direct infrastructure cost at extreme scale, and zero vendor lock-in — at the cost of higher operational complexity and personnel investment.
 
@@ -250,7 +252,7 @@ _Figure 7.2 — Batch (Airbyte → Spark ETL → Iceberg gold tables) and real-t
 
 Modern Data & AI Platform Blueprint — 2026 | Page 11 of 21
 
-#### S E C T I O N 8 · A R C H I T E C T U R E 2
+### S E C T I O N 8 · A R C H I T E C T U R E 2
 
 |**Capability**|**Primary Tool(s)**|**Notes (Native vs. Build Efort)**|**Detail**|
 |---|---|---|---|

@@ -1,12 +1,14 @@
 ---
 title: "DPDP Act 2023 & DPDP Rules 2025 — Comprehensive Guide"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "DPDP_Act_2023_Comprehensive_Guide.pdf"
-tags: []
+tags: [compliance, data-privacy, india, governance]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from DPDP_Act_2023_Comprehensive_Guide.pdf -->
@@ -100,13 +102,13 @@ The DPDP Act 2023 is the culmination of nearly two decades of legislative effort
 
 ## 4. Seven Guiding Principles of the DPDP Act
 
-##### Lawfulness, Fairness & Transparency
+### Lawfulness, Fairness & Transparency
 
 **1**
 
 Data must be processed lawfully, fairly, and with full transparency to the Data Principal about what is collected and why.
 
-##### Purpose Limitation
+#### Purpose Limitation
 
 **2**
 
@@ -480,7 +482,7 @@ II No Cure Period: Unlike some global regimes, the DPDP Act does not provide a g
 
 I Industry Standard: EY, KPMG, and Deloitte all recommend beginning compliance programs immediately. Typical enterprise DPDP programs require 9–12 months. With enforcement in May 2027, organizations starting today have adequate — but not excess — time.
 
-#### Phase 1: Foundation (Months 1–3)
+### Phase 1: Foundation (Months 1–3)
 
 - Conduct a comprehensive DPDP Gap Assessment against Act and Rules requirements
 
@@ -592,7 +594,7 @@ Organizations with existing GDPR compliance have a valuable foundation, but DPDP
 
 A mature DPDP compliance technology stack typically comprises five layers. Organizations should architect these as an integrated platform, not siloed point solutions:
 
-##### Layer 1: Discovery & Inventory
+### Layer 1: Discovery & Inventory
 
 - Automated data discovery tools (BigID, Varonis, Securiti.ai, OneTrust Data Mapping)
 
@@ -602,7 +604,7 @@ A mature DPDP compliance technology stack typically comprises five layers. Organ
 
 - RoPA management platform with automated population from discovery findings
 
-##### Layer 2: Consent & Notice Management
+#### Layer 2: Consent & Notice Management
 
 - Consent Management Platform (OneTrust, TrustArc, CookieYes) for web/app consent
 

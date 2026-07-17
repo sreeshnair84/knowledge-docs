@@ -1,12 +1,14 @@
 ---
 title: "Agent Skills & Skill Registries — Complete Playbook 2026"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Agent_Skills_Complete_Playbook_2026.pdf"
-tags: []
+tags: [agentic-ai, agent-skills, playbook, coding-tools]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Agent_Skills_Complete_Playbook_2026.pdf -->
@@ -24,7 +26,7 @@ AGENT SKILLS: THE COMPLETE PLAYBOOK
 
 RESEARCH BRIEFING · MAY 2026 · CONFIDENTIAL
 
-###### TABLE OF CONTENTS
+## TABLE OF CONTENTS
 
 |**01**|Fundamentals — What Are Agent Skills?|
 |---|---|
@@ -443,7 +445,7 @@ As of 2026, AI agents with skills have achieved 40% integration rate in enterpri
 
 Skills can trigger post-CI to generate documentation, run security audits, update wikis, or notify downstream systems. The pattern works across GitHub Actions, GitLab CI, Jenkins, and Azure
 
-##### Pipelines.
+#### Pipelines.
 
 ```
 # .github/workflows/post-ci-skills.yml
@@ -548,7 +550,7 @@ The failure mode in most agent programs is measuring the wrong thing — trackin
 
 A healthy skill program involves multiple personas with distinct needs, incentives, and friction points. Design your registry UX and governance model around all of them — not just the engineers who build skills.
 
-###### II **Skill Author**
+### II **Skill Author**
 
 Engineer / Domain Expert
 
@@ -566,9 +568,9 @@ II **Platform Engineer** AI Platform / MLOps
 
 **Needs:** Full trace logging, cost-per-skill dashboards, dependency graphs, canary controls.
 
-###### I **Security Engineer**
+#### I **Security Engineer**
 
-###### I **Process Owner**
+##### I **Process Owner**
 
 AppSec / AI Red Team
 
@@ -675,7 +677,7 @@ Skills are hybrid artifacts. You need traditional code analysis for executable c
 
 ## What's Next for Agent Skills
 
-#### Cross-Model Skill Portability
+### Cross-Model Skill Portability
 
 The AAIF standard means a skill designed for Claude runs on Copilot, Codex, or Gemini without modification. The 'Agentic Web' is the next inflection — value lives in portable skills, not locked-in models.
 
@@ -699,7 +701,7 @@ Uber's CTO envisions AI systems that handle coding, testing, and deployment supe
 
 GDPR, SOX, and sector-specific regulations will require skills to carry compliance metadata. Audit trails per invocation will become regulatory baseline, not best practice. Skills will need jurisdiction-aware routing.
 
-###### STRATEGIC IMPERATIVE
+##### STRATEGIC IMPERATIVE
 
 The competitive advantage in 2026 comes from **infrastructure, not intelligence** . The model is increasingly a commodity. The skill registry, harness, evaluation pipeline, and governance framework — built and iterated over months — create structural moats that a model upgrade alone cannot overcome. The organizations investing in skill infrastructure today will be the ones setting the benchmark numbers that others cite next year.
 

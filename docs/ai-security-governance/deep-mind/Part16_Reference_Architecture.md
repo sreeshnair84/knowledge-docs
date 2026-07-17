@@ -1,12 +1,14 @@
 ---
 title: "Part 16: Reference Architecture"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Part16_Reference_Architecture.pdf"
-tags: []
+tags: [ai-security, reference-architecture, deepmind, multi-part-series]
+doc_type: guide
+covers_version: "2026"
 ---
 
 <!-- converted from Part16_Reference_Architecture.pdf -->
@@ -17,7 +19,7 @@ tags: []
 
 Production-Grade Architectures for Single-Agent, Multi-Agent, Finance, HR, Coding, DevOps, Customer Support, Regulated, and Air-Gapped Environments
 
-##### ENTERPRISE AI CONTROL ARCHITECTURE
+## ENTERPRISE AI CONTROL ARCHITECTURE
 
 Implementation Guide for Production AI Systems • 2026
 
@@ -25,7 +27,7 @@ Implementation Guide for Production AI Systems • 2026
 
 The following reference architectures address the most common enterprise AI agent deployment patterns. Each architecture is designed to be production-deployable, not just conceptual. Selection criteria for each pattern are provided to help architects choose the appropriate baseline for their use case.
 
-#### Pattern 1: Single-Agent Internal Assistant
+### Pattern 1: Single-Agent Internal Assistant
 
 **Selection Criteria:** < 5 integrated systems; single business unit; < 500 users; low-medium data sensitivity
 
