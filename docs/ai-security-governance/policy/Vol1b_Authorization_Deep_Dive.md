@@ -1,17 +1,24 @@
 ---
 title: "Enterprise Authorization Deep Dive: Engines, Interceptor Patterns & XACML (Vol 1b)"
 date_created: 2026-07-11
-last_reviewed:
+last_reviewed: 2026-07-17
 status: current
 supersedes: ""
 source_type: converted-pdf
 source_file: "Vol1b_Authorization_Deep_Dive.pdf"
-tags: []
+tags: [authorization, ai-security, policy, access-control]
+doc_type: multi-part-series
+series_name: "Enterprise AI Authorization Series"
+series_part: "1b"
+series_total: "5"
+series_index: "ai-security-governance/policy/Vol0_Series_Index_and_Overview"
 ---
 
 <!-- converted from Vol1b_Authorization_Deep_Dive.pdf -->
 
-**ENTERPRISE AI AUTHORIZATION SERIES  ·  VOLUME 1b OF Extended**
+# Enterprise Authorization Deep Dive: Engines, Interceptor Patterns & XACML (Vol 1b)
+
+*Enterprise AI Authorization Series · Volume 1b*
 
 ## 1. XACML — The Standard That Defined Enterprise Authorization
 

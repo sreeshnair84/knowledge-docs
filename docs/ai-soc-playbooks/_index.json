@@ -20,11 +20,11 @@
    "top_similar": [
     {
      "id": "ai-soc-playbooks/part-10-standards-compliance",
-     "score": 0.43
+     "score": 0.44
     },
     {
      "id": "ai-soc-playbooks/part-14-future-soc",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "ai-soc-playbooks/part-01-soc-operating-model",
@@ -99,7 +99,7 @@
    "top_similar": [
     {
      "id": "ai-security-governance/deep-mind/Part13_AI_SOC",
-     "score": 0.3
+     "score": 0.31
     }
    ]
   },
@@ -183,7 +183,7 @@
     },
     {
      "id": "cybersec-architect/04-ai-security",
-     "score": 0.32
+     "score": 0.31
     },
     {
      "id": "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling",
@@ -226,11 +226,15 @@
    "top_similar": [
     {
      "id": "ai-soc-playbooks/index",
-     "score": 0.33
+     "score": 0.34
     },
     {
      "id": "ai-soc-playbooks/part-14-future-soc",
-     "score": 0.31
+     "score": 0.32
+    },
+    {
+     "id": "databricks-agentic-ai/part-12-finops",
+     "score": 0.3
     }
    ]
   },
@@ -256,7 +260,7 @@
     },
     {
      "id": "ai-soc-playbooks/index",
-     "score": 0.43
+     "score": 0.44
     },
     {
      "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
@@ -303,7 +307,7 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
-     "score": 0.35
+     "score": 0.36
     }
    ]
   },
@@ -327,6 +331,10 @@
    "top_similar": [
     {
      "id": "cybersec-architect/09-security-operations",
+     "score": 0.31
+    },
+    {
+     "id": "ai-soc-playbooks/index",
      "score": 0.3
     }
    ]
@@ -348,16 +356,16 @@
    "status": "current",
    "top_similar": [
     {
+     "id": "ai-security-governance/security/08-Future-AI-SOC-2026-2030",
+     "score": 0.47
+    },
+    {
      "id": "ai-soc-playbooks/index",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "ai-soc-playbooks/part-10-standards-compliance",
-     "score": 0.35
-    },
-    {
-     "id": "databricks-agentic-ai/part-12-finops",
-     "score": 0.33
+     "score": 0.36
     }
    ]
   }

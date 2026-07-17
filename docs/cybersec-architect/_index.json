@@ -19,7 +19,7 @@
     },
     {
      "id": "cybersec-architect/03-security-domains",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "cybersec-architect/12-ea-deliverables",
@@ -40,7 +40,7 @@
    "top_similar": [
     {
      "id": "cybersec-architect/index",
-     "score": 0.35
+     "score": 0.36
     },
     {
      "id": "cybersec-architect/01-evolution",
@@ -69,7 +69,7 @@
     },
     {
      "id": "cybersec-architect/01-evolution",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "cybersec-architect/12-ea-deliverables",
@@ -90,7 +90,7 @@
    "top_similar": [
     {
      "id": "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling",
-     "score": 0.46
+     "score": 0.45
     },
     {
      "id": "nist-ai-standards/part-01-nist-ai-100-2-adversarial-ml",
@@ -115,7 +115,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
-     "score": 0.44
+     "score": 0.43
     },
     {
      "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
@@ -139,11 +139,11 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "ai-protocols/auth/auth_identity_flows",
+     "id": "ai-security-governance/deep-mind/Part06_Identity_for_AI_Agents",
      "score": 0.37
     },
     {
-     "id": "ai-security-governance/deep-mind/Part06_Identity_for_AI_Agents",
+     "id": "ai-protocols/auth/auth_identity_flows",
      "score": 0.37
     },
     {
@@ -164,16 +164,16 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "cybersec-architect/03-security-domains",
-     "score": 0.39
-    },
-    {
      "id": "ai-security-governance/deep-mind/Part15_Cloud_Implementation_Comparison",
      "score": 0.39
     },
     {
+     "id": "cybersec-architect/03-security-domains",
+     "score": 0.39
+    },
+    {
      "id": "cybersec-architect/01-evolution",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -215,15 +215,15 @@
    "top_similar": [
     {
      "id": "ai-soc-playbooks/index",
-     "score": 0.34
+     "score": 0.35
     },
     {
      "id": "ai-soc-playbooks/part-10-standards-compliance",
-     "score": 0.33
+     "score": 0.34
     },
     {
      "id": "ai-security-governance/deep-mind/Part13_AI_SOC",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -269,7 +269,7 @@
     },
     {
      "id": "cybersec-architect/index",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
@@ -293,11 +293,11 @@
      "score": 0.35
     },
     {
-     "id": "cybersec-architect/02-enterprise-security-architecture",
+     "id": "cybersec-architect/index",
      "score": 0.33
     },
     {
-     "id": "cybersec-architect/index",
+     "id": "cybersec-architect/02-enterprise-security-architecture",
      "score": 0.33
     }
    ]
@@ -335,11 +335,11 @@
      "score": 0.46
     },
     {
-     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "id": "enterprise-strategy/vol9-industry-deep-dives",
      "score": 0.45
     },
     {
-     "id": "enterprise-strategy/vol9-industry-deep-dives",
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
      "score": 0.45
     }
    ]
@@ -382,15 +382,15 @@
    "top_similar": [
     {
      "id": "cybersec-architect/11-ai-investment",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "cybersec-architect/02-enterprise-security-architecture",
-     "score": 0.35
+     "score": 0.36
     },
     {
-     "id": "ai-security-governance/index",
-     "score": 0.34
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.33
     }
    ]
   },

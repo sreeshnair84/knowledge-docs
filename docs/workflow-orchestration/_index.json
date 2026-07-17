@@ -44,11 +44,11 @@
     },
     {
      "id": "workflow-orchestration/04-temporal-deep-dive",
-     "score": 0.43
+     "score": 0.42
     },
     {
      "id": "workflow-orchestration/05-camunda-deep-dive",
-     "score": 0.42
+     "score": 0.41
     }
    ]
   },
@@ -93,11 +93,11 @@
      "score": 0.43
     },
     {
-     "id": "workflow-orchestration/02-evolution-timeline",
-     "score": 0.43
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.42
     },
     {
-     "id": "workflow-orchestration/01-executive-summary",
+     "id": "workflow-orchestration/02-evolution-timeline",
      "score": 0.42
     }
    ]
@@ -115,7 +115,7 @@
    "top_similar": [
     {
      "id": "workflow-orchestration/02-evolution-timeline",
-     "score": 0.42
+     "score": 0.41
     },
     {
      "id": "workflow-orchestration/01-executive-summary",
@@ -123,7 +123,7 @@
     },
     {
      "id": "workflow-orchestration/19-reference-architectures",
-     "score": 0.36
+     "score": 0.37
     }
    ]
   },
@@ -171,11 +171,11 @@
      "score": 0.38
     },
     {
-     "id": "coding-tools/claude/claude-code-complete-2026",
+     "id": "workflow-orchestration/02-evolution-timeline",
      "score": 0.35
     },
     {
-     "id": "workflow-orchestration/02-evolution-timeline",
+     "id": "coding-tools/claude/claude-code-complete-2026",
      "score": 0.35
     }
    ]
@@ -424,7 +424,7 @@
     },
     {
      "id": "workflow-orchestration/05-camunda-deep-dive",
-     "score": 0.36
+     "score": 0.37
     }
    ]
   },
@@ -441,7 +441,7 @@
    "top_similar": [
     {
      "id": "workflow-orchestration/02-evolution-timeline",
-     "score": 0.32
+     "score": 0.31
     },
     {
      "id": "workflow-orchestration/01-executive-summary",

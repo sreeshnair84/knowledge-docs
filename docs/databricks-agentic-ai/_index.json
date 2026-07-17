@@ -28,7 +28,7 @@
     },
     {
      "id": "databricks-agentic-ai/part-05-lakehouse-data-infrastructure",
-     "score": 0.51
+     "score": 0.52
     }
    ]
   },
@@ -80,7 +80,7 @@
    "top_similar": [
     {
      "id": "databricks-agentic-ai/part-04-unity-catalog-governance",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "databricks-agentic-ai/index",
@@ -144,7 +144,7 @@
     },
     {
      "id": "databricks-agentic-ai/part-02-agent-lake-architecture",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "databricks-agentic-ai/part-07-security-architecture",
@@ -170,7 +170,7 @@
    "top_similar": [
     {
      "id": "databricks-agentic-ai/index",
-     "score": 0.51
+     "score": 0.52
     },
     {
      "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
@@ -235,7 +235,7 @@
     },
     {
      "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
-     "score": 0.35
+     "score": 0.36
     }
    ]
   },
@@ -266,7 +266,7 @@
      "score": 0.38
     },
     {
-     "id": "databricks-agentic-ai/part-03-mosaic-ai-mlflow",
+     "id": "databricks-agentic-ai/part-01-platform-vision-agentic-services",
      "score": 0.38
     }
    ]
@@ -316,7 +316,7 @@
     },
     {
      "id": "ai-soc-playbooks/part-14-future-soc",
-     "score": 0.33
+     "score": 0.34
     },
     {
      "id": "ai-soc-playbooks/part-10-standards-compliance",

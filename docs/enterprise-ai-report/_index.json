@@ -58,7 +58,7 @@
     },
     {
      "id": "enterprise-ai-report/part-08-organizational-roles",
-     "score": 0.4
+     "score": 0.41
     }
    ]
   },
@@ -80,7 +80,7 @@
    "top_similar": [
     {
      "id": "enterprise-strategy/vol6-organization-structure-operating-model",
-     "score": 0.56
+     "score": 0.57
     },
     {
      "id": "ea-masterclass/module-05-ai-investment-strategy/index",
@@ -88,7 +88,7 @@
     },
     {
      "id": "enterprise-ai-report/part-18-case-studies",
-     "score": 0.4
+     "score": 0.41
     }
    ]
   },
@@ -210,11 +210,11 @@
     },
     {
      "id": "enterprise-ai-report/part-02-operating-models",
-     "score": 0.31
+     "score": 0.32
     },
     {
      "id": "enterprise-ai-report/part-10-service-catalog",
-     "score": 0.3
+     "score": 0.31
     }
    ]
   },
@@ -237,15 +237,15 @@
    "top_similar": [
     {
      "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
-     "score": 0.41
+     "score": 0.42
     },
     {
      "id": "ea-masterclass/module-05-ai-investment-strategy/index",
-     "score": 0.4
+     "score": 0.41
     },
     {
      "id": "cybersec-architect/08-ai-governance",
-     "score": 0.4
+     "score": 0.41
     }
    ]
   },
@@ -267,7 +267,7 @@
    "top_similar": [
     {
      "id": "enterprise-ai-report/part-08-organizational-roles",
-     "score": 0.34
+     "score": 0.35
     },
     {
      "id": "agentic-ui/governance",
@@ -306,7 +306,7 @@
     },
     {
      "id": "enterprise-ai-report/part-07-platform-operating-model",
-     "score": 0.3
+     "score": 0.31
     }
    ]
   },
@@ -439,7 +439,7 @@
    "top_similar": [
     {
      "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
-     "score": 0.44
+     "score": 0.45
     },
     {
      "id": "interview-prep/Enterprise_Architect_in_the_Age_of_AI",
@@ -477,7 +477,7 @@
      "score": 0.36
     },
     {
-     "id": "enterprise-architecture/ai-architecture/ai-finops-unit-economics-kpis",
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
      "score": 0.33
     }
    ]
@@ -508,7 +508,7 @@
     },
     {
      "id": "enterprise-ai-report/part-02-operating-models",
-     "score": 0.38
+     "score": 0.39
     }
    ]
   },
@@ -534,11 +534,11 @@
    "top_similar": [
     {
      "id": "enterprise-strategy/vol6-organization-structure-operating-model",
-     "score": 0.41
+     "score": 0.42
     },
     {
      "id": "enterprise-ai-report/part-02-operating-models",
-     "score": 0.4
+     "score": 0.41
     },
     {
      "id": "enterprise-ai-report/index",
@@ -616,7 +616,7 @@
     },
     {
      "id": "ai-security-governance/Agentic_AI_Governance_Framework",
-     "score": 0.31
+     "score": 0.3
     }
    ]
   }

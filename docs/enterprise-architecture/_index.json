@@ -28,7 +28,7 @@
      "score": 0.47
     },
     {
-     "id": "enterprise-architecture/ai-architecture/ai-finops-unit-economics-kpis",
+     "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
      "score": 0.45
     }
    ]
@@ -123,14 +123,14 @@
    "top_similar": [
     {
      "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
-     "score": 0.52
+     "score": 0.53
     },
     {
      "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
-     "score": 0.46
+     "score": 0.47
     },
     {
-     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+     "id": "agentic-systems/skill/a2a_deep_research",
      "score": 0.43
     }
    ]
@@ -205,15 +205,15 @@
    "top_similar": [
     {
      "id": "ai-protocols/a2a/index",
-     "score": 0.5
+     "score": 0.49
     },
     {
      "id": "ai-protocols/index",
-     "score": 0.45
+     "score": 0.44
     },
     {
-     "id": "ai-protocols/standards/index",
-     "score": 0.4
+     "id": "agentic-systems/skill/a2a_deep_research",
+     "score": 0.41
     }
    ]
   },
@@ -261,7 +261,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance",
-     "score": 0.37
+     "score": 0.38
     },
     {
      "id": "agentic-ui/reliability-engineering",
@@ -290,8 +290,8 @@
      "score": 0.38
     },
     {
-     "id": "enterprise-architecture/ai-architecture/agent-reliability-engineering",
-     "score": 0.37
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-guardrails",
+     "score": 0.38
     }
    ]
   },
@@ -313,10 +313,10 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance",
-     "score": 0.37
+     "score": 0.38
     },
     {
-     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
      "score": 0.37
     }
    ]
@@ -339,7 +339,7 @@
     },
     {
      "id": "cybersec-architect/05-agentic-ai-security",
-     "score": 0.44
+     "score": 0.43
     },
     {
      "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
@@ -366,7 +366,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
-     "score": 0.48
+     "score": 0.49
     },
     {
      "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
@@ -374,7 +374,7 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
-     "score": 0.42
+     "score": 0.43
     }
    ]
   },
@@ -403,7 +403,7 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
-     "score": 0.33
+     "score": 0.34
     },
     {
      "id": "ea-masterclass/module-08-financial-literacy/index",
@@ -435,11 +435,11 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
-     "score": 0.43
+     "score": 0.44
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-budget-governance",
-     "score": 0.42
+     "score": 0.43
     }
    ]
   },
@@ -464,7 +464,7 @@
    "top_similar": [
     {
      "id": "cloud-platforms/kubernetes/K8s_Handbook_Part11_AI_Infrastructure",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -491,11 +491,11 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-budget-governance",
-     "score": 0.48
+     "score": 0.49
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
-     "score": 0.43
+     "score": 0.44
     }
    ]
   },
@@ -668,7 +668,7 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/agent-communication-identity-gateway",
-     "score": 0.37
+     "score": 0.36
     },
     {
      "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
@@ -781,7 +781,7 @@
     },
     {
      "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
-     "score": 0.49
+     "score": 0.5
     }
    ]
   },
@@ -806,7 +806,7 @@
      "score": 0.5
     },
     {
-     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
      "score": 0.45
     }
    ]
@@ -966,12 +966,12 @@
      "score": 0.47
     },
     {
-     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
-     "score": 0.39
+     "id": "agentic-systems/skill/a2a_deep_research",
+     "score": 0.41
     },
     {
-     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
-     "score": 0.38
+     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+     "score": 0.39
     }
    ]
   },
@@ -1086,11 +1086,11 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
+     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
      "score": 0.36
     },
     {
-     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+     "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
      "score": 0.36
     },
     {
@@ -1112,7 +1112,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/architectural-review-board/Volume7_AI_Native_ARB_Case_Studies",
-     "score": 0.34
+     "score": 0.35
     }
    ]
   },
@@ -1154,7 +1154,7 @@
     },
     {
      "id": "enterprise-architecture/architectural-review-board/Volume5_Review_Questions_Scorecards",
-     "score": 0.34
+     "score": 0.35
     }
    ]
   },
@@ -1214,7 +1214,7 @@
     },
     {
      "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
-     "score": 0.3
+     "score": 0.31
     }
    ]
   },
@@ -1260,7 +1260,7 @@
     },
     {
      "id": "interview-prep/ea/EA_Interview_Vol3_CTO_AI",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
@@ -1363,7 +1363,7 @@
     },
     {
      "id": "enterprise-architecture/framework/index",
-     "score": 0.34
+     "score": 0.33
     },
     {
      "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
@@ -1385,11 +1385,11 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank",
-     "score": 0.34
+     "score": 0.33
     },
     {
      "id": "enterprise-architecture/index",
-     "score": 0.33
+     "score": 0.32
     }
    ]
   },
@@ -1406,7 +1406,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/framework/index",
-     "score": 0.33
+     "score": 0.32
     }
    ]
   },
@@ -1634,7 +1634,7 @@
     },
     {
      "id": "ea-masterclass/module-01-ea-foundations/index",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -1652,7 +1652,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/specialization/index",
-     "score": 0.34
+     "score": 0.33
     }
    ]
   },
@@ -1667,12 +1667,7 @@
    "word_count": 6788,
    "last_reviewed": "2026-07-10",
    "status": "current",
-   "top_similar": [
-    {
-     "id": "ai-economics/AI_Cost_Implementation_Guide_2026",
-     "score": 0.31
-    }
-   ]
+   "top_similar": []
   },
   {
    "id": "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
@@ -1691,7 +1686,7 @@
     },
     {
      "id": "ea-masterclass/module-12-ai-consulting/index",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
@@ -1776,7 +1771,7 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
-     "score": 0.49
+     "score": 0.48
     },
     {
      "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
@@ -1801,7 +1796,7 @@
    "top_similar": [
     {
      "id": "interview-prep/EA_Soft_Skills_and_Behaviors",
-     "score": 0.41
+     "score": 0.4
     },
     {
      "id": "ea-masterclass/module-11-executive-communication/index",
@@ -1830,7 +1825,7 @@
     },
     {
      "id": "enterprise-architecture/process/EA_Mastery_Guide",
-     "score": 0.31
+     "score": 0.3
     },
     {
      "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
@@ -1880,7 +1875,7 @@
     },
     {
      "id": "ea-masterclass/module-05-ai-investment-strategy/index",
-     "score": 0.39
+     "score": 0.4
     },
     {
      "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
@@ -1890,7 +1885,7 @@
   },
   {
    "id": "enterprise-architecture/specialization/Principal_Enterprise_AI_Guide_Educative",
-   "title": "<mark>Principal &</mark> Enterprise AI Architect",
+   "title": "Principal Enterprise AI Architect",
    "doc_type": "guide",
    "tags": [
     "enterprise-architecture"
@@ -1908,7 +1903,7 @@
      "score": 0.41
     },
     {
-     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
      "score": 0.39
     }
    ]
@@ -1952,7 +1947,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/process/index",
-     "score": 0.34
+     "score": 0.33
     }
    ]
   },
@@ -1974,7 +1969,7 @@
      "score": 0.41
     },
     {
-     "id": "databricks-agentic-ai/part-06-iceberg-open-formats",
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
      "score": 0.39
     }
    ]
@@ -2022,6 +2017,10 @@
     {
      "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
      "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.3
     }
    ]
   },
@@ -2071,7 +2070,7 @@
     },
     {
      "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
-     "score": 0.39
+     "score": 0.38
     }
    ]
   },
@@ -2105,11 +2104,11 @@
     },
     {
      "id": "enterprise-architecture/transformation/06_Roadmap_Financials_KPIs_and_Risk",
-     "score": 0.37
+     "score": 0.38
     },
     {
      "id": "enterprise-architecture/transformation/01_Current_State_Assessment_and_AI_Maturity",
-     "score": 0.37
+     "score": 0.38
     }
    ]
   },
@@ -2126,7 +2125,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
-     "score": 0.37
+     "score": 0.38
     }
    ]
   },
@@ -2209,7 +2208,7 @@
     },
     {
      "id": "enterprise-strategy/vol6-organization-structure-operating-model",
-     "score": 0.34
+     "score": 0.35
     }
    ]
   },
@@ -2226,11 +2225,11 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
-     "score": 0.37
+     "score": 0.38
     },
     {
      "id": "enterprise-architecture/transformation/05_Target_Operating_Model_and_Change",
-     "score": 0.33
+     "score": 0.34
     }
    ]
   },

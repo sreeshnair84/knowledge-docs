@@ -12,6 +12,8 @@ industry: government
 protagonist_role: "Enterprise Architecture Lead"
 core_tension: "Legacy government systems blocking citizen service modernization"
 ---
+# Case Study: National Tax Authority — AI Risk-Based Audit Intelligence
+
 ## Cast of Characters
 
 *(Refer to the organisation background and key stakeholders described in this case study.)*

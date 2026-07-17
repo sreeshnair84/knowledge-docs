@@ -90,7 +90,7 @@
     },
     {
      "id": "agentic-ui/responsible-ai",
-     "score": 0.34
+     "score": 0.35
     }
    ]
   },
@@ -161,7 +161,7 @@
     },
     {
      "id": "enterprise-architecture/specialization/EA_Business_Communication_Executive_Skills",
-     "score": 0.41
+     "score": 0.4
     },
     {
      "id": "enterprise-architecture/process/EA_Mastery_Guide",
@@ -267,7 +267,7 @@
      "score": 0.38
     },
     {
-     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
      "score": 0.37
     }
    ]
@@ -303,7 +303,7 @@
    "top_similar": [
     {
      "id": "multimodal-ai/part-09-compliance-responsible-ai",
-     "score": 0.35
+     "score": 0.34
     },
     {
      "id": "interview-prep/Hard_Scenarios_Interview_Prep",
@@ -412,12 +412,12 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
-     "score": 0.38
+     "id": "enterprise-architecture/best-practices/EA_Glossary_CheatSheet",
+     "score": 0.39
     },
     {
-     "id": "enterprise-architecture/best-practices/EA_Glossary_CheatSheet",
-     "score": 0.38
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.39
     },
     {
      "id": "interview-prep/ea/EA_Interview_Handbook_DELTA",
@@ -439,7 +439,7 @@
    "top_similar": [
     {
      "id": "interview-prep/index",
-     "score": 0.35
+     "score": 0.32
     }
    ]
   },
@@ -509,7 +509,7 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
-     "score": 0.33
+     "score": 0.34
     },
     {
      "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
@@ -554,7 +554,7 @@
    "top_similar": [
     {
      "id": "interview-prep/ea/index",
-     "score": 0.35
+     "score": 0.32
     }
    ]
   }

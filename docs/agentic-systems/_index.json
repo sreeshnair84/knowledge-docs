@@ -1,6 +1,6 @@
 {
  "section": "agentic-systems",
- "page_count": 47,
+ "page_count": 48,
  "pages": [
   {
    "id": "agentic-systems/config/enterprise-agentic-ai-config-management-2026",
@@ -54,7 +54,7 @@
    "top_similar": [
     {
      "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
-     "score": 0.31
+     "score": 0.32
     }
    ]
   },
@@ -267,7 +267,7 @@
      "score": 0.37
     },
     {
-     "id": "agentic-systems/config/enterprise-agentic-ai-config-management-2026",
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
      "score": 0.32
     }
    ]
@@ -328,7 +328,7 @@
     },
     {
      "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
-     "score": 0.37
+     "score": 0.36
     }
    ]
   },
@@ -349,7 +349,7 @@
    "top_similar": [
     {
      "id": "agentic-systems/platform/ai-platform-factory-runbook-v2",
-     "score": 0.64
+     "score": 0.63
     },
     {
      "id": "coding-tools/github-copilot/GitHub_Copilot_Enterprise_Research_2026",
@@ -378,15 +378,15 @@
    "top_similar": [
     {
      "id": "agentic-systems/platform/ai-msf-requirements-runbook",
-     "score": 0.64
+     "score": 0.63
     },
     {
      "id": "agentic-systems/skill/index",
-     "score": 0.38
+     "score": 0.37
     },
     {
      "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
-     "score": 0.37
+     "score": 0.36
     }
    ]
   },
@@ -406,16 +406,16 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026",
-     "score": 0.37
-    },
-    {
      "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
      "score": 0.37
     },
     {
+     "id": "agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026",
+     "score": 0.37
+    },
+    {
      "id": "ai-foundations/agentic_ai_landing_zone_architecture",
-     "score": 0.36
+     "score": 0.37
     }
    ]
   },
@@ -469,7 +469,7 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
-     "score": 0.61
+     "score": 0.6
     },
     {
      "id": "agentic-systems/skill/index",
@@ -477,7 +477,7 @@
     },
     {
      "id": "agentic-systems/skill/coding/index",
-     "score": 0.6
+     "score": 0.59
     }
    ]
   },
@@ -505,6 +505,34 @@
    ]
   },
   {
+   "id": "agentic-systems/skill/a2a_deep_research",
+   "title": "A2A Protocol: Deep Research & Critical Analysis",
+   "doc_type": "guide",
+   "tags": [
+    "a2a",
+    "protocols",
+    "agent-communication",
+    "research"
+   ],
+   "word_count": 6383,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/a2a/index",
+     "score": 0.5
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.43
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+     "score": 0.41
+    }
+   ]
+  },
+  {
    "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
    "title": "Foundations: What Is a Coding Skill?",
    "doc_type": "multi-part-series",
@@ -524,11 +552,11 @@
     },
     {
      "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
-     "score": 0.64
+     "score": 0.63
     },
     {
      "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
-     "score": 0.57
+     "score": 0.56
     }
    ]
   },
@@ -552,11 +580,11 @@
     },
     {
      "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
-     "score": 0.48
+     "score": 0.47
     },
     {
      "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
-     "score": 0.44
+     "score": 0.43
     }
    ]
   },
@@ -579,12 +607,12 @@
      "score": 0.44
     },
     {
-     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
-     "score": 0.44
+     "id": "agentic-systems/skill/index",
+     "score": 0.43
     },
     {
-     "id": "agentic-systems/skill/index",
-     "score": 0.44
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.43
     }
    ]
   },
@@ -612,7 +640,7 @@
     },
     {
      "id": "agentic-systems/skill/coding/05-tool-definitions-and-instructions-engineering",
-     "score": 0.4
+     "score": 0.39
     }
    ]
   },
@@ -632,15 +660,15 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
-     "score": 0.51
+     "score": 0.5
     },
     {
      "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
-     "score": 0.49
+     "score": 0.48
     },
     {
      "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
-     "score": 0.48
+     "score": 0.47
     }
    ]
   },
@@ -699,7 +727,7 @@
    "top_similar": [
     {
      "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
-     "score": 0.38
+     "score": 0.37
     },
     {
      "id": "workflow-orchestration/10-mcp-impact",
@@ -707,7 +735,7 @@
     },
     {
      "id": "agentic-systems/skill/coding/04-skills-tools-mcp-relationship",
-     "score": 0.35
+     "score": 0.34
     }
    ]
   },
@@ -750,7 +778,7 @@
     },
     {
      "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
-     "score": 0.35
+     "score": 0.34
     }
    ]
   },
@@ -798,15 +826,15 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
-     "score": 0.61
+     "score": 0.6
     },
     {
      "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
-     "score": 0.54
+     "score": 0.53
     },
     {
      "id": "agentic-systems/skill/index",
-     "score": 0.53
+     "score": 0.52
     }
    ]
   },
@@ -826,11 +854,11 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/index",
-     "score": 0.62
+     "score": 0.61
     },
     {
      "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
-     "score": 0.6
+     "score": 0.59
     },
     {
      "id": "agentic-systems/skill/enterprise/index",
@@ -854,11 +882,11 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
-     "score": 0.64
+     "score": 0.63
     },
     {
      "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
-     "score": 0.58
+     "score": 0.57
     },
     {
      "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
@@ -882,14 +910,14 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/enterprise/index",
-     "score": 0.33
-    },
-    {
-     "id": "agentic-systems/skill/coding/index",
-     "score": 0.31
+     "score": 0.32
     },
     {
      "id": "agentic-systems/skill/index",
+     "score": 0.31
+    },
+    {
+     "id": "agentic-systems/skill/coding/index",
      "score": 0.31
     }
    ]
@@ -918,7 +946,7 @@
     },
     {
      "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
-     "score": 0.37
+     "score": 0.36
     }
    ]
   },
@@ -938,15 +966,15 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
-     "score": 0.42
+     "score": 0.41
     },
     {
      "id": "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
-     "score": 0.37
+     "score": 0.36
     },
     {
      "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
-     "score": 0.36
+     "score": 0.35
     }
    ]
   },
@@ -1009,11 +1037,11 @@
    "top_similar": [
     {
      "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
-     "score": 0.58
+     "score": 0.57
     },
     {
      "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
-     "score": 0.52
+     "score": 0.51
     },
     {
      "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
@@ -1158,7 +1186,7 @@
     },
     {
      "id": "agentic-systems/skill/coding/index",
-     "score": 0.62
+     "score": 0.61
     },
     {
      "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",

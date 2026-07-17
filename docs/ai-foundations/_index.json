@@ -1,6 +1,6 @@
 {
  "section": "ai-foundations",
- "page_count": 18,
+ "page_count": 20,
  "pages": [
   {
    "id": "ai-foundations/AI_Assistant_Architecture_Research_Report",
@@ -14,6 +14,10 @@
     {
      "id": "agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report",
      "score": 0.45
+    },
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.3
     }
    ]
   },
@@ -111,11 +115,11 @@
      "score": 0.39
     },
     {
-     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
-     "score": 0.37
+     "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
+     "score": 0.38
     },
     {
-     "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
      "score": 0.37
     }
    ]
@@ -133,7 +137,7 @@
    "top_similar": [
     {
      "id": "ai-security-governance/Agentic_AI_Governance_Framework",
-     "score": 0.42
+     "score": 0.43
     },
     {
      "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
@@ -158,15 +162,15 @@
    "top_similar": [
     {
      "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
-     "score": 0.37
+     "score": 0.38
     },
     {
      "id": "ai-foundations/agentic_ai_landing_zone_eu_ai_act",
-     "score": 0.35
+     "score": 0.36
     },
     {
      "id": "ai-security-governance/Agentic_AI_Governance_Framework",
-     "score": 0.34
+     "score": 0.35
     }
    ]
   },
@@ -200,11 +204,11 @@
    "top_similar": [
     {
      "id": "ai-foundations/agentic_ai_landing_zone_business_layer",
-     "score": 0.35
+     "score": 0.36
     },
     {
      "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
-     "score": 0.33
+     "score": 0.34
     }
    ]
   },
@@ -233,7 +237,7 @@
    "top_similar": [
     {
      "id": "ai-security-governance/deep-mind/Part08_Memory_Governance",
-     "score": 0.35
+     "score": 0.37
     }
    ]
   },
@@ -271,12 +275,7 @@
    "word_count": 3905,
    "last_reviewed": "2026-07-10",
    "status": "current",
-   "top_similar": [
-    {
-     "id": "ai-foundations/agentic_ai_landing_zone_visual_guide",
-     "score": 0.3
-    }
-   ]
+   "top_similar": []
   },
   {
    "id": "ai-foundations/agentic_ai_landing_zone_tier3_complete",
@@ -302,12 +301,12 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
-     "score": 0.32
+     "id": "ai-foundations/agentic_ai_landing_zone_business_layer",
+     "score": 0.33
     },
     {
-     "id": "ai-foundations/agentic_ai_landing_zone_business_layer",
-     "score": 0.32
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.33
     },
     {
      "id": "ai-foundations/agentic_ai_landing_zone_architecture",
@@ -343,6 +342,46 @@
    "last_reviewed": "2026-07-10",
    "status": "current",
    "top_similar": []
+  },
+  {
+   "id": "ai-foundations/transformer_architectures",
+   "title": "Transformer Architecture: Frontier Models Deep Dive",
+   "doc_type": "guide",
+   "tags": [
+    "transformers",
+    "llm",
+    "ai-foundations",
+    "architecture"
+   ],
+   "word_count": 3848,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/transformer_concepts_deep",
+     "score": 0.51
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/transformer_concepts_deep",
+   "title": "Transformer Concepts: Deep Internals",
+   "doc_type": "guide",
+   "tags": [
+    "transformers",
+    "llm",
+    "ai-foundations",
+    "deep-dive"
+   ],
+   "word_count": 3397,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/transformer_architectures",
+     "score": 0.51
+    }
+   ]
   }
  ]
 }

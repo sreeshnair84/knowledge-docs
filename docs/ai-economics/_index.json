@@ -32,12 +32,7 @@
    "word_count": 4539,
    "last_reviewed": "2026-07-14",
    "status": "current",
-   "top_similar": [
-    {
-     "id": "enterprise-architecture/specialization/AI_Invoice_Auditor_Architecture_v5",
-     "score": 0.31
-    }
-   ]
+   "top_similar": []
   },
   {
    "id": "ai-economics/Agentic-AI-Use-Case-Value-Lifecycle",
@@ -107,7 +102,7 @@
      "score": 0.33
     },
     {
-     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "id": "enterprise-architecture/ai-architecture/ai-finops-capacity-forecasting",
      "score": 0.31
     }
    ]

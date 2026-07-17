@@ -1,13 +1,13 @@
 # Repo-wide Consistency Audit
 
-Files scanned: **648**  |  Clean: **603**  |  With findings: **45**
+Files scanned: **669**  |  Clean: **630**  |  With findings: **39**
 
 ## Findings by severity
 
 | Severity | Count |
 |---|---|
 | CRITICAL | 0 |
-| HIGH | 46 |
+| HIGH | 39 |
 | MEDIUM | 0 |
 | LOW | 0 |
 
@@ -15,8 +15,7 @@ Files scanned: **648**  |  Clean: **603**  |  With findings: **45**
 
 | Issue | Files affected |
 |---|---|
-| 'tags' is present but empty ([]) | 44 |
-| No H1 heading found | 2 |
+| 'tags' is present but empty ([]) | 39 |
 
 ## Per-file findings
 
@@ -29,10 +28,6 @@ Files scanned: **648**  |  Clean: **603**  |  With findings: **45**
 - HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
 
 ### `docs\ai-foundations\AI_Deep_Future_Outlook_2026_2035.md`
-
-- HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
-
-### `docs\ai-protocols\auth\AgentIdentity_Research_2026_v2.md`
 
 - HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
 
@@ -124,11 +119,6 @@ Files scanned: **648**  |  Clean: **603**  |  With findings: **45**
 
 - HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
 
-### `docs\ai-security-governance\policy\Vol1b_Authorization_Deep_Dive.md`
-
-- HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
-- HIGH: No H1 heading found — every page needs exactly one.
-
 ### `docs\ai-security-governance\policy\Vol2_Identity_Claims_Policy.md`
 
 - HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
@@ -161,25 +151,9 @@ Files scanned: **648**  |  Clean: **603**  |  With findings: **45**
 
 - HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
 
-### `docs\ai-security-governance\security\Part1_Industry_Survey.md`
-
-- HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
-
-### `docs\ai-security-governance\security\Part5_Marketplace_Architecture.md`
-
-- HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
-
-### `docs\ai-security-governance\security\Part7_Standards_Reference.md`
-
-- HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
-
 ### `docs\databricks-agentic-ai\part-09-competitive-reference-architectures.md`
 
 - HIGH: 'tags' is present but empty ([]) — page has zero tags, breaking tag-based indexing/discovery. Add at least a domain tag and 1-3 topic tags.
-
-### `docs\ea-masterclass\module-13-case-studies\government.md`
-
-- HIGH: No H1 heading found — every page needs exactly one.
 
 ### `docs\enterprise-architecture\framework\TOGAF10_APEX_AI_Platform_NexaBank.md`
 

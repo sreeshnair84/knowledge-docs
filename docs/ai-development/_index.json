@@ -16,7 +16,7 @@
    "top_similar": [
     {
      "id": "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
@@ -94,7 +94,7 @@
    "top_similar": [
     {
      "id": "ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "enterprise-architecture/specialization/Enterprise_Manager_AI_GenAI",
@@ -153,11 +153,11 @@
      "score": 0.38
     },
     {
-     "id": "enterprise-ai-report/index",
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
      "score": 0.36
     },
     {
-     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "id": "enterprise-ai-report/index",
      "score": 0.36
     }
    ]
@@ -252,7 +252,7 @@
     },
     {
      "id": "agentic-ui/application-lifecycle",
-     "score": 0.37
+     "score": 0.36
     },
     {
      "id": "agentic-ui/anti-patterns",

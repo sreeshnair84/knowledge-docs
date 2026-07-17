@@ -84,6 +84,8 @@ const sidebars = {
         {type: 'doc', id: 'databricks-agentic-ai/part-07-security-architecture', label: 'Part 7 — Security Architecture'},
         {type: 'doc', id: 'databricks-agentic-ai/part-08-observability-finops-integration', label: 'Part 8 — Observability, FinOps & Integrations'},
         {type: 'doc', id: 'databricks-agentic-ai/part-09-competitive-reference-architectures', label: 'Part 9 — Competitive Comparison & Reference Architectures'},
+        {type: 'doc', id: 'databricks-agentic-ai/part-12-finops', label: 'Part 12 — FinOps & Cost Engineering'},
+        {type: 'doc', id: 'databricks-agentic-ai/part-13-vendor-landscape', label: 'Part 13 — Vendor Landscape'},
       ],
     },
     {
@@ -183,6 +185,7 @@ const sidebars = {
                 'agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies',
               ],
             },
+            'agentic-systems/skill/a2a_deep_research',
             {
               type: 'category',
               label: 'Coding Assistant Research',
@@ -308,6 +311,8 @@ const sidebars = {
         'ai-foundations/enterprise-agentic-ai-outlook-2026-2030',
         'ai-foundations/AI_Lab_Research_Report_June2026',
         'ai-foundations/The_Agentic_Loop_Enterprise_AI_Architect_Guide',
+        'ai-foundations/transformer_architectures',
+        'ai-foundations/transformer_concepts_deep',
         {
           type: 'category',
           label: 'Agentic AI Landing Zone (Complete Platform)',
@@ -380,6 +385,7 @@ const sidebars = {
           items: [
             {type: 'doc', id: 'ai-protocols/standards/emerging-protocols-overview', label: 'Overview & Landscape'},
             {type: 'doc', id: 'ai-protocols/standards/emerging-protocols-acp-anp', label: 'ACP & ANP — Federated & Decentralized'},
+            {type: 'doc', id: 'ai-protocols/standards/emerging-protocols-beyond-mcp-a2a', label: 'Beyond MCP & A2A — Next-Gen Protocols'},
             {type: 'doc', id: 'ai-protocols/standards/emerging-protocols-agui-utcp', label: 'AG-UI & UTCP — UI Streaming'},
             {type: 'doc', id: 'ai-protocols/standards/emerging-protocols-ucp-ap2-nlip-lmos', label: 'UCP, AP2, NLIP & LMOS — Commerce & Payments'},
             {type: 'doc', id: 'ai-protocols/standards/emerging-protocols-crosscutting', label: 'Cross-Cutting: Security & Governance'},
@@ -427,6 +433,7 @@ const sidebars = {
           items: [
             'cloud-platforms/azure/index',
             'cloud-platforms/azure/hyperscaler-deep-dive-azure',
+            'cloud-platforms/azure/azure_agent_architecture',
           ],
         },
         {
@@ -522,6 +529,25 @@ const sidebars = {
             'coding-tools/claude/Module_5_Claude_Code_Agents',
             'coding-tools/claude/Module_6_Claude_Workflows',
             'coding-tools/claude/Module_7_Safety_Enterprise_Exam',
+            {
+              type: 'category',
+              label: 'Cheatsheets & Quick Reference',
+              items: [
+                'coding-tools/claude/Cheatsheet_1_Claude_Code',
+                'coding-tools/claude/Cheatsheet_2_Agent_SDK',
+                'coding-tools/claude/Cheatsheet_3_MCP',
+                'coding-tools/claude/Cheatsheet_4_AI_Fluency',
+                'coding-tools/claude/Cheatsheet_5_Prompt_Engineering',
+                'coding-tools/claude/Cheatsheet_6_Claude_CLI',
+                'coding-tools/claude/Cheatsheet_7_Claude_Ecosystem',
+                'coding-tools/claude/Cheatsheet_9_Agents_Parallelism',
+                'coding-tools/claude/Cheatsheet_10_MultiAgent_Production',
+                'coding-tools/claude/Cheatsheet_11_MCP_Pipeline_Errors',
+                'coding-tools/claude/claude_routines_guide',
+                'coding-tools/claude/Questionnaire_Claude_Certification',
+                'coding-tools/claude/Questionnaire_Vol2_Claude_Certification',
+              ],
+            },
           ],
         },
         {
@@ -547,6 +573,9 @@ const sidebars = {
             'coding-tools/github-copilot/Part14_Enterprise_APIs_Apps_CLI',
             'coding-tools/github-copilot/Part16_Artifacts_ReferenceArchitecture',
             'coding-tools/github-copilot/Part18_Ecosystem_Patterns_Labs',
+            'coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools',
+            'coding-tools/github-copilot/copilotkit-server-map-call-flow',
+            'coding-tools/github-copilot/microsoft-apm-guide',
           ],
         },
         {
@@ -944,6 +973,7 @@ const sidebars = {
             'ai-security-governance/security/Part1_Industry_Survey',
             'ai-security-governance/security/Part5_Marketplace_Architecture',
             'ai-security-governance/security/Part7_Standards_Reference',
+            'ai-security-governance/security/08-Future-AI-SOC-2026-2030',
           ],
         },
         'ai-security-governance/Agentic_AI_Governance_Framework',

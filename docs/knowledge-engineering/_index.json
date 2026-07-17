@@ -104,7 +104,7 @@
    "top_similar": [
     {
      "id": "knowledge-engineering/industry-practices/index",
-     "score": 0.54
+     "score": 0.53
     },
     {
      "id": "knowledge-engineering/knowledge/index",
@@ -212,8 +212,8 @@
      "score": 0.37
     },
     {
-     "id": "knowledge-engineering/industry-practices/index",
-     "score": 0.36
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.37
     }
    ]
   },
@@ -249,7 +249,7 @@
    "top_similar": [
     {
      "id": "knowledge-engineering/index",
-     "score": 0.54
+     "score": 0.53
     },
     {
      "id": "knowledge-engineering/industry-practices/governance-rai",

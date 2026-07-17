@@ -1,6 +1,6 @@
 {
  "section": "coding-tools",
- "page_count": 49,
+ "page_count": 65,
  "pages": [
   {
    "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
@@ -16,14 +16,14 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/CCAF_Study_Guide",
-     "score": 0.6
+     "score": 0.59
     },
     {
      "id": "coding-tools/claude/claude-best-practices",
-     "score": 0.48
+     "score": 0.47
     },
     {
-     "id": "coding-tools/claude/ccaf-exam-prep-complete",
+     "id": "coding-tools/claude/Cheatsheet_1_Claude_Code",
      "score": 0.43
     }
    ]
@@ -68,15 +68,242 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/claude-best-practices",
-     "score": 0.65
+     "score": 0.64
     },
     {
      "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
-     "score": 0.6
+     "score": 0.59
+    },
+    {
+     "id": "coding-tools/claude/ccaf-exam-prep-complete",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_10_MultiAgent_Production",
+   "title": "Multi-Agent Production Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "multi-agent",
+    "production-patterns",
+    "cheatsheet",
+    "coding-tools"
+   ],
+   "word_count": 3387,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Cheatsheet_11_MCP_Pipeline_Errors",
+     "score": 0.47
+    },
+    {
+     "id": "coding-tools/claude/CCAF_Advanced_Supplement",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_11_MCP_Pipeline_Errors",
+   "title": "MCP Pipeline Error & Context Handling",
+   "doc_type": "guide",
+   "tags": [
+    "mcp",
+    "error-handling",
+    "cheatsheet",
+    "coding-tools"
+   ],
+   "word_count": 2831,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Cheatsheet_10_MultiAgent_Production",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_1_Claude_Code",
+   "title": "Claude Code Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "claude-code",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 991,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
+     "score": 0.43
+    },
+    {
+     "id": "coding-tools/claude/claude-code-complete-2026",
+     "score": 0.39
+    },
+    {
+     "id": "coding-tools/claude/claude-best-practices",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_2_Agent_SDK",
+   "title": "Agent SDK Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "agent-sdk",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 838,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/CCAF_Study_Guide",
+     "score": 0.4
+    },
+    {
+     "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_3_MCP",
+   "title": "MCP Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "mcp",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 803,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_4_AI_Fluency",
+   "title": "AI Fluency Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "ai-concepts",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 821,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_5_Prompt_Engineering",
+   "title": "Prompt Engineering Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "prompt-engineering",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 866,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_6_Claude_CLI",
+   "title": "Claude CLI Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "claude-cli",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 1176,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/claude-code-complete-2026",
+     "score": 0.56
     },
     {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
      "score": 0.49
+    },
+    {
+     "id": "coding-tools/claude/Questionnaire_Claude_Certification",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_7_Claude_Ecosystem",
+   "title": "Claude Ecosystem Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "claude-ecosystem",
+    "cheatsheet",
+    "coding-tools",
+    "quick-reference"
+   ],
+   "word_count": 1302,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Questionnaire_Claude_Certification",
+     "score": 0.44
+    },
+    {
+     "id": "coding-tools/claude/Questionnaire_Vol2_Claude_Certification",
+     "score": 0.4
+    },
+    {
+     "id": "coding-tools/claude/Module_1_Claude_Foundations",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Cheatsheet_9_Agents_Parallelism",
+   "title": "Claude Code Agents & Parallelism",
+   "doc_type": "guide",
+   "tags": [
+    "agents",
+    "parallelism",
+    "cheatsheet",
+    "coding-tools"
+   ],
+   "word_count": 1808,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Cheatsheet_6_Claude_CLI",
+     "score": 0.35
     }
    ]
   },
@@ -93,11 +320,11 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/claude-code-complete-2026",
-     "score": 0.46
+     "score": 0.45
     },
     {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
-     "score": 0.45
+     "score": 0.44
     },
     {
      "id": "coding-tools/github-copilot/GitHub_Copilot_Enterprise_Research_2026",
@@ -172,7 +399,7 @@
     },
     {
      "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
-     "score": 0.33
+     "score": 0.34
     }
    ]
   },
@@ -196,7 +423,7 @@
      "score": 0.39
     },
     {
-     "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
+     "id": "coding-tools/claude/Cheatsheet_6_Claude_CLI",
      "score": 0.38
     }
    ]
@@ -234,7 +461,63 @@
     },
     {
      "id": "coding-tools/claude/CCAF_Study_Guide",
-     "score": 0.38
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Questionnaire_Claude_Certification",
+   "title": "Claude Certification Questionnaire",
+   "doc_type": "guide",
+   "tags": [
+    "claude",
+    "certification",
+    "exam-prep",
+    "questionnaire"
+   ],
+   "word_count": 5778,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Questionnaire_Vol2_Claude_Certification",
+     "score": 0.66
+    },
+    {
+     "id": "coding-tools/claude/ccaf-exam-prep-complete",
+     "score": 0.53
+    },
+    {
+     "id": "coding-tools/claude/Cheatsheet_7_Claude_Ecosystem",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/claude/Questionnaire_Vol2_Claude_Certification",
+   "title": "Claude Cert Questionnaire Vol.2",
+   "doc_type": "guide",
+   "tags": [
+    "claude",
+    "certification",
+    "exam-prep",
+    "questionnaire"
+   ],
+   "word_count": 6233,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/claude/Questionnaire_Claude_Certification",
+     "score": 0.66
+    },
+    {
+     "id": "coding-tools/claude/ccaf-exam-prep-complete",
+     "score": 0.52
+    },
+    {
+     "id": "coding-tools/claude/Cheatsheet_7_Claude_Ecosystem",
+     "score": 0.4
     }
    ]
   },
@@ -251,16 +534,16 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "coding-tools/claude/claude-code-complete-2026",
+     "id": "coding-tools/claude/Questionnaire_Claude_Certification",
+     "score": 0.53
+    },
+    {
+     "id": "coding-tools/claude/Questionnaire_Vol2_Claude_Certification",
      "score": 0.52
     },
     {
-     "id": "coding-tools/claude/Module_7_Safety_Enterprise_Exam",
-     "score": 0.51
-    },
-    {
-     "id": "coding-tools/claude/Module_1_Claude_Foundations",
-     "score": 0.49
+     "id": "coding-tools/claude/claude-code-complete-2026",
+     "score": 0.52
     }
    ]
   },
@@ -278,7 +561,7 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
-     "score": 0.41
+     "score": 0.4
     },
     {
      "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
@@ -322,15 +605,15 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/CCAF_Study_Guide",
-     "score": 0.65
+     "score": 0.64
     },
     {
      "id": "coding-tools/claude/Anthropic_Partner_Cert_Study_Guide",
-     "score": 0.48
+     "score": 0.47
     },
     {
      "id": "coding-tools/claude/claude-code-complete-2026",
-     "score": 0.46
+     "score": 0.44
     }
    ]
   },
@@ -347,16 +630,16 @@
    "status": "current",
    "top_similar": [
     {
+     "id": "coding-tools/claude/Cheatsheet_6_Claude_CLI",
+     "score": 0.56
+    },
+    {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
      "score": 0.52
     },
     {
-     "id": "coding-tools/claude/claude-best-practices",
-     "score": 0.46
-    },
-    {
-     "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
-     "score": 0.46
+     "id": "coding-tools/claude/Module_5_Claude_Code_Agents",
+     "score": 0.45
     }
    ]
   },
@@ -429,13 +712,28 @@
     },
     {
      "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
-     "score": 0.37
+     "score": 0.36
     },
     {
-     "id": "coding-tools/claude/ccaf-exam-prep-complete",
-     "score": 0.37
+     "id": "coding-tools/claude/Module_5_Claude_Code_Agents",
+     "score": 0.36
     }
    ]
+  },
+  {
+   "id": "coding-tools/claude/claude_routines_guide",
+   "title": "Claude Routines \u2014 Complete Help Guide",
+   "doc_type": "guide",
+   "tags": [
+    "claude-code",
+    "coding-tools",
+    "workflows",
+    "reference"
+   ],
+   "word_count": 3856,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": []
   },
   {
    "id": "coding-tools/claude/constitutional-ai-safety-2026",
@@ -451,7 +749,7 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
-     "score": 0.45
+     "score": 0.44
     },
     {
      "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
@@ -477,15 +775,15 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
-     "score": 0.35
-    },
-    {
-     "id": "coding-tools/claude/Module_1_Claude_Foundations",
      "score": 0.34
     },
     {
-     "id": "coding-tools/claude/claude-code-complete-2026",
+     "id": "coding-tools/claude/Module_1_Claude_Foundations",
      "score": 0.33
+    },
+    {
+     "id": "coding-tools/claude/claude-code-complete-2026",
+     "score": 0.32
     }
    ]
   },
@@ -529,7 +827,7 @@
    "top_similar": [
     {
      "id": "coding-tools/claude/ccaf-exam-prep-complete",
-     "score": 0.49
+     "score": 0.48
     },
     {
      "id": "coding-tools/claude/Module_3_Prompt_Engineering",
@@ -584,7 +882,7 @@
     },
     {
      "id": "coding-tools/code-review/PR_Review_Handbook_Vol5_Case_Studies_Maturity_Model",
-     "score": 0.42
+     "score": 0.41
     },
     {
      "id": "coding-tools/code-review/PR_Review_Handbook_Vol3_AI_Assisted_Review",
@@ -635,10 +933,6 @@
     {
      "id": "coding-tools/code-review/PR_Review_Handbook_Vol4_Agentic_Review_Architecture",
      "score": 0.31
-    },
-    {
-     "id": "coding-tools/code-review/PR_Review_Handbook_Vol2_Deep_Domain_Reviews",
-     "score": 0.3
     }
    ]
   },
@@ -680,7 +974,7 @@
    "top_similar": [
     {
      "id": "coding-tools/code-review/PR_Review_Handbook_Vol1_Traditional_Review",
-     "score": 0.42
+     "score": 0.41
     },
     {
      "id": "coding-tools/code-review/PR_Review_Handbook_Vol4_Agentic_Review_Architecture",
@@ -721,11 +1015,11 @@
      "score": 0.59
     },
     {
-     "id": "coding-tools/github-copilot/Part01_Vision_Copilot_Architecture_RepoIntelligence",
+     "id": "coding-tools/github-copilot/github-copilot-big-wins-research",
      "score": 0.52
     },
     {
-     "id": "coding-tools/github-copilot/github-copilot-big-wins-research",
+     "id": "coding-tools/github-copilot/Part01_Vision_Copilot_Architecture_RepoIntelligence",
      "score": 0.52
     }
    ]
@@ -977,7 +1271,7 @@
     },
     {
      "id": "coding-tools/github-copilot/Part02_GitHub_Architecture_and_Actions",
-     "score": 0.39
+     "score": 0.38
     },
     {
      "id": "coding-tools/github-copilot/git-github-platform-engineering-handbook",
@@ -1055,8 +1349,64 @@
      "score": 0.37
     },
     {
-     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
      "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools",
+   "title": "CopilotKit MCP Apps vs Tools \u2014 EU Bank Design Decision",
+   "doc_type": "guide",
+   "tags": [
+    "copilotkit",
+    "mcp",
+    "github-copilot",
+    "design-decision"
+   ],
+   "word_count": 1599,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/eu-bank-ai-copilot-complete",
+     "score": 0.57
+    },
+    {
+     "id": "coding-tools/github-copilot/copilotkit-server-map-call-flow",
+     "score": 0.55
+    },
+    {
+     "id": "ai-usecases/eu-bank-sequence-diagrams",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "coding-tools/github-copilot/copilotkit-server-map-call-flow",
+   "title": "CopilotKit \u2192 AgentCore \u2192 MCP \u2014 Server Map & Call Flow",
+   "doc_type": "guide",
+   "tags": [
+    "copilotkit",
+    "agentcore",
+    "mcp",
+    "call-flow"
+   ],
+   "word_count": 1896,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/eu-bank-ai-copilot-complete",
+     "score": 0.75
+    },
+    {
+     "id": "ai-usecases/eu-bank-sequence-diagrams",
+     "score": 0.57
+    },
+    {
+     "id": "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools",
+     "score": 0.55
     }
    ]
   },
@@ -1107,7 +1457,7 @@
     },
     {
      "id": "coding-tools/github-copilot/github-copilot-zero-to-hero",
-     "score": 0.46
+     "score": 0.47
     }
    ]
   },
@@ -1154,6 +1504,21 @@
      "score": 0.34
     }
    ]
+  },
+  {
+   "id": "coding-tools/github-copilot/microsoft-apm-guide",
+   "title": "Microsoft APM \u2014 Zero to Mastery",
+   "doc_type": "guide",
+   "tags": [
+    "microsoft-apm",
+    "github-copilot",
+    "package-management",
+    "guide"
+   ],
+   "word_count": 1957,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": []
   },
   {
    "id": "coding-tools/index",

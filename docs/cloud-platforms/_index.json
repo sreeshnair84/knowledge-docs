@@ -1,6 +1,6 @@
 {
  "section": "cloud-platforms",
- "page_count": 45,
+ "page_count": 46,
  "pages": [
   {
    "id": "cloud-platforms/ai-gateway/AI_Gateway_Full_Comparison",
@@ -92,7 +92,7 @@
     },
     {
      "id": "cloud-platforms/ai-gateway/Enterprise_AI_Gateway",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -144,7 +144,7 @@
     },
     {
      "id": "ai-protocols/auth/auth_identity_flows",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -305,7 +305,7 @@
      "score": 0.33
     },
     {
-     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "id": "cloud-platforms/aws/index",
      "score": 0.32
     }
    ]
@@ -397,7 +397,7 @@
     },
     {
      "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
-     "score": 0.38
+     "score": 0.39
     }
    ]
   },
@@ -428,6 +428,30 @@
    ]
   },
   {
+   "id": "cloud-platforms/azure/azure_agent_architecture",
+   "title": "Azure AI Agent Architecture \u2014 Production Grade",
+   "doc_type": "guide",
+   "tags": [
+    "azure",
+    "cloud",
+    "agent-architecture",
+    "reference-architecture"
+   ],
+   "word_count": 1306,
+   "last_reviewed": "2026-07-17",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/auth_identity_flows",
+     "score": 0.33
+    },
+    {
+     "id": "cloud-platforms/enterprise-agent-runtime-internals-2026",
+     "score": 0.31
+    }
+   ]
+  },
+  {
    "id": "cloud-platforms/azure/hyperscaler-deep-dive-azure",
    "title": "Hyperscaler Deep Dive: Microsoft Azure (2026)",
    "doc_type": "architecture-whitepaper",
@@ -453,7 +477,7 @@
      "score": 0.35
     },
     {
-     "id": "workflow-orchestration/08-agent-frameworks-comparison",
+     "id": "ai-protocols/auth/agent-identity-entra-vs-awsagentcore",
      "score": 0.34
     }
    ]
@@ -479,7 +503,7 @@
     },
     {
      "id": "cloud-platforms/index",
-     "score": 0.48
+     "score": 0.49
     },
     {
      "id": "cloud-platforms/gcp/index",
@@ -509,7 +533,7 @@
     },
     {
      "id": "ai-security-governance/deep-mind/Part15_Cloud_Implementation_Comparison",
-     "score": 0.35
+     "score": 0.36
     },
     {
      "id": "cloud-platforms/index",
@@ -538,7 +562,7 @@
    "top_similar": [
     {
      "id": "cloud-platforms/gcp/index",
-     "score": 0.37
+     "score": 0.38
     },
     {
      "id": "enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026",
@@ -572,11 +596,11 @@
     },
     {
      "id": "cloud-platforms/index",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "cloud-platforms/gcp/hyperscaler-deep-dive-gcp",
-     "score": 0.37
+     "score": 0.38
     }
    ]
   },
@@ -680,11 +704,11 @@
    "top_similar": [
     {
      "id": "cloud-platforms/azure/index",
-     "score": 0.48
+     "score": 0.49
     },
     {
      "id": "cloud-platforms/gcp/index",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "cloud-platforms/enterprise-agent-runtime-internals-2026",
@@ -730,7 +754,7 @@
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-finops-infrastructure-optimization",
-     "score": 0.32
+     "score": 0.33
     }
    ]
   },
@@ -747,7 +771,7 @@
    "top_similar": [
     {
      "id": "cloud-platforms/kubernetes/K8s_Handbook_Part13_Emerging_Standards",
-     "score": 0.33
+     "score": 0.34
     },
     {
      "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
@@ -775,12 +799,12 @@
      "score": 0.36
     },
     {
-     "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
-     "score": 0.34
+     "id": "agentic-systems/skill/a2a_deep_research",
+     "score": 0.35
     },
     {
-     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part12_Agentic_AI",
-     "score": 0.33
+     "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+     "score": 0.34
     }
    ]
   },

@@ -412,7 +412,7 @@
    "top_similar": [
     {
      "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
-     "score": 0.48
+     "score": 0.49
     },
     {
      "id": "ai-development/testing/AI_Agent_Evaluation_Framework_Complete",
@@ -439,7 +439,7 @@
    "top_similar": [
     {
      "id": "ai-usecases/EU_Banking_AI_Agent_Evaluation_Framework",
-     "score": 0.48
+     "score": 0.49
     },
     {
      "id": "agentic-ui/responsible-ai",
@@ -480,15 +480,15 @@
    "top_similar": [
     {
      "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
-     "score": 0.42
+     "score": 0.43
     },
     {
      "id": "ai-security-governance/security/Part4_Runtime_Security_Governance",
      "score": 0.41
     },
     {
-     "id": "ai-security-governance/security/Part1_Industry_Survey",
-     "score": 0.39
+     "id": "ai-protocols/auth/enterprise-ai-platform-auth-survey",
+     "score": 0.41
     }
    ]
   },
@@ -548,11 +548,15 @@
    "top_similar": [
     {
      "id": "ai-usecases/eu-bank-ai-copilot-complete",
-     "score": 0.58
+     "score": 0.53
     },
     {
-     "id": "ai-usecases/eu-bank-sequence-diagrams",
-     "score": 0.35
+     "id": "coding-tools/github-copilot/copilotkit-server-map-call-flow",
+     "score": 0.43
+    },
+    {
+     "id": "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools",
+     "score": 0.32
     }
    ]
   },
@@ -571,16 +575,16 @@
    "status": "current",
    "top_similar": [
     {
+     "id": "coding-tools/github-copilot/copilotkit-server-map-call-flow",
+     "score": 0.75
+    },
+    {
      "id": "ai-usecases/eu-bank-sequence-diagrams",
-     "score": 0.63
+     "score": 0.62
     },
     {
-     "id": "ai-usecases/eu-bank-ai-copilot-architecture",
-     "score": 0.58
-    },
-    {
-     "id": "agentic-systems/platform/MultiTenantAgentPlatform_Architecture",
-     "score": 0.41
+     "id": "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools",
+     "score": 0.57
     }
    ]
   },
@@ -602,11 +606,15 @@
    "top_similar": [
     {
      "id": "ai-usecases/eu-bank-ai-copilot-complete",
-     "score": 0.63
+     "score": 0.62
     },
     {
-     "id": "ai-usecases/eu-bank-ai-copilot-architecture",
-     "score": 0.35
+     "id": "coding-tools/github-copilot/copilotkit-server-map-call-flow",
+     "score": 0.57
+    },
+    {
+     "id": "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools",
+     "score": 0.49
     }
    ]
   },

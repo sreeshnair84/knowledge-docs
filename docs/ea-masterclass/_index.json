@@ -16,7 +16,7 @@
    "top_similar": [
     {
      "id": "ea-masterclass/module-03-proposal-lifecycle/index",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "ea-masterclass/module-14-mentoring/index",
@@ -42,7 +42,7 @@
    "top_similar": [
     {
      "id": "ea-masterclass/deliverables/index",
-     "score": 0.47
+     "score": 0.46
     },
     {
      "id": "ea-masterclass/deliverables/business-case-templates",
@@ -94,7 +94,7 @@
    "top_similar": [
     {
      "id": "ea-masterclass/deliverables/consulting-templates",
-     "score": 0.47
+     "score": 0.46
     },
     {
      "id": "ea-masterclass/index",
@@ -175,7 +175,7 @@
     },
     {
      "id": "enterprise-strategy/vol2-business-architecture-operating-model",
-     "score": 0.42
+     "score": 0.43
     },
     {
      "id": "enterprise-strategy/vol10-relationship-maps-glossary",
@@ -197,7 +197,7 @@
    "top_similar": [
     {
      "id": "ea-masterclass/deliverables/business-case-templates",
-     "score": 0.45
+     "score": 0.46
     },
     {
      "id": "ea-masterclass/module-07-proposal-writing/index",
@@ -249,7 +249,7 @@
    "top_similar": [
     {
      "id": "enterprise-strategy/vol6-organization-structure-operating-model",
-     "score": 0.51
+     "score": 0.52
     },
     {
      "id": "enterprise-ai-report/part-02-operating-models",
@@ -409,7 +409,7 @@
     },
     {
      "id": "ea-masterclass/module-07-proposal-writing/index",
-     "score": 0.36
+     "score": 0.37
     }
    ]
   },
@@ -427,7 +427,7 @@
    "top_similar": [
     {
      "id": "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
-     "score": 0.38
+     "score": 0.39
     },
     {
      "id": "ea-masterclass/deliverables/consulting-templates",
@@ -491,7 +491,7 @@
     "ea-masterclass",
     "module-13-case-studies"
    ],
-   "word_count": 3553,
+   "word_count": 3564,
    "last_reviewed": "2026-07-10",
    "status": "current",
    "top_similar": []
@@ -719,7 +719,7 @@
      "score": 0.32
     },
     {
-     "id": "ea-masterclass/module-15-distinguished-architect/index",
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
      "score": 0.3
     }
    ]

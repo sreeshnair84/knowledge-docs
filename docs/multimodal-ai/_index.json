@@ -18,11 +18,11 @@
    "status": "current",
    "top_similar": [
     {
-     "id": "multimodal-ai/part-14-cloud-platform-comparison",
+     "id": "multimodal-ai/part-01-foundations",
      "score": 0.37
     },
     {
-     "id": "multimodal-ai/part-01-foundations",
+     "id": "multimodal-ai/part-14-cloud-platform-comparison",
      "score": 0.37
     },
     {
@@ -138,7 +138,7 @@
     },
     {
      "id": "multimodal-ai/part-08-guardrails-sanitization",
-     "score": 0.39
+     "score": 0.4
     },
     {
      "id": "multimodal-ai/part-05-multimodal-rag",
@@ -198,7 +198,7 @@
     },
     {
      "id": "multimodal-ai/part-13-governance-production",
-     "score": 0.35
+     "score": 0.34
     },
     {
      "id": "multimodal-ai/part-02-enterprise-architecture",
@@ -233,7 +233,7 @@
     },
     {
      "id": "multimodal-ai/part-05-multimodal-rag",
-     "score": 0.32
+     "score": 0.31
     }
    ]
   },
@@ -255,7 +255,7 @@
    "top_similar": [
     {
      "id": "multimodal-ai/part-04-modalities-video-audio",
-     "score": 0.39
+     "score": 0.4
     },
     {
      "id": "multimodal-ai/part-01-foundations",
@@ -287,7 +287,7 @@
    "top_similar": [
     {
      "id": "interview-prep/Multimodal_AI_EA_Scenarios",
-     "score": 0.35
+     "score": 0.34
     },
     {
      "id": "multimodal-ai/part-13-governance-production",
@@ -382,7 +382,7 @@
     },
     {
      "id": "multimodal-ai/part-14-cloud-platform-comparison",
-     "score": 0.41
+     "score": 0.4
     },
     {
      "id": "multimodal-ai/part-02-enterprise-architecture",
@@ -417,7 +417,7 @@
     },
     {
      "id": "multimodal-ai/part-06-agentic-workflows",
-     "score": 0.35
+     "score": 0.34
     }
    ]
   },
@@ -441,7 +441,7 @@
    "top_similar": [
     {
      "id": "multimodal-ai/part-12-observability-finops",
-     "score": 0.41
+     "score": 0.4
     },
     {
      "id": "multimodal-ai/index",

@@ -40,15 +40,15 @@
    "top_similar": [
     {
      "id": "ai-protocols/standards/emerging-protocols-agui-utcp",
-     "score": 0.57
+     "score": 0.56
     },
     {
-     "id": "agentic-ui/security-architecture",
-     "score": 0.39
+     "id": "coding-tools/github-copilot/copilotkit-server-map-call-flow",
+     "score": 0.45
     },
     {
-     "id": "agentic-ui/agent-ux-patterns",
-     "score": 0.38
+     "id": "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools",
+     "score": 0.43
     }
    ]
   },
@@ -94,10 +94,10 @@
     },
     {
      "id": "ai-development/testing/Agent_Testing_Monitoring_Evaluation",
-     "score": 0.37
+     "score": 0.36
     },
     {
-     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "id": "interview-prep/Agentic_AI_Platforms_Questionnaire_2025",
      "score": 0.33
     }
    ]
@@ -199,7 +199,7 @@
     },
     {
      "id": "ai-development/testing/Agent_Testing_Monitoring_Evaluation",
-     "score": 0.31
+     "score": 0.3
     }
    ]
   },
@@ -295,11 +295,11 @@
     },
     {
      "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
-     "score": 0.41
+     "score": 0.42
     },
     {
      "id": "ai-protocols/auth/index",
-     "score": 0.4
+     "score": 0.42
     }
    ]
   },
@@ -445,7 +445,7 @@
    "top_similar": [
     {
      "id": "agentic-ui/agui-standards-landscape",
-     "score": 0.39
+     "score": 0.38
     },
     {
      "id": "agentic-ui/enterprise-reference-architecture",
