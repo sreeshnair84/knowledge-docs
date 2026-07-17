@@ -136,14 +136,24 @@ These solve the same threat with fundamentally different mechanisms, and enterpr
 
 **Cryptographic agility** — the ability to swap a cryptographic algorithm without re-architecting the system around it — is the governance discipline that makes the PQC migration below tractable at enterprise scale; an architect's first PQC deliverable should usually be an agility layer (abstracted crypto provider interfaces), not a big-bang algorithm swap.
 
-#### NIST Post-Quantum Standards (2024)
+#### NIST Post-Quantum Standards — 2025/2026 Status
 
-| Standard | Algorithm | Use Case | Security Basis |
-| ---------- | ----------- | ---------- | --------------- |
-| **FIPS 203** | ML-KEM (Kyber) | Key encapsulation | Module lattice |
-| **FIPS 204** | ML-DSA (Dilithium) | Digital signatures | Module lattice |
-| **FIPS 205** | SLH-DSA (SPHINCS+) | Digital signatures | Hash-based |
-| **FIPS 206** | FN-DSA (Falcon) | Digital signatures | NTRU lattice |
+| Standard | Algorithm | Use Case | Security Basis | Status |
+| ---------- | ----------- | ---------- | --------------- | ------- |
+| **FIPS 203** | ML-KEM (Kyber) | Key encapsulation | Module lattice | **Final (2024)** |
+| **FIPS 204** | ML-DSA (Dilithium) | Digital signatures | Module lattice | **Final (2024)** |
+| **FIPS 205** | SLH-DSA (SPHINCS+) | Digital signatures | Hash-based | **Final (2024)** |
+| **FIPS 206** | FN-DSA (Falcon) | Digital signatures | NTRU lattice | Finalising 2026 |
+| HQC | Code-based KEM | Key encapsulation (backup) | Error-correcting codes | Selected March 2025; finalising ~2027 |
+
+**Deployment reality (as of July 2026):**
+- **Microsoft** shipped GA support for ML-DSA in Active Directory Certificate Services on Windows Server 2025 (May 13, 2026) — the most significant enterprise deployment milestone to date.
+- **Browsers & CDN vendors** began experimental hybrid TLS support in 2025; major cloud load balancers now offer configurable PQC policies per tenant.
+- **US Executive Order EO-14412** mandates government-wide PQC migration for federal systems, with binding deadlines for high-value assets. NIST will deprecate quantum-vulnerable algorithms from its standards by 2035, with high-risk systems transitioning much earlier.
+- **UK NCSC** (Feb 2026): financial services urged to complete external TLS hybrids before 2028.
+- **Enterprise adoption**: Only 5% of enterprises had PQC deployed as of May 2025 (survey); ~40% report actively transitioning (2026 Entrust/Ponemon study, broadly defined). The gap between "planning" and "deployed" is the architect's problem to close.
+
+> **For architects:** The migration is a $15B+ market opportunity and compliance imperative simultaneously. Start with a crypto inventory (what algorithms are in use, where), then build a cryptographic agility layer *before* swapping algorithms — otherwise every future NIST update becomes another multi-year project.
 
 ```python
 # PQC implementation using liboqs (Open Quantum Safe)

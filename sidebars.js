@@ -950,16 +950,33 @@ const sidebars = {
       label: 'Quantum AI',
       link: {type: 'doc', id: 'quantum/index'},
       items: [
-        {type: 'doc', id: 'quantum/zero-to-mastery', label: 'Zero to Mastery'},
-        {type: 'doc', id: 'quantum/zero-to-mastery-part1-foundations', label: 'Zero to Mastery — Part 1: Foundations'},
-        {type: 'doc', id: 'quantum/zero-to-mastery-part2-quantum-ai', label: 'Zero to Mastery — Part 2: Quantum AI'},
-        {type: 'doc', id: 'quantum/zero-to-mastery-part3-architecture', label: 'Zero to Mastery — Part 3: Mastery & Architecture'},
-        {type: 'doc', id: 'quantum/zero-to-mastery-part4-appendices', label: 'Zero to Mastery — Part 4: Appendices & Industry Landscape'},
-        {type: 'doc', id: 'quantum/Quantum_AI_Zero_to_Mastery', label: 'Quantum AI Zero to Mastery (Original PDF — superseded)'},
-        {type: 'doc', id: 'quantum/IBM_Associate_Quantum_CertGuide', label: 'IBM Associate Cert Guide'},
-        {type: 'doc', id: 'quantum/IBM_Developer_Quantum_CertGuide', label: 'IBM Developer Cert Guide'},
-        {type: 'doc', id: 'quantum/Quantum_AI_Startups_Report', label: 'Startups Report'},
-        {type: 'doc', id: 'quantum/Quantum_AI_Consultancies_Report', label: 'Consultancies Report'},
+        {
+          type: 'category',
+          label: 'Zero to Mastery (12-Week Programme)',
+          link: {type: 'doc', id: 'quantum/zero-to-mastery'},
+          items: [
+            {type: 'doc', id: 'quantum/zero-to-mastery-part1-foundations', label: 'Part 1 — Foundations (Weeks 1–4)'},
+            {type: 'doc', id: 'quantum/zero-to-mastery-part2-quantum-ai', label: 'Part 2 — Quantum AI (Weeks 5–8)'},
+            {type: 'doc', id: 'quantum/zero-to-mastery-part3-architecture', label: 'Part 3 — Mastery & Architecture (Weeks 9–12)'},
+            {type: 'doc', id: 'quantum/zero-to-mastery-part4-appendices', label: 'Part 4 — Appendices & Industry Landscape'},
+          ],
+        },
+        {
+          type: 'category',
+          label: 'IBM Certifications',
+          items: [
+            {type: 'doc', id: 'quantum/IBM_Associate_Quantum_CertGuide', label: 'Associate Developer (C1000-112)'},
+            {type: 'doc', id: 'quantum/IBM_Developer_Quantum_CertGuide', label: 'Developer (C1000-171)'},
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Industry Landscape',
+          items: [
+            {type: 'doc', id: 'quantum/Quantum_AI_Startups_Report', label: 'Startups — IonQ, D-Wave, Quantinuum & more'},
+            {type: 'doc', id: 'quantum/Quantum_AI_Consultancies_Report', label: 'Consultancies — Accenture, McKinsey & more'},
+          ],
+        },
       ],
     },
     {

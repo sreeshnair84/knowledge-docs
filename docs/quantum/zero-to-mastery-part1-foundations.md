@@ -32,36 +32,46 @@ You do not need a physics PhD. You need a working engineer's understanding of th
 **You'll be able to:** explain superposition/entanglement/interference/measurement in your own words, plot a qubit state on the Bloch sphere, and walk through a teleportation circuit line by line.
 
 <details>
-<summary><strong>Superposition</strong></summary>
+<summary><strong>Superposition — "both at once"</strong></summary>
 
-A qubit can exist in a linear combination of |0⟩ and |1⟩ simultaneously:
+A classical bit is a coin that has already landed: it is either heads (0) or tails (1). A qubit is a *spinning* coin — while it spins, it is genuinely both at once, not just "we don't know which." When you measure it (stop the spin), it snaps to one value.
+
+Mathematically, a qubit can exist in a linear combination of |0⟩ and |1⟩ simultaneously:
 
 ```
 |ψ⟩ = α|0⟩ + β|1⟩   where  |α|² + |β|² = 1
 ```
 
-Unlike classical probability, α and β are **complex amplitudes**, enabling interference. This is what gives quantum computers exponential state space.
+The key insight: α and β are **complex amplitudes**, not probabilities. This distinction is what enables interference (see below) — and ultimately quantum speedup. An n-qubit register can be in a superposition of all 2ⁿ states simultaneously, which is why 300 qubits can represent more states than there are atoms in the observable universe.
 
 </details>
 
 <details>
-<summary><strong>Entanglement</strong></summary>
+<summary><strong>Entanglement — "spooky action at a distance"</strong></summary>
 
-Two or more qubits can share a quantum state that cannot be described independently. Measuring one qubit instantly determines the state of its entangled partner, regardless of distance. This enables quantum teleportation, superdense coding, and distributed quantum computing — see the worked circuits below.
+Imagine two magic dice that always land on opposite numbers, no matter how far apart they are rolled. That is entanglement: two or more qubits share a joint quantum state that cannot be described independently.
 
-</details>
+Measuring one qubit instantly determines the state of its entangled partner — not because a signal travels between them, but because they are a single quantum system that happens to be physically separated. Einstein famously called this "spooky action at a distance" and found it unsettling; Bell's 1964 theorem and subsequent experiments proved it is a real feature of nature, not a hidden-variable trick.
 
-<details>
-<summary><strong>Interference</strong></summary>
-
-Quantum amplitudes can **constructively reinforce correct answers** and destructively cancel wrong ones — this is how quantum algorithms achieve speedup. It is analogous to wave interference in optics.
+This enables quantum teleportation, superdense coding, and (in the future) distributed quantum computing — see the worked circuits below.
 
 </details>
 
 <details>
-<summary><strong>Measurement</strong></summary>
+<summary><strong>Interference — "cancel the wrong answers"</strong></summary>
 
-Measuring a qubit collapses the superposition, yielding |0⟩ with probability |α|² or |1⟩ with probability |β|². Quantum algorithms are designed so that correct answers have high probability *before* measurement.
+This is the least intuitive but most important phenomenon for quantum speedup.
+
+Quantum algorithms are wave interference engines. They are designed so that computational paths leading to *wrong answers* cancel out (destructive interference) while paths leading to *correct answers* reinforce (constructive interference) — exactly like the dark and bright bands in a double-slit experiment. Grover's and Shor's algorithms both work this way. Without interference, superposition alone would just give you a random answer.
+
+</details>
+
+<details>
+<summary><strong>Measurement — "collapsing the wave"</strong></summary>
+
+Measuring a qubit ends its quantum existence: the superposition collapses irreversibly to a classical bit. The qubit yields |0⟩ with probability |α|² or |1⟩ with probability |β|².
+
+This is a constraint, not just a feature. Quantum algorithms must be designed so that the correct answer has high probability **before** measurement — you cannot simply "look at all the superposed states." The art of quantum algorithm design is engineering the interference pattern so the right answer dominates.
 
 </details>
 
@@ -277,6 +287,8 @@ This is precisely the subroutine Shor's algorithm calls to extract the period of
 
 #### Hardware Modalities
 
+Think of quantum hardware platforms as different ways to physically build a qubit. Each exploits different quantum-mechanical phenomena, and each has fundamentally different speed-vs-fidelity-vs-scalability trade-offs.
+
 | Platform | Provider | Gate Time | Coherence | Connectivity | Best For |
 | ---------- | ---------- | ----------- | ----------- | -------------- | ---------- |
 | **Superconducting** | IBM, Google | ~50 ns | ~100 µs | Nearest-neighbour | Large qubit count, fast iteration |
@@ -284,8 +296,21 @@ This is precisely the subroutine Shor's algorithm calls to extract the period of
 | **Photonic** | Xanadu | Room temp | Short | Gaussian boson sampling | QML, continuous-variable QC |
 | **Neutral Atom** | QuEra, Pasqal | ~µs | ~seconds | Reconfigurable | Optimisation, simulation |
 | **Topological** | Microsoft | TBD | Very long (theoretical) | TBD | Fault-tolerant future |
+| **Silicon Spin** | Intel, academic | ~µs | ms–seconds | Nearest-neighbour (2D) | CMOS-compatible, long-term scale |
+
+**2025–2026 Hardware Milestones** (current as of July 2026):
+
+| Company | Chip | Key Claim |
+|---|---|---|
+| **IBM** | Nighthawk (120Q) | 218 couplers; supports 5,000 two-qubit gates at low error; targets quantum advantage by end-2026 |
+| **IBM** | Loon (experimental) | First chip integrating all fault-tolerant components; 6-way connectivity; real-time error decoding in <480 ns |
+| **Google** | Willow (105Q) | Below-threshold error correction; 13,000× speedup over Frontier supercomputer on physics simulation benchmark |
+| **Microsoft** | Majorana 1 (8Q topological) | World's first topological QPU; encodes qubits in Majorana zero modes for hardware-level error resistance; roadmap to 1M qubits on a single chip |
+| **Quantinuum** | H-series trapped-ion | Error-protected logical qubits demonstrated beyond break-even (March 2026) |
 
 Noise on all of these platforms is characterised by two numbers an architect should always ask a vendor for: **decoherence time** (how long a qubit holds its state before environmental noise scrambles it — the coherence column above) and **gate fidelity** (the probability a single gate executes correctly, typically 99.0–99.9% today). Calibration is the recurring process of re-measuring both and re-tuning control pulses, usually daily on cloud-hosted hardware — ask any vendor how often, and how they expose that data, before committing a production workload to a specific device.
+
+> **What is a topological qubit (for the curious non-specialist)?** Ordinary qubits store information in a single fragile particle. Topological qubits store information in the *relationship* between two special quasiparticles (Majorana zero modes) — so even if noise disturbs one particle, the information encoded in their joint state survives. Microsoft's Majorana 1 is the first chip to demonstrate this in hardware. It currently has only 8 qubits but the architectural approach could, in principle, scale to vastly more qubits per chip than today's superconducting designs.
 
 Error mitigation and error correction are frequently conflated. They are not the same discipline, they don't run on the same hardware timeline, and an architect who pitches one when the stakeholder means the other will lose credibility fast:
 
