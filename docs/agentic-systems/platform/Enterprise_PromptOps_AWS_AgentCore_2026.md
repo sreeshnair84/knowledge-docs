@@ -164,7 +164,7 @@ Every production prompt must traverse a defined lifecycle. Skipping stages — e
 |Rollback|SRE / On-Call|Incident Commander|Registry API, AppConfig|
 |Archive|AI Platform Engineer|Compliance Team|S3 Glacier, CloudTrail|
 
-# Prompt Registry Design
+## Prompt Registry Design
 
 Enterprise prompt registry architecture — metadata model, versioning, lineage, dependency graphs, and implementation patterns.
 
@@ -267,7 +267,7 @@ Digital approval records attached to each version. Multi-stage workflow audit tr
 
 ### PART 4
 
-# AWS AgentCore Runtime Integration
+## AWS AgentCore Runtime Integration
 
 Where prompts should live, how AgentCore retrieves them, caching strategies, and propagation patterns.
 
@@ -579,7 +579,7 @@ deny[msg] {
 
 - Compliance reports auto-generated from audit log: who approved what, when, with what evaluation scores.
 
-# Responsible AI Integration
+## Responsible AI Integration
 
 How Prompt Lifecycle integrates with RAI: risk scoring, safety testing, prompt injection defenses, and guardrails.
 
@@ -652,7 +652,7 @@ AgentCore Policy, reaching GA in March 2026, enforces behavioral boundaries for 
 
 - Policy violations logged, alerted, and trigger human escalation
 
-# Security Hardening
+## Security Hardening
 
 Signed prompts, encrypted storage, secrets separation, multi-region replication, and tamper detection.
 
@@ -711,7 +711,7 @@ def verify_prompt_integrity(prompt_content: str, metadata: dict) -> bool:
 |Access reviews|Quarterly RBAC access reviews. Automated access removal<br>for inactive users.|IAM Access Analyzer + custom<br>Lambda|
 |Prompt injection scanning|Pre-merge automated scanning for injection patterns in prompt<br>templates|Custom Lambda in CI/CD|
 
-# AWS AgentCore Runtime — PART 11 Capabilities & Gaps
+## AWS AgentCore Runtime — PART 11 Capabilities & Gaps
 
 What AgentCore provides natively, what it expects external systems to provide, and the PromptOps gap analysis.
 
@@ -791,7 +791,7 @@ What AgentCore provides natively, what it expects external systems to provide, a
 |Prompt-level RBAC|Custom DynamoDB + IAM or external registry RBAC|
 |Audit Trail|AWS CloudTrail + immutable S3 + custom audit API|
 
-# Arize AX — Deep Dive
+## Arize AX — Deep Dive
 
 Architecture, prompt capabilities, evaluation engine, governance, enterprise adoption, pricing, and honest limitations.
 
@@ -889,7 +889,7 @@ Arize Phoenix is the open-source library for LLM tracing, evaluation, and prompt
 
 **For enterprise AWS AgentCore deployments in regulated industries: Use Phoenix in development and CI for zero-cost evaluation during authoring. Graduate to Arize AX in production for online evaluation, alerts, and compliance-grade observability. Do not depend on Phoenix for production prompt registry — use Langfuse, Braintrust, or custom DynamoDB registry instead.**
 
-# AWS-Native Alternative
+## AWS-Native Alternative
 
 How much PromptOps can be built using only AWS services — and where native services fall short.
 
@@ -1039,7 +1039,7 @@ def invoke(session: dict, user_input: str) -> str:
     return response['output']['message']['content'][0]['text']
 ```
 
-# Multi-Agent Systems
+## Multi-Agent Systems
 
 How Planner, Coordinator, Worker, Supervisor, and Reflection agents share and compose prompts.
 
@@ -1072,7 +1072,7 @@ Large prompts assembled from smaller reusable fragments (macros): safety-clause-
 
 Tenant-specific overrides applied on top of base prompt. Override stored separately in registry with its own approval record. Base + override assembled by Prompt Gateway at request time.
 
-# Prompt Template Systems
+## Prompt Template Systems
 
 Jinja2, Mustache, DSPy, structured prompts, and composition patterns.
 
@@ -1119,7 +1119,7 @@ DSPy (Declarative Self-improving Python) treats prompts as compiled programs rat
 
 - Integration pattern: DSPy optimizes offline; compiled prompt stored in registry as v-next candidate; human approval before production promotion
 
-# Enterprise Reference PART 19 Architecture
+## Enterprise Reference PART 19 Architecture
 
 Complete production architecture for PromptOps on AWS AgentCore Runtime.
 
@@ -1158,7 +1158,7 @@ All events (publish, deploy, rollout, rollback) written to immutable CloudTrail 
 |Observability|Arize AX, CloudWatch cross-account, cost<br>attribution|CloudWatch, OTel Collector, Cost Explorer|
 |Development|Author portal, Phoenix local, Braintrust offline evals|Development tooling, no production data|
 
-# PromptOps CI/CD
+## PromptOps CI/CD
 
 GitOps, branching, evaluation gates, promotion rings, and feature flags for prompts.
 
@@ -1221,7 +1221,7 @@ jobs:
 |Ring 3 — Full Production|100%|All customers|Auto if Ring 2 gates pass for 8h|
 |Emergency Rollback|100%→<br>0%|All sessions migrated|Automatic on quality breach or manual trigger|
 
-# Anti-Patterns
+## Anti-Patterns
 
 The 15 most dangerous failure modes in enterprise PromptOps and how to remediate them.
 
@@ -1315,7 +1315,7 @@ The 15 most dangerous failure modes in enterprise PromptOps and how to remediate
 
 **Remediation:** Structured approval checklists with mandatory evidence requirements. Approver training. Rotation of approvers. Spot audits of approval quality. Accountability for post-approval incidents.
 
-# Complete Enterprise Reference Architecture
+## Complete Enterprise Reference Architecture
 
 Full production architecture for AWS AgentCore Runtime with multi-account, multi-region, multi-tenant, HA, DR, and zero-downtime prompt updates.
 
@@ -1426,7 +1426,7 @@ Each architecture option is scored 1–5 on 13 dimensions. Weights reflect regul
 
 **Matrix Winner: AWS + Arize AX + Langfuse (Hybrid) scores 4.94/5.0, highest on governance, RAI, lifecycle completeness, and enterprise readiness. Pure AWS-native scores lowest (3.54) due to engineering cost and governance gaps. AWS + Langfuse alone (4.51) is the best single-vendor option for cost-sensitive teams.**
 
-# Implementation Blueprint
+## Implementation Blueprint
 
 4-phase implementation roadmap from MVP to autonomous prompt optimization.
 

@@ -14,7 +14,7 @@ tags: ["agentic-ai", "platform", "runbook", "devops", "aws"]
 
 # AI Platform Factory
 
-# Production-Grade Requirements & Agent Runbook
+## Production-Grade Requirements & Agent Runbook
 
 Full-stack platform  |  Frontend + Backend + Data pipeline + Agent layer  |  GitHub Copilot + Claude Code
 
@@ -647,7 +647,7 @@ Hooks are the enforcement layer. Unlike instructions (which the model may ignore
 
 ### security-check.sh — preToolUse enforcement script
 
-# !/bin/bash
+## !/bin/bash
 
 - `# .github/hooks/scripts/security-check.sh`
 

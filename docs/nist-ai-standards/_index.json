@@ -1,0 +1,216 @@
+{
+ "section": "nist-ai-standards",
+ "page_count": 8,
+ "pages": [
+  {
+   "id": "nist-ai-standards/index",
+   "title": "NIST AI Standards & CAISI \u2014 Enterprise Security Guide",
+   "doc_type": "unknown",
+   "tags": [
+    "nist",
+    "ai-100-2",
+    "ai-100-4",
+    "caisi",
+    "adversarial-ml",
+    "synthetic-content",
+    "agentic-ai"
+   ],
+   "word_count": 791,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/part-07-future-trends",
+     "score": 0.59
+    },
+    {
+     "id": "nist-ai-standards/part-05-control-mappings",
+     "score": 0.52
+    },
+    {
+     "id": "nist-ai-standards/part-01-nist-ai-100-2-adversarial-ml",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "nist-ai-standards/part-01-nist-ai-100-2-adversarial-ml",
+   "title": "NIST AI 100-2 \u2014 Adversarial Machine Learning",
+   "doc_type": "unknown",
+   "tags": [
+    "nist-ai-100-2",
+    "adversarial-ml",
+    "evasion",
+    "poisoning",
+    "model-extraction",
+    "threat-model"
+   ],
+   "word_count": 2558,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/part-05-control-mappings",
+     "score": 0.48
+    },
+    {
+     "id": "nist-ai-standards/index",
+     "score": 0.46
+    },
+    {
+     "id": "nist-ai-standards/part-07-future-trends",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "nist-ai-standards/part-02-nist-ai-100-4-synthetic-content",
+   "title": "NIST AI 100-4 \u2014 Synthetic Content Detection & Provenance",
+   "doc_type": "unknown",
+   "tags": [
+    "nist-ai-100-4",
+    "synthetic-content",
+    "deepfake",
+    "c2pa",
+    "provenance",
+    "watermarking",
+    "detection"
+   ],
+   "word_count": 2193,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/index",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "nist-ai-standards/part-03-caisi-agentic-ai",
+   "title": "CAISI Agentic AI Security Guidance",
+   "doc_type": "unknown",
+   "tags": [
+    "caisi",
+    "agentic-ai",
+    "multi-agent",
+    "tool-use",
+    "orchestration",
+    "agent-security"
+   ],
+   "word_count": 2300,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "nist-ai-standards/part-04-enterprise-architecture",
+   "title": "NIST AI Standards \u2014 Enterprise Architecture Patterns",
+   "doc_type": "unknown",
+   "tags": [
+    "enterprise-architecture",
+    "aws",
+    "azure",
+    "gcp",
+    "cloud-native",
+    "nist",
+    "implementation"
+   ],
+   "word_count": 1777,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/part-07-future-trends",
+     "score": 0.33
+    },
+    {
+     "id": "nist-ai-standards/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "nist-ai-standards/part-05-control-mappings",
+   "title": "NIST AI Standards \u2014 Cross-Framework Control Mappings",
+   "doc_type": "unknown",
+   "tags": [
+    "control-mapping",
+    "nist-csf",
+    "iso-42001",
+    "owasp-llm",
+    "eu-ai-act",
+    "mitre-atlas"
+   ],
+   "word_count": 1712,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/index",
+     "score": 0.52
+    },
+    {
+     "id": "nist-ai-standards/part-01-nist-ai-100-2-adversarial-ml",
+     "score": 0.48
+    },
+    {
+     "id": "nist-ai-standards/part-07-future-trends",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "nist-ai-standards/part-06-implementation-checklist",
+   "title": "NIST AI Standards \u2014 Implementation Checklist",
+   "doc_type": "unknown",
+   "tags": [
+    "checklist",
+    "implementation",
+    "banking",
+    "healthcare",
+    "government",
+    "regulated-industry"
+   ],
+   "word_count": 1559,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "nist-ai-standards/part-07-future-trends",
+   "title": "NIST AI Standards \u2014 Future Trends & Emerging Threats",
+   "doc_type": "unknown",
+   "tags": [
+    "future-trends",
+    "emerging-threats",
+    "standards-evolution",
+    "frontier-ai",
+    "quantum",
+    "regulation"
+   ],
+   "word_count": 1743,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "nist-ai-standards/index",
+     "score": 0.59
+    },
+    {
+     "id": "nist-ai-standards/part-05-control-mappings",
+     "score": 0.39
+    },
+    {
+     "id": "nist-ai-standards/part-01-nist-ai-100-2-adversarial-ml",
+     "score": 0.38
+    }
+   ]
+  }
+ ]
+}

@@ -20,7 +20,7 @@ tags: ["agentic-systems", "platform", "best-practices", "agents-sdk", "agentcore
 | Coverage | Strands Agents SDK, AgentCore GA, MCP, ADFS, Multitenancy, Langfuse |
 
 # Enterprise Agentic Platform Best Practices
-# 1. Executive Summary & Research Findings
+## 1. Executive Summary & Research Findings
 
 This document consolidates research-backed best practices and antipatterns for implementing the Enterprise Agentic Platform. It covers five major capability layers: Strands Agents SDK (open-sourced by AWS in May 2025, 14M+ downloads), Amazon Bedrock AgentCore (GA October 2025), MCP tool integration, ADFS/FT Rights authentication propagation, and Langfuse observability. It also introduces the multitenancy model specific to a financial-services use case where multiple business divisions or external clients share platform infrastructure.
 
@@ -33,7 +33,7 @@ Key research findings that affect the architecture design:
 - AgentCore Runtime provides microVM-level session isolation (Firecracker), meaning each user session gets dedicated CPU, memory, and filesystem — this is the correct multitenancy model for financial services.
 - Strands Agent SOPs (Standard Operating Procedures) provide a natural-language workflow specification format that can encode FT rights requirements directly into agent behaviour contracts.
 
-# 2. Strands Agents SDK — Best Practices & Antipatterns
+## 2. Strands Agents SDK — Best Practices & Antipatterns
 
 ## 2.1 Core Design Principles
 
@@ -228,7 +228,7 @@ Enabling the Dynamic MCP Client tool (strands_tools.mcp) in production. The Dyna
 | memory (Mem0/Knowledge Bases) | Approved — use with tenant-scoped namespaces |
 | retrieve | Approved — use with FT-scoped OpenSearch indices |
 
-# 3. Amazon Bedrock AgentCore — Best Practices
+## 3. Amazon Bedrock AgentCore — Best Practices
 
 ## 3.1 AgentCore Runtime — Session Isolation
 
@@ -304,7 +304,7 @@ Storing sensitive financial data (account balances, positions, PII) in AgentCore
 # ✅  CORRECT: FT-scoped, tenant-aware memory storage from bedrock_agentcore import AgentCoreMemory memory_client = AgentCoreMemory() async def store_interaction_summary(user_sub: str, tenant_id: str, ft_rights: list, summary: str): # Namespace isolates memory per tenant namespace = f'tenant:{tenant_id}:user:{user_sub}' # Only store summary, never raw financial data sanitised = sanitise_pii(summary)  # remove names, account numbers await memory_client.store( actor_id=user_sub, namespace=namespace, content=sanitised, metadata={ 'ft_rights_at_store': ft_rights,   # for retrieval filtering 'tenant_id': tenant_id, 'stored_at': datetime.utcnow().isoformat() } )
 ```
 
-# 4. Multitenancy Design
+## 4. Multitenancy Design
 
 :::note
 
@@ -372,7 +372,7 @@ Implement per-tenant token budgets using a Redis-backed counter. Each tenant sho
 # ✅  CORRECT: Per-tenant token budget enforcement import redis class TenantBudgetGuard: def __init__(self, redis_client, budgets: dict): self.redis = redis_client self.budgets = budgets  # {tenant_id: daily_token_limit} async def check_and_deduct(self, tenant_id: str, estimated_tokens: int) -> str: key = f'token_budget:{tenant_id}:{date.today().isoformat()}' current = int(self.redis.get(key) or 0) budget = self.budgets.get(tenant_id, 100000) usage_pct = current / budget if usage_pct > 1.0: return 'BLOCKED' elif usage_pct > 0.85: return 'DEGRADED'  # switch to lighter model self.redis.incrby(key, estimated_tokens) self.redis.expire(key, 86400)  # 24h TTL return 'ALLOWED'
 ```
 
-# 5. MCP Security — Best Practices & Antipatterns
+## 5. MCP Security — Best Practices & Antipatterns
 
 ## 5.1 MCP Server Design
 
@@ -430,7 +430,7 @@ Passing raw database query results directly to the agent context without sanitis
 
 :::
 
-# 6. ADFS / FT Rights — Known Issues & Solutions
+## 6. ADFS / FT Rights — Known Issues & Solutions
 
 ## 6.1 Known Issue: ADFS 2019 Resource Parameter
 
@@ -500,7 +500,7 @@ Namespace all custom BFF-injected claims with a bank-specific prefix. Use a URI-
 # ✅  CORRECT: Namespaced custom JWT claims CLAIM_NAMESPACE = 'https://bank.eu/claims/' bff_claims = { f'{CLAIM_NAMESPACE}ft_rights':    ft_rights_list, f'{CLAIM_NAMESPACE}tenant_id':    tenant_id, f'{CLAIM_NAMESPACE}enriched_at':  datetime.utcnow().isoformat(), f'{CLAIM_NAMESPACE}enriched_by':  'bff-v2.3.1', f'{CLAIM_NAMESPACE}session_id':   session_id, } # Extraction in downstream services def get_ft_rights(claims: dict) -> list: return claims.get(f'{CLAIM_NAMESPACE}ft_rights', [])
 ```
 
-# 7. Langfuse Observability — Best Practices
+## 7. Langfuse Observability — Best Practices
 
 ## 7.1 Strands + Langfuse Native Integration
 
@@ -548,7 +548,7 @@ Configure Langfuse's field masking to redact specific fields before trace storag
 | Trade amounts > EUR 100k | Redact in trace, preserve in separate audit log |
 | Credentials / tokens in headers | Full redaction — never log Authorization headers |
 
-# 8. Architecture Issues Found & Resolutions
+## 8. Architecture Issues Found & Resolutions
 
 :::note
 
@@ -631,7 +631,7 @@ The Strands Batch Tool (from strands_tools) allows an agent to call multiple too
 Avoid using the generic strands_tools.batch tool. Instead, implement a bank-specific batch wrapper that injects tenant_id and ft_rights into every parallel tool call before dispatch.
 All custom @tool functions must extract tenant_id from the thread-local context (set at agent invocation time) rather than relying on the caller to pass it. This prevents tenant context from being accidentally dropped in batch calls.
 
-# 9. Security Antipatterns — Comprehensive List
+## 9. Security Antipatterns — Comprehensive List
 
 ### Authentication & Token Management Antipatterns
 
@@ -705,7 +705,7 @@ Returning error details from MCP tools that include stack traces, database query
 
 :::
 
-# 10. Implementation Roadmap
+## 10. Implementation Roadmap
 
 | Priority | Item | Section Ref | Effort |
 | --- | --- | --- | --- |
@@ -731,7 +731,7 @@ Returning error details from MCP tools that include stack traces, database query
 | P3 — Normal | Implement GraphBuilder for trade workflows | Sec 2.2.1 | 2 weeks |
 | P3 — Normal | Deploy Strands Labs AI Functions for edge cases | Sec 2 notes | TBD |
 
-# Appendix A: Decision Matrix — Strands vs. AgentCore Native vs. Hybrid
+## Appendix A: Decision Matrix — Strands vs. AgentCore Native vs. Hybrid
 
 | Scenario | Recommended Approach | Rationale |
 | --- | --- | --- |
@@ -745,7 +745,7 @@ Returning error details from MCP tools that include stack traces, database query
 | Regulated trading operations | GraphBuilder workflow + human-in-the-loop step | Deterministic ordering + approval gate before trade execution |
 | Observability and debugging | Strands OTEL → Langfuse self-hosted | GDPR-compliant; traces stay in EU VPC; best-in-class LLM-specific UI |
 
-# Appendix B: Strands Agents Feature Reference (March 2026)
+## Appendix B: Strands Agents Feature Reference (March 2026)
 
 | Feature | Status / Notes |
 | --- | --- |

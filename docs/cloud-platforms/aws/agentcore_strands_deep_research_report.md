@@ -164,7 +164,7 @@ July 2026
 |**25Appendix A — Sources**|**59**|
 |**26Appendix B — Glossary**|**59**|
 
-# 1 Executive Summary
+## 1 Executive Summary
 
 Amazon Bedrock AgentCore is AWS’s managed platform for taking AI agents from prototype to production. It is deliberately **not** an agent framework — it is a set of composable, independently-adoptable services (Runtime, Gateway, Identity, Memory, Policy, Registry, Harness, Browser, Code Interpreter, Observability, Evaluations, Optimization, and the newly previewed Payments) that sit underneath any agent framework, including AWS’s own open-source **Strands Agents SDK** , LangGraph, CrewAI, LlamaIndex, the OpenAI Agents SDK, and the Claude Agent SDK. The platform’s thesis, repeated consistently across AWS messaging since its October 2025 preview launch, is that the hard part of agentic AI was never writing the agent loop — it is securing tool calls, isolating sessions, managing identity across trust boundaries, and observing non-deterministic behavior at scale.
 
@@ -188,7 +188,7 @@ Between April and June 2026, AgentCore moved through its most consequential quar
 
 This report reverse-engineers each AgentCore service down to its request flow and trust boundary, maps the Strands SDK’s internals onto that platform, builds a threat model grounded in both AWS’s stated design and independent red-team findings, and closes with evidence-scored predictions for the platform’s roadmap through mid-2028. Throughout, findings are graded by source strength: **AWS-documented** (official docs/blogs/release notes), **AWS-stated-marketing** (keynotes, press claims not yet independently verified), and **independent research** (security researchers, practitioner blogs, benchmarks).
 
-# 2 Part I — Platform Foundations
+## 2 Part I — Platform Foundations
 
 ## 2.1 1. Why AgentCore Exists
 
@@ -222,7 +222,7 @@ A critical architectural distinction threads through the whole platform: **Gatew
 
 **plane** (it proxies and enforces policy on live traffic), while **Registry is the control plane** (it catalogs and governs resources at build/publish time). Confusing the two — for example, assuming Registry auto-indexes what Gateway serves — is a common early-adopter mistake documented by multiple practitioners in the April 2026 wave of Registry-preview write-ups.
 
-# 3 Part II — Runtime
+## 3 Part II — Runtime
 
 ## 3.1 3. Runtime Architecture
 
@@ -252,7 +252,7 @@ By default Runtime deploys in **PUBLIC** network mode. **VPC mode** provisions A
 
 Runtime is consumption-based: compute is billed only while active (not during LLM inference I/O wait, though session state is held), and separate, cheaper memory-holding charges apply for idle/warm microVMs. Direct code deployment incurs standard S3 storage costs; container deployment incurs standard ECR costs. A frequently cited industry estimate (Cloudvisor, May 2026) puts AgentCore infrastructure cost at roughly 10–30% of total agent cost at scale, with model inference (billed separately through standard Bedrock pricing) dominating the bill for most workloads — a moderate-traffic support agent (10k conversations/month) was estimated at $50–200/month infrastructure plus $200–800/month inference.
 
-# 4 Part III — Gateway
+## 4 Part III — Gateway
 
 ## 4.1 4. Gateway Architecture
 
@@ -304,7 +304,7 @@ As the aggregated tool catalog behind a Gateway grows into the hundreds, stuffin
 
 agentcore.gateway), letting resources inside a customer VPC reach Gateway without traversing the public internet. Note the documented caveat: identity-provider round-trips for OAuth (token retrieval, consent redirects) and Gateway’s own outbound calls to external MCP targets still require internet egress — PrivateLink secures the *ingress* path from caller to Gateway, not every downstream hop.
 
-# 5 Part IV — Policy
+## 5 Part IV — Policy
 
 ## 5.1 5. Policy Engine Deep Dive
 
@@ -364,7 +364,7 @@ IAM and Policy are complementary layers answering different questions. IAM answe
 
 Policy reached GA on **March 3, 2026** . By the April–June wave, AWS integrated **Bedrock Guardrails directly into the Policy/Gateway layer** : Guardrails now evaluates outputs from *already-authorized* agent actions and inputs to gateway targets for prompt-injection attempts, harmful content, and sensitive-data exposure — critically, this evaluation runs at the Gateway layer, **outside the agent’s own context window** , so the agent cannot reason around a check it never sees. Because every tool and every context source is required to route through the Gateway, AWS’s framing is that *every new agent capability is automatically governed by the same security layer* without additional integration work per tool. AWS has also signaled (as “coming soon” in the same announcement) that third-party detection signals — Check Point, Zscaler, Rubrik, Netskope, and SentinelOne were named — will be pluggable into the same policy evaluation pipeline.
 
-# 6 Part V — Registry
+## 6 Part V — Registry
 
 ## 6.1 6. Registry Architecture (Preview)
 
@@ -404,7 +404,7 @@ The clearest mental model documented across multiple AWS-partner blogs: Gateway 
 
 write-ups is using Registry purely as a **metadata catalog for “skills”** (name, description, instructions, allowed-tools list) that an agent loads dynamically per-session — keeping the actual tool implementations in-process for latency, while decoupling skill *content* (editable without a redeploy) from the agent *runtime* (which only needs to change when the loading mechanism itself changes). One documented migration (a 16-skill AWS governance agent) reported moving from hardcoded, always-loaded skill descriptions in the system prompt to Registry-backed dynamic loading, cutting prompt bloat and enabling live skill edits without a container rebuild — completed end-to-end, per that team’s account, in about an hour using AI-assisted planning.
 
-# 7 Part VI — Harness
+## 7 Part VI — Harness
 
 ## 7.1 7. Harness Architecture
 
@@ -436,7 +436,7 @@ A widely-cited comparison (“Latent Thoughts,” April 2026) frames the choice 
 
 Harness integrates directly into **AWS Step Functions** via an InvokeHarness state, letting a harness-defined agent participate as a step inside a larger orchestrated pipeline without custom Lambda glue code.
 
-# 8 Part VII — Identity
+## 8 Part VII — Identity
 
 ## 8.1 8. Identity Architecture
 
@@ -488,7 +488,7 @@ Identity natively integrates with Cognito, Okta, and Microsoft Entra ID as inbou
 
 When a supervisor agent delegates to a specialist agent, the user’s identity claims travel with the delegated request. Combined with Gateway-enforced Cedar policy, this means a monitoring/specialist agent several hops downstream can still only access the original user’s data — the cryptographic binding between workload identity and user identity holds regardless of how many agents sit in the chain, which is the property that makes multi-agent architectures auditable rather than an identity-laundering risk.
 
-# 9 Part VIII — Memory
+## 9 Part VIII — Memory
 
 ## 9.1 9. Memory Architecture
 
@@ -520,7 +520,7 @@ Short-term event expiry is configurable per Memory resource (a 7-day default is 
 
 preferences are never retrievable in Bob’s session, even across entirely different session IDs, because retrieval is scoped by namespace, not merely filtered post-hoc.
 
-# 10 Part IX — Browser and Code Interpreter
+## 10 Part IX — Browser and Code Interpreter
 
 ## 10.1 10. Browser Tool
 
@@ -546,7 +546,7 @@ to reach — meaning “no external network access” did not, in Sonrai’s tes
 
 **Threat-model implication:** “Sandbox mode” should not, by itself, be treated as a sufficient boundary for code execution against untrusted or adversarially-influenced input (e.g., code whose content or targets were partly shaped by a prompt-injected instruction). The two concrete architectural mitigations independent researchers converge on are (1) **VPC-only network mode** for any Code Interpreter session handling sensitive workloads, and (2) **leastprivilege, tightly-scoped IAM execution roles** for the interpreter specifically — never reuse a broadly-privileged role across the interpreter and other AgentCore primitives.
 
-# 11 Part X — MCP Server Hosting
+## 11 Part X — MCP Server Hosting
 
 ## 11.1 12. Hosting MCP Servers on AgentCore Runtime
 
@@ -556,7 +556,7 @@ AgentCore Runtime can host a developer’s own MCP server as a managed, scaling 
 
 Both IAM (SigV4) and OAuth/Cognito authentication work out of the box for Runtime-hosted MCP servers, and the same Gateway-fronting pattern available for HTTP agents (adding a Runtime as a Gateway HTTP target) applies to MCP-protocol Runtimes as well — letting a team put Cedar policy, Guardrails, and unified observability in front of a hand-written MCP server without changing the server’s own code.
 
-# 12 Part XI — Strands Agents SDK Deep Dive
+## 12 Part XI — Strands Agents SDK Deep Dive
 
 ## 12.1 13. Architecture and Philosophy
 
@@ -641,7 +641,7 @@ An independent, critical review (Starlog, May 2026) — while broadly positive o
 |Local dev / hot-reload|Explicitly **not** a production pattern; disable<br>before deploying to Runtime/Harness|
 |harness-sdk (open-source)|Conceptual sibling to the managed<br>AgentCore harness — same<br>steering/guardrail philosophy, self-hosted|
 
-# 13 Part XII — Observability
+## 13 Part XII — Observability
 
 ## 13.1 23. AWS-Native: AgentCore Observability + CloudWatch GenAI Observability
 
@@ -680,7 +680,7 @@ Phoenix’s differentiated strengths, per Arize’s own documentation and indepe
 
 A single agent turn typically produces a span tree: session span →model-invocation span(s) →tool-call span(s) (each nested under the model turn that requested it) →Gateway request/response-interceptor spans →Policy evaluation span →downstream target span (Lambda/API/MCP). Correlation IDs propagate through the entire chain, including across a multi-agent hand-off (Graph/Swarm), which is what makes it possible to root-cause a failure that originated in a specialist agent three hops downstream from the entry point. AWS’s own **Agent Inspector** and **Optimization/failure-insights** capabilities (GA by mid-2026) are built directly on top of this span data: failure insights specifically targets **silent behavioral failures that produce no error signal** — the hardest class of production agent bug — by mining recurring patterns across hundreds of sessions and ranking them by prevalence, with continuous daily/weekly reports or targeted post-deployment investigations completing in minutes rather than requiring manual trace archaeology.
 
-# 14 Part XIII — Security: Complete Threat Model
+## 14 Part XIII — Security: Complete Threat Model
 
 ## 14.1 27. Threat Model Overview
 
@@ -732,7 +732,7 @@ Agentic systems introduce a genuinely new class of attack surface distinct from 
 
 All three compute-hosting primitives (Runtime, Browser, Code Interpreter) share the Firecracker-microVM-per-session isolation model, which independent security researchers (BeyondTrust: *“we applaud AWS for providing strong isolation properties of a full KVMbased VM”* ) rate favorably relative to “agent as a service” competitors offering weaker container-only isolation. The documented weak point is specifically **network policy within an otherwise well-isolated VM boundary** (the Sandbox-mode DNS gap) and **IAM-permission scoping independent of network isolation** (the Sonrai S3-reachability finding) — not the VM isolation boundary itself, which held up under scrutiny. The practical takeaway for a threat model: trust the hardware-level session isolation; **do not** trust “Sandbox” network-mode naming alone to mean zero egress, and always pair network-mode hardening with least-privilege IAM scoping on the specific execution role.
 
-# 15 Part XIV — Production Architecture
+## 15 Part XIV — Production Architecture
 
 ## 15.1 28. Network Connectivity Patterns
 
@@ -770,7 +770,7 @@ Three distinct PrivateLink endpoint types exist and must be provisioned separate
 
 VPC connectivity plus Direct Connect/VPN lets AgentCore Runtime, Browser, and Code Interpreter reach on-premises systems as if they were private VPC resources, without exposing those systems to the public internet. The identity-federation limitation noted in Part VII.8.5 (no native cross-cloud agent-identity unification with Azure/GCP) is the primary architectural gap for genuinely hybrid or multi-cloud agent estates; a third-party identity-federation layer, or a deliberate choice to run cloud-specific agent fleets per provider with governed hand-offs at defined boundaries, are the two practical mitigations as of mid-2026.
 
-# 16 Part XV — Release Analysis: April–June 2026 16.1 32. Chronological Timeline
+## 16 Part XV — Release Analysis: April–June 2026 16.1 32. Chronological Timeline
 
 |Date|Release|Signifcance|
 |---|---|---|
@@ -816,7 +816,7 @@ Payments is explicitly preview-only and should not be treated as a production pa
 
 wait for GA and a second look at independent security research once broader adoption produces a research target.
 
-# 17 Part XVI — Roadmap Prediction
+## 17 Part XVI — Roadmap Prediction
 
 ## 17.1 34. Method
 
@@ -888,7 +888,7 @@ Predictions below are grounded exclusively in public evidence gathered for this 
 |June 2026) as a native||knowledge vs. per-agent|
 |AgentCore Memory/Gateway<br>data source||conversational memory);<br>AWS’s own framing at the<br>June summit positioned<br>Context as available “to<br>every agent across an<br>organization,” which<br>logically implies an<br>AgentCore integration path<br>even though none was<br>explicitly announced within<br>the report window|
 
-# 18 Part XVII — Adjacent Roadmap Signal: AWS Continuum and AWS Context
+## 18 Part XVII — Adjacent Roadmap Signal: AWS Continuum and AWS Context
 
 Though not AgentCore services themselves, both were previewed at the same June 17, 2026 AWS Summit New York event alongside AgentCore enhancements, by the same leadership (VP of Agentic AI Swami Sivasubramanian, Chief AI and Technology Officer Matt Wood), and are directly relevant to any AgentCore roadmap forecast because they reveal AWS’s companywide thesis for the next investment cycle: **trust, not raw capability, is the bottleneck to enterprise agent adoption.**
 
@@ -898,7 +898,7 @@ Though not AgentCore services themselves, both were previewed at the same June 1
 
 **Why this matters for the AgentCore roadmap specifically:** both services validate the predictions in Part XVI that emphasize *staged, auditable autonomy* (Governance dashboards, Compliance Packs) and *deeper business-context integration* (the Context-to-Memory convergence prediction) as the most evidence-backed near-term investment areas, rather than raw capability expansion.
 
-# 19 Part XVIII — Best Practices
+## 19 Part XVIII — Best Practices
 
 ## 19.1 38. Runtime and Harness
 
@@ -954,7 +954,7 @@ Though not AgentCore services themselves, both were previewed at the same June 1
 
 - Use Optimization/failure-insights’ continuous monitoring specifically to catch **silent** behavioral failures (no error signal, wrong or subtly-degraded output) — the class of bug that infrastructure metrics alone will never surface.
 
-# 20 Part XIX — Anti-Patterns
+## 20 Part XIX — Anti-Patterns
 
 - **Treating Policy as a replacement for IAM** , rather than a complementary layer — removes an independent line of defense.
 
@@ -974,7 +974,7 @@ Though not AgentCore services themselves, both were previewed at the same June 1
 
 - **Treating a single quote/estimate from AWS marketing (spend caps, “15× performance,” auto-learning claims) as independently verified fact** — several such figures at the June 2026 summit were explicitly flagged by independent analysts as vendor-stated and awaiting third-party verification; architects should distinguish AWSdocumented behavior from AWS-marketed claims when making dependency decisions.
 
-# 21 Part XX — Production Readiness Checklist
+## 21 Part XX — Production Readiness Checklist
 
 - Every Gateway has an explicit inbound authorization mode configured (never “no authorization” outside dev/test)
 
@@ -1006,7 +1006,7 @@ Though not AgentCore services themselves, both were previewed at the same June 1
 
 - □ Registry entries for all production agents/tools have gone through the Approver persona’s review, with auto-approval left off
 
-# 22 Part XXI — Cost Optimization Guide
+## 22 Part XXI — Cost Optimization Guide
 
 - **Warm pools over blanket pre-provisioning.** AgentCore’s memory-vs-compute pricing split makes maintaining a right-sized warm pool of idle (memory-billed-only) microVMs cheaper than either accepting cold-start latency or provisioning full active compute capacity ahead of demand — monitor actual traffic and adjust pool size by time-of-day.
 
@@ -1020,7 +1020,7 @@ Though not AgentCore services themselves, both were previewed at the same June 1
 
 ture tuning alone.
 
-# 23 Part XXII — Security Hardening Guide (Summary)
+## 23 Part XXII — Security Hardening Guide (Summary)
 
 1. Layer defenses in series: adaptive-retry-aware error handling →input Guardrails with seeded jailbreak/injection patterns →Cedar policy at the Gateway →least-privilege IAM on every execution role →VPC-only network mode for sensitive compute →full audit logging (CloudTrail, Observability traces) as the backstop that makes every other layer reviewable after the fact.
 
@@ -1030,7 +1030,7 @@ ture tuning alone.
 
 4. Build an incident-response playbook specifically for agent-native failure modes: a prompt-injection incident should have a defined process for (a) identifying which Gateway-mediated tool calls occurred during the affected session via Observability traces, (b) determining whether Guardrails or Policy caught/blocked the injected action, (c) revoking any Token Vault credentials the affected session held, and (d) reviewing whether the injected content entered via a Registry-catalogued (vetted) or unvetted tool/MCP source, since that materially changes the remediation (patch a specific tool vs. re-review the entire unvetted-source policy).
 
-# 24 Part XXIII — Keeping the Agent Live: Resilience, Rollout, and Control Operability
+## 24 Part XXIII — Keeping the Agent Live: Resilience, Rollout, and Control Operability
 
 This part addresses the operational control surface a platform team needs to run agents continuously in production: how to load-test them, how to stop them when they misbehave, how to roll out changes safely, how to pause for a human, how to resume after a long wait, and how to tell an auth failure apart from a business-rule denial. Every mechanism below is either an AWS-documented AgentCore capability or an independently-documented gap/workaround — both are marked explicitly, because the gaps matter as much as the capabilities for an architect making a build-vs-buy call on the control plane.
 
@@ -1169,10 +1169,10 @@ Read top-to-bottom, these mechanisms form a layered resilience stack, each layer
 
 No single AgentCore service in isolation delivers “keep the agent live” — it is the composition of Policy, Gateway interceptors, Runtime’s session/ping/async-task primitives, Optimization’s A/B testing, Step Functions’ callback pattern, and a small amount of platform-team-owned glue (a session registry, a pre-staged emergency-deny policy, a circuit-breaker Lambda) that AgentCore does not yet provide natively. Architects should budget for that glue explicitly rather than assuming it ships with the platform.
 
-# 25 Appendix A — Sources
+## 25 Appendix A — Sources
 
 This report is grounded in the following categories of publicly available evidence gathered via web search in July 2026: AWS official documentation (docs.aws.amazon.com/bedrockagentcore), AWS Machine Learning, Security, Networking, and AWS News blogs, AWS re:Invent 2025 and AWS Summit New York (June 17, 2026) announcements, the strandsagents GitHub organization and its published SDK documentation (strandsagents.com), independent security research from Palo Alto Networks Unit 42, BeyondTrust Phantom Labs, and Sonrai Security, and practitioner/analyst write-ups from AWS Heroes, AWS Builder Center, Arize AI, Weights & Biases, DeepWiki (awslabs/amazon-bedrock-agentcore-samples), and multiple independent cloud-architecture blogs (hidekazu-konishi.com, clawaws.com, Cloudvisor, Xebia, dev.to contributors) current as of late June–early July 2026. Facts drawn from AWS marketing/keynote claims not yet independently verified are flagged explicitly in-text as such (notably in Part XVI and Part XVII); all other claims are drawn from official documentation, release notes, or independently reproduced/verified research.
 
-# 26 Appendix B — Glossary
+## 26 Appendix B — Glossary
 
 **2LO / 3LO** — Two-legged / three-legged OAuth: machine-to-machine client-credentials grant vs. user-delegated authorization-code grant. **A2A** — Agent-to-Agent protocol, for direct agentto-agent communication and discovery. **Cedar** — AWS’s open-source, CNCF-hosted authorization policy language, used by both Amazon Verified Permissions and AgentCore Policy. **Firecracker** — The open-source microVM virtual machine monitor underlying Runtime, Browser, Code Interpreter, Lambda, and Fargate isolation. **MCP** — Model Context Protocol, the open standard for connecting agents to external tools and data sources. **OBO** — On-Behalf-Of token exchange; Gateway exchanges an inbound user token for a downstream-scoped token carrying both user and agent identity. **OTEL / ADOT** — OpenTelemetry / AWS Distro for OpenTelemetry, the instrumentation standard underlying AgentCore Observability. **Workload Identity** — An agent/Runtime’s own first-class security identity, distinct from and combined with, but never substituting for, the end user’s identity.

@@ -1,0 +1,415 @@
+{
+ "section": "cybersec-architect",
+ "page_count": 17,
+ "pages": [
+  {
+   "id": "cybersec-architect/01-evolution",
+   "title": "Part 1 \u2014 Cyber Security Evolution",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2271,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part02_Evolution_Enterprise_AI_Security",
+     "score": 0.42
+    },
+    {
+     "id": "cybersec-architect/03-security-domains",
+     "score": 0.38
+    },
+    {
+     "id": "cybersec-architect/12-ea-deliverables",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/02-enterprise-security-architecture",
+   "title": "Part 2 \u2014 Enterprise Security Architecture",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2528,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/index",
+     "score": 0.35
+    },
+    {
+     "id": "cybersec-architect/01-evolution",
+     "score": 0.35
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/03-security-domains",
+   "title": "Part 3 \u2014 Security Domains",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2523,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/07-cloud-security",
+     "score": 0.39
+    },
+    {
+     "id": "cybersec-architect/01-evolution",
+     "score": 0.38
+    },
+    {
+     "id": "cybersec-architect/12-ea-deliverables",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/04-ai-security",
+   "title": "Part 4 \u2014 AI Security",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2538,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling",
+     "score": 0.46
+    },
+    {
+     "id": "nist-ai-standards/part-01-nist-ai-100-2-adversarial-ml",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-guardrails",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/05-agentic-ai-security",
+   "title": "Part 5 \u2014 Agentic AI Security",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2311,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+     "score": 0.44
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/06-identity-architecture",
+   "title": "Part 6 \u2014 Identity Architecture",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 1909,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/auth_identity_flows",
+     "score": 0.37
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part06_Identity_for_AI_Agents",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/07-cloud-security",
+   "title": "Part 7 \u2014 Cloud Security Architecture",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2371,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/03-security-domains",
+     "score": 0.39
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part15_Cloud_Implementation_Comparison",
+     "score": 0.39
+    },
+    {
+     "id": "cybersec-architect/01-evolution",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/08-ai-governance",
+   "title": "Part 8 \u2014 AI Governance & Compliance",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2253,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.55
+    },
+    {
+     "id": "enterprise-ai-report/part-12-responsible-ai",
+     "score": 0.53
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.51
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/09-security-operations",
+   "title": "Part 9 \u2014 Security Operations in the AI Era",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 1895,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/index",
+     "score": 0.34
+    },
+    {
+     "id": "ai-soc-playbooks/part-10-standards-compliance",
+     "score": 0.33
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part13_AI_SOC",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/10-technology-investment",
+   "title": "Part 10 \u2014 Technology Investment",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2013,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/11-ai-investment",
+     "score": 0.34
+    },
+    {
+     "id": "cybersec-architect/index",
+     "score": 0.32
+    },
+    {
+     "id": "ea-masterclass/module-04-technology-investment/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/11-ai-investment",
+   "title": "Part 11 \u2014 AI & Security Investment",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 1874,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.43
+    },
+    {
+     "id": "cybersec-architect/index",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/12-ea-deliverables",
+   "title": "Part 12 \u2014 Enterprise Architecture Deliverables",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 1933,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/01-evolution",
+     "score": 0.35
+    },
+    {
+     "id": "cybersec-architect/02-enterprise-security-architecture",
+     "score": 0.33
+    },
+    {
+     "id": "cybersec-architect/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/13-security-patterns",
+   "title": "Part 13 \u2014 Security Patterns",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2245,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/05-agentic-ai-security",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/14-case-studies",
+   "title": "Part 14 \u2014 Industry Case Studies",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2776,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.46
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-strategy/vol9-industry-deep-dives",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/15-emerging-trends",
+   "title": "Part 15 \u2014 Emerging Trends 2026\u20132030",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2740,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.35
+    },
+    {
+     "id": "cybersec-architect/11-ai-investment",
+     "score": 0.32
+    },
+    {
+     "id": "ai-foundations/AI_Deep_Future_Outlook_2026_2035",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/index",
+   "title": "Enterprise Cyber Security Architect",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 801,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/11-ai-investment",
+     "score": 0.38
+    },
+    {
+     "id": "cybersec-architect/02-enterprise-security-architecture",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "cybersec-architect/usecase-transcript",
+   "title": "Use Case Transcript \u2014 Agentic AI Security Advisory Session",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "cybersec-architect"
+   ],
+   "word_count": 2914,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/fde/fde-life-transcript",
+     "score": 0.45
+    }
+   ]
+  }
+ ]
+}

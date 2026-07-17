@@ -231,7 +231,7 @@ Sprint velocity increase % × sprint cost. Track cycle time, PR throughput, depl
 
 ### **Budget-Aware Agent Architecture**
 
-# **<mark>`⚡`</mark> AGENT MODE WARNING**
+## **<mark>`⚡`</mark> AGENT MODE WARNING**
 
 One reported incident: 822 credits in a single request — 54% of a Pro+ monthly budget. A single poorly designed agent session can consume an entire team's monthly allocation. Mandatory budget guardrails, stopping criteria, and retry policies are required before production deployment.
 
@@ -688,7 +688,7 @@ TASK arrives
 
 ### **100 Anti-Patterns: Root Cause, Impact, Mitigation**
 
-# **<mark>`⚠`</mark> HOW TO USE THIS SECTION**
+## **<mark>`⚠`</mark> HOW TO USE THIS SECTION**
 
 Anti-patterns are grouped into 10 categories of 10. Each entry shows root cause, impact (cost / quality / security), and mitigation. Use as a training guide, architecture review checklist, and onboarding resource.
 

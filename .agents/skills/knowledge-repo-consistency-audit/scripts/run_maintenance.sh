@@ -21,8 +21,8 @@ for arg in "$@"; do
   esac
 done
 
-CONSISTENCY=".claude/skills/knowledge-repo-consistency-audit/scripts"
-GRAPH=".claude/skills/knowledge-repo-graph/scripts"
+CONSISTENCY=".agents/skills/knowledge-repo-consistency-audit/scripts"
+GRAPH=".agents/skills/knowledge-repo-graph/scripts"
 
 echo "############################################"
 echo "# 1/5  Sidebar integrity"

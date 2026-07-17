@@ -1,0 +1,119 @@
+name: knowledge-repo-checks
+
+# Backstop for the local pre-commit hook — catches anything pushed with
+# --no-verify, from a clone without the hook installed, or via the GitHub
+# web editor. Runs the same checks: structure/consistency lint, sidebar
+# integrity, and a near-duplicate check on newly added pages.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - 'sidebars.js'
+  push:
+    branches: [main]
+  schedule:
+    # Weekly full-corpus audit — catches drift that per-PR checks can't,
+    # since those only ever see the files changed in a given PR. This is
+    # what would have caught the 2026-07-10/11 expansion pass shipping 86
+    # broken sidebar refs and 51 multi-H1 pages with zero of these checks
+    # applied (it was added via a route that didn't go through PR review).
+    - cron: '0 6 * * 1'
+
+jobs:
+  check-changed-pages:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # need full history to diff against the base branch
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --break-system-packages pyyaml scikit-learn
+
+      - name: Get changed markdown files
+        id: changed
+        run: |
+          git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1
+          CHANGED=$(git diff --name-only --diff-filter=ACM \
+            "origin/${{ github.event.pull_request.base.ref }}"...HEAD -- 'docs/**/*.md')
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CHANGED" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Lint changed pages
+        if: steps.changed.outputs.files != ''
+        run: |
+          FAIL=0
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ -f "$file" ] || continue
+            echo "--- $file ---"
+            if ! python3 .claude/skills/knowledge-page-authoring/scripts/lint_page.py "$file"; then
+              FAIL=1
+            fi
+          done <<< "${{ steps.changed.outputs.files }}"
+          exit $FAIL
+
+      - name: Duplicate check on newly added pages
+        if: steps.changed.outputs.files != ''
+        run: |
+          FAIL=0
+          git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1
+          ADDED=$(git diff --name-only --diff-filter=A \
+            "origin/${{ github.event.pull_request.base.ref }}"...HEAD -- 'docs/**/*.md')
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ -f "$file" ] || continue
+            echo "--- $file ---"
+            OUT=$(python3 .claude/skills/knowledge-page-authoring/scripts/check_against_corpus.py "$file" --threshold 0.85 2>&1)
+            echo "$OUT"
+            if echo "$OUT" | grep -q "NEAR-DUPLICATE"; then
+              FAIL=1
+            fi
+          done <<< "$ADDED"
+          exit $FAIL
+
+      - name: Sidebar integrity
+        run: python3 .claude/skills/knowledge-repo-consistency-audit/scripts/check_sidebar_integrity.py
+
+      - name: No changed pages
+        if: steps.changed.outputs.files == ''
+        run: echo "No docs/**/*.md files changed in this PR."
+
+  full-corpus-audit:
+    # Runs on every push to main (catches anything merged with --no-verify
+    # or via a route that skipped PR review) and weekly on schedule (catches
+    # drift with no associated commit, like a stale sidebars.js).
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --break-system-packages pyyaml scikit-learn
+
+      - name: Full corpus consistency audit
+        run: |
+          python3 .claude/skills/knowledge-repo-consistency-audit/scripts/audit_corpus.py \
+            --min-severity HIGH --out /tmp/audit-report.md
+          cat /tmp/audit-report.md
+
+      - name: Sidebar integrity (repo-wide)
+        run: python3 .claude/skills/knowledge-repo-consistency-audit/scripts/check_sidebar_integrity.py
+
+      - name: Upload full report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: consistency-audit-report
+          path: /tmp/audit-report.md

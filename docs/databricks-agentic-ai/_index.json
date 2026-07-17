@@ -1,0 +1,345 @@
+{
+ "section": "databricks-agentic-ai",
+ "page_count": 12,
+ "pages": [
+  {
+   "id": "databricks-agentic-ai/index",
+   "title": "Databricks Agentic AI \u2014 Enterprise Architect Reference",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "agentic-ai",
+    "lakehouse",
+    "mosaic-ai",
+    "unity-catalog",
+    "iceberg"
+   ],
+   "word_count": 1309,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.63
+    },
+    {
+     "id": "databricks-agentic-ai/part-01-platform-vision-agentic-services",
+     "score": 0.58
+    },
+    {
+     "id": "databricks-agentic-ai/part-05-lakehouse-data-infrastructure",
+     "score": 0.51
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-01-platform-vision-agentic-services",
+   "title": "Part 1 \u2014 Platform Vision & Agentic Services",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "agent-bricks",
+    "mosaic-ai",
+    "genie-one",
+    "omnigent",
+    "lakeflow"
+   ],
+   "word_count": 2125,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/index",
+     "score": 0.58
+    },
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.49
+    },
+    {
+     "id": "databricks-agentic-ai/part-08-observability-finops-integration",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-02-agent-lake-architecture",
+   "title": "Part 2 \u2014 Agent Lake, Agent Architecture & Multi-Agent Orchestration",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "agent-lake",
+    "agent-architecture",
+    "multi-agent",
+    "orchestration",
+    "langgraph"
+   ],
+   "word_count": 2018,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-04-unity-catalog-governance",
+     "score": 0.45
+    },
+    {
+     "id": "databricks-agentic-ai/index",
+     "score": 0.45
+    },
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-03-mosaic-ai-mlflow",
+   "title": "Part 3 \u2014 Mosaic AI & MLflow 3",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "mosaic-ai",
+    "mlflow",
+    "vector-search",
+    "model-serving",
+    "ai-functions"
+   ],
+   "word_count": 1922,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-02-agent-lake-architecture",
+     "score": 0.39
+    },
+    {
+     "id": "databricks-agentic-ai/part-08-observability-finops-integration",
+     "score": 0.38
+    },
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-04-unity-catalog-governance",
+   "title": "Part 4 \u2014 Unity Catalog AI Governance",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "unity-catalog",
+    "governance",
+    "abac",
+    "lineage",
+    "audit"
+   ],
+   "word_count": 1720,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.46
+    },
+    {
+     "id": "databricks-agentic-ai/part-02-agent-lake-architecture",
+     "score": 0.45
+    },
+    {
+     "id": "databricks-agentic-ai/part-07-security-architecture",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-05-lakehouse-data-infrastructure",
+   "title": "Part 5 \u2014 Lakehouse Architecture: Lakebase, LTAP & Real-Time",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "lakehouse",
+    "lakebase",
+    "ltap",
+    "lakeflow",
+    "real-time"
+   ],
+   "word_count": 1822,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/index",
+     "score": 0.51
+    },
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-06-iceberg-open-formats",
+   "title": "Part 6 \u2014 Apache Iceberg, Open Table Formats & Interoperability",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "iceberg",
+    "delta-lake",
+    "uniform",
+    "catalog-federation",
+    "open-formats"
+   ],
+   "word_count": 1941,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.54
+    },
+    {
+     "id": "databricks-agentic-ai/index",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-architecture/specialization/modern-data-ai-platform-blueprint-2026",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-07-security-architecture",
+   "title": "Part 7 \u2014 Security Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "security",
+    "zero-trust",
+    "rbac",
+    "abac",
+    "encryption",
+    "network-security"
+   ],
+   "word_count": 1817,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-04-unity-catalog-governance",
+     "score": 0.43
+    },
+    {
+     "id": "databricks-agentic-ai/part-08-observability-finops-integration",
+     "score": 0.36
+    },
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-08-observability-finops-integration",
+   "title": "Part 8 \u2014 Observability, FinOps & Integration Ecosystem",
+   "doc_type": "unknown",
+   "tags": [
+    "databricks",
+    "observability",
+    "mlflow",
+    "finops",
+    "cost-optimization",
+    "integrations",
+    "lakewatch",
+    "model-units"
+   ],
+   "word_count": 2550,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+     "score": 0.51
+    },
+    {
+     "id": "databricks-agentic-ai/part-04-unity-catalog-governance",
+     "score": 0.38
+    },
+    {
+     "id": "databricks-agentic-ai/part-03-mosaic-ai-mlflow",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-09-competitive-reference-architectures",
+   "title": "Part 9 \u2014 Competitive Comparison & Industry Reference Architectures",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 3553,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/index",
+     "score": 0.63
+    },
+    {
+     "id": "databricks-agentic-ai/part-06-iceberg-open-formats",
+     "score": 0.54
+    },
+    {
+     "id": "databricks-agentic-ai/part-08-observability-finops-integration",
+     "score": 0.51
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-12-finops",
+   "title": "Part 12 \u2014 AI SOC FinOps & ROI",
+   "doc_type": "unknown",
+   "tags": [
+    "finops",
+    "roi",
+    "soc",
+    "cost-optimization",
+    "tco",
+    "kpis"
+   ],
+   "word_count": 9,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/part-12-finops",
+     "score": 0.4
+    },
+    {
+     "id": "ai-soc-playbooks/part-14-future-soc",
+     "score": 0.33
+    },
+    {
+     "id": "ai-soc-playbooks/part-10-standards-compliance",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "databricks-agentic-ai/part-13-vendor-landscape",
+   "title": "Part 13 \u2014 Vendor Landscape & Decision Matrix",
+   "doc_type": "unknown",
+   "tags": [
+    "vendor-management",
+    "soc",
+    "soar",
+    "siem",
+    "xdr",
+    "decision-matrix"
+   ],
+   "word_count": 9,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": []
+  }
+ ]
+}

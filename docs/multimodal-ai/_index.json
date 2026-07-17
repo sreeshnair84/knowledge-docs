@@ -1,0 +1,490 @@
+{
+ "section": "multimodal-ai",
+ "page_count": 16,
+ "pages": [
+  {
+   "id": "multimodal-ai/index",
+   "title": "Multimodal AI for Agentic Systems \u2014 Enterprise Architecture & Implementation Handbook",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "vision-language-model",
+    "enterprise-architecture",
+    "agentic-ai",
+    "series-index"
+   ],
+   "word_count": 1370,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-14-cloud-platform-comparison",
+     "score": 0.37
+    },
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.37
+    },
+    {
+     "id": "multimodal-ai/part-15-emerging-trends-bibliography",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-01-foundations",
+   "title": "Part 1 \u2014 Foundations of Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "vision-language-model",
+    "tokenization",
+    "embeddings",
+    "model-comparison",
+    "grounding"
+   ],
+   "word_count": 3733,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-05-multimodal-rag",
+     "score": 0.56
+    },
+    {
+     "id": "multimodal-ai/part-02-enterprise-architecture",
+     "score": 0.43
+    },
+    {
+     "id": "multimodal-ai/part-04-modalities-video-audio",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-02-enterprise-architecture",
+   "title": "Part 2 \u2014 Enterprise Multimodal Agent Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "enterprise-architecture",
+    "agentic-systems",
+    "reference-architecture",
+    "perception-layer"
+   ],
+   "word_count": 4097,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.43
+    },
+    {
+     "id": "multimodal-ai/part-12-observability-finops",
+     "score": 0.37
+    },
+    {
+     "id": "multimodal-ai/part-05-multimodal-rag",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-03-modalities-image-document",
+   "title": "Part 3 \u2014 Image & Document Intelligence",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "ocr",
+    "document-intelligence",
+    "idp",
+    "image-understanding",
+    "layoutlm"
+   ],
+   "word_count": 4170,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-10-evaluation-benchmarks",
+     "score": 0.32
+    },
+    {
+     "id": "multimodal-ai/part-02-enterprise-architecture",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-04-modalities-video-audio",
+   "title": "Part 04 \u2014 Video & Audio Intelligence",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "video-understanding",
+    "audio-intelligence",
+    "asr",
+    "speaker-diarization",
+    "surveillance"
+   ],
+   "word_count": 2957,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.41
+    },
+    {
+     "id": "multimodal-ai/part-08-guardrails-sanitization",
+     "score": 0.39
+    },
+    {
+     "id": "multimodal-ai/part-05-multimodal-rag",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-05-multimodal-rag",
+   "title": "Part 05 \u2014 Multimodal RAG",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "multimodal-rag",
+    "cross-modal-retrieval",
+    "vector-database",
+    "embeddings",
+    "rag"
+   ],
+   "word_count": 3894,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.56
+    },
+    {
+     "id": "multimodal-ai/part-02-enterprise-architecture",
+     "score": 0.36
+    },
+    {
+     "id": "multimodal-ai/part-04-modalities-video-audio",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-06-agentic-workflows",
+   "title": "Part 06 \u2014 Multimodal Agentic Workflows",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "agentic-workflows",
+    "human-in-the-loop",
+    "invoice-processing",
+    "orchestration",
+    "compliance-monitoring"
+   ],
+   "word_count": 3932,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-12-observability-finops",
+     "score": 0.36
+    },
+    {
+     "id": "multimodal-ai/part-13-governance-production",
+     "score": 0.35
+    },
+    {
+     "id": "multimodal-ai/part-02-enterprise-architecture",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-07-security-threats",
+   "title": "Part 07 \u2014 Security & Threat Taxonomy for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "security",
+    "adversarial-attacks",
+    "prompt-injection",
+    "mitre-atlas",
+    "threat-model",
+    "stride"
+   ],
+   "word_count": 4098,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.33
+    },
+    {
+     "id": "multimodal-ai/part-08-guardrails-sanitization",
+     "score": 0.32
+    },
+    {
+     "id": "multimodal-ai/part-05-multimodal-rag",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-08-guardrails-sanitization",
+   "title": "Part 8 \u2014 Guardrails & Sanitization for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "guardrails",
+    "content-moderation",
+    "sanitization",
+    "pii-detection",
+    "deepfake-detection"
+   ],
+   "word_count": 4356,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-04-modalities-video-audio",
+     "score": 0.39
+    },
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.34
+    },
+    {
+     "id": "multimodal-ai/part-02-enterprise-architecture",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-09-compliance-responsible-ai",
+   "title": "Part 9 \u2014 Compliance & Responsible AI for Multimodal Systems",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "compliance",
+    "eu-ai-act",
+    "gdpr",
+    "hipaa",
+    "responsible-ai",
+    "biometric-data",
+    "c2pa"
+   ],
+   "word_count": 5753,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/Multimodal_AI_EA_Scenarios",
+     "score": 0.35
+    },
+    {
+     "id": "multimodal-ai/part-13-governance-production",
+     "score": 0.32
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-10-evaluation-benchmarks",
+   "title": "Part 10 \u2014 Evaluation & Benchmarks for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "evaluation",
+    "benchmarks",
+    "mmmu",
+    "docvqa",
+    "llm-as-judge",
+    "golden-dataset"
+   ],
+   "word_count": 5432,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-11-evaluation-harnesses-cicd",
+     "score": 0.48
+    },
+    {
+     "id": "multimodal-ai/part-03-modalities-image-document",
+     "score": 0.32
+    },
+    {
+     "id": "multimodal-ai/part-07-security-threats",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-11-evaluation-harnesses-cicd",
+   "title": "Part 11 \u2014 Evaluation Harnesses & CI/CD for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "evaluation-harness",
+    "cicd",
+    "regression-testing",
+    "deepeval",
+    "langfuse",
+    "arize",
+    "mlflow"
+   ],
+   "word_count": 5842,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-10-evaluation-benchmarks",
+     "score": 0.48
+    },
+    {
+     "id": "multimodal-ai/part-12-observability-finops",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-12-observability-finops",
+   "title": "Part 12 \u2014 Observability & FinOps for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "observability",
+    "finops",
+    "opentelemetry",
+    "langfuse",
+    "arize",
+    "gpu-cost",
+    "cost-optimization"
+   ],
+   "word_count": 4667,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-13-governance-production",
+     "score": 0.45
+    },
+    {
+     "id": "multimodal-ai/part-14-cloud-platform-comparison",
+     "score": 0.41
+    },
+    {
+     "id": "multimodal-ai/part-02-enterprise-architecture",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-13-governance-production",
+   "title": "Part 13 \u2014 Enterprise Governance & Production Engineering for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "enterprise-governance",
+    "policy-as-code",
+    "opa",
+    "production-engineering",
+    "gpu-infrastructure",
+    "audit-logging"
+   ],
+   "word_count": 5949,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-12-observability-finops",
+     "score": 0.45
+    },
+    {
+     "id": "multimodal-ai/part-14-cloud-platform-comparison",
+     "score": 0.36
+    },
+    {
+     "id": "multimodal-ai/part-06-agentic-workflows",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-14-cloud-platform-comparison",
+   "title": "Part 14 \u2014 Cloud Platform Comparison for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "cloud-platforms",
+    "aws-bedrock",
+    "azure-ai-foundry",
+    "google-vertex-ai",
+    "databricks",
+    "nvidia",
+    "platform-comparison"
+   ],
+   "word_count": 4226,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-12-observability-finops",
+     "score": 0.41
+    },
+    {
+     "id": "multimodal-ai/index",
+     "score": 0.37
+    },
+    {
+     "id": "multimodal-ai/part-13-governance-production",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "multimodal-ai/part-15-emerging-trends-bibliography",
+   "title": "Part 15 \u2014 Emerging Trends & Bibliography for Multimodal AI",
+   "doc_type": "unknown",
+   "tags": [
+    "multimodal-ai",
+    "emerging-trends",
+    "omni-modal",
+    "vla-models",
+    "world-models",
+    "c2pa",
+    "edge-ai",
+    "federated-learning",
+    "bibliography"
+   ],
+   "word_count": 5140,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-01-foundations",
+     "score": 0.37
+    },
+    {
+     "id": "multimodal-ai/index",
+     "score": 0.35
+    },
+    {
+     "id": "multimodal-ai/part-14-cloud-platform-comparison",
+     "score": 0.33
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,837 @@
+{
+ "section": "ai-protocols",
+ "page_count": 29,
+ "pages": [
+  {
+   "id": "ai-protocols/a2a/index",
+   "title": "A2A \u2014 Agent-to-Agent Protocol",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-protocols",
+    "a2a",
+    "agent-to-agent"
+   ],
+   "word_count": 776,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+     "score": 0.5
+    },
+    {
+     "id": "ai-protocols/index",
+     "score": 0.48
+    },
+    {
+     "id": "ai-protocols/standards/index",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/AgentIdentity_Research_2026_v2",
+   "title": "Agent Identity for AI Systems \u2014 Research 2026",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2641,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/agent-identity-entra-vs-awsagentcore",
+     "score": 0.89
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.37
+    },
+    {
+     "id": "ai-usecases/Part6_Banking_Case_Study",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+   "title": "Enterprise Authentication & Identity Propagation for AI Agents \u2014 Confidential Research",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 2152,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/tool-authentication-connectors",
+     "score": 0.57
+    },
+    {
+     "id": "ai-security-governance/security/Part7_Standards_Reference",
+     "score": 0.56
+    },
+    {
+     "id": "ai-protocols/auth/auth-standards-reference",
+     "score": 0.55
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/agent-identity-entra-vs-awsagentcore",
+   "title": "Agent Identity for AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 2585,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/AgentIdentity_Research_2026_v2",
+     "score": 0.89
+    },
+    {
+     "id": "ai-usecases/Part6_Banking_Case_Study",
+     "score": 0.38
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/auth-standards-reference",
+   "title": "Auth Standards Reference: OAuth 2.1, OIDC, RFC 8693 & Implementation Checklists",
+   "doc_type": "reference",
+   "tags": [
+    "auth",
+    "oauth",
+    "oidc",
+    "standards",
+    "rfc",
+    "checklist"
+   ],
+   "word_count": 2332,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/Part7_Standards_Reference",
+     "score": 0.99
+    },
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/auth/tool-authentication-connectors",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/auth_identity_flows",
+   "title": "Authentication & Identity Flows",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "mcp",
+    "a2a"
+   ],
+   "word_count": 2041,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/06-identity-architecture",
+     "score": 0.37
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/kong-entra-id-integration",
+     "score": 0.32
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-implementation",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/enterprise-ai-platform-auth-survey",
+   "title": "Enterprise AI Platform Authentication Survey",
+   "doc_type": "research-report",
+   "tags": [
+    "auth",
+    "oauth",
+    "identity",
+    "enterprise",
+    "survey"
+   ],
+   "word_count": 2603,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/Part1_Industry_Survey",
+     "score": 1.0
+    },
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.48
+    },
+    {
+     "id": "ai-security-governance/security/Part5_Marketplace_Architecture",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/entra-3lo-agent-auth-implementation",
+   "title": "EntraID 3LO: AC Gateway + AC Identity \u2014 Volume 2",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 4122,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.65
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-security-review",
+     "score": 0.49
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
+   "title": "EntraID 3LO: AC Gateway + AC Identity \u2014 Volume 3",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 4434,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.62
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-security-review",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-implementation",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/entra-3lo-agent-auth-security-review",
+   "title": "EntraID 3LO: AC Gateway + AC Identity \u2014 Volume 4",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 5084,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.53
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-implementation",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+   "title": "EntraID 3LO: AC Gateway + AC Identity \u2014 Volume 1",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 3783,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-implementation",
+     "score": 0.65
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
+     "score": 0.62
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-security-review",
+     "score": 0.53
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/index",
+   "title": "Authentication & Identity",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 803,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/identity-auth-architecture",
+     "score": 0.4
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.38
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/marketplace-connector-auth-patterns",
+   "title": "Marketplace Connector Auth Patterns & Enterprise Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "auth",
+    "oauth",
+    "marketplace",
+    "connectors",
+    "enterprise-architecture"
+   ],
+   "word_count": 1957,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/Part5_Marketplace_Architecture",
+     "score": 0.99
+    },
+    {
+     "id": "ai-protocols/auth/tool-authentication-connectors",
+     "score": 0.51
+    },
+    {
+     "id": "ai-security-governance/security/Part1_Industry_Survey",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/auth/tool-authentication-connectors",
+   "title": "Tool Authentication & Connector Models",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "auth"
+   ],
+   "word_count": 2410,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.57
+    },
+    {
+     "id": "ai-protocols/auth/marketplace-connector-auth-patterns",
+     "score": 0.51
+    },
+    {
+     "id": "ai-security-governance/security/Part5_Marketplace_Architecture",
+     "score": 0.51
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/index",
+   "title": "AI Protocols",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-protocols",
+    "mcp",
+    "a2a",
+    "auth",
+    "emerging-protocols"
+   ],
+   "word_count": 628,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/index",
+     "score": 0.64
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.52
+    },
+    {
+     "id": "ai-protocols/a2a/index",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+   "title": "MCP Deep Research 2026",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-protocols",
+    "mcp"
+   ],
+   "word_count": 7147,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/10-mcp-impact",
+     "score": 0.49
+    },
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+   "title": "Enterprise MCP Security, Authorization, Governance & Operations (2026)",
+   "doc_type": "guide",
+   "tags": [
+    "ai-security",
+    "mcp",
+    "governance",
+    "authorization",
+    "enterprise-architecture",
+    "zero-trust"
+   ],
+   "word_count": 11880,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.52
+    },
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.48
+    },
+    {
+     "id": "ai-security-governance/security/Part4_Runtime_Security_Governance",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/mcp/MCP_Harness_AIDLC",
+   "title": "MCP Harness Engineering: Testing & Evaluation Across the AIDLC",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "mcp",
+    "a2a"
+   ],
+   "word_count": 3454,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.4
+    },
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.34
+    },
+    {
+     "id": "workflow-orchestration/10-mcp-impact",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/mcp/index",
+   "title": "MCP",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-protocols",
+    "mcp"
+   ],
+   "word_count": 198,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/a2a/index",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+   "title": "AI Protocols, Frameworks & Standards 2026",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "mcp",
+    "a2a"
+   ],
+   "word_count": 7283,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.51
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.49
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/agent-protocol-metadata-headers",
+   "title": "Agent Protocol Metadata, Headers & Capability Negotiation",
+   "doc_type": "reference",
+   "tags": [
+    "ai-protocols",
+    "mcp",
+    "a2a",
+    "ag-ui",
+    "anp",
+    "metadata",
+    "headers",
+    "capability-negotiation"
+   ],
+   "word_count": 2863,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/existing-protocol-evolution-agentic-ai",
+     "score": 0.36
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-acp-anp",
+     "score": 0.33
+    },
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/emerging-protocols-acp-anp",
+   "title": "Section 2A: ACP & ANP Deep Dives \u2014 Federated and Decentralised Agent Protocols",
+   "doc_type": "research-report",
+   "tags": [
+    "acp",
+    "anp",
+    "agent-protocols",
+    "did",
+    "decentralised",
+    "federated",
+    "enterprise-ai",
+    "protocol-architecture"
+   ],
+   "word_count": 11050,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.41
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-crosscutting",
+     "score": 0.37
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-beyond-mcp-a2a",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/emerging-protocols-agui-utcp",
+   "title": "Section 2B: AG-UI & UTCP \u2014 Enterprise Architecture Deep Dive (July 2026)",
+   "doc_type": "research",
+   "tags": [
+    "ag-ui",
+    "utcp",
+    "enterprise-architecture",
+    "ai-protocols",
+    "standards"
+   ],
+   "word_count": 7817,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/agui-standards-landscape",
+     "score": 0.57
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.42
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-beyond-mcp-a2a",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/emerging-protocols-beyond-mcp-a2a",
+   "title": "Emerging AI Agent Protocols Beyond MCP & A2A (2026)",
+   "doc_type": "research-series-index",
+   "tags": [
+    "ai-protocols",
+    "acp",
+    "anp",
+    "ag-ui",
+    "a2ui",
+    "ucp",
+    "ap2",
+    "nlip",
+    "lmos",
+    "utcp",
+    "enterprise-architecture"
+   ],
+   "word_count": 774,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.54
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-ucp-ap2-nlip-lmos",
+     "score": 0.42
+    },
+    {
+     "id": "ai-protocols/standards/index",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/emerging-protocols-crosscutting",
+   "title": "Section 3 \u2014 Cross-Cutting Architecture: Security, Governance, Compliance & Observability",
+   "doc_type": "research-guide",
+   "tags": [
+    "ai-protocols",
+    "security",
+    "governance",
+    "compliance",
+    "observability",
+    "zero-trust",
+    "acp",
+    "anp",
+    "ag-ui",
+    "a2ui",
+    "ucp",
+    "ap2",
+    "nlip",
+    "lmos",
+    "utcp"
+   ],
+   "word_count": 11122,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-ucp-ap2-nlip-lmos",
+     "score": 0.48
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-beyond-mcp-a2a",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/emerging-protocols-overview",
+   "title": "Emerging AI Agent Protocols Beyond MCP & A2A \u2014 Enterprise Architecture, Standards, Security, and Adoption (2026)",
+   "doc_type": "research-guide",
+   "tags": [
+    "ai-protocols",
+    "acp",
+    "anp",
+    "ag-ui",
+    "a2ui",
+    "ucp",
+    "ap2",
+    "nlip",
+    "lmos",
+    "utcp",
+    "enterprise-architecture",
+    "standards"
+   ],
+   "word_count": 10555,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/emerging-protocols-ucp-ap2-nlip-lmos",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-crosscutting",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/standards/index",
+     "score": 0.54
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/emerging-protocols-ucp-ap2-nlip-lmos",
+   "title": "Section 2C \u2014 Emerging AI Agent Protocols: UCP, AP2, NLIP & LMOS Deep Dives",
+   "doc_type": "research-guide",
+   "tags": [
+    "ucp",
+    "ap2",
+    "nlip",
+    "lmos",
+    "ai-protocols",
+    "enterprise-architecture",
+    "commerce",
+    "payments",
+    "internet-of-agents"
+   ],
+   "word_count": 13107,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.55
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-crosscutting",
+     "score": 0.48
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-beyond-mcp-a2a",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/existing-protocol-evolution-agentic-ai",
+   "title": "Existing Protocol Evolution for Agentic AI (2025\u20132026)",
+   "doc_type": "guide",
+   "tags": [
+    "ai-protocols",
+    "http",
+    "oauth",
+    "dns",
+    "tls",
+    "json-rpc",
+    "spiffe",
+    "enterprise-architecture"
+   ],
+   "word_count": 2555,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/agent-protocol-metadata-headers",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-protocols/standards/index",
+   "title": "Protocol Standards & Governance",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-protocols",
+    "protocol",
+    "governance",
+    "standards",
+    "compliance"
+   ],
+   "word_count": 463,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/index",
+     "score": 0.64
+    },
+    {
+     "id": "ai-protocols/standards/emerging-protocols-overview",
+     "score": 0.54
+    },
+    {
+     "id": "ai-protocols/a2a/index",
+     "score": 0.42
+    }
+   ]
+  }
+ ]
+}

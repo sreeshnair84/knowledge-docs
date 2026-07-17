@@ -178,7 +178,7 @@ The modern AI development lifecycle for agentic systems is fundamentally differe
 
 ### AGILE IN THE AI ERA — EVOLUTION, NOT EXTINCTION
 
-# 03
+## 03
 
 ###### Is the Agile Manifesto Dead? The Vibe Coding vs Spec-Driven Debate. New Sprint Structures
 
@@ -265,7 +265,7 @@ requirements.md, design.md, tasks.md per feature — the AI's working brief for 
 
 Self-Healing Pipelines · LLM-as-Judge · Agentic Testing · Prompt Versioning in CI/CD
 
-# 04
+## 04
 
 The CI/CD pipeline is undergoing its deepest transformation since the introduction of containers and Infrastructure-as-Code. The fundamental contract of automated testing has broken: **traditional CI/CD pipelines assume determinism. AI agents are probabilistic.** You cannot test an AI agent with a standard JUnit or Selenium suite — your build will be red 50% of the time not because the code is broken but because your test harness expects outputs that don't exist in a probabilistic world.
 
@@ -329,7 +329,7 @@ I Prompt deprecation follows the same process as API deprecation: versioned, ann
 
 ### THE NEW DEVELOPER ROLES & WORKFLOWS
 
-# 05
+## 05
 
 Context Engineers · Orchestrator-Developers · Spec Writers · AI Quality Engineers
 
@@ -364,7 +364,7 @@ The developer role is not disappearing — it is bifurcating. One direction elev
 
 ### THE FOUR OPERATIONAL DISCIPLINES COMPARED
 
-# 06
+## 06
 
 MLOps vs LLMOps vs AgentOps vs AIOps — When to Use Which
 
@@ -385,7 +385,7 @@ There are now four distinct AI operational disciplines, each addressing a differ
 
 ### THE INTEGRATED AI ENGINEERING STACK 2026
 
-# 07
+## 07
 
 Full-Stack Tooling from Idea to Production for AI-Native Development Teams
 
@@ -407,7 +407,7 @@ What to Change Now · In 6 Months · In 12 Months — Across AIDLC, Agile, and C
 
 ### EXECUTIVE TRANSFORMATION ROADMAP
 
-# 08
+## 08
 
 #### Phase 1 — Now (Month 1-3): Stop the Technical Debt Accumulation
 

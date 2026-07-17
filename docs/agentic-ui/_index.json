@@ -1,0 +1,461 @@
+{
+ "section": "agentic-ui",
+ "page_count": 21,
+ "pages": [
+  {
+   "id": "agentic-ui/agent-ux-patterns",
+   "title": "Agent UX Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 8499,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/evolution-human-ai-interfaces",
+     "score": 0.47
+    },
+    {
+     "id": "agentic-ui/agui-standards-landscape",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-ui/responsible-ai",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/agui-standards-landscape",
+   "title": "AGUI Standards & Ecosystem Landscape",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 8589,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/emerging-protocols-agui-utcp",
+     "score": 0.57
+    },
+    {
+     "id": "agentic-ui/security-architecture",
+     "score": 0.39
+    },
+    {
+     "id": "agentic-ui/agent-ux-patterns",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/anti-patterns",
+   "title": "Anti-pattern Catalog for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 11581,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/observability",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-ui/application-lifecycle",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-ui/devsecops",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/application-lifecycle",
+   "title": "Agentic Application Lifecycle",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 8655,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/anti-patterns",
+     "score": 0.37
+    },
+    {
+     "id": "ai-development/testing/Agent_Testing_Monitoring_Evaluation",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/context-engineering",
+   "title": "Context Engineering for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 3265,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_context_engineering",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/decision-frameworks",
+   "title": "Decision Frameworks",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 16,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "sovereign-constitutional-ai/ai-risk-taxonomy",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/devsecops",
+   "title": "DevSecOps for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 4147,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/anti-patterns",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/enterprise-reference-architecture",
+   "title": "Enterprise Reference Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 4639,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/security-architecture",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-ui/agui-standards-landscape",
+     "score": 0.34
+    },
+    {
+     "id": "agentic-ui/identity-auth-architecture",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/evaluation-framework",
+   "title": "Evaluation Framework for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 10321,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
+     "score": 0.54
+    },
+    {
+     "id": "ai-development/testing/AI_Agent_Evaluation_Framework_Complete",
+     "score": 0.32
+    },
+    {
+     "id": "ai-development/testing/Agent_Testing_Monitoring_Evaluation",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/evolution-human-ai-interfaces",
+   "title": "Evolution of Human-AI Interfaces",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 7556,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/agent-ux-patterns",
+     "score": 0.47
+    },
+    {
+     "id": "agentic-ui/responsible-ai",
+     "score": 0.39
+    },
+    {
+     "id": "ai-foundations/The_Agentic_Loop_Enterprise_AI_Architect_Guide",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/future-outlook",
+   "title": "Future Outlook: Agentic UI 2026\u20132030",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 3124,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
+     "score": 0.34
+    },
+    {
+     "id": "agentic-ui/agui-standards-landscape",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/governance",
+   "title": "Governance for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 11025,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/responsible-ai",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-systems/platform/enterprise-agentic-ai-asset-management-2026",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/identity-auth-architecture",
+   "title": "Identity & Auth Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 2875,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+     "score": 0.42
+    },
+    {
+     "id": "ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance",
+     "score": 0.41
+    },
+    {
+     "id": "ai-protocols/auth/index",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/index",
+   "title": "Agentic UI & Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 2066,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-ui/industry-reference-architectures",
+   "title": "Industry Reference Architectures for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 4147,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-ui/observability",
+   "title": "Observability for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 6705,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/anti-patterns",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/performance-engineering",
+   "title": "Performance Engineering for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 6576,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/scalability-engineering",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/reliability-engineering",
+   "title": "Reliability Engineering for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 8934,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-reliability-engineering",
+     "score": 0.35
+    },
+    {
+     "id": "agentic-ui/scalability-engineering",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/responsible-ai",
+   "title": "Responsible AI for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 8379,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.42
+    },
+    {
+     "id": "agentic-ui/governance",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/scalability-engineering",
+   "title": "Scalability Engineering for Agentic Applications",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 6564,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/performance-engineering",
+     "score": 0.33
+    },
+    {
+     "id": "agentic-ui/reliability-engineering",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "agentic-ui/security-architecture",
+   "title": "Security Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-ui"
+   ],
+   "word_count": 3370,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/agui-standards-landscape",
+     "score": 0.39
+    },
+    {
+     "id": "agentic-ui/enterprise-reference-architecture",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-ui/identity-auth-architecture",
+     "score": 0.32
+    }
+   ]
+  }
+ ]
+}

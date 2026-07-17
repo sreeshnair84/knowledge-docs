@@ -103,9 +103,9 @@ GitHub is a wholly owned Microsoft subsidiary. Model serving for Copilot runs th
 infrastructure, including a dedicated Azure-hosted proxy layer that sits between the editor/CLI client and the
 underlying model providers.
 
-# Verified architecture — request path (per Microsoft Community Hub
+## Verified architecture — request path (per Microsoft Community Hub
 
-# technical breakdown of Copilot security controls)
+## technical breakdown of Copilot security controls)
 
 IDE / CLI / Web client
 
@@ -222,9 +222,9 @@ Agent mode operates in a more autonomous and dynamic manner than chat: to proces
 over determining relevant context and files, offering both code changes and terminal commands, and monitoring
 the correctness of edits and terminal/test output, iterating to remediate issues.
 
-# Verified agent-mode loop (per GitHub Blog "Agent mode 101"
+## Verified agent-mode loop (per GitHub Blog "Agent mode 101"
 
-# and VS Code Blog "Introducing Copilot agent mode")
+## and VS Code Blog "Introducing Copilot agent mode")
 
 LOOP:
 
@@ -268,7 +268,7 @@ logs. It operates by spinning up a secure, fully customizable development enviro
 — the same CI/CD compute platform that already executes more than 40 million jobs daily across GitHub-hosted
 and self-hosted runners.
 
-# Verified coding-agent lifecycle
+## Verified coding-agent lifecycle
 
 ## 1. TRIGGER: issue assigned to Copilot, or PR comment/Chat message
 
@@ -360,9 +360,9 @@ Fallback heuristics
 Open tabs, recently edited files, file structure
 Always available, least precise
 
-# Local Embeddings Search — documented constraints (inferred from
+## Local Embeddings Search — documented constraints (inferred from
 
-# VS Code Copilot Chat source, per independent reverse-engineering)
+## VS Code Copilot Chat source, per independent reverse-engineering)
 
 Eligibility gates:
 

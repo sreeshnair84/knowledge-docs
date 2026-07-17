@@ -1,0 +1,562 @@
+{
+ "section": "interview-prep",
+ "page_count": 24,
+ "pages": [
+  {
+   "id": "interview-prep/AI_Agent_Systems_Interview_Guide",
+   "title": "AI Agent Systems Senior Engineer Interview Preparation Guide",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 8866,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
+     "score": 0.41
+    },
+    {
+     "id": "agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part08_Memory_Governance",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/AI_Engineer_Question_Bank",
+   "title": "AI Engineer Interview Question Bank",
+   "doc_type": "guide",
+   "tags": [
+    "interview-prep",
+    "ai-engineer",
+    "python",
+    "llm",
+    "rag",
+    "mlops"
+   ],
+   "word_count": 3344,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "interview-prep/Agentic_AI_Platforms_Questionnaire_2025",
+   "title": "Agentic AI & Platforms Enterprise Questionnaire",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 9434,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions",
+   "title": "EA HITL / HOTL / HOOL Interview Questions",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 15614,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/EA_Senior_Interview_Questions",
+     "score": 0.43
+    },
+    {
+     "id": "interview-prep/EA_Quality_Resilience_Testing_Interview_Questions",
+     "score": 0.4
+    },
+    {
+     "id": "agentic-ui/responsible-ai",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/EA_Quality_Resilience_Testing_Interview_Questions",
+   "title": "EA Quality, Resilience & Testing Interview Questions",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 16282,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/EA_Senior_Interview_Questions",
+     "score": 0.55
+    },
+    {
+     "id": "interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/EA_Senior_Interview_Questions",
+   "title": "EA Senior Interview Questions",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 9652,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/EA_Quality_Resilience_Testing_Interview_Questions",
+     "score": 0.55
+    },
+    {
+     "id": "interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions",
+     "score": 0.43
+    },
+    {
+     "id": "interview-prep/EA_Soft_Skills_and_Behaviors",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/EA_Soft_Skills_and_Behaviors",
+   "title": "EA Soft Skills and Behaviors",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 9756,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/EA_Senior_Interview_Questions",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/specialization/EA_Business_Communication_Executive_Skills",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/process/EA_Mastery_Guide",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/EY_AI_Architect_Interview_Guide_1",
+   "title": "EY AI Architect & Consultant \u2014 Interview & ECC AI-First Guide",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 5246,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/industry-practices/consulting-firms-genai-strategy",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-ai-report/part-18-case-studies",
+     "score": 0.31
+    },
+    {
+     "id": "knowledge-engineering/industry-practices/consulting-firms",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/Enterprise_Architect_in_the_Age_of_AI",
+   "title": "Enterprise Architect in the Age of AI",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 4848,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.54
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.44
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/Enterprise_GenAI_Architect_Interview_Guide",
+   "title": "ENTERPRISE GenAI / AI ARCHITECT",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 4149,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/Principal_Enterprise_AI_Guide_Educative",
+     "score": 0.49
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/Hard_Scenarios_Interview_Prep",
+   "title": "Hard Scenarios Interview Prep",
+   "doc_type": "guide",
+   "tags": [
+    "interview-prep",
+    "enterprise-architecture",
+    "agentic-ai",
+    "scenarios"
+   ],
+   "word_count": 6861,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ML_AI_Interview_Mastery_Guide",
+   "title": "How to Use This Guide",
+   "doc_type": "guide",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 7586,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "interview-prep/Multimodal_AI_EA_Scenarios",
+   "title": "Multimodal AI \u2014 Enterprise Architect Complex Scenario Bank",
+   "doc_type": "unknown",
+   "tags": [
+    "interview-prep",
+    "multimodal-ai",
+    "enterprise-architecture",
+    "complex-scenarios",
+    "agentic-ai",
+    "security",
+    "compliance"
+   ],
+   "word_count": 6891,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-09-compliance-responsible-ai",
+     "score": 0.35
+    },
+    {
+     "id": "interview-prep/Hard_Scenarios_Interview_Prep",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ea-ai-artifacts-and-metrics",
+   "title": "EA Artifacts & Metrics \u2014 Real-World Examples",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 7180,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ea/EA_Interview_Handbook",
+   "title": "Enterprise Architecture Interview Handbook",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 11546,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/ea/EA_Interview_Handbook_DELTA",
+     "score": 0.58
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ea/EA_Interview_Handbook_DELTA",
+   "title": "EA Interview Handbook \u2014 2026 Delta Update",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 9394,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/ea/EA_Interview_Handbook",
+     "score": 0.58
+    },
+    {
+     "id": "enterprise-architecture/best-practices/EA_Glossary_CheatSheet",
+     "score": 0.43
+    },
+    {
+     "id": "interview-prep/ea/EA_Interview_Vol3_CTO_AI",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ea/EA_Interview_Master_Guide",
+   "title": "Enterprise Architect Interview Master Guide",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep",
+    "enterprise-architecture",
+    "agentic-ai",
+    "hyperscaler",
+    "cto-readiness",
+    "distinguished-architect"
+   ],
+   "word_count": 9835,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/framework/EA_Soft_Skills_Interview_Master_Guide",
+     "score": 0.54
+    },
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/architecture-leadership",
+     "score": 0.36
+    },
+    {
+     "id": "interview-prep/ea/EA_Interview_Vol3_CTO_AI",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ea/EA_Interview_Vol3_CTO_AI",
+   "title": "ENTERPRISE ARCHITECTURE",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 27096,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/best-practices/EA_Glossary_CheatSheet",
+     "score": 0.38
+    },
+    {
+     "id": "interview-prep/ea/EA_Interview_Handbook_DELTA",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/ea/index",
+   "title": "EA Interview Preparation",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep",
+    "ea"
+   ],
+   "word_count": 57,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/index",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/fde/architect-in-fde-context",
+   "title": "Architect Expectations in an FDE Context",
+   "doc_type": "study-guide",
+   "tags": [
+    "interview-prep",
+    "fde",
+    "enterprise-architect",
+    "solution-architect",
+    "transformation"
+   ],
+   "word_count": 1877,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/fde/index",
+     "score": 0.52
+    },
+    {
+     "id": "interview-prep/fde/fde-role-skills-map",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/fde/fde-life-transcript",
+   "title": "FDE Life Transcript \u2014 FinClear AI Deployment (Complete)",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "interview-prep",
+    "fde",
+    "transcript",
+    "transformation",
+    "applied-ai"
+   ],
+   "word_count": 7317,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/usecase-transcript",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/fde/fde-role-skills-map",
+   "title": "FDE Role Skills & Study Map",
+   "doc_type": "study-guide",
+   "tags": [
+    "interview-prep",
+    "fde",
+    "skills",
+    "study-guide"
+   ],
+   "word_count": 3922,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/fde/index",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.33
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/fde/index",
+   "title": "Forward Deployed Engineer (FDE)",
+   "doc_type": "guide",
+   "tags": [
+    "interview-prep",
+    "fde",
+    "forward-deployed-engineer",
+    "applied-ai"
+   ],
+   "word_count": 426,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/fde/architect-in-fde-context",
+     "score": 0.52
+    },
+    {
+     "id": "interview-prep/fde/fde-role-skills-map",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "interview-prep/index",
+   "title": "Interviews",
+   "doc_type": "interview-questions",
+   "tags": [
+    "interview-prep"
+   ],
+   "word_count": 122,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/ea/index",
+     "score": 0.35
+    }
+   ]
+  }
+ ]
+}

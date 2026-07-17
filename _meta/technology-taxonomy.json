@@ -1,0 +1,373 @@
+{
+  "_meta": {
+    "description": "Curated registry of technology tools and frameworks referenced across this knowledge corpus. Each entry defines how the tool is identified in body text. Add new entries freely; re-run build_graph.py to refresh the graph.",
+    "categories": ["llm", "agent-framework", "cloud-ai", "vector-db", "orchestration", "infra", "protocol", "security", "observability", "data-platform", "dev-tools"],
+    "last_updated": "2026-07-17"
+  },
+  "tools": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "category": "llm",
+      "description": "Anthropic's Claude family of LLMs",
+      "aliases": ["Claude 3", "Claude 4", "claude-sonnet", "claude-opus", "claude-haiku", "claude-fable", "Sonnet", "Opus", "Haiku"]
+    },
+    {
+      "id": "gpt4",
+      "name": "GPT-4",
+      "category": "llm",
+      "description": "OpenAI's GPT-4 family",
+      "aliases": ["GPT-4o", "GPT-4 Turbo", "GPT-3.5", "ChatGPT"]
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "category": "llm",
+      "description": "Google's Gemini family of LLMs",
+      "aliases": ["Gemini Pro", "Gemini Ultra", "Gemini Flash", "Bard"]
+    },
+    {
+      "id": "llama",
+      "name": "Llama",
+      "category": "llm",
+      "description": "Meta's open-weight Llama models",
+      "aliases": ["Llama 2", "Llama 3", "Meta Llama"]
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "category": "llm",
+      "description": "OpenAI platform and API",
+      "aliases": ["OpenAI API", "OpenAI SDK"]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "category": "llm",
+      "description": "Anthropic company and platform",
+      "aliases": []
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "category": "agent-framework",
+      "description": "LangChain LLM orchestration framework",
+      "aliases": ["langchain-core", "langchain-community", "LCEL"]
+    },
+    {
+      "id": "langgraph",
+      "name": "LangGraph",
+      "category": "agent-framework",
+      "description": "Graph-based multi-agent orchestration built on LangChain",
+      "aliases": ["LangGraph Studio", "LangGraph Cloud"]
+    },
+    {
+      "id": "crewai",
+      "name": "CrewAI",
+      "category": "agent-framework",
+      "description": "Multi-agent role-based collaboration framework",
+      "aliases": ["Crew AI"]
+    },
+    {
+      "id": "autogen",
+      "name": "AutoGen",
+      "category": "agent-framework",
+      "description": "Microsoft AutoGen multi-agent conversation framework",
+      "aliases": ["AutoGen Studio", "AG2", "PyAutoGen"]
+    },
+    {
+      "id": "semantic-kernel",
+      "name": "Semantic Kernel",
+      "category": "agent-framework",
+      "description": "Microsoft Semantic Kernel SDK for AI integration",
+      "aliases": ["SK", "SemanticKernel"]
+    },
+    {
+      "id": "strands",
+      "name": "Strands",
+      "category": "agent-framework",
+      "description": "AWS Strands agentic AI SDK",
+      "aliases": ["Strands SDK", "AWS Strands"]
+    },
+    {
+      "id": "llamaindex",
+      "name": "LlamaIndex",
+      "category": "agent-framework",
+      "description": "Data framework for LLM-powered RAG and agents",
+      "aliases": ["Llama Index", "GPT Index", "llama-index"]
+    },
+    {
+      "id": "haystack",
+      "name": "Haystack",
+      "category": "agent-framework",
+      "description": "Deepset's open-source NLP/RAG framework",
+      "aliases": ["deepset Haystack"]
+    },
+    {
+      "id": "litellm",
+      "name": "LiteLLM",
+      "category": "agent-framework",
+      "description": "Unified LLM API proxy and SDK",
+      "aliases": ["LiteLLM Proxy"]
+    },
+    {
+      "id": "bedrock",
+      "name": "AWS Bedrock",
+      "category": "cloud-ai",
+      "description": "AWS managed foundation model service",
+      "aliases": ["Bedrock", "Amazon Bedrock", "Bedrock Agents", "Bedrock Guardrails"]
+    },
+    {
+      "id": "agentcore",
+      "name": "AWS AgentCore",
+      "category": "cloud-ai",
+      "description": "AWS managed runtime and memory service for agents",
+      "aliases": ["AgentCore", "Bedrock AgentCore", "Amazon AgentCore"]
+    },
+    {
+      "id": "vertex-ai",
+      "name": "Vertex AI",
+      "category": "cloud-ai",
+      "description": "Google Cloud's unified ML and AI platform",
+      "aliases": ["Vertex", "Google Vertex", "Vertex AI Agents"]
+    },
+    {
+      "id": "azure-openai",
+      "name": "Azure OpenAI",
+      "category": "cloud-ai",
+      "description": "Microsoft Azure hosted OpenAI models",
+      "aliases": ["Azure OpenAI Service", "AOAI", "Azure AI Foundry", "Azure AI Studio"]
+    },
+    {
+      "id": "sagemaker",
+      "name": "SageMaker",
+      "category": "cloud-ai",
+      "description": "AWS machine learning platform",
+      "aliases": ["Amazon SageMaker", "SageMaker Pipelines", "SageMaker JumpStart"]
+    },
+    {
+      "id": "pinecone",
+      "name": "Pinecone",
+      "category": "vector-db",
+      "description": "Managed vector database for similarity search",
+      "aliases": []
+    },
+    {
+      "id": "weaviate",
+      "name": "Weaviate",
+      "category": "vector-db",
+      "description": "Open-source vector database with GraphQL",
+      "aliases": []
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "category": "vector-db",
+      "description": "High-performance vector similarity search engine",
+      "aliases": []
+    },
+    {
+      "id": "chroma",
+      "name": "ChromaDB",
+      "category": "vector-db",
+      "description": "Open-source embedding database",
+      "aliases": ["Chroma", "chromadb"]
+    },
+    {
+      "id": "milvus",
+      "name": "Milvus",
+      "category": "vector-db",
+      "description": "Open-source vector database built for scalable similarity search",
+      "aliases": ["Zilliz"]
+    },
+    {
+      "id": "faiss",
+      "name": "FAISS",
+      "category": "vector-db",
+      "description": "Facebook AI Similarity Search library",
+      "aliases": ["facebook-faiss"]
+    },
+    {
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "category": "vector-db",
+      "description": "Distributed search and analytics engine with vector search",
+      "aliases": ["Elastic", "OpenSearch", "ELK Stack"]
+    },
+    {
+      "id": "redis",
+      "name": "Redis",
+      "category": "vector-db",
+      "description": "In-memory data store with vector search support",
+      "aliases": ["Redis Stack", "RedisSearch", "Redis Cloud"]
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "category": "orchestration",
+      "description": "Container orchestration platform",
+      "aliases": ["K8s", "kubectl", "Helm", "EKS", "GKE", "AKS"]
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "category": "orchestration",
+      "description": "Container platform",
+      "aliases": ["Docker Compose", "Dockerfile", "Podman"]
+    },
+    {
+      "id": "airflow",
+      "name": "Apache Airflow",
+      "category": "orchestration",
+      "description": "Workflow orchestration for data pipelines",
+      "aliases": ["Airflow", "MWAA"]
+    },
+    {
+      "id": "harness",
+      "name": "Harness",
+      "category": "orchestration",
+      "description": "CI/CD and feature flag platform",
+      "aliases": ["Harness CI", "Harness CD", "Harness FF"]
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform",
+      "category": "infra",
+      "description": "Infrastructure as code tool by HashiCorp",
+      "aliases": ["Terraform Cloud", "OpenTofu", "HCL"]
+    },
+    {
+      "id": "github-actions",
+      "name": "GitHub Actions",
+      "category": "infra",
+      "description": "CI/CD automation integrated with GitHub",
+      "aliases": ["GitHub CI", "GH Actions"]
+    },
+    {
+      "id": "mcp",
+      "name": "MCP",
+      "category": "protocol",
+      "description": "Model Context Protocol — open standard for LLM tool and context access",
+      "aliases": ["Model Context Protocol", "MCP Server", "MCP Client"]
+    },
+    {
+      "id": "a2a",
+      "name": "A2A",
+      "category": "protocol",
+      "description": "Agent-to-Agent Protocol for inter-agent communication",
+      "aliases": ["Agent-to-Agent", "A2A Protocol", "Google A2A"]
+    },
+    {
+      "id": "oauth",
+      "name": "OAuth / OIDC",
+      "category": "security",
+      "description": "OAuth 2.0 and OpenID Connect authorization standards",
+      "aliases": ["OAuth", "OAuth2", "OIDC", "OpenID Connect"]
+    },
+    {
+      "id": "cedar",
+      "name": "Cedar",
+      "category": "security",
+      "description": "AWS Cedar policy language for fine-grained authorization",
+      "aliases": ["AWS Cedar", "Cedar Policy", "Amazon Cedar"]
+    },
+    {
+      "id": "opentelemetry",
+      "name": "OpenTelemetry",
+      "category": "observability",
+      "description": "Vendor-neutral observability framework for traces, metrics, logs",
+      "aliases": ["OTel", "OTLP", "OpenTelemetry Collector"]
+    },
+    {
+      "id": "prometheus",
+      "name": "Prometheus",
+      "category": "observability",
+      "description": "Open-source metrics monitoring and alerting",
+      "aliases": ["PromQL"]
+    },
+    {
+      "id": "grafana",
+      "name": "Grafana",
+      "category": "observability",
+      "description": "Observability and data visualization platform",
+      "aliases": ["Grafana Cloud", "Grafana Tempo", "Grafana Loki"]
+    },
+    {
+      "id": "mlflow",
+      "name": "MLflow",
+      "category": "data-platform",
+      "description": "Open-source ML experiment tracking and model registry",
+      "aliases": ["MLflow Tracking", "MLflow Model Registry"]
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks",
+      "category": "data-platform",
+      "description": "Unified data and AI platform built on Apache Spark",
+      "aliases": ["Databricks Runtime", "Databricks SQL", "Unity Catalog", "Delta Lake"]
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "category": "data-platform",
+      "description": "Cloud data warehouse and data sharing platform",
+      "aliases": ["Snowflake AI", "Cortex", "Arctic"]
+    },
+    {
+      "id": "dbt",
+      "name": "dbt",
+      "category": "data-platform",
+      "description": "SQL-first data transformation tool",
+      "aliases": ["dbt Core", "dbt Cloud", "data build tool"]
+    },
+    {
+      "id": "kafka",
+      "name": "Apache Kafka",
+      "category": "data-platform",
+      "description": "Distributed event streaming platform",
+      "aliases": ["Kafka", "Confluent", "MSK", "Event Streaming"]
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "data-platform",
+      "description": "Open-source relational database with pgvector extension",
+      "aliases": ["Postgres", "pgvector", "PGVector", "RDS Postgres"]
+    },
+    {
+      "id": "dynamodb",
+      "name": "DynamoDB",
+      "category": "data-platform",
+      "description": "AWS managed NoSQL database",
+      "aliases": ["Amazon DynamoDB", "DDB"]
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot",
+      "category": "dev-tools",
+      "description": "AI pair programmer by GitHub/Microsoft",
+      "aliases": ["Copilot", "GitHub Copilot Chat", "Copilot Workspace"]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "dev-tools",
+      "description": "Anthropic's agentic coding CLI",
+      "aliases": ["Claude Code CLI", "claude-code"]
+    },
+    {
+      "id": "vlm",
+      "name": "vLLM",
+      "category": "dev-tools",
+      "description": "High-throughput LLM inference engine",
+      "aliases": ["vLLM Server", "PagedAttention"]
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "category": "dev-tools",
+      "description": "Local LLM runner for open-weight models",
+      "aliases": []
+    }
+  ]
+}

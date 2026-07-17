@@ -304,23 +304,23 @@ Distilled from the Mythos signals, ITOps transformation, security governance res
 
 Build deployment rails, governance, and observability before chasing the latest release. Anthropic's own Managed Agents launch confirms this strategy.
 
-# **<u>02</u>**
+## **<u>02</u>**
 
 ##### **Observe Before Automating**
 
 Deploy agents against observed workflows — not assumed ones. Process intelligence is the data layer that determines whether agents optimize real or imaginary workflows.
 
-# **03 Redesign Roles, Not Just Tools**
+## **03 Redesign Roles, Not Just Tools**
 
 Developers become orchestrators. Ops staff become agent supervisors. LOB leaders now hold equal buying power to CIOs. Org design must change as fast as the technology.
 
-# **04**
+## **04**
 
 ##### **Govern at Agent Speed**
 
 When agents generate and deploy code in seconds, scanning once a day equals not scanning. Security, compliance, and governance must match the velocity of the agents they govern.
 
-# **05**
+## **05**
 
 ##### **Treat Mythos as a Security Forcing**
 
@@ -328,13 +328,13 @@ When agents generate and deploy code in seconds, scanning once a day equals not 
 
 A model with 73% expert-level CTF success is the final argument for hardening your estate. Accelerate every security modernization conversation at board level using this data.
 
-# **06**
+## **06**
 
 ##### **Build Evaluation Competency Now**
 
 Writing code is no longer the bottleneck — evaluating AI-generated code is. Invest in LLM-as-judge infrastructure, human review protocols, and internal certification programs.
 
-# **07**
+## **07**
 
 ##### **Speak to the Board in Financial Terms**
 

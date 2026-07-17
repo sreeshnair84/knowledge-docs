@@ -108,7 +108,7 @@ Prompt caching reduces cost and latency by reusing the key-value computations fo
 
 **MODULE 2: Context Budget Management**
 
-# **MODULE 2: Context Budget Management**
+## **MODULE 2: Context Budget Management**
 
 | 🆕  NOT IN ORIGINAL GUIDE Deep coverage of how to monitor, control and recover from context overflow — critical for production agentic systems. |
 | --- |
@@ -167,7 +167,7 @@ Claude Code's /compact command compresses the current session context by summari
 
 **MODULE 3: Agent-to-Agent Communication Protocols**
 
-# **MODULE 3: Agent-to-Agent Communication Protocols**
+## **MODULE 3: Agent-to-Agent Communication Protocols**
 
 | 🆕  NOT IN ORIGINAL GUIDE The exam guide describes patterns but does not formally define the communication schema. This module provides the complete protocol design. |
 | --- |
@@ -210,7 +210,7 @@ When the coordinator spawns a subagent via the Task tool, the prompt IS the comm
 
 **MODULE 4: Token Optimization Techniques**
 
-# **MODULE 4: Token Optimization Techniques**
+## **MODULE 4: Token Optimization Techniques**
 
 | 🆕  NOT IN ORIGINAL GUIDE Comprehensive token reduction strategies — critical for cost control and context management in production systems. |
 | --- |
@@ -274,7 +274,7 @@ Batching is a token-efficiency technique as well as a cost technique. Each API c
 
 **MODULE 5: Advanced Multi-Agent Patterns**
 
-# **MODULE 5: Advanced Multi-Agent Patterns**
+## **MODULE 5: Advanced Multi-Agent Patterns**
 
 | 🆕  NOT IN ORIGINAL GUIDE Patterns beyond the basic coordinator-subagent model covered in the exam guide. |
 | --- |
@@ -315,7 +315,7 @@ The exam guide mentions independent review instances. The Judge pattern formaliz
 
 **MODULE 6: Observability & Debugging Agentic Systems**
 
-# **MODULE 6: Observability & Debugging**
+## **MODULE 6: Observability & Debugging**
 
 | 🆕  NOT IN ORIGINAL GUIDE Essential for production systems. Not directly exam-tested but foundational for architecture questions about reliability and debugging. |
 | --- |
@@ -344,7 +344,7 @@ When a tool is being misrouted, follow this diagnostic flow:
 
 **MODULE 7: Security in Agentic Systems**
 
-# **MODULE 7: Security in Agentic Systems**
+## **MODULE 7: Security in Agentic Systems**
 
 | 🆕  NOT IN ORIGINAL GUIDE Security vulnerabilities specific to LLM agents. Increasingly tested in architecture exams as agentic systems reach production. |
 | --- |
@@ -386,7 +386,7 @@ Restricting tool access is both a reliability principle (correct tool selection)
 
 **MODULE 8: Testing Agentic Systems**
 
-# **MODULE 8: Testing Agentic Systems**
+## **MODULE 8: Testing Agentic Systems**
 
 | 🆕  NOT IN ORIGINAL GUIDE A complete testing strategy for LLM-powered agents — from unit to end-to-end evaluation. |
 | --- |
@@ -424,7 +424,7 @@ A common testing mistake: running multiple test cases in the same Claude session
 
 **MODULE 9: Cost & Latency Optimization**
 
-# **MODULE 9: Cost & Latency Optimization**
+## **MODULE 9: Cost & Latency Optimization**
 
 | 🆕  NOT IN ORIGINAL GUIDE Strategies for reducing cost and improving response time in production agentic systems. |
 | --- |
@@ -457,7 +457,7 @@ A common testing mistake: running multiple test cases in the same Claude session
 
 **MODULE 10: State Machines & Checkpointing**
 
-# **MODULE 10: State Machines & Checkpointing**
+## **MODULE 10: State Machines & Checkpointing**
 
 | 🆕  NOT IN ORIGINAL GUIDE Deterministic workflow control and crash recovery — critical for financial and compliance-sensitive workflows. |
 | --- |
@@ -481,7 +481,7 @@ The exam guide explicitly covers crash recovery using manifests. Here is the com
 
 **MODULE 11: Rate Limiting, Retry & Resilience Patterns**
 
-# **MODULE 11: Rate Limiting, Retry & Resilience**
+## **MODULE 11: Rate Limiting, Retry & Resilience**
 
 | 🆕  NOT IN ORIGINAL GUIDE Production resilience patterns for agentic systems operating under API rate limits and partial failures. |
 | --- |
@@ -516,7 +516,7 @@ From the exam guide, the Message Batches API example shows how to calculate SLA 
 
 **ADVANCED PRACTICE QUESTIONS**
 
-# **ADVANCED PRACTICE QUESTIONS**
+## **ADVANCED PRACTICE QUESTIONS**
 
 *These questions cover the supplementary topics — memory, token optimization, communication patterns, security.*
 
@@ -554,7 +554,7 @@ From the exam guide, the Message Batches API example shows how to calculate SLA 
 
 **SUPPLEMENTARY FLASHCARDS**
 
-# **SUPPLEMENTARY FLASHCARDS**
+## **SUPPLEMENTARY FLASHCARDS**
 
 | MEMORY What are the 4 memory types for LLM agents? | ANSWER In-Context (working memory), External (databases/files), In-Weights (training knowledge), In-Cache (KV prefix cache). Each has different persistence, capacity and cost. |
 | --- | --- |
@@ -592,7 +592,7 @@ From the exam guide, the Message Batches API example shows how to calculate SLA 
 | STATE What is the state machine pattern and why is it stronger than prompt enforcement? | ANSWER Encode workflow transitions in APPLICATION CODE. State transitions are programmatically enforced — Claude literally cannot skip required steps because the code layer prevents it. 100% deterministic vs. probabilistic prompt instructions. |
 | --- | --- |
 
-# **SUPPLEMENTARY QUICK REFERENCE**
+## **SUPPLEMENTARY QUICK REFERENCE**
 
 ## **Memory Type Decision Guide**
 

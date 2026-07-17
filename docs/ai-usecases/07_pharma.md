@@ -53,7 +53,7 @@ Engagement Period: June 2025 – May 2026
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# 1. Executive Summary
+## 1. Executive Summary
 
 Vireon Therapeutics, a mid-size pharmaceutical company with three approved therapies and a twelve-compound clinical pipeline, engaged an Enterprise AI Architecture team to build an integrated platform spanning scientific literature intelligence for R&D and drafting support for regulatory submissions to the FDA and EMA. The mandate came directly from Vireon’s Chief Scientific Officer and Head of Regulatory Affairs, both frustrated by the same underlying problem from different angles: the company’s scientific and regulatory knowledge was scattered across tens of thousands of papers, internal study reports, and prior submission documents, with no systematic way to retrieve and synthesize it reliably.
 
@@ -63,19 +63,19 @@ The engagement’s defining event was a near-miss nine months in: during prepara
 
 Key outcomes: - Literature review cycle time for new target validation reduced from an average of 6 weeks to 10 days for systematic reviews using the tool - Regulatory submission section first-draft turnaround reduced by approximately 55% for in-scope CTD sections - One material near-miss (fabricated citation, Month 9) caught by existing mandatory cross-checking process before reaching a real submission, triggering architectural redesign of citation generation - Zero fabricated citations reaching an actual FDA/EMA submission — the mandatory human verification process, hardened post-incident, held throughout
 
-# 2. Client Background
+## 2. Client Background
 
 Vireon Therapeutics operates a 40-person R&D scientific staff and a 25-person regulatory affairs and medical writing organization, supporting an active pipeline that included two compounds in Phase 3 trials during the engagement period — meaning regulatory submission activity was not a hypothetical future need but an active, high-stakes, near-term deliverable throughout the engagement.
 
 Vireon’s Chief Scientific Officer, Dr. Amara Osei (no relation to other engagements’ similarly-named individuals — a coincidence noted internally during the engagement), and Head of Regulatory Affairs, Dr. Jonathan Reyes, cosponsored the engagement. Vireon’s General Counsel, Patricia Lindqvist, was closely involved throughout given both the trade-secret sensitivity of unpublished internal research and the legal exposure of any inaccuracy in regulatory submission content.
 
-# 3. Business Problem
+## 3. Business Problem
 
 **Literature intelligence.** Vireon’s R&D scientists, when evaluating a new drug target or mechanism, needed to systematically review the existing scientific literature — a process that discovery found took an average of six weeks for a thorough review, during which a scientist manually searched databases (PubMed, proprietary literature aggregators), read and synthesized findings across dozens or hundreds of papers, and tried to identify both supporting and contradicting evidence. Vireon had lost time on at least one occasion, per Dr. Osei’s account, to a target-validation effort that could have been redirected earlier had a contradicting finding buried in a lessprominent journal been surfaced sooner.
 
 **Regulatory submission drafting.** Medical writers assembling CTD submission sections synthesized clinical trial data, nonclinical study reports, and supporting literature into the standardized document structure FDA and EMA require. This process was manual, document-heavy, and constrained by an unforgiving deadline structure — submission timelines are often externally fixed (tied to trial completion or regulatory meeting dates), meaning schedule pressure on medical writers was a persistent, real condition, not a hypothetical risk factor.
 
-# 4. Constraints
+## 4. Constraints
 
 1. **GxP computer system validation.** Any system supporting activities that feed into a regulatory submission fell within the scope of FDA’s expectations for validated computerized systems (21 CFR Part 11 and associated GxP guidance) — requiring formal validation documentation, change control, and audit trail capabilities considerably more rigorous than typical enterprise software validation.
 
@@ -89,7 +89,7 @@ Vireon’s Chief Scientific Officer, Dr. Amara Osei (no relation to other engage
 
 6. **Multi-jurisdictional submission format differences.** FDA and EMA submission requirements, while both based on the ICH Common Technical Document structure, had meaningful format and content differences requiring the system to handle both, not just a single regulatory jurisdiction’s format.
 
-# 5. Discovery Transcript
+## 5. Discovery Transcript
 
 ## 5.1 Kickoff — Week 1
 
@@ -141,7 +141,7 @@ This existing process — independent verification by a second qualified medical
 |Regulatory<br>determination /<br>submission strategy|Human expert<br>judgment|Explicitly out of scope<br>— remains human, non-<br>negotiable|N/A|N/A|
 |Clinical trial data<br>analysis|Existing separate<br>biostatistics function|Out of scope — mature<br>function, different<br>governance model|Low|N/A|
 
-# 6. Architecture Workshops
+## 6. Architecture Workshops
 
 ## 6.1 Data & Information Architecture
 
@@ -177,7 +177,7 @@ All LLM inference within Vireon’s cloud tenant boundary (AWS, consistent with 
 
 - MCP server exposing the Scientific Evidence Knowledge Graph, live PubMed/MEDLINE search, and CrossRef bibliographic verification as discrete tools consumed by both the Literature-Intelligence Agent and the Drafting Agent Integration with Vireon’s existing document management system (Veeva Vault, industry-standard for regulated pharma content) for CTD section assembly and version control, preserving Veeva’s existing GxPvalidated document lifecycle rather than building a parallel document system Ingestion pipeline architecture: scheduled and on-demand knowledge-graph updates from PubMed/MEDLINE, with each new entry passing through the CrossRef verification step described in Section 6.1 before becoming available for agent citation
 
-# 7. Technical Debates
+## 7. Technical Debates
 
 ## 7.1 Should the Literature-Intelligence Agent Have Live Web Search Access?
 
@@ -215,7 +215,7 @@ evidence, not just supporting evidence — given that’s the exact failure mode
 
 **EAA:** Agreed, and I’d propose a specific “contradicting-evidence recall” metric — measured against a curated set of historical target-validation questions where the actual literature is known by your senior scientists to contain meaningful contradicting findings, checking whether the agent surfaces those specific findings, not just whether its overall synthesis sounds thorough.
 
-# 8. Executive Reviews
+## 8. Executive Reviews
 
 ## 8.1 Quality Assurance / GxP Validation Review — Week 20
 
@@ -245,7 +245,7 @@ evidence, not just supporting evidence — given that’s the exact failure mode
 
 **EAA:** That’s exactly right, and I think that’s the important distinction for how we characterize this both internally and, if it ever becomes relevant, to a regulator. The principle — no citation without verified-source resolution — was sound and held on the primary, higher-volume pathway. The internal-document pathway was built to a lower rigor standard than the external pathway, which in retrospect was a real design gap, not a difference that was ever deliberately, consciously justified.
 
-# 9. Final Architecture
+## 9. Final Architecture
 
 - **Scientific Evidence Knowledge Graph** : structured representation of literature findings with evidentiaryrelationship typing (supporting/contradicting, evidence strength/type), every entry resolved against an authoritative bibliographic source (CrossRef/PubMed) at ingestion, with a separate, hardened-post-incident pathway for internal Vireon study report citations verified against Veeva Vault document IDs with the same hard-block-on-failure rigor as the external pathway
 
@@ -255,7 +255,7 @@ evidence, not just supporting evidence — given that’s the exact failure mode
 
 - All LLM inference within Vireon’s AWS tenant boundary under contractual no-training/no-retention terms Integration with Veeva Vault preserving existing GxP-validated document lifecycle
 
-# 10. Delivery Roadmap
+## 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -266,7 +266,7 @@ evidence, not just supporting evidence — given that’s the exact failure mode
 |Incident & Remediation|Month 9|Fabricated citation near-miss, internal-<br>pathway hardening|
 |Drafting Copilot GA (phased, active-<br>submission-aware)|Months 10–12|Rollout timed around active Phase 3<br>submission activity|
 
-# 11. Risks
+## 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -276,15 +276,15 @@ evidence, not just supporting evidence — given that’s the exact failure mode
 |Trade secret / pipeline<br>data exposure|Low|Very High|Contractual no-<br>training/no-retention<br>terms, existing IP-<br>classification-scheme<br>enforcement|General Counsel|
 |Submission timeline<br>disruption from<br>platform issues|Low|High|Phased rollout<br>explicitly sequenced<br>around active Phase 3<br>submission deadlines|Regulatory Affairs|
 
-# 12. Governance Model
+## 12. Governance Model
 
 - **GxP Change Control** : any change to citation-verification logic, knowledge-graph ingestion pipeline, or underlying model version triggers mandatory OQ re-validation before deployment **Mandatory second-writer citation cross-check** : preserved as an independent, non-negotiable control regardless of system-level citation-integrity architecture, with explicit, repeated communication from Regulatory Affairs leadership against any perception that AI assistance reduces the need for this check **QA sign-off authority** : Vireon’s Quality Assurance function holds standing authority to pause any AIassisted submission activity pending investigation of a suspected citation-integrity or validation issue **Post-incident pathway-parity requirement** : any future citation-verification pathway added to the system (e.g., for a new source type) must meet the same hard-block-on-failure rigor as the existing external and internal pathways — formalized specifically in response to the Month 9 finding that one pathway had been built to a lower standard than the other
 
-# 13. Production Rollout
+## 13. Production Rollout
 
 The Literature-Intelligence Agent entered pilot with a limited group of R&D scientists in Month 7, deliberately scoped narrow pending improvement on the contradicting-evidence-recall benchmark (Section 8.2). The Drafting Copilot’s rollout was explicitly sequenced to avoid disrupting the two active Phase 3 programs’ submission timelines — initial GA was scoped to non-time-critical CTD sections and lower-stakes submission types before expanding to core clinical-overview content, a sequencing decision made more conservative still following the Month 9 incident.
 
-# 14. Production Incident — Month 9
+## 14. Production Incident — Month 9
 
 ## 14.1 Incident Summary
 
@@ -312,7 +312,7 @@ No submission left Vireon’s internal review process referencing this fabricate
 
 The retrospective audit covered all internal-document citations generated during the pilot period — approximately 340 across various drafting sessions. It found one additional instance of a fabricated internal-document reference (caught during a routine, non-submission-related drafting exercise, never reviewed by a second writer since it wasn’t part of an active submission workflow) and confirmed no other instances. The internal-document verification pathway was rebuilt to hard-block on any failed Veeva Vault lookup, with identical rigor to the external CrossRef pathway — eliminating the parity gap identified as the root cause. QA independently revalidated both pathways under the OQ framework before drafting copilot use resumed on active submission content.
 
-# 15. Lessons Learned
+## 15. Lessons Learned
 
 1. **An architectural principle applied unevenly across its own implementation pathways creates exactly the kind of latent risk that’s easy to miss until it’s exploited or exposed.** The citationintegrity principle itself was sound; the failure was that one implementation pathway (internal documents) received meaningfully less design rigor than another (external literature) without that disparity being consciously identified or justified at any point in the build process. The post-incident governance addition — mandatory pathway-parity for any future citation-source type — exists specifically to prevent this class of gap from recurring silently.
 
@@ -320,7 +320,7 @@ The retrospective audit covered all internal-document citations generated during
 
 3. **A pre-existing, independent human process (Vireon’s mandatory second-writer citation crosscheck) that long predated this AI platform was the control that actually caught the incident — reinforcing, as in other regulated engagements, that AI-assisted systems should be designed to strengthen and be genuinely subordinate to existing rigorous human verification processes, not to implicitly encourage complacency in them.** The postmortem specifically credited Vireon’s own quality culture and existing process discipline, not any AI-specific safeguard, as the reason this stayed an internal near-miss rather than reaching an actual submission — a finding the team was careful to communicate clearly rather than overstate the AI platform’s own safety properties.
 
-# 16. Enterprise Architecture Artifacts
+## 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : literature intelligence and regulatory submission drafting value chains with AI-opportunity overlay (Section 5.4)
 
@@ -330,7 +330,7 @@ The retrospective audit covered all internal-document citations generated during
 
 - **Citation-Integrity Architecture Specification** , explicitly documenting the pre- and post-incident pathway designs as a reference for the pathway-parity governance requirement
 
-# 17. Architecture Decision Records (ADRs)
+## 17. Architecture Decision Records (ADRs)
 
 **ADR-001: No AI-generated citation may be presented without resolution against an authoritative verification source; the system is architecturally prohibited from generating novel, unresolved citations.** Status: Accepted, foundational. Implementation gap identified and remediated post-incident (Section 14).
 
@@ -346,7 +346,7 @@ The retrospective audit covered all internal-document citations generated during
 
 **ADR-007 (post-incident): Internal-document citation-verification pathway rebuilt to hard-block on failed lookup, achieving parity with the external CrossRef pathway; mandatory pathway-parity requirement established for any future citation-source type.** Status: Accepted, emergency remediation, independently re-validated by QA under the OQ framework.
 
-# 18. AI Evaluation Strategy
+## 18. AI Evaluation Strategy
 
 - **Citation integrity** : hard-gate metric, target effectively 100% (given architectural hard-blocking) across all pathways, monitored continuously with any failure treated as an immediate investigation trigger, not a tolerable error rate
 
@@ -354,7 +354,7 @@ The retrospective audit covered all internal-document citations generated during
 
 - **Synthesis accuracy** : sampled medical writer review confirming drafted content faithfully represents cited sources’ actual findings, distinct from and in addition to citation-existence verification **Post-incident pathway-parity audit** : standing requirement to test any new or modified citation-verification pathway against the same adversarial and failure-mode test suite applied to existing pathways before production use
 
-# 19. Operational Runbook
+## 19. Operational Runbook
 
 - **Citation-verification failure handling** : any failed lookup across any pathway hard-blocks the associated content from appearing in copilot output, routed to a flagged-content queue with a clear explanation, never silently retried or downgraded to a soft warning
 
@@ -362,7 +362,7 @@ The retrospective audit covered all internal-document citations generated during
 
 - **Active-submission-period support protocol** : elevated monitoring and support responsiveness during periods when the drafting copilot is in active use for a live Phase 3 submission workstream, given the schedule-criticality constraint from discovery **Retrospective audit protocol** (post-incident, formalized): standing procedure for full historical-output audit following any future citation-integrity finding, modeled on the Month 9 response
 
-# 20. Future Roadmap
+## 20. Future Roadmap
 
 1. **Broader Literature-Intelligence Agent rollout** beyond the current pilot group, gated on continued contradicting-evidence-recall benchmark improvement per Dr. Osei’s Week 28 condition, not a fixed calendar date.
 

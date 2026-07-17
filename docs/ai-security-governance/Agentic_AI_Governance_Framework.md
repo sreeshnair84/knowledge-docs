@@ -104,7 +104,7 @@ Traditional AI governance frameworks were designed for static models and offline
 |**Operating Model**|Organisational design for an AI Governance Office with RACI and<br>board structure.|
 |**Maturity Model**|Five-level maturity assessment with measurable KPIs for continuous<br>improvement.|
 
-# 02
+## 02
 
 ### Understanding Agentic AI
 
@@ -152,7 +152,7 @@ Agents of equal authority negotiate and collaborate directly. Governance must de
 
 Agents execute in sequence, passing state between steps. Each handoff represents a trust boundary requiring integrity verification and provenance tracking.
 
-# 03
+## 03
 
 ### The Governance Imperative
 
@@ -181,7 +181,7 @@ Table 3.1 — Traditional AI Governance Assumption Failures
 
 Organisations that establish proactive agentic AI governance programmes realise measurable returns: agent workflows running 3–10x faster, Mean Time to Resolution (MTTR) reductions of 60–80%, and first-year ROI of 3–6x on governed agent deployments versus ad hoc rollouts. Governance is not a constraint on AI value — it is its enabler.
 
-# 04
+## 04
 
 ### Regulatory & Standards Landscape
 
@@ -211,7 +211,7 @@ ISO/IEC 42001 (AI Management System) provides a certifiable framework aligned wi
 
 For multi-jurisdictional enterprises, a crosswalk approach is recommended: a single governance investment that satisfies the most stringent applicable requirements (typically EU AI Act / GDPR) will largely satisfy NIST AI RMF, APAC, and sector-specific obligations simultaneously. The compliance architecture should be modular — a common control library with jurisdiction-specific overlays activated per agent deployment context.
 
-# 05 Agentic AI Risk Taxonomy
+## 05 Agentic AI Risk Taxonomy
 
 Systematic classification of risks across 12 domains
 
@@ -232,7 +232,7 @@ The OWASP Top 10 for Agentic Applications (December 2025), synthesised with NIST
 
 Table 5.1 — Agentic AI 12-Domain Risk Taxonomy
 
-# 06
+## 06
 
 ### Governance Framework Architecture
 
@@ -275,7 +275,7 @@ Policy, accountability, and regulatory alignment
 |**›**|Continuous red-teaming and adversarial testing against agentic attack vectors|
 |**›**|Post-incident root cause analysis feeding back into governance policy updates|
 
-# 07 Identity & Access Management for AI Agents
+## 07 Identity & Access Management for AI Agents
 
 Governing non-human identities at enterprise scale
 
@@ -297,7 +297,7 @@ When an orchestrator delegates to a sub-agent, the full delegation chain (subjec
 
 Non-human identities (AI agents, service accounts, APIs) already outnumber human identities by 50:1 in the average enterprise — projected to reach 80:1 within two years. Each agent instance is a potential attack surface. Without JIT provisioning, credential lifecycle governance, and unified IAM visibility across human and non-human identities, organisations cannot achieve the access auditability required by NIST AI RMF or the EU AI Act.
 
-# 08 Human Oversight Models
+## 08 Human Oversight Models
 
 Designing scalable human control for autonomous AI systems
 
@@ -339,7 +339,7 @@ Effective oversight requires an identity-aware orchestration layer that can paus
 
 - Requests to sub-agents that would grant permissions exceeding the orchestrator's own scope
 
-# 09
+## 09
 
 ### Agent Lifecycle Management
 
@@ -369,7 +369,7 @@ Any change to agent scope, tool access, model version, or operating parameters t
 
 Decommissioning is a formal, governed process — not ad hoc shutdown. Requirements include: credential revocation and verification, tool access removal, data retention/deletion per policy, audit record archival, and orphan agent scan across related systems. Orphaned agents with active credentials represent persistent security vulnerabilities and must be detected through quarterly inventory scans.
 
-# 10
+## 10
 
 ### Multi-Agent Systems Governance
 
@@ -393,7 +393,7 @@ Every delegation event must be cryptographically bound to an immutable log entry
 
 Multi-agent systems must be architected with containment boundaries preventing cascading failures. Agent network topologies should be designed such that failure of any single agent or sub-network does not propagate uncontrolled to the full system. Circuit breakers at each delegation boundary are mandatory for production deployments.
 
-# 11
+## 11
 
 ### Implementation Roadmap
 
@@ -474,7 +474,7 @@ The implementation roadmap is structured in three phases. Each phase has defined
 
 - Establish continuous governance evolution programme
 
-# 12 Operating Model & Organisational Design
+## 12 Operating Model & Organisational Design
 
 Structures, roles, and accountabilities for the agentic enterprise
 
@@ -497,7 +497,7 @@ Table 12.1 — AI Governance Board Composition
 
 The Governance Board operates on a cadence of monthly risk reviews, quarterly policy updates, and annual maturity assessments. An AI Agent Registry — the single source of truth for all sanctioned agents — is maintained by the Enterprise Architecture function and reviewed by the Board quarterly. The shift from Human-in-the-Loop oversight to Human-on-the-Loop supervision is explicitly governed: no agent class transitions between oversight models without Board approval.
 
-# 13 Metrics, KPIs & Maturity Model
+## 13 Metrics, KPIs & Maturity Model
 
 Measuring governance effectiveness and programme maturity
 
@@ -529,7 +529,7 @@ Table 13.1 — Agentic AI Governance KPI Framework
 |**4**|**Managed**|Quantitative governance metrics tracked. Continuous monitoring<br>active. Red-teaming programme established. ISO 42001 aligned.|
 |**5**|**Optimising**|Continuous governance improvement cycle. Regulatory leadership.<br>Automated compliance. AI governance as competitive advantage.|
 
-# 14 Appendices
+## 14 Appendices
 
 Reference materials, glossary, and further reading
 

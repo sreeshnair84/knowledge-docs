@@ -1,0 +1,624 @@
+{
+ "section": "enterprise-ai-report",
+ "page_count": 22,
+ "pages": [
+  {
+   "id": "enterprise-ai-report/index",
+   "title": "Enterprise AI Research Report: From Traditional Software to AI-Native Organization",
+   "doc_type": "research-report",
+   "tags": [
+    "enterprise-ai",
+    "operating-model",
+    "transformation",
+    "strategy",
+    "governance",
+    "agentic-ai"
+   ],
+   "word_count": 2007,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/part-19-deliverables",
+     "score": 0.47
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.43
+    },
+    {
+     "id": "enterprise-ai-report/part-03-ai-delivery-lifecycle",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-01-evolution",
+   "title": "Part 1 \u2014 Evolution: Traditional Software to AI-Native Organization",
+   "doc_type": "research-report",
+   "tags": [
+    "evolution",
+    "ai-native",
+    "enterprise-ai",
+    "generative-ai",
+    "agentic-ai",
+    "transformation"
+   ],
+   "word_count": 3049,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-ai-report/part-08-organizational-roles",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-02-operating-models",
+   "title": "Part 2 \u2014 Enterprise AI Operating Models",
+   "doc_type": "research-report",
+   "tags": [
+    "operating-model",
+    "ai-coe",
+    "hub-spoke",
+    "federated-ai",
+    "agent-factory",
+    "digital-workforce"
+   ],
+   "word_count": 3775,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.56
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-ai-report/part-18-case-studies",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-03-ai-delivery-lifecycle",
+   "title": "Part 3 \u2014 AI Delivery Lifecycle",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-delivery",
+    "aidlc",
+    "lifecycle",
+    "mlops",
+    "delivery-model"
+   ],
+   "word_count": 470,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/index",
+     "score": 0.4
+    },
+    {
+     "id": "ai-development/aidlc/index",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-04-genai-delivery",
+   "title": "Part 4 \u2014 GenAI Delivery Lifecycle",
+   "doc_type": "research-report",
+   "tags": [
+    "genai",
+    "llm",
+    "rag",
+    "prompt-engineering",
+    "evaluation",
+    "guardrails",
+    "llmops"
+   ],
+   "word_count": 647,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-05-agentic-lifecycle",
+   "title": "Part 5 \u2014 Agentic AI Delivery Lifecycle (ADLC)",
+   "doc_type": "research-report",
+   "tags": [
+    "adlc",
+    "agent-lifecycle",
+    "agentops",
+    "mcp",
+    "a2a",
+    "multi-agent",
+    "safety-testing"
+   ],
+   "word_count": 774,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-ai-report/part-06-governance",
+   "title": "Part 6 \u2014 Enterprise AI Governance Model",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-governance",
+    "model-governance",
+    "agent-governance",
+    "responsible-ai",
+    "policy",
+    "human-oversight"
+   ],
+   "word_count": 1141,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "sovereign-constitutional-ai/ai-governance-operating-model",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-ai-report/part-12-responsible-ai",
+     "score": 0.41
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-07-platform-operating-model",
+   "title": "Part 7 \u2014 AI Platform Operating Model",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-platform",
+    "platform-engineering",
+    "self-service-ai",
+    "agent-platform",
+    "inference-platform",
+    "developer-experience"
+   ],
+   "word_count": 1123,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.33
+    },
+    {
+     "id": "enterprise-ai-report/part-02-operating-models",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-ai-report/part-10-service-catalog",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-08-organizational-roles",
+   "title": "Part 8 \u2014 Organizational Roles, RACI & Career Paths",
+   "doc_type": "research-report",
+   "tags": [
+    "organizational-roles",
+    "raci",
+    "chief-ai-officer",
+    "ai-engineer",
+    "mlops",
+    "agentops",
+    "career-path"
+   ],
+   "word_count": 4741,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.41
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.4
+    },
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-09-operating-processes",
+   "title": "Part 9 \u2014 AI Operating Processes",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-processes",
+    "model-onboarding",
+    "agent-approval",
+    "incident-response",
+    "prompt-governance",
+    "red-teaming"
+   ],
+   "word_count": 4069,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/part-08-organizational-roles",
+     "score": 0.34
+    },
+    {
+     "id": "agentic-ui/governance",
+     "score": 0.34
+    },
+    {
+     "id": "agentic-systems/platform/enterprise-agentic-ai-asset-management-2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-10-service-catalog",
+   "title": "Part 10 \u2014 Enterprise AI Service Catalog",
+   "doc_type": "research-report",
+   "tags": [
+    "service-catalog",
+    "ai-services",
+    "inference-service",
+    "embedding-service",
+    "agent-runtime",
+    "finops",
+    "sla"
+   ],
+   "word_count": 3799,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.32
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-ai-report/part-07-platform-operating-model",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-11-devsecops",
+   "title": "Part 11 \u2014 AI DevSecOps",
+   "doc_type": "research-report",
+   "tags": [
+    "devsecops",
+    "mlops",
+    "llmops",
+    "agentops",
+    "promptops",
+    "dataops",
+    "gitops",
+    "cicd"
+   ],
+   "word_count": 1113,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-12-responsible-ai",
+   "title": "Part 12 \u2014 Responsible AI",
+   "doc_type": "research-report",
+   "tags": [
+    "responsible-ai",
+    "fairness",
+    "transparency",
+    "explainability",
+    "bias",
+    "privacy",
+    "safety",
+    "eu-ai-act",
+    "nist-ai-rmf",
+    "iso-42001",
+    "owasp-llm"
+   ],
+   "word_count": 1287,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.53
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.47
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-13-security-model",
+   "title": "Part 13 \u2014 Enterprise AI Security Model",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-security",
+    "zero-trust",
+    "identity",
+    "mcp-security",
+    "a2a-security",
+    "oauth",
+    "spiffe",
+    "encryption",
+    "supply-chain-security"
+   ],
+   "word_count": 1576,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.37
+    },
+    {
+     "id": "ai-security-governance/security/Part4_Runtime_Security_Governance",
+     "score": 0.36
+    },
+    {
+     "id": "cybersec-architect/05-agentic-ai-security",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-14-observability",
+   "title": "Part 14 \u2014 AI Observability",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-observability",
+    "tracing",
+    "prompt-tracing",
+    "token-analytics",
+    "cost-analytics",
+    "hallucination-metrics",
+    "drift",
+    "evaluation-dashboard"
+   ],
+   "word_count": 1491,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-ai-report/part-15-enterprise-architecture",
+   "title": "Part 15 \u2014 Enterprise Architecture Mapping",
+   "doc_type": "research-report",
+   "tags": [
+    "enterprise-architecture",
+    "togaf",
+    "capability-map",
+    "value-stream",
+    "business-architecture",
+    "reference-architecture"
+   ],
+   "word_count": 1206,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.44
+    },
+    {
+     "id": "interview-prep/Enterprise_Architect_in_the_Age_of_AI",
+     "score": 0.4
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-16-financial-model",
+   "title": "Part 16 \u2014 AI Financial Operating Model",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-finops",
+    "gpu-cost",
+    "inference-cost",
+    "cost-attribution",
+    "chargeback",
+    "roi",
+    "business-value"
+   ],
+   "word_count": 1321,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.44
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-unit-economics-kpis",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-17-transformation-roadmap",
+   "title": "Part 17 \u2014 AI Transformation Roadmap & Maturity Model",
+   "doc_type": "research-report",
+   "tags": [
+    "transformation-roadmap",
+    "maturity-model",
+    "ai-first",
+    "ai-native",
+    "implementation-roadmap",
+    "30-60-90-day"
+   ],
+   "word_count": 1437,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/ai-first-to-ai-native",
+     "score": 0.47
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-ai-report/part-02-operating-models",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-18-case-studies",
+   "title": "Part 18 \u2014 Industry Case Studies & Vendor Perspectives",
+   "doc_type": "research-report",
+   "tags": [
+    "case-studies",
+    "aws",
+    "microsoft",
+    "google",
+    "openai",
+    "anthropic",
+    "mckinsey",
+    "deloitte",
+    "gartner",
+    "industry-verticals"
+   ],
+   "word_count": 1341,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-ai-report/part-02-operating-models",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-ai-report/index",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-19-deliverables",
+   "title": "Part 19 \u2014 Deliverables, Templates & Artifacts",
+   "doc_type": "research-report",
+   "tags": [
+    "deliverables",
+    "templates",
+    "artifacts",
+    "checklists",
+    "raci",
+    "architecture-diagrams",
+    "consulting-playbook"
+   ],
+   "word_count": 1570,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/index",
+     "score": 0.47
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.34
+    },
+    {
+     "id": "ea-masterclass/deliverables/index",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-ai-report/part-20-greenfield-vs-brownfield",
+   "title": "Part 20 \u2014 Greenfield vs Brownfield AI Transformation",
+   "doc_type": "research-report",
+   "tags": [
+    "greenfield",
+    "brownfield",
+    "legacy-modernisation",
+    "transformation-strategy",
+    "enterprise-ai"
+   ],
+   "word_count": 1917,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-ai-report/part-21-agentic-process-blueprint",
+   "title": "Part 21 \u2014 Agentic Process Blueprint: Reimagining Enterprise Processes",
+   "doc_type": "research-report",
+   "tags": [
+    "agentic-process",
+    "process-blueprint",
+    "agent-infused-teams",
+    "digital-workforce",
+    "process-redesign",
+    "swimlane",
+    "hitl"
+   ],
+   "word_count": 2703,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/Agentic_AI_Platforms_Questionnaire_2025",
+     "score": 0.32
+    },
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.31
+    }
+   ]
+  }
+ ]
+}

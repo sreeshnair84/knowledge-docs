@@ -1,0 +1,1196 @@
+{
+ "section": "ai-security-governance",
+ "page_count": 52,
+ "pages": [
+  {
+   "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+   "title": "Agentic AI Governance Framework",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 4338,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+     "score": 0.44
+    },
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_architecture",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/Sovereign_Constitutional_AI_RAI_Implementation_Handbook",
+   "title": "Sovereign Constitutional AI & RAI - Complete Implementation Handbook",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 11811,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "sovereign-constitutional-ai/index",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/transformation/ai-first-to-ai-native",
+     "score": 0.33
+    },
+    {
+     "id": "sovereign-constitutional-ai/sovereign-ai-roadmap-maturity",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part01_DeepMind_AI_Control_Roadmap",
+   "title": "Part 1: DeepMind AI Control Roadmap Analysis",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2779,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.34
+    },
+    {
+     "id": "ai-security-governance/deep-mind/index",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part02_Evolution_Enterprise_AI_Security",
+   "title": "Part 2: Evolution of Enterprise AI Security",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2159,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/01-evolution",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.39
+    },
+    {
+     "id": "cybersec-architect/02-enterprise-security-architecture",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling",
+   "title": "Part 3: Enterprise Threat Modeling for AI Agents",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2492,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/04-ai-security",
+     "score": 0.46
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.38
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part04_AI_Control_Architecture",
+   "title": "Part 4: AI Control Architecture",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1025,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part06_Identity_for_AI_Agents",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part05_Runtime_AI_Security",
+   "title": "Part 5: Runtime AI Security",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 926,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part06_Identity_for_AI_Agents",
+   "title": "Part 6: Identity for AI Agents",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1027,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/06-identity-architecture",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part07_AI_Authorization",
+   "title": "Part 7: AI Authorization Architecture",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 749,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+     "score": 0.38
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.32
+    },
+    {
+     "id": "sovereign-constitutional-ai/policy-as-code-framework",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part08_Memory_Governance",
+   "title": "Part 8: Memory Governance",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 937,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_memory_architecture",
+     "score": 0.35
+    },
+    {
+     "id": "agentic-systems/memory/index",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part09_Tool_Governance",
+   "title": "Part 9: Tool Governance",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1139,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.4
+    },
+    {
+     "id": "ai-security-governance/security/Part4_Runtime_Security_Governance",
+     "score": 0.33
+    },
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part10_Reasoning_Governance",
+   "title": "Part 10: Reasoning Governance",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 739,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part11_Multi_Agent_Security",
+   "title": "Part 11: Multi-Agent Security",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 900,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.41
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part12_AI_Observability",
+   "title": "Part 12: AI Observability",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 793,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part13_AI_SOC",
+   "title": "Part 13: AI Security Operations Center",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 842,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/09-security-operations",
+     "score": 0.32
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
+     "score": 0.31
+    },
+    {
+     "id": "ai-soc-playbooks/part-03-agentic-soc",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part14_Enterprise_Governance",
+   "title": "Part 14: Enterprise Governance",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 912,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "sovereign-constitutional-ai/ai-governance-operating-model",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-ai-report/part-06-governance",
+     "score": 0.32
+    },
+    {
+     "id": "agentic-systems/platform/enterprise-agentic-ai-asset-management-2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part15_Cloud_Implementation_Comparison",
+   "title": "Part 15: Cloud Implementation Comparison",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 884,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/07-cloud-security",
+     "score": 0.39
+    },
+    {
+     "id": "cloud-platforms/enterprise-agent-runtime-internals-2026",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part16_Reference_Architecture",
+   "title": "Part 16: Reference Architecture",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 947,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
+   "title": "Part 17: Best Practices & Anti-Patterns",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 4478,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+     "score": 0.43
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.41
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/Part18_Future_Outlook_2026_2035",
+   "title": "Part 18: Future Outlook 2026-2035",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 4175,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part17_Best_Practices_Anti_Patterns",
+     "score": 0.43
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part04_AI_Control_Architecture",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/deep-mind/index",
+   "title": "DeepMind Control Roadmap",
+   "doc_type": "guide",
+   "tags": [
+    "ai-security-governance",
+    "deep-mind"
+   ],
+   "word_count": 530,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part01_DeepMind_AI_Control_Roadmap",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/index",
+   "title": "AI Security & Governance",
+   "doc_type": "guide",
+   "tags": [
+    "ai-security-governance"
+   ],
+   "word_count": 467,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/index",
+     "score": 0.34
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.32
+    },
+    {
+     "id": "sovereign-constitutional-ai/index",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol0_Series_Index_and_Overview",
+   "title": "Enterprise AI Authorization Series: Series Index & Architecture Overview (Vol 0)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 823,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol5-ai-strategy-transformation-glossary",
+     "score": 0.54
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.46
+    },
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+   "title": "Executive Architecture & Authorization Fundamentals (Vol 1)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2337,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.48
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.48
+    },
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol1b_Authorization_Deep_Dive",
+   "title": "Enterprise Authorization Deep Dive: Engines, Interceptor Patterns & XACML (Vol 1b)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2929,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.36
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.36
+    },
+    {
+     "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+   "title": "Identity, Claims & Policy Design (Vol 2)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2308,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.54
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.49
+    },
+    {
+     "id": "ai-security-governance/policy/Vol3_Agent_Tool_MCP_Authorization",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol2b_Advanced_Policy_Engineering",
+   "title": "Advanced Policy Engineering: SCIM, Cedar Templates, OPA & WASM (Vol 2b)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2563,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.41
+    },
+    {
+     "id": "ai-security-governance/policy/Vol4b_AWS_Entra_Federation_Patterns",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol3_Agent_Tool_MCP_Authorization",
+   "title": "Agent, Tool & MCP Authorization (Vol 3)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1879,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.45
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.44
+    },
+    {
+     "id": "ai-security-governance/policy/Vol3b_Agent_Authorization_Deep_Dive",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol3b_Agent_Authorization_Deep_Dive",
+   "title": "Agent Authorization Deep Dive: Prompt Safety, Contextual Risk & Workflow Patterns (Vol 3b)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1959,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol3_Agent_Tool_MCP_Authorization",
+     "score": 0.39
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol4_RAG_Memory_Data_Authorization",
+   "title": "RAG, Memory & Data Authorization (Vol 4)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1575,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol3_Agent_Tool_MCP_Authorization",
+     "score": 0.39
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.39
+    },
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol4b_AWS_Entra_Federation_Patterns",
+   "title": "AWS & Entra ID Federation: Complete Integration Patterns (Vol 4b)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2403,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.44
+    },
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/policy/Vol2b_Advanced_Policy_Engineering",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+   "title": "AWS Implementation, Governance & Production Readiness (Vol 5)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2697,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.54
+    },
+    {
+     "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+     "score": 0.48
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+   "title": "Compliance, Governance & Final Decision Framework (Vol 5b)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 3214,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol2_Identity_Claims_Policy",
+     "score": 0.49
+    },
+    {
+     "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+     "score": 0.48
+    },
+    {
+     "id": "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/policy/index",
+   "title": "Policy & Authorization",
+   "doc_type": "guide",
+   "tags": [
+    "ai-security-governance",
+    "policy"
+   ],
+   "word_count": 593,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+     "score": 0.33
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/governance-propagation-chain",
+     "score": 0.32
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+   "title": "Foundations & Reference Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "governance",
+    "enterprise-architecture",
+    "agentic-ai"
+   ],
+   "word_count": 4149,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/07-Zero-to-Mastery-Curriculum",
+     "score": 0.49
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.49
+    },
+    {
+     "id": "cybersec-architect/05-agentic-ai-security",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+   "title": "Identity, MCP & A2A Security Blueprint",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "identity",
+    "mcp",
+    "a2a",
+    "agentic-ai"
+   ],
+   "word_count": 4451,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/07-Zero-to-Mastery-Curriculum",
+     "score": 0.5
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.49
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/04-AI-SOC-Observability-RedTeam-Memory",
+   "title": "AI SOC, Observability, Red Team & Memory Security",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "soc",
+    "observability",
+    "red-team",
+    "memory"
+   ],
+   "word_count": 2978,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/07-Zero-to-Mastery-Curriculum",
+     "score": 0.43
+    },
+    {
+     "id": "ai-security-governance/security/06-Operating-Model-Maturity-Roadmap",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/05-Economic-Security-FinOps-Commerce-PQC",
+   "title": "Economic Security, FinOps, Commerce & Post-Quantum Cryptography",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "finops",
+    "economic-security",
+    "pqc"
+   ],
+   "word_count": 2428,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/06-Operating-Model-Maturity-Roadmap",
+     "score": 0.43
+    },
+    {
+     "id": "ai-security-governance/security/07-Zero-to-Mastery-Curriculum",
+     "score": 0.36
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/06-Operating-Model-Maturity-Roadmap",
+   "title": "Operating Model & Security Maturity Roadmap",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "operating-model",
+    "maturity",
+    "roadmap"
+   ],
+   "word_count": 2928,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/05-Economic-Security-FinOps-Commerce-PQC",
+     "score": 0.43
+    },
+    {
+     "id": "ai-security-governance/security/04-AI-SOC-Observability-RedTeam-Memory",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/07-Zero-to-Mastery-Curriculum",
+   "title": "Zero-to-Mastery Security Curriculum",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "curriculum",
+    "training",
+    "agentic-ai"
+   ],
+   "word_count": 14362,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.5
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.49
+    },
+    {
+     "id": "ai-security-governance/security/04-AI-SOC-Observability-RedTeam-Memory",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/08-Architects-Field-Guide",
+   "title": "AI Security Architect's Field Guide",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "architecture",
+    "field-guide"
+   ],
+   "word_count": 9424,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/07-Zero-to-Mastery-Curriculum",
+     "score": 0.39
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.34
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/AI-Bill-of-Materials-Guide",
+   "title": "AI Bill of Materials (AIBOM) \u2014 Supply Chain Transparency for AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "aibom",
+    "ai-bom",
+    "sbom",
+    "ai-supply-chain",
+    "eu-ai-act",
+    "model-provenance",
+    "enterprise-ai"
+   ],
+   "word_count": 1382,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/Model-Cards-System-Cards-Guide",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/AI-Red-Teaming-Guide",
+   "title": "AI Red Teaming \u2014 Adversarial Testing for AI and Agentic Systems",
+   "doc_type": "guide",
+   "tags": [
+    "ai-red-teaming",
+    "adversarial-testing",
+    "garak",
+    "pyrit",
+    "prompt-injection",
+    "agentic-security",
+    "llm-security"
+   ],
+   "word_count": 1508,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/04-ai-security",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/AI-TRiSM-Complete-Guide",
+   "title": "AI TRiSM \u2014 AI Trust, Risk and Security Management: Complete Guide",
+   "doc_type": "guide",
+   "tags": [
+    "ai-trism",
+    "ai-governance",
+    "trust",
+    "risk",
+    "security",
+    "gartner",
+    "enterprise-ai"
+   ],
+   "word_count": 1444,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/AISPM-AI-Security-Posture-Management",
+     "score": 0.38
+    },
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.32
+    },
+    {
+     "id": "enterprise-ai-report/part-12-responsible-ai",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/AIDR-AI-Detection-Response-Complete-Guide",
+   "title": "AIDR \u2014 AI Detection and Response: Complete Enterprise Guide",
+   "doc_type": "guide",
+   "tags": [
+    "aidr",
+    "ai-security",
+    "agentic-ai",
+    "detection-response",
+    "enterprise-security",
+    "prompt-injection",
+    "mcp-security",
+    "zero-trust"
+   ],
+   "word_count": 5481,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/AISPM-AI-Security-Posture-Management",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/AISPM-AI-Security-Posture-Management",
+   "title": "AISPM \u2014 AI Security Posture Management: Complete Guide",
+   "doc_type": "guide",
+   "tags": [
+    "aispm",
+    "ai-security",
+    "posture-management",
+    "cspm",
+    "ai-supply-chain",
+    "enterprise-ai"
+   ],
+   "word_count": 1332,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/AI-TRiSM-Complete-Guide",
+     "score": 0.38
+    },
+    {
+     "id": "ai-security-governance/security/AIDR-AI-Detection-Response-Complete-Guide",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/Model-Cards-System-Cards-Guide",
+   "title": "Model Cards and System Cards \u2014 AI Transparency Documentation Standards",
+   "doc_type": "guide",
+   "tags": [
+    "model-card",
+    "system-card",
+    "ai-transparency",
+    "eu-ai-act",
+    "responsible-ai",
+    "documentation",
+    "governance"
+   ],
+   "word_count": 1662,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/security/AI-Bill-of-Materials-Guide",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/Part1_Industry_Survey",
+   "title": "Part 1: Industry Survey",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 2474,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/enterprise-ai-platform-auth-survey",
+     "score": 1.0
+    },
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.49
+    },
+    {
+     "id": "ai-security-governance/security/Part5_Marketplace_Architecture",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/Part4_Runtime_Security_Governance",
+   "title": "Agent Runtime, MCP Security & Governance",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-security",
+    "runtime",
+    "mcp",
+    "governance",
+    "rbac"
+   ],
+   "word_count": 1888,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.48
+    },
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.43
+    },
+    {
+     "id": "ai-usecases/Part6_Banking_Case_Study",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/Part5_Marketplace_Architecture",
+   "title": "Part 5: Marketplace Architecture",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1608,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/marketplace-connector-auth-patterns",
+     "score": 0.99
+    },
+    {
+     "id": "ai-protocols/auth/tool-authentication-connectors",
+     "score": 0.51
+    },
+    {
+     "id": "ai-security-governance/security/Part1_Industry_Survey",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/Part7_Standards_Reference",
+   "title": "Part7_Standards_Reference",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 1746,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/auth-standards-reference",
+     "score": 0.99
+    },
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.56
+    },
+    {
+     "id": "ai-protocols/auth/tool-authentication-connectors",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "ai-security-governance/security/index",
+   "title": "AI Security",
+   "doc_type": "guide",
+   "tags": [
+    "ai-security-governance",
+    "security"
+   ],
+   "word_count": 86,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/github-copilot/index",
+     "score": 0.34
+    }
+   ]
+  }
+ ]
+}

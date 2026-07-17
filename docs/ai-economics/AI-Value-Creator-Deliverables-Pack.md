@@ -306,7 +306,7 @@ Every deliverable in this pack traces back to the same underlying numbers in the
 
 ##### **AI VALUE CREATOR DELIVERABLES PACK**
 
-# **Worked Example: 20 Deliverables, One Use Case**
+## **Worked Example: 20 Deliverables, One Use Case**
 
 How Each Reference Deliverable Actually Looks — Property & Casualty Claims
 

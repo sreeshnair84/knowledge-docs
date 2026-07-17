@@ -250,7 +250,7 @@ Git worktrees provide filesystem-level isolation for concurrent Claude Code sess
 
 Memory Systems · Context Lifecycle · Compaction · Retrieval · Governance
 
-# **0 3**
+## **0 3**
 
 ##### **3.1 Why Context Engineering Supersedes Prompt Engineering**
 
@@ -320,7 +320,7 @@ Two failure modes unique to agentic systems require new engineering disciplines:
 
 Architecture · Enterprise Templates · Multi-Repo Strategy · Anti-Patterns
 
-# **0 4**
+## **0 4**
 
 ##### **4.1 What Is CLAUDE.md?**
 
@@ -501,7 +501,7 @@ A secure enterprise MCP architecture requires six control layers:
 
 Skills · Hooks · Commands · Plugins · Cross-Platform Comparison
 
-# **0 7**
+## **0 7**
 
 ##### **7.1 Claude Code Configuration Hierarchy**
 
@@ -616,7 +616,7 @@ A sustainable enterprise token budget allocates spend based on value delivered. 
 
 Community Patterns · Best Practices · Risk Register · Threat Model
 
-# **0 9**
+## **0 9**
 
 ##### **9.1 Emerging Consensus Among Power Users**
 
@@ -656,7 +656,7 @@ Community Patterns · Best Practices · Risk Register · Threat Model
 
 Security Research · Legitimate Criticisms · Future Risks
 
-# **1 0**
+## **1 0**
 
 ##### **10.1 Comprehensive Risk Register**
 
@@ -685,7 +685,7 @@ Security Research · Legitimate Criticisms · Future Risks
 
 Roadmap · Governance · Compliance · AI Center of Excellence
 
-# **1 1**
+## **1 1**
 
 ##### **11.1 Enterprise Adoption Roadmap**
 
@@ -710,7 +710,7 @@ Roadmap · Governance · Compliance · AI Center of Excellence
 
 ### **AI-Native Software Engineering**
 
-# **1 2**
+## **1 2**
 
 Agentic SDLC · Future Roles · 5-Year Forecast
 
@@ -746,7 +746,7 @@ The software development lifecycle is undergoing structural transformation. AI a
 
 Competency Model · Decision Frameworks · Career Pathways
 
-# **1 3**
+## **1 3**
 
 ##### **13.1 Principal AI Architect Competency Model**
 

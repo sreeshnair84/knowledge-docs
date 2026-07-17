@@ -1,0 +1,1051 @@
+{
+ "section": "cloud-platforms",
+ "page_count": 45,
+ "pages": [
+  {
+   "id": "cloud-platforms/ai-gateway/AI_Gateway_Full_Comparison",
+   "title": "AI Gateway Comparison \u2014 10 Tools",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "ai-gateway"
+   ],
+   "word_count": 7761,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/ai-gateway/Enterprise_AI_Gateway",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/kong-ai-gateway-guide",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/ai-gateway/AI_Gateway_MultiTenant_MultiCloud",
+   "title": "AI GATEWAY",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 3432,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/ai-gateway/Enterprise_AI_Gateway",
+     "score": 0.33
+    },
+    {
+     "id": "ai-security-governance/policy/Vol4_RAG_Memory_Data_Authorization",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/ai-gateway/Enterprise_AI_Gateway",
+   "title": "ENTERPRISE AI GATEWAY",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 3906,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/ai-gateway/AI_Gateway_Full_Comparison",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/kong-ai-gateway-guide",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-communication-identity-gateway",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/ai-gateway/index",
+   "title": "AI Gateway",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "ai-gateway"
+   ],
+   "word_count": 73,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/ai-gateway/kong-ai-gateway-guide",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/kong-entra-id-integration",
+     "score": 0.35
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/Enterprise_AI_Gateway",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/ai-gateway/kong-ai-gateway-guide",
+   "title": "Kong AI Gateway Guide",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "ai-gateway"
+   ],
+   "word_count": 7546,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/ai-gateway/kong-entra-id-integration",
+     "score": 0.45
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/index",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/Enterprise_AI_Gateway",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/ai-gateway/kong-entra-id-integration",
+   "title": "Kong + Entra ID Integration",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "ai-gateway"
+   ],
+   "word_count": 4585,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/ai-gateway/kong-ai-gateway-guide",
+     "score": 0.45
+    },
+    {
+     "id": "cloud-platforms/ai-gateway/index",
+     "score": 0.35
+    },
+    {
+     "id": "ai-protocols/auth/auth_identity_flows",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/ai-infrastructure-silicon-landscape-2026",
+   "title": "AI Infrastructure & Silicon Landscape 2026",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "ai-infrastructure",
+    "silicon",
+    "gpu",
+    "ai-economics"
+   ],
+   "word_count": 961,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+   "title": "AWS-NATIVE, STANDARDS-FIRST AGENTIC PLATFORM ARCHITECTURE",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 7818,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.52
+    },
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.49
+    },
+    {
+     "id": "agentic-systems/platform/MultiTenantAgentPlatform_Architecture",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/AWS_Strands_AgentCore_AdvancedPatterns_v3",
+   "title": "AWS Strands & Bedrock AgentCore \u2014 Advanced Patterns v3.0",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 6378,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.46
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Delta_Supplement_v2",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+   "title": "AWS STRANDS & BEDROCK AGENTCORE PRODUCTION BUILDER JOURNEY KIT",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 6577,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.54
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Delta_Supplement_v2",
+     "score": 0.53
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.52
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Delta_Supplement_v2",
+   "title": "AWS Strands & Bedrock AgentCore \u2014 Delta Supplement v2.0",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 5613,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.53
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_AdvancedPatterns_v3",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/AgentCore_Memory_Architecture_Guide",
+   "title": "AgentCore Memory Architecture Guide",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 9117,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AgentCore_Memory_Operations_DeepDive",
+     "score": 0.38
+    },
+    {
+     "id": "cloud-platforms/aws/AgentCore_Memory_Gaps_Extensions_2026",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/AgentCore_Memory_Gaps_Extensions_2026",
+   "title": "AgentCore Memory \u2014 Gaps, Extensions & 2026 Research",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 3211,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.35
+    },
+    {
+     "id": "cloud-platforms/aws/AgentCore_Memory_Architecture_Guide",
+     "score": 0.33
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/AgentCore_Memory_Operations_DeepDive",
+   "title": "AgentCore Memory Operations Deep Dive",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 3687,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AgentCore_Memory_Architecture_Guide",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+   "title": "Amazon Bedrock AgentCore & Strands SDK \u2014 Deep Technical Research Report",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 22038,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.54
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.49
+    },
+    {
+     "id": "cloud-platforms/aws/hyperscaler-deep-dive-aws",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/bedrock-agentcore-code-interpreter-architecture",
+   "title": "Bedrock AgentCore Code Interpreter Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "aws"
+   ],
+   "word_count": 11634,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/hyperscaler-deep-dive-aws",
+   "title": "Hyperscaler Deep Dive: AWS (2026)",
+   "doc_type": "architecture-whitepaper",
+   "tags": [
+    "cloud-platforms",
+    "aws",
+    "hyperscaler",
+    "deep-dive",
+    "bedrock",
+    "agentcore",
+    "strands"
+   ],
+   "word_count": 1172,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.46
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.4
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/aws/index",
+   "title": "AWS AgentCore",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "aws"
+   ],
+   "word_count": 116,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.38
+    },
+    {
+     "id": "cloud-platforms/aws/hyperscaler-deep-dive-aws",
+     "score": 0.37
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/azure/hyperscaler-deep-dive-azure",
+   "title": "Hyperscaler Deep Dive: Microsoft Azure (2026)",
+   "doc_type": "architecture-whitepaper",
+   "tags": [
+    "cloud-platforms",
+    "azure",
+    "hyperscaler",
+    "deep-dive",
+    "ai-foundry",
+    "copilot-studio",
+    "entra-agent-id"
+   ],
+   "word_count": 1159,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/azure/index",
+     "score": 0.49
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026",
+     "score": 0.35
+    },
+    {
+     "id": "workflow-orchestration/08-agent-frameworks-comparison",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/azure/index",
+   "title": "Microsoft Azure Agentic AI",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "azure",
+    "ai-foundry",
+    "copilot-studio",
+    "entra-agent-id"
+   ],
+   "word_count": 101,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/azure/hyperscaler-deep-dive-azure",
+     "score": 0.49
+    },
+    {
+     "id": "cloud-platforms/index",
+     "score": 0.48
+    },
+    {
+     "id": "cloud-platforms/gcp/index",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/enterprise-agent-runtime-internals-2026",
+   "title": "Enterprise AI Agent Runtime Internals: AWS, Azure & GCP (2026)",
+   "doc_type": "architecture-whitepaper",
+   "tags": [
+    "cloud-platforms",
+    "aws",
+    "azure",
+    "gcp",
+    "agent-runtime",
+    "enterprise-architecture"
+   ],
+   "word_count": 13970,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.38
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part15_Cloud_Implementation_Comparison",
+     "score": 0.35
+    },
+    {
+     "id": "cloud-platforms/index",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/gcp/hyperscaler-deep-dive-gcp",
+   "title": "Hyperscaler Deep Dive: Google Cloud (2026)",
+   "doc_type": "architecture-whitepaper",
+   "tags": [
+    "cloud-platforms",
+    "gcp",
+    "google-cloud",
+    "hyperscaler",
+    "deep-dive",
+    "vertex-ai",
+    "adk",
+    "a2a",
+    "agent-engine"
+   ],
+   "word_count": 1226,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/gcp/index",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026",
+     "score": 0.36
+    },
+    {
+     "id": "cloud-platforms/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/gcp/index",
+   "title": "Google Cloud AI",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "gcp",
+    "google-cloud",
+    "vertex-ai",
+    "adk",
+    "agent-engine"
+   ],
+   "word_count": 90,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/azure/index",
+     "score": 0.47
+    },
+    {
+     "id": "cloud-platforms/index",
+     "score": 0.45
+    },
+    {
+     "id": "cloud-platforms/gcp/hyperscaler-deep-dive-gcp",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/iac/index",
+   "title": "Infrastructure as Code",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "iac"
+   ],
+   "word_count": 11,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/iac/terraform/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/iac/terraform/ai-assisted-iac-mastery",
+   "title": "AI-Assisted IaC Mastery Guide",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "terraform",
+    "iac",
+    "ai",
+    "llm",
+    "infrastructure-as-code",
+    "agentic-ai"
+   ],
+   "word_count": 6414,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/iac/terraform/terraform-mastery-guide",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/iac/terraform/index",
+   "title": "Terraform",
+   "doc_type": "guide",
+   "tags": [
+    "terraform",
+    "iac",
+    "infrastructure-as-code",
+    "cloud"
+   ],
+   "word_count": 12,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/iac/terraform/terraform-mastery-guide",
+     "score": 0.52
+    },
+    {
+     "id": "cloud-platforms/iac/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/iac/terraform/terraform-mastery-guide",
+   "title": "Terraform from Zero to Mastery",
+   "doc_type": "research-report",
+   "tags": [
+    "terraform",
+    "iac",
+    "infrastructure-as-code"
+   ],
+   "word_count": 9239,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/iac/terraform/index",
+     "score": 0.52
+    },
+    {
+     "id": "cloud-platforms/iac/terraform/ai-assisted-iac-mastery",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/index",
+   "title": "Cloud Platforms",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 262,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/azure/index",
+     "score": 0.48
+    },
+    {
+     "id": "cloud-platforms/gcp/index",
+     "score": 0.45
+    },
+    {
+     "id": "cloud-platforms/enterprise-agent-runtime-internals-2026",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part10_Observability",
+   "title": "K8s Handbook Part 10: Observability",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4454,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part11_AI_Infrastructure",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part11_AI_Infrastructure",
+   "title": "K8s Handbook Part 11: AI Infrastructure",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4027,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part16_Future_Outlook",
+     "score": 0.38
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part10_Observability",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-infrastructure-optimization",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part12_Agentic_AI",
+   "title": "K8s Handbook Part 12: Agentic AI",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 5824,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part13_Emerging_Standards",
+     "score": 0.33
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.33
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part13_Emerging_Standards",
+   "title": "K8s Handbook Part 13: Emerging Standards",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 874,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+     "score": 0.34
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part12_Agentic_AI",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part14_Reference_Architectures",
+   "title": "K8s Handbook Part 14: Reference Architectures",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 862,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part15_Implementation_Labs",
+   "title": "K8s Handbook Part 15: Implementation Labs",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 1123,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part16_Future_Outlook",
+   "title": "K8s Handbook Part 16: Future Outlook",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 1025,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part11_AI_Infrastructure",
+     "score": 0.38
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+   "title": "K8s Handbook Part 1: Infrastructure Evolution",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 6466,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part2_Linux_Foundations",
+     "score": 0.46
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part3_Containers",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part4_Kubernetes_Internals",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part2_Linux_Foundations",
+   "title": "K8s Handbook Part 2: Linux Foundations",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 5871,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+     "score": 0.46
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+     "score": 0.36
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part3_Containers",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part3_Containers",
+   "title": "K8s Handbook Part 3: Containers",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 5926,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+     "score": 0.41
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part2_Linux_Foundations",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part4_Kubernetes_Internals",
+   "title": "K8s Handbook Part 4: Kubernetes Internals",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 5906,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+     "score": 0.48
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+     "score": 0.35
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part8_Security",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+   "title": "K8s Handbook Part 5: Kubernetes Resources",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4613,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part4_Kubernetes_Internals",
+     "score": 0.48
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part6_Kubernetes_Networking",
+     "score": 0.43
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part8_Security",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part6_Kubernetes_Networking",
+   "title": "K8s Handbook Part 6: Kubernetes Networking",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4824,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+     "score": 0.43
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part2_Linux_Foundations",
+     "score": 0.32
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part4_Kubernetes_Internals",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part7_Storage",
+   "title": "K8s Handbook Part 7: Storage",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4147,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part8_Security",
+   "title": "K8s Handbook Part 8: Security",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4305,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part5_Kubernetes_Resources",
+     "score": 0.39
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part4_Kubernetes_Internals",
+     "score": 0.34
+    },
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/K8s_Handbook_Part9_Platform_Engineering",
+   "title": "K8s Handbook Part 9: Platform Engineering",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms"
+   ],
+   "word_count": 4689,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part1_Infrastructure_Evolution",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "cloud-platforms/kubernetes/index",
+   "title": "Kubernetes",
+   "doc_type": "guide",
+   "tags": [
+    "cloud-platforms",
+    "kubernetes"
+   ],
+   "word_count": 123,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  }
+ ]
+}

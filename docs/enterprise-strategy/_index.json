@@ -1,0 +1,339 @@
+{
+ "section": "enterprise-strategy",
+ "page_count": 11,
+ "pages": [
+  {
+   "id": "enterprise-strategy/index",
+   "title": "Enterprise Strategy & Business Architecture Handbook",
+   "doc_type": "handbook-index",
+   "tags": [
+    "enterprise-strategy",
+    "business-architecture",
+    "operating-model",
+    "consulting-frameworks",
+    "ai-strategy"
+   ],
+   "word_count": 525,
+   "last_reviewed": "2026-07-15",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol5-ai-strategy-transformation-glossary",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol1-corporate-strategy",
+   "title": "Vol 1 \u2014 Corporate Strategy: The Complete Enterprise Handbook",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "corporate-strategy",
+    "strategic-planning",
+    "vision",
+    "mission",
+    "strategic-intent",
+    "okr",
+    "roadmap"
+   ],
+   "word_count": 6356,
+   "last_reviewed": "2026-07-15",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-strategy/vol4-consulting-frameworks-industry",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-strategy/vol5-ai-strategy-transformation-glossary",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+   "title": "Vol 10 \u2014 Relationship Maps, Comparisons & Enterprise Glossary",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "relationships",
+    "glossary",
+    "concept-hierarchy",
+    "comparisons",
+    "cross-reference",
+    "definitions",
+    "terminology"
+   ],
+   "word_count": 7724,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol2-business-architecture-operating-model",
+     "score": 0.54
+    },
+    {
+     "id": "enterprise-strategy/vol8-portfolio-consulting-frameworks",
+     "score": 0.49
+    },
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol2-business-architecture-operating-model",
+   "title": "Vol 2 \u2014 Business Architecture & Operating Models",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "business-architecture",
+    "capability-map",
+    "value-stream",
+    "operating-model",
+    "target-operating-model",
+    "BIZBOK",
+    "domain-driven-design"
+   ],
+   "word_count": 6076,
+   "last_reviewed": "2026-07-15",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.54
+    },
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.48
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol3-portfolio-governance",
+   "title": "Vol 3 \u2014 Portfolio Management & Enterprise Governance",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "portfolio-management",
+    "PMO",
+    "program-management",
+    "investment-planning",
+    "enterprise-governance",
+    "OKR",
+    "benefits-realization"
+   ],
+   "word_count": 3950,
+   "last_reviewed": "2026-07-15",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol8-portfolio-consulting-frameworks",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol4-consulting-frameworks-industry",
+   "title": "Vol 4 \u2014 Consulting Frameworks & Industry Strategy Playbook",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "consulting-frameworks",
+    "McKinsey",
+    "BCG",
+    "Bain",
+    "strategy-tools",
+    "industry-strategy",
+    "TOGAF",
+    "wardley-mapping",
+    "business-model-canvas"
+   ],
+   "word_count": 5170,
+   "last_reviewed": "2026-07-15",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol8-portfolio-consulting-frameworks",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-strategy/vol1-corporate-strategy",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-strategy/vol9-industry-deep-dives",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol5-ai-strategy-transformation-glossary",
+   "title": "Vol 5 \u2014 AI Strategy, Enterprise Transformation & Master Glossary",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "ai-strategy",
+    "enterprise-transformation",
+    "digital-transformation",
+    "LLMOps",
+    "AgentOps",
+    "transformation-roadmap",
+    "enterprise-glossary"
+   ],
+   "word_count": 5696,
+   "last_reviewed": "2026-07-15",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/policy/Vol0_Series_Index_and_Overview",
+     "score": 0.54
+    },
+    {
+     "id": "enterprise-architecture/transformation/index",
+     "score": 0.53
+    },
+    {
+     "id": "enterprise-strategy/index",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+   "title": "Vol 6 \u2014 Organization Structure & Operating Model Design",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "organization-design",
+    "operating-model",
+    "agile",
+    "platform-organization",
+    "ai-operating-model",
+    "target-operating-model",
+    "ai-coe"
+   ],
+   "word_count": 6161,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/part-02-operating-models",
+     "score": 0.56
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.51
+    },
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol7-enterprise-building-blocks",
+   "title": "Vol 7 \u2014 Enterprise Building Blocks Architecture",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "building-blocks",
+    "abb",
+    "sbb",
+    "platform-engineering",
+    "ai-building-blocks",
+    "agentic-ai",
+    "togaf"
+   ],
+   "word_count": 5705,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.33
+    },
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol8-portfolio-consulting-frameworks",
+   "title": "Vol 8 \u2014 Portfolio Management & Consulting Frameworks",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "portfolio-management",
+    "consulting-frameworks",
+    "mckinsey",
+    "bcg",
+    "togaf",
+    "okr",
+    "wardley",
+    "safe",
+    "lean-portfolio"
+   ],
+   "word_count": 6088,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.49
+    },
+    {
+     "id": "enterprise-strategy/vol4-consulting-frameworks-industry",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "enterprise-strategy/vol9-industry-deep-dives",
+   "title": "Vol 9 \u2014 Industry Strategy & Operating Model Deep Dives",
+   "doc_type": "handbook-volume",
+   "tags": [
+    "industry",
+    "banking",
+    "healthcare",
+    "retail",
+    "manufacturing",
+    "telecom",
+    "government",
+    "energy",
+    "logistics",
+    "media",
+    "pharma",
+    "education",
+    "saas"
+   ],
+   "word_count": 4930,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/14-case-studies",
+     "score": 0.45
+    },
+    {
+     "id": "ai-foundations/AI_Deep_Future_Outlook_2026_2035",
+     "score": 0.44
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.41
+    }
+   ]
+  }
+ ]
+}

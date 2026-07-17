@@ -46,7 +46,7 @@ Practice Cadence
 
 **SECTION 01**
 
-# **Why Communication Systems Beat Soft Skills**
+## **Why Communication Systems Beat Soft Skills**
 
 Most architects plateau not from lack of technical depth but from communicating in the wrong register for the audience.
 
@@ -72,7 +72,7 @@ This guide gives you a complete, operationalized communication playbook across a
 
 ###### **SECTION 02**
 
-# **The Four-Arena Framework**
+## **The Four-Arena Framework**
 
 Think in terms of four distinct communication contexts. Each requires different artifacts, vocabulary, and cadence.
 
@@ -99,7 +99,7 @@ Most technical architects are strong in Arena 3 (Engineering) and weak in Arena 
 
 **SECTION 03**
 
-# **Arena 1: Executive & CXO Communication**
+## **Arena 1: Executive & CXO Communication**
 
 Translate AI/agentic architecture into business value, risk, and investment choices.
 
@@ -160,7 +160,7 @@ If you always frame discussions using this storyline pattern, you will sound lik
 
 **SECTION 04**
 
-# **Arena 2: Product & Domain Stakeholder Communication**
+## **Arena 2: Product & Domain Stakeholder Communication**
 
 Bridge business problems and AI solutions without overwhelming stakeholders.
 
@@ -219,7 +219,7 @@ The 'What AI Will NOT Do' field is where most AI architects lose credibility. St
 
 **SECTION 05**
 
-# **Arena 3: Engineering & Architecture Communication**
+## **Arena 3: Engineering & Architecture Communication**
 
 Turn AI strategy into clear, implementable architecture that multiple engineering tribes can align on.
 
@@ -281,7 +281,7 @@ Always present 2–3 options with explicit pros and cons. Never walk into an eng
 
 **SECTION 06**
 
-# **Arena 4: Governance, Risk & Operations Communication**
+## **Arena 4: Governance, Risk & Operations Communication**
 
 Be the calm, structured voice on AI risk, controls, and long-term operations.
 
@@ -332,7 +332,7 @@ Describe AI workloads in language that SRE and operations teams already understa
 
 ###### **SECTION 07**
 
-# **The Listening Deficit: A Critical Gap**
+## **The Listening Deficit: A Critical Gap**
 
 The diagnostic skill that precedes all effective communication — and is absent from most architect development programs.
 
@@ -366,7 +366,7 @@ Develop the habit of asking one clarifying question for every assumption you cat
 
 ###### **SECTION 08**
 
-# **Communication Toolkit & Templates**
+## **Communication Toolkit & Templates**
 
 The minimum viable artifact set for each arena — designed to be reusable and iterable.
 
@@ -393,7 +393,7 @@ Keep this deck always ready for executive audiences. Update it quarterly:
 
 ###### **SECTION 09**
 
-# **90-Day Structured Action Plan**
+## **90-Day Structured Action Plan**
 
 A realistic, phased plan to build your communication systems — not as drills, but attached to real work.
 
@@ -449,7 +449,7 @@ I Identify a second initiative and produce all four artifacts independently, in 
 
 **SECTION 10**
 
-# **Weekly & Monthly Practice Cadence**
+## **Weekly & Monthly Practice Cadence**
 
 Sustainable habits that compound over time.
 
@@ -493,7 +493,7 @@ Sustainable habits that compound over time.
 
 ###### **SECTION 11**
 
-# **Self-Assessment Rubric**
+## **Self-Assessment Rubric**
 
 #### Measure your communication maturity across all four arenas — honestly
 
@@ -527,7 +527,7 @@ Your patterns are robust. Focus on scaling your approach to your team.
 
 **SECTION 12**
 
-# **Staying Market-Relevant**
+## **Staying Market-Relevant**
 
 #### Continuous growth practices for the Enterprise AI / Principal Architect role
 

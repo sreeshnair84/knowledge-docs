@@ -13,7 +13,7 @@ covers_version: \"as of 2026-07-10\"
 
 # Amazon Bedrock AgentCore Runtime + Code Interpreter
 
-# Enterprise-Grade Architecture for EU Banking
+## Enterprise-Grade Architecture for EU Banking
 
 ### Production-Ready Design | AWS AI Architect & Principal Engineer Reference
 

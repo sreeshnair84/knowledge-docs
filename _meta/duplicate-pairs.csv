@@ -1,3 +1,5 @@
+# STALE â€” generated pre-cleanup (before 2026-07-10 dedup merge). 279/479 rows reference deleted .pdf/.docx/.pptx files.
+# Use _meta/duplicate-clusters.md (from build_graph.py) for current duplicate analysis.
 similarity,file_a,file_b,tier
 1.0,docs\interview-prep\EY_AI_Architect_Interview_Guide.pdf,docs\interview-prep\EY_AI_Architect_Interview_Guide_1.pdf,near-duplicate (merge/delete one)
 1.0,docs\ai-foundations\AI_Native_Architecture_Evolution_Report.pdf,docs\knowledge-engineering\data\AI_Native_Architecture_Evolution_Report.pdf,near-duplicate (merge/delete one)
@@ -32,7 +34,7 @@ similarity,file_a,file_b,tier
 0.648,docs\ai-usecases\CEO_Agent_Solution_Blueprint.pdf,docs\ai-usecases\ceo_agent_pitch.pdf,heavy overlap (consolidate)
 0.638,docs\ai-protocols\auth\EntraID_3LO_Agent_Auth_Research.pdf,docs\ai-protocols\auth\EntraID_3LO_Agent_Auth_Volume3.pdf,heavy overlap (consolidate)
 0.636,docs\quantum\Quantum_AI_Consultancies_Report.pdf,docs\quantum\zero-to-mastery.md,heavy overlap (consolidate)
-0.636,docs\ai-development\testing\AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix.pdf,docs\ai-development\testing\AI_Agent_Evaluation_Framework_Guide.md,heavy overlap (consolidate)
+0.636,docs\ai-development\testing\AI Agent Evaluation Framework ï¿½ AWS Bedrock AgentCore ï¿½ Strands ï¿½ Arize Phoenix.pdf,docs\ai-development\testing\AI_Agent_Evaluation_Framework_Guide.md,heavy overlap (consolidate)
 0.634,docs\ai-protocols\auth\EntraID_3LO_Agent_Auth_Volume2.pdf,docs\ai-protocols\auth\entra-3lo-agent-auth-standards-architecture.md,heavy overlap (consolidate)
 0.63,docs\ai-first-enterprise\ai-first-to-ai-native.md,docs\sovereign-constitutional-ai\sovereign-ai-roadmap-maturity.md,heavy overlap (consolidate)
 0.627,docs\ai-protocols\auth\EntraID_3LO_Agent_Auth_Research.pdf,docs\ai-protocols\auth\entra-3lo-agent-auth-multiagent-compliance.md,heavy overlap (consolidate)
@@ -445,7 +447,7 @@ similarity,file_a,file_b,tier
 0.418,docs\ai-security-governance\security\01-Foundations-Reference-Architecture.pdf,docs\cybersec-architect\05-agentic-ai-security.md,moderate overlap (review)
 0.418,docs\ai-development\aidlc\AIDLC_Enterprise_Framework_2025.pdf,docs\coding-tools\enterprise-ai-architect\enterprise-ai-governance-compliance.md,moderate overlap (review)
 0.417,docs\cloud-platforms\kubernetes\K8s_Handbook_Part14_Reference_Architectures.pdf,docs\cloud-platforms\kubernetes\K8s_Handbook_Part16_Future_Outlook.pdf,moderate overlap (review)
-0.417,docs\ai-development\testing\AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix.pdf,docs\ai-development\testing\AI_Agent_Evaluation_Framework_Complete.pdf,moderate overlap (review)
+0.417,docs\ai-development\testing\AI Agent Evaluation Framework ï¿½ AWS Bedrock AgentCore ï¿½ Strands ï¿½ Arize Phoenix.pdf,docs\ai-development\testing\AI_Agent_Evaluation_Framework_Complete.pdf,moderate overlap (review)
 0.417,docs\ai-development\aidlc\AIDLC_Enterprise_Framework_2025.pdf,docs\cybersec-architect\08-ai-governance.md,moderate overlap (review)
 0.416,docs\cybersec-architect\01-evolution.md,docs\cybersec-architect\03-security-domains.md,moderate overlap (review)
 0.416,docs\cloud-platforms\kubernetes\K8s_Handbook_Part2_Linux_Foundations.pdf,docs\cloud-platforms\kubernetes\K8s_Handbook_Part6_Kubernetes_Networking.pdf,moderate overlap (review)
@@ -476,7 +478,7 @@ similarity,file_a,file_b,tier
 0.412,docs\coding-tools\github-copilot\Part11_Security_Governance.pdf,docs\coding-tools\github-copilot\github-copilot-zero-to-hero.md,moderate overlap (review)
 0.412,docs\coding-tools\claude\Module_5_Claude_Code_Agents.pdf,docs\coding-tools\claude\claude_agents_best_practices_v2.pdf,moderate overlap (review)
 0.412,docs\ai-security-governance\deep-mind\Part03_Enterprise_Threat_Modeling.pdf,docs\ai-security-governance\deep-mind\Part04_AI_Control_Architecture.pdf,moderate overlap (review)
-0.412,docs\ai-development\testing\AI Agent Evaluation Framework — AWS Bedrock AgentCore · Strands · Arize Phoenix.pdf,docs\ai-usecases\EU Banking AI Agent Evaluation Framework.pdf,moderate overlap (review)
+0.412,docs\ai-development\testing\AI Agent Evaluation Framework ï¿½ AWS Bedrock AgentCore ï¿½ Strands ï¿½ Arize Phoenix.pdf,docs\ai-usecases\EU Banking AI Agent Evaluation Framework.pdf,moderate overlap (review)
 0.412,docs\agentic-systems\platform\MultiTenantAgentPlatform_Architecture.pdf,docs\agentic-systems\platform\agentic_platform_bestpractices.docx,moderate overlap (review)
 0.411,docs\workflow-orchestration\03-workflow-vs-agent-architecture.md,docs\workflow-orchestration\21-future-predictions.md,moderate overlap (review)
 0.411,docs\ea-masterclass\module-09-enterprise-ai-architecture\index.md,docs\enterprise-architecture\process\Enterprise_AI_Architect_Bible_2026.pdf,moderate overlap (review)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Build a knowledge graph of the docs/ corpus: every page is a node, every
-tag/topic is a concept node, and edges capture four independent kinds of
+tag/topic is a concept node, and edges capture five independent kinds of
 relationship that each answer a different question:
 
   similar_to   (page <-> page, weighted 0-1)
@@ -24,6 +24,12 @@ relationship that each answer a different question:
       From frontmatter tags — the facet-based taxonomy (domain/doc_type/
       topic) from knowledge-page-authoring/references/taxonomy.md.
 
+  mentions     (page -> tool)
+      Body-text scan against _meta/technology-taxonomy.json. Adds 'tool'
+      nodes for each named technology and 'mentions' edges to every page
+      that references it. Answers "which pages cover LangGraph / Bedrock /
+      MCP?" without requiring authors to maintain perfect frontmatter tags.
+
 Why this matters for duplication specifically: title-matching (what the
 original repo audit used) only catches duplicates that happen to share a
 title. Content-hash matching only catches byte-identical copies. Pairwise
@@ -36,6 +42,7 @@ NxN pass against everything that exists today).
 Usage:
     python3 build_graph.py [--docs-dir docs] [--sidebars sidebars.js]
                            [--sim-threshold 0.3] [--out graph.json]
+                           [--taxonomy _meta/technology-taxonomy.json]
 
 Requires: scikit-learn, pyyaml
 """
@@ -115,6 +122,37 @@ def get_sidebar_hierarchy(sidebars_path, docs_dir):
     return {doc_id: " > ".join(path) for doc_id, path in pairs}
 
 
+def load_taxonomy(path):
+    """Load technology-taxonomy.json and compile per-tool regex patterns."""
+    if not os.path.exists(path):
+        print(f"WARNING: taxonomy file not found at {path} — tool nodes skipped.", file=sys.stderr)
+        return []
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    compiled = []
+    for tool in data.get("tools", []):
+        names = [tool["name"]] + tool.get("aliases", [])
+        # Word-boundary match; sort longest first to avoid short alias shadowing longer name
+        names_sorted = sorted(names, key=len, reverse=True)
+        pattern = re.compile(
+            r"\b(?:" + "|".join(re.escape(n) for n in names_sorted) + r")\b",
+            re.IGNORECASE,
+        )
+        compiled.append({
+            "id": f"tool:{tool['id']}",
+            "name": tool["name"],
+            "category": tool.get("category", ""),
+            "description": tool.get("description", ""),
+            "pattern": pattern,
+        })
+    return compiled
+
+
+def scan_tool_mentions(text, taxonomy):
+    """Return list of tool ids mentioned in text (binary presence, not count)."""
+    return [t["id"] for t in taxonomy if t["pattern"].search(text)]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--docs-dir", default="docs")
@@ -123,7 +161,12 @@ def main():
                      help="Minimum cosine similarity to create a similar_to edge")
     ap.add_argument("--out", default="_meta/graph.json")
     ap.add_argument("--clusters-out", default="_meta/duplicate-clusters.md")
+    ap.add_argument("--taxonomy", default="_meta/technology-taxonomy.json",
+                     help="Path to technology-taxonomy.json for tool node extraction")
     args = ap.parse_args()
+
+    taxonomy = load_taxonomy(args.taxonomy)
+    print(f"Taxonomy loaded: {len(taxonomy)} tool definitions.")
 
     # --- collect pages ---
     doc_ids, raw_texts, metas = [], [], []
@@ -145,6 +188,7 @@ def main():
                 "tags": fm.get("tags") or [],
                 "word_count": len(body.split()),
                 "path": full,
+                "tools_mentioned": scan_tool_mentions(body, taxonomy),
             })
 
     print(f"Collected {len(doc_ids)} pages.")
@@ -213,6 +257,20 @@ def main():
             concept_nodes.add(t)
             tag_edges.append((meta["id"], t))
 
+    # --- mentions edges (tool nodes from body-text scan) ---
+    mention_edges = []
+    tool_node_ids = set()
+    for meta in metas:
+        for tool_id in meta.get("tools_mentioned", []):
+            tool_node_ids.add(tool_id)
+            mention_edges.append((meta["id"], tool_id))
+
+    # Build tool node lookup from taxonomy
+    taxonomy_by_id = {t["id"]: t for t in taxonomy}
+    tool_nodes_mentioned = [taxonomy_by_id[tid] for tid in tool_node_ids if tid in taxonomy_by_id]
+
+    print(f"mentions edges: {len(mention_edges)} across {len(tool_node_ids)} tools")
+
     # --- assemble graph ---
     nodes = []
     for meta in metas:
@@ -221,9 +279,16 @@ def main():
             "domain": meta["domain"], "doc_type": meta["doc_type"],
             "tags": meta["tags"], "word_count": meta["word_count"],
             "category_path": hierarchy.get(meta["id"], ""),
+            "tools_mentioned": meta.get("tools_mentioned", []),
         })
     for c in sorted(concept_nodes):
         nodes.append({"id": f"concept:{c}", "type": "concept", "title": c})
+    for t in sorted(tool_nodes_mentioned, key=lambda x: x["id"]):
+        nodes.append({
+            "id": t["id"], "type": "tool",
+            "name": t["name"], "category": t["category"],
+            "description": t["description"],
+        })
 
     edges = []
     for a, b, s in sim_edges:
@@ -233,15 +298,19 @@ def main():
         edges.append({"source": a, "target": b, "type": "links_to", "weight": 1.0})
     for a, t in tag_edges:
         edges.append({"source": a, "target": f"concept:{t}", "type": "tagged", "weight": 1.0})
+    for a, t in mention_edges:
+        edges.append({"source": a, "target": t, "type": "mentions", "weight": 1.0})
 
     graph = {
         "generated_from": args.docs_dir,
         "page_count": len(doc_ids),
         "concept_count": len(concept_nodes),
+        "tool_count": len(tool_node_ids),
         "edge_counts": {
             "similar_to": len(sim_edges),
             "links_to": len(link_edges),
             "tagged": len(tag_edges),
+            "mentions": len(mention_edges),
         },
         "nodes": nodes,
         "edges": edges,

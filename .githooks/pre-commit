@@ -1,11 +1,92 @@
-#!/usr/bin/env node
-import { spawnSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+#!/usr/bin/env bash
+# Pre-commit hook for knowledge-docs style repos.
+# Installed by knowledge-repo-enforcement's install.sh to .githooks/pre-commit.
+# Requires the knowledge-page-authoring skill to be installed at
+# .claude/skills/knowledge-page-authoring/ in the same repo.
+set -uo pipefail
 
-const script = '.agents/skills/knowledge-repo-enforcement/scripts/pre-commit.mjs';
-if (!existsSync(script)) {
-  console.error(`knowledge-repo pre-commit: ${script} not found.`);
-  process.exit(1);
-}
-const result = spawnSync(process.execPath, [script], { stdio: 'inherit' });
-process.exit(result.status ?? 1);
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT" || exit 1
+
+AUTHORING_SKILL=".claude/skills/knowledge-page-authoring"
+AUDIT_SKILL=".claude/skills/knowledge-repo-consistency-audit"
+LINT="$AUTHORING_SKILL/scripts/lint_page.py"
+DUPCHECK="$AUTHORING_SKILL/scripts/check_against_corpus.py"
+SIDEBAR_CHECK="$AUDIT_SKILL/scripts/check_sidebar_integrity.py"
+
+if [[ ! -f "$LINT" ]]; then
+  echo "knowledge-repo pre-commit hook: $LINT not found."
+  echo "The knowledge-page-authoring skill must be installed at $AUTHORING_SKILL for this hook to run."
+  echo "Skipping checks (not blocking commit) — install the skill to enable enforcement."
+  exit 0
+fi
+
+STAGED_MD=$(git diff --cached --name-only --diff-filter=ACM -- 'docs/*.md' 'docs/**/*.md')
+SIDEBARS_STAGED=$(git diff --cached --name-only -- 'sidebars.js')
+
+if [[ -z "$STAGED_MD" && -z "$SIDEBARS_STAGED" ]]; then
+  exit 0
+fi
+
+FAIL=0
+
+# Whenever this commit touches sidebars.js OR adds/renames a docs page, verify
+# the whole sidebar-to-disk mapping still resolves. This is a repo-wide check
+# (not just staged files) because a broken reference is a property of the
+# pairing between sidebars.js and docs/, not of any single file — this is the
+# exact check that would have caught the 2026-07-11 regression (86 pages
+# silently unreachable from navigation) before it reached main.
+if [[ -f "$SIDEBAR_CHECK" ]] && { [[ -n "$SIDEBARS_STAGED" ]] || echo "$STAGED_MD" | grep -q .; }; then
+  echo "--- sidebar integrity ---"
+  if ! python3 "$SIDEBAR_CHECK"; then
+    echo "  -> BLOCKING: sidebars.js references pages that don't exist on disk, or vice versa."
+    echo "     Run 'python3 $SIDEBAR_CHECK --fix' to auto-resolve unambiguous cases."
+    FAIL=1
+  fi
+  echo ""
+fi
+
+if [[ -z "$STAGED_MD" ]]; then
+  if [[ "$FAIL" -ne 0 ]]; then
+    echo "Pre-commit checks failed. Fix the issues above, or 'git commit --no-verify' to bypass (not recommended)."
+    exit 1
+  fi
+  exit 0
+fi
+echo "knowledge-repo pre-commit: checking $(echo "$STAGED_MD" | wc -l | tr -d ' ') staged markdown file(s)..."
+echo ""
+
+while IFS= read -r file; do
+  [[ -z "$file" ]] && continue
+  [[ -f "$file" ]] || continue  # skip deleted files
+
+  echo "--- $file ---"
+
+  if ! python3 "$LINT" "$file"; then
+    FAIL=1
+  fi
+
+  # Only run the duplicate check on newly ADDED files — a modified existing
+  # file will always be "similar to itself" in git history and that's not
+  # useful signal; new files are where accidental duplication actually gets
+  # introduced.
+  ADDED_STATUS=$(git diff --cached --name-status -- "$file" | cut -f1)
+  if [[ "$ADDED_STATUS" == "A" ]] && [[ -f "$DUPCHECK" ]]; then
+    DUP_OUTPUT=$(python3 "$DUPCHECK" "$file" --threshold 0.85 2>&1)
+    if echo "$DUP_OUTPUT" | grep -q "NEAR-DUPLICATE"; then
+      echo "$DUP_OUTPUT"
+      echo "  -> BLOCKING: near-duplicate of existing content (see above)."
+      FAIL=1
+    fi
+  fi
+
+  echo ""
+done <<< "$STAGED_MD"
+
+if [[ "$FAIL" -ne 0 ]]; then
+  echo "Pre-commit checks failed. Fix the issues above, or 'git commit --no-verify' to bypass (not recommended)."
+  exit 1
+fi
+
+echo "All staged markdown files pass."
+exit 0

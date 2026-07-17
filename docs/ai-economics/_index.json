@@ -1,0 +1,221 @@
+{
+ "section": "ai-economics",
+ "page_count": 9,
+ "pages": [
+  {
+   "id": "ai-economics/AI-Value-Creator-Deliverables-Pack",
+   "title": "Worked Example: 20 Deliverables, One Use Case",
+   "doc_type": "guide",
+   "tags": [
+    "ai-economics",
+    "enterprise-ai"
+   ],
+   "word_count": 4540,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-economics/Agentic-AI-Use-Case-Value-Lifecycle",
+     "score": 0.57
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/AI_Cost_Implementation_Guide_2026",
+   "title": "Token Management & AI Cost Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "ai-economics",
+    "enterprise-ai",
+    "enterprise-architecture"
+   ],
+   "word_count": 4539,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/AI_Invoice_Auditor_Architecture_v5",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/Agentic-AI-Use-Case-Value-Lifecycle",
+   "title": "A Worked Use Case: End-to-End Value Realization",
+   "doc_type": "guide",
+   "tags": [
+    "ai-economics",
+    "enterprise-ai"
+   ],
+   "word_count": 4299,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-economics/AI-Value-Creator-Deliverables-Pack",
+     "score": 0.57
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/ai-coding-agents-2026",
+   "title": "AI Coding Agents 2026",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-economics"
+   ],
+   "word_count": 4913,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "coding-tools/github-copilot/GitHub_Copilot_Enterprise_Research_2026",
+     "score": 0.35
+    },
+    {
+     "id": "coding-tools/github-copilot/Part01_Vision_Copilot_Architecture_RepoIntelligence",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/ai-tokenomics-guide",
+   "title": "AI Tokenomics: From Token Mechanics to Business Economics",
+   "doc_type": "guide",
+   "tags": [
+    "tokenomics",
+    "token-economics",
+    "llm-pricing",
+    "prompt-engineering",
+    "context-window",
+    "fine-tuning",
+    "rag",
+    "batch-api",
+    "ai-economics",
+    "cost-optimization"
+   ],
+   "word_count": 4575,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-multi-agent-cost-propagation",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.33
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/ai-value-creators-synthesis",
+   "title": "AI Value Creators for Agentic AI and Beyond",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-economics"
+   ],
+   "word_count": 3450,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
+     "score": 0.37
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/enterprise-ai-commercial-analysis-2026",
+   "title": "Enterprise AI Commercial Analysis 2026",
+   "doc_type": "guide",
+   "tags": [
+    "ai-economics",
+    "enterprise-ai",
+    "pricing",
+    "commercial-strategy",
+    "vendor-lock-in",
+    "finops",
+    "token-economics"
+   ],
+   "word_count": 3074,
+   "last_reviewed": "2026-07-12",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/foundation-model-companies-2026",
+   "title": "Foundation Model Companies 2026",
+   "doc_type": "guide",
+   "tags": [
+    "ai-economics",
+    "foundation-models",
+    "competitive-analysis",
+    "openai",
+    "anthropic",
+    "google",
+    "meta",
+    "market-landscape"
+   ],
+   "word_count": 1759,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-economics/index",
+   "title": "AI Cost & Economics",
+   "doc_type": "guide",
+   "tags": [
+    "ai-economics"
+   ],
+   "word_count": 308,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-unit-economics-kpis",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
+     "score": 0.33
+    }
+   ]
+  }
+ ]
+}

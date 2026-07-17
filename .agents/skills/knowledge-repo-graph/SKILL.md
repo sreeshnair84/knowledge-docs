@@ -25,11 +25,19 @@ Re-run this after any bulk content change. A graph built from a stale corpus giv
 
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/scripts/query_graph.py --related <doc_id>       # what's connected to this page, strongest first
-python3 ${CLAUDE_SKILL_DIR}/scripts/query_graph.py --concept <tag>          # every page tagged with this concept
+python3 ${CLAUDE_SKILL_DIR}/scripts/query_graph.py --concept <tag>          # every page tagged with this concept (frontmatter)
+python3 ${CLAUDE_SKILL_DIR}/scripts/query_graph.py --tool <name>            # every page whose body mentions this technology
+python3 ${CLAUDE_SKILL_DIR}/scripts/query_graph.py --tool list              # all 52 tool nodes ranked by page coverage
 python3 ${CLAUDE_SKILL_DIR}/scripts/query_graph.py --duplicates --min 0.6   # every duplicate-candidate cluster, ranked
 ```
 
 `doc_id` is the page's path under `docs/` without the `.md` extension (e.g. `ai-protocols/mcp/some-page`), matching the same id scheme `sidebars.js` and `check_sidebar_integrity.py` use.
+
+### Tool taxonomy
+
+`_meta/technology-taxonomy.json` is the registry of 52 named tools and frameworks across 11 categories (`llm`, `agent-framework`, `cloud-ai`, `vector-db`, `orchestration`, `infra`, `protocol`, `security`, `observability`, `data-platform`, `dev-tools`). Each entry has a canonical name, category, description, and aliases list — the aliases are compiled into a single regex and matched case-insensitively against page body text (not just frontmatter tags). Add new tools to the taxonomy and re-run `build_graph.py` to refresh.
+
+The graph now carries a fifth edge type — `mentions` (page → tool) — with 4,671 edges across 52 tool nodes. This answers "which pages cover LangGraph?" without requiring authors to have remembered to add it to frontmatter tags (44 pages currently have empty tags).
 
 ## 3. Before writing new content
 

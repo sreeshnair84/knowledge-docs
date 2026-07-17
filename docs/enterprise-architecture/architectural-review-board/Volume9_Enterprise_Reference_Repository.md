@@ -148,7 +148,7 @@ All diagrams in this volume are specified in **Mermaid** syntax, which can be re
 |ANT-<br>14|The Living Dead System|A system officially classified as "in decommission"<br>for 3+ years that never actually gets<br>decommissioned because new dependencies keep<br>appearing — active technical debt masquerading as<br>an in-progress retirement|No Retirement Checklist (Volume 4 S7.6) with<br>dependency verification; no ARB gate requiring<br>decommission sign-off; no one owns the closure|
 |ANT-<br>15|Cost-Blind Architecture|Architecture designed for technical elegance without<br>modeling the economics at scale — discovered to be<br>prohibitively expensive only after deployment, at<br>which point rearchitecting is painful|Architecture economics (Volume 2) not applied at<br>design time; remedy is mandatory cost-at-scale<br>projection as part of the ARB submission form<br>(Volume 8 S15.5)|
 
-# Part B — Decision Trees, ADR Examples & Policy-as-Code Library
+## Part B — Decision Trees, ADR Examples & Policy-as-Code Library
 
 ## DT-01 — Integration Pattern Selection
 

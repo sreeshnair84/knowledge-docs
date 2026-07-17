@@ -85,7 +85,7 @@ Engagement Period: March 2025 – February 2026
 
 6. Future Roadmap
 
-# 1. Executive Summary
+## 1. Executive Summary
 
 Meridian Global Airlines (MGA), a 340-aircraft international carrier operating out of four hub airports, engaged an Enterprise AI Architecture team to design and deliver an agentic AI platform spanning two linked problem domains: **predictive maintenance** for the widebody and narrowbody fleets, and **irregular operations (IROPS) recovery** — the process of re-accommodating crew, aircraft, and passengers when weather, mechanical, or crewlegality events disrupt the published schedule.
 
@@ -103,7 +103,7 @@ Key outcomes:
 
 - Sustained agent-generated recovery plans in production with mandatory human sign-off retained permanently for any plan touching crew duty-time or MEL (Minimum Equipment List) dispatch decisions
 
-# 2. Client Background
+## 2. Client Background
 
 Meridian Global Airlines is a mid-size international carrier (fictionalized composite for this case study) with:
 
@@ -119,7 +119,7 @@ Meridian Global Airlines is a mid-size international carrier (fictionalized comp
 
 MGA’s Chief Architect, Tom Reyes, had spent the prior year building a case internally for an “AI-first operations” strategy but had been repeatedly blocked by the CISO (Elena Vasquez) over concerns about giving autonomous systems any decision authority over safety-adjacent operations, and by the VP of Flight Operations, Capt. Daniel Okoro, who was openly skeptical of “black box” recommendations in a domain governed by strict regulatory process.
 
-# 3. Business Problem
+## 3. Business Problem
 
 Two connected pain points drove the engagement:
 
@@ -129,7 +129,7 @@ Two connected pain points drove the engagement:
 
 Both problems shared a root cause the discovery phase surfaced explicitly: **decision-relevant data existed but was fragmented across systems that didn’t talk to each other in real time** , and the humans making decisions were reasoning under time pressure without machine assistance.
 
-# 4. Constraints
+## 4. Constraints
 
 The following constraints were established in the first month and revisited repeatedly throughout the engagement — several of them materially reshaped the architecture:
 
@@ -147,7 +147,7 @@ The following constraints were established in the first month and revisited repe
 
 7. **No new PII exfiltration paths.** CISO Vasquez mandated that no crew or passenger PII could leave MGA’s Azure tenant boundary, ruling out several vendor SaaS options during procurement.
 
-# 5. Discovery Transcript
+## 5. Discovery Transcript
 
 ## 5.1 Kickoff Workshop — Week 1
 
@@ -208,7 +208,7 @@ The group explicitly deprioritized passenger rebooking automation (an existing t
 
 **Risk identification** from this session, captured formally in the risk register (Section 12): - Model risk: falsenegative on maintenance prediction (missed real fault) is far more costly than false-positive - Regulatory risk: any crew-legality miscalculation is a compliance and safety exposure - Change management risk: dispatcher and maintenance controller workforce trust — both groups have seen “AI” pitched to them before by vendors who didn’t understand the domain - Data risk: OEM telemetry contracts restrict how the data can be used/retained — legal review required - Vendor lock-in: engine OEM diagnostic APIs use proprietary formats
 
-# 6. Architecture Workshops
+## 6. Architecture Workshops
 
 ## 6.1 Business & Information Architecture
 
@@ -298,7 +298,7 @@ This became ADR-007 and a mandatory gate in the AI Evaluation Strategy (Section 
 
 - Legacy SOAP integration wrapped behind an internal REST/MCP adapter service, isolating the rest of the platform from the legacy interface’s quirks and rate limits
 
-# 7. Technical Debates
+## 7. Technical Debates
 
 ## 7.1 Build vs. Buy — the OEM Predictive Maintenance Offer
 
@@ -354,7 +354,7 @@ This exchange is preserved in full because it shaped both the eventual incident 
 
 **EAA:** It is, and we’re not running it continuously — we run it as a release gate, not a CI check. Day-to-day regression testing uses the constraint-satisfaction suite and a smaller automated plan-quality heuristic. The blind dispatcher evaluation happens before each material model or prompt change ships to production, not on every commit.
 
-# 8. Executive Reviews
+## 8. Executive Reviews
 
 ## 8.1 Architecture Review Board — Week 11
 
@@ -408,7 +408,7 @@ Prior to go-live, Vasquez required a final security review.
 
 **Vasquez:** That’s the number I needed to see. I’m signing off, with the standing requirement that this adversarial suite reruns on every model or prompt version change, not just at initial go-live — I want that written into the operational runbook, not left as tribal knowledge.
 
-# 9. Final Architecture
+## 9. Final Architecture
 
 The production architecture, as it shipped:
 
@@ -418,7 +418,7 @@ The production architecture, as it shipped:
 
 **Cross-cutting** - OPA/Rego policy enforcement at the Kong API gateway; hard block on write access from any agent identity to systems of record - OAuth 2.0 / OIDC identity federation with token exchange for attributing human accountability to every action - Tamper-evident, long-retention observability store (OpenTelemetry traces, retained per flight-data-recorder-equivalent policy) - Shared LLM gateway abstraction for cost tracking and guardrail consistency across the Azure/AWS split - Semantic caching on the diagnostic-summarization agent (high repeat-query rate during active disruption events) to control both cost and latency during the exact moments when speed matters most
 
-# 10. Delivery Roadmap
+## 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -431,7 +431,7 @@ The production architecture, as it shipped:
 |Incident & Remediation|Month 14 (post-GA)|Production incident (Section 14), HITL<br>redesign|
 |Recovery GA — Hub 2 expansion|Month 16|Expansion following remediation, revised<br>approval workflow|
 
-# 11. Risks
+## 11. Risks
 
 Final risk register at go-live (abbreviated to material items):
 
@@ -444,7 +444,7 @@ Final risk register at go-live (abbreviated to material items):
 |Data residency<br>violation (EU/ME crew<br>PII)|Low|Very High|Regional data<br>segregation enforced at<br>ingestion; legal review<br>of every new data flow|CISO|
 |Prompt injection via<br>free-text fields|Low (post-mitigation)|High|Adversarial test suite,<br>rerun on every model<br>change; deterministic<br>validation as backstop|Security Architect|
 
-# 12. Governance Model
+## 12. Governance Model
 
 The governance model formalized after the ARB debates:
 
@@ -452,7 +452,7 @@ The governance model formalized after the ARB debates:
 
 - **Audit cadence** : monthly sampling review of agent recommendations vs. human decisions, with any override pattern (humans consistently rejecting a certain plan type) triggering a model/prompt investigation **Regulatory correspondence protocol** : Legal designated as the point of contact for any question of whether system outputs constitute discoverable records; observability retention set accordingly
 
-# 13. Production Rollout
+## 13. Production Rollout
 
 Hub 1 go-live (Month 10) was executed as a phased cutover:
 
@@ -462,7 +462,7 @@ Week 8: Fleet Health maintenance-controller rollout completed at both original h
 
 Early production metrics tracked closely against the shadow-deployment baseline to catch any regression between simulated and live performance — a discipline the team insisted on specifically because several past MGA vendor tools had looked good in demo and degraded once exposed to live data quirks.
 
-# 14. Production Incident — Month 14
+## 14. Production Incident — Month 14
 
 ## 14.1 Incident Summary
 
@@ -494,7 +494,7 @@ The first officer’s own personal duty-time tracking (a legal requirement pilot
 
 The re-validation trigger was designed, tested against the adversarial and regression suites, reviewed by an expedited Change Advisory Board session, and deployed within 96 hours — itself a case study in the value of the deterministic-engine-as-backstop architecture: the fix didn’t require retraining or reprompting the LLM orchestrator at all, only adding a new event trigger for the already-existing, already-trusted legality engine.
 
-# 15. Lessons Learned
+## 15. Lessons Learned
 
 Captured verbatim from the formal postmortem, held two weeks post-incident with the full ARB:
 
@@ -508,7 +508,7 @@ Captured verbatim from the formal postmortem, held two weeks post-incident with 
 
 5. **Cross-functional trust, built over eleven months of hard conversations, is what made the incident response fast and honest rather than defensive and slow.** Vasquez’s Week 1 hard line on write access, and the entire team’s discipline in respecting it even under schedule pressure, is why this incident was containable within hours rather than becoming an actual regulatory event. Okoro noted in the postmortem that this was the first vendor engagement in his tenure where the technical team volunteered the fatiguerisk connection before being asked.
 
-# 16. Enterprise Architecture Artifacts
+## 16. Enterprise Architecture Artifacts
 
 Representative artifacts produced and maintained as living documents (full versions retained in MGA’s architecture repository; summarized here):
 
@@ -520,7 +520,7 @@ Representative artifacts produced and maintained as living documents (full versi
 
 - **Data Flow Diagram with Residency Annotations** : every PII-bearing data flow annotated with its residency constraint and legal basis, maintained jointly with Legal
 
-# 17. Architecture Decision Records (ADRs)
+## 17. Architecture Decision Records (ADRs)
 
 ### ADR-001: Separate deterministic rules engine from LLM-based reasoning for all legality
 
@@ -550,7 +550,7 @@ Representative artifacts produced and maintained as living documents (full versi
 
 **ADR-012 (post-incident): Approved recovery plans must be automatically re-validated against the legality engine if any upstream schedule change affects a crew member in that plan, with hard execution block pending re-approval on re-check failure.** Status: Accepted, emergency-deployed. See Section 14.3.
 
-# 18. AI Evaluation Strategy
+## 18. AI Evaluation Strategy
 
 - **Constraint satisfaction (mandatory, 100% target, gates every release)** : automated regression suite of historical and synthetic disruption scenarios verifying zero legality-rule violations pass through undetected **Adversarial robustness (mandatory, gates every release)** : 340+ case adversarial prompt-injection suite against all free-text input surfaces (Section 8.3), expanded post-incident to include temporal-drift scenarios (Section 15, lesson 3)
 
@@ -562,7 +562,7 @@ Representative artifacts produced and maintained as living documents (full versi
 
 - **Ongoing production monitoring** : monthly audit sampling of human override patterns (Section 12); confidence-score calibration drift tracking on the Fleet Health fusion model against realized outcomes
 
-# 19. Operational Runbook
+## 19. Operational Runbook
 
 Representative runbook entries (abbreviated):
 
@@ -576,7 +576,7 @@ Representative runbook entries (abbreviated):
 
 - **Emergency pause procedure** : documented conditions and authority (jointly held by CISO and VP Flight Ops) for pausing Recovery Orchestrator dispatcher-facing output and falling back to fully manual process, with defined communication protocol to affected shifts
 
-# 20. Future Roadmap
+## 20. Future Roadmap
 
 Items explicitly deferred, with the reasoning preserved so future teams understand *why* , not just *what* :
 

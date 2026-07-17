@@ -1,0 +1,802 @@
+{
+ "section": "ea-masterclass",
+ "page_count": 36,
+ "pages": [
+  {
+   "id": "ea-masterclass/deliverables/business-case-templates",
+   "title": "Business Case Templates (1\u20136)",
+   "doc_type": "guide",
+   "tags": [
+    "ea-masterclass",
+    "deliverables"
+   ],
+   "word_count": 5454,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-03-proposal-lifecycle/index",
+     "score": 0.45
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.45
+    },
+    {
+     "id": "ea-masterclass/module-07-proposal-writing/index",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/deliverables/consulting-templates",
+   "title": "Deliverable Templates 11\u201320: Consulting & Practice Tools",
+   "doc_type": "guide",
+   "tags": [
+    "ea-masterclass",
+    "deliverables"
+   ],
+   "word_count": 7240,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/deliverables/index",
+     "score": 0.47
+    },
+    {
+     "id": "ea-masterclass/deliverables/business-case-templates",
+     "score": 0.41
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/deliverables/governance-templates",
+   "title": "Deliverable Templates 7\u201310: Governance & Decision Frameworks",
+   "doc_type": "guide",
+   "tags": [
+    "ea-masterclass",
+    "deliverables"
+   ],
+   "word_count": 5907,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/deliverables/consulting-templates",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-architecture/process/enterprise-technology-selection-framework",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/deliverables/index",
+   "title": "Deliverables Overview",
+   "doc_type": "guide",
+   "tags": [
+    "ea-masterclass",
+    "deliverables"
+   ],
+   "word_count": 1613,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/deliverables/consulting-templates",
+     "score": 0.47
+    },
+    {
+     "id": "ea-masterclass/index",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/deliverables/business-case-templates",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/index",
+   "title": "EA Masterclass \u2014 From Technical Architect to Enterprise AI Investment Architect",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass"
+   ],
+   "word_count": 4713,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/deliverables/index",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.43
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-01-ea-foundations/index",
+   "title": "Module 1 \u2014 Enterprise Architecture Foundations",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-01-ea-foundations"
+   ],
+   "word_count": 7655,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.51
+    },
+    {
+     "id": "enterprise-architecture/process/EA_Mastery_Guide",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-02-business-acumen/index",
+   "title": "Module 2 \u2014 Business Acumen for Enterprise Architects",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-02-business-acumen"
+   ],
+   "word_count": 6756,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-strategy/vol2-business-architecture-operating-model",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-strategy/vol10-relationship-maps-glossary",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-03-proposal-lifecycle/index",
+   "title": "Module 3 \u2014 Enterprise Proposal Lifecycle",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-03-proposal-lifecycle"
+   ],
+   "word_count": 11434,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/deliverables/business-case-templates",
+     "score": 0.45
+    },
+    {
+     "id": "ea-masterclass/module-07-proposal-writing/index",
+     "score": 0.42
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-04-technology-investment/index",
+   "title": "Module 4 \u2014 Technology Investment Fundamentals",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-04-technology-investment"
+   ],
+   "word_count": 7665,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-06-business-case/index",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-02-business-acumen/index",
+     "score": 0.36
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+   "title": "Module 5 \u2014 AI Investment Strategy",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-05-ai-investment-strategy"
+   ],
+   "word_count": 6610,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.51
+    },
+    {
+     "id": "enterprise-ai-report/part-02-operating-models",
+     "score": 0.48
+    },
+    {
+     "id": "cybersec-architect/11-ai-investment",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-06-business-case/index",
+   "title": "Module 6 \u2014 Business Case Development",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-06-business-case"
+   ],
+   "word_count": 8991,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-04-technology-investment/index",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-07-proposal-writing/index",
+     "score": 0.38
+    },
+    {
+     "id": "ea-masterclass/module-03-proposal-lifecycle/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-07-proposal-writing/index",
+   "title": "Module 7 \u2014 Proposal Writing",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-07-proposal-writing"
+   ],
+   "word_count": 6961,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/deliverables/business-case-templates",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-03-proposal-lifecycle/index",
+     "score": 0.42
+    },
+    {
+     "id": "ea-masterclass/module-06-business-case/index",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-08-financial-literacy/index",
+   "title": "Module 8 \u2014 Financial Literacy for Enterprise Architects",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-08-financial-literacy"
+   ],
+   "word_count": 7126,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-capacity-forecasting",
+     "score": 0.33
+    },
+    {
+     "id": "ea-masterclass/module-06-business-case/index",
+     "score": 0.31
+    },
+    {
+     "id": "cybersec-architect/10-technology-investment",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+   "title": "Module 9 \u2014 Enterprise AI Architecture",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-09-enterprise-ai-architecture"
+   ],
+   "word_count": 7606,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.48
+    },
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.47
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.46
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-10-governance/index",
+   "title": "Module 10 \u2014 Enterprise Governance",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-10-governance"
+   ],
+   "word_count": 8823,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+     "score": 0.37
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-11-executive-communication/index",
+   "title": "Module 11 \u2014 Executive Communication",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-11-executive-communication"
+   ],
+   "word_count": 7173,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/framework/Executive_Communication_Framework_Guide",
+     "score": 0.44
+    },
+    {
+     "id": "enterprise-architecture/specialization/EA_Business_Communication_Executive_Skills",
+     "score": 0.4
+    },
+    {
+     "id": "ea-masterclass/module-07-proposal-writing/index",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-12-ai-consulting/index",
+   "title": "Module 12 \u2014 AI Consulting Engagement",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-12-ai-consulting"
+   ],
+   "word_count": 8391,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
+     "score": 0.38
+    },
+    {
+     "id": "ea-masterclass/deliverables/consulting-templates",
+     "score": 0.37
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/energy-utilities",
+   "title": "Case Study: Energy Utility \u2014 AI Predictive Maintenance for Grid Infrastructure",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 4441,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-13-case-studies/index",
+     "score": 0.31
+    },
+    {
+     "id": "ea-masterclass/module-13-case-studies/manufacturing",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/global-bank",
+   "title": "Case Study: Global Bank \u2014 AI-Powered Loan Origination",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 3859,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-13-case-studies/index",
+     "score": 0.32
+    },
+    {
+     "id": "ai-usecases/02_banking",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/government",
+   "title": "Case Study: National Tax Authority \u2014 AI Risk-Based Audit Intelligence",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 3553,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/healthcare",
+   "title": "Case Study: Healthcare Network \u2014 AI Clinical Documentation",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 4793,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/03_healthcare",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/index",
+   "title": "Module 13 \u2014 Case Studies: AI Transformation Across Six Industries",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 2496,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-13-case-studies/global-bank",
+     "score": 0.32
+    },
+    {
+     "id": "ea-masterclass/module-13-case-studies/energy-utilities",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/manufacturing",
+   "title": "Case Study: Automotive Manufacturer \u2014 AI Predictive Maintenance",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 3788,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-13-case-studies/energy-utilities",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/retail",
+   "title": "Case Study: Retail Chain \u2014 AI Demand Forecasting & Inventory Optimization",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 3066,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ea-masterclass/module-13-case-studies/telecom",
+   "title": "Case Study: Telecom Operator \u2014 AI Customer Retention Platform",
+   "doc_type": "narrative-case-study",
+   "tags": [
+    "ea-masterclass",
+    "module-13-case-studies"
+   ],
+   "word_count": 3491,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ea-masterclass/module-14-mentoring/index",
+   "title": "Module 14 \u2014 Mentoring & Mastery",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-14-mentoring"
+   ],
+   "word_count": 8096,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.51
+    },
+    {
+     "id": "ea-masterclass/deliverables/business-case-templates",
+     "score": 0.45
+    },
+    {
+     "id": "ea-masterclass/index",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-15-distinguished-architect/architecture-leadership",
+   "title": "Architecture Leadership, Organisational Change & CTO Readiness",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-15-distinguished-architect"
+   ],
+   "word_count": 3237,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/index",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-architecture/framework/EA_Soft_Skills_Interview_Master_Guide",
+     "score": 0.4
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-15-distinguished-architect/executive-presence",
+   "title": "Executive Presence, Influence Without Authority & Stakeholder Politics",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-15-distinguished-architect"
+   ],
+   "word_count": 4047,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/index",
+     "score": 0.39
+    },
+    {
+     "id": "interview-prep/EA_Soft_Skills_and_Behaviors",
+     "score": 0.38
+    },
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/architecture-leadership",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-15-distinguished-architect/fortune100-modernisation",
+   "title": "Fortune 100 Modernisation Playbook \u2014 Leading at Scale",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-15-distinguished-architect"
+   ],
+   "word_count": 3170,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-15-distinguished-architect/index",
+   "title": "Module 15 \u2014 Distinguished Architect: Leadership, Influence & CTO Readiness",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-15-distinguished-architect"
+   ],
+   "word_count": 1333,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/architecture-leadership",
+     "score": 0.48
+    },
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/executive-presence",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/framework/EA_Soft_Skills_Interview_Master_Guide",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/module-15-distinguished-architect/strategic-thinking",
+   "title": "Strategic Thinking, Technology Bets & Platform Economics",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "ea-masterclass",
+    "module-15-distinguished-architect"
+   ],
+   "word_count": 3702,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/architecture-leadership",
+     "score": 0.32
+    },
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/index",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/transcripts/bank-discovery-workshop",
+   "title": "Transcript: Global Bank \u2014 Day 1 Discovery Workshop",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "ea-masterclass",
+    "transcripts"
+   ],
+   "word_count": 3189,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume10_Collaborative_Use_Case_Transcripts",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ea-masterclass/transcripts/healthcare-executive-presentation",
+   "title": "Transcript: Healthcare Network \u2014 Executive Steering Committee (Month 6 Update)",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "ea-masterclass",
+    "transcripts"
+   ],
+   "word_count": 2982,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ea-masterclass/transcripts/index",
+   "title": "Real-Life Engagement Transcripts \u2014 EA Practitioners in Action",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "ea-masterclass",
+    "transcripts"
+   ],
+   "word_count": 1826,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ea-masterclass/transcripts/manufacturing-arb-review",
+   "title": "Transcript: Automotive Manufacturer \u2014 Architecture Review Board Session",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "ea-masterclass",
+    "transcripts"
+   ],
+   "word_count": 3282,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ea-masterclass/transcripts/retail-proposal-negotiation",
+   "title": "Transcript: Retail Chain \u2014 CFO Investment Proposal Negotiation",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "ea-masterclass",
+    "transcripts"
+   ],
+   "word_count": 3334,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  }
+ ]
+}

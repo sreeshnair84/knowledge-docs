@@ -53,7 +53,7 @@ This final volume converts everything in Volumes 1-7 into directly usable starti
 
 **SECTION 1: BUSINESS CONTEXT - Business capability(ies) affected (Vol 3, Part B reference) - Business sponsor and engagement confirmation - Cost of delay if not approved this cycle (Vol 2, Section 3.3) SECTION 2: ARCHITECTURE SUMMARY - Context + container diagrams (Vol 4, Section 7.2) - Pattern(s) used and rationale (Vol 3, Section 5.5) - Quality attributes explicitly prioritized / deprioritized (Vol 4, Part B) SECTION 3: RISK & COMPLIANCE - Completed Compliance Matrix (Vol 4, Section 7.3) - Threat model summary (security-critical items only) - Data classification and lineage summary SECTION 4: AI-SPECIFIC (if applicable) - Agent Specification / Memory Policy / MCP Tool Contracts (Vol 4, Section 7.5) - AI Governance Board / Model Risk / Responsible AI Council review status (Vol 1, Section 1.2) SECTION 5: ECONOMICS - Cost projection at current and 3x scale (Vol 2, Part A) - Build vs. buy rationale if applicable SECTION 6: OPERATIONAL READINESS - Support Model status (Vol 4, Section 7.6) - Runbook coverage for critical failure scenarios**
 
-# Part B — Dashboards, Automation Starters & Rollout Roadmap
+## Part B — Dashboards, Automation Starters & Rollout Roadmap
 
 ## 15.6 Executive Dashboard — Recommended Metrics
 

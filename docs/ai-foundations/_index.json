@@ -1,0 +1,348 @@
+{
+ "section": "ai-foundations",
+ "page_count": 18,
+ "pages": [
+  {
+   "id": "ai-foundations/AI_Assistant_Architecture_Research_Report",
+   "title": "AI Assistant Architecture Research Report",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 6555,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/AI_Deep_Future_Outlook_2026_2035",
+   "title": "AI Deep Future Outlook (2026\u20132035)",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 7293,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol9-industry-deep-dives",
+     "score": 0.44
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.4
+    },
+    {
+     "id": "cybersec-architect/14-case-studies",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/AI_Lab_Research_Report_June2026",
+   "title": "AI Lab Research Landscape Report",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-foundations",
+    "data-architecture",
+    "enterprise-architecture",
+    "research"
+   ],
+   "word_count": 4891,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.32
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/AI_Native_Architecture_Evolution_Report",
+   "title": "From Data Warehouse to Agent-Native Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-foundations",
+    "data-architecture",
+    "enterprise-architecture",
+    "research"
+   ],
+   "word_count": 15533,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.6
+    },
+    {
+     "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+     "score": 0.55
+    },
+    {
+     "id": "knowledge-engineering/knowledge/Enterprise_Knowledge_Architectures_Report",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/The_Agentic_Loop_Enterprise_AI_Architect_Guide",
+   "title": "The Agentic Loop - Enterprise AI Architect's Guide",
+   "doc_type": "unknown",
+   "tags": [
+    "AI Architecture",
+    "Enterprise AI",
+    "AI Governance",
+    "Agentic Workflows"
+   ],
+   "word_count": 6372,
+   "last_reviewed": "June 2026",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/Agentic_AI_Platforms_Questionnaire_2025",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.37
+    },
+    {
+     "id": "coding-tools/claude/Claude_Ecosystem_Research_Report",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_architecture",
+   "title": "Agentic AI Landing Zone Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 8676,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.42
+    },
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.41
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_business_layer",
+   "title": "Agentic AI Landing Zone: Business & Enterprise Architecture Layer",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2025,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.37
+    },
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_eu_ai_act",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_context_engineering",
+   "title": "Agentic AI Landing Zone: Context Engineering Layer",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2544,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/context-engineering",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_eu_ai_act",
+   "title": "Agentic AI Landing Zone: EU AI Act Compliance (Digital Omnibus Update \u2014 July 2026)",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 3948,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_business_layer",
+     "score": 0.35
+    },
+    {
+     "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_evaluation",
+   "title": "Agentic AI Landing Zone: Evaluation Framework",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2519,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_memory_architecture",
+   "title": "Agentic AI Landing Zone: Memory Architecture (Tier 3)",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2342,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part08_Memory_Governance",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_multiagent",
+   "title": "Agentic AI Landing Zone: Multi-Agent Reference Architectures",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2580,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_platform_layer",
+   "title": "Agentic AI Landing Zone: Agent Platform Layer",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2940,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_playbooks",
+   "title": "Agentic AI Landing Zone: Implementation Playbooks",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 3905,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_visual_guide",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_tier3_complete",
+   "title": "Agentic AI Landing Zone: Tier 3 Complete (Identity, FinOps, SDLC, Operating Model)",
+   "doc_type": "research-report",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 2275,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-foundations/agentic_ai_landing_zone_visual_guide",
+   "title": "Agentic AI Landing Zone: Visual Guide & Quick Reference",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 3491,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.32
+    },
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_business_layer",
+     "score": 0.32
+    },
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_architecture",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-foundations/enterprise-agentic-ai-outlook-2026-2030",
+   "title": "Enterprise Agentic AI Outlook 2026\u20132030",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations",
+    "enterprise-ai",
+    "future-outlook",
+    "strategic-planning",
+    "agentic-ai",
+    "market-analysis"
+   ],
+   "word_count": 2073,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-foundations/index",
+   "title": "Agentic AI Basics",
+   "doc_type": "guide",
+   "tags": [
+    "ai-foundations"
+   ],
+   "word_count": 461,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  }
+ ]
+}

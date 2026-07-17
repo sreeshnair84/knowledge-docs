@@ -22,7 +22,7 @@ covers_version: "as of 2026-07-11"
 
 ---
 
-# Section 1: Executive Summary & Protocol Landscape
+## Section 1: Executive Summary & Protocol Landscape
 
 ## 1.1 Executive Summary
 
@@ -189,7 +189,7 @@ MCP and A2A are excluded from the comparative matrices in this report — they h
 
 ---
 
-# Section 4: Comparative Analysis
+## Section 4: Comparative Analysis
 
 ## 4.1 Feature Comparison Matrix
 
@@ -589,7 +589,7 @@ LEGEND:
 
 ---
 
-# Section 5: Future Outlook (2026–2031)
+## Section 5: Future Outlook (2026–2031)
 
 ## 5.1 Likelihood of Becoming Industry Standards
 
@@ -815,7 +815,7 @@ The Technology Radar places each protocol in one of four rings: **Adopt** (use i
 
 ---
 
-# Section 6: Decision Framework & Best Practices
+## Section 6: Decision Framework & Best Practices
 
 ## 6.1 Architecture Decision Matrix
 

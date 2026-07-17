@@ -116,7 +116,7 @@ The mapping must be revisited whenever:
 ---
 ---
 
-# SECTION 1: Foundational Design — Choosing the Right Pattern
+## SECTION 1: Foundational Design — Choosing the Right Pattern
 
 ---
 
@@ -274,7 +274,7 @@ The governance posture I'd propose is: HOOL with strong detection guarantees, ta
 ---
 ---
 
-# SECTION 2: HITL Architecture — Design, Failure Modes & Scaling
+## SECTION 2: HITL Architecture — Design, Failure Modes & Scaling
 
 ---
 
@@ -408,7 +408,7 @@ The specific limitations I design against:
 ---
 ---
 
-# SECTION 3: HOTL Architecture — Monitoring, Alert Design & Intervention
+## SECTION 3: HOTL Architecture — Monitoring, Alert Design & Intervention
 
 ---
 
@@ -529,7 +529,7 @@ If the investigation reveals that the metric is wrong — humans are capturing s
 ---
 ---
 
-# SECTION 4: HOOL Architecture — Safety, Governance & Boundaries
+## SECTION 4: HOOL Architecture — Safety, Governance & Boundaries
 
 ---
 
@@ -616,7 +616,7 @@ The architectural prevention mechanisms I'd implement:
 ---
 ---
 
-# SECTION 5: Pattern Transitions — Moving Between Oversight Levels
+## SECTION 5: Pattern Transitions — Moving Between Oversight Levels
 
 ---
 
@@ -683,7 +683,7 @@ My response to the business unit: I can support the transition to HOTL if you ru
 ---
 ---
 
-# SECTION 6: Agentic Systems — Oversight Across Multi-Agent Pipelines
+## SECTION 6: Agentic Systems — Oversight Across Multi-Agent Pipelines
 
 ---
 
@@ -746,7 +746,7 @@ What I will not do: restart the agent before understanding why it was heading to
 ---
 ---
 
-# SECTION 7: Regulatory & Ethical Dimensions
+## SECTION 7: Regulatory & Ethical Dimensions
 
 ---
 
@@ -814,7 +814,7 @@ If the investigation shows the AI has problems that overseers aren't catching: i
 ---
 ---
 
-# SECTION 8: Failure Modes & Incident Scenarios
+## SECTION 8: Failure Modes & Incident Scenarios
 
 ---
 
@@ -897,7 +897,7 @@ The design changes:
 ---
 ---
 
-# SECTION 9: Synthesis & Senior Judgment
+## SECTION 9: Synthesis & Senior Judgment
 
 ---
 

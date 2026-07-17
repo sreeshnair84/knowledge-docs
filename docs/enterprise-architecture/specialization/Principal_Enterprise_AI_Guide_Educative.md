@@ -1,5 +1,5 @@
 ---
-title: "<mark>Principal &</mark> Enterprise AI Architect"
+title: "Principal Enterprise AI Architect"
 date_created: 2026-07-10
 status: current
 source_type: converted-pdf

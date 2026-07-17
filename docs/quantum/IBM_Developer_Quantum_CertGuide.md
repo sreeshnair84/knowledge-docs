@@ -105,7 +105,7 @@ from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
 from qiskit_ibm_runtime import Options
 from qiskit import QuantumCircuit, transpile
 
-# ■■ On simulator ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ On simulator ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 qc = QuantumCircuit(3, 3)
 qc.h(0); qc.cx(0,1); qc.cx(1,2); qc.measure_all()
@@ -114,7 +114,7 @@ sampler = Sampler(sim)
 job = sampler.run([tqc], shots=4096)
 result = job.result()
 
-# SamplerV2 result structure (different from v1!)
+## SamplerV2 result structure (different from v1!)
 
 pub_result = result[0] # PubResult for first PUB
 data = pub_result.data # DataBin
@@ -123,7 +123,7 @@ bitarray = data.meas # BitArray object
 print(bitarray.get_counts())
 print(bitarray.get_bitstrings()) # list of individual shot results
 
-# ■■ Multiple circuits in one job (batching) ■■■■■■■■■■■■■■■
+## ■■ Multiple circuits in one job (batching) ■■■■■■■■■■■■■■■
 
 qc_a = QuantumCircuit(2,2); qc_a.h(0); qc_a.cx(0,1); qc_a.measure_all()
 qc_b = QuantumCircuit(2,2); qc_b.x(0); qc_b.measure_all()
@@ -134,7 +134,7 @@ res = job.result()
 counts_a = res[0].data.meas.get_counts()
 counts_b = res[1].data.meas.get_counts()
 
-# ■■ On real hardware with Options ■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ On real hardware with Options ■■■■■■■■■■■■■■■■■■■■■■■■■
 
 backend = service.least_busy(min_num_qubits=5)
 from qiskit_ibm_runtime import SamplerOptions
@@ -154,13 +154,13 @@ from qiskit_ibm_runtime import EstimatorV2 as Estimator
 from qiskit import QuantumCircuit, transpile
 from qiskit.circuit import Parameter
 
-# Define a Hamiltonian as SparsePauliOp
+## Define a Hamiltonian as SparsePauliOp
 
-# H = 0.5*ZZ - 0.5*XX (simple 2-qubit Hamiltonian)
+## H = 0.5*ZZ - 0.5*XX (simple 2-qubit Hamiltonian)
 
 H = SparsePauliOp.from_list([('ZZ', 0.5), ('XX', -0.5)])
 
-# Define parameterised ansatz circuit
+## Define parameterised ansatz circuit
 
 theta = Parameter('theta')
 qc = QuantumCircuit(2)
@@ -169,7 +169,7 @@ qc.cx(0, 1)
 qc.ry(theta, 1)
 estimator = Estimator(sim)
 
-# Single evaluation
+## Single evaluation
 
 tqc = transpile(qc.assign_parameters({theta: 0.5}), sim)
 job = estimator.run([(tqc, H)])
@@ -177,7 +177,7 @@ result = job.result()
 ev = result[0].data.evs # expectation value (scalar)
 print(f'E(0.5) = {ev:.4f}')
 
-# Sweep over parameter values
+## Sweep over parameter values
 
 theta_vals = np.linspace(0, 2*np.pi, 50)
 pubs = []
@@ -196,34 +196,34 @@ Sessions — Reserving Backend Access
 from qiskit_ibm_runtime import Session, SamplerV2 as Sampler
 backend = service.least_busy(min_num_qubits=5)
 
-# Session keeps connection to backend — reduces queue overhead
+## Session keeps connection to backend — reduces queue overhead
 
-# for iterative algorithms (VQE, QAOA parameter sweeps)
+## for iterative algorithms (VQE, QAOA parameter sweeps)
 
 with Session(backend=backend) as session:
 sampler = Sampler(session=session)
 estimator = Estimator(session=session)
 
-# All jobs in this block share the session
+## All jobs in this block share the session
 
-# (same backend, same QPU reservation)
+## (same backend, same QPU reservation)
 
 job1 = sampler.run([tqc1], shots=4096)
 job2 = estimator.run([(tqc2, hamiltonian)])
 res1 = job1.result()
 res2 = job2.result()
 
-# Session automatically closed on exit
+## Session automatically closed on exit
 
-# Session mode options
+## Session mode options
 
-# - 'dedicated' : exclusive QPU access (premium)
+## - 'dedicated' : exclusive QPU access (premium)
 
-# - 'batch' : submit multiple jobs, system batches them
+## - 'batch' : submit multiple jobs, system batches them
 
-# Use Session for iterative variational algorithms — the classical
+## Use Session for iterative variational algorithms — the classical
 
-# optimiser loop requires many sequential quantum evaluations
+## optimiser loop requires many sequential quantum evaluations
 
 Architect Note: Use Sessions for ALL variational algorithms (VQE, QAOA). Without a session, each iteration
 queues independently — adding minutes of overhead per iteration on busy backends.
@@ -240,14 +240,14 @@ from qiskit.transpiler.passes import PadDynamicalDecoupling
 from qiskit.circuit.library import XGate
 from qiskit.transpiler import PassManager, InstructionDurations
 
-# Enable via Runtime Options (recommended for real hardware)
+## Enable via Runtime Options (recommended for real hardware)
 
 from qiskit_ibm_runtime import SamplerOptions
 opts = SamplerOptions()
 opts.dynamical_decoupling.enable = True
 opts.dynamical_decoupling.sequence_type = 'XX' # or 'XpXm', 'XY4'
 
-# Manual DD via PassManager (for advanced control)
+## Manual DD via PassManager (for advanced control)
 
 backend = service.backend('ibm_brisbane')
 durations = InstructionDurations.from_backend(backend)
@@ -259,9 +259,9 @@ Clifford Circuits & Stabiliser Simulation
 from qiskit.quantum_info import Clifford
 from qiskit import QuantumCircuit
 
-# Clifford circuits: only H, S, CNOT, X, Y, Z, CZ
+## Clifford circuits: only H, S, CNOT, X, Y, Z, CZ
 
-# Can be simulated EXPONENTIALLY faster with stabiliser formalism
+## Can be simulated EXPONENTIALLY faster with stabiliser formalism
 
 qc = QuantumCircuit(4)
 qc.h([0,1,2,3])
@@ -271,11 +271,11 @@ cliff = Clifford(qc) # exact stabiliser representation
 print(cliff.tableau) # stabiliser tableau
 print(cliff.to_dict())
 
-# Reconstruct circuit from Clifford
+## Reconstruct circuit from Clifford
 
 qc_reconstructed = cliff.to_circuit()
 
-# Check if two Cliffords are equivalent
+## Check if two Cliffords are equivalent
 
 cliff2 = Clifford(qc_reconstructed)
 print(cliff == cliff2) # True
@@ -287,17 +287,17 @@ from qiskit.synthesis import OneQubitEulerDecomposer, TwoQubitBasisDecomposer
 from qiskit.circuit.library import CXGate
 from qiskit.quantum_info import random_unitary
 
-# Decompose arbitrary 1-qubit unitary into basis gates
+## Decompose arbitrary 1-qubit unitary into basis gates
 
 decomposer_1q = OneQubitEulerDecomposer(basis='ZSX') # IBM native
 
-# Random 1-qubit unitary
+## Random 1-qubit unitary
 
 U = random_unitary(2).data
 qc_1q = decomposer_1q(U) # circuit approximating U
 print(qc_1q.draw('text'))
 
-# Decompose arbitrary 2-qubit unitary into CX + 1-qubit gates
+## Decompose arbitrary 2-qubit unitary into CX + 1-qubit gates
 
 decomposer_2q = TwoQubitBasisDecomposer(CXGate())
 U2 = random_unitary(4).data
@@ -317,51 +317,51 @@ NoiseModel, depolarizing_error, thermal_relaxation_error,
 ReadoutError, pauli_error
 )
 
-# ■■ From real backend properties ■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ From real backend properties ■■■■■■■■■■■■■■■■■■■■■■■■■
 
 backend = service.backend('ibm_brisbane')
 
-# Build noise model that mirrors real device
+## Build noise model that mirrors real device
 
 from qiskit_aer.noise import NoiseModel
 noise_model = NoiseModel.from_backend(backend)
 print(noise_model) # shows T1, T2, gate errors for each qubit
 
-# ■■ Custom noise model from scratch ■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Custom noise model from scratch ■■■■■■■■■■■■■■■■■■■■■■
 
 nm = NoiseModel()
 
-# Depolarising error: prob p of applying random Pauli
+## Depolarising error: prob p of applying random Pauli
 
 err_1q = depolarizing_error(0.001, 1) # 0.1% single-qubit error
 err_2q = depolarizing_error(0.01, 2) # 1.0% two-qubit error
 nm.add_all_qubit_quantum_error(err_1q, ['h','x','y','z','s','t','rx','ry','rz'])
 nm.add_all_qubit_quantum_error(err_2q, ['cx', 'cz'])
 
-# Thermal relaxation (T1/T2 decoherence)
+## Thermal relaxation (T1/T2 decoherence)
 
 t1, t2 = 80e-6, 120e-6 # T1=80us, T2=120us (typical IBM)
 gate_time = 50e-9 # 50ns gate time
 t_err = thermal_relaxation_error(t1, t2, gate_time)
 nm.add_all_qubit_quantum_error(t_err, ['h', 'cx'])
 
-# Readout error (measurement error)
+## Readout error (measurement error)
 
-# p(0|0): prob of measuring 0 when state is 0
+## p(0|0): prob of measuring 0 when state is 0
 
-# p(1|0): prob of measuring 1 when state is 0 (bit flip error)
+## p(1|0): prob of measuring 1 when state is 0 (bit flip error)
 
 ro_err = ReadoutError([[0.98, 0.02], [0.03, 0.97]])
 nm.add_all_qubit_readout_error(ro_err)
 
-# Run noisy simulation
+## Run noisy simulation
 
 noisy_sim = AerSimulator(noise_model=nm)
 Zero-Noise Extrapolation (ZNE)
 
-# ZNE: run circuit at scaled noise levels, extrapolate to zero noise
+## ZNE: run circuit at scaled noise levels, extrapolate to zero noise
 
-# Most practical error mitigation for NISQ devices
+## Most practical error mitigation for NISQ devices
 
 from mitiq import zne
 
@@ -371,26 +371,26 @@ from mitiq.interface.qiskit import from_qiskit
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer.noise import NoiseModel, depolarizing_error
 
-# Setup noisy simulator
+## Setup noisy simulator
 
 nm = NoiseModel()
 nm.add_all_qubit_quantum_error(depolarizing_error(0.01, 1), ['h','x'])
 nm.add_all_qubit_quantum_error(depolarizing_error(0.05, 2), ['cx'])
 sim = AerSimulator(noise_model=nm)
 
-# Circuit to mitigate
+## Circuit to mitigate
 
 qc = QuantumCircuit(2)
 qc.h(0); qc.cx(0,1)
 
-# ZNE with Mitiq
+## ZNE with Mitiq
 
 def execute(circuit):
 """Execute circuit and return expectation of ZZ observable"""
 from qiskit.quantum_info import SparsePauliOp, Statevector
 tqc = transpile(circuit, sim)
 
-# Use noisy statevector for expectation
+## Use noisy statevector for expectation
 
 sv_sim = AerSimulator(method='statevector', noise_model=nm)
 tqc2 = circuit.copy()
@@ -402,22 +402,22 @@ state = Statevector(sv)
 op = SparsePauliOp('ZZ')
 return state.expectation_value(op).real
 
-# Manual ZNE: scale noise by 1x, 2x, 3x via gate folding
+## Manual ZNE: scale noise by 1x, 2x, 3x via gate folding
 
-# Gate folding: replace G with G*G†*G (3x noise), etc
+## Gate folding: replace G with G*G†*G (3x noise), etc
 
 noise_levels = [1, 2, 3]
 expectation_vals = []
 for scale in noise_levels:
 qc_folded = qc.copy()
 
-# Fold each gate (scale-1) extra times
+## Fold each gate (scale-1) extra times
 
-# ... (Mitiq handles this automatically)
+## ... (Mitiq handles this automatically)
 
 expectation_vals.append(execute(qc))
 
-# Linear extrapolation to zero noise
+## Linear extrapolation to zero noise
 
 coeffs = np.polyfit(noise_levels, expectation_vals, deg=1)
 mitigated = np.polyval(coeffs, 0) # extrapolate to noise=0
@@ -429,13 +429,13 @@ print(f'Mitigated: {mitigated:.4f}')
 print(f'Ideal: 1.0000 (for Bell state)')
 Pauli Twirling
 
-# Twirling: randomise coherent errors into incoherent (depolarising)
+## Twirling: randomise coherent errors into incoherent (depolarising)
 
-# Makes noise model more predictable and easier to mitigate
+## Makes noise model more predictable and easier to mitigate
 
 from qiskit_ibm_runtime import SamplerOptions
 
-# Enable via Runtime options (simplest approach)
+## Enable via Runtime options (simplest approach)
 
 opts = SamplerOptions()
 opts.twirling.enable_gates = True # twirl 2-qubit gates
@@ -443,15 +443,15 @@ opts.twirling.enable_measure = True # twirl measurements
 opts.twirling.num_randomizations = 300 # number of random circuits
 opts.twirling.shots_per_randomization = 'auto' # distribute shots
 
-# Manual gate twirling (educational)
+## Manual gate twirling (educational)
 
 from qiskit.transpiler.passes import RandomizePauliOracle
 
-# Each CX gate gets wrapped: (P1 x P2) @ CX @ (P1† x P2†)
+## Each CX gate gets wrapped: (P1 x P2) @ CX @ (P1† x P2†)
 
-# where P1, P2 are random Pauli operators
+## where P1, P2 are random Pauli operators
 
-# Result: coherent error -> depolarising channel (easier to extrapolate)
+## Result: coherent error -> depolarising channel (easier to extrapolate)
 
 ZNE + Twirling is the standard combination for NISQ error mitigation. Twirling first converts coherent errors
 to depolarising; ZNE then extrapolates away the remaining incoherent error.
@@ -467,9 +467,9 @@ from qiskit.circuit.library import TwoLocal, EfficientSU2
 from qiskit_ibm_runtime import EstimatorV2 as Estimator, Session
 from scipy.optimize import minimize
 
-# ■■ Define Hamiltonian: H2 molecule (simplified) ■■■■■■■■■
+## ■■ Define Hamiltonian: H2 molecule (simplified) ■■■■■■■■■
 
-# Full H2 Hamiltonian (Jordan-Wigner mapping, STO-3G basis)
+## Full H2 Hamiltonian (Jordan-Wigner mapping, STO-3G basis)
 
 H2_hamiltonian = SparsePauliOp.from_list([
 
@@ -485,21 +485,21 @@ H2_hamiltonian = SparsePauliOp.from_list([
 
 ])
 
-# FCI ground state energy: -1.1373 Hartree
+## FCI ground state energy: -1.1373 Hartree
 
-# ■■ Define ansatz ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Define ansatz ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-# EfficientSU2: hardware-efficient ansatz, good for NISQ
+## EfficientSU2: hardware-efficient ansatz, good for NISQ
 
 ansatz = EfficientSU2(num_qubits=2, reps=2, entanglement='linear')
 num_params = ansatz.num_parameters
 print(f'Parameters: {num_params}') # 12
 
-# ■■ Setup Estimator ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Setup Estimator ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 estimator = Estimator(sim)
 
-# ■■ Cost function ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Cost function ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 call_count = [0]
 energies = []
@@ -517,18 +517,18 @@ if call_count[0] % 20 == 0:
 print(f'Iter {call_count[0]}: E = {energy:.6f} Ha')
 return energy
 
-# ■■ Optimise ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Optimise ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 x0 = np.random.uniform(-np.pi, np.pi, num_params)
 
-# COBYLA: gradient-free, works well with noisy circuits
+## COBYLA: gradient-free, works well with noisy circuits
 
 result_cobyla = minimize(cost_fn, x0, method='COBYLA',
 options={'maxiter': 300, 'rhobeg': 0.5})
 
-# SPSA: stochastic gradient, designed for noisy quantum systems
+## SPSA: stochastic gradient, designed for noisy quantum systems
 
-# (Simultaneous Perturbation Stochastic Approximation)
+## (Simultaneous Perturbation Stochastic Approximation)
 
 from qiskit_algorithms.optimizers import SPSA
 spsa = SPSA(maxiter=300)
@@ -541,14 +541,14 @@ from qiskit_ibm_runtime import EstimatorV2 as Estimator
 from scipy.optimize import minimize
 import networkx as nx
 
-# ■■ Problem: MaxCut on a 4-node graph ■■■■■■■■■■■■■■■■■■■■
+## ■■ Problem: MaxCut on a 4-node graph ■■■■■■■■■■■■■■■■■■■■
 
 G = nx.Graph()
 G.add_edges_from([(0,1,{'weight':1}), (1,2,{'weight':1}),
 (2,3,{'weight':1}), (3,0,{'weight':1}),
 (0,2,{'weight':1})])
 
-# ■■ Build cost Hamiltonian: C = sum_(i,j) w_ij * (I - ZiZj)/2 ■■
+## ■■ Build cost Hamiltonian: C = sum_(i,j) w_ij * (I - ZiZj)/2 ■■
 
 pauli_list = []
 n = G.number_of_nodes()
@@ -562,7 +562,7 @@ pauli_list.append(('I'*n, w/2))
 cost_op = SparsePauliOp.from_list(pauli_list)
 print('Cost operator:', cost_op)
 
-# ■■ QAOA Circuit (depth p=2) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ QAOA Circuit (depth p=2) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
 
@@ -570,7 +570,7 @@ p = 2 # number of QAOA layers
 qaoa = QAOAAnsatz(cost_operator=cost_op, reps=p)
 print(f'QAOA parameters: {qaoa.num_parameters}') # 2*p = 4
 
-# ■■ Optimise ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Optimise ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 estimator = Estimator(sim)
 def qaoa_cost(params):
@@ -584,7 +584,7 @@ options={'maxiter': 200})
 print(f'Optimal params: {result.x}')
 print(f'Expected cut value: {-result.fun:.4f}')
 
-# ■■ Sample optimal circuit to get cut assignment ■■■■■■■■■■
+## ■■ Sample optimal circuit to get cut assignment ■■■■■■■■■■
 
 from qiskit_ibm_runtime import SamplerV2 as Sampler
 sampler = Sampler(sim)
@@ -612,29 +612,29 @@ from torch import nn
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
 
-# ■■ Device setup ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Device setup ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 n_qubits = 4
 dev = qml.device('default.qubit', wires=n_qubits)
 
-# ■■ QNN circuit ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ QNN circuit ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 @qml.qnode(dev, interface='torch')
 def qnn_circuit(inputs, weights):
 
-# Feature encoding: AngleEmbedding
+## Feature encoding: AngleEmbedding
 
 qml.AngleEmbedding(inputs, wires=range(n_qubits), rotation='Y')
 
-# Trainable layers: StronglyEntanglingLayers
+## Trainable layers: StronglyEntanglingLayers
 
 qml.StronglyEntanglingLayers(weights, wires=range(n_qubits))
 
-# Output: expectation of PauliZ on qubit 0
+## Output: expectation of PauliZ on qubit 0
 
 return qml.expval(qml.PauliZ(0))
 
-# ■■ PyTorch integration ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ PyTorch integration ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 n_layers = 3
 weight_shape = qml.StronglyEntanglingLayers.shape(n_layers=n_layers,
@@ -643,11 +643,11 @@ class HybridQNN(nn.Module):
 def **init**(self):
 super().**init**()
 
-# Quantum layer
+## Quantum layer
 
 self.q_weights = nn.Parameter(torch.rand(weight_shape) *2* torch.pi)
 
-# Classical pre/post processing
+## Classical pre/post processing
 
 self.fc_in = nn.Linear(2, n_qubits) # 2 features -> 4 qubits
 self.fc_out = nn.Linear(1, 2) # 1 QNN output -> 2 classes
@@ -659,7 +659,7 @@ return self.fc_out(q_out) # [batch, 2] logits
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
 
-# ■■ Training ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Training ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 X, y = make_moons(n_samples=200, noise=0.1)
 X = StandardScaler().fit_transform(X)
@@ -686,27 +686,27 @@ from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-# ■■ Generate dataset ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Generate dataset ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 X, y = make_classification(n_samples=100, n_features=2,
 n_informative=2, n_redundant=0,
 random_state=42)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
-# ■■ Quantum Feature Map ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Quantum Feature Map ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-# ZZFeatureMap: encodes data in entangled Hilbert space
+## ZZFeatureMap: encodes data in entangled Hilbert space
 
-# reps=2: two layers of encoding circuits
+## reps=2: two layers of encoding circuits
 
 feature_map = ZZFeatureMap(feature_dimension=2, reps=2)
 print(feature_map.draw('text'))
 
-# ■■ Quantum Kernel ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Quantum Kernel ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-# K(x,x') = |<phi(x)|phi(x')>|^2
+## K(x,x') = |<phi(x)|phi(x')>|^2
 
-# phi(x): quantum state after applying feature_map to x
+## phi(x): quantum state after applying feature_map to x
 
 sampler = StatevectorSampler()
 kernel = FidelityQuantumKernel(feature_map=feature_map,
@@ -714,12 +714,12 @@ sampler=sampler)
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
 
-# Compute kernel matrix (expensive O(n^2) circuit evaluations)
+## Compute kernel matrix (expensive O(n^2) circuit evaluations)
 
 K_train = kernel.evaluate(X_train) # [n_train x n_train]
 K_test = kernel.evaluate(X_test, X_train) # [n_test x n_train]
 
-# ■■ Classical SVM with quantum kernel ■■■■■■■■■■■■■■■■■■■■
+## ■■ Classical SVM with quantum kernel ■■■■■■■■■■■■■■■■■■■■
 
 from sklearn.svm import SVC
 svm = SVC(kernel='precomputed')
@@ -727,7 +727,7 @@ svm.fit(K_train, y_train)
 y_pred = svm.predict(K_test)
 print(f'Quantum Kernel SVM accuracy: {accuracy_score(y_test, y_pred):.3f}')
 
-# ■■ Or use QSVC (all-in-one) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Or use QSVC (all-in-one) ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 qsvc = QSVC(quantum_kernel=kernel)
 qsvc.fit(X_train, y_train)
@@ -744,25 +744,25 @@ Quantum Circuit Library – Built-in Algorithm
 Circuits
 from qiskit.circuit.library import (
 
-# Basis circuits
+## Basis circuits
 
 QFT, # Quantum Fourier Transform
 PhaseEstimation, # Quantum Phase Estimation
 GroverOperator, # Grover diffusion + oracle
 
-# Feature maps for QML
+## Feature maps for QML
 
 ZZFeatureMap,
 PauliFeatureMap,
 
-# Ansatze for variational algorithms
+## Ansatze for variational algorithms
 
 TwoLocal,
 EfficientSU2,
 RealAmplitudes,
 NLocal,
 
-# Arithmetic
+## Arithmetic
 
 PhaseOracle,
 IntegerComparator,
@@ -775,7 +775,7 @@ print(qft4.num_qubits) # 4
 print(qft4.depth()) # depth of circuit
 iqft4 = QFT(4).inverse() # IQFT
 
-# ■■ EfficientSU2 (most common VQE ansatz) ■■■■■■■■■■■■■■■■
+## ■■ EfficientSU2 (most common VQE ansatz) ■■■■■■■■■■■■■■■■
 
 ansatz = EfficientSU2(
 num_qubits=4,
@@ -786,9 +786,9 @@ skip_final_rotation_layer=False
 )
 print(f'Parameters: {ansatz.num_parameters}') # 4*(3+1)*2 = 32
 
-# ■■ TwoLocal ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ TwoLocal ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-# More flexible than EfficientSU2
+## More flexible than EfficientSU2
 
 two_local = TwoLocal(
 num_qubits=4,
@@ -802,21 +802,21 @@ reps=2,
 parameter_prefix='theta'
 )
 
-# ■■ RealAmplitudes ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ RealAmplitudes ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-# Special case: only real amplitudes, no imaginary parts
+## Special case: only real amplitudes, no imaginary parts
 
-# Good for problems with real-valued ground states (e.g. some chemistry)
+## Good for problems with real-valued ground states (e.g. some chemistry)
 
 ra = RealAmplitudes(num_qubits=3, reps=2)
 
-# ■■ PhaseEstimation ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ PhaseEstimation ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 from qiskit.circuit.library import UnitaryGate
 
-# Estimate phase of eigenvalue of a unitary
+## Estimate phase of eigenvalue of a unitary
 
-# U|psi> = e^(2*pi*i*phi)|psi> -- estimate phi
+## U|psi> = e^(2*pi*i*phi)|psi> -- estimate phi
 
 U = UnitaryGate(np.array([[1,0],[0,np.exp(2j*np.pi*0.125)]]))
 pe = PhaseEstimation(num_evaluation_qubits=3, unitary=U)
@@ -832,11 +832,11 @@ Advanced Transpilation – Custom PassManagers
 from qiskit.transpiler import PassManager, CouplingMap, Layout
 from qiskit.transpiler.passes import (
 
-# Analysis passes
+## Analysis passes
 
 CheckMap, CheckGateDirection, Depth,
 
-# Transformation passes
+## Transformation passes
 
 UnrollCustomDefinitions, BasisTranslator,
 TrivialLayout, DenseLayout, SabreLayout,
@@ -850,9 +850,9 @@ from qiskit.transpiler.passes.synthesis import UnrollToBasis
 from qiskit.circuit.equivalence_library import SessionEquivalenceLibrary
 from qiskit import QuantumCircuit
 
-# ■■ Custom PassManager for IBM backend ■■■■■■■■■■■■■■■■■■■■■
+## ■■ Custom PassManager for IBM backend ■■■■■■■■■■■■■■■■■■■■■
 
-# Replicates optimization_level=3 with manual control
+## Replicates optimization_level=3 with manual control
 
 backend = service.backend('ibm_brisbane')
 coupling_map = CouplingMap(backend.coupling_map)
@@ -860,19 +860,19 @@ basis_gates = backend.basis_gates # ['cx','id','rz','sx','x','measure']
 qc = QuantumCircuit(4)
 qc.h([0,1,2,3]); qc.cx(0,2); qc.cx(1,3); qc.cx(2,3); qc.measure_all()
 
-# Stage 1: Layout (qubit mapping)
+## Stage 1: Layout (qubit mapping)
 
 layout_pm = PassManager([
 SabreLayout(coupling_map, max_iterations=4), # best layout heuristic
 ])
 
-# Stage 2: Routing (SWAP insertion)
+## Stage 2: Routing (SWAP insertion)
 
 routing_pm = PassManager([
 SabreSwap(coupling_map, heuristic='decay'), # best routing heuristic
 ])
 
-# Stage 3: Translation to basis gates
+## Stage 3: Translation to basis gates
 
 translation_pm = PassManager([
 UnrollCustomDefinitions(SessionEquivalenceLibrary, basis_gates),
@@ -881,7 +881,7 @@ BasisTranslator(SessionEquivalenceLibrary, basis_gates),
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
 
-# Stage 4: Optimisation
+## Stage 4: Optimisation
 
 optimisation_pm = PassManager([
 Optimize1qGatesDecomposition(basis=basis_gates),
@@ -892,7 +892,7 @@ RemoveResetInZeroState(),
 RemoveDiagonalGatesBeforeMeasure(),
 ])
 
-# Run all stages
+## Run all stages
 
 tqc = layout_pm.run(qc)
 tqc = routing_pm.run(tqc)
@@ -902,7 +902,7 @@ print(f'Original depth: {qc.depth()}')
 print(f'Transpiled depth: {tqc.depth()}')
 print(f'SWAP gates added: {tqc.count_ops().get("swap", 0)}')
 
-# ■■ StagedPassManager (Qiskit v1 recommended approach) ■■
+## ■■ StagedPassManager (Qiskit v1 recommended approach) ■■
 
 from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
 pm = generate_preset_pass_manager(
@@ -929,48 +929,48 @@ random_statevector, random_unitary
 )
 from qiskit import QuantumCircuit
 
-# ■■ State fidelity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ State fidelity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 qc_ideal = QuantumCircuit(2)
 qc_ideal.h(0); qc_ideal.cx(0,1)
 sv_ideal = Statevector(qc_ideal)
 
-# Slightly noisy state (manually perturbed)
+## Slightly noisy state (manually perturbed)
 
 sv_noisy = Statevector([0.71, 0, 0, 0.69+0.05j])
 sv_noisy = sv_noisy / sv_noisy.norm()
 fidelity = state_fidelity(sv_ideal, sv_noisy)
 print(f'State fidelity: {fidelity:.4f}') # 1.0 = perfect
 
-# ■■ Density matrix and purity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Density matrix and purity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 dm = DensityMatrix(qc_ideal)
 print(f'Purity: {dm.purity():.4f}') # 1.0 = pure state
 print(f'Trace: {dm.trace():.4f}') # always 1.0
 
-# Mixed state example
+## Mixed state example
 
 dm_mixed = DensityMatrix.from_label('mixed') # maximally mixed
 print(f'Mixed purity: {dm_mixed.purity():.4f}') # 0.5 for 2-qubit
 
-# ■■ Von Neumann entropy ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Von Neumann entropy ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-# Measures entanglement: 0 = product state, 1 = maximally entangled
+## Measures entanglement: 0 = product state, 1 = maximally entangled
 
 bell_dm = DensityMatrix(qc_ideal)
 
-# Trace out qubit 1 to get reduced density matrix of qubit 0
+## Trace out qubit 1 to get reduced density matrix of qubit 0
 
 rho_0 = partial_trace(bell_dm, [1]) # trace out qubit 1
 S_vn = entropy(rho_0, base=2) # Von Neumann entropy
 print(f'Entanglement entropy: {S_vn:.4f}') # 1.0 for Bell state
 
-# ■■ Operator fidelity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ Operator fidelity ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 from qiskit.circuit.library import HGate
 ideal_H = Operator(HGate())
 
-# Simulate slightly noisy H gate
+## Simulate slightly noisy H gate
 
 noisy_H_mat = ideal_H.data + 0.01 * np.random.randn(2,2)
 
@@ -981,19 +981,19 @@ noisy_H = Operator(noisy_H_mat)
 gate_fid = average_gate_fidelity(noisy_H, ideal_H)
 print(f'Gate fidelity: {gate_fid:.4f}')
 
-# ■■ State Tomography ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+## ■■ State Tomography ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 from qiskit_experiments.library import StateTomography
 qc_prep = QuantumCircuit(2)
 qc_prep.h(0); qc_prep.cx(0, 1) # Bell state
 
-# StateTomography measures in all Pauli bases to reconstruct rho
+## StateTomography measures in all Pauli bases to reconstruct rho
 
 exp = StateTomography(qc_prep)
 
-# exp.run(backend).block_for_results() on real hardware
+## exp.run(backend).block_for_results() on real hardware
 
-# For simulator
+## For simulator
 
 sim_data = exp.run(AerSimulator(), shots=4096).block_for_results()
 rho = sim_data.analysis_results('state').value
@@ -1011,9 +1011,9 @@ As a Principal Architect, the Developer exam asks you to design and evaluate com
 systems — not just write code snippets.
 The Variational Hybrid Loop (Canonical Pattern)
 
-# This is the TEMPLATE for all variational quantum algorithms
+## This is the TEMPLATE for all variational quantum algorithms
 
-# VQE, QAOA, QNN training all follow this pattern
+## VQE, QAOA, QNN training all follow this pattern
 
 from qiskit_ibm_runtime import EstimatorV2 as Estimator, Session
 from qiskit.circuit.library import EfficientSU2
@@ -1042,7 +1042,7 @@ result = minimize(cost, x0, method=method,
 options={'maxiter': maxiter})
 return result
 
-# Usage
+## Usage
 
 ## Ibm Certified Developer – Quantum Computation | Deep-Dive Study Guide
 

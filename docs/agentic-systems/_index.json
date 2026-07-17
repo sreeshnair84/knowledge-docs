@@ -1,0 +1,1170 @@
+{
+ "section": "agentic-systems",
+ "page_count": 47,
+ "pages": [
+  {
+   "id": "agentic-systems/config/enterprise-agentic-ai-config-management-2026",
+   "title": "Enterprise Configuration & Parameter Management for Agentic AI Platforms on AWS",
+   "doc_type": "unknown",
+   "tags": [
+    "agentic-ai",
+    "configuration",
+    "aws",
+    "parameter-store",
+    "feature-flags",
+    "secrets-management"
+   ],
+   "word_count": 13267,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/config/index",
+   "title": "Configuration Management",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "config"
+   ],
+   "word_count": 31,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/harness/Harness_BestPractices_AntiPatterns_Roadmap",
+   "title": "Harness: Best Practices, Anti-Patterns & Roadmap",
+   "doc_type": "unknown",
+   "tags": [
+    "harness",
+    "ci-cd",
+    "best-practices",
+    "anti-patterns",
+    "devops"
+   ],
+   "word_count": 1485,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/harness/Harness_Engineering_AI_Agents_and_Vendor_Landscape",
+   "title": "Harness: Engineering AI Agents & Vendor Landscape",
+   "doc_type": "unknown",
+   "tags": [
+    "harness",
+    "ai-agents",
+    "vendor-landscape",
+    "agentic-ai"
+   ],
+   "word_count": 2387,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
+     "score": 0.57
+    },
+    {
+     "id": "agentic-systems/harness/index",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
+   "title": "Harness Engineering Research Report",
+   "doc_type": "unknown",
+   "tags": [
+    "harness",
+    "engineering",
+    "research",
+    "ci-cd"
+   ],
+   "word_count": 2785,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_AI_Agents_and_Vendor_Landscape",
+     "score": 0.57
+    },
+    {
+     "id": "agentic-systems/harness/index",
+     "score": 0.39
+    },
+    {
+     "id": "agentic-systems/harness/Harness_Security_SupplyChain_Observability",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/harness/Harness_Interview_Question_Bank",
+   "title": "Harness Interview Question Bank",
+   "doc_type": "unknown",
+   "tags": [
+    "harness",
+    "interview-prep",
+    "ci-cd",
+    "devops"
+   ],
+   "word_count": 1381,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/harness/Harness_Security_SupplyChain_Observability",
+   "title": "Harness: Security, Supply Chain & Observability",
+   "doc_type": "unknown",
+   "tags": [
+    "harness",
+    "security",
+    "supply-chain",
+    "observability",
+    "devops"
+   ],
+   "word_count": 1090,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/harness/index",
+     "score": 0.39
+    },
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/harness/index",
+   "title": "Harness \u2014 Agentic AI Engineering",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "harness"
+   ],
+   "word_count": 98,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_AI_Agents_and_Vendor_Landscape",
+     "score": 0.42
+    },
+    {
+     "id": "agentic-systems/harness/Harness_Engineering_Research_Report",
+     "score": 0.39
+    },
+    {
+     "id": "agentic-systems/harness/Harness_Security_SupplyChain_Observability",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/index",
+   "title": "Agentic AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems"
+   ],
+   "word_count": 197,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report",
+   "title": "AI Memory Agent Innovations Research Report",
+   "doc_type": "unknown",
+   "tags": [
+    "agentic-ai",
+    "memory",
+    "ai-agents",
+    "research"
+   ],
+   "word_count": 4604,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-foundations/AI_Assistant_Architecture_Research_Report",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
+     "score": 0.37
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/memory/index",
+   "title": "Agent Memory",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "memory"
+   ],
+   "word_count": 66,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
+     "score": 0.38
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part08_Memory_Governance",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026",
+   "title": "Enterprise PromptOps: Prompt Lifecycle Management for AWS AgentCore Runtime",
+   "doc_type": "unknown",
+   "tags": [
+    "agentic-ai",
+    "promptops",
+    "aws",
+    "agentcore",
+    "prompt-lifecycle"
+   ],
+   "word_count": 11267,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/genaiaf-prompt-lifecycle-hotswap-research-2026",
+     "score": 0.58
+    },
+    {
+     "id": "agentic-systems/platform/enterprise-agentic-ai-asset-management-2026",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-systems/config/enterprise-agentic-ai-config-management-2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/MultiTenantAgentPlatform_Architecture",
+   "title": "Multi-Tenant Agent Platform Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "agentic-ai",
+    "multi-tenant",
+    "platform-architecture",
+    "aws"
+   ],
+   "word_count": 3897,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.45
+    },
+    {
+     "id": "agentic-systems/platform/agentic_platform_bestpractices",
+     "score": 0.45
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Native_Standards_First_Agentic_Architecture",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/agentic_platform_bestpractices",
+   "title": "Enterprise Agentic Platform Best Practices",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "platform",
+    "best-practices",
+    "agents-sdk",
+    "agentcore",
+    "mcp",
+    "multitenancy",
+    "observability"
+   ],
+   "word_count": 7154,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/MultiTenantAgentPlatform_Architecture",
+     "score": 0.45
+    },
+    {
+     "id": "cloud-platforms/aws/AWS_Strands_AgentCore_Builder_Journey_Kit",
+     "score": 0.4
+    },
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/ai-msf-requirements-runbook",
+   "title": "AI-MSF PoC \u2014 Shared Requirements & Agent Runbook",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "platform",
+    "microservice",
+    "runbook",
+    "requirements"
+   ],
+   "word_count": 2801,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/ai-platform-factory-runbook-v2",
+     "score": 0.64
+    },
+    {
+     "id": "coding-tools/github-copilot/GitHub_Copilot_Enterprise_Research_2026",
+     "score": 0.36
+    },
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/ai-platform-factory-runbook-v2",
+   "title": "AI Platform Factory Runbook v2",
+   "doc_type": "unknown",
+   "tags": [
+    "agentic-ai",
+    "platform",
+    "runbook",
+    "devops",
+    "aws"
+   ],
+   "word_count": 4881,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/ai-msf-requirements-runbook",
+     "score": 0.64
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/enterprise-agentic-ai-asset-management-2026",
+   "title": "Enterprise Agentic AI Asset Management 2026",
+   "doc_type": "research-report",
+   "tags": [
+    "agentic-systems",
+    "platform",
+    "asset-management",
+    "governance",
+    "enterprise"
+   ],
+   "word_count": 7805,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026",
+     "score": 0.37
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.37
+    },
+    {
+     "id": "ai-foundations/agentic_ai_landing_zone_architecture",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/genaiaf-prompt-lifecycle-hotswap-research-2026",
+   "title": "GENAIAF-559: Prompt Lifecycle, Versioning & Hot-Swap Research 2026",
+   "doc_type": "research-report",
+   "tags": [
+    "agentic-systems",
+    "platform",
+    "prompt-management",
+    "aws-agentcore",
+    "observability"
+   ],
+   "word_count": 6216,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/platform/Enterprise_PromptOps_AWS_AgentCore_2026",
+     "score": 0.58
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/platform/index",
+   "title": "Agentic AI Platform",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "platform"
+   ],
+   "word_count": 64,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+   "title": "Agent Skills for AI Coding Assistants \u2014 Executive Summary & Reference Architecture",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 2168,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
+     "score": 0.61
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.6
+    },
+    {
+     "id": "agentic-systems/skill/coding/index",
+     "score": 0.6
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+   "title": "Agent Skills & Skill Registries \u2014 Complete Playbook 2026",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 4783,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.59
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.56
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.55
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+   "title": "Foundations: What Is a Coding Skill?",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1579,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.65
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.64
+    },
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.57
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/02-skill-anatomy-and-metadata-schema",
+   "title": "Skill Anatomy & Metadata Schema",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1209,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.49
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.48
+    },
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/03-discovery-and-execution-lifecycle",
+   "title": "Skill Discovery & Execution Lifecycle",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1148,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.44
+    },
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.44
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/04-skills-tools-mcp-relationship",
+   "title": "Skills vs. MCP & the Full Responsibility Stack",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 972,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.42
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.41
+    },
+    {
+     "id": "agentic-systems/skill/coding/05-tool-definitions-and-instructions-engineering",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/05-tool-definitions-and-instructions-engineering",
+   "title": "Tool Definitions & Instructions Engineering",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1420,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.51
+    },
+    {
+     "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
+     "score": 0.49
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/06-repository-context-engineering",
+   "title": "Repository Context Engineering",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 973,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/skill/coding/07-vscode-devcontainers-integration",
+   "title": "VS Code & Dev Containers Integration",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1252,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/coding/04-skills-tools-mcp-relationship",
+     "score": 0.3
+    },
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/08-mcp-integration-and-memory",
+   "title": "MCP Integration & Memory",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1144,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.38
+    },
+    {
+     "id": "workflow-orchestration/10-mcp-impact",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-systems/skill/coding/04-skills-tools-mcp-relationship",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/09-multi-agent-and-observability",
+   "title": "Multi-Agent Skills & Observability",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1139,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/skill/coding/10-governance-and-security",
+   "title": "Governance & Security",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1626,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/11-evaluation-reusability-deduplication",
+   "title": "Evaluation, Reusability & Deduplication",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1335,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
+     "score": 0.47
+    },
+    {
+     "id": "agentic-systems/skill/coding/05-tool-definitions-and-instructions-engineering",
+     "score": 0.44
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns",
+   "title": "Enterprise Workflows & Comparative Analysis",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 1681,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.61
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.54
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.53
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/coding/index",
+   "title": "Coding Assistant Skills Research",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "coding-tools",
+    "research"
+   ],
+   "word_count": 711,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.62
+    },
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.6
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/index",
+     "score": 0.53
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+   "title": "Foundations: What Is an Agent Skill?",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1563,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.64
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
+     "score": 0.58
+    },
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.56
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/02-skill-anatomy-and-metadata-schema",
+   "title": "Skill Anatomy & Metadata Schema",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 146,
+   "last_reviewed": "2026-07-12",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/index",
+     "score": 0.33
+    },
+    {
+     "id": "agentic-systems/skill/coding/index",
+     "score": 0.31
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/03-execution-lifecycle-and-tracing",
+   "title": "Skill Execution Lifecycle & Tracing",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 963,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
+     "score": 0.39
+    },
+    {
+     "id": "agentic-systems/skill/coding/03-discovery-and-execution-lifecycle",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/04-skills-tools-mcp-a2a-relationship",
+   "title": "Skills, Tools, MCP & A2A Relationship",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1036,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.42
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/05-tool-definition-best-practices",
+   "title": "Tool Definition Best Practices",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1254,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/06-registry-discovery-and-deduplication",
+   "title": "Registry, Discovery & Deduplication",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1140,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
+     "score": 0.43
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.34
+    },
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
+   "title": "Skill Composition & Instructions Engineering",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1403,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.58
+    },
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.52
+    },
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/08-observability-and-evaluation",
+   "title": "Observability & Evaluation",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1251,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/09-security-architecture",
+   "title": "Security Architecture",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1424,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.36
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/10-governance-and-lifecycle",
+   "title": "Governance & Lifecycle",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 1043,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
+   "title": "Architecture Patterns, Anti-Patterns & Case Studies",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 2226,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.45
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.44
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/06-registry-discovery-and-deduplication",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/enterprise/index",
+   "title": "Enterprise Agent Skills Research",
+   "doc_type": "multi-part-series",
+   "tags": [
+    "agentic-systems",
+    "skill",
+    "enterprise",
+    "research"
+   ],
+   "word_count": 606,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/coding/index",
+     "score": 0.53
+    },
+    {
+     "id": "agentic-systems/skill/index",
+     "score": 0.5
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "agentic-systems/skill/index",
+   "title": "Agent Skills",
+   "doc_type": "guide",
+   "tags": [
+    "agentic-systems",
+    "skill"
+   ],
+   "word_count": 1578,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill",
+     "score": 0.65
+    },
+    {
+     "id": "agentic-systems/skill/coding/index",
+     "score": 0.62
+    },
+    {
+     "id": "agentic-systems/skill/00-executive-summary-and-reference-architecture",
+     "score": 0.6
+    }
+   ]
+  }
+ ]
+}

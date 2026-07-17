@@ -17,7 +17,7 @@ covers_version: \"as of 2026-07-10\"
 
 ---
 
-# PART 1 — Git Foundations
+## PART 1 — Git Foundations
 
 ## Core Concepts at a Glance
 
@@ -72,7 +72,7 @@ graph LR
 
 ---
 
-# PART 2 — Git CLI Complete Cheat Sheet
+## PART 2 — Git CLI Complete Cheat Sheet
 
 ## Repository Management
 
@@ -143,7 +143,7 @@ graph LR
 
 ---
 
-# PART 3 — Git Internals
+## PART 3 — Git Internals
 
 ## How Git Stores Data
 
@@ -185,7 +185,7 @@ graph TD
 
 ---
 
-# PART 4 — Git Workflow Strategies
+## PART 4 — Git Workflow Strategies
 
 ## Comparison Matrix
 
@@ -225,7 +225,7 @@ graph TD
 
 ---
 
-# PART 5 — GitHub Platform Deep Dive
+## PART 5 — GitHub Platform Deep Dive
 
 ## Core Collaboration Features
 
@@ -280,7 +280,7 @@ graph TD
 
 ---
 
-# PART 6 — GitHub Wiki
+## PART 6 — GitHub Wiki
 
 | Aspect | Detail |
 | --- | --- |
@@ -303,7 +303,7 @@ graph TD
 
 ---
 
-# PART 7 — GitHub Pages
+## PART 7 — GitHub Pages
 
 | Aspect | Detail |
 | --- | --- |
@@ -354,7 +354,7 @@ jobs:
 
 ---
 
-# PART 8 — GitHub Projects
+## PART 8 — GitHub Projects
 
 | Feature | Description | Use Case |
 | --- | --- | --- |
@@ -389,7 +389,7 @@ jobs:
 
 ---
 
-# PART 9 — GitHub Packages
+## PART 9 — GitHub Packages
 
 | Registry Type | Package Format | Typical Command |
 | --- | --- | --- |
@@ -408,7 +408,7 @@ jobs:
 
 ---
 
-# PART 10 — GitHub Releases
+## PART 10 — GitHub Releases
 
 | Concept | Description |
 | --- | --- |
@@ -434,7 +434,7 @@ jobs:
 
 ---
 
-# PART 11 — GitHub Codespaces
+## PART 11 — GitHub Codespaces
 
 | Aspect | Detail |
 | --- | --- |
@@ -461,7 +461,7 @@ jobs:
 
 ---
 
-# PART 11b — Dev Containers & Codespaces Deep Dive
+## PART 11b — Dev Containers & Codespaces Deep Dive
 
 ## Core Concept
 
@@ -549,7 +549,7 @@ Edit `devcontainer.json` directly, or in VS Code: Command Palette → "Codespace
 
 ---
 
-# PART 12 — GitHub CLI (`gh`)
+## PART 12 — GitHub CLI (`gh`)
 
 | Aspect | Detail |
 | --- | --- |
@@ -586,7 +586,7 @@ gh run watch
 
 ---
 
-# PART 13 — GitHub Actions Complete Guide
+## PART 13 — GitHub Actions Complete Guide
 
 ## Core Concept Hierarchy
 
@@ -632,7 +632,7 @@ graph TD
 
 ---
 
-# PART 14 — Most Common GitHub Actions
+## PART 14 — Most Common GitHub Actions
 
 | Action | Purpose | Popularity | Enterprise Usage | Alternatives |
 | --- | --- | --- | --- | --- |
@@ -653,7 +653,7 @@ graph TD
 
 ---
 
-# PART 14b — AI Agent Platforms on GitHub (2026)
+## PART 14b — AI Agent Platforms on GitHub (2026)
 
 > Landscape moves fast — verify current state via GitHub docs before relying on specifics below.
 
@@ -725,7 +725,7 @@ npm install && npm test  # validate locally
 
 ---
 
-# PART 15 — Python Engineering Toolchain
+## PART 15 — Python Engineering Toolchain
 
 ## Dependency Management
 
@@ -824,7 +824,7 @@ coverage html   # generate browsable report
 
 ---
 
-# PART 16 — Software Quality Engineering
+## PART 16 — Software Quality Engineering
 
 | Concept | Description | Tooling |
 | --- | --- | --- |
@@ -855,7 +855,7 @@ graph TD
 
 ---
 
-# PART 17 — SonarQube Deep Dive
+## PART 17 — SonarQube Deep Dive
 
 | Aspect | Detail |
 | --- | --- |
@@ -896,7 +896,7 @@ graph TD
 
 ---
 
-# PART 18 — DevSecOps Toolchain
+## PART 18 — DevSecOps Toolchain
 
 ## Toolchain by Category
 
@@ -950,7 +950,7 @@ graph TD
 
 ---
 
-# PART 19 — Supply Chain Security
+## PART 19 — Supply Chain Security
 
 | Concept | Description | Tooling |
 | --- | --- | --- |
@@ -982,7 +982,7 @@ cosign verify --key cosign.pub myorg/myapp:latest
 
 ---
 
-# PART 20 — GitHub Advanced Security (GHAS)
+## PART 20 — GitHub Advanced Security (GHAS)
 
 | Feature | Description | Cost/Licensing Note |
 | --- | --- | --- |
@@ -1002,7 +1002,7 @@ cosign verify --key cosign.pub myorg/myapp:latest
 
 ---
 
-# PART 21 — Identity, Governance & Compliance
+## PART 21 — Identity, Governance & Compliance
 
 | Concept | Description | Enterprise Pattern |
 | --- | --- | --- |
@@ -1033,7 +1033,7 @@ graph TD
 
 ---
 
-# PART 22 — OIDC and Secretless Authentication
+## PART 22 — OIDC and Secretless Authentication
 
 ## Traditional Secrets vs OIDC
 
@@ -1088,7 +1088,7 @@ steps:
 
 ---
 
-# PART 23 — GitHub Copilot and AI Development (see also Part 14b)
+## PART 23 — GitHub Copilot and AI Development (see also Part 14b)
 
 > Core Agent HQ / Copilot / Spark coverage lives in **Part 14b**. This section covers the remaining comparison/landscape items.
 
@@ -1119,7 +1119,7 @@ steps:
 
 ---
 
-# PART 24 — AI Security
+## PART 24 — AI Security
 
 ## Risk Categories
 
@@ -1161,7 +1161,7 @@ graph TD
 
 ---
 
-# PART 25 — Complete Production GitHub Actions Workflows
+## PART 25 — Complete Production GitHub Actions Workflows
 
 ## Python CI (Ruff, Black, MyPy, Pytest, Coverage)
 
@@ -1395,7 +1395,7 @@ jobs:
 
 ---
 
-# PART 26 — Enterprise GitHub Governance
+## PART 26 — Enterprise GitHub Governance
 
 > Governance at scale means codified, automated rules — not manual review checklists. Everything in this section should be configured as code and enforced via the GitHub API or Terraform provider, not clicked through the UI.
 
@@ -1561,7 +1561,7 @@ ruleset:
 
 ---
 
-# PART 27 — GitHub Advanced Security (GHAS) — Deep Dive
+## PART 27 — GitHub Advanced Security (GHAS) — Deep Dive
 
 > GHAS is GitHub's security layer for private repos. Core features: CodeQL (SAST), Secret Scanning + Push Protection, Dependabot, and Dependency Review. This part expands the overview in Part 20 with configuration, policy, and workflow integration.
 
@@ -1766,7 +1766,7 @@ jobs:
 
 ---
 
-# PART 28 — GitHub Copilot Enterprise at Scale
+## PART 28 — GitHub Copilot Enterprise at Scale
 
 > This part covers the operational and governance layer for running Copilot across a large engineering organization. For deep feature coverage, see the [GitHub Copilot Zero to Hero guide](github-copilot-zero-to-hero.md).
 
@@ -1934,7 +1934,7 @@ MCP (Model Context Protocol) connects Copilot to external tools. Enterprise admi
 
 ---
 
-# PART 29 — AI-Assisted Platform Engineering
+## PART 29 — AI-Assisted Platform Engineering
 
 > Using Copilot agent mode, the Copilot coding agent, and AI tooling to accelerate platform engineering workflows: IaC generation, runbook automation, incident triage, and self-service infrastructure.
 
@@ -2117,7 +2117,7 @@ Assign Copilot as a reviewer on Terraform/CloudFormation/Kubernetes PRs:
 
 ---
 
-# PART 30 — Measuring Platform Engineering Success
+## PART 30 — Measuring Platform Engineering Success
 
 > What gets measured gets improved. This part covers DORA metrics, AI productivity metrics, and AI Credits ROI — the three measurement pillars for a modern GitHub-based platform engineering team.
 

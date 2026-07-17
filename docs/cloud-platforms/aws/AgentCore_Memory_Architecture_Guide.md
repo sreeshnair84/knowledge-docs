@@ -111,7 +111,7 @@ AgentCore has moved extremely fast since its announcement. This section captures
 |**May 2026**|**Strictly Consistent Metadata**|New: STRICTLY_CONSISTENT extraction type on LTM metadata. Up to 3<br>keys per strategy. Ensures metadata passes through LLM extraction<br>unchanged. Supports semantic, preference, and episodic strategies.|
 |**Jun 2026**|**AWS Lambda MicroVMs**|New compute primitive: dedicated Firecracker VMs per session,<br>snapshot-based startup, suspend/resume state, up to 16 vCPU / 32 GB RAM /<br>32 GB disk. Complements AgentCore Runtime. Available us-east-1, eu-west-1,<br>ap-northeast-1.|
 
-# **Strictly Consistent Metadata (May 2026) — Key Impact:** Previously, all metadata on long-term memory records was inferred by the LLM during extraction, meaning values could drift or be misclassified. Now, setting extraction_type=STRICTLY_CONSISTENT guarantees the exact value you supply arrives on the record. This is critical for tenant isolation, session scoping, and multi-agent routing in banking contexts
+## **Strictly Consistent Metadata (May 2026) — Key Impact:** Previously, all metadata on long-term memory records was inferred by the LLM during extraction, meaning values could drift or be misclassified. Now, setting extraction_type=STRICTLY_CONSISTENT guarantees the exact value you supply arrives on the record. This is critical for tenant isolation, session scoping, and multi-agent routing in banking contexts
 
 **Page 3**
 
@@ -232,7 +232,7 @@ Short-term memory stores raw conversation events as an ordered, append-only log.
 |EPISODIC|Episodes with context and<br>outcomes|Pattern learning,<br>adaptation|Supported|Legit interest + audit|
 |SELF-MANAGED|Anything via custom Lambda<br>pipeline|Full control,<br>domain-specific|N/A — operator<br>controls fully|Operator owns fully|
 
-# **Strictly Consistent Metadata (NEW May 2026):** Set extraction_type='STRICTLY_CONSISTENT' on a metadata key to guarantee it passes through LLM extraction unchanged. Critical for: tenant_id isolation (never let LLM infer it), session_id scoping, conversation_thread linking, and compliance-grade record tagging. Up to 3 keys per strategy
+## **Strictly Consistent Metadata (NEW May 2026):** Set extraction_type='STRICTLY_CONSISTENT' on a metadata key to guarantee it passes through LLM extraction unchanged. Critical for: tenant_id isolation (never let LLM infer it), session_id scoping, conversation_thread linking, and compliance-grade record tagging. Up to 3 keys per strategy
 
 #### 4.3 Episodic Memory
 
@@ -289,7 +289,7 @@ The conversation history sidebar is one of the most used features in consumer AI
 
 Key architectural insight from Claude Code's implementation: **session state is written to disk on every event, not on exit** — so a crash loses nothing. Sessions are stored as JSONL files (one event per line) with unique session IDs. The sidebar is built entirely from file reads; no running agent is required. This is the pattern to replicate on AWS.
 
-# **Claude's memory feature (2025):** Chat search uses RAG over conversation history — past conversations are indexed, and the agent performs a tool call to retrieve relevant context from prior sessions. Memory is updated within 24 hours of conversation changes. Users can view, edit, import, and export memories from Settings > Capabilities
+## **Claude's memory feature (2025):** Chat search uses RAG over conversation history — past conversations are indexed, and the agent performs a tool call to retrieve relevant context from prior sessions. Memory is updated within 24 hours of conversation changes. Users can view, edit, import, and export memories from Settings > Capabilities
 
 #### 5.2 The Three Layers of Session State
 
@@ -371,7 +371,7 @@ token count and trigger compaction before the model call.
 
 I **This is the critical architectural scenario.** The session_id still exists in DynamoDB (stm_status='EXPIRED'). The user sees the conversation in their sidebar. They click it. What happens? This is where the LTM extraction investment pays dividends: the agent reconstructs meaningful context from extracted knowledge even without the raw transcript.
 
-# **STRICTLY_CONSISTENT metadata is the key enabler here (May 2026):** Tag every LTM record with session_id as a strictly consistent key when writing events. This guarantees that RetrieveMemoryRecords?filter={session_id=X} returns exactly the records from that session. Without this, the LLM might infer or miss session IDs during extraction, making session-scoped reconstruction unreliable
+## **STRICTLY_CONSISTENT metadata is the key enabler here (May 2026):** Tag every LTM record with session_id as a strictly consistent key when writing events. This guarantees that RetrieveMemoryRecords?filter={session_id=X} returns exactly the records from that session. Without this, the LLM might infer or miss session IDs during extraction, making session-scoped reconstruction unreliable
 
 ###### Reconstruction Context Block — Example System Prompt Injection:
 

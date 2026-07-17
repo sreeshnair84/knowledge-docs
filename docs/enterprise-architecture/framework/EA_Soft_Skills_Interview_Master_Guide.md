@@ -274,7 +274,7 @@ I Not providing a structured path to reduce uncertainty.
 
 SECTION 02
 
-# EXECUTIVE COMMUNICATION
+## EXECUTIVE COMMUNICATION
 
 Panel: CFO · CEO · Board Member
 
@@ -376,7 +376,7 @@ I Not quantifying the business impact before the conversation.
 
 SECTION 03
 
-# INFLUENCE WITHOUT AUTHORITY
+## INFLUENCE WITHOUT AUTHORITY
 
 Panel: Chief Enterprise Architect · VP Engineering · Distinguished Engineer
 
@@ -476,7 +476,7 @@ I Failing to distinguish between high-risk and low-risk standards deviations.
 
 SECTION 05
 
-# STRATEGIC THINKING
+## STRATEGIC THINKING
 
 Panel: CEO · Board Member · Chief Transformation Officer
 
@@ -576,7 +576,7 @@ I Underestimating the organisational and cultural architecture dimensions.
 
 SECTION 08
 
-# CHANGE LEADERSHIP
+## CHANGE LEADERSHIP
 
 Panel: Chief Transformation Officer · COO · CEO
 
@@ -680,7 +680,7 @@ I Failing to involve engineering teams in redesigning the approach.
 
 SECTION 11
 
-# EMOTIONAL INTELLIGENCE
+## EMOTIONAL INTELLIGENCE
 
 Panel: Executive Leadership Coach · Organisational Psychologist
 
@@ -778,7 +778,7 @@ I Accepting without engaging—this signals that challenge is unexamined.
 
 SECTION 16
 
-# DISTINGUISHED ARCHITECT ROUND
+## DISTINGUISHED ARCHITECT ROUND
 
 Panel: Distinguished Engineer · CTO · Board Member
 
@@ -972,7 +972,7 @@ I Believing that clearer policies produce better behaviour.
 
 SECTION 17
 
-# CTO READINESS
+## CTO READINESS
 
 Panel: CEO · Board Member · Executive Leadership Coach
 

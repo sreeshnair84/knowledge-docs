@@ -43,7 +43,7 @@ The road ahead: 2026–2028 landscape shifts
 
 **SECTION 1: The State of the Sprint — What's Breaking Down**
 
-# Are 2-Week & 4-Week Sprints Still Relevant?
+## Are 2-Week & 4-Week Sprints Still Relevant?
 
 The short answer: yes and no — and the nuance matters enormously. Sprints are not dead. But their purpose, scope, and governance role must fundamentally shift. Here is what the evidence shows.
 
@@ -89,7 +89,7 @@ The emerging consensus from SAFe practitioners, AWS, and Agile researchers is th
 
 **SECTION 2: From Copilots to Agentic AI — Understanding the Shift**
 
-# The Copilot → Agentic AI Transition
+## The Copilot → Agentic AI Transition
 
 Understanding where we are in the AI adoption curve is essential before redesigning any delivery methodology. Organizations are at very different points on this journey, and strategy must be calibrated accordingly.
 
@@ -127,7 +127,7 @@ Multiple organizations are now experimenting with "Agentic Delivery Lifecycles" 
 
 **SECTION 3: KPIs & ROI — What's Changing**
 
-# The New KPI & ROI Landscape
+## The New KPI & ROI Landscape
 
 The metrics used to evaluate agile delivery effectiveness were designed for human-speed software development. Many are now obsolete, misleading, or actively counterproductive in an AI-augmented environment. Here is what is changing and what organizations should track instead.
 
@@ -184,7 +184,7 @@ Scaled agentic AI — not just copilots. The ROI gap between copilot users and a
 
 **SECTION 4: How Agile Strategy Must Evolve**
 
-# The Evolved Agile Strategy for 2026
+## The Evolved Agile Strategy for 2026
 
 Agile is not dead. But it is being fundamentally restructured. The organizations winning in this environment are moving from rigid, ceremony-heavy Scrum implementations to adaptive, intelligence-infused delivery systems. Here is the blueprint.
 
@@ -236,7 +236,7 @@ Predictive risk models surface sprint failure signals 3-5 days early
 
 **SECTION 5: Prerequisites for Transformation**
 
-# Prerequisites for AI-Augmented Agile Transformation
+## Prerequisites for AI-Augmented Agile Transformation
 
 McKinsey's data is clear: 73% of product development teams are not using AI agents at all — not because agents don't exist, but because the organizational prerequisites for safe, effective agent deployment are missing. This is the foundation that must be built first.
 
@@ -295,7 +295,7 @@ Junior Developers: focus on intent specification, AI output review, and domain-s
 
 **SECTION 6: Big Win Strategies**
 
-# Big Win Strategies for 2026
+## Big Win Strategies for 2026
 
 These are the highest-leverage plays organizations are executing right now to capture outsized value from AI-augmented delivery. Each is validated by real-world deployments.
 
@@ -350,7 +350,7 @@ Regular 'AI Hack Weeks' where teams experiment with new agent configurations
 
 **SECTION 7: What Leading Consultancies Are Strategizing**
 
-# The Consulting Landscape: What the Big Firms Are Recommending
+## The Consulting Landscape: What the Big Firms Are Recommending
 
 The $11 billion AI consulting market (2025) is growing at 26.49% CAGR. Here is what the leading firms are specifically strategizing for clients navigating agile transformation in the age of agentic AI.
 
@@ -434,7 +434,7 @@ Capgemini's Steve Jones made the most provocative argument in the current debate
 
 **SECTION 8: The Road Ahead — 2026–2028 Landscape**
 
-# The Road Ahead: 2026–2028
+## The Road Ahead: 2026–2028
 
 Understanding the near-term trajectory is essential for building a strategy that remains relevant. Here is where the landscape is heading based on current signals from Gartner, McKinsey, Anthropic, and frontier organizations.
 
@@ -467,7 +467,7 @@ Traditional agile ceremonies survive only in heavily regulated industries or for
 
 **SECTION 9: Action Playbook**
 
-# The 90-Day Action Playbook
+## The 90-Day Action Playbook
 
 Based on all research, here is the prioritized sequence for organizations beginning or accelerating their agile transformation for the agentic AI era.
 

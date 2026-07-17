@@ -1,0 +1,2288 @@
+{
+ "section": "enterprise-architecture",
+ "page_count": 97,
+ "pages": [
+  {
+   "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+   "title": "AI FinOps \u2014 Cost Management and Token Economics for Enterprise AI",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "tokenops",
+    "llm-cost",
+    "token-budget",
+    "model-routing",
+    "cost-optimization",
+    "enterprise-ai"
+   ],
+   "word_count": 2268,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
+     "score": 0.53
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-budget-governance",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-unit-economics-kpis",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/AI-Value-Stream-Mapping",
+   "title": "AI Value Stream Mapping \u2014 Lean Delivery for Enterprise AI Programs",
+   "doc_type": "guide",
+   "tags": [
+    "value-stream-mapping",
+    "lean",
+    "ai-delivery",
+    "vsm",
+    "agentops",
+    "waste-elimination",
+    "flow-efficiency"
+   ],
+   "word_count": 1371,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ART-Framework-Agentic-AI-Execution",
+   "title": "A.R.T. \u2014 Agility \u00b7 Risk \u00b7 Tenacity: Enterprise Execution Framework for Agentic AI",
+   "doc_type": "guide",
+   "tags": [
+    "art-framework",
+    "enterprise-ai",
+    "agility",
+    "risk",
+    "tenacity",
+    "maturity-model",
+    "agentic-ai",
+    "execution-framework",
+    "governance"
+   ],
+   "word_count": 5906,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.31
+    },
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.31
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/AgentOps-Production-Guide",
+   "title": "AgentOps \u2014 Operational Discipline for Production AI Agents",
+   "doc_type": "guide",
+   "tags": [
+    "agentops",
+    "llmops",
+    "mlops",
+    "observability",
+    "production-ai",
+    "monitoring",
+    "tracing",
+    "langfuse",
+    "arize",
+    "phoenix"
+   ],
+   "word_count": 1423,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+   "title": "Enterprise-Scale A2A Ecosystem: Security, Governance & Architecture Guide",
+   "doc_type": "architecture-guide",
+   "tags": [
+    "a2a",
+    "enterprise-architecture",
+    "security",
+    "governance",
+    "identity",
+    "multi-agent"
+   ],
+   "word_count": 11939,
+   "last_reviewed": "2026-07-11",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.52
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.46
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agent-as-tool-composition",
+   "title": "Agent-as-Tool Composition Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "agent-composition",
+    "mcp",
+    "tool-design",
+    "patterns"
+   ],
+   "word_count": 2206,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+     "score": 0.35
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.33
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agent-communication-identity-gateway",
+   "title": "Agent Communication, Identity, Authorization & AI Gateway",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 2684,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.44
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/security/02-Identity-MCP-A2A-Security-Blueprint",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+   "title": "Enterprise Agent Interoperability & Orchestration Governance",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 2325,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/a2a/index",
+     "score": 0.5
+    },
+    {
+     "id": "ai-protocols/index",
+     "score": 0.45
+    },
+    {
+     "id": "ai-protocols/standards/index",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
+   "title": "Agent Memory & Planning Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 1996,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/AI_Agent_Systems_Interview_Guide",
+     "score": 0.41
+    },
+    {
+     "id": "agentic-systems/memory/index",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agent-reliability-engineering",
+   "title": "Agent Reliability Engineering (ARE)",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "reliability",
+    "sre",
+    "agents",
+    "are"
+   ],
+   "word_count": 4320,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance",
+     "score": 0.37
+    },
+    {
+     "id": "agentic-ui/reliability-engineering",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance",
+   "title": "Agentic AI Reliability, Observability & Governance Lifecycle",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 5396,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/reliability-engineering",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-reliability-engineering",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agentic-ai-security-guardrails",
+   "title": "Agentic AI Security Architecture & Multi-Layer Guardrails",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 4194,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agentic-ai-reliability-observability-governance",
+     "score": 0.37
+    },
+    {
+     "id": "ai-security-governance/security/01-Foundations-Reference-Architecture",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/agentic-ai-security-identity",
+   "title": "Agentic AI Security & Agent Identity",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 2746,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.44
+    },
+    {
+     "id": "cybersec-architect/05-agentic-ai-security",
+     "score": 0.44
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-budget-governance",
+   "title": "AI FinOps \u2014 Budget Governance, Quotas & Cost Guardrails",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "budget-governance",
+    "quota-management",
+    "cost-guardrails",
+    "circuit-breaker",
+    "spend-alerts",
+    "financial-controls"
+   ],
+   "word_count": 2384,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-capacity-forecasting",
+   "title": "AI FinOps \u2014 Capacity Planning & Cost Forecasting",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "capacity-planning",
+    "cost-forecasting",
+    "token-forecasting",
+    "gpu-capacity",
+    "demand-modeling",
+    "tco",
+    "roi",
+    "scenario-modeling"
+   ],
+   "word_count": 2800,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-multi-agent-cost-propagation",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.33
+    },
+    {
+     "id": "ea-masterclass/module-08-financial-literacy/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
+   "title": "AI FinOps \u2014 Cost Attribution, Chargeback & Showback",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "chargeback",
+    "showback",
+    "cost-attribution",
+    "tagging",
+    "financial-governance",
+    "tokenops",
+    "multi-tenant"
+   ],
+   "word_count": 1945,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
+     "score": 0.43
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-budget-governance",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-infrastructure-optimization",
+   "title": "AI FinOps \u2014 Infrastructure Cost Optimization (GPU, Kubernetes, Serverless)",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "gpu-optimization",
+    "mig",
+    "quantization",
+    "distillation",
+    "kubernetes-ai",
+    "serverless-ai",
+    "infrastructure-cost",
+    "right-sizing"
+   ],
+   "word_count": 2179,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/kubernetes/K8s_Handbook_Part11_AI_Infrastructure",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
+   "title": "AI FinOps Maturity Model",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "maturity-model",
+    "finops-foundation",
+    "crawl-walk-run",
+    "organizational-maturity",
+    "roadmap",
+    "adoption"
+   ],
+   "word_count": 2443,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.53
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-budget-governance",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-chargeback-attribution",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-multi-agent-cost-propagation",
+   "title": "Multi-Agent Cost Propagation \u2014 How Costs Accumulate Across Distributed AI Workflows",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "multi-agent",
+    "cost-propagation",
+    "agent-cost",
+    "orchestration",
+    "mcp",
+    "a2a",
+    "planner",
+    "supervisor",
+    "worker"
+   ],
+   "word_count": 2456,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-economics/ai-tokenomics-guide",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-rag-mcp-a2a-economics",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-rag-mcp-a2a-economics",
+   "title": "AI FinOps \u2014 RAG, MCP & A2A Economics",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "rag",
+    "mcp",
+    "a2a",
+    "vector-database",
+    "embedding-economics",
+    "retrieval-optimization",
+    "tool-cost",
+    "interoperability-cost"
+   ],
+   "word_count": 2838,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-multi-agent-cost-propagation",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-finops-unit-economics-kpis",
+   "title": "AI FinOps \u2014 Unit Economics, KPI Framework & Executive Dashboard",
+   "doc_type": "guide",
+   "tags": [
+    "ai-finops",
+    "unit-economics",
+    "kpi",
+    "executive-dashboard",
+    "roi",
+    "cost-per-outcome",
+    "business-value",
+    "ai-economics"
+   ],
+   "word_count": 2222,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.45
+    },
+    {
+     "id": "ai-economics/index",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-maturity-model",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+   "title": "AI Harness Architecture & Multi-Agent Orchestration",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 4225,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures",
+     "score": 0.46
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-communication-identity-gateway",
+     "score": 0.44
+    },
+    {
+     "id": "cloud-platforms/aws/agentcore_strands_deep_research_report",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/drift-detection-guide",
+   "title": "Drift Detection for Multi-Agent AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "drift-detection",
+    "observability",
+    "reliability",
+    "mlops"
+   ],
+   "word_count": 2905,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/end-to-end-traceability-guide",
+   "title": "End-to-End Traceability for Multi-Agent Systems",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "observability",
+    "traceability",
+    "opentelemetry",
+    "audit"
+   ],
+   "word_count": 2700,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures",
+   "title": "Enterprise Agent Reference Architectures, Platform Engineering & Checklists",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 2803,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.46
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-communication-identity-gateway",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+   "title": "Enterprise AI Architect \u2014 Foundations",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 7838,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy",
+     "score": 0.5
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.5
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.48
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns",
+   "title": "Enterprise AI Architecture Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture"
+   ],
+   "word_count": 5831,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.35
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026",
+   "title": "Enterprise AI Comparative Matrices & Decision Tools 2026",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "comparative-analysis",
+    "decision-tools",
+    "vendor-scorecard",
+    "technology-radar",
+    "maturity-model"
+   ],
+   "word_count": 2352,
+   "last_reviewed": "2026-07-12",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/gcp/hyperscaler-deep-dive-gcp",
+     "score": 0.36
+    },
+    {
+     "id": "cloud-platforms/aws/hyperscaler-deep-dive-aws",
+     "score": 0.35
+    },
+    {
+     "id": "ai-economics/foundation-model-companies-2026",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+   "title": "Enterprise AI Governance & Compliance",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 8805,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.55
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.51
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.49
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+   "title": "Enterprise AI Architect \u2014 Skills Assessment",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 9102,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.51
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.5
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-aiops-guide",
+   "title": "Enterprise AIOps Guide \u2014 AI-Driven IT Operations",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "aiops",
+    "sre",
+    "observability",
+    "platform-engineering",
+    "operations"
+   ],
+   "word_count": 9682,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy",
+   "title": "Enterprise Multi-Model AI Strategy \u2014 Vendor-Agnostic Guide",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "multi-model",
+    "vendor-agnostic",
+    "llm-strategy"
+   ],
+   "word_count": 12480,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.5
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/governance-propagation-chain",
+   "title": "Governance Propagation Chain",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "governance",
+    "policy",
+    "authorization",
+    "zero-trust"
+   ],
+   "word_count": 2882,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.41
+    },
+    {
+     "id": "ai-security-governance/policy/Vol1_Executive_Architecture",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-communication-identity-gateway",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/index",
+   "title": "Enterprise AI Architect",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 1297,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures",
+     "score": 0.32
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/kill-switch-architecture",
+   "title": "Kill Switch Architecture for Multi-Agent AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "kill-switch",
+    "reliability",
+    "safety",
+    "governance",
+    "emergency-shutdown"
+   ],
+   "word_count": 2848,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/05-agentic-ai-security",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/machine-readable-ea",
+   "title": "Machine-Readable Enterprise Architecture for the Agentic Era",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 2245,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+   "title": "MCP & A2A Protocol Deep Dive (2026)",
+   "doc_type": "guide",
+   "tags": [
+    "coding-tools",
+    "enterprise-ai-architect"
+   ],
+   "word_count": 2561,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+     "score": 0.39
+    },
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/ai-architecture/multi-agent-topology-patterns",
+   "title": "Multi-Agent Topology Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-architecture",
+    "multi-agent",
+    "patterns"
+   ],
+   "word_count": 4184,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-finops-multi-agent-cost-propagation",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume10_Collaborative_Use_Case_Transcripts",
+   "title": "Collaborative Use Case Transcripts",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 7454,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/transcripts/bank-discovery-workshop",
+     "score": 0.45
+    },
+    {
+     "id": "enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+   "title": "Enterprise Governance Ecosystem & Operating Models",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 4306,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
+     "score": 0.41
+    },
+    {
+     "id": "ea-masterclass/module-10-governance/index",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume4_Artifact_Catalog_Quality_Attributes",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume2_Economics_Decision_Science",
+   "title": "Architecture Economics & Decision Science",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3332,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume3_Knowledge_Management_Capability_Mapping",
+   "title": "Architecture Knowledge Management & Capability Mapping",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 2119,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume7_AI_Native_ARB_Case_Studies",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume4_Artifact_Catalog_Quality_Attributes",
+   "title": "Artifact Catalog & Quality Attributes",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1922,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume6_Banking_Industry_DeepDive",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume5_Review_Questions_Scorecards",
+   "title": "Enterprise Review Questions & Scorecards",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3196,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume7_AI_Native_ARB_Case_Studies",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume6_Banking_Industry_DeepDive",
+   "title": "Banking \u2014 The Primary Lens",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1465,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume4_Artifact_Catalog_Quality_Attributes",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume7_AI_Native_ARB_Case_Studies",
+   "title": "AI-Native ARB & Enterprise Case Studies",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 2607,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume5_Review_Questions_Scorecards",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
+   "title": "Part A \u2014 Foundational Templates",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1521,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume7_AI_Native_ARB_Case_Studies",
+     "score": 0.39
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume4_Artifact_Catalog_Quality_Attributes",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/Volume9_Enterprise_Reference_Repository",
+   "title": "Part A \u2014 Reference Architectures & Architecture Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3618,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/architectural-review-board/index",
+   "title": "Architectural Review Board (ARB)",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "arb",
+    "architectural-review-board"
+   ],
+   "word_count": 1507,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume1_Governance_Ecosystem_Operating_Models",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
+   "title": "BEST PRACTICES & JARGON GUIDE",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3061,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/strategy/EA_Strategy_Playbook",
+     "score": 0.44
+    },
+    {
+     "id": "enterprise-architecture/process/EA_Mastery_Guide",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/best-practices/EA_Glossary_CheatSheet",
+   "title": "ENTERPRISE ARCHITECTURE Glossary & Cheat Sheet",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 4159,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/ea/EA_Interview_Handbook_DELTA",
+     "score": 0.43
+    },
+    {
+     "id": "interview-prep/ea/EA_Interview_Vol3_CTO_AI",
+     "score": 0.38
+    },
+    {
+     "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/best-practices/index",
+   "title": "EA Best Practices",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "best-practices"
+   ],
+   "word_count": 37,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/framework/EA_Soft_Skills_Interview_Master_Guide",
+   "title": "EA Soft Skills Interview Master Guide",
+   "doc_type": "interview-questions",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 7692,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/ea/EA_Interview_Master_Guide",
+     "score": 0.54
+    },
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/architecture-leadership",
+     "score": 0.4
+    },
+    {
+     "id": "ea-masterclass/module-15-distinguished-architect/index",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/framework/Enterprise_AI_Architect_Communication_Guide",
+   "title": "Enterprise AI Architect Communication Guide",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3677,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+     "score": 0.8
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/framework/Executive_Communication_Framework_Guide",
+   "title": "COMMUNICATION FRAMEWORKS  MASTER GUIDE",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 5486,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-11-executive-communication/index",
+     "score": 0.44
+    },
+    {
+     "id": "enterprise-architecture/specialization/EA_Business_Communication_Executive_Skills",
+     "score": 0.35
+    },
+    {
+     "id": "ea-masterclass/module-07-proposal-writing/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank",
+   "title": "APEX: AI Platform of Platforms \u2014 TOGAF 10 at NexaBank",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 6385,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/APEX_EA_Final",
+     "score": 0.66
+    },
+    {
+     "id": "enterprise-architecture/framework/index",
+     "score": 0.34
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/framework/index",
+   "title": "EA Frameworks",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "framework"
+   ],
+   "word_count": 113,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-architecture/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/index",
+   "title": "Enterprise Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 206,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/framework/index",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026",
+   "title": "EA Lifecycle Artifact Templates",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "ai-development"
+   ],
+   "word_count": 5677,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+     "score": 0.63
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.54
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/EA_Lifecycle_Checklist",
+   "title": "LIFECYCLE CHECKLIST",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1878,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/strategy/EA_Strategy_Playbook",
+     "score": 0.64
+    },
+    {
+     "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
+     "score": 0.42
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/EA_Mastery_Guide",
+   "title": "MASTERY GUIDE",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 6699,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.48
+    },
+    {
+     "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
+     "score": 0.44
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/EA_Real_Life_Transcript",
+   "title": "ENTERPRISE ARCHITECT",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 7189,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/specialization/RFI_AI_Platform_Transcript",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+   "title": "ENTERPRISE AI ARCHITECT BIBLE",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 9731,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.47
+    },
+    {
+     "id": "ea-masterclass/module-09-enterprise-ai-architecture/index",
+     "score": 0.45
+    },
+    {
+     "id": "interview-prep/Enterprise_GenAI_Architect_Interview_Guide",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+   "title": "Communication Mastery",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "process"
+   ],
+   "word_count": 15403,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/framework/Enterprise_AI_Architect_Communication_Guide",
+     "score": 0.8
+    },
+    {
+     "id": "ea-masterclass/module-11-executive-communication/index",
+     "score": 0.34
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
+   "title": "Enterprise Agentic AI Architecture Research Initiative",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 4583,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/a2a-enterprise-security-governance-guide",
+     "score": 0.42
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/strategy/Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/ai-solution-lifecycle-deliverables",
+   "title": "AI Solution Lifecycle Deliverables",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "process"
+   ],
+   "word_count": 4092,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "sovereign-constitutional-ai/rai-operating-model",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-architecture/transformation/ai-first-to-ai-native",
+     "score": 0.34
+    },
+    {
+     "id": "sovereign-constitutional-ai/sovereign-ai-roadmap-maturity",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/enterprise-technology-selection-framework",
+   "title": "Enterprise Technology Selection & Decision Framework",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "technology-selection",
+    "decision-framework",
+    "governance",
+    "arb"
+   ],
+   "word_count": 10077,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-03-proposal-lifecycle/index",
+     "score": 0.35
+    },
+    {
+     "id": "ea-masterclass/deliverables/business-case-templates",
+     "score": 0.33
+    },
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/process/index",
+   "title": "EA Processes & Lifecycle",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "process"
+   ],
+   "word_count": 79,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/AI_Invoice_Auditor_Architecture_v5",
+   "title": "1. What Changed in v5.0 \u2014 Executive Summary",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "specialization"
+   ],
+   "word_count": 6788,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-economics/AI_Cost_Implementation_Guide_2026",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
+   "title": "AI Transformation",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 9242,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-ui/evaluation-framework",
+     "score": 0.54
+    },
+    {
+     "id": "ea-masterclass/module-12-ai-consulting/index",
+     "score": 0.38
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/AKES_Addendum_Document_Update_and_Versioning",
+   "title": "AKES Addendum: Document Update & Versioning",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 3690,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/knowledge/Autonomous_Knowledge_Engineering_System",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/APEX_EA_Final",
+   "title": "APEX: AI Platform of Platforms",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "specialization",
+    "togaf",
+    "ai-dlc",
+    "cloud-native"
+   ],
+   "word_count": 12053,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank",
+     "score": 0.66
+    },
+    {
+     "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
+     "score": 0.33
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/DPDP_Act_2023_Comprehensive_Guide",
+   "title": "DPDP Act 2023 & DPDP Rules 2025 \u2014 Comprehensive Guide",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 5061,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/specialization/DSA_Principal_Architect_Reference",
+   "title": "Principal Architect DSA Deep-Reference",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 4594,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/specialization/EAKA_Research_Study",
+   "title": "Enterprise Agent Knowledge Architecture (EAKA) Research Study",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 4682,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "agentic-systems/skill/Agent_Skills_Complete_Playbook_2026",
+     "score": 0.49
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill",
+     "score": 0.47
+    },
+    {
+     "id": "agentic-systems/skill/enterprise/07-composition-and-instructions-engineering",
+     "score": 0.43
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/EA_Business_Communication_Executive_Skills",
+   "title": "Business Communication & Executive Skills",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 6431,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/EA_Soft_Skills_and_Behaviors",
+     "score": 0.41
+    },
+    {
+     "id": "ea-masterclass/module-11-executive-communication/index",
+     "score": 0.4
+    },
+    {
+     "id": "ea-masterclass/module-14-mentoring/index",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/EA_OKR_KPI_Research",
+   "title": "OKR & KPI VALUE FRAMEWORK",
+   "doc_type": "research-report",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 2419,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-01-ea-foundations/index",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-architecture/process/EA_Mastery_Guide",
+     "score": 0.31
+    },
+    {
+     "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/Enterprise_Data_Architect_AI_GenAI",
+   "title": "ENTERPRISE DATA ARCHITECT IN THE AGE OF AI & GenAI",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3311,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.42
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.42
+    },
+    {
+     "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/Enterprise_Manager_AI_GenAI",
+   "title": "ENTERPRISE MANAGER IN THE AGE OF AI & GenAI",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 4127,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
+     "score": 0.45
+    },
+    {
+     "id": "ea-masterclass/module-05-ai-investment-strategy/index",
+     "score": 0.39
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/Principal_Enterprise_AI_Guide_Educative",
+   "title": "<mark>Principal &</mark> Enterprise AI Architect",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 6659,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/Enterprise_GenAI_Architect_Interview_Guide",
+     "score": 0.49
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/RFI_AI_Platform_Transcript",
+   "title": "REQUEST FOR INFORMATION",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 8658,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/process/EA_Real_Life_Transcript",
+     "score": 0.32
+    },
+    {
+     "id": "ea-masterclass/module-03-proposal-lifecycle/index",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/index",
+   "title": "EA Specializations",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "specialization"
+   ],
+   "word_count": 133,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/process/index",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/specialization/modern-data-ai-platform-blueprint-2026",
+   "title": "Modern Data & AI Platform Blueprint 2026",
+   "doc_type": "unknown",
+   "tags": [],
+   "word_count": 4785,
+   "last_reviewed": "None",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.42
+    },
+    {
+     "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+     "score": 0.41
+    },
+    {
+     "id": "databricks-agentic-ai/part-06-iceberg-open-formats",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/strategy/EA_AI_First_Transformation_Transcript",
+   "title": "EA AI-First Transformation \u2014 A Real-Life Transcript",
+   "doc_type": "workshop-transcript",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 9856,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/process/EA_Real_Life_Transcript",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/specialization/RFI_AI_Platform_Transcript",
+     "score": 0.47
+    },
+    {
+     "id": "enterprise-architecture/architectural-review-board/Volume10_Collaborative_Use_Case_Transcripts",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/strategy/EA_Strategy_Playbook",
+   "title": "STRATEGY PLAYBOOK",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 2319,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/process/EA_Lifecycle_Checklist",
+     "score": 0.64
+    },
+    {
+     "id": "enterprise-architecture/best-practices/EA_BestPractices_Jargon",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/strategy/Enterprise_AI_Strategic_Brief_2026",
+   "title": "Enterprise AI Strategic Brief 2026",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 3319,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/Agentic_AI_Governance_Framework",
+     "score": 0.35
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.32
+    },
+    {
+     "id": "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/strategy/Enterprise_AI_Transformation_Blueprint_CTO_Guide_2026",
+   "title": "Enterprise AI Transformation Blueprint",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 5024,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations",
+     "score": 0.43
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/strategy/index",
+   "title": "EA Strategy",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture",
+    "strategy"
+   ],
+   "word_count": 62,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
+   "title": "Executive Summary & AI Vision",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1068,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/05_Target_Operating_Model_and_Change",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-architecture/transformation/06_Roadmap_Financials_KPIs_and_Risk",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/transformation/01_Current_State_Assessment_and_AI_Maturity",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/01_Current_State_Assessment_and_AI_Maturity",
+   "title": "Current-State Assessment & AI Maturity",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 881,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/02_AI_Opportunity_Portfolio",
+   "title": "AI Opportunity Portfolio & Prioritization",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 968,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "enterprise-architecture/transformation/03_Enterprise_AI_Platform_and_Data_Architecture",
+   "title": "Enterprise AI Platform, Data & Agentic Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1047,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/transformation/04_Governance_Responsible_AI_and_Security",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/04_Governance_Responsible_AI_and_Security",
+   "title": "Governance, Responsible AI & Security Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1007,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/transformation/03_Enterprise_AI_Platform_and_Data_Architecture",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/05_Target_Operating_Model_and_Change",
+   "title": "Target Operating Model, Organization & Change",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 847,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
+     "score": 0.41
+    },
+    {
+     "id": "enterprise-ai-report/part-02-operating-models",
+     "score": 0.35
+    },
+    {
+     "id": "enterprise-strategy/vol6-organization-structure-operating-model",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/06_Roadmap_Financials_KPIs_and_Risk",
+   "title": "Roadmap, Financial Model, KPIs & Risk Register",
+   "doc_type": "guide",
+   "tags": [
+    "enterprise-architecture"
+   ],
+   "word_count": 1110,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/transformation/00_Executive_Summary_and_AI_Vision",
+     "score": 0.37
+    },
+    {
+     "id": "enterprise-architecture/transformation/05_Target_Operating_Model_and_Change",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/ai-first-to-ai-native",
+   "title": "AI-First to AI-Native Journey",
+   "doc_type": "guide",
+   "tags": [
+    "ai-first-enterprise"
+   ],
+   "word_count": 3358,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "sovereign-constitutional-ai/sovereign-ai-roadmap-maturity",
+     "score": 0.55
+    },
+    {
+     "id": "sovereign-constitutional-ai/index",
+     "score": 0.52
+    },
+    {
+     "id": "enterprise-ai-report/part-17-transformation-roadmap",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "enterprise-architecture/transformation/index",
+   "title": "AI-First Enterprise",
+   "doc_type": "guide",
+   "tags": [
+    "ai-first-enterprise"
+   ],
+   "word_count": 606,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-strategy/vol5-ai-strategy-transformation-glossary",
+     "score": 0.53
+    },
+    {
+     "id": "enterprise-ai-report/part-17-transformation-roadmap",
+     "score": 0.38
+    },
+    {
+     "id": "ai-security-governance/policy/Vol0_Series_Index_and_Overview",
+     "score": 0.37
+    }
+   ]
+  }
+ ]
+}

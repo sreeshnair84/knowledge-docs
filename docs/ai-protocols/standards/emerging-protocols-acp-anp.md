@@ -33,7 +33,7 @@ Both protocols represent serious architectural alternatives to the dominant MCP/
 
 ---
 
-# PROTOCOL 1: ACP — Agent Communication Protocol
+## PROTOCOL 1: ACP — Agent Communication Protocol
 
 > **⚠️ Naming collision.** This section covers IBM BeeAI's **Agent Communication Protocol**, which merged into A2A in August 2025 and is now retired. It is *not* the **Agentic Commerce Protocol** — the OpenAI + Stripe open standard (announced September 2025, in beta) behind ChatGPT Instant Checkout. In 2026 vendor material, "ACP" usually refers to the commerce protocol; see the UCP deep dive (Section 2C) for its coverage.
 
@@ -639,7 +639,7 @@ ACP's REST surface integrated with all major API gateways (Kong, AWS API Gateway
 
 ---
 
-# PROTOCOL 2: ANP — Agent Network Protocol
+## PROTOCOL 2: ANP — Agent Network Protocol
 
 ## 1. Origin & Evolution
 

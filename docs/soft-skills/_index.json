@@ -1,0 +1,161 @@
+{
+ "section": "soft-skills",
+ "page_count": 9,
+ "pages": [
+  {
+   "id": "soft-skills/CTO_Voice_Mastery_Program",
+   "title": "CTO Voice Mastery Program",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills"
+   ],
+   "word_count": 21136,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/index",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "soft-skills/Creative_Thinking_Skills",
+   "title": "Creative Thinking Skills for Technical Leaders",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills",
+    "creative-thinking"
+   ],
+   "word_count": 2225,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/Problem_Solving_Skills",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "soft-skills/Mental_Model_Encyclopedia",
+   "title": "The Mental Model Encyclopedia",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills",
+    "mental-models",
+    "executive-cognition",
+    "systems-thinking"
+   ],
+   "word_count": 8647,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/Strategic_Thinking_Handbook",
+     "score": 0.84
+    }
+   ]
+  },
+  {
+   "id": "soft-skills/Mental_Models_for_Voice_Training",
+   "title": "Mental Models for Voice Training",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills"
+   ],
+   "word_count": 1478,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "soft-skills/Problem_Solving_Skills",
+   "title": "Problem-Solving Skills for Technical Leaders",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills",
+    "problem-solving"
+   ],
+   "word_count": 1718,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/Creative_Thinking_Skills",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "soft-skills/Storytelling_Exercise_Workbook",
+   "title": "Storytelling Exercise Workbook",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills"
+   ],
+   "word_count": 1699,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/index",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "soft-skills/Strategic_Thinking_Handbook",
+   "title": "The Strategic Thinking Handbook",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills",
+    "strategic-thinking",
+    "frameworks",
+    "counterfactual-thinking"
+   ],
+   "word_count": 7923,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/Mental_Model_Encyclopedia",
+     "score": 0.84
+    }
+   ]
+  },
+  {
+   "id": "soft-skills/Voice_Training_30Day_Plan",
+   "title": "Voice Training 30-Day Plan",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills"
+   ],
+   "word_count": 1610,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "soft-skills/index",
+   "title": "Non-Tech",
+   "doc_type": "guide",
+   "tags": [
+    "soft-skills"
+   ],
+   "word_count": 734,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "soft-skills/CTO_Voice_Mastery_Program",
+     "score": 0.37
+    },
+    {
+     "id": "soft-skills/Storytelling_Exercise_Workbook",
+     "score": 0.36
+    }
+   ]
+  }
+ ]
+}

@@ -14,9 +14,9 @@ covers_version: "v1.0 June 2026"
 
 # AI-Assisted Microservice
 
-# Development Framework
+## Development Framework
 
-# — Shared Requirements & Agent Runbook
+## — Shared Requirements & Agent Runbook
 
 Shared Requirements Document  |  Agent Runbook  |  Prompt Reference  |  June 2026
 

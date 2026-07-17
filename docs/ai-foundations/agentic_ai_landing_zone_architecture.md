@@ -1273,7 +1273,7 @@ Assessment Questions:
 
 ---
 
-# ARCHITECTURE DECISION RECORDS (ADRs)
+## ARCHITECTURE DECISION RECORDS (ADRs)
 
 ## ADR-001: Hybrid Multi-Cloud Foundation
 
@@ -2151,7 +2151,7 @@ Use **Kubernetes** as the primary agent runtime platform across all clouds.
 
 ---
 
-# APPENDICES
+## APPENDICES
 
 ## Appendix A: Glossary
 

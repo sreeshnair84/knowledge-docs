@@ -243,7 +243,7 @@ Treat Sections 6, 8, and 10 as a spreadsheet template, not a forecast: swap in y
 
 ###### **AGENTIC AI VALUE LIFECYCLE**
 
-# **A Worked Use Case: End-to-End Value Realization**
+## **A Worked Use Case: End-to-End Value Realization**
 
 Property & Casualty Claims — From Opportunity Identification to Realized, Measured Value
 

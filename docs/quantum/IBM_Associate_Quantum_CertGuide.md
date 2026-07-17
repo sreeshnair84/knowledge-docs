@@ -36,7 +36,7 @@ Heavy Code Edition • Qiskit v1.x • 2026
 
 ### **SECTION 1**
 
-# **Exam Blueprint & Domain Weights**
+## **Exam Blueprint & Domain Weights**
 
 The C1000-112 exam tests your ability to write, execute, and analyse quantum circuits using Qiskit. 60 multiple-choice questions in 90 minutes. A score of 43+ (72%) passes. Questions are scenario-based — you will read code and predict output, or choose the correct API call.
 
@@ -53,7 +53,7 @@ The C1000-112 exam tests your ability to write, execute, and analyse quantum cir
 
 ### **SECTION 2**
 
-# **Installation & Environment Setup**
+## **Installation & Environment Setup**
 
 Install the exact versions tested by the exam. Qiskit v1.x is the current exam baseline.
 
@@ -92,7 +92,7 @@ print([b.name for b in backends])
 
 ### **SECTION 3**
 
-# **Quantum Circuits – QuantumCircuit API**
+## **Quantum Circuits – QuantumCircuit API**
 
 QuantumCircuit is the central object in Qiskit. Every exam question either creates, manipulates, or queries a QuantumCircuit. Know every constructor signature and every method cold.
 
@@ -182,7 +182,7 @@ print(instruction.operation.name,
 
 ### **SECTION 4**
 
-# **Gates – Single, Multi-Qubit & Parameterised**
+## **Gates – Single, Multi-Qubit & Parameterised**
 
 ## **Single-Qubit Gates**
 
@@ -276,7 +276,7 @@ bound2 = qc_var.assign_parameters(vals)
 
 ### **SECTION 5**
 
-# **Measurements, Classical Registers & Conditionals**
+## **Measurements, Classical Registers & Conditionals**
 
 ```
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
@@ -319,7 +319,7 @@ print(counts)
 
 ### **SECTION 6**
 
-# **Simulators – AerSimulator & Statevector**
+## **Simulators – AerSimulator & Statevector**
 
 `from qiskit_aer import AerSimulator from qiskit_aer.primitives import Sampler, Estimator from qiskit import QuantumCircuit, transpile import numpy as np #` II `AerSimulator (main exam simulator)` IIIIIIIIIIIIIIIIII `sim = AerSimulator() # method='automatic' by default # Statevector simulation (exact, no shots needed) sv_sim = AerSimulator(method='statevector') # Build a GHZ circuit qc = QuantumCircuit(3) qc.h(0); qc.cx(0,1); qc.cx(1,2) # Get statevector qc_sv = qc.copy() qc_sv.save_statevector() # Aer-specific instruction tqc = transpile(qc_sv, sv_sim) job = sv_sim.run(tqc) sv = job.result().get_statevector() print(sv) # [0.707, 0, 0, 0, 0, 0, 0, 0.707] # amplitudes for |000> and |111> #` II `Shot-based simulation` IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII `qc_m = qc.copy() qc_m.measure_all() tqc_m = transpile(qc_m, sim) job = sim.run(tqc_m, shots=8192) counts = job.result().get_counts() # ~4096 x '000', ~4096 x '111'`
 
@@ -348,7 +348,7 @@ job = noisy_sim.run(tqc_m, shots=4096)
 
 ### **SECTION 7**
 
-# **Visualisation**
+## **Visualisation**
 
 ```
 from qiskit import QuantumCircuit
@@ -439,7 +439,7 @@ plot_state_qsphere(sv2) # Q-sphere: global state view
 
 ### **SECTION 8**
 
-# **Transpilation – PassManager & Optimization Levels**
+## **Transpilation – PassManager & Optimization Levels**
 
 Transpilation converts your logical circuit into a physical circuit that can run on a specific backend — mapping qubits to physical qubits, replacing gates with native basis gates, and inserting SWAP gates where needed.
 
@@ -478,7 +478,7 @@ CXCancellation(), # cancel adjacent CX pairs
 
 ### **SECTION 9**
 
-# **Real Hardware – IBM Quantum & Job Management**
+## **Real Hardware – IBM Quantum & Job Management**
 
 ```
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
@@ -516,7 +516,7 @@ retrieved_result = retrieved_job.result()
 
 ### **SECTION 10**
 
-# **Quantum Algorithms – Full Implementations**
+## **Quantum Algorithms – Full Implementations**
 
 ## **Algorithm 1: Deutsch-Jozsa**
 
@@ -709,7 +709,7 @@ print(op.is_unitary()) # True
 
 ### **SECTION 11**
 
-# **Practice Exam – 40 Questions with Explanations**
+## **Practice Exam – 40 Questions with Explanations**
 
 Work through these questions under exam conditions: 60 minutes for 40 questions. Then review every explanation — especially questions you got right by guessing.
 
@@ -895,7 +895,7 @@ C) The fastest backend available D) A local simulator with 5 qubits *Answer: B �
 
 ### **SECTION 12**
 
-# **Quick-Reference Cheat Sheet**
+## **Quick-Reference Cheat Sheet**
 
 |**API / Class**|**Method**|**Description**|
 |---|---|---|

@@ -1,0 +1,363 @@
+{
+ "section": "knowledge-engineering",
+ "page_count": 16,
+ "pages": [
+  {
+   "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+   "title": "Data Architecture for AI",
+   "doc_type": "research-report",
+   "tags": [
+    "knowledge-engineering"
+   ],
+   "word_count": 8423,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.63
+    },
+    {
+     "id": "ai-foundations/AI_Native_Architecture_Evolution_Report",
+     "score": 0.55
+    },
+    {
+     "id": "enterprise-architecture/specialization/modern-data-ai-platform-blueprint-2026",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/data/End_to_End_Lineage_Systems_Report",
+   "title": "End-to-End Lineage for AI-Era Data Systems",
+   "doc_type": "research-report",
+   "tags": [
+    "knowledge-engineering"
+   ],
+   "word_count": 11775,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+     "score": 0.44
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report",
+   "title": "Enterprise Data Systems, Streaming & AI Governance",
+   "doc_type": "research-report",
+   "tags": [
+    "knowledge-engineering"
+   ],
+   "word_count": 15096,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+     "score": 0.63
+    },
+    {
+     "id": "ai-foundations/AI_Native_Architecture_Evolution_Report",
+     "score": 0.6
+    },
+    {
+     "id": "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
+     "score": 0.47
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/data/index",
+   "title": "Data Architecture",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "data"
+   ],
+   "word_count": 88,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/index",
+     "score": 0.36
+    },
+    {
+     "id": "enterprise-architecture/specialization/Enterprise_Data_Architect_AI_GenAI",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/index",
+   "title": "Knowledge Engineering",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering"
+   ],
+   "word_count": 112,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/industry-practices/index",
+     "score": 0.54
+    },
+    {
+     "id": "knowledge-engineering/knowledge/index",
+     "score": 0.4
+    },
+    {
+     "id": "knowledge-engineering/data/index",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/consulting-firms",
+   "title": "Consulting Firm AI Platforms",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "industry-practices"
+   ],
+   "word_count": 964,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/industry-practices/consulting-firms-genai-strategy",
+     "score": 0.45
+    },
+    {
+     "id": "interview-prep/EY_AI_Architect_Interview_Guide_1",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/consulting-firms-genai-strategy",
+   "title": "Consulting & Services Firms: GenAI Strategy Landscape",
+   "doc_type": "guide",
+   "tags": [
+    "consulting",
+    "genai",
+    "strategy",
+    "SIs",
+    "big-four",
+    "MBB",
+    "industry-landscape"
+   ],
+   "word_count": 4408,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/industry-practices/consulting-firms",
+     "score": 0.45
+    },
+    {
+     "id": "interview-prep/EY_AI_Architect_Interview_Guide_1",
+     "score": 0.37
+    },
+    {
+     "id": "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/evaluation",
+   "title": "Evaluation & Quality Gates",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "industry-practices"
+   ],
+   "word_count": 859,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-development/testing/AI_Agent_Evaluation_Framework_Complete",
+     "score": 0.35
+    },
+    {
+     "id": "knowledge-engineering/industry-practices/index",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/governance-rai",
+   "title": "Governance & Responsible AI",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "industry-practices"
+   ],
+   "word_count": 1113,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.39
+    },
+    {
+     "id": "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
+     "score": 0.37
+    },
+    {
+     "id": "knowledge-engineering/industry-practices/index",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/grounding",
+   "title": "Grounding Architectures",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "industry-practices"
+   ],
+   "word_count": 779,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/industry-practices/tech-companies",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/index",
+   "title": "Industry Knowledge Systems",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "industry-practices"
+   ],
+   "word_count": 530,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/index",
+     "score": 0.54
+    },
+    {
+     "id": "knowledge-engineering/industry-practices/governance-rai",
+     "score": 0.36
+    },
+    {
+     "id": "knowledge-engineering/industry-practices/evaluation",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/industry-practices/tech-companies",
+   "title": "How Tech Companies Serve Knowledge",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "industry-practices"
+   ],
+   "word_count": 1061,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+     "score": 0.34
+    },
+    {
+     "id": "knowledge-engineering/industry-practices/grounding",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/knowledge/Autonomous_Knowledge_Engineering_System",
+   "title": "Autonomous Knowledge Engineering System",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering"
+   ],
+   "word_count": 6094,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/specialization/AKES_Addendum_Document_Update_and_Versioning",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/knowledge/Complex_RAG_Deep_Dive",
+   "title": "Complex RAG Systems: Deep Technical Guide",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "rag",
+    "vector-search",
+    "document-processing"
+   ],
+   "word_count": 6304,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "multimodal-ai/part-05-multimodal-rag",
+     "score": 0.34
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/knowledge/Enterprise_Knowledge_Architectures_Report",
+   "title": "Knowledge Graphs, Ontologies & GraphRAG",
+   "doc_type": "research-report",
+   "tags": [
+    "knowledge-engineering"
+   ],
+   "word_count": 11426,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/data/Data_Architecture_for_AI_Report",
+     "score": 0.36
+    },
+    {
+     "id": "ai-foundations/AI_Native_Architecture_Evolution_Report",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "knowledge-engineering/knowledge/index",
+   "title": "Knowledge Engineering",
+   "doc_type": "guide",
+   "tags": [
+    "knowledge-engineering",
+    "knowledge"
+   ],
+   "word_count": 42,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "knowledge-engineering/index",
+     "score": 0.4
+    }
+   ]
+  }
+ ]
+}

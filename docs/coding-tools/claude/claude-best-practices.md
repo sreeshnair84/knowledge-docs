@@ -32,7 +32,7 @@ This document synthesizes Anthropic's official documentation, the Claude Certifi
 | Domain 5
 (15%) | Persistent facts blocks · Lost-in-the-middle mitigation · Escalation triggers · Structured error propagation · Provenance preservation |
 
-# **Domain 1 — Agentic Architecture & Orchestration  (27%)**
+## **Domain 1 — Agentic Architecture & Orchestration  (27%)**
 
 Agentic systems extend Claude beyond single-turn responses into multi-step, tool-driven loops that gather context, take action, verify results, and repeat. This domain covers how to architect those loops correctly, orchestrate multiple agents, and enforce business rules deterministically.
 
@@ -105,7 +105,7 @@ Named sessions, fork_session, /compact, and --resume are tools for managing expe
 | Use /compact during extended sessions to summarize earlier conversation while retaining key findings and continuing work. | Starting a fresh session when context fills — loses all accumulated analysis. /compact preserves discoveries. |
 | When resuming after file modifications, explicitly inform the agent which specific files changed for targeted re-analysis. | Resuming a session assuming the agent knows what changed. It will apply stale analysis to modified files. |
 
-# **Domain 2 — Tool Design & MCP Integration  (18%)**
+## **Domain 2 — Tool Design & MCP Integration  (18%)**
 
 Tool quality is the most under-appreciated factor in agent reliability. A model cannot use a tool well if it cannot understand what the tool does, what it expects, and when to choose it over similar tools.
 
@@ -164,7 +164,7 @@ Claude Code's built-in tools have precise, non-overlapping use cases. Using the 
 | When Edit fails with 'non-unique match', fall back to Read + Write: load the full file, modify in memory, write back. | Repeatedly retrying Edit with the same anchor text after a non-unique match error. It will continue to fail. |
 | Combine Glob + Grep for scoped content search: Glob to identify the file set, Grep to search contents within that set. | Using only Grep across all files when you only care about a specific subdirectory or file type. Processes irrelevant files. |
 
-# **Domain 3 — Claude Code Configuration & Workflows  (20%)**
+## **Domain 3 — Claude Code Configuration & Workflows  (20%)**
 
 Claude Code's behavior is shaped by a hierarchy of configuration files, each with different scope and sharing properties. Understanding what loads when, and for whom, is essential for consistent team behavior.
 
@@ -220,7 +220,7 @@ Claude Code integrates into CI pipelines via non-interactive mode. The correct f
 | Provide existing test files in context when generating tests to prevent duplicate test case generation. | Generating tests without context of existing test suite. Produces duplicate coverage and wastes tokens. |
 | Use Message Batches API ONLY for non-blocking jobs (nightly reports, weekly audits). Use synchronous API for pre-merge checks developers wait for. | Switching pre-merge blocking checks to Message Batches for cost savings. 24-hour SLA is incompatible with developer wait time. |
 
-# **Domain 4 — Prompt Engineering & Structured Output  (20%)**
+## **Domain 4 — Prompt Engineering & Structured Output  (20%)**
 
 Prompt engineering is the discipline of communicating intent to Claude with enough precision that outputs are consistent, correct, and well-formed. Context engineering — managing everything in the context window including tools, examples, and conversation history — is its natural extension.
 
@@ -288,7 +288,7 @@ A model retains its reasoning context from code generation, making it less likel
 | Use a security-specialized review instance with a system prompt focused on auth vulnerabilities for authentication code review. | Running a general security review on the full codebase and filtering results. Specialist prompts catch domain-specific issues general prompts miss. |
 | Validate that code passed to the independent review instance is readable (not minified/obfuscated) before submission. | Passing transpiled output or minified code to the review instance. Independent instance isolation doesn't help if the input itself is unreadable. |
 
-# **Domain 5 — Context Management & Reliability  (15%)**
+## **Domain 5 — Context Management & Reliability  (15%)**
 
 As conversations grow longer and agent sessions extend, context quality degrades. Numerical values get collapsed into vague summaries, middle sections get skipped, and accumulated tool output crowds out reasoning space. Proactive context engineering prevents these failure modes.
 
@@ -347,7 +347,7 @@ Research quality depends on preserving the origin of every claim from source thr
 | Include source attribution, confidence level, and corroboration status for single-source findings. Flag as low-confidence until corroborated. | Including a single blog post's claim ('AI will replace 90% of jobs by 2026') as a key finding without credibility qualification. |
 | Preserve claim-to-source mappings through synthesis steps. Synthesis agents should not lose attribution when combining findings. | Losing source attribution during synthesis. The final report makes unattributed factual claims that cannot be verified. |
 
-# **Quick Reference — Critical Exam Decision Points**
+## **Quick Reference — Critical Exam Decision Points**
 
 ## **The 8 Rules That Appear in Every Exam Scenario**
 

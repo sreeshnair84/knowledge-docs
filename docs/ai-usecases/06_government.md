@@ -52,7 +52,7 @@ Engagement Period: May 2025 – April 2026
 |19. Operational Runbook|
 |20. Future Roadmap|
 
-# 1. Executive Summary
+## 1. Executive Summary
 
 The State of Meridian’s Department of Human Services (DHS), responsible for administering federal and state benefits programs (SNAP, Medicaid, TANF, and state-specific energy assistance) to approximately 1.4 million residents, engaged an Enterprise AI Architecture team to build a citizen-facing eligibility-screening and application-assistance tool, alongside an internal caseworker copilot to reduce a persistent backlog in benefitsapplication processing.
 
@@ -62,19 +62,19 @@ The engagement’s central governance event was not a production incident but a 
 
 Key outcomes: - Citizen self-screening reduced unnecessary in-person office visits for clearly-ineligible cases by an estimated 31%, reducing wait times for citizens with genuine, actionable applications - Caseworker documentreview time reduced by approximately 40% on in-scope case types - Pre-launch fairness audit finding addressed prior to public rollout, avoiding a disparate-impact issue that would otherwise have reached production - Zero automated eligibility denials — every determination affecting a citizen’s benefits remains a human caseworker decision, per statutory due-process requirements
 
-# 2. Client Background
+## 2. Client Background
 
 Meridian DHS operates through a combination of state central offices and 43 county-level field offices, administering both federally-funded programs (SNAP, Medicaid) subject to federal regulations and oversight, and state-specific programs subject to Meridian’s own statutory framework. The department had faced sustained public criticism over application-processing backlogs, particularly following a period of elevated caseload growth, and the state legislature had held oversight hearings on the issue in the year prior to this engagement.
 
 The engagement was sponsored by DHS Commissioner Angela Whitfield (a political appointee reporting to the Governor) and the department’s Chief Information Officer, Marcus Delacroix, a career civil servant with two decades at the department who had witnessed several prior technology modernization efforts stall in procurement or fail to account for the department’s regulatory complexity.
 
-# 3. Business Problem
+## 3. Business Problem
 
 **Citizen-facing confusion.** Meridian’s benefits programs had eligibility rules that varied by program, household composition, income, and — for some programs — county-specific supplemental provisions. Citizens attempting to determine their own eligibility before applying often could not get a clear answer without an in-person office visit, contributing to office wait times that had become a recurring source of public complaint and legislative scrutiny.
 
 **Caseworker backlog.** Caseworkers processing applications spent significant time manually reviewing submitted documentation (pay stubs, household composition documents, medical records for disability-related benefits) against program-specific eligibility criteria, cross-referencing rules that, like the banking and healthcare engagements’ policy-manual problems, existed as lengthy program manuals rather than structured, queryable data — compounded here by the fact that federal program rules changed on the federal government’s schedule, sometimes with limited advance notice to states.
 
-# 4. Constraints
+## 4. Constraints
 
 1. **Due process.** Both federal and state law required that benefits determinations affecting a citizen’s eligibility be made by an accountable human decision-maker with defined appeal rights — an AI system could never be the determinative authority, a constraint even more legally rigid here than the analogous non-decisioning boundaries in the banking and healthcare engagements, given constitutional due-process case law specific to government benefits administration.
 
@@ -88,7 +88,7 @@ The engagement was sponsored by DHS Commissioner Angela Whitfield (a political a
 
 6. **Federal program rule volatility.** SNAP and Medicaid eligibility rules could change based on federal policy updates, sometimes on short notice, requiring a rules-update process that could keep pace without requiring a full re-procurement or re-authorization cycle for every rule change.
 
-# 5. Discovery Transcript
+## 5. Discovery Transcript
 
 ## 5.1 Kickoff — Week 1
 
@@ -142,7 +142,7 @@ This early finding, while informative, did not fully prevent a more systematic v
 
 **Whitfield:** Agreed — keep them separate, and I’d want that separation clearly communicated publicly too, given how sensitive this population is to feeling surveilled rather than served.
 
-# 6. Architecture Workshops
+## 6. Architecture Workshops
 
 ## 6.1 Data & Information Architecture
 
@@ -178,7 +178,7 @@ This early finding, while informative, did not fully prevent a more systematic v
 
 - MCP server exposing the Benefits Rules Knowledge Graph (with provenance-tier metadata) as a queryable tool consumed by both the citizen-facing Screening Agent and the internal Caseworker Copilot — a shared knowledge layer, consistent with the pattern used in the banking and healthcare engagements, ensuring citizens and caseworkers were never working from inconsistent rule interpretations Federal Rule-Change Monitoring Agent: tracks known federal policy bulletin sources (USDA SNAP policy memos, CMS Medicaid guidance) for changes, flags affected knowledge-graph entries, and drafts proposed updates for mandatory human policy-office review before any graph change goes live — directly modeled on the banking engagement’s payer-policy-monitoring pattern, adapted to federal benefits policy sources Integration with the department’s legacy case-management system via a narrow, read/limited-write API scoped specifically to the copilot’s document-review and draft-assembly function, preserving the system of record’s existing determination-authority workflow unchanged
 
-# 7. Technical Debates
+## 7. Technical Debates
 
 ## 7.1 Multi-Lingual Support Architecture
 
@@ -210,7 +210,7 @@ This early finding, while informative, did not fully prevent a more systematic v
 
 This evaluation-strategy addition, while established in Week 20, was not yet fully operationalized with the rigor the Week 4 finding and this discussion implied it should have — a gap the formal pre-launch fairness audit (Section 14) subsequently surfaced more systematically.
 
-# 8. Executive Reviews
+## 8. Executive Reviews
 
 ## 8.1 State IT Governance Review — Week 24
 
@@ -236,7 +236,7 @@ This evaluation-strategy addition, while established in Week 20, was not yet ful
 
 **Reyes-Martinez:** I want to say, for the record, that I appreciate the team not trying to minimize this finding or launch around it. That’s not always how this goes with government technology vendors.
 
-# 9. Final Architecture
+## 9. Final Architecture
 
 - **Benefits Rules Knowledge Graph** : structured, versioned, provenance-tiered (statutory/regulatory, official policy bulletin, institutional practice) representation of eligibility rules across SNAP, Medicaid, TANF, and state energy-assistance programs; designed as a state-owned, publicly disclosable artifact
 
@@ -252,7 +252,7 @@ This evaluation-strategy addition, while established in Week 20, was not yet ful
 
 - Explicit organizational and architectural separation from the department’s fraud-detection/program-integrity function
 
-# 10. Delivery Roadmap
+## 10. Delivery Roadmap
 
 |**Phase**|**Duration**|**Scope**|
 |---|---|---|
@@ -264,7 +264,7 @@ This evaluation-strategy addition, while established in Week 20, was not yet ful
 |Remediation & Re-Validation|Months 8–10.5|Explanation-generation redesign,<br>population-specific usability testing|
 |Public Launch|Month 11|System-wide rollout across 43 county<br>field offices|
 
-# 11. Risks
+## 11. Risks
 
 |**Risk**|**Likelihood**|**Impact**|**Mitigation**|**Owner**|
 |---|---|---|---|---|
@@ -274,7 +274,7 @@ This evaluation-strategy addition, while established in Week 20, was not yet ful
 |Public records<br>disclosure of vendor-<br>sensitive components|Low (post<br>transparency-by-design<br>approach)|Medium|State-owned,<br>disclosable rules<br>knowledge graph; clear<br>disclosable/non-<br>disclosable component<br>boundary|General Counsel / IT<br>Governance|
 |Security authorization<br>delay affecting launch<br>timeline|Medium|Medium|ATO process initiated<br>early, run in parallel<br>with build, not<br>sequenced after|CISO-equivalent (State<br>IT Security)|
 
-# 12. Governance Model
+## 12. Governance Model
 
 - **Strict non-decisioning architecture** : no automated eligibility determination, ever — a constitutional/dueprocess-grounded requirement, not a discretionary design choice, with legal review of all citizen-facing language
 
@@ -286,11 +286,11 @@ This evaluation-strategy addition, while established in Week 20, was not yet ful
 
 - **Organizational separation from fraud-detection/program-integrity function** , maintained architecturally, not just by policy statement
 
-# 13. Production Rollout
+## 13. Production Rollout
 
 Public launch occurred in Month 11, roughly ten weeks later than the original Month 8.5 target, entirely attributable to the fairness-audit-driven remediation described in Section 14 rather than technical delivery issues. Rollout proceeded across all 43 county field offices simultaneously (rather than phased, per Whitfield’s preference given the statewide legislative visibility of the backlog issue), with the caseworker copilot’s rollout preceding the citizen-facing screener’s public launch by several weeks to allow caseworker familiarization ahead of the anticipated public-facing volume increase.
 
-# 14. Pre-Launch Finding — Month 8 (Fairness Audit)
+## 14. Pre-Launch Finding — Month 8 (Fairness Audit)
 
 ## 14.1 Finding Summary
 
@@ -314,7 +314,7 @@ As a condition of Commissioner Whitfield’s executive sign-off for public launc
 
 The explanation-generation layer was rebuilt over the following ten weeks in direct collaboration with the Legal Aid Society and community organizations serving each target linguistic population, restructuring explanations around concrete, explicit next-step guidance rather than assuming bureaucratic-system familiarity, and validated through structured comprehension testing meeting a pre-agreed statistical threshold before launch proceeded. This testing protocol, plus the population-collaborative design process, was formalized as a permanent, ongoing requirement (not a one-time pre-launch gate) — any future material change to explanation templates would require the same validation process.
 
-# 15. Lessons Learned
+## 15. Lessons Learned
 
 1. **A technically sound, well-intentioned architectural mitigation (native-language generation) can still fall short of its actual goal if the validation methodology doesn’t match the real-world outcome that matters.** The team correctly identified translation fidelity as a risk and correctly built nativelanguage generation to address it — but validated against the wrong proxy (linguistic accuracy) rather than the outcome that actually mattered (citizen comprehension and ability to act). Future citizen-facing systems in this domain should define the actual target outcome precisely, and validate against that outcome directly, rather than against a plausible-seeming proxy.
 
@@ -322,7 +322,7 @@ The explanation-generation layer was rebuilt over the following ten weeks in dir
 
 3. **External, independent stakeholder involvement — both in defining evaluation criteria (ReyesMartinez’s Week 20 involvement) and in conducting the actual audit (the university research center’s independence from the vendor team) — was what actually caught this finding before public launch.** The postmortem was explicit that a vendor-only quality process, however well-intentioned, may not have applied the same rigor or asked the same questions as external stakeholders with direct experience of the client population’s needs. This became a standing recommendation for any future citizenfacing government AI system: build in independent, population-representative audit capacity from the start, not as an afterthought.
 
-# 16. Enterprise Architecture Artifacts
+## 16. Enterprise Architecture Artifacts
 
 - **Capability Map** : citizen self-screening and caseworker support value chains with AI-opportunity overlay (Section 5.4)
 
@@ -334,7 +334,7 @@ The explanation-generation layer was rebuilt over the following ten weeks in dir
 
 - **Disclosable/Non-Disclosable Component Boundary documentation** , prepared jointly with General Counsel for public records compliance
 
-# 17. Architecture Decision Records (ADRs)
+## 17. Architecture Decision Records (ADRs)
 
 **ADR-001: System is strictly non-decisioning; all eligibility determinations remain human caseworker authority, preserving existing due-process and appeal rights.** Status: Accepted, foundational, non-negotiable per due-process law.
 
@@ -350,15 +350,15 @@ The explanation-generation layer was rebuilt over the following ten weeks in dir
 
 **ADR-007: Explicit organizational and architectural separation between this eligibility-assistance platform and the department’s fraud-detection/program-integrity function.** Status: Accepted, foundational per trust-building goals established in discovery.
 
-# 18. AI Evaluation Strategy
+## 18. AI Evaluation Strategy
 
 - **Determination accuracy** : measured against caseworker-validated ground truth, stratified by program and demographic subgroup, monitored on an ongoing basis for any emergent disparate-accuracy pattern (the audit found none, but ongoing monitoring was formalized regardless) **Comprehension and actionability** (post-audit, elevated to mandatory permanent gate): structured, statistically-powered usability testing per language and literacy segment, with pass/fail criteria co-defined with the Legal Aid Society, required before launch of any material explanation-template change **Knowledge graph currency** : monitored freshness against known federal and state policy source updates, with expedited-lane SLA tracking for compliance-deadline-driven changes **Caseworker copilot document-review accuracy** : measured against caseworker-validated ground truth, tracked separately by document type and program
 
-# 19. Operational Runbook
+## 19. Operational Runbook
 
 - **Federal rule-change response procedure** : defined escalation and expedited-review SLA for compliancedeadline-driven updates, distinguishing from routine policy-office review cadence for non-urgent changes **Comprehension-testing re-validation procedure** : mandatory trigger for any material explanationtemplate or knowledge-graph-provenance-tier-boundary change, per ADR-006 **Public records request response procedure** : defined process for responding to records requests against the disclosable/non-disclosable component boundary established with General Counsel **County field office escalation path** : procedure for caseworkers to flag knowledge-graph gaps or ambiguities encountered in practice, feeding back into the policy office’s review queue
 
-# 20. Future Roadmap
+## 20. Future Roadmap
 
 1. **Expansion to additional benefit programs** beyond the initial SNAP/Medicaid/TANF/energy-assistance scope, contingent on knowledge-graph extension and, per the lessons of this engagement, proportionate comprehension-testing investment for any newly added program’s citizen-facing content — not assumed to inherit validation from the initial launch.
 

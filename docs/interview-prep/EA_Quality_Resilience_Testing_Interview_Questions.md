@@ -49,7 +49,7 @@ Every answer should carry the signature of lived experience: specific failure mo
 ---
 ---
 
-# SECTION 1: Stress Testing & Performance Architecture
+## SECTION 1: Stress Testing & Performance Architecture
 
 ---
 
@@ -199,7 +199,7 @@ The distinction from pure monitoring is intentionality. Monitoring tells you wha
 ---
 ---
 
-# SECTION 2: Availability, Resilience & Fault Tolerance
+## SECTION 2: Availability, Resilience & Fault Tolerance
 
 ---
 
@@ -327,7 +327,7 @@ On testing: this is where most teams fall short. The happy path is heavily teste
 ---
 ---
 
-# SECTION 3: Chaos Engineering & Failure Design
+## SECTION 3: Chaos Engineering & Failure Design
 
 ---
 
@@ -398,7 +398,7 @@ The five most dangerous AI-specific failure modes I've encountered:
 ---
 ---
 
-# SECTION 4: Data Quality, Integrity & Governance
+## SECTION 4: Data Quality, Integrity & Governance
 
 ---
 
@@ -525,7 +525,7 @@ Operationally, I'd use lineage for four things: incident investigation (when som
 ---
 ---
 
-# SECTION 5: AI/ML Model Evaluation & Testing
+## SECTION 5: AI/ML Model Evaluation & Testing
 
 ---
 
@@ -600,7 +600,7 @@ The output of this exercise is a model registry entry for each model, with: curr
 ---
 ---
 
-# SECTION 6: Production Data Drift & Model Monitoring
+## SECTION 6: Production Data Drift & Model Monitoring
 
 ---
 
@@ -720,7 +720,7 @@ During all of this, I'd communicate to the business owner and risk team every fo
 ---
 ---
 
-# SECTION 7: Test Automation Architecture
+## SECTION 7: Test Automation Architecture
 
 ---
 
@@ -789,7 +789,7 @@ The measure of success is not coverage percentage or test count. It's whether en
 ---
 ---
 
-# SECTION 8: Non-Functional Requirements at Enterprise Scale
+## SECTION 8: Non-Functional Requirements at Enterprise Scale
 
 ---
 
@@ -864,7 +864,7 @@ The mistake I see is organisations that invest heavily in monitoring, declare th
 ---
 ---
 
-# SECTION 9: Disaster Recovery & Business Continuity
+## SECTION 9: Disaster Recovery & Business Continuity
 
 ---
 
@@ -898,7 +898,7 @@ The AI-specific DR considerations that differentiate this from conventional DR: 
 ---
 ---
 
-# SECTION 10: Synthesis & Cross-Domain Judgment
+## SECTION 10: Synthesis & Cross-Domain Judgment
 
 ---
 

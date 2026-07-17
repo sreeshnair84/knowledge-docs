@@ -50,7 +50,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 2
 
 ### **01**
 
-# **Architecture Deep Dive**
+## **Architecture Deep Dive**
 
 A 2026 source-level analysis of Claude Code v2.1.88 (~1,900 TypeScript files, ~512K LOC) reveals a counterintuitive truth: **only 1.6% of the codebase is AI decision logic** . The other 98.4% is deterministic infrastructure — permission gates, context management, tool routing, and recovery logic.
 
@@ -124,7 +124,7 @@ CLAUDE.md instructions are delivered as user context, giving probabilistic compl
 
 ### **02**
 
-# **Agent Skills — v2 Best Practices**
+## **Agent Skills — v2 Best Practices**
 
 Skills are the primary mechanism for giving Claude domain expertise. The open standard (Dec 2025) means the same `SKILL.md` works across Claude Code, `claude.ai`, the API, Cursor, Gemini CLI, Codex CLI, and Antigravity IDE. The SkillKit marketplace (Apr 2026) now offers 400,000+ skills.
 
@@ -218,7 +218,7 @@ Not all skill invocations are equal. The context field determines which mechanis
 
 ### **03**
 
-# **Routing Design & Subagents**
+## **Routing Design & Subagents**
 
 Routing is the highest-leverage design decision in any multi-agent system. Claude Code routes via subagent descriptions, model selection per agent, and the `Explore-Plan-Execute` pipeline. Getting this right prevents the two most common failures: context bloat and wrong model for the task.
 
@@ -356,7 +356,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 9
 
 ### **04**
 
-# **Hooks — All 27 Events (2026)**
+## **Hooks — All 27 Events (2026)**
 
 Hooks are the deterministic enforcement layer. The April 2026 release expanded hooks significantly: 27 events across 5 categories, 4 execution types, PostToolUseFailure now included, and duration_ms in PostToolUse inputs.
 
@@ -466,7 +466,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 12
 
 **05**
 
-# **MCP & Plugins**
+## **MCP & Plugins**
 
 MCP (Model Context Protocol) tools load their definitions directly into context. The GitHub MCP server alone carries 35 tools (~26K tokens of definitions). At scale, MCP tool definitions overload the context window — this is 'the 35-tool problem'.
 
@@ -541,7 +541,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 14
 
 ### **06**
 
-# **CLAUDE.md & Context Engineering**
+## **CLAUDE.md & Context Engineering**
 
 Context Engineering is the discipline of optimizing token utility within LLM constraints. The CLAUDE.md + .claudeignore pair is the project-level control surface. Memory is file-based — fully inspectable, editable, and version-controllable (no vector DB required).
 
@@ -637,7 +637,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 16
 
 ### **07**
 
-# **Token & Cost Optimization**
+## **Token & Cost Optimization**
 
 Combined optimization can reduce monthly API costs by **60-80%** for production agent applications. Average enterprise cost: $13/developer/active day, $150-250/developer/month. 90% of users stay under $30/active day.
 
@@ -755,7 +755,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 18
 
 **08**
 
-# **GitHub Actions & CI/CD**
+## **GitHub Actions & CI/CD**
 
 The April 2026 Claude Code update brought major CI/CD improvements: --from-pr now accepts GitLab merge-request, Bitbucket pull-request, and GitHub Enterprise PR URLs. OpenTelemetry tracing now honors privacy flags.
 
@@ -825,7 +825,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 20
 
 ### **09**
 
-# **Security — CVEs & Hardening**
+## **Security — CVEs & Hardening**
 
 Security in Claude Code operates at 7 layers. The April 2026 changelog patched several critical permission bypass vulnerabilities in Bash handling. This chapter covers all known CVEs, the MCP rug pull attack, and hardening patterns.
 
@@ -880,7 +880,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 22
 
 ### **10**
 
-# **Anti-Patterns Catalog**
+## **Anti-Patterns Catalog**
 
 These are documented failure modes drawn from Anthropic's official best-practices docs, the Dive-into-Claude-Code architectural analysis, and community research across thousands of production deployments.
 
@@ -1028,7 +1028,7 @@ Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 26
 
 ### **11**
 
-# **Latest Additions (Apr 2026)**
+## **Latest Additions (Apr 2026)**
 
 The awesome-claude-code repo (now 35.9K+ I, 903 commits) hit issue #1000 on March 12 and posted its April 2026 update on April 6. Submissions continue at ~10+ per week.
 
@@ -1104,7 +1104,7 @@ I **VILA-Lab/Dive-into-Claude-Code** — 27 hook events (not 12), 10-component p
 
 Claude & GitHub Agents — Best Practices v2  |  April 2026  |  Page 28
 
-# **12 Quick Reference & Checklists**
+## **12 Quick Reference & Checklists**
 
 ## **New Project Setup Checklist**
 

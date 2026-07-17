@@ -1,0 +1,535 @@
+{
+ "section": "workflow-orchestration",
+ "page_count": 24,
+ "pages": [
+  {
+   "id": "workflow-orchestration/01-executive-summary",
+   "title": "Executive Summary - Workflow Orchestration in the Agentic AI Era",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 1517,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.57
+    },
+    {
+     "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+     "score": 0.47
+    },
+    {
+     "id": "workflow-orchestration/21-future-predictions",
+     "score": 0.45
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/02-evolution-timeline",
+   "title": "Technology Evolution Timeline - From BPM to Agentic Orchestration",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 1720,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.57
+    },
+    {
+     "id": "workflow-orchestration/04-temporal-deep-dive",
+     "score": 0.43
+    },
+    {
+     "id": "workflow-orchestration/05-camunda-deep-dive",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+   "title": "Workflow vs Agent Architecture - Determinism, Adaptivity, and Design Principles",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 2028,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.47
+    },
+    {
+     "id": "workflow-orchestration/04-temporal-deep-dive",
+     "score": 0.43
+    },
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.4
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/04-temporal-deep-dive",
+   "title": "Temporal Deep Dive - Architecture, Patterns, and AI Integration",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 1373,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+     "score": 0.43
+    },
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.43
+    },
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/05-camunda-deep-dive",
+   "title": "Camunda Deep Dive - BPMN, BPM, and AI Integration",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 1523,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.42
+    },
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.38
+    },
+    {
+     "id": "workflow-orchestration/19-reference-architectures",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/06-durable-vs-cognitive-execution",
+   "title": "Durable Execution vs. Cognitive Execution",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "temporal",
+    "agents",
+    "determinism"
+   ],
+   "word_count": 1939,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/04-temporal-deep-dive",
+     "score": 0.37
+    },
+    {
+     "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+     "score": 0.35
+    },
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/07-ai-coding-orchestrators",
+   "title": "AI Coding Orchestrators - Claude Code, GitHub Copilot, and the Meta-Orchestrator Pattern",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 1551,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.38
+    },
+    {
+     "id": "coding-tools/claude/claude-code-complete-2026",
+     "score": 0.35
+    },
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/08-agent-frameworks-comparison",
+   "title": "Agent Frameworks Comparison",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "agents",
+    "langgraph",
+    "crewai",
+    "pydanticai",
+    "google-adk",
+    "mastra"
+   ],
+   "word_count": 2910,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cloud-platforms/azure/hyperscaler-deep-dive-azure",
+     "score": 0.34
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/09-tool-calling-orchestration",
+   "title": "Tool Calling Orchestration",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "tool-calling",
+    "agents",
+    "mcp"
+   ],
+   "word_count": 1657,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/10-mcp-impact",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/10-mcp-impact",
+   "title": "MCP (Model Context Protocol) Impact on Orchestration",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "mcp",
+    "tool-discovery",
+    "agents",
+    "protocol"
+   ],
+   "word_count": 1513,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Deep_Research_2026",
+     "score": 0.49
+    },
+    {
+     "id": "coding-tools/claude/mcp-deep-guide",
+     "score": 0.38
+    },
+    {
+     "id": "agentic-systems/skill/coding/08-mcp-integration-and-memory",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/11-a2a-orchestration-patterns",
+   "title": "A2A (Agent-to-Agent) Orchestration Patterns",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "agents",
+    "multi-agent",
+    "a2a"
+   ],
+   "word_count": 1589,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/12-human-in-the-loop-architectures",
+   "title": "Human-in-the-Loop Architectures",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "hitl",
+    "governance",
+    "human-oversight",
+    "agents"
+   ],
+   "word_count": 1725,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "interview-prep/EA_HITL_HOTL_HOOL_Interview_Questions",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/13-memory-vs-workflow-state",
+   "title": "Memory vs. Workflow State",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "memory",
+    "state",
+    "agents",
+    "langgraph",
+    "temporal"
+   ],
+   "word_count": 1632,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/04-temporal-deep-dive",
+     "score": 0.38
+    },
+    {
+     "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/14-ai-planning-vs-workflow-engines",
+   "title": "AI Planning vs. Workflow Engines",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "ai-planning",
+    "workflow-engines",
+    "agents",
+    "htn"
+   ],
+   "word_count": 1570,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/15-reliability-playbook",
+   "title": "Reliability Playbook for Agentic Systems",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "reliability",
+    "sre",
+    "failure-modes",
+    "agents"
+   ],
+   "word_count": 1534,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/16-observability-framework",
+   "title": "Observability Framework for Orchestrated AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "observability",
+    "tracing",
+    "monitoring",
+    "opentelemetry"
+   ],
+   "word_count": 1560,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/17-security-architecture",
+   "title": "Security Architecture for Orchestrated AI Systems",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "security",
+    "prompt-injection",
+    "authorization",
+    "secrets"
+   ],
+   "word_count": 1612,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/mcp/MCP_Enterprise_Security_Governance_Operations_2026",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/18-enterprise-governance-model",
+   "title": "Enterprise Governance Model",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "governance",
+    "compliance",
+    "versioning",
+    "enterprise"
+   ],
+   "word_count": 1539,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/19-reference-architectures",
+   "title": "Reference Architectures - From BPM-First to AI-Native",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 2041,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.4
+    },
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.39
+    },
+    {
+     "id": "workflow-orchestration/05-camunda-deep-dive",
+     "score": 0.36
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/20-decision-matrix",
+   "title": "Decision Matrix - Choosing Your Orchestration Platform",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 2725,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.32
+    },
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/21-future-predictions",
+   "title": "Future Outlook: Workflow Orchestration 2026\u20132035",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 1751,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.45
+    },
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.38
+    },
+    {
+     "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "workflow-orchestration/22-anti-patterns-catalog",
+   "title": "Anti-Patterns Catalog: Orchestration and Agentic Systems",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "anti-patterns",
+    "lessons-learned",
+    "agents",
+    "design"
+   ],
+   "word_count": 1954,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/23-capability-maturity-model",
+   "title": "Orchestration Capability Maturity Model (CMM)",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration",
+    "maturity-model",
+    "cmm",
+    "transformation",
+    "enterprise"
+   ],
+   "word_count": 1712,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "workflow-orchestration/index",
+   "title": "Workflow Orchestration in the Agentic AI Era",
+   "doc_type": "guide",
+   "tags": [
+    "workflow-orchestration"
+   ],
+   "word_count": 421,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "workflow-orchestration/01-executive-summary",
+     "score": 0.44
+    },
+    {
+     "id": "workflow-orchestration/02-evolution-timeline",
+     "score": 0.37
+    },
+    {
+     "id": "workflow-orchestration/03-workflow-vs-agent-architecture",
+     "score": 0.31
+    }
+   ]
+  }
+ ]
+}

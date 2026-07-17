@@ -1,0 +1,365 @@
+{
+ "section": "ai-soc-playbooks",
+ "page_count": 15,
+ "pages": [
+  {
+   "id": "ai-soc-playbooks/index",
+   "title": "AI-Powered SOC Automation Playbooks",
+   "doc_type": "unknown",
+   "tags": [
+    "soc",
+    "ai-security",
+    "automation",
+    "playbooks",
+    "soar",
+    "agentic-soc"
+   ],
+   "word_count": 929,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/part-10-standards-compliance",
+     "score": 0.43
+    },
+    {
+     "id": "ai-soc-playbooks/part-14-future-soc",
+     "score": 0.38
+    },
+    {
+     "id": "ai-soc-playbooks/part-01-soc-operating-model",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-01-soc-operating-model",
+   "title": "Part 01 \u2014 SOC Operating Model & Maturity",
+   "doc_type": "unknown",
+   "tags": [
+    "soc",
+    "operating-model",
+    "maturity",
+    "mttd",
+    "mttr",
+    "kpis",
+    "hitl"
+   ],
+   "word_count": 3214,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/index",
+     "score": 0.35
+    },
+    {
+     "id": "ai-soc-playbooks/part-10-standards-compliance",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-02-ai-use-cases",
+   "title": "Part 02 \u2014 AI Use Cases in Security Operations",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-triage",
+    "ueba",
+    "threat-intel",
+    "dfir",
+    "detection-engineering",
+    "malware-analysis"
+   ],
+   "word_count": 3554,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/09-security-operations",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-03-agentic-soc",
+   "title": "Part 03 \u2014 Agentic SOC Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "agentic-soc",
+    "multi-agent",
+    "mcp",
+    "a2a",
+    "agent-orchestration",
+    "agent-governance"
+   ],
+   "word_count": 3181,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-security-governance/deep-mind/Part13_AI_SOC",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-04-automation-playbooks",
+   "title": "Part 04 \u2014 AI Automation Playbooks",
+   "doc_type": "unknown",
+   "tags": [
+    "playbooks",
+    "soar",
+    "incident-response",
+    "automation",
+    "mitre-attack",
+    "phishing",
+    "ransomware"
+   ],
+   "word_count": 6298,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-soc-playbooks/part-05-soar-platforms",
+   "title": "Part 05 \u2014 SOAR Platform Comparison",
+   "doc_type": "unknown",
+   "tags": [
+    "soar",
+    "microsoft-sentinel",
+    "splunk",
+    "cortex-xsoar",
+    "google-secops",
+    "tines"
+   ],
+   "word_count": 2291,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-soc-playbooks/part-06-ai-models",
+   "title": "Part 06 \u2014 AI Models for SOC",
+   "doc_type": "unknown",
+   "tags": [
+    "llm",
+    "gpt",
+    "claude",
+    "gemini",
+    "security-llm",
+    "prompt-engineering",
+    "rag",
+    "model-selection"
+   ],
+   "word_count": 2119,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-architecture/ai-architecture/enterprise-multi-model-ai-strategy",
+     "score": 0.33
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-07-ai-safety",
+   "title": "Part 07 \u2014 AI Safety & Adversarial Risks in SOC",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-safety",
+    "prompt-injection",
+    "hallucination",
+    "model-poisoning",
+    "guardrails"
+   ],
+   "word_count": 1607,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/part-10-standards-compliance",
+     "score": 0.32
+    },
+    {
+     "id": "cybersec-architect/04-ai-security",
+     "score": 0.32
+    },
+    {
+     "id": "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-08-observability",
+   "title": "Part 08 \u2014 AI SOC Observability & Evaluation",
+   "doc_type": "unknown",
+   "tags": [
+    "observability",
+    "opentelemetry",
+    "langfuse",
+    "arize",
+    "evaluation",
+    "drift",
+    "kpis"
+   ],
+   "word_count": 1801,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-soc-playbooks/part-09-enterprise-architecture",
+   "title": "Part 09 \u2014 Enterprise Architecture Integration",
+   "doc_type": "unknown",
+   "tags": [
+    "togaf",
+    "enterprise-architecture",
+    "zero-trust",
+    "capability-map",
+    "cloud-landing-zone"
+   ],
+   "word_count": 1727,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/index",
+     "score": 0.33
+    },
+    {
+     "id": "ai-soc-playbooks/part-14-future-soc",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-10-standards-compliance",
+   "title": "Part 10 \u2014 Standards & Compliance Mapping",
+   "doc_type": "unknown",
+   "tags": [
+    "nist",
+    "mitre",
+    "iso42001",
+    "eu-ai-act",
+    "owasp-llm",
+    "compliance"
+   ],
+   "word_count": 4331,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.45
+    },
+    {
+     "id": "ai-soc-playbooks/index",
+     "score": 0.43
+    },
+    {
+     "id": "ai-protocols/standards/AI_Protocols_Standards_Service_Industry_Guide_2026",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-11-implementation-roadmap",
+   "title": "Part 11 \u2014 Implementation Roadmap & Reference Architecture",
+   "doc_type": "unknown",
+   "tags": [
+    "implementation",
+    "roadmap",
+    "reference-architecture",
+    "terraform",
+    "aws",
+    "azure",
+    "gcp"
+   ],
+   "word_count": 3230,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-soc-playbooks/part-12-finops",
+   "title": "Part 12 \u2014 AI SOC FinOps & Cost Management",
+   "doc_type": "unknown",
+   "tags": [
+    "finops",
+    "cost-optimization",
+    "token-budget",
+    "roi",
+    "model-routing"
+   ],
+   "word_count": 2227,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "databricks-agentic-ai/part-12-finops",
+     "score": 0.4
+    },
+    {
+     "id": "enterprise-architecture/ai-architecture/AI-FinOps-Cost-Management-Guide",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-13-vendor-landscape",
+   "title": "Part 13 \u2014 AI SOC Vendor Landscape",
+   "doc_type": "unknown",
+   "tags": [
+    "vendor",
+    "platform",
+    "edr",
+    "siem",
+    "soar",
+    "llm",
+    "mdr",
+    "evaluation"
+   ],
+   "word_count": 2375,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "cybersec-architect/09-security-operations",
+     "score": 0.3
+    }
+   ]
+  },
+  {
+   "id": "ai-soc-playbooks/part-14-future-soc",
+   "title": "Part 14 \u2014 Future of AI SOC",
+   "doc_type": "unknown",
+   "tags": [
+    "future",
+    "autonomous-soc",
+    "frontier-ai",
+    "multimodal",
+    "self-healing",
+    "agentic"
+   ],
+   "word_count": 2331,
+   "last_reviewed": "2026-07-16",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-soc-playbooks/index",
+     "score": 0.38
+    },
+    {
+     "id": "ai-soc-playbooks/part-10-standards-compliance",
+     "score": 0.35
+    },
+    {
+     "id": "databricks-agentic-ai/part-12-finops",
+     "score": 0.33
+    }
+   ]
+  }
+ ]
+}

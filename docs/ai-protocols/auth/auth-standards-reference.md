@@ -224,6 +224,7 @@ Use this decision framework when adding a new tool connector to an enterprise AI
 | RFC 7523 | JWT Profile for OAuth 2.0 Client Authentication and Authorization Grants |
 | MCP | Model Context Protocol; Anthropic's open standard for AI tool integration via typed tool schemas |
 | A2A | Agent-to-Agent; Google's protocol for AI agents communicating with each other |
+| CAB | Change Advisory Board; committee that approves IT change requests in ITSM frameworks |
 | CAE | Continuous Access Evaluation; real-time token revocation based on policy events (sub-30 second) |
 | JTI | JWT ID claim; unique identifier for a JWT token; used for replay prevention and revocation |
 | SAML | Security Assertion Markup Language; XML-based SSO federation standard |

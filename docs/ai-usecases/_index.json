@@ -1,0 +1,631 @@
+{
+ "section": "ai-usecases",
+ "page_count": 37,
+ "pages": [
+  {
+   "id": "ai-usecases/01_aviation",
+   "title": "Meridian Global Airlines Case Study",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 9543,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/Case_06_Skyline_Disruption_Control_Tower",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/02_banking",
+   "title": "Banking Case Study: Continental Union Bank \u2014 AI Underwriting Copilot",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6372,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-13-case-studies/global-bank",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/03_healthcare",
+   "title": "Healthcare Case Study: Northfield Health \u2014 Clinical Documentation & Prior Auth",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5413,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ea-masterclass/module-13-case-studies/healthcare",
+     "score": 0.38
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/04_manufacturing",
+   "title": "Manufacturing Case Study: Ironhaven Industrial \u2014 QC Triage & Supply Chain",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5626,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/05_telecom",
+   "title": "Telecom Case Study: Vantar Communications \u2014 NOC Triage & Customer Care",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6381,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/06_government",
+   "title": "Government Case Study: Meridian DHS \u2014 Benefits Screening & Caseworker Copilot",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6011,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/Case_13_StateDHS_Benefits_Navigation_Agent",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/07_pharma",
+   "title": "Pharma Case Study: Vireon Therapeutics \u2014 Literature Intelligence & Regulatory Drafting",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6419,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/08_energy",
+   "title": "Energy Case Study: Cascadia Power & Light \u2014 Predictive Maintenance & Grid Advisory",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6256,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/Case_09_Palisade_Grid_Operations_Agent",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/09_logistics",
+   "title": "Logistics Case Study: Meridian Freight \u2014 Routing & Warehouse Robotics",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6776,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/10_media",
+   "title": "Media Case Study: Solstice Media \u2014 Content Localization & IP Compliance",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6798,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/CEO_Agent_Failure_Modes_Governance_Harness",
+   "title": "Failure Modes, Governance Harness & the Path to Production-Grade Reliability",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 3024,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/CEO_Agent_Solution_Blueprint",
+     "score": 0.39
+    },
+    {
+     "id": "ai-usecases/ceo_agent_pitch",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/CEO_Agent_Solution_Blueprint",
+   "title": "CEO Agent & Meeting Prep Agent",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 2860,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/ceo_agent_pitch",
+     "score": 0.64
+    },
+    {
+     "id": "ai-usecases/CEO_Agent_Failure_Modes_Governance_Harness",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/Case_01_Meridian_Fraud_Investigation_Agents",
+   "title": "The Agent That Proposes, Never Disposes",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 6110,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_02_Cascadia_Prior_Authorization_Agent",
+   "title": "Decision Support, Never Decision",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4348,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_03_Ironclad_Maintenance_Orchestration_Agent",
+   "title": "Graduated Autonomy on the Factory Floor",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4478,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_04_Northline_Customer_Service_Agents",
+   "title": "One Conversation, Five Specialist Brains",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4520,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_05_Aurelia_Research_Assistant_Agent",
+   "title": "Necessary But Not Sufficient",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4229,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_06_Skyline_Disruption_Control_Tower",
+   "title": "Options, Not Recommendations",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4702,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/01_aviation",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/Case_07_Harborstone_Claims_Processing_Agents",
+   "title": "Evidence Verifiability, Not Convenience",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4883,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_08_Sterling_Loan_Underwriting_Agent",
+   "title": "The Denial Letter Problem",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4565,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_09_Palisade_Grid_Operations_Agent",
+   "title": "The Storm That Took Ninety Minutes to Diagnose",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4570,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/08_energy",
+     "score": 0.37
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/Case_10_Vantara_Procurement_Negotiation_Agents",
+   "title": "The Spot-Rate Market Nobody Could Watch Fast Enough",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4659,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_11_Vaxion_Clinical_Trial_Matching_Agent",
+   "title": "A Demo That Should Never Have Left the Room",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5990,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/Case_13_StateDHS_Benefits_Navigation_Agent",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/Case_12_Meritage_Dynamic_Pricing_Agent",
+   "title": "Two VPs, One Agent, No Agreement on Who Owns It",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5238,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_13_StateDHS_Benefits_Navigation_Agent",
+   "title": "The Mainframe Owner Who Said No",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5676,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/06_government",
+     "score": 0.32
+    },
+    {
+     "id": "ai-usecases/Case_11_Vaxion_Clinical_Trial_Matching_Agent",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/Case_14_Falkirk_SOC_Threat_Response_Agent",
+   "title": "The CISO Who Wanted Autonomy and the Identity Lead Who Said Absolutely Not",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5635,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Case_15_Correlate_Recruiting_Screening_Agent",
+   "title": "The Architecture That Got Rejected Before It Was Even a Proposal",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 5623,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/EU_Banking_AI_Agent_Evaluation_Framework",
+   "title": "EU Banking AI Agent Evaluation Framework",
+   "doc_type": "unknown",
+   "tags": [
+    "ai-usecases",
+    "eu-banking",
+    "evaluation",
+    "eu-ai-act",
+    "gdpr",
+    "dora",
+    "agentcore"
+   ],
+   "word_count": 3670,
+   "last_reviewed": "2026-07-13",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
+     "score": 0.48
+    },
+    {
+     "id": "ai-development/testing/AI_Agent_Evaluation_Framework_Complete",
+     "score": 0.31
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/EU_Banking_AI_Evaluation_Compliance_Guide",
+   "title": "EU Banking AI Evaluation & Compliance Guide",
+   "doc_type": "unknown",
+   "tags": [
+    "eu-ai-act",
+    "gdpr",
+    "dora",
+    "eba",
+    "rai",
+    "compliance",
+    "banking"
+   ],
+   "word_count": 7840,
+   "last_reviewed": "2026-07-14",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/EU_Banking_AI_Agent_Evaluation_Framework",
+     "score": 0.48
+    },
+    {
+     "id": "agentic-ui/responsible-ai",
+     "score": 0.42
+    },
+    {
+     "id": "cybersec-architect/08-ai-governance",
+     "score": 0.42
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/Enterprise_AI_Case_Studies",
+   "title": "Enterprise AI Architecture Case Studies",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 4612,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/Part6_Banking_Case_Study",
+   "title": "Banking Case Study: Enterprise AI Authentication",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases",
+    "banking",
+    "authentication",
+    "zero-trust",
+    "enterprise-ai"
+   ],
+   "word_count": 1813,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-protocols/auth/Part3_Identity_OBO_Sessions",
+     "score": 0.42
+    },
+    {
+     "id": "ai-security-governance/security/Part4_Runtime_Security_Governance",
+     "score": 0.41
+    },
+    {
+     "id": "ai-security-governance/security/Part1_Industry_Survey",
+     "score": 0.39
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/airgapped-banking-architecture",
+   "title": "Air-Gapped AI Infrastructure for Enterprise Banking",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases",
+    "air-gap",
+    "banking",
+    "llm",
+    "on-prem",
+    "compliance"
+   ],
+   "word_count": 805,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": []
+  },
+  {
+   "id": "ai-usecases/ceo_agent_pitch",
+   "title": "CEO Agent Pitch",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 1577,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/CEO_Agent_Solution_Blueprint",
+     "score": 0.64
+    },
+    {
+     "id": "ai-usecases/CEO_Agent_Failure_Modes_Governance_Harness",
+     "score": 0.32
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/eu-bank-ai-copilot-architecture",
+   "title": "EU Bank AI Copilot \u2014 Architecture & Code Reference",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases",
+    "banking",
+    "copilotkit",
+    "strands",
+    "mcp",
+    "aws-agentcore"
+   ],
+   "word_count": 4303,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/eu-bank-ai-copilot-complete",
+     "score": 0.58
+    },
+    {
+     "id": "ai-usecases/eu-bank-sequence-diagrams",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/eu-bank-ai-copilot-complete",
+   "title": "EU Bank AI Copilot Platform",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases",
+    "copilotkit",
+    "strands-agents",
+    "agentcore"
+   ],
+   "word_count": 9899,
+   "last_reviewed": "2026-07-12",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/eu-bank-sequence-diagrams",
+     "score": 0.63
+    },
+    {
+     "id": "ai-usecases/eu-bank-ai-copilot-architecture",
+     "score": 0.58
+    },
+    {
+     "id": "agentic-systems/platform/MultiTenantAgentPlatform_Architecture",
+     "score": 0.41
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/eu-bank-sequence-diagrams",
+   "title": "EU Bank AI Copilot \u2014 Sequence Diagrams",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases",
+    "eu-bank",
+    "sequence-diagrams",
+    "mermaid",
+    "authentication",
+    "mcp"
+   ],
+   "word_count": 2518,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "ai-usecases/eu-bank-ai-copilot-complete",
+     "score": 0.63
+    },
+    {
+     "id": "ai-usecases/eu-bank-ai-copilot-architecture",
+     "score": 0.35
+    }
+   ]
+  },
+  {
+   "id": "ai-usecases/index",
+   "title": "Use Cases",
+   "doc_type": "guide",
+   "tags": [
+    "ai-usecases"
+   ],
+   "word_count": 379,
+   "last_reviewed": "2026-07-10",
+   "status": "current",
+   "top_similar": [
+    {
+     "id": "enterprise-ai-report/part-18-case-studies",
+     "score": 0.35
+    }
+   ]
+  }
+ ]
+}

@@ -45,7 +45,7 @@ Practice MCQs with explanations
 
 **DOMAIN 1: Agentic Architecture & Orchestration — 27% of exam**
 
-# **DOMAIN 1: Agentic Architecture & Orchestration**
+## **DOMAIN 1: Agentic Architecture & Orchestration**
 
 *27% of scored content — the most heavily tested domain.*
 
@@ -179,7 +179,7 @@ This is a HIGH-PRIORITY topic. The exam frequently tests the difference between 
 
 **DOMAIN 2: Tool Design & MCP Integration — 18% of exam**
 
-# **DOMAIN 2: Tool Design & MCP Integration**
+## **DOMAIN 2: Tool Design & MCP Integration**
 
 ## **2.1  Writing Effective Tool Descriptions**
 
@@ -272,7 +272,7 @@ Giving an agent too many tools degrades reliability. The exam tests the principl
 
 **DOMAIN 3: Claude Code Configuration & Workflows — 20% of exam**
 
-# **DOMAIN 3: Claude Code Configuration & Workflows**
+## **DOMAIN 3: Claude Code Configuration & Workflows**
 
 ## **3.1  CLAUDE.md Configuration Hierarchy**
 
@@ -378,7 +378,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 
 **DOMAIN 4: Prompt Engineering & Structured Output — 20% of exam**
 
-# **DOMAIN 4: Prompt Engineering & Structured Output**
+## **DOMAIN 4: Prompt Engineering & Structured Output**
 
 ## **4.1  Explicit Criteria vs Vague Instructions**
 
@@ -498,7 +498,7 @@ Schema design best practices:
 
 **DOMAIN 5: Context Management & Reliability — 15% of exam**
 
-# **DOMAIN 5: Context Management & Reliability**
+## **DOMAIN 5: Context Management & Reliability**
 
 ## **5.1  Context Window Management**
 
@@ -596,7 +596,7 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | D) Offer to resolve but explain it may take a few minutes to investigate. |
 | Explanation: When a customer EXPLICITLY requests a human agent, the system must honor that request immediately — without attempting investigation, without asking clarifying questions, without offering alternatives first. The customer has made their preference clear. This is a core escalation principle in the exam guide. |
 
-# **SCENARIO-BASED PRACTICE QUESTIONS**
+## **SCENARIO-BASED PRACTICE QUESTIONS**
 
 ## **Scenario A: Multi-Agent Research System (3 Questions)**
 
@@ -654,7 +654,7 @@ Multiple customer matches returned — ask for additional identifiers, do NOT he
 | D) The tool_choice setting should be changed to 'any' instead of forced tool selection. |
 | Explanation: This is the key distinction: tool_use with JSON schema eliminates SYNTAX errors (malformed JSON, wrong types, missing required fields) but does NOT prevent SEMANTIC errors (values that are internally inconsistent, calculations that don't add up, dates in wrong sequence). Semantic validation requires post-processing business logic in your application code. |
 
-# **FLASHCARDS**
+## **FLASHCARDS**
 
 Study these card pairs. Cover the right side, answer, then check.
 
@@ -749,7 +749,7 @@ Study these card pairs. Cover the right side, answer, then check.
 | D5 CONTEXT What is context degradation and how do you detect it? | ANSWER When a model starts referencing 'typical patterns' instead of specific artifacts discovered earlier. Signal to start a fresh session with an injected summary. |
 | --- | --- |
 
-# **COMPARISON TABLES (High-Value Exam Topics)**
+## **COMPARISON TABLES (High-Value Exam Topics)**
 
 ## **Programmatic Enforcement vs Prompt Guidance**
 
@@ -797,7 +797,7 @@ Study these card pairs. Cover the right side, answer, then check.
 | 'any' | Model MUST call a tool (any available) | When structured output always required |
 | {type:'tool', name:'X'} | Model MUST call tool X specifically | Enforce required first step (e.g., extract_metadata first) |
 
-# **QUICK REVISION SHEET**
+## **QUICK REVISION SHEET**
 
 *One-page summary of the highest-probability exam topics.*
 
@@ -871,7 +871,7 @@ Resuming with stale tool results → better to start fresh with injected summary
 **A:**Attempted — what was tried.
 **P:**Partial results — what was accomplished before failure.
 
-# **GOOD LUCK ON YOUR EXAM!**
+## **GOOD LUCK ON YOUR EXAM!**
 
 You've covered all 5 domains, 19+ practice questions, 30+ flashcards, and the top exam traps. Remember: the exam rewards architectural judgment over memorization. Ask yourself 'what provides the strongest guarantee?' and 'what is the root cause?' for each question.
 

@@ -27,7 +27,7 @@ Most interview prep resources teach you what to say. This guide teaches you how 
 | PART ONE: THE THINKING LAYER Mental Models, First Principles & Problem Decomposition |
 | --- |
 
-# **1. The Cognitive Stack — How Senior Engineers Think**
+## **1. The Cognitive Stack — How Senior Engineers Think**
 
 Research from Interview Node and leading FAANG preparation coaches reveals the same pattern: senior ML candidates don't know more facts than junior ones — they have a more reliable thinking architecture. When presented with any unfamiliar problem, they immediately run through a private mental checklist before speaking.
 
@@ -71,7 +71,7 @@ These are the thinking frameworks most valued by top AI consultants and ML inter
 | PART TWO: THE BRAINSTORMING PLAYBOOK Structured Problem Expansion Before You Solve Anything |
 | --- |
 
-# **2. The Problem Expansion Protocol**
+## **2. The Problem Expansion Protocol**
 
 The most common failure mode in ML interviews is premature solution convergence — answering the stated question instead of the actual problem. Leading consultants use a problem expansion protocol before proposing anything.
 
@@ -118,7 +118,7 @@ Every proposed solution rests on hidden assumptions. Surfacing them before they 
 | PART THREE: SOLUTIONIZING From Expanded Problem to Principled Solution |
 | --- |
 
-# **3. The Solutionizing Framework**
+## **3. The Solutionizing Framework**
 
 After expanding the problem, most candidates jump to 'the best model'. Senior engineers do something different: they generate multiple solution candidates, evaluate each against explicit constraints, and select based on tradeoffs — not preference.
 
@@ -227,7 +227,7 @@ Re-ranking (Precision stage): Gradient boosted ranker (LightGBM/XGBoost) with cr
 | PART FOUR: VALUE GENERATION Translating Technical Solutions into Business Impact |
 | --- |
 
-# **4. The Value Generation Mindset**
+## **4. The Value Generation Mindset**
 
 The single biggest differentiator between an ML engineer and an ML lead is the ability to connect every technical decision to a business outcome. Top AI consultants use this framing constantly — and interviewers at senior levels explicitly look for it.
 
@@ -273,7 +273,7 @@ AI consultants lose credibility the moment they overpromise. Use epistemic hones
 | PART FIVE: DOMAIN DEEP DIVES NLP · Search · MLOps · AI Agents — With Brainstorming Exercises |
 | --- |
 
-# **5. NLP & Large Language Models**
+## **5. NLP & Large Language Models**
 
 ## **5.1 Thought Process: Choosing Between Models**
 
@@ -299,7 +299,7 @@ The most common NLP interview mistake: jumping to the largest model. Train this 
 | Rung 4 — Extractive Summarisation BERT-Extractive or LexRank to pull representative sentences per cluster. Feed cluster + sample sentences to an LLM to write the weekly briefing. Human-readable, saves analyst hours. |
 | Value Statement This pipeline reduces analyst time from 40h/week to 5h/week (review and approval). It surfaces emerging issues 3 days earlier than manual review. That's a $200K+ annual saving at a senior analyst salary. |
 
-# **6. Search & Retrieval — Brainstorming Heavy**
+## **6. Search & Retrieval — Brainstorming Heavy**
 
 ## **6.1 The Retrieval Failure Taxonomy**
 
@@ -325,7 +325,7 @@ Before proposing any retrieval system improvement, map which failure type you're
 | 2-Week Fix Add a semantic synonym expansion layer: pass the query through a small LLM to generate 3 paraphrase variants. Re-run BM25 on all 4 variants. Union the result sets. Re-rank with a lightweight cross-encoder. Ships fast, measurable in 1 week. |
 | Value Statement If the 22% zero-purchase rate drops to 15%, at 1M searches/day and 3% average order value conversion, that's approximately 70K additional purchases weekly. Even at $30 average order value, that's $2.1M GMV/week recoverable. |
 
-# **7. MLOps — The Production Mindset**
+## **7. MLOps — The Production Mindset**
 
 ## **7.1 The Five Failure Modes of ML in Production**
 
@@ -350,7 +350,7 @@ Every experienced ML engineer has shipped a model that worked in notebooks and f
 | Step 4 — Check New Fraud Patterns Interview the fraud ops team: are these fraud transactions from a new geography, a new merchant type, or a new attack pattern? Fraudsters adapt; the model doesn't auto-adapt. |
 | Step 5 — Emergency Mitigations (a) Lower the decision threshold (from 0.7 → 0.5) to increase recall at the cost of more false positives. (b) Add a rule layer on top of the model to catch the new fraud pattern while you collect labels. (c) Retrain on data including the new fraud examples within 48h. |
 
-# **8. AI Agents — The New Frontier**
+## **8. AI Agents — The New Frontier**
 
 ## **8.1 Agent Design Thinking**
 
@@ -378,7 +378,7 @@ AI agents are the fastest-growing topic in ML interviews in 2025-26. Interviewer
 | PART SIX: BEHAVIOURAL MASTERY Storytelling, Leadership & the STAR+ Framework |
 | --- |
 
-# **9. Behavioural Interviews — The Thought Process Behind the Story**
+## **9. Behavioural Interviews — The Thought Process Behind the Story**
 
 Senior ML interviews weight behavioural rounds heavily because technical skills are table-stakes. What separates principals from mid-level engineers is how they navigate ambiguity, conflict, and failure. Here is the thinking behind strong behavioural answers.
 
@@ -414,7 +414,7 @@ Prepare one rich, specific story for each archetype. Every behavioural question 
 | PART SEVEN: YOUR 60-DAY UPSKILLING ROADMAP A Research-Backed Learning System, Not Just a Study Plan |
 | --- |
 
-# **10. The 60-Day Upskilling System**
+## **10. The 60-Day Upskilling System**
 
 IBM, McKinsey, and MIT research agree: AI upskilling fails when it is purely passive (watching lectures). It succeeds when it combines deliberate practice, social learning, and progressive challenge. This roadmap is built on that evidence.
 
@@ -443,7 +443,7 @@ IBM, McKinsey, and MIT research agree: AI upskilling fails when it is purely pas
 | QUICK REFERENCE CARD The Condensed Cheat Sheet for the Day Before Your Interview |
 | --- |
 
-# **11. Pre-Interview Day Checklist**
+## **11. Pre-Interview Day Checklist**
 
 | Habit | What It Signals |
 | --- | --- |
