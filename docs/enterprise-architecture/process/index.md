@@ -27,9 +27,10 @@ Guides and playbooks for enterprise architecture processes — covering lifecycl
 
 - [EA Mastery Guide](/knowledge-docs/enterprise-architecture/process/EA_Mastery_Guide)
 
-- [EA Lifecycle Artifact Templates 2026](/knowledge-docs/enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026)
+- [AIDLC Artifact Reference Library](/knowledge-docs/ai-development/aidlc/AIDLC_Artifact_Reference_Library) <!-- EA_Lifecycle_Artifact_Templates_2026.md merged into this library 2026-07-17 -->
 
-- [EA Lifecycle Checklist](/knowledge-docs/enterprise-architecture/process/EA_Lifecycle_Checklist)
+- [EA Strategy Playbook](/knowledge-docs/enterprise-architecture/strategy/EA_Strategy_Playbook) <!-- EA_Lifecycle_Checklist.md merged into this playbook 2026-07-17 -->
+
 
 - [EA Real Life Transcript](/knowledge-docs/enterprise-architecture/process/EA_Real_Life_Transcript)
 

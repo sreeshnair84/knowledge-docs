@@ -1,14 +1,18 @@
 ---
 title: "LIFECYCLE CHECKLIST"
 date_created: 2026-07-10
-status: current
+status: archived
 source_type: converted-pdf
 source_file: "EA_Lifecycle_Checklist.pdf"
 doc_type: guide
 tags: ["enterprise-architecture"]
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-17
 covers_version: "N/A"
+supersededBy: "enterprise-architecture/strategy/EA_Strategy_Playbook"
 ---
+
+> **Archived 2026-07-17.** This checklist covered the same seven-stage EA lifecycle (Pitch → Approve → Design → Build → Operate → Review → Retire) as the [EA Strategy Playbook](/knowledge-docs/enterprise-architecture/strategy/EA_Strategy_Playbook), using identical stage and gate names. Every checklist item has been folded into a "Checklist" subsection within each of that page's seven stages, alongside the existing Strategic Purpose, Key Plays, RACI, and Gate content. Kept for reference only; not linked from the sidebar.
+
 **Page 1**
 
 # LIFECYCLE CHECKLIST
@@ -34,7 +38,7 @@ Version 1.0
 
 **Page 2**
 
-## **How to Use This Checklist**
+## How to Use This Checklist
 
 This checklist is organised into seven lifecycle stages. Each stage contains grouped checklist items with ownership and gate criteria. Work through each stage sequentially. No stage should be considered complete until all mandatory items are checked. Items marked with I are high-risk gate items that require explicit ARB sign-off before proceeding.
 
@@ -46,13 +50,13 @@ This checklist is organised into seven lifecycle stages. Each stage contains gro
 
 **Page 3**
 
-### **Stage 1: Pitch / Demand**
+### Stage 1: Pitch / Demand
 
 Gate: Architecture Intake Gate Owner: Enterprise Architect + Business Sponsor
 
 *The initiative enters the funnel. EA evaluates fit before resources are committed.*
 
-#### **Business Alignment**
+#### Business Alignment
 
 I Confirm the initiative has a named business sponsor with budget authority *No sponsor = no progression. Document name and role.* I Map the initiative to at least one active strategic theme or OKR *Themes: customer experience, operational resilience, innovation, cost efficiency.* I Document the business problem statement in one paragraph *Problem statement must be reviewed and signed off by the sponsor.*
 
@@ -66,13 +70,13 @@ I *Gate Check: EA must produce an Architecture Intake Assessment before the busi
 
 **Page 4**
 
-### **Stage 2: Approve / Govern**
+### Stage 2: Approve / Govern
 
 Gate: ARB Architecture Approval Gate Owner: Architecture Review Board (ARB)
 
 *Architecture Review Board assesses the business case and grants conditional approval.*
 
-#### **Business Case Review**
+#### Business Case Review
 
 - I Confirm the business case includes quantified benefits with measurement methodology
 
@@ -86,7 +90,7 @@ Gate: ARB Architecture Approval Gate Owner: Architecture Review Board (ARB)
 
 *Formula: [(Financial Gain - Cost) / Cost] x 100. Target > 15%.*
 
-#### **Architecture Standards Compliance**
+#### Architecture Standards Compliance
 
 I Verify proposed technology stack is on the approved technology radar *Reject or escalate any technology not on the approved / trial list.*
 
@@ -98,7 +102,7 @@ I Verify proposed technology stack is on the approved technology radar *Reject o
 
 - I Confirm security architecture requirements have been scoped
 
-#### **Governance & ARB Decision**
+#### Governance & ARB Decision
 
 - I Schedule formal ARB presentation and circulate materials 5 business days in advance
 
@@ -114,13 +118,13 @@ I *Gate Check: Signed ARB decision record required. Conditional approvals must l
 
 **Page 5**
 
-### **Stage 3: Design**
+### Stage 3: Design
 
 Gate: Solution Architecture Sign-off Gate Owner: Solution Architect + EA
 
 *Target state architecture is defined. Guardrails are set for the delivery team.*
 
-#### **Solution Architecture Documentation**
+#### Solution Architecture Documentation
 
 - I Produce Solution Architecture Document (SAD) covering functional and non-functional requirements
 
@@ -132,7 +136,7 @@ Gate: Solution Architecture Sign-off Gate Owner: Solution Architect + EA
 
 - I Define data flows and data ownership including PII / sensitive data classification
 
-#### **Non-Functional Requirements (NFRs)**
+#### Non-Functional Requirements (NFRs)
 
 - I Define availability SLA (e.g. 99.9% uptime) and validate infrastructure supports it
 
@@ -152,13 +156,13 @@ I *Gate Check: SAD must be peer-reviewed by at least one other EA and approved b
 
 **Page 6**
 
-### **Stage 4: Build / Deliver**
+### Stage 4: Build / Deliver
 
 Gate: Architecture Compliance Gate (Pre-Production) Owner: Solution Architect
 
 *Delivery teams implement. EA governs compliance and manages architecture drift.*
 
-#### **Architecture Governance During Delivery**
+#### Architecture Governance During Delivery
 
 - I Conduct architecture review at 30% and 70% delivery milestones *30% review catches structural issues before they are expensive to fix.*
 
@@ -168,7 +172,7 @@ Gate: Architecture Compliance Gate (Pre-Production) Owner: Solution Architect
 
 - I Validate integration contracts (API specs, event schemas) against approved design
 
-#### **Pre-Production Architecture Review**
+#### Pre-Production Architecture Review
 
 - I Verify deployed architecture matches approved SAD — check for drift
 
@@ -182,13 +186,13 @@ I *Gate Check: Signed architecture compliance sign-off required before productio
 
 **Page 7**
 
-### **Stage 5: Operate / Run**
+### Stage 5: Operate / Run
 
 Gate: Annual Portfolio Health Review Owner: EA + Platform / Operations Owner
 
 *The asset is in production. EA monitors portfolio health and manages standards drift.*
 
-#### **Portfolio Registration & Baseline**
+#### Portfolio Registration & Baseline
 
 - I Confirm system is registered in the application portfolio with full metadata
 
@@ -202,7 +206,7 @@ Gate: Annual Portfolio Health Review Owner: EA + Platform / Operations Owner
 
 - I Baseline the total cost of ownership (annual run cost) for benchmarking
 
-#### **Ongoing Compliance Monitoring**
+#### Ongoing Compliance Monitoring
 
 - I Confirm system appears on the architecture standards compliance dashboard
 
@@ -220,13 +224,13 @@ I *Operational KPIs to track: EOL technology %, standards compliance %, integrat
 
 **Page 8**
 
-### **Stage 6: Review / Optimise**
+### Stage 6: Review / Optimise
 
 Gate: Annual Rationalisation Decision Gate Owner: Enterprise Architect + Business Owner
 
 *Annual rationalisation assessment. Every asset is scored and a lifecycle decision is made.*
 
-#### **Application Rationalisation Assessment**
+#### Application Rationalisation Assessment
 
 - I Score the asset on Business Value (1–5) and Technical Health (1–5)
 
@@ -242,7 +246,7 @@ Gate: Annual Rationalisation Decision Gate Owner: Enterprise Architect + Busines
 
 *Business must agree with the technical health assessment.*
 
-#### **Optimisation Actions**
+#### Optimisation Actions
 
 - I If Retain: document refresh roadmap for next 12 months
 
@@ -262,13 +266,13 @@ I *Gate Check: Rationalisation decisions must be approved by the EA Practice Lea
 
 **Page 9**
 
-### **Stage 7: Retire / Decommission**
+### Stage 7: Retire / Decommission
 
 Gate: Decommission Completion Gate Owner: EA + Platform Owner + Legal
 
 *Controlled shutdown of the asset. Dependencies resolved. Contracts terminated. Data migrated.*
 
-#### **Dependency & Impact Analysis**
+#### Dependency & Impact Analysis
 
 - I Produce full dependency map: all upstream and downstream consumers of this system *Use the integration register and run discovery tooling to confirm completeness.*
 
@@ -278,7 +282,7 @@ Gate: Decommission Completion Gate Owner: EA + Platform Owner + Legal
 
 - I Assess impact on business processes — obtain business sign-off on transition plan
 
-#### **Data & Knowledge Management**
+#### Data & Knowledge Management
 
 - I Define data retention policy: archive, migrate, or delete per regulatory requirements *GDPR / legal hold requirements must be validated with Legal before deletion.*
 
@@ -288,7 +292,7 @@ Gate: Decommission Completion Gate Owner: EA + Platform Owner + Legal
 
 - I Transfer operational knowledge to the support team for any replacement system
 
-#### **Commercial & Contractual Close-Out**
+#### Commercial & Contractual Close-Out
 
 - I Confirm licence termination date and notify vendor
 
@@ -300,7 +304,7 @@ Gate: Decommission Completion Gate Owner: EA + Platform Owner + Legal
 
 - I Remove system from all access control lists, firewalls, and identity directories *Failure to remove access is a security and audit finding.*
 
-#### **Final Sign-Off & Portfolio Close**
+#### Final Sign-Off & Portfolio Close
 
 - I Remove system from the active application portfolio inventory
 

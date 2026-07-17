@@ -8,6 +8,8 @@ source_file: ""
 tags: ["enterprise-ai", "operating-model", "transformation", "strategy", "governance", "agentic-ai"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"
+research_date: 2026-07-14
+covers_through: "as of 2026-07-14"
 ---
 
 # Enterprise AI Research Report
@@ -26,7 +28,7 @@ It synthesises guidance from ISO, NIST, AWS, Azure, Google Cloud, OpenAI, Anthro
 
 ---
 
-## Report Structure
+## Report Structure (Table of Contents)
 
 | Part | Title | Coverage |
 |------|-------|----------|
@@ -212,7 +214,7 @@ ADLC phases: Agent Discovery → Goal Definition → Task Modelling → Reasonin
 | Guide | What It Covers |
 |-------|---------------|
 | [Enterprise AI Architect Foundations](../enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations) | Business, Application, Information, Technology Architecture |
-| [TOGAF10 APEX AI Platform](../enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank) | TOGAF-based EA with AI, capability maps, value streams |
+| [APEX: AI Platform of Platforms](../enterprise-architecture/specialization/APEX_EA_Final) | TOGAF-based EA with AI, capability maps, value streams |
 | [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures) | Reference architecture patterns |
 | [Machine-Readable EA](../enterprise-architecture/ai-architecture/machine-readable-ea) | Integration architecture, security architecture |
 | [EA Strategy Playbook](../enterprise-architecture/strategy/EA_Strategy_Playbook) | Business architecture framing |
@@ -268,8 +270,8 @@ ADLC phases: Agent Discovery → Goal Definition → Task Modelling → Reasonin
 
 | Guide | What It Covers |
 |-------|---------------|
-| [EA Lifecycle Artifact Templates 2026](../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) | Templates, decision matrices, checklists |
-| [EA Lifecycle Checklist](../enterprise-architecture/process/EA_Lifecycle_Checklist) | Implementation checklists |
+| [AIDLC Artifact Reference Library](../ai-development/aidlc/AIDLC_Artifact_Reference_Library) | Templates, decision matrices, checklists |
+| [EA Strategy Playbook](../enterprise-architecture/strategy/EA_Strategy_Playbook) | Implementation checklists |
 | [AIDLC Artifact Reference Library](../ai-development/aidlc/AIDLC_Artifact_Reference_Library) | AI delivery artifacts per phase |
 | [ARB Volume 4: Artifact Catalog](../enterprise-architecture/architectural-review-board/Volume4_Artifact_Catalog_Quality_Attributes) | Governance artifacts, scorecards |
 | [ARB Volume 8: Implementation Accelerator Kit](../enterprise-architecture/architectural-review-board/Volume8_Implementation_Accelerator_Kit) | Consulting playbook, implementation roadmap |

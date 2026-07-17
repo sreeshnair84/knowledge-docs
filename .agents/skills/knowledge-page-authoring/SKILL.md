@@ -111,6 +111,19 @@ skill's Phase 0 builds it), `check_against_corpus.py` will build a
 lightweight version itself from `docs/` on first run — this can take a
 minute on the full repo.
 
+**Don't rely on remembering to do this manually.** A repeated real failure
+mode: an agent gets every type-specific field right (e.g. `exam_code`,
+`exam_validity` for a certification page) but forgets the `doc_type` field
+itself, and nothing catches it until the `knowledge-repo-enforcement`
+pre-commit hook blocks the commit — sometimes several files and one
+`git commit` later. If `knowledge-repo-enforcement` is installed in this
+repo, its `scripts/post_write_lint_hook.py` runs `lint_page.py`
+automatically after every `Write`/`Edit` to a `docs/**/*.md` file (see that
+skill's install script) — so this class of mistake surfaces in the same
+turn the page was written, not at commit time. That hook is a backstop, not
+a substitute for actually running Step 4 yourself before calling a page
+done.
+
 ## Step 5 — Depth of research
 
 Each reference file has a concrete rubric (word count range, minimum number

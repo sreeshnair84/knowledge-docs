@@ -1,9 +1,9 @@
 ---
 title: "APEX: AI Platform of Platforms"
 date_created: 2026-04-01
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-17
 status: current
-supersedes: ""
+supersedes: "archive/enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank.md"
 source_type: converted-pdf
 source_file: "APEX_EA_Final.pdf"
 doc_type: guide
@@ -304,6 +304,31 @@ Enterprise adopters report 2–5× sustainable productivity gains across the ful
 | Phase H — Change | AI monitors model releases and regulatory changes; flags architecture impacts automatically | Continuous change proposals require human filtering to avoid architecture instability | Change type classification; AI flags; humans prioritise; DORA change framing applied to all AI changes |
 | Req. Management | AI generates and maintains requirements traceability from business intent to deployed code | Context drift across sessions; requirements must be forward-traced before each deployment | Context Integrity Protocol; session summary archive; forward-trace validation per deployment |
 
+### Operating Model Transformations Required
+
+AI-DLC is not just a development methodology — it requires structural changes to the enterprise architecture operating model. Research from Intelance, Staun & Stender, and CIO.com (2025) identifies five critical transformation areas GlobalCorp must address:
+
+**1. Governance Tempo: From Quarterly to Near Real-Time** — Traditional EA governance operates on quarterly review cycles. AI-DLC's "bolt" cadence means architecture decisions are needed in hours. GlobalCorp must establish a tiered governance model: automated checks run continuously (Cat A/B compliance), architect-in-the-loop reviews occur daily, full ARB convenes weekly rather than bi-weekly. Research from Staun & Stender (2025) confirms that "these are not quarterly review topics; they are near real-time decisions."
+
+**2. EA Artefacts: From Static Documents to Living Digital Twins** — Gartner (2025) notes that Forrester identified AI agents in EA suites are now automating data validation, capability mapping, and artefact creation. GlobalCorp's architecture repository (LeanIX) must transition from a periodic-update model to a continuously auto-updated environment where AI-DLC tools write back architecture artefacts as they are generated. The EA team shifts from artefact authors to artefact reviewers.
+
+**3. New Roles: Enterprise AI Architect & Chief AI Ethics Officer** — BCG research found that 89% of C-level executives ranked AI/GenAI in their top three strategic priorities for 2024. In response, organisations are introducing dedicated roles such as the Enterprise AI Architect. GlobalCorp must create this role (filled internally from the APEX Architecture team) and formalise the Chief AI Ethics Officer position proposed in the APEX Business Architecture.
+
+**4. Data Architecture Extension: AI-Native Entities** — TOGAF's traditional data architecture covers conceptual, logical, and physical models. AI-DLC introduces new first-class data entities that must be governed: **embeddings** (versioned vector representations), **prompt catalogs** (regulated as code + data), **feedback logs** (agent decision outcomes), and **model lineage records** (EU AI Act traceability). MLflow's Prompt Registry exemplifies this shift in tooling, as identified in the TOGAF BDAT stress-test research (Medium, Sept 2025).
+
+**5. Business Architecture: Dynamic Capabilities Replace Static Models** — Traditional Business Architecture documents stable capabilities. AI-DLC and agentic AI create capabilities that "learn and adapt in motion." Examples: Walmart and Carrefour already use AI to shift pricing and promotions dynamically — what was a quarterly campaign is now an hourly decision. GlobalCorp's Business Capability Map (BCM-APEX-001) must be updated to flag "adaptive capabilities" and their governance implications separately from static capabilities.
+
+### AI-DLC Adoption Roadmap
+
+GlobalCorp will adopt AI-DLC in a phased approach aligned to APEX delivery horizons, to avoid disrupting in-flight architecture governance while capturing productivity gains:
+
+| Horizon / Period | AI-DLC Adoption Scope | EA Impact | Governance Gate |
+| --- | --- | --- | --- |
+| H0: Observe (Q1 2025) | AI-DLC training for architecture team; pilot on 2 work packages | Minimal; existing ADM retained | CTO sign-off on pilot |
+| H1: Adopt for Build (Q2–Q3 2025) | AI-DLC Construction phase for Pioneer Domain 1 & 2 delivery | Phase C/D artefacts AI-assisted; peer review mandatory | ARB approves AI-assisted artefacts |
+| H2: Extend to Inception (Q4 2025) | Mob Elaboration for Pioneer 3–5 requirements and architecture vision | Phase A/B artefacts AI-generated; ARB review process updated | Steering Committee endorses |
+| H3: Full AI-DLC (Q1–Q2 2026) | End-to-end AI-DLC across all APEX workstreams; real-time governance | Full operating model transformation; LeanIX AI integration | Architecture Board annual review |
+
 ---
 
 ## Preliminary Phase — Foundation
@@ -546,6 +571,17 @@ PHASES E–H Roadmap, SBBs, 5-tier governance, and change intelligence
 | Self-service portal, agent marketplace, agent health dashboard | WP-01 1 | 3 | 8 | H2 | Medium — developer experience is subjective; UX validation needed |
 | EU AI Act compliance pack + DEA template library + DORA automation | WP-01 2 | 2 | 5 | H2 | High — regulatory interpretation risk; regulatory counsel required |
 
+### Migration Strategy — Existing AI Tool Inventory (IMP-APEX-001)
+
+23 pre-existing AI tools were assessed against APEX capability and governance fit, and sorted into four migration categories:
+
+| Category | Count | Action | AI-DLC Migration Path | Target Date |
+| --- | --- | --- | --- | --- |
+| ADOPT — Already AWS; add APEX governance | 8 tools | Wrap in APEX tool framework; add guardrails | AI-DLC Operations: IaC wrapping in 1 bolt per tool | Q3 2025 |
+| ADAPT — Works well; needs APEX integration layer | 6 tools | Expose as APEX tool; APEX orchestrates | AI-DLC build adapter Lambda in Mob Construction | Q4 2025 |
+| REPLACE — Duplicates APEX capability | 7 tools | Pioneer agent replaces; decommission legacy | Parallel-run then canary cutover; AI monitors metrics | Q1 2026 |
+| RETIRE — Unused/low value | 2 tools | Immediate decommission; archive audit logs | AI-DLC Operations: IaC teardown + evidence generation | Q2 2025 |
+
 ### Solution Building Blocks — SBB-APEX-001
 
 | SBB | Decision | Cloud-Native Solution | AI-DLC Role in Delivery |
@@ -690,7 +726,7 @@ SBB Solution Building Block — specific implementation of an Architecture Build
 
 **Zero-Trust** Security model where no identity or network location is inherently trusted; every request is authenticated, authorised, and logged regardless of origin; enforced by service mesh mTLS.
 
-#### Document Control
+## Document Control
 
 | Versio n | Issue Date | Authors | Description | Approved By |
 | --- | --- | --- | --- | --- |

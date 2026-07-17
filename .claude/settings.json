@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\"; head -20 \"{}\"')",
+      "WebFetch(domain:findskill.ai)",
+      "WebFetch(domain:mockapi.vip)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .agents/skills/knowledge-page-authoring/scripts/post_write_lint_hook.py",
+            "statusMessage": "Linting docs page..."
+          }
+        ]
+      }
+    ]
+  }
+}

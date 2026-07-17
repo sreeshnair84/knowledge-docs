@@ -26,13 +26,20 @@ mkdir -p .github/workflows
 cp "$SCRIPT_DIR/knowledge-repo-checks.yml" .github/workflows/knowledge-repo-checks.yml
 echo "Installed CI workflow to .github/workflows/knowledge-repo-checks.yml."
 
+python3 "$SCRIPT_DIR/install_claude_hook.py"
+
 echo ""
 echo "Done. Commit these new files:"
-echo "  git add .githooks .github/workflows/knowledge-repo-checks.yml"
-echo "  git commit -m 'Add knowledge-repo enforcement: pre-commit hook + CI check'"
+echo "  git add .githooks .github/workflows/knowledge-repo-checks.yml .claude/settings.json"
+echo "  git commit -m 'Add knowledge-repo enforcement: write-time hook + pre-commit hook + CI check'"
 echo ""
 echo "Note: .githooks/pre-commit and core.hooksPath only take effect on this"
 echo "machine's local git config — anyone else who clones the repo needs to"
 echo "run 'git config core.hooksPath .githooks' themselves (or re-run this"
 echo "installer). The CI workflow, once committed, applies to every PR"
-echo "regardless of local setup — that's the real backstop."
+echo "regardless of local setup — that's the real backstop. The write-time"
+echo "hook in .claude/settings.json is Claude-Code-session-local: it catches"
+echo "lint issues the moment Claude writes a page, before either of the"
+echo "other two layers ever run, but only inside a Claude Code session that"
+echo "has it loaded (open /hooks once after installing, or start a fresh"
+echo "session, for it to take effect)."

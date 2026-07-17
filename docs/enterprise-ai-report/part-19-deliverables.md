@@ -8,11 +8,19 @@ source_file: ""
 tags: ["deliverables", "templates", "artifacts", "checklists", "raci", "architecture-diagrams", "consulting-playbook"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"
+research_date: 2026-07-14
+covers_through: "as of 2026-07-14"
 ---
 
 # Part 19 — Deliverables, Templates & Artifacts
 
 > **Report Context:** Part 19 of the [Enterprise AI Research Report](./index). This page is the master index of all deliverable templates, artifacts, and tools across the entire report and the repository. Use it to quickly locate the right artifact for your engagement or programme.
+
+## Table of Contents
+
+- [Deliverables by Category](#deliverables-by-category) — Executive & Strategy, Operating Model, AI Delivery Lifecycle, ADLC, Governance, Org Design, Platform & Service Catalog, Operating Processes, Security, Financial & Value, Architecture Diagrams, Comparison Tables, Glossary, Consulting Playbook
+- [Anti-Patterns Reference](#anti-patterns-reference)
+- [How to Use This Report in a Consulting Engagement](#how-to-use-this-report-in-a-consulting-engagement)
 
 ---
 
@@ -53,11 +61,11 @@ covers_version: "as of 2026-07-14"
 | Deliverable | Location | Format |
 |-------------|----------|--------|
 | AIDLC Framework | [AIDLC Enterprise Framework 2025](../ai-development/aidlc/AIDLC_Enterprise_Framework_2025) | Phase guide |
-| AI Lifecycle Artifact Templates | [EA Lifecycle Artifact Templates 2026](../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) | Template library |
-| AIDLC Phase Checklists | [EA Lifecycle Checklist](../enterprise-architecture/process/EA_Lifecycle_Checklist) | Checklist per phase |
+| AI Lifecycle Artifact Templates | [AIDLC Artifact Reference Library](../ai-development/aidlc/AIDLC_Artifact_Reference_Library) | Template library |
+| AIDLC Phase Checklists | [EA Strategy Playbook](../enterprise-architecture/strategy/EA_Strategy_Playbook) | Checklist per phase |
 | AIDLC Artifact Reference Library | [AIDLC Artifact Reference Library](../ai-development/aidlc/AIDLC_Artifact_Reference_Library) | Artifacts by phase |
 | AI Business Case Template | [EA Masterclass Business Case Templates](../ea-masterclass/deliverables/business-case-templates) | Template |
-| AI Solution Architecture Template | [EA Lifecycle Artifact Templates 2026](../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) | Template |
+| AI Solution Architecture Template | [AIDLC Artifact Reference Library](../ai-development/aidlc/AIDLC_Artifact_Reference_Library) | Template |
 
 ---
 

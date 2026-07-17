@@ -1,52 +1,36 @@
 # Duplicate-Candidate Clusters (>=0.6 similarity, connected components)
 
-18 cluster(s) found across 669 pages.
+14 cluster(s) found across 668 pages.
 
-## Cluster (6 pages)
+## Cluster (4 pages)
 
-- `agentic-systems/skill/00-executive-summary-and-reference-architecture`
 - `agentic-systems/skill/index`
 - `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
-- `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
 - `agentic-systems/skill/coding/index`
 - `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 
 Pairwise similarity within this cluster:
 
 - 65%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
-- 63%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
+- 64%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 - 61%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/index`
-- 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
-- 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/index`
-- 59%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/index`
-- 56%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
 - 54%  `agentic-systems/skill/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
-- 53%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
-- 52%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
-- 50%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/index`
-- 45%  `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns` <-> `agentic-systems/skill/coding/index`
-- 36%  `agentic-systems/skill/coding/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
-- 35%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
-- 34%  `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
+- 49%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/index`
+- 35%  `agentic-systems/skill/coding/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 
-## Cluster (5 pages)
+## Cluster (4 pages)
 
 - `quantum/index`
 - `quantum/Quantum_AI_Consultancies_Report`
 - `quantum/Quantum_AI_Startups_Report`
-- `quantum/Quantum_AI_TechGiants_Report`
 - `quantum/zero-to-mastery`
 
 Pairwise similarity within this cluster:
 
-- 81%  `quantum/Quantum_AI_TechGiants_Report` <-> `quantum/zero-to-mastery`
-- 73%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/Quantum_AI_TechGiants_Report`
-- 71%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/Quantum_AI_TechGiants_Report`
-- 68%  `quantum/index` <-> `quantum/zero-to-mastery`
-- 68%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery`
+- 71%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery`
+- 69%  `quantum/index` <-> `quantum/zero-to-mastery`
+- 68%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery`
 - 66%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/Quantum_AI_Startups_Report`
-- 65%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery`
-- 63%  `quantum/index` <-> `quantum/Quantum_AI_TechGiants_Report`
 - 62%  `quantum/index` <-> `quantum/Quantum_AI_Consultancies_Report`
 - 51%  `quantum/index` <-> `quantum/Quantum_AI_Startups_Report`
 
@@ -58,21 +42,21 @@ Pairwise similarity within this cluster:
 
 Pairwise similarity within this cluster:
 
-- 65%  `ai-protocols/auth/entra-3lo-agent-auth-implementation` <-> `ai-protocols/auth/entra-3lo-agent-auth-standards-architecture`
+- 66%  `ai-protocols/auth/entra-3lo-agent-auth-implementation` <-> `ai-protocols/auth/entra-3lo-agent-auth-standards-architecture`
 - 62%  `ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance` <-> `ai-protocols/auth/entra-3lo-agent-auth-standards-architecture`
 - 49%  `ai-protocols/auth/entra-3lo-agent-auth-implementation` <-> `ai-protocols/auth/entra-3lo-agent-auth-multiagent-compliance`
 
 ## Cluster (3 pages)
 
-- `ai-usecases/eu-bank-ai-copilot-complete`
-- `ai-usecases/eu-bank-sequence-diagrams`
-- `coding-tools/github-copilot/copilotkit-server-map-call-flow`
+- `coding-tools/claude/ccaf-exam-prep-complete`
+- `coding-tools/claude/ccdv-f-cheatsheet`
+- `coding-tools/claude/ccdv-f-exam-prep-complete`
 
 Pairwise similarity within this cluster:
 
-- 75%  `ai-usecases/eu-bank-ai-copilot-complete` <-> `coding-tools/github-copilot/copilotkit-server-map-call-flow`
-- 62%  `ai-usecases/eu-bank-ai-copilot-complete` <-> `ai-usecases/eu-bank-sequence-diagrams`
-- 57%  `ai-usecases/eu-bank-sequence-diagrams` <-> `coding-tools/github-copilot/copilotkit-server-map-call-flow`
+- 66%  `coding-tools/claude/ccaf-exam-prep-complete` <-> `coding-tools/claude/ccdv-f-exam-prep-complete`
+- 61%  `coding-tools/claude/ccdv-f-cheatsheet` <-> `coding-tools/claude/ccdv-f-exam-prep-complete`
+- 40%  `coding-tools/claude/ccaf-exam-prep-complete` <-> `coding-tools/claude/ccdv-f-cheatsheet`
 
 ## Cluster (2 pages)
 
@@ -81,16 +65,7 @@ Pairwise similarity within this cluster:
 
 Pairwise similarity within this cluster:
 
-- 63%  `agentic-systems/platform/ai-msf-requirements-runbook` <-> `agentic-systems/platform/ai-platform-factory-runbook-v2`
-
-## Cluster (2 pages)
-
-- `ai-development/aidlc/AIDLC_Artifact_Reference_Library`
-- `enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026`
-
-Pairwise similarity within this cluster:
-
-- 63%  `ai-development/aidlc/AIDLC_Artifact_Reference_Library` <-> `enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026`
+- 62%  `agentic-systems/platform/ai-msf-requirements-runbook` <-> `agentic-systems/platform/ai-platform-factory-runbook-v2`
 
 ## Cluster (2 pages)
 
@@ -112,6 +87,15 @@ Pairwise similarity within this cluster:
 
 ## Cluster (2 pages)
 
+- `ai-usecases/eu-bank-ai-copilot-complete`
+- `ai-usecases/eu-bank-sequence-diagrams`
+
+Pairwise similarity within this cluster:
+
+- 64%  `ai-usecases/eu-bank-ai-copilot-complete` <-> `ai-usecases/eu-bank-sequence-diagrams`
+
+## Cluster (2 pages)
+
 - `coding-tools/claude/CCAF_Study_Guide`
 - `coding-tools/claude/claude-best-practices`
 
@@ -126,7 +110,7 @@ Pairwise similarity within this cluster:
 
 Pairwise similarity within this cluster:
 
-- 66%  `coding-tools/claude/Questionnaire_Claude_Certification` <-> `coding-tools/claude/Questionnaire_Vol2_Claude_Certification`
+- 65%  `coding-tools/claude/Questionnaire_Claude_Certification` <-> `coding-tools/claude/Questionnaire_Vol2_Claude_Certification`
 
 ## Cluster (2 pages)
 
@@ -157,45 +141,9 @@ Pairwise similarity within this cluster:
 
 ## Cluster (2 pages)
 
-- `enterprise-architecture/framework/Enterprise_AI_Architect_Communication_Guide`
-- `enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide`
-
-Pairwise similarity within this cluster:
-
-- 80%  `enterprise-architecture/framework/Enterprise_AI_Architect_Communication_Guide` <-> `enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide`
-
-## Cluster (2 pages)
-
-- `enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank`
-- `enterprise-architecture/specialization/APEX_EA_Final`
-
-Pairwise similarity within this cluster:
-
-- 66%  `enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank` <-> `enterprise-architecture/specialization/APEX_EA_Final`
-
-## Cluster (2 pages)
-
-- `enterprise-architecture/process/EA_Lifecycle_Checklist`
-- `enterprise-architecture/strategy/EA_Strategy_Playbook`
-
-Pairwise similarity within this cluster:
-
-- 64%  `enterprise-architecture/process/EA_Lifecycle_Checklist` <-> `enterprise-architecture/strategy/EA_Strategy_Playbook`
-
-## Cluster (2 pages)
-
 - `knowledge-engineering/data/Data_Architecture_for_AI_Report`
 - `knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report`
 
 Pairwise similarity within this cluster:
 
 - 63%  `knowledge-engineering/data/Data_Architecture_for_AI_Report` <-> `knowledge-engineering/data/Enterprise_Data_Systems_AI_Governance_Report`
-
-## Cluster (2 pages)
-
-- `soft-skills/Mental_Model_Encyclopedia`
-- `soft-skills/Strategic_Thinking_Handbook`
-
-Pairwise similarity within this cluster:
-
-- 84%  `soft-skills/Mental_Model_Encyclopedia` <-> `soft-skills/Strategic_Thinking_Handbook`

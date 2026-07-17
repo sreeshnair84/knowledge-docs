@@ -2,13 +2,16 @@
 title: 'CopilotKit → AgentCore → MCP — Server Map & Call Flow'
 date_created: 2026-07-17
 last_reviewed: 2026-07-17
-status: current
+status: archived
 source_type: converted-html
 source_file: 'copilotkit-server-map-call-flow.html'
 doc_type: guide
 tags: [copilotkit, agentcore, mcp, call-flow]
 covers_version: "2026"
+supersededBy: "ai-usecases/eu-bank-ai-copilot-complete"
 ---
+
+> **Archived 2026-07-17.** This server map and call-flow content described the same EU Bank AI Copilot platform documented in [EU Bank AI Copilot Platform](/knowledge-docs/ai-usecases/eu-bank-ai-copilot-complete) — its server topology (§1, §3) duplicated that page's §2 and §4 Package Location Matrix, and its numbered call-flow traces have been merged into that page's §5.1–5.3 Sequence Diagrams section, which previously only had one-paragraph summaries. Kept for reference only; not linked from the sidebar.
 
 # CopilotKit → AgentCore → MCP — Server Map & Call Flow
 

@@ -8,11 +8,21 @@ source_file: ""
 tags: ["enterprise-architecture", "togaf", "capability-map", "value-stream", "business-architecture", "reference-architecture"]
 doc_type: research-report
 covers_version: "as of 2026-07-14"
+research_date: 2026-07-14
+covers_through: "as of 2026-07-14"
 ---
 
 # Part 15 — Enterprise Architecture Mapping
 
 > **Report Context:** Part 15 of the [Enterprise AI Research Report](./index). Authoritative guides are in the **Enterprise Architecture** section — this page provides the TOGAF-aligned AI capability map and links to the detailed architecture guides.
+
+## Table of Contents
+
+- [AI in the Four Architecture Domains (TOGAF ADM)](#ai-in-the-four-architecture-domains-togaf-adm) — Business, Application, Information, Technology, Security, Integration
+- [AI Capability Map](#ai-capability-map)
+- [TOGAF Concepts Applied to AI](#togaf-concepts-applied-to-ai)
+- [Authoritative Guides](#authoritative-guides)
+- [Related Parts](#related-parts)
 
 ---
 
@@ -213,7 +223,7 @@ Each level builds on the one below. Enterprises must build Level 1 before pursui
 
 | Guide | What It Covers |
 |-------|---------------|
-| [TOGAF10 APEX AI Platform (NexaBank)](../enterprise-architecture/framework/TOGAF10_APEX_AI_Platform_NexaBank) | TOGAF-aligned AI platform architecture |
+| [APEX: AI Platform of Platforms](../enterprise-architecture/specialization/APEX_EA_Final) | TOGAF-aligned AI platform architecture |
 | [Enterprise AI Architect Foundations](../enterprise-architecture/ai-architecture/enterprise-ai-architect-foundations) | All four architecture domains |
 | [Enterprise Agent Reference Architectures](../enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures) | Application architecture patterns |
 | [AI Value Stream Mapping](../enterprise-architecture/ai-architecture/AI-Value-Stream-Mapping) | Business architecture |

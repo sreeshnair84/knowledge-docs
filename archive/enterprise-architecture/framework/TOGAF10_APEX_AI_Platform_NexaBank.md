@@ -2,14 +2,17 @@
 title: "APEX: AI Platform of Platforms — TOGAF 10 at NexaBank"
 date_created: 2026-07-11
 last_reviewed: 2026-07-17
-status: current
+status: archived
 supersedes: ""
 source_type: converted-pdf
 source_file: "TOGAF10_APEX_AI_Platform_NexaBank.pdf"
 tags: [togaf, enterprise-architecture, framework, ai-platform]
 doc_type: guide
 covers_version: "2026"
+supersededBy: "enterprise-architecture/specialization/APEX_EA_Final"
 ---
+
+> **Archived 2026-07-17.** This was an earlier, client-named (NexaBank) draft of the APEX TOGAF 10 + AI-DLC architecture. It was already substantively superseded by the anonymised, expanded [APEX: AI Platform of Platforms — Final Edition](/knowledge-docs/enterprise-architecture/specialization/APEX_EA_Final) (see that page's Team Structure/RACI and Cloud-Native Service Mapping sections, absent here). The three sections genuinely unique to this draft — Operating Model Transformations Required, the AI-DLC Adoption Roadmap, and the 23-tool Migration Strategy inventory — have been merged into the Final Edition. Kept for reference only; not linked from the sidebar. Also retained the "NexaBank" client name, which the Final Edition correctly generalised to a fictional org per this repo's sensitive-content policy — do not reuse this file as a content source elsewhere.
 
 <!-- converted from TOGAF10_APEX_AI_Platform_NexaBank.pdf -->
 
@@ -54,16 +57,6 @@ AI-DLC has direct and material consequences for enterprise architecture practice
 |Developer NPS|-12|+55|AI-DLC mob construction|
 |Agents in production|23 (siloed)|120 (platform)|Self-service + AI-DLC|
 |MTTR for AI incidents|6.3 hours|<30 minutes|AI-DLC ops phase automation|
-
-**Page 2**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 3](/img/enterprise-architecture/ea-p3-3.png)
 
@@ -157,27 +150,7 @@ I Regulatory Cross-Reference Matrix
 
 I AWS Agent Core Service Map
 
-**Page 3**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 I Glossary
-
-**Page 4**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 4](/img/enterprise-architecture/ea-p5-4.png)
 
@@ -219,16 +192,6 @@ The following matrix maps AI-DLC's structural implications to each TOGAF ADM pha
 |---|---|
 |Preliminary|AI generates architecture principles drafts; governance rules codified as 's**t**eering files' fed to AI agents<br>Principle quality depends on AI promp quality<br>Human architects validate all AI-generated pr|
 
-**Page 5**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 |Phase A —|Vision|AI transforms business intent into draft Architecture Vision**a**nd SAW in hours; stakeholder analysis auto-po<br>Stakeholder nuance m y be missed by AI<br>Mob Elaboration session with all stakeholders|
 |---|---|---|
 |Phase B —|Business|AI auto-generates business capability maps fr**o**m existing documentation; value streams modelled in minute<br>Existing d cs may be stale or incomplete<br>Data quality programme prerequisite; 'Seman|
@@ -265,16 +228,6 @@ TOGAF's traditional data architecture covers conceptual, logical, and physical m
 
 Traditional Business Architecture documents stable capabilities. AI-DLC and agentic AI create capabilities that 'learn and adapt in motion.' Examples: Walmart and Carrefour already use AI to shift pricing and promotions dynamically — what was a quarterly campaign is now an hourly decision. NexaBank's Business Capability Map (BCM-APEX-001) must be updated to flag 'adaptive capabilities' and their governance implications separately from static capabilities.
 
-**Page 6**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 ### NexaBank AI-DLC Adoption Roadmap
 
 NexaBank will adopt AI-DLC in a phased approach aligned to APEX delivery horizons, to avoid disrupting in-flight architecture governance while capturing productivity gains:
@@ -285,16 +238,6 @@ NexaBank will adopt AI-DLC in a phased approach aligned to APEX delivery horizon
 |H1: Adopt for BuildQ2–Q3 2025|AI-DLC Construction phase for Pioneer Domain 1 & 2 delivery<br>Phase C/D artefacts AI-assisted; peer review mandatory<br>ARB approves AI-assisted a|
 |H2: Extend to Inception<br>Q4 2025|Mob Elaboration for Pioneer 3–5 requirements and architecture vision<br>Phase A/B artefacts AI-generated; ARB review process upd<br>Steering Committee endors|
 |H3: Full AI-DLC Q1–Q2 2026|End-to-end AI-DLC across all APEX workstreams; real-time governance<br>Full operating model transformation; LeanIX AI integration<br>Architecture Board annual r|
-
-**Page 7**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 5](/img/enterprise-architecture/ea-p8-5.png)
 
@@ -349,16 +292,6 @@ The Preliminary Phase establishes NexaBank Global's architecture capability for 
 |TP-04|Cost Transparency|Each AI agent must have a tagged cost centre and mon**t**hly token-cost budget with alerts<br>AWS Cost Alloca ion Tags mandatory; FinOps review gate|
 |TP-05 (|AI-DLC)<br>Every Dev Understan|ds Every Li**ne**<br>All AI-ge<br>rated IaC and code must be reviewed and understood by a human engineer before me<br>Mandatory peer review for all AI-generated Terraform; no b|
 
-**Page 8**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 ![Figure 6](/img/enterprise-architecture/ea-p9-6.png)
 
 ## Architecture Vision
@@ -411,16 +344,6 @@ Key Players (High Power, High Interest) — Core governance engagement:
 |4|IT Operations|IncidentAgent|L1/L2 ticket triage and remediation automation<br>DORA Art.11|2 bolts|
 |5|Risk|ModelMonitorAgent|Drift detection, backtesting, regulator report generation<br>SR 11-7, BCBS 239|3 bolts|
 
-**Page 9**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 ![Figure 7](/img/enterprise-architecture/ea-p10-7.png)
 
 ## Business Architecture
@@ -467,16 +390,6 @@ DOC REF: VSA-APEX-001 | v1.1
 |TOTAL|$14.0M/yr|$7.6M reduction|$1.5M additio|nal reduction<br>$1.1M residual|
 
 #### Value Waste Elimination
-
-**Page 10**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 8](/img/enterprise-architecture/ea-p11-8.png)
 
@@ -529,16 +442,6 @@ DOC REF: AAD-APEX-001 | v1.4
 |APEX Developer Porta|l React SPA + API Gateway|BFF (Backend-for-Frontend<br>99.9%|)<br>/ p99 <500msUI scaffolded by Amazon Q Developer|
 |APEX Control Plane|Python FastAPI on ECS Fa|rgate<br>Microservice (5 services)<br>99.9%|/ p99 <500msFastAPI skeleton + unit tests AI-genera|
 
-**Page 11**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 Bedrock Supervisor AgentAWS Bedrock Agents + Claude 3.5Orchestrator-Worker99.95% / p99 <3s Agent YAML + prompt templates gene Tool Lambda Library AWS Lambda Python 3.12 Sidecar + Action Groups99.95% / p99 <1s Each tool function AI-generated; mand Human Loop (A2I) AWS Augmented AI + React UIHuman-in-the-Loop 99.5% / SLA by task typeA2I workflow config generated; custom Observability Stack CloudWatch + X-Ray + DatadogCentralised OTEL collector99.5% Dashboard-as-code generated by AI-D Compliance Reporter Python + AWS QuickSight Batch report generation99.5% / daily run EU AI Act and DORA report templates
 
 #### API Catalogue
@@ -551,16 +454,6 @@ Bedrock Supervisor AgentAWS Bedrock Agents + Claude 3.5Orchestrator-Worker99.95%
 |Onboarding API|v1|REST/JSON|OAuth2|99.5% / p99 <1s|Platform Eng|
 |Chargeback API|v1|REST/JSON|mTLS|99.9% monthly|FinOps|
 |Compliance Report AP|I v1|REST/JSON|OAuth2 + MFA|99.5% daily|Compliance|
-
-**Page 12**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 9](/img/enterprise-architecture/ea-p13-9.png)
 
@@ -611,16 +504,6 @@ The APEX Supervisor Agent is configured as an orchestrator that routes to specia
 
 #### CI/CD Pipeline — AI-DLC Enhanced
 
-**Page 13**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 The APEX CI/CD pipeline has been redesigned to incorporate AI-DLC Construction and Operations phase tooling alongside traditional quality gates:
 
 |**Stage**|**Tools**<br>**AI-DLC Enhancement**<br>**Gate Type**|
@@ -633,16 +516,6 @@ The APEX CI/CD pipeline has been redesigned to incorporate AI-DLC Construction a
 |6. Non-Prod Deplo|yTerraform + GitHub Actions + OIDC<br>AI-DLC Operations: IaC apply automated; smoke tests AI-generated<br>Automated + architect review|
 |7. Canary Deploy|AWS CodeDeploy (10%→50%→100%)<br>AI monitors canary metrics; auto-rollback on p99 breach<br>Automated with human override|
 |8. Post-Deploy|CloudWatch + FinOps checker<br>AI generates stakeholder summary; cost tags verified; DORA evid**e**nce created<br>Automated complianc record|
-
-**Page 14**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 10](/img/enterprise-architecture/ea-p15-10.png)
 
@@ -697,16 +570,6 @@ DOC REF: IMP-APEX-001 | v1.5
 
 #### Migration Strategy: 23 Existing AI Tools
 
-**Page 15**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 **Category Count Action AI-DLC Migration Path Target Date** ADOPT — Already AWS; add APEX governance8 tools Wrap in APEX tool framework; add guardrailsAI-DLC Operations: IaC wrapping in 1 bolt per toolQ3 2025 ADAPT — Works well; needs APEX integration layer6 tools Expose as APEX tool; APEX orchestrateAI-DLC build adapter Lambda in Mob Construction **s** Q4 2025 REPLACE — Duplicates APEX capability7 tools Pioneer agent replaces; decommission legacyParallel-run then canary cutover; AI monitors metricsQ1 2026 RETIRE — Unused/low value 2 tools Immediate decommission; archive audit logsAI-DLC Operations: IaC teardown + evidence generationQ2 2025
 
 ### Phase G — Architecture Governance (CAF-APEX-001 + AC-APEX-001)
@@ -736,16 +599,6 @@ With AI-DLC and AWS Bedrock model releases occurring frequently (Claude versions
 |Type 2: Regulator|y-driven<br>EU AI Act enforcement calendar monitored; regulatory feed parsed daily by agent<br>Compliance impact assessment within 48 hours<br>EU AI Act Art.6 enforcement date: APEX comp|
 |Type 3: Business-|driven<br>Domain team agent onboarding request triggers standard intake workflow<br>Standard: 5 business days to intake deci**s**i**on**<br>New BU request<br>boarding to APEX marketp|
 |Type 4: Simplificat|ion/Retirement<br>APEX usage analytics identifies underutilised agents quarterly<br>Decommission plan within 30 days of flag<br>Pioneer 1 agent v1.2 superseded by v2.0; v1.2|
-
-**Page 16**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ![Figure 11](/img/enterprise-architecture/ea-p17-11.png)
 
@@ -778,16 +631,6 @@ DOC REF: ARS-APEX-001 | v2.3 | Living Document — 147 total requirements
 |CR-003|Compliance|DORA 72-hour ICT incident notification process automated<br>Must|<br>DORA Art.17|In Review|
 |CR-NEW-01|Compliance (AI-|DLC)<br>AI-generated architecture artefacts marked with AI-DLC m<br>Should|etadata for audit<br>EA Governance|Backlog|
 
-**Page 17**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 #### APPENDIX A
 
 ## Regulatory Cross-Reference Matrix
@@ -805,16 +648,6 @@ APEX operates in a highly regulated environment. The following matrix maps each 
 |BCBS 239|Data lineage, accuracy, completeness for risk data aggregatio**n**and reporting<br>AWS Glue Data Catalog li eage; RAG retrieval logs; agent decision audit t<br>Glue lineage reports; Data Mesh d|
 |MiFID II|Art.27 (best execution), Suitability assessme**n**t for investment advice<br>Human-i -Loop mandatory for all wealth advice; MiFID II suitability rules in<br>A2I human review logs; Suitability|
 |MAS TRM (Singap|ore)<br>Technology Risk Management — AI/ML model governance, cloud risk<br>APAC region isolation (ap-southeast-1); MAS-aligned model gov**e**rnance; l<br>MAS TRM self-assessm nt; Regio|
-
-**Page 18**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ### APPENDIX B
 
@@ -842,32 +675,12 @@ Key terms — TOGAF 10, AI-DLC, AWS Agent Core, and regulatory
 |**RAG**|Retrieval-Augmented Generation — technique where AI retrieves relevant context<br>from a knowledge base before generating a response|
 |**RAGAS**|Retrieval-Augmented Generation Assessment — evaluation framework for measuring<br>RAG pipeline quality (faithfulness, relevance, context recall)|
 
-**Page 19**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
-
 |**SAW**|Statement of Architecture Work — TOGAF document that formally initiates an<br>architecture project with scope, constraints, and sponsor approval|
 |---|---|
 |**SBB**|Solution Building Block — a specific implementation of an Architecture Building Block<br>(ABB); defines what will be built/bought/reused|
 |**Semantic Context**|AI-DLC concept: rich, structured context provided to AI agents through steering files,<br>so they apply organisation-specific standards consistently|
 |**TLPT**|Threat-Led Penetration Testing — DORA Art.26 obligation for major financial entities<br>to conduct adversarial testing of critical ICT systems|
 |**Unit of Work**|AI-DLC equivalent of an Agile Epic; a significant deliverable decomposed into bolts;<br>typically days to weeks in duration|
-
-**Page 20**
-
-TOGAF® is a registered trademark of The Open Group
-
-EA-APEX-MASTER-001 | v3.0 | April 2026
-
-**APEX: AI Platform of Platforms — TOGAF 10 + AI-DLC**
-
-NexaBank Global | CONFIDENTIAL
 
 ### Document Control
 
@@ -878,8 +691,6 @@ NexaBank Global | CONFIDENTIAL
 |3.0|2026-04-01|Enterprise Architect|AI-DLC impact analysis integrated across all phases; new|requirements ad<br>Group CTO|
 
 TOGAF® is a registered trademark of The Open Group. AWS, Amazon Bedrock, Amazon Q Developer, and related marks are trademarks of Amazon Web Services Inc. EU AI Act, DORA, and GDPR are legislative instruments of the European Union. SR 11-7 is a supervisory letter of the US Federal Reserve. BCBS 239 is a principle of the Basel Committee on Banking Supervision. All product names, trademarks, and registered trademarks are property of their respective owners. This document is classified CONFIDENTIAL and is the property of NexaBank Global Enterprise Architecture. © 2026 NexaBank Global. All rights reserved.
-
-**Page 21**
 
 TOGAF® is a registered trademark of The Open Group
 

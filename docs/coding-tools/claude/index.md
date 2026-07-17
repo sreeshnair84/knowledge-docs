@@ -33,6 +33,23 @@ Complete knowledge base for the Anthropic Claude ecosystem — model reference, 
 
 ---
 
+## Certification Exam Prep (2026)
+
+Anthropic's Claude certification program (Pearson VUE / Anthropic Partner Academy, live since March 2026) spans four exams across three role tracks. Each has a full prep guide and a condensed cheatsheet below.
+
+> **Naming note:** the Architect – Foundations exam is branded "CCAF" (Certified Claude AI Fundamentals) in this repo's own earlier materials, "CCA-F" in some Anthropic marketing, and "CCAR-F" on Pearson VUE's own listing — these all refer to the **same exam**. Abbreviations are inconsistent across vendor and community sources this early in the program; treat CCAF / CCA-F / CCAR-F as interchangeable when searching.
+>
+> Domain weightings and exam facts across all four guides were compiled from Pearson VUE's Anthropic certification listing plus multiple independently-converging community sources — Anthropic's own candidate handbook is gated behind Partner Academy login. Verify against it before your exam date; each guide is dated `last_verified_against_vendor`.
+
+| Role track | Exam | Prep guide | Cheatsheet |
+| --- | --- | --- | --- |
+| Associate | Associate – Foundations (CCAO-F) — non-developer/business use | [Prep guide](ccao-f-exam-prep-complete.md) | [Cheatsheet](ccao-f-cheatsheet.md) |
+| Developer | Developer – Foundations (CCDV-F) — engineers building on the API/SDK | [Prep guide](ccdv-f-exam-prep-complete.md) | [Cheatsheet](ccdv-f-cheatsheet.md) |
+| Architect | Architect – Foundations (CCAF / CCA-F / CCAR-F) — solution architects | [Prep guide](ccaf-exam-prep-complete.md) | [Cheatsheet](ccaf-cheatsheet.md) |
+| Architect | Architect – Professional (CCAR-P) — production ownership, sits above Foundations | [Prep guide](ccar-p-exam-prep-complete.md) | [Cheatsheet](ccar-p-cheatsheet.md) |
+
+---
+
 ## Certification Modules
 
 - [Module 1 — Claude Foundations](/knowledge-docs/coding-tools/claude/Module_1_Claude_Foundations)

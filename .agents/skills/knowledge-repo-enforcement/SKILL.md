@@ -31,36 +31,73 @@ Run this from anywhere inside the target repo. It:
    `git config core.hooksPath .githooks` so git actually uses it.
 2. Copies `knowledge-repo-checks.yml` to
    `.github/workflows/knowledge-repo-checks.yml`.
+3. Merges a `PostToolUse` hook into `.claude/settings.json` (via
+   `install_claude_hook.py`) that runs `lint_page.py` immediately after
+   Claude writes or edits any `docs/**/*.md` file — see "Three enforcement
+   layers" below. Idempotent; safe to re-run.
 
-Then commit both new paths — the CI workflow only takes effect once it's
-committed and pushed; that's what actually protects the repo regardless of
+Then commit the new/changed paths — the CI workflow only takes effect once
+it's committed and pushed, and `.claude/settings.json` only protects
+teammates who pull it; that's what actually protects the repo regardless of
 anyone's local git config.
 
-## What the hook checks (on every commit touching `docs/**/*.md`)
+## Three enforcement layers
 
-1. **Structure/frontmatter lint** (`lint_page.py`) — every staged markdown
+This installs three layers, from earliest to latest in the authoring
+lifecycle:
+
+1. **Write-time hook** (`.claude/settings.json` `PostToolUse`, this skill's
+   `install_claude_hook.py` + `knowledge-page-authoring`'s
+   `post_write_lint_hook.py`) — runs `lint_page.py` on a `docs/**/*.md`
+   file the instant Claude writes or edits it, feeding failures back into
+   the same turn. This is the fix for the specific failure mode where an
+   agent gets every type-specific frontmatter field right but forgets
+   `doc_type` itself, and it isn't discovered until several files and a
+   `git commit` later. Session-local to Claude Code — only active in a
+   session that has loaded that hook config (open `/hooks` once after
+   installing, or start a fresh session).
+2. **Pre-commit hook** (`.githooks/pre-commit`) — re-runs the same
+   structural lint on every staged file, plus the near-duplicate check
+   (below), plus sidebar integrity. Blocks the commit if not. Protects
+   anyone committing from a machine with the hook installed, regardless of
+   whether they used any authoring skill or a write-time hook was even
+   configured.
+3. **CI workflow** (`.github/workflows/knowledge-repo-checks.yml`) —
+   re-runs the same two checks against every pull request's changed files.
+   The only layer that can't be bypassed by `--no-verify`, a missing local
+   hook, or a fresh clone that never ran the installer.
+
+## What the checks cover
+
+1. **Structure/frontmatter lint** (`lint_page.py`) — every checked markdown
    file must have complete universal frontmatter and a valid `doc_type`,
-   and must match its declared type's required sections. Blocks the commit
-   if not.
+   and must match its declared type's required sections. Blocks (layers 1
+   and 2) or fails CI (layer 3) if not.
 2. **Near-duplicate check** (`check_against_corpus.py`, ≥85% threshold) —
-   only on newly *added* files, not edits to existing ones. Blocks the
-   commit if a new page is a near-duplicate of something already in the
-   repo.
+   pre-commit and CI only, and only on newly *added* files, not edits to
+   existing ones. Blocks the commit/PR if a new page is a near-duplicate of
+   something already in the repo. Not run by the write-time hook — a full
+   corpus scan is too slow to run on every keystroke-adjacent `Write`/`Edit`,
+   so this stays a commit/PR-time check.
 
 Both checks were validated against this repo's real content before
 packaging: a file missing required frontmatter was correctly blocked, a
 near-duplicate copy of existing auth content was correctly blocked (100%
 and 91% matches against two existing files), and a genuinely original file
-passed cleanly.
+passed cleanly. The write-time hook was validated the same way against a
+real page that had shipped with every certification-specific frontmatter
+field present except `doc_type` — it caught and reported exactly that gap.
 
-## What the CI workflow adds beyond the local hook
+## What the CI workflow adds beyond the local hooks
 
-The local hook only protects commits made on a machine that has it
-installed and `core.hooksPath` configured — a fresh clone, a different
-contributor, or `git commit --no-verify` all bypass it. The GitHub Actions
-workflow re-runs the same two checks against every pull request's changed
-files, so it catches anything that slips past the local hook. Treat the
-hook as the fast local feedback loop and CI as the actual guarantee.
+Both local hooks only protect actions taken on a machine that has them
+installed (and, for the pre-commit hook, `core.hooksPath` configured) — a
+fresh clone, a different contributor, or `git commit --no-verify` all
+bypass them. The GitHub Actions workflow re-runs the same two checks
+against every pull request's changed files, so it catches anything that
+slips past both local layers. Treat the write-time hook as the earliest
+feedback loop, the pre-commit hook as the fast local backstop, and CI as
+the actual guarantee.
 
 ## What this does NOT check
 

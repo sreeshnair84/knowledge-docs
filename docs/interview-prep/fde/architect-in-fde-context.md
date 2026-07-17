@@ -6,11 +6,12 @@ status: current
 source_type: native-md
 source_file: ""
 tags: ["interview-prep", "fde", "enterprise-architect", "solution-architect", "transformation"]
-doc_type: study-guide
+doc_type: guide
+covers_version: "N/A"
 target_role: "Enterprise Architect / Solution Architect (FDE-deployed)"
 ---
 
-# Architect Expectations When Deployed in an FDE Context
+# Architect Expectations in an FDE Context
 
 An Enterprise Architect or Solution Architect who is **forward-deployed** to a client engagement operates under a different set of constraints and success metrics than a traditional EA role. The title may be the same; the accountability is different.
 
@@ -94,10 +95,10 @@ The forward-deployed architect in a non-coding role (Principal Architect, Soluti
 
 | Expectation | What "good" looks like | Study Guide |
 |------------|------------------------|-------------|
-| Rapid design decision log | Every material design change captured with context and rationale — this becomes handoff documentation | [EA Lifecycle Artefact Templates](../../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) |
+| Rapid design decision log | Every material design change captured with context and rationale — this becomes handoff documentation | [AIDLC Artifact Reference Library](../../ai-development/aidlc/AIDLC_Artifact_Reference_Library) |
 | Evaluation framework design | Define metrics, test set, passing thresholds before the prototype is demo-ready — not after | [AI Agent Evaluation Framework](../../ai-development/testing/AI_Agent_Evaluation_Framework_Guide) |
 | Security review facilitation | Own the relationship with CISO; translate security findings into engineering backlog items | [Enterprise AI Governance & Compliance](../../enterprise-architecture/ai-architecture/enterprise-ai-governance-compliance) |
-| Stakeholder demos | Present prototype outcomes in business language; translate technical limitations into business risk statements | [Enterprise AI Architect Communication Guide](../../enterprise-architecture/framework/Enterprise_AI_Architect_Communication_Guide) |
+| Stakeholder demos | Present prototype outcomes in business language; translate technical limitations into business risk statements | [Enterprise AI Architect Communication Mastery — Deep Dive Guide](../../enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide) |
 | Failure mode documentation | Maintain a live "known failure modes" log — used for evaluation and for handoff | [Architecture Patterns & Anti-Patterns](../../agentic-systems/skill/enterprise/architecture-patterns-antipatterns-and-case-studies) |
 
 ---
@@ -144,11 +145,11 @@ This is the exit ramp the architect owns entirely. A good FDE-context architect 
 
 | Expectation | What "good" looks like | Study Guide |
 |------------|------------------------|-------------|
-| Architecture decision record (ADR) | Every non-obvious decision documented with context, alternatives considered, rationale | [EA Lifecycle Artefact Templates](../../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) |
+| Architecture decision record (ADR) | Every non-obvious decision documented with context, alternatives considered, rationale | [AIDLC Artifact Reference Library](../../ai-development/aidlc/AIDLC_Artifact_Reference_Library) |
 | Expansion roadmap | Prioritised list of the next 3 use cases with effort estimates, sequenced against the existing infrastructure | [Enterprise AI Opportunity Portfolio](../../enterprise-architecture/transformation/AI_Opportunity_Portfolio) |
 | Operating model design | Who owns AI in the client org after the FDE leaves; how is the system governed; what skills does the client team need | [Target Operating Model & Change](../../enterprise-architecture/transformation/Target_Operating_Model_and_Change) |
 | Executive summary for leadership | One-page ROI summary: what was built, what it cost, what it saved, what's next | [Executive Communication Framework](../../enterprise-architecture/framework/Executive_Communication_Framework_Guide) |
-| Technical handoff package | Architecture docs, runbooks, evaluation harness, prompt tuning playbook, escalation matrix | [EA Lifecycle Checklist](../../enterprise-architecture/process/EA_Lifecycle_Checklist) |
+| Technical handoff package | Architecture docs, runbooks, evaluation harness, prompt tuning playbook, escalation matrix | [EA Strategy Playbook](../../enterprise-architecture/strategy/EA_Strategy_Playbook) |
 
 ---
 

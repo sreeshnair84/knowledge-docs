@@ -1,9 +1,9 @@
 ---
 title: "EU Bank AI Copilot Platform"
 date_created: 2026-06-29
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-17
 status: current
-supersedes: "docs/ai-usecases/eu-bank-ai-copilot-research.pdf"
+supersedes: "docs/ai-usecases/eu-bank-ai-copilot-research.pdf; archive/coding-tools/github-copilot/copilotkit-server-map-call-flow.md"
 source_type: converted-pdf
 source_file: "eu-bank-ai-copilot-complete.pdf"
 tags: ["ai-usecases", "copilotkit", "strands-agents", "agentcore"]
@@ -132,6 +132,17 @@ CopilotKit exposes two distinct integration patterns for MCP. **MCP Tools** foll
 | BFF (MCPAppsMiddleware) | CDN (assets.bank.eu) | HTTPS GET | SRI hash verification on response |
 | Browser (iframe) | Parent CopilotKit | postMessage | event.origin validated: assets.bank.eu only |
 
+### 4.3 MCP Tool Inventory by Domain Server
+
+Each domain MCP server runs in its own AgentCore container (`:8081`–`:8084`) and exposes a fixed tool set over Streamable-HTTP. §9 gives full code references for Core Banking and Payment Rail; Risk Engine and KYC/AML follow the same `FastAPI + mcp[server]` pattern.
+
+| Server | Port | Exposed Tools | Notes |
+|--------|------|----------------|-------|
+| Core Banking | `:8081/mcp` | `get_account_balance`, `get_transactions`, `get_account_details` | Read-only, PII stripped before return |
+| Payment Rail | `:8082/mcp` | `payment_initiate` (returns `ui://` for MCP App), `payment_status`, `payment_cancel` | Gated by approval token |
+| Risk Engine | `:8083/mcp` | `get_risk_score`, `check_exposure`, `get_limit_status` | Returns risk verdicts/scores + codes only, no PII |
+| KYC / AML | `:8084/mcp` | `check_sanctions`, `get_kyc_status`, `pep_screen` | Read-only; results immutably logged; never returns raw PII |
+
 ## 5. Sequence Diagrams
 
 The following six sequence diagrams cover every significant flow in the platform. Each was rendered at high resolution (1600–3100px wide) from validated Mermaid source — see the companion page [EU Bank Sequence Diagrams](./eu-bank-sequence-diagrams.md). Step numbers correspond to the implementation code in sections 6–9.
@@ -140,17 +151,46 @@ The following six sequence diagrams cover every significant flow in the platform
 
 The browser initiates PKCE auth with Entra ID. The BFF acts as the confidential OIDC client — client_secret and tokens never reach the browser. Only an HttpOnly session cookie is set. All subsequent /api/copilotkit calls use this cookie plus a CSRF double-submit token.
 
+**Step-by-step trace:**
+
+1. **Browser (MSAL.js)** — On load, MSAL detects no session and redirects to Entra ID. It generates a 128-bit `code_verifier` and computes `code_challenge = SHA256(code_verifier)` for the PKCE handshake.
+2. **Browser → Entra ID callback** — The user completes Entra ID login plus Conditional Access MFA. Entra redirects to `/auth/callback?code=...`; the browser passes the code and `code_verifier` to the BFF.
+3. **BFF (OIDC handler)** — As a confidential client (`client_secret` never in the browser), the BFF exchanges the code for tokens at the Entra `/token` endpoint using `code` + `code_verifier` + `client_secret`, and validates the `id_token` signature against JWKS.
+4. **BFF (session + Redis)** — Stores `{ upn, roles, tokens }` AES-256 encrypted in Redis and sets an `__Host-session` cookie (`HttpOnly`, `Secure`, `SameSite=Strict`). Tokens never reach the browser — the cookie is the only credential it holds.
+5. **Browser (all subsequent calls)** — Every `/api/copilotkit` POST automatically includes the session cookie. The BFF validates the cookie, loads the session from Redis, attaches user context, and refreshes the access token silently, server-side only.
+
 *Figure: Diagram 01 — Entra ID OIDC + PKCE Authentication & Session Establishment*
 
 ### 5.2 MCP Tools — Data Query Flow
 
 User asks a question. Strands consults Bedrock, which decides to call `get_account_balance`. The MCP client calls the Core Banking MCP server over Streamable-HTTP. PII is stripped before the result returns. AG-UI streams events back to the browser where `useCopilotAction` renders a native React card.
 
+**Step-by-step trace:**
+
+1. **Browser (CopilotChat)** — The user's message and conversation history are POSTed to `/api/copilotkit` with the session cookie and CSRF token; the body is AG-UI format `{ messages, threadId, runId }`.
+2. **BFF (OIDC middleware)** — Validates the session cookie against Redis, checks the Entra ID JWT claims, and extracts `{ upn, roles, tid }` onto the request context. Rejects with 401 if invalid.
+3. **BFF (CopilotRuntime)** — Forwards the request to AgentCore via `HttpAgent`, authenticating with a Cognito Bearer token or SigV4, and opens the AG-UI SSE stream to `:8080/invocations`.
+4. **AgentCore (Strands agent)** — Passes the conversation and all MCP tool schemas to Bedrock Claude. The model returns a `tool_call` decision — `get_account_balance({ account_id: "ACC123" })` — and AG-UI emits a `TOOL_CALL_START` event upstream.
+5. **AgentCore (MCP client)** — Sends a JSON-RPC `tools/call` request to the Core Banking MCP server over Streamable-HTTP (`:8081/mcp`). The server validates the IAM task role, queries the internal banking API over the private link, and returns the balance JSON.
+6. **AgentCore (Strands → Bedrock)** — Feeds the tool result back to Claude with the original conversation; Claude synthesises the natural-language answer, and Strands streams tokens as AG-UI `TEXT_MESSAGE_CONTENT` events.
+7. **BFF (CopilotRuntime)** — Proxies the AG-UI SSE stream to the browser and publishes an audit event to Kinesis.
+8. **Browser (`useCopilotAction`)** — Receives the `TOOL_CALL_START`/`TOOL_CALL_END` events and triggers the tool's `render()` function with the result (e.g. `<AccountBalanceCard {...result} />`) — no iframe, pure React.
+
 *Figure: Diagram 02 — MCP Tools: Account Balance Query (Core Banking MCP → Bedrock → Chat)*
 
 ### 5.3 MCP Apps — Interactive iframe UI
 
 The Payment MCP server returns a `ui://` resource reference alongside its tool result. MCPAppsMiddleware fetches the bundle, verifies the SHA-384 SRI hash, and CopilotKit renders it in a sandboxed iframe. The AG-UI protocol synchronises form state back to the Strands agent in real time.
+
+**Step-by-step trace:**
+
+1. **Steps 1–3** are identical to the MCP Tools path above: browser → BFF → CopilotRuntime → `HttpAgent` → AgentCore.
+2. **AgentCore (Strands → Bedrock)** — Bedrock decides to call `payment_initiate`; Strands calls the Payment Rail MCP server (`:8082/mcp`). The key difference: the response includes a `ui://` resource reference pointing at the payment-form bundle on the bank's CDN, with a SHA-384 SRI integrity hash.
+3. **BFF (`MCPAppsMiddleware`)** — Intercepts the `ui://` reference, fetches the JS bundle from `assets.bank.eu`, computes the SHA-384 hash and compares it against the tool result's hash (rejecting on mismatch), and injects the bundle into the AG-UI event stream.
+4. **Browser (CopilotKit runtime)** — Renders a sandboxed iframe (`sandbox="allow-scripts allow-forms"` — never `allow-same-origin`) containing the Payment team's React form.
+5. **Browser (iframe ↔ AG-UI `postMessage`)** — The user fills the form; the iframe sends `postMessage` to the parent CopilotKit with the origin strictly validated against `assets.bank.eu`, which forwards the form data as AG-UI `STATE_SNAPSHOT` events back to the Strands agent.
+6. **AgentCore (Strands interrupt)** — Before calling `payment_execute`, Strands fires `interrupt_before`; the BFF writes a pending approval to DynamoDB and the agent pauses — continuing into the full Maker/Checker approval flow detailed in §5.4.
+7. **Browser (CopilotChat)** — Once approved, the agent resumes, submits the payment, and narrates the confirmation as text; CopilotKit renders it in chat and removes the iframe from the DOM.
 
 *Figure: Diagram 03 — MCP Apps: Payment Initiation with Sandboxed iframe (ui:// flow)*
 

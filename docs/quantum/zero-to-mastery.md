@@ -1,9 +1,9 @@
 ---
 title: "Quantum AI — Zero to Mastery"
 date_created: 2026-07-09
-last_reviewed: 2026-07-10
+last_reviewed: 2026-07-17
 status: current
-supersedes: ""
+supersedes: "archive/quantum/Quantum_AI_TechGiants_Report.md"
 source_type: native-md
 source_file: ""
 tags: ["quantum"]
@@ -948,9 +948,30 @@ The three industry research reports in this section provide deep dives into each
 
 === "Tech Giants"
 
-    IBM, Google, Microsoft, AWS, NVIDIA. See [Quantum AI Tech Giants Report](./Quantum_AI_TechGiants_Report) for problems, solutions, products, wins, and anti-patterns from each.
+    IBM, Google, Microsoft, AWS, and NVIDIA converged on the same architectural pattern in 2025–2026: hybrid quantum-classical pipelines, accessed via cloud APIs, targeting near-term advantage in chemistry simulation, optimisation, and quantum-enhanced ML. Differentiation is in hardware modality, ecosystem maturity, and how aggressively each player frames its quantum timeline. (McKinsey's 2026 Quantum Technology Monitor: a third of large enterprises now allocate >$10M/year to quantum initiatives; quantum computing companies crossed $1B combined revenue in 2025, projected to reach $4.4B by 2028.)
 
-    **2025–2026 signal:** Every major tech giant converged on hybrid quantum-classical pipelines via cloud APIs, targeting chemistry simulation, optimisation, and quantum-enhanced ML.
+    | Giant | Flagship Platform | Strategic Bet | Best Practice | Anti-Pattern to Avoid |
+    | ----- | ------------------ | -------------- | -------------- | ----------------------- |
+    | **IBM** | Qiskit + Qiskit Runtime v2, Eagle/Nighthawk QPUs (20–30 cloud-accessible), IBM Quantum Network (280+ partners), Qiskit Functions Catalog | Fault-tolerant roadmap to 2028; embeds quantum specialists via IBM Consulting | Pair every pilot with a partner team that has run that algorithm class before; use Qiskit Functions to abstract circuit complexity from domain teams | Expecting quantum advantage on general-purpose ML today — IBM's own framing is chemistry/optimisation, not broad AI replacement |
+    | **Google Quantum AI** | Willow chip (105 qubits), Cirq, TensorFlow Quantum | Prove narrow, verifiable advantage first; commercial access stays partnership-driven, not self-serve | Use the 13,000x benchmark as a calibration point for what "quantum advantage" looks like — narrow and falsifiable, not general | Assuming headline speedup numbers generalise to your workload, or building a strategy on Cirq alone without Qiskit interoperability |
+    | **Microsoft Azure Quantum** | Azure Quantum (IonQ, Quantinuum, Rigetti), Q#, Quantum Ready Initiative, Azure Quantum Elements, topological-qubit research | Organisational readiness first; topological qubits as a long-shot differentiated hardware bet | Run a Quantum Ready-style readiness assessment before procuring any quantum compute; benchmark the same algorithm across all three Azure-hosted backends | Skipping the readiness assessment and jumping straight to procurement; waiting for topological qubits before starting any quantum work |
+    | **AWS Braket** | Amazon Braket (Rigetti, IonQ, D-Wave, QuEra, OQC, Xanadu, IQM), Ocelot chip (cat qubits), Quantum Embark Program, Braket + SageMaker Hybrid Jobs | Platform aggregation ("quantum hardware app store") plus proprietary cat-qubit hardware to cut error-correction overhead | Architect workloads as Hybrid Jobs from day one, even for simulator-only prototypes; use D-Wave annealing as the lowest-friction entry to combinatorial optimisation | Provider-shopping indefinitely without a benchmark-and-decide cycle; running annealing algorithms with gate-model assumptions |
+    | **NVIDIA** | CUDA-Q, cuQuantum, DGX Quantum | Own the classical compute layer under every quantum system, regardless of which hardware modality wins | Prototype and debug all variational algorithms (VQE/QAOA/QNN) on cuQuantum GPU simulators before spending QPU budget | Treating GPU simulation results as proof of quantum advantage — simulators are efficient precisely because the circuit is still classically tractable |
+
+    **Notable 2025–2026 results:** IBM's Project Bob (AI-augmented software delivery) — 8,000+ internal developers, ~45% average productivity gain, framed as IBM's "Client Zero" proof point; IBM stock +27% in 2025 (~$260B market cap); Quantum Summit attendance nearly doubled YoY with Fortune 500 speakers (United Airlines, T-Mobile, UPS, Verizon, Cigna). Google's Willow chip demonstrated a **13,000x speedup over the Frontier supercomputer using only 65 qubits** (Oct 2025) on a physics simulation — one of the most concrete, verifiable quantum-advantage claims to date, and a direct rebuttal to NVIDIA's own CEO calling quantum "15–30 years away" at CES 2025. AWS's Ocelot chip (Feb 2025) was AWS's first proprietary QPU (14 physical qubits incl. buffers/detection); D-Wave annealers running on AWS are used by enterprises including Volkswagen Labs for routing/scheduling. Rigetti's Ankaa-2 (84 qubits) is available via Braket alongside IonQ, D-Wave, and QuEra.
+
+    **Cross-giant patterns (architect takeaways):**
+
+    1. **Hybrid-first, not quantum-first** — every credible win (Project Bob inside SDLC, AWS Hybrid Jobs, Azure Quantum Elements inside HPC pipelines) embeds quantum as one component of an existing classical workflow. Never propose a "quantum-first" redesign — propose a hybrid insertion point.
+    2. **Readiness spend dominates hardware spend** — McKinsey's data shows enterprise quantum budgets flow overwhelmingly to use-case development, integration, and internal capability building, not QPU access fees. Budget readiness assessment and integration as the largest line items.
+    3. **Verifiable, narrow benchmarks build credibility** — Google's 13,000x claim was credible because it was narrow, verifiable, and immediately referenced by competitors (IBM, Microsoft, IonQ). Demand specific benchmarks on problem classes similar to yours before trusting vendor claims.
+    4. **Multi-hardware hedging is the dominant strategy** — Microsoft, AWS, and NVIDIA all build abstraction layers spanning hardware modalities; only IBM and Google lead with proprietary-hardware-first positioning (and even they offer Qiskit/Cirq portability). Avoid irreversible lock-in to one QPU vendor's proprietary SDK without an abstraction layer.
+
+    **Master anti-pattern library** (highest-frequency mistakes across tech-giant case studies): committing budget to QPU access before completing a use-case readiness assessment; selecting a hardware vendor on roadmap promises rather than benchmarked results; skipping classical-simulator validation before consuming QPU budget; hard-coding to one vendor's proprietary SDK without a documented reason; designing low-latency systems with quantum in the critical path (current QPU latency runs seconds to minutes including queue time); using gate-model algorithm patterns for problems that are really QUBO/Ising formulations, and vice versa; running quantum pilots as isolated innovation-lab projects disconnected from production data pipelines; treating a single press-release benchmark as evidence your own workload will see similar gains.
+
+    *Sources: IBM 3Q25 Earnings (SEC 8-K); IBM Think "Trends Shaping AI and Tech in 2026"; Constellation Research 2025 Year in Review; McKinsey Quantum Technology Monitor 2026; LevelFields Quantum Stocks 2026; The Quantum Insider "Top Quantum Computing Companies" (2026); PatentPC "Quantum Cloud Computing: AWS, Google, IBM"; BQP Sim "Quantum Computing & AI Together 2026"; SpinQ Global Footprint of Quantum Computers 2025.*
+
+    **Key pattern:** Every major tech giant converged on hybrid quantum-classical pipelines via cloud APIs, targeting chemistry simulation, optimisation, and quantum-enhanced ML.
 
 === "Startups"
 

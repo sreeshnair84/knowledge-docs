@@ -6,6 +6,8 @@ status: current
 source_type: native-md
 source_file: ""
 tags: ["ai-development", "aidlc", "agile", "cicd"]
+doc_type: guide
+covers_version: "N/A"
 ---
 
 # AIDLC — AI-Driven Development Lifecycle
@@ -39,5 +41,4 @@ The AI Development Lifecycle (AIDLC) reframes how enterprises plan, build, and g
 ## Related Sections
 
 - [AI Development Overview](../index.md) — parent section covering AIDLC, testing, and evaluation
-- [EA Lifecycle Artifact Templates](../../enterprise-architecture/process/EA_Lifecycle_Artifact_Templates_2026) — EA-layer artifacts complementing the AIDLC library
 - [Testing & Evaluation](../testing/index.md) — evaluation frameworks that integrate with AIDLC phase gates
