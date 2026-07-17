@@ -12,9 +12,7 @@ research_date: 2026-07-14
 covers_through: "as of 2026-07-14"
 ---
 
-# Enterprise AI Research Report
-
-## From Traditional Software to AI-Native Organization
+# Enterprise AI Research Report: From Traditional Software to AI-Native Organization
 
 **A comprehensive research report for CIOs, CTOs, Chief AI Officers, Enterprise Architects, Security Teams, Delivery Teams, and Consulting Practitioners.**
 
