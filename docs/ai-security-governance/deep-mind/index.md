@@ -64,9 +64,6 @@ DeepMind's corrigibility research emphasizes that AI systems must not actively u
 
 ---
 
-## PDF Resources
+## Guides in This Section
 
-<details>
-<summary>DeepMind Control Roadmap — PDF series</summary>
-<p>The PDF documents in this section contain detailed research summaries, framework designs, and control methodology from DeepMind's published safety work. Use the navigation to access them.</p>
-</details>
+This section contains 18 guides covering DeepMind's published safety research, framework designs, and control methodology. Use the sidebar navigation to browse them, or start with Part 01.

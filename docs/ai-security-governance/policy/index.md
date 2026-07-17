@@ -128,12 +128,21 @@ For A2A, authorization is declared in the **Agent Card** (the `authentication` b
 
 ---
 
-## PDF Resources in This Section
+## Guides in This Section
 
-<details>
-<summary>AI Security Series — see parent section for full catalog</summary>
-<p>Policy and authorization content is covered across the <a href="../security/">AI Security PDF series</a>, particularly volumes on identity, MCP/A2A security, and the operating model maturity roadmap.</p>
-</details>
+Policy and authorization content is covered across the Vol series below. Use the sidebar navigation to access individual volumes.
+
+- [Vol 0 — Series Index & Overview](./Vol0_Series_Index_and_Overview)
+- [Vol 1 — Executive Architecture](./Vol1_Executive_Architecture)
+- [Vol 1b — Authorization Deep Dive](./Vol1b_Authorization_Deep_Dive)
+- [Vol 2 — Identity & Claims Policy](./Vol2_Identity_Claims_Policy)
+- [Vol 2b — Advanced Policy Engineering](./Vol2b_Advanced_Policy_Engineering)
+- [Vol 3 — Agent, Tool & MCP Authorization](./Vol3_Agent_Tool_MCP_Authorization)
+- [Vol 3b — Agent Authorization Deep Dive](./Vol3b_Agent_Authorization_Deep_Dive)
+- [Vol 4 — RAG, Memory & Data Authorization](./Vol4_RAG_Memory_Data_Authorization)
+- [Vol 4b — AWS Entra Federation Patterns](./Vol4b_AWS_Entra_Federation_Patterns)
+- [Vol 5 — AWS Implementation & Governance](./Vol5_AWS_Implementation_Governance)
+- [Vol 5b — Compliance & Governance Decision Framework](./Vol5b_Compliance_Governance_Decision_Framework)
 
 ---
 

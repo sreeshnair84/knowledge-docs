@@ -948,19 +948,19 @@ The three industry research reports in this section provide deep dives into each
 
 === "Tech Giants"
 
-    IBM, Google, Microsoft, AWS, NVIDIA. See [Quantum AI Tech Giants Report](/knowledge-docs/quantum/Quantum_AI_TechGiants_Report.pdf) for problems, solutions, products, wins, and anti-patterns from each.
+    IBM, Google, Microsoft, AWS, NVIDIA. See [Quantum AI Tech Giants Report](./Quantum_AI_TechGiants_Report) for problems, solutions, products, wins, and anti-patterns from each.
 
     **2025–2026 signal:** Every major tech giant converged on hybrid quantum-classical pipelines via cloud APIs, targeting chemistry simulation, optimisation, and quantum-enhanced ML.
 
 === "Startups"
 
-    IonQ ($64.7M Q1 2026, 755% YoY), D-Wave (179% YoY, 135+ enterprise clients), Quantinuum (QNLP bet), Multiverse Computing (~€100M ARR from quantum-inspired classical hardware). See [Quantum AI Startups Report](/knowledge-docs/quantum/Quantum_AI_Startups_Report.pdf).
+    IonQ ($64.7M Q1 2026, 755% YoY), D-Wave (179% YoY, 135+ enterprise clients), Quantinuum (QNLP bet), Multiverse Computing (~€100M ARR from quantum-inspired classical hardware). See [Quantum AI Startups Report](./Quantum_AI_Startups_Report).
 
     **Key pattern:** Each startup picked a different wedge into the "quantum is theoretical" perception problem. The commercialisation race is happening now.
 
 === "Consultancies"
 
-    Accenture, McKinsey QuantumBlack (140+ use-case accelerators), BCG X, Deloitte, IBM Consulting. See [Quantum AI Consultancies Report](/knowledge-docs/quantum/Quantum_AI_Consultancies_Report.pdf).
+    Accenture, McKinsey QuantumBlack (140+ use-case accelerators), BCG X, Deloitte, IBM Consulting. See [Quantum AI Consultancies Report](./Quantum_AI_Consultancies_Report).
 
     **Key pattern:** Consultancies sell the bridge (strategy + vendor translation + change management) between enterprise business problems and quantum-native vendors. The $15B+ AI consulting market now includes quantum as a billable practice.
 
