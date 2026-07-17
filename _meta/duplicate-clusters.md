@@ -13,16 +13,16 @@
 
 Pairwise similarity within this cluster:
 
-- 65%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
+- 64%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
 - 63%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 - 61%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/index`
 - 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
 - 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/index`
-- 59%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/index`
+- 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/index`
 - 56%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
 - 54%  `agentic-systems/skill/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 - 53%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
-- 52%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
+- 53%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
 - 50%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/index`
 - 45%  `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns` <-> `agentic-systems/skill/coding/index`
 - 36%  `agentic-systems/skill/coding/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
@@ -72,7 +72,7 @@ Pairwise similarity within this cluster:
 
 - 75%  `ai-usecases/eu-bank-ai-copilot-complete` <-> `coding-tools/github-copilot/copilotkit-server-map-call-flow`
 - 62%  `ai-usecases/eu-bank-ai-copilot-complete` <-> `ai-usecases/eu-bank-sequence-diagrams`
-- 57%  `ai-usecases/eu-bank-sequence-diagrams` <-> `coding-tools/github-copilot/copilotkit-server-map-call-flow`
+- 58%  `ai-usecases/eu-bank-sequence-diagrams` <-> `coding-tools/github-copilot/copilotkit-server-map-call-flow`
 
 ## Cluster (2 pages)
 
@@ -126,7 +126,7 @@ Pairwise similarity within this cluster:
 
 Pairwise similarity within this cluster:
 
-- 66%  `coding-tools/claude/Questionnaire_Claude_Certification` <-> `coding-tools/claude/Questionnaire_Vol2_Claude_Certification`
+- 65%  `coding-tools/claude/Questionnaire_Claude_Certification` <-> `coding-tools/claude/Questionnaire_Vol2_Claude_Certification`
 
 ## Cluster (2 pages)
 

@@ -96,8 +96,11 @@ def get_sidebar_hierarchy(sidebars_path, docs_dir):
     """Returns {doc_id: category_path} by running sidebars.js through node,
     same approach as the earlier ad-hoc nesting-depth analysis, generalized
     into a reusable JSON dump."""
+    # Node.js require() on Windows requires forward slashes — backslashes are
+    # consumed as JS escape sequences (\U, \S etc.) before require sees the path.
+    node_path = os.path.abspath(sidebars_path).replace("\\", "/")
     script = f"""
-    const sidebars = require('{os.path.abspath(sidebars_path)}');
+    const sidebars = require('{node_path}');
     const items = sidebars.tutorialSidebar;
     const out = [];
     function walk(items, path) {{
