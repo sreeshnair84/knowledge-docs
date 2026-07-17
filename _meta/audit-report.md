@@ -1,6 +1,6 @@
 # Repo-wide Consistency Audit
 
-Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
+Files scanned: **669**  |  Clean: **292**  |  With findings: **377**
 
 ## Findings by severity
 
@@ -8,7 +8,7 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 |---|---|
 | CRITICAL | 0 |
 | HIGH | 0 |
-| MEDIUM | 1470 |
+| MEDIUM | 1324 |
 | LOW | 612 |
 
 ## Most common issue types
@@ -24,12 +24,12 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 | Heading level jumps from H2 to H4 at '**EPILOGUE & | 11 |
 | Heading level jumps from H3 to H5 at '**THE PROBLE | 11 |
 | Heading level jumps from H3 to H5 at 'Why It Emerg | 10 |
-| Heading level jumps from H3 to H6 at 'WORKED EXAMP | 10 |
 | Heading level jumps from H3 to H6 at 'BY THE END O | 10 |
 | Line 9 looks like a collapsed table row (only 2 pi | 10 |
 | Heading level jumps from H3 to H5 at '**Verificati | 10 |
 | Heading level jumps from H2 to H6 at 'Q1   DISTING | 10 |
 | Heading level jumps from H3 to H5 at '**THE ARCHIT | 9 |
+| Line 8 looks like a collapsed table row (only 2 pi | 9 |
 
 ## Per-file findings
 
@@ -78,14 +78,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 - MEDIUM: Heading level jumps from H1 to H3 at 'Executive Summary' — add an intermediate heading or fix the level.
 - LOW: Line 667 looks like a collapsed table row (only 2 pipe(s)): '|**§8**|' — verify it isn't a table that lost columns during conversion.
 - LOW: Line 668 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
-
-### `docs\agentic-systems\skill\Agent_Skills_Complete_Playbook_2026.md`
-
-- MEDIUM: Heading level jumps from H1 to H6 at 'TABLE OF CONTENTS' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Pipelines.' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H6 at 'II **Skill Author**' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Cross-Model Skill Portability' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'STRATEGIC IMPERATIVE' — add an intermediate heading or fix the level.
 
 ### `docs\ai-development\aidlc\AIDLC_Agile_CICD_AI_Transformation_2026.md`
 
@@ -169,28 +161,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 - MEDIUM: Heading level jumps from H2 to H5 at '**WHY BEAR CASE STILL RETURNS 4.3x**' — add an intermediate heading or fix the level.
 - MEDIUM: Heading level jumps from H2 to H5 at '**HOW TO USE THIS DOCUMENT**' — add an intermediate heading or fix the level.
 
-### `docs\ai-foundations\AI_Assistant_Architecture_Research_Report.md`
-
-- MEDIUM: Heading level jumps from H2 to H6 at 'PLATFORMS COVERED:' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 1' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 2' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 4' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 5' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Yes Show' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 6' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 7' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 8' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 9' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 10' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 11' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 12' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 13' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 14' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 15' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'PART 16' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Context Window Dependence' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Memory-Native Models' — add an intermediate heading or fix the level.
-
 ### `docs\ai-foundations\AI_Native_Architecture_Evolution_Report.md`
 
 - MEDIUM: Heading level jumps from H2 to H4 at 'Seven Cross-Cutting Findings' — add an intermediate heading or fix the level.
@@ -228,217 +198,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 - LOW: Line 170 looks like a collapsed table row (only 2 pipe(s)): '|**ACA/AKS**<br>Workload<br>**IMDS /**<br>Entra ID<br>**Azur' — verify it isn't a table that lost columns during conversion.
 - LOW: Line 173 looks like a collapsed table row (only 2 pipe(s)): '|**Secret Name**<br>**Type**<br>**Consumer**<br>**Rotation**' — verify it isn't a table that lost columns during conversion.
 - LOW: Line 174 looks like a collapsed table row (only 2 pipe(s)): '|**aoai-api-key-primary**<br>API Key<br>Orchestrator, Worker' — verify it isn't a table that lost columns during conversion.
-
-### `docs\ai-security-governance\Agentic_AI_Governance_Framework.md`
-
-- MEDIUM: Heading level jumps from H2 to H4 at 'FRAMEWORK' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H1 to H6 at 'The Core Governance Challenge' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'What Makes AI Agentic' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Why Traditional AI Governance Falls Short' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Global Regulatory Overview' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'LAYER 1 Governance Layer' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H6 at 'Agent Identity Principles' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H6 at 'The HITL / HOTL Spectrum' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at '**03 PRE-DEPLOYMENT TESTING** Structured validation against ' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Trust Must Be Explicit, Not Implicit' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'PHASE 1 Foundation' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H6 at 'AI Governance Board — Composition' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H6 at 'Key Performance Indicators' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H6 at 'Appendix A — Glossary of Key Terms' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\Sovereign_Constitutional_AI_RAI_Implementation_Handbook.md`
-
-- LOW: H1 ('Sovereign Constitutional AI & Responsible AI (RAI) — The Complete Implementation Handbook') doesn't match frontmatter title ('Sovereign Constitutional AI & RAI - Complete Implementation Handbook') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H2 to H6 at 'FRONT MATTER' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'CAIO ARCHITECT' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — TIERED SOVEREIGNTY ALLOCATION' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Failure Mode: Sovereignty Theater' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 1 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — DRAFTING A CLAUSE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Pattern: Principle-Indexed Critique' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — CONFLICT RESOLUTION' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 3 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — SPECIFICATION GAMING' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 4 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Anti-Pattern: Single Point of Approval' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — SHADOW AI DISCOVERY' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — CONFIDENCE-BASED THROTTLING' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 7 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Anti-Pattern: Logging Everything, Indexing Nothing' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 8 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Automatic Demotion Triggers (example set)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Policy Unit Testing' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — PUBLIC LEDGER TRANSPARENCY' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'NEW DOMAIN ARCHITECT ENGINEERING' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Critical Vector Risk Notice' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 13 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Internal vs. External Red Teams' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 14 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Vendor Onboarding Evidence Requirements' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Critical Vector Risk Notice' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 15 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'SEV-1 RESPONSE SEQUENCE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — POST-INCIDENT LOOP CLOSURE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Domain 16 Implementation Checklist' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — TIERING COST AGAINST RISK' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Cost Tags to Capture Per Workload' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Critical Vector Risk Notice' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'The Core Tension: Velocity vs. Control' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'WORKED EXAMPLE — MAKING THE COMPLIANT PATH THE FAST PATH' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'FIVE-LAYER REFERENCE STACK' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Clause Library Starter Categories' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Primary Domains: D1 (Foundations), D6 (Risk Taxonomy), D13 (' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Primary Domains: D2 (Constitutional AI), D10 (Policy-as-Code' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Primary Domains: D4 (Control Theory), D7 (Safety Engineering' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Primary Domains: D3 (Global RAI Standardization — certificat' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H6 at 'Autonomy Level' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Do we need Level 4 sovereignty infrastructure for every syst' — add an intermediate heading or fix the level.
-- LOW: Line 1402 looks like a collapsed table row (only 2 pipe(s)): '|**Term**<br>**Definition**|' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 1403 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
-
-### `docs\ai-security-governance\deep-mind\Part01_DeepMind_AI_Control_Roadmap.md`
-
-- LOW: H1 ('DeepMind AI Control Roadmap') doesn't match frontmatter title ('Part 1: DeepMind AI Control Roadmap Analysis') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at '**Gap: Automated corrigibility testing**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part02_Evolution_Enterprise_AI_Security.md`
-
-- LOW: H1 ('Evolution of Enterprise AI Security') doesn't match frontmatter title ('Part 2: Evolution of Enterprise AI Security') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at '**Failure Mode: Authentication proves identity**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part03_Enterprise_Threat_Modeling.md`
-
-- LOW: H1 ('Enterprise Threat Modeling for AI Agents') doesn't match frontmatter title ('Part 3: Enterprise Threat Modeling for AI Agents') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part04_AI_Control_Architecture.md`
-
-- LOW: H1 ('Enterprise AI Control Architecture') doesn't match frontmatter title ('Part 4: AI Control Architecture') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H4 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part05_Runtime_AI_Security.md`
-
-- LOW: H1 ('Runtime AI Security') doesn't match frontmatter title ('Part 5: Runtime AI Security') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part06_Identity_for_AI_Agents.md`
-
-- LOW: H1 ('Identity Architecture for AI Agents') doesn't match frontmatter title ('Part 6: Identity for AI Agents') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part07_AI_Authorization.md`
-
-- LOW: H1 ('AI Authorization Architecture') doesn't match frontmatter title ('Part 7: AI Authorization Architecture') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part08_Memory_Governance.md`
-
-- LOW: H1 ('Memory Governance for Enterprise AI') doesn't match frontmatter title ('Part 8: Memory Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part09_Tool_Governance.md`
-
-- LOW: H1 ('Tool Governance for Enterprise AI') doesn't match frontmatter title ('Part 9: Tool Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part10_Reasoning_Governance.md`
-
-- LOW: H1 ('Reasoning and Planning Governance') doesn't match frontmatter title ('Part 10: Reasoning Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part11_Multi_Agent_Security.md`
-
-- LOW: H1 ('Multi-Agent Security Architecture') doesn't match frontmatter title ('Part 11: Multi-Agent Security') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part12_AI_Observability.md`
-
-- LOW: H1 ('AI Observability Architecture') doesn't match frontmatter title ('Part 12: AI Observability') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part13_AI_SOC.md`
-
-- LOW: H1 ('AI Security Operations Center (AI SOC)') doesn't match frontmatter title ('Part 13: AI Security Operations Center') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part14_Enterprise_Governance.md`
-
-- LOW: H1 ('Enterprise AI Governance') doesn't match frontmatter title ('Part 14: Enterprise Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part15_Cloud_Implementation_Comparison.md`
-
-- LOW: H1 ('Cloud Implementation Comparison') doesn't match frontmatter title ('Part 15: Cloud Implementation Comparison') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at '**ENTERPRISE AI CONTROL ARCHITECTURE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part16_Reference_Architecture.md`
-
-- LOW: H1 ('Enterprise AI Reference Architectures') doesn't match frontmatter title ('Part 16: Reference Architecture') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H5 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Pattern 1: Single-Agent Internal Assistant' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part17_Best_Practices_Anti_Patterns.md`
-
-- LOW: H1 ('Best Practices & Anti-Patterns') doesn't match frontmatter title ('Part 17: Best Practices & Anti-Patterns') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'Calibration guidelines:' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\deep-mind\Part18_Future_Outlook_2026_2035.md`
-
-- LOW: H1 ('Future Outlook: 2026–2035') doesn't match frontmatter title ('Part 18: Future Outlook 2026-2035') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H1 to H6 at 'ENTERPRISE AI CONTROL ARCHITECTURE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol0_Series_Index_and_Overview.md`
-
-- MEDIUM: Heading level jumps from H2 to H4 at 'BEST PRACTICE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol1_Executive_Architecture.md`
-
-- LOW: H1 ('Executive Architecture & Authorization Fundamentals') doesn't match frontmatter title ('Executive Architecture & Authorization Fundamentals (Vol 1)') — keep them in sync so browser tabs, search results, and the rendered page agree.
-- MEDIUM: Heading level jumps from H2 to H4 at 'BEST PRACTICE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'BEST PRACTICE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol2_Identity_Claims_Policy.md`
-
-- MEDIUM: Heading level jumps from H3 to H5 at 'ANTI-PATTERN' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol2b_Advanced_Policy_Engineering.md`
-
-- MEDIUM: Heading level jumps from H1 to H3 at '1.1 SCIM Architecture for Enterprise AI' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol3_Agent_Tool_MCP_Authorization.md`
-
-- MEDIUM: Heading level jumps from H1 to H3 at '1.1 Authorization Decision Points in an Agent Workflow' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'I **NOTE**' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol3b_Agent_Authorization_Deep_Dive.md`
-
-- MEDIUM: Heading level jumps from H1 to H3 at 'Prompt Safety · Contextual Risk Signals · Workflow Patterns ' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol4_RAG_Memory_Data_Authorization.md`
-
-- MEDIUM: Heading level jumps from H1 to H4 at 'ANTI-PATTERN' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol4b_AWS_Entra_Federation_Patterns.md`
-
-- MEDIUM: Heading level jumps from H1 to H3 at '1.1 Entra ID Application Registration' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol5_AWS_Implementation_Governance.md`
-
-- MEDIUM: Heading level jumps from H1 to H3 at '1.2 AWS Component Justification Matrix' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Capital One — Cedar/AVP for Banking Authorization' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Phase 1: Foundation (Weeks 1–6)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Identity & Claims' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H5 at 'BEST PRACTICE' — add an intermediate heading or fix the level.
-
-### `docs\ai-security-governance\policy\Vol5b_Compliance_Governance_Decision_Framework.md`
-
-- MEDIUM: Heading level jumps from H1 to H3 at '1.2 Audit and Accountability Family (AU)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at '[CRITICAL] AP-01: Authorization Logic in Business Code' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at 'BEST PRACTICE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Capital One + AWS Cedar' — add an intermediate heading or fix the level.
 
 ### `docs\ai-security-governance\security\01-Foundations-Reference-Architecture.md`
 
@@ -1579,18 +1338,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 - LOW: Line 279 looks like a collapsed table row (only 2 pipe(s)): '|**THE STRUCTURE**<br>**S**<br>**Situation**<br>Establish th' — verify it isn't a table that lost columns during conversion.
 - LOW: Line 280 looks like a collapsed table row (only 2 pipe(s)): '|**C**<br>**Complication**<br>Introduce the disruption: the ' — verify it isn't a table that lost columns during conversion.
 
-### `docs\enterprise-architecture\framework\TOGAF10_APEX_AI_Platform_NexaBank.md`
-
-- MEDIUM: Heading level jumps from H2 to H4 at '00 Executive Summary' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Document: Statement of Architecture Work (SAW-APEX-001)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Business Capability Map — Gap Summary (BCM-APEX-001)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Data Classification Framework (APEX-Specific)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Multi-Region Deployment Model' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at '`DOC REF: ROAD-APEX-001 | v2.1`' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at '`DOC REF: ACHG-APEX-001 | v1.2 — AI-DLC Impact: Continuous C' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Architecture Requirements Specification — Sample (ARS-APEX-0' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H5 at 'APPENDIX B' — add an intermediate heading or fix the level.
-
 ### `docs\enterprise-architecture\process\EA_Lifecycle_Artifact_Templates_2026.md`
 
 - MEDIUM: Heading level jumps from H1 to H4 at 'TOGAF 10 ADM · All Phases · AI-First Extensions' — add an intermediate heading or fix the level.
@@ -1732,12 +1479,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 
 - MEDIUM: Heading level jumps from H2 to H4 at 'Document Control' — add an intermediate heading or fix the level.
 
-### `docs\enterprise-architecture\specialization\DPDP_Act_2023_Comprehensive_Guide.md`
-
-- MEDIUM: Heading level jumps from H2 to H5 at 'Lawfulness, Fairness & Transparency' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'Phase 1: Foundation (Months 1–3)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H5 at 'Layer 1: Discovery & Inventory' — add an intermediate heading or fix the level.
-
 ### `docs\enterprise-architecture\specialization\DSA_Principal_Architect_Reference.md`
 
 - LOW: Only one tag present — consider adding a doc_type and 1-2 topic tags alongside the existing domain tag for real discoverability (see references/taxonomy.md).
@@ -1752,22 +1493,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 - MEDIUM: Heading level jumps from H3 to H5 at '**Consistent Hashing with Virtual Nodes — O(log n) lookup**' — add an intermediate heading or fix the level.
 - MEDIUM: Heading level jumps from H3 to H5 at '**Inversion Count + K-way Merge — O(n log n) / O(n log k)**' — add an intermediate heading or fix the level.
 - MEDIUM: Heading level jumps from H3 to H5 at '**Time**' — add an intermediate heading or fix the level.
-
-### `docs\enterprise-architecture\specialization\EAKA_Research_Study.md`
-
-- MEDIUM: Heading level jumps from H2 to H6 at 'ENTERPRISE  AI  ARCHITECTURE  ·  PRINCIPAL RESEARCH' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H1 to H6 at 'RESEARCH TYPE' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Knowledge Taxonomy Hierarchy' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Evaluation & Feedback' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Skill Lifecycle — Governance Workflow' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Notify downstream skills of resolution' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'AI-Assisted Knowledge Lifecycle Pipeline' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H3 to H5 at '= Full support ####I = Strong ###II = Partial ##III = Limite' — add an intermediate heading or fix the level.
-- LOW: Line 149 looks like a collapsed table row (only 2 pipe(s)): '|**Business Capability** M|' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 150 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 151 looks like a collapsed table row (only 2 pipe(s)): '|**Domain** M|' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 152 looks like a collapsed table row (only 2 pipe(s)): '|**Technology** M **Concept** M|' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 153 looks like a collapsed table row (only 2 pipe(s)): '|**Pattern** M|' — verify it isn't a table that lost columns during conversion.
 
 ### `docs\enterprise-architecture\specialization\EA_Business_Communication_Executive_Skills.md`
 
@@ -1881,16 +1606,6 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 - MEDIUM: Heading level jumps from H2 to H5 at 'Alan Brooks — CISO' — add an intermediate heading or fix the level.
 - MEDIUM: Heading level jumps from H2 to H5 at 'Google Rep — Google Cloud — Enterprise AI Sales' — add an intermediate heading or fix the level.
 - MEDIUM: Heading level jumps from H2 to H5 at 'Marcus Webb — EA' — add an intermediate heading or fix the level.
-
-### `docs\enterprise-architecture\specialization\modern-data-ai-platform-blueprint-2026.md`
-
-- MEDIUM: Heading level jumps from H1 to H4 at 'S E C T I O N 1' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H4 to H6 at 'Architecture 1 — Best-of-Breed (Managed)' — add an intermediate heading or fix the level.
-- MEDIUM: Heading level jumps from H2 to H4 at 'S E C T I O N 8 · A R C H I T E C T U R E 2' — add an intermediate heading or fix the level.
-- LOW: Line 210 looks like a collapsed table row (only 2 pipe(s)): '|**Risk — Catalog lock-in despite Iceberg.**Mitigation: use ' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 211 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 212 looks like a collapsed table row (only 2 pipe(s)): '|**Risk — AI gateway / agent tooling churn (MCP/A2A still em' — verify it isn't a table that lost columns during conversion.
-- LOW: Line 213 looks like a collapsed table row (only 2 pipe(s)): '|**Risk — Cost overruns from GPU inference.**Mitigation: shi' — verify it isn't a table that lost columns during conversion.
 
 ### `docs\enterprise-architecture\strategy\EA_AI_First_Transformation_Transcript.md`
 
@@ -2621,6 +2336,84 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 
 - LOW: H1 ('Section 2C — Emerging AI Agent Protocols: UCP, AP2, NLIP & LMOS') doesn't match frontmatter title ('Section 2C — Emerging AI Agent Protocols: UCP, AP2, NLIP & LMOS Deep Dives') — keep them in sync so browser tabs, search results, and the rendered page agree.
 
+### `docs\ai-security-governance\Sovereign_Constitutional_AI_RAI_Implementation_Handbook.md`
+
+- LOW: H1 ('Sovereign Constitutional AI & Responsible AI (RAI) — The Complete Implementation Handbook') doesn't match frontmatter title ('Sovereign Constitutional AI & RAI - Complete Implementation Handbook') — keep them in sync so browser tabs, search results, and the rendered page agree.
+- LOW: Line 1402 looks like a collapsed table row (only 2 pipe(s)): '|**Term**<br>**Definition**|' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 1403 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
+
+### `docs\ai-security-governance\deep-mind\Part01_DeepMind_AI_Control_Roadmap.md`
+
+- LOW: H1 ('DeepMind AI Control Roadmap') doesn't match frontmatter title ('Part 1: DeepMind AI Control Roadmap Analysis') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part02_Evolution_Enterprise_AI_Security.md`
+
+- LOW: H1 ('Evolution of Enterprise AI Security') doesn't match frontmatter title ('Part 2: Evolution of Enterprise AI Security') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part03_Enterprise_Threat_Modeling.md`
+
+- LOW: H1 ('Enterprise Threat Modeling for AI Agents') doesn't match frontmatter title ('Part 3: Enterprise Threat Modeling for AI Agents') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part04_AI_Control_Architecture.md`
+
+- LOW: H1 ('Enterprise AI Control Architecture') doesn't match frontmatter title ('Part 4: AI Control Architecture') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part05_Runtime_AI_Security.md`
+
+- LOW: H1 ('Runtime AI Security') doesn't match frontmatter title ('Part 5: Runtime AI Security') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part06_Identity_for_AI_Agents.md`
+
+- LOW: H1 ('Identity Architecture for AI Agents') doesn't match frontmatter title ('Part 6: Identity for AI Agents') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part07_AI_Authorization.md`
+
+- LOW: H1 ('AI Authorization Architecture') doesn't match frontmatter title ('Part 7: AI Authorization Architecture') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part08_Memory_Governance.md`
+
+- LOW: H1 ('Memory Governance for Enterprise AI') doesn't match frontmatter title ('Part 8: Memory Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part09_Tool_Governance.md`
+
+- LOW: H1 ('Tool Governance for Enterprise AI') doesn't match frontmatter title ('Part 9: Tool Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part10_Reasoning_Governance.md`
+
+- LOW: H1 ('Reasoning and Planning Governance') doesn't match frontmatter title ('Part 10: Reasoning Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part11_Multi_Agent_Security.md`
+
+- LOW: H1 ('Multi-Agent Security Architecture') doesn't match frontmatter title ('Part 11: Multi-Agent Security') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part12_AI_Observability.md`
+
+- LOW: H1 ('AI Observability Architecture') doesn't match frontmatter title ('Part 12: AI Observability') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part13_AI_SOC.md`
+
+- LOW: H1 ('AI Security Operations Center (AI SOC)') doesn't match frontmatter title ('Part 13: AI Security Operations Center') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part14_Enterprise_Governance.md`
+
+- LOW: H1 ('Enterprise AI Governance') doesn't match frontmatter title ('Part 14: Enterprise Governance') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part15_Cloud_Implementation_Comparison.md`
+
+- LOW: H1 ('Cloud Implementation Comparison') doesn't match frontmatter title ('Part 15: Cloud Implementation Comparison') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part16_Reference_Architecture.md`
+
+- LOW: H1 ('Enterprise AI Reference Architectures') doesn't match frontmatter title ('Part 16: Reference Architecture') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part17_Best_Practices_Anti_Patterns.md`
+
+- LOW: H1 ('Best Practices & Anti-Patterns') doesn't match frontmatter title ('Part 17: Best Practices & Anti-Patterns') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\ai-security-governance\deep-mind\Part18_Future_Outlook_2026_2035.md`
+
+- LOW: H1 ('Future Outlook: 2026–2035') doesn't match frontmatter title ('Part 18: Future Outlook 2026-2035') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
 ### `docs\ai-security-governance\deep-mind\index.md`
 
 - LOW: H1 ('DeepMind AI Safety & Control Roadmap') doesn't match frontmatter title ('DeepMind Control Roadmap') — keep them in sync so browser tabs, search results, and the rendered page agree.
@@ -2628,6 +2421,10 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 ### `docs\ai-security-governance\index.md`
 
 - LOW: Only one tag present — consider adding a doc_type and 1-2 topic tags alongside the existing domain tag for real discoverability (see references/taxonomy.md).
+
+### `docs\ai-security-governance\policy\Vol1_Executive_Architecture.md`
+
+- LOW: H1 ('Executive Architecture & Authorization Fundamentals') doesn't match frontmatter title ('Executive Architecture & Authorization Fundamentals (Vol 1)') — keep them in sync so browser tabs, search results, and the rendered page agree.
 
 ### `docs\ai-security-governance\policy\index.md`
 
@@ -2987,6 +2784,21 @@ Files scanned: **669**  |  Clean: **278**  |  With findings: **391**
 ### `docs\enterprise-architecture\process\ai-solution-lifecycle-deliverables.md`
 
 - LOW: H1 ('AI Solution Lifecycle Deliverables by Role') doesn't match frontmatter title ('AI Solution Lifecycle Deliverables') — keep them in sync so browser tabs, search results, and the rendered page agree.
+
+### `docs\enterprise-architecture\specialization\EAKA_Research_Study.md`
+
+- LOW: Line 149 looks like a collapsed table row (only 2 pipe(s)): '|**Business Capability** M|' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 150 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 151 looks like a collapsed table row (only 2 pipe(s)): '|**Domain** M|' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 152 looks like a collapsed table row (only 2 pipe(s)): '|**Technology** M **Concept** M|' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 153 looks like a collapsed table row (only 2 pipe(s)): '|**Pattern** M|' — verify it isn't a table that lost columns during conversion.
+
+### `docs\enterprise-architecture\specialization\modern-data-ai-platform-blueprint-2026.md`
+
+- LOW: Line 210 looks like a collapsed table row (only 2 pipe(s)): '|**Risk — Catalog lock-in despite Iceberg.**Mitigation: use ' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 211 looks like a collapsed table row (only 2 pipe(s)): '|---|' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 212 looks like a collapsed table row (only 2 pipe(s)): '|**Risk — AI gateway / agent tooling churn (MCP/A2A still em' — verify it isn't a table that lost columns during conversion.
+- LOW: Line 213 looks like a collapsed table row (only 2 pipe(s)): '|**Risk — Cost overruns from GPU inference.**Mitigation: shi' — verify it isn't a table that lost columns during conversion.
 
 ### `docs\enterprise-architecture\strategy\index.md`
 
