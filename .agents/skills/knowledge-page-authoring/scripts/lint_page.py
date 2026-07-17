@@ -18,6 +18,14 @@ import re
 import sys
 import argparse
 
+# On Windows the default stdout encoding (cp1252) can't represent emoji or many
+# Unicode characters that appear in page content. Reconfigure to UTF-8 so that
+# print() never raises UnicodeEncodeError when linting those files.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 try:
     import yaml
 except ImportError:

@@ -1490,7 +1490,7 @@ Post a Slack message with:
         <li>
           <div class="step-content">
             <strong>Create a skills repository</strong>
-            <p>Create a GitHub repo (e.g., <code>routine-env</code>) with your skill files at <code>.claude/skills/skill-name/SKILL.md</code>. This repo serves as your cloud skill library.</p>
+            <p>Create a GitHub repo (e.g., <code>routine-env</code>) with your skill files at <code>.agents/skills/skill-name/SKILL.md</code>. This repo serves as your cloud skill library.</p>
           </div>
         </li>
         <li>
@@ -1518,7 +1518,7 @@ Post a Slack message with:
       <span class="tok-str">"hooks"</span>: [
         {
           <span class="tok-str">"type"</span>: <span class="tok-str">"command"</span>,
-          <span class="tok-kw">"command"</span>: <span class="tok-str">"[ ! -d ~/.claude/skills ] && cp -r ~/routine-env/.claude/skills/. ~/.claude/skills"</span>
+          <span class="tok-kw">"command"</span>: <span class="tok-str">"[ ! -d ~/.agents/skills ] && cp -r ~/routine-env/.agents/skills/. ~/.agents/skills"</span>
         }
       ]
     }

@@ -196,7 +196,7 @@ Slash commands package repeatable workflows. Skills package domain expertise wit
 | --- | --- |
 | Put team slash commands in .claude/commands/ and commit to version control. All developers get them on clone. | Creating shared team commands in ~/.claude/commands/. Not shared via version control — every developer must copy manually. |
 | Use context: fork in skill frontmatter for skills that produce verbose intermediate output (codebase analysis). Returns summary only to main conversation. | Running large exploration skills without context: fork. All intermediate output pollutes the main conversation context. |
-| Create personal variants in ~/.claude/skills/ with a different name rather than modifying team skills in .claude/skills/. | Editing .claude/skills/ directly for personal customization. Affects all teammates via version control. |
+| Create personal variants in ~/.agents/skills/ with a different name rather than modifying team skills in .agents/skills/. | Editing .agents/skills/ directly for personal customization. Affects all teammates via version control. |
 | Use $ARGUMENTS placeholder in skill body and argument-hint in frontmatter to create parameterized skills. | Creating a separate skill file for each module name or variation. Leads to combinatorial skill proliferation. |
 
 ## **3.4  Plan Mode vs. Direct Execution**

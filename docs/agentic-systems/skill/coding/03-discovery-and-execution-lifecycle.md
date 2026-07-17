@@ -28,11 +28,11 @@ Organization Skills       (org-wide catalog — "coming soon" on several platfor
    │                       as of mid-2026; today mostly simulated via a shared
    │                       git repo teams clone into their skills directory)
    ▼
-Repository / Project      (.github/skills/, .claude/skills/, .codex/skills/,
+Repository / Project      (.github/skills/, .agents/skills/, .codex/skills/,
    Skills                  .agents/skills/ — committed, code-reviewed, shared
    │                       via git with the whole team)
    ▼
-User / Global Skills      (~/.copilot/skills/, ~/.claude/skills/,
+User / Global Skills      (~/.copilot/skills/, ~/.agents/skills/,
    │                       ~/.codex/skills/, ~/.agents/skills/ — personal,
    │                       not committed, cross-project)
    ▼

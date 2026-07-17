@@ -587,7 +587,7 @@ Active every response until deactivated. No filler drift. If unsure — stay ter
               <div style={{ fontSize: "11px", color: "#f59e0b", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>Install in 30 seconds</div>
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 {[
-                  { label: "Claude Code", cmd: `mkdir -p ~/.claude/skills && cat > ~/.claude/skills/${skillName}.md << 'EOF'\n[paste SKILL.md content]\nEOF` },
+                  { label: "Claude Code", cmd: `mkdir -p ~/.agents/skills && cat > ~/.agents/skills/${skillName}.md << 'EOF'\n[paste SKILL.md content]\nEOF` },
                   { label: "Cursor / Windsurf / Cline", cmd: `# Drop SKILL.md in .cursor/rules/ or .windsurf/rules/ or your agent's rules folder` },
                   { label: "Any agent via AGENTS.md", cmd: `# Paste contents of SKILL.md directly into your AGENTS.md / CLAUDE.md / system prompt` },
                 ].map(step => (

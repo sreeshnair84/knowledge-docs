@@ -56,7 +56,7 @@ Automated metrics (compile/test pass, benchmark scores) catch correctness regres
 
 | Mechanism | Scope | Maturity |
 | --- | --- | --- |
-| Repository-committed skills (`.github/skills/`, `.claude/skills/`) | Team, via git | Mature, widely used |
+| Repository-committed skills (`.github/skills/`, `.agents/skills/`) | Team, via git | Mature, widely used |
 | Personal/global skills (`~/.copilot/skills/`, etc.) | Individual developer, cross-project | Mature, widely used |
 | Organization catalog | Org-wide | Announced/roadmap on multiple platforms, not broadly shipped |
 | Extension/plugin marketplace | Public or curated | Mature but **unverified** by the platform in most cases (GitHub's own explicit warning, file `10`) |

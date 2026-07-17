@@ -461,7 +461,7 @@ D) A cached system prompt for repeated use
 
 **Custom Commands** live in `.claude/commands/` and become `/command-name` slash commands.
 
-**Skills** live in `.claude/skills/<name>/` and group related commands + hooks.
+**Skills** live in `.agents/skills/<name>/` and group related commands + hooks.
 
 **Non-interactive mode**: `claude -p "prompt"` — runs a single task and exits. Used in CI/CD.
 
@@ -498,7 +498,7 @@ D) In each individual custom command
 **Q30.** What is the correct location for a custom command named `security-audit` that the whole team should use?
 
 A) `~/.claude/commands/security-audit.md`
-B) `.claude/skills/security-audit.md`
+B) `.agents/skills/security-audit.md`
 C) `.claude/commands/security-audit.md`
 D) `docs/commands/security-audit.md`
 
@@ -1429,12 +1429,12 @@ D) `claude --batch "prompt"`
 **Q95.** A team wants to create a `deploy-prod` skill that groups three related commands: `pre-deploy-check`, `apply-migration`, and `post-deploy-verify`, with a shared PostToolUse hook that logs all commands to an audit trail. What is the correct structure?
 
 A) Three separate custom commands in `.claude/commands/` with a shared hook in `settings.json`  
-B) A Skill in `.claude/skills/deploy-prod/` containing `commands/` and `hooks/` subdirectories, with the shared hook defined once at the skill level  
+B) A Skill in `.agents/skills/deploy-prod/` containing `commands/` and `hooks/` subdirectories, with the shared hook defined once at the skill level  
 C) A single custom command that runs all three steps  
 D) Skills cannot contain hooks
 
 **Answer: B**
-*Skills are the grouping mechanism for related commands with shared hooks and configuration. A Skill directory at `.claude/skills/deploy-prod/` can contain `commands/` for the sub-commands and `hooks/` for shared lifecycle hooks. The hook defined at the skill level applies to all commands in the skill. This is precisely the use case Skills are designed for.*
+*Skills are the grouping mechanism for related commands with shared hooks and configuration. A Skill directory at `.agents/skills/deploy-prod/` can contain `commands/` for the sub-commands and `hooks/` for shared lifecycle hooks. The hook defined at the skill level applies to all commands in the skill. This is precisely the use case Skills are designed for.*
 
 ---
 

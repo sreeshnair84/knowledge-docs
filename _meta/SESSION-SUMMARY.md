@@ -30,9 +30,9 @@ I'm listing both again here because the theme across this whole engagement has b
 
 Run everything with one command:
 ```bash
-bash .claude/skills/knowledge-repo-consistency-audit/scripts/run_maintenance.sh
+bash .agents/skills/knowledge-repo-consistency-audit/scripts/run_maintenance.sh
 # or, to only detect and report, changing nothing:
-bash .claude/skills/knowledge-repo-consistency-audit/scripts/run_maintenance.sh --check-only
+bash .agents/skills/knowledge-repo-consistency-audit/scripts/run_maintenance.sh --check-only
 ```
 
 ## Token optimization — implemented, not just recommended

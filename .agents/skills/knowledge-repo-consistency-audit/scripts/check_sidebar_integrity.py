@@ -47,10 +47,12 @@ def collect_disk_ids(docs_dir):
 
 def collect_sidebar_refs(sidebars_path):
     text = open(sidebars_path, encoding="utf-8").read()
-    # id-like quoted strings: contain a slash (path-like), or are a bare
-    # 'index'/'about' style top-level doc reference
+    # id-like quoted strings: path-like (contain a slash), not starting with /
+    # Strings like '/' and '/index' are JS method arguments (.split('/'),
+    # .endsWith('/index')), not doc references — exclude them via the
+    # not-starting-with-slash filter.
     refs = re.findall(r"""['"]([a-zA-Z0-9_\-./]+)['"]""", text)
-    return [r for r in refs if "/" in r], text
+    return [r for r in refs if "/" in r and not r.startswith("/")], text
 
 
 def main():

@@ -507,13 +507,13 @@ const ALL_QUESTIONS = [
     id: 41, domain: 3, task: "3.2", scenario: "Code Generation",
     stem: "You want to customize the /analyze-codebase skill for your personal workflow by adding extra steps, but you don't want your changes to affect your teammates. What is the correct approach?",
     options: {
-      A: "Edit the skill file in .claude/skills/ directly — your changes will only apply locally.",
-      B: "Create a personal variant with a different name in ~/.claude/skills/ so it doesn't affect teammates.",
+      A: "Edit the skill file in .agents/skills/ directly — your changes will only apply locally.",
+      B: "Create a personal variant with a different name in ~/.agents/skills/ so it doesn't affect teammates.",
       C: "Fork the skill file into a feature branch and use it from there.",
       D: "Add a personal-only flag in the skill's YAML frontmatter."
     },
     correct: "B",
-    explanation: "Creating personal variants with different names in ~/.claude/skills/ is the documented approach for personal skill customization. Editing .claude/skills/ directly (A) would affect everyone via version control. There is no 'personal-only flag' in skill frontmatter."
+    explanation: "Creating personal variants with different names in ~/.agents/skills/ is the documented approach for personal skill customization. Editing .agents/skills/ directly (A) would affect everyone via version control. There is no 'personal-only flag' in skill frontmatter."
   },
   {
     id: 42, domain: 3, task: "3.2", scenario: "Code Generation",

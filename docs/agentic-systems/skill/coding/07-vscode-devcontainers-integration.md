@@ -86,7 +86,7 @@ Multiple independent sources converge on the same warning: **a Dev Container is 
 │          ▼                    ▼                        ▼               │
 │  ┌─────────────────────────────────────────────────────────────┐    │
 │  │  AGENT HARNESS (running inside the container)                   │    │
-│  │  Reads: AGENTS.md/CLAUDE.md, Skills (.claude/skills,             │    │
+│  │  Reads: AGENTS.md/CLAUDE.md, Skills (.agents/skills,             │    │
 │  │  .github/skills), workspace instructions (*.instructions.md)     │    │
 │  └──────────────────────────┬──────────────────────────────────┘    │
 │                              │                                         │

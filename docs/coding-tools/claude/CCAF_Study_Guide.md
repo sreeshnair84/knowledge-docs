@@ -307,7 +307,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | --- | --- |
 | .claude/commands/ (project) | Checked into version control. Available to ALL developers who clone the repo. Team-wide commands. |
 | ~/.claude/commands/ (user) | Personal commands. NOT shared. Only available to the individual developer. |
-| .claude/skills/ with SKILL.md | Skills with frontmatter config: context:fork, allowed-tools, argument-hint. |
+| .agents/skills/ with SKILL.md | Skills with frontmatter config: context:fork, allowed-tools, argument-hint. |
 | context: fork | Runs the skill in an ISOLATED sub-agent. Output does NOT pollute the main conversation. Use for verbose analysis or exploratory tasks. |
 | allowed-tools | Restricts which tools the skill can call. Use for safety (e.g., limit to read-only). |
 | argument-hint | Prompts developer for required parameters when the skill is invoked without arguments. |
@@ -373,7 +373,7 @@ Rules in .claude/rules/ use YAML frontmatter with glob patterns for conditional 
 | A) Add testing conventions to the root CLAUDE.md and rely on Claude to apply them to test files. |
 | B) Create a separate CLAUDE.md in every directory that contains test files. |
 | ✓ C) Create a .claude/rules/ file with paths: ["**/*.test.tsx"] containing the testing conventions. |
-| D) Create a skill in .claude/skills/ with the testing conventions. |
+| D) Create a skill in .agents/skills/ with the testing conventions. |
 | Explanation: .claude/rules/ with glob path patterns is purpose-built for conventions that must apply to files by type regardless of directory location. Option A requires inference (unreliable). Option B requires maintaining CLAUDE.md in every directory (unmaintainable). Option D requires manual skill invocation rather than automatic application. |
 
 **DOMAIN 4: Prompt Engineering & Structured Output — 20% of exam**

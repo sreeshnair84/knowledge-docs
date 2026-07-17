@@ -39,7 +39,7 @@ if not os.path.exists(_SIBLING):
     sys.exit(
         f"Cannot find consistency_checks.py at {_SIBLING}\n"
         "This skill depends on knowledge-page-authoring being installed "
-        "alongside it at .claude/skills/knowledge-page-authoring/."
+        "alongside it at .agents/skills/knowledge-page-authoring/."
     )
 
 _spec = importlib.util.spec_from_file_location("consistency_checks", _SIBLING)

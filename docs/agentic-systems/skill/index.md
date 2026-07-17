@@ -35,7 +35,7 @@ The most important structural insight in this entire section: **Skills and alway
 | Layer | Examples | When it loads | What it carries |
 | --- | --- | --- | --- |
 | **Always-loaded context** | `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/*.mdc`, `.github/copilot-instructions.md` | Every turn, unconditionally | Standing rules, coding standards, "always true about this repo" |
-| **Skill (on-demand)** | `SKILL.md` files in `.claude/skills/`, `.github/skills/` | Only when a task matches the skill's name/description | Specialized, procedural knowledge for a specific class of task |
+| **Skill (on-demand)** | `SKILL.md` files in `.agents/skills/`, `.github/skills/` | Only when a task matches the skill's name/description | Specialized, procedural knowledge for a specific class of task |
 
 Conflating these two — stuffing everything into the always-loaded file, or trying to make a skill do the job of a standing rule — is the most common authoring mistake observed across vendor documentation and community guides alike.
 
@@ -111,7 +111,7 @@ The description field is the single highest-leverage line in the file. The Verce
 
 Modern coding agents (Claude Code, Copilot agent mode, Codex CLI, Cursor) follow a two-step discovery process:
 
-1. **Index** — at session start (or on a file-change event), the agent walks the skill directories (`.claude/skills/`, `.github/skills/`, `~/.codex/skills/`, etc.) and loads only each skill's `name` and `description` into a lightweight index. This is cheap: a full skill directory with 50 skills might add 2–3K tokens of index overhead.
+1. **Index** — at session start (or on a file-change event), the agent walks the skill directories (`.agents/skills/`, `.github/skills/`, `~/.codex/skills/`, etc.) and loads only each skill's `name` and `description` into a lightweight index. This is cheap: a full skill directory with 50 skills might add 2–3K tokens of index overhead.
 2. **Match** — when a developer sends a request, the agent compares the request against the index. If one or more skills match, the agent loads the full `SKILL.md` (and any referenced files the skill declares) into context for that turn only.
 
 This is exactly progressive disclosure in practice. The index overhead is constant; the per-turn overhead scales only with the skills that actually apply to the current task.
@@ -124,8 +124,8 @@ This is exactly progressive disclosure in practice. The index overhead is consta
 
 | Scope | Path | Who controls |
 | --- | --- | --- |
-| **Project-local** | `.claude/skills/<name>/SKILL.md` or `.github/skills/<name>.md` | Repository authors — skill ships with the repo |
-| **User-global** | `~/.claude/skills/<name>/SKILL.md` (Claude Code), `~/.codex/skills/` (Codex CLI) | Individual developer — available across all projects |
+| **Project-local** | `.agents/skills/<name>/SKILL.md` or `.github/skills/<name>.md` | Repository authors — skill ships with the repo |
+| **User-global** | `~/.agents/skills/<name>/SKILL.md` (Claude Code), `~/.codex/skills/` (Codex CLI) | Individual developer — available across all projects |
 | **Org/enterprise** | Configured via org-level MDM, `.claude/settings.json` `skillDirectories`, or a central registry URL | Platform team — skills distributed to all org members |
 | **Marketplace** | GitHub Extensions marketplace, VS Code Extension marketplace | Third-party or Anthropic-published |
 

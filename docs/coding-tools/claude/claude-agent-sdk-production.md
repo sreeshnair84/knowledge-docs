@@ -158,7 +158,7 @@ A subagent is a child agent spawned by a parent. Subagents run in isolated conte
 
 ### Skill
 
-A skill is a reusable capability described in a `SKILL.md` file placed in `.claude/skills/`. The SDK auto-discovers skill files at startup. The model reads skill descriptions and invokes them by name when appropriate — no manual wiring required.
+A skill is a reusable capability described in a `SKILL.md` file placed in `.agents/skills/`. The SDK auto-discovers skill files at startup. The model reads skill descriptions and invokes them by name when appropriate — no manual wiring required.
 
 ---
 
@@ -680,7 +680,7 @@ async def tournament_solve(problem: str, n_candidates: int = 3) -> dict:
 
 ### What Are Skills
 
-Skills are reusable, model-discoverable capabilities described in Markdown files. The SDK auto-discovers all `SKILL.md` files in the `.claude/skills/` directory at agent startup. The model reads skill descriptions and invokes them by name when the task calls for it — no explicit tool call wiring required.
+Skills are reusable, model-discoverable capabilities described in Markdown files. The SDK auto-discovers all `SKILL.md` files in the `.agents/skills/` directory at agent startup. The model reads skill descriptions and invokes them by name when the task calls for it — no explicit tool call wiring required.
 
 Skills are best for higher-level workflows that combine multiple tools, or for domain expertise the agent should apply automatically.
 
@@ -737,8 +737,8 @@ Return a structured report with:
 ```python
 from claude_agent_sdk import Agent, load_skills
 
-# Auto-discover skills from .claude/skills/
-skills = load_skills(skills_dir=".claude/skills")
+# Auto-discover skills from .agents/skills/
+skills = load_skills(skills_dir=".agents/skills")
 
 agent = Agent(
     model="claude-sonnet-4-6",

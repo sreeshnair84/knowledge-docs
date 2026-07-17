@@ -893,7 +893,7 @@
     <div class="qcard yg" onclick="toggleAnswer(this)">
       <div class="q-head"><div class="q-num">Q32</div><div>
         <div class="q-scenario">Scenario: Skills vs Slash Commands</div>
-        <div class="q-text">A team has old .claude/commands/review.md slash commands and new .claude/skills/review/SKILL.md. Both exist simultaneously. What happens when /review is invoked?</div>
+        <div class="q-text">A team has old .claude/commands/review.md slash commands and new .agents/skills/review/SKILL.md. Both exist simultaneously. What happens when /review is invoked?</div>
       </div></div>
       <div class="q-options">
         <div class="option"><span class="option-letter" style="color:var(--g)">A</span> Error — duplicate command definitions are not allowed</div>
@@ -904,7 +904,7 @@
       <div class="toggle-btn">▶ SHOW ANSWER</div>
       <div class="q-answer yg">
         <div class="answer-label">✓ Correct Answer</div>
-        <span class="correct">B — The skill takes precedence.</span> When both .claude/commands/review.md AND .claude/skills/review/SKILL.md exist, the skill wins. Old command files still work (backward compatible) — but skills are the recommended new system. Skills add: supporting files, invocation control (user vs Claude vs both), subagent execution (fork context), and nested directory discovery.
+        <span class="correct">B — The skill takes precedence.</span> When both .claude/commands/review.md AND .agents/skills/review/SKILL.md exist, the skill wins. Old command files still work (backward compatible) — but skills are the recommended new system. Skills add: supporting files, invocation control (user vs Claude vs both), subagent execution (fork context), and nested directory discovery.
       </div>
     </div>
 
@@ -916,7 +916,7 @@
       <div class="q-options">
         <div class="option"><span class="option-letter" style="color:var(--g)">A</span> Copy the skill file to each of the 50 repositories manually</div>
         <div class="option"><span class="option-letter" style="color:var(--g)">B</span> Convert to a plugin — packaged extension installable from marketplaces</div>
-        <div class="option"><span class="option-letter" style="color:var(--g)">C</span> Publish to a user-level ~/.claude/skills/ and share the directory</div>
+        <div class="option"><span class="option-letter" style="color:var(--g)">C</span> Publish to a user-level ~/.agents/skills/ and share the directory</div>
         <div class="option"><span class="option-letter" style="color:var(--g)">D</span> Skills cannot be shared — each team must create their own</div>
       </div>
       <div class="toggle-btn">▶ SHOW ANSWER</div>

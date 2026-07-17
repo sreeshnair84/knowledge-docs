@@ -54,7 +54,7 @@ jobs:
             [ -z "$file" ] && continue
             [ -f "$file" ] || continue
             echo "--- $file ---"
-            if ! python3 .claude/skills/knowledge-page-authoring/scripts/lint_page.py "$file"; then
+            if ! python3 .agents/skills/knowledge-page-authoring/scripts/lint_page.py "$file"; then
               FAIL=1
             fi
           done <<< "${{ steps.changed.outputs.files }}"
@@ -71,7 +71,7 @@ jobs:
             [ -z "$file" ] && continue
             [ -f "$file" ] || continue
             echo "--- $file ---"
-            OUT=$(python3 .claude/skills/knowledge-page-authoring/scripts/check_against_corpus.py "$file" --threshold 0.85 2>&1)
+            OUT=$(python3 .agents/skills/knowledge-page-authoring/scripts/check_against_corpus.py "$file" --threshold 0.85 2>&1)
             echo "$OUT"
             if echo "$OUT" | grep -q "NEAR-DUPLICATE"; then
               FAIL=1
@@ -80,7 +80,7 @@ jobs:
           exit $FAIL
 
       - name: Sidebar integrity
-        run: python3 .claude/skills/knowledge-repo-consistency-audit/scripts/check_sidebar_integrity.py
+        run: python3 .agents/skills/knowledge-repo-consistency-audit/scripts/check_sidebar_integrity.py
 
       - name: No changed pages
         if: steps.changed.outputs.files == ''
@@ -104,12 +104,12 @@ jobs:
 
       - name: Full corpus consistency audit
         run: |
-          python3 .claude/skills/knowledge-repo-consistency-audit/scripts/audit_corpus.py \
+          python3 .agents/skills/knowledge-repo-consistency-audit/scripts/audit_corpus.py \
             --min-severity HIGH --out /tmp/audit-report.md
           cat /tmp/audit-report.md
 
       - name: Sidebar integrity (repo-wide)
-        run: python3 .claude/skills/knowledge-repo-consistency-audit/scripts/check_sidebar_integrity.py
+        run: python3 .agents/skills/knowledge-repo-consistency-audit/scripts/check_sidebar_integrity.py
 
       - name: Upload full report as artifact
         if: always()

@@ -6,7 +6,7 @@
 
 .NOTES
     Run this once from the repo root after the knowledge-page-authoring skill is
-    installed at .claude/skills/knowledge-page-authoring/. Then commit the generated
+    installed at .agents/skills/knowledge-page-authoring/. Then commit the generated
     .githooks/ and .github/workflows/ files so CI protects every PR regardless of
     local git config.
 #>
