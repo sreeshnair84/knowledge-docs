@@ -185,7 +185,7 @@ const config = {
           items: [{ label: 'GitHub', href: 'https://github.com/sreeshnair84/knowledge-docs' }],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Knowledge Docs. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Knowledge Docs · v${require('./package.json').version} · Built ${new Date().toISOString().slice(0, 10)}`,
     },
     prism: {
       theme: prismThemes.github,
