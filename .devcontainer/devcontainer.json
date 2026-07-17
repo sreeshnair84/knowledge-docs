@@ -1,15 +1,22 @@
 {
   "name": "knowledge-docs",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-24-bookworm",
-
-  "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
-    }
+  "build": {
+    "dockerfile": "Dockerfile"
   },
 
-  "postCreateCommand": "npm install && npm install -g @anthropic-ai/claude-code",
+  "mounts": [
+    {
+      "source": "${localEnv:USERPROFILE}/.claude",
+      "target": "/root/.claude",
+      "type": "bind"
+    }
+  ],
+
+  "remoteEnv": {
+    "NODE_ENV": "development"
+  },
+
+  "postCreateCommand": "npm install && git config --global --add safe.directory ${containerWorkspaceFolder}",
 
   "forwardPorts": [3000],
   "portsAttributes": {
@@ -38,9 +45,5 @@
         "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
-  },
-
-  "containerEnv": {
-    "NODE_ENV": "development"
   }
 }

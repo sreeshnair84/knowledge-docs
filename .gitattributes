@@ -1,0 +1,17 @@
+# Normalize all text files to LF, both in the repo and on checkout,
+# regardless of the platform/editor doing the checkout (Windows Git
+# clients default to core.autocrlf=true and mangle line endings otherwise).
+* text=auto eol=lf
+
+# Explicit binary types: never run text/EOL conversion on these, even if
+# their content happens to look text-like (e.g. uncompressed PDF streams).
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff2 binary
+*.excalidraw binary

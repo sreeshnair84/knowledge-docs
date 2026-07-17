@@ -1,9 +1,9 @@
 ---
 title: "AGENTS.md"
 date_created: 2026-07-09
-last_reviewed: 2026-07-09
+last_reviewed: 2026-07-17
 status: current
-supersedes: ""
+supersedes: "CLAUDE.md (now a pointer to this file)"
 source_type: native-md
 source_file: ""
 tags: []
@@ -12,7 +12,7 @@ covers_version: "N/A"
 
 # AGENTS.md
 
-This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents (Claude Code, Codex, etc.) when working with code in this repository. It is the single source of truth — `CLAUDE.md` imports this file rather than duplicating it.
 
 ## Site
 
