@@ -1,11 +1,47 @@
 # Duplicate-Candidate Clusters (>=0.6 similarity, connected components)
 
-14 cluster(s) found across 668 pages.
+17 cluster(s) found across 692 pages.
 
-## Cluster (4 pages)
+## Cluster (7 pages)
 
+- `quantum/index`
+- `quantum/Quantum_AI_Consultancies_Report`
+- `quantum/Quantum_AI_Startups_Report`
+- `quantum/zero-to-mastery-part2-quantum-ai`
+- `quantum/zero-to-mastery-part3-architecture`
+- `quantum/zero-to-mastery-part4-appendices`
+- `quantum/zero-to-mastery`
+
+Pairwise similarity within this cluster:
+
+- 76%  `quantum/zero-to-mastery-part3-architecture` <-> `quantum/zero-to-mastery-part4-appendices`
+- 71%  `quantum/zero-to-mastery-part2-quantum-ai` <-> `quantum/zero-to-mastery-part4-appendices`
+- 70%  `quantum/zero-to-mastery-part2-quantum-ai` <-> `quantum/zero-to-mastery`
+- 70%  `quantum/zero-to-mastery-part2-quantum-ai` <-> `quantum/zero-to-mastery-part3-architecture`
+- 69%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery-part4-appendices`
+- 69%  `quantum/zero-to-mastery-part3-architecture` <-> `quantum/zero-to-mastery`
+- 69%  `quantum/zero-to-mastery-part4-appendices` <-> `quantum/zero-to-mastery`
+- 68%  `quantum/index` <-> `quantum/zero-to-mastery-part4-appendices`
+- 66%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery-part4-appendices`
+- 66%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/Quantum_AI_Startups_Report`
+- 62%  `quantum/index` <-> `quantum/Quantum_AI_Consultancies_Report`
+- 61%  `quantum/index` <-> `quantum/zero-to-mastery`
+- 61%  `quantum/index` <-> `quantum/zero-to-mastery-part3-architecture`
+- 59%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery-part3-architecture`
+- 59%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery-part3-architecture`
+- 56%  `quantum/index` <-> `quantum/zero-to-mastery-part2-quantum-ai`
+- 56%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery-part2-quantum-ai`
+- 56%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery`
+- 52%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery-part2-quantum-ai`
+- 51%  `quantum/index` <-> `quantum/Quantum_AI_Startups_Report`
+- 50%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery`
+
+## Cluster (6 pages)
+
+- `agentic-systems/skill/00-executive-summary-and-reference-architecture`
 - `agentic-systems/skill/index`
 - `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
+- `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
 - `agentic-systems/skill/coding/index`
 - `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 
@@ -14,25 +50,67 @@ Pairwise similarity within this cluster:
 - 65%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
 - 64%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 - 61%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/index`
+- 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/index`
+- 60%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
+- 59%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/index`
+- 56%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill`
 - 54%  `agentic-systems/skill/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
-- 49%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/index`
-- 35%  `agentic-systems/skill/coding/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
+- 53%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
+- 53%  `agentic-systems/skill/index` <-> `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns`
+- 50%  `agentic-systems/skill/coding/01-foundations-what-is-a-coding-skill` <-> `agentic-systems/skill/coding/index`
+- 45%  `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns` <-> `agentic-systems/skill/coding/index`
+- 36%  `agentic-systems/skill/coding/index` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
+- 35%  `agentic-systems/skill/00-executive-summary-and-reference-architecture` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
+- 34%  `agentic-systems/skill/coding/12-enterprise-workflows-comparative-analysis-and-patterns` <-> `agentic-systems/skill/enterprise/01-foundations-what-is-an-agent-skill`
 
-## Cluster (4 pages)
+## Cluster (5 pages)
 
-- `quantum/index`
-- `quantum/Quantum_AI_Consultancies_Report`
-- `quantum/Quantum_AI_Startups_Report`
-- `quantum/zero-to-mastery`
+- `ai-usecases/eu-bank-ai-copilot-part1-architecture`
+- `ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code`
+- `ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability`
+- `ai-usecases/eu-bank-sequence-diagrams`
+- `coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools`
 
 Pairwise similarity within this cluster:
 
-- 71%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/zero-to-mastery`
-- 69%  `quantum/index` <-> `quantum/zero-to-mastery`
-- 68%  `quantum/Quantum_AI_Startups_Report` <-> `quantum/zero-to-mastery`
-- 66%  `quantum/Quantum_AI_Consultancies_Report` <-> `quantum/Quantum_AI_Startups_Report`
-- 62%  `quantum/index` <-> `quantum/Quantum_AI_Consultancies_Report`
-- 51%  `quantum/index` <-> `quantum/Quantum_AI_Startups_Report`
+- 64%  `ai-usecases/eu-bank-ai-copilot-part1-architecture` <-> `ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability`
+- 64%  `ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code` <-> `ai-usecases/eu-bank-sequence-diagrams`
+- 64%  `ai-usecases/eu-bank-ai-copilot-part1-architecture` <-> `coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools`
+- 61%  `ai-usecases/eu-bank-ai-copilot-part1-architecture` <-> `ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code`
+- 59%  `ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code` <-> `ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability`
+- 54%  `ai-usecases/eu-bank-ai-copilot-part1-architecture` <-> `ai-usecases/eu-bank-sequence-diagrams`
+- 52%  `ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability` <-> `ai-usecases/eu-bank-sequence-diagrams`
+- 49%  `ai-usecases/eu-bank-sequence-diagrams` <-> `coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools`
+- 49%  `ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code` <-> `coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools`
+- 44%  `ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability` <-> `coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools`
+
+## Cluster (4 pages)
+
+- `soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition`
+- `soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking`
+- `soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis`
+- `soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking`
+
+Pairwise similarity within this cluster:
+
+- 79%  `soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition` <-> `soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis`
+- 77%  `soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition` <-> `soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking`
+- 76%  `soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis` <-> `soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking`
+- 74%  `soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition` <-> `soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking`
+- 71%  `soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking` <-> `soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis`
+- 69%  `soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking` <-> `soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking`
+
+## Cluster (3 pages)
+
+- `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design`
+- `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement`
+- `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting`
+
+Pairwise similarity within this cluster:
+
+- 64%  `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design` <-> `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement`
+- 62%  `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement` <-> `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting`
+- 60%  `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design` <-> `ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting`
 
 ## Cluster (3 pages)
 
@@ -56,7 +134,7 @@ Pairwise similarity within this cluster:
 
 - 66%  `coding-tools/claude/ccaf-exam-prep-complete` <-> `coding-tools/claude/ccdv-f-exam-prep-complete`
 - 61%  `coding-tools/claude/ccdv-f-cheatsheet` <-> `coding-tools/claude/ccdv-f-exam-prep-complete`
-- 40%  `coding-tools/claude/ccaf-exam-prep-complete` <-> `coding-tools/claude/ccdv-f-cheatsheet`
+- 41%  `coding-tools/claude/ccaf-exam-prep-complete` <-> `coding-tools/claude/ccdv-f-cheatsheet`
 
 ## Cluster (2 pages)
 
@@ -65,7 +143,7 @@ Pairwise similarity within this cluster:
 
 Pairwise similarity within this cluster:
 
-- 62%  `agentic-systems/platform/ai-msf-requirements-runbook` <-> `agentic-systems/platform/ai-platform-factory-runbook-v2`
+- 63%  `agentic-systems/platform/ai-msf-requirements-runbook` <-> `agentic-systems/platform/ai-platform-factory-runbook-v2`
 
 ## Cluster (2 pages)
 
@@ -84,15 +162,6 @@ Pairwise similarity within this cluster:
 Pairwise similarity within this cluster:
 
 - 64%  `ai-usecases/ceo_agent_pitch` <-> `ai-usecases/CEO_Agent_Solution_Blueprint`
-
-## Cluster (2 pages)
-
-- `ai-usecases/eu-bank-ai-copilot-complete`
-- `ai-usecases/eu-bank-sequence-diagrams`
-
-Pairwise similarity within this cluster:
-
-- 64%  `ai-usecases/eu-bank-ai-copilot-complete` <-> `ai-usecases/eu-bank-sequence-diagrams`
 
 ## Cluster (2 pages)
 
@@ -138,6 +207,15 @@ Pairwise similarity within this cluster:
 Pairwise similarity within this cluster:
 
 - 63%  `databricks-agentic-ai/index` <-> `databricks-agentic-ai/part-09-competitive-reference-architectures`
+
+## Cluster (2 pages)
+
+- `enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture`
+- `enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference`
+
+Pairwise similarity within this cluster:
+
+- 63%  `enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture` <-> `enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference`
 
 ## Cluster (2 pages)
 

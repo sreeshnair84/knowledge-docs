@@ -34,7 +34,7 @@ A 12-week Principal Architect programme covering quantum foundations, Quantum ML
 
 ## Industry Landscape Research
 
-- [Quantum AI — Tech Giants findings (IBM, Google, Microsoft, AWS, NVIDIA)](/knowledge-docs/quantum/zero-to-mastery#industry-landscape-quick-reference)
+- [Quantum AI — Tech Giants findings (IBM, Google, Microsoft, AWS, NVIDIA)](/knowledge-docs/quantum/zero-to-mastery-part4-appendices#industry-landscape-quick-reference)
 
 - [Quantum AI — Startups Report (IonQ, D-Wave, Quantinuum, Multiverse, QuEra)](/knowledge-docs/quantum/Quantum_AI_Startups_Report)
 

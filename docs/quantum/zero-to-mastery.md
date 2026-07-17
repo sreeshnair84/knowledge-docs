@@ -19,6 +19,21 @@ covers_version: "2026 Edition"
 
 ---
 
+## How to Use This Guide
+
+This is one continuous programme published as a 4-part series, not four unrelated documents — every week builds on the vocabulary and code from the week before it, including across part boundaries. Jump to any week using the table below, but if a term feels unexplained, it was very likely introduced earlier; use your browser's find-in-page rather than assuming it's missing.
+
+| Phase | Weeks | Theme | Jump to |
+| --- | --- | --- | --- |
+| **1 — Foundations** | 1–4 | Physics, gates, algorithms, hardware, error handling | [Week 1](./zero-to-mastery-part1-foundations.md#week-1-quantum-mechanics-primer-for-engineers) · [2](./zero-to-mastery-part1-foundations.md#week-2-qubits-gates--quantum-circuits) · [3](./zero-to-mastery-part1-foundations.md#week-3-quantum-algorithms--grover-shor-deutsch-jozsa) · [4](./zero-to-mastery-part1-foundations.md#week-4-quantum-hardware-error-mitigation--error-correction) |
+| **2 — Quantum AI & ML** | 5–8 | VQE, QAOA, QNNs, QNLP, agentic integration | [Week 5](./zero-to-mastery-part2-quantum-ai.md#week-5-classical-ml-through-a-quantum-lens) · [6](./zero-to-mastery-part2-quantum-ai.md#week-6-variational-quantum-eigensolvers--qaoa) · [7](./zero-to-mastery-part2-quantum-ai.md#week-7-quantum-neural-networks--kernel-methods) · [8](./zero-to-mastery-part2-quantum-ai.md#week-8-qnlp-agentic-ai--llm-integration) |
+| **3 — Mastery & Architecture** | 9–12 | Enterprise patterns, SDKs, PQC, capstone | [Week 9](./zero-to-mastery-part3-architecture.md#week-9-enterprise-quantum-architecture-patterns) · [10](./zero-to-mastery-part3-architecture.md#week-10-quantum-cloud-platforms--sdk-deep-dive) · [11](./zero-to-mastery-part3-architecture.md#week-11-post-quantum-security--compliance) · [12](./zero-to-mastery-part3-architecture.md#week-12-capstone--full-quantum-ai-system-design) |
+| **Appendices** | — | Math reference, use cases, agentic AI, careers, tooling | [A](./zero-to-mastery-part4-appendices.md#appendix-a--mathematics-reference) · [B](./zero-to-mastery-part4-appendices.md#appendix-b--real-world-use-cases--solution-designs) · [C](./zero-to-mastery-part4-appendices.md#appendix-c--quantum--agentic-ai) · [D](./zero-to-mastery-part4-appendices.md#appendix-d--career-roadmap--certifications) · [E](./zero-to-mastery-part4-appendices.md#appendix-e--tooling-cheat-sheet) |
+
+Companion material: [IBM Associate Cert Guide](./IBM_Associate_Quantum_CertGuide.md) (Qiskit fundamentals, exam-paced) and [IBM Developer Cert Guide](./IBM_Developer_Quantum_CertGuide.md) (Runtime v2, advanced error mitigation) go deeper on the Qiskit API than this series' code samples do — use them when you want the exam-grade level of detail behind any snippet below.
+
+---
+
 ## Why Quantum Now?
 
 The second quantum revolution is commercial. McKinsey's 2026 Quantum Technology Monitor found **a third of large enterprises allocate >$10M annually to quantum initiatives**. Quantum computing companies collectively crossed **$1B in revenue in 2025**, projected to reach $4.4B by 2028.
@@ -37,31 +52,28 @@ Cross-reference: [AI Foundations](../ai-foundations/index.md) · [Enterprise Arc
 
 ## Programme Map
 
-```
-PHASE 1 — Foundations (Weeks 1–4)
-  Week 1 → Quantum Mechanics Primer
-  Week 2 → Qubits, Gates & Circuits
-  Week 3 → Quantum Algorithms
-  Week 4 → Hardware & Error Correction
-
-PHASE 2 — Quantum AI (Weeks 5–8)
-  Week 5 → Classical ML Through a Quantum Lens
-  Week 6 → VQE & QAOA
-  Week 7 → QNNs & Quantum Kernel Methods
-  Week 8 → QNLP, Agentic AI & LLM Integration
-
-PHASE 3 — Mastery & Architecture (Weeks 9–12)
-  Week 9  → Enterprise Quantum Architecture Patterns
-  Week 10 → Quantum Cloud Platforms & SDKs
-  Week 11 → Post-Quantum Security & Compliance
-  Week 12 → Capstone — Full Quantum AI System Design
-
-APPENDICES
-  A → Mathematics Reference
-  B → Real-World Use Cases & Solution Designs
-  C → Quantum × Agentic AI
-  D → Career Roadmap & Certifications
-  E → Tooling Cheat Sheet
+```mermaid
+flowchart TD
+    subgraph P1["Phase 1 — Foundations (Part 1)"]
+        direction LR
+        W1["Week 1<br/>Quantum Mechanics Primer"] --> W2["Week 2<br/>Qubits, Gates & Circuits"]
+        W2 --> W3["Week 3<br/>Quantum Algorithms"]
+        W3 --> W4["Week 4<br/>Hardware, Mitigation & Correction"]
+    end
+    subgraph P2["Phase 2 — Quantum AI (Part 2)"]
+        direction LR
+        W5["Week 5<br/>Classical ML via Quantum Lens"] --> W6["Week 6<br/>VQE & QAOA"]
+        W6 --> W7["Week 7<br/>QNNs & Quantum Kernels"]
+        W7 --> W8["Week 8<br/>QNLP, Agentic AI & LLMs"]
+    end
+    subgraph P3["Phase 3 — Mastery & Architecture (Part 3)"]
+        direction LR
+        W9["Week 9<br/>Enterprise Architecture Patterns"] --> W10["Week 10<br/>Cloud Platforms & SDKs"]
+        W10 --> W11["Week 11<br/>Post-Quantum Security"]
+        W11 --> W12["Week 12<br/>Capstone"]
+    end
+    P1 --> P2 --> P3
+    P3 --> APP["Part 4 — Appendices A–E<br/>Math · Use Cases · Agentic AI · Careers · Tooling"]
 ```
 
 ---

@@ -20,14 +20,14 @@ This document provides the complete end-to-end reference for the EU Bank AI Copi
 
 ### 1.1 Architecture Zones
 
-The platform spans four security zones. Traffic between zones is strictly controlled and logged. See the [zone matrix in the platform guide](./eu-bank-ai-copilot-complete.md#1-platform-overview--architecture-zones) for the full breakdown.
+The platform spans four security zones. Traffic between zones is strictly controlled and logged. See the [zone matrix in the platform guide](./eu-bank-ai-copilot-part1-architecture.md#1-platform-overview--architecture-zones) for the full breakdown.
 
 > **Design Constraint**
 > AgentCore Gateway is NOT an approved service. All routing to AgentCore Runtime is performed exclusively through the BFF. No direct browser-to-AgentCore calls are permitted.
 
 ### 1.2 Technology Stack
 
-The full package/version/role matrix is maintained in the [platform guide, section 2](./eu-bank-ai-copilot-complete.md#2-technology-stack--component-map).
+The full package/version/role matrix is maintained in the [platform guide, section 2](./eu-bank-ai-copilot-part1-architecture.md#2-technology-stack--component-map).
 
 ## 2. Frontend — React + CopilotKit
 

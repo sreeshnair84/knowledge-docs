@@ -40,32 +40,16 @@ Continues from [Part 2: Quantum AI](./zero-to-mastery-part2-quantum-ai.md).
 
 #### Reference Architecture: Hybrid Quantum-Classical ML Pipeline
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    API Gateway / Orchestrator            │
-│              (FastAPI + LangGraph / LangChain)           │
-└──────────────────────────┬──────────────────────────────┘
-                           │
-          ┌────────────────┼────────────────┐
-          ▼                ▼                ▼
-   ┌─────────────┐  ┌──────────────┐  ┌──────────────┐
-   │  Classical  │  │  Quantum Job │  │  Classical   │
-   │  Pre-proc   │  │   Scheduler  │  │  Post-proc   │
-   │ (SageMaker) │  │  (Qiskit /   │  │  (sklearn /  │
-   └──────┬──────┘  │  Braket SDK) │  │  PyTorch)    │
-          │         └──────┬───────┘  └──────┬───────┘
-          │                │                  │
-          │         ┌──────▼───────┐          │
-          │         │  QPU Backend │          │
-          │         │ IBM/IonQ/AWS │          │
-          │         └──────┬───────┘          │
-          │                │                  │
-          └────────────────┼──────────────────┘
-                           ▼
-                   ┌───────────────┐
-                   │ Results Store │
-                   │  + Monitoring │
-                   └───────────────┘
+```mermaid
+flowchart TD
+    GW["API Gateway / Orchestrator<br/>(FastAPI + LangGraph / LangChain)"]
+    GW --> Pre["Classical Pre-processing<br/>(SageMaker)"]
+    GW --> Sched["Quantum Job Scheduler<br/>(Qiskit / Braket SDK)"]
+    GW --> Post["Classical Post-processing<br/>(sklearn / PyTorch)"]
+    Sched --> QPU["QPU Backend<br/>(IBM / IonQ / AWS)"]
+    Pre --> Results["Results Store + Monitoring"]
+    QPU --> Results
+    Post --> Results
 ```
 
 Cross-reference: [AI Harness & Orchestration](../enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration.md) · [Agent Interoperability](../enterprise-architecture/ai-architecture/agent-interoperability-orchestration.md)
@@ -101,7 +85,11 @@ Cross-reference: [AI Harness & Orchestration](../enterprise-architecture/ai-arch
 | **Google Quantum AI** | 105Q Willow | Cirq | Partnership only | Error correction research |
 | **AWS Braket** | Multi-provider | braket-sdk | Pay-per-shot | Multi-provider, SageMaker integration |
 | **Azure Quantum** | Multi-provider | Q# / Qiskit | Credits + PAYG | Microsoft stack, hybrid HPC |
+| **NVIDIA CUDA-Q** | GPU-simulated + QPU backends | CUDA-Q | Open source | GPU-accelerated simulation before spending QPU budget |
+| **Quantinuum** | Trapped-ion | TKET + Qiskit/Cirq plugins | Managed cloud | Hardware-agnostic circuit *compilation and optimisation* — TKET sits in front of whichever SDK you already use |
 | **PennyLane** | Framework-agnostic | PennyLane | Open source | QML, autodiff, hardware-agnostic design |
+
+**Circuit portability:** most real deployments don't pick one SDK exclusively — they write circuits in **OpenQASM** (the assembly-level, vendor-neutral circuit format that Qiskit, Braket, and Azure Quantum all import/export) and compile them with **TKET**, which retargets a single circuit's gate set and qubit layout across IBM, IonQ, Quantinuum, and Rigetti backends without a rewrite.
 
 ```python
 # SDK-agnostic design with PennyLane — switch backend in one line
@@ -129,15 +117,24 @@ def circuit(x):
 
 #### The Quantum Threat Timeline
 
+```mermaid
+flowchart LR
+    A["2026 — NOW<br/>Harvest Now, Decrypt Later (HNDL) attacks in progress.<br/>Data with 10+ year sensitivity needs PQC migration TODAY"] --> B["2028<br/>Quantum supremacy expected<br/>on more problem classes"]
+    B --> C["2030–2035<br/>Cryptographically Relevant Quantum Computer (CRQC) estimated.<br/>RSA-2048, ECC, Diffie-Hellman break under Shor's algorithm"]
 ```
-2026 ──── NOW ──── Harvest Now, Decrypt Later (HNDL) attacks in progress
-                  Any data with >10 year sensitivity needs PQC migration TODAY
 
-2028 ──────────── Quantum supremacy on more problem classes expected
+#### Post-Quantum Cryptography vs. Quantum Key Distribution
 
-2030–2035 ──────── Cryptographically Relevant Quantum Computer (CRQC) estimated
-                  RSA-2048, ECC, Diffie-Hellman break under Shor's algorithm
-```
+These solve the same threat with fundamentally different mechanisms, and enterprises frequently conflate them:
+
+| | Post-Quantum Cryptography (PQC) | Quantum Key Distribution (QKD) |
+| --- | --- | --- |
+| **Mechanism** | Classical math problems believed hard even for quantum computers (lattices, hashes) | Physics: measuring a quantum state disturbs it, so eavesdropping is detectable |
+| **Infrastructure** | Software upgrade — new algorithms on existing networks | New hardware — dedicated fibre or satellite links, distance-limited |
+| **Standardisation** | NIST FIPS 203–206 (below) | No equivalent global standard; niche deployments (banking backbones, government links) |
+| **Migration path** | The Week 11 checklist below | Not a drop-in replacement for TLS at internet scale — treat as a specialised, high-assurance point-to-point control |
+
+**Cryptographic agility** — the ability to swap a cryptographic algorithm without re-architecting the system around it — is the governance discipline that makes the PQC migration below tractable at enterprise scale; an architect's first PQC deliverable should usually be an agility layer (abstracted crypto provider interfaces), not a big-bang algorithm swap.
 
 #### NIST Post-Quantum Standards (2024)
 
@@ -167,6 +164,7 @@ assert shared_secret_server == shared_secret_client
 - [ ] Identify data with >10 year sensitivity — prioritise for immediate migration
 - [ ] Implement hybrid TLS 1.3 (classical + PQC in parallel)
 - [ ] Update certificate infrastructure to Dilithium/Falcon signatures
+- [ ] Build a cryptographic agility layer so the *next* algorithm swap isn't another multi-year project
 - [ ] Map compliance: NIST SP 800-208, NSA CNSA 2.0, EU Quantum Flagship
 
 Cross-reference: [AI Security & Governance](../ai-security-governance/index.md) · [Security Architecture & Guardrails](../enterprise-architecture/ai-architecture/agentic-ai-security-guardrails.md)
@@ -177,49 +175,61 @@ Cross-reference: [AI Security & Governance](../ai-security-governance/index.md) 
 
 Choose one of four tracks for your portfolio capstone:
 
-=== "Option A: Drug Discovery"
+<details>
+<summary><strong>Option A: Drug Discovery</strong></summary>
 
-    **VQE-Based Molecular Energy Estimation Pipeline**
+**VQE-Based Molecular Energy Estimation Pipeline**
 
-    - Molecule encoding (Jordan-Wigner / Parity mapping)
-    - VQE with UCCSD ansatz for ground state energy
-    - Error mitigation with ZNE
-    - Classical ML wrapper using quantum energy estimates as features
+- Molecule encoding (Jordan-Wigner / Parity mapping)
+- VQE with UCCSD ansatz for ground state energy
+- Error mitigation with ZNE
+- Classical ML wrapper using quantum energy estimates as features
 
-    **Target metric:** Energy estimate within 5% of classical FCI result on H₂, LiH
+**Target metric:** Energy estimate within 5% of classical FCI result on H₂, LiH
 
-=== "Option B: Portfolio Optimisation"
+</details>
 
-    **QAOA Quantum Portfolio Optimiser**
+<details>
+<summary><strong>Option B: Portfolio Optimisation</strong></summary>
 
-    - 10-asset Markowitz optimisation via QAOA
-    - Quantum covariance estimation for risk modelling
-    - Classical solver comparison (CPLEX / Gurobi baseline)
-    - REST API deployment with AWS Braket backend
+**QAOA Quantum Portfolio Optimiser**
 
-    **Target metric:** QAOA solution within 10% of classical optimal for 10 assets
+- 10-asset Markowitz optimisation via QAOA
+- Quantum covariance estimation for risk modelling
+- Classical solver comparison (CPLEX / Gurobi baseline)
+- REST API deployment with AWS Braket backend
 
-=== "Option C: Quantum NLP"
+**Target metric:** QAOA solution within 10% of classical optimal for 10 assets
 
-    **QNLP Text Classification System**
+</details>
 
-    - Text preprocessing + DisCoCat parsing with lambeq
-    - Quantum circuit generation and training
-    - 4-class news classification
-    - Quantum vs classical accuracy comparison
+<details>
+<summary><strong>Option C: Quantum NLP</strong></summary>
 
-    **Target metric:** >75% accuracy on test set
+**QNLP Text Classification System**
 
-=== "Option D: Custom Domain"
+- Text preprocessing + DisCoCat parsing with lambeq
+- Quantum circuit generation and training
+- 4-class news classification
+- Quantum vs classical accuracy comparison
 
-    **Architect's Choice — Your Industry**
+**Target metric:** >75% accuracy on test set
 
-    Propose a Quantum AI application in your domain. Must include:
-    - Problem formulation with quantum advantage justification
-    - Algorithm selection with alternatives considered
-    - Hybrid architecture diagram
-    - Error mitigation strategy
-    - Hardware platform selection with cost model
+</details>
+
+<details>
+<summary><strong>Option D: Custom Domain</strong></summary>
+
+**Architect's Choice — Your Industry**
+
+Propose a Quantum AI application in your domain. Must include:
+- Problem formulation with quantum advantage justification
+- Algorithm selection with alternatives considered
+- Hybrid architecture diagram
+- Error mitigation strategy
+- Hardware platform selection with cost model
+
+</details>
 
 ---
 

@@ -34,27 +34,28 @@ Before building quantum ML models, understand which classical ML operations have
 | Matrix-vector multiply | Quantum matrix inversion (HHL) | Exponential (with strict caveats) |
 | Kernel function | Quantum kernel (Hilbert space inner product) | Exponential feature space |
 | Gradient descent | Parameter shift rule | Exact gradients without backprop |
-| PCA / SVD | Quantum PCA (qPCA) | Potential speedup for sparse matrices |
+| PCA / SVD | Quantum PCA (qPCA) | Potential speedup for sparse, low-rank matrices via phase estimation on a density-matrix exponential |
 | Neural network layer | Variational quantum layer (VQL) | Exponential parameter space |
-| Random sampling | Quantum sampling (QMC) | Quadratic via amplitude estimation |
+| Random sampling | Quantum sampling via amplitude estimation | Quadratic speedup over classical Monte Carlo for estimating an expectation value |
 
-!!! warning "Critical Caveat"
-    The HHL algorithm offers exponential speedup **only under strict conditions**: sparse matrices, efficient state preparation, and quantum-readable output. Dequantisation results (Tang 2019) showed many claimed speedups were achievable classically. Real advantage exists but requires careful problem selection.
+:::warning Critical Caveat
+The HHL algorithm offers exponential speedup **only under strict conditions**: sparse matrices, efficient state preparation, and quantum-readable output. Dequantisation results (Tang 2019) showed many claimed speedups were achievable classically. Real advantage exists but requires careful problem selection. The same caveat applies to qPCA — it inherits HHL's state-preparation and readout bottlenecks.
+:::
 
 **Quantum Advantage Decision Flowchart**
 
-```
-Is your problem classically intractable at scale?
-  └─ No → Use classical ML
-  └─ Yes → Is it optimisation, simulation, or kernel-based?
-       └─ No → Unclear advantage today; monitor research
-       └─ Yes → Is your data efficiently encodable as quantum states?
-            └─ No → Quantum-inspired (tensor networks) may help
-            └─ Yes → Which type?
-                 ├─ Combinatorial optimisation → QAOA
-                 ├─ Quantum chemistry / molecular sim → VQE
-                 ├─ High-dimensional kernel learning → Quantum kernel SVM
-                 └─ Classification / regression → QNN with PennyLane
+```mermaid
+flowchart TD
+    A["Is your problem classically<br/>intractable at scale?"] -->|No| B["Use classical ML"]
+    A -->|Yes| C["Is it optimisation, simulation,<br/>or kernel-based?"]
+    C -->|No| D["Unclear advantage today —<br/>monitor research"]
+    C -->|Yes| E["Can input data be efficiently<br/>encoded as quantum states?"]
+    E -->|No| F["Quantum-inspired methods<br/>(tensor networks) may help"]
+    E -->|Yes| G{"Which type?"}
+    G --> H["Combinatorial optimisation<br/>→ QAOA (Week 6)"]
+    G --> I["Quantum chemistry /<br/>molecular sim → VQE (Week 6)"]
+    G --> J["High-dimensional kernel<br/>learning → Quantum kernel SVM (Week 7)"]
+    G --> K["Classification / regression<br/>→ QNN with PennyLane (Week 7)"]
 ```
 
 ---
@@ -110,7 +111,7 @@ result = optimizer.solve(max_cut_problem)
 
 #### QNN Architecture
 
-A QNN is a parameterised quantum circuit (PQC) used as a trainable model.
+A QNN is a parameterised quantum circuit (PQC) used as a trainable model. Feature encoding matters as much as the trainable layers — the three standard schemes are **basis encoding** (map classical bits directly to computational basis states — simple, but uses one qubit per bit), **angle encoding** (map each classical feature to a rotation angle — used below, linear in qubit count), and **amplitude encoding** (pack 2ⁿ classical values into the amplitudes of n qubits — exponentially qubit-efficient, but state preparation cost usually erases the advantage in practice).
 
 ```python
 import pennylane as qml
@@ -121,7 +122,7 @@ dev = qml.device("default.qubit", wires=n_qubits)
 
 @qml.qnode(dev, interface="torch")
 def qnn_circuit(inputs, weights):
-    # Feature encoding
+    # Feature encoding (angle encoding)
     qml.AngleEmbedding(inputs, wires=range(n_qubits))
     # Trainable layers
     qml.StronglyEntanglingLayers(weights, wires=range(n_qubits))
@@ -156,7 +157,10 @@ svc.fit(X_train, y_train)
 | Data re-uploading | General classification | Expressibility via repeated encoding |
 | QCNN | Structured spatial data | Avoids barren plateaus, translationally symmetric |
 | Quantum Boltzmann Machine | Generative modelling | Quantum generalisation of RBMs |
+| Quantum GAN (QGAN) | Generative modelling, distribution learning | Quantum generator and/or discriminator; benchmarked mainly on small synthetic and financial-return distributions today |
 | Quantum Kernel SVM | High-dimensional kernels | Classically hard kernel computed on QPU |
+
+Benchmarking note: as of 2026, QNNs and quantum kernels beat classical baselines only on small, hand-picked synthetic datasets designed to have quantum-friendly structure — there is no published result showing a QNN outperforming a well-tuned classical model on a standard, unstructured real-world benchmark. Treat every "quantum ML beats classical ML" headline the same way you'd treat a vendor's own benchmark: ask for the dataset, the classical baseline's tuning effort, and whether it replicates on a different dataset.
 
 ---
 
@@ -205,6 +209,10 @@ response = client.messages.create(
 # Validate and execute the generated circuit
 exec(response.content[0].text)
 ```
+
+:::warning Never exec() untrusted model output in production
+The snippet above validates the *pattern*, not production practice. Treat any LLM-generated circuit the way you'd treat any LLM-generated shell command: review it, run it in a sandboxed simulator first, and never `exec()` raw model output against real QPU credentials or billing.
+:::
 
 **Phase 2 Capstone:** 10-slide architecture deck for a Quantum-Enhanced ML system — dataset, algorithm selection, hardware platform, and expected timeline to quantum advantage.
 

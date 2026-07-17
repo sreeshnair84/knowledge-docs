@@ -169,7 +169,9 @@
       "inbound": [
         "enterprise-architecture/architectural-review-board/index",
         "index",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "agentic-systems/memory/AI_Memory_Agent_Innovations_Research_Report": {
@@ -1445,13 +1447,103 @@
       ],
       "status": "current",
       "last_reviewed": "2026-07-17",
-      "outgoing": [],
+      "outgoing": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting"
+      ],
       "inbound": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
         "ai-development/aidlc/index",
         "enterprise-ai-report/index",
         "enterprise-ai-report/part-03-ai-delivery-lifecycle",
         "enterprise-ai-report/part-19-deliverables",
         "interview-prep/fde/architect-in-fde-context"
+      ]
+    },
+    "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design": {
+      "title": "AIDLC Lifecycle Artifacts: Discovery Through Model Design",
+      "folder": "ai-development/aidlc",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-development",
+        "software-engineering",
+        "aidlc",
+        "enterprise-architecture"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library"
+      ],
+      "inbound": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology"
+      ]
+    },
+    "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement": {
+      "title": "AIDLC Lifecycle Artifacts: Development Through Retirement",
+      "folder": "ai-development/aidlc",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-development",
+        "software-engineering",
+        "aidlc",
+        "enterprise-architecture",
+        "mlops"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design"
+      ],
+      "inbound": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology"
+      ]
+    },
+    "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology": {
+      "title": "TOGAF ADM Artifact Templates: Foundation Through Technology",
+      "folder": "ai-development/aidlc",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-development",
+        "enterprise-architecture",
+        "togaf",
+        "aidlc"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting"
+      ],
+      "inbound": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting"
+      ]
+    },
+    "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting": {
+      "title": "TOGAF ADM Artifact Templates: Migration Through EA Cross-Cutting",
+      "folder": "ai-development/aidlc",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-development",
+        "enterprise-architecture",
+        "togaf",
+        "aidlc"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology"
+      ],
+      "inbound": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology"
       ]
     },
     "ai-development/aidlc/AIDLC_Enterprise_Framework_2025": {
@@ -1517,7 +1609,7 @@
     "ai-development/aidlc/index": {
       "title": "AIDLC — AI-Driven Development Lifecycle",
       "folder": "ai-development/aidlc",
-      "doc_type": null,
+      "doc_type": "guide",
       "tags": [
         "ai-development",
         "aidlc",
@@ -2170,7 +2262,8 @@
         "index",
         "multimodal-ai/index",
         "multimodal-ai/part-01-foundations",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "ai-foundations/transformer_architectures": {
@@ -2402,7 +2495,7 @@
         "ai-protocols/auth/index",
         "cloud-platforms/azure/hyperscaler-deep-dive-azure",
         "enterprise-ai-report/part-13-security-model",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "ai-protocols/auth/index": {
@@ -3258,6 +3351,8 @@
         "multimodal-ai/part-08-guardrails-sanitization",
         "multimodal-ai/part-09-compliance-responsible-ai",
         "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices",
         "sovereign-constitutional-ai/index"
       ]
     },
@@ -4779,7 +4874,8 @@
       "status": "current",
       "last_reviewed": "2026-07-10",
       "outgoing": [
-        "ai-usecases/eu-bank-ai-copilot-complete"
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture"
       ],
       "inbound": [
         "ai-usecases/eu-bank-sequence-diagrams"
@@ -4798,13 +4894,105 @@
       "status": "current",
       "last_reviewed": "2026-07-17",
       "outgoing": [
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "ai-usecases/eu-bank-sequence-diagrams"
       ],
       "inbound": [
         "ai-usecases/eu-bank-ai-copilot-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "ai-usecases/eu-bank-sequence-diagrams",
         "ai-usecases/index",
         "enterprise-ai-report/part-18-case-studies"
+      ]
+    },
+    "ai-usecases/eu-bank-ai-copilot-part1-architecture": {
+      "title": "EU Bank AI Copilot Platform — Part 1: Architecture & Design Decisions",
+      "folder": "ai-usecases",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-usecases",
+        "copilotkit",
+        "strands-agents",
+        "agentcore"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security"
+      ],
+      "inbound": [
+        "ai-usecases/eu-bank-ai-copilot-architecture",
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code"
+      ]
+    },
+    "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code": {
+      "title": "EU Bank AI Copilot Platform — Part 2: Sequence Diagrams & Application Code",
+      "folder": "ai-usecases",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-usecases",
+        "copilotkit",
+        "strands-agents",
+        "agentcore"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-sequence-diagrams",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security"
+      ],
+      "inbound": [
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security"
+      ]
+    },
+    "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security": {
+      "title": "EU Bank AI Copilot Platform — Part 3: Agent Runtime, MCP Servers & Security",
+      "folder": "ai-usecases",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-usecases",
+        "copilotkit",
+        "strands-agents",
+        "agentcore"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code"
+      ],
+      "inbound": [
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability"
+      ]
+    },
+    "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability": {
+      "title": "EU Bank AI Copilot Platform — Part 4: Compliance, Infrastructure & Observability",
+      "folder": "ai-usecases",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "ai-usecases",
+        "copilotkit",
+        "strands-agents",
+        "agentcore"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-complete"
+      ],
+      "inbound": [
+        "ai-usecases/eu-bank-ai-copilot-complete"
       ]
     },
     "ai-usecases/eu-bank-sequence-diagrams": {
@@ -4826,7 +5014,8 @@
         "ai-usecases/eu-bank-ai-copilot-architecture"
       ],
       "inbound": [
-        "ai-usecases/eu-bank-ai-copilot-complete"
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code"
       ]
     },
     "ai-usecases/index": {
@@ -5393,7 +5582,8 @@
         "cybersec-architect/index",
         "index",
         "multimodal-ai/index",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "cloud-platforms/kubernetes/K8s_Handbook_Part10_Observability": {
@@ -5948,7 +6138,7 @@
     "coding-tools/claude/ccao-f-cheatsheet": {
       "title": "CCAO-F Cheatsheet — Quick Reference",
       "folder": "coding-tools/claude",
-      "doc_type": null,
+      "doc_type": "certification",
       "tags": [
         "coding-tools",
         "claude",
@@ -5964,7 +6154,7 @@
     "coding-tools/claude/ccao-f-exam-prep-complete": {
       "title": "CCAO-F Exam Prep — Complete Guide",
       "folder": "coding-tools/claude",
-      "doc_type": null,
+      "doc_type": "certification",
       "tags": [
         "coding-tools",
         "claude",
@@ -5980,7 +6170,7 @@
     "coding-tools/claude/ccar-p-cheatsheet": {
       "title": "CCAR-P Cheatsheet — Quick Reference",
       "folder": "coding-tools/claude",
-      "doc_type": null,
+      "doc_type": "certification",
       "tags": [
         "coding-tools",
         "claude",
@@ -5996,7 +6186,7 @@
     "coding-tools/claude/ccar-p-exam-prep-complete": {
       "title": "CCAR-P Exam Prep — Complete Guide",
       "folder": "coding-tools/claude",
-      "doc_type": null,
+      "doc_type": "certification",
       "tags": [
         "coding-tools",
         "claude",
@@ -6012,7 +6202,7 @@
     "coding-tools/claude/ccdv-f-cheatsheet": {
       "title": "CCDV-F Cheatsheet — Quick Reference",
       "folder": "coding-tools/claude",
-      "doc_type": null,
+      "doc_type": "certification",
       "tags": [
         "coding-tools",
         "claude",
@@ -6028,7 +6218,7 @@
     "coding-tools/claude/ccdv-f-exam-prep-complete": {
       "title": "CCDV-F Exam Prep — Complete Guide",
       "folder": "coding-tools/claude",
-      "doc_type": null,
+      "doc_type": "certification",
       "tags": [
         "coding-tools",
         "claude",
@@ -6272,7 +6462,7 @@
         "enterprise-architecture/ai-architecture/enterprise-ai-skills-assessment",
         "enterprise-architecture/ai-architecture/index",
         "enterprise-architecture/architectural-review-board/index",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "coding-tools/claude/prompt-engineering-claude-4": {
@@ -9064,7 +9254,8 @@
         "enterprise-architecture/ai-architecture/enterprise-aiops-guide",
         "enterprise-architecture/ai-architecture/index",
         "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "enterprise-architecture/ai-architecture/agent-memory-planning-architecture": {
@@ -9097,7 +9288,7 @@
         "enterprise-architecture/ai-architecture/index",
         "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
         "interview-prep/fde/fde-role-skills-map",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "enterprise-architecture/ai-architecture/agent-reliability-engineering": {
@@ -9214,7 +9405,7 @@
         "interview-prep/fde/architect-in-fde-context",
         "interview-prep/fde/fde-life-transcript",
         "interview-prep/fde/fde-role-skills-map",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part3-architecture"
       ]
     },
     "enterprise-architecture/ai-architecture/agentic-ai-security-identity": {
@@ -9541,7 +9732,7 @@
         "enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures",
         "enterprise-architecture/ai-architecture/index",
         "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part3-architecture"
       ]
     },
     "enterprise-architecture/ai-architecture/drift-detection-guide": {
@@ -9694,7 +9885,8 @@
         "enterprise-architecture/ai-architecture/index",
         "interview-prep/fde/architect-in-fde-context",
         "multimodal-ai/part-08-guardrails-sanitization",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "enterprise-architecture/ai-architecture/enterprise-ai-comparative-matrices-2026": {
@@ -10022,7 +10214,7 @@
         "enterprise-architecture/ai-architecture/enterprise-agent-reference-architectures",
         "enterprise-architecture/ai-architecture/index",
         "interview-prep/fde/fde-role-skills-map",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "enterprise-architecture/ai-architecture/multi-agent-topology-patterns": {
@@ -10359,15 +10551,106 @@
       "doc_type": "guide",
       "tags": [
         "enterprise-architecture",
-        "process"
+        "process",
+        "communication",
+        "multi-part-series"
       ],
       "status": "current",
       "last_reviewed": "2026-07-17",
-      "outgoing": [],
+      "outgoing": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth"
+      ],
       "inbound": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth",
         "interview-prep/fde/architect-in-fde-context",
         "interview-prep/fde/fde-life-transcript",
         "interview-prep/fde/fde-role-skills-map"
+      ]
+    },
+    "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation": {
+      "title": "Part 1 — Foundation",
+      "folder": "enterprise-architecture/process",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "process",
+        "communication",
+        "multi-part-series"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide"
+      ],
+      "inbound": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth"
+      ]
+    },
+    "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas": {
+      "title": "Part 2 — The Five Arenas",
+      "folder": "enterprise-architecture/process",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "process",
+        "communication",
+        "multi-part-series"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation"
+      ],
+      "inbound": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice"
+      ]
+    },
+    "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice": {
+      "title": "Part 3 — Toolkit & Practice",
+      "folder": "enterprise-architecture/process",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "process",
+        "communication",
+        "multi-part-series"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas"
+      ],
+      "inbound": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth"
+      ]
+    },
+    "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth": {
+      "title": "Part 4 — Measurement & Growth",
+      "folder": "enterprise-architecture/process",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "process",
+        "communication",
+        "multi-part-series"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation"
+      ],
+      "inbound": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide"
       ]
     },
     "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026": {
@@ -10506,11 +10789,112 @@
       ],
       "status": "current",
       "last_reviewed": "2026-07-17",
-      "outgoing": [],
+      "outgoing": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference"
+      ],
       "inbound": [
         "ai-usecases/index",
         "enterprise-ai-report/index",
-        "enterprise-ai-report/part-15-enterprise-architecture"
+        "enterprise-ai-report/part-15-enterprise-architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference"
+      ]
+    },
+    "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI": {
+      "title": "APEX EA Part 1: Team Structure, RACI & Operating Model",
+      "folder": "enterprise-architecture/specialization",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "specialization",
+        "togaf",
+        "raci",
+        "team-structure",
+        "governance"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture"
+      ],
+      "inbound": [
+        "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture"
+      ]
+    },
+    "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture": {
+      "title": "APEX EA Part 2: AI-DLC Methodology & Foundation Architecture",
+      "folder": "enterprise-architecture/specialization",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "specialization",
+        "togaf",
+        "ai-dlc",
+        "architecture-vision",
+        "business-architecture"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture"
+      ],
+      "inbound": [
+        "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture"
+      ]
+    },
+    "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture": {
+      "title": "APEX EA Part 3: Information Systems & Technology Architecture",
+      "folder": "enterprise-architecture/specialization",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "specialization",
+        "togaf",
+        "data-architecture",
+        "technology-architecture",
+        "cloud-native"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference"
+      ],
+      "inbound": [
+        "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference"
+      ]
+    },
+    "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference": {
+      "title": "APEX EA Part 4: Delivery, Governance & Reference",
+      "folder": "enterprise-architecture/specialization",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "enterprise-architecture",
+        "specialization",
+        "togaf",
+        "governance",
+        "regulatory-compliance",
+        "cloud-native"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final"
+      ],
+      "inbound": [
+        "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture"
       ]
     },
     "enterprise-architecture/specialization/DPDP_Act_2023_Comprehensive_Guide": {
@@ -11491,7 +11875,7 @@
     "interview-prep/fde/architect-in-fde-context": {
       "title": "Architect Expectations in an FDE Context",
       "folder": "interview-prep/fde",
-      "doc_type": "study-guide",
+      "doc_type": "guide",
       "tags": [
         "interview-prep",
         "fde",
@@ -11953,7 +12337,7 @@
         "knowledge-engineering/industry-practices/index",
         "multimodal-ai/index",
         "multimodal-ai/part-03-modalities-image-document",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part2-quantum-ai"
       ]
     },
     "multimodal-ai/index": {
@@ -12657,7 +13041,7 @@
       "last_reviewed": "2026-07-10",
       "outgoing": [],
       "inbound": [
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "quantum/Quantum_AI_Startups_Report": {
@@ -12671,7 +13055,7 @@
       "last_reviewed": "2026-07-10",
       "outgoing": [],
       "inbound": [
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery-part4-appendices"
       ]
     },
     "quantum/Quantum_AI_Zero_to_Mastery": {
@@ -12693,7 +13077,9 @@
       "folder": "quantum",
       "doc_type": "guide",
       "tags": [
-        "quantum"
+        "quantum",
+        "quantum-computing",
+        "overview"
       ],
       "status": "current",
       "last_reviewed": "2026-07-10",
@@ -12704,35 +13090,136 @@
         "index"
       ]
     },
+    "quantum/zero-to-mastery-part1-foundations": {
+      "title": "Quantum AI: Zero to Mastery — Part 1: Foundations",
+      "folder": "quantum",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "quantum",
+        "quantum-computing",
+        "quantum-ai",
+        "enterprise-architecture"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part2-quantum-ai"
+      ],
+      "inbound": [
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part2-quantum-ai"
+      ]
+    },
+    "quantum/zero-to-mastery-part2-quantum-ai": {
+      "title": "Quantum AI: Zero to Mastery — Part 2: Quantum AI",
+      "folder": "quantum",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "quantum",
+        "quantum-computing",
+        "quantum-ai",
+        "enterprise-architecture"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "quantum/zero-to-mastery-part1-foundations",
+        "agentic-systems/index",
+        "knowledge-engineering/knowledge/index",
+        "quantum/zero-to-mastery-part3-architecture"
+      ],
+      "inbound": [
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part3-architecture"
+      ]
+    },
+    "quantum/zero-to-mastery-part3-architecture": {
+      "title": "Quantum AI: Zero to Mastery — Part 3: Mastery & Architecture",
+      "folder": "quantum",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "quantum",
+        "quantum-computing",
+        "quantum-ai",
+        "enterprise-architecture"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
+        "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+        "ai-security-governance/index",
+        "enterprise-architecture/ai-architecture/agentic-ai-security-guardrails",
+        "quantum/zero-to-mastery-part4-appendices"
+      ],
+      "inbound": [
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part4-appendices"
+      ]
+    },
+    "quantum/zero-to-mastery-part4-appendices": {
+      "title": "Quantum AI: Zero to Mastery — Part 4: Appendices & Industry Landscape",
+      "folder": "quantum",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "quantum",
+        "quantum-computing",
+        "quantum-ai",
+        "enterprise-architecture"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "quantum/zero-to-mastery-part3-architecture",
+        "ai-security-governance/index",
+        "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
+        "agentic-systems/index",
+        "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
+        "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
+        "coding-tools/claude/mcp-deep-guide",
+        "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
+        "quantum/Quantum_AI_Startups_Report",
+        "quantum/Quantum_AI_Consultancies_Report",
+        "ai-foundations/index",
+        "cloud-platforms/index",
+        "enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns"
+      ],
+      "inbound": [
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part3-architecture"
+      ]
+    },
     "quantum/zero-to-mastery": {
       "title": "Quantum AI — Zero to Mastery",
       "folder": "quantum",
       "doc_type": "guide",
       "tags": [
-        "quantum"
+        "quantum",
+        "quantum-computing",
+        "quantum-ai",
+        "enterprise-architecture"
       ],
       "status": "current",
       "last_reviewed": "2026-07-17",
       "outgoing": [
         "ai-foundations/index",
         "enterprise-architecture/ai-architecture/enterprise-ai-architecture-patterns",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices",
         "agentic-systems/index",
-        "knowledge-engineering/knowledge/index",
-        "enterprise-architecture/ai-architecture/ai-harness-architecture-orchestration",
-        "enterprise-architecture/ai-architecture/agent-interoperability-orchestration",
-        "ai-security-governance/index",
-        "enterprise-architecture/ai-architecture/agentic-ai-security-guardrails",
-        "ai-protocols/auth/entra-3lo-agent-auth-standards-architecture",
-        "enterprise-architecture/ai-architecture/agent-memory-planning-architecture",
-        "coding-tools/claude/mcp-deep-guide",
-        "enterprise-architecture/ai-architecture/mcp-a2a-protocol-deep-dive",
-        "quantum/Quantum_AI_Startups_Report",
-        "quantum/Quantum_AI_Consultancies_Report",
-        "cloud-platforms/index"
+        "cloud-platforms/index",
+        "ai-security-governance/index"
       ],
       "inbound": [
         "quantum/Quantum_AI_Zero_to_Mastery",
-        "quantum/index"
+        "quantum/index",
+        "quantum/zero-to-mastery-part1-foundations"
       ]
     },
     "soft-skills/CTO_Voice_Mastery_Program": {
@@ -12787,8 +13274,99 @@
       ],
       "status": "current",
       "last_reviewed": "2026-07-17",
-      "outgoing": [],
-      "inbound": []
+      "outgoing": [
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
+      ],
+      "inbound": [
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
+      ]
+    },
+    "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition": {
+      "title": "The Mental Model Encyclopedia — Part 1: Executive Cognition Frameworks",
+      "folder": "soft-skills",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "soft-skills",
+        "mental-models",
+        "executive-cognition",
+        "frameworks",
+        "decision-making"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "soft-skills/Mental_Model_Encyclopedia"
+      ],
+      "inbound": [
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking"
+      ]
+    },
+    "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking": {
+      "title": "The Mental Model Encyclopedia — Part 2: Systems Thinking Frameworks",
+      "folder": "soft-skills",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "soft-skills",
+        "mental-models",
+        "systems-thinking",
+        "frameworks"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition"
+      ],
+      "inbound": [
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis"
+      ]
+    },
+    "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis": {
+      "title": "The Mental Model Encyclopedia — Part 3: Strategic Analysis Frameworks",
+      "folder": "soft-skills",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "soft-skills",
+        "mental-models",
+        "strategic-thinking",
+        "frameworks",
+        "strategic-analysis"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking"
+      ],
+      "inbound": [
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
+      ]
+    },
+    "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking": {
+      "title": "The Mental Model Encyclopedia — Part 4: Counterfactual Thinking Frameworks",
+      "folder": "soft-skills",
+      "doc_type": "multi-part-series",
+      "tags": [
+        "soft-skills",
+        "mental-models",
+        "counterfactual-thinking",
+        "frameworks",
+        "risk-thinking"
+      ],
+      "status": "current",
+      "last_reviewed": "2026-07-17",
+      "outgoing": [
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia"
+      ],
+      "inbound": [
+        "soft-skills/Mental_Model_Encyclopedia"
+      ]
     },
     "soft-skills/Mental_Models_for_Voice_Training": {
       "title": "Mental Models for Voice Training",
@@ -13848,6 +14426,10 @@
       "ai-development/aidlc": [
         "ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026",
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting",
         "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
         "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
         "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
@@ -14048,6 +14630,10 @@
         "ai-usecases/ceo_agent_pitch",
         "ai-usecases/eu-bank-ai-copilot-architecture",
         "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "ai-usecases/eu-bank-sequence-diagrams",
         "ai-usecases/index"
       ],
@@ -14391,6 +14977,10 @@
         "enterprise-architecture/process/EA_Real_Life_Transcript",
         "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
         "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth",
         "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
         "enterprise-architecture/process/ai-solution-lifecycle-deliverables",
         "enterprise-architecture/process/enterprise-technology-selection-framework",
@@ -14401,6 +14991,10 @@
         "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
         "enterprise-architecture/specialization/AKES_Addendum_Document_Update_and_Versioning",
         "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
         "enterprise-architecture/specialization/DPDP_Act_2023_Comprehensive_Guide",
         "enterprise-architecture/specialization/DSA_Principal_Architect_Reference",
         "enterprise-architecture/specialization/EAKA_Research_Study",
@@ -14533,12 +15127,20 @@
         "quantum/Quantum_AI_Startups_Report",
         "quantum/Quantum_AI_Zero_to_Mastery",
         "quantum/index",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices"
       ],
       "soft-skills": [
         "soft-skills/CTO_Voice_Mastery_Program",
         "soft-skills/Creative_Thinking_Skills",
         "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking",
         "soft-skills/Mental_Models_for_Voice_Training",
         "soft-skills/Problem_Solving_Skills",
         "soft-skills/Storytelling_Exercise_Workbook",
@@ -14622,6 +15224,7 @@
         "agentic-ui/scalability-engineering",
         "agentic-ui/security-architecture",
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/index",
         "ai-development/index",
         "ai-economics/AI-Value-Creator-Deliverables-Pack",
         "ai-economics/AI_Cost_Implementation_Guide_2026",
@@ -14930,6 +15533,7 @@
         "interview-prep/AI_Engineer_Question_Bank",
         "interview-prep/Hard_Scenarios_Interview_Prep",
         "interview-prep/ML_AI_Interview_Mastery_Guide",
+        "interview-prep/fde/architect-in-fde-context",
         "interview-prep/fde/index",
         "knowledge-engineering/data/index",
         "knowledge-engineering/index",
@@ -15064,7 +15668,15 @@
         "agentic-systems/skill/enterprise/10-governance-and-lifecycle",
         "agentic-systems/skill/enterprise/11-architecture-patterns-antipatterns-and-case-studies",
         "agentic-systems/skill/enterprise/index",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting",
         "ai-security-governance/policy/Vol1b_Authorization_Deep_Dive",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "cloud-platforms/iac/terraform/ai-assisted-iac-mastery",
         "cybersec-architect/01-evolution",
         "cybersec-architect/02-enterprise-security-architecture",
@@ -15101,7 +15713,23 @@
         "ea-masterclass/module-15-distinguished-architect/executive-presence",
         "ea-masterclass/module-15-distinguished-architect/fortune100-modernisation",
         "ea-masterclass/module-15-distinguished-architect/index",
-        "ea-masterclass/module-15-distinguished-architect/strategic-thinking"
+        "ea-masterclass/module-15-distinguished-architect/strategic-thinking",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices",
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
       ],
       "reference": [
         "ai-protocols/auth/auth-standards-reference",
@@ -15128,6 +15756,12 @@
       "certification": [
         "coding-tools/claude/ccaf-cheatsheet",
         "coding-tools/claude/ccaf-exam-prep-complete",
+        "coding-tools/claude/ccao-f-cheatsheet",
+        "coding-tools/claude/ccao-f-exam-prep-complete",
+        "coding-tools/claude/ccar-p-cheatsheet",
+        "coding-tools/claude/ccar-p-exam-prep-complete",
+        "coding-tools/claude/ccdv-f-cheatsheet",
+        "coding-tools/claude/ccdv-f-exam-prep-complete",
         "quantum/IBM_Developer_Quantum_CertGuide"
       ],
       "workshop-transcript": [
@@ -15190,7 +15824,6 @@
         "enterprise-strategy/vol9-industry-deep-dives"
       ],
       "study-guide": [
-        "interview-prep/fde/architect-in-fde-context",
         "interview-prep/fde/fde-role-skills-map"
       ]
     },
@@ -15447,6 +16080,10 @@
         "agentic-systems/platform/agentic_platform_bestpractices",
         "ai-usecases/EU_Banking_AI_Agent_Evaluation_Framework",
         "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "cloud-platforms/aws/hyperscaler-deep-dive-aws"
       ],
       "prompt-lifecycle": [
@@ -15533,6 +16170,8 @@
         "enterprise-architecture/ai-architecture/governance-propagation-chain",
         "enterprise-architecture/ai-architecture/kill-switch-architecture",
         "enterprise-architecture/process/enterprise-technology-selection-framework",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
         "enterprise-architecture/specialization/DPDP_Act_2023_Comprehensive_Guide",
         "enterprise-architecture/strategy/EA_Strategy_Playbook",
         "sovereign-constitutional-ai/ai-risk-taxonomy",
@@ -15749,6 +16388,10 @@
       "ai-development": [
         "ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026",
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting",
         "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
         "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
         "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
@@ -15761,12 +16404,18 @@
       "software-engineering": [
         "ai-development/aidlc/AIDLC_Agile_CICD_AI_Transformation_2026",
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
         "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
         "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
         "ai-development/testing/AI_Agent_Evaluation_Framework_Guide"
       ],
       "aidlc": [
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting",
         "ai-development/aidlc/AIDLC_Enterprise_Framework_2025",
         "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
         "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
@@ -15775,6 +16424,10 @@
       ],
       "enterprise-architecture": [
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part1_Discovery_to_Model_Design",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting",
         "ai-development/aidlc/EA_AIDLC_Deep_Research_2026",
         "ai-economics/AI_Cost_Implementation_Guide_2026",
         "ai-foundations/AI_Lab_Research_Report_June2026",
@@ -15824,6 +16477,10 @@
         "enterprise-architecture/process/EA_Real_Life_Transcript",
         "enterprise-architecture/process/Enterprise_AI_Architect_Bible_2026",
         "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth",
         "enterprise-architecture/process/Enterprise_Agentic_AI_Architecture_Playbook_2026",
         "enterprise-architecture/process/ai-solution-lifecycle-deliverables",
         "enterprise-architecture/process/enterprise-technology-selection-framework",
@@ -15832,6 +16489,10 @@
         "enterprise-architecture/specialization/AI_Transformation_Consultant_Toolkit_2026",
         "enterprise-architecture/specialization/AKES_Addendum_Document_Update_and_Versioning",
         "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
         "enterprise-architecture/specialization/DSA_Principal_Architect_Reference",
         "enterprise-architecture/specialization/EAKA_Research_Study",
         "enterprise-architecture/specialization/EA_Business_Communication_Executive_Skills",
@@ -15858,16 +16519,36 @@
         "interview-prep/ea/EA_Interview_Master_Guide",
         "multimodal-ai/index",
         "multimodal-ai/part-02-enterprise-architecture",
-        "nist-ai-standards/part-04-enterprise-architecture"
+        "nist-ai-standards/part-04-enterprise-architecture",
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices"
       ],
       "togaf": [
         "ai-development/aidlc/AIDLC_Artifact_Reference_Library",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part3_TOGAF_Foundation_to_Technology",
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part4_TOGAF_Migration_to_EA_CrossCutting",
         "ai-soc-playbooks/part-09-enterprise-architecture",
         "enterprise-ai-report/part-15-enterprise-architecture",
         "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
         "enterprise-strategy/vol4-consulting-frameworks-industry",
         "enterprise-strategy/vol7-enterprise-building-blocks",
         "enterprise-strategy/vol8-portfolio-consulting-frameworks"
+      ],
+      "mlops": [
+        "ai-development/aidlc/AIDLC_Artifact_Reference_Library_Part2_Development_to_Retirement",
+        "enterprise-ai-report/part-03-ai-delivery-lifecycle",
+        "enterprise-ai-report/part-08-organizational-roles",
+        "enterprise-ai-report/part-11-devsecops",
+        "enterprise-architecture/ai-architecture/AgentOps-Production-Guide",
+        "enterprise-architecture/ai-architecture/drift-detection-guide",
+        "interview-prep/AI_Engineer_Question_Bank"
       ],
       "agile": [
         "ai-development/aidlc/Agile_in_the_Age_of_Agentic_AI_2026",
@@ -16099,7 +16780,8 @@
       ],
       "data-architecture": [
         "ai-foundations/AI_Lab_Research_Report_June2026",
-        "ai-foundations/AI_Native_Architecture_Evolution_Report"
+        "ai-foundations/AI_Native_Architecture_Evolution_Report",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture"
       ],
       "ai": [
         "ai-foundations/The_Agentic_Loop_Enterprise_AI_Architect_Guide",
@@ -16491,7 +17173,12 @@
         "ai-security-governance/policy/Vol4_RAG_Memory_Data_Authorization",
         "ai-security-governance/policy/Vol4b_AWS_Entra_Federation_Patterns",
         "ai-security-governance/policy/Vol5_AWS_Implementation_Governance",
-        "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework"
+        "ai-security-governance/policy/Vol5b_Compliance_Governance_Decision_Framework",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth"
       ],
       "threat-modeling": [
         "ai-security-governance/deep-mind/Part03_Enterprise_Threat_Modeling"
@@ -17036,6 +17723,10 @@
         "ai-usecases/ceo_agent_pitch",
         "ai-usecases/eu-bank-ai-copilot-architecture",
         "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "ai-usecases/eu-bank-sequence-diagrams",
         "ai-usecases/index"
       ],
@@ -17075,6 +17766,10 @@
       "copilotkit": [
         "ai-usecases/eu-bank-ai-copilot-architecture",
         "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability",
         "coding-tools/github-copilot/copilotkit-mcp-apps-vs-tools"
       ],
       "strands": [
@@ -17082,7 +17777,11 @@
         "cloud-platforms/aws/hyperscaler-deep-dive-aws"
       ],
       "strands-agents": [
-        "ai-usecases/eu-bank-ai-copilot-complete"
+        "ai-usecases/eu-bank-ai-copilot-complete",
+        "ai-usecases/eu-bank-ai-copilot-part1-architecture",
+        "ai-usecases/eu-bank-ai-copilot-part2-sequence-diagrams-and-code",
+        "ai-usecases/eu-bank-ai-copilot-part3-agent-mcp-security",
+        "ai-usecases/eu-bank-ai-copilot-part4-compliance-infra-observability"
       ],
       "eu-bank": [
         "ai-usecases/eu-bank-sequence-diagrams"
@@ -17621,14 +18320,6 @@
       "lifecycle": [
         "enterprise-ai-report/part-03-ai-delivery-lifecycle"
       ],
-      "mlops": [
-        "enterprise-ai-report/part-03-ai-delivery-lifecycle",
-        "enterprise-ai-report/part-08-organizational-roles",
-        "enterprise-ai-report/part-11-devsecops",
-        "enterprise-architecture/ai-architecture/AgentOps-Production-Guide",
-        "enterprise-architecture/ai-architecture/drift-detection-guide",
-        "interview-prep/AI_Engineer_Question_Bank"
-      ],
       "delivery-model": [
         "enterprise-ai-report/part-03-ai-delivery-lifecycle"
       ],
@@ -17693,6 +18384,7 @@
       "raci": [
         "enterprise-ai-report/part-08-organizational-roles",
         "enterprise-ai-report/part-19-deliverables",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
         "enterprise-architecture/strategy/EA_Strategy_Playbook"
       ],
       "chief-ai-officer": [
@@ -17805,6 +18497,7 @@
       ],
       "business-architecture": [
         "enterprise-ai-report/part-15-enterprise-architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
         "enterprise-strategy/index",
         "enterprise-strategy/vol2-business-architecture-operating-model"
       ],
@@ -18179,8 +18872,19 @@
       ],
       "process": [
         "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth",
         "enterprise-architecture/process/ai-solution-lifecycle-deliverables",
         "enterprise-architecture/process/index"
+      ],
+      "communication": [
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part1_Foundation",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part2_Five_Arenas",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part3_Toolkit_Practice",
+        "enterprise-architecture/process/Enterprise_AI_Architect_Deep_Dive_Guide_Part4_Measurement_Growth"
       ],
       "technology-selection": [
         "enterprise-architecture/process/enterprise-technology-selection-framework"
@@ -18191,6 +18895,10 @@
       "specialization": [
         "enterprise-architecture/specialization/AI_Invoice_Auditor_Architecture_v5",
         "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
         "enterprise-architecture/specialization/index"
       ],
       "knowledge-systems": [
@@ -18201,11 +18909,26 @@
         "workflow-orchestration/18-enterprise-governance-model"
       ],
       "ai-dlc": [
-        "enterprise-architecture/specialization/APEX_EA_Final"
+        "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture"
       ],
       "cloud-native": [
         "enterprise-architecture/specialization/APEX_EA_Final",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture",
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference",
         "nist-ai-standards/part-04-enterprise-architecture"
+      ],
+      "team-structure": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part1_Team_Structure_RACI"
+      ],
+      "architecture-vision": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part2_AI_DLC_Methodology_Foundation_Architecture"
+      ],
+      "technology-architecture": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part3_Information_Systems_Technology_Architecture"
+      ],
+      "regulatory-compliance": [
+        "enterprise-architecture/specialization/APEX_EA_Final_Part4_Delivery_Governance_Reference"
       ],
       "data-privacy": [
         "enterprise-architecture/specialization/DPDP_Act_2023_Comprehensive_Guide"
@@ -18773,7 +19496,11 @@
         "quantum/IBM_Developer_Quantum_CertGuide",
         "quantum/Quantum_AI_Zero_to_Mastery",
         "quantum/index",
-        "quantum/zero-to-mastery"
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices"
       ],
       "regulation": [
         "nist-ai-standards/part-07-future-trends"
@@ -18781,12 +19508,32 @@
       "quantum-computing": [
         "quantum/IBM_Associate_Quantum_CertGuide",
         "quantum/Quantum_AI_Consultancies_Report",
-        "quantum/Quantum_AI_Startups_Report"
+        "quantum/Quantum_AI_Startups_Report",
+        "quantum/index",
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices"
+      ],
+      "overview": [
+        "quantum/index"
+      ],
+      "quantum-ai": [
+        "quantum/zero-to-mastery",
+        "quantum/zero-to-mastery-part1-foundations",
+        "quantum/zero-to-mastery-part2-quantum-ai",
+        "quantum/zero-to-mastery-part3-architecture",
+        "quantum/zero-to-mastery-part4-appendices"
       ],
       "soft-skills": [
         "soft-skills/CTO_Voice_Mastery_Program",
         "soft-skills/Creative_Thinking_Skills",
         "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking",
         "soft-skills/Mental_Models_for_Voice_Training",
         "soft-skills/Problem_Solving_Skills",
         "soft-skills/Storytelling_Exercise_Workbook",
@@ -18797,22 +19544,43 @@
         "soft-skills/Creative_Thinking_Skills"
       ],
       "mental-models": [
-        "soft-skills/Mental_Model_Encyclopedia"
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
       ],
       "executive-cognition": [
-        "soft-skills/Mental_Model_Encyclopedia"
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition"
       ],
       "systems-thinking": [
-        "soft-skills/Mental_Model_Encyclopedia"
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking"
       ],
       "strategic-thinking": [
-        "soft-skills/Mental_Model_Encyclopedia"
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis"
       ],
       "frameworks": [
-        "soft-skills/Mental_Model_Encyclopedia"
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition",
+        "soft-skills/Mental_Model_Encyclopedia_Part2_Systems_Thinking",
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
       ],
       "counterfactual-thinking": [
-        "soft-skills/Mental_Model_Encyclopedia"
+        "soft-skills/Mental_Model_Encyclopedia",
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
+      ],
+      "decision-making": [
+        "soft-skills/Mental_Model_Encyclopedia_Part1_Executive_Cognition"
+      ],
+      "strategic-analysis": [
+        "soft-skills/Mental_Model_Encyclopedia_Part3_Strategic_Analysis"
+      ],
+      "risk-thinking": [
+        "soft-skills/Mental_Model_Encyclopedia_Part4_Counterfactual_Thinking"
       ],
       "problem-solving": [
         "soft-skills/Problem_Solving_Skills"
